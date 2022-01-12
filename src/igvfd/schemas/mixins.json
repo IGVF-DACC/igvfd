@@ -1,0 +1,238 @@
+{
+    "title": "Mixin properties",
+    "schema_version": {
+        "schema_version": {
+            "title": "Schema version",
+            "description": "The version of the JSON schema that the server uses to validate the object.",
+            "comment":  "Do not submit. The version used to validate the object is set by the server. The default should be set to the current version.",
+            "type": "string",
+            "pattern": "^\\d+(\\.\\d+)*$",
+            "requestMethod": []
+        }
+    },
+    "uuid": {
+        "uuid": {
+            "title": "UUID",
+            "description":"The unique identifier associated with every object.",
+            "comment":  "Do not submit. The uuid is set by the server.",
+            "type": "string",
+            "format": "uuid",
+            "serverDefault": "uuid4",
+            "permission": "import_items",
+            "requestMethod": "POST"
+        }
+    },
+    "accession": {
+        "accession": {
+            "title": "Accession",
+            "description": "A unique identifier to be used to reference the object prefixed with ENC.",
+            "comment": "Do not submit. The accession is assigned by the server.",
+            "type": "string",
+            "format": "accession",
+            "serverDefault": "accession",
+            "permission": "import_items"
+        }
+    },
+    "alternate_accessions": {
+        "alternate_accessions": {
+            "title": "Alternate accessions",
+            "description": "Accessions previously assigned to objects that have been merged with this object.",
+	        "comment": "Do not submit. Only admins are allowed to set or update this value.",
+            "type": "array",
+            "default": [],
+            "permission": "import_items",
+            "items": {
+                "title": "Alternate Accession",
+                "description": "An accession previously assigned to an object that has been merged with this object.",
+                "comment": "Only accessions of objects that have status equal replaced will work here.",
+                "type": "string",
+                "format": "accession"
+            }
+        }
+    },
+    "aliases": {
+        "aliases": {
+            "title": "Aliases",
+            "description": "Lab specific identifiers to reference an object.",
+            "comment": "The purpose of this field is to provide a link into the lab LIMS and to facilitate shared objects.",
+            "type": "array",
+            "default": [],
+            "uniqueItems": true,
+            "items": {
+                "uniqueKey": "alias",
+                "title": "Lab alias",
+                "description": "A lab specific identifier to reference an object.",
+                "comment": "Current convention is colon separated lab name and lab identifier. (e.g. john-doe:42).",
+                "type":  "string",
+                "pattern": "^(?:j-michael-cherry):[a-zA-Z\\d_$.+!*,()'-]+(?:\\s[a-zA-Z\\d_$.+!*,()'-]+)*$"
+            }
+        }
+    },
+    "accessioned_status": {
+        "status": {
+            "title": "Status",
+            "type": "string",
+            "permission": "import_items",
+            "default": "in progress",
+            "description": "The status of the metadata object.",
+            "comment": "Do not submit.  This is set by admins along the process of metadata submission.",
+            "enum": [
+                "in progress",
+                "released",
+                "deleted",
+                "replaced",
+                "revoked"
+            ]
+        }
+    },
+    "standard_status": {
+        "status": {
+            "title": "Status",
+            "type": "string",
+            "default": "in progress",
+            "permission": "import_items",
+            "enum" : [
+                "deleted",
+                "in progress",
+                "released"
+            ]
+        }
+    },
+    "shared_status": {
+        "status": {
+            "title": "Status",
+            "type": "string",
+            "default": "current",
+            "enum" : [
+                "current",
+                "deleted",
+                "disabled"
+            ]
+        }
+    },
+    "submitted": {
+        "date_created": {
+            "rdfs:subPropertyOf": "dc:created",
+            "title": "Date created",
+            "description": "The date the object was created.",
+            "comment": "Do not submit. The date the object is created is assigned by the server.",
+            "type": "string",
+            "anyOf": [
+                {"format": "date-time"},
+                {"format": "date"}
+            ],
+            "serverDefault": "now",
+            "permission": "import_items"
+        },
+        "submitted_by": {
+            "rdfs:subPropertyOf": "dc:creator",
+            "title": "Submitted by",
+            "comment": "Do not submit. The user that created the object is assigned by the server.",
+            "type": "string",
+            "linkTo": "User",
+            "serverDefault": "userid",
+            "permission": "import_items"
+        }
+    },
+    "attachment": {
+        "attachment": {
+            "title": "Attachment",
+            "type": "object",
+            "additionalProperties": false,
+            "formInput": "file",
+            "attachment": true,
+            "properties": {
+                "download": {
+                    "title": "File Name",
+                    "type": "string"
+                },
+                "href": {
+                    "comment": "Internal webapp URL for document file",
+                    "type": "string"
+                },
+                "type": {
+                    "title": "MIME type",
+                    "type": "string",
+                    "enum": [
+                        "application/json",
+                        "application/pdf",
+                        "image/gif",
+                        "image/jpeg",
+                        "image/png",
+                        "image/svs",
+                        "image/tiff",
+                        "text/autosql",
+                        "text/html",
+                        "text/plain",
+                        "text/tab-separated-values"
+                    ]
+                },
+                "md5sum": {
+                    "title": "MD5sum",
+                    "type": "string",
+                    "format": "md5sum"
+                },
+                "size": {
+                    "title": "File size",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "width": {
+                    "title": "Image width",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "height": {
+                    "title": "Image height",
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        }
+    },
+    "submitter_comment": {
+        "submitter_comment": {
+            "title": "Submitter comment",
+            "description": "Additional information specified by the submitter to be displayed as a comment on the portal.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "formInput": "textarea"
+        }
+    },
+    "reviewer_comment": {
+        "reviewer_comment": {
+            "title": "Reviewer comment",
+            "description": "Comments from the reviewer to justify the assigned review status of a characterization.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "permission": "import_items",
+            "formInput": "textarea"
+        }
+    },
+    "url": {
+        "url": {
+            "@type": "@id",
+            "rdfs:subPropertyOf": "rdfs:seeAlso",
+            "title": "URL",
+            "description": "An external resource with additional information.",
+            "type": "string",
+            "format": "uri"
+        }
+    },
+    "documents": {
+        "documents": {
+            "title": "Documents",
+            "description": "Documents that provide additional information (not data file).",
+            "type": "array",
+            "default": [],
+            "uniqueItems": true,
+            "items": {
+                "title": "Document",
+                "description": "A document that provides additional information (not data file).",
+                "type": "string",
+                "comment": "See document.json for available identifiers.",
+                "linkTo": "Document"
+            }
+        }
+    }
+}
