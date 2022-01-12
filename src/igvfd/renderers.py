@@ -41,6 +41,7 @@ def includeme(config):
         '.renderers.normalize_cookie_tween_factory',
         under='.renderers.fix_request_method_tween_factory')
 
+    '''
     renderer_tween = (
         '.renderers.debug_page_or_json'
         if config.registry.settings['pyramid.reload_templates']
@@ -55,7 +56,11 @@ def includeme(config):
         '.renderers.set_x_request_url_tween_factory',
         under=renderer_tween,
     )
-
+    '''
+    config.add_tween(
+        '.renderers.set_x_request_url_tween_factory',
+        under='.renderers.normalize_cookie_tween_factory',
+    )
     config.add_tween('.renderers.security_tween_factory', under=EXCVIEW)
     config.scan(__name__)
 
@@ -270,6 +275,7 @@ def reload_process(process):
 node_env = os.environ.copy()
 node_env['NODE_PATH'] = ''
 
+'''
 page_or_json = SubprocessTween(
     should_transform=should_transform,
     after_transform=after_transform,
@@ -286,3 +292,4 @@ debug_page_or_json = SubprocessTween(
     args=['node', resource_filename(__name__, 'static/server.js')],
     env=node_env,
 )
+'''

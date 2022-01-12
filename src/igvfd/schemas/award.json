@@ -53,7 +53,7 @@
                         "description": "OBI (Ontology for Biomedical Investigations) ontology term for the assay.",
                         "type": "string",
                         "enum": [
-                            "DNase-seq",
+                            "DNase-seq"
                         ]
                     },
                     "proposed_count": {

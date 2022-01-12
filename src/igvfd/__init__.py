@@ -227,13 +227,9 @@ def main(global_config, **local_config):
     config.include(changelogs)
 
     if asbool(settings.get('testing', False)):
-        config.include('.tests.testing_views')
+        #config.include('.tests.testing_views')
+        pass
 
-    # Load upgrades last so that all views (including testing views) are
-    # registered.
-    config.include('.upgrade')
-    config.include('.audit')
-    config.include('.searches.configs')
 
 
     app = config.make_wsgi_app()
