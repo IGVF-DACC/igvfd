@@ -1,7 +1,7 @@
 __version__ = '0.0.1'
 
 
-import encoded.schema_formats # needed to import before snovault to add FormatCheckers
+import igvfd.schema_formats # needed to import before snovault to add FormatCheckers
 import base64
 import codecs
 import copy
