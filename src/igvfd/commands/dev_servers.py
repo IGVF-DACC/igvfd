@@ -113,7 +113,6 @@ def main():
 
     if args.init:
         app = get_app(args.config_uri, args.app_name)
-        create_mapping.run(app)
 
     if args.load:
         from pyramid.path import DottedNameResolver
