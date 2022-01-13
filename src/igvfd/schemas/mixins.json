@@ -134,6 +134,23 @@
             "permission": "import_items"
         }
     },
+    "attribution": {
+        "lab": {
+            "title": "Lab",
+            "description": "Lab associated with the submission.",
+            "comment": "Required. See lab.json for list of available identifiers.",
+            "type": "string",
+            "linkTo": "Lab",
+            "linkSubmitsFor": true
+        },
+        "award": {
+            "title": "Award",
+            "description": "Grant associated with the submission.",
+            "comment": "Required. See award.json for list of available identifiers.",
+            "type": "string",
+            "linkTo": "Award"
+        }
+    },
     "attachment": {
         "attachment": {
             "title": "Attachment",
