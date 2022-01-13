@@ -207,6 +207,17 @@
             }
         }
     },
+    "notes": {
+        "notes": {
+            "title": "Notes",
+            "description": "DCC internal notes.",
+            "comment": "Do not submit. A place for the DCC to keep information that does not have a place in the schema.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "permission": "import_items",
+            "formInput": "textarea"
+        }
+    },
     "submitter_comment": {
         "submitter_comment": {
             "title": "Submitter comment",
