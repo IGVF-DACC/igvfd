@@ -6,6 +6,7 @@ For the development.ini you must supply the paster app name:
 from pkg_resources import resource_filename
 from pyramid.paster import get_app, get_appsettings
 from multiprocessing import Process, set_start_method
+from pathlib import Path
 
 import atexit
 import logging
@@ -36,7 +37,7 @@ def print_to_terminal(stdout):
 def nginx_server_process(prefix='', echo=False):
     args = [
         os.path.join(prefix, 'nginx'),
-        '-c', resource_filename('snovault', 'nginx-dev.conf'),
+        '-c', f'{Path().absolute()}/config/nginx/local.conf',
         '-g', 'daemon off; pid /dev/null;'
     ]
     process = subprocess.Popen(
@@ -61,15 +62,23 @@ def main():
         description="Run development servers", epilog=EPILOG,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
-    parser.add_argument('--app-name', help="Pyramid app name in configfile")
-    parser.add_argument('config_uri', help="path to configfile")
+    parser.add_argument(
+        '--app-name',
+        default='app',
+        help='Pyramid app name in configfile',
+    )
+    parser.add_argument(
+        '--config-uri',
+        default=f'{Path().absolute()}/config/pyramid/ini/development.ini',
+        help='path to configfile',
+    )
     parser.add_argument('--clear', action="store_true", help="Clear existing data")
     parser.add_argument('--init', action="store_true", help="Init database")
     parser.add_argument('--load', action="store_true", help="Load test set")
-    parser.add_argument('--datadir', default='/tmp/snovault', help="path to datadir")
+    parser.add_argument('--datadir', default='/tmp/igvfd', help="path to datadir")
     args = parser.parse_args()
 
-    appsettings = get_appsettings(args.config_uri, name='app')
+    appsettings = get_appsettings(args.config_uri, name=args.app_name)
     # Required settings in config
     local_storage_host = appsettings['local_storage_host']
     local_storage_port = appsettings['local_storage_port']
@@ -77,9 +86,9 @@ def main():
 
     logging.basicConfig()
     # Loading app will have configured from config file. Reconfigure here:
-    logging.getLogger('snovault').setLevel(logging.INFO)
+    logging.getLogger('igvfd').setLevel(logging.INFO)
 
-    from snovault.tests import  postgresql_fixture
+    from snovault.tests import postgresql_fixture
     datadir = os.path.abspath(args.datadir)
     pgdata = os.path.join(datadir, 'pgdata')
 
@@ -116,7 +125,7 @@ def main():
 
     if args.load:
         from pyramid.path import DottedNameResolver
-        load_test_data = app.registry.settings.get('snovault.load_test_data')
+        load_test_data = app.registry.settings.get('igvfd.load_test_data')
         load_test_data = DottedNameResolver().resolve(load_test_data)
         load_test_data(app)
 
