@@ -16,7 +16,6 @@ ORDER = [
     'user',
     'award',
     'lab',
-    'organism',
     'document',
     'image',
     'page',

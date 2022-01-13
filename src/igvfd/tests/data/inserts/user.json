@@ -1,0 +1,347 @@
+[
+    {
+        "email": "khzlin@stanford.edu",
+        "first_name":"Khine",
+        "last_name":"Lin",
+        "lab": "/labs/j-michael-cherry/",
+        "status": "current",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "uuid": "6667a92a-d202-493a-8c7d-7a56d1380356"
+    },
+    {
+        "email": "massa.porta@varius.mauris",
+        "first_name": "J. Michael",
+        "job_title": "PI",
+        "lab": "J. Michael Cherry, Stanford",
+        "last_name": "Cherry",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "J. Michael Cherry, Stanford"
+        ],
+        "uuid": "860c4750-8d3c-40f5-8f2c-90c5e5d19e88"
+    },
+    {
+        "email": "crickets@stanford.edu",
+        "first_name": "Elit",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "J. Michael Cherry, Stanford",
+        "last_name": "Iaculis",
+        "submits_for": [
+            "J. Michael Cherry, Stanford"
+        ],
+        "uuid": "81a6cc12-2847-4e2e-8f2c-f566699eb29e"
+    },
+    {
+        "email": "duis.pede@nonummy.scelerisque",
+        "first_name": "Inceptos",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "J. Michael Cherry, Stanford",
+        "last_name": "Nullam",
+        "submits_for": [
+            "J. Michael Cherry, Stanford"
+        ],
+        "uuid": "3787a0ac-f13a-40fc-a524-69628b04cd59"
+    },
+    {
+        "email": "etchan@stanford.edu",
+        "first_name": "Bibendum",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "J. Michael Cherry, Stanford",
+        "last_name": "Sodales-Luctus",
+        "submits_for": [
+            "J. Michael Cherry, Stanford"
+        ],
+        "uuid": "4c23ec32-c7c8-4ac0-affb-04befcc881d4"
+    },
+    {
+        "email": "ipsum.imperdiet@ipsum.venenatis",
+        "first_name": "Euismod",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Project Manager",
+        "lab": "J. Michael Cherry, Stanford",
+        "last_name": "Platea-Ad",
+        "submits_for": [
+            "J. Michael Cherry, Stanford"
+        ],
+        "uuid": "ce2bde01-07ec-4b8a-b179-554ef95b71dd"
+    },
+    {
+    {
+        "email": "orci.porta@morbi.eu",
+        "first_name": "Parturient",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Engineer",
+        "lab": "J. Michael Cherry, Stanford",
+        "last_name": "Urna",
+        "submits_for": [
+            "J. Michael Cherry, Stanford"
+        ],
+        "uuid": "95f5b53d-d206-4ec3-97ba-7c2abd84aab5"
+    },
+    {
+        "email": "justo.tincidunt@risus.pede",
+        "first_name": "Justo",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Group Leader, Software",
+        "lab": "J. Michael Cherry, Stanford",
+        "last_name": "Lobortis",
+        "submits_for": [
+            "J. Michael Cherry, Stanford"
+        ],
+        "uuid": "8be3a346-1440-4bd6-85e8-3236ae469c0c"
+    },
+    {
+        "email": "lrowe@stanford.edu",
+        "first_name": "Faucibus",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Senior software engineer",
+        "lab": "J. Michael Cherry, Stanford",
+        "last_name": "Hac",
+        "submits_for": [
+            "J. Michael Cherry, Stanford"
+        ],
+        "uuid": "1ec85168-059e-407e-9cb1-f96200e72499"
+    },
+    {
+        "email": "dictumst.dui@a.dis",
+        "first_name": "Maecenas",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Senior software engineer",
+        "lab": "J. Michael Cherry, Stanford",
+        "last_name": "Montes",
+        "submits_for": [
+            "J. Michael Cherry, Stanford"
+        ],
+        "uuid": "9b52a07a-e46f-4b74-bbe3-e5fd45b768e0"
+    },
+    {
+        "email": "fytanaka@stanford.edu",
+        "first_name": "Forrest",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Engineer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Tanaka",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "627eedbc-7cb3-4de3-9743-a86266e435a6"
+    },
+    {
+        "email": "gabdank@stanford.edu",
+        "first_name": "Idan",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Gabdank",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "98fb23d3-0d79-4c3d-981d-01539e6589f1"
+    },
+    {
+        "email": "hitz@stanford.edu",
+        "first_name": "Ben",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Engineer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Hitz",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "986b362f-4eb6-4a9c-8173-3ab267307e3b"
+    }, 
+    {
+        "email": "ksgraham@stanford.edu",
+        "first_name": "Keenan",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Engineer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Graham",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "7e95dcd6-9c35-4082-9c53-09d14c5752be"
+    },
+    {
+        "email": "paulsud@stanford.edu",
+        "first_name": "Paul",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Engineer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Sud",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "viewing_groups": [
+            "community",
+            "ENCODE3",
+            "ENCODE4",
+            "GGR",
+            "REMC",
+            "ENCORE"
+        ],
+        "uuid": "473a72c0-6f20-4f81-9093-198e92fee470"
+    },
+    {
+        "email": "emmao@stanford.edu",
+        "first_name": "Emma",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Developer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "O'Neill",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "viewing_groups": [
+            "ENCODE3",
+            "REMC",
+            "GGR",
+            "ENCODE4",
+            "community"
+        ],
+        "uuid": "af989110-67d2-4c8b-87f0-38d9d6d31868"
+    },
+    {
+        "email": "jjou@stanford.edu",
+        "first_name": "Jennifer",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Associate Data Wrangler",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Jou",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "viewing_groups": [
+            "community",
+            "ENCODE3",
+            "ENCODE4",
+            "GGR",
+            "REMC",
+            "ENCORE"
+        ],
+        "uuid": "43f2f757-5cbf-490a-9787-a1ee85a4cdcd"
+    },
+    {
+        "email": "mkagda@stanford.edu",
+        "first_name": "Meenakshi",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Kagda",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "viewing_groups": [
+            "community",
+            "ENCODE3",
+            "ENCODE4",
+            "GGR",
+            "REMC",
+            "ENCORE"
+        ],
+        "uuid": "6bae687f-b77a-46b9-af0e-a02c135cf42e"
+    },
+    {
+        "email": "iay@stanford.edu",
+        "first_name": "Ingrid",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Youngworth",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "viewing_groups": [
+            "community",
+            "ENCODE3",
+            "ENCODE4",
+            "GGR",
+            "REMC",
+            "ENCORE"
+        ],
+        "uuid": "85c75ed3-269b-4273-b4ba-e269ee350dd6"
+    },
+    {
+        "email": "mingjiel@stanford.edu",
+        "first_name": "Mingjie",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Engineer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Li",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "6674945a-27a2-422a-92f5-d30a0a6aea20"
+    }
+]
