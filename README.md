@@ -2,7 +2,7 @@
 Metadata database for IGVF project.
 
 ## Run locally on Mac
-1. Install Python and Postgres.
+1. Install NGINX, Python, and Postgres.
 2. Clone repository and activate new virtual environment.
 3. Install `igvfd` from repository:
 ```
