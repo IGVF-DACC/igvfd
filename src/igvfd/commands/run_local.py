@@ -75,6 +75,7 @@ def main():
     parser.add_argument('--clear', action="store_true", help="Clear existing data")
     parser.add_argument('--init', action="store_true", help="Init database")
     parser.add_argument('--load', action="store_true", help="Load test set")
+    parser.add_argument('--docker', action="store_true", help="Load test set")
     parser.add_argument('--datadir', default='/tmp/igvfd', help="path to datadir")
     args = parser.parse_args()
 
@@ -99,11 +100,12 @@ def main():
     if args.init:
         postgresql_fixture.initdb(pgdata, echo=True)
 
-    postgres = postgresql_fixture.server_process(pgdata, echo=True)
-    nginx = nginx_server_process(echo=True)
-    processes = [postgres, nginx]
-
+    processes = []
     print_processes = []
+    if not args.docker:
+        postgres = postgresql_fixture.server_process(pgdata, echo=True)
+        nginx = nginx_server_process(echo=True)
+        processes = [postgres, nginx]
 
     @atexit.register
     def cleanup_process():
