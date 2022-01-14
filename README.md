@@ -7,6 +7,7 @@ Prerequisites:
 * Python
 * Postgres
 
+
 1. Clone repository and activate new virtual environment
 2. Install `igvfd` with `$ pip install -e .`
 3. Run `nginx` and `postgres` and load test data:
