@@ -15,4 +15,4 @@ $ run-local --clear --init --load
 # In separate terminal (with virtual environment) serve Pyramid application.
 $ pserve config/pyramid/ini/development.ini
 ```
-5. Browse at `localhost:8000`
+5. Browse at `localhost:8000`.
