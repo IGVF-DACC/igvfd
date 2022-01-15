@@ -1,14 +1,14 @@
 # igvfD
 Metadata database for IGVF project.
 
-## Run with Docker Compose
+## Run with Docker Compose (recommended)
 1. Clone repository and make sure Docker is running.
 2. Start services and load data inserts:
 ```
 # From repository.
 $ docker compose up
 ```
-3. Browse at `localhost:8000`
+3. Browse at `localhost:8000`.
 4. Stop services and remove data volume:
 ```
 $ docker compose down -v
