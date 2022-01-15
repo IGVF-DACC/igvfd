@@ -69,7 +69,7 @@ def main():
     )
     parser.add_argument(
         '--config-uri',
-        default=f'{Path().absolute()}/config/pyramid/ini/development.ini',
+        default=f'{Path().absolute()}/config/pyramid/ini/local.ini',
         help='path to configfile',
     )
     parser.add_argument('--clear', action="store_true", help="Clear existing data")
