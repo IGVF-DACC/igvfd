@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+
+  postgres:
+    build:
+      context: ./config/docker_compose/postgres/
+    image: igvfd-postgres
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    expose:
+      - "5432"
+
+  loader:
+    build:
+      context: .
+      dockerfile: ./config/docker_compose/pyramid/Dockerfile
+    image: igvfd-pyramid
+    command: run-docker
+    depends_on:
+      - postgres
+
+  pyramid:
+    build:
+      context: .
+      dockerfile: ./config/docker_compose/pyramid/Dockerfile
+    image: igvfd-pyramid
+    volumes:
+      - ".:/igvfd:cached"
+    command: pserve ./config/pyramid/ini/docker.ini --reload
+    ports:
+      - "6543:6543"
+    depends_on:
+      - loader
+
+  nginx:
+    image: nginx:1.21.4
+    volumes:
+      - "./config/nginx/docker.conf:/etc/nginx/nginx.conf:delegated"
+    command: nginx -c /etc/nginx/nginx.conf -g 'daemon off; pid /dev/null;'
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pyramid

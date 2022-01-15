@@ -3,7 +3,6 @@ Examples
 For the development.ini you must supply the paster app name:
     %(prog)s development.ini --app-name app --init --clear
 """
-from pkg_resources import resource_filename
 from pyramid.paster import get_app, get_appsettings
 from multiprocessing import Process, set_start_method
 from pathlib import Path
@@ -14,7 +13,6 @@ import os.path
 import select
 import shutil
 import sys
-import pdb
 import subprocess
 import time
 
@@ -33,6 +31,7 @@ def print_to_terminal(stdout):
                 printed = True
         if not printed:
             time.sleep(0.1)
+
 
 def nginx_server_process(prefix='', echo=False):
     args = [
@@ -54,6 +53,7 @@ def nginx_server_process(prefix='', echo=False):
         print('Started: http://localhost:8000')
 
     return process
+
 
 def main():
     set_start_method("fork")
@@ -77,12 +77,6 @@ def main():
     parser.add_argument('--load', action="store_true", help="Load test set")
     parser.add_argument('--datadir', default='/tmp/igvfd', help="path to datadir")
     args = parser.parse_args()
-
-    appsettings = get_appsettings(args.config_uri, name=args.app_name)
-    # Required settings in config
-    local_storage_host = appsettings['local_storage_host']
-    local_storage_port = appsettings['local_storage_port']
-    local_storage_timeout = appsettings['local_storage_timeout']
 
     logging.basicConfig()
     # Loading app will have configured from config file. Reconfigure here:
@@ -124,9 +118,7 @@ def main():
         app = get_app(args.config_uri, args.app_name)
 
     if args.load:
-        from pyramid.path import DottedNameResolver
-        load_test_data = app.registry.settings.get('igvfd.load_test_data')
-        load_test_data = DottedNameResolver().resolve(load_test_data)
+        from igvfd.loadxl import load_test_data
         load_test_data(app)
 
     print('Started. ^C to exit.')

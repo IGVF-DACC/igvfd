@@ -13,6 +13,6 @@ $ pip install -e .
 # Start NGINX and Postgres and load data inserts.
 $ run-local --clear --init --load
 # In separate terminal (with virtual environment) serve Pyramid application.
-$ pserve config/pyramid/ini/development.ini
+$ pserve config/pyramid/ini/local.ini
 ```
 5. Browse at `localhost:8000`.
