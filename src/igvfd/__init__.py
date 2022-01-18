@@ -22,10 +22,6 @@ from pyramid.settings import (
 )
 from sqlalchemy import engine_from_config
 from webob.cookies import JSONSerializer
-from snovault.elasticsearch import (
-    PyramidJSONSerializer,
-    TimedUrllib3HttpConnection,
-)
 from snovault.json_renderer import json_renderer
 
 
@@ -201,8 +197,6 @@ def main(global_config, **local_config):
     settings['snovault.jsonld.terms_prefix'] = 'igvf'
 
     config = Configurator(settings=settings)
-    from snovault.elasticsearch import APP_FACTORY
-    config.registry[APP_FACTORY] = main  # used by mp_indexer
     config.include(app_version)
 
     config.include('pyramid_multiauth')  # must be before calling set_authorization_policy
@@ -227,10 +221,7 @@ def main(global_config, **local_config):
     config.include(changelogs)
 
     if asbool(settings.get('testing', False)):
-        #config.include('.tests.testing_views')
-        pass
-
-
+        config.include('.tests.testing_views')
 
     app = config.make_wsgi_app()
 
