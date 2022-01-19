@@ -225,12 +225,4 @@ def main(global_config, **local_config):
 
     app = config.make_wsgi_app()
 
-    workbook_filename = settings.get('load_workbook', '')
-    load_test_only = asbool(settings.get('load_test_only', False))
-    docsdir = settings.get('load_docsdir', None)
-    if docsdir is not None:
-        docsdir = [path.strip() for path in docsdir.strip().split('\n')]
-    if workbook_filename:
-        load_workbook(app, workbook_filename, docsdir, test=load_test_only)
-
     return app
