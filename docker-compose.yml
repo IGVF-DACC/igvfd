@@ -18,6 +18,7 @@ services:
     image: igvfd-pyramid
     volumes:
       - ".:/igvfd:cached"
+      - "/igvfd/src/igvfd.egg-info"
     command: run-docker
     depends_on:
       - postgres
@@ -29,6 +30,7 @@ services:
     image: igvfd-pyramid
     volumes:
       - ".:/igvfd:cached"
+      - "/igvfd/src/igvfd.egg-info"
     command: pserve ./config/pyramid/ini/docker.ini --reload
     ports:
       - "6543:6543"
