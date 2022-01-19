@@ -16,6 +16,8 @@ services:
       context: .
       dockerfile: ./config/docker_compose/pyramid/Dockerfile
     image: igvfd-pyramid
+    volumes:
+      - ".:/igvfd:cached"
     command: run-docker
     depends_on:
       - postgres
