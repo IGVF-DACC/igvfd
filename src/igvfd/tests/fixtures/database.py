@@ -2,13 +2,36 @@ import pytest
 
 
 @pytest.fixture(scope='session')
-def engine_url(app_settings):
-    return 'postgresql://postgres@localhost:5432'#app_settings['sqlalchemy.url']
+def engine_url(request):
+    # Ideally this would use a different database on the same postgres server
+    from urllib.parse import quote
+    from snovault.tests.postgresql_fixture import initdb, server_process
+    tmpdir = request.config._tmpdirhandler.mktemp('postgresql-engine', numbered=True)
+    tmpdir = str(tmpdir)
+    initdb(tmpdir)
+    process = server_process(tmpdir)
+
+    yield 'postgresql://postgres@:5432/postgres?host=%s' % quote(tmpdir)
+
+    if process.poll() is None:
+        process.terminate()
+        process.wait()
 
 
 @pytest.fixture(scope='session')
-def postgresql_server(engine_url):
-    return engine_url
+def postgresql_server(request):
+    from urllib.parse import quote
+    from snovault.tests.postgresql_fixture import initdb, server_process
+    tmpdir = request.config._tmpdirhandler.mktemp('postgresql', numbered=True)
+    tmpdir = str(tmpdir)
+    initdb(tmpdir)
+    process = server_process(tmpdir)
+
+    yield 'postgresql://postgres@:5432/postgres?host=%s' % quote(tmpdir)
+
+    if process.poll() is None:
+        process.terminate()
+        process.wait()
 
 
 # http://docs.sqlalchemy.org/en/rel_0_8/orm/session.html#joining-a-session-into-an-external-transaction
@@ -279,7 +302,6 @@ def wsgi_server(request, wsgi_server_app, wsgi_server_host_port):
         clear_untrusted_proxy_headers=False,
     )
     assert server.wait()
-    print("wsgi server port {}".format(port))
 
     yield 'http://%s:%s' % wsgi_server_host_port
 

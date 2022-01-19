@@ -1,9 +1,12 @@
 import os
 import pytest
 import pkg_resources
+import tempfile
 
 from pyramid.paster import get_appsettings
 
+
+tempfile.tempdir = '/tmp'
 
 pytest_plugins = [
     'igvfd.tests.fixtures.database',
@@ -26,19 +29,21 @@ def autouse_external_tx(external_tx):
 
 
 @pytest.fixture(scope='session')
-def app_settings(ini_file):
-    return get_appsettings(ini_file, name='app')
+def app_settings(ini_file, DBSession):
+    from snovault import DBSESSION
+    settings = get_appsettings(ini_file, name='app')
+    settings[DBSESSION] = DBSession
+    return settings
 
 
 @pytest.fixture(scope='session')
 def app(app_settings):
     from igvfd import main
-    settings = app_settings.copy()
     return main({}, **app_settings)
 
 
 @pytest.fixture(scope='session')
-def workbook(app, app_settings, conn):
+def workbook(conn, app, app_settings):
     tx = conn.begin_nested()
     try:
         from igvfd.loadxl import load_test_data
