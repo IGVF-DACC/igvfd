@@ -24,12 +24,6 @@ def test_unique_key(testapp, content, item):
     assert res.json['name'] == item['name']
 
 
-def test_something(testapp, workbook):
-    r = testapp.get('/access-keys/')
-    print(r.json)
-    assert True
-
-
 def test_keys_bad_items(testapp, content):
     url = '/testing-keys/'
     for item in bad_items:

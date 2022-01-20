@@ -5,10 +5,10 @@ import pytest
 def engine_url(request, ini_file):
     in_docker = ini_file.get('in_docker')
     if in_docker:
-        print('Use Docker postgres')
+        print('Use Docker Postgres')
         yield ini_file.get('sqlalchemy.url')
     else:
-        print('Use local postgres')
+        print('Use local Postgres')
         from urllib.parse import quote
         from snovault.tests.postgresql_fixture import initdb, server_process
         tmpdir = request.config._tmpdirhandler.mktemp('postgresql-engine', numbered=True)
