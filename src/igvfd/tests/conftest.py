@@ -18,9 +18,10 @@ pytest_plugins = [
 
 @pytest.fixture(scope='session')
 def ini_file(request):
-    return os.path.abspath(
+    path = os.path.abspath(
         request.config.option.ini or 'config/pyramid/ini/testing.ini'
     )
+    return get_appsettings(path, name='app')
 
 
 @pytest.fixture(autouse=True)
@@ -31,9 +32,8 @@ def autouse_external_tx(external_tx):
 @pytest.fixture(scope='session')
 def app_settings(ini_file, DBSession):
     from snovault import DBSESSION
-    settings = get_appsettings(ini_file, name='app')
-    settings[DBSESSION] = DBSession
-    return settings
+    ini_file[DBSESSION] = DBSession
+    return ini_file
 
 
 @pytest.fixture(scope='session')

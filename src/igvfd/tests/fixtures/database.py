@@ -2,36 +2,25 @@ import pytest
 
 
 @pytest.fixture(scope='session')
-def engine_url(request):
-    # Ideally this would use a different database on the same postgres server
-    from urllib.parse import quote
-    from snovault.tests.postgresql_fixture import initdb, server_process
-    tmpdir = request.config._tmpdirhandler.mktemp('postgresql-engine', numbered=True)
-    tmpdir = str(tmpdir)
-    initdb(tmpdir)
-    process = server_process(tmpdir)
+def engine_url(request, ini_file):
+    in_docker = ini_file.get('in_docker')
+    if in_docker:
+        print('Use Docker postgres')
+        yield ini_file.get('sqlalchemy.url')
+    else:
+        print('Use local postgres')
+        from urllib.parse import quote
+        from snovault.tests.postgresql_fixture import initdb, server_process
+        tmpdir = request.config._tmpdirhandler.mktemp('postgresql-engine', numbered=True)
+        tmpdir = str(tmpdir)
+        initdb(tmpdir)
+        process = server_process(tmpdir)
 
-    yield 'postgresql://postgres@:5432/postgres?host=%s' % quote(tmpdir)
+        yield 'postgresql://postgres@:5432/postgres?host=%s' % quote(tmpdir)
 
-    if process.poll() is None:
-        process.terminate()
-        process.wait()
-
-
-@pytest.fixture(scope='session')
-def postgresql_server(request):
-    from urllib.parse import quote
-    from snovault.tests.postgresql_fixture import initdb, server_process
-    tmpdir = request.config._tmpdirhandler.mktemp('postgresql', numbered=True)
-    tmpdir = str(tmpdir)
-    initdb(tmpdir)
-    process = server_process(tmpdir)
-
-    yield 'postgresql://postgres@:5432/postgres?host=%s' % quote(tmpdir)
-
-    if process.poll() is None:
-        process.terminate()
-        process.wait()
+        if process.poll() is None:
+            process.terminate()
+            process.wait()
 
 
 # http://docs.sqlalchemy.org/en/rel_0_8/orm/session.html#joining-a-session-into-an-external-transaction
