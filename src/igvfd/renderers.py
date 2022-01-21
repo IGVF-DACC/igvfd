@@ -40,14 +40,11 @@ def includeme(config):
     config.add_tween(
         '.renderers.normalize_cookie_tween_factory',
         under='.renderers.fix_request_method_tween_factory')
-
-    '''
     renderer_tween = (
         '.renderers.debug_page_or_json'
         if config.registry.settings['pyramid.reload_templates']
         else '.renderers.page_or_json'
     )
-
     config.add_tween(
         renderer_tween,
         under='.renderers.normalize_cookie_tween_factory')
@@ -55,11 +52,6 @@ def includeme(config):
     config.add_tween(
         '.renderers.set_x_request_url_tween_factory',
         under=renderer_tween,
-    )
-    '''
-    config.add_tween(
-        '.renderers.set_x_request_url_tween_factory',
-        under='.renderers.normalize_cookie_tween_factory',
     )
     config.add_tween('.renderers.security_tween_factory', under=EXCVIEW)
     config.scan(__name__)
@@ -182,7 +174,7 @@ def canonical_redirect(event):
         return
     if request.response.status_int != 200:
         return
-    if not request.environ.get('encoded.canonical_redirect', True):
+    if not request.environ.get('igvfd.canonical_redirect', True):
         return
     if request.path_info == '/':
         return
@@ -245,6 +237,9 @@ def should_transform(request, response):
     if format == 'json':
         return False
 
+    # Always return False.
+    return False
+
     request._transform_start = time.time()
     return True
 
@@ -275,7 +270,7 @@ def reload_process(process):
 node_env = os.environ.copy()
 node_env['NODE_PATH'] = ''
 
-'''
+
 page_or_json = SubprocessTween(
     should_transform=should_transform,
     after_transform=after_transform,
@@ -292,4 +287,3 @@ debug_page_or_json = SubprocessTween(
     args=['node', resource_filename(__name__, 'static/server.js')],
     env=node_env,
 )
-'''

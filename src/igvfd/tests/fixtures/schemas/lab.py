@@ -31,6 +31,6 @@ def lab_1_0(lab_0_0):
 def lab(testapp):
     item = {
         'name': 'igvf-lab',
-        'title': 'IGVFx lab',
+        'title': 'IGVF lab',
     }
     return testapp.post_json('/lab', item).json['@graph'][0]
