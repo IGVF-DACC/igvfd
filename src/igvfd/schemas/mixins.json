@@ -25,7 +25,7 @@
     "accession": {
         "accession": {
             "title": "Accession",
-            "description": "A unique identifier to be used to reference the object prefixed with ENC.",
+            "description": "A unique identifier to be used to reference the object prefixed with IGVF.",
             "comment": "Do not submit. The accession is assigned by the server.",
             "type": "string",
             "format": "accession",
