@@ -8,7 +8,7 @@ ENV VIRTUAL_ENV=/opt/venv
 
 RUN apt-get update
 
-RUN apt-get install -y make git curl
+RUN apt-get install -y make git curl graphviz
 
 RUN python -m venv $VIRTUAL_ENV
 

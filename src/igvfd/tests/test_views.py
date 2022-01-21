@@ -60,7 +60,6 @@ def test_html_collections(workbook, htmltestapp, item_type):
     res = htmltestapp.get('/' + item_type).follow(status=200)
 
 
-@pytest.mark.slow
 @pytest.mark.parametrize('item_type', TYPE_LENGTH)
 def test_html_pages(workbook, testapp, htmltestapp, item_type):
     res = testapp.get('/%s?limit=all' % item_type).follow(status=200)
@@ -68,7 +67,6 @@ def test_html_pages(workbook, testapp, htmltestapp, item_type):
         res = htmltestapp.get(item['@id'])
 
 
-@pytest.mark.slow
 @pytest.mark.parametrize('item_type', [k for k in TYPE_LENGTH if k != 'user'])
 def test_html_server_pages(workbook, item_type, wsgi_server):
     from webtest import TestApp
@@ -100,7 +98,6 @@ def test_json_basic_auth(anonhtmltestapp):
     assert res.content_type == 'application/json'
 
 
-@pytest.mark.slow
 @pytest.mark.parametrize(('item_type', 'length'), TYPE_LENGTH.items())
 def test_load_workbook(workbook, testapp, item_type, length):
     # testdata must come before testapp in the funcargs list for their
@@ -109,7 +106,6 @@ def test_load_workbook(workbook, testapp, item_type, length):
     assert len(res.json['@graph']) == length
 
 
-@pytest.mark.slow
 def test_collection_limit(workbook, testapp):
     res = testapp.get('/users/?limit=2', status=200)
     assert len(res.json['@graph']) == 2
@@ -261,7 +257,6 @@ def test_jsonld_term(testapp):
     assert res.json
 
 
-@pytest.mark.slow
 @pytest.mark.parametrize('item_type', TYPE_LENGTH)
 def test_index_data_workbook(workbook, testapp, indexer_testapp, item_type):
     res = testapp.get('/%s?limit=all' % item_type).follow(status=200)
