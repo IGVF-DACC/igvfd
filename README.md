@@ -1,3 +1,4 @@
+[![CircleCI](https://circleci.com/gh/IGVF-DACC/igvfd/tree/dev.svg?style=svg)](https://circleci.com/gh/IGVF-DACC/igvfd/tree/dev)
 # igvfD
 Metadata database for IGVF project.
 
