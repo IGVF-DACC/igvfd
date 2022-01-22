@@ -22,11 +22,11 @@ jobs:
           command: |
               docker-compose -f docker-compose.test.yml up --exit-code-from pyramid
       - run:
-          name: Move pytest results
-          command: mv .test-results /tmp/test-results
+          name: Move pytest results out of hidden directory
+          command: mv .test-results test-results
       - run:
           name: Upload coverage
           command: |
               docker-compose run --no-deps -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN pyramid coveralls
       - store_test_results:
-          path: /tmp/test-results
+          path: test-results
