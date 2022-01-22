@@ -19,7 +19,7 @@ services:
     volumes:
       - ".:/igvfd:cached"
       - "/igvfd/src/igvfd.egg-info"
-    command: pytest -s
+    command: pytest --cov=igvfd -s
     ports:
       - "6543:6543"
     depends_on:

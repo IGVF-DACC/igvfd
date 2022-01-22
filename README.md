@@ -18,7 +18,7 @@ $ docker compose down -v
 
 Run all tests automatically and clean up:
 ```
-$ docker compose -f docker-compose.test.yml up
+$ docker compose -f docker-compose.test.yml up --exit-code-from pyramid
 ...
 $ docker compose -f docker-compose.test.yml down -v
 ```
