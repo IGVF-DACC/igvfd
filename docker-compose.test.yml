@@ -19,7 +19,7 @@ services:
     volumes:
       - ".:/igvfd:cached"
       - "/igvfd/src/igvfd.egg-info"
-    command: pytest --cov=igvfd -s
+    command: pytest --cov=igvfd -s -o junit_family=legacy --junitxml=./.test-results/junit.xml
     ports:
       - "6543:6543"
     depends_on:
