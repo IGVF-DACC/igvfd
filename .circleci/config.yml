@@ -1,0 +1,22 @@
+version: 2.1
+
+workflows:
+  igvf-tests:
+    jobs:
+      - run-tests
+
+jobs:
+  run-tests:
+    machine:
+      image: ubuntu-2004:202111-02
+      docker_layer_caching: true
+    resource_class: medium
+    steps:
+      - checkout
+      - run:
+          name: Build Docker images
+          command: docker-compose -f docker-compose.test.yml build
+      - run:
+          name: Run tests
+          command: |
+              docker-compose -f docker-compose.test.yml up --exit-code-from pyramid

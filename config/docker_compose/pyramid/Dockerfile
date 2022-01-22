@@ -24,7 +24,7 @@ RUN chmod +x ./entrypoint.sh
 
 WORKDIR /igvfd
 
-COPY setup.cfg pyproject.toml .
+COPY setup.cfg pyproject.toml ./
 
 COPY src/igvfd/__init__.py src/igvfd/__init__.py
 
