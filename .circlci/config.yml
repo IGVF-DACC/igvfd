@@ -1,0 +1,17 @@
+version: 3.3.0
+
+workflows:
+  igvf-tests:
+    jobs:
+      - run-tests
+
+jobs:
+  run-tests:
+    machine:
+      - image: image: ubuntu-2004:202111-02
+    steps:
+      - checkout
+      - run:
+          name: Run tests
+          command: |
+              docker compose -f docker-compose.test.yml up
