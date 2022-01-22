@@ -11,7 +11,7 @@ jobs:
       image: ubuntu-2004:202111-02
       docker_layer_caching: true
     resource_class: medium
-    working_directory: /igvfd
+    working_directory: ~/igvfd
     steps:
       - checkout
       - run:
@@ -24,5 +24,4 @@ jobs:
       - run:
           name: Upload coverage
           command: |
-            pip3 install coveralls
-            coveralls
+	      docker-compose run --no-deps -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN pyramid coveralls
