@@ -8,7 +8,7 @@ workflows:
 jobs:
   run-tests:
     machine:
-      - image: ubuntu-2004:202111-02
+      image: ubuntu-2004:202111-02
     steps:
       - checkout
       - run:
