@@ -26,4 +26,4 @@ jobs:
           command: |
               docker-compose run --no-deps -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN pyramid coveralls
       - store_test_results:
-          path: ~/.test-results
+          path: ~/igvfd/.test-results
