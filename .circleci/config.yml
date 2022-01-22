@@ -22,7 +22,7 @@ jobs:
           command: |
               docker-compose -f docker-compose.test.yml up --exit-code-from pyramid
       - run:
-          name: Move pytest results out of hidden directory
+          name: Move pytest results out of hidden directory for circle
           command: mv .test-results test-results
       - run:
           name: Upload coverage
