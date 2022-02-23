@@ -273,5 +273,21 @@
             "/labs/j-michael-cherry/"
         ],
         "uuid": "6674945a-27a2-422a-92f5-d30a0a6aea20"
+    },
+    {
+        "email": "iwhaling@stanford.edu",
+        "first_name": "Ian",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Whaling",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": ""
     }
 ]
