@@ -1,5 +1,17 @@
 [
     {
+        "email": "khzlindgdgerg@stanford.edu",
+        "first_name":"Khirgrghwrtne",
+        "last_name":"Lirthrhrwn",
+        "lab": "/labs/j-michael-cherry/",
+        "status": "current",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "uuid": "6227a92a-d202-493a-8c7d-7a56d1380356"
+    },
+    {
         "email": "khzlin@stanford.edu",
         "first_name":"Khine",
         "last_name":"Lin",
