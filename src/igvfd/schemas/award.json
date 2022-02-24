@@ -99,10 +99,13 @@
         },
         "pi": {
             "title": "P.I.",
-            "description": "Principle Investigator of the grant.",
+            "description": "Principal Investigator of the grant.",
             "comment": "See user.json for available identifiers.",
-            "type": "string",
-            "linkTo": "User"
+            "type": "array",
+            "items": {
+                "title": "Investigator",
+                "type": "string",
+                "linkTo": "User"
         },
         "rfa": {
             "title": "RFA",
@@ -128,7 +131,7 @@
             "type": "string",
             "enum": [
                 "community",
-		"IGVF"
+                "IGVF"
             ]
         },
         "component": {
@@ -137,12 +140,13 @@
             "type": "string",
             "permission": "import_items",
             "enum": [
-                "functional characterization",
-                "computational analysis",
-                "mapping",
-                "data coordination",
+                "affiliate",
                 "data analysis",
-                "affiliate"
+                "data coordination",
+                "functional characterization",
+                "mapping",
+                "networks",
+                "predictive modeling"
             ]
         }
     },
