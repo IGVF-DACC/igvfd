@@ -48,7 +48,7 @@
         },
         "end_date": {
             "title": "End date",
-             "comment": "Date can be submitted as YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSTZD (TZD is the time zone designator; use Z to express time in UTC or for time expressed in local time add a time zone offset from UTC +HH:MM or -HH:MM).",
+            "comment": "Date can be submitted as YYYY-MM-DD or YYYY-MM-DDTHH:MM:SSTZD (TZD is the time zone designator; use Z to express time in UTC or for time expressed in local time add a time zone offset from UTC +HH:MM or -HH:MM).",
             "type": "string",
             "anyOf": [
                 {"format": "date-time"},
@@ -57,14 +57,16 @@
         },
         "pi": {
             "title": "P.I.",
-            "description": "Principal Investigator of the grant.",
+            "description": "Principal Investigator(s) of the grant.",
             "comment": "See user.json for available identifiers.",
             "type": "array",
             "uniqueItems": true,
             "items": {
                 "title": "Investigator",
+                "description": "User object of the investigator.",
                 "type": "string",
                 "linkTo": "User"
+            }
         },
         "project": {
             "title": "Project",
