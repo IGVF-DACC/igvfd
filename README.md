@@ -3,7 +3,7 @@
 # igvfD
 Metadata database for IGVF project.
 
-## Run with Docker Compose (recommended)
+## Run with Docker Compose
 1. Clone repository and make sure Docker is running.
 2. Start services and load data inserts:
 ```bash
@@ -20,8 +20,7 @@ $ docker compose up --build
 $ docker compose down -v
 ```
 
-## Testing with Docker Compose
-
+## Test with Docker Compose
 Run all tests automatically and clean up:
 ```bash
 $ docker compose -f docker-compose.test.yml up --exit-code-from pyramid
