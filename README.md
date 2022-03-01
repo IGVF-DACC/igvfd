@@ -9,9 +9,9 @@ Metadata database for IGVF project.
 ```bash
 # From repository.
 $ docker compose up
-```
-Note: if any dependencies have changed (e.g. switching between branches that rely on different version of `snovault`) use the `build` flag as well to rebuild the underlying Docker image:
-```bash
+# If any dependencies have changed (e.g. switching between branches that
+# rely on different version of `snovault`) use the `build` flag as well
+# to rebuild the underlying Docker image:
 $ docker compose up --build
 ```
 3. Browse at `localhost:8000`.
