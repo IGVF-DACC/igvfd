@@ -60,6 +60,7 @@
             "description": "Principal Investigator of the grant.",
             "comment": "See user.json for available identifiers.",
             "type": "array",
+            "uniqueItems": true,
             "items": {
                 "title": "Investigator",
                 "type": "string",
