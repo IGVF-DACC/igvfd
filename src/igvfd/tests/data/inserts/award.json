@@ -3,7 +3,7 @@
         "description": "The goals of the IGVF Data Administrative and Coordinating Center (DACC) are to support the IGVF Consortium by defining and establishing a strategy that connects all participants to the project’s science. By creating avenues of access that distribute these data to the greater biological research community, the DACC provides a critical connection between scientific producers and consumers.",
         "end_date": "2026-05-31",
         "name": "HG012012",
-        "pi": "massa.porta@varius.mauris",
+        "pi": ["massa.porta@varius.mauris"],
         "project": "IGVF",
         "component": "data coordination",
         "start_date": "2021-09-01",
