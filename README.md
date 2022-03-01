@@ -35,7 +35,7 @@ Or run tests interactively:
 $ docker compose -f docker-compose.test.yml up postgres
 ```
 2. Connect to testing environment.
-```
+```bash
 # In another terminal (starts interactive container).
 $ docker compose -f docker-compose.test.yml run --service-ports pyramid /bin/bash
 ```
@@ -47,25 +47,4 @@ $ pytest
 4. Stop and clean.
 ```bash
 docker compose down -v
-```
-
-## Run locally on Mac
-1. Install NGINX, Python, and Postgres.
-2. Clone repository and activate new virtual environment.
-3. Install `igvfd` from repository:
-```
-$ pip install -e .
-```bash
-4. Run application:
-```
-# Start NGINX and Postgres and load data inserts.
-$ run-local --clear --init --load
-# In separate terminal (with virtual environment) serve Pyramid application.
-$ pserve config/pyramid/ini/local.ini
-```
-5. Browse at `localhost:8000`.
-
-## Testing locally on Mac
-```bash
-$ pytest --ini config/pyramid/ini/local.ini
 ```
