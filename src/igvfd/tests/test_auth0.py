@@ -4,7 +4,7 @@ import igvfd.auth0 as auth0
 
 from unittest import mock
 from snovault import COLLECTIONS		
-from jsonschema_serialize_fork.exceptions import ValidationError
+from jsonschema.exceptions import ValidationError
 from pyramid.httpexceptions import (
     HTTPBadRequest,
     HTTPInternalServerError,
