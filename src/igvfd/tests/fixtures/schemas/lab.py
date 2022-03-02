@@ -4,7 +4,6 @@ import pytest
 @pytest.fixture
 def other_lab(testapp):
     item = {
-        'title': 'Other lab',
         'name': 'other-lab',
     }
     return testapp.post_json('/lab', item, status=201).json['@graph'][0]
@@ -31,6 +30,5 @@ def lab_1_0(lab_0_0):
 def lab(testapp):
     item = {
         'name': 'igvf-lab',
-        'title': 'IGVF lab',
     }
     return testapp.post_json('/lab', item).json['@graph'][0]
