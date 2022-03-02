@@ -6,7 +6,7 @@ def other_lab(testapp):
     item = {
         'name': 'other-lab',
         'institute_label': 'Stanford',
-        'pi': 'IGVF_submitter@example.org',
+        'pi': submitter['@id'],
     }
     return testapp.post_json('/lab', item, status=201).json['@graph'][0]
 
@@ -16,7 +16,7 @@ def lab_0_0():
     return{
         'name': 'Fake Lab',
         'institute_label': 'Fake Institute',
-        'pi': 'IGVF_submitter@example.org',
+        'pi': submitter['@id'],
     }
 
 
@@ -35,6 +35,6 @@ def lab(testapp):
     item = {
         'name': 'igvf-lab',
         'institute_label': 'Stanford',
-        'pi': 'IGVF_submitter@example.org',
+        'pi': submitter['@id'],
     }
     return testapp.post_json('/lab', item).json['@graph'][0]
