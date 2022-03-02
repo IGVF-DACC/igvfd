@@ -56,63 +56,6 @@
             "type": "string",
             "default": "",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
-        },
-        "institute_name": {
-            "title": "Institute",
-            "description": "The name for the institute the lab is associated with.",
-            "type": "string",
-            "default": "",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
-        },
-        "address1": {
-            "title": "Address line 1",
-            "type": "string",
-            "default": "",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
-        },
-        "address2": {
-            "title": "Address line 2",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
-        },
-        "city": {
-            "title": "City",
-            "type": "string",
-            "default": "",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
-        },
-        "state": {
-            "title": "State/Province/Region",
-            "type": "string",
-            "default": "",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
-        },
-        "country": {
-            "title": "Country",
-            "type": "string",
-            "default": "",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
-        },
-        "postal_code": {
-            "title": "ZIP/Postal code",
-            "type": "string",
-            "default": "",
-            "format": "postal-code",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
-        },
-        "fax": {
-            "title": "Fax",
-            "description":"A fax number for the lab (with country code).",
-            "type": "string",
-            "default": "",
-            "pattern": "^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$|^$"
-        },
-        "phone1": {
-            "title": "Primary phone number",
-            "description": "The lab's primary phone number (with country code).",
-            "type": "string",
-            "default": "",
-            "pattern": "^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$|^$"
         }
     },
     "changelog": "/profiles/changelogs/lab.md"

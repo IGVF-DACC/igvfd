@@ -167,7 +167,6 @@ def test_collection_put(testapp, execute_counter):
     initial = {
         'name': 'lab-a',
         'title': 'The Lab A',
-        'address1': 'xyz'
     }
     item_url = testapp.post_json('/lab', initial).location
 

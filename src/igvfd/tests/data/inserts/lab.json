@@ -1,20 +1,11 @@
 [
     {
-        "address1": "Department of Genetics",
-        "address2": "300 Pasteur Drive; MC5120",
         "awards": [
 	    "HG012012"
 	],
-        "city": "Stanford",
-        "country": "USA",
-        "fax": "000-000-0000",
         "institute_label": "Stanford",
-        "institute_name": "Stanford University",
         "name": "j-michael-cherry",
-        "phone1": "000-000-0000",
         "pi": "massa.porta@varius.mauris",
-        "postal_code": "94304-5577",
-        "state": "CA",
         "title": "J. Michael Cherry, Stanford",
         "uuid": "cfb789b8-46f3-4d59-a2b3-adc39e7df93a"
     }
