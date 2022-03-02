@@ -189,6 +189,7 @@ def test_post_duplicate_uuid(testapp, lab):
     item = {
         'uuid': lab['uuid'],
         'name': 'lab-a',
+        'institute_label': 'Institute'
     }
     testapp.post_json('/lab', item, status=409)
 
