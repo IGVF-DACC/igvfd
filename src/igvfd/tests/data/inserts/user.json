@@ -27,13 +27,13 @@
         "email": "massa.porta@varius.mauris",
         "first_name": "J. Michael",
         "job_title": "PI",
-        "lab": "J. Michael Cherry, Stanford",
+        "lab": "/labs/j-michael-cherry/",
         "last_name": "Cherry",
         "groups": [
             "verified"
         ],
         "submits_for": [
-            "J. Michael Cherry, Stanford"
+            "/labs/j-michael-cherry/"
         ],
         "uuid": "860c4750-8d3c-40f5-8f2c-90c5e5d19e88"
     },
@@ -45,10 +45,10 @@
             "verified"
         ],
         "job_title": "Data Wrangler",
-        "lab": "J. Michael Cherry, Stanford",
+        "lab": "/labs/j-michael-cherry/",
         "last_name": "Iaculis",
         "submits_for": [
-            "J. Michael Cherry, Stanford"
+            "/labs/j-michael-cherry/"
         ],
         "uuid": "81a6cc12-2847-4e2e-8f2c-f566699eb29e"
     },
@@ -60,10 +60,10 @@
             "verified"
         ],
         "job_title": "Data Wrangler",
-        "lab": "J. Michael Cherry, Stanford",
+        "lab": "/labs/j-michael-cherry/",
         "last_name": "Nullam",
         "submits_for": [
-            "J. Michael Cherry, Stanford"
+            "/labs/j-michael-cherry/"
         ],
         "uuid": "3787a0ac-f13a-40fc-a524-69628b04cd59"
     },
@@ -75,10 +75,10 @@
             "verified"
         ],
         "job_title": "Group Leader, Software",
-        "lab": "J. Michael Cherry, Stanford",
+        "lab": "/labs/j-michael-cherry/",
         "last_name": "Lobortis",
         "submits_for": [
-            "J. Michael Cherry, Stanford"
+            "/labs/j-michael-cherry/"
         ],
         "uuid": "8be3a346-1440-4bd6-85e8-3236ae469c0c"
     },
@@ -90,10 +90,10 @@
             "verified"
         ],
         "job_title": "Senior software engineer",
-        "lab": "J. Michael Cherry, Stanford",
+        "lab": "/labs/j-michael-cherry/",
         "last_name": "Hac",
         "submits_for": [
-            "J. Michael Cherry, Stanford"
+            "/labs/j-michael-cherry/"
         ],
         "uuid": "1ec85168-059e-407e-9cb1-f96200e72499"
     },
@@ -105,10 +105,10 @@
             "verified"
         ],
         "job_title": "Senior software engineer",
-        "lab": "J. Michael Cherry, Stanford",
+        "lab": "/labs/j-michael-cherry/",
         "last_name": "Montes",
         "submits_for": [
-            "J. Michael Cherry, Stanford"
+            "/labs/j-michael-cherry/"
         ],
         "uuid": "9b52a07a-e46f-4b74-bbe3-e5fd45b768e0"
     },

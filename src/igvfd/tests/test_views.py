@@ -172,7 +172,7 @@ def test_collection_put(testapp, execute_counter, pi, unverified_member):
     }
     item_url = testapp.post_json('/lab', initial).location
     print(item_url)
-    with execute_counter.expect(1):
+    with execute_counter.expect(2):
         item = testapp.get(item_url).json
 
     for key in initial:
