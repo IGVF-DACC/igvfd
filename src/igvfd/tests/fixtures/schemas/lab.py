@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def other_lab(testapp):
+def other_lab(testapp, submitter):
     item = {
         'name': 'other-lab',
         'institute_label': 'Stanford',
@@ -12,7 +12,7 @@ def other_lab(testapp):
 
 
 @pytest.fixture
-def lab_0_0():
+def lab_0_0(submitter):
     return{
         'name': 'Fake Lab',
         'institute_label': 'Fake Institute',
@@ -31,7 +31,7 @@ def lab_1_0(lab_0_0):
 
 
 @pytest.fixture
-def lab(testapp):
+def lab(testapp, submitter):
     item = {
         'name': 'igvf-lab',
         'institute_label': 'Stanford',
