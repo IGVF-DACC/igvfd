@@ -115,6 +115,7 @@ def test_collection_post(testapp):
     item = {
         'name': 'lab-a',
         'institute_label': 'Institute A',
+        'pi': 'IGVF_submitter@example.org',
         'status': 'current'
     }
     return testapp.post_json('/lab', item, status=201)
@@ -167,6 +168,7 @@ def test_collection_put(testapp, execute_counter):
     initial = {
         'name': 'lab-a',
         'institute_label': 'Institute A',
+        'pi': 'IGVF_submitter@example.org',
     }
     item_url = testapp.post_json('/lab', initial).location
 
@@ -179,6 +181,7 @@ def test_collection_put(testapp, execute_counter):
     update = {
         'name': 'lab-b',
         'institute_label': 'Institute B',
+        'pi': 'IGVF_submitter@example.org',
     }
     testapp.put_json(item_url, update, status=200)
 
@@ -192,7 +195,8 @@ def test_post_duplicate_uuid(testapp, lab):
     item = {
         'uuid': lab['uuid'],
         'name': 'lab-a',
-        'institute_label': 'Institute A'
+        'institute_label': 'Institute A',
+        'pi': 'IGVF_submitter@example.org',
     }
     testapp.post_json('/lab', item, status=409)
 
