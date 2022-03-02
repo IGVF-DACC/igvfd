@@ -5,6 +5,8 @@ import pytest
 def other_lab(testapp):
     item = {
         'name': 'other-lab',
+        'institute_label': 'Stanford',
+        'pi': 'IGVF_submitter@example.org',
     }
     return testapp.post_json('/lab', item, status=201).json['@graph'][0]
 
@@ -13,6 +15,8 @@ def other_lab(testapp):
 def lab_0_0():
     return{
         'name': 'Fake Lab',
+        'institute_label': 'Fake Institute',
+        'pi': 'IGVF_submitter@example.org',
     }
 
 
@@ -30,5 +34,7 @@ def lab_1_0(lab_0_0):
 def lab(testapp):
     item = {
         'name': 'igvf-lab',
+        'institute_label': 'Stanford',
+        'pi': 'IGVF_submitter@example.org',
     }
     return testapp.post_json('/lab', item).json['@graph'][0]
