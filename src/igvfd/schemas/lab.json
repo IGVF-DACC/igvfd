@@ -3,7 +3,7 @@
     "id": "/profiles/lab.json",
     "$schema": "http://json-schema.org/draft-04/schema#",
     "type": "object",
-    "required": ["name", "institute_label"],
+    "required": ["name", "institute_label", "pi"],
     "identifyingProperties": ["uuid", "name"],
     "additionalProperties": false,
     "mixinProperties": [
