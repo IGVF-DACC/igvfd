@@ -24,7 +24,7 @@ class Lab(Item):
     name_key = 'name'
     embedded = ['awards']
 
-@calculated_property(
+@calculated_property(context=Lab,
         schema={
             'title': 'Title',
             'type': 'string',
