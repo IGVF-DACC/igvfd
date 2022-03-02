@@ -165,6 +165,7 @@ def test_item_actions_filtered_by_permission(testapp, authenticated_testapp, lab
 def test_collection_put(testapp, execute_counter):
     initial = {
         'name': 'lab-a',
+        'institute_label': 'Institute',
     }
     item_url = testapp.post_json('/lab', initial).location
 
