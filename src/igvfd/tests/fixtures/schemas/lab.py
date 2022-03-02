@@ -2,21 +2,21 @@ import pytest
 
 
 @pytest.fixture
-def other_lab(testapp, submitter):
+def other_lab(testapp, pi):
     item = {
         'name': 'other-lab',
         'institute_label': 'Stanford',
-        'pi': submitter['@id'],
+        'pi': pi['@id'],
     }
     return testapp.post_json('/lab', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture
-def lab_0_0(submitter):
+def lab_0_0(pi):
     return{
         'name': 'Fake Lab',
         'institute_label': 'Fake Institute',
-        'pi': submitter['@id'],
+        'pi': pi['@id'],
     }
 
 
@@ -31,10 +31,10 @@ def lab_1_0(lab_0_0):
 
 
 @pytest.fixture
-def lab(testapp, submitter):
+def lab(testapp, pi):
     item = {
         'name': 'igvf-lab',
         'institute_label': 'Stanford',
-        'pi': submitter['@id'],
+        'pi': pi['@id'],
     }
     return testapp.post_json('/lab', item).json['@graph'][0]

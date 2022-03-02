@@ -111,11 +111,11 @@ def test_collection_limit(workbook, testapp):
     assert len(res.json['@graph']) == 2
 
 
-def test_collection_post(testapp, submitter):
+def test_collection_post(testapp, pi):
     item = {
         'name': 'lab-a',
         'institute_label': 'Institute A',
-        'pi': submitter['@id'],
+        'pi': pi['@id'],
         'status': 'current'
     }
     return testapp.post_json('/lab', item, status=201)
@@ -164,14 +164,14 @@ def test_item_actions_filtered_by_permission(testapp, authenticated_testapp, lab
     assert not any(action for action in res.json.get('actions', []) if action['name'] == 'edit')
 
 
-def test_collection_put(testapp, execute_counter, submitter, verified_member):
+def test_collection_put(testapp, execute_counter, pi, unverified_member):
     initial = {
         'name': 'lab-a',
         'institute_label': 'Institute A',
-        'pi': submitter['@id'],
+        'pi': pi['@id'],
     }
     item_url = testapp.post_json('/lab', initial).location
-
+    print(item_url)
     with execute_counter.expect(1):
         item = testapp.get(item_url).json
 
@@ -181,7 +181,7 @@ def test_collection_put(testapp, execute_counter, submitter, verified_member):
     update = {
         'name': 'lab-b',
         'institute_label': 'Institute B',
-        'pi': verified_member['@id'],
+        'pi': unverified_member['@id'],
     }
     testapp.put_json(item_url, update, status=200)
 
@@ -191,12 +191,12 @@ def test_collection_put(testapp, execute_counter, submitter, verified_member):
         assert res[key] == update[key]
 
 
-def test_post_duplicate_uuid(testapp, lab, submitter):
+def test_post_duplicate_uuid(testapp, lab, pi):
     item = {
         'uuid': lab['uuid'],
         'name': 'lab-a',
         'institute_label': 'Institute A',
-        'pi': submitter['@id'],
+        'pi': pi['@id'],
     }
     testapp.post_json('/lab', item, status=409)
 
