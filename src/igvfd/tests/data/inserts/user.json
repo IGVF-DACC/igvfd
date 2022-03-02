@@ -4,6 +4,7 @@
         "first_name":"Kalina",
         "last_name":"Andreeva",
         "lab": "/labs/j-michael-cherry/",
+        "job_title": "Data Wrangler",
         "status": "current",
         "groups": [
             "admin",
@@ -16,6 +17,7 @@
         "first_name":"Khine",
         "last_name":"Lin",
         "lab": "/labs/j-michael-cherry/",
+        "job_title": "Data Wrangler",
         "status": "current",
         "groups": [
             "admin",
@@ -53,15 +55,15 @@
         "uuid": "81a6cc12-2847-4e2e-8f2c-f566699eb29e"
     },
     {
-        "email": "duis.pede@nonummy.scelerisque",
-        "first_name": "Inceptos",
+        "email": "ojolanki@stanford.edu",
+        "first_name": "Otto",
         "groups": [
             "admin",
             "verified"
         ],
-        "job_title": "Data Wrangler",
+        "job_title": "Software Developer",
         "lab": "/labs/j-michael-cherry/",
-        "last_name": "Nullam",
+        "last_name": "Jolanki",
         "submits_for": [
             "/labs/j-michael-cherry/"
         ],
@@ -74,7 +76,6 @@
             "admin",
             "verified"
         ],
-        "job_title": "Group Leader, Software",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Lobortis",
         "submits_for": [
@@ -89,8 +90,8 @@
             "admin",
             "verified"
         ],
-        "job_title": "Senior software engineer",
         "lab": "/labs/j-michael-cherry/",
+        "job_title": "Software Developer",
         "last_name": "Hac",
         "submits_for": [
             "/labs/j-michael-cherry/"
@@ -104,7 +105,7 @@
             "admin",
             "verified"
         ],
-        "job_title": "Senior software engineer",
+        "job_title": "Software Developer",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Montes",
         "submits_for": [
@@ -119,7 +120,7 @@
             "admin",
             "verified"
         ],
-        "job_title": "Software Engineer",
+        "job_title": "Software Developer",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Tanaka",
         "submits_for": [
@@ -150,7 +151,7 @@
             "admin",
             "verified"
         ],
-        "job_title": "Software Engineer",
+        "job_title": "Software Developer",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Hitz",
         "status": "current",
@@ -166,7 +167,7 @@
             "admin",
             "verified"
         ],
-        "job_title": "Software Engineer",
+        "job_title": "Software Developer",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Graham",
         "status": "current",
@@ -182,7 +183,7 @@
             "admin",
             "verified"
         ],
-        "job_title": "Software Engineer",
+        "job_title": "Software Developer",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Sud",
         "status": "current",
@@ -220,7 +221,7 @@
             "admin",
             "verified"
         ],
-        "job_title": "Associate Data Wrangler",
+        "job_title": "Data Wrangler",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Jou",
         "status": "current",
@@ -277,7 +278,7 @@
             "admin",
             "verified"
         ],
-        "job_title": "Software Engineer",
+        "job_title": "Software Developer",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Li",
         "status": "current",
@@ -293,7 +294,7 @@
             "admin",
             "verified"
         ],
-        "job_title": "Associate Data Wrangler",
+        "job_title": "Software Developer",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Whaling",
         "status": "current",
