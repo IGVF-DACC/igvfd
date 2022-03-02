@@ -114,13 +114,6 @@
             "default": "",
             "pattern": "^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$|^$"
         },
-        "phone2": {
-            "title": "Alternate phone number",
-            "description": "The lab's alternative phone number (with country code).",
-            "type": "string",
-            "default": "",
-            "pattern": "^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$|^$"
-        }
     },
     "changelog": "/profiles/changelogs/lab.md"
 }
