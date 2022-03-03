@@ -12,7 +12,7 @@ def other_lab(testapp, pi):
 
 
 @pytest.fixture
-def lab_0_0(pi):
+def fake_lab(pi):
     return{
         'name': 'Fake Lab',
         'institute_label': 'Fake Institute',
@@ -21,8 +21,8 @@ def lab_0_0(pi):
 
 
 @pytest.fixture
-def lab_1_0(lab_0_0):
-    item = lab_0_0.copy()
+def lab_1_0(fake_lab):
+    item = fake_lab.copy()
     item.update({
         'schema_version': '1',
         'status': 'CURRENT',
