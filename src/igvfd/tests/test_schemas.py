@@ -53,3 +53,6 @@ def test_schemas_etag(testapp):
     etag = testapp.get('/profiles/', status=200).etag
     assert etag
     testapp.get('/profiles/', headers={'If-None-Match': etag}, status=304)
+
+def test_lab_title(lab):
+    assert(lab['title']) == 'Principal Investigator, Stanford'

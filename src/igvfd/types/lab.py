@@ -33,4 +33,4 @@ class Lab(Item):
     def title(self, request, pi, institute_label):
         pi_object = request.embed(pi, '@@object')
         pi_name = pi_object.get('title')
-        return(pi_name + ', ' + institute_label + '\n')
+        return f'{pi_name}, {institute_label}'
