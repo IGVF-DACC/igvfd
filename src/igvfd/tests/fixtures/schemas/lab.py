@@ -2,21 +2,21 @@ import pytest
 
 
 @pytest.fixture
-def other_lab(testapp, pi):
+def other_lab(testapp, verified_member):
     item = {
         'name': 'other-lab',
-        'institute_label': 'Stanford',
-        'pi': pi['@id'],
+        'institute_label': 'Other Institute',
+        'pi': verified_member['@id'],
     }
     return testapp.post_json('/lab', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture
-def fake_lab(pi):
+def fake_lab(unverified_member):
     return{
         'name': 'Fake Lab',
         'institute_label': 'Fake Institute',
-        'pi': pi['@id'],
+        'pi': unverified_member['@id'],
     }
 
 

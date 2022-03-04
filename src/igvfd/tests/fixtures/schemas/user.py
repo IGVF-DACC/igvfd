@@ -61,7 +61,7 @@ def wrangler(testapp):
 
 
 @pytest.fixture
-def verified_member(testapp, lab, award):
+def verified_member(testapp, award):
     item = {
         'first_name': 'IGVF',
         'last_name': 'VerifiedMember',
