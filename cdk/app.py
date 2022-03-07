@@ -3,7 +3,7 @@ import os
 
 import aws_cdk as cdk
 
-from cdk.cdk_stack import CdkStack
+from infrastructure.cdk_stack import CdkStack
 
 import igvfd
 
