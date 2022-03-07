@@ -6,7 +6,9 @@ Create virtual Python environment for the CDK and install requirements:
 $ pip install -r requirements.txt
 ```
 
-Install `cdk` CLI (requires Node) to generate CloudFormation:
+Install CDK toolkit (`npm install -g aws-cdk`).
+
+To generate CloudFormation:
 
 ```
 $ cdk synth
