@@ -49,10 +49,10 @@ class ContinuousIntegrationStack(cdk.Stack):
 
     def __init__(self, scope, construct_id, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
-        self._define_github_source(self)
-        self._make_continuous_integration_project(self)
-        self._add_public_url(self)
-        self._make_logs_public(self)
+        self._define_github_source()
+        self._make_continuous_integration_project()
+        self._add_public_url()
+        self._make_logs_public()
 
     def _define_github_source(self):
         self._github = Source.git_hub(
@@ -82,7 +82,7 @@ class ContinuousIntegrationStack(cdk.Stack):
     def _get_underlying_cfn_project(self):
         if getattr(self, '_cfn_project', None) is None:
             self._cfn_project = self._continuous_integration_project.node.default_child
-            return self._cfn_project
+        return self._cfn_project
 
     def _add_public_url(self):
         self._get_underlying_cfn_project().visibility = 'PUBLIC_READ'
@@ -98,7 +98,7 @@ class ContinuousIntegrationStack(cdk.Stack):
         return log_group_arn
 
     def _get_log_group_star_arn(self):
-        log_group_star_arn = f'{self.get_log_group_arn()}:*'
+        log_group_star_arn = f'{self._get_log_group_arn()}:*'
         return log_group_star_arn
             
     def _make_logs_public(self):
