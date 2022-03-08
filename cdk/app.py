@@ -7,7 +7,7 @@ from infrastructure.naming import prepend_project_name
 
 from infrastructure.stacks.backend import BackendStack
 from infrastructure.stacks.notification import NotificationStack
-from infrastructure.stacks.pipeline import NotificationStack
+from infrastructure.stacks.pipeline import ContinuousDeploymentPipelineStack
 
 
 ENVIRONMENT = cdk.Environment(
@@ -35,10 +35,10 @@ notification = NotificationStack(
     env=ENVIRONMENT,
 )
 
-pipeline = CdkPipelineStack(
+pipeline = ContinuousDeploymentPipelineStack(
     app,
     prepend_project_name(
-        'CdkPipelineStack'
+        'ContinuousDeploymentPipelineStack'
     ),
     chatbot=notification.chatbot,
     branch=BRANCH,
