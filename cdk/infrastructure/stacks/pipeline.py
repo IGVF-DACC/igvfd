@@ -51,7 +51,8 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
                 'pip install -r requirements.txt -r requirements-dev.txt',
                 'pytest',
                 'cdk synth -c branch=$BRANCH',
-            ]
+            ],
+            primary_output_directory='cdk/cdk.out',
         )
 
     def _make_code_pipeline(self):
