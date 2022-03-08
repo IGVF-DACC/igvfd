@@ -41,7 +41,8 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
             commands=[
                 'npm install -g aws-cdk',
                 'cd ./cdk',
-                'python -m pip install -r requirements.txt',
+                'python -m pip install -r requirements.txt -r requirements-dev.txt',
+                'pytest',
                 'cdk synth -c branch=$BRANCH',
             ]
         )
