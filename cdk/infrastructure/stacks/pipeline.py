@@ -6,6 +6,7 @@ from aws_cdk.pipelines import ManualApprovalStep
 from aws_cdk.pipelines import ShellStep
 
 from infrastructure.naming import prepend_branch_name
+from infrastructure.stages.ci import CIDeployStage
 from infrastructure.stages.test import TestDeployStage
 from infrastructure.stages.prod import ProdDeployStage
 
@@ -19,6 +20,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         self._define_github_connection()
         self._define_cdk_synth_step()
         self._make_code_pipeline()
+        self._add_tooling_wave()
         self._add_test_deploy_stage()
         self._add_prod_deploy_stage()
         self._maybe_add_slack_notifications()
@@ -58,6 +60,18 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
                 'CodePipeline',
             ),
             synth=self._synth
+        )
+
+    def _add_tooling_wave(self):
+        tooling_wave = self._code_pipeline.add_wave(
+            'tooling'
+        )
+        ci_stage = CIDeployStage(
+            self,
+            'ContinuousIntegrationDeployStage'
+        )
+        tooling_wave.add_stage(
+            ci_stage
         )
 
     def _add_test_deploy_stage(self):
