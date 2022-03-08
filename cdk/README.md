@@ -23,7 +23,9 @@ $ cdk synth
  * `cdk docs`        open CDK documentation
 
 
-Deploy continuous deployment CodePipeline to main branch:
+## Continuous deployment pipeline
+
+Deploy CodePipeline to main branch:
 
 ```bash
 $ cdk deploy -c branch=main
