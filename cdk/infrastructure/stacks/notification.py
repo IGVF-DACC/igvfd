@@ -10,17 +10,17 @@ from infrastructure.naming import prepend_branch_name
 
 class NotificationStack(cdk.Stack):
 
-    def __init__(self, scope: Construct, construct_id: str, branch=None, **kwargs):
+    def __init__(self, scope: Construct, construct_id: str, branch= None, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
+        name = prepend_project_name(
+            prepend_branch_name(
+                'aws-chatbot'
+            )
+        )
         self.chatbot = SlackChannelConfiguration(
             self,
-            prepend_project_name(
-                prepend_branch_name(
-                    branch,
-                    'aws-chatbot',
-                )
-            ),
-            slack_channel_configuration_name='aws-chatbot',
+            name,
+            slack_channel_configuration_name=name,
             slack_workspace_id='T1KMV4JJZ',
             slack_channel_id='C034GTRCCLU',
         )
