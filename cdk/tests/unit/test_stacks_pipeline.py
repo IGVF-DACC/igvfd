@@ -26,4 +26,4 @@ def test_stacks_pipeline_continuous_deployment_pipeline_stack_created():
     ).get(
         'Stages'
     )
-    assert len(stages) == 5
+    assert len(stages) == 6
