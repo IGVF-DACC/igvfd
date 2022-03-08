@@ -5,7 +5,6 @@ import os
 from infrastructure.config import config
 from infrastructure.naming import prepend_project_name
 
-from infrastructure.stacks.backend import BackendStack
 from infrastructure.stacks.notification import NotificationStack
 from infrastructure.stacks.pipeline import ContinuousDeploymentPipelineStack
 
@@ -20,14 +19,6 @@ app = cdk.App()
 branch = (
     app.node.try_get_context('branch')
     or config.get('default_branch')
-)
-
-backend = BackendStack(
-    app,
-    prepend_project_name(
-        'BackendStack'
-    ),
-    env=ENVIRONMENT,
 )
 
 notification = NotificationStack(
