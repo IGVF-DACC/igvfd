@@ -1,23 +1,17 @@
 import aws_cdk as cdk
 
-from aws_cdk.aws_codebuild import Artifacts
-from aws_cdk.aws_codebuild import BuildEnvironmentVariable
 from aws_cdk.aws_codebuild import BuildSpec
 from aws_cdk.aws_codebuild import BuildEnvironment
 from aws_cdk.aws_codebuild import Cache
-from aws_cdk.aws_codebuild import EventAction
-from aws_cdk.aws_codebuild import FilterGroup
 from aws_cdk.aws_codebuild import LinuxBuildImage
 from aws_cdk.aws_codebuild import LocalCacheMode
 from aws_cdk.aws_codebuild import Project
-from aws_cdk.aws_codebuild import ReportGroup
 from aws_cdk.aws_codebuild import Source
 
 from aws_cdk.aws_iam import PolicyStatement
 from aws_cdk.aws_iam import Role
 from aws_cdk.aws_iam import ServicePrincipal
 
-from aws_cdk.aws_s3 import Bucket
 
 from infrastructure.naming import prepend_project_name
 
