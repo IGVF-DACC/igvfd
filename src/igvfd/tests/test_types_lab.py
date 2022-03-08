@@ -1,4 +1,11 @@
-def test_lab_title(lab, other_lab):
+def test_title(testapp, pi):
+    lab = testapp.post_json('/lab', {'name': 'test-lab',
+                            'institute_label': 'Stanford',
+                            'pi': pi['@id']}, 
+                            status=201).json['@graph'][0]
     assert(lab['title']) == 'Principal Investigator, Stanford'
-    assert(other_lab['title']) == 'IGVF VerifiedMember, Other Institute'
-    
+
+def test_bad_lab(testapp, pi):
+    testapp.post_json('/lab', {'name': 'bad-lab',
+                        'institute_label': 'Stanford'}, 
+                        status = 422)
