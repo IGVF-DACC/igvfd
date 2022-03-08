@@ -33,7 +33,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
 
     def _define_cdk_synth_step(self):
         self._synth = ShellStep(
-            'Synth',
+            'SynthStep',
             input=self._github,
             env={
                 'BRANCH': self._branch
@@ -62,12 +62,12 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
             # Can't modify high-level CodePipeline after build.
             self._code_pipeline.build_pipeline()
             #Low-level pipeline.
-            self._pipeline = code_pipeline.pipeline
+            self._pipeline = self._code_pipeline.pipeline
         return self._pipeline
 
     def _maybe_add_slack_notifications(self):
         if self._chatbot is not None:
             self._get_underlying_pipeline().notify_on_execution_state_change(
                 'NotifySlack',
-                chatbot,
+                self._chatbot,
             )
