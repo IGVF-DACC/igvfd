@@ -15,9 +15,12 @@ ENVIRONMENT = cdk.Environment(
     region=config['region'],
 )
 
-BRANCH = app.node.try_get_context('branch') or config.get('default_branch')
-
 app = cdk.App()
+
+branch = (
+    app.node.try_get_context('branch')
+    or config.get('default_branch')
+)
 
 backend = BackendStack(
     app,
@@ -41,7 +44,7 @@ pipeline = ContinuousDeploymentPipelineStack(
         'ContinuousDeploymentPipelineStack'
     ),
     chatbot=notification.chatbot,
-    branch=BRANCH,
+    branch=branch,
     env=ENVIRONMENT,
 )
 
