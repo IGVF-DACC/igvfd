@@ -5,5 +5,5 @@ config = {
     },
     'account': '618537831167',
     'region': 'us-west-2',
-    'default_branch': 'cdk',
+    'default_branch': 'main',
 }
