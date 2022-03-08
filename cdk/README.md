@@ -21,3 +21,10 @@ $ cdk synth
  * `cdk deploy`      deploy this stack to your default AWS account/region
  * `cdk diff`        compare deployed stack with current state
  * `cdk docs`        open CDK documentation
+
+
+Deploy continuous deployment CodePipeline to main branch:
+
+```bash
+$ cdk deploy -c branch=main
+```
