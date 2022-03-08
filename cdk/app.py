@@ -30,6 +30,7 @@ notification = NotificationStack(
             'NotificationStack',
         )
     ),
+    branch=branch,
     env=ENVIRONMENT,
 )
 
