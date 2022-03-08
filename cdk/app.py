@@ -4,6 +4,7 @@ import os
 
 from infrastructure.config import config
 from infrastructure.naming import prepend_project_name
+from infrastructure.naming import prepend_branch_name
 
 from infrastructure.stacks.notification import NotificationStack
 from infrastructure.stacks.pipeline import ContinuousDeploymentPipelineStack
@@ -24,7 +25,10 @@ branch = (
 notification = NotificationStack(
     app,
     prepend_project_name(
-        'NotificationStack'
+        prepend_branch_name(
+            branch,
+            'NotificationStack',
+        )
     ),
     env=ENVIRONMENT,
 )
@@ -32,7 +36,10 @@ notification = NotificationStack(
 pipeline = ContinuousDeploymentPipelineStack(
     app,
     prepend_project_name(
-        'ContinuousDeploymentPipelineStack'
+        prepend_branch_name(
+            branch,
+            'ContinuousDeploymentPipelineStack',
+        )
     ),
     chatbot=notification.chatbot,
     branch=branch,
