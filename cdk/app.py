@@ -1,29 +1,48 @@
-#!/usr/bin/env python3
+import aws_cdk as cdk
+import igvfd
 import os
 
-import aws_cdk as cdk
+from infrastructure.config import config
+from infrastructure.naming import prepend_project_name
 
-from infrastructure.cdk_stack import CdkStack
+from infrastructure.stacks.backend import BackendStack
+from infrastructure.stacks.notification import NotificationStack
+from infrastructure.stacks.pipeline import NotificationStack
 
-import igvfd
+
+ENVIRONMENT = cdk.Environment(
+    account=config['account'],
+    region=config['region'],
+)
+
+BRANCH = app.node.try_get_context('branch') or config.get('default_branch')
 
 app = cdk.App()
-CdkStack(app, "CdkStack",
-    # If you don't specify 'env', this stack will be environment-agnostic.
-    # Account/Region-dependent features and context lookups will not work,
-    # but a single synthesized template can be deployed anywhere.
 
-    # Uncomment the next line to specialize this stack for the AWS Account
-    # and Region that are implied by the current CLI configuration.
+backend = BackendStack(
+    app,
+    prepend_project_name(
+        'BackendStack'
+    ),
+    env=ENVIRONMENT,
+)
 
-    #env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
+notification = NotificationStack(
+    app,
+    prepend_project_name(
+        'NotificationStack'
+    ),
+    env=ENVIRONMENT,
+)
 
-    # Uncomment the next line if you know exactly what Account and Region you
-    # want to deploy the stack to. */
-
-    #env=cdk.Environment(account='123456789012', region='us-east-1'),
-
-    # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
+pipeline = CdkPipelineStack(
+    app,
+    prepend_project_name(
+        'CdkPipelineStack'
+    ),
+    chatbot=notification.chatbot,
+    branch=BRANCH,
+    env=ENVIRONMENT,
+)
 
 app.synth()
