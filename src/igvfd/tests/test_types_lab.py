@@ -9,3 +9,4 @@ def test_bad_lab(testapp, pi):
     testapp.post_json('/lab', {'name': 'bad-lab',
                         'institute_label': 'Stanford'}, 
                         status = 422)
+    
