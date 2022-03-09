@@ -12,7 +12,6 @@ from aws_cdk.aws_iam import PolicyStatement
 from aws_cdk.aws_iam import Role
 from aws_cdk.aws_iam import ServicePrincipal
 
-
 from infrastructure.naming import prepend_project_name
 
 
@@ -27,6 +26,7 @@ def get_buildspec():
                     },
                     'commands': [
                         'echo $(git log -1 --pretty="%s (%h) - %an")',
+                        'echo $DOCKER_SECRET | docker login --username $DOCKER_USER --password-stdin',
                     ]
                 },
                 'build': {
@@ -34,7 +34,13 @@ def get_buildspec():
                         'docker-compose -f docker-compose.test.yml up --exit-code-from pyramid',
                     ]
                 }
-            }
+            },
+            'env': {
+                'secrets-manager': {
+                    'DOCKER_USER': 'docker-hub-credentials:DOCKER_USER',
+                    'DOCKER_SECRET': 'docker-hub-credentials:DOCKER_SECRET',
+                },
+            },
         }
     )
 
