@@ -12,6 +12,8 @@ from aws_cdk.aws_iam import PolicyStatement
 from aws_cdk.aws_iam import Role
 from aws_cdk.aws_iam import ServicePrincipal
 
+from aws_cdk.aws_secretsmanager import Secret
+
 from infrastructure.naming import prepend_project_name
 
 
@@ -51,6 +53,7 @@ class ContinuousIntegrationStack(cdk.Stack):
         super().__init__(scope, construct_id, **kwargs)
         self._define_github_source()
         self._make_continuous_integration_project()
+        self._give_project_permission_to_read_secret()
         self._add_public_url()
         self._make_logs_public()
 
@@ -77,6 +80,16 @@ class ContinuousIntegrationStack(cdk.Stack):
             cache=Cache.local(
                 LocalCacheMode.DOCKER_LAYER
             ),
+        )
+
+    def _give_project_permission_to_read_secret(self):
+        docker_secret = Secret.from_secret_complete_arn(
+            self,
+            'DockerSecret',
+            'arn:aws:secretsmanager:us-west-2:618537831167:secret:docker-hub-credentials-cFeSon'
+        )
+        docker_secret.grant_read(
+            self._continuous_integration_project.role
         )
 
     def _get_underlying_cfn_project(self):
