@@ -28,7 +28,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
 
     def _define_github_connection(self):
         self._github = CodePipelineSource.connection(
-            'igvf-dacc/igvfd',
+            'IGVF-DACC/igvfd',
             self._branch,
             connection_arn=(
                 'arn:aws:codestar-connections:'
