@@ -33,6 +33,7 @@ def get_buildspec():
                         'python': '3.9',
                     },
                     'commands': [
+                        'echo $CODEBUILD_WEBHOOK_TRIGGER',
                         'echo $(git log -1 --pretty="%s (%h) - %an")',
                         'echo Logging into Docker',
                         'echo $DOCKER_SECRET | docker login --username $DOCKER_USER --password-stdin',
