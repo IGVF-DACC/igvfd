@@ -8,8 +8,8 @@ from aws_cdk.pipelines import ShellStep
 from infrastructure.naming import prepend_branch_name
 from infrastructure.naming import prepend_project_name
 from infrastructure.stages.ci import CIDeployStage
-from infrastructure.stages.test import TestDeployStage
 from infrastructure.stages.prod import ProdDeployStage
+from infrastructure.stages.test import TestDeployStage
 
 
 class ContinuousDeploymentPipelineStack(cdk.Stack):
