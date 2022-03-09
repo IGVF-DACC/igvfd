@@ -21,6 +21,12 @@ def get_buildspec():
     return BuildSpec.from_object(
         {
             'version': '0.2',
+            'env': {
+                'secrets-manager': {
+                    'DOCKER_USER': 'docker-hub-credentials:DOCKER_USER',
+                    'DOCKER_SECRET': 'docker-hub-credentials:DOCKER_SECRET',
+                },
+            },
             'phases': {
                 'install': {
                     'runtime-versions': {
@@ -28,6 +34,7 @@ def get_buildspec():
                     },
                     'commands': [
                         'echo $(git log -1 --pretty="%s (%h) - %an")',
+                        'echo Logging into Docker',
                         'echo $DOCKER_SECRET | docker login --username $DOCKER_USER --password-stdin',
                     ]
                 },
@@ -36,12 +43,6 @@ def get_buildspec():
                         'docker-compose -f docker-compose.test.yml up --exit-code-from pyramid',
                     ]
                 }
-            },
-            'env': {
-                'secrets-manager': {
-                    'DOCKER_USER': 'docker-hub-credentials:DOCKER_USER',
-                    'DOCKER_SECRET': 'docker-hub-credentials:DOCKER_SECRET',
-                },
             },
         }
     )
