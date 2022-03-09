@@ -30,3 +30,9 @@ Deploy CodePipeline to main branch:
 ```bash
 $ cdk deploy -c branch=main
 ```
+
+Destroy:
+
+```bash
+$ cdk destroy -c branch=main
+```
