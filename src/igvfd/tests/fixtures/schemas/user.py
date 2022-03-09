@@ -96,6 +96,7 @@ def submitter(testapp, lab, award):
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
 
+
 @pytest.fixture
 def pi(testapp):
     item = {
