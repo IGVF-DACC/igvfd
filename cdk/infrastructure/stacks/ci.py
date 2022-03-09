@@ -54,7 +54,7 @@ class ContinuousIntegrationStack(cdk.Stack):
         super().__init__(scope, construct_id, **kwargs)
         self._define_github_source()
         self._make_continuous_integration_project()
-        self._give_project_permission_to_read_secret()
+        self._give_project_permission_to_read_docker_login_secret()
         self._add_public_url()
         self._make_logs_public()
 
@@ -83,7 +83,7 @@ class ContinuousIntegrationStack(cdk.Stack):
             ),
         )
 
-    def _give_project_permission_to_read_secret(self):
+    def _give_project_permission_to_read_docker_login_secret(self):
         docker_secret = Secret.from_secret_complete_arn(
             self,
             'DockerSecret',
