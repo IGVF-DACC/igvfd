@@ -1,5 +1,6 @@
 import aws_cdk as cdk
 
+from infrastructure.naming import prepend_project_name
 from infrastructure.stacks.ci import ContinuousIntegrationStack
 
 
@@ -9,5 +10,7 @@ class CIDeployStage(cdk.Stage):
         super().__init__(scope, construct_id,  **kwargs)
         ContinuousIntegrationStack(
             self,
-            'ContinuousIntegrationStack'
+            prepend_project_name(
+                'ContinuousIntegrationStack'
+            )
         )
