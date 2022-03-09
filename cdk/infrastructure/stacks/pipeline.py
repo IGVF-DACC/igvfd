@@ -6,6 +6,7 @@ from aws_cdk.pipelines import ManualApprovalStep
 from aws_cdk.pipelines import ShellStep
 
 from infrastructure.naming import prepend_branch_name
+from infrastructure.naming import prepend_project_name
 from infrastructure.stages.ci import CIDeployStage
 from infrastructure.stages.test import TestDeployStage
 from infrastructure.stages.prod import ProdDeployStage
@@ -71,7 +72,9 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         )
         ci_stage = CIDeployStage(
             self,
-            'ContinuousIntegrationDeployStage'
+            prepend_project_name(
+                'ContinuousIntegrationDeployStage'
+            )
         )
         tooling_wave.add_stage(
             ci_stage
@@ -80,7 +83,9 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
     def _add_test_deploy_stage(self):
         stage = TestDeployStage(
             self,
-            'TestDeployStage',
+            prepend_project_name(
+                'TestDeployStage'
+            )
         )
         self._code_pipeline.add_stage(
             stage,
@@ -94,7 +99,9 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
     def _add_prod_deploy_stage(self):
         stage = ProdDeployStage(
             self,
-            'ProdDeployStage',
+            prepend_project_name(
+                'ProdDeployStage'
+            )
         )
         self._code_pipeline.add_stage(
             stage,
