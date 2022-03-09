@@ -12,7 +12,6 @@ from aws_cdk.aws_iam import PolicyStatement
 from aws_cdk.aws_iam import Role
 from aws_cdk.aws_iam import ServicePrincipal
 
-
 from infrastructure.naming import prepend_project_name
 
 
