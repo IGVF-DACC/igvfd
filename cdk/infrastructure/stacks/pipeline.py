@@ -32,8 +32,8 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
             self._branch,
             connection_arn=(
                 'arn:aws:codestar-connections:'
-                'us-east-1:618537831167:'
-                'connection/28ec4d05-97dd-4730-b41c-b3b698b2a485'
+                'us-west-2:618537831167:'
+                'connection/4ede924c-44fd-4a0c-a765-e353dbdbbb17'
             )
         )
 
