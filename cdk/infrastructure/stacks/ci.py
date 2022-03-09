@@ -36,6 +36,8 @@ def get_buildspec():
                         'echo $(git log -1 --pretty="%s (%h) - %an")',
                         'echo Logging into Docker',
                         'echo $DOCKER_SECRET | docker login --username $DOCKER_USER --password-stdin',
+                        'echo Building images',
+                        'docker-compose -f docker-compose.test.yml build',
                     ]
                 },
                 'build': {
