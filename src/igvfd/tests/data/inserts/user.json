@@ -55,6 +55,20 @@
         "uuid": "81a6cc12-2847-4e2e-8f2c-f566699eb29e"
     },
     {
+        "email": "duis.pede@nonummy.scelerisque",
+        "first_name": "Inceptos",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "lab": "J. Michael Cherry, Stanford",
+        "last_name": "Nullam",
+        "submits_for": [
+            "J. Michael Cherry, Stanford"
+        ],
+        "uuid": "3787a0ac-f13a-40fc-a524-69628b04cd59"
+    },
+    {
         "email": "ojolanki@stanford.edu",
         "first_name": "Otto",
         "groups": [
@@ -67,7 +81,7 @@
         "submits_for": [
             "/labs/j-michael-cherry/"
         ],
-        "uuid": "3787a0ac-f13a-40fc-a524-69628b04cd59"
+        "uuid": "10ab5aae-a007-11ec-b909-0242ac120002"
     },
     {
         "email": "justo.tincidunt@risus.pede",
