@@ -61,10 +61,10 @@
             "admin",
             "verified"
         ],
-        "lab": "J. Michael Cherry, Stanford",
+        "lab": "/labs/j-michael-cherry/",
         "last_name": "Nullam",
         "submits_for": [
-            "J. Michael Cherry, Stanford"
+            "/labs/j-michael-cherry/"
         ],
         "uuid": "3787a0ac-f13a-40fc-a524-69628b04cd59"
     },
