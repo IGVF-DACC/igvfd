@@ -5,7 +5,6 @@ import pytest
 def award(testapp):
     item = {
         'name': 'igvf-award',
-        'rfa': 'IGVF',
         'project': 'IGVF',
         'title': 'A Generic IGVF Award',
         'viewing_group': 'IGVF',
