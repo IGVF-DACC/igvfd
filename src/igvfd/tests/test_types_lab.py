@@ -13,9 +13,9 @@ def test_title(testapp, pi):
 
 def test_bad_lab(testapp, pi):
     testapp.post_json(
-        '/lab', 
+        '/lab',
         {
             'name': 'bad-lab',
             'institute_label': 'Stanford'
-        }, 
-        status = 422)
+        },
+        status=422)

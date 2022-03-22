@@ -23,7 +23,6 @@ def user_0():
     }
 
 
-
 @pytest.fixture
 def user_1(user_0):
     item = user_0.copy()

@@ -25,13 +25,12 @@ class Lab(Item):
     embedded = ['awards']
 
     @calculated_property(
-            schema={
-                'title': 'Title',
-                'type': 'string',
-            }
-        )
+        schema={
+            'title': 'Title',
+            'type': 'string',
+        }
+    )
     def title(self, request, pi, institute_label):
         pi_object = request.embed(pi, '@@object')
         pi_name = pi_object.get('title')
         return f'{pi_name}, {institute_label}'
-        
