@@ -17,6 +17,9 @@
         "postal_code": "94304-5577",
         "state": "CA",
         "title": "J. Michael Cherry, Stanford",
-        "uuid": "cfb789b8-46f3-4d59-a2b3-adc39e7df93a"
+        "uuid": "cfb789b8-46f3-4d59-a2b3-adc39e7df93a",
+        "lab_aliases": [
+	    "j-michael-cherry:schema-ref-test"
+	]
     }
 ]
