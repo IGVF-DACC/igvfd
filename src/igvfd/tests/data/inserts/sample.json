@@ -1,5 +1,10 @@
 [
     {
+        "uuid": "467c72a2-4f84-2c8f-96b0-ec8715e18185",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": ["bcb5f3c8-d5e9-40d2-805f-4274f940c36d"],
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium"
     }
 ]
