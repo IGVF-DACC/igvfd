@@ -10,6 +10,7 @@
     "mixinProperties": [
         { "$ref": "mixins.json#/schema_version" },         
         { "$ref": "mixins.json#/uuid" },
+        { "$ref": "mixins.json#/accession" },
         { "$ref": "mixins.json#/accessioned_status" },
         { "$ref": "mixins.json#/submitted" },
         { "$ref": "mixins.json#/attribution" },
@@ -20,9 +21,23 @@
         { "$ref": "mixins.json#/lot_id" },
         { "$ref": "mixins.json#/url" }
     ],
+    "dependencies": {
+        "lot_id": {
+            "required": ["product_id"],
+            "comment": "Sample with lot_id must include product_id."
+        }
+    },
     "properties": {
         "schema_version": {
             "default": "1"
+        },
+        "accession": {
+            "accessionType": "SM"
+        }
+    },
+    "facets": {
+        "status": {
+            "title": "Status"
         }
     },
     "changelog": "/profiles/changelogs/sample.md"
