@@ -17,7 +17,7 @@
             "default": "1"
         },
         "lab_aliases": {
-            "$ref": "mixins.json#aliases/aliases"
+            "$merge": "mixins.json#aliases/aliases"
         },
         "name": {
             "title": "Name",
