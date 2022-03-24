@@ -5,13 +5,15 @@
     "description": "Abstract schema for submitting a specific biological or synthetic sample.",
     "type": "object",
     "required": [ "award", "lab" ],  
-    "identifyingProperties": [ "uuid" ],   
+    "identifyingProperties": [ "uuid", "accession", "alternate_accessions", "aliases"],   
     "additionalProperties": false,    
     "mixinProperties": [
         { "$ref": "mixins.json#/schema_version" },         
         { "$ref": "mixins.json#/uuid" },
         { "$ref": "mixins.json#/accession" },
+        { "$ref": "mixins.json#/alternate_accessions" },
         { "$ref": "mixins.json#/accessioned_status" },
+        { "$ref": "mixins.json#/aliases" },
         { "$ref": "mixins.json#/submitted" },
         { "$ref": "mixins.json#/attribution" },
         { "$ref": "mixins.json#/submitter_comment" },
@@ -38,6 +40,12 @@
     "facets": {
         "status": {
             "title": "Status"
+        },
+        "lab.title": {
+            "title": "Lab"
+        },
+        "award.project": {
+            "title": "Project"
         }
     },
     "changelog": "/profiles/changelogs/sample.md"
