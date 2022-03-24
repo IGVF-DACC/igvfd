@@ -278,5 +278,13 @@
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
         }
+    },
+    "source": {
+        "source": {
+            "title": "Source",
+    	    "description": "The originating lab or vendor.",
+    	    "comment": "See source.json for available identifiers.",
+    	    "type": "string"
+        }
     }
 }
