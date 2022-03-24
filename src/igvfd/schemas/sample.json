@@ -21,9 +21,10 @@
         { "$ref": "mixins.json#/documents" },
         { "$ref": "mixins.json#/product_id" },       
         { "$ref": "mixins.json#/lot_id" },
+        { "$ref": "mixins.json#/source" },
         { "$ref": "mixins.json#/url" }
     ],
-    "dependencies": {
+    "dependentSchemas": {
         "lot_id": {
             "required": ["product_id"],
             "comment": "Sample with lot_id must include product_id."
