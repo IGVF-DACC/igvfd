@@ -21,8 +21,8 @@ class EDWHash(uh.StaticHandler):
     checksum_size = 64
 
     setting_kwds = ('salt_before', 'salt_after', 'salt_base')
-    salt_before = b"186ED79BAEXzeusdioIsdklnw88e86cd73"
-    salt_after = b"<*#$*(#)!DSDFOUIHLjksdf"
+    salt_before = b'186ED79BAEXzeusdioIsdklnw88e86cd73'
+    salt_after = b'<*#$*(#)!DSDFOUIHLjksdf'
     salt_base = b64decode(b"""\
 Kf8r/S37L/kh9yP1JfMn8TnvO+096z/pMecz5TXjN+EJ3wvdDdsP2QHXA9UF0wfRGc8bzR3LH8kR
 xxPFFcMXwWm/a71tu2+5YbdjtWWzZ7F5r3utfat/qXGnc6V1o3ehSZ9LnU2bT5lBl0OVRZNHkVmP
@@ -40,7 +40,7 @@ cblvu229a79psWezZbVjt2GJX4tdjVuPWYFXg1WFU4dRmU+bTZ1Ln0mRR5NFlUOXQek/6z3tO+85
             secret = secret.encode('utf-8')
         salted = self.salt_before + secret + self.salt_after + b'\0'
         if len(salted) > len(self.salt_base):
-            raise ValueError("Password too long")
+            raise ValueError('Password too long')
         salted += self.salt_base[len(salted):]
         chk = sha384(salted).digest()
-        return b64encode(chk).decode("ascii")
+        return b64encode(chk).decode('ascii')

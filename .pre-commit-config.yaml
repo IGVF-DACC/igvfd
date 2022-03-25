@@ -1,8 +1,4 @@
-  - repo: https://github.com/pre-commit/mirrors-isort
-    rev: v5.10.1
-    hooks:
-      - id: isort
-
+repos:
   - repo: https://github.com/pre-commit/mirrors-autopep8
     rev: v1.6.0
     hooks:
@@ -14,3 +10,5 @@
       - id: double-quote-string-fixer
       - id: trailing-whitespace
       - id: end-of-file-fixer
+      - id: pretty-format-json
+        args: ['--autofix', '--no-sort-keys', '--indent=4']

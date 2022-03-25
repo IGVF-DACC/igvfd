@@ -59,8 +59,8 @@ class User(Item):
     }
 
     @calculated_property(schema={
-        "title": "Title",
-        "type": "string",
+        'title': 'Title',
+        'type': 'string',
     })
     def title(self, first_name, last_name):
         return u'{} {}'.format(first_name, last_name)
@@ -70,11 +70,11 @@ class User(Item):
         return {owner: 'role.owner'}
 
     @calculated_property(schema={
-        "title": "Access Keys",
-        "type": "array",
-        "items": {
-            "type": ['string', 'object'],
-            "linkFrom": "AccessKey.user",
+        'title': 'Access Keys',
+        'type': 'array',
+        'items': {
+            'type': ['string', 'object'],
+            'linkFrom': 'AccessKey.user',
         },
     }, category='page')
     def access_keys(self, request):

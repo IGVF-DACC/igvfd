@@ -9,7 +9,7 @@ test_accession_re = re.compile(r'^TST(FF|SR|AB|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9]
 uuid_re = re.compile(r'(?i)\{?(?:[0-9a-f]{4}-?){8}\}?')
 
 
-@FormatChecker.cls_checks("uuid")
+@FormatChecker.cls_checks('uuid')
 def is_uuid(instance):
     # Python's UUID ignores all dashes, whereas Postgres is more strict
     # http://www.postgresql.org/docs/9.2/static/datatype-uuid.html
@@ -25,7 +25,7 @@ def is_accession(instance):
     )
 
 
-@FormatChecker.cls_checks("accession")
+@FormatChecker.cls_checks('accession')
 def is_accession_for_server(instance):
     from .server_defaults import (
         ACCESSION_FACTORY,
@@ -41,20 +41,20 @@ def is_accession_for_server(instance):
     return False
 
 
-@FormatChecker.cls_checks("gene_name")
+@FormatChecker.cls_checks('gene_name')
 def is_gene_name(instance):
     ''' should check a webservice at HGNC/MGI for validation '''
     return True
 
 
-@FormatChecker.cls_checks("target_label")
+@FormatChecker.cls_checks('target_label')
 def is_target_label(instance):
     if is_gene_name(instance):
-        #note this always returns true
+        # note this always returns true
         return True
-    mod_histone_patt = "^H([234]|2A|2B)[KRT][0-9]+(me|ac|ph)"
-    fusion_patt = "^(eGFP|HA)-"
-    oneoff_patts = "^(Control|Methylcytidine|POLR2Aphospho[ST][0-9+])$"
+    mod_histone_patt = '^H([234]|2A|2B)[KRT][0-9]+(me|ac|ph)'
+    fusion_patt = '^(eGFP|HA)-'
+    oneoff_patts = '^(Control|Methylcytidine|POLR2Aphospho[ST][0-9+])$'
     if not re.match(mod_histone_patt, instance) or \
        not re.match(fusion_patt, instance) or \
        not re.match(oneoff_patts, instance):
@@ -62,9 +62,9 @@ def is_target_label(instance):
     return True
 
 
-@FormatChecker.cls_checks("uri", raises=ValueError)
+@FormatChecker.cls_checks('uri', raises=ValueError)
 def is_uri(instance):
     if ':' not in instance:
         # We want only absolute uris
         return False
-    return rfc3987.parse(instance, rule="URI_reference")
+    return rfc3987.parse(instance, rule='URI_reference')

@@ -8,7 +8,11 @@
             "rows": [
                 {
                     "cols": [
-                        {"blocks": ["#block1"]}
+                        {
+                            "blocks": [
+                                "#block1"
+                            ]
+                        }
                     ]
                 }
             ],
@@ -30,14 +34,30 @@
             "rows": [
                 {
                     "cols": [
-                        {"blocks": ["#block1"]}
+                        {
+                            "blocks": [
+                                "#block1"
+                            ]
+                        }
                     ]
                 },
                 {
                     "cols": [
-                        {"blocks": ["#block2"]},
-                        {"blocks": ["#block3"]},
-                        {"blocks": ["#block4"]}
+                        {
+                            "blocks": [
+                                "#block2"
+                            ]
+                        },
+                        {
+                            "blocks": [
+                                "#block3"
+                            ]
+                        },
+                        {
+                            "blocks": [
+                                "#block4"
+                            ]
+                        }
                     ]
                 }
             ],
@@ -79,7 +99,9 @@
                     "cols": [
                         {
                             "className": "col-md-12 class_override",
-                            "blocks": ["#block1"]
+                            "blocks": [
+                                "#block1"
+                            ]
                         }
                     ]
                 }
@@ -105,7 +127,11 @@
             "rows": [
                 {
                     "cols": [
-                        {"blocks": ["#block1"]}
+                        {
+                            "blocks": [
+                                "#block1"
+                            ]
+                        }
                     ]
                 }
             ],
@@ -130,7 +156,11 @@
             "rows": [
                 {
                     "cols": [
-                        {"blocks": ["#block1"]}
+                        {
+                            "blocks": [
+                                "#block1"
+                            ]
+                        }
                     ]
                 }
             ],

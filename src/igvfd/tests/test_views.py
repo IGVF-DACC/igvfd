@@ -7,11 +7,11 @@ def _type_length():
     from pkg_resources import resource_stream
     import codecs
     import json
-    utf8 = codecs.getreader("utf-8")
+    utf8 = codecs.getreader('utf-8')
     return {
         name: len(json.load(utf8(resource_stream('igvfd', 'tests/data/inserts/%s.json' % name))))
         for name in ORDER
-        if name != "access_key"
+        if name != 'access_key'
     }
 
 
@@ -93,7 +93,7 @@ def test_json_basic_auth(anonhtmltestapp):
     from base64 import b64encode
     from pyramid.compat import ascii_native_
     url = '/'
-    value = "Authorization: Basic %s" % ascii_native_(b64encode(b'nobody:pass'))
+    value = 'Authorization: Basic %s' % ascii_native_(b64encode(b'nobody:pass'))
     res = anonhtmltestapp.get(url, headers={'Authorization': value}, status=401)
     assert res.content_type == 'application/json'
 
@@ -142,7 +142,7 @@ def test_collection_post_missing_content_type(testapp):
 def test_collection_post_bad(anontestapp):
     from base64 import b64encode
     from pyramid.compat import ascii_native_
-    value = "Authorization: Basic %s" % ascii_native_(b64encode(b'nobody:pass'))
+    value = 'Authorization: Basic %s' % ascii_native_(b64encode(b'nobody:pass'))
     anontestapp.post_json('/lab', {}, headers={'Authorization': value}, status=401)
 
 

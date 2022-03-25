@@ -328,7 +328,7 @@ class Item(snovault.Item):
             visited_children = [
                 x[0]
                 for x in request._set_status_changed_paths.union(
-                        request._set_status_considered_paths
+                    request._set_status_considered_paths
                 )
             ]
             if child_id in visited_children:
@@ -383,6 +383,7 @@ class Item(snovault.Item):
 class SharedItem(Item):
     ''' An Item visible to all authenticated users while "in progress".
     '''
+
     def __ac_local_roles__(self):
         roles = {}
         properties = self.upgrade_properties().copy()

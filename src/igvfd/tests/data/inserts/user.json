@@ -1,8 +1,8 @@
 [
     {
         "email": "andreeva@stanford.edu",
-        "first_name":"Kalina",
-        "last_name":"Andreeva",
+        "first_name": "Kalina",
+        "last_name": "Andreeva",
         "lab": "/labs/j-michael-cherry/",
         "job_title": "Data Wrangler",
         "status": "current",
@@ -14,8 +14,8 @@
     },
     {
         "email": "khzlin@stanford.edu",
-        "first_name":"Khine",
-        "last_name":"Lin",
+        "first_name": "Khine",
+        "last_name": "Lin",
         "lab": "/labs/j-michael-cherry/",
         "job_title": "Data Wrangler",
         "status": "current",
@@ -173,7 +173,7 @@
             "/labs/j-michael-cherry/"
         ],
         "uuid": "986b362f-4eb6-4a9c-8173-3ab267307e3b"
-    }, 
+    },
     {
         "email": "ksgraham@stanford.edu",
         "first_name": "Keenan",

@@ -1,6 +1,11 @@
 # https://code.google.com/p/modwsgi/wiki/RegisteringCleanupCode
 
 
+import humanfriendly
+import psutil
+import logging
+
+
 class Generator2:
     def __init__(self, iterable, callback, environ):
         self.__iterable = iterable
@@ -33,11 +38,6 @@ class ExecuteOnCompletion2:
         return Generator2(result, self.__callback, environ)
 
 
-import logging
-import psutil
-import humanfriendly
-
-
 def rss_checker(rss_limit=None):
     log = logging.getLogger(__name__)
     process = psutil.Process()
@@ -45,7 +45,7 @@ def rss_checker(rss_limit=None):
     def callback(environ):
         rss = process.memory_info().rss
         if rss_limit and rss > rss_limit:
-            msg = "Restarting process. Memory usage exceeds limit of %d: %d"
+            msg = 'Restarting process. Memory usage exceeds limit of %d: %d'
             log.error(msg, rss_limit, rss)
             process.terminate()
 

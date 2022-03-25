@@ -149,11 +149,11 @@ class TestingLinkTarget(Item):
     ]
 
     @calculated_property(schema={
-        "title": "Sources",
-        "type": "array",
-        "items": {
-            "type": ['string', 'object'],
-            "linkFrom": "TestingLinkSource.target",
+        'title': 'Sources',
+        'type': 'array',
+        'items': {
+            'type': ['string', 'object'],
+            'linkFrom': 'TestingLinkSource.target',
         },
     })
     def reverse(self, request, reverse):
@@ -172,19 +172,19 @@ class TestingPostPutPatch(Item):
         'required': ['required'],
         'type': 'object',
         'properties': {
-            "schema_version": {
-                "type": "string",
-                "pattern": "^\\d+(\\.\\d+)*$",
-                "requestMethod": [],
-                "default": "1",
+            'schema_version': {
+                'type': 'string',
+                'pattern': '^\\d+(\\.\\d+)*$',
+                'requestMethod': [],
+                'default': '1',
             },
-            "uuid": {
-                "title": "UUID",
-                "description": "",
-                "type": "string",
-                "format": "uuid",
-                "permission": "import_items",
-                "requestMethod": "POST",
+            'uuid': {
+                'title': 'UUID',
+                'description': '',
+                'type': 'string',
+                'format': 'uuid',
+                'permission': 'import_items',
+                'requestMethod': 'POST',
             },
             'required': {
                 'type': 'string',

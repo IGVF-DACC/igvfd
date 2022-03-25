@@ -46,6 +46,7 @@ def includeme(config):
 class LoginDenied(HTTPForbidden):
     title = 'Login failure'
 
+
 class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
     """
     Checks assertion during authentication so login can construct user session.
@@ -72,10 +73,10 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
                     request)
             request._auth0_authenticated = None
             return None
-        
+
         try:
             domain = 'encode.auth0.com'
-            user_url = "https://{domain}/userinfo?access_token={access_token}" \
+            user_url = 'https://{domain}/userinfo?access_token={access_token}' \
                 .format(domain=domain, access_token=access_token)
             user_info = requests.get(user_url).json()
         except Exception as e:
@@ -92,7 +93,6 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             return email
         else:
             return None
-
 
     def remember(self, request, principal, **kw):
         return []

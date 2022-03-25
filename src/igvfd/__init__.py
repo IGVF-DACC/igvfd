@@ -1,7 +1,7 @@
 __version__ = '0.0.1'
 
 
-import igvfd.schema_formats # needed to import before snovault to add FormatCheckers
+import igvfd.schema_formats  # needed to import before snovault to add FormatCheckers
 import base64
 import codecs
 import copy
@@ -29,7 +29,7 @@ STATIC_MAX_AGE = 0
 
 
 def json_asset(spec, **kw):
-    utf8 = codecs.getreader("utf-8")
+    utf8 = codecs.getreader('utf-8')
     asset = AssetResolver(caller_package()).resolve(spec)
     return json.load(utf8(asset.stream()), **kw)
 
@@ -66,8 +66,8 @@ def changelogs(config):
 
 def configure_engine(settings):
     settings = copy.deepcopy(settings)
-    engine_url = os.environ.get("SQLALCHEMY_URL") or settings['sqlalchemy.url']
-    settings["sqlalchemy.url"] = engine_url
+    engine_url = os.environ.get('SQLALCHEMY_URL') or settings['sqlalchemy.url']
+    settings['sqlalchemy.url'] = engine_url
     engine_opts = {}
     if engine_url.startswith('postgresql'):
         application_name = 'app'
@@ -95,7 +95,7 @@ def set_postgresql_statement_timeout(engine, timeout=20 * 1000):
     def connect(dbapi_connection, connection_record):
         cursor = dbapi_connection.cursor()
         try:
-            cursor.execute("SET statement_timeout TO %d" % timeout)
+            cursor.execute('SET statement_timeout TO %d' % timeout)
         except psycopg2.Error:
             dbapi_connection.rollback()
         finally:

@@ -56,10 +56,10 @@ def nginx_server_process(prefix='', echo=False):
 
 
 def main():
-    set_start_method("fork")
+    set_start_method('fork')
     import argparse
     parser = argparse.ArgumentParser(
-        description="Run development servers", epilog=EPILOG,
+        description='Run development servers', epilog=EPILOG,
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument(
@@ -72,10 +72,10 @@ def main():
         default=f'{Path().absolute()}/config/pyramid/ini/local.ini',
         help='path to configfile',
     )
-    parser.add_argument('--clear', action="store_true", help="Clear existing data")
-    parser.add_argument('--init', action="store_true", help="Init database")
-    parser.add_argument('--load', action="store_true", help="Load test set")
-    parser.add_argument('--datadir', default='/tmp/igvfd', help="path to datadir")
+    parser.add_argument('--clear', action='store_true', help='Clear existing data')
+    parser.add_argument('--init', action='store_true', help='Init database')
+    parser.add_argument('--load', action='store_true', help='Load test set')
+    parser.add_argument('--datadir', default='/tmp/igvfd', help='path to datadir')
     args = parser.parse_args()
 
     logging.basicConfig()
@@ -131,6 +131,7 @@ def main():
         print_processes.append(Process(target=print_to_terminal, args=(stdout,)))
     for p in print_processes:
         p.start()
+
 
 if __name__ == '__main__':
     main()

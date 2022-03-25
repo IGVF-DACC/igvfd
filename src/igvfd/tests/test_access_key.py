@@ -50,7 +50,7 @@ def test_access_key_self_create_by_verified_member(anontestapp, verified_member)
     extra_environ = {'REMOTE_USER': str(verified_member['email'])}
     res = anontestapp.post_json(
         '/access_key/', {}, extra_environ=extra_environ
-        )
+    )
     access_key_id = res.json['access_key_id']
     headers = {
         'Authorization': basic_auth(access_key_id, res.json['secret_access_key']),
@@ -71,7 +71,7 @@ def test_access_key_self_create_by_admin(anontestapp, admin):
     extra_environ = {'REMOTE_USER': str(admin['email'])}
     res = anontestapp.post_json(
         '/access_key/', {}, extra_environ=extra_environ
-        )
+    )
     access_key_id = res.json['access_key_id']
     headers = {
         'Authorization': basic_auth(access_key_id, res.json['secret_access_key']),

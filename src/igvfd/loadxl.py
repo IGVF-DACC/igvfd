@@ -421,13 +421,13 @@ def attachment(path):
             im = Image.open(stream)
             im.verify()
             if im.format != minor.upper():
-                msg = "Image file format %r does not match extension for %s"
+                msg = 'Image file format %r does not match extension for %s'
                 raise ValueError(msg % (im.format, filename))
 
             attach['width'], attach['height'] = im.size
             return attach
 
-    raise ValueError("Unknown file type for %s" % filename)
+    raise ValueError('Unknown file type for %s' % filename)
 
 
 ##############################################################################
