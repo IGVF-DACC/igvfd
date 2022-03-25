@@ -36,6 +36,45 @@
         },
         "accession": {
             "accessionType": "SM"
+        },
+        "starting_amount": {
+            "title": "Starting amount",
+            "description": "The initial quantity of samples obtained.",
+            "type": "number",
+            "minimum":0
+        },
+        "starting_amount_units": {
+            "title": "Starting amount units",
+            "description": "The units used to quantify the amount of samples obtained.",
+            "type": "string",
+            "enum": [
+                "cells",
+                "cells/ml",
+                "g",
+                "items",
+                "mg",
+                "whole animals",
+                "whole embryos",
+                "μg",
+                "ng"
+            ]
+        },
+        "dbxrefs": {
+            "@type": "@id",
+            "rdfs:subPropertyOf": "rdfs:seeAlso",
+            "title": "External resources",
+            "description": "Biosample identifiers from external resources, such as Biosample database or Cellosaurus.",
+            "comment": "Do not submit. DCC personnel is responsible for submission of biosample external resource identifiers.",
+            "permission": "import_items",
+            "type": "array",
+            "default": [],
+            "uniqueItems": true,
+            "items": {
+                "title": "External identifier",
+                "description": "An identifier from external resource.",
+                "type":  "string",
+                "pattern": "^((UCSC-ENCODE-cv:[\\S\\s\\d\\-\\(\\)\\+]+)|(GTEx:[a-zA-Z0-9\\-_]+)|(GEO:SAMN\\d+)|(Cellosaurus:CVCL_\\w{4}))$"
+            }
         }
     },
     "facets": {
