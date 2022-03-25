@@ -13,6 +13,11 @@
         "notes": "This is a note.",
         "product_id": "GR000001",
         "lot_id": "R00001",
-        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium"
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "starting_amount": 5,
+        "starting_amount_units": "cells",
+        "dbxrefs": [
+            "UCSC-ENCODE-cv:MCF-7"
+        ]
     }
 ]
