@@ -4,7 +4,9 @@ workflows:
   igvf-tests:
     jobs:
       - lint
-      - run-tests
+      - run-tests:
+          requires:
+            - lint
 
 jobs:
   lint:
