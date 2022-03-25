@@ -15,7 +15,7 @@ jobs:
     working_directory: ~/igvfd
     steps:
       - checkout
-      - run: pip install pre-commit
+      - run: pip install pre-commit==2.17.0
       - run: pre-commit run --all-files
 
   run-tests:

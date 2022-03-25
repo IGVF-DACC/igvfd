@@ -51,7 +51,7 @@ docker compose down -v
 ## Automatic linting
 This repo includes configuration for pre-commit hooks. To use pre-commit, install pre-commit, and activate the hooks:
 ```bash
-pip install pre-commit
+pip install pre-commit==2.17.0
 pre-commit install
 ```
 Now every time you run `git commit` the automatic checks are run to check the changes you made.
