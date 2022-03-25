@@ -23,7 +23,6 @@ def user_0():
     }
 
 
-
 @pytest.fixture
 def user_1(user_0):
     item = user_0.copy()
@@ -61,7 +60,7 @@ def wrangler(testapp):
 
 
 @pytest.fixture
-def verified_member(testapp, lab, award):
+def verified_member(testapp, award):
     item = {
         'first_name': 'IGVF',
         'last_name': 'VerifiedMember',
@@ -73,7 +72,7 @@ def verified_member(testapp, lab, award):
 
 
 @pytest.fixture
-def unverified_member(testapp, lab, award):
+def unverified_member(testapp, award):
     item = {
         'first_name': 'IGVF',
         'last_name': 'NonVerifiedMember',
@@ -92,6 +91,18 @@ def submitter(testapp, lab, award):
         'email': 'IGVF_submitter@example.org',
         'submits_for': [lab['@id']],
         'viewing_groups': [award['viewing_group']],
+    }
+    res = testapp.post_json('/user', item)
+    return testapp.get(res.location).json
+
+
+@pytest.fixture
+def pi(testapp):
+    item = {
+        'first_name': 'Principal',
+        'last_name': 'Investigator',
+        'email': 'pi@example.org',
+        'groups': ['verified'],
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json

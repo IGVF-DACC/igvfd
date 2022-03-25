@@ -111,10 +111,11 @@ def test_collection_limit(workbook, testapp):
     assert len(res.json['@graph']) == 2
 
 
-def test_collection_post(testapp):
+def test_collection_post(testapp, pi):
     item = {
         'name': 'lab-a',
-        'title': 'The Lab A',
+        'institute_label': 'Institute A',
+        'pi': pi['@id'],
         'status': 'current'
     }
     return testapp.post_json('/lab', item, status=201)
@@ -163,15 +164,14 @@ def test_item_actions_filtered_by_permission(testapp, authenticated_testapp, lab
     assert not any(action for action in res.json.get('actions', []) if action['name'] == 'edit')
 
 
-def test_collection_put(testapp, execute_counter):
+def test_collection_put(testapp, execute_counter, pi, unverified_member):
     initial = {
         'name': 'lab-a',
-        'title': 'The Lab A',
-        'address1': 'xyz'
+        'institute_label': 'Institute A',
+        'pi': pi['@id'],
     }
     item_url = testapp.post_json('/lab', initial).location
-
-    with execute_counter.expect(1):
+    with execute_counter.expect(2):
         item = testapp.get(item_url).json
 
     for key in initial:
@@ -179,7 +179,8 @@ def test_collection_put(testapp, execute_counter):
 
     update = {
         'name': 'lab-b',
-        'title': 'The Lab B',
+        'institute_label': 'Institute B',
+        'pi': unverified_member['@id'],
     }
     testapp.put_json(item_url, update, status=200)
 
@@ -189,11 +190,12 @@ def test_collection_put(testapp, execute_counter):
         assert res[key] == update[key]
 
 
-def test_post_duplicate_uuid(testapp, lab):
+def test_post_duplicate_uuid(testapp, lab, pi):
     item = {
         'uuid': lab['uuid'],
         'name': 'lab-a',
-        'title': 'The Lab A',
+        'institute_label': 'Institute A',
+        'pi': pi['@id'],
     }
     testapp.post_json('/lab', item, status=409)
 
