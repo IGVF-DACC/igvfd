@@ -57,7 +57,7 @@ def accession(instance, subschema):
         if new_accession in request.root:
             continue
         return new_accession
-    raise AssertionError("Free accession not found in %d attempts" % ATTEMPTS)
+    raise AssertionError('Free accession not found in %d attempts' % ATTEMPTS)
 
 
 PROD_ACCESSION_FORMAT = (digits, digits, digits, ascii_uppercase, ascii_uppercase, ascii_uppercase)

@@ -1,5 +1,6 @@
 import pytest
 
+
 @pytest.fixture
 def testapp(app):
     '''TestApp with JSON accept header.

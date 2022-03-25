@@ -90,6 +90,7 @@ def test_item_release_endpoint_triggers_set_status(testapp, content, mocker):
     testapp.patch_json(igvf_item_id + '@@set_status', {'status': 'released'})
     assert Item.set_status.call_count == 1
 
+
 def test_set_status_endpoint_status_not_specified(testapp, content):
     res = testapp.get('/test-igvf-items/')
     igvf_item_id = res.json['@graph'][0]['@id']

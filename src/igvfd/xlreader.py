@@ -36,13 +36,12 @@ def cell_value(cell, datemode):
     raise ValueError(repr(cell), 'unknown cell type')
 
 
-
 def reader(stream, sheetname=None):
     """ Read named sheet or first and only sheet from xlsx file
     """
     book = xlrd.open_workbook(file_contents=stream.read())
     if sheetname is None:
-        sheet, = book.sheets()        
+        sheet, = book.sheets()
     else:
         try:
             sheet = book.sheet_by_name(sheetname)

@@ -4,7 +4,7 @@
         "schema_version": {
             "title": "Schema version",
             "description": "The version of the JSON schema that the server uses to validate the object.",
-            "comment":  "Do not submit. The version used to validate the object is set by the server. The default should be set to the current version.",
+            "comment": "Do not submit. The version used to validate the object is set by the server. The default should be set to the current version.",
             "type": "string",
             "pattern": "^\\d+(\\.\\d+)*$",
             "requestMethod": []
@@ -13,8 +13,8 @@
     "uuid": {
         "uuid": {
             "title": "UUID",
-            "description":"The unique identifier associated with every object.",
-            "comment":  "Do not submit. The uuid is set by the server.",
+            "description": "The unique identifier associated with every object.",
+            "comment": "Do not submit. The uuid is set by the server.",
             "type": "string",
             "format": "uuid",
             "serverDefault": "uuid4",
@@ -37,7 +37,7 @@
         "alternate_accessions": {
             "title": "Alternate accessions",
             "description": "Accessions previously assigned to objects that have been merged with this object.",
-	        "comment": "Do not submit. Only admins are allowed to set or update this value.",
+            "comment": "Do not submit. Only admins are allowed to set or update this value.",
             "type": "array",
             "default": [],
             "permission": "import_items",
@@ -63,7 +63,7 @@
                 "title": "Lab alias",
                 "description": "A lab specific identifier to reference an object.",
                 "comment": "Current convention is colon separated lab name and lab identifier. (e.g. john-doe:42).",
-                "type":  "string",
+                "type": "string",
                 "pattern": "^(?:j-michael-cherry):[a-zA-Z\\d_$.+!*,()'-]+(?:\\s[a-zA-Z\\d_$.+!*,()'-]+)*$"
             }
         }
@@ -91,7 +91,7 @@
             "type": "string",
             "default": "in progress",
             "permission": "import_items",
-            "enum" : [
+            "enum": [
                 "deleted",
                 "in progress",
                 "released"
@@ -103,7 +103,7 @@
             "title": "Status",
             "type": "string",
             "default": "current",
-            "enum" : [
+            "enum": [
                 "current",
                 "deleted",
                 "disabled"
@@ -118,8 +118,12 @@
             "comment": "Do not submit. The date the object is created is assigned by the server.",
             "type": "string",
             "anyOf": [
-                {"format": "date-time"},
-                {"format": "date"}
+                {
+                    "format": "date-time"
+                },
+                {
+                    "format": "date"
+                }
             ],
             "serverDefault": "now",
             "permission": "import_items"

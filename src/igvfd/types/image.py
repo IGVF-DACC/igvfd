@@ -31,19 +31,19 @@ class Image(ItemWithAttachment, Item):
         value = properties['attachment']['download']
         keys.setdefault('image:filename', []).append(value)
         return keys
-    
+
     @calculated_property(schema={
-        "title": "Thumb Nail",
-        "description": "Image url",
-        "type": "string",
+        'title': 'Thumb Nail',
+        'description': 'Image url',
+        'type': 'string',
     })
     def thumb_nail(self, request, attachment):
         return self.jsonld_id(request) + attachment['href']
 
     @calculated_property(schema={
-        "title": "Download Url",
-        "description": "Download Url",
-        "type": "string",
+        'title': 'Download Url',
+        'description': 'Download Url',
+        'type': 'string',
     })
     def download_url(self, request, attachment):
         return self.jsonld_id(request) + attachment['href']

@@ -3,7 +3,7 @@ import requests
 import igvfd.auth0 as auth0
 
 from unittest import mock
-from snovault import COLLECTIONS		
+from snovault import COLLECTIONS
 from jsonschema.exceptions import ValidationError
 from pyramid.httpexceptions import (
     HTTPBadRequest,
@@ -31,10 +31,10 @@ def auth0_access_token():
         res = requests.post(url, data=creds)
         res.raise_for_status()
     except Exception as e:
-        pytest.skip("Error retrieving auth0 test user access token: %r" % e)
+        pytest.skip('Error retrieving auth0 test user access token: %r' % e)
     data = res.json()
     if 'access_token' not in data:
-        print("NO ACCESSSS TOKEN")
+        print('NO ACCESSSS TOKEN')
         pytest.skip("Missing 'access_token' in auth0 test user access token: %r" % data)
     return data['access_token']
 
@@ -46,7 +46,7 @@ def auth0_igvf_user_token(auth0_access_token):
 
 @pytest.fixture(scope='session')
 def auth0_igvf_user_profile(auth0_access_token):
-    user_url = "https://{domain}/userinfo?access_token={access_token}" \
+    user_url = 'https://{domain}/userinfo?access_token={access_token}' \
         .format(domain='igvf.auth0.com', access_token=auth0_access_token)
     user_info = requests.get(user_url).json()
     return user_info
@@ -159,7 +159,7 @@ def test_signup_verify_invalid_status_code_throws_exception(mock_get):
         auth0.signup(context, request)
 
 
-@mock.patch('requests.get', return_value=_mock_requests_get(url='', json_data={'email_verified':False,}, status_code=400))
+@mock.patch('requests.get', return_value=_mock_requests_get(url='', json_data={'email_verified': False, }, status_code=400))
 def test_signup_verify_unauthenticated_email_causes_exception(mock_get):
     with pytest.raises(HTTPBadRequest):
         request = _mock_request()
@@ -167,13 +167,12 @@ def test_signup_verify_unauthenticated_email_causes_exception(mock_get):
         auth0.signup(context, request)
 
 
-@mock.patch('requests.get', return_value=_mock_requests_get(url='', json_data={'email_verified':False,}, status_code=400))
+@mock.patch('requests.get', return_value=_mock_requests_get(url='', json_data={'email_verified': False, }, status_code=400))
 def test_signup_verify_not_providing_access_token_raises_exception(mock_get):
     with pytest.raises(HTTPBadRequest):
         request = _mock_request({'accessToken': None})
         context = _mock_context()
         auth0.signup(context, request)
-
 
 
 @pytest.mark.parametrize('json_data', [{
@@ -325,13 +324,12 @@ def test_signup_fails_if_given_improper_credentials(mock_get, mock_collection_ad
         'first_name': 'fakefirstname',
         'last_name': 'fakeemail',
     }),
-    ])
+])
 def test_get_user_info_assigns_valid_data_properly(json_data, expected):
     user_info = auth0._get_user_info(json_data)
     assert user_info['email'] == expected['email']
     assert user_info['first_name'] == expected['first_name']
     assert user_info['last_name'] == expected['last_name']
-
 
 
 @pytest.mark.parametrize('json_data, expected', [
@@ -352,11 +350,11 @@ def test_get_user_info_assigns_valid_data_properly(json_data, expected):
         'first_name': 'fakefirstname',
         'last_name': 'fakeemail',
     }, None),
-    ])
+])
 def test_get_user_info_throws_proper_exception(json_data, expected):
     with pytest.raises(ValidationError):
         user_info = auth0._get_user_info(json_data)
-    
+
 
 @mock.patch('igvfd.auth0.validate_request', side_effect=_mock_validate_request)
 @mock.patch('igvfd.auth0.collection_add', side_effect=_mock_collection_add)
@@ -397,7 +395,6 @@ def test_signup_verify_email_is_verified_with_name(mock_get, mock_collection_add
     assert signup == expected
 
 
-
 @mock.patch('igvfd.auth0.validate_request', side_effect=_mock_validate_request)
 @mock.patch('igvfd.auth0.collection_add', side_effect=_mock_collection_add_return_none)
 @mock.patch('requests.get', return_value=_mock_requests_get(
@@ -415,7 +412,6 @@ def test_signup_verify_exception_thrown_if_user_is_not_created(mock_get, mock_co
         request.errors = ['Smooth Criminal']
         context = _mock_context()
         signup = auth0.signup(context, request)
-
 
 
 @mock.patch('igvfd.auth0.forget', return_value='')
@@ -438,6 +434,7 @@ def test_login_throws_proper_exception_when_user_does_not_exist(mock_get, signup
             self.session = mock.Mock(return_value=[])
             self.invalidate = mock.Mock()
             self.get_csrf_token = mock.Mock()
+
         def __iter__(self):
             return self
 

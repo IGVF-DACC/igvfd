@@ -29,7 +29,6 @@ import psutil
 import time
 
 
-
 log = logging.getLogger(__name__)
 
 
@@ -187,7 +186,7 @@ def canonical_redirect(event):
         return
     canonical_path, _, canonical_qs = canonical.partition('?')
 
-    request_path = _join_path_tuple(('',) + split_path_info(request.path_info))   
+    request_path = _join_path_tuple(('',) + split_path_info(request.path_info))
     if (request_path == canonical_path.rstrip('/') and
             request.path_info.endswith('/') == canonical_path.endswith('/') and
             (canonical_qs in ('', request.query_string))):
@@ -266,6 +265,7 @@ rss_limit = 256 * (1024 ** 2)  # MB
 
 def reload_process(process):
     return psutil.Process(process.pid).memory_info().rss > rss_limit
+
 
 node_env = os.environ.copy()
 node_env['NODE_PATH'] = ''

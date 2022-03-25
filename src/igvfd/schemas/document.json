@@ -4,18 +4,41 @@
     "$id": "/profiles/document.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
-    "required": [ "document_type", "lab", "award"],
-    "identifyingProperties": ["uuid","aliases"],
+    "required": [
+        "document_type",
+        "lab",
+        "award"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
     "additionalProperties": false,
     "mixinProperties": [
-        { "$ref": "mixins.json#/schema_version" },
-        { "$ref": "mixins.json#/uuid" },
-        { "$ref": "mixins.json#/attachment" },
-        { "$ref": "mixins.json#/aliases" },
-	{ "$ref": "mixins.json#/attribution" },
-        { "$ref": "mixins.json#/standard_status" },
-        { "$ref": "mixins.json#/submitted" },
-	{ "$ref": "mixins.json#/notes" }
+        {
+            "$ref": "mixins.json#/schema_version"
+        },
+        {
+            "$ref": "mixins.json#/uuid"
+        },
+        {
+            "$ref": "mixins.json#/attachment"
+        },
+        {
+            "$ref": "mixins.json#/aliases"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/submitted"
+        },
+        {
+            "$ref": "mixins.json#/notes"
+        }
     ],
     "properties": {
         "schema_version": {
@@ -27,7 +50,7 @@
             "type": "string",
             "enum": [
                 "general protocol"
-           ]
+            ]
         },
         "description": {
             "title": "Description",

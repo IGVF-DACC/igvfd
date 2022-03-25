@@ -232,7 +232,7 @@ def no_deps(conn, DBSession):
     def check_dependencies(session, flush_context):
         assert not flush_context.cycles
 
-    @event.listens_for(conn, "before_execute", retval=True)
+    @event.listens_for(conn, 'before_execute', retval=True)
     def before_execute(conn, clauseelement, multiparams, params):
         return clauseelement, multiparams, params
 
