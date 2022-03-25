@@ -3,8 +3,15 @@
     "$id": "/profiles/lab.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
-    "required": ["name", "institute_label", "pi"],
-    "identifyingProperties": ["uuid", "name"],
+    "required": [
+        "name",
+        "institute_label",
+        "pi"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "name"
+    ],
     "additionalProperties": false,
     "mixinProperties": [
         {

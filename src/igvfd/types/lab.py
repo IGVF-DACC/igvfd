@@ -34,4 +34,3 @@ class Lab(Item):
         pi_object = request.embed(pi, '@@object')
         pi_name = pi_object.get('title')
         return f'{pi_name}, {institute_label}'
-    
