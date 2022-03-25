@@ -16,7 +16,6 @@ jobs:
     steps:
       - checkout
       - run: pip install pre-commit
-      - run: pre-commit install
       - run: pre-commit run --all-files
 
   run-tests:
