@@ -276,7 +276,7 @@
         }
     },
     "lot_id": {
-        "lot_id":{
+        "lot_id": {
             "title": "Lot ID",
             "description": "The lot identifier provided by the originating lab or vendor.",
             "type": "string",
@@ -286,9 +286,9 @@
     "source": {
         "source": {
             "title": "Source",
-    	    "description": "The originating lab or vendor.",
-    	    "comment": "See source.json for available identifiers.",
-    	    "type": "string"
+            "description": "The originating lab or vendor.",
+            "comment": "See source.json for available identifiers.",
+            "type": "string"
         }
     }
 }
