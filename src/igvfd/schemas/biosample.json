@@ -1,120 +1,164 @@
-{ 
+{
     "title": "Biosample",
     "id": "/profiles/biosample.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Schema for submitting a specific biological sample.",
     "type": "object",
-    "required": [ "award", "lab" ],  
-    "identifyingProperties": [ "uuid", "accession", "alternate_accessions", "aliases" ],   
-    "additionalProperties": false,    
+    "required": [
+        "award",
+        "lab"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
     "mixinProperties": [
-        { "$ref": "sample.json#/properties" },
-        { "$ref": "mixins.json#/schema_version" },         
-        { "$ref": "mixins.json#/uuid" },
-        { "$ref": "mixins.json#/accession" },
-        { "$ref": "mixins.json#/alternate_accessions" },
-        { "$ref": "mixins.json#/accessioned_status" },
-        { "$ref": "mixins.json#/aliases" },
-        { "$ref": "mixins.json#/submitted" },
-        { "$ref": "mixins.json#/attribution" },
-        { "$ref": "mixins.json#/submitter_comment" },
-        { "$ref": "mixins.json#/notes" },
-        { "$ref": "mixins.json#/documents" },
-        { "$ref": "mixins.json#/product_id" },       
-        { "$ref": "mixins.json#/lot_id" },
-        { "$ref": "mixins.json#/url" }
+        {
+            "$ref": "sample.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/schema_version"
+        },
+        {
+            "$ref": "mixins.json#/uuid"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/alternate_accessions"
+        },
+        {
+            "$ref": "mixins.json#/accessioned_status"
+        },
+        {
+            "$ref": "mixins.json#/aliases"
+        },
+        {
+            "$ref": "mixins.json#/submitted"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/submitter_comment"
+        },
+        {
+            "$ref": "mixins.json#/notes"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/product_id"
+        },
+        {
+            "$ref": "mixins.json#/lot_id"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        }
     ],
     "dependentSchemas": {
         "lot_id": {
-            "required": ["product_id"],
+            "required": [
+                "product_id"
+            ],
             "comment": "Sample with lot_id must include product_id."
         },
         "age_units": {
             "comment": "Human biosamples cannot have age units of minutes or hours. Yeast biosamples cannot have age units of years or months.",
-            "allOf":
-            [
-            {
-                "not": {
-                    "properties": {
-                        "organism":
-                        {
-                            "enum": ["Homo sapiens"]
-                        },
-                        "age_units":
-                        {
-                            "enum": [
-                                "minute", 
-                                "hour"
-                            ]
+            "allOf": [
+                {
+                    "not": {
+                        "properties": {
+                            "organism": {
+                                "enum": [
+                                    "Homo sapiens"
+                                ]
+                            },
+                            "age_units": {
+                                "enum": [
+                                    "minute",
+                                    "hour"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "properties": {
+                            "organism": {
+                                "enum": [
+                                    "Saccharomyces"
+                                ]
+                            },
+                            "age_units": {
+                                "enum": [
+                                    "year",
+                                    "month"
+                                ]
+                            }
                         }
                     }
                 }
-            },
-            {
-                "not": {
-                    "properties": {
-                        "organism":
-                        {
-                            "enum": ["Saccharomyces"]
-                        },
-                        "age_units":
-                        {
-                            "enum": [
-                                "year", 
-                                "month"
-                            ]
-                        }
-                    }
-                }
-            }
             ]
         },
         "life_stage": {
             "comment": "Human and mouse biosamples cannot have yeast life stages and vice versa.",
-            "allOf":
-            [
-            {
-                "not": {
-                    "properties": {
-                        "organism":
-                        {   
-                            "oneOf": [
-                                {"enum": ["Homo sapiens"]},
-                                {"enum": ["Mus musculus"]}
-                            ]
-                        },
-                        "life_stage":
-                        {
-                            "enum": [
-                                "lag",
-                                "fermentative",
-                                "respiraive",
-                                "stationary",
-                                "decline"
-                            ]
+            "allOf": [
+                {
+                    "not": {
+                        "properties": {
+                            "organism": {
+                                "oneOf": [
+                                    {
+                                        "enum": [
+                                            "Homo sapiens"
+                                        ]
+                                    },
+                                    {
+                                        "enum": [
+                                            "Mus musculus"
+                                        ]
+                                    }
+                                ]
+                            },
+                            "life_stage": {
+                                "enum": [
+                                    "lag",
+                                    "fermentative",
+                                    "respiraive",
+                                    "stationary",
+                                    "decline"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "properties": {
+                            "organism": {
+                                "enum": [
+                                    "Saccharomyces"
+                                ]
+                            },
+                            "life_stage": {
+                                "enum": [
+                                    "adult",
+                                    "child",
+                                    "postnatal",
+                                    "embryonic"
+                                ]
+                            }
                         }
                     }
                 }
-            },
-            {
-                "not": {
-                    "properties": {
-                        "organism":
-                        {
-                            "enum": ["Saccharomyces"]
-                        },
-                        "life_stage":
-                        {
-                            "enum": [
-                                "adult",
-                                "child",
-                                "postnatal",
-                                "embryonic"
-                            ]
-                        }
-                    }
-                }
-            }
             ]
         }
     },
@@ -123,13 +167,17 @@
             "default": "1"
         },
         "organism": {
-            "enum": ["Homo sapiens", "Mus musculus", "Saccharomyces"]
+            "enum": [
+                "Homo sapiens",
+                "Mus musculus",
+                "Saccharomyces"
+            ]
         },
         "age": {
             "title": "Age",
             "description": "Age of organism at collection of the biosample.",
             "type": "number",
-            "minimum":0
+            "minimum": 0
         },
         "sex": {
             "title": "Sex",
