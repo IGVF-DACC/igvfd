@@ -18,6 +18,7 @@
         ],
         "organism": "Homo sapiens",
         "age": 40,
-        "age_units": "year"
+        "age_units": "year",
+        "life_stage": "adult"
     }
 ]
