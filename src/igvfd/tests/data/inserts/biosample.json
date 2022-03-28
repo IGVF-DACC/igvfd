@@ -15,6 +15,9 @@
         "starting_amount_units": "cells",
         "dbxrefs": [
             "GEO:SAMN1"
-        ]
+        ],
+        "organism": "Homo sapiens",
+        "age": 40,
+        "age_units": "year"
     }
 ]

@@ -28,11 +28,67 @@
         "lot_id": {
             "required": ["product_id"],
             "comment": "Sample with lot_id must include product_id."
+        },
+        "organism": {
+            "comment": "Human biosamples cannot have age units of minutes or hours. Saccharomyces biosamples cannot have age units of years.",
+            "allOf":
+            [
+            {
+                "not": {
+                    "properties": {
+                        "organism":
+                        {
+                            "enum": ["Homo sapiens"]
+                        },
+                        "age_units":
+                        {
+                            "enum": ["minute", "hour"]
+                        }
+                    }
+                }
+            },
+            {
+                "not": {
+                    "properties": {
+                        "organism":
+                        {
+                            "enum": ["Saccharomyces"]
+                        },
+                        "age_units":
+                        {
+                            "enum": ["year"]
+                        }
+                    }
+                }
+            }
+            ]
         }
     },
     "properties": {
         "schema_version": {
             "default": "1"
+        },
+        "organism": {
+            "enum": ["Homo sapiens", "Mus musculus", "Saccharomyces"]
+        },
+        "age": {
+            "title": "Age",
+            "description": "Age of biosample at collection.",
+            "type": "number",
+            "minimum":0
+        },
+        "age_units": {
+            "title": "Age units",
+            "description": "The units of time associated with age of biosample.",
+            "type": "string",
+            "enum": [
+                "minute",
+                "hour",
+                "day",
+                "week",
+                "month",
+                "year"
+            ]
         }
     },
     "facets": {
