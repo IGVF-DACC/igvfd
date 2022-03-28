@@ -127,13 +127,18 @@
         },
         "age": {
             "title": "Age",
-            "description": "Age of biosample at collection.",
+            "description": "Age of organism at collection of the biosample.",
             "type": "number",
             "minimum":0
         },
+        "sex": {
+            "title": "Sex",
+            "description": "Sex of the organism associated with the biosample.",
+            "type": "string"
+        },
         "age_units": {
             "title": "Age units",
-            "description": "The units of time associated with age of biosample.",
+            "description": "The units of time associated with age of the biosample.",
             "type": "string",
             "enum": [
                 "minute",
@@ -146,7 +151,7 @@
         },
         "life_stage": {
             "title": "Life stage",
-            "description": "The development stage of organism used to prepare biosample.",
+            "description": "The development stage of the organism used to prepare biosample.",
             "type": "string",
             "enum": [
                 "adult",
@@ -160,6 +165,20 @@
                 "stationary",
                 "decline"
             ]
+        },
+        "biosample_ontology": {
+            "biosample_ontology": {
+                "title": "Biosample ontology",
+                "description": "Ontology of the biosample.",
+                "type": "string"
+            }
+        },
+        "disease_ontology": {
+            "disease_ontology": {
+                "title": "Disease ontology",
+                "description": "Ontology of the disease associated with the biosample.",
+                "type": "string"
+            }
         }
     },
     "facets": {

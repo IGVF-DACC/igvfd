@@ -19,6 +19,9 @@
         "organism": "Homo sapiens",
         "age": 40,
         "age_units": "year",
-        "life_stage": "adult"
+        "life_stage": "adult",
+        "biosample_ontology": "motor neuron",
+        "disease_ontology": "motor neuron disease",
+        "sex": "male"
     }
 ]
