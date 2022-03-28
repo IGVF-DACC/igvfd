@@ -227,6 +227,40 @@
                 "description": "Ontology of the disease associated with the biosample.",
                 "type": "string"
             }
+        },
+        "date": {
+            "date": {
+                "title": "Biosample date",
+                "description": "The date the biosample was harvested, disected, created depending on biosample type.",
+                "comment": "Date should be submitted in as YYYY-MM-DD.",
+                "type": "string",
+                "format": "date"
+            }
+        },
+        "Related_biosamples": {
+            "title": "Related_biosamples",
+            "description": "Biosamples that are related to this biosample with the relation of 'realted_biosample_realtion'.",
+            "comment": "A list of biosamples should all have the same relationship to this biosample.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "description": "A related biosample",
+                "comment": "See biosample.json for available identifiers.",
+                "type": "string",
+                "linkTo": "Biosample"
+            }
+        },
+        "Related_biosamples_relation": {
+            "title": "Relationship to other related biosamples",
+            "description": "The specific relationship to the biosamples in related_biosamples field",
+            "comment": "Must be submitted with related_biosamples",
+            "enum": [
+                "originated_from",
+                "pooled_from",
+                "separated_from",
+                "hosted_by",
+                "derived_from"
+            ]
         }
     },
     "facets": {
