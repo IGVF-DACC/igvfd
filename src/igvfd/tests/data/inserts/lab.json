@@ -16,5 +16,617 @@
         "name": "ali-mortazavi",
         "uuid": "6d911b55-3c79-49f1-8096-936e99cc133e",
         "pi": "ali@uci.edu"
+    },
+    {
+        "institute_label": "Caltech",
+        "name": "barbara-wold",
+        "uuid": "cd65d1a2-4cc7-43a1-91d3-2d63ca401546",
+        "pi": "barbara@caltech.edu"
+    },
+    {
+        "institute_label": "Caltech",
+        "name": "lior-pachter",
+        "uuid": "815fb6e9-3cdd-4b51-837d-c784d8c8383b",
+        "pi": "lior@caltech.edu"
+    },
+    {
+        "institute_label": "UCI",
+        "name": "grant-macgregor",
+        "uuid": "e8570bff-3ee0-4db9-ba00-b4aa1396461e",
+        "pi": "grant@uci.edu"
+    },
+    {
+        "institute_label": "UCI",
+        "name": "kim-green",
+        "uuid": "267be422-cfd5-47a4-8315-e831bdabc0af",
+        "pi": "kim@uci.edu"
+    },
+    {
+        "awards": [
+            "1U01HG012039-01"
+        ],
+        "institute_label": "UW Madison",
+        "name": "mark-craven",
+        "uuid": "c718a299-fe2b-4e21-a031-f2e40bfa1a63",
+        "pi": "mark@biostat.wisc.edu"
+    },
+    {
+        "institute_label": "UW Madison",
+        "name": "qiongshi-lu",
+        "uuid": "62444d2c-0989-4a2e-a623-03a16a7a1b5c",
+        "pi": "qiongshi@biostat.wisc.edu"
+    },
+    {
+        "institute_label": "UW Madison",
+        "name": "audrey-gasch",
+        "uuid": "6be8231e-d591-4c7f-8726-3beceed4fa45",
+        "pi": "audrey@wisc.edu"
+    },
+    {
+        "institute_label": "PreventionGenetics",
+        "name": "robert-steiner",
+        "uuid": "e86fd8b9-641f-4a9a-ad9e-9f5157a5eb97",
+        "pi": "robert@preventiongenetics.com"
+    },
+    {
+        "awards": [
+            "1UM1HG011972-01"
+        ],
+        "institute_label": "Stanford",
+        "name": "jesse-engreitz",
+        "uuid": "3da2fccd-bf14-4504-936f-9c1b4db1f27d",
+        "pi": "jesse@stanford.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011972-01"
+        ],
+        "institute_label": "Stanford",
+        "name": "thomas-quertermous",
+        "uuid": "0c145a2b-89b1-4dbd-82bf-4c604c30fa38",
+        "pi": "thomas@stanford.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011972-01"
+        ],
+        "institute_label": "Stanford",
+        "name": "anshul-kundaje",
+        "uuid": "1b76173d-57f0-4f02-8bfc-5f417219b583",
+        "pi": "anshul@stanford.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011972-01"
+        ],
+        "institute_label": "Stanford",
+        "name": "michael-bassik",
+        "uuid": "78d7e13c-eb63-4bf3-923d-2808da709368",
+        "pi": "michael@stanford.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011972-01"
+        ],
+        "institute_label": "Stanford",
+        "name": "will-greenleaf",
+        "uuid": "e55f76e8-36dc-411a-9eeb-a8c604e294c7",
+        "pi": "will@stanford.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011972-01"
+        ],
+        "institute_label": "Stanford",
+        "name": "marlene-rabinovitch",
+        "uuid": "9cf0a69e-95dc-47d5-b68a-cca1fba2a3da",
+        "pi": "marlene@stanford.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011972-01"
+        ],
+        "institute_label": "Stanford",
+        "name": "lars-steinmetz",
+        "uuid": "9efaa308-42bf-4f73-b530-68124349dcc6",
+        "pi": "lars@stanford.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011966-01"
+        ],
+        "institute_label": "UW",
+        "name": "jay-shendure",
+        "uuid": "a550c9b1-cfee-4b94-a076-55c046460465",
+        "pi": "jay@uw.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011966-01"
+        ],
+        "institute_label": "UCSF",
+        "name": "nadav-ahituv",
+        "uuid": "555e7e01-3541-4b73-9189-fdcbf6634ad9",
+        "pi": "nadav@ucsf.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011966-01"
+        ],
+        "institute_label": "BIH",
+        "name": "martin-kircher",
+        "uuid": "62615e3b-b1c1-4ff7-a72b-a13d663daae7",
+        "pi": "martin@bih-charite.de"
+    },
+    {
+        "awards": [
+            "1U01HG012051-01"
+        ],
+        "institute_label": "MSKCC",
+        "name": "danwei-huangfu",
+        "uuid": "250a8f50-294b-437a-95ed-fd397177595b",
+        "pi": "danwei@mskcc.org"
+    },
+    {
+        "awards": [
+            "1U01HG012051-01"
+        ],
+        "institute_label": "JHU",
+        "name": "michael-beer",
+        "uuid": "8ec12683-640c-40fd-84f3-c445c274c20f",
+        "pi": "michael@jhu.edu"
+    },
+    {
+        "awards": [
+            "1U01HG012051-01"
+        ],
+        "institute_label": "MSKCC",
+        "name": "anna-katerina-hadjantonakis",
+        "uuid": "77ac36bb-2872-4997-8d3d-10d5548730a0",
+        "pi": "anna@mskcc.org"
+    },
+    {
+        "awards": [
+            "1U01HG012103-01"
+        ],
+        "institute_label": "MSKCC",
+        "name": "christina-leslie",
+        "uuid": "339f75f8-5b5f-4955-87d9-28379cdd6954",
+        "pi": "christina@cbio.mskcc.org"
+    },
+    {
+        "awards": [
+            "1U01HG012103-01"
+        ],
+        "institute_label": "MSKCC",
+        "name": "alexander-rudensky",
+        "uuid": "25a86d41-f765-4aac-95a4-7f4fc45e2c5d",
+        "pi": "alexander@mskcc.org"
+    },
+    {
+        "institute_label": "HSS",
+        "name": "laura-donlin",
+        "uuid": "77fbd2cd-59fa-40e4-a423-2bcb425ee030",
+        "pi": "laura@gmail.com"
+    },
+    {
+        "awards": [
+            "HG012059"
+        ],
+        "institute_label": "UCSD",
+        "name": "hannah-carter",
+        "uuid": "45f3c7b5-54b3-4ebc-b8d9-9030c003530e",
+        "pi": "hannah@ucsd.edu"
+    },
+    {
+        "awards": [
+            "HG012059"
+        ],
+        "institute_label": "UCSD",
+        "name": "bing-ren",
+        "uuid": "0e3f90ba-c6e8-4e77-b0f3-e41b74b0a463",
+        "pi": "bing@ucsd.edu"
+    },
+    {
+        "awards": [
+            "HG012059"
+        ],
+        "institute_label": "UCSD",
+        "name": "kyle-gaulton",
+        "uuid": "12b96f88-122d-4324-8726-052c0271e79b",
+        "pi": "kyle@ucsd.edu"
+    },
+    {
+        "awards": [
+            "HG012059"
+        ],
+        "institute_label": "UCSD",
+        "name": "maike-sander",
+        "uuid": "cce347cd-627f-43ca-a40f-e96c658fa46e",
+        "pi": "maike@ucsd.edu"
+    },
+    {
+        "institute_label": "Duke",
+        "name": "charles-gersbach",
+        "uuid": "1d83804c-9ddc-4f4c-8276-8fa2b007e081",
+        "pi": "charles@duke.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG012053-01"
+        ],
+        "institute_label": "Duke",
+        "name": "gregory-crawford",
+        "uuid": "db2aef9a-70df-4024-be42-9f5b391f7223",
+        "pi": "gregory@duke.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG012053-01"
+        ],
+        "institute_label": "Duke",
+        "name": "tim-reddy",
+        "uuid": "8bdb8931-4c49-4a65-b73d-3c2a54422ec1",
+        "pi": "tim@duke.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG012076-01"
+        ],
+        "institute_label": "Stanford",
+        "name": "ansuman-sapathy",
+        "uuid": "847e6a7d-0850-46b0-881f-ade7660cd4c9",
+        "pi": "ansuman@stanford.edu"
+    },
+    {
+        "awards": [
+            "1U01HG011967-01"
+        ],
+        "institute_label": "Duke",
+        "name": "andrew-allen",
+        "uuid": "6bffa5c8-7487-4cfb-8a41-347ef48de57b",
+        "pi": "andrew@duke.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011996-01"
+        ],
+        "institute_label": "UT",
+        "name": "gary-hon",
+        "uuid": "82c6e162-fce8-4bcb-9239-4f9d5dd94ec8",
+        "pi": "gary@utsouthwestern.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011996-01"
+        ],
+        "institute_label": "UT",
+        "name": "nikhil-munshi",
+        "uuid": "3a47490a-1b99-45f4-b8df-49d183751c16",
+        "pi": "nikhil@UTSouthwestern.edu"
+    },
+    {
+        "institute_label": "UT",
+        "name": "w-lee-kraus",
+        "uuid": "2c69ff3c-718b-44f1-ab8b-30fbf7ba3626",
+        "pi": "w@utsouthwestern.edu "
+    },
+    {
+        "awards": [
+            "1UM1HG011969-01"
+        ],
+        "institute_label": "UW",
+        "name": "lea-starita",
+        "uuid": "4b5db4b9-24fd-4d4e-97a2-6966c6cb2726",
+        "pi": "lea@uw.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011969-01"
+        ],
+        "institute_label": "UW",
+        "name": "doug-fowler",
+        "uuid": "4ea42616-00a9-4bd9-aba9-ce532aeddc1c",
+        "pi": "doug@uw.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG012010-01"
+        ],
+        "institute_label": "MGH",
+        "name": "luca-pinello",
+        "uuid": "75cb8986-ca5b-4677-bcc4-dad26934e1d0",
+        "pi": "luca@mgh.harvard.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG012010-01"
+        ],
+        "institute_label": "MHI",
+        "name": "guillaume-lettre",
+        "uuid": "c03f4ced-01bb-4591-9087-a20131afc21e",
+        "pi": "guillaume@umontreal.ca"
+    },
+    {
+        "institute_label": "Mount Sinai",
+        "name": "benhur-lee",
+        "uuid": "61f1ef61-56ee-4920-8418-3c48f82a7134",
+        "pi": "benhur@mssm.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG012010-01"
+        ],
+        "institute_label": "HSCI",
+        "name": "daniel-bauer",
+        "uuid": "56c09df8-de2d-420e-b5cd-c4905911c975",
+        "pi": "daniel@childrens.harvard.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG012010-01"
+        ],
+        "institute_label": "Brigham and Women's Hospital",
+        "name": "richard-sherwood",
+        "uuid": "a7fd72e5-d6c4-431c-a704-90609e044bb6",
+        "pi": "richard@rics.bwh.harvard.edu"
+    },
+    {
+        "institute_label": "MGH",
+        "name": "benjamin-kleinstiver",
+        "uuid": "000b1fb0-1cdb-4496-938b-e754d26feca7",
+        "pi": "benjamin@mgh.harvard.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011989-01"
+        ],
+        "institute_label": "DFCI",
+        "name": "marc-vidal",
+        "uuid": "a4c229c3-ad52-4230-bebf-e0c25af556b7",
+        "pi": "marc@dfci.harvard.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011989-01"
+        ],
+        "institute_label": "DFCI",
+        "name": "david-hill",
+        "uuid": "359a263b-ded9-422b-8e80-1237ac0e31f3",
+        "pi": "david@dfci.harvard.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG011989-01"
+        ],
+        "institute_label": "UToronto",
+        "name": "frederick-roth",
+        "uuid": "476d6fc1-c398-433b-9f95-203da696ac0f",
+        "pi": "frederick@gmail.com"
+    },
+    {
+        "awards": [
+            "1UM1HG011989-01"
+        ],
+        "institute_label": "UToronto",
+        "name": "mikko-taipale",
+        "uuid": "655c728d-0a29-40a0-a3c8-589e4a6e4eda",
+        "pi": "mikko@utoronto.ca"
+    },
+    {
+        "awards": [
+            "1UM1HG011989-01"
+        ],
+        "institute_label": "Broad",
+        "name": "anne-carpenter",
+        "uuid": "81a7051b-c6f7-4952-9b1d-11eca793d63d",
+        "pi": "carpenter@broadinstitute.org"
+    },
+    {
+        "awards": [
+            "1UM1HG012003-01"
+        ],
+        "institute_label": "UNC",
+        "name": "hyejung-won",
+        "uuid": "fe27c988-4664-4245-a1ca-bab9e1c62a00",
+        "pi": "hyejung@med.unc.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG012003-01"
+        ],
+        "institute_label": "UNC",
+        "name": "karen-mohlke",
+        "uuid": "2e331adf-f4f5-4a21-b9cb-61d869b75825",
+        "pi": "karen@med.unc.edu"
+    },
+    {
+        "awards": [
+            "1UM1HG012003-01"
+        ],
+        "institute_label": "UNC",
+        "name": "michael-love",
+        "uuid": "c0d3b931-59b2-445f-80ca-6a4b37703d6f",
+        "pi": "michael@email.unc.edu"
+    },
+    {
+        "awards": [
+            "HG011986"
+        ],
+        "institute_label": "Broad",
+        "name": "jason-buenrostro",
+        "uuid": "7515c432-91c4-4713-8bde-cfc5b04d2d2b",
+        "pi": "jason@harvard.edu"
+    },
+    {
+        "institute_label": "Broad",
+        "name": "bradley-bernstein",
+        "uuid": "14c454c1-0c14-45a3-a05c-c18579f53751",
+        "pi": "bradley@DFCI.HARVARD.EDU"
+    },
+    {
+        "institute_label": "Broad",
+        "name": "hilary-finucane",
+        "uuid": "420437fa-ef7d-43ef-b2b9-fe97589ee1aa",
+        "pi": "hilary@broadinstitute.org"
+    },
+    {
+        "awards": [
+            "1U01HG012079-01"
+        ],
+        "institute_label": "UCLA",
+        "name": "chongyuan-luo",
+        "uuid": "ebedfb44-5318-4f2e-97c8-c847afd32c1c",
+        "pi": "chongyuan@mednet.ucla.edu"
+    },
+    {
+        "awards": [
+            "1U01HG012079-01"
+        ],
+        "institute_label": "UCSF",
+        "name": "noah-zaitlen",
+        "uuid": "b7142495-2a11-4c18-ac5f-d3ddeb7e6953",
+        "pi": "noah@ucsf.edu"
+    },
+    {
+        "awards": [
+            "1U01HG012079-01"
+        ],
+        "institute_label": "UCLA",
+        "name": "kathrin-plath",
+        "uuid": "08852cc9-743c-4d75-a008-9765ff8656ba",
+        "pi": "kathrin@mednet.ucla.edu"
+    },
+    {
+        "awards": [
+            "1U01HG012079-01"
+        ],
+        "institute_label": "UCLA",
+        "name": "roy-wollman",
+        "uuid": "3914842d-3378-45d8-bc7f-62f7d4d34060",
+        "pi": "roy@ucla.edu"
+    },
+    {
+        "awards": [
+            "1U01HG012079-01"
+        ],
+        "institute_label": "UCLA",
+        "name": "jason-ernst",
+        "uuid": "3926a3d9-86de-4d79-893e-7aa40f0c47c0",
+        "pi": "jason@ucla.edu"
+    },
+    {
+        "awards": [
+            "1U01HG012064-01"
+        ],
+        "institute_label": "UMass",
+        "name": "zhiping-weng",
+        "uuid": "35fdfbd3-a27d-4c22-9ab8-6d1c6c19edf9",
+        "pi": "zhiping@umassmed.edu"
+    },
+    {
+        "institute_label": "UMass",
+        "name": "manuel-garber",
+        "uuid": "6d462c01-8750-46d2-a6cd-2bb5cc6396cd",
+        "pi": "manuel@umassmed.edu"
+    },
+    {
+        "institute_label": "HSPH",
+        "name": "xihong-lin",
+        "uuid": "1b70e214-8f9f-4903-b8e3-6b4e1cd09b68",
+        "pi": "xihong@hsph.harvard.edu"
+    },
+    {
+        "awards": [
+            "1U01HG011952-01"
+        ],
+        "institute_label": "UMich",
+        "name": "alan-boyle",
+        "uuid": "e1ab6f95-af3b-43a1-9723-9093cc9807a6",
+        "pi": "alan@umich.edu"
+    },
+    {
+        "institute_label": "UMich",
+        "name": "ryan-mills",
+        "uuid": "35a84d99-eaa5-46b4-917f-262236181eb3",
+        "pi": "ryan@med.umich.edu"
+    },
+    {
+        "institute_label": "UMich",
+        "name": "jie-liu",
+        "uuid": "a220c22c-6471-4358-ab7b-f978ef6dba64",
+        "pi": "jie@umich.edu"
+    },
+    {
+        "institute_label": "UMich",
+        "name": "maureen-sartor",
+        "uuid": "3249927b-3049-42db-911f-c68b184267ad",
+        "pi": "maureen@med.umich.edu"
+    },
+    {
+        "institute_label": "UMich",
+        "name": "joshua-welch",
+        "uuid": "b7524dc4-a14c-4af2-899c-643fdb0d96f1",
+        "pi": "joshua@umich.edu"
+    },
+    {
+        "institute_label": "Stanford",
+        "name": "stephen-montgomery",
+        "uuid": "aad4cb72-3775-4109-a8c4-a9d9602ecd98",
+        "pi": "stephen@stanford.edu"
+    },
+    {
+        "institute_label": "JHU",
+        "name": "alexis-battle",
+        "uuid": "d4021733-3a24-45a1-b982-4fa7733645ed",
+        "pi": "alexis@jhu.edu"
+    },
+    {
+        "institute_label": "Stanford",
+        "name": "livnat-jerby",
+        "uuid": "2209eb8f-a7a7-49a0-b0f7-6168c47b5100",
+        "pi": "livnat@stanford.edu"
+    },
+    {
+        "institute_label": "Stanford",
+        "name": "jonathan-pritchard",
+        "uuid": "f2fb80d0-97c5-436d-8539-07d09196d505",
+        "pi": "jonathan@stanford.edu"
+    },
+    {
+        "awards": [
+            "1U01HG012022-01"
+        ],
+        "institute_label": "Northeastern",
+        "name": "predrag-radivojac",
+        "uuid": "f7209c06-8068-4b8c-9aa2-25f6ccb77c35",
+        "pi": "radivojac@northeastern.edu"
+    },
+    {
+        "institute_label": "UW",
+        "name": "sean-mooney",
+        "uuid": "7eb36190-5df1-4541-b0c6-4c6ef1a6952a",
+        "pi": "sean@uw.edu"
+    },
+    {
+        "awards": [
+            "1U01HG012041-01"
+        ],
+        "institute_label": "University of Pittsburgh",
+        "name": "harinder-singh",
+        "uuid": "358c94cb-ef4b-4baa-a8e5-9f699b04c289",
+        "pi": "singh@pitt.edu"
+    },
+    {
+        "institute_label": "MD Anderson",
+        "name": "nidhi-sahni",
+        "uuid": "e0b09aaa-b851-4a16-b2c3-e5b34bad1347",
+        "pi": "nidhi@mdanderson.org"
+    },
+    {
+        "institute_label": "University of Pittsburgh",
+        "name": "jishnu-das",
+        "uuid": "74e4618f-c240-46c3-8ccf-52aa7fbf310c",
+        "pi": "das@pitt.edu"
     }
 ]
