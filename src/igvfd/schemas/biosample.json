@@ -118,11 +118,7 @@
                                 "oneOf": [
                                     {
                                         "enum": [
-                                            "Homo sapiens"
-                                        ]
-                                    },
-                                    {
-                                        "enum": [
+                                            "Homo sapiens",
                                             "Mus musculus"
                                         ]
                                     }

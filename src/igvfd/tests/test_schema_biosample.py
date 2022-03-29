@@ -28,7 +28,7 @@ def test_age_unit_dependency(biosample_1, testapp):
     assert(res.status_code == 422)
 
 
-def test_age_unit_dependency(biosample_1, testapp):
+def test_lifestage_dependency(biosample_1, testapp):
     res = testapp.patch_json(
         biosample_1['@id'],
         {'organism': 'Homo sapiens', 'life_stage': 'adult'})
