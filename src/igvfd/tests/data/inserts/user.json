@@ -308,7 +308,7 @@
             "admin",
             "verified"
         ],
-        "job_title": "Software Developer",
+        "job_title": "Data Wrangler",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Whaling",
         "status": "current",
@@ -316,5 +316,1409 @@
             "/labs/j-michael-cherry/"
         ],
         "uuid": "1e75d989-a438-4d77-a451-8a297fd3636e"
+    },
+    {
+        "email": "ali@uci.edu",
+        "first_name": "Ali",
+        "last_name": "Mortazavi",
+        "lab": "/labs/ali-mortazavi/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/ali-mortazavi/"
+        ],
+        "status": "current",
+        "uuid": "e4cadd5e-0e61-4a99-abc8-84734232e271"
+    },
+    {
+        "email": "barbara@caltech.edu",
+        "first_name": "Barbara",
+        "last_name": "Wold",
+        "lab": "/labs/barbara-wold/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/barbara-wold/"
+        ],
+        "status": "current",
+        "uuid": "786338c3-021d-4132-be34-5ab2c8ad3226"
+    },
+    {
+        "email": "lior@caltech.edu",
+        "first_name": "Lior",
+        "last_name": "Pachter",
+        "lab": "/labs/lior-pachter/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/lior-pachter/"
+        ],
+        "status": "current",
+        "uuid": "d57949e7-af07-4f97-bacc-00a5b4a7614c"
+    },
+    {
+        "email": "grant@uci.edu",
+        "first_name": "Grant",
+        "last_name": "Macgregor",
+        "lab": "/labs/grant-macgregor/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/grant-macgregor/"
+        ],
+        "status": "current",
+        "uuid": "bb9374ca-8960-4463-a183-e23068e07619"
+    },
+    {
+        "email": "kim@uci.edu",
+        "first_name": "Kim",
+        "last_name": "Green",
+        "lab": "/labs/kim-green/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/kim-green/"
+        ],
+        "status": "current",
+        "uuid": "8b558152-b8fe-418e-901e-a9c6e8c1b55e"
+    },
+    {
+        "email": "mark@biostat.wisc.edu",
+        "first_name": "Mark",
+        "last_name": "Craven",
+        "lab": "/labs/mark-craven/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/mark-craven/"
+        ],
+        "status": "current",
+        "uuid": "62a33315-46da-4a57-b384-a9b3b950c8ee"
+    },
+    {
+        "email": "qiongshi@biostat.wisc.edu",
+        "first_name": "Qiongshi",
+        "last_name": "Lu",
+        "lab": "/labs/qiongshi-lu/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/qiongshi-lu/"
+        ],
+        "status": "current",
+        "uuid": "5cce752a-c025-40d5-aff0-7642e5888974"
+    },
+    {
+        "email": "audrey@wisc.edu",
+        "first_name": "Audrey",
+        "last_name": "Gasch",
+        "lab": "/labs/audrey-gasch/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/audrey-gasch/"
+        ],
+        "status": "current",
+        "uuid": "673bbdb5-1fc6-44b1-a6bc-996f003afba2"
+    },
+    {
+        "email": "robert@preventiongenetics.com",
+        "first_name": "Robert",
+        "last_name": "Steiner",
+        "lab": "/labs/robert-steiner/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/robert-steiner/"
+        ],
+        "status": "current",
+        "uuid": "2c4c537b-9b94-4196-90c1-a2d4f85259a3"
+    },
+    {
+        "email": "jesse@stanford.edu",
+        "first_name": "Jesse",
+        "last_name": "Engreitz",
+        "lab": "/labs/jesse-engreitz/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/jesse-engreitz/"
+        ],
+        "status": "current",
+        "uuid": "c99b68dc-f0dc-4308-9961-90ebcbe24e88"
+    },
+    {
+        "email": "thomas@stanford.edu",
+        "first_name": "Thomas",
+        "last_name": "Quertermous",
+        "lab": "/labs/thomas-quertermous/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/thomas-quertermous/"
+        ],
+        "status": "current",
+        "uuid": "cd8fad93-1c81-48f3-ac4c-b827b1f58b9f"
+    },
+    {
+        "email": "anshul@stanford.edu",
+        "first_name": "Anshul",
+        "last_name": "Kundaje",
+        "lab": "/labs/anshul-kundaje/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/anshul-kundaje/"
+        ],
+        "status": "current",
+        "uuid": "24d01e13-37ef-4521-975b-a2f49533d19b"
+    },
+    {
+        "email": "michael@stanford.edu",
+        "first_name": "Michael",
+        "last_name": "Bassik",
+        "lab": "/labs/michael-bassik/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/michael-bassik/"
+        ],
+        "status": "current",
+        "uuid": "e389ba3b-108d-4a6a-a87a-3a84baca023e"
+    },
+    {
+        "email": "will@stanford.edu",
+        "first_name": "Will",
+        "last_name": "Greenleaf",
+        "lab": "/labs/will-greenleaf/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/will-greenleaf/"
+        ],
+        "status": "current",
+        "uuid": "4fd4cb56-83c9-493c-a4e8-96f8b8379d43"
+    },
+    {
+        "email": "marlene@stanford.edu",
+        "first_name": "Marlene",
+        "last_name": "Rabinovitch",
+        "lab": "/labs/marlene-rabinovitch/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/marlene-rabinovitch/"
+        ],
+        "status": "current",
+        "uuid": "f374f95e-c4bd-4985-8228-f44a837d9513"
+    },
+    {
+        "email": "lars@stanford.edu",
+        "first_name": "Lars",
+        "last_name": "Steinmetz",
+        "lab": "/labs/lars-steinmetz/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/lars-steinmetz/"
+        ],
+        "status": "current",
+        "uuid": "64bce651-ee7f-470b-ae96-b3c2412f789e"
+    },
+    {
+        "email": "jay@uw.edu",
+        "first_name": "Jay",
+        "last_name": "Shendure",
+        "lab": "/labs/jay-shendure/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/jay-shendure/"
+        ],
+        "status": "current",
+        "uuid": "bf625134-f45e-4d8d-994f-b67d17354757"
+    },
+    {
+        "email": "nadav@ucsf.edu",
+        "first_name": "Nadav",
+        "last_name": "Ahituv",
+        "lab": "/labs/nadav-ahituv/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/nadav-ahituv/"
+        ],
+        "status": "current",
+        "uuid": "f82b0978-c015-47a7-aa8d-c94589eab825"
+    },
+    {
+        "email": "martin@bih-charite.de",
+        "first_name": "Martin",
+        "last_name": "Kircher",
+        "lab": "/labs/martin-kircher/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/martin-kircher/"
+        ],
+        "status": "current",
+        "uuid": "6965dbce-ee4b-4ba0-871c-e82d523e58bd"
+    },
+    {
+        "email": "danwei@mskcc.org",
+        "first_name": "Danwei",
+        "last_name": "Huangfu",
+        "lab": "/labs/danwei-huangfu/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/danwei-huangfu/"
+        ],
+        "status": "current",
+        "uuid": "8dd67766-ffa7-47ff-a97d-ca74985d781f"
+    },
+    {
+        "email": "michael@jhu.edu",
+        "first_name": "Michael",
+        "last_name": "Beer",
+        "lab": "/labs/michael-beer/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/michael-beer/"
+        ],
+        "status": "current",
+        "uuid": "5325998a-e2f9-4d8e-ae95-8661b806a9a7"
+    },
+    {
+        "email": "anna@mskcc.org",
+        "first_name": "Anna-Katerina",
+        "last_name": "Hadjantonakis",
+        "lab": "/labs/anna-katerina-hadjantonakis/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/anna-katerina-hadjantonakis/"
+        ],
+        "status": "current",
+        "uuid": "6f7389c0-8365-48f5-bacb-40000df2d66f"
+    },
+    {
+        "email": "christina@cbio.mskcc.org",
+        "first_name": "Christina",
+        "last_name": "Leslie",
+        "lab": "/labs/christina-leslie/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/christina-leslie/"
+        ],
+        "status": "current",
+        "uuid": "fa9feeb4-28ba-4356-8c24-50f4e6562029"
+    },
+    {
+        "email": "alexander@mskcc.org",
+        "first_name": "Alexander",
+        "last_name": "Rudensky",
+        "lab": "/labs/alexander-rudensky/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/alexander-rudensky/"
+        ],
+        "status": "current",
+        "uuid": "53072249-f58f-4c06-8bf3-924295f53029"
+    },
+    {
+        "email": "laura@gmail.com",
+        "first_name": "Laura",
+        "last_name": "Donlin",
+        "lab": "/labs/laura-donlin/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/laura-donlin/"
+        ],
+        "status": "current",
+        "uuid": "998cb70b-623f-41ba-a970-59e7d3ea9be2"
+    },
+    {
+        "email": "hannah@ucsd.edu",
+        "first_name": "Hannah",
+        "last_name": "Carter",
+        "lab": "/labs/hannah-carter/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/hannah-carter/"
+        ],
+        "status": "current",
+        "uuid": "8f8e597c-aa6f-444a-ae2b-8ca9820bbb51"
+    },
+    {
+        "email": "bing@ucsd.edu",
+        "first_name": "Bing",
+        "last_name": "Ren",
+        "lab": "/labs/bing-ren/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/bing-ren/"
+        ],
+        "status": "current",
+        "uuid": "6814ebcb-a591-480d-ae69-0bf5ef2a2e93"
+    },
+    {
+        "email": "kyle@ucsd.edu",
+        "first_name": "Kyle",
+        "last_name": "Gaulton",
+        "lab": "/labs/kyle-gaulton/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/kyle-gaulton/"
+        ],
+        "status": "current",
+        "uuid": "3ac39feb-d609-4f9f-ae15-250a7f165900"
+    },
+    {
+        "email": "maike@ucsd.edu",
+        "first_name": "Maike",
+        "last_name": "Sander",
+        "lab": "/labs/maike-sander/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/maike-sander/"
+        ],
+        "status": "current",
+        "uuid": "7d37a9ba-4a13-4b7e-a34d-d3ac13f62442"
+    },
+    {
+        "email": "charles@duke.edu",
+        "first_name": "Charles",
+        "last_name": "Gersbach",
+        "lab": "/labs/charles-gersbach/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/charles-gersbach/"
+        ],
+        "status": "current",
+        "uuid": "7622ee95-b60d-4fd4-9910-3405c7cceb6f"
+    },
+    {
+        "email": "gregory@duke.edu",
+        "first_name": "Gregory",
+        "last_name": "Crawford",
+        "lab": "/labs/gregory-crawford/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/gregory-crawford/"
+        ],
+        "status": "current",
+        "uuid": "bb7f009f-8541-4066-ab7e-acbcf587e9f5"
+    },
+    {
+        "email": "tim@duke.edu",
+        "first_name": "Tim",
+        "last_name": "Reddy",
+        "lab": "/labs/tim-reddy/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/tim-reddy/"
+        ],
+        "status": "current",
+        "uuid": "84b1815e-2d39-4396-91ff-2ae3043d06db"
+    },
+    {
+        "email": "ansuman@stanford.edu",
+        "first_name": "Ansuman",
+        "last_name": "Sapathy",
+        "lab": "/labs/ansuman-sapathy/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/ansuman-sapathy/"
+        ],
+        "status": "current",
+        "uuid": "35e81201-434d-4e37-a642-6a780c786f35"
+    },
+    {
+        "email": "andrew@duke.edu",
+        "first_name": "Andrew",
+        "last_name": "Allen",
+        "lab": "/labs/andrew-allen/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/andrew-allen/"
+        ],
+        "status": "current",
+        "uuid": "b4e2c625-bb5c-43fe-a055-7d9dc627a85e"
+    },
+    {
+        "email": "gary@utsouthwestern.edu",
+        "first_name": "Gary",
+        "last_name": "Hon",
+        "lab": "/labs/gary-hon/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/gary-hon/"
+        ],
+        "status": "current",
+        "uuid": "430014d5-997d-435a-bfd6-1593cf23912a"
+    },
+    {
+        "email": "nikhil@UTSouthwestern.edu",
+        "first_name": "Nikhil",
+        "last_name": "Munshi",
+        "lab": "/labs/nikhil-munshi/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/nikhil-munshi/"
+        ],
+        "status": "current",
+        "uuid": "a3df1b67-6a26-4639-8ed0-04541b61b4ef"
+    },
+    {
+        "email": "w@utsouthwestern.edu ",
+        "first_name": "W",
+        "last_name": "Kraus",
+        "lab": "/labs/w-lee-kraus/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/w-lee-kraus/"
+        ],
+        "status": "current",
+        "uuid": "0017877a-1d7a-4a40-a2f0-d350aa04f653"
+    },
+    {
+        "email": "lea@uw.edu",
+        "first_name": "Lea",
+        "last_name": "Starita",
+        "lab": "/labs/lea-starita/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/lea-starita/"
+        ],
+        "status": "current",
+        "uuid": "04e6e85d-3737-454e-8a3b-6f8cb2317f00"
+    },
+    {
+        "email": "doug@uw.edu",
+        "first_name": "Doug",
+        "last_name": "Fowler",
+        "lab": "/labs/doug-fowler/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/doug-fowler/"
+        ],
+        "status": "current",
+        "uuid": "98fe0dfd-0842-4c04-8f4a-d2b6dee05ee0"
+    },
+    {
+        "email": "luca@mgh.harvard.edu",
+        "first_name": "Luca",
+        "last_name": "Pinello",
+        "lab": "/labs/luca-pinello/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/luca-pinello/"
+        ],
+        "status": "current",
+        "uuid": "bca44661-1dc0-4b47-8736-49471174974e"
+    },
+    {
+        "email": "guillaume@umontreal.ca",
+        "first_name": "Guillaume",
+        "last_name": "Lettre",
+        "lab": "/labs/guillaume-lettre/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/guillaume-lettre/"
+        ],
+        "status": "current",
+        "uuid": "edbe4211-3c87-4018-b9ee-1524ec9daf06"
+    },
+    {
+        "email": "benhur@mssm.edu",
+        "first_name": "Benhur",
+        "last_name": "Lee",
+        "lab": "/labs/benhur-lee/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/benhur-lee/"
+        ],
+        "status": "current",
+        "uuid": "2aede325-1afd-4e54-a610-5f99fa7a48dc"
+    },
+    {
+        "email": "daniel@childrens.harvard.edu",
+        "first_name": "Daniel",
+        "last_name": "Bauer",
+        "lab": "/labs/daniel-bauer/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/daniel-bauer/"
+        ],
+        "status": "current",
+        "uuid": "ed779c11-fe9f-4325-9d5f-db4ffa66610a"
+    },
+    {
+        "email": "richard@rics.bwh.harvard.edu",
+        "first_name": "Richard",
+        "last_name": "Sherwood",
+        "lab": "/labs/richard-sherwood/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/richard-sherwood/"
+        ],
+        "status": "current",
+        "uuid": "3c07a981-683e-4f8c-88f0-983da9a3c645"
+    },
+    {
+        "email": "benjamin@mgh.harvard.edu",
+        "first_name": "Benjamin",
+        "last_name": "Kleinstiver",
+        "lab": "/labs/benjamin-kleinstiver/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/benjamin-kleinstiver/"
+        ],
+        "status": "current",
+        "uuid": "ae7e79c3-0135-43db-96fb-13e481ebf5f2"
+    },
+    {
+        "email": "marc@dfci.harvard.edu",
+        "first_name": "Marc",
+        "last_name": "Vidal",
+        "lab": "/labs/marc-vidal/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/marc-vidal/"
+        ],
+        "status": "current",
+        "uuid": "5924d737-62eb-490d-ae70-81348c5db9e6"
+    },
+    {
+        "email": "david@dfci.harvard.edu",
+        "first_name": "David",
+        "last_name": "Hill",
+        "lab": "/labs/david-hill/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/david-hill/"
+        ],
+        "status": "current",
+        "uuid": "e456fcc2-69b0-4da2-aaf7-cc40bb171252"
+    },
+    {
+        "email": "frederick@gmail.com",
+        "first_name": "Frederick",
+        "last_name": "Roth",
+        "lab": "/labs/frederick-roth/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/frederick-roth/"
+        ],
+        "status": "current",
+        "uuid": "00b5591d-1e3d-41bf-be82-13a218283ada"
+    },
+    {
+        "email": "mikko@utoronto.ca",
+        "first_name": "Mikko",
+        "last_name": "Taipale",
+        "lab": "/labs/mikko-taipale/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/mikko-taipale/"
+        ],
+        "status": "current",
+        "uuid": "569575e3-67d6-4573-9301-c2243354bda2"
+    },
+    {
+        "email": "carpenter@broadinstitute.org",
+        "first_name": "Anne",
+        "last_name": "Carpenter",
+        "lab": "/labs/anne-carpenter/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/anne-carpenter/"
+        ],
+        "status": "current",
+        "uuid": "ad7e8437-3dff-46af-ac35-d7ccb1f58aee"
+    },
+    {
+        "email": "hyejung@med.unc.edu",
+        "first_name": "Hyejung",
+        "last_name": "Won",
+        "lab": "/labs/hyejung-won/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/hyejung-won/"
+        ],
+        "status": "current",
+        "uuid": "7e51864b-2e2b-40cf-9abc-5cc2dc98f35d"
+    },
+    {
+        "email": "karen@med.unc.edu",
+        "first_name": "Karen",
+        "last_name": "Mohlke",
+        "lab": "/labs/karen-mohlke/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/karen-mohlke/"
+        ],
+        "status": "current",
+        "uuid": "3e3409dd-e4a8-4b7c-bf31-22d2b089ae1f"
+    },
+    {
+        "email": "michael@email.unc.edu",
+        "first_name": "Michael",
+        "last_name": "Love",
+        "lab": "/labs/michael-love/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/michael-love/"
+        ],
+        "status": "current",
+        "uuid": "3a0ff5da-c893-4e36-9d0e-d97940a7e13d"
+    },
+    {
+        "email": "jason@harvard.edu",
+        "first_name": "Jason",
+        "last_name": "Buenrostro",
+        "lab": "/labs/jason-buenrostro/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/jason-buenrostro/"
+        ],
+        "status": "current",
+        "uuid": "7dcb9224-2e1d-4000-bea1-1a7480d59f57"
+    },
+    {
+        "email": "bradley@DFCI.HARVARD.EDU",
+        "first_name": "Bradley",
+        "last_name": "Bernstein",
+        "lab": "/labs/bradley-bernstein/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/bradley-bernstein/"
+        ],
+        "status": "current",
+        "uuid": "b9e9fe45-610c-44a8-877e-5b8206084761"
+    },
+    {
+        "email": "hilary@broadinstitute.org",
+        "first_name": "Hilary",
+        "last_name": "Finucane",
+        "lab": "/labs/hilary-finucane/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/hilary-finucane/"
+        ],
+        "status": "current",
+        "uuid": "3dfe5754-2073-45f0-b520-7d962f43c2cd"
+    },
+    {
+        "email": "chongyuan@mednet.ucla.edu",
+        "first_name": "Chongyuan",
+        "last_name": "Luo",
+        "lab": "/labs/chongyuan-luo/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/chongyuan-luo/"
+        ],
+        "status": "current",
+        "uuid": "94f562b8-77f7-4061-b89b-3710686e51cc"
+    },
+    {
+        "email": "noah@ucsf.edu",
+        "first_name": "Noah",
+        "last_name": "Zaitlen",
+        "lab": "/labs/noah-zaitlen/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/noah-zaitlen/"
+        ],
+        "status": "current",
+        "uuid": "541d1d5c-e3d8-487c-8e14-81b315db4ee4"
+    },
+    {
+        "email": "kathrin@mednet.ucla.edu",
+        "first_name": "Kathrin",
+        "last_name": "Plath",
+        "lab": "/labs/kathrin-plath/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/kathrin-plath/"
+        ],
+        "status": "current",
+        "uuid": "d996a4b0-5c77-4f67-9569-979eea823d51"
+    },
+    {
+        "email": "roy@ucla.edu",
+        "first_name": "Roy",
+        "last_name": "Wollman",
+        "lab": "/labs/roy-wollman/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/roy-wollman/"
+        ],
+        "status": "current",
+        "uuid": "d0b2a849-d583-4ee1-8d26-1e361ee4519b"
+    },
+    {
+        "email": "jason@ucla.edu",
+        "first_name": "Jason",
+        "last_name": "Ernst",
+        "lab": "/labs/jason-ernst/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/jason-ernst/"
+        ],
+        "status": "current",
+        "uuid": "fa43a796-163c-488a-aa8e-5472a458232c"
+    },
+    {
+        "email": "zhiping@umassmed.edu",
+        "first_name": "Zhiping",
+        "last_name": "Weng",
+        "lab": "/labs/zhiping-weng/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/zhiping-weng/"
+        ],
+        "status": "current",
+        "uuid": "b45be2ff-771e-4cbb-9c6b-74ece357ca7b"
+    },
+    {
+        "email": "manuel@umassmed.edu",
+        "first_name": "Manuel",
+        "last_name": "Garber",
+        "lab": "/labs/manuel-garber/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/manuel-garber/"
+        ],
+        "status": "current",
+        "uuid": "96c0b1c8-4966-4d8c-88bb-88e943aa6303"
+    },
+    {
+        "email": "xihong@hsph.harvard.edu",
+        "first_name": "Xihong",
+        "last_name": "Lin",
+        "lab": "/labs/xihong-lin/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/xihong-lin/"
+        ],
+        "status": "current",
+        "uuid": "2289d1d8-dcde-4dd4-ab91-89301a35f008"
+    },
+    {
+        "email": "alan@umich.edu",
+        "first_name": "Alan",
+        "last_name": "Boyle",
+        "lab": "/labs/alan-boyle/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/alan-boyle/"
+        ],
+        "status": "current",
+        "uuid": "5f7f0814-d4c0-4e09-84c7-9af0cb916fb3"
+    },
+    {
+        "email": "ryan@med.umich.edu",
+        "first_name": "Ryan",
+        "last_name": "Mills",
+        "lab": "/labs/ryan-mills/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/ryan-mills/"
+        ],
+        "status": "current",
+        "uuid": "864e728f-8b4b-40f3-8b29-56699f18c06e"
+    },
+    {
+        "email": "jie@umich.edu",
+        "first_name": "Jie",
+        "last_name": "Liu",
+        "lab": "/labs/jie-liu/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/jie-liu/"
+        ],
+        "status": "current",
+        "uuid": "c4b6129f-9dc1-4d91-ac6d-0557f882b57f"
+    },
+    {
+        "email": "maureen@med.umich.edu",
+        "first_name": "Maureen",
+        "last_name": "Sartor",
+        "lab": "/labs/maureen-sartor/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/maureen-sartor/"
+        ],
+        "status": "current",
+        "uuid": "0c2ed11f-68c5-4fbe-8a89-f392009e5c9a"
+    },
+    {
+        "email": "joshua@umich.edu",
+        "first_name": "Joshua",
+        "last_name": "Welch",
+        "lab": "/labs/joshua-welch/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/joshua-welch/"
+        ],
+        "status": "current",
+        "uuid": "a5e4fe88-2542-48b0-85a2-0f8b2bcac1bd"
+    },
+    {
+        "email": "stephen@stanford.edu",
+        "first_name": "Stephen",
+        "last_name": "Montgomery",
+        "lab": "/labs/stephen-montgomery/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/stephen-montgomery/"
+        ],
+        "status": "current",
+        "uuid": "2ebc99f6-2b55-4c92-99cd-389689ab67c4"
+    },
+    {
+        "email": "alexis@jhu.edu",
+        "first_name": "Alexis",
+        "last_name": "Battle",
+        "lab": "/labs/alexis-battle/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/alexis-battle/"
+        ],
+        "status": "current",
+        "uuid": "4c87a199-2487-46ce-8737-8d66a4730e89"
+    },
+    {
+        "email": "livnat@stanford.edu",
+        "first_name": "Livnat",
+        "last_name": "Jerby",
+        "lab": "/labs/livnat-jerby/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/livnat-jerby/"
+        ],
+        "status": "current",
+        "uuid": "ab8c216e-ac7f-4597-9888-cfbebe04cc67"
+    },
+    {
+        "email": "jonathan@stanford.edu",
+        "first_name": "Jonathan",
+        "last_name": "Pritchard",
+        "lab": "/labs/jonathan-pritchard/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/jonathan-pritchard/"
+        ],
+        "status": "current",
+        "uuid": "f2490a2d-4275-4bb8-817b-81488a394a53"
+    },
+    {
+        "email": "radivojac@northeastern.edu",
+        "first_name": "Predrag",
+        "last_name": "Radivojac",
+        "lab": "/labs/predrag-radivojac/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/predrag-radivojac/"
+        ],
+        "status": "current",
+        "uuid": "50040ef2-f610-4bf9-9659-61367f1ed1c6"
+    },
+    {
+        "email": "sean@uw.edu",
+        "first_name": "Sean",
+        "last_name": "Mooney",
+        "lab": "/labs/sean-mooney/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/sean-mooney/"
+        ],
+        "status": "current",
+        "uuid": "ae1c9d22-d04e-4ce1-ac76-72890d0d5553"
+    },
+    {
+        "email": "singh@pitt.edu",
+        "first_name": "Harinder",
+        "last_name": "Singh",
+        "lab": "/labs/harinder-singh/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/harinder-singh/"
+        ],
+        "status": "current",
+        "uuid": "3674f90a-bdc2-4bde-bbee-a8b0424cf900"
+    },
+    {
+        "email": "nidhi@mdanderson.org",
+        "first_name": "Nidhi",
+        "last_name": "Sahni",
+        "lab": "/labs/nidhi-sahni/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/nidhi-sahni/"
+        ],
+        "status": "current",
+        "uuid": "2c984f4e-c0c6-4ab1-aada-7607f6465968"
+    },
+    {
+        "email": "das@pitt.edu",
+        "first_name": "Jishnu",
+        "last_name": "Das",
+        "lab": "/labs/jishnu-das/",
+        "viewing_groups": [
+            "community"
+        ],
+        "job_title": "PI",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/jishnu-das/"
+        ],
+        "status": "current",
+        "uuid": "451013d3-a28a-4fa6-993e-e065f2e63724"
     }
 ]

@@ -7,5 +7,14 @@
         "name": "j-michael-cherry",
         "pi": "massa.porta@varius.mauris",
         "uuid": "cfb789b8-46f3-4d59-a2b3-adc39e7df93a"
+    },
+    {
+        "awards": [
+            "1UM1HG012077-01"
+        ],
+        "institute_label": "UCI",
+        "name": "ali-mortazavi",
+        "uuid": "6d911b55-3c79-49f1-8096-936e99cc133e",
+        "pi": "ali@uci.edu"
     }
 ]

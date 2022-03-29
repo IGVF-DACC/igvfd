@@ -13,5 +13,173 @@
         "title": "A Data and Administrative Coordinating Center for the Impact of Genomic Variation on Function Consortium",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
         "viewing_group": "IGVF"
+    },
+    {
+        "name": "1UM1HG011972-01",
+        "project": "IGVF",
+        "title": "Stanford Center for Connecting DNA Variants to Function and Phenotype",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1UM1HG012053-01",
+        "project": "IGVF",
+        "title": "High-Throughput Functional Annotation of Gene Regulatory Elements and Variants Critical to Complex Cellular Phenotypes",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1UM1HG011996-01",
+        "project": "IGVF",
+        "title": "Multiscale functional characterization of genomic variation in human developmental disorders",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1UM1HG012010-01",
+        "project": "IGVF",
+        "title": "Comprehensive characterization of variants underlying heart and blood diseases with CRISPR base editing",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1UM1HG011966-01",
+        "project": "IGVF",
+        "title": "Massively parallel characterization of variants and elements impacting transcriptional regulation in dynamic cellular systems",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1UM1HG011969-01",
+        "project": "IGVF",
+        "title": "The Center for Actionable Variant Analysis; measuring variant function at scale",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1UM1HG011989-01",
+        "project": "IGVF",
+        "title": "Molecular phenotyping of ~100,000 coding variants across Mendelian disease genes",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1UM1HG012003-01",
+        "project": "IGVF",
+        "title": "Systematic in vivo characterization of disease-associated regulatory variants",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1U01HG012051-01",
+        "project": "IGVF",
+        "title": "Genomic control of gene regulatory networks governing early human lineage decisions",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1U01HG012103-01",
+        "project": "IGVF",
+        "title": "Deciphering the Genomics of Gene Network Regulation of T Cell and Fibroblast States in Autoimmune Inflammation",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1U01HG012079-01",
+        "project": "IGVF",
+        "title": "Leveraging genetic variation to dissect gene regulatory networks of reprogramming to pluripotency",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "HG012059",
+        "project": "IGVF",
+        "title": "The impact of genomic variation on environment-induced changes in pancreatic beta-cell states",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1U01HG012041-01",
+        "project": "IGVF",
+        "title": "Linking genome variation to transcriptional network dynamics in human B cells",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1U01HG012047-01",
+        "project": "IGVF",
+        "title": "Defining causal roles of genomic variants on gene regulatory networks with spatiotemporally-resolved single-cell multiomics",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1UM1HG012077-01",
+        "project": "IGVF",
+        "title": "Center for Mouse Genomic Variation at Single Cell Resolution",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "HG011986",
+        "project": "IGVF",
+        "title": "A foundational resource of functional elements, TF footprints and gene regulatory interactions",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1UM1HG012076-01",
+        "project": "IGVF",
+        "title": "Single-cell Mapping Center for Human Regulatory Elements and Gene Activity",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1U01HG011967-01",
+        "project": "IGVF",
+        "title": "Design, prediction, and prioritization of systematic perturbations of the human genome",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1U01HG011952-01",
+        "project": "IGVF",
+        "title": "Predicting the Impact of Genomic Variation on Cellular States",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1U01HG012039-01",
+        "project": "IGVF",
+        "title": "Linking Variants to Multi-scale Phenotypes via a Synthesis of Subnetwork Inference and Deep Learning",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1U01HG012069-01",
+        "project": "IGVF",
+        "title": "Predicting context-specific molecular and phenotypic effects of genetic variation through the lens of the cis-regulatory code",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1U01HG012022-01",
+        "project": "IGVF",
+        "title": "Supporting IGVF by modeling genetics, function, and phenotype with machine learning",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "HG012009",
+        "project": "IGVF",
+        "title": "Predicting the impact of genetic variants, genes and pathways on human disease",
+        "viewing_group": "IGVF",
+        "status": "current"
+    },
+    {
+        "name": "1U01HG012064-01",
+        "project": "IGVF",
+        "title": "Predictive Modeling of the Functional and Phenotypic Impacts of Genetic Variants",
+        "viewing_group": "IGVF",
+        "status": "current"
     }
 ]
