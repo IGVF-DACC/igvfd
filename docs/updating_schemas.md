@@ -151,7 +151,12 @@ This new object is an array of example objects that can successfully POST agains
 
 8. If applicable you may want to add audits on the metadata. Please refer to [making_audits]
 
-9. If this object has an accession, you will need to update **schema_formats.py** to add the 2 character prefix
+9. If this object has an accession, you will need to update **schema_formats.py** to add the 2 character prefix. 
+To add an object with accession prefix 'SM':
+
+            accession_re = re.compile(r'^IGVF(SM|FF|SR|AB|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9][A-Z][A-Z][A-Z]$')
+            est_accession_re = re.compile(r'^TST(SM|FF|SR|AB|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9]([0-9][0-9][0-9]|[A-Z][A-Z][A-Z])$')
+
 
 -----
 
