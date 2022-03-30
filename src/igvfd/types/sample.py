@@ -14,7 +14,7 @@ from .base import (
     unique_key='accession',
     properties={
         'title': 'Samples',
-        'description': 'Listing samples',
+        'description': 'Listing of samples',
     })
 class Sample(Item):
     base_types = ['Sample'] + Item.base_types
@@ -26,7 +26,7 @@ class Sample(Item):
     unique_key='accession',
     properties={
         'title': 'Biosamples',
-        'description': 'Listing biosamples',
+        'description': 'Listing of biosamples',
     })
 class Biosample(Sample):
     item_type = 'biosample'
