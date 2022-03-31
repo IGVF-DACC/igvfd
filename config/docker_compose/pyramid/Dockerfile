@@ -14,7 +14,7 @@ RUN useradd -m igvfd
 
 WORKDIR /igvfd
 
-RUN chown igvfd:igvfd /igvfd
+RUN chown -R igvfd:igvfd /igvfd
 
 RUN python -m venv $VIRTUAL_ENV
 
@@ -31,6 +31,8 @@ WORKDIR /docker
 COPY --chown=igvfd:igvfd ./config/docker_compose/pyramid/entrypoint.sh .
 
 RUN chmod +x ./entrypoint.sh
+
+WORKDIR /igvfd
 
 COPY --chown=igvfd:igvfd setup.cfg pyproject.toml ./
 
