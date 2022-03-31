@@ -10,13 +10,11 @@ RUN apt-get update
 
 RUN apt-get install -y make git curl graphviz
 
-RUN useradd -m igvfd
-
-WORKDIR /igvfd
-
-RUN chown -R igvfd:igvfd /igvfd
-
 RUN python -m venv $VIRTUAL_ENV
+
+RUN groupadd -g 1001 igvfd
+
+RUN useradd -g 1001 -m igvfd
 
 RUN chown -R igvfd:igvfd $VIRTUAL_ENV
 
