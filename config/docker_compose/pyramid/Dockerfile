@@ -1,14 +1,14 @@
 FROM python:3.9.9-buster
 
-RUN apt-get update
-
-RUN apt-get install -y make git curl graphviz
-
 ENV PYTHONDONTWRITEBYTECODE 1
 
 ENV PYTHONUNBUFFERED 1
 
 ENV VIRTUAL_ENV=/opt/venv
+
+RUN apt-get update
+
+RUN apt-get install -y make git curl graphviz
 
 RUN python -m venv $VIRTUAL_ENV
 
