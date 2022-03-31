@@ -30,6 +30,8 @@ RUN chmod +x ./entrypoint.sh
 
 WORKDIR /igvfd
 
+RUN chown igvfd:igvfd /igvfd
+
 COPY --chown=igvfd:igvfd setup.cfg pyproject.toml ./
 
 COPY --chown=igvfd:igvfd src/igvfd/__init__.py src/igvfd/__init__.py
