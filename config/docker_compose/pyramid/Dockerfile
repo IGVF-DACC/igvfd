@@ -10,9 +10,13 @@ RUN apt-get update
 
 RUN apt-get install -y make git curl graphviz
 
-RUN python -m venv $VIRTUAL_ENV
-
 RUN useradd -m igvfd
+
+WORKDIR /igvfd
+
+RUN chown igvfd:igvfd /igvfd
+
+RUN python -m venv $VIRTUAL_ENV
 
 RUN chown -R igvfd:igvfd $VIRTUAL_ENV
 
@@ -27,10 +31,6 @@ WORKDIR /docker
 COPY --chown=igvfd:igvfd ./config/docker_compose/pyramid/entrypoint.sh .
 
 RUN chmod +x ./entrypoint.sh
-
-WORKDIR /igvfd
-
-RUN chown igvfd:igvfd /igvfd
 
 COPY --chown=igvfd:igvfd setup.cfg pyproject.toml ./
 
