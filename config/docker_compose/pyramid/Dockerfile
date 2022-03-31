@@ -12,9 +12,9 @@ RUN apt-get install -y make git curl graphviz
 
 RUN python -m venv $VIRTUAL_ENV
 
-RUN groupadd -g 1001 igvfd
+RUN groupadd -g 1002 igvfd
 
-RUN useradd -g 1001 -m igvfd
+RUN useradd -u 1001 -g 1002 -m igvfd
 
 RUN chown -R igvfd:igvfd $VIRTUAL_ENV
 
