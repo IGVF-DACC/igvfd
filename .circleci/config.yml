@@ -35,7 +35,8 @@ jobs:
               # Allow Docker and Circle users to use mounted folder.
               sudo useradd -u 1444 igvfd
               sudo usermod -a -G igvfd circleci
-              sudo chown -R circleci:igvfd ./
+              sudo chown -R igvfd:igvfd ./
+              sudo chmod -R g+twXs ./
               docker-compose -f docker-compose.test.yml up --exit-code-from pyramid
       - run:
           name: Move pytest results out of hidden directory for circle
