@@ -39,10 +39,10 @@ def get_buildspec():
                         'echo $DOCKER_SECRET | docker login --username $DOCKER_USER --password-stdin',
                         'echo Building images',
                         'docker-compose -f docker-compose.test.yml build',
-                        'ls -alht',
-                        'echo Setting permission for mounted between users',
+                        'echo Setting permission to share mounted volume between users',
                         'sudo useradd -u 1444 igvfd',
                         'sudo usermod -a -G root igvfd',
+                        'sudo chown -R root:igvfd ./',
                     ]
                 },
                 'build': {
