@@ -1,6 +1,6 @@
 .test-reports
 .test-results
-.circlci
+.circleci
 .git
 .gitignore
 .pre-commit-config.yaml
