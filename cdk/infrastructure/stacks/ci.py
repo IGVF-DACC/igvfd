@@ -43,6 +43,7 @@ def get_buildspec():
                         'sudo useradd -u 1444 igvfd',
                         'sudo usermod -a -G igvfd root',
                         'sudo chown -R root:igvfd ./',
+                        'sudo chmod -R g+rwX ./',
                     ]
                 },
                 'build': {
