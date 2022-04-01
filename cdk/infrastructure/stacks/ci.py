@@ -41,7 +41,7 @@ def get_buildspec():
                         'docker-compose -f docker-compose.test.yml build',
                         'echo Setting permission to share mounted volume between users',
                         'sudo useradd -u 1444 igvfd',
-                        'sudo usermod -a -G root igvfd',
+                        'sudo usermod -a -G igvfd root',
                         'sudo chown -R root:igvfd ./',
                     ]
                 },
