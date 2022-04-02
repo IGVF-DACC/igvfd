@@ -1,0 +1,32 @@
+[
+    {
+        "uuid": "467c72a2-4f84-2c8f-96b0-ec8715e18185",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:alias1"
+        ],
+        "status": "in progress",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": [
+            "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        ],
+        "notes": "This is a note.",
+        "product_id": "GR000001",
+        "lot_id": "R00001",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "starting_amount": 5,
+        "starting_amount_units": "\u03bcg",
+        "dbxrefs": [
+            "GEO:SAMN1"
+        ],
+        "organism": "Homo sapiens",
+        "age": 40,
+        "age_units": "year",
+        "life_stage": "adult",
+        "biosample_ontology": "motor neuron",
+        "disease_ontology": "motor neuron disease",
+        "sex": "male",
+        "date": "2022-02-02"
+    }
+]

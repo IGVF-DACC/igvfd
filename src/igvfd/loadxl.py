@@ -17,6 +17,7 @@ ORDER = [
     'award',
     'lab',
     'document',
+    'biosample',
     'image',
     'page',
     'access_key',
