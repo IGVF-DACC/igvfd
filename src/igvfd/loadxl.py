@@ -18,6 +18,7 @@ ORDER = [
     'lab',
     'document',
     'biosample',
+    'technical_sample'
     'image',
     'page',
     'access_key',
