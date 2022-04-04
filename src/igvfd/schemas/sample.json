@@ -6,7 +6,8 @@
     "type": "object",
     "required": [
         "award",
-        "lab"
+        "lab",
+        "source"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -41,10 +42,7 @@
             "$ref": "mixins.json#/documents"
         },
         {
-            "$ref": "mixins.json#/product_id"
-        },
-        {
-            "$ref": "mixins.json#/lot_id"
+            "$ref": "mixins.json#/product_info"
         },
         {
             "$ref": "mixins.json#/url"
@@ -52,7 +50,7 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "accession": {
             "accessionType": "SM"

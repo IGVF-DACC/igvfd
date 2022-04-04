@@ -103,6 +103,7 @@ def test_load_workbook(workbook, testapp, item_type, length):
     # testdata must come before testapp in the funcargs list for their
     # savepoints to be correctly ordered.
     res = testapp.get('/%s/?limit=all' % item_type).maybe_follow(status=200)
+    print(res.json)
     assert len(res.json['@graph']) == length
 
 

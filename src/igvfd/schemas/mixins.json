@@ -267,28 +267,28 @@
             }
         }
     },
-    "product_id": {
-        "product_id": {
-            "title": "Product ID",
-            "description": "The product identifier provided by the originating lab or vendor.",
+    "product_info": {
+        "source": {
+            "title": "Source",
+            "description": "The originating lab or vendor.",
+            "comment": "See source.json for available identifiers.",
             "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
-        }
-    },
-    "lot_id": {
+            "linkTo": [
+                "Source",
+                "Lab"
+            ]
+        },
         "lot_id": {
             "title": "Lot ID",
             "description": "The lot identifier provided by the originating lab or vendor.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
-        }
-    },
-    "source": {
-        "source": {
-            "title": "Source",
-            "description": "The originating lab or vendor.",
-            "comment": "See source.json for available identifiers.",
-            "type": "string"
+        },
+        "product_id": {
+            "title": "Product ID",
+            "description": "The product identifier provided by the originating lab or vendor.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
         }
     }
 }
