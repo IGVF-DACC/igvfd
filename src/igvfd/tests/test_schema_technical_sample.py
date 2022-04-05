@@ -16,11 +16,11 @@ def test_technical_sample_lot_id_dependency(technical_sample_1, testapp):
 def test_technical_sample_type_dependency(technical_sample_1, testapp):
     res = testapp.patch_json(
         technical_sample_1['@id'],
-        {'type': 'inorganic'})
+        {'sample_material': 'inorganic'})
     assert(res.status_code == 200)
     res = testapp.patch_json(
         technical_sample_1['@id'],
-        {'type': 'not a real type'}, expect_errors=True)
+        {'sample_material': 'not a real type'}, expect_errors=True)
     assert(res.status_code == 422)
 
 

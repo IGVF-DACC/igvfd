@@ -290,5 +290,18 @@
             "comment": "See source.json for available identifiers.",
             "type": "string"
         }
+    },
+    "sample_material": {
+        "sample_material": {
+            "title": "Sample Material",
+            "type": "string",
+            "default": "undefined",
+            "enum": [
+                "undefined",
+                "inorganic",
+                "synthetic",
+                "organic"
+            ]
+        }
     }
 }

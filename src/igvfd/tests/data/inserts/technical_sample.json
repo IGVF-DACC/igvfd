@@ -4,7 +4,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias1"
+            "j-michael-cherry:alias2"
         ],
         "status": "in progress",
         "submitter_comment": "The submitter had very little to say.",
@@ -20,7 +20,7 @@
         "dbxrefs": [
             "GEO:SAMN1"
         ],
-        "type": "synthetic",
+        "sample_material": "synthetic",
         "date": "2022-02-02"
     }
 ]
