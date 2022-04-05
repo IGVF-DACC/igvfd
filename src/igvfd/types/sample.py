@@ -31,3 +31,15 @@ class Sample(Item):
 class Biosample(Sample):
     item_type = 'biosample'
     schema = load_schema('igvfd:schemas/biosample.json')
+
+
+@collection(
+    name='technical_samples',
+    unique_key='accession',
+    properties={
+        'title': 'Technical Samples',
+        'description': 'Listing of technical samples',
+    })
+class TechnicalSample(Sample):
+    item_type = 'technical_sample'
+    schema = load_schema('igvfd:schemas/technical_sample.json')
