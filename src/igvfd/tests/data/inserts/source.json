@@ -24,14 +24,6 @@
         "uuid": "fa701215-07e6-4ffe-a8f4-20356d66f3e0"
     },
     {
-        "description": "Barbara Wold at California Institute of Technology",
-        "name": "barbara-wold",
-        "status": "released",
-        "title": "Barbara Wold",
-        "url": "http://woldlab.caltech.edu/",
-        "uuid": "82fc89e4-81a0-42af-b30e-fb5943b97b31"
-    },
-    {
         "description": "Coriell Institute for Medical Research",
         "name": "coriell",
         "status": "released",
@@ -62,14 +54,6 @@
         "title": "ENCODE",
         "url": "http://encodeproject.org",
         "uuid": "be960dc7-1912-4ff5-8b1a-a7e2e1b2533e"
-    },
-    {
-        "description": "Gregory Crawford at Duke University",
-        "name": "gregory-crawford",
-        "status": "released",
-        "title": "Gregory Crawford",
-        "url": "http://www.genome.duke.edu/labs/crawford/",
-        "uuid": "6bf39a01-cb18-407c-b984-05fc83d7d73b"
     },
     {
         "description": "Health Protection Agency Culture Collections",

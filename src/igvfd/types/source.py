@@ -4,10 +4,7 @@ from snovault import (
     calculated_property
 )
 from .base import (
-    Item,
-    paths_filtered_by_status,
-    ALLOW_CURRENT,
-    DELETED,
+    Item
 )
 
 
@@ -16,7 +13,7 @@ from .base import (
     unique_key='source:name',
     properties={
         'title': 'Sources',
-        'description': 'Listing of sources',
+        'description': 'Listing of external sources',
     }
 )
 class Source(Item):
