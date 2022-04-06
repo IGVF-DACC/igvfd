@@ -1,7 +1,6 @@
 from snovault import (
     collection,
-    load_schema,
-    calculated_property
+    load_schema
 )
 from .base import (
     Item
@@ -19,3 +18,4 @@ from .base import (
 class Source(Item):
     item_type = 'source'
     schema = load_schema('igvfd:schemas/source.json')
+    name_key = 'name'
