@@ -22,6 +22,3 @@ def test_technical_sample_type_dependency(technical_sample_1, testapp):
         technical_sample_1['@id'],
         {'sample_material': 'not a real type'}, expect_errors=True)
     assert(res.status_code == 422)
-
-
-
