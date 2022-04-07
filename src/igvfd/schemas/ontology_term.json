@@ -1,0 +1,58 @@
+{
+    "title": "Ontology term",
+    "description": "Schema for an ontology term.",
+    "$id": "/profiles/ontology_term.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "term_id",
+        "term_name"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/schema_version"
+        },
+        {
+            "$ref": "mixins.json#/uuid"
+        },
+        {
+            "$ref": "mixins.json#/aliases"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/references"
+        },
+        {
+            "$ref": "mixins.json#/notes"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "hidden comment": "Bump the default in the subclasses."
+        },
+        "term_id": {
+            "@type": "@id",
+            "title": "Ontology ID",
+            "description": "An ontology identifier describing a biological sample, assay, trait, or disease.",
+            "permission": "import_items",
+            "type": "string",
+            "pattern": "^(UBERON|EFO|CL|CLO|NTR|MONDO|OBA|HP|DOID):[0-9]{2,8}$"
+        },
+        "term_name": {
+            "title": "Ontology name",
+            "description": "Ontology term describing a biological sample, assay, trait, or disease.",
+            "comment": "The term should match the ontology identifiers specified in term_id.",
+            "permission": "import_items",
+            "pattern": "^(?![\\s\"'])[\\S|\\s]*[^\\s\"']$",
+            "type": "string"
+        }
+    },
+    "changelog": "/profiles/changelogs/ontology_term.md"
+}
