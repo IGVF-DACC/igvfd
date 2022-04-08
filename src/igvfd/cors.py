@@ -90,7 +90,7 @@ ALLOWED_EXPOSE_HEADERS = [
     X_STATS,
 ]
 
-REQUIRED_VARY = [
+CORS_VARY = [
     ORIGIN
 ]
 
@@ -169,7 +169,7 @@ def _update_vary_header_in_response(request):
     vary = request.headers.get(VARY, [])
     request.response.headers.update(
         {
-            VARY: ','.join(vary + [ORIGIN])
+            VARY: ','.join(vary + CORS_VARY)
         }
     )
 
