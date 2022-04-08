@@ -123,7 +123,7 @@ class CorsPreflightPredicate(object):
 def origin_is_allowed(request):
     # Important for security to limit CORS to trusted origins.
     ALLOWED_ORIGINS = request.registry.settings.get(
-        'access_control_allowed_origins',
+        'cors_trusted_origins',
         []
     )
     return ALLOWED_ORIGINS and request.headers.get(ORIGIN) in ALLOWED_ORIGINS
