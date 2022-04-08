@@ -120,12 +120,26 @@ class CorsPreflightPredicate(object):
         return is_cors_preflight_request(request)
 
 
+def parse_ini_setting_as_list(ini_setting):
+    return [
+        value.strip()
+        for value in ini_setting.split('\n')
+        if value
+    ]
+
+
+def get_allowed_origins(request):
+    return parse_ini_setting_as_list(
+        request.registry.settings.get(
+            'cors_trusted_origins',
+            ''
+        )
+    )
+
+
 def origin_is_allowed(request):
     # Important for security to limit CORS to trusted origins.
-    ALLOWED_ORIGINS = request.registry.settings.get(
-        'cors_trusted_origins',
-        []
-    )
+    ALLOWED_ORIGINS = get_allowed_origins(request)
     return ALLOWED_ORIGINS and request.headers.get(ORIGIN) in ALLOWED_ORIGINS
 
 
