@@ -134,7 +134,22 @@ Refer to [object-lifecycle.rst] to understand object rendering. Example of basic
                 'train',
             ]
 
-7. Add in sample data to test the new schema in **tests** directory. Create a new JSON file in the **data/inserts** directory named after the new metadata object. 
+7.  To load test fixtures of the new metadata object add them to ``/tests/conftest.py`` into the ```pytest_plugins``` array, for example to add new object ```train.json```.
+
+            pytest_plugins = [
+                'igvfd.tests.fixtures.database',
+                'igvfd.tests.fixtures.testapp',
+                'igvfd.tests.fixtures.alias',
+                'igvfd.tests.fixtures.pyramid',
+                'igvfd.tests.fixtures.schemas.access_key',
+                'igvfd.tests.fixtures.schemas.award',
+                'igvfd.tests.fixtures.schemas.lab',
+                'igvfd.tests.fixtures.schemas.user',
+                ...
+                'igvfd.tests.fixtures.schemas.train',
+            ]
+
+8. Add in sample data to test the new schema in **tests** directory. Create a new JSON file in the **data/inserts** directory named after the new metadata object. 
 This new object is an array of example objects that can successfully POST against the schema defined, for example:
 
             [
@@ -149,9 +164,23 @@ This new object is an array of example objects that can successfully POST agains
                     "uuid": "0137a084-57af-4f69-b756-d6a920393fde"
                 }
 
-8. If applicable you may want to add audits on the metadata. Please refer to [making_audits]
+9. Add in fixtures to test the new schema in **tests** directory. Create a new .py file in the **fixtures/schemas** directory named after the new metadata object. Fixtures may be used to validate expected schema behavoir with tests defined in test files in **tests** directory.
 
-9. If this object has an accession, you will need to update **schema_formats.py** to add the 2 character prefix. 
+                @pytest.fixture
+                def wrangler(testapp):
+                    item = {
+                        'uuid': '4c23ec32-c7c8-4ac0-affb-04befcc881d4',
+                        'first_name': 'Wrangler',
+                        'last_name': 'Admin',
+                        'email': 'wrangler@example.org',
+                        'groups': ['admin'],
+                    }
+                    res = testapp.post_json('/user', item)
+                    return testapp.get(res.location).json
+
+10. If applicable you may want to add audits on the metadata. Please refer to [making_audits]
+
+11. If this object has an accession, you will need to update **schema_formats.py** to add the 2 character prefix. 
 To add an object with accession prefix 'SM':
 
             accession_re = re.compile(r'^IGVF(SM|FF|SR|AB|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9][A-Z][A-Z][A-Z]$')
