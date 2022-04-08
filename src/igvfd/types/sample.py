@@ -21,7 +21,7 @@ class Sample(Item):
     schema = load_schema('igvfd:schemas/sample.json')
 
 
-@collection(
+@abstract_collection(
     name='biosamples',
     unique_key='accession',
     properties={
@@ -29,5 +29,17 @@ class Sample(Item):
         'description': 'Listing of biosamples',
     })
 class Biosample(Sample):
-    item_type = 'biosample'
+    base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
+
+
+@collection(
+    name='cell-lines',
+    unique_key='accession',
+    properties={
+        'title': 'Cell lines',
+        'description': 'Listing of cell lines',
+    })
+class CellLine(Biosample):
+    item_type = 'cell_line'
+    schema = load_schema('igvfd:schemas/cell_line.json')

@@ -9,12 +9,6 @@
         "lab",
         "source"
     ],
-    "identifyingProperties": [
-        "uuid",
-        "accession",
-        "alternate_accessions",
-        "aliases"
-    ],
     "additionalProperties": false,
     "mixinProperties": [
         {
@@ -22,9 +16,6 @@
         },
         {
             "$ref": "mixins.json#/schema_version"
-        },
-        {
-            "$ref": "mixins.json#/uuid"
         },
         {
             "$ref": "mixins.json#/accession"
