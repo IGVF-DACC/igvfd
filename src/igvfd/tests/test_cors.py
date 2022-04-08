@@ -261,3 +261,34 @@ def test_cors_maybe_add_preflight_cors_to_response_header(dummy_request):
     maybe_add_preflight_cors_to_response_headers(dummy_request)
     assert 'Access-Control-Allow-Methods' in dummy_request.response.headers
     assert 'Access-Control-Allow-Headers' in dummy_request.response.headers
+
+
+def test_cors_test_handle_cors_preflight_view(testapp):
+    response = testapp.options(
+        '/login',
+        status=404
+    )
+    headers = {
+        'Origin': 'http://evilhost:3000',
+        'Access-Control-Request-Method': 'POST',
+        'Access-Control-Request-Headers': 'Accept,Origin,X-CSRF-Token,Content-Length',
+    }
+    response = testapp.options(
+        '/login',
+        headers=headers
+    )
+    assert response.status_code == 200
+    assert 'Access-Control-Allow-Methods' not in response.headers
+    assert 'Access-Control-Allow-Headers' not in response.headers
+    headers = {
+        'Origin': 'http://localhost:3000',
+        'Access-Control-Request-Method': 'POST',
+        'Access-Control-Request-Headers': 'Accept,Origin,X-CSRF-Token,Content-Length',
+    }
+    response = testapp.options(
+        '/someotherview',
+        headers=headers
+    )
+    assert response.status_code == 200
+    assert 'Access-Control-Allow-Methods' in response.headers
+    assert 'Access-Control-Allow-Headers' in response.headers
