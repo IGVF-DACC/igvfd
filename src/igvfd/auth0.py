@@ -43,6 +43,9 @@ def includeme(config):
     config.add_route('impersonate-user', 'impersonate-user')
 
 
+AUTH0_DOMAIN = 'dev-2bg1vkmg.us.auth0.com'
+
+
 class LoginDenied(HTTPForbidden):
     title = 'Login failure'
 
@@ -75,9 +78,8 @@ class Auth0AuthenticationPolicy(CallbackAuthenticationPolicy):
             return None
 
         try:
-            domain = 'encode.auth0.com'
             user_url = 'https://{domain}/userinfo?access_token={access_token}' \
-                .format(domain=domain, access_token=access_token)
+                .format(domain=AUTH0_DOMAIN, access_token=access_token)
             user_info = requests.get(user_url).json()
         except Exception as e:
             if self.debug:
@@ -107,11 +109,10 @@ def signup(context, request):
     Create new user.
     :param request: Pyramid request object
     """
-    domain = 'encode.auth0.com'
     access_token = request.json.get('accessToken')
     if not access_token:
         raise HTTPBadRequest(explanation='Access token required')
-    url = 'https://{domain}/userinfo?access_token={access_token}'.format(domain=domain, access_token=access_token)
+    url = 'https://{domain}/userinfo?access_token={access_token}'.format(domain=AUTH0_DOMAIN, access_token=access_token)
     user_data_request = requests.get(url)
     if user_data_request.status_code != 200:
         raise HTTPBadRequest(explanation='Could not get user data')
