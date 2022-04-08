@@ -34,7 +34,7 @@ def test_cors_is_cors_preflight_request():
     dr = DummyRequest(
         method='OPTIONS',
         headers={
-            'Origin': 'http//:localhost:3000',
+            'Origin': 'http://localhost:3000',
             'Access-Control-Request-Method': 'POST',
             'Access-Control-Request-Headers': 'Accept,Origin,X-CSRF-Token'
         }
@@ -157,8 +157,107 @@ def test_cors_add_allowed_cors_headers_to_response(dummy_request):
         }
     )
     _add_allowed_cors_headers_to_response(dummy_request)
-    print(dummy_request.response.headers)
     assert 'Access-Control-Allow-Origin' in dummy_request.response.headers
     assert 'Access-Control-Allow-Credentials' in dummy_request.response.headers
     assert 'Access-Control-Expose-Headers' in dummy_request.response.headers
     assert dummy_request.response.headers['Access-Control-Allow-Origin'] == 'somehost'
+
+
+def test_cors_add_allowed_preflight_cors_headers_to_response(dummy_request):
+    from igvfd.cors import _add_allowed_preflight_cors_headers_to_response
+    assert 'Access-Control-Allow-Methods' not in dummy_request.response.headers
+    assert 'Access-Control-Allow-Headers' not in dummy_request.response.headers
+    _add_allowed_preflight_cors_headers_to_response(dummy_request)
+    assert 'Access-Control-Allow-Methods' in dummy_request.response.headers
+    assert 'Access-Control-Allow-Headers' in dummy_request.response.headers
+
+
+def test_cors_update_vary_header_in_response(dummy_request):
+    from igvfd.cors import _update_vary_header_in_response
+    assert 'Vary' not in dummy_request.response.headers
+    _update_vary_header_in_response(dummy_request)
+    assert 'Vary' in dummy_request.response.headers
+    assert 'Origin' in dummy_request.response.headers['Vary']
+
+
+def test_cors_add_cors_to_response_headers(dummy_request):
+    from igvfd.cors import _add_cors_to_response_headers
+    assert 'Access-Control-Allow-Origin' not in dummy_request.response.headers
+    assert 'Access-Control-Allow-Credentials' not in dummy_request.response.headers
+    assert 'Access-Control-Expose-Headers' not in dummy_request.response.headers
+    assert 'Vary' not in dummy_request.response.headers
+    dummy_request.headers.update(
+        {
+            'Origin': 'somehost'
+        }
+    )
+    _add_cors_to_response_headers(dummy_request)
+    assert 'Access-Control-Allow-Origin' in dummy_request.response.headers
+    assert 'Access-Control-Allow-Credentials' in dummy_request.response.headers
+    assert 'Access-Control-Expose-Headers' in dummy_request.response.headers
+    assert dummy_request.response.headers['Access-Control-Allow-Origin'] == 'somehost'
+    assert 'Vary' in dummy_request.response.headers
+    assert 'Origin' in dummy_request.response.headers['Vary']
+
+
+def test_cors_maybe_add_cors_to_response_header(dummy_request):
+    from igvfd.cors import maybe_add_cors_to_response_headers
+    assert 'Access-Control-Allow-Origin' not in dummy_request.response.headers
+    assert 'Access-Control-Allow-Credentials' not in dummy_request.response.headers
+    assert 'Access-Control-Expose-Headers' not in dummy_request.response.headers
+    assert 'Vary' not in dummy_request.response.headers
+    dummy_request.headers.update(
+        {
+            'Origin': 'somehost'
+        }
+    )
+    maybe_add_cors_to_response_headers(dummy_request)
+    assert 'Access-Control-Allow-Origin' not in dummy_request.response.headers
+    assert 'Access-Control-Allow-Credentials' not in dummy_request.response.headers
+    assert 'Access-Control-Expose-Headers' not in dummy_request.response.headers
+    assert 'Vary' not in dummy_request.response.headers
+    dummy_request.headers.update(
+        {
+            'Origin': 'http://localhost:3000'
+        }
+    )
+    maybe_add_cors_to_response_headers(dummy_request)
+    assert 'Access-Control-Allow-Origin' in dummy_request.response.headers
+    assert 'Access-Control-Allow-Credentials' in dummy_request.response.headers
+    assert 'Access-Control-Expose-Headers' in dummy_request.response.headers
+    assert dummy_request.response.headers['Access-Control-Allow-Origin'] == (
+        'http://localhost:3000'
+    )
+    assert 'Vary' in dummy_request.response.headers
+    assert 'Origin' in dummy_request.response.headers['Vary']
+
+
+def test_cors_maybe_add_preflight_cors_to_response_header(dummy_request):
+    from igvfd.cors import maybe_add_preflight_cors_to_response_headers
+    assert 'Access-Control-Allow-Methods' not in dummy_request.response.headers
+    assert 'Access-Control-Allow-Headers' not in dummy_request.response.headers
+    maybe_add_preflight_cors_to_response_headers(dummy_request)
+    assert 'Access-Control-Allow-Methods' not in dummy_request.response.headers
+    assert 'Access-Control-Allow-Headers' not in dummy_request.response.headers
+    dummy_request.method = 'PATCH'
+    dummy_request.headers.update(
+        {
+            'Origin': 'http://evilhost:3000',
+            'Access-Control-Request-Method': 'PATCH',
+            'Access-Control-Request-Headers': 'Accept,Origin,X-CSRF-Token',
+        }
+    )
+    maybe_add_preflight_cors_to_response_headers(dummy_request)
+    assert 'Access-Control-Allow-Methods' not in dummy_request.response.headers
+    assert 'Access-Control-Allow-Headers' not in dummy_request.response.headers
+    dummy_request.method = 'PATCH'
+    dummy_request.headers.update(
+        {
+            'Origin': 'http://localhost:3000',
+            'Access-Control-Request-Method': 'PATCH',
+            'Access-Control-Request-Headers': 'Accept,Origin,X-CSRF-Token',
+        }
+    )
+    maybe_add_preflight_cors_to_response_headers(dummy_request)
+    assert 'Access-Control-Allow-Methods' in dummy_request.response.headers
+    assert 'Access-Control-Allow-Headers' in dummy_request.response.headers
