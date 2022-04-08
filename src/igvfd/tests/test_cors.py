@@ -144,3 +144,21 @@ def test_cors_should_add_cors_to_headers(dummy_request):
     dummy_request.headers.update({'Origin': 'http://localhost:3000'})
     dummy_request.method = 'DELETE'
     assert not should_add_cors_to_headers(dummy_request)
+
+
+def test_cors_add_allowed_cors_headers_to_response(dummy_request):
+    from igvfd.cors import _add_allowed_cors_headers_to_response
+    assert 'Access-Control-Allow-Origin' not in dummy_request.response.headers
+    assert 'Access-Control-Allow-Credentials' not in dummy_request.response.headers
+    assert 'Access-Control-Expose-Headers' not in dummy_request.response.headers
+    dummy_request.headers.update(
+        {
+            'Origin': 'somehost'
+        }
+    )
+    _add_allowed_cors_headers_to_response(dummy_request)
+    print(dummy_request.response.headers)
+    assert 'Access-Control-Allow-Origin' in dummy_request.response.headers
+    assert 'Access-Control-Allow-Credentials' in dummy_request.response.headers
+    assert 'Access-Control-Expose-Headers' in dummy_request.response.headers
+    assert dummy_request.response.headers['Access-Control-Allow-Origin'] == 'somehost'
