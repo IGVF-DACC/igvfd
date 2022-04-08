@@ -18,7 +18,7 @@ ORDER = [
     'source',
     'lab',
     'document',
-    'biosample',
+    'cell_line',
     'image',
     'page',
     'access_key',
