@@ -1,4 +1,5 @@
 from pyramid.events import NewRequest
+from pyramid.events import subscriber
 from pyramid.security import NO_PERMISSION_REQUIRED
 from pyramid.view import view_config
 
@@ -14,10 +15,6 @@ def includeme(config):
         'handle-cors-preflight',
         '{match_any:.*}',
         cors_preflight=True,
-    )
-    config.add_subscriber(
-        maybe_add_cors_to_response_headers_subscriber,
-        NewRequest
     )
 
 
@@ -200,6 +197,7 @@ def handle_cors_preflight(request):
     return request.response
 
 
+@subscriber(NewRequest)
 def maybe_add_cors_to_response_headers_subscriber(event):
     request = event.request
     if is_cors_request(request):
