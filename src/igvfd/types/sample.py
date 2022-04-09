@@ -17,6 +17,7 @@ from .base import (
         'description': 'Listing of samples',
     })
 class Sample(Item):
+    item_type = 'sample'
     base_types = ['Sample'] + Item.base_types
     schema = load_schema('igvfd:schemas/sample.json')
 
@@ -29,6 +30,7 @@ class Sample(Item):
         'description': 'Listing of biosamples',
     })
 class Biosample(Sample):
+    item_type = 'biosample'
     base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
 
