@@ -87,9 +87,9 @@ ALLOWED_EXPOSE_HEADERS = [
     X_STATS,
 ]
 
-CORS_VARY = [
-    ORIGIN
-]
+CORS_VARY = (
+    ORIGIN,
+)
 
 
 def is_cors_request(request):
@@ -177,7 +177,7 @@ def _add_allowed_preflight_cors_headers_to_response(request):
 
 
 def _update_vary_header_in_response(request):
-    vary = request.headers.get(VARY, [])
+    vary = request.response.vary or ()
     request.response.headers.update(
         {
             VARY: ','.join(vary + CORS_VARY)

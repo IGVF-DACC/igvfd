@@ -175,9 +175,15 @@ def test_cors_add_allowed_preflight_cors_headers_to_response(dummy_request):
 def test_cors_update_vary_header_in_response(dummy_request):
     from igvfd.cors import _update_vary_header_in_response
     assert 'Vary' not in dummy_request.response.headers
+    dummy_request.response.headers.update(
+        {
+            'Vary': 'Somthing, Else'
+        }
+    )
     _update_vary_header_in_response(dummy_request)
     assert 'Vary' in dummy_request.response.headers
     assert 'Origin' in dummy_request.response.headers['Vary']
+    assert dummy_request.response.headers['Vary'] == 'Somthing,Else,Origin'
 
 
 def test_cors_add_cors_to_response_headers(dummy_request):
@@ -292,3 +298,49 @@ def test_cors_test_handle_cors_preflight_view(testapp):
     assert response.status_code == 200
     assert 'Access-Control-Allow-Methods' in response.headers
     assert 'Access-Control-Allow-Headers' in response.headers
+
+
+def test_cors_maybe_add_cors_to_response_headers_subscriber(testapp):
+    response = testapp.get(
+        '/session',
+    )
+    assert 'Content-Type' in response.headers
+    assert 'Set-Cookie' in response.headers
+    assert 'Vary' in response.headers
+    assert 'X-Stats' in response.headers
+    assert 'Access-Control-Allow-Origin' not in response.headers
+    assert 'Access-Control-Allow-Credentials' not in response.headers
+    assert 'Access-Control-Expose-Headers' not in response.headers
+    testapp.cookiejar.clear()
+    headers = {
+        'Origin': 'http://evilhost:3000',
+    }
+    response = testapp.get(
+        '/session',
+        headers=headers
+    )
+    assert 'Content-Type' in response.headers
+    assert 'Set-Cookie' in response.headers
+    assert 'Vary' in response.headers
+    assert 'X-Stats' in response.headers
+    assert 'Access-Control-Allow-Origin' not in response.headers
+    assert 'Access-Control-Allow-Credentials' not in response.headers
+    assert 'Access-Control-Expose-Headers' not in response.headers
+    testapp.cookiejar.clear()
+    headers = {
+        'Origin': 'http://localhost:3000',
+    }
+    response = testapp.get(
+        '/session',
+        headers=headers
+    )
+    assert 'Content-Type' in response.headers
+    assert 'Set-Cookie' in response.headers
+    assert 'Vary' in response.headers
+    assert 'X-Stats' in response.headers
+    assert 'Access-Control-Allow-Origin' in response.headers
+    assert 'Access-Control-Allow-Credentials' in response.headers
+    assert 'Access-Control-Expose-Headers' in response.headers
+    assert response.headers['Access-Control-Allow-Origin'] == 'http://localhost:3000'
+    assert response.headers['Vary'] == 'Origin, Accept, Authorization'
+    assert response.headers['Access-Control-Allow-Credentials'] == 'true'
