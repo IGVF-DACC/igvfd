@@ -60,9 +60,6 @@
         },
         {
             "$ref": "mixins.json#/url"
-        },
-        {
-            "$ref": "mixins.json#/sample_material"
         }
     ],
     "dependentSchemas": {
@@ -84,6 +81,19 @@
                 "comment": "Date should be submitted in as YYYY-MM-DD.",
                 "type": "string",
                 "format": "date"
+            }
+        },
+        "sample_material": {
+            "sample_material": {
+                "title": "Sample Material",
+                "type": "string",
+                "default": "undefined",
+                "enum": [
+                    "undefined",
+                    "inorganic",
+                    "synthetic",
+                    "organic"
+                ]
             }
         }
     },
