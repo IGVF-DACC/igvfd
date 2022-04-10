@@ -6,7 +6,9 @@
     "type": "object",
     "required": [
         "award",
-        "lab"
+        "lab",
+        "source",
+        "sample_material"
     ],
     "identifyingProperties": [
         "uuid",
@@ -53,13 +55,13 @@
             "$ref": "mixins.json#/documents"
         },
         {
-            "$ref": "mixins.json#/product_id"
-        },
-        {
-            "$ref": "mixins.json#/lot_id"
+            "$ref": "mixins.json#/product_info"
         },
         {
             "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/additional_description"
         }
     ],
     "dependentSchemas": {
@@ -75,26 +77,27 @@
             "default": "1"
         },
         "date": {
-            "date": {
-                "title": "Technical Sample date",
-                "description": "The date the technical sample was collected or created depending on type.",
-                "comment": "Date should be submitted in as YYYY-MM-DD.",
-                "type": "string",
-                "format": "date"
-            }
+            "title": "Technical Sample date",
+            "description": "The date the technical sample was collected or created depending on type.",
+            "comment": "Date should be submitted in as YYYY-MM-DD.",
+            "type": "string",
+            "format": "date"
         },
         "sample_material": {
-            "sample_material": {
-                "title": "Sample Material",
-                "type": "string",
-                "default": "undefined",
-                "enum": [
-                    "undefined",
-                    "inorganic",
-                    "synthetic",
-                    "organic"
-                ]
-            }
+            "title": "Sample Material",
+            "type": "string",
+            "default": "undefined",
+            "enum": [
+                "undefined",
+                "inorganic",
+                "synthetic",
+                "organic"
+            ]
+        },
+        "technical_sample_ontology": {
+            "title": "Technical sample ontology",
+            "description": "Ontology of the technical sample.",
+            "type": "string"
         }
     },
     "facets": {

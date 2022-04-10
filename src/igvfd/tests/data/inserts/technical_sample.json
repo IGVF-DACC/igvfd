@@ -21,6 +21,9 @@
             "GEO:SAMN1"
         ],
         "sample_material": "synthetic",
-        "date": "2022-02-02"
+        "technical_sample_ontology": "vaccine",
+        "date": "2022-04-09",
+        "source": "/labs/j-michael-cherry",
+        "additional_description": "The technical sample is for quality control of vaccine production."
     }
 ]
