@@ -19,6 +19,7 @@ ORDER = [
     'lab',
     'document',
     'cell_line',
+    'tissue',
     'image',
     'page',
     'access_key',

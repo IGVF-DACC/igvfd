@@ -45,3 +45,15 @@ class Biosample(Sample):
 class CellLine(Biosample):
     item_type = 'cell_line'
     schema = load_schema('igvfd:schemas/cell_line.json')
+
+
+@collection(
+    name='tissues',
+    unique_key='accession',
+    properties={
+        'title': 'Tissues',
+        'description': 'Listing of tissues',
+    })
+class Tissue(Biosample):
+    item_type = 'tissue'
+    schema = load_schema('igvfd:schemas/tissue.json')
