@@ -2,11 +2,12 @@
     "title": "Cell line",
     "id": "/profiles/cell_line.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a specific biological sample.",
+    "description": "Schema for submitting a cell line sample.",
     "type": "object",
     "required": [
         "award",
-        "lab"
+        "lab",
+        "source"
     ],
     "identifyingProperties": [
         "uuid",
@@ -56,10 +57,7 @@
             "$ref": "mixins.json#/documents"
         },
         {
-            "$ref": "mixins.json#/product_id"
-        },
-        {
-            "$ref": "mixins.json#/lot_id"
+            "$ref": "mixins.json#/product_info"
         },
         {
             "$ref": "mixins.json#/url"
@@ -171,6 +169,9 @@
             "comment": "In calculating passage number, include passages from the source.",
             "type": "integer",
             "minimum": 0
+        },
+        "date_obtained": {
+            "title": "Date harvested"
         }
     },
     "facets": {
