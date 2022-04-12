@@ -83,10 +83,10 @@ Adding a new schema
             "required": ["treatment_term_name", "treatment_type"]
 
 
-4. In the **types** directory add a collection class for the object to define the rendering of the object. 
+4. In the **types** directory add a collection class for the object to define the rendering of the object.
 Refer to [object-lifecycle.rst] to understand object rendering. Example of basic collection definition for treatments:
 
-    
+
             @collection(
                 name='treatments',
                 properties={
@@ -149,7 +149,7 @@ Refer to [object-lifecycle.rst] to understand object rendering. Example of basic
                 'igvfd.tests.fixtures.schemas.train',
             ]
 
-8. Add in sample data to test the new schema in **tests** directory. Create a new JSON file in the **data/inserts** directory named after the new metadata object. 
+8. Add in sample data to test the new schema in **tests** directory. Create a new JSON file in the **data/inserts** directory named after the new metadata object.
 This new object is an array of example objects that can successfully POST against the schema defined, for example:
 
             [
@@ -180,7 +180,7 @@ This new object is an array of example objects that can successfully POST agains
 
 10. If applicable you may want to add audits on the metadata. Please refer to [making_audits]
 
-11. If this object has an accession, you will need to update **schema_formats.py** to add the 2 character prefix. 
+11. If this object has an accession, you will need to update **schema_formats.py** to add the 2 character prefix.
 To add an object with accession prefix 'SM':
 
             accession_re = re.compile(r'^IGVF(SM|FF|SR|AB|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9][A-Z][A-Z][A-Z]$')
@@ -196,14 +196,14 @@ There are two situations we need to consider when updating an existing schema: (
 
 **When not to update a version**
 
-* Do not update the schema version if the updated schema allows all existing objects in the database to continue to validate. For example, a new enum value in an existing list of enums would not cause existing objects of that type to fail validation. 
+* Do not update the schema version if the updated schema allows all existing objects in the database to continue to validate. For example, a new enum value in an existing list of enums would not cause existing objects of that type to fail validation.
 
-**NOTE:** 
+**NOTE:**
 Exception: When making substantial changes to an existing schema, even if these changes do not cause the existing objects using this schema to fail validation, an update is recommended (please see below).
 
 **When to update a version**
 
-* Schema version has to be updated (bumped up by 1) if the change that is being introduced will lead to a potential invalidation of existing objects in the database. 
+* Schema version has to be updated (bumped up by 1) if the change that is being introduced will lead to a potential invalidation of existing objects in the database.
 
 * Examples include:
     1) Changing the name of a property in the existing schema.
@@ -228,7 +228,7 @@ The new schema version number in such cases helps submitters and users realize t
 
 3. Update the inserts within the **data/inserts** directory.
 
-4. Add test in the **tests** directory to make sure your schema change functions as expected. 
+4. Add test in the **tests** directory to make sure your schema change functions as expected.
 
 **Specific example from the treatment object schema change:**
 For example, if we included a minor change in treatment object such that *μg/kg* could be specified as treatment units, the following test should allow one to test whether the update has been successfully implemented or not:
@@ -241,11 +241,11 @@ For example, if we included a minor change in treatment object such that *μg/kg
                 'amount': 20,
                 'amount_units': 'μg/kg'
             },
-            status=200, 
+            status=200,
             ## Status 200 means the object was successfully patched and the schema update works as expected.
         )
 
-5. Document the changes to the corresponding log file within the **schemas/changelogs** directory. 
+5. Document the changes to the corresponding log file within the **schemas/changelogs** directory.
 
 **Specific example from the treatment object schema change:**
 For example, a minor change in the treatment object after version 11 that allowed one to use *μg/kg* as treatment amount units is shown below:
@@ -256,7 +256,7 @@ For example, a minor change in the treatment object after version 11 that allowe
 
 ### Update schema version
 
-1. In the **schemas** directory, edit the existing properties in the corresponding JSON file named after the object and increment the schema version. 
+1. In the **schemas** directory, edit the existing properties in the corresponding JSON file named after the object and increment the schema version.
 
 **Specific example from the genetic modifications object schema change:**
 
@@ -291,8 +291,8 @@ Replacing the enum "validation" by the enum "characterization" in the list of en
 
 **Specific example from the genetic modifications object upgrade:**
 
-For example if the original schema version for the genetic modification object being modified was "6", change it to "7" (6->7): 
-        
+For example if the original schema version for the genetic modification object being modified was "6", change it to "7" (6->7):
+
         "schema_version": {
             "default": "7"
         }
@@ -301,14 +301,14 @@ For example if the original schema version for the genetic modification object b
 
 **Specific example from the genetic modifications object upgrade:**
 
-An example to the upgrade step is shown below. Continuing with our example on genetic modifications, all the existing objects with that had "purpose" specified to be "validation" must now be changed to "characterization". 
+An example to the upgrade step is shown below. Continuing with our example on genetic modifications, all the existing objects with that had "purpose" specified to be "validation" must now be changed to "characterization".
 
         @upgrade_step('genetic_modification', '6', '7')
         def genetic_modification_6_7(value, system):
             if value['purpose'] == 'validation':
                 value['purpose'] = 'characterization'
 
-4. In the **tests/data/inserts** directory, we will need to change all the corresponding objects to follow the new schema. 
+4. In the **tests/data/inserts** directory, we will need to change all the corresponding objects to follow the new schema.
 
 **Specific example from the genetic modifications object upgrade:**
 
@@ -324,7 +324,7 @@ Continuing with our example, all the ```"purpose": "validation"``` must now be c
         "purpose": "characterization",
 
 
-5. Next, add an upgrade test to an existing python file named ```test_upgrade_{metadata_object}.py```. If a corresponding test file doesn't exist, create a new file. 
+5. Next, add an upgrade test to an existing python file named ```test_upgrade_{metadata_object}.py```. If a corresponding test file doesn't exist, create a new file.
 
 **Specific example from the genetic modifications object upgrade:**
 
@@ -337,14 +337,14 @@ Below, is an example of an upgrade step that must be added to the ```test_upgrad
             assert value.get('purpose') == 'characterization'
 
 6. You must check the results of your upgrade on the current database:
-   
+
    **Note** it is possible to write a "bad" upgrade that does not prevent your objects from loading or being shown.
-   
+
    You can check using the following methods:
    * Checking for errors in the /var/log/cloud-init-output.log (search for "batchupgrade" a few times) in any demo with your upgrade, this can be done about 30min after launch (after machine reboots post-install), no need to wait for the indexing to complete.
    * Looking at the JSON for an object that should be upgraded by checking it's schema_version property.
    * Updating and object and looking in the /var/log/apache2/error.log for stack traces.
-   
+
    A good upgrade would ensure that all objects POSTed before and after release would not fail validation. Nevertheless, it will be a good idea to check that again during the release.
 
 **Specific example from a successful batch upgrade on a demo:**
@@ -376,7 +376,7 @@ If you do see any errors in the summary above, you must to look at log above and
 
 7. If applicable you may need to update audits on the metadata. Please refer to [making_audits]
 
-8. To document all the schema changes that occurred between increments of the ```schema_version``` update the object changelogs the **schemas/changelogs** directory. 
+8. To document all the schema changes that occurred between increments of the ```schema_version``` update the object changelogs the **schemas/changelogs** directory.
 
 **Specific example from the genetic modifications object upgrade:**
 
@@ -386,7 +386,7 @@ Continuing with our example of upgrading genetic modifications object, the chang
 
         * *purpose* property enum value *validation* was renamed to *characterization*
 
-     
+
 
 [JSONSchema]: http://json-schema.org/
 [JSON-LD]:  http://json-ld.org/
