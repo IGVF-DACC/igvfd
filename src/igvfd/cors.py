@@ -212,7 +212,6 @@ def handle_cors_preflight(request):
     return request.response
 
 
-# View deriver
 def maybe_add_cors_to_header_view_deriver(view, info):
     def wrapper_view(context, request):
         if is_cors_request(request):
