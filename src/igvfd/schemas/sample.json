@@ -49,9 +49,6 @@
         }
     ],
     "properties": {
-        "schema_version": {
-            "default": "2"
-        },
         "accession": {
             "accessionType": "SM"
         },
