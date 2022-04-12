@@ -148,6 +148,9 @@
         }
     },
     "properties": {
+        "schema_version": {
+            "hidden comment": "Bump the default in the subclasses."
+        },
         "organism": {
             "enum": [
                 "Homo sapiens",
@@ -249,6 +252,5 @@
         "status": {
             "title": "Status"
         }
-    },
-    "changelog": "/profiles/changelogs/biosample.md"
+    }
 }
