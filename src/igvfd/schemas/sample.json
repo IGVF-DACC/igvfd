@@ -49,6 +49,9 @@
         }
     ],
     "properties": {
+        "schema_version": {
+            "hidden comment": "Bump the default in the subclasses."
+        },
         "accession": {
             "accessionType": "SM"
         },
@@ -102,6 +105,5 @@
         "award.project": {
             "title": "Project"
         }
-    },
-    "changelog": "/profiles/changelogs/sample.md"
+    }
 }
