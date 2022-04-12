@@ -300,7 +300,7 @@ def test_cors_test_handle_cors_preflight_view(testapp):
     assert 'Access-Control-Allow-Headers' in response.headers
 
 
-def test_cors_maybe_add_cors_to_response_headers_subscriber(testapp):
+def test_cors_maybe_add_cors_to_header_view_deriver(testapp):
     response = testapp.get(
         '/session',
     )
