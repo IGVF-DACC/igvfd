@@ -4,8 +4,7 @@ def test_sample_1(source, testapp):
 
 
 def test_lab_as_source(lab, award, testapp):
-
-    res = testapp.post_json('/biosample',
+    res = testapp.post_json('/cell_line',
                             {
                                 'award': award['@id'],
                                 'lab': lab['@id'],

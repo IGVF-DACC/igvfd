@@ -1,13 +1,19 @@
 {
-    "title": "Biosample",
-    "$id": "/profiles/biosample.json",
+    "title": "Tissue",
+    "$id": "/profiles/tissue.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a specific biological sample.",
+    "description": "Schema for submitting a tissue sample.",
     "type": "object",
     "required": [
         "award",
         "lab",
         "source"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -15,7 +21,13 @@
             "$ref": "sample.json#/properties"
         },
         {
+            "$ref": "biosample.json#/properties"
+        },
+        {
             "$ref": "mixins.json#/schema_version"
+        },
+        {
+            "$ref": "mixins.json#/uuid"
         },
         {
             "$ref": "mixins.json#/accession"
@@ -149,108 +161,46 @@
     },
     "properties": {
         "schema_version": {
-            "hidden comment": "Bump the default in the subclasses."
+            "default": "1"
         },
-        "organism": {
-            "enum": [
-                "Homo sapiens",
-                "Mus musculus",
-                "Saccharomyces"
-            ]
+        "PMI": {
+            "title": "Post-mortem interval",
+            "description": "The amount of time elapsed since death.",
+            "comment": "Post-mortem interval for tissues should be reported, if known.",
+            "type": "integer",
+            "minimum": 1
         },
-        "age": {
-            "title": "Age",
-            "description": "Age of organism at collection of the biosample.",
-            "type": "number",
-            "minimum": 0
-        },
-        "sex": {
-            "title": "Sex",
-            "description": "Sex of the organism associated with the biosample.",
-            "type": "string"
-        },
-        "age_units": {
-            "title": "Age units",
-            "description": "The units of time associated with age of the biosample.",
+        "PMI_units": {
+            "title": "Post-mortem interval units",
+            "description": "The unit in which the PMI time was reported.",
+            "comment": "Post-mortem interval units for tissues should be reported with PMI value, if known.",
             "type": "string",
             "enum": [
+                "second",
                 "minute",
                 "hour",
                 "day",
-                "week",
-                "month",
-                "year"
+                "week"
             ]
         },
-        "life_stage": {
-            "title": "Life stage",
-            "description": "The development stage of the organism used to prepare biosample.",
+        "preservation_method": {
+            "title": "Preservation method",
+            "description": "The method by which the tissue was preserved: cryopreservation (slow-freeze) or flash-freezing.",
+            "comment": "Indicate the tissue preservation_method if known and may be/become an experimental variable to track.",
             "type": "string",
             "enum": [
-                "adult",
-                "child",
-                "postnatal",
-                "embryonic",
-                "unknown",
-                "lag",
-                "fermentative",
-                "respirative",
-                "stationary",
-                "decline"
+                "cryopreservation",
+                "flash-freezing"
             ]
-        },
-        "biosample_ontology": {
-            "biosample_ontology": {
-                "title": "Biosample ontology",
-                "description": "Ontology of the biosample.",
-                "type": "string"
-            }
-        },
-        "disease_ontology": {
-            "disease_ontology": {
-                "title": "Disease ontology",
-                "description": "Ontology of the disease associated with the biosample.",
-                "type": "string"
-            }
         },
         "date_obtained": {
-            "date_obtained": {
-                "title": "Date obtained",
-                "description": "The date the biosample was harvested, disected, created depending on biosample type.",
-                "comment": "Date should be submitted in as YYYY-MM-DD.",
-                "type": "string",
-                "format": "date"
-            }
-        },
-        "Related_biosamples": {
-            "title": "Related_biosamples",
-            "description": "Biosamples that are related to this biosample with the relation of 'realted_biosample_realtion'.",
-            "comment": "A list of biosamples should all have the same relationship to this biosample.",
-            "type": "array",
-            "uniqueItems": true,
-            "items": {
-                "description": "A related biosample",
-                "comment": "See biosample.json for available identifiers.",
-                "type": "string",
-                "linkTo": "Biosample"
-            }
-        },
-        "Related_biosamples_relation": {
-            "title": "Relationship to other related biosamples",
-            "description": "The specific relationship to the biosamples in related_biosamples field",
-            "comment": "Must be submitted with related_biosamples",
-            "enum": [
-                "originated_from",
-                "pooled_from",
-                "separated_from",
-                "hosted_by",
-                "derived_from"
-            ]
+            "title": "Date harvested"
         }
     },
     "facets": {
         "status": {
             "title": "Status"
         }
-    }
+    },
+    "changelog": "/profiles/changelogs/tissue.md"
 }
