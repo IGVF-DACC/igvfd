@@ -1,6 +1,6 @@
 {
     "title": "Technical Sample",
-    "id": "/profiles/technical_sample.json",
+    "$id": "/profiles/technical_sample.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Schema for submitting a specific technical sample.",
     "type": "object",
