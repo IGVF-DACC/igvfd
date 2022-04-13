@@ -20,6 +20,7 @@ ORDER = [
     'document',
     'cell_line',
     'tissue',
+    'technical_sample',
     'image',
     'page',
     'access_key',
