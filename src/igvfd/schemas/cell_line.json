@@ -1,6 +1,6 @@
 {
     "title": "Cell line",
-    "id": "/profiles/cell_line.json",
+    "$id": "/profiles/cell_line.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Schema for submitting a cell line sample.",
     "type": "object",

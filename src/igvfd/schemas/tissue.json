@@ -1,6 +1,6 @@
 {
     "title": "Tissue",
-    "id": "/profiles/tissue.json",
+    "$id": "/profiles/tissue.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Schema for submitting a tissue sample.",
     "type": "object",

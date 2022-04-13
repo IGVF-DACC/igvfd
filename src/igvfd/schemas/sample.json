@@ -1,6 +1,6 @@
 {
     "title": "Sample",
-    "id": "/profiles/sample.json",
+    "$id": "/profiles/sample.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Abstract schema for submitting a specific biological or synthetic sample.",
     "type": "object",
