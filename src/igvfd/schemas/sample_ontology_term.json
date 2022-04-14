@@ -1,0 +1,53 @@
+{
+    "title": "Sample ontology term",
+    "description": "Schema for an ontology term.",
+    "$id": "/profiles/sample_ontology_term.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "term_id",
+        "term_name"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/schema_version"
+        },
+        {
+            "$ref": "mixins.json#/uuid"
+        },
+        {
+            "$ref": "mixins.json#/aliases"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/notes"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "dbxrefs": {
+            "@type": "@id",
+            "title": "External resources",
+            "description": "Sample identifiers from external resources, such as Cellosaurus.",
+            "permission": "import_items",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "title": "External identifier",
+                "description": "An identifier from external resource.",
+                "type": "string",
+                "pattern": "^((Cellosaurus:CVCL_\\w{4})|(DepMap:ACH-[0-9]{6}))$"
+            }
+        }
+    },
+    "changelog": "/profiles/changelogs/sample_ontology_term.md"
+}

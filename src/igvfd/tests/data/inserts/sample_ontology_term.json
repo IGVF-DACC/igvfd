@@ -1,0 +1,17 @@
+[
+    {
+        "term_id": "EFO:0002067",
+        "term_name": "K562",
+        "dbxrefs": [
+            "Cellosaurus:CVCL_0004"
+        ]
+    },
+    {
+        "term_id": "UBERON:0002048",
+        "term_name": "lung"
+    },
+    {
+        "term_id": "CL:0000787",
+        "term_name": "memory B cell"
+    }
+]

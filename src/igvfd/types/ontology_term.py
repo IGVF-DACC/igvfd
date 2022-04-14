@@ -40,3 +40,15 @@ class OntologyTerm(Item):
     })
     def synonyms(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'synonyms')
+
+
+@collection(
+    name='sample-ontology-terms',
+    unique_key='term_id',
+    properties={
+        'title': 'Sample ontology term',
+        'description': 'Ontology terms used by IGVF for samples',
+    })
+class SampleOntologyTerm(OntologyTerm):
+    item_type = 'sample_ontology_term'
+    schema = load_schema('igvfd:schemas/sample_ontology_term.json')
