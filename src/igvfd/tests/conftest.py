@@ -17,6 +17,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.source',
     'igvfd.tests.fixtures.schemas.award',
     'igvfd.tests.fixtures.schemas.lab',
+    'igvfd.tests.fixtures.schemas.sample_ontology_term',
     'igvfd.tests.fixtures.schemas.cell_line',
     'igvfd.tests.fixtures.schemas.tissue',
     'igvfd.tests.fixtures.schemas.technical_sample',
