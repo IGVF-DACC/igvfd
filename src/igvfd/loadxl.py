@@ -18,6 +18,7 @@ ORDER = [
     'source',
     'lab',
     'document',
+    'sample_ontology_term',
     'cell_line',
     'tissue',
     'technical_sample',
