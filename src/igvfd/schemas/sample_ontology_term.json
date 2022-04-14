@@ -28,6 +28,9 @@
         },
         {
             "$ref": "mixins.json#/notes"
+        },
+        {
+            "$ref": "ontology_term.json#/properties"
         }
     ],
     "properties": {
