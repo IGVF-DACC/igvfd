@@ -41,3 +41,25 @@ def test_lifestage_dependency(cell_line, testapp):
         cell_line['@id'],
         {'organism': 'Saccharomyces', 'life_stage': 'adult'}, expect_errors=True)
     assert(res.status_code == 422)
+
+
+def test_nih_institutional_certification(cell_line, testapp):
+    res = testapp.patch_json(
+        cell_line['@id'],
+        {'nih_institutional_certification': 'NICHD1455'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        cell_line['@id'],
+        {'nih_institutional_certification': 'ABBBCCCHD1455'}, expect_errors=True)
+    assert(res.status_code == 422)
+
+
+def test_interal_tags(cell_line, testapp):
+    res = testapp.patch_json(
+        cell_line['@id'],
+        {'internal_tags': ['Enhancers']})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        cell_line['@id'],
+        {'internal_tags': ['ABBBCCCHD1455']}, expect_errors=True)
+    assert(res.status_code == 422)

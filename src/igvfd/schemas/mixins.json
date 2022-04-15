@@ -299,5 +299,26 @@
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "formInput": "textarea"
         }
+    },
+    "internal_tags": {
+        "internal_tags": {
+            "title": "Internal tags",
+            "description": "Some samples are part of particular data collections.",
+            "comment": "Do not submit. Internal tags are for DCC use only.",
+            "type": "array",
+            "default": [],
+            "permission": "import_items",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": [
+                    "Enhancers",
+                    "Repressors",
+                    "Promoters",
+                    "Variants",
+                    "ENCODE"
+                ]
+            }
+        }
     }
 }

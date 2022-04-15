@@ -26,8 +26,13 @@
         "life_stage": "adult",
         "biosample_ontology": "motor neuron",
         "disease_ontology": "motor neuron disease",
+        "nih_institutional_certification": "NICHD1442",
         "sex": "male",
         "date_obtained": "2022-02-02",
         "source": "/labs/j-michael-cherry/"
+        "internal_tags": [
+            "Enhancers",
+            "Variants"
+        ]
     }
 ]
