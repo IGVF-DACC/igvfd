@@ -1,20 +1,23 @@
 Making changes to schemas
 =========================
 
-This document describes how to make changes to the JSON schemas ([JSONSchema], [JSON-LD]) and source code that describes the encoded metadata model. For overview of code organization see [overview.rst].
+This document describes how to make changes to the JSON schemas ([JSONSchema], [JSON-LD]) and source code that describes the encoded metadata model. For overview of code organization see [overview.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/overview.md).
 
 Guide to where to edit Source Code
 ----------------
 
-* **src** directory - contains all the python and javascript code for front and backends
-    * **audit** - contains python scripts that check json objects' metadata stored in the schema
+* **src/igvfd** Directory - contains all the Python and Javascript code for front and backends
+    * **audit** - Contains Python scripts that check JSON objects' metadata stored in the schema
     * **schemas** - JSON schemas ([JSONSchema], [JSON-LD]) describing allowed types and values for all metadata objects
+    * **schemas/changelogs** - Schema change logs for documenting different versions of schemas
+    * **schemas/mixins.json** - Common schema property definitions for use with multiple schemas
     * **tests** - Unit and integration tests
-    * **inserts** - The sample data that comes up in a basic local instance.
-    * **types** -  business logic for dispatching URLs and producing the correct JSON
-    * **upgrade** - python instructions for upgrading old objects to match the new schema
-    * **loadxl.py** - python script that defines the schema objects to load
-    * **schema_format.py** - the format checker for accessions
+    * **tests/data/inserts** - The sample data that comes up in a basic local instance.
+    * **tests/fixtures/schemas** - The sample Python objects to use with unit tests.  These Python function names are used as parameters in unit tests.
+    * **types** -  Business logic for dispatching URLs and producing the correct JSON
+    * **upgrade** - Python instructions for upgrading old objects to match the new schema
+    * **loadxl.py** - Python script that defines the schema objects to load
+    * **schema_format.py** - The format checker for accessions
 
 
 -----
@@ -55,7 +58,7 @@ Adding a new schema
                 },
                 "example_number": {
                     "title": "Example number",
-                    "description": "An example of a free text property.",
+                    "description": "An example of a free integer property.",
                     "type": "integer"
                 },
                 "example_enum": {
@@ -77,14 +80,14 @@ Adding a new schema
             }
 
 
-3. Identify all required properties to make an object and add to the "required" array, for treatment we have.
+3. Identify all required properties to make an object and add to the "required" array. For example for treatment object type we might have the following properties:
 
 
             "required": ["treatment_term_name", "treatment_type"]
 
 
 4. In the **types** directory add a collection class for the object to define the rendering of the object.
-Refer to [object-lifecycle.rst] to understand object rendering. Example of basic collection definition for treatments:
+Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/object_lifecycle.md) to understand object rendering. Example of basic collection definition for treatments:
 
 
             @collection(
@@ -186,6 +189,7 @@ To add an object with accession prefix 'SM':
             accession_re = re.compile(r'^IGVF(SM|FF|SR|AB|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9][A-Z][A-Z][A-Z]$')
             est_accession_re = re.compile(r'^TST(SM|FF|SR|AB|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9]([0-9][0-9][0-9]|[A-Z][A-Z][A-Z])$')
 
+12.  Add a change log markdown file for the new schema to the **schemas/changelogs** directory.
 
 -----
 
@@ -215,6 +219,7 @@ Exception: When making substantial changes to an existing schema, even if these 
 
 * **NOTE:** You should update the schema version when making substantial changes to an existing schema even if these changes do not cause existing objects using this schema to fail validation.
 The new schema version number in such cases helps submitters and users realize that a substantial change has been made to the schema and they may need to update their scripts accordingly.
+If you are updating the schema version, you should also update the appropriate change log markdown file with documentation of the new schema version, in **schemas/changelogs** directory.
 
 * **NOTE:** Whenever in doubt (whether to update or not), it would be a good idea to discuss with other members of the group as there can be grey areas as mentioned in the note above. When multiple new properties are being added to the new schema (potentially leading to no conflict with the schema validation), technically the upgrade step would just be bumping the schema version.
 
