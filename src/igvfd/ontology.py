@@ -9,7 +9,7 @@ def includeme(config):
     config.registry['ontology'] = load_ontology()
 
 
-ONTOLOGY_NAME = 'ontology.json.gz'
+ONTOLOGY_FILE_NAME = 'ontology.json.gz'
 
 
 def load_local_gz_json(path):
@@ -19,7 +19,7 @@ def load_local_gz_json(path):
 
 
 def get_ontology_gz_json_path():
-    return Path(__file__).resolve().parents[2] / 'assets' / ONTOLOGY_NAME
+    return Path(__file__).resolve().parents[2] / 'assets' / ONTOLOGY_FILE_NAME
 
 
 def ontology_or_empty_dict(path):
