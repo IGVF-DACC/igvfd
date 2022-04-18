@@ -217,6 +217,8 @@ def main(global_config, **local_config):
     config.include('.types')
     config.include('.root')
 
+    config.include('.ontology')
+
     config.include(static_resources)
     config.include(changelogs)
 
