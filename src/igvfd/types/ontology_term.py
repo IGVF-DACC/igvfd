@@ -52,3 +52,43 @@ class OntologyTerm(Item):
 class SampleOntologyTerm(OntologyTerm):
     item_type = 'sample_ontology_term'
     schema = load_schema('igvfd:schemas/sample_ontology_term.json')
+
+    @calculated_property(condition='term_id', schema={
+        'title': 'Organ',
+        'type': 'array',
+        'items': {
+            'type': 'string',
+        },
+    })
+    def organ_slims(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'organs')
+
+    @calculated_property(condition='term_id', schema={
+        'title': 'Cell',
+        'type': 'array',
+        'items': {
+            'type': 'string',
+        },
+    })
+    def cell_slims(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'cells')
+
+    @calculated_property(condition='term_id', schema={
+        'title': 'Developmental slims',
+        'type': 'array',
+        'items': {
+            'type': 'string',
+        },
+    })
+    def developmental_slims(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'developmental')
+
+    @calculated_property(condition='term_id', schema={
+        'title': 'System slims',
+        'type': 'array',
+        'items': {
+            'type': 'string',
+        },
+    })
+    def system_slims(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'systems')
