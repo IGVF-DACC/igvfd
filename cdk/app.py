@@ -1,5 +1,4 @@
 import aws_cdk as cdk
-import igvfd
 import os
 
 from infrastructure.config import config
