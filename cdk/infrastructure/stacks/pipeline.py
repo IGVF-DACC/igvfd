@@ -22,8 +22,8 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         self._define_cdk_synth_step()
         self._make_code_pipeline()
         self._add_tooling_wave()
-        self._add_test_deploy_stage()
-        self._add_prod_deploy_stage()
+        # self._add_test_deploy_stage()
+        # self._add_prod_deploy_stage()
         self._maybe_add_slack_notifications()
 
     def _define_github_connection(self):
