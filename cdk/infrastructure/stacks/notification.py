@@ -10,7 +10,7 @@ from infrastructure.naming import prepend_branch_name
 
 class NotificationStack(cdk.Stack):
 
-    def __init__(self, scope: Construct, construct_id: str, branch= None, **kwargs):
+    def __init__(self, scope: Construct, construct_id: str, branch=None, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         name = prepend_project_name(
             prepend_branch_name(

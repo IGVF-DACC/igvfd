@@ -122,7 +122,7 @@ class ContinuousIntegrationStack(cdk.Stack):
     def _get_log_group_star_arn(self):
         log_group_star_arn = f'{self._get_log_group_arn()}:*'
         return log_group_star_arn
-            
+
     def _make_logs_public(self):
         resource_access_role = Role(
             self,

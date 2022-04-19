@@ -116,7 +116,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         if getattr(self, '_pipeline', None) is None:
             # Can't modify high-level CodePipeline after build.
             self._code_pipeline.build_pipeline()
-            #Low-level pipeline.
+            # Low-level pipeline.
             self._pipeline = self._code_pipeline.pipeline
         return self._pipeline
 
