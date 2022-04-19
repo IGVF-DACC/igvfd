@@ -58,7 +58,7 @@ Adding a new schema
                 },
                 "example_number": {
                     "title": "Example number",
-                    "description": "An example of a free integer property.",
+                    "description": "An example of an integer property.",
                     "type": "integer"
                 },
                 "example_enum": {
@@ -219,7 +219,8 @@ Exception: When making substantial changes to an existing schema, even if these 
 
 * **NOTE:** You should update the schema version when making substantial changes to an existing schema even if these changes do not cause existing objects using this schema to fail validation.
 The new schema version number in such cases helps submitters and users realize that a substantial change has been made to the schema and they may need to update their scripts accordingly.
-If you are updating the schema version, you should also update the appropriate change log markdown file with documentation of the new schema version, in **schemas/changelogs** directory.
+
+* **NOTE:** You should also update the appropriate changelog markdown file with documentation of the new schema version, in **schemas/changelogs** directory.  You should update the changelog even if the schema version number has not been bumped up. If so, it appears as "minor changes since schema version xyz".  See changelogs in [encoded](https://github.com/ENCODE-DCC/encoded) for an example.
 
 * **NOTE:** Whenever in doubt (whether to update or not), it would be a good idea to discuss with other members of the group as there can be grey areas as mentioned in the note above. When multiple new properties are being added to the new schema (potentially leading to no conflict with the schema validation), technically the upgrade step would just be bumping the schema version.
 
