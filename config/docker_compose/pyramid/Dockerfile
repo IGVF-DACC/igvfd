@@ -38,4 +38,16 @@ RUN pip install -e .[test]
 
 COPY --chown=igvfd:igvfd . .
 
+EXPOSE 6543
+
+COPY ./config/docker_compose/pyramid/run.sh ./
+
+RUN chmod +x run.sh
+
+COPY ./config/docker_compose/pyramid/bootstrap.sh ./
+
+RUN chmod +x bootstrap.sh
+
 ENTRYPOINT ["/docker/entrypoint.sh"]
+
+CMD ["./run.sh"]
