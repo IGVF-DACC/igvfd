@@ -1,3 +1,3 @@
-aws-cdk-lib==2.12.0
+aws-cdk-lib==2.16.0
 constructs>=10.0.0,<11.0.0
--e ../.
+git+https://github.com/IGVF-DACC/shared-infrastructure@main#egg=shared_infrastructure
