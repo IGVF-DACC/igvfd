@@ -4,14 +4,17 @@
         "term_name": "K562",
         "dbxrefs": [
             "Cellosaurus:CVCL_0004"
-        ]
+        ],
+        "status": "released"
     },
     {
         "term_id": "UBERON:0002048",
-        "term_name": "lung"
+        "term_name": "lung",
+        "status": "released"
     },
     {
         "term_id": "CL:0000787",
-        "term_name": "memory B cell"
+        "term_name": "memory B cell",
+        "status": "released"
     }
 ]
