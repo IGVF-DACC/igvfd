@@ -87,7 +87,8 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
             self,
             prepend_project_name(
                 'DevDeployStage'
-            )
+            ),
+            branch=self._branch,
         )
         self._code_pipeline.add_stage(
             stage,
