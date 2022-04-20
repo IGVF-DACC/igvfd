@@ -11,11 +11,6 @@ from infrastructure.stacks.pipeline import ContinuousDeploymentPipelineStack
 from shared_infrastructure.cherry_lab.environments import US_WEST_2
 
 
-ENVIRONMENT = cdk.Environment(
-    account=config['account'],
-    region=config['region'],
-)
-
 app = cdk.App()
 
 branch = (
@@ -32,7 +27,7 @@ notification = NotificationStack(
         )
     ),
     branch=branch,
-    env=ENVIRONMENT,
+    env=US_WEST_2,
 )
 
 pipeline = ContinuousDeploymentPipelineStack(
@@ -45,7 +40,7 @@ pipeline = ContinuousDeploymentPipelineStack(
     ),
     chatbot=notification.chatbot,
     branch=branch,
-    env=ENVIRONMENT,
+    env=US_WEST_2,
 )
 
 app.synth()
