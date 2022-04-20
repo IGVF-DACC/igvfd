@@ -90,14 +90,6 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
             ),
             branch=self._branch,
         )
-        self._code_pipeline.add_stage(
-            stage,
-            pre=[
-                ManualApprovalStep(
-                    'RunDevelopmentDeploy'
-                )
-            ]
-        )
 
     def _add_test_deploy_stage(self):
         stage = TestDeployStage(
