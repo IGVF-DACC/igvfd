@@ -112,7 +112,7 @@ class BackendStack(cdk.Stack):
                 'DomainZone',
                 domain_name='api.encodedcc.org'
             ),
-            domain_name='igvfd-local.api.encodedcc.org',
+            domain_name=f'igvfd-{branch}.api.encodedcc.org',
             redirect_http=True,
         )
         application_container = fargate_service.task_definition.add_container(
