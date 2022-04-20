@@ -53,7 +53,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
                 '. .venv/bin/activate',
                 'pip install -r requirements.txt -r requirements-dev.txt',
                 'pytest',
-                'cdk synth -c branch=$BRANCH',
+                'cdk synth -v -c branch=$BRANCH',
             ],
             primary_output_directory='cdk/cdk.out',
         )
