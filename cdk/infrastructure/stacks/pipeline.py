@@ -75,7 +75,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         ci_stage = CIDeployStage(
             self,
             prepend_project_name(
-                'ContinuousIntegrationDeployStage'
+                'DeployContinuousIntegration'
             )
         )
         tooling_wave.add_stage(
@@ -86,7 +86,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         stage = DevDeployStage(
             self,
             prepend_project_name(
-                'DevDeployStage'
+                'DeployDevelopment'
             ),
             branch=self._branch,
         )
@@ -94,7 +94,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
             stage,
             pre=[
                 ManualApprovalStep(
-                    'RunDevDeploy'
+                    'RunDevelopmentDeploy'
                 )
             ]
         )
@@ -103,7 +103,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         stage = TestDeployStage(
             self,
             prepend_project_name(
-                'TestDeployStage'
+                'DeployTest'
             )
         )
         self._code_pipeline.add_stage(
@@ -119,14 +119,14 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         stage = ProdDeployStage(
             self,
             prepend_project_name(
-                'ProdDeployStage'
+                'DeployProduction'
             )
         )
         self._code_pipeline.add_stage(
             stage,
             pre=[
                 ManualApprovalStep(
-                    'RunProdDeploy'
+                    'RunProductionDeploy'
                 )
             ]
         )
