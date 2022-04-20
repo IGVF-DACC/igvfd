@@ -53,7 +53,7 @@ class BackendStack(cdk.Stack):
         database_name = 'igvfd'
         database = DatabaseInstance(
             self,
-            'TestFargatePyramidAppPostgres',
+            'Postgres',
             database_name=database_name,
             engine=engine,
             instance_type=InstanceType.of(
@@ -81,7 +81,7 @@ class BackendStack(cdk.Stack):
         )
         fargate_service = ApplicationLoadBalancedFargateService(
             self,
-            'TestFargateNginxPyramidApp',
+            'Fargate',
             vpc=vpcs.default_vpc,
             cpu=1024,
             desired_count=1,
@@ -138,8 +138,8 @@ class BackendStack(cdk.Stack):
             interval=cdk.Duration.seconds(60),
         )
         cdk.Tags.of(fargate_service).add(
-            'test',
-            'pyramid stack'
+            'branch',
+            branch
         )
         fargate_service.task_definition.task_role.add_managed_policy(
             ManagedPolicy.from_aws_managed_policy_name(
