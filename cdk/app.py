@@ -7,7 +7,6 @@ from infrastructure.naming import prepend_branch_name
 
 from infrastructure.stacks.notification import NotificationStack
 from infrastructure.stacks.pipeline import ContinuousDeploymentPipelineStack
-from infrastructure.stacks.backend import BackendStack
 
 from shared_infrastructure.cherry_lab.environments import US_WEST_2
 
@@ -47,12 +46,6 @@ pipeline = ContinuousDeploymentPipelineStack(
     chatbot=notification.chatbot,
     branch=branch,
     env=ENVIRONMENT,
-)
-
-backend = BackendStack(
-    app,
-    'BackendFargateNginxPyramidStack',
-    env=US_WEST_2,
 )
 
 app.synth()
