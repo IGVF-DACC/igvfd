@@ -47,7 +47,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
                 'BRANCH': self._branch
             },
             commands=[
-                'npm install -g aws-cdk',
+                'npm install -g aws-cdk@2.12.0',
                 'cd ./cdk',
                 'python -m venv .venv',
                 '. .venv/bin/activate',
