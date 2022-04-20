@@ -10,6 +10,7 @@ from infrastructure.naming import prepend_project_name
 from infrastructure.stages.ci import CIDeployStage
 from infrastructure.stages.prod import ProdDeployStage
 from infrastructure.stages.test import TestDeployStage
+from infrastructure.stages.dev import DevDeployStage
 
 
 class ContinuousDeploymentPipelineStack(cdk.Stack):
@@ -22,6 +23,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         self._define_cdk_synth_step()
         self._make_code_pipeline()
         self._add_tooling_wave()
+        self._add_dev_deploy_stage()
         # self._add_test_deploy_stage()
         # self._add_prod_deploy_stage()
         self._maybe_add_slack_notifications()
@@ -78,6 +80,22 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         )
         tooling_wave.add_stage(
             ci_stage
+        )
+
+    def _add_dev_deploy_stage(self):
+        stage = DevDeployStage(
+            self,
+            prepend_project_name(
+                'DevDeployStage'
+            )
+        )
+        self._code_pipeline.add_stage(
+            stage,
+            pre=[
+                ManualApprovalStep(
+                    'RunDevDeploy'
+                )
+            ]
         )
 
     def _add_test_deploy_stage(self):

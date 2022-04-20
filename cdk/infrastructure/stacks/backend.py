@@ -35,7 +35,7 @@ from shared_infrastructure.cherry_lab.vpcs import VPCs
 
 class BackendStack(cdk.Stack):
 
-    def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
+    def __init__(self, scope: Construct, construct_id: str, branch=None, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
         vpcs = VPCs(
             self,
