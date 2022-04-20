@@ -18,10 +18,10 @@ class NotificationStack(cdk.Stack):
                 'aws-chatbot',
             )
         )
-        self.chatbot = SlackChannelConfiguration.from_slack_channel_configuration_arn(
+        self.chatbot = SlackChannelConfiguration(
             self,
-            name,
-            slack_channel_configuration_arn=(
-                'arn:aws:chatbot::618537831167:chat-configuration/slack-channel/aws-chatbot'
-            )
+            'encode-dcc-aws-chatbot',
+            slack_channel_configuration_name='aws-chatbot',
+            slack_workspace_id='T1KMV4JJZ',
+            slack_channel_id='C034GTRCCLU',
         )
