@@ -20,4 +20,5 @@ class DevDeployStage(cdk.Stage):
                 )
             ),
             env=US_WEST_2,
+            branch=branch,
         )
