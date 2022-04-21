@@ -2,7 +2,7 @@ import aws_cdk as cdk
 
 
 from infrastructure.stacks.backend import BackendStack
-from infrastructure.stacks.repository import PostgresStack
+from infrastructure.stacks.postgres import PostgresStack
 from infrastructure.naming import prepend_project_name
 from infrastructure.naming import prepend_branch_name
 
