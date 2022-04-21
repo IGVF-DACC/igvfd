@@ -1,5 +1,4 @@
 import aws_cdk as cdk
-import os
 
 from infrastructure.config import config
 from infrastructure.naming import prepend_project_name
