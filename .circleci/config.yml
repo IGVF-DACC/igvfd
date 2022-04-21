@@ -30,6 +30,12 @@ jobs:
           name: Build Docker images
           command: docker-compose -f docker-compose.test.yml build
       - run:
+          name: Set folder permissions for mounted volume
+          command: |
+              sudo useradd -u 1444 igvfd
+              sudo usermod -a -G igvfd circleci
+              sudo chown -R circleci:igvfd ./
+      - run:
           name: Run tests
           command: |
               docker-compose -f docker-compose.test.yml up --exit-code-from pyramid
