@@ -17,7 +17,7 @@ services:
       dockerfile: ./config/docker_compose/pyramid/Dockerfile
     image: igvfd-pyramid
     volumes:
-      - ".:/igvfd:cached"
+      - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
     command: pytest --cov=igvfd -s -o junit_family=legacy --junitxml=./.test-results/junit.xml
     ports:
@@ -28,7 +28,7 @@ services:
   nginx:
     image: nginx:1.21.4
     volumes:
-      - "./config/nginx/docker.conf:/etc/nginx/nginx.conf:delegated"
+      - "./config/nginx/docker.conf:/etc/nginx/nginx.conf"
     command: nginx -c /etc/nginx/nginx.conf -g 'daemon off; pid /dev/null;'
     ports:
       - "8000:8000"

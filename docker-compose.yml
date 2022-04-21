@@ -17,7 +17,7 @@ services:
       dockerfile: ./config/docker_compose/pyramid/Dockerfile
     image: igvfd-pyramid
     volumes:
-      - ".:/igvfd:cached"
+      - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
     command: run-docker
     depends_on:
@@ -29,7 +29,7 @@ services:
       dockerfile: ./config/docker_compose/pyramid/Dockerfile
     image: igvfd-pyramid
     volumes:
-      - ".:/igvfd:cached"
+      - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
     command: pserve ./config/pyramid/ini/docker.ini --reload
     ports:
@@ -40,7 +40,7 @@ services:
   nginx:
     image: nginx:1.21.4
     volumes:
-      - "./config/nginx/docker.conf:/etc/nginx/nginx.conf:delegated"
+      - "./config/nginx/docker.conf:/etc/nginx/nginx.conf"
     command: nginx -c /etc/nginx/nginx.conf -g 'daemon off; pid /dev/null;'
     ports:
       - "8000:8000"
