@@ -4,7 +4,7 @@ services:
 
   postgres:
     build:
-      context: ./config/docker_compose/postgres/
+      context: ./docker/postgres/
     image: igvfd-postgres
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
@@ -14,7 +14,7 @@ services:
   pyramid:
     build:
       context: .
-      dockerfile: ./config/docker_compose/pyramid/Dockerfile
+      dockerfile: ./docker/pyramid/Dockerfile
     image: igvfd-pyramid
     volumes:
       - ".:/igvfd"
