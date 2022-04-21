@@ -44,3 +44,7 @@ class PostgresStack(cdk.Stack):
                 existing.security_groups.encd_demos,
             ],
         )
+        cdk.Tags.of(self.database).add(
+            'branch',
+            branch
+        )
