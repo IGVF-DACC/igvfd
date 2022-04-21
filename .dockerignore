@@ -5,4 +5,3 @@
 .gitignore
 .pre-commit-config.yaml
 cdk
-docker
