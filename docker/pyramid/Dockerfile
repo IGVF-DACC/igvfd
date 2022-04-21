@@ -22,11 +22,11 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN python -m pip install --upgrade pip
 
-WORKDIR /docker
+WORKDIR /scripts
 
-COPY --chown=igvfd:igvfd ./config/docker_compose/pyramid/entrypoint.sh .
+COPY --chown=igvfd:igvfd ./scripts/pyramid/ .
 
-RUN chmod +x ./entrypoint.sh
+RUN chmod -R +x /scripts
 
 WORKDIR /igvfd
 
@@ -40,14 +40,6 @@ COPY --chown=igvfd:igvfd . .
 
 EXPOSE 6543
 
-COPY --chown=igvfd:igvfd ./config/docker_compose/pyramid/run.sh ./
+ENTRYPOINT ["/scripts/entrypoint.sh"]
 
-RUN chmod +x run.sh
-
-COPY --chown=igvfd:igvfd ./config/docker_compose/pyramid/bootstrap.sh ./
-
-RUN chmod +x bootstrap.sh
-
-ENTRYPOINT ["/docker/entrypoint.sh"]
-
-CMD ["./run.sh"]
+CMD ["/scripts/run.sh"]
