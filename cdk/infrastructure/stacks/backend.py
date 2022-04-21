@@ -1,7 +1,5 @@
 import aws_cdk as cdk
 
-from aws_cdk.aws_certificatemanager import Certificate
-
 from aws_cdk.aws_ecs import AwsLogDriverMode
 from aws_cdk.aws_ecs import ContainerImage
 from aws_cdk.aws_ecs import DeploymentCircuitBreaker
@@ -12,8 +10,6 @@ from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedFargateService
 from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedTaskImageOptions
 
 from aws_cdk.aws_iam import ManagedPolicy
-
-from aws_cdk.aws_route53 import HostedZone
 
 from infrastructure.constructs.existing import ExistingResources
 
@@ -58,16 +54,8 @@ class BackendStack(cdk.Stack):
                 existing.security_groups.encd_demos,
             ],
             assign_public_ip=True,
-            certificate=Certificate.from_certificate_arn(
-                self,
-                'DomainCertificate',
-                'arn:aws:acm:us-west-2:618537831167:certificate/6e16fc50-1206-48fa-b14a-13d97cb1fee6'
-            ),
-            domain_zone=HostedZone.from_lookup(
-                self,
-                'DomainZone',
-                domain_name='api.encodedcc.org'
-            ),
+            certificate=existing.encd_domain.certificate,
+            domain_zone=existing.encd_domain.domain_zone,
             domain_name=f'igvfd-{branch}.api.encodedcc.org',
             redirect_http=True,
         )
