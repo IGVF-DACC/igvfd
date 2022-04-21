@@ -15,11 +15,17 @@ from aws_cdk.aws_iam import ManagedPolicy
 
 from aws_cdk.aws_route53 import HostedZone
 
+from infrastructure.constructs.existing import ExistingResources
+
 
 class BackendStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, vpc, security_group, postgres, branch, **kwargs):
+    def __init__(self, scope, construct_id, postgres, branch, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
+        existing = ExistingResources(
+            self,
+            'ExistingResources',
+        )
         application_image = ContainerImage.from_asset(
             '../',
             file='docker/pyramid/Dockerfile',
@@ -32,7 +38,7 @@ class BackendStack(cdk.Stack):
         fargate_service = ApplicationLoadBalancedFargateService(
             self,
             'Fargate',
-            vpc=vpc,
+            vpc=existing.vpcs.default_vpc,
             cpu=1024,
             desired_count=1,
             circuit_breaker=DeploymentCircuitBreaker(
@@ -49,7 +55,7 @@ class BackendStack(cdk.Stack):
             memory_limit_mib=2048,
             public_load_balancer=True,
             security_groups=[
-                security_group,
+                existing.security_groups.encd_demos,
             ],
             assign_public_ip=True,
             certificate=Certificate.from_certificate_arn(
