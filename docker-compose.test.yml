@@ -26,7 +26,10 @@ services:
       - postgres
 
   nginx:
-    image: nginx:1.21.4
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    image: igvfd-nginx
     volumes:
       - "./config/nginx/docker.conf:/etc/nginx/nginx.conf"
     command: nginx -c /etc/nginx/nginx.conf -g 'daemon off; pid /dev/null;'
