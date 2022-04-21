@@ -72,12 +72,12 @@ class BackendStack(cdk.Stack):
         )
         application_image = ContainerImage.from_asset(
             '../',
-            file='config/docker_compose/pyramid/Dockerfile',
+            file='docker/pyramid/Dockerfile',
 
         )
         nginx_image = ContainerImage.from_asset(
             '../',
-            file='config/docker_compose/nginx/Dockerfile',
+            file='docker/nginx/Dockerfile',
         )
         fargate_service = ApplicationLoadBalancedFargateService(
             self,
