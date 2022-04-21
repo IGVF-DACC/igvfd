@@ -7,7 +7,7 @@ from infrastructure.naming import prepend_branch_name
 from shared_infrastructure.cherry_lab.environments import US_WEST_2
 
 
-class DevDeployStage(cdk.Stage):
+class DevelopmentDeployStage(cdk.Stage):
 
     def __init__(self, scope, construct_id, branch=None, **kwargs):
         super().__init__(scope, construct_id,  **kwargs)
