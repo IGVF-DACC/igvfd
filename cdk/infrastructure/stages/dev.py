@@ -16,7 +16,12 @@ class DevelopmentDeployStage(cdk.Stage):
         super().__init__(scope, construct_id, **kwargs)
         self.existing = ExistingStack(
             self,
-            'ExistingStack',
+            prepend_project_name(
+                prepend_branch_name(
+                    branch,
+                    'ExistingStack'
+                )
+            ),
             env=US_WEST_2,
         )
         self.vpc = self.existing.vpcs.default_vpc
