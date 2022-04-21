@@ -12,12 +12,6 @@ class NotificationStack(cdk.Stack):
 
     def __init__(self, scope: Construct, construct_id: str, branch=None, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
-        name = prepend_project_name(
-            prepend_branch_name(
-                branch,
-                'aws-chatbot',
-            )
-        )
         self.chatbot = SlackChannelConfiguration(
             self,
             'encode-dcc-aws-chatbot',
