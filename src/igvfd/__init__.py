@@ -204,6 +204,8 @@ def main(global_config, **local_config):
     # Override default authz policy set by pyramid_multiauth
     config.set_authorization_policy(LocalRolesAuthorizationPolicy())
     config.include(session)
+    # Must go before other route registration.
+    config.include('.cors')
     config.include('.auth0')
 
     config.include(configure_dbsession)

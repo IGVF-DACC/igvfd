@@ -93,6 +93,9 @@ def security_tween_factory(handler, registry):
         if request.method in ('GET', 'HEAD'):
             return handler(request)
 
+        if request.method == 'OPTIONS':
+            return handler(request)
+
         if request.content_type != 'application/json':
             detail = "%s is not 'application/json'" % request.content_type
             raise HTTPUnsupportedMediaType(detail)
