@@ -2,8 +2,11 @@ import aws_cdk as cdk
 
 from aws_cdk.pipelines import CodePipeline
 from aws_cdk.pipelines import CodePipelineSource
+from aws_cdk.pipelines import DockerCredential
 from aws_cdk.pipelines import ManualApprovalStep
 from aws_cdk.pipelines import ShellStep
+
+from aws_cdk.aws_secretsmanager import Secret
 
 from infrastructure.naming import prepend_branch_name
 from infrastructure.naming import prepend_project_name
@@ -21,6 +24,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         self._branch = branch
         self._define_github_connection()
         self._define_cdk_synth_step()
+        self._define_docker_credentials()
         self._make_code_pipeline()
         self._add_tooling_wave()
         self._add_development_deploy_stage()
@@ -58,6 +62,20 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
             primary_output_directory='cdk/cdk.out',
         )
 
+    def _define_docker_credentials(self):
+        self._docker_credentials = Secret.from_secret_complete_arn(
+            self,
+            'DockerSecret',
+            'arn:aws:secretsmanager:us-west-2:618537831167:secret:docker-hub-credentials-cFeSon',
+        )
+
+    def _get_docker_credentials(self):
+        return DockerCredential.docker_hub(
+            self._docker_credentials,
+            secret_username_field='DOCKER_USER',
+            secret_password_field='DOCKER_SECRET',
+        )
+
     def _make_code_pipeline(self):
         self._code_pipeline = CodePipeline(
             self,
@@ -65,7 +83,10 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
                 self._branch,
                 'CodePipeline',
             ),
-            synth=self._synth
+            synth=self._synth,
+            docker_credentials=[
+                self._get_docker_credentials(),
+            ]
         )
 
     def _add_tooling_wave(self):
