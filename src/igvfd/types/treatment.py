@@ -28,3 +28,4 @@ class Treatment(Item):
     def title(self, treatment_term_name, amount, amount_units, duration, duration_units):
         text = 'Treated with {} {} {} for {} {}.'.format(
             amount, amount_units, treatment_term_name, duration, duration_units)
+        return(text)
