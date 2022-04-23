@@ -5,27 +5,43 @@
         "duration": 1,
         "duration_units": "hour",
         "pH": 6.7,
+<<<<<<< HEAD
         "purpose": "activation",
+=======
+>>>>>>> c565f27 (add inserts)
         "submitted_by": "mkagda@stanford.edu",
         "status": "released",
         "treatment_term_id": "CHEBI:24996",
         "treatment_term_name": "lactate",
         "treatment_type": "chemical",
+<<<<<<< HEAD
+=======
+        "treatment_type_details": "agonist",
+>>>>>>> c565f27 (add inserts)
         "uuid": "3280b708-0f05-40fa-bff2-54e2b6505c13"
     },
     {
         "amount": 50,
         "amount_units": "ng/mL",
+<<<<<<< HEAD
         "documents": [
             "j-michael-cherry:Antibody_characterization_standards_IGVF"
         ],
         "purpose": "selection",
+=======
+        "duration": 3600,
+        "duration_units": "second",
+        "documents": [
+            "j-michael-cherry:Antibody_characterization_standards_IGVF"
+        ],
+>>>>>>> c565f27 (add inserts)
         "submitted_by": "mkagda@stanford.edu",
         "status": "released",
         "treatment_term_name": "goat-anti-GFP-UC",
         "treatment_type": "protein",
         "treatment_term_id": "UniProtKB:P09919",
         "uuid": "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
+<<<<<<< HEAD
     },
     {
         "amount": 10,
@@ -65,5 +81,7 @@
         "treatment_type": "protein",
         "treatment_term_id": "NTR:0001189",
         "uuid": "bd2cb34e-c72c-11ec-9d64-0242ac120002"
+=======
+>>>>>>> c565f27 (add inserts)
     }
 ]
