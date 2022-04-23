@@ -58,6 +58,7 @@
             "required": [
                 "post_treatment_time_units"
             ],
+<<<<<<< HEAD
             "comment": "post_treatment_time_units must be specified if post_treatment_time is specified"
         },
         "post_treatment_time_units": {
@@ -65,6 +66,9 @@
                 "post_treatment_time"
             ],
             "comment": "post_treatment_time must be specified if post_treatment_time_units is specified"
+=======
+            "comment": "Duration units must be specified if duration is specified"
+>>>>>>> 367b831 (add dependency)
         },
         "treatment_term_id": {
             "oneOf": [
@@ -92,8 +96,12 @@
                         }
                     }
                 }
+<<<<<<< HEAD
             ],
             "comment": "If treatment_type is protein, only Uniprot ids are allowed while if treatment_type is chemical, only CHEBI ids are allowed. NTRs are allowed in special cases for both"
+=======
+            ]
+>>>>>>> 367b831 (add dependency)
         }
     },
     "properties": {
