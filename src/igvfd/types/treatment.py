@@ -26,5 +26,4 @@ class Treatment(Item):
         }
     )
     def title(self, treatment_term_name, amount, amount_units, duration, duration_units):
-        text = f'{treatment_term_name} {amount} {amount_units} {duration} {duration_units} '
-        return(text)
+        return u'{} {} {} {} {}'.format(treatment_term_name, amount, amount_units, duration, duration_units)
