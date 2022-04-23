@@ -26,9 +26,4 @@ class Treatment(Item):
         }
     )
     def title(self, treatment_term_name, amount, amount_units, duration, duration_units):
-        text = treatment_term_name
-        if amount:
-            text = text + ' ' + amount + ' ' + amount_units
-        if duration:
-            text = text + ' ' + duration + ' ' + duration_units
-        return text
+        text = f'{treatment_term_name} {amount} {amount_units} {duration} {duration_units} '
