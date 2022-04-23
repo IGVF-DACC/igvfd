@@ -53,6 +53,34 @@
                 "duration_units"
             ],
             "comment": "Duration units must be specified if duration is specified"
+        },
+        "treatment_term_id": {
+            "oneOf": [
+                {
+                    "properties": {
+                        "treatment_type": {
+                            "enum": [
+                                "protein"
+                            ]
+                        },
+                        "treatment_term_id": {
+                            "pattern": "^((UniProtKB:[A-Z0-9]{6})|(NTR:[0-9]{2,8}))$"
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "treatment_type": {
+                            "enum": [
+                                "chemical"
+                            ]
+                        },
+                        "treatment_term_id": {
+                            "pattern": "^((CHEBI:[0-9]{1,7})|(NTR:[0-9]{2,8}))$"
+                        }
+                    }
+                }
+            ]
         }
     },
     "properties": {
