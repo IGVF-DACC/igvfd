@@ -18,7 +18,7 @@ ORDER = [
     'source',
     'lab',
     'document',
-    'treatment'
+    'treatment',
     'cell_line',
     'tissue',
     'technical_sample',
