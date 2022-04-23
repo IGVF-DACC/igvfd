@@ -38,8 +38,8 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
             self._branch,
             connection_arn=(
                 'arn:aws:codestar-connections:'
-                'us-west-2:618537831167:'
-                'connection/4ede924c-44fd-4a0c-a765-e353dbdbbb17'
+                'us-west-2:109189702753:'
+                'connection/d65802e7-37d9-4be6-bc86-f94b2104b5ff'
             )
         )
 
@@ -66,7 +66,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         self._docker_credentials = Secret.from_secret_complete_arn(
             self,
             'DockerSecret',
-            'arn:aws:secretsmanager:us-west-2:618537831167:secret:docker-hub-credentials-cFeSon',
+            'arn:aws:secretsmanager:us-west-2:109189702753:secret:docker-hub-credentials-EStRH5',
         )
 
     def _get_docker_credentials(self):
