@@ -18,7 +18,7 @@ from infrastructure.stages.dev import DevelopmentDeployStage
 
 class ContinuousDeploymentPipelineStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, chatbot=None, branch=None, **kwargs):
+    def __init__(self, scope, construct_id, branch, chatbot=None, **kwargs):
         super().__init__(scope, construct_id,  **kwargs)
         self._chatbot = chatbot
         self._branch = branch
