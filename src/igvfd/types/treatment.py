@@ -25,6 +25,7 @@ class Treatment(Item):
             'type': 'string',
         }
     )
+
     def title(self, treatment_term_name, amount, amount_units, duration=None, duration_units=None):
         if duration is not None:
             text = 'Treated with {} {} {} for {} {}'.format(
