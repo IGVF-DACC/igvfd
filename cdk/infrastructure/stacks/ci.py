@@ -95,7 +95,7 @@ class ContinuousIntegrationStack(cdk.Stack):
         docker_secret = Secret.from_secret_complete_arn(
             self,
             'DockerSecret',
-            'arn:aws:secretsmanager:us-west-2:618537831167:secret:docker-hub-credentials-cFeSon',
+            'arn:aws:secretsmanager:us-west-2:109189702753:secret:docker-hub-credentials-EStRH5',
         )
         docker_secret.grant_read(
             self._continuous_integration_project.role
