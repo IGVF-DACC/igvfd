@@ -31,4 +31,4 @@ class Treatment(Item):
             text = text + ' ' + amount + ' ' + amount_units
         if duration:
             text = text + ' ' + duration + ' ' + duration_units
-    return text
+        return text
