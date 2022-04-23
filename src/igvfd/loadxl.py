@@ -18,15 +18,7 @@ ORDER = [
     'source',
     'lab',
     'document',
-<<<<<<< HEAD
-<<<<<<< HEAD
-    'sample_ontology_term',
-=======
     'treatment'
->>>>>>> d62f4ea (add loadxl)
-=======
-    'treatment',
->>>>>>> 91cae58 (fix loadxl)
     'cell_line',
     'tissue',
     'technical_sample',
