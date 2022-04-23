@@ -34,3 +34,4 @@ class Treatment(Item):
             text = 'Treated with {} {} {} for non-specified duration'.format(
                 amount, amount_units, treatment_term_name)
         return text
+
