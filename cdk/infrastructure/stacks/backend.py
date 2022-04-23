@@ -1,5 +1,7 @@
 import aws_cdk as cdk
 
+from aws_cdk.aws_ec2 import Port
+
 from aws_cdk.aws_ecs import AwsLogDriverMode
 from aws_cdk.aws_ecs import ContainerImage
 from aws_cdk.aws_ecs import DeploymentCircuitBreaker
@@ -34,7 +36,7 @@ class BackendStack(cdk.Stack):
         fargate_service = ApplicationLoadBalancedFargateService(
             self,
             'Fargate',
-            vpc=existing.vpcs.default_vpc,
+            vpc=existing.igvf_dev_vpc,
             cpu=1024,
             desired_count=1,
             circuit_breaker=DeploymentCircuitBreaker(
@@ -50,13 +52,10 @@ class BackendStack(cdk.Stack):
             ),
             memory_limit_mib=2048,
             public_load_balancer=True,
-            security_groups=[
-                existing.security_groups.encd_demos,
-            ],
             assign_public_ip=True,
-            certificate=existing.encd_domain.certificate,
-            domain_zone=existing.encd_domain.domain_zone,
-            domain_name=f'igvfd-{branch}.api.encodedcc.org',
+            certificate=existing.igvf_dev_domain.certificate,
+            domain_zone=existing.igvf_dev_domain.domain_zone,
+            domain_name=f'igvfd-{branch}.{existing.igvf_dev_domain.domain_name}',
             redirect_http=True,
         )
         fargate_service.task_definition.add_container(
@@ -77,6 +76,11 @@ class BackendStack(cdk.Stack):
                 stream_prefix='pyramid',
                 mode=AwsLogDriverMode.NON_BLOCKING,
             ),
+        )
+        fargate_service.service.connections.allow_to(
+            postgres.database,
+            Port.tcp(5432),
+            description='Allow connection to Postgres instance',
         )
         fargate_service.target_group.configure_health_check(
             interval=cdk.Duration.seconds(60),

@@ -2,6 +2,8 @@ import aws_cdk as cdk
 
 from infrastructure.stacks.ci import ContinuousIntegrationStack
 
+from infrastructure.config import IGVF_DEV_US_WEST_2
+
 
 class CIDeployStage(cdk.Stage):
 
@@ -9,5 +11,6 @@ class CIDeployStage(cdk.Stage):
         super().__init__(scope, construct_id,  **kwargs)
         ContinuousIntegrationStack(
             self,
-            'ContinuousIntegrationStack'
+            'ContinuousIntegrationStack',
+            env=IGVF_DEV_US_WEST_2,
         )

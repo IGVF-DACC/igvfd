@@ -6,7 +6,7 @@ from infrastructure.stacks.postgres import PostgresStack
 from infrastructure.naming import prepend_project_name
 from infrastructure.naming import prepend_branch_name
 
-from shared_infrastructure.cherry_lab.environments import US_WEST_2
+from infrastructure.config import IGVF_DEV_US_WEST_2
 
 
 class DevelopmentDeployStage(cdk.Stage):
@@ -22,7 +22,7 @@ class DevelopmentDeployStage(cdk.Stage):
                 )
             ),
             branch=branch,
-            env=US_WEST_2,
+            env=IGVF_DEV_US_WEST_2,
         )
         self.backend = BackendStack(
             self,
@@ -34,5 +34,5 @@ class DevelopmentDeployStage(cdk.Stage):
             ),
             postgres=self.postgres,
             branch=branch,
-            env=US_WEST_2,
+            env=IGVF_DEV_US_WEST_2,
         )

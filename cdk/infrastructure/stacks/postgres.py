@@ -34,15 +34,12 @@ class PostgresStack(cdk.Stack):
                 InstanceClass.BURSTABLE3,
                 InstanceSize.MEDIUM,
             ),
-            vpc=existing.vpcs.default_vpc,
+            vpc=existing.igvf_dev_vpc,
             vpc_subnets=SubnetSelection(
-                subnet_type=SubnetType.PUBLIC,
+                subnet_type=SubnetType.PRIVATE_ISOLATED,
             ),
             allocated_storage=10,
             max_allocated_storage=20,
-            security_groups=[
-                existing.security_groups.encd_demos,
-            ],
         )
         cdk.Tags.of(self.database).add(
             'branch',

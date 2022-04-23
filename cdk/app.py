@@ -1,13 +1,11 @@
 import aws_cdk as cdk
 
-from infrastructure.config import config
+from infrastructure.config import IGVF_DEV_US_WEST_2
 from infrastructure.naming import prepend_project_name
 from infrastructure.naming import prepend_branch_name
 
 from infrastructure.stacks.notification import NotificationStack
 from infrastructure.stacks.pipeline import ContinuousDeploymentPipelineStack
-
-from shared_infrastructure.cherry_lab.environments import US_WEST_2
 
 
 app = cdk.App()
@@ -26,7 +24,7 @@ notification = NotificationStack(
         )
     ),
     branch=branch,
-    env=US_WEST_2,
+    env=IGVF_DEV_US_WEST_2,
 )
 
 pipeline = ContinuousDeploymentPipelineStack(
@@ -39,7 +37,7 @@ pipeline = ContinuousDeploymentPipelineStack(
     ),
     chatbot=notification.chatbot,
     branch=branch,
-    env=US_WEST_2,
+    env=IGVF_DEV_US_WEST_2,
 )
 
 app.synth()
