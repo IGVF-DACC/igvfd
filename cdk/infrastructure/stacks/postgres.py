@@ -15,14 +15,30 @@ class PostgresStack(cdk.Stack):
 
     def __init__(self, scope, construct_id, branch, existing_construct, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
+        self._branch = branch
+        self._define_existing(
+            existing_construct
+        )
+        self._define_engine()
+        self._define_database_name()
+        self._define_database()
+        self._add_tags_to_database()
+
+    def _define_existing(self, existing_construct):
         self._existing = existing_construct(
             self,
             'ExistingResources',
         )
+
+    def _define_engine(self):
         self.engine = DatabaseInstanceEngine.postgres(
             version=PostgresEngineVersion.VER_14_1
         )
+
+    def _define_database_name(self):
         self.database_name = 'igvfd'
+
+    def _define_database(self):
         self.database = DatabaseInstance(
             self,
             'Postgres',
@@ -39,7 +55,9 @@ class PostgresStack(cdk.Stack):
             allocated_storage=10,
             max_allocated_storage=20,
         )
+
+    def _add_tags_to_database(self):
         cdk.Tags.of(self.database).add(
             'branch',
-            branch
+            self._branch
         )
