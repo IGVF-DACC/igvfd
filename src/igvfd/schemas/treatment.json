@@ -104,10 +104,10 @@
                 "ng/mL",
                 "nM",
                 "percent",
-                "\u03bcg/kg",
-                "\u03bcg/kg",
-                "\u03bcg/mL",
-                "\u03bcM"
+                "μg/kg",
+                "μg/kg",
+                "μg/mL",
+                "μM"
             ]
         },
         "duration": {
