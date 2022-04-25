@@ -16,22 +16,40 @@ from aws_cdk.aws_iam import ManagedPolicy
 
 class BackendStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, postgres, branch, existing_construct, **kwargs):
+    def __init__(self, scope, construct_id, branch, postgres, existing_construct, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
-        self._existing = existing_construct(
+        self._branch = branch
+        self._postgres = postgres
+        self._existing_construct = existing_construct
+        self._define_existing()
+        self._define_docker_assets()
+        self._define_fargate_service()
+        self._add_application_container_to_task()
+        self._allow_connections_to_database()
+        self._configure_health_check()
+        self._add_tags_to_fargate_service()
+        self._enable_exec_command()
+        self._configure_task_scaling()
+
+    def _define_existing(self):
+        self._existing = self._existing_construct(
             self,
             'ExistingResources',
         )
-        application_image = ContainerImage.from_asset(
+
+    def _define_docker_assets(self):
+        self.application_image = ContainerImage.from_asset(
             '../',
             file='docker/pyramid/Dockerfile',
 
         )
-        nginx_image = ContainerImage.from_asset(
+        self.nginx_image = ContainerImage.from_asset(
             '../',
             file='docker/nginx/Dockerfile',
         )
-        fargate_service = ApplicationLoadBalancedFargateService(
+
+    def _define_fargate_service(self):
+        self.fargate_service = ApplicationLoadBalancedFargateService(
             self,
             'Fargate',
             vpc=self._existing.vpc,
@@ -42,7 +60,7 @@ class BackendStack(cdk.Stack):
             ),
             task_image_options=ApplicationLoadBalancedTaskImageOptions(
                 container_name='nginx',
-                image=nginx_image,
+                image=self.nginx_image,
                 log_driver=LogDriver.aws_logs(
                     stream_prefix='nginx',
                     mode=AwsLogDriverMode.NON_BLOCKING,
@@ -53,54 +71,67 @@ class BackendStack(cdk.Stack):
             assign_public_ip=True,
             certificate=self._existing.domain.certificate,
             domain_zone=self._existing.domain.zone,
-            domain_name=f'igvfd-{branch}.{self._existing.domain.name}',
+            domain_name=f'igvfd-{self._branch}.{self._existing.domain.name}',
             redirect_http=True,
         )
-        fargate_service.task_definition.add_container(
+
+    def _add_application_container_to_task(self):
+        container_name = 'pyramid'
+        self.fargate_service.task_definition.add_container(
             'ApplicationContainer',
-            container_name='pyramid',
-            image=application_image,
+            container_name=container_name,
+            image=self.application_image,
             environment={
-                'DB_HOST': postgres.database.instance_endpoint.hostname,
-                'DB_NAME': postgres.database_name,
+                'DB_HOST': self._postgres.database.instance_endpoint.hostname,
+                'DB_NAME': self._postgres.database_name,
             },
             secrets={
                 'DB_PASSWORD': Secret.from_secrets_manager(
-                    postgres.database.secret,
+                    self._postgres.database.secret,
                     'password'
                 ),
             },
             logging=LogDriver.aws_logs(
-                stream_prefix='pyramid',
+                stream_prefix=container_name,
                 mode=AwsLogDriverMode.NON_BLOCKING,
             ),
         )
-        fargate_service.service.connections.allow_to(
-            postgres.database,
+
+    def _allow_connections_to_database(self):
+        self.fargate_service.service.connections.allow_to(
+            self._postgres.database,
             Port.tcp(5432),
             description='Allow connection to Postgres instance',
         )
-        fargate_service.target_group.configure_health_check(
+
+    def _configure_health_check(self):
+        self.fargate_service.target_group.configure_health_check(
             interval=cdk.Duration.seconds(60),
         )
-        cdk.Tags.of(fargate_service).add(
+
+    def _add_tags_to_fargate_service(self):
+        cdk.Tags.of(self.fargate_service).add(
             'branch',
-            branch
+            self._branch
         )
-        fargate_service.task_definition.task_role.add_managed_policy(
+
+    def _enable_exec_command(self):
+        self.fargate_service.task_definition.task_role.add_managed_policy(
             ManagedPolicy.from_aws_managed_policy_name(
                 'AmazonSSMManagedInstanceCore'
             )
         )
-        cfn_service = fargate_service.service.node.default_child
+        cfn_service = self.fargate_service.service.node.default_child
         cfn_service.enable_execute_command = True
-        scalable_task = fargate_service.service.auto_scale_task_count(
+
+    def _configure_task_scaling(self):
+        scalable_task = self.fargate_service.service.auto_scale_task_count(
             max_capacity=4,
         )
         scalable_task.scale_on_request_count(
             'RequestCountScaling',
             requests_per_target=600,
-            target_group=fargate_service.target_group,
+            target_group=self.fargate_service.target_group,
             scale_in_cooldown=cdk.Duration.seconds(60),
             scale_out_cooldown=cdk.Duration.seconds(60),
         )

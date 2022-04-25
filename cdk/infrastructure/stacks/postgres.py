@@ -16,16 +16,15 @@ class PostgresStack(cdk.Stack):
     def __init__(self, scope, construct_id, branch, existing_construct, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         self._branch = branch
-        self._define_existing(
-            existing_construct
-        )
+        self._existing_construct = existing_construct
+        self._define_existing()
         self._define_engine()
         self._define_database_name()
         self._define_database()
         self._add_tags_to_database()
 
-    def _define_existing(self, existing_construct):
-        self._existing = existing_construct(
+    def _define_existing(self):
+        self._existing = self._existing_construct(
             self,
             'ExistingResources',
         )

@@ -47,7 +47,13 @@ class IgvfDevCodeStarConnection:
         )
 
 
-class IgvfDevExistingResources(Construct):
+class ExistingResources(Construct):
+
+    def __init__(self, scope, construct_id, **kwargs):
+        super().__init__(scope, construct_id, **kwargs)
+
+
+class IgvfDevExistingResources(ExistingResources):
 
     def __init__(self, scope, construct_id, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
