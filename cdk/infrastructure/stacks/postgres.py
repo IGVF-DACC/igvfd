@@ -10,14 +10,12 @@ from aws_cdk.aws_rds import DatabaseInstance
 from aws_cdk.aws_rds import DatabaseInstanceEngine
 from aws_cdk.aws_rds import PostgresEngineVersion
 
-from infrastructure.constructs.existing import ExistingResources
-
 
 class PostgresStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, branch, **kwargs):
+    def __init__(self, scope, construct_id, branch, existing_construct, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
-        existing = ExistingResources(
+        self._existing = existing_construct(
             self,
             'ExistingResources',
         )
@@ -34,7 +32,7 @@ class PostgresStack(cdk.Stack):
                 InstanceClass.BURSTABLE3,
                 InstanceSize.MEDIUM,
             ),
-            vpc=existing.igvf_dev_vpc,
+            vpc=self._existing.vpc,
             vpc_subnets=SubnetSelection(
                 subnet_type=SubnetType.PRIVATE_ISOLATED,
             ),

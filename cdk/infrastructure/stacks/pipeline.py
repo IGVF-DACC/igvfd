@@ -18,8 +18,12 @@ from infrastructure.stages.dev import DevelopmentDeployStage
 
 class ContinuousDeploymentPipelineStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, branch, chatbot=None, **kwargs):
+    def __init__(self, scope, construct_id, branch, existing_construct, chatbot=None, **kwargs):
         super().__init__(scope, construct_id,  **kwargs)
+        self._existing = existing_construct(
+            self,
+            'ExistingResources',
+        )
         self._chatbot = chatbot
         self._branch = branch
         self._define_github_connection()
@@ -36,11 +40,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         self._github = CodePipelineSource.connection(
             'IGVF-DACC/igvfd',
             self._branch,
-            connection_arn=(
-                'arn:aws:codestar-connections:'
-                'us-west-2:109189702753:'
-                'connection/d65802e7-37d9-4be6-bc86-f94b2104b5ff'
-            )
+            connection_arn=self._existing.code_star_connection.arn
         )
 
     def _define_cdk_synth_step(self):
@@ -63,11 +63,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         )
 
     def _define_docker_credentials(self):
-        self._docker_credentials = Secret.from_secret_complete_arn(
-            self,
-            'DockerSecret',
-            'arn:aws:secretsmanager:us-west-2:109189702753:secret:docker-hub-credentials-EStRH5',
-        )
+        self._docker_credentials = self._existing.credentials.docker_credentials
 
     def _get_docker_credentials(self):
         return DockerCredential.docker_hub(
