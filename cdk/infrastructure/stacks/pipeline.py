@@ -20,12 +20,10 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
 
     def __init__(self, scope, construct_id, branch, existing_construct, chatbot=None, **kwargs):
         super().__init__(scope, construct_id,  **kwargs)
-        self._existing = existing_construct(
-            self,
-            'ExistingResources',
-        )
-        self._chatbot = chatbot
         self._branch = branch
+        self._chatbot = chatbot
+        self._existing_construct = existing_construct
+        self._define_existing()
         self._define_github_connection()
         self._define_cdk_synth_step()
         self._define_docker_credentials()
@@ -35,6 +33,12 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         # self._add_test_deploy_stage()
         # self._add_prod_deploy_stage()
         self._maybe_add_slack_notifications()
+
+    def _define_existing(self):
+        self._existing = self._existing_construct(
+            self,
+            'ExistingResources',
+        )
 
     def _define_github_connection(self):
         self._github = CodePipelineSource.connection(
