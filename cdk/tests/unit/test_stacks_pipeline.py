@@ -6,11 +6,13 @@ from infrastructure.stacks.pipeline import ContinuousDeploymentPipelineStack
 
 def test_stacks_pipeline_continuous_deployment_pipeline_stack_created():
     from infrastructure.config import IGVF_DEV_US_WEST_2
+    from infrastructure.constructs.existing import IgvfDevExistingResources
     app = core.App()
     stack = ContinuousDeploymentPipelineStack(
         app,
         'CDStack',
         branch='test-pipeline-branch',
+        existing_construct=IgvfDevExistingResources,
         env=IGVF_DEV_US_WEST_2,
     )
     template = assertions.Template.from_stack(stack)
