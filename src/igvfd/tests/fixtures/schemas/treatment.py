@@ -14,7 +14,6 @@ def treatment_1(testapp):
     }
     return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
 
-
 @pytest.fixture
 def treatment_2(testapp):
     item = {
@@ -23,5 +22,6 @@ def treatment_2(testapp):
         'treatment_type': 'protein',
         'amount': 10,
         'amount_units': 'ng/mL'
+
     }
     return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
