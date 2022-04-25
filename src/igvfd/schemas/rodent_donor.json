@@ -1,0 +1,130 @@
+{
+    "title": "Rodent Donor",
+    "$id": "/profiles/rodent_donor.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Derived schema for submitting rodent donors.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "taxon_id"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "donor.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/schema_version"
+        },
+        {
+            "$ref": "mixins.json#/uuid"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/alternate_accessions"
+        },
+        {
+            "$ref": "mixins.json#/accessioned_status"
+        },
+        {
+            "$ref": "mixins.json#/aliases"
+        },
+        {
+            "$ref": "mixins.json#/submitted"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/submitter_comment"
+        },
+        {
+            "$ref": "mixins.json#/notes"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/genetic_modifications"
+        },
+        {
+            "$ref": "mixins.json#/references"
+        }
+    ],
+    "dependentSchemas": {
+        "lot_id": {
+            "required": [
+                "product_id"
+            ],
+            "comment": "Donor with lot_id must include product_id."
+        }
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "strains": {
+            "type": "array",
+            "default": [],
+            "items": {
+                "$ref": "#/$defs/strain"
+            }
+        }
+    },
+    "$defs": {
+        "strain": {
+            "strain_background": {
+                "title": "Strain background",
+                "description": "The specific parent strain designation of a non-human donor.",
+                "comment": "Strain background of rodent strains.  See ALI Mortezavi grant.",
+                "type": "string",
+                "enum": [
+                    "A/J (AJ)",
+                    "C57BL/6J (B6)",
+                    "129S1/SvImJ (129)",
+                    "NOD/ShiLtJ (NOD)",
+                    "NZO/H1LtJ (NZO)",
+                    "CAST/EiJ (CAST)",
+                    "PWK/PhJ (PWK)",
+                    "WSB/EiJ (WSB)",
+                    "CAST (M. m. castaneus)",
+                    "WSB (M. m. domesticus)",
+                    "PWK (M. m. musculus)"
+                ]
+            },
+            "strain_name": {
+                "title": "Strain name",
+                "description": "The specific strain designation of a non-human donor.",
+                "comment": "Strain name of rodent strains.",
+                "type": "string"
+            },
+            "genotype": {
+                "title": "Strain genotype",
+                "description": "The genotype of the strain according to accepted nomenclature conventions.",
+                "comment": "Genotype of rodent strains.",
+                "type": "string"
+            }
+        }
+    },
+    "facets": {
+        "status": {
+            "title": "Status"
+        }
+    },
+    "changelog": "/profiles/changelogs/rodent_donor.md"
+}

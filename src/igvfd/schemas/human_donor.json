@@ -1,0 +1,163 @@
+{
+    "title": "Human Donor",
+    "$id": "/profiles/human_donor.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Derived schema submitting human donors.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "taxon_id"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "donor.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/schema_version"
+        },
+        {
+            "$ref": "mixins.json#/uuid"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/alternate_accessions"
+        },
+        {
+            "$ref": "mixins.json#/accessioned_status"
+        },
+        {
+            "$ref": "mixins.json#/aliases"
+        },
+        {
+            "$ref": "mixins.json#/submitted"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/submitter_comment"
+        },
+        {
+            "$ref": "mixins.json#/notes"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/genetic_modifications"
+        },
+        {
+            "$ref": "mixins.json#/references"
+        }
+    ],
+    "dependentSchemas": {},
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "health_status_history": {
+            "type": "array",
+            "default": [],
+            "items": {
+                "$ref": "#/$defs/health_status"
+            }
+        },
+        "ethnicity": {
+            "title": "Ethnicity",
+            "comment": "We use http://bioportal.bioontology.org/ontologies/HANCESTRO as a template for the enum list of ethnicities.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "type": "string",
+                "enum": [
+                    "African American",
+                    "Arab",
+                    "Asian",
+                    "Black",
+                    "Black African",
+                    "Chinese",
+                    "Esan",
+                    "Eskimo",
+                    "European",
+                    "Gambian",
+                    "Han Chinese",
+                    "Hispanic",
+                    "Indian",
+                    "Japanese",
+                    "Luhya",
+                    "Maasai",
+                    "Mende",
+                    "Native Hawaiian",
+                    "Yoruba"
+                ]
+            }
+        }
+    },
+    "$defs": {
+        "health_status": {
+            "type": "object",
+            "required": [
+                "health_description",
+                "date_start"
+            ],
+            "properties": {
+                "health_description": {
+                    "title": "Description of Donor Health",
+                    "description": "Description of the health status change.",
+                    "type": "string",
+                    "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+                    "formInput": "textarea",
+                    "permission": "import_items"
+                },
+                "date_start": {
+                    "title": "Date health change started",
+                    "description": "The date the donor health change started.",
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "format": "date-time"
+                        },
+                        {
+                            "format": "date"
+                        }
+                    ],
+                    "permission": "import_items"
+                },
+                "date_end": {
+                    "title": "Date health change ended",
+                    "description": "The date the donor health change ended.  This value is not set if the health status is continuing, or if there is a following health status.",
+                    "type": "string",
+                    "anyOf": [
+                        {
+                            "format": "date-time"
+                        },
+                        {
+                            "format": "date"
+                        }
+                    ],
+                    "permission": "import_items"
+                }
+            }
+        }
+    },
+    "facets": {
+        "status": {
+            "title": "Status"
+        }
+    },
+    "changelog": "/profiles/changelogs/human_donor.md"
+}

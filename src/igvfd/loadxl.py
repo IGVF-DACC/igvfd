@@ -26,6 +26,8 @@ ORDER = [
     'organoid',
     'in_vitro',
     'technical_sample',
+    'human_donor',
+    'rodent_donor',
     'image',
     'page',
     'access_key',

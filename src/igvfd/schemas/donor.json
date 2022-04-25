@@ -1,0 +1,129 @@
+{
+    "title": "Donor",
+    "$id": "/profiles/donor.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Abstract schema for donors.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "taxon_id"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/schema_version"
+        },
+        {
+            "$ref": "mixins.json#/uuid"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/alternate_accessions"
+        },
+        {
+            "$ref": "mixins.json#/accessioned_status"
+        },
+        {
+            "$ref": "mixins.json#/aliases"
+        },
+        {
+            "$ref": "mixins.json#/submitted"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/submitter_comment"
+        },
+        {
+            "$ref": "mixins.json#/notes"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/genetic_modifications"
+        },
+        {
+            "$ref": "mixins.json#/references"
+        }
+    ],
+    "dependentSchemas": {},
+    "properties": {
+        "schema_version": {
+            "hidden comment": "Bump the default in the subclasses."
+        },
+        "sex": {
+            "title": "Sex",
+            "description": "Sex of the donor.",
+            "type": "string",
+            "enum": [
+                "male",
+                "female"
+            ]
+        },
+        "taxon_id": {
+            "taxon_id": {
+                "title": "Taxa (Organism) Identifier",
+                "description": "Taxa (organism) identifier of the donor.",
+                "type": "string"
+            }
+        },
+        "parents": {
+            "title": "Parents",
+            "description": "Biological parents of this donor",
+            "comment": "A list of parents as it applies to the experiment.",
+            "type": "array",
+            "default": [],
+            "uniqueItems": true,
+            "items": {
+                "title": "Parent",
+                "description": "Biological parent of this donor.",
+                "type": "string",
+                "linkTo": "Donor"
+            }
+        },
+        "external_resources": {
+            "external_resources": {
+                "title": "External Resources",
+                "description": "A list of external resources associated with the donor.",
+                "type": "array",
+                "default": [],
+                "uniqueItems": false,
+                "items": {
+                    "title": "External Resource",
+                    "description": "An external resource associated with the donor.",
+                    "type": "string"
+                }
+            }
+        },
+        "collections": {
+            "collections": {
+                "title": "Collections",
+                "description": "Some donors are part of a particular data collection.",
+                "type": "array",
+                "default": [],
+                "permission": "import_items",
+                "uniqueItems": true,
+                "items": {
+                    "type": "string",
+                    "enum": [
+                        "NDR",
+                        "ENCODE"
+                    ]
+                }
+            }
+        }
+    },
+    "facets": {
+        "status": {
+            "title": "Status"
+        }
+    }
+}

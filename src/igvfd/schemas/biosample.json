@@ -266,6 +266,20 @@
                 "type": "string",
                 "linkTo": "Treatment"
             }
+        },
+        "donors": {
+            "title": "Donors",
+            "description": "Donor(s). Any contributing donor.",
+            "type": "array",
+            "default": [],
+            "uniqueItems": true,
+            "items": {
+                "title": "Donor",
+                "description": "Donor(s).",
+                "comment": "See concrete class human_donor.json or rodent_donor.json for available identifiers.",
+                "type": "string",
+                "linkTo": "Donor"
+            }
         }
     }
 }
