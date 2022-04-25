@@ -6,6 +6,8 @@ from aws_cdk.aws_ec2 import Vpc
 
 from aws_cdk.aws_route53 import HostedZone
 
+from aws_cdk.aws_secretsmanager import Secret
+
 
 class IgvfDevDomain(Construct):
 
@@ -16,24 +18,50 @@ class IgvfDevDomain(Construct):
             'DomainCertificate',
             'arn:aws:acm:us-west-2:109189702753:certificate/6bee1171-2028-43eb-aab8-d992da3c60df'
         )
-        self.domain_name = 'demo.igvf.org'
-        self.domain_zone = HostedZone.from_lookup(
+        self.name = 'demo.igvf.org'
+        self.zone = HostedZone.from_lookup(
             self,
             'DomainZone',
-            domain_name=self.domain_name,
+            domain_name=self.name,
         )
 
 
-class ExistingResources(Construct):
+class IgvfDevCredentials(Construct):
 
     def __init__(self, scope, construct_id, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
-        self.igvf_dev_vpc = Vpc.from_lookup(
+        self.docker_credentials = Secret.from_secret_complete_arn(
+            self,
+            'DockerSecret',
+            'arn:aws:secretsmanager:us-west-2:109189702753:secret:docker-hub-credentials-EStRH5',
+        )
+
+
+class IgvfDevCodeStarConnection:
+
+    def __init__(self):
+        self.arn = (
+            'arn:aws:codestar-connections:'
+            'us-west-2:109189702753:'
+            'connection/d65802e7-37d9-4be6-bc86-f94b2104b5ff'
+        )
+
+
+class IgvfDevExistingResources(Construct):
+
+    def __init__(self, scope, construct_id, **kwargs):
+        super().__init__(scope, construct_id, **kwargs)
+        self.vpc = Vpc.from_lookup(
             self,
             'IgvfDevVpc',
             vpc_id='vpc-0b5e3b97317057133'
         )
-        self.igvf_dev_domain = IgvfDevDomain(
+        self.domain = IgvfDevDomain(
             self,
             'IgvfDevDomain',
         )
+        self.credentials = IgvfDevCredentials(
+            self,
+            'IgvfDevCredentials',
+        )
+        self.code_star_connection = IgvfDevCodeStarConnection()

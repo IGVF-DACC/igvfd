@@ -13,14 +13,12 @@ from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedTaskImageOptions
 
 from aws_cdk.aws_iam import ManagedPolicy
 
-from infrastructure.constructs.existing import ExistingResources
-
 
 class BackendStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, postgres, branch, **kwargs):
+    def __init__(self, scope, construct_id, postgres, branch, existing_construct, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
-        existing = ExistingResources(
+        self._existing = existing_construct(
             self,
             'ExistingResources',
         )
@@ -36,7 +34,7 @@ class BackendStack(cdk.Stack):
         fargate_service = ApplicationLoadBalancedFargateService(
             self,
             'Fargate',
-            vpc=existing.igvf_dev_vpc,
+            vpc=self._existing.vpc,
             cpu=1024,
             desired_count=1,
             circuit_breaker=DeploymentCircuitBreaker(
@@ -53,9 +51,9 @@ class BackendStack(cdk.Stack):
             memory_limit_mib=2048,
             public_load_balancer=True,
             assign_public_ip=True,
-            certificate=existing.igvf_dev_domain.certificate,
-            domain_zone=existing.igvf_dev_domain.domain_zone,
-            domain_name=f'igvfd-{branch}.{existing.igvf_dev_domain.domain_name}',
+            certificate=self._existing.domain.certificate,
+            domain_zone=self._existing.domain.zone,
+            domain_name=f'igvfd-{branch}.{self._existing.domain.name}',
             redirect_http=True,
         )
         fargate_service.task_definition.add_container(
