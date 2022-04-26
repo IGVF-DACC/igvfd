@@ -25,13 +25,23 @@ class Treatment(Item):
             'type': 'string',
         }
     )
+<<<<<<< HEAD
 
     def title(self, treatment_term_name, amount, amount_units, duration=None, duration_units=None):
         if duration is not None:
             text = 'Treated with {} {} {} for {} {}'.format(
+=======
+    def title(self, treatment_term_name, amount, amount_units, duration, duration_units):
+        if duration:
+            text = 'Treated with {} {} {} for {} {}.'.format(
+>>>>>>> 950b9e5 (update required)
                 amount, amount_units, treatment_term_name, duration, duration_units)
         else:
             text = 'Treated with {} {} {} for non-specified duration'.format(
                 amount, amount_units, treatment_term_name)
+<<<<<<< HEAD
         return text
 
+=======
+        return(text)
+>>>>>>> 950b9e5 (update required)
