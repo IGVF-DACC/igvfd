@@ -15,7 +15,7 @@ def test_sample_ontology_term_slims(sample_ontology_term_1, testapp):
     expected_cell_slims = ['hematopoietic cell', 'cancer cell', 'leukocyte']
     expected_developmental_slims = ['mesoderm']
     expected_system_slims = ['immune system']
-    assert(all(slim in res['organ_slims'] for slim in expected_organ_slims))
-    assert(all(slim in res['cell_slims'] for slim in expected_cell_slims))
-    assert(all(slim in res['developmental_slims'] for slim in expected_developmental_slims))
-    assert(all(slim in res['system_slims'] for slim in expected_system_slims))
+    assert(all(slim in res.json['organ_slims'] for slim in expected_organ_slims))
+    assert(all(slim in res.json['cell_slims'] for slim in expected_cell_slims))
+    assert(all(slim in res.json['developmental_slims'] for slim in expected_developmental_slims))
+    assert(all(slim in res.json['system_slims'] for slim in expected_system_slims))
