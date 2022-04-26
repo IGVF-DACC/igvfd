@@ -5,14 +5,10 @@
     "type": "object",
     "required": [
         "amount",
-<<<<<<< HEAD
         "amount_units",
         "treatment_term_id",
         "treatment_term_name",
         "treatment_type"
-=======
-        "amount_units"
->>>>>>> 950b9e5 (update required)
     ],
     "identifyingProperties": [
         "uuid",
