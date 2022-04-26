@@ -15,8 +15,6 @@
     {
         "amount": 50,
         "amount_units": "ng/mL",
-        "duration": 3600,
-        "duration_units": "second",
         "documents": [
             "j-michael-cherry:Antibody_characterization_standards_IGVF"
         ],
