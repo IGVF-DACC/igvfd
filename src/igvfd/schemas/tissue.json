@@ -75,14 +75,14 @@
         "schema_version": {
             "default": "1"
         },
-        "PMI": {
+        "pmi": {
             "title": "Post-mortem interval",
             "description": "The amount of time elapsed since death.",
             "comment": "Post-mortem interval for tissues should be reported, if known.",
             "type": "integer",
             "minimum": 1
         },
-        "PMI_units": {
+        "pmi_units": {
             "title": "Post-mortem interval units",
             "description": "The unit in which the PMI time was reported.",
             "comment": "Post-mortem interval units for tissues should be reported with PMI value, if known.",

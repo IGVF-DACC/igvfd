@@ -6,8 +6,9 @@
         "aliases": [
             "j-michael-cherry:alias3"
         ],
-        "status": "in progress",
+        "status": "released",
         "organism": "Homo sapiens",
+<<<<<<< HEAD
         "source": "/labs/j-michael-cherry/",
         "nih_institutional_certification": "NICHD1442",
         "PMI": 2,
@@ -31,5 +32,11 @@
             "/treatments/2d57c810-c729-11ec-9d64-0242ac120002/",
             "/treatments/4fbb0dc2-c72e-11ec-9d64-0242ac120002/"
         ]
+=======
+        "source": "/labs/j-michael-cherry",
+        "pmi": 2,
+        "pmi_units": "week",
+        "preservation_method": "cryopreservation"
+>>>>>>> e7b2bb2 (capitalization and released)
     }
 ]
