@@ -6,7 +6,6 @@
         "aliases": [
             "j-michael-cherry:alias4"
         ],
-<<<<<<< HEAD
         "status": "released",
         "organism": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
@@ -15,13 +14,5 @@
         "treatments": [
             "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
         ]
-=======
-        "status": "in progress",
-        "organism": "Homo sapiens",
-        "source": "/labs/j-michael-cherry",
-        "post_differentiation_time": 5,
-        "post_differentiation_time_units": "day",
-        "treatment": "treatment"
->>>>>>> b4a3697 (added organoid)
     }
 ]
