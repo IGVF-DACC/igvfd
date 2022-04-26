@@ -2,6 +2,7 @@ import aws_cdk as cdk
 
 from constructs import Construct
 
+from aws_cdk.aws_codebuild import BuildSpec
 from aws_cdk.aws_codebuild import BuildEnvironment
 from aws_cdk.aws_codebuild import Cache
 from aws_cdk.aws_codebuild import LinuxBuildImage
@@ -50,7 +51,9 @@ class PublicContinuousIntegrationForGithub(Construct):
                 build_image=LinuxBuildImage.STANDARD_5_0,
                 privileged=True,
             ),
-            build_spec=self._build_spec,
+            build_spec=Buildspec.from_object(
+                self._build_spec
+            ),
             badge=True,
             cache=Cache.local(
                 LocalCacheMode.DOCKER_LAYER
