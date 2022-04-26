@@ -14,24 +14,14 @@ class DevelopmentDeployStage(cdk.Stage):
         super().__init__(scope, construct_id, **kwargs)
         self.postgres = PostgresStack(
             self,
-            prepend_project_name(
-                prepend_branch_name(
-                    branch,
-                    'PostgresStack'
-                )
-            ),
+            'PostgresStack',
             branch=branch,
             existing_construct=IgvfDevExistingResources,
             env=IGVF_DEV_US_WEST_2,
         )
         self.backend = BackendStack(
             self,
-            prepend_project_name(
-                prepend_branch_name(
-                    branch,
-                    'BackendStack'
-                )
-            ),
+            'BackendStack',
             postgres=self.postgres,
             branch=branch,
             existing_construct=IgvfDevExistingResources,
