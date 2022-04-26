@@ -23,6 +23,7 @@ ORDER = [
     'cell_line',
     'tissue',
     'technical_sample',
+    'assay_ontology_term',
     'image',
     'page',
     'access_key',
