@@ -1,13 +1,19 @@
 {
-    "title": "Biosample",
-    "$id": "/profiles/biosample.json",
+    "title": "Organoid",
+    "$id": "/profiles/organoid.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a specific biological sample.",
+    "description": "Schema for submitting an organoid sample.",
     "type": "object",
     "required": [
         "award",
         "lab",
         "source"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -15,7 +21,13 @@
             "$ref": "sample.json#/properties"
         },
         {
+            "$ref": "biosample.json#/properties"
+        },
+        {
             "$ref": "mixins.json#/schema_version"
+        },
+        {
+            "$ref": "mixins.json#/uuid"
         },
         {
             "$ref": "mixins.json#/accession"
@@ -49,15 +61,15 @@
         },
         {
             "$ref": "mixins.json#/url"
-        },
-        {
-            "$ref": "mixins.json#/collections"
         }
     ],
     "dependentSchemas": {
-        "$merge": [
-            "sample.json#/dependentSchemas"
-        ],
+        "lot_id": {
+            "required": [
+                "product_id"
+            ],
+            "comment": "Sample with lot_id must include product_id."
+        },
         "age_units": {
             "comment": "Human biosamples cannot have age units of minutes or hours. Yeast biosamples cannot have age units of years or months.",
             "allOf": [
@@ -145,33 +157,34 @@
                     }
                 }
             ]
+        },
+        "post_differentiation_time": {
+            "required": [
+                "post_differentiation_time_units"
+            ],
+            "comment": "Biosample with a specified post_differentiation_time requires post_differentiation_time_units specification."
+        },
+        "post_differentiation_time_units": {
+            "required": [
+                "post_differentiation_time"
+            ],
+            "comment": "Biosample with a specified post_differentiation_time_units requires post_differentiation_time specification."
         }
     },
     "properties": {
         "schema_version": {
-            "hidden comment": "Bump the default in the subclasses."
+            "default": "1"
         },
-        "organism": {
-            "enum": [
-                "Homo sapiens",
-                "Mus musculus",
-                "Saccharomyces"
-            ]
+        "post_differentiation_time": {
+            "title": "Post-differentiation time",
+            "description": "The time that elapsed past the point when biosamples were differentiated.",
+            "comment": "Use in conjunction with post_differentiation_time_units to specify time elapsed post-differentiation. Use of this property requires post_differentiation_time_units specification.",
+            "type": "integer"
         },
-        "age": {
-            "title": "Age",
-            "description": "Age of organism at collection of the biosample.",
-            "type": "number",
-            "minimum": 0
-        },
-        "sex": {
-            "title": "Sex",
-            "description": "Sex of the organism associated with the biosample.",
-            "type": "string"
-        },
-        "age_units": {
-            "title": "Age units",
-            "description": "The units of time associated with age of the biosample.",
+        "post_differentiation_time_units": {
+            "title": "Post-differentiation time units",
+            "description": "The units of time that elapsed past the point when biosamples were differentiated.",
+            "comment": "Use in conjunction with post_differentiation_time to specify time elapsed post-differentiation. Use of this property requires post_differentiation_time specification.",
             "type": "string",
             "enum": [
                 "minute",
@@ -179,93 +192,21 @@
                 "day",
                 "week",
                 "month",
-                "year"
+                "stage"
             ]
-        },
-        "life_stage": {
-            "title": "Life stage",
-            "description": "The development stage of the organism used to prepare biosample.",
-            "type": "string",
-            "enum": [
-                "adult",
-                "child",
-                "postnatal",
-                "embryonic",
-                "unknown",
-                "lag",
-                "fermentative",
-                "respirative",
-                "stationary",
-                "decline"
-            ]
-        },
-        "biosample_ontology": {
-            "biosample_ontology": {
-                "title": "Biosample ontology",
-                "description": "Ontology of the biosample.",
-                "type": "string"
-            }
-        },
-        "disease_ontology": {
-            "disease_ontology": {
-                "title": "Disease ontology",
-                "description": "Ontology of the disease associated with the biosample.",
-                "type": "string"
-            }
-        },
-        "nih_institutional_certification": {
-            "type": "string",
-            "title": "NIH institutional certification",
-            "description": "Institutional certification given by the NIH for human biosamples.",
-            "comment": "Required for IGVF human biosamples.",
-            "pattern": "^NIC[A-Z0-9]+$"
         },
         "date_obtained": {
-            "date_obtained": {
-                "title": "Date obtained",
-                "description": "The date the biosample was harvested, disected, created depending on biosample type.",
-                "comment": "Date should be submitted in as YYYY-MM-DD.",
-                "type": "string",
-                "format": "date"
-            }
+            "title": "Date collected"
         },
-        "related_biosamples": {
-            "title": "Related biosamples",
-            "description": "Biosamples that are related to this biosample with the relation of 'realted_biosample_realtion'.",
-            "comment": "A list of biosamples should all have the same relationship to this biosample.",
-            "type": "array",
-            "uniqueItems": true,
-            "items": {
-                "description": "A related biosample",
-                "comment": "See biosample.json for available identifiers.",
-                "type": "string",
-                "linkTo": "Biosample"
-            }
-        },
-        "related_biosamples_relation": {
-            "title": "Relationship to other related biosamples",
-            "description": "The specific relationship to the biosamples in related_biosamples field",
-            "comment": "Must be submitted with related_biosamples",
-            "enum": [
-                "originated_from",
-                "pooled_from",
-                "separated_from",
-                "hosted_by",
-                "derived_from"
-            ]
-        },
-        "treatments": {
-            "title": "Treatments",
-            "description": "A list of treatments applied to the biosample.",
-            "type": "array",
-            "default": [],
-            "uniqueItems": true,
-            "items": {
-                "title": "Treatment",
-                "comment": "See treatment.json for available identifiers.",
-                "type": "string",
-                "linkTo": "Treatment"
-            }
+        "treatment": {
+            "title": "Differentiation treatment",
+            "type": "string"
         }
-    }
+    },
+    "facets": {
+        "status": {
+            "title": "Status"
+        }
+    },
+    "changelog": "/profiles/changelogs/organoid.md"
 }

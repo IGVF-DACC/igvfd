@@ -23,6 +23,7 @@ ORDER = [
     'treatment',
     'cell_line',
     'tissue',
+    'organoid',
     'technical_sample',
     'image',
     'page',
