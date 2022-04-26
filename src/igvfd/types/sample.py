@@ -72,6 +72,18 @@ class Organoid(Biosample):
 
 
 @collection(
+    name='in-invtros',
+    unique_key='accession',
+    properties={
+        'title': 'In vitros',
+        'description': 'Listing of in vitros',
+    })
+class InVitro(Biosample):
+    item_type = 'in_vitro'
+    schema = load_schema('igvfd:schemas/in_vitro.json')
+
+
+@collection(
     name='technical-samples',
     unique_key='accession',
     properties={

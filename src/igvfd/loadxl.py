@@ -24,6 +24,7 @@ ORDER = [
     'cell_line',
     'tissue',
     'organoid',
+    'in_vitro',
     'technical_sample',
     'image',
     'page',
