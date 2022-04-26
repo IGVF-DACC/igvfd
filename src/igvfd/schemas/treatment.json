@@ -8,7 +8,7 @@
         "treatment_type",
         "treatment_term_id",
         "amount",
-        "duration"
+        "amount_units"
     ],
     "identifyingProperties": [
         "uuid",

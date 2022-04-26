@@ -1,6 +1,13 @@
 import pytest
 
 
+def test_treatment_calculated(testapp):
+    res = testapp.get(treatment_1['@id'])
+    assert(res.json['title'] == 'Treated with 10 mM lactate for 1 hour')
+    res = testapp.get(treatment_1['@id'])
+    assert(res.json['title'] == 'Treated with 10 ng/kg G-CSF for non-specified duration')
+
+
 def test_treatment_type_dependency(treatment_1, testapp):
     res = testapp.patch_json(
         treatment_1['@id'],
@@ -9,6 +16,14 @@ def test_treatment_type_dependency(treatment_1, testapp):
     res = testapp.patch_json(
         treatment_1['@id'],
         {'treatment_type': 'protein', 'treatment_term_id': 'UniProtKB:P09919'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        treatment_1['@id'],
+        {'treatment_type': 'protein', 'treatment_term_id': 'NTR:0001182'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        treatment_1['@id'],
+        {'treatment_type': 'chemical', 'treatment_term_id': 'NTR:0001181'})
     assert(res.status_code == 200)
     res = testapp.patch_json(
         treatment_1['@id'],
