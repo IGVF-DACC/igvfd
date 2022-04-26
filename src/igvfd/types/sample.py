@@ -72,6 +72,7 @@ class Organoid(Biosample):
 
 
 @collection(
+<<<<<<< HEAD
     name='in-vitros',
     unique_key='accession',
     properties={
@@ -85,6 +86,9 @@ class InVitro(Biosample):
 
 @collection(
     name='technical-samples',
+=======
+    name='technical_samples',
+>>>>>>> b4a3697 (added organoid)
     unique_key='accession',
     properties={
         'title': 'Technical Samples',

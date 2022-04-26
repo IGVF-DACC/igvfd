@@ -24,7 +24,10 @@ ORDER = [
     'cell_line',
     'tissue',
     'organoid',
+<<<<<<< HEAD
     'in_vitro',
+=======
+>>>>>>> b4a3697 (added organoid)
     'technical_sample',
     'image',
     'page',

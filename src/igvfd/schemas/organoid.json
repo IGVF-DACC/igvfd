@@ -64,9 +64,106 @@
         }
     ],
     "dependentSchemas": {
+<<<<<<< HEAD
         "$merge": [
             "biosample.json#/dependentSchemas"
         ],
+=======
+        "lot_id": {
+            "required": [
+                "product_id"
+            ],
+            "comment": "Sample with lot_id must include product_id."
+        },
+        "age_units": {
+            "comment": "Human biosamples cannot have age units of minutes or hours. Yeast biosamples cannot have age units of years or months.",
+            "allOf": [
+                {
+                    "not": {
+                        "properties": {
+                            "organism": {
+                                "enum": [
+                                    "Homo sapiens"
+                                ]
+                            },
+                            "age_units": {
+                                "enum": [
+                                    "minute",
+                                    "hour"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "properties": {
+                            "organism": {
+                                "enum": [
+                                    "Saccharomyces"
+                                ]
+                            },
+                            "age_units": {
+                                "enum": [
+                                    "year",
+                                    "month"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "life_stage": {
+            "comment": "Human and mouse biosamples cannot have yeast life stages and vice versa.",
+            "allOf": [
+                {
+                    "not": {
+                        "properties": {
+                            "organism": {
+                                "oneOf": [
+                                    {
+                                        "enum": [
+                                            "Homo sapiens",
+                                            "Mus musculus"
+                                        ]
+                                    }
+                                ]
+                            },
+                            "life_stage": {
+                                "enum": [
+                                    "lag",
+                                    "fermentative",
+                                    "respirative",
+                                    "stationary",
+                                    "decline"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "properties": {
+                            "organism": {
+                                "enum": [
+                                    "Saccharomyces"
+                                ]
+                            },
+                            "life_stage": {
+                                "enum": [
+                                    "adult",
+                                    "child",
+                                    "postnatal",
+                                    "embryonic"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+>>>>>>> b4a3697 (added organoid)
         "post_differentiation_time": {
             "required": [
                 "post_differentiation_time_units"
@@ -107,6 +204,7 @@
         "date_obtained": {
             "title": "Date collected"
         },
+<<<<<<< HEAD
         "treatments": {
             "title": "Differentiation treatment",
             "description": "A list of treatments applied to the biosample.",
@@ -119,6 +217,16 @@
                 "type": "string",
                 "linkTo": "Treatment"
             }
+=======
+        "treatment": {
+            "title": "Differentiation treatment",
+            "type": "string"
+        }
+    },
+    "facets": {
+        "status": {
+            "title": "Status"
+>>>>>>> b4a3697 (added organoid)
         }
     },
     "changelog": "/profiles/changelogs/organoid.md"
