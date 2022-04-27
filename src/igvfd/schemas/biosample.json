@@ -52,12 +52,9 @@
         }
     ],
     "dependentSchemas": {
-        "lot_id": {
-            "required": [
-                "product_id"
-            ],
-            "comment": "Sample with lot_id must include product_id."
-        },
+        "$merge": [
+            "sample.json#/dependentSchemas"
+        ],
         "age_units": {
             "comment": "Human biosamples cannot have age units of minutes or hours. Yeast biosamples cannot have age units of years or months.",
             "allOf": [
