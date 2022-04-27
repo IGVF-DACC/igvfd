@@ -12,17 +12,17 @@ class DevelopmentDeployStage(cdk.Stage):
 
     def __init__(self, scope, construct_id, branch, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
-        self.postgres = PostgresStack(
+        self.postgres_stack = PostgresStack(
             self,
             'PostgresStack',
             branch=branch,
             existing_resources=igvf_dev.Resources,
             env=igvf_dev.US_WEST_2,
         )
-        self.backend = BackendStack(
+        self.backend_stack = BackendStack(
             self,
             'BackendStack',
-            postgres=self.postgres,
+            postgres=self.postgres_stack.postgres,
             branch=branch,
             existing_resources=igvf_dev.Resources,
             env=igvf_dev.US_WEST_2,
