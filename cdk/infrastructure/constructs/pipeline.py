@@ -82,14 +82,13 @@ class BasicSelfUpdatingPipeline(Construct):
 
 class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
 
-    def __init__(self, scope, construct_id, github_repo, branch, existing_resources, chatbot, **kwargs):
+    def __init__(self, scope, construct_id, github_repo, branch, existing_resources, **kwargs):
         super().__init__(scope, construct_id, github_repo, branch, existing_resources)
-        self._chatbot = chatbot
         self._add_tooling_wave()
         self._add_development_deploy_stage()
         # self._add_test_deploy_stage()
         # self._add_prod_deploy_stage()
-        self._maybe_add_slack_notifications()
+        self._add_slack_notifications()
 
     def _add_tooling_wave(self):
         tooling_wave = self._code_pipeline.add_wave(
@@ -169,9 +168,8 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             self._pipeline = self._code_pipeline.pipeline
         return self._pipeline
 
-    def _maybe_add_slack_notifications(self):
-        if self._chatbot is not None:
-            self._get_underlying_pipeline().notify_on_execution_state_change(
-                'NotifySlack',
-                self._chatbot,
-            )
+    def _add_slack_notifications(self):
+        self._get_underlying_pipeline().notify_on_execution_state_change(
+            'NotifySlack',
+            self._existing_resources.notification.encode_dcc_chatbot,
+        )

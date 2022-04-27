@@ -5,6 +5,7 @@ from shared_infrastructure.igvf_dev.environment import US_WEST_2
 from shared_infrastructure.igvf_dev.domain import DemoDomain
 from shared_infrastructure.igvf_dev.secret import DockerHubCredentials
 from shared_infrastructure.igvf_dev.network import DemoNetwork
+from shared_infrastructure.igvf_dev.notification import Notification
 
 
 class Resources(Construct):
@@ -26,4 +27,8 @@ class Resources(Construct):
         self.code_star_connection = CodeStarConnection(
             self,
             'CodeStarConnection',
+        )
+        self.notification = Notification(
+            self,
+            'Notification',
         )
