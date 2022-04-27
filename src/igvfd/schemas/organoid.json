@@ -108,6 +108,7 @@
             "title": "Date collected"
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
         "treatments": {
             "title": "Differentiation treatment",
             "description": "A list of treatments applied to the biosample.",
@@ -122,8 +123,13 @@
             }
 =======
         "treatment": {
+=======
+        "treatments": {
+>>>>>>> f64a01f (treatment description, comment, pluralization)
             "title": "Differentiation treatment",
-            "type": "string"
+            "description": "A list of treatments applied to the biosample.",
+            "comment": "A list of treatments applied to the biosample.",
+            "type": "array"
         }
     },
     "facets": {
