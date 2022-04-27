@@ -1,6 +1,15 @@
 import pytest
 
 
+def test_treatment_amount_dependency(testapp):
+    item = {
+        'treatment_term_name': 'lactate',
+        'treatment_term_id': 'CHEBI:24996',
+        'treatment_type': 'chemical',
+        'amount': '10'
+    }
+
+
 def test_treatment_calculated(treatment_1, testapp):
     res = testapp.get(treatment_1['@id'])
     assert(res.json['title'] == 'Treated with 10 mM lactate for 1 hour.')
