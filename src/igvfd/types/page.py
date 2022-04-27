@@ -36,11 +36,6 @@ class Page(SharedItem):
     schema = load_schema('igvfd:schemas/page.json')
     name_key = 'name'
 
-    embedded = [
-        'layout.blocks.image',
-        'award',
-    ]
-
     def unique_keys(self, properties):
         keys = super(Page, self).unique_keys(properties)
         parent = properties.get('parent')

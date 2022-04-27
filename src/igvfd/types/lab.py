@@ -22,7 +22,6 @@ class Lab(Item):
     item_type = 'lab'
     schema = load_schema('igvfd:schemas/lab.json')
     name_key = 'name'
-    embedded = ['awards']
 
     @calculated_property(
         schema={

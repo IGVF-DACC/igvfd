@@ -20,8 +20,6 @@ from .base import (
 class OntologyTerm(Item):
     base_types = ['OntologyTerm'] + Item.base_types
     schema = load_schema('igvfd:schemas/ontology_term.json')
-    embedded = []
-    embedded_with_frame = []
 
     @staticmethod
     def _get_ontology_slims(registry, term_id, slim_key):

@@ -20,4 +20,3 @@ from .base import (
 class Document(ItemWithAttachment, Item):
     item_type = 'document'
     schema = load_schema('igvfd:schemas/document.json')
-    embedded = ['lab', 'award', 'submitted_by']
