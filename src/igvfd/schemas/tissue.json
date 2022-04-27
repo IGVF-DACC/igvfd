@@ -106,10 +106,5 @@
             "title": "Date harvested"
         }
     },
-    "facets": {
-        "status": {
-            "title": "Status"
-        }
-    },
     "changelog": "/profiles/changelogs/tissue.md"
 }

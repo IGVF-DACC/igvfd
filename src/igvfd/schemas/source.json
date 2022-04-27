@@ -58,10 +58,5 @@
             "uniqueKey": true
         }
     },
-    "facets": {
-        "status": {
-            "title": "Status"
-        }
-    },
     "changelog": "/profiles/changelogs/source.md"
 }

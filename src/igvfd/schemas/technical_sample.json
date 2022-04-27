@@ -97,10 +97,5 @@
             "type": "string"
         }
     },
-    "facets": {
-        "status": {
-            "title": "Status"
-        }
-    },
     "changelog": "/profiles/changelogs/technical_sample.md"
 }
