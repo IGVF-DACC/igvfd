@@ -11,6 +11,8 @@
         "source": "/labs/j-michael-cherry",
         "post_differentiation_time": 5,
         "post_differentiation_time_units": "day",
-        "treatment": "treatment"
+        "treatments": [
+            "treatment"
+        ]
     }
 ]

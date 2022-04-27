@@ -107,9 +107,11 @@
         "date_obtained": {
             "title": "Date collected"
         },
-        "treatment": {
+        "treatments": {
             "title": "Differentiation treatment",
-            "type": "string"
+            "description": "A list of treatments applied to the biosample.",
+            "comment": "A list of treatments applied to the biosample.",
+            "type": "array"
         }
     },
     "facets": {
