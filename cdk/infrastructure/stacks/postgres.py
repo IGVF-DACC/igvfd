@@ -13,10 +13,10 @@ from aws_cdk.aws_rds import PostgresEngineVersion
 
 class PostgresStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, branch, existing_construct, **kwargs):
+    def __init__(self, scope, construct_id, branch, existing_resources, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         self._branch = branch
-        self._existing_construct = existing_construct
+        self._existing_resources = existing_resources
         self._define_existing()
         self._define_engine()
         self._define_database_name()
@@ -24,7 +24,7 @@ class PostgresStack(cdk.Stack):
         self._add_tags_to_database()
 
     def _define_existing(self):
-        self._existing = self._existing_construct(
+        self._existing = self._existing_resources(
             self,
             'ExistingResources',
         )
@@ -47,7 +47,7 @@ class PostgresStack(cdk.Stack):
                 InstanceClass.BURSTABLE3,
                 InstanceSize.MEDIUM,
             ),
-            vpc=self._existing.vpc,
+            vpc=self._existing.network.vpc,
             vpc_subnets=SubnetSelection(
                 subnet_type=SubnetType.PRIVATE_ISOLATED,
             ),

@@ -16,11 +16,11 @@ from aws_cdk.aws_iam import ManagedPolicy
 
 class BackendStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, branch, postgres, existing_construct, **kwargs):
+    def __init__(self, scope, construct_id, branch, postgres, existing_resources, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         self._branch = branch
         self._postgres = postgres
-        self._existing_construct = existing_construct
+        self._existing_resources = existing_resources
         self._define_existing()
         self._define_docker_assets()
         self._define_fargate_service()
@@ -32,7 +32,7 @@ class BackendStack(cdk.Stack):
         self._configure_task_scaling()
 
     def _define_existing(self):
-        self._existing = self._existing_construct(
+        self._existing = self._existing_resources(
             self,
             'ExistingResources',
         )
@@ -52,7 +52,7 @@ class BackendStack(cdk.Stack):
         self.fargate_service = ApplicationLoadBalancedFargateService(
             self,
             'Fargate',
-            vpc=self._existing.vpc,
+            vpc=self._existing.network.vpc,
             cpu=1024,
             desired_count=1,
             circuit_breaker=DeploymentCircuitBreaker(

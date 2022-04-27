@@ -1,6 +1,9 @@
 import aws_cdk as cdk
 
 
+from infrastructure.constructs.ci import ContinuousIntegration
+
+
 def get_build_spec():
     return {
         'version': '0.2',
@@ -40,17 +43,17 @@ def get_build_spec():
 
 class ContinuousIntegrationStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, existing_construct, **kwargs):
+    def __init__(self, scope, construct_id, existing_resources, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
-        self._existing = existing_construct(
+        self.existing_resources = existing_resources(
             self,
             'ExistingResources',
         )
-        self.ci = PublicContinuousIntegrationForGithub(
+        self.ci = ContinuousIntegration(
             self,
-            'PublicContinuousIntegrationForGithub',
+            'ContinuousIntegration',
             github_owner='igvf-dacc',
             github_repo='igvfd',
             build_spec=get_build_spec(),
-            docker_credentials=self._existing.credentials.docker_credentials,
+            docker_hub_credentials=self.existing_resources.docker_hub_credentials,
         )

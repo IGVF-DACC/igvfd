@@ -19,14 +19,14 @@ from aws_cdk.aws_secretsmanager import Secret
 from infrastructure.naming import prepend_project_name
 
 
-class PublicContinuousIntegrationForGithub(Construct):
+class ContinuousIntegration(Construct):
 
-    def __init__(self, scope, construct_id, github_owner, github_repo, build_spec, docker_credentials, **kwargs):
+    def __init__(self, scope, construct_id, github_owner, github_repo, build_spec, docker_hub_credentials, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         self._github_owner = github_owner
         self._github_repo = github_repo
         self._build_spec = build_spec
-        self._docker_credentials = docker_credentials
+        self._docker_hub_credentials = docker_hub_credentials
         self._define_github_source()
         self._make_continuous_integration_project()
         self._give_project_permission_to_read_docker_login_secret()
@@ -51,7 +51,7 @@ class PublicContinuousIntegrationForGithub(Construct):
                 build_image=LinuxBuildImage.STANDARD_5_0,
                 privileged=True,
             ),
-            build_spec=Buildspec.from_object(
+            build_spec=BuildSpec.from_object(
                 self._build_spec
             ),
             badge=True,
@@ -61,7 +61,7 @@ class PublicContinuousIntegrationForGithub(Construct):
         )
 
     def _give_project_permission_to_read_docker_login_secret(self):
-        self._docker_credentials.grant_read(
+        self._docker_hub_credentials.secret.grant_read(
             self._continuous_integration_project.role
         )
 

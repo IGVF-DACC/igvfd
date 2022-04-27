@@ -1,7 +1,6 @@
 import aws_cdk as cdk
 
-from infrastructure.config import IGVF_DEV_US_WEST_2
-from infrastructure.constructs.existing import IgvfDevExistingResources
+from infrastructure.constructs.existing import igvf_dev
 from infrastructure.naming import prepend_project_name
 from infrastructure.naming import prepend_branch_name
 from infrastructure.stacks.notification import NotificationStack
@@ -24,7 +23,7 @@ notification = NotificationStack(
         )
     ),
     branch=branch,
-    env=IGVF_DEV_US_WEST_2,
+    env=igvf_dev.US_WEST_2,
 )
 
 pipeline = ContinuousDeploymentPipelineStack(
@@ -37,8 +36,8 @@ pipeline = ContinuousDeploymentPipelineStack(
     ),
     chatbot=notification.chatbot,
     branch=branch,
-    existing_construct=IgvfDevExistingResources,
-    env=IGVF_DEV_US_WEST_2,
+    existing_resources=igvf_dev.Resources,
+    env=igvf_dev.US_WEST_2,
 )
 
 app.synth()
