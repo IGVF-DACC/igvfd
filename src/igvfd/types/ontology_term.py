@@ -104,10 +104,10 @@ class AssayOntologyTerm(OntologyTerm):
     schema = load_schema('igvfd:schemas/assay_ontology_term.json')
 
     @calculated_property(condition='term_id', schema={
-        "title": "Assay category",
-        "type": "array",
-        "items": {
-            "type": "string",
+        'title': 'Assay category',
+        'type': 'array',
+        'items': {
+            'type': 'string',
         },
     })
     def category_slims(self, registry, term_id):
