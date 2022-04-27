@@ -69,10 +69,7 @@ class BasicSelfUpdatingPipeline(Construct):
     def _make_code_pipeline(self):
         self._code_pipeline = CodePipeline(
             self,
-            prepend_branch_name(
-                self._branch,
-                'CodePipeline',
-            ),
+            'CodePipeline',
             synth=self._synth,
             docker_credentials=[
                 self._get_docker_credentials(),
