@@ -8,6 +8,55 @@ def test_treatment_amount_dependency(testapp):
         'treatment_type': 'chemical',
         'amount': '10'
     }
+    return testapp.post_json('/treatment', item, expect_errors=True)
+    assert res.json['status'] == 422
+    item.update(
+        {
+            'amount_units': 'ng/mL'
+        }
+    )
+    return testapp.post_json('/treatment', item)
+    assert res.json['status'] == 200
+
+
+def test_treatment_duration_dependency(testapp):
+    item = {
+        'treatment_term_name': 'lactate',
+        'treatment_term_id': 'CHEBI:24996',
+        'treatment_type': 'chemical',
+        'amount': '10',
+        'amount_units': 'ng/mL',
+        'duration_units': 'hour'
+    }
+    return testapp.post_json('/treatment', item, expect_errors=True)
+    assert res.json['status'] == 422
+    item.update(
+        {
+            'duration': '1'
+        }
+    )
+    return testapp.post_json('/treatment', item)
+    assert res.json['status'] == 200
+
+
+def test_treatment_post_treatment_time_dependency(testapp):
+    item = {
+        'treatment_term_name': 'lactate',
+        'treatment_term_id': 'CHEBI:24996',
+        'treatment_type': 'chemical',
+        'amount': '10',
+        'amount_units': 'ng/mL',
+        'post_treatment_time': '10'
+    }
+    return testapp.post_json('/treatment', item, expect_errors=True)
+    assert res.json['status'] == 422
+    item.update(
+        {
+            'post_treatment_time_units': 'minute'
+        }
+    )
+    return testapp.post_json('/treatment', item)
+    assert res.json['status'] == 200
 
 
 def test_treatment_calculated(treatment_1, testapp):
