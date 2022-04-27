@@ -18,23 +18,17 @@ from infrastructure.stages.test import TestDeployStage
 from infrastructure.stages.dev import DevelopmentDeployStage
 
 
-class ContinuousDeploymentPipeline(Construct):
+class BasicSelfUpdatingPipeline(Construct):
 
-    def __init__(self, scope, construct_id, github_repo, branch, existing_resources, chatbot, **kwargs):
-        super().__init__(scope, construct_id,  **kwargs)
+    def __init__(self, scope, construct_id, github_repo, branch, existing_resources, **kwargs):
+        super().__init__(scope, construct_id, **kwargs)
         self._github_repo = github_repo
         self._branch = branch
-        self._chatbot = chatbot
         self._existing_resources = existing_resources
         self._define_github_connection()
         self._define_cdk_synth_step()
         self._define_docker_hub_credentials()
         self._make_code_pipeline()
-        self._add_tooling_wave()
-        self._add_development_deploy_stage()
-        # self._add_test_deploy_stage()
-        # self._add_prod_deploy_stage()
-        self._maybe_add_slack_notifications()
 
     def _define_github_connection(self):
         self._github = CodePipelineSource.connection(
@@ -51,7 +45,7 @@ class ContinuousDeploymentPipeline(Construct):
                 'BRANCH': self._branch
             },
             commands=[
-                'npm install -g aws-cdk@2.12.0',
+                'npm install -g aws-cdk',
                 'cd ./cdk',
                 'python -m venv .venv',
                 '. .venv/bin/activate',
@@ -84,6 +78,18 @@ class ContinuousDeploymentPipeline(Construct):
                 self._get_docker_credentials(),
             ]
         )
+
+
+class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
+
+    def __init__(self, scope, construct_id, github_repo, branch, existing_resources, chatbot, **kwargs):
+        super().__init__(scope, construct_id, github_repo, branch, existing_resources)
+        self._chatbot = chatbot
+        self._add_tooling_wave()
+        self._add_development_deploy_stage()
+        # self._add_test_deploy_stage()
+        # self._add_prod_deploy_stage()
+        self._maybe_add_slack_notifications()
 
     def _add_tooling_wave(self):
         tooling_wave = self._code_pipeline.add_wave(
