@@ -1,7 +1,7 @@
 import aws_cdk as cdk
 
-from infrastructure.config import IGVF_DEV_US_WEST_2
-from infrastructure.constructs.existing import IgvfDevExistingResources
+from infrastructure.constructs.existing import igvf_dev
+
 from infrastructure.stacks.ci import ContinuousIntegrationStack
 
 
@@ -12,6 +12,6 @@ class CIDeployStage(cdk.Stage):
         ContinuousIntegrationStack(
             self,
             'ContinuousIntegrationStack',
-            existing_construct=IgvfDevExistingResources,
-            env=IGVF_DEV_US_WEST_2,
+            existing_resources=igvf_dev.Resources,
+            env=igvf_dev.US_WEST_2,
         )

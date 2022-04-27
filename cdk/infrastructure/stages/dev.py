@@ -1,7 +1,7 @@
 import aws_cdk as cdk
 
-from infrastructure.config import IGVF_DEV_US_WEST_2
-from infrastructure.constructs.existing import IgvfDevExistingResources
+from infrastructure.constructs.existing import igvf_dev
+
 from infrastructure.stacks.backend import BackendStack
 from infrastructure.stacks.postgres import PostgresStack
 from infrastructure.naming import prepend_project_name
@@ -16,14 +16,14 @@ class DevelopmentDeployStage(cdk.Stage):
             self,
             'PostgresStack',
             branch=branch,
-            existing_construct=IgvfDevExistingResources,
-            env=IGVF_DEV_US_WEST_2,
+            existing_resources=igvf_dev.Resources,
+            env=igvf_dev.US_WEST_2,
         )
         self.backend = BackendStack(
             self,
             'BackendStack',
             postgres=self.postgres,
             branch=branch,
-            existing_construct=IgvfDevExistingResources,
-            env=IGVF_DEV_US_WEST_2,
+            existing_resources=igvf_dev.Resources,
+            env=igvf_dev.US_WEST_2,
         )
