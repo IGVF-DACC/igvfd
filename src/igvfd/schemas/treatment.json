@@ -205,7 +205,11 @@
         },
         "treatment_term_name": {
             "title": "Treatment term name",
+<<<<<<< HEAD
             "description": "Ontology term describing a component in the treatment that is the principal component affecting the biosample being treated. Examples: interferon gamma, interleukin-4, Fibroblast growth factor 2, 20-hydroxyecdysone, 5-bromouridine etc.",
+=======
+            "description": "Ontology term describing a component in the treatment.",
+>>>>>>> 0042e59 (update schema)
             "type": "string"
         }
     },
