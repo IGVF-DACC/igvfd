@@ -90,3 +90,25 @@ class SampleOntologyTerm(OntologyTerm):
     })
     def system_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'systems')
+
+
+@collection(
+    name='assay-ontology-terms',
+    unique_key='term_id',
+    properties={
+        'title': 'Assay ontology term',
+        'description': 'Ontology terms used by IGVF for assays',
+    })
+class AssayOntologyTerm(OntologyTerm):
+    item_type = 'assay_ontology_term'
+    schema = load_schema('igvfd:schemas/assay_ontology_term.json')
+
+    @calculated_property(condition='term_id', schema={
+        "title": "Assay category",
+        "type": "array",
+        "items": {
+            "type": "string",
+        },
+    })
+    def category_slims(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'category')
