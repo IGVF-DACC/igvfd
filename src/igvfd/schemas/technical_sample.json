@@ -65,12 +65,9 @@
         }
     ],
     "dependentSchemas": {
-        "lot_id": {
-            "required": [
-                "product_id"
-            ],
-            "comment": "Technical sample with lot_id must include product_id."
-        }
+        "$merge": [
+            "biosample.json#/dependentSchemas"
+        ]
     },
     "properties": {
         "schema_version": {
