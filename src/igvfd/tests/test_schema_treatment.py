@@ -22,11 +22,6 @@ def test_treatment_post_treatment_time_dependency(treatment_2, testapp):
         {'post_treatment_time': 10, 'post_treatment_time_units': 'hour'})
     assert(res.status_code == 200)
 
-
-def test_treatment_calculated(treatment_1, testapp):
-    res = testapp.get(treatment_1['@id'])
-    assert(res.json['title'] == 'Treated with 10 mM lactate for 1 hour')
-
 def test_treatment_calculated(treatment_1, testapp):
     res = testapp.get(treatment_1['@id'])
     assert(res.json['title'] == 'Treated with 10 mM lactate for 1 hour.')
