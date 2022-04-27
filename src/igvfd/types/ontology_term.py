@@ -111,4 +111,4 @@ class AssayOntologyTerm(OntologyTerm):
         },
     })
     def category_slims(self, registry, term_id):
-        return self._get_ontology_slims(registry, term_id, 'category')
+        return self._get_ontology_slims(registry, term_id, 'assay')
