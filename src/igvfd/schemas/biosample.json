@@ -253,19 +253,19 @@
                 "hosted_by",
                 "derived_from"
             ]
-        }
-    },
-    "treatments": {
-        "title": "Treatments",
-        "description": "A list of treatments applied to the biosample.",
-        "type": "array",
-        "default": [],
-        "uniqueItems": true,
-        "items": {
-            "title": "Treatment",
-            "comment": "See treatment.json for available identifiers.",
-            "type": "string",
-            "linkTo": "Treatment"
+        },
+        "treatments": {
+            "title": "Treatments",
+            "description": "A list of treatments applied to the biosample.",
+            "type": "array",
+            "default": [],
+            "uniqueItems": true,
+            "items": {
+                "title": "Treatment",
+                "comment": "See treatment.json for available identifiers.",
+                "type": "string",
+                "linkTo": "Treatment"
+            }
         }
     },
     "facets": {

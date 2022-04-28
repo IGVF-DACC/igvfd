@@ -33,5 +33,32 @@
         "collections": [
             "ENCODE"
         ]
+    },
+    {
+        "uuid": "3736b93a-c748-11ec-9d64-0242ac120002",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:treated_cell_line"
+        ],
+        "status": "released",
+        "submitter_comment": "This is s a treated cell line.",
+        "notes": "This is a note.",
+        "product_id": "GR000001",
+        "lot_id": "R00001",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "starting_amount": 5,
+        "starting_amount_units": "μg",
+        "organism": "Homo sapiens",
+        "age": 30,
+        "age_units": "year",
+        "life_stage": "adult",
+        "biosample_ontology": "motor neuron",
+        "sex": "female",
+        "treatments": [
+            "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
+        ],
+        "date_obtained": "2022-04-02",
+        "source": "/labs/j-michael-cherry/"
     }
 ]
