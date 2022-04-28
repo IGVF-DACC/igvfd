@@ -29,7 +29,7 @@
     },
     {
         "amount": 10,
-        "amount_units": "g/mL",
+        "amount_units": "μg/mL",
         "duration": 30,
         "duration_units": "minute",
         "purpose": "antagonist",
@@ -38,7 +38,7 @@
         "treatment_term_name": "resorcinol",
         "treatment_type": "chemical",
         "treatment_term_id": "CHEBI:27810",
-        "uuid": "4daec8fe-c72c-11ec-9d64-0242ac120002"
+        "uuid": "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
     },
     {
         "amount": 100,
@@ -56,7 +56,7 @@
         "uuid": "2d57c810-c729-11ec-9d64-0242ac120002"
     },
     {
-        "amount": 100,
+        "amount": 1.5,
         "amount_units": "mg/kg",
         "purpose": "differentiation",
         "submitted_by": "mkagda@stanford.edu",
