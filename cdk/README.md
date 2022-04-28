@@ -37,10 +37,10 @@ Destroy:
 $ cdk destroy -c branch=main
 ```
 
-### Run type checking with mypy
+## Run type checking with mypy
 ```
 # In cdk folder.
-$ pip install -r requirements-dev.txt
+$ pip install -r requirements.txt -r requirements-dev.txt
 $ mypy .
 ```
-Runs in strict mode, exluding `test` folder.
+Runs in strict mode, excluding `test` folder.
