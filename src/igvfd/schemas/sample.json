@@ -48,6 +48,14 @@
             "$ref": "mixins.json#/url"
         }
     ],
+    "dependentSchemas": {
+        "lot_id": {
+            "required": [
+                "product_id"
+            ],
+            "comment": "Sample with lot_id must include product_id."
+        }
+    },
     "properties": {
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."
