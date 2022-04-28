@@ -43,7 +43,7 @@ def get_build_spec():
 
 class ContinuousIntegrationStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, existing_resources, **kwargs):
+    def __init__(self, scope, construct_id, *, existing_resources, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         self.existing_resources = existing_resources(
             self,

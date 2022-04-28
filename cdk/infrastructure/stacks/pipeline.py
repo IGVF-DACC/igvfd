@@ -5,7 +5,7 @@ from infrastructure.constructs.pipeline import ContinuousDeploymentPipeline
 
 class ContinuousDeploymentPipelineStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, branch, existing_resources, **kwargs):
+    def __init__(self, scope, construct_id, *, branch, existing_resources, **kwargs):
         super().__init__(scope, construct_id,  **kwargs)
         self.existing_resources = existing_resources(
             self,

@@ -2,6 +2,7 @@ import aws_cdk as cdk
 
 from infrastructure.constructs.existing import igvf_dev
 
+from infrastructure.config import config
 from infrastructure.naming import prepend_project_name
 from infrastructure.naming import prepend_branch_name
 

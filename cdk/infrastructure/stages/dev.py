@@ -10,7 +10,7 @@ from infrastructure.naming import prepend_branch_name
 
 class DevelopmentDeployStage(cdk.Stage):
 
-    def __init__(self, scope, construct_id, branch, **kwargs):
+    def __init__(self, scope, construct_id, *, branch, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         self.postgres_stack = PostgresStack(
             self,
