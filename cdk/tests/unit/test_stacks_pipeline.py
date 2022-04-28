@@ -11,7 +11,7 @@ def test_stacks_pipeline_continuous_deployment_pipeline_stack_created():
         app,
         'CDStack',
         branch='test-pipeline-branch',
-        existing_resources=igvf_dev.Resources,
+        existing_resources_class=igvf_dev.Resources,
         env=igvf_dev.US_WEST_2,
     )
     template = assertions.Template.from_stack(stack)
