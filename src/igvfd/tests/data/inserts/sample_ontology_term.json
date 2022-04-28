@@ -1,0 +1,23 @@
+[
+    {
+        "term_id": "EFO:0002067",
+        "term_name": "K562",
+        "dbxrefs": [
+            "Cellosaurus:CVCL_0004"
+        ],
+        "status": "released",
+        "uuid": "df2054b1-3484-4d06-b64c-d3fdb450df9f"
+    },
+    {
+        "term_id": "UBERON:0002048",
+        "term_name": "lung",
+        "status": "released",
+        "uuid": "eea050cd-9e8c-4420-967f-3581b20536ab"
+    },
+    {
+        "term_id": "CL:0000787",
+        "term_name": "memory B cell",
+        "status": "released",
+        "uuid": "3fc75da8-8f87-4749-939e-cee38f5c7ab0"
+    }
+]
