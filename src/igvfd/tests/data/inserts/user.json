@@ -1720,5 +1720,20 @@
         ],
         "status": "current",
         "uuid": "451013d3-a28a-4fa6-993e-e065f2e63724"
+    },
+    {
+        "email": "ericdlrv@stanford.edu",
+        "first_name": "Eric",
+        "last_name": "Douglass",
+        "lab": "/labs/j-michael-cherry/",
+        "viewing_groups": [
+            "IGVF"
+        ],
+        "job_title": "Software Developer",
+        "groups": [
+            "verified"
+        ],
+        "status": "current",
+        "uuid": "14a6d92a-c4e3-11ec-9d64-0242ac120002"
     }
 ]
