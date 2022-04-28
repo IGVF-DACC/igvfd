@@ -21,7 +21,7 @@ from infrastructure.naming import prepend_project_name
 
 class ContinuousIntegration(Construct):
 
-    def __init__(self, scope, construct_id, github_owner, github_repo, build_spec, docker_hub_credentials, **kwargs):
+    def __init__(self, scope, construct_id, *, github_owner, github_repo, build_spec, docker_hub_credentials, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         self._github_owner = github_owner
         self._github_repo = github_repo

@@ -20,7 +20,7 @@ from infrastructure.stages.dev import DevelopmentDeployStage
 
 class BasicSelfUpdatingPipeline(Construct):
 
-    def __init__(self, scope, construct_id, github_repo, branch, existing_resources, **kwargs):
+    def __init__(self, scope, construct_id, *, github_repo, branch, existing_resources, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         self._github_repo = github_repo
         self._branch = branch
@@ -79,8 +79,14 @@ class BasicSelfUpdatingPipeline(Construct):
 
 class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
 
-    def __init__(self, scope, construct_id, github_repo, branch, existing_resources, **kwargs):
-        super().__init__(scope, construct_id, github_repo, branch, existing_resources)
+    def __init__(self, scope, construct_id, *, github_repo, branch, existing_resources, **kwargs):
+        super().__init__(
+            scope,
+            construct_id,
+            github_repo=github_repo,
+            branch=branch,
+            existing_resources=existing_resources
+        )
         self._add_tooling_wave()
         self._add_development_deploy_stage()
         # self._add_test_deploy_stage()

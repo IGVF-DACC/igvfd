@@ -9,7 +9,7 @@ from aws_cdk.aws_ec2 import InstanceSize
 
 class PostgresStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, branch, existing_resources, **kwargs):
+    def __init__(self, scope, construct_id, *, branch, existing_resources, **kwargs):
         super().__init__(scope, construct_id, **kwargs)
         self.existing_resources = existing_resources(
             self,
