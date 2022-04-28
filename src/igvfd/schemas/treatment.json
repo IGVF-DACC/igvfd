@@ -159,8 +159,7 @@
         "post_treatment_time": {
             "title": "Post-treatment time",
             "description": "Post treatment time in conjunction with post treatment time units is used to specify the time that has passed between the point when biosamples were removed from the treatment solution before being sampled or treated with the next treatment.",
-            "type": "string",
-            "pattern": "^(\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)$",
+            "type": "number",
             "comment": "post_treatment_time should be used in conjunction with post_treatment_time_units."
         },
         "post_treatment_time_units": {
