@@ -74,10 +74,14 @@ class Organoid(Biosample):
 @collection(
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     name='in-vitros',
 =======
     name='in-invtros',
 >>>>>>> 170fc2f (in vitro added)
+=======
+    name='in-vitros',
+>>>>>>> 3e9325f (typo and in_vitro inherits from organoid)
     unique_key='accession',
     properties={
         'title': 'In vitros',
