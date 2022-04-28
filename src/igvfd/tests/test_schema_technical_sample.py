@@ -25,12 +25,12 @@ def test_technical_sample_type_dependency(technical_sample_1, testapp):
     assert(res.status_code == 422)
 
 
-def test_interal_tags(technical_sample_1, testapp):
+def test_collections(technical_sample_1, testapp):
     res = testapp.patch_json(
         technical_sample_1['@id'],
-        {'internal_tags': ['Enhancers']})
+        {'collections': ['ENCODE']})
     assert(res.status_code == 200)
     res = testapp.patch_json(
         technical_sample_1['@id'],
-        {'internal_tags': ['ABBBCCCHD1455']}, expect_errors=True)
+        {'collections': ['ABBBCCCHD1455']}, expect_errors=True)
     assert(res.status_code == 422)

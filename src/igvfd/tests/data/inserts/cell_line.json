@@ -30,9 +30,8 @@
         "sex": "male",
         "date_obtained": "2022-02-02",
         "source": "/labs/j-michael-cherry/"
-        "internal_tags": [
-            "Enhancers",
-            "Variants"
+        "collections": [
+            "ENCODE"
         ]
     }
 ]

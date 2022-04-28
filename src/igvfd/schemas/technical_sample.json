@@ -61,7 +61,7 @@
             "$ref": "mixins.json#/url"
         },
         {
-            "$ref": "mixins.json#/internal_tags"
+            "$ref": "mixins.json#/collections"
         },
         {
             "$ref": "mixins.json#/additional_description"

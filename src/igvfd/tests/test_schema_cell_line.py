@@ -54,12 +54,12 @@ def test_nih_institutional_certification(cell_line, testapp):
     assert(res.status_code == 422)
 
 
-def test_interal_tags(cell_line, testapp):
+def test_collections(cell_line, testapp):
     res = testapp.patch_json(
         cell_line['@id'],
-        {'internal_tags': ['Enhancers']})
+        {'collections': ['ENCODE']})
     assert(res.status_code == 200)
     res = testapp.patch_json(
         cell_line['@id'],
-        {'internal_tags': ['ABBBCCCHD1455']}, expect_errors=True)
+        {'collections': ['ABBBCCCHD1455']}, expect_errors=True)
     assert(res.status_code == 422)
