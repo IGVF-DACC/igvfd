@@ -4,6 +4,9 @@ workflows:
   igvf-tests:
     jobs:
       - lint
+      - mypy-cdk:
+          requires:
+            - lint
       - run-tests:
           requires:
             - lint
@@ -17,6 +20,15 @@ jobs:
       - checkout
       - run: pip install pre-commit==2.17.0
       - run: pre-commit run --all-files
+
+  mypy-cdk:
+    docker:
+      - image: circleci/python:3.8
+    working_directory: ~/igvfd/cdk
+    steps:
+      - checkout
+      - run: pip install -r requirement.txt -r requirement-dev.txt
+      - run: mypy .
 
   run-tests:
     machine:
