@@ -56,7 +56,7 @@
         "uuid": "2d57c810-c729-11ec-9d64-0242ac120002"
     },
     {
-        "amount": 1.5,
+        "amount": 0.5,
         "amount_units": "mg/kg",
         "purpose": "differentiation",
         "submitted_by": "mkagda@stanford.edu",
