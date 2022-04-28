@@ -38,7 +38,7 @@
         "treatment_term_name": "resorcinol",
         "treatment_type": "chemical",
         "treatment_term_id": "CHEBI:27810",
-        "uuid": "2d57c5b8-c729-11ec-9d64-0242ac120002"
+        "uuid": "4daec8fe-c72c-11ec-9d64-0242ac120002"
     },
     {
         "amount": 100,
@@ -64,6 +64,6 @@
         "treatment_term_name": "new protein",
         "treatment_type": "protein",
         "treatment_term_id": "NTR:0001189",
-        "uuid": "2d57c810-c729-11ec-9d64-0242ac120002"
+        "uuid": "bd2cb34e-c72c-11ec-9d64-0242ac120002"
     }
 ]
