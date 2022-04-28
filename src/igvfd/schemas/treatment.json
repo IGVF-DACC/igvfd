@@ -46,19 +46,19 @@
             "required": [
                 "amount_units"
             ],
-            "comment": "Amount units must be specified if amount is specified"
+            "comment": "amount_units must be specified if amount is specified"
         },
         "duration": {
             "required": [
                 "duration_units"
             ],
-            "comment": "Duration units must be specified if duration is specified"
+            "comment": "duration_units must be specified if duration is specified"
         },
         "post_treatment_time": {
             "required": [
                 "post_treatment_time_units"
             ],
-            "comment": "post_treatment_time_units units must be specified if duration is specified"
+            "comment": "post_treatment_time_units units must be specified if post_treatment_time is specified"
         },
         "treatment_term_id": {
             "oneOf": [
@@ -86,7 +86,8 @@
                         }
                     }
                 }
-            ]
+            ],
+            "comment": "If treatment_type is protein, only Uniprot ids are allowed while if treatment_type is chemical, only CHEBI ids are allowed. NTRs are allowed in special cases for both"
         }
     },
     "properties": {
@@ -94,12 +95,12 @@
             "default": "1"
         },
         "documents": {
-            "description": "Documents that describe the treatment protocol."
+            "description": "Documents that describe the treatment protocol details."
         },
         "amount": {
             "title": "Amount",
             "type": "number",
-            "description": "Amount should be used  in conjunction with amount_units and is used to indicate the exact quantity of the specific chemical or protein that was used to treat a biosample."
+            "description": "Amount in conjunction with amount_units is used to indicate the exact quantity of the specific treatmenat that was used."
         },
         "amount_units": {
             "title": "Amount units",
@@ -116,12 +117,12 @@
                 "μg/mL",
                 "μM"
             ],
-            "description": "Amount should be used in conjunction with amount_units."
+            "comment": "amount_units should be used in conjunction with amount."
         },
         "duration": {
             "title": "Time duration",
             "type": "number",
-            "description": "Duration should be used  in conjunction with duration_units to indicate the time that elapsed between start of the treatment upto the end of the treatment."
+            "description": "Duration in conjunction with duration_units is used to indicate the time that elapsed between start of the treatment upto the end of the treatment."
         },
         "duration_units": {
             "title": "Time duration units",
@@ -132,11 +133,12 @@
                 "hour",
                 "day"
             ],
-            "description": "Duration should be used  in conjunction with duration_units."
+            "comment": "duration_units should be used in conjunction with duration"
         },
         "pH": {
             "title": "pH",
-            "type": "number"
+            "type": "number",
+            "description": "Final pH of the solution containing a chemical compund (if applicable)"
         },
         "purpose": {
             "title": "Purpose",
@@ -152,17 +154,17 @@
                 "selection",
                 "stimulation"
             ],
-            "description": "The intended purpose for treating the samples; Activation: treatment is known to activate a pathway in the biosample; Agonist: a substance which initiates a physiological response when combined with a receptor; Antagonist: a substance that interferes with or inhibits the physiological action of another; Control: treatment applied to a sample for control purposes; Differentiation: treatment that is applied to convert a less specialized cell to a more specialized cell; De-differentiation: treatment used to reprogram differentiated cells back to less determined cell states; Perturbation: treatment applied to the sample in order to study the effect of its application; Selection: treatment used to affect biosample in a way that can be used to distinguish cells and select for in the downstream steps; Stimulation: treatment applied to stimulate a cellular pathway."
+            "description": "The intended purpose for treating the samples; Activation: treatment is known to activate a pathway in the biosample; Agonist: a substance which is known to initiate a physiological response when combined with a receptor; Antagonist: a substance that is known to interfere with or inhibits the physiological action of another; Control: treatment applied to a sample for control purposes; Differentiation: treatment that is applied to convert a less specialized cell to a more specialized cell; De-differentiation: treatment used to reprogram differentiated cells back to less determined cell states; Perturbation: treatment applied to the sample in order to study the effect of its application; Selection: treatment used to affect biosample in a way that can be used to distinguish cells and select for in the downstream steps; Stimulation: treatment applied to stimulate a cellular pathway."
         },
         "post_treatment_time": {
             "title": "Post-treatment time",
-            "description": "The time past the point when biosamples were removed from the treatment solution before being sampled or treated with the next treatment. Should be used in conjunction with post_treatment_time_units.",
+            "description": "Post treatment time in conjunction with post treatment time units is used to specify the time that has passed between the point when biosamples were removed from the treatment solution before being sampled or treated with the next treatment.",
             "type": "string",
-            "pattern": "^(\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)$"
+            "pattern": "^(\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)$",
+            "comment": "post_treatment_time should be used in conjunction with post_treatment_time_units."
         },
         "post_treatment_time_units": {
             "title": "Post-treatment time units",
-            "description": "The units of time that elapsed past the point when biosamples were washed from the treatment solution.  Should be used in conjunction with post_treatment_time_units.",
             "type": "string",
             "enum": [
                 "minute",
@@ -170,7 +172,8 @@
                 "day",
                 "week",
                 "month"
-            ]
+            ],
+            "comment": "post_treatment_time_units should be used in conjunction with post_treatment_time."
         },
         "temperature (Celsius)": {
             "title": "Temperature",
@@ -184,7 +187,8 @@
                 "chemical",
                 "protein"
             ],
-            "description": "The classification type that specifies the exact molecular nature of the treatment agent. Chemical type refers to (natural or synthetic) organic/inorganic compounds and also includes drugs, while protein type is restricted to active protein biomolecules that are naturally or artifically synthesized via cellular translation mechanism of converting DNA into chain of amino acids. Note: CHEBI id must be provided for chemical type and Uniprot id must be specified for protein type. Example of chemical type: lactate, ethanol,hydrocortisone, LPS etc. Example of protein type: Interferons, interlukin, antibodies, etc. "
+            "description": "The classification of treatment agent that specifies its exact molecular nature. Chemical type refers to (natural or synthetic) organic/inorganic compounds and also includes drugs, while protein type is restricted to active protein biomolecules that are naturally or artifically synthesized via cellular translation mechanism of converting DNA into a protein. Example of chemical type: lactate, ethanol,hydrocortisone, LPS etc. Example of protein type: Interferons, interlukin, antibodies, etc.",
+            "comment": "treatment_term_id must be provided for both types. For chemical types, CHEBI ids are required while Uniprot ids are used for protein type."
         },
         "treatment_term_id": {
             "@type": "@id",
@@ -195,19 +199,8 @@
         },
         "treatment_term_name": {
             "title": "Treatment term name",
-            "description": "Ontology term describing a component in the treatment.",
+            "description": "Ontology term describing a component in the treatment that is the principal component affecting the biosample being treated",
             "type": "string"
-        }
-    },
-    "facets": {
-        "treatment_type": {
-            "title": "Treatment type"
-        },
-        "purpose": {
-            "title": "Purpose"
-        },
-        "status": {
-            "title": "Status"
         }
     },
     "changelog": "/profiles/changelogs/treatment.md"
