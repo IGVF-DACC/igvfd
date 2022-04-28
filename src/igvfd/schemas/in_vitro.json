@@ -65,20 +65,8 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "biosample.json#/dependentSchemas"
-        ],
-        "post_differentiation_time": {
-            "required": [
-                "post_differentiation_time_units"
-            ],
-            "comment": "Biosample with a specified post_differentiation_time requires post_differentiation_time_units specification."
-        },
-        "post_differentiation_time_units": {
-            "required": [
-                "post_differentiation_time"
-            ],
-            "comment": "Biosample with a specified post_differentiation_time_units requires post_differentiation_time specification."
-        }
+            "organoid.json#/dependentSchemas"
+        ]
     },
     "properties": {
         "schema_version": {

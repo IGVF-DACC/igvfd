@@ -72,7 +72,7 @@ class Organoid(Biosample):
 
 
 @collection(
-    name='in-invtros',
+    name='in-vitros',
     unique_key='accession',
     properties={
         'title': 'In vitros',
