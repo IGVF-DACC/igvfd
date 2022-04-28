@@ -26,7 +26,8 @@ jobs:
       - image: circleci/python:3.8
     working_directory: ~/igvfd/cdk
     steps:
-      - checkout
+      - checkout:
+          path: ~/igvfd
       - run: pip install -r requirement.txt -r requirement-dev.txt
       - run: mypy .
 
