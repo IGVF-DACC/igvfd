@@ -1,10 +1,15 @@
 import aws_cdk as cdk
 
+from constructs import Construct
 
 from infrastructure.constructs.ci import ContinuousIntegration
+from infrastructure.constructs.existing.types import ExistingResourcesClass
+
+from typing import Any
+from typing import Dict
 
 
-def get_build_spec():
+def get_build_spec() -> Dict[str, Any]:
     return {
         'version': '0.2',
         'env': {
@@ -43,9 +48,16 @@ def get_build_spec():
 
 class ContinuousIntegrationStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, *, existing_resources, **kwargs):
+    def __init__(
+            self,
+            scope: Construct,
+            construct_id: str,
+            *,
+            existing_resources_class: ExistingResourcesClass,
+            **kwargs: Any
+    ) -> None:
         super().__init__(scope, construct_id, **kwargs)
-        self.existing_resources = existing_resources(
+        self.existing_resources = existing_resources_class(
             self,
             'ExistingResources',
         )

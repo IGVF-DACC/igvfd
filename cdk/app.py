@@ -13,7 +13,7 @@ app = cdk.App()
 
 branch = (
     app.node.try_get_context('branch')
-    or config.get('default_branch')
+    or config['default_branch']
 )
 
 pipeline = ContinuousDeploymentPipelineStack(
@@ -25,7 +25,7 @@ pipeline = ContinuousDeploymentPipelineStack(
         )
     ),
     branch=branch,
-    existing_resources=igvf_dev.Resources,
+    existing_resources_class=igvf_dev.Resources,
     env=igvf_dev.US_WEST_2,
 )
 
