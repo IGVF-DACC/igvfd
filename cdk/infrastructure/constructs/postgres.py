@@ -2,7 +2,7 @@ import aws_cdk as cdk
 
 from constructs import Construct
 
-
+from aws_cdk.aws_ec2 import InstanceType
 from aws_cdk.aws_ec2 import SubnetSelection
 from aws_cdk.aws_ec2 import SubnetType
 
@@ -10,21 +10,25 @@ from aws_cdk.aws_rds import DatabaseInstance
 from aws_cdk.aws_rds import DatabaseInstanceEngine
 from aws_cdk.aws_rds import PostgresEngineVersion
 
+from infrastructure.constructs.existing.types import ExistingResources
+
+from typing import Any
+
 
 class Postgres(Construct):
 
     def __init__(
             self,
-            scope,
-            construct_id,
+            scope: Construct,
+            construct_id: str,
             *,
-            branch,
-            existing_resources,
-            allocated_storage,
-            max_allocated_storage,
-            instance_type,
-            **kwargs
-    ):
+            branch: str,
+            existing_resources: ExistingResources,
+            allocated_storage: int,
+            max_allocated_storage: int,
+            instance_type: InstanceType,
+            **kwargs: Any
+    ) -> None:
         super().__init__(scope, construct_id, **kwargs)
         self._branch = branch
         self._existing_resources = existing_resources
@@ -36,15 +40,15 @@ class Postgres(Construct):
         self._define_database()
         self._add_tags_to_database()
 
-    def _define_engine(self):
+    def _define_engine(self) -> None:
         self.engine = DatabaseInstanceEngine.postgres(
             version=PostgresEngineVersion.VER_14_1
         )
 
-    def _define_database_name(self):
+    def _define_database_name(self) -> None:
         self.database_name = 'igvfd'
 
-    def _define_database(self):
+    def _define_database(self) -> None:
         self.database = DatabaseInstance(
             self,
             'Postgres',
@@ -59,7 +63,7 @@ class Postgres(Construct):
             max_allocated_storage=self._max_allocated_storage,
         )
 
-    def _add_tags_to_database(self):
+    def _add_tags_to_database(self) -> None:
         cdk.Tags.of(self.database).add(
             'branch',
             self._branch

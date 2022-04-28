@@ -5,6 +5,7 @@ from constructs import Construct
 from aws_cdk.aws_ec2 import Port
 
 from aws_cdk.aws_ecs import AwsLogDriverMode
+from aws_cdk.aws_ecs import CfnService
 from aws_cdk.aws_ecs import ContainerImage
 from aws_cdk.aws_ecs import DeploymentCircuitBreaker
 from aws_cdk.aws_ecs import Secret
@@ -15,23 +16,29 @@ from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedTaskImageOptions
 
 from aws_cdk.aws_iam import ManagedPolicy
 
+from infrastructure.constructs.existing.types import ExistingResources
+from infrastructure.constructs.postgres import Postgres
+
+from typing import Any
+from typing import cast
+
 
 class Backend(Construct):
 
     def __init__(
             self,
-            scope,
-            construct_id,
+            scope: Construct,
+            construct_id: str,
             *,
-            branch,
-            postgres,
-            existing_resources,
-            cpu,
-            memory_limit_mib,
-            desired_count,
-            max_capacity,
-            **kwargs
-    ):
+            branch: str,
+            postgres: Postgres,
+            existing_resources: ExistingResources,
+            cpu: int,
+            memory_limit_mib: int,
+            desired_count: int,
+            max_capacity: int,
+            **kwargs: Any
+    ) -> None:
         super().__init__(scope, construct_id, **kwargs)
         self._branch = branch
         self._postgres = postgres
@@ -49,7 +56,7 @@ class Backend(Construct):
         self._enable_exec_command()
         self._configure_task_scaling()
 
-    def _define_docker_assets(self):
+    def _define_docker_assets(self) -> None:
         self.application_image = ContainerImage.from_asset(
             '../',
             file='docker/pyramid/Dockerfile',
@@ -60,7 +67,7 @@ class Backend(Construct):
             file='docker/nginx/Dockerfile',
         )
 
-    def _define_fargate_service(self):
+    def _define_fargate_service(self) -> None:
         self.fargate_service = ApplicationLoadBalancedFargateService(
             self,
             'Fargate',
@@ -87,7 +94,17 @@ class Backend(Construct):
             redirect_http=True,
         )
 
-    def _add_application_container_to_task(self):
+    def _get_database_secret(self) -> Secret:
+        database_secret = self._postgres.database.secret
+        # Unwrap optional for mypy.
+        if database_secret is None:
+            raise ValueError('Database secret is None')
+        return Secret.from_secrets_manager(
+            database_secret,
+            'password'
+        )
+
+    def _add_application_container_to_task(self) -> None:
         container_name = 'pyramid'
         self.fargate_service.task_definition.add_container(
             'ApplicationContainer',
@@ -98,10 +115,7 @@ class Backend(Construct):
                 'DB_NAME': self._postgres.database_name,
             },
             secrets={
-                'DB_PASSWORD': Secret.from_secrets_manager(
-                    self._postgres.database.secret,
-                    'password'
-                ),
+                'DB_PASSWORD': self._get_database_secret(),
             },
             logging=LogDriver.aws_logs(
                 stream_prefix=container_name,
@@ -109,34 +123,38 @@ class Backend(Construct):
             ),
         )
 
-    def _allow_connections_to_database(self):
+    def _allow_connections_to_database(self) -> None:
         self.fargate_service.service.connections.allow_to(
             self._postgres.database,
             Port.tcp(5432),
             description='Allow connection to Postgres instance',
         )
 
-    def _configure_health_check(self):
+    def _configure_health_check(self) -> None:
         self.fargate_service.target_group.configure_health_check(
             interval=cdk.Duration.seconds(60),
         )
 
-    def _add_tags_to_fargate_service(self):
+    def _add_tags_to_fargate_service(self) -> None:
         cdk.Tags.of(self.fargate_service).add(
             'branch',
             self._branch
         )
 
-    def _enable_exec_command(self):
+    def _enable_exec_command(self) -> None:
         self.fargate_service.task_definition.task_role.add_managed_policy(
             ManagedPolicy.from_aws_managed_policy_name(
                 'AmazonSSMManagedInstanceCore'
             )
         )
-        cfn_service = self.fargate_service.service.node.default_child
+        # Make mypy happy (default child is Optional[IConstruct]).
+        cfn_service = cast(
+            CfnService,
+            self.fargate_service.service.node.default_child
+        )
         cfn_service.enable_execute_command = True
 
-    def _configure_task_scaling(self):
+    def _configure_task_scaling(self) -> None:
         scalable_task = self.fargate_service.service.auto_scale_task_count(
             max_capacity=self._max_capacity,
         )

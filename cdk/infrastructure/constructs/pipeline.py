@@ -2,6 +2,8 @@ import aws_cdk as cdk
 
 from constructs import Construct
 
+from aws_cdk.aws_codepipeline import Pipeline
+
 from aws_cdk.pipelines import CodePipeline
 from aws_cdk.pipelines import CodePipelineSource
 from aws_cdk.pipelines import DockerCredential
@@ -17,10 +19,23 @@ from infrastructure.stages.prod import ProdDeployStage
 from infrastructure.stages.test import TestDeployStage
 from infrastructure.stages.dev import DevelopmentDeployStage
 
+from infrastructure.constructs.existing.types import ExistingResources
+
+from typing import Any
+
 
 class BasicSelfUpdatingPipeline(Construct):
 
-    def __init__(self, scope, construct_id, *, github_repo, branch, existing_resources, **kwargs):
+    def __init__(
+            self,
+            scope: Construct,
+            construct_id: str,
+            *,
+            github_repo: str,
+            branch: str,
+            existing_resources: ExistingResources,
+            **kwargs: Any
+    ) -> None:
         super().__init__(scope, construct_id, **kwargs)
         self._github_repo = github_repo
         self._branch = branch
@@ -30,14 +45,14 @@ class BasicSelfUpdatingPipeline(Construct):
         self._define_docker_hub_credentials()
         self._make_code_pipeline()
 
-    def _define_github_connection(self):
+    def _define_github_connection(self) -> None:
         self._github = CodePipelineSource.connection(
             self._github_repo,
             self._branch,
             connection_arn=self._existing_resources.code_star_connection.arn
         )
 
-    def _define_cdk_synth_step(self):
+    def _define_cdk_synth_step(self) -> None:
         self._synth = ShellStep(
             'SynthStep',
             input=self._github,
@@ -56,17 +71,17 @@ class BasicSelfUpdatingPipeline(Construct):
             primary_output_directory='cdk/cdk.out',
         )
 
-    def _define_docker_hub_credentials(self):
+    def _define_docker_hub_credentials(self) -> None:
         self._docker_hub_credentials = self._existing_resources.docker_hub_credentials
 
-    def _get_docker_credentials(self):
+    def _get_docker_credentials(self) -> DockerCredential:
         return DockerCredential.docker_hub(
             self._docker_hub_credentials.secret,
             secret_username_field='DOCKER_USER',
             secret_password_field='DOCKER_SECRET',
         )
 
-    def _make_code_pipeline(self):
+    def _make_code_pipeline(self) -> None:
         self._code_pipeline = CodePipeline(
             self,
             'CodePipeline',
@@ -79,7 +94,16 @@ class BasicSelfUpdatingPipeline(Construct):
 
 class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
 
-    def __init__(self, scope, construct_id, *, github_repo, branch, existing_resources, **kwargs):
+    def __init__(
+            self,
+            scope: Construct,
+            construct_id: str,
+            *,
+            github_repo: str,
+            branch: str,
+            existing_resources: ExistingResources,
+            **kwargs: Any,
+    ) -> None:
         super().__init__(
             scope,
             construct_id,
@@ -93,7 +117,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
         # self._add_prod_deploy_stage()
         self._add_slack_notifications()
 
-    def _add_tooling_wave(self):
+    def _add_tooling_wave(self) -> None:
         tooling_wave = self._code_pipeline.add_wave(
             'tooling'
         )
@@ -110,7 +134,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             ci_stage
         )
 
-    def _add_development_deploy_stage(self):
+    def _add_development_deploy_stage(self) -> None:
         stage = DevelopmentDeployStage(
             self,
             prepend_project_name(
@@ -125,7 +149,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             stage,
         )
 
-    def _add_test_deploy_stage(self):
+    def _add_test_deploy_stage(self) -> None:
         stage = TestDeployStage(
             self,
             prepend_project_name(
@@ -144,7 +168,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             ]
         )
 
-    def _add_prod_deploy_stage(self):
+    def _add_prod_deploy_stage(self) -> None:
         stage = ProdDeployStage(
             self,
             prepend_project_name(
@@ -163,7 +187,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             ]
         )
 
-    def _get_underlying_pipeline(self):
+    def _get_underlying_pipeline(self) -> Pipeline:
         if getattr(self, '_pipeline', None) is None:
             # Can't modify high-level CodePipeline after build.
             self._code_pipeline.build_pipeline()
@@ -171,7 +195,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             self._pipeline = self._code_pipeline.pipeline
         return self._pipeline
 
-    def _add_slack_notifications(self):
+    def _add_slack_notifications(self) -> None:
         self._get_underlying_pipeline().notify_on_execution_state_change(
             'NotifySlack',
             self._existing_resources.notification.encode_dcc_chatbot,

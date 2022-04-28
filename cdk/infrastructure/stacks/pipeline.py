@@ -1,13 +1,27 @@
 import aws_cdk as cdk
 
+from constructs import Construct
+
 from infrastructure.constructs.pipeline import ContinuousDeploymentPipeline
+
+from infrastructure.constructs.existing.types import ExistingResourcesClass
+
+from typing import Any
 
 
 class ContinuousDeploymentPipelineStack(cdk.Stack):
 
-    def __init__(self, scope, construct_id, *, branch, existing_resources, **kwargs):
+    def __init__(
+            self,
+            scope: Construct,
+            construct_id: str,
+            *,
+            branch: str,
+            existing_resources_class: ExistingResourcesClass,
+            **kwargs: Any
+    ) -> None:
         super().__init__(scope, construct_id,  **kwargs)
-        self.existing_resources = existing_resources(
+        self.existing_resources = existing_resources_class(
             self,
             'ExistingResources',
         )
