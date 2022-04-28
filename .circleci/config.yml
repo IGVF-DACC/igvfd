@@ -28,8 +28,7 @@ jobs:
     steps:
       - checkout:
           path: ~/igvfd
-      - run: pwd && ls
-      - run: pip install -r requirement.txt -r requirement-dev.txt
+      - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: mypy .
 
   run-tests:
