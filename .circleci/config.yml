@@ -24,10 +24,11 @@ jobs:
   mypy-cdk:
     docker:
       - image: circleci/python:3.8
-    working_directory: ~/igvfd/cdk
+    working_directory: ~/igvfd/cdk/
     steps:
       - checkout:
           path: ~/igvfd
+      - run: pwd && ls
       - run: pip install -r requirement.txt -r requirement-dev.txt
       - run: mypy .
 
