@@ -1,0 +1,36 @@
+[
+    {
+        "uuid": "c37934b0-4269-4470-be53-9eac7b196447",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:aliasKS"
+        ],
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": [
+            "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        ],
+        "notes": "This is a note.",
+        "product_id": "GR000001",
+        "lot_id": "R00001",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "strains": [
+            {
+                "strain_background": "A/J (AJ)",
+                "strain_name": "some name",
+                "genotype": "some genotype"
+            },
+            {
+                "strain_background": "C57BL/6J (B6)",
+                "strain_name": "some other name",
+                "genotype": "some other genotype"
+            }
+        ],
+        "sex": "male",
+        "taxon_id": "Mus musculus",
+        "parents": [],
+        "external_resources": [],
+        "collections": "ENCODE"
+    }
+]

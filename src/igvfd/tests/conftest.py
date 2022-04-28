@@ -26,6 +26,8 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.technical_sample',
     'igvfd.tests.fixtures.schemas.user',
     'igvfd.tests.fixtures.schemas.assay_ontology_term',
+    'igvfd.tests.fixtures.schemas.human_donor',
+    'igvfd.tests.fixtures.schemas.rodent_donor'
 ]
 
 

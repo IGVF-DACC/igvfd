@@ -1,0 +1,38 @@
+[
+    {
+        "uuid": "c37934b0-4269-4470-be53-9eac7b196447",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:aliasKS"
+        ],
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": [
+            "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        ],
+        "notes": "This is a note.",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "health_status_history": [
+            {
+                "health_description": "Running fever 103F, feeling tired",
+                "date_start": "2022-01-04",
+                "date_end": "2022-01-10"
+            },
+            {
+                "health_description": "Running fever 103F, feeling tired",
+                "date_start": "2021-12-03",
+                "date_end": "2022-01-10"
+            }
+        ],
+        "ethnicity": "Eskimo",
+        "genetic_modifications": [
+            "insert"
+        ],
+        "sex": "male",
+        "taxon_id": "Homo sapiens",
+        "parents": [],
+        "external_resources": [],
+        "collections": "ENCODE"
+    }
+]

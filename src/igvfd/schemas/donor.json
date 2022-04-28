@@ -114,16 +114,10 @@
                 "items": {
                     "type": "string",
                     "enum": [
-                        "NDR",
                         "ENCODE"
                     ]
                 }
             }
-        }
-    },
-    "facets": {
-        "status": {
-            "title": "Status"
         }
     }
 }

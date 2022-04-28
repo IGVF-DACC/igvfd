@@ -91,7 +91,7 @@
             "strain_background": {
                 "title": "Strain background",
                 "description": "The specific parent strain designation of a non-human donor.",
-                "comment": "Strain background of rodent strains.  See ALI Mortezavi grant.",
+                "comment": "Strain background of rodent strains.  See Ali Mortazavi grant.",
                 "type": "string",
                 "enum": [
                     "A/J (AJ)",
@@ -119,11 +119,6 @@
                 "comment": "Genotype of rodent strains.",
                 "type": "string"
             }
-        }
-    },
-    "facets": {
-        "status": {
-            "title": "Status"
         }
     },
     "changelog": "/profiles/changelogs/rodent_donor.md"
