@@ -1,24 +1,6 @@
 import pytest
 
 
-def test_treatment_amount_dependency(testapp):
-    item = {
-        'treatment_term_name': 'lactate',
-        'treatment_term_id': 'CHEBI:24996',
-        'treatment_type': 'chemical',
-        'amount': '10'
-    }
-    return testapp.post_json('/treatment', item, expect_errors=True)
-    assert res.json['status'] == 422
-    item.update(
-        {
-            'amount_units': 'ng/mL'
-        }
-    )
-    return testapp.post_json('/treatment', item)
-    assert res.json['status'] == 200
-
-
 def test_treatment_duration_dependency(treatment_2, testapp):
     res = testapp.patch_json(
         treatment_2['@id'],

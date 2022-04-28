@@ -42,23 +42,29 @@
         }
     ],
     "dependentSchemas": {
-        "amount": {
-            "required": [
-                "amount_units"
-            ],
-            "comment": "amount_units must be specified if amount is specified"
-        },
         "duration": {
             "required": [
                 "duration_units"
             ],
             "comment": "duration_units must be specified if duration is specified"
         },
+        "duration_units": {
+            "required": [
+                "duration"
+            ],
+            "comment": "duration must be specified if duration_units is specified"
+        },
         "post_treatment_time": {
             "required": [
                 "post_treatment_time_units"
             ],
-            "comment": "post_treatment_time_units units must be specified if post_treatment_time is specified"
+            "comment": "post_treatment_time_units must be specified if post_treatment_time is specified"
+        },
+        "post_treatment_time_units": {
+            "required": [
+                "post_treatment_time"
+            ],
+            "comment": "post_treatment_time must be specified if post_treatment_time_units is specified"
         },
         "treatment_term_id": {
             "oneOf": [
@@ -177,7 +183,8 @@
         "temperature (Celsius)": {
             "title": "Temperature",
             "type": "number",
-            "description": "Temperature can only be specified in Celsius"
+            "description": "The temperature in Celsius to which the sample was exposed",
+            "comment": "Temperature must be converted to Celsius for submission."
         },
         "treatment_type": {
             "title": "Treatment type",

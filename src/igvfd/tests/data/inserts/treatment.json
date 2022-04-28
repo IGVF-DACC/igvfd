@@ -5,6 +5,7 @@
         "duration": 1,
         "duration_units": "hour",
         "pH": 6.7,
+        "purpose": "activation",
         "submitted_by": "mkagda@stanford.edu",
         "status": "released",
         "treatment_term_id": "CHEBI:24996",
@@ -18,11 +19,49 @@
         "documents": [
             "j-michael-cherry:Antibody_characterization_standards_IGVF"
         ],
+        "purpose": "selection",
         "submitted_by": "mkagda@stanford.edu",
         "status": "released",
         "treatment_term_name": "goat-anti-GFP-UC",
         "treatment_type": "protein",
         "treatment_term_id": "UniProtKB:P09919",
         "uuid": "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
+    },
+    {
+        "amount": 10,
+        "amount_units": "g/mL",
+        "duration": 30,
+        "duration_units": "minute",
+        "purpose": "antagonist",
+        "submitted_by": "mkagda@stanford.edu",
+        "status": "released",
+        "treatment_term_name": "resorcinol",
+        "treatment_type": "chemical",
+        "treatment_term_id": "CHEBI:27810",
+        "uuid": "2d57c5b8-c729-11ec-9d64-0242ac120002"
+    },
+    {
+        "amount": 100,
+        "amount_units": "μg/kg",
+        "duration": 30,
+        "duration_units": "minute",
+        "purpose": "perturbation",
+        "submitted_by": "mkagda@stanford.edu",
+        "status": "released",
+        "treatment_term_name": "new compound",
+        "treatment_type": "chemical",
+        "treatment_term_id": "NTR:0001185",
+        "uuid": "2d57c810-c729-11ec-9d64-0242ac120002"
+    },
+    {
+        "amount": 100,
+        "amount_units": "mg/kg",
+        "purpose": "differentiation",
+        "submitted_by": "mkagda@stanford.edu",
+        "status": "released",
+        "treatment_term_name": "new protein",
+        "treatment_type": "protein",
+        "treatment_term_id": "NTR:0001189",
+        "uuid": "2d57c810-c729-11ec-9d64-0242ac120002"
     }
 ]
