@@ -34,30 +34,22 @@ def test_treatment_amount_dependency(testapp):
 def test_treatment_duration_dependency(treatment_2, testapp):
     res = testapp.patch_json(
         treatment_2['@id'],
-        {'duration': '15'}, expect_errors=True)
+        {'duration': 15}, expect_errors=True)
     assert(res.status_code == 422)
     res = testapp.patch_json(
         treatment_2['@id'],
-        {'duration_units': 'minute'}, expect_errors=True)
-    assert(res.status_code == 422)
-    res = testapp.patch_json(
-        treatment_2['@id'],
-        {'duration': '15'}, {'duration_units': 'minute'})
+        {'duration': 15, 'duration_units': 'minute'})
     assert(res.status_code == 200)
 
 
 def test_treatment_post_treatment_time_dependency(treatment_2, testapp):
     res = testapp.patch_json(
         treatment_2['@id'],
-        {'post_treatment_time': '10'}, expect_errors=True)
+        {'post_treatment_time': 10}, expect_errors=True)
     assert(res.status_code == 422)
     res = testapp.patch_json(
         treatment_2['@id'],
-        {'post_treatment_time_units': 'hour'}, expect_errors=True)
-    assert(res.status_code == 422)
-    res = testapp.patch_json(
-        treatment_2['@id'],
-        {'post_treatment_time': '10'}, {'post_treatment_time_units': 'hour'})
+        {'post_treatment_time': 10, 'post_treatment_time_units': 'hour'})
     assert(res.status_code == 200)
 >>>>>>> 7e743b1 (update tests)
 

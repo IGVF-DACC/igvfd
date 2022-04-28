@@ -8,7 +8,9 @@ def treatment_1(testapp):
         'treatment_term_name': 'lactate',
         'treatment_type': 'chemical',
         'amount': 10,
-        'amount_units': 'mM'
+        'amount_units': 'mM',
+        'duration': 1,
+        'duration_units': 'hour'
     }
     return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
 
