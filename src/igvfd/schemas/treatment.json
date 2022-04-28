@@ -58,13 +58,7 @@
             "required": [
                 "post_treatment_time_units"
             ],
-            "comment": "Duration units must be specified if duration is specified"
-        },
-        "post_treatment_time_units": {
-            "required": [
-                "post_treatment_time"
-            ],
-            "comment": "post_treatment_time_units units must be specified if duration is specified"
+            "comment": "post_treatment_time_units must be specified if post_treatment_time is specified"
         },
         "treatment_term_id": {
             "oneOf": [
@@ -205,11 +199,7 @@
         },
         "treatment_term_name": {
             "title": "Treatment term name",
-<<<<<<< HEAD
             "description": "Ontology term describing a component in the treatment that is the principal component affecting the biosample being treated. Examples: interferon gamma, interleukin-4, Fibroblast growth factor 2, 20-hydroxyecdysone, 5-bromouridine etc.",
-=======
-            "description": "Ontology term describing a component in the treatment.",
->>>>>>> 0042e59 (update schema)
             "type": "string"
         }
     },
