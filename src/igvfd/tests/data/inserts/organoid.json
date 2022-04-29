@@ -8,7 +8,7 @@
         ],
         "status": "released",
         "organism": "Homo sapiens",
-        "source": "/labs/j-michael-cherry",
+        "source": "/labs/j-michael-cherry/",
         "post_differentiation_time": 5,
         "post_differentiation_time_units": "day",
         "treatments": [
