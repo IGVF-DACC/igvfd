@@ -15,6 +15,7 @@ def treatment_1(testapp):
     return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
 
 
+@pytest.fixture
 def treatment_2(testapp):
     item = {
         'treatment_term_id': 'UniProtKB:P09919',
