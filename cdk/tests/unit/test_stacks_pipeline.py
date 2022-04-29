@@ -1,10 +1,12 @@
+import pytest
+
 import aws_cdk as core
 import aws_cdk.assertions as assertions
 
 from infrastructure.stacks.pipeline import ContinuousDeploymentPipelineStack
 
 
-def test_stacks_pipeline_continuous_deployment_pipeline_stack_created():
+def test_stacks_pipeline_continuous_deployment_pipeline_stack_initialized():
     from infrastructure.constructs.existing import igvf_dev
     app = core.App()
     stack = ContinuousDeploymentPipelineStack(

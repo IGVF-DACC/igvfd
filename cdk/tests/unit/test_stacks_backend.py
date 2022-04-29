@@ -1,8 +1,5 @@
-import aws_cdk as core
-import aws_cdk.assertions as assertions
-
-from infrastructure.stacks.backend import BackendStack
+import pytest
 
 
-def test_stacks_backend_backend_stack_created():
-    app = core.App()
+def test_stacks_backend_initialize_backend_stack():
+    assert False
