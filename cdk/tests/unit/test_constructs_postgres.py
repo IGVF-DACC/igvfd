@@ -123,4 +123,3 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
         'AWS::SecretsManager::Secret',
         1
     )
-    import json
