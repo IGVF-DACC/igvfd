@@ -98,6 +98,7 @@
         "treatments": {
             "title": "Differentiation treatment",
             "description": "A list of treatments applied to the biosample.",
+<<<<<<< HEAD
             "type": "array",
             "default": [],
             "uniqueItems": true,
@@ -107,6 +108,10 @@
                 "type": "string",
                 "linkTo": "Treatment"
             }
+=======
+            "comment": "A list of treatments applied to the biosample.",
+            "type": "array"
+>>>>>>> dbf1a24 (removed facets)
         }
     },
     "changelog": "/profiles/changelogs/in_vitro.md"
