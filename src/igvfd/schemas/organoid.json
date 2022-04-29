@@ -107,8 +107,6 @@
         "date_obtained": {
             "title": "Date collected"
         },
-<<<<<<< HEAD
-<<<<<<< HEAD
         "treatments": {
             "title": "Differentiation treatment",
             "description": "A list of treatments applied to the biosample.",
@@ -121,21 +119,6 @@
                 "type": "string",
                 "linkTo": "Treatment"
             }
-=======
-        "treatment": {
-=======
-        "treatments": {
->>>>>>> f64a01f (treatment description, comment, pluralization)
-            "title": "Differentiation treatment",
-            "description": "A list of treatments applied to the biosample.",
-            "comment": "A list of treatments applied to the biosample.",
-            "type": "array"
-        }
-    },
-    "facets": {
-        "status": {
-            "title": "Status"
->>>>>>> b4a3697 (added organoid)
         }
     },
     "changelog": "/profiles/changelogs/organoid.md"
