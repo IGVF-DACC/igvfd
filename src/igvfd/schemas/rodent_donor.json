@@ -79,46 +79,53 @@
             "default": "1"
         },
         "strains": {
+            "title": "Rodent Strains",
+            "description": "Strains the rodent is decended from",
             "type": "array",
             "default": [],
             "items": {
-                "$ref": "#/$defs/strain"
+                "title": "Rodent Strain",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "strain_background": {
+                        "title": "Strain background",
+                        "description": "The specific parent strain designation of a non-human donor.",
+                        "comment": "Strain background of rodent strains.  See Ali Mortazavi grant.",
+                        "type": "string",
+                        "enum": [
+                            "A/J (AJ)",
+                            "C57BL/6J (B6)",
+                            "129S1/SvImJ (129)",
+                            "NOD/ShiLtJ (NOD)",
+                            "NZO/H1LtJ (NZO)",
+                            "CAST/EiJ (CAST)",
+                            "PWK/PhJ (PWK)",
+                            "WSB/EiJ (WSB)",
+                            "CAST (M. m. castaneus)",
+                            "WSB (M. m. domesticus)",
+                            "PWK (M. m. musculus)"
+                        ]
+                    },
+                    "strain_name": {
+                        "title": "Strain name",
+                        "description": "The specific strain designation of a non-human donor.",
+                        "comment": "Strain name of rodent strains.",
+                        "type": "string"
+                    },
+                    "genotype": {
+                        "title": "Strain genotype",
+                        "description": "The genotype of the strain according to accepted nomenclature conventions.",
+                        "comment": "Genotype of rodent strains.",
+                        "type": "string"
+                    }
+                }
             }
         }
     },
-    "$defs": {
-        "strain": {
-            "strain_background": {
-                "title": "Strain background",
-                "description": "The specific parent strain designation of a non-human donor.",
-                "comment": "Strain background of rodent strains.  See Ali Mortazavi grant.",
-                "type": "string",
-                "enum": [
-                    "A/J (AJ)",
-                    "C57BL/6J (B6)",
-                    "129S1/SvImJ (129)",
-                    "NOD/ShiLtJ (NOD)",
-                    "NZO/H1LtJ (NZO)",
-                    "CAST/EiJ (CAST)",
-                    "PWK/PhJ (PWK)",
-                    "WSB/EiJ (WSB)",
-                    "CAST (M. m. castaneus)",
-                    "WSB (M. m. domesticus)",
-                    "PWK (M. m. musculus)"
-                ]
-            },
-            "strain_name": {
-                "title": "Strain name",
-                "description": "The specific strain designation of a non-human donor.",
-                "comment": "Strain name of rodent strains.",
-                "type": "string"
-            },
-            "genotype": {
-                "title": "Strain genotype",
-                "description": "The genotype of the strain according to accepted nomenclature conventions.",
-                "comment": "Genotype of rodent strains.",
-                "type": "string"
-            }
+    "facets": {
+        "status": {
+            "title": "Status"
         }
     },
     "changelog": "/profiles/changelogs/rodent_donor.md"

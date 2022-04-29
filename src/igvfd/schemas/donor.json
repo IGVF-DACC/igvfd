@@ -59,6 +59,9 @@
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."
         },
+        "accession": {
+            "accessionType": "DO"
+        },
         "sex": {
             "title": "Sex",
             "description": "Sex of the donor.",
@@ -118,6 +121,11 @@
                     ]
                 }
             }
+        }
+    },
+    "facets": {
+        "status": {
+            "title": "Status"
         }
     }
 }

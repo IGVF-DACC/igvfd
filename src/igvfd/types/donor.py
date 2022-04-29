@@ -1,10 +1,11 @@
-from .base import (
-    Item,
-)
-rom snovault import (
+from snovault import (
     abstract_collection,
     collection,
     load_schema,
+)
+
+from .base import (
+    Item,
 )
 
 
