@@ -102,10 +102,5 @@
             "type": "array"
         }
     },
-    "facets": {
-        "status": {
-            "title": "Status"
-        }
-    },
     "changelog": "/profiles/changelogs/in_vitro.md"
 }
