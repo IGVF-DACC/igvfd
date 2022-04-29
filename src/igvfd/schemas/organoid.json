@@ -114,10 +114,5 @@
             "type": "array"
         }
     },
-    "facets": {
-        "status": {
-            "title": "Status"
-        }
-    },
     "changelog": "/profiles/changelogs/organoid.md"
 }
