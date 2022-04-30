@@ -123,10 +123,5 @@
             }
         }
     },
-    "facets": {
-        "status": {
-            "title": "Status"
-        }
-    },
     "changelog": "/profiles/changelogs/rodent_donor.md"
 }

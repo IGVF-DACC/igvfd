@@ -146,10 +146,5 @@
             }
         }
     },
-    "facets": {
-        "status": {
-            "title": "Status"
-        }
-    },
     "changelog": "/profiles/changelogs/human_donor.md"
 }

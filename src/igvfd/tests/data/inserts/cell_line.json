@@ -60,5 +60,8 @@
         ],
         "date_obtained": "2022-04-02",
         "source": "/labs/j-michael-cherry/"
+        "donors": [
+            "j-michael-cherry:alias_human_donor1"
+        ]
     }
 ]

@@ -122,10 +122,5 @@
                 }
             }
         }
-    },
-    "facets": {
-        "status": {
-            "title": "Status"
-        }
     }
 }
