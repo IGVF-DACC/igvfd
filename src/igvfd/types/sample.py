@@ -60,7 +60,7 @@ class Tissue(Biosample):
 
 
 @collection(
-    name='technical_samples',
+    name='technical-samples',
     unique_key='accession',
     properties={
         'title': 'Technical Samples',
