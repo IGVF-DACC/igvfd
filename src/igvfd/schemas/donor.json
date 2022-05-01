@@ -102,7 +102,25 @@
                 "items": {
                     "title": "External Resource",
                     "description": "An external resource associated with the donor.",
-                    "type": "string"
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                        "resource_name": {
+                            "title": "External Resource Name",
+                            "description": "Name of external resource.",
+                            "type": "string"
+                        },
+                        "resource_identifier": {
+                            "title": "External Resource Identifier",
+                            "description": "Identifier of external resource.",
+                            "type": "string"
+                        },
+                        "resource_url": {
+                            "title": "External Resource URL",
+                            "description": "URL for the external resource",
+                            "type": "string"
+                        }
+                    }
                 }
             }
         },

@@ -30,7 +30,13 @@
         "sex": "male",
         "taxon_id": "Mus musculus",
         "parents": [],
-        "external_resources": [],
+        "external_resources": [
+            {
+                "resource_name": "NM_170707.4(LMNA):c.1824C>T (p.Gly608=)",
+                "resource_identifier": "Allele ID 29539",
+                "resource_url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/14500/?new_evidence=false"
+            }
+        ],
         "collections": "ENCODE"
     },
     {
@@ -63,8 +69,16 @@
         ],
         "sex": "female",
         "taxon_id": "Mus musculus",
-        "parents": [],
-        "external_resources": [],
+        "parents": [
+            "c37934b0-4269-4470-be53-9eac7b196447"
+        ],
+        "external_resources": [
+            {
+                "resource_name": "LISTERIN E3 UBIQUITIN PROTEIN LIGASE 1; LTN1",
+                "resource_identifier": "OMIM: 613083",
+                "resource_url": "https://omim.org/entry/613083"
+            }
+        ],
         "collections": "ENCODE"
     }
 ]

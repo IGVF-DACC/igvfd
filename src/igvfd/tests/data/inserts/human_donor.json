@@ -69,7 +69,58 @@
         "sex": "female",
         "taxon_id": "Homo sapiens",
         "parents": [],
-        "external_resources": [],
+        "external_resources": [
+            {
+                "resource_name": "{control region, restriction length polymorphism RFLP} [human, Senegalese Mandenka West African population sample, Mitochondrial, 89 nt]",
+                "resource_identifier": "GenBank: S77007.1",
+                "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S77007.1"
+            }
+        ],
+        "collections": "ENCODE"
+    },
+    {
+        "uuid": "38d6630f-5b87-47a1-ae7d-174eab5758d2",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:alias_human_donor_child"
+        ],
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": [],
+        "notes": "This is a note.",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "health_status_history": [
+            {
+                "health_description": "Running fever 103F, feeling tired",
+                "date_start": "2022-01-04",
+                "date_end": "2022-01-10"
+            },
+            {
+                "health_description": "Running fever 103F, feeling tired",
+                "date_start": "2021-12-03",
+                "date_end": "2022-01-10"
+            }
+        ],
+        "ethnicity": [
+            "Eskimo",
+            "Arab"
+        ],
+        "genetic_modifications": [
+            "insert"
+        ],
+        "sex": "female",
+        "taxon_id": "Homo sapiens",
+        "parents": [
+            "a1abeff6-8024-41d3-a713-5d22c86ffc57"
+        ],
+        "external_resources": [
+            {
+                "resource_name": "BRCA1 {exon 23, internal fragment} [human, serous papillary ovarian adenocarcinoma, patient sample 61, Genomic Mutant, 68 nt]",
+                "resource_identifier": "GenBank: S78558.1",
+                "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S78558.1"
+            }
+        ],
         "collections": "ENCODE"
     }
 ]
