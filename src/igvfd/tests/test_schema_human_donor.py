@@ -50,12 +50,11 @@ def test_collections(human_donor, testapp):
         human_donor['@id'],
         {'collections': ['ENCODE']})
     assert(res.status_code == 200)
-    # this is working?  Unknown why enum values in array not enforced.
-    # res = testapp.patch_json(
-    #     human_donor['@id'],
-    #     {'collections': ["Something not collection"]}, expect_errors=True)
-    # print('status code: ' + str(res.status_code))
-    # assert(res.status_code == 422)
+    res = testapp.patch_json(
+        human_donor['@id'],
+        {'collections': ['Something not collection']}, expect_errors=True)
+    print('status code: ' + str(res.status_code))
+    assert(res.status_code == 422)
 
 
 def test_external_resources(human_donor, testapp):

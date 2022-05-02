@@ -26,14 +26,13 @@
         "ethnicity": [
             "Hispanic"
         ],
-        "genetic_modifications": [
-            "insert"
-        ],
         "sex": "male",
         "taxon_id": "Homo sapiens",
         "parents": [],
         "external_resources": [],
-        "collections": "ENCODE"
+        "collections": [
+            "ENCODE"
+        ]
     },
     {
         "uuid": "a1abeff6-8024-41d3-a713-5d22c86ffc57",
@@ -63,9 +62,6 @@
             "Eskimo",
             "Arab"
         ],
-        "genetic_modifications": [
-            "insert"
-        ],
         "sex": "female",
         "taxon_id": "Homo sapiens",
         "parents": [],
@@ -76,7 +72,9 @@
                 "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S77007.1"
             }
         ],
-        "collections": "ENCODE"
+        "collections": [
+            "ENCODE"
+        ]
     },
     {
         "uuid": "38d6630f-5b87-47a1-ae7d-174eab5758d2",
@@ -106,9 +104,6 @@
             "Eskimo",
             "Arab"
         ],
-        "genetic_modifications": [
-            "insert"
-        ],
         "sex": "female",
         "taxon_id": "Homo sapiens",
         "parents": [
@@ -121,6 +116,8 @@
                 "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S78558.1"
             }
         ],
-        "collections": "ENCODE"
+        "collections": [
+            "ENCODE"
+        ]
     }
 ]

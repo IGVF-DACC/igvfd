@@ -60,10 +60,10 @@
             "$ref": "mixins.json#/url"
         },
         {
-            "$ref": "mixins.json#/genetic_modifications"
+            "$ref": "mixins.json#/references"
         },
         {
-            "$ref": "mixins.json#/references"
+            "$ref": "mixins.json#/collections"
         }
     ],
     "dependentSchemas": {

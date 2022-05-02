@@ -346,5 +346,21 @@
                 "$comment": "This should later become a linkTo for Publications"
             }
         }
+    },
+    "collections": {
+        "collections": {
+            "title": "Data Collections",
+            "description": "Some types of data are part of a particular data collection.",
+            "type": "array",
+            "default": [],
+            "permission": "import_items",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": [
+                    "ENCODE"
+                ]
+            }
+        }
     }
 }

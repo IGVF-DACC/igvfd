@@ -48,10 +48,10 @@
             "$ref": "mixins.json#/url"
         },
         {
-            "$ref": "mixins.json#/genetic_modifications"
+            "$ref": "mixins.json#/references"
         },
         {
-            "$ref": "mixins.json#/references"
+            "$ref": "mixins.json#/collections"
         }
     ],
     "dependentSchemas": {},
@@ -72,11 +72,9 @@
             ]
         },
         "taxon_id": {
-            "taxon_id": {
-                "title": "Taxa (Organism) Identifier",
-                "description": "Taxa (organism) identifier of the donor.",
-                "type": "string"
-            }
+            "title": "Taxa (Organism) Identifier",
+            "description": "Taxa (organism) identifier of the donor.",
+            "type": "string"
         },
         "parents": {
             "title": "Parents",
@@ -93,50 +91,32 @@
             }
         },
         "external_resources": {
-            "external_resources": {
-                "title": "External Resources",
-                "description": "A list of external resources associated with the donor.",
-                "type": "array",
-                "default": [],
-                "uniqueItems": false,
-                "items": {
-                    "title": "External Resource",
-                    "description": "An external resource associated with the donor.",
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                        "resource_name": {
-                            "title": "External Resource Name",
-                            "description": "Name of external resource.",
-                            "type": "string"
-                        },
-                        "resource_identifier": {
-                            "title": "External Resource Identifier",
-                            "description": "Identifier of external resource.",
-                            "type": "string"
-                        },
-                        "resource_url": {
-                            "title": "External Resource URL",
-                            "description": "URL for the external resource",
-                            "type": "string"
-                        }
+            "title": "External Resources",
+            "description": "A list of external resources associated with the donor.",
+            "type": "array",
+            "default": [],
+            "uniqueItems": false,
+            "items": {
+                "title": "External Resource",
+                "description": "An external resource associated with the donor.",
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "resource_name": {
+                        "title": "External Resource Name",
+                        "description": "Name of external resource.",
+                        "type": "string"
+                    },
+                    "resource_identifier": {
+                        "title": "External Resource Identifier",
+                        "description": "Identifier of external resource.",
+                        "type": "string"
+                    },
+                    "resource_url": {
+                        "title": "External Resource URL",
+                        "description": "URL for the external resource",
+                        "type": "string"
                     }
-                }
-            }
-        },
-        "collections": {
-            "collections": {
-                "title": "Collections",
-                "description": "Some donors are part of a particular data collection.",
-                "type": "array",
-                "default": [],
-                "permission": "import_items",
-                "uniqueItems": true,
-                "items": {
-                    "type": "string",
-                    "enum": [
-                        "ENCODE"
-                    ]
                 }
             }
         }
