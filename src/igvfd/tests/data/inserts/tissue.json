@@ -11,6 +11,11 @@
 <<<<<<< HEAD
         "source": "/labs/j-michael-cherry/",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        "pmi": 2,
+        "pmi_units": "week",
+>>>>>>> c227a95 (fixed tissue insert)
         "nih_institutional_certification": "NICHD1442",
         "PMI": 2,
         "PMI_units": "week",
