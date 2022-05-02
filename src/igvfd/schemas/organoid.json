@@ -110,7 +110,6 @@
         "treatments": {
             "title": "Differentiation treatment",
             "description": "A list of treatments applied to the biosample.",
-            "comment": "A list of treatments applied to the biosample.",
             "type": "array"
         }
     },
