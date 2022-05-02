@@ -49,6 +49,9 @@
         },
         {
             "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/collections"
         }
     ],
     "dependentSchemas": {
@@ -209,6 +212,13 @@
                 "description": "Ontology of the disease associated with the biosample.",
                 "type": "string"
             }
+        },
+        "nih_institutional_certification": {
+            "type": "string",
+            "title": "NIH institutional certification",
+            "description": "Institutional certification given by the NIH for human biosamples.",
+            "comment": "Required for IGVF human biosamples.",
+            "pattern": "^NIC[A-Z0-9]+$"
         },
         "date_obtained": {
             "date_obtained": {

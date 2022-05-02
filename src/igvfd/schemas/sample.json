@@ -46,6 +46,9 @@
         },
         {
             "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/collections"
         }
     ],
     "dependentSchemas": {

@@ -23,3 +23,14 @@ def test_technical_sample_type_dependency(technical_sample_1, testapp):
         {'sample_material': 'not a real type'}, expect_errors=True)
     print('status code: ' + str(res.status_code))
     assert(res.status_code == 422)
+
+
+def test_collections(technical_sample_1, testapp):
+    res = testapp.patch_json(
+        technical_sample_1['@id'],
+        {'collections': ['ENCODE']})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        technical_sample_1['@id'],
+        {'collections': ['ABBBCCCHD1455']}, expect_errors=True)
+    assert(res.status_code == 422)

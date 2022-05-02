@@ -24,6 +24,9 @@
         "technical_sample_ontology": "vaccine",
         "date": "2022-04-09",
         "source": "/labs/j-michael-cherry/",
+        "collections": [
+            "ENCODE"
+        ],
         "additional_description": "The technical sample is for quality control of vaccine production."
     }
 ]

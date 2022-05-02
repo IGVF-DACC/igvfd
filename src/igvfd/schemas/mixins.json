@@ -299,5 +299,22 @@
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "formInput": "textarea"
         }
+    },
+    "collections": {
+        "collections": {
+            "title": "Collections",
+            "description": "Some samples are part of particular data collections.",
+            "comment": "Do not submit. Collections are for DCC use only.",
+            "type": "array",
+            "default": [],
+            "permission": "import_items",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": [
+                    "ENCODE"
+                ]
+            }
+        }
     }
 }
