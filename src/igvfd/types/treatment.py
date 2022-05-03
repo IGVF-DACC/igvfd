@@ -30,6 +30,6 @@ class Treatment(Item):
             text = 'Treated with {} {} {} for {} {}'.format(
                 amount, amount_units, treatment_term_name, duration, duration_units)
         else:
-            text = 'Treated with {} {} {} for non-specified duration'.format(
+            text = 'Treated with {} {} {}'.format(
                 amount, amount_units, treatment_term_name)
         return text
