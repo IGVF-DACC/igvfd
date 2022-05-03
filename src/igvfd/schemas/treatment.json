@@ -60,6 +60,12 @@
             ],
             "comment": "post_treatment_time_units must be specified if post_treatment_time is specified"
         },
+        "post_treatment_time_units": {
+            "required": [
+                "post_treatment_time"
+            ],
+            "comment": "post_treatment_time must be specified if post_treatment_time_units is specified"
+        },
         "treatment_term_id": {
             "oneOf": [
                 {
