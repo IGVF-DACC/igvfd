@@ -59,7 +59,7 @@
             "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
         ],
         "date_obtained": "2022-04-02",
-        "source": "/labs/j-michael-cherry/"
+        "source": "/labs/j-michael-cherry/",
         "donors": [
             "j-michael-cherry:alias_human_donor1"
         ]
