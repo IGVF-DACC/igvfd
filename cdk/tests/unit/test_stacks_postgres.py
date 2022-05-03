@@ -71,21 +71,3 @@ def test_stacks_postgres_initialize_postgres_stack():
             ]
         }
     )
-    template.has_resource_properties(
-        'AWS::EC2::SecurityGroupIngress',
-        {
-            'IpProtocol': 'tcp',
-            'Description': 'Allow connection to Postgres instance',
-            'FromPort': 5432,
-            'GroupId': {
-                'Fn::ImportValue': 'TestPostgresStack:ExportsOutputFnGetAttPostgresSecurityGroupA2E13118GroupId7C742499'
-            },
-            'SourceSecurityGroupId': {
-                'Fn::GetAtt': [
-                    'BackendFargateServiceSecurityGroupC1AC366B',
-                    'GroupId'
-                ]
-            },
-            'ToPort': 5432
-        }
-    )
