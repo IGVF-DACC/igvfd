@@ -109,7 +109,8 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             construct_id,
             github_repo=github_repo,
             branch=branch,
-            existing_resources=existing_resources
+            existing_resources=existing_resources,
+            **kwargs,
         )
         self._add_tooling_wave()
         self._add_development_deploy_stage()
