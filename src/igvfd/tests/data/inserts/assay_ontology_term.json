@@ -3,7 +3,9 @@
         "term_id": "OBI:0002041",
         "term_name": "STARR-seq",
         "status": "released",
-        "uuid": "df207aeb-3484-3730-b64c-d3fdb4506a5e"
+        "uuid": "df207aeb-3484-3730-b64c-d3fdb4506a5e",
+        "aliases": ["j-michael-cherry:starr-seq"],
+        "notes": "Assay ontology object for STARR-seq"
     },
     {
         "term_id": "OBI:0002675",
