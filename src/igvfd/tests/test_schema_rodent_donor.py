@@ -26,15 +26,16 @@ def test_strain(rodent_donor, testapp):
     assert(res.status_code == 200)
 
 
-def test_donor_with_three_parents(rodent_donor, parent_rodent_donor1, parent_rodent_donor2, parent_rodent_donor3, testapp):
+def test_fail_donor_with_three_parents(rodent_donor, parent_rodent_donor1, parent_rodent_donor2, parent_rodent_donor3, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],
         {'parents': [
             parent_rodent_donor1['@id'],
             parent_rodent_donor2['@id'],
             parent_rodent_donor3['@id']
-        ]})
-    assert(res.status_code == 200)
+        ]}, expect_errors=True)
+    print('status code: ' + str(res.status_code))
+    assert(res.status_code == 422)
 
 
 def test_donor_with_no_parents(rodent_donor_orphan, testapp):

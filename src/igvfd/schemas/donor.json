@@ -88,7 +88,8 @@
                 "description": "Biological parent of this donor.",
                 "type": "string",
                 "linkTo": "Donor"
-            }
+            },
+            "maxItems": 2
         },
         "external_resources": {
             "title": "External Resources",

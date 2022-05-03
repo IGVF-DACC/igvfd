@@ -335,15 +335,15 @@
     "references": {
         "references": {
             "title": "References",
-            "description": "The publications that provide more information about the object.",
+            "description": "The references that provide more information about the object.",
             "type": "array",
             "default": [],
             "uniqueItems": true,
             "items": {
                 "title": "Reference",
-                "description": "A publication that provide smore information about the object.",
+                "description": "A reference that provide smore information about the object.",
                 "type": "string",
-                "$comment": "This should later become a linkTo for Publications"
+                "pattern": "^(PMID:[0-9]+|doi:10\\.[0-9]{4}[\\d\\s\\S\\:\\.\\/]+|PMCID:PMC[0-9]+|[0-9]{4}\\.[0-9]{4})$"
             }
         }
     }
