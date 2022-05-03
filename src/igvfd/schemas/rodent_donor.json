@@ -67,6 +67,9 @@
         }
     ],
     "dependentSchemas": {
+        "$merge": [
+            "donor.json#/dependentSchemas"
+        ],
         "lot_id": {
             "required": [
                 "product_id"
