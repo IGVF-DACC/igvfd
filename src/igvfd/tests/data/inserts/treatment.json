@@ -1,0 +1,69 @@
+[
+    {
+        "amount": 10,
+        "amount_units": "mM",
+        "duration": 1,
+        "duration_units": "hour",
+        "pH": 6.7,
+        "purpose": "activation",
+        "submitted_by": "mkagda@stanford.edu",
+        "status": "released",
+        "treatment_term_id": "CHEBI:24996",
+        "treatment_term_name": "lactate",
+        "treatment_type": "chemical",
+        "uuid": "3280b708-0f05-40fa-bff2-54e2b6505c13"
+    },
+    {
+        "amount": 50,
+        "amount_units": "ng/mL",
+        "documents": [
+            "j-michael-cherry:Antibody_characterization_standards_IGVF"
+        ],
+        "purpose": "selection",
+        "submitted_by": "mkagda@stanford.edu",
+        "status": "released",
+        "treatment_term_name": "goat-anti-GFP-UC",
+        "treatment_type": "protein",
+        "treatment_term_id": "UniProtKB:P09919",
+        "uuid": "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
+    },
+    {
+        "amount": 10,
+        "amount_units": "μg/mL",
+        "duration": 30,
+        "duration_units": "minute",
+        "purpose": "antagonist",
+        "submitted_by": "mkagda@stanford.edu",
+        "status": "released",
+        "treatment_term_name": "resorcinol",
+        "treatment_type": "chemical",
+        "treatment_term_id": "CHEBI:27810",
+        "uuid": "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
+    },
+    {
+        "amount": 100,
+        "amount_units": "μg/kg",
+        "duration": 30,
+        "duration_units": "minute",
+        "notes": "This is a new compound",
+        "purpose": "perturbation",
+        "submitted_by": "mkagda@stanford.edu",
+        "status": "released",
+        "temperature (Celsius)": 28,
+        "treatment_term_name": "new compound",
+        "treatment_type": "chemical",
+        "treatment_term_id": "NTR:0001185",
+        "uuid": "2d57c810-c729-11ec-9d64-0242ac120002"
+    },
+    {
+        "amount": 0.5,
+        "amount_units": "mg/kg",
+        "purpose": "differentiation",
+        "submitted_by": "mkagda@stanford.edu",
+        "status": "released",
+        "treatment_term_name": "new protein",
+        "treatment_type": "protein",
+        "treatment_term_id": "NTR:0001189",
+        "uuid": "bd2cb34e-c72c-11ec-9d64-0242ac120002"
+    }
+]

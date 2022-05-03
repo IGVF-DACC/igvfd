@@ -16,5 +16,20 @@
         "collections": [
             "ENCODE"
         ]
+    },
+    {
+        "uuid": "984a5f8e-c751-11ec-9d64-0242ac120002",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:treated_tissue"
+        ],
+        "status": "released",
+        "organism": "Homo sapiens",
+        "source": "/labs/j-michael-cherry/",
+        "treatments": [
+            "/treatments/2d57c810-c729-11ec-9d64-0242ac120002/",
+            "/treatments/4fbb0dc2-c72e-11ec-9d64-0242ac120002/"
+        ]
     }
 ]
