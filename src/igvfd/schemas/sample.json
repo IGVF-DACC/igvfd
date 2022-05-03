@@ -105,16 +105,5 @@
                 "pattern": "^((GEO:SAMN\\d+)|(Cellosaurus:CVCL_\\w{4}))$"
             }
         }
-    },
-    "facets": {
-        "status": {
-            "title": "Status"
-        },
-        "lab.title": {
-            "title": "Lab"
-        },
-        "award.project": {
-            "title": "Project"
-        }
     }
 }

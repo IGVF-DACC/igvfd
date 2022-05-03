@@ -22,7 +22,6 @@ class Award(Item):
     item_type = 'award'
     schema = load_schema('igvfd:schemas/award.json')
     name_key = 'name'
-    embedded = ['pi.lab']
     STATUS_ACL = {
         'current': ALLOW_CURRENT,
         'deleted': DELETED,

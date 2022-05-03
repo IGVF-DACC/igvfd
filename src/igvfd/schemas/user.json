@@ -118,14 +118,6 @@
             }
         }
     },
-    "facets": {
-        "lab.title": {
-            "title": "Lab"
-        },
-        "job_title": {
-            "title": "Job title"
-        }
-    },
     "boost_values": {
         "title": 1.0
     },

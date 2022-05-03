@@ -86,10 +86,5 @@
             "title": "Date harvested"
         }
     },
-    "facets": {
-        "status": {
-            "title": "Status"
-        }
-    },
     "changelog": "/profiles/changelogs/cell_line.md"
 }

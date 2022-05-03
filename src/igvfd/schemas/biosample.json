@@ -254,10 +254,5 @@
                 "derived_from"
             ]
         }
-    },
-    "facets": {
-        "status": {
-            "title": "Status"
-        }
     }
 }
