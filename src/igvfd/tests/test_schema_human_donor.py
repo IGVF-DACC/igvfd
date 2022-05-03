@@ -31,20 +31,6 @@ def test_ethnicity(human_donor, testapp):
     assert(res.status_code == 422)
 
 
-def test_donor_with_parents(human_donor, parent_human_donor_1, parent_human_donor_2, testapp):
-    res = testapp.patch_json(
-        human_donor['@id'],
-        {'parents': [parent_human_donor_1['@id'], parent_human_donor_2['@id']]})
-    assert(res.status_code == 200)
-
-
-def test_donor_with_no_parents(human_donor_orphan, testapp):
-    res = testapp.patch_json(
-        human_donor_orphan['@id'],
-        {'parents': []})
-    assert(res.status_code == 200)
-
-
 def test_fail_donor_with_three_parents(human_donor, parent_human_donor_1, parent_human_donor_2, parent_human_donor_3, testapp):
     res = testapp.patch_json(
         human_donor['@id'],

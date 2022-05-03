@@ -38,13 +38,6 @@ def test_fail_donor_with_three_parents(rodent_donor, parent_rodent_donor1, paren
     assert(res.status_code == 422)
 
 
-def test_donor_with_no_parents(rodent_donor_orphan, testapp):
-    res = testapp.patch_json(
-        rodent_donor_orphan['@id'],
-        {'parents': []})
-    assert(res.status_code == 200)
-
-
 def test_collections(rodent_donor, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],
