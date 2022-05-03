@@ -42,3 +42,76 @@ def instance_type():
         InstanceClass.BURSTABLE3,
         InstanceSize.MEDIUM,
     )
+
+
+@pytest.fixture
+def secret(stack):
+    from aws_cdk.aws_secretsmanager import Secret
+    return Secret(
+        stack,
+        'TestSecret',
+    )
+
+
+@pytest.fixture
+def chatbot(stack):
+    from aws_cdk.aws_chatbot import SlackChannelConfiguration
+    return SlackChannelConfiguration(
+        stack,
+        'TestChatbot',
+        slack_channel_configuration_name='some-config-name',
+        slack_channel_id='some-channel-id',
+        slack_workspace_id='some-workspace-id',
+    )
+
+
+@pytest.fixture
+def domain_name():
+    return 'my.test.domain.org'
+
+
+@pytest.fixture
+def certificate(stack, domain_name):
+    from aws_cdk.aws_certificatemanager import Certificate
+    return Certificate(
+        stack,
+        'TestCertificate',
+        domain_name=f'*.{domain_name}',
+    )
+
+
+@pytest.fixture
+def hosted_zone(stack, domain_name):
+    from aws_cdk.aws_route53 import HostedZone
+    return HostedZone(
+        stack,
+        'TestHostedZone',
+        zone_name=domain_name,
+    )
+
+
+@pytest.fixture
+def network(mocker, vpc):
+    mock = mocker.Mock()
+    mock.vpc = vpc
+    return mock
+
+
+@pytest.fixture
+def domain(mocker, domain_name, certificate, hosted_zone):
+    mock = mocker.Mock()
+    mock.name = domain_name
+    mock.certificate = certificate
+    mock.zone = hosted_zone
+    return mock
+
+
+@pytest.fixture
+def existing_resources(mocker, domain, network, secret, chatbot):
+    mock = mocker.Mock()
+    mock.domain = domain
+    mock.network = network
+    mock.docker_hub_credentials.secret = secret
+    mock.code_star_connection.arn = 'some-code-star-arn'
+    mock.notification.encode_dcc_chatbot = chatbot
+    return mock
