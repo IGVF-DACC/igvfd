@@ -18,7 +18,7 @@ def test_differentiation_dependency(in_vitro, testapp):
     assert(res.status_code == 200)
 
 
-def test_post_in_vitro(testapp, award, lab):
+def test_post_in_vitro(testapp, award, lab, treatment_2):
     res = testapp.post_json(
         '/in_vitro',
         {
@@ -27,7 +27,7 @@ def test_post_in_vitro(testapp, award, lab):
             'source': lab['@id'],
             'post_differentiation_time': 20,
             'post_differentiation_time_units': 'minute',
-            'treatments': ['treatment']
+            'treatments': [treatment_2['@id']]
         })
     assert(res.status_code == 201)
 
@@ -38,7 +38,6 @@ def test_post_in_vitro(testapp, award, lab):
             'lab': lab['@id'],
             'source': lab['@id'],
             'post_differentiation_time': 20,
-            'post_differentiation_time_units': 'second',
-            'treatments': ['treatment']
+            'post_differentiation_time_units': 'second'
         }, expect_errors=True)
     assert(res.status_code == 422)

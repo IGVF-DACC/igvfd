@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_post_organoid(testapp, award, lab, source):
+def test_post_organoid(testapp, award, lab, source, treatment_1):
     res = testapp.post_json(
         '/organoid',
         {
@@ -10,7 +10,7 @@ def test_post_organoid(testapp, award, lab, source):
             'source': source['@id'],
             'post_differentiation_time': 72,
             'post_differentiation_time_units': 'hour',
-            'treatments': ['treatment']
+            'treatments': [treatment_1['@id']]
         })
     assert(res.status_code == 201)
 
