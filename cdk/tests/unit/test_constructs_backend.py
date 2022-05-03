@@ -104,9 +104,6 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
             'ContainerDefinitions': [
                 {
                     'Essential': True,
-                    'Image': {
-                        'Fn::Sub': '${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:c628bd922ef0eb03efa75b058828f2abb031421eba8b53bde70734818ec0042d'
-                    },
                     'LogConfiguration': {
                         'LogDriver': 'awslogs',
                         'Options': {
@@ -145,9 +142,6 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
                         }
                     ],
                     'Essential': True,
-                    'Image': {
-                        'Fn::Sub': '${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:e9f97ee33d1329c7043c8e63ad52c8827e04cf575e2aff39b48b2712f0db3cf8'
-                    },
                     'LogConfiguration': {
                         'LogDriver': 'awslogs',
                         'Options': {
