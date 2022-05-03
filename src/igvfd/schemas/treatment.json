@@ -106,8 +106,8 @@
         "amount": {
             "title": "Amount",
             "type": "number",
-            "description": "Amount in conjunction with amount_units is used to indicate the exact quantity of the specific treatmenat that was used.",
-            "comment": "amount should be used in conjunction with amount_units."
+            "description": "Specific quantity of the applied treatment (used in conjunction with amount_units).",
+            "comment": "amount must be specified if amount_units is specified"
         },
         "amount_units": {
             "title": "Amount units",
@@ -124,13 +124,13 @@
                 "μg/mL",
                 "μM"
             ],
-            "comment": "amount_units should be used in conjunction with amount."
+            "comment": "amount_units must be specified if amount is specified"
         },
         "duration": {
             "title": "Duration",
             "type": "number",
-            "description": "Duration is used to indicate the time that elapsed between start of the treatment upto the end of the treatment.",
-            "comment": "duration should be used in conjunction with duration_units."
+            "description": "Duration indicates the time elapsed between the start and end of the treatment.",
+            "comment": "duration must be specified if duration_units is specified"
         },
         "duration_units": {
             "title": "Duration units",
@@ -141,7 +141,7 @@
                 "hour",
                 "day"
             ],
-            "comment": "duration_units should be used in conjunction with duration."
+            "comment": "duration_units must be specified if duration is specified"
         },
         "pH": {
             "title": "pH",
