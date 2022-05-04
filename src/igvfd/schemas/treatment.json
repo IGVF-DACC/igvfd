@@ -1,6 +1,6 @@
 {
     "title": "Treatment",
-    "id": "/profiles/treatment.json",
+    "$id": "/profiles/treatment.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
@@ -60,6 +60,12 @@
             ],
             "comment": "post_treatment_time_units must be specified if post_treatment_time is specified"
         },
+        "post_treatment_time_units": {
+            "required": [
+                "post_treatment_time"
+            ],
+            "comment": "post_treatment_time must be specified if post_treatment_time_units is specified"
+        },
         "treatment_term_id": {
             "oneOf": [
                 {
@@ -100,7 +106,8 @@
         "amount": {
             "title": "Amount",
             "type": "number",
-            "description": "Amount in conjunction with amount_units is used to indicate the exact quantity of the specific treatmenat that was used."
+            "description": "Specific quantity of the applied treatment (used in conjunction with amount_units).",
+            "comment": "amount must be specified if amount_units is specified"
         },
         "amount_units": {
             "title": "Amount units",
@@ -117,15 +124,16 @@
                 "μg/mL",
                 "μM"
             ],
-            "comment": "amount_units should be used in conjunction with amount."
+            "comment": "amount_units must be specified if amount is specified"
         },
         "duration": {
-            "title": "Time duration",
+            "title": "Duration",
             "type": "number",
-            "description": "Duration in conjunction with duration_units is used to indicate the time that elapsed between start of the treatment upto the end of the treatment."
+            "description": "Duration indicates the time elapsed between the start and end of the treatment.",
+            "comment": "duration must be specified if duration_units is specified"
         },
         "duration_units": {
-            "title": "Time duration units",
+            "title": "Duration units",
             "type": "string",
             "enum": [
                 "second",
@@ -133,7 +141,7 @@
                 "hour",
                 "day"
             ],
-            "comment": "duration_units should be used in conjunction with duration"
+            "comment": "duration_units must be specified if duration is specified"
         },
         "pH": {
             "title": "pH",
