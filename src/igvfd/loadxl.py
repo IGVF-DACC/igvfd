@@ -19,6 +19,7 @@ ORDER = [
     'lab',
     'document',
     'sample_ontology_term',
+    'assay_ontology_term',
     'treatment',
     'cell_line',
     'tissue',

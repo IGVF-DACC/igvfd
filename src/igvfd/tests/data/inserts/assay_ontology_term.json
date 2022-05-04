@@ -1,0 +1,24 @@
+[
+    {
+        "term_id": "OBI:0002041",
+        "term_name": "STARR-seq",
+        "status": "released",
+        "uuid": "df207aeb-3484-3730-b64c-d3fdb4506a5e",
+        "aliases": [
+            "j-michael-cherry:starr-seq"
+        ],
+        "notes": "Assay ontology object for STARR-seq"
+    },
+    {
+        "term_id": "OBI:0002675",
+        "term_name": "MPRA",
+        "status": "released",
+        "uuid": "e6a5e43a-9e8c-fd28-967f-358e200536ab"
+    },
+    {
+        "term_id": "OBI:0000716",
+        "term_name": "ChIP-seq",
+        "status": "released",
+        "uuid": "26945da8-8f87-4749-7aeb-cee38f5cfd28"
+    }
+]
