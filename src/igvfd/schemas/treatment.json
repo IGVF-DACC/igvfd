@@ -1,6 +1,6 @@
 {
     "title": "Treatment",
-    "id": "/profiles/treatment.json",
+    "$id": "/profiles/treatment.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
