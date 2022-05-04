@@ -23,15 +23,6 @@ ORDER = [
     'treatment',
     'cell_line',
     'tissue',
-    'organoid',
-<<<<<<< HEAD
-<<<<<<< HEAD
-    'in_vitro',
-=======
->>>>>>> b4a3697 (added organoid)
-=======
-    'in_vitro',
->>>>>>> 170fc2f (in vitro added)
     'technical_sample',
     'image',
     'page',

@@ -110,7 +110,6 @@
         "treatments": {
             "title": "Differentiation treatment",
             "description": "A list of treatments applied to the biosample.",
-<<<<<<< HEAD
             "type": "array",
             "default": [],
             "uniqueItems": true,
@@ -120,9 +119,6 @@
                 "type": "string",
                 "linkTo": "Treatment"
             }
-=======
-            "type": "array"
->>>>>>> e91317b (test for organoid dependencies)
         }
     },
     "changelog": "/profiles/changelogs/organoid.md"
