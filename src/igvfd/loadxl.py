@@ -23,6 +23,8 @@ ORDER = [
     'treatment',
     'cell_line',
     'tissue',
+    'organoid',
+    'in_vitro',
     'technical_sample',
     'image',
     'page',

@@ -12,11 +12,7 @@
         "post_differentiation_time": 5,
         "post_differentiation_time_units": "day",
         "treatments": [
-<<<<<<< HEAD
             "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
-=======
-            "treatment"
->>>>>>> f64a01f (treatment description, comment, pluralization)
         ]
     }
 ]
