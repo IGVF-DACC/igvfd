@@ -229,8 +229,8 @@
                 "format": "date"
             }
         },
-        "Related_biosamples": {
-            "title": "Related_biosamples",
+        "related_biosamples": {
+            "title": "Related biosamples",
             "description": "Biosamples that are related to this biosample with the relation of 'realted_biosample_realtion'.",
             "comment": "A list of biosamples should all have the same relationship to this biosample.",
             "type": "array",
@@ -242,7 +242,7 @@
                 "linkTo": "Biosample"
             }
         },
-        "Related_biosamples_relation": {
+        "related_biosamples_relation": {
             "title": "Relationship to other related biosamples",
             "description": "The specific relationship to the biosamples in related_biosamples field",
             "comment": "Must be submitted with related_biosamples",

@@ -1,0 +1,19 @@
+[
+    {
+        "uuid": "f1d10666-ebb2-4152-9d49-f98b6de7c9e5",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:alias5"
+        ],
+        "status": "released",
+        "organism": "Homo sapiens",
+        "source": "/labs/j-michael-cherry/",
+        "post_differentiation_time": 5,
+        "post_differentiation_time_units": "day",
+        "treatments": [
+            "3280b708-0f05-40fa-bff2-54e2b6505c13",
+            "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
+        ]
+    }
+]

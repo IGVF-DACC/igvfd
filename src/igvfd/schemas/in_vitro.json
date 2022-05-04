@@ -1,8 +1,8 @@
 {
-    "title": "Tissue",
-    "$id": "/profiles/tissue.json",
+    "title": "In vitro",
+    "$id": "/profiles/in_vitro.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a tissue sample.",
+    "description": "Schema for submitting an in vitro differentiated sample.",
     "type": "object",
     "required": [
         "award",
@@ -61,53 +61,53 @@
         },
         {
             "$ref": "mixins.json#/url"
-        },
-        {
-            "$ref": "mixins.json#/collections"
         }
     ],
     "dependentSchemas": {
         "$merge": [
-            "biosample.json#/dependentSchemas"
+            "organoid.json#/dependentSchemas"
         ]
     },
     "properties": {
         "schema_version": {
             "default": "1"
         },
-        "pmi": {
-            "title": "Post-mortem interval",
-            "description": "The amount of time elapsed since death.",
-            "comment": "Post-mortem interval for tissues should be reported, if known.",
-            "type": "integer",
-            "minimum": 1
+        "post_differentiation_time": {
+            "title": "Post-differentiation time",
+            "description": "The time that elapsed past the point when biosamples were differentiated.",
+            "comment": "Use in conjunction with post_differentiation_time_units to specify time elapsed post-differentiation. Use of this property requires post_differentiation_time_units specification.",
+            "type": "integer"
         },
-        "pmi_units": {
-            "title": "Post-mortem interval units",
-            "description": "The unit in which the PMI time was reported.",
-            "comment": "Post-mortem interval units for tissues should be reported with PMI value, if known.",
+        "post_differentiation_time_units": {
+            "title": "Post-differentiation time units",
+            "description": "The units of time that elapsed past the point when biosamples were differentiated.",
+            "comment": "Use in conjunction with post_differentiation_time to specify time elapsed post-differentiation. Use of this property requires post_differentiation_time specification.",
             "type": "string",
             "enum": [
-                "second",
                 "minute",
                 "hour",
                 "day",
-                "week"
-            ]
-        },
-        "preservation_method": {
-            "title": "Preservation method",
-            "description": "The method by which the tissue was preserved: cryopreservation (slow-freeze) or flash-freezing.",
-            "comment": "Indicate the tissue preservation_method if known and may be/become an experimental variable to track.",
-            "type": "string",
-            "enum": [
-                "cryopreservation",
-                "flash-freezing"
+                "week",
+                "month",
+                "stage"
             ]
         },
         "date_obtained": {
-            "title": "Date harvested"
+            "title": "Date collected"
+        },
+        "treatments": {
+            "title": "Differentiation treatment",
+            "description": "A list of treatments applied to the biosample.",
+            "type": "array",
+            "default": [],
+            "uniqueItems": true,
+            "items": {
+                "title": "Treatment",
+                "description": "A treatment applied to the biosample.",
+                "type": "string",
+                "linkTo": "Treatment"
+            }
         }
     },
-    "changelog": "/profiles/changelogs/tissue.md"
+    "changelog": "/profiles/changelogs/in_vitro.md"
 }

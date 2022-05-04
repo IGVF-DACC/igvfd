@@ -60,6 +60,30 @@ class Tissue(Biosample):
 
 
 @collection(
+    name='organoids',
+    unique_key='accession',
+    properties={
+        'title': 'Organoids',
+        'description': 'Listing of organoids',
+    })
+class Organoid(Biosample):
+    item_type = 'organoid'
+    schema = load_schema('igvfd:schemas/organoid.json')
+
+
+@collection(
+    name='in-vitros',
+    unique_key='accession',
+    properties={
+        'title': 'In vitros',
+        'description': 'Listing of in vitros',
+    })
+class InVitro(Biosample):
+    item_type = 'in_vitro'
+    schema = load_schema('igvfd:schemas/in_vitro.json')
+
+
+@collection(
     name='technical-samples',
     unique_key='accession',
     properties={
