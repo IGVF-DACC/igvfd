@@ -317,21 +317,6 @@
             }
         }
     },
-    "genetic_modifications": {
-        "genetic_modifications": {
-            "title": "Genetic modifications",
-            "description": "Genetic modification(s). Any genetic alteration of a biosample or donor.",
-            "type": "array",
-            "default": [],
-            "uniqueItems": true,
-            "items": {
-                "title": "Genetic modification",
-                "description": "Genetic modification(s).",
-                "type": "string",
-                "$comment": "This should later become a linkTo for GeneticModifications"
-            }
-        }
-    },
     "references": {
         "references": {
             "title": "References",

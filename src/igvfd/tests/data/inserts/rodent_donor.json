@@ -15,18 +15,9 @@
         "product_id": "GR000001",
         "lot_id": "R00001",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
-        "strains": [
-            {
-                "strain_background": "A/J (AJ)",
-                "strain_name": "some name",
-                "genotype": "some genotype"
-            },
-            {
-                "strain_background": "C57BL/6J (B6)",
-                "strain_name": "some other name",
-                "genotype": "some other genotype"
-            }
-        ],
+        "strain_background": "A/J (AJ)",
+        "strain": "some name",
+        "genotype": "some genotype",
         "sex": "male",
         "taxon_id": "Mus musculus",
         "parents": [],
@@ -57,18 +48,9 @@
         "product_id": "GR000001",
         "lot_id": "R00001",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
-        "strains": [
-            {
-                "strain_background": "A/J (AJ)",
-                "strain_name": "some name",
-                "genotype": "some genotype"
-            },
-            {
-                "strain_background": "C57BL/6J (B6)",
-                "strain_name": "some other name",
-                "genotype": "some other genotype"
-            }
-        ],
+        "strain_background": "C57BL/6J (B6)",
+        "strain": "some name",
+        "genotype": "some genotype",
         "sex": "female",
         "taxon_id": "Mus musculus",
         "parents": [

@@ -54,7 +54,6 @@
             "$ref": "mixins.json#/collections"
         }
     ],
-    "dependentSchemas": {},
     "properties": {
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."
@@ -101,6 +100,10 @@
                 "title": "External Resource",
                 "description": "An external resource associated with the donor.",
                 "type": "object",
+                "required": [
+                    "resource_identifier",
+                    "resource_name"
+                ],
                 "additionalProperties": false,
                 "properties": {
                     "resource_name": {

@@ -44,3 +44,9 @@ class HumanDonor(Donor):
 class RodentDonor(Donor):
     item_type = 'rodent_donor'
     schema = load_schema('igvfd:schemas/rodent_donor.json')
+
+    def unique_keys(self, properties):
+        keys = super(RodentDonor, self).unique_keys(properties)
+        value = u'{strain}/{sex}'.format(**properties)
+        keys.setdefault('rodentdonor:strain_sex', []).append(value)
+        return keys
