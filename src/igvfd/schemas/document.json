@@ -6,6 +6,8 @@
     "type": "object",
     "required": [
         "document_type",
+        "decription",
+        "attachment",
         "lab",
         "award"
     ],
@@ -40,6 +42,35 @@
             "$ref": "mixins.json#/notes"
         }
     ],
+    "dependentSchemas": {
+        "document_type": {
+            "oneOf": [
+                {
+                    "required": [
+                        "characterization_method"
+                    ],
+                    "properties": {
+                        "document_type": {
+                            "enum": [
+                                "characterization"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "properties": {
+                            "document_type": {
+                                "enum": [
+                                    "characterization"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
     "properties": {
         "schema_version": {
             "default": "1"
@@ -49,7 +80,29 @@
             "description": "The category that best describes the document.",
             "type": "string",
             "enum": [
-                "general protocol"
+                "characterization",
+                "computational protocol",
+                "experimental protocol",
+                "file format specification",
+                "image",
+                "plasmid map",
+                "standards"
+            ]
+        },
+        "characterization_method": {
+            "title": "Characterization method",
+            "description": "The method used for the characterization.",
+            "type": "string",
+            "enum": [
+                "FACS",
+                "immunoblot",
+                "immunofluorescence",
+                "immunoprecipitation",
+                "mass spectrometry",
+                "PCR",
+                "restriction digest",
+                "RT-qPCR",
+                "Sequencing"
             ]
         },
         "description": {
