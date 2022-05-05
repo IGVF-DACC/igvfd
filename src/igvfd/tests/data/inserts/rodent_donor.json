@@ -1,0 +1,70 @@
+[
+    {
+        "uuid": "c37934b0-4269-4470-be53-9eac7b196447",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:alias_rodent_donor_1"
+        ],
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": [
+            "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        ],
+        "notes": "This is a note.",
+        "product_id": "GR000001",
+        "lot_id": "R00001",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "strain_background": "A/J (AJ)",
+        "strain": "some name",
+        "genotype": "some genotype",
+        "sex": "male",
+        "taxon_id": "Mus musculus",
+        "parents": [],
+        "external_resources": [
+            {
+                "resource_name": "NM_170707.4(LMNA):c.1824C>T (p.Gly608=)",
+                "resource_identifier": "Allele ID 29539",
+                "resource_url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/14500/?new_evidence=false"
+            }
+        ],
+        "collections": [
+            "ENCODE"
+        ]
+    },
+    {
+        "uuid": "05c0a52c-f861-4057-b3eb-751624bdff37",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:alias_rodent_donor_2"
+        ],
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": [
+            "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        ],
+        "notes": "This is a note.",
+        "product_id": "GR000001",
+        "lot_id": "R00001",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "strain_background": "C57BL/6J (B6)",
+        "strain": "some name",
+        "genotype": "some genotype",
+        "sex": "female",
+        "taxon_id": "Mus musculus",
+        "parents": [
+            "c37934b0-4269-4470-be53-9eac7b196447"
+        ],
+        "external_resources": [
+            {
+                "resource_name": "LISTERIN E3 UBIQUITIN PROTEIN LIGASE 1; LTN1",
+                "resource_identifier": "OMIM: 613083",
+                "resource_url": "https://omim.org/entry/613083"
+            }
+        ],
+        "collections": [
+            "ENCODE"
+        ]
+    }
+]

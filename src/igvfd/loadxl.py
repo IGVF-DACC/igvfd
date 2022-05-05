@@ -20,6 +20,8 @@ ORDER = [
     'document',
     'sample_ontology_term',
     'assay_ontology_term',
+    'human_donor',
+    'rodent_donor',
     'treatment',
     'cell_line',
     'tissue',
