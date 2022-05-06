@@ -158,16 +158,16 @@
                 "Saccharomyces"
             ]
         },
+        "sex": {
+            "title": "Sex",
+            "description": "Sex of the organism associated with the biosample.",
+            "type": "string"
+        },
         "age": {
             "title": "Age",
             "description": "Age of organism at collection of the biosample.",
             "type": "number",
             "minimum": 0
-        },
-        "sex": {
-            "title": "Sex",
-            "description": "Sex of the organism associated with the biosample.",
-            "type": "string"
         },
         "age_units": {
             "title": "Age units",
@@ -200,18 +200,14 @@
             ]
         },
         "biosample_ontology": {
-            "biosample_ontology": {
-                "title": "Biosample ontology",
-                "description": "Ontology of the biosample.",
-                "type": "string"
-            }
+            "title": "Biosample ontology term",
+            "description": "Ontology term of the biosample.",
+            "type": "string",
         },
         "disease_ontology": {
-            "disease_ontology": {
-                "title": "Disease ontology",
-                "description": "Ontology of the disease associated with the biosample.",
-                "type": "string"
-            }
+            "title": "Disease ontology term",
+            "description": "Ontology term of the disease associated with the biosample.",
+            "type": "string"
         },
         "nih_institutional_certification": {
             "type": "string",
@@ -221,13 +217,11 @@
             "pattern": "^NIC[A-Z0-9]+$"
         },
         "date_obtained": {
-            "date_obtained": {
-                "title": "Date obtained",
-                "description": "The date the biosample was harvested, disected, created depending on biosample type.",
-                "comment": "Date should be submitted in as YYYY-MM-DD.",
-                "type": "string",
-                "format": "date"
-            }
+            "title": "Date obtained",
+            "description": "The date the biosample was harvested, disected, created depending on biosample type.",
+            "comment": "Date should be submitted in as YYYY-MM-DD.",
+            "type": "string",
+            "format": "date"
         },
         "related_biosamples": {
             "title": "Related biosamples",
