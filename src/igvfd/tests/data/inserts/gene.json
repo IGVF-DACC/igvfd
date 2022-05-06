@@ -70,5 +70,47 @@
             "H3f2",
             "Hist2h3ca1"
         ]
+    },
+    {
+        "uuid": "a13fb026-d42f-481c-9420-5fe3f17ede30",
+        "dbxrefs": [
+            "MIM:609150",
+            "HGNC:24343",
+            "ENSEMBL:ENSG00000154832",
+            "Vega:OTTHUMG00000132670",
+            "UniProtKB:Q9P0U4"
+        ],
+        "geneid": "30827",
+        "name": "CXXC finger protein 1",
+        "ncbi_entrez_status": "live",
+        "organism": "Homo sapiens",
+        "status": "released",
+        "symbol": "CXXC1",
+        "synonyms": [
+            "2410002I16Rik",
+            "5830420C16Rik",
+            "CFP1",
+            "CGBP",
+            "HsT2645",
+            "PCCX1",
+            "PHF18",
+            "SPP1",
+            "ZCGPC1",
+            "hCGBP"
+        ],
+        "locations": [
+            {
+                "assembly": "GRCh38",
+                "chromosome": "chr18",
+                "start": 50282343,
+                "end": 50288322
+            },
+            {
+                "assembly": "hg19",
+                "chromosome": "chr18",
+                "start": 47808713,
+                "end": 47814692
+            }
+        ]
     }
 ]
