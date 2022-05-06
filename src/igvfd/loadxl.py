@@ -18,6 +18,7 @@ ORDER = [
     'source',
     'lab',
     'document',
+    'gene',
     'sample_ontology_term',
     'assay_ontology_term',
     'human_donor',

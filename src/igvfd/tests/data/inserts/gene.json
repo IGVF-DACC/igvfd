@@ -1,0 +1,74 @@
+[
+    {
+        "geneid": "912",
+        "uuid": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
+        "dbxrefs": [
+            "MIM:188410",
+            "HGNC:1637",
+            "ENSEMBL:ENSG00000158473",
+            "IMGT/GENE-DB:CD1D",
+            "Vega:OTTHUMG00000022436",
+            "UniProtKB:P15813"
+        ],
+        "name": "CD1d molecule",
+        "ncbi_entrez_status": "live",
+        "organism": "Homo sapiens",
+        "status": "released",
+        "symbol": "CD1D",
+        "synonyms": [
+            "CD1A",
+            "R3",
+            "R3G1"
+        ]
+    },
+    {
+        "geneid": "2995",
+        "uuid": "83a311d1-7ed3-41bb-85f0-1f00c458e6fc",
+        "dbxrefs": [
+            "MIM:110750",
+            "HGNC:4704",
+            "ENSEMBL:ENSG00000136732",
+            "Vega:OTTHUMG00000131464",
+            "UniProtKB:P04921",
+            "RefSeq:NG_007479"
+        ],
+        "name": "glycophorin C (Gerbich blood group)",
+        "ncbi_entrez_status": "live",
+        "organism": "Homo sapiens",
+        "status": "released",
+        "symbol": "GYPC",
+        "synonyms": [
+            "CD236",
+            "CD236R",
+            "GE",
+            "GE:GPC:GPD:GYPD",
+            "GPC",
+            "GPD",
+            "GYPD",
+            "PAS-2",
+            "PAS-2'"
+        ]
+    },
+    {
+        "geneid": "15077",
+        "uuid": "c1bce75a-44ee-49a0-b950-926fabd6b2db",
+        "dbxrefs": [
+            "MGI:2448355",
+            "ENSEMBL:ENSMUSG00000093769",
+            "Vega:OTTMUSG00000021930",
+            "UniProtKB:P84228",
+            "UniProtKB:B9EI85"
+        ],
+        "name": "histone cluster 2, H3c1",
+        "ncbi_entrez_status": "live",
+        "organism": "Mus musculus",
+        "status": "released",
+        "symbol": "Hist2h3c1",
+        "synonyms": [
+            "BE691662",
+            "H3-615",
+            "H3f2",
+            "Hist2h3ca1"
+        ]
+    }
+]
