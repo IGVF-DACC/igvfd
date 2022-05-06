@@ -1,5 +1,6 @@
 [![CircleCI](https://circleci.com/gh/IGVF-DACC/igvfd/tree/dev.svg?style=svg)](https://circleci.com/gh/IGVF-DACC/igvfd/tree/dev)
 [![Coverage Status](https://coveralls.io/repos/github/IGVF-DACC/igvfd/badge.svg?branch=dev)](https://coveralls.io/github/IGVF-DACC/igvfd?branch=dev)
+[![CodeBuild Status](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiWlR0TjZxSmNiaWR6UXpYNmgvMWpVNjZPaUhmZm9HTjY4Uzd6MEJpTGd1L3hMelVYQlZ4VHB4YmxSN1JTTlZzZVNhR0gyY3hmb3JGRTFML1hRVWE3dkpNPSIsIml2UGFyYW1ldGVyU3BlYyI6IlBHaWJoLzRqZUlwQXFMckYiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=cdk)](https://us-west-2.codebuild.aws.amazon.com/project/eyJlbmNyeXB0ZWREYXRhIjoiV1AvUDlNU1JnNXdZWTVzbjMyQVVFcFJ1OG9JcVkxanZtTEJvaVJyR05HU2VQdnVVdWo3YW41VGdYRHpFblIyb1BvUXZ0aFZxQVppUjJibnpqZytSZ0o1aWovS2ZBSTBJa1UzQWJ6Tm9SREpYRjIvV0NsNU82SmtrdUJNR2RxMWM2bFVuZ3pxbU5MWFQiLCJpdlBhcmFtZXRlclNwZWMiOiJwVVBPdFlGYUttR2ZQbmhFIiwibWF0ZXJpYWxTZXRTZXJpYWwiOjF9)
 # igvfD
 Metadata database for IGVF project.
 

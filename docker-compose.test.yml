@@ -4,7 +4,7 @@ services:
 
   postgres:
     build:
-      context: ./config/docker_compose/postgres/
+      context: ./docker/postgres/
     image: igvfd-postgres
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
@@ -14,7 +14,7 @@ services:
   pyramid:
     build:
       context: .
-      dockerfile: ./config/docker_compose/pyramid/Dockerfile
+      dockerfile: ./docker/pyramid/Dockerfile
     image: igvfd-pyramid
     volumes:
       - ".:/igvfd"
@@ -26,7 +26,10 @@ services:
       - postgres
 
   nginx:
-    image: nginx:1.21.4
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    image: igvfd-nginx
     volumes:
       - "./config/nginx/docker.conf:/etc/nginx/nginx.conf"
     command: nginx -c /etc/nginx/nginx.conf -g 'daemon off; pid /dev/null;'
