@@ -1,6 +1,6 @@
 {
-    "title": "Primary Cells",
-    "$id": "/profiles/primary_cells.json",
+    "title": "Primary Cell",
+    "$id": "/profiles/primary_cell.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Schema for submitting a primary cell sample.",
     "type": "object",
@@ -86,5 +86,5 @@
             "title": "Date harvested"
         }
     },
-    "changelog": "/profiles/changelogs/primary_cells.md"
+    "changelog": "/profiles/changelogs/primary_cell.md"
 }

@@ -42,9 +42,9 @@ class Biosample(Sample):
         'title': 'Primary cells',
         'description': 'Listing of primary cells',
     })
-class PrimaryCells(Biosample):
-    item_type = 'primary_cells'
-    schema = load_schema('igvfd:schemas/primary_cells.json')
+class PrimaryCell(Biosample):
+    item_type = 'primary_cell'
+    schema = load_schema('igvfd:schemas/primary_cell.json')
 
 
 @collection(
