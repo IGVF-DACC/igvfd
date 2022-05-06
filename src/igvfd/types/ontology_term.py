@@ -112,3 +112,15 @@ class AssayOntologyTerm(OntologyTerm):
     })
     def category_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'assay')
+
+
+@collection(
+    name='disease-ontology-terms',
+    unique_key='term_id',
+    properties={
+        'title': 'Disease ontology term',
+        'description': 'Ontology terms used by IGVF for diseases',
+    })
+class DiseaseOntologyTerm(OntologyTerm):
+    item_type = 'disease_ontology_term'
+    schema = load_schema('igvfd:schemas/disease_ontology_term.json')
