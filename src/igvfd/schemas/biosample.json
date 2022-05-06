@@ -202,7 +202,7 @@
         "biosample_ontology": {
             "title": "Biosample ontology term",
             "description": "Ontology term of the biosample.",
-            "type": "string",
+            "type": "string"
         },
         "disease_ontology": {
             "title": "Disease ontology term",
