@@ -24,7 +24,7 @@ ORDER = [
     'rodent_donor',
     'treatment',
     'cell_line',
-    'primary_cells',
+    'primary_cell',
     'tissue',
     'organoid',
     'in_vitro',
