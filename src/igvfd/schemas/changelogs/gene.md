@@ -1,0 +1,1 @@
+## Changelog for gene.json

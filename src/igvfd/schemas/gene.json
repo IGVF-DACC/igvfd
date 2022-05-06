@@ -1,7 +1,7 @@
 {
     "title": "Gene",
     "description": "Schema for submitting a gene.",
-    "id": "/profiles/gene.json",
+    "$id": "/profiles/gene.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
@@ -49,7 +49,7 @@
                         },
                         "organism": {
                             "enum": [
-                                "human"
+                                "Homo sapiens"
                             ]
                         }
                     }
@@ -70,7 +70,7 @@
                         },
                         "organism": {
                             "enum": [
-                                "mouse"
+                                "Mus musculus"
                             ]
                         }
                     }
@@ -203,8 +203,8 @@
             "comment": "For now I am adding it as enum. In future we need to change it to linkTo.",
             "type": "string",
             "enum": [
-                "human",
-                "mouse"
+                "Homo sapiens",
+                "Mus musculus"
             ]
         }
     },
