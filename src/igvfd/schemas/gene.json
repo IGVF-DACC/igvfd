@@ -4,8 +4,17 @@
     "id": "/profiles/gene.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
-    "required": ["geneid", "ncbi_entrez_status", "symbol", "dbxrefs", "organism"],
-    "identifyingProperties": ["uuid", "geneid"],
+    "required": [
+        "geneid",
+        "ncbi_entrez_status",
+        "symbol",
+        "dbxrefs",
+        "organism"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "geneid"
+    ],
     "additionalProperties": false,
     "mixinProperties": [
         {
@@ -30,7 +39,10 @@
                             "items": {
                                 "properties": {
                                     "assembly": {
-                                        "enum": ["GRCh38", "hg19"]
+                                        "enum": [
+                                            "GRCh38",
+                                            "hg19"
+                                        ]
                                     }
                                 }
                             }
@@ -48,7 +60,10 @@
                             "items": {
                                 "properties": {
                                     "assembly": {
-                                        "enum": ["mm10", "mm9"]
+                                        "enum": [
+                                            "mm10",
+                                            "mm9"
+                                        ]
                                     }
                                 }
                             }
@@ -77,15 +92,15 @@
             "uniqueKey": true
         },
         "ncbi_entrez_status": {
-          "title": "NCBI Entrez Gene Status",
-          "type": "string",
-          "default": "live",
-          "enum" : [
-              "live",
-              "secondary",
-              "discontinued"
-          ],
-          "permission": "import_items"
+            "title": "NCBI Entrez Gene Status",
+            "type": "string",
+            "default": "live",
+            "enum": [
+                "live",
+                "secondary",
+                "discontinued"
+            ],
+            "permission": "import_items"
         },
         "symbol": {
             "title": "Gene symbol",
@@ -110,7 +125,7 @@
             "items": {
                 "title": "Synonym",
                 "description": "An alternative symbol/name referring to the gene.",
-                "type":  "string",
+                "type": "string",
                 "format": "gene_name"
             },
             "permission": "import_items"
@@ -126,7 +141,7 @@
                 "title": "External identifier",
                 "description": "A unique identifier from external resource (e.g. HGNC, MGI, FlyBase, WormBase, ENSEMBL, MIM, UniProtKB, Vega, miRBase).",
                 "comment": "Submit as database_name:id. See changelog for potential databases.",
-                "type":  "string",
+                "type": "string",
                 "pattern": "^((HGNC:\\d+)|(MGI:\\d+)|(ENSEMBL:ENS[A-Z]*G\\d+)|(MIM:\\d+)|(UniProtKB:[0-9A-Z]+)|(Vega:OTT[A-Z]+G\\d+)|(miRBase:MI\\d+)|(IMGT/GENE-DB:[0-9A-Za-z/\\(\\)\\-]+)|(RefSeq:[A-Z]{2}_[\\d.]+)|(GeneCards:[0-9a-zA-Z-]+))$"
             },
             "permission": "import_items"
@@ -142,7 +157,12 @@
                 "description": "Gene location specified using 1-based, closed coordinates for a specific version of the reference genome assembly.",
                 "type": "object",
                 "additionalProperties": false,
-                "required": ["assembly", "chromosome", "start", "end"],
+                "required": [
+                    "assembly",
+                    "chromosome",
+                    "start",
+                    "end"
+                ],
                 "properties": {
                     "assembly": {
                         "title": "Mapping assembly",
