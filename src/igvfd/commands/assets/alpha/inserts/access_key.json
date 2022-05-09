@@ -1,0 +1,9 @@
+[
+    {
+        "uuid": "0abbd123-b456-433c-b360-93996f679dae",
+        "user": "/users/7e95dcd6-9c35-4082-9c53-09d14c5752be/",
+        "description": "Unencrypted secret key is 'bazqux', hashed using edw_hash. To use with cURL to make admin requests, pass -u delme:bazqux",
+        "access_key_id": "delme",
+        "secret_access_key_hash": "45c9H91zyXXZr4KFADhZzr2QFLgnbDT3OPFZOVFRiNhbYB9OujH5ceZIJn9mEYAe"
+    }
+]
