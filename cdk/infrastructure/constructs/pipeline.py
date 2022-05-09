@@ -91,6 +91,20 @@ class BasicSelfUpdatingPipeline(Construct):
             ]
         )
 
+    def _get_underlying_pipeline(self) -> Pipeline:
+        if getattr(self, '_pipeline', None) is None:
+            # Can't modify high-level CodePipeline after build.
+            self._code_pipeline.build_pipeline()
+            # Low-level pipeline.
+            self._pipeline = self._code_pipeline.pipeline
+        return self._pipeline
+
+    def _add_slack_notifications(self) -> None:
+        self._get_underlying_pipeline().notify_on_execution_state_change(
+            'NotifySlack',
+            self._existing_resources.notification.encode_dcc_chatbot,
+        )
+
 
 class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
 
@@ -188,20 +202,6 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             ]
         )
 
-    def _get_underlying_pipeline(self) -> Pipeline:
-        if getattr(self, '_pipeline', None) is None:
-            # Can't modify high-level CodePipeline after build.
-            self._code_pipeline.build_pipeline()
-            # Low-level pipeline.
-            self._pipeline = self._code_pipeline.pipeline
-        return self._pipeline
-
-    def _add_slack_notifications(self) -> None:
-        self._get_underlying_pipeline().notify_on_execution_state_change(
-            'NotifySlack',
-            self._existing_resources.notification.encode_dcc_chatbot,
-        )
-
 
 class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
 
@@ -226,6 +226,25 @@ class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
         self._add_development_deploy_stage()
         self._add_slack_notifications()
 
+    def _define_cdk_synth_step(self) -> None:
+        self._synth = ShellStep(
+            'SynthStep',
+            input=self._github,
+            env={
+                'BRANCH': self._branch
+            },
+            commands=[
+                'npm install -g aws-cdk',
+                'cd ./cdk',
+                'python -m venv .venv',
+                '. .venv/bin/activate',
+                'pip install -r requirements.txt -r requirements-dev.txt',
+                'pytest',
+                'cdk synth -v -c branch=$BRANCH -c demo=True',
+            ],
+            primary_output_directory='cdk/cdk.out',
+        )
+
     def _add_development_deploy_stage(self) -> None:
         stage = DevelopmentDeployStage(
             self,
@@ -239,18 +258,4 @@ class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
         )
         self._code_pipeline.add_stage(
             stage,
-        )
-
-    def _get_underlying_pipeline(self) -> Pipeline:
-        if getattr(self, '_pipeline', None) is None:
-            # Can't modify high-level CodePipeline after build.
-            self._code_pipeline.build_pipeline()
-            # Low-level pipeline.
-            self._pipeline = self._code_pipeline.pipeline
-        return self._pipeline
-
-    def _add_slack_notifications(self) -> None:
-        self._get_underlying_pipeline().notify_on_execution_state_change(
-            'NotifySlack',
-            self._existing_resources.notification.encode_dcc_chatbot,
         )
