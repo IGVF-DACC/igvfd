@@ -201,3 +201,56 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             'NotifySlack',
             self._existing_resources.notification.encode_dcc_chatbot,
         )
+
+
+class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
+
+    def __init__(
+            self,
+            scope: Construct,
+            construct_id: str,
+            *,
+            github_repo: str,
+            branch: str,
+            existing_resources: ExistingResources,
+            **kwargs: Any,
+    ) -> None:
+        super().__init__(
+            scope,
+            construct_id,
+            github_repo=github_repo,
+            branch=branch,
+            existing_resources=existing_resources,
+            **kwargs,
+        )
+        self._add_development_deploy_stage()
+        self._add_slack_notifications()
+
+    def _add_development_deploy_stage(self) -> None:
+        stage = DevelopmentDeployStage(
+            self,
+            prepend_project_name(
+                prepend_branch_name(
+                    self._branch,
+                    'DeployDevelopment',
+                )
+            ),
+            branch=self._branch,
+        )
+        self._code_pipeline.add_stage(
+            stage,
+        )
+
+    def _get_underlying_pipeline(self) -> Pipeline:
+        if getattr(self, '_pipeline', None) is None:
+            # Can't modify high-level CodePipeline after build.
+            self._code_pipeline.build_pipeline()
+            # Low-level pipeline.
+            self._pipeline = self._code_pipeline.pipeline
+        return self._pipeline
+
+    def _add_slack_notifications(self) -> None:
+        self._get_underlying_pipeline().notify_on_execution_state_change(
+            'NotifySlack',
+            self._existing_resources.notification.encode_dcc_chatbot,
+        )
