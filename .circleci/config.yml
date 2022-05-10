@@ -36,7 +36,7 @@ jobs:
 
   cdk-tests:
     docker:
-      - image: circleci/python:3.8.13-node
+      - image: circleci/python:3.8-node
     working_directory: ~/igvfd/cdk/
     steps:
       - checkout:
