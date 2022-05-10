@@ -13,10 +13,10 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:"
+            "j-michael-cherry:characterization_insert"
         ],
         "description": "Characterization of a biosample K562, lane 33.",
-        "attachment": "",
+        "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
         "award": "1UM1HG011996-01",
         "document_type": "characterization",
         "lab": "j-michael-cherry",
@@ -25,10 +25,10 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:"
+            "j-michael-cherry:computational_protocol_insert"
         ],
         "description": "Computtaional analysis pipeline description and diagram.",
-        "attachment": "",
+        "attachment": "iCLIP_pipeline_ENCODE.pdf",
         "award": "1UM1HG011996-01",
         "document_type": "computational protocol",
         "lab": "j-michael-cherry",
@@ -37,10 +37,10 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:"
+            "j-michael-cherry:experimental_protocol"
         ],
         "description": "Protocol of the experimental procedure.",
-        "attachment": "",
+        "attachment": "Stam_15_protocols.pdf",
         "award": "1UM1HG011996-01",
         "document_type": "experimental protocol",
         "lab": "j-michael-cherry",
@@ -49,10 +49,10 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:"
+            "j-michael-cherry:file_format_specification_insert"
         ],
         "description": "File format specs. Column 1 through 25 explained.",
-        "attachment": "",
+        "attachment": "bedMethyl.txt",
         "award": "1UM1HG012053-01",
         "document_type": "file format specification",
         "lab": "j-michael-cherry",
@@ -61,10 +61,10 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:"
+            "j-michael-cherry:image_svs_insert"
         ],
-        "description": "Pathology high resolution image.",
-        "attachment": "",
+        "description": "Gel image.",
+        "attachment": "PathologyImage_CMU-1.svs",
         "award": "1UM1HG012053-01",
         "document_type": "image",
         "lab": "j-michael-cherry",
@@ -73,10 +73,22 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:"
+            "j-michael-cherry:image_tif_insert"
+        ],
+        "description": "Pathology high resolution image.",
+        "attachment": "hnRNPA1_aviva-1_WB_HeLa_Fu.TIF",
+        "award": "1UM1HG012053-01",
+        "document_type": "image",
+        "lab": "j-michael-cherry",
+        "submitted_by": "duis.pede@nonummy.scelerisque",
+        "uuid": "325d553d2-b523-4dee-b82c-b6e45965b56b"
+    },
+    {
+        "aliases": [
+            "j-michael-cherry:plasmid_map_insert"
         ],
         "description": "Vector map.",
-        "attachment": "",
+        "attachment": "pLKO1_vector.png",
         "award": "1UM1HG012053-01",
         "document_type": "plasmid map",
         "lab": "j-michael-cherry",
