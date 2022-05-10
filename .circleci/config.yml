@@ -7,6 +7,9 @@ workflows:
       - mypy-cdk:
           requires:
             - lint
+      - cdk-tests:
+          requires:
+            - lint
       - run-tests:
           requires:
             - lint
@@ -30,6 +33,16 @@ jobs:
           path: ~/igvfd
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: mypy .
+
+  cdk-tests:
+    docker:
+      - image: circleci/python:3.8
+    working_directory: ~/igvfd/cdk/
+    steps:
+      - checkout:
+          path: ~/igvfd
+      - run: pip install -r requirements.txt -r requirements-dev.txt
+      - run: pytest tests/
 
   run-tests:
     machine:
