@@ -13,15 +13,29 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:characterization_insert"
+            "j-michael-cherry:characterization_massspec_insert"
         ],
         "description": "Characterization of a biosample K562, lane 33.",
         "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
         "award": "1UM1HG011996-01",
         "document_type": "characterization",
+        "characterization_method": "mass spectrometry",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
         "uuid": "35d583d2-b823-4dee-b82c-b6e45965b51b"
+    },
+    {
+        "aliases": [
+            "j-michael-cherry:characterization_restriction_insert"
+        ],
+        "description": "Characterization of a biosample HepG2, lane 233.",
+        "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
+        "award": "1UM1HG011996-01",
+        "document_type": "characterization",
+        "characterization_method": "restriction digest",
+        "lab": "j-michael-cherry",
+        "submitted_by": "duis.pede@nonummy.scelerisque",
+        "uuid": "15d583d2-b823-2dee-b82c-b6e45965b11b"
     },
     {
         "aliases": [
@@ -69,7 +83,7 @@
         "document_type": "image",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "325d583d2-b823-4dee-b82c-b6e45965b56b"
+        "uuid": "ad2f2c2e-22bf-4e33-3b4d-7223eb1ba33e"
     },
     {
         "aliases": [
@@ -81,7 +95,7 @@
         "document_type": "image",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "325d553d2-b523-4dee-b82c-b6e45965b56b"
+        "uuid": "ad1f3c3e-23bf-4e33-3b4d-7333eb1ba33e"
     },
     {
         "aliases": [
@@ -94,5 +108,96 @@
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
         "uuid": "ad1f4c5e-27bf-4e37-8b4d-7933eb1ba89e"
+    },
+    {
+        "aliases": [
+            "j-michael-cherry:characterization_RT-qPCR_insert"
+        ],
+        "description": "Characterization of a sample using RT-qPCR.",
+        "attachment": "jocelyn.jpg",
+        "award": "1UM1HG011996-01",
+        "document_type": "characterization",
+        "characterization_method": "RT-qPCR",
+        "lab": "j-michael-cherry",
+        "submitted_by": "duis.pede@nonummy.scelerisque",
+        "uuid": "1278577d-9d25-4868-a255-b08823332873"
+    },
+    {
+        "aliases": [
+            "j-michael-cherry:characterization_PCR_insert"
+        ],
+        "description": "Characterization of a sample using PCR.",
+        "attachment": "jocelyn.jpg",
+        "award": "1UM1HG011996-01",
+        "document_type": "characterization",
+        "characterization_method": "PCR",
+        "lab": "j-michael-cherry",
+        "submitted_by": "duis.pede@nonummy.scelerisque",
+        "uuid": "1478577d-9d25-4868-a255-b08853332873"
+    },
+    {
+        "aliases": [
+            "j-michael-cherry:characterization_immunoprecipitation_insert"
+        ],
+        "description": "Characterization of a sample using immunoprecipitation.",
+        "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
+        "award": "1UM1HG011996-01",
+        "document_type": "characterization",
+        "characterization_method": "immunoprecipitation",
+        "lab": "j-michael-cherry",
+        "submitted_by": "duis.pede@nonummy.scelerisque",
+        "uuid": "a966613e-c55e-4bf0-96a5-a25f73448560"
+    },
+    {
+        "aliases": [
+            "j-michael-cherry:characterization_sequencing_insert"
+        ],
+        "description": "Characterization of a sample using sequencing.",
+        "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
+        "award": "1UM1HG011996-01",
+        "document_type": "characterization",
+        "characterization_method": "sequencing",
+        "lab": "j-michael-cherry",
+        "submitted_by": "duis.pede@nonummy.scelerisque",
+        "uuid": "05614b59-a421-47db-b4f7-5c7c8954c7e9"
+    },
+    {
+        "aliases": [
+            "j-michael-cherry:characterization_immunofluorescence_insert"
+        ],
+        "description": "Characterization of a sample using immunofluorescence.",
+        "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
+        "award": "1UM1HG011996-01",
+        "document_type": "characterization",
+        "characterization_method": "immunofluorescence",
+        "lab": "j-michael-cherry",
+        "submitted_by": "duis.pede@nonummy.scelerisque",
+        "uuid": "c7870a38-4286-42fc-9551-22436306e22a"
+    },
+    {
+        "aliases": [
+            "j-michael-cherry:characterization_immunoblot_insert"
+        ],
+        "description": "Characterization of a sample with immunoblot.",
+        "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
+        "award": "1UM1HG011996-01",
+        "document_type": "characterization",
+        "characterization_method": "immunoblot",
+        "lab": "j-michael-cherry",
+        "submitted_by": "duis.pede@nonummy.scelerisque",
+        "uuid": "bd40e085-0b82-4d11-b42f-46c56313a7ce"
+    },
+    {
+        "aliases": [
+            "j-michael-cherry:characterization_FACS_insert"
+        ],
+        "description": "Characterization of a sample using FACS.",
+        "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
+        "award": "1UM1HG011996-01",
+        "document_type": "characterization",
+        "characterization_method": "FACS",
+        "lab": "j-michael-cherry",
+        "submitted_by": "duis.pede@nonummy.scelerisque",
+        "uuid": "61fd6155-c9ba-4f09-9055-cfbf606054bf"
     }
 ]
