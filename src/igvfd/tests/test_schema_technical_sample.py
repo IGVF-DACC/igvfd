@@ -21,7 +21,6 @@ def test_technical_sample_type_dependency(technical_sample_1, testapp):
     res = testapp.patch_json(
         technical_sample_1['@id'],
         {'sample_material': 'not a real type'}, expect_errors=True)
-    print('status code: ' + str(res.status_code))
     assert(res.status_code == 422)
 
 
