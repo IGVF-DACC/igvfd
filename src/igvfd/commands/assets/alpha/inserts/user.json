@@ -1,0 +1,243 @@
+[
+    {
+        "email": "cherry@stanford.edu",
+        "first_name": "J. Michael",
+        "job_title": "PI",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Cherry",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "860c4750-8d3c-40f5-8f2c-90c5e5d19e88"
+    },
+    {
+        "email": "ksgraham@stanford.edu",
+        "first_name": "Keenan",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Developer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Graham",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "7e95dcd6-9c35-4082-9c53-09d14c5752be"
+    },
+    {
+        "email": "andreeva@stanford.edu",
+        "first_name": "Kalina",
+        "last_name": "Andreeva",
+        "lab": "/labs/j-michael-cherry/",
+        "job_title": "Data Wrangler",
+        "status": "current",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "uuid": "5e3038c4-baa5-4589-b3d8-ad2fe634e826"
+    },
+    {
+        "email": "khzlin@stanford.edu",
+        "first_name": "Khine",
+        "last_name": "Lin",
+        "lab": "/labs/j-michael-cherry/",
+        "job_title": "Data Wrangler",
+        "status": "current",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "uuid": "6667a92a-d202-493a-8c7d-7a56d1380356"
+    },
+    {
+        "email": "crickets@stanford.edu",
+        "first_name": "Cricket",
+        "last_name": "Sloan",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "/labs/j-michael-cherry/",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "81a6cc12-2847-4e2e-8f2c-f566699eb29e"
+    },
+    {
+        "email": "ojolanki@stanford.edu",
+        "first_name": "Otto",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Developer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Jolanki",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "10ab5aae-a007-11ec-b909-0242ac120002"
+    },
+    {
+        "email": "fytanaka@stanford.edu",
+        "first_name": "Forrest",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Developer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Tanaka",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "627eedbc-7cb3-4de3-9743-a86266e435a6"
+    },
+    {
+        "email": "gabdank@stanford.edu",
+        "first_name": "Idan",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Gabdank",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "98fb23d3-0d79-4c3d-981d-01539e6589f1"
+    },
+    {
+        "email": "hitz@stanford.edu",
+        "first_name": "Ben",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Developer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Hitz",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "986b362f-4eb6-4a9c-8173-3ab267307e3b"
+    },
+    {
+        "email": "emmao@stanford.edu",
+        "first_name": "Emma",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Developer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "O'Neill",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "viewing_groups": [
+            "community"
+        ],
+        "uuid": "af989110-67d2-4c8b-87f0-38d9d6d31868"
+    },
+    {
+        "email": "jjou@stanford.edu",
+        "first_name": "Jennifer",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Jou",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "viewing_groups": [
+            "community"
+        ],
+        "uuid": "43f2f757-5cbf-490a-9787-a1ee85a4cdcd"
+    },
+    {
+        "email": "mkagda@stanford.edu",
+        "first_name": "Meenakshi",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Kagda",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "viewing_groups": [
+            "community"
+        ],
+        "uuid": "6bae687f-b77a-46b9-af0e-a02c135cf42e"
+    },
+    {
+        "email": "iay@stanford.edu",
+        "first_name": "Ingrid",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Youngworth",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "viewing_groups": [
+            "community"
+        ],
+        "uuid": "85c75ed3-269b-4273-b4ba-e269ee350dd6"
+    },
+    {
+        "email": "mingjiel@stanford.edu",
+        "first_name": "Mingjie",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Developer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Li",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "6674945a-27a2-422a-92f5-d30a0a6aea20"
+    },
+    {
+        "email": "iwhaling@stanford.edu",
+        "first_name": "Ian",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Data Wrangler",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Whaling",
+        "status": "current",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "1e75d989-a438-4d77-a451-8a297fd3636e"
+    }
+]
