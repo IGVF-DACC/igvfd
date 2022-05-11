@@ -141,6 +141,8 @@ def get_allowed_origins(request):
 def origin_is_allowed(request):
     # Important for security to limit CORS to trusted origins.
     ALLOWED_ORIGINS = get_allowed_origins(request)
+    print('Found ALLOWED_ORIGINS', ALLOWED_ORIGINS)
+    print('comparing with', request.headers.get(ORIGIN))
     return ALLOWED_ORIGINS and request.headers.get(ORIGIN) in ALLOWED_ORIGINS
 
 
@@ -193,7 +195,10 @@ def _add_cors_to_response_headers(request):
 
 def maybe_add_cors_to_response_headers(request):
     if should_add_cors_to_headers(request):
+        print('SHOULD ADD CORS')
         _add_cors_to_response_headers(request)
+    else:
+        print('should not add cors')
 
 
 def maybe_add_preflight_cors_to_response_headers(request):
