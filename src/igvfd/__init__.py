@@ -165,7 +165,7 @@ def session(config):
         timeout=timeout,
         reissue_time=2**32,  # None does not work
         serializer=JSONSerializer(),
-        samesite=None,
+        samesite='None',
         secure=True,
     )
     config.set_session_factory(session_factory)
