@@ -34,6 +34,8 @@ USER igvfd
 
 RUN python -m pip install --upgrade pip
 
+RUN echo hih
+
 RUN pip install -e .[test]
 
 COPY --chown=igvfd:igvfd . .
