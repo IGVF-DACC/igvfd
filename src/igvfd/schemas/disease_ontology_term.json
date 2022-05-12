@@ -1,6 +1,6 @@
 {
     "title": "Disease ontology term",
-    "description": "Schema for an ontology term.",
+    "description": "Schema for a disease ontology term.",
     "$id": "/profiles/disease_ontology_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

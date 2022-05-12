@@ -17,3 +17,11 @@ def disease_ontology_term_myocardial_infarction(testapp):
         'term_name': 'Myocardial infarction'
     }
     return testapp.post_json('/disease_ontology_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def disease_ontology_term_incomplete(testapp):
+    item = {
+        'term_id': 'DOID:10652'
+    }
+    return item
