@@ -20,6 +20,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.sample_ontology_term',
     'igvfd.tests.fixtures.schemas.treatment',
     'igvfd.tests.fixtures.schemas.cell_line',
+    'igvfd.tests.fixtures.schemas.primary_cell',
     'igvfd.tests.fixtures.schemas.tissue',
     'igvfd.tests.fixtures.schemas.organoid',
     'igvfd.tests.fixtures.schemas.in_vitro',

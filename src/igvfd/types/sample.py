@@ -36,6 +36,18 @@ class Biosample(Sample):
 
 
 @collection(
+    name='primary-cells',
+    unique_key='accession',
+    properties={
+        'title': 'Primary cells',
+        'description': 'Listing of primary cells',
+    })
+class PrimaryCell(Biosample):
+    item_type = 'primary_cell'
+    schema = load_schema('igvfd:schemas/primary_cell.json')
+
+
+@collection(
     name='cell-lines',
     unique_key='accession',
     properties={

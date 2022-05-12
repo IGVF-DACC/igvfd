@@ -1,0 +1,67 @@
+[
+    {
+        "uuid": "578c72a2-4f84-2c8f-96b0-ec8715e18185",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:alias10"
+        ],
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": [
+            "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        ],
+        "notes": "This is a note.",
+        "product_id": "CL000001",
+        "lot_id": "R56701",
+        "url": "https://www.genome.gov/",
+        "starting_amount": 5,
+        "starting_amount_units": "μg",
+        "dbxrefs": [
+            "GEO:SAMN45"
+        ],
+        "organism": "Homo sapiens",
+        "age": 40,
+        "age_units": "year",
+        "life_stage": "adult",
+        "biosample_ontology": "motor neuron",
+        "disease_ontology": "motor neuron disease",
+        "nih_institutional_certification": "NICHD1443",
+        "sex": "male",
+        "date_obtained": "2022-02-02",
+        "source": "/labs/j-michael-cherry/",
+        "collections": [
+            "ENCODE"
+        ]
+    },
+    {
+        "uuid": "5673c93a-c748-11ec-9d64-0242ac120002",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:treated_primary_cells"
+        ],
+        "status": "released",
+        "submitter_comment": "This is a treated primary cell sample.",
+        "notes": "This is a note.",
+        "product_id": "x001",
+        "lot_id": "478901",
+        "url": "https://www.genome.gov/",
+        "starting_amount": 15,
+        "starting_amount_units": "μg",
+        "organism": "Homo sapiens",
+        "age": 30,
+        "age_units": "year",
+        "life_stage": "adult",
+        "biosample_ontology": "motor neuron",
+        "sex": "female",
+        "treatments": [
+            "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
+        ],
+        "date_obtained": "2022-04-02",
+        "source": "/labs/j-michael-cherry/",
+        "donors": [
+            "j-michael-cherry:alias_human_donor1"
+        ]
+    }
+]
