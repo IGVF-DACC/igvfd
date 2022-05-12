@@ -22,5 +22,5 @@
         "PCR",
         "restriction digest",
         "RT-qPCR",
-        "Sequencing"
+        "sequencing"
     ]
