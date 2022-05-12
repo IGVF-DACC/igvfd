@@ -22,6 +22,7 @@ ORDER = [
     'sample_ontology_term',
     'assay_ontology_term',
     'disease_ontology_term',
+    'trait_ontology_term',
     'human_donor',
     'rodent_donor',
     'treatment',

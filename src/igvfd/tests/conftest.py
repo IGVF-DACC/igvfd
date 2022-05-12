@@ -29,6 +29,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.user',
     'igvfd.tests.fixtures.schemas.assay_ontology_term',
     'igvfd.tests.fixtures.schemas.disease_ontology_term',
+    'igvfd.tests.fixtures.schemas.trait_ontology_term',
     'igvfd.tests.fixtures.schemas.human_donor',
     'igvfd.tests.fixtures.schemas.rodent_donor',
     'igvfd.tests.fixtures.schemas.document',
