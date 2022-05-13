@@ -85,7 +85,7 @@
         "geneid": {
             "title": "NCBI Entrez GeneID",
             "description": "NCBI Entrez GeneID of official nomenclature approved gene.",
-            "comment": "An ENCODE gene (object) needs to have an Entrez GeneID and needs to be approved by (i.e. have an ID and gene symbol from) offical nomenclature such as HGNC, MGI.",
+            "comment": "An IGVF gene (object) needs to have an Entrez GeneID and needs to be approved by (i.e. have an ID and gene symbol from) offical nomenclature such as HGNC, MGI.",
             "type": "string",
             "pattern": "^[1-9][0-9]*$",
             "permission": "import_items",
