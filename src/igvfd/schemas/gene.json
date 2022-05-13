@@ -1,0 +1,212 @@
+{
+    "title": "Gene",
+    "description": "Schema for submitting a gene.",
+    "$id": "/profiles/gene.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "geneid",
+        "ncbi_entrez_status",
+        "symbol",
+        "dbxrefs",
+        "organism"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "geneid"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/schema_version"
+        },
+        {
+            "$ref": "mixins.json#/uuid"
+        },
+        {
+            "$ref": "mixins.json#/notes"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        }
+    ],
+    "dependentSchemas": {
+        "locations": {
+            "oneOf": [
+                {
+                    "properties": {
+                        "locations": {
+                            "items": {
+                                "properties": {
+                                    "assembly": {
+                                        "enum": [
+                                            "GRCh38",
+                                            "hg19"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "organism": {
+                            "enum": [
+                                "Homo sapiens"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "locations": {
+                            "items": {
+                                "properties": {
+                                    "assembly": {
+                                        "enum": [
+                                            "mm10",
+                                            "mm9"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "organism": {
+                            "enum": [
+                                "Mus musculus"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "geneid": {
+            "title": "NCBI Entrez GeneID",
+            "description": "NCBI Entrez GeneID of official nomenclature approved gene.",
+            "comment": "An IGVF gene (object) needs to have an Entrez GeneID and needs to be approved by (i.e. have an ID and gene symbol from) offical nomenclature such as HGNC, MGI.",
+            "type": "string",
+            "pattern": "^[1-9][0-9]*$",
+            "permission": "import_items",
+            "uniqueKey": true
+        },
+        "ncbi_entrez_status": {
+            "title": "NCBI Entrez Gene Status",
+            "type": "string",
+            "default": "live",
+            "enum": [
+                "live",
+                "secondary",
+                "discontinued"
+            ],
+            "permission": "import_items"
+        },
+        "symbol": {
+            "title": "Gene symbol",
+            "description": "Gene symbol approved by the official nomenclature.",
+            "type": "string",
+            "format": "gene_name",
+            "permission": "import_items"
+        },
+        "name": {
+            "title": "Name",
+            "description": "The full gene name preferably approved by the official nomenclature.",
+            "type": "string",
+            "format": "gene_name",
+            "permission": "import_items"
+        },
+        "synonyms": {
+            "title": "Synonyms",
+            "description": "Alternative symbols that have been used to refer to the gene.",
+            "comment": "The list of synonyms is maintained using information from NCBI Entrez. Synonyms not included in NCBI gene_info can be added but are not actively maintained.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "title": "Synonym",
+                "description": "An alternative symbol/name referring to the gene.",
+                "type": "string",
+                "format": "gene_name"
+            },
+            "permission": "import_items"
+        },
+        "dbxrefs": {
+            "title": "External resources",
+            "description": "Unique identifiers from external resources.",
+            "comment": "This list should have at least an ID from the official nomenclature. The list of other dbxrefs is maintained using information from NCBI Entrez. Identifiers not included in NCBI gene_info can be added but are not actively maintained.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "External identifier",
+                "description": "A unique identifier from external resource (e.g. HGNC, MGI, FlyBase, WormBase, ENSEMBL, MIM, UniProtKB, Vega, miRBase).",
+                "comment": "Submit as database_name:id. See changelog for potential databases.",
+                "type": "string",
+                "pattern": "^((HGNC:\\d+)|(MGI:\\d+)|(ENSEMBL:ENS[A-Z]*G\\d+)|(MIM:\\d+)|(UniProtKB:[0-9A-Z]+)|(Vega:OTT[A-Z]+G\\d+)|(miRBase:MI\\d+)|(IMGT/GENE-DB:[0-9A-Za-z/\\(\\)\\-]+)|(RefSeq:[A-Z]{2}_[\\d.]+)|(GeneCards:[0-9a-zA-Z-]+))$"
+            },
+            "permission": "import_items"
+        },
+        "locations": {
+            "title": "Gene locations",
+            "description": "Gene locations specified using 1-based, closed coordinates for different versions of reference genome assemblies.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Gene location",
+                "description": "Gene location specified using 1-based, closed coordinates for a specific version of the reference genome assembly.",
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "assembly",
+                    "chromosome",
+                    "start",
+                    "end"
+                ],
+                "properties": {
+                    "assembly": {
+                        "title": "Mapping assembly",
+                        "description": "The genome assembly to which coordinates relate. e.g. GRCh38.",
+                        "type": "string",
+                        "enum": [
+                            "GRCh38",
+                            "hg19",
+                            "mm10",
+                            "mm9"
+                        ]
+                    },
+                    "chromosome": {
+                        "title": "Chromosome",
+                        "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX",
+                        "type": "string",
+                        "pattern": "^(chr[0-9A-Za-z]+)$"
+                    },
+                    "start": {
+                        "title": "Start",
+                        "description": "The starting coordinate.",
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "end": {
+                        "title": "End",
+                        "description": "The ending coordinate.",
+                        "type": "integer",
+                        "minimum": 0
+                    }
+                }
+            },
+            "permission": "import_items"
+        },
+        "organism": {
+            "title": "Organism",
+            "description": "Organism of the gene.",
+            "comment": "For now I am adding it as enum. In future we need to change it to linkTo.",
+            "type": "string",
+            "enum": [
+                "Homo sapiens",
+                "Mus musculus"
+            ]
+        }
+    },
+    "changelog": "/profiles/changelogs/gene.md"
+}

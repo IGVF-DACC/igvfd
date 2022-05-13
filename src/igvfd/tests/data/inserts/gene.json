@@ -1,0 +1,231 @@
+[
+    {
+        "geneid": "912",
+        "uuid": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
+        "dbxrefs": [
+            "MIM:188410",
+            "HGNC:1637",
+            "ENSEMBL:ENSG00000158473",
+            "IMGT/GENE-DB:CD1D",
+            "Vega:OTTHUMG00000022436",
+            "UniProtKB:P15813"
+        ],
+        "name": "CD1d molecule",
+        "ncbi_entrez_status": "live",
+        "organism": "Homo sapiens",
+        "status": "released",
+        "symbol": "CD1D",
+        "synonyms": [
+            "CD1A",
+            "R3",
+            "R3G1"
+        ],
+        "notes": "Adding a note to test it."
+    },
+    {
+        "dbxrefs": [
+            "UniProtKB:F8W6N3",
+            "ENSEMBL:ENSG00000163930",
+            "MIM:603089",
+            "Vega:OTTHUMG00000158392",
+            "GeneCards:BAP1",
+            "UniProtKB:Q92560",
+            "HGNC:950",
+            "RefSeq:NM_004656.4",
+            "UniProtKB:A0A024R305"
+        ],
+        "uuid": "fff95719-346c-471f-8b72-8a05c0102b1b",
+        "geneid": "8314",
+        "locations": [
+            {
+                "assembly": "GRCh38",
+                "chromosome": "chr3",
+                "start": 52401004,
+                "end": 52410030
+            },
+            {
+                "assembly": "hg19",
+                "chromosome": "chr3",
+                "start": 52435024,
+                "end": 52444024
+            }
+        ],
+        "name": "BRCA1 associated protein 1",
+        "ncbi_entrez_status": "live",
+        "organism": "Homo sapiens",
+        "schema_version": "3",
+        "status": "released",
+        "symbol": "BAP1",
+        "synonyms": [
+            "UCHL2",
+            "HUCEP-13",
+            "KIAA0272",
+            "hucep-6"
+        ]
+    },
+    {
+        "uuid": "a13fb026-d42f-481c-9420-5fe3f17ede30",
+        "dbxrefs": [
+            "MIM:609150",
+            "HGNC:24343",
+            "ENSEMBL:ENSG00000154832",
+            "Vega:OTTHUMG00000132670",
+            "UniProtKB:Q9P0U4"
+        ],
+        "geneid": "30827",
+        "name": "CXXC finger protein 1",
+        "ncbi_entrez_status": "live",
+        "organism": "Homo sapiens",
+        "status": "released",
+        "symbol": "CXXC1",
+        "synonyms": [
+            "2410002I16Rik",
+            "5830420C16Rik",
+            "CFP1",
+            "CGBP",
+            "HsT2645",
+            "PCCX1",
+            "PHF18",
+            "SPP1",
+            "ZCGPC1",
+            "hCGBP"
+        ],
+        "locations": [
+            {
+                "assembly": "GRCh38",
+                "chromosome": "chr18",
+                "start": 50282343,
+                "end": 50288322
+            },
+            {
+                "assembly": "hg19",
+                "chromosome": "chr18",
+                "start": 47808713,
+                "end": 47814692
+            }
+        ]
+    },
+    {
+        "dbxrefs": [
+            "RefSeq:NR_029596.1",
+            "ENSEMBL:ENSG00000207705",
+            "miRBase:MI0000252",
+            "HGNC:31512"
+        ],
+        "geneid": "406917",
+        "uuid": "cb9e336d-f19e-41df-90ee-62599f04d77b",
+        "locations": [
+            {
+                "assembly": "GRCh38",
+                "chromosome": "chr7",
+                "start": 128207872,
+                "end": 128207943
+            },
+            {
+                "assembly": "hg19",
+                "chromosome": "chr7",
+                "start": 127847925,
+                "end": 127847996
+            }
+        ],
+        "name": "microRNA 129-1",
+        "ncbi_entrez_status": "live",
+        "organism": "Homo sapiens",
+        "schema_version": "3",
+        "status": "released",
+        "symbol": "MIR129-1",
+        "synonyms": [
+            "MIRN129-1",
+            "mir-129-1",
+            "hsa-mir-129-1",
+            "MIR-129b"
+        ]
+    },
+    {
+        "geneid": "2995",
+        "uuid": "83a311d1-7ed3-41bb-85f0-1f00c458e6fc",
+        "dbxrefs": [
+            "MIM:110750",
+            "HGNC:4704",
+            "ENSEMBL:ENSG00000136732",
+            "Vega:OTTHUMG00000131464",
+            "UniProtKB:P04921",
+            "RefSeq:NG_007479"
+        ],
+        "name": "glycophorin C (Gerbich blood group)",
+        "ncbi_entrez_status": "live",
+        "organism": "Homo sapiens",
+        "status": "released",
+        "symbol": "GYPC",
+        "synonyms": [
+            "CD236",
+            "CD236R",
+            "GE",
+            "GE:GPC:GPD:GYPD",
+            "GPC",
+            "GPD",
+            "GYPD",
+            "PAS-2",
+            "PAS-2'"
+        ]
+    },
+    {
+        "geneid": "15077",
+        "uuid": "c1bce75a-44ee-49a0-b950-926fabd6b2db",
+        "dbxrefs": [
+            "MGI:2448355",
+            "ENSEMBL:ENSMUSG00000093769",
+            "Vega:OTTMUSG00000021930",
+            "UniProtKB:P84228",
+            "UniProtKB:B9EI85"
+        ],
+        "name": "histone cluster 2, H3c1",
+        "ncbi_entrez_status": "live",
+        "organism": "Mus musculus",
+        "status": "released",
+        "symbol": "Hist2h3c1",
+        "synonyms": [
+            "BE691662",
+            "H3-615",
+            "H3f2",
+            "Hist2h3ca1"
+        ]
+    },
+    {
+        "dbxrefs": [
+            "MGI:3719634",
+            "ENSEMBL:ENSMUSG00000094933",
+            "miRBase:MI0010690",
+            "RefSeq:NR_030647.1"
+        ],
+        "uuid": "25290279-a299-4574-910e-5831edb7d72a",
+        "geneid": "100124649",
+        "locations": [
+            {
+                "assembly": "mm10",
+                "chromosome": "chr13",
+                "start": 50600972,
+                "end": 50601080
+            },
+            {
+                "assembly": "mm9",
+                "chromosome": "chr13",
+                "start": 50639995,
+                "end": 50640103
+            }
+        ],
+        "name": "microRNA 683-2",
+        "ncbi_entrez_status": "live",
+        "organism": "Mus musculus",
+        "schema_version": "3",
+        "status": "released",
+        "symbol": "Mir683-2",
+        "synonyms": [
+            "Gm23091",
+            "Mirn683-2",
+            "Mirn683b",
+            "mmu-mir-683",
+            "mmu-mir-683-2"
+        ]
+    }
+]
