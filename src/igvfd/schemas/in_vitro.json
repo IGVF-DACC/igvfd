@@ -107,6 +107,12 @@
                 "type": "string",
                 "linkTo": "Treatment"
             }
+        },
+        "differentiated_from": {
+            "title": "Cell line differentiated from",
+            "description": "The cell line sample this in vitro sample was differentiated from.",
+            "type": "string",
+            "linkTo": "CellLine"
         }
     },
     "changelog": "/profiles/changelogs/in_vitro.md"
