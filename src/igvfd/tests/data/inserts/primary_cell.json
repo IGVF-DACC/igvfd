@@ -21,7 +21,7 @@
             "GEO:SAMN45"
         ],
         "organism": "Homo sapiens",
-        "age": 40,
+        "age": "40",
         "age_units": "year",
         "life_stage": "adult",
         "biosample_ontology": "motor neuron",
@@ -50,7 +50,7 @@
         "starting_amount": 15,
         "starting_amount_units": "μg",
         "organism": "Homo sapiens",
-        "age": 30,
+        "age": "30",
         "age_units": "year",
         "life_stage": "adult",
         "biosample_ontology": "motor neuron",

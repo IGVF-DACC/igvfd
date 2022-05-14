@@ -167,8 +167,7 @@
         "age": {
             "title": "Age",
             "description": "Age of organism at collection of the biosample.",
-            "type": "number",
-            "minimum": 0
+            "type": "string"
         },
         "age_units": {
             "title": "Age units",
