@@ -1736,5 +1736,23 @@
         ],
         "status": "current",
         "uuid": "14a6d92a-c4e3-11ec-9d64-0242ac120002"
+    },
+    {
+        "email": "cypress-testing@example.com",
+        "first_name": "Cypress",
+        "last_name": "Testing",
+        "lab": "/labs/j-michael-cherry/",
+        "viewing_groups": [
+            "IGVF"
+        ],
+        "job_title": "Software Developer",
+        "groups": [
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "status": "current",
+        "uuid": "4a63f82a-2e25-4790-bfcc-d183f8ca8869"
     }
 ]
