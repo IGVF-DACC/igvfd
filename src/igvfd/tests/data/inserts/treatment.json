@@ -49,7 +49,7 @@
         "purpose": "perturbation",
         "submitted_by": "mkagda@stanford.edu",
         "status": "released",
-        "temperature (Celsius)": 28,
+        "temperature": 28,
         "treatment_term_name": "new compound",
         "treatment_type": "chemical",
         "treatment_term_id": "NTR:0001185",
