@@ -182,7 +182,7 @@
             ],
             "comment": "post_treatment_time_units should be used in conjunction with post_treatment_time."
         },
-        "temperature (Celsius)": {
+        "temperature": {
             "title": "Temperature",
             "type": "number",
             "description": "The temperature in Celsius to which the sample was exposed",
