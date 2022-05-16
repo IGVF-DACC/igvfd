@@ -21,6 +21,7 @@ ORDER = [
     'gene',
     'sample_ontology_term',
     'assay_ontology_term',
+    'disease_ontology_term',
     'human_donor',
     'rodent_donor',
     'treatment',
