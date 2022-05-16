@@ -204,7 +204,7 @@
             "title": "Temperature units",
             "type": "string",
             "enum": [
-                "Celsius"
+                "celsius"
             ],
             "comment": "Temperature units should be used in conjunction with temperature."
         },

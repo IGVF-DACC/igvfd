@@ -38,11 +38,11 @@ def temperature_units_dependency(treatment_2, testapp):
     assert(res.status_code == 422)
     res = testapp.patch_json(
         treatment_2['@id'],
-        {'temperature_units': 'Celsius'}, expect_errors=True)
+        {'temperature_units': 'celsius'}, expect_errors=True)
     assert(res.status_code == 422)
     res = testapp.patch_json(
         treatment_2['@id'],
-        {'temperature': 10, 'temperature_units': 'Celsius'})
+        {'temperature': 10, 'temperature_units': 'celsius'})
     assert(res.status_code == 200)
 
 
