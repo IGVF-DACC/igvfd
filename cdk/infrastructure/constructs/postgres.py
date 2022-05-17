@@ -140,7 +140,6 @@ class PostgresFromSnapshot(PostgresBase):
             credentials=SnapshotCredentials.from_generated_secret(
                 'postgres',
             ),
-            database_name=self.database_name,
             engine=self.engine,
             instance_type=self.props.instance_type,
             vpc=self.props.existing_resources.network.vpc,
