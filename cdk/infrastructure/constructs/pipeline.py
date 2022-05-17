@@ -1,5 +1,3 @@
-import aws_cdk as cdk
-
 from constructs import Construct
 
 from aws_cdk.aws_codepipeline import Pipeline
@@ -10,7 +8,7 @@ from aws_cdk.pipelines import DockerCredential
 from aws_cdk.pipelines import ManualApprovalStep
 from aws_cdk.pipelines import ShellStep
 
-from aws_cdk.aws_secretsmanager import Secret
+from infrastructure.config import Config
 
 from infrastructure.naming import prepend_branch_name
 from infrastructure.naming import prepend_project_name
@@ -34,9 +32,11 @@ class BasicSelfUpdatingPipeline(Construct):
             github_repo: str,
             branch: str,
             existing_resources: ExistingResources,
+            config: Config,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
+        self._config = config
         self._github_repo = github_repo
         self._branch = branch
         self._existing_resources = existing_resources
@@ -91,6 +91,20 @@ class BasicSelfUpdatingPipeline(Construct):
             ]
         )
 
+    def _get_underlying_pipeline(self) -> Pipeline:
+        if getattr(self, '_pipeline', None) is None:
+            # Can't modify high-level CodePipeline after build.
+            self._code_pipeline.build_pipeline()
+            # Low-level pipeline.
+            self._pipeline = self._code_pipeline.pipeline
+        return self._pipeline
+
+    def _add_slack_notifications(self) -> None:
+        self._get_underlying_pipeline().notify_on_execution_state_change(
+            'NotifySlack',
+            self._existing_resources.notification.encode_dcc_chatbot,
+        )
+
 
 class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
 
@@ -102,6 +116,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             github_repo: str,
             branch: str,
             existing_resources: ExistingResources,
+            config: Config,
             **kwargs: Any,
     ) -> None:
         super().__init__(
@@ -110,6 +125,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             github_repo=github_repo,
             branch=branch,
             existing_resources=existing_resources,
+            config=config,
             **kwargs,
         )
         self._add_tooling_wave()
@@ -145,6 +161,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
                 )
             ),
             branch=self._branch,
+            config=self._config,
         )
         self._code_pipeline.add_stage(
             stage,
@@ -188,16 +205,44 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             ]
         )
 
-    def _get_underlying_pipeline(self) -> Pipeline:
-        if getattr(self, '_pipeline', None) is None:
-            # Can't modify high-level CodePipeline after build.
-            self._code_pipeline.build_pipeline()
-            # Low-level pipeline.
-            self._pipeline = self._code_pipeline.pipeline
-        return self._pipeline
 
-    def _add_slack_notifications(self) -> None:
-        self._get_underlying_pipeline().notify_on_execution_state_change(
-            'NotifySlack',
-            self._existing_resources.notification.encode_dcc_chatbot,
+class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
+
+    def __init__(
+            self,
+            scope: Construct,
+            construct_id: str,
+            *,
+            github_repo: str,
+            branch: str,
+            existing_resources: ExistingResources,
+            config: Config,
+            **kwargs: Any,
+    ) -> None:
+        super().__init__(
+            scope,
+            construct_id,
+            github_repo=github_repo,
+            branch=branch,
+            existing_resources=existing_resources,
+            config=config,
+            **kwargs,
+        )
+        self._add_development_deploy_stage()
+        self._add_slack_notifications()
+
+    def _add_development_deploy_stage(self) -> None:
+        stage = DevelopmentDeployStage(
+            self,
+            prepend_project_name(
+                prepend_branch_name(
+                    self._branch,
+                    'DeployDevelopment',
+                )
+            ),
+            branch=self._branch,
+            config=self._config,
+        )
+        self._code_pipeline.add_stage(
+            stage,
         )

@@ -4,10 +4,9 @@ from constructs import Construct
 
 from infrastructure.constructs.existing import igvf_dev
 
+from infrastructure.config import Config
 from infrastructure.stacks.backend import BackendStack
 from infrastructure.stacks.postgres import PostgresStack
-from infrastructure.naming import prepend_project_name
-from infrastructure.naming import prepend_branch_name
 
 from typing import Any
 
@@ -20,6 +19,7 @@ class DevelopmentDeployStage(cdk.Stage):
             construct_id: str,
             *,
             branch: str,
+            config: Config,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
@@ -28,6 +28,7 @@ class DevelopmentDeployStage(cdk.Stage):
             'PostgresStack',
             branch=branch,
             existing_resources_class=igvf_dev.Resources,
+            config=config,
             env=igvf_dev.US_WEST_2,
         )
         self.backend_stack = BackendStack(
