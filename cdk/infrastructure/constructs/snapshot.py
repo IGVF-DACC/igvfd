@@ -10,11 +10,22 @@ from aws_cdk.aws_lambda import Runtime
 from aws_cdk.aws_logs import RetentionDays
 
 from aws_cdk.aws_iam import PolicyStatement
+from aws_cdk.aws_iam import Role
+
+from typing import Any
+from typing import cast
 
 
 class LatestSnapshotFromDB(Construct):
 
-    def __init__(self, scope: Construct, construct_id: str, *, db_instance_identifier: str, **kwargs) -> None:
+    def __init__(
+            self,
+            scope: Construct,
+            construct_id: str,
+            *,
+            db_instance_identifier: str,
+            **kwargs: Any
+    ) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
         self.get_latest_rds_snapshot_id = PythonFunction(
@@ -27,7 +38,13 @@ class LatestSnapshotFromDB(Construct):
             timeout=Duration.seconds(60),
         )
 
-        self.get_latest_rds_snapshot_id.role.add_to_policy(
+        # Make mypy happy.
+        lambda_role = cast(
+            Role,
+            self.get_latest_rds_snapshot_id.role
+        )
+
+        lambda_role.add_to_policy(
             PolicyStatement(
                 actions=['rds:DescribeDBSnapshots'],
                 resources=['*'],

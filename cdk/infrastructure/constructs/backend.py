@@ -17,7 +17,7 @@ from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedTaskImageOptions
 from aws_cdk.aws_iam import ManagedPolicy
 
 from infrastructure.constructs.existing.types import ExistingResources
-from infrastructure.constructs.postgres import Postgres
+from infrastructure.constructs.postgres import PostgresConstruct
 
 from typing import Any
 from typing import cast
@@ -31,7 +31,7 @@ class Backend(Construct):
             construct_id: str,
             *,
             branch: str,
-            postgres: Postgres,
+            postgres: PostgresConstruct,
             existing_resources: ExistingResources,
             cpu: int,
             memory_limit_mib: int,

@@ -15,7 +15,6 @@ from aws_cdk.aws_iam import PolicyStatement
 from aws_cdk.aws_iam import Role
 from aws_cdk.aws_iam import ServicePrincipal
 
-from aws_cdk.aws_secretsmanager import Secret
 
 from infrastructure.naming import prepend_project_name
 
@@ -23,7 +22,6 @@ from shared_infrastructure.igvf_dev.secret import DockerHubCredentials
 
 from typing import Any
 from typing import cast
-from typing import Optional
 from typing import Dict
 
 

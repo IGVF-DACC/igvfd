@@ -4,7 +4,7 @@ from constructs import Construct
 
 from infrastructure.constructs.backend import Backend
 from infrastructure.constructs.existing.types import ExistingResourcesClass
-from infrastructure.constructs.postgres import Postgres
+from infrastructure.constructs.postgres import PostgresConstruct
 
 from typing import Any
 
@@ -17,7 +17,7 @@ class BackendStack(cdk.Stack):
             construct_id: str,
             *,
             branch: str,
-            postgres: Postgres,
+            postgres: PostgresConstruct,
             existing_resources_class: ExistingResourcesClass,
             **kwargs: Any
     ) -> None:

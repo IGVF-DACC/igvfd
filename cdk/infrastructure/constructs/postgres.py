@@ -21,7 +21,9 @@ from infrastructure.constructs.existing.types import ExistingResources
 from infrastructure.constructs.snapshot import LatestSnapshotFromDB
 
 from typing import Any
+from typing import cast
 from typing import Type
+from typing import Union
 
 
 @dataclass
@@ -55,12 +57,6 @@ class PostgresBase(Construct):
     def _define_database_name(self) -> None:
         self.database_name = 'igvfd'
 
-    def _add_tags_to_database(self) -> None:
-        cdk.Tags.of(self.database).add(
-            'branch',
-            self.props.config.branch,
-        )
-
 
 class Postgres(PostgresBase):
 
@@ -79,7 +75,6 @@ class Postgres(PostgresBase):
             **kwargs,
         )
         self._define_database()
-        self._add_tags_to_database()
 
     def _define_database(self) -> None:
         self.database = DatabaseInstance(
@@ -115,13 +110,18 @@ class PostgresFromSnapshot(PostgresBase):
         )
         self._get_latest_snapshot_id()
         self._define_database()
-        self._add_tags_to_database()
 
     def _get_latest_snapshot_id(self) -> None:
+        # Make mypy happy. The factory already
+        # checks that this is not None.
+        db_instance_identifier = cast(
+            str,
+            self.props.config.snapshot_source_db_identifier
+        )
         self._latest_snapshot = LatestSnapshotFromDB(
             self,
             'LatestSnapshotFromDB',
-            db_instance_identifier=self.props.config.snapshot_source_db_identifier
+            db_instance_identifier=db_instance_identifier
         )
 
     def _define_database(self) -> None:
@@ -144,7 +144,12 @@ class PostgresFromSnapshot(PostgresBase):
         )
 
 
-def postgres_factory(config: Config) -> Type[Postgres]:
+PostgresConstruct = Union[Postgres, PostgresFromSnapshot]
+
+PostgresConstructClass = Union[Type[Postgres], Type[PostgresFromSnapshot]]
+
+
+def postgres_factory(config: Config) -> PostgresConstructClass:
     if config.snapshot_source_db_identifier is not None:
         return PostgresFromSnapshot
     return Postgres

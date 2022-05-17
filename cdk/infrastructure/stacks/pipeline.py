@@ -1,4 +1,4 @@
-import aws_cdk as cdk
+from aws_cdk import Stack
 
 from constructs import Construct
 
@@ -10,9 +10,13 @@ from infrastructure.constructs.pipeline import DemoDeploymentPipeline
 from infrastructure.constructs.existing.types import ExistingResourcesClass
 
 from typing import Any
+from typing import Dict
+from typing import Union
+from typing import List
+from typing import Type
 
 
-class ContinuousDeploymentPipelineStack(cdk.Stack):
+class ContinuousDeploymentPipelineStack(Stack):
 
     def __init__(
             self,
@@ -39,7 +43,7 @@ class ContinuousDeploymentPipelineStack(cdk.Stack):
         )
 
 
-class DemoDeploymentPipelineStack(cdk.Stack):
+class DemoDeploymentPipelineStack(Stack):
 
     def __init__(
             self,
@@ -66,17 +70,19 @@ class DemoDeploymentPipelineStack(cdk.Stack):
         )
 
 
-pipeline_stacks = [
+PipelineStackClass = Union[Type[ContinuousDeploymentPipelineStack], Type[DemoDeploymentPipelineStack]]
+
+
+pipeline_stacks: List[PipelineStackClass] = [
     ContinuousDeploymentPipelineStack,
     DemoDeploymentPipelineStack,
 ]
 
-
-name_to_pipeline_stack_map = {
+name_to_pipeline_stack_map: Dict[str, PipelineStackClass] = {
     pipeline_stack.__name__: pipeline_stack
     for pipeline_stack in pipeline_stacks
 }
 
 
-def pipeline_stack_factory(name: str):
+def pipeline_stack_factory(name: str) -> PipelineStackClass:
     return name_to_pipeline_stack_map[name]

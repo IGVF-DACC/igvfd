@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 
+from typing import Any
+from typing import Dict
 from typing import Optional
 
 
-config = {
+config: Dict[str, Any] = {
     'org_name': 'igvf-dacc',
     'project_name': 'igvfd',
     'default_branch': 'main',
@@ -29,7 +31,7 @@ class Config:
     snapshot_source_db_identifier: Optional[str] = None
 
 
-def build_config_from_name(name, **kwargs):
+def build_config_from_name(name: str, **kwargs: Any) -> Config:
     return Config(
         **{
             **config['environment'][name],
@@ -38,7 +40,7 @@ def build_config_from_name(name, **kwargs):
     )
 
 
-def get_config_name_from_branch(branch: str):
+def get_config_name_from_branch(branch: str) -> str:
     if branch == 'dev':
         return 'dev'
     return 'demo'
