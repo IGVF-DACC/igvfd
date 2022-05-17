@@ -1,4 +1,4 @@
-import aws_cdk as cdk
+from aws_cdk import Tags
 
 from constructs import Construct
 
@@ -75,6 +75,7 @@ class Postgres(PostgresBase):
             **kwargs,
         )
         self._define_database()
+        self._add_tags_to_database()
 
     def _define_database(self) -> None:
         self.database = DatabaseInstance(
@@ -89,6 +90,12 @@ class Postgres(PostgresBase):
             ),
             allocated_storage=self.props.allocated_storage,
             max_allocated_storage=self.props.max_allocated_storage,
+        )
+
+    def _add_tags_to_database(self) -> None:
+        Tags.of(self.database).add(
+            'branch',
+            self.props.config.branch,
         )
 
 
@@ -110,18 +117,19 @@ class PostgresFromSnapshot(PostgresBase):
         )
         self._get_latest_snapshot_id()
         self._define_database()
+        self._add_tags_to_database()
 
     def _get_latest_snapshot_id(self) -> None:
         # Make mypy happy. The factory already
         # checks that this is not None.
-        db_instance_identifier = cast(
+        self._db_instance_identifier = cast(
             str,
             self.props.config.snapshot_source_db_identifier
         )
         self._latest_snapshot = LatestSnapshotFromDB(
             self,
             'LatestSnapshotFromDB',
-            db_instance_identifier=db_instance_identifier
+            db_instance_identifier=self._db_instance_identifier
         )
 
     def _define_database(self) -> None:
@@ -141,6 +149,21 @@ class PostgresFromSnapshot(PostgresBase):
             ),
             allocated_storage=self.props.allocated_storage,
             max_allocated_storage=self.props.max_allocated_storage,
+        )
+
+    def _add_tags_to_database(self) -> None:
+        tags = Tags.of(self.database)
+        tags.add(
+            'branch',
+            self.props.config.branch,
+        )
+        tags.add(
+            'snapshot_source_db_identifier',
+            self._db_instance_identifier
+        )
+        tags.add(
+            'from_snapshot_arn',
+            self._latest_snapshot.arn,
         )
 
 

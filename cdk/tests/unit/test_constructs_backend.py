@@ -6,16 +6,23 @@ from aws_cdk.assertions import Template
 def test_constructs_backend_initialize_backend_construct(stack, instance_type, existing_resources, vpc):
     from infrastructure.constructs.backend import Backend
     from infrastructure.constructs.postgres import Postgres
+    from infrastructure.constructs.postgres import PostgresProps
+    from infrastructure.config import Config
     # Given
     branch = 'some-branch'
     postgres = Postgres(
         stack,
         'Postgres',
-        branch=branch,
-        existing_resources=existing_resources,
-        allocated_storage=10,
-        max_allocated_storage=20,
-        instance_type=instance_type,
+        props=PostgresProps(
+            config=Config(
+                branch=branch,
+                pipeline='xyz',
+            ),
+            existing_resources=existing_resources,
+            allocated_storage=10,
+            max_allocated_storage=20,
+            instance_type=instance_type
+        )
     )
     # When
     backend = Backend(

@@ -6,6 +6,8 @@ from aws_cdk.assertions import Match
 
 def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_type, mocker):
     from infrastructure.constructs.postgres import Postgres
+    from infrastructure.constructs.postgres import PostgresProps
+    from infrastructure.config import Config
     # Given
     existing_resources = mocker.Mock()
     existing_resources.network.vpc = vpc
@@ -13,11 +15,16 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
     postgres = Postgres(
         stack,
         'Postgres',
-        branch='my-branch',
-        existing_resources=existing_resources,
-        allocated_storage=10,
-        max_allocated_storage=20,
-        instance_type=instance_type,
+        props=PostgresProps(
+            config=Config(
+                branch='my-branch',
+                pipeline='xyz',
+            ),
+            existing_resources=existing_resources,
+            allocated_storage=10,
+            max_allocated_storage=20,
+            instance_type=instance_type
+        )
     )
     # Then
     template = Template.from_stack(stack)
