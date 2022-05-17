@@ -43,7 +43,7 @@ def includeme(config):
     config.add_route('impersonate-user', 'impersonate-user')
 
 
-AUTH0_DOMAIN = 'dev-2bg1vkmg.us.auth0.com'
+AUTH0_DOMAIN = 'igvf-dacc.us.auth0.com'
 
 
 class LoginDenied(HTTPForbidden):
