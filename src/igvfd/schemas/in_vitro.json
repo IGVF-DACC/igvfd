@@ -108,11 +108,12 @@
                 "linkTo": "Treatment"
             }
         },
-        "differentiated_from": {
-            "title": "Cell line differentiated from",
-            "description": "The cell line sample this in vitro sample was differentiated from.",
-            "type": "string",
-            "linkTo": "CellLine"
+        "related_biosamples_relation": {
+            "enum": [
+                "pooled_from",
+                "hosted_by",
+                "derived_from"
+            ]
         }
     },
     "changelog": "/profiles/changelogs/in_vitro.md"

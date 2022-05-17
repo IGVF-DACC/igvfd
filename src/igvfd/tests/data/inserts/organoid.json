@@ -13,6 +13,10 @@
         "post_differentiation_time_units": "day",
         "treatments": [
             "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
-        ]
+        ],
+        "related_biosamples": [
+            "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
+        ],
+        "related_biosamples_relation": "derived_from"
     }
 ]

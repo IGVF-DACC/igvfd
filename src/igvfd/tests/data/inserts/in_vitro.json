@@ -15,6 +15,9 @@
             "3280b708-0f05-40fa-bff2-54e2b6505c13",
             "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
         ],
-        "differentiated_from": "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
+        "related_biosamples": [
+            "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
+        ],
+        "related_biosamples_relation": "derived_from"
     }
 ]

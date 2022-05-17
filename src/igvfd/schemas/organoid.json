@@ -119,6 +119,13 @@
                 "type": "string",
                 "linkTo": "Treatment"
             }
+        },
+        "related_biosamples_relation": {
+            "enum": [
+                "pooled_from",
+                "hosted_by",
+                "derived_from"
+            ]
         }
     },
     "changelog": "/profiles/changelogs/organoid.md"
