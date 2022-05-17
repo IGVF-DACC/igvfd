@@ -5,6 +5,7 @@ from aws_cdk.assertions import Template
 
 def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(stack, secret, mocker):
     from infrastructure.constructs.pipeline import BasicSelfUpdatingPipeline
+    from infrastructure.config import Config
     existing_resources = mocker.Mock()
     existing_resources.code_star_connection.arn = 'some-arn'
     existing_resources.docker_hub_credentials.secret = secret
@@ -13,7 +14,11 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
         'TestBasicSelfUpdatingPipeline',
         github_repo='ABC/xyz',
         branch='some-branch',
-        existing_resources=existing_resources
+        existing_resources=existing_resources,
+        config=Config(
+            branch='some-branch',
+            pipeline='XYZ',
+        )
     )
     template = Template.from_stack(stack)
     template.has_resource_properties(
@@ -263,6 +268,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
     from aws_cdk import Environment
     from aws_cdk.aws_secretsmanager import Secret
     from aws_cdk.aws_chatbot import SlackChannelConfiguration
+    from infrastructure.config import Config
     from infrastructure.constructs.pipeline import ContinuousDeploymentPipeline
     from infrastructure.constructs.existing import igvf_dev
     stack = Stack(
@@ -287,6 +293,10 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
         github_repo='ABC/xyz',
         branch='some-branch',
         existing_resources=existing_resources,
+        config=Config(
+            branch='some-branch',
+            pipeline='XYZ',
+        )
     )
     template = Template.from_stack(stack)
     template.has_resource_properties(

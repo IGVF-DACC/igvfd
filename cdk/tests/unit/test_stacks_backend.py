@@ -5,6 +5,7 @@ from aws_cdk.assertions import Template
 
 def test_stacks_backend_initialize_backend_stack():
     from aws_cdk import App
+    from infrastructure.config import Config
     from infrastructure.stacks.postgres import PostgresStack
     from infrastructure.stacks.backend import BackendStack
     from infrastructure.constructs.existing import igvf_dev
@@ -15,6 +16,10 @@ def test_stacks_backend_initialize_backend_stack():
         'TestPostgresStack',
         branch=branch,
         existing_resources_class=igvf_dev.Resources,
+        config=Config(
+            branch=branch,
+            pipeline='XYZ',
+        ),
         env=igvf_dev.US_WEST_2,
     )
     backend_stack = BackendStack(

@@ -5,6 +5,7 @@ from aws_cdk.assertions import Template
 
 def test_stacks_postgres_initialize_postgres_stack():
     from aws_cdk import App
+    from infrastructure.config import Config
     from infrastructure.stacks.postgres import PostgresStack
     from infrastructure.constructs.existing import igvf_dev
     app = App()
@@ -13,6 +14,10 @@ def test_stacks_postgres_initialize_postgres_stack():
         'TestPostgresStack',
         branch='some-branch',
         existing_resources_class=igvf_dev.Resources,
+        config=Config(
+            branch='some-branch',
+            pipeline='XYZ',
+        ),
         env=igvf_dev.US_WEST_2,
     )
     template = Template.from_stack(postgres_stack)
