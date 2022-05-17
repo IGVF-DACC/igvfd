@@ -1,6 +1,6 @@
 {
     "title": "Trait ontology term",
-    "description": "Schema for an ontology term.",
+    "description": "Schema for a trait ontology term.",
     "$id": "/profiles/trait_ontology_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

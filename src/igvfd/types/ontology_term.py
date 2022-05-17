@@ -115,7 +115,6 @@ class AssayOntologyTerm(OntologyTerm):
 
 
 @collection(
-<<<<<<< HEAD
     name='disease-ontology-terms',
     unique_key='term_id',
     properties={
@@ -125,7 +124,9 @@ class AssayOntologyTerm(OntologyTerm):
 class DiseaseOntologyTerm(OntologyTerm):
     item_type = 'disease_ontology_term'
     schema = load_schema('igvfd:schemas/disease_ontology_term.json')
-=======
+
+
+@collection(
     name='trait-ontology-terms',
     unique_key='term_id',
     properties={
@@ -135,4 +136,3 @@ class DiseaseOntologyTerm(OntologyTerm):
 class TraitOntologyTerm(OntologyTerm):
     item_type = 'trait_ontology_term'
     schema = load_schema('igvfd:schemas/trait_ontology_term.json')
->>>>>>> 4b964d4 (IGVF-122 trait ontology files)
