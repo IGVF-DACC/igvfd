@@ -82,5 +82,5 @@ def on_create(event, context):
 
 
 def custom_resource_handler(event, context):
-    if event['RequestType'] == 'Create':
+    if event['RequestType'] != 'Delete':
         return on_create(event, context)
