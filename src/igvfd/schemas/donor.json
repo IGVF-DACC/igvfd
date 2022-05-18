@@ -73,7 +73,8 @@
         "taxon_id": {
             "title": "Taxa (Organism) Identifier",
             "description": "Taxa (organism) identifier of the donor.",
-            "type": "string"
+            "type": "string",
+            "pattern": "^NCBI:txid[0-9]+"
         },
         "parents": {
             "title": "Parents",

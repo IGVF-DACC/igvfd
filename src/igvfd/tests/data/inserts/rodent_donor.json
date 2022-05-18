@@ -19,7 +19,7 @@
         "strain": "some name",
         "genotype": "some genotype",
         "sex": "male",
-        "taxon_id": "Mus musculus",
+        "taxon_id": "NCBI:txid10090",
         "parents": [],
         "external_resources": [
             {
@@ -52,7 +52,7 @@
         "strain": "some name",
         "genotype": "some genotype",
         "sex": "female",
-        "taxon_id": "Mus musculus",
+        "taxon_id": "NCBI:txid10090",
         "parents": [
             "c37934b0-4269-4470-be53-9eac7b196447"
         ],
