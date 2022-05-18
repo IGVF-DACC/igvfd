@@ -4,6 +4,8 @@ from typing import Any
 from typing import Dict
 from typing import Optional
 
+from infrastructure.constants import DEV_DATABASE_IDENTIFIER
+
 
 config: Dict[str, Any] = {
     'org_name': 'igvf-dacc',
@@ -12,7 +14,7 @@ config: Dict[str, Any] = {
     'region': 'us-west-2',
     'environment': {
         'demo': {
-            'snapshot_source_db_identifier': 'ip197tomb39f7o0',
+            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
             'pipeline': 'DemoDeploymentPipelineStack',
         },
         'dev': {
