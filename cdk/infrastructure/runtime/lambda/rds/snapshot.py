@@ -82,5 +82,6 @@ def on_create(event, context):
 
 
 def custom_resource_handler(event, context):
+    logging.warn(f'Event: {event}')
     if event['RequestType'] != 'Delete':
         return on_create(event, context)
