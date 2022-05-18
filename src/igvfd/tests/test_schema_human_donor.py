@@ -118,5 +118,5 @@ def test_taxon_id_pattern(human_donor, testapp):
         human_donor['@id'],
         {
             'taxon_id': 'NCBI:txid9606'
-        },)
+        })
     assert(res.status_code == 200)
