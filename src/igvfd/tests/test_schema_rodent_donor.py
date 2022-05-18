@@ -137,5 +137,5 @@ def test_taxon_id_pattern(rodent_donor, testapp):
         rodent_donor['@id'],
         {
             'taxon_id': 'NCBI:txid34854'
-        },  expect_errors=True)
+        })
     assert(res.status_code == 200)
