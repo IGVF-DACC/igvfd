@@ -167,7 +167,9 @@
         "age": {
             "title": "Age",
             "description": "Age of organism at collection of the biosample.",
-            "type": "string"
+            "comment": "",
+            "type": "string",
+            "pattern": "^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown))$"
         },
         "age_units": {
             "title": "Age units",
