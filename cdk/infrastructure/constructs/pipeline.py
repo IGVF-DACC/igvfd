@@ -88,7 +88,8 @@ class BasicSelfUpdatingPipeline(Construct):
             synth=self._synth,
             docker_credentials=[
                 self._get_docker_credentials(),
-            ]
+            ],
+            docker_enabled_for_synth=True,
         )
 
     def _get_underlying_pipeline(self) -> Pipeline:

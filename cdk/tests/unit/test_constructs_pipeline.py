@@ -75,7 +75,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                                 'ProjectName': {
                                     'Ref': 'TestBasicSelfUpdatingPipelineCodePipelineBuildSynthStepCdkBuildProjectC378F9B9'
                                 },
-                                'EnvironmentVariables': '[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"21e1e421f12d53f5783dd73023487de0adee348ca3e83bbd1cbc48dbc29add3a"}]'
+                                'EnvironmentVariables': '[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"be92f206f1c8f9fc9abcffdd57022b2b2dab1bceb82b9f87e6971eb5c8e2961f"}]'
                             },
                             'InputArtifacts': [
                                 {
@@ -158,7 +158,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                 ],
                 'Image': 'aws/codebuild/standard:5.0',
                 'ImagePullCredentialsType': 'CODEBUILD',
-                'PrivilegedMode': False,
+                'PrivilegedMode': True,
                 'Type': 'LINUX_CONTAINER'
             },
             'ServiceRole': {
