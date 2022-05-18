@@ -119,5 +119,19 @@
         "collections": [
             "ENCODE"
         ]
+    },
+    {
+        "uuid": "ee99221f-a11a-4f8b-baf3-9919db92f2f9",
+        "lab": "chongyuan-luo",
+        "award": "1U01HG012079-01",
+        "aliases": [
+            "chongyuan-luo:AAF donor of fibroblasts"
+        ],
+        "status": "released",
+        "ethnicity": [
+            "African American"
+        ],
+        "sex": "female",
+        "taxon_id": "Homo sapiens"
     }
 ]
