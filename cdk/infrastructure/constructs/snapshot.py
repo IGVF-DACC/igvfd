@@ -18,6 +18,11 @@ from typing import cast
 
 class LatestSnapshotFromDB(Construct):
 
+    get_latest_rds_snapshot_id: PythonFunction
+    provider: Provider
+    latest_snapshot: CustomResource
+    arn: str
+
     def __init__(
             self,
             scope: Construct,
