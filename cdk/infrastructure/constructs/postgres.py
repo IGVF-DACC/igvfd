@@ -9,6 +9,7 @@ from aws_cdk.aws_ec2 import SubnetType
 from aws_cdk.aws_rds import DatabaseInstance
 from aws_cdk.aws_rds import DatabaseInstanceFromSnapshot
 from aws_cdk.aws_rds import DatabaseInstanceEngine
+from aws_cdk.aws_rds import IInstanceEngine
 from aws_cdk.aws_rds import PostgresEngineVersion
 from aws_cdk.aws_rds import SnapshotCredentials
 
@@ -37,6 +38,10 @@ class PostgresProps:
 
 class PostgresBase(Construct):
 
+    database_name: str
+    engine: IInstanceEngine
+    props: PostgresProps
+
     def __init__(
             self,
             scope: Construct,
@@ -60,6 +65,8 @@ class PostgresBase(Construct):
 
 
 class Postgres(PostgresBase):
+
+    database: DatabaseInstance
 
     def __init__(
             self,
@@ -102,6 +109,10 @@ class Postgres(PostgresBase):
 
 class PostgresFromSnapshot(PostgresBase):
 
+    database: DatabaseInstanceFromSnapshot
+    latest_snapshot: LatestSnapshotFromDB
+    db_instance_identifier: str
+
     def __init__(
             self,
             scope: Construct,
@@ -123,21 +134,21 @@ class PostgresFromSnapshot(PostgresBase):
     def _get_latest_snapshot_id(self) -> None:
         # Make mypy happy. The factory already
         # checks that this is not None.
-        self._db_instance_identifier = cast(
+        self.db_instance_identifier = cast(
             str,
             self.props.config.snapshot_source_db_identifier
         )
-        self._latest_snapshot = LatestSnapshotFromDB(
+        self.latest_snapshot = LatestSnapshotFromDB(
             self,
             'LatestSnapshotFromDB',
-            db_instance_identifier=self._db_instance_identifier
+            db_instance_identifier=self.db_instance_identifier
         )
 
     def _define_database(self) -> None:
         self.database = DatabaseInstanceFromSnapshot(
             self,
             'PostgresFromSnapshot',
-            snapshot_identifier=self._latest_snapshot.arn,
+            snapshot_identifier=self.latest_snapshot.arn,
             credentials=SnapshotCredentials.from_generated_secret(
                 'postgres',
             ),
@@ -159,11 +170,11 @@ class PostgresFromSnapshot(PostgresBase):
         )
         tags.add(
             'snapshot_source_db_identifier',
-            self._db_instance_identifier
+            self.db_instance_identifier
         )
         tags.add(
             'from_snapshot_arn',
-            self._latest_snapshot.arn,
+            self.latest_snapshot.arn,
         )
 
 
