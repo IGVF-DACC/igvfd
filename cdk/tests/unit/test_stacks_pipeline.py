@@ -6,19 +6,14 @@ import aws_cdk.assertions as assertions
 from infrastructure.stacks.pipeline import ContinuousDeploymentPipelineStack
 
 
-def test_stacks_pipeline_continuous_deployment_pipeline_stack_initialized():
+def test_stacks_pipeline_continuous_deployment_pipeline_stack_initialized(config):
     from infrastructure.constructs.existing import igvf_dev
-    from infrastructure.config import Config
     app = core.App()
     stack = ContinuousDeploymentPipelineStack(
         app,
         'CDStack',
-        branch='test-pipeline-branch',
         existing_resources_class=igvf_dev.Resources,
-        config=Config(
-            branch='test-pipeline-branch',
-            pipeline='XYZ',
-        ),
+        config=config,
         env=igvf_dev.US_WEST_2,
     )
     template = assertions.Template.from_stack(stack)

@@ -23,7 +23,6 @@ class ContinuousDeploymentPipelineStack(Stack):
             scope: Construct,
             construct_id: str,
             *,
-            branch: str,
             existing_resources_class: ExistingResourcesClass,
             config: Config,
             **kwargs: Any
@@ -37,7 +36,6 @@ class ContinuousDeploymentPipelineStack(Stack):
             self,
             'ContinuousDeploymentPipeline',
             github_repo='IGVF-DACC/igvfd',
-            branch=branch,
             existing_resources=self.existing_resources,
             config=config,
         )
@@ -50,7 +48,6 @@ class DemoDeploymentPipelineStack(Stack):
             scope: Construct,
             construct_id: str,
             *,
-            branch: str,
             existing_resources_class: ExistingResourcesClass,
             config: Config,
             **kwargs: Any
@@ -64,7 +61,6 @@ class DemoDeploymentPipelineStack(Stack):
             self,
             'DemoDeploymentPipeline',
             github_repo='IGVF-DACC/igvfd',
-            branch=branch,
             existing_resources=self.existing_resources,
             config=config,
         )
