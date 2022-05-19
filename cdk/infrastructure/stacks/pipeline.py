@@ -5,7 +5,9 @@ from constructs import Construct
 from infrastructure.config import Config
 
 from infrastructure.constructs.pipeline import ContinuousDeploymentPipeline
+from infrastructure.constructs.pipeline import ContinuousDeploymentPipelineProps
 from infrastructure.constructs.pipeline import DemoDeploymentPipeline
+from infrastructure.constructs.pipeline import DemoDeploymentPipelineProps
 
 from infrastructure.constructs.existing.types import ExistingResourcesClass
 
@@ -35,9 +37,11 @@ class ContinuousDeploymentPipelineStack(Stack):
         self.pipeline = ContinuousDeploymentPipeline(
             self,
             'ContinuousDeploymentPipeline',
-            github_repo='IGVF-DACC/igvfd',
-            existing_resources=self.existing_resources,
-            config=config,
+            props=ContinuousDeploymentPipelineProps(
+                github_repo='IGVF-DACC/igvfd',
+                existing_resources=self.existing_resources,
+                config=config,
+            )
         )
 
 
@@ -60,9 +64,11 @@ class DemoDeploymentPipelineStack(Stack):
         self.pipeline = DemoDeploymentPipeline(
             self,
             'DemoDeploymentPipeline',
-            github_repo='IGVF-DACC/igvfd',
-            existing_resources=self.existing_resources,
-            config=config,
+            props=DemoDeploymentPipelineProps(
+                github_repo='IGVF-DACC/igvfd',
+                existing_resources=self.existing_resources,
+                config=config,
+            )
         )
 
 

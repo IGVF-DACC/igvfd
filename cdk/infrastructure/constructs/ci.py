@@ -95,7 +95,7 @@ class ContinuousIntegration(Construct):
             )
 
     def _get_underlying_cfn_project(self) -> CfnProject:
-        if getattr(self, '_cfn_project', None) is None:
+        if getattr(self, 'cfn_project', None) is None:
             # Cast only to make mypy happy.
             self.cfn_project = cast(
                 CfnProject,

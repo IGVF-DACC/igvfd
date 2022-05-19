@@ -5,16 +5,18 @@ from aws_cdk.assertions import Template
 
 def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(stack, secret, mocker, config):
     from infrastructure.constructs.pipeline import BasicSelfUpdatingPipeline
-    from infrastructure.config import Config
+    from infrastructure.constructs.pipeline import BasicSelfUpdatingPipelineProps
     existing_resources = mocker.Mock()
     existing_resources.code_star_connection.arn = 'some-arn'
     existing_resources.docker_hub_credentials.secret = secret
     pipeline = BasicSelfUpdatingPipeline(
         stack,
         'TestBasicSelfUpdatingPipeline',
-        github_repo='ABC/xyz',
-        existing_resources=existing_resources,
-        config=config,
+        props=BasicSelfUpdatingPipelineProps(
+            github_repo='ABC/xyz',
+            existing_resources=existing_resources,
+            config=config,
+        )
     )
     template = Template.from_stack(stack)
     template.has_resource_properties(
@@ -265,6 +267,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
     from aws_cdk.aws_secretsmanager import Secret
     from aws_cdk.aws_chatbot import SlackChannelConfiguration
     from infrastructure.constructs.pipeline import ContinuousDeploymentPipeline
+    from infrastructure.constructs.pipeline import ContinuousDeploymentPipelineProps
     from infrastructure.constructs.existing import igvf_dev
     stack = Stack(
         env=igvf_dev.US_WEST_2
@@ -285,9 +288,11 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
     pipeline = ContinuousDeploymentPipeline(
         stack,
         'TestContinuousDeploymentPipeline',
-        github_repo='ABC/xyz',
-        existing_resources=existing_resources,
-        config=config,
+        props=ContinuousDeploymentPipelineProps(
+            github_repo='ABC/xyz',
+            existing_resources=existing_resources,
+            config=config,
+        )
     )
     template = Template.from_stack(stack)
     template.has_resource_properties(
