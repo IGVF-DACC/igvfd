@@ -26,7 +26,7 @@ jobs:
 
   cdk-mypy:
     docker:
-      - image: circleci/python:3.8
+      - image: circleci/python:3.9
     working_directory: ~/igvfd/cdk/
     steps:
       - checkout:
@@ -38,12 +38,12 @@ jobs:
     machine:
       image: ubuntu-2004:202111-02
       docker_layer_caching: true
+    resource_class: medium
     working_directory: ~/igvfd/cdk/
     steps:
       - checkout:
           path: ~/igvfd
-      - run: apt-get update && apt-get install -y --no-install-recommends
-      - run: apt install nodejs && node -v
+      - run: pyenv global 3.9.7
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: pytest tests/
 
