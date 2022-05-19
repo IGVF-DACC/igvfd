@@ -1,4 +1,5 @@
-import aws_cdk as cdk
+from aws_cdk import Stack
+from aws_cdk import ArnFormat
 
 from constructs import Construct
 
@@ -10,6 +11,7 @@ from aws_cdk.aws_codebuild import LinuxBuildImage
 from aws_cdk.aws_codebuild import LocalCacheMode
 from aws_cdk.aws_codebuild import Project
 from aws_cdk.aws_codebuild import Source
+from aws_cdk.aws_codebuild import ISource
 
 from aws_cdk.aws_iam import PolicyStatement
 from aws_cdk.aws_iam import Role
@@ -24,25 +26,34 @@ from typing import Any
 from typing import cast
 from typing import Dict
 
+from dataclasses import dataclass
+
+
+@dataclass
+class ContinuousIntegrationProps:
+    github_owner: str
+    github_repo: str
+    build_spec: Dict[str, Any]
+    docker_hub_credentials: DockerHubCredentials
+
 
 class ContinuousIntegration(Construct):
+
+    props: ContinuousIntegrationProps
+    github: ISource
+    continuous_integration_project: Project
+    cfn_project: CfnProject
 
     def __init__(
             self,
             scope: Construct,
             construct_id: str,
             *,
-            github_owner: str,
-            github_repo: str,
-            build_spec: Dict[str, Any],
-            docker_hub_credentials: DockerHubCredentials,
+            props: ContinuousIntegrationProps,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
-        self._github_owner = github_owner
-        self._github_repo = github_repo
-        self._build_spec = build_spec
-        self._docker_hub_credentials = docker_hub_credentials
+        self.props = props
         self._define_github_source()
         self._make_continuous_integration_project()
         self._give_project_permission_to_read_docker_login_secret()
@@ -50,25 +61,25 @@ class ContinuousIntegration(Construct):
         self._make_logs_public()
 
     def _define_github_source(self) -> None:
-        self._github = Source.git_hub(
-            owner=self._github_owner,
-            repo=self._github_repo,
+        self.github = Source.git_hub(
+            owner=self.props.github_owner,
+            repo=self.props.github_repo,
             webhook=True,
         )
 
     def _make_continuous_integration_project(self) -> None:
-        self._continuous_integration_project = Project(
+        self.continuous_integration_project = Project(
             self,
             prepend_project_name(
                 'ContinuousIntegration'
             ),
-            source=self._github,
+            source=self.github,
             environment=BuildEnvironment(
                 build_image=LinuxBuildImage.STANDARD_5_0,
                 privileged=True,
             ),
             build_spec=BuildSpec.from_object(
-                self._build_spec
+                self.props.build_spec
             ),
             badge=True,
             cache=Cache.local(
@@ -77,30 +88,30 @@ class ContinuousIntegration(Construct):
         )
 
     def _give_project_permission_to_read_docker_login_secret(self) -> None:
-        role = self._continuous_integration_project.role
+        role = self.continuous_integration_project.role
         if role is not None:
-            self._docker_hub_credentials.secret.grant_read(
+            self.props.docker_hub_credentials.secret.grant_read(
                 role
             )
 
     def _get_underlying_cfn_project(self) -> CfnProject:
         if getattr(self, '_cfn_project', None) is None:
             # Cast only to make mypy happy.
-            self._cfn_project = cast(
+            self.cfn_project = cast(
                 CfnProject,
-                self._continuous_integration_project.node.default_child
+                self.continuous_integration_project.node.default_child
             )
-        return self._cfn_project
+        return self.cfn_project
 
     def _add_public_url(self) -> None:
         self._get_underlying_cfn_project().visibility = 'PUBLIC_READ'
 
     def _get_log_group_arn(self) -> str:
-        project_name = self._continuous_integration_project.project_name
-        log_group_arn = cdk.Stack.of(self).format_arn(
+        project_name = self.continuous_integration_project.project_name
+        log_group_arn = Stack.of(self).format_arn(
             service='logs',
             resource='log-group',
-            arn_format=cdk.ArnFormat.COLON_RESOURCE_NAME,
+            arn_format=ArnFormat.COLON_RESOURCE_NAME,
             resource_name=f'/aws/codebuild/{project_name}',
         )
         return log_group_arn
