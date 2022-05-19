@@ -42,6 +42,9 @@ class BackendProps:
 class Backend(Construct):
 
     props: BackendProps
+    application_image: ContainerImage
+    nginx_image: ContainerImage
+    fargate_service: ApplicationLoadBalancedFargateService
 
     def __init__(
             self,
