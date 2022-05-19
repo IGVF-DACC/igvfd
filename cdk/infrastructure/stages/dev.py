@@ -18,7 +18,6 @@ class DevelopmentDeployStage(cdk.Stage):
             scope: Construct,
             construct_id: str,
             *,
-            branch: str,
             config: Config,
             **kwargs: Any
     ) -> None:
@@ -26,16 +25,15 @@ class DevelopmentDeployStage(cdk.Stage):
         self.postgres_stack = PostgresStack(
             self,
             'PostgresStack',
-            branch=branch,
-            existing_resources_class=igvf_dev.Resources,
             config=config,
+            existing_resources_class=igvf_dev.Resources,
             env=igvf_dev.US_WEST_2,
         )
         self.backend_stack = BackendStack(
             self,
             'BackendStack',
+            config=config,
             postgres=self.postgres_stack.postgres,
-            branch=branch,
             existing_resources_class=igvf_dev.Resources,
             env=igvf_dev.US_WEST_2,
         )

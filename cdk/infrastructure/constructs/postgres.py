@@ -13,8 +13,6 @@ from aws_cdk.aws_rds import IInstanceEngine
 from aws_cdk.aws_rds import PostgresEngineVersion
 from aws_cdk.aws_rds import SnapshotCredentials
 
-from dataclasses import dataclass
-
 from infrastructure.config import Config
 
 from infrastructure.constructs.existing.types import ExistingResources
@@ -25,6 +23,8 @@ from typing import Any
 from typing import cast
 from typing import Type
 from typing import Union
+
+from dataclasses import dataclass
 
 
 @dataclass

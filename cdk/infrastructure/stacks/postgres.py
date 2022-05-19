@@ -22,9 +22,8 @@ class PostgresStack(cdk.Stack):
             scope: Construct,
             construct_id: str,
             *,
-            branch: str,
-            existing_resources_class: ExistingResourcesClass,
             config: Config,
+            existing_resources_class: ExistingResourcesClass,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
