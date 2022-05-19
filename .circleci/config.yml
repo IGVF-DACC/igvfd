@@ -35,15 +35,15 @@ jobs:
       - run: mypy .
 
   cdk-pytest:
-    docker:
-      - image: circleci/python:3.8-node
+    machine:
+      image: ubuntu-2004:202111-02
+      docker_layer_caching: true
     working_directory: ~/igvfd/cdk/
     steps:
       - checkout:
           path: ~/igvfd
-      - setup_remote_docker:
-          version: 20.10.14
-          docker_layer_caching: true
+      - run: apt-get update && apt-get install -y --no-install-recommends
+      - run: apt install nodejs && node -v
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: pytest tests/
 
