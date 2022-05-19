@@ -39,7 +39,6 @@ pipeline = pipeline_class(
             pipeline_class.__name__,
         )
     ),
-    branch=branch,
     existing_resources_class=igvf_dev.Resources,
     config=config,
     env=igvf_dev.US_WEST_2,
