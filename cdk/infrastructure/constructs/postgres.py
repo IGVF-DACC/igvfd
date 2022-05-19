@@ -36,6 +36,7 @@ class PostgresProps:
 
 
 class PostgresBase(Construct):
+
     def __init__(
             self,
             scope: Construct,
