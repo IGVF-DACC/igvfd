@@ -30,15 +30,13 @@ class BasicSelfUpdatingPipeline(Construct):
             construct_id: str,
             *,
             github_repo: str,
-            branch: str,
             existing_resources: ExistingResources,
             config: Config,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
-        self._config = config
+        self.config = config
         self._github_repo = github_repo
-        self._branch = branch
         self._existing_resources = existing_resources
         self._define_github_connection()
         self._define_cdk_synth_step()
@@ -48,7 +46,7 @@ class BasicSelfUpdatingPipeline(Construct):
     def _define_github_connection(self) -> None:
         self._github = CodePipelineSource.connection(
             self._github_repo,
-            self._branch,
+            self.config.branch,
             connection_arn=self._existing_resources.code_star_connection.arn
         )
 
@@ -57,7 +55,7 @@ class BasicSelfUpdatingPipeline(Construct):
             'SynthStep',
             input=self._github,
             env={
-                'BRANCH': self._branch
+                'BRANCH': self.config.branch
             },
             commands=[
                 'npm install -g aws-cdk',
@@ -115,7 +113,6 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             construct_id: str,
             *,
             github_repo: str,
-            branch: str,
             existing_resources: ExistingResources,
             config: Config,
             **kwargs: Any,
@@ -124,7 +121,6 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             scope,
             construct_id,
             github_repo=github_repo,
-            branch=branch,
             existing_resources=existing_resources,
             config=config,
             **kwargs,
@@ -143,7 +139,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             self,
             prepend_project_name(
                 prepend_branch_name(
-                    self._branch,
+                    self.config.branch,
                     'DeployContinuousIntegration'
                 )
             )
@@ -157,12 +153,11 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             self,
             prepend_project_name(
                 prepend_branch_name(
-                    self._branch,
+                    self.config.branch,
                     'DeployDevelopment',
                 )
             ),
-            branch=self._branch,
-            config=self._config,
+            config=self.config,
         )
         self._code_pipeline.add_stage(
             stage,
@@ -173,7 +168,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             self,
             prepend_project_name(
                 prepend_branch_name(
-                    self._branch,
+                    self.config.branch,
                     'DeployTest',
                 )
             )
@@ -192,7 +187,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             self,
             prepend_project_name(
                 prepend_branch_name(
-                    self._branch,
+                    self.config.branch,
                     'DeployProduction',
                 )
             )
@@ -215,7 +210,6 @@ class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
             construct_id: str,
             *,
             github_repo: str,
-            branch: str,
             existing_resources: ExistingResources,
             config: Config,
             **kwargs: Any,
@@ -224,7 +218,6 @@ class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
             scope,
             construct_id,
             github_repo=github_repo,
-            branch=branch,
             existing_resources=existing_resources,
             config=config,
             **kwargs,
@@ -237,12 +230,12 @@ class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
             self,
             prepend_project_name(
                 prepend_branch_name(
-                    self._branch,
+                    self.config.branch,
                     'DeployDevelopment',
                 )
             ),
-            branch=self._branch,
-            config=self._config,
+            branch=self.config.branch,
+            config=self.config,
         )
         self._code_pipeline.add_stage(
             stage,

@@ -115,3 +115,12 @@ def existing_resources(mocker, domain, network, secret, chatbot):
     mock.code_star_connection.arn = 'some-code-star-arn'
     mock.notification.encode_dcc_chatbot = chatbot
     return mock
+
+
+@pytest.fixture
+def config():
+    from infrastructure.config import Config
+    return Config(
+        branch='some-branch',
+        pipeline='xyz',
+    )

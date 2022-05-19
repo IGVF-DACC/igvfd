@@ -4,10 +4,9 @@ from aws_cdk.assertions import Template
 from aws_cdk.assertions import Match
 
 
-def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_type, mocker):
+def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_type, mocker, config):
     from infrastructure.constructs.postgres import Postgres
     from infrastructure.constructs.postgres import PostgresProps
-    from infrastructure.config import Config
     # Given
     existing_resources = mocker.Mock()
     existing_resources.network.vpc = vpc
@@ -16,10 +15,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
         stack,
         'Postgres',
         props=PostgresProps(
-            config=Config(
-                branch='my-branch',
-                pipeline='xyz',
-            ),
+            config=config,
             existing_resources=existing_resources,
             allocated_storage=10,
             max_allocated_storage=20,
@@ -62,7 +58,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
             'PubliclyAccessible': False,
             'StorageType': 'gp2',
             'Tags': [
-                {'Key': 'branch', 'Value': 'my-branch'}
+                {'Key': 'branch', 'Value': 'some-branch'}
             ],
             'VPCSecurityGroups': [
                 {
@@ -99,7 +95,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
             'Tags': [
                 {
                     'Key': 'branch',
-                    'Value': 'my-branch'
+                    'Value': 'some-branch'
                 }
             ]
         }
@@ -118,7 +114,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
             'Tags': [
                 {
                     'Key': 'branch',
-                    'Value': 'my-branch'
+                    'Value': 'some-branch'
                 }
             ],
             'VpcId': {
