@@ -3,6 +3,16 @@ import pytest
 from moto import mock_rds
 
 
+@pytest.fixture(scope='function')
+def aws_credentials():
+    import os
+    os.environ['AWS_ACCESS_KEY_ID'] = 'testing'
+    os.environ['AWS_SECRET_ACCESS_KEY'] = 'testing'
+    os.environ['AWS_SECURITY_TOKEN'] = 'testing'
+    os.environ['AWS_SESSION_TOKEN'] = 'testing'
+    os.environ['AWS_DEFAULT_REGION'] = 'us-west-1'
+
+
 def raw_results():
     import datetime
     from dateutil.tz import tzutc
@@ -95,14 +105,14 @@ def raw_results():
 
 
 @mock_rds
-def test_runtime_lambdas_rds_snapshot_get_rds_client():
+def test_runtime_lambdas_rds_snapshot_get_rds_client(aws_credentials):
     from snapshot.main import get_rds_client
     client = get_rds_client()
     assert hasattr(client, 'describe_db_snapshots')
 
 
 @mock_rds
-def test_runtime_lambdas_rds_snapshot_get_paginator():
+def test_runtime_lambdas_rds_snapshot_get_paginator(aws_credentials):
     from snapshot.main import get_rds_client
     from snapshot.main import get_describe_db_snapshots_paginator
     from botocore.paginate import Paginator
@@ -112,7 +122,7 @@ def test_runtime_lambdas_rds_snapshot_get_paginator():
 
 
 @mock_rds
-def test_runtime_lambdas_rds_snapshot_make_query():
+def test_runtime_lambdas_rds_snapshot_make_query(aws_credentials):
     from snapshot.main import get_rds_client
     from snapshot.main import get_describe_db_snapshots_paginator
     from snapshot.main import make_query
@@ -123,7 +133,7 @@ def test_runtime_lambdas_rds_snapshot_make_query():
 
 
 @mock_rds
-def test_runtime_lambdas_rds_snapshot_get_results():
+def test_runtime_lambdas_rds_snapshot_get_results(aws_credentials):
     from snapshot.main import get_rds_client
     from snapshot.main import get_describe_db_snapshots_paginator
     from snapshot.main import make_query
@@ -136,7 +146,7 @@ def test_runtime_lambdas_rds_snapshot_get_results():
 
 
 @mock_rds
-def test_runtime_lambdas_rds_snapshot_sort_results_by_create_time():
+def test_runtime_lambdas_rds_snapshot_sort_results_by_create_time(aws_credentials):
     from snapshot.main import sort_results_by_create_time
     sorted_results = sort_results_by_create_time(raw_results())
     assert (
@@ -145,7 +155,7 @@ def test_runtime_lambdas_rds_snapshot_sort_results_by_create_time():
 
 
 @mock_rds
-def test_runtime_lambdas_rds_snapshot_get_latest_result():
+def test_runtime_lambdas_rds_snapshot_get_latest_result(aws_credentials):
     from snapshot.main import sort_results_by_create_time
     from snapshot.main import get_latest_result
     sorted_results = sort_results_by_create_time(raw_results())
@@ -154,7 +164,7 @@ def test_runtime_lambdas_rds_snapshot_get_latest_result():
 
 
 @mock_rds
-def test_runtime_lambdas_rds_snapshot_get_latest_snapshot_id(mocker):
+def test_runtime_lambdas_rds_snapshot_get_latest_snapshot_id(aws_credentials, mocker):
     from snapshot.main import get_latest_rds_snapshot_id
     mocker.patch(
         'snapshot.main.get_results',
@@ -175,7 +185,7 @@ def test_runtime_lambdas_rds_snapshot_get_latest_snapshot_id(mocker):
 
 
 @mock_rds
-def test_runtime_lambdas_rds_snapshot_on_create(mocker):
+def test_runtime_lambdas_rds_snapshot_on_create(aws_credentials, mocker):
     from snapshot.main import on_create
     mocker.patch(
         'snapshot.main.get_results',
@@ -193,7 +203,7 @@ def test_runtime_lambdas_rds_snapshot_on_create(mocker):
 
 
 @mock_rds
-def test_runtime_lambdas_rds_snapshot_custom_resource_handler(mocker):
+def test_runtime_lambdas_rds_snapshot_custom_resource_handler(aws_credentials, mocker):
     from snapshot.main import custom_resource_handler
     mocker.patch(
         'snapshot.main.get_results',
