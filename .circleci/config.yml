@@ -10,6 +10,9 @@ workflows:
       - cdk-pytest:
           requires:
             - lint
+      - cdk-lambda-runtime-pytest:
+          requires:
+            - lint
       - igvfd-pytest:
           requires:
             - lint
@@ -47,7 +50,7 @@ jobs:
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: pytest tests/
 
-  cdk-lambda-runtime:
+  cdk-lambda-runtime-pytest:
     docker:
       - image: circleci/python:3.9
     working_directory: ~/igvfd/cdk/infrastructure/runtime/lambdas/snapshot/
