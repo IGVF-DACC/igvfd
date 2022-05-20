@@ -36,9 +36,9 @@ class LatestSnapshotFromDB(Construct):
         self.get_latest_rds_snapshot_id = PythonFunction(
             self,
             'GetLatestRDSSnapshotID',
-            entry='infrastructure/runtime/lambda/rds',
+            entry='infrastructure/runtime/lambdas/snapshot',
             runtime=Runtime.PYTHON_3_9,
-            index='snapshot.py',
+            index='main.py',
             handler='custom_resource_handler',
             timeout=Duration.seconds(60),
         )
