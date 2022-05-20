@@ -237,3 +237,23 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_construct(stack, 
             ],
         }
     )
+
+
+def test_constructs_postgres_postgres_factory():
+    from infrastructure.constructs.postgres import Postgres
+    from infrastructure.constructs.postgres import PostgresFromSnapshot
+    from infrastructure.constructs.postgres import postgres_factory
+    from infrastructure.config import Config
+    config = Config(
+        branch='xyz',
+        pipeline='zyx',
+    )
+    postgres = postgres_factory(config)
+    assert issubclass(postgres, Postgres)
+    config = Config(
+        branch='xyz',
+        pipeline='zyx',
+        snapshot_source_db_identifier='source-db-id',
+    )
+    postgres = postgres_factory(config)
+    assert issubclass(postgres, PostgresFromSnapshot)
