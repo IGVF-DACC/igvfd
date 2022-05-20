@@ -4,6 +4,28 @@ from aws_cdk.assertions import Template
 from aws_cdk.assertions import Match
 
 
+def test_constructs_postgres_initialize_postgres_base_construct(stack, config, instance_type, mocker):
+    from infrastructure.constructs.postgres import PostgresBase
+    from infrastructure.constructs.postgres import PostgresProps
+    from jsii._reference_map import _refs
+    from aws_cdk.aws_rds import IInstanceEngine
+    existing_resources = mocker.Mock()
+    props = PostgresProps(
+        config=config,
+        existing_resources=existing_resources,
+        allocated_storage=10,
+        max_allocated_storage=20,
+        instance_type=instance_type
+    )
+    postgres_base = PostgresBase(
+        stack,
+        'PostgresBase',
+        props=props,
+    )
+    assert postgres_base.engine is not None
+    assert postgres_base.database_name == 'igvfd'
+
+
 def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_type, mocker, config):
     from infrastructure.constructs.postgres import Postgres
     from infrastructure.constructs.postgres import PostgresProps
@@ -125,4 +147,93 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
     template.resource_count_is(
         'AWS::SecretsManager::Secret',
         1
+    )
+
+
+def test_constructs_postgres_initialize_postgres_from_snapshot_construct(stack, vpc, instance_type, mocker):
+    from infrastructure.constructs.postgres import PostgresFromSnapshot
+    from infrastructure.constructs.postgres import PostgresProps
+    from infrastructure.config import Config
+    config = Config(
+        branch='some-branch',
+        pipeline='DemoPipeline',
+        snapshot_source_db_identifier='source-db-123'
+    )
+    # Given
+    existing_resources = mocker.Mock()
+    existing_resources.network.vpc = vpc
+    # When
+    postgres = PostgresFromSnapshot(
+        stack,
+        'PostgresFromSnapshot',
+        props=PostgresProps(
+            config=config,
+            existing_resources=existing_resources,
+            allocated_storage=10,
+            max_allocated_storage=20,
+            instance_type=instance_type
+        )
+    )
+    # Then
+    template = Template.from_stack(stack)
+    template.has_resource_properties(
+        'AWS::IAM::Policy',
+        {
+            'PolicyDocument': {
+                'Statement': [
+                    {
+                        'Action': 'rds:DescribeDBSnapshots',
+                        'Effect': 'Allow',
+                        'Resource': '*'
+                    }
+                ],
+                'Version': '2012-10-17'
+            },
+            'PolicyName': 'PostgresFromSnapshotLatestSnapshotFromDBGetLatestRDSSnapshotIDServiceRoleDefaultPolicy98F8C942',
+            'Roles': [
+                {
+                    'Ref': 'PostgresFromSnapshotLatestSnapshotFromDBGetLatestRDSSnapshotIDServiceRole00AE3DDA'
+                }
+            ]
+        }
+    )
+    template.has_resource_properties(
+        'AWS::CloudFormation::CustomResource',
+        {
+            'ServiceToken': {
+                'Fn::GetAtt': [
+                    'PostgresFromSnapshotLatestSnapshotFromDBProviderframeworkonEvent8F67E899',
+                    'Arn'
+                ]
+            },
+            'db_instance_identifier': 'source-db-123'
+        }
+    )
+    template.resource_count_is(
+        'AWS::SecretsManager::SecretTargetAttachment',
+        1
+    )
+    template.has_resource_properties(
+        'AWS::RDS::DBInstance',
+        {
+            'Tags': [
+                {
+                    'Key': 'branch',
+                    'Value': 'some-branch'
+                },
+                {
+                    'Key': 'from_snapshot_arn',
+                    'Value': {
+                        'Fn::GetAtt': [
+                            'PostgresFromSnapshotLatestSnapshotFromDBLatestRDSSnapshopIDCA971DA9',
+                            'DBSnapshotArn'
+                        ]
+                    }
+                },
+                {
+                    'Key': 'snapshot_source_db_identifier',
+                    'Value': 'source-db-123'
+                }
+            ],
+        }
     )
