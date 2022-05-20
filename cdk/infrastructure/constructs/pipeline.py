@@ -72,7 +72,7 @@ class BasicSelfUpdatingPipeline(Construct):
                 'python -m venv .venv',
                 '. .venv/bin/activate',
                 'pip install -r requirements.txt -r requirements-dev.txt',
-                'pytest',
+                'pytest tests/',
                 'cdk synth -v -c branch=$BRANCH',
             ],
             primary_output_directory='cdk/cdk.out',

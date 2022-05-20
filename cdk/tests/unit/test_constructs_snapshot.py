@@ -27,7 +27,7 @@ def test_constructs_snapshot_initialize_latest_snapshot_from_db(stack):
     template.has_resource_properties(
         'AWS::Lambda::Function',
         {
-            'Handler': 'snapshot.custom_resource_handler',
+            'Handler': 'main.custom_resource_handler',
             'Runtime': 'python3.9',
             'Timeout': 60
         }

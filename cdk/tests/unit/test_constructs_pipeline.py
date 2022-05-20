@@ -73,7 +73,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                                 'ProjectName': {
                                     'Ref': 'TestBasicSelfUpdatingPipelineCodePipelineBuildSynthStepCdkBuildProjectC378F9B9'
                                 },
-                                'EnvironmentVariables': '[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"be92f206f1c8f9fc9abcffdd57022b2b2dab1bceb82b9f87e6971eb5c8e2961f"}]'
+                                'EnvironmentVariables': '[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"df13a0ba876114efcdc964cb42f1ade838febf8c7ee870f216237726303adeb5"}]'
                             },
                             'InputArtifacts': [
                                 {
