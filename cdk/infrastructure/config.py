@@ -8,10 +8,6 @@ from infrastructure.constants import DEV_DATABASE_IDENTIFIER
 
 
 config: Dict[str, Any] = {
-    'org_name': 'igvf-dacc',
-    'project_name': 'igvfd',
-    'default_branch': 'main',
-    'region': 'us-west-2',
     'environment': {
         'demo': {
             'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
@@ -27,10 +23,19 @@ config: Dict[str, Any] = {
 
 
 @dataclass
+class Common:
+    organization_name: str = 'igvf-dacc'
+    project_name: str = 'igvfd'
+    default_region: str = 'us-west-2'
+    aws_cdk_version: str = '2.21.0'
+
+
+@dataclass
 class Config:
     branch: str
     pipeline: str
     snapshot_source_db_identifier: Optional[str] = None
+    common: Common = Common()
 
 
 def build_config_from_name(name: str, **kwargs: Any) -> Config:

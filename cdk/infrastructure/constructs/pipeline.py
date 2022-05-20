@@ -10,8 +10,6 @@ from aws_cdk.pipelines import ShellStep
 
 from infrastructure.config import Config
 
-from infrastructure.constants import AWS_CDK_SYNTH_VERSION
-
 from infrastructure.naming import prepend_branch_name
 from infrastructure.naming import prepend_project_name
 from infrastructure.stages.ci import CIDeployStage
@@ -69,7 +67,7 @@ class BasicSelfUpdatingPipeline(Construct):
                 'BRANCH': self.props.config.branch
             },
             commands=[
-                f'npm install -g aws-cdk@{AWS_CDK_SYNTH_VERSION}',
+                f'npm install -g aws-cdk@{self.props.config.common.aws_cdk_version}',
                 'cd ./cdk',
                 'python -m venv .venv',
                 '. .venv/bin/activate',
