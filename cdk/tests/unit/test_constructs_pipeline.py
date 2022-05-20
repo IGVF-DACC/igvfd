@@ -73,7 +73,6 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                                 'ProjectName': {
                                     'Ref': 'TestBasicSelfUpdatingPipelineCodePipelineBuildSynthStepCdkBuildProjectC378F9B9'
                                 },
-                                'EnvironmentVariables': '[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"df13a0ba876114efcdc964cb42f1ade838febf8c7ee870f216237726303adeb5"}]'
                             },
                             'InputArtifacts': [
                                 {
@@ -110,7 +109,6 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                                 'ProjectName': {
                                     'Ref': 'TestBasicSelfUpdatingPipelineCodePipelineUpdatePipelineSelfMutationCFEBBD4C'
                                 },
-                                'EnvironmentVariables': '[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"6664b122059fa50033502909e93d343a2c4a351b3da36fdb62814c766bbdec32"}]'
                             },
                             'InputArtifacts': [
                                 {
