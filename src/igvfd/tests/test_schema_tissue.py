@@ -16,7 +16,7 @@ def test_lot_id_dependency(tissue, testapp):
 def test_age_unit_dependency(tissue, testapp):
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Saccharomyces', 'age_units': 'minute'})
+        {'organism': 'Saccharomyces', 'age': '5', 'age_units': 'minute'})
     assert(res.status_code == 200)
     res = testapp.patch_json(
         tissue['@id'],

@@ -58,8 +58,57 @@
         "$merge": [
             "sample.json#/dependentSchemas"
         ],
+        "age": {
+            "comment": "Biosample with a defined age requires age_units.",
+            "allOf": [
+                {
+                    "if": {
+                        "not": {
+                            "properties": {
+                                "age": {
+                                    "const": "unknown"
+                                }
+                            }
+                        },
+                        "required": [
+                            "age"
+                        ]
+                    },
+                    "then": {
+                        "required": [
+                            "age_units"
+                        ]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "age_units": {
+                                "const": "year"
+                            },
+                            "organism": {
+                                "const": "Homo sapiens"
+                            }
+                        },
+                        "required": [
+                            "organism"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "age": {
+                                "pattern": "^(([1-8]?\\d)|(90 or above))$"
+                            }
+                        }
+                    }
+                }
+            ]
+        },
         "age_units": {
-            "comment": "Human biosamples cannot have age units of minutes or hours. Yeast biosamples cannot have age units of years or months.",
+            "comment": "Age units is required if age is specified as anything but unknown. Human biosamples cannot have age units of minutes or hours. Yeast biosamples cannot have age units of years or months.",
+            "required": [
+                "age"
+            ],
             "allOf": [
                 {
                     "not": {
@@ -167,9 +216,9 @@
         "age": {
             "title": "Age",
             "description": "Age of organism at collection of the biosample.",
-            "comment": "",
+            "comment": "Ages over 90 years are generic for privacy purposes.",
             "type": "string",
-            "pattern": "^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown))$"
+            "pattern": "^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$"
         },
         "age_units": {
             "title": "Age units",

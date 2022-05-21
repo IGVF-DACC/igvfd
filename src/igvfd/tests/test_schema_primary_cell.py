@@ -16,7 +16,7 @@ def test_lot_id_dependency(primary_cell, testapp):
 def test_age_unit_dependency(primary_cell, testapp):
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'organism': 'Homo sapiens', 'age_units': 'year'})
+        {'organism': 'Homo sapiens', 'age': '5', 'age_units': 'year'})
     assert(res.status_code == 200)
     res = testapp.patch_json(
         primary_cell['@id'],
