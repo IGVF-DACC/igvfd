@@ -1,6 +1,6 @@
 ## Infrastructure
 
-Create virtual Python (3.9) environment and install requirements:
+ Create virtual Python (3.9) environment and install requirements:
 
 ```
 $ pip install -r requirements.txt -r requirements-dev.txt
@@ -8,8 +8,9 @@ $ pip install -r requirements.txt -r requirements-dev.txt
 
 Install CDK toolkit (`npm install -g aws-cdk@2.21.0`).
 
-
 ## Deploy demo stacks
+
+Configure AWS credentials for dev account (e.g. in `igvf-dev` profile).
 
 ```bash
 $ cdk deploy -c branch=IGVF-1234-my-feature-branch --profile igvf-dev
