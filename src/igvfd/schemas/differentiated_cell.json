@@ -1,8 +1,8 @@
 {
-    "title": "Organoid",
-    "$id": "/profiles/organoid.json",
+    "title": "Differentiated cell",
+    "$id": "/profiles/differentiated_cell.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting an organoid sample.",
+    "description": "Schema for submitting a differentiated cell sample.",
     "type": "object",
     "required": [
         "award",
@@ -65,20 +65,8 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "biosample.json#/dependentSchemas"
-        ],
-        "post_differentiation_time": {
-            "required": [
-                "post_differentiation_time_units"
-            ],
-            "comment": "Biosample with a specified post_differentiation_time requires post_differentiation_time_units specification."
-        },
-        "post_differentiation_time_units": {
-            "required": [
-                "post_differentiation_time"
-            ],
-            "comment": "Biosample with a specified post_differentiation_time_units requires post_differentiation_time specification."
-        }
+            "differentiated_tissue.json#/dependentSchemas"
+        ]
     },
     "properties": {
         "schema_version": {
@@ -121,5 +109,5 @@
             }
         }
     },
-    "changelog": "/profiles/changelogs/organoid.md"
+    "changelog": "/profiles/changelogs/differentiated_cell.md"
 }

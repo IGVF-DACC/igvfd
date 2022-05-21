@@ -1,26 +1,26 @@
 import pytest
 
 
-def test_differentiation_dependency(in_vitro, testapp):
+def test_differentiation_dependency(differentiated_cell, testapp):
     res = testapp.patch_json(
-        in_vitro['@id'],
+        differentiated_cell['@id'],
         {'post_differentiation_time': 10}, expect_errors=True)
     assert(res.status_code == 422)
 
     res = testapp.patch_json(
-        in_vitro['@id'],
+        differentiated_cell['@id'],
         {'post_differentiation_time_units': 'hour'}, expect_errors=True)
     assert(res.status_code == 422)
 
     res = testapp.patch_json(
-        in_vitro['@id'],
+        differentiated_cell['@id'],
         {'post_differentiation_time': 10, 'post_differentiation_time_units': 'hour'}, expect_errors=True)
     assert(res.status_code == 200)
 
 
-def test_post_in_vitro(testapp, award, lab, treatment_2):
+def test_post_differentiated_cell(testapp, award, lab, treatment_2):
     res = testapp.post_json(
-        '/in_vitro',
+        '/differentiated_cell',
         {
             'award': award['@id'],
             'lab': lab['@id'],
@@ -32,7 +32,7 @@ def test_post_in_vitro(testapp, award, lab, treatment_2):
     assert(res.status_code == 201)
 
     res = testapp.post_json(
-        '/in_vitro',
+        '/differentiated_cell',
         {
             'award': award['@id'],
             'lab': lab['@id'],

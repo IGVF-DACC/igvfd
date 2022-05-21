@@ -72,27 +72,27 @@ class Tissue(Biosample):
 
 
 @collection(
-    name='organoids',
+    name='differentiated-tissues',
     unique_key='accession',
     properties={
-        'title': 'Organoids',
-        'description': 'Listing of organoids',
+        'title': 'Differentiated tissues',
+        'description': 'Listing of differentiated tissues',
     })
 class Organoid(Biosample):
-    item_type = 'organoid'
-    schema = load_schema('igvfd:schemas/organoid.json')
+    item_type = 'differentiated_tissue'
+    schema = load_schema('igvfd:schemas/differentiated_tissue.json')
 
 
 @collection(
-    name='in-vitros',
+    name='differentiated-cells',
     unique_key='accession',
     properties={
-        'title': 'In vitros',
-        'description': 'Listing of in vitros',
+        'title': 'Differentiated cells',
+        'description': 'Listing of differentiated cells',
     })
 class InVitro(Biosample):
-    item_type = 'in_vitro'
-    schema = load_schema('igvfd:schemas/in_vitro.json')
+    item_type = 'differentiated_cell'
+    schema = load_schema('igvfd:schemas/differentiated_cell.json')
 
 
 @collection(
