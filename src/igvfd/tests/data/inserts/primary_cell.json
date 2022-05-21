@@ -32,7 +32,8 @@
         "source": "/labs/j-michael-cherry/",
         "collections": [
             "ENCODE"
-        ]
+        ],
+        "part_of": "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/"
     },
     {
         "uuid": "5673c93a-c748-11ec-9d64-0242ac120002",

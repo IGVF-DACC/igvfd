@@ -285,31 +285,24 @@
             "type": "string",
             "format": "date"
         },
-        "related_biosamples": {
-            "title": "Related biosamples",
-            "description": "Biosamples that are related to this biosample with the relation of 'related_biosample_relation'.",
-            "comment": "A list of biosamples should all have the same relationship to this biosample.",
+        "pooled_from": {
+            "title": "Biosample(s) pooled from",
+            "description": "The biosample(s) this biosample is pooled from.",
             "type": "array",
-            "uniqueItems": true,
+            "default": [],
             "items": {
-                "description": "A related biosample",
-                "comment": "See biosample.json for available identifiers.",
+                "title": "Biosample",
+                "description": "Biosample(s).",
                 "type": "string",
                 "linkTo": "Biosample"
             }
         },
-        "related_biosamples_relation": {
-            "title": "Relationship to other related biosamples",
-            "description": "The specific relationship to the biosamples in related_biosamples field",
-            "comment": "Must be submitted with related_biosamples",
+        "part_of": {
+            "title": "Part of",
+            "description": "The biosample this biosample is a part of.",
+            "comment": "test",
             "type": "string",
-            "enum": [
-                "originated_from",
-                "pooled_from",
-                "separated_from",
-                "hosted_by",
-                "derived_from"
-            ]
+            "linkTo": "Biosample"
         },
         "treatments": {
             "title": "Treatments",
