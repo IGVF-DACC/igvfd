@@ -45,30 +45,6 @@ $ python commands/cdk_destroy_all_stacks.py -c branch=IGVF-1234-my-feature-branc
  * `cdk diff`        compare deployed stack with current state
  * `cdk docs`        open CDK documentation
 
-
-## Continuous deployment pipeline
-
-Deploy CodePipeline to main branch:
-
-```bash
-$ cdk deploy -c branch=main
-```
-
-Destroy:
-
-```bash
-$ cdk destroy -c branch=main
-```
-
-## Useful commands
-
- * `cdk ls`          list all stacks in the app
- * `cdk synth`       emits the synthesized CloudFormation template
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk docs`        open CDK documentation
-
-
 ## Run type checking with mypy
 ```
 # In cdk folder.
