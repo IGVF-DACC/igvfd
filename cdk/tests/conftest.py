@@ -121,6 +121,7 @@ def existing_resources(mocker, domain, network, secret, chatbot):
 def config():
     from infrastructure.config import Config
     return Config(
+        name='demo',
         branch='some-branch',
         pipeline='xyz',
     )

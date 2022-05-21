@@ -64,7 +64,8 @@ class BasicSelfUpdatingPipeline(Construct):
             'SynthStep',
             input=self.github,
             env={
-                'BRANCH': self.props.config.branch
+                'CONFIG_NAME': self.props.config.name,
+                'BRANCH': self.props.config.branch,
             },
             commands=[
                 f'npm install -g aws-cdk@{self.props.config.common.aws_cdk_version}',
@@ -73,7 +74,7 @@ class BasicSelfUpdatingPipeline(Construct):
                 '. .venv/bin/activate',
                 'pip install -r requirements.txt -r requirements-dev.txt',
                 'pytest tests/',
-                'cdk synth -v -c branch=$BRANCH',
+                'cdk synth -v -c branch=$BRANCH -c config-name=$CONFIG_NAME',
             ],
             primary_output_directory='cdk/cdk.out',
         )

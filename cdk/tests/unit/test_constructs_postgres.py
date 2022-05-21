@@ -155,6 +155,7 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_construct(stack, 
     from infrastructure.constructs.postgres import PostgresProps
     from infrastructure.config import Config
     config = Config(
+        name='demo',
         branch='some-branch',
         pipeline='DemoPipeline',
         snapshot_source_db_identifier='source-db-123'
@@ -245,12 +246,14 @@ def test_constructs_postgres_postgres_factory():
     from infrastructure.constructs.postgres import postgres_factory
     from infrastructure.config import Config
     config = Config(
+        name='demo',
         branch='xyz',
         pipeline='zyx',
     )
     postgres = postgres_factory(config)
     assert issubclass(postgres, Postgres)
     config = Config(
+        name='demo',
         branch='xyz',
         pipeline='zyx',
         snapshot_source_db_identifier='source-db-id',

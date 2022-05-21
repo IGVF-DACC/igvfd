@@ -32,6 +32,7 @@ class Common:
 
 @dataclass
 class Config:
+    name: str
     branch: str
     pipeline: str
     snapshot_source_db_identifier: Optional[str] = None
@@ -43,6 +44,7 @@ def build_config_from_name(name: str, **kwargs: Any) -> Config:
         **{
             **config['environment'][name],
             **kwargs,
+            **{'name': name},
         }
     )
 

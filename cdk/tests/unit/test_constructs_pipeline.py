@@ -147,6 +147,11 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                 'ComputeType': 'BUILD_GENERAL1_SMALL',
                 'EnvironmentVariables': [
                     {
+                        'Name': 'CONFIG_NAME',
+                        'Type': 'PLAINTEXT',
+                        'Value': 'demo'
+                    },
+                    {
                         'Name': 'BRANCH',
                         'Type': 'PLAINTEXT',
                         'Value': 'some-branch'

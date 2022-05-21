@@ -16,6 +16,7 @@ def test_config_common_dataclass():
 def test_config_config_dataclass():
     from infrastructure.config import Config
     config = Config(
+        name='demo',
         branch='xyz-branch',
         pipeline='xyz-pipeline',
     )
@@ -39,6 +40,7 @@ def test_config_build_config_from_name():
     assert config.snapshot_source_db_identifier == DEV_DATABASE_IDENTIFIER
     assert config.branch == 'my-branch'
     assert config.pipeline == 'my-pipeline'
+    assert config.name == 'demo'
     config = build_config_from_name(
         'demo',
         branch='my-branch',
@@ -54,6 +56,7 @@ def test_config_build_config_from_name():
     assert config.snapshot_source_db_identifier is None
     assert config.branch == 'my-branch'
     assert config.pipeline == 'ContinuousDeploymentPipelineStack'
+    assert config.name == 'dev'
 
 
 def test_config_build_config_from_branch():
