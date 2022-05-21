@@ -6,7 +6,11 @@ Create virtual Python 3.9 environment and install requirements:
 $ pip install -r requirements.txt -r requirements-dev.txt
 ```
 
-Install CDK toolkit (`npm install -g aws-cdk@2.21.0`).
+Install CDK toolkit:
+
+```
+$ npm install -g aws-cdk@2.21.0
+```
 
 ## Deploy demo stacks
 
