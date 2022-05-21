@@ -105,7 +105,7 @@
             ]
         },
         "age_units": {
-            "comment": "Age units is required if age is specified as anything but unknown. Human biosamples cannot have age units of minutes or hours. Yeast biosamples cannot have age units of years or months.",
+            "comment": "Human biosamples cannot have age units of minutes or hours. Yeast biosamples cannot have age units of years or months.",
             "required": [
                 "age"
             ],
