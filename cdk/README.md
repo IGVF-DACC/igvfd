@@ -20,7 +20,7 @@ Configure AWS credentials for dev account (e.g. in `igvf-dev` profile).
 $ cdk deploy -c branch=IGVF-1234-my-feature-branch --profile igvf-dev
 ```
 
-This deploys a CodePipeline stack tied to the `IGVF-1234-my-feature-branch` branch (make sure to push all of your changes to Github before deploying). The pipeline deploys the actual application and runs on every new commit to the branch. You can look at the deploy stacks for your branch in the CloudFormation console.
+This deploys a CodePipeline stack tied to the `IGVF-1234-my-feature-branch` branch (make sure to push all of your changes to Github before deploying). The pipeline deploys the actual application and runs on every new commit to the branch. You can look at the deployed stacks for your branch in the CloudFormation console.
 
 ## Clean up demo stacks
 
