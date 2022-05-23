@@ -1,2 +1,2 @@
 ## Changelog for differentiated_cell.json
-* renamed differentiated_cell from in_vitro
+* renamed in_vitro.json to differentiated_cell.json

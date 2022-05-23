@@ -1,2 +1,2 @@
 ## Changelog for differentiated_tissue.json
-* renamed differentiated_tissue from organoid
+* renamed organoid.json to differentiated_tissue.json
