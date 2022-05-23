@@ -78,7 +78,7 @@ class Tissue(Biosample):
         'title': 'Differentiated tissues',
         'description': 'Listing of differentiated tissues',
     })
-class Organoid(Biosample):
+class DifferentiatedTissue(Biosample):
     item_type = 'differentiated_tissue'
     schema = load_schema('igvfd:schemas/differentiated_tissue.json')
 
@@ -90,7 +90,7 @@ class Organoid(Biosample):
         'title': 'Differentiated cells',
         'description': 'Listing of differentiated cells',
     })
-class InVitro(Biosample):
+class DifferentiatedCell(Biosample):
     item_type = 'differentiated_cell'
     schema = load_schema('igvfd:schemas/differentiated_cell.json')
 
