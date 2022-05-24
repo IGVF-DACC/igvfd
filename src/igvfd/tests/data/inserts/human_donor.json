@@ -27,7 +27,7 @@
             "Hispanic"
         ],
         "sex": "male",
-        "taxon_id": "Homo sapiens",
+        "taxon_id": "NCBI:txid9606",
         "parents": [],
         "external_resources": [],
         "collections": [
@@ -63,7 +63,7 @@
             "Arab"
         ],
         "sex": "female",
-        "taxon_id": "Homo sapiens",
+        "taxon_id": "NCBI:txid9606",
         "parents": [],
         "external_resources": [
             {
@@ -105,7 +105,7 @@
             "Arab"
         ],
         "sex": "female",
-        "taxon_id": "Homo sapiens",
+        "taxon_id": "NCBI:txid9606",
         "parents": [
             "a1abeff6-8024-41d3-a713-5d22c86ffc57"
         ],
