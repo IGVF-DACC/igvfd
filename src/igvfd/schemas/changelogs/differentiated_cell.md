@@ -1,2 +1,4 @@
 ## Changelog for differentiated_cell.json
-* renamed in_vitro.json to differentiated_cell.json
+
+### Minor changes since version 1
+* Renmaed the original profile named in_vitro to differentiated_cell.
