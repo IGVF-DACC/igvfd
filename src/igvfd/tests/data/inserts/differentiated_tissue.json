@@ -13,6 +13,8 @@
         "post_differentiation_time_units": "day",
         "treatments": [
             "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
-        ]
+        ],
+        "age": "89",
+        "age_units": "year"
     }
 ]
