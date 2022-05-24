@@ -152,6 +152,7 @@
             "hidden comment": "Bump the default in the subclasses."
         },
         "organism": {
+            "type": "string",
             "enum": [
                 "Homo sapiens",
                 "Mus musculus",
@@ -225,7 +226,7 @@
         },
         "related_biosamples": {
             "title": "Related biosamples",
-            "description": "Biosamples that are related to this biosample with the relation of 'realted_biosample_realtion'.",
+            "description": "Biosamples that are related to this biosample with the relation of 'related_biosample_relation'.",
             "comment": "A list of biosamples should all have the same relationship to this biosample.",
             "type": "array",
             "uniqueItems": true,
@@ -240,6 +241,7 @@
             "title": "Relationship to other related biosamples",
             "description": "The specific relationship to the biosamples in related_biosamples field",
             "comment": "Must be submitted with related_biosamples",
+            "type": "string",
             "enum": [
                 "originated_from",
                 "pooled_from",
