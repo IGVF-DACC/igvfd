@@ -31,6 +31,21 @@ def test_treatment_post_treatment_time_dependency(treatment_2, testapp):
     assert(res.status_code == 200)
 
 
+def temperature_units_dependency(treatment_2, testapp):
+    res = testapp.patch_json(
+        treatment_2['@id'],
+        {'temperature': 10}, expect_errors=True)
+    assert(res.status_code == 422)
+    res = testapp.patch_json(
+        treatment_2['@id'],
+        {'temperature_units': 'Celsius'}, expect_errors=True)
+    assert(res.status_code == 422)
+    res = testapp.patch_json(
+        treatment_2['@id'],
+        {'temperature': 10, 'temperature_units': 'Celsius'})
+    assert(res.status_code == 200)
+
+
 def test_treatment_type_dependency(treatment_1, testapp):
     res = testapp.patch_json(
         treatment_1['@id'],

@@ -66,6 +66,18 @@
             ],
             "comment": "post_treatment_time must be specified if post_treatment_time_units is specified"
         },
+        "temperature": {
+            "required": [
+                "temperature_units"
+            ],
+            "comment": "temperature_units must be specified if temperature is specified"
+        },
+        "temperature_units": {
+            "required": [
+                "temperature"
+            ],
+            "comment": "temperature must be specified if temperature_units is specified"
+        },
         "treatment_term_id": {
             "oneOf": [
                 {
@@ -182,11 +194,19 @@
             ],
             "comment": "post_treatment_time_units should be used in conjunction with post_treatment_time."
         },
-        "temperature (Celsius)": {
+        "temperature": {
             "title": "Temperature",
             "type": "number",
             "description": "The temperature in Celsius to which the sample was exposed",
-            "comment": "Temperature must be converted to Celsius for submission."
+            "comment": "Temperature should be used in conjunction with temperature_units."
+        },
+        "temperature_units": {
+            "title": "Temperature units",
+            "type": "string",
+            "enum": [
+                "Celsius"
+            ],
+            "comment": "Temperature units should be used in conjunction with temperature."
         },
         "treatment_type": {
             "title": "Treatment type",
