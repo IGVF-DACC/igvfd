@@ -125,13 +125,13 @@
         "lab": "chongyuan-luo",
         "award": "1U01HG012079-01",
         "aliases": [
-            "chongyuan-luo:AAF donor of fibroblasts"
+            "chongyuan-luo:AA F donor of fibroblasts"
         ],
         "status": "released",
         "ethnicity": [
             "African American"
         ],
         "sex": "female",
-        "taxon_id": "Homo sapiens"
+        "taxon_id": "NCBI:txid9606"
     }
 ]
