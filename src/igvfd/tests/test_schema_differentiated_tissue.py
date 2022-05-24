@@ -1,9 +1,9 @@
 import pytest
 
 
-def test_post_organoid(testapp, award, lab, source, treatment_1):
+def test_post_differentiated_tissue(testapp, award, lab, source, treatment_1):
     res = testapp.post_json(
-        '/organoid',
+        '/differentiated_tissue',
         {
             'award': award['@id'],
             'lab': lab['@id'],
@@ -15,7 +15,7 @@ def test_post_organoid(testapp, award, lab, source, treatment_1):
     assert(res.status_code == 201)
 
     res = testapp.post_json(
-        '/organoid',
+        '/differentiated_tissue',
         {
             'award': award['@id'],
             'lab': lab['@id'],
@@ -24,16 +24,16 @@ def test_post_organoid(testapp, award, lab, source, treatment_1):
     assert(res.status_code == 422)
 
 
-def test_organoid_age_unit_dependency(organoid, testapp):
+def test_differentiated_tissue_age_unit_dependency(differentiated_tissue, testapp):
     res = testapp.patch_json(
-        organoid['@id'],
+        differentiated_tissue['@id'],
         {'organism': 'Saccharomyces', 'age_units': 'minute'})
     assert(res.status_code == 200)
     res = testapp.patch_json(
-        organoid['@id'],
+        differentiated_tissue['@id'],
         {'age_units': 'month'}, expect_errors=True)
     assert(res.status_code == 422)
     res = testapp.patch_json(
-        organoid['@id'],
+        differentiated_tissue['@id'],
         {'organism': 'Homo sapiens', 'age_units': 'minute'}, expect_errors=True)
     assert(res.status_code == 422)

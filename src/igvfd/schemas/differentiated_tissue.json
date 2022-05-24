@@ -1,8 +1,8 @@
 {
-    "title": "In vitro",
-    "$id": "/profiles/in_vitro.json",
+    "title": "Differentiated tissue",
+    "$id": "/profiles/differentiated_tissue.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting an in vitro differentiated sample.",
+    "description": "Schema for submitting a differentiated tissue sample.",
     "type": "object",
     "required": [
         "award",
@@ -65,8 +65,20 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "organoid.json#/dependentSchemas"
-        ]
+            "biosample.json#/dependentSchemas"
+        ],
+        "post_differentiation_time": {
+            "required": [
+                "post_differentiation_time_units"
+            ],
+            "comment": "Biosample with a specified post_differentiation_time requires post_differentiation_time_units specification."
+        },
+        "post_differentiation_time_units": {
+            "required": [
+                "post_differentiation_time"
+            ],
+            "comment": "Biosample with a specified post_differentiation_time_units requires post_differentiation_time specification."
+        }
     },
     "properties": {
         "schema_version": {
@@ -109,5 +121,5 @@
             }
         }
     },
-    "changelog": "/profiles/changelogs/in_vitro.md"
+    "changelog": "/profiles/changelogs/differentiated_tissue.md"
 }
