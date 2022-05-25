@@ -300,7 +300,7 @@
         },
         "part_of": {
             "title": "Part of biosample",
-            "description": "Links to a biosample which represents a larger sample from which this smaller sample was taken regardless of whether it is a tissue taken from an organism or smaller slices of a piece of tissue or aliquots of a cell growth.",
+            "description": "Links to a biosample which represents a larger sample from which this sample was taken regardless of whether it is a tissue taken from an organism or smaller slices of a piece of tissue or aliquots of a cell growth.",
             "comment": "For other specific relationships such as differentiation or hosting there are separate properties.",
             "type": "string",
             "linkTo": "Biosample"
