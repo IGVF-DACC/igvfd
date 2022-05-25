@@ -16,7 +16,7 @@ Make sure Docker is running.
 
 ## Deploy demo stacks
 
-Demo applications are not deployed directly. Instead you deploy an `AWS CodePipeline` pipeline once, tied to your Github branch, that deploys the actual application. Once the pipeline is deployed every new commit to your branch will trigger a pipeline execution that updates the application with the new commit. You can watch your deployment pipeline in the `AWS CodePipeline` console to see the commit moving through the release steps.
+Demo applications are not deployed directly. Instead, you deploy an `AWS CodePipeline` pipeline once, tied to your Github branch, that deploys the actual application. Once the pipeline is deployed, every new commit to your branch will trigger a pipeline execution that updates the application with the new commit. You can watch your deployment pipeline in the `AWS CodePipeline` console to see the commit moving through the release steps.
 
 Configure AWS credentials for dev account (e.g. in `igvf-dev` profile).
 
