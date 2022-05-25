@@ -16,11 +16,11 @@ Make sure Docker is running.
 
 ## Deploy demo stacks
 
-#### Overview
+### Overview
 
 Demo applications are not deployed directly. Instead you deploy an `AWS CodePipeline` pipeline once, tied to your Github branch, that deploys the actual application. Once the pipeline is deployed every new commit to your branch will trigger a pipeline execution that updates the application with the new commit. You can watch your pipeline in the `AWS CodePipeline` console to see the commit moving through the deployment steps.
 
-#### Command
+### Command
 
 Configure AWS credentials for dev account (e.g. in `igvf-dev` profile).
 
@@ -30,7 +30,7 @@ $ cdk deploy -c branch=IGVF-1234-my-feature-branch --profile igvf-dev
 
 This deploys a pipeline stack tied to the `IGVF-1234-my-feature-branch` branch (make sure to push all of your changes to Github before deploying).
 
-#### Monitoring deployment and resources
+### Monitoring deployment and resources
 
 You should see a notification in the `aws-chatbot` Slack channel that your pipeline has `STARTED`. You can click on that link or find your pipeline in the `AWS CodePipeline` console to watch your pipeline execute the steps to deploy the actual application. It takes about twenty minutes for the pipeline to run tests, build Docker image assets, and spin up the infrastructure. After that you should have three stacks in `AWS CloudFormation`, one for the pipeline, one for Postgres, and one for the backend.
 
