@@ -32,7 +32,7 @@ This deploys a pipeline stack tied to the `IGVF-1234-my-feature-branch` branch (
 
 ### Monitoring deployment and resources
 
-You should see a notification in the `aws-chatbot` Slack channel that your pipeline has `STARTED`. You can click on that link or find your pipeline in the `AWS CodePipeline` console to watch your pipeline execute the steps to deploy the actual application. It takes about twenty minutes for the pipeline to run tests, build Docker image assets, and spin up the infrastructure. After that you should have three stacks in `AWS CloudFormation`, one for the pipeline, one for Postgres, and one for the backend.
+You should see a notification in the `aws-chatbot` Slack channel that your pipeline has `STARTED`. You can click on that link or find your pipeline in the `AWS CodePipeline` console to watch your pipeline execute the steps to deploy the actual application. It takes about twenty minutes for the pipeline to run tests, build Docker image assets, and spin up the infrastructure. After that you should have three `AWS CloudFormation` stacks, one for the pipeline, one for Postgres, and one for the backend.
 
 In the `AWS CloudFormation` console the URL of your demo is listed in the output tab of your backend stack. You can see all of the actual resources (RDS instance, Fargate cluster, IAM roles, Route53 record, etc.) associated with your application in the resources tab of the stacks.
 
