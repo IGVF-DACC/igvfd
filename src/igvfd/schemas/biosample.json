@@ -290,6 +290,7 @@
             "description": "The biosample(s) this biosample is pooled from.",
             "type": "array",
             "default": [],
+            "uniqueItems": true,
             "items": {
                 "title": "Biosample",
                 "description": "Biosample(s).",
@@ -298,9 +299,9 @@
             }
         },
         "part_of": {
-            "title": "Part of",
-            "description": "The biosample this biosample is a part of.",
-            "comment": "test",
+            "title": "Part of biosample",
+            "description": "Links to a biosample which represents a larger sample from which this smaller sample was taken regardless of whether it is a tissue taken from an organism or smaller slices of a piece of tissue or aliquots of a cell growth.",
+            "comment": "For other specific relationships such as differentiation or hosting there are separate properties.",
             "type": "string",
             "linkTo": "Biosample"
         },
