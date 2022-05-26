@@ -13,10 +13,37 @@ def test_lot_id_dependency(cell_line, testapp):
     assert(res.status_code == 422)
 
 
+def test_age_regex(cell_line, testapp):
+    res = testapp.patch_json(
+        cell_line['@id'],
+        {'organism': 'Homo sapiens', 'age': '50', 'age_units': 'month'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        cell_line['@id'],
+        {'age': '100'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        cell_line['@id'],
+        {'age_units': 'year'}, expect_errors=True)
+    assert(res.status_code == 422)
+    res = testapp.patch_json(
+        cell_line['@id'],
+        {'age': '90 or above'})
+    assert(res.status_code == 200)
+
+
 def test_age_unit_dependency(cell_line, testapp):
     res = testapp.patch_json(
         cell_line['@id'],
-        {'organism': 'Homo sapiens', 'age_units': 'year'})
+        {'organism': 'Homo sapiens', 'age': '5'}, expect_errors=True)
+    assert(res.status_code == 422)
+    res = testapp.patch_json(
+        cell_line['@id'],
+        {'age': 'unknown'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        cell_line['@id'],
+        {'organism': 'Homo sapiens', 'age_units': 'year', 'age': '5'})
     assert(res.status_code == 200)
     res = testapp.patch_json(
         cell_line['@id'],
