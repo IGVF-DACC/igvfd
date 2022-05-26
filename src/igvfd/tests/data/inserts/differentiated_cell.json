@@ -17,5 +17,22 @@
         ],
         "age": "90 or above",
         "age_units": "year"
+    },
+    {
+        "uuid": "8a3af63e-bf89-4947-919c-f9e026ee1c9b",
+        "lab": "gary-hon",
+        "award": "1UM1HG011996-01",
+        "aliases": [
+            "gary-hon:cardiomyocytes"
+        ],
+        "status": "released",
+        "organism": "Homo sapiens",
+        "source": "/labs/gary-hon/",
+        "post_differentiation_time": 10,
+        "post_differentiation_time_units": "minute",
+        "treatments": [
+            "3280b708-0f05-40fa-bff2-54e2b6505c13",
+            "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
+        ]
     }
 ]
