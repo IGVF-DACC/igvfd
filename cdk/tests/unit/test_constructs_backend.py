@@ -175,6 +175,12 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
                                     ]
                                 ]
                             }
+                        },
+                        {
+                            'Name': 'SESSION_SECRET',
+                            'ValueFrom': {
+                                'Ref': 'TestBackendSessionSecret012661FA'
+                            }
                         }
                     ]
                 }
@@ -413,6 +419,16 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
                         'Effect': 'Allow',
                         'Resource': {
                             'Ref': 'PostgresSecretAttachment5D653F4F'
+                        }
+                    },
+                    {
+                        'Action': [
+                            'secretsmanager:GetSecretValue',
+                            'secretsmanager:DescribeSecret'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Ref': 'TestBackendSessionSecret012661FA'
                         }
                     }
                 ],
