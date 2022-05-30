@@ -69,10 +69,7 @@
                                     "const": "unknown"
                                 }
                             }
-                        },
-                        "required": [
-                            "age"
-                        ]
+                        }
                     },
                     "then": {
                         "required": [
@@ -91,7 +88,7 @@
                             }
                         },
                         "required": [
-                            "organism"
+                            "age_units"
                         ]
                     },
                     "then": {
@@ -111,34 +108,42 @@
             ],
             "allOf": [
                 {
-                    "not": {
+                    "if": {
                         "properties": {
                             "organism": {
-                                "enum": [
-                                    "Homo sapiens"
-                                ]
-                            },
+                                "const": "Homo sapiens"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
                             "age_units": {
                                 "enum": [
-                                    "minute",
-                                    "hour"
+                                    "day",
+                                    "week",
+                                    "month",
+                                    "year"
                                 ]
                             }
                         }
                     }
                 },
                 {
-                    "not": {
+                    "if": {
                         "properties": {
                             "organism": {
-                                "enum": [
-                                    "Saccharomyces"
-                                ]
-                            },
+                                "const": "Saccharomyces"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
                             "age_units": {
                                 "enum": [
-                                    "year",
-                                    "month"
+                                    "minute",
+                                    "hour",
+                                    "day",
+                                    "week"
                                 ]
                             }
                         }
@@ -150,18 +155,41 @@
             "comment": "Human and mouse biosamples cannot have yeast life stages and vice versa.",
             "allOf": [
                 {
-                    "not": {
+                    "if": {
                         "properties": {
                             "organism": {
-                                "oneOf": [
-                                    {
-                                        "enum": [
-                                            "Homo sapiens",
-                                            "Mus musculus"
-                                        ]
-                                    }
+                                "enum": [
+                                    "Homo sapiens",
+                                    "Mus musculus"
                                 ]
-                            },
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "life_stage": {
+                                "enum": [
+                                    "adult",
+                                    "child",
+                                    "postnatal",
+                                    "embryonic"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "organism": {
+                                "enum": [
+                                    "Saccharomyces"
+                                ]
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
                             "life_stage": {
                                 "enum": [
                                     "lag",
@@ -169,25 +197,6 @@
                                     "respirative",
                                     "stationary",
                                     "decline"
-                                ]
-                            }
-                        }
-                    }
-                },
-                {
-                    "not": {
-                        "properties": {
-                            "organism": {
-                                "enum": [
-                                    "Saccharomyces"
-                                ]
-                            },
-                            "life_stage": {
-                                "enum": [
-                                    "adult",
-                                    "child",
-                                    "postnatal",
-                                    "embryonic"
                                 ]
                             }
                         }
