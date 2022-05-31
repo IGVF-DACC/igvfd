@@ -289,8 +289,8 @@
             "title": "Biosample(s) pooled from",
             "description": "The biosample(s) this biosample is pooled from.",
             "type": "array",
-            "default": [],
             "uniqueItems": true,
+            "minItems": 2,
             "items": {
                 "title": "Biosample",
                 "description": "Biosample(s).",

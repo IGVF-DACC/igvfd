@@ -509,8 +509,12 @@ PHASE1_PIPELINES = {
         remove_keys('biosample', 'pooled_from'),
         remove_keys('biosample', 'part_of'),
     ],
-    'differentiated_cell': [remove_keys('biosample', 'differentiated_from'), remove_keys('biosample', 'pooled_from'), remove_keys('biosample', 'part_of'), ],
-    'differentiated_tissue': [remove_keys('biosample', 'differentiated_from'), remove_keys('biosample', 'pooled_from'), remove_keys('biosample', 'part_of'), ],
+    'differentiated_cell': [remove_keys('biosample', 'differentiated_from'),
+                            remove_keys('biosample', 'pooled_from'),
+                            remove_keys('biosample', 'part_of'), ],
+    'differentiated_tissue': [remove_keys('biosample', 'differentiated_from'),
+                              remove_keys('biosample', 'pooled_from'),
+                              remove_keys('biosample', 'part_of'), ],
 }
 
 
