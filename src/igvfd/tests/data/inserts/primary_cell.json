@@ -63,6 +63,9 @@
         "source": "/labs/j-michael-cherry/",
         "donors": [
             "j-michael-cherry:alias_human_donor1"
+        ],
+        "pooled_from": [
+            "/primary-cells/578c72a2-4f84-2c8f-96b0-ec8715e18185"
         ]
     }
 ]

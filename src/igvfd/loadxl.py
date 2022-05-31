@@ -497,6 +497,20 @@ PHASE1_PIPELINES = {
     'user': [
         remove_keys('lab', 'submits_for'),
     ],
+    'cell_line': [
+        remove_keys('biosample', 'pooled_from'),
+        remove_keys('biosample', 'part_of'),
+    ],
+    'tissue': [
+        remove_keys('biosample', 'pooled_from'),
+        remove_keys('biosample', 'part_of'),
+    ],
+    'primary_cell': [
+        remove_keys('biosample', 'pooled_from'),
+        remove_keys('biosample', 'part_of'),
+    ],
+    'differentiated_cell': [remove_keys('biosample', 'differentiated_from'), remove_keys('biosample', 'pooled_from'), remove_keys('biosample', 'part_of'), ],
+    'differentiated_tissue': [remove_keys('biosample', 'differentiated_from'), remove_keys('biosample', 'pooled_from'), remove_keys('biosample', 'part_of'), ],
 }
 
 
@@ -511,6 +525,21 @@ PHASE2_PIPELINES = {
     'user': [
         skip_rows_missing_all_keys('lab', 'submits_for'),
     ],
+    'cell_line': [
+        skip_rows_missing_all_keys('biosample', 'pooled_from'),
+        skip_rows_missing_all_keys('biosample', 'part_of'),
+    ],
+    'tissue': [
+        skip_rows_missing_all_keys('biosample', 'pooled_from'),
+        skip_rows_missing_all_keys('biosample', 'part_of'),
+    ],
+    'primary_cell': [
+        skip_rows_missing_all_keys('biosample', 'pooled_from'),
+        skip_rows_missing_all_keys('biosample', 'part_of'),
+    ],
+    'differentiated_cell': [skip_rows_missing_all_keys('biosample', 'differentiated_from'), skip_rows_missing_all_keys('biosample', 'pooled_from'), skip_rows_missing_all_keys('biosample', 'part_of'), ],
+    'differentiated_tissue': [skip_rows_missing_all_keys('biosample', 'differentiated_from'), skip_rows_missing_all_keys('biosample', 'pooled_from'), skip_rows_missing_all_keys('biosample', 'part_of'), ],
+
 }
 
 
