@@ -30,9 +30,6 @@
             "$ref": "mixins.json#/attribution"
         },
         {
-            "$ref": "mixins.json#/submitter_comment"
-        },
-        {
             "$ref": "mixins.json#/notes"
         },
         {

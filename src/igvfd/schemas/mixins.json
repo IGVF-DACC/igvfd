@@ -134,6 +134,13 @@
             "linkTo": "User",
             "serverDefault": "userid",
             "permission": "import_items"
+        },
+        "submitter_comment": {
+            "title": "Submitter comment",
+            "description": "Additional information specified by the submitter to be displayed as a comment on the portal.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "formInput": "textarea"
         }
     },
     "attribution": {
@@ -217,15 +224,6 @@
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "permission": "import_items",
-            "formInput": "textarea"
-        }
-    },
-    "submitter_comment": {
-        "submitter_comment": {
-            "title": "Submitter comment",
-            "description": "Additional information specified by the submitter to be displayed as a comment on the portal.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "formInput": "textarea"
         }
     },
