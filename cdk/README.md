@@ -57,7 +57,7 @@ Make sure you are in the `cdk` folder of the repo and deploy the pipeline.
 $ cdk deploy -c branch=IGVF-1234-my-feature-branch --profile igvf-dev
 ```
 
-This passes the branch name as a context variable, and tells the CDK to use your credentials for the `igvf-dev` account. It's important to exactly match the branch name that you've pushed to Github, as this is where the pipeline listens for code changes. The branch name is also used for generating a URL for the demo.
+This passes the branch name as a context variable, and tells the CDK to use your credentials for the `igvf-dev` account. It's important to match the branch name that you've pushed to Github exactly, as this is where the pipeline listens for code changes. The branch name is also used for generating a URL for the demo.
 
 If this is the first time you've run the command the underlying Docker image used for bundling could take some time to download. You can monitor what's happening by passing the `-v` verbose flag.
 
