@@ -25,9 +25,6 @@
             "$ref": "mixins.json#/submitted"
         },
         {
-            "$ref": "mixins.json#/notes"
-        },
-        {
             "$ref": "mixins.json#/standard_status"
         }
     ],

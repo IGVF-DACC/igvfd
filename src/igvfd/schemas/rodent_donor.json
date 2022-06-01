@@ -32,9 +32,6 @@
             "$ref": "mixins.json#/accession"
         },
         {
-            "$ref": "mixins.json#/accessioned_status"
-        },
-        {
             "$ref": "mixins.json#/aliases"
         },
         {
@@ -42,9 +39,6 @@
         },
         {
             "$ref": "mixins.json#/attribution"
-        },
-        {
-            "$ref": "mixins.json#/notes"
         },
         {
             "$ref": "mixins.json#/documents"

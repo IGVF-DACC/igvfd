@@ -20,6 +20,15 @@
             "serverDefault": "uuid4",
             "permission": "import_items",
             "requestMethod": "POST"
+        },
+        "notes": {
+            "title": "Notes",
+            "description": "DACC internal notes.",
+            "comment": "Do not submit. A place for the DACC to keep information that does not have a place in the schema.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "permission": "import_items",
+            "formInput": "textarea"
         }
     },
     "accession": {
@@ -46,6 +55,21 @@
                 "type": "string",
                 "format": "accession"
             }
+        },
+        "status": {
+            "title": "Status",
+            "type": "string",
+            "permission": "import_items",
+            "default": "in progress",
+            "description": "The status of the metadata object.",
+            "comment": "Do not submit.  This is set by admins along the process of metadata submission.",
+            "enum": [
+                "in progress",
+                "released",
+                "deleted",
+                "replaced",
+                "revoked"
+            ]
         }
     },
     "aliases": {
@@ -64,23 +88,6 @@
                 "type": "string",
                 "pattern": "^(?:j-michael-cherry|ali-mortazavi|barbara-wold|lior-pachter|grant-macgregor|kim-green|mark-craven|qiongshi-lu|audrey-gasch|robert-steiner|jesse-engreitz|thomas-quertermous|anshul-kundaje|michael-bassik|will-greenleaf|marlene-rabinovitch|lars-steinmetz|jay-shendure|nadav-ahituv|martin-kircher|danwei-huangfu|michael-beer|anna-katerina-hadjantonakis|christina-leslie|alexander-rudensky|laura-donlin|hannah-carter|bing-ren|kyle-gaulton|maike-sander|charles-gersbach|gregory-crawford|tim-reddy|ansuman-sapathy|andrew-allen|gary-hon|nikhil-munshi|w-lee-kraus|lea-starita|doug-fowler|luca-pinello|guillaume-lettre|benhur-lee|daniel-bauer|richard-sherwood|benjamin-kleinstiver|marc-vidal|david-hill|frederick-roth|mikko-taipale|anne-carpenter|hyejung-won|karen-mohlke|michael-love|jason-buenrostro|bradley-bernstein|hilary-finucane|chongyuan-luo|noah-zaitlen|kathrin-plath|roy-wollman|jason-ernst|zhiping-weng|manuel-garber|xihong-lin|alan-boyle|ryan-mills|jie-liu|maureen-sartor|joshua-welch|stephen-montgomery|alexis-battle|livnat-jerby|jonathan-pritchard|predrag-radivojac|sean-mooney|harinder-singh|nidhi-sahni|jishnu-das|igvf|igvf-dacc):[a-zA-Z\\d_$.+!*,()'-]+(?:\\s[a-zA-Z\\d_$.+!*,()'-]+)*$"
             }
-        }
-    },
-    "accessioned_status": {
-        "status": {
-            "title": "Status",
-            "type": "string",
-            "permission": "import_items",
-            "default": "in progress",
-            "description": "The status of the metadata object.",
-            "comment": "Do not submit.  This is set by admins along the process of metadata submission.",
-            "enum": [
-                "in progress",
-                "released",
-                "deleted",
-                "replaced",
-                "revoked"
-            ]
         }
     },
     "standard_status": {
@@ -214,17 +221,6 @@
                     "minimum": 0
                 }
             }
-        }
-    },
-    "notes": {
-        "notes": {
-            "title": "Notes",
-            "description": "DCC internal notes.",
-            "comment": "Do not submit. A place for the DCC to keep information that does not have a place in the schema.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "permission": "import_items",
-            "formInput": "textarea"
         }
     },
     "url": {
