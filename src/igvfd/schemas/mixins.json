@@ -277,15 +277,6 @@
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
         }
     },
-    "additional_description": {
-        "additional_description": {
-            "title": "Additional Description",
-            "description": "Additional description of entry.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "formInput": "textarea"
-        }
-    },
     "collections": {
         "collections": {
             "title": "Collections",
