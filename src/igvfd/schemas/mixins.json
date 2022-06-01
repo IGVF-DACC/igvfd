@@ -10,7 +10,7 @@
             "requestMethod": []
         }
     },
-    "uuid": {
+    "basic_item": {
         "uuid": {
             "title": "UUID",
             "description": "The unique identifier associated with every object.",
