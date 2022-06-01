@@ -126,6 +126,14 @@ $ python commands/cdk_destroy_all_stacks.py -c branch=IGVF-1234-my-feature-branc
 
 Pass the `--force` flag to bypass the confirmation prompts.
 
+## Notes on demos
+
+Avoid deploying a demo stack to our primary/shared branches (e.g. `dev` or `main`) as these already have their own pipelines associated with them. If you want to deploy your own demo that matches `dev`, for example, first checkout `dev`, pull all of the changes, and then copy them to your own branch with a special name:
+
+![dev deploy](images/dev.png)
+
+Then use this new branch to deploy your pipeline.
+
 ## Useful commands
 
  * `cdk ls`          list all stacks in the app
