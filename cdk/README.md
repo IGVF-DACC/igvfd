@@ -63,7 +63,7 @@ If this is the first time you've run the command the underlying Docker image use
 
 ![synth output](images/synth_demo.png)
 
-Eventually you should see a list of security policy changes.
+Eventually you should see a list of proposed security policy changes.
 
 ![iam changes](images/iam_changes.png)
 
