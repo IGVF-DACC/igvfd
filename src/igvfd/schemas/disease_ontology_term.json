@@ -15,7 +15,7 @@
     "additionalProperties": false,
     "mixinProperties": [
         {
-            "$ref": "mixins.json#/schema_version"
+            "$ref": "ontology_term.json#/properties"
         },
         {
             "$ref": "mixins.json#/basic_item"
@@ -25,10 +25,7 @@
         },
         {
             "$ref": "mixins.json#/standard_status"
-        },
-        {
-            "$ref": "ontology_term.json#/properties"
-        }
+        } 
     ],
     "properties": {
         "schema_version": {

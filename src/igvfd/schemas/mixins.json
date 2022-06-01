@@ -1,6 +1,6 @@
 {
     "title": "Mixin properties",
-    "schema_version": {
+    "basic_item": {
         "schema_version": {
             "title": "Schema version",
             "description": "The version of the JSON schema that the server uses to validate the object.",
@@ -8,9 +8,7 @@
             "type": "string",
             "pattern": "^\\d+(\\.\\d+)*$",
             "requestMethod": []
-        }
-    },
-    "basic_item": {
+        },
         "uuid": {
             "title": "UUID",
             "description": "The unique identifier associated with every object.",
@@ -54,6 +52,21 @@
                 "comment": "Only accessions of objects that have status equal replaced will work here.",
                 "type": "string",
                 "format": "accession"
+            }
+        },
+        "collections": {
+            "title": "Collections",
+            "description": "Some samples are part of particular data collections.",
+            "comment": "Do not submit. Collections are for DACC use only.",
+            "type": "array",
+            "default": [],
+            "permission": "import_items",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": [
+                    "ENCODE"
+                ]
             }
         },
         "status": {
@@ -271,23 +284,6 @@
             "description": "The product identifier provided by the originating lab or vendor.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
-        }
-    },
-    "collections": {
-        "collections": {
-            "title": "Collections",
-            "description": "Some samples are part of particular data collections.",
-            "comment": "Do not submit. Collections are for DCC use only.",
-            "type": "array",
-            "default": [],
-            "permission": "import_items",
-            "uniqueItems": true,
-            "items": {
-                "type": "string",
-                "enum": [
-                    "ENCODE"
-                ]
-            }
         }
     },
     "references": {

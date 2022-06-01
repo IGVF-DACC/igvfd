@@ -17,9 +17,6 @@
     "additionalProperties": false,
     "mixinProperties": [
         {
-            "$ref": "mixins.json#/schema_version"
-        },
-        {
             "$ref": "mixins.json#/basic_item"
         },
         {
