@@ -81,7 +81,7 @@ You can click on that link or find your pipeline in the `AWS CodePipeline` conso
 
 ![pipelines](images/pipelines.png)
 
-It takes about twenty minutes for the pipeline to run tests, build Docker image assets, and spin up the infrastructure. Here you can see the first two steps in the pipeline, listening to your Github branch and synthesizing a CloudFormation template:
+It takes about twenty minutes for the pipeline to run tests, build Docker image assets, and spin up the infrastructure. Here you can see the first two steps in the pipeline: listening to your Github branch and synthesizing a CloudFormation template.
 
 ![pipeline steps](images/pipeline_steps.png)
 
