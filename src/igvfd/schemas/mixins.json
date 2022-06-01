@@ -31,9 +31,7 @@
             "format": "accession",
             "serverDefault": "accession",
             "permission": "import_items"
-        }
-    },
-    "alternate_accessions": {
+        },
         "alternate_accessions": {
             "title": "Alternate accessions",
             "description": "Accessions previously assigned to objects that have been merged with this object.",
@@ -228,16 +226,6 @@
             "description": "Additional information specified by the submitter to be displayed as a comment on the portal.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "formInput": "textarea"
-        }
-    },
-    "reviewer_comment": {
-        "reviewer_comment": {
-            "title": "Reviewer comment",
-            "description": "Comments from the reviewer to justify the assigned review status of a characterization.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "permission": "import_items",
             "formInput": "textarea"
         }
     },

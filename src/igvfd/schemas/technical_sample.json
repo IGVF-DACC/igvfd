@@ -31,9 +31,6 @@
             "$ref": "mixins.json#/accession"
         },
         {
-            "$ref": "mixins.json#/alternate_accessions"
-        },
-        {
             "$ref": "mixins.json#/accessioned_status"
         },
         {
