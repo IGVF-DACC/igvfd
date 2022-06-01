@@ -56,9 +56,6 @@
         },
         {
             "$ref": "mixins.json#/collections"
-        },
-        {
-            "$ref": "mixins.json#/additional_description"
         }
     ],
     "dependentSchemas": {
