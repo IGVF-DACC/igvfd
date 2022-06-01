@@ -130,7 +130,11 @@ Pass the `--force` flag to bypass the confirmation prompts.
 
 Avoid deploying a demo stack to our primary/shared branches (e.g. `dev` or `main`) as these already have their own pipelines associated with them. If you want to deploy your own demo that matches `dev`, for example, first checkout `dev`, pull all of the changes, and then copy them to your own branch with a special name:
 
-![dev deploy](images/dev.png)
+```bash
+$ git checkout dev
+$ git pull
+$ git checkout -b dev-keenan
+```
 
 Then use this new branch to deploy your pipeline.
 
