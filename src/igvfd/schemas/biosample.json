@@ -88,7 +88,8 @@
                             }
                         },
                         "required": [
-                            "age_units"
+                            "age_units",
+                            "organism"
                         ]
                     },
                     "then": {
@@ -113,7 +114,10 @@
                             "organism": {
                                 "const": "Homo sapiens"
                             }
-                        }
+                        },
+                        "required": [
+                            "organism"
+                        ]
                     },
                     "then": {
                         "properties": {
@@ -134,7 +138,10 @@
                             "organism": {
                                 "const": "Saccharomyces"
                             }
-                        }
+                        },
+                        "required": [
+                            "organism"
+                        ]
                     },
                     "then": {
                         "properties": {
@@ -152,7 +159,7 @@
             ]
         },
         "life_stage": {
-            "comment": "Human and mouse biosamples cannot have yeast life stages and vice versa.",
+            "comment": "Human and mouse biosamples have different life stages to yeast.",
             "allOf": [
                 {
                     "if": {
@@ -163,7 +170,10 @@
                                     "Mus musculus"
                                 ]
                             }
-                        }
+                        },
+                        "required": [
+                            "organism"
+                        ]
                     },
                     "then": {
                         "properties": {
@@ -172,7 +182,8 @@
                                     "adult",
                                     "child",
                                     "postnatal",
-                                    "embryonic"
+                                    "embryonic",
+                                    "unknown"
                                 ]
                             }
                         }
@@ -186,7 +197,10 @@
                                     "Saccharomyces"
                                 ]
                             }
-                        }
+                        },
+                        "required": [
+                            "organism"
+                        ]
                     },
                     "then": {
                         "properties": {
@@ -196,7 +210,8 @@
                                     "fermentative",
                                     "respirative",
                                     "stationary",
-                                    "decline"
+                                    "decline",
+                                    "unknown"
                                 ]
                             }
                         }
