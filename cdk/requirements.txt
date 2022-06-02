@@ -1,3 +1,4 @@
 aws-cdk-lib==2.21.1
+aws-cdk.aws-lambda-python-alpha==2.21.0a0
 constructs>=10.0.0,<11.0.0
 git+https://github.com/IGVF-DACC/shared-infrastructure@main#egg=shared_infrastructure

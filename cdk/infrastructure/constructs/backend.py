@@ -16,37 +16,46 @@ from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedTaskImageOptions
 
 from aws_cdk.aws_iam import ManagedPolicy
 
+from infrastructure.config import Config
+
 from infrastructure.constructs.existing.types import ExistingResources
-from infrastructure.constructs.postgres import Postgres
+
+from infrastructure.constructs.postgres import PostgresConstruct
 
 from typing import Any
 from typing import cast
 
+from dataclasses import dataclass
+
+
+@dataclass
+class BackendProps:
+    config: Config
+    existing_resources: ExistingResources
+    postgres: PostgresConstruct
+    cpu: int
+    memory_limit_mib: int
+    desired_count: int
+    max_capacity: int
+
 
 class Backend(Construct):
+
+    props: BackendProps
+    application_image: ContainerImage
+    nginx_image: ContainerImage
+    fargate_service: ApplicationLoadBalancedFargateService
 
     def __init__(
             self,
             scope: Construct,
             construct_id: str,
             *,
-            branch: str,
-            postgres: Postgres,
-            existing_resources: ExistingResources,
-            cpu: int,
-            memory_limit_mib: int,
-            desired_count: int,
-            max_capacity: int,
+            props: BackendProps,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
-        self._branch = branch
-        self._postgres = postgres
-        self._existing_resources = existing_resources
-        self._cpu = cpu
-        self._memory_limit_mib = memory_limit_mib
-        self._desired_count = desired_count
-        self._max_capacity = max_capacity
+        self.props = props
         self._define_docker_assets()
         self._define_fargate_service()
         self._add_application_container_to_task()
@@ -71,9 +80,9 @@ class Backend(Construct):
         self.fargate_service = ApplicationLoadBalancedFargateService(
             self,
             'Fargate',
-            vpc=self._existing_resources.network.vpc,
-            cpu=self._cpu,
-            desired_count=self._desired_count,
+            vpc=self.props.existing_resources.network.vpc,
+            cpu=self.props.cpu,
+            desired_count=self.props.desired_count,
             circuit_breaker=DeploymentCircuitBreaker(
                 rollback=True,
             ),
@@ -85,17 +94,17 @@ class Backend(Construct):
                     mode=AwsLogDriverMode.NON_BLOCKING,
                 ),
             ),
-            memory_limit_mib=self._memory_limit_mib,
+            memory_limit_mib=self.props.memory_limit_mib,
             public_load_balancer=True,
             assign_public_ip=True,
-            certificate=self._existing_resources.domain.certificate,
-            domain_zone=self._existing_resources.domain.zone,
-            domain_name=f'igvfd-{self._branch}.{self._existing_resources.domain.name}',
+            certificate=self.props.existing_resources.domain.certificate,
+            domain_zone=self.props.existing_resources.domain.zone,
+            domain_name=f'igvfd-{self.props.config.branch}.{self.props.existing_resources.domain.name}',
             redirect_http=True,
         )
 
     def _get_database_secret(self) -> Secret:
-        database_secret = self._postgres.database.secret
+        database_secret = self.props.postgres.database.secret
         # Unwrap optional for mypy.
         if database_secret is None:
             raise ValueError('Database secret is None')
@@ -111,8 +120,8 @@ class Backend(Construct):
             container_name=container_name,
             image=self.application_image,
             environment={
-                'DB_HOST': self._postgres.database.instance_endpoint.hostname,
-                'DB_NAME': self._postgres.database_name,
+                'DB_HOST': self.props.postgres.database.instance_endpoint.hostname,
+                'DB_NAME': self.props.postgres.database_name,
             },
             secrets={
                 'DB_PASSWORD': self._get_database_secret(),
@@ -125,7 +134,7 @@ class Backend(Construct):
 
     def _allow_connections_to_database(self) -> None:
         self.fargate_service.service.connections.allow_to(
-            self._postgres.database,
+            self.props.postgres.database,
             Port.tcp(5432),
             description='Allow connection to Postgres instance',
         )
@@ -138,7 +147,7 @@ class Backend(Construct):
     def _add_tags_to_fargate_service(self) -> None:
         cdk.Tags.of(self.fargate_service).add(
             'branch',
-            self._branch
+            self.props.config.branch
         )
 
     def _enable_exec_command(self) -> None:
@@ -156,7 +165,7 @@ class Backend(Construct):
 
     def _configure_task_scaling(self) -> None:
         scalable_task = self.fargate_service.service.auto_scale_task_count(
-            max_capacity=self._max_capacity,
+            max_capacity=self.props.max_capacity,
         )
         scalable_task.scale_on_request_count(
             'RequestCountScaling',

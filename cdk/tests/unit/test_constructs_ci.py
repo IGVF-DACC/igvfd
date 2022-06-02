@@ -5,6 +5,7 @@ from aws_cdk.assertions import Template
 
 def test_constructs_ci_initialize_ci_construct(stack, mocker):
     from infrastructure.constructs.ci import ContinuousIntegration
+    from infrastructure.constructs.ci import ContinuousIntegrationProps
     from aws_cdk.aws_secretsmanager import Secret
     docker_hub_credentials = mocker.Mock()
     docker_hub_credentials.secret = Secret(
@@ -14,10 +15,12 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker):
     ci = ContinuousIntegration(
         stack,
         'TestContinuousIntegration',
-        github_owner='some-org',
-        github_repo='some-repo',
-        build_spec={},
-        docker_hub_credentials=docker_hub_credentials,
+        props=ContinuousIntegrationProps(
+            github_owner='some-org',
+            github_repo='some-repo',
+            build_spec={},
+            docker_hub_credentials=docker_hub_credentials,
+        )
     )
     template = Template.from_stack(stack)
     template.has_resource_properties(

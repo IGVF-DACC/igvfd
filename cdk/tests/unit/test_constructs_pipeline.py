@@ -3,17 +3,20 @@ import pytest
 from aws_cdk.assertions import Template
 
 
-def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(stack, secret, mocker):
+def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(stack, secret, mocker, config):
     from infrastructure.constructs.pipeline import BasicSelfUpdatingPipeline
+    from infrastructure.constructs.pipeline import BasicSelfUpdatingPipelineProps
     existing_resources = mocker.Mock()
     existing_resources.code_star_connection.arn = 'some-arn'
     existing_resources.docker_hub_credentials.secret = secret
     pipeline = BasicSelfUpdatingPipeline(
         stack,
         'TestBasicSelfUpdatingPipeline',
-        github_repo='ABC/xyz',
-        branch='some-branch',
-        existing_resources=existing_resources
+        props=BasicSelfUpdatingPipelineProps(
+            github_repo='ABC/xyz',
+            existing_resources=existing_resources,
+            config=config,
+        )
     )
     template = Template.from_stack(stack)
     template.has_resource_properties(
@@ -70,7 +73,6 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                                 'ProjectName': {
                                     'Ref': 'TestBasicSelfUpdatingPipelineCodePipelineBuildSynthStepCdkBuildProjectC378F9B9'
                                 },
-                                'EnvironmentVariables': '[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"21e1e421f12d53f5783dd73023487de0adee348ca3e83bbd1cbc48dbc29add3a"}]'
                             },
                             'InputArtifacts': [
                                 {
@@ -107,7 +109,6 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                                 'ProjectName': {
                                     'Ref': 'TestBasicSelfUpdatingPipelineCodePipelineUpdatePipelineSelfMutationCFEBBD4C'
                                 },
-                                'EnvironmentVariables': '[{"name":"_PROJECT_CONFIG_HASH","type":"PLAINTEXT","value":"6664b122059fa50033502909e93d343a2c4a351b3da36fdb62814c766bbdec32"}]'
                             },
                             'InputArtifacts': [
                                 {
@@ -146,6 +147,11 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                 'ComputeType': 'BUILD_GENERAL1_SMALL',
                 'EnvironmentVariables': [
                     {
+                        'Name': 'CONFIG_NAME',
+                        'Type': 'PLAINTEXT',
+                        'Value': 'demo'
+                    },
+                    {
                         'Name': 'BRANCH',
                         'Type': 'PLAINTEXT',
                         'Value': 'some-branch'
@@ -153,7 +159,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                 ],
                 'Image': 'aws/codebuild/standard:5.0',
                 'ImagePullCredentialsType': 'CODEBUILD',
-                'PrivilegedMode': False,
+                'PrivilegedMode': True,
                 'Type': 'LINUX_CONTAINER'
             },
             'ServiceRole': {
@@ -258,12 +264,13 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
     )
 
 
-def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct(mocker):
+def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct(mocker, config):
     from aws_cdk import Stack
     from aws_cdk import Environment
     from aws_cdk.aws_secretsmanager import Secret
     from aws_cdk.aws_chatbot import SlackChannelConfiguration
     from infrastructure.constructs.pipeline import ContinuousDeploymentPipeline
+    from infrastructure.constructs.pipeline import ContinuousDeploymentPipelineProps
     from infrastructure.constructs.existing import igvf_dev
     stack = Stack(
         env=igvf_dev.US_WEST_2
@@ -284,9 +291,11 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
     pipeline = ContinuousDeploymentPipeline(
         stack,
         'TestContinuousDeploymentPipeline',
-        github_repo='ABC/xyz',
-        branch='some-branch',
-        existing_resources=existing_resources,
+        props=ContinuousDeploymentPipelineProps(
+            github_repo='ABC/xyz',
+            existing_resources=existing_resources,
+            config=config,
+        )
     )
     template = Template.from_stack(stack)
     template.has_resource_properties(

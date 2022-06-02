@@ -3,6 +3,7 @@ import aws_cdk as cdk
 from constructs import Construct
 
 from infrastructure.constructs.ci import ContinuousIntegration
+from infrastructure.constructs.ci import ContinuousIntegrationProps
 from infrastructure.constructs.existing.types import ExistingResourcesClass
 
 from typing import Any
@@ -64,8 +65,10 @@ class ContinuousIntegrationStack(cdk.Stack):
         self.ci = ContinuousIntegration(
             self,
             'ContinuousIntegration',
-            github_owner='igvf-dacc',
-            github_repo='igvfd',
-            build_spec=get_build_spec(),
-            docker_hub_credentials=self.existing_resources.docker_hub_credentials,
+            props=ContinuousIntegrationProps(
+                github_owner='igvf-dacc',
+                github_repo='igvfd',
+                build_spec=get_build_spec(),
+                docker_hub_credentials=self.existing_resources.docker_hub_credentials,
+            )
         )

@@ -3,31 +3,36 @@ import pytest
 from aws_cdk.assertions import Template
 
 
-def test_constructs_backend_initialize_backend_construct(stack, instance_type, existing_resources, vpc):
+def test_constructs_backend_initialize_backend_construct(stack, instance_type, existing_resources, vpc, config):
     from infrastructure.constructs.backend import Backend
+    from infrastructure.constructs.backend import BackendProps
     from infrastructure.constructs.postgres import Postgres
+    from infrastructure.constructs.postgres import PostgresProps
     # Given
-    branch = 'some-branch'
     postgres = Postgres(
         stack,
         'Postgres',
-        branch=branch,
-        existing_resources=existing_resources,
-        allocated_storage=10,
-        max_allocated_storage=20,
-        instance_type=instance_type,
+        props=PostgresProps(
+            config=config,
+            existing_resources=existing_resources,
+            allocated_storage=10,
+            max_allocated_storage=20,
+            instance_type=instance_type
+        )
     )
     # When
     backend = Backend(
         stack,
         'TestBackend',
-        branch=branch,
-        postgres=postgres,
-        existing_resources=existing_resources,
-        cpu=2048,
-        memory_limit_mib=4096,
-        desired_count=4,
-        max_capacity=7,
+        props=BackendProps(
+            config=config,
+            existing_resources=existing_resources,
+            postgres=postgres,
+            cpu=2048,
+            memory_limit_mib=4096,
+            desired_count=4,
+            max_capacity=7,
+        )
     )
     template = Template.from_stack(stack)
     # Then

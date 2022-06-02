@@ -3,24 +3,23 @@ import pytest
 from aws_cdk.assertions import Template
 
 
-def test_stacks_backend_initialize_backend_stack():
+def test_stacks_backend_initialize_backend_stack(config):
     from aws_cdk import App
     from infrastructure.stacks.postgres import PostgresStack
     from infrastructure.stacks.backend import BackendStack
     from infrastructure.constructs.existing import igvf_dev
     app = App()
-    branch = 'some-branch'
     postgres_stack = PostgresStack(
         app,
         'TestPostgresStack',
-        branch=branch,
         existing_resources_class=igvf_dev.Resources,
+        config=config,
         env=igvf_dev.US_WEST_2,
     )
     backend_stack = BackendStack(
         app,
         'TestBackendStack',
-        branch=branch,
+        config=config,
         postgres=postgres_stack.postgres,
         existing_resources_class=igvf_dev.Resources,
         env=igvf_dev.US_WEST_2,

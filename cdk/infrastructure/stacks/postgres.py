@@ -6,8 +6,11 @@ from aws_cdk.aws_ec2 import InstanceType
 from aws_cdk.aws_ec2 import InstanceClass
 from aws_cdk.aws_ec2 import InstanceSize
 
+from infrastructure.config import Config
+
 from infrastructure.constructs.existing.types import ExistingResourcesClass
-from infrastructure.constructs.postgres import Postgres
+from infrastructure.constructs.postgres import PostgresProps
+from infrastructure.constructs.postgres import postgres_factory
 
 from typing import Any
 
@@ -19,7 +22,7 @@ class PostgresStack(cdk.Stack):
             scope: Construct,
             construct_id: str,
             *,
-            branch: str,
+            config: Config,
             existing_resources_class: ExistingResourcesClass,
             **kwargs: Any
     ) -> None:
@@ -28,15 +31,18 @@ class PostgresStack(cdk.Stack):
             self,
             'ExistingResources',
         )
-        self.postgres = Postgres(
+        postgres_class = postgres_factory(config)
+        self.postgres = postgres_class(
             self,
             'Postgres',
-            branch=branch,
-            existing_resources=self.existing_resources,
-            allocated_storage=10,
-            max_allocated_storage=20,
-            instance_type=InstanceType.of(
-                InstanceClass.BURSTABLE3,
-                InstanceSize.MEDIUM,
+            props=PostgresProps(
+                config=config,
+                existing_resources=self.existing_resources,
+                allocated_storage=10,
+                max_allocated_storage=20,
+                instance_type=InstanceType.of(
+                    InstanceClass.BURSTABLE3,
+                    InstanceSize.MEDIUM,
+                ),
             ),
         )
