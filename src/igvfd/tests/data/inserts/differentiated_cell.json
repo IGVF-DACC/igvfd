@@ -1,6 +1,7 @@
 [
     {
         "uuid": "f1d10666-ebb2-4152-9d49-f98b6de7c9e5",
+        "accession": "IGVFSM000CCC",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -20,6 +21,7 @@
     },
     {
         "uuid": "8a3af63e-bf89-4947-919c-f9e026ee1c9b",
+        "accession": "IGVFSM001CCC",
         "lab": "gary-hon",
         "award": "1UM1HG011996-01",
         "aliases": [
