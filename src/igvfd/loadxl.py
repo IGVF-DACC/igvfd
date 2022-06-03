@@ -498,23 +498,20 @@ PHASE1_PIPELINES = {
         remove_keys('lab', 'submits_for'),
     ],
     'cell_line': [
-        remove_keys('biosample', 'pooled_from'),
-        remove_keys('biosample', 'part_of'),
+        remove_keys('pooled_from', 'part_of'),
     ],
     'tissue': [
-        remove_keys('biosample', 'pooled_from'),
-        remove_keys('biosample', 'part_of'),
+        remove_keys('pooled_from', 'part_of'),
     ],
     'primary_cell': [
-        remove_keys('biosample', 'pooled_from'),
-        remove_keys('biosample', 'part_of'),
+        remove_keys('pooled_from', 'part_of'),
     ],
-    'differentiated_cell': [remove_keys('biosample', 'differentiated_from'),
-                            remove_keys('biosample', 'pooled_from'),
-                            remove_keys('biosample', 'part_of'), ],
-    'differentiated_tissue': [remove_keys('biosample', 'differentiated_from'),
-                              remove_keys('biosample', 'pooled_from'),
-                              remove_keys('biosample', 'part_of'), ],
+    'differentiated_cell': [
+        remove_keys('pooled_from', 'part_of', 'differentiated_from'),
+    ],
+    'differentiated_tissue': [
+        remove_keys('pooled_from', 'part_of', 'differentiated_from'),
+    ]
 }
 
 
@@ -530,20 +527,20 @@ PHASE2_PIPELINES = {
         skip_rows_missing_all_keys('lab', 'submits_for'),
     ],
     'cell_line': [
-        skip_rows_missing_all_keys('biosample', 'pooled_from'),
-        skip_rows_missing_all_keys('biosample', 'part_of'),
+        skip_rows_missing_all_keys('pooled_from', 'part_of'),
     ],
     'tissue': [
-        skip_rows_missing_all_keys('biosample', 'pooled_from'),
-        skip_rows_missing_all_keys('biosample', 'part_of'),
+        skip_rows_missing_all_keys('pooled_from', 'part_of'),
     ],
     'primary_cell': [
-        skip_rows_missing_all_keys('biosample', 'pooled_from'),
-        skip_rows_missing_all_keys('biosample', 'part_of'),
+        skip_rows_missing_all_keys('pooled_from', 'part_of'),
     ],
-    'differentiated_cell': [skip_rows_missing_all_keys('biosample', 'differentiated_from'), skip_rows_missing_all_keys('biosample', 'pooled_from'), skip_rows_missing_all_keys('biosample', 'part_of'), ],
-    'differentiated_tissue': [skip_rows_missing_all_keys('biosample', 'differentiated_from'), skip_rows_missing_all_keys('biosample', 'pooled_from'), skip_rows_missing_all_keys('biosample', 'part_of'), ],
-
+    'differentiated_cell': [
+        skip_rows_missing_all_keys('pooled_from', 'part_of', 'differentiated_from'),
+    ],
+    'differentiated_tissue': [
+        skip_rows_missing_all_keys('pooled_from', 'part_of', 'differentiated_from'),
+    ]
 }
 
 
