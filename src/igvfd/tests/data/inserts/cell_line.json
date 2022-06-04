@@ -24,8 +24,8 @@
         "age": "40",
         "age_units": "year",
         "life_stage": "adult",
-        "biosample_ontology": "motor neuron",
-        "disease_ontology": "motor neuron disease",
+        "biosample_ontology": "/sample-ontology-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "disease_ontology": "/disease-ontology-terms/8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4/",
         "nih_institutional_certification": "NICHD1442",
         "sex": "male",
         "date_obtained": "2022-02-02",
@@ -53,7 +53,7 @@
         "age": "30",
         "age_units": "year",
         "life_stage": "adult",
-        "biosample_ontology": "motor neuron",
+        "biosample_ontology": "/sample-ontology-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "sex": "female",
         "treatments": [
             "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
