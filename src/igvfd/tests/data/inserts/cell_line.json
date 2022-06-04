@@ -36,6 +36,7 @@
     },
     {
         "uuid": "3736b93a-c748-11ec-9d64-0242ac120002",
+        "accession": "IGVFSM000AAA",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -62,6 +63,22 @@
         "source": "/labs/j-michael-cherry/",
         "donors": [
             "j-michael-cherry:alias_human_donor1"
+        ]
+    },
+    {
+        "uuid": "8e35b598-e688-443b-bf0d-9ea1783d171e",
+        "accession": "IGVFSM001AAA",
+        "lab": "ali-mortazavi",
+        "award": "HG012012",
+        "aliases": [
+            "ali-mortazavi:pooled_cell_line"
+        ],
+        "status": "released",
+        "organism": "Homo sapiens",
+        "source": "/labs/ali-mortazavi/",
+        "pooled_from": [
+            "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/",
+            "/cell-lines/467c72a2-4f84-2c8f-96b0-ec8715e18185/"
         ]
     }
 ]

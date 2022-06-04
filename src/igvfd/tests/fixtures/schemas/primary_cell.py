@@ -9,3 +9,23 @@ def primary_cell(testapp, other_lab, award):
         'source': other_lab['@id']
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def pooled_from_primary_cell(testapp, lab, award, source):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id']
+    }
+    return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def pooled_from_primary_cell_2(testapp, lab, award, source):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id']
+    }
+    return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]

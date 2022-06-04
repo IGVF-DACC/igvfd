@@ -66,6 +66,11 @@
         },
         "date_obtained": {
             "title": "Date harvested"
+        },
+        "pooled_from": {
+            "items": {
+                "linkTo": "PrimaryCell"
+            }
         }
     },
     "changelog": "/profiles/changelogs/primary_cell.md"
