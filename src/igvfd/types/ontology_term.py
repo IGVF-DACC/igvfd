@@ -118,8 +118,8 @@ class AssayOntologyTerm(OntologyTerm):
     name='phenotype-ontology-terms',
     unique_key='term_id',
     properties={
-        'title': 'Disease ontology term',
-        'description': 'Ontology terms used by IGVF for diseases',
+        'title': 'Phenotype ontology term',
+        'description': 'Ontology terms used by IGVF for phenotypes, such as traits or diseases.',
     })
 class PhenotypeOntologyTerm(OntologyTerm):
     item_type = 'phenotype_ontology_term'
