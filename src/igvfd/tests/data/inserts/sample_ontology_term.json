@@ -19,5 +19,11 @@
         "term_name": "memory B cell",
         "status": "released",
         "uuid": "3fc75da8-8f87-4749-939e-cee38f5c7ab0"
+    },
+    {
+        "term_id": "CL:0011001",
+        "term_name": "motor neuron",
+        "status": "released",
+        "uuid": "9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc"
     }
 ]

@@ -238,12 +238,14 @@
         "biosample_ontology": {
             "title": "Biosample ontology term",
             "description": "Ontology term of the biosample.",
-            "type": "string"
+            "type": "string",
+            "linkTo": "SampleOntologyTerm"
         },
         "disease_ontology": {
             "title": "Disease ontology term",
             "description": "Ontology term of the disease associated with the biosample.",
-            "type": "string"
+            "type": "string",
+            "linkTo": "DiseaseOntologyTerm"
         },
         "nih_institutional_certification": {
             "type": "string",

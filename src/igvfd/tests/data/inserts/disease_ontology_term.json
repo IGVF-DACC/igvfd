@@ -20,5 +20,11 @@
         "term_name": "diabetes mellitus",
         "status": "released",
         "uuid": "b4a58993-8f87-4749-ed58-c34a0f5c8993"
+    },
+    {
+        "term_id": "DOID:231",
+        "term_name": "motor neuron disease",
+        "status": "released",
+        "uuid": "8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4"
     }
 ]
