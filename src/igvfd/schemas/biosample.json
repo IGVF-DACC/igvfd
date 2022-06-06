@@ -264,7 +264,7 @@
             "title": "Disease ontology term",
             "description": "Ontology term of the disease associated with the biosample.",
             "type": "string",
-            "linkTo": "DiseaseOntologyTerm"
+            "linkTo": "PhenotypeOntologyTerm"
         },
         "nih_institutional_certification": {
             "type": "string",
