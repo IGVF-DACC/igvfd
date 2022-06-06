@@ -90,3 +90,14 @@ def test_collections(cell_line, testapp):
         cell_line['@id'],
         {'collections': ['ABBBCCCHD1455']}, expect_errors=True)
     assert(res.status_code == 422)
+
+
+def test_date_format(cell_line_with_date_obtained, testapp):
+    res = testapp.patch_json(
+        cell_line_with_date_obtained['@id'],
+        {'date_obtained': '2022-01-02'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        cell_line_with_date_obtained['@id'],
+        {'date_obtained': '2022-05-10T22:09:05.876084+00:00'}, expect_errors=True)
+    assert(res.status_code == 422)
