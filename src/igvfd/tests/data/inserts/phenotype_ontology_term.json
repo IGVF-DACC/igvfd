@@ -1,0 +1,52 @@
+[
+    {
+        "term_id": "DOID:10652",
+        "term_name": "Alzheimer's disease",
+        "status": "released",
+        "uuid": "93634a0b-e033-3730-b64c-c0c9b4597e0e",
+        "aliases": [
+            "j-michael-cherry:alzheimers-disease"
+        ],
+        "notes": "Phenotype ontology object for Alzheimer's disease"
+    },
+    {
+        "term_id": "HP:0001658",
+        "term_name": "Myocardial infarction",
+        "status": "released",
+        "uuid": "747dc8bf-9e8c-3dbc-967f-397e0005b8ba"
+    },
+    {
+        "term_id": "DOID:9351",
+        "term_name": "diabetes mellitus",
+        "status": "released",
+        "uuid": "b4a58993-8f87-4749-ed58-c34a0f5c8993"
+    },
+    {
+        "term_id": "MONDO:0005027",
+        "term_name": "epilepsy",
+        "status": "released",
+        "uuid": "df2e1dab-3484-f4bb-f2dc-b1f8b451dace",
+        "aliases": [
+            "j-michael-cherry:epilepsy_trait"
+        ],
+        "notes": "Phenotype ontology object for epilepsy"
+    },
+    {
+        "term_id": "EFO:0007978",
+        "term_name": "red blood cell density measurement",
+        "status": "released",
+        "uuid": "33cfd50d-7f2d-fd28-2f94-3129f00677eb"
+    },
+    {
+        "term_id": "OBA:0000055",
+        "term_name": "cell size",
+        "status": "released",
+        "uuid": "29ad0da8-8f87-7e80-7aeb-cee38f5cfd28"
+    },
+    {
+        "term_id": "HP:0031413",
+        "term_name": "Short telomere length",
+        "status": "released",
+        "uuid": "c54f9ad0-9f99-4749-e805-f2dc8f5c3962"
+    }
+]

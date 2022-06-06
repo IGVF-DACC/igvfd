@@ -115,12 +115,12 @@ class AssayOntologyTerm(OntologyTerm):
 
 
 @collection(
-    name='disease-ontology-terms',
+    name='phenotype-ontology-terms',
     unique_key='term_id',
     properties={
         'title': 'Disease ontology term',
         'description': 'Ontology terms used by IGVF for diseases',
     })
-class DiseaseOntologyTerm(OntologyTerm):
-    item_type = 'disease_ontology_term'
-    schema = load_schema('igvfd:schemas/disease_ontology_term.json')
+class PhenotypeOntologyTerm(OntologyTerm):
+    item_type = 'phenotype_ontology_term'
+    schema = load_schema('igvfd:schemas/phenotype_ontology_term.json')
