@@ -1,6 +1,6 @@
 {
     "title": "Mixin properties",
-    "schema_version": {
+    "basic_item": {
         "schema_version": {
             "title": "Schema version",
             "description": "The version of the JSON schema that the server uses to validate the object.",
@@ -8,9 +8,7 @@
             "type": "string",
             "pattern": "^\\d+(\\.\\d+)*$",
             "requestMethod": []
-        }
-    },
-    "uuid": {
+        },
         "uuid": {
             "title": "UUID",
             "description": "The unique identifier associated with every object.",
@@ -20,6 +18,15 @@
             "serverDefault": "uuid4",
             "permission": "import_items",
             "requestMethod": "POST"
+        },
+        "notes": {
+            "title": "Notes",
+            "description": "DACC internal notes.",
+            "comment": "Do not submit. A place for the DACC to keep information that does not have a place in the schema.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "permission": "import_items",
+            "formInput": "textarea"
         }
     },
     "accession": {
@@ -31,9 +38,7 @@
             "format": "accession",
             "serverDefault": "accession",
             "permission": "import_items"
-        }
-    },
-    "alternate_accessions": {
+        },
         "alternate_accessions": {
             "title": "Alternate accessions",
             "description": "Accessions previously assigned to objects that have been merged with this object.",
@@ -48,6 +53,36 @@
                 "type": "string",
                 "format": "accession"
             }
+        },
+        "collections": {
+            "title": "Collections",
+            "description": "Some samples are part of particular data collections.",
+            "comment": "Do not submit. Collections are for DACC use only.",
+            "type": "array",
+            "default": [],
+            "permission": "import_items",
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "enum": [
+                    "ENCODE"
+                ]
+            }
+        },
+        "status": {
+            "title": "Status",
+            "type": "string",
+            "permission": "import_items",
+            "default": "in progress",
+            "description": "The status of the metadata object.",
+            "comment": "Do not submit.  This is set by admins along the process of metadata submission.",
+            "enum": [
+                "in progress",
+                "released",
+                "deleted",
+                "replaced",
+                "revoked"
+            ]
         }
     },
     "aliases": {
@@ -66,23 +101,6 @@
                 "type": "string",
                 "pattern": "^(?:j-michael-cherry|ali-mortazavi|barbara-wold|lior-pachter|grant-macgregor|kim-green|mark-craven|qiongshi-lu|audrey-gasch|robert-steiner|jesse-engreitz|thomas-quertermous|anshul-kundaje|michael-bassik|will-greenleaf|marlene-rabinovitch|lars-steinmetz|jay-shendure|nadav-ahituv|martin-kircher|danwei-huangfu|michael-beer|anna-katerina-hadjantonakis|christina-leslie|alexander-rudensky|laura-donlin|hannah-carter|bing-ren|kyle-gaulton|maike-sander|charles-gersbach|gregory-crawford|tim-reddy|ansuman-sapathy|andrew-allen|gary-hon|nikhil-munshi|w-lee-kraus|lea-starita|doug-fowler|luca-pinello|guillaume-lettre|benhur-lee|daniel-bauer|richard-sherwood|benjamin-kleinstiver|marc-vidal|david-hill|frederick-roth|mikko-taipale|anne-carpenter|hyejung-won|karen-mohlke|michael-love|jason-buenrostro|bradley-bernstein|hilary-finucane|chongyuan-luo|noah-zaitlen|kathrin-plath|roy-wollman|jason-ernst|zhiping-weng|manuel-garber|xihong-lin|alan-boyle|ryan-mills|jie-liu|maureen-sartor|joshua-welch|stephen-montgomery|alexis-battle|livnat-jerby|jonathan-pritchard|predrag-radivojac|sean-mooney|harinder-singh|nidhi-sahni|jishnu-das|igvf|igvf-dacc):[a-zA-Z\\d_$.+!*,()'-]+(?:\\s[a-zA-Z\\d_$.+!*,()'-]+)*$"
             }
-        }
-    },
-    "accessioned_status": {
-        "status": {
-            "title": "Status",
-            "type": "string",
-            "permission": "import_items",
-            "default": "in progress",
-            "description": "The status of the metadata object.",
-            "comment": "Do not submit.  This is set by admins along the process of metadata submission.",
-            "enum": [
-                "in progress",
-                "released",
-                "deleted",
-                "replaced",
-                "revoked"
-            ]
         }
     },
     "standard_status": {
@@ -136,6 +154,13 @@
             "linkTo": "User",
             "serverDefault": "userid",
             "permission": "import_items"
+        },
+        "submitter_comment": {
+            "title": "Submitter comment",
+            "description": "Additional information specified by the submitter to be displayed as a comment on the portal.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "formInput": "textarea"
         }
     },
     "attribution": {
@@ -211,36 +236,6 @@
             }
         }
     },
-    "notes": {
-        "notes": {
-            "title": "Notes",
-            "description": "DCC internal notes.",
-            "comment": "Do not submit. A place for the DCC to keep information that does not have a place in the schema.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "permission": "import_items",
-            "formInput": "textarea"
-        }
-    },
-    "submitter_comment": {
-        "submitter_comment": {
-            "title": "Submitter comment",
-            "description": "Additional information specified by the submitter to be displayed as a comment on the portal.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "formInput": "textarea"
-        }
-    },
-    "reviewer_comment": {
-        "reviewer_comment": {
-            "title": "Reviewer comment",
-            "description": "Comments from the reviewer to justify the assigned review status of a characterization.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "permission": "import_items",
-            "formInput": "textarea"
-        }
-    },
     "url": {
         "url": {
             "@type": "@id",
@@ -289,32 +284,6 @@
             "description": "The product identifier provided by the originating lab or vendor.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
-        }
-    },
-    "additional_description": {
-        "additional_description": {
-            "title": "Additional Description",
-            "description": "Additional description of entry.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "formInput": "textarea"
-        }
-    },
-    "collections": {
-        "collections": {
-            "title": "Collections",
-            "description": "Some samples are part of particular data collections.",
-            "comment": "Do not submit. Collections are for DCC use only.",
-            "type": "array",
-            "default": [],
-            "permission": "import_items",
-            "uniqueItems": true,
-            "items": {
-                "type": "string",
-                "enum": [
-                    "ENCODE"
-                ]
-            }
         }
     },
     "references": {

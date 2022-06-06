@@ -15,22 +15,16 @@
     "additionalProperties": false,
     "mixinProperties": [
         {
-            "$ref": "mixins.json#/schema_version"
+            "$ref": "ontology_term.json#/properties"
         },
         {
-            "$ref": "mixins.json#/uuid"
+            "$ref": "mixins.json#/basic_item"
         },
         {
             "$ref": "mixins.json#/aliases"
         },
         {
             "$ref": "mixins.json#/standard_status"
-        },
-        {
-            "$ref": "mixins.json#/notes"
-        },
-        {
-            "$ref": "ontology_term.json#/properties"
         }
     ],
     "properties": {
