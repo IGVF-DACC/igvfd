@@ -129,20 +129,13 @@
         }
     },
     "submitted": {
-        "date_created": {
+        "creation_timestamp": {
             "rdfs:subPropertyOf": "dc:created",
-            "title": "Date created",
+            "title": "Creation timestamp",
             "description": "The date the object was created.",
             "comment": "Do not submit. The date the object is created is assigned by the server.",
             "type": "string",
-            "anyOf": [
-                {
-                    "format": "date-time"
-                },
-                {
-                    "format": "date"
-                }
-            ],
+            "format": "date-time",
             "serverDefault": "now",
             "permission": "import_items"
         },
