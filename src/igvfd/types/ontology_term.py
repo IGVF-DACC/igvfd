@@ -25,8 +25,9 @@ class OntologyTerm(Item):
     def _get_ontology_slims(registry, term_id, slim_key):
         if term_id not in registry['ontology']:
             return []
+        key = registry['ontology'][term_id].get(slim_key, [])
         return list(set(
-            slim for slim in registry['ontology'][term_id][slim_key]
+            slim for slim in key
         ))
 
     @calculated_property(condition='term_id', schema={
