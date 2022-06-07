@@ -48,5 +48,11 @@
         "term_name": "Short telomere length",
         "status": "released",
         "uuid": "c54f9ad0-9f99-4749-e805-f2dc8f5c3962"
+    },
+    {
+        "term_id": "DOID:231",
+        "term_name": "motor neuron disease",
+        "status": "released",
+        "uuid": "8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4"
     }
 ]
