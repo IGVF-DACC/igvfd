@@ -41,12 +41,13 @@ class Biosample(Sample):
             'type': 'string',
         }
     )
-    def sex(self, donors=None):
+    def sex(self, request, donors=None):
         sexes = set()
         if donors:
             for donor in donors:
-                if donor.get('sex'):
-                    sexes.add(donor.get('sex'))
+                donor_object = request.embed(donor, '@@object')
+                if donor_object.get('sex'):
+                    sexes.add(donor_object.get('sex'))
         if len(sexes) == 1:
             return sexes[0]
         elif len(sexes) > 1:
