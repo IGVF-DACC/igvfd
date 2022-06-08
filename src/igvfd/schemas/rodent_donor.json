@@ -7,7 +7,7 @@
     "required": [
         "award",
         "lab",
-        "taxon_id",
+        "organism",
         "sex",
         "strain"
     ],
@@ -48,6 +48,9 @@
         },
         {
             "$ref": "mixins.json#/references"
+        },
+        {
+            "$ref": "mixins.json#/organism"
         }
     ],
     "dependentSchemas": {

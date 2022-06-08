@@ -7,7 +7,7 @@
     "required": [
         "award",
         "lab",
-        "taxon_id"
+        "organism"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -34,6 +34,9 @@
         },
         {
             "$ref": "mixins.json#/references"
+        },
+        {
+            "$ref": "mixins.json#/organism"
         }
     ],
     "properties": {
@@ -51,12 +54,6 @@
                 "male",
                 "female"
             ]
-        },
-        "taxon_id": {
-            "title": "Taxa (Organism) Identifier",
-            "description": "Taxa (organism) identifier of the donor.",
-            "type": "string",
-            "pattern": "^NCBI:txid[0-9]+"
         },
         "parents": {
             "title": "Parents",

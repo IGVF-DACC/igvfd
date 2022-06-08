@@ -118,24 +118,3 @@ def test_external_resources(rodent_donor, testapp):
             }
         ]}, expect_errors=True)
     assert(res.status_code == 422)
-
-
-def test_taxon_id_pattern(rodent_donor, testapp):
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {
-            'taxon_id': 'NCBI:34854'
-        },  expect_errors=True)
-    assert(res.status_code == 422)
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {
-            'taxon_id': 'Rattus exulans'
-        },  expect_errors=True)
-    assert(res.status_code == 422)
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {
-            'taxon_id': 'NCBI:txid34854'
-        })
-    assert(res.status_code == 200)
