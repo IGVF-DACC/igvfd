@@ -103,3 +103,10 @@ def test_collections(tissue, testapp):
         tissue['@id'],
         {'collections': ['ABBBCCCHD1455']}, expect_errors=True)
     assert(res.status_code == 422)
+
+
+def test_failure_patch_calculated_sex(testapp, tissue):
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'sex': 'female'}, expect_errors=True)
+    assert(res.status_code == 422)
