@@ -54,10 +54,7 @@
                                     "const": "unknown"
                                 }
                             }
-                        },
-                        "required": [
-                            "age"
-                        ]
+                        }
                     },
                     "then": {
                         "required": [
@@ -76,6 +73,7 @@
                             }
                         },
                         "required": [
+                            "age_units",
                             "organism"
                         ]
                     },
@@ -96,34 +94,48 @@
             ],
             "allOf": [
                 {
-                    "not": {
+                    "if": {
                         "properties": {
                             "organism": {
-                                "enum": [
-                                    "Homo sapiens"
-                                ]
-                            },
+                                "const": "Homo sapiens"
+                            }
+                        },
+                        "required": [
+                            "organism"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
                             "age_units": {
                                 "enum": [
-                                    "minute",
-                                    "hour"
+                                    "day",
+                                    "week",
+                                    "month",
+                                    "year"
                                 ]
                             }
                         }
                     }
                 },
                 {
-                    "not": {
+                    "if": {
                         "properties": {
                             "organism": {
-                                "enum": [
-                                    "Saccharomyces"
-                                ]
-                            },
+                                "const": "Saccharomyces"
+                            }
+                        },
+                        "required": [
+                            "organism"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
                             "age_units": {
                                 "enum": [
-                                    "year",
-                                    "month"
+                                    "minute",
+                                    "hour",
+                                    "day",
+                                    "week"
                                 ]
                             }
                         }
@@ -132,47 +144,59 @@
             ]
         },
         "life_stage": {
-            "comment": "Human and mouse biosamples cannot have yeast life stages and vice versa.",
+            "comment": "Human and mouse biosamples have different life stages to yeast.",
             "allOf": [
                 {
-                    "not": {
+                    "if": {
                         "properties": {
                             "organism": {
-                                "oneOf": [
-                                    {
-                                        "enum": [
-                                            "Homo sapiens",
-                                            "Mus musculus"
-                                        ]
-                                    }
+                                "enum": [
+                                    "Homo sapiens",
+                                    "Mus musculus"
                                 ]
-                            },
+                            }
+                        },
+                        "required": [
+                            "organism"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
                             "life_stage": {
                                 "enum": [
-                                    "lag",
-                                    "fermentative",
-                                    "respirative",
-                                    "stationary",
-                                    "decline"
+                                    "adult",
+                                    "child",
+                                    "postnatal",
+                                    "embryonic",
+                                    "unknown"
                                 ]
                             }
                         }
                     }
                 },
                 {
-                    "not": {
+                    "if": {
                         "properties": {
                             "organism": {
                                 "enum": [
                                     "Saccharomyces"
                                 ]
-                            },
+                            }
+                        },
+                        "required": [
+                            "organism"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
                             "life_stage": {
                                 "enum": [
-                                    "adult",
-                                    "child",
-                                    "postnatal",
-                                    "embryonic"
+                                    "lag",
+                                    "fermentative",
+                                    "respirative",
+                                    "stationary",
+                                    "decline",
+                                    "unknown"
                                 ]
                             }
                         }

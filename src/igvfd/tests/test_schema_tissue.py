@@ -16,7 +16,15 @@ def test_lot_id_dependency(tissue, testapp):
 def test_age_unit_dependency(tissue, testapp):
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Saccharomyces', 'age': '5', 'age_units': 'minute'})
+        {'age': '1', 'age_units': 'year'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'age_units': 'minute'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'organism': 'Saccharomyces'})
     assert(res.status_code == 200)
     res = testapp.patch_json(
         tissue['@id'],
@@ -24,14 +32,30 @@ def test_age_unit_dependency(tissue, testapp):
     assert(res.status_code == 422)
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Homo sapiens', 'age_units': 'hour'}, expect_errors=True)
+        {'organism': 'Homo sapiens', 'age_units': 'year'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'age_units': 'minute'}, expect_errors=True)
     assert(res.status_code == 422)
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'organism': 'Mus musculus'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'age_units': 'hour'})
+    assert(res.status_code == 200)
 
 
 def test_lifestage_dependency(tissue, testapp):
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Mus musculus', 'life_stage': 'embryonic'})
+        {'organism': 'Mus musculus'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'life_stage': 'embryonic'})
     assert(res.status_code == 200)
     res = testapp.patch_json(
         tissue['@id'],
@@ -41,6 +65,22 @@ def test_lifestage_dependency(tissue, testapp):
         tissue['@id'],
         {'organism': 'Saccharomyces', 'life_stage': 'child'}, expect_errors=True)
     assert(res.status_code == 422)
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'organism': 'Saccharomyces', 'life_stage': 'lag'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'organism': 'Homo sapiens'}, expect_errors=True)
+    assert(res.status_code == 422)
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'life_stage': 'unknown'})
+    assert(res.status_code == 200)
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'organism': 'Homo sapiens'})
+    assert(res.status_code == 200)
 
 
 def test_nih_institutional_certification(tissue, testapp):
