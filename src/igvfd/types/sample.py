@@ -41,9 +41,16 @@ class Biosample(Sample):
             'type': 'string',
         }
     )
-    def sex(self, donor=None):
-        if donor and donor.get('sex'):
-            return donor.get('sex')
+    def sex(self, donors=None):
+        sexes = set()
+        if donors:
+            for donor in donors:
+                if donor.get('sex'):
+                    sexes.add(donor.get('sex'))
+        if len(sexes) == 1:
+            return sexes[0]
+        elif len(sexes) > 1:
+            return 'mixed'
 
 
 @collection(
