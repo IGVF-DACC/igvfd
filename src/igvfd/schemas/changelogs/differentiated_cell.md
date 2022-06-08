@@ -3,3 +3,6 @@
 ### Minor changes since version 1
 * Renamed the original profile named in_vitro to differentiated_cell.
 * Added differentiated_from property
+
+* Renamed the original profile named in_vitro to differentiated_cell
+* Converted the submittable property *sex* into calculated
