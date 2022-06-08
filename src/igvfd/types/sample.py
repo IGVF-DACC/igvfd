@@ -1,5 +1,6 @@
 from snovault import (
     abstract_collection,
+    calculated_property,
     collection,
     load_schema,
 )
@@ -33,6 +34,16 @@ class Biosample(Sample):
     item_type = 'biosample'
     base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
+
+    @calculated_property(
+        schema={
+            'title': 'Sex',
+            'type': 'string',
+        }
+    )
+    def sex(self, donor=None):
+        if donor and donor.get('sex'):
+            return donor.get('sex')
 
 
 @collection(
