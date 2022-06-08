@@ -49,3 +49,14 @@ def human_donor_orphan(testapp, lab, award):
         'organism': 'Homo sapiens',
     }
     return testapp.post_json('/human_donor', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def human_male_donor(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'taxon_id': 'NCBI:txid9606',
+        'sex': 'male'
+    }
+    return testapp.post_json('/human_donor', item, status=201).json['@graph'][0]

@@ -49,7 +49,7 @@ class Biosample(Sample):
                 if donor_object.get('sex'):
                     sexes.add(donor_object.get('sex'))
         if len(sexes) == 1:
-            return sexes[0]
+            return list(sexes).pop()
         elif len(sexes) > 1:
             return 'mixed'
 
