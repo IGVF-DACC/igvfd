@@ -119,6 +119,11 @@
                     "Yoruba"
                 ]
             }
+        },
+        "organism": {
+            "enum": [
+                "Homo sapiens"
+            ]
         }
     },
     "changelog": "/profiles/changelogs/human_donor.md"

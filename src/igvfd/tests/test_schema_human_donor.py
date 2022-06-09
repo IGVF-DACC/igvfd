@@ -99,3 +99,30 @@ def test_external_resources(human_donor, testapp):
             }
         ]}, expect_errors=True)
     assert(res.status_code == 422)
+
+
+def test_organism(award, lab, testapp):
+    res = testapp.post_json(
+        '/human_donor',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'organism': 'Homo sapiens'
+        })
+    assert(res.status_code == 201)
+    res = testapp.post_json(
+        '/human_donor',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'organism': 'Mus musculus'
+        }, expect_errors=True)
+    assert(res.status_code == 422)
+    res = testapp.post_json(
+        '/human_donor',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'organism': 'Saccharomyces'
+        }, expect_errors=True)
+    assert(res.status_code == 422)

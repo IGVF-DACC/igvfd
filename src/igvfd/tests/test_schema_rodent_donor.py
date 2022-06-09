@@ -118,3 +118,36 @@ def test_external_resources(rodent_donor, testapp):
             }
         ]}, expect_errors=True)
     assert(res.status_code == 422)
+
+
+def test_organism(award, lab, testapp):
+    res = testapp.post_json(
+        '/rodent_donor',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'organism': 'Mus musculus',
+            'sex': 'male',
+            'strain': 'B6'
+        })
+    assert(res.status_code == 201)
+    res = testapp.post_json(
+        '/rodent_donor',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'organism': 'Homo sapiens',
+            'sex': 'male',
+            'strain': 'B6'
+        }, expect_errors=True)
+    assert(res.status_code == 422)
+    res = testapp.post_json(
+        '/rodent_donor',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'organism': 'Saccharomyces',
+            'sex': 'male',
+            'strain': 'B6'
+        }, expect_errors=True)
+    assert(res.status_code == 422)
