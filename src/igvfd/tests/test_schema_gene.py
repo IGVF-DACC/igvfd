@@ -14,7 +14,7 @@ def test_gene_assembly_locations_hs(testapp, gene_myc_hs):
                 }
             ]
         }, expect_errors=True)
-    assert(res.status_code == 422)
+    assert res.status_code == 422
     res = testapp.patch_json(
         gene_myc_hs['@id'],
         {
@@ -27,7 +27,7 @@ def test_gene_assembly_locations_hs(testapp, gene_myc_hs):
                 }
             ]
         }, expect_errors=True)
-    assert(res.status_code == 422)
+    assert res.status_code == 422
     res = testapp.patch_json(
         gene_myc_hs['@id'],
         {
@@ -41,7 +41,7 @@ def test_gene_assembly_locations_hs(testapp, gene_myc_hs):
             ]
         }
     )
-    assert(res.status_code == 200)
+    assert res.status_code == 200
     res = testapp.patch_json(
         gene_myc_hs['@id'],
         {
@@ -55,7 +55,7 @@ def test_gene_assembly_locations_hs(testapp, gene_myc_hs):
             ]
         }
     )
-    assert(res.status_code == 200)
+    assert res.status_code == 200
 
 
 def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
@@ -71,7 +71,7 @@ def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
                 }
             ]
         }, expect_errors=True)
-    assert(res.status_code == 422)
+    assert res.status_code == 422
     res = testapp.patch_json(
         gene_zscan10_mm['@id'],
         {
@@ -84,7 +84,7 @@ def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
                 }
             ]
         }, expect_errors=True)
-    assert(res.status_code == 422)
+    assert res.status_code == 422
     res = testapp.patch_json(
         gene_zscan10_mm['@id'],
         {
@@ -98,7 +98,7 @@ def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
             ]
         }
     )
-    assert(res.status_code == 200)
+    assert res.status_code == 200
     res = testapp.patch_json(
         gene_zscan10_mm['@id'],
         {
@@ -112,4 +112,4 @@ def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
             ]
         }
     )
-    assert(res.status_code == 200)
+    assert res.status_code == 200

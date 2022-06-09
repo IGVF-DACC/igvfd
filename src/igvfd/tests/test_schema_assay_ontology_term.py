@@ -6,7 +6,7 @@ def test_assay_ontology_term_term_id_regex(assay_ontology_term_starr, testapp):
         assay_ontology_term_starr['@id'],
         {'term_id': 'ABC:12345'},
         expect_errors=True)
-    assert(res.status_code == 422)
+    assert res.status_code == 422
 
 
 def test_assay_ontology_term_slims(assay_ontology_term_chip, testapp):
