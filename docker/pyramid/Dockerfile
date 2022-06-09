@@ -42,4 +42,4 @@ EXPOSE 6543
 
 ENTRYPOINT ["/scripts/pyramid/entrypoint.sh"]
 
-CMD ["/scripts/pyramid/run.sh"]
+CMD ["/scripts/pyramid/run-production.sh"]
