@@ -20,13 +20,7 @@
             "$ref": "mixins.json#/basic_item"
         },
         {
-            "$ref": "mixins.json#/aliases"
-        },
-        {
             "$ref": "mixins.json#/standard_status"
-        },
-        {
-            "$ref": "mixins.json#/submitted"
         },
         {
             "$ref": "mixins.json#/documents"
