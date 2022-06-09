@@ -12,7 +12,6 @@ logging.getLogger('igvfd').setLevel(logging.INFO)
 
 
 def get_parser():
-    print('in loader parser')
     parser = argparse.ArgumentParser(
         description='Load data',
     )
