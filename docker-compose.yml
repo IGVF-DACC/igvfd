@@ -19,7 +19,7 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
-    command: run-docker
+    command: load-development
     depends_on:
       - postgres
 
@@ -31,7 +31,7 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
-    command: gunicorn --config ./config/gunicorn/development.conf.py --paste ./config/pyramid/ini/development.ini
+    command: /scripts/pyramid/run-development.sh
     ports:
       - "6543:6543"
     depends_on:

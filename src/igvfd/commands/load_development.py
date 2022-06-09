@@ -12,6 +12,7 @@ logging.getLogger('igvfd').setLevel(logging.INFO)
 
 
 def get_parser():
+    print('in loader parser')
     parser = argparse.ArgumentParser(
         description='Load data',
     )
@@ -22,7 +23,7 @@ def get_parser():
     )
     parser.add_argument(
         '--config_uri',
-        default=f'{Path().absolute()}/config/pyramid/ini/docker.ini',
+        default=f'{Path().absolute()}/config/pyramid/ini/loader.ini',
         help='Path to config file',
     )
     parser.add_argument(
