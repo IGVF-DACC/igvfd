@@ -94,7 +94,7 @@ def test_cors_get_allowed_origins(dummy_request):
 def test_cors_get_allowed_suffixes(dummy_request):
     from igvfd.cors import get_allowed_suffixes
     assert get_allowed_suffixes(dummy_request) == [
-        'demo.igvf.org',
+        '.demo.igvf.org',
     ]
 
 
@@ -158,25 +158,27 @@ def test_cors_origin_maches_suffix(dummy_request):
     assert not origin_matches_suffix(dummy_request)
     dummy_request.headers.update({'Origin': 'http://abc.demo.igvf.org'})
     assert not origin_matches_suffix(dummy_request)
+    dummy_request.headers.update({'Origin': 'https://abc.baddemo.igvf.org'})
+    assert not origin_matches_suffix(dummy_request)
     dummy_request.headers.update({'Origin': 'https://abc.demo.igvf.org'})
     assert origin_matches_suffix(dummy_request)
     original_trusted = dummy_request.registry.settings['cors_trusted_suffixes']
     dummy_request.registry.settings['cors_trusted_suffixes'] = ''
     assert not origin_matches_suffix(dummy_request)
     dummy_request.registry.settings['cors_trusted_suffixes'] = (
-        'test.igvf.org'
+        '.test.igvf.org'
     )
     assert not origin_matches_suffix(dummy_request)
     dummy_request.registry.settings['cors_trusted_suffixes'] = (
-        'igvf.org'
+        '.igvf.org'
     )
     assert origin_matches_suffix(dummy_request)
     dummy_request.registry.settings['cors_trusted_suffixes'] = (
-        'test.igvf.org\ndata.igvf.org'
+        '.test.igvf.org\n.data.igvf.org'
     )
     assert not origin_matches_suffix(dummy_request)
     dummy_request.registry.settings['cors_trusted_suffixes'] = (
-        'test.igvf.org\ndemo.igvf.org'
+        '.test.igvf.org\n.demo.igvf.org'
     )
     assert origin_matches_suffix(dummy_request)
     dummy_request.registry.settings['cors_trusted_suffixes'] = original_trusted
@@ -420,6 +422,16 @@ def test_cors_maybe_add_preflight_cors_to_response_header_suffix(dummy_request):
     dummy_request.headers.update(
         {
             'Origin': 'https://demo.igvf.org.evilhost.com',
+            'Access-Control-Request-Method': 'PATCH',
+            'Access-Control-Request-Headers': 'Accept,Origin,X-CSRF-Token',
+        }
+    )
+    maybe_add_preflight_cors_to_response_headers(dummy_request)
+    assert 'Access-Control-Allow-Methods' not in dummy_request.response.headers
+    assert 'Access-Control-Allow-Headers' not in dummy_request.response.headers
+    dummy_request.headers.update(
+        {
+            'Origin': 'https://abc.notdemo.igvf.org',
             'Access-Control-Request-Method': 'PATCH',
             'Access-Control-Request-Headers': 'Accept,Origin,X-CSRF-Token',
         }
