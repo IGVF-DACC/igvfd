@@ -22,6 +22,9 @@
         },
         {
             "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/organism"
         }
     ],
     "dependentSchemas": {
@@ -190,16 +193,6 @@
                 }
             },
             "permission": "import_items"
-        },
-        "organism": {
-            "title": "Organism",
-            "description": "Organism of the gene.",
-            "comment": "For now I am adding it as enum. In future we need to change it to linkTo.",
-            "type": "string",
-            "enum": [
-                "Homo sapiens",
-                "Mus musculus"
-            ]
         }
     },
     "changelog": "/profiles/changelogs/gene.md"

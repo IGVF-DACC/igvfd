@@ -7,7 +7,7 @@
     "required": [
         "award",
         "lab",
-        "taxon_id",
+        "organism",
         "sex",
         "strain"
     ],
@@ -48,6 +48,9 @@
         },
         {
             "$ref": "mixins.json#/references"
+        },
+        {
+            "$ref": "mixins.json#/organism"
         }
     ],
     "dependentSchemas": {
@@ -97,6 +100,11 @@
             "description": "The genotype of the strain according to accepted nomenclature conventions.",
             "comment": "Genotype of rodent strains.",
             "type": "string"
+        },
+        "organism": {
+            "enum": [
+                "Mus musculus"
+            ]
         }
     },
     "changelog": "/profiles/changelogs/rodent_donor.md"

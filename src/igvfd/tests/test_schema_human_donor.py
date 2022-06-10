@@ -101,22 +101,28 @@ def test_external_resources(human_donor, testapp):
     assert(res.status_code == 422)
 
 
-def test_taxon_id_pattern(human_donor, testapp):
-    res = testapp.patch_json(
-        human_donor['@id'],
+def test_organism(award, lab, testapp):
+    res = testapp.post_json(
+        '/human_donor',
         {
-            'taxon_id': 'NCBI:9606'
-        },  expect_errors=True)
-    assert(res.status_code == 422)
-    res = testapp.patch_json(
-        human_donor['@id'],
-        {
-            'taxon_id': 'Homo sapiens'
-        },  expect_errors=True)
-    assert(res.status_code == 422)
-    res = testapp.patch_json(
-        human_donor['@id'],
-        {
-            'taxon_id': 'NCBI:txid9606'
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'organism': 'Homo sapiens'
         })
-    assert(res.status_code == 200)
+    assert(res.status_code == 201)
+    res = testapp.post_json(
+        '/human_donor',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'organism': 'Mus musculus'
+        }, expect_errors=True)
+    assert(res.status_code == 422)
+    res = testapp.post_json(
+        '/human_donor',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'organism': 'Saccharomyces'
+        }, expect_errors=True)
+    assert(res.status_code == 422)

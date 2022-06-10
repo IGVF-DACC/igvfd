@@ -37,6 +37,9 @@
         },
         {
             "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/organism"
         }
     ],
     "dependentSchemas": {
@@ -208,14 +211,6 @@
     "properties": {
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."
-        },
-        "organism": {
-            "type": "string",
-            "enum": [
-                "Homo sapiens",
-                "Mus musculus",
-                "Saccharomyces"
-            ]
         },
         "sex": {
             "title": "Sex",
