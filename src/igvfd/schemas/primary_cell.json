@@ -69,7 +69,8 @@
         },
         "pooled_from": {
             "items": {
-                "linkTo": "PrimaryCell"
+                "linkTo": "PrimaryCell",
+                "type": "string"
             }
         }
     },

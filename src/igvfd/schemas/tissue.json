@@ -92,7 +92,8 @@
         },
         "pooled_from": {
             "items": {
-                "linkTo": "Tissue"
+                "linkTo": "Tissue",
+                "type": "string"
             }
         }
     },

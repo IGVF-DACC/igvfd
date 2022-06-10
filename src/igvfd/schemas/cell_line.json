@@ -69,7 +69,8 @@
         },
         "pooled_from": {
             "items": {
-                "linkTo": "CellLine"
+                "linkTo": "CellLine",
+                "type": "string"
             }
         }
     },

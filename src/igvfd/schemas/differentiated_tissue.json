@@ -113,7 +113,8 @@
         },
         "pooled_from": {
             "items": {
-                "linkTo": "DifferentiatedTissue"
+                "linkTo": "DifferentiatedTissue",
+                "type": "string"
             }
         }
     },
