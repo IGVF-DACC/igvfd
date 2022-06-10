@@ -19,6 +19,8 @@ def includeme(config):
     )
 
 
+HTTPS_PREFIX = 'https://'
+
 OPTIONS = 'OPTIONS'
 GET = 'GET'
 POST = 'POST'
@@ -138,10 +140,43 @@ def get_allowed_origins(request):
     )
 
 
-def origin_is_allowed(request):
-    # Important for security to limit CORS to trusted origins.
+def get_allowed_suffixes(request):
+    return parse_ini_setting_as_list(
+        request.registry.settings.get(
+            'cors_trusted_suffixes',
+            ''
+        )
+    )
+
+
+def origin_matches_exactly(request):
     ALLOWED_ORIGINS = get_allowed_origins(request)
     return ALLOWED_ORIGINS and request.headers.get(ORIGIN) in ALLOWED_ORIGINS
+
+
+def any_suffixes_match(value, suffixes):
+    return any(
+        value.endswith(suffix)
+        for suffix in suffixes
+    )
+
+
+def origin_matches_suffix(request):
+    ALLOWED_SUFFIXES = get_allowed_suffixes(request)
+    origin = request.headers.get(ORIGIN, '')
+    return (
+        ALLOWED_SUFFIXES
+        and origin.startswith(HTTPS_PREFIX)
+        and any_suffixes_match(origin, ALLOWED_SUFFIXES)
+    )
+
+
+def origin_is_allowed(request):
+    # Important for security to limit CORS to trusted origins.
+    return (
+        origin_matches_exactly(request)
+        or origin_matches_suffix(request)
+    )
 
 
 def method_is_allowed(request):
