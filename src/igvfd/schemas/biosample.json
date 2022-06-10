@@ -263,6 +263,7 @@
         "disease_ontology": {
             "title": "Disease ontology term",
             "description": "Ontology term of the disease associated with the biosample.",
+            "comment": "This property should only be used to submit existing known diseases, and not any phenotypic trait.",
             "type": "string",
             "linkTo": "PhenotypeOntologyTerm"
         },
