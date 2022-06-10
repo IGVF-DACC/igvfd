@@ -126,4 +126,3 @@ def test_organism(award, lab, testapp):
             'organism': 'Saccharomyces'
         }, expect_errors=True)
     assert res.status_code == 422
-
