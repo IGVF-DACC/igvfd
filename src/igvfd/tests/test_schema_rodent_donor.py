@@ -130,7 +130,7 @@ def test_organism(award, lab, testapp):
             'sex': 'male',
             'strain': 'B6'
         })
-    assert(res.status_code == 201)
+    assert res.status_code == 201
     res = testapp.post_json(
         '/rodent_donor',
         {
@@ -140,7 +140,7 @@ def test_organism(award, lab, testapp):
             'sex': 'male',
             'strain': 'B6'
         }, expect_errors=True)
-    assert(res.status_code == 422)
+    assert res.status_code == 422
     res = testapp.post_json(
         '/rodent_donor',
         {
@@ -150,5 +150,4 @@ def test_organism(award, lab, testapp):
             'sex': 'male',
             'strain': 'B6'
         }, expect_errors=True)
-    assert(res.status_code == 422)
-
+    assert res.status_code == 422
