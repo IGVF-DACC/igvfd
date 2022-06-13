@@ -39,6 +39,12 @@ class Biosample(Sample):
         schema={
             'title': 'Sex',
             'type': 'string',
+            'enum': [
+                'female',
+                'male',
+                'mixed',
+                'unspecified'
+            ]
         }
     )
     def sex(self, request, donors=None):
