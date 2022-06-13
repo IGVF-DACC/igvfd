@@ -48,8 +48,6 @@ class Biosample(Sample):
                 donor_object = request.embed(donor, '@@object')
                 if donor_object.get('sex'):
                     sexes.add(donor_object.get('sex'))
-                else:
-                    sexes.add('unspecified')
         if len(sexes) == 1:
             return list(sexes).pop()
         elif len(sexes) > 1:
