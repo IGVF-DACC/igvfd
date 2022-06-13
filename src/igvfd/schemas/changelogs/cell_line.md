@@ -2,4 +2,4 @@
 
 ### Changes since schema version 1
 
-* Converted the submittable property *sex* into calculated
+* Converted previously submittable property *sex* into calculated

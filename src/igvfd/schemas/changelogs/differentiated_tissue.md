@@ -4,4 +4,4 @@
 
 * Renamed the original profile named organoid to differentiated_tissue.
 * Added differentiated_from property
-* Converted the submittable property *sex* into calculated
+* Converted previously submittable property *sex* into calculated
