@@ -6,12 +6,12 @@ def test_phenotype_ontology_term_term_id_regex(phenotype_ontology_term_alzheimer
         phenotype_ontology_term_alzheimers['@id'],
         {'term_id': 'ABC:12345'},
         expect_errors=True)
-    assert res.status_code == 422 
+    assert res.status_code == 422
     res = testapp.patch_json(
         phenotype_ontology_term_alzheimers['@id'],
         {'term_id': 'DOID:10652'},
         expect_errors=False)
-    assert res.status_code == 200 
+    assert res.status_code == 200
 
 
 def test_phenotype_ontology_term_required_term_name(phenotype_ontology_term_incomplete, testapp):
@@ -19,4 +19,4 @@ def test_phenotype_ontology_term_required_term_name(phenotype_ontology_term_inco
         '/phenotype_ontology_term',
         phenotype_ontology_term_incomplete,
         expect_errors=True)
-    assert res.status_code == 422 
+    assert res.status_code == 422
