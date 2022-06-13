@@ -1,6 +1,7 @@
 [
     {
         "uuid": "a79ffa29-4bdf-4283-9494-1017e5d13f8b",
+        "accession": "IGVFSM000BBB",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -15,6 +16,36 @@
             "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
         ],
         "age": "89",
-        "age_units": "year"
+        "age_units": "year",
+        "differentiated_from": "/cell-lines/467c72a2-4f84-2c8f-96b0-ec8715e18185/"
+    },
+    {
+        "uuid": "4ce1b687-62f9-4d92-a69e-b4820d1efc9d",
+        "accession": "IGVFSM001BBB",
+        "lab": "jay-shendure",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "igvf:gastruloid"
+        ],
+        "status": "released",
+        "organism": "Homo sapiens",
+        "source": "/labs/jay-shendure/",
+        "differentiated_from": "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
+    },
+    {
+        "uuid": "7c058e39-e36b-4afa-bb2a-5e6c4ed07197",
+        "accession": "IGVFSM002BBB",
+        "lab": "jay-shendure",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "igvf:pooled_gastruloid"
+        ],
+        "status": "released",
+        "organism": "Homo sapiens",
+        "source": "/labs/jay-shendure/",
+        "pooled_from": [
+            "/differentiated-tissues/a79ffa29-4bdf-4283-9494-1017e5d13f8b/",
+            "/differentiated-tissues/4ce1b687-62f9-4d92-a69e-b4820d1efc9d/"
+        ]
     }
 ]

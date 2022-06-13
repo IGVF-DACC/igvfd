@@ -92,6 +92,18 @@
                 "type": "string",
                 "linkTo": "Treatment"
             }
+        },
+        "differentiated_from": {
+            "title": "Biosample differentiated from",
+            "description": "The biosample this in vitro sample was differentiated from.",
+            "type": "string",
+            "linkTo": "Biosample"
+        },
+        "pooled_from": {
+            "items": {
+                "linkTo": "DifferentiatedCell",
+                "type": "string"
+            }
         }
     },
     "changelog": "/profiles/changelogs/differentiated_cell.md"

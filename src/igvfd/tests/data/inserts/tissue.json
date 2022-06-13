@@ -1,6 +1,7 @@
 [
     {
         "uuid": "f1e4d059-a970-4250-bc2b-ba4572945e22",
+        "accession": "IGVFSM000DDD",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -21,6 +22,7 @@
     },
     {
         "uuid": "984a5f8e-c751-11ec-9d64-0242ac120002",
+        "accession": "IGVFSM001DDD",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -38,6 +40,23 @@
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
         "age": "30",
-        "age_units": "week"
+        "age_units": "week",
+        "part_of": "/differentiated-tissues/a79ffa29-4bdf-4283-9494-1017e5d13f8b/"
+    },
+    {
+        "uuid": "e3a862a7-5b37-4b21-8f0f-f1fd170460a7",
+        "accession": "IGVFSM002DDD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:pooled_tissue"
+        ],
+        "status": "released",
+        "organism": "Homo sapiens",
+        "source": "/labs/j-michael-cherry/",
+        "pooled_from": [
+            "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/",
+            "/tissues/984a5f8e-c751-11ec-9d64-0242ac120002/"
+        ]
     }
 ]

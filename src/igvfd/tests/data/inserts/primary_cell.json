@@ -1,6 +1,7 @@
 [
     {
         "uuid": "578c72a2-4f84-2c8f-96b0-ec8715e18185",
+        "accession": "IGVFSM000EEE",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -32,10 +33,12 @@
         "source": "/labs/j-michael-cherry/",
         "collections": [
             "ENCODE"
-        ]
+        ],
+        "part_of": "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/"
     },
     {
         "uuid": "5673c93a-c748-11ec-9d64-0242ac120002",
+        "accession": "IGVFSM001EEE",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -62,6 +65,22 @@
         "source": "/labs/j-michael-cherry/",
         "donors": [
             "j-michael-cherry:alias_human_donor1"
+        ]
+    },
+    {
+        "uuid": "62732db8-11c3-4549-824c-6192f8dbce15",
+        "accession": "IGVFSM002EEE",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:pooled_primary_cell"
+        ],
+        "status": "released",
+        "organism": "Homo sapiens",
+        "source": "/labs/j-michael-cherry/",
+        "pooled_from": [
+            "/primary-cells/578c72a2-4f84-2c8f-96b0-ec8715e18185/",
+            "/primary-cells/5673c93a-c748-11ec-9d64-0242ac120002/"
         ]
     }
 ]

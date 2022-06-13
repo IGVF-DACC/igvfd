@@ -25,9 +25,9 @@ ORDER = [
     'human_donor',
     'rodent_donor',
     'treatment',
+    'tissue',
     'cell_line',
     'primary_cell',
-    'tissue',
     'differentiated_tissue',
     'differentiated_cell',
     'technical_sample',
@@ -497,6 +497,21 @@ PHASE1_PIPELINES = {
     'user': [
         remove_keys('lab', 'submits_for'),
     ],
+    'cell_line': [
+        remove_keys('pooled_from', 'part_of'),
+    ],
+    'tissue': [
+        remove_keys('pooled_from', 'part_of'),
+    ],
+    'primary_cell': [
+        remove_keys('pooled_from', 'part_of'),
+    ],
+    'differentiated_cell': [
+        remove_keys('pooled_from', 'part_of', 'differentiated_from'),
+    ],
+    'differentiated_tissue': [
+        remove_keys('pooled_from', 'part_of', 'differentiated_from'),
+    ]
 }
 
 
@@ -511,6 +526,21 @@ PHASE2_PIPELINES = {
     'user': [
         skip_rows_missing_all_keys('lab', 'submits_for'),
     ],
+    'cell_line': [
+        skip_rows_missing_all_keys('pooled_from', 'part_of'),
+    ],
+    'tissue': [
+        skip_rows_missing_all_keys('pooled_from', 'part_of'),
+    ],
+    'primary_cell': [
+        skip_rows_missing_all_keys('pooled_from', 'part_of'),
+    ],
+    'differentiated_cell': [
+        skip_rows_missing_all_keys('pooled_from', 'part_of', 'differentiated_from'),
+    ],
+    'differentiated_tissue': [
+        skip_rows_missing_all_keys('pooled_from', 'part_of', 'differentiated_from'),
+    ]
 }
 
 

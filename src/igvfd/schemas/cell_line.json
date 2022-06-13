@@ -69,6 +69,12 @@
         },
         "date_obtained": {
             "title": "Date harvested"
+        },
+        "pooled_from": {
+            "items": {
+                "linkTo": "CellLine",
+                "type": "string"
+            }
         }
     },
     "changelog": "/profiles/changelogs/cell_line.md"

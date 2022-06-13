@@ -107,6 +107,18 @@
                 "type": "string",
                 "linkTo": "Treatment"
             }
+        },
+        "differentiated_from": {
+            "title": "Biosample differentiated from",
+            "description": "The biosample this organoid sample was differentiated from.",
+            "type": "string",
+            "linkTo": "Biosample"
+        },
+        "pooled_from": {
+            "items": {
+                "linkTo": "DifferentiatedTissue",
+                "type": "string"
+            }
         }
     },
     "changelog": "/profiles/changelogs/differentiated_tissue.md"

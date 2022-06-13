@@ -54,6 +54,21 @@ def test_nih_institutional_certification(primary_cell, testapp):
     assert(res.status_code == 422)
 
 
+def test_pooled_from(primary_cell, tissue, pooled_from_primary_cell, pooled_from_primary_cell_2, testapp):
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {'pooled_from': [pooled_from_primary_cell['@id']]}, expect_errors=True)
+    assert(res.status_code == 422)
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {'pooled_from': [pooled_from_primary_cell['@id'], tissue['@id']]}, expect_errors=True)
+    assert(res.status_code == 422)
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {'pooled_from': [pooled_from_primary_cell['@id'], pooled_from_primary_cell_2['@id']]})
+    assert(res.status_code == 200)
+
+
 def test_collections(primary_cell, testapp):
     res = testapp.patch_json(
         primary_cell['@id'],
