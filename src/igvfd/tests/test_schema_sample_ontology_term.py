@@ -6,7 +6,7 @@ def test_sample_ontology_term_term_id_regex(sample_ontology_term_1, testapp):
         sample_ontology_term_1['@id'],
         {'term_id': 'ABC:12345'},
         expect_errors=True)
-    assert(res.status_code == 422)
+    assert res.status_code == 422
 
 
 def test_sample_ontology_term_slims(sample_ontology_term_1, testapp):

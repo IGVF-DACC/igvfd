@@ -11,4 +11,4 @@ def test_title(testapp, pi):
         },
         status=201
     ).json['@graph'][0]
-    assert(lab['title']) == 'Principal Investigator, Stanford'
+    assert lab['title'] == 'Principal Investigator, Stanford'
