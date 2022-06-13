@@ -12,7 +12,7 @@ from .base import (
 
 @abstract_collection(
     name='terms',
-    unique_key='biosample_type:name',
+    unique_key='term:name',
     properties={
         'title': 'Ontology term',
         'description': 'Ontology terms used by IGVF',
@@ -49,6 +49,16 @@ class Term(Item):
             slim for slim in key
         ))
 
+    @calculated_property(schema={
+        'title': 'Name',
+        'type': 'string',
+    })
+    def name(self, properties=None):
+        if properties is None:
+            properties = self.upgrade_properties()
+        format_cleaned_term_id = properties['term_id'].replace(' ', '_').replace(':', '_')
+        return u'{}'.format(format_cleaned_term_id)
+
     @calculated_property(condition='term_id', schema={
         'title': 'Synonyms',
         'type': 'array',
@@ -62,7 +72,7 @@ class Term(Item):
 
 @collection(
     name='sample-terms',
-    unique_key='term_id',
+    unique_key='sample_term:name',
     properties={
         'title': 'Sample ontology term',
         'description': 'Ontology terms used by IGVF for samples',
@@ -119,7 +129,7 @@ class SampleTerm(Term):
 
 @collection(
     name='assay-terms',
-    unique_key='term_id',
+    unique_key='assay_term:name',
     properties={
         'title': 'Assay ontology term',
         'description': 'Ontology terms used by IGVF for assays',
@@ -146,7 +156,7 @@ class AssayTerm(Term):
 
 @collection(
     name='phenotype-terms',
-    unique_key='term_id',
+    unique_key='phenotype_term:name',
     properties={
         'title': 'Phenotype ontology term',
         'description': 'Ontology terms used by IGVF for phenotypes, such as traits or diseases.',
