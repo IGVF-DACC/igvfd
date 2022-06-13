@@ -12,7 +12,7 @@ from .base import (
 
 @abstract_collection(
     name='terms',
-    unique_key='term_id',
+    unique_key='biosample_type:name',
     properties={
         'title': 'Ontology term',
         'description': 'Ontology terms used by IGVF',
@@ -20,6 +20,25 @@ from .base import (
 class Term(Item):
     base_types = ['Term'] + Item.base_types
     schema = load_schema('igvfd:schemas/term.json')
+
+     def unique_keys(self, properties):
+        keys = super(Term, self).unique_keys(properties)
+        keys.setdefault('term:name', []).append(self.name(properties))
+        return keys
+
+    @property
+    def __name__(self):
+        return self.name()
+
+    @calculated_property(schema={
+        'title': 'Name',
+        'type': 'string',
+    })
+    def name(self, properties=None):
+        if properties is None:
+            properties = self.upgrade_properties()
+        format_cleaned_term_id = properties['term_id'].replace(' ', '_').replace(':', '_')
+        return u'{}'.format(format_cleaned_term_id)
 
     @staticmethod
     def _get_ontology_slims(registry, term_id, slim_key):
@@ -51,6 +70,11 @@ class Term(Item):
 class SampleTerm(Term):
     item_type = 'sample_term'
     schema = load_schema('igvfd:schemas/sample_term.json')
+
+    def unique_keys(self, properties):
+        keys = super(Term, self).unique_keys(properties)
+        keys.setdefault('sample_term:name', []).append(self.name(properties))
+        return keys
 
     @calculated_property(condition='term_id', schema={
         'title': 'Organ',
@@ -104,6 +128,11 @@ class AssayTerm(Term):
     item_type = 'assay_term'
     schema = load_schema('igvfd:schemas/assay_term.json')
 
+    def unique_keys(self, properties):
+        keys = super(Term, self).unique_keys(properties)
+        keys.setdefault('assay_term:name', []).append(self.name(properties))
+        return keys
+
     @calculated_property(condition='term_id', schema={
         'title': 'Assay category',
         'type': 'array',
@@ -125,3 +154,8 @@ class AssayTerm(Term):
 class PhenotypeTerm(Term):
     item_type = 'phenotype_term'
     schema = load_schema('igvfd:schemas/phenotype_term.json')
+
+    def unique_keys(self, properties):
+        keys = super(Term, self).unique_keys(properties)
+        keys.setdefault('phenotype_term:name', []).append(self.name(properties))
+        return keys
