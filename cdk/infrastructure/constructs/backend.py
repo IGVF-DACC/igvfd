@@ -16,6 +16,9 @@ from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedTaskImageOptions
 
 from aws_cdk.aws_iam import ManagedPolicy
 
+from aws_cdk.aws_secretsmanager import Secret as SMSecret
+from aws_cdk.aws_secretsmanager import SecretStringGenerator
+
 from infrastructure.config import Config
 
 from infrastructure.constructs.existing.types import ExistingResources
@@ -56,6 +59,7 @@ class Backend(Construct):
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
         self.props = props
+        self._generate_session_secret()
         self._define_docker_assets()
         self._define_fargate_service()
         self._add_application_container_to_task()
@@ -113,6 +117,20 @@ class Backend(Construct):
             'password'
         )
 
+    def _generate_session_secret(self) -> None:
+        self.session_secret = SMSecret(
+            self,
+            'SessionSecret',
+            generate_secret_string=SecretStringGenerator(
+                password_length=128
+            )
+        )
+
+    def _get_session_secret(self) -> Secret:
+        return Secret.from_secrets_manager(
+            self.session_secret
+        )
+
     def _add_application_container_to_task(self) -> None:
         container_name = 'pyramid'
         self.fargate_service.task_definition.add_container(
@@ -125,6 +143,7 @@ class Backend(Construct):
             },
             secrets={
                 'DB_PASSWORD': self._get_database_secret(),
+                'SESSION_SECRET': self._get_session_secret(),
             },
             logging=LogDriver.aws_logs(
                 stream_prefix=container_name,

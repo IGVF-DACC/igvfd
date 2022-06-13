@@ -153,7 +153,7 @@ def session(config):
             secret = open(secret).read()
             secret = base64.b64decode(secret)
     else:
-        secret = os.urandom(256)
+        secret = os.environ.get('SESSION_SECRET') or os.urandom(256)
     # auth_tkt has no timeout set
     # cookie will still expire at browser close
     if 'session.timeout' in settings:
