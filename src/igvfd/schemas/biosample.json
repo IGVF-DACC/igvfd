@@ -212,10 +212,13 @@
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."
         },
-        "sex": {
-            "title": "Sex",
-            "description": "Sex of the organism associated with the biosample.",
-            "type": "string"
+        "organism": {
+            "type": "string",
+            "enum": [
+                "Homo sapiens",
+                "Mus musculus",
+                "Saccharomyces"
+            ]
         },
         "age": {
             "title": "Age",
