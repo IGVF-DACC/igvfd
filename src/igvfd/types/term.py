@@ -11,15 +11,15 @@ from .base import (
 
 
 @abstract_collection(
-    name='ontology-terms',
+    name='terms',
     unique_key='term_id',
     properties={
-        'title': 'Ontology term',
-        'description': 'Ontology terms used by IGVF',
+        'title': 'Term',
+        'description': 'Terms used by IGVF',
     })
-class OntologyTerm(Item):
-    base_types = ['OntologyTerm'] + Item.base_types
-    schema = load_schema('igvfd:schemas/ontology_term.json')
+class Term(Item):
+    base_types = ['Term'] + Item.base_types
+    schema = load_schema('igvfd:schemas/term.json')
 
     @staticmethod
     def _get_ontology_slims(registry, term_id, slim_key):
@@ -42,15 +42,15 @@ class OntologyTerm(Item):
 
 
 @collection(
-    name='sample-ontology-terms',
+    name='sample-terms',
     unique_key='term_id',
     properties={
-        'title': 'Sample ontology term',
-        'description': 'Ontology terms used by IGVF for samples',
+        'title': 'Sample term',
+        'description': 'Terms used by IGVF for samples',
     })
-class SampleOntologyTerm(OntologyTerm):
-    item_type = 'sample_ontology_term'
-    schema = load_schema('igvfd:schemas/sample_ontology_term.json')
+class SampleTerm(Term):
+    item_type = 'sample_term'
+    schema = load_schema('igvfd:schemas/sample_term.json')
 
     @calculated_property(condition='term_id', schema={
         'title': 'Organ',
@@ -94,15 +94,15 @@ class SampleOntologyTerm(OntologyTerm):
 
 
 @collection(
-    name='assay-ontology-terms',
+    name='assay-terms',
     unique_key='term_id',
     properties={
-        'title': 'Assay ontology term',
-        'description': 'Ontology terms used by IGVF for assays',
+        'title': 'Assay term',
+        'description': 'Terms used by IGVF for assays',
     })
-class AssayOntologyTerm(OntologyTerm):
-    item_type = 'assay_ontology_term'
-    schema = load_schema('igvfd:schemas/assay_ontology_term.json')
+class AssayTerm(Term):
+    item_type = 'assay_term'
+    schema = load_schema('igvfd:schemas/assay_term.json')
 
     @calculated_property(condition='term_id', schema={
         'title': 'Assay category',
@@ -116,12 +116,12 @@ class AssayOntologyTerm(OntologyTerm):
 
 
 @collection(
-    name='phenotype-ontology-terms',
+    name='phenotype-terms',
     unique_key='term_id',
     properties={
-        'title': 'Phenotype ontology term',
-        'description': 'Ontology terms used by IGVF for phenotypes, such as traits or diseases.',
+        'title': 'Phenotype term',
+        'description': 'Terms used by IGVF for phenotypes, such as traits or diseases.',
     })
-class PhenotypeOntologyTerm(OntologyTerm):
-    item_type = 'phenotype_ontology_term'
-    schema = load_schema('igvfd:schemas/phenotype_ontology_term.json')
+class PhenotypeTerm(Term):
+    item_type = 'phenotype_term'
+    schema = load_schema('igvfd:schemas/phenotype_term.json')

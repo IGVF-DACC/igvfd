@@ -1,7 +1,7 @@
 {
-    "title": "Phenotype ontology term",
-    "description": "Schema for a phenotype ontology term.",
-    "$id": "/profiles/phenotype_ontology_term.json",
+    "title": "Phenotype term",
+    "description": "Schema for a phenotype term.",
+    "$id": "/profiles/phenotype_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
@@ -15,7 +15,7 @@
     "additionalProperties": false,
     "mixinProperties": [
         {
-            "$ref": "ontology_term.json#/properties"
+            "$ref": "term.json#/properties"
         },
         {
             "$ref": "mixins.json#/basic_item"
@@ -30,12 +30,12 @@
         },
         "term_id": {
             "@type": "@id",
-            "title": "Ontology ID",
-            "description": "An ontology identifier describing an assay.",
+            "title": "Term ID",
+            "description": "A term identifier describing an assay.",
             "permission": "import_items",
             "type": "string",
             "pattern": "^(DOID|EFO|HP|MONDO|OBA|NTR):[0-9]{2,8}|OBA:VT[0-9]{2,8}$"
         }
     },
-    "changelog": "/profiles/changelogs/phenotype_ontology_term.md"
+    "changelog": "/profiles/changelogs/phenotype_term.md"
 }

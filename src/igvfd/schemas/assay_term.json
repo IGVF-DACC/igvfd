@@ -1,7 +1,7 @@
 {
-    "title": "Assay ontology term",
-    "description": "Schema for an ontology term.",
-    "$id": "/profiles/assay_ontology_term.json",
+    "title": "Assay term",
+    "description": "Schema for a term.",
+    "$id": "/profiles/assay_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
@@ -15,7 +15,7 @@
     "additionalProperties": false,
     "mixinProperties": [
         {
-            "$ref": "ontology_term.json#/properties"
+            "$ref": "term.json#/properties"
         },
         {
             "$ref": "mixins.json#/basic_item"
@@ -30,12 +30,12 @@
         },
         "term_id": {
             "@type": "@id",
-            "title": "Ontology ID",
-            "description": "An ontology identifier describing an assay.",
+            "title": "Term ID",
+            "description": "A term identifier describing an assay.",
             "permission": "import_items",
             "type": "string",
             "pattern": "^(OBI|NTR):[0-9]{2,8}$"
         }
     },
-    "changelog": "/profiles/changelogs/assay_ontology_term.md"
+    "changelog": "/profiles/changelogs/assay_term.md"
 }
