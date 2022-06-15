@@ -7,7 +7,7 @@
         "aliases": [
             "j-michael-cherry:alzheimers-disease"
         ],
-        "notes": "Phenotype term object for Alzheimer's disease"
+        "notes": "Phenotype ontology term object for Alzheimer's disease"
     },
     {
         "term_id": "HP:0001658",
@@ -29,7 +29,7 @@
         "aliases": [
             "j-michael-cherry:epilepsy_trait"
         ],
-        "notes": "Phenotype term object for epilepsy"
+        "notes": "Phenotype ontology term object for epilepsy"
     },
     {
         "term_id": "EFO:0007978",

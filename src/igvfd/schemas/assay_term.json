@@ -1,6 +1,6 @@
 {
     "title": "Assay term",
-    "description": "Schema for a term.",
+    "description": "Schema for an ontological term identifying an assay",
     "$id": "/profiles/assay_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
@@ -31,7 +31,7 @@
         "term_id": {
             "@type": "@id",
             "title": "Term ID",
-            "description": "A term identifier describing an assay.",
+            "description": "An ontology term identifier describing an assay.",
             "permission": "import_items",
             "type": "string",
             "pattern": "^(OBI|NTR):[0-9]{2,8}$"

@@ -30,8 +30,8 @@
         },
         "term_id": {
             "@type": "@id",
-            "title": "Term ID",
-            "description": "A term identifier describing an assay.",
+            "title": "Phenotype term ID",
+            "description": "An ontology term identifier describing a phenotype.",
             "permission": "import_items",
             "type": "string",
             "pattern": "^(DOID|EFO|HP|MONDO|OBA|NTR):[0-9]{2,8}|OBA:VT[0-9]{2,8}$"

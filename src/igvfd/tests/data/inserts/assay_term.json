@@ -7,7 +7,7 @@
         "aliases": [
             "j-michael-cherry:starr-seq"
         ],
-        "notes": "Assay term object for STARR-seq"
+        "notes": "Assay ontology term object for STARR-seq"
     },
     {
         "term_id": "OBI:0002675",

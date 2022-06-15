@@ -253,13 +253,13 @@
         },
         "biosample_term": {
             "title": "Biosample term",
-            "description": "Term of the biosample.",
+            "description": "Schema for an ontological term identifying a biosample.",
             "type": "string",
             "linkTo": "SampleTerm"
         },
         "disease_term": {
             "title": "Disease term",
-            "description": "Term of the disease associated with the biosample.",
+            "description": "Ontology term of the disease associated with the biosample.",
             "comment": "This property should only be used to submit existing known diseases, and not any phenotypic trait.",
             "type": "string",
             "linkTo": "PhenotypeTerm"
