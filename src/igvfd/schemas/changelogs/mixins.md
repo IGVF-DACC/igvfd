@@ -8,3 +8,4 @@
 * 4/27/22 Added collections
 * changed the property *date_created* into *creation_timestamp* and restricted the format to be date-time
 * 6/8/22 Added organism
+* removed mixins for aliases and submitted.  All properies for aliases and submitted have been moved under the basic_item mixin.  All schema objects that include the basic_item mixin will also have the properties previously in aliases and submitted.

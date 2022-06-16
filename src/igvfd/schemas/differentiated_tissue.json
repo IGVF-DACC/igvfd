@@ -30,12 +30,6 @@
             "$ref": "mixins.json#/accession"
         },
         {
-            "$ref": "mixins.json#/aliases"
-        },
-        {
-            "$ref": "mixins.json#/submitted"
-        },
-        {
             "$ref": "mixins.json#/attribution"
         },
         {

@@ -19,9 +19,6 @@
             "$ref": "mixins.json#/attachment"
         },
         {
-            "$ref": "mixins.json#/submitted"
-        },
-        {
             "$ref": "mixins.json#/standard_status"
         }
     ],

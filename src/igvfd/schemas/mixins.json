@@ -27,6 +27,48 @@
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "permission": "import_items",
             "formInput": "textarea"
+        },
+        "aliases": {
+            "title": "Aliases",
+            "description": "Lab specific identifiers to reference an object.",
+            "comment": "The purpose of this field is to provide a link into the lab LIMS and to facilitate shared objects.",
+            "type": "array",
+            "default": [],
+            "uniqueItems": true,
+            "items": {
+                "uniqueKey": "alias",
+                "title": "Lab alias",
+                "description": "A lab specific identifier to reference an object.",
+                "comment": "Current convention is colon separated lab name and lab identifier. (e.g. john-doe:42).",
+                "type": "string",
+                "pattern": "^(?:j-michael-cherry|ali-mortazavi|barbara-wold|lior-pachter|grant-macgregor|kim-green|mark-craven|qiongshi-lu|audrey-gasch|robert-steiner|jesse-engreitz|thomas-quertermous|anshul-kundaje|michael-bassik|will-greenleaf|marlene-rabinovitch|lars-steinmetz|jay-shendure|nadav-ahituv|martin-kircher|danwei-huangfu|michael-beer|anna-katerina-hadjantonakis|christina-leslie|alexander-rudensky|laura-donlin|hannah-carter|bing-ren|kyle-gaulton|maike-sander|charles-gersbach|gregory-crawford|tim-reddy|ansuman-sapathy|andrew-allen|gary-hon|nikhil-munshi|w-lee-kraus|lea-starita|doug-fowler|luca-pinello|guillaume-lettre|benhur-lee|daniel-bauer|richard-sherwood|benjamin-kleinstiver|marc-vidal|david-hill|frederick-roth|mikko-taipale|anne-carpenter|hyejung-won|karen-mohlke|michael-love|jason-buenrostro|bradley-bernstein|hilary-finucane|chongyuan-luo|noah-zaitlen|kathrin-plath|roy-wollman|jason-ernst|zhiping-weng|manuel-garber|xihong-lin|alan-boyle|ryan-mills|jie-liu|maureen-sartor|joshua-welch|stephen-montgomery|alexis-battle|livnat-jerby|jonathan-pritchard|predrag-radivojac|sean-mooney|harinder-singh|nidhi-sahni|jishnu-das|igvf|igvf-dacc):[a-zA-Z\\d_$.+!*,()'-]+(?:\\s[a-zA-Z\\d_$.+!*,()'-]+)*$"
+            }
+        },
+        "creation_timestamp": {
+            "rdfs:subPropertyOf": "dc:created",
+            "title": "Creation timestamp",
+            "description": "The date the object was created.",
+            "comment": "Do not submit. The date the object is created is assigned by the server.",
+            "type": "string",
+            "format": "date-time",
+            "serverDefault": "now",
+            "permission": "import_items"
+        },
+        "submitted_by": {
+            "rdfs:subPropertyOf": "dc:creator",
+            "title": "Submitted by",
+            "comment": "Do not submit. The user that created the object is assigned by the server.",
+            "type": "string",
+            "linkTo": "User",
+            "serverDefault": "userid",
+            "permission": "import_items"
+        },
+        "submitter_comment": {
+            "title": "Submitter comment",
+            "description": "Additional information specified by the submitter to be displayed as a comment on the portal.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "formInput": "textarea"
         }
     },
     "accession": {
@@ -85,24 +127,6 @@
             ]
         }
     },
-    "aliases": {
-        "aliases": {
-            "title": "Aliases",
-            "description": "Lab specific identifiers to reference an object.",
-            "comment": "The purpose of this field is to provide a link into the lab LIMS and to facilitate shared objects.",
-            "type": "array",
-            "default": [],
-            "uniqueItems": true,
-            "items": {
-                "uniqueKey": "alias",
-                "title": "Lab alias",
-                "description": "A lab specific identifier to reference an object.",
-                "comment": "Current convention is colon separated lab name and lab identifier. (e.g. john-doe:42).",
-                "type": "string",
-                "pattern": "^(?:j-michael-cherry|ali-mortazavi|barbara-wold|lior-pachter|grant-macgregor|kim-green|mark-craven|qiongshi-lu|audrey-gasch|robert-steiner|jesse-engreitz|thomas-quertermous|anshul-kundaje|michael-bassik|will-greenleaf|marlene-rabinovitch|lars-steinmetz|jay-shendure|nadav-ahituv|martin-kircher|danwei-huangfu|michael-beer|anna-katerina-hadjantonakis|christina-leslie|alexander-rudensky|laura-donlin|hannah-carter|bing-ren|kyle-gaulton|maike-sander|charles-gersbach|gregory-crawford|tim-reddy|ansuman-sapathy|andrew-allen|gary-hon|nikhil-munshi|w-lee-kraus|lea-starita|doug-fowler|luca-pinello|guillaume-lettre|benhur-lee|daniel-bauer|richard-sherwood|benjamin-kleinstiver|marc-vidal|david-hill|frederick-roth|mikko-taipale|anne-carpenter|hyejung-won|karen-mohlke|michael-love|jason-buenrostro|bradley-bernstein|hilary-finucane|chongyuan-luo|noah-zaitlen|kathrin-plath|roy-wollman|jason-ernst|zhiping-weng|manuel-garber|xihong-lin|alan-boyle|ryan-mills|jie-liu|maureen-sartor|joshua-welch|stephen-montgomery|alexis-battle|livnat-jerby|jonathan-pritchard|predrag-radivojac|sean-mooney|harinder-singh|nidhi-sahni|jishnu-das|igvf|igvf-dacc):[a-zA-Z\\d_$.+!*,()'-]+(?:\\s[a-zA-Z\\d_$.+!*,()'-]+)*$"
-            }
-        }
-    },
     "standard_status": {
         "status": {
             "title": "Status",
@@ -126,34 +150,6 @@
                 "deleted",
                 "disabled"
             ]
-        }
-    },
-    "submitted": {
-        "creation_timestamp": {
-            "rdfs:subPropertyOf": "dc:created",
-            "title": "Creation timestamp",
-            "description": "The date the object was created.",
-            "comment": "Do not submit. The date the object is created is assigned by the server.",
-            "type": "string",
-            "format": "date-time",
-            "serverDefault": "now",
-            "permission": "import_items"
-        },
-        "submitted_by": {
-            "rdfs:subPropertyOf": "dc:creator",
-            "title": "Submitted by",
-            "comment": "Do not submit. The user that created the object is assigned by the server.",
-            "type": "string",
-            "linkTo": "User",
-            "serverDefault": "userid",
-            "permission": "import_items"
-        },
-        "submitter_comment": {
-            "title": "Submitter comment",
-            "description": "Additional information specified by the submitter to be displayed as a comment on the portal.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "formInput": "textarea"
         }
     },
     "attribution": {
