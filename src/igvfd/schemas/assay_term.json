@@ -1,6 +1,6 @@
 {
     "title": "Assay term",
-    "description": "Schema for an ontological term identifying an assay",
+    "description": "Schema for an ontology term identifying an assay",
     "$id": "/profiles/assay_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

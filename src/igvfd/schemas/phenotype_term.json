@@ -1,6 +1,6 @@
 {
     "title": "Phenotype term",
-    "description": "Schema for a phenotype term.",
+    "description": "Schema for a phenotype ontology term.",
     "$id": "/profiles/phenotype_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

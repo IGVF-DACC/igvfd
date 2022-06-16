@@ -1,6 +1,6 @@
 {
     "title": "Sample term",
-    "description": "Schema for a term.",
+    "description": "Schema for a sample ontology term.",
     "$id": "/profiles/sample_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

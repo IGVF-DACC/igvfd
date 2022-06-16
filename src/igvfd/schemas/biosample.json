@@ -253,7 +253,7 @@
         },
         "biosample_term": {
             "title": "Biosample term",
-            "description": "Schema for an ontological term identifying a biosample.",
+            "description": "Ontology term identifying a biosample.",
             "type": "string",
             "linkTo": "SampleTerm"
         },
