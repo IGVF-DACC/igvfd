@@ -3,3 +3,4 @@
 ### Changes since schema version 1
 
 * sample_ontology_term has aliases mixin removed, but will have gained properties for aliases and submitted due to change of basic_item mixin.
+* this file has been renamed for change of sample_ontology_term to sample_term.
