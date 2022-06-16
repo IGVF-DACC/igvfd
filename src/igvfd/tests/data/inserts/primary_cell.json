@@ -56,7 +56,6 @@
         "age_units": "year",
         "life_stage": "adult",
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
-        "sex": "female",
         "treatments": [
             "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
         ],
