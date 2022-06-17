@@ -209,7 +209,7 @@
         "treatment_term_id": {
             "@type": "@id",
             "title": "Treatment term ID",
-            "description": "Ontology term identifier describing a component in the treatment.",
+            "description": "Ontology identifier describing a component in the treatment.",
             "type": "string",
             "pattern": "^((CHEBI:[0-9]{1,7})|(UniProtKB:[A-Z0-9]{6})|(NTR:[0-9]{2,8}))$"
         },

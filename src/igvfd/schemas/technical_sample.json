@@ -69,7 +69,7 @@
         },
         "technical_sample_term": {
             "title": "Technical sample term",
-            "description": "Term of the technical sample.",
+            "description": "Ontology of the technical sample.",
             "type": "string"
         },
         "additional_description": {
