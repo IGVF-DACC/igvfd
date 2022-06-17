@@ -14,8 +14,8 @@ from .base import (
     name='terms',
     unique_key='term_id',
     properties={
-        'title': 'Term',
-        'description': 'Terms used by IGVF',
+        'title': 'Ontology term',
+        'description': 'Ontology terms used by IGVF',
     })
 class Term(Item):
     base_types = ['Term'] + Item.base_types
@@ -45,8 +45,8 @@ class Term(Item):
     name='sample-terms',
     unique_key='term_id',
     properties={
-        'title': 'Sample term',
-        'description': 'Terms used by IGVF for samples',
+        'title': 'Sample ontology term',
+        'description': 'Ontology terms used by IGVF for samples',
     })
 class SampleTerm(Term):
     item_type = 'sample_term'
@@ -97,8 +97,8 @@ class SampleTerm(Term):
     name='assay-terms',
     unique_key='term_id',
     properties={
-        'title': 'Assay term',
-        'description': 'Terms used by IGVF for assays',
+        'title': 'Assay ontology term',
+        'description': 'Ontology terms used by IGVF for assays',
     })
 class AssayTerm(Term):
     item_type = 'assay_term'
@@ -119,8 +119,8 @@ class AssayTerm(Term):
     name='phenotype-terms',
     unique_key='term_id',
     properties={
-        'title': 'Phenotype term',
-        'description': 'Terms used by IGVF for phenotypes, such as traits or diseases.',
+        'title': 'Phenotype ontology term',
+        'description': 'Ontology terms used by IGVF for phenotypes, such as traits or diseases.',
     })
 class PhenotypeTerm(Term):
     item_type = 'phenotype_term'
