@@ -4,8 +4,8 @@ import pytest
 def test_ontology_term_unique_keys(
     assay_ontology_term_starr,
     assay_ontology_term_chip,
-    disease_ontology_term_alzheimers,
-    disease_ontology_term_myocardial_infarction,
+    phenotype_ontology_term_alzheimers,
+    phenotype_ontology_term_myocardial_infarction,
     sample_ontology_term_K562,
     sample_ontology_term_adrenal_gland,
     testapp
@@ -17,7 +17,7 @@ def test_ontology_term_unique_keys(
     print(res)
     assert res.status_code == 409
     res = testapp.patch_json(
-        disease_ontology_term_alzheimers['@id'],
+        phenotype_ontology_term_alzheimers['@id'],
         {'term_id': 'HP:0001658'},
         expect_errors=True)
     assert res.status_code == 409
