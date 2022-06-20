@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_naming_prepend_branch_name():
+def test_naming_prepend_project_name():
     from infrastructure.naming import prepend_project_name
     assert prepend_project_name(
         'some-other-name'
