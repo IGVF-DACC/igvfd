@@ -32,6 +32,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.human_donor',
     'igvfd.tests.fixtures.schemas.rodent_donor',
     'igvfd.tests.fixtures.schemas.document',
+    'igvfd.tests.fixtures.schemas.publication',
 ]
 
 

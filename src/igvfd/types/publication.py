@@ -18,12 +18,7 @@ from .base import (
     })
 class Publication(Item):
     item_type = 'publication'
-    schema = load_schema('encoded:schemas/publication.json')
-    embedded = ['publication_page']
-    rev = {
-        'publication_data': ('PublicationData', 'references'),
-        'datasets': ('Dataset', 'references')
-    }
+    schema = load_schema('igvfd:schemas/publication.json')
 
     def unique_keys(self, properties):
         keys = super(Publication, self).unique_keys(properties)
