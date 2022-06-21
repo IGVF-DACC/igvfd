@@ -49,16 +49,6 @@ class Term(Item):
             slim for slim in key
         ))
 
-    @calculated_property(schema={
-        'title': 'Name',
-        'type': 'string',
-    })
-    def name(self, properties=None):
-        if properties is None:
-            properties = self.upgrade_properties()
-        format_cleaned_term_id = properties['term_id'].replace(' ', '_').replace(':', '_')
-        return u'{}'.format(format_cleaned_term_id)
-
     @calculated_property(condition='term_id', schema={
         'title': 'Synonyms',
         'type': 'array',
