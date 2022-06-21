@@ -96,6 +96,7 @@
         "job_title": {
             "title": "Job title",
             "type": "string",
+            "permission": "import_items",
             "enum": [
                 "Principal Investigator",
                 "Co-Investigator",
