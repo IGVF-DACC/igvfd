@@ -28,5 +28,5 @@ def test_ontology_term_unique_keys(
     res = testapp.patch_json(
         sample_ontology_term_K562['@id'],
         {'term_id': 'UBERON:0002370'},
-        expect_errors=True)
+        expect_errors=False)
     assert res.status_code == 200
