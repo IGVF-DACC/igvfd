@@ -14,7 +14,6 @@ def test_ontology_term_unique_keys(
         assay_ontology_term_starr['@id'],
         {'term_id': 'OBI:0000716'},
         expect_errors=True)
-    print(res)
     assert res.status_code == 409
     res = testapp.patch_json(
         phenotype_ontology_term_alzheimers['@id'],
@@ -26,3 +25,8 @@ def test_ontology_term_unique_keys(
         {'term_id': 'UBERON:0002369'},
         expect_errors=True)
     assert res.status_code == 409
+    res = testapp.patch_json(
+        sample_ontology_term_K562['@id'],
+        {'term_id': 'UBERON:0002370'},
+        expect_errors=True)
+    assert res.status_code == 200
