@@ -21,7 +21,7 @@ class Term(Item):
     base_types = ['Term'] + Item.base_types
     schema = load_schema('igvfd:schemas/term.json')
 
-     def unique_keys(self, properties):
+    def unique_keys(self, properties):
         keys = super(Term, self).unique_keys(properties)
         keys.setdefault('term:name', []).append(self.name(properties))
         return keys

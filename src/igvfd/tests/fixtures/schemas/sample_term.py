@@ -12,7 +12,7 @@ def sample_term_K562(testapp):
 
 
 @pytest.fixture
-def sample_ontology_term_adrenal_gland(testapp):
+def sample_term_adrenal_gland(testapp):
     item = {
         'term_id': 'UBERON:0002369',
         'term_name': 'adrenal gland'
