@@ -67,8 +67,8 @@
                 "organic"
             ]
         },
-        "technical_sample_ontology": {
-            "title": "Technical sample ontology",
+        "technical_sample_term": {
+            "title": "Technical sample term",
             "description": "Ontology of the technical sample.",
             "type": "string"
         },

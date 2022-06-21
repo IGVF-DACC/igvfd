@@ -251,18 +251,18 @@
                 "decline"
             ]
         },
-        "biosample_ontology": {
-            "title": "Biosample ontology term",
-            "description": "Ontology term of the biosample.",
+        "biosample_term": {
+            "title": "Biosample term",
+            "description": "Ontology term identifying a biosample.",
             "type": "string",
-            "linkTo": "SampleOntologyTerm"
+            "linkTo": "SampleTerm"
         },
-        "disease_ontology": {
-            "title": "Disease ontology term",
+        "disease_term": {
+            "title": "Disease term",
             "description": "Ontology term of the disease associated with the biosample.",
             "comment": "This property should only be used to submit existing known diseases, and not any phenotypic trait.",
             "type": "string",
-            "linkTo": "PhenotypeOntologyTerm"
+            "linkTo": "PhenotypeTerm"
         },
         "nih_institutional_certification": {
             "type": "string",
