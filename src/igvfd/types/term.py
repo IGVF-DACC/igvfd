@@ -59,6 +59,16 @@ class Term(Item):
     def synonyms(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'synonyms')
 
+    @calculated_property(condition='term_id', schema={
+        'title': 'Ancestors',
+        'type': 'array',
+        'items': {
+            'type': 'string',
+        },
+    })
+    def ancestors(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'ancestors')
+
 
 @collection(
     name='sample-terms',
