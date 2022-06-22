@@ -96,23 +96,20 @@
         "job_title": {
             "title": "Job title",
             "type": "string",
-            "uniqueItems": true,
             "permission": "import_items",
-            "items": {
-                "type": "string",
-                "enum": [
-                    "Primary Investigator",
-                    "Project Manager",
-                    "Submitter",
-                    "Post Doc",
-                    "Data Wrangler",
-                    "Scientist",
-                    "Computational Scientist",
-                    "Software Developer",
-                    "NHGRI staff member",
-                    "Other"
-                ]
-            }
+            "enum": [
+                "Principal Investigator",
+                "Co-Investigator",
+                "Project Manager",
+                "Submitter",
+                "Post Doc",
+                "Data Wrangler",
+                "Scientist",
+                "Computational Scientist",
+                "Software Developer",
+                "NHGRI staff member",
+                "Other"
+            ]
         }
     },
     "boost_values": {
