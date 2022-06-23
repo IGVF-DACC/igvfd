@@ -1,13 +1,14 @@
 {
     "title": "Publication",
-    "description": "Schema for a publication page.",
+    "description": "Schema for a publication object.",
     "$id": "/profiles/publication.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
         "title",
         "award",
-        "lab"
+        "lab",
+        "identifiers"
     ],
     "identifyingProperties": [
         "uuid",
@@ -99,6 +100,7 @@
             "description": "The identifiers that reference data found in the object.",
             "type": "array",
             "uniqueItems": true,
+            "minItems": 1,
             "items": {
                 "title": "Identifier",
                 "description": "An identifier that references data found in the object.",
@@ -123,12 +125,6 @@
                     "ENCODE"
                 ]
             }
-        },
-        "publication_page": {
-            "title": "Publication page",
-            "description": "Submitter-editable narrative that describes the publication.",
-            "type": "string",
-            "linkTo": "Page"
         }
     },
     "changelog": "/profiles/changelogs/publication.md"
