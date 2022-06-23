@@ -8,7 +8,7 @@
             "j-michael-cherry:alias3"
         ],
         "status": "in progress",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
         "nih_institutional_certification": "NICHD1442",
         "pmi": 2,
@@ -29,7 +29,7 @@
             "j-michael-cherry:treated_tissue"
         ],
         "status": "released",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
         "treatments": [
             "/treatments/2d57c810-c729-11ec-9d64-0242ac120002/",
@@ -52,7 +52,7 @@
             "j-michael-cherry:pooled_tissue"
         ],
         "status": "released",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
         "pooled_from": [
             "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/",

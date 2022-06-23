@@ -27,7 +27,7 @@
             "Hispanic"
         ],
         "sex": "male",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "parents": [],
         "external_resources": [],
         "collections": [
@@ -63,7 +63,7 @@
             "Arab"
         ],
         "sex": "female",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "parents": [],
         "external_resources": [
             {
@@ -105,7 +105,7 @@
             "Arab"
         ],
         "sex": "female",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "parents": [
             "a1abeff6-8024-41d3-a713-5d22c86ffc57"
         ],
@@ -132,6 +132,6 @@
             "African American"
         ],
         "sex": "female",
-        "organism": "Homo sapiens"
+        "taxa": "Homo sapiens"
     }
 ]

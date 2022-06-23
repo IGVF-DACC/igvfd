@@ -101,13 +101,13 @@ def test_external_resources(human_donor, testapp):
     assert res.status_code == 422
 
 
-def test_organism(award, lab, testapp):
+def test_taxa(award, lab, testapp):
     res = testapp.post_json(
         '/human_donor',
         {
             'award': award['@id'],
             'lab': lab['@id'],
-            'organism': 'Homo sapiens'
+            'taxa': 'Homo sapiens'
         })
     assert res.status_code == 201
     res = testapp.post_json(
@@ -115,7 +115,7 @@ def test_organism(award, lab, testapp):
         {
             'award': award['@id'],
             'lab': lab['@id'],
-            'organism': 'Mus musculus'
+            'taxa': 'Mus musculus'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.post_json(
@@ -123,6 +123,6 @@ def test_organism(award, lab, testapp):
         {
             'award': award['@id'],
             'lab': lab['@id'],
-            'organism': 'Saccharomyces'
+            'taxa': 'Saccharomyces'
         }, expect_errors=True)
     assert res.status_code == 422

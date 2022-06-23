@@ -19,7 +19,7 @@
         "strain": "some name",
         "genotype": "some genotype",
         "sex": "male",
-        "organism": "Mus musculus",
+        "taxa": "Mus musculus",
         "parents": [],
         "external_resources": [
             {
@@ -52,7 +52,7 @@
         "strain": "some name",
         "genotype": "some genotype",
         "sex": "female",
-        "organism": "Mus musculus",
+        "taxa": "Mus musculus",
         "parents": [
             "c37934b0-4269-4470-be53-9eac7b196447"
         ],

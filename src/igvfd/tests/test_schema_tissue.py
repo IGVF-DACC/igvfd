@@ -24,7 +24,7 @@ def test_age_unit_dependency(tissue, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Saccharomyces'})
+        {'taxa': 'Saccharomyces'})
     assert res.status_code == 200
     res = testapp.patch_json(
         tissue['@id'],
@@ -32,7 +32,7 @@ def test_age_unit_dependency(tissue, testapp):
     assert res.status_code == 422
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Homo sapiens', 'age_units': 'year'})
+        {'taxa': 'Homo sapiens', 'age_units': 'year'})
     assert res.status_code == 200
     res = testapp.patch_json(
         tissue['@id'],
@@ -40,7 +40,7 @@ def test_age_unit_dependency(tissue, testapp):
     assert res.status_code == 422
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Mus musculus'})
+        {'taxa': 'Mus musculus'})
     assert res.status_code == 200
     res = testapp.patch_json(
         tissue['@id'],
@@ -51,7 +51,7 @@ def test_age_unit_dependency(tissue, testapp):
 def test_lifestage_dependency(tissue, testapp):
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Mus musculus'})
+        {'taxa': 'Mus musculus'})
     assert res.status_code == 200
     res = testapp.patch_json(
         tissue['@id'],
@@ -59,19 +59,19 @@ def test_lifestage_dependency(tissue, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Homo sapiens', 'life_stage': 'fermentative'}, expect_errors=True)
+        {'taxa': 'Homo sapiens', 'life_stage': 'fermentative'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Saccharomyces', 'life_stage': 'child'}, expect_errors=True)
+        {'taxa': 'Saccharomyces', 'life_stage': 'child'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Saccharomyces', 'life_stage': 'lag'})
+        {'taxa': 'Saccharomyces', 'life_stage': 'lag'})
     assert res.status_code == 200
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Homo sapiens'}, expect_errors=True)
+        {'taxa': 'Homo sapiens'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         tissue['@id'],
@@ -79,7 +79,7 @@ def test_lifestage_dependency(tissue, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         tissue['@id'],
-        {'organism': 'Homo sapiens'})
+        {'taxa': 'Homo sapiens'})
     assert res.status_code == 200
 
 

@@ -8,7 +8,7 @@
             "j-michael-cherry:alias5"
         ],
         "status": "released",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
         "post_differentiation_time": 5,
         "post_differentiation_time_units": "day",
@@ -28,7 +28,7 @@
             "gary-hon:cardiomyocytes"
         ],
         "status": "released",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "source": "/labs/gary-hon/",
         "post_differentiation_time": 10,
         "post_differentiation_time_units": "minute",
@@ -47,7 +47,7 @@
             "gary-hon:pooled_cardiomyocytes"
         ],
         "status": "released",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "source": "/labs/gary-hon/",
         "pooled_from": [
             "/differentiated-cells/f1d10666-ebb2-4152-9d49-f98b6de7c9e5/",

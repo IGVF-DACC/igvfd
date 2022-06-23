@@ -32,7 +32,7 @@ def test_age_dependency(cell_line, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         cell_line['@id'],
-        {'organism': 'Homo sapiens', 'age': '50', 'age_units': 'month'})
+        {'taxa': 'Homo sapiens', 'age': '50', 'age_units': 'month'})
     assert res.status_code == 200
     res = testapp.patch_json(
         cell_line['@id'],
@@ -51,7 +51,7 @@ def test_age_dependency(cell_line, testapp):
 def test_age_unit_dependency(cell_line, testapp):
     res = testapp.patch_json(
         cell_line['@id'],
-        {'organism': 'Homo sapiens', 'age': '5'}, expect_errors=True)
+        {'taxa': 'Homo sapiens', 'age': '5'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         cell_line['@id'],
@@ -59,7 +59,7 @@ def test_age_unit_dependency(cell_line, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         cell_line['@id'],
-        {'organism': 'Homo sapiens', 'age_units': 'year', 'age': '5'})
+        {'taxa': 'Homo sapiens', 'age_units': 'year', 'age': '5'})
     assert res.status_code == 200
     res = testapp.patch_json(
         cell_line['@id'],
@@ -67,22 +67,22 @@ def test_age_unit_dependency(cell_line, testapp):
     assert res.status_code == 422
     res = testapp.patch_json(
         cell_line['@id'],
-        {'organism': 'Saccharomyces', 'age_units': 'year'}, expect_errors=True)
+        {'taxa': 'Saccharomyces', 'age_units': 'year'}, expect_errors=True)
     assert res.status_code == 422
 
 
 def test_lifestage_dependency(cell_line, testapp):
     res = testapp.patch_json(
         cell_line['@id'],
-        {'organism': 'Homo sapiens', 'life_stage': 'adult'})
+        {'taxa': 'Homo sapiens', 'life_stage': 'adult'})
     assert res.status_code == 200
     res = testapp.patch_json(
         cell_line['@id'],
-        {'organism': 'Mus musculus', 'life_stage': 'stationary'}, expect_errors=True)
+        {'taxa': 'Mus musculus', 'life_stage': 'stationary'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         cell_line['@id'],
-        {'organism': 'Saccharomyces', 'life_stage': 'adult'}, expect_errors=True)
+        {'taxa': 'Saccharomyces', 'life_stage': 'adult'}, expect_errors=True)
     assert res.status_code == 422
 
 
