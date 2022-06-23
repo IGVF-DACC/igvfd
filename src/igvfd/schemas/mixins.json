@@ -290,9 +290,9 @@
             }
         }
     },
-    "organism": {
-        "organism": {
-            "title": "Organism",
+    "taxa": {
+        "taxa": {
+            "title": "Taxa",
             "type": "string",
             "enum": [
                 "Homo sapiens",

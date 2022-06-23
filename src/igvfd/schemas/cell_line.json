@@ -42,7 +42,7 @@
             "$ref": "mixins.json#/url"
         },
         {
-            "$ref": "mixins.json#/organism"
+            "$ref": "mixins.json#/taxa"
         }
     ],
     "dependentSchemas": {
