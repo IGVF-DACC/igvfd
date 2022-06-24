@@ -145,6 +145,16 @@ class AssayTerm(OntologyTerm):
         return keys
 
     @calculated_property(condition='term_id', schema={
+        'title': 'Assay type',
+        'type': 'array',
+        'items': {
+            'type': 'string',
+        },
+    })
+    def assay_slims(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'assay')
+
+    @calculated_property(condition='term_id', schema={
         'title': 'Assay category',
         'type': 'array',
         'items': {
@@ -152,7 +162,17 @@ class AssayTerm(OntologyTerm):
         },
     })
     def category_slims(self, registry, term_id):
-        return self._get_ontology_slims(registry, term_id, 'assay')
+        return self._get_ontology_slims(registry, term_id, 'category')
+
+    @calculated_property(condition='term_id', schema={
+        "title": "Assay objective",
+        "type": "array",
+        "items": {
+            "type": "string",
+        },
+    })
+    def objective_slims(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'objectives')
 
 
 @collection(
