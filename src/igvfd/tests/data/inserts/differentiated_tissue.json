@@ -8,7 +8,7 @@
             "igvf:organoid"
         ],
         "status": "released",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
         "post_differentiation_time": 5,
         "post_differentiation_time_units": "day",
@@ -28,7 +28,7 @@
             "igvf:gastruloid"
         ],
         "status": "released",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "source": "/labs/jay-shendure/",
         "differentiated_from": "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
     },
@@ -41,7 +41,7 @@
             "igvf:pooled_gastruloid"
         ],
         "status": "released",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "source": "/labs/jay-shendure/",
         "pooled_from": [
             "/differentiated-tissues/a79ffa29-4bdf-4283-9494-1017e5d13f8b/",

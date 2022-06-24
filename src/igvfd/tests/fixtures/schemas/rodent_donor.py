@@ -6,7 +6,7 @@ def rodent_donor(testapp, lab, award):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'organism': 'Mus musculus',
+        'taxa': 'Mus musculus',
         'strain': 'strain1',
         'sex': 'male'
     }
@@ -18,7 +18,7 @@ def parent_rodent_donor1(testapp, lab, award):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'organism': 'Mus musculus',
+        'taxa': 'Mus musculus',
         'strain': 'strain2',
         'sex': 'female'
     }
@@ -30,7 +30,7 @@ def parent_rodent_donor2(testapp, lab, award):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'organism': 'Mus musculus',
+        'taxa': 'Mus musculus',
         'strain': 'strain3',
         'sex': 'male'
     }
@@ -42,7 +42,7 @@ def parent_rodent_donor3(testapp, lab, award):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'organism': 'Mus musculus',
+        'taxa': 'Mus musculus',
         'strain': 'strain4',
         'sex': 'male'
     }
@@ -54,7 +54,7 @@ def rodent_donor_orphan(testapp, lab, award):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'organism': 'Mus musculus',
+        'taxa': 'Mus musculus',
         'strain': 'strain5',
         'sex': 'female'
     }

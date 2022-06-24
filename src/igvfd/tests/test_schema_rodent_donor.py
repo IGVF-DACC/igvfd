@@ -120,13 +120,13 @@ def test_external_resources(rodent_donor, testapp):
     assert res.status_code == 422
 
 
-def test_organism(award, lab, testapp):
+def test_taxa(award, lab, testapp):
     res = testapp.post_json(
         '/rodent_donor',
         {
             'award': award['@id'],
             'lab': lab['@id'],
-            'organism': 'Mus musculus',
+            'taxa': 'Mus musculus',
             'sex': 'male',
             'strain': 'B6'
         })
@@ -136,7 +136,7 @@ def test_organism(award, lab, testapp):
         {
             'award': award['@id'],
             'lab': lab['@id'],
-            'organism': 'Homo sapiens',
+            'taxa': 'Homo sapiens',
             'sex': 'male',
             'strain': 'B6'
         }, expect_errors=True)
@@ -146,7 +146,7 @@ def test_organism(award, lab, testapp):
         {
             'award': award['@id'],
             'lab': lab['@id'],
-            'organism': 'Saccharomyces',
+            'taxa': 'Saccharomyces',
             'sex': 'male',
             'strain': 'B6'
         }, expect_errors=True)

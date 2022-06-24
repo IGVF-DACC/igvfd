@@ -33,7 +33,7 @@
             "$ref": "mixins.json#/url"
         },
         {
-            "$ref": "mixins.json#/organism"
+            "$ref": "mixins.json#/taxa"
         }
     ],
     "dependentSchemas": {
@@ -65,13 +65,13 @@
                             "age_units": {
                                 "const": "year"
                             },
-                            "organism": {
+                            "taxa": {
                                 "const": "Homo sapiens"
                             }
                         },
                         "required": [
                             "age_units",
-                            "organism"
+                            "taxa"
                         ]
                     },
                     "then": {
@@ -93,12 +93,12 @@
                 {
                     "if": {
                         "properties": {
-                            "organism": {
+                            "taxa": {
                                 "const": "Homo sapiens"
                             }
                         },
                         "required": [
-                            "organism"
+                            "taxa"
                         ]
                     },
                     "then": {
@@ -117,12 +117,12 @@
                 {
                     "if": {
                         "properties": {
-                            "organism": {
+                            "taxa": {
                                 "const": "Saccharomyces"
                             }
                         },
                         "required": [
-                            "organism"
+                            "taxa"
                         ]
                     },
                     "then": {
@@ -146,7 +146,7 @@
                 {
                     "if": {
                         "properties": {
-                            "organism": {
+                            "taxa": {
                                 "enum": [
                                     "Homo sapiens",
                                     "Mus musculus"
@@ -154,7 +154,7 @@
                             }
                         },
                         "required": [
-                            "organism"
+                            "taxa"
                         ]
                     },
                     "then": {
@@ -174,14 +174,14 @@
                 {
                     "if": {
                         "properties": {
-                            "organism": {
+                            "taxa": {
                                 "enum": [
                                     "Saccharomyces"
                                 ]
                             }
                         },
                         "required": [
-                            "organism"
+                            "taxa"
                         ]
                     },
                     "then": {
@@ -205,14 +205,6 @@
     "properties": {
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."
-        },
-        "organism": {
-            "type": "string",
-            "enum": [
-                "Homo sapiens",
-                "Mus musculus",
-                "Saccharomyces"
-            ]
         },
         "age": {
             "title": "Age",

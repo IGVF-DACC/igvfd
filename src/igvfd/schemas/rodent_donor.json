@@ -7,7 +7,7 @@
     "required": [
         "award",
         "lab",
-        "organism",
+        "taxa",
         "sex",
         "strain"
     ],
@@ -44,7 +44,7 @@
             "$ref": "mixins.json#/references"
         },
         {
-            "$ref": "mixins.json#/organism"
+            "$ref": "mixins.json#/taxa"
         }
     ],
     "dependentSchemas": {
@@ -95,7 +95,7 @@
             "comment": "Genotype of rodent strains.",
             "type": "string"
         },
-        "organism": {
+        "taxa": {
             "enum": [
                 "Mus musculus"
             ]

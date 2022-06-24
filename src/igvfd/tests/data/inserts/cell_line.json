@@ -21,7 +21,7 @@
         "dbxrefs": [
             "GEO:SAMN1"
         ],
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "age": "40",
         "age_units": "year",
         "life_stage": "adult",
@@ -50,7 +50,7 @@
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
         "starting_amount": 5,
         "starting_amount_units": "μg",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "age": "30",
         "age_units": "year",
         "life_stage": "adult",
@@ -73,7 +73,7 @@
             "ali-mortazavi:pooled_cell_line"
         ],
         "status": "released",
-        "organism": "Homo sapiens",
+        "taxa": "Homo sapiens",
         "source": "/labs/ali-mortazavi/",
         "pooled_from": [
             "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/",

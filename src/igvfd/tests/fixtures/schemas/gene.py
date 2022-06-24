@@ -10,7 +10,7 @@ def gene_myc_hs(testapp):
         'geneid': '4609',
         'symbol': 'MYC',
         'ncbi_entrez_status': 'live',
-        'organism': 'Homo sapiens'
+        'taxa': 'Homo sapiens'
     }
     return testapp.post_json('/gene', item, status=201).json['@graph'][0]
 
@@ -29,6 +29,6 @@ def gene_zscan10_mm(testapp):
         'geneid': '332221',
         'symbol': 'Zcan10',
         'ncbi_entrez_status': 'live',
-        'organism': 'Mus musculus'
+        'taxa': 'Mus musculus'
     }
     return testapp.post_json('/gene', item, status=201).json['@graph'][0]

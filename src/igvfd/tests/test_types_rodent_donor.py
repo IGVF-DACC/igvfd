@@ -5,7 +5,7 @@ def test_rodent_donor_duplicate_strain_sex(testapp, lab, award):
     item1 = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'organism': 'Mus musculus',
+        'taxa': 'Mus musculus',
         'strain': 'strain10',
         'sex': 'female'
     }
@@ -14,7 +14,7 @@ def test_rodent_donor_duplicate_strain_sex(testapp, lab, award):
     item2 = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'organism': 'Mus musculus',
+        'taxa': 'Mus musculus',
         'strain': 'strain10',
         'sex': 'female'
     }

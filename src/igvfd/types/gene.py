@@ -25,5 +25,5 @@ class Gene(SharedItem):
         'title': 'Title',
         'type': 'string',
     })
-    def title(self, request, organism, symbol):
-        return u'{} ({})'.format(symbol, organism)
+    def title(self, request, taxa, symbol):
+        return u'{} ({})'.format(symbol, taxa)
