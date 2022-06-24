@@ -146,6 +146,7 @@ def session(config):
     """ To create a session secret on the server:
     $ cat /dev/urandom | head -c 256 | base64 > session-secret.b64
     """
+    from igvfd.cookie import add_session_cookie_name_to_settings
     settings = config.registry.settings
     if 'session.secret' in settings:
         secret = settings['session.secret'].strip()
@@ -160,11 +161,14 @@ def session(config):
         timeout = int(settings['session.timeout'])
     else:
         timeout = 60 * 60 * 24
+    add_session_cookie_name_to_settings(settings, secret)
     session_factory = SignedCookieSessionFactory(
+        cookie_name=settings['session_cookie_name'],
         secret=secret,
         timeout=timeout,
         reissue_time=2**32,  # None does not work
         serializer=JSONSerializer(),
+        domain=settings.get('session_cookie_domain', None),
     )
     config.set_session_factory(session_factory)
 
