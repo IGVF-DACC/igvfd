@@ -1,0 +1,43 @@
+[
+    {
+        "uuid": "692a559c-99ac-4892-9c31-929c5ebfc3da",
+        "accession": "IGVFSM000KAS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:mouse_embryo"
+        ],
+        "status": "released",
+        "source": "/labs/j-michael-cherry/",
+        "collections": [
+            "ENCODE"
+        ],
+        "donors": [
+            "05c0a52c-f861-4057-b3eb-751624bdff37"
+        ],
+        "description": "frozen mouse embryo"
+    },
+    {
+        "uuid": "3fdd8d04-f990-4d7c-98b5-0bfb6750bdc5",
+        "accession": "IGVFSM001KAS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:yeastF"
+        ],
+        "status": "released",
+        "source": "/labs/j-michael-cherry/",
+        "description": "frozen yeast sample"
+    },
+    {
+        "uuid": "2380761b-a127-4af8-92e7-63cc53828308",
+        "accession": "IGVFSM002KAS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:E_colli"
+        ],
+        "status": "released",
+        "source": "/labs/j-michael-cherry/"
+    }
+]

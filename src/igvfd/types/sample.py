@@ -130,3 +130,15 @@ class DifferentiatedCell(Biosample):
 class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
+
+
+@collection(
+    name='organisms',
+    unique_key='accession',
+    properties={
+        'title': 'Organisms',
+        'description': 'Listing of organisms',
+    })
+class Organism(Biosample):
+    item_type = 'organism'
+    schema = load_schema('igvfd:schemas/organism.json')

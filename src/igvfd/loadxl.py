@@ -31,6 +31,7 @@ ORDER = [
     'differentiated_tissue',
     'differentiated_cell',
     'technical_sample',
+    'organism',
     'image',
     'page',
     'publication',

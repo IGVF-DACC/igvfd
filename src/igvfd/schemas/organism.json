@@ -1,0 +1,73 @@
+{
+    "title": "Organism",
+    "$id": "/profiles/organism.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submiting an organism.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "source"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "sample.json#/properties"
+        },
+        {
+            "$ref": "biosample.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/references"
+        },
+        {
+            "$ref": "mixins.json#/organism"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "biosample.json#/dependentSchemas"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "sex": {
+            "title": "Sex",
+            "description": "Sex of the organism.",
+            "type": "string",
+            "default": "unspecified",
+            "enum": [
+                "male",
+                "female",
+                "unspecified"
+            ]
+        },
+        "description": {
+            "title": "Description",
+            "description": "A plain text description of the organism sample.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
+            "formInput": "textarea"
+        }
+    }
+}
