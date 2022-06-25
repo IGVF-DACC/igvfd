@@ -30,7 +30,7 @@ def test_failure_patch_calculated_sex(organism1, testapp):
 def test_lifestage_dependency(organism1, testapp):
     res = testapp.patch_json(
         organism1['@id'],
-        {'organism': 'Mus musculus'})
+        {'taxa': 'Mus musculus'})
     assert res.status_code == 200
     res = testapp.patch_json(
         organism1['@id'],
@@ -38,19 +38,19 @@ def test_lifestage_dependency(organism1, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         organism1['@id'],
-        {'organism': 'Homo sapiens', 'life_stage': 'fermentative'}, expect_errors=True)
+        {'taxa': 'Homo sapiens', 'life_stage': 'fermentative'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         organism1['@id'],
-        {'organism': 'Saccharomyces', 'life_stage': 'child'}, expect_errors=True)
+        {'taxa': 'Saccharomyces', 'life_stage': 'child'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         organism1['@id'],
-        {'organism': 'Saccharomyces', 'life_stage': 'lag'})
+        {'taxa': 'Saccharomyces', 'life_stage': 'lag'})
     assert res.status_code == 200
     res = testapp.patch_json(
         organism1['@id'],
-        {'organism': 'Homo sapiens'}, expect_errors=True)
+        {'taxa': 'Homo sapiens'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         organism1['@id'],
@@ -58,7 +58,7 @@ def test_lifestage_dependency(organism1, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         organism1['@id'],
-        {'organism': 'Homo sapiens'})
+        {'taxa': 'Homo sapiens'})
     assert res.status_code == 200
 
 

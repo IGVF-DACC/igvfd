@@ -15,7 +15,8 @@
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
-        "description": "frozen mouse embryo"
+        "description": "frozen mouse embryo",
+        "taxa": "Mus musculus"
     },
     {
         "uuid": "3fdd8d04-f990-4d7c-98b5-0bfb6750bdc5",
@@ -27,7 +28,8 @@
         ],
         "status": "released",
         "source": "/labs/j-michael-cherry/",
-        "description": "frozen yeast sample"
+        "description": "frozen yeast sample",
+        "taxa": "Saccharomyces"
     },
     {
         "uuid": "2380761b-a127-4af8-92e7-63cc53828308",
