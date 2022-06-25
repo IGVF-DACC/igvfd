@@ -4,7 +4,8 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias_rodent_donor_1"
+            "j-michael-cherry:alias_rodent_donor_1",
+            "j-michael-cherry:rodent_donor_with_arterial_blood_pressure_trait"
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
@@ -19,6 +20,10 @@
         "strain": "some name",
         "genotype": "some genotype",
         "sex": "male",
+        "traits": [
+            "/phenotype-terms/1b267ef2-f42e-11ec-b939-0242ac120002/",
+            "/phenotype-terms/HP_0001658/"
+        ],
         "taxa": "Mus musculus",
         "parents": [],
         "external_resources": [

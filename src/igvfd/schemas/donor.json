@@ -67,6 +67,21 @@
             },
             "maxItems": 2
         },
+        "traits": {
+            "title": "Phenotypic traits",
+            "description": "A list of known phenotypic traits of the donor",
+            "type": "array",
+            "uniqueItems": true,
+            "default": [],
+            "minItems": 0,
+            "items": {
+                "title": "Phenotype term",
+                "description": "Phenotype term(s).",
+                "comment": "See phenotype_term.json for available identifiers.",
+                "type": "string",
+                "linkTo": "PhenotypeTerm"
+            }
+        },
         "external_resources": {
             "title": "External Resources",
             "description": "A list of external resources associated with the donor.",

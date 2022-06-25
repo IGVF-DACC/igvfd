@@ -126,3 +126,18 @@ def test_taxa(award, lab, testapp):
             'taxa': 'Saccharomyces'
         }, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_human_traits(human_donor_orphan, phenotype_term_myocardial_infarction, testapp):
+    res = testapp.patch_json(
+        human_donor_orphan['@id'],
+        {'traits':
+            [phenotype_term_myocardial_infarction['@id']]
+         })
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        human_donor_orphan['@id'],
+        {'traits':
+            ['Myocardial infraction']
+         }, expect_errors=True)
+    assert res.status_code == 422

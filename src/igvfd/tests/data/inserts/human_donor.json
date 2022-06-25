@@ -28,6 +28,9 @@
         ],
         "sex": "male",
         "taxa": "Homo sapiens",
+        "traits": [
+            "/phenotype-terms/HP_0000648/"
+        ],
         "parents": [],
         "external_resources": [],
         "collections": [
@@ -132,6 +135,10 @@
             "African American"
         ],
         "sex": "female",
-        "taxa": "Homo sapiens"
+        "taxa": "Homo sapiens",
+        "traits": [
+            "/phenotype-terms/DOID_10652/",
+            "/phenotype-terms/HP_0001658/"
+        ]
     }
 ]

@@ -54,5 +54,17 @@
         "term_name": "motor neuron disease",
         "status": "released",
         "uuid": "8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4"
+    },
+    {
+        "term_id": "OBA:VT2000000",
+        "term_name": "Arterial blood pressure trait",
+        "status": "released",
+        "uuid": "1b267ef2-f42e-11ec-b939-0242ac120002"
+    },
+    {
+        "term_id": "HP:0000648",
+        "term_name": "Optic atrophy",
+        "status": "released",
+        "uuid": "ec2938a6-f432-11ec-b939-0242ac120002"
     }
 ]
