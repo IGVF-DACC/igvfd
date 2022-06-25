@@ -211,6 +211,7 @@ def main(global_config, **local_config):
     # Must go before other route registration.
     config.include('.cors')
     config.include('.auth0')
+    config.include('.cookie')
 
     config.include(configure_dbsession)
     config.include('snovault')
