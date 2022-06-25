@@ -47,4 +47,6 @@ def add_session_cookie_name_to_settings(settings, secret):
 
 )
 def session_cookie_name(context, request):
-    return request.registry.settings.get('session_cookie_name')
+    return {
+        'name': request.registry.settings.get('session_cookie_name')
+    }
