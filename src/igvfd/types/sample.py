@@ -133,12 +133,12 @@ class TechnicalSample(Sample):
 
 
 @collection(
-    name='organisms',
+    name='whole-organisms',
     unique_key='accession',
     properties={
-        'title': 'Organisms',
-        'description': 'Listing of organisms',
+        'title': 'Whole Organism Samples',
+        'description': 'Listing of whole organism samples',
     })
-class Organism(Biosample):
-    item_type = 'organism'
-    schema = load_schema('igvfd:schemas/organism.json')
+class WholeOrganism(Biosample):
+    item_type = 'whole_organism'
+    schema = load_schema('igvfd:schemas/whole_organism.json')

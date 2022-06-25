@@ -1,8 +1,8 @@
 {
-    "title": "Organism",
-    "$id": "/profiles/organism.json",
+    "title": "Whole Organism",
+    "$id": "/profiles/whole_organism.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submiting an organism.",
+    "description": "Schema for submiting a whole organism sample.",
     "type": "object",
     "required": [
         "award",
@@ -53,7 +53,7 @@
         },
         "sex": {
             "title": "Sex",
-            "description": "Sex of the organism.",
+            "description": "Sex of the whole organism sample.",
             "type": "string",
             "default": "unspecified",
             "enum": [
@@ -64,7 +64,7 @@
         },
         "description": {
             "title": "Description",
-            "description": "A plain text description of the organism sample.",
+            "description": "A plain text description of the whole organism sample.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
             "formInput": "textarea"
