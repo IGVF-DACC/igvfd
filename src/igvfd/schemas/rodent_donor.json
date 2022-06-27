@@ -108,7 +108,7 @@
             "minItems": 1,
             "items": {
                 "title": "Phenotype term",
-                "description": "Phenotype term(s).",
+                "description": "Phenotype term",
                 "comment": "See phenotype_term.json for available identifiers.",
                 "type": "string",
                 "linkTo": "PhenotypeTerm"
