@@ -37,9 +37,10 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:E_colli"
+            "j-michael-cherry:yeastF2"
         ],
         "status": "released",
-        "source": "/labs/j-michael-cherry/"
+        "source": "/labs/j-michael-cherry/",
+        "taxa": "Saccharomyces"
     }
 ]
