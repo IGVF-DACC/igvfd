@@ -118,6 +118,20 @@
             "enum": [
                 "Homo sapiens"
             ]
+        },
+        "traits": {
+            "title": "Phenotypic traits",
+            "description": "A list of known phenotypic traits of the Human donor",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "Phenotype term",
+                "description": "Phenotype term(s).",
+                "comment": "See phenotype_term.json for available identifiers.",
+                "type": "string",
+                "linkTo": "PhenotypeTerm"
+            }
         }
     },
     "changelog": "/profiles/changelogs/human_donor.md"
