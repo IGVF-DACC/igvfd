@@ -6,6 +6,7 @@ from snovault import (
 
 from .base import (
     Item,
+    datetime
 )
 
 
@@ -31,8 +32,5 @@ class Publication(Item):
         'type': 'integer',
     })
     def publication_year(self, date_published):
-        likely_year = date_published[:4]
-        if likely_year.isdigit():
-            return int(date_published[:4])
-        else:
-            return None
+        year = datetime.strptime(date_published, '%Y-%m-%d').year
+        return year
