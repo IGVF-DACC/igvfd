@@ -29,8 +29,7 @@ class Publication(Item):
     @calculated_property(condition='date_published', schema={
         'title': 'Publication year',
         'type': 'integer',
-    }
-    )
+    })
     def publication_year(self, date_published):
         likely_year = date_published[:4]
         if likely_year.isdigit():
