@@ -2,4 +2,4 @@
 
 ### Minor changes since version 1
 
-* Bumped date_obtained property from biosample to sample.
+* date_obtained property moved from Biosample schema to Sample schema. It is introduced in the Biosample and Technical sample schemas through mixinProperties
