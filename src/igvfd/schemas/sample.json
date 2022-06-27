@@ -86,7 +86,7 @@
         },
         "date_obtained": {
             "title": "Date obtained",
-            "description": "The date the biosample was harvested, disected, created depending on biosample type.",
+            "description": "The date the sample was harvested, disected, created depending on sample type.",
             "comment": "Date should be submitted in as YYYY-MM-DD.",
             "type": "string",
             "format": "date"
