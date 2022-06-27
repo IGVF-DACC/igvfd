@@ -83,6 +83,13 @@
                 "type": "string",
                 "pattern": "^((GEO:SAMN\\d+)|(Cellosaurus:CVCL_\\w{4}))$"
             }
+        },
+        "date_obtained": {
+            "title": "Date obtained",
+            "description": "The date the biosample was harvested, disected, created depending on biosample type.",
+            "comment": "Date should be submitted in as YYYY-MM-DD.",
+            "type": "string",
+            "format": "date"
         }
     }
 }

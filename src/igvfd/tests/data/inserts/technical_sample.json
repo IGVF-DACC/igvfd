@@ -22,7 +22,7 @@
         ],
         "sample_material": "synthetic",
         "technical_sample_term": "vaccine",
-        "date": "2022-04-09",
+        "date_obtained": "2022-04-09",
         "source": "/labs/j-michael-cherry/",
         "collections": [
             "ENCODE"

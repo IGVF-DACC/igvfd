@@ -263,13 +263,6 @@
             "comment": "Required for IGVF human biosamples.",
             "pattern": "^NIC[A-Z0-9]+$"
         },
-        "date_obtained": {
-            "title": "Date obtained",
-            "description": "The date the biosample was harvested, disected, created depending on biosample type.",
-            "comment": "Date should be submitted in as YYYY-MM-DD.",
-            "type": "string",
-            "format": "date"
-        },
         "pooled_from": {
             "title": "Biosample(s) pooled from",
             "description": "The biosample(s) this biosample is pooled from.",
