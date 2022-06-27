@@ -136,7 +136,7 @@ class TechnicalSample(Sample):
     name='whole-organisms',
     unique_key='accession',
     properties={
-        'title': 'Whole Organism Samples',
+        'title': 'Whole organism samples',
         'description': 'Listing of whole organism samples',
     })
 class WholeOrganism(Biosample):
