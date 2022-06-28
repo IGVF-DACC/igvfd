@@ -15,7 +15,7 @@ from .base import (
     unique_key='publication:identifier',
     properties={
         'title': 'Publications',
-        'description': 'Publication pages',
+        'description': 'Listing of publications',
     })
 class Publication(Item):
     item_type = 'publication'
