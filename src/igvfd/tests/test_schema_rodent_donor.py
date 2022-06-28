@@ -152,16 +152,6 @@ def test_taxa(award, lab, testapp):
         }, expect_errors=True)
     assert res.status_code == 422
 
-    '''
-    test to prove strings not allowed
-    '''
-    '''
-    test to prove existing phenotype terms allowed
-    '''
-    '''
-    test to prove duplication is not allowed
-    '''
-
 
 def test_rodent_traits(rodent_donor, phenotype_term_myocardial_infarction, phenotype_term_alzheimers, testapp):
     res = testapp.patch_json(
