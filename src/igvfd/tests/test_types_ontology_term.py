@@ -31,6 +31,7 @@ def test_ontology_term_unique_keys(
         expect_errors=False)
     assert res.status_code == 200
 
+
 def test_term_ancestors(
     sample_term_K562,
     testapp
