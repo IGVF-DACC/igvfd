@@ -128,16 +128,16 @@ def test_taxa(award, lab, testapp):
     assert res.status_code == 422
 
 
-def test_human_traits(human_donor_orphan, phenotype_term_myocardial_infarction, testapp):
+def test_human_traits(human_donor, phenotype_term_myocardial_infarction, testapp):
     res = testapp.patch_json(
-        human_donor_orphan['@id'],
-        {'traits':
-            [phenotype_term_myocardial_infarction['@id']]
-         })
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        human_donor_orphan['@id'],
+        human_donor['@id'],
         {'traits':
             ['Myocardial infraction']
          }, expect_errors=True)
-    assert res.status_code == 422
+    assert res.status_code == 422  # confirming strings not allowed
+    res = testapp.patch_json(
+        human_donor['@id'],
+        {'traits':
+            [phenotype_term_myocardial_infarction['@id']]
+         })
+    assert res.status_code == 200  # confirming existing phenotype term allowed

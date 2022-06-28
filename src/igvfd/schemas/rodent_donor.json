@@ -101,18 +101,8 @@
             ]
         },
         "traits": {
-            "title": "Phenotypic traits",
             "description": "A list of known phenotypic traits of the Rodent donor",
-            "type": "array",
-            "uniqueItems": true,
-            "minItems": 1,
-            "items": {
-                "title": "Phenotype term",
-                "description": "Phenotypic trait",
-                "comment": "See phenotype_term.json for available identifiers.",
-                "type": "string",
-                "linkTo": "PhenotypeTerm"
-            }
+            "type": "array"
         }
     },
     "changelog": "/profiles/changelogs/rodent_donor.md"
