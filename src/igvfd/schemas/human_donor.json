@@ -118,6 +118,10 @@
             "enum": [
                 "Homo sapiens"
             ]
+        },
+        "traits": {
+            "description": "A list of known phenotypic traits of the Human donor",
+            "type": "array"
         }
     },
     "changelog": "/profiles/changelogs/human_donor.md"

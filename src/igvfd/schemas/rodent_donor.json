@@ -99,6 +99,10 @@
             "enum": [
                 "Mus musculus"
             ]
+        },
+        "traits": {
+            "description": "A list of known phenotypic traits of the Rodent donor",
+            "type": "array"
         }
     },
     "changelog": "/profiles/changelogs/rodent_donor.md"

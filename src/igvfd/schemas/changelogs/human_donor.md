@@ -7,3 +7,4 @@
 * defined *sex* as required property and defaulted it to *unspecified*
 * human_donor has aliases mixin and submitted mixin removed, but still has properties for aliases and submitted due to change of basic_item mixin.  The actual properties have not changed.
 * organism property renamed to taxa
+* Human donors now have a property *traits* to specify known phenotypic traits
