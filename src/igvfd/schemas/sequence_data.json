@@ -7,9 +7,13 @@
         "lab"
     ],
     "identifyingProperties": [
+<<<<<<< HEAD
         "uuid",
         "aliases",
         "md5sum"
+=======
+        "uuid"
+>>>>>>> 8162775 (IGVF-155 file)
     ],
     "additionalProperties": false,
     "mixinProperties": [
