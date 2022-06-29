@@ -22,8 +22,10 @@ class OntologyTerm(Item):
     schema = load_schema('igvfd:schemas/ontology_term.json')
 
     def unique_keys(self, properties):
-        keys = super(OntologyTerm, self).unique_keys(properties)
-        keys.setdefault('ontology_term:name', []).append(self.name(properties))
+        keys = super(Term, self).unique_keys(properties)
+        if 'deprecated_ntr_terms' in properties:
+            keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
+        keys.setdefault('term:name', []).append(self.name(properties))
         return keys
 
     @property
