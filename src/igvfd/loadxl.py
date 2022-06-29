@@ -33,6 +33,7 @@ ORDER = [
     'technical_sample',
     'image',
     'page',
+    'publication',
     'access_key',
 ]
 

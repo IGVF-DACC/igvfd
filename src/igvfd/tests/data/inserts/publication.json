@@ -1,0 +1,36 @@
+[
+    {
+        "title": "An integrated encyclopedia of DNA elements in the human genome",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "936b0798-3d6b-4b2f-a357-2bd59faae506",
+        "abstract": "The human genome encodes the blueprint of life, but the function of the vast majority of its nearly three billion bases is unknown. The Encyclopedia of DNA Elements (ENCODE) project has systematically mapped regions of transcription, transcription factor association, chromatin structure and histone modification. These data enabled us to assign biochemical functions for 80% of the genome, in particular outside of the well-studied protein-coding regions. Many discovered candidate regulatory elements are physically associated with one another and with expressed genes, providing new insights into the mechanisms of gene regulation. The newly identified elements also show a statistical correspondence to sequence variants linked to human disease, and can thereby guide interpretation of this variation. Overall, the project provides new insights into the organization and regulation of our genes and genome, and is an expansive resource of functional annotations for biomedical research.",
+        "authors": "ENCODE Project Consortium, Bernstein BE, Birney E, Dunham I, Green ED, Gunter C, Snyder M.",
+        "journal": "Nature",
+        "date_published": "2012-09-06",
+        "identifiers": [
+            "PMID:22955616",
+            "PMCID:PMC3439153"
+        ],
+        "volume": "489",
+        "issue": "7414",
+        "page": "57-74",
+        "status": "released",
+        "published_by": [
+            "ENCODE"
+        ]
+    },
+    {
+        "title": "Chromatin interaction aware gene regulatory modeling with graph attention networks",
+        "award": "1U01HG012103-01",
+        "lab": "christina-leslie",
+        "uuid": "244ec9fc-ddda-4f38-b72d-3430929111e4",
+        "abstract": "Linking distal enhancers to genes and modeling their impact on target gene expression are longstanding unresolved problems in regulatory genomics and critical for interpreting non-coding genetic variation. Here we present a new deep learning approach called GraphReg that exploits 3D interactions from chromosome conformation capture assays in order to predict gene expression from 1D epigenomic data or genomic DNA sequence. By using graph attention networks to exploit the connectivity of distal elements and promoters, GraphReg more faithfully models gene regulation and more accurately predicts gene expression levels than dilated convolutional neural networks (CNNs), the current state-of-the-art deep learning approach for this task. Feature attribution used with GraphReg accurately identifies functional enhancers of genes, as validated by CRISPRi-FlowFISH and TAP-seq assays, outperforming both CNNs and the recently proposed Activity-by-Contact model. GraphReg therefore represents an important advance in modeling the regulatory impact of epigenomic and sequence elements.",
+        "authors": "Alireza Karbalayghareh, Merve Sahin, Christina S. Leslie",
+        "date_published": "2021-04-02",
+        "identifiers": [
+            "doi:10.1101/2021.03.31.437978v2"
+        ],
+        "status": "released"
+    }
+]
