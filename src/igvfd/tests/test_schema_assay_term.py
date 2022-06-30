@@ -20,4 +20,6 @@ def test_assay_term_slims(
 
     res = testapp.get(assay_term_dnase['@id'] + '@@index-data')
     expected_category_slims = ['protein and DNA interaction']
+    expected_objective_slims = ['protein and DNA interaction identification objective']
     assert(all(slim in res.json['embedded']['category_slims'] for slim in expected_category_slims))
+    assert(all(slim in res.json['embedded']['objective_slims'] for slim in expected_objective_slims))
