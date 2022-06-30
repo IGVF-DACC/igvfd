@@ -27,6 +27,21 @@ def test_failure_patch_calculated_sex(whole_organism1, testapp):
     assert res.status_code == 422
 
 
+def test_taxa_dependency(whole_organism1, testapp):
+    res = testapp.patch_json(
+        whole_organism1['@id'],
+        {'taxa': 'Mus musculus'})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        whole_organism1['@id'],
+        {'taxa': 'Saccharomyces'})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        whole_organism1['@id'],
+        {'taxa': 'Homo sapiens'}, expect_errors=True)
+    assert res.status_code == 422
+
+
 def test_lifestage_dependency(whole_organism1, testapp):
     res = testapp.patch_json(
         whole_organism1['@id'],
@@ -38,10 +53,6 @@ def test_lifestage_dependency(whole_organism1, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         whole_organism1['@id'],
-        {'taxa': 'Homo sapiens', 'life_stage': 'fermentative'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        whole_organism1['@id'],
         {'taxa': 'Saccharomyces', 'life_stage': 'child'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
@@ -50,15 +61,7 @@ def test_lifestage_dependency(whole_organism1, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         whole_organism1['@id'],
-        {'taxa': 'Homo sapiens'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        whole_organism1['@id'],
         {'life_stage': 'unknown'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        whole_organism1['@id'],
-        {'taxa': 'Homo sapiens'})
     assert res.status_code == 200
 
 

@@ -51,7 +51,17 @@
     "dependentSchemas": {
         "$merge": [
             "biosample.json#/dependentSchemas"
-        ]
+        ],
+        "taxa": {
+            "comment": "Taxa can not be human.",
+            "not": {
+                "properties": {
+                    "taxa": {
+                        "const": "Homo sapiens"
+                    }
+                }
+            }
+        }
     },
     "properties": {
         "schema_version": {
