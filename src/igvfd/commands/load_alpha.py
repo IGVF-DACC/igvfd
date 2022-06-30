@@ -23,7 +23,7 @@ def get_parser():
     )
     parser.add_argument(
         '--config_uri',
-        default=f'{Path().absolute()}/config/pyramid/ini/fargate.ini',
+        default=f'{Path().absolute()}/config/pyramid/ini/loader.ini',
         help='Path to config file',
     )
     parser.add_argument(
