@@ -50,10 +50,10 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "biosample.json#/dependentSchemas"
+            "sample.json#/dependentSchemas"
         ],
         "taxa": {
-            "comment": "Taxa can not be human.",
+            "comment": "Since the IGVF DACC is not expecting metadata submission of human whole organism samples, the schema excludes Homo sapiens taxa.",
             "not": {
                 "properties": {
                     "taxa": {
@@ -61,6 +61,115 @@
                     }
                 }
             }
+        },
+        "age": {
+            "comment": "Biosample with a defined age requires age_units.",
+            "if": {
+                "not": {
+                    "properties": {
+                        "age": {
+                            "const": "unknown"
+                        }
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "age_units"
+                ]
+            }
+        },
+        "age_units": {
+            "comment": "Yeast biosamples cannot have age units of years or months.",
+            "required": [
+                "age"
+            ],
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "taxa": {
+                                "const": "Saccharomyces"
+                            }
+                        },
+                        "required": [
+                            "taxa"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "age_units": {
+                                "enum": [
+                                    "minute",
+                                    "hour",
+                                    "day",
+                                    "week"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "life_stage": {
+            "comment": "Mouse biosamples have different life stages to yeast.",
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "taxa": {
+                                "enum": [
+                                    "Mus musculus"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "taxa"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "life_stage": {
+                                "enum": [
+                                    "adult",
+                                    "child",
+                                    "postnatal",
+                                    "embryonic",
+                                    "unknown"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "taxa": {
+                                "enum": [
+                                    "Saccharomyces"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "taxa"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "life_stage": {
+                                "enum": [
+                                    "lag",
+                                    "fermentative",
+                                    "respirative",
+                                    "stationary",
+                                    "decline",
+                                    "unknown"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
         }
     },
     "properties": {
