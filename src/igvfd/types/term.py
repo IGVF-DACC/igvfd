@@ -61,6 +61,7 @@ class Term(Item):
 
     @calculated_property(condition='term_id', schema={
         'title': 'Ancestors',
+        'description': 'List of term names of ontological terms that precede the given term in the ontological tree. These ancestor terms are typically more general ontological terms under which the term is classified.',
         'type': 'array',
         'items': {
             'type': 'string',
