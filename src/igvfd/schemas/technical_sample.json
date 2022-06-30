@@ -49,13 +49,6 @@
         "schema_version": {
             "default": "1"
         },
-        "date": {
-            "title": "Technical Sample date",
-            "description": "The date the technical sample was collected or created depending on type.",
-            "comment": "Date should be submitted in as YYYY-MM-DD.",
-            "type": "string",
-            "format": "date"
-        },
         "sample_material": {
             "title": "Sample Material",
             "type": "string",
