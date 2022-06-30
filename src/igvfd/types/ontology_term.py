@@ -165,10 +165,10 @@ class AssayTerm(OntologyTerm):
         return self._get_ontology_slims(registry, term_id, 'category')
 
     @calculated_property(condition='term_id', schema={
-        "title": "Assay objective",
-        "type": "array",
-        "items": {
-            "type": "string",
+        'title': 'Assay objective',
+        'type': 'array',
+        'items': {
+            'type': 'string',
         },
     })
     def objective_slims(self, registry, term_id):
