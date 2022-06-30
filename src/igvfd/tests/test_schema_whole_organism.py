@@ -53,6 +53,10 @@ def test_lifestage_dependency(whole_organism1, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         whole_organism1['@id'],
+        {'life_stage': 'child'}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        whole_organism1['@id'],
         {'taxa': 'Saccharomyces', 'life_stage': 'child'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(

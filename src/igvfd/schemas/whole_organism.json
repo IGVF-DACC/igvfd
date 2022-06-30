@@ -112,7 +112,7 @@
             ]
         },
         "life_stage": {
-            "comment": "Mouse biosamples have different life stages to yeast.",
+            "comment": "Specification of life_stages relevant to the various biosample types.",
             "allOf": [
                 {
                     "if": {
@@ -132,7 +132,6 @@
                             "life_stage": {
                                 "enum": [
                                     "adult",
-                                    "child",
                                     "postnatal",
                                     "embryonic",
                                     "unknown"
