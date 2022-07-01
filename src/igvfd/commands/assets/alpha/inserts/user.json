@@ -2,7 +2,7 @@
     {
         "email": "cherry@stanford.edu",
         "first_name": "J. Michael",
-        "job_title": "PI",
+        "job_title": "Principal Investigator",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Cherry",
         "groups": [
@@ -171,7 +171,7 @@
         "uuid": "43f2f757-5cbf-490a-9787-a1ee85a4cdcd"
     },
     {
-        "email": "mkagda@stanford.edu",
+        "email": "mkagd001@ucr.edu",
         "first_name": "Meenakshi",
         "groups": [
             "admin",
