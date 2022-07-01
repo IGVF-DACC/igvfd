@@ -3,7 +3,7 @@
 ### Minor changes since schema version 1
 
 * Expand `job_title` enum list to include:
-```
+```json
     "enum": [
         "Primary Investigator",
         "Project Manager",
