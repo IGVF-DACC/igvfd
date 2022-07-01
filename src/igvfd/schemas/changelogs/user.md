@@ -2,7 +2,8 @@
 
 ### Minor changes since schema version 1
 
-* property *job_title* enum list was expanded to include:
+* Expand `job_title` enum list to include:
+```
     "enum": [
         "Primary Investigator",
         "Project Manager",
@@ -15,4 +16,5 @@
         "NHGRI staff member",
         "Other"
     ]
-* properties *submitter_comment*, *submitted_by*, *creation_timestamp*, *aliases* have been added
+```
+* Add `submitter_comment`, `submitted_by`, `creation_timestamp`, `aliases` properties
