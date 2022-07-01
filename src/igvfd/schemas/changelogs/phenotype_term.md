@@ -1,6 +1,6 @@
-## Changelog for phenotype_term.json
+## Changelog for *`phenotype_term.json`*
 
 ### Minor changes since schema version 1
 
-* properties *submitter_comment*, *submitted_by*, *creation_timestamp* have been added
-* phenotype_ontology_term.json has been renamed to phenotype_term.json
+* Rename schema `phenotype_ontology_term.json` to `phenotype_term.json`.
+* Add `submitter_comment`, `submitted_by` and `creation_timestamp`.
