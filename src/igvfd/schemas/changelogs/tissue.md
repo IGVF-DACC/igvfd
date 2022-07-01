@@ -1,4 +1,4 @@
-## Changelog for tissue.json
+## Changelog for ``tissue.json``
 
 ### Minor changes since schema version 1
 

@@ -2,8 +2,8 @@
 
 ### Minor changes since schema version 1
 
-* Rename `temperature (Celsius)` property to `temperature`.
-* Add `temperature_units` property enum list:
+* Rename `temperature (Celsius)` to `temperature`.
+* Add `temperature_units` enum list:
 ```json
     "enum": [
         "Celsius"

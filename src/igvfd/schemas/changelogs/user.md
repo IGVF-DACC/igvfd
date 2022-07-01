@@ -17,4 +17,4 @@
         "Other"
     ]
 ```
-* Add `submitter_comment`, `submitted_by`, `creation_timestamp`, `aliases` properties.
+* Add `submitter_comment`, `submitted_by`, `creation_timestamp`, `aliases`.
