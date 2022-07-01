@@ -1,4 +1,4 @@
-## Changelog for user.json
+## Changelog for ``user.json``
 
 ### Minor changes since schema version 1
 
