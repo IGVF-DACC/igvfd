@@ -4,7 +4,7 @@
 
 * Add `submitter_comment`, `submitted_by`, `creation_timestamp` and `aliases`.
 * Expand `job_title` enum list to include:
-```json
+    ```json
     "enum": [
         "Primary Investigator",
         "Project Manager",
@@ -17,4 +17,4 @@
         "NHGRI staff member",
         "Other"
     ]
-```
+    ```
