@@ -1,12 +1,10 @@
 ## Changelog for mixins.json
 
-### Changes since schema version 1
-
-* 3/24/22 Added product_id, lot_id, source mixins
-* 4/5/22 Added additional_description mixin
-* 4/7/22 Added product_id, lot_id, source mixins to a set called product_info
-* 4/27/22 Added collections
-* changed the property *date_created* into *creation_timestamp* and restricted the format to be date-time
-* 6/8/22 Added organism
-* removed mixins for aliases and submitted.  All properies for aliases and submitted have been moved under the basic_item mixin.  All schema objects that include the basic_item mixin will also have the properties previously in aliases and submitted.
-* 6/23/22 Renamed organism to taxa
+* 06/23/2022 mixin *organism* has been renamed to *taxa*
+* 06/14/2022 mixins *aliases* and *submitted* have been moved under the mixin *basic_item*
+* 06/08/2022 mixin *organism* has been added
+* 06/05/2022 mixin *date_created* has been renamed to *creation_timestamp* and its format has been restricted to date-time
+* 04/27/2022 mixin *collections* has been added
+* 04/07/2022 mixins *product_id*, *lot_id*, *source* moved under mixin *product_info*
+* 04/05/2022 mixins *additional_description* has been added
+* 03/24/2022 mixins *product_id*, *lot_id*, *source* have been added
