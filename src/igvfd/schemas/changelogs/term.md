@@ -1,4 +1,4 @@
-## Changelog for *`ontology_term.json`*
+## Changelog for *`term.json`*
 
 ### Minor changes since schema version 1
 
