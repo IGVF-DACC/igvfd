@@ -1,0 +1,186 @@
+{
+    "title": "Whole organism",
+    "$id": "/profiles/whole_organism.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submiting a whole organism sample.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "source"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "sample.json#/properties"
+        },
+        {
+            "$ref": "biosample.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/references"
+        },
+        {
+            "$ref": "mixins.json#/taxa"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "sample.json#/dependentSchemas"
+        ],
+        "taxa": {
+            "comment": "Since the IGVF DACC is not expecting metadata submission of human whole organism samples, the schema excludes Homo sapiens taxa.",
+            "not": {
+                "properties": {
+                    "taxa": {
+                        "const": "Homo sapiens"
+                    }
+                }
+            }
+        },
+        "age": {
+            "comment": "Biosample with a defined age requires age_units.",
+            "if": {
+                "not": {
+                    "properties": {
+                        "age": {
+                            "const": "unknown"
+                        }
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "age_units"
+                ]
+            }
+        },
+        "age_units": {
+            "comment": "Yeast biosamples cannot have age units of years or months.",
+            "required": [
+                "age"
+            ],
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "taxa": {
+                                "const": "Saccharomyces"
+                            }
+                        },
+                        "required": [
+                            "taxa"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "age_units": {
+                                "enum": [
+                                    "minute",
+                                    "hour",
+                                    "day",
+                                    "week"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        "life_stage": {
+            "comment": "Specification of life_stages relevant to the various biosample types.",
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "taxa": {
+                                "enum": [
+                                    "Mus musculus"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "taxa"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "life_stage": {
+                                "enum": [
+                                    "adult",
+                                    "postnatal",
+                                    "embryonic",
+                                    "unknown"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "taxa": {
+                                "enum": [
+                                    "Saccharomyces"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "taxa"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "life_stage": {
+                                "enum": [
+                                    "lag",
+                                    "fermentative",
+                                    "respirative",
+                                    "stationary",
+                                    "decline",
+                                    "unknown"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "description": {
+            "title": "Description",
+            "description": "A plain text description of the whole organism sample.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
+            "formInput": "textarea"
+        }
+    }
+}
