@@ -61,7 +61,8 @@
         },
         "parents": {
             "items": {
-                "linkTo": "RodentDonor"
+                "linkTo": "RodentDonor",
+                "type": "string"
             }
         },
         "strain_background": {

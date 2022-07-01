@@ -141,3 +141,12 @@ def test_human_traits(human_donor, phenotype_term_myocardial_infarction, testapp
             [phenotype_term_myocardial_infarction['@id']]
          })
     assert res.status_code == 200  # confirming existing phenotype term allowed
+
+
+def test_patch_parents(human_donor, parent_human_donor_1, testapp):
+    res = testapp.patch_json(
+        human_donor['@id'],
+        {'parents': [
+            parent_human_donor_1['@id']
+        ]})
+    assert res.status_code == 200

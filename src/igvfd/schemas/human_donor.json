@@ -48,7 +48,8 @@
         },
         "parents": {
             "items": {
-                "linkTo": "HumanDonor"
+                "linkTo": "HumanDonor",
+                "type": "string"
             }
         },
         "health_status_history": {
