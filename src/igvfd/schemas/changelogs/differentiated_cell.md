@@ -1,6 +1,6 @@
 ## Changelog for differentiated_cell.json
 
-### Minor changes since version 1
+### Minor changes since schema version 1
 
 * in_vitro.json has been renamed to differentiated_cell.json
 * properties *differentiated_from* and *differentiation_treatments* have been added

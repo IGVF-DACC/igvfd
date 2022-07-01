@@ -1,5 +1,5 @@
 ## Changelog for access_key.json
 
-### Minor changes since version 1
+### Minor changes since schema version 1
 
 * properties *submitter_comment*, *submitted_by*, *creation_timestamp*, *aliases* have been added

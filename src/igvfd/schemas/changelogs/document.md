@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 1
 
-* *document_type* property enum list was expanded to include:
+* property *document_type* enum list was expanded to include:
     "enum": [
         "characterization",
         "computational protocol",
@@ -12,16 +12,5 @@
         "plasmid map",
         "standards"
     ]
-* *characterization_method* property was added:
-    "enum": [
-        "FACS",
-        "immunoblot",
-        "immunofluorescence",
-        "immunoprecipitation",
-        "mass spectrometry",
-        "PCR",
-        "restriction digest",
-        "RT-qPCR",
-        "sequencing"
-    ]
-* document has aliases mixin and submitted mixin removed, but still has properties for aliases and submitted due to change of basic_item mixin.  The actual properties have not changed.
+* enum *general protocol* has been removed from *document_type* property
+* property *characterization_method* has been added
