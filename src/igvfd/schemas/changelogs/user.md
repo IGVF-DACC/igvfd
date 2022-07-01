@@ -1,4 +1,4 @@
-## Changelog for ``user.json``
+## Changelog for *`user.json`*
 
 ### Minor changes since schema version 1
 
@@ -17,4 +17,4 @@
         "Other"
     ]
 ```
-* Add `submitter_comment`, `submitted_by`, `creation_timestamp`, `aliases`.
+* Add `submitter_comment`, `submitted_by`, `creation_timestamp` and `aliases`.
