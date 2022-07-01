@@ -1,5 +1,5 @@
-## Changelog for lab.json
+## Changelog for *`lab.json`*
 
 ### Minor changes since schema version 1
 
-* properties *submitter_comment*, *submitted_by*, *creation_timestamp*, *aliases* have been added
+* Add `submitter_comment`, `submitted_by`, `creation_timestamp` and `aliases`.
