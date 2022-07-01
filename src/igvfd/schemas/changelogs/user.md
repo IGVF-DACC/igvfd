@@ -1,6 +1,7 @@
 ## Changelog for user.json
 
-### Schema Version 1
+### Minor changes since schema version 1
+
 * Schema code forked from ENCODEd version 9 user schema.
 * *job_title* property now has an enum list:
     "enum": [
