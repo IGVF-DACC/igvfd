@@ -2,8 +2,7 @@
 
 ### Minor changes since schema version 1
 
-* Schema code forked from ENCODEd version 9 user schema.
-* *job_title* property now has an enum list:
+* property *job_title* enum list was expanded to include:
     "enum": [
         "Primary Investigator",
         "Project Manager",
@@ -16,4 +15,4 @@
         "NHGRI staff member",
         "Other"
     ]
-* user is unchanged, but will have gained properties for aliases and submitted due to change of basic_item mixin.
+* properties *submitter_comment*, *submitted_by*, *creation_timestamp*, *aliases* have been added
