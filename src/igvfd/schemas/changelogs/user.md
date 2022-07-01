@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 1
 
+* Add `submitter_comment`, `submitted_by`, `creation_timestamp` and `aliases`.
 * Expand `job_title` enum list to include:
 ```json
     "enum": [
@@ -17,4 +18,3 @@
         "Other"
     ]
 ```
-* Add `submitter_comment`, `submitted_by`, `creation_timestamp` and `aliases`.
