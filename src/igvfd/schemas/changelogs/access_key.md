@@ -2,4 +2,4 @@
 
 ### Minor changes since version 1
 
-* *submitter_comment*, *submitted_by*, *creation_timestamp*, *aliases* properties have been added
+* properties *submitter_comment*, *submitted_by*, *creation_timestamp*, *aliases* have been added

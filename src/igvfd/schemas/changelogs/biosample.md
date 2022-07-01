@@ -2,6 +2,6 @@
 
 ### Minor changes since version 1
 
-* Replaced related_biosamples and related_biosamples_relationship with pooled_from and part_of
-* organism property renamed to taxa
-* date_obtained property moved from Biosample schema to Sample schema. It is introduced in the Biosample schema through mixinProperties
+* properties *related_biosamples* and *related_biosamples_relationship* have been removed
+* properties *pooled_from* and *part_of* have been added
+* property *organism* has been renamed to *taxa*

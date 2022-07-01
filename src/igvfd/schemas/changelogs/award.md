@@ -1,6 +1,6 @@
 ## Changelog for award.json
 
-### Changes since schema version 1
+### Minor changes since version 1
 
-* Changed the property *start_date* and *end_date* to accept only date format
-* award is unchanged, but will have gained properties for aliases and submitted due to change of basic_item mixin.
+* properties *start_date* and *end_date* has been updated to accept only date format
+* properties *submitter_comment*, *submitted_by*, *creation_timestamp* have been added
