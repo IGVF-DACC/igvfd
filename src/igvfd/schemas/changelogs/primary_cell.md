@@ -3,4 +3,4 @@
 ### Minor changes since schema version 1
 
 * Rename `organism` to `taxa`.
-* Convert `sex`  to be calculated and not submittable.
+* Convert `sex` to be calculated and not submittable.
