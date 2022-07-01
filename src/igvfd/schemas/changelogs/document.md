@@ -1,8 +1,14 @@
-## Changelog for document.json
+## Changelog for *`document.json`*
 
 ### Minor changes since schema version 1
 
-* property *document_type* enum list was expanded to include:
+* Add `characterization_method`.
+* Remove from `document_type` enums:
+    ```json
+    "general protocol"
+    ```
+* Expand `document_type` enum list to include:
+    ```json
     "enum": [
         "characterization",
         "computational protocol",
@@ -12,5 +18,4 @@
         "plasmid map",
         "standards"
     ]
-* enum *general protocol* has been removed from *document_type* property
-* property *characterization_method* has been added
+    ```

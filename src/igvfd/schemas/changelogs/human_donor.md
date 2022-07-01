@@ -6,7 +6,7 @@
 * Rename `organism` to `taxa`.
 * Require `sex`, set default to:
     ```json
-    unspecified
+    "unspecified"
     ```
 * Rename `taxon_id` to `organism`.
 * Restrict `taxon_id` to NCBI taxonomy ids that start with NCBI:txid followed by numbers.
