@@ -1,4 +1,4 @@
-## Changelog for access_key.json
+## Changelog for *`access_key.json`*
 
 ### Minor changes since schema version 1
 
