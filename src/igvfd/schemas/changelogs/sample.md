@@ -1,5 +1,5 @@
-## Changelog for biosample.json
+## Changelog for *`sample.json`*
 
-### Minor changes since version 1
+### Minor changes since schema version 1
 
-* date_obtained property moved from Biosample schema to Sample schema. It is introduced in the Biosample and Technical sample schemas through mixinProperties
+* Add `date_obtained`.

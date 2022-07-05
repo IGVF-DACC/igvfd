@@ -1,5 +1,6 @@
-## Changelog for phenotype_term.json
+## Changelog for *`phenotype_term.json`*
 
-### Changes since schema version 1
+### Minor changes since schema version 1
 
-* this file has been renamed for change of phenotype_ontology_term to phenotype_term.
+* Rename schema `phenotype_ontology_term.json` to `phenotype_term.json`.
+* Add `submitter_comment`, `submitted_by` and `creation_timestamp`.

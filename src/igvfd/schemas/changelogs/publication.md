@@ -1,1 +1,1 @@
-## Changelog for publication.json
+## Changelog for *`publication.json`*

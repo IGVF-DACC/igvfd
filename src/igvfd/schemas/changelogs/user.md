@@ -1,8 +1,10 @@
-## Changelog for user.json
+## Changelog for *`user.json`*
 
-### Schema Version 1
-* Schema code forked from ENCODEd version 9 user schema.
-* *job_title* property now has an enum list:
+### Minor changes since schema version 1
+
+* Add `submitter_comment`, `submitted_by`, `creation_timestamp` and `aliases`.
+* Expand `job_title` enum list to include:
+    ```json
     "enum": [
         "Primary Investigator",
         "Project Manager",
@@ -15,4 +17,4 @@
         "NHGRI staff member",
         "Other"
     ]
-* user is unchanged, but will have gained properties for aliases and submitted due to change of basic_item mixin.
+    ```

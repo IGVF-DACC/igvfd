@@ -1,1 +1,1 @@
-## Changelog for whole_organism.json
+## Changelog for *`whole_organism.json`*

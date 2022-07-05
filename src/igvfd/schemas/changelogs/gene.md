@@ -1,6 +1,6 @@
-## Changelog for gene.json
+## Changelog for *`gene.json`*
 
-### Changes since schema version 1
+### Minor changes since schema version 1
 
-* gene is unchanged, but will have gained properties for aliases and submitted due to change of basic_item mixin.
-* organism property renamed to taxa
+* Add `submitter_comment`, `submitted_by`, `creation_timestamp` and `aliases`.
+* Rename `organism` to `taxa`.

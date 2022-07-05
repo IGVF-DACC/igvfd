@@ -1,6 +1,6 @@
-## Changelog for sample_ontology_term.json
+## Changelog for *`sample_term.json`*
 
-### Changes since schema version 1
+### Minor changes since schema version 1
 
-* sample_ontology_term has aliases mixin removed, but will have gained properties for aliases and submitted due to change of basic_item mixin.
-* this file has been renamed for change of sample_ontology_term to sample_term.
+* Rename schema `sample_ontology_term.json` to `sample_term.json`.
+* Add `submitter_comment`, `submitted_by` and `creation_timestamp`.

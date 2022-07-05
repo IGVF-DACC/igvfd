@@ -1,5 +1,5 @@
-## Changelog for lab.json
+## Changelog for *`lab.json`*
 
-### Changes since schema version 1
+### Minor changes since schema version 1
 
-* lab is unchanged, but will have gained properties for aliases and submitted due to change of basic_item mixin.
+* Add `submitter_comment`, `submitted_by`, `creation_timestamp` and `aliases`.

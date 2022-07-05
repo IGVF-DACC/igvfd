@@ -1,8 +1,6 @@
-## Changelog for primary_cell.json
+## Changelog for *`primary_cell.json'*
 
-### Minor changes since version 1
+### Minor changes since schema version 1
 
-* Converted the submittable property *sex* into calculated
-* primary_cell has aliases mixin and submitted mixin removed, but still has properties for aliases and submitted due to change of basic_item mixin.
-* The actual properties have not changed.
-* organism property renamed to taxa
+* Rename `organism` to `taxa`.
+* Convert `sex` to be calculated and not submittable.

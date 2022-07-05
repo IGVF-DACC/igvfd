@@ -1,5 +1,5 @@
-## Changelog for access_key.json
+## Changelog for *`access_key.json`*
 
-### Changes since schema version 1
+### Minor changes since schema version 1
 
-* access_key is unchanged, but will have gained properties for aliases and submitted due to change of basic_item mixin.
+* Add `submitter_comment`, `submitted_by`, `creation_timestamp` and `aliases`.

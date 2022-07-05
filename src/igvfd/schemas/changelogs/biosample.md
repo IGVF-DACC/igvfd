@@ -1,7 +1,7 @@
-## Changelog for biosample.json
+## Changelog for *`biosample.json`*
 
-### Minor changes since version 1
+### Minor changes since schema version 1
 
-* Replaced related_biosamples and related_biosamples_relationship with pooled_from and part_of
-* organism property renamed to taxa
-* date_obtained property moved from Biosample schema to Sample schema. It is introduced in the Biosample schema through mixinProperties
+* Rename `organism` to `taxa`.
+* Remove `related_biosamples` and `related_biosamples_relationship`.
+* Add `pooled_from` and `part_of`.

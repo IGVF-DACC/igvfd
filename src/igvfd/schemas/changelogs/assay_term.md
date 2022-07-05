@@ -1,6 +1,6 @@
-## Changelog for assay_ontology_term.json
+## Changelog for *`assay_term.json`*
 
-### Changes since schema version 1
+### Minor changes since schema version 1
 
-* assay_ontology_term has aliases mixin removed, but will have gained properties for aliases and submitted due to change of basic_item mixin.
-* this file has been renamed for change of assay_ontology_term to assay_term.
+* Rename schema `assay_ontology_term.json` to `assay_term.json`.
+* Add `submitter_comment`, `submitted_by` and `creation_timestamp`.
