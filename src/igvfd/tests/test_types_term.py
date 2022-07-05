@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_ontology_term_unique_keys(
+def test_term_unique_keys(
     assay_term_starr,
     assay_term_chip,
     phenotype_term_alzheimers,
@@ -30,3 +30,12 @@ def test_ontology_term_unique_keys(
         {'term_id': 'UBERON:0002370'},
         expect_errors=False)
     assert res.status_code == 200
+
+
+def test_term_ancestors(
+    sample_term_K562,
+    testapp
+):
+    res = testapp.get(sample_term_K562['@id'])
+    assert 'ancestors' in res.json
+    assert len(res.json.get('ancestors')) > 1

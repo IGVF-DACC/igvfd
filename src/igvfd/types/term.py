@@ -59,6 +59,17 @@ class Term(Item):
     def synonyms(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'synonyms')
 
+    @calculated_property(condition='term_id', schema={
+        'title': 'Ancestors',
+        'description': 'List of term names of ontological terms that precede the given term in the ontological tree. These ancestor terms are typically more general ontological terms under which the term is classified.',
+        'type': 'array',
+        'items': {
+            'type': 'string',
+        },
+    })
+    def ancestors(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'ancestors')
+
 
 @collection(
     name='sample-terms',
