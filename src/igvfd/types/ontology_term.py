@@ -11,19 +11,19 @@ from .base import (
 
 
 @abstract_collection(
-    name='terms',
+    name='ontology_terms',
     unique_key='term:name',
     properties={
         'title': 'Ontology term',
         'description': 'Ontology terms used by IGVF',
     })
-class Term(Item):
-    base_types = ['Term'] + Item.base_types
-    schema = load_schema('igvfd:schemas/term.json')
+class OntologyTerm(Item):
+    base_types = ['OntologyTerm'] + Item.base_types
+    schema = load_schema('igvfd:schemas/ontology_term.json')
 
     def unique_keys(self, properties):
-        keys = super(Term, self).unique_keys(properties)
-        keys.setdefault('term:name', []).append(self.name(properties))
+        keys = super(OntologyTerm, self).unique_keys(properties)
+        keys.setdefault('ontology_term:name', []).append(self.name(properties))
         return keys
 
     @property
@@ -78,12 +78,12 @@ class Term(Item):
         'title': 'Sample ontology term',
         'description': 'Ontology terms used by IGVF for samples',
     })
-class SampleTerm(Term):
+class SampleTerm(OntologyTerm):
     item_type = 'sample_term'
     schema = load_schema('igvfd:schemas/sample_term.json')
 
     def unique_keys(self, properties):
-        keys = super(Term, self).unique_keys(properties)
+        keys = super(OntologyTerm, self).unique_keys(properties)
         keys.setdefault('sample_term:name', []).append(self.name(properties))
         return keys
 
@@ -135,12 +135,12 @@ class SampleTerm(Term):
         'title': 'Assay ontology term',
         'description': 'Ontology terms used by IGVF for assays',
     })
-class AssayTerm(Term):
+class AssayTerm(OntologyTerm):
     item_type = 'assay_term'
     schema = load_schema('igvfd:schemas/assay_term.json')
 
     def unique_keys(self, properties):
-        keys = super(Term, self).unique_keys(properties)
+        keys = super(OntologyTerm, self).unique_keys(properties)
         keys.setdefault('assay_term:name', []).append(self.name(properties))
         return keys
 
@@ -162,11 +162,11 @@ class AssayTerm(Term):
         'title': 'Phenotype ontology term',
         'description': 'Ontology terms used by IGVF for phenotypes, such as traits or diseases.',
     })
-class PhenotypeTerm(Term):
+class PhenotypeTerm(OntologyTerm):
     item_type = 'phenotype_term'
     schema = load_schema('igvfd:schemas/phenotype_term.json')
 
     def unique_keys(self, properties):
-        keys = super(Term, self).unique_keys(properties)
+        keys = super(OntologyTerm, self).unique_keys(properties)
         keys.setdefault('phenotype_term:name', []).append(self.name(properties))
         return keys
