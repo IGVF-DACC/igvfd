@@ -1,7 +1,7 @@
 {
-    "title": "Term",
+    "title": "Ontology term",
     "description": "Schema for an ontology term.",
-    "$id": "/profiles/term.json",
+    "$id": "/profiles/ontology_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
@@ -42,5 +42,5 @@
             "type": "string"
         }
     },
-    "changelog": "/profiles/changelogs/term.md"
+    "changelog": "/profiles/changelogs/ontology_term.md"
 }
