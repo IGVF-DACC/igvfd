@@ -166,3 +166,12 @@ def test_rodent_traits(rodent_donor, phenotype_term_myocardial_infarction, pheno
             [phenotype_term_myocardial_infarction['@id'], phenotype_term_alzheimers['@id']]
          })
     assert res.status_code == 200  # confirming existing phenotype terms allowed
+
+
+def test_patch_parents(rodent_donor, parent_rodent_donor1, testapp):
+    res = testapp.patch_json(
+        rodent_donor['@id'],
+        {'parents': [
+            parent_rodent_donor1['@id']
+        ]})
+    assert res.status_code == 200
