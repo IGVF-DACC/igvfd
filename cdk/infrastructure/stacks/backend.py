@@ -38,8 +38,8 @@ class BackendStack(cdk.Stack):
                 config=config,
                 existing_resources=self.existing_resources,
                 postgres=postgres,
-                cpu=1024,
-                memory_limit_mib=2048,
+                cpu=2048,
+                memory_limit_mib=6144,
                 desired_count=1,
                 max_capacity=4,
             )
