@@ -7,9 +7,6 @@
         "aliases": [
             "j-michael-cherry:mouse_embryo"
         ],
-        "donor": [
-            "j-michael-cherry:alias_human_donor2"
-        ],
         "status": "released",
         "source": "/labs/j-michael-cherry/",
         "collections": [
@@ -29,7 +26,7 @@
         "aliases": [
             "j-michael-cherry:yeastF"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor1"
         ],
         "status": "released",
@@ -45,7 +42,7 @@
         "aliases": [
             "j-michael-cherry:yeastF2"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor_child"
         ],
         "status": "released",

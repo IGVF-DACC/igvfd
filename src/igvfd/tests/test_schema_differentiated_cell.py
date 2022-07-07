@@ -18,7 +18,7 @@ def test_differentiation_dependency(differentiated_cell, testapp):
     assert res.status_code == 200
 
 
-def test_post_differentiated_cell(testapp, award, lab, treatment_2):
+def test_post_differentiated_cell(testapp, award, lab, treatment_2, human_donor):
     res = testapp.post_json(
         '/differentiated_cell',
         {
@@ -27,7 +27,9 @@ def test_post_differentiated_cell(testapp, award, lab, treatment_2):
             'source': lab['@id'],
             'post_differentiation_time': 20,
             'post_differentiation_time_units': 'minute',
-            'treatments': [treatment_2['@id']]
+            'treatments': [treatment_2['@id']],
+            'taxa': 'Homo sapiens',
+            'donors': [human_donor['@id']]
         })
     assert res.status_code == 201
 

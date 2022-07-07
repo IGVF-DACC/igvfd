@@ -7,7 +7,7 @@
         "aliases": [
             "igvf-dacc:cell_line"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor1"
         ],
         "status": "released",
@@ -45,9 +45,6 @@
         "aliases": [
             "j-michael-cherry:treated_cell_line"
         ],
-        "donor": [
-            "j-michael-cherry:alias_human_donor1"
-        ],
         "status": "released",
         "submitter_comment": "This is s a treated cell line.",
         "notes": "This is a note.",
@@ -78,7 +75,7 @@
         "aliases": [
             "ali-mortazavi:pooled_cell_line"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor1"
         ],
         "status": "released",

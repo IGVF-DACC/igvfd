@@ -8,6 +8,6 @@ def differentiated_tissue(testapp, lab, award, source, human_donor):
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
-        'donors': human_donor['@id']
+        'donors': [human_donor['@id']]
     }
     return testapp.post_json('/differentiated_tissue', item, status=201).json['@graph'][0]

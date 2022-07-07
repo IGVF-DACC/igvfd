@@ -7,7 +7,7 @@
         "aliases": [
             "igvf:organoid"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor2"
         ],
         "status": "released",
@@ -33,7 +33,7 @@
         "aliases": [
             "igvf:gastruloid"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor1"
         ],
         "status": "released",
@@ -49,7 +49,7 @@
         "aliases": [
             "igvf:pooled_gastruloid"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor_child"
         ],
         "status": "released",

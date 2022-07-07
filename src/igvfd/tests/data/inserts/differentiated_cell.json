@@ -7,7 +7,7 @@
         "aliases": [
             "j-michael-cherry:alias5"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor2"
         ],
         "status": "released",
@@ -30,7 +30,7 @@
         "aliases": [
             "gary-hon:cardiomyocytes"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor_child"
         ],
         "status": "released",
@@ -55,8 +55,8 @@
         "aliases": [
             "gary-hon:pooled_cardiomyocytes"
         ],
-        "donor": [
-            "j-michael-cherry:alias_human_child"
+        "donors": [
+            "j-michael-cherry:alias_human_donor_child"
         ],
         "status": "released",
         "taxa": "Homo sapiens",

@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_post_differentiated_tissue(testapp, award, lab, source, treatment_1):
+def test_post_differentiated_tissue(testapp, award, lab, source, treatment_1, human_donor):
     res = testapp.post_json(
         '/differentiated_tissue',
         {
@@ -10,7 +10,9 @@ def test_post_differentiated_tissue(testapp, award, lab, source, treatment_1):
             'source': source['@id'],
             'post_differentiation_time': 72,
             'post_differentiation_time_units': 'hour',
-            'treatments': [treatment_1['@id']]
+            'treatments': [treatment_1['@id']],
+            'taxa': 'Homo sapiens',
+            'donors': [human_donor['@id']]
         })
     assert res.status_code == 201
 

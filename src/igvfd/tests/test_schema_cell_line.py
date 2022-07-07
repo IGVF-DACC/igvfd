@@ -119,13 +119,23 @@ def test_date_format(cell_line_with_date_obtained, testapp):
     assert res.status_code == 422
 
 
-def test_taxa_donor_required(cell_line, testapp, human_donor):
-    del cell_line['taxa']
-    del cell_line['donors']
-    res1 = testapp.post_json('/cell_line', cell_line, expect_errors=True)
-    assert res1.status_code == 422
-    res2 = cell_line.patch_json(
-        cell_line['@id'],
-        {'taxa': 'Homo Sapiens', 'donors': human_donor['@id']}
-    )
-    assert res2.status_code == 200
+def test_taxa_donors_requirements(testapp, award, lab, human_donor):
+    res = testapp.post_json(
+        '/cell_line',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'source': lab['@id'],
+            'taxa': 'Homo sapiens',
+            'donors': [human_donor['@id']]
+        })
+    assert res.status_code == 201
+
+    res = testapp.post_json(
+        '/cell_line',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'source': lab['@id'],
+        }, expect_errors=True)
+    assert res.status_code == 422

@@ -7,7 +7,7 @@
         "aliases": [
             "j-michael-cherry:alias3"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor2"
         ],
         "status": "in progress",
@@ -30,9 +30,6 @@
         "award": "HG012012",
         "aliases": [
             "j-michael-cherry:treated_tissue"
-        ],
-        "donor": [
-            "j-michael-cherry:alias_human_donor1"
         ],
         "status": "released",
         "taxa": "Homo sapiens",
@@ -57,7 +54,7 @@
         "aliases": [
             "j-michael-cherry:pooled_tissue"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor_child"
         ],
         "status": "released",
