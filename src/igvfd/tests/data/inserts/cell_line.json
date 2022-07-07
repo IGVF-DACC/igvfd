@@ -7,6 +7,9 @@
         "aliases": [
             "igvf-dacc:cell_line"
         ],
+        "donor": [
+            "j-michael-cherry:alias_human_donor1"
+        ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
         "documents": [
@@ -42,6 +45,9 @@
         "aliases": [
             "j-michael-cherry:treated_cell_line"
         ],
+        "donor": [
+            "j-michael-cherry:alias_human_donor1"
+        ],
         "status": "released",
         "submitter_comment": "This is s a treated cell line.",
         "notes": "This is a note.",
@@ -71,6 +77,9 @@
         "award": "HG012012",
         "aliases": [
             "ali-mortazavi:pooled_cell_line"
+        ],
+        "donor": [
+            "j-michael-cherry:alias_human_donor1"
         ],
         "status": "released",
         "taxa": "Homo sapiens",
