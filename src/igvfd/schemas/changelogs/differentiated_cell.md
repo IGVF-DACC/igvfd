@@ -6,3 +6,4 @@
 * Convert `sex` to be calculated and not submittable.
 * Add `differentiated_from` and `differentiation_treatments`.
 * Rename schema `in_vitro.json` to `differentiated_cell.json`.
+* Added `donors` and `taxa` to requirements.

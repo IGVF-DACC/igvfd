@@ -4,3 +4,4 @@
 
 * Rename `organism` to `taxa`.
 * Convert `sex` to be calculated and not submittable.
+* Added `donors` and `taxa` to requirements.
