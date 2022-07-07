@@ -1,5 +1,5 @@
 ## Changelog for *`whole_organism.json`*
 
-### Minor changes since schema version 1
+### Schema version 2
 
 * Added `donors` and `taxa` to requirements.

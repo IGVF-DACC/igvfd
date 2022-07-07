@@ -11,3 +11,12 @@ def differentiated_cell(testapp, lab, award, source, human_donor):
         'donors': [human_donor['@id']]
     }
     return testapp.post_json('/differentiated_cell', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def differentiated_cell_1(differentiated_cell):
+    item = differentiated_cell.copy()
+    item.update({
+        'schema_version': '1'
+    })
+    return item

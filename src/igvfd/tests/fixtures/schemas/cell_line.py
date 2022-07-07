@@ -24,3 +24,12 @@ def cell_line_with_date_obtained(testapp, other_lab, award, human_donor):
         'donors': [human_donor['@id']]
     }
     return testapp.post_json('/cell_line', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def cell_line_1(cell_line):
+    item = cell_line.copy()
+    item.update({
+        'schema_version': '1'
+    })
+    return item

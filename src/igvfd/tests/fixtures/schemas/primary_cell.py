@@ -35,3 +35,12 @@ def pooled_from_primary_cell_2(testapp, lab, award, source, human_donor):
         'donors': [human_donor['@id']]
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def primary_cell_1(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '1'
+    })
+    return item

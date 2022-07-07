@@ -11,3 +11,12 @@ def tissue(testapp, lab, source, award, rodent_donor):
         'donors': [rodent_donor['@id']]
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def tissue_1(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '1'
+    })
+    return item
