@@ -12,7 +12,7 @@ from .base import (
 
 @abstract_collection(
     name='ontology_terms',
-    unique_key='term:name',
+    unique_key='ontology_term:name',
     properties={
         'title': 'Ontology term',
         'description': 'Ontology terms used by IGVF',
