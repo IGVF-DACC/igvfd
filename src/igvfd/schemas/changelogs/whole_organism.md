@@ -2,4 +2,4 @@
 
 ### Schema version 2
 
-* Added `donors` and `taxa` to requirements.
+* Add `donors` and `taxa` to requirements.
