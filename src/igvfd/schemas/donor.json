@@ -57,7 +57,7 @@
             "description": "Biological parents of this donor",
             "comment": "A list of parents as it applies to the experiment.",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Parent",
@@ -85,7 +85,7 @@
             "title": "External Resources",
             "description": "A list of external resources associated with the donor.",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "uniqueItems": false,
             "items": {
                 "title": "External Resource",

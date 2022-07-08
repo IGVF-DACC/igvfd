@@ -80,7 +80,7 @@
             "title": "Differentiation treatment",
             "description": "A list of treatments applied to the biosample for the purpose of differentiation.",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Treatment",

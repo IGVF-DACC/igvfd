@@ -56,7 +56,7 @@
             "title": "Health Status History",
             "description": "Relevent health status changes in the donor",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "items": {
                 "title": "Health Status",
                 "type": "object",

@@ -1,5 +1,9 @@
 ## Changelog for *`document.json`*
 
+### Schema version 2
+
+* `urls` must include at least one item.
+
 ### Minor changes since schema version 1
 
 * Add `characterization_method`.
