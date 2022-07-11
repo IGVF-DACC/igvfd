@@ -15,7 +15,7 @@
     "additionalProperties": false,
     "mixinProperties": [
         {
-            "$ref": "term.json#/properties"
+            "$ref": "ontology_term.json#/properties"
         },
         {
             "$ref": "mixins.json#/basic_item"
