@@ -42,9 +42,15 @@ RUN python -m pip install --upgrade pip
 
 RUN pip install -e .[test]
 
-COPY --chown=igvfd:igvfd . .
+COPY --chown=igvfd:igvfd src/igvfd/schema_formats.py src/igvfd/schema_formats.py
+
+COPY --chown=igvfd:igvfd src/igvfd/ontology.py src/igvfd/ontology.py
+
+COPY --chown=igvfd:igvfd src/igvfd/commands/make_reference_db.py src/igvfd/commands/make_reference_db.py
 
 RUN make-reference-db
+
+COPY --chown=igvfd:igvfd . .
 
 EXPOSE 6543
 

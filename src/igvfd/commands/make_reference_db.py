@@ -1,12 +1,6 @@
-import logging
-
 from igvfd.ontology import load_ontology
 from igvfd.ontology import write_data_to_reference_database
 from igvfd.ontology import REFERENCE_ONTOLOGY_TABLE_NAME
-
-
-logging.basicConfig()
-logging.getLogger('igvfd').setLevel(logging.INFO)
 
 
 def main():
