@@ -1,15 +1,26 @@
 import gzip
 import json
+import pickle
+import sqlite3
+import zlib
 
 from pathlib import Path
+
+from sqlitedict import SqliteDict
+
+
+ONTOLOGY_FILE_NAME = 'ontology.json.gz'
+
+REFERENCE_DATABASE_FILE_NAME = '/srv/sqlite/reference.sqlite'
+
+REFERENCE_ONTOLOGY_TABLE_NAME = 'ontology'
 
 
 def includeme(config):
     config.scan(__name__)
-    config.registry['ontology'] = load_ontology()
-
-
-ONTOLOGY_FILE_NAME = 'ontology.json.gz'
+    config.registry['ontology'] = get_connection_to_reference_database(
+        REFERENCE_ONTOLOGY_TABLE_NAME
+    )
 
 
 def load_local_gz_json(path):
@@ -31,3 +42,59 @@ def ontology_or_empty_dict(path):
 def load_ontology():
     path = get_ontology_gz_json_path()
     return ontology_or_empty_dict(path)
+
+
+def item_encode(item):
+    return sqlite3.Binary(
+        zlib.compress(
+            pickle.dumps(
+                item,
+                pickle.HIGHEST_PROTOCOL
+            )
+        )
+    )
+
+
+def item_decode(item):
+    return pickle.loads(
+        zlib.decompress(
+            bytes(
+                item
+            )
+        )
+    )
+
+
+def write_data_to_reference_database(
+        data,
+        tablename,
+        encode=item_encode,
+        decode=item_decode,
+        flag='w'
+):
+    with SqliteDict(
+            filename=REFERENCE_DATABASE_FILE_NAME,
+            tablename=tablename,
+            encode=encode,
+            decode=decode,
+            flag=flag,
+            outer_stack=False,
+    ) as db:
+        db.update(data)
+        db.commit()
+
+
+def get_connection_to_reference_database(
+        tablename,
+        encode=item_encode,
+        decode=item_decode,
+        flag='r'
+):
+    return SqliteDict(
+        filename=REFERENCE_DATABASE_FILE_NAME,
+        tablename=tablename,
+        encode=encode,
+        decode=decode,
+        flag=flag,
+        outer_stack=False,
+    )

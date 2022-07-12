@@ -6,6 +6,8 @@ ENV PYTHONUNBUFFERED 1
 
 ENV VIRTUAL_ENV=/opt/venv
 
+ENV REFERENCE_DATABASE=/srv/sqlite
+
 RUN useradd -u 1444 -m igvfd
 
 RUN apt-get update
@@ -17,6 +19,10 @@ RUN python -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN chown -R igvfd:igvfd $VIRTUAL_ENV
+
+RUN mkdir -p $REFERENCE_DATABASE
+
+RUN chown -R igvfd:igvfd $REFERENCE_DATABASE
 
 WORKDIR /scripts
 
@@ -37,6 +43,8 @@ RUN python -m pip install --upgrade pip
 RUN pip install -e .[test]
 
 COPY --chown=igvfd:igvfd . .
+
+RUN make-reference-db
 
 EXPOSE 6543
 
