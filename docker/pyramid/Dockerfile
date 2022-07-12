@@ -46,6 +46,8 @@ COPY --chown=igvfd:igvfd src/igvfd/schema_formats.py src/igvfd/schema_formats.py
 
 COPY --chown=igvfd:igvfd src/igvfd/ontology.py src/igvfd/ontology.py
 
+COPY --chown=igvfd:igvfd assets/ontology.json.gz assets/ontology.json.gz
+
 COPY --chown=igvfd:igvfd src/igvfd/commands/make_reference_db.py src/igvfd/commands/make_reference_db.py
 
 RUN make-reference-db
