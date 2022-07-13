@@ -16,7 +16,7 @@ RUN wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key ad
 
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" >> /etc/apt/sources.list.d/pgdg.list
 
-RUN apt-get update && apt-get install -y make gcc git curl graphviz libpq-dev zlib1g-dev libjpeg-dev postgresql postgresql-contrib
+RUN apt-get update && apt-get install -y make gcc git curl graphviz libpq-dev zlib1g-dev libjpeg-dev postgresql-11
 
 RUN python -m venv $VIRTUAL_ENV
 
