@@ -1,4 +1,4 @@
-FROM python:3.9.9-buster
+FROM python:3.9.9-slim-buster
 
 ENV PYTHONDONTWRITEBYTECODE 1
 
@@ -10,9 +10,13 @@ ENV REFERENCE_DATABASE_DIRECTORY=/srv/sqlite
 
 RUN useradd -u 1444 -m igvfd
 
-RUN apt-get update
+RUN apt-get update && apt-get install -y wget gnupg
 
-RUN apt-get install -y make git curl graphviz
+RUN wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add -
+
+RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" >> /etc/apt/sources.list.d/pgdg.list
+
+RUN apt-get update && apt-get install -y make gcc git curl graphviz libpq-dev zlib1g-dev libjpeg-dev postgresql postgresql-contrib
 
 RUN python -m venv $VIRTUAL_ENV
 
