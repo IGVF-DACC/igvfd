@@ -7,6 +7,9 @@
         "aliases": [
             "j-michael-cherry:alias5"
         ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor2"
+        ],
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
@@ -26,6 +29,9 @@
         "award": "1UM1HG011996-01",
         "aliases": [
             "gary-hon:cardiomyocytes"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor_child"
         ],
         "status": "released",
         "taxa": "Homo sapiens",
@@ -48,6 +54,9 @@
         "award": "1UM1HG011996-01",
         "aliases": [
             "gary-hon:pooled_cardiomyocytes"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor_child"
         ],
         "status": "released",
         "taxa": "Homo sapiens",

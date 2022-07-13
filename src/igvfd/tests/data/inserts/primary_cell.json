@@ -12,6 +12,9 @@
         "documents": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
         ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor2"
+        ],
         "notes": "This is a note.",
         "product_id": "CL000001",
         "lot_id": "R56701",
@@ -72,6 +75,9 @@
         "award": "HG012012",
         "aliases": [
             "j-michael-cherry:pooled_primary_cell"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor_child"
         ],
         "status": "released",
         "taxa": "Homo sapiens",

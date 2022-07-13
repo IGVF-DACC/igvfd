@@ -7,7 +7,9 @@
     "required": [
         "award",
         "lab",
-        "source"
+        "source",
+        "donors",
+        "taxa"
     ],
     "identifyingProperties": [
         "uuid",
@@ -173,7 +175,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "description": {
             "title": "Description",

@@ -229,6 +229,8 @@ def main(global_config, **local_config):
     config.include(static_resources)
     config.include(changelogs)
 
+    config.include('.upgrade')
+
     if asbool(settings.get('testing', False)):
         config.include('.tests.testing_views')
 

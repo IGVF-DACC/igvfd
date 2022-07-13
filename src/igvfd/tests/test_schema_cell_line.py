@@ -117,3 +117,25 @@ def test_date_format(cell_line_with_date_obtained, testapp):
         cell_line_with_date_obtained['@id'],
         {'date_obtained': '2022-05-10T22:09:05.876084+00:00'}, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_taxa_donors_requirements(testapp, award, lab, human_donor):
+    res = testapp.post_json(
+        '/cell_line',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'source': lab['@id'],
+            'taxa': 'Homo sapiens',
+            'donors': [human_donor['@id']]
+        })
+    assert res.status_code == 201
+
+    res = testapp.post_json(
+        '/cell_line',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'source': lab['@id'],
+        }, expect_errors=True)
+    assert res.status_code == 422

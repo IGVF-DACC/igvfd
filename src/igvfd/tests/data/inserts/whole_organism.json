@@ -26,6 +26,9 @@
         "aliases": [
             "j-michael-cherry:yeastF"
         ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor1"
+        ],
         "status": "released",
         "source": "/labs/j-michael-cherry/",
         "description": "frozen yeast sample",
@@ -38,6 +41,9 @@
         "award": "HG012012",
         "aliases": [
             "j-michael-cherry:yeastF2"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor_child"
         ],
         "status": "released",
         "source": "/labs/j-michael-cherry/",

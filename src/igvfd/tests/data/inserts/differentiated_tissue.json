@@ -7,6 +7,9 @@
         "aliases": [
             "igvf:organoid"
         ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor2"
+        ],
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
@@ -30,6 +33,9 @@
         "aliases": [
             "igvf:gastruloid"
         ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor1"
+        ],
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/jay-shendure/",
@@ -42,6 +48,9 @@
         "award": "1UM1HG011966-01",
         "aliases": [
             "igvf:pooled_gastruloid"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor_child"
         ],
         "status": "released",
         "taxa": "Homo sapiens",
