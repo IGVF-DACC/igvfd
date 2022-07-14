@@ -44,23 +44,33 @@ def load_ontology():
     return ontology_or_empty_dict(path)
 
 
-def item_encode(item):
-    return sqlite3.Binary(
-        zlib.compress(
-            pickle.dumps(
-                item,
-                pickle.HIGHEST_PROTOCOL
-            )
+def item_compress(item):
+    return zlib.compress(
+        pickle.dumps(
+            item,
+            pickle.HIGHEST_PROTOCOL
         )
     )
 
 
-def item_decode(item):
+def item_decompress(item):
     return pickle.loads(
         zlib.decompress(
-            bytes(
-                item
-            )
+            item
+        )
+    )
+
+
+def item_encode(item):
+    return sqlite3.Binary(
+        item_compress(item)
+    )
+
+
+def item_decode(item):
+    return item_decompress(
+        bytes(
+            item
         )
     )
 
@@ -70,10 +80,11 @@ def write_data_to_reference_database(
         tablename,
         encode=item_encode,
         decode=item_decode,
-        flag='w'
+        flag='w',
+        filename=REFERENCE_DATABASE_FILE_NAME,
 ):
     with SqliteDict(
-            filename=REFERENCE_DATABASE_FILE_NAME,
+            filename=filename,
             tablename=tablename,
             encode=encode,
             decode=decode,
@@ -88,10 +99,11 @@ def get_connection_to_reference_database(
         tablename,
         encode=item_encode,
         decode=item_decode,
-        flag='r'
+        flag='r',
+        filename=REFERENCE_DATABASE_FILE_NAME,
 ):
     return SqliteDict(
-        filename=REFERENCE_DATABASE_FILE_NAME,
+        filename=filename,
         tablename=tablename,
         encode=encode,
         decode=decode,
