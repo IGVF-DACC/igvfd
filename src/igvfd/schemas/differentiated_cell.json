@@ -95,6 +95,10 @@
             "type": "string",
             "linkTo": "Biosample"
         },
+        "part_of": {
+            "linkTo": "DifferentiatedCell",
+            "type": "string"
+        },
         "pooled_from": {
             "items": {
                 "linkTo": "DifferentiatedCell",

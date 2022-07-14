@@ -33,3 +33,9 @@ def cell_line_1(cell_line):
         'schema_version': '1'
     })
     return item
+
+
+@pytest.fixture
+def cell_line_part_of(cell_line):
+    item = cell_line.copy()
+    return item

@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Minor changes since schema version 2
+
+* `part_of` property restricted to be linked only to `tissue` and `whole organism`.
+
 ### Schema version 2
 
 * Add `donors` and `taxa` to requirements.

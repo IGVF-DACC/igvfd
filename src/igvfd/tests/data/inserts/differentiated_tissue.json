@@ -59,5 +59,32 @@
             "/differentiated-tissues/a79ffa29-4bdf-4283-9494-1017e5d13f8b/",
             "/differentiated-tissues/4ce1b687-62f9-4d92-a69e-b4820d1efc9d/"
         ]
+    },
+    {
+        "uuid": "4d93cbfc-0300-11ed-b939-0242ac120002",
+        "accession": "IGVFSM003BBB",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:part_of_organoid"
+        ],
+        "status": "released",
+        "taxa": "Homo sapiens",
+        "source": "/labs/j-michael-cherry/",
+        "part_of": "IGVFSM000BBB",
+        "donors": [
+            "j-michael-cherry:alias_human_donor2"
+        ],
+        "post_differentiation_time": 5,
+        "post_differentiation_time_units": "day",
+        "treatments": [
+            "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
+        ],
+        "differentiation_treatments": [
+            "bd2cb34e-c72c-11ec-9d64-0242ac120002"
+        ],
+        "age": "89",
+        "age_units": "year",
+        "differentiated_from": "/cell-lines/467c72a2-4f84-2c8f-96b0-ec8715e18185/"
     }
 ]

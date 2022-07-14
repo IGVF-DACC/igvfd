@@ -43,8 +43,7 @@
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
         "age": "30",
-        "age_units": "week",
-        "part_of": "/differentiated-tissues/a79ffa29-4bdf-4283-9494-1017e5d13f8b/"
+        "age_units": "week"
     },
     {
         "uuid": "e3a862a7-5b37-4b21-8f0f-f1fd170460a7",
@@ -64,5 +63,50 @@
             "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/",
             "/tissues/984a5f8e-c751-11ec-9d64-0242ac120002/"
         ]
+    },
+    {
+        "uuid": "fd5524f2-0303-11ed-b939-0242ac120002",
+        "accession": "IGVFSM003DDD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:tissue_part_of_tissue"
+        ],
+        "status": "released",
+        "taxa": "Homo sapiens",
+        "part_of": "IGVFSM000DDD",
+        "source": "/labs/j-michael-cherry/",
+        "nih_institutional_certification": "NICHD1442",
+        "pmi": 2,
+        "pmi_units": "week",
+        "preservation_method": "cryopreservation",
+        "collections": [
+            "ENCODE"
+        ],
+        "donors": [
+            "05c0a52c-f861-4057-b3eb-751624bdff37"
+        ],
+        "age": "30",
+        "age_units": "month"
+    },
+    {
+        "uuid": "8183c760-0304-11ed-b939-0242ac120002",
+        "accession": "IGVFSM004DDD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:tissue_part_of_whole_organism"
+        ],
+        "status": "released",
+        "taxa": "Mus musculus",
+        "part_of": "IGVFSM000KAS",
+        "source": "/labs/j-michael-cherry/",
+        "nih_institutional_certification": "NICHD1442",
+        "preservation_method": "cryopreservation",
+        "donors": [
+            "05c0a52c-f861-4057-b3eb-751624bdff37"
+        ],
+        "age": "18",
+        "age_units": "day"
     }
 ]

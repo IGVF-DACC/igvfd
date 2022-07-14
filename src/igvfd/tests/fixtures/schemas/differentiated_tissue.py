@@ -20,3 +20,9 @@ def differentiated_tissue_1(differentiated_tissue):
         'schema_version': '1'
     })
     return item
+
+
+@pytest.fixture
+def differentiated_tissue_part_of(differentiated_tissue):
+    item = differentiated_tissue.copy()
+    return item

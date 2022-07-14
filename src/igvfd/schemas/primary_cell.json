@@ -66,6 +66,14 @@
         "date_obtained": {
             "title": "Date harvested"
         },
+        "part_of": {
+            "linkTo": [
+                "PrimaryCell",
+                "Tissue",
+                "WholeOrganism"
+            ],
+            "type": "string"
+        },
         "pooled_from": {
             "items": {
                 "linkTo": "PrimaryCell",

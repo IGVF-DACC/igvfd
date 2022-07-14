@@ -20,3 +20,9 @@ def differentiated_cell_1(differentiated_cell):
         'schema_version': '1'
     })
     return item
+
+
+@pytest.fixture
+def differentiated_cell_part_of(differentiated_cell):
+    item = differentiated_cell.copy()
+    return item

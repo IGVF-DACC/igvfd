@@ -20,3 +20,12 @@ def tissue_1(tissue):
         'schema_version': '1'
     })
     return item
+
+
+@pytest.fixture
+def tissue_part_of(tissue):
+    item = tissue.copy()
+    item.update({
+        'aliases': 'igvf-dacc:tissue_part_of'
+    })
+    return item

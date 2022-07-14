@@ -89,6 +89,13 @@
         "date_obtained": {
             "title": "Date harvested"
         },
+        "part_of": {
+            "linkTo": [
+                "Tissue",
+                "WholeOrganism"
+            ],
+            "type": "string"
+        },
         "pooled_from": {
             "items": {
                 "linkTo": "Tissue",
