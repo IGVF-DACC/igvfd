@@ -63,7 +63,9 @@ def item_decompress(item):
 
 def item_encode(item):
     return sqlite3.Binary(
-        item_compress(item)
+        item_compress(
+            item
+        )
     )
 
 
