@@ -23,6 +23,15 @@ def tissue_1(tissue):
 
 
 @pytest.fixture
+def tissue_2(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '2'
+    })
+    return item
+
+
+@pytest.fixture
 def tissue_part_of(tissue):
     item = tissue.copy()
     item.update({

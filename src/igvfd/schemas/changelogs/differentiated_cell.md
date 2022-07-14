@@ -2,7 +2,7 @@
 
 ### Schema version 3
 
-* `part_of` property restricted to be linked only to `differentiated_cell`.
+* Restrict `part_of` property to link only to `differentiated_cell`.
 
 ### Schema version 2
 

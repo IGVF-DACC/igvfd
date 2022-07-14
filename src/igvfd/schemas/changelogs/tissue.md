@@ -2,7 +2,7 @@
 
 ### Schema version 3
 
-* `part_of` property restricted to be linked only to `tissue` and `whole organism`.
+* Restrict `part_of` property to link only to `tissue` and `whole organism`.
 
 ### Schema version 2
 

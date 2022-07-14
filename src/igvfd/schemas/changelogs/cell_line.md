@@ -2,7 +2,7 @@
 
 ### Schema version 3
 
-* `part_of` property restricted to be linked only to `cell_line`.
+* Restrict `part_of` property to link only to `cell_line`.
 
 ### Schema version 2
 

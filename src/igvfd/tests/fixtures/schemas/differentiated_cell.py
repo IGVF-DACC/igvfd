@@ -23,6 +23,15 @@ def differentiated_cell_1(differentiated_cell):
 
 
 @pytest.fixture
+def differentiated_cell_2(differentiated_cell):
+    item = differentiated_cell.copy()
+    item.update({
+        'schema_version': '2'
+    })
+    return item
+
+
+@pytest.fixture
 def differentiated_cell_part_of(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({

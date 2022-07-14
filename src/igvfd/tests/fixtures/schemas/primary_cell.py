@@ -47,6 +47,15 @@ def primary_cell_1(primary_cell):
 
 
 @pytest.fixture
+def primary_cell_2(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '2'
+    })
+    return item
+
+
+@pytest.fixture
 def primary_cell_part_of(primary_cell):
     item = primary_cell.copy()
     item.update({

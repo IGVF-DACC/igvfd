@@ -23,6 +23,15 @@ def differentiated_tissue_1(differentiated_tissue):
 
 
 @pytest.fixture
+def differentiated_tissue_2(differentiated_tissue):
+    item = differentiated_tissue.copy()
+    item.update({
+        'schema_version': '2'
+    })
+    return item
+
+
+@pytest.fixture
 def differentiated_tissue_part_of(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
