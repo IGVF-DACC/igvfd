@@ -6,3 +6,9 @@
 .pre-commit-config.yaml
 *.egg-info/
 cdk
+**/__pycache__
+**/*.pyc
+**/.mypy_cache
+**/.pytest_cache
+**/.DS_Store
+**/*.egg-info
