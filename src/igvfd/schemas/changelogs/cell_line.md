@@ -1,6 +1,6 @@
 ## Changelog for *`cell_line.json`*
 
-### Minor changes since schema version 2
+### Schema version 3
 
 * `part_of` property restricted to be linked only to `cell_line`.
 

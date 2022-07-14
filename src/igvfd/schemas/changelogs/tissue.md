@@ -1,6 +1,6 @@
 ## Changelog for *`tissue.json`*
 
-### Minor changes since schema version 2
+### Schema version 3
 
 * `part_of` property restricted to be linked only to `tissue` and `whole organism`.
 

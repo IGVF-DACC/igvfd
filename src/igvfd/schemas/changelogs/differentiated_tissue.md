@@ -1,6 +1,6 @@
 ## Changelog for *`differentiated_tissue.json`*
 
-### Minor changes since schema version 2
+### Schema version 3
 
 * `part_of` property restricted to be linked only to `differentiated_tissue`.
 
