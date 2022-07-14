@@ -25,4 +25,7 @@ def differentiated_cell_1(differentiated_cell):
 @pytest.fixture
 def differentiated_cell_part_of(differentiated_cell):
     item = differentiated_cell.copy()
+    item.update({
+        'aliases': 'igvf-dacc:differentiated_cell_part_of'
+    })
     return item

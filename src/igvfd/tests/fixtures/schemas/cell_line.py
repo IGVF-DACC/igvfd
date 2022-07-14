@@ -38,4 +38,7 @@ def cell_line_1(cell_line):
 @pytest.fixture
 def cell_line_part_of(cell_line):
     item = cell_line.copy()
+    item.update({
+        'aliases': 'igvf-dacc:cell_line_part_of'
+    })
     return item
