@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED 1
 
 ENV VIRTUAL_ENV=/opt/venv
 
-ENV REFERENCE_DATABASE=/srv/sqlite
+ENV REFERENCE_DATABASE_DIRECTORY=/srv/sqlite
 
 RUN useradd -u 1444 -m igvfd
 
@@ -20,9 +20,9 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN chown -R igvfd:igvfd $VIRTUAL_ENV
 
-RUN mkdir -p $REFERENCE_DATABASE
+RUN mkdir -p $REFERENCE_DATABASE_DIRECTORY
 
-RUN chown -R igvfd:igvfd $REFERENCE_DATABASE
+RUN chown -R igvfd:igvfd $REFERENCE_DATABASE_DIRECTORY
 
 WORKDIR /scripts
 
