@@ -20,7 +20,7 @@ Finally tell nvm to use Node.js 16:
 nvm use 16
 ```
 
-Install CDK toolkit:
+Install CDK toolkit (requires Node.js 16.x):
 
 ```
 $ npm install -g aws-cdk@2.21.0
