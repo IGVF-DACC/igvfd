@@ -2,7 +2,7 @@
 
 ### Schema version 2
 
-* `dbxrefs` must include at least one item.
+* Restrict `dbxrefs` to be a non-empty array with at least one item.
 
 ### Minor changes since schema version 1
 

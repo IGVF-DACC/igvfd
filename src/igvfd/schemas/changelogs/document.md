@@ -2,7 +2,7 @@
 
 ### Schema version 2
 
-* `urls` must include at least one item.
+* Restrict `urls` to be a non-empty array with at least one item.
 
 ### Minor changes since schema version 1
 

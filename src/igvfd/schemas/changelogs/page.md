@@ -2,7 +2,7 @@
 
 ### Schema version 2
 
-* `news_keywords` must include at least one item.
+* Restrict `news_keywords` to be a non-empty array with at least one item.
 
 ### Minor changes since schema version 1
 

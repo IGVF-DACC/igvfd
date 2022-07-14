@@ -2,7 +2,7 @@
 
 ### Schema version 3
 
-* `treatments`, `donors`, and `dbxrefs` must include at least one item.
+* Restrict `treatments`, `donors`, and `dbxrefs` to be a non-empty array with at least one item.
 
 ### Schema version 2
 

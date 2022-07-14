@@ -2,7 +2,7 @@
 
 ### Schema version 2
 
-* `submits_for` and `groups` must include at least one item.
+* Restrict `submits_for` and `groups` to be a non-empty array with at least one item.
 
 ### Minor changes since schema version 1
 

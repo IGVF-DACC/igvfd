@@ -2,7 +2,7 @@
 
 ### Schema version 2
 
-* `parents` and `external_resources` must include at least one item.
+* Restrict `parents` and `external_resources` to be a non-empty array with at least one item.
 
 ### Minor changes since schema version 1
 

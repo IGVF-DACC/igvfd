@@ -1,6 +1,6 @@
 ## Changelog for *`mixins.json`*
 
-* `aliases`, `alternate_accessions`, `collections`, `documents`, and `references` must include at least one item. (7/14/2022)
+* Restrict `aliases`, `alternate_accessions`, `collections`, `documents`, and `references` to be a non-empty array with at least one item. (7/14/2022)
 * Rename `organism` to `taxa`. (06/23/2022)
 * Move `aliases` and `submitted` into `basic_item`. (06/14/2022)
 * Add `organism`. (06/08/2022)

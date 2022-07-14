@@ -2,7 +2,7 @@
 
 ### Schema version 2
 
-* `awards` must include at least one item.
+* Restrict `awards` to be a non-empty array with at least one item.
 
 ### Minor changes since schema version 1
 

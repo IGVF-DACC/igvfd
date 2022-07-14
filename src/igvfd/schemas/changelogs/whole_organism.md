@@ -2,7 +2,7 @@
 
 ### Schema version 3
 
-* `treatments` and `donors` must include at least one item.
+* Restrict `treatments` and `donors` to be a non-empty array with at least one item.
 
 ### Schema version 2
 
