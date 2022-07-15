@@ -1,4 +1,4 @@
-FROM python:3.9.9-slim-buster as builder
+FROM python:3.9.9-slim-buster
 
 ENV PYTHONDONTWRITEBYTECODE 1
 
@@ -62,6 +62,8 @@ COPY --chown=igvfd:igvfd assets/ontology.json.gz assets/ontology.json.gz
 COPY --chown=igvfd:igvfd src/igvfd/commands/make_reference_db.py src/igvfd/commands/make_reference_db.py
 
 RUN make-reference-db
+
+COPY --chown=igvfd:igvfd . .
 
 EXPOSE 6543
 
