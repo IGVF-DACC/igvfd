@@ -26,3 +26,12 @@ def whole_organism_1(whole_organism):
 def whole_organism_part_of(whole_organism):
     item = whole_organism.copy()
     return item
+
+
+def whole_organism_2(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '2',
+        'aliases': [],
+    })
+    return item

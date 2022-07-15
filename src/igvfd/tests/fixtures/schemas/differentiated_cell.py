@@ -23,18 +23,20 @@ def differentiated_cell_1(differentiated_cell):
 
 
 @pytest.fixture
-def differentiated_cell_2(differentiated_cell):
+def differentiated_cell_part_of(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
-        'schema_version': '2'
+        'aliases': 'igvf-dacc:differentiated_cell_part_of',
+        'schema_version': '2',
+        'dbxrefs': []
     })
     return item
 
 
 @pytest.fixture
-def differentiated_cell_part_of(differentiated_cell):
+def differentiated_cell_3(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
-        'aliases': 'igvf-dacc:differentiated_cell_part_of'
+        'schema_version': '3'
     })
     return item

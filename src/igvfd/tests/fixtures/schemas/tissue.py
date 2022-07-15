@@ -23,18 +23,20 @@ def tissue_1(tissue):
 
 
 @pytest.fixture
-def tissue_2(tissue):
+def tissue_part_of(tissue):
     item = tissue.copy()
     item.update({
-        'schema_version': '2'
+        'aliases': 'igvf-dacc:tissue_part_of',
+        'schema_version': '2',
+        'donors': []
     })
     return item
 
 
 @pytest.fixture
-def tissue_part_of(tissue):
+def tissue_3(tissue):
     item = tissue.copy()
     item.update({
-        'aliases': 'igvf-dacc:tissue_part_of'
+        'schema_version': '3'
     })
     return item

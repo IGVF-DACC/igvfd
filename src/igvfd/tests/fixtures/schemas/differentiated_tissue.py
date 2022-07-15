@@ -23,18 +23,20 @@ def differentiated_tissue_1(differentiated_tissue):
 
 
 @pytest.fixture
-def differentiated_tissue_2(differentiated_tissue):
+def differentiated_tissue_part_of(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
-        'schema_version': '2'
+        'aliases': 'igvf-dacc:differentiated_tissue_part_of',
+        'schema_version': '2',
+        'collections': []
     })
     return item
 
 
 @pytest.fixture
-def differentiated_tissue_part_of(differentiated_tissue):
+def differentiated_tissue_3(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
-        'aliases': 'igvf-dacc:differentiated_tissue_part_of'
+        'schema_version': '3'
     })
     return item

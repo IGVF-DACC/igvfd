@@ -26,3 +26,13 @@ def assay_term_dnase(testapp):
         'term_name': 'DNase-seq'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def assay_term_1(assay_term_starr):
+    item = assay_term_starr.copy()
+    item.update({
+        'schema_version': '1',
+        'aliases': []
+    })
+    return item

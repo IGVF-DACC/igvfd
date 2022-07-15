@@ -59,3 +59,13 @@ def rodent_donor_orphan(testapp, lab, award):
         'sex': 'female'
     }
     return testapp.post_json('/rodent_donor', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def rodent_donor_1(rodent_donor):
+    item = rodent_donor.copy()
+    item.update({
+        'schema_version': '1',
+        'documents': []
+    })
+    return item

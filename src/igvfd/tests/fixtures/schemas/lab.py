@@ -38,3 +38,13 @@ def lab(testapp, pi):
         'pi': pi['@id'],
     }
     return testapp.post_json('/lab', item).json['@graph'][0]
+
+
+@pytest.fixture
+def lab_1(lab):
+    item = lab.copy()
+    item.update({
+        'schema_version': '1',
+        'awards': []
+    })
+    return item

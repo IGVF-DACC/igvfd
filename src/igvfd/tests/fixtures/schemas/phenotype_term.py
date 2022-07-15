@@ -25,3 +25,13 @@ def phenotype_term_incomplete(testapp):
         'term_id': 'DOID:10652'
     }
     return item
+
+
+@pytest.fixture
+def phenotype_term_1(phenotype_term_alzheimers):
+    item = phenotype_term_alzheimers.copy()
+    item.update({
+        'schema_version': '1',
+        'aliases': []
+    })
+    return item

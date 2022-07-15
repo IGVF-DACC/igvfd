@@ -32,3 +32,13 @@ def gene_zscan10_mm(testapp):
         'taxa': 'Mus musculus'
     }
     return testapp.post_json('/gene', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def gene_1(gene_zscan10_mm):
+    item = gene_zscan10_mm.copy()
+    item.update({
+        'schema_version': '1',
+        'aliases': []
+    })
+    return item

@@ -47,18 +47,20 @@ def primary_cell_1(primary_cell):
 
 
 @pytest.fixture
-def primary_cell_2(primary_cell):
+def primary_cell_part_of(primary_cell):
     item = primary_cell.copy()
     item.update({
-        'schema_version': '2'
+        'aliases': 'igvf-dacc:primary_cell_part_of',
+        'schema_version': '2',
+        'alternate_accessions': []
     })
     return item
 
 
 @pytest.fixture
-def primary_cell_part_of(primary_cell):
+def primary_cell_3(primary_cell):
     item = primary_cell.copy()
     item.update({
-        'aliases': 'igvf-dacc:primary_cell_part_of'
+        'schema_version': '3'
     })
     return item
