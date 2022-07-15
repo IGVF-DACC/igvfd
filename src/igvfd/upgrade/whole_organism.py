@@ -6,6 +6,7 @@ def whole_organism_1_2(value, system):
     # https://igvf.atlassian.net/browse/IGVF-207
     return
 
+
 @upgrade_step('whole_organism', '2', '3')
 def whole_organism_2_3(value, system):
     if 'treatments' in value:
