@@ -1,4 +1,4 @@
-FROM python:3.9.9-slim-buster
+FROM python:3.9.9-slim-buster as builder
 
 ENV PYTHONDONTWRITEBYTECODE 1
 
@@ -10,13 +10,20 @@ ENV REFERENCE_DATABASE_DIRECTORY=/srv/sqlite
 
 RUN useradd -u 1444 -m igvfd
 
-RUN apt-get update && apt-get install -y wget gnupg
-
-RUN wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add -
-
-RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main" >> /etc/apt/sources.list.d/pgdg.list
-
-RUN apt-get update && apt-get install -y make gcc git curl graphviz libpq-dev zlib1g-dev libjpeg-dev postgresql-11
+RUN apt-get update \
+        && apt-get install -y --no-install-recommends \
+        make \
+        gcc \
+        git \
+        curl \
+        graphviz \
+        libpq-dev \
+        zlib1g-dev \
+        libjpeg-dev \
+        libmagic-dev \
+        libsqlite3-dev \
+        && apt-get clean \
+        && rm -rf /var/lib/apt/lists/*
 
 RUN python -m venv $VIRTUAL_ENV
 
@@ -55,8 +62,6 @@ COPY --chown=igvfd:igvfd assets/ontology.json.gz assets/ontology.json.gz
 COPY --chown=igvfd:igvfd src/igvfd/commands/make_reference_db.py src/igvfd/commands/make_reference_db.py
 
 RUN make-reference-db
-
-COPY --chown=igvfd:igvfd . .
 
 EXPOSE 6543
 
