@@ -11,7 +11,7 @@ from .base import (
 
 
 @abstract_collection(
-    name='ontology_terms',
+    name='ontology-terms',
     unique_key='ontology_term:name',
     properties={
         'title': 'Ontology term',
