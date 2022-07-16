@@ -604,3 +604,31 @@ def test_cors_maybe_add_cors_to_header_view_deriver_suffix(testapp):
     assert response.headers['Access-Control-Allow-Origin'] == 'https://abc.demo.igvf.org'
     assert response.headers['Vary'] == 'Origin, Accept, Authorization'
     assert response.headers['Access-Control-Allow-Credentials'] == 'true'
+
+
+def test_cors_maintain_cors_header_in_validation_failure(testapp):
+    response = testapp.post_json(
+        '/users',
+        {'invalid': 'json'},
+        status=422
+    )
+    assert 'Access-Control-Allow-Origin' not in response.headers
+    headers = {
+        'Origin': 'http://localhost:3000',
+    }
+    response = testapp.post_json(
+        '/users',
+        {'invalid': 'json'},
+        headers=headers,
+        status=422
+    )
+    assert 'Content-Type' in response.headers
+    assert 'Set-Cookie' not in response.headers
+    assert 'Vary' in response.headers
+    assert 'X-Stats' in response.headers
+    assert 'Access-Control-Allow-Origin' in response.headers
+    assert 'Access-Control-Allow-Credentials' in response.headers
+    assert 'Access-Control-Expose-Headers' in response.headers
+    assert response.headers['Access-Control-Allow-Origin'] == 'http://localhost:3000'
+    assert response.headers['Vary'] == 'Origin'
+    assert response.headers['Access-Control-Allow-Credentials'] == 'true'
