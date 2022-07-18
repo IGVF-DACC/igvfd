@@ -10,20 +10,19 @@ ENV REFERENCE_DATABASE_DIRECTORY=/srv/sqlite
 
 RUN useradd -u 1444 -m igvfd
 
-RUN apt-get update \
-        && apt-get install -y --no-install-recommends \
-        make \
-        gcc \
-        git \
-        curl \
-        graphviz \
-        libpq-dev \
-        zlib1g-dev \
-        libjpeg-dev \
-        libmagic-dev \
-        libsqlite3-dev \
-        && apt-get clean \
-        && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    make \
+    gcc \
+    git \
+    curl \
+    graphviz \
+    libpq-dev \
+    zlib1g-dev \
+    libjpeg-dev \
+    libmagic-dev \
+    libsqlite3-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN python -m venv $VIRTUAL_ENV
 
