@@ -28,6 +28,7 @@ def whole_organism_part_of(whole_organism):
     return item
 
 
+@pytest.fixture
 def whole_organism_2(whole_organism):
     item = whole_organism.copy()
     item.update({

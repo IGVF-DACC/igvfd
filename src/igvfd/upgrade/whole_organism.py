@@ -9,6 +9,7 @@ def whole_organism_1_2(value, system):
 
 @upgrade_step('whole_organism', '2', '3')
 def whole_organism_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-221
     if 'treatments' in value:
         if len(value['treatments']) == 0:
             del value['treatments']

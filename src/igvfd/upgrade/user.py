@@ -3,6 +3,7 @@ from snovault import upgrade_step
 
 @upgrade_step('user', '1', '2')
 def user_1_2(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-221
     if 'submits_for' in value:
         if len(value['submits_for']) == 0:
             del value['submits_for']

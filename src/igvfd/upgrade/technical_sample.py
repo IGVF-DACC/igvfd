@@ -3,6 +3,7 @@ from snovault import upgrade_step
 
 @upgrade_step('technical_sample', '1', '2')
 def technical_sample_1_2(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-221
     if 'dbxrefs' in value:
         if len(value['dbxrefs']) == 0:
             del value['dbxrefs']
