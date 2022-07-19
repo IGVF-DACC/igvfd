@@ -139,3 +139,14 @@ def test_taxa_donors_requirements(testapp, award, lab, human_donor):
             'source': lab['@id'],
         }, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_part_of_cell_line(cell_line, cell_line_part_of, differentiated_cell, testapp):
+    res = testapp.patch_json(
+        cell_line_part_of['@id'],
+        {'part_of': differentiated_cell['@id']}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        cell_line_part_of['@id'],
+        {'part_of': cell_line['@id']})
+    assert res.status_code == 200

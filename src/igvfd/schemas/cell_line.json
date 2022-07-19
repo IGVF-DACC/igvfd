@@ -54,7 +54,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "2"
+            "default": "3"
         },
         "passage_number": {
             "title": "Passage number",
@@ -65,6 +65,10 @@
         },
         "date_obtained": {
             "title": "Date harvested"
+        },
+        "part_of": {
+            "linkTo": "CellLine",
+            "type": "string"
         },
         "pooled_from": {
             "items": {

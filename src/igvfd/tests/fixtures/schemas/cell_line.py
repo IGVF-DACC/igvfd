@@ -33,3 +33,21 @@ def cell_line_1(cell_line):
         'schema_version': '1'
     })
     return item
+
+
+@pytest.fixture
+def cell_line_2(cell_line):
+    item = cell_line.copy()
+    item.update({
+        'schema_version': '2'
+    })
+    return item
+
+
+@pytest.fixture
+def cell_line_part_of(cell_line):
+    item = cell_line.copy()
+    item.update({
+        'aliases': 'igvf-dacc:cell_line_part_of'
+    })
+    return item

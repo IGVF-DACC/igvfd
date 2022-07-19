@@ -48,5 +48,24 @@
         "status": "released",
         "source": "/labs/j-michael-cherry/",
         "taxa": "Saccharomyces"
+    },
+    {
+        "uuid": "d4c46526-0307-11ed-b939-0242ac120002",
+        "accession": "IGVFSM003KAS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:live_mouse_embryo"
+        ],
+        "status": "released",
+        "source": "/labs/j-michael-cherry/",
+        "collections": [
+            "ENCODE"
+        ],
+        "donors": [
+            "05c0a52c-f861-4057-b3eb-751624bdff37"
+        ],
+        "description": "10 days mouse embryo",
+        "taxa": "Mus musculus"
     }
 ]

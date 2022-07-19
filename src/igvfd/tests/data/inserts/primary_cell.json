@@ -86,5 +86,52 @@
             "/primary-cells/578c72a2-4f84-2c8f-96b0-ec8715e18185/",
             "/primary-cells/5673c93a-c748-11ec-9d64-0242ac120002/"
         ]
+    },
+    {
+        "uuid": "90449698-0305-11ed-b939-0242ac120002",
+        "accession": "IGVFSM003EEE",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:part_of_treated_primary_cells"
+        ],
+        "status": "released",
+        "submitter_comment": "This is a part of a treated primary cell sample.",
+        "notes": "This is a note.",
+        "product_id": "x001",
+        "part_of": "IGVFSM001EEE",
+        "lot_id": "478901",
+        "url": "https://www.genome.gov/",
+        "starting_amount": 2,
+        "starting_amount_units": "μg",
+        "taxa": "Homo sapiens",
+        "age": "30",
+        "age_units": "year",
+        "life_stage": "adult",
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "treatments": [
+            "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
+        ],
+        "date_obtained": "2022-04-02",
+        "source": "/labs/j-michael-cherry/",
+        "donors": [
+            "j-michael-cherry:alias_human_donor1"
+        ]
+    },
+    {
+        "uuid": "5e2b132e-0307-11ed-b939-0242ac120002",
+        "accession": "IGVFSM004EEE",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:primary_cell_part_of_whole_organism"
+        ],
+        "donors": [
+            "05c0a52c-f861-4057-b3eb-751624bdff37"
+        ],
+        "status": "released",
+        "taxa": "Mus musculus",
+        "source": "/labs/j-michael-cherry/",
+        "part_of": "j-michael-cherry:live_mouse_embryo"
     }
 ]

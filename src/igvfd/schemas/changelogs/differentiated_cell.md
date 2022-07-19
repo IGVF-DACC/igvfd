@@ -1,5 +1,9 @@
 ## Changelog for *`differentiated_cell.json`*
 
+### Schema version 3
+
+* Restrict `part_of` property to link only to `differentiated_cell`.
+
 ### Schema version 2
 
 * Add `donors` and `taxa` to requirements.

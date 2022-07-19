@@ -20,3 +20,9 @@ def whole_organism_1(whole_organism):
         'schema_version': '1'
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_part_of(whole_organism):
+    item = whole_organism.copy()
+    return item

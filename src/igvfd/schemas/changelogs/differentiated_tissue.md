@@ -1,5 +1,9 @@
 ## Changelog for *`differentiated_tissue.json`*
 
+### Schema version 3
+
+* Restrict `part_of` property to link only to `differentiated_tissue`.
+
 ### Schema version 2
 
 * Add `donors` and `taxa` to requirements.
