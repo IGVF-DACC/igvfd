@@ -97,12 +97,19 @@ def test_wrangler_patch_submits_for_allowed(submitter, other_lab, wrangler_testa
 
 def test_submitter_patch_groups_disallowed(submitter, other_lab, submitter_testapp):
     res = submitter_testapp.get(submitter['@id'])
-    groups = {'groups': ['admin']}
+    if res.json.get('groups') is not None:
+        groups = {'groups': res.json.get('groups') + ['admin']}
+    else:
+        groups = {'groups': ['admin']}
     submitter_testapp.patch_json(res.json['@id'], groups, status=422)
 
 
 def test_wrangler_patch_groups_allowed(submitter, other_lab, wrangler_testapp):
     res = wrangler_testapp.get(submitter['@id'])
+    if res.json.get('groups') is not None:
+        groups = {'groups': res.json.get('groups') + ['admin']}
+    else:
+        groups = {'groups': ['admin']}
     groups = {'groups': ['admin']}
     wrangler_testapp.patch_json(res.json['@id'], groups, status=200)
 
