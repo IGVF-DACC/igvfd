@@ -176,13 +176,6 @@
     "properties": {
         "schema_version": {
             "default": "3"
-        },
-        "description": {
-            "title": "Description",
-            "description": "A plain text description of the whole organism sample.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
-            "formInput": "textarea"
         }
     },
     "changelog": "/profiles/changelogs/whole_organism.md"
