@@ -1,5 +1,5 @@
 {
-    "title": "Mixin properties",
+    "title": "Mixin Properties",
     "basic_item": {
         "schema_version": {
             "title": "Schema version",
@@ -37,7 +37,7 @@
             "uniqueItems": true,
             "items": {
                 "uniqueKey": "alias",
-                "title": "Lab alias",
+                "title": "Lab Alias",
                 "description": "A lab specific identifier to reference an object.",
                 "comment": "Current convention is colon separated lab name and lab identifier. (e.g. john-doe:42).",
                 "type": "string",
@@ -46,7 +46,7 @@
         },
         "creation_timestamp": {
             "rdfs:subPropertyOf": "dc:created",
-            "title": "Creation timestamp",
+            "title": "Creation Timestamp",
             "description": "The date the object was created.",
             "comment": "Do not submit. The date the object is created is assigned by the server.",
             "type": "string",
@@ -56,7 +56,7 @@
         },
         "submitted_by": {
             "rdfs:subPropertyOf": "dc:creator",
-            "title": "Submitted by",
+            "title": "Submitted By",
             "comment": "Do not submit. The user that created the object is assigned by the server.",
             "type": "string",
             "linkTo": "User",
@@ -64,7 +64,7 @@
             "permission": "import_items"
         },
         "submitter_comment": {
-            "title": "Submitter comment",
+            "title": "Submitter Comment",
             "description": "Additional information specified by the submitter to be displayed as a comment on the portal.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
@@ -82,7 +82,7 @@
             "permission": "import_items"
         },
         "alternate_accessions": {
-            "title": "Alternate accessions",
+            "title": "Alternate Accessions",
             "description": "Accessions previously assigned to objects that have been merged with this object.",
             "comment": "Do not submit. Only admins are allowed to set or update this value.",
             "type": "array",
@@ -208,17 +208,17 @@
                     "format": "md5sum"
                 },
                 "size": {
-                    "title": "File size",
+                    "title": "File Size",
                     "type": "integer",
                     "minimum": 0
                 },
                 "width": {
-                    "title": "Image width",
+                    "title": "Image Width",
                     "type": "integer",
                     "minimum": 0
                 },
                 "height": {
-                    "title": "Image height",
+                    "title": "Image Height",
                     "type": "integer",
                     "minimum": 0
                 }

@@ -68,7 +68,7 @@
             "maxItems": 2
         },
         "traits": {
-            "title": "Phenotypic traits",
+            "title": "Phenotypic Traits",
             "description": "A list of known phenotypic traits of the donor",
             "type": "array",
             "uniqueItems": true,

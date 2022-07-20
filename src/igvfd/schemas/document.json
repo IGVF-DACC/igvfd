@@ -64,7 +64,7 @@
             "default": "2"
         },
         "document_type": {
-            "title": "Document type",
+            "title": "Document Type",
             "description": "The category that best describes the document.",
             "type": "string",
             "enum": [
@@ -78,7 +78,7 @@
             ]
         },
         "characterization_method": {
-            "title": "Characterization method",
+            "title": "Characterization Method",
             "description": "The method used for the characterization.",
             "type": "string",
             "enum": [

@@ -1,5 +1,5 @@
 {
-    "title": "Phenotype term",
+    "title": "Phenotype Term",
     "description": "Schema for a phenotype ontology term.",
     "$id": "/profiles/phenotype_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -32,7 +32,7 @@
         },
         "term_id": {
             "@type": "@id",
-            "title": "Phenotype term ID",
+            "title": "Phenotype Term ID",
             "description": "An ontology term identifier describing a phenotype.",
             "permission": "import_items",
             "type": "string",
