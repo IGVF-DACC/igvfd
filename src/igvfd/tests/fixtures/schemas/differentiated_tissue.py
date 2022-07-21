@@ -50,3 +50,29 @@ def differentiated_tissue_3(differentiated_tissue):
         'collections': []
     })
     return item
+
+
+@pytest.fixture
+def differentiated_tissue_4(differentiated_tissue):
+    item = differentiated_tissue.copy()
+    item.update({
+        'schema_version': '4',
+        'post_differentiation_time': 10,
+        'post_differentiation_time_units': 'stage'
+    })
+    return item
+
+
+@pytest.fixture
+def differentiated_tissue_4_good_value(differentiated_tissue):
+    item = differentiated_tissue.copy()
+    item.update({
+        'schema_version': '4',
+        'post_differentiation_time': 7,
+        'post_differentiation_time_units': 'month'
+    })
+    return item
+
+
+
+

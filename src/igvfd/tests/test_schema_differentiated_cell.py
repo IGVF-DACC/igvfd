@@ -17,6 +17,16 @@ def test_differentiation_dependency(differentiated_cell, testapp):
         {'post_differentiation_time': 10, 'post_differentiation_time_units': 'hour'}, expect_errors=True)
     assert res.status_code == 200
 
+    res = testapp.patch_json(
+        differentiated_cell['@id'],
+        {'post_differentiation_time': 10, 'post_differentiation_time_units': 'stage'}, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        differentiated_cell['@id'],
+        {'post_differentiation_time': 10.2341, 'post_differentiation_time_units': 'minute'}, expect_errors=True)
+    assert res.status_code == 200
+
 
 def test_post_differentiated_cell(testapp, award, lab, treatment_2, human_donor):
     res = testapp.post_json(

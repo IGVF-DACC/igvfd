@@ -34,3 +34,17 @@ def differentiated_tissue_3_4(value, system):
     if 'alternate_accessions' in value:
         if len(value['alternate_accessions']) == 0:
             del value['alternate_accessions']
+
+
+@upgrade_step('differentiated_tissue', '4', '5')
+def differentiated_cell_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-239
+    if 'post_differentiation_time_units' in value:
+        if value['post_differentiation_time_units'] == 'stage':
+            # The enumerated value 'stage' has been removed.
+            # There is no way to convert 'stage' to a valid time unit.
+            # The 'post_differentiation_time' and 'post_differentiation_time_units'
+            # must be removed since there is no valid conversion in this case.
+            del value['post_differentiation_time_units']
+            if 'post_differentiation_time' in value:
+                del value['post_differentiation_time']

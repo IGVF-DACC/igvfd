@@ -2,6 +2,11 @@
 
 ### Schema version 4
 
+* Remove `stage` from `post_differentiation_time_units` enumerated value.
+* Change `post_differentiation_time` type from `integer` to `number`.
+
+### Schema version 4
+
 * Restrict `treatments`, `donors`, `differentiation_treatments`, and `dbxrefs` to be a non-empty array with at least one item.
 
 ### Schema version 3
