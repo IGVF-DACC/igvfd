@@ -60,3 +60,13 @@ def human_male_donor(testapp, lab, award):
         'sex': 'male'
     }
     return testapp.post_json('/human_donor', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def human_donor_1(human_donor):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '1',
+        'parents': []
+    })
+    return item

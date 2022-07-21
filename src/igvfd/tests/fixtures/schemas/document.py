@@ -12,3 +12,13 @@ def experimental_protocol_document(testapp, other_lab, award):
         'attachment': {'download': 'red-dot.png', 'href': RED_DOT},
     }
     return testapp.post_json('/document', item).json['@graph'][0]
+
+
+@pytest.fixture
+def document_1(experimental_protocol_document):
+    item = experimental_protocol_document.copy()
+    item.update({
+        'schema_version': '1',
+        'urls': []
+    })
+    return item

@@ -10,3 +10,13 @@ def award(testapp):
         'viewing_group': 'IGVF',
     }
     return testapp.post_json('/award', item).json['@graph'][0]
+
+
+@pytest.fixture
+def award_1(award):
+    item = award.copy()
+    item.update({
+        'schema_version': '1',
+        'aliases': []
+    })
+    return item

@@ -1,5 +1,9 @@
 ## Changelog for *`differentiated_tissue.json`*
 
+### Schema version 4
+
+* Restrict `treatments`, `donors`, `differentiation_treatments`, and `dbxrefs` to be a non-empty array with at least one item.
+
 ### Schema version 3
 
 * Restrict `part_of` property to link only to `differentiated_tissue`.

@@ -75,7 +75,7 @@
             "comment": "Do not submit. DCC personnel is responsible for submission of biosample external resource identifiers.",
             "permission": "import_items",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "External identifier",

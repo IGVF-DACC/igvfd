@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 2
+
+* Restrict `parents` and `external_resources` to be a non-empty array with at least one item.
+
 ### Minor changes since schema version 1
 
 * Add `traits`.

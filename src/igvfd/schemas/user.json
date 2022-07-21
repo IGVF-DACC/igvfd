@@ -23,7 +23,7 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "email": {
             "title": "Email",
@@ -53,7 +53,7 @@
             "title": "Submits for",
             "description": "Labs user is authorized to submit data for.",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "uniqueItems": true,
             "permission": "import_items",
             "items": {
@@ -67,7 +67,7 @@
             "title": "Groups",
             "description": "Additional access control groups",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "uniqueItems": true,
             "permission": "import_items",
             "items": {

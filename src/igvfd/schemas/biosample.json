@@ -290,7 +290,7 @@
             "title": "Treatments",
             "description": "A list of treatments applied to the biosample.",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Treatment",
@@ -303,7 +303,7 @@
             "title": "Donors",
             "description": "Donor(s). Any contributing donor.",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Donor",

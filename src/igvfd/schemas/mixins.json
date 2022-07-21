@@ -33,7 +33,7 @@
             "description": "Lab specific identifiers to reference an object.",
             "comment": "The purpose of this field is to provide a link into the lab LIMS and to facilitate shared objects.",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "uniqueKey": "alias",
@@ -86,7 +86,7 @@
             "description": "Accessions previously assigned to objects that have been merged with this object.",
             "comment": "Do not submit. Only admins are allowed to set or update this value.",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "permission": "import_items",
             "items": {
                 "title": "Alternate Accession",
@@ -101,7 +101,7 @@
             "description": "Some samples are part of particular data collections.",
             "comment": "Do not submit. Collections are for DACC use only.",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "permission": "import_items",
             "uniqueItems": true,
             "items": {
@@ -240,7 +240,7 @@
             "title": "Documents",
             "description": "Documents that provide additional information (not data file).",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Document",
@@ -280,7 +280,7 @@
             "title": "References",
             "description": "The references that provide more information about the object.",
             "type": "array",
-            "default": [],
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Reference",
