@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Schema version 3
+
+* Remove `additional_description`.
+
 ### Schema version 2
 
 * Restrict `dbxrefs`, `aliases`, and `alternate_accessions` to be a non-empty array with at least one item.
