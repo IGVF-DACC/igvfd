@@ -2,7 +2,7 @@
 
 ### Schema version 4
 
-* Remove `stage` from `post_differentiation_time_units` enumerated value.
+* Remove `stage` from `post_differentiation_time_units`.
 * Change `post_differentiation_time` type from `integer` to `number`.
 
 ### Schema version 4

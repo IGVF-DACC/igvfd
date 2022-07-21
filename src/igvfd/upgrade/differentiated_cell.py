@@ -41,10 +41,18 @@ def differentiated_cell_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-239
     if 'post_differentiation_time_units' in value:
         if value['post_differentiation_time_units'] == 'stage':
-            # The enumerated value 'stage' has been removed.
-            # There is no way to convert 'stage' to a valid time unit.
-            # The 'post_differentiation_time' and 'post_differentiation_time_units'
-            # must be removed since there is no valid conversion in this case.
+            old_diff_time = value['post_differentiation_time']
+            if 'notes' in value:
+                old_notes_value = value['notes']
+                if old_diff_time == 1:
+                    value['notes'] = old_notes_value + f'\nDifferentiation used one stage.'
+                else:
+                    value['notes'] = old_notes_value + f'\nDifferentiation used {old_diff_time} stages.'
+            else:
+                if old_diff_time == 1:
+                    value['notes'] = f'Differentiation used one stage.'
+                else:
+                    value['notes'] = f'Differentiation used {old_diff_time} stages.'
             del value['post_differentiation_time_units']
-            if 'post_differentiation_time' in value:
-                del value['post_differentiation_time']
+            del value['post_differentiation_time']
+    return

@@ -17,16 +17,24 @@ def test_differentiated_tissue_upgrade_3_4(upgrader, differentiated_tissue_3):
     assert value['schema_version'] == '4'
 
 
-def test_differentiated_tissue_upgrade_4_5(upgrader, differentiated_tissue_4):
-    value = upgrader.upgrade('differentiated_tissue', differentiated_tissue_4, current_version='4', target_version='5')
-    assert value['schema_version'] == '5'
-    assert 'post_differentiation_time' not in value
-    assert 'post_differentiation_time_units' not in value
+def test_differentiated_tissue_upgrade_4_to_5(upgrader, differentiated_tissue_4, differentiated_tissue_4_with_note, differentiated_tissue_4_good_value):
+    value1 = upgrader.upgrade('differentiated_tissue', differentiated_tissue_4, current_version='4', target_version='5')
+    assert value1['schema_version'] == '5'
+    assert value1['notes'] == 'Differentiation used 10 stages.'
+    assert 'post_differentiation_time' not in value1
+    assert 'post_differentiation_time_units' not in value1
+    value2 = upgrader.upgrade('differentiated_tissue', differentiated_tissue_4_with_note,
+                              current_version='4', target_version='5')
+    assert value2['schema_version'] == '5'
+    assert value2['notes'] == 'This is a note.\nDifferentiation used 10 stages.'
+    assert 'post_differentiation_time' not in value2
+    assert 'post_differentiation_time_units' not in value2
+    value3 = upgrader.upgrade('differentiated_tissue', differentiated_tissue_4_good_value,
+                              current_version='4', target_version='5')
+    assert value3['schema_version'] == '5'
+    assert value3['post_differentiation_time'] == 7
+    assert value3['post_differentiation_time_units'] == 'month'
 
 
-def test_differentiated_tissue_upgrade_4_5_good_value(upgrader, differentiated_tissue_upgrade3_good_value):
-    value = upgrader.upgrade('differentiated_tissue', differentiated_tissue_upgrade3_good_value,
-                             current_version='4', target_version='5')
-    assert value['schema_version'] == '5'
-    assert 'post_differentiation_time' in value
-    assert 'post_differentiation_time_units' in value
+
+

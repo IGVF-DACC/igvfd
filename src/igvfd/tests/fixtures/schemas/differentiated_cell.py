@@ -74,5 +74,14 @@ def differentiated_cell_4_good_value(differentiated_cell):
     return item
 
 
-
+@pytest.fixture
+def differentiated_cell_4_with_note(differentiated_cell):
+    item = differentiated_cell.copy()
+    item.update({
+        'schema_version': '4',
+        'post_differentiation_time': 10,
+        'post_differentiation_time_units': 'stage',
+        'notes': 'This is a note.'
+    })
+    return item
 
