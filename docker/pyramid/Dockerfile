@@ -1,4 +1,4 @@
-FROM python:3.9.9-buster
+FROM python:3.9.9-slim-buster
 
 ENV PYTHONDONTWRITEBYTECODE 1
 
@@ -10,9 +10,19 @@ ENV REFERENCE_DATABASE_DIRECTORY=/srv/sqlite
 
 RUN useradd -u 1444 -m igvfd
 
-RUN apt-get update
-
-RUN apt-get install -y make git curl graphviz
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    gcc \
+    git \
+    graphviz \
+    libjpeg-dev \
+    libmagic-dev \
+    libpq-dev \
+    libsqlite3-dev \
+    make \
+    zlib1g-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN python -m venv $VIRTUAL_ENV
 
