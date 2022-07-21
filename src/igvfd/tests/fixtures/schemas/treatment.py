@@ -32,6 +32,7 @@ def treatment_version_1(treatment_1):
     item = treatment_1.copy()
     item.update({
         'schema_version': '1',
-        'documents': []
+        'documents': [],
+        'aliases': []
     })
     return item

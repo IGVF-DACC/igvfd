@@ -66,6 +66,12 @@ def rodent_donor_1(rodent_donor):
     item = rodent_donor.copy()
     item.update({
         'schema_version': '1',
-        'documents': []
+        'documents': [],
+        'parents': [],
+        'external_resources': [],
+        'aliases': [],
+        'collections': [],
+        'alternate_accessions': [],
+        'references': []
     })
     return item

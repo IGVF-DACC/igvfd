@@ -30,7 +30,9 @@ def user_1(user_0):
         'schema_version': '1',
         'viewing_groups': ['IGVF'],
         'groups': ['admin', 'verified', 'wrangler'],
-        'submits_for': []
+        'submits_for': [],
+        'aliases': [],
+        'groups': []
     })
     return item
 

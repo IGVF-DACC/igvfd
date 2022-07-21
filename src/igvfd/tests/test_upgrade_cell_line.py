@@ -13,5 +13,10 @@ def test_cell_line_upgrade_2_3(upgrader, cell_line_2):
 
 def test_cell_line_upgrade_3_4(upgrader, cell_line_3):
     value = upgrader.upgrade('cell_line', cell_line_3, current_version='3', target_version='4')
+    assert 'aliases' not in value
+    assert 'donors' not in value
+    assert 'dbxrefs' not in value
+    assert 'collections' not in value
     assert 'alternate_accessions' not in value
+    assert 'treatments' not in value
     assert value['schema_version'] == '4'

@@ -19,6 +19,7 @@ def document_1(experimental_protocol_document):
     item = experimental_protocol_document.copy()
     item.update({
         'schema_version': '1',
-        'urls': []
+        'urls': [],
+        'aliases': []
     })
     return item
