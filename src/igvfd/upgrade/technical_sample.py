@@ -13,3 +13,11 @@ def technical_sample_1_2(value, system):
     if 'alternate_accessions' in value:
         if len(value['alternate_accessions']) == 0:
             del value['alternate_accessions']
+
+
+@upgrade_step('technical_sample', '2', '3')
+def technical_sample_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-238
+    if 'additional_description' in value:
+        value['description'] = value['additional_description']
+        del value['additional_description']
