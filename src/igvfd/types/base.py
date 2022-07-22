@@ -79,16 +79,15 @@ ALLOW_SUBMITTER_ADD = [
 ]
 
 # Key is new status. Value is list of current statuses that can transition to the new status.
-# For example, a released, in progress, or submitted experiment can transition to released.
+# For example, a released or in progress experiment can transition to released.
 # Transitioning to the same status (released -> released) allows for the child objects to be crawled
 # without actually making a patch if the new and current statuses are the same.
 STATUS_TRANSITION_TABLE = {
-    'released': ['released', 'in progress', 'submitted'],
+    'released': ['released', 'in progress'],
     'in progress': ['in progress'],
-    'deleted': ['deleted', 'in progress', 'current', 'submitted'],
+    'deleted': ['deleted', 'in progress', 'current'],
     'revoked': ['revoked', 'released', 'archived'],
     'archived': ['archived', 'released'],
-    'submitted': ['submitted', 'in progress'],
     'replaced': [],
     'disabled': ['disabled', 'current'],
     'current': ['current'],
@@ -102,7 +101,6 @@ STATUS_HIERARCHY = {
     'released': 100,
     'current': 100,
     'in progress': 90,
-    'submitted': 80,
     'uploading': 80,
     'archived': 70,
     'revoked': 50,
@@ -302,7 +300,7 @@ class Item(snovault.Item):
 
     @staticmethod
     def _block_on_audits(item_id, force_audit, request, parent, new_status):
-        if new_status not in ['released', 'submitted']:
+        if new_status not in ['released']:
             return
         if not parent or force_audit:
             return
