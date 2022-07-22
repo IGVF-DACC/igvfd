@@ -13,4 +13,5 @@ def test_whole_organism_upgrade_2_3(upgrader, whole_organism_2):
     assert 'dbxrefs' not in value
     assert 'collections' not in value
     assert 'alternate_accessions' not in value
+    assert 'treatments' not in value
     assert value['schema_version'] == '3'

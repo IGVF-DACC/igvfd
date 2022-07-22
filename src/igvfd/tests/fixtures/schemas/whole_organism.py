@@ -37,6 +37,7 @@ def whole_organism_2(whole_organism):
         'donors': [],
         'dbxrefs': [],
         'collections': [],
-        'alternate_accessions': []
+        'alternate_accessions': [],
+        'treatments': []
     })
     return item
