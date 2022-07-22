@@ -39,20 +39,13 @@ def differentiated_tissue_3_4(value, system):
 @upgrade_step('differentiated_tissue', '4', '5')
 def differentiated_tissue_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-239
-    if 'post_differentiation_time_units' in value:
-        if value['post_differentiation_time_units'] == 'stage':
-            old_diff_time = value['post_differentiation_time']
-            if 'notes' in value:
-                old_notes_value = value['notes']
-                if old_diff_time == 1:
-                    value['notes'] = old_notes_value + f'\nDifferentiation used one stage.'
-                else:
-                    value['notes'] = old_notes_value + f'\nDifferentiation used {old_diff_time} stages.'
-            else:
-                if old_diff_time == 1:
-                    value['notes'] = f'Differentiation used one stage.'
-                else:
-                    value['notes'] = f'Differentiation used {old_diff_time} stages.'
-            del value['post_differentiation_time_units']
-            del value['post_differentiation_time']
+    if value.get('post_differentiation_time_units') == 'stage':
+        old_diff_time = value['post_differentiation_time']
+        old_notes_value = ''
+        if value.get('notes'):
+            old_notes_value = value.get('notes')
+        value['notes'] = old_notes_value + \
+            f'  post_differentiation_time: {old_diff_time}, post_differentiation_time_units: stage.'
+        del value['post_differentiation_time_units']
+        del value['post_differentiation_time']
     return

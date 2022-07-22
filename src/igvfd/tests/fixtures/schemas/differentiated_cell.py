@@ -84,26 +84,3 @@ def differentiated_cell_4_with_note(differentiated_cell):
         'notes': 'This is a note.'
     })
     return item
-
-
-@pytest.fixture
-def differentiated_cell_4_one_stage(differentiated_cell):
-    item = differentiated_cell.copy()
-    item.update({
-        'schema_version': '4',
-        'post_differentiation_time': 1,
-        'post_differentiation_time_units': 'stage'
-    })
-    return item
-
-
-@pytest.fixture
-def differentiated_cell_4_one_stage_with_note(differentiated_cell):
-    item = differentiated_cell.copy()
-    item.update({
-        'schema_version': '4',
-        'post_differentiation_time': 1,
-        'post_differentiation_time_units': 'stage',
-        'notes': 'This is a note.'
-    })
-    return item
