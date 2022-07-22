@@ -10,7 +10,9 @@
     ],
     "identifyingProperties": [
         "uuid",
-        "aliases"
+        "aliases",
+        "deprecated_ntr_terms",
+        "name"
     ],
     "additionalProperties": false,
     "mixinProperties": [
