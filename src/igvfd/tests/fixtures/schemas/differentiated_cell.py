@@ -50,3 +50,37 @@ def differentiated_cell_3(differentiated_cell):
         'dbxrefs': []
     })
     return item
+
+
+@pytest.fixture
+def differentiated_cell_4(differentiated_cell):
+    item = differentiated_cell.copy()
+    item.update({
+        'schema_version': '4',
+        'post_differentiation_time': 10,
+        'post_differentiation_time_units': 'stage'
+    })
+    return item
+
+
+@pytest.fixture
+def differentiated_cell_4_good_value(differentiated_cell):
+    item = differentiated_cell.copy()
+    item.update({
+        'schema_version': '4',
+        'post_differentiation_time': 7,
+        'post_differentiation_time_units': 'month'
+    })
+    return item
+
+
+@pytest.fixture
+def differentiated_cell_4_with_note(differentiated_cell):
+    item = differentiated_cell.copy()
+    item.update({
+        'schema_version': '4',
+        'post_differentiation_time': 10,
+        'post_differentiation_time_units': 'stage',
+        'notes': 'This is a note.'
+    })
+    return item

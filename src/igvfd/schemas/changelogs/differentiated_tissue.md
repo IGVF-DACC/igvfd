@@ -1,5 +1,10 @@
 ## Changelog for *`differentiated_tissue.json`*
 
+### Schema version 5
+
+* Remove `stage` from `post_differentiation_time_units`.
+* Change `post_differentiation_time` type from `integer` to `number`.
+
 ### Schema version 4
 
 * Restrict `treatments`, `donors`, `differentiation_treatments`, and `dbxrefs` to be a non-empty array with at least one item.
