@@ -66,7 +66,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "post_differentiation_time": {
             "title": "Post-differentiation time",
