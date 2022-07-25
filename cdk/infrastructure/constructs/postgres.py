@@ -82,6 +82,9 @@ class Postgres(PostgresBase):
             props=props,
             **kwargs,
         )
+        self._build()
+
+    def _build(self) -> None:
         self._define_database()
         self._add_tags_to_database()
 
@@ -107,11 +110,9 @@ class Postgres(PostgresBase):
         )
 
 
-class PostgresFromSnapshot(PostgresBase):
+class PostgresFromSnapshotArn(PostgresBase):
 
     database: DatabaseInstanceFromSnapshot
-    latest_snapshot: LatestSnapshotFromDB
-    db_instance_identifier: str
 
     def __init__(
             self,
@@ -127,28 +128,23 @@ class PostgresFromSnapshot(PostgresBase):
             props=props,
             **kwargs,
         )
-        self._get_latest_snapshot_id()
+        self._build()
+
+    def _build(self) -> None:
         self._define_database()
         self._add_tags_to_database()
 
-    def _get_latest_snapshot_id(self) -> None:
-        # Make mypy happy. The factory already
-        # checks that this is not None.
-        self.db_instance_identifier = cast(
+    def _get_snapshot_arn(self) -> str:
+        return cast(
             str,
-            self.props.config.snapshot_source_db_identifier
-        )
-        self.latest_snapshot = LatestSnapshotFromDB(
-            self,
-            'LatestSnapshotFromDB',
-            db_instance_identifier=self.db_instance_identifier
+            self.props.config.snapshot_arn,
         )
 
     def _define_database(self) -> None:
         self.database = DatabaseInstanceFromSnapshot(
             self,
             'PostgresFromSnapshot',
-            snapshot_identifier=self.latest_snapshot.arn,
+            snapshot_identifier=self._get_snapshot_arn(),
             credentials=SnapshotCredentials.from_generated_secret(
                 'postgres',
             ),
@@ -169,21 +165,72 @@ class PostgresFromSnapshot(PostgresBase):
             self.props.config.branch,
         )
         tags.add(
-            'snapshot_source_db_identifier',
-            self.db_instance_identifier
+            'snapshot_arn',
+            self._get_snapshot_arn(),
+        )
+
+
+class PostgresFromLatestSnapshot(PostgresFromSnapshotArn):
+
+    database: DatabaseInstanceFromSnapshot
+    latest_snapshot: LatestSnapshotFromDB
+    db_instance_identifier: str
+
+    def _build(self) -> None:
+        self._define_latest_snapshot()
+        self._define_database()
+        self._add_tags_to_database()
+
+    def _get_db_instance_identifier(self) -> str:
+        # Make mypy happy. The factory already
+        # checks that this is not None.
+        return cast(
+            str,
+            self.props.config.snapshot_source_db_identifier
+        )
+
+    def _define_latest_snapshot(self) -> None:
+        self.latest_snapshot = LatestSnapshotFromDB(
+            self,
+            'LatestSnapshotFromDB',
+            db_instance_identifier=self._get_db_instance_identifier(),
+        )
+
+    def _get_snapshot_arn(self) -> str:
+        return self.latest_snapshot.arn
+
+    def _add_tags_to_database(self) -> None:
+        tags = Tags.of(self.database)
+        tags.add(
+            'branch',
+            self.props.config.branch,
         )
         tags.add(
-            'from_snapshot_arn',
+            'snapshot_source_db_identifier',
+            self._get_db_instance_identifier(),
+        )
+        tags.add(
+            'latest_snapshot_arn',
             self.latest_snapshot.arn,
         )
 
 
-PostgresConstruct = Union[Postgres, PostgresFromSnapshot]
+PostgresConstruct = Union[
+    Postgres,
+    PostgresFromSnapshotArn,
+    PostgresFromLatestSnapshot
+]
 
-PostgresConstructClass = Union[Type[Postgres], Type[PostgresFromSnapshot]]
+PostgresConstructClass = Union[
+    Type[Postgres],
+    Type[PostgresFromSnapshotArn],
+    Type[PostgresFromLatestSnapshot]
+]
 
 
 def postgres_factory(config: Config) -> PostgresConstructClass:
-    if config.snapshot_source_db_identifier is not None:
-        return PostgresFromSnapshot
+    if config.snapshot_arn is not None:
+        return PostgresFromSnapshotArn
+    elif config.snapshot_source_db_identifier is not None:
+        return PostgresFromLatestSnapshot
     return Postgres
