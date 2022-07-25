@@ -150,6 +150,58 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
     )
 
 
+def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(stack, vpc, instance_type, mocker):
+    from infrastructure.constructs.postgres import PostgresFromSnapshotArn
+    from infrastructure.constructs.postgres import PostgresProps
+    from infrastructure.config import Config
+    config = Config(
+        name='demo',
+        branch='some-branch',
+        pipeline='DemoPipeline',
+        snapshot_arn='some-arn-xyz',
+    )
+    # Given
+    existing_resources = mocker.Mock()
+    existing_resources.network.vpc = vpc
+    # When
+    postgres = PostgresFromSnapshotArn(
+        stack,
+        'PostgresFromSnapshotArn',
+        props=PostgresProps(
+            config=config,
+            existing_resources=existing_resources,
+            allocated_storage=10,
+            max_allocated_storage=20,
+            instance_type=instance_type
+        )
+    )
+    # Then
+    template = Template.from_stack(stack)
+    template.resource_count_is(
+        'AWS::CloudFormation::CustomResource',
+        0
+    )
+    template.resource_count_is(
+        'AWS::SecretsManager::SecretTargetAttachment',
+        1
+    )
+    template.has_resource_properties(
+        'AWS::RDS::DBInstance',
+        {
+            'Tags': [
+                {
+                    'Key': 'branch',
+                    'Value': 'some-branch'
+                },
+                {
+                    'Key': 'snapshot_arn',
+                    'Value': 'some-arn-xyz',
+                }
+            ],
+        }
+    )
+
+
 def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(stack, vpc, instance_type, mocker):
     from infrastructure.constructs.postgres import PostgresFromLatestSnapshot
     from infrastructure.constructs.postgres import PostgresProps
