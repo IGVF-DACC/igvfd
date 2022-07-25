@@ -78,7 +78,7 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "External identifier",
+                "title": "External Identifier",
                 "description": "An identifier from external resource.",
                 "type": "string",
                 "pattern": "^((GEO:SAMN\\d+)|(Cellosaurus:CVCL_\\w{4}))$"

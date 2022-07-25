@@ -112,7 +112,7 @@ class SampleTerm(OntologyTerm):
         return self._get_ontology_slims(registry, term_id, 'cells')
 
     @calculated_property(condition='term_id', schema={
-        'title': 'Developmental slims',
+        'title': 'Developmental Slims',
         'type': 'array',
         'items': {
             'type': 'string',
@@ -122,7 +122,7 @@ class SampleTerm(OntologyTerm):
         return self._get_ontology_slims(registry, term_id, 'developmental')
 
     @calculated_property(condition='term_id', schema={
-        'title': 'System slims',
+        'title': 'System Slims',
         'type': 'array',
         'items': {
             'type': 'string',
@@ -151,7 +151,7 @@ class AssayTerm(OntologyTerm):
         return keys
 
     @calculated_property(condition='term_id', schema={
-        'title': 'Assay type',
+        'title': 'Assay Type',
         'type': 'array',
         'items': {
             'type': 'string',
@@ -161,7 +161,7 @@ class AssayTerm(OntologyTerm):
         return self._get_ontology_slims(registry, term_id, 'assay')
 
     @calculated_property(condition='term_id', schema={
-        'title': 'Assay category',
+        'title': 'Assay Category',
         'type': 'array',
         'items': {
             'type': 'string',
@@ -171,7 +171,7 @@ class AssayTerm(OntologyTerm):
         return self._get_ontology_slims(registry, term_id, 'category')
 
     @calculated_property(condition='term_id', schema={
-        'title': 'Assay objective',
+        'title': 'Assay Objective',
         'type': 'array',
         'items': {
             'type': 'string',

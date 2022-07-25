@@ -46,7 +46,7 @@
             "type": "array",
             "uniqueItems": true,
             "items": {
-                "title": "External identifier",
+                "title": "External Identifier",
                 "description": "An identifier from external resource.",
                 "type": "string",
                 "pattern": "^((Cellosaurus:CVCL_\\w{4})|(DepMap:ACH-[0-9]{6}))$"
