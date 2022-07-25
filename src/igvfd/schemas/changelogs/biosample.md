@@ -1,5 +1,12 @@
 ## Changelog for *`biosample.json`*
 
+### Schema version 4
+
+* Remove `life_stage`.
+* Convert `age` to be calculated and not submittable.
+* Add `lower_bound_age`.
+* Add `upper_bound_age`.
+
 ### Schema version 3
 
 * Restrict `treatments`, `donors`, and `dbxrefs` to be a non-empty array with at least one item.
