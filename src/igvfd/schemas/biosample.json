@@ -141,72 +141,12 @@
                     }
                 }
             ]
-        },
-        "life_stage": {
-            "comment": "Human and mouse biosamples have different life stages to yeast.",
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "taxa": {
-                                "enum": [
-                                    "Homo sapiens",
-                                    "Mus musculus"
-                                ]
-                            }
-                        },
-                        "required": [
-                            "taxa"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "life_stage": {
-                                "enum": [
-                                    "adult",
-                                    "child",
-                                    "postnatal",
-                                    "embryonic",
-                                    "unknown"
-                                ]
-                            }
-                        }
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "taxa": {
-                                "enum": [
-                                    "Saccharomyces"
-                                ]
-                            }
-                        },
-                        "required": [
-                            "taxa"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "life_stage": {
-                                "enum": [
-                                    "lag",
-                                    "fermentative",
-                                    "respirative",
-                                    "stationary",
-                                    "decline",
-                                    "unknown"
-                                ]
-                            }
-                        }
-                    }
-                }
-            ]
         }
     },
     "properties": {
         "schema_version": {
-            "hidden comment": "Bump the default in the subclasses."
+            "hidden comment": "Bump the default in the subclasses.",
+            "default": "4"
         },
         "age": {
             "title": "Age",
@@ -226,23 +166,6 @@
                 "week",
                 "month",
                 "year"
-            ]
-        },
-        "life_stage": {
-            "title": "Life Stage",
-            "description": "The development stage of the organism used to prepare biosample.",
-            "type": "string",
-            "enum": [
-                "adult",
-                "child",
-                "postnatal",
-                "embryonic",
-                "unknown",
-                "lag",
-                "fermentative",
-                "respirative",
-                "stationary",
-                "decline"
             ]
         },
         "biosample_term": {
