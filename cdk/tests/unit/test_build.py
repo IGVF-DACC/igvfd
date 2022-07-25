@@ -52,7 +52,7 @@ def test_synth_get_config():
     config = get_config(args)
     assert config.branch == 'my-branch'
     assert config.pipeline == 'DemoDeploymentPipelineStack'
-    assert config.snapshot_source_db_identifier == 'ipbe3yif4qeg11'
+    assert config.snapshot_source_db_identifier or config.snapshot_arn
     assert config.common.project_name == 'igvfd'
     app = App(
         context={
