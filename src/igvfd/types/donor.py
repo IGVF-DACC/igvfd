@@ -19,6 +19,7 @@ from .base import (
 class Donor(Item):
     item_type = 'donor'
     base_types = ['Donor'] + Item.base_types
+    name_key = 'accession'
     schema = load_schema('igvfd:schemas/donor.json')
 
 
