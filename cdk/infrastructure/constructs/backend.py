@@ -250,7 +250,7 @@ class Backend(Construct):
         )
 
         target_group_response_time_alarm = self.fargate_service.target_group.metric_target_response_time(
-            period=Duration.minutes(1)
+            period=Duration.minutes(5)
         ).create_alarm(
             self,
             'FargateServiceTargetGroupResponseTime',
