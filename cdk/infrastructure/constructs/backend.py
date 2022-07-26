@@ -141,9 +141,14 @@ class Backend(Construct):
 
     def _add_application_container_to_task(self) -> None:
         container_name = 'pyramid'
-        self.pyramid_logger = LogDriver.aws_logs(
+        self.pyramid_log_group = LogGroup(
+            self,
+            'PyramidLogGroup',
+        )
+        self.pyramid_log_driver = AwsLogDriver.aws_logs(
             stream_prefix=container_name,
             mode=AwsLogDriverMode.NON_BLOCKING,
+            log_group=self.pyramid_log_group,
         )
         self.fargate_service.task_definition.add_container(
             'ApplicationContainer',
@@ -157,7 +162,7 @@ class Backend(Construct):
                 'DB_PASSWORD': self._get_database_secret(),
                 'SESSION_SECRET': self._get_session_secret(),
             },
-            logging=self.pyramid_logger,
+            logging=self.pyramid_log_driver
         )
 
     def _allow_connections_to_database(self) -> None:
@@ -279,20 +284,18 @@ class Backend(Construct):
             events_topic_action
         )
 
-        pyramid_logger = cast(
-            AwsLogDriver,
-            self.pyramid_logger
+        log_pattern_metric_alarm = self.pyramid_log_group.add_metric_filter(
+            'LogGroupMetricFilter',
+            filter_pattern=FilterPattern.all_terms('ELB-HealthChecker/2.0'),
+            metric_name='200 GET from HealthChecker',
+            metric_namespace='AWS/ECS/pyramid/logs',
+        ).metric(
+        ).create_alarm(
+            self,
+            'LogPatternMetricAlarm',
+            evaluation_periods=1,
+            threshold=10,
         )
-        if pyramid_logger.log_group is not None:
-            log_pattern_metric = pyramid_logger.log_group.add_metric_filter(
-                'LogGroupMetricFilter',
-                filter_pattern=FilterPattern.all_terms('ELB-HealthChecker/2.0'),
-                metric_name='200 GET from HealthChecker',
-                metric_namespace='AWS/ECS/pyramid/logs',
-            ).metric(
-            ).create_alarm(
-                self,
-                'LogPatternMetricAlarm',
-                evaluation_periods=1,
-                threshold=10,
-            )
+        log_pattern_metric_alarm.add_alarm_action(
+            events_topic_action
+        )
