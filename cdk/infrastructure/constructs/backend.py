@@ -33,6 +33,7 @@ from dataclasses import dataclass
 from aws_cdk.aws_cloudwatch import Alarm
 from aws_cdk.aws_cloudwatch_actions import SnsAction
 from aws_cdk import Duration
+from aws_cdk.aws_elasticloadbalancingv2 import HttpCodeTarget
 
 
 @dataclass
@@ -245,7 +246,7 @@ class Backend(Construct):
             events_topic_action
         )
 
-        target_group_response_time = self.fargate_service.target_group.metric_target_response_time(
+        target_group_response_time_alarm = self.fargate_service.target_group.metric_target_response_time(
             period=Duration.minutes(1)
         ).create_alarm(
             self,
@@ -253,9 +254,24 @@ class Backend(Construct):
             evaluation_periods=1,
             threshold=1,
         )
-        target_group_response_time.add_alarm_action(
+        target_group_response_time_alarm.add_alarm_action(
             events_topic_action
         )
-        target_group_response_time.add_ok_action(
+        target_group_response_time_alarm.add_ok_action(
+            events_topic_action
+        )
+
+        load_balancer_500_error_response_alarm = self.fargate_service.load_balancer.metric_http_code_target(
+            code=HttpCodeTarget.TARGET_5XX_COUNT,
+        ).create_alarm(
+            self,
+            'FargateServiceLoadBalancer500Alarm',
+            evaluation_periods=1,
+            threshold=10
+        )
+        load_balancer_500_error_response_alarm.add_alarm_action(
+            events_topic_action
+        )
+        load_balancer_500_error_response_alarm.add_ok_action(
             events_topic_action
         )
