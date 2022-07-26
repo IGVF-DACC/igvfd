@@ -34,3 +34,6 @@ def differentiated_cell_3_4(value, system):
     if 'alternate_accessions' in value:
         if len(value['alternate_accessions']) == 0:
             del value['alternate_accessions']
+    if 'differentiation_treatments' in value:
+        if len(value['differentiation_treatments']) == 0:
+            del value['differentiation_treatments']

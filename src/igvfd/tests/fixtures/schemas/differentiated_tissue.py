@@ -26,9 +26,7 @@ def differentiated_tissue_1(differentiated_tissue):
 def differentiated_tissue_part_of(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
-        'aliases': 'igvf-dacc:differentiated_tissue_part_of',
-        'schema_version': '2',
-        'collections': []
+        'aliases': 'igvf-dacc:differentiated_tissue_part_of'
     })
     return item
 
@@ -47,6 +45,12 @@ def differentiated_tissue_3(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
         'schema_version': '3',
-        'collections': []
+        'aliases': [],
+        'donors': [],
+        'dbxrefs': [],
+        'collections': [],
+        'alternate_accessions': [],
+        'treatments': [],
+        'differentiation_treatments': []
     })
     return item

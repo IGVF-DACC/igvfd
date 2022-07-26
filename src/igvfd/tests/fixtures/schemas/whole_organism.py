@@ -34,5 +34,10 @@ def whole_organism_2(whole_organism):
     item.update({
         'schema_version': '2',
         'aliases': [],
+        'donors': [],
+        'dbxrefs': [],
+        'collections': [],
+        'alternate_accessions': [],
+        'treatments': []
     })
     return item

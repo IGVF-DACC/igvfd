@@ -26,9 +26,7 @@ def tissue_1(tissue):
 def tissue_part_of(tissue):
     item = tissue.copy()
     item.update({
-        'aliases': 'igvf-dacc:tissue_part_of',
-        'schema_version': '2',
-        'donors': []
+        'aliases': 'igvf-dacc:tissue_part_of'
     })
     return item
 
@@ -47,6 +45,11 @@ def tissue_3(tissue):
     item = tissue.copy()
     item.update({
         'schema_version': '3',
-        'donors': []
+        'aliases': [],
+        'donors': [],
+        'dbxrefs': [],
+        'collections': [],
+        'alternate_accessions': [],
+        'treatments': []
     })
     return item

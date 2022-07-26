@@ -26,9 +26,7 @@ def differentiated_cell_1(differentiated_cell):
 def differentiated_cell_part_of(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
-        'aliases': 'igvf-dacc:differentiated_cell_part_of',
-        'schema_version': '2',
-        'dbxrefs': []
+        'aliases': 'igvf-dacc:differentiated_cell_part_of'
     })
     return item
 
@@ -47,6 +45,12 @@ def differentiated_cell_3(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
         'schema_version': '3',
-        'dbxrefs': []
+        'aliases': [],
+        'donors': [],
+        'dbxrefs': [],
+        'collections': [],
+        'alternate_accessions': [],
+        'treatments': [],
+        'differentiation_treatments': []
     })
     return item

@@ -67,6 +67,12 @@ def human_donor_1(human_donor):
     item = human_donor.copy()
     item.update({
         'schema_version': '1',
-        'parents': []
+        'parents': [],
+        'external_resources': [],
+        'aliases': [],
+        'collections': [],
+        'alternate_accessions': [],
+        'documents': [],
+        'references': []
     })
     return item

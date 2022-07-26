@@ -110,7 +110,6 @@ def test_wrangler_patch_groups_allowed(submitter, other_lab, wrangler_testapp):
         groups = {'groups': res.json.get('groups') + ['admin']}
     else:
         groups = {'groups': ['admin']}
-    groups = {'groups': ['admin']}
     wrangler_testapp.patch_json(res.json['@id'], groups, status=200)
 
 

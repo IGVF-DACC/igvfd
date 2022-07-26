@@ -17,6 +17,8 @@ def technical_sample_version_1(tissue):
     item = tissue.copy()
     item.update({
         'schema_version': '1',
-        'dbxrefs': []
+        'dbxrefs': [],
+        'aliases': [],
+        'alternate_accessions': []
     })
     return item

@@ -39,9 +39,7 @@ def cell_line_1(cell_line):
 def cell_line_part_of(cell_line):
     item = cell_line.copy()
     item.update({
-        'aliases': 'igvf-dacc:cell_line_part_of',
-        'schema_version': '2',
-        'alternate_accessions': []
+        'aliases': 'igvf-dacc:cell_line_part_of'
     })
     return item
 
@@ -60,6 +58,11 @@ def cell_line_3(cell_line):
     item = cell_line.copy()
     item.update({
         'schema_version': '3',
-        'alternate_accessions': []
+        'aliases': [],
+        'donors': [],
+        'dbxrefs': [],
+        'collections': [],
+        'alternate_accessions': [],
+        'treatments': []
     })
     return item
