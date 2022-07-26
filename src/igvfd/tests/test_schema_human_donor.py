@@ -28,21 +28,21 @@ def test_fail_donor_with_three_parents(human_donor, parent_human_donor_1, parent
     assert res.status_code == 422
 
 
-def test_fail_human_donor_with_rodent_parent(human_donor, parent_rodent_donor1, testapp):
+def test_fail_human_donor_with_rodent_parent(human_donor, parent_rodent_donor_1, testapp):
     res = testapp.patch_json(
         human_donor['@id'],
         {'parents': [
-            parent_rodent_donor1['@id']
+            parent_rodent_donor_1['@id']
         ]}, expect_errors=True)
     assert res.status_code == 422
 
 
-def test_fail_human_donor_with_human_and_rodent_parents(human_donor, parent_human_donor_1, parent_rodent_donor1, testapp):
+def test_fail_human_donor_with_human_and_rodent_parents(human_donor, parent_human_donor_1, parent_rodent_donor_1, testapp):
     res = testapp.patch_json(
         human_donor['@id'],
         {'parents': [
             parent_human_donor_1['@id'],
-            parent_rodent_donor1['@id']
+            parent_rodent_donor_1['@id']
         ]}, expect_errors=True)
     assert res.status_code == 422
 

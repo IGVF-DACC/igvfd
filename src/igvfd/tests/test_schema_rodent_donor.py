@@ -31,13 +31,13 @@ def test_strain(rodent_donor, testapp):
     assert res.status_code == 200
 
 
-def test_fail_donor_with_three_parents(rodent_donor, parent_rodent_donor1, parent_rodent_donor2, parent_rodent_donor3, testapp):
+def test_fail_donor_with_three_parents(rodent_donor, parent_rodent_donor_1, parent_rodent_donor_2, parent_rodent_donor_3, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],
         {'parents': [
-            parent_rodent_donor1['@id'],
-            parent_rodent_donor2['@id'],
-            parent_rodent_donor3['@id']
+            parent_rodent_donor_1['@id'],
+            parent_rodent_donor_2['@id'],
+            parent_rodent_donor_3['@id']
         ]}, expect_errors=True)
     assert res.status_code == 422
 
@@ -52,11 +52,11 @@ def test_fail_rodent_donor_with_human_parents(rodent_donor, parent_human_donor_1
     assert res.status_code == 422
 
 
-def test_fail_rodent_donor_with_rodent_and_human_parents(rodent_donor, parent_rodent_donor1, parent_human_donor_2, testapp):
+def test_fail_rodent_donor_with_rodent_and_human_parents(rodent_donor, parent_rodent_donor_1, parent_human_donor_2, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],
         {'parents': [
-            parent_rodent_donor1['@id'],
+            parent_rodent_donor_1['@id'],
             parent_human_donor_2['@id']
         ]}, expect_errors=True)
     assert res.status_code == 422
@@ -168,10 +168,10 @@ def test_rodent_traits(rodent_donor, phenotype_term_myocardial_infarction, pheno
     assert res.status_code == 200  # confirming existing phenotype terms allowed
 
 
-def test_patch_parents(rodent_donor, parent_rodent_donor1, testapp):
+def test_patch_parents(rodent_donor, parent_rodent_donor_1, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],
         {'parents': [
-            parent_rodent_donor1['@id']
+            parent_rodent_donor_1['@id']
         ]})
     assert res.status_code == 200

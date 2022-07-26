@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def technical_sample_1(testapp, other_lab, award, source):
+def technical_sample(testapp, other_lab, award, source):
     item = {
         'award': award['@id'],
         'lab': other_lab['@id'],
