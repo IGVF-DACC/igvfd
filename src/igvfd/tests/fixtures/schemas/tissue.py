@@ -14,7 +14,7 @@ def tissue(testapp, lab, source, award, rodent_donor):
 
 
 @pytest.fixture
-def tissue_1(tissue):
+def tissue_v1(tissue):
     item = tissue.copy()
     item.update({
         'schema_version': '1'
@@ -32,7 +32,7 @@ def tissue_part_of(tissue):
 
 
 @pytest.fixture
-def tissue_2(tissue):
+def tissue_v2(tissue):
     item = tissue.copy()
     item.update({
         'schema_version': '2'
@@ -41,7 +41,7 @@ def tissue_2(tissue):
 
 
 @pytest.fixture
-def tissue_3(tissue):
+def tissue_v3(tissue):
     item = tissue.copy()
     item.update({
         'schema_version': '3',

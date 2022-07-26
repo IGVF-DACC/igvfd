@@ -28,7 +28,7 @@ def treatment_2(testapp):
 
 
 @pytest.fixture
-def treatment_version_1(treatment_1):
+def treatment_version_v1(treatment_1):
     item = treatment_1.copy()
     item.update({
         'schema_version': '1',

@@ -13,7 +13,7 @@ def award(testapp):
 
 
 @pytest.fixture
-def award_1(award):
+def award_v1(award):
     item = award.copy()
     item.update({
         'schema_version': '1',

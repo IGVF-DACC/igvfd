@@ -14,7 +14,7 @@ def whole_organism(testapp, lab, source, award, rodent_donor):
 
 
 @pytest.fixture
-def whole_organism_1(whole_organism):
+def whole_organism_v1(whole_organism):
     item = whole_organism.copy()
     item.update({
         'schema_version': '1'
@@ -29,7 +29,7 @@ def whole_organism_part_of(whole_organism):
 
 
 @pytest.fixture
-def whole_organism_2(whole_organism):
+def whole_organism_v2(whole_organism):
     item = whole_organism.copy()
     item.update({
         'schema_version': '2',

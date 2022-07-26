@@ -63,7 +63,7 @@ def human_male_donor(testapp, lab, award):
 
 
 @pytest.fixture
-def human_donor_1(human_donor):
+def human_donor_v1(human_donor):
     item = human_donor.copy()
     item.update({
         'schema_version': '1',

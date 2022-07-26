@@ -62,7 +62,7 @@ def rodent_donor_orphan(testapp, lab, award):
 
 
 @pytest.fixture
-def rodent_donor_1(rodent_donor):
+def rodent_donor_v1(rodent_donor):
     item = rodent_donor.copy()
     item.update({
         'schema_version': '1',
