@@ -286,7 +286,7 @@ class Backend(Construct):
 
         log_pattern_metric_alarm = self.pyramid_log_group.add_metric_filter(
             'LogGroupMetricFilter',
-            filter_pattern=FilterPattern.all_terms('"ELB-HealthChecker/2.0"'),
+            filter_pattern=FilterPattern.all_terms('ELB-HealthChecker'),
             metric_name='200 GET from HealthChecker',
             metric_namespace='AWS/ECS/pyramid/logs',
         ).metric(
