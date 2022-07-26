@@ -9,6 +9,8 @@ from shared_infrastructure.igvf_dev.notification import Notification
 
 from typing import Any
 
+from aws_cdk.aws_sns import Topic
+
 
 class Resources(Construct):
 
@@ -33,4 +35,9 @@ class Resources(Construct):
         self.notification = Notification(
             self,
             'Notification',
+        )
+        self.events_topic = Topic.from_topic_arn(
+            self,
+            'EventsTopic',
+            topic_arn='arn:aws:sns:us-west-2:109189702753:EventNotificationStack-EventNotificationTopicB86E055D-1PHCT0ADKA4IJ',
         )
