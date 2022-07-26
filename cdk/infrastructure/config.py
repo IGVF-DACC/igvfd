@@ -10,7 +10,7 @@ from infrastructure.constants import DEV_DATABASE_IDENTIFIER
 config: Dict[str, Any] = {
     'environment': {
         'demo': {
-            'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:test-snapshot-inserts',
+            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
             'pipeline': 'DemoDeploymentPipelineStack',
         },
         'dev': {
