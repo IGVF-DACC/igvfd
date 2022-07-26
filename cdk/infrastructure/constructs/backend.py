@@ -34,6 +34,8 @@ from aws_cdk.aws_cloudwatch import Alarm
 from aws_cdk.aws_cloudwatch_actions import SnsAction
 from aws_cdk import Duration
 from aws_cdk.aws_elasticloadbalancingv2 import HttpCodeTarget
+from aws_cdk.aws_logs import ILogGroup, LogGroup, FilterPattern
+from aws_cdk.aws_ecs import AwsLogDriver
 
 
 @dataclass
@@ -139,6 +141,10 @@ class Backend(Construct):
 
     def _add_application_container_to_task(self) -> None:
         container_name = 'pyramid'
+        self.pyramid_logger = LogDriver.aws_logs(
+            stream_prefix=container_name,
+            mode=AwsLogDriverMode.NON_BLOCKING,
+        )
         self.fargate_service.task_definition.add_container(
             'ApplicationContainer',
             container_name=container_name,
@@ -151,10 +157,7 @@ class Backend(Construct):
                 'DB_PASSWORD': self._get_database_secret(),
                 'SESSION_SECRET': self._get_session_secret(),
             },
-            logging=LogDriver.aws_logs(
-                stream_prefix=container_name,
-                mode=AwsLogDriverMode.NON_BLOCKING,
-            ),
+            logging=self.pyramid_logger,
         )
 
     def _allow_connections_to_database(self) -> None:
@@ -275,3 +278,21 @@ class Backend(Construct):
         load_balancer_500_error_response_alarm.add_ok_action(
             events_topic_action
         )
+
+        pyramid_logger = cast(
+            AwsLogDriver,
+            self.pyramid_logger
+        )
+        if pyramid_logger.log_group is not None:
+            log_pattern_metric = pyramid_logger.log_group.add_metric_filter(
+                'LogGroupMetricFilter',
+                filter_pattern=FilterPattern.all_terms('ELB-HealthChecker/2.0'),
+                metric_name='200 GET from HealthChecker',
+                metric_namespace='AWS/ECS/pyramid/logs',
+            ).metric(
+            ).create_alarm(
+                self,
+                'LogPatternMetricAlarm',
+                evaluation_periods=1,
+                threshold=10,
+            )
