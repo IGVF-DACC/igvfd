@@ -32,6 +32,7 @@ from dataclasses import dataclass
 
 from aws_cdk.aws_cloudwatch import Alarm
 from aws_cdk.aws_cloudwatch_actions import SnsAction
+from aws_cdk import Duration
 
 
 @dataclass
@@ -202,6 +203,7 @@ class Backend(Construct):
         events_topic_action = SnsAction(
             self.props.existing_resources.events_topic
         )
+
         cpu_alarm = self.fargate_service.service.metric_cpu_utilization().create_alarm(
             self,
             'FargateServiceCPUAlarm',
@@ -214,6 +216,7 @@ class Backend(Construct):
         cpu_alarm.add_ok_action(
             events_topic_action,
         )
+
         memory_alarm = self.fargate_service.service.metric_memory_utilization().create_alarm(
             self,
             'FargateServiceMemoryAlarm',
@@ -224,5 +227,35 @@ class Backend(Construct):
             events_topic_action
         )
         memory_alarm.add_ok_action(
+            events_topic_action
+        )
+
+        target_group_request_count_alarm = self.fargate_service.target_group.metric_request_count(
+            period=Duration.minutes(1)
+        ).create_alarm(
+            self,
+            'FargateServiceTargetGroupRequestCountAlarm',
+            evaluation_periods=1,
+            threshold=30,
+        )
+        target_group_request_count_alarm.add_alarm_action(
+            events_topic_action
+        )
+        target_group_request_count_alarm.add_ok_action(
+            events_topic_action
+        )
+
+        target_group_response_time = self.fargate_service.target_group.metric_target_response_time(
+            period=Duration.minutes(1)
+        ).create_alarm(
+            self,
+            'FargateServiceTargetGroupResponseTime',
+            evaluation_periods=1,
+            threshold=1,
+        )
+        target_group_response_time.add_alarm_action(
+            events_topic_action
+        )
+        target_group_response_time.add_ok_action(
             events_topic_action
         )

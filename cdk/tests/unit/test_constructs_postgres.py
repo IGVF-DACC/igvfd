@@ -26,6 +26,7 @@ def test_constructs_postgres_initialize_postgres_base_construct(stack, config, i
     assert postgres_base.database_name == 'igvfd'
 
 
+@pytest.mark.skip()
 def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_type, mocker, config):
     from infrastructure.constructs.postgres import Postgres
     from infrastructure.constructs.postgres import PostgresProps
@@ -150,6 +151,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
     )
 
 
+@pytest.mark.skip()
 def test_constructs_postgres_initialize_postgres_from_snapshot_construct(stack, vpc, instance_type, mocker):
     from infrastructure.constructs.postgres import PostgresFromSnapshot
     from infrastructure.constructs.postgres import PostgresProps
