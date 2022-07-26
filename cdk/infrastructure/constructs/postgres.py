@@ -27,6 +27,10 @@ from typing import Union
 from dataclasses import dataclass
 
 
+from aws_cdk.aws_cloudwatch import Alarm
+from aws_cdk.aws_cloudwatch_actions import SnsAction
+
+
 @dataclass
 class PostgresProps:
     config: Config
@@ -130,6 +134,7 @@ class PostgresFromSnapshot(PostgresBase):
         self._get_latest_snapshot_id()
         self._define_database()
         self._add_tags_to_database()
+        self._add_metric_alarms()
 
     def _get_latest_snapshot_id(self) -> None:
         # Make mypy happy. The factory already
@@ -175,6 +180,35 @@ class PostgresFromSnapshot(PostgresBase):
         tags.add(
             'from_snapshot_arn',
             self.latest_snapshot.arn,
+        )
+
+    def _add_metric_alarms(self) -> None:
+        events_topic_action = SnsAction(
+            self.props.existing_resources.events_topic
+        )
+        cpu_alarm = self.database.metric_cpu_utilization().create_alarm(
+            self,
+            'PostgresCPUUtilizationAlarm',
+            evaluation_periods=1,
+            threshold=0.50,
+        )
+        cpu_alarm.add_alarm_action(
+            events_topic_action,
+        )
+        cpu_alarm.add_ok_action(
+            events_topic_action,
+        )
+        storage_alarm = self.database.metric_free_storage_space().create_alarm(
+            self,
+            'PostgresStorageAlarm',
+            evaluation_periods=1,
+            threshold=self.props.allocated_storage // 2,
+        )
+        storage_alarm.add_alarm_action(
+            events_topic_action
+        )
+        storage_alarm.add_ok_action(
+            events_topic_action
         )
 
 
