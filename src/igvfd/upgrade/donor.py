@@ -2,6 +2,7 @@ from snovault import upgrade_step
 
 
 @upgrade_step('human_donor', '1', '2')
+@upgrade_step('rodent_donor', '1', '2')
 def human_donor_1_2(value, system):
     # https://igvf.atlassian.net/browse/IGVF-221
     if 'parents' in value:
