@@ -30,6 +30,9 @@ from typing import cast
 
 from dataclasses import dataclass
 
+from aws_cdk.aws_cloudwatch import Alarm
+from aws_cdk.aws_cloudwatch_actions import SnsAction
+
 
 @dataclass
 class BackendProps:
@@ -68,6 +71,7 @@ class Backend(Construct):
         self._add_tags_to_fargate_service()
         self._enable_exec_command()
         self._configure_task_scaling()
+        self._add_metric_alarms()
 
     def _define_docker_assets(self) -> None:
         self.application_image = ContainerImage.from_asset(
@@ -192,4 +196,33 @@ class Backend(Construct):
             target_group=self.fargate_service.target_group,
             scale_in_cooldown=cdk.Duration.seconds(60),
             scale_out_cooldown=cdk.Duration.seconds(60),
+        )
+
+    def _add_metric_alarms(self) -> None:
+        events_topic_action = SnsAction(
+            self.props.existing_resources.events_topic
+        )
+        cpu_alarm = self.fargate_service.service.metric_cpu_utilization().create_alarm(
+            self,
+            'FargateServiceCPUAlarm',
+            evaluation_periods=1,
+            threshold=50,
+        )
+        cpu_alarm.add_alarm_action(
+            events_topic_action,
+        )
+        cpu_alarm.add_ok_action(
+            events_topic_action,
+        )
+        memory_alarm = self.fargate_service.service.metric_memory_utilization().create_alarm(
+            self,
+            'FargateServiceMemoryAlarm',
+            evaluation_periods=1,
+            threshold=12,
+        )
+        memory_alarm.add_alarm_action(
+            events_topic_action
+        )
+        memory_alarm.add_ok_action(
+            events_topic_action
         )

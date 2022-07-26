@@ -26,7 +26,6 @@ from typing import Union
 
 from dataclasses import dataclass
 
-
 from aws_cdk.aws_cloudwatch import Alarm
 from aws_cdk.aws_cloudwatch_actions import SnsAction
 
@@ -190,7 +189,7 @@ class PostgresFromSnapshot(PostgresBase):
             self,
             'PostgresCPUUtilizationAlarm',
             evaluation_periods=1,
-            threshold=0.50,
+            threshold=50,
         )
         cpu_alarm.add_alarm_action(
             events_topic_action,
