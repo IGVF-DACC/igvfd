@@ -290,11 +290,12 @@ class Backend(Construct):
             metric_name='patternchecker',
             metric_namespace='/fargate/log'
         ).metric(
+            statistic='sum'
         ).create_alarm(
             self,
             'LogPatternMetricAlarm',
             evaluation_periods=1,
-            threshold=10,
+            threshold=5,
         )
         log_pattern_metric_alarm.add_alarm_action(
             events_topic_action
