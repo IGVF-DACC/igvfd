@@ -283,3 +283,19 @@ class Backend(Construct):
         load_balancer_500_error_response_alarm.add_ok_action(
             events_topic_action
         )
+
+        log_pattern_metric_alarm = self.pyramid_log_group.add_metric_filter(
+            'LogGroupMetricFilter',
+            filter_pattern=FilterPattern.all_terms('ELB-HealthChecker'),
+            metric_name='patternchecker',
+            metric_namespace='/fargate/log'
+        ).metric(
+        ).create_alarm(
+            self,
+            'LogPatternMetricAlarm',
+            evaluation_periods=1,
+            threshold=10,
+        )
+        log_pattern_metric_alarm.add_alarm_action(
+            events_topic_action
+        )
