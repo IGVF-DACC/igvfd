@@ -42,54 +42,25 @@
         "$merge": [
             "sample.json#/dependentSchemas"
         ],
-        "age": {
-            "comment": "Biosample with a defined age requires age_units.",
-            "allOf": [
-                {
-                    "if": {
-                        "not": {
-                            "properties": {
-                                "age": {
-                                    "const": "unknown"
-                                }
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "age_units"
-                        ]
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "age_units": {
-                                "const": "year"
-                            },
-                            "taxa": {
-                                "const": "Homo sapiens"
-                            }
-                        },
-                        "required": [
-                            "age_units",
-                            "taxa"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "age": {
-                                "pattern": "^(([1-8]?\\d)|(90 or above))$"
-                            }
-                        }
-                    }
-                }
+        "lower_bound_age": {
+            "comment": "Biosample with a defined lower_bound_age requires upper_bound_age and age_units.",
+            "required": [
+                "upper_bound_age",
+                "age_units"
+            ]
+        },
+        "upper_bound_age": {
+            "comment": "Biosample with a defined upper_bound_age requires lower_bound_age and age_units.",
+            "required": [
+                "lower_bound_age",
+                "age_units"
             ]
         },
         "age_units": {
             "comment": "Human biosamples cannot have age units of minutes or hours. Yeast biosamples cannot have age units of years or months.",
             "required": [
-                "age"
+                "lower_bound_age",
+                "upper_bound_age"
             ],
             "allOf": [
                 {
@@ -148,12 +119,17 @@
             "hidden comment": "Bump the default in the subclasses.",
             "default": "4"
         },
-        "age": {
-            "title": "Age",
-            "description": "Age of organism at collection of the biosample.",
-            "comment": "Ages over 90 years are generic for privacy purposes.",
-            "type": "string",
-            "pattern": "^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$"
+        "lower_bound_age": {
+            "title": "Lower Bound Age",
+            "description": "Lower bound of age of the organism at the time of collection of the sample.",
+            "comment": "For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
+            "type": "number"
+        },
+        "upper_bound_age": {
+            "title": "Upper Bound Age",
+            "description": "Upper bound of age of the organism at the time of collection of the sample.",
+            "comment": "For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
+            "type": "number"
         },
         "age_units": {
             "title": "Age Units",
