@@ -64,7 +64,8 @@ class Biosample(Sample):
         schema={
             'title': 'Age',
             'description': 'Age of organism at the time of collection of the sample.',
-            'type': 'string'
+            'type': 'string',
+            'pattern': '^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$'
         }
     )
     def age(self, request, lower_bound_age, upper_bound_age):

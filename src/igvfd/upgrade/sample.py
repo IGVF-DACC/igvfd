@@ -1,6 +1,7 @@
 from snovault import upgrade_step
 
 
+<<<<<<< HEAD
 @upgrade_step('cell_line', '1', '2')
 @upgrade_step('differentiated_cell', '1', '2')
 @upgrade_step('differentiated_tissue', '1', '2')
@@ -83,4 +84,12 @@ def sample_4_5(value, system):
 def biosample_3_4(value, system):
 @upgrade_step('whole_organism', '3', '4')
 def sample_4_5(value, system):
+=======
+@upgrade_step('cell_line', 'a', 'b')
+@upgrade_step('differentiated_cell_line', 'a', 'b')
+@upgrade_step('differentiated_tissue', 'a', 'b')
+@upgrade_step('primary_cell', 'a', 'b')
+@upgrade_step('whole_organism', 'a', 'b')
+def biosample_3_4(value, system):
+>>>>>>> 43bedd2 (starting upgrade)
     # https://igvf.atlassian.net/browse/IGVF-249
