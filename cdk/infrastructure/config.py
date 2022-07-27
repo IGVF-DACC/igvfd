@@ -35,6 +35,7 @@ class Config:
     name: str
     branch: str
     pipeline: str
+    snapshot_arn: Optional[str] = None
     snapshot_source_db_identifier: Optional[str] = None
     common: Common = Common()
 

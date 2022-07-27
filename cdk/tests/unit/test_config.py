@@ -37,7 +37,7 @@ def test_config_build_config_from_name():
     )
     assert config.common.organization_name == 'igvf-dacc'
     assert config.common.project_name == 'igvfd'
-    assert config.snapshot_source_db_identifier == DEV_DATABASE_IDENTIFIER
+    assert config.snapshot_source_db_identifier or config.snapshot_arn
     assert config.branch == 'my-branch'
     assert config.pipeline == 'my-pipeline'
     assert config.name == 'demo'

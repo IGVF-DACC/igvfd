@@ -150,8 +150,60 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
     )
 
 
-def test_constructs_postgres_initialize_postgres_from_snapshot_construct(stack, vpc, instance_type, mocker):
-    from infrastructure.constructs.postgres import PostgresFromSnapshot
+def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(stack, vpc, instance_type, mocker):
+    from infrastructure.constructs.postgres import PostgresFromSnapshotArn
+    from infrastructure.constructs.postgres import PostgresProps
+    from infrastructure.config import Config
+    config = Config(
+        name='demo',
+        branch='some-branch',
+        pipeline='DemoPipeline',
+        snapshot_arn='some-arn-xyz',
+    )
+    # Given
+    existing_resources = mocker.Mock()
+    existing_resources.network.vpc = vpc
+    # When
+    postgres = PostgresFromSnapshotArn(
+        stack,
+        'PostgresFromSnapshotArn',
+        props=PostgresProps(
+            config=config,
+            existing_resources=existing_resources,
+            allocated_storage=10,
+            max_allocated_storage=20,
+            instance_type=instance_type
+        )
+    )
+    # Then
+    template = Template.from_stack(stack)
+    template.resource_count_is(
+        'AWS::CloudFormation::CustomResource',
+        0
+    )
+    template.resource_count_is(
+        'AWS::SecretsManager::SecretTargetAttachment',
+        1
+    )
+    template.has_resource_properties(
+        'AWS::RDS::DBInstance',
+        {
+            'Tags': [
+                {
+                    'Key': 'branch',
+                    'Value': 'some-branch'
+                },
+                {
+                    'Key': 'snapshot_arn',
+                    'Value': 'some-arn-xyz',
+                }
+            ],
+        }
+    )
+
+
+def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(stack, vpc, instance_type, mocker):
+    from infrastructure.constructs.postgres import PostgresFromLatestSnapshot
     from infrastructure.constructs.postgres import PostgresProps
     from infrastructure.config import Config
     config = Config(
@@ -164,9 +216,9 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_construct(stack, 
     existing_resources = mocker.Mock()
     existing_resources.network.vpc = vpc
     # When
-    postgres = PostgresFromSnapshot(
+    postgres = PostgresFromLatestSnapshot(
         stack,
-        'PostgresFromSnapshot',
+        'PostgresFromLatestSnapshot',
         props=PostgresProps(
             config=config,
             existing_resources=existing_resources,
@@ -190,10 +242,10 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_construct(stack, 
                 ],
                 'Version': '2012-10-17'
             },
-            'PolicyName': 'PostgresFromSnapshotLatestSnapshotFromDBGetLatestRDSSnapshotIDServiceRoleDefaultPolicy98F8C942',
+            'PolicyName': 'PostgresFromLatestSnapshotLatestSnapshotFromDBGetLatestRDSSnapshotIDServiceRoleDefaultPolicyFCFE06D5',
             'Roles': [
                 {
-                    'Ref': 'PostgresFromSnapshotLatestSnapshotFromDBGetLatestRDSSnapshotIDServiceRole00AE3DDA'
+                    'Ref': 'PostgresFromLatestSnapshotLatestSnapshotFromDBGetLatestRDSSnapshotIDServiceRoleC6B5E8E4',
                 }
             ]
         }
@@ -203,7 +255,7 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_construct(stack, 
         {
             'ServiceToken': {
                 'Fn::GetAtt': [
-                    'PostgresFromSnapshotLatestSnapshotFromDBProviderframeworkonEvent8F67E899',
+                    'PostgresFromLatestSnapshotLatestSnapshotFromDBProviderframeworkonEvent034F8EB7',
                     'Arn'
                 ]
             },
@@ -223,10 +275,10 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_construct(stack, 
                     'Value': 'some-branch'
                 },
                 {
-                    'Key': 'from_snapshot_arn',
+                    'Key': 'latest_snapshot_arn',
                     'Value': {
                         'Fn::GetAtt': [
-                            'PostgresFromSnapshotLatestSnapshotFromDBLatestRDSSnapshopIDCA971DA9',
+                            'PostgresFromLatestSnapshotLatestSnapshotFromDBLatestRDSSnapshotIDC2E57373',
                             'DBSnapshotArn'
                         ]
                     }
@@ -242,7 +294,8 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_construct(stack, 
 
 def test_constructs_postgres_postgres_factory():
     from infrastructure.constructs.postgres import Postgres
-    from infrastructure.constructs.postgres import PostgresFromSnapshot
+    from infrastructure.constructs.postgres import PostgresFromSnapshotArn
+    from infrastructure.constructs.postgres import PostgresFromLatestSnapshot
     from infrastructure.constructs.postgres import postgres_factory
     from infrastructure.config import Config
     config = Config(
@@ -256,7 +309,15 @@ def test_constructs_postgres_postgres_factory():
         name='demo',
         branch='xyz',
         pipeline='zyx',
+        snapshot_arn='snapshot-arn-xyz',
+    )
+    postgres = postgres_factory(config)
+    assert issubclass(postgres, PostgresFromSnapshotArn)
+    config = Config(
+        name='demo',
+        branch='xyz',
+        pipeline='zyx',
         snapshot_source_db_identifier='source-db-id',
     )
     postgres = postgres_factory(config)
-    assert issubclass(postgres, PostgresFromSnapshot)
+    assert issubclass(postgres, PostgresFromLatestSnapshot)

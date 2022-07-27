@@ -65,7 +65,7 @@ class LatestSnapshotFromDB(Construct):
 
         self.latest_snapshot = CustomResource(
             self,
-            'LatestRDSSnapshopID',
+            'LatestRDSSnapshotID',
             service_token=self.provider.service_token,
             properties={
                 'db_instance_identifier': db_instance_identifier,
