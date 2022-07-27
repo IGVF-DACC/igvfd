@@ -28,8 +28,8 @@ def treatment_protein(testapp):
 
 
 @pytest.fixture
-def treatment_v1(treatment):
-    item = treatment.copy()
+def treatment_v1(treatment_chemical):
+    item = treatment_chemical.copy()
     item.update({
         'schema_version': '1',
         'documents': [],

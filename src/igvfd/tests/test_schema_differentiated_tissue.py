@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_post_differentiated_tissue(testapp, award, lab, source, treatment, human_donor):
+def test_post_differentiated_tissue(testapp, award, lab, source, treatment_chemical, human_donor):
     res = testapp.post_json(
         '/differentiated_tissue',
         {
@@ -10,7 +10,7 @@ def test_post_differentiated_tissue(testapp, award, lab, source, treatment, huma
             'source': source['@id'],
             'post_differentiation_time': 72,
             'post_differentiation_time_units': 'hour',
-            'treatments': [treatment['@id']],
+            'treatments': [treatment_chemical['@id']],
             'taxa': 'Homo sapiens',
             'donors': [human_donor['@id']]
         })

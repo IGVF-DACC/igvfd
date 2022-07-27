@@ -1,8 +1,8 @@
 import pytest
 
 
-def test_treatment_calculated(treatment, testapp):
-    res = testapp.get(treatment['@id'])
+def test_treatment_calculated(treatment_chemical, testapp):
+    res = testapp.get(treatment_chemical['@id'])
     assert res.json['title'] == 'Treated with 10 mM lactate for 1 hour'
 
 
