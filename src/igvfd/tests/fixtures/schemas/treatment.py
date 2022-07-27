@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def treatment(testapp):
+def treatment_chemical(testapp):
     item = {
         'treatment_term_id': 'CHEBI:24996',
         'treatment_term_name': 'lactate',
