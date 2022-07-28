@@ -69,6 +69,13 @@
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "formInput": "textarea"
+        },
+        "description": {
+            "title": "Description",
+            "description": "A plain text description of the object.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
+            "formInput": "textarea"
         }
     },
     "accession": {
