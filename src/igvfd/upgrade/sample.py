@@ -2,19 +2,34 @@ from snovault import upgrade_step
 
 
 @upgrade_step('cell_line', '1', '2')
-def cell_line_1_2(value, system):
+@upgrade_step('differentiated_cell', '1', '2')
+@upgrade_step('differentiated_tissue', '1', '2')
+@upgrade_step('primary_cell', '1', '2')
+@upgrade_step('tissue', '1', '2')
+@upgrade_step('whole_organism', '1', '2')
+def sample_1_2(value, system):
     # https://igvf.atlassian.net/browse/IGVF-207
     return
 
 
 @upgrade_step('cell_line', '2', '3')
-def cell_line_2_3(value, system):
+@upgrade_step('differentiated_cell', '2', '3')
+@upgrade_step('differentiated_tissue', '2', '3')
+@upgrade_step('primary_cell', '2', '3')
+@upgrade_step('tissue', '2', '3')
+def sample_2_3(value, system):
     # https://igvf.atlassian.net/browse/IGVF-210
     return
 
 
 @upgrade_step('cell_line', '3', '4')
-def cell_line_3_4(value, system):
+@upgrade_step('differentiated_cell', '3', '4')
+@upgrade_step('differentiated_tissue', '3', '4')
+@upgrade_step('primary_cell', '3', '4')
+@upgrade_step('tissue', '3', '4')
+@upgrade_step('whole_organism', '2', '3')
+@upgrade_step('technical_sample', '1', '2')
+def sample_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-221
     if 'treatments' in value:
         if len(value['treatments']) == 0:
@@ -34,3 +49,6 @@ def cell_line_3_4(value, system):
     if 'alternate_accessions' in value:
         if len(value['alternate_accessions']) == 0:
             del value['alternate_accessions']
+    if 'differentiation_treatments' in value:
+        if len(value['differentiation_treatments']) == 0:
+            del value['differentiation_treatments']
