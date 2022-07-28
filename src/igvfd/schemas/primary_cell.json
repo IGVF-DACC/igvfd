@@ -57,14 +57,14 @@
             "default": "4"
         },
         "passage_number": {
-            "title": "Passage number",
+            "title": "Passage Number",
             "description": "Number of passages including the passages from the source.",
             "comment": "In calculating passage number, include passages from the source.",
             "type": "integer",
             "minimum": 0
         },
         "date_obtained": {
-            "title": "Date harvested"
+            "title": "Date Harvested"
         },
         "part_of": {
             "linkTo": [

@@ -49,13 +49,13 @@
             "type": "string"
         },
         "date_published": {
-            "title": "Publication date",
+            "title": "Publication Date",
             "description": "The date the publication or communication was published; must be in YYYY-MM-DD format.",
             "type": "string",
             "format": "date"
         },
         "date_revised": {
-            "title": "Date revised",
+            "title": "Date Revised",
             "type": "string",
             "format": "date"
         },
@@ -94,14 +94,14 @@
             }
         },
         "published_by": {
-            "title": "Published by",
+            "title": "Published By",
             "type": "array",
             "uniqueItems": true,
             "default": [
                 "IGVF"
             ],
             "items": {
-                "title": "Published by",
+                "title": "Published By",
                 "type": "string",
                 "enum": [
                     "community",

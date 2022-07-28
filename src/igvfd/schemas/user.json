@@ -32,12 +32,12 @@
             "uniqueKey": true
         },
         "first_name": {
-            "title": "First name",
+            "title": "First Name",
             "description": "The user's first (given) name.",
             "type": "string"
         },
         "last_name": {
-            "title": "Last name",
+            "title": "Last Name",
             "description": "The user's last (family) name.",
             "type": "string"
         },
@@ -50,7 +50,7 @@
             "linkTo": "Lab"
         },
         "submits_for": {
-            "title": "Submits for",
+            "title": "Submits For",
             "description": "Labs user is authorized to submit data for.",
             "type": "array",
             "minItems": 1,
@@ -80,7 +80,7 @@
             }
         },
         "viewing_groups": {
-            "title": "View access group",
+            "title": "View Access Group",
             "description": "The group that determines which set of data the user has permission to view.",
             "type": "array",
             "uniqueItems": true,
@@ -94,7 +94,7 @@
             }
         },
         "job_title": {
-            "title": "Job title",
+            "title": "Job Title",
             "type": "string",
             "permission": "import_items",
             "enum": [

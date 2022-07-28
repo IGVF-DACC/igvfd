@@ -57,7 +57,7 @@
             }
         },
         "institute_label": {
-            "title": "Institute label",
+            "title": "Institute Label",
             "description": "An abbreviation for the institute the lab is associated with.",
             "type": "string",
             "default": "",

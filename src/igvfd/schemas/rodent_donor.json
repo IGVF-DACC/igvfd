@@ -66,7 +66,7 @@
             }
         },
         "strain_background": {
-            "title": "Strain background",
+            "title": "Strain Background",
             "description": "The specific parent strain designation of a non-human donor.",
             "comment": "Strain background of rodent strains.  See Ali Mortazavi grant.",
             "type": "string",
@@ -85,13 +85,13 @@
             ]
         },
         "strain": {
-            "title": "Strain name",
+            "title": "Strain Name",
             "description": "The specific strain designation of a non-human donor.",
             "comment": "Strain name of rodent strains.",
             "type": "string"
         },
         "genotype": {
-            "title": "Strain genotype",
+            "title": "Strain Genotype",
             "description": "The genotype of the strain according to accepted nomenclature conventions.",
             "comment": "Genotype of rodent strains.",
             "type": "string"

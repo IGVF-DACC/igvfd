@@ -28,7 +28,7 @@ class Publication(Item):
         return keys
 
     @calculated_property(condition='date_published', schema={
-        'title': 'Publication year',
+        'title': 'Publication Year',
         'type': 'integer',
     })
     def publication_year(self, date_published):

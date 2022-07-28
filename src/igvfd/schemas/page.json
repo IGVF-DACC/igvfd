@@ -61,7 +61,7 @@
             "default": "2"
         },
         "parent": {
-            "title": "Parent page",
+            "title": "Parent Page",
             "type": [
                 "string",
                 "null"
@@ -83,22 +83,22 @@
             "type": "string"
         },
         "news": {
-            "title": "News post",
+            "title": "News Post",
             "type": "boolean",
             "description": "Page is a news post"
         },
         "news_excerpt": {
-            "title": "News excerpt",
+            "title": "News Excerpt",
             "type": "string",
             "description": "News post excerpt"
         },
         "news_keywords": {
-            "title": "News keywords",
+            "title": "News Keywords",
             "type": "array",
             "description": "Keywords to filter news posts.",
             "minItems": 1,
             "items": {
-                "title": "News keyword",
+                "title": "News Keyword",
                 "description": "A keyword for news post filtering.",
                 "type": "string",
                 "enum": [
@@ -116,7 +116,7 @@
             }
         },
         "layout": {
-            "title": "Page layout",
+            "title": "Page Layout",
             "description": "Hierarchical description of the page layout.",
             "type": "object",
             "formInput": "layout",
