@@ -20,6 +20,7 @@ from .base import (
 class Sample(Item):
     item_type = 'sample'
     base_types = ['Sample'] + Item.base_types
+    name_key = 'accession'
     schema = load_schema('igvfd:schemas/sample.json')
 
 
