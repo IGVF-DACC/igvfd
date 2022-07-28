@@ -33,7 +33,7 @@ class DevelopmentDeployStage(cdk.Stage):
             self,
             'BackendStack',
             config=config,
-            postgres=self.postgres_stack.postgres,
+            postgres_multiplexer=self.postgres_stack.multiplexer,
             existing_resources_class=igvf_dev.Resources,
             env=igvf_dev.US_WEST_2,
         )

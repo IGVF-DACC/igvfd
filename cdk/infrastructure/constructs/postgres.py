@@ -23,6 +23,7 @@ from typing import Any
 from typing import cast
 from typing import Type
 from typing import Union
+from typing import Optional
 
 from dataclasses import dataclass
 
@@ -34,6 +35,8 @@ class PostgresProps:
     allocated_storage: int
     max_allocated_storage: int
     instance_type: InstanceType
+    snapshot_arn: Optional[str] = None
+    snapshot_source_db_identifier: Optional[str] = None
 
 
 class PostgresBase(Construct):
@@ -137,7 +140,7 @@ class PostgresFromSnapshotArn(PostgresBase):
     def _get_snapshot_arn(self) -> str:
         return cast(
             str,
-            self.props.config.snapshot_arn,
+            self.props.snapshot_arn,
         )
 
     def _define_database(self) -> None:
@@ -186,7 +189,7 @@ class PostgresFromLatestSnapshot(PostgresFromSnapshotArn):
         # checks that this is not None.
         return cast(
             str,
-            self.props.config.snapshot_source_db_identifier
+            self.props.snapshot_source_db_identifier
         )
 
     def _define_latest_snapshot(self) -> None:
@@ -228,9 +231,9 @@ PostgresConstructClass = Union[
 ]
 
 
-def postgres_factory(config: Config) -> PostgresConstructClass:
-    if config.snapshot_arn is not None:
+def postgres_factory(props: PostgresProps) -> PostgresConstructClass:
+    if props.snapshot_arn is not None:
         return PostgresFromSnapshotArn
-    elif config.snapshot_source_db_identifier is not None:
+    elif props.snapshot_source_db_identifier is not None:
         return PostgresFromLatestSnapshot
     return Postgres

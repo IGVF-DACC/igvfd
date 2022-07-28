@@ -25,6 +25,8 @@ from infrastructure.constructs.existing.types import ExistingResources
 
 from infrastructure.constructs.postgres import PostgresConstruct
 
+from infrastructure.multiplexer import Multiplexer
+
 from typing import Any
 from typing import cast
 
@@ -35,16 +37,18 @@ from dataclasses import dataclass
 class BackendProps:
     config: Config
     existing_resources: ExistingResources
-    postgres: PostgresConstruct
+    postgres_multiplexer: Multiplexer
     cpu: int
     memory_limit_mib: int
     desired_count: int
     max_capacity: int
+    use_postgres_named: str
 
 
 class Backend(Construct):
 
     props: BackendProps
+    postgres: PostgresConstruct
     application_image: ContainerImage
     nginx_image: ContainerImage
     fargate_service: ApplicationLoadBalancedFargateService
@@ -59,6 +63,7 @@ class Backend(Construct):
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
         self.props = props
+        self._define_postgres()
         self._generate_session_secret()
         self._define_docker_assets()
         self._define_fargate_service()
@@ -68,6 +73,14 @@ class Backend(Construct):
         self._add_tags_to_fargate_service()
         self._enable_exec_command()
         self._configure_task_scaling()
+
+    def _define_postgres(self) -> None:
+        self.postgres = cast(
+            PostgresConstruct,
+            self.props.postgres_multiplexer.resources.get(
+                self.props.use_postgres_named
+            )
+        )
 
     def _define_docker_assets(self) -> None:
         self.application_image = ContainerImage.from_asset(
@@ -108,7 +121,7 @@ class Backend(Construct):
         )
 
     def _get_database_secret(self) -> Secret:
-        database_secret = self.props.postgres.database.secret
+        database_secret = self.postgres.database.secret
         # Unwrap optional for mypy.
         if database_secret is None:
             raise ValueError('Database secret is None')
@@ -138,8 +151,8 @@ class Backend(Construct):
             container_name=container_name,
             image=self.application_image,
             environment={
-                'DB_HOST': self.props.postgres.database.instance_endpoint.hostname,
-                'DB_NAME': self.props.postgres.database_name,
+                'DB_HOST': self.postgres.database.instance_endpoint.hostname,
+                'DB_NAME': self.postgres.database_name,
             },
             secrets={
                 'DB_PASSWORD': self._get_database_secret(),
@@ -153,7 +166,7 @@ class Backend(Construct):
 
     def _allow_connections_to_database(self) -> None:
         self.fargate_service.service.connections.allow_to(
-            self.props.postgres.database,
+            self.postgres.database,
             Port.tcp(5432),
             description='Allow connection to Postgres instance',
         )
