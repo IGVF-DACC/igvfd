@@ -8,17 +8,27 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
     from infrastructure.constructs.backend import BackendProps
     from infrastructure.constructs.postgres import Postgres
     from infrastructure.constructs.postgres import PostgresProps
+    from infrastructure.multiplexer import Multiplexer
+    from infrastructure.multiplexer import MultiplexerConfig
     # Given
-    postgres = Postgres(
+    postgres_multiplexer = Multiplexer(
         stack,
-        'Postgres',
-        props=PostgresProps(
-            config=config,
-            existing_resources=existing_resources,
-            allocated_storage=10,
-            max_allocated_storage=20,
-            instance_type=instance_type
-        )
+        configs=[
+            MultiplexerConfig(
+                construct_id='Postgres',
+                on=True,
+                construct_class=Postgres,
+                kwargs={
+                    'props': PostgresProps(
+                        config=config,
+                        existing_resources=existing_resources,
+                        allocated_storage=10,
+                        max_allocated_storage=20,
+                        instance_type=instance_type
+                    )
+                }
+            ),
+        ]
     )
     # When
     backend = Backend(
@@ -27,11 +37,12 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
         props=BackendProps(
             config=config,
             existing_resources=existing_resources,
-            postgres=postgres,
+            postgres_multiplexer=postgres_multiplexer,
             cpu=2048,
             memory_limit_mib=4096,
             desired_count=4,
             max_capacity=7,
+            use_postgres_named='Postgres'
         )
     )
     template = Template.from_stack(stack)

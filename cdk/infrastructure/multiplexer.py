@@ -16,7 +16,6 @@ class MultiplexerConfig:
     on: bool
     construct_class: Type[Construct]
     kwargs: Dict[str, Any]
-    export_values: List[str]
 
 
 class Multiplexer:
@@ -43,13 +42,3 @@ class Multiplexer:
                 **config.kwargs,
             )
             self.resources[config.construct_id] = construct
-            self.apply_export_values(config)
-
-    def apply_export_values(self, config: MultiplexerConfig) -> None:
-        parent_stack = Stack.of(self.scope)
-        for path in config.export_values:
-            value = self.resources[config.construct_id]
-            split_path = path.split('.')
-            for split in split_path:
-                value = getattr(value, split)
-            parent_stack.export_value(value)
