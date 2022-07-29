@@ -63,7 +63,7 @@ def test_synth_get_config():
     config = get_config(args)
     assert config.branch == 'dev'
     assert config.pipeline == 'ContinuousDeploymentPipelineStack'
-    assert 'snapshot_source_db_identifier' not in config.postgres['instances'][0]
+    assert 'snapshot_source_db_identifier' not in config.postgres['instances'][0]['props']
     assert config.common.project_name == 'igvfd'
 
 
