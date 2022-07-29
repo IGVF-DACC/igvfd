@@ -25,6 +25,7 @@ def test_stacks_backend_initialize_backend_stack(config):
         env=igvf_dev.US_WEST_2,
     )
     template = Template.from_stack(postgres_stack)
+    assert len(template.to_json()['Outputs']) == 3
     template.has_output(
         'ExportsOutputFnGetAttPostgres97B73533EndpointAddress94521E53',
         {

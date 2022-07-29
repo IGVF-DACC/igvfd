@@ -121,7 +121,7 @@ class Postgres(PostgresBase):
         )
 
     def _export_values(self) -> None:
-        pass
+        export_default_explicit_values(self)
 
 
 class PostgresFromSnapshotArn(PostgresBase):
@@ -185,7 +185,7 @@ class PostgresFromSnapshotArn(PostgresBase):
         )
 
     def _export_values(self) -> None:
-        pass
+        export_default_explicit_values(self)
 
 
 class PostgresFromLatestSnapshot(PostgresFromSnapshotArn):
@@ -234,7 +234,7 @@ class PostgresFromLatestSnapshot(PostgresFromSnapshotArn):
         )
 
     def _export_values(self) -> None:
-        pass
+        export_default_explicit_values(self)
 
 
 PostgresConstruct = Union[
@@ -256,3 +256,18 @@ def postgres_factory(props: PostgresProps) -> PostgresConstructClass:
     elif props.snapshot_source_db_identifier is not None:
         return PostgresFromLatestSnapshot
     return Postgres
+
+
+def export_default_explicit_values(postgres: PostgresConstruct) -> None:
+    parent_stack = Stack.of(postgres)
+    parent_stack.export_value(
+        postgres.database.instance_endpoint.hostname
+    )
+    if postgres.database.secret is not None:
+        parent_stack.export_value(
+            postgres.database.secret.secret_full_arn
+        )
+    for security_group in postgres.database.connections.security_groups:
+        parent_stack.export_value(
+            security_group.security_group_id
+        )

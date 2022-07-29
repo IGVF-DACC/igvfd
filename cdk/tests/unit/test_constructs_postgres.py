@@ -46,8 +46,40 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
     )
     # Then
     template = Template.from_stack(stack)
-    import json
-    print(json.dumps(template.to_json()))
+    assert len(template.to_json()['Outputs']) == 3
+    template.has_output(
+        'ExportsOutputFnGetAttPostgres97B73533EndpointAddress94521E53',
+        {
+            'Value': {
+                'Fn::GetAtt': [
+                    'Postgres97B73533', 'Endpoint.Address']
+            },
+            'Export': {
+                'Name': 'Default:ExportsOutputFnGetAttPostgres97B73533EndpointAddress94521E53'
+            }
+        }
+    )
+    template.has_output(
+        'ExportsOutputRefPostgresSecretAttachment5D653F4FA8D767F0',
+        {
+            'Value': {
+                'Ref': 'PostgresSecretAttachment5D653F4F'
+            },
+            'Export': {
+                'Name': 'Default:ExportsOutputRefPostgresSecretAttachment5D653F4FA8D767F0'
+            }
+        }
+    )
+    template.has_output(
+        'ExportsOutputFnGetAttPostgresSecurityGroupA2E13118GroupId7C742499',
+        {
+            'Value': {
+                'Fn::GetAtt': ['PostgresSecurityGroupA2E13118', 'GroupId']},
+            'Export': {
+                'Name': 'Default:ExportsOutputFnGetAttPostgresSecurityGroupA2E13118GroupId7C742499'
+            }
+        }
+    )
     expected = {
         'Type': 'AWS::RDS::DBInstance',
         'Properties': {
@@ -173,6 +205,7 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(sta
     )
     # Then
     template = Template.from_stack(stack)
+    assert len(template.to_json()['Outputs']) == 3
     template.resource_count_is(
         'AWS::CloudFormation::CustomResource',
         0
@@ -218,6 +251,7 @@ def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(
     )
     # Then
     template = Template.from_stack(stack)
+    assert len(template.to_json()['Outputs']) == 3
     template.has_resource_properties(
         'AWS::IAM::Policy',
         {
