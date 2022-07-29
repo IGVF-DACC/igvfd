@@ -124,4 +124,6 @@ def config():
         name='demo',
         branch='some-branch',
         pipeline='xyz',
+        postgres={},
+        backend={},
     )
