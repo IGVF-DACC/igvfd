@@ -46,6 +46,8 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
     )
     # Then
     template = Template.from_stack(stack)
+    import json
+    print(json.dumps(template.to_json()))
     expected = {
         'Type': 'AWS::RDS::DBInstance',
         'Properties': {

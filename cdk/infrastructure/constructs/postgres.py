@@ -1,3 +1,4 @@
+from aws_cdk import Stack
 from aws_cdk import Tags
 
 from constructs import Construct
@@ -66,6 +67,12 @@ class PostgresBase(Construct):
     def _define_database_name(self) -> None:
         self.database_name = 'igvfd'
 
+    def _export_values(self) -> None:
+        raise NotImplementedError
+
+    def _post_init(self) -> None:
+        self._export_values()
+
 
 class Postgres(PostgresBase):
 
@@ -90,6 +97,7 @@ class Postgres(PostgresBase):
     def _build(self) -> None:
         self._define_database()
         self._add_tags_to_database()
+        self._post_init()
 
     def _define_database(self) -> None:
         self.database = DatabaseInstance(
@@ -111,6 +119,9 @@ class Postgres(PostgresBase):
             'branch',
             self.props.config.branch,
         )
+
+    def _export_values(self) -> None:
+        pass
 
 
 class PostgresFromSnapshotArn(PostgresBase):
@@ -136,6 +147,7 @@ class PostgresFromSnapshotArn(PostgresBase):
     def _build(self) -> None:
         self._define_database()
         self._add_tags_to_database()
+        self._post_init()
 
     def _get_snapshot_arn(self) -> str:
         return cast(
@@ -172,6 +184,9 @@ class PostgresFromSnapshotArn(PostgresBase):
             self._get_snapshot_arn(),
         )
 
+    def _export_values(self) -> None:
+        pass
+
 
 class PostgresFromLatestSnapshot(PostgresFromSnapshotArn):
 
@@ -183,6 +198,7 @@ class PostgresFromLatestSnapshot(PostgresFromSnapshotArn):
         self._define_latest_snapshot()
         self._define_database()
         self._add_tags_to_database()
+        self._post_init()
 
     def _get_db_instance_identifier(self) -> str:
         # Make mypy happy. The factory already
@@ -216,6 +232,9 @@ class PostgresFromLatestSnapshot(PostgresFromSnapshotArn):
             'latest_snapshot_arn',
             self.latest_snapshot.arn,
         )
+
+    def _export_values(self) -> None:
+        pass
 
 
 PostgresConstruct = Union[

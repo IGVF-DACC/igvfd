@@ -24,6 +24,46 @@ def test_stacks_backend_initialize_backend_stack(config):
         existing_resources_class=igvf_dev.Resources,
         env=igvf_dev.US_WEST_2,
     )
+    template = Template.from_stack(postgres_stack)
+    template.has_output(
+        'ExportsOutputFnGetAttPostgres97B73533EndpointAddress94521E53',
+        {
+            'Value': {
+                'Fn::GetAtt': [
+                    'Postgres97B73533',
+                    'Endpoint.Address'
+                ]
+            },
+            'Export': {
+                'Name': 'TestPostgresStack:ExportsOutputFnGetAttPostgres97B73533EndpointAddress94521E53'
+            }
+        }
+    )
+    template.has_output(
+        'ExportsOutputRefPostgresSecretAttachment5D653F4FA8D767F0',
+        {
+            'Value': {
+                'Ref': 'PostgresSecretAttachment5D653F4F'
+            },
+            'Export': {
+                'Name': 'TestPostgresStack:ExportsOutputRefPostgresSecretAttachment5D653F4FA8D767F0'
+            }
+        }
+    )
+    template.has_output(
+        'ExportsOutputFnGetAttPostgresSecurityGroupA2E13118GroupId7C742499',
+        {
+            'Value': {
+                'Fn::GetAtt': [
+                    'PostgresSecurityGroupA2E13118',
+                    'GroupId'
+                ]
+            },
+            'Export': {
+                'Name': 'TestPostgresStack:ExportsOutputFnGetAttPostgresSecurityGroupA2E13118GroupId7C742499'
+            }
+        }
+    )
     template = Template.from_stack(backend_stack)
     template.has_resource_properties(
         'AWS::ECS::Service',
