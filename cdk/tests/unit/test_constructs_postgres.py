@@ -251,7 +251,7 @@ def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(
     )
     # Then
     template = Template.from_stack(stack)
-    assert len(template.to_json()['Outputs']) == 3
+    assert len(template.to_json()['Outputs']) == 4
     template.has_resource_properties(
         'AWS::IAM::Policy',
         {
