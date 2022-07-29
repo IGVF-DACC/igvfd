@@ -23,17 +23,11 @@ from dataclasses import dataclass
 from dataclasses import field
 
 
-DEFAULT_EXPORT_VALUES: List[str] = [
-    'database.instance_endpoint.hostname',
-]
-
-
 @dataclass
 class PostgresConfig:
     construct_id: str
     on: bool
     props: Dict[str, Any]
-    export_values: List[str] = field(default_factory=lambda: DEFAULT_EXPORT_VALUES)
 
 
 def map_postgres_to_multiplexer_config(
@@ -48,7 +42,6 @@ def map_postgres_to_multiplexer_config(
         kwargs={
             'props': postgres_props
         },
-        export_values=postgres_config.export_values,
     )
 
 

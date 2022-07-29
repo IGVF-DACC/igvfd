@@ -20,7 +20,7 @@ def test_stacks_backend_initialize_backend_stack(config):
         app,
         'TestBackendStack',
         config=config,
-        postgres=postgres_stack.postgres,
+        postgres_multiplexer=postgres_stack.multiplexer,
         existing_resources_class=igvf_dev.Resources,
         env=igvf_dev.US_WEST_2,
     )
