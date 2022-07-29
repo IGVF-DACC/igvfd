@@ -59,7 +59,7 @@ config: Dict[str, Any] = {
             'postgres': {
                 'instances': [
                     {
-                        'construct_id': 'Postgres2',
+                        'construct_id': 'Postgres',
                         'on': True,
                         'props': {
                             'allocated_storage': 10,
@@ -77,7 +77,7 @@ config: Dict[str, Any] = {
                 'memory_limit_mib': 2048,
                 'desired_count': 1,
                 'max_capacity': 4,
-                'use_postgres_named': 'Postgres'
+                'use_postgres_named': 'Postgres2'
             }
         },
         'test': {},
