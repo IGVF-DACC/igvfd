@@ -41,7 +41,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
             existing_resources=existing_resources,
             allocated_storage=10,
             max_allocated_storage=20,
-            instance_type=instance_type
+            instance_type=instance_type,
         )
     )
     # Then
@@ -150,16 +150,9 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
     )
 
 
-def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(stack, vpc, instance_type, mocker):
+def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(stack, vpc, instance_type, mocker, config):
     from infrastructure.constructs.postgres import PostgresFromSnapshotArn
     from infrastructure.constructs.postgres import PostgresProps
-    from infrastructure.config import Config
-    config = Config(
-        name='demo',
-        branch='some-branch',
-        pipeline='DemoPipeline',
-        snapshot_arn='some-arn-xyz',
-    )
     # Given
     existing_resources = mocker.Mock()
     existing_resources.network.vpc = vpc
@@ -172,7 +165,8 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(sta
             existing_resources=existing_resources,
             allocated_storage=10,
             max_allocated_storage=20,
-            instance_type=instance_type
+            instance_type=instance_type,
+            snapshot_arn='some-arn-xyz',
         )
     )
     # Then
@@ -202,18 +196,10 @@ def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(sta
     )
 
 
-def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(stack, vpc, instance_type, mocker):
+def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(stack, vpc, instance_type, mocker, config, existing_resources):
     from infrastructure.constructs.postgres import PostgresFromLatestSnapshot
     from infrastructure.constructs.postgres import PostgresProps
-    from infrastructure.config import Config
-    config = Config(
-        name='demo',
-        branch='some-branch',
-        pipeline='DemoPipeline',
-        snapshot_source_db_identifier='source-db-123'
-    )
     # Given
-    existing_resources = mocker.Mock()
     existing_resources.network.vpc = vpc
     # When
     postgres = PostgresFromLatestSnapshot(
@@ -224,7 +210,8 @@ def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(
             existing_resources=existing_resources,
             allocated_storage=10,
             max_allocated_storage=20,
-            instance_type=instance_type
+            instance_type=instance_type,
+            snapshot_source_db_identifier='source-db-123'
         )
     )
     # Then
@@ -292,32 +279,38 @@ def test_constructs_postgres_initialize_postgres_from_latest_snapshot_construct(
     )
 
 
-def test_constructs_postgres_postgres_factory():
+def test_constructs_postgres_postgres_factory(config, existing_resources, instance_type):
+    from infrastructure.constructs.postgres import PostgresProps
     from infrastructure.constructs.postgres import Postgres
     from infrastructure.constructs.postgres import PostgresFromSnapshotArn
     from infrastructure.constructs.postgres import PostgresFromLatestSnapshot
     from infrastructure.constructs.postgres import postgres_factory
-    from infrastructure.config import Config
-    config = Config(
-        name='demo',
-        branch='xyz',
-        pipeline='zyx',
+    props = PostgresProps(
+        config=config,
+        existing_resources=existing_resources,
+        allocated_storage=10,
+        max_allocated_storage=20,
+        instance_type=instance_type
     )
-    postgres = postgres_factory(config)
+    postgres = postgres_factory(props)
     assert issubclass(postgres, Postgres)
-    config = Config(
-        name='demo',
-        branch='xyz',
-        pipeline='zyx',
-        snapshot_arn='snapshot-arn-xyz',
+    props = PostgresProps(
+        config=config,
+        existing_resources=existing_resources,
+        allocated_storage=10,
+        max_allocated_storage=20,
+        instance_type=instance_type,
+        snapshot_arn='some-arn-xyz',
     )
-    postgres = postgres_factory(config)
+    postgres = postgres_factory(props)
     assert issubclass(postgres, PostgresFromSnapshotArn)
-    config = Config(
-        name='demo',
-        branch='xyz',
-        pipeline='zyx',
+    props = PostgresProps(
+        config=config,
+        existing_resources=existing_resources,
+        allocated_storage=10,
+        max_allocated_storage=20,
+        instance_type=instance_type,
         snapshot_source_db_identifier='source-db-id',
     )
-    postgres = postgres_factory(config)
+    postgres = postgres_factory(props)
     assert issubclass(postgres, PostgresFromLatestSnapshot)
