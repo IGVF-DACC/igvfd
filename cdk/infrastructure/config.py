@@ -31,6 +31,19 @@ config: Dict[str, Any] = {
                             ),
                         },
                     },
+                    {
+                        'construct_id': 'Postgres2',
+                        'on': True,
+                        'props': {
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:test-snapshot-inserts',
+                            'allocated_storage': 10,
+                            'max_allocated_storage': 20,
+                            'instance_type': InstanceType.of(
+                                InstanceClass.BURSTABLE3,
+                                InstanceSize.MEDIUM,
+                            ),
+                        },
+                    },
                 ],
             },
             'backend': {
@@ -46,7 +59,7 @@ config: Dict[str, Any] = {
             'postgres': {
                 'instances': [
                     {
-                        'construct_id': 'Postgres',
+                        'construct_id': 'Postgres2',
                         'on': True,
                         'props': {
                             'allocated_storage': 10,
