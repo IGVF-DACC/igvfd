@@ -51,7 +51,7 @@ config: Dict[str, Any] = {
                 'memory_limit_mib': 2048,
                 'desired_count': 1,
                 'max_capacity': 4,
-                'use_postgres_named': 'Postgres2',
+                'use_postgres_named': 'Postgres',
             }
         },
         'dev': {
