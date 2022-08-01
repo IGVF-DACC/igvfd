@@ -33,7 +33,7 @@ config: Dict[str, Any] = {
                     },
                     {
                         'construct_id': 'Postgres2',
-                        'on': False,
+                        'on': True,
                         'props': {
                             'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:test-snapshot-inserts',
                             'allocated_storage': 10,
@@ -51,7 +51,7 @@ config: Dict[str, Any] = {
                 'memory_limit_mib': 2048,
                 'desired_count': 1,
                 'max_capacity': 4,
-                'use_postgres_named': 'Postgres',
+                'use_postgres_named': 'Postgres2',
             }
         },
         'dev': {
