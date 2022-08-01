@@ -20,7 +20,7 @@ config: Dict[str, Any] = {
                 'instances': [
                     {
                         'construct_id': 'Postgres',
-                        'on': True,
+                        'on': False,
                         'props': {
                             'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
                             'allocated_storage': 10,
