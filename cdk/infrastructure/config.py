@@ -33,7 +33,7 @@ config: Dict[str, Any] = {
                     },
                     {
                         'construct_id': 'Postgres2',
-                        'on': True,
+                        'on': False,
                         'props': {
                             'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:test-snapshot-inserts',
                             'allocated_storage': 10,
