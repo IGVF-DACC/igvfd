@@ -18,7 +18,7 @@ config: Dict[str, Any] = {
                 'instances': [
                     {
                         'construct_id': 'Postgres',
-                        'on': False,
+                        'on': True,
                         'props': {
                             'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
                             'allocated_storage': 10,
@@ -28,20 +28,7 @@ config: Dict[str, Any] = {
                                 InstanceSize.MEDIUM,
                             ),
                         },
-                    },
-                    {
-                        'construct_id': 'Postgres2',
-                        'on': True,
-                        'props': {
-                            'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:test-snapshot-inserts',
-                            'allocated_storage': 10,
-                            'max_allocated_storage': 20,
-                            'instance_type': InstanceType.of(
-                                InstanceClass.BURSTABLE3,
-                                InstanceSize.MEDIUM,
-                            ),
-                        },
-                    },
+                    }
                 ],
             },
             'backend': {
@@ -49,7 +36,7 @@ config: Dict[str, Any] = {
                 'memory_limit_mib': 2048,
                 'desired_count': 1,
                 'max_capacity': 4,
-                'use_postgres_named': 'Postgres2',
+                'use_postgres_named': 'Postgres',
             }
         },
         'dev': {
