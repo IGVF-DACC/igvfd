@@ -118,10 +118,30 @@ def existing_resources(mocker, domain, network, secret, chatbot):
 
 
 @pytest.fixture
-def config():
+def config(instance_type):
     from infrastructure.config import Config
     return Config(
         name='demo',
         branch='some-branch',
         pipeline='xyz',
+        postgres={
+            'instances': [
+                {
+                    'construct_id': 'Postgres',
+                    'on': True,
+                    'props': {
+                        'allocated_storage': 10,
+                        'max_allocated_storage': 20,
+                        'instance_type': instance_type,
+                    },
+                },
+            ],
+        },
+        backend={
+            'cpu': 1024,
+            'memory_limit_mib': 2048,
+            'desired_count': 1,
+            'max_capacity': 4,
+            'use_postgres_named': 'Postgres',
+        }
     )

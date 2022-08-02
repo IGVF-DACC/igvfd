@@ -9,7 +9,7 @@ from infrastructure.constructs.backend import BackendProps
 
 from infrastructure.constructs.existing.types import ExistingResourcesClass
 
-from infrastructure.constructs.postgres import PostgresConstruct
+from infrastructure.multiplexer import Multiplexer
 
 from typing import Any
 
@@ -22,7 +22,7 @@ class BackendStack(cdk.Stack):
             construct_id: str,
             *,
             config: Config,
-            postgres: PostgresConstruct,
+            postgres_multiplexer: Multiplexer,
             existing_resources_class: ExistingResourcesClass,
             **kwargs: Any
     ) -> None:
@@ -35,12 +35,9 @@ class BackendStack(cdk.Stack):
             self,
             'Backend',
             props=BackendProps(
+                **config.backend,
                 config=config,
                 existing_resources=self.existing_resources,
-                postgres=postgres,
-                cpu=1024,
-                memory_limit_mib=2048,
-                desired_count=1,
-                max_capacity=4,
+                postgres_multiplexer=postgres_multiplexer,
             )
         )

@@ -19,10 +19,13 @@ def test_config_config_dataclass():
         name='demo',
         branch='xyz-branch',
         pipeline='xyz-pipeline',
+        postgres={},
+        backend={},
     )
     assert config.common.organization_name == 'igvf-dacc'
     assert config.common.project_name == 'igvfd'
-    assert config.snapshot_source_db_identifier is None
+    assert config.postgres == {}
+    assert config.backend == {}
     assert config.branch == 'xyz-branch'
     assert config.pipeline == 'xyz-pipeline'
 
@@ -37,7 +40,11 @@ def test_config_build_config_from_name():
     )
     assert config.common.organization_name == 'igvf-dacc'
     assert config.common.project_name == 'igvfd'
-    assert config.snapshot_source_db_identifier or config.snapshot_arn
+    postgres_instance_props = config.postgres['instances'][0]['props']
+    assert (
+        'snapshot_source_db_identifier' in postgres_instance_props
+        or 'snapshot_arn' in postgres_instance_props
+    )
     assert config.branch == 'my-branch'
     assert config.pipeline == 'my-pipeline'
     assert config.name == 'demo'
@@ -53,7 +60,11 @@ def test_config_build_config_from_name():
     )
     assert config.common.organization_name == 'igvf-dacc'
     assert config.common.project_name == 'igvfd'
-    assert config.snapshot_source_db_identifier is None
+    postgres_instance_props = config.postgres['instances'][0]['props']
+    assert (
+        'snapshot_source_db_identifier' not in postgres_instance_props
+        and 'snapshot_arn' not in postgres_instance_props
+    )
     assert config.branch == 'my-branch'
     assert config.pipeline == 'ContinuousDeploymentPipelineStack'
     assert config.name == 'dev'
