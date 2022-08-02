@@ -29,7 +29,7 @@ def assay_term_dnase(testapp):
 
 
 @pytest.fixture
-def assay_term_1(assay_term_starr):
+def assay_term_v1(assay_term_starr):
     item = assay_term_starr.copy()
     item.update({
         'schema_version': '1',

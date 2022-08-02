@@ -13,7 +13,7 @@ def publication(testapp, lab, award):
 
 
 @pytest.fixture
-def publication_1(publication):
+def publication_v1(publication):
     item = publication.copy()
     item.update({
         'schema_version': '1',

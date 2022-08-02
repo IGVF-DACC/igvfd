@@ -41,7 +41,7 @@ def lab(testapp, pi):
 
 
 @pytest.fixture
-def lab_1(lab):
+def lab_v1(lab):
     item = lab.copy()
     item.update({
         'schema_version': '1',

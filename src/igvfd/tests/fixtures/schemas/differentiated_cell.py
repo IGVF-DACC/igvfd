@@ -14,7 +14,7 @@ def differentiated_cell(testapp, lab, award, source, human_donor):
 
 
 @pytest.fixture
-def differentiated_cell_1(differentiated_cell):
+def differentiated_cell_v1(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
         'schema_version': '1'
@@ -32,7 +32,7 @@ def differentiated_cell_part_of(differentiated_cell):
 
 
 @pytest.fixture
-def differentiated_cell_2(differentiated_cell):
+def differentiated_cell_v2(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
         'schema_version': '2'
@@ -41,7 +41,7 @@ def differentiated_cell_2(differentiated_cell):
 
 
 @pytest.fixture
-def differentiated_cell_3(differentiated_cell):
+def differentiated_cell_v3(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
         'schema_version': '3',

@@ -12,7 +12,7 @@ def source(testapp):
 
 
 @pytest.fixture
-def source_1(tissue):
+def source_v1(tissue):
     item = tissue.copy()
     item.update({
         'schema_version': '1',

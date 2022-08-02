@@ -36,7 +36,7 @@ def access_key(submitter):
 
 
 @pytest.fixture
-def access_key_1(access_key):
+def access_key_v1(access_key):
     item = access_key.copy()
     item.update({
         'schema_version': '1'

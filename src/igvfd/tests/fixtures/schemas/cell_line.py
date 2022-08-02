@@ -27,7 +27,7 @@ def cell_line_with_date_obtained(testapp, other_lab, award, human_donor):
 
 
 @pytest.fixture
-def cell_line_1(cell_line):
+def cell_line_v1(cell_line):
     item = cell_line.copy()
     item.update({
         'schema_version': '1'
@@ -45,7 +45,7 @@ def cell_line_part_of(cell_line):
 
 
 @pytest.fixture
-def cell_line_2(cell_line):
+def cell_line_v2(cell_line):
     item = cell_line.copy()
     item.update({
         'schema_version': '2'
@@ -54,7 +54,7 @@ def cell_line_2(cell_line):
 
 
 @pytest.fixture
-def cell_line_3(cell_line):
+def cell_line_v3(cell_line):
     item = cell_line.copy()
     item.update({
         'schema_version': '3',

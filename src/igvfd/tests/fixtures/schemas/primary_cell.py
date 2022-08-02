@@ -38,7 +38,7 @@ def pooled_from_primary_cell_2(testapp, lab, award, source, human_donor):
 
 
 @pytest.fixture
-def primary_cell_1(primary_cell):
+def primary_cell_v1(primary_cell):
     item = primary_cell.copy()
     item.update({
         'schema_version': '1'
@@ -56,7 +56,7 @@ def primary_cell_part_of(primary_cell):
 
 
 @pytest.fixture
-def primary_cell_2(primary_cell):
+def primary_cell_v2(primary_cell):
     item = primary_cell.copy()
     item.update({
         'schema_version': '2'
@@ -65,7 +65,7 @@ def primary_cell_2(primary_cell):
 
 
 @pytest.fixture
-def primary_cell_3(primary_cell):
+def primary_cell_v3(primary_cell):
     item = primary_cell.copy()
     item.update({
         'schema_version': '3',
