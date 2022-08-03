@@ -2,7 +2,7 @@
 
 ### Schema version 2
 
-* Restrict `awards` to be a non-empty array with at least one item.
+* Restrict `aliases` and `awards` to be a non-empty array with at least one item.
 
 ### Minor changes since schema version 1
 

@@ -2,7 +2,7 @@
 
 ### Schema version 2
 
-* Restrict `dbxrefs` to be a non-empty array with at least one item.
+* Restrict `dbxrefs`, `aliases`, and `alternate_accessions` to be a non-empty array with at least one item.
 
 ### Minor changes since schema version 1
 
