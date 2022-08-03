@@ -1,5 +1,8 @@
 ## Changelog for *`assay_term.json`*
 
+### Minor changes since schema version 2
+
+
 ### Minor changes since schema version 1
 
 * Add calculated property `ancestors`.

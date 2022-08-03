@@ -1,5 +1,8 @@
 ## Changelog for *`award.json`*
 
+### Minor changes since schema version 2
+
+
 ### Minor changes since schema version 1
 
 * Restrict `start_date` and `end_date` format to *date*.

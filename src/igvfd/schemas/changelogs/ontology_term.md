@@ -1,5 +1,8 @@
 ## Changelog for *`ontology_term.json`*
 
+### Minor changes since schema version 2
+
+
 ### Minor changes since schema version 1
 
 * Add calculated properties `assay_slims` and `objective_slims`.
