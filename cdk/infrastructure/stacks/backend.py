@@ -61,6 +61,10 @@ class BackendStack(cdk.Stack):
                     container_name='pyramid',
                     command=['echo', 'hello from pyramid one off task'],
                 ),
+                ContainerOverride(
+                    container_name='nginx',
+                    command=['sleep', '3600'],
+                ),
             ],
             subnet_selection=SubnetSelection(
                 subnet_type=SubnetType.PUBLIC
