@@ -1,3 +1,4 @@
+from aws_cdk import Stack
 from aws_cdk import Tags
 
 from constructs import Construct
@@ -23,6 +24,7 @@ from typing import Any
 from typing import cast
 from typing import Type
 from typing import Union
+from typing import Optional
 
 from dataclasses import dataclass
 
@@ -34,6 +36,8 @@ class PostgresProps:
     allocated_storage: int
     max_allocated_storage: int
     instance_type: InstanceType
+    snapshot_arn: Optional[str] = None
+    snapshot_source_db_identifier: Optional[str] = None
 
 
 class PostgresBase(Construct):
@@ -63,6 +67,12 @@ class PostgresBase(Construct):
     def _define_database_name(self) -> None:
         self.database_name = 'igvfd'
 
+    def _export_values(self) -> None:
+        raise NotImplementedError
+
+    def _post_init(self) -> None:
+        self._export_values()
+
 
 class Postgres(PostgresBase):
 
@@ -87,6 +97,7 @@ class Postgres(PostgresBase):
     def _build(self) -> None:
         self._define_database()
         self._add_tags_to_database()
+        self._post_init()
 
     def _define_database(self) -> None:
         self.database = DatabaseInstance(
@@ -108,6 +119,9 @@ class Postgres(PostgresBase):
             'branch',
             self.props.config.branch,
         )
+
+    def _export_values(self) -> None:
+        export_default_explicit_values(self)
 
 
 class PostgresFromSnapshotArn(PostgresBase):
@@ -133,11 +147,12 @@ class PostgresFromSnapshotArn(PostgresBase):
     def _build(self) -> None:
         self._define_database()
         self._add_tags_to_database()
+        self._post_init()
 
     def _get_snapshot_arn(self) -> str:
         return cast(
             str,
-            self.props.config.snapshot_arn,
+            self.props.snapshot_arn,
         )
 
     def _define_database(self) -> None:
@@ -169,6 +184,9 @@ class PostgresFromSnapshotArn(PostgresBase):
             self._get_snapshot_arn(),
         )
 
+    def _export_values(self) -> None:
+        export_default_explicit_values(self)
+
 
 class PostgresFromLatestSnapshot(PostgresFromSnapshotArn):
 
@@ -180,13 +198,14 @@ class PostgresFromLatestSnapshot(PostgresFromSnapshotArn):
         self._define_latest_snapshot()
         self._define_database()
         self._add_tags_to_database()
+        self._post_init()
 
     def _get_db_instance_identifier(self) -> str:
         # Make mypy happy. The factory already
         # checks that this is not None.
         return cast(
             str,
-            self.props.config.snapshot_source_db_identifier
+            self.props.snapshot_source_db_identifier
         )
 
     def _define_latest_snapshot(self) -> None:
@@ -214,6 +233,9 @@ class PostgresFromLatestSnapshot(PostgresFromSnapshotArn):
             self.latest_snapshot.arn,
         )
 
+    def _export_values(self) -> None:
+        export_default_explicit_values(self)
+
 
 PostgresConstruct = Union[
     Postgres,
@@ -228,9 +250,24 @@ PostgresConstructClass = Union[
 ]
 
 
-def postgres_factory(config: Config) -> PostgresConstructClass:
-    if config.snapshot_arn is not None:
+def postgres_factory(props: PostgresProps) -> PostgresConstructClass:
+    if props.snapshot_arn is not None:
         return PostgresFromSnapshotArn
-    elif config.snapshot_source_db_identifier is not None:
+    elif props.snapshot_source_db_identifier is not None:
         return PostgresFromLatestSnapshot
     return Postgres
+
+
+def export_default_explicit_values(postgres: PostgresConstruct) -> None:
+    parent_stack = Stack.of(postgres)
+    parent_stack.export_value(
+        postgres.database.instance_endpoint.hostname
+    )
+    if postgres.database.secret is not None:
+        parent_stack.export_value(
+            postgres.database.secret.secret_full_arn
+        )
+    for security_group in postgres.database.connections.security_groups:
+        parent_stack.export_value(
+            security_group.security_group_id
+        )

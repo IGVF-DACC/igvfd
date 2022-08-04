@@ -1,8 +1,11 @@
+from aws_cdk.aws_ec2 import InstanceType
+from aws_cdk.aws_ec2 import InstanceClass
+from aws_cdk.aws_ec2 import InstanceSize
+
 from dataclasses import dataclass
 
 from typing import Any
 from typing import Dict
-from typing import Optional
 
 from infrastructure.constants import DEV_DATABASE_IDENTIFIER
 
@@ -10,14 +13,60 @@ from infrastructure.constants import DEV_DATABASE_IDENTIFIER
 config: Dict[str, Any] = {
     'environment': {
         'demo': {
-            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
             'pipeline': 'DemoDeploymentPipelineStack',
+            'postgres': {
+                'instances': [
+                    {
+                        'construct_id': 'Postgres',
+                        'on': True,
+                        'props': {
+                            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
+                            'allocated_storage': 10,
+                            'max_allocated_storage': 20,
+                            'instance_type': InstanceType.of(
+                                InstanceClass.BURSTABLE3,
+                                InstanceSize.MEDIUM,
+                            ),
+                        },
+                    }
+                ],
+            },
+            'backend': {
+                'cpu': 1024,
+                'memory_limit_mib': 2048,
+                'desired_count': 1,
+                'max_capacity': 4,
+                'use_postgres_named': 'Postgres',
+            }
         },
         'dev': {
             'pipeline': 'ContinuousDeploymentPipelineStack',
+            'postgres': {
+                'instances': [
+                    {
+                        'construct_id': 'Postgres',
+                        'on': True,
+                        'props': {
+                            'allocated_storage': 10,
+                            'max_allocated_storage': 20,
+                            'instance_type': InstanceType.of(
+                                InstanceClass.BURSTABLE3,
+                                InstanceSize.MEDIUM,
+                            ),
+                        },
+                    },
+                ],
+            },
+            'backend': {
+                'cpu': 1024,
+                'memory_limit_mib': 2048,
+                'desired_count': 1,
+                'max_capacity': 4,
+                'use_postgres_named': 'Postgres'
+            }
         },
         'test': {},
-        'prod': {}
+        'prod': {},
     }
 }
 
@@ -35,8 +84,8 @@ class Config:
     name: str
     branch: str
     pipeline: str
-    snapshot_arn: Optional[str] = None
-    snapshot_source_db_identifier: Optional[str] = None
+    postgres: Dict[str, Any]
+    backend: Dict[str, Any]
     common: Common = Common()
 
 
