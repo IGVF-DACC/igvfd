@@ -1,5 +1,13 @@
 import aws_cdk as cdk
 
+from aws_cdk import Duration
+from aws_cdk.aws_events_targets import EcsTask
+from aws_cdk.aws_events_targets import ContainerOverride
+from aws_cdk.aws_ec2 import SubnetSelection
+from aws_cdk.aws_ec2 import SubnetType
+from aws_cdk.aws_events import Rule
+from aws_cdk.aws_events import Schedule
+
 from constructs import Construct
 
 from infrastructure.config import Config
@@ -43,4 +51,27 @@ class BackendStack(cdk.Stack):
                 desired_count=1,
                 max_capacity=4,
             )
+        )
+
+        one_off_task_target = EcsTask(
+            cluster=self.backend.fargate_service.cluster,
+            task_definition=self.backend.fargate_service.task_definition,
+            container_overrides=[
+                ContainerOverride(
+                    container_name='pyramid',
+                    command=['echo', 'hello from pyramid one off task'],
+                ),
+            ],
+            subnet_selection=SubnetSelection(
+                subnet_type=SubnetType.PUBLIC
+            )
+        )
+
+        Rule(
+            self,
+            'OneOffRule',
+            schedule=Schedule.rate(
+                Duration.minutes(1)
+            ),
+            targets=[one_off_task_target]
         )
