@@ -7,6 +7,7 @@ from aws_cdk.aws_ec2 import SubnetSelection
 from aws_cdk.aws_ec2 import SubnetType
 from aws_cdk.aws_events import Rule
 from aws_cdk.aws_events import Schedule
+from aws_cdk.aws_events import EventPattern
 
 from constructs import Construct
 
@@ -20,6 +21,36 @@ from infrastructure.constructs.existing.types import ExistingResourcesClass
 from infrastructure.constructs.postgres import PostgresConstruct
 
 from typing import Any
+from typing import Dict
+
+from dataclasses import dataclass
+
+
+@dataclass
+class EventDetails:
+    metadata: Dict[str, Any]
+    data: Dict[str, Any]
+
+
+@dataclass
+class Event:
+    details: EventDetails
+    detail_type: str
+    source: str
+
+
+event = Event(
+    source='pyramid-application-branch-123',
+    detail_type='RunTask',
+    details=EventDetails(
+        metadata={
+            'some': 'extra info',
+        },
+        data={
+            'payload': 'data'
+        }
+    )
+)
 
 
 class BackendStack(cdk.Stack):
@@ -74,8 +105,13 @@ class BackendStack(cdk.Stack):
         Rule(
             self,
             'OneOffRule',
-            schedule=Schedule.rate(
-                Duration.minutes(1)
+            event_pattern=EventPattern(
+                detail_type=[
+                    'RunTask'
+                ],
+                source=[
+                    'pyramid-application-branch-123'
+                ],
             ),
             targets=[one_off_task_target]
         )
