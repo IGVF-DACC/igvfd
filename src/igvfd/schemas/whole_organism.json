@@ -184,5 +184,6 @@
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
             "formInput": "textarea"
         }
-    }
+    },
+    "changelog": "/profiles/changelogs/whole_organism.md"
 }
