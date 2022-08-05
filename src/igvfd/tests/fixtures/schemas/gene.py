@@ -35,7 +35,7 @@ def gene_zscan10_mm(testapp):
 
 
 @pytest.fixture
-def gene_1(gene_zscan10_mm):
+def gene_v1(gene_zscan10_mm):
     item = gene_zscan10_mm.copy()
     item.update({
         'schema_version': '1',

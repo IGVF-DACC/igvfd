@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def technical_sample_1(testapp, other_lab, award, source):
+def technical_sample(testapp, other_lab, award, source):
     item = {
         'award': award['@id'],
         'lab': other_lab['@id'],
@@ -13,7 +13,7 @@ def technical_sample_1(testapp, other_lab, award, source):
 
 
 @pytest.fixture
-def technical_sample_version_1(tissue):
+def technical_sample_v1(tissue):
     item = tissue.copy()
     item.update({
         'schema_version': '1',

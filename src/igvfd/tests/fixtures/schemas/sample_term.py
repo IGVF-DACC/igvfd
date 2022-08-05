@@ -21,7 +21,7 @@ def sample_term_adrenal_gland(testapp):
 
 
 @pytest.fixture
-def sample_term_1(sample_term_K562):
+def sample_term_v1(sample_term_K562):
     item = sample_term_K562.copy()
     item.update({
         'schema_version': '1',

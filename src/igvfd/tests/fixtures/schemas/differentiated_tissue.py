@@ -14,7 +14,7 @@ def differentiated_tissue(testapp, lab, award, source, human_donor):
 
 
 @pytest.fixture
-def differentiated_tissue_1(differentiated_tissue):
+def differentiated_tissue_v1(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
         'schema_version': '1'
@@ -32,7 +32,7 @@ def differentiated_tissue_part_of(differentiated_tissue):
 
 
 @pytest.fixture
-def differentiated_tissue_2(differentiated_tissue):
+def differentiated_tissue_v2(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
         'schema_version': '2'
@@ -41,7 +41,7 @@ def differentiated_tissue_2(differentiated_tissue):
 
 
 @pytest.fixture
-def differentiated_tissue_3(differentiated_tissue):
+def differentiated_tissue_v3(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
         'schema_version': '3',

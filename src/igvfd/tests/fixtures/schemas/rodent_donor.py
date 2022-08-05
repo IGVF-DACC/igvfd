@@ -14,7 +14,7 @@ def rodent_donor(testapp, lab, award):
 
 
 @pytest.fixture
-def parent_rodent_donor1(testapp, lab, award):
+def parent_rodent_donor_1(testapp, lab, award):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -26,7 +26,7 @@ def parent_rodent_donor1(testapp, lab, award):
 
 
 @pytest.fixture
-def parent_rodent_donor2(testapp, lab, award):
+def parent_rodent_donor_2(testapp, lab, award):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -38,7 +38,7 @@ def parent_rodent_donor2(testapp, lab, award):
 
 
 @pytest.fixture
-def parent_rodent_donor3(testapp, lab, award):
+def parent_rodent_donor_3(testapp, lab, award):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -62,7 +62,7 @@ def rodent_donor_orphan(testapp, lab, award):
 
 
 @pytest.fixture
-def rodent_donor_1(rodent_donor):
+def rodent_donor_v1(rodent_donor):
     item = rodent_donor.copy()
     item.update({
         'schema_version': '1',

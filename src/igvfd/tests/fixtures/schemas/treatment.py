@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def treatment_1(testapp):
+def treatment_chemical(testapp):
     item = {
         'treatment_term_id': 'CHEBI:24996',
         'treatment_term_name': 'lactate',
@@ -16,7 +16,7 @@ def treatment_1(testapp):
 
 
 @pytest.fixture
-def treatment_2(testapp):
+def treatment_protein(testapp):
     item = {
         'treatment_term_id': 'UniProtKB:P09919',
         'treatment_term_name': 'G-CSF',
@@ -28,8 +28,8 @@ def treatment_2(testapp):
 
 
 @pytest.fixture
-def treatment_version_1(treatment_1):
-    item = treatment_1.copy()
+def treatment_v1(treatment_chemical):
+    item = treatment_chemical.copy()
     item.update({
         'schema_version': '1',
         'documents': [],
