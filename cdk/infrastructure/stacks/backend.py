@@ -84,13 +84,13 @@ class BackendStack(cdk.Stack):
             )
         )
 
-        one_off_task_target = EcsTask(
+        batch_upgrade_task_target = EcsTask(
             cluster=self.backend.fargate_service.cluster,
             task_definition=self.backend.fargate_service.task_definition,
             container_overrides=[
                 ContainerOverride(
                     container_name='pyramid',
-                    command=['echo', 'hello from pyramid one off task'],
+                    command=['/scripts/pyramid/batchupgrade.sh'],
                 ),
                 ContainerOverride(
                     container_name='nginx',
@@ -107,11 +107,13 @@ class BackendStack(cdk.Stack):
             'OneOffRule',
             event_pattern=EventPattern(
                 detail_type=[
-                    'RunTask'
+                    'RunBatchUpgrade'
                 ],
                 source=[
-                    'pyramid-application-branch-123'
+                    f'{config.common.project_name}.{config.name}.{config.branch}'
                 ],
             ),
-            targets=[one_off_task_target]
+            targets=[
+                batch_upgrade_task_target,
+            ]
         )
