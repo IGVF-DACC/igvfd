@@ -1,5 +1,9 @@
 ## Changelog for *`ontology_term.json`*
 
+### Schema version 2
+
+* Restrict `aliases` to be a non-empty array with at least one item.
+
 ### Minor changes since schema version 1
 
 * Add calculated properties `assay_slims` and `objective_slims`.
