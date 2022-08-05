@@ -9,7 +9,8 @@
         "lab",
         "source",
         "donors",
-        "taxa"
+        "taxa",
+        "biosample_term"
     ],
     "additionalProperties": false,
     "mixinProperties": [

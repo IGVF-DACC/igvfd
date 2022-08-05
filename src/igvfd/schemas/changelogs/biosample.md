@@ -7,16 +7,15 @@
 * Add `upper_bound_age`.
 * Add `embryonic`.
 * Convert `age` to be calculated from `lower_bound_age` and `upper_bound_age` and not submittable.
+* Add `biosample_term` to requirements.
 
 ### Schema version 4
 
 * Rename `disease_term` to `disease_terms`.
 * Allow `disease_terms` to be an array of `phenotype_terms`.
-
 ### Minor changes since schema version 3
 
 * Add `description`.
-
 ### Schema version 3
 
 * Restrict `treatments`, `donors`, `dbxrefs`, `aliases`, `collections`, and `alternate_accessions` to be a non-empty array with at least one item.
