@@ -1,6 +1,11 @@
 from constructs import Construct
 
+from aws_cdk import RemovalPolicy
+
 from aws_cdk.aws_codepipeline import Pipeline
+
+from aws_cdk.aws_s3 import Bucket
+from aws_cdk.aws_s3 import BlockPublicAccess
 
 from aws_cdk.pipelines import CodePipeline
 from aws_cdk.pipelines import CodePipelineSource
@@ -87,6 +92,19 @@ class BasicSelfUpdatingPipeline(Construct):
         )
 
     def _make_code_pipeline(self) -> None:
+        artifact_bucket = Bucket(
+            self,
+            'ArtifactsBucket',
+            block_public_access=BlockPublicAccess.BLOCK_ALL,
+            removal_policy=RemovalPolicy.DESTROY,
+            auto_delete_objects=True,
+        )
+        pipeline = Pipeline(
+            self,
+            'Pipeline',
+            restart_execution_on_update=True,
+            artifact_bucket=artifact_bucket
+        )
         self.code_pipeline = CodePipeline(
             self,
             'CodePipeline',
@@ -95,6 +113,7 @@ class BasicSelfUpdatingPipeline(Construct):
                 self._get_docker_credentials(),
             ],
             docker_enabled_for_synth=True,
+            code_pipeline=pipeline,
         )
 
     def _get_underlying_pipeline(self) -> Pipeline:
