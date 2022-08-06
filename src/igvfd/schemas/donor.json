@@ -68,13 +68,13 @@
             "maxItems": 2
         },
         "traits": {
-            "title": "Phenotypic traits",
+            "title": "Phenotypic Traits",
             "description": "A list of known phenotypic traits of the donor",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
             "items": {
-                "title": "Phenotype term",
+                "title": "Phenotype Term",
                 "description": "Phenotypic trait",
                 "comment": "See phenotype_term.json for available identifiers.",
                 "type": "string",

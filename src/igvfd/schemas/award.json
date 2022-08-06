@@ -51,13 +51,13 @@
             "formInput": "textarea"
         },
         "start_date": {
-            "title": "Start date",
+            "title": "Start Date",
             "comment": "Date can be submitted as YYYY-MM-DD.",
             "type": "string",
             "format": "date"
         },
         "end_date": {
-            "title": "End date",
+            "title": "End Date",
             "comment": "Date can be submitted as YYYY-MM-DD.",
             "type": "string",
             "format": "date"
@@ -86,7 +86,7 @@
             ]
         },
         "viewing_group": {
-            "title": "View access group",
+            "title": "View Access Group",
             "description": "The group that determines which set of data the user has permission to view.",
             "type": "string",
             "enum": [
@@ -95,7 +95,7 @@
             ]
         },
         "component": {
-            "title": "Project component",
+            "title": "Project Component",
             "description": "The project component the award is associated with.",
             "type": "string",
             "permission": "import_items",

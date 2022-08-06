@@ -1,5 +1,5 @@
 {
-    "title": "Sample term",
+    "title": "Sample Term",
     "description": "Schema for a sample ontology term.",
     "$id": "/profiles/sample_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -40,13 +40,13 @@
         },
         "dbxrefs": {
             "@type": "@id",
-            "title": "External resources",
+            "title": "External Resources",
             "description": "Sample identifiers from external resources, such as Cellosaurus.",
             "permission": "import_items",
             "type": "array",
             "uniqueItems": true,
             "items": {
-                "title": "External identifier",
+                "title": "External Identifier",
                 "description": "An identifier from external resource.",
                 "type": "string",
                 "pattern": "^((Cellosaurus:CVCL_\\w{4})|(DepMap:ACH-[0-9]{6}))$"

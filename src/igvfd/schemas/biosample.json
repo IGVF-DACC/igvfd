@@ -216,7 +216,7 @@
             "pattern": "^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$"
         },
         "age_units": {
-            "title": "Age units",
+            "title": "Age Units",
             "description": "The units of time associated with age of the biosample.",
             "type": "string",
             "enum": [
@@ -229,7 +229,7 @@
             ]
         },
         "life_stage": {
-            "title": "Life stage",
+            "title": "Life Stage",
             "description": "The development stage of the organism used to prepare biosample.",
             "type": "string",
             "enum": [
@@ -246,13 +246,13 @@
             ]
         },
         "biosample_term": {
-            "title": "Biosample term",
+            "title": "Biosample Term",
             "description": "Ontology term identifying a biosample.",
             "type": "string",
             "linkTo": "SampleTerm"
         },
         "disease_term": {
-            "title": "Disease term",
+            "title": "Disease Term",
             "description": "Ontology term of the disease associated with the biosample.",
             "comment": "This property should only be used to submit existing known diseases, and not any phenotypic trait.",
             "type": "string",
@@ -260,13 +260,13 @@
         },
         "nih_institutional_certification": {
             "type": "string",
-            "title": "NIH institutional certification",
+            "title": "NIH Institutional Certification",
             "description": "Institutional certification given by the NIH for human biosamples.",
             "comment": "Required for IGVF human biosamples.",
             "pattern": "^NIC[A-Z0-9]+$"
         },
         "pooled_from": {
-            "title": "Biosample(s) pooled from",
+            "title": "Biosample(s) Pooled From",
             "description": "The biosample(s) this biosample is pooled from.",
             "type": "array",
             "uniqueItems": true,
@@ -280,7 +280,7 @@
             }
         },
         "part_of": {
-            "title": "Part of biosample",
+            "title": "Part of Biosample",
             "description": "Links to a biosample which represents a larger sample from which this sample was taken regardless of whether it is a tissue taken from an organism or smaller slices of a piece of tissue or aliquots of a cell growth.",
             "comment": "For other specific relationships such as differentiation or hosting there are separate properties.",
             "type": "string",

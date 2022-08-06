@@ -46,13 +46,13 @@
             "accessionType": "SM"
         },
         "starting_amount": {
-            "title": "Starting amount",
+            "title": "Starting Amount",
             "description": "The initial quantity of samples obtained.",
             "type": "number",
             "minimum": 0
         },
         "starting_amount_units": {
-            "title": "Starting amount units",
+            "title": "Starting Amount Units",
             "description": "The units used to quantify the amount of samples obtained.",
             "type": "string",
             "enum": [
@@ -70,7 +70,7 @@
         "dbxrefs": {
             "@type": "@id",
             "rdfs:subPropertyOf": "rdfs:seeAlso",
-            "title": "External resources",
+            "title": "External Resources",
             "description": "Biosample identifiers from external resources, such as Biosample database or Cellosaurus.",
             "comment": "Do not submit. DCC personnel is responsible for submission of biosample external resource identifiers.",
             "permission": "import_items",
@@ -78,14 +78,14 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "External identifier",
+                "title": "External Identifier",
                 "description": "An identifier from external resource.",
                 "type": "string",
                 "pattern": "^((GEO:SAMN\\d+)|(Cellosaurus:CVCL_\\w{4}))$"
             }
         },
         "date_obtained": {
-            "title": "Date obtained",
+            "title": "Date Obtained",
             "description": "The date the sample was harvested, dissected or created, depending on the type of the sample.",
             "comment": "Date should be submitted in as YYYY-MM-DD.",
             "type": "string",
