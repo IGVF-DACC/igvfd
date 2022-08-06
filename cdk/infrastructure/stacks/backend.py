@@ -1,10 +1,14 @@
 import aws_cdk as cdk
 
 from aws_cdk import Duration
+
 from aws_cdk.aws_events_targets import EcsTask
 from aws_cdk.aws_events_targets import ContainerOverride
+
 from aws_cdk.aws_ec2 import SubnetSelection
 from aws_cdk.aws_ec2 import SubnetType
+from aws_cdk.aws_ec2 import Port
+
 from aws_cdk.aws_events import Rule
 from aws_cdk.aws_events import Schedule
 from aws_cdk.aws_events import EventPattern
@@ -99,8 +103,16 @@ class BackendStack(cdk.Stack):
             ],
             subnet_selection=SubnetSelection(
                 subnet_type=SubnetType.PUBLIC
-            )
+            ),
         )
+
+        if batch_upgrade_task_target.security_groups is not None:
+            for security_group in batch_upgrade_task_target.security_groups:
+                security_group.connections.allow_to(
+                    postgres.database,
+                    Port.tcp(5432),
+                    description='Allow connection to Postgres instance',
+                )
 
         Rule(
             self,
