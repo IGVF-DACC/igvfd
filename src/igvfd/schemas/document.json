@@ -93,13 +93,6 @@
                 "sequencing"
             ]
         },
-        "description": {
-            "title": "Description",
-            "description": "A plain text description of the document.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
-            "formInput": "textarea"
-        },
         "urls": {
             "rdfs:subPropertyOf": "rdfs:seeAlso",
             "title": "URL",
