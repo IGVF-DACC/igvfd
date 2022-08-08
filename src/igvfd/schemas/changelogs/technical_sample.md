@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Schema version 4
+
+* Change `technical_sample_term` to link to `Sample Term`.
+
 ### Minor changes since schema version 3
 
 * Add `description`.

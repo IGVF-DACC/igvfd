@@ -114,3 +114,9 @@ def differentiated_sample_6_7(value, system):
             f'post_differentiation_time: {old_diff_time}, post_differentiation_time_units: stage.'
         del value['post_differentiation_time_units']
         del value['post_differentiation_time']
+
+
+@upgrade_step('technical_sample', '3', '4')
+def technical_sample_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-264
+    return

@@ -32,3 +32,12 @@ def technical_sample_v2(tissue):
         'additional_description': 'This is a description.'
     })
     return item
+
+
+@pytest.fixture
+def technical_sample_v3(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '3'
+    })
+    return item
