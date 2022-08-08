@@ -81,4 +81,6 @@ def sample_4_5(value, system):
 @upgrade_step('primary_cell', 'a', 'b')
 @upgrade_step('whole_organism', 'a', 'b')
 def biosample_3_4(value, system):
+@upgrade_step('whole_organism', '3', '4')
+def sample_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-249
