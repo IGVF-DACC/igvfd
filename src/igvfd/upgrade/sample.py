@@ -52,3 +52,11 @@ def sample_3_4(value, system):
     if 'differentiation_treatments' in value:
         if len(value['differentiation_treatments']) == 0:
             del value['differentiation_treatments']
+
+
+@upgrade_step('technical_sample', '2', '3')
+def technical_sample_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-238
+    if 'additional_description' in value:
+        value['description'] = value['additional_description']
+        del value['additional_description']
