@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Minor changes since schema version 3
+
+* Add `description`.
+
 ### Schema version 3
 
 * Remove `additional_description`.
