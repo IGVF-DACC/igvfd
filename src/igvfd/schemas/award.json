@@ -43,13 +43,6 @@
             "pattern": "^[A-Za-z0-9\\-]+$",
             "uniqueKey": true
         },
-        "description": {
-            "rdfs:subPropertyOf": "dc:description",
-            "title": "Description",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "formInput": "textarea"
-        },
         "start_date": {
             "title": "Start Date",
             "comment": "Date can be submitted as YYYY-MM-DD.",

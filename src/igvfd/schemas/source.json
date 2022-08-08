@@ -28,13 +28,6 @@
         "schema_version": {
             "default": "2"
         },
-        "description": {
-            "title": "Description",
-            "description": "A plain text description of the source.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
-            "formInput": "textarea"
-        },
         "title": {
             "title": "Title",
             "description": "The complete name of the originating lab or vendor.",
