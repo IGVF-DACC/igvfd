@@ -1,11 +1,9 @@
 from snovault import (
-    calculated_property,
     collection,
-    load_schema,
+    load_schema
 )
 from .base import (
-    SharedItem,
-    paths_filtered_by_status,
+    Item
 )
 
 
@@ -13,10 +11,9 @@ from .base import (
     name='variants',
     unique_key='uuid',
     properties={
-        'title': 'Genes',
-        'description': 'Listing of genes',
+        'title': 'Variant',
+        'description': 'Listing of variants',
     })
-class Variant(SharedItem):
-    item_type = 'gene'
-    schema = load_schema('igvfd:schemas/gene.json')
-    name_key = 'geneid'
+class Variant(Item):
+    item_type = 'variant'
+    schema = load_schema('igvfd:schemas/variant.json')

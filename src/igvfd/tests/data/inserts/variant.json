@@ -1,0 +1,20 @@
+[
+    {
+        "uuid": "0f96ba0c-3edb-4289-a76f-aa5f5d1a56d2",
+        "variantid": "rs143065131",
+        "associated_gene": "/genes/912/",
+        "dbxrefs": [
+            "UniProtKB:A0A0C5B5G6"
+        ],
+        "variation_type": "SNV",
+        "locations": [
+            {
+                "assembly": "GRCh38",
+                "ref": "G",
+                "alt": "A",
+                "chromosome": "chr1",
+                "position": 158180836
+            }
+        ]
+    }
+]
