@@ -69,6 +69,7 @@ def technical_sample_2_3(value, system):
 @upgrade_step('tissue', '4', '5')
 @upgrade_step('whole_organism', '3', '4')
 def sample_4_5(value, system):
+<<<<<<< HEAD
     # https://igvf.atlassian.net/browse/IGVF-187
     if 'disease_term' in value:
         value['disease_terms'] = [value['disease_term']]
@@ -82,6 +83,8 @@ def sample_4_5(value, system):
 @upgrade_step('tissue', '5', '6')
 @upgrade_step('whole_organism', '4', '5')
 def sample_5_6(value, system):
+=======
+>>>>>>> 2a8e930 (changelogs)
     # https://igvf.atlassian.net/browse/IGVF-249
     if 'age' in value:
         age = value['age']
