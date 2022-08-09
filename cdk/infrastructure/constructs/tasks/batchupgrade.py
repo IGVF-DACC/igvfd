@@ -66,6 +66,7 @@ class BatchUpgrade(Construct):
         self._define_event_detail_type()
         self._define_event_target()
         self._define_event_rule()
+        self._define_upgrade_folder()
         self._define_event_trigger()
         self._grant_put_events_to_trigger()
 
