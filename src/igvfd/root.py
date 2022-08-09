@@ -46,7 +46,7 @@ def acl_from_settings(settings):
 @root
 class IGVFRoot(Root):
     properties = {
-        'title': 'Home',
+        'title': 'Home2',
         'portal_title': 'IGVF',
     }
 
