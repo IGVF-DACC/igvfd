@@ -1,3 +1,5 @@
+import json
+
 import aws_cdk as cdk
 
 from aws_cdk import Duration
@@ -167,6 +169,7 @@ class BackendStack(cdk.Stack):
                         {
                             'DetailType': RUN_BATCH_UPGRADE_EVENT,
                             'Source': EVENT_SOURCE,
+                            'Detail': json.dumps({}),
                         }
                     ]
                 },
