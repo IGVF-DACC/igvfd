@@ -1,4 +1,4 @@
-from infrastructure.naming import Config
+from infrastructure.config import Config
 
 
 def get_event_source_from_config(config: Config) -> str:
