@@ -25,9 +25,9 @@
             "GEO:SAMN1"
         ],
         "taxa": "Homo sapiens",
-        "age": "40",
+        "lower_bound_age": 40,
+        "upper_bound_age": 40,
         "age_units": "year",
-        "life_stage": "adult",
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "disease_terms": [
             "/phenotype-terms/8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4/"
@@ -56,9 +56,9 @@
         "starting_amount": 5,
         "starting_amount_units": "μg",
         "taxa": "Homo sapiens",
-        "age": "30",
+        "lower_bound_age": 30,
+        "upper_bound_age": 30,
         "age_units": "year",
-        "life_stage": "adult",
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "treatments": [
             "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
@@ -114,9 +114,9 @@
             "GEO:SAMN2"
         ],
         "taxa": "Homo sapiens",
-        "age": "40",
+        "lower_bound_age": 40,
+        "upper_bound_age": 40,
         "age_units": "year",
-        "life_stage": "adult",
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "disease_terms": [
             "/phenotype-terms/8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4/"

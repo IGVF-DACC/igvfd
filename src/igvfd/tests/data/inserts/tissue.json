@@ -20,7 +20,8 @@
         "collections": [
             "ENCODE"
         ],
-        "age": "30",
+        "lower_bound_age": 25,
+        "upper_bound_age": 30,
         "age_units": "month"
     },
     {
@@ -42,7 +43,8 @@
             "c37934b0-4269-4470-be53-9eac7b196447",
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
-        "age": "30",
+        "lower_bound_age": 10,
+        "upper_bound_age": 20,
         "age_units": "week"
     },
     {
@@ -86,7 +88,8 @@
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
-        "age": "30",
+        "lower_bound_age": 10,
+        "upper_bound_age": 20,
         "age_units": "month"
     },
     {
@@ -106,7 +109,8 @@
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
-        "age": "18",
+        "lower_bound_age": 19,
+        "upper_bound_age": 20,
         "age_units": "day"
     }
 ]

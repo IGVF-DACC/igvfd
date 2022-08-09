@@ -42,33 +42,6 @@ def test_taxa_dependency(whole_organism, testapp):
     assert res.status_code == 422
 
 
-def test_lifestage_dependency(whole_organism, testapp):
-    res = testapp.patch_json(
-        whole_organism['@id'],
-        {'taxa': 'Mus musculus'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        whole_organism['@id'],
-        {'life_stage': 'embryonic'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        whole_organism['@id'],
-        {'life_stage': 'child'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        whole_organism['@id'],
-        {'taxa': 'Saccharomyces', 'life_stage': 'child'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        whole_organism['@id'],
-        {'taxa': 'Saccharomyces', 'life_stage': 'lag'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        whole_organism['@id'],
-        {'life_stage': 'unknown'})
-    assert res.status_code == 200
-
-
 def test_collections(whole_organism, testapp):
     res = testapp.patch_json(
         whole_organism['@id'],

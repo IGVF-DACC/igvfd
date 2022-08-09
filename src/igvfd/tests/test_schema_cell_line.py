@@ -16,50 +16,26 @@ def test_lot_id_dependency(cell_line, testapp):
 def test_age_dependency(cell_line, testapp):
     res = testapp.patch_json(
         cell_line['@id'],
-        {'age': '1'}, expect_errors=True)
+        {'upper_bound_age': 1, 'lower_bound_age': 0}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         cell_line['@id'],
-        {'age_units': 'minute'}, expect_errors=True)
+        {'lower_bound_age': 0, 'age_units': 'year'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         cell_line['@id'],
-        {'age': 'unknown'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        cell_line['@id'],
-        {'age_units': 'minute'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        cell_line['@id'],
-        {'taxa': 'Homo sapiens', 'age': '50', 'age_units': 'month'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        cell_line['@id'],
-        {'age': '100'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        cell_line['@id'],
-        {'age_units': 'year'}, expect_errors=True)
+        {'upper_bound_age': 1, 'age_units': 'year'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         cell_line['@id'],
-        {'age': '90 or above'})
+        {'upper_bound_age': 1, 'lower_bound_age': 0, 'age_units': 'year'})
     assert res.status_code == 200
 
 
 def test_age_unit_dependency(cell_line, testapp):
     res = testapp.patch_json(
         cell_line['@id'],
-        {'taxa': 'Homo sapiens', 'age': '5'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        cell_line['@id'],
-        {'age': 'unknown'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        cell_line['@id'],
-        {'taxa': 'Homo sapiens', 'age_units': 'year', 'age': '5'})
+        {'taxa': 'Homo sapiens', 'lower_bound_age': 5, 'upper_bound_age': 10, 'age_units': 'year'})
     assert res.status_code == 200
     res = testapp.patch_json(
         cell_line['@id'],
@@ -67,23 +43,27 @@ def test_age_unit_dependency(cell_line, testapp):
     assert res.status_code == 422
     res = testapp.patch_json(
         cell_line['@id'],
-        {'taxa': 'Saccharomyces', 'age_units': 'year'}, expect_errors=True)
+        {'taxa': 'Saccharomyces'}, expect_errors=True)
     assert res.status_code == 422
-
-
-def test_lifestage_dependency(cell_line, testapp):
     res = testapp.patch_json(
         cell_line['@id'],
-        {'taxa': 'Homo sapiens', 'life_stage': 'adult'})
+        {'taxa': 'Saccharomyces', 'age_units': 'minute'})
     assert res.status_code == 200
-    res = testapp.patch_json(
-        cell_line['@id'],
-        {'taxa': 'Mus musculus', 'life_stage': 'stationary'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        cell_line['@id'],
-        {'taxa': 'Saccharomyces', 'life_stage': 'adult'}, expect_errors=True)
-    assert res.status_code == 422
+
+
+# def test_lifestage_dependency(cell_line, testapp):
+#     res = testapp.patch_json(
+#         cell_line['@id'],
+#         {'taxa': 'Homo sapiens', 'life_stage': 'adult'})
+#     assert res.status_code == 200
+#     res = testapp.patch_json(
+#         cell_line['@id'],
+#         {'taxa': 'Mus musculus', 'life_stage': 'stationary'}, expect_errors=True)
+#     assert res.status_code == 422
+#     res = testapp.patch_json(
+#         cell_line['@id'],
+#         {'taxa': 'Saccharomyces', 'life_stage': 'adult'}, expect_errors=True)
+#     assert res.status_code == 422
 
 
 def test_nih_institutional_certification(cell_line, testapp):

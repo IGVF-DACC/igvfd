@@ -16,7 +16,7 @@ def test_lot_id_dependency(primary_cell, testapp):
 def test_age_unit_dependency(primary_cell, testapp):
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'taxa': 'Homo sapiens', 'age': '5', 'age_units': 'year'})
+        {'taxa': 'Homo sapiens', 'lower_bound_age': 5, 'upper_bound_age': 10, 'age_units': 'year'})
     assert res.status_code == 200
     res = testapp.patch_json(
         primary_cell['@id'],
@@ -25,21 +25,6 @@ def test_age_unit_dependency(primary_cell, testapp):
     res = testapp.patch_json(
         primary_cell['@id'],
         {'taxa': 'Saccharomyces', 'age_units': 'year'}, expect_errors=True)
-    assert res.status_code == 422
-
-
-def test_lifestage_dependency(primary_cell, testapp):
-    res = testapp.patch_json(
-        primary_cell['@id'],
-        {'taxa': 'Homo sapiens', 'life_stage': 'adult'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        primary_cell['@id'],
-        {'taxa': 'Mus musculus', 'life_stage': 'stationary'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        primary_cell['@id'],
-        {'taxa': 'Saccharomyces', 'life_stage': 'adult'}, expect_errors=True)
     assert res.status_code == 422
 
 

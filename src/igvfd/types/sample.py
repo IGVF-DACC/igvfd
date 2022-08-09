@@ -68,11 +68,13 @@ class Biosample(Sample):
             'pattern': '^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$'
         }
     )
-    def age(self, request, lower_bound_age, upper_bound_age):
+    def age(self, lower_bound_age=None, upper_bound_age=None, age_units=None):
         if lower_bound_age and upper_bound_age:
             if lower_bound_age == upper_bound_age:
-                return lower_bound_age
-            return lower_bound_age + '-' + upper_bound_age
+                if lower_bound_age == 90 and upper_bound_age == 90 and age_units == 'year':
+                    return '90 or above'
+                return str(lower_bound_age)
+            return str(lower_bound_age) + '-' + str(upper_bound_age)
         else:
             return 'unknown'
 

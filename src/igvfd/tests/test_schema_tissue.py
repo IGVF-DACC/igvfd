@@ -16,7 +16,7 @@ def test_lot_id_dependency(tissue, testapp):
 def test_age_unit_dependency(tissue, testapp):
     res = testapp.patch_json(
         tissue['@id'],
-        {'age': '1', 'age_units': 'year'})
+        {'lower_bound_age': 5, 'upper_bound_age': 10, 'age_units': 'year'})
     assert res.status_code == 200
     res = testapp.patch_json(
         tissue['@id'],
@@ -45,41 +45,6 @@ def test_age_unit_dependency(tissue, testapp):
     res = testapp.patch_json(
         tissue['@id'],
         {'age_units': 'hour'})
-    assert res.status_code == 200
-
-
-def test_lifestage_dependency(tissue, testapp):
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Mus musculus'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'life_stage': 'embryonic'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Homo sapiens', 'life_stage': 'fermentative'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Saccharomyces', 'life_stage': 'child'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Saccharomyces', 'life_stage': 'lag'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Homo sapiens'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'life_stage': 'unknown'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Homo sapiens'})
     assert res.status_code == 200
 
 

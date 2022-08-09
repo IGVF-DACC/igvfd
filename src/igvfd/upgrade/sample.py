@@ -1,7 +1,6 @@
 from snovault import upgrade_step
 
 
-<<<<<<< HEAD
 @upgrade_step('cell_line', '1', '2')
 @upgrade_step('differentiated_cell', '1', '2')
 @upgrade_step('differentiated_tissue', '1', '2')
@@ -76,20 +75,23 @@ def sample_4_5(value, system):
         value.pop('disease_term')
 
 
-@upgrade_step('cell_line', 'a', 'b')
-@upgrade_step('differentiated_cell_line', 'a', 'b')
-@upgrade_step('differentiated_tissue', 'a', 'b')
-@upgrade_step('primary_cell', 'a', 'b')
-@upgrade_step('whole_organism', 'a', 'b')
-def biosample_3_4(value, system):
-@upgrade_step('whole_organism', '3', '4')
-def sample_4_5(value, system):
-=======
-@upgrade_step('cell_line', 'a', 'b')
-@upgrade_step('differentiated_cell_line', 'a', 'b')
-@upgrade_step('differentiated_tissue', 'a', 'b')
-@upgrade_step('primary_cell', 'a', 'b')
-@upgrade_step('whole_organism', 'a', 'b')
-def biosample_3_4(value, system):
->>>>>>> 43bedd2 (starting upgrade)
+@upgrade_step('cell_line', '5', '6')
+@upgrade_step('differentiated_cell_line', '5', '6')
+@upgrade_step('differentiated_tissue', '5', '6')
+@upgrade_step('primary_cell', '5', '6')
+@upgrade_step('tissue', '5', '6')
+@upgrade_step('whole_organism', '4', '5')
+def sample_5_6(value, system):
     # https://igvf.atlassian.net/browse/IGVF-249
+    if 'age' in value:
+        age = value['age']
+        del value['age']
+        if age != 'unknown':
+            if age == '90 or above':
+                value['lower_bound_age'] = 90
+                value['upper_bound_age'] = 90
+            else:
+                value['lower_bound_age'] = int(age)
+                value['upper_bound_age'] = int(age)
+    if 'life_stage' in value:
+        del value['life_stage']
