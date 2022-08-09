@@ -25,7 +25,8 @@ from snovault.schema_utils import validate_request
 from snovault.auditor import traversed_path_ids
 from snovault import (
     AfterModified,
-    BeforeModified
+    BeforeModified,
+    calculated_property
 )
 
 
@@ -220,6 +221,18 @@ class Item(snovault.Item):
         if properties.get('status') != 'replaced' and 'accession' in properties:
             keys['accession'].append(properties['accession'])
         return keys
+
+    @calculated_property(schema={
+        'title': 'Summary',
+        'type': 'string',
+    })
+    def summary(self):
+        if self.name_key is None:
+            return self.uuid
+        properties = self.upgrade_properties()
+        if properties.get('status') == 'replaced':
+            return self.uuid
+        return properties.get(self.name_key, None) or self.uuid
 
     @staticmethod
     def _valid_status(new_status, schema, parent):
