@@ -124,7 +124,7 @@ class BackendStack(cdk.Stack):
                     description='Allow connection to Postgres instance',
                 )
 
-        EVENT_SOURCE = '{config.common.project_name}.{config.name}.{config.branch}'
+        EVENT_SOURCE = f'{config.common.project_name}.{config.name}.{config.branch}'
 
         RUN_BATCH_UPGRADE_EVENT = 'RunBatchUpgrade'
 
