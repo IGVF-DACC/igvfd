@@ -9,9 +9,19 @@ from aws_cdk.aws_ec2 import SubnetSelection
 from aws_cdk.aws_ec2 import SubnetType
 from aws_cdk.aws_ec2 import Port
 
+from aws_cdk.aws_events import EventBus
 from aws_cdk.aws_events import Rule
 from aws_cdk.aws_events import Schedule
 from aws_cdk.aws_events import EventPattern
+
+from aws_cdk.aws_s3_assets import Asset
+
+from aws_cdk.custom_resources import AwsCustomResource
+from aws_cdk.custom_resources import AwsCustomResourcePolicy
+from aws_cdk.custom_resources import AwsSdkCall
+from aws_cdk.custom_resources import PhysicalResourceId
+
+from aws_cdk.aws_logs import RetentionDays
 
 from constructs import Construct
 
@@ -114,18 +124,62 @@ class BackendStack(cdk.Stack):
                     description='Allow connection to Postgres instance',
                 )
 
+        EVENT_SOURCE = '{config.common.project_name}.{config.name}.{config.branch}'
+
+        RUN_BATCH_UPGRADE_EVENT = 'RunBatchUpgrade'
+
         Rule(
             self,
             'OneOffRule',
             event_pattern=EventPattern(
                 detail_type=[
-                    'RunBatchUpgrade'
+                    RUN_BATCH_UPGRADE_EVENT,
                 ],
                 source=[
-                    f'{config.common.project_name}.{config.name}.{config.branch}'
+                    EVENT_SOURCE,
                 ],
             ),
             targets=[
                 batch_upgrade_task_target,
             ]
         )
+
+        upgrade_folder = Asset(
+            self,
+            'UpgradeFolder',
+            path='../src/igvfd/upgrade',
+        )
+
+        event_bus = EventBus.from_event_bus_arn(
+            self,
+            'DefaultBus',
+            'arn:aws:events:us-west-2:109189702753:event-bus/default'
+        )
+
+        trigger_batch_upgrade = AwsCustomResource(
+            self,
+            'TriggerBatchUpgrade',
+            on_update=AwsSdkCall(
+                service='EventBridge',
+                action='putEvents',
+                parameters={
+                    'Entries': [
+                        {
+                            'DetailType': RUN_BATCH_UPGRADE_EVENT,
+                            'Source': EVENT_SOURCE,
+                        }
+                    ]
+                },
+                physical_resource_id=PhysicalResourceId.of(
+                    upgrade_folder.asset_hash
+                )
+            ),
+            log_retention=RetentionDays.ONE_DAY,
+            policy=AwsCustomResourcePolicy.from_sdk_calls(
+                resources=[
+                    event_bus.event_bus_arn,
+                ]
+            ),
+        )
+
+        event_bus.grant_put_events_to(trigger_batch_upgrade)
