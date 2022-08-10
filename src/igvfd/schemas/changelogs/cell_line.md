@@ -1,5 +1,11 @@
 ## Changelog for *`cell_line.json`*
 
+
+### Schema version 5
+
+* Rename `disease_term` to `disease_terms`.
+* Allow `disease_terms` to be an array of `phenotype_terms`.
+
 ### Minor changes since schema version 4
 
 * Add `description`.
