@@ -22,3 +22,13 @@ def technical_sample_v1(tissue):
         'alternate_accessions': []
     })
     return item
+
+
+@pytest.fixture
+def technical_sample_v2(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '2',
+        'additional_description': 'This is a description.'
+    })
+    return item

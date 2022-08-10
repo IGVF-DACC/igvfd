@@ -1,5 +1,9 @@
 ## Changelog for *`biosample.json`*
 
+### Minor changes since schema version 3
+
+* Add `description`.
+
 ### Schema version 3
 
 * Restrict `treatments`, `donors`, `dbxrefs`, `aliases`, `collections`, and `alternate_accessions` to be a non-empty array with at least one item.

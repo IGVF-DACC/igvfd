@@ -47,7 +47,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "2"
+            "default": "3"
         },
         "sample_material": {
             "title": "Sample Material",
@@ -64,13 +64,6 @@
             "title": "Technical Sample Term",
             "description": "Ontology of the technical sample.",
             "type": "string"
-        },
-        "additional_description": {
-            "title": "Additional Description",
-            "description": "Additional description of entry.",
-            "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "formInput": "textarea"
         }
     },
     "changelog": "/profiles/changelogs/technical_sample.md"
