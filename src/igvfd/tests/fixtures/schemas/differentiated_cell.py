@@ -55,6 +55,7 @@ def differentiated_cell_v3(differentiated_cell):
     })
     return item
 
+
 @pytest.fixture
 def differentiated_cell_v4(differentiated_cell, phenotype_term_alzheimers):
     item = differentiated_cell.copy()

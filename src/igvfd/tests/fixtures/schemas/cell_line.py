@@ -76,4 +76,3 @@ def cell_line_v4(cell_line, phenotype_term_alzheimers):
         'disease_term': phenotype_term_alzheimers['@id']
     })
     return item
-
