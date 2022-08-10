@@ -21,3 +21,10 @@ def test_differentiated_tissue_upgrade_3_4(upgrader, differentiated_tissue_v3):
     assert 'treatments' not in value
     assert 'differentiation_treatments' not in value
     assert value['schema_version'] == '4'
+
+
+def test_differentiated_tissue_upgrade_4_5(upgrader, differentiated_tissue_v4, phenotype_term_alzheimers):
+    value = upgrader.upgrade('differentiated_tissue', differentiated_tissue_v4, current_version='4', target_version='5')
+    assert 'disease_term' not in value
+    assert value['schema_version'] == '5'
+    assert value.get('disease_terms') == [phenotype_term_alzheimers['@id']]

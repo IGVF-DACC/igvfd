@@ -71,5 +71,5 @@ def technical_sample_2_3(value, system):
 def sample_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-187
     if 'disease_term' in value:
-        value['disease_terms'] = value['disease_term']
+        value['disease_terms'] = [value['disease_term']]
         value.pop('disease_term')

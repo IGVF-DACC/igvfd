@@ -41,3 +41,13 @@ def whole_organism_v2(whole_organism):
         'treatments': []
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v3(whole_organism, phenotype_term_alzheimers):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '3',
+        'disease_term': phenotype_term_alzheimers['@id']
+    })
+    return item

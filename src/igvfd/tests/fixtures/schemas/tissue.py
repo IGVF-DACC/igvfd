@@ -53,3 +53,12 @@ def tissue_v3(tissue):
         'treatments': []
     })
     return item
+
+@pytest.fixture
+def tissue_v4(tissue, phenotype_term_alzheimers):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '4',
+        'disease_term': phenotype_term_alzheimers['@id']
+    })
+    return item
