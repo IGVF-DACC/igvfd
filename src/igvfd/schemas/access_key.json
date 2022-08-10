@@ -1,5 +1,5 @@
 {
-    "title": "Admin access key",
+    "title": "Admin Access Key",
     "$id": "/profiles/access_key.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "required": [],
