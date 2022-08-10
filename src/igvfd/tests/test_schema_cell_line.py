@@ -51,21 +51,6 @@ def test_age_unit_dependency(cell_line, testapp):
     assert res.status_code == 200
 
 
-# def test_lifestage_dependency(cell_line, testapp):
-#     res = testapp.patch_json(
-#         cell_line['@id'],
-#         {'taxa': 'Homo sapiens', 'life_stage': 'adult'})
-#     assert res.status_code == 200
-#     res = testapp.patch_json(
-#         cell_line['@id'],
-#         {'taxa': 'Mus musculus', 'life_stage': 'stationary'}, expect_errors=True)
-#     assert res.status_code == 422
-#     res = testapp.patch_json(
-#         cell_line['@id'],
-#         {'taxa': 'Saccharomyces', 'life_stage': 'adult'}, expect_errors=True)
-#     assert res.status_code == 422
-
-
 def test_nih_institutional_certification(cell_line, testapp):
     res = testapp.patch_json(
         cell_line['@id'],
