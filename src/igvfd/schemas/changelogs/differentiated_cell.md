@@ -1,6 +1,5 @@
 ## Changelog for *`differentiated_cell.json`*
 
-
 ### Schema version 5
 
 * Rename `disease_term` to `disease_terms`.
