@@ -9,7 +9,6 @@
 
 * Add `description`.
 
-
 ### Schema version 3
 
 * Restrict `treatments`, `donors`, `dbxrefs`, `aliases`, `collections`, and `alternate_accessions` to be a non-empty array with at least one item.
