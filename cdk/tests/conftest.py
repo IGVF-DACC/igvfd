@@ -107,13 +107,30 @@ def domain(mocker, domain_name, certificate, hosted_zone):
 
 
 @pytest.fixture
-def existing_resources(mocker, domain, network, secret, chatbot):
+def event_bus(stack):
+    from aws_cdk.aws_events import EventBus
+    return EventBus(
+        stack,
+        'TestBus',
+    )
+
+
+@pytest.fixture
+def bus(mocker, event_bus):
+    mock = mocker.Mock()
+    mock.default = event_bus
+    return mock
+
+
+@pytest.fixture
+def existing_resources(mocker, domain, network, secret, chatbot, bus):
     mock = mocker.Mock()
     mock.domain = domain
     mock.network = network
     mock.docker_hub_credentials.secret = secret
     mock.code_star_connection.arn = 'some-code-star-arn'
     mock.notification.encode_dcc_chatbot = chatbot
+    mock.bus = bus
     return mock
 
 
