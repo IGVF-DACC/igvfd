@@ -569,8 +569,6 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
                     'Arn'
                 ]
             },
-            'Create': '{\"action\":\"putEvents\",\"service\":\"EventBridge\",\"parameters\":{\"Entries\":[{\"DetailType\":\"UpgradeFolderChanged\",\"Source\":\"igvfd.demo.some-branch\",\"Detail\":\"{}\"}]},\"physicalResourceId\":{\"id\":\"88c8da245aed8b5684669a07fd70c268c8dfe316c0ee3b18761e0af6a5cc8b27\"}}',
-            'Update': '{\"action\":\"putEvents\",\"service\":\"EventBridge\",\"parameters\":{\"Entries\":[{\"DetailType\":\"UpgradeFolderChanged\",\"Source\":\"igvfd.demo.some-branch\",\"Detail\":\"{}\"}]},\"physicalResourceId\":{\"id\":\"88c8da245aed8b5684669a07fd70c268c8dfe316c0ee3b18761e0af6a5cc8b27\"}}',
             'InstallLatestAwsSdk': True
         }
     )
