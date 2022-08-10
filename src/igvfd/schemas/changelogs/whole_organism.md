@@ -1,10 +1,5 @@
 ## Changelog for *`whole_organism.json`*
 
-### Schema version 5
-
-* Rename `disease_term` to `disease_terms`.
-* Allow `disease_terms` to be an array of `phenotype_terms`.
-
 ### Schema version 4
 
 * Rename `disease_term` to `disease_terms`.
