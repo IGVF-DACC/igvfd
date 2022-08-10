@@ -251,12 +251,19 @@
             "type": "string",
             "linkTo": "SampleTerm"
         },
-        "disease_term": {
-            "title": "Disease Term",
+        "disease_terms": {
+            "title": "Disease Terms",
             "description": "Ontology term of the disease associated with the biosample.",
             "comment": "This property should only be used to submit existing known diseases, and not any phenotypic trait.",
-            "type": "string",
-            "linkTo": "PhenotypeTerm"
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Disease Term",
+                "comment": "See phenotype_term.json for available identifiers.",
+                "type": "string",
+                "linkTo": "PhenotypeTerm"
+            }
         },
         "nih_institutional_certification": {
             "type": "string",
