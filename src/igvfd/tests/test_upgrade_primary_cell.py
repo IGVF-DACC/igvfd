@@ -20,3 +20,10 @@ def test_primary_cell_upgrade_3_4(upgrader, primary_cell_v3):
     assert 'alternate_accessions' not in value
     assert 'treatments' not in value
     assert value['schema_version'] == '4'
+
+
+def test_primary_cell_upgrade_4_5(upgrader, primary_cell_v4, phenotype_term_alzheimers):
+    value = upgrader.upgrade('primary_cell', primary_cell_v4, current_version='4', target_version='5')
+    assert 'disease_term' not in value
+    assert value['schema_version'] == '5'
+    assert value.get('disease_terms') == [phenotype_term_alzheimers['@id']]

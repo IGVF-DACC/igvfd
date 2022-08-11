@@ -54,3 +54,13 @@ def differentiated_cell_v3(differentiated_cell):
         'differentiation_treatments': []
     })
     return item
+
+
+@pytest.fixture
+def differentiated_cell_v4(differentiated_cell, phenotype_term_alzheimers):
+    item = differentiated_cell.copy()
+    item.update({
+        'schema_version': '4',
+        'disease_term': phenotype_term_alzheimers['@id']
+    })
+    return item

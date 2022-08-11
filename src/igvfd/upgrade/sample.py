@@ -60,3 +60,16 @@ def technical_sample_2_3(value, system):
     if 'additional_description' in value:
         value['description'] = value['additional_description']
         del value['additional_description']
+
+
+@upgrade_step('cell_line', '4', '5')
+@upgrade_step('differentiated_cell', '4', '5')
+@upgrade_step('differentiated_tissue', '4', '5')
+@upgrade_step('primary_cell', '4', '5')
+@upgrade_step('tissue', '4', '5')
+@upgrade_step('whole_organism', '3', '4')
+def sample_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-187
+    if 'disease_term' in value:
+        value['disease_terms'] = [value['disease_term']]
+        value.pop('disease_term')

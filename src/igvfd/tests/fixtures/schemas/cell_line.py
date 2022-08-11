@@ -66,3 +66,13 @@ def cell_line_v3(cell_line):
         'treatments': []
     })
     return item
+
+
+@pytest.fixture
+def cell_line_v4(cell_line, phenotype_term_alzheimers):
+    item = cell_line.copy()
+    item.update({
+        'schema_version': '4',
+        'disease_term': phenotype_term_alzheimers['@id']
+    })
+    return item
