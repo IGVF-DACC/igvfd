@@ -39,6 +39,8 @@
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/jay-shendure/",
+        "post_differentiation_time": 2.5,
+        "post_differentiation_time_units": "month",
         "differentiated_from": "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
     },
     {
@@ -55,6 +57,8 @@
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/jay-shendure/",
+        "post_differentiation_time": 10.28364,
+        "post_differentiation_time_units": "minute",
         "pooled_from": [
             "/differentiated-tissues/a79ffa29-4bdf-4283-9494-1017e5d13f8b/",
             "/differentiated-tissues/4ce1b687-62f9-4d92-a69e-b4820d1efc9d/"

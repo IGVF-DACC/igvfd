@@ -54,3 +54,30 @@ def test_part_of_differentiated_cell(differentiated_cell, differentiated_cell_pa
         differentiated_cell['@id'],
         {'part_of': differentiated_cell_part_of['@id']})
     assert res.status_code == 200
+
+
+def test_differentiation_time(differentiated_cell, testapp):
+    res = testapp.patch_json(
+        differentiated_cell['@id'],
+        {'post_differentiation_time': 10}, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        differentiated_cell['@id'],
+        {'post_differentiation_time_units': 'hour'}, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        differentiated_cell['@id'],
+        {'post_differentiation_time': 10, 'post_differentiation_time_units': 'hour'}, expect_errors=True)
+    assert res.status_code == 200
+
+    res = testapp.patch_json(
+        differentiated_cell['@id'],
+        {'post_differentiation_time': 10, 'post_differentiation_time_units': 'stage'}, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        differentiated_cell['@id'],
+        {'post_differentiation_time': 10.2341, 'post_differentiation_time_units': 'minute'}, expect_errors=True)
+    assert res.status_code == 200

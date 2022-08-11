@@ -36,7 +36,7 @@
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/gary-hon/",
-        "post_differentiation_time": 10,
+        "post_differentiation_time": 10.28364,
         "post_differentiation_time_units": "minute",
         "treatments": [
             "3280b708-0f05-40fa-bff2-54e2b6505c13",
@@ -61,6 +61,8 @@
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/gary-hon/",
+        "post_differentiation_time": 2.5,
+        "post_differentiation_time_units": "month",
         "pooled_from": [
             "/differentiated-cells/f1d10666-ebb2-4152-9d49-f98b6de7c9e5/",
             "/differentiated-cells/8a3af63e-bf89-4947-919c-f9e026ee1c9b/"

@@ -73,3 +73,18 @@ def sample_4_5(value, system):
     if 'disease_term' in value:
         value['disease_terms'] = [value['disease_term']]
         value.pop('disease_term')
+
+
+@upgrade_step('differentiated_cell', '5', '6')
+@upgrade_step('differentiated_tissue', '5', '6')
+def differentiated_sample_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-239
+    if value.get('post_differentiation_time_units') == 'stage':
+        old_diff_time = value['post_differentiation_time']
+        old_notes_value = ''
+        if value.get('notes'):
+            old_notes_value = value.get('notes')
+        value['notes'] = old_notes_value + \
+            f'  post_differentiation_time: {old_diff_time}, post_differentiation_time_units: stage.'
+        del value['post_differentiation_time_units']
+        del value['post_differentiation_time']

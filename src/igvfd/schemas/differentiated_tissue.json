@@ -66,13 +66,13 @@
     },
     "properties": {
         "schema_version": {
-            "default": "5"
+            "default": "6"
         },
         "post_differentiation_time": {
             "title": "Post-differentiation Time",
             "description": "The time that elapsed past the point when biosamples were differentiated.",
             "comment": "Use in conjunction with post_differentiation_time_units to specify time elapsed post-differentiation. Use of this property requires post_differentiation_time_units specification.",
-            "type": "integer"
+            "type": "number"
         },
         "post_differentiation_time_units": {
             "title": "Post-differentiation Time Units",
@@ -84,8 +84,7 @@
                 "hour",
                 "day",
                 "week",
-                "month",
-                "stage"
+                "month"
             ]
         },
         "date_obtained": {
