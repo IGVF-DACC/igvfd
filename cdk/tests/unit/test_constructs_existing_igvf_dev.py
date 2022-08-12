@@ -28,3 +28,4 @@ def test_constructs_existing_initialize_igvf_dev_construct():
     assert isinstance(resources.docker_hub_credentials.secret.secret_arn, str)
     assert isinstance(resources.code_star_connection.arn, str)
     assert isinstance(resources.notification.encode_dcc_chatbot.slack_channel_configuration_arn, str)
+    assert isinstance(resources.bus.default.event_bus_arn, str)

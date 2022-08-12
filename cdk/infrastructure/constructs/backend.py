@@ -25,6 +25,9 @@ from infrastructure.constructs.existing.types import ExistingResources
 
 from infrastructure.constructs.postgres import PostgresConstruct
 
+from infrastructure.constructs.tasks.batchupgrade import BatchUpgrade
+from infrastructure.constructs.tasks.batchupgrade import BatchUpgradeProps
+
 from infrastructure.multiplexer import Multiplexer
 
 from typing import Any
@@ -52,6 +55,7 @@ class Backend(Construct):
     application_image: ContainerImage
     nginx_image: ContainerImage
     fargate_service: ApplicationLoadBalancedFargateService
+    batch_upgrade: BatchUpgrade
 
     def __init__(
             self,
@@ -73,6 +77,7 @@ class Backend(Construct):
         self._add_tags_to_fargate_service()
         self._enable_exec_command()
         self._configure_task_scaling()
+        self._run_batch_upgrade_automatically()
 
     def _define_postgres(self) -> None:
         self.postgres = cast(
@@ -205,4 +210,15 @@ class Backend(Construct):
             target_group=self.fargate_service.target_group,
             scale_in_cooldown=cdk.Duration.seconds(60),
             scale_out_cooldown=cdk.Duration.seconds(60),
+        )
+
+    def _run_batch_upgrade_automatically(self) -> None:
+        self.batch_upgrade = BatchUpgrade(
+            self,
+            'BatchUpgrade',
+            props=BatchUpgradeProps(
+                config=self.props.config,
+                existing_resources=self.props.existing_resources,
+                fargate_service=self.fargate_service,
+            )
         )

@@ -6,6 +6,7 @@ from shared_infrastructure.igvf_dev.domain import DemoDomain
 from shared_infrastructure.igvf_dev.secret import DockerHubCredentials
 from shared_infrastructure.igvf_dev.network import DemoNetwork
 from shared_infrastructure.igvf_dev.notification import Notification
+from shared_infrastructure.igvf_dev.bus import Bus
 
 from typing import Any
 
@@ -33,4 +34,8 @@ class Resources(Construct):
         self.notification = Notification(
             self,
             'Notification',
+        )
+        self.bus = Bus(
+            self,
+            'Bus',
         )

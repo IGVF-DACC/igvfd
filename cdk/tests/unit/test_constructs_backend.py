@@ -474,3 +474,101 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
             'ToPort': 5432
         }
     )
+    template.has_resource_properties(
+        'AWS::Events::Rule',
+        {
+            'EventPattern': {
+                'detail-type': [
+                    'UpgradeFolderChanged'
+                ],
+                'source': [
+                    'igvfd.demo.some-branch'
+                ]
+            },
+            'State': 'ENABLED',
+            'Targets': [
+                {
+                    'Arn': {
+                        'Fn::GetAtt': [
+                            'EcsDefaultClusterMnL3mNNYNTestVpc4872C696',
+                            'Arn'
+                        ]
+                    },
+                    'EcsParameters': {
+                        'LaunchType': 'FARGATE',
+                        'NetworkConfiguration': {
+                            'AwsVpcConfiguration': {
+                                'AssignPublicIp': 'ENABLED',
+                                'SecurityGroups': [
+                                    {
+                                        'Fn::GetAtt': [
+                                            'TestBackendFargateServiceSecurityGroupB9C36B85',
+                                            'GroupId'
+                                        ]
+                                    }
+                                ],
+                                'Subnets': [
+                                    {
+                                        'Ref': 'TestVpcpublicSubnet1Subnet4F70BC85'
+                                    },
+                                    {
+                                        'Ref': 'TestVpcpublicSubnet2Subnet96FF72E6'
+                                    }
+                                ]
+                            }
+                        },
+                        'TaskCount': 1,
+                        'TaskDefinitionArn': {
+                            'Ref': 'TestBackendFargateTaskDef9FA612FC'
+                        }
+                    },
+                    'Id': 'Target0',
+                    'Input': '{\"containerOverrides\":[{\"name\":\"pyramid\",\"command\":[\"/scripts/pyramid/batchupgrade.sh\"]},{\"name\":\"nginx\",\"command\":[\"sleep\",\"3600\"]}]}',
+                    'RoleArn': {
+                        'Fn::GetAtt': [
+                            'TestBackendFargateTaskDefEventsRoleADEEE321',
+                            'Arn'
+                        ]
+                    }
+                }
+            ]
+        }
+    )
+    template.has_resource_properties(
+        'AWS::IAM::Policy',
+        {
+            'PolicyDocument': {
+                'Statement': [
+                    {
+                        'Action': 'eventbridge:PutEvents',
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'TestBusF2C65FE8',
+                                'Arn'
+                            ]
+                        }
+                    }
+                ],
+                'Version': '2012-10-17'
+            },
+            'PolicyName': 'TestBackendBatchUpgradePutUpgradeFolderChangedEventCustomResourcePolicy83C269FA',
+            'Roles': [
+                {
+                    'Ref': 'AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2'
+                }
+            ]
+        }
+    )
+    template.has_resource_properties(
+        'Custom::AWS',
+        {
+            'ServiceToken': {
+                'Fn::GetAtt': [
+                    'AWS679f53fac002430cb0da5b7982bd22872D164C4C',
+                    'Arn'
+                ]
+            },
+            'InstallLatestAwsSdk': True
+        }
+    )
