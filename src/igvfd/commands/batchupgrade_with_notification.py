@@ -73,7 +73,7 @@ def get_batch_upgrade_completed_detail(props, result):
         'data': {
             'slack': {
                 'text': (
-                    f':white_check_mark: *BatchUpgradeComplete* | {props.source}\n'
+                    f':white_check_mark: *BatchUpgradeCompleted* | {props.source}\n'
                     f'```{decoded_results}```'
                 )
             }
