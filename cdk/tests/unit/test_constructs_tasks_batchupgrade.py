@@ -42,5 +42,5 @@ def test_constructs_tasks_batchupgrade_initialize_batchupgrade(stack, mocker, co
     )
     template.resource_count_is(
         'AWS::Events::Rule',
-        1
+        2
     )
