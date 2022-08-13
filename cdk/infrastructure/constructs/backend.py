@@ -28,6 +28,8 @@ from infrastructure.constructs.postgres import PostgresConstruct
 from infrastructure.constructs.tasks.batchupgrade import BatchUpgrade
 from infrastructure.constructs.tasks.batchupgrade import BatchUpgradeProps
 
+from infrastructure.events.naming import get_event_source_from_config
+
 from infrastructure.multiplexer import Multiplexer
 
 from typing import Any
@@ -73,6 +75,7 @@ class Backend(Construct):
         self._define_fargate_service()
         self._add_application_container_to_task()
         self._allow_connections_to_database()
+        self._allow_task_to_put_events_on_bus()
         self._configure_health_check()
         self._add_tags_to_fargate_service()
         self._enable_exec_command()
@@ -158,6 +161,8 @@ class Backend(Construct):
             environment={
                 'DB_HOST': self.postgres.database.instance_endpoint.hostname,
                 'DB_NAME': self.postgres.database_name,
+                'DEFAULT_EVENT_BUS': self.props.existing_resources.bus.default.event_bus_arn,
+                'EVENT_SOURCE': get_event_source_from_config(self.props.config)
             },
             secrets={
                 'DB_PASSWORD': self._get_database_secret(),
@@ -174,6 +179,11 @@ class Backend(Construct):
             self.postgres.database,
             Port.tcp(5432),
             description='Allow connection to Postgres instance',
+        )
+
+    def _allow_task_to_put_events_on_bus(self) -> None:
+        self.props.existing_resources.bus.default.grant_put_events_to(
+            self.fargate_service.task_definition.task_role
         )
 
     def _configure_health_check(self) -> None:

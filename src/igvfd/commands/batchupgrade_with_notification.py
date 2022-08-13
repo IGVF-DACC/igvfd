@@ -34,7 +34,6 @@ BATCH_UPGRADE_COMMAND = [
 class BatchUpgradeNotificationProps:
     bus: Union[InMemoryEventBus, EventBridgeEventBus]
     source: str
-    branch: str
 
 
 def get_bus():
@@ -52,14 +51,15 @@ def get_source():
     return os.environ['EVENT_SOURCE']
 
 
-def get_branch():
-    return os.environ['BRANCH']
-
-
 def get_batch_upgrade_started_detail(props):
     return {
-        'slack': {
-            'text': f':mega: *BatchUpgradeStarted* | {props.branch}'
+        'metadata': {
+            'includes_slack_notification': True,
+        },
+        'data': {
+            'slack': {
+                'text': f':mega: *BatchUpgradeStarted* | {props.source}'
+            }
         }
     }
 
@@ -67,11 +67,16 @@ def get_batch_upgrade_started_detail(props):
 def get_batch_upgrade_completed_detail(props, result):
     decoded_results = result.stdout.decode('utf-8')[-1000:]
     return {
-        'slack': {
-            'text': (
-                f':white_check_mark: *BatchUpgradeComplete* | {props.branch}\n'
-                f'```{decoded_results}```'
-            )
+        'metadata': {
+            'includes_slack_notification': True,
+        },
+        'data': {
+            'slack': {
+                'text': (
+                    f':white_check_mark: *BatchUpgradeComplete* | {props.source}\n'
+                    f'```{decoded_results}```'
+                )
+            }
         }
     }
 
@@ -79,11 +84,16 @@ def get_batch_upgrade_completed_detail(props, result):
 def get_batch_upgrade_failed_detail(props, error):
     decoded_error = error.stdout.decode('utf-8')[-1000:]
     return {
-        'slack': {
-            'text': (
-                f':x: *BatchUpgradeFailed* | {props.branch}\n'
-                f'```{decoded_error}```'
-            )
+        'metadata': {
+            'includes_slack_notification': True,
+        },
+        'data': {
+            'slack': {
+                'text': (
+                    f':x: *BatchUpgradeFailed* | {props.source}\n'
+                    f'```{decoded_error}```'
+                )
+            }
         }
     }
 
@@ -163,7 +173,6 @@ def main():
     props = BatchUpgradeNotificationProps(
         bus=get_bus(),
         source=get_source(),
-        branch=get_branch(),
     )
     run_batch_upgrade_with_event_notification(props, args)
 
