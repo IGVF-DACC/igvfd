@@ -106,6 +106,7 @@ def notify_batch_upgrade_started(props):
         event_bus_name=props.bus.name,
         detail=get_batch_upgrade_started_detail(props)
     )
+    logger.info(event)
     response = props.bus.notify(
         [
             event
@@ -122,6 +123,7 @@ def notify_batch_upgrade_completed(props, result):
         event_bus_name=props.bus.name,
         detail=get_batch_upgrade_completed_detail(props, result)
     )
+    logger.info(event)
     response = props.bus.notify(
         [
             event
@@ -138,6 +140,7 @@ def notify_batch_upgrade_failed(props, error):
         event_bus_name=props.bus.name,
         detail=get_batch_upgrade_failed_detail(props, error)
     )
+    logger.info(event)
     response = props.bus.notify(
         [
             event
