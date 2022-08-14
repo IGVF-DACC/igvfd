@@ -28,5 +28,35 @@
             "ENCODE"
         ],
         "description": "The technical sample is for quality control of vaccine production."
+    },
+    {
+        "uuid": "f12ab44c-bba8-46cc-9f3d-6a192eb09e7e",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:alias_archived"
+        ],
+        "status": "archived",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": [
+            "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        ],
+        "notes": "This is a note.",
+        "product_id": "GR000002",
+        "lot_id": "R00001",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "starting_amount": 5,
+        "starting_amount_units": "μg",
+        "dbxrefs": [
+            "GEO:SAMN1"
+        ],
+        "sample_material": "synthetic",
+        "technical_sample_term": "vaccine",
+        "date_obtained": "2022-04-09",
+        "source": "/labs/j-michael-cherry/",
+        "collections": [
+            "ENCODE"
+        ],
+        "description": "The technical sample was archived due to poor quality."
     }
 ]
