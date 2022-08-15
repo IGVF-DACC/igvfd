@@ -8,7 +8,8 @@
         "award",
         "lab",
         "source",
-        "sample_material"
+        "sample_material",
+        "technical_sample_term"
     ],
     "identifyingProperties": [
         "uuid",
