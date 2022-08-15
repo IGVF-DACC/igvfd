@@ -6,10 +6,12 @@
     "type": "object",
     "required": [
         "ref",
-        "alt"
+        "alt",
+        "locations"
     ],
     "identifyingProperties": [
-        "uuid"
+        "uuid",
+        "aliases"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -29,7 +31,7 @@
             "description": "An external ID for the variant like dbSNP.",
             "comment": "This is currently only accepting rsIDs",
             "type": "string",
-            "pattern": "^[1-9][0-9]*$",
+            "pattern": "rs[0-9]+",
             "uniqueKey": true
         },
         "associated_gene": {
@@ -37,6 +39,28 @@
             "description": "The gene associated with this variant",
             "type": "string",
             "linkTo": "Gene"
+        },
+        "ref": {
+            "title": "Reference Sequence",
+            "description": "The sequence found in this position in the reference.",
+            "type": "string",
+            "pattern": "^[ATCG]*$"
+        },
+        "alt": {
+            "title": "Variant Sequence",
+            "description": "The sequence found in this position in the variant.",
+            "type": "string",
+            "pattern": "^[ATCG]*$"
+        },
+        "associated_traits": {
+            "title": "Associated Traits",
+            "description": "Traits associated with this variant",
+            "type": "array",
+            "items": {
+                "title": "The phenotype trait associated with this variant",
+                "linkTo": "PhenotypeTerm",
+                "type": "string"
+            }
         },
         "dbxrefs": {
             "title": "External Resources",
@@ -78,8 +102,8 @@
                 "additionalProperties": false,
                 "required": [
                     "assembly",
-                    "ref",
-                    "alt"
+                    "chromosome",
+                    "position"
                 ],
                 "properties": {
                     "assembly": {
@@ -92,18 +116,6 @@
                             "mm10",
                             "mm9"
                         ]
-                    },
-                    "ref": {
-                        "title": "Reference Sequence",
-                        "description": "The sequence found in this position in the reference.",
-                        "type": "string",
-                        "pattern": "ATCG*"
-                    },
-                    "alt": {
-                        "title": "Variant Sequence",
-                        "description": "The sequence found in this position in the variant.",
-                        "type": "string",
-                        "pattern": "ATCG*"
                     },
                     "chromosome": {
                         "title": "Chromosome",
