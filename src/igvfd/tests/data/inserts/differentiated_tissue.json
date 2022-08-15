@@ -18,6 +18,7 @@
         "treatments": [
             "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
         ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "differentiation_treatments": [
             "bd2cb34e-c72c-11ec-9d64-0242ac120002"
         ],
@@ -37,6 +38,7 @@
         "donors": [
             "j-michael-cherry:alias_human_donor1"
         ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/jay-shendure/",
@@ -53,6 +55,7 @@
         "donors": [
             "j-michael-cherry:alias_human_donor_child"
         ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/jay-shendure/",
@@ -76,6 +79,7 @@
         "donors": [
             "j-michael-cherry:alias_human_donor2"
         ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "post_differentiation_time": 5,
         "post_differentiation_time_units": "day",
         "treatments": [

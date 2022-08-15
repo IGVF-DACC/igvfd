@@ -2,13 +2,14 @@ import pytest
 
 
 @pytest.fixture
-def tissue(testapp, lab, source, award, rodent_donor):
+def tissue(testapp, lab, source, award, rodent_donor, sample_term_adrenal_gland):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Mus musculus',
-        'donors': [rodent_donor['@id']]
+        'donors': [rodent_donor['@id']],
+        'biosample_term': sample_term_adrenal_gland['@id']
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
 
@@ -69,6 +70,7 @@ def tissue_v4(tissue, phenotype_term_alzheimers):
 def tissue_v5(tissue):
     item = tissue.copy()
     item.update({
+<<<<<<< HEAD
         'schema_version': '5',
         'age': '10',
         'age_units': 'day',
@@ -96,5 +98,8 @@ def tissue_v5_90_or_above(tissue):
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
+=======
+        'schema_version': '5'
+>>>>>>> add tests, inserts, upgrades
     })
     return item

@@ -30,6 +30,7 @@ def test_differentiated_cell_upgrade_4_5(upgrader, differentiated_cell_v4, pheno
     assert value.get('disease_terms') == [phenotype_term_alzheimers['@id']]
 
 
+<<<<<<< HEAD
 def test_differentiated_cell_upgrade_5_6(upgrader, differentiated_cell_v5, differentiated_cell_v5_unknown, differentiated_cell_v5_90_or_above):
     value = upgrader.upgrade('differentiated_cell', differentiated_cell_v5, current_version='5', target_version='6')
     assert value['lower_bound_age'] == 10 and value['upper_bound_age'] == 10
@@ -45,4 +46,8 @@ def test_differentiated_cell_upgrade_5_6(upgrader, differentiated_cell_v5, diffe
                              current_version='5', target_version='6')
     assert 'life_stage' not in value
     assert value['lower_bound_age'] == 90 and value['upper_bound_age'] == 90
+=======
+def test_differentiated_cell_upgrade_5_6(upgrader, differentiated_cell_v5):
+    value = upgrader.upgrade('differentiated_cell', differentiated_cell_v5, current_version='5', target_version='6')
+>>>>>>> add tests, inserts, upgrades
     assert value['schema_version'] == '6'

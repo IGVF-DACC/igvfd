@@ -2,13 +2,14 @@ import pytest
 
 
 @pytest.fixture
-def whole_organism(testapp, lab, source, award, rodent_donor):
+def whole_organism(testapp, lab, source, award, rodent_donor, sample_term_whole_organism):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Mus musculus',
-        'donors': [rodent_donor['@id']]
+        'donors': [rodent_donor['@id']],
+        'biosample_term': sample_term_whole_organism['@id']
     }
     return testapp.post_json('/whole_organism', item, status=201).json['@graph'][0]
 
@@ -57,6 +58,7 @@ def whole_organism_v3(whole_organism, phenotype_term_alzheimers):
 def whole_organism_v4(whole_organism):
     item = whole_organism.copy()
     item.update({
+<<<<<<< HEAD
         'schema_version': '4',
         'age': '10',
         'age_units': 'day',
@@ -84,5 +86,8 @@ def whole_organism_v4_90_or_above(whole_organism):
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
+=======
+        'schema_version': '4'
+>>>>>>> add tests, inserts, upgrades
     })
     return item

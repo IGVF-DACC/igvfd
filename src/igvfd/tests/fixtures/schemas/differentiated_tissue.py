@@ -2,13 +2,14 @@ import pytest
 
 
 @pytest.fixture
-def differentiated_tissue(testapp, lab, award, source, human_donor):
+def differentiated_tissue(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
-        'donors': [human_donor['@id']]
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_adrenal_gland['@id']
     }
     return testapp.post_json('/differentiated_tissue', item, status=201).json['@graph'][0]
 
@@ -70,6 +71,7 @@ def differentiated_tissue_v4(differentiated_tissue, phenotype_term_alzheimers):
 def differentiated_tissue_v5(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
+<<<<<<< HEAD
         'schema_version': '5',
         'age': '10',
         'age_units': 'day',
@@ -97,5 +99,8 @@ def differentiated_tissue_v5_90_or_above(differentiated_tissue):
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
+=======
+        'schema_version': '5'
+>>>>>>> add tests, inserts, upgrades
     })
     return item

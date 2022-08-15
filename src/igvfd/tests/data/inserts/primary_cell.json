@@ -82,6 +82,7 @@
         "donors": [
             "j-michael-cherry:alias_human_donor_child"
         ],
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
@@ -132,6 +133,7 @@
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
         "taxa": "Mus musculus",
         "source": "/labs/j-michael-cherry/",
