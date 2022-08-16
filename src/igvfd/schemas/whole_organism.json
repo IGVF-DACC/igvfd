@@ -176,7 +176,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "5"
+            "default": "6"
         }
     },
     "changelog": "/profiles/changelogs/whole_organism.md"

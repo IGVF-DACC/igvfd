@@ -71,7 +71,6 @@ def differentiated_tissue_v4(differentiated_tissue, phenotype_term_alzheimers):
 def differentiated_tissue_v5(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
-<<<<<<< HEAD
         'schema_version': '5',
         'age': '10',
         'age_units': 'day',
@@ -99,8 +98,14 @@ def differentiated_tissue_v5_90_or_above(differentiated_tissue):
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
-=======
-        'schema_version': '5'
->>>>>>> add tests, inserts, upgrades
+    })
+    return item
+
+
+@pytest.fixture
+def differentiated_tissue_v6(differentiated_tissue):
+    item = differentiated_tissue.copy()
+    item.update({
+        'schema_version': '6'
     })
     return item

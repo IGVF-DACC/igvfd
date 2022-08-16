@@ -71,7 +71,6 @@ def differentiated_cell_v4(differentiated_cell, phenotype_term_alzheimers):
 def differentiated_cell_v5(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
-<<<<<<< HEAD
         'schema_version': '5',
         'age': '10',
         'age_units': 'day',
@@ -99,8 +98,14 @@ def differentiated_cell_v5_90_or_above(differentiated_cell):
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
-=======
+    })
+    return item
+
+
+@pytest.fixture
+def differentiated_cell_v6(differentiated_cell):
+    item = differentiated_cell.copy()
+    item.update({
         'schema_version': '6'
->>>>>>> add tests, inserts, upgrades
     })
     return item

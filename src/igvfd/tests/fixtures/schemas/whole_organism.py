@@ -58,7 +58,6 @@ def whole_organism_v3(whole_organism, phenotype_term_alzheimers):
 def whole_organism_v4(whole_organism):
     item = whole_organism.copy()
     item.update({
-<<<<<<< HEAD
         'schema_version': '4',
         'age': '10',
         'age_units': 'day',
@@ -86,8 +85,14 @@ def whole_organism_v4_90_or_above(whole_organism):
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
-=======
-        'schema_version': '4'
->>>>>>> add tests, inserts, upgrades
+    })
+    return item
+
+
+@pytest.fixture
+def whole_organism_v5(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '5'
     })
     return item

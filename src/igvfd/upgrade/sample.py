@@ -82,7 +82,6 @@ def sample_4_5(value, system):
 @upgrade_step('tissue', '5', '6')
 @upgrade_step('whole_organism', '4', '5')
 def sample_5_6(value, system):
-<<<<<<< HEAD
     # https://igvf.atlassian.net/browse/IGVF-249
     if 'age' in value:
         age = value['age']
@@ -98,7 +97,15 @@ def sample_5_6(value, system):
         if value['life_stage'] == 'embryonic':
             value['embryonic'] = True
         del value['life_stage']
-=======
+    return
+
+
+@upgrade_step('cell_line', '6', '7')
+@upgrade_step('differentiated_cell', '6', '7')
+@upgrade_step('differentiated_tissue', '6', '7')
+@upgrade_step('primary_cell', '6', '7')
+@upgrade_step('tissue', '6', '7')
+@upgrade_step('whole_organism', '5', '6')
+def sample_5_6(value, system):
     # https://igvf.atlassian.net/browse/IGVF-243
     return
->>>>>>> add tests, inserts, upgrades

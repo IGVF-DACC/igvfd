@@ -84,7 +84,6 @@ def cell_line_v4(cell_line, phenotype_term_alzheimers):
 def cell_line_v5(cell_line):
     item = cell_line.copy()
     item.update({
-<<<<<<< HEAD
         'schema_version': '5',
         'age': '10',
         'age_units': 'day',
@@ -112,8 +111,14 @@ def cell_line_v5_90_or_above(cell_line):
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
-=======
-        'schema_version': '5'
->>>>>>> add tests, inserts, upgrades
+    })
+    return item
+
+
+@pytest.fixture
+def cell_line_v6(cell_line):
+    item = cell_line.copy()
+    item.update({
+        'schema_version': '6'
     })
     return item

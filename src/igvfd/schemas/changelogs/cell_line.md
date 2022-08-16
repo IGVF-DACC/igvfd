@@ -1,16 +1,16 @@
 ## Changelog for *`cell_line.json`*
 
+### Schema version 7
+
+* Add `biosample_term` to requirements.
+
 ### Schema version 6
 
-<<<<<<< HEAD
 * Remove `life_stage`.
 * Add `lower_bound_age`.
 * Add `upper_bound_age`.
 * Add `embryonic`.
 * Convert `age` to be calculated from `lower_bound_age` and `upper_bound_age` and not submittable.
-=======
->>>>>>> add tests, inserts, upgrades
-* Add `biosample_term` to requirements.
 
 ### Schema version 5
 

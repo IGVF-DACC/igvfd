@@ -29,7 +29,6 @@ def test_tissue_upgrade_4_5(upgrader, tissue_v4, phenotype_term_alzheimers):
     assert value.get('disease_terms') == [phenotype_term_alzheimers['@id']]
 
 
-<<<<<<< HEAD
 def test_tissue_upgrade_5_6(upgrader, tissue_v5, tissue_v5_unknown, tissue_v5_90_or_above):
     value = upgrader.upgrade('tissue', tissue_v5, current_version='5', target_version='6')
     assert value['lower_bound_age'] == 10 and value['upper_bound_age'] == 10
@@ -43,8 +42,8 @@ def test_tissue_upgrade_5_6(upgrader, tissue_v5, tissue_v5_unknown, tissue_v5_90
     value = upgrader.upgrade('tissue', tissue_v5_90_or_above, current_version='5', target_version='6')
     assert 'life_stage' not in value
     assert value['lower_bound_age'] == 90 and value['upper_bound_age'] == 90
-=======
-def test_tissue_upgrade_5_6(upgrader, tissue_v5):
-    value = upgrader.upgrade('tissue', tissue_v5, current_version='5', target_version='6')
->>>>>>> add tests, inserts, upgrades
-    assert value['schema_version'] == '6'
+
+
+def test_tissue_upgrade_6_7(upgrader, tissue_v6):
+    value = upgrader.upgrade('tissue', tissue_v6, current_version='6', target_version='7')
+    assert value['schema_version'] == '7'

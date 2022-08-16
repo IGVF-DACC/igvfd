@@ -96,7 +96,6 @@ def primary_cell_v4(primary_cell, phenotype_term_alzheimers):
 def primary_cell_v5(primary_cell):
     item = primary_cell.copy()
     item.update({
-<<<<<<< HEAD
         'schema_version': '5',
         'age': '10',
         'age_units': 'day',
@@ -124,8 +123,14 @@ def primary_cell_v5_90_or_above(primary_cell):
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
-=======
+    })
+    return item
+
+
+@pytest.fixture
+def primary_cell_v6(primary_cell):
+    item = primary_cell.copy()
+    item.update({
         'schema_version': '6'
->>>>>>> add tests, inserts, upgrades
     })
     return item
