@@ -155,6 +155,19 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
                         {
                             'Name': 'DB_NAME',
                             'Value': 'igvfd'
+                        },
+                        {
+                            'Name': 'DEFAULT_EVENT_BUS',
+                            'Value': {
+                                'Fn::GetAtt': [
+                                    'TestBusF2C65FE8',
+                                    'Arn'
+                                ]
+                            }
+                        },
+                        {
+                            'Name': 'EVENT_SOURCE',
+                            'Value': 'igvfd.demo.some-branch'
                         }
                     ],
                     'Essential': True,
@@ -523,7 +536,7 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
                         }
                     },
                     'Id': 'Target0',
-                    'Input': '{\"containerOverrides\":[{\"name\":\"pyramid\",\"command\":[\"/scripts/pyramid/batchupgrade.sh\"]},{\"name\":\"nginx\",\"command\":[\"sleep\",\"3600\"]}]}',
+                    'Input': '{\"containerOverrides\":[{\"name\":\"pyramid\",\"command\":[\"/scripts/pyramid/batchupgrade-with-notification.sh\"]},{\"name\":\"nginx\",\"command\":[\"sleep\",\"3600\"]}]}',
                     'RoleArn': {
                         'Fn::GetAtt': [
                             'TestBackendFargateTaskDefEventsRoleADEEE321',
