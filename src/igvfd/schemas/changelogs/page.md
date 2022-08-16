@@ -1,5 +1,9 @@
 ## Changelog for *`page.json`*
 
+### Schema version 3
+
+* Update schema version for deletion of unused properties
+
 ### Minor changes since schema version 2
 
 * Add `description`.
