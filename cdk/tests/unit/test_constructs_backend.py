@@ -467,6 +467,32 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
         }
     )
     template.has_resource_properties(
+        'AWS::IAM::Policy',
+        {
+            'PolicyDocument': {
+                'Statement': [
+                    {
+                        'Action': 'events:PutEvents',
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'TestBusF2C65FE8',
+                                'Arn'
+                            ]
+                        }
+                    }
+                ],
+                'Version': '2012-10-17'
+            },
+            'PolicyName': 'TestBackendFargateTaskDefTaskRoleDefaultPolicyF2A9F228',
+            'Roles': [
+                {
+                    'Ref': 'TestBackendFargateTaskDefTaskRoleD1640BC4'
+                }
+            ]
+        }
+    )
+    template.has_resource_properties(
         'AWS::EC2::SecurityGroupIngress',
         {
             'IpProtocol': 'tcp',
