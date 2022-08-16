@@ -3,7 +3,6 @@ import pytest
 from aws_cdk.assertions import Template
 
 
-@pytest.mark.skip()
 def test_constructs_backend_initialize_backend_construct(stack, instance_type, existing_resources, vpc, config):
     from infrastructure.constructs.backend import Backend
     from infrastructure.constructs.backend import BackendProps
