@@ -80,29 +80,31 @@ def primary_cell_v3(primary_cell):
 
 
 @pytest.fixture
-<<<<<<< HEAD
 def primary_cell_v4(primary_cell, phenotype_term_alzheimers):
     item = primary_cell.copy()
     item.update({
         'schema_version': '4',
         'disease_term': phenotype_term_alzheimers['@id']
-=======
-def primary_cell_v4(primary_cell):
+    })
+    return item
+
+
+def primary_cell_v5(primary_cell):
     item = primary_cell.copy()
     item.update({
-        'schema_version': '4',
+        'schema_version': '5',
         'age': '10',
         'age_units': 'day',
-        'life_stage': 'postnatal'
+        'life_stage': 'embryonic'
     })
     return item
 
 
 @pytest.fixture
-def primary_cell_v4_unknown(primary_cell):
+def primary_cell_v5_unknown(primary_cell):
     item = primary_cell.copy()
     item.update({
-        'schema_version': '4',
+        'schema_version': '5',
         'age': 'unknown',
         'life_stage': 'unknown'
     })
@@ -110,13 +112,12 @@ def primary_cell_v4_unknown(primary_cell):
 
 
 @pytest.fixture
-def primary_cell_v4_90_or_above(primary_cell):
+def primary_cell_v5_90_or_above(primary_cell):
     item = primary_cell.copy()
     item.update({
-        'schema_version': '4',
+        'schema_version': '5',
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
->>>>>>> 932a539 (tests, upgrade tests, inserts fixed, fixtures added)
     })
     return item

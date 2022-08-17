@@ -56,29 +56,31 @@ def tissue_v3(tissue):
 
 
 @pytest.fixture
-<<<<<<< HEAD
 def tissue_v4(tissue, phenotype_term_alzheimers):
     item = tissue.copy()
     item.update({
         'schema_version': '4',
         'disease_term': phenotype_term_alzheimers['@id']
-=======
-def tissue_v4(tissue):
+    })
+    return item
+
+
+def tissue_v5(tissue):
     item = tissue.copy()
     item.update({
-        'schema_version': '4',
+        'schema_version': '5',
         'age': '10',
         'age_units': 'day',
-        'life_stage': 'postnatal'
+        'life_stage': 'embryonic'
     })
     return item
 
 
 @pytest.fixture
-def tissue_v4_unknown(tissue):
+def tissue_v5_unknown(tissue):
     item = tissue.copy()
     item.update({
-        'schema_version': '4',
+        'schema_version': '5',
         'age': 'unknown',
         'life_stage': 'unknown'
     })
@@ -86,13 +88,12 @@ def tissue_v4_unknown(tissue):
 
 
 @pytest.fixture
-def tissue_v4_90_or_above(tissue):
+def tissue_v5_90_or_above(tissue):
     item = tissue.copy()
     item.update({
-        'schema_version': '4',
+        'schema_version': '5',
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
->>>>>>> 932a539 (tests, upgrade tests, inserts fixed, fixtures added)
     })
     return item

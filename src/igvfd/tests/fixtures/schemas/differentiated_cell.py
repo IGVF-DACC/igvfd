@@ -57,29 +57,32 @@ def differentiated_cell_v3(differentiated_cell):
 
 
 @pytest.fixture
-<<<<<<< HEAD
 def differentiated_cell_v4(differentiated_cell, phenotype_term_alzheimers):
     item = differentiated_cell.copy()
     item.update({
         'schema_version': '4',
         'disease_term': phenotype_term_alzheimers['@id']
-=======
-def differentiated_cell_v4(differentiated_cell):
-    item = differentiated_cell.copy()
-    item.update({
-        'schema_version': '4',
-        'age': '10',
-        'age_units': 'day',
-        'life_stage': 'postnatal'
     })
     return item
 
 
 @pytest.fixture
-def differentiated_cell_v4_unknown(differentiated_cell):
+def differentiated_cell_v5(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
-        'schema_version': '4',
+        'schema_version': '5',
+        'age': '10',
+        'age_units': 'day',
+        'life_stage': 'embryonic'
+    })
+    return item
+
+
+@pytest.fixture
+def differentiated_cell_v5_unknown(differentiated_cell):
+    item = differentiated_cell.copy()
+    item.update({
+        'schema_version': '5',
         'age': 'unknown',
         'life_stage': 'unknown'
     })
@@ -87,13 +90,12 @@ def differentiated_cell_v4_unknown(differentiated_cell):
 
 
 @pytest.fixture
-def differentiated_cell_v4_90_or_above(differentiated_cell):
+def differentiated_cell_v5_90_or_above(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
-        'schema_version': '4',
+        'schema_version': '5',
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
->>>>>>> 932a539 (tests, upgrade tests, inserts fixed, fixtures added)
     })
     return item

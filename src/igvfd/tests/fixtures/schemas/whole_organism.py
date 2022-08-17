@@ -44,29 +44,31 @@ def whole_organism_v2(whole_organism):
 
 
 @pytest.fixture
-<<<<<<< HEAD
 def whole_organism_v3(whole_organism, phenotype_term_alzheimers):
     item = whole_organism.copy()
     item.update({
         'schema_version': '3',
         'disease_term': phenotype_term_alzheimers['@id']
-=======
-def whole_organism_v3(whole_organism):
+    })
+    return item
+
+
+def whole_organism_v4(whole_organism):
     item = whole_organism.copy()
     item.update({
-        'schema_version': '3',
+        'schema_version': '4',
         'age': '10',
         'age_units': 'day',
-        'life_stage': 'postnatal'
+        'life_stage': 'embryonic'
     })
     return item
 
 
 @pytest.fixture
-def whole_organism_v3_unknown(whole_organism):
+def whole_organism_v4_unknown(whole_organism):
     item = whole_organism.copy()
     item.update({
-        'schema_version': '3',
+        'schema_version': '4',
         'age': 'unknown',
         'life_stage': 'unknown'
     })
@@ -74,13 +76,12 @@ def whole_organism_v3_unknown(whole_organism):
 
 
 @pytest.fixture
-def whole_organism_v3_90_or_above(whole_organism):
+def whole_organism_v4_90_or_above(whole_organism):
     item = whole_organism.copy()
     item.update({
-        'schema_version': '3',
+        'schema_version': '4',
         'age': '90 or above',
         'age_units': 'year',
         'life_stage': 'adult'
->>>>>>> 932a539 (tests, upgrade tests, inserts fixed, fixtures added)
     })
     return item
