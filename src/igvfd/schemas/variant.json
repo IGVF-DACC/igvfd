@@ -31,8 +31,7 @@
             "description": "An external ID for the variant like dbSNP.",
             "comment": "This is currently only accepting rsIDs",
             "type": "string",
-            "pattern": "rs[0-9]+",
-            "uniqueKey": true
+            "pattern": "rs[0-9]+"
         },
         "associated_gene": {
             "title": "Associated Gene",
