@@ -53,6 +53,7 @@ def whole_organism_v3(whole_organism, phenotype_term_alzheimers):
     return item
 
 
+@pytest.fixture
 def whole_organism_v4(whole_organism):
     item = whole_organism.copy()
     item.update({

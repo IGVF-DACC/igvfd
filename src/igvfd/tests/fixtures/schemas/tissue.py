@@ -65,6 +65,7 @@ def tissue_v4(tissue, phenotype_term_alzheimers):
     return item
 
 
+@pytest.fixture
 def tissue_v5(tissue):
     item = tissue.copy()
     item.update({

@@ -76,7 +76,7 @@ def sample_4_5(value, system):
 
 
 @upgrade_step('cell_line', '5', '6')
-@upgrade_step('differentiated_cell_line', '5', '6')
+@upgrade_step('differentiated_cell', '5', '6')
 @upgrade_step('differentiated_tissue', '5', '6')
 @upgrade_step('primary_cell', '5', '6')
 @upgrade_step('tissue', '5', '6')

@@ -66,6 +66,7 @@ def differentiated_tissue_v4(differentiated_tissue, phenotype_term_alzheimers):
     return item
 
 
+@pytest.fixture
 def differentiated_tissue_v5(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({

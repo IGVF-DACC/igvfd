@@ -89,6 +89,7 @@ def primary_cell_v4(primary_cell, phenotype_term_alzheimers):
     return item
 
 
+@pytest.fixture
 def primary_cell_v5(primary_cell):
     item = primary_cell.copy()
     item.update({
