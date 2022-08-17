@@ -218,6 +218,11 @@
                 "type": "string",
                 "linkTo": "Donor"
             }
+        },
+        "embryonic": {
+            "title": "Embryonic",
+            "description": "Biosample is embryonic.",
+            "type": "boolean"
         }
     }
 }

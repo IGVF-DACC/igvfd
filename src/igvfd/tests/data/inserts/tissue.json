@@ -111,6 +111,7 @@
         ],
         "lower_bound_age": 19,
         "upper_bound_age": 20,
-        "age_units": "day"
+        "age_units": "day",
+        "embryonic": true
     }
 ]
