@@ -2,8 +2,6 @@ import json
 
 from constructs import Construct
 
-from aws_cdk import SecretValue
-
 from aws_cdk.aws_logs import RetentionDays
 
 from aws_cdk.custom_resources import AwsCustomResource
@@ -17,19 +15,12 @@ from aws_cdk.aws_ec2 import SubnetType
 from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedFargateService
 
 from aws_cdk.aws_events import Rule
-from aws_cdk.aws_events import RuleTargetInput
 from aws_cdk.aws_events import EventPattern
-from aws_cdk.aws_events import Connection
-from aws_cdk.aws_events import Authorization
-from aws_cdk.aws_events import ApiDestination
 
-from aws_cdk.aws_events_targets import ApiDestination as ApiDestinationToTarget
 from aws_cdk.aws_events_targets import ContainerOverride
 from aws_cdk.aws_events_targets import EcsTask
 
 from aws_cdk.aws_s3_assets import Asset
-
-from aws_cdk.aws_ssm import StringParameter
 
 from infrastructure.config import Config
 
@@ -78,7 +69,6 @@ class BatchUpgrade(Construct):
         self._define_upgrade_folder()
         self._define_event_trigger()
         self._grant_put_events_to_trigger()
-        self._add_slack_notifications()
 
     def _define_event_source(self) -> None:
         self.event_source = get_event_source_from_config(
@@ -171,52 +161,4 @@ class BatchUpgrade(Construct):
     def _grant_put_events_to_trigger(self) -> None:
         self.props.existing_resources.bus.default.grant_put_events_to(
             self.event_trigger
-        )
-
-    def _add_slack_notifications(self) -> None:
-        authorization = Authorization.basic(
-            'abc',
-            SecretValue.unsafe_plain_text('123'),
-        )
-        connection = Connection(
-            self,
-            'Connection',
-            authorization=authorization,
-        )
-        endpoint = StringParameter.from_string_parameter_name(
-            self,
-            'SlackWebhookUrl',
-            string_parameter_name='SLACK_WEBHOOK_URL_AWS_IGVF_DEV'
-        )
-        api_destination = ApiDestination(
-            self, 'SlackIncomingWebhookDestination',
-            connection=connection,
-            endpoint=endpoint.string_value,
-        )
-        rule = Rule(
-            self,
-            'PassBatchUpgradeEventsToSlack',
-            event_pattern=EventPattern(
-                detail_type=[
-                    'BatchUpgradeStarted',
-                    'BatchUpgradeCompleted',
-                    'BatchUpgradeFailed',
-                ],
-                source=[
-                    self.event_source,
-                ],
-                detail={
-                    'metadata': {
-                        'includes_slack_notification': [True]
-                    }
-                }
-            ),
-            targets=[
-                ApiDestinationToTarget(
-                    api_destination=api_destination,
-                    event=RuleTargetInput.from_event_path(
-                        '$.detail.data.slack'
-                    )
-                )
-            ]
         )
