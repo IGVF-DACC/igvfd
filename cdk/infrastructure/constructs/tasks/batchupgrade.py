@@ -82,7 +82,7 @@ class BatchUpgrade(Construct):
         return [
             ContainerOverride(
                 container_name='pyramid',
-                command=['/scripts/pyramid/batchupgrade.sh'],
+                command=['/scripts/pyramid/batchupgrade-with-notification.sh'],
             ),
             ContainerOverride(
                 container_name='nginx',

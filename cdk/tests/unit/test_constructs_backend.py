@@ -155,6 +155,19 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
                         {
                             'Name': 'DB_NAME',
                             'Value': 'igvfd'
+                        },
+                        {
+                            'Name': 'DEFAULT_EVENT_BUS',
+                            'Value': {
+                                'Fn::GetAtt': [
+                                    'TestBusF2C65FE8',
+                                    'Arn'
+                                ]
+                            }
+                        },
+                        {
+                            'Name': 'EVENT_SOURCE',
+                            'Value': 'igvfd.demo.some-branch'
                         }
                     ],
                     'Essential': True,
@@ -454,6 +467,32 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
         }
     )
     template.has_resource_properties(
+        'AWS::IAM::Policy',
+        {
+            'PolicyDocument': {
+                'Statement': [
+                    {
+                        'Action': 'events:PutEvents',
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'TestBusF2C65FE8',
+                                'Arn'
+                            ]
+                        }
+                    }
+                ],
+                'Version': '2012-10-17'
+            },
+            'PolicyName': 'TestBackendFargateTaskDefTaskRoleDefaultPolicyF2A9F228',
+            'Roles': [
+                {
+                    'Ref': 'TestBackendFargateTaskDefTaskRoleD1640BC4'
+                }
+            ]
+        }
+    )
+    template.has_resource_properties(
         'AWS::EC2::SecurityGroupIngress',
         {
             'IpProtocol': 'tcp',
@@ -523,7 +562,7 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
                         }
                     },
                     'Id': 'Target0',
-                    'Input': '{\"containerOverrides\":[{\"name\":\"pyramid\",\"command\":[\"/scripts/pyramid/batchupgrade.sh\"]},{\"name\":\"nginx\",\"command\":[\"sleep\",\"3600\"]}]}',
+                    'Input': '{\"containerOverrides\":[{\"name\":\"pyramid\",\"command\":[\"/scripts/pyramid/batchupgrade-with-notification.sh\"]},{\"name\":\"nginx\",\"command\":[\"sleep\",\"3600\"]}]}',
                     'RoleArn': {
                         'Fn::GetAtt': [
                             'TestBackendFargateTaskDefEventsRoleADEEE321',
