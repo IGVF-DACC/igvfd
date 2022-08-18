@@ -63,3 +63,38 @@ def tissue_v4(tissue, phenotype_term_alzheimers):
         'disease_term': phenotype_term_alzheimers['@id']
     })
     return item
+
+
+@pytest.fixture
+def tissue_v5(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '5',
+        'age': '10',
+        'age_units': 'day',
+        'life_stage': 'embryonic'
+    })
+    return item
+
+
+@pytest.fixture
+def tissue_v5_unknown(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '5',
+        'age': 'unknown',
+        'life_stage': 'unknown'
+    })
+    return item
+
+
+@pytest.fixture
+def tissue_v5_90_or_above(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '5',
+        'age': '90 or above',
+        'age_units': 'year',
+        'life_stage': 'adult'
+    })
+    return item

@@ -1,5 +1,12 @@
 ## Changelog for *`differentiated_tissue.json`*
 
+### Schema version 6
+* Remove `life_stage`.
+* Add `lower_bound_age`.
+* Add `upper_bound_age`.
+* Add `embryonic`.
+* Convert `age` to be calculated from `lower_bound_age` and `upper_bound_age` and not submittable.
+
 ### Schema version 5
 
 * Rename `disease_term` to `disease_terms`.

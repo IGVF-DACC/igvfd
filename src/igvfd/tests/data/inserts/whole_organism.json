@@ -66,6 +66,7 @@
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
         "description": "10 days mouse embryo",
-        "taxa": "Mus musculus"
+        "taxa": "Mus musculus",
+        "embryonic": true
     }
 ]

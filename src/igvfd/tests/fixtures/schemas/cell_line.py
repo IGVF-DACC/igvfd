@@ -76,3 +76,38 @@ def cell_line_v4(cell_line, phenotype_term_alzheimers):
         'disease_term': phenotype_term_alzheimers['@id']
     })
     return item
+
+
+@pytest.fixture
+def cell_line_v5(cell_line):
+    item = cell_line.copy()
+    item.update({
+        'schema_version': '5',
+        'age': '10',
+        'age_units': 'day',
+        'life_stage': 'embryonic'
+    })
+    return item
+
+
+@pytest.fixture
+def cell_line_v5_unknown(cell_line):
+    item = cell_line.copy()
+    item.update({
+        'schema_version': '5',
+        'age': 'unknown',
+        'life_stage': 'unknown'
+    })
+    return item
+
+
+@pytest.fixture
+def cell_line_v5_90_or_above(cell_line):
+    item = cell_line.copy()
+    item.update({
+        'schema_version': '5',
+        'age': '90 or above',
+        'age_units': 'year',
+        'life_stage': 'adult'
+    })
+    return item

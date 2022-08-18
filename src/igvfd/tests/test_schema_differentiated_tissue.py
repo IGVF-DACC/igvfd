@@ -29,7 +29,7 @@ def test_post_differentiated_tissue(testapp, award, lab, source, treatment_chemi
 def test_differentiated_tissue_age_unit_dependency(differentiated_tissue, testapp):
     res = testapp.patch_json(
         differentiated_tissue['@id'],
-        {'taxa': 'Saccharomyces', 'age': '5', 'age_units': 'minute'})
+        {'taxa': 'Saccharomyces', 'lower_bound_age': 5, 'upper_bound_age': 10, 'age_units': 'minute'})
     assert res.status_code == 200
     res = testapp.patch_json(
         differentiated_tissue['@id'],

@@ -73,3 +73,27 @@ def sample_4_5(value, system):
     if 'disease_term' in value:
         value['disease_terms'] = [value['disease_term']]
         value.pop('disease_term')
+
+
+@upgrade_step('cell_line', '5', '6')
+@upgrade_step('differentiated_cell', '5', '6')
+@upgrade_step('differentiated_tissue', '5', '6')
+@upgrade_step('primary_cell', '5', '6')
+@upgrade_step('tissue', '5', '6')
+@upgrade_step('whole_organism', '4', '5')
+def sample_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-249
+    if 'age' in value:
+        age = value['age']
+        del value['age']
+        if age != 'unknown':
+            if age == '90 or above':
+                value['lower_bound_age'] = 90
+                value['upper_bound_age'] = 90
+            else:
+                value['lower_bound_age'] = int(age)
+                value['upper_bound_age'] = int(age)
+    if 'life_stage' in value:
+        if value['life_stage'] == 'embryonic':
+            value['embryonic'] = True
+        del value['life_stage']

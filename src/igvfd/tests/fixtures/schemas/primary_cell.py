@@ -87,3 +87,38 @@ def primary_cell_v4(primary_cell, phenotype_term_alzheimers):
         'disease_term': phenotype_term_alzheimers['@id']
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v5(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '5',
+        'age': '10',
+        'age_units': 'day',
+        'life_stage': 'embryonic'
+    })
+    return item
+
+
+@pytest.fixture
+def primary_cell_v5_unknown(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '5',
+        'age': 'unknown',
+        'life_stage': 'unknown'
+    })
+    return item
+
+
+@pytest.fixture
+def primary_cell_v5_90_or_above(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '5',
+        'age': '90 or above',
+        'age_units': 'year',
+        'life_stage': 'adult'
+    })
+    return item

@@ -60,6 +60,24 @@ class Biosample(Sample):
         elif len(sexes) > 1:
             return 'mixed'
 
+    @calculated_property(
+        schema={
+            'title': 'Age',
+            'description': 'Age of organism at the time of collection of the sample.',
+            'type': 'string',
+            'pattern': '^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$'
+        }
+    )
+    def age(self, lower_bound_age=None, upper_bound_age=None, age_units=None):
+        if lower_bound_age and upper_bound_age:
+            if lower_bound_age == upper_bound_age:
+                if lower_bound_age == 90 and upper_bound_age == 90 and age_units == 'year':
+                    return '90 or above'
+                return str(lower_bound_age)
+            return str(lower_bound_age) + '-' + str(upper_bound_age)
+        else:
+            return 'unknown'
+
 
 @collection(
     name='primary-cells',

@@ -19,7 +19,8 @@
             "3280b708-0f05-40fa-bff2-54e2b6505c13",
             "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
         ],
-        "age": "90 or above",
+        "lower_bound_age": 90,
+        "upper_bound_age": 90,
         "age_units": "year"
     },
     {
@@ -87,7 +88,8 @@
             "3280b708-0f05-40fa-bff2-54e2b6505c13",
             "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
         ],
-        "age": "90 or above",
+        "lower_bound_age": 90,
+        "upper_bound_age": 90,
         "age_units": "year"
     }
 ]
