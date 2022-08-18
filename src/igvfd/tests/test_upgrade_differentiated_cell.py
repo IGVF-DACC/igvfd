@@ -45,8 +45,3 @@ def test_differentiated_cell_upgrade_5_6(upgrader, differentiated_cell_v5, diffe
                              current_version='5', target_version='6')
     assert 'life_stage' not in value
     assert value['lower_bound_age'] == 90 and value['upper_bound_age'] == 90
-
-
-def test_differentiated_cell_upgrade_6_7(upgrader, differentiated_cell_v6):
-    value = upgrader.upgrade('differentiated_cell', differentiated_cell_v6, current_version='6', target_version='7')
-    assert value['schema_version'] == '7'

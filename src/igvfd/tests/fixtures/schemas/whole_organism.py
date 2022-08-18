@@ -87,12 +87,3 @@ def whole_organism_v4_90_or_above(whole_organism):
         'life_stage': 'adult'
     })
     return item
-
-
-@pytest.fixture
-def whole_organism_v5(whole_organism):
-    item = whole_organism.copy()
-    item.update({
-        'schema_version': '5'
-    })
-    return item

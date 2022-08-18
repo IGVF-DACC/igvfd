@@ -113,12 +113,3 @@ def cell_line_v5_90_or_above(cell_line):
         'life_stage': 'adult'
     })
     return item
-
-
-@pytest.fixture
-def cell_line_v6(cell_line):
-    item = cell_line.copy()
-    item.update({
-        'schema_version': '6'
-    })
-    return item

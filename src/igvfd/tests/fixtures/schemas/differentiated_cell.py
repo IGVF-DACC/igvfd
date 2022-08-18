@@ -100,12 +100,3 @@ def differentiated_cell_v5_90_or_above(differentiated_cell):
         'life_stage': 'adult'
     })
     return item
-
-
-@pytest.fixture
-def differentiated_cell_v6(differentiated_cell):
-    item = differentiated_cell.copy()
-    item.update({
-        'schema_version': '6'
-    })
-    return item

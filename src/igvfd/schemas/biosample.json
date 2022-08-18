@@ -117,8 +117,7 @@
     },
     "properties": {
         "schema_version": {
-            "hidden comment": "Bump the default in the subclasses.",
-            "default": "4"
+            "hidden comment": "Bump the default in the subclasses."
         },
         "lower_bound_age": {
             "title": "Lower Bound Age",

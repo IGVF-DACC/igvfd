@@ -99,12 +99,3 @@ def tissue_v5_90_or_above(tissue):
         'life_stage': 'adult'
     })
     return item
-
-
-@pytest.fixture
-def tissue_v6(tissue):
-    item = tissue.copy()
-    item.update({
-        'schema_version': '6',
-    })
-    return item

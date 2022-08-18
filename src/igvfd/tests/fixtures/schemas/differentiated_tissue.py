@@ -100,12 +100,3 @@ def differentiated_tissue_v5_90_or_above(differentiated_tissue):
         'life_stage': 'adult'
     })
     return item
-
-
-@pytest.fixture
-def differentiated_tissue_v6(differentiated_tissue):
-    item = differentiated_tissue.copy()
-    item.update({
-        'schema_version': '6'
-    })
-    return item
