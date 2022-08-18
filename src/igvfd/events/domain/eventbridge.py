@@ -14,7 +14,7 @@ class EventBridgeEvent:
 
     @property
     def name(self):
-        return type(self).__name__
+        return self.__class__.__name__
 
     def as_entry(self):
         return {
