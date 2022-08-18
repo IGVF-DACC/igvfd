@@ -45,3 +45,4 @@ def test_differentiated_tissue_upgrade_5_6(upgrader, differentiated_tissue_v5, d
                              current_version='5', target_version='6')
     assert 'life_stage' not in value
     assert value['lower_bound_age'] == 90 and value['upper_bound_age'] == 90
+    assert value['schema_version'] == '6'

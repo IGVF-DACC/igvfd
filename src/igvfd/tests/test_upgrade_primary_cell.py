@@ -42,3 +42,4 @@ def test_primary_cell_upgrade_5_6(upgrader, primary_cell_v5, primary_cell_v5_unk
     value = upgrader.upgrade('primary_cell', primary_cell_v5_90_or_above, current_version='5', target_version='6')
     assert 'life_stage' not in value
     assert value['lower_bound_age'] == 90 and value['upper_bound_age'] == 90
+    assert value['schema_version'] == '6'

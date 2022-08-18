@@ -37,3 +37,4 @@ def test_whole_organism_upgrade_4_5(upgrader, whole_organism_v4, whole_organism_
     value = upgrader.upgrade('whole_organism', whole_organism_v4_90_or_above, current_version='4', target_version='5')
     assert 'life_stage' not in value
     assert value['lower_bound_age'] == 90 and value['upper_bound_age'] == 90
+    assert value['schema_version'] == '5'
