@@ -13,6 +13,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.testapp',
     'igvfd.tests.fixtures.alias',
     'igvfd.tests.fixtures.pyramid',
+    'igvfd.tests.fixtures.aws',
     'igvfd.tests.fixtures.schemas.access_key',
     'igvfd.tests.fixtures.schemas.source',
     'igvfd.tests.fixtures.schemas.award',
