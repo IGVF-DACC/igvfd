@@ -22,6 +22,7 @@ def test_stages_dev_initialize_dev_stages(config):
         'TestDevelopmentDeployStage-PostgresStack'
     )
     assert stack.tags == {
+        'environment': 'demo',
         'branch': 'some-branch',
         'project': 'igvfd',
         'test': 'tag'
@@ -30,6 +31,7 @@ def test_stages_dev_initialize_dev_stages(config):
         'TestDevelopmentDeployStage-BackendStack'
     )
     assert stack.tags == {
+        'environment': 'demo',
         'branch': 'some-branch',
         'project': 'igvfd',
         'test': 'tag'

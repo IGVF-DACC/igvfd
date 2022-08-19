@@ -92,6 +92,7 @@ def test_tags_add_tags_to_stack(config):
         'TestStack'
     )
     assert test_stack.tags == {
+        'environment': 'demo',
         'branch': 'some-branch',
         'project': 'igvfd',
         'test': 'tag'

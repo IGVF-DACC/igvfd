@@ -22,6 +22,7 @@ def test_stages_ci_initialize_ci_stage(config):
         'TestCIDeployStage-ContinuousIntegrationStack',
     )
     assert stack.tags == {
+        'environment': 'demo',
         'branch': 'some-branch',
         'project': 'igvfd',
         'test': 'tag'

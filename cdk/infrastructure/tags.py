@@ -31,6 +31,7 @@ def add_config_tags(stack: Stack, config: Config) -> None:
 
 
 def add_tags_to_stack(stack: Stack, config: Config) -> None:
+    add_environment_tag(stack, config)
     add_project_tag(stack, config)
     add_branch_tag(stack, config)
     add_config_tags(stack, config)
