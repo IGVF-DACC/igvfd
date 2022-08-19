@@ -5,6 +5,8 @@ from constructs import Construct
 from infrastructure.constructs.existing import igvf_dev
 
 from infrastructure.config import Config
+from infrastructure.tags import add_tags_to_stack
+
 from infrastructure.stacks.backend import BackendStack
 from infrastructure.stacks.postgres import PostgresStack
 
@@ -37,3 +39,5 @@ class DevelopmentDeployStage(cdk.Stage):
             existing_resources_class=igvf_dev.Resources,
             env=igvf_dev.US_WEST_2,
         )
+        add_tags_to_stack(self.postgres_stack, config)
+        add_tags_to_stack(self.backend_stack, config)
