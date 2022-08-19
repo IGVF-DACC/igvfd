@@ -6,6 +6,8 @@ from dataclasses import dataclass
 
 from typing import Any
 from typing import Dict
+from typing import List
+from typing import Tuple
 
 from infrastructure.constants import DEV_DATABASE_IDENTIFIER
 
@@ -37,7 +39,10 @@ config: Dict[str, Any] = {
                 'desired_count': 1,
                 'max_capacity': 4,
                 'use_postgres_named': 'Postgres',
-            }
+            },
+            'tags': [
+                ('time-to-live-hours', '72'),
+            ],
         },
         'dev': {
             'pipeline': 'ContinuousDeploymentPipelineStack',
@@ -63,7 +68,9 @@ config: Dict[str, Any] = {
                 'desired_count': 1,
                 'max_capacity': 4,
                 'use_postgres_named': 'Postgres'
-            }
+            },
+            'tags': [
+            ]
         },
         'test': {},
         'prod': {},
@@ -86,6 +93,7 @@ class Config:
     pipeline: str
     postgres: Dict[str, Any]
     backend: Dict[str, Any]
+    tags: List[Tuple[str, str]]
     common: Common = Common()
 
 
