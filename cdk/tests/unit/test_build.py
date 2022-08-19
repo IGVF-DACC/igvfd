@@ -1,5 +1,7 @@
 import pytest
 
+from aws_cdk.assertions import Template
+
 
 def test_synth_get_args():
     from aws_cdk import App
@@ -100,6 +102,25 @@ def test_synth_add_deploy_pipeline_stack_to_app():
         for child in app.node.children
     ]
     assert 'igvfd-dev-ContinuousDeploymentPipelineStack' in child_paths
+    stack = app.node.find_child(
+        'igvfd-dev-ContinuousDeploymentPipelineStack'
+    )
+    template = Template.from_stack(stack)
+    template.has_resource_properties(
+        'AWS::CodePipeline::Pipeline',
+        {
+            'Tags': [
+                {
+                    'Key': 'branch',
+                    'Value': 'dev'
+                },
+                {
+                    'Key': 'project',
+                    'Value': 'igvfd'
+                }
+            ]
+        }
+    )
 
 
 def test_synth_build():

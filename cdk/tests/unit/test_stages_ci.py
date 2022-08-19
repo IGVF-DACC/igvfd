@@ -1,9 +1,7 @@
 import pytest
 
-from aws_cdk.assertions import Template
 
-
-def test_stages_ci_initialize_ci_stage():
+def test_stages_ci_initialize_ci_stage(config):
     from aws_cdk import Stage
     from aws_cdk import App
     from infrastructure.stages.ci import CIDeployStage
@@ -11,6 +9,7 @@ def test_stages_ci_initialize_ci_stage():
     ci_deploy_stage = CIDeployStage(
         app,
         'TestCIDeployStage',
+        config=config,
     )
     cloud_assembly = ci_deploy_stage.synth()
     assert [
@@ -19,3 +18,11 @@ def test_stages_ci_initialize_ci_stage():
     ] == [
         'TestCIDeployStage-ContinuousIntegrationStack',
     ]
+    stack = cloud_assembly.get_stack_by_name(
+        'TestCIDeployStage-ContinuousIntegrationStack',
+    )
+    assert stack.tags == {
+        'branch': 'some-branch',
+        'project': 'igvfd',
+        'test': 'tag'
+    }

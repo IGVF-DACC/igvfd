@@ -160,5 +160,8 @@ def config(instance_type):
             'desired_count': 1,
             'max_capacity': 4,
             'use_postgres_named': 'Postgres',
-        }
+        },
+        tags=[
+            ('test', 'tag'),
+        ]
     )
