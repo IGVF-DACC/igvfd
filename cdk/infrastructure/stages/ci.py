@@ -24,10 +24,10 @@ class CIDeployStage(cdk.Stage):
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id,  **kwargs)
-        self.ci = ContinuousIntegrationStack(
+        self.ci_stack = ContinuousIntegrationStack(
             self,
             'ContinuousIntegrationStack',
             existing_resources_class=igvf_dev.Resources,
             env=igvf_dev.US_WEST_2,
         )
-        add_tags_to_stack(self.ci, config)
+        add_tags_to_stack(self.ci_stack, config)
