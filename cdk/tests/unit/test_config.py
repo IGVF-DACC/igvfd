@@ -21,6 +21,10 @@ def test_config_config_dataclass():
         pipeline='xyz-pipeline',
         postgres={},
         backend={},
+        tags=[
+            ('abc', '123'),
+            ('xyz', '321'),
+        ]
     )
     assert config.common.organization_name == 'igvf-dacc'
     assert config.common.project_name == 'igvfd'
@@ -28,6 +32,10 @@ def test_config_config_dataclass():
     assert config.backend == {}
     assert config.branch == 'xyz-branch'
     assert config.pipeline == 'xyz-pipeline'
+    assert config.tags == [
+        ('abc', '123'),
+        ('xyz', '321'),
+    ]
 
 
 def test_config_build_config_from_name():
