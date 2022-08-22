@@ -136,6 +136,7 @@ def page_view_page(context, request):
         'title': 'Default page',
         'type': 'string',
         'linkTo': 'Page',
+        'notSubmittable': True,
     })
 def collection_default_page(context, request):
     try:

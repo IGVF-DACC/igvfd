@@ -35,6 +35,7 @@ class Image(ItemWithAttachment, Item):
         'title': 'Thumb Nail',
         'description': 'Image url',
         'type': 'string',
+        'notSubmittable': True,
     })
     def thumb_nail(self, request, attachment):
         return self.jsonld_id(request) + attachment['href']
@@ -43,6 +44,7 @@ class Image(ItemWithAttachment, Item):
         'title': 'Download Url',
         'description': 'Download Url',
         'type': 'string',
+        'notSubmittable': True,
     })
     def download_url(self, request, attachment):
         return self.jsonld_id(request) + attachment['href']

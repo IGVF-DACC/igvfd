@@ -24,6 +24,7 @@ class Gene(SharedItem):
     @calculated_property(schema={
         'title': 'Title',
         'type': 'string',
+        'notSubmittable': True,
     })
     def title(self, request, taxa, symbol):
         return u'{} ({})'.format(symbol, taxa)

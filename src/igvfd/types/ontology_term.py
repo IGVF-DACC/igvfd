@@ -97,6 +97,7 @@ class SampleTerm(OntologyTerm):
         'items': {
             'type': 'string',
         },
+        'notSubmittable': True,
     })
     def organ_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'organs')
@@ -107,6 +108,7 @@ class SampleTerm(OntologyTerm):
         'items': {
             'type': 'string',
         },
+        'notSubmittable': True,
     })
     def cell_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'cells')
@@ -117,6 +119,7 @@ class SampleTerm(OntologyTerm):
         'items': {
             'type': 'string',
         },
+        'notSubmittable': True,
     })
     def developmental_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'developmental')
@@ -127,6 +130,7 @@ class SampleTerm(OntologyTerm):
         'items': {
             'type': 'string',
         },
+        'notSubmittable': True,
     })
     def system_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'systems')
@@ -156,6 +160,7 @@ class AssayTerm(OntologyTerm):
         'items': {
             'type': 'string',
         },
+        'notSubmittable': True,
     })
     def assay_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'assay')
@@ -166,6 +171,7 @@ class AssayTerm(OntologyTerm):
         'items': {
             'type': 'string',
         },
+        'notSubmittable': True,
     })
     def category_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'category')
@@ -176,6 +182,7 @@ class AssayTerm(OntologyTerm):
         'items': {
             'type': 'string',
         },
+        'notSubmittable': True,
     })
     def objective_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'objectives')
