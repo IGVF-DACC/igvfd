@@ -41,3 +41,18 @@ def test_patch_variant(testapp, human_variant):
             'chromosome': 'chr_2'
         }, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_dbxrefs_regex(testapp, human_variant):
+    res = testapp.patch_json(
+        human_variant['@id'],
+        {
+            'dbxrefs': ['X-999999-GTCA-CG', '999'],
+        })
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        human_variant['@id'],
+        {
+            'dbxrefs': ['X-999999-GTCA', 'AAAA'],
+        }, expect_errors=True)
+    assert res.status_code == 422

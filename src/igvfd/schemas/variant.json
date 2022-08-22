@@ -77,7 +77,7 @@
                 "description": "A unique identifier from external resource (e.g. HGNC, MGI, FlyBase, WormBase, ENSEMBL, MIM, UniProtKB, Vega, miRBase).",
                 "comment": "Submit as database_name:id. See changelog for potential databases.",
                 "type": "string",
-                "pattern": "^(([1-9]-\\d+-[ATCG]+-[ATCG]+)|(\\d+))$"
+                "pattern": "^(([0-9A-Za-z]+-\\d+-[ATCG]+-[ATCG]+)|(\\d+))$"
             },
             "permission": "import_items"
         },
