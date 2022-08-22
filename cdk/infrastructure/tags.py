@@ -4,30 +4,44 @@ from aws_cdk import Tags
 from infrastructure.config import Config
 
 
+# Cloudformation bug.
+# Updating NotificationRule tags causes Internal Failure.
+EXCLUDE_RESOURCE_TYPES = [
+    'AWS::CodeStarNotifications::NotificationRule'
+]
+
+
 def add_environment_tag(stack: Stack, config: Config) -> None:
     Tags.of(stack).add(
         'environment',
-        config.name
+        config.name,
+        exclude_resource_types=EXCLUDE_RESOURCE_TYPES,
     )
 
 
 def add_project_tag(stack: Stack, config: Config) -> None:
     Tags.of(stack).add(
         'project',
-        config.common.project_name
+        config.common.project_name,
+        exclude_resource_types=EXCLUDE_RESOURCE_TYPES,
     )
 
 
 def add_branch_tag(stack: Stack, config: Config) -> None:
     Tags.of(stack).add(
         'branch',
-        config.branch
+        config.branch,
+        exclude_resource_types=EXCLUDE_RESOURCE_TYPES,
     )
 
 
 def add_config_tags(stack: Stack, config: Config) -> None:
     for (key, value) in config.tags:
-        Tags.of(stack).add(key, value)
+        Tags.of(stack).add(
+            key,
+            value,
+            exclude_resource_types=EXCLUDE_RESOURCE_TYPES,
+        )
 
 
 def add_tags_to_stack(stack: Stack, config: Config) -> None:
