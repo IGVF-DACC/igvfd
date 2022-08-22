@@ -41,7 +41,7 @@ config: Dict[str, Any] = {
                 'use_postgres_named': 'Postgres',
             },
             'tags': [
-                ('time-to-live-hours', '36'),
+                ('time-to-live-hours', '76'),
             ],
         },
         'dev': {
