@@ -33,3 +33,10 @@ def test_collections(technical_sample, testapp):
         technical_sample['@id'],
         {'collections': ['ABBBCCCHD1455']}, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_technical_sample_archived(technical_sample, testapp):
+    res = testapp.patch_json(
+        technical_sample['@id'],
+        {'status': 'archived'})
+    assert res.status_code == 200
