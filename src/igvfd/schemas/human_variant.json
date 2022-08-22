@@ -1,0 +1,45 @@
+{
+    "title": "Human Variant",
+    "description": "Schema for submitting a human variant.",
+    "$id": "/profiles/human_variant.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "ref",
+        "alt",
+        "locations"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "variant.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "locations": {
+            "items": {
+                "properties": {
+                    "assembly": {
+                        "enum": [
+                            "GRCh38"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "changelog": "/profiles/changelogs/human_variant.md"
+}
