@@ -2,7 +2,9 @@
     {
         "uuid": "0f96ba0c-3edb-4289-a76f-aa5f5d1a56d2",
         "variantid": "rs143065131",
-        "associated_gene": "/genes/912/",
+        "associated_genes": [
+            "/genes/912/"
+        ],
         "associated_traits": [
             "/phenotype-terms/j-michael-cherry:alzheimers-disease/"
         ],
@@ -12,10 +14,10 @@
         "variation_type": "SNV",
         "ref": "G",
         "alt": "A",
+        "chromosome": "chr1",
         "locations": [
             {
                 "assembly": "GRCh38",
-                "chromosome": "chr1",
                 "position": 158180836
             }
         ]

@@ -33,11 +33,20 @@
             "type": "string",
             "pattern": "rs[0-9]+"
         },
-        "associated_gene": {
-            "title": "Associated Gene",
-            "description": "The gene associated with this variant",
+        "associated_genes": {
+            "title": "Associated Genes",
+            "type": "array",
+            "items": {
+                "title": "The genes associated with this variant",
+                "linkTo": "Gene",
+                "type": "string"
+            }
+        },
+        "chromosome": {
+            "title": "Chromosome",
+            "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX",
             "type": "string",
-            "linkTo": "Gene"
+            "pattern": "^(chr[0-9A-Za-z]+)$"
         },
         "ref": {
             "title": "Reference Sequence",
@@ -53,10 +62,9 @@
         },
         "associated_traits": {
             "title": "Associated Traits",
-            "description": "Traits associated with this variant",
             "type": "array",
             "items": {
-                "title": "The phenotype trait associated with this variant",
+                "title": "The phenotype traits associated with this variant",
                 "linkTo": "PhenotypeTerm",
                 "type": "string"
             }
@@ -101,7 +109,6 @@
                 "additionalProperties": false,
                 "required": [
                     "assembly",
-                    "chromosome",
                     "position"
                 ],
                 "properties": {
@@ -115,12 +122,6 @@
                             "mm10",
                             "mm9"
                         ]
-                    },
-                    "chromosome": {
-                        "title": "Chromosome",
-                        "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX",
-                        "type": "string",
-                        "pattern": "^(chr[0-9A-Za-z]+)$"
                     },
                     "position": {
                         "title": "Position",
