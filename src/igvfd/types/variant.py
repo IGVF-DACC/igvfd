@@ -1,13 +1,14 @@
 from snovault import (
     collection,
-    load_schema
+    load_schema,
+    abstract_collection
 )
 from .base import (
     Item
 )
 
 
-@collection(
+@abstract_collection(
     name='variants',
     unique_key='uuid',
     properties={
@@ -16,4 +17,17 @@ from .base import (
     })
 class Variant(Item):
     item_type = 'variant'
+    base_types = ['Variant'] + Item.base_types
     schema = load_schema('igvfd:schemas/variant.json')
+
+
+@collection(
+    name='human-variants',
+    unique_key='uuid',
+    properties={
+        'title': 'Human variant',
+        'description': 'Listing of human variants',
+    })
+class HumanVariant(Variant):
+    item_type = 'human_variant'
+    schema = load_schema('igvfd:schemas/human_variant.json')
