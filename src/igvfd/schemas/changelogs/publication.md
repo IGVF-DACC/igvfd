@@ -3,6 +3,7 @@
 ### Minor changes since schema version 2
 
 * Add `description`.
+* Add `aliases` to identifyingProperties.
 
 ### Schema version 2
 
