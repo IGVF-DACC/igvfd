@@ -13,7 +13,8 @@
     ],
     "identifyingProperties": [
         "uuid",
-        "geneid"
+        "geneid",
+        "aliases"
     ],
     "additionalProperties": false,
     "mixinProperties": [
