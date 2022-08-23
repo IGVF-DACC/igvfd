@@ -18,8 +18,16 @@ def content(testapp):
         testapp.post_json(url, item)
 
 
-def test_item_summary_property(testapp, content):
+def test_item_summary_property(testapp, content, root):
     res = testapp.get('/test-igvf-items/')
     igvf_item_uuid = res.json['@graph'][0]['uuid']
-    igvf_item_summary = res.json['@graph'][0]['summary']
-    assert igvf_item_uuid == igvf_item_summary
+    igvf_item_id = res.json['@graph'][0]['@id']
+
+    igvf_item = root.get_by_uuid(igvf_item_uuid)
+    igvf_item_properties = igvf_item.properties
+    igvf_item.update(igvf_item_properties)
+
+    res = testapp.get(igvf_item_id)
+    igvf_item_accession = res.json['accession']
+    igvf_item_summary = res.json['summary']
+    assert igvf_item_accession == igvf_item_summary
