@@ -46,6 +46,7 @@ def test_technical_sample_technical_sample_term(
     award,
     other_lab,
     source,
+    sample_term_technical_sample,
     testapp
 ):
     item_missing_term = {
