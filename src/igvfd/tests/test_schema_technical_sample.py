@@ -40,3 +40,22 @@ def test_technical_sample_archived(technical_sample, testapp):
         technical_sample['@id'],
         {'status': 'archived'})
     assert res.status_code == 200
+
+
+def test_technical_sample_technical_sample_term(technical_sample_v3, testapp):
+    item_missing_term = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'source': source['@id'],
+        'sample_material': 'synthetic'
+    }
+    res = testapp.post_json(
+        '/technical_sample',
+        item_missing_term,
+        expect_errors=True)
+    assert res.status_code == 422
+
+     res = testapp.post_json(
+        '/technical_sample',
+        technical_sample_v3)
+    assert res.status_code == 200

@@ -3,7 +3,7 @@
 ### Schema version 4
 
 * Change `technical_sample_term` to link to `Sample Term`.
-* Add `technical_sample_term` to requirements.
+* Require `technical_sample_term`.
 
 ### Minor changes since schema version 3
 
