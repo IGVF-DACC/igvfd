@@ -21,6 +21,24 @@ def sample_term_adrenal_gland(testapp):
 
 
 @pytest.fixture
+def sample_term_pluripotent_stem_cell(testapp):
+    item = {
+        'term_id': 'CL:0002248',
+        'term_name': 'pluripotent stem cell'
+    }
+    return testapp.post_json('/sample_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def sample_term_whole_organism(testapp):
+    item = {
+        'term_id': 'UBERON:0000468',
+        'term_name': 'whole organism'
+    }
+    return testapp.post_json('/sample_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def sample_term_v1(sample_term_K562):
     item = sample_term_K562.copy()
     item.update({

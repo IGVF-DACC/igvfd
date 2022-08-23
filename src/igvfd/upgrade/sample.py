@@ -83,6 +83,7 @@ def sample_4_5(value, system):
 @upgrade_step('whole_organism', '4', '5')
 def sample_5_6(value, system):
     # https://igvf.atlassian.net/browse/IGVF-249
+    # https://igvf.atlassian.net/browse/IGVF-243
     if 'age' in value:
         age = value['age']
         del value['age']
@@ -97,3 +98,4 @@ def sample_5_6(value, system):
         if value['life_stage'] == 'embryonic':
             value['embryonic'] = True
         del value['life_stage']
+    return

@@ -25,5 +25,11 @@
         "term_name": "motor neuron",
         "status": "released",
         "uuid": "9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc"
+    },
+    {
+        "term_id": "UBERON:0000468",
+        "term_name": "whole organism",
+        "status": "released",
+        "uuid": "25d5ad53-15fd-4a44-878a-ece2f7e86509"
     }
 ]

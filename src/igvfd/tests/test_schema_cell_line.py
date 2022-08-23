@@ -84,13 +84,14 @@ def test_date_format(cell_line_with_date_obtained, testapp):
     assert res.status_code == 422
 
 
-def test_taxa_donors_requirements(testapp, award, lab, human_donor):
+def test_taxa_donors_requirements(testapp, award, lab, human_donor, sample_term_K562):
     res = testapp.post_json(
         '/cell_line',
         {
             'award': award['@id'],
             'lab': lab['@id'],
             'source': lab['@id'],
+            'biosample_term': sample_term_K562['@id'],
             'taxa': 'Homo sapiens',
             'donors': [human_donor['@id']]
         })
@@ -115,3 +116,27 @@ def test_part_of_cell_line(cell_line, cell_line_part_of, differentiated_cell, te
         cell_line_part_of['@id'],
         {'part_of': cell_line['@id']})
     assert res.status_code == 200
+
+
+def test_biosample_term_requirements(testapp, award, lab, human_donor, sample_term_K562):
+    res = testapp.post_json(
+        '/cell_line',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'source': lab['@id'],
+            'taxa': 'Homo sapiens',
+            'donors': [human_donor['@id']],
+            'biosample_term': sample_term_K562['@id']
+        })
+    assert res.status_code == 201
+
+    res = testapp.post_json(
+        '/cell_line',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'source': lab['@id'],
+            'donors': [human_donor['@id']]
+        }, expect_errors=True)
+    assert res.status_code == 422

@@ -10,6 +10,7 @@
         "donors": [
             "j-michael-cherry:alias_human_donor2"
         ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "in progress",
         "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
@@ -34,6 +35,7 @@
         ],
         "status": "released",
         "taxa": "Homo sapiens",
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "source": "/labs/j-michael-cherry/",
         "treatments": [
             "/treatments/2d57c810-c729-11ec-9d64-0242ac120002/",
@@ -58,6 +60,7 @@
         "donors": [
             "j-michael-cherry:alias_human_donor_child"
         ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
@@ -78,6 +81,7 @@
         "taxa": "Homo sapiens",
         "part_of": "IGVFSM000DDD",
         "source": "/labs/j-michael-cherry/",
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "nih_institutional_certification": "NICHD1442",
         "pmi": 2,
         "pmi_units": "week",
@@ -100,6 +104,7 @@
         "aliases": [
             "j-michael-cherry:tissue_part_of_whole_organism"
         ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",
         "taxa": "Mus musculus",
         "part_of": "IGVFSM000KAS",

@@ -10,6 +10,7 @@
         "donors": [
             "j-michael-cherry:alias_human_donor2"
         ],
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
@@ -34,6 +35,7 @@
         "donors": [
             "j-michael-cherry:alias_human_donor_child"
         ],
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/gary-hon/",
@@ -59,6 +61,7 @@
         "donors": [
             "j-michael-cherry:alias_human_donor_child"
         ],
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/gary-hon/",
@@ -77,6 +80,7 @@
         ],
         "status": "released",
         "taxa": "Homo sapiens",
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "source": "/labs/j-michael-cherry/",
         "part_of": "IGVFSM000CCC",
         "donors": [

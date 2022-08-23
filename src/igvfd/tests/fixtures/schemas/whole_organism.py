@@ -2,13 +2,14 @@ import pytest
 
 
 @pytest.fixture
-def whole_organism(testapp, lab, source, award, rodent_donor):
+def whole_organism(testapp, lab, source, award, rodent_donor, sample_term_whole_organism):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Mus musculus',
-        'donors': [rodent_donor['@id']]
+        'donors': [rodent_donor['@id']],
+        'biosample_term': sample_term_whole_organism['@id']
     }
     return testapp.post_json('/whole_organism', item, status=201).json['@graph'][0]
 

@@ -80,6 +80,7 @@
         "donors": [
             "j-michael-cherry:alias_human_donor1"
         ],
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/ali-mortazavi/",

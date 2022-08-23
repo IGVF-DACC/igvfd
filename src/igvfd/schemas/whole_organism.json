@@ -9,7 +9,8 @@
         "lab",
         "source",
         "donors",
-        "taxa"
+        "taxa",
+        "biosample_term"
     ],
     "identifyingProperties": [
         "uuid",
@@ -175,7 +176,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         }
     },
     "changelog": "/profiles/changelogs/whole_organism.md"

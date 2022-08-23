@@ -2,37 +2,40 @@ import pytest
 
 
 @pytest.fixture
-def primary_cell(testapp, other_lab, award, human_donor):
+def primary_cell(testapp, other_lab, award, human_donor, sample_term_pluripotent_stem_cell):
     item = {
         'award': award['@id'],
         'lab': other_lab['@id'],
         'source': other_lab['@id'],
         'taxa': 'Homo sapiens',
-        'donors': [human_donor['@id']]
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture
-def pooled_from_primary_cell(testapp, lab, award, source, human_donor):
+def pooled_from_primary_cell(testapp, lab, award, source, human_donor, sample_term_pluripotent_stem_cell):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
-        'donors': [human_donor['@id']]
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture
-def pooled_from_primary_cell_2(testapp, lab, award, source, human_donor):
+def pooled_from_primary_cell_2(testapp, lab, award, source, human_donor, sample_term_pluripotent_stem_cell):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
-        'donors': [human_donor['@id']]
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
 

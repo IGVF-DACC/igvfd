@@ -9,7 +9,8 @@
         "lab",
         "source",
         "donors",
-        "taxa"
+        "taxa",
+        "biosample_term"
     ],
     "identifyingProperties": [
         "uuid",
@@ -54,7 +55,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "5"
+            "default": "6"
         },
         "pmi": {
             "title": "Post-mortem Interval",
