@@ -7,7 +7,7 @@ def test_patch_variant(testapp, human_variant):
         {
             'ref': 'ATCG',
             'alt': 'AATCG',
-            'variantid': 'rs100',
+            'rsid': 'rs100',
             'chromosome': 'chr2',
             'locations': [
                 {
@@ -20,7 +20,7 @@ def test_patch_variant(testapp, human_variant):
     res = testapp.patch_json(
         human_variant['@id'],
         {
-            'variantid': '10041234'
+            'rsid': '10041234'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(

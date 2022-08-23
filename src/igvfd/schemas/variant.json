@@ -22,13 +22,6 @@
         "schema_version": {
             "default": "1"
         },
-        "variantid": {
-            "title": "Variant ID",
-            "description": "An external ID for the variant like dbSNP.",
-            "comment": "This is currently only accepting rsIDs",
-            "type": "string",
-            "pattern": "rs[0-9]+"
-        },
         "associated_genes": {
             "title": "Associated Genes",
             "type": "array",

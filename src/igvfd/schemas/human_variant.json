@@ -29,6 +29,13 @@
         "schema_version": {
             "default": "1"
         },
+        "rsid": {
+            "title": "Variant ID",
+            "description": "An external ID for the variant like dbSNP.",
+            "comment": "This is currently only accepting rsIDs",
+            "type": "string",
+            "pattern": "rs[0-9]+"
+        },
         "locations": {
             "items": {
                 "properties": {
