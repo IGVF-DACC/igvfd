@@ -43,7 +43,7 @@ def test_technical_sample_archived(technical_sample, testapp):
 
 
 def test_technical_sample_technical_sample_term(
-    technical_sample_v3,
+    technical_sample,
     award,
     other_lab,
     source,
@@ -63,5 +63,5 @@ def test_technical_sample_technical_sample_term(
 
     res = testapp.post_json(
         '/technical_sample',
-        technical_sample_v3)
+        technical_sample)
     assert res.status_code == 200
