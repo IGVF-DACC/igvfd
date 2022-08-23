@@ -42,7 +42,13 @@ def test_technical_sample_archived(technical_sample, testapp):
     assert res.status_code == 200
 
 
-def test_technical_sample_technical_sample_term(technical_sample_v3, testapp):
+def test_technical_sample_technical_sample_term(
+    technical_sample_v3,
+    award,
+    other_lab,
+    source
+    testapp
+):
     item_missing_term = {
         'award': award['@id'],
         'lab': other_lab['@id'],
