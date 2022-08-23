@@ -43,7 +43,6 @@ def test_technical_sample_archived(technical_sample, testapp):
 
 
 def test_technical_sample_technical_sample_term(
-    technical_sample,
     award,
     other_lab,
     source,
@@ -61,7 +60,14 @@ def test_technical_sample_technical_sample_term(
         expect_errors=True)
     assert res.status_code == 422
 
+    item_with_term = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'source': source['@id'],
+        'sample_material': 'synthetic',
+        'technical_sample_term': sample_term_technical_sample['@id']
+    }
     res = testapp.post_json(
         '/technical_sample',
-        technical_sample)
+        item_with_term)
     assert res.status_code == 200
