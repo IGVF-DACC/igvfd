@@ -71,4 +71,4 @@ def test_technical_sample_technical_sample_term(
     res = testapp.post_json(
         '/technical_sample',
         item_with_term)
-    assert res.status_code == 200
+    assert res.status_code == 201
