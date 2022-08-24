@@ -10,6 +10,7 @@ def human_variant(testapp):
         'locations': [{
             'assembly': 'GRCh38',
             'position': 1000000
-        }]
+        }],
+        'rsid': 'rs100'
     }
     return testapp.post_json('/human_variant', item, status=201).json['@graph'][0]

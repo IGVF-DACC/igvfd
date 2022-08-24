@@ -23,7 +23,7 @@ class Variant(Item):
 
 @collection(
     name='human-variants',
-    unique_key='uuid',
+    unique_key='human_variant:rsid_alt',
     properties={
         'title': 'Human variant',
         'description': 'Listing of human variants',
@@ -31,3 +31,9 @@ class Variant(Item):
 class HumanVariant(Variant):
     item_type = 'human_variant'
     schema = load_schema('igvfd:schemas/human_variant.json')
+
+    def unique_keys(self, properties):
+        keys = super(HumanVariant, self).unique_keys(properties)
+        value = u'{rsid}/{alt}'.format(**properties)
+        keys.setdefault('human_variant:rsid_alt', []).append(value)
+        return keys
