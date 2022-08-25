@@ -40,7 +40,7 @@ def test_patch_variant(testapp, human_variant):
     assert res.status_code == 422
 
 
-def test_dbxrefs_regex(testapp, human_variant):
+def test_refseq_regex(testapp, human_variant):
     res = testapp.patch_json(
         human_variant['@id'],
         {
