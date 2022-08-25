@@ -7,7 +7,6 @@
     "required": [
         "ref",
         "alt",
-        "locations",
         "rsid"
     ],
     "identifyingProperties": [
@@ -37,16 +36,22 @@
             "type": "string",
             "pattern": "rs[0-9]+"
         },
-        "locations": {
-            "items": {
-                "properties": {
-                    "assembly": {
-                        "enum": [
-                            "GRCh38"
-                        ]
-                    }
-                }
-            }
+        "assembly": {
+            "enum": [
+                "GRCh38"
+            ]
+        },
+        "chromosome": {
+            "title": "Chromosome",
+            "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX.",
+            "type": "string",
+            "pattern": "^((chr[0-9A-Za-z]+)|(MT))$"
+        },
+        "refseq_sequence": {
+            "title": "RefSeq Sequence",
+            "description": "The RefSeq identifier for this variant.",
+            "type": "string",
+            "pattern": "^((NC_|NT_|NW_)[0-9]+.[0-9]{1,2})$"
         }
     },
     "changelog": "/profiles/changelogs/human_variant.md"

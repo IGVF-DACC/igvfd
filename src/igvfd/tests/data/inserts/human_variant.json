@@ -8,19 +8,12 @@
         "associated_traits": [
             "/phenotype-terms/j-michael-cherry:alzheimers-disease/"
         ],
-        "dbxrefs": [
-            "1-158150626-G-A",
-            "265911"
-        ],
         "variation_type": "SNV",
         "ref": "G",
         "alt": "A",
         "chromosome": "chr1",
-        "locations": [
-            {
-                "assembly": "GRCh38",
-                "position": 158180836
-            }
-        ]
+        "assembly": "GRCh38",
+        "position": 158180836,
+        "refseq_sequence": "NC_1000.12"
     }
 ]

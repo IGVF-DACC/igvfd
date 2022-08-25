@@ -9,11 +9,8 @@ def test_patch_variant(testapp, human_variant):
             'alt': 'AATCG',
             'rsid': 'rs100',
             'chromosome': 'chr2',
-            'locations': [
-                {
-                    'assembly': 'GRCh38',
-                    'position': 158180836
-                }],
+            'assembly': 'GRCh38',
+            'position': 158180836,
             'variation_type': 'insertion'
         })
     assert res.status_code == 200
@@ -47,12 +44,30 @@ def test_dbxrefs_regex(testapp, human_variant):
     res = testapp.patch_json(
         human_variant['@id'],
         {
-            'dbxrefs': ['X-999999-GTCA-CG', '999'],
+            'refseq_sequence': 'NT_999.00'
         })
     assert res.status_code == 200
     res = testapp.patch_json(
         human_variant['@id'],
         {
-            'dbxrefs': ['X-999999-GTCA', 'AAAA'],
+            'refseq_sequence': 'NT_999.000'
         }, expect_errors=True)
     assert res.status_code == 422
+    res = testapp.patch_json(
+        human_variant['@id'],
+        {
+            'refseq_sequence': 'NT_999A.00'
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        human_variant['@id'],
+        {
+            'refseq_sequence': 'MT_999A.00'
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        human_variant['@id'],
+        {
+            'refseq_sequence': 'NW_999.00'
+        })
+    assert res.status_code == 200
