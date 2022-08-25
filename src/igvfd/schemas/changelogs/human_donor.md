@@ -3,6 +3,7 @@
 ### Minor changes since schema version 2
 
 * Add `description`.
+* Add `Pacific Islander` to `ethnicity` enum.
 
 ### Schema version 2
 
