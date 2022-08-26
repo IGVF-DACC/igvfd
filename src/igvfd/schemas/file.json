@@ -2,6 +2,8 @@
     "title": "File",
     "$id": "/profiles/file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Abstract schema for submission of a file.",
+    "type": "object",
     "required": [
         "award",
         "lab",
@@ -23,10 +25,12 @@
             "$ref": "mixins.json#/documents"
         }
     ],
-    "type": "object",
     "properties": {
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."
+        },
+        "accession": {
+            "accessionType": "FF"
         },
         "file_format": {
             "title": "File Format",
@@ -74,7 +78,7 @@
                 "invalidated",
                 "validated"
             ]
-        },
+        }
     },
     "changelog": "/profiles/changelogs/file.md"
 }
