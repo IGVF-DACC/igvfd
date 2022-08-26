@@ -1,0 +1,80 @@
+{
+    "title": "File",
+    "$id": "/profiles/file.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "required": [
+        "award",
+        "lab",
+        "md5sum",
+        "file_format"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        }
+    ],
+    "type": "object",
+    "properties": {
+        "schema_version": {
+            "hidden comment": "Bump the default in the subclasses."
+        },
+        "file_format": {
+            "title": "File Format",
+            "description": "The file format or extension of the file.",
+            "type": "string",
+            "enum": [
+                "bam",
+                "bed",
+                "bigBed",
+                "bigWig",
+                "csv",
+                "fasta",
+                "fastq",
+                "gtf",
+                "h5ad",
+                "hdf5",
+                "tar",
+                "tsv",
+                "vcf",
+                "txt",
+            ]
+        },
+        "md5sum": {
+            "title": "MD5sum",
+            "description": "The md5sum of the file being transferred.",
+            "type": "string",
+            "format": "hex",
+            "maxLength": 32,
+            "pattern": "[a-f\\d]{32}|[A-F\\d]{32}"
+        },
+        "submitted_file_name": {
+            "title": "Submitted File Name",
+            "description": "Original name of the file.",
+            "type": "string"
+        },
+        "upload_status": {
+            "title": "Upload Status",
+            "description": "The upload/validation status of the File.",
+            "type": "string",
+            "default": "pending",
+            "permission": "import_items",
+            "enum": [
+                "pending",
+                "file not found",
+                "invalidated",
+                "validated"
+            ]
+        },
+    },
+    "changelog": "/profiles/changelogs/file.md"
+}
