@@ -27,6 +27,7 @@ class Lab(Item):
         schema={
             'title': 'Title',
             'type': 'string',
+            'notSubmittable': True,
         }
     )
     def title(self, request, pi, institute_label):

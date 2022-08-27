@@ -59,6 +59,7 @@ class User(Item):
     @calculated_property(schema={
         'title': 'Title',
         'type': 'string',
+        'notSubmittable': True,
     })
     def title(self, first_name, last_name):
         return u'{} {}'.format(first_name, last_name)

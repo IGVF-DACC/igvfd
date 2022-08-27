@@ -23,6 +23,7 @@ class Treatment(Item):
         schema={
             'title': 'Title',
             'type': 'string',
+            'notSubmittable': True,
         }
     )
     def title(self, treatment_term_name, amount, amount_units, duration=None, duration_units=None):

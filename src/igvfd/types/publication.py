@@ -30,6 +30,7 @@ class Publication(Item):
     @calculated_property(condition='date_published', schema={
         'title': 'Publication Year',
         'type': 'integer',
+        'notSubmittable': True,
     })
     def publication_year(self, date_published):
         year = datetime.strptime(date_published, '%Y-%m-%d').year

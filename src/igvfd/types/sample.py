@@ -45,7 +45,8 @@ class Biosample(Sample):
                 'male',
                 'mixed',
                 'unspecified'
-            ]
+            ],
+            'notSubmittable': True,
         }
     )
     def sex(self, request, donors=None):
@@ -65,7 +66,8 @@ class Biosample(Sample):
             'title': 'Age',
             'description': 'Age of organism at the time of collection of the sample.',
             'type': 'string',
-            'pattern': '^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$'
+            'pattern': '^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$',
+            'notSubmittable': True,
         }
     )
     def age(self, lower_bound_age=None, upper_bound_age=None, age_units=None):
