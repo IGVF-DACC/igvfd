@@ -148,7 +148,8 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
                     self.props.config.branch,
                     'DeployContinuousIntegration'
                 )
-            )
+            ),
+            config=self.props.config,
         )
         tooling_wave.add_stage(
             ci_stage

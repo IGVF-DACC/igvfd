@@ -7,6 +7,7 @@ from infrastructure.config import build_config_from_name
 from infrastructure.config import get_config_name_from_branch
 from infrastructure.naming import prepend_project_name
 from infrastructure.naming import prepend_branch_name
+from infrastructure.tags import add_tags_to_stack
 
 from infrastructure.stacks.pipeline import pipeline_stack_factory
 from infrastructure.stacks.pipeline import PipelineStackClass
@@ -57,6 +58,7 @@ def add_deploy_pipeline_stack_to_app(app: App, config: Config) -> None:
         config=config,
         env=igvf_dev.US_WEST_2,
     )
+    add_tags_to_stack(pipeline, config)
 
 
 def build(app: App) -> None:

@@ -18,3 +18,21 @@ def test_stages_dev_initialize_dev_stages(config):
         'TestDevelopmentDeployStage-PostgresStack',
         'TestDevelopmentDeployStage-BackendStack',
     ]
+    stack = cloud_assembly.get_stack_by_name(
+        'TestDevelopmentDeployStage-PostgresStack'
+    )
+    assert stack.tags == {
+        'environment': 'demo',
+        'branch': 'some-branch',
+        'project': 'igvfd',
+        'test': 'tag'
+    }
+    stack = cloud_assembly.get_stack_by_name(
+        'TestDevelopmentDeployStage-BackendStack'
+    )
+    assert stack.tags == {
+        'environment': 'demo',
+        'branch': 'some-branch',
+        'project': 'igvfd',
+        'test': 'tag'
+    }
