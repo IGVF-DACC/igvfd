@@ -10,7 +10,8 @@
     ],
     "identifyingProperties": [
         "uuid",
-        "email"
+        "email",
+        "aliases"
     ],
     "additionalProperties": false,
     "mixinProperties": [

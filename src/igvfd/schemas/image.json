@@ -8,7 +8,8 @@
         "attachment"
     ],
     "identifyingProperties": [
-        "uuid"
+        "uuid",
+        "aliases"
     ],
     "additionalProperties": false,
     "mixinProperties": [
