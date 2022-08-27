@@ -51,3 +51,30 @@ def test_part_of_tissue(differentiated_tissue, differentiated_tissue_part_of, di
         differentiated_tissue['@id'],
         {'part_of': differentiated_tissue_part_of['@id']})
     assert res.status_code == 200
+
+
+def test_differentiation_time(differentiated_tissue, testapp):
+    res = testapp.patch_json(
+        differentiated_tissue['@id'],
+        {'post_differentiation_time': 10}, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        differentiated_tissue['@id'],
+        {'post_differentiation_time_units': 'hour'}, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        differentiated_tissue['@id'],
+        {'post_differentiation_time': 10, 'post_differentiation_time_units': 'hour'})
+    assert res.status_code == 200
+
+    res = testapp.patch_json(
+        differentiated_tissue['@id'],
+        {'post_differentiation_time': 10, 'post_differentiation_time_units': 'stage'}, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        differentiated_tissue['@id'],
+        {'post_differentiation_time': 10.2341, 'post_differentiation_time_units': 'minute'})
+    assert res.status_code == 200

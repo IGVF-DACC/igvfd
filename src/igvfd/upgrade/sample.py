@@ -99,3 +99,18 @@ def sample_5_6(value, system):
             value['embryonic'] = True
         del value['life_stage']
     return
+
+
+@upgrade_step('differentiated_cell', '6', '7')
+@upgrade_step('differentiated_tissue', '6', '7')
+def differentiated_sample_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-239
+    if value.get('post_differentiation_time_units') == 'stage':
+        old_diff_time = value['post_differentiation_time']
+        old_notes_value = ''
+        if value.get('notes'):
+            old_notes_value = value.get('notes')
+        value['notes'] = old_notes_value + \
+            f'  post_differentiation_time: {old_diff_time}, post_differentiation_time_units: stage.'
+        del value['post_differentiation_time_units']
+        del value['post_differentiation_time']
