@@ -10,7 +10,6 @@ from .base import (
 
 @collection(
     name='treatments',
-    unique_key='uuid',
     properties={
         'title': 'Treatment',
         'description': 'Listing of treatments',
