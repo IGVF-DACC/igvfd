@@ -80,11 +80,10 @@
             "default": "2"
         },
         "geneid": {
-            "title": "NCBI Entrez GeneID",
-            "description": "NCBI Entrez GeneID of official nomenclature approved gene.",
-            "comment": "An IGVF gene (object) needs to have an Entrez GeneID and needs to be approved by (i.e. have an ID and gene symbol from) offical nomenclature such as HGNC, MGI.",
+            "title": "ENSEMBL GeneID",
+            "description": "ENSEMBL GeneID of official nomenclature approved gene.",
             "type": "string",
-            "pattern": "^[1-9][0-9]*$",
+            "pattern": "ENSEMBL:ENS[A-Z]*G\\d+",
             "permission": "import_items",
             "uniqueKey": true
         },

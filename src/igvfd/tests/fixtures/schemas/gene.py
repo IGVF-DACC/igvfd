@@ -40,3 +40,13 @@ def gene_v1(gene_zscan10_mm):
         'aliases': []
     })
     return item
+
+
+@pytest.fixture
+def gene_v2(gene_zscan10_mm):
+    item = gene_zscan10_mm.copy()
+    item.update({
+        'schema_version': '2',
+        'aliases': []
+    })
+    return item

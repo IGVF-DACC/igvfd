@@ -3,6 +3,7 @@
 ### Schema version 3
 
 * Remove `ncbi_entrez_status`.
+* Change `geneID` to use ENCSEMBL ID instead of NCBI Entrez ID.
 
 ### Minor changes since schema version 2
 
