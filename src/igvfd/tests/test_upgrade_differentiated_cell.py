@@ -51,7 +51,7 @@ def test_differentiated_cell_upgrade_5_6(upgrader, differentiated_cell_v5, diffe
 def test_differentiated_cell_upgrade_6_7(upgrader, differentiated_cell_v6, differentiated_cell_v6_with_note, differentiated_cell_v6_good_value):
     value1 = upgrader.upgrade('differentiated_cell', differentiated_cell_v6, current_version='6', target_version='7')
     assert value1['schema_version'] == '7'
-    assert value1['notes'] == '  post_differentiation_time: 10, post_differentiation_time_units: stage.'
+    assert value1['notes'] == 'post_differentiation_time: 10, post_differentiation_time_units: stage.'
     assert 'post_differentiation_time' not in value1
     assert 'post_differentiation_time_units' not in value1
     value2 = upgrader.upgrade('differentiated_cell', differentiated_cell_v6_with_note,

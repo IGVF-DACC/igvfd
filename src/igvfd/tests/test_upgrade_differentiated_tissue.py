@@ -52,7 +52,7 @@ def test_differentiated_tissue_upgrade_6_7(upgrader, differentiated_tissue_v6, d
     value1 = upgrader.upgrade('differentiated_tissue', differentiated_tissue_v6,
                               current_version='6', target_version='7')
     assert value1['schema_version'] == '7'
-    assert value1['notes'] == '  post_differentiation_time: 10, post_differentiation_time_units: stage.'
+    assert value1['notes'] == 'post_differentiation_time: 10, post_differentiation_time_units: stage.'
     assert 'post_differentiation_time' not in value1
     assert 'post_differentiation_time_units' not in value1
     value2 = upgrader.upgrade('differentiated_tissue', differentiated_tissue_v6_with_note,

@@ -109,8 +109,8 @@ def differentiated_sample_6_7(value, system):
         old_diff_time = value['post_differentiation_time']
         old_notes_value = ''
         if value.get('notes'):
-            old_notes_value = value.get('notes')
+            old_notes_value = value.get('notes') + '  '
         value['notes'] = old_notes_value + \
-            f'  post_differentiation_time: {old_diff_time}, post_differentiation_time_units: stage.'
+            f'post_differentiation_time: {old_diff_time}, post_differentiation_time_units: stage.'
         del value['post_differentiation_time_units']
         del value['post_differentiation_time']
