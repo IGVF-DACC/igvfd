@@ -7,7 +7,7 @@ def gene_myc_hs(testapp):
         'dbxrefs': [
             'HGNC:7553'
         ],
-        'geneid': '4609',
+        'geneid': 'ENSG00000136997',
         'symbol': 'MYC',
         'taxa': 'Homo sapiens'
     }
@@ -20,12 +20,11 @@ def gene_zscan10_mm(testapp):
         'dbxrefs': [
             'Vega:OTTMUSG00000029797',
             'UniProtKB:Q3URR7',
-            'ENSEMBL:ENSMUSG00000023902',
             'RefSeq:NM_001033425.3',
             'RefSeq:NM_001033425.4',
             'MGI:3040700'
         ],
-        'geneid': '332221',
+        'geneid': 'ENSEMBL:ENSMUSG00000023902',
         'symbol': 'Zcan10',
         'taxa': 'Mus musculus'
     }
