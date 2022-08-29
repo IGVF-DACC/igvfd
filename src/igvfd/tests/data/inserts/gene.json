@@ -1,6 +1,6 @@
 [
     {
-        "geneid": "ENSEMBL:ENSG00000158473",
+        "geneid": "ENSG00000158473",
         "uuid": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
         "dbxrefs": [
             "MIM:188410",
@@ -32,7 +32,7 @@
             "UniProtKB:A0A024R305"
         ],
         "uuid": "fff95719-346c-471f-8b72-8a05c0102b1b",
-        "geneid": "ENSEMBL:ENSG00000163930",
+        "geneid": "ENSG00000163930",
         "locations": [
             {
                 "assembly": "GRCh38",
@@ -67,7 +67,7 @@
             "Vega:OTTHUMG00000132670",
             "UniProtKB:Q9P0U4"
         ],
-        "geneid": "ENSEMBL:ENSG00000154832",
+        "geneid": "ENSG00000154832",
         "name": "CXXC finger protein 1",
         "taxa": "Homo sapiens",
         "status": "released",
@@ -105,7 +105,7 @@
             "miRBase:MI0000252",
             "HGNC:31512"
         ],
-        "geneid": "ENSEMBL:ENSG00000207705",
+        "geneid": "ENSG00000207705",
         "uuid": "cb9e336d-f19e-41df-90ee-62599f04d77b",
         "locations": [
             {
@@ -134,7 +134,7 @@
         ]
     },
     {
-        "geneid": "ENSEMBL:ENSG00000136732",
+        "geneid": "ENSG00000136732",
         "uuid": "83a311d1-7ed3-41bb-85f0-1f00c458e6fc",
         "dbxrefs": [
             "MIM:110750",
@@ -160,7 +160,7 @@
         ]
     },
     {
-        "geneid": "ENSEMBL:ENSMUSG00000093769",
+        "geneid": "ENSMUSG00000093769",
         "uuid": "c1bce75a-44ee-49a0-b950-926fabd6b2db",
         "dbxrefs": [
             "MGI:2448355",
@@ -186,7 +186,7 @@
             "RefSeq:NR_030647.1"
         ],
         "uuid": "25290279-a299-4574-910e-5831edb7d72a",
-        "geneid": "ENSEMBL:ENSMUSG00000094933",
+        "geneid": "ENSMUSG00000094933",
         "locations": [
             {
                 "assembly": "mm10",

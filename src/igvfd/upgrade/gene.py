@@ -16,6 +16,7 @@ def gene_2_3(value, system):
     if 'dbxrefs' in value:
         for dbxref in value['dbxrefs']:
             if dbxref.startswith('ENSEMBL:') == True:
+                dbxref = dbxref.removeprefix('ENSEMBL:')
                 value['geneid'] = dbxref
             else:
                 no_ensembl.append(dbxref)

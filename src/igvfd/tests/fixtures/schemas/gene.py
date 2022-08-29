@@ -24,7 +24,7 @@ def gene_zscan10_mm(testapp):
             'RefSeq:NM_001033425.4',
             'MGI:3040700'
         ],
-        'geneid': 'ENSEMBL:ENSMUSG00000023902',
+        'geneid': 'ENSMUSG00000023902',
         'symbol': 'Zcan10',
         'taxa': 'Mus musculus'
     }
