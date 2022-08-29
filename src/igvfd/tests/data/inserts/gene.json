@@ -11,7 +11,6 @@
             "UniProtKB:P15813"
         ],
         "name": "CD1d molecule",
-        "ncbi_entrez_status": "live",
         "taxa": "Homo sapiens",
         "status": "released",
         "symbol": "CD1D",
@@ -51,7 +50,6 @@
             }
         ],
         "name": "BRCA1 associated protein 1",
-        "ncbi_entrez_status": "live",
         "taxa": "Homo sapiens",
         "schema_version": "3",
         "status": "released",
@@ -74,7 +72,6 @@
         ],
         "geneid": "30827",
         "name": "CXXC finger protein 1",
-        "ncbi_entrez_status": "live",
         "taxa": "Homo sapiens",
         "status": "released",
         "symbol": "CXXC1",
@@ -129,7 +126,6 @@
             }
         ],
         "name": "microRNA 129-1",
-        "ncbi_entrez_status": "live",
         "taxa": "Homo sapiens",
         "schema_version": "3",
         "status": "released",
@@ -153,7 +149,6 @@
             "RefSeq:NG_007479"
         ],
         "name": "glycophorin C (Gerbich blood group)",
-        "ncbi_entrez_status": "live",
         "taxa": "Homo sapiens",
         "status": "released",
         "symbol": "GYPC",
@@ -180,7 +175,6 @@
             "UniProtKB:B9EI85"
         ],
         "name": "histone cluster 2, H3c1",
-        "ncbi_entrez_status": "live",
         "taxa": "Mus musculus",
         "status": "released",
         "symbol": "Hist2h3c1",
@@ -215,7 +209,6 @@
             }
         ],
         "name": "microRNA 683-2",
-        "ncbi_entrez_status": "live",
         "taxa": "Mus musculus",
         "schema_version": "3",
         "status": "released",

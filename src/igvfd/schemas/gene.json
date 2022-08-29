@@ -6,7 +6,6 @@
     "type": "object",
     "required": [
         "geneid",
-        "ncbi_entrez_status",
         "symbol",
         "dbxrefs",
         "taxa"
@@ -88,17 +87,6 @@
             "pattern": "^[1-9][0-9]*$",
             "permission": "import_items",
             "uniqueKey": true
-        },
-        "ncbi_entrez_status": {
-            "title": "NCBI Entrez Gene Status",
-            "type": "string",
-            "default": "live",
-            "enum": [
-                "live",
-                "secondary",
-                "discontinued"
-            ],
-            "permission": "import_items"
         },
         "symbol": {
             "title": "Gene Symbol",

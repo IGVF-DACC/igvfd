@@ -1,5 +1,9 @@
 ## Changelog for *`gene.json`*
 
+### Schema version 3
+
+* Remove `ncbi_entrez_status`.
+
 ### Minor changes since schema version 2
 
 * Add `description`.
