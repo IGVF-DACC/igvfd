@@ -11,7 +11,7 @@
         "md5sum": "77ffd7ed8bcd82ec3f01887601778db3",
         "file_format": "bam",
         "content_type": "subreads",
-        "submitted_file_name": "",
+        "submitted_file_name": "/Users/igvf/igvf_files/subreads.bam",
         "file_size": 31208300,
         "upload_status": "pending"
     },
@@ -29,7 +29,7 @@
         "file_format": "fastq",
         "content_type": "reads",
         "derived_from": "ff198277-87de-ea86-1887-25825ebf92f8",
-        "submitted_file_name": "",
+        "submitted_file_name": "/Users/igvf/igvf_files/reads.fastq",
         "file_size": 23940124,
         "upload_status": "validated"
     },
@@ -45,7 +45,7 @@
         "md5sum": "7f1987dea86105dd9d2582c0a91c3856",
         "file_format": "fasta",
         "content_type": "genome reference",
-        "submitted_file_name": "",
+        "submitted_file_name": "/Users/igvf/igvf_files/genome_reference.fasta",
         "file_size": 5428031,
         "upload_status": "file not found"
     },
@@ -61,8 +61,10 @@
         "md5sum": "0fe14d38d30dc30f393bf163a9772eac",
         "file_format": "txt",
         "content_type": "sequence barcodes",
-        "file_format_specifications": "j-michael-cherry:file_format_specification_insert",
-        "submitted_file_name": "",
+        "file_format_specifications": [
+            "j-michael-cherry:file_format_specification_insert"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/sequence_barcodes.txt",
         "file_size": 9640,
         "upload_status": "invalidated",
         "validation_error_detail": "Explanation of why this file did not pass validation."
