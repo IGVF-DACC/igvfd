@@ -13,6 +13,8 @@ def gene_1_2(value, system):
 def gene_2_3(value, system):
     # https://igvf.atlassian.net/browse/IGVF-268
     no_ensembl = []
+    if 'ncbi_entrez_status' in value:
+        del value['ncbi_entrez_status']
     if 'dbxrefs' in value:
         for dbxref in value['dbxrefs']:
             if dbxref.startswith('ENSEMBL:') == True:
