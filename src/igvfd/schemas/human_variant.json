@@ -7,8 +7,7 @@
     "required": [
         "refseq_sequence",
         "alt",
-        "position",
-        "rsid"
+        "position"
     ],
     "identifyingProperties": [
         "uuid",
