@@ -60,6 +60,11 @@
                 "tar",
                 "txt"
             ]
+        },
+        "dbxrefs": {
+            "items": {
+                "pattern": "^(SRA:(SRR|SRX)\\d+)$"
+            }
         }
     },
     "changelog": "/profiles/changelogs/sequence_data.md"

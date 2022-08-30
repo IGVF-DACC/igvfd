@@ -28,10 +28,15 @@
         "content_md5sum": "515c8a6af303bc73bc59c629be11d686",
         "file_format": "fastq",
         "content_type": "reads",
-        "derived_from": "ff198277-87de-ea86-1887-25825ebf92f8",
+        "derived_from": [
+            "ff198277-87de-ea86-1887-25825ebf92f8"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/reads.fastq",
         "file_size": 23940124,
-        "upload_status": "validated"
+        "upload_status": "validated",
+        "dbxrefs": [
+            "SRA:SRR0000005"
+        ]
     },
     {
         "uuid": "2eac4277-30dc-802c-0fe1-9292f8bf92f8",
