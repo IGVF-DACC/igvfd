@@ -4,11 +4,6 @@
     "$id": "/profiles/variant.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
-    "required": [
-        "ref",
-        "alt",
-        "position"
-    ],
     "additionalProperties": false,
     "mixinProperties": [
         {
@@ -69,13 +64,12 @@
             "type": "string",
             "enum": [
                 "GRCh38",
-                "mm10",
-                "mm9"
+                "mm10"
             ]
         },
         "position": {
             "title": "Position",
-            "description": "The starting coordinate of the variant.",
+            "description": "The starting coordinate of the variant. The coordinate should be represented in 0-indexed and inter-residue.",
             "type": "integer",
             "minimum": 0
         }
