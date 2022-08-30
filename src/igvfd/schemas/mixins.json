@@ -133,6 +133,15 @@
                 "revoked",
                 "archived"
             ]
+        },
+        "revoke_detail": {
+            "title": "Revoke Detail",
+            "type": "string",
+            "permission": "import_items",
+            "description": "Explanation of why an object was transitioned to the revoked status.",
+            "comment": "Do not submit. This is set by admins when an object is revoked.",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "formInput": "textarea"
         }
     },
     "standard_status": {

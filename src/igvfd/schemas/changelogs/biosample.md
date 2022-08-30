@@ -1,5 +1,8 @@
 ## Changelog for *`biosample.json`*
 
+### Minor changes since schema version 5
+* Add `revoke_detail`.
+
 ### Schema version 5
 
 * Remove `life_stage`.

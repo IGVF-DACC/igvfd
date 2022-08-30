@@ -4,6 +4,7 @@
 
 * Add `description`.
 * Add `Pacific Islander` to `ethnicity` enum.
+* Add `revoke_detail`.
 
 ### Schema version 2
 

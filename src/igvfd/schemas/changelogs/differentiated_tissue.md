@@ -1,5 +1,8 @@
 ## Changelog for *`differentiated_tissue.json`*
 
+### Minor changes since schema version 7
+* Add `revoke_detail`.
+
 ### Schema version 7
 
 * Remove `stage` from `post_differentiation_time_units`.
