@@ -100,3 +100,37 @@ def differentiated_tissue_v5_90_or_above(differentiated_tissue):
         'life_stage': 'adult'
     })
     return item
+
+
+@pytest.fixture
+def differentiated_tissue_v6(differentiated_tissue):
+    item = differentiated_tissue.copy()
+    item.update({
+        'schema_version': '6',
+        'post_differentiation_time': 10,
+        'post_differentiation_time_units': 'stage'
+    })
+    return item
+
+
+@pytest.fixture
+def differentiated_tissue_v6_good_value(differentiated_tissue):
+    item = differentiated_tissue.copy()
+    item.update({
+        'schema_version': '6',
+        'post_differentiation_time': 7,
+        'post_differentiation_time_units': 'month'
+    })
+    return item
+
+
+@pytest.fixture
+def differentiated_tissue_v6_with_note(differentiated_tissue):
+    item = differentiated_tissue.copy()
+    item.update({
+        'schema_version': '6',
+        'post_differentiation_time': 10,
+        'post_differentiation_time_units': 'stage',
+        'notes': 'This is a note.'
+    })
+    return item

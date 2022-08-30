@@ -1,5 +1,10 @@
 ## Changelog for *`differentiated_cell.json`*
 
+### Schema version 7
+
+* Remove `stage` from `post_differentiation_time_units`.
+* Change `post_differentiation_time` type from `integer` to `number`.
+
 ### Schema version 6
 
 * Remove `life_stage`.
