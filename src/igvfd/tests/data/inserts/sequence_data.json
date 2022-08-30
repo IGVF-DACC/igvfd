@@ -1,0 +1,70 @@
+[
+    {
+        "uuid": "ff198277-87de-ea86-1887-25825ebf92f8",
+        "accession": "IGVFFF000KAS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:bam_subreads_file"
+        ],
+        "status": "released",
+        "md5sum": "77ffd7ed8bcd82ec3f01887601778db3",
+        "file_format": "bam",
+        "content_type": "subreads",
+        "submitted_file_name": "",
+        "file_size": 31208300,
+        "upload_status": "pending"
+    },
+    {
+        "uuid": "f2b14277-99ac-802c-9c31-9ffd7ebf92f8",
+        "accession": "IGVFFF000FTQ",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:fastq_reads_file"
+        ],
+        "status": "released",
+        "md5sum": "7eaf2b1427763a9c92f802cc7557e164",
+        "content_md5sum": "515c8a6af303bc73bc59c629be11d686",
+        "file_format": "fastq",
+        "content_type": "reads",
+        "derived_from": "ff198277-87de-ea86-1887-25825ebf92f8",
+        "submitted_file_name": "",
+        "file_size": 23940124,
+        "upload_status": "validated"
+    },
+    {
+        "uuid": "2eac4277-30dc-802c-0fe1-9292f8bf92f8",
+        "accession": "IGVFFF000KAS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:fastq_genome_reference_file"
+        ],
+        "status": "released",
+        "md5sum": "7f1987dea86105dd9d2582c0a91c3856",
+        "file_format": "fasta",
+        "content_type": "genome reference",
+        "submitted_file_name": "",
+        "file_size": 5428031,
+        "upload_status": "file not found"
+    },
+    {
+        "uuid": "9d214277-99ac-802c-9c31-2cc75ebf92f8",
+        "accession": "IGVFFF000KAS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:txt_sequence_barcodes_file"
+        ],
+        "status": "released",
+        "md5sum": "0fe14d38d30dc30f393bf163a9772eac",
+        "file_format": "txt",
+        "content_type": "sequence barcodes",
+        "file_format_specifications": "j-michael-cherry:file_format_specification_insert",
+        "submitted_file_name": "",
+        "file_size": 9640,
+        "upload_status": "invalidated",
+        "validation_error_detail": "Explanation of why this file did not pass validation."
+    }
+]

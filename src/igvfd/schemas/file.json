@@ -8,7 +8,8 @@
         "award",
         "lab",
         "md5sum",
-        "file_format"
+        "file_format",
+        "content_type"
     ],
     "additionalProperties": false,
     "mixinProperties": [

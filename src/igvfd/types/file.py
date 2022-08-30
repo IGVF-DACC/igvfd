@@ -22,3 +22,15 @@ class File(Item):
     base_types = ['File'] + Item.base_types
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/file.json')
+
+
+@collection(
+    name='sequence-data',
+    unique_key='accession',
+    properties={
+        'title': 'Sequence data',
+        'description': 'Listing of sequence data files',
+    })
+class SequenceData(File):
+    item_type = 'sequence_data'
+    schema = load_schema('igvfd:schemas/sequence_data.json')

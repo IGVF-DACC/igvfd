@@ -7,12 +7,14 @@
         "lab"
     ],
     "identifyingProperties": [
-        "uuid"
+        "uuid",
+        "aliases",
+        "md5sum"
     ],
     "additionalProperties": false,
     "mixinProperties": [
         {
-            "$ref": "data.json#/properties"
+            "$ref": "file.json#/properties"
         },
         {
             "$ref": "mixins.json#/basic_item"
@@ -27,10 +29,35 @@
             "$ref": "mixins.json#/documents"
         }
     ],
+    "dependentSchemas": {
+        "$merge": [
+            "file.json#/dependentSchemas"
+        ]
+    },
     "type": "object",
     "properties": {
         "schema_version": {
             "default": "1"
+        },
+        "content_type": {
+            "enum": [
+                "genome reference",
+                "guide RNA sequences",
+                "reads",
+                "sequence barcodes",
+                "spike-ins",
+                "subreads",
+                "transcriptome reference",
+                "vector sequences"
+            ]
+        },
+        "file_format": {
+            "enum": [
+                "bam",
+                "fasta",
+                "fastq",
+                "txt"
+            ]
         }
     },
     "changelog": "/profiles/changelogs/sequence_data.md"
