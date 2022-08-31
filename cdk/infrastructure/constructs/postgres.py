@@ -16,6 +16,9 @@ from aws_cdk.aws_rds import SnapshotCredentials
 
 from infrastructure.config import Config
 
+from infrastructure.constructs.alarms.postgres import PostgresAlarmsProps
+from infrastructure.constructs.alarms.postgres import PostgresAlarms
+
 from infrastructure.constructs.existing.types import ExistingResources
 
 from infrastructure.constructs.snapshot import LatestSnapshotFromDB
@@ -45,6 +48,7 @@ class PostgresBase(Construct):
     database_name: str
     engine: IInstanceEngine
     props: PostgresProps
+    database: Union[DatabaseInstance, DatabaseInstanceFromSnapshot]
 
     def __init__(
             self,
@@ -70,7 +74,20 @@ class PostgresBase(Construct):
     def _export_values(self) -> None:
         raise NotImplementedError
 
+    def _add_alarms(self) -> None:
+        PostgresAlarms(
+            self,
+            'PostgresAlarms',
+            props=PostgresAlarmsProps(
+                config=self.props.config,
+                existing_resources=self.props.existing_resources,
+                database=self.database,
+                allocated_storage=self.props.allocated_storage,
+            )
+        )
+
     def _post_init(self) -> None:
+        self._add_alarms()
         self._export_values()
 
 
