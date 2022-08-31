@@ -4,12 +4,11 @@ from aws_cdk.assertions import Template
 from aws_cdk.assertions import Match
 
 
-def test_constructs_postgres_initialize_postgres_base_construct(stack, config, instance_type, mocker):
+def test_constructs_postgres_initialize_postgres_base_construct(stack, config, instance_type, mocker, existing_resources):
     from infrastructure.constructs.postgres import PostgresBase
     from infrastructure.constructs.postgres import PostgresProps
     from jsii._reference_map import _refs
     from aws_cdk.aws_rds import IInstanceEngine
-    existing_resources = mocker.Mock()
     props = PostgresProps(
         config=config,
         existing_resources=existing_resources,
@@ -26,12 +25,9 @@ def test_constructs_postgres_initialize_postgres_base_construct(stack, config, i
     assert postgres_base.database_name == 'igvfd'
 
 
-def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_type, mocker, config):
+def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_type, mocker, config, existing_resources):
     from infrastructure.constructs.postgres import Postgres
     from infrastructure.constructs.postgres import PostgresProps
-    # Given
-    existing_resources = mocker.Mock()
-    existing_resources.network.vpc = vpc
     # When
     postgres = Postgres(
         stack,
@@ -180,16 +176,13 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
     )
     template.resource_count_is(
         'AWS::SecretsManager::Secret',
-        1
+        2
     )
 
 
-def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(stack, vpc, instance_type, mocker, config):
+def test_constructs_postgres_initialize_postgres_from_snapshot_arn_construct(stack, vpc, instance_type, mocker, config, existing_resources):
     from infrastructure.constructs.postgres import PostgresFromSnapshotArn
     from infrastructure.constructs.postgres import PostgresProps
-    # Given
-    existing_resources = mocker.Mock()
-    existing_resources.network.vpc = vpc
     # When
     postgres = PostgresFromSnapshotArn(
         stack,
