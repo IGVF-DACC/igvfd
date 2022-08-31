@@ -84,6 +84,7 @@ class Backend(Construct):
         self._enable_exec_command()
         self._configure_task_scaling()
         self._run_batch_upgrade_automatically()
+        self._add_alarms()
 
     def _define_postgres(self) -> None:
         self.postgres = cast(
