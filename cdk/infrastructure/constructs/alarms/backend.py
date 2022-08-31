@@ -8,6 +8,8 @@ from aws_cdk.aws_cloudwatch_actions import SnsAction
 
 from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedFargateService
 
+from aws_cdk.aws_elasticloadbalancingv2 import HttpCodeTarget
+
 from infrastructure.constructs.existing.types import ExistingResources
 
 from dataclasses import dataclass
@@ -18,6 +20,8 @@ from typing import Any
 CPU_ALARM_THRESHOLD_PERCENT = 85
 
 MEMORY_ALARM_THRESHOLD_PERCENT = 80
+
+LOAD_BALANCER_500_ERROR_THRESHOLD_COUNT = 10
 
 
 @dataclass
@@ -77,5 +81,21 @@ class BackendAlarms(Construct):
             self.alarm_action
         )
         memory_alarm.add_ok_action(
+            self.alarm_action
+        )
+
+    def _add_load_balancer_500_error_response_alarm(self) -> None:
+        load_balancer_500_error_response_alarm = self.props.fargate_service.load_balancer.metric_http_code_target(
+            code=HttpCodeTarget.TARGET_5XX_COUNT,
+        ).create_alarm(
+            self,
+            'FargateServiceLoadBalancer500Alarm',
+            evaluation_periods=1,
+            threshold=LOAD_BALANCER_500_ERROR_THRESHOLD_COUNT
+        )
+        load_balancer_500_error_response_alarm.add_alarm_action(
+            self.alarm_action
+        )
+        load_balancer_500_error_response_alarm.add_ok_action(
             self.alarm_action
         )
