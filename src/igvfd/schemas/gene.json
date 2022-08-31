@@ -83,7 +83,7 @@
             "title": "ENSEMBL GeneID",
             "description": "ENSEMBL GeneID of official nomenclature approved gene.",
             "type": "string",
-            "pattern": "ENS[A-Z]*G\\d+",
+            "pattern": "ENS[A-Z]*G\\d{11}(\\.\\d+)?",
             "permission": "import_items",
             "uniqueKey": true
         },
