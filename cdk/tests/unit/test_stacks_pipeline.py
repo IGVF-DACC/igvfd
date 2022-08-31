@@ -25,7 +25,7 @@ def test_stacks_pipeline_continuous_deployment_pipeline_stack_initialized(config
         'AWS::CodePipeline::Pipeline'
     )
     stages = code_pipeline_resource.get(
-        'ContinuousDeploymentPipelineCodePipeline06633FEF'
+        'ContinuousDeploymentPipeline56548CF3'
     ).get(
         'Properties'
     ).get(
