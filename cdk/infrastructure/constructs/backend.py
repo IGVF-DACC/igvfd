@@ -21,6 +21,9 @@ from aws_cdk.aws_secretsmanager import SecretStringGenerator
 
 from infrastructure.config import Config
 
+from infrastructure.constructs.alarms.backend import BackendAlarmProps
+from infrastructure.constructs.alarms.backend import BackendAlarm
+
 from infrastructure.constructs.existing.types import ExistingResources
 
 from infrastructure.constructs.postgres import PostgresConstruct
@@ -230,5 +233,16 @@ class Backend(Construct):
                 config=self.props.config,
                 existing_resources=self.props.existing_resources,
                 fargate_service=self.fargate_service,
+            )
+        )
+
+    def _add_alarms(self) -> None:
+        BackendAlarms(
+            self,
+            'BackendAlarms',
+            BackendAlarmsProps(
+                config=self.props.config,
+                existing_resources=self.props.existing_resources,
+                fargate_service=self.fargate_service
             )
         )
