@@ -15,6 +15,10 @@ from dataclasses import dataclass
 from typing import Any
 
 
+CPU_ALARM_THRESHOLD_PERCENT = 85
+MEMORY_ALARM_THRESHOLD_PERCENT = 90
+
+
 @dataclass
 class BackendAlarmsProps:
     config: Config
@@ -52,7 +56,7 @@ class BackendAlarms(Construct):
             self,
             'FargateServiceCPUAlarm',
             evaluation_periods=2,
-            threshold=85,
+            threshold=CPU_ALARM_THRESHOLD_PERCENT,
         )
         cpu_alarm.add_alarm_action(
             self.alarm_action
@@ -66,7 +70,7 @@ class BackendAlarms(Construct):
             self,
             'FargateServiceMemoryAlarm',
             evaluation_periods=1,
-            threshold=90,
+            threshold=MEMORY_ALARM_THRESHOLD_PERCENT,
         )
         memory_alarm.add_alarm_action(
             self.alarm_action
