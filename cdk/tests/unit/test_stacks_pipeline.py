@@ -6,7 +6,6 @@ import aws_cdk.assertions as assertions
 from infrastructure.stacks.pipeline import ContinuousDeploymentPipelineStack
 
 
-@pytest.mark.skip()
 def test_stacks_pipeline_continuous_deployment_pipeline_stack_initialized(config):
     from infrastructure.constructs.existing import igvf_dev
     app = core.App()

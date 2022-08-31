@@ -3,7 +3,6 @@ import pytest
 from aws_cdk.assertions import Template
 
 
-@pytest.mark.skip()
 def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(stack, secret, mocker, config):
     from infrastructure.constructs.pipeline import BasicSelfUpdatingPipeline
     from infrastructure.constructs.pipeline import BasicSelfUpdatingPipelineProps
@@ -265,7 +264,6 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
     )
 
 
-@pytest.mark.skip()
 def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct(mocker, config):
     from aws_cdk import Stack
     from aws_cdk import Environment
