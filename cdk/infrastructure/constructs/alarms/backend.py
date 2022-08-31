@@ -16,7 +16,7 @@ from typing import Any
 
 
 @dataclass
-class BackendAlarmProps:
+class BackendAlarmsProps:
     config: Config
     existing_resources: ExistingResources
     fargate_service: ApplicationLoadBalancedFargateService
@@ -24,7 +24,7 @@ class BackendAlarmProps:
 
 class BackendAlarms(Construct):
 
-    props: BackendAlarmProps
+    props: BackendAlarmsProps
     alarm_action: SnsAction
 
     def __init__(
@@ -32,7 +32,7 @@ class BackendAlarms(Construct):
             scope: Construct,
             construct_id: str,
             *,
-            props: BackendAlarmProps,
+            props: BackendAlarmsProps,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
