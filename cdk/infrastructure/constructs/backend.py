@@ -240,7 +240,7 @@ class Backend(Construct):
         BackendAlarms(
             self,
             'BackendAlarms',
-            BackendAlarmsProps(
+            props=BackendAlarmsProps(
                 config=self.props.config,
                 existing_resources=self.props.existing_resources,
                 fargate_service=self.fargate_service
