@@ -237,10 +237,10 @@ class Backend(Construct):
         )
 
     def _add_alarms(self) -> None:
-        BackendAlarms(
+        BackendAlarm(
             self,
             'BackendAlarms',
-            BackendAlarmsProps(
+            BackendAlarmProps(
                 config=self.props.config,
                 existing_resources=self.props.existing_resources,
                 fargate_service=self.fargate_service
