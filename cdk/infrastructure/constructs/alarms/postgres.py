@@ -2,6 +2,8 @@ import aws_cdk as cdk
 
 from constructs import Construct
 
+from aws_cdk.aws_cloudwatch import ComparisonOperator
+
 from aws_cdk.aws_cloudwatch_actions import SnsAction
 
 from aws_cdk.aws_rds import DatabaseInstance
@@ -19,7 +21,9 @@ from typing import Union
 
 CPU_ALARM_THRESHOLD_PERCENT = 85
 
-STORAGE_ALARM_THRESHOLD_PERCENT = 80
+FREE_STORAGE_ALARM_GB = 5
+
+GB_TO_BYTES = 1000000000
 
 
 @dataclass
@@ -27,7 +31,6 @@ class PostgresAlarmsProps:
     config: Config
     existing_resources: ExistingResources
     database: Union[DatabaseInstance, DatabaseInstanceFromSnapshot]
-    allocated_storage: int
 
 
 class PostgresAlarms(Construct):
@@ -74,11 +77,8 @@ class PostgresAlarms(Construct):
             self,
             'PostgresStorageAlarm',
             evaluation_periods=1,
-            threshold=int(
-                self.props.allocated_storage * (
-                    STORAGE_ALARM_THRESHOLD_PERCENT * 0.01
-                )
-            )
+            threshold=FREE_STORAGE_ALARM_GB * GB_TO_BYTES,
+            comparison_operator=ComparisonOperator.LESS_THAN_OR_EQUAL_TO_THRESHOLD,
         )
         storage_alarm.add_alarm_action(
             self.alarm_action

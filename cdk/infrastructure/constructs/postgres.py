@@ -82,7 +82,6 @@ class PostgresBase(Construct):
                 config=self.props.config,
                 existing_resources=self.props.existing_resources,
                 database=self.database,
-                allocated_storage=self.props.allocated_storage,
             )
         )
 
