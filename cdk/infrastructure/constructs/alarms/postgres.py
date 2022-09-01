@@ -83,6 +83,12 @@ class PostgresAlarms(Construct):
             threshold=FREE_MEMORY_ALARM_GB * GB_TO_BYTES,
             comparison_operator=ComparisonOperator.LESS_THAN_OR_EQUAL_TO_THRESHOLD,
         )
+        memory_alarm.add_alarm_action(
+            self.alarm_action
+        )
+        memory_alarm.add_ok_action(
+            self.alarm_action
+        )
 
     def _add_storage_alarm(self) -> None:
         storage_alarm = self.props.database.metric_free_storage_space().create_alarm(
