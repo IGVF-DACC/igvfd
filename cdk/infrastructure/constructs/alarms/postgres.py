@@ -21,6 +21,8 @@ from typing import Union
 
 CPU_ALARM_THRESHOLD_PERCENT = 85
 
+FREE_MEMORY_ALARM_GB = 2
+
 FREE_STORAGE_ALARM_GB = 5
 
 GB_TO_BYTES = 1000000000
@@ -50,6 +52,7 @@ class PostgresAlarms(Construct):
         self.props = props
         self._define_alarm_action()
         self._add_cpu_alarm()
+        self._add_memory_alarm()
         self._add_storage_alarm()
 
     def _define_alarm_action(self) -> None:
@@ -70,6 +73,15 @@ class PostgresAlarms(Construct):
         )
         cpu_alarm.add_ok_action(
             self.alarm_action
+        )
+
+    def _add_memory_alarm(self) -> None:
+        memory_alarm = self.props.database.metric_freeable_memory().create_alarm(
+            self,
+            'PostgresMemoryAlarm',
+            evaluation_periods=1,
+            threshold=FREE_MEMORY_ALARM_GB * GB_TO_BYTES,
+            comparison_operator=ComparisonOperator.LESS_THAN_OR_EQUAL_TO_THRESHOLD,
         )
 
     def _add_storage_alarm(self) -> None:
