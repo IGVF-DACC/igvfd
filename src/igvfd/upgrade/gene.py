@@ -22,5 +22,4 @@ def gene_2_3(value, system):
                 value['geneid'] = dbxref
             else:
                 no_ensembl.append(dbxref)
-    value.pop('dbxrefs')
     value['dbxrefs'] = no_ensembl
