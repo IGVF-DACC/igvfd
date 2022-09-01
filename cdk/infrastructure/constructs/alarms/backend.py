@@ -49,6 +49,7 @@ class BackendAlarms(Construct):
         self._define_alarm_action()
         self._add_cpu_alarm()
         self._add_memory_alarm()
+        self._add_load_balancer_500_error_response_alarm()
 
     def _define_alarm_action(self) -> None:
         # Cloudwatch action targeting SNS topic.
