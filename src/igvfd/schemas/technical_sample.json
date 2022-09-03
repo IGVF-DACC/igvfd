@@ -8,7 +8,8 @@
         "award",
         "lab",
         "source",
-        "sample_material"
+        "sample_material",
+        "technical_sample_term"
     ],
     "identifyingProperties": [
         "uuid",
@@ -47,7 +48,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "4"
         },
         "sample_material": {
             "title": "Sample Material",
@@ -63,7 +64,8 @@
         "technical_sample_term": {
             "title": "Technical Sample Term",
             "description": "Ontology of the technical sample.",
-            "type": "string"
+            "type": "string",
+            "linkTo": "SampleTerm"
         }
     },
     "changelog": "/profiles/changelogs/technical_sample.md"

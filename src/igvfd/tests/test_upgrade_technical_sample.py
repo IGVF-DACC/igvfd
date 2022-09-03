@@ -14,3 +14,8 @@ def test_technical_sample_upgrade_2_3(upgrader, technical_sample_v2):
     assert 'additional_description' not in value
     assert value['description'] == 'This is a description.'
     assert value['schema_version'] == '3'
+
+
+def test_technical_sample_upgrade_3_4(upgrader, technical_sample_v3):
+    value = upgrader.upgrade('technical_sample', technical_sample_v3, current_version='3', target_version='4')
+    assert value['schema_version'] == '4'

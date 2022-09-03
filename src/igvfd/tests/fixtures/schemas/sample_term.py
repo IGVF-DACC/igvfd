@@ -46,3 +46,12 @@ def sample_term_v1(sample_term_K562):
         'aliases': []
     })
     return item
+
+
+@pytest.fixture
+def sample_term_technical_sample(testapp):
+    item = {
+        'term_id': 'NTR:0000637',
+        'term_name': 'technical sample'
+    }
+    return testapp.post_json('/sample_term', item, status=201).json['@graph'][0]
