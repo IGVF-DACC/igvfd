@@ -1,5 +1,8 @@
 ## Changelog for *`cell_line.json`*
 
+### Minor changes since schema version 6
+* Add `revoke_detail`.
+
 ### Schema version 6
 
 * Remove `life_stage`.

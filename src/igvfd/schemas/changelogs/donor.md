@@ -3,6 +3,7 @@
 ### Minor changes since schema version 2
 
 * Add `description`.
+* Add `revoke_detail`.
 
 ### Schema version 2
 

@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Add `revoke_detail` into `accession`. (8/30/2022)
 * Add `archived` to accessioned status. (8/14/2022)
 * Add `description`. (7/21/2022)
 * Restrict `aliases`, `alternate_accessions`, `collections`, `documents`, and `references` to be a non-empty array with at least one item. (7/14/2022)

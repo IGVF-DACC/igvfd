@@ -1,4 +1,7 @@
-## Changelog for *`primary_cell.json'*
+## Changelog for *`primary_cell.json`*
+
+### Minor changes since schema version 6
+* Add `revoke_detail`.
 
 ### Schema version 6
 
@@ -7,7 +10,7 @@
 * Add `upper_bound_age`.
 * Add `embryonic`.
 * Convert `age` to be calculated from `lower_bound_age` and `upper_bound_age` and not submittable.
-* * Require `biosample_term`.
+* Require `biosample_term`.
 
 ### Schema version 5
 
