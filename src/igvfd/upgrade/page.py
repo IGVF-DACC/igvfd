@@ -14,5 +14,17 @@ def page_1_2(value, system):
 
 @upgrade_step('page', '2', '3')
 def page_2_3(value, system):
-    # https://igvf.atlassian.net/browse/IGVF-288
-    return
+    if 'news' in value:
+        del value['news']
+    if 'news_excerpt' in value:
+        del value['news_keywords']
+    if 'news_keywords' in value:
+        del value['news_keywords']
+    if 'layout' in value:
+        if 'rows' in value['layout']:
+            del value['layout']['rows']
+        if 'blocks' in value['layout']:
+            richtextblocks = [block for block in value['layout']['blocks'] if block['@type'] == 'richtextblock']
+            for block in richtextblocks:
+                block.update({'@type': 'markdown'})
+            value['layout']['blocks'] = richtextblocks
