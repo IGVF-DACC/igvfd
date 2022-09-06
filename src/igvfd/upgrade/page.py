@@ -17,7 +17,7 @@ def page_2_3(value, system):
     if 'news' in value:
         del value['news']
     if 'news_excerpt' in value:
-        del value['news_keywords']
+        del value['news_excerpt']
     if 'news_keywords' in value:
         del value['news_keywords']
     if 'layout' in value:
