@@ -2,7 +2,10 @@
 
 ### Schema version 3
 
-* Update schema version for deletion of unused properties
+* Remove `news`, `news_keywords`, and `news_excerpt` properties.
+* Remove the `rows` property from the `layout` dictionary.
+* Remove any `layout.block` elements that don't have an `@type` of `richtextblock`.
+* Change all remaining `layout.block` elements to an `@type` of `markdown`.
 
 ### Minor changes since schema version 2
 
