@@ -26,5 +26,5 @@ def page_2_3(value, system):
         if 'blocks' in value['layout']:
             richtextblocks = [block for block in value['layout']['blocks'] if block['@type'] == 'richtextblock']
             for block in richtextblocks:
-                block.update({'@type': 'markdown'})
+                block.update({'@type': 'markdown', 'direction': 'ltr'})
             value['layout']['blocks'] = richtextblocks

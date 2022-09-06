@@ -13,13 +13,12 @@ def test_page_upgrade_2_3(upgrader, page_v2):
     assert len(value['layout']['blocks']) == 1
     TestCase().assertListEqual(
         value['layout']['blocks'],
-        sorted(
-            [
-                {
-                    '@id': '#block1',
-                    '@type': 'markdown',
-                    'body': '<p></p>'
-                }
-            ]
-        )
+        [
+            {
+                '@id': '#block1',
+                '@type': 'markdown',
+                'body': '<p></p>',
+                'direction': 'ltr'
+            }
+        ]
     )
