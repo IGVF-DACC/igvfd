@@ -35,7 +35,7 @@ def page_v2(page):
         'news_excerpt': 'Don’t miss the abstract deadline for ENCODE Users Meeting.',
         'news_keywords': ['Conferences', 'Encyclopedia']
     })
-    item.update({item['layout']['rows']: [
+    item['layout']['rows'] = [
         {
             'cols': [
                 {
@@ -44,6 +44,6 @@ def page_v2(page):
                     ]
                 }
             ]
-        }]
-    })
+        }
+    ]
     return item
