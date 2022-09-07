@@ -4,7 +4,10 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "required": [
         "award",
-        "lab"
+        "lab",
+        "md5sum",
+        "file_format",
+        "content_type"
     ],
     "identifyingProperties": [
         "uuid",
@@ -40,6 +43,7 @@
             "default": "1"
         },
         "content_type": {
+            "comment": "Content Type describes the content of the file. Genome reference are composite nucleic acid sequences assembled from the sequence of several different individual organisms representing the species. Guide RNA sequences are sequences of RNA molecules used in assays involving CRISPR editing. Reads are individual sequences of bases corresponding to DNA or RNA fragments in a FASTQ text file format. Sequence barcodes are lists of barcodes found in the sequencing library. Spike-ins are nucleic acid fragments of known sequence and quantity used for calibration in high-throughput sequencing. Subreads are sequences of bases produced using PacBio platforms. Transcriptome references are transcriptomic sequences of an idealized representative individual in a species. Vector sequences are sequences tested in MPRAs.",
             "enum": [
                 "genome reference",
                 "guide RNA sequences",

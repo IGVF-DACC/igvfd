@@ -34,3 +34,11 @@ class File(Item):
 class SequenceData(File):
     item_type = 'sequence_data'
     schema = load_schema('igvfd:schemas/sequence_data.json')
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') != 'replaced':
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
