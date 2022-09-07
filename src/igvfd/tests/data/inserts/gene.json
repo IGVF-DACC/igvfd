@@ -1,17 +1,15 @@
 [
     {
-        "geneid": "912",
+        "geneid": "ENSG00000158473.2",
         "uuid": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
         "dbxrefs": [
             "MIM:188410",
             "HGNC:1637",
-            "ENSEMBL:ENSG00000158473",
             "IMGT/GENE-DB:CD1D",
             "Vega:OTTHUMG00000022436",
             "UniProtKB:P15813"
         ],
         "name": "CD1d molecule",
-        "ncbi_entrez_status": "live",
         "taxa": "Homo sapiens",
         "status": "released",
         "symbol": "CD1D",
@@ -25,7 +23,6 @@
     {
         "dbxrefs": [
             "UniProtKB:F8W6N3",
-            "ENSEMBL:ENSG00000163930",
             "MIM:603089",
             "Vega:OTTHUMG00000158392",
             "GeneCards:BAP1",
@@ -35,7 +32,7 @@
             "UniProtKB:A0A024R305"
         ],
         "uuid": "fff95719-346c-471f-8b72-8a05c0102b1b",
-        "geneid": "8314",
+        "geneid": "ENSG00000163930",
         "locations": [
             {
                 "assembly": "GRCh38",
@@ -51,7 +48,6 @@
             }
         ],
         "name": "BRCA1 associated protein 1",
-        "ncbi_entrez_status": "live",
         "taxa": "Homo sapiens",
         "schema_version": "3",
         "status": "released",
@@ -68,13 +64,11 @@
         "dbxrefs": [
             "MIM:609150",
             "HGNC:24343",
-            "ENSEMBL:ENSG00000154832",
             "Vega:OTTHUMG00000132670",
             "UniProtKB:Q9P0U4"
         ],
-        "geneid": "30827",
+        "geneid": "ENSG00000154832",
         "name": "CXXC finger protein 1",
-        "ncbi_entrez_status": "live",
         "taxa": "Homo sapiens",
         "status": "released",
         "symbol": "CXXC1",
@@ -108,11 +102,10 @@
     {
         "dbxrefs": [
             "RefSeq:NR_029596.1",
-            "ENSEMBL:ENSG00000207705",
             "miRBase:MI0000252",
             "HGNC:31512"
         ],
-        "geneid": "406917",
+        "geneid": "ENSG00000207705",
         "uuid": "cb9e336d-f19e-41df-90ee-62599f04d77b",
         "locations": [
             {
@@ -129,7 +122,6 @@
             }
         ],
         "name": "microRNA 129-1",
-        "ncbi_entrez_status": "live",
         "taxa": "Homo sapiens",
         "schema_version": "3",
         "status": "released",
@@ -142,18 +134,16 @@
         ]
     },
     {
-        "geneid": "2995",
+        "geneid": "ENSG00000136732",
         "uuid": "83a311d1-7ed3-41bb-85f0-1f00c458e6fc",
         "dbxrefs": [
             "MIM:110750",
             "HGNC:4704",
-            "ENSEMBL:ENSG00000136732",
             "Vega:OTTHUMG00000131464",
             "UniProtKB:P04921",
             "RefSeq:NG_007479"
         ],
         "name": "glycophorin C (Gerbich blood group)",
-        "ncbi_entrez_status": "live",
         "taxa": "Homo sapiens",
         "status": "released",
         "symbol": "GYPC",
@@ -170,17 +160,15 @@
         ]
     },
     {
-        "geneid": "15077",
+        "geneid": "ENSMUSG00000093769",
         "uuid": "c1bce75a-44ee-49a0-b950-926fabd6b2db",
         "dbxrefs": [
             "MGI:2448355",
-            "ENSEMBL:ENSMUSG00000093769",
             "Vega:OTTMUSG00000021930",
             "UniProtKB:P84228",
             "UniProtKB:B9EI85"
         ],
         "name": "histone cluster 2, H3c1",
-        "ncbi_entrez_status": "live",
         "taxa": "Mus musculus",
         "status": "released",
         "symbol": "Hist2h3c1",
@@ -194,12 +182,11 @@
     {
         "dbxrefs": [
             "MGI:3719634",
-            "ENSEMBL:ENSMUSG00000094933",
             "miRBase:MI0010690",
             "RefSeq:NR_030647.1"
         ],
         "uuid": "25290279-a299-4574-910e-5831edb7d72a",
-        "geneid": "100124649",
+        "geneid": "ENSMUSG00000094933",
         "locations": [
             {
                 "assembly": "mm10",
@@ -215,7 +202,6 @@
             }
         ],
         "name": "microRNA 683-2",
-        "ncbi_entrez_status": "live",
         "taxa": "Mus musculus",
         "schema_version": "3",
         "status": "released",
