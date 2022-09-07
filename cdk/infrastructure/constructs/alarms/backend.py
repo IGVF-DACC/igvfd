@@ -4,6 +4,8 @@ from constructs import Construct
 
 from infrastructure.config import Config
 
+from aws_cdk.aws_cloudwatch import TreatMissingData
+
 from aws_cdk.aws_cloudwatch_actions import SnsAction
 
 from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedFargateService
@@ -92,7 +94,8 @@ class BackendAlarms(Construct):
             self,
             'FargateServiceLoadBalancer500Alarm',
             evaluation_periods=1,
-            threshold=LOAD_BALANCER_500_ERROR_THRESHOLD_COUNT
+            threshold=LOAD_BALANCER_500_ERROR_THRESHOLD_COUNT,
+            treat_missing_data=TreatMissingData.NOT_BREACHING,
         )
         load_balancer_500_error_response_alarm.add_alarm_action(
             self.alarm_action
