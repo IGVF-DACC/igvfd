@@ -66,6 +66,15 @@ def chatbot(stack):
 
 
 @pytest.fixture
+def sns_topic(stack):
+    from aws_cdk.aws_sns import Topic
+    return Topic(
+        stack,
+        'TestTopic',
+    )
+
+
+@pytest.fixture
 def domain_name():
     return 'my.test.domain.org'
 
@@ -123,13 +132,14 @@ def bus(mocker, event_bus):
 
 
 @pytest.fixture
-def existing_resources(mocker, domain, network, secret, chatbot, bus):
+def existing_resources(mocker, domain, network, secret, chatbot, bus, sns_topic):
     mock = mocker.Mock()
     mock.domain = domain
     mock.network = network
     mock.docker_hub_credentials.secret = secret
     mock.code_star_connection.arn = 'some-code-star-arn'
     mock.notification.encode_dcc_chatbot = chatbot
+    mock.notification.alarm_notification_topic = sns_topic
     mock.bus = bus
     return mock
 
