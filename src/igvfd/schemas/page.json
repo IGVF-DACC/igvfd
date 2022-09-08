@@ -55,14 +55,33 @@
             "title": "Page Layout",
             "description": "Hierarchical description of the page layout.",
             "type": "object",
+            "additionalProperties": false,
             "formInput": "layout",
             "properties": {
                 "blocks": {
                     "type": "array",
                     "items": {
                         "type": "object",
+                        "additionalProperties": false,
                         "properties": {
+                            "@id": {
+                                "title": "Block ID",
+                                "description": "Unique identifier for this blocUnique identifier for this block.",
+                                "type": "string"
+                            },
+                            "@type": {
+                                "title": "Block Type",
+                                "description": "Indicates whether this block contains markdown or a component specification.",
+                                "type": "string"
+                            },
                             "body": {
+                                "title": "Block Body",
+                                "description": "The text content of this block.",
+                                "type": "string"
+                            },
+                            "direction": {
+                                "title": "Direction",
+                                "description": "The text language direction -- ltr or rtl.",
                                 "type": "string"
                             }
                         }
