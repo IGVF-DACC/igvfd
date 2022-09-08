@@ -16,9 +16,7 @@ def page(testapp):
                 {
                     '@id': '#block2',
                     '@type': 'teaserblock',
-                    'image': '/images/8a91ae78-731a-4a92-ae7c-273214be408a/',
                     'body': '<h2>Chromatin Structure</h2>',
-                    'href': '/about/chromatin-structure'
                 }
             ]
         }
@@ -46,4 +44,13 @@ def page_v2(page):
             ]
         }
     ]
+    item['layout']['blocks'].append(
+        {
+            '@id': '#block2',
+            '@type': 'teaserblock',
+            'image': '/images/8a91ae78-731a-4a92-ae7c-273214be408a/',
+            'body': '<h2>Chromatin Structure</h2>',
+            'href': '/about/chromatin-structure'
+        }
+    )
     return item

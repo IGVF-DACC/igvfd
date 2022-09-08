@@ -7,6 +7,7 @@
 * Remove any `layout.block` elements that don't have an `@type` of `richtextblock`.
 * Change all remaining `layout.block` elements to an `@type` of `markdown`.
 * Add a `direction` property to each `layout.block`.
+* Enforce only defined schema properties allowed to be posted to the database in the `layout` and `layout.blocks` properties.
 
 ### Minor changes since schema version 2
 
