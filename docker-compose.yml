@@ -42,8 +42,6 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-    depends_on:
-      - loader
 
   pyramid:
     build:
@@ -71,3 +69,29 @@ services:
       - "8000:8000"
     depends_on:
       - pyramid
+
+  create-mapping:
+    build:
+      context: .
+      dockerfile: ./docker/pyramid/Dockerfile
+    image: igvfd-pyramid
+    volumes:
+      - ".:/igvfd"
+      - "/igvfd/src/igvfd.egg-info"
+    command: /scripts/pyramid/run-create-mapping.sh
+    depends_on:
+      - nginx
+
+  indexer:
+    build:
+      context: .
+      dockerfile: ./docker/pyramid/Dockerfile
+    image: igvfd-pyramid
+    volumes:
+      - ".:/igvfd"
+      - "/igvfd/src/igvfd.egg-info"
+    command: /scripts/pyramid/run-indexer.sh
+    ports:
+      - "7000:7000"
+    depends_on:
+      - create-mapping
