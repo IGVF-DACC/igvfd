@@ -199,6 +199,7 @@ def main(global_config, **local_config):
     settings['snovault.jsonld.namespaces'] = json_asset('igvfd:schemas/namespaces.json')
     settings['snovault.jsonld.terms_namespace'] = 'https://www.igvfproject.org/terms/'
     settings['snovault.jsonld.terms_prefix'] = 'igvf'
+    settings['snovault.elasticsearch.index'] = 'snovault'
 
     config = Configurator(settings=settings)
     config.include(app_version)
@@ -225,6 +226,9 @@ def main(global_config, **local_config):
     config.include('.root')
 
     config.include('.ontology')
+
+    if 'elasticsearch.server' in config.registry.settings:
+        config.include('snovault.elasticsearch')
 
     config.include(static_resources)
     config.include(changelogs)
