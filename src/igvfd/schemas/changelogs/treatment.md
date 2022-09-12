@@ -1,5 +1,8 @@
 ## Changelog for *`treatment.json`*
 
+### Schema version 3
+* Add `purpose` to requirements.
+
 ### Minor changes since schema version 2
 
 * Add `description`.

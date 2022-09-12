@@ -10,3 +10,9 @@ def treatment_1_2(value, system):
     if 'documents' in value:
         if len(value['documents']) == 0:
             del value['documents']
+
+
+@upgrade_step('treatment', '2', '3')
+def treatment_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-292
+    return

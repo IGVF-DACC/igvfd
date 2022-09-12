@@ -71,3 +71,28 @@ def test_treatment_type_dependency(treatment_chemical, testapp):
         treatment_chemical['@id'],
         {'treatment_type': 'protein', 'treatment_term_id': 'CHEBI:24996'}, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_treatment_purpose_requirement(testapp):
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'UniProtKB:P09919',
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'protein',
+            'amount': 10,
+            'amount_units': 'ng/mL',
+            'purpose': 'differentiation'
+        })
+    assert res.status_code == 201
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'UniProtKB:P09919',
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'protein',
+            'amount': 10,
+            'amount_units': 'ng/mL'
+        }, expect_errors=True)
+    assert res.status_code == 422
