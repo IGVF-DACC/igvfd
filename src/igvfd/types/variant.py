@@ -1,7 +1,9 @@
+from this import d
 from snovault import (
     collection,
     load_schema,
-    abstract_collection
+    abstract_collection,
+    calculated_property
 )
 from .base import (
     Item
@@ -37,3 +39,30 @@ class HumanVariant(Variant):
         value = u'{rsid}/{alt}'.format(**properties)
         keys.setdefault('human_variant:rsid_alt', []).append(value)
         return keys
+
+    @calculated_property(
+        schema={
+            'title': 'Variation Type',
+            'type': 'string',
+            'enum': [
+                'SNV',
+                'MNV',
+                'insertion',
+                'deletion',
+                'indel'
+            ],
+            'notSubmittable': True,
+        }
+    )
+    def variation_type(self, ref, alt):
+        if ref == '-':
+            return 'insertion'
+        elif alt == '-':
+            return 'deletion'
+        elif len(ref) == len(alt):
+            if len(ref) == 1:
+                return 'SNV'
+            else:
+                return 'MNV'
+        else:
+            return 'indel'

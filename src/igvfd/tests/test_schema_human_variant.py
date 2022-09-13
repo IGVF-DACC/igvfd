@@ -5,13 +5,12 @@ def test_patch_variant(testapp, human_variant):
     res = testapp.patch_json(
         human_variant['@id'],
         {
-            'ref': 'ATCG',
-            'alt': 'AATCG',
+            'ref': '-',
+            'alt': 'G',
             'rsid': 'rs100',
             'chromosome': 'chr2',
             'assembly': 'GRCh38',
-            'position': 158180836,
-            'variation_type': 'insertion'
+            'position': 158180836
         })
     assert res.status_code == 200
     res = testapp.patch_json(
@@ -25,6 +24,7 @@ def test_patch_variant(testapp, human_variant):
         {
             'ref': 'ABCD'
         }, expect_errors=True)
+    print(res.json)
     assert res.status_code == 422
     res = testapp.patch_json(
         human_variant['@id'],
@@ -44,30 +44,30 @@ def test_refseq_regex(testapp, human_variant):
     res = testapp.patch_json(
         human_variant['@id'],
         {
-            'refseq_sequence': 'NT_999.00'
+            'refseq_sequence_id': 'NT_999.00'
         })
     assert res.status_code == 200
     res = testapp.patch_json(
         human_variant['@id'],
         {
-            'refseq_sequence': 'NT_999.000'
+            'refseq_sequence_id': 'NT_999.000'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         human_variant['@id'],
         {
-            'refseq_sequence': 'NT_999A.00'
+            'refseq_sequence_id': 'NT_999A.00'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         human_variant['@id'],
         {
-            'refseq_sequence': 'MT_999A.00'
+            'refseq_sequence_id': 'MT_999A.00'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         human_variant['@id'],
         {
-            'refseq_sequence': 'NW_999.00'
+            'refseq_sequence_id': 'NW_999.00'
         })
     assert res.status_code == 200

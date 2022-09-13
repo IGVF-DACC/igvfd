@@ -21,8 +21,17 @@
             "title": "Associated Genes",
             "type": "array",
             "items": {
-                "title": "The genes associated with this variant",
+                "title": "The genes associated with this variant.",
                 "linkTo": "Gene",
+                "type": "string"
+            }
+        },
+        "associated_traits": {
+            "title": "Associated Traits",
+            "type": "array",
+            "items": {
+                "title": "The phenotype traits this variant is associated with and selected for.",
+                "linkTo": "PhenotypeTerm",
                 "type": "string"
             }
         },
@@ -30,33 +39,13 @@
             "title": "Reference Sequence",
             "description": "The sequence found in this position in the reference.",
             "type": "string",
-            "pattern": "^[ATCG]*$"
+            "pattern": "^[ATCG]*$|^-$"
         },
         "alt": {
             "title": "Variant Sequence",
             "description": "The sequence found in this position in the variant.",
             "type": "string",
-            "pattern": "^[ATCG]*$"
-        },
-        "associated_traits": {
-            "title": "Associated Traits",
-            "type": "array",
-            "items": {
-                "title": "The phenotype traits associated with this variant",
-                "linkTo": "PhenotypeTerm",
-                "type": "string"
-            }
-        },
-        "variation_type": {
-            "title": "Variation Type",
-            "description": "The type of variant (SNV, duplication, insertion, duplication).",
-            "type": "string",
-            "enum": [
-                "SNV",
-                "insertion",
-                "deletion",
-                "duplication"
-            ]
+            "pattern": "^[ATCG]*$|^-$"
         },
         "assembly": {
             "title": "Mapping Assembly",
@@ -69,7 +58,7 @@
         },
         "position": {
             "title": "Position",
-            "description": "The starting coordinate of the variant. The coordinate should be represented in 0-indexed and inter-residue.",
+            "description": "The location of the variant. The coordinate should be in VRS format i.e. represented in 1-indexed and inter-residue.",
             "type": "integer",
             "minimum": 0
         }
