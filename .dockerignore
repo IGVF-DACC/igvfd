@@ -1,7 +1,6 @@
 .test-reports
 .test-results
 .circleci
-.gitignore
 .pre-commit-config.yaml
 *.egg-info/
 cdk
