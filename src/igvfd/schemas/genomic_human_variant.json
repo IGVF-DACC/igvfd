@@ -1,7 +1,7 @@
 {
-    "title": "Human Variant",
-    "description": "Schema for submitting a human variant.",
-    "$id": "/profiles/human_variant.json",
+    "title": "Genomic Human Variant",
+    "description": "Schema for submitting a genomic human variant.",
+    "$id": "/profiles/genomic_human_variant.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
@@ -66,5 +66,5 @@
             }
         }
     },
-    "changelog": "/profiles/changelogs/human_variant.md"
+    "changelog": "/profiles/changelogs/genomic_human_variant.md"
 }

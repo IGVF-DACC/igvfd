@@ -22,24 +22,6 @@ class Variant(Item):
     base_types = ['Variant'] + Item.base_types
     schema = load_schema('igvfd:schemas/variant.json')
 
-
-@collection(
-    name='human-variants',
-    unique_key='human_variant:rsid_alt',
-    properties={
-        'title': 'Human variant',
-        'description': 'Listing of human variants',
-    })
-class HumanVariant(Variant):
-    item_type = 'human_variant'
-    schema = load_schema('igvfd:schemas/human_variant.json')
-
-    def unique_keys(self, properties):
-        keys = super(HumanVariant, self).unique_keys(properties)
-        value = u'{rsid}/{alt}'.format(**properties)
-        keys.setdefault('human_variant:rsid_alt', []).append(value)
-        return keys
-
     @calculated_property(
         schema={
             'title': 'Variation Type',
@@ -66,3 +48,21 @@ class HumanVariant(Variant):
                 return 'MNV'
         else:
             return 'indel'
+
+
+@collection(
+    name='genomic-human-variants',
+    unique_key='genomic_human_variant:rsid_alt',
+    properties={
+        'title': 'Genomic human variant',
+        'description': 'Listing of genomic human variants',
+    })
+class GenomicHumanVariant(Variant):
+    item_type = 'genomic_human_variant'
+    schema = load_schema('igvfd:schemas/genomic_human_variant.json')
+
+    def unique_keys(self, properties):
+        keys = super(GenomicHumanVariant, self).unique_keys(properties)
+        value = u'{rsid}/{alt}'.format(**properties)
+        keys.setdefault('genomic_human_variant:rsid_alt', []).append(value)
+        return keys

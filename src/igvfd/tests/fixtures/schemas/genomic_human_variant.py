@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def human_variant(testapp):
+def genomic_human_variant(testapp):
     item = {
         'ref': 'A',
         'alt': 'G',
@@ -12,4 +12,4 @@ def human_variant(testapp):
         'rsid': 'rs100',
         'refseq_sequence_id': 'NT_999.00'
     }
-    return testapp.post_json('/human_variant', item, status=201).json['@graph'][0]
+    return testapp.post_json('/genomic_human_variant', item, status=201).json['@graph'][0]
