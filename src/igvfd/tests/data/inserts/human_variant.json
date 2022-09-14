@@ -10,9 +10,12 @@
         ],
         "ref": "G",
         "alt": "A",
-        "chromosome": "chr1",
+        "chromosome": "chr12",
         "assembly": "GRCh38",
         "position": 158180836,
-        "refseq_sequence_id": "NC_1000.12"
+        "refseq_sequence_id": "NC_1000.12",
+        "associated_gwas": [
+            "GCST007240"
+        ]
     }
 ]
