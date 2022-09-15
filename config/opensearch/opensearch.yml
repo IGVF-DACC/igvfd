@@ -1,0 +1,8 @@
+cluster:
+  name: igvfd-cluster
+
+network:
+  host: 0.0.0.0
+
+bootstrap:
+  memory_lock: true
