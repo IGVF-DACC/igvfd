@@ -145,14 +145,14 @@ Pass the `--force` flag to bypass the confirmation prompts.
 
 ### Automatic clean up
 
-By default demo stacks have a lifetime of 72 hours, after which they get destroyed. Demo stacks also will be deleted during Friday night (Friday night is defined as 0000-0700 hours on Saturday). This behavior is configured in `cdk/infrastructure/config.py`. Altering the default behavior can be done by editing and committing changes to values in
+By default demo stacks have a lifetime of 72 hours, after which they get destroyed. Additionally, by default the demo stacks will be deleted during the Friday night (Friday night means 0000-0659 hours on Saturday, US/Pacific timezone). This behavior is configured in `cdk/infrastructure/config.py`. Altering the default behavior can be done by editing and committing changes to values in
 ```
 'tags': [
     ('time-to-live-hours', '72'),
     ('turn-off-on-friday-night', 'yes'),
 ],
 ```
-For `turn-off-on-friday-night` tag, any value other than `yes` is interpreted as a negative (as well as the absence of the tag).
+In `turn-off-on-friday-night` tag, any value other than `yes` is interpreted as a negative (as well as the absence of the tag).
 
 ## Notes on demos
 
