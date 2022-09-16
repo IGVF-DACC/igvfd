@@ -63,6 +63,7 @@ class GenomicHumanVariant(Variant):
 
     def unique_keys(self, properties):
         keys = super(GenomicHumanVariant, self).unique_keys(properties)
-        value = u'{rsid}/{alt}'.format(**properties)
-        keys.setdefault('genomic_human_variant:rsid_alt', []).append(value)
+        if 'rsid' in properties:
+            value = u'{rsid}/{alt}'.format(**properties)
+            keys.setdefault('genomic_human_variant:rsid_alt', []).append(value)
         return keys
