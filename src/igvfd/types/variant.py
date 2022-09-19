@@ -51,19 +51,19 @@ class Variant(Item):
 
 
 @collection(
-    name='genomic-human-variants',
+    name='human-genomic-variants',
     unique_key='genomic_human_variant:rsid_alt',
     properties={
-        'title': 'Genomic human variant',
-        'description': 'Listing of genomic human variants',
+        'title': 'Human genomic variant',
+        'description': 'Listing of human genomic variants',
     })
-class GenomicHumanVariant(Variant):
-    item_type = 'genomic_human_variant'
-    schema = load_schema('igvfd:schemas/genomic_human_variant.json')
+class HumanGenomicVariant(Variant):
+    item_type = 'human_genomic_variant'
+    schema = load_schema('igvfd:schemas/human_genomic_variant.json')
 
     def unique_keys(self, properties):
-        keys = super(GenomicHumanVariant, self).unique_keys(properties)
+        keys = super(HumanGenomicVariant, self).unique_keys(properties)
         if 'rsid' in properties:
             value = u'{rsid}/{alt}'.format(**properties)
-            keys.setdefault('genomic_human_variant:rsid_alt', []).append(value)
+            keys.setdefault('human_genomic_variant:rsid_alt', []).append(value)
         return keys

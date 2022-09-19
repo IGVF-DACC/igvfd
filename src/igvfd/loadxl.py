@@ -25,7 +25,7 @@ ORDER = [
     'human_donor',
     'rodent_donor',
     'treatment',
-    'genomic_human_variant',
+    'human_genomic_variant',
     'tissue',
     'cell_line',
     'primary_cell',
