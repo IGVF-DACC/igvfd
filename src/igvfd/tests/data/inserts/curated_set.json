@@ -18,6 +18,46 @@
         "aliases": [
             "igvf-dacc:GRCh38.p14_assembly"
         ],
-        "description": "Genome assembly GRCh38.p14"
+        "description": "Genome assembly GRCh38.p14."
+    },
+    {
+        "award": "1UM1HG012053-01",
+        "lab": "/labs/tim-reddy/",
+        "uuid": "7c7c2dbb-10b4-4a62-a9d3-37ce57755a26",
+        "reference_type": "transcriptome",
+        "accession": "IGVFCS111BBB",
+        "status": "in progress",
+        "taxa": "Homo sapiens",
+        "documents": [
+            "/documents/j-michael-cherry:characterization_immunoblot_insert/"
+        ],
+        "references": [
+            "doi:10.1016/j.cels.2018.06.007"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30031775/",
+        "aliases": [
+            "tim-reddy:transcriptome-assembly"
+        ],
+        "description": "Transcriptome assembly."
+    },
+    {
+        "award": "1UM1HG012076-01",
+        "lab": "/labs/ansuman-sapathy/",
+        "uuid": "3d9b4df4-defb-4f47-8bf5-b18e09506e66",
+        "reference_type": "variants",
+        "accession": "IGVFCS222CCC",
+        "status": "in progress",
+        "taxa": "Mus musculus",
+        "documents": [
+            "/documents/j-michael-cherry:characterization_FACS_insert/"
+        ],
+        "references": [
+            "doi:10.1016/j.molcel.2021.05.020"
+        ],
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34087178/",
+        "aliases": [
+            "igvf-dacc:variant-set"
+        ],
+        "description": "Variant set."
     }
 ]
