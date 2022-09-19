@@ -87,7 +87,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                             ],
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestBasicSelfUpdatingPipelineBuildSynthStepCodePipelineActionRoleD99CA6BD',
+                                    'TestBasicSelfUpdatingPipelineCodePipelineCodeBuildActionRole47BC97B6',
                                     'Arn'
                                 ]
                             },
@@ -118,7 +118,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                             'Name': 'SelfMutate',
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestBasicSelfUpdatingPipelineUpdatePipelineSelfMutateCodePipelineActionRole7477355E',
+                                    'TestBasicSelfUpdatingPipelineCodePipelineCodeBuildActionRole47BC97B6',
                                     'Arn'
                                 ]
                             },
@@ -235,17 +235,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                         'Effect': 'Allow',
                         'Resource': {
                             'Fn::GetAtt': [
-                                'TestBasicSelfUpdatingPipelineBuildSynthStepCodePipelineActionRoleD99CA6BD',
-                                'Arn'
-                            ]
-                        }
-                    },
-                    {
-                        'Action': 'sts:AssumeRole',
-                        'Effect': 'Allow',
-                        'Resource': {
-                            'Fn::GetAtt': [
-                                'TestBasicSelfUpdatingPipelineUpdatePipelineSelfMutateCodePipelineActionRole7477355E',
+                                'TestBasicSelfUpdatingPipelineCodePipelineCodeBuildActionRole47BC97B6',
                                 'Arn'
                             ]
                         }
