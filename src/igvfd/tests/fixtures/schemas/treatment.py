@@ -43,6 +43,7 @@ def treatment_v1(treatment_chemical):
 @pytest.fixture
 def treatment_v2(treatment_chemical):
     item = treatment_chemical.copy()
+    item.pop('purpose', None)
     item.update({
         'schema_version': '2',
         'documents': [],
