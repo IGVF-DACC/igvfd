@@ -28,7 +28,7 @@
     ],
     "dependentSchemas": {
         "validation_error_detail": {
-            "comment": "Validation Error Detail can only be specified on Files that did not pass validation.",
+            "comment": "Validation Error Detail can only be specified on files that did not pass validation.",
             "required": [
                 "upload_status"
             ],
@@ -129,7 +129,7 @@
         },
         "upload_status": {
             "title": "Upload Status",
-            "description": "The upload/validation status of the File.",
+            "description": "The upload/validation status of the file.",
             "type": "string",
             "default": "pending",
             "permission": "import_items",
