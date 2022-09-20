@@ -1,0 +1,61 @@
+{
+    "title": "Analysis Set",
+    "$id": "/profiles/analysis_set.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Abstract schema for an analysis set.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file_set.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "samples": {
+            "title": "Samples",
+            "description": "List of samples associated with data analyzed in this analysis set.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Sample",
+                "description": "A sample associated with data analyzed in this analysis set.",
+                "type": "string",
+                "linkTo": "Sample"
+            }
+        },
+        "input_file_sets": {
+            "title": "Input File Sets",
+            "description": "List of file sets to which any files used in this analysis set belong.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Input File Set",
+                "description": "A file set with files that are used in this analysis set.",
+                "type": "string",
+                "linkTo": "FileSet"
+            }
+        }
+    },
+    "changelog": "/profiles/changelogs/analysis_set.md"
+}
