@@ -1,0 +1,34 @@
+{
+    "title": "File Set",
+    "$id": "/profiles/file_set.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Abstract schema for a file set.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "hidden comment": "Bump the default in the subclasses."
+        },
+        "accession": {
+            "accessionType": "FS"
+        }
+    }
+}
