@@ -87,7 +87,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                             ],
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestBasicSelfUpdatingPipelineBuildSynthStepCodePipelineActionRoleD99CA6BD',
+                                    'TestBasicSelfUpdatingPipelineCodePipelineCodeBuildActionRole47BC97B6',
                                     'Arn'
                                 ]
                             },
@@ -118,7 +118,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                             'Name': 'SelfMutate',
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestBasicSelfUpdatingPipelineUpdatePipelineSelfMutateCodePipelineActionRole7477355E',
+                                    'TestBasicSelfUpdatingPipelineCodePipelineCodeBuildActionRole47BC97B6',
                                     'Arn'
                                 ]
                             },
@@ -235,17 +235,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
                         'Effect': 'Allow',
                         'Resource': {
                             'Fn::GetAtt': [
-                                'TestBasicSelfUpdatingPipelineBuildSynthStepCodePipelineActionRoleD99CA6BD',
-                                'Arn'
-                            ]
-                        }
-                    },
-                    {
-                        'Action': 'sts:AssumeRole',
-                        'Effect': 'Allow',
-                        'Resource': {
-                            'Fn::GetAtt': [
-                                'TestBasicSelfUpdatingPipelineUpdatePipelineSelfMutateCodePipelineActionRole7477355E',
+                                'TestBasicSelfUpdatingPipelineCodePipelineCodeBuildActionRole47BC97B6',
                                 'Arn'
                             ]
                         }
@@ -355,7 +345,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                 'ProjectName': {
                                     'Ref': 'TestContinuousDeploymentPipelineBuildSynthStepCdkBuildProjectB05B9ED1'
                                 },
-                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"8f34d65a26c68cb7bc4d59ba0f45418d35a859abef9a98416acf715253d5e4bf\"}]"
+                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"e1633095c5363d717be7287a5a19a0119a732eed6691ae137e563440fdf982fb\"}]"
                             },
                             'InputArtifacts': [
                                 {
@@ -370,7 +360,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                             ],
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineBuildSynthStepCodePipelineActionRoleB6BF615A',
+                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
                                     'Arn'
                                 ]
                             },
@@ -402,7 +392,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                             'Name': 'SelfMutate',
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineUpdatePipelineSelfMutateCodePipelineActionRole37C6B929',
+                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
                                     'Arn'
                                 ]
                             },
@@ -433,7 +423,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                             'Name': 'DockerAsset1',
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineAssetsDockerAsset1CodePipelineActionRole8A14C747',
+                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
                                     'Arn'
                                 ]
                             },
@@ -459,7 +449,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                             'Name': 'DockerAsset2',
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineAssetsDockerAsset2CodePipelineActionRoleA7DE7977',
+                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
                                     'Arn'
                                 ]
                             },
@@ -485,7 +475,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                             'Name': 'FileAsset1',
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineAssetsFileAsset1CodePipelineActionRoleF6D4044B',
+                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
                                     'Arn'
                                 ]
                             },
@@ -511,7 +501,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                             'Name': 'FileAsset2',
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineAssetsFileAsset2CodePipelineActionRole093FA431',
+                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
                                     'Arn'
                                 ]
                             },
@@ -537,7 +527,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                             'Name': 'FileAsset3',
                             'RoleArn': {
                                 'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineAssetsFileAsset3CodePipelineActionRoleE13A2EAE',
+                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
                                     'Arn'
                                 ]
                             },

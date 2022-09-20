@@ -65,7 +65,7 @@ class PostgresBase(Construct):
 
     def _define_engine(self) -> None:
         self.engine = DatabaseInstanceEngine.postgres(
-            version=PostgresEngineVersion.VER_14_1
+            version=PostgresEngineVersion.VER_14_3
         )
 
     def _define_database_name(self) -> None:

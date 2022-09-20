@@ -16,7 +16,7 @@ def test_constructs_alarms_postgres_initialize_postgres_alarms(stack, vpc, insta
         stack,
         'DatabaseInstance',
         engine=DatabaseInstanceEngine.postgres(
-            version=PostgresEngineVersion.VER_14_1
+            version=PostgresEngineVersion.VER_14_3
         ),
         vpc=existing_resources.network.vpc,
         vpc_subnets=SubnetSelection(
