@@ -1742,11 +1742,9 @@
         "first_name": "Cypress",
         "last_name": "Testing",
         "lab": "/labs/j-michael-cherry/",
-        "viewing_groups": [
-            "IGVF"
-        ],
         "job_title": "Software Developer",
         "groups": [
+            "admin",
             "verified"
         ],
         "submits_for": [

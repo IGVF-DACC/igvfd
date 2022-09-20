@@ -25,41 +25,9 @@
             "$ref": "mixins.json#/attribution"
         }
     ],
-    "dependentSchemas": {
-        "news": {
-            "oneOf": [
-                {
-                    "required": [
-                        "news_excerpt"
-                    ],
-                    "properties": {
-                        "news": {
-                            "enum": [
-                                true
-                            ]
-                        }
-                    }
-                },
-                {
-                    "not": {
-                        "required": [
-                            "news_excerpt"
-                        ]
-                    },
-                    "properties": {
-                        "news": {
-                            "enum": [
-                                false
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
-    },
     "properties": {
         "schema_version": {
-            "default": "2"
+            "default": "3"
         },
         "parent": {
             "title": "Parent Page",
@@ -83,92 +51,50 @@
             "description": "The name shown in the browser's title bar and tabs.",
             "type": "string"
         },
-        "news": {
-            "title": "News Post",
-            "type": "boolean",
-            "description": "Page is a news post"
-        },
-        "news_excerpt": {
-            "title": "News Excerpt",
-            "type": "string",
-            "description": "News post excerpt"
-        },
-        "news_keywords": {
-            "title": "News Keywords",
-            "type": "array",
-            "description": "Keywords to filter news posts.",
-            "minItems": 1,
-            "items": {
-                "title": "News Keyword",
-                "description": "A keyword for news post filtering.",
-                "type": "string",
-                "enum": [
-                    "Conferences",
-                    "DNA accessibility",
-                    "DNA binding",
-                    "DNA methylation",
-                    "DNA sequencing",
-                    "Genotyping",
-                    "Proteomics",
-                    "Replication timing",
-                    "RNA binding",
-                    "Transcription"
-                ]
-            }
-        },
         "layout": {
             "title": "Page Layout",
             "description": "Hierarchical description of the page layout.",
             "type": "object",
+            "additionalProperties": false,
             "formInput": "layout",
             "properties": {
-                "rows": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "mapping": {
-                            "type": "object",
-                            "enabled": false
-                        }
-                    }
-                },
                 "blocks": {
                     "type": "array",
                     "items": {
                         "type": "object",
+                        "additionalProperties": false,
                         "properties": {
-                            "body": {
+                            "@id": {
+                                "title": "Block ID",
+                                "description": "Unique identifier for this blocUnique identifier for this block.",
                                 "type": "string"
                             },
-                            "image": {
-                                "type": "string",
-                                "linkTo": "Image"
+                            "@type": {
+                                "title": "Block Type",
+                                "description": "Indicates whether this block contains markdown or a component specification.",
+                                "type": "string"
                             },
-                            "item": {
-                                "type": "string",
-                                "linkTo": "Item"
+                            "body": {
+                                "title": "Block Body",
+                                "description": "The text content of this block.",
+                                "type": "string"
+                            },
+                            "direction": {
+                                "title": "Direction",
+                                "description": "The text language direction -- ltr or rtl.",
+                                "type": "string"
                             }
                         }
                     }
                 }
             },
             "default": {
-                "rows": [
-                    {
-                        "cols": [
-                            {
-                                "blocks": [
-                                    "#block1"
-                                ]
-                            }
-                        ]
-                    }
-                ],
                 "blocks": [
                     {
                         "@id": "#block1",
-                        "@type": "richtextblock",
-                        "body": "<p></p>"
+                        "@type": "markdown",
+                        "body": "<p></p>",
+                        "direction": "ltr"
                     }
                 ]
             }

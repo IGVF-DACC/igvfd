@@ -5,22 +5,12 @@
         "status": "released",
         "uuid": "61edd6b2-bfdb-4db1-b950-8845ac37f65c",
         "layout": {
-            "rows": [
-                {
-                    "cols": [
-                        {
-                            "blocks": [
-                                "#block1"
-                            ]
-                        }
-                    ]
-                }
-            ],
             "blocks": [
                 {
                     "@id": "#block1",
-                    "@type": "richtextblock",
-                    "body": "<h1>Image Collection Landing Page</h1>"
+                    "@type": "markdown",
+                    "body": "# Image Collection Landing Page",
+                    "direction": "ltr"
                 }
             ]
         }
@@ -31,57 +21,30 @@
         "status": "released",
         "uuid": "27f9abd9-0081-4ade-8c82-95ec12b3a7dd",
         "layout": {
-            "rows": [
-                {
-                    "cols": [
-                        {
-                            "blocks": [
-                                "#block1"
-                            ]
-                        }
-                    ]
-                },
-                {
-                    "cols": [
-                        {
-                            "blocks": [
-                                "#block2"
-                            ]
-                        },
-                        {
-                            "blocks": [
-                                "#block3"
-                            ]
-                        },
-                        {
-                            "blocks": [
-                                "#block4"
-                            ]
-                        }
-                    ]
-                }
-            ],
             "blocks": [
                 {
                     "@id": "#block1",
-                    "@type": "richtextblock",
-                    "body": "<div class=\"project-info site-title\">\n    <h1>IGVF</h1>\n</div>\n<div id=\"info-box\" class=\"project-info text-panel\">\n  <p>The IGVF project dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>\n</div>"
+                    "@type": "markdown",
+                    "body": "# IGVF\n\nThe IGVF project dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.",
+                    "direction": "ltr"
                 },
                 {
                     "@id": "#block2",
-                    "@type": "richtextblock",
-                    "body": "<h2>Transcriptome</h2>\n<p>Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>"
+                    "@type": "markdown",
+                    "body": "## Transcriptome\n\nDuis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
+                    "direction": "ltr"
                 },
                 {
                     "@id": "#block3",
-                    "@type": "richtextblock",
-                    "body": "<h2>Regulation</h2>\n<p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>"
+                    "@type": "component",
+                    "body": "SAMPLE_COUNT\nlabel=Sample Count\ncolor=blue\n",
+                    "direction": "ltr"
                 },
                 {
                     "@id": "#block4",
-                    "@type": "teaserblock",
-                    "image": "/images/8a91ae78-731a-4a92-ae7c-273214be408a/",
-                    "body": "<h2>Chromatin Structure</h2>"
+                    "@type": "markdown",
+                    "body": "**Chromatin Structure**",
+                    "direction": "ltr"
                 }
             ]
         }
@@ -94,23 +57,12 @@
         "submitted_by": "massa.porta@varius.mauris",
         "uuid": "41c4ea4e-7a8e-4b91-8fe3-384d0adc8735",
         "layout": {
-            "rows": [
-                {
-                    "cols": [
-                        {
-                            "className": "col-md-12 class_override",
-                            "blocks": [
-                                "#block1"
-                            ]
-                        }
-                    ]
-                }
-            ],
             "blocks": [
                 {
                     "@id": "#block1",
-                    "@type": "richtextblock",
-                    "body": "<h1>Test Section</h1>"
+                    "@type": "markdown",
+                    "body": "# Test Section",
+                    "direction": "ltr"
                 }
             ]
         }
@@ -124,22 +76,12 @@
         "submitted_by": "massa.porta@varius.mauris",
         "uuid": "331928f7-d8f7-4ea6-b4e0-8d380fb22974",
         "layout": {
-            "rows": [
-                {
-                    "cols": [
-                        {
-                            "blocks": [
-                                "#block1"
-                            ]
-                        }
-                    ]
-                }
-            ],
             "blocks": [
                 {
                     "@id": "#block1",
-                    "@type": "richtextblock",
-                    "body": "<h1>Subpage</h1>"
+                    "@type": "markdown",
+                    "body": "# Subpage",
+                    "direction": "ltr"
                 }
             ]
         }
@@ -153,22 +95,201 @@
         "status": "in progress",
         "uuid": "83173355-31ff-4ca7-a259-e4af0f3a0169",
         "layout": {
-            "rows": [
-                {
-                    "cols": [
-                        {
-                            "blocks": [
-                                "#block1"
-                            ]
-                        }
-                    ]
-                }
-            ],
             "blocks": [
                 {
                     "@id": "#block1",
-                    "@type": "richtextblock",
-                    "body": "<h1>Subpage in progress (not logged should be unable to view)</h1>"
+                    "@type": "markdown",
+                    "body": "# Subpage in progress (not logged should be unable to view)",
+                    "direction": "ltr"
+                }
+            ]
+        }
+    },
+    {
+        "name": "help",
+        "title": "IGVF Help Documentation",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "submitted_by": "fytanaka@stanford.edu",
+        "uuid": "74aa2c4c-8767-4904-a442-1bf851fa56e4",
+        "layout": {
+            "blocks": [
+                {
+                    "@id": "#block1",
+                    "@type": "markdown",
+                    "body": "Learn to use the [IGVF](https://igvf.org/) portal.",
+                    "direction": "ltr"
+                }
+            ]
+        }
+    },
+    {
+        "parent": "/help/",
+        "name": "samples",
+        "title": "Samples",
+        "status": "released",
+        "lab": "j-michael-cherry",
+        "submitted_by": "fytanaka@stanford.edu",
+        "uuid": "1b34820d-7fc1-457a-89c2-2a5accc3e8e6",
+        "layout": {
+            "blocks": [
+                {
+                    "@id": "#block1",
+                    "@type": "markdown",
+                    "body": "# Samples\n\nSome help text about samples.",
+                    "direction": "ltr"
+                }
+            ]
+        }
+    },
+    {
+        "parent": "/help/samples/",
+        "name": "cell-lines",
+        "title": "Cell Line",
+        "lab": "j-michael-cherry",
+        "submitted_by": "fytanaka@stanford.edu",
+        "status": "released",
+        "uuid": "3f1d53de-6ad0-4978-beaf-ce31613063aa",
+        "layout": {
+            "blocks": [
+                {
+                    "@id": "#block1",
+                    "@type": "markdown",
+                    "body": "# Cell Line Samples\n\nతెలుగు అనేది ద్రావిడ భాషల కుటుంబానికి చెందిన భాష. దీనిని మాట్లాడే ప్రజలు ప్రధానంగా ఆంధ్ర, తెలంగాణాలో ఉన్నారు. ఇది ఆ రాష్ట్రాలలో అధికార భాష. భారతదేశంలో ఒకటి కంటే ఎక్కువ రాష్ట్రాల్లో ప్రాథమిక అధికారిక భాషా హోదా కలిగిన కొద్ది భాషలలో హిందీ, బెంగాలీలతో పాటు ఇది కూడా ఉంది.",
+                    "direction": "ltr"
+                }
+            ]
+        }
+    },
+    {
+        "parent": "/help/samples/",
+        "name": "differentiated-cells",
+        "title": "Differentiated Cells",
+        "lab": "j-michael-cherry",
+        "submitted_by": "fytanaka@stanford.edu",
+        "status": "released",
+        "uuid": "8e95aaf6-8df3-40c7-8a58-098ec06e22bf",
+        "layout": {
+            "blocks": [
+                {
+                    "@id": "#block1",
+                    "@type": "markdown",
+                    "body": "# Differentiated Cells\n\n日本語 は、日本国内や、かつての日本領だった国、そして日本人同士の間で使用されている言語。",
+                    "direction": "ltr"
+                }
+            ]
+        }
+    },
+    {
+        "parent": "/help/",
+        "name": "donors",
+        "title": "Donors",
+        "lab": "j-michael-cherry",
+        "submitted_by": "fytanaka@stanford.edu",
+        "status": "released",
+        "uuid": "c8733d26-8242-40f3-a663-ce6c7659a0b3",
+        "layout": {
+            "blocks": [
+                {
+                    "@id": "#block1",
+                    "@type": "markdown",
+                    "body": "# Donor Help\n\nThis is some help text about donors.",
+                    "direction": "ltr"
+                }
+            ]
+        }
+    },
+    {
+        "parent": "/help/donors/",
+        "name": "human-donors",
+        "title": "Human Donors",
+        "lab": "j-michael-cherry",
+        "submitted_by": "fytanaka@stanford.edu",
+        "status": "released",
+        "uuid": "d91b048e-2d8a-4562-893d-93f0e68397c0",
+        "layout": {
+            "blocks": [
+                {
+                    "@id": "#block1",
+                    "@type": "markdown",
+                    "body": "# Human Donor Help\n\nภาษาไทย หรือ ภาษาไทยกลาง เป็นภาษาในกลุ่มภาษาไท ซึ่งเป็นกลุ่มย่อยของตระกูลภาษาขร้า-ไท และเป็นภาษาราชการ และภาษาประจำชาติของประเทศไทย",
+                    "direction": "ltr"
+                }
+            ]
+        }
+    },
+    {
+        "parent": "/help/donors/",
+        "name": "rodent-donors",
+        "title": "Rodent Donors",
+        "lab": "j-michael-cherry",
+        "submitted_by": "fytanaka@stanford.edu",
+        "status": "released",
+        "uuid": "c0557916-f228-4895-8918-554eebb3c651",
+        "layout": {
+            "blocks": [
+                {
+                    "@id": "#block1",
+                    "@type": "markdown",
+                    "body": "# Rodent Donor Help\n\n官話（又称北方话、官話方言、北方方言、北平官話、北语）為汉语的一支，主體分布在中国北部和西南部的大部分地区。若視漢語為一種語言，則官话是漢語的一级方言，下分北方官话、中原官话和南方官话；若視漢語為“漢語族”，視官話為獨立語言的話，則官話下有數支官話的方言。",
+                    "direction": "ltr"
+                }
+            ]
+        }
+    },
+    {
+        "parent": "/help/",
+        "name": "ontologies",
+        "title": "Ontologies",
+        "lab": "j-michael-cherry",
+        "submitted_by": "fytanaka@stanford.edu",
+        "status": "released",
+        "uuid": "b32b3cb7-e22c-4445-8465-e7636783437d",
+        "layout": {
+            "blocks": [
+                {
+                    "@id": "#block1",
+                    "@type": "markdown",
+                    "body": "# Ontologies Help\n\nThis is some help text about ontologies.",
+                    "direction": "ltr"
+                }
+            ]
+        }
+    },
+    {
+        "parent": "/help/ontologies/",
+        "name": "assays",
+        "title": "Assays",
+        "lab": "j-michael-cherry",
+        "submitted_by": "fytanaka@stanford.edu",
+        "status": "released",
+        "uuid": "235a1359-74bd-4b95-b0bb-70bf46f7856c",
+        "layout": {
+            "blocks": [
+                {
+                    "@id": "#block1",
+                    "@type": "markdown",
+                    "body": "# Ontologies Help\n\nעִבְרִית (נקראת גם בשם: עברית מודרנית ישראלית) היא שפה שמית, ממשפחת השפות האפרו-אסיאתיות, הידועה כשפתם של היהודים ושל השומרונים.",
+                    "direction": "rtl"
+                }
+            ]
+        }
+    },
+    {
+        "parent": "/help/ontologies/",
+        "name": "phenotypes",
+        "title": "Phenotypes",
+        "lab": "j-michael-cherry",
+        "submitted_by": "fytanaka@stanford.edu",
+        "status": "released",
+        "uuid": "cb3e37da-af1b-4f6f-92a5-fd77f3e69154",
+        "layout": {
+            "blocks": [
+                {
+                    "@id": "#block1",
+                    "@type": "markdown",
+                    "body": "# Phenotypes Help\n\n한국어(韓國語)는 대한민국과 조선민주주의인민공화국의 공용어로, 대한민국에서는 한국어 또는 한국말이라고 부르고, 조선민주주의인민공화국에서는 조선어(朝鮮語) 또는 조선말이라고 부른다.",
+                    "direction": "ltr"
                 }
             ]
         }
