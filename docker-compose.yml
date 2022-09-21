@@ -2,6 +2,17 @@ version: "3.8"
 
 services:
 
+  localstack:
+    image: localstack/localstack:1.1
+    environment:
+      - DEBUG=1
+      - AWS_DEFAULT_REGION=us-west-2
+      - AWS_ACCESS_KEY_ID=local-dev-key
+      - AWS_SECRET_ACCESS_KEY=local-dev-secret
+      - SERVICES=sqs
+    ports:
+      - "4566:4566"
+
   postgres:
     build:
       context: ./docker/postgres/
