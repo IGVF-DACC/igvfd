@@ -3,15 +3,19 @@ version: "3.8"
 services:
 
   localstack:
-    image: localstack/localstack:1.1
+    build:
+      context: ./docker/localstack/
+    image: igvfd-localstack
     environment:
-      - DEBUG=1
       - AWS_DEFAULT_REGION=us-west-2
-      - AWS_ACCESS_KEY_ID=local-dev-key
-      - AWS_SECRET_ACCESS_KEY=local-dev-secret
+      - AWS_ACCESS_KEY_ID=testing
+      - AWS_SECRET_ACCESS_KEY=testing
       - SERVICES=sqs
+      - LS_LOG=warn
     ports:
       - "4566:4566"
+    volumes:
+      - "./docker/localstack/create_localstack.sh:/docker-entrypoint-initaws.d/create_localstack.sh"
 
   postgres:
     build:
@@ -30,8 +34,10 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
+      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
     command: load-development
     depends_on:
+      - localstack
       - postgres
 
   opensearch:
@@ -64,6 +70,7 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
+      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
     command: /scripts/pyramid/run-development.sh
     ports:
       - "6543:6543"
@@ -91,6 +98,7 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
+      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
     command: /scripts/pyramid/run-create-mapping.sh
     depends_on:
       - nginx
@@ -103,8 +111,35 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
-    command: /scripts/pyramid/run-indexer.sh
+      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
+    command: echo doing nothing #/scripts/pyramid/run-indexer.sh
     ports:
       - "7000:7000"
     depends_on:
       - create-mapping
+
+  invalidation-service:
+    build:
+      context: .
+      dockerfile: ./docker/pyramid/Dockerfile
+    image: igvfd-pyramid
+    volumes:
+      - ".:/igvfd"
+      - "/igvfd/src/igvfd.egg-info"
+      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
+    command: python /opt/venv/lib/python3.9/site-packages/snovault/elasticsearch/invalidation_service.py
+    depends_on:
+      - pyramid
+
+  indexing-service:
+    build:
+      context: .
+      dockerfile: ./docker/pyramid/Dockerfile
+    image: igvfd-pyramid
+    volumes:
+      - ".:/igvfd"
+      - "/igvfd/src/igvfd.egg-info"
+      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
+    command: python /opt/venv/lib/python3.9/site-packages/snovault/elasticsearch/indexing_service.py
+    depends_on:
+      - pyramid
