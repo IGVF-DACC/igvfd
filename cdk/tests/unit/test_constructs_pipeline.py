@@ -345,7 +345,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                 'ProjectName': {
                                     'Ref': 'TestContinuousDeploymentPipelineBuildSynthStepCdkBuildProjectB05B9ED1'
                                 },
-                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"e1633095c5363d717be7287a5a19a0119a732eed6691ae137e563440fdf982fb\"}]"
+                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"4d5961e93fb8ae67489a2b7322580d41f721a94885b36d116feee47f908dca94\"}]"
                             },
                             'InputArtifacts': [
                                 {
