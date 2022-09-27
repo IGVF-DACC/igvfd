@@ -39,7 +39,6 @@ class PostgresProps:
     allocated_storage: int
     max_allocated_storage: int
     instance_type: InstanceType
-    auto_minor_version_upgrade: bool = False
     snapshot_arn: Optional[str] = None
     snapshot_source_db_identifier: Optional[str] = None
 
@@ -129,7 +128,7 @@ class Postgres(PostgresBase):
             ),
             allocated_storage=self.props.allocated_storage,
             max_allocated_storage=self.props.max_allocated_storage,
-            auto_minor_version_upgrade=self.props.auto_minor_version_upgrade,
+            auto_minor_version_upgrade=False,
         )
 
     def _add_tags_to_database(self) -> None:
@@ -189,7 +188,7 @@ class PostgresFromSnapshotArn(PostgresBase):
             ),
             allocated_storage=self.props.allocated_storage,
             max_allocated_storage=self.props.max_allocated_storage,
-            auto_minor_version_upgrade=self.props.auto_minor_version_upgrade,
+            auto_minor_version_upgrade=False,
         )
 
     def _add_tags_to_database(self) -> None:
