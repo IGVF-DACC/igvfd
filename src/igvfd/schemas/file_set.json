@@ -23,12 +23,58 @@
             "$ref": "mixins.json#/documents"
         }
     ],
+    "dependentSchemas": {
+        "samples": {
+            "not": {
+                "required": [
+                    "donors"
+                ]
+            },
+            "comment": "Specification of samples is mutually exclusive with specification of donors."
+        },
+        "donors": {
+            "not": {
+                "required": [
+                    "samples"
+                ]
+            },
+            "comment": "Specification of donors is mutually exclusive with specification of samples."
+        }
+    },
     "properties": {
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."
         },
         "accession": {
             "accessionType": "FS"
+        },
+        "samples": {
+            "title": "Samples",
+            "description": "The samples associated with this file set.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "Sample",
+                "description": "A sample associated with this file set.",
+                "comment": "See sample.json for available identifiers.",
+                "type": "string",
+                "linkTo": "Sample"
+            }
+        },
+        "donors": {
+            "title": "Donors",
+            "description": "The donors associated with this file set.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "Donor",
+                "description": "A donor associated with this file set.",
+                "comment": "See donor.json for available identifiers.",
+                "type": "string",
+                "linkTo": "Donor"
+            }
         }
     }
 }
