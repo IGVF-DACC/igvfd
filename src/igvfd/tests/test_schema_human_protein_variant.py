@@ -43,30 +43,30 @@ def test_refseq_regex(testapp, human_protein_variant):
     res = testapp.patch_json(
         human_protein_variant['@id'],
         {
-            'refseq_sequence_id': 'NT_999.00'
+            'refseq_id': 'NP_999.00'
         })
     assert res.status_code == 200
     res = testapp.patch_json(
         human_protein_variant['@id'],
         {
-            'refseq_sequence_id': 'NT_999.000'
+            'refseq_id': 'NT_999.000'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         human_protein_variant['@id'],
         {
-            'refseq_sequence_id': 'NT_999A.00'
+            'refseq_id': 'NT_999A.00'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         human_protein_variant['@id'],
         {
-            'refseq_sequence_id': 'MT_999A.00'
+            'refseq_id': 'MT_999A.00'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         human_protein_variant['@id'],
         {
-            'refseq_sequence_id': 'NW_999.00'
+            'refseq_id': 'NP_999.00'
         })
     assert res.status_code == 200

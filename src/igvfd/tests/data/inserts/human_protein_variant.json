@@ -13,7 +13,7 @@
         "chromosome": "chr12",
         "assembly": "GRCh38",
         "position": 158180836,
-        "refseq_sequence_id": "NC_1000.12",
+        "refseq_id": "NP_1000.12",
         "associated_gwas": [
             "GCST007240"
         ]
@@ -24,6 +24,6 @@
         "alt": "GC",
         "assembly": "GRCh38",
         "position": 100000000,
-        "refseq_sequence_id": "NC_1000.1"
+        "refseq_id": "NP_1000.1"
     }
 ]

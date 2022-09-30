@@ -9,7 +9,7 @@ def test_human_genomic_variant_keys(testapp):
         'assembly': 'GRCh38',
         'position': 1000000,
         'rsid': 'rs100',
-        'refseq_sequence_id': 'NT_999.00'
+        'refseq_id': 'NT_999.00'
     }
     response = testapp.post_json('/human_genomic_variant', item, status=201)
     assert response.status_code == 201
