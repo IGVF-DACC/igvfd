@@ -48,9 +48,9 @@
         "accession": {
             "accessionType": "FS"
         },
-        "samples": {
-            "title": "Samples",
-            "description": "The samples associated with this file set.",
+        "sample": {
+            "title": "Sample",
+            "description": "The sample(s) associated with this file set.",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
@@ -62,9 +62,9 @@
                 "linkTo": "Sample"
             }
         },
-        "donors": {
-            "title": "Donors",
-            "description": "The donors associated with this file set.",
+        "donor": {
+            "title": "Donor",
+            "description": "The donor(s) associated with this file set.",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
