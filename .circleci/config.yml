@@ -20,7 +20,7 @@ workflows:
 jobs:
   lint:
     docker:
-      - image: circleci/python:3.9
+      - image: cimg/python:3.9
     working_directory: ~/igvfd
     steps:
       - checkout
@@ -29,7 +29,7 @@ jobs:
 
   cdk-mypy:
     docker:
-      - image: circleci/python:3.9
+      - image: cimg/python:3.9
     working_directory: ~/igvfd/cdk/
     steps:
       - checkout:
@@ -52,7 +52,7 @@ jobs:
 
   cdk-lambda-runtime-pytest:
     docker:
-      - image: circleci/python:3.9
+      - image: cimg/python:3.9
     working_directory: ~/igvfd/cdk/infrastructure/runtime/lambdas/snapshot/
     steps:
       - checkout:
