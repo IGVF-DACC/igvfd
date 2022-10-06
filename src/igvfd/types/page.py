@@ -49,6 +49,7 @@ class Page(SharedItem):
         schema={
             'title': 'Canonical URI',
             'type': 'string',
+            'notSubmittable': True,
         })
     def canonical_uri(self, name):
         if name == 'homepage':

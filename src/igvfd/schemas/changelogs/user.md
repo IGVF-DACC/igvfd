@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 2
 
+* Add `'notSubmittable': True` to `access_keys`, `impersonate`, `profile` and `signout` calculated properties.
 * Add `description`.
 * Add `aliases` to `identifyingProperties`.
 

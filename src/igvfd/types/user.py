@@ -74,6 +74,7 @@ class User(Item):
         'items': {
             'type': ['string', 'object'],
             'linkFrom': 'AccessKey.user',
+            'notSubmittable': True,
         },
     }, category='page')
     def access_keys(self, request):
@@ -121,6 +122,7 @@ def impersonate(request):
             'id': 'impersonate',
             'title': 'Impersonate user…',
             'href': '/#!impersonate-user',
+            'notSubmittable': True,
         }
 
 
@@ -130,6 +132,7 @@ def profile(context, request):
         'id': 'profile',
         'title': 'Profile',
         'href': request.resource_path(context),
+        'notSubmittable': True,
     }
 
 
@@ -139,4 +142,5 @@ def signout(context, request):
         'id': 'signout',
         'title': 'Sign out',
         'trigger': 'logout',
+        'notSubmittable': True,
     }
