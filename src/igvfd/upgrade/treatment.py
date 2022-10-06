@@ -19,7 +19,7 @@ def treatment_2_3(value, system):
     if 'purpose' not in value:
         value['purpose'] = 'perturbation'
         if 'notes' in value:
-            value['notes'] = f'{value.get("notes")}. This treatment does not have purpose specified previously, it was upgraded to have perturbation purpose.'
+            value['notes'] = f'{value.get("notes")}. This treatment did not have purpose specified previously, it was upgraded to have perturbation purpose.'
         else:
-            value['notes'] = 'This treatment does not have purpose specified previously, it was upgraded to have perturbation purpose.'
+            value['notes'] = 'This treatment did not have purpose specified previously, it was upgraded to have perturbation purpose.'
     return
