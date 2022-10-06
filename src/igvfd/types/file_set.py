@@ -37,8 +37,8 @@ class AnalysisSet(FileSet):
 
     @calculated_property(
         schema={
-            'title': 'Assay Titles',
-            'description': 'Titles of assays that produced data analyzed in the analysis set.',
+            'title': 'Assay Title',
+            'description': 'Title(s) of assays that produced data analyzed in the analysis set.',
             'type': 'array',
             'uniqueItems': True,
             'items': {
@@ -49,10 +49,10 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def assay_titles(self, request, input_file_sets=None):
+    def assay_title(self, request, input_file_set=None):
         assay_titles = []
-        for fileset in input_file_sets:
+        for fileset in input_file_set:
             file_set_object = request.embed(fileset, '@@object')
             if file_set_object.get('assay_title'):
-                assay_titles.append(file_set_object.get('assay_title'))
-        return list(set(assay_titles))
+                assay_title.append(file_set_object.get('assay_title'))
+        return list(set(assay_title))
