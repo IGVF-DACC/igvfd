@@ -1,0 +1,80 @@
+{
+    "title": "File Set",
+    "$id": "/profiles/file_set.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Abstract schema for a file set.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        }
+    ],
+    "dependentSchemas": {
+        "samples": {
+            "not": {
+                "required": [
+                    "donors"
+                ]
+            },
+            "comment": "Specification of samples is mutually exclusive with specification of donors."
+        },
+        "donors": {
+            "not": {
+                "required": [
+                    "samples"
+                ]
+            },
+            "comment": "Specification of donors is mutually exclusive with specification of samples."
+        }
+    },
+    "properties": {
+        "schema_version": {
+            "hidden comment": "Bump the default in the subclasses."
+        },
+        "accession": {
+            "accessionType": "FS"
+        },
+        "sample": {
+            "title": "Sample",
+            "description": "The sample(s) associated with this file set.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "Sample",
+                "description": "A sample associated with this file set.",
+                "comment": "See sample.json for available identifiers.",
+                "type": "string",
+                "linkTo": "Sample"
+            }
+        },
+        "donor": {
+            "title": "Donor",
+            "description": "The donor(s) associated with this file set.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "Donor",
+                "description": "A donor associated with this file set.",
+                "comment": "See donor.json for available identifiers.",
+                "type": "string",
+                "linkTo": "Donor"
+            }
+        }
+    }
+}
