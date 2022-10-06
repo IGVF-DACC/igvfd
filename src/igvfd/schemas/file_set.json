@@ -24,18 +24,18 @@
         }
     ],
     "dependentSchemas": {
-        "samples": {
+        "sample": {
             "not": {
                 "required": [
-                    "donors"
+                    "donor"
                 ]
             },
             "comment": "Specification of samples is mutually exclusive with specification of donors."
         },
-        "donors": {
+        "donor": {
             "not": {
                 "required": [
-                    "samples"
+                    "sample"
                 ]
             },
             "comment": "Specification of donors is mutually exclusive with specification of samples."
