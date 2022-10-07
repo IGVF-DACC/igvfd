@@ -225,6 +225,7 @@ class Item(snovault.Item):
     @calculated_property(schema={
         'title': 'Summary',
         'type': 'string',
+        'notSubmittable': True,
     })
     def summary(self):
         if self.name_key is None:
