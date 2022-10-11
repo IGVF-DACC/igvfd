@@ -54,16 +54,6 @@
             "description": "The RefSeq identifier for this variant. If there is no RefSeq identifier available for this variant, the seqeunce should be used instead.",
             "type": "string",
             "pattern": "^((NP_)[0-9]+.[0-9]{1,2})$|^[ATCG]*$"
-        },
-        "associated_gwas": {
-            "title": "Associated Genome-wide Association Studies (GWAS)",
-            "type": "array",
-            "items": {
-                "description": "Genome-wide association studies which distinguished this variant as potentially causative and from which it was selected from.",
-                "comment": "This should be submitted as the accession number of the GWAS from the NHGRI-EBI Catalog of human genome-wide association studies.",
-                "type": "string",
-                "pattern": "GCST[0-9]+"
-            }
         }
     },
     "changelog": "/profiles/changelogs/human_protein_variant.md"
