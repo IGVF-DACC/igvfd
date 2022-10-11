@@ -16,6 +16,9 @@
     "additionalProperties": false,
     "mixinProperties": [
         {
+            "$ref": "file_set.json#/properties"
+        },
+        {
             "$ref": "mixins.json#/basic_item"
         },
         {
@@ -40,9 +43,6 @@
     "properties": {
         "schema_version": {
             "default": "1"
-        },
-        "accession": {
-            "accessionType": "CS"
         },
         "reference_type": {
             "title": "Reference Type",

@@ -6,7 +6,7 @@ from snovault import (
 )
 
 from .base import (
-    Item,
+    Item
 )
 
 
@@ -58,3 +58,15 @@ class AnalysisSet(FileSet):
                         'MeasurementSet' in file_set_object.get('@type'):
                     assay_title.add(file_set_object.get('assay_title'))
             return list(assay_title)
+
+ 
+@collection(
+    name='curated-sets',
+    unique_key='accession',
+    properties={
+        'title': 'Curated Set',
+        'description': 'Listing of curated sets',
+    })
+class CuratedSet(FileSet):
+    item_type = 'curated_set'
+    schema = load_schema('igvfd:schemas/curated_set.json')
