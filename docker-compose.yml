@@ -26,20 +26,6 @@ services:
     ports:
       - "5432:5432"
 
-  loader:
-    build:
-      context: .
-      dockerfile: ./docker/pyramid/Dockerfile
-    image: igvfd-pyramid
-    volumes:
-      - ".:/igvfd"
-      - "/igvfd/src/igvfd.egg-info"
-      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
-    command: load-development
-    depends_on:
-      - localstack
-      - postgres
-
   opensearch:
     build:
       context: ./docker/opensearch/
@@ -62,15 +48,48 @@ services:
         soft: 65536
         hard: 65536
 
+  create-mapping:
+    build:
+      context: .
+      dockerfile: ./docker/pyramid/Dockerfile
+    image: igvfd-pyramid
+    environment:
+      - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
+      - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
+    volumes:
+      - ".:/igvfd"
+      - "/igvfd/src/igvfd.egg-info"
+    command: /scripts/pyramid/run-create-mapping.sh
+    depends_on:
+      - opensearch
+
+  loader:
+    build:
+      context: .
+      dockerfile: ./docker/pyramid/Dockerfile
+    image: igvfd-pyramid
+    environment:
+      - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
+      - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
+    volumes:
+      - ".:/igvfd"
+      - "/igvfd/src/igvfd.egg-info"
+    command: load-development
+    depends_on:
+      - localstack
+      - postgres
+
   pyramid:
     build:
       context: .
       dockerfile: ./docker/pyramid/Dockerfile
     image: igvfd-pyramid
+    environment:
+      - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
+      - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
-      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
     command: /scripts/pyramid/run-development.sh
     ports:
       - "6543:6543"
@@ -90,19 +109,6 @@ services:
     depends_on:
       - pyramid
 
-  create-mapping:
-    build:
-      context: .
-      dockerfile: ./docker/pyramid/Dockerfile
-    image: igvfd-pyramid
-    volumes:
-      - ".:/igvfd"
-      - "/igvfd/src/igvfd.egg-info"
-      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
-    command: /scripts/pyramid/run-create-mapping.sh
-    depends_on:
-      - nginx
-
   indexer:
     build:
       context: .
@@ -111,7 +117,6 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
-      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
     command: echo doing nothing #/scripts/pyramid/run-indexer.sh
     ports:
       - "7000:7000"
@@ -120,26 +125,30 @@ services:
 
   invalidation-service:
     build:
-      context: .
-      dockerfile: ./docker/pyramid/Dockerfile
-    image: igvfd-pyramid
-    volumes:
-      - ".:/igvfd"
-      - "/igvfd/src/igvfd.egg-info"
-      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
-    command: python /opt/venv/lib/python3.9/site-packages/snovault/elasticsearch/invalidation_service.py
+      context: ./docker/snoindex/
+    image: igvfd-snoindex
+    environment:
+      - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
+      - OPENSEARCH_URL=http://opensearch:9200
+      - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
+      - INVALIDATION_QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
+      - RESOURCES_INDEX=snovault-resources
+    command: run-invalidation-service
     depends_on:
       - pyramid
 
   indexing-service:
     build:
-      context: .
-      dockerfile: ./docker/pyramid/Dockerfile
-    image: igvfd-pyramid
-    volumes:
-      - ".:/igvfd"
-      - "/igvfd/src/igvfd.egg-info"
-      - "../snovault2/snovault/src/snovault:/opt/venv/lib/python3.9/site-packages/snovault"
-    command: python /opt/venv/lib/python3.9/site-packages/snovault/elasticsearch/indexing_service.py
+      context: ./docker/snoindex/
+    image: igvfd-snoindex
+    environment:
+      - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
+      - INVALIDATION_QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
+      - OPENSEARCH_URL=http://opensearch:9200
+      - BACKEND_URL=http://pyramid:6543
+      - BACKEND_KEY=foobar
+      - BACKEND_SECRET_KEY=bazqux
+      - RESOURCES_INDEX=snovault-resources
+    command: run-indexing-service
     depends_on:
       - pyramid
