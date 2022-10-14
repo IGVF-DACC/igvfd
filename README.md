@@ -30,9 +30,9 @@ $ docker compose -f docker-compose.test.yml down -v
 ```
 
 Or run tests interactively:
-1. Start `postgres` service (for use as fixture).
+1. Start `postgres` and `localstack` services (for use as fixtures).
 ```bash
-$ docker compose -f docker-compose.test.yml up postgres
+$ docker compose -f docker-compose.test.yml up postgres localstack
 ```
 2. Connect to testing environment.
 ```bash
