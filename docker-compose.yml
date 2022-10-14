@@ -109,20 +109,6 @@ services:
     depends_on:
       - pyramid
 
-  indexer:
-    build:
-      context: .
-      dockerfile: ./docker/pyramid/Dockerfile
-    image: igvfd-pyramid
-    volumes:
-      - ".:/igvfd"
-      - "/igvfd/src/igvfd.egg-info"
-    command: echo doing nothing #/scripts/pyramid/run-indexer.sh
-    ports:
-      - "7000:7000"
-    depends_on:
-      - create-mapping
-
   invalidation-service:
     build:
       context: ./docker/snoindex/
@@ -145,7 +131,7 @@ services:
       - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
       - INVALIDATION_QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
       - OPENSEARCH_URL=http://opensearch:9200
-      - BACKEND_URL=http://pyramid:6543
+      - BACKEND_URL=http://nginx:8000
       - BACKEND_KEY=foobar
       - BACKEND_SECRET_KEY=bazqux
       - RESOURCES_INDEX=snovault-resources

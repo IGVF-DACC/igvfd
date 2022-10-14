@@ -142,6 +142,16 @@ def json_from_path(path, default=None):
     return json.load(open(path))
 
 
+def configure_sqs_client(config):
+    from snovault.app import configure_sqs_client
+    configure_sqs_client(config)
+
+
+def configure_transaction_queue(config):
+    from snovault.app import configure_transaction_queue
+    configure_transaction_queue(config)
+
+
 def session(config):
     """ To create a session secret on the server:
     $ cat /dev/urandom | head -c 256 | base64 > session-secret.b64
@@ -201,6 +211,8 @@ def main(global_config, **local_config):
     config.include('.cookie')
 
     config.include(configure_dbsession)
+    config.include(configure_sqs_client)
+    config.include(configure_transaction_queue)
     config.include('snovault')
     config.commit()  # commit so search can override listing
 
@@ -225,6 +237,7 @@ def main(global_config, **local_config):
     if asbool(settings.get('testing', False)):
         config.include('.tests.testing_views')
 
+    print('REGISTERED!!!', config.registry['SQS_CLIENT'], config.registry['TRANSACTION_QUEUE'])
     app = config.make_wsgi_app()
 
     return app
