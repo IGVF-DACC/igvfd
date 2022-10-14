@@ -4,7 +4,7 @@ import pytest
 @pytest.fixture
 def curated_set_genome(testapp, lab, award):
     item = {
-        'reference_type': 'genome',
+        'curated_set_type': 'genome',
         'award': award['@id'],
         'lab': lab['@id']
     }

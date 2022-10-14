@@ -7,7 +7,7 @@
     "required": [
         "lab",
         "award",
-        "reference_type"
+        "curated_set_type"
     ],
     "identifyingProperties": [
         "uuid",
@@ -44,8 +44,8 @@
         "schema_version": {
             "default": "1"
         },
-        "reference_type": {
-            "title": "Reference Type",
+        "curated_set_type": {
+            "title": "Curated Set Type",
             "description": "The category that best describes this curated file set.",
             "type": "string",
             "enum": [
