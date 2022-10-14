@@ -237,7 +237,6 @@ def main(global_config, **local_config):
     if asbool(settings.get('testing', False)):
         config.include('.tests.testing_views')
 
-    print('REGISTERED!!!', config.registry['SQS_CLIENT'], config.registry['TRANSACTION_QUEUE'])
     app = config.make_wsgi_app()
 
     return app
