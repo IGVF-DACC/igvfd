@@ -1,0 +1,127 @@
+version: "3.8"
+
+services:
+
+  localstack:
+    build:
+      context: ./docker/localstack/
+    image: igvfd-localstack
+    environment:
+      - AWS_DEFAULT_REGION=us-west-2
+      - AWS_ACCESS_KEY_ID=testing
+      - AWS_SECRET_ACCESS_KEY=testing
+      - SERVICES=sqs
+      - LS_LOG=warn
+    ports:
+      - "4566:4566"
+    volumes:
+      - "./docker/localstack/create_localstack.sh:/docker-entrypoint-initaws.d/create_localstack.sh"
+
+  postgres:
+    build:
+      context: ./docker/postgres/
+    image: igvfd-postgres
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - "5432:5432"
+
+  opensearch:
+    build:
+      context: ./docker/opensearch/
+    image: igvfd-opensearch
+    environment:
+      - "discovery.type=single-node"
+      - "node.name=opensearch-node1"
+      - "OPENSEARCH_JAVA_OPTS=-Xms256m -Xmx256m"
+      - "DISABLE_INSTALL_DEMO_CONFIG=true"
+      - "DISABLE_SECURITY_PLUGIN=true"
+    volumes:
+      - "./config/opensearch/opensearch.yml:/usr/share/opensearch/config/opensearch.yml"
+    ports:
+      - "9200:9200"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+
+  pyramid:
+    build:
+      context: .
+      dockerfile: ./docker/pyramid/Dockerfile
+    image: igvfd-pyramid
+    environment:
+      - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
+      - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
+    volumes:
+      - ".:/igvfd"
+      - "/igvfd/src/igvfd.egg-info"
+    command: /scripts/pyramid/run-development.sh
+    ports:
+      - "6543:6543"
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    image: igvfd-nginx
+    volumes:
+      - "./config/nginx/docker.conf:/etc/nginx/nginx.conf"
+    command: nginx -c /etc/nginx/nginx.conf -g 'daemon off; pid /dev/null;'
+    ports:
+      - "8000:8000"
+    depends_on:
+      - pyramid
+
+  invalidation-service:
+    build:
+      context: ./docker/snoindex/
+    image: igvfd-snoindex
+    environment:
+      - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
+      - OPENSEARCH_URL=http://opensearch:9200
+      - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
+      - INVALIDATION_QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
+      - RESOURCES_INDEX=snovault-resources
+    command: run-invalidation-service
+    depends_on:
+      - pyramid
+
+  indexing-service:
+    build:
+      context: ./docker/snoindex/
+    image: igvfd-snoindex
+    environment:
+      - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
+      - INVALIDATION_QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
+      - OPENSEARCH_URL=http://opensearch:9200
+      - BACKEND_URL=http://nginx:8000
+      - BACKEND_KEY=foobar
+      - BACKEND_SECRET_KEY=bazqux
+      - RESOURCES_INDEX=snovault-resources
+    command: run-indexing-service
+    depends_on:
+      - pyramid
+
+  indexer-tests:
+    build:
+      context: .
+      dockerfile: ./docker/pyramid/Dockerfile
+    image: igvfd-pyramid
+    environment:
+      - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
+      - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
+    volumes:
+      - ".:/igvfd"
+      - "/igvfd/src/igvfd.egg-info"
+    command: pytest -rf --cov=igvfd -s -o junit_family=legacy --junitxml=./.test-results/junit.xml --cov-append -m 'indexing'
+    depends_on:
+      - postgres
+      - opensearch
+      - localstack
+      - pyramid
+      - invalidation-service
+      - indexing-service
