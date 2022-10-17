@@ -70,7 +70,9 @@ jobs:
       - checkout
       - run:
           name: Build Docker images
-          command: docker-compose -f docker-compose.test.yml build
+          command: |
+              docker-compose -f docker-compose.test.yml build
+              docker-compose -f docker-compose.test-indexer.yml
       - run:
           name: Set folder permissions for mounted volume
           command: |
@@ -81,6 +83,7 @@ jobs:
           name: Run tests
           command: |
               docker-compose -f docker-compose.test.yml up --exit-code-from pyramid
+              docker-compose -f docker-compose.test-indexer.yml up --exit-code-from indexer-tests
       - run:
           name: Move pytest results out of hidden directory for circle
           command: mv .test-results test-results
