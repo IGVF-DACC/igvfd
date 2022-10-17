@@ -28,9 +28,16 @@ RESERVED_KEYS = NOT_FILTERS = OPTIONAL_PARAMS + FREE_TEXT_QUERIES
 
 DEFAULT_ITEM_TYPES = [
     'Award',
-    'Biosample',
+    'PrimaryCell',
+    'CellLine',
+    'Tissue',
+    'DifferentiatedTissue',
+    'DifferentiatedCell',
+    'TechnicalSample',
+    'WholeOrganism',
     'Document',
-    'Donor',
+    'HumanDonor',
+    'RodentDonor',
     'Page',
     'Publication',
     'Gene',
@@ -39,11 +46,18 @@ DEFAULT_ITEM_TYPES = [
 
 TOP_HITS_ITEM_TYPES = [
     'Award',
-    'Biosample',
+    'PrimaryCell',
+    'CellLine',
+    'Tissue',
+    'DifferentiatedTissue',
+    'DifferentiatedCell',
+    'TechnicalSample',
+    'WholeOrganism',
     'Document',
     'HumanDonor',
     'RodentDonor',
     'Page',
     'Publication',
     'Gene',
+    'Lab',
 ]
