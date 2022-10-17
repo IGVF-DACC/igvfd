@@ -54,6 +54,7 @@ class AnalysisSet(FileSet):
         if input_file_set is not None:
             for fileset in input_file_set:
                 file_set_object = request.embed(fileset, '@@object')
-                if file_set_object.get('assay_title'):
+                if file_set_object.get('assay_title') and \
+                        'MeasurementSet' in file_set_object.get('@type'):
                     assay_title.append(file_set_object.get('assay_title'))
             return list(set(assay_title))
