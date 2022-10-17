@@ -5,25 +5,24 @@ pytestmark = [pytest.mark.indexing]
 
 
 def test_search_views_search_view_with_filters(workbook, testapp):
-    print(testapp.get('/access-keys/?datastore=database').json)
     r = testapp.get(
-        '/search/?type=User&lab.name=j-michael-cherry&status=released'
+        '/search/?type=User&lab=/labs/j-michael-cherry/'
     )
-    print(r.json)
     assert r.json['title'] == 'Search'
-    assert len(r.json['@graph']) == 1
-    assert r.json['@graph'][0]['accession'] == 'ENCSR000ADI'
-    assert r.json['@graph'][0]['status'] == 'released'
-    assert 'Experiment' in r.json['@graph'][0]['@type']
-    assert len(r.json['facets']) >= 30
-    assert r.json['@id'] == '/search/?type=Experiment&award.@id=/awards/ENCODE2-Mouse/&accession=ENCSR000ADI&status=released'
+    assert len(r.json['@graph']) >= 22
+    r = testapp.get(
+        '/search/?type=User&lab=/labs/j-michael-cherry/&title=Ben%20Hitz'
+    )
+    assert r.json['@graph'][0]['title'] == 'Ben Hitz'
+    assert 'User' in r.json['@graph'][0]['@type']
+    assert r.json['@id'] == '/search/?type=User&lab=/labs/j-michael-cherry/&title=Ben%20Hitz'
     assert r.json['@context'] == '/terms/'
     assert r.json['@type'] == ['Search']
     assert r.json['total'] == 1
     assert r.json['notification'] == 'Success'
-    assert len(r.json['filters']) == 4
+    assert len(r.json['filters']) >= 2
     assert r.status_code == 200
-    assert r.json['clear_filters'] == '/search/?type=Experiment'
+    assert r.json['clear_filters'] == '/search/?type=User'
     assert 'debug' not in r.json
     assert 'columns' in r.json
     assert 'sort' in r.json
@@ -31,34 +30,34 @@ def test_search_views_search_view_with_filters(workbook, testapp):
 
 def test_search_views_search_view_with_limit(workbook, testapp):
     r = testapp.get(
-        '/search/?type=Experiment&limit=5'
+        '/search/?type=User&limit=5'
     )
     assert len(r.json['@graph']) == 5
     assert 'all' in r.json
     r = testapp.get(
-        '/search/?type=Experiment&limit=26'
+        '/search/?type=User&limit=26'
     )
     assert len(r.json['@graph']) == 26
     assert 'all' in r.json
     r = testapp.get(
-        '/search/?type=Experiment&limit=all'
+        '/search/?type=User&limit=all'
     )
-    assert len(r.json['@graph']) >= 48
+    assert len(r.json['@graph']) >= 100
     assert 'all' not in r.json
     r = testapp.get(
-        '/search/?type=Experiment&limit=48'
+        '/search/?type=User&limit=48'
     )
     assert len(r.json['@graph']) == 48
     r = testapp.get(
-        '/search/?type=Experiment&limit=100000'
+        '/search/?type=User&limit=100000'
     )
-    assert len(r.json['@graph']) >= 48
+    assert len(r.json['@graph']) >= 100
     assert 'all' not in r.json
 
 
 def test_search_views_search_view_with_limit_zero(workbook, testapp):
     r = testapp.get(
-        '/search/?type=Experiment&limit=0'
+        '/search/?type=User&limit=0'
     )
     assert len(r.json['@graph']) == 0
     assert 'all' in r.json
@@ -77,7 +76,7 @@ def test_search_views_search_view_values(workbook, testapp):
 
 def test_search_views_search_view_values_no_results(workbook, testapp):
     r = testapp.get(
-        '/search/?status=current&type=Experiment',
+        '/search/?status=current&type=User',
         status=404
     )
     assert r.json['notification'] == 'No results found'
@@ -85,7 +84,7 @@ def test_search_views_search_view_values_no_results(workbook, testapp):
 
 def test_search_views_search_view_values_malformed_query_string(workbook, testapp):
     r = testapp.get(
-        '/search/?status=current&type=Experiment&status=&format=json',
+        '/search/?status=current&type=User&status=&format=json',
         status=404
     )
     assert r.json['notification'] == 'No results found'
@@ -109,7 +108,7 @@ def test_search_views_search_view_values_item_wildcard(workbook, testapp):
         '/search/?type=*',
     )
     assert r.json['notification'] == 'Success'
-    assert r.json['total'] >= 795
+    assert r.json['total'] >= 300
 
 
 def test_search_views_search_view_values_invalid_search_term(workbook, testapp):
@@ -129,27 +128,27 @@ def test_search_views_search_view_values_invalid_advanced_query(workbook, testap
 
 def test_search_views_search_view_embedded_frame(workbook, testapp):
     r = testapp.get(
-        '/search/?type=Experiment&frame=embedded'
+        '/search/?type=User&frame=embedded'
     )
-    assert r.json['@graph'][0]['lab']['name']
+    assert r.json['@graph'][0]['submits_for']
 
 
 def test_search_views_search_view_object_frame(workbook, testapp):
     r = testapp.get(
-        '/search/?type=Experiment&frame=object'
+        '/search/?type=User&frame=object'
     )
     res = r.json['@graph'][0]
     assert all(
         [
             x in res
-            for x in ['accession', '@type', '@id', 'status']
+            for x in ['uuid', '@type', '@id', 'title']
         ]
     )
 
 
 def test_search_views_search_view_debug_query(workbook, testapp):
     r = testapp.get(
-        '/search/?type=Experiment&debug=true'
+        '/search/?type=User&debug=true'
     )
     assert 'debug' in r.json
     assert 'post_filter' in r.json['debug']['raw_query']
@@ -172,22 +171,22 @@ def test_search_views_search_generator(workbook, dummy_request, threadlocals):
     dummy_request.environ['QUERY_STRING'] = (
         'type=*&limit=all'
     )
-    from encoded.search_views import search_generator
+    from igvfd.search_views import search_generator
     r = search_generator(dummy_request)
     assert '@graph' in r
     assert len(r.keys()) == 1
     assert isinstance(r['@graph'], GeneratorType)
     hits = [dict(h) for h in r['@graph']]
-    assert len(hits) > 800
+    assert len(hits) >= 310
     assert '@id' in hits[0]
 
 
 def test_search_views_search_generator_field_specified(workbook, dummy_request, threadlocals):
     from types import GeneratorType
     dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&field=@id&limit=5'
+        'type=User&field=@id&limit=5'
     )
-    from encoded.search_views import search_generator
+    from igvfd.search_views import search_generator
     r = search_generator(dummy_request)
     assert '@graph' in r
     assert len(r.keys()) == 1
@@ -200,93 +199,64 @@ def test_search_views_search_generator_field_specified(workbook, dummy_request, 
 
 def test_search_views_report_view(workbook, testapp):
     r = testapp.get(
-        '/report/?type=Experiment&award.@id=/awards/ENCODE2-Mouse/&accession=ENCSR000ADI&status=released'
+        '/report/?type=Gene&symbol=BAP1&symbol=CXXC1'
     )
     assert r.json['title'] == 'Report'
-    assert len(r.json['@graph']) == 1
-    assert r.json['@graph'][0]['accession'] == 'ENCSR000ADI'
-    assert r.json['@graph'][0]['status'] == 'released'
-    assert 'Experiment' in r.json['@graph'][0]['@type']
-    assert len(r.json['facets']) >= 30
-    assert r.json['@id'] == '/report/?type=Experiment&award.@id=/awards/ENCODE2-Mouse/&accession=ENCSR000ADI&status=released'
+    assert len(r.json['@graph']) == 2
+    assert 'Gene' in r.json['@graph'][0]['@type']
+    assert len(r.json['facets']) >= 2
+    assert r.json['@id'] == '/report/?type=Gene&symbol=BAP1&symbol=CXXC1'
     assert r.json['@context'] == '/terms/'
     assert r.json['@type'] == ['Report']
-    assert r.json['total'] == 1
+    assert r.json['total'] == 2
     assert r.json['notification'] == 'Success'
-    assert len(r.json['filters']) == 4
+    assert len(r.json['filters']) == 3
     assert r.status_code == 200
-    assert r.json['clear_filters'] == '/report/?type=Experiment'
+    assert r.json['clear_filters'] == '/report/?type=Gene'
     assert 'debug' not in r.json
     assert 'columns' in r.json
-    assert len(r.json['columns']) > 10
-    assert 'non_sortable' in r.json
-    assert 'sort' in r.json
-
-
-def test_search_views_report_view_custom_columns(workbook, testapp):
-    r = testapp.get(
-        '/report/?type=Experiment&award.@id=/awards/ENCODE2-Mouse/'
-        '&accession=ENCSR000ADI&status=released&config=custom-columns'
-    )
-    assert r.json['title'] == 'Report'
-    assert len(r.json['@graph']) == 1
-    assert r.json['@graph'][0]['status'] == 'released'
-    assert 'Experiment' in r.json['@graph'][0]['@type']
-    assert len(r.json['facets']) >= 30
-    assert r.json['@id'] == (
-        '/report/?type=Experiment&award.@id=/awards/ENCODE2-Mouse/'
-        '&accession=ENCSR000ADI&status=released'
-        '&config=custom-columns'
-    )
-    assert r.json['@context'] == '/terms/'
-    assert r.json['@type'] == ['Report']
-    assert r.json['total'] == 1
-    assert r.json['notification'] == 'Success'
-    assert len(r.json['filters']) == 4
-    assert r.status_code == 200
-    assert r.json['clear_filters'] == '/report/?type=Experiment'
-    assert 'debug' not in r.json
-    assert 'columns' in r.json
-    assert len(r.json['columns']) == 6
+    assert len(r.json['columns']) >= 5
     assert 'non_sortable' in r.json
     assert 'sort' in r.json
 
 
 def test_search_views_report_response_with_search_term_type_only_clear_filters(workbook, testapp):
-    r = testapp.get('/report/?type=File&searchTerm=bam')
+    r = testapp.get(
+        '/report/?searchTerm=cherry&type=Lab'
+    )
     assert 'clear_filters' in r.json
-    assert r.json['clear_filters'] == '/report/?type=File'
+    assert r.json['clear_filters'] == '/report/?type=Lab'
 
 
 def test_search_views_report_view_with_limit(workbook, testapp):
     r = testapp.get(
-        '/report/?type=Experiment&limit=5'
+        '/report/?type=User&limit=5'
     )
     assert len(r.json['@graph']) == 5
     assert 'all' in r.json
     r = testapp.get(
-        '/report/?type=Experiment&limit=26'
+        '/report/?type=User&limit=26'
     )
     assert len(r.json['@graph']) == 26
     assert 'all' in r.json
     r = testapp.get(
-        '/report/?type=Experiment&limit=all'
+        '/report/?type=User&limit=all'
     )
     assert len(r.json['@graph']) >= 48
     assert 'all' not in r.json
     r = testapp.get(
-        '/report/?type=Experiment&limit=48'
+        '/report/?type=User&limit=48'
     )
     assert len(r.json['@graph']) == 48
     r = testapp.get(
-        '/report/?type=Experiment&limit=100000'
+        '/report/?type=User&limit=100000'
     )
     assert len(r.json['@graph']) >= 48
 
 
 def test_search_views_report_view_with_limit_zero(workbook, testapp):
     r = testapp.get(
-        '/report/?type=Experiment&limit=0'
+        '/report/?type=User&limit=0'
     )
     assert len(r.json['@graph']) == 0
     assert 'all' in r.json
@@ -295,7 +265,7 @@ def test_search_views_report_view_with_limit_zero(workbook, testapp):
 
 def test_search_views_report_view_with_limit_zero_from_zero(workbook, testapp):
     r = testapp.get(
-        '/report/?type=Experiment&limit=0&from=0'
+        '/report/?type=User&limit=0&from=0'
     )
     assert len(r.json['@graph']) == 0
     assert 'all' in r.json
@@ -331,33 +301,9 @@ def test_search_views_report_view_values_no_type(workbook, testapp):
     assert r.json['description'] == 'Report view requires specifying a single type: []'
 
 
-def test_search_views_summary_response(workbook, testapp):
-    r = testapp.get('/summary/?type=Experiment')
-    assert 'aggregations' not in r.json
-    assert 'total' in r.json
-    assert r.json['title'] == 'Summary'
-    assert r.json['@type'] == ['Summary']
-    assert r.json['clear_filters'] == '/summary/?type=Experiment'
-    assert r.json['filters'] == [{'term': 'Experiment', 'remove': '/summary/', 'field': 'type'}]
-    assert r.json['@id'] == '/summary/?type=Experiment'
-    assert r.json['total'] >= 22
-    assert r.json['notification'] == 'Success'
-    assert r.json['title'] == 'Summary'
-    assert 'facets' in r.json
-    assert r.json['@context'] == '/terms/'
-    assert 'matrix' in r.json
-    assert r.json['matrix']['x']['group_by'] == 'status'
-    assert r.json['matrix']['y']['group_by'] == ['replication_type']
-    assert 'buckets' in r.json['matrix']['y']['replication_type']
-    assert 'key' in r.json['matrix']['y']['replication_type']['buckets'][0]
-    assert 'status' in r.json['matrix']['y']['replication_type']['buckets'][0]
-    assert 'search_base' in r.json
-    assert r.json['search_base'] == '/search/?type=Experiment'
-
-
 def test_search_views_collection_listing_es_view(workbook, testapp):
     r = testapp.get(
-        '/experiments/'
+        '/users/'
     )
     assert '@graph' in r.json
     assert '@id' in r.json
@@ -366,40 +312,40 @@ def test_search_views_collection_listing_es_view(workbook, testapp):
     assert 'all' in r.json
     assert 'columns' in r.json
     assert 'clear_filters' in r.json
-    assert r.json['clear_filters'] == '/search/?type=Experiment'
-    assert r.json['@type'] == ['ExperimentCollection', 'Collection']
+    assert r.json['clear_filters'] == '/search/?type=User'
+    assert r.json['@type'] == ['UserCollection', 'Collection']
     assert r.json['@context'] == '/terms/'
 
 
 def test_search_views_collection_listing_es_view_item(workbook, testapp):
     r = testapp.get(
-        '/Experiment'
+        '/User',
     )
     r = r.follow()
     assert '@graph' in r.json
     assert '@id' in r.json
     assert 'facets' in r.json
     assert 'filters' in r.json
-    assert r.json['@type'] == ['ExperimentCollection', 'Collection']
+    assert r.json['@type'] == ['UserCollection', 'Collection']
     assert r.json['@context'] == '/terms/'
 
 
 def test_search_views_collection_listing_db_view(workbook, testapp):
     r = testapp.get(
-        '/experiments/?datastore=database'
+        '/users/?datastore=database'
     )
     assert '@graph' in r.json
     assert '@id' in r.json
     assert 'facets' not in r.json
     assert 'filters' not in r.json
-    assert r.json['@type'] == ['ExperimentCollection', 'Collection']
+    assert r.json['@type'] == ['UserCollection', 'Collection']
     assert r.json['@context'] == '/terms/'
-    assert r.json['description'] == 'Listing of Experiments'
+    assert r.json['description'] == 'Listing of current users'
 
 
 def test_search_views_top_hits_raw_view(workbook, testapp):
     r = testapp.get(
-        '/top-hits-raw/?searchTerm=a549&field=@id'
+        '/top-hits-raw/?searchTerm=CXX&field=@id'
     )
     assert 'aggregations' in r.json
 
@@ -415,8 +361,7 @@ def test_search_views_search_config_registry(workbook, testapp):
     r = testapp.get(
         '/search-config-registry/'
     )
-    assert len(r.json) > 300
-    assert 'Experiment' in r.json
-    assert 'ExperimentFacets' in r.json
-    assert 'ExperimentColumns' in r.json
-    assert 'ExperimentFacetGroups' in r.json
+    assert len(r.json) > 40
+    assert 'User' in r.json
+    assert 'AwardFacets' in r.json
+    assert 'AwardColumns' in r.json

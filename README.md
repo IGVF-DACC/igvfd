@@ -31,7 +31,7 @@ $ docker compose -f docker-compose.test.yml down -v
 
 Run all indexer tests automatically and clean up:
 ```bash
-$ docker compose -f docker-compose.test-indexer.yml up --exit-code-from pyramid
+$ docker compose -f docker-compose.test-indexer.yml up --exit-code-from indexer-tests
 ....
 $ docker compose -f docker-compose.test-indexer.yml down -v
 ```
