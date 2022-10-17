@@ -22,11 +22,18 @@ $ docker compose down -v
 ```
 
 ## Test with Docker Compose
-Run all tests automatically and clean up:
+Run all unit tests automatically and clean up:
 ```bash
 $ docker compose -f docker-compose.test.yml up --exit-code-from pyramid
 ....
 $ docker compose -f docker-compose.test.yml down -v
+```
+
+Run all indexer tests automatically and clean up:
+```bash
+$ docker compose -f docker-compose.test-indexer.yml up --exit-code-from pyramid
+....
+$ docker compose -f docker-compose.test-indexer.yml down -v
 ```
 
 Or run tests interactively:
