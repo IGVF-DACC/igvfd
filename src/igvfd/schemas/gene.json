@@ -183,5 +183,26 @@
             "permission": "import_items"
         }
     },
+    "columns": {
+        "geneid": {
+            "title": "NCBI Entrez GeneID"
+        },
+        "symbol": {
+            "title": "Gene symbol"
+        },
+        "synonyms": {
+            "title": "Synonyms"
+        },
+        "dbxrefs": {
+            "title": "External resources"
+        }
+    },
+    "boost_values": {
+        "@type": 1.0,
+        "geneid": 1.0,
+        "symbol": 1.0,
+        "synonyms": 1.0,
+        "dbxrefs": 1.0
+    },
     "changelog": "/profiles/changelogs/gene.md"
 }

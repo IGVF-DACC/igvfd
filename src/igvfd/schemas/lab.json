@@ -65,5 +65,15 @@
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
         }
     },
+    "facets": {
+        "status": {
+            "title": "Status"
+        }
+    },
+    "boost_values": {
+        "@type": 1.0,
+        "pi": 1.0,
+        "name": 1.0
+    },
     "changelog": "/profiles/changelogs/lab.md"
 }

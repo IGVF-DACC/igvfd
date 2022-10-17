@@ -100,5 +100,18 @@
             }
         }
     },
+    "columns": {
+        "title": {
+            "title": "Title"
+        },
+        "status": {
+            "title": "Status"
+        }
+    },
+    "boost_values": {
+        "@type": 1.0,
+        "name": 1.0,
+        "title": 1.0
+    },
     "changelog": "/profiles/changelogs/page.md"
 }
