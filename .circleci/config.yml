@@ -72,7 +72,7 @@ jobs:
           name: Build Docker images
           command: |
               docker-compose -f docker-compose.test.yml build
-              docker-compose -f docker-compose.test-indexer.yml
+              docker-compose -f docker-compose.test-indexer.yml build
       - run:
           name: Set folder permissions for mounted volume
           command: |
