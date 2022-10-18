@@ -2,7 +2,6 @@
 
 ### Minor changes since schema version 2
 
-* Add `'notSubmittable': True` to `name`, `synonyms` and `ancestors` calculated properties.
 * Add `description`.
 
 ### Schema version 2

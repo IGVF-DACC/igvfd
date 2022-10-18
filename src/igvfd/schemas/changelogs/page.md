@@ -2,7 +2,6 @@
 
 ### Schema version 3
 
-* Add `'notSubmittable': True` to `canonical_uri` calculated property.
 * Remove `news`, `news_keywords`, and `news_excerpt` properties.
 * Remove the `rows` property from the `layout` dictionary.
 * Remove any `layout.block` elements that don't have an `@type` of `richtextblock`.
