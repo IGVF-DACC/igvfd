@@ -52,7 +52,7 @@ class SequenceData(File):
         'description': 'Listing of reference data files',
     })
 class ReferenceData(File):
-    item_type = 'sequence_data'
+    item_type = 'reference_data'
     schema = load_schema('igvfd:schemas/reference_data.json')
 
     def unique_keys(self, properties):
@@ -72,7 +72,7 @@ class ReferenceData(File):
         'description': 'Listing of imaging data files',
     })
 class ImagingData(File):
-    item_type = 'sequence_data'
+    item_type = 'imaging_data'
     schema = load_schema('igvfd:schemas/imaging_data.json')
 
     def unique_keys(self, properties):
