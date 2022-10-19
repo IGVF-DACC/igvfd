@@ -1,0 +1,20 @@
+[
+    {
+        "uuid": "9203c006-87de-ea86-6ac8-25825ebf4994",
+        "accession": "IGVFFF000KAS",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:image_tif_file"
+        ],
+        "status": "released",
+        "md5sum": "e5c0ffbd8bcd82ec3f01887601778db3",
+        "file_format": "tif",
+        "content_type": "image",
+        "submitted_file_name": "/Users/igvf/igvf_files/image_01.tif",
+        "file_size": 11252400,
+        "upload_status": "pending",
+        "resolution": 100,
+        "field_number": 10
+    }
+]

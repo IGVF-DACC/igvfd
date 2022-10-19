@@ -1,0 +1,94 @@
+{
+    "title": "Imaging data",
+    "$id": "/profiles/imaging_data.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "required": [
+        "award",
+        "lab",
+        "md5sum",
+        "file_format",
+        "content_type"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases",
+        "md5sum"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "file.json#/dependentSchemas"
+        ]
+    },
+    "type": "object",
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "content_type": {
+            "comment": "Content Type describes the content of the file. Genome reference are composite nucleic acid sequences assembled from the sequence of several different individual organisms representing the species. Guide RNA sequences are sequences of RNA molecules used in assays involving CRISPR editing. Reads are individual sequences of bases corresponding to DNA or RNA fragments in a FASTQ text file format. Sequence barcodes are lists of barcodes found in the sequencing library. Spike-ins are nucleic acid fragments of known sequence and quantity used for calibration in high-throughput sequencing. Subreads are sequences of bases produced using PacBio platforms. Transcriptome references are transcriptomic sequences of an idealized representative individual in a species. Vector sequences are sequences tested in MPRAs.",
+            "enum": [
+                "image"
+            ]
+        },
+        "file_format": {
+            "enum": [
+                "tif"
+            ]
+        },
+        "platform": {
+            "title": "Platform",
+            "description": "The microscopy platform used to produce the imaging data.",
+            "type": "string"
+        },
+        "resolution": {
+            "title": "Resolution",
+            "description": "The resolution of the microscopy platform.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "field_number": {
+            "title": "Field Number",
+            "description": "The field of view of the microscopy platform.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "dimensions": {
+            "title": "Dimensions",
+            "description": "Dimensions of the image file.",
+            "type": "object",
+            "properties": {
+                "width": {
+                    "title": "Image Width",
+                    "type": "integer",
+                    "minimum": 0
+                },
+                "height": {
+                    "title": "Image Height",
+                    "type": "integer",
+                    "minimum": 0
+                }
+            }
+        }
+    },
+    "changelog": "/profiles/changelogs/imaging_data.md"
+}

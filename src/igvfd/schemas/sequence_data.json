@@ -11,6 +11,8 @@
     ],
     "identifyingProperties": [
         "uuid",
+        "accession",
+        "alternate_accessions",
         "aliases",
         "md5sum"
     ],
@@ -35,7 +37,47 @@
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
-        ]
+        ],
+        "paired_end": {
+            "comment": "Files with paired-end value 2 require a paired_with value and files with paired_end specified require run_type to be specified as paired-ended.",
+            "oneOf": [
+                {
+                    "required": [
+                        "paired_with",
+                        "run_type"
+                    ],
+                    "properties": {
+                        "paired_end": {
+                            "enum": [
+                                "2"
+                            ]
+                        },
+                        "run_type": {
+                            "enum": [
+                                "paired-ended"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "run_type"
+                    ],
+                    "properties": {
+                        "paired_end": {
+                            "enum": [
+                                "1"
+                            ]
+                        },
+                        "run_type": {
+                            "enum": [
+                                "paired-ended"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
     },
     "type": "object",
     "properties": {
@@ -43,32 +85,58 @@
             "default": "1"
         },
         "content_type": {
-            "comment": "Content Type describes the content of the file. Genome reference are composite nucleic acid sequences assembled from the sequence of several different individual organisms representing the species. Guide RNA sequences are sequences of RNA molecules used in assays involving CRISPR editing. Reads are individual sequences of bases corresponding to DNA or RNA fragments in a FASTQ text file format. Sequence barcodes are lists of barcodes found in the sequencing library. Spike-ins are nucleic acid fragments of known sequence and quantity used for calibration in high-throughput sequencing. Subreads are sequences of bases produced using PacBio platforms. Transcriptome references are transcriptomic sequences of an idealized representative individual in a species. Vector sequences are sequences tested in MPRAs.",
+            "comment": "Content Type describes the content of the file. Reads are individual sequences of bases corresponding to DNA or RNA fragments in a FASTQ text file format. Subreads are sequences of bases produced using PacBio platforms.",
             "enum": [
-                "genome reference",
-                "guide RNA sequences",
                 "reads",
-                "sequence barcodes",
-                "spike-ins",
-                "subreads",
-                "transcriptome reference",
-                "vector sequences"
+                "subreads"
             ]
         },
         "file_format": {
             "enum": [
                 "bam",
-                "fasta",
-                "fastq",
-                "gtf",
-                "tar",
-                "txt"
+                "fastq"
             ]
         },
         "dbxrefs": {
             "items": {
                 "pattern": "^(SRA:(SRR|SRX)\\d+)$"
             }
+        },
+        "platform": {
+            "title": "Platform",
+            "description": "The sequencing platform used to produce the sequence data.",
+            "type": "string"
+        },
+        "run_type": {
+            "title": "Run Type",
+            "description": "Indicates if file is part of a single or paired end sequencing run.",
+            "type": "string",
+            "enum": [
+                "single-ended",
+                "paired-ended"
+            ]
+        },
+        "paired_end": {
+            "title": "Paired End",
+            "description": "Which read of the pair the file represents (in case of paired end sequencing run).",
+            "type": "string",
+            "enum": [
+                "1",
+                "2"
+            ]
+        },
+        "paired_with": {
+            "title": "Paired With",
+            "description": "The paired end fastq that corresponds with this file.",
+            "comment": "This is required for files with paired_end 2 and is calculated for files with paired_end 1.",
+            "type": "string",
+            "linkTo": "SequenceData"
+        },
+        "read_length": {
+            "title": "Read Length",
+            "description": "For high-throughput sequencing, the number of contiguous nucleotides determined by sequencing.",
+            "type": "integer",
+            "minimum": 0
         }
     },
     "changelog": "/profiles/changelogs/sequence_data.md"

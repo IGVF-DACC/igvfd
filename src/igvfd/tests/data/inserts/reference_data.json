@@ -1,0 +1,40 @@
+[
+    {
+        "uuid": "2eac4277-30dc-802c-0fe1-9292f8bf92f8",
+        "accession": "IGVFFF000GNR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:fastq_genome_reference_file"
+        ],
+        "status": "released",
+        "md5sum": "7f1987dea86105dd9d2582c0a91c3856",
+        "file_format": "fasta",
+        "content_type": "genome reference",
+        "submitted_file_name": "/Users/igvf/igvf_files/genome_reference.fasta",
+        "file_size": 5428031,
+        "upload_status": "file not found",
+        "assembly": "GRCh38",
+        "source": "https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000001405.26/"
+    },
+    {
+        "uuid": "9d214277-99ac-802c-9c31-2cc75ebf92f8",
+        "accession": "IGVFFF000SQB",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:txt_sequence_barcodes_file"
+        ],
+        "status": "released",
+        "md5sum": "0fe14d38d30dc30f393bf163a9772eac",
+        "file_format": "txt",
+        "content_type": "sequence barcodes",
+        "file_format_specifications": [
+            "j-michael-cherry:file_format_specification_insert"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/sequence_barcodes.txt",
+        "file_size": 9640,
+        "upload_status": "invalidated",
+        "validation_error_detail": "Explanation of why this file did not pass validation."
+    }
+]
