@@ -2,6 +2,7 @@
     "title": "Reference data",
     "$id": "/profiles/reference_data.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submission of a file containing reference data.",
     "required": [
         "award",
         "lab",
