@@ -85,3 +85,15 @@ class CuratedSet(FileSet):
 class MeasurementSet(FileSet):
     item_type = 'measurement_set'
     schema = load_schema('igvfd:schemas/measurement_set.json')
+
+
+@collection(
+    name='construct-libraries',
+    unique_key='accession',
+    properties={
+        'title': 'Construct Library',
+        'description': 'Listing of construct libraries',
+    })
+class ConstructLibrary(FileSet):
+    item_type = 'construct_library'
+    schema = load_schema('igvfd:schemas/construct_library.json')

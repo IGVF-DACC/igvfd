@@ -1,0 +1,27 @@
+[
+    {
+        "aliases": [
+            "igvf:basic_construct_library"
+        ],
+        "submitter_comment": "Comment for a construct library.",
+        "description": "A basic construct library.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "ff3f9309-d2a3-4c13-a9b2-e34be9c9f7a8",
+        "scope": "genes",
+        "origins": [
+            "transcription start sites"
+        ],
+        "targeted_genes": [
+            "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
+        ],
+        "plasmid_map": "igvf:plasmid_map_insert",
+        "product_id": "addgene:81225",
+        "guide_library_details": {
+            "guide_type": "sgRNA",
+            "tiling_modality": "full tiling",
+            "average_guide_coverage": 10
+        },
+        "status": "released"
+    }
+]

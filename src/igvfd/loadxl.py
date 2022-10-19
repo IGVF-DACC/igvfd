@@ -36,6 +36,7 @@ ORDER = [
     'curated_set',
     'software',
     'software_version',
+    'construct_library',
     'image',
     'page',
     'publication',
