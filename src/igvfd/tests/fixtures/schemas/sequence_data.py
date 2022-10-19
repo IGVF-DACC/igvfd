@@ -18,7 +18,7 @@ def sequence_data_paired_end_1(testapp, lab, award):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'md5sum': '515c8a6af303ea86bc59c629ff198277',
+        'md5sum': 'd9208a6af38f0886bc59c629ff19e5c0',
         'file_format': 'fastq',
         'content_type': 'reads',
         'run_type': 'paired-ended',
