@@ -29,7 +29,8 @@
             "4fd4cb56-83c9-493c-a4e8-96f8b8379d43",
             "f374f95e-c4bd-4985-8228-f44a837d9513",
             "64bce651-ee7f-470b-ae96-b3c2412f789e"
-        ]
+        ],
+        "contact_pi": "c99b68dc-f0dc-4308-9961-90ebcbe24e88"
     },
     {
         "name": "1UM1HG012053-01",
@@ -41,7 +42,8 @@
         "pi": [
             "bb7f009f-8541-4066-ab7e-acbcf587e9f5",
             "84b1815e-2d39-4396-91ff-2ae3043d06db"
-        ]
+        ],
+        "contact_pi": "7622ee95-b60d-4fd4-9910-3405c7cceb6f"
     },
     {
         "name": "1UM1HG011996-01",
@@ -53,7 +55,8 @@
         "pi": [
             "430014d5-997d-435a-bfd6-1593cf23912a",
             "a3df1b67-6a26-4639-8ed0-04541b61b4ef"
-        ]
+        ],
+        "contact_pi": "430014d5-997d-435a-bfd6-1593cf23912a"
     },
     {
         "name": "1UM1HG012010-01",
@@ -67,7 +70,8 @@
             "edbe4211-3c87-4018-b9ee-1524ec9daf06",
             "ed779c11-fe9f-4325-9d5f-db4ffa66610a",
             "3c07a981-683e-4f8c-88f0-983da9a3c645"
-        ]
+        ],
+        "contact_pi": "bca44661-1dc0-4b47-8736-49471174974e"
     },
     {
         "name": "1UM1HG011966-01",
@@ -80,7 +84,8 @@
             "bf625134-f45e-4d8d-994f-b67d17354757",
             "f82b0978-c015-47a7-aa8d-c94589eab825",
             "6965dbce-ee4b-4ba0-871c-e82d523e58bd"
-        ]
+        ],
+        "contact_pi": "bf625134-f45e-4d8d-994f-b67d17354757"
     },
     {
         "name": "1UM1HG011969-01",
@@ -92,7 +97,8 @@
         "pi": [
             "04e6e85d-3737-454e-8a3b-6f8cb2317f00",
             "98fe0dfd-0842-4c04-8f4a-d2b6dee05ee0"
-        ]
+        ],
+        "contact_pi": "04e6e85d-3737-454e-8a3b-6f8cb2317f00"
     },
     {
         "name": "1UM1HG011989-01",
@@ -107,7 +113,8 @@
             "00b5591d-1e3d-41bf-be82-13a218283ada",
             "569575e3-67d6-4573-9301-c2243354bda2",
             "ad7e8437-3dff-46af-ac35-d7ccb1f58aee"
-        ]
+        ],
+        "contact_pi": "5924d737-62eb-490d-ae70-81348c5db9e6"
     },
     {
         "name": "1UM1HG012003-01",
@@ -120,7 +127,8 @@
             "7e51864b-2e2b-40cf-9abc-5cc2dc98f35d",
             "3e3409dd-e4a8-4b7c-bf31-22d2b089ae1f",
             "3a0ff5da-c893-4e36-9d0e-d97940a7e13d"
-        ]
+        ],
+        "contact_pi": "7e51864b-2e2b-40cf-9abc-5cc2dc98f35d"
     },
     {
         "name": "1U01HG012051-01",
@@ -133,7 +141,8 @@
             "8dd67766-ffa7-47ff-a97d-ca74985d781f",
             "5325998a-e2f9-4d8e-ae95-8661b806a9a7",
             "6f7389c0-8365-48f5-bacb-40000df2d66f"
-        ]
+        ],
+        "contact_pi": "8dd67766-ffa7-47ff-a97d-ca74985d781f"
     },
     {
         "name": "1U01HG012103-01",
@@ -145,7 +154,8 @@
         "pi": [
             "fa9feeb4-28ba-4356-8c24-50f4e6562029",
             "53072249-f58f-4c06-8bf3-924295f53029"
-        ]
+        ],
+        "contact_pi": "fa9feeb4-28ba-4356-8c24-50f4e6562029"
     },
     {
         "name": "1U01HG012079-01",
@@ -160,7 +170,8 @@
             "d996a4b0-5c77-4f67-9569-979eea823d51",
             "d0b2a849-d583-4ee1-8d26-1e361ee4519b",
             "fa43a796-163c-488a-aa8e-5472a458232c"
-        ]
+        ],
+        "contact_pi": "94f562b8-77f7-4061-b89b-3710686e51cc"
     },
     {
         "name": "HG012059",
@@ -174,7 +185,8 @@
             "6814ebcb-a591-480d-ae69-0bf5ef2a2e93",
             "3ac39feb-d609-4f9f-ae15-250a7f165900",
             "7d37a9ba-4a13-4b7e-a34d-d3ac13f62442"
-        ]
+        ],
+        "contact_pi": "7d37a9ba-4a13-4b7e-a34d-d3ac13f62442"
     },
     {
         "name": "1U01HG012041-01",
@@ -185,7 +197,8 @@
         "component": "networks",
         "pi": [
             "3674f90a-bdc2-4bde-bbee-a8b0424cf900"
-        ]
+        ],
+        "contact_pi": "3674f90a-bdc2-4bde-bbee-a8b0424cf900"
     },
     {
         "name": "1U01HG012047-01",
@@ -204,7 +217,8 @@
         "component": "mapping",
         "pi": [
             "e4cadd5e-0e61-4a99-abc8-84734232e271"
-        ]
+        ],
+        "contact_pi": "e4cadd5e-0e61-4a99-abc8-84734232e271"
     },
     {
         "name": "HG011986",
@@ -215,7 +229,8 @@
         "component": "mapping",
         "pi": [
             "7dcb9224-2e1d-4000-bea1-1a7480d59f57"
-        ]
+        ],
+        "contact_pi": "7dcb9224-2e1d-4000-bea1-1a7480d59f57"
     },
     {
         "name": "1UM1HG012076-01",
@@ -226,7 +241,8 @@
         "component": "mapping",
         "pi": [
             "35e81201-434d-4e37-a642-6a780c786f35"
-        ]
+        ],
+        "contact_pi": "35e81201-434d-4e37-a642-6a780c786f35"
     },
     {
         "name": "1U01HG011967-01",
@@ -237,7 +253,8 @@
         "component": "predictive modeling",
         "pi": [
             "b4e2c625-bb5c-43fe-a055-7d9dc627a85e"
-        ]
+        ],
+        "contact_pi": "b4e2c625-bb5c-43fe-a055-7d9dc627a85e"
     },
     {
         "name": "1U01HG011952-01",
@@ -248,7 +265,8 @@
         "component": "predictive modeling",
         "pi": [
             "5f7f0814-d4c0-4e09-84c7-9af0cb916fb3"
-        ]
+        ],
+        "contact_pi": "5f7f0814-d4c0-4e09-84c7-9af0cb916fb3"
     },
     {
         "name": "1U01HG012039-01",
@@ -259,7 +277,8 @@
         "component": "predictive modeling",
         "pi": [
             "62a33315-46da-4a57-b384-a9b3b950c8ee"
-        ]
+        ],
+        "contact_pi": "62a33315-46da-4a57-b384-a9b3b950c8ee"
     },
     {
         "name": "1U01HG012069-01",
@@ -278,7 +297,8 @@
         "component": "predictive modeling",
         "pi": [
             "50040ef2-f610-4bf9-9659-61367f1ed1c6"
-        ]
+        ],
+        "contact_pi": "50040ef2-f610-4bf9-9659-61367f1ed1c6"
     },
     {
         "name": "HG012009",
@@ -297,6 +317,7 @@
         "component": "predictive modeling",
         "pi": [
             "b45be2ff-771e-4cbb-9c6b-74ece357ca7b"
-        ]
+        ],
+        "contact_pi": "b45be2ff-771e-4cbb-9c6b-74ece357ca7b"
     }
 ]

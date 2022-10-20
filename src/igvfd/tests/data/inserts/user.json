@@ -896,7 +896,7 @@
     {
         "email": "ansuman@email_domain.com",
         "first_name": "Ansuman",
-        "last_name": "Sapathy",
+        "last_name": "Satpathy",
         "lab": "/labs/ansuman-sapathy/",
         "viewing_groups": [
             "IGVF"
@@ -906,7 +906,7 @@
             "verified"
         ],
         "submits_for": [
-            "/labs/ansuman-sapathy/"
+            "/labs/ansuman-satpathy/"
         ],
         "status": "current",
         "uuid": "35e81201-434d-4e37-a642-6a780c786f35"
