@@ -10,7 +10,8 @@ def treatment_chemical(testapp):
         'amount': 10,
         'amount_units': 'mM',
         'duration': 1,
-        'duration_units': 'hour'
+        'duration_units': 'hour',
+        'purpose': 'differentiation'
     }
     return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
 
@@ -22,7 +23,8 @@ def treatment_protein(testapp):
         'treatment_term_name': 'G-CSF',
         'treatment_type': 'protein',
         'amount': 10,
-        'amount_units': 'ng/mL'
+        'amount_units': 'ng/mL',
+        'purpose': 'differentiation'
     }
     return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
 
@@ -32,6 +34,18 @@ def treatment_v1(treatment_chemical):
     item = treatment_chemical.copy()
     item.update({
         'schema_version': '1',
+        'documents': [],
+        'aliases': []
+    })
+    return item
+
+
+@pytest.fixture
+def treatment_v2(treatment_chemical):
+    item = treatment_chemical.copy()
+    item.pop('purpose', None)
+    item.update({
+        'schema_version': '2',
         'documents': [],
         'aliases': []
     })

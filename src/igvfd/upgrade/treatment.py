@@ -10,3 +10,16 @@ def treatment_1_2(value, system):
     if 'documents' in value:
         if len(value['documents']) == 0:
             del value['documents']
+
+
+@upgrade_step('treatment', '2', '3')
+def treatment_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-292
+    notes = value.get('notes', '')
+    if 'purpose' not in value:
+        value['purpose'] = 'perturbation'
+        if 'notes' in value:
+            value['notes'] = f'{value.get("notes")}. This treatment did not have purpose specified previously, it was upgraded to have perturbation purpose.'
+        else:
+            value['notes'] = 'This treatment did not have purpose specified previously, it was upgraded to have perturbation purpose.'
+    return
