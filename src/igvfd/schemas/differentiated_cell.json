@@ -89,6 +89,12 @@
                 "linkTo": "Treatment"
             }
         },
+        "differentiation_origin": {
+            "title": "Differentiation Origin Ontology",
+            "description": "The ontology of the sample this biosample was differentiated from.",
+            "type": "string",
+            "linkTo": "SampleTerm"
+        },
         "differentiated_from": {
             "title": "Biosample Differentiated From",
             "description": "The biosample this in vitro sample was differentiated from.",

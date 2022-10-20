@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 * Add `revoke_detail`.
+* Add `differentiation_origin`.
 
 ### Schema version 7
 
