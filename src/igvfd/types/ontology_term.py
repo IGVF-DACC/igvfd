@@ -35,6 +35,7 @@ class OntologyTerm(Item):
     @calculated_property(schema={
         'title': 'Name',
         'type': 'string',
+        'notSubmittable': True,
     })
     def name(self, properties=None):
         if properties is None:
@@ -57,6 +58,7 @@ class OntologyTerm(Item):
         'items': {
             'type': 'string',
         },
+        'notSubmittable': True,
     })
     def synonyms(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'synonyms')
@@ -68,6 +70,7 @@ class OntologyTerm(Item):
         'items': {
             'type': 'string',
         },
+        'notSubmittable': True,
     })
     def ancestors(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'ancestors')
