@@ -22,3 +22,39 @@ class FileSet(Item):
     base_types = ['FileSet'] + Item.base_types
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/file_set.json')
+
+
+@collection(
+    name='analysis-sets',
+    unique_key='accession',
+    properties={
+        'title': 'Analysis sets',
+        'description': 'Listing of analysis sets',
+    })
+class AnalysisSet(FileSet):
+    item_type = 'analysis_set'
+    schema = load_schema('igvfd:schemas/analysis_set.json')
+
+    @calculated_property(
+        schema={
+            'title': 'Assay Title',
+            'description': 'Title(s) of assays that produced data analyzed in the analysis set.',
+            'type': 'array',
+            'uniqueItems': True,
+            'items': {
+                'title': 'Assay Title',
+                'description': 'Title of assay that produced data analyzed in the analysis set.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def assay_title(self, request, input_file_set=None):
+        assay_title = set()
+        if input_file_set is not None:
+            for fileset in input_file_set:
+                file_set_object = request.embed(fileset, '@@object')
+                if file_set_object.get('assay_title') and \
+                        'MeasurementSet' in file_set_object.get('@type'):
+                    assay_title.add(file_set_object.get('assay_title'))
+            return list(assay_title)

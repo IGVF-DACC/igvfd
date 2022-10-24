@@ -36,6 +36,7 @@ ORDER = [
     'page',
     'publication',
     'access_key',
+    'analysis_set'
 ]
 
 IS_ATTACHMENT = [
