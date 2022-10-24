@@ -8,6 +8,7 @@
         "lab",
         "md5sum",
         "file_format",
+        "file_set",
         "content_type"
     ],
     "identifyingProperties": [

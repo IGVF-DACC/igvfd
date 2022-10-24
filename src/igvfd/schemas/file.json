@@ -108,6 +108,13 @@
                 "linkTo": "Document"
             }
         },
+        "file_set": {
+            "title": "File Set",
+            "description": "The file set that this file belongs to.",
+            "comment": "See file_set.json for a list of available identifiers.",
+            "type": "string",
+            "linkTo": "FileSet"
+        },
         "file_size": {
             "title": "File Size",
             "description": "File size specified in bytes.",
