@@ -197,6 +197,11 @@ def main(global_config, **local_config):
     settings['snovault.jsonld.terms_namespace'] = 'https://www.igvfproject.org/terms/'
     settings['snovault.jsonld.terms_prefix'] = 'igvf'
 
+    # Before settings are passed to Configurator.
+    OPENSEARCH_URL = os.environ.get('OPENSEARCH_URL')
+    if OPENSEARCH_URL:
+        settings['elasticsearch.server'] = OPENSEARCH_URL
+
     config = Configurator(settings=settings)
     config.include(app_version)
 
