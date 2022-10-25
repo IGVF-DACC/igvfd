@@ -26,6 +26,8 @@ from infrastructure.constructs.alarms.backend import BackendAlarms
 
 from infrastructure.constructs.existing.types import ExistingResources
 
+from infrastructure.constructs.opensearch import Opensearch
+
 from infrastructure.constructs.postgres import PostgresConstruct
 
 from infrastructure.constructs.tasks.batchupgrade import BatchUpgrade
@@ -46,6 +48,7 @@ class BackendProps:
     config: Config
     existing_resources: ExistingResources
     postgres_multiplexer: Multiplexer
+    opensearch: Opensearch
     cpu: int
     memory_limit_mib: int
     desired_count: int
