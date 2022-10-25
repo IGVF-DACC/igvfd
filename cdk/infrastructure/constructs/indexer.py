@@ -1,0 +1,182 @@
+from constructs import Construct
+
+from aws_cdk.aws_applicationautoscaling import ScalingInterval
+
+from aws_cdk.aws_ec2 import Port
+
+from aws_cdk.aws_ecs import Cluster
+from aws_cdk.aws_ecs import ContainerImage
+from aws_cdk.aws_ecs import DeploymentCircuitBreaker
+from aws_cdk.aws_ecs import Secret
+
+from aws_cdk.aws_ecs_patterns import QueueProcessingFargateService
+
+from aws_cdk.aws_sqs import Queue
+
+from aws_cdk.aws_secretsmanager import Secret as SMSecret
+from aws_cdk.aws_secretsmanager import ISecret
+
+from infrastructure.config import Config
+
+from infrastructure.constructs.opensearch import Opensearch
+
+from infrastructure.constructs.existing.types import ExistingResources
+
+from typing import Any
+
+from dataclasses import dataclass
+
+
+@dataclass
+class IndexerProps:
+    config: Config
+    existing_resources: ExistingResources
+    cluster: Cluster
+    transaction_queue: Queue
+    invalidation_queue: Queue
+    opensearch: Opensearch
+    backend_url: str
+    resources_index: str
+
+
+class Indexer(Construct):
+
+    props: IndexerProps
+    services_image: ContainerImage
+    invalidation_service: QueueProcessingFargateService
+    indexing_service: QueueProcessingFargateService
+    portal_key: ISecret
+
+    def __init__(
+            self,
+            scope: Construct,
+            construct_id: str,
+            *,
+            props: IndexerProps,
+            **kwargs: Any,
+    ) -> None:
+        super().__init__(scope, construct_id, **kwargs)
+        self.props = props
+        self._define_docker_assets()
+        self._define_invalidation_service()
+        self._allow_invalidation_service_to_write_to_invalidation_queue()
+        self._define_backend_key()
+        self._define_indexing_service()
+        self._allow_connections_to_opensearch()
+
+    def _define_docker_assets(self) -> None:
+        self.services_image = ContainerImage.from_asset(
+            '../docker/snoindex',
+        )
+
+    def _define_invalidation_service(self) -> None:
+        self.invalidation_service = QueueProcessingFargateService(
+            self,
+            'InvalidationService',
+            image=self.services_image,
+            cluster=self.props.cluster,
+            queue=self.props.transaction_queue,
+            assign_public_ip=True,
+            cpu=1024,
+            memory_limit_mib=2048,
+            min_scaling_capacity=0,
+            max_scaling_capacity=2,
+            scaling_steps=[
+                ScalingInterval(
+                    upper=0,
+                    change=-1,
+                ),
+                ScalingInterval(
+                    lower=1,
+                    change=1,
+                ),
+                ScalingInterval(
+                    lower=500,
+                    change=2,
+                )
+            ],
+            enable_execute_command=True,
+            circuit_breaker=DeploymentCircuitBreaker(
+                rollback=True,
+            ),
+            environment={
+                'OPENSEARCH_URL': self.props.opensearch.domain.domain_endpoint,
+                'TRANSACTION_QUEUE_URL': self.props.transaction_queue.queue_url,
+                'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue_url,
+                'RESOURCES_INDEX': self.props.resources_index,
+            },
+            command=['run-invalidation-service']
+        )
+
+    def _allow_invalidation_service_to_write_to_invalidation_queue(self) -> None:
+        self.props.invalidation_queue.grant_send_messages(
+            self.invalidation_service.task_definition.task_role
+        )
+
+    def _define_backend_key(self) -> None:
+        self.portal_key = SMSecret.from_secret_complete_arn(
+            self,
+            'PortalSecret',
+            'arn:aws:secretsmanager:us-west-2:109189702753:secret:indexer-portal-key-1CWWh7'
+        )
+
+    def _define_indexing_service(self) -> None:
+        self.indexing_service = QueueProcessingFargateService(
+            self,
+            'IndexingService',
+            image=self.services_image,
+            cluster=self.props.cluster,
+            queue=self.props.invalidation_queue,
+            assign_public_ip=True,
+            cpu=1024,
+            memory_limit_mib=2048,
+            min_scaling_capacity=0,
+            max_scaling_capacity=2,
+            scaling_steps=[
+                ScalingInterval(
+                    upper=0,
+                    change=-1,
+                ),
+                ScalingInterval(
+                    lower=1,
+                    change=1,
+                ),
+                ScalingInterval(
+                    lower=500,
+                    change=2,
+                )
+            ],
+            enable_execute_command=True,
+            circuit_breaker=DeploymentCircuitBreaker(
+                rollback=True,
+            ),
+            environment={
+                'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue_url,
+                'OPENSEARCH_URL': self.props.opensearch.domain.domain_endpoint,
+                'RESOURCES_INDEX': self.props.resources_index,
+                'BACKEND_URL': self.props.backend_url,
+            },
+            secrets={
+                'BACKEND_KEY': Secret.from_secrets_manager(
+                    self.portal_key,
+                    'BACKEND_KEY',
+                ),
+                'BACKEND_SECRET_KEY': Secret.from_secrets_manager(
+                    self.portal_key,
+                    'BACKEND_SECRET_KEY',
+                )
+            },
+            command=['run-indexing-service']
+        )
+
+    def _allow_connections_to_opensearch(self) -> None:
+        self.invalidation_service.service.connections.allow_to(
+            self.props.opensearch.domain,
+            Port.tcp(443),
+            description='Allow connection to Opensearch',
+        )
+        self.indexing_service.service.connections.allow_to(
+            self.props.opensearch.domain,
+            Port.tcp(443),
+            description='Allow connection to Opensearch',
+        )
