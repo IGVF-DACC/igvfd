@@ -81,6 +81,7 @@ class Backend(Construct):
         self._define_fargate_service()
         self._add_application_container_to_task()
         self._allow_connections_to_database()
+        self._allow_connections_to_opensearch()
         self._allow_task_to_put_events_on_bus()
         self._configure_health_check()
         self._add_tags_to_fargate_service()
@@ -169,7 +170,8 @@ class Backend(Construct):
                 'DB_HOST': self.postgres.database.instance_endpoint.hostname,
                 'DB_NAME': self.postgres.database_name,
                 'DEFAULT_EVENT_BUS': self.props.existing_resources.bus.default.event_bus_arn,
-                'EVENT_SOURCE': get_event_source_from_config(self.props.config)
+                'EVENT_SOURCE': get_event_source_from_config(self.props.config),
+                'OPENSEARCH_URL': self.props.opensearch.domain.domain_endpoint,
             },
             secrets={
                 'DB_PASSWORD': self._get_database_secret(),
@@ -186,6 +188,13 @@ class Backend(Construct):
             self.postgres.database,
             Port.tcp(5432),
             description='Allow connection to Postgres instance',
+        )
+
+    def _allow_connections_to_opensearch(self) -> None:
+        self.fargate_service.service.connections.allow_to(
+            self.props.opensearch.domain,
+            Port.tcp(443),
+            description='Allow connection to Opensearch',
         )
 
     def _allow_task_to_put_events_on_bus(self) -> None:
