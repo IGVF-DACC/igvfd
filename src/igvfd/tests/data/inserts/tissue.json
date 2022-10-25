@@ -17,6 +17,7 @@
         "nih_institutional_certification": "NICHD1442",
         "pmi": 2,
         "pmi_units": "week",
+        "ccf_id": "6b7f36a6-2dfe-4ae0-9d68-03df15ab6402",
         "preservation_method": "cryopreservation",
         "collections": [
             "ENCODE"
@@ -85,6 +86,7 @@
         "nih_institutional_certification": "NICHD1442",
         "pmi": 2,
         "pmi_units": "week",
+        "ccf_id": "41fd31e5-ac11-4e0e-a8ad-995d9fc0d8c1",
         "preservation_method": "cryopreservation",
         "collections": [
             "ENCODE"
@@ -110,6 +112,7 @@
         "part_of": "IGVFSM000KAS",
         "source": "/labs/j-michael-cherry/",
         "nih_institutional_certification": "NICHD1442",
+        "ccf_id": null,
         "preservation_method": "cryopreservation",
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
