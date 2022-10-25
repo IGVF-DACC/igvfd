@@ -13,7 +13,8 @@
         "content_type": "subreads",
         "submitted_file_name": "/Users/igvf/igvf_files/subreads.bam",
         "file_size": 31208300,
-        "upload_status": "pending"
+        "upload_status": "pending",
+        "file_set": "j-michael-cherry:basic_analysis_set"
     },
     {
         "uuid": "f2b14277-99ac-802c-9c31-9ffd7ebf92f8",
@@ -38,7 +39,8 @@
             "SRA:SRR0000005"
         ],
         "run_type": "paired-ended",
-        "paired_end": "1"
+        "paired_end": "1",
+        "file_set": "j-michael-cherry:basic_analysis_set"
     },
     {
         "uuid": "aacf6ed8-f086-802c-9c31-9ffd7ebf71d8",
@@ -64,6 +66,7 @@
         ],
         "run_type": "paired-ended",
         "paired_end": "2",
-        "paired_with": "j-michael-cherry:fastq_reads_file_paired_end_1"
+        "paired_with": "j-michael-cherry:fastq_reads_file_paired_end_1",
+        "file_set": "j-michael-cherry:basic_analysis_set"
     }
 ]

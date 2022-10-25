@@ -15,7 +15,8 @@
         "file_size": 5428031,
         "upload_status": "file not found",
         "assembly": "GRCh38",
-        "source": "https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000001405.26/"
+        "source": "https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000001405.26/",
+        "file_set": "j-michael-cherry:basic_analysis_set"
     },
     {
         "uuid": "9d214277-99ac-802c-9c31-2cc75ebf92f8",
@@ -35,6 +36,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/sequence_barcodes.txt",
         "file_size": 9640,
         "upload_status": "invalidated",
-        "validation_error_detail": "Explanation of why this file did not pass validation."
+        "validation_error_detail": "Explanation of why this file did not pass validation.",
+        "file_set": "j-michael-cherry:analysis_set_with_input"
     }
 ]

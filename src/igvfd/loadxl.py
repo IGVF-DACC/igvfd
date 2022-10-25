@@ -35,15 +35,15 @@ ORDER = [
     'technical_sample',
     'whole_organism',
     'curated_set',
-    'sequence_data',
-    'reference_data',
-    'imaging_data',
     'image',
     'page',
     'publication',
     'access_key',
     'measurement_set',
-    'analysis_set'
+    'analysis_set',
+    'reference_data',
+    'sequence_data',
+    'imaging_data',
 ]
 
 IS_ATTACHMENT = [
