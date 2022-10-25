@@ -7,6 +7,8 @@ from infrastructure.config import Config
 from infrastructure.constructs.backend import Backend
 from infrastructure.constructs.backend import BackendProps
 
+from infrastructure.constructs.opensearch import Opensearch
+
 from infrastructure.constructs.existing.types import ExistingResourcesClass
 
 from infrastructure.multiplexer import Multiplexer
@@ -23,6 +25,7 @@ class BackendStack(cdk.Stack):
             *,
             config: Config,
             postgres_multiplexer: Multiplexer,
+            opensearch: Opensearch,
             existing_resources_class: ExistingResourcesClass,
             **kwargs: Any
     ) -> None:
@@ -39,5 +42,6 @@ class BackendStack(cdk.Stack):
                 config=config,
                 existing_resources=self.existing_resources,
                 postgres_multiplexer=postgres_multiplexer,
+                opensearch=opensearch,
             )
         )
