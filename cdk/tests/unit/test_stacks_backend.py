@@ -3,6 +3,7 @@ import pytest
 from aws_cdk.assertions import Template
 
 
+@pytest.mark.skip()
 def test_stacks_backend_initialize_backend_stack(config):
     from aws_cdk import App
     from infrastructure.stacks.postgres import PostgresStack

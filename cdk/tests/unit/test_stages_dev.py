@@ -1,6 +1,7 @@
 import pytest
 
 
+@pytest.mark.skip()
 def test_stages_dev_initialize_dev_stages(config):
     from aws_cdk import App
     from infrastructure.stages.dev import DevelopmentDeployStage
