@@ -4,14 +4,12 @@ from aws_cdk.aws_applicationautoscaling import ScalingInterval
 
 from aws_cdk.aws_ec2 import Port
 
-from aws_cdk.aws_ecs import Cluster
+from aws_cdk.aws_ecs import ICluster
 from aws_cdk.aws_ecs import ContainerImage
 from aws_cdk.aws_ecs import DeploymentCircuitBreaker
 from aws_cdk.aws_ecs import Secret
 
 from aws_cdk.aws_ecs_patterns import QueueProcessingFargateService
-
-from aws_cdk.aws_sqs import Queue
 
 from aws_cdk.aws_secretsmanager import Secret as SMSecret
 from aws_cdk.aws_secretsmanager import ISecret
@@ -19,6 +17,9 @@ from aws_cdk.aws_secretsmanager import ISecret
 from infrastructure.config import Config
 
 from infrastructure.constructs.opensearch import Opensearch
+
+from infrastructure.constructs.queue import TransactionQueue
+from infrastructure.constructs.queue import InvalidationQueue
 
 from infrastructure.constructs.existing.types import ExistingResources
 
@@ -31,9 +32,9 @@ from dataclasses import dataclass
 class IndexerProps:
     config: Config
     existing_resources: ExistingResources
-    cluster: Cluster
-    transaction_queue: Queue
-    invalidation_queue: Queue
+    cluster: ICluster
+    transaction_queue: TransactionQueue
+    invalidation_queue: InvalidationQueue
     opensearch: Opensearch
     backend_url: str
     resources_index: str
@@ -75,7 +76,7 @@ class Indexer(Construct):
             'InvalidationService',
             image=self.services_image,
             cluster=self.props.cluster,
-            queue=self.props.transaction_queue,
+            queue=self.props.transaction_queue.queue,
             assign_public_ip=True,
             cpu=1024,
             memory_limit_mib=2048,
@@ -101,15 +102,15 @@ class Indexer(Construct):
             ),
             environment={
                 'OPENSEARCH_URL': self.props.opensearch.domain.domain_endpoint,
-                'TRANSACTION_QUEUE_URL': self.props.transaction_queue.queue_url,
-                'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue_url,
+                'TRANSACTION_QUEUE_URL': self.props.transaction_queue.queue.queue_url,
+                'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
                 'RESOURCES_INDEX': self.props.resources_index,
             },
             command=['run-invalidation-service']
         )
 
     def _allow_invalidation_service_to_write_to_invalidation_queue(self) -> None:
-        self.props.invalidation_queue.grant_send_messages(
+        self.props.invalidation_queue.queue.grant_send_messages(
             self.invalidation_service.task_definition.task_role
         )
 
@@ -126,7 +127,7 @@ class Indexer(Construct):
             'IndexingService',
             image=self.services_image,
             cluster=self.props.cluster,
-            queue=self.props.invalidation_queue,
+            queue=self.props.invalidation_queue.queue,
             assign_public_ip=True,
             cpu=1024,
             memory_limit_mib=2048,
@@ -151,7 +152,7 @@ class Indexer(Construct):
                 rollback=True,
             ),
             environment={
-                'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue_url,
+                'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
                 'OPENSEARCH_URL': self.props.opensearch.domain.domain_endpoint,
                 'RESOURCES_INDEX': self.props.resources_index,
                 'BACKEND_URL': self.props.backend_url,
