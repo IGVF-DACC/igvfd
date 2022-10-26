@@ -1,0 +1,21 @@
+[
+    {
+        "aliases": [
+            "j-michael-cherry:basic_measurement_set"
+        ],
+        "submitter_comment": "Comment for a measurement set.",
+        "description": "A basic measurement set.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "documents": [
+            "j-michael-cherry:Antibody_characterization_standards_IGVF"
+        ],
+        "status": "released",
+        "uuid": "609869e7-cbd9-4d06-9569-d3fdb4604ccd",
+        "sample": [
+            "j-michael-cherry:treated_tissue"
+        ],
+        "assay_title": "j-michael-cherry:starr-seq",
+        "protocol": "https://www.protocols.io/test-protocols-url-12345"
+    }
+]
