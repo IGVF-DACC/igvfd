@@ -1,11 +1,13 @@
 {
     "title": "CuratedSet",
-    "description": "Schema for submitting an file set for files originating from external sources.",
+    "description": "Schema for submitting a file set for files originating from external sources.",
     "$id": "/profiles/curated_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
-        "title"
+        "lab",
+        "award",
+        "reference_type"
     ],
     "identifyingProperties": [
         "uuid",
@@ -23,7 +25,7 @@
             "$ref": "mixins.json#/accession"
         },
         {
-            "$ref": "mixins.json#/standard_status"
+            "$ref": "mixins.json#/attribution"
         },
         {
             "$ref": "mixins.json#/documents"
@@ -42,12 +44,18 @@
         "accession": {
             "accessionType": "CS"
         },
-        "title": {
-            "title": "Title",
-            "description": "The complete name of the originating lab or vendor.",
+        "reference_type": {
+            "title": "Reference Type",
+            "description": "The category that best describes this curated file set.",
             "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
+            "enum": [
+                "genome",
+                "transcriptome",
+                "elements",
+                "variants",
+                "genes"
+            ]
         }
     },
-    "changelog": "/profiles/changelogs/source.md"
+    "changelog": "/profiles/changelogs/curated_set.md"
 }

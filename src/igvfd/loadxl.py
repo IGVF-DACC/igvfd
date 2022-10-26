@@ -32,6 +32,7 @@ ORDER = [
     'differentiated_cell',
     'technical_sample',
     'whole_organism',
+    'curated_set',
     'image',
     'page',
     'publication',
