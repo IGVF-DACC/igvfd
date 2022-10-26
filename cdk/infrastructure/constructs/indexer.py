@@ -101,7 +101,7 @@ class Indexer(Construct):
                 rollback=True,
             ),
             environment={
-                'OPENSEARCH_URL': self.props.opensearch.domain.domain_endpoint,
+                'OPENSEARCH_URL': self.props.opensearch.url,
                 'TRANSACTION_QUEUE_URL': self.props.transaction_queue.queue.queue_url,
                 'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
                 'RESOURCES_INDEX': self.props.resources_index,
@@ -153,7 +153,7 @@ class Indexer(Construct):
             ),
             environment={
                 'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
-                'OPENSEARCH_URL': self.props.opensearch.domain.domain_endpoint,
+                'OPENSEARCH_URL': self.props.opensearch.url,
                 'RESOURCES_INDEX': self.props.resources_index,
                 'BACKEND_URL': self.props.backend_url,
             },

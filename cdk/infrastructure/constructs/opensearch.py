@@ -35,6 +35,7 @@ class Opensearch(Construct):
 
     domain: Domain
     props: OpensearchProps
+    url: str
 
     def __init__(
             self,
@@ -50,6 +51,7 @@ class Opensearch(Construct):
         self._define_log_removal_policy()
         self._allow_access_to_domain()
         self._add_tags_to_domain()
+        self._define_url()
 
     def _define_domain(self) -> None:
         self.domain = Domain(
@@ -118,3 +120,6 @@ class Opensearch(Construct):
             'branch',
             self.props.config.branch,
         )
+
+    def _define_url(self) -> None:
+        self.url = f'https://{self.domain.domain_endpoint}'

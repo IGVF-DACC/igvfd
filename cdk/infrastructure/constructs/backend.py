@@ -175,7 +175,7 @@ class Backend(Construct):
                 'DB_NAME': self.postgres.database_name,
                 'DEFAULT_EVENT_BUS': self.props.existing_resources.bus.default.event_bus_arn,
                 'EVENT_SOURCE': get_event_source_from_config(self.props.config),
-                'OPENSEARCH_URL': self.props.opensearch.domain.domain_endpoint,
+                'OPENSEARCH_URL': self.props.opensearch.url,
                 'TRANSACTION_QUEUE_URL': self.props.transaction_queue.queue.queue_url,
             },
             secrets={
