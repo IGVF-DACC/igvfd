@@ -68,7 +68,8 @@
         "pooled_from": [
             "/differentiated-tissues/a79ffa29-4bdf-4283-9494-1017e5d13f8b/",
             "/differentiated-tissues/4ce1b687-62f9-4d92-a69e-b4820d1efc9d/"
-        ]
+        ],
+        "differentiation_origin": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/"
     },
     {
         "uuid": "4d93cbfc-0300-11ed-b939-0242ac120002",

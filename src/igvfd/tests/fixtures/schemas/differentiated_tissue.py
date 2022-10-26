@@ -134,3 +134,12 @@ def differentiated_tissue_v6_with_note(differentiated_tissue):
         'notes': 'This is a note.'
     })
     return item
+
+
+@pytest.fixture
+def differentiated_tissue_v7(differentiated_tissue):
+    item = differentiated_tissue.copy()
+    item.update({
+        'schema_version': '7',
+    })
+    return item

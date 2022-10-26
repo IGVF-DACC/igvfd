@@ -22,7 +22,8 @@
         ],
         "lower_bound_age": 90,
         "upper_bound_age": 90,
-        "age_units": "year"
+        "age_units": "year",
+        "differentiation_origin": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/"
     },
     {
         "uuid": "8a3af63e-bf89-4947-919c-f9e026ee1c9b",
@@ -71,7 +72,8 @@
         "pooled_from": [
             "/differentiated-cells/f1d10666-ebb2-4152-9d49-f98b6de7c9e5/",
             "/differentiated-cells/8a3af63e-bf89-4947-919c-f9e026ee1c9b/"
-        ]
+        ],
+        "differentiation_origin": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/"
     },
     {
         "uuid": "d360c844-02ff-11ed-b939-0242ac120002",
@@ -97,6 +99,7 @@
         ],
         "lower_bound_age": 90,
         "upper_bound_age": 90,
-        "age_units": "year"
+        "age_units": "year",
+        "differentiation_origin": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/"
     }
 ]

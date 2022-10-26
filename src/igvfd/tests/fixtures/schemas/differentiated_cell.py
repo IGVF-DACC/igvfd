@@ -134,3 +134,13 @@ def differentiated_cell_v6_with_note(differentiated_cell):
         'notes': 'This is a note.'
     })
     return item
+
+
+@pytest.fixture
+def differentiated_cell_v7(differentiated_cell):
+    item = differentiated_cell.copy()
+    item.update({
+        'schema_version': '7',
+        'notes': 'Old note.',
+    })
+    return item

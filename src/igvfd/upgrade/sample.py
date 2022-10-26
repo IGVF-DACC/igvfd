@@ -120,3 +120,15 @@ def differentiated_sample_6_7(value, system):
 def technical_sample_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-264
     return
+
+
+@upgrade_step('differentiated_cell', '7', '8')
+@upgrade_step('differentiated_tissue', '7', '8')
+def differentiated_sample_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-329
+    if 'differentiation_origin' not in value:
+        value['differentiation_origin'] == 'CL:0002248'
+        if value.get('notes'):
+            old_notes = value.get('notes') + ' '
+        value['notes'] = f'{old_notes}differentiation_origin '\
+            'added via upgrade; confirm before release or removing note.'
