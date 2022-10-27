@@ -59,7 +59,7 @@ class AnalysisSet(FileSet):
                     assay_title.add(file_set_object.get('assay_title'))
             return list(assay_title)
 
- 
+
 @collection(
     name='curated-sets',
     unique_key='accession',
