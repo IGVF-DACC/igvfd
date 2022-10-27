@@ -4,10 +4,12 @@ from aws_cdk.aws_applicationautoscaling import ScalingInterval
 
 from aws_cdk.aws_ec2 import Port
 
+from aws_cdk.aws_ecs import AwsLogDriverMode
 from aws_cdk.aws_ecs import ICluster
 from aws_cdk.aws_ecs import ContainerImage
 from aws_cdk.aws_ecs import DeploymentCircuitBreaker
 from aws_cdk.aws_ecs import Secret
+from aws_cdk.aws_ecs import LogDriver
 
 from aws_cdk.aws_ecs_patterns import QueueProcessingFargateService
 
@@ -106,7 +108,11 @@ class Indexer(Construct):
                 'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
                 'RESOURCES_INDEX': self.props.resources_index,
             },
-            command=['run-invalidation-service']
+            command=['run-invalidation-service'],
+            log_driver=LogDriver.aws_logs(
+                stream_prefix='invalidation-service',
+                mode=AwsLogDriverMode.NON_BLOCKING,
+            ),
         )
 
     def _allow_invalidation_service_to_write_to_invalidation_queue(self) -> None:
@@ -167,7 +173,11 @@ class Indexer(Construct):
                     'BACKEND_SECRET_KEY',
                 )
             },
-            command=['run-indexing-service']
+            command=['run-indexing-service'],
+            log_driver=LogDriver.aws_logs(
+                stream_prefix='indexing-service',
+                mode=AwsLogDriverMode.NON_BLOCKING,
+            ),
         )
 
     def _allow_connections_to_opensearch(self) -> None:
