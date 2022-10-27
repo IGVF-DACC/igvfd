@@ -78,9 +78,9 @@ class Indexer(Construct):
             cluster=self.props.cluster,
             queue=self.props.transaction_queue.queue,
             assign_public_ip=True,
-            cpu=1024,
-            memory_limit_mib=2048,
-            min_scaling_capacity=0,
+            cpu=256,
+            memory_limit_mib=512,
+            min_scaling_capacity=1,
             max_scaling_capacity=2,
             scaling_steps=[
                 ScalingInterval(
@@ -129,9 +129,9 @@ class Indexer(Construct):
             cluster=self.props.cluster,
             queue=self.props.invalidation_queue.queue,
             assign_public_ip=True,
-            cpu=1024,
-            memory_limit_mib=2048,
-            min_scaling_capacity=0,
+            cpu=256,
+            memory_limit_mib=512,
+            min_scaling_capacity=1,
             max_scaling_capacity=2,
             scaling_steps=[
                 ScalingInterval(
