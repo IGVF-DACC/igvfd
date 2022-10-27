@@ -2,14 +2,17 @@ import pytest
 
 
 @pytest.fixture
-def differentiated_tissue(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
+def differentiated_tissue(testapp, lab, award, source, human_donor,
+                          sample_term_adrenal_gland,
+                          sample_term_whole_organism):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_adrenal_gland['@id']
+        'biosample_term': sample_term_adrenal_gland['@id'],
+        'differentiation_origin': sample_term_whole_organism['@id']
     }
     return testapp.post_json('/differentiated_tissue', item, status=201).json['@graph'][0]
 
@@ -137,9 +140,16 @@ def differentiated_tissue_v6_with_note(differentiated_tissue):
 
 
 @pytest.fixture
-def differentiated_tissue_v7(differentiated_tissue):
-    item = differentiated_tissue.copy()
-    item.update({
+def differentiated_tissue_v7(testapp, lab, award, source, human_donor,
+                             sample_term_adrenal_gland):
+    item = {
         'schema_version': '7',
-    })
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id'],
+        'taxa': 'Homo sapiens',
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_adrenal_gland['@id'],
+        'notes': 'Old note.'
+    }
     return item

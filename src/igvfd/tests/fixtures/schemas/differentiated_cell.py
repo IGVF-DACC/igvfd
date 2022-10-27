@@ -2,14 +2,17 @@ import pytest
 
 
 @pytest.fixture
-def differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K562):
+def differentiated_cell(testapp, lab, award, source, human_donor,
+                        sample_term_K562,
+                        sample_term_whole_organism):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_K562['@id']
+        'biosample_term': sample_term_K562['@id'],
+        'differentiation_origin': sample_term_whole_organism['@id']
     }
     return testapp.post_json('/differentiated_cell', item, status=201).json['@graph'][0]
 
@@ -137,10 +140,15 @@ def differentiated_cell_v6_with_note(differentiated_cell):
 
 
 @pytest.fixture
-def differentiated_cell_v7(differentiated_cell):
-    item = differentiated_cell.copy()
-    item.update({
+def differentiated_cell_v7(testapp, lab, award, source, human_donor,
+                           sample_term_K562,):
+    item = {
         'schema_version': '7',
-        'notes': 'Old note.',
-    })
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id'],
+        'taxa': 'Homo sapiens',
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_K562['@id'],
+    }
     return item
