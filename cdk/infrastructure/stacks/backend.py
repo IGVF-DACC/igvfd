@@ -70,7 +70,7 @@ class BackendStack(cdk.Stack):
                 transaction_queue=self.transaction_queue,
                 invalidation_queue=self.invalidation_queue,
                 opensearch=opensearch,
-                backend_url=f'https://{self.backend.fargate_service.load_balancer.load_balancer_dns_name}',
+                backend_url=f'https://{self.backend.domain_name}',
                 resources_index='snovault-resources',
             )
         )

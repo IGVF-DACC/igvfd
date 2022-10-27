@@ -64,6 +64,7 @@ class Backend(Construct):
     props: BackendProps
     postgres: PostgresConstruct
     application_image: ContainerImage
+    domain_name: str
     nginx_image: ContainerImage
     fargate_service: ApplicationLoadBalancedFargateService
     batch_upgrade: BatchUpgrade
@@ -81,6 +82,7 @@ class Backend(Construct):
         self._define_postgres()
         self._generate_session_secret()
         self._define_docker_assets()
+        self._define_domain_name()
         self._define_fargate_service()
         self._add_application_container_to_task()
         self._allow_connections_to_database()
@@ -113,6 +115,11 @@ class Backend(Construct):
             file='docker/nginx/Dockerfile',
         )
 
+    def _define_domain_name(self) -> None:
+        self.domain_name = (
+            f'igvfd-{self.props.config.branch}.{self.props.existing_resources.domain.name}'
+        )
+
     def _define_fargate_service(self) -> None:
         self.fargate_service = ApplicationLoadBalancedFargateService(
             self,
@@ -136,7 +143,7 @@ class Backend(Construct):
             assign_public_ip=True,
             certificate=self.props.existing_resources.domain.certificate,
             domain_zone=self.props.existing_resources.domain.zone,
-            domain_name=f'igvfd-{self.props.config.branch}.{self.props.existing_resources.domain.name}',
+            domain_name=self.domain_name,
             redirect_http=True,
         )
 
