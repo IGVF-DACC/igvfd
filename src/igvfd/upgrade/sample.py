@@ -130,5 +130,5 @@ def differentiated_sample_7_8(value, system):
         value['differentiation_origin'] == 'CL:0002248'
         if value.get('notes'):
             old_notes = value.get('notes') + ' '
-        value['notes'] = f'{old_notes}differentiation_origin '\
+        value['notes'] = f'{old_notes}differentiation_origin entry'\
             'added via upgrade; confirm before release or removing note.'

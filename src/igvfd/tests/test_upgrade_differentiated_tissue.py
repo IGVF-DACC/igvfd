@@ -73,6 +73,6 @@ def test_differentiated_tissue_upgrade_7_8(upgrader, differentiated_tissue_v7):
             'differentiated_tissue', differentiated_tissue_v7,
             current_version='7', target_version='8')
     assert value['schema_version'] == '8'
-    assert value['notes'] == 'differentiation_origin added via '\
+    assert value['notes'] == 'differentiation_origin entry added via '\
         'upgrade; confirm before release or removing note.'
     assert value['differentiation_origin']['term_id'] == 'CL:0002248'
