@@ -69,9 +69,9 @@ def test_differentiated_cell_upgrade_6_7(upgrader, differentiated_cell_v6, diffe
 
 def test_differentiated_cell_upgrade_7_8(upgrader, differentiated_cell_v7):
     value = upgrader.upgrade(
-            'differentiated_cell', differentiated_cell_v7,
-            current_version='7', target_version='8')
+        'differentiated_cell', differentiated_cell_v7,
+        current_version='7', target_version='8')
     assert value['schema_version'] == '8'
-    assert value['notes'] == 'differentiation_origin added via '\
+    assert value['notes'] == 'Old note. differentiation_origin added via '\
         'upgrade; confirm before release or removing note.'
     assert value['differentiation_origin'] == '/sample-terms/CL_0002248/'

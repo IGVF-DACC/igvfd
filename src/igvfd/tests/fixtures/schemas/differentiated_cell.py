@@ -150,5 +150,6 @@ def differentiated_cell_v7(testapp, lab, award, source, human_donor,
         'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_K562['@id'],
+        'notes': 'Old note.'
     }
     return item

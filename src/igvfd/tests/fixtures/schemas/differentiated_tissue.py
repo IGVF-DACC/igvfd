@@ -149,7 +149,6 @@ def differentiated_tissue_v7(testapp, lab, award, source, human_donor,
         'source': source['@id'],
         'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_adrenal_gland['@id'],
-        'notes': 'Old note.'
+        'biosample_term': sample_term_adrenal_gland['@id']
     }
     return item
