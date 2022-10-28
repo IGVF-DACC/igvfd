@@ -28,7 +28,7 @@ from infrastructure.constructs.existing.types import ExistingResources
 
 from infrastructure.events.naming import get_event_source_from_config
 
-from infrastructure.events.batchupgrade import BatchUpgradeEvents
+from infrastructure.events.updatemapping import UpdateMappingEvents
 
 from dataclasses import dataclass
 
@@ -76,7 +76,7 @@ class UpdateMapping(Construct):
         )
 
     def _define_event_detail_type(self) -> None:
-        self.event_detail_type = BatchUpgradeEvents.UPGRADE_FOLDER_CHANGED
+        self.event_detail_type = UpdateMappingEvents.MAPPING_CHANGED
 
     def _get_container_overrides(self) -> List[ContainerOverride]:
         return [
@@ -129,7 +129,7 @@ class UpdateMapping(Construct):
         )
 
     def _define_event_trigger(self) -> None:
-        # Put UpgradeFolderChanged event onto EventBridge bus
+        # Put event onto EventBridge bus
         # when the upgrade folder asset hash changes.
         self.event_trigger = AwsCustomResource(
             self,
