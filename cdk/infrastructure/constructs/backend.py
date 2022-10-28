@@ -30,6 +30,7 @@ from infrastructure.constructs.opensearch import Opensearch
 
 from infrastructure.constructs.postgres import PostgresConstruct
 
+from infrastructure.constructs.queue import InvalidationQueue
 from infrastructure.constructs.queue import TransactionQueue
 
 from infrastructure.constructs.tasks.batchupgrade import BatchUpgrade
@@ -52,6 +53,7 @@ class BackendProps:
     postgres_multiplexer: Multiplexer
     opensearch: Opensearch
     transaction_queue: TransactionQueue
+    invalidation_queue: InvalidationQueue
     cpu: int
     memory_limit_mib: int
     desired_count: int
@@ -89,6 +91,7 @@ class Backend(Construct):
         self._allow_connections_to_opensearch()
         self._allow_task_to_put_events_on_bus()
         self._allow_task_to_send_messages_to_transaction_queue()
+        self._allow_task_to_send_messages_to_invalidation_queue()
         self._configure_health_check()
         self._add_tags_to_fargate_service()
         self._enable_exec_command()
@@ -184,6 +187,7 @@ class Backend(Construct):
                 'EVENT_SOURCE': get_event_source_from_config(self.props.config),
                 'OPENSEARCH_URL': self.props.opensearch.url,
                 'TRANSACTION_QUEUE_URL': self.props.transaction_queue.queue.queue_url,
+                'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
             },
             secrets={
                 'DB_PASSWORD': self._get_database_secret(),
@@ -216,6 +220,11 @@ class Backend(Construct):
 
     def _allow_task_to_send_messages_to_transaction_queue(self) -> None:
         self.props.transaction_queue.queue.grant_send_messages(
+            self.fargate_service.task_definition.task_role
+        )
+
+    def _allow_task_to_send_messages_to_invalidation_queue(self) -> None:
+        self.props.invalidation_queue.queue.grant_send_messages(
             self.fargate_service.task_definition.task_role
         )
 

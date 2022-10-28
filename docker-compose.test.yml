@@ -34,6 +34,7 @@ services:
     environment:
       - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
       - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
+      - INVALIDATION_QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"

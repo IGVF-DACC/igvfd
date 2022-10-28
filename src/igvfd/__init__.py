@@ -152,6 +152,11 @@ def configure_transaction_queue(config):
     configure_transaction_queue(config)
 
 
+def configure_invalidation_queue(config):
+    from snovault.app import configure_invalidation_queue
+    configure_invalidation_queue(config)
+
+
 def session(config):
     """ To create a session secret on the server:
     $ cat /dev/urandom | head -c 256 | base64 > session-secret.b64
@@ -218,6 +223,7 @@ def main(global_config, **local_config):
     config.include(configure_dbsession)
     config.include(configure_sqs_client)
     config.include(configure_transaction_queue)
+    config.include(configure_invalidation_queue)
     config.include('snovault')
     config.commit()  # commit so search can override listing
 
