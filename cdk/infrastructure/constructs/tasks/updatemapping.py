@@ -51,6 +51,7 @@ class UpdateMapping(Construct):
     event_rule: Rule
     event_trigger: AwsCustomResource
     upgrade_folder: Asset
+    schemas_folder: Asset
 
     def __init__(
             self,
@@ -67,6 +68,7 @@ class UpdateMapping(Construct):
         self._define_event_target()
         self._define_event_rule()
         self._define_upgrade_folder()
+        self._define_schemas_folder()
         self._define_event_trigger()
         self._ensure_rule_exists_before_trigger()
 
@@ -128,6 +130,13 @@ class UpdateMapping(Construct):
             path='../src/igvfd/upgrade',
         )
 
+    def _define_schemas_folder(self) -> None:
+        self.schemas_folder = Asset(
+            self,
+            'SchemasFolder',
+            path='../src/igvfd/schemas',
+        )
+
     def _define_event_trigger(self) -> None:
         # Put event onto EventBridge bus
         # when the upgrade folder asset hash changes.
@@ -147,7 +156,7 @@ class UpdateMapping(Construct):
                     ]
                 },
                 physical_resource_id=PhysicalResourceId.of(
-                    self.upgrade_folder.asset_hash
+                    f'{self.upgrade_folder.asset_hash}-{self.schemas_folder.asset_hash}'
                 )
             ),
             log_retention=RetentionDays.ONE_DAY,
