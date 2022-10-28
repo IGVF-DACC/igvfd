@@ -163,7 +163,7 @@ class UpdateMapping(Construct):
             self.event_trigger
         )
 
-    def _ensure_rule_exists_before_trigger(self):
+    def _ensure_rule_exists_before_trigger(self) -> None:
         self.event_trigger.node.add_dependency(
             self.event_rule
         )
