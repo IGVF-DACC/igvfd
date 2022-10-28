@@ -21,13 +21,13 @@ def test_indexing_simple_igvfd(testapp, workbook):
 def test_indexing_updated_name_invalidates_dependents(testapp, dummy_request, workbook):
     response = testapp.get('/search/?type=User&lab=/labs/j-michael-cherry/')
     assert len(response.json['@graph']) >= 22
-    tq = dummy_request.registry['TRANSACTION_QUEUE']
+    iq = dummy_request.registry['INVALIDATION_QUEUE']
     testapp.patch_json(
         '/labs/j-michael-cherry/',
         {'name': 'some-other-name'}
     )
     print('Wait for queue to drain')
-    tq.wait_for_queue_to_drain()
+    iq.wait_for_queue_to_drain()
     response = testapp.get('/search/?type=User&lab=/labs/some-other-name/')
     assert len(response.json['@graph']) >= 22
     testapp.get('/search/?type=User&lab=/labs/j-michael-cherry/', status=404)
@@ -36,7 +36,7 @@ def test_indexing_updated_name_invalidates_dependents(testapp, dummy_request, wo
         {'name': 'j-michael-cherry'}
     )
     print('Wait for queue to drain')
-    tq.wait_for_queue_to_drain()
+    iq.wait_for_queue_to_drain()
     print('Wait for indexing')
     wait_for_indexing()
     testapp.get('/search/?type=User&lab=/labs/some-other-lab/', status=404)
