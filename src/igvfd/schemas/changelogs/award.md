@@ -3,6 +3,7 @@
 ### Minor changes since schema version 2
 
 * Add `aliases` to `identifyingProperties`.
+* Add `contact_pi`.
 
 ### Schema version 2
 

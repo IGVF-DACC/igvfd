@@ -69,6 +69,12 @@
                 "linkTo": "User"
             }
         },
+        "contact_pi": {
+            "title": "Contact P.I.",
+            "description": "The contact Principal Investigator of the grant.",
+            "type": "string",
+            "linkTo": "User"
+        },
         "project": {
             "title": "Project",
             "description": "The collection of biological data related to a single initiative, originating from a consortium.",
