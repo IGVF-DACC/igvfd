@@ -62,7 +62,9 @@ services:
       - "/igvfd/src/igvfd.egg-info"
     command: /scripts/pyramid/run-create-mapping.sh
     depends_on:
+      - postgres
       - opensearch
+      - localstack
 
   loader:
     build:
@@ -78,8 +80,9 @@ services:
       - "/igvfd/src/igvfd.egg-info"
     command: load-development
     depends_on:
-      - localstack
       - postgres
+      - opensearch
+      - localstack
 
   pyramid:
     build:
