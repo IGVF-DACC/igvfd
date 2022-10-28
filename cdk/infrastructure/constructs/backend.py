@@ -36,6 +36,9 @@ from infrastructure.constructs.queue import TransactionQueue
 from infrastructure.constructs.tasks.batchupgrade import BatchUpgrade
 from infrastructure.constructs.tasks.batchupgrade import BatchUpgradeProps
 
+from infrastructure.constructs.tasks.updatemapping import UpdateMapping
+from infrastructure.constructs.tasks.updatemapping import UpdateMappingProps
+
 from infrastructure.events.naming import get_event_source_from_config
 
 from infrastructure.multiplexer import Multiplexer
@@ -97,6 +100,7 @@ class Backend(Construct):
         self._enable_exec_command()
         self._configure_task_scaling()
         self._run_batch_upgrade_automatically()
+        self._run_update_mapping_automatically()
         self._add_alarms()
 
     def _define_postgres(self) -> None:
@@ -269,6 +273,17 @@ class Backend(Construct):
             self,
             'BatchUpgrade',
             props=BatchUpgradeProps(
+                config=self.props.config,
+                existing_resources=self.props.existing_resources,
+                fargate_service=self.fargate_service,
+            )
+        )
+
+    def _run_update_mapping_automatically(self) -> None:
+        self.update_mapping = UpdateMapping(
+            self,
+            'UpdateMapping',
+            props=UpdateMappingProps(
                 config=self.props.config,
                 existing_resources=self.props.existing_resources,
                 fargate_service=self.fargate_service,
