@@ -49,6 +49,8 @@ class UpdateMapping(Construct):
     event_detail_type: str
     event_target: EcsTask
     event_rule: Rule
+    event_trigger: AwsCustomResource
+    upgrade_folder: Asset
 
     def __init__(
             self,
@@ -64,6 +66,9 @@ class UpdateMapping(Construct):
         self._define_event_detail_type()
         self._define_event_target()
         self._define_event_rule()
+        self._define_upgrade_folder()
+        self._define_event_trigger()
+        self._ensure_rule_exists_before_trigger()
 
     def _define_event_source(self) -> None:
         self.event_source = get_event_source_from_config(
@@ -114,4 +119,51 @@ class UpdateMapping(Construct):
             targets=[
                 self.event_target,
             ]
+        )
+
+    def _define_upgrade_folder(self) -> None:
+        self.upgrade_folder = Asset(
+            self,
+            'UpgradeFolder',
+            path='../src/igvfd/upgrade',
+        )
+
+    def _define_event_trigger(self) -> None:
+        # Put UpgradeFolderChanged event onto EventBridge bus
+        # when the upgrade folder asset hash changes.
+        self.event_trigger = AwsCustomResource(
+            self,
+            'PutUpgradeFolderChangedEvent',
+            on_update=AwsSdkCall(
+                service='EventBridge',
+                action='putEvents',
+                parameters={
+                    'Entries': [
+                        {
+                            'DetailType': self.event_detail_type,
+                            'Source': self.event_source,
+                            'Detail': json.dumps({}),
+                        }
+                    ]
+                },
+                physical_resource_id=PhysicalResourceId.of(
+                    self.upgrade_folder.asset_hash
+                )
+            ),
+            log_retention=RetentionDays.ONE_DAY,
+            policy=AwsCustomResourcePolicy.from_sdk_calls(
+                resources=[
+                    self.props.existing_resources.bus.default.event_bus_arn,
+                ]
+            ),
+        )
+
+    def _grant_put_events_to_trigger(self) -> None:
+        self.props.existing_resources.bus.default.grant_put_events_to(
+            self.event_trigger
+        )
+
+    def _ensure_rule_exists_before_trigger(self):
+        self.event_trigger.node.add_dependency(
+            self.event_rule
         )
