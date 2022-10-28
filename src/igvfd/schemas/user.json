@@ -113,6 +113,14 @@
             ]
         }
     },
+    "columns": {
+        "title": {
+            "title": "Title"
+        },
+        "lab": {
+            "title": "Lab"
+        }
+    },
     "boost_values": {
         "title": 1.0
     },

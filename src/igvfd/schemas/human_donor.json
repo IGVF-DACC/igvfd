@@ -126,5 +126,40 @@
             "type": "array"
         }
     },
+    "columns": {
+        "accession": {
+            "title": "Accession"
+        },
+        "aliases": {
+            "title": "Aliases"
+        },
+        "taxa": {
+            "title": "Taxa"
+        },
+        "sex": {
+            "title": "Sex"
+        },
+        "award": {
+            "title": "Award"
+        },
+        "ethnicity": {
+            "title": "Ethnicity"
+        },
+        "lab": {
+            "title": "Lab"
+        },
+        "status": {
+            "title": "Status"
+        },
+        "submitted_by": {
+            "title": "Submitted By"
+        }
+    },
+    "boost_values": {
+        "accession": 1.0,
+        "@type": 1.0,
+        "taxa": 1.0,
+        "ethinicity": 1.0
+    },
     "changelog": "/profiles/changelogs/human_donor.md"
 }

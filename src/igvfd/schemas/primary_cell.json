@@ -82,5 +82,36 @@
             }
         }
     },
+    "columns": {
+        "accession": {
+            "title": "Accession"
+        },
+        "donors": {
+            "title": "Donors"
+        },
+        "date_obtained": {
+            "title": "Date Obtained"
+        },
+        "taxa": {
+            "title": "Taxa"
+        },
+        "award": {
+            "title": "Award"
+        },
+        "lab": {
+            "title": "Lab"
+        },
+        "status": {
+            "title": "Status"
+        },
+        "submitted_by": {
+            "title": "Submitted By"
+        }
+    },
+    "boost_values": {
+        "accession": 1.0,
+        "@type": 1.0,
+        "taxa": 1.0
+    },
     "changelog": "/profiles/changelogs/primary_cell.md"
 }
