@@ -58,6 +58,7 @@ class BackendStack(cdk.Stack):
                 postgres_multiplexer=postgres_multiplexer,
                 opensearch=opensearch,
                 transaction_queue=self.transaction_queue,
+                invalidation_queue=self.invalidation_queue,
             )
         )
         self.indexer = Indexer(
