@@ -76,6 +76,7 @@ class Indexer(Construct):
         self.invalidation_service = QueueProcessingFargateService(
             self,
             'InvalidationService',
+            service_name='InvalidationService',
             image=self.services_image,
             cluster=self.props.cluster,
             queue=self.props.transaction_queue.queue,
@@ -131,6 +132,7 @@ class Indexer(Construct):
         self.indexing_service = QueueProcessingFargateService(
             self,
             'IndexingService',
+            service_name='IndexingService',
             image=self.services_image,
             cluster=self.props.cluster,
             queue=self.props.invalidation_queue.queue,

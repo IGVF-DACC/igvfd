@@ -131,6 +131,7 @@ class Backend(Construct):
         self.fargate_service = ApplicationLoadBalancedFargateService(
             self,
             'Fargate',
+            service_name='Portal',
             vpc=self.props.existing_resources.network.vpc,
             cpu=self.props.cpu,
             desired_count=self.props.desired_count,
