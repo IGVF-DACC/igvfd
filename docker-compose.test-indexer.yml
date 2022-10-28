@@ -63,6 +63,10 @@ services:
     command: /scripts/pyramid/run-development.sh
     ports:
       - "6543:6543"
+    depends_on:
+      - postgres
+      - localstack
+      - opensearch
 
   nginx:
     build:
@@ -89,6 +93,9 @@ services:
       - RESOURCES_INDEX=snovault-resources
     command: run-invalidation-service
     depends_on:
+      - postgres
+      - opensearch
+      - localstack
       - pyramid
 
   indexing-service:
@@ -105,6 +112,9 @@ services:
       - RESOURCES_INDEX=snovault-resources
     command: run-indexing-service
     depends_on:
+      - postgres
+      - opensearch
+      - localstack
       - pyramid
 
   indexer-tests:
