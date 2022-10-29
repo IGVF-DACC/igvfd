@@ -159,7 +159,7 @@
         "accession": 1.0,
         "@type": 1.0,
         "taxa": 1.0,
-        "ethinicity": 1.0
+        "ethnicity": 1.0
     },
     "changelog": "/profiles/changelogs/human_donor.md"
 }
