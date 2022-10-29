@@ -60,14 +60,6 @@
             "description": "Link to the protocol for conducting the assay on Protocols.io.",
             "type": "string",
             "pattern": "^https://www\\.protocols\\.io/(\\S*)$"
-        },
-        "purpose": {
-            "title": "Purpose",
-            "description": "Purpose of the measurement conducted.",
-            "type": "string",
-            "enum": [
-                "calibration"
-            ]
         }
     },
     "changelog": "/profiles/changelogs/measurement_set.md"
