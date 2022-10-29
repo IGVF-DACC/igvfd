@@ -184,6 +184,9 @@
         }
     },
     "columns": {
+        "title": {
+            "title": "Title"
+        },
         "geneid": {
             "title": "NCBI Entrez GeneID"
         },
@@ -195,6 +198,9 @@
         },
         "dbxrefs": {
             "title": "External resources"
+        },
+        "status": {
+            "title": "Status"
         }
     },
     "boost_values": {
