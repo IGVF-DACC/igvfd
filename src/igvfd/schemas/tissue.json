@@ -90,11 +90,10 @@
         },
         "ccf_id": {
             "title": "Common coordinate framework identifier",
-            "description": "This identifier associates an entry from the HubMap Consortium for specimens, biological structures, and spatial positions.",
+            "description": "HubMap Common Coordinate Framework unique identifier corresponding to the organ, biological structure, and spatial location of the tissue specimen.",
             "comment": "This identifier will be later linked to: https://portal.hubmapconsortium.org/ccf-eui",
             "type": "string",
-            "format": "uuid",
-            "nullable": true
+            "format": "uuid"
         },
         "preservation_method": {
             "title": "Preservation Method",
