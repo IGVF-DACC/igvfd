@@ -42,8 +42,8 @@
         "schema_version": {
             "default": "1"
         },
-        "assay_title": {
-            "title": "Assay Title",
+        "assay_term": {
+            "title": "Assay Term",
             "description": "The assay used to produce data in this measurement set.",
             "comment": "See assay_term.json for available identifiers.",
             "type": "string",
