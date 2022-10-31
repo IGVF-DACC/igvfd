@@ -7,7 +7,7 @@
     "required": [
         "award",
         "lab",
-        "assay_title"
+        "assay_term"
     ],
     "identifyingProperties": [
         "uuid",
