@@ -2,6 +2,9 @@ import json
 
 from constructs import Construct
 
+from aws_cdk import BundlingOptions
+from aws_cdk import DockerImage
+
 from aws_cdk.aws_logs import RetentionDays
 
 from aws_cdk.custom_resources import AwsCustomResource
@@ -50,8 +53,7 @@ class UpdateMapping(Construct):
     event_target: EcsTask
     event_rule: Rule
     event_trigger: AwsCustomResource
-    upgrade_folder: Asset
-    schemas_folder: Asset
+    mapping_folder: Asset
 
     def __init__(
             self,
@@ -67,8 +69,7 @@ class UpdateMapping(Construct):
         self._define_event_detail_type()
         self._define_event_target()
         self._define_event_rule()
-        self._define_upgrade_folder()
-        self._define_schemas_folder()
+        self._define_mapping_folder()
         self._define_event_trigger()
         self._ensure_rule_exists_before_trigger()
 
@@ -123,18 +124,24 @@ class UpdateMapping(Construct):
             ]
         )
 
-    def _define_upgrade_folder(self) -> None:
-        self.upgrade_folder = Asset(
-            self,
-            'UpgradeFolder',
-            path='../src/igvfd/upgrade',
+    def _define_mapping_folder(self) -> None:
+        image = DockerImage.from_build(
+            '../',
+            file='docker/pyramid/Dockerfile',
         )
-
-    def _define_schemas_folder(self) -> None:
-        self.schemas_folder = Asset(
+        self.mapping_folder = Asset(
             self,
-            'SchemasFolder',
-            path='../src/igvfd/schemas',
+            'MappingFolder',
+            path='../',
+            bundling=BundlingOptions(
+                image=image,
+                environment={
+                    'AWS_DEFAULT_REGION': 'us-west-2',
+                },
+                command=[
+                    '/scripts/pyramid/put-mapping-in-asset-output-folder.sh'
+                ],
+            ),
         )
 
     def _define_event_trigger(self) -> None:
@@ -156,7 +163,7 @@ class UpdateMapping(Construct):
                     ]
                 },
                 physical_resource_id=PhysicalResourceId.of(
-                    f'{self.upgrade_folder.asset_hash}-{self.schemas_folder.asset_hash}'
+                    f'{self.mapping_folder.asset_hash}'
                 )
             ),
             log_retention=RetentionDays.ONE_DAY,
