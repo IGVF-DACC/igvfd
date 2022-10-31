@@ -49,12 +49,6 @@
             "type": "string",
             "linkTo": "AssayTerm"
         },
-        "library": {
-            "title": "Library",
-            "description": "Link to sequencing library.",
-            "type": "string",
-            "linkTo": "Library"
-        },
         "protocol": {
             "title": "Protocol",
             "description": "Link to the protocol for conducting the assay on Protocols.io.",
