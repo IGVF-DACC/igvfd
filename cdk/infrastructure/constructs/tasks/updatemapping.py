@@ -146,10 +146,10 @@ class UpdateMapping(Construct):
 
     def _define_event_trigger(self) -> None:
         # Put event onto EventBridge bus
-        # when the upgrade folder asset hash changes.
+        # when the mapping folder asset hash changes.
         self.event_trigger = AwsCustomResource(
             self,
-            'PutUpgradeFolderChangedEvent',
+            'PutMappingFolderChangedEvent',
             on_update=AwsSdkCall(
                 service='EventBridge',
                 action='putEvents',
