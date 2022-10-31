@@ -2,11 +2,9 @@
     {
         "uuid": "0f96ba0c-3edb-4289-a76f-aa5f5d1a56d2",
         "rsid": "rs143065131",
-        "associated_genes": [
-            "/genes/ENSG00000158473.2/"
-        ],
-        "associated_traits": [
-            "/phenotype-terms/j-michael-cherry:alzheimers-disease/"
+        "selection_criteria": [
+            "This variant was selected for by some lab due to its association with developing schizophrenia.",
+            "The variant was selected by another lab due to its frequency in an understudied population"
         ],
         "ref": "G",
         "alt": "A",
@@ -20,6 +18,7 @@
     },
     {
         "uuid": "8138364d-f96b-42b9-a719-42199818c6fc",
+        "chromosome": "chr12",
         "ref": "TG",
         "alt": "GC",
         "assembly": "GRCh38",

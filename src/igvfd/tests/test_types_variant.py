@@ -8,7 +8,6 @@ def test_human_genomic_variant_keys(testapp):
         'chromosome': 'chr1',
         'assembly': 'GRCh38',
         'position': 1000000,
-        'rsid': 'rs100',
         'refseq_id': 'NT_999.00'
     }
     response = testapp.post_json('/human_genomic_variant', item, status=201)

@@ -17,21 +17,11 @@
         "schema_version": {
             "default": "1"
         },
-        "associated_genes": {
-            "title": "Associated Genes",
+        "selection_criteria": {
+            "title": "Selection Criteria",
             "type": "array",
             "items": {
-                "title": "The genes associated with this variant.",
-                "linkTo": "Gene",
-                "type": "string"
-            }
-        },
-        "associated_traits": {
-            "title": "Associated Traits",
-            "type": "array",
-            "items": {
-                "title": "The phenotype traits this variant is associated with and selected for.",
-                "linkTo": "PhenotypeTerm",
+                "title": "The reason this variant was selected for study.",
                 "type": "string"
             }
         },

@@ -52,7 +52,7 @@ class Variant(Item):
 
 @collection(
     name='human-genomic-variants',
-    unique_key='human_genomic_variant:rsid_alt',
+    unique_key='human_genomic_variant:refseq_id_alt',
     properties={
         'title': 'Human genomic variant',
         'description': 'Listing of human genomic variants',
@@ -63,26 +63,6 @@ class HumanGenomicVariant(Variant):
 
     def unique_keys(self, properties):
         keys = super(HumanGenomicVariant, self).unique_keys(properties)
-        if 'rsid' in properties:
-            value = u'{rsid}/{alt}'.format(**properties)
-            keys.setdefault('human_genomic_variant:rsid_alt', []).append(value)
-        return keys
-
-
-@collection(
-    name='human-protein-variants',
-    unique_key='human_protein_variant:rsid_alt',
-    properties={
-        'title': 'Human protein variant',
-        'description': 'Listing of human protein variants',
-    })
-class HumanProteinVariant(Variant):
-    item_type = 'human_protein_variant'
-    schema = load_schema('igvfd:schemas/human_protein_variant.json')
-
-    def unique_keys(self, properties):
-        keys = super(HumanProteinVariant, self).unique_keys(properties)
-        if 'rsid' in properties:
-            value = u'{rsid}/{alt}'.format(**properties)
-            keys.setdefault('human_protein_variant:rsid_alt', []).append(value)
+        value = u'{refseq_id}/{alt}'.format(**properties)
+        keys.setdefault('human_genomic_variant:refseq_id_alt', []).append(value)
         return keys
