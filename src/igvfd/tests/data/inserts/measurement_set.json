@@ -15,7 +15,7 @@
         "sample": [
             "j-michael-cherry:treated_tissue"
         ],
-        "assay_title": "j-michael-cherry:starr-seq",
+        "assay_term": "j-michael-cherry:starr-seq",
         "protocol": "https://www.protocols.io/test-protocols-url-12345"
     }
 ]
