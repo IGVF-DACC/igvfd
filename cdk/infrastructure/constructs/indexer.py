@@ -95,7 +95,7 @@ class Indexer(Construct):
                     change=1,
                 ),
                 ScalingInterval(
-                    lower=500,
+                    lower=1000,
                     change=2,
                 )
             ],
@@ -151,7 +151,7 @@ class Indexer(Construct):
                     change=1,
                 ),
                 ScalingInterval(
-                    lower=500,
+                    lower=1000,
                     change=2,
                 )
             ],
