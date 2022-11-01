@@ -33,8 +33,7 @@
         },
         "rsid": {
             "title": "Variant ID",
-            "description": "An external ID for the variant like dbSNP.",
-            "comment": "This is currently only accepting rsIDs.",
+            "description": "An external ID for the variant from dbSNP.",
             "type": "string",
             "pattern": "rs[0-9]+"
         },
@@ -45,7 +44,7 @@
         },
         "chromosome": {
             "title": "Chromosome",
-            "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX.",
+            "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX. May also specify the variant is in the mitochondrial DNA (mDNA).",
             "type": "string",
             "enum": [
                 "chr1",
@@ -71,7 +70,8 @@
                 "chr21",
                 "chr22",
                 "chr23",
-                "chr24",
+                "chrX",
+                "chrY",
                 "mDNA"
             ]
         },
@@ -79,16 +79,17 @@
             "title": "RefSeq Identifier",
             "description": "The RefSeq identifier for this variant. If there is no RefSeq identifier available for this variant, the seqeunce should be used instead.",
             "type": "string",
-            "pattern": "^((NC_|NT_|NW_)[0-9]+.[0-9]{1,2})$|^[ATCG]*$"
+            "pattern": "^((NC_)[0-9]{6}.[0-9]{1,2})$|^[ATCG]*$"
         },
         "associated_gwas": {
             "title": "Associated Genome-wide Association Studies (GWAS)",
             "type": "array",
             "items": {
-                "description": "Genome-wide association studies which distinguished this variant as potentially causative and from which it was selected from.",
+                "description": "Genome-wide association studies this variant was distinguished and selected from.",
                 "comment": "This should be submitted as the accession number of the GWAS from the NHGRI-EBI Catalog of human genome-wide association studies.",
                 "type": "string",
-                "pattern": "GCST[0-9]+"
+                "pattern": "GCST[0-9]+",
+                "minItems": 1
             }
         }
     },

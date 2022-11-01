@@ -1,6 +1,6 @@
 {
     "title": "Variant",
-    "description": "Schema for submitting a variant.",
+    "description": "Abstract schema for variants.",
     "$id": "/profiles/variant.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
@@ -29,7 +29,7 @@
             "title": "Reference Sequence",
             "description": "The sequence found in this position in the reference.",
             "type": "string",
-            "pattern": "^[ATCG]*$|^-$"
+            "pattern": "^[ATCG]*$"
         },
         "alt": {
             "title": "Variant Sequence",
@@ -48,9 +48,9 @@
         },
         "position": {
             "title": "Position",
-            "description": "The location of the variant. The coordinate should be in VRS format i.e. represented in 1-indexed and inter-residue.",
+            "description": "The location of the variant. The coordinates should be represented in 1-indexed and inter-residue format.",
             "type": "integer",
-            "minimum": 0
+            "minimum": 1
         }
     },
     "changelog": "/profiles/changelogs/variant.md"

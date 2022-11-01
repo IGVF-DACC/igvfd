@@ -5,7 +5,7 @@ def test_patch_variant(testapp, human_genomic_variant):
     res = testapp.patch_json(
         human_genomic_variant['@id'],
         {
-            'ref': '-',
+            'ref': 'C',
             'alt': 'G',
             'rsid': 'rs100',
             'chromosome': 'chr2',
@@ -43,30 +43,36 @@ def test_refseq_regex(testapp, human_genomic_variant):
     res = testapp.patch_json(
         human_genomic_variant['@id'],
         {
-            'refseq_id': 'NT_999.00'
+            'refseq_id': 'NC_123456.00'
         })
     assert res.status_code == 200
     res = testapp.patch_json(
         human_genomic_variant['@id'],
         {
-            'refseq_id': 'NT_999.000'
+            'refseq_id': 'NC_123456.000'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         human_genomic_variant['@id'],
         {
-            'refseq_id': 'NT_999A.00'
+            'refseq_id': 'NC_12345A.00'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         human_genomic_variant['@id'],
         {
-            'refseq_id': 'MT_999A.00'
+            'refseq_id': 'NC_1234567.00'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         human_genomic_variant['@id'],
         {
-            'refseq_id': 'NW_999.00'
+            'refseq_id': 'NT_123456.00'
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        human_genomic_variant['@id'],
+        {
+            'refseq_id': 'NC_654321.09'
         })
     assert res.status_code == 200
