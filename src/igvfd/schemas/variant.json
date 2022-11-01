@@ -48,7 +48,7 @@
         },
         "position": {
             "title": "Position",
-            "description": "The location of the variant. The coordinates should be represented in 1-indexed and inter-residue format.",
+            "description": "The location of the variant. The coordinate should be represented in 1-indexed and inter-residue format.",
             "type": "integer",
             "minimum": 1
         }
