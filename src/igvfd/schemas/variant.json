@@ -23,7 +23,7 @@
             "items": {
                 "title": "The reason this variant was selected for study.",
                 "type": "string",
-                "comment": ""
+                "comment": "Each lab may submit a line of text of the details for their own selection criteria."
             }
         },
         "ref": {
