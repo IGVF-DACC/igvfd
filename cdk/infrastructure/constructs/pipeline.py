@@ -81,6 +81,8 @@ class BasicSelfUpdatingPipeline(Construct):
                 'cd ./cdk',
                 'python -m venv .venv',
                 '. .venv/bin/activate',
+                'echo $HOME/.cdk/cdk-docker-creds.json',
+                'docker-credential-cdk-assets',
                 'pip install -r requirements.txt -r requirements-dev.txt',
                 'pytest tests/',
                 'cdk synth -v -c branch=$BRANCH -c config-name=$CONFIG_NAME',
