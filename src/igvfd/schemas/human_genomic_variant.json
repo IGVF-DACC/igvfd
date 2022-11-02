@@ -32,8 +32,8 @@
             "default": "1"
         },
         "rsid": {
-            "title": "Variant ID",
-            "description": "An external ID for the variant from dbSNP.",
+            "title": "RS Identifier",
+            "description": "An NCBI assigned reference SNP cluster ID for the variant from dbSNP.",
             "type": "string",
             "pattern": "rs[0-9]+"
         },
@@ -71,12 +71,12 @@
                 "chr22",
                 "chrX",
                 "chrY",
-                "mDNA"
+                "chrM"
             ]
         },
         "refseq_id": {
-            "title": "RefSeq Identifier",
-            "description": "The RefSeq identifier for this variant. If there is no RefSeq identifier available for this variant, the seqeunce should be used instead.",
+            "title": "RefSeq Sequence Identifier",
+            "description": "The RefSeq sequence identifier for this variant. If there is no RefSeq sequence identifier available for this variant, the seqeunce should be submitted instead.",
             "type": "string",
             "pattern": "^((NC_)[0-9]{6}.[0-9]{1,2})$|^[ATCG]*$"
         },

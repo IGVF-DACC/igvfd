@@ -25,7 +25,7 @@ class Variant(Item):
 
 @collection(
     name='human-genomic-variants',
-    unique_key='human_genomic_variant:refseq_id_alt',
+    unique_key='human_genomic_variant:refseq_id_position_ref_alt',
     properties={
         'title': 'Human genomic variant',
         'description': 'Listing of human genomic variants',
@@ -36,6 +36,6 @@ class HumanGenomicVariant(Variant):
 
     def unique_keys(self, properties):
         keys = super(HumanGenomicVariant, self).unique_keys(properties)
-        value = u'{refseq_id}/{alt}'.format(**properties)
-        keys.setdefault('human_genomic_variant:refseq_id_alt', []).append(value)
+        value = u'{refseq_id}/{position}/{ref}/{alt}'.format(**properties)
+        keys.setdefault('human_genomic_variant:refseq_id_position_ref_alt', []).append(value)
         return keys

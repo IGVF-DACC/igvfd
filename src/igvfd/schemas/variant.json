@@ -18,11 +18,12 @@
             "default": "1"
         },
         "selection_criteria": {
-            "title": "Selection Criteria",
+            "title": "Variant Selection Criteria Details",
             "type": "array",
             "items": {
                 "title": "The reason this variant was selected for study.",
-                "type": "string"
+                "type": "string",
+                "comment": ""
             }
         },
         "ref": {
@@ -32,14 +33,14 @@
             "pattern": "^[ATCG]*$"
         },
         "alt": {
-            "title": "Variant Sequence",
+            "title": "Alternative Sequence",
             "description": "The sequence found in this position in the variant.",
             "type": "string",
             "pattern": "^[ATCG]*$|^-$"
         },
         "assembly": {
-            "title": "Mapping Assembly",
-            "description": "The genome assembly to which coordinates relate. e.g. GRCh38.",
+            "title": "Genome Assembly",
+            "description": "The genome assembly to which variant coordinates relate.",
             "type": "string",
             "enum": [
                 "GRCh38",
@@ -48,7 +49,7 @@
         },
         "position": {
             "title": "Position",
-            "description": "The location of the variant. The coordinate should be represented in 1-indexed and inter-residue format.",
+            "description": "The location of the variant. The coordinate should be represented in 1-indexed format.",
             "type": "integer",
             "minimum": 1
         }
