@@ -1,6 +1,49 @@
 import pytest
 
 
+def test_post_variant(testapp):
+    item = {
+        'ref': 'A',
+        'alt': 'G',
+        'chromosome': 'chr1',
+        'assembly': 'GRCh38',
+        'position': 1000000
+    }
+    response = testapp.post_json('/human_genomic_variant', item, expect_errors=True)
+    assert response.status_code == 422
+    item = {
+        'ref': 'A',
+        'alt': 'G',
+        'chromosome': 'chr1',
+        'assembly': 'GRCh38',
+        'position': 1000000,
+        'refseq_id': 'NC_000001.5'
+    }
+    response = testapp.post_json('/human_genomic_variant', item)
+    assert response.status_code == 201
+    item = {
+        'ref': 'A',
+        'alt': 'G',
+        'chromosome': 'chr1',
+        'assembly': 'GRCh38',
+        'position': 1000000,
+        'reference_sequence': 'ACTG'
+    }
+    response = testapp.post_json('/human_genomic_variant', item)
+    assert response.status_code == 201
+    item = {
+        'ref': 'A',
+        'alt': 'G',
+        'chromosome': 'chr1',
+        'assembly': 'GRCh38',
+        'position': 1000000,
+        'refseq_id': 'NC_000001.5',
+        'reference_sequence': 'ACTG'
+    }
+    response = testapp.post_json('/human_genomic_variant', item, expect_errors=True)
+    assert response.status_code == 422
+
+
 def test_patch_variant(testapp, human_genomic_variant):
     res = testapp.patch_json(
         human_genomic_variant['@id'],

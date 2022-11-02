@@ -4,11 +4,25 @@
     "$id": "/profiles/human_genomic_variant.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
-    "required": [
-        "ref",
-        "alt",
-        "position",
-        "assembly"
+    "anyOf": [
+        {
+            "required": [
+                "ref",
+                "alt",
+                "position",
+                "assembly",
+                "refseq_id"
+            ]
+        },
+        {
+            "required": [
+                "ref",
+                "alt",
+                "position",
+                "assembly",
+                "reference_sequence"
+            ]
+        }
     ],
     "identifyingProperties": [
         "uuid",
