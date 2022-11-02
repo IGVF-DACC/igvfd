@@ -44,7 +44,7 @@
         },
         "chromosome": {
             "title": "Chromosome",
-            "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX. May also specify the variant is in the mitochondrial DNA (mDNA).",
+            "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX. May also specify the variant is in the mitochondrial DNA (chrM).",
             "type": "string",
             "enum": [
                 "chr1",
