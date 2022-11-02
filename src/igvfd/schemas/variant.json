@@ -27,14 +27,14 @@
             }
         },
         "ref": {
-            "title": "Reference Sequence",
-            "description": "The sequence found in this position in the reference.",
+            "title": "Reference Allele",
+            "description": "The reference allele of this variant.",
             "type": "string",
             "pattern": "^[ATCG]*$"
         },
         "alt": {
-            "title": "Alternative Sequence",
-            "description": "The sequence found in this position in the variant.",
+            "title": "Alternative Allele",
+            "description": "The alternative allele of this variant.",
             "type": "string",
             "pattern": "^[ATCG]*$|^-$"
         },
@@ -49,7 +49,7 @@
         },
         "position": {
             "title": "Position",
-            "description": "The location of the variant. The coordinate should be represented in 1-indexed format.",
+            "description": "The position of the variant in the reference sequence, specified using 1-indexed coordinates system.",
             "type": "integer",
             "minimum": 1
         }

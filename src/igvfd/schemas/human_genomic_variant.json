@@ -5,7 +5,6 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
-        "refseq_id",
         "ref",
         "alt",
         "position",
@@ -27,6 +26,24 @@
             "$ref": "mixins.json#/standard_status"
         }
     ],
+    "dependentSchemas": {
+        "refseq_id": {
+            "not": {
+                "required": [
+                    "reference_sequence"
+                ]
+            },
+            "comment": "Specification of refseq_id is mutually exclusive with specification of reference_sequence."
+        },
+        "reference_sequence": {
+            "not": {
+                "required": [
+                    "refseq_id"
+                ]
+            },
+            "comment": "Specification of reference_sequence is mutually exclusive with specification of refseq_id."
+        }
+    },
     "properties": {
         "schema_version": {
             "default": "1"
@@ -76,9 +93,17 @@
         },
         "refseq_id": {
             "title": "RefSeq Sequence Identifier",
-            "description": "The RefSeq sequence identifier for this variant. If there is no RefSeq sequence identifier available for this variant, the seqeunce should be submitted instead.",
+            "description": "The RefSeq sequence identifier for this variant.",
+            "comment": "If there is no RefSeq sequence identifier available for this variant, 'reference_sequence' should be submitted instead.",
             "type": "string",
-            "pattern": "^((NC_)[0-9]{6}.[0-9]{1,2})$|^[ATCG]*$"
+            "pattern": "^((NC_)[0-9]{6}.[0-9]{1,2})$"
+        },
+        "reference_sequence": {
+            "title": "Reference Sequence",
+            "description": "The reference sequence for this variant.",
+            "comment": "This should only be submitted if there is no RefSeq sequence identifier available for submission.",
+            "type": "string",
+            "pattern": "^[ATCG]*$"
         },
         "associated_gwas": {
             "title": "Associated Genome-wide Association Studies (GWAS)",
