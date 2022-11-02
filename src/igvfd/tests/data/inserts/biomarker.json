@@ -1,0 +1,72 @@
+[
+    {
+        "name": "CD243",
+        "quantification": "-",
+        "biomarker_type": "cell-surface",
+        "synonyms": [
+            "ABC20",
+            "CD243",
+            "CLCS",
+            "GP170",
+            "MDR1",
+            "P-gp",
+            "PGY1"
+        ]
+    },
+    {
+        "name": "CD243",
+        "quantification": "+",
+        "biomarker_type": "cell-surface",
+        "synonyms": [
+            "ABC20",
+            "CD243",
+            "CLCS",
+            "GP170",
+            "MDR1",
+            "P-gp",
+            "PGY1"
+        ]
+    },
+    {
+        "name": "CD243",
+        "quantification": "low",
+        "biomarker_type": "cell-surface",
+        "synonyms": [
+            "ABC20",
+            "CD243",
+            "CLCS",
+            "GP170",
+            "MDR1",
+            "P-gp",
+            "PGY1"
+        ]
+    },
+    {
+        "name": "CD243",
+        "quantification": "intermediate",
+        "biomarker_type": "cell-surface",
+        "synonyms": [
+            "ABC20",
+            "CD243",
+            "CLCS",
+            "GP170",
+            "MDR1",
+            "P-gp",
+            "PGY1"
+        ]
+    },
+    {
+        "name": "CD243",
+        "quantification": "high",
+        "biomarker_type": "cell-surface",
+        "synonyms": [
+            "ABC20",
+            "CD243",
+            "CLCS",
+            "GP170",
+            "MDR1",
+            "P-gp",
+            "PGY1"
+        ]
+    }
+]

@@ -1,0 +1,70 @@
+{
+    "title": "Biomarker",
+    "description": "Schema for submitting a biomarker.",
+    "$id": "/profiles/biomarker.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "name",
+        "quantification"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "name_quantification"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        }
+    ],
+    "dependentSchemas": {},
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "name": {
+            "title": "Name",
+            "description": "The biomarker name.",
+            "type": "string",
+            "permission": "import_items"
+        },
+        "biomarker_type": {
+            "title": "Biomarker Type",
+            "description": "The biomarker type is what is being measured to determine the absence, presence or intensity of the biomarker.",
+            "type": "string",
+            "enum": [
+                "gene",
+                "rna",
+                "protein",
+                "cell-surface"
+            ],
+            "permission": "import_items"
+        },
+        "quantification": {
+            "title": "Quantification",
+            "description": "The biomarker association to the biosample, disease or other condition.  This can be the absence of the biomarker or the presence of the biomarker in some low, intermediate or high quantity.",
+            "type": "string",
+            "enum": [
+                "-",
+                "+",
+                "low",
+                "intermediate",
+                "high"
+            ],
+            "permission": "import_items"
+        },
+        "synonyms": {
+            "title": "Synonyms",
+            "description": "Alternate names for this biomarker.",
+            "comment": "These can vary depending on the type of biomarker.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "type": "string"
+            }
+        }
+    },
+    "changelog": "/profiles/changelogs/biomarker.md"
+}
