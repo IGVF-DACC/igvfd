@@ -48,7 +48,7 @@ class Indexer(Construct):
     services_image: ContainerImage
     invalidation_service: QueueProcessingFargateService
     indexing_service: QueueProcessingFargateService
-    portal_key: ISecret
+    portal_credentials: ISecret
 
     def __init__(
             self,
@@ -63,7 +63,7 @@ class Indexer(Construct):
         self._define_docker_assets()
         self._define_invalidation_service()
         self._allow_invalidation_service_to_write_to_invalidation_queue()
-        self._define_backend_key()
+        self._define_portal_credentials()
         self._define_indexing_service()
         self._allow_connections_to_opensearch()
 
@@ -121,12 +121,8 @@ class Indexer(Construct):
             self.invalidation_service.task_definition.task_role
         )
 
-    def _define_backend_key(self) -> None:
-        self.portal_key = SMSecret.from_secret_complete_arn(
-            self,
-            'PortalSecret',
-            'arn:aws:secretsmanager:us-west-2:109189702753:secret:indexer-portal-key-1CWWh7'
-        )
+    def _define_portal_credentials(self) -> None:
+        self.portal_credentials = self.props.existing_resources.portal_credentials.indexing_service_key
 
     def _define_indexing_service(self) -> None:
         self.indexing_service = QueueProcessingFargateService(
@@ -167,11 +163,11 @@ class Indexer(Construct):
             },
             secrets={
                 'BACKEND_KEY': Secret.from_secrets_manager(
-                    self.portal_key,
+                    self.portal_credentials,
                     'BACKEND_KEY',
                 ),
                 'BACKEND_SECRET_KEY': Secret.from_secrets_manager(
-                    self.portal_key,
+                    self.portal_credentials,
                     'BACKEND_SECRET_KEY',
                 )
             },
