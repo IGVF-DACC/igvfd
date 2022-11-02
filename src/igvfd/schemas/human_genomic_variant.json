@@ -33,7 +33,7 @@
         },
         "rsid": {
             "title": "RS Identifier",
-            "description": "An NCBI assigned reference SNP cluster ID for the variant from dbSNP.",
+            "description": "An NCBI assigned reference SNP cluster ID for the variant.",
             "type": "string",
             "pattern": "rs[0-9]+"
         },
