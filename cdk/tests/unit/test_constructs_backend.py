@@ -115,7 +115,7 @@ def test_constructs_backend_initialize_backend_construct(
                     ]
                 }
             },
-            'ServiceName': 'Portal',
+            'ServiceName': 'Backend',
             'Tags': [
                 {
                     'Key': 'branch',
