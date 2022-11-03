@@ -7,6 +7,7 @@ def test_constructs_existing_initialize_igvf_dev_construct():
     from infrastructure.constructs.existing.igvf_dev import Resources
     from shared_infrastructure.igvf_dev.domain import DemoDomain
     from shared_infrastructure.igvf_dev.secret import DockerHubCredentials
+    from shared_infrastructure.igvf_dev.secret import PortalCredentials
     from shared_infrastructure.igvf_dev.network import DemoNetwork
     stack = Stack(
         env=Environment(
@@ -26,6 +27,8 @@ def test_constructs_existing_initialize_igvf_dev_construct():
     assert isinstance(resources.domain.certificate.certificate_arn, str)
     assert isinstance(resources.docker_hub_credentials, DockerHubCredentials)
     assert isinstance(resources.docker_hub_credentials.secret.secret_arn, str)
+    assert isinstance(resources.portal_credentials, PortalCredentials)
+    assert isinstance(resources.portal_credentials.indexing_service_key.secret_arn, str)
     assert isinstance(resources.code_star_connection.arn, str)
     assert isinstance(resources.notification.encode_dcc_chatbot.slack_channel_configuration_arn, str)
     assert isinstance(resources.bus.default.event_bus_arn, str)
