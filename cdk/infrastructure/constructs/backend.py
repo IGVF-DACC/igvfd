@@ -115,7 +115,6 @@ class Backend(Construct):
         self.application_image = ContainerImage.from_asset(
             '../',
             file='docker/pyramid/Dockerfile',
-
         )
         self.nginx_image = ContainerImage.from_asset(
             '../',
