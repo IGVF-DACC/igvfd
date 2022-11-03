@@ -175,3 +175,35 @@ def config(instance_type):
             ('test', 'tag'),
         ]
     )
+
+
+@pytest.fixture
+def opensearch(stack, existing_resources, config):
+    from infrastructure.constructs.opensearch import Opensearch
+    from infrastructure.constructs.opensearch import OpensearchProps
+    return Opensearch(
+        stack,
+        'Opensearch',
+        props=OpensearchProps(
+            config=config,
+            existing_resources=existing_resources
+        )
+    )
+
+
+@pytest.fixture
+def transaction_queue(stack):
+    from infrastructure.constructs.queue import TransactionQueue
+    return TransactionQueue(
+        stack,
+        'TransactionQueue',
+    )
+
+
+@pytest.fixture
+def invalidation_queue(stack):
+    from infrastructure.constructs.queue import InvalidationQueue
+    return InvalidationQueue(
+        stack,
+        'InvalidationQueue',
+    )
