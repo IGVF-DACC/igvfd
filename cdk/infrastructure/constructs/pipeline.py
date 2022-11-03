@@ -77,7 +77,6 @@ class BasicSelfUpdatingPipeline(Construct):
                 'BRANCH': self.props.config.branch,
             },
             install_commands=[
-                'CDK_DOCKER_CREDS_FILE=$HOME/.cdk/cdk-docker-creds.json',
                 f'npm install -g aws-cdk@{self.props.config.common.aws_cdk_version}',
                 f'npm install -g cdk-assets@{self.props.config.common.aws_cdk_version}',
                 'mkdir $HOME/.docker',
@@ -90,10 +89,6 @@ class BasicSelfUpdatingPipeline(Construct):
             ],
             commands=[
                 'docker login',
-                'docker pull python:3.9.9-slim-buster',
-                'cat $HOME/.docker/config.json',
-                'cat $HOME/.cdk/cdk-docker-creds.json',
-                'ls $HOME/.cdk/',
                 'pytest tests/',
                 'cdk synth -v -c branch=$BRANCH -c config-name=$CONFIG_NAME',
             ],
