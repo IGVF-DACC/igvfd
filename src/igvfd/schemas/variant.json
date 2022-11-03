@@ -28,13 +28,13 @@
         },
         "ref": {
             "title": "Reference Allele",
-            "description": "The reference allele of this variant.",
+            "description": "The sequence of the reference allele for this variant.",
             "type": "string",
             "pattern": "^[ATCG]*$"
         },
         "alt": {
             "title": "Alternative Allele",
-            "description": "The alternative allele of this variant.",
+            "description": "The sequence of the alternative allele for this variant.",
             "type": "string",
             "pattern": "^[ATCG]*$|^-$"
         },
