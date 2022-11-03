@@ -2,7 +2,7 @@
     {
         "name": "CD243",
         "quantification": "-",
-        "biomarker_type": "cell-surface",
+        "classification": "cell surface protein",
         "synonyms": [
             "ABC20",
             "CD243",
@@ -16,7 +16,7 @@
     {
         "name": "CD243",
         "quantification": "+",
-        "biomarker_type": "cell-surface",
+        "classification": "cell surface protein",
         "synonyms": [
             "ABC20",
             "CD243",
@@ -30,7 +30,7 @@
     {
         "name": "CD243",
         "quantification": "low",
-        "biomarker_type": "cell-surface",
+        "classification": "cell surface protein",
         "synonyms": [
             "ABC20",
             "CD243",
@@ -44,7 +44,7 @@
     {
         "name": "CD243",
         "quantification": "intermediate",
-        "biomarker_type": "cell-surface",
+        "classification": "cell surface protein",
         "synonyms": [
             "ABC20",
             "CD243",
@@ -58,7 +58,7 @@
     {
         "name": "CD243",
         "quantification": "high",
-        "biomarker_type": "cell-surface",
+        "classification": "cell surface protein",
         "synonyms": [
             "ABC20",
             "CD243",
@@ -68,5 +68,10 @@
             "P-gp",
             "PGY1"
         ]
+    },
+    {
+        "name": "CD1",
+        "quantification": "+",
+        "classification": "cell surface protein"
     }
 ]

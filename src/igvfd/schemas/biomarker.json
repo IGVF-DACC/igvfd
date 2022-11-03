@@ -26,20 +26,16 @@
         "name": {
             "title": "Name",
             "description": "The biomarker name.",
-            "type": "string",
-            "permission": "import_items"
+            "type": "string"
         },
-        "biomarker_type": {
-            "title": "Biomarker Type",
-            "description": "The biomarker type is what is being measured to determine the absence, presence or intensity of the biomarker.",
+        "classification": {
+            "title": "Biomarker Classification",
+            "description": "Sample specific biomarker.",
             "type": "string",
             "enum": [
-                "gene",
-                "rna",
-                "protein",
-                "cell-surface"
-            ],
-            "permission": "import_items"
+                "cell surface protein",
+                "marker gene"
+            ]
         },
         "quantification": {
             "title": "Quantification",
@@ -51,8 +47,7 @@
                 "low",
                 "intermediate",
                 "high"
-            ],
-            "permission": "import_items"
+            ]
         },
         "synonyms": {
             "title": "Synonyms",
