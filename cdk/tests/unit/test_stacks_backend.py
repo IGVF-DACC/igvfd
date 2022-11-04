@@ -3,10 +3,10 @@ import pytest
 from aws_cdk.assertions import Template
 
 
-@pytest.mark.skip()
 def test_stacks_backend_initialize_backend_stack(config):
     from aws_cdk import App
     from infrastructure.stacks.postgres import PostgresStack
+    from infrastructure.stacks.opensearch import OpensearchStack
     from infrastructure.stacks.backend import BackendStack
     from infrastructure.constructs.existing import igvf_dev
     app = App()
@@ -17,11 +17,19 @@ def test_stacks_backend_initialize_backend_stack(config):
         config=config,
         env=igvf_dev.US_WEST_2,
     )
+    opensearch_stack = OpensearchStack(
+        app,
+        'TestOpensearchStack',
+        existing_resources_class=igvf_dev.Resources,
+        config=config,
+        env=igvf_dev.US_WEST_2,
+    )
     backend_stack = BackendStack(
         app,
         'TestBackendStack',
         config=config,
         postgres_multiplexer=postgres_stack.multiplexer,
+        opensearch=opensearch_stack.opensearch,
         existing_resources_class=igvf_dev.Resources,
         env=igvf_dev.US_WEST_2,
     )
@@ -143,4 +151,16 @@ def test_stacks_backend_initialize_backend_stack(config):
             },
             'ToPort': 5432
         }
+    )
+    template.resource_count_is(
+        'AWS::SQS::Queue',
+        4
+    )
+    template.resource_count_is(
+        'AWS::ECS::Service',
+        3
+    )
+    template.resource_count_is(
+        'AWS::Events::Rule',
+        2
     )
