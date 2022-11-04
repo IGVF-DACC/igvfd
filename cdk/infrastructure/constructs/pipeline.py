@@ -78,17 +78,12 @@ class BasicSelfUpdatingPipeline(Construct):
             },
             install_commands=[
                 f'npm install -g aws-cdk@{self.props.config.common.aws_cdk_version}',
-                f'npm install -g cdk-assets@{self.props.config.common.aws_cdk_version}',
-                'mkdir $HOME/.docker',
-                'value=\'{"credsStore": "cdk-assets"}\'',
-                'echo "${value}" > $HOME/.docker/config.json',
                 'cd ./cdk',
                 'python -m venv .venv',
                 '. .venv/bin/activate',
                 'pip install -r requirements.txt -r requirements-dev.txt',
             ],
             commands=[
-                'docker login',
                 'pytest tests/',
                 'cdk synth -v -c branch=$BRANCH -c config-name=$CONFIG_NAME',
             ],
