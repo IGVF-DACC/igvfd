@@ -137,6 +137,7 @@ def existing_resources(mocker, domain, network, secret, chatbot, bus, sns_topic)
     mock.domain = domain
     mock.network = network
     mock.docker_hub_credentials.secret = secret
+    mock.portal_credentials.indexing_service_key = secret
     mock.code_star_connection.arn = 'some-code-star-arn'
     mock.notification.encode_dcc_chatbot = chatbot
     mock.notification.alarm_notification_topic = sns_topic
@@ -206,4 +207,20 @@ def invalidation_queue(stack):
     return InvalidationQueue(
         stack,
         'InvalidationQueue',
+    )
+
+
+@pytest.fixture
+def application_load_balanced_fargate_service(stack, existing_resources):
+    from aws_cdk.aws_ecs import ContainerImage
+    from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedFargateService
+    from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedTaskImageOptions
+    return ApplicationLoadBalancedFargateService(
+        stack,
+        'TestApplicationLoadBalancedFargateService',
+        vpc=existing_resources.network.vpc,
+        assign_public_ip=True,
+        task_image_options=ApplicationLoadBalancedTaskImageOptions(
+            image=ContainerImage.from_registry('some-test-image')
+        ),
     )
