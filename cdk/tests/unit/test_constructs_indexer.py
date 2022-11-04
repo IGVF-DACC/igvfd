@@ -414,3 +414,7 @@ def test_constructs_indexer_initialize_indexer(
             }
         }
     )
+    template.resource_count_is(
+        'AWS::ApplicationAutoScaling::ScalingPolicy',
+        6
+    )
