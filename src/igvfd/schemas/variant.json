@@ -19,12 +19,8 @@
         },
         "selection_criteria": {
             "title": "Variant Selection Criteria Details",
-            "type": "array",
-            "items": {
-                "title": "The reason this variant was selected for study.",
-                "type": "string",
-                "comment": "Each lab may submit a line of text of their own selection criteria for this variant."
-            }
+            "description": "The motivation for selecting this variant for study.",
+            "type": "string"
         },
         "ref": {
             "title": "Reference Allele",
@@ -35,6 +31,7 @@
         "alt": {
             "title": "Alternative Allele",
             "description": "The sequence of the alternative allele for this variant.",
+            "comment": "For deletions in the sequence use '-'.",
             "type": "string",
             "pattern": "^[ATCG]*$|^-$"
         },
