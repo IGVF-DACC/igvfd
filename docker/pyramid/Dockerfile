@@ -1,4 +1,4 @@
-FROM python:3.9.9-slim-buster
+FROM public.ecr.aws/docker/library/python:3.9.9-slim-buster
 
 ENV PYTHONDONTWRITEBYTECODE 1
 
