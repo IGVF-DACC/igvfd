@@ -107,14 +107,14 @@
         },
         "refseq_id": {
             "title": "RefSeq Sequence Identifier",
-            "description": "The RefSeq sequence identifier for this variant.",
-            "comment": "If there is no RefSeq sequence identifier available for this variant, 'reference_sequence' should be submitted instead.",
+            "description": "The RefSeq sequence identifier for the sequence this variant is located in.",
+            "comment": "If there is no RefSeq sequence identifier available for the sequence this variant is located in, 'reference_sequence' should be submitted instead.",
             "type": "string",
             "pattern": "^((NC_)[0-9]{6}.[0-9]{1,2})$"
         },
         "reference_sequence": {
             "title": "Reference Sequence",
-            "description": "The reference sequence for this variant.",
+            "description": "The reference sequence for the sequence this variant is located in.",
             "comment": "This should only be submitted if there is no RefSeq sequence identifier available for submission.",
             "type": "string",
             "pattern": "^[ATCG]*$"
@@ -123,7 +123,7 @@
             "title": "Associated Genome-wide Association Studies (GWAS)",
             "type": "array",
             "items": {
-                "description": "Genome-wide association studies this variant was distinguished and selected from.",
+                "description": "Genome-wide association studies this variant was listed and selected from.",
                 "comment": "This should be submitted as the accession number of the GWAS from the NHGRI-EBI Catalog of human genome-wide association studies.",
                 "type": "string",
                 "pattern": "GCST[0-9]+",

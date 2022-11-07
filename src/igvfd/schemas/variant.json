@@ -1,6 +1,6 @@
 {
     "title": "Variant",
-    "description": "Abstract schema for variants.",
+    "description": "Abstract schema for submitting a variant.",
     "$id": "/profiles/variant.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
