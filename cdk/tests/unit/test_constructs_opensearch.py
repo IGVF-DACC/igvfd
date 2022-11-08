@@ -10,6 +10,7 @@ def test_constructs_opensearch_initialize_opensearch_construct(stack, vpc, insta
         stack,
         'Opensearch',
         props=OpensearchProps(
+            **config.opensearch,
             config=config,
             existing_resources=existing_resources
         )

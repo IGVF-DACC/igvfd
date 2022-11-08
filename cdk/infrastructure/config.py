@@ -2,6 +2,8 @@ from aws_cdk.aws_ec2 import InstanceType
 from aws_cdk.aws_ec2 import InstanceClass
 from aws_cdk.aws_ec2 import InstanceSize
 
+from aws_cdk.aws_opensearchservice import CapacityConfig
+
 from dataclasses import dataclass
 
 from typing import Any
@@ -33,6 +35,13 @@ config: Dict[str, Any] = {
                     }
                 ],
             },
+            'opensearch': {
+                'capacity': CapacityConfig(
+                    data_node_instance_type='t3.small.search',
+                    data_nodes=1,
+                ),
+                'volume_size': 10,
+            },
             'backend': {
                 'cpu': 1024,
                 'memory_limit_mib': 2048,
@@ -62,6 +71,13 @@ config: Dict[str, Any] = {
                         },
                     },
                 ],
+            },
+            'opensearch': {
+                'capacity': CapacityConfig(
+                    data_node_instance_type='t3.small.search',
+                    data_nodes=1,
+                ),
+                'volume_size': 10,
             },
             'backend': {
                 'cpu': 1024,
@@ -93,6 +109,7 @@ class Config:
     branch: str
     pipeline: str
     postgres: Dict[str, Any]
+    opensearch: Dict[str, Any]
     backend: Dict[str, Any]
     tags: List[Tuple[str, str]]
     common: Common = Common()

@@ -45,6 +45,15 @@ def instance_type():
 
 
 @pytest.fixture
+def capacity_config():
+    from aws_cdk.aws_opensearchservice import CapacityConfig
+    return CapacityConfig(
+        data_node_instance_type='t3.small.search',
+        data_nodes=1,
+    )
+
+
+@pytest.fixture
 def secret(stack):
     from aws_cdk.aws_secretsmanager import Secret
     return Secret(
@@ -146,7 +155,7 @@ def existing_resources(mocker, domain, network, secret, chatbot, bus, sns_topic)
 
 
 @pytest.fixture
-def config(instance_type):
+def config(instance_type, capacity_config):
     from infrastructure.config import Config
     return Config(
         name='demo',
@@ -164,6 +173,10 @@ def config(instance_type):
                     },
                 },
             ],
+        },
+        opensearch={
+            'capacity': capacity_config,
+            'volume_size': 10,
         },
         backend={
             'cpu': 1024,
@@ -186,6 +199,7 @@ def opensearch(stack, existing_resources, config):
         stack,
         'Opensearch',
         props=OpensearchProps(
+            **config.opensearch,
             config=config,
             existing_resources=existing_resources
         )

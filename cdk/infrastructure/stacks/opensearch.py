@@ -32,6 +32,7 @@ class OpensearchStack(Stack):
             self,
             'Opensearch',
             props=OpensearchProps(
+                **config.opensearch,
                 config=config,
                 existing_resources=self.existing_resources,
             )

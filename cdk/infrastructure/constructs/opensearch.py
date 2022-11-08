@@ -15,6 +15,7 @@ from aws_cdk.aws_opensearchservice import Domain
 from aws_cdk.aws_opensearchservice import EngineVersion
 from aws_cdk.aws_opensearchservice import EbsOptions
 from aws_cdk.aws_opensearchservice import LoggingOptions
+from aws_cdk.aws_opensearchservice import ZoneAwarenessConfig
 
 from infrastructure.config import Config
 
@@ -29,6 +30,15 @@ from dataclasses import dataclass
 class OpensearchProps:
     config: Config
     existing_resources: ExistingResources
+    capacity: CapacityConfig
+    volume_size: int
+    subnet_selection: SubnetSelection = SubnetSelection(
+        availability_zones=['us-west-2a'],
+        subnet_type=SubnetType.PRIVATE_ISOLATED
+    )
+    zone_awareness: ZoneAwarenessConfig = ZoneAwarenessConfig(
+        enabled=False,
+    )
 
 
 class Opensearch(Construct):
@@ -58,12 +68,9 @@ class Opensearch(Construct):
             self,
             'Domain',
             version=EngineVersion.OPENSEARCH_1_2,
-            capacity=CapacityConfig(
-                data_node_instance_type='t3.small.search',
-                data_nodes=1,
-            ),
+            capacity=self.props.capacity,
             ebs=EbsOptions(
-                volume_size=10,
+                volume_size=self.props.volume_size,
             ),
             logging=LoggingOptions(
                 app_log_enabled=True,
@@ -73,11 +80,9 @@ class Opensearch(Construct):
             removal_policy=RemovalPolicy.DESTROY,
             vpc=self.props.existing_resources.network.vpc,
             vpc_subnets=[
-                SubnetSelection(
-                    availability_zones=['us-west-2a'],
-                    subnet_type=SubnetType.PRIVATE_ISOLATED
-                ),
+                self.props.subnet_selection
             ],
+            zone_awareness=self.props.zone_awareness,
             advanced_options={
                 'indices.query.bool.max_clause_count': '8096'
             }
