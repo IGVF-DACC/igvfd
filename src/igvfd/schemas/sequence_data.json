@@ -39,47 +39,7 @@
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
-        ],
-        "paired_end": {
-            "comment": "Files with paired-end value 2 require a paired_with value and files with paired_end specified require run_type to be specified as paired-ended.",
-            "oneOf": [
-                {
-                    "required": [
-                        "paired_with",
-                        "run_type"
-                    ],
-                    "properties": {
-                        "paired_end": {
-                            "enum": [
-                                "2"
-                            ]
-                        },
-                        "run_type": {
-                            "enum": [
-                                "paired-ended"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "run_type"
-                    ],
-                    "properties": {
-                        "paired_end": {
-                            "enum": [
-                                "1"
-                            ]
-                        },
-                        "run_type": {
-                            "enum": [
-                                "paired-ended"
-                            ]
-                        }
-                    }
-                }
-            ]
-        }
+        ]
     },
     "type": "object",
     "properties": {
@@ -108,31 +68,6 @@
             "title": "Platform",
             "description": "The sequencing platform used to produce the sequence data.",
             "type": "string"
-        },
-        "run_type": {
-            "title": "Run Type",
-            "description": "Indicates if file is part of a single or paired end sequencing run.",
-            "type": "string",
-            "enum": [
-                "single-ended",
-                "paired-ended"
-            ]
-        },
-        "paired_end": {
-            "title": "Paired End",
-            "description": "Which read of the pair the file represents (in case of paired end sequencing run).",
-            "type": "string",
-            "enum": [
-                "1",
-                "2"
-            ]
-        },
-        "paired_with": {
-            "title": "Paired With",
-            "description": "The paired end fastq that corresponds with this file.",
-            "comment": "This is required for files with paired_end 2 and is calculated for files with paired_end 1.",
-            "type": "string",
-            "linkTo": "SequenceData"
         },
         "read_length": {
             "title": "Read Length",
