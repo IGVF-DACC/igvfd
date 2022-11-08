@@ -38,8 +38,6 @@
         "dbxrefs": [
             "SRA:SRR0000005"
         ],
-        "run_type": "paired-ended",
-        "paired_end": "1",
         "file_set": "j-michael-cherry:basic_analysis_set"
     },
     {
@@ -64,9 +62,6 @@
         "dbxrefs": [
             "SRA:SRR0000005"
         ],
-        "run_type": "paired-ended",
-        "paired_end": "2",
-        "paired_with": "j-michael-cherry:fastq_reads_file_paired_end_1",
         "file_set": "j-michael-cherry:basic_analysis_set"
     }
 ]
