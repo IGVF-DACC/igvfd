@@ -49,6 +49,18 @@ config: Dict[str, Any] = {
                 'max_capacity': 4,
                 'use_postgres_named': 'Postgres',
             },
+            'invalidation_service': {
+                'cpu': 256,
+                'memory_limit_mib': 512,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
+            },
+            'indexing_service': {
+                'cpu': 256,
+                'memory_limit_mib': 512,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
+            },
             'tags': [
                 ('time-to-live-hours', '72'),
                 ('turn-off-on-friday-night', 'yes'),
@@ -86,6 +98,18 @@ config: Dict[str, Any] = {
                 'max_capacity': 4,
                 'use_postgres_named': 'Postgres'
             },
+            'invalidation_service': {
+                'cpu': 256,
+                'memory_limit_mib': 512,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
+            },
+            'indexing_service': {
+                'cpu': 256,
+                'memory_limit_mib': 512,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
+            },
             'tags': [
             ]
         },
@@ -111,6 +135,8 @@ class Config:
     postgres: Dict[str, Any]
     opensearch: Dict[str, Any]
     backend: Dict[str, Any]
+    invalidation_service: Dict[str, Any]
+    indexing_service: Dict[str, Any]
     tags: List[Tuple[str, str]]
     common: Common = Common()
 

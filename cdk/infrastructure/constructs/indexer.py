@@ -26,8 +26,58 @@ from infrastructure.constructs.queue import InvalidationQueue
 from infrastructure.constructs.existing.types import ExistingResources
 
 from typing import Any
+from typing import List
 
 from dataclasses import dataclass
+from dataclasses import field
+
+
+@dataclass
+class InvalidationServiceProps:
+    cpu: int
+    memory_limit_mib: int
+    min_scaling_capacity: int
+    max_scaling_capacity: int
+    scaling_steps: List[ScalingInterval] = field(
+        default_factory=lambda: [
+            ScalingInterval(
+                upper=0,
+                change=-1,
+            ),
+            ScalingInterval(
+                lower=1,
+                change=1,
+            ),
+            ScalingInterval(
+                lower=1000,
+                change=2,
+            ),
+        ]
+    )
+
+
+@dataclass
+class IndexingServiceProps:
+    cpu: int
+    memory_limit_mib: int
+    min_scaling_capacity: int
+    max_scaling_capacity: int
+    scaling_steps: List[ScalingInterval] = field(
+        default_factory=lambda: [
+            ScalingInterval(
+                upper=0,
+                change=-1,
+            ),
+            ScalingInterval(
+                lower=1,
+                change=1,
+            ),
+            ScalingInterval(
+                lower=1000,
+                change=2,
+            ),
+        ]
+    )
 
 
 @dataclass
@@ -40,6 +90,8 @@ class IndexerProps:
     opensearch: Opensearch
     backend_url: str
     resources_index: str
+    invalidation_service_props: InvalidationServiceProps
+    indexing_service_props: IndexingServiceProps
 
 
 class Indexer(Construct):
@@ -81,24 +133,11 @@ class Indexer(Construct):
             cluster=self.props.cluster,
             queue=self.props.transaction_queue.queue,
             assign_public_ip=True,
-            cpu=256,
-            memory_limit_mib=512,
-            min_scaling_capacity=1,
-            max_scaling_capacity=2,
-            scaling_steps=[
-                ScalingInterval(
-                    upper=0,
-                    change=-1,
-                ),
-                ScalingInterval(
-                    lower=1,
-                    change=1,
-                ),
-                ScalingInterval(
-                    lower=1000,
-                    change=2,
-                )
-            ],
+            cpu=self.props.invalidation_service_props.cpu,
+            memory_limit_mib=self.props.invalidation_service_props.memory_limit_mib,
+            min_scaling_capacity=self.props.invalidation_service_props.min_scaling_capacity,
+            max_scaling_capacity=self.props.invalidation_service_props.max_scaling_capacity,
+            scaling_steps=self.props.invalidation_service_props.scaling_steps,
             enable_execute_command=True,
             circuit_breaker=DeploymentCircuitBreaker(
                 rollback=True,
@@ -133,24 +172,11 @@ class Indexer(Construct):
             cluster=self.props.cluster,
             queue=self.props.invalidation_queue.queue,
             assign_public_ip=True,
-            cpu=256,
-            memory_limit_mib=512,
-            min_scaling_capacity=1,
-            max_scaling_capacity=2,
-            scaling_steps=[
-                ScalingInterval(
-                    upper=0,
-                    change=-1,
-                ),
-                ScalingInterval(
-                    lower=1,
-                    change=1,
-                ),
-                ScalingInterval(
-                    lower=1000,
-                    change=2,
-                )
-            ],
+            cpu=self.props.indexing_service_props.cpu,
+            memory_limit_mib=self.props.indexing_service_props.memory_limit_mib,
+            min_scaling_capacity=self.props.indexing_service_props.min_scaling_capacity,
+            max_scaling_capacity=self.props.indexing_service_props.max_scaling_capacity,
+            scaling_steps=self.props.indexing_service_props.scaling_steps,
             enable_execute_command=True,
             circuit_breaker=DeploymentCircuitBreaker(
                 rollback=True,

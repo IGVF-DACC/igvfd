@@ -12,6 +12,8 @@ def test_constructs_indexer_initialize_indexer(
         invalidation_queue,
         opensearch,
 ):
+    from infrastructure.constructs.indexer import InvalidationServiceProps
+    from infrastructure.constructs.indexer import IndexingServiceProps
     from infrastructure.constructs.indexer import IndexerProps
     from infrastructure.constructs.indexer import Indexer
     indexer = Indexer(
@@ -26,6 +28,12 @@ def test_constructs_indexer_initialize_indexer(
             opensearch=opensearch,
             backend_url='some-url.test',
             resources_index='some-resources-index',
+            invalidation_service_props=InvalidationServiceProps(
+                **config.invalidation_service,
+            ),
+            indexing_service_props=IndexingServiceProps(
+                **config.indexing_service,
+            )
         )
     )
     template = Template.from_stack(stack)

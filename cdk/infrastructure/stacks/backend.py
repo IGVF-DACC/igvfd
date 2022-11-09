@@ -7,6 +7,8 @@ from infrastructure.config import Config
 from infrastructure.constructs.backend import Backend
 from infrastructure.constructs.backend import BackendProps
 
+from infrastructure.constructs.indexer import InvalidationServiceProps
+from infrastructure.constructs.indexer import IndexingServiceProps
 from infrastructure.constructs.indexer import IndexerProps
 from infrastructure.constructs.indexer import Indexer
 
@@ -73,5 +75,11 @@ class BackendStack(cdk.Stack):
                 opensearch=opensearch,
                 backend_url=f'https://{self.backend.domain_name}',
                 resources_index='snovault-resources',
+                invalidation_service_props=InvalidationServiceProps(
+                    **config.invalidation_service,
+                ),
+                indexing_service_props=IndexingServiceProps(
+                    **config.indexing_service,
+                )
             )
         )
