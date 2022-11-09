@@ -19,7 +19,7 @@
         },
         "selection_criteria": {
             "title": "Variant Selection Criteria Details",
-            "description": "The motivation for selecting this variant for study.",
+            "description": "The reasoning for selecting this variant for study.",
             "type": "string"
         },
         "ref": {

@@ -123,7 +123,7 @@
             "title": "Associated Genome-wide Association Studies (GWAS)",
             "type": "array",
             "items": {
-                "description": "Genome-wide association studies this variant was listed and selected from.",
+                "description": "Genome-wide association studies this variant was listed in and selected from.",
                 "comment": "This should be submitted as the accession number of the GWAS from the NHGRI-EBI Catalog of human genome-wide association studies.",
                 "type": "string",
                 "pattern": "GCST[0-9]+",
