@@ -1,4 +1,3 @@
-from this import d
 from snovault import (
     collection,
     load_schema,
