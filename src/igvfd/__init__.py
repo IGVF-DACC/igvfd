@@ -144,7 +144,7 @@ def json_from_path(path, default=None):
 
 def configure_sqs_client(config):
     from snovault.app import configure_sqs_client
-    # Turn of deprecation warning.
+    # Turn off deprecation warning.
     os.environ['BOTO_DISABLE_COMMONNAME'] = 'true'
     configure_sqs_client(config)
 
