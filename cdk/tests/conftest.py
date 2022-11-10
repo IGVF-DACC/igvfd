@@ -258,3 +258,16 @@ def application_load_balanced_fargate_service(stack, existing_resources):
             image=ContainerImage.from_registry('some-test-image')
         ),
     )
+
+
+@pytest.fixture
+def queue_processing_fargate_service(stack, existing_resources):
+    from aws_cdk.aws_ecs import ContainerImage
+    from aws_cdk.aws_ecs_patterns import QueueProcessingFargateService
+    return QueueProcessingFargateService(
+        stack,
+        'QueueProcessingFargateService',
+        vpc=existing_resources.network.vpc,
+        assign_public_ip=True,
+        image=ContainerImage.from_registry('some-test-image')
+    )
