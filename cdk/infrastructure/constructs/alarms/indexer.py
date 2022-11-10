@@ -52,7 +52,7 @@ class InvalidationServiceAlarms(Construct):
     def _add_cpu_alarm(self) -> None:
         cpu_alarm = self.props.fargate_service.service.metric_cpu_utilization().create_alarm(
             self,
-            'InvalidationServiceCPUAlarm',
+            'CPUAlarm',
             evaluation_periods=2,
             threshold=CPU_ALARM_THRESHOLD_PERCENT,
         )
@@ -66,7 +66,7 @@ class InvalidationServiceAlarms(Construct):
     def _add_memory_alarm(self) -> None:
         memory_alarm = self.props.fargate_service.service.metric_memory_utilization().create_alarm(
             self,
-            'InvalidationServiceMemoryAlarm',
+            'MemoryAlarm',
             evaluation_periods=1,
             threshold=MEMORY_ALARM_THRESHOLD_PERCENT,
         )
@@ -112,7 +112,7 @@ class IndexingServiceAlarms(Construct):
     def _add_cpu_alarm(self) -> None:
         cpu_alarm = self.props.fargate_service.service.metric_cpu_utilization().create_alarm(
             self,
-            'IndexingServiceCPUAlarm',
+            'CPUAlarm',
             evaluation_periods=2,
             threshold=CPU_ALARM_THRESHOLD_PERCENT,
         )
@@ -126,7 +126,7 @@ class IndexingServiceAlarms(Construct):
     def _add_memory_alarm(self) -> None:
         memory_alarm = self.props.fargate_service.service.metric_memory_utilization().create_alarm(
             self,
-            'IndexingServiceMemoryAlarm',
+            'MemoryAlarm',
             evaluation_periods=1,
             threshold=MEMORY_ALARM_THRESHOLD_PERCENT,
         )
