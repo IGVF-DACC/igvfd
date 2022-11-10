@@ -4,11 +4,15 @@ import pytest
 from aws_cdk.assertions import Template
 
 
-def test_constructs_queue_initialize_queue_base(stack):
+def test_constructs_queue_initialize_queue_base(stack, existing_resources):
+    from infrastructure.constructs.queue import QueueProps
     from infrastructure.constructs.queue import QueueBase
     queue_base = QueueBase(
         stack,
         'QueueBase',
+        props=QueueProps(
+            existing_resources=existing_resources,
+        )
     )
     template = Template.from_stack(stack)
     template.resource_count_is(
@@ -38,11 +42,15 @@ def test_constructs_queue_initialize_queue_base(stack):
     )
 
 
-def test_constructs_queue_initialize_transaction_queue(stack):
+def test_constructs_queue_initialize_transaction_queue(stack, existing_resources):
+    from infrastructure.constructs.queue import QueueProps
     from infrastructure.constructs.queue import TransactionQueue
     transaction_queue = TransactionQueue(
         stack,
         'TransactionQueue',
+        props=QueueProps(
+            existing_resources=existing_resources,
+        ),
     )
     assert isinstance(transaction_queue, TransactionQueue)
     template = Template.from_stack(stack)
@@ -52,11 +60,15 @@ def test_constructs_queue_initialize_transaction_queue(stack):
     )
 
 
-def test_constructs_queue_initialize_invalidation_queue(stack):
+def test_constructs_queue_initialize_invalidation_queue(stack, existing_resources):
+    from infrastructure.constructs.queue import QueueProps
     from infrastructure.constructs.queue import InvalidationQueue
     invalidation_queue = InvalidationQueue(
         stack,
         'InvalidationQueue',
+        props=QueueProps(
+            existing_resources=existing_resources,
+        ),
     )
     assert isinstance(invalidation_queue, InvalidationQueue)
     template = Template.from_stack(stack)

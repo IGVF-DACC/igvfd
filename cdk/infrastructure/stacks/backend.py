@@ -12,6 +12,7 @@ from infrastructure.constructs.indexer import IndexingServiceProps
 from infrastructure.constructs.indexer import IndexerProps
 from infrastructure.constructs.indexer import Indexer
 
+from infrastructure.constructs.queue import QueueProps
 from infrastructure.constructs.queue import TransactionQueue
 from infrastructure.constructs.queue import InvalidationQueue
 
@@ -45,10 +46,16 @@ class BackendStack(cdk.Stack):
         self.transaction_queue = TransactionQueue(
             self,
             'TransactionQueue',
+            props=QueueProps(
+                existing_resources=self.existing_resources,
+            ),
         )
         self.invalidation_queue = InvalidationQueue(
             self,
             'InvalidationQueue',
+            props=QueueProps(
+                existing_resources=self.existing_resources,
+            ),
         )
         self.backend = Backend(
             self,

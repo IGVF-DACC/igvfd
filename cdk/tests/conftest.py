@@ -219,20 +219,28 @@ def opensearch(stack, existing_resources, config):
 
 
 @pytest.fixture
-def transaction_queue(stack):
+def transaction_queue(stack, existing_resources):
+    from infrastructure.constructs.queue import QueueProps
     from infrastructure.constructs.queue import TransactionQueue
     return TransactionQueue(
         stack,
         'TransactionQueue',
+        props=QueueProps(
+            existing_resources=existing_resources,
+        ),
     )
 
 
 @pytest.fixture
-def invalidation_queue(stack):
+def invalidation_queue(stack, existing_resources):
+    from infrastructure.constructs.queue import QueueProps
     from infrastructure.constructs.queue import InvalidationQueue
     return InvalidationQueue(
         stack,
         'InvalidationQueue',
+        props=QueueProps(
+            existing_resources=existing_resources,
+        ),
     )
 
 
