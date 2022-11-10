@@ -58,6 +58,10 @@ def test_constructs_queue_initialize_transaction_queue(stack, existing_resources
         'AWS::SQS::Queue',
         2
     )
+    template.resource_count_is(
+        'AWS::CloudWatch::Alarm',
+        2
+    )
 
 
 def test_constructs_queue_initialize_invalidation_queue(stack, existing_resources):
@@ -74,5 +78,9 @@ def test_constructs_queue_initialize_invalidation_queue(stack, existing_resource
     template = Template.from_stack(stack)
     template.resource_count_is(
         'AWS::SQS::Queue',
+        2
+    )
+    template.resource_count_is(
+        'AWS::CloudWatch::Alarm',
         2
     )
