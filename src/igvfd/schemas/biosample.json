@@ -221,13 +221,13 @@
         },
         "biomarkers": {
             "title": "Biomarkers",
-            "description": "Biological markers that are associated with this biological sample.",
+            "description": "Biological markers that are associated with this sample.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Biomarker",
-                "description": "Link to biomarker.",
+                "description": "Associated biomarker.",
                 "type": "string",
                 "linkTo": "Biomarker"
             }

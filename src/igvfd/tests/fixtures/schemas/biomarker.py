@@ -5,7 +5,7 @@ import pytest
 def biomarker_CD243_absent(testapp):
     item = {
         'name': 'CD243',
-        'quantification': '-',
+        'quantification': 'negative',
         'classification': 'cell surface protein',
         'synonyms': ['ABC20', 'CD243', 'CLCS', 'GP170', 'MDR1', 'P-gp', 'PGY1']
     }
@@ -38,7 +38,7 @@ def biomarker_CD1e_low(testapp):
 def biomarker_IgA_present(testapp):
     item = {
         'name': 'IgA',
-        'quantification': '+',
+        'quantification': 'positive',
         'classification': 'cell surface protein'
     }
     return testapp.post_json('/biomarker', item, status=201).json['@graph'][0]

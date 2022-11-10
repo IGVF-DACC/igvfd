@@ -1,7 +1,7 @@
 [
     {
         "name": "CD243",
-        "quantification": "-",
+        "quantification": "negative",
         "classification": "cell surface protein",
         "synonyms": [
             "ABC20",
@@ -15,7 +15,7 @@
     },
     {
         "name": "CD243",
-        "quantification": "+",
+        "quantification": "positive",
         "classification": "cell surface protein",
         "synonyms": [
             "ABC20",
@@ -71,7 +71,13 @@
     },
     {
         "name": "CD1",
-        "quantification": "+",
+        "quantification": "positive",
         "classification": "cell surface protein"
+    },
+    {
+        "name": "CD1D",
+        "quantification": "positive",
+        "classification": "cell surface protein",
+        "gene": "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
     }
 ]

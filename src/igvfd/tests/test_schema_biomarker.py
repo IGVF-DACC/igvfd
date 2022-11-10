@@ -12,7 +12,7 @@ def test_biomarker_name_quantification_id(biomarker_CD243_absent, biomarker_CD1e
     assert res.status_code == 200
 
 
-def test_biomarker_patch_synonim(biomarker_CD243_absent, biomarker_CD1e_low, testapp):
+def test_biomarker_patch_synonim(biomarker_CD243_absent, testapp):
     res = testapp.patch_json(
         biomarker_CD243_absent['@id'],
         {'synonyms': ['my marker synonym', 'another synonym', 'third synonym']})
@@ -22,9 +22,21 @@ def test_biomarker_patch_synonim(biomarker_CD243_absent, biomarker_CD1e_low, tes
 def test_biomarker_check_duplicate(testapp):
     my_duplicate_biomarker = {
         'name': 'CD1',
-        'quantification': '-',
+        'quantification': 'negative',
         'classification': 'cell surface protein'
     }
     biomarker_CD1 = testapp.post_json('/biomarker', my_duplicate_biomarker, status=201).json['@graph'][0]
     res = testapp.post_json('/biomarker', my_duplicate_biomarker, status=409)
     assert res.status_code == 409
+
+
+def test_biomarker_patch_gene(biomarker_CD1e_low, gene_CD1E, testapp):
+    res = testapp.patch_json(
+        biomarker_CD1e_low['@id'],
+        {'gene': gene_CD1E['@id']})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        biomarker_CD1e_low['@id'],
+        {'gene': 'ABC12345'},
+        expect_errors=True)
+    assert res.status_code == 422

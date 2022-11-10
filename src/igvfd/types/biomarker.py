@@ -28,7 +28,7 @@ class Biomarker(Item):
         }
     )
     def name_quantification(self, name, quantification):
-        return u'{}{}'.format(name, quantification)
+        return u'{}-{}'.format(name, quantification)
 
     def unique_keys(self, properties):
         keys = super(Biomarker, self).unique_keys(properties)
