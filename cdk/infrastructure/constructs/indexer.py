@@ -18,6 +18,11 @@ from aws_cdk.aws_secretsmanager import ISecret
 
 from infrastructure.config import Config
 
+from infrastructure.constructs.alarms.indexer import InvalidationServiceAlarmsProps
+from infrastructure.constructs.alarms.indexer import InvalidationServiceAlarms
+from infrastructure.constructs.alarms.indexer import IndexingServiceAlarmsProps
+from infrastructure.constructs.alarms.indexer import IndexingServiceAlarms
+
 from infrastructure.constructs.opensearch import Opensearch
 
 from infrastructure.constructs.queue import TransactionQueue
@@ -117,7 +122,10 @@ class Indexer(Construct):
         self._allow_invalidation_service_to_write_to_invalidation_queue()
         self._define_portal_credentials()
         self._define_indexing_service()
-        self._allow_connections_to_opensearch()
+        self._allow_invalidation_service_to_connect_to_opensearch()
+        self._allow_indexing_service_to_connect_to_opensearch()
+        self._add_alarms_to_invalidation_service()
+        self._add_alarms_to_indexing_service()
 
     def _define_docker_assets(self) -> None:
         self.services_image = ContainerImage.from_asset(
@@ -204,14 +212,38 @@ class Indexer(Construct):
             ),
         )
 
-    def _allow_connections_to_opensearch(self) -> None:
+    def _allow_invalidation_service_to_connect_to_opensearch(self) -> None:
         self.invalidation_service.service.connections.allow_to(
             self.props.opensearch.domain,
             Port.tcp(443),
             description='Allow connection to Opensearch',
         )
+
+    def _allow_indexing_service_to_connect_to_opensearch(self) -> None:
         self.indexing_service.service.connections.allow_to(
             self.props.opensearch.domain,
             Port.tcp(443),
             description='Allow connection to Opensearch',
+        )
+
+    def _add_alarms_to_invalidation_service(self) -> None:
+        InvalidationServiceAlarms(
+            self,
+            'InvalidationServiceAlarms',
+            props=InvalidationServiceAlarmsProps(
+                config=self.props.config,
+                existing_resources=self.props.existing_resources,
+                fargate_service=self.invalidation_service,
+            )
+        )
+
+    def _add_alarms_to_indexing_service(self) -> None:
+        IndexingServiceAlarms(
+            self,
+            'IndexingServiceAlarms',
+            props=IndexingServiceAlarmsProps(
+                config=self.props.config,
+                existing_resources=self.props.existing_resources,
+                fargate_service=self.indexing_service,
+            )
         )
