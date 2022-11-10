@@ -2,10 +2,6 @@ import aws_cdk as cdk
 
 from constructs import Construct
 
-from infrastructure.config import Config
-
-from aws_cdk.aws_cloudwatch import TreatMissingData
-
 from aws_cdk.aws_cloudwatch_actions import SnsAction
 
 from aws_cdk.aws_ecs_patterns import QueueProcessingFargateService
@@ -24,7 +20,6 @@ MEMORY_ALARM_THRESHOLD_PERCENT = 80
 
 @dataclass
 class InvalidationServiceAlarmsProps:
-    config: Config
     existing_resources: ExistingResources
     fargate_service: QueueProcessingFargateService
 
@@ -85,7 +80,6 @@ class InvalidationServiceAlarms(Construct):
 
 @dataclass
 class IndexingServiceAlarmsProps:
-    config: Config
     existing_resources: ExistingResources
     fargate_service: QueueProcessingFargateService
 

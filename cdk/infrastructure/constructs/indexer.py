@@ -231,7 +231,6 @@ class Indexer(Construct):
             self,
             'InvalidationServiceAlarms',
             props=InvalidationServiceAlarmsProps(
-                config=self.props.config,
                 existing_resources=self.props.existing_resources,
                 fargate_service=self.invalidation_service,
             )
@@ -242,7 +241,6 @@ class Indexer(Construct):
             self,
             'IndexingServiceAlarms',
             props=IndexingServiceAlarmsProps(
-                config=self.props.config,
                 existing_resources=self.props.existing_resources,
                 fargate_service=self.indexing_service,
             )
