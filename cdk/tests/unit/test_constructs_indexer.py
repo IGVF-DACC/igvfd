@@ -426,3 +426,7 @@ def test_constructs_indexer_initialize_indexer(
         'AWS::ApplicationAutoScaling::ScalingPolicy',
         6
     )
+    template.resource_count_is(
+        'AWS::CloudWatch::Alarm',
+        18
+    )
