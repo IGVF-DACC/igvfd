@@ -42,6 +42,7 @@ class QueueAlarms(Construct):
         self.props = props
         self._define_alarm_action()
         self._add_dead_letter_queue_has_messages_alarm()
+        self._add_queue_has_old_messages_alarm()
 
     def _define_alarm_action(self) -> None:
         # Cloudwatch action targeting SNS topic.

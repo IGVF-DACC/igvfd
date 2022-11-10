@@ -21,6 +21,9 @@ from infrastructure.config import Config
 
 from infrastructure.constructs.existing.types import ExistingResources
 
+from infrastructure.constructs.alarms.opensearch import OpensearchAlarmsProps
+from infrastructure.constructs.alarms.opensearch import OpensearchAlarms
+
 from typing import Any
 
 from dataclasses import dataclass
@@ -62,6 +65,7 @@ class Opensearch(Construct):
         self._allow_access_to_domain()
         self._add_tags_to_domain()
         self._define_url()
+        self._add_alarms()
 
     def _define_domain(self) -> None:
         self.domain = Domain(
@@ -128,3 +132,14 @@ class Opensearch(Construct):
 
     def _define_url(self) -> None:
         self.url = f'https://{self.domain.domain_endpoint}'
+
+    def _add_alarms(self) -> None:
+        OpensearchAlarms(
+            self,
+            'OpensearchAlarms',
+            props=OpensearchAlarmsProps(
+                existing_resources=self.props.existing_resources,
+                domain=self.domain,
+                volume_size=self.props.volume_size,
+            ),
+        )
