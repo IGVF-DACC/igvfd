@@ -96,3 +96,7 @@ def test_constructs_opensearch_initialize_opensearch_construct(stack, vpc, insta
         'Custom::OpenSearchAccessPolicy',
         1
     )
+    template.resource_count_is(
+        'AWS::CloudWatch::Alarm',
+        6
+    )
