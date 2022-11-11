@@ -127,6 +127,9 @@
         }
     },
     "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
         "accession": {
             "title": "Accession"
         },

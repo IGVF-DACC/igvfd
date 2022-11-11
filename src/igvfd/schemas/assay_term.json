@@ -40,6 +40,9 @@
         }
     },
     "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
         "term_id": {
             "title": "Term ID"
         },

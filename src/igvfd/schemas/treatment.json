@@ -221,6 +221,9 @@
         }
     },
     "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
         "treatment_term_name": {
             "title": "Treatment Term Name"
         },

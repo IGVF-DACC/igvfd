@@ -122,8 +122,14 @@
         }
     },
     "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
         "accession": {
             "title": "Accession"
+        },
+        "biosample_term": {
+            "title": "Biosample Term"
         },
         "donors": {
             "title": "Donors"

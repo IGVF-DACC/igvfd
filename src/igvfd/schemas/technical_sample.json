@@ -69,8 +69,14 @@
         }
     },
     "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
         "accession": {
             "title": "Accession"
+        },
+        "technical_sample_term": {
+            "title": "Technical Sample Term"
         },
         "date_obtained": {
             "title": "Date Obtained"

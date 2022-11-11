@@ -109,6 +109,9 @@
         }
     },
     "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
         "description": {
             "title": "Description"
         },

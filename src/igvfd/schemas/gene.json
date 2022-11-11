@@ -184,6 +184,9 @@
         }
     },
     "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
         "title": {
             "title": "Title"
         },

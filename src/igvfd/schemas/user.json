@@ -114,11 +114,17 @@
         }
     },
     "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
         "title": {
             "title": "Title"
         },
         "lab": {
             "title": "Lab"
+        },
+        "status": {
+            "title": "Status"
         }
     },
     "boost_values": {
