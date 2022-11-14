@@ -51,7 +51,18 @@
     "dependentSchemas": {
         "$merge": [
             "biosample.json#/dependentSchemas"
-        ]
+        ],
+        "ccf_id": {
+            "comment": "Common coordinate framework identifier only applies to human tissue samples.",
+            "required": [
+                "taxa"
+            ],
+            "properties": {
+                "taxa": {
+                    "const": "Homo sapiens"
+                }
+            }
+        }
     },
     "properties": {
         "schema_version": {
@@ -76,6 +87,13 @@
                 "day",
                 "week"
             ]
+        },
+        "ccf_id": {
+            "title": "Common coordinate framework identifier",
+            "description": "HubMap Common Coordinate Framework unique identifier corresponding to the organ, biological structure, and spatial location of the tissue specimen.",
+            "comment": "This identifier will be later linked to: https://portal.hubmapconsortium.org/ccf-eui",
+            "type": "string",
+            "format": "uuid"
         },
         "preservation_method": {
             "title": "Preservation Method",
