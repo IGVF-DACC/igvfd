@@ -26,7 +26,9 @@
         "name": {
             "title": "Name",
             "description": "The biomarker name.",
-            "type": "string"
+            "comment": "Only admins are allowed to set this value.",
+            "type": "string",
+            "permission": "import_items"
         },
         "classification": {
             "title": "Biomarker Classification",
@@ -40,6 +42,7 @@
         "quantification": {
             "title": "Quantification",
             "description": "The biomarker association to the biosample, disease or other condition.  This can be the absence of the biomarker or the presence of the biomarker in some low, intermediate or high quantity.",
+            "comment": "Only admins are allowed to set this value.",
             "type": "string",
             "enum": [
                 "negative",
@@ -47,7 +50,8 @@
                 "low",
                 "intermediate",
                 "high"
-            ]
+            ],
+            "permission": "import_items"
         },
         "synonyms": {
             "title": "Synonyms",
