@@ -15,3 +15,16 @@ def sequence_data(testapp, lab, award, analysis_set_with_sample):
         'content_type': 'reads'
     }
     return testapp.post_json('/sequence_data', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def sequence_data_fastq_no_read_length(testapp, lab, award, analysis_set_with_sample):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'cb888dc8d303ea1b7959c698e819c0f1',
+        'file_format': 'fastq',
+        'file_set': analysis_set_with_sample['@id'],
+        'content_type': 'reads'
+    }
+    return item
