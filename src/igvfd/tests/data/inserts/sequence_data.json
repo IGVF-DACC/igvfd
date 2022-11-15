@@ -29,6 +29,9 @@
         "content_md5sum": "515c8a6af303bc73bc59c629be11d686",
         "file_format": "fastq",
         "content_type": "reads",
+        "minimum_read_length": 99,
+        "maximum_read_length": 101,
+        "mean_read_length": 100,
         "derived_from": [
             "ff198277-87de-ea86-1887-25825ebf92f8"
         ],
@@ -53,6 +56,9 @@
         "content_md5sum": "67aa8a4b5603bc73bc59c629be1271d6",
         "file_format": "fastq",
         "content_type": "reads",
+        "minimum_read_length": 99,
+        "maximum_read_length": 101,
+        "mean_read_length": 100,
         "derived_from": [
             "ff198277-87de-ea86-1887-25825ebf92f8"
         ],
