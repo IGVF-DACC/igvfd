@@ -39,7 +39,24 @@
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
-        ]
+        ],
+        "file_format": {
+            "comment": "Fastq files must specify their minimum, maximum, and mean read lengths.",
+            "if": {
+                "properties": {
+                    "file_format": {
+                        "const": "fastq"
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "minimum_read_length",
+                    "maximum_read_length",
+                    "mean_read_length"
+                ]
+            }
+        }
     },
     "type": "object",
     "properties": {
@@ -69,9 +86,21 @@
             "description": "The sequencing platform used to produce the sequence data.",
             "type": "string"
         },
-        "read_length": {
+        "minimum_read_length": {
+            "title": "Minimum Read Length",
+            "description": "For high-throughput sequencing, the minimum number of contiguous nucleotides determined by sequencing.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "maximum_read_length": {
             "title": "Read Length",
-            "description": "For high-throughput sequencing, the number of contiguous nucleotides determined by sequencing.",
+            "description": "For high-throughput sequencing, the maximum number of contiguous nucleotides determined by sequencing.",
+            "type": "integer",
+            "minimum": 0
+        },
+        "mean_read_length": {
+            "title": "Read Length",
+            "description": "For high-throughput sequencing, the mean number of contiguous nucleotides determined by sequencing.",
             "type": "integer",
             "minimum": 0
         }
