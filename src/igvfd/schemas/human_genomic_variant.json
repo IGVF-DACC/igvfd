@@ -66,7 +66,7 @@
             "title": "RS Identifier",
             "description": "An NCBI assigned reference SNP cluster ID for the variant.",
             "type": "string",
-            "pattern": "rs[0-9]+"
+            "pattern": "^rs[0-9]+$"
         },
         "assembly": {
             "enum": [
@@ -126,7 +126,7 @@
                 "description": "Genome-wide association studies this variant was listed in and selected from.",
                 "comment": "This should be submitted as the accession number of the GWAS from the NHGRI-EBI Catalog of human genome-wide association studies.",
                 "type": "string",
-                "pattern": "GCST[0-9]+",
+                "pattern": "^GCST[0-9]+$",
                 "minItems": 1
             }
         }

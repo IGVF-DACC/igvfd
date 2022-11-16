@@ -82,6 +82,48 @@ def test_patch_variant(testapp, human_genomic_variant):
     assert res.status_code == 422
 
 
+def test_rsid_regex(testapp, human_genomic_variant):
+    res = testapp.patch_json(
+        human_genomic_variant['@id'],
+        {
+            'rsid': 'rs1123553qwe'
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        human_genomic_variant['@id'],
+        {
+            'rsid': 'rs645731345xrqw123'
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        human_genomic_variant['@id'],
+        {
+            'rsid': 'rs123456789'
+        })
+    assert res.status_code == 200
+
+
+def test_associated_gwas_regex(testapp, human_genomic_variant):
+    res = testapp.patch_json(
+        human_genomic_variant['@id'],
+        {
+            'associated_gwas': ['GCST90019034a']
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        human_genomic_variant['@id'],
+        {
+            'associated_gwas': ['GCST90X31t0052']
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        human_genomic_variant['@id'],
+        {
+            'associated_gwas': ['GCST6405606023']
+        })
+    assert res.status_code == 200
+
+
 def test_refseq_regex(testapp, human_genomic_variant):
     res = testapp.patch_json(
         human_genomic_variant['@id'],
