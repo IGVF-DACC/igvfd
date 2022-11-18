@@ -40,3 +40,15 @@ def test_biomarker_patch_gene(biomarker_CD1e_low, gene_CD1E, testapp):
         {'gene': 'ABC12345'},
         expect_errors=True)
     assert res.status_code == 422
+
+
+def test_biomarker_permissions(submitter_testapp, testapp):
+    my_non_dacc_biomarker = {
+        'name': 'CD1234',
+        'quantification': 'negative',
+        'classification': 'cell surface protein'
+    }
+    res = submitter_testapp.post_json('/biomarker', my_non_dacc_biomarker, status=422)
+    assert res.status_code == 422
+    res = testapp.post_json('/biomarker', my_non_dacc_biomarker)
+    assert res.status_code == 201

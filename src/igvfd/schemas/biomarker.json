@@ -65,8 +65,8 @@
             }
         },
         "gene": {
-            "title": "Associated gene",
-            "description": "Links to a gene which represents the biomarker.",
+            "title": "Gene",
+            "description": "Link to the biomarker gene.",
             "type": "string",
             "linkTo": "Gene"
         }
