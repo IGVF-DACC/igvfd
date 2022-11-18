@@ -219,8 +219,8 @@
                 "linkTo": "Donor"
             }
         },
-        "biomarkers": {
-            "title": "Biomarkers",
+        "biomarker": {
+            "title": "Biomarker",
             "description": "Biological markers that are associated with this sample.",
             "type": "array",
             "minItems": 1,
