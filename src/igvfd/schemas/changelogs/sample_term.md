@@ -3,6 +3,7 @@
 ### Minor changes since schema version 2
 
 * Add `description`.
+* Add `is_a`.
 
 ### Schema version 2
 

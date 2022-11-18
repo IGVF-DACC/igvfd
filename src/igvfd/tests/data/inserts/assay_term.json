@@ -24,5 +24,27 @@
         "term_name": "ChIP-seq",
         "status": "released",
         "uuid": "26945da8-8f87-4749-7aeb-cee38f5cfd28"
+    },
+    {
+        "term_id": "OBI:0003133",
+        "term_name": "cas mediated mutagenesis",
+        "status": "released",
+        "uuid": "0393b224-8f87-5e94-7aeb-faff044f707d"
+    },
+    {
+        "term_id": "OBI:0002631",
+        "term_name": "single-cell RNA sequencing assay",
+        "status": "released",
+        "uuid": "93b2cefa-9dfc-5e94-aa5e-faff044f46c1"
+    },
+    {
+        "term_id": "NTR:0000001",
+        "term_name": "TAP-seq",
+        "status": "released",
+        "is_a": [
+            "0393b224-8f87-5e94-7aeb-faff044f707d",
+            "93b2cefa-9dfc-5e94-aa5e-faff044f46c1"
+        ],
+        "uuid": "c19f5da8-1aa5-4749-456b-cee38f5c6c99"
     }
 ]
