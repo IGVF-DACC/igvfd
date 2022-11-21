@@ -1,0 +1,26 @@
+[
+    {
+        "uuid": "0f96ba0c-3edb-4289-a76f-aa5f5d1a56d2",
+        "rsid": "rs143065131",
+        "selection_criteria": "This variant was selected for by some lab due to its association with developing schizophrenia.",
+        "ref": "G",
+        "alt": "A",
+        "chromosome": "chr2",
+        "assembly": "GRCh38",
+        "position": 158180836,
+        "refseq_id": "NC_200000.12",
+        "associated_gwas": [
+            "GCST007240"
+        ]
+    },
+    {
+        "uuid": "8138364d-f96b-42b9-a719-42199818c6fc",
+        "selection_criteria": "The variant was selected by another lab due to its frequency in an understudied population",
+        "chromosome": "chr1",
+        "ref": "TG",
+        "alt": "GC",
+        "assembly": "GRCh38",
+        "position": 100000000,
+        "refseq_id": "NC_000001.1"
+    }
+]

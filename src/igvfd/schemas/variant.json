@@ -1,0 +1,55 @@
+{
+    "title": "Variant",
+    "description": "Abstract schema for submitting a variant.",
+    "$id": "/profiles/variant.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "selection_criteria": {
+            "title": "Variant Selection Criteria Details",
+            "description": "The reasoning for selecting this variant for study.",
+            "type": "string"
+        },
+        "ref": {
+            "title": "Reference Allele",
+            "description": "The sequence of the reference allele for this variant.",
+            "type": "string",
+            "pattern": "^[ATCG]*$"
+        },
+        "alt": {
+            "title": "Alternative Allele",
+            "description": "The sequence of the alternative allele for this variant.",
+            "comment": "For deletions in the sequence use '-'.",
+            "type": "string",
+            "pattern": "^[ATCG]*$|^-$"
+        },
+        "assembly": {
+            "title": "Genome Assembly",
+            "description": "The genome assembly to which the variant coordinates relate.",
+            "type": "string",
+            "enum": [
+                "GRCh38",
+                "mm10"
+            ]
+        },
+        "position": {
+            "title": "Position",
+            "description": "The position of the variant in the reference sequence, specified using 1-indexed coordinates system.",
+            "type": "integer",
+            "minimum": 1
+        }
+    },
+    "changelog": "/profiles/changelogs/variant.md"
+}

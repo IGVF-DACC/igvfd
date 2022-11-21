@@ -1,0 +1,135 @@
+{
+    "title": "Human Genomic Variant",
+    "description": "Schema for submitting a human genomic variant.",
+    "$id": "/profiles/human_genomic_variant.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "anyOf": [
+        {
+            "required": [
+                "ref",
+                "alt",
+                "position",
+                "assembly",
+                "refseq_id"
+            ]
+        },
+        {
+            "required": [
+                "ref",
+                "alt",
+                "position",
+                "assembly",
+                "reference_sequence"
+            ]
+        }
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "variant.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        }
+    ],
+    "dependentSchemas": {
+        "refseq_id": {
+            "not": {
+                "required": [
+                    "reference_sequence"
+                ]
+            },
+            "comment": "Specification of refseq_id is mutually exclusive with specification of reference_sequence."
+        },
+        "reference_sequence": {
+            "not": {
+                "required": [
+                    "refseq_id"
+                ]
+            },
+            "comment": "Specification of reference_sequence is mutually exclusive with specification of refseq_id."
+        }
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "rsid": {
+            "title": "RS Identifier",
+            "description": "An NCBI assigned reference SNP cluster ID for the variant.",
+            "type": "string",
+            "pattern": "^rs[0-9]+$"
+        },
+        "assembly": {
+            "enum": [
+                "GRCh38"
+            ]
+        },
+        "chromosome": {
+            "title": "Chromosome",
+            "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX. May also specify the variant is in the mitochondrial DNA (chrM).",
+            "type": "string",
+            "enum": [
+                "chr1",
+                "chr2",
+                "chr3",
+                "chr4",
+                "chr5",
+                "chr6",
+                "chr7",
+                "chr8",
+                "chr9",
+                "chr10",
+                "chr11",
+                "chr12",
+                "chr13",
+                "chr14",
+                "chr15",
+                "chr16",
+                "chr17",
+                "chr18",
+                "chr19",
+                "chr20",
+                "chr21",
+                "chr22",
+                "chrX",
+                "chrY",
+                "chrM"
+            ]
+        },
+        "refseq_id": {
+            "title": "RefSeq Sequence Identifier",
+            "description": "The RefSeq sequence identifier for the sequence this variant is located in.",
+            "comment": "If there is no RefSeq sequence identifier available for the sequence this variant is located in, 'reference_sequence' should be submitted instead.",
+            "type": "string",
+            "pattern": "^((NC_)[0-9]{6}.[0-9]{1,2})$"
+        },
+        "reference_sequence": {
+            "title": "Reference Sequence",
+            "description": "The reference sequence for the sequence this variant is located in.",
+            "comment": "This should only be submitted if there is no RefSeq sequence identifier available for submission.",
+            "type": "string",
+            "pattern": "^[ATCG]*$"
+        },
+        "associated_gwas": {
+            "title": "Associated Genome-wide Association Studies (GWAS)",
+            "type": "array",
+            "items": {
+                "description": "Genome-wide association studies this variant was listed in and selected from.",
+                "comment": "This should be submitted as the accession number of the GWAS from the NHGRI-EBI Catalog of human genome-wide association studies.",
+                "type": "string",
+                "pattern": "^GCST[0-9]+$",
+                "minItems": 1
+            }
+        }
+    },
+    "changelog": "/profiles/changelogs/human_genomic_variant.md"
+}
