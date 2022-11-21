@@ -15,11 +15,21 @@ def test_stages_dev_initialize_dev_stages(config):
         stack.stack_name
         for stack in cloud_assembly.stacks
     ] == [
+        'TestDevelopmentDeployStage-OpensearchStack',
         'TestDevelopmentDeployStage-PostgresStack',
-        'TestDevelopmentDeployStage-BackendStack',
+        'TestDevelopmentDeployStage-BackendStack'
     ]
     stack = cloud_assembly.get_stack_by_name(
         'TestDevelopmentDeployStage-PostgresStack'
+    )
+    assert stack.tags == {
+        'environment': 'demo',
+        'branch': 'some-branch',
+        'project': 'igvfd',
+        'test': 'tag'
+    }
+    stack = cloud_assembly.get_stack_by_name(
+        'TestDevelopmentDeployStage-OpensearchStack'
     )
     assert stack.tags == {
         'environment': 'demo',

@@ -108,5 +108,39 @@
             }
         }
     },
+    "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
+        "description": {
+            "title": "Description"
+        },
+        "aliases": {
+            "title": "Aliases"
+        },
+        "award": {
+            "title": "Award"
+        },
+        "document_type": {
+            "title": "Document Type"
+        },
+        "lab": {
+            "title": "Lab"
+        },
+        "status": {
+            "title": "Status"
+        },
+        "submitted_by": {
+            "title": "Submitted By"
+        },
+        "attachment": {
+            "title": "Attachment"
+        }
+    },
+    "boost_values": {
+        "description": 1.0,
+        "@type": 1.0,
+        "document_type": 1.0
+    },
     "changelog": "/profiles/changelogs/document.md"
 }

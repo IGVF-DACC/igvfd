@@ -3,7 +3,16 @@ import pytest
 from aws_cdk.assertions import Template
 
 
-def test_constructs_backend_initialize_backend_construct(stack, instance_type, existing_resources, vpc, config):
+def test_constructs_backend_initialize_backend_construct(
+        stack,
+        instance_type,
+        existing_resources,
+        vpc,
+        config,
+        opensearch,
+        transaction_queue,
+        invalidation_queue,
+):
     from infrastructure.constructs.backend import Backend
     from infrastructure.constructs.backend import BackendProps
     from infrastructure.constructs.postgres import Postgres
@@ -38,6 +47,9 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
             config=config,
             existing_resources=existing_resources,
             postgres_multiplexer=postgres_multiplexer,
+            opensearch=opensearch,
+            transaction_queue=transaction_queue,
+            invalidation_queue=invalidation_queue,
             cpu=2048,
             memory_limit_mib=4096,
             desired_count=4,
@@ -103,6 +115,7 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
                     ]
                 }
             },
+            'ServiceName': 'Backend',
             'Tags': [
                 {
                     'Key': 'branch',
@@ -168,6 +181,35 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
                         {
                             'Name': 'EVENT_SOURCE',
                             'Value': 'igvfd.demo.some-branch'
+                        },
+                        {
+                            'Name': 'OPENSEARCH_URL',
+                            'Value': {
+                                'Fn::Join': [
+                                    '',
+                                    [
+                                        'https://',
+                                        {
+                                            'Fn::GetAtt': [
+                                                'OpensearchDomainCED7C974',
+                                                'DomainEndpoint'
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        },
+                        {
+                            'Name': 'TRANSACTION_QUEUE_URL',
+                            'Value': {
+                                'Ref': 'TransactionQueueE05C979B'
+                            }
+                        },
+                        {
+                            'Name': 'INVALIDATION_QUEUE_URL',
+                            'Value': {
+                                'Ref': 'InvalidationQueue8614463D'
+                            }
                         }
                     ],
                     'Essential': True,
@@ -480,6 +522,34 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
                                 'Arn'
                             ]
                         }
+                    },
+                    {
+                        'Action': [
+                            'sqs:SendMessage',
+                            'sqs:GetQueueAttributes',
+                            'sqs:GetQueueUrl'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'TransactionQueueE05C979B',
+                                'Arn'
+                            ]
+                        }
+                    },
+                    {
+                        'Action': [
+                            'sqs:SendMessage',
+                            'sqs:GetQueueAttributes',
+                            'sqs:GetQueueUrl'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'InvalidationQueue8614463D',
+                                'Arn'
+                            ]
+                        }
                     }
                 ],
                 'Version': '2012-10-17'
@@ -595,6 +665,78 @@ def test_constructs_backend_initialize_backend_construct(stack, instance_type, e
             'Roles': [
                 {
                     'Ref': 'AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2'
+                }
+            ]
+        }
+    )
+    template.has_resource_properties(
+        'Custom::AWS',
+        {
+            'ServiceToken': {
+                'Fn::GetAtt': [
+                    'AWS679f53fac002430cb0da5b7982bd22872D164C4C',
+                    'Arn'
+                ]
+            },
+            'InstallLatestAwsSdk': True
+        }
+    )
+    template.has_resource_properties(
+        'AWS::Events::Rule',
+        {
+            'EventPattern': {
+                'detail-type': [
+                    'MappingChanged'
+                ],
+                'source': [
+                    'igvfd.demo.some-branch'
+                ]
+            },
+            'State': 'ENABLED',
+            'Targets': [
+                {
+                    'Arn': {
+                        'Fn::GetAtt': [
+                            'EcsDefaultClusterMnL3mNNYNTestVpc4872C696',
+                            'Arn'
+                        ]
+                    },
+                    'EcsParameters': {
+                        'LaunchType': 'FARGATE',
+                        'NetworkConfiguration': {
+                            'AwsVpcConfiguration': {
+                                'AssignPublicIp': 'ENABLED',
+                                'SecurityGroups': [
+                                    {
+                                        'Fn::GetAtt': [
+                                            'TestBackendFargateServiceSecurityGroupB9C36B85',
+                                            'GroupId'
+                                        ]
+                                    }
+                                ],
+                                'Subnets': [
+                                    {
+                                        'Ref': 'TestVpcpublicSubnet1Subnet4F70BC85'
+                                    },
+                                    {
+                                        'Ref': 'TestVpcpublicSubnet2Subnet96FF72E6'
+                                    }
+                                ]
+                            }
+                        },
+                        'TaskCount': 1,
+                        'TaskDefinitionArn': {
+                            'Ref': 'TestBackendFargateTaskDef9FA612FC'
+                        }
+                    },
+                    'Id': 'Target0',
+                    'Input': '{\"containerOverrides\":[{\"name\":\"pyramid\",\"command\":[\"/scripts/pyramid/delete-and-create-mapping-and-reindex.sh\"]},{\"name\":\"nginx\",\"command\":[\"sleep\",\"3600\"]}]}',
+                    'RoleArn': {
+                        'Fn::GetAtt': [
+                            'TestBackendFargateTaskDefEventsRoleADEEE321',
+                            'Arn'
+                        ]
+                    }
                 }
             ]
         }

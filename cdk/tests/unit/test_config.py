@@ -20,7 +20,10 @@ def test_config_config_dataclass():
         branch='xyz-branch',
         pipeline='xyz-pipeline',
         postgres={},
+        opensearch={},
         backend={},
+        invalidation_service={},
+        indexing_service={},
         tags=[
             ('abc', '123'),
             ('xyz', '321'),
@@ -29,7 +32,10 @@ def test_config_config_dataclass():
     assert config.common.organization_name == 'igvf-dacc'
     assert config.common.project_name == 'igvfd'
     assert config.postgres == {}
+    assert config.opensearch == {}
     assert config.backend == {}
+    assert config.invalidation_service == {}
+    assert config.indexing_service == {}
     assert config.branch == 'xyz-branch'
     assert config.pipeline == 'xyz-pipeline'
     assert config.tags == [
@@ -53,6 +59,16 @@ def test_config_build_config_from_name():
         'snapshot_source_db_identifier' in postgres_instance_props
         or 'snapshot_arn' in postgres_instance_props
     )
+    assert 'capacity' in config.opensearch
+    assert 'volume_size' in config.opensearch
+    assert 'cpu' in config.invalidation_service
+    assert 'memory_limit_mib' in config.invalidation_service
+    assert 'min_scaling_capacity' in config.invalidation_service
+    assert 'max_scaling_capacity' in config.invalidation_service
+    assert 'cpu' in config.indexing_service
+    assert 'memory_limit_mib' in config.indexing_service
+    assert 'min_scaling_capacity' in config.indexing_service
+    assert 'max_scaling_capacity' in config.indexing_service
     assert config.branch == 'my-branch'
     assert config.pipeline == 'my-pipeline'
     assert config.name == 'demo'
@@ -73,6 +89,16 @@ def test_config_build_config_from_name():
         'snapshot_source_db_identifier' not in postgres_instance_props
         and 'snapshot_arn' not in postgres_instance_props
     )
+    assert 'capacity' in config.opensearch
+    assert 'volume_size' in config.opensearch
+    assert 'cpu' in config.invalidation_service
+    assert 'memory_limit_mib' in config.invalidation_service
+    assert 'min_scaling_capacity' in config.invalidation_service
+    assert 'max_scaling_capacity' in config.invalidation_service
+    assert 'cpu' in config.indexing_service
+    assert 'memory_limit_mib' in config.indexing_service
+    assert 'min_scaling_capacity' in config.indexing_service
+    assert 'max_scaling_capacity' in config.indexing_service
     assert config.branch == 'my-branch'
     assert config.pipeline == 'ContinuousDeploymentPipelineStack'
     assert config.name == 'dev'

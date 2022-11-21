@@ -45,6 +45,15 @@ def instance_type():
 
 
 @pytest.fixture
+def capacity_config():
+    from aws_cdk.aws_opensearchservice import CapacityConfig
+    return CapacityConfig(
+        data_node_instance_type='t3.small.search',
+        data_nodes=1,
+    )
+
+
+@pytest.fixture
 def secret(stack):
     from aws_cdk.aws_secretsmanager import Secret
     return Secret(
@@ -137,6 +146,7 @@ def existing_resources(mocker, domain, network, secret, chatbot, bus, sns_topic)
     mock.domain = domain
     mock.network = network
     mock.docker_hub_credentials.secret = secret
+    mock.portal_credentials.indexing_service_key = secret
     mock.code_star_connection.arn = 'some-code-star-arn'
     mock.notification.encode_dcc_chatbot = chatbot
     mock.notification.alarm_notification_topic = sns_topic
@@ -145,7 +155,7 @@ def existing_resources(mocker, domain, network, secret, chatbot, bus, sns_topic)
 
 
 @pytest.fixture
-def config(instance_type):
+def config(instance_type, capacity_config):
     from infrastructure.config import Config
     return Config(
         name='demo',
@@ -164,6 +174,10 @@ def config(instance_type):
                 },
             ],
         },
+        opensearch={
+            'capacity': capacity_config,
+            'volume_size': 10,
+        },
         backend={
             'cpu': 1024,
             'memory_limit_mib': 2048,
@@ -171,7 +185,89 @@ def config(instance_type):
             'max_capacity': 4,
             'use_postgres_named': 'Postgres',
         },
+        invalidation_service={
+            'cpu': 256,
+            'memory_limit_mib': 512,
+            'min_scaling_capacity': 1,
+            'max_scaling_capacity': 2,
+        },
+        indexing_service={
+            'cpu': 256,
+            'memory_limit_mib': 512,
+            'min_scaling_capacity': 1,
+            'max_scaling_capacity': 2,
+        },
         tags=[
             ('test', 'tag'),
         ]
+    )
+
+
+@pytest.fixture
+def opensearch(stack, existing_resources, config):
+    from infrastructure.constructs.opensearch import Opensearch
+    from infrastructure.constructs.opensearch import OpensearchProps
+    return Opensearch(
+        stack,
+        'Opensearch',
+        props=OpensearchProps(
+            **config.opensearch,
+            config=config,
+            existing_resources=existing_resources
+        )
+    )
+
+
+@pytest.fixture
+def transaction_queue(stack, existing_resources):
+    from infrastructure.constructs.queue import QueueProps
+    from infrastructure.constructs.queue import TransactionQueue
+    return TransactionQueue(
+        stack,
+        'TransactionQueue',
+        props=QueueProps(
+            existing_resources=existing_resources,
+        ),
+    )
+
+
+@pytest.fixture
+def invalidation_queue(stack, existing_resources):
+    from infrastructure.constructs.queue import QueueProps
+    from infrastructure.constructs.queue import InvalidationQueue
+    return InvalidationQueue(
+        stack,
+        'InvalidationQueue',
+        props=QueueProps(
+            existing_resources=existing_resources,
+        ),
+    )
+
+
+@pytest.fixture
+def application_load_balanced_fargate_service(stack, existing_resources):
+    from aws_cdk.aws_ecs import ContainerImage
+    from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedFargateService
+    from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedTaskImageOptions
+    return ApplicationLoadBalancedFargateService(
+        stack,
+        'TestApplicationLoadBalancedFargateService',
+        vpc=existing_resources.network.vpc,
+        assign_public_ip=True,
+        task_image_options=ApplicationLoadBalancedTaskImageOptions(
+            image=ContainerImage.from_registry('some-test-image')
+        ),
+    )
+
+
+@pytest.fixture
+def queue_processing_fargate_service(stack, existing_resources):
+    from aws_cdk.aws_ecs import ContainerImage
+    from aws_cdk.aws_ecs_patterns import QueueProcessingFargateService
+    return QueueProcessingFargateService(
+        stack,
+        'QueueProcessingFargateService',
+        vpc=existing_resources.network.vpc,
+        assign_public_ip=True,
+        image=ContainerImage.from_registry('some-test-image')
     )

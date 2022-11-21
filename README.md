@@ -22,17 +22,24 @@ $ docker compose down -v
 ```
 
 ## Test with Docker Compose
-Run all tests automatically and clean up:
+Run all unit tests automatically and clean up:
 ```bash
 $ docker compose -f docker-compose.test.yml up --exit-code-from pyramid
 ....
 $ docker compose -f docker-compose.test.yml down -v
 ```
 
-Or run tests interactively:
-1. Start `postgres` service (for use as fixture).
+Run all indexer tests automatically and clean up:
 ```bash
-$ docker compose -f docker-compose.test.yml up postgres
+$ docker compose -f docker-compose.test-indexer.yml up --exit-code-from indexer-tests
+....
+$ docker compose -f docker-compose.test-indexer.yml down -v
+```
+
+Or run tests interactively:
+1. Start `postgres` and `localstack` services (for use as fixtures).
+```bash
+$ docker compose -f docker-compose.test.yml up postgres localstack
 ```
 2. Connect to testing environment.
 ```bash

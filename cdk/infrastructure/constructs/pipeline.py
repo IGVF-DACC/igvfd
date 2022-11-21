@@ -76,12 +76,14 @@ class BasicSelfUpdatingPipeline(Construct):
                 'CONFIG_NAME': self.props.config.name,
                 'BRANCH': self.props.config.branch,
             },
-            commands=[
+            install_commands=[
                 f'npm install -g aws-cdk@{self.props.config.common.aws_cdk_version}',
                 'cd ./cdk',
                 'python -m venv .venv',
                 '. .venv/bin/activate',
                 'pip install -r requirements.txt -r requirements-dev.txt',
+            ],
+            commands=[
                 'pytest tests/',
                 'cdk synth -v -c branch=$BRANCH -c config-name=$CONFIG_NAME',
             ],

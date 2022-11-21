@@ -142,6 +142,23 @@ def json_from_path(path, default=None):
     return json.load(open(path))
 
 
+def configure_sqs_client(config):
+    from snovault.app import configure_sqs_client
+    # Turn off deprecation warning.
+    os.environ['BOTO_DISABLE_COMMONNAME'] = 'true'
+    configure_sqs_client(config)
+
+
+def configure_transaction_queue(config):
+    from snovault.app import configure_transaction_queue
+    configure_transaction_queue(config)
+
+
+def configure_invalidation_queue(config):
+    from snovault.app import configure_invalidation_queue
+    configure_invalidation_queue(config)
+
+
 def session(config):
     """ To create a session secret on the server:
     $ cat /dev/urandom | head -c 256 | base64 > session-secret.b64
@@ -187,6 +204,11 @@ def main(global_config, **local_config):
     settings['snovault.jsonld.terms_namespace'] = 'https://www.igvfproject.org/terms/'
     settings['snovault.jsonld.terms_prefix'] = 'igvf'
 
+    # Before settings are passed to Configurator.
+    OPENSEARCH_URL = os.environ.get('OPENSEARCH_URL')
+    if OPENSEARCH_URL:
+        settings['elasticsearch.server'] = OPENSEARCH_URL
+
     config = Configurator(settings=settings)
     config.include(app_version)
 
@@ -201,6 +223,9 @@ def main(global_config, **local_config):
     config.include('.cookie')
 
     config.include(configure_dbsession)
+    config.include(configure_sqs_client)
+    config.include(configure_transaction_queue)
+    config.include(configure_invalidation_queue)
     config.include('snovault')
     config.commit()  # commit so search can override listing
 
@@ -212,6 +237,10 @@ def main(global_config, **local_config):
     config.include('.root')
 
     config.include('.ontology')
+
+    if 'elasticsearch.server' in config.registry.settings:
+        config.include('snovault.elasticsearch')
+        config.include('igvfd.search_views')
 
     config.include(static_resources)
     config.include(changelogs)

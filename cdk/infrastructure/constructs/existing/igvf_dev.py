@@ -7,6 +7,7 @@ from shared_infrastructure.igvf_dev.secret import DockerHubCredentials
 from shared_infrastructure.igvf_dev.network import DemoNetwork
 from shared_infrastructure.igvf_dev.notification import Notification
 from shared_infrastructure.igvf_dev.bus import Bus
+from shared_infrastructure.igvf_dev.secret import PortalCredentials
 
 from typing import Any
 
@@ -26,6 +27,10 @@ class Resources(Construct):
         self.docker_hub_credentials = DockerHubCredentials(
             self,
             'DockerHubCredentials',
+        )
+        self.portal_credentials = PortalCredentials(
+            self,
+            'PortalCredentials',
         )
         self.code_star_connection = CodeStarConnection(
             self,

@@ -69,6 +69,7 @@ class BatchUpgrade(Construct):
         self._define_upgrade_folder()
         self._define_event_trigger()
         self._grant_put_events_to_trigger()
+        self._ensure_rule_exists_before_trigger()
 
     def _define_event_source(self) -> None:
         self.event_source = get_event_source_from_config(
@@ -161,4 +162,9 @@ class BatchUpgrade(Construct):
     def _grant_put_events_to_trigger(self) -> None:
         self.props.existing_resources.bus.default.grant_put_events_to(
             self.event_trigger
+        )
+
+    def _ensure_rule_exists_before_trigger(self) -> None:
+        self.event_trigger.node.add_dependency(
+            self.event_rule
         )
