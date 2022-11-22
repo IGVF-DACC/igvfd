@@ -262,7 +262,6 @@ def test_constructs_indexer_initialize_indexer(
                     ],
                     'Essential': True,
                     'Image': {
-                        'Fn::Sub': '${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:8935e4764049e3ebaad0b9d716dec54535ed76ba73a3fe2349f5441189d998b6'
                     },
                     'LogConfiguration': {
                         'LogDriver': 'awslogs',
@@ -353,7 +352,6 @@ def test_constructs_indexer_initialize_indexer(
                     ],
                     'Essential': True,
                     'Image': {
-                        'Fn::Sub': '${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:8935e4764049e3ebaad0b9d716dec54535ed76ba73a3fe2349f5441189d998b6'
                     },
                     'LogConfiguration': {
                         'LogDriver': 'awslogs',
