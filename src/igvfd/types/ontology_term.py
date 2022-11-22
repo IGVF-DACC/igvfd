@@ -16,7 +16,8 @@ from .base import (
     properties={
         'title': 'Ontology term',
         'description': 'Ontology terms used by IGVF',
-    })
+    }
+)
 class OntologyTerm(Item):
     base_types = ['OntologyTerm'] + Item.base_types
     schema = load_schema('igvfd:schemas/ontology_term.json')
@@ -52,26 +53,32 @@ class OntologyTerm(Item):
             slim for slim in key
         ))
 
-    @calculated_property(condition='term_id', schema={
-        'title': 'Synonyms',
-        'type': 'array',
-        'items': {
-            'type': 'string',
-        },
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        condition='term_id',
+        schema={
+            'title': 'Synonyms',
+            'type': 'array',
+            'items': {
+                'type': 'string',
+            },
+            'notSubmittable': True,
+        }
+    )
     def synonyms(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'synonyms')
 
-    @calculated_property(condition='term_id', schema={
-        'title': 'Ancestors',
-        'description': 'List of term names of ontological terms that precede the given term in the ontological tree. These ancestor terms are typically more general ontological terms under which the term is classified.',
-        'type': 'array',
-        'items': {
-            'type': 'string',
-        },
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        condition='term_id',
+        schema={
+            'title': 'Ancestors',
+            'description': 'List of term names of ontological terms that precede the given term in the ontological tree. These ancestor terms are typically more general ontological terms under which the term is classified.',
+            'type': 'array',
+            'items': {
+                'type': 'string',
+            },
+            'notSubmittable': True,
+        }
+    )
     def ancestors(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'ancestors')
 
@@ -82,7 +89,8 @@ class OntologyTerm(Item):
     properties={
         'title': 'Sample ontology term',
         'description': 'Ontology terms used by IGVF for samples',
-    })
+    }
+)
 class SampleTerm(OntologyTerm):
     item_type = 'sample_term'
     schema = load_schema('igvfd:schemas/sample_term.json')
@@ -94,47 +102,59 @@ class SampleTerm(OntologyTerm):
         keys.setdefault('sample_term:name', []).append(self.name(properties))
         return keys
 
-    @calculated_property(condition='term_id', schema={
-        'title': 'Organ',
-        'type': 'array',
-        'items': {
-            'type': 'string',
-        },
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        condition='term_id',
+        schema={
+            'title': 'Organ',
+            'type': 'array',
+            'items': {
+                'type': 'string',
+            },
+            'notSubmittable': True,
+        }
+    )
     def organ_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'organs')
 
-    @calculated_property(condition='term_id', schema={
-        'title': 'Cell',
-        'type': 'array',
-        'items': {
-            'type': 'string',
-        },
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        condition='term_id',
+        schema={
+            'title': 'Cell',
+            'type': 'array',
+            'items': {
+                'type': 'string',
+            },
+            'notSubmittable': True,
+        }
+    )
     def cell_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'cells')
 
-    @calculated_property(condition='term_id', schema={
-        'title': 'Developmental Slims',
-        'type': 'array',
-        'items': {
-            'type': 'string',
-        },
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        condition='term_id',
+        schema={
+            'title': 'Developmental Slims',
+            'type': 'array',
+            'items': {
+                'type': 'string',
+            },
+            'notSubmittable': True,
+        }
+    )
     def developmental_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'developmental')
 
-    @calculated_property(condition='term_id', schema={
-        'title': 'System Slims',
-        'type': 'array',
-        'items': {
-            'type': 'string',
-        },
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        condition='term_id',
+        schema={
+            'title': 'System Slims',
+            'type': 'array',
+            'items': {
+                'type': 'string',
+            },
+            'notSubmittable': True,
+        }
+    )
     def system_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'systems')
 
@@ -145,7 +165,8 @@ class SampleTerm(OntologyTerm):
     properties={
         'title': 'Assay ontology term',
         'description': 'Ontology terms used by IGVF for assays',
-    })
+    }
+)
 class AssayTerm(OntologyTerm):
     item_type = 'assay_term'
     schema = load_schema('igvfd:schemas/assay_term.json')
@@ -157,36 +178,45 @@ class AssayTerm(OntologyTerm):
         keys.setdefault('assay_term:name', []).append(self.name(properties))
         return keys
 
-    @calculated_property(condition='term_id', schema={
-        'title': 'Assay Type',
-        'type': 'array',
-        'items': {
-            'type': 'string',
-        },
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        condition='term_id',
+        schema={
+            'title': 'Assay Type',
+            'type': 'array',
+            'items': {
+                'type': 'string',
+            },
+            'notSubmittable': True,
+        }
+    )
     def assay_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'assay')
 
-    @calculated_property(condition='term_id', schema={
-        'title': 'Assay Category',
-        'type': 'array',
-        'items': {
-            'type': 'string',
-        },
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        condition='term_id',
+        schema={
+            'title': 'Assay Category',
+            'type': 'array',
+            'items': {
+                'type': 'string',
+            },
+            'notSubmittable': True,
+        }
+    )
     def category_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'category')
 
-    @calculated_property(condition='term_id', schema={
-        'title': 'Assay Objective',
-        'type': 'array',
-        'items': {
-            'type': 'string',
-        },
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        condition='term_id',
+        schema={
+            'title': 'Assay Objective',
+            'type': 'array',
+            'items': {
+                'type': 'string',
+            },
+            'notSubmittable': True,
+        }
+    )
     def objective_slims(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'objectives')
 
@@ -197,7 +227,8 @@ class AssayTerm(OntologyTerm):
     properties={
         'title': 'Phenotype ontology term',
         'description': 'Ontology terms used by IGVF for phenotypes, such as traits or diseases.',
-    })
+    }
+)
 class PhenotypeTerm(OntologyTerm):
     item_type = 'phenotype_term'
     schema = load_schema('igvfd:schemas/phenotype_term.json')

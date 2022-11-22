@@ -13,7 +13,8 @@ from .base import (
     properties={
         'title': 'Treatment',
         'description': 'Listing of treatments',
-    })
+    }
+)
 class Treatment(Item):
     item_type = 'treatment'
     schema = load_schema('igvfd:schemas/treatment.json')

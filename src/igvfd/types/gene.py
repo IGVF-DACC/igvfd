@@ -15,7 +15,8 @@ from .base import (
     properties={
         'title': 'Genes',
         'description': 'Listing of genes',
-    })
+    }
+)
 class Gene(SharedItem):
     item_type = 'gene'
     schema = load_schema('igvfd:schemas/gene.json')

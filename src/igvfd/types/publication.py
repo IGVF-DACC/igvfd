@@ -16,7 +16,8 @@ from .base import (
     properties={
         'title': 'Publications',
         'description': 'Listing of publications',
-    })
+    }
+)
 class Publication(Item):
     item_type = 'publication'
     schema = load_schema('igvfd:schemas/publication.json')
@@ -27,11 +28,14 @@ class Publication(Item):
             keys.setdefault('alias', []).extend(properties['identifiers'])
         return keys
 
-    @calculated_property(condition='date_published', schema={
-        'title': 'Publication Year',
-        'type': 'integer',
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        condition='date_published',
+        schema={
+            'title': 'Publication Year',
+            'type': 'integer',
+            'notSubmittable': True,
+        }
+    )
     def publication_year(self, date_published):
         year = datetime.strptime(date_published, '%Y-%m-%d').year
         return year

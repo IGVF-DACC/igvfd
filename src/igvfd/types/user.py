@@ -44,7 +44,8 @@ USER_DELETED = [
         'title': 'Users',
         'description': 'Listing of current users',
     },
-    acl=[])
+    acl=[]
+)
 class User(Item):
     item_type = 'user'
     schema = load_schema('igvfd:schemas/user.json')
@@ -56,11 +57,13 @@ class User(Item):
         'disabled': ONLY_ADMIN_VIEW_DETAILS,
     }
 
-    @calculated_property(schema={
-        'title': 'Title',
-        'type': 'string',
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        schema={
+            'title': 'Title',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
     def title(self, first_name, last_name):
         return u'{} {}'.format(first_name, last_name)
 
@@ -68,15 +71,18 @@ class User(Item):
         owner = 'userid.%s' % self.uuid
         return {owner: 'role.owner'}
 
-    @calculated_property(schema={
-        'title': 'Access Keys',
-        'type': 'array',
-        'items': {
-            'type': ['string', 'object'],
-            'linkFrom': 'AccessKey.user',
-            'notSubmittable': True,
+    @calculated_property(
+        schema={
+            'title': 'Access Keys',
+            'type': 'array',
+            'items': {
+                'type': ['string', 'object'],
+                'linkFrom': 'AccessKey.user',
+                'notSubmittable': True,
+            },
         },
-    }, category='page')
+        category='page'
+    )
     def access_keys(self, request):
         if not request.has_permission('view_details'):
             return
@@ -85,7 +91,12 @@ class User(Item):
         return [obj for obj in objects if obj['status'] not in ('deleted', 'replaced')]
 
 
-@view_config(context=User, permission='view', request_method='GET', name='page')
+@view_config(
+    context=User,
+    permission='view',
+    request_method='GET',
+    name='page'
+)
 def user_page_view(context, request):
     if request.has_permission('view_details'):
         properties = item_view_object(context, request)
@@ -99,8 +110,12 @@ def user_page_view(context, request):
     return properties
 
 
-@view_config(context=User, permission='view', request_method='GET',
-             name='object')
+@view_config(
+    context=User,
+    permission='view',
+    request_method='GET',
+    name='object'
+)
 def user_basic_view(context, request):
     properties = item_view_object(context, request)
     filtered = {}
@@ -112,7 +127,10 @@ def user_basic_view(context, request):
     return filtered
 
 
-@calculated_property(context=User, category='user_action')
+@calculated_property(
+    context=User,
+    category='user_action'
+)
 def impersonate(request):
     # This is assuming the user_action calculated properties
     # will only be fetched from the current_user view,
@@ -126,7 +144,10 @@ def impersonate(request):
         }
 
 
-@calculated_property(context=User, category='user_action')
+@calculated_property(
+    context=User,
+    category='user_action'
+)
 def profile(context, request):
     return {
         'id': 'profile',
@@ -136,7 +157,10 @@ def profile(context, request):
     }
 
 
-@calculated_property(context=User, category='user_action')
+@calculated_property(
+    context=User,
+    category='user_action'
+)
 def signout(context, request):
     return {
         'id': 'signout',
