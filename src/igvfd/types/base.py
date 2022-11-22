@@ -222,11 +222,13 @@ class Item(snovault.Item):
             keys['accession'].append(properties['accession'])
         return keys
 
-    @calculated_property(schema={
-        'title': 'Summary',
-        'type': 'string',
-        'notSubmittable': True,
-    })
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
     def summary(self):
         if self.name_key is None:
             return self.uuid
@@ -406,7 +408,10 @@ class SharedItem(Item):
         return roles
 
 
-@snovault.calculated_property(context=Item.Collection, category='action')
+@snovault.calculated_property(
+    context=Item.Collection,
+    category='action'
+)
 def add(context, request):
     if request.has_permission('add'):
         return {
@@ -417,7 +422,10 @@ def add(context, request):
         }
 
 
-@snovault.calculated_property(context=Item, category='action')
+@snovault.calculated_property(
+    context=Item,
+    category='action'
+)
 def edit(context, request):
     if request.has_permission('edit'):
         return {
@@ -428,7 +436,10 @@ def edit(context, request):
         }
 
 
-@snovault.calculated_property(context=Item, category='action')
+@snovault.calculated_property(
+    context=Item,
+    category='action'
+)
 def edit_json(context, request):
     if request.has_permission('edit'):
         return {
@@ -439,8 +450,12 @@ def edit_json(context, request):
         }
 
 
-@view_config(context=Item, permission='edit_unvalidated', request_method='PATCH',
-             name='set_status')
+@view_config(
+    context=Item,
+    permission='edit_unvalidated',
+    request_method='PATCH',
+    name='set_status'
+)
 def item_set_status(context, request):
     new_status = request.json_body.get('status')
     if not new_status:

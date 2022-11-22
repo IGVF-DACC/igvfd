@@ -16,7 +16,8 @@ from .base import (
     properties={
         'title': 'File sets',
         'description': 'Listing of file sets',
-    })
+    }
+)
 class FileSet(Item):
     item_type = 'file_set'
     base_types = ['FileSet'] + Item.base_types
@@ -30,7 +31,8 @@ class FileSet(Item):
     properties={
         'title': 'Analysis sets',
         'description': 'Listing of analysis sets',
-    })
+    }
+)
 class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
@@ -66,7 +68,8 @@ class AnalysisSet(FileSet):
     properties={
         'title': 'Curated Set',
         'description': 'Listing of curated sets',
-    })
+    }
+)
 class CuratedSet(FileSet):
     item_type = 'curated_set'
     schema = load_schema('igvfd:schemas/curated_set.json')

@@ -15,7 +15,8 @@ from .base import (
     properties={
         'title': 'Variant',
         'description': 'Listing of variants',
-    })
+    }
+)
 class Variant(Item):
     item_type = 'variant'
     base_types = ['Variant'] + Item.base_types
@@ -28,7 +29,8 @@ class Variant(Item):
     properties={
         'title': 'Human genomic variant',
         'description': 'Listing of human genomic variants',
-    })
+    }
+)
 class HumanGenomicVariant(Variant):
     item_type = 'human_genomic_variant'
     schema = load_schema('igvfd:schemas/human_genomic_variant.json')

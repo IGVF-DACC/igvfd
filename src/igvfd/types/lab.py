@@ -17,7 +17,8 @@ from .base import (
     properties={
         'title': 'Labs',
         'description': 'Listing of labs',
-    })
+    }
+)
 class Lab(Item):
     item_type = 'lab'
     schema = load_schema('igvfd:schemas/lab.json')

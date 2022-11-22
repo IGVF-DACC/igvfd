@@ -75,8 +75,12 @@ class AccessKey(Item):
         pass
 
 
-@view_config(context=AccessKey.Collection, permission='add', request_method='POST',
-             validators=[validate_item_content_post])
+@view_config(
+    context=AccessKey.Collection,
+    permission='add',
+    request_method='POST',
+    validators=[validate_item_content_post]
+)
 def access_key_add(context, request):
     crypt_context = request.registry[CRYPT_CONTEXT]
 
@@ -107,8 +111,13 @@ def access_key_add(context, request):
     return result
 
 
-@view_config(name='reset-secret', context=AccessKey, permission='edit',
-             request_method='POST', subpath_segments=0)
+@view_config(
+    name='reset-secret',
+    context=AccessKey,
+    permission='edit',
+    request_method='POST',
+    subpath_segments=0
+)
 def access_key_reset_secret(context, request):
     request.validated = context.properties.copy()
     crypt_context = request.registry[CRYPT_CONTEXT]
@@ -121,8 +130,12 @@ def access_key_reset_secret(context, request):
     return result
 
 
-@view_config(context=AccessKey, permission='view_raw', request_method='GET',
-             name='raw')
+@view_config(
+    context=AccessKey,
+    permission='view_raw',
+    request_method='GET',
+    name='raw'
+)
 def access_key_view_raw(context, request):
     if asbool(request.params.get('upgrade', True)):
         properties = context.upgrade_properties()

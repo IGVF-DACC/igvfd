@@ -17,7 +17,8 @@ from .base import (
     properties={
         'title': 'Awards (Grants)',
         'description': 'Listing of awards (aka grants)',
-    })
+    }
+)
 class Award(Item):
     item_type = 'award'
     schema = load_schema('igvfd:schemas/award.json')

@@ -30,7 +30,8 @@ import dateutil.parser
     properties={
         'title': 'Pages',
         'description': 'Portal pages',
-    })
+    }
+)
 class Page(SharedItem):
     item_type = 'page'
     schema = load_schema('igvfd:schemas/page.json')
@@ -50,7 +51,8 @@ class Page(SharedItem):
             'title': 'Canonical URI',
             'type': 'string',
             'notSubmittable': True,
-        })
+        }
+    )
     def canonical_uri(self, name):
         if name == 'homepage':
             return '/'
@@ -117,7 +119,12 @@ def isNotCollectionDefaultPage(value, schema):
 VALIDATOR_REGISTRY['isNotCollectionDefaultPage'] = isNotCollectionDefaultPage
 
 
-@view_config(context=Page, permission='view', request_method='GET', name='page')
+@view_config(
+    context=Page,
+    permission='view',
+    request_method='GET',
+    name='page'
+)
 def page_view_page(context, request):
     # Embedding of items has to happen here as we don't know which of their subobjects
     # need embedding as we don't know the type and may need their full page view.
@@ -138,7 +145,8 @@ def page_view_page(context, request):
         'type': 'string',
         'linkTo': 'Page',
         'notSubmittable': True,
-    })
+    }
+)
 def collection_default_page(context, request):
     try:
         result = request.embed('/pages/%s/@@page' % context.__name__, as_user=True)

@@ -16,7 +16,8 @@ from .base import (
     properties={
         'title': 'Samples',
         'description': 'Listing of samples',
-    })
+    }
+)
 class Sample(Item):
     item_type = 'sample'
     base_types = ['Sample'] + Item.base_types
@@ -30,7 +31,8 @@ class Sample(Item):
     properties={
         'title': 'Biosamples',
         'description': 'Listing of biosamples',
-    })
+    }
+)
 class Biosample(Sample):
     item_type = 'biosample'
     base_types = ['Biosample'] + Sample.base_types
@@ -87,7 +89,8 @@ class Biosample(Sample):
     properties={
         'title': 'Primary cells',
         'description': 'Listing of primary cells',
-    })
+    }
+)
 class PrimaryCell(Biosample):
     item_type = 'primary_cell'
     schema = load_schema('igvfd:schemas/primary_cell.json')
@@ -99,7 +102,8 @@ class PrimaryCell(Biosample):
     properties={
         'title': 'Cell lines',
         'description': 'Listing of cell lines',
-    })
+    }
+)
 class CellLine(Biosample):
     item_type = 'cell_line'
     schema = load_schema('igvfd:schemas/cell_line.json')
@@ -111,7 +115,8 @@ class CellLine(Biosample):
     properties={
         'title': 'Tissues',
         'description': 'Listing of tissues',
-    })
+    }
+)
 class Tissue(Biosample):
     item_type = 'tissue'
     schema = load_schema('igvfd:schemas/tissue.json')
@@ -123,7 +128,8 @@ class Tissue(Biosample):
     properties={
         'title': 'Differentiated tissues',
         'description': 'Listing of differentiated tissues',
-    })
+    }
+)
 class DifferentiatedTissue(Biosample):
     item_type = 'differentiated_tissue'
     schema = load_schema('igvfd:schemas/differentiated_tissue.json')
@@ -135,7 +141,8 @@ class DifferentiatedTissue(Biosample):
     properties={
         'title': 'Differentiated cells',
         'description': 'Listing of differentiated cells',
-    })
+    }
+)
 class DifferentiatedCell(Biosample):
     item_type = 'differentiated_cell'
     schema = load_schema('igvfd:schemas/differentiated_cell.json')
@@ -147,7 +154,8 @@ class DifferentiatedCell(Biosample):
     properties={
         'title': 'Technical Samples',
         'description': 'Listing of technical samples',
-    })
+    }
+)
 class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
@@ -159,7 +167,8 @@ class TechnicalSample(Sample):
     properties={
         'title': 'Whole organism samples',
         'description': 'Listing of whole organism samples',
-    })
+    }
+)
 class WholeOrganism(Biosample):
     item_type = 'whole_organism'
     schema = load_schema('igvfd:schemas/whole_organism.json')

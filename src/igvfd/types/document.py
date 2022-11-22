@@ -16,7 +16,8 @@ from .base import (
     properties={
         'title': 'Documents',
         'description': 'Listing of Biosample Documents',
-    })
+    }
+)
 class Document(ItemWithAttachment, Item):
     item_type = 'document'
     schema = load_schema('igvfd:schemas/document.json')
