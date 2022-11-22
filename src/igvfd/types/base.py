@@ -152,7 +152,6 @@ class Collection(snovault.Collection, AbstractCollection):
 
 
 class Item(snovault.Item):
-
     AbstractCollection = AbstractCollection
     Collection = Collection
     STATUS_ACL = {
