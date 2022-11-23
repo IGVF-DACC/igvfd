@@ -36,7 +36,7 @@
             "description": "An ontology term identifier describing a phenotype.",
             "permission": "import_items",
             "type": "string",
-            "pattern": "^(DOID|EFO|HP|MONDO|OBA|NTR):[0-9]{2,8}|OBA:VT[0-9]{2,8}$"
+            "pattern": "^(DOID|EFO|HP|MONDO|OBA|NTR):[0-9]{2,8}|OBA:VT[0-9]{2,8}|NCIT:C[0-9]{2,8}$"
         }
     },
     "columns": {

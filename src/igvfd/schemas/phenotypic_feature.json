@@ -1,0 +1,69 @@
+{
+    "title": "Phenotypic Feature",
+    "description": "Schema for submitting a phenotypic feature.",
+    "$id": "/profiles/phenotypic_feature.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "feature"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        }
+    ],
+    "dependentRequired": {
+        "quantity": [
+            "quantity_units"
+        ],
+        "quantity_units": [
+            "quantity"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "feature": {
+            "title": "Phenotypic Feature",
+            "description": "The phenotypic feature observed for the donor.",
+            "type": "string",
+            "linkTo": "PhenotypeTerm"
+        },
+        "quantity": {
+            "title": "Quantity",
+            "description": "A quantity associated with the phenotypic feature, if applicable.",
+            "type": "number"
+        },
+        "quantity_units": {
+            "title": "Quantity Units",
+            "description": "The unit of measurement for a quantity associated with the phenotypic feature.",
+            "type": "string",
+            "linkTo": "PhenotypeTerm"
+        }
+    },
+    "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
+        "feature": {
+            "title": "Phenotypic feature"
+        },
+        "status": {
+            "title": "Status"
+        }
+    },
+    "boost_values": {
+        "@type": 1.0,
+        "feature": 1.0
+    },
+    "changelog": "/profiles/changelogs/phenotypic_feature.md"
+}
