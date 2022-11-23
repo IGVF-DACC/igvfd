@@ -20,34 +20,32 @@ from infrastructure.constructs.existing import igvf_dev
 from infrastructure.constructs.existing.types import ExistingResourcesClass
 
 
-pipeline_config: Dict[str, Any] = {
-    'demo': {
-        'pipeline': 'DemoDeploymentPipelineStack',
-        'existing_resources_class': igvf_dev.Resources,
-        'account_and_region': igvf_dev.US_WEST_2,
-        'tags': [
-            ('time-to-live-hours', '72'),
-            ('turn-off-on-friday-night', 'yes'),
-        ],
-    },
-    'dev': {
-        'pipeline': 'ContinuousDeploymentPipelineStack',
-        'existing_resources_class': igvf_dev.Resources,
-        'account_and_region': igvf_dev.US_WEST_2,
-        'tags': [
-        ],
-    },
-    'production': {
-        'pipeline': 'ProductionDeploymentPipelineStack',
-        'existing_resources_class': igvf_dev.Resources,
-        'account_and_region': igvf_dev.US_WEST_2,
-        'tags': [
-        ],
-    },
-}
-
-
 config: Dict[str, Any] = {
+    'pipeline': {
+        'demo': {
+            'pipeline': 'DemoDeploymentPipelineStack',
+            'existing_resources_class': igvf_dev.Resources,
+            'account_and_region': igvf_dev.US_WEST_2,
+            'tags': [
+                ('time-to-live-hours', '72'),
+                ('turn-off-on-friday-night', 'yes'),
+            ],
+        },
+        'dev': {
+            'pipeline': 'ContinuousDeploymentPipelineStack',
+            'existing_resources_class': igvf_dev.Resources,
+            'account_and_region': igvf_dev.US_WEST_2,
+            'tags': [
+            ],
+        },
+        'production': {
+            'pipeline': 'ProductionDeploymentPipelineStack',
+            'existing_resources_class': igvf_dev.Resources,
+            'account_and_region': igvf_dev.US_WEST_2,
+            'tags': [
+            ],
+        },
+    },
     'environment': {
         'demo': {
             'postgres': {
@@ -312,9 +310,9 @@ class PipelineConfig:
     name: str
     branch: str
     pipeline: str
-    tags: List[Tuple[str, str]]
     existing_resources_class: ExistingResourcesClass
     account_and_region: Environment
+    tags: List[Tuple[str, str]]
     common: Common = Common()
 
 
@@ -331,7 +329,7 @@ def build_config_from_name(name: str, **kwargs: Any) -> Config:
 def build_pipeline_config_from_name(name: str, **kwargs: Any) -> PipelineConfig:
     return PipelineConfig(
         **{
-            **pipeline_config[name],
+            **config['pipeline'][name],
             **kwargs,
             **{'name': name},
         }
