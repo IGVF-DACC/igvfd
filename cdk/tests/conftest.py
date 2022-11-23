@@ -155,6 +155,22 @@ def existing_resources(mocker, domain, network, secret, chatbot, bus, sns_topic)
 
 
 @pytest.fixture
+def pipeline_config():
+    from infrastructure.config import PipelineConfig
+    from infrastructure.constructs.existing import igvf_dev
+    return PipelineConfig(
+        name='demo',
+        branch='some-branch',
+        pipeline='xyz',
+        existing_resources_class=igvf_dev.Resources,
+        account_and_region=igvf_dev.US_WEST_2,
+        tags=[
+            ('test', 'tag'),
+        ]
+    )
+
+
+@pytest.fixture
 def config(instance_type, capacity_config):
     from infrastructure.config import Config
     return Config(
