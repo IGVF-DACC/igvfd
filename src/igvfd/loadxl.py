@@ -43,6 +43,7 @@ ORDER = [
     'analysis_set',
     'reference_data',
     'sequence_data',
+    'phenotypic_feature'
 ]
 
 IS_ATTACHMENT = [
