@@ -1,3 +1,5 @@
+from aws_cdk import Environment
+
 from aws_cdk.aws_ec2 import InstanceType
 from aws_cdk.aws_ec2 import InstanceClass
 from aws_cdk.aws_ec2 import InstanceSize
@@ -12,6 +14,10 @@ from typing import List
 from typing import Tuple
 
 from infrastructure.constants import DEV_DATABASE_IDENTIFIER
+
+from infrastructure.constructs.existing import igvf_dev
+
+from infrastructure.constructs.existing.types import ExistingResourcesClass
 
 
 config: Dict[str, Any] = {
@@ -113,8 +119,147 @@ config: Dict[str, Any] = {
             'tags': [
             ]
         },
-        'test': {},
-        'prod': {},
+        'staging': {
+            'pipeline': 'ContinuousDeploymentPipelineStack',
+            'postgres': {
+                'instances': [
+                    {
+                        'construct_id': 'Postgres',
+                        'on': True,
+                        'props': {
+                            'allocated_storage': 10,
+                            'max_allocated_storage': 20,
+                            'instance_type': InstanceType.of(
+                                InstanceClass.BURSTABLE3,
+                                InstanceSize.MEDIUM,
+                            ),
+                        },
+                    },
+                ],
+            },
+            'opensearch': {
+                'capacity': CapacityConfig(
+                    data_node_instance_type='t3.small.search',
+                    data_nodes=1,
+                ),
+                'volume_size': 10,
+            },
+            'backend': {
+                'cpu': 1024,
+                'memory_limit_mib': 2048,
+                'desired_count': 1,
+                'max_capacity': 4,
+                'use_postgres_named': 'Postgres'
+            },
+            'invalidation_service': {
+                'cpu': 256,
+                'memory_limit_mib': 512,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
+            },
+            'indexing_service': {
+                'cpu': 256,
+                'memory_limit_mib': 512,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
+            },
+            'tags': [
+            ]
+        },
+        'sandbox': {
+            'pipeline': 'ContinuousDeploymentPipelineStack',
+            'postgres': {
+                'instances': [
+                    {
+                        'construct_id': 'Postgres',
+                        'on': True,
+                        'props': {
+                            'allocated_storage': 10,
+                            'max_allocated_storage': 20,
+                            'instance_type': InstanceType.of(
+                                InstanceClass.BURSTABLE3,
+                                InstanceSize.MEDIUM,
+                            ),
+                        },
+                    },
+                ],
+            },
+            'opensearch': {
+                'capacity': CapacityConfig(
+                    data_node_instance_type='t3.small.search',
+                    data_nodes=1,
+                ),
+                'volume_size': 10,
+            },
+            'backend': {
+                'cpu': 1024,
+                'memory_limit_mib': 2048,
+                'desired_count': 1,
+                'max_capacity': 4,
+                'use_postgres_named': 'Postgres'
+            },
+            'invalidation_service': {
+                'cpu': 256,
+                'memory_limit_mib': 512,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
+            },
+            'indexing_service': {
+                'cpu': 256,
+                'memory_limit_mib': 512,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
+            },
+            'tags': [
+            ]
+        },
+        'production': {
+            'pipeline': 'ContinuousDeploymentPipelineStack',
+            'postgres': {
+                'instances': [
+                    {
+                        'construct_id': 'Postgres',
+                        'on': True,
+                        'props': {
+                            'allocated_storage': 10,
+                            'max_allocated_storage': 20,
+                            'instance_type': InstanceType.of(
+                                InstanceClass.BURSTABLE3,
+                                InstanceSize.MEDIUM,
+                            ),
+                        },
+                    },
+                ],
+            },
+            'opensearch': {
+                'capacity': CapacityConfig(
+                    data_node_instance_type='t3.small.search',
+                    data_nodes=1,
+                ),
+                'volume_size': 10,
+            },
+            'backend': {
+                'cpu': 1024,
+                'memory_limit_mib': 2048,
+                'desired_count': 1,
+                'max_capacity': 4,
+                'use_postgres_named': 'Postgres'
+            },
+            'invalidation_service': {
+                'cpu': 256,
+                'memory_limit_mib': 512,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
+            },
+            'indexing_service': {
+                'cpu': 256,
+                'memory_limit_mib': 512,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
+            },
+            'tags': [
+            ]
+        },
     }
 }
 
@@ -131,7 +276,6 @@ class Common:
 class Config:
     name: str
     branch: str
-    pipeline: str
     postgres: Dict[str, Any]
     opensearch: Dict[str, Any]
     backend: Dict[str, Any]
@@ -139,6 +283,44 @@ class Config:
     indexing_service: Dict[str, Any]
     tags: List[Tuple[str, str]]
     common: Common = Common()
+
+
+@dataclass
+class PipelineConfig:
+    name: str
+    branch: str
+    pipeline: str
+    tags: List[Tuple[str, str]]
+    existing_resources_class: ExistingResourcesClass
+    account_and_region: Environment
+    common: Common = Common()
+
+
+pipeline_config: Dict[str, Any] = {
+    'demo': {
+        'pipeline': 'DemoDeploymentPipelineStack',
+        'existing_resources_class': igvf_dev.Resources,
+        'account_and_region': igvf_dev.US_WEST_2,
+        'tags': [
+            ('time-to-live-hours', '72'),
+            ('turn-off-on-friday-night', 'yes'),
+        ],
+    },
+    'dev': {
+        'pipeline': 'ContinuousDeploymentPipelineStack',
+        'existing_resources_class': igvf_dev.Resources,
+        'account_and_region': igvf_dev.US_WEST_2,
+        'tags': [
+        ],
+    },
+    'production': {
+        'pipeline': 'ProductionDeploymentPipelineStack',
+        'existing_resources_class': igvf_dev.Resources,
+        'account_and_region': igvf_dev.US_WEST_2,
+        'tags': [
+        ],
+    },
+}
 
 
 def build_config_from_name(name: str, **kwargs: Any) -> Config:
@@ -151,7 +333,25 @@ def build_config_from_name(name: str, **kwargs: Any) -> Config:
     )
 
 
+def build_pipeline_config_from_name(name: str, **kwargs: Any) -> PipelineConfig:
+    return PipelineConfig(
+        **{
+            **pipeline_config[name],
+            **kwargs,
+            **{'name': name},
+        }
+    )
+
+
 def get_config_name_from_branch(branch: str) -> str:
     if branch == 'dev':
         return 'dev'
+    return 'demo'
+
+
+def get_pipeline_config_name_from_branch(branch: str) -> str:
+    if branch == 'dev':
+        return 'dev'
+    if branch == 'main':
+        return 'production'
     return 'demo'

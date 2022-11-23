@@ -2,7 +2,7 @@ from aws_cdk import Stack
 
 from constructs import Construct
 
-from infrastructure.config import Config
+from infrastructure.config import PipelineConfig
 
 from infrastructure.constructs.pipeline import ContinuousDeploymentPipeline
 from infrastructure.constructs.pipeline import ContinuousDeploymentPipelineProps
@@ -26,7 +26,7 @@ class ContinuousDeploymentPipelineStack(Stack):
             construct_id: str,
             *,
             existing_resources_class: ExistingResourcesClass,
-            config: Config,
+            config: PipelineConfig,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id,  **kwargs)
@@ -53,7 +53,7 @@ class DemoDeploymentPipelineStack(Stack):
             construct_id: str,
             *,
             existing_resources_class: ExistingResourcesClass,
-            config: Config,
+            config: PipelineConfig,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id,  **kwargs)

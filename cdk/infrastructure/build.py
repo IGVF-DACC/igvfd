@@ -2,9 +2,9 @@ from aws_cdk import App
 
 from infrastructure.constructs.existing import igvf_dev
 
-from infrastructure.config import Config
-from infrastructure.config import build_config_from_name
-from infrastructure.config import get_config_name_from_branch
+from infrastructure.config import PipelineConfig
+from infrastructure.config import build_pipeline_config_from_name
+from infrastructure.config import get_pipeline_config_name_from_branch
 from infrastructure.naming import prepend_project_name
 from infrastructure.naming import prepend_branch_name
 from infrastructure.tags import add_tags_to_stack
@@ -27,7 +27,7 @@ def get_args(app: App) -> Args:
         raise ValueError('Must specify branch context: `-c branch=$BRANCH`')
     config_name = (
         app.node.try_get_context('config-name')
-        or get_config_name_from_branch(branch)
+        or get_pipeline_config_name_from_branch(branch)
     )
     return Args(
         branch=branch,
@@ -35,14 +35,14 @@ def get_args(app: App) -> Args:
     )
 
 
-def get_config(args: Args) -> Config:
-    return build_config_from_name(
+def get_config(args: Args) -> PipelineConfig:
+    return build_pipeline_config_from_name(
         args.config_name,
         branch=args.branch,
     )
 
 
-def add_deploy_pipeline_stack_to_app(app: App, config: Config) -> None:
+def add_deploy_pipeline_stack_to_app(app: App, config: PipelineConfig) -> None:
     pipeline_class = pipeline_stack_factory(
         config.pipeline
     )
@@ -54,7 +54,7 @@ def add_deploy_pipeline_stack_to_app(app: App, config: Config) -> None:
                 pipeline_class.__name__,
             )
         ),
-        existing_resources_class=igvf_dev.Resources,
+        existing_resources_class=config.existing_resources_class,
         config=config,
         env=igvf_dev.US_WEST_2,
     )

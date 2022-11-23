@@ -13,14 +13,16 @@ from aws_cdk.pipelines import DockerCredential
 from aws_cdk.pipelines import ManualApprovalStep
 from aws_cdk.pipelines import ShellStep
 
-from infrastructure.config import Config
+from infrastructure.config import PipelineConfig
 
 from infrastructure.naming import prepend_branch_name
 from infrastructure.naming import prepend_project_name
 from infrastructure.stages.ci import CIDeployStage
 from infrastructure.stages.prod import ProdDeployStage
 from infrastructure.stages.test import TestDeployStage
+from infrastructure.stages.demo import DemoDeployStage
 from infrastructure.stages.dev import DevelopmentDeployStage
+
 
 from infrastructure.constructs.existing.types import ExistingResources
 
@@ -31,7 +33,7 @@ from dataclasses import dataclass
 
 @dataclass
 class BasicSelfUpdatingPipelineProps:
-    config: Config
+    config: PipelineConfig
     existing_resources: ExistingResources
     github_repo: str
 
@@ -178,7 +180,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
                     'DeployContinuousIntegration'
                 )
             ),
-            config=self.props.config,
+            branch=self.props.config.branch,
         )
         tooling_wave.add_stage(
             ci_stage
@@ -193,7 +195,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
                     'DeployDevelopment',
                 )
             ),
-            config=self.props.config,
+            branch=self.props.config.branch,
         )
         self.code_pipeline.add_stage(
             stage,
@@ -261,7 +263,7 @@ class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
         self._add_slack_notifications()
 
     def _add_development_deploy_stage(self) -> None:
-        stage = DevelopmentDeployStage(
+        stage = DemoDeployStage(
             self,
             prepend_project_name(
                 prepend_branch_name(
@@ -269,8 +271,29 @@ class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
                     'DeployDevelopment',
                 )
             ),
-            config=self.props.config,
+            branch=self.props.config.branch,
         )
         self.code_pipeline.add_stage(
             stage,
+        )
+
+
+ProductionDeploymentPipelineProps = BasicSelfUpdatingPipelineProps
+
+
+class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
+
+    def __init__(
+            self,
+            scope: Construct,
+            construct_id: str,
+            *,
+            props: ProductionDeploymentPipelineProps,
+            **kwargs: Any,
+    ) -> None:
+        super().__init__(
+            scope,
+            construct_id,
+            props=props,
+            **kwargs,
         )

@@ -5,6 +5,8 @@ from constructs import Construct
 from infrastructure.constructs.existing import igvf_dev
 
 from infrastructure.config import Config
+from infrastructure.config import build_config_from_name
+
 from infrastructure.tags import add_tags_to_stack
 
 from infrastructure.stacks.backend import BackendStack
@@ -21,10 +23,14 @@ class DevelopmentDeployStage(cdk.Stage):
             scope: Construct,
             construct_id: str,
             *,
-            config: Config,
+            branch: str,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
+        config = build_config_from_name(
+            'dev',
+            branch=branch,
+        )
         self.postgres_stack = PostgresStack(
             self,
             'PostgresStack',

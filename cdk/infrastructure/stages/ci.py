@@ -3,6 +3,7 @@ import aws_cdk as cdk
 from constructs import Construct
 
 from infrastructure.config import Config
+from infrastructure.config import build_config_from_name
 
 from infrastructure.tags import add_tags_to_stack
 
@@ -20,10 +21,14 @@ class CIDeployStage(cdk.Stage):
             scope: Construct,
             construct_id: str,
             *,
-            config: Config,
+            branch: str,
             **kwargs: Any
     ) -> None:
-        super().__init__(scope, construct_id,  **kwargs)
+        super().__init__(scope, construct_id, **kwargs)
+        config = build_config_from_name(
+            'dev',
+            branch=branch,
+        )
         self.ci_stack = ContinuousIntegrationStack(
             self,
             'ContinuousIntegrationStack',
