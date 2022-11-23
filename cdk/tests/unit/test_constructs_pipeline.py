@@ -3,7 +3,7 @@ import pytest
 from aws_cdk.assertions import Template
 
 
-def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(stack, secret, mocker, config):
+def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(stack, secret, mocker, pipeline_config):
     from infrastructure.constructs.pipeline import BasicSelfUpdatingPipeline
     from infrastructure.constructs.pipeline import BasicSelfUpdatingPipelineProps
     existing_resources = mocker.Mock()
@@ -15,7 +15,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
         props=BasicSelfUpdatingPipelineProps(
             github_repo='ABC/xyz',
             existing_resources=existing_resources,
-            config=config,
+            config=pipeline_config,
         )
     )
     template = Template.from_stack(stack)
@@ -257,7 +257,7 @@ def test_constructs_pipeline_initialize_basic_self_updating_pipeline_construct(s
     )
 
 
-def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct(mocker, config):
+def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct(mocker, pipeline_config):
     from aws_cdk import Stack
     from aws_cdk import Environment
     from aws_cdk.aws_secretsmanager import Secret
@@ -287,7 +287,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
         props=ContinuousDeploymentPipelineProps(
             github_repo='ABC/xyz',
             existing_resources=existing_resources,
-            config=config,
+            config=pipeline_config,
         )
     )
     template = Template.from_stack(stack)

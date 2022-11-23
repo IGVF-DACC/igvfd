@@ -176,7 +176,6 @@ def config(instance_type, capacity_config):
     return Config(
         name='demo',
         branch='some-branch',
-        pipeline='xyz',
         postgres={
             'instances': [
                 {

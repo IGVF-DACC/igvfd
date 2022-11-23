@@ -56,7 +56,7 @@ def add_deploy_pipeline_stack_to_app(app: App, config: PipelineConfig) -> None:
         ),
         existing_resources_class=config.existing_resources_class,
         config=config,
-        env=igvf_dev.US_WEST_2,
+        env=config.account_and_region,
     )
     add_tags_to_stack(pipeline, config)
 
