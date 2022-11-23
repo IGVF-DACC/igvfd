@@ -20,10 +20,36 @@ from infrastructure.constructs.existing import igvf_dev
 from infrastructure.constructs.existing.types import ExistingResourcesClass
 
 
+pipeline_config: Dict[str, Any] = {
+    'demo': {
+        'pipeline': 'DemoDeploymentPipelineStack',
+        'existing_resources_class': igvf_dev.Resources,
+        'account_and_region': igvf_dev.US_WEST_2,
+        'tags': [
+            ('time-to-live-hours', '72'),
+            ('turn-off-on-friday-night', 'yes'),
+        ],
+    },
+    'dev': {
+        'pipeline': 'ContinuousDeploymentPipelineStack',
+        'existing_resources_class': igvf_dev.Resources,
+        'account_and_region': igvf_dev.US_WEST_2,
+        'tags': [
+        ],
+    },
+    'production': {
+        'pipeline': 'ProductionDeploymentPipelineStack',
+        'existing_resources_class': igvf_dev.Resources,
+        'account_and_region': igvf_dev.US_WEST_2,
+        'tags': [
+        ],
+    },
+}
+
+
 config: Dict[str, Any] = {
     'environment': {
         'demo': {
-            'pipeline': 'DemoDeploymentPipelineStack',
             'postgres': {
                 'instances': [
                     {
@@ -73,7 +99,6 @@ config: Dict[str, Any] = {
             ],
         },
         'dev': {
-            'pipeline': 'ContinuousDeploymentPipelineStack',
             'postgres': {
                 'instances': [
                     {
@@ -120,7 +145,6 @@ config: Dict[str, Any] = {
             ]
         },
         'staging': {
-            'pipeline': 'ContinuousDeploymentPipelineStack',
             'postgres': {
                 'instances': [
                     {
@@ -167,7 +191,6 @@ config: Dict[str, Any] = {
             ]
         },
         'sandbox': {
-            'pipeline': 'ContinuousDeploymentPipelineStack',
             'postgres': {
                 'instances': [
                     {
@@ -214,7 +237,6 @@ config: Dict[str, Any] = {
             ]
         },
         'production': {
-            'pipeline': 'ContinuousDeploymentPipelineStack',
             'postgres': {
                 'instances': [
                     {
@@ -294,33 +316,6 @@ class PipelineConfig:
     existing_resources_class: ExistingResourcesClass
     account_and_region: Environment
     common: Common = Common()
-
-
-pipeline_config: Dict[str, Any] = {
-    'demo': {
-        'pipeline': 'DemoDeploymentPipelineStack',
-        'existing_resources_class': igvf_dev.Resources,
-        'account_and_region': igvf_dev.US_WEST_2,
-        'tags': [
-            ('time-to-live-hours', '72'),
-            ('turn-off-on-friday-night', 'yes'),
-        ],
-    },
-    'dev': {
-        'pipeline': 'ContinuousDeploymentPipelineStack',
-        'existing_resources_class': igvf_dev.Resources,
-        'account_and_region': igvf_dev.US_WEST_2,
-        'tags': [
-        ],
-    },
-    'production': {
-        'pipeline': 'ProductionDeploymentPipelineStack',
-        'existing_resources_class': igvf_dev.Resources,
-        'account_and_region': igvf_dev.US_WEST_2,
-        'tags': [
-        ],
-    },
-}
 
 
 def build_config_from_name(name: str, **kwargs: Any) -> Config:
