@@ -150,6 +150,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
+                            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
@@ -197,6 +198,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
+                            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
@@ -244,6 +246,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
+                            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
