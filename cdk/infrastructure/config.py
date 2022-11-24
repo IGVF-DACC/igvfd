@@ -306,7 +306,7 @@ class Config:
     invalidation_service: Dict[str, Any]
     indexing_service: Dict[str, Any]
     tags: List[Tuple[str, str]]
-    url_prefix: Optional[str]
+    url_prefix: Optional[str] = None
     common: Common = Common()
 
 
