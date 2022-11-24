@@ -12,6 +12,7 @@ from aws_cdk.pipelines import CodePipelineSource
 from aws_cdk.pipelines import DockerCredential
 from aws_cdk.pipelines import ManualApprovalStep
 from aws_cdk.pipelines import ShellStep
+from aws_cdk.pipelines import Wave
 
 from infrastructure.config import Config
 from infrastructure.config import PipelineConfig
@@ -21,11 +22,11 @@ from infrastructure.naming import prepend_branch_name
 from infrastructure.naming import prepend_project_name
 
 from infrastructure.stages.ci import CIDeployStage
-from infrastructure.stages.prod import ProdDeployStage
-from infrastructure.stages.test import TestDeployStage
 from infrastructure.stages.demo import DemoDeployStage
 from infrastructure.stages.dev import DevelopmentDeployStage
-
+from infrastructure.stages.staging import StagingDeployStage
+from infrastructure.stages.sandbox import SandboxDeployStage
+from infrastructure.stages.production import ProductionDeployStage
 
 from infrastructure.constructs.existing.types import ExistingResources
 
@@ -170,8 +171,6 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
         self._define_dev_environment_config()
         self._add_tooling_wave()
         self._add_development_deploy_stage()
-        # self._add_test_deploy_stage()
-        # self._add_prod_deploy_stage()
         self._add_slack_notifications()
 
     def _define_dev_environment_config(self) -> None:
@@ -211,44 +210,6 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
         )
         self.code_pipeline.add_stage(
             stage,
-        )
-
-    def _add_test_deploy_stage(self) -> None:
-        stage = TestDeployStage(
-            self,
-            prepend_project_name(
-                prepend_branch_name(
-                    self.props.config.branch,
-                    'DeployTest',
-                )
-            )
-        )
-        self.code_pipeline.add_stage(
-            stage,
-            pre=[
-                ManualApprovalStep(
-                    'RunTestDeploy'
-                )
-            ]
-        )
-
-    def _add_prod_deploy_stage(self) -> None:
-        stage = ProdDeployStage(
-            self,
-            prepend_project_name(
-                prepend_branch_name(
-                    self.props.config.branch,
-                    'DeployProduction',
-                )
-            )
-        )
-        self.code_pipeline.add_stage(
-            stage,
-            pre=[
-                ManualApprovalStep(
-                    'RunProductionDeploy'
-                )
-            ]
         )
 
 
@@ -307,6 +268,10 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
     staging_config: Config
     sandbox_config: Config
     production_config: Config
+    staging_stage: StagingDeployStage
+    sandbox_stage: SandboxDeployStage
+    production_stage: ProductionDeployStage
+    production_deploy_wave: Wave
 
     def __init__(
             self,
@@ -325,6 +290,13 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
         self._define_staging_config()
         self._define_sandbox_config()
         self._define_production_config()
+        self._define_staging_stage()
+        self._define_sandbox_stage()
+        self._define_production_stage()
+        self._add_staging_deploy_stage()
+        self._add_production_deploy_wave()
+        self._add_sandbox_stage_to_production_deploy_wave()
+        self._add_production_stage_to_production_deploy_wave()
 
     def _define_staging_config(self) -> None:
         self.staging_config = build_config_from_name(
@@ -342,4 +314,65 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
         self.production_config = build_config_from_name(
             'production',
             branch=self.props.config.branch,
+        )
+
+    def _define_staging_stage(self) -> None:
+        self.staging_stage = StagingDeployStage(
+            self,
+            prepend_project_name(
+                prepend_branch_name(
+                    self.props.config.branch,
+                    'StagingDeployStage',
+                )
+            ),
+            config=self.staging_config,
+        )
+
+    def _define_sandbox_stage(self) -> None:
+        self.sandbox_stage = SandboxDeployStage(
+            self,
+            prepend_project_name(
+                prepend_branch_name(
+                    self.props.config.branch,
+                    'SandboxDeployStage',
+                )
+            ),
+            config=self.sandbox_config,
+        )
+
+    def _define_production_stage(self) -> None:
+        self.production_stage = ProductionDeployStage(
+            self,
+            prepend_project_name(
+                prepend_branch_name(
+                    self.props.config.branch,
+                    'ProductionDeployStage',
+                )
+            ),
+            config=self.production_config,
+        )
+
+    def _add_staging_deploy_stage(self) -> None:
+        self.code_pipeline.add_stage(
+            self.staging_stage
+        )
+
+    def _add_production_deploy_wave(self) -> None:
+        self.production_deploy_wave = self.code_pipeline.add_wave(
+            'production_deploy_wave',
+            pre=[
+                ManualApprovalStep(
+                    'ProductionDeploymentManualApprovalStep'
+                )
+            ]
+        )
+
+    def _add_sandbox_stage_to_production_deploy_wave(self) -> None:
+        self.production_deploy_wave.add_stage(
+            self.sandbox_stage
+        )
+
+    def _add_production_stage_to_production_deploy_wave(self) -> None:
+        self.production_deploy_wave.add_stage(
+            self.production_stage
         )

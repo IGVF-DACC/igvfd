@@ -5,7 +5,7 @@ from constructs import Construct
 from typing import Any
 
 
-class TestDeployStage(cdk.Stage):
+class SandboxDeployStage(cdk.Stage):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs: Any) -> None:
         super().__init__(scope, construct_id,  **kwargs)
