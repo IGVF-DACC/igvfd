@@ -297,6 +297,7 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
         self._add_production_deploy_wave()
         self._add_sandbox_stage_to_production_deploy_wave()
         self._add_production_stage_to_production_deploy_wave()
+        self._add_slack_notifications()
 
     def _define_staging_config(self) -> None:
         self.staging_config = build_config_from_name(
