@@ -11,6 +11,7 @@ from dataclasses import dataclass
 from typing import Any
 from typing import Dict
 from typing import List
+from typing import Optional
 from typing import Tuple
 
 from infrastructure.constants import DEV_DATABASE_IDENTIFIER
@@ -186,7 +187,8 @@ config: Dict[str, Any] = {
                 'max_scaling_capacity': 2,
             },
             'tags': [
-            ]
+            ],
+            'url_prefix': 'igvfd-staging',
         },
         'sandbox': {
             'postgres': {
@@ -232,7 +234,8 @@ config: Dict[str, Any] = {
                 'max_scaling_capacity': 2,
             },
             'tags': [
-            ]
+            ],
+            'url_prefix': 'igvfd-sandbox',
         },
         'production': {
             'postgres': {
@@ -278,7 +281,8 @@ config: Dict[str, Any] = {
                 'max_scaling_capacity': 2,
             },
             'tags': [
-            ]
+            ],
+            'url_prefix': 'igvfd-production',
         },
     }
 }
@@ -302,6 +306,7 @@ class Config:
     invalidation_service: Dict[str, Any]
     indexing_service: Dict[str, Any]
     tags: List[Tuple[str, str]]
+    url_prefix: Optional[str]
     common: Common = Common()
 
 

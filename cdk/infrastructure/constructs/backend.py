@@ -49,6 +49,12 @@ from typing import cast
 from dataclasses import dataclass
 
 
+def get_url_prefix(config: Config):
+    if config.url_prefix is not None:
+        return config.url_prefix
+    return f'igvfd-{config.branch}'
+
+
 @dataclass
 class BackendProps:
     config: Config
@@ -123,7 +129,7 @@ class Backend(Construct):
 
     def _define_domain_name(self) -> None:
         self.domain_name = (
-            f'igvfd-{self.props.config.branch}.{self.props.existing_resources.domain.name}'
+            f'{get_url_prefix(self.props.config)}.{self.props.existing_resources.domain.name}'
         )
 
     def _define_fargate_service(self) -> None:
