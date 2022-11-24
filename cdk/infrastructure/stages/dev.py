@@ -5,7 +5,6 @@ from constructs import Construct
 from infrastructure.constructs.existing import igvf_dev
 
 from infrastructure.config import Config
-from infrastructure.config import build_config_from_name
 
 from infrastructure.tags import add_tags_to_stack
 

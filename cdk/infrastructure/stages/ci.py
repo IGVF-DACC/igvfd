@@ -3,7 +3,6 @@ import aws_cdk as cdk
 from constructs import Construct
 
 from infrastructure.config import Config
-from infrastructure.config import build_config_from_name
 
 from infrastructure.tags import add_tags_to_stack
 
