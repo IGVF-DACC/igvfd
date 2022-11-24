@@ -13,10 +13,13 @@ from aws_cdk.pipelines import DockerCredential
 from aws_cdk.pipelines import ManualApprovalStep
 from aws_cdk.pipelines import ShellStep
 
+from infrastructure.config import Config
 from infrastructure.config import PipelineConfig
+from infrastructure.config import build_config_from_name
 
 from infrastructure.naming import prepend_branch_name
 from infrastructure.naming import prepend_project_name
+
 from infrastructure.stages.ci import CIDeployStage
 from infrastructure.stages.prod import ProdDeployStage
 from infrastructure.stages.test import TestDeployStage
@@ -148,6 +151,8 @@ ContinuousDeploymentPipelineProps = BasicSelfUpdatingPipelineProps
 
 class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
 
+    dev_config: Config
+
     def __init__(
             self,
             scope: Construct,
@@ -162,11 +167,18 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
             props=props,
             **kwargs,
         )
+        self._define_dev_environment_config()
         self._add_tooling_wave()
         self._add_development_deploy_stage()
         # self._add_test_deploy_stage()
         # self._add_prod_deploy_stage()
         self._add_slack_notifications()
+
+    def _define_dev_environment_config(self) -> None:
+        self.dev_config = build_config_from_name(
+            'dev',
+            branch=self.props.config.branch,
+        )
 
     def _add_tooling_wave(self) -> None:
         tooling_wave = self.code_pipeline.add_wave(
@@ -180,7 +192,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
                     'DeployContinuousIntegration'
                 )
             ),
-            branch=self.props.config.branch,
+            config=self.dev_config,
         )
         tooling_wave.add_stage(
             ci_stage
@@ -195,7 +207,7 @@ class ContinuousDeploymentPipeline(BasicSelfUpdatingPipeline):
                     'DeployDevelopment',
                 )
             ),
-            branch=self.props.config.branch,
+            config=self.dev_config,
         )
         self.code_pipeline.add_stage(
             stage,
@@ -245,6 +257,8 @@ DemoDeploymentPipelineProps = BasicSelfUpdatingPipelineProps
 
 class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
 
+    demo_config: Config
+
     def __init__(
             self,
             scope: Construct,
@@ -259,8 +273,15 @@ class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
             props=props,
             **kwargs,
         )
+        self._define_demo_environment_config()
         self._add_development_deploy_stage()
         self._add_slack_notifications()
+
+    def _define_demo_environment_config(self) -> None:
+        self.demo_config = build_config_from_name(
+            'demo',
+            branch=self.props.config.branch,
+        )
 
     def _add_development_deploy_stage(self) -> None:
         stage = DemoDeployStage(
@@ -271,7 +292,7 @@ class DemoDeploymentPipeline(BasicSelfUpdatingPipeline):
                     'DeployDevelopment',
                 )
             ),
-            branch=self.props.config.branch,
+            config=self.demo_config,
         )
         self.code_pipeline.add_stage(
             stage,
@@ -282,6 +303,10 @@ ProductionDeploymentPipelineProps = BasicSelfUpdatingPipelineProps
 
 
 class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
+
+    staging_config: Config
+    sandbox_config: Config
+    production_config: Config
 
     def __init__(
             self,
@@ -296,4 +321,25 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
             construct_id,
             props=props,
             **kwargs,
+        )
+        self._define_staging_config()
+        self._define_sandbox_config()
+        self._define_production_config()
+
+    def _define_staging_config(self) -> None:
+        self.staging_config = build_config_from_name(
+            'staging',
+            branch=self.props.config.branch,
+        )
+
+    def _define_sandbox_config(self) -> None:
+        self.sandbox_config = build_config_from_name(
+            'sandbox',
+            branch=self.props.config.branch,
+        )
+
+    def _define_production_config(self) -> None:
+        self.production_config = build_config_from_name(
+            'production',
+            branch=self.props.config.branch,
         )

@@ -171,6 +171,11 @@ def pipeline_config():
 
 
 @pytest.fixture
+def branch():
+    return 'some-branch'
+
+
+@pytest.fixture
 def config(instance_type, capacity_config):
     from infrastructure.config import Config
     return Config(

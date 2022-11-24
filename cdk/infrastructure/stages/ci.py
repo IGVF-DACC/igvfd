@@ -21,14 +21,10 @@ class CIDeployStage(cdk.Stage):
             scope: Construct,
             construct_id: str,
             *,
-            branch: str,
+            config: Config,
             **kwargs: Any
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
-        config = build_config_from_name(
-            'dev',
-            branch=branch,
-        )
         self.ci_stack = ContinuousIntegrationStack(
             self,
             'ContinuousIntegrationStack',
