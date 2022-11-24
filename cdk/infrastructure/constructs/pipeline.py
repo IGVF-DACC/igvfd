@@ -360,7 +360,7 @@ class ProductionDeploymentPipeline(BasicSelfUpdatingPipeline):
 
     def _add_production_deploy_wave(self) -> None:
         self.production_deploy_wave = self.code_pipeline.add_wave(
-            'production_deploy_wave',
+            'ProductionAndSandboxDeployWave',
             pre=[
                 ManualApprovalStep(
                     'ProductionDeploymentManualApprovalStep'
