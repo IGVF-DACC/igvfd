@@ -49,7 +49,7 @@ from typing import cast
 from dataclasses import dataclass
 
 
-def get_url_prefix(config: Config):
+def get_url_prefix(config: Config) -> str:
     if config.url_prefix is not None:
         return config.url_prefix
     return f'igvfd-{config.branch}'
