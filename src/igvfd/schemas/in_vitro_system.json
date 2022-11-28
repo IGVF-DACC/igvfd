@@ -1,0 +1,196 @@
+{
+    "title": "In Vitro System",
+    "$id": "/profiles/in_vitro_system.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submitting a sample grown in a in vitro system.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "source",
+        "donors",
+        "taxa",
+        "biosample_term",
+        "classification"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "sample.json#/properties"
+        },
+        {
+            "$ref": "biosample.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/taxa"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "biosample.json#/dependentSchemas"
+        ],
+        "time_post_factors_introduction": {
+            "required": [
+                "time_post_factors_introduction_units"
+            ],
+            "comment": "Biosample with a specified time_post_factors_introduction requires time_post_factors_introduction_units specification."
+        },
+        "time_post_factors_introduction_units": {
+            "required": [
+                "time_post_factors_introduction"
+            ],
+            "comment": "Biosample with a specified time_post_factors_introduction_units requires time_post_factors_introduction specification."
+        },
+        "passage_number": {
+            "comment": "Only in vitro system with classification as a cell a line are allowed to have passage_number property.",
+            "properties": {
+                "classification": {
+                    "enum": [
+                        "cell line"
+                    ]
+                }
+            }
+        }
+    },
+    "properties": {
+        "schema_version": {
+            "default": "7"
+        },
+        "classification": {
+            "title": "Classification",
+            "description": "The general category of this type of in vitro system.",
+            "comment": "Required property. The specified category should match the ontology used to describe this type of in vitro system.",
+            "permission": "import_items",
+            "type": "string",
+            "enum": [
+                "organoid",
+                "gastruloid",
+                "embryoid",
+                "cell line",
+                "differentiated cell",
+                "differentiated tissue",
+                "reprogrammed cell"
+            ]
+        },
+        "time_post_factors_introduction": {
+            "title": "Time Post Factors Introduction",
+            "description": "The time that elapsed past the point when factors were introduced.",
+            "comment": "Use in conjunction with time_post_factors_introduction_units to specify time elapsed post factors introduction. Use of this property requires time_post_factors_introduction_units specification.",
+            "type": "number"
+        },
+        "time_post_factors_introduction_units": {
+            "title": "Time Post Factors Introduction Units",
+            "description": "The units of time that elapsed past the point when factors were introduced.",
+            "comment": "Use in conjunction with time_post_factors_introduction to specify time elapsed post factors introduction. Use of this property requires time_post_factors_introduction specification.",
+            "type": "string",
+            "enum": [
+                "minute",
+                "hour",
+                "day",
+                "week",
+                "month"
+            ]
+        },
+        "date_obtained": {
+            "title": "Date Collected"
+        },
+        "introduced_factors": {
+            "title": "Introduced Factors",
+            "description": "A list of treatments applied to the biosample that introduces factors.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Treatment",
+                "description": "A treatment applied to the biosample.",
+                "type": "string",
+                "linkTo": "Treatment"
+            }
+        },
+        "originated_from": {
+            "title": "Biosample Differentiated From",
+            "description": "The biosample this organoid sample was differentiated from.",
+            "type": "string",
+            "linkTo": "Biosample"
+        },
+        "part_of": {
+            "linkTo": "Biosample",
+            "type": "string"
+        },
+        "pooled_from": {
+            "items": {
+                "linkTo": "Biosample",
+                "type": "string"
+            }
+        },
+        "passage_number": {
+            "title": "Passage number",
+            "description": "Number of passages including the passages from the source.",
+            "comment": "In calculating passage number, include passages from the source. Use of this property requires classification to be a cell line.",
+            "type": "integer",
+            "minimum": 0
+        }
+    },
+    "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
+        "accession": {
+            "title": "Accession"
+        },
+        "biosample_term": {
+            "title": "Biosample Term"
+        },
+        "donors": {
+            "title": "Donors"
+        },
+        "originated_from": {
+            "title": "Originated From"
+        },
+        "taxa": {
+            "title": "Taxa"
+        },
+        "award": {
+            "title": "Award"
+        },
+        "lab": {
+            "title": "Lab"
+        },
+        "status": {
+            "title": "Status"
+        },
+        "submitted_by": {
+            "title": "Submitted By"
+        }
+    },
+    "boost_values": {
+        "accession": 1.0,
+        "@type": 1.0,
+        "taxa": 1.0
+    },
+    "changelog": "/profiles/changelogs/in_vitro_system.md"
+}
