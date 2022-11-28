@@ -105,5 +105,25 @@
             "minimum": 0
         }
     },
+    "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
+        "accession": {
+            "title": "Accession"
+        },
+        "content_type": {
+            "title": "Content Type"
+        },
+        "file_format": {
+            "title": "File Format"
+        }
+    },
+    "boost_values": {
+        "accession": 1.0,
+        "@type": 1.0,
+        "content_type": 1.0,
+        "file_format": 1.0
+    },
     "changelog": "/profiles/changelogs/sequence_data.md"
 }
