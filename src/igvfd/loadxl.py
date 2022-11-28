@@ -38,6 +38,7 @@ ORDER = [
     'page',
     'publication',
     'access_key',
+    'measurement_set',
     'analysis_set'
 ]
 

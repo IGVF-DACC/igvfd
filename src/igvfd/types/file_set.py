@@ -73,3 +73,15 @@ class AnalysisSet(FileSet):
 class CuratedSet(FileSet):
     item_type = 'curated_set'
     schema = load_schema('igvfd:schemas/curated_set.json')
+
+
+@collection(
+    name='measurement-sets',
+    unique_key='accession',
+    properties={
+        'title': 'Measurement sets',
+        'description': 'Listing of measurement sets',
+    })
+class MeasurementSet(FileSet):
+    item_type = 'measurement_set'
+    schema = load_schema('igvfd:schemas/measurement_set.json')
