@@ -3,6 +3,7 @@
 ### Schema version 8
 
 * Rename `biomarker` to `biomarkers`.
+* Deprecate `cell_line` schema.
 
 ### Schema version 7
 

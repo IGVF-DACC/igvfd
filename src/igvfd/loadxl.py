@@ -29,11 +29,8 @@ ORDER = [
     'human_genomic_variant',
     'biomarker',
     'tissue',
-    'cell_line',
     'in_vitro_system',
     'primary_cell',
-    'differentiated_tissue',
-    'differentiated_cell',
     'technical_sample',
     'whole_organism',
     'curated_set',
@@ -510,9 +507,12 @@ PHASE1_PIPELINES = {
     'user': [
         remove_keys('lab', 'submits_for'),
     ],
+<<<<<<< HEAD
     'cell_line': [
         remove_keys('pooled_from', 'part_of')
     ],
+=======
+>>>>>>> IGVF-349-in-vitro-system
     'in_vitro_system': [
         remove_keys('pooled_from', 'part_of', 'originated_from'),
     ],
@@ -521,12 +521,6 @@ PHASE1_PIPELINES = {
     ],
     'primary_cell': [
         remove_keys('pooled_from', 'part_of'),
-    ],
-    'differentiated_cell': [
-        remove_keys('pooled_from', 'part_of', 'differentiated_from'),
-    ],
-    'differentiated_tissue': [
-        remove_keys('pooled_from', 'part_of', 'differentiated_from'),
     ]
 }
 
@@ -542,8 +536,8 @@ PHASE2_PIPELINES = {
     'user': [
         skip_rows_missing_all_keys('lab', 'submits_for'),
     ],
-    'cell_line': [
-        skip_rows_missing_all_keys('pooled_from', 'part_of'),
+    'in_vitro_system': [
+        remove_keys('pooled_from', 'part_of', 'originated_from'),
     ],
     'in_vitro_system': [
         skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from'),
@@ -553,12 +547,6 @@ PHASE2_PIPELINES = {
     ],
     'primary_cell': [
         skip_rows_missing_all_keys('pooled_from', 'part_of'),
-    ],
-    'differentiated_cell': [
-        skip_rows_missing_all_keys('pooled_from', 'part_of', 'differentiated_from'),
-    ],
-    'differentiated_tissue': [
-        skip_rows_missing_all_keys('pooled_from', 'part_of', 'differentiated_from'),
     ]
 }
 

@@ -3,6 +3,7 @@
 ### Schema version 9
 
 * Rename `biomarker` to `biomarkers`.
+* Deprecate `differentiated_tissue` schema.
 
 ### Schema version 8
 
