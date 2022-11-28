@@ -78,6 +78,7 @@
         },
         "dbxrefs": {
             "items": {
+                "type": "string",
                 "pattern": "^(SRA:(SRR|SRX)\\d+)$"
             }
         },
