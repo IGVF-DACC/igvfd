@@ -72,11 +72,5 @@
         "term_name": "Body Weight Measurement",
         "status": "released",
         "uuid": "f0aa38a6-fdf2-11ec-7aee-fc96ac1250ce"
-    },
-    {
-        "term_id": "NCIT:C28252",
-        "term_name": "Kilogram",
-        "status": "released",
-        "uuid": "e24c250c-4d62-6d7d-2c90-b5afac118782"
     }
 ]

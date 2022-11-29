@@ -47,7 +47,19 @@
             "title": "Quantity Units",
             "description": "The unit of measurement for a quantity associated with the phenotypic feature.",
             "type": "string",
-            "linkTo": "PhenotypeTerm"
+            "enum": [
+                "meter",
+                "micromole",
+                "nanogram",
+                "microgram",
+                "milligram",
+                "gram",
+                "kilogram",
+                "milli-International Unit per milliliter",
+                "picogram per milliliter",
+                "nanogram per milliliter",
+                "milligram per deciliter"
+            ]
         },
         "observation_date": {
             "title": "Observation Date",
