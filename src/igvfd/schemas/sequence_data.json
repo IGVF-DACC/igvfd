@@ -41,11 +41,14 @@
             "file.json#/dependentSchemas"
         ],
         "file_format": {
-            "comment": "Fastq files must specify their minimum, maximum, and mean read lengths.",
+            "comment": "Once validated, fastq files must have read count and the minimum, maximum, and mean read lengths.",
             "if": {
                 "properties": {
                     "file_format": {
                         "const": "fastq"
+                    },
+                    "upload_status": {
+                        "const": "validated"
                     }
                 }
             },
@@ -53,7 +56,8 @@
                 "required": [
                     "minimum_read_length",
                     "maximum_read_length",
-                    "mean_read_length"
+                    "mean_read_length",
+                    "read_count"
                 ]
             }
         }
@@ -84,26 +88,35 @@
                 "pattern": "^(SRA:(SRR|SRX)\\d+)$"
             }
         },
-        "platform": {
-            "title": "Platform",
-            "description": "The sequencing platform used to produce the sequence data.",
-            "type": "string"
+        "read_count": {
+            "title": "Read Count",
+            "description": "Number of reads in a fastq file.",
+            "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
+            "permission": "import_items",
+            "type": "integer",
+            "minimum": 0
         },
         "minimum_read_length": {
             "title": "Minimum Read Length",
             "description": "For high-throughput sequencing, the minimum number of contiguous nucleotides determined by sequencing.",
+            "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
+            "permission": "import_items",
             "type": "integer",
             "minimum": 0
         },
         "maximum_read_length": {
             "title": "Read Length",
             "description": "For high-throughput sequencing, the maximum number of contiguous nucleotides determined by sequencing.",
+            "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
+            "permission": "import_items",
             "type": "integer",
             "minimum": 0
         },
         "mean_read_length": {
             "title": "Read Length",
             "description": "For high-throughput sequencing, the mean number of contiguous nucleotides determined by sequencing.",
+            "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
+            "permission": "import_items",
             "type": "integer",
             "minimum": 0
         }

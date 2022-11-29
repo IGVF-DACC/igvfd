@@ -12,6 +12,8 @@ def sequence_data(testapp, lab, award, analysis_set_with_sample):
         'minimum_read_length': 99,
         'maximum_read_length': 101,
         'mean_read_length': 100,
+        'read_count': 23040138,
+        'file_size': 5495803,
         'content_type': 'reads'
     }
     return testapp.post_json('/sequence_data', item, status=201).json['@graph'][0]

@@ -39,6 +39,21 @@
                     ]
                 }
             }
+        },
+        "upload_status": {
+            "comment": "Validated files must have file_size.",
+            "if": {
+                "properties": {
+                    "upload_status": {
+                        "const": "validated"
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "file_size"
+                ]
+            }
         }
     },
     "properties": {
@@ -118,6 +133,8 @@
         "file_size": {
             "title": "File Size",
             "description": "File size specified in bytes.",
+            "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
+            "permission": "import_items",
             "type": "integer",
             "minimum": 0
         },
