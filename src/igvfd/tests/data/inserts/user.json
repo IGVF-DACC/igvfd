@@ -1,5 +1,18 @@
 [
     {
+        "email": "csmall10@stanford.edu",
+        "first_name": "Corinn",
+        "last_name": "Small",
+        "lab": "/labs/j-michael-cherry/",
+        "job_title": "Data Wrangler",
+        "status": "current",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "uuid": "a48be49b-4a2f-4104-a388-fc36d439b394"
+    },
+    {
         "email": "andreeva@stanford.edu",
         "first_name": "Kalina",
         "last_name": "Andreeva",
