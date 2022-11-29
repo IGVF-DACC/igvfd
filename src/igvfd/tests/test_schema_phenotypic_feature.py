@@ -3,8 +3,7 @@ import pytest
 
 def test_phenotypic_feature_quantity_units(
     testapp,
-    phenotypic_feature_basic,
-    phenotype_term_ncit_unit
+    phenotypic_feature_basic
 ):
     # Quantity requires Quantity Units
     res = testapp.patch_json(
@@ -20,7 +19,7 @@ def test_phenotypic_feature_quantity_units(
     res = testapp.patch_json(
         phenotypic_feature_basic['@id'],
         {
-            'quantity_units': phenotype_term_ncit_unit['@id']
+            'quantity_units': 'kilogram'
         },
         expect_errors=True
     )
@@ -30,7 +29,7 @@ def test_phenotypic_feature_quantity_units(
         phenotypic_feature_basic['@id'],
         {
             'quantity': 70,
-            'quantity_units': phenotype_term_ncit_unit['@id']
+            'quantity_units': 'kilogram'
         }
     )
     assert res.status_code == 200
