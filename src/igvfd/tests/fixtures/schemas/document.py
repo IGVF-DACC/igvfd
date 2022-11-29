@@ -23,3 +23,15 @@ def document_v1(experimental_protocol_document):
         'aliases': []
     })
     return item
+
+
+@pytest.fixture
+def standards_document(testapp, other_lab, award):
+    item = {
+        'document_type': 'standards',
+        'description': 'Generic standards document',
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'attachment': {'download': 'red-dot.png', 'href': RED_DOT},
+    }
+    return testapp.post_json('/document', item).json['@graph'][0]
