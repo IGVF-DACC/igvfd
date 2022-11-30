@@ -1,5 +1,9 @@
 ## Changelog for *`biosample.json`*
 
+### Schema version 6
+* Combine `cell_line`, `differentiated_cell`, `differentiated_tissue` objects to be `in_vitro_system` object.
+
+
 ### Minor changes since schema version 5
 * Add `revoke_detail`.
 
