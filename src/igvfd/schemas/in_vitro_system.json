@@ -66,7 +66,7 @@
             "comment": "Biosample with a specified time_post_factors_introduction_units requires time_post_factors_introduction specification."
         },
         "passage_number": {
-            "comment": "Only in vitro system with classification as a cell a line are allowed to have passage_number property.",
+            "comment": "Only in vitro system with classification as a cell line are allowed to have passage_number property.",
             "properties": {
                 "classification": {
                     "enum": [
@@ -161,6 +161,9 @@
         },
         "accession": {
             "title": "Accession"
+        },
+        "classification": {
+            "title": "Classification"
         },
         "biosample_term": {
             "title": "Biosample Term"
