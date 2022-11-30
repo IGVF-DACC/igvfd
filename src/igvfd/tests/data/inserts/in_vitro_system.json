@@ -1,0 +1,341 @@
+[
+    {
+        "uuid": "467c72a2-4f84-2c8f-96b0-ec8715e18185",
+        "classification": "cell line",
+        "lab": "j-michael-cherry",
+        "accession": "IGVFSM000AAA",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:cell_line"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor1"
+        ],
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": [
+            "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        ],
+        "notes": "This is a note.",
+        "product_id": "GR000001",
+        "lot_id": "R00001",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "starting_amount": 5,
+        "starting_amount_units": "μg",
+        "dbxrefs": [
+            "GEO:SAMN1"
+        ],
+        "taxa": "Homo sapiens",
+        "lower_bound_age": 40,
+        "upper_bound_age": 40,
+        "age_units": "year",
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "disease_terms": [
+            "/phenotype-terms/8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4/"
+        ],
+        "nih_institutional_certification": "NICHD1442",
+        "date_obtained": "2022-02-02",
+        "source": "/labs/j-michael-cherry/",
+        "collections": [
+            "ENCODE"
+        ]
+    },
+    {
+        "uuid": "3736b93a-c748-11ec-9d64-0242ac120002",
+        "accession": "IGVFSM001AAA",
+        "classification": "cell line",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:treated_cell_line"
+        ],
+        "status": "released",
+        "submitter_comment": "This is s a treated cell line.",
+        "notes": "This is a note.",
+        "product_id": "GR000001",
+        "lot_id": "R00001",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "starting_amount": 5,
+        "starting_amount_units": "μg",
+        "taxa": "Homo sapiens",
+        "lower_bound_age": 30,
+        "upper_bound_age": 30,
+        "age_units": "year",
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "treatments": [
+            "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
+        ],
+        "date_obtained": "2022-04-02",
+        "source": "/labs/j-michael-cherry/",
+        "donors": [
+            "j-michael-cherry:alias_human_donor1"
+        ]
+    },
+    {
+        "uuid": "8e35b598-e688-443b-bf0d-9ea1783d171e",
+        "accession": "IGVFSM002AAA",
+        "classification": "cell line",
+        "lab": "ali-mortazavi",
+        "award": "HG012012",
+        "aliases": [
+            "ali-mortazavi:pooled_cell_line"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor1"
+        ],
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "status": "released",
+        "taxa": "Homo sapiens",
+        "source": "/labs/ali-mortazavi/",
+        "pooled_from": [
+            "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/",
+            "/cell-lines/467c72a2-4f84-2c8f-96b0-ec8715e18185/"
+        ]
+    },
+    {
+        "uuid": "7783e7b0-0302-11ed-b939-0242ac120002",
+        "lab": "j-michael-cherry",
+        "classification": "cell line",
+        "accession": "IGVFSM003AAA",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:part_of_cell_line"
+        ],
+        "status": "released",
+        "documents": [
+            "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        ],
+        "notes": "This is a note.",
+        "product_id": "GR000001",
+        "part_of": "IGVFSM000AAA",
+        "donors": [
+            "j-michael-cherry:alias_human_donor1"
+        ],
+        "lot_id": "R00001",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "starting_amount": 2,
+        "starting_amount_units": "μg",
+        "dbxrefs": [
+            "GEO:SAMN2"
+        ],
+        "taxa": "Homo sapiens",
+        "lower_bound_age": 40,
+        "upper_bound_age": 40,
+        "age_units": "year",
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "disease_terms": [
+            "/phenotype-terms/8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4/"
+        ],
+        "nih_institutional_certification": "NICHD1442",
+        "date_obtained": "2022-02-02",
+        "source": "/labs/j-michael-cherry/",
+        "collections": [
+            "ENCODE"
+        ]
+    },
+    {
+        "uuid": "f1d10666-ebb2-4152-9d49-f98b6de7c9e5",
+        "accession": "IGVFSM000CCC",
+        "classification": "differentiated cell",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:alias5"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor2"
+        ],
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "status": "released",
+        "taxa": "Homo sapiens",
+        "source": "/labs/j-michael-cherry/",
+        "post_differentiation_time": 5,
+        "post_differentiation_time_units": "day",
+        "treatments": [
+            "3280b708-0f05-40fa-bff2-54e2b6505c13",
+            "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
+        ],
+        "lower_bound_age": 90,
+        "upper_bound_age": 90,
+        "age_units": "year"
+    },
+    {
+        "uuid": "8a3af63e-bf89-4947-919c-f9e026ee1c9b",
+        "accession": "IGVFSM001CCC",
+        "classification": "differentiated cell",
+        "lab": "gary-hon",
+        "award": "1UM1HG011996-01",
+        "aliases": [
+            "gary-hon:cardiomyocytes"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor_child"
+        ],
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "status": "released",
+        "taxa": "Homo sapiens",
+        "source": "/labs/gary-hon/",
+        "post_differentiation_time": 10.28364,
+        "post_differentiation_time_units": "minute",
+        "treatments": [
+            "3280b708-0f05-40fa-bff2-54e2b6505c13",
+            "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
+        ],
+        "differentiation_treatments": [
+            "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
+        ],
+        "differentiated_from": "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
+    },
+    {
+        "uuid": "7c5868aa-6865-4301-93c3-13bc3764b506",
+        "accession": "IGVFSM002CCC",
+        "classification": "differentiated cell",
+        "lab": "gary-hon",
+        "award": "1UM1HG011996-01",
+        "aliases": [
+            "gary-hon:pooled_cardiomyocytes"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor_child"
+        ],
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "status": "released",
+        "taxa": "Homo sapiens",
+        "source": "/labs/gary-hon/",
+        "post_differentiation_time": 2.5,
+        "post_differentiation_time_units": "month",
+        "pooled_from": [
+            "/differentiated-cells/f1d10666-ebb2-4152-9d49-f98b6de7c9e5/",
+            "/differentiated-cells/8a3af63e-bf89-4947-919c-f9e026ee1c9b/"
+        ]
+    },
+    {
+        "uuid": "d360c844-02ff-11ed-b939-0242ac120002",
+        "accession": "IGVFSM003CCC",
+        "classification": "differentiated cell",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "j-michael-cherry:differentiated_cell_part_of"
+        ],
+        "status": "released",
+        "taxa": "Homo sapiens",
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "source": "/labs/j-michael-cherry/",
+        "part_of": "IGVFSM000CCC",
+        "donors": [
+            "j-michael-cherry:alias_human_donor2"
+        ],
+        "post_differentiation_time": 5,
+        "post_differentiation_time_units": "day",
+        "treatments": [
+            "3280b708-0f05-40fa-bff2-54e2b6505c13",
+            "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
+        ],
+        "lower_bound_age": 90,
+        "upper_bound_age": 90,
+        "age_units": "year"
+    },
+    {
+        "uuid": "a79ffa29-4bdf-4283-9494-1017e5d13f8b",
+        "accession": "IGVFSM000BBB",
+        "classification": "differentiated tissue",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:organoid"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor2"
+        ],
+        "status": "released",
+        "taxa": "Homo sapiens",
+        "source": "/labs/j-michael-cherry/",
+        "post_differentiation_time": 5,
+        "post_differentiation_time_units": "day",
+        "treatments": [
+            "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
+        ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "differentiation_treatments": [
+            "bd2cb34e-c72c-11ec-9d64-0242ac120002"
+        ],
+        "lower_bound_age": 89,
+        "upper_bound_age": 90,
+        "age_units": "year",
+        "differentiated_from": "/cell-lines/467c72a2-4f84-2c8f-96b0-ec8715e18185/"
+    },
+    {
+        "uuid": "4ce1b687-62f9-4d92-a69e-b4820d1efc9d",
+        "accession": "IGVFSM001BBB",
+        "classification": "differentiated tissue",
+        "lab": "jay-shendure",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "igvf:gastruloid"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor1"
+        ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "status": "released",
+        "taxa": "Homo sapiens",
+        "source": "/labs/jay-shendure/",
+        "post_differentiation_time": 2.5,
+        "post_differentiation_time_units": "month",
+        "differentiated_from": "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
+    },
+    {
+        "uuid": "7c058e39-e36b-4afa-bb2a-5e6c4ed07197",
+        "accession": "IGVFSM002BBB",
+        "classification": "differentiated tissue",
+        "lab": "jay-shendure",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "igvf:pooled_gastruloid"
+        ],
+        "donors": [
+            "j-michael-cherry:alias_human_donor_child"
+        ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "status": "released",
+        "taxa": "Homo sapiens",
+        "source": "/labs/jay-shendure/",
+        "post_differentiation_time": 10.28364,
+        "post_differentiation_time_units": "minute",
+        "pooled_from": [
+            "/differentiated-tissues/a79ffa29-4bdf-4283-9494-1017e5d13f8b/",
+            "/differentiated-tissues/4ce1b687-62f9-4d92-a69e-b4820d1efc9d/"
+        ]
+    },
+    {
+        "uuid": "4d93cbfc-0300-11ed-b939-0242ac120002",
+        "accession": "IGVFSM003BBB",
+        "classification": "differentiated tissue",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:part_of_organoid"
+        ],
+        "status": "released",
+        "taxa": "Homo sapiens",
+        "source": "/labs/j-michael-cherry/",
+        "part_of": "IGVFSM000BBB",
+        "donors": [
+            "j-michael-cherry:alias_human_donor2"
+        ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "post_differentiation_time": 5,
+        "post_differentiation_time_units": "day",
+        "treatments": [
+            "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
+        ],
+        "differentiation_treatments": [
+            "bd2cb34e-c72c-11ec-9d64-0242ac120002"
+        ],
+        "lower_bound_age": 89,
+        "upper_bound_age": 90,
+        "age_units": "year",
+        "differentiated_from": "/cell-lines/467c72a2-4f84-2c8f-96b0-ec8715e18185/"
+    }
+]
