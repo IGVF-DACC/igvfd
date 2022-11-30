@@ -70,5 +70,45 @@
             "linkTo": "Gene"
         }
     },
+    "facets": {
+        "name": {
+            "title": "Name"
+        },
+        "quantification": {
+            "title": "Quantification"
+        },
+        "classification": {
+            "title": "Classification"
+        },
+        "gene": {
+            "title": "Gene"
+        }
+    },
+    "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
+        "name": {
+            "title": "Name"
+        },
+        "quantification": {
+            "title": "Quantification"
+        },
+        "classification": {
+            "title": "Classification"
+        },
+        "synonyms": {
+            "title": "Synonyms"
+        },
+        "gene": {
+            "title": "Gene"
+        }
+    },
+    "boost_values": {
+        "@type": 1.0,
+        "name": 1.0,
+        "gene": 1.0,
+        "quantification": 1.0
+    },
     "changelog": "/profiles/changelogs/biomarker.md"
 }
