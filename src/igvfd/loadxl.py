@@ -537,7 +537,7 @@ PHASE2_PIPELINES = {
         skip_rows_missing_all_keys('lab', 'submits_for'),
     ],
     'in_vitro_system': [
-        remove_keys('pooled_from', 'part_of', 'originated_from'),
+        skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from'),
     ],
     'in_vitro_system': [
         skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from'),
