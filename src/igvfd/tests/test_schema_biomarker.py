@@ -52,3 +52,21 @@ def test_biomarker_permissions(submitter_testapp, testapp):
     assert res.status_code == 422
     res = testapp.post_json('/biomarker', my_non_dacc_biomarker)
     assert res.status_code == 201
+
+
+def test_biomarker_classifications(testapp, gene_myc_hs):
+    my_cell_surface_protein_biomarker = {
+        'name': 'CD2345',
+        'quantification': 'negative',
+        'classification': 'cell surface protein'
+    }
+    res = testapp.post_json('/biomarker', my_cell_surface_protein_biomarker)
+    assert res.status_code == 201
+    my_gene_marker_biomarker = {
+        'name': 'MYC',
+        'quantification': 'negative',
+        'classification': 'marker gene',
+        'gene': gene_myc_hs['@id']
+    }
+    res = testapp.post_json('/biomarker', my_gene_marker_biomarker)
+    assert res.status_code == 201

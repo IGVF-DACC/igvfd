@@ -70,6 +70,30 @@
         ]
     },
     {
+        "name": "BAP1",
+        "quantification": "positive",
+        "classification": "marker gene",
+        "gene": "fff95719-346c-471f-8b72-8a05c0102b1b"
+    },
+    {
+        "name": "BAP1",
+        "quantification": "negative",
+        "classification": "marker gene",
+        "gene": "fff95719-346c-471f-8b72-8a05c0102b1b"
+    },
+    {
+        "name": "BAP1",
+        "quantification": "high",
+        "classification": "marker gene",
+        "gene": "fff95719-346c-471f-8b72-8a05c0102b1b"
+    },
+    {
+        "name": "BAP1",
+        "quantification": "low",
+        "classification": "marker gene",
+        "gene": "fff95719-346c-471f-8b72-8a05c0102b1b"
+    },
+    {
         "name": "CD1",
         "quantification": "positive",
         "classification": "cell surface protein"
