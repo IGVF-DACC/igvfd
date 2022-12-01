@@ -190,7 +190,7 @@ config: Dict[str, Any] = {
             },
             'tags': [
             ],
-            'url_prefix': 'igvfd',
+            'url_prefix': 'api',
         },
         'sandbox': {
             'postgres': {
@@ -237,7 +237,7 @@ config: Dict[str, Any] = {
             },
             'tags': [
             ],
-            'url_prefix': 'igvfd',
+            'url_prefix': 'api',
         },
         'production': {
             'postgres': {
@@ -284,7 +284,7 @@ config: Dict[str, Any] = {
             },
             'tags': [
             ],
-            'url_prefix': 'igvfd',
+            'url_prefix': 'api',
         },
     }
 }
