@@ -31,6 +31,7 @@ from infrastructure.stages.production import ProductionDeployStage
 from infrastructure.constructs.existing.types import ExistingResources
 
 from typing import Any
+from typing import Optional
 
 from dataclasses import dataclass
 
@@ -46,7 +47,7 @@ class BasicSelfUpdatingPipeline(Construct):
 
     github: CodePipelineSource
     synth: ShellStep
-    artifact_bucket: Bucket
+    artifact_bucket: Optional[Bucket] = None
     underlying_pipeline: Pipeline
     code_pipeline: CodePipeline
     pipeline: Pipeline
@@ -63,7 +64,7 @@ class BasicSelfUpdatingPipeline(Construct):
         self.props = props
         self._define_github_connection()
         self._define_cdk_synth_step()
-        self._define_artifact_bucket()
+        self._maybe_define_artifact_bucket()
         self._define_underlying_pipeline()
         self._make_code_pipeline()
 
@@ -112,13 +113,22 @@ class BasicSelfUpdatingPipeline(Construct):
             auto_delete_objects=True,
         )
 
+    def _should_define_artifact_bucket(self) -> bool:
+        # Only define our own artifact bucket (with auto_delete_objects)
+        # if this isn't a cross-account pipeline.
+        return not self.props.config.cross_account_keys
+
+    def _maybe_define_artifact_bucket(self) -> None:
+        if self._should_define_artifact_bucket():
+            self._define_artifact_bucket()
+
     def _define_underlying_pipeline(self) -> None:
         self.underlying_pipeline = Pipeline(
             self,
             'Pipeline',
             restart_execution_on_update=True,
             cross_account_keys=self.props.config.cross_account_keys,
-            artifact_bucket=self.artifact_bucket
+            artifact_bucket=self.artifact_bucket,
         )
 
     def _make_code_pipeline(self) -> None:
