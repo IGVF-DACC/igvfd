@@ -3,15 +3,10 @@ import pytest
 from aws_cdk.assertions import Template
 
 
-def test_constructs_ci_initialize_ci_construct(stack, mocker):
+def test_constructs_ci_initialize_ci_construct(stack, mocker, existing_resources):
     from infrastructure.constructs.ci import ContinuousIntegration
     from infrastructure.constructs.ci import ContinuousIntegrationProps
     from aws_cdk.aws_secretsmanager import Secret
-    docker_hub_credentials = mocker.Mock()
-    docker_hub_credentials.secret = Secret(
-        stack,
-        'TestSecret',
-    )
     ci = ContinuousIntegration(
         stack,
         'TestContinuousIntegration',
@@ -19,7 +14,7 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker):
             github_owner='some-org',
             github_repo='some-repo',
             build_spec={},
-            docker_hub_credentials=docker_hub_credentials,
+            existing_resources=existing_resources,
         )
     )
     template = Template.from_stack(stack)
@@ -74,7 +69,7 @@ def test_constructs_ci_initialize_ci_construct(stack, mocker):
     )
     template.resource_count_is(
         'AWS::IAM::Role',
-        2
+        3
     )
     template.has_resource_properties(
         'AWS::IAM::Policy',

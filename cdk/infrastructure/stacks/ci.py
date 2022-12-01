@@ -69,6 +69,6 @@ class ContinuousIntegrationStack(cdk.Stack):
                 github_owner='igvf-dacc',
                 github_repo='igvfd',
                 build_spec=get_build_spec(),
-                docker_hub_credentials=self.existing_resources.docker_hub_credentials,
+                existing_resources=self.existing_resources,
             )
         )
