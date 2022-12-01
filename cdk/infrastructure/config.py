@@ -191,6 +191,7 @@ config: Dict[str, Any] = {
             'tags': [
             ],
             'url_prefix': 'api',
+            'use_subdomain': False,
         },
         'sandbox': {
             'postgres': {
@@ -238,6 +239,7 @@ config: Dict[str, Any] = {
             'tags': [
             ],
             'url_prefix': 'api',
+            'use_subdomain': False,
         },
         'production': {
             'postgres': {
@@ -285,6 +287,7 @@ config: Dict[str, Any] = {
             'tags': [
             ],
             'url_prefix': 'api',
+            'use_subdomain': False
         },
     }
 }
@@ -309,6 +312,7 @@ class Config:
     indexing_service: Dict[str, Any]
     tags: List[Tuple[str, str]]
     url_prefix: Optional[str] = None
+    use_subdomain: bool = True
     common: Common = Common()
 
 

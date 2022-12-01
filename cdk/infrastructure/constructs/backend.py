@@ -128,9 +128,14 @@ class Backend(Construct):
         )
 
     def _define_domain_name(self) -> None:
-        self.domain_name = (
-            f'{get_url_prefix(self.props.config)}.{self.props.existing_resources.domain.name}'
-        )
+        if self.props.config.use_subdomain:
+            self.domain_name = (
+                f'{get_url_prefix(self.props.config)}.{self.props.existing_resources.domain.name}'
+            )
+        else:
+            self.domain_name = (
+                f'{self.props.existing_resources.domain.name}'
+            )
 
     def _define_fargate_service(self) -> None:
         self.fargate_service = ApplicationLoadBalancedFargateService(
