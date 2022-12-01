@@ -2,7 +2,7 @@ from aws_cdk import Stage
 
 from constructs import Construct
 
-from infrastructure.constructs.existing import igvf_dev
+from infrastructure.constructs.existing import igvf_sandbox
 
 from infrastructure.config import Config
 
@@ -30,15 +30,15 @@ class SandboxDeployStage(Stage):
             self,
             'PostgresStack',
             config=config,
-            existing_resources_class=igvf_dev.Resources,
-            env=igvf_dev.US_WEST_2,
+            existing_resources_class=igvf_sandbox.Resources,
+            env=igvf_sandbox.US_WEST_2,
         )
         self.opensearch_stack = OpensearchStack(
             self,
             'OpensearchStack',
             config=config,
-            existing_resources_class=igvf_dev.Resources,
-            env=igvf_dev.US_WEST_2,
+            existing_resources_class=igvf_sandbox.Resources,
+            env=igvf_sandbox.US_WEST_2,
         )
         self.backend_stack = BackendStack(
             self,
@@ -46,8 +46,8 @@ class SandboxDeployStage(Stage):
             config=config,
             postgres_multiplexer=self.postgres_stack.multiplexer,
             opensearch=self.opensearch_stack.opensearch,
-            existing_resources_class=igvf_dev.Resources,
-            env=igvf_dev.US_WEST_2,
+            existing_resources_class=igvf_sandbox.Resources,
+            env=igvf_sandbox.US_WEST_2,
         )
         add_tags_to_stack(self.postgres_stack, config)
         add_tags_to_stack(self.opensearch_stack, config)

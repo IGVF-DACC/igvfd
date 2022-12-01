@@ -17,6 +17,7 @@ from typing import Tuple
 from infrastructure.constants import DEV_DATABASE_IDENTIFIER
 
 from infrastructure.constructs.existing import igvf_dev
+from infrastructure.constructs.existing import igvf_prod
 
 from infrastructure.constructs.existing.types import ExistingResourcesClass
 
@@ -42,8 +43,8 @@ config: Dict[str, Any] = {
         'production': {
             'pipeline': 'ProductionDeploymentPipelineStack',
             'cross_account_keys': True,
-            'existing_resources_class': igvf_dev.Resources,
-            'account_and_region': igvf_dev.US_WEST_2,
+            'existing_resources_class': igvf_prod.Resources,
+            'account_and_region': igvf_prod.US_WEST_2,
             'tags': [
             ],
         },
