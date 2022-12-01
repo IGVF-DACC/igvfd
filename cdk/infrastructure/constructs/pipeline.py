@@ -117,6 +117,7 @@ class BasicSelfUpdatingPipeline(Construct):
             self,
             'Pipeline',
             restart_execution_on_update=True,
+            cross_account_keys=self.props.config.cross_account_keys,
             artifact_bucket=self.artifact_bucket
         )
 

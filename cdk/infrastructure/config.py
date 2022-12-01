@@ -41,6 +41,7 @@ config: Dict[str, Any] = {
         },
         'production': {
             'pipeline': 'ProductionDeploymentPipelineStack',
+            'cross_account_keys': True,
             'existing_resources_class': igvf_dev.Resources,
             'account_and_region': igvf_dev.US_WEST_2,
             'tags': [
@@ -184,12 +185,12 @@ config: Dict[str, Any] = {
             'indexing_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
-                'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'min_scaling_capacity': 0,
+                'max_scaling_capacity': 0,
             },
             'tags': [
             ],
-            'url_prefix': 'igvfd-staging',
+            'url_prefix': 'igvfd',
         },
         'sandbox': {
             'postgres': {
@@ -226,18 +227,18 @@ config: Dict[str, Any] = {
             'invalidation_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
-                'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'min_scaling_capacity': 0,
+                'max_scaling_capacity': 0,
             },
             'indexing_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
-                'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'min_scaling_capacity': 0,
+                'max_scaling_capacity': 0,
             },
             'tags': [
             ],
-            'url_prefix': 'igvfd-sandbox',
+            'url_prefix': 'igvfd',
         },
         'production': {
             'postgres': {
@@ -274,18 +275,18 @@ config: Dict[str, Any] = {
             'invalidation_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
-                'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'min_scaling_capacity': 0,
+                'max_scaling_capacity': 0,
             },
             'indexing_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
-                'min_scaling_capacity': 1,
-                'max_scaling_capacity': 2,
+                'min_scaling_capacity': 0,
+                'max_scaling_capacity': 0,
             },
             'tags': [
             ],
-            'url_prefix': 'igvfd-production',
+            'url_prefix': 'igvfd',
         },
     }
 }
@@ -321,6 +322,7 @@ class PipelineConfig:
     existing_resources_class: ExistingResourcesClass
     account_and_region: Environment
     tags: List[Tuple[str, str]]
+    cross_account_keys: bool = False
     common: Common = Common()
 
 
