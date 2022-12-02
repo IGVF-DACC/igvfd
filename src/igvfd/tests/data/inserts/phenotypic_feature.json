@@ -6,6 +6,8 @@
         "observation_date": "2022-11-15",
         "status": "released",
         "uuid": "ae1b4a0b-78e6-af0a-8e6d-c0c9b45905fa",
-        "notes": "Phenotypic feature of body weight"
+        "notes": "Phenotypic feature of body weight",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
     }
 ]
