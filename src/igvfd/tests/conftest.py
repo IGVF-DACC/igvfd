@@ -27,6 +27,8 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.in_vitro_system',
     'igvfd.tests.fixtures.schemas.primary_cell',
     'igvfd.tests.fixtures.schemas.tissue',
+    'igvfd.tests.fixtures.schemas.differentiated_tissue',
+    'igvfd.tests.fixtures.schemas.differentiated_cell',
     'igvfd.tests.fixtures.schemas.technical_sample',
     'igvfd.tests.fixtures.schemas.user',
     'igvfd.tests.fixtures.schemas.assay_term',
