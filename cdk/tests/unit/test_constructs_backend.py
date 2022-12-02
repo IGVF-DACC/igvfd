@@ -170,6 +170,10 @@ def test_constructs_backend_initialize_backend_construct(
                             'Value': 'igvfd'
                         },
                         {
+                            'Name': 'SESSION_COOKIE_DOMAIN',
+                            'Value': 'my.test.domain.org'
+                        },
+                        {
                             'Name': 'DEFAULT_EVENT_BUS',
                             'Value': {
                                 'Fn::GetAtt': [

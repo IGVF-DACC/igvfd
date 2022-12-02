@@ -198,6 +198,7 @@ class Backend(Construct):
             environment={
                 'DB_HOST': self.postgres.database.instance_endpoint.hostname,
                 'DB_NAME': self.postgres.database_name,
+                'SESSION_COOKIE_DOMAIN': self.props.existing_resources.domain.name,
                 'DEFAULT_EVENT_BUS': self.props.existing_resources.bus.default.event_bus_arn,
                 'EVENT_SOURCE': get_event_source_from_config(self.props.config),
                 'OPENSEARCH_URL': self.props.opensearch.url,
