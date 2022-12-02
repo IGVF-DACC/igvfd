@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562):
+def in_vitro_cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562):
     item = {
         'classification': 'cell line',
         'award': award['@id'],
@@ -16,7 +16,7 @@ def cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562):
 
 
 @pytest.fixture
-def differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K562):
+def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K562):
     item = {
         'classification': 'differentiated cell',
         'award': award['@id'],
@@ -30,7 +30,7 @@ def differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K5
 
 
 @pytest.fixture
-def differentiated_tissue(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
+def in_vitro_differentiated_tissue(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
     item = {
         'classification': 'differentiated tissue',
         'award': award['@id'],
