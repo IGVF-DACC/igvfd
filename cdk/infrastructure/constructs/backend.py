@@ -63,6 +63,7 @@ class BackendProps:
     opensearch: Opensearch
     transaction_queue: TransactionQueue
     invalidation_queue: InvalidationQueue
+    ini_name: str
     cpu: int
     memory_limit_mib: int
     desired_count: int
@@ -198,6 +199,7 @@ class Backend(Construct):
             environment={
                 'DB_HOST': self.postgres.database.instance_endpoint.hostname,
                 'DB_NAME': self.postgres.database_name,
+                'INI_NAME': self.props.ini_name,
                 'SESSION_COOKIE_DOMAIN': self.props.existing_resources.domain.name,
                 'DEFAULT_EVENT_BUS': self.props.existing_resources.bus.default.event_bus_arn,
                 'EVENT_SOURCE': get_event_source_from_config(self.props.config),

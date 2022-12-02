@@ -54,6 +54,7 @@ def test_constructs_backend_initialize_backend_construct(
             memory_limit_mib=4096,
             desired_count=4,
             max_capacity=7,
+            ini_name='demo.ini',
             use_postgres_named='Postgres'
         )
     )
@@ -168,6 +169,10 @@ def test_constructs_backend_initialize_backend_construct(
                         {
                             'Name': 'DB_NAME',
                             'Value': 'igvfd'
+                        },
+                        {
+                            'Name': 'INI_NAME',
+                            'Value': 'demo.ini'
                         },
                         {
                             'Name': 'SESSION_COOKIE_DOMAIN',
