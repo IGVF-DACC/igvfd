@@ -152,6 +152,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:dev-db-12-01-2022',
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
@@ -179,14 +180,14 @@ config: Dict[str, Any] = {
             'invalidation_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
-                'min_scaling_capacity': 0,
-                'max_scaling_capacity': 0,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
             },
             'indexing_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
-                'min_scaling_capacity': 0,
-                'max_scaling_capacity': 0,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
             },
             'tags': [
             ],
@@ -200,6 +201,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:dev-db-12-01-2022',
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
@@ -227,14 +229,14 @@ config: Dict[str, Any] = {
             'invalidation_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
-                'min_scaling_capacity': 0,
-                'max_scaling_capacity': 0,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
             },
             'indexing_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
-                'min_scaling_capacity': 0,
-                'max_scaling_capacity': 0,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
             },
             'tags': [
             ],
@@ -248,6 +250,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:dev-db-12-01-2022',
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
@@ -275,14 +278,14 @@ config: Dict[str, Any] = {
             'invalidation_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
-                'min_scaling_capacity': 0,
-                'max_scaling_capacity': 0,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
             },
             'indexing_service': {
                 'cpu': 256,
                 'memory_limit_mib': 512,
-                'min_scaling_capacity': 0,
-                'max_scaling_capacity': 0,
+                'min_scaling_capacity': 1,
+                'max_scaling_capacity': 2,
             },
             'tags': [
             ],
