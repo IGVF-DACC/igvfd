@@ -177,17 +177,13 @@ def session(config):
     else:
         timeout = 60 * 60 * 24
     add_session_cookie_name_to_settings(settings, secret)
-    domain = (
-        os.environ.get('SESSION_COOKIE_DOMAIN', None)
-        or settings.get('session_cookie_domain', None)
-    )
     session_factory = SignedCookieSessionFactory(
         cookie_name=settings['session_cookie_name'],
         secret=secret,
         timeout=timeout,
         reissue_time=2**32,  # None does not work
         serializer=JSONSerializer(),
-        domain=domain,
+        domain=settings.get('session_cookie_domain', None)
     )
     config.set_session_factory(session_factory)
 
