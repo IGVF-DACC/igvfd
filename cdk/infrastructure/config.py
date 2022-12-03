@@ -195,7 +195,6 @@ config: Dict[str, Any] = {
             'tags': [
             ],
             'url_prefix': 'api',
-            'use_subdomain': False,
         },
         'sandbox': {
             'postgres': {
@@ -245,7 +244,6 @@ config: Dict[str, Any] = {
             'tags': [
             ],
             'url_prefix': 'api',
-            'use_subdomain': False,
         },
         'production': {
             'postgres': {
@@ -295,7 +293,6 @@ config: Dict[str, Any] = {
             'tags': [
             ],
             'url_prefix': 'api',
-            'use_subdomain': False
         },
     }
 }
