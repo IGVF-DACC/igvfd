@@ -19,11 +19,13 @@ def test_biomarker_patch_synonym(biomarker_CD243_absent, testapp):
     assert res.status_code == 200
 
 
-def test_biomarker_check_duplicate(testapp):
+def test_biomarker_check_duplicate(testapp, lab, award):
     my_duplicate_biomarker = {
         'name': 'CD1',
         'quantification': 'negative',
-        'classification': 'cell surface protein'
+        'classification': 'cell surface protein',
+        'award': award['@id'],
+        'lab': lab['@id']
     }
     biomarker_CD1 = testapp.post_json('/biomarker', my_duplicate_biomarker, status=201).json['@graph'][0]
     res = testapp.post_json('/biomarker', my_duplicate_biomarker, status=409)
@@ -42,11 +44,13 @@ def test_biomarker_patch_gene(biomarker_CD1e_low, gene_CD1E, testapp):
     assert res.status_code == 422
 
 
-def test_biomarker_permissions(submitter_testapp, testapp):
+def test_biomarker_permissions(submitter_testapp, testapp, lab, award):
     my_non_dacc_biomarker = {
         'name': 'CD1234',
         'quantification': 'negative',
-        'classification': 'cell surface protein'
+        'classification': 'cell surface protein',
+        'award': award['@id'],
+        'lab': lab['@id']
     }
     res = submitter_testapp.post_json('/biomarker', my_non_dacc_biomarker, status=422)
     assert res.status_code == 422
@@ -54,11 +58,13 @@ def test_biomarker_permissions(submitter_testapp, testapp):
     assert res.status_code == 201
 
 
-def test_biomarker_classifications(testapp, gene_myc_hs):
+def test_biomarker_classifications(testapp, gene_myc_hs, lab, award):
     my_cell_surface_protein_biomarker = {
         'name': 'CD2345',
         'quantification': 'negative',
-        'classification': 'cell surface protein'
+        'classification': 'cell surface protein',
+        'award': award['@id'],
+        'lab': lab['@id']
     }
     res = testapp.post_json('/biomarker', my_cell_surface_protein_biomarker)
     assert res.status_code == 201
@@ -66,7 +72,9 @@ def test_biomarker_classifications(testapp, gene_myc_hs):
         'name': 'MYC',
         'quantification': 'negative',
         'classification': 'marker gene',
-        'gene': gene_myc_hs['@id']
+        'gene': gene_myc_hs['@id'],
+        'award': award['@id'],
+        'lab': lab['@id']
     }
     res = testapp.post_json('/biomarker', my_gene_marker_biomarker)
     assert res.status_code == 201
