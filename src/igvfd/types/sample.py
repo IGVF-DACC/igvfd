@@ -97,6 +97,18 @@ class PrimaryCell(Biosample):
 
 
 @collection(
+    name='in-vitro-systems',
+    unique_key='accession',
+    properties={
+         'title': 'In Vitro Systems',
+         'description': 'Listing of in vitro systems',
+    })
+class InVitroSystem(Biosample):
+    item_type = 'in_vitro_system'
+    schema = load_schema('igvfd:schemas/in_vitro_system.json')
+
+
+@collection(
     name='cell-lines',
     unique_key='accession',
     properties={
