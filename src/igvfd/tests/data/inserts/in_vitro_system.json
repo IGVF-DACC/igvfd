@@ -1,6 +1,6 @@
 [
     {
-        "uuid": "467c72a2-4f84-2c8f-96b0-ec8715e18185",
+        "uuid": "a14a6536-e3ed-4ccd-bc95-65f287386bbd",
         "classification": "cell line",
         "lab": "j-michael-cherry",
         "accession": "IGVFSM000AAA",
@@ -41,7 +41,7 @@
         ]
     },
     {
-        "uuid": "3736b93a-c748-11ec-9d64-0242ac120002",
+        "uuid": "8b62a948-79d8-4693-80d8-5ca4baf8d2b7",
         "accession": "IGVFSM001AAA",
         "classification": "cell line",
         "lab": "j-michael-cherry",
@@ -72,7 +72,7 @@
         ]
     },
     {
-        "uuid": "8e35b598-e688-443b-bf0d-9ea1783d171e",
+        "uuid": "23f85f6c-3e2b-493f-bf90-f0dfeb0a8ca8",
         "accession": "IGVFSM002AAA",
         "classification": "cell line",
         "lab": "ali-mortazavi",
@@ -93,7 +93,7 @@
         ]
     },
     {
-        "uuid": "7783e7b0-0302-11ed-b939-0242ac120002",
+        "uuid": "bf4323e5-6112-4a50-a321-ae9380ba9f3b",
         "lab": "j-michael-cherry",
         "classification": "cell line",
         "accession": "IGVFSM003AAA",
@@ -134,7 +134,7 @@
         ]
     },
     {
-        "uuid": "f1d10666-ebb2-4152-9d49-f98b6de7c9e5",
+        "uuid": "ef542e2c-19ec-41df-9194-60882ae1fce6",
         "accession": "IGVFSM000CCC",
         "classification": "differentiated cell",
         "lab": "j-michael-cherry",
@@ -160,7 +160,7 @@
         "age_units": "year"
     },
     {
-        "uuid": "8a3af63e-bf89-4947-919c-f9e026ee1c9b",
+        "uuid": "85aaa7c1-7845-44e7-824b-53609d2a571a",
         "accession": "IGVFSM001CCC",
         "classification": "differentiated cell",
         "lab": "gary-hon",
@@ -187,7 +187,7 @@
         "differentiated_from": "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
     },
     {
-        "uuid": "7c5868aa-6865-4301-93c3-13bc3764b506",
+        "uuid": "c4fb7a58-137b-4874-ab01-c0d4c5c275c7",
         "accession": "IGVFSM002CCC",
         "classification": "differentiated cell",
         "lab": "gary-hon",
@@ -210,7 +210,7 @@
         ]
     },
     {
-        "uuid": "d360c844-02ff-11ed-b939-0242ac120002",
+        "uuid": "0dd366ce-8e95-40c5-bbbb-8603ead34b99",
         "accession": "IGVFSM003CCC",
         "classification": "differentiated cell",
         "lab": "j-michael-cherry",
@@ -237,7 +237,7 @@
         "age_units": "year"
     },
     {
-        "uuid": "a79ffa29-4bdf-4283-9494-1017e5d13f8b",
+        "uuid": "d7a10263-9b85-4d6e-915b-8a3a5121e41b",
         "accession": "IGVFSM000BBB",
         "classification": "differentiated tissue",
         "lab": "j-michael-cherry",
@@ -266,7 +266,7 @@
         "differentiated_from": "/cell-lines/467c72a2-4f84-2c8f-96b0-ec8715e18185/"
     },
     {
-        "uuid": "4ce1b687-62f9-4d92-a69e-b4820d1efc9d",
+        "uuid": "92669377-a510-493d-b8d3-560d19255745",
         "accession": "IGVFSM001BBB",
         "classification": "differentiated tissue",
         "lab": "jay-shendure",
@@ -286,7 +286,7 @@
         "differentiated_from": "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
     },
     {
-        "uuid": "7c058e39-e36b-4afa-bb2a-5e6c4ed07197",
+        "uuid": "18ee2f83-9148-4327-96b5-3a451212673c",
         "accession": "IGVFSM002BBB",
         "classification": "differentiated tissue",
         "lab": "jay-shendure",
@@ -309,7 +309,7 @@
         ]
     },
     {
-        "uuid": "4d93cbfc-0300-11ed-b939-0242ac120002",
+        "uuid": "e57abd80-d6e1-42b8-9933-7c7c0b85f1e7",
         "accession": "IGVFSM003BBB",
         "classification": "differentiated tissue",
         "lab": "j-michael-cherry",
