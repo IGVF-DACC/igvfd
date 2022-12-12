@@ -58,13 +58,13 @@
             "default": "6"
         },
         "award": {
-            "notSubmittable": "TRUE"
+            "permission": "import_items"
         },
         "source": {
-            "notSubmittable": "TRUE"
+            "permission": "import_items"
         },
         "lab": {
-            "notSubmittable": "TRUE"
+            "permission": "import_items"
         },
         "passage_number": {
             "title": "Passage Number",

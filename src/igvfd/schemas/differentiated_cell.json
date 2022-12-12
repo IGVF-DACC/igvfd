@@ -55,13 +55,13 @@
             "default": "7"
         },
         "award": {
-            "notSubmittable": "TRUE"
+            "permission": "import_items"
         },
         "source": {
-            "notSubmittable": "TRUE"
+            "permission": "import_items"
         },
         "lab": {
-            "notSubmittable": "TRUE"
+            "permission": "import_items"
         },
         "post_differentiation_time": {
             "title": "Post-differentiation Time",
