@@ -1,6 +1,17 @@
 import pytest
 
 
+def test_phenotypic_feature_required_lab_award(
+    testapp,
+    phenotype_term_ncit_feature
+):
+    item = {
+        'feature': phenotype_term_ncit_feature['@id']
+    }
+    return testapp.post_json('/phenotypic_feature', item, expect_errors=True)
+    assert res.status_code == 422
+
+
 def test_phenotypic_feature_quantity_units(
     testapp,
     phenotypic_feature_basic
