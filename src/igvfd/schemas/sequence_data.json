@@ -50,7 +50,10 @@
                     "upload_status": {
                         "const": "validated"
                     }
-                }
+                },
+                "required": [
+                    "upload_status"
+                ]
             },
             "then": {
                 "required": [
