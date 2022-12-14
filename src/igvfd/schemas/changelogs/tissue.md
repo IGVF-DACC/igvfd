@@ -3,6 +3,7 @@
 ### Minor changes since schema version 6
 * Add `revoke_detail`.
 * Add `ccf_id`.
+* Rename `donors` to `donor`.
 
 ### Schema version 6
 

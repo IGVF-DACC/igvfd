@@ -7,7 +7,7 @@
         "aliases": [
             "igvf-dacc:cell_line"
         ],
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor1"
         ],
         "status": "released",
@@ -65,7 +65,7 @@
         ],
         "date_obtained": "2022-04-02",
         "source": "/labs/j-michael-cherry/",
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor1"
         ]
     },
@@ -77,7 +77,7 @@
         "aliases": [
             "ali-mortazavi:pooled_cell_line"
         ],
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor1"
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
@@ -104,7 +104,7 @@
         "notes": "This is a note.",
         "product_id": "GR000001",
         "part_of": "IGVFSM000AAA",
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor1"
         ],
         "lot_id": "R00001",

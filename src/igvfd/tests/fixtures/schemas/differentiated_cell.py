@@ -8,7 +8,7 @@ def differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K5
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
-        'donors': [human_donor['@id']],
+        'donor': [human_donor['@id']],
         'biosample_term': sample_term_K562['@id']
     }
     return testapp.post_json('/differentiated_cell', item, status=201).json['@graph'][0]
@@ -47,7 +47,7 @@ def differentiated_cell_v3(differentiated_cell):
     item.update({
         'schema_version': '3',
         'aliases': [],
-        'donors': [],
+        'donor': [],
         'dbxrefs': [],
         'collections': [],
         'alternate_accessions': [],

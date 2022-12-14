@@ -29,7 +29,7 @@ def test_post_differentiated_cell(testapp, award, lab, treatment_protein, human_
             'post_differentiation_time_units': 'minute',
             'treatments': [treatment_protein['@id']],
             'taxa': 'Homo sapiens',
-            'donors': [human_donor['@id']],
+            'donor': [human_donor['@id']],
             'biosample_term': sample_term_K562['@id']
         })
     assert res.status_code == 201

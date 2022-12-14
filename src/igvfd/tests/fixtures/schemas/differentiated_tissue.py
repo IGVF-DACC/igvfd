@@ -8,7 +8,7 @@ def differentiated_tissue(testapp, lab, award, source, human_donor, sample_term_
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
-        'donors': [human_donor['@id']],
+        'donor': [human_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id']
     }
     return testapp.post_json('/differentiated_tissue', item, status=201).json['@graph'][0]
@@ -47,7 +47,7 @@ def differentiated_tissue_v3(differentiated_tissue):
     item.update({
         'schema_version': '3',
         'aliases': [],
-        'donors': [],
+        'donor': [],
         'dbxrefs': [],
         'collections': [],
         'alternate_accessions': [],

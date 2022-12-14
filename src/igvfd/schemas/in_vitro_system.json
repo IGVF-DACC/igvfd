@@ -8,7 +8,7 @@
         "award",
         "lab",
         "source",
-        "donors",
+        "donor",
         "taxa",
         "biosample_term",
         "classification"
@@ -164,7 +164,7 @@
         "biosample_term": {
             "title": "Biosample Term"
         },
-        "donors": {
+        "donor": {
             "title": "Donors"
         },
         "originated_from": {

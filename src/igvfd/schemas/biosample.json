@@ -8,7 +8,7 @@
         "award",
         "lab",
         "source",
-        "donors",
+        "donor",
         "taxa",
         "biosample_term"
     ],
@@ -205,7 +205,7 @@
                 "linkTo": "Treatment"
             }
         },
-        "donors": {
+        "donor": {
             "title": "Donors",
             "description": "Donor(s). Any contributing donor.",
             "type": "array",

@@ -8,7 +8,7 @@
         "aliases": [
             "igvf-dacc:in_vitro_system_cell_line"
         ],
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor1"
         ],
         "passage_number": 2,
@@ -26,6 +26,8 @@
         "dbxrefs": [
             "GEO:SAMN1"
         ],
+        "time_post_factors_introduction": 24,
+        "time_post_factors_introduction_units": "minute",
         "taxa": "Homo sapiens",
         "lower_bound_age": 40,
         "upper_bound_age": 40,

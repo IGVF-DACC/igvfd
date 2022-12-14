@@ -3,6 +3,7 @@
 ### Minor changes since schema version 7
 * Add `revoke_detail`.
 * Make required properties `lab`, `source`, and `award` not submittable. No further submission of differentiated_tissue are accepted.
+* Rename `donors` to `donor`.
 
 ### Schema version 7
 

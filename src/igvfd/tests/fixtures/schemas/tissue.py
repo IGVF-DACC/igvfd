@@ -8,7 +8,7 @@ def tissue(testapp, lab, source, award, rodent_donor, sample_term_adrenal_gland)
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Mus musculus',
-        'donors': [rodent_donor['@id']],
+        'donor': [rodent_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id']
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
@@ -47,7 +47,7 @@ def tissue_v3(tissue):
     item.update({
         'schema_version': '3',
         'aliases': [],
-        'donors': [],
+        'donor': [],
         'dbxrefs': [],
         'collections': [],
         'alternate_accessions': [],
@@ -108,7 +108,7 @@ def human_tissue(testapp, lab, source, award, human_donor, sample_term_adrenal_g
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
-        'donors': [human_donor['@id']],
+        'donor': [human_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id']
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
