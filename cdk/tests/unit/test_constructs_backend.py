@@ -760,7 +760,7 @@ def test_constructs_backend_initialize_backend_construct(
     )
 
 
-def test_constructs_backend__backend_construct_define_domain_name(
+def test_constructs_backend_backend_construct_define_domain_name(
         stack,
         instance_type,
         existing_resources,
