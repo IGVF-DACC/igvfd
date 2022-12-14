@@ -53,18 +53,6 @@
         "$merge": [
             "biosample.json#/dependentSchemas"
         ],
-        "time_post_factors_introduction": {
-            "required": [
-                "time_post_factors_introduction_units"
-            ],
-            "comment": "Biosample with a specified time_post_factors_introduction requires time_post_factors_introduction_units specification."
-        },
-        "time_post_factors_introduction_units": {
-            "required": [
-                "time_post_factors_introduction"
-            ],
-            "comment": "Biosample with a specified time_post_factors_introduction_units requires time_post_factors_introduction specification."
-        },
         "passage_number": {
             "comment": "Only in vitro system with classification as a cell line are allowed to have passage_number property.",
             "properties": {
@@ -75,6 +63,14 @@
                 }
             }
         }
+    },
+    "dependentRequired": {
+        "time_post_factors_introduction": [
+            "time_post_factors_introduction_units"
+        ],
+        "time_post_factors_introduction_units": [
+            "time_post_factors_introduction"
+        ]
     },
     "properties": {
         "schema_version": {
