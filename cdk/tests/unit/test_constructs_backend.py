@@ -758,3 +758,33 @@ def test_constructs_backend_initialize_backend_construct(
             'InstallLatestAwsSdk': True
         }
     )
+
+
+def test_constructs_backend_get_url_prefix():
+    from infrastructure.config import Config
+    from infrastructure.constructs.backend import get_url_prefix
+    config_without_prefix = Config(
+        name='abc',
+        branch='some-branch',
+        backend={},
+        postgres={},
+        opensearch={},
+        invalidation_service={},
+        indexing_service={},
+        tags=[],
+    )
+    url_prefix = get_url_prefix(config_without_prefix)
+    assert url_prefix == 'igvfd-some-branch'
+    config_with_prefix = Config(
+        name='abc',
+        branch='some-branch',
+        backend={},
+        postgres={},
+        opensearch={},
+        invalidation_service={},
+        indexing_service={},
+        tags=[],
+        url_prefix='some-prefix',
+    )
+    url_prefix = get_url_prefix(config_with_prefix)
+    assert url_prefix == 'some-prefix'
