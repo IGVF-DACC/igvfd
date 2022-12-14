@@ -14,7 +14,7 @@ def test_primary_cell_upgrade_2_3(upgrader, primary_cell_v2):
 def test_primary_cell_upgrade_3_4(upgrader, primary_cell_v3):
     value = upgrader.upgrade('primary_cell', primary_cell_v3, current_version='3', target_version='4')
     assert 'aliases' not in value
-    assert 'donor' not in value
+    assert 'donors' not in value
     assert 'dbxrefs' not in value
     assert 'collections' not in value
     assert 'alternate_accessions' not in value

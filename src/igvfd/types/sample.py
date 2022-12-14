@@ -51,11 +51,11 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def sex(self, request, donors=None):
+    def sex(self, request, donor=None):
         sexes = set()
-        if donors:
-            for donor in donors:
-                donor_object = request.embed(donor, '@@object')
+        if donor:
+            for d in donor:
+                donor_object = request.embed(d, '@@object')
                 if donor_object.get('sex'):
                     sexes.add(donor_object.get('sex'))
         if len(sexes) == 1:
