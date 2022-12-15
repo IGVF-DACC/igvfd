@@ -206,7 +206,7 @@
             }
         },
         "donor": {
-            "title": "Donors",
+            "title": "Donor",
             "description": "Donor(s). Any contributing donor.",
             "type": "array",
             "minItems": 1,
