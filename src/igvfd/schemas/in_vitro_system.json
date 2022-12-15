@@ -128,8 +128,8 @@
             }
         },
         "originated_from": {
-            "title": "Biosample Differentiated From",
-            "description": "The biosample this organoid sample was differentiated from.",
+            "title": "Originated From",
+            "description": "The biosample this in vitro system sample was originated from.",
             "type": "string",
             "linkTo": "Biosample"
         },
