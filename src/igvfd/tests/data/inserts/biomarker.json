@@ -12,6 +12,9 @@
             "P-gp",
             "PGY1"
         ],
+        "aliases": [
+            "igvf:negative_biomarker_CD243"
+        ],
         "lab": "j-michael-cherry",
         "award": "HG012012"
     },
@@ -27,6 +30,9 @@
             "MDR1",
             "P-gp",
             "PGY1"
+        ],
+        "aliases": [
+            "igvf:positive_biomarker_CD243"
         ],
         "lab": "j-michael-cherry",
         "award": "HG012012"

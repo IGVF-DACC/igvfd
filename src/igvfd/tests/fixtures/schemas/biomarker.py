@@ -7,6 +7,7 @@ def biomarker_CD243_absent(testapp, lab, award):
         'name': 'CD243',
         'quantification': 'negative',
         'classification': 'cell surface protein',
+        'aliases': ['igvf:biomarker_CD243_absent'],
         'synonyms': ['ABC20', 'CD243', 'CLCS', 'GP170', 'MDR1', 'P-gp', 'PGY1'],
         'award': award['@id'],
         'lab': lab['@id']
@@ -20,6 +21,7 @@ def biomarker_CD243_high(testapp, lab, award):
         'name': 'CD243',
         'quantification': 'high',
         'classification': 'cell surface protein',
+        'aliases': ['igvf:biomarker_CD243_high'],
         'synonyms': ['ABC20', 'CD243', 'CLCS', 'GP170', 'MDR1', 'P-gp', 'PGY1'],
         'award': award['@id'],
         'lab': lab['@id']

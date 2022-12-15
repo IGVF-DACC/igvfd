@@ -78,3 +78,11 @@ def test_biomarker_classifications(testapp, gene_myc_hs, lab, award):
     }
     res = testapp.post_json('/biomarker', my_gene_marker_biomarker)
     assert res.status_code == 201
+
+
+def test_biomarker_alias_unique(biomarker_CD1e_low, biomarker_CD243_high, testapp):
+    res = testapp.patch_json(
+        biomarker_CD1e_low['@id'],
+        {'aliases': biomarker_CD243_high['aliases']},
+        expect_errors=True)
+    assert res.status_code == 409
