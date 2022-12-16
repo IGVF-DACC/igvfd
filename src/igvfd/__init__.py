@@ -199,7 +199,7 @@ def main(global_config, **local_config):
     settings.update(local_config)
 
     settings['snovault.jsonld.namespaces'] = json_asset('igvfd:schemas/namespaces.json')
-    settings['snovault.jsonld.terms_namespace'] = 'https://www.igvfproject.org/terms/'
+    settings['snovault.jsonld.terms_namespace'] = 'https://api.data.igvf.org/terms/'
     settings['snovault.jsonld.terms_prefix'] = 'igvf'
 
     # Before settings are passed to Configurator.
