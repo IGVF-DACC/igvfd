@@ -15,7 +15,7 @@ from infrastructure.stacks.postgres import PostgresStack
 from typing import Any
 
 
-class DevelopmentDeployStage(cdk.Stage):
+class DemoDeployStage(cdk.Stage):
 
     def __init__(
             self,

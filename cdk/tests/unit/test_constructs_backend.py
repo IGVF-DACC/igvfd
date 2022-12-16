@@ -54,6 +54,7 @@ def test_constructs_backend_initialize_backend_construct(
             memory_limit_mib=4096,
             desired_count=4,
             max_capacity=7,
+            ini_name='demo.ini',
             use_postgres_named='Postgres'
         )
     )
@@ -168,6 +169,10 @@ def test_constructs_backend_initialize_backend_construct(
                         {
                             'Name': 'DB_NAME',
                             'Value': 'igvfd'
+                        },
+                        {
+                            'Name': 'INI_NAME',
+                            'Value': 'demo.ini'
                         },
                         {
                             'Name': 'DEFAULT_EVENT_BUS',
@@ -753,3 +758,123 @@ def test_constructs_backend_initialize_backend_construct(
             'InstallLatestAwsSdk': True
         }
     )
+
+
+def test_constructs_backend_backend_construct_define_domain_name(
+        stack,
+        instance_type,
+        existing_resources,
+        vpc,
+        config,
+        opensearch,
+        transaction_queue,
+        invalidation_queue,
+):
+    from infrastructure.config import Config
+    from infrastructure.constructs.backend import Backend
+    from infrastructure.constructs.backend import BackendProps
+    from infrastructure.constructs.postgres import Postgres
+    from infrastructure.constructs.postgres import PostgresProps
+    from infrastructure.multiplexer import Multiplexer
+    from infrastructure.multiplexer import MultiplexerConfig
+    from dataclasses import asdict
+    postgres_multiplexer = Multiplexer(
+        stack,
+        configs=[
+            MultiplexerConfig(
+                construct_id='Postgres',
+                on=True,
+                construct_class=Postgres,
+                kwargs={
+                    'props': PostgresProps(
+                        config=config,
+                        existing_resources=existing_resources,
+                        allocated_storage=10,
+                        max_allocated_storage=20,
+                        instance_type=instance_type
+                    )
+                }
+            ),
+        ]
+    )
+    backend = Backend(
+        stack,
+        'TestBackend',
+        props=BackendProps(
+            config=config,
+            existing_resources=existing_resources,
+            postgres_multiplexer=postgres_multiplexer,
+            opensearch=opensearch,
+            transaction_queue=transaction_queue,
+            invalidation_queue=invalidation_queue,
+            cpu=2048,
+            memory_limit_mib=4096,
+            desired_count=4,
+            max_capacity=7,
+            ini_name='demo.ini',
+            use_postgres_named='Postgres'
+        )
+    )
+    assert backend.domain_name == 'igvfd-some-branch.my.test.domain.org'
+    old_config = {
+        k: v
+        for k, v in asdict(config).items()
+        if k != 'common'
+    }
+    config_with_prefix = Config(
+        **{
+            **old_config,
+            **{
+                'url_prefix': 'some-prefix',
+            }
+        }
+    )
+    backend = Backend(
+        stack,
+        'TestBackend2',
+        props=BackendProps(
+            config=config_with_prefix,
+            existing_resources=existing_resources,
+            postgres_multiplexer=postgres_multiplexer,
+            opensearch=opensearch,
+            transaction_queue=transaction_queue,
+            invalidation_queue=invalidation_queue,
+            cpu=2048,
+            memory_limit_mib=4096,
+            desired_count=4,
+            max_capacity=7,
+            ini_name='demo.ini',
+            use_postgres_named='Postgres'
+        )
+    )
+    assert backend.domain_name == 'some-prefix.my.test.domain.org'
+
+
+def test_constructs_backend_get_url_prefix():
+    from infrastructure.config import Config
+    from infrastructure.constructs.backend import get_url_prefix
+    config_without_prefix = Config(
+        name='abc',
+        branch='some-branch',
+        backend={},
+        postgres={},
+        opensearch={},
+        invalidation_service={},
+        indexing_service={},
+        tags=[],
+    )
+    url_prefix = get_url_prefix(config_without_prefix)
+    assert url_prefix == 'igvfd-some-branch'
+    config_with_prefix = Config(
+        name='abc',
+        branch='some-branch',
+        backend={},
+        postgres={},
+        opensearch={},
+        invalidation_service={},
+        indexing_service={},
+        tags=[],
+        url_prefix='some-prefix',
+    )
+    url_prefix = get_url_prefix(config_with_prefix)
+    assert url_prefix == 'some-prefix'

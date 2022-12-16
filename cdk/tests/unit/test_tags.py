@@ -97,3 +97,25 @@ def test_tags_add_tags_to_stack(config):
         'project': 'igvfd',
         'test': 'tag'
     }
+
+
+def test_tags_add_tags_to_stack_from_pipeline_config(pipeline_config):
+    from aws_cdk import App
+    from aws_cdk import Stack
+    from infrastructure.tags import add_tags_to_stack
+    app = App()
+    stack = Stack(
+        app,
+        'TestStack'
+    )
+    add_tags_to_stack(stack, pipeline_config)
+    cloud_assembly = app.synth()
+    test_stack = cloud_assembly.get_stack_by_name(
+        'TestStack'
+    )
+    assert test_stack.tags == {
+        'environment': 'demo',
+        'branch': 'some-branch',
+        'project': 'igvfd',
+        'test': 'tag'
+    }

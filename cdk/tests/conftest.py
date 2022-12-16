@@ -155,12 +155,49 @@ def existing_resources(mocker, domain, network, secret, chatbot, bus, sns_topic)
 
 
 @pytest.fixture
+def pipeline_config():
+    from infrastructure.config import PipelineConfig
+    from infrastructure.constructs.existing import igvf_dev
+    return PipelineConfig(
+        name='demo',
+        branch='some-branch',
+        pipeline='xyz',
+        existing_resources_class=igvf_dev.Resources,
+        account_and_region=igvf_dev.US_WEST_2,
+        tags=[
+            ('test', 'tag'),
+        ]
+    )
+
+
+@pytest.fixture
+def production_pipeline_config():
+    from infrastructure.config import PipelineConfig
+    from infrastructure.constructs.existing import igvf_dev
+    return PipelineConfig(
+        name='production',
+        branch='some-branch',
+        pipeline='xyz',
+        existing_resources_class=igvf_dev.Resources,
+        account_and_region=igvf_dev.US_WEST_2,
+        cross_account_keys=True,
+        tags=[
+            ('test', 'tag'),
+        ]
+    )
+
+
+@pytest.fixture
+def branch():
+    return 'some-branch'
+
+
+@pytest.fixture
 def config(instance_type, capacity_config):
     from infrastructure.config import Config
     return Config(
         name='demo',
         branch='some-branch',
-        pipeline='xyz',
         postgres={
             'instances': [
                 {
@@ -183,6 +220,7 @@ def config(instance_type, capacity_config):
             'memory_limit_mib': 2048,
             'desired_count': 1,
             'max_capacity': 4,
+            'ini_name': 'demo.ini',
             'use_postgres_named': 'Postgres',
         },
         invalidation_service={

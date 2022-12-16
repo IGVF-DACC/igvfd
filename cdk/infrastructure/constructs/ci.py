@@ -17,10 +17,9 @@ from aws_cdk.aws_iam import PolicyStatement
 from aws_cdk.aws_iam import Role
 from aws_cdk.aws_iam import ServicePrincipal
 
-
 from infrastructure.naming import prepend_project_name
 
-from shared_infrastructure.igvf_dev.secret import DockerHubCredentials
+from infrastructure.constructs.existing.types import ExistingResources
 
 from typing import Any
 from typing import cast
@@ -34,7 +33,7 @@ class ContinuousIntegrationProps:
     github_owner: str
     github_repo: str
     build_spec: Dict[str, Any]
-    docker_hub_credentials: DockerHubCredentials
+    existing_resources: ExistingResources
 
 
 class ContinuousIntegration(Construct):
@@ -90,7 +89,7 @@ class ContinuousIntegration(Construct):
     def _give_project_permission_to_read_docker_login_secret(self) -> None:
         role = self.continuous_integration_project.role
         if role is not None:
-            self.props.docker_hub_credentials.secret.grant_read(
+            self.props.existing_resources.docker_hub_credentials.secret.grant_read(
                 role
             )
 

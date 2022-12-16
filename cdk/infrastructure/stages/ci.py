@@ -23,7 +23,7 @@ class CIDeployStage(cdk.Stage):
             config: Config,
             **kwargs: Any
     ) -> None:
-        super().__init__(scope, construct_id,  **kwargs)
+        super().__init__(scope, construct_id, **kwargs)
         self.ci_stack = ContinuousIntegrationStack(
             self,
             'ContinuousIntegrationStack',

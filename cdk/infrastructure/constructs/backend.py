@@ -49,6 +49,12 @@ from typing import cast
 from dataclasses import dataclass
 
 
+def get_url_prefix(config: Config) -> str:
+    if config.url_prefix is not None:
+        return config.url_prefix
+    return f'igvfd-{config.branch}'
+
+
 @dataclass
 class BackendProps:
     config: Config
@@ -57,6 +63,7 @@ class BackendProps:
     opensearch: Opensearch
     transaction_queue: TransactionQueue
     invalidation_queue: InvalidationQueue
+    ini_name: str
     cpu: int
     memory_limit_mib: int
     desired_count: int
@@ -122,9 +129,14 @@ class Backend(Construct):
         )
 
     def _define_domain_name(self) -> None:
-        self.domain_name = (
-            f'igvfd-{self.props.config.branch}.{self.props.existing_resources.domain.name}'
-        )
+        if self.props.config.use_subdomain:
+            self.domain_name = (
+                f'{get_url_prefix(self.props.config)}.{self.props.existing_resources.domain.name}'
+            )
+        else:
+            self.domain_name = (
+                f'{self.props.existing_resources.domain.name}'
+            )
 
     def _define_fargate_service(self) -> None:
         self.fargate_service = ApplicationLoadBalancedFargateService(
@@ -187,6 +199,7 @@ class Backend(Construct):
             environment={
                 'DB_HOST': self.postgres.database.instance_endpoint.hostname,
                 'DB_NAME': self.postgres.database_name,
+                'INI_NAME': self.props.ini_name,
                 'DEFAULT_EVENT_BUS': self.props.existing_resources.bus.default.event_bus_arn,
                 'EVENT_SOURCE': get_event_source_from_config(self.props.config),
                 'OPENSEARCH_URL': self.props.opensearch.url,

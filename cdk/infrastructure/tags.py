@@ -2,6 +2,9 @@ from aws_cdk import Stack
 from aws_cdk import Tags
 
 from infrastructure.config import Config
+from infrastructure.config import PipelineConfig
+
+from typing import Union
 
 
 # Cloudformation bug.
@@ -11,7 +14,13 @@ EXCLUDE_RESOURCE_TYPES = [
 ]
 
 
-def add_environment_tag(stack: Stack, config: Config) -> None:
+ConfigWithTags = Union[
+    Config,
+    PipelineConfig,
+]
+
+
+def add_environment_tag(stack: Stack, config: ConfigWithTags) -> None:
     Tags.of(stack).add(
         'environment',
         config.name,
@@ -19,7 +28,7 @@ def add_environment_tag(stack: Stack, config: Config) -> None:
     )
 
 
-def add_project_tag(stack: Stack, config: Config) -> None:
+def add_project_tag(stack: Stack, config: ConfigWithTags) -> None:
     Tags.of(stack).add(
         'project',
         config.common.project_name,
@@ -27,7 +36,7 @@ def add_project_tag(stack: Stack, config: Config) -> None:
     )
 
 
-def add_branch_tag(stack: Stack, config: Config) -> None:
+def add_branch_tag(stack: Stack, config: ConfigWithTags) -> None:
     Tags.of(stack).add(
         'branch',
         config.branch,
@@ -35,7 +44,7 @@ def add_branch_tag(stack: Stack, config: Config) -> None:
     )
 
 
-def add_config_tags(stack: Stack, config: Config) -> None:
+def add_config_tags(stack: Stack, config: ConfigWithTags) -> None:
     for (key, value) in config.tags:
         Tags.of(stack).add(
             key,
@@ -44,7 +53,7 @@ def add_config_tags(stack: Stack, config: Config) -> None:
         )
 
 
-def add_tags_to_stack(stack: Stack, config: Config) -> None:
+def add_tags_to_stack(stack: Stack, config: ConfigWithTags) -> None:
     add_environment_tag(stack, config)
     add_project_tag(stack, config)
     add_branch_tag(stack, config)
