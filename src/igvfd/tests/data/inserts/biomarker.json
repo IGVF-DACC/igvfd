@@ -1,0 +1,135 @@
+[
+    {
+        "name": "CD243",
+        "quantification": "negative",
+        "classification": "cell surface protein",
+        "synonyms": [
+            "ABC20",
+            "CD243",
+            "CLCS",
+            "GP170",
+            "MDR1",
+            "P-gp",
+            "PGY1"
+        ],
+        "aliases": [
+            "igvf:negative_biomarker_CD243"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "name": "CD243",
+        "quantification": "positive",
+        "classification": "cell surface protein",
+        "synonyms": [
+            "ABC20",
+            "CD243",
+            "CLCS",
+            "GP170",
+            "MDR1",
+            "P-gp",
+            "PGY1"
+        ],
+        "aliases": [
+            "igvf:positive_biomarker_CD243"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "name": "CD243",
+        "quantification": "low",
+        "classification": "cell surface protein",
+        "synonyms": [
+            "ABC20",
+            "CD243",
+            "CLCS",
+            "GP170",
+            "MDR1",
+            "P-gp",
+            "PGY1"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "name": "CD243",
+        "quantification": "intermediate",
+        "classification": "cell surface protein",
+        "synonyms": [
+            "ABC20",
+            "CD243",
+            "CLCS",
+            "GP170",
+            "MDR1",
+            "P-gp",
+            "PGY1"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "name": "CD243",
+        "quantification": "high",
+        "classification": "cell surface protein",
+        "synonyms": [
+            "ABC20",
+            "CD243",
+            "CLCS",
+            "GP170",
+            "MDR1",
+            "P-gp",
+            "PGY1"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "name": "BAP1",
+        "quantification": "positive",
+        "classification": "marker gene",
+        "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "name": "BAP1",
+        "quantification": "negative",
+        "classification": "marker gene",
+        "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "name": "BAP1",
+        "quantification": "high",
+        "classification": "marker gene",
+        "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "name": "BAP1",
+        "quantification": "low",
+        "classification": "marker gene",
+        "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "name": "CD1",
+        "quantification": "positive",
+        "classification": "cell surface protein",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "name": "CD1D",
+        "quantification": "positive",
+        "classification": "cell surface protein",
+        "gene": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    }
+]

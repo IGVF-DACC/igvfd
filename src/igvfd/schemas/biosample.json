@@ -219,6 +219,19 @@
                 "linkTo": "Donor"
             }
         },
+        "biomarker": {
+            "title": "Biomarker",
+            "description": "Biological markers that are associated with this sample.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Biomarker",
+                "description": "Associated biomarker.",
+                "type": "string",
+                "linkTo": "Biomarker"
+            }
+        },
         "embryonic": {
             "title": "Embryonic",
             "description": "Biosample is embryonic.",

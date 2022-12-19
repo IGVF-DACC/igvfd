@@ -49,3 +49,16 @@ def gene_v2(gene_zscan10_mm):
         'aliases': []
     })
     return item
+
+
+@pytest.fixture
+def gene_CD1E(testapp):
+    item = {
+        'dbxrefs': [
+            'HGNC:1638'
+        ],
+        'geneid': 'ENSG00000158488',
+        'symbol': 'CD1E',
+        'taxa': 'Homo sapiens'
+    }
+    return testapp.post_json('/gene', item, status=201).json['@graph'][0]

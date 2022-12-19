@@ -1,0 +1,120 @@
+{
+    "title": "Biomarker",
+    "description": "Schema for submitting a biomarker.",
+    "$id": "/profiles/biomarker.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "name",
+        "quantification",
+        "award",
+        "lab"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "name_quantification",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        }
+    ],
+    "dependentSchemas": {},
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "name": {
+            "title": "Name",
+            "description": "The biomarker name.",
+            "comment": "Only admins are allowed to set this value.",
+            "type": "string",
+            "permission": "import_items"
+        },
+        "classification": {
+            "title": "Classification",
+            "description": "Sample specific biomarker.",
+            "type": "string",
+            "enum": [
+                "cell surface protein",
+                "marker gene"
+            ]
+        },
+        "quantification": {
+            "title": "Quantification",
+            "description": "The biomarker association to the biosample, disease or other condition.  This can be the absence of the biomarker or the presence of the biomarker in some low, intermediate or high quantity.",
+            "comment": "Only admins are allowed to set this value.",
+            "type": "string",
+            "enum": [
+                "negative",
+                "positive",
+                "low",
+                "intermediate",
+                "high"
+            ],
+            "permission": "import_items"
+        },
+        "synonyms": {
+            "title": "Synonyms",
+            "description": "Alternate names for this biomarker.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "type": "string"
+            }
+        },
+        "gene": {
+            "title": "Gene",
+            "description": "Biomarker gene.",
+            "type": "string",
+            "linkTo": "Gene"
+        }
+    },
+    "facets": {
+        "name": {
+            "title": "Name"
+        },
+        "quantification": {
+            "title": "Quantification"
+        },
+        "classification": {
+            "title": "Classification"
+        },
+        "gene": {
+            "title": "Gene"
+        }
+    },
+    "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
+        "name": {
+            "title": "Name"
+        },
+        "quantification": {
+            "title": "Quantification"
+        },
+        "classification": {
+            "title": "Classification"
+        },
+        "synonyms": {
+            "title": "Synonyms"
+        },
+        "gene": {
+            "title": "Gene"
+        }
+    },
+    "boost_values": {
+        "@type": 1.0,
+        "name": 1.0,
+        "gene": 1.0,
+        "quantification": 1.0
+    },
+    "changelog": "/profiles/changelogs/biomarker.md"
+}
