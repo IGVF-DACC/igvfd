@@ -40,7 +40,9 @@ ORDER = [
     'publication',
     'access_key',
     'measurement_set',
-    'analysis_set'
+    'analysis_set',
+    'reference_data',
+    'sequence_data',
 ]
 
 IS_ATTACHMENT = [

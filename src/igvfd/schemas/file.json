@@ -1,0 +1,175 @@
+{
+    "title": "File",
+    "$id": "/profiles/file.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Abstract schema for submission of a file.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "md5sum",
+        "file_format",
+        "content_type"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        }
+    ],
+    "dependentSchemas": {
+        "validation_error_detail": {
+            "comment": "Validation Error Detail can only be specified on files that did not pass validation.",
+            "required": [
+                "upload_status"
+            ],
+            "properties": {
+                "upload_status": {
+                    "enum": [
+                        "invalidated"
+                    ]
+                }
+            }
+        },
+        "upload_status": {
+            "comment": "Validated files must have file_size.",
+            "if": {
+                "properties": {
+                    "upload_status": {
+                        "const": "validated"
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "file_size"
+                ]
+            }
+        }
+    },
+    "properties": {
+        "schema_version": {
+            "hidden comment": "Bump the default in the subclasses."
+        },
+        "accession": {
+            "accessionType": "FF"
+        },
+        "content_md5sum": {
+            "title": "Content MD5sum",
+            "description": "The MD5sum of the uncompressed file.",
+            "type": "string",
+            "permission": "import_items",
+            "format": "hex",
+            "maxLength": 32,
+            "pattern": "[a-f\\d]{32}|[A-F\\d]{32}"
+        },
+        "content_type": {
+            "title": "Content Type",
+            "description": "The type of content in the file.",
+            "comment": "This property is overwritten by the subclasses to define specific enum values.",
+            "type": "string",
+            "enum": []
+        },
+        "dbxrefs": {
+            "@type": "@id",
+            "rdfs:subPropertyOf": "rdfs:seeAlso",
+            "title": "External Resources",
+            "description": "Identifiers from external resources that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
+            "comment": "This property is overwritten by the subclasses to define specific enum values.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "title": "External identifier",
+                "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
+                "type": "string",
+                "pattern": "^$"
+            }
+        },
+        "derived_from": {
+            "title": "Derived From",
+            "description": "The files participating as inputs into software to produce this output file.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "comment": "See file.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "File"
+            }
+        },
+        "file_format": {
+            "title": "File Format",
+            "description": "The file format or extension of the file.",
+            "comment": "This property is overwritten by the subclasses to define specific enum values.",
+            "type": "string",
+            "enum": []
+        },
+        "file_format_specifications": {
+            "title": "File Format Specifications Documents",
+            "description": "Document that further explains the file format.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "comment": "See document.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "Document"
+            }
+        },
+        "file_set": {
+            "title": "File Set",
+            "description": "The file set that this file belongs to.",
+            "comment": "See file_set.json for a list of available identifiers.",
+            "type": "string",
+            "linkTo": "FileSet"
+        },
+        "file_size": {
+            "title": "File Size",
+            "description": "File size specified in bytes.",
+            "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
+            "permission": "import_items",
+            "type": "integer",
+            "minimum": 0
+        },
+        "md5sum": {
+            "title": "MD5sum",
+            "description": "The md5sum of the file being transferred.",
+            "type": "string",
+            "format": "hex",
+            "maxLength": 32,
+            "pattern": "[a-f\\d]{32}|[A-F\\d]{32}"
+        },
+        "submitted_file_name": {
+            "title": "Submitted File Name",
+            "description": "Original name of the file.",
+            "type": "string"
+        },
+        "upload_status": {
+            "title": "Upload Status",
+            "description": "The upload/validation status of the file.",
+            "type": "string",
+            "default": "pending",
+            "permission": "import_items",
+            "enum": [
+                "pending",
+                "file not found",
+                "invalidated",
+                "validated"
+            ]
+        },
+        "validation_error_detail": {
+            "title": "Validation Error Detail",
+            "description": "Explanation of why the file failed the automated content checks.",
+            "type": "string",
+            "permission": "import_items"
+        }
+    },
+    "changelog": "/profiles/changelogs/file.md"
+}
