@@ -1,0 +1,93 @@
+{
+    "title": "Phenotypic Feature",
+    "description": "Schema for submitting a phenotypic feature.",
+    "$id": "/profiles/phenotypic_feature.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "feature"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        }
+    ],
+    "dependentRequired": {
+        "quantity": [
+            "quantity_units"
+        ],
+        "quantity_units": [
+            "quantity"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "feature": {
+            "title": "Phenotypic Feature",
+            "description": "The phenotypic feature observed for the donor.",
+            "type": "string",
+            "linkTo": "PhenotypeTerm"
+        },
+        "quantity": {
+            "title": "Quantity",
+            "description": "A quantity associated with the phenotypic feature, if applicable.",
+            "type": "number"
+        },
+        "quantity_units": {
+            "title": "Quantity Units",
+            "description": "The unit of measurement for a quantity associated with the phenotypic feature.",
+            "type": "string",
+            "enum": [
+                "meter",
+                "micromole",
+                "nanogram",
+                "microgram",
+                "milligram",
+                "gram",
+                "kilogram",
+                "milli-International Unit per milliliter",
+                "picogram per milliliter",
+                "nanogram per milliliter",
+                "milligram per deciliter"
+            ]
+        },
+        "observation_date": {
+            "title": "Observation Date",
+            "description": "The date the feature was observed or measured.",
+            "comment": "Date should be submitted as YYYY-MM-DD.",
+            "type": "string",
+            "format": "date"
+        }
+    },
+    "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
+        "feature": {
+            "title": "Phenotypic feature"
+        },
+        "status": {
+            "title": "Status"
+        }
+    },
+    "boost_values": {
+        "@type": 1.0,
+        "feature": 1.0
+    },
+    "changelog": "/profiles/changelogs/phenotypic_feature.md"
+}

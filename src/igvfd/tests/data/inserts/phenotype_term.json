@@ -66,5 +66,11 @@
         "term_name": "Optic atrophy",
         "status": "released",
         "uuid": "ec2938a6-f432-11ec-b939-0242ac120002"
+    },
+    {
+        "term_id": "NCIT:C92648",
+        "term_name": "Body Weight Measurement",
+        "status": "released",
+        "uuid": "f0aa38a6-fdf2-11ec-7aee-fc96ac1250ce"
     }
 ]
