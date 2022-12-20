@@ -1,0 +1,85 @@
+{
+    "title": "Software version",
+    "description": "Schema for submitting a tagged version of a software object.",
+    "$id": "/profiles/software_version.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "anyOf": [
+        {
+            "required": [
+                "lab",
+                "award",
+                "software",
+                "version",
+                "download_id"
+            ]
+        },
+        {
+            "required": [
+                "lab",
+                "award",
+                "software",
+                "version",
+                "downloaded_url"
+            ]
+        }
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases",
+        "software.name-version"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/references"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "software": {
+            "title": "Software",
+            "description": "Unique name of the software package.",
+            "comment": "See software.json for available identifiers.",
+            "type": "string",
+            "linkTo": "Software"
+        },
+        "version": {
+            "title": "Version",
+            "description": "The version of a particular software.",
+            "comment": "A string to identify a specific version of the software.",
+            "type": "string",
+            "pattern": "^[0-9].*"
+        },
+        "download_id": {
+            "title": "Download ID",
+            "description": "The MD5 checksum, SHA-1 commit ID, image hash, or similar permanent identifier of the particular version of software used.",
+            "comment": "Prefer SHA-1 of commit ID if available, otherwise use md5sum of downloaded software.",
+            "type": "string",
+            "format": "hex"
+        },
+        "downloaded_url": {
+            "title": "Download URL",
+            "description": "An external resource to track the version of the software downloaded.",
+            "type": "string",
+            "format": "uri"
+        }
+    },
+    "facets": {
+        "status": {
+            "title": "Status"
+        }
+    },
+    "changelog": "/profiles/changelogs/software_version.md"
+}

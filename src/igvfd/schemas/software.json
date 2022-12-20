@@ -1,0 +1,116 @@
+{
+    "title": "Software",
+    "description": "Schema for submitting a software object.",
+    "$id": "/profiles/software.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "lab",
+        "award",
+        "name",
+        "title",
+        "description",
+        "source_url"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases",
+        "name"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/references"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "name": {
+            "title": "Name",
+            "description": "Unique name of the software package; a lowercase version of the title.",
+            "type": "string",
+            "pattern": "^[a-z0-9\\-\\_]+",
+            "uniqueKey": "software:name"
+        },
+        "title": {
+            "title": "Title",
+            "description": "The preferred viewable name of the software.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
+        },
+        "source_url": {
+            "title": "Source URL",
+            "description": "An external resource to the codebase.",
+            "type": "string",
+            "format": "uri"
+        },
+        "used_by": {
+            "title": "Used by",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "title": "Used by",
+                "type": "string",
+                "enum": [
+                    "consortium analysis",
+                    "DACC",
+                    "processing pipelines"
+                ]
+            }
+        }
+    },
+    "facets": {
+        "used_by": {
+            "title": "Used by"
+        },
+        "award.component": {
+            "title": "Award"
+        },
+        "lab.title": {
+            "title": "Lab"
+        }
+    },
+    "columns": {
+        "title": {
+            "title": "Title"
+        },
+        "name": {
+            "title": "Name"
+        },
+        "status": {
+            "title": "Status"
+        },
+        "description": {
+            "title": "Description"
+        },
+        "source_url": {
+            "title": "Source URL"
+        },
+        "references": {
+            "title": "References"
+        },
+        "used_by": {
+            "title": "Used by"
+        }
+    },
+    "boost_values": {
+        "title": 1.0,
+        "@type": 1.0,
+        "name": 1.0,
+        "used_by": 1.0,
+        "references": 1.0,
+        "description": 1.0
+    },
+    "changelog": "/profiles/changelogs/software.md"
+}

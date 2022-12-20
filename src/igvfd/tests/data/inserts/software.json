@@ -1,0 +1,16 @@
+[
+    {
+        "aliases": [
+            "igvf:bowtie2"
+        ],
+        "title": "Bowtie2",
+        "name": "bowtie2",
+        "submitter_comment": "Comment on Bowtie2 software.",
+        "description": "Bowtie 2 is an ultrafast and memory-efficient tool aligning sequencing reads to long reference sequences.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "uuid": "6a733684-c159-49ab-9624-ac19c0f1c95d",
+        "source_url": "https://bowtie-bio.sourceforge.net/bowtie2/index.shtml"
+    }
+]

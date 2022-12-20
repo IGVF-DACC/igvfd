@@ -1,0 +1,14 @@
+[
+    {
+        "aliases": [
+            "igvf:bowtie2 v2.4.4"
+        ],
+        "software": "6a733684-c159-49ab-9624-ac19c0f1c95d",
+        "downloaded_url": "https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.4/",
+        "download_id": "d31294875092e76ebb061eadc7998582",
+        "version": "2.4.4",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "2170cada-3182-442b-b5ed-4a6329042db5"
+    }
+]

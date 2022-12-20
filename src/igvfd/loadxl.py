@@ -35,6 +35,8 @@ ORDER = [
     'technical_sample',
     'whole_organism',
     'curated_set',
+    'software',
+    'software_version',
     'image',
     'page',
     'publication',
