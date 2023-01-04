@@ -144,7 +144,7 @@
             }
         },
         "passage_number": {
-            "title": "Passage number",
+            "title": "Passage Number",
             "description": "Number of passages including the passages from the source.",
             "comment": "In calculating passage number, include passages from the source. Use of this property requires classification to be a cell line.",
             "type": "integer",
