@@ -146,8 +146,8 @@
         "submitted_by": {
             "title": "Submitted By"
         },
-        "treatments": {
-            "title": "Treatments"
+        "treatment": {
+            "title": "Treatment"
         }
     },
     "boost_values": {

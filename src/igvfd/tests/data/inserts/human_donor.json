@@ -28,11 +28,11 @@
         ],
         "sex": "male",
         "taxa": "Homo sapiens",
-        "traits": [
+        "trait": [
             "/phenotype-terms/HP_0000648/"
         ],
         "parents": [],
-        "external_resources": [],
+        "external_resource": [],
         "collections": [
             "ENCODE"
         ]
@@ -68,7 +68,7 @@
         "sex": "female",
         "taxa": "Homo sapiens",
         "parents": [],
-        "external_resources": [
+        "external_resource": [
             {
                 "resource_name": "{control region, restriction length polymorphism RFLP} [human, Senegalese Mandenka West African population sample, Mitochondrial, 89 nt]",
                 "resource_identifier": "GenBank: S77007.1",
@@ -112,7 +112,7 @@
         "parents": [
             "a1abeff6-8024-41d3-a713-5d22c86ffc57"
         ],
-        "external_resources": [
+        "external_resource": [
             {
                 "resource_name": "BRCA1 {exon 23, internal fragment} [human, serous papillary ovarian adenocarcinoma, patient sample 61, Genomic Mutant, 68 nt]",
                 "resource_identifier": "GenBank: S78558.1",
@@ -136,7 +136,7 @@
         ],
         "sex": "female",
         "taxa": "Homo sapiens",
-        "traits": [
+        "trait": [
             "/phenotype-terms/DOID_10652/",
             "/phenotype-terms/HP_0001658/"
         ]

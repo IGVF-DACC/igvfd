@@ -83,7 +83,7 @@ def test_collections_fail(rodent_donor, testapp):
 def test_external_resources(rodent_donor, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],
-        {'external_resources': [
+        {'external_resource': [
             {
                 'resource_name': "Ig VH=immunoglobulin heavy chain variable region {VDJ rearrangement} [human, Richter's syndrome CLL patient 2, sample 1, Genomic Mutant, 112 nt]",
                 'resource_identifier': 'GenBank: S69760.1',
@@ -93,7 +93,7 @@ def test_external_resources(rodent_donor, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         rodent_donor['@id'],
-        {'external_resources': [
+        {'external_resource': [
             {
                 'resource_name': 'I am an external resource name.',
                 'resource_identifier': 'I am an external resource identifier.'
@@ -102,7 +102,7 @@ def test_external_resources(rodent_donor, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         rodent_donor['@id'],
-        {'external_resources': [
+        {'external_resource': [
             {
                 'resource_name': "Ig VH=immunoglobulin heavy chain variable region {VDJ rearrangement} [human, Richter's syndrome CLL patient 2, sample 1, Genomic Mutant, 112 nt]",
                 'resource_url': 'https://www.ncbi.nlm.nih.gov/nuccore/S69760.1'
@@ -111,7 +111,7 @@ def test_external_resources(rodent_donor, testapp):
     assert res.status_code == 422
     res = testapp.patch_json(
         rodent_donor['@id'],
-        {'external_resources': [
+        {'external_resource': [
             {
                 'resource_identifier': 'GenBank: S69760.1',
                 'resource_url': 'https://www.ncbi.nlm.nih.gov/nuccore/S69760.1'
@@ -156,13 +156,13 @@ def test_taxa(award, lab, testapp):
 def test_rodent_traits(rodent_donor, phenotype_term_myocardial_infarction, phenotype_term_alzheimers, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],
-        {'traits':
+        {'trait':
             ['HP:0001658', 'DOID:10652']
          }, expect_errors=True)
     assert res.status_code == 422  # confirming term_id strings not allowed
     res = testapp.patch_json(
         rodent_donor['@id'],
-        {'traits':
+        {'trait':
             [phenotype_term_myocardial_infarction['@id'], phenotype_term_alzheimers['@id']]
          })
     assert res.status_code == 200  # confirming existing phenotype terms allowed

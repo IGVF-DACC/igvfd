@@ -20,13 +20,13 @@
         "strain": "some name",
         "genotype": "some genotype",
         "sex": "male",
-        "traits": [
+        "trait": [
             "/phenotype-terms/1b267ef2-f42e-11ec-b939-0242ac120002/",
             "/phenotype-terms/HP_0001658/"
         ],
         "taxa": "Mus musculus",
         "parents": [],
-        "external_resources": [
+        "external_resource": [
             {
                 "resource_name": "NM_170707.4(LMNA):c.1824C>T (p.Gly608=)",
                 "resource_identifier": "Allele ID 29539",
@@ -61,7 +61,7 @@
         "parents": [
             "c37934b0-4269-4470-be53-9eac7b196447"
         ],
-        "external_resources": [
+        "external_resource": [
             {
                 "resource_name": "LISTERIN E3 UBIQUITIN PROTEIN LIGASE 1; LTN1",
                 "resource_identifier": "OMIM: 613083",
