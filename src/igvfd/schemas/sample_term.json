@@ -11,7 +11,7 @@
     "identifyingProperties": [
         "uuid",
         "aliases",
-        "deprecated_ntr_terms",
+        "deprecated_ntr_term",
         "name"
     ],
     "additionalProperties": false,

@@ -11,7 +11,7 @@
     "identifyingProperties": [
         "uuid",
         "aliases",
-        "deprecated_ntr_terms",
+        "deprecated_ntr_term",
         "name"
     ],
     "additionalProperties": false,
@@ -43,8 +43,8 @@
             "pattern": "^(?![\\s\"'])[\\S|\\s]*[^\\s\"']$",
             "type": "string"
         },
-        "deprecated_ntr_terms": {
-            "title": "Deprecated NTR terms",
+        "deprecated_ntr_term": {
+            "title": "Deprecated NTR term",
             "description": "A list of deprecated NTR terms previously associated with this ontology term.",
             "permission": "import_items",
             "type": "array",

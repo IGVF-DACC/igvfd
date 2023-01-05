@@ -28,11 +28,11 @@
         }
     ],
     "dependentSchemas": {
-        "locations": {
+        "location": {
             "oneOf": [
                 {
                     "properties": {
-                        "locations": {
+                        "location": {
                             "items": {
                                 "properties": {
                                     "assembly": {
@@ -53,7 +53,7 @@
                 },
                 {
                     "properties": {
-                        "locations": {
+                        "location": {
                             "items": {
                                 "properties": {
                                     "assembly": {
@@ -131,8 +131,8 @@
             },
             "permission": "import_items"
         },
-        "locations": {
-            "title": "Gene Locations",
+        "location": {
+            "title": "Gene Location",
             "description": "Gene locations specified using 1-based, closed coordinates for different versions of reference genome assemblies.",
             "type": "array",
             "minItems": 1,

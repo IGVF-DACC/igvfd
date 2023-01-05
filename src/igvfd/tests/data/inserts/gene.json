@@ -33,7 +33,7 @@
         ],
         "uuid": "fff95719-346c-471f-8b72-8a05c0102b1b",
         "geneid": "ENSG00000163930",
-        "locations": [
+        "location": [
             {
                 "assembly": "GRCh38",
                 "chromosome": "chr3",
@@ -84,7 +84,7 @@
             "ZCGPC1",
             "hCGBP"
         ],
-        "locations": [
+        "location": [
             {
                 "assembly": "GRCh38",
                 "chromosome": "chr18",
@@ -107,7 +107,7 @@
         ],
         "geneid": "ENSG00000207705",
         "uuid": "cb9e336d-f19e-41df-90ee-62599f04d77b",
-        "locations": [
+        "location": [
             {
                 "assembly": "GRCh38",
                 "chromosome": "chr7",
@@ -187,7 +187,7 @@
         ],
         "uuid": "25290279-a299-4574-910e-5831edb7d72a",
         "geneid": "ENSMUSG00000094933",
-        "locations": [
+        "location": [
             {
                 "assembly": "mm10",
                 "chromosome": "chr13",

@@ -5,7 +5,7 @@ def test_gene_assembly_locations_hs(testapp, gene_myc_hs):
     res = testapp.patch_json(
         gene_myc_hs['@id'],
         {
-            'locations': [
+            'location': [
                 {
                     'assembly': 'mm10',
                     'chromosome': 'chr18',
@@ -18,7 +18,7 @@ def test_gene_assembly_locations_hs(testapp, gene_myc_hs):
     res = testapp.patch_json(
         gene_myc_hs['@id'],
         {
-            'locations': [
+            'location': [
                 {
                     'assembly': 'mm9',
                     'chromosome': 'chr18',
@@ -31,7 +31,7 @@ def test_gene_assembly_locations_hs(testapp, gene_myc_hs):
     res = testapp.patch_json(
         gene_myc_hs['@id'],
         {
-            'locations': [
+            'location': [
                 {
                     'assembly': 'hg19',
                     'chromosome': 'chr18',
@@ -45,7 +45,7 @@ def test_gene_assembly_locations_hs(testapp, gene_myc_hs):
     res = testapp.patch_json(
         gene_myc_hs['@id'],
         {
-            'locations': [
+            'location': [
                 {
                     'assembly': 'GRCh38',
                     'chromosome': 'chr18',
@@ -62,7 +62,7 @@ def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
     res = testapp.patch_json(
         gene_zscan10_mm['@id'],
         {
-            'locations': [
+            'location': [
                 {
                     'assembly': 'hg19',
                     'chromosome': 'chr18',
@@ -75,7 +75,7 @@ def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
     res = testapp.patch_json(
         gene_zscan10_mm['@id'],
         {
-            'locations': [
+            'location': [
                 {
                     'assembly': 'GRCh38',
                     'chromosome': 'chr18',
@@ -88,7 +88,7 @@ def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
     res = testapp.patch_json(
         gene_zscan10_mm['@id'],
         {
-            'locations': [
+            'location': [
                 {
                     'assembly': 'mm9',
                     'chromosome': 'chr17',
@@ -102,7 +102,7 @@ def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
     res = testapp.patch_json(
         gene_zscan10_mm['@id'],
         {
-            'locations': [
+            'location': [
                 {
                     'assembly': 'mm10',
                     'chromosome': 'chr17',

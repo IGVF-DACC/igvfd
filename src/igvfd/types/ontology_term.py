@@ -24,8 +24,8 @@ class OntologyTerm(Item):
 
     def unique_keys(self, properties):
         keys = super(OntologyTerm, self).unique_keys(properties)
-        if 'deprecated_ntr_terms' in properties:
-            keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
+        if 'deprecated_ntr_term' in properties:
+            keys.setdefault('alias', []).extend(properties['deprecated_ntr_term'])
         keys.setdefault('ontology_term:name', []).append(self.name(properties))
         return keys
 
@@ -97,8 +97,8 @@ class SampleTerm(OntologyTerm):
 
     def unique_keys(self, properties):
         keys = super(OntologyTerm, self).unique_keys(properties)
-        if 'deprecated_ntr_terms' in properties:
-            keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
+        if 'deprecated_ntr_term' in properties:
+            keys.setdefault('alias', []).extend(properties['deprecated_ntr_term'])
         keys.setdefault('sample_term:name', []).append(self.name(properties))
         return keys
 
@@ -173,8 +173,8 @@ class AssayTerm(OntologyTerm):
 
     def unique_keys(self, properties):
         keys = super(OntologyTerm, self).unique_keys(properties)
-        if 'deprecated_ntr_terms' in properties:
-            keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
+        if 'deprecated_ntr_term' in properties:
+            keys.setdefault('alias', []).extend(properties['deprecated_ntr_term'])
         keys.setdefault('assay_term:name', []).append(self.name(properties))
         return keys
 
@@ -235,7 +235,7 @@ class PhenotypeTerm(OntologyTerm):
 
     def unique_keys(self, properties):
         keys = super(OntologyTerm, self).unique_keys(properties)
-        if 'deprecated_ntr_terms' in properties:
-            keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
+        if 'deprecated_ntr_term' in properties:
+            keys.setdefault('alias', []).extend(properties['deprecated_ntr_term'])
         keys.setdefault('phenotype_term:name', []).append(self.name(properties))
         return keys

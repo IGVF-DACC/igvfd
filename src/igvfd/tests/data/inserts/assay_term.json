@@ -13,7 +13,7 @@
         "term_id": "OBI:0002675",
         "term_name": "MPRA",
         "status": "released",
-        "deprecated_ntr_terms": [
+        "deprecated_ntr_term": [
             "NTR:0000001",
             "NTR:0000010"
         ],
