@@ -217,7 +217,7 @@ class Item(snovault.Item):
         keys = super(Item, self).unique_keys(properties)
         if 'accession' not in self.schema['properties']:
             return keys
-        keys.setdefault('accession', []).extend(properties.get('alternate_accessions', []))
+        keys.setdefault('accession', []).extend(properties.get('alternate_accession', []))
         if properties.get('status') != 'replaced' and 'accession' in properties:
             keys['accession'].append(properties['accession'])
         return keys

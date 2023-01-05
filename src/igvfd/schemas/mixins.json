@@ -88,8 +88,8 @@
             "serverDefault": "accession",
             "permission": "import_items"
         },
-        "alternate_accessions": {
-            "title": "Alternate Accessions",
+        "alternate_accession": {
+            "title": "Alternate Accession",
             "description": "Accessions previously assigned to objects that have been merged with this object.",
             "comment": "Do not submit. Only admins are allowed to set or update this value.",
             "type": "array",
