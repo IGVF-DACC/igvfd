@@ -93,7 +93,7 @@
                 "sequencing"
             ]
         },
-        "urls": {
+        "url": {
             "rdfs:subPropertyOf": "rdfs:seeAlso",
             "title": "URL",
             "description": "External resources with additional information to the document.",

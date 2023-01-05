@@ -24,8 +24,8 @@ class Publication(Item):
 
     def unique_keys(self, properties):
         keys = super(Publication, self).unique_keys(properties)
-        if properties.get('identifiers'):
-            keys.setdefault('alias', []).extend(properties['identifiers'])
+        if properties.get('identifier'):
+            keys.setdefault('alias', []).extend(properties['identifier'])
         return keys
 
     @calculated_property(

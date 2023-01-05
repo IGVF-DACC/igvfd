@@ -8,7 +8,7 @@
         "title",
         "award",
         "lab",
-        "identifiers"
+        "identifier"
     ],
     "identifyingProperties": [
         "uuid",
@@ -80,8 +80,8 @@
             "description": "The journal of the publication.",
             "type": "string"
         },
-        "identifiers": {
-            "title": "Identifiers",
+        "identifier": {
+            "title": "Identifier",
             "description": "The identifiers that reference data found in the object.",
             "type": "array",
             "uniqueItems": true,
