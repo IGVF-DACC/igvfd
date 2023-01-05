@@ -36,7 +36,7 @@
         "nih_institutional_certification": "NICHD1443",
         "date_obtained": "2022-02-02",
         "source": "/labs/j-michael-cherry/",
-        "collections": [
+        "collection": [
             "ENCODE"
         ],
         "part_of": "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/"

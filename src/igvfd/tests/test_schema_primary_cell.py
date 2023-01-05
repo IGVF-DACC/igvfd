@@ -54,14 +54,14 @@ def test_pooled_from(primary_cell, tissue, pooled_from_primary_cell, pooled_from
     assert(res.status_code == 200)
 
 
-def test_collections(primary_cell, testapp):
+def test_collection(primary_cell, testapp):
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'collections': ['ENCODE']})
+        {'collection': ['ENCODE']})
     assert res.status_code == 200
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'collections': ['ABBBCCCHD1455']}, expect_errors=True)
+        {'collection': ['ABBBCCCHD1455']}, expect_errors=True)
     assert res.status_code == 422
 
 

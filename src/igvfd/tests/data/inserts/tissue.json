@@ -19,7 +19,7 @@
         "pmi_units": "week",
         "ccf_id": "6b7f36a6-2dfe-4ae0-9d68-03df15ab6402",
         "preservation_method": "cryopreservation",
-        "collections": [
+        "collection": [
             "ENCODE"
         ],
         "lower_bound_age": 25,
@@ -88,7 +88,7 @@
         "pmi_units": "week",
         "ccf_id": "41fd31e5-ac11-4e0e-a8ad-995d9fc0d8c1",
         "preservation_method": "cryopreservation",
-        "collections": [
+        "collection": [
             "ENCODE"
         ],
         "donor": [

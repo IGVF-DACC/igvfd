@@ -103,8 +103,8 @@
                 "format": "accession"
             }
         },
-        "collections": {
-            "title": "Collections",
+        "collection": {
+            "title": "Collection",
             "description": "Some samples are part of particular data collections.",
             "comment": "Do not submit. Collections are for DACC use only.",
             "type": "array",

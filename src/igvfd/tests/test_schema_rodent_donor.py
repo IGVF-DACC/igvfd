@@ -62,19 +62,19 @@ def test_fail_rodent_donor_with_rodent_and_human_parents(rodent_donor, parent_ro
     assert res.status_code == 422
 
 
-def test_collections(rodent_donor, testapp):
+def test_collection(rodent_donor, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],
-        {'collections': [
+        {'collection': [
             'ENCODE'
         ]})
     assert res.status_code == 200
 
 
-def test_collections_fail(rodent_donor, testapp):
+def test_collection_fail(rodent_donor, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],
-        {'collections': [
+        {'collection': [
             'I am the very model of a modern major-general.'
         ]}, expect_errors=True)
     assert res.status_code == 422

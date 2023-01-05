@@ -35,7 +35,7 @@
         "nih_institutional_certification": "NICHD1442",
         "date_obtained": "2022-02-02",
         "source": "/labs/j-michael-cherry/",
-        "collections": [
+        "collection": [
             "ENCODE"
         ]
     },
@@ -125,7 +125,7 @@
         "nih_institutional_certification": "NICHD1442",
         "date_obtained": "2022-02-02",
         "source": "/labs/j-michael-cherry/",
-        "collections": [
+        "collection": [
             "ENCODE"
         ]
     }

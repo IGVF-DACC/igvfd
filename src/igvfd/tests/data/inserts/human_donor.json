@@ -33,7 +33,7 @@
         ],
         "parents": [],
         "external_resource": [],
-        "collections": [
+        "collection": [
             "ENCODE"
         ]
     },
@@ -75,7 +75,7 @@
                 "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S77007.1"
             }
         ],
-        "collections": [
+        "collection": [
             "ENCODE"
         ]
     },
@@ -119,7 +119,7 @@
                 "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S78558.1"
             }
         ],
-        "collections": [
+        "collection": [
             "ENCODE"
         ]
     },

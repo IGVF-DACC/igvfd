@@ -47,17 +47,17 @@ def test_fail_human_donor_with_human_and_rodent_parents(human_donor, parent_huma
     assert res.status_code == 422
 
 
-def test_collections(human_donor, testapp):
+def test_collection(human_donor, testapp):
     res = testapp.patch_json(
         human_donor['@id'],
-        {'collections': ['ENCODE']})
+        {'collection': ['ENCODE']})
     assert res.status_code == 200
 
 
-def test_collections_fail(human_donor, testapp):
+def test_collection_fail(human_donor, testapp):
     res = testapp.patch_json(
         human_donor['@id'],
-        {'collections': ['Something not collection']}, expect_errors=True)
+        {'collection': ['Something not collection']}, expect_errors=True)
     assert res.status_code == 422
 
 

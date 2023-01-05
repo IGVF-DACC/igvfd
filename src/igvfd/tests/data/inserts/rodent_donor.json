@@ -33,7 +33,7 @@
                 "resource_url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/14500/?new_evidence=false"
             }
         ],
-        "collections": [
+        "collection": [
             "ENCODE"
         ]
     },
@@ -68,7 +68,7 @@
                 "resource_url": "https://omim.org/entry/613083"
             }
         ],
-        "collections": [
+        "collection": [
             "ENCODE"
         ]
     }

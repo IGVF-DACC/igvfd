@@ -42,12 +42,12 @@ def test_taxa_dependency(whole_organism, testapp):
     assert res.status_code == 422
 
 
-def test_collections(whole_organism, testapp):
+def test_collection(whole_organism, testapp):
     res = testapp.patch_json(
         whole_organism['@id'],
-        {'collections': ['ENCODE']})
+        {'collection': ['ENCODE']})
     assert res.status_code == 200
     res = testapp.patch_json(
         whole_organism['@id'],
-        {'collections': ['ABBBCCCHD1455']}, expect_errors=True)
+        {'collection': ['ABBBCCCHD1455']}, expect_errors=True)
     assert res.status_code == 422

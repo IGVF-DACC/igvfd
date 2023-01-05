@@ -24,14 +24,14 @@ def test_technical_sample_type_dependency(technical_sample, testapp):
     assert res.status_code == 422
 
 
-def test_collections(technical_sample, testapp):
+def test_collection(technical_sample, testapp):
     res = testapp.patch_json(
         technical_sample['@id'],
-        {'collections': ['ENCODE']})
+        {'collection': ['ENCODE']})
     assert res.status_code == 200
     res = testapp.patch_json(
         technical_sample['@id'],
-        {'collections': ['ABBBCCCHD1455']}, expect_errors=True)
+        {'collection': ['ABBBCCCHD1455']}, expect_errors=True)
     assert res.status_code == 422
 
 

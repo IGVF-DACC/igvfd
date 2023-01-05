@@ -62,14 +62,14 @@ def test_nih_institutional_certification(cell_line, testapp):
     assert res.status_code == 422
 
 
-def test_collections(cell_line, testapp):
+def test_collection(cell_line, testapp):
     res = testapp.patch_json(
         cell_line['@id'],
-        {'collections': ['ENCODE']})
+        {'collection': ['ENCODE']})
     assert res.status_code == 200
     res = testapp.patch_json(
         cell_line['@id'],
-        {'collections': ['ABBBCCCHD1455']}, expect_errors=True)
+        {'collection': ['ABBBCCCHD1455']}, expect_errors=True)
     assert res.status_code == 422
 
 
