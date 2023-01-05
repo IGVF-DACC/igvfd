@@ -16,7 +16,7 @@
     {
         "amount": 50,
         "amount_units": "ng/mL",
-        "documents": [
+        "document": [
             "j-michael-cherry:Antibody_characterization_standards_IGVF"
         ],
         "purpose": "selection",

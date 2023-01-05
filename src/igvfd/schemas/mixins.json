@@ -252,9 +252,9 @@
             "format": "uri"
         }
     },
-    "documents": {
-        "documents": {
-            "title": "Documents",
+    "document": {
+        "document": {
+            "title": "Document",
             "description": "Documents that provide additional information (not data file).",
             "type": "array",
             "minItems": 1,

@@ -20,7 +20,7 @@
             "$ref": "mixins.json#/attribution"
         },
         {
-            "$ref": "mixins.json#/documents"
+            "$ref": "mixins.json#/document"
         }
     ],
     "dependentSchemas": {

@@ -8,7 +8,7 @@
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
-        "documents": [
+        "document": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
         ],
         "notes": "This is a note.",
@@ -38,7 +38,7 @@
         ],
         "status": "archived",
         "submitter_comment": "The submitter had very little to say.",
-        "documents": [
+        "document": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
         ],
         "notes": "This is a note.",

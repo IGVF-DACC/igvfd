@@ -7,8 +7,8 @@
         "accession": "IGVFFS000AAA",
         "status": "released",
         "taxa": "Homo sapiens",
-        "documents": [
-            "/documents/j-michael-cherry:Antibody_characterization_standards_IGVF/"
+        "document": [
+            "/document/j-michael-cherry:Antibody_characterization_standards_IGVF/"
         ],
         "references": [
             "doi:10.1101/gr.275819.121"
@@ -28,8 +28,8 @@
         "accession": "IGVFFS111BBB",
         "status": "in progress",
         "taxa": "Homo sapiens",
-        "documents": [
-            "/documents/j-michael-cherry:characterization_immunoblot_insert/"
+        "document": [
+            "/document/j-michael-cherry:characterization_immunoblot_insert/"
         ],
         "references": [
             "doi:10.1016/j.cels.2018.06.007"
@@ -48,8 +48,8 @@
         "accession": "IGVFFS222CCC",
         "status": "in progress",
         "taxa": "Mus musculus",
-        "documents": [
-            "/documents/j-michael-cherry:characterization_FACS_insert/"
+        "document": [
+            "/document/j-michael-cherry:characterization_FACS_insert/"
         ],
         "references": [
             "doi:10.1016/j.molcel.2021.05.020"

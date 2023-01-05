@@ -7,7 +7,7 @@
         "description": "A basic measurement set.",
         "award": "HG012012",
         "lab": "j-michael-cherry",
-        "documents": [
+        "document": [
             "j-michael-cherry:Antibody_characterization_standards_IGVF"
         ],
         "status": "released",
