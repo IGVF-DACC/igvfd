@@ -10,7 +10,7 @@ def test_post_differentiated_tissue(testapp, award, lab, source, treatment_chemi
             'source': source['@id'],
             'post_differentiation_time': 72,
             'post_differentiation_time_units': 'hour',
-            'treatments': [treatment_chemical['@id']],
+            'treatment': [treatment_chemical['@id']],
             'taxa': 'Homo sapiens',
             'donor': [human_donor['@id']],
             'biosample_term': sample_term_adrenal_gland['@id']
@@ -22,7 +22,7 @@ def test_post_differentiated_tissue(testapp, award, lab, source, treatment_chemi
         {
             'award': award['@id'],
             'lab': lab['@id'],
-            'treatments': ['treatment']
+            'treatment': ['treatment']
         }, expect_errors=True)
     assert res.status_code == 422
 

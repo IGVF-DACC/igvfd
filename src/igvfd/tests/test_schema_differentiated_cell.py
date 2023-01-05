@@ -27,7 +27,7 @@ def test_post_differentiated_cell(testapp, award, lab, treatment_protein, human_
             'source': lab['@id'],
             'post_differentiation_time': 20,
             'post_differentiation_time_units': 'minute',
-            'treatments': [treatment_protein['@id']],
+            'treatment': [treatment_protein['@id']],
             'taxa': 'Homo sapiens',
             'donor': [human_donor['@id']],
             'biosample_term': sample_term_K562['@id']

@@ -16,7 +16,7 @@
         "source": "/labs/j-michael-cherry/",
         "post_differentiation_time": 5,
         "post_differentiation_time_units": "day",
-        "treatments": [
+        "treatment": [
             "3280b708-0f05-40fa-bff2-54e2b6505c13",
             "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
         ],
@@ -41,11 +41,11 @@
         "source": "/labs/gary-hon/",
         "post_differentiation_time": 10.28364,
         "post_differentiation_time_units": "minute",
-        "treatments": [
+        "treatment": [
             "3280b708-0f05-40fa-bff2-54e2b6505c13",
             "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
         ],
-        "differentiation_treatments": [
+        "differentiation_treatment": [
             "4fbb0dc2-c72e-11ec-9d64-0242ac120002"
         ],
         "differentiated_from": "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
@@ -90,7 +90,7 @@
         ],
         "post_differentiation_time": 5,
         "post_differentiation_time_units": "day",
-        "treatments": [
+        "treatment": [
             "3280b708-0f05-40fa-bff2-54e2b6505c13",
             "10c05ac0-52a2-11e6-bdf4-0800200c9a66"
         ],

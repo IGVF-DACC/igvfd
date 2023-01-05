@@ -38,7 +38,7 @@
         "taxa": "Homo sapiens",
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "source": "/labs/j-michael-cherry/",
-        "treatments": [
+        "treatment": [
             "/treatments/2d57c810-c729-11ec-9d64-0242ac120002/",
             "/treatments/4fbb0dc2-c72e-11ec-9d64-0242ac120002/"
         ],

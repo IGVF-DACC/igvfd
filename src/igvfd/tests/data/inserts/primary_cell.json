@@ -29,7 +29,7 @@
         "upper_bound_age": 45,
         "age_units": "year",
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
-        "disease_terms": [
+        "disease_term": [
             "/phenotype-terms/8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4/",
             "/phenotype-terms/b4a58993-8f87-4749-ed58-c34a0f5c8993/"
         ],
@@ -62,7 +62,7 @@
         "upper_bound_age": 35,
         "age_units": "year",
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
-        "treatments": [
+        "treatment": [
             "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
         ],
         "date_obtained": "2022-04-02",
@@ -117,7 +117,7 @@
         "upper_bound_age": 35,
         "age_units": "year",
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
-        "treatments": [
+        "treatment": [
             "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
         ],
         "date_obtained": "2022-04-02",
