@@ -29,7 +29,7 @@
             "$ref": "mixins.json#/attribution"
         },
         {
-            "$ref": "mixins.json#/references"
+            "$ref": "mixins.json#/reference"
         }
     ],
     "properties": {
@@ -97,8 +97,8 @@
         "source_url": {
             "title": "Source URL"
         },
-        "references": {
-            "title": "References"
+        "reference": {
+            "title": "Reference"
         },
         "used_by": {
             "title": "Used by"
@@ -109,7 +109,7 @@
         "@type": 1.0,
         "name": 1.0,
         "used_by": 1.0,
-        "references": 1.0,
+        "reference": 1.0,
         "description": 1.0
     },
     "changelog": "/profiles/changelogs/software.md"

@@ -45,7 +45,7 @@
             "$ref": "mixins.json#/url"
         },
         {
-            "$ref": "mixins.json#/references"
+            "$ref": "mixins.json#/reference"
         },
         {
             "$ref": "mixins.json#/taxa"
