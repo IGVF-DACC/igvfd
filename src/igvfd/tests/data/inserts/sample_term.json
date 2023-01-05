@@ -2,7 +2,7 @@
     {
         "term_id": "EFO:0002067",
         "term_name": "K562",
-        "dbxrefs": [
+        "dbxref": [
             "Cellosaurus:CVCL_0004"
         ],
         "status": "released",

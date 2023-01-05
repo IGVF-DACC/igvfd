@@ -38,7 +38,7 @@
             "type": "string",
             "pattern": "^(UBERON|EFO|CL|CLO|NTR):[0-9]{2,8}$"
         },
-        "dbxrefs": {
+        "dbxref": {
             "@type": "@id",
             "title": "External Resources",
             "description": "Sample identifiers from external resources, such as Cellosaurus.",

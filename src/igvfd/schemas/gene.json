@@ -7,7 +7,7 @@
     "required": [
         "geneid",
         "symbol",
-        "dbxrefs",
+        "dbxref",
         "taxa"
     ],
     "identifyingProperties": [
@@ -115,7 +115,7 @@
             },
             "permission": "import_items"
         },
-        "dbxrefs": {
+        "dbxref": {
             "title": "External Resources",
             "description": "Unique identifiers from external resources.",
             "comment": "This list should have at least an ID from the official nomenclature. The list of other dbxrefs is maintained using information from NCBI Entrez. Identifiers not included in NCBI gene_info can be added but are not actively maintained.",
@@ -199,7 +199,7 @@
         "synonym": {
             "title": "Synonym"
         },
-        "dbxrefs": {
+        "dbxref": {
             "title": "External resources"
         },
         "status": {
@@ -211,7 +211,7 @@
         "geneid": 1.0,
         "symbol": 1.0,
         "synonym": 1.0,
-        "dbxrefs": 1.0
+        "dbxref": 1.0
     },
     "changelog": "/profiles/changelogs/gene.md"
 }

@@ -56,20 +56,20 @@ def test_sequence_data_min_max_mean_read_length(testapp, sequence_data_fastq_no_
 def test_sequence_data_dbxrefs_regex(testapp, sequence_data):
     res = testapp.patch_json(
         sequence_data['@id'],
-        {'dbxrefs': [12345]},
+        {'dbxref': [12345]},
         expect_errors=True
     )
     assert res.status_code == 422
 
     res = testapp.patch_json(
         sequence_data['@id'],
-        {'dbxrefs': ['not_a_sra_ID']},
+        {'dbxref': ['not_a_sra_ID']},
         expect_errors=True
     )
     assert res.status_code == 422
 
     res = testapp.patch_json(
         sequence_data['@id'],
-        {'dbxrefs': ['SRA:SRR21927294', 'SRA:SRX21927294']}
+        {'dbxref': ['SRA:SRR21927294', 'SRA:SRX21927294']}
     )
     assert res.status_code == 200

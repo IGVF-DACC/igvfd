@@ -79,7 +79,7 @@
             "type": "string",
             "enum": []
         },
-        "dbxrefs": {
+        "dbxref": {
             "@type": "@id",
             "rdfs:subPropertyOf": "rdfs:seeAlso",
             "title": "External Resources",

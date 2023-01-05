@@ -21,7 +21,7 @@
         "url": "https://www.genome.gov/",
         "starting_amount": 5,
         "starting_amount_units": "μg",
-        "dbxrefs": [
+        "dbxref": [
             "GEO:SAMN45"
         ],
         "taxa": "Homo sapiens",

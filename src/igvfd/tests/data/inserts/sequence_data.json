@@ -39,7 +39,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/reads_R1.fastq",
         "file_size": 23940124,
         "upload_status": "validated",
-        "dbxrefs": [
+        "dbxref": [
             "SRA:SRR0000005"
         ],
         "file_set": "j-michael-cherry:basic_analysis_set"
@@ -67,7 +67,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/reads_R2.fastq",
         "file_size": 23940968,
         "upload_status": "validated",
-        "dbxrefs": [
+        "dbxref": [
             "SRA:SRR0000005"
         ],
         "file_set": "j-michael-cherry:basic_analysis_set"

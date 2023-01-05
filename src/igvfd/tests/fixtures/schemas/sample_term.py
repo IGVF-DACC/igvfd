@@ -6,7 +6,7 @@ def sample_term_K562(testapp):
     item = {
         'term_id': 'EFO:0002067',
         'term_name': 'K562',
-        'dbxrefs': ['Cellosaurus:CVCL_0004']
+        'dbxref': ['Cellosaurus:CVCL_0004']
     }
     return testapp.post_json('/sample_term', item, status=201).json['@graph'][0]
 

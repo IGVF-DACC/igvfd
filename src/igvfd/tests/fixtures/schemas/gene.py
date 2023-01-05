@@ -4,7 +4,7 @@ import pytest
 @pytest.fixture
 def gene_myc_hs(testapp):
     item = {
-        'dbxrefs': [
+        'dbxref': [
             'HGNC:7553'
         ],
         'geneid': 'ENSG00000136997',
@@ -17,7 +17,7 @@ def gene_myc_hs(testapp):
 @pytest.fixture
 def gene_zscan10_mm(testapp):
     item = {
-        'dbxrefs': [
+        'dbxref': [
             'Vega:OTTMUSG00000029797',
             'UniProtKB:Q3URR7',
             'RefSeq:NM_001033425.3',
@@ -54,7 +54,7 @@ def gene_v2(gene_zscan10_mm):
 @pytest.fixture
 def gene_CD1E(testapp):
     item = {
-        'dbxrefs': [
+        'dbxref': [
             'HGNC:1638'
         ],
         'geneid': 'ENSG00000158488',
