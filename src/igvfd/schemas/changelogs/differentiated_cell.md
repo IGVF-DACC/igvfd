@@ -1,5 +1,8 @@
 ## Changelog for *`differentiated_cell.json`*
 
+### Schema version 8
+* Add `differentiation_origin` to requirements.
+
 ### Minor changes since schema version 7
 * Add `revoke_detail`.
 

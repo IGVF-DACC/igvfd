@@ -25,6 +25,7 @@
         "lower_bound_age": 89,
         "upper_bound_age": 90,
         "age_units": "year",
+        "differentiation_origin": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "differentiated_from": "/cell-lines/467c72a2-4f84-2c8f-96b0-ec8715e18185/"
     },
     {
@@ -44,6 +45,7 @@
         "source": "/labs/jay-shendure/",
         "post_differentiation_time": 2.5,
         "post_differentiation_time_units": "month",
+        "differentiation_origin": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "differentiated_from": "/cell-lines/3736b93a-c748-11ec-9d64-0242ac120002/"
     },
     {
@@ -66,7 +68,8 @@
         "pooled_from": [
             "/differentiated-tissues/a79ffa29-4bdf-4283-9494-1017e5d13f8b/",
             "/differentiated-tissues/4ce1b687-62f9-4d92-a69e-b4820d1efc9d/"
-        ]
+        ],
+        "differentiation_origin": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/"
     },
     {
         "uuid": "4d93cbfc-0300-11ed-b939-0242ac120002",
@@ -95,6 +98,7 @@
         "lower_bound_age": 89,
         "upper_bound_age": 90,
         "age_units": "year",
+        "differentiation_origin": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "differentiated_from": "/cell-lines/467c72a2-4f84-2c8f-96b0-ec8715e18185/"
     }
 ]
