@@ -3,7 +3,7 @@
         "name": "CD243",
         "quantification": "negative",
         "classification": "cell surface protein",
-        "synonyms": [
+        "synonym": [
             "ABC20",
             "CD243",
             "CLCS",
@@ -22,7 +22,7 @@
         "name": "CD243",
         "quantification": "positive",
         "classification": "cell surface protein",
-        "synonyms": [
+        "synonym": [
             "ABC20",
             "CD243",
             "CLCS",
@@ -41,7 +41,7 @@
         "name": "CD243",
         "quantification": "low",
         "classification": "cell surface protein",
-        "synonyms": [
+        "synonym": [
             "ABC20",
             "CD243",
             "CLCS",
@@ -57,7 +57,7 @@
         "name": "CD243",
         "quantification": "intermediate",
         "classification": "cell surface protein",
-        "synonyms": [
+        "synonym": [
             "ABC20",
             "CD243",
             "CLCS",
@@ -73,7 +73,7 @@
         "name": "CD243",
         "quantification": "high",
         "classification": "cell surface protein",
-        "synonyms": [
+        "synonym": [
             "ABC20",
             "CD243",
             "CLCS",

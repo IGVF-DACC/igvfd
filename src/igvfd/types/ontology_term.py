@@ -56,7 +56,7 @@ class OntologyTerm(Item):
     @calculated_property(
         condition='term_id',
         schema={
-            'title': 'Synonyms',
+            'title': 'Synonym',
             'type': 'array',
             'items': {
                 'type': 'string',
@@ -64,8 +64,8 @@ class OntologyTerm(Item):
             'notSubmittable': True,
         }
     )
-    def synonyms(self, registry, term_id):
-        return self._get_ontology_slims(registry, term_id, 'synonyms')
+    def synonym(self, registry, term_id):
+        return self._get_ontology_slims(registry, term_id, 'synonym')
 
     @calculated_property(
         condition='term_id',

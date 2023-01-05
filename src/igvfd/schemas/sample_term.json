@@ -63,8 +63,8 @@
         "term_name": {
             "title": "Term Name"
         },
-        "synonyms": {
-            "title": "Synonyms"
+        "synonym": {
+            "title": "Synonym"
         },
         "status": {
             "title": "Status"
@@ -77,7 +77,7 @@
         "@type": 1.0,
         "term_id": 1.0,
         "term_name": 1.0,
-        "synonyms": 1.0
+        "synonym": 1.0
     },
     "changelog": "/profiles/changelogs/sample_term.md"
 }

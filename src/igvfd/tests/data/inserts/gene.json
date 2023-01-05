@@ -13,7 +13,7 @@
         "taxa": "Homo sapiens",
         "status": "released",
         "symbol": "CD1D",
-        "synonyms": [
+        "synonym": [
             "CD1A",
             "R3",
             "R3G1"
@@ -52,7 +52,7 @@
         "schema_version": "3",
         "status": "released",
         "symbol": "BAP1",
-        "synonyms": [
+        "synonym": [
             "UCHL2",
             "HUCEP-13",
             "KIAA0272",
@@ -72,7 +72,7 @@
         "taxa": "Homo sapiens",
         "status": "released",
         "symbol": "CXXC1",
-        "synonyms": [
+        "synonym": [
             "2410002I16Rik",
             "5830420C16Rik",
             "CFP1",
@@ -126,7 +126,7 @@
         "schema_version": "3",
         "status": "released",
         "symbol": "MIR129-1",
-        "synonyms": [
+        "synonym": [
             "MIRN129-1",
             "mir-129-1",
             "hsa-mir-129-1",
@@ -147,7 +147,7 @@
         "taxa": "Homo sapiens",
         "status": "released",
         "symbol": "GYPC",
-        "synonyms": [
+        "synonym": [
             "CD236",
             "CD236R",
             "GE",
@@ -172,7 +172,7 @@
         "taxa": "Mus musculus",
         "status": "released",
         "symbol": "Hist2h3c1",
-        "synonyms": [
+        "synonym": [
             "BE691662",
             "H3-615",
             "H3f2",
@@ -206,7 +206,7 @@
         "schema_version": "3",
         "status": "released",
         "symbol": "Mir683-2",
-        "synonyms": [
+        "synonym": [
             "Gm23091",
             "Mirn683-2",
             "Mirn683b",

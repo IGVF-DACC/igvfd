@@ -101,8 +101,8 @@
             "format": "gene_name",
             "permission": "import_items"
         },
-        "synonyms": {
-            "title": "Synonyms",
+        "synonym": {
+            "title": "Synonym",
             "description": "Alternative symbols that have been used to refer to the gene.",
             "comment": "The list of synonyms is maintained using information from NCBI Entrez. Synonyms not included in NCBI gene_info can be added but are not actively maintained.",
             "type": "array",
@@ -196,8 +196,8 @@
         "symbol": {
             "title": "Gene symbol"
         },
-        "synonyms": {
-            "title": "Synonyms"
+        "synonym": {
+            "title": "Synonym"
         },
         "dbxrefs": {
             "title": "External resources"
@@ -210,7 +210,7 @@
         "@type": 1.0,
         "geneid": 1.0,
         "symbol": 1.0,
-        "synonyms": 1.0,
+        "synonym": 1.0,
         "dbxrefs": 1.0
     },
     "changelog": "/profiles/changelogs/gene.md"

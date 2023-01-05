@@ -15,7 +15,7 @@ def test_biomarker_name_quantification_id(biomarker_CD243_absent, biomarker_CD1e
 def test_biomarker_patch_synonym(biomarker_CD243_absent, testapp):
     res = testapp.patch_json(
         biomarker_CD243_absent['@id'],
-        {'synonyms': ['my marker synonym', 'another synonym', 'third synonym']})
+        {'synonym': ['my marker synonym', 'another synonym', 'third synonym']})
     assert res.status_code == 200
 
 

@@ -59,8 +59,8 @@
             ],
             "permission": "import_items"
         },
-        "synonyms": {
-            "title": "Synonyms",
+        "synonym": {
+            "title": "Synonym",
             "description": "Alternate names for this biomarker.",
             "type": "array",
             "minItems": 1,
@@ -103,8 +103,8 @@
         "classification": {
             "title": "Classification"
         },
-        "synonyms": {
-            "title": "Synonyms"
+        "synonym": {
+            "title": "Synonym"
         },
         "gene": {
             "title": "Gene"
