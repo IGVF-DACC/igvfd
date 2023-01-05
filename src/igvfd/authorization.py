@@ -56,8 +56,8 @@ def groupfinder(login, request):
     principals.extend('submits_for.%s' % lab_uuid for lab_uuid in submits_for)
     if submits_for:
         principals.append('group.submitter')
-    groups = user_properties.get('groups', [])
+    groups = user_properties.get('group', [])
     principals.extend('group.%s' % group for group in groups)
-    viewing_groups = user_properties.get('viewing_groups', [])
+    viewing_groups = user_properties.get('viewing_group', [])
     principals.extend('viewing_group.%s' % group for group in viewing_groups)
     return principals

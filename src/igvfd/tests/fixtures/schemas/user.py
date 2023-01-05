@@ -43,7 +43,7 @@ def admin(testapp):
         'first_name': 'Test',
         'last_name': 'Admin',
         'email': 'admin@example.org',
-        'groups': ['admin'],
+        'group': ['admin'],
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
@@ -56,7 +56,7 @@ def wrangler(testapp):
         'first_name': 'Wrangler',
         'last_name': 'Admin',
         'email': 'wrangler@example.org',
-        'groups': ['admin'],
+        'group': ['admin'],
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
@@ -68,7 +68,7 @@ def verified_member(testapp, award):
         'first_name': 'IGVF',
         'last_name': 'VerifiedMember',
         'email': 'Verified_member@example.org',
-        'groups': ['verified'],
+        'group': ['verified'],
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
@@ -93,7 +93,7 @@ def submitter(testapp, lab, award):
         'last_name': 'Submitter',
         'email': 'IGVF_submitter@example.org',
         'submits_for': [lab['@id']],
-        'viewing_groups': [award['viewing_group']],
+        'viewing_group': [award['viewing_group']],
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
@@ -105,7 +105,7 @@ def pi(testapp):
         'first_name': 'Principal',
         'last_name': 'Investigator',
         'email': 'pi@example.org',
-        'groups': ['verified'],
+        'group': ['verified'],
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
@@ -117,7 +117,7 @@ def viewing_group_member(testapp, award):
         'first_name': 'Viewing',
         'last_name': 'Group',
         'email': 'viewing_group_member@example.org',
-        'viewing_groups': [award['viewing_group']],
+        'viewing_group': [award['viewing_group']],
     }
     # User @@object view has keys omitted.
     res = testapp.post_json('/user', item)

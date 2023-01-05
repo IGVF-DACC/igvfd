@@ -5,7 +5,7 @@
         "job_title": "Principal Investigator",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Cherry",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -16,7 +16,7 @@
     {
         "email": "ksgraham@stanford.edu",
         "first_name": "Keenan",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -36,7 +36,7 @@
         "lab": "/labs/j-michael-cherry/",
         "job_title": "Data Wrangler",
         "status": "current",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -49,7 +49,7 @@
         "lab": "/labs/j-michael-cherry/",
         "job_title": "Data Wrangler",
         "status": "current",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -59,7 +59,7 @@
         "email": "crickets@stanford.edu",
         "first_name": "Cricket",
         "last_name": "Sloan",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -73,7 +73,7 @@
     {
         "email": "ojolanki@stanford.edu",
         "first_name": "Otto",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -88,7 +88,7 @@
     {
         "email": "fytanaka@stanford.edu",
         "first_name": "Forrest",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -103,7 +103,7 @@
     {
         "email": "gabdank@stanford.edu",
         "first_name": "Idan",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -119,7 +119,7 @@
     {
         "email": "hitz@stanford.edu",
         "first_name": "Ben",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -135,7 +135,7 @@
     {
         "email": "emmao@stanford.edu",
         "first_name": "Emma",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -146,7 +146,7 @@
         "submits_for": [
             "/labs/j-michael-cherry/"
         ],
-        "viewing_groups": [
+        "viewing_group": [
             "community"
         ],
         "uuid": "af989110-67d2-4c8b-87f0-38d9d6d31868"
@@ -154,7 +154,7 @@
     {
         "email": "jjou@stanford.edu",
         "first_name": "Jennifer",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -165,7 +165,7 @@
         "submits_for": [
             "/labs/j-michael-cherry/"
         ],
-        "viewing_groups": [
+        "viewing_group": [
             "community"
         ],
         "uuid": "43f2f757-5cbf-490a-9787-a1ee85a4cdcd"
@@ -173,7 +173,7 @@
     {
         "email": "mkagd001@ucr.edu",
         "first_name": "Meenakshi",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -184,7 +184,7 @@
         "submits_for": [
             "/labs/j-michael-cherry/"
         ],
-        "viewing_groups": [
+        "viewing_group": [
             "community"
         ],
         "uuid": "6bae687f-b77a-46b9-af0e-a02c135cf42e"
@@ -192,7 +192,7 @@
     {
         "email": "iay@stanford.edu",
         "first_name": "Ingrid",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -203,7 +203,7 @@
         "submits_for": [
             "/labs/j-michael-cherry/"
         ],
-        "viewing_groups": [
+        "viewing_group": [
             "community"
         ],
         "uuid": "85c75ed3-269b-4273-b4ba-e269ee350dd6"
@@ -211,7 +211,7 @@
     {
         "email": "mingjiel@stanford.edu",
         "first_name": "Mingjie",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -227,7 +227,7 @@
     {
         "email": "iwhaling@stanford.edu",
         "first_name": "Ian",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],

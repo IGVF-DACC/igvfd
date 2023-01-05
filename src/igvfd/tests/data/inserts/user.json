@@ -6,7 +6,7 @@
         "lab": "/labs/j-michael-cherry/",
         "job_title": "Data Wrangler",
         "status": "current",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -19,7 +19,7 @@
         "lab": "/labs/j-michael-cherry/",
         "job_title": "Data Wrangler",
         "status": "current",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -32,7 +32,7 @@
         "lab": "/labs/j-michael-cherry/",
         "job_title": "Data Wrangler",
         "status": "current",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -44,7 +44,7 @@
         "job_title": "Principal Investigator",
         "lab": "/labs/j-michael-cherry/",
         "last_name": "Cherry",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -55,7 +55,7 @@
     {
         "email": "crickets@stanford.edu",
         "first_name": "Elit",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -70,7 +70,7 @@
     {
         "email": "duis.pede@nonummy.scelerisque",
         "first_name": "Inceptos",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -84,7 +84,7 @@
     {
         "email": "ojolanki@stanford.edu",
         "first_name": "Otto",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -99,7 +99,7 @@
     {
         "email": "justo.tincidunt@risus.pede",
         "first_name": "Justo",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -113,7 +113,7 @@
     {
         "email": "lrowe@stanford.edu",
         "first_name": "Faucibus",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -128,7 +128,7 @@
     {
         "email": "dictumst.dui@a.dis",
         "first_name": "Maecenas",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -143,7 +143,7 @@
     {
         "email": "fytanaka@stanford.edu",
         "first_name": "Forrest",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -158,7 +158,7 @@
     {
         "email": "gabdank@stanford.edu",
         "first_name": "Idan",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -174,7 +174,7 @@
     {
         "email": "hitz@stanford.edu",
         "first_name": "Ben",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -190,7 +190,7 @@
     {
         "email": "ksgraham@stanford.edu",
         "first_name": "Keenan",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -206,7 +206,7 @@
     {
         "email": "paulsud@stanford.edu",
         "first_name": "Paul",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -217,7 +217,7 @@
         "submits_for": [
             "/labs/j-michael-cherry/"
         ],
-        "viewing_groups": [
+        "viewing_group": [
             "community"
         ],
         "uuid": "473a72c0-6f20-4f81-9093-198e92fee470"
@@ -225,7 +225,7 @@
     {
         "email": "emmao@stanford.edu",
         "first_name": "Emma",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -236,7 +236,7 @@
         "submits_for": [
             "/labs/j-michael-cherry/"
         ],
-        "viewing_groups": [
+        "viewing_group": [
             "community"
         ],
         "uuid": "af989110-67d2-4c8b-87f0-38d9d6d31868"
@@ -244,7 +244,7 @@
     {
         "email": "jjou@stanford.edu",
         "first_name": "Jennifer",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -255,7 +255,7 @@
         "submits_for": [
             "/labs/j-michael-cherry/"
         ],
-        "viewing_groups": [
+        "viewing_group": [
             "community"
         ],
         "uuid": "43f2f757-5cbf-490a-9787-a1ee85a4cdcd"
@@ -263,7 +263,7 @@
     {
         "email": "mkagda@stanford.edu",
         "first_name": "Meenakshi",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -274,7 +274,7 @@
         "submits_for": [
             "/labs/j-michael-cherry/"
         ],
-        "viewing_groups": [
+        "viewing_group": [
             "community"
         ],
         "uuid": "6bae687f-b77a-46b9-af0e-a02c135cf42e"
@@ -282,7 +282,7 @@
     {
         "email": "iay@stanford.edu",
         "first_name": "Ingrid",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -293,7 +293,7 @@
         "submits_for": [
             "/labs/j-michael-cherry/"
         ],
-        "viewing_groups": [
+        "viewing_group": [
             "community"
         ],
         "uuid": "85c75ed3-269b-4273-b4ba-e269ee350dd6"
@@ -301,7 +301,7 @@
     {
         "email": "mingjiel@stanford.edu",
         "first_name": "Mingjie",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -317,7 +317,7 @@
     {
         "email": "iwhaling@stanford.edu",
         "first_name": "Ian",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],
@@ -335,11 +335,11 @@
         "first_name": "Ali",
         "last_name": "Mortazavi",
         "lab": "/labs/ali-mortazavi/",
-        "viewing_groups": [
+        "viewing_group": [
             "community"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -353,11 +353,11 @@
         "first_name": "Barbara",
         "last_name": "Wold",
         "lab": "/labs/barbara-wold/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -371,11 +371,11 @@
         "first_name": "Lior",
         "last_name": "Pachter",
         "lab": "/labs/lior-pachter/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -389,11 +389,11 @@
         "first_name": "Grant",
         "last_name": "Macgregor",
         "lab": "/labs/grant-macgregor/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -407,11 +407,11 @@
         "first_name": "Kim",
         "last_name": "Green",
         "lab": "/labs/kim-green/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -425,11 +425,11 @@
         "first_name": "Mark",
         "last_name": "Craven",
         "lab": "/labs/mark-craven/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -443,11 +443,11 @@
         "first_name": "Qiongshi",
         "last_name": "Lu",
         "lab": "/labs/qiongshi-lu/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -461,11 +461,11 @@
         "first_name": "Audrey",
         "last_name": "Gasch",
         "lab": "/labs/audrey-gasch/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -479,11 +479,11 @@
         "first_name": "Robert",
         "last_name": "Steiner",
         "lab": "/labs/robert-steiner/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -497,11 +497,11 @@
         "first_name": "Jesse",
         "last_name": "Engreitz",
         "lab": "/labs/jesse-engreitz/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -515,11 +515,11 @@
         "first_name": "Thomas",
         "last_name": "Quertermous",
         "lab": "/labs/thomas-quertermous/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -533,11 +533,11 @@
         "first_name": "Anshul",
         "last_name": "Kundaje",
         "lab": "/labs/anshul-kundaje/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -551,11 +551,11 @@
         "first_name": "Michael",
         "last_name": "Bassik",
         "lab": "/labs/michael-bassik/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -569,11 +569,11 @@
         "first_name": "Will",
         "last_name": "Greenleaf",
         "lab": "/labs/will-greenleaf/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -587,11 +587,11 @@
         "first_name": "Marlene",
         "last_name": "Rabinovitch",
         "lab": "/labs/marlene-rabinovitch/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -605,11 +605,11 @@
         "first_name": "Lars",
         "last_name": "Steinmetz",
         "lab": "/labs/lars-steinmetz/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -623,11 +623,11 @@
         "first_name": "Jay",
         "last_name": "Shendure",
         "lab": "/labs/jay-shendure/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -641,11 +641,11 @@
         "first_name": "Nadav",
         "last_name": "Ahituv",
         "lab": "/labs/nadav-ahituv/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -659,11 +659,11 @@
         "first_name": "Martin",
         "last_name": "Kircher",
         "lab": "/labs/martin-kircher/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -677,11 +677,11 @@
         "first_name": "Danwei",
         "last_name": "Huangfu",
         "lab": "/labs/danwei-huangfu/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -695,11 +695,11 @@
         "first_name": "Michael",
         "last_name": "Beer",
         "lab": "/labs/michael-beer/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -713,11 +713,11 @@
         "first_name": "Anna-Katerina",
         "last_name": "Hadjantonakis",
         "lab": "/labs/anna-katerina-hadjantonakis/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -731,11 +731,11 @@
         "first_name": "Christina",
         "last_name": "Leslie",
         "lab": "/labs/christina-leslie/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -749,11 +749,11 @@
         "first_name": "Alexander",
         "last_name": "Rudensky",
         "lab": "/labs/alexander-rudensky/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -767,11 +767,11 @@
         "first_name": "Laura",
         "last_name": "Donlin",
         "lab": "/labs/laura-donlin/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -785,11 +785,11 @@
         "first_name": "Hannah",
         "last_name": "Carter",
         "lab": "/labs/hannah-carter/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -803,11 +803,11 @@
         "first_name": "Bing",
         "last_name": "Ren",
         "lab": "/labs/bing-ren/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -821,11 +821,11 @@
         "first_name": "Kyle",
         "last_name": "Gaulton",
         "lab": "/labs/kyle-gaulton/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -839,11 +839,11 @@
         "first_name": "Maike",
         "last_name": "Sander",
         "lab": "/labs/maike-sander/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -857,11 +857,11 @@
         "first_name": "Charles",
         "last_name": "Gersbach",
         "lab": "/labs/charles-gersbach/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -875,11 +875,11 @@
         "first_name": "Gregory",
         "last_name": "Crawford",
         "lab": "/labs/gregory-crawford/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -893,11 +893,11 @@
         "first_name": "Tim",
         "last_name": "Reddy",
         "lab": "/labs/tim-reddy/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -911,11 +911,11 @@
         "first_name": "Ansuman",
         "last_name": "Satpathy",
         "lab": "/labs/ansuman-satpathy/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -929,11 +929,11 @@
         "first_name": "Andrew",
         "last_name": "Allen",
         "lab": "/labs/andrew-allen/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -947,11 +947,11 @@
         "first_name": "Gary",
         "last_name": "Hon",
         "lab": "/labs/gary-hon/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -965,11 +965,11 @@
         "first_name": "Nikhil",
         "last_name": "Munshi",
         "lab": "/labs/nikhil-munshi/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -983,11 +983,11 @@
         "first_name": "W",
         "last_name": "Kraus",
         "lab": "/labs/w-lee-kraus/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1001,11 +1001,11 @@
         "first_name": "Lea",
         "last_name": "Starita",
         "lab": "/labs/lea-starita/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1019,11 +1019,11 @@
         "first_name": "Doug",
         "last_name": "Fowler",
         "lab": "/labs/doug-fowler/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1037,11 +1037,11 @@
         "first_name": "Luca",
         "last_name": "Pinello",
         "lab": "/labs/luca-pinello/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1055,11 +1055,11 @@
         "first_name": "Guillaume",
         "last_name": "Lettre",
         "lab": "/labs/guillaume-lettre/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1073,11 +1073,11 @@
         "first_name": "Benhur",
         "last_name": "Lee",
         "lab": "/labs/benhur-lee/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1091,11 +1091,11 @@
         "first_name": "Daniel",
         "last_name": "Bauer",
         "lab": "/labs/daniel-bauer/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1109,11 +1109,11 @@
         "first_name": "Richard",
         "last_name": "Sherwood",
         "lab": "/labs/richard-sherwood/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1127,11 +1127,11 @@
         "first_name": "Benjamin",
         "last_name": "Kleinstiver",
         "lab": "/labs/benjamin-kleinstiver/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1145,11 +1145,11 @@
         "first_name": "Marc",
         "last_name": "Vidal",
         "lab": "/labs/marc-vidal/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1163,11 +1163,11 @@
         "first_name": "David",
         "last_name": "Hill",
         "lab": "/labs/david-hill/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1181,11 +1181,11 @@
         "first_name": "Frederick",
         "last_name": "Roth",
         "lab": "/labs/frederick-roth/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1199,11 +1199,11 @@
         "first_name": "Mikko",
         "last_name": "Taipale",
         "lab": "/labs/mikko-taipale/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1217,11 +1217,11 @@
         "first_name": "Anne",
         "last_name": "Carpenter",
         "lab": "/labs/anne-carpenter/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1235,11 +1235,11 @@
         "first_name": "Hyejung",
         "last_name": "Won",
         "lab": "/labs/hyejung-won/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1253,11 +1253,11 @@
         "first_name": "Karen",
         "last_name": "Mohlke",
         "lab": "/labs/karen-mohlke/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1271,11 +1271,11 @@
         "first_name": "Michael",
         "last_name": "Love",
         "lab": "/labs/michael-love/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1289,11 +1289,11 @@
         "first_name": "Jason",
         "last_name": "Buenrostro",
         "lab": "/labs/jason-buenrostro/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1307,11 +1307,11 @@
         "first_name": "Bradley",
         "last_name": "Bernstein",
         "lab": "/labs/bradley-bernstein/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1325,11 +1325,11 @@
         "first_name": "Hilary",
         "last_name": "Finucane",
         "lab": "/labs/hilary-finucane/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1343,11 +1343,11 @@
         "first_name": "Chongyuan",
         "last_name": "Luo",
         "lab": "/labs/chongyuan-luo/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1361,11 +1361,11 @@
         "first_name": "Noah",
         "last_name": "Zaitlen",
         "lab": "/labs/noah-zaitlen/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1379,11 +1379,11 @@
         "first_name": "Kathrin",
         "last_name": "Plath",
         "lab": "/labs/kathrin-plath/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1397,11 +1397,11 @@
         "first_name": "Roy",
         "last_name": "Wollman",
         "lab": "/labs/roy-wollman/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1415,11 +1415,11 @@
         "first_name": "Jason",
         "last_name": "Ernst",
         "lab": "/labs/jason-ernst/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1433,11 +1433,11 @@
         "first_name": "Zhiping",
         "last_name": "Weng",
         "lab": "/labs/zhiping-weng/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1451,11 +1451,11 @@
         "first_name": "Manuel",
         "last_name": "Garber",
         "lab": "/labs/manuel-garber/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1469,11 +1469,11 @@
         "first_name": "Xihong",
         "last_name": "Lin",
         "lab": "/labs/xihong-lin/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1487,11 +1487,11 @@
         "first_name": "Alan",
         "last_name": "Boyle",
         "lab": "/labs/alan-boyle/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1505,11 +1505,11 @@
         "first_name": "Ryan",
         "last_name": "Mills",
         "lab": "/labs/ryan-mills/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1523,11 +1523,11 @@
         "first_name": "Jie",
         "last_name": "Liu",
         "lab": "/labs/jie-liu/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1541,11 +1541,11 @@
         "first_name": "Maureen",
         "last_name": "Sartor",
         "lab": "/labs/maureen-sartor/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1559,11 +1559,11 @@
         "first_name": "Joshua",
         "last_name": "Welch",
         "lab": "/labs/joshua-welch/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1577,11 +1577,11 @@
         "first_name": "Stephen",
         "last_name": "Montgomery",
         "lab": "/labs/stephen-montgomery/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1595,11 +1595,11 @@
         "first_name": "Alexis",
         "last_name": "Battle",
         "lab": "/labs/alexis-battle/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1613,11 +1613,11 @@
         "first_name": "Livnat",
         "last_name": "Jerby",
         "lab": "/labs/livnat-jerby/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1631,11 +1631,11 @@
         "first_name": "Jonathan",
         "last_name": "Pritchard",
         "lab": "/labs/jonathan-pritchard/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1649,11 +1649,11 @@
         "first_name": "Predrag",
         "last_name": "Radivojac",
         "lab": "/labs/predrag-radivojac/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1667,11 +1667,11 @@
         "first_name": "Sean",
         "last_name": "Mooney",
         "lab": "/labs/sean-mooney/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1685,11 +1685,11 @@
         "first_name": "Harinder",
         "last_name": "Singh",
         "lab": "/labs/harinder-singh/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1703,11 +1703,11 @@
         "first_name": "Nidhi",
         "last_name": "Sahni",
         "lab": "/labs/nidhi-sahni/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1721,11 +1721,11 @@
         "first_name": "Jishnu",
         "last_name": "Das",
         "lab": "/labs/jishnu-das/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Principal Investigator",
-        "groups": [
+        "group": [
             "verified"
         ],
         "submits_for": [
@@ -1739,11 +1739,11 @@
         "first_name": "Eric",
         "last_name": "Douglass",
         "lab": "/labs/j-michael-cherry/",
-        "viewing_groups": [
+        "viewing_group": [
             "IGVF"
         ],
         "job_title": "Software Developer",
-        "groups": [
+        "group": [
             "verified",
             "admin"
         ],
@@ -1756,7 +1756,7 @@
         "last_name": "Testing",
         "lab": "/labs/j-michael-cherry/",
         "job_title": "Software Developer",
-        "groups": [
+        "group": [
             "admin",
             "verified"
         ],

@@ -176,7 +176,7 @@ This new object is an array of example objects that can successfully POST agains
                         'first_name': 'Wrangler',
                         'last_name': 'Admin',
                         'email': 'wrangler@example.org',
-                        'groups': ['admin'],
+                        'group': ['admin'],
                     }
                     res = testapp.post_json('/user', item)
                     return testapp.get(res.location).json

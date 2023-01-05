@@ -97,31 +97,31 @@ def test_wrangler_patch_submits_for_allowed(submitter, other_lab, wrangler_testa
 
 def test_submitter_patch_groups_disallowed(submitter, other_lab, submitter_testapp):
     res = submitter_testapp.get(submitter['@id'])
-    if res.json.get('groups'):
-        groups = {'groups': res.json.get('groups') + ['admin']}
+    if res.json.get('group'):
+        groups = {'group': res.json.get('group') + ['admin']}
     else:
-        groups = {'groups': ['admin']}
+        groups = {'group': ['admin']}
     submitter_testapp.patch_json(res.json['@id'], groups, status=422)
 
 
 def test_wrangler_patch_groups_allowed(submitter, other_lab, wrangler_testapp):
     res = wrangler_testapp.get(submitter['@id'])
-    if res.json.get('groups'):
-        groups = {'groups': res.json.get('groups') + ['admin']}
+    if res.json.get('group'):
+        groups = {'group': res.json.get('group') + ['admin']}
     else:
-        groups = {'groups': ['admin']}
+        groups = {'group': ['admin']}
     wrangler_testapp.patch_json(res.json['@id'], groups, status=200)
 
 
 def test_submitter_patch_viewing_groups_disallowed(submitter, other_lab, submitter_testapp):
     res = submitter_testapp.get(submitter['@id'])
-    vgroups = {'viewing_groups': res.json['viewing_groups'] + ['community']}
+    vgroups = {'viewing_group': res.json['viewing_group'] + ['community']}
     submitter_testapp.patch_json(res.json['@id'], vgroups, status=422)
 
 
 def test_wrangler_patch_viewing_groups_allowed(submitter, other_lab, wrangler_testapp):
     res = wrangler_testapp.get(submitter['@id'])
-    vgroups = {'viewing_groups': res.json['viewing_groups'] + ['community']}
+    vgroups = {'viewing_group': res.json['viewing_group'] + ['community']}
     wrangler_testapp.patch_json(res.json['@id'], vgroups, status=200)
 
 
