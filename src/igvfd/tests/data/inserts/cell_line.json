@@ -103,7 +103,9 @@
         ],
         "notes": "This is a note.",
         "product_id": "GR000001",
-        "part_of": "IGVFSM000AAA",
+        "part_of": [
+            "IGVFSM000AAA"
+        ],
         "donor": [
             "j-michael-cherry:alias_human_donor1"
         ],

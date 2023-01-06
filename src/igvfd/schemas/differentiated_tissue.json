@@ -120,8 +120,10 @@
             "linkTo": "Biosample"
         },
         "part_of": {
-            "linkTo": "DifferentiatedTissue",
-            "type": "string"
+            "items": {
+                "linkTo": "DifferentiatedTissue",
+                "type": "string"
+            }
         },
         "pooled_from": {
             "items": {

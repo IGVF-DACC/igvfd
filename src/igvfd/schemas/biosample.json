@@ -189,8 +189,17 @@
             "title": "Part of Biosample",
             "description": "Links to a biosample which represents a larger sample from which this sample was taken regardless of whether it is a tissue taken from an organism or smaller slices of a piece of tissue or aliquots of a cell growth.",
             "comment": "For other specific relationships such as differentiation or hosting there are separate properties.",
-            "type": "string",
-            "linkTo": "Biosample"
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Biosample",
+                "description": "Biosample(s).",
+                "comment": "See biosample.json for available identifiers.",
+                "type": "string",
+                "linkTo": "Biosample"
+            }
         },
         "treatment": {
             "title": "Treatment",

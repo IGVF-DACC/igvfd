@@ -14,8 +14,8 @@ def technical_sample(testapp, other_lab, award, source, sample_term_technical_sa
 
 
 @pytest.fixture
-def technical_sample_v1(tissue):
-    item = tissue.copy()
+def technical_sample_v1(technical_sample):
+    item = technical_sample.copy()
     item.update({
         'schema_version': '1',
         'dbxrefs': [],
@@ -26,8 +26,8 @@ def technical_sample_v1(tissue):
 
 
 @pytest.fixture
-def technical_sample_v2(tissue):
-    item = tissue.copy()
+def technical_sample_v2(technical_sample):
+    item = technical_sample.copy()
     item.update({
         'schema_version': '2',
         'additional_description': 'This is a description.'
@@ -36,8 +36,8 @@ def technical_sample_v2(tissue):
 
 
 @pytest.fixture
-def technical_sample_v3(tissue):
-    item = tissue.copy()
+def technical_sample_v3(technical_sample):
+    item = technical_sample.copy()
     item.update({
         'schema_version': '3'
     })

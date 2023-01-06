@@ -49,11 +49,11 @@ def test_post_differentiated_cell(testapp, award, lab, treatment_protein, human_
 def test_part_of_differentiated_cell(differentiated_cell, differentiated_cell_part_of, cell_line, testapp):
     res = testapp.patch_json(
         differentiated_cell['@id'],
-        {'part_of': cell_line['@id']}, expect_errors=True)
+        {'part_of': [cell_line['@id']]}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         differentiated_cell['@id'],
-        {'part_of': differentiated_cell_part_of['@id']})
+        {'part_of': [differentiated_cell_part_of['@id']]})
     assert res.status_code == 200
 
 

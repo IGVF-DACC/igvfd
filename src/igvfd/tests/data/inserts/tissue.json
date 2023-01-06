@@ -80,7 +80,9 @@
         ],
         "status": "released",
         "taxa": "Homo sapiens",
-        "part_of": "IGVFSM000DDD",
+        "part_of": [
+            "IGVFSM000DDD"
+        ],
         "source": "/labs/j-michael-cherry/",
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "nih_institutional_certification": "NICHD1442",
@@ -109,7 +111,9 @@
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",
         "taxa": "Mus musculus",
-        "part_of": "IGVFSM000KAS",
+        "part_of": [
+            "IGVFSM000KAS"
+        ],
         "source": "/labs/j-michael-cherry/",
         "nih_institutional_certification": "NICHD1442",
         "preservation_method": "cryopreservation",

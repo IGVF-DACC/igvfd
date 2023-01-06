@@ -77,8 +77,10 @@
             "title": "Date Harvested"
         },
         "part_of": {
-            "linkTo": "CellLine",
-            "type": "string"
+            "items": {
+                "linkTo": "CellLine",
+                "type": "string"
+            }
         },
         "pooled_from": {
             "items": {

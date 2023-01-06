@@ -68,12 +68,14 @@
             "title": "Date Harvested"
         },
         "part_of": {
-            "linkTo": [
-                "PrimaryCell",
-                "Tissue",
-                "WholeOrganism"
-            ],
-            "type": "string"
+            "items": {
+                "linkTo": [
+                    "PrimaryCell",
+                    "Tissue",
+                    "WholeOrganism"
+                ],
+                "type": "string"
+            }
         },
         "pooled_from": {
             "items": {

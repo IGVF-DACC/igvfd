@@ -79,7 +79,9 @@
         "status": "released",
         "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
-        "part_of": "IGVFSM000BBB",
+        "part_of": [
+            "IGVFSM000BBB"
+        ],
         "donor": [
             "j-michael-cherry:alias_human_donor2"
         ],

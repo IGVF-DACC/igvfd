@@ -68,25 +68,25 @@ def test_collection(primary_cell, testapp):
 def test_part_of_primary_cell(primary_cell, primary_cell_part_of, differentiated_cell, differentiated_tissue, cell_line, tissue_part_of, whole_organism_part_of, testapp):
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'part_of': differentiated_cell['@id']}, expect_errors=True)
+        {'part_of': [differentiated_cell['@id']]}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'part_of': differentiated_tissue['@id']}, expect_errors=True)
+        {'part_of': [differentiated_tissue['@id']]}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'part_of': cell_line['@id']}, expect_errors=True)
+        {'part_of': [cell_line['@id']]}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'part_of':  primary_cell_part_of['@id']})
+        {'part_of':  [primary_cell_part_of['@id']]})
     assert res.status_code == 200
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'part_of':  tissue_part_of['@id']})
+        {'part_of':  [tissue_part_of['@id']]})
     assert res.status_code == 200
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'part_of':  whole_organism_part_of['@id']})
+        {'part_of':  [whole_organism_part_of['@id']]})
     assert res.status_code == 200

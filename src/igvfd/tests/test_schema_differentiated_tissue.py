@@ -45,11 +45,11 @@ def test_differentiated_tissue_age_unit_dependency(differentiated_tissue, testap
 def test_part_of_tissue(differentiated_tissue, differentiated_tissue_part_of, differentiated_cell, testapp):
     res = testapp.patch_json(
         differentiated_tissue['@id'],
-        {'part_of': differentiated_cell['@id']}, expect_errors=True)
+        {'part_of': [differentiated_cell['@id']]}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         differentiated_tissue['@id'],
-        {'part_of': differentiated_tissue_part_of['@id']})
+        {'part_of': [differentiated_tissue_part_of['@id']]})
     assert res.status_code == 200
 
 

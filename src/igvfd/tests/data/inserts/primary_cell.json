@@ -39,7 +39,9 @@
         "collection": [
             "ENCODE"
         ],
-        "part_of": "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/"
+        "part_of": [
+            "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/"
+        ]
     },
     {
         "uuid": "5673c93a-c748-11ec-9d64-0242ac120002",
@@ -107,7 +109,9 @@
         "submitter_comment": "This is a part of a treated primary cell sample.",
         "notes": "This is a note.",
         "product_id": "x001",
-        "part_of": "IGVFSM001EEE",
+        "part_of": [
+            "IGVFSM001EEE"
+        ],
         "lot_id": "478901",
         "url": "https://www.genome.gov/",
         "starting_amount": 2,
@@ -141,6 +145,8 @@
         "status": "released",
         "taxa": "Mus musculus",
         "source": "/labs/j-michael-cherry/",
-        "part_of": "j-michael-cherry:live_mouse_embryo"
+        "part_of": [
+            "j-michael-cherry:live_mouse_embryo"
+        ]
     }
 ]
