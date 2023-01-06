@@ -7,7 +7,7 @@
         "aliases": [
             "j-michael-cherry:alias5"
         ],
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor2"
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
@@ -32,7 +32,7 @@
         "aliases": [
             "gary-hon:cardiomyocytes"
         ],
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
@@ -58,7 +58,7 @@
         "aliases": [
             "gary-hon:pooled_cardiomyocytes"
         ],
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
@@ -85,7 +85,7 @@
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "source": "/labs/j-michael-cherry/",
         "part_of": "IGVFSM000CCC",
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor2"
         ],
         "post_differentiation_time": 5,

@@ -93,7 +93,7 @@ def test_taxa_donors_requirements(testapp, award, lab, human_donor, sample_term_
             'source': lab['@id'],
             'biosample_term': sample_term_K562['@id'],
             'taxa': 'Homo sapiens',
-            'donors': [human_donor['@id']]
+            'donor': [human_donor['@id']]
         })
     assert res.status_code == 201
 
@@ -126,7 +126,7 @@ def test_biosample_term_requirements(testapp, award, lab, human_donor, sample_te
             'lab': lab['@id'],
             'source': lab['@id'],
             'taxa': 'Homo sapiens',
-            'donors': [human_donor['@id']],
+            'donor': [human_donor['@id']],
             'biosample_term': sample_term_K562['@id']
         })
     assert res.status_code == 201
@@ -137,6 +137,6 @@ def test_biosample_term_requirements(testapp, award, lab, human_donor, sample_te
             'award': award['@id'],
             'lab': lab['@id'],
             'source': lab['@id'],
-            'donors': [human_donor['@id']]
+            'donor': [human_donor['@id']]
         }, expect_errors=True)
     assert res.status_code == 422

@@ -24,6 +24,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.human_genomic_variant',
     'igvfd.tests.fixtures.schemas.biomarker',
     'igvfd.tests.fixtures.schemas.cell_line',
+    'igvfd.tests.fixtures.schemas.in_vitro_system',
     'igvfd.tests.fixtures.schemas.primary_cell',
     'igvfd.tests.fixtures.schemas.tissue',
     'igvfd.tests.fixtures.schemas.differentiated_tissue',

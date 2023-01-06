@@ -1,0 +1,46 @@
+[
+    {
+        "uuid": "3de8faf0-7a25-11ed-a1eb-0242ac120002",
+        "classification": "cell line",
+        "lab": "j-michael-cherry",
+        "accession": "IGVFSM000AAZ",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:in_vitro_system_cell_line"
+        ],
+        "donor": [
+            "j-michael-cherry:alias_human_donor1"
+        ],
+        "passage_number": 2,
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": [
+            "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        ],
+        "notes": "This is a note.",
+        "product_id": "GR000001",
+        "lot_id": "R00001",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "starting_amount": 5,
+        "starting_amount_units": "μg",
+        "dbxrefs": [
+            "GEO:SAMN1"
+        ],
+        "time_post_factors_introduction": 24,
+        "time_post_factors_introduction_units": "minute",
+        "taxa": "Homo sapiens",
+        "lower_bound_age": 40,
+        "upper_bound_age": 40,
+        "age_units": "year",
+        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "disease_terms": [
+            "/phenotype-terms/8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4/"
+        ],
+        "nih_institutional_certification": "NICHD1442",
+        "date_obtained": "2022-02-02",
+        "source": "/labs/j-michael-cherry/",
+        "collections": [
+            "ENCODE"
+        ]
+    }
+]

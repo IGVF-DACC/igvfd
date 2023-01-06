@@ -8,7 +8,7 @@
         "award",
         "lab",
         "source",
-        "donors",
+        "donor",
         "taxa",
         "biosample_term"
     ],
@@ -57,6 +57,15 @@
         "schema_version": {
             "default": "6"
         },
+        "award": {
+            "permission": "import_items"
+        },
+        "source": {
+            "permission": "import_items"
+        },
+        "lab": {
+            "permission": "import_items"
+        },
         "passage_number": {
             "title": "Passage Number",
             "description": "Number of passages including the passages from the source.",
@@ -88,8 +97,8 @@
         "biosample_term": {
             "title": "Biosample Term"
         },
-        "donors": {
-            "title": "Donors"
+        "donor": {
+            "title": "Donor"
         },
         "date_obtained": {
             "title": "Date Obtained"

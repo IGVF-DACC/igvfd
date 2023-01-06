@@ -13,7 +13,7 @@
             "ENCODE"
         ],
         "biosample_term": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/",
-        "donors": [
+        "donor": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
         "description": "frozen mouse embryo",
@@ -27,7 +27,7 @@
         "aliases": [
             "j-michael-cherry:yeastF"
         ],
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor1"
         ],
         "biosample_term": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/",
@@ -44,7 +44,7 @@
         "aliases": [
             "j-michael-cherry:yeastF2"
         ],
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/",
@@ -66,7 +66,7 @@
             "ENCODE"
         ],
         "biosample_term": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/",
-        "donors": [
+        "donor": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
         "description": "10 days mouse embryo",
@@ -81,7 +81,7 @@
         "aliases": [
             "j-michael-cherry:revoked_whole_organism"
         ],
-        "donors": [
+        "donor": [
             "j-michael-cherry:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/",

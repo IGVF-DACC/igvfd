@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 6
 * Add `revoke_detail`.
+* Rename `donors` to `donor`.
 
 ### Schema version 6
 

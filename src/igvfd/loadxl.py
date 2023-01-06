@@ -29,6 +29,7 @@ ORDER = [
     'biomarker',
     'tissue',
     'cell_line',
+    'in_vitro_system',
     'primary_cell',
     'differentiated_tissue',
     'differentiated_cell',
@@ -510,7 +511,10 @@ PHASE1_PIPELINES = {
         remove_keys('lab', 'submits_for'),
     ],
     'cell_line': [
-        remove_keys('pooled_from', 'part_of'),
+        remove_keys('pooled_from', 'part_of')
+    ],
+    'in_vitro_system': [
+        remove_keys('pooled_from', 'part_of', 'originated_from'),
     ],
     'tissue': [
         remove_keys('pooled_from', 'part_of'),
@@ -540,6 +544,9 @@ PHASE2_PIPELINES = {
     ],
     'cell_line': [
         skip_rows_missing_all_keys('pooled_from', 'part_of'),
+    ],
+    'in_vitro_system': [
+        skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from'),
     ],
     'tissue': [
         skip_rows_missing_all_keys('pooled_from', 'part_of'),
