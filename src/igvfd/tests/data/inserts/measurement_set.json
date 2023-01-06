@@ -1,6 +1,6 @@
 [
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:basic_measurement_set"
         ],
         "submitter_comment": "Comment for a measurement set.",

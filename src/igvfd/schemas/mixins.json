@@ -28,8 +28,8 @@
             "permission": "import_items",
             "formInput": "textarea"
         },
-        "aliases": {
-            "title": "Aliases",
+        "alias": {
+            "title": "Alias",
             "description": "Lab specific identifiers to reference an object.",
             "comment": "The purpose of this field is to provide a link into the lab LIMS and to facilitate shared objects.",
             "type": "array",

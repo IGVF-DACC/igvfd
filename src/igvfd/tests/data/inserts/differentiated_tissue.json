@@ -4,7 +4,7 @@
         "accession": "IGVFSM000BBB",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "igvf:organoid"
         ],
         "donor": [
@@ -32,7 +32,7 @@
         "accession": "IGVFSM001BBB",
         "lab": "jay-shendure",
         "award": "1UM1HG011966-01",
-        "aliases": [
+        "alias": [
             "igvf:gastruloid"
         ],
         "donor": [
@@ -51,7 +51,7 @@
         "accession": "IGVFSM002BBB",
         "lab": "jay-shendure",
         "award": "1UM1HG011966-01",
-        "aliases": [
+        "alias": [
             "igvf:pooled_gastruloid"
         ],
         "donor": [
@@ -73,7 +73,7 @@
         "accession": "IGVFSM003BBB",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "igvf:part_of_organoid"
         ],
         "status": "released",

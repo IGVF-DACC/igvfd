@@ -4,7 +4,7 @@
         "lab": "j-michael-cherry",
         "accession": "IGVFSM000AAA",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "igvf-dacc:cell_line"
         ],
         "donor": [
@@ -44,7 +44,7 @@
         "accession": "IGVFSM001AAA",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:treated_cell_line"
         ],
         "status": "released",
@@ -74,7 +74,7 @@
         "accession": "IGVFSM002AAA",
         "lab": "ali-mortazavi",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "ali-mortazavi:pooled_cell_line"
         ],
         "donor": [
@@ -94,7 +94,7 @@
         "lab": "j-michael-cherry",
         "accession": "IGVFSM003AAA",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "igvf-dacc:part_of_cell_line"
         ],
         "status": "released",

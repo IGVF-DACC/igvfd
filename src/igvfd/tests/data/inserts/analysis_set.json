@@ -1,6 +1,6 @@
 [
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:basic_analysis_set"
         ],
         "submitter_comment": "Comment for an analysis set.",
@@ -17,7 +17,7 @@
         ]
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:analysis_set_with_input"
         ],
         "submitter_comment": "Comment for an analysis set.",

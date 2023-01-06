@@ -4,7 +4,7 @@
         "term_name": "Alzheimer's disease",
         "status": "released",
         "uuid": "93634a0b-e033-3730-b64c-c0c9b4597e0e",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:alzheimers-disease"
         ],
         "notes": "Phenotype ontology term object for Alzheimer's disease"
@@ -26,7 +26,7 @@
         "term_name": "epilepsy",
         "status": "released",
         "uuid": "df2e1dab-3484-f4bb-f2dc-b1f8b451dace",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:epilepsy_trait"
         ],
         "notes": "Phenotype ontology term object for epilepsy"

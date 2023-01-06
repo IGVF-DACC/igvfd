@@ -4,7 +4,7 @@
         "accession": "IGVFFF000KAS",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:bam_subreads_file"
         ],
         "status": "released",
@@ -21,7 +21,7 @@
         "accession": "IGVFFF000FTQ",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:fastq_reads_file_paired_end_1"
         ],
         "status": "released",
@@ -49,7 +49,7 @@
         "accession": "IGVFFF222FTQ",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:fastq_reads_file_paired_end_2"
         ],
         "status": "released",

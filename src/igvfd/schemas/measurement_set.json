@@ -13,7 +13,7 @@
         "uuid",
         "accession",
         "alternate_accession",
-        "aliases"
+        "alias"
     ],
     "additionalProperties": false,
     "mixinProperties": [

@@ -3,7 +3,7 @@
         "uuid": "c37934b0-4269-4470-be53-9eac7b196447",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:alias_rodent_donor_1",
             "j-michael-cherry:rodent_donor_with_arterial_blood_pressure_trait"
         ],
@@ -41,7 +41,7 @@
         "uuid": "05c0a52c-f861-4057-b3eb-751624bdff37",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:alias_rodent_donor_2"
         ],
         "status": "released",

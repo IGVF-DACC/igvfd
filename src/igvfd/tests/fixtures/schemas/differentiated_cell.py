@@ -27,7 +27,7 @@ def differentiated_cell_v1(differentiated_cell):
 def differentiated_cell_part_of(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
-        'aliases': 'igvf-dacc:differentiated_cell_part_of'
+        'alias': 'igvf-dacc:differentiated_cell_part_of'
     })
     return item
 

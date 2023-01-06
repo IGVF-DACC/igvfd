@@ -27,7 +27,7 @@ def differentiated_tissue_v1(differentiated_tissue):
 def differentiated_tissue_part_of(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
-        'aliases': 'igvf-dacc:differentiated_tissue_part_of'
+        'alias': 'igvf-dacc:differentiated_tissue_part_of'
     })
     return item
 

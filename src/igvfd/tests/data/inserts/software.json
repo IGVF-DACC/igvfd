@@ -1,6 +1,6 @@
 [
     {
-        "aliases": [
+        "alias": [
             "igvf:bowtie2"
         ],
         "title": "Bowtie2",

@@ -1,6 +1,6 @@
 [
     {
-        "aliases": [
+        "alias": [
             "igvf:bowtie2 v2.4.4"
         ],
         "software": "6a733684-c159-49ab-9624-ac19c0f1c95d",

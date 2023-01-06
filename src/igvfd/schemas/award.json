@@ -11,7 +11,7 @@
         "uuid",
         "name",
         "title",
-        "aliases"
+        "alias"
     ],
     "additionalProperties": false,
     "mixinProperties": [

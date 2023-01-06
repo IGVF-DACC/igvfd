@@ -15,7 +15,7 @@
         "uuid",
         "accession",
         "alternate_accession",
-        "aliases",
+        "alias",
         "md5sum"
     ],
     "additionalProperties": false,

@@ -13,7 +13,7 @@
         "uuid",
         "accession",
         "alternate_accession",
-        "aliases"
+        "alias"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -133,8 +133,8 @@
         "accession": {
             "title": "Accession"
         },
-        "aliases": {
-            "title": "Aliases"
+        "alias": {
+            "title": "Alias"
         },
         "taxa": {
             "title": "Taxa"

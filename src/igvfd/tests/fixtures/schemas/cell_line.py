@@ -41,7 +41,7 @@ def cell_line_v1(cell_line):
 def cell_line_part_of(cell_line):
     item = cell_line.copy()
     item.update({
-        'aliases': 'igvf-dacc:cell_line_part_of'
+        'alias': 'igvf-dacc:cell_line_part_of'
     })
     return item
 

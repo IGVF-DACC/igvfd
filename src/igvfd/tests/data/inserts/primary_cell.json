@@ -4,7 +4,7 @@
         "accession": "IGVFSM000EEE",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:alias10"
         ],
         "status": "released",
@@ -46,7 +46,7 @@
         "accession": "IGVFSM001EEE",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:treated_primary_cells"
         ],
         "status": "released",
@@ -76,7 +76,7 @@
         "accession": "IGVFSM002EEE",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:pooled_primary_cell"
         ],
         "donor": [
@@ -100,7 +100,7 @@
         "accession": "IGVFSM003EEE",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:part_of_treated_primary_cells"
         ],
         "status": "released",
@@ -131,7 +131,7 @@
         "accession": "IGVFSM004EEE",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:primary_cell_part_of_whole_organism"
         ],
         "donor": [

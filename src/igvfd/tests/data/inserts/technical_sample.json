@@ -3,7 +3,7 @@
         "uuid": "e89f5237-26f8-40ee-aafc-c28a3c696f5f",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:alias2"
         ],
         "status": "released",
@@ -33,7 +33,7 @@
         "uuid": "f12ab44c-bba8-46cc-9f3d-6a192eb09e7e",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:alias_archived"
         ],
         "status": "archived",

@@ -1,6 +1,6 @@
 [
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:Antibody_characterization_standards_IGVF"
         ],
         "description": "AB characterization standards.",
@@ -12,7 +12,7 @@
         "uuid": "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:characterization_massspec_insert"
         ],
         "description": "Characterization of a biosample K562, lane 33.",
@@ -25,7 +25,7 @@
         "uuid": "35d583d2-b823-4dee-b82c-b6e45965b51b"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:characterization_restriction_insert"
         ],
         "description": "Characterization of a biosample HepG2, lane 233.",
@@ -38,7 +38,7 @@
         "uuid": "15d583d2-b823-2dee-b82c-b6e45965b11b"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:computational_protocol_insert"
         ],
         "description": "Computtaional analysis pipeline description and diagram.",
@@ -50,7 +50,7 @@
         "uuid": "35d583d2-b823-4dee-b82c-b6e45965b56b"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:experimental_protocol"
         ],
         "description": "Protocol of the experimental procedure.",
@@ -62,7 +62,7 @@
         "uuid": "ad1f4c5e-27bf-4e37-8b4d-7912eb1ba89e"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:file_format_specification_insert"
         ],
         "description": "File format specs. Column 1 through 25 explained.",
@@ -74,7 +74,7 @@
         "uuid": "31dbc0c8-74a5-4d2d-b41f-5d311510b7c3"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:image_svs_insert"
         ],
         "description": "Gel image.",
@@ -86,7 +86,7 @@
         "uuid": "ad2f2c2e-22bf-4e33-3b4d-7223eb1ba33e"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:image_tif_insert"
         ],
         "description": "Pathology high resolution image.",
@@ -98,7 +98,7 @@
         "uuid": "ad1f3c3e-23bf-4e33-3b4d-7333eb1ba33e"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:plasmid_map_insert"
         ],
         "description": "Vector map.",
@@ -110,7 +110,7 @@
         "uuid": "ad1f4c5e-27bf-4e37-8b4d-7933eb1ba89e"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:characterization_RT-qPCR_insert"
         ],
         "description": "Characterization of a sample using RT-qPCR.",
@@ -123,7 +123,7 @@
         "uuid": "1278577d-9d25-4868-a255-b08823332873"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:characterization_PCR_insert"
         ],
         "description": "Characterization of a sample using PCR.",
@@ -136,7 +136,7 @@
         "uuid": "1478577d-9d25-4868-a255-b08853332873"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:characterization_immunoprecipitation_insert"
         ],
         "description": "Characterization of a sample using immunoprecipitation.",
@@ -149,7 +149,7 @@
         "uuid": "a966613e-c55e-4bf0-96a5-a25f73448560"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:characterization_sequencing_insert"
         ],
         "description": "Characterization of a sample using sequencing.",
@@ -162,7 +162,7 @@
         "uuid": "05614b59-a421-47db-b4f7-5c7c8954c7e9"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:characterization_immunofluorescence_insert"
         ],
         "description": "Characterization of a sample using immunofluorescence.",
@@ -175,7 +175,7 @@
         "uuid": "c7870a38-4286-42fc-9551-22436306e22a"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:characterization_immunoblot_insert"
         ],
         "description": "Characterization of a sample with immunoblot.",
@@ -188,7 +188,7 @@
         "uuid": "bd40e085-0b82-4d11-b42f-46c56313a7ce"
     },
     {
-        "aliases": [
+        "alias": [
             "j-michael-cherry:characterization_FACS_insert"
         ],
         "description": "Characterization of a sample using FACS.",

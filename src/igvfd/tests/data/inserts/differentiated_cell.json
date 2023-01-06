@@ -4,7 +4,7 @@
         "accession": "IGVFSM000CCC",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:alias5"
         ],
         "donor": [
@@ -29,7 +29,7 @@
         "accession": "IGVFSM001CCC",
         "lab": "gary-hon",
         "award": "1UM1HG011996-01",
-        "aliases": [
+        "alias": [
             "gary-hon:cardiomyocytes"
         ],
         "donor": [
@@ -55,7 +55,7 @@
         "accession": "IGVFSM002CCC",
         "lab": "gary-hon",
         "award": "1UM1HG011996-01",
-        "aliases": [
+        "alias": [
             "gary-hon:pooled_cardiomyocytes"
         ],
         "donor": [
@@ -77,7 +77,7 @@
         "accession": "IGVFSM003CCC",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:differentiated_cell_part_of"
         ],
         "status": "released",

@@ -4,7 +4,7 @@
         "term_name": "STARR-seq",
         "status": "released",
         "uuid": "df207aeb-3484-3730-b64c-d3fdb4506a5e",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:starr-seq"
         ],
         "notes": "Assay ontology term object for STARR-seq"

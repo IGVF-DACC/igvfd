@@ -4,7 +4,7 @@
         "accession": "IGVFFF000GNR",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:fastq_genome_reference_file"
         ],
         "status": "released",
@@ -23,7 +23,7 @@
         "accession": "IGVFFF000SQB",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:txt_sequence_barcodes_file"
         ],
         "status": "released",

@@ -4,7 +4,7 @@
         "accession": "IGVFSM000DDD",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:alias3"
         ],
         "donor": [
@@ -31,7 +31,7 @@
         "accession": "IGVFSM001DDD",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:treated_tissue"
         ],
         "status": "released",
@@ -55,7 +55,7 @@
         "accession": "IGVFSM002DDD",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:pooled_tissue"
         ],
         "donor": [
@@ -75,7 +75,7 @@
         "accession": "IGVFSM003DDD",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:tissue_part_of_tissue"
         ],
         "status": "released",
@@ -103,7 +103,7 @@
         "accession": "IGVFSM004DDD",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:tissue_part_of_whole_organism"
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",

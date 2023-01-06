@@ -3,7 +3,7 @@
         "uuid": "9050f480-1d11-4d2a-b6f2-5979c2af4fd6",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:alias_human_donor1"
         ],
         "status": "released",
@@ -41,7 +41,7 @@
         "uuid": "a1abeff6-8024-41d3-a713-5d22c86ffc57",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:alias_human_donor2"
         ],
         "status": "released",
@@ -83,7 +83,7 @@
         "uuid": "38d6630f-5b87-47a1-ae7d-174eab5758d2",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:alias_human_donor_child"
         ],
         "status": "released",
@@ -127,7 +127,7 @@
         "uuid": "ee99221f-a11a-4f8b-baf3-9919db92f2f9",
         "lab": "chongyuan-luo",
         "award": "1U01HG012079-01",
-        "aliases": [
+        "alias": [
             "chongyuan-luo:AA F donor of fibroblasts"
         ],
         "status": "released",

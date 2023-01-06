@@ -32,7 +32,7 @@ POST /biosample:
 {
     "biosample_type": "DNA",
     "biosample_term_id": "UBERON:349829",
-    "aliases": ["my-lab:sample1"],
+    "alias": ["my-lab:sample1"],
     "award": "my-award",
     "lab": "my-lab",
     "source": "some-source",
@@ -91,7 +91,7 @@ item_type: "biosample"
 {
     "biosample_type": "DNA",
     "biosample_term_id": "UBERON:349829",
-    "aliases": ["my-lab:sample1"],
+    "alias": ["my-lab:sample1"],
     "award": "fae1bd8b-0d90-4ada-b51f-0ecc413e904d",
     "lab": "b635b4ed-dba3-4672-ace9-11d76a8d03af",
     "source": "1d5be796-8f80-4fd4-b6c7-6674318657eb",
@@ -170,7 +170,7 @@ Combining gives us:
 {
     "biosample_type": "DNA",
     "biosample_term_id": "UBERON:349829",
-    "aliases": ["my-lab:sample1"],
+    "alias": ["my-lab:sample1"],
     "accession": "ENCBS000TST",
     "date_created": "2014-01-20T10:30:00-0800",
     "status": "in progress",

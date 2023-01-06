@@ -4,7 +4,7 @@
         "accession": "IGVFSM000KAS",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:mouse_embryo"
         ],
         "status": "released",
@@ -24,7 +24,7 @@
         "accession": "IGVFSM001KAS",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:yeastF"
         ],
         "donor": [
@@ -41,7 +41,7 @@
         "accession": "IGVFSM002KAS",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:yeastF2"
         ],
         "donor": [
@@ -57,7 +57,7 @@
         "accession": "IGVFSM003KAS",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:live_mouse_embryo"
         ],
         "status": "released",
@@ -78,7 +78,7 @@
         "accession": "IGVFSM002REV",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
+        "alias": [
             "j-michael-cherry:revoked_whole_organism"
         ],
         "donor": [

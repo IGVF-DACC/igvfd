@@ -14,7 +14,7 @@
     ],
     "identifyingProperties": [
         "uuid",
-        "aliases",
+        "alias",
         "name"
     ],
     "additionalProperties": false,

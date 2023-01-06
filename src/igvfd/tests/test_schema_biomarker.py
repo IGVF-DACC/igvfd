@@ -83,6 +83,6 @@ def test_biomarker_classifications(testapp, gene_myc_hs, lab, award):
 def test_biomarker_alias_unique(biomarker_CD1e_low, biomarker_CD243_high, testapp):
     res = testapp.patch_json(
         biomarker_CD1e_low['@id'],
-        {'aliases': biomarker_CD243_high['aliases']},
+        {'alias': biomarker_CD243_high['alias']},
         expect_errors=True)
     assert res.status_code == 409
