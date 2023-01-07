@@ -147,7 +147,7 @@
         "pH": {
             "title": "pH",
             "type": "number",
-            "description": "Final pH of the solution containing a chemical compund (if applicable)"
+            "description": "Final pH of the solution containing a chemical compound (if applicable)"
         },
         "purpose": {
             "title": "Purpose",
