@@ -11,3 +11,9 @@ def test_human_donor_upgrade_1_2(upgrader, human_donor_v1):
     assert 'documents' not in value
     assert 'references' not in value
     assert value['schema_version'] == '2'
+
+
+def test_human_donor_upgrade_2_3(upgrader, human_donor_v2):
+    value = upgrader.upgrade('human_donor', human_donor_v2, current_version='2', target_version='3')
+    assert 'health_status_history' not in value
+    assert value['schema_version'] == '3'

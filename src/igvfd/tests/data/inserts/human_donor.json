@@ -11,18 +11,6 @@
         "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
-        "health_status_history": [
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2022-01-04",
-                "date_end": "2022-01-10"
-            },
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2021-12-03",
-                "date_end": "2022-01-10"
-            }
-        ],
         "ethnicity": [
             "Hispanic"
         ],
@@ -49,18 +37,6 @@
         "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
-        "health_status_history": [
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2022-01-04",
-                "date_end": "2022-01-10"
-            },
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2021-12-03",
-                "date_end": "2022-01-10"
-            }
-        ],
         "ethnicity": [
             "Eskimo",
             "Arab"
@@ -91,18 +67,6 @@
         "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
-        "health_status_history": [
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2022-01-04",
-                "date_end": "2022-01-10"
-            },
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2021-12-03",
-                "date_end": "2022-01-10"
-            }
-        ],
         "ethnicity": [
             "Eskimo",
             "Arab"
