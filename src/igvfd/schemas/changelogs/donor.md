@@ -4,6 +4,7 @@
 
 * Add `description`.
 * Add `revoke_detail`.
+* Add `phenotypic_feature`.
 
 ### Schema version 2
 

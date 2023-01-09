@@ -33,6 +33,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.user',
     'igvfd.tests.fixtures.schemas.assay_term',
     'igvfd.tests.fixtures.schemas.phenotype_term',
+    'igvfd.tests.fixtures.schemas.phenotypic_feature',
     'igvfd.tests.fixtures.schemas.human_donor',
     'igvfd.tests.fixtures.schemas.rodent_donor',
     'igvfd.tests.fixtures.schemas.document',
@@ -41,7 +42,6 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.analysis_set',
     'igvfd.tests.fixtures.schemas.curated_set',
     'igvfd.tests.fixtures.schemas.sequence_data',
-    'igvfd.tests.fixtures.schemas.phenotypic_feature',
     'igvfd.tests.fixtures.schemas.page',
     'igvfd.tests.fixtures.schemas.software',
     'igvfd.tests.fixtures.schemas.software_version'

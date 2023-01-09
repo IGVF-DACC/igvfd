@@ -175,3 +175,12 @@ def test_patch_parents(rodent_donor, parent_rodent_donor_1, testapp):
             parent_rodent_donor_1['@id']
         ]})
     assert res.status_code == 200
+
+
+def test_patch_phenotypic_feature(rodent_donor, phenotypic_feature_basic, testapp):
+    res = testapp.patch_json(
+        rodent_donor['@id'],
+        {'phenotypic_feature': [
+            phenotypic_feature_basic['@id']
+        ]})
+    assert res.status_code == 200
