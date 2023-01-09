@@ -112,3 +112,20 @@ def human_tissue(testapp, lab, source, award, human_donor, sample_term_adrenal_g
         'biosample_term': sample_term_adrenal_gland['@id']
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def tissue_v6(tissue, document_v1, human_tissue, treatment_chemical, phenotype_term_alzheimers):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '6',
+        'aliases': ['igvf:tissue_v6'],
+        'alternate_accessions': ['IGVFSM876DSA'],
+        'collections': ['ENCODE'],
+        'documents': [document_v1['@id']],
+        'part_of': human_tissue['@id'],
+        'treatments': [treatment_chemical['@id']],
+        'disease_terms': [phenotype_term_alzheimers['@id']],
+        'dbxrefs': ['GEO:SAMN1']
+    })
+    return item

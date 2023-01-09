@@ -52,3 +52,14 @@ def biomarker_IgA_present(testapp, lab, award):
         'lab': lab['@id']
     }
     return testapp.post_json('/biomarker', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def biomarker_v1(biomarker_IgA_present):
+    item = biomarker_IgA_present.copy()
+    item.update({
+        'schema_version': '1',
+        'aliases': ['igvf:biomarker_v1'],
+        'synonyms': ['HKLD3']
+    })
+    return item

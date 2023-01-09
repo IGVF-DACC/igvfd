@@ -45,6 +45,16 @@ def access_key_v1(access_key):
 
 
 @pytest.fixture
+def access_key_v2(access_key):
+    item = access_key.copy()
+    item.update({
+        'schema_version': '2',
+        'aliases': ['igvf:access_key_v2']
+    })
+    return item
+
+
+@pytest.fixture
 def access_key_2(testapp, submitter):
     description = 'My programmatic key'
     item = {

@@ -44,3 +44,14 @@ def phenotype_term_ncit_feature(testapp):
         'term_name': 'Body Weight Measurement'
     }
     return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def phenotype_term_v2(phenotype_term_alzheimers):
+    item = phenotype_term_alzheimers.copy()
+    item.update({
+        'schema_version': '2',
+        'aliases': ['igvf:phenotype_term_v2'],
+        'deprecated_ntr_terms': ['NTR:0000008']
+    })
+    return item

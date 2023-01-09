@@ -27,3 +27,13 @@ def human_genomic_variant_no_refseq_id(testapp):
         'reference_sequence': 'ACTGAGGA'
     }
     return testapp.post_json('/human_genomic_variant', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def human_genomic_variant_v1(human_genomic_variant):
+    item = human_genomic_variant.copy()
+    item.update({
+        'schema_version': '1',
+        'aliases': ['igvf:human_genomic_variant_v1']
+    })
+    return item

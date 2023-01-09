@@ -30,3 +30,17 @@ def sequence_data_fastq_no_read_length(testapp, lab, award, analysis_set_with_sa
         'content_type': 'reads'
     }
     return item
+
+
+@pytest.fixture
+def sequence_data_v1(sequence_data, document_v1):
+    item = sequence_data.copy()
+    item.update({
+        'schema_version': '1',
+        'aliases': ['igvf:sequence_data_v1'],
+        'dbxrefs': ['SRA:SRR0000005'],
+        'collections': ['ENCODE'],
+        'documents': [document_v1['@id']],
+        'alternate_accessions': ['IGVFFF000ATK']
+    })
+    return item

@@ -134,3 +134,21 @@ def differentiated_cell_v6_with_note(differentiated_cell):
         'notes': 'This is a note.'
     })
     return item
+
+
+@pytest.fixture
+def differentiated_cell_v7(differentiated_cell, document_v1, differentiated_cell_v6_good_value, treatment_chemical, phenotype_term_alzheimers):
+    item = differentiated_cell.copy()
+    item.update({
+        'schema_version': '7',
+        'aliases': ['igvf:differentiated_cell_v7'],
+        'alternate_accessions': ['IGVFSM321QWE'],
+        'collections': ['ENCODE'],
+        'documents': [document_v1['@id']],
+        'part_of': differentiated_cell_v6_good_value['@id'],
+        'treatments': [treatment_chemical['@id']],
+        'differentiated_treatments': [treatment_chemical['@id']],
+        'disease_terms': [phenotype_term_alzheimers['@id']],
+        'dbxrefs': ['GEO:SAMN1']
+    })
+    return item

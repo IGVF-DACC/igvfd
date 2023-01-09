@@ -19,3 +19,13 @@ def source_v1(source):
         'aliases': []
     })
     return item
+
+
+@pytest.fixture
+def source_v2(source):
+    item = source.copy()
+    item.update({
+        'schema_version': '2',
+        'aliases': ['igvf:source_v2']
+    })
+    return item

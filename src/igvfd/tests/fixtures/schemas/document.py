@@ -23,3 +23,14 @@ def document_v1(experimental_protocol_document):
         'aliases': []
     })
     return item
+
+
+@pytest.fixture
+def document_v2(experimental_protocol_document):
+    item = experimental_protocol_document.copy()
+    item.update({
+        'schema_version': '2',
+        'urls': ['http://asdf.org/ghjl.html'],
+        'aliases': ['igvf:document_v2']
+    })
+    return item

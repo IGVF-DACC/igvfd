@@ -38,6 +38,17 @@ def user_v1(user_0):
 
 
 @pytest.fixture
+def user_v2(user_0):
+    item = user_0.copy()
+    item.update({
+        'schema_version': '2',
+        'viewing_groups': ['IGVF'],
+        'groups': ['admin', 'verified', 'wrangler'],
+    })
+    return item
+
+
+@pytest.fixture
 def admin(testapp):
     item = {
         'first_name': 'Test',

@@ -113,3 +113,20 @@ def cell_line_v5_90_or_above(cell_line):
         'life_stage': 'adult'
     })
     return item
+
+
+@pytest.fixture
+def cell_line_v6(cell_line, document_v1, cell_line_v5_90_or_above, treatment_chemical, phenotype_term_alzheimers):
+    item = cell_line.copy()
+    item.update({
+        'schema_version': '6',
+        'aliases': ['igvf:cell_line_v6'],
+        'alternate_accessions': ['IGVFSM321DSA'],
+        'collections': ['ENCODE'],
+        'documents': [document_v1['@id']],
+        'part_of': cell_line_v5_90_or_above['@id'],
+        'treatments': [treatment_chemical['@id']],
+        'disease_terms': [phenotype_term_alzheimers['@id']],
+        'dbxrefs': ['GEO:SAMN1']
+    })
+    return item

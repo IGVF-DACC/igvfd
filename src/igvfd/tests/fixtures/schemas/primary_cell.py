@@ -125,3 +125,20 @@ def primary_cell_v5_90_or_above(primary_cell):
         'life_stage': 'adult'
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v6(primary_cell, document_v1, primary_cell_v5, treatment_chemical, phenotype_term_alzheimers):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '6',
+        'aliases': ['igvf:cell_line_v6'],
+        'alternate_accessions': ['IGVFSM555III'],
+        'collections': ['ENCODE'],
+        'documents': [document_v1['@id']],
+        'part_of': primary_cell_v5['@id'],
+        'treatments': [treatment_chemical['@id']],
+        'disease_terms': [phenotype_term_alzheimers['@id']],
+        'dbxrefs': ['GEO:SAMN1']
+    })
+    return item

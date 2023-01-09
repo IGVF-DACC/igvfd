@@ -62,3 +62,22 @@ def gene_CD1E(testapp):
         'taxa': 'Homo sapiens'
     }
     return testapp.post_json('/gene', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def gene_v3(gene_zscan10_mm):
+    item = gene_zscan10_mm.copy()
+    item.update({
+        'schema_version': '3',
+        'aliases': ['igvf:gene_v3'],
+        'synonyms': ['UCHL3'],
+        'locations':
+        {
+            'assembly': 'GRCh38',
+            'chromosome': 'chr3',
+            'start': 52401004,
+            'end': 52410030
+        },
+        'dbxrefs': ['UniProtKB:F8W6N4']
+    })
+    return item

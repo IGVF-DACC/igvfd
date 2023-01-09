@@ -54,3 +54,12 @@ def page_v2(page):
         }
     )
     return item
+
+
+def page_v3(page):
+    item = page.copy()
+    item.update({
+        'schema_version': '3',
+        'aliases': ['igvf:page_v3']
+    })
+    return item

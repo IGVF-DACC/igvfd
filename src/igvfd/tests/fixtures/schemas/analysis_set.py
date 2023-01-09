@@ -46,3 +46,16 @@ def analysis_set_with_donor(
         'input_file_set': [analysis_set_base['@id']]
     }
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def analysis_set_v1(analysis_set_base, document_v1):
+    item = analysis_set_base.copy()
+    item.update({
+        'schema_version': '1',
+        'aliases': ['igvf:analysis_set_v1'],
+        'alternate_accessions': ['IGVFFS123AAA'],
+        'collections': ['ENCODE'],
+        'documents': [document_v1['@id']]
+    })
+    return item

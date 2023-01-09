@@ -87,3 +87,21 @@ def whole_organism_v4_90_or_above(whole_organism):
         'life_stage': 'adult'
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v5(whole_organism, document_v1, whole_organism_v4_90_or_above, treatment_chemical, phenotype_term_alzheimers):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '5',
+        'aliases': ['igvf:whole_organism_v5'],
+        'alternate_accessions': ['IGVFSM098ILK'],
+        'collections': ['ENCODE'],
+        'documents': [document_v1['@id']],
+        'part_of': whole_organism_v4_90_or_above['@id'],
+        'treatments': [treatment_chemical['@id']],
+        'disease_terms': [phenotype_term_alzheimers['@id']],
+        'dbxrefs': ['GEO:SAMN1'],
+        'references': ['PMID999']
+    })
+    return item

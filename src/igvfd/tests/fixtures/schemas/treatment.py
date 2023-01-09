@@ -50,3 +50,15 @@ def treatment_v2(treatment_chemical):
         'aliases': []
     })
     return item
+
+
+@pytest.fixture
+def treatment_v3(treatment_chemical, document_v1):
+    item = treatment_chemical.copy()
+    item.pop('purpose', None)
+    item.update({
+        'schema_version': '3',
+        'documents': [document_v1['@id']],
+        'aliases': ['igvf:treatment_v3']
+    })
+    return item

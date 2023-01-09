@@ -55,3 +55,15 @@ def sample_term_technical_sample(testapp):
         'term_name': 'technical sample'
     }
     return testapp.post_json('/sample_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def sample_term_v2(sample_term_K562):
+    item = sample_term_K562.copy()
+    item.update({
+        'schema_version': '2',
+        'aliases': ['igvf:sample_term_v2'],
+        'deprecated_ntr_terms': ['NTR:0000008'],
+        'dbxrefs': ['Cellosaurus:CVCL_0003']
+    })
+    return item

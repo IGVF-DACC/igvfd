@@ -75,3 +75,25 @@ def rodent_donor_v1(rodent_donor):
         'references': []
     })
     return item
+
+
+@pytest.fixture
+def rodent_donor_v2(rodent_donor, document_v1, phenotype_term_alzheimers):
+    item = rodent_donor.copy()
+    item.update({
+        'schema_version': '2',
+        'external_resources': [
+            {
+                'resource_name': '{control region, restriction length polymorphism RFLP} [human, Senegalese Mandenka West African population sample, Mitochondrial, 89 nt]',
+                'resource_identifier': 'GenBank: S77007.2',
+                'resource_url': 'https://www.ncbi.nlm.nih.gov/nuccore/S77007.2'
+            }
+        ],
+        'aliases': ['igvf:rodent_donor_v2'],
+        'collections': ['ENCODE'],
+        'alternate_accessions': ['IGVFDO999ZZZ'],
+        'documents': [document_v1['@id']],
+        'references': ['PMID123'],
+        'traits': [phenotype_term_alzheimers['@id']]
+    })
+    return item

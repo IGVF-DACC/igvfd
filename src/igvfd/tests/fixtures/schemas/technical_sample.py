@@ -42,3 +42,17 @@ def technical_sample_v3(technical_sample):
         'schema_version': '3'
     })
     return item
+
+
+@pytest.fixture
+def technical_sample_v4(technical_sample, document_v1):
+    item = technical_sample.copy()
+    item.update({
+        'schema_version': '4',
+        'aliases': ['igvf:technical_sample_v4'],
+        'alternate_accessions': ['IGVFSM666AAA'],
+        'collections': ['ENCODE'],
+        'documents': [document_v1['@id']],
+        'dbxrefs': ['GEO:SAMN2']
+    })
+    return item

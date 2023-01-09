@@ -36,3 +36,14 @@ def assay_term_v1(assay_term_starr):
         'aliases': []
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v2(assay_term_starr):
+    item = assay_term_starr.copy()
+    item.update({
+        'schema_version': '2',
+        'aliases': ['igvf:assay_term_v2'],
+        'deprecated_ntr_terms': ['NTR:0000009']
+    })
+    return item
