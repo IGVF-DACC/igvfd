@@ -1,5 +1,10 @@
 ## Changelog for *`mixins.json`*
 
+* Rename `alternate_accessions` to `alternate_accession`. (1/6/2022)
+* Rename `collections` to `collection`. (1/6/2022)
+* Rename `documents` to `document`. (1/6/2022)
+* Rename `references` to `reference`. (1/6/2022)
+* Rename `aliases` to `alias`. (1/6/2022)
 * Add `revoke_detail` into `accession`. (8/30/2022)
 * Add `archived` to accessioned status. (8/14/2022)
 * Add `description`. (7/21/2022)

@@ -1,5 +1,13 @@
 ## Changelog for *`technical_sample.json`*
 
+### Schema version 5
+
+* Rename `aliases` to `alias`.
+* Rename `alternate_accessions` to `alternate_accession`.
+* Rename `collections` to `collection`.
+* Rename `documents` to `document`.
+* Rename `dbxrefs` to `dbxref`.
+
 ### Schema version 4
 
 * Change `technical_sample_term` to link to `Sample Term`.

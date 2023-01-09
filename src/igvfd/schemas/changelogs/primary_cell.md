@@ -1,5 +1,16 @@
 ## Changelog for *`primary_cell.json`*
 
+### Schema version 7
+
+* Rename `aliases` to `alias`.
+* Rename `alternate_accessions` to `alternate_accession`.
+* Rename `collections` to `collection`.
+* Rename `documents` to `document`.
+* Rename `treatments` to `treatment`.
+* Rename `disease_terms` to `disease_term`.
+* Rename `dbxrefs` to `dbxref`.
+* Change `part_of` type from `string` to `array`.
+
 ### Minor changes since schema version 6
 * Add `revoke_detail`.
 * Rename `donors` to `donor`.

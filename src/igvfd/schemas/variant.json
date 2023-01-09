@@ -15,7 +15,7 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "1"
+            "hidden comment": "Bump the default in the subclasses."
         },
         "selection_criteria": {
             "title": "Variant Selection Criteria Details",

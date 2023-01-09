@@ -1,5 +1,10 @@
 ## Changelog for *`treatment.json`*
 
+### Schema version 4
+
+* Rename `aliases` to `alias`.
+* Rename `documents` to `alias`.
+
 ### Schema version 3
 * Require `purpose`.
 

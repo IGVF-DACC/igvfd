@@ -1,5 +1,11 @@
 ## Changelog for *`user.json`*
 
+### Schema version 3
+
+* Rename `aliases` to `alias`.
+* Rename `groups` to `group`.
+* Rename `viewing_groups` to `viewing_group`.
+
 ### Minor changes since schema version 2
 
 * Add `description`.

@@ -1,5 +1,12 @@
 ## Changelog for *`gene.json`*
 
+### Schema version 4
+
+* Rename `aliases` to `alias`.
+* Rename `synonyms` to `synonym`.
+* Rename `locations` to `location`.
+* Rename `dbxrefs` to `dbxref`.
+
 ### Schema version 3
 
 * Remove `ncbi_entrez_status`.

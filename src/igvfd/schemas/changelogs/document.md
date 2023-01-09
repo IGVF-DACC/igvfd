@@ -1,5 +1,10 @@
 ## Changelog for *`document.json`*
 
+### Schema version 3
+
+* Rename `aliases` to `alias`.
+* Rename `urls` to `url`.
+
 ### Schema version 2
 
 * Restrict `aliases` and `urls` to be a non-empty array with at least one item.

@@ -39,7 +39,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "input_file_set": {
             "title": "Input File Set",

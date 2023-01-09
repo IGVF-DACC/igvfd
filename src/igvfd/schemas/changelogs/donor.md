@@ -1,5 +1,15 @@
 ## Changelog for *`donor.json`*
 
+### Schema version 3
+
+* Rename `aliases` to `alias`.
+* Rename `alternate_accessions` to `alternate_accession`.
+* Rename `collections` to `collection`.
+* Rename `documents` to `document`.
+* Rename `references` to `reference`.
+* Rename `traits` to `trait`.
+* Rename `external_resources` to `external_resource`.
+
 ### Minor changes since schema version 2
 
 * Add `description`.

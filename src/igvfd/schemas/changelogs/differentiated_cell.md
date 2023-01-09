@@ -1,5 +1,17 @@
 ## Changelog for *`differentiated_cell.json`*
 
+### Schema version 8
+
+* Rename `aliases` to `alias`.
+* Rename `alternate_accessions` to `alternate_accession`.
+* Rename `collections` to `collection`.
+* Rename `documents` to `document`.
+* Rename `treatments` to `treatment`.
+* Rename `disease_terms` to `disease_term`.
+* Rename `differentiation_treatments` to `differentiation_treatment`.
+* Rename `dbxrefs` to `dbxref`.
+* Change `part_of` type from `string` to `array`.
+
 ### Minor changes since schema version 7
 * Add `revoke_detail`.
 * Make required properties `lab`, `source`, and `award` not submittable. No further submission of differentiated_cell are accepted.

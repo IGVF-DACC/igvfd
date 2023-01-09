@@ -1,5 +1,9 @@
 ## Changelog for *`image.json`*
 
+### Schema version 3
+
+* Rename `aliases` to `alias`.
+
 ### Minor changes since schema version 2
 
 * Add `description`.

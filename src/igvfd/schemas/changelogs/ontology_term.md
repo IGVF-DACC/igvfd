@@ -1,5 +1,11 @@
 ## Changelog for *`ontology_term.json`*
 
+### Schema version 3
+
+* Rename `aliases` to `alias`.
+* Rename `synonyms` to `synonym`.
+* Rename `deprecated_ntr_terms` to `deprecated_ntr_term`.
+
 ### Minor changes since schema version 2
 
 * Add `description`.

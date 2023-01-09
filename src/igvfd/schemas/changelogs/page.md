@@ -1,5 +1,9 @@
 ## Changelog for *`page.json`*
 
+### Schema version 4
+
+* Rename `aliases` to `alias`.
+
 ### Schema version 3
 
 * Remove `news`, `news_keywords`, and `news_excerpt` properties.
