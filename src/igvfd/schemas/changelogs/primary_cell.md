@@ -12,6 +12,7 @@
 * Change `part_of` type from `string` to `array`.
 
 ### Minor changes since schema version 6
+
 * Add `revoke_detail`.
 * Rename `donors` to `donor`.
 

@@ -120,3 +120,44 @@ def differentiated_sample_6_7(value, system):
 def technical_sample_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-264
     return
+
+
+@upgrade_step('cell_line', '6', '7')
+@upgrade_step('tissue', '6', '7')
+@upgrade_step('primary_cell', '6', '7')
+@upgrade_step('differentiated_cell', '7', '8')
+@upgrade_step('differentiated_tissue', '7', '8')
+@upgrade_step('whole_organism', '5', '6')
+@upgrade_step('technical_sample', '4', '5')
+def sample_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-321
+    if 'aliases' in value:
+        value['alias'] = value['aliases']
+        del value['aliases']
+    if 'alternate_accessions' in value:
+        value['alternate_accession'] = value['alternate_accessions']
+        del value['alternate_accessions']
+    if 'collections' in value:
+        value['collection'] = value['collections']
+        del value['collections']
+    if 'documents' in value:
+        value['document'] = value['documents']
+        del value['documents']
+    if 'treatments' in value:
+        value['treatment'] = value['treatments']
+        del value['treatments']
+    if 'disease_terms' in value:
+        value['disease_term'] = value['disease_terms']
+        del value['disease_terms']
+    if 'differentiation_treatments' in value:
+        value['differentiation_treatment'] = value['differentiation_treatments']
+        del value['differentiation_treatment']
+    if 'dbxrefs' in value:
+        value['dbxref'] = value['dbxrefs']
+        del value['dbxrefs']
+    if 'references' in value:
+        value['reference'] = value['references']
+        del value['references']
+    if 'part_of' in value:
+        old_part_of_value = value['part_of']
+        value['part_of'] = [old_part_of_value]

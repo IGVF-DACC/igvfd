@@ -23,3 +23,14 @@ def treatment_2_3(value, system):
         else:
             value['notes'] = 'This treatment did not have purpose specified previously, it was upgraded to have perturbation purpose.'
     return
+
+
+@upgrade_step('treatment', '3', '4')
+def treatment_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-321
+    if 'aliases' in value:
+        value['alias'] = value['aliases']
+        del value['aliases']
+    if 'documents' in value:
+        value['document'] = value['documents']
+        del value['documents']

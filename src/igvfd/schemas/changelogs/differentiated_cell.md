@@ -13,6 +13,7 @@
 * Change `part_of` type from `string` to `array`.
 
 ### Minor changes since schema version 7
+
 * Add `revoke_detail`.
 * Make required properties `lab`, `source`, and `award` not submittable. No further submission of differentiated_cell are accepted.
 * Rename `donors` to `donor`.

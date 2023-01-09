@@ -23,3 +23,20 @@ def gene_2_3(value, system):
             else:
                 no_ensembl.append(dbxref)
     value['dbxrefs'] = no_ensembl
+
+
+@upgrade_step('gene', '3', '4')
+def gene_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-321
+    if 'aliases' in value:
+        value['alias'] = value['aliases']
+        del value['aliases']
+    if 'synonyms' in value:
+        value['synonym'] = value['synonyms']
+        del value['synonyms']
+    if 'locations' in value:
+        value['location'] = value['locations']
+        del value['locations']
+    if 'dbxrefs' in value:
+        value['dbxref'] = value['dbxrefs']
+        del value['dbxrefs']
