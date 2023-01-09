@@ -66,3 +66,33 @@ def test_differentiated_tissue_upgrade_6_7(upgrader, differentiated_tissue_v6, d
     assert value3['schema_version'] == '7'
     assert value3['post_differentiation_time'] == 7
     assert value3['post_differentiation_time_units'] == 'month'
+
+
+def test_differentiated_tissue_upgrade_7_8(upgrader, differentiated_tissue_v7):
+    alias = differentiated_tissue_v7['aliases']
+    alternate_accession = differentiated_tissue_v7['alternate_accessions']
+    collection = differentiated_tissue_v7['collections']
+    document = differentiated_tissue_v7['documents']
+    treatment = differentiated_tissue_v7['treatments']
+    disease_term = differentiated_tissue_v7['disease_terms']
+    dbxref = differentiated_tissue_v7['dbxrefs']
+    differentiation_treatment = differentiated_tissue_v7['differentiation_treatments']
+    value = upgrader.upgrade('differentiated_tissue', differentiated_tissue_v7, current_version='7', target_version='8')
+    assert 'aliases' not in value
+    assert alias == value['alias']
+    assert 'alternate_accessions' not in value
+    assert alternate_accession == value['alternate_accession']
+    assert 'collections' not in value
+    assert collection == value['collection']
+    assert 'documents' not in value
+    assert document == value['document']
+    assert 'treatments' not in value
+    assert treatment == value['treatment']
+    assert 'disease_terms' not in value
+    assert disease_term == value['disease_term']
+    assert 'dbxrefs' not in value
+    assert dbxref == value['dbxref']
+    assert 'differentiation_treatments' not in value
+    assert differentiation_treatment == value['differentiation_treatment']
+    assert type(differentiated_tissue_v7['part_of']) is list
+    assert value['schema_version'] == '8'

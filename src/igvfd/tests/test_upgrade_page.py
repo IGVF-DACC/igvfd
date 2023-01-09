@@ -22,3 +22,11 @@ def test_page_upgrade_2_3(upgrader, page_v2):
             }
         ]
     )
+
+
+def test_page_upgrade_3_4(upgrader, page_v3):
+    alias = page_v3['aliases']
+    value = upgrader.upgrade('page', page_v3, current_version='3', target_version='4')
+    assert 'aliases' not in value
+    assert alias == value['alias']
+    assert value['schema_version'] == '4'

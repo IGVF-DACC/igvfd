@@ -56,6 +56,7 @@ def page_v2(page):
     return item
 
 
+@pytest.fixture
 def page_v3(page):
     item = page.copy()
     item.update({

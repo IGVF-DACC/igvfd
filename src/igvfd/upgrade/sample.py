@@ -152,7 +152,7 @@ def sample_7_8(value, system):
         del value['disease_terms']
     if 'differentiation_treatments' in value:
         value['differentiation_treatment'] = value['differentiation_treatments']
-        del value['differentiation_treatment']
+        del value['differentiation_treatments']
     if 'dbxrefs' in value:
         value['dbxref'] = value['dbxrefs']
         del value['dbxrefs']

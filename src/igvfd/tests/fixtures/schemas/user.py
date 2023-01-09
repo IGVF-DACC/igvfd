@@ -44,6 +44,7 @@ def user_v2(user_0):
         'schema_version': '2',
         'viewing_groups': ['IGVF'],
         'groups': ['admin', 'verified', 'wrangler'],
+        'aliases': ['igvf:userv2']
     })
     return item
 

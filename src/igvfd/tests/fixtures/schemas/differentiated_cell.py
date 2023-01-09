@@ -147,7 +147,7 @@ def differentiated_cell_v7(differentiated_cell, document_v1, differentiated_cell
         'documents': [document_v1['@id']],
         'part_of': differentiated_cell_v6_good_value['@id'],
         'treatments': [treatment_chemical['@id']],
-        'differentiated_treatments': [treatment_chemical['@id']],
+        'differentiation_treatments': [treatment_chemical['@id']],
         'disease_terms': [phenotype_term_alzheimers['@id']],
         'dbxrefs': ['GEO:SAMN1']
     })

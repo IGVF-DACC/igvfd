@@ -43,3 +43,30 @@ def test_cell_line_upgrade_5_6(upgrader, cell_line_v5, cell_line_v5_unknown, cel
     assert 'life_stage' not in value
     assert value['lower_bound_age'] == 90 and value['upper_bound_age'] == 90
     assert value['schema_version'] == '6'
+
+
+def test_cell_line_upgrade_6_7(upgrader, cell_line_v6):
+    alias = cell_line_v6['aliases']
+    alternate_accession = cell_line_v6['alternate_accessions']
+    collection = cell_line_v6['collections']
+    document = cell_line_v6['documents']
+    treatment = cell_line_v6['treatments']
+    disease_term = cell_line_v6['disease_terms']
+    dbxref = cell_line_v6['dbxrefs']
+    value = upgrader.upgrade('cell_line', cell_line_v6, current_version='6', target_version='7')
+    assert 'aliases' not in value
+    assert alias == value['alias']
+    assert 'alternate_accessions' not in value
+    assert alternate_accession == value['alternate_accession']
+    assert 'collections' not in value
+    assert collection == value['collection']
+    assert 'documents' not in value
+    assert document == value['document']
+    assert 'treatments' not in value
+    assert treatment == value['treatment']
+    assert 'disease_terms' not in value
+    assert disease_term == value['disease_term']
+    assert 'dbxrefs' not in value
+    assert dbxref == value['dbxref']
+    assert type(cell_line_v6['part_of']) is list
+    assert value['schema_version'] == '7'

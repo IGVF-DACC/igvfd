@@ -19,6 +19,9 @@ def ontology_term_2_3(value, system):
     if 'aliases' in value:
         value['alias'] = value['aliases']
         del value['aliases']
-    if 'aliadeprecated_ntr_termsses' in value:
+    if 'deprecated_ntr_terms' in value:
         value['deprecated_ntr_term'] = value['deprecated_ntr_terms']
         del value['deprecated_ntr_terms']
+    if 'dbxrefs' in value:
+        value['dbxref'] = value['dbxrefs']
+        del value['dbxrefs']

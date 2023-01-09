@@ -51,8 +51,8 @@ def donor_2_3(value, system):
         value['reference'] = value['references']
         del value['references']
     if 'traits' in value:
-        value['traits'] = value['trait']
+        value['trait'] = value['traits']
         del value['traits']
     if 'external_resources' in value:
-        value['reference'] = value['external_resources']
+        value['external_resource'] = value['external_resources']
         del value['external_resources']

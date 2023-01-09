@@ -38,3 +38,33 @@ def test_whole_organism_upgrade_4_5(upgrader, whole_organism_v4, whole_organism_
     assert 'life_stage' not in value
     assert value['lower_bound_age'] == 90 and value['upper_bound_age'] == 90
     assert value['schema_version'] == '5'
+
+
+def test_whole_organism_upgrade_5_6(upgrader, whole_organism_v5):
+    alias = whole_organism_v5['aliases']
+    alternate_accession = whole_organism_v5['alternate_accessions']
+    collection = whole_organism_v5['collections']
+    document = whole_organism_v5['documents']
+    treatment = whole_organism_v5['treatments']
+    disease_term = whole_organism_v5['disease_terms']
+    dbxref = whole_organism_v5['dbxrefs']
+    reference = whole_organism_v5['references']
+    value = upgrader.upgrade('whole_organism', whole_organism_v5, current_version='5', target_version='6')
+    assert 'aliases' not in value
+    assert alias == value['alias']
+    assert 'alternate_accessions' not in value
+    assert alternate_accession == value['alternate_accession']
+    assert 'collections' not in value
+    assert collection == value['collection']
+    assert 'documents' not in value
+    assert document == value['document']
+    assert 'treatments' not in value
+    assert treatment == value['treatment']
+    assert 'disease_terms' not in value
+    assert disease_term == value['disease_term']
+    assert 'dbxrefs' not in value
+    assert dbxref == value['dbxref']
+    assert 'references' not in value
+    assert reference == value['reference']
+    assert type(whole_organism_v5['part_of']) is list
+    assert value['schema_version'] == '6'

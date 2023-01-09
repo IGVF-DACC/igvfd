@@ -40,6 +40,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.whole_organism',
     'igvfd.tests.fixtures.schemas.analysis_set',
     'igvfd.tests.fixtures.schemas.curated_set',
+    'igvfd.tests.fixtures.schemas.measurement_set',
     'igvfd.tests.fixtures.schemas.sequence_data',
     'igvfd.tests.fixtures.schemas.reference_data',
     'igvfd.tests.fixtures.schemas.phenotypic_feature',
