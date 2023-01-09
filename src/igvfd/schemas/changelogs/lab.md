@@ -3,6 +3,7 @@
 ### Schema version 3
 
 * Rename `aliases` to `alias`.
+* Rename `awards` to `award`.
 
 ### Minor changes since schema version 2
 
