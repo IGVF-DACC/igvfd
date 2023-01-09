@@ -129,6 +129,7 @@ def technical_sample_3_4(value, system):
 @upgrade_step('differentiated_tissue', '7', '8')
 @upgrade_step('whole_organism', '5', '6')
 @upgrade_step('technical_sample', '4', '5')
+@upgrade_step('in_vitro_system', '1', '2')
 def sample_7_8(value, system):
     # https://igvf.atlassian.net/browse/IGVF-321
     if 'aliases' in value:
@@ -158,6 +159,12 @@ def sample_7_8(value, system):
     if 'references' in value:
         value['reference'] = value['references']
         del value['references']
+    if 'introduced_factors' in value:
+        value['introduced_factor'] = value['introduced_factors']
+        del value['introduced_factors']
     if 'part_of' in value:
         old_part_of_value = value['part_of']
         value['part_of'] = [old_part_of_value]
+    if 'originated_from' in value:
+        old_originated_from_value = value['originated_from']
+        value['originated_from'] = [old_originated_from_value]
