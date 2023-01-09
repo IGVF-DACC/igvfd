@@ -206,7 +206,7 @@ class Item(snovault.Item):
         if 'lab' in properties:
             lab_submitters = 'submits_for.%s' % properties['lab']
             roles[lab_submitters] = 'role.lab_submitter'
-        if 'award' in properties:
+        if 'award' in properties and type(properties['award']) != list:
             viewing_group = _award_viewing_group(properties['award'], find_root(self))
             if viewing_group is not None:
                 viewing_group_members = 'viewing_group.%s' % viewing_group

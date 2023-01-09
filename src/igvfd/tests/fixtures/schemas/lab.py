@@ -52,10 +52,11 @@ def lab_v1(lab):
 
 
 @pytest.fixture
-def lab_v2(lab):
+def lab_v2(lab, award):
     item = lab.copy()
     item.update({
         'schema_version': '2',
-        'aliases': ['igvf:lab_v2']
+        'aliases': ['igvf:lab_v2'],
+        'awards': [award['@id']]
     })
     return item

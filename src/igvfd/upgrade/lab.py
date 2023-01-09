@@ -18,3 +18,6 @@ def lab_2_3(value, system):
     if 'aliases' in value:
         value['alias'] = value['aliases']
         del value['aliases']
+    if 'awards' in value:
+        value['award'] = value['awards']
+        del value['awards']

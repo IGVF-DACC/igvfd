@@ -1,6 +1,6 @@
 [
     {
-        "awards": [
+        "award": [
             "HG012012"
         ],
         "institute_label": "Stanford",
@@ -9,7 +9,7 @@
         "uuid": "cfb789b8-46f3-4d59-a2b3-adc39e7df93a"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG012077-01"
         ],
         "institute_label": "UCI",
@@ -42,7 +42,7 @@
         "pi": "8b558152-b8fe-418e-901e-a9c6e8c1b55e"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012039-01"
         ],
         "institute_label": "UW Madison",
@@ -69,7 +69,7 @@
         "pi": "2c4c537b-9b94-4196-90c1-a2d4f85259a3"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011972-01"
         ],
         "institute_label": "Stanford",
@@ -78,7 +78,7 @@
         "pi": "c99b68dc-f0dc-4308-9961-90ebcbe24e88"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011972-01"
         ],
         "institute_label": "Stanford",
@@ -87,7 +87,7 @@
         "pi": "cd8fad93-1c81-48f3-ac4c-b827b1f58b9f"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011972-01"
         ],
         "institute_label": "Stanford",
@@ -96,7 +96,7 @@
         "pi": "24d01e13-37ef-4521-975b-a2f49533d19b"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011972-01"
         ],
         "institute_label": "Stanford",
@@ -105,7 +105,7 @@
         "pi": "e389ba3b-108d-4a6a-a87a-3a84baca023e"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011972-01"
         ],
         "institute_label": "Stanford",
@@ -114,7 +114,7 @@
         "pi": "4fd4cb56-83c9-493c-a4e8-96f8b8379d43"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011972-01"
         ],
         "institute_label": "Stanford",
@@ -123,7 +123,7 @@
         "pi": "f374f95e-c4bd-4985-8228-f44a837d9513"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011972-01"
         ],
         "institute_label": "Stanford",
@@ -132,7 +132,7 @@
         "pi": "64bce651-ee7f-470b-ae96-b3c2412f789e"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011966-01"
         ],
         "institute_label": "UW",
@@ -141,7 +141,7 @@
         "pi": "bf625134-f45e-4d8d-994f-b67d17354757"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011966-01"
         ],
         "institute_label": "UCSF",
@@ -150,7 +150,7 @@
         "pi": "f82b0978-c015-47a7-aa8d-c94589eab825"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011966-01"
         ],
         "institute_label": "BIH",
@@ -159,7 +159,7 @@
         "pi": "6965dbce-ee4b-4ba0-871c-e82d523e58bd"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012051-01"
         ],
         "institute_label": "MSKCC",
@@ -168,7 +168,7 @@
         "pi": "8dd67766-ffa7-47ff-a97d-ca74985d781f"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012051-01"
         ],
         "institute_label": "JHU",
@@ -177,7 +177,7 @@
         "pi": "5325998a-e2f9-4d8e-ae95-8661b806a9a7"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012051-01"
         ],
         "institute_label": "MSKCC",
@@ -186,7 +186,7 @@
         "pi": "6f7389c0-8365-48f5-bacb-40000df2d66f"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012103-01"
         ],
         "institute_label": "MSKCC",
@@ -195,7 +195,7 @@
         "pi": "fa9feeb4-28ba-4356-8c24-50f4e6562029"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012103-01"
         ],
         "institute_label": "MSKCC",
@@ -210,7 +210,7 @@
         "pi": "998cb70b-623f-41ba-a970-59e7d3ea9be2"
     },
     {
-        "awards": [
+        "award": [
             "HG012059"
         ],
         "institute_label": "UCSD",
@@ -219,7 +219,7 @@
         "pi": "8f8e597c-aa6f-444a-ae2b-8ca9820bbb51"
     },
     {
-        "awards": [
+        "award": [
             "HG012059"
         ],
         "institute_label": "UCSD",
@@ -228,7 +228,7 @@
         "pi": "6814ebcb-a591-480d-ae69-0bf5ef2a2e93"
     },
     {
-        "awards": [
+        "award": [
             "HG012059"
         ],
         "institute_label": "UCSD",
@@ -237,7 +237,7 @@
         "pi": "3ac39feb-d609-4f9f-ae15-250a7f165900"
     },
     {
-        "awards": [
+        "award": [
             "HG012059"
         ],
         "institute_label": "UCSD",
@@ -252,7 +252,7 @@
         "pi": "7622ee95-b60d-4fd4-9910-3405c7cceb6f"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG012053-01"
         ],
         "institute_label": "Duke",
@@ -261,7 +261,7 @@
         "pi": "bb7f009f-8541-4066-ab7e-acbcf587e9f5"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG012053-01"
         ],
         "institute_label": "Duke",
@@ -270,7 +270,7 @@
         "pi": "84b1815e-2d39-4396-91ff-2ae3043d06db"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG012076-01"
         ],
         "institute_label": "Stanford",
@@ -279,7 +279,7 @@
         "pi": "35e81201-434d-4e37-a642-6a780c786f35"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG011967-01"
         ],
         "institute_label": "Duke",
@@ -288,7 +288,7 @@
         "pi": "b4e2c625-bb5c-43fe-a055-7d9dc627a85e"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011996-01"
         ],
         "institute_label": "UT",
@@ -297,7 +297,7 @@
         "pi": "430014d5-997d-435a-bfd6-1593cf23912a"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011996-01"
         ],
         "institute_label": "UT",
@@ -312,7 +312,7 @@
         "pi": "0017877a-1d7a-4a40-a2f0-d350aa04f653"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011969-01"
         ],
         "institute_label": "UW",
@@ -321,7 +321,7 @@
         "pi": "04e6e85d-3737-454e-8a3b-6f8cb2317f00"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011969-01"
         ],
         "institute_label": "UW",
@@ -330,7 +330,7 @@
         "pi": "98fe0dfd-0842-4c04-8f4a-d2b6dee05ee0"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG012010-01"
         ],
         "institute_label": "MGH",
@@ -339,7 +339,7 @@
         "pi": "bca44661-1dc0-4b47-8736-49471174974e"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG012010-01"
         ],
         "institute_label": "MHI",
@@ -354,7 +354,7 @@
         "pi": "2aede325-1afd-4e54-a610-5f99fa7a48dc"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG012010-01"
         ],
         "institute_label": "HSCI",
@@ -363,7 +363,7 @@
         "pi": "ed779c11-fe9f-4325-9d5f-db4ffa66610a"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG012010-01"
         ],
         "institute_label": "Brigham and Women's Hospital",
@@ -378,7 +378,7 @@
         "pi": "ae7e79c3-0135-43db-96fb-13e481ebf5f2"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011989-01"
         ],
         "institute_label": "DFCI",
@@ -387,7 +387,7 @@
         "pi": "5924d737-62eb-490d-ae70-81348c5db9e6"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011989-01"
         ],
         "institute_label": "DFCI",
@@ -396,7 +396,7 @@
         "pi": "e456fcc2-69b0-4da2-aaf7-cc40bb171252"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011989-01"
         ],
         "institute_label": "UToronto",
@@ -405,7 +405,7 @@
         "pi": "00b5591d-1e3d-41bf-be82-13a218283ada"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011989-01"
         ],
         "institute_label": "UToronto",
@@ -414,7 +414,7 @@
         "pi": "569575e3-67d6-4573-9301-c2243354bda2"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG011989-01"
         ],
         "institute_label": "Broad",
@@ -423,7 +423,7 @@
         "pi": "ad7e8437-3dff-46af-ac35-d7ccb1f58aee"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG012003-01"
         ],
         "institute_label": "UNC",
@@ -432,7 +432,7 @@
         "pi": "7e51864b-2e2b-40cf-9abc-5cc2dc98f35d"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG012003-01"
         ],
         "institute_label": "UNC",
@@ -441,7 +441,7 @@
         "pi": "3e3409dd-e4a8-4b7c-bf31-22d2b089ae1f"
     },
     {
-        "awards": [
+        "award": [
             "1UM1HG012003-01"
         ],
         "institute_label": "UNC",
@@ -450,7 +450,7 @@
         "pi": "3a0ff5da-c893-4e36-9d0e-d97940a7e13d"
     },
     {
-        "awards": [
+        "award": [
             "HG011986"
         ],
         "institute_label": "Broad",
@@ -471,7 +471,7 @@
         "pi": "3dfe5754-2073-45f0-b520-7d962f43c2cd"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012079-01"
         ],
         "institute_label": "UCLA",
@@ -480,7 +480,7 @@
         "pi": "94f562b8-77f7-4061-b89b-3710686e51cc"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012079-01"
         ],
         "institute_label": "UCSF",
@@ -489,7 +489,7 @@
         "pi": "541d1d5c-e3d8-487c-8e14-81b315db4ee4"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012079-01"
         ],
         "institute_label": "UCLA",
@@ -498,7 +498,7 @@
         "pi": "d996a4b0-5c77-4f67-9569-979eea823d51"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012079-01"
         ],
         "institute_label": "UCLA",
@@ -507,7 +507,7 @@
         "pi": "d0b2a849-d583-4ee1-8d26-1e361ee4519b"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012079-01"
         ],
         "institute_label": "UCLA",
@@ -516,7 +516,7 @@
         "pi": "fa43a796-163c-488a-aa8e-5472a458232c"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012064-01"
         ],
         "institute_label": "UMass",
@@ -537,7 +537,7 @@
         "pi": "2289d1d8-dcde-4dd4-ab91-89301a35f008"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG011952-01"
         ],
         "institute_label": "UMich",
@@ -594,7 +594,7 @@
         "pi": "f2490a2d-4275-4bb8-817b-81488a394a53"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012022-01"
         ],
         "institute_label": "Northeastern",
@@ -609,7 +609,7 @@
         "pi": "ae1c9d22-d04e-4ce1-ac76-72890d0d5553"
     },
     {
-        "awards": [
+        "award": [
             "1U01HG012041-01"
         ],
         "institute_label": "University of Pittsburgh",

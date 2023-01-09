@@ -43,7 +43,7 @@
             "type": "string",
             "linkTo": "User"
         },
-        "awards": {
+        "award": {
             "title": "Award",
             "description": "Grants associated with the lab.",
             "type": "array",
