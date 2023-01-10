@@ -27,6 +27,8 @@
         "phenotypic_features": [
             "/phenotypic-features/2eb275d6-8fb3-11ed-a1eb-0242ac120002/"
         ],
+        "rodent_identifier": "mouse identifier",
+        "individual_rodent": true,
         "taxa": "Mus musculus",
         "collections": [
             "ENCODE"

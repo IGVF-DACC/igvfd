@@ -9,6 +9,8 @@
 * Add `description`.
 * Add `revoke_detail`.
 * Add `phenotypic_features`.
+* Add `rodent_identifier`.
+* Add `individual_rodent`.
 
 ### Schema version 2
 

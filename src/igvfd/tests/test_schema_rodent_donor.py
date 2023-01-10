@@ -144,3 +144,14 @@ def test_patch_phenotypic_feature(rodent_donor, phenotypic_feature_basic, testap
             phenotypic_feature_basic['@id']
         ]})
     assert res.status_code == 200
+
+
+def test_rodent_identifier_dependency(rodent_donor, testapp):
+    res = testapp.patch_json(
+        rodent_donor['@id'],
+        {'individual_rodent': True}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        rodent_donor['@id'],
+        {'individual_rodent': True, 'rodent_identifier': 'rodent_identifier'})
+    assert res.status_code == 200
