@@ -86,7 +86,7 @@ def test_sequence_data_sequencing_run_uniqueness(
         {'sequencing_run': 1},
         expect_errors=True
     )
-    assert res.status_code == 422
+    assert res.status_code == 409
 
     # If the files are in different sequencing_runs, there is no clash.
     res = testapp.patch_json(
@@ -110,7 +110,7 @@ def test_sequence_data_sequencing_run_uniqueness(
         },
         expect_errors=True
     )
-    assert res.status_code == 422
+    assert res.status_code == 409
 
     # If the files are different read types in the same sequencing run, there is no clash.
     res = testapp.patch_json(
