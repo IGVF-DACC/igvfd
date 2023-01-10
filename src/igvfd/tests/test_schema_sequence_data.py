@@ -101,7 +101,7 @@ def test_sequence_data_sequencing_run_uniqueness(
         {'illumina_read_type': 'R1'}
     )
 
-    # If both files are R1, which will clash.
+    # If both files are R1, there is a clash.
     res = testapp.patch_json(
         sequence_data_sequencing_run_2['@id'],
         {
