@@ -9,7 +9,8 @@
         "md5sum",
         "file_format",
         "file_set",
-        "content_type"
+        "content_type",
+        "sequencing_run"
     ],
     "identifyingProperties": [
         "uuid",
@@ -122,6 +123,24 @@
             "permission": "import_items",
             "type": "integer",
             "minimum": 0
+        },
+        "sequencing_run": {
+            "title": "Sequencing Run",
+            "description": "An ordinal number indicating which sequencing run of the associated library that the file belongs to.",
+            "type": "integer",
+            "minimum": 1
+        },
+        "illumina_read_type": {
+            "title": "Illumina Read Type",
+            "description": "The read type of the file. Relevant only for files produced using an Illumina sequencing platform.",
+            "type": "string",
+            "enum": [
+                "R1",
+                "R2",
+                "R3",
+                "I1",
+                "I2"
+            ]
         }
     },
     "columns": {

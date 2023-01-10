@@ -73,3 +73,51 @@ def test_sequence_data_dbxrefs_regex(testapp, sequence_data):
         {'dbxrefs': ['SRA:SRR21927294', 'SRA:SRX21927294']}
     )
     assert res.status_code == 200
+
+
+def test_sequence_data_sequencing_run_uniqueness(
+    testapp,
+    sequence_data,
+    sequence_data_sequencing_run_2
+):
+    # If there is no illumina_read_type, there cannot be 2 files with the same sequencing run in a given dataset.
+    res = testapp.patch_json(
+        sequence_data_sequencing_run_2['@id'],
+        {'sequencing_run': 1},
+        expect_errors=True
+    )
+    assert res.status_code == 422
+
+    # If the files are in different sequencing_runs, there is no clash.
+    res = testapp.patch_json(
+        sequence_data_sequencing_run_2['@id'],
+        {'sequencing_run': 2}
+    )
+    assert res.status_code == 200
+
+    # If there is illumina_read_type, the combination of illumina_read_type and sequencing_run must be unique.
+    res = testapp.patch_json(
+        sequence_data['@id'],
+        {'illumina_read_type': 'R1'}
+    )
+
+    # If both files are R1, which will clash.
+    res = testapp.patch_json(
+        sequence_data_sequencing_run_2['@id'],
+        {
+            'sequencing_run': 1,
+            'illumina_read_type': 'R1'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+
+    # If the files are different read types in the same sequencing run, there is no clash.
+    res = testapp.patch_json(
+        sequence_data_sequencing_run_2['@id'],
+        {
+            'sequencing_run': 1,
+            'illumina_read_type': 'R2'
+        }
+    )
+    assert res.status_code == 200

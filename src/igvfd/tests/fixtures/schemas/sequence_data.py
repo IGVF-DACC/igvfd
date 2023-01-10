@@ -14,7 +14,8 @@ def sequence_data(testapp, lab, award, analysis_set_with_sample):
         'mean_read_length': 100,
         'read_count': 23040138,
         'file_size': 5495803,
-        'content_type': 'reads'
+        'content_type': 'reads',
+        'sequencing_run': 1
     }
     return testapp.post_json('/sequence_data', item, status=201).json['@graph'][0]
 
@@ -27,6 +28,26 @@ def sequence_data_fastq_no_read_length(testapp, lab, award, analysis_set_with_sa
         'md5sum': 'cb888dc8d303ea1b7959c698e819c0f1',
         'file_format': 'fastq',
         'file_set': analysis_set_with_sample['@id'],
-        'content_type': 'reads'
+        'content_type': 'reads',
+        'sequencing_run': 1
     }
     return item
+
+
+@pytest.fixture
+def sequence_data_sequencing_run_2(testapp, lab, award, analysis_set_with_sample):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'aece2d0a32bcaa86b23d5a33ff198917',
+        'file_format': 'fastq',
+        'file_set': analysis_set_with_sample['@id'],
+        'minimum_read_length': 99,
+        'maximum_read_length': 101,
+        'mean_read_length': 100,
+        'read_count': 23040138,
+        'file_size': 5495803,
+        'content_type': 'reads',
+        'sequencing_run': 2
+    }
+    return testapp.post_json('/sequence_data', item, status=201).json['@graph'][0]
