@@ -129,7 +129,7 @@
         "rodent_identifier": {
             "title": "Rodent Identifier",
             "description": "The identifier for this individual rodent donor.",
-            "comment": "to submit this property.",
+            "comment": "`individual_rodent` should be submitted as true with submission of this property.",
             "type": "string"
         }
     },

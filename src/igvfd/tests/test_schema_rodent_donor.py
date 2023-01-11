@@ -153,5 +153,5 @@ def test_rodent_identifier_dependency(rodent_donor, testapp):
     assert res.status_code == 422
     res = testapp.patch_json(
         rodent_donor['@id'],
-        {'individual_rodent': True, 'rodent_identifier': 'rodent_identifier'})
+        {'individual_rodent': True, 'rodent_identifier': '045'})
     assert res.status_code == 200
