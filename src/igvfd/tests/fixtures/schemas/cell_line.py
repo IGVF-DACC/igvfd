@@ -8,7 +8,7 @@ def cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562):
         'lab': other_lab['@id'],
         'source': other_lab['@id'],
         'taxa': 'Mus musculus',
-        'donor': [rodent_donor['@id']],
+        'donors': [rodent_donor['@id']],
         'biosample_term': sample_term_K562['@id']
     }
     return testapp.post_json('/cell_line', item, status=201).json['@graph'][0]
@@ -22,7 +22,7 @@ def cell_line_with_date_obtained(testapp, other_lab, award, human_donor, sample_
         'source': other_lab['@id'],
         'date_obtained': '2022-04-02',
         'taxa': 'Homo sapiens',
-        'donor': [human_donor['@id']],
+        'donors': [human_donor['@id']],
         'biosample_term': sample_term_K562['@id']
     }
     return testapp.post_json('/cell_line', item, status=201).json['@graph'][0]
@@ -61,7 +61,7 @@ def cell_line_v3(cell_line):
     item.update({
         'schema_version': '3',
         'aliases': [],
-        'donor': [],
+        'donors': [],
         'dbxrefs': [],
         'collections': [],
         'alternate_accessions': [],
@@ -113,3 +113,17 @@ def cell_line_v5_90_or_above(cell_line):
         'life_stage': 'adult'
     })
     return item
+
+
+@pytest.fixture
+def cell_line_v6(testapp, other_lab, award, human_donor, sample_term_K562):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'source': other_lab['@id'],
+        'date_obtained': '2022-04-02',
+        'taxa': 'Homo sapiens',
+        'donor': [human_donor['@id']],
+        'biosample_term': sample_term_K562['@id']
+    }
+    return testapp.post_json('/cell_line', item, status=201).json['@graph'][0]

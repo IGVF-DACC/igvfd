@@ -120,3 +120,16 @@ def differentiated_sample_6_7(value, system):
 def technical_sample_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-264
     return
+
+
+@upgrade_step('cell_line', '6', '7')
+@upgrade_step('differentiated_cell', '7', '8')
+@upgrade_step('differentiated_tissue', '7', '8')
+@upgrade_step('primary_cell', '6', '7')
+@upgrade_step('tissue', '6', '7')
+@upgrade_step('whole_organism', '5', '6')
+@upgrade_step('in_vitro_system', '1', '2')
+def sample_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-387
+    if 'donor' in value:
+        value['donors'] = value['donor']
