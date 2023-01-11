@@ -12,7 +12,7 @@
         "documents": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor2"
         ],
         "notes": "This is a note.",
@@ -67,7 +67,7 @@
         ],
         "date_obtained": "2022-04-02",
         "source": "/labs/j-michael-cherry/",
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor1"
         ]
     },
@@ -79,7 +79,7 @@
         "aliases": [
             "j-michael-cherry:pooled_primary_cell"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
@@ -122,7 +122,7 @@
         ],
         "date_obtained": "2022-04-02",
         "source": "/labs/j-michael-cherry/",
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor1"
         ]
     },
@@ -134,7 +134,7 @@
         "aliases": [
             "j-michael-cherry:primary_cell_part_of_whole_organism"
         ],
-        "donor": [
+        "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",

@@ -7,7 +7,7 @@
         "aliases": [
             "j-michael-cherry:alias3"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor2"
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
@@ -42,7 +42,7 @@
             "/treatments/2d57c810-c729-11ec-9d64-0242ac120002/",
             "/treatments/4fbb0dc2-c72e-11ec-9d64-0242ac120002/"
         ],
-        "donor": [
+        "donors": [
             "c37934b0-4269-4470-be53-9eac7b196447",
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
@@ -58,7 +58,7 @@
         "aliases": [
             "j-michael-cherry:pooled_tissue"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
@@ -91,7 +91,7 @@
         "collections": [
             "ENCODE"
         ],
-        "donor": [
+        "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
         "lower_bound_age": 10,
@@ -113,7 +113,7 @@
         "source": "/labs/j-michael-cherry/",
         "nih_institutional_certification": "NICHD1442",
         "preservation_method": "cryopreservation",
-        "donor": [
+        "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
         "lower_bound_age": 19,

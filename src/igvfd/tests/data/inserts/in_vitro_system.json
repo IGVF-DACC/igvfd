@@ -8,7 +8,7 @@
         "aliases": [
             "igvf-dacc:in_vitro_system_cell_line"
         ],
-        "donor": [
+        "donors": [
             "j-michael-cherry:alias_human_donor1"
         ],
         "passage_number": 2,
