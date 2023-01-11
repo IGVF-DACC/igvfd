@@ -8,7 +8,7 @@ def differentiated_tissue(testapp, lab, award, source, human_donor, sample_term_
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
-        'donor': [human_donor['@id']],
+        'donors': [human_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id']
     }
     return testapp.post_json('/differentiated_tissue', item, status=201).json['@graph'][0]
@@ -47,7 +47,7 @@ def differentiated_tissue_v3(differentiated_tissue):
     item.update({
         'schema_version': '3',
         'aliases': [],
-        'donor': [],
+        'donors': [],
         'dbxrefs': [],
         'collections': [],
         'alternate_accessions': [],
@@ -134,3 +134,16 @@ def differentiated_tissue_v6_with_note(differentiated_tissue):
         'notes': 'This is a note.'
     })
     return item
+
+
+@pytest.fixture
+def differentiated_tissue_v7(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id'],
+        'taxa': 'Homo sapiens',
+        'donor': [human_donor['@id']],
+        'biosample_term': sample_term_adrenal_gland['@id']
+    }
+    return testapp.post_json('/differentiated_tissue', item, status=201).json['@graph'][0]

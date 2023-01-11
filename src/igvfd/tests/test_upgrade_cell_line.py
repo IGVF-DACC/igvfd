@@ -46,7 +46,6 @@ def test_cell_line_upgrade_5_6(upgrader, cell_line_v5, cell_line_v5_unknown, cel
 
 
 def test_cell_line_upgrade_6_7(upgrader, cell_line_v6):
-    assert 'donors' not in value
     value = upgrader.upgrade('cell_line', cell_line_v6, current_version='6', target_version='7')
     assert 'donor' not in value
     assert value['schema_version'] == '7'
