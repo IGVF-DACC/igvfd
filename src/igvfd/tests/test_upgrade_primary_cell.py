@@ -46,7 +46,8 @@ def test_primary_cell_upgrade_5_6(upgrader, primary_cell_v5, primary_cell_v5_unk
 
 
 def test_primary_cell_upgrade_6_7(upgrader, primary_cell_v6):
-    assert 'donors' in primary_cell_v6
+    assert 'donor' in primary_cell_v6
     value = upgrader.upgrade('primary_cell', primary_cell_v6, current_version='6', target_version='7')
     assert 'donor' not in value
+    assert 'donors' in value
     assert value['schema_version'] == '7'
