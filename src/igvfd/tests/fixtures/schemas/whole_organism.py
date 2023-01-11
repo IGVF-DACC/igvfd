@@ -8,7 +8,7 @@ def whole_organism(testapp, lab, source, award, rodent_donor, sample_term_whole_
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Mus musculus',
-        'donor': [rodent_donor['@id']],
+        'donors': [rodent_donor['@id']],
         'biosample_term': sample_term_whole_organism['@id']
     }
     return testapp.post_json('/whole_organism', item, status=201).json['@graph'][0]
@@ -35,7 +35,7 @@ def whole_organism_v2(whole_organism):
     item.update({
         'schema_version': '2',
         'aliases': [],
-        'donor': [],
+        'donors': [],
         'dbxrefs': [],
         'collections': [],
         'alternate_accessions': [],
@@ -87,3 +87,16 @@ def whole_organism_v4_90_or_above(whole_organism):
         'life_stage': 'adult'
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v5(testapp, lab, source, award, rodent_donor, sample_term_whole_organism):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id'],
+        'taxa': 'Mus musculus',
+        'donor': [rodent_donor['@id']],
+        'biosample_term': sample_term_whole_organism['@id']
+    }
+    return testapp.post_json('/whole_organism', item, status=201).json['@graph'][0]

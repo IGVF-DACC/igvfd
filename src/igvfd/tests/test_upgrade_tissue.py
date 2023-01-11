@@ -43,3 +43,9 @@ def test_tissue_upgrade_5_6(upgrader, tissue_v5, tissue_v5_unknown, tissue_v5_90
     assert 'life_stage' not in value
     assert value['lower_bound_age'] == 90 and value['upper_bound_age'] == 90
     assert value['schema_version'] == '6'
+
+
+def test_tissue_upgrade_6_7(upgrader, tissue_v6):
+    value = upgrader.upgrade('whole_organism', tissue_v6, current_version='6', target_version='7')
+    assert 'donor' not in value
+    assert value['schema_version'] == '7'
