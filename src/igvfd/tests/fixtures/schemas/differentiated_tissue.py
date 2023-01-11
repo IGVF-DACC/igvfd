@@ -146,4 +146,4 @@ def differentiated_tissue_v7(testapp, lab, award, source, human_donor, sample_te
         'donor': [human_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id']
     }
-    return testapp.post_json('/differentiated_tissue', item, status=201).json['@graph'][0]
+    return item

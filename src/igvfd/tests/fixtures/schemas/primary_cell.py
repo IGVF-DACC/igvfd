@@ -137,4 +137,4 @@ def primary_cell_v6(testapp, other_lab, award, human_donor, sample_term_pluripot
         'donor': [human_donor['@id']],
         'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
-    return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
+    return item

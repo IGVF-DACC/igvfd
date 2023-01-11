@@ -99,4 +99,4 @@ def whole_organism_v5(testapp, lab, source, award, rodent_donor, sample_term_who
         'donor': [rodent_donor['@id']],
         'biosample_term': sample_term_whole_organism['@id']
     }
-    return testapp.post_json('/whole_organism', item, status=201).json['@graph'][0]
+    return item

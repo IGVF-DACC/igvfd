@@ -146,4 +146,4 @@ def differentiated_cell_v7(testapp, lab, award, source, human_donor, sample_term
         'donor': [human_donor['@id']],
         'biosample_term': sample_term_K562['@id']
     }
-    return testapp.post_json('/differentiated_cell', item, status=201).json['@graph'][0]
+    return item

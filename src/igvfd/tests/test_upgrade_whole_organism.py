@@ -41,6 +41,7 @@ def test_whole_organism_upgrade_4_5(upgrader, whole_organism_v4, whole_organism_
 
 
 def test_whole_organism_upgrade_5_6(upgrader, whole_organism_v5):
+    assert 'donors' in whole_organism_v5
     value = upgrader.upgrade('whole_organism', whole_organism_v5, current_version='5', target_version='6')
     assert 'donor' not in value
     assert value['schema_version'] == '6'

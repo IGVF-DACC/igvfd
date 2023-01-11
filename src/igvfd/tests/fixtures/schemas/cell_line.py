@@ -126,4 +126,4 @@ def cell_line_v6(testapp, other_lab, award, human_donor, sample_term_K562):
         'donor': [human_donor['@id']],
         'biosample_term': sample_term_K562['@id']
     }
-    return testapp.post_json('/cell_line', item, status=201).json['@graph'][0]
+    return item
