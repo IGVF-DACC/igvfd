@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Schema version 7
+
+* Rename `donor` to `donors`.
+
 ### Minor changes since schema version 6
 * Add `revoke_detail`.
 * Add `ccf_id`.

@@ -1,5 +1,9 @@
 ## Changelog for *`cell_line.json`*
 
+### Schema version 7
+
+* Rename `donor` to `donors`.
+
 ### Minor changes since schema version 6
 * Add `revoke_detail`.
 * Make required properties `lab`, `source`, and `award` not submittable. No further submission of cell_line are accepted.

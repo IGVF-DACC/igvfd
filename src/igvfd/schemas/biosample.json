@@ -8,7 +8,7 @@
         "award",
         "lab",
         "source",
-        "donor",
+        "donors",
         "taxa",
         "biosample_term"
     ],
@@ -205,15 +205,15 @@
                 "linkTo": "Treatment"
             }
         },
-        "donor": {
-            "title": "Donor",
-            "description": "Donor(s). Any contributing donor.",
+        "donors": {
+            "title": "Donors",
+            "description": "Donor(s) the sample was derived from.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Donor",
-                "description": "Donor(s).",
+                "description": "Donor.",
                 "comment": "See concrete class human_donor.json or rodent_donor.json for available identifiers.",
                 "type": "string",
                 "linkTo": "Donor"
