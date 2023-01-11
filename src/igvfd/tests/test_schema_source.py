@@ -10,7 +10,7 @@ def test_lab_as_source(lab, award, testapp, human_donor, sample_term_K562):
                                 'lab': lab['@id'],
                                 'source': lab['@id'],
                                 'taxa': 'Homo sapiens',
-                                'donor': [human_donor['@id']],
+                                'donors': [human_donor['@id']],
                                 'biosample_term': sample_term_K562['@id']
                             })
     assert res.status_code == 201
