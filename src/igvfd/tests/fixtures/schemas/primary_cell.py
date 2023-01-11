@@ -8,7 +8,7 @@ def primary_cell(testapp, other_lab, award, human_donor, sample_term_pluripotent
         'lab': other_lab['@id'],
         'source': other_lab['@id'],
         'taxa': 'Homo sapiens',
-        'donor': [human_donor['@id']],
+        'donors': [human_donor['@id']],
         'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
@@ -21,7 +21,7 @@ def pooled_from_primary_cell(testapp, lab, award, source, human_donor, sample_te
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
-        'donor': [human_donor['@id']],
+        'donors': [human_donor['@id']],
         'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
@@ -34,7 +34,7 @@ def pooled_from_primary_cell_2(testapp, lab, award, source, human_donor, sample_
         'lab': lab['@id'],
         'source': source['@id'],
         'taxa': 'Homo sapiens',
-        'donor': [human_donor['@id']],
+        'donors': [human_donor['@id']],
         'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
@@ -73,7 +73,7 @@ def primary_cell_v3(primary_cell):
     item.update({
         'schema_version': '3',
         'aliases': [],
-        'donor': [],
+        'donors': [],
         'dbxrefs': [],
         'collections': [],
         'alternate_accessions': [],
@@ -125,3 +125,16 @@ def primary_cell_v5_90_or_above(primary_cell):
         'life_stage': 'adult'
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v6(testapp, other_lab, award, human_donor, sample_term_pluripotent_stem_cell):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'source': other_lab['@id'],
+        'taxa': 'Homo sapiens',
+        'donor': [human_donor['@id']],
+        'biosample_term': sample_term_pluripotent_stem_cell['@id']
+    }
+    return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
