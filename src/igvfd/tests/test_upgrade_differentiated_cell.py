@@ -69,7 +69,7 @@ def test_differentiated_cell_upgrade_6_7(upgrader, differentiated_cell_v6, diffe
 
 def test_differentiated_cell_upgrade_7_8(upgrader, differentiated_cell_v7):
     assert 'donor' in differentiated_cell_v7
-    value = upgrader.upgrade('cell_line', differentiated_cell_v7, current_version='7', target_version='8')
+    value = upgrader.upgrade('differentiated_cell', differentiated_cell_v7, current_version='7', target_version='8')
     assert 'donor' not in value
     assert 'donors' in value
     assert value['schema_version'] == '8'

@@ -70,7 +70,7 @@ def test_differentiated_tissue_upgrade_6_7(upgrader, differentiated_tissue_v6, d
 
 def test_differentiated_tissue_upgrade_7_8(upgrader, differentiated_tissue_v7):
     assert 'donor' in differentiated_tissue_v7
-    value = upgrader.upgrade('cell_line', differentiated_tissue_v7, current_version='7', target_version='8')
+    value = upgrader.upgrade('differentiated_tissue', differentiated_tissue_v7, current_version='7', target_version='8')
     assert 'donor' not in value
     assert 'donors' in value
     assert value['schema_version'] == '8'
