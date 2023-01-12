@@ -133,3 +133,4 @@ def sample_7_8(value, system):
     # https://igvf.atlassian.net/browse/IGVF-387
     if 'donor' in value:
         value['donors'] = value['donor']
+    value.pop('donor')
