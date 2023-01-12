@@ -32,3 +32,5 @@ def test_constructs_existing_initialize_igvf_dev_construct():
     assert isinstance(resources.code_star_connection.arn, str)
     assert isinstance(resources.notification.encode_dcc_chatbot.slack_channel_configuration_arn, str)
     assert isinstance(resources.bus.default.event_bus_arn, str)
+    assert isinstance(resources.bucket_access_policies.download_igvf_files_policy.managed_policy_arn, str)
+    assert isinstance(resources.bucket_access_policies.upload_igvf_files_policy.managed_policy_arn, str)

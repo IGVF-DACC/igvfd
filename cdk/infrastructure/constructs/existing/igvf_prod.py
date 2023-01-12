@@ -8,6 +8,7 @@ from shared_infrastructure.igvf_prod.network import Network
 from shared_infrastructure.igvf_prod.notification import Notification
 from shared_infrastructure.igvf_prod.bus import Bus
 from shared_infrastructure.igvf_prod.secret import PortalCredentials
+from shared_infrastructure.igvf_prod.policy import BucketAccessPolicies
 
 from typing import Any
 
@@ -43,4 +44,8 @@ class Resources(Construct):
         self.bus = Bus(
             self,
             'Bus',
+        )
+        self.bucket_access_policies = BucketAccessPolicies(
+            self,
+            'BucketAccessPolicies',
         )
