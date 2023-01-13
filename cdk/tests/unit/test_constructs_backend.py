@@ -758,6 +758,31 @@ def test_constructs_backend_initialize_backend_construct(
             'InstallLatestAwsSdk': True
         }
     )
+    template.has_resource_properties(
+        'AWS::IAM::Role',
+        {
+            'ManagedPolicyArns': [
+                {
+                    'Ref': 'DownloadManagedPolicyF8118CAF'
+                },
+                {
+                    'Ref': 'UploadManagedPolicy7658189E'
+                },
+                {
+                    'Fn::Join': [
+                        '',
+                        [
+                            'arn:',
+                            {
+                                'Ref': 'AWS::Partition'
+                            },
+                            ':iam::aws:policy/AmazonSSMManagedInstanceCore'
+                        ]
+                    ]
+                }
+            ]
+        }
+    )
 
 
 def test_constructs_backend_backend_construct_define_domain_name(

@@ -141,7 +141,68 @@ def bus(mocker, event_bus):
 
 
 @pytest.fixture
-def existing_resources(mocker, domain, network, secret, chatbot, bus, sns_topic):
+def download_igvf_files_policy(stack):
+    from aws_cdk.aws_iam import PolicyStatement
+    from aws_cdk.aws_iam import ManagedPolicy
+    return ManagedPolicy(
+        stack,
+        'DownloadManagedPolicy',
+        statements=[
+            PolicyStatement(
+                actions=[
+                    's3:GetObject',
+                ],
+                resources=[
+                    'arn:aws:s3:::some-test-bucket/',
+                ]
+            ),
+        ]
+    )
+
+
+@pytest.fixture
+def upload_igvf_files_policy(stack):
+    from aws_cdk.aws_iam import PolicyStatement
+    from aws_cdk.aws_iam import ManagedPolicy
+    return ManagedPolicy(
+        stack,
+        'UploadManagedPolicy',
+        statements=[
+            PolicyStatement(
+                actions=[
+                    's3:PutObject',
+                ],
+                resources=[
+                    'arn:aws:s3:::some-test-bucket/',
+                ]
+            ),
+        ]
+    )
+
+
+@pytest.fixture
+def bucket_access_policies(
+        mocker,
+        download_igvf_files_policy,
+        upload_igvf_files_policy,
+):
+    mock = mocker.Mock()
+    mock.download_igvf_files_policy = download_igvf_files_policy
+    mock.upload_igvf_files_policy = upload_igvf_files_policy
+    return mock
+
+
+@pytest.fixture
+def existing_resources(
+        mocker,
+        domain,
+        network,
+        secret,
+        chatbot,
+        bus,
+        sns_topic,
+        bucket_access_policies
+):
     mock = mocker.Mock()
     mock.domain = domain
     mock.network = network
@@ -151,6 +212,7 @@ def existing_resources(mocker, domain, network, secret, chatbot, bus, sns_topic)
     mock.notification.encode_dcc_chatbot = chatbot
     mock.notification.alarm_notification_topic = sns_topic
     mock.bus = bus
+    mock.bucket_access_policies = bucket_access_policies
     return mock
 
 
