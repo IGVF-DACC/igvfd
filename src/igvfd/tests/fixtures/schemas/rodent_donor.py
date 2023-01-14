@@ -85,3 +85,36 @@ def rodent_donor_v2(rodent_donor):
         'accession': 'IGVFDO555MMM'
     })
     return item
+
+
+@pytest.fixture
+def rodent_donor_v2(rodent_donor):
+    item = rodent_donor.copy()
+    item.update({
+        'schema_version': '2',
+        'external_resources': [
+            {
+                'resource_name': 'Jacks Lab of many unusual rodents',
+                'resource_identifier': 'JacksRodentLab: S77007.1',
+                'resource_url': 'https://jacksrodentsareus.com'
+            }
+        ],
+    })
+    return item
+
+
+@pytest.fixture
+def rodent_donor_with_notes_v2(rodent_donor):
+    item = rodent_donor.copy()
+    item.update({
+        'schema_version': '2',
+        'notes': 'Some other comments are previously here...',
+        'external_resources': [
+            {
+                'resource_name': 'Jacks Lab of many unusual rodents',
+                'resource_identifier': 'JacksRodentLab: S77007.1',
+                'resource_url': 'https://jacksrodentsareus.com'
+            }
+        ],
+    })
+    return item

@@ -8,7 +8,6 @@
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
-        "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
         "ethnicities": [
@@ -37,7 +36,6 @@
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
-        "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
         "ethnicities": [
@@ -52,8 +50,8 @@
         ],
         "external_resources": [
             {
-                "resource_name": "{control region, restriction length polymorphism RFLP} [human, Senegalese Mandenka West African population sample, Mitochondrial, 89 nt]",
-                "resource_identifier": "GenBank: S77007.1",
+                "resource_name": "genbank",
+                "donor_identifier": "GenBank: S77007.1",
                 "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S77007.1"
             }
         ],
@@ -70,7 +68,6 @@
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
-        "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
         "ethnicities": [
@@ -84,8 +81,8 @@
         ],
         "external_resources": [
             {
-                "resource_name": "BRCA1 {exon 23, internal fragment} [human, serous papillary ovarian adenocarcinoma, patient sample 61, Genomic Mutant, 68 nt]",
-                "resource_identifier": "GenBank: S78558.1",
+                "resource_name": "genbank",
+                "donor_identifier": "GenBank: S78558.1",
                 "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S78558.1"
             }
         ],
