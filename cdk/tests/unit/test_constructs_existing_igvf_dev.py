@@ -34,4 +34,4 @@ def test_constructs_existing_initialize_igvf_dev_construct():
     assert isinstance(resources.bus.default.event_bus_arn, str)
     assert isinstance(resources.bucket_access_policies.download_igvf_files_policy.managed_policy_arn, str)
     assert isinstance(resources.bucket_access_policies.upload_igvf_files_policy.managed_policy_arn, str)
-    assert isinstance(resources.upload_igvf_files_user_access_keys.access_key_and_secret_access_key.secret_arn, str)
+    assert isinstance(resources.upload_igvf_files_user_access_keys.secret.secret_arn, str)
