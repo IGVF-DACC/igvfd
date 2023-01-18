@@ -215,7 +215,14 @@ def test_constructs_backend_initialize_backend_construct(
                             'Value': {
                                 'Ref': 'InvalidationQueue8614463D'
                             }
+                        },
+                        {
+                            'Name': 'UPLOAD_USER_ACCESS_KEYS_SECRET_ARN',
+                            'Value': {
+                                'Ref': 'TestSecret16AF87B1'
+                            }
                         }
+
                     ],
                     'Essential': True,
                     'LogConfiguration': {
@@ -554,6 +561,16 @@ def test_constructs_backend_initialize_backend_construct(
                                 'InvalidationQueue8614463D',
                                 'Arn'
                             ]
+                        }
+                    },
+                    {
+                        'Action': [
+                            'secretsmanager:GetSecretValue',
+                            'secretsmanager:DescribeSecret'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Ref': 'TestSecret16AF87B1'
                         }
                     }
                 ],

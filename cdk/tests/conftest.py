@@ -213,6 +213,7 @@ def existing_resources(
     mock.notification.alarm_notification_topic = sns_topic
     mock.bus = bus
     mock.bucket_access_policies = bucket_access_policies
+    mock.upload_igvf_files_user_access_keys.secret = secret
     return mock
 
 
