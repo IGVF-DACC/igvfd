@@ -1,5 +1,9 @@
 ## Changelog for *`differentiated_cell.json`*
 
+### Schema version 9
+
+* Rename `biomarker` to `biomarkers`.
+
 ### Schema version 8
 
 * Rename `donor` to `donors`.

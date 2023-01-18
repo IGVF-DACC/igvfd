@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 7
+
+* Rename `biomarker` to `biomarkers`.
+
 ### Schema version 6
 
 * Rename `donor` to `donors`.
