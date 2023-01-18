@@ -3,7 +3,7 @@
         "description": "The goals of the IGVF Data Administrative and Coordinating Center (DACC) are to support the IGVF Consortium by defining and establishing a strategy that connects all participants to the project’s science. By creating avenues of access that distribute these data to the greater biological research community, the DACC provides a critical connection between scientific producers and consumers.",
         "end_date": "2026-05-31",
         "name": "HG012012",
-        "pi": [
+        "pis": [
             "massa.porta@varius.mauris"
         ],
         "project": "IGVF",
@@ -21,7 +21,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "functional characterization",
-        "pi": [
+        "pis": [
             "c99b68dc-f0dc-4308-9961-90ebcbe24e88",
             "cd8fad93-1c81-48f3-ac4c-b827b1f58b9f",
             "24d01e13-37ef-4521-975b-a2f49533d19b",
@@ -39,7 +39,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "functional characterization",
-        "pi": [
+        "pis": [
             "bb7f009f-8541-4066-ab7e-acbcf587e9f5",
             "84b1815e-2d39-4396-91ff-2ae3043d06db"
         ],
@@ -52,7 +52,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "functional characterization",
-        "pi": [
+        "pis": [
             "430014d5-997d-435a-bfd6-1593cf23912a",
             "a3df1b67-6a26-4639-8ed0-04541b61b4ef"
         ],
@@ -65,7 +65,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "functional characterization",
-        "pi": [
+        "pis": [
             "bca44661-1dc0-4b47-8736-49471174974e",
             "edbe4211-3c87-4018-b9ee-1524ec9daf06",
             "ed779c11-fe9f-4325-9d5f-db4ffa66610a",
@@ -80,7 +80,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "functional characterization",
-        "pi": [
+        "pis": [
             "bf625134-f45e-4d8d-994f-b67d17354757",
             "f82b0978-c015-47a7-aa8d-c94589eab825",
             "6965dbce-ee4b-4ba0-871c-e82d523e58bd"
@@ -94,7 +94,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "functional characterization",
-        "pi": [
+        "pis": [
             "04e6e85d-3737-454e-8a3b-6f8cb2317f00",
             "98fe0dfd-0842-4c04-8f4a-d2b6dee05ee0"
         ],
@@ -107,7 +107,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "functional characterization",
-        "pi": [
+        "pis": [
             "5924d737-62eb-490d-ae70-81348c5db9e6",
             "e456fcc2-69b0-4da2-aaf7-cc40bb171252",
             "00b5591d-1e3d-41bf-be82-13a218283ada",
@@ -123,7 +123,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "functional characterization",
-        "pi": [
+        "pis": [
             "7e51864b-2e2b-40cf-9abc-5cc2dc98f35d",
             "3e3409dd-e4a8-4b7c-bf31-22d2b089ae1f",
             "3a0ff5da-c893-4e36-9d0e-d97940a7e13d"
@@ -137,7 +137,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "networks",
-        "pi": [
+        "pis": [
             "8dd67766-ffa7-47ff-a97d-ca74985d781f",
             "5325998a-e2f9-4d8e-ae95-8661b806a9a7",
             "6f7389c0-8365-48f5-bacb-40000df2d66f"
@@ -151,7 +151,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "networks",
-        "pi": [
+        "pis": [
             "fa9feeb4-28ba-4356-8c24-50f4e6562029",
             "53072249-f58f-4c06-8bf3-924295f53029"
         ],
@@ -164,7 +164,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "networks",
-        "pi": [
+        "pis": [
             "94f562b8-77f7-4061-b89b-3710686e51cc",
             "541d1d5c-e3d8-487c-8e14-81b315db4ee4",
             "d996a4b0-5c77-4f67-9569-979eea823d51",
@@ -180,7 +180,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "networks",
-        "pi": [
+        "pis": [
             "8f8e597c-aa6f-444a-ae2b-8ca9820bbb51",
             "6814ebcb-a591-480d-ae69-0bf5ef2a2e93",
             "3ac39feb-d609-4f9f-ae15-250a7f165900",
@@ -195,7 +195,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "networks",
-        "pi": [
+        "pis": [
             "3674f90a-bdc2-4bde-bbee-a8b0424cf900"
         ],
         "contact_pi": "3674f90a-bdc2-4bde-bbee-a8b0424cf900"
@@ -215,7 +215,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "mapping",
-        "pi": [
+        "pis": [
             "e4cadd5e-0e61-4a99-abc8-84734232e271"
         ],
         "contact_pi": "e4cadd5e-0e61-4a99-abc8-84734232e271"
@@ -227,7 +227,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "mapping",
-        "pi": [
+        "pis": [
             "7dcb9224-2e1d-4000-bea1-1a7480d59f57"
         ],
         "contact_pi": "7dcb9224-2e1d-4000-bea1-1a7480d59f57"
@@ -239,7 +239,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "mapping",
-        "pi": [
+        "pis": [
             "35e81201-434d-4e37-a642-6a780c786f35"
         ],
         "contact_pi": "35e81201-434d-4e37-a642-6a780c786f35"
@@ -251,7 +251,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "predictive modeling",
-        "pi": [
+        "pis": [
             "b4e2c625-bb5c-43fe-a055-7d9dc627a85e"
         ],
         "contact_pi": "b4e2c625-bb5c-43fe-a055-7d9dc627a85e"
@@ -263,7 +263,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "predictive modeling",
-        "pi": [
+        "pis": [
             "5f7f0814-d4c0-4e09-84c7-9af0cb916fb3"
         ],
         "contact_pi": "5f7f0814-d4c0-4e09-84c7-9af0cb916fb3"
@@ -275,7 +275,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "predictive modeling",
-        "pi": [
+        "pis": [
             "62a33315-46da-4a57-b384-a9b3b950c8ee"
         ],
         "contact_pi": "62a33315-46da-4a57-b384-a9b3b950c8ee"
@@ -295,7 +295,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "predictive modeling",
-        "pi": [
+        "pis": [
             "50040ef2-f610-4bf9-9659-61367f1ed1c6"
         ],
         "contact_pi": "50040ef2-f610-4bf9-9659-61367f1ed1c6"
@@ -315,7 +315,7 @@
         "viewing_group": "IGVF",
         "status": "current",
         "component": "predictive modeling",
-        "pi": [
+        "pis": [
             "b45be2ff-771e-4cbb-9c6b-74ece357ca7b"
         ],
         "contact_pi": "b45be2ff-771e-4cbb-9c6b-74ece357ca7b"

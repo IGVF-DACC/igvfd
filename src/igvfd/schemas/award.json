@@ -56,8 +56,8 @@
             "type": "string",
             "format": "date"
         },
-        "pi": {
-            "title": "P.I.",
+        "pis": {
+            "title": "Principal Investigators",
             "description": "Principal Investigator(s) of the grant.",
             "comment": "See user.json for available identifiers.",
             "type": "array",
