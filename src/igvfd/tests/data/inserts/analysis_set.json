@@ -32,7 +32,7 @@
         "donor": [
             "igvf:alias_human_donor1"
         ],
-        "input_file_set": [
+        "input_file_sets": [
             "igvf:basic_analysis_set"
         ]
     }
