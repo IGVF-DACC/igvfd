@@ -1,5 +1,9 @@
 ## Changelog for *`award.json`*
 
+### Schema version 3
+
+* Rename `pi` to `pis`.
+
 ### Minor changes since schema version 2
 
 * Add `aliases` to `identifyingProperties`.
