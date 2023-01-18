@@ -12,8 +12,13 @@
         ],
         "status": "released",
         "uuid": "609869e7-cbd9-4d06-9569-d3fdb4604ccd",
+<<<<<<< HEAD
         "sample": [
             "igvf:treated_tissue"
+=======
+        "samples": [
+            "j-michael-cherry:treated_tissue"
+>>>>>>> 02f5695 (sample and donor to samples and donors on file_set schemas)
         ]
     },
     {
@@ -29,8 +34,13 @@
         ],
         "status": "released",
         "uuid": "dd171b83-cbd9-4d06-4aa1-b77ab49569cd",
+<<<<<<< HEAD
         "donor": [
             "igvf:alias_human_donor1"
+=======
+        "donors": [
+            "j-michael-cherry:alias_human_donor1"
+>>>>>>> 02f5695 (sample and donor to samples and donors on file_set schemas)
         ],
         "input_file_sets": [
             "igvf:basic_analysis_set"

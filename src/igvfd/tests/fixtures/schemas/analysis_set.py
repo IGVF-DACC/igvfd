@@ -25,7 +25,7 @@ def analysis_set_with_sample(
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'sample': [cell_line['@id']],
+        'samples': [cell_line['@id']],
         'input_file_sets': [analysis_set_base['@id']]
     }
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
@@ -42,7 +42,7 @@ def analysis_set_with_donor(
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'donor': [human_donor['@id']],
+        'donors': [human_donor['@id']],
         'input_file_sets': [analysis_set_base['@id']]
     }
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
