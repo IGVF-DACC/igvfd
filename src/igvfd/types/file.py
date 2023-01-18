@@ -18,7 +18,7 @@ from snovault.attachment import InternalRedirect
 
 from snovault.schema_utils import schema_validator
 
-from igvfd.base import Item
+from igvfd.types.base import Item
 
 from igvfd.upload_credentials import UploadCredentials
 
