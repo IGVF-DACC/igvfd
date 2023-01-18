@@ -1,5 +1,6 @@
 import copy
 import json
+import os
 
 import boto3
 import botocore
@@ -7,6 +8,21 @@ import botocore
 from botocore.client import BaseClient
 
 from typing import Optional
+
+
+def get_secretsmanager_client():
+    return boto3.client(
+        'secretsmanager'
+    )
+
+
+def get_upload_files_user_access_key_and_secret_access_key():
+    client = get_secretsmanager_client()
+    return json.loads(
+        client.get_secret_value(
+            SecretId=os.environ['UPLOAD_USER_ACCESS_KEYS_SECRET_ARN']
+        )['SecretString']
+    )
 
 
 def get_sts_client(localstack_endpoint_url: Optional[str] = None) -> BaseClient:
@@ -18,8 +34,12 @@ def get_sts_client(localstack_endpoint_url: Optional[str] = None) -> BaseClient:
             aws_secret_access_key='testing',
             region_name='us-west-2',
         )
+    upload_files_user_keys = get_upload_files_user_access_key_and_secret_access_key()
     return boto3.client(
-        'sts'
+        'sts',
+        aws_access_key_id=upload_files_user_keys['ACCESS_KEY'],
+        aws_secret_access_key=upload_files_user_keys['SECRET_ACCESS_KEY'],
+        region_name='us-west-2',
     )
 
 
