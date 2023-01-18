@@ -4,6 +4,38 @@ import json
 import boto3
 import botocore
 
+from botocore.client import BaseClient
+
+from typing import Optional
+
+
+def get_sts_client(localstack_endpoint_url: Optional[str] = None) -> BaseClient:
+    if localstack_endpoint_url is not None:
+        return boto3.client(
+            'sts',
+            endpoint_url=localstack_endpoint_url,
+            aws_access_key_id='testing',
+            aws_secret_access_key='testing',
+            region_name='us-west-2',
+        )
+    return boto3.client(
+        'sts'
+    )
+
+
+def get_s3_client(localstack_endpoint_url: Optional[str] = None) -> BaseClient:
+    if localstack_endpoint_url is not None:
+        return boto3.client(
+            's3',
+            endpoint_url=localstack_endpoint_url,
+            aws_access_key_id='testing',
+            aws_secret_access_key='testing',
+            region_name='us-west-2',
+        )
+    return boto3.client(
+        's3'
+    )
+
 
 EXTERNAL_BUCKET_STATEMENTS = [
     {
@@ -74,11 +106,11 @@ class UploadCredentials(object):
     Build and distribute federate aws credentials for submitting files
     '''
 
-    def __init__(self, bucket, key, name, profile_name=None):
+    def __init__(self, bucket, key, name, sts_client):
         self._bucket = bucket
         self._key = key
         self._name = name
-        self._profile_name = profile_name
+        self._sts_client = sts_client
         file_url = '{bucket}/{key}'.format(
             bucket=self._bucket,
             key=self._key
@@ -113,12 +145,7 @@ class UploadCredentials(object):
 
     def _get_token(self, policy):
         try:
-            conn = boto3.Session(profile_name=self._profile_name).client('sts')
-        except botocore.exceptions.ProfileNotFound as ecp:
-            print('Warning: ', ecp)
-            return None
-        try:
-            token = conn.get_federation_token(
+            token = self._sts_client.get_federation_token(
                 Name=self._name,
                 Policy=json.dumps(policy),
                 DurationSeconds=_FEDERATION_TOKEN_DURATION_SECONDS,

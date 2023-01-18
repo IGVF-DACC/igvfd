@@ -1,6 +1,13 @@
+import datetime
+import os
+import pytz
+import time
+
 from pyramid.httpexceptions import HTTPForbidden
-from pyramid.httpexceptions import HTTPTemporaryRedirect
 from pyramid.httpexceptions import HTTPNotFound
+from pyramid.httpexceptions import HTTPTemporaryRedirect
+
+from pyramid.settings import asbool
 
 from pyramid.view import view_config
 
@@ -20,6 +27,8 @@ from snovault.schema_utils import schema_validator
 
 from igvfd.types.base import Item
 
+from igvfd.upload_credentials import get_s3_client
+from igvfd.upload_credentials import get_sts_client
 from igvfd.upload_credentials import UploadCredentials
 
 
@@ -130,7 +139,11 @@ class File(Item):
                 bucket=bucket,
                 key=key,
                 name=name,
-                profile_name=profile_name
+                sts_client=get_sts_client(
+                    localstack_endpoint_url=os.environ.get(
+                        'LOCALSTACK_ENDPOINT_URL'
+                    )
+                ),
             )
             sheets['external'] = upload_credentials.external_creds()
         return super(File, cls).create(registry, uuid, properties, sheets)
@@ -271,7 +284,11 @@ def post_upload(context, request):
         bucket=bucket,
         key=key,
         name=name,
-        profile_name=profile_name
+        sts_client=get_sts_client(
+            localstack_endpoint_url=os.environ.get(
+                'LOCALSTACK_ENDPOINT_URL'
+            )
+        ),
     )
     external_credentials = upload_credentials.external_creds()
     new_properties = None
@@ -328,8 +345,12 @@ def download(context, request):
             )
     external = context.propsheets.get('external', {})
     if external.get('service') == 's3':
-        connection = boto3.client('s3')
-        location = connection.generate_presigned_url(
+        s3_client = get_s3_client(
+            localstack_endpoint_url=os.environ.get(
+                'LOCALSTACK_ENDPOINT_URL'
+            )
+        )
+        location = s3_client.generate_presigned_url(
             ClientMethod='get_object',
             Params={
                 'Bucket': external['bucket'],
