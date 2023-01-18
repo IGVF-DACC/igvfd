@@ -43,3 +43,11 @@ def test_cell_line_upgrade_5_6(upgrader, cell_line_v5, cell_line_v5_unknown, cel
     assert 'life_stage' not in value
     assert value['lower_bound_age'] == 90 and value['upper_bound_age'] == 90
     assert value['schema_version'] == '6'
+
+
+def test_cell_line_upgrade_6_7(upgrader, cell_line_v6):
+    assert 'donor' in cell_line_v6
+    value = upgrader.upgrade('cell_line', cell_line_v6, current_version='6', target_version='7')
+    assert 'donor' not in value
+    assert 'donors' in value
+    assert value['schema_version'] == '7'

@@ -8,7 +8,7 @@
         "award",
         "lab",
         "source",
-        "donor",
+        "donors",
         "taxa",
         "biosample_term",
         "classification"
@@ -74,7 +74,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "classification": {
             "title": "Classification",
@@ -164,8 +164,8 @@
         "biosample_term": {
             "title": "Biosample Term"
         },
-        "donor": {
-            "title": "Donor"
+        "donors": {
+            "title": "Donors"
         },
         "originated_from": {
             "title": "Originated From"

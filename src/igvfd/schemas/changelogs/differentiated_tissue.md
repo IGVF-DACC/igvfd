@@ -1,5 +1,9 @@
 ## Changelog for *`differentiated_tissue.json`*
 
+### Schema version 8
+
+* Rename `donor` to `donors`.
+
 ### Minor changes since schema version 7
 * Add `revoke_detail`.
 * Make required properties `lab`, `source`, and `award` not submittable. No further submission of differentiated_tissue are accepted.

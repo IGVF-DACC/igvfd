@@ -1,5 +1,9 @@
 ## Changelog for *`primary_cell.json`*
 
+### Schema version 7
+
+* Rename `donor` to `donors`.
+
 ### Minor changes since schema version 6
 * Add `revoke_detail`.
 * Rename `donors` to `donor`.

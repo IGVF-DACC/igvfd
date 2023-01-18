@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 6
+
+* Rename `donor` to `donors`.
+
 ### Minor changes since schema version 5
 * Add `revoke_detail`.
 * Rename `donors` to `donor`.
