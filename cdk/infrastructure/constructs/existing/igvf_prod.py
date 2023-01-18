@@ -9,7 +9,7 @@ from shared_infrastructure.igvf_prod.notification import Notification
 from shared_infrastructure.igvf_prod.bus import Bus
 from shared_infrastructure.igvf_prod.secret import PortalCredentials
 from shared_infrastructure.igvf_prod.policy import BucketAccessPolicies
-from shared_infrastructure.igvf_dev.secret import UploadFilesUserAccessKeys
+from shared_infrastructure.igvf_prod.secret import UploadFilesUserAccessKeys
 
 from typing import Any
 
