@@ -155,7 +155,7 @@ def test_patch_parents(human_donor, parent_human_donor_1, testapp):
 def test_patch_phenotypic_feature(human_donor, phenotypic_feature_basic, testapp):
     res = testapp.patch_json(
         human_donor['@id'],
-        {'phenotypic_feature': [
+        {'phenotypic_features': [
             phenotypic_feature_basic['@id']
         ]})
     assert res.status_code == 200

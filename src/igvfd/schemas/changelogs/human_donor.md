@@ -3,6 +3,7 @@
 ### Schema version 3
 
 * Remove `health_status_history`.
+* Add `phenotypic_features`.
 
 ### Minor changes since schema version 2
 

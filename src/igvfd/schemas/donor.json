@@ -81,9 +81,9 @@
                 "linkTo": "PhenotypeTerm"
             }
         },
-        "phenotypic_feature": {
+        "phenotypic_features": {
             "title": "Phenotypic Features",
-            "description": "A list of assocated phenotypic features of the donor",
+            "description": "A list of associated phenotypic features of the donor",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,

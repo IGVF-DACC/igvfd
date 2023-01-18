@@ -19,7 +19,7 @@
         "traits": [
             "/phenotype-terms/HP_0000648/"
         ],
-        "phenotypic_feature": [
+        "phenotypic_features": [
             "/phenotypic-features/ae1b4a0b-78e6-af0a-8e6d-c0c9b45905fa/"
         ],
         "parents": [],
@@ -47,7 +47,7 @@
         "sex": "female",
         "taxa": "Homo sapiens",
         "parents": [],
-        "phenotypic_feature": [
+        "phenotypic_features": [
             "/phenotypic-features/2eb275d6-8fb3-11ed-a1eb-0242ac120002/"
         ],
         "external_resources": [
