@@ -41,7 +41,7 @@
             "type": "string",
             "enum": [
                 "GRCh38",
-                "mm10"
+                "GRCm39"
             ]
         },
         "position": {
