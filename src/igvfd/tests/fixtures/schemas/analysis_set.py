@@ -46,3 +46,15 @@ def analysis_set_with_donor(
         'input_file_sets': [analysis_set_base['@id']]
     }
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def analysis_set_v1(analysis_set_base, curated_set_genome, human_donor, cell_line):
+    item = analysis_set_base.copy()
+    item.update({
+        'schema_version': '1',
+        'sample': [cell_line['@id']],
+        'donor': [human_donor['@id']],
+        'input_file_set': [curated_set_genome['@id']]
+    })
+    return item

@@ -100,3 +100,13 @@ def whole_organism_v5(testapp, lab, source, award, rodent_donor, sample_term_who
         'biosample_term': sample_term_whole_organism['@id']
     }
     return item
+
+
+@pytest.fixture
+def whole_organism_v6(whole_organism, biomarker_CD1e_low):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '6',
+        'biomarker': [biomarker_CD1e_low['@id']]
+    })
+    return item

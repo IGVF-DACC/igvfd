@@ -138,3 +138,13 @@ def primary_cell_v6(testapp, other_lab, award, human_donor, sample_term_pluripot
         'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
     return item
+
+
+@pytest.fixture
+def primary_cell_v7(primary_cell, biomarker_CD1e_low):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '7',
+        'biomarker': [biomarker_CD1e_low['@id']]
+    })
+    return item

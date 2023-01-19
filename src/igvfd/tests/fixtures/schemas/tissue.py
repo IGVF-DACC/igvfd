@@ -125,3 +125,13 @@ def tissue_v6(testapp, lab, source, award, rodent_donor, sample_term_adrenal_gla
         'biosample_term': sample_term_adrenal_gland['@id']
     }
     return item
+
+
+@pytest.fixture
+def tissue_v7(tissue, biomarker_CD1e_low):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '7',
+        'biomarker': [biomarker_CD1e_low['@id']]
+    })
+    return item

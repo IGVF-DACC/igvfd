@@ -20,3 +20,13 @@ def award_v1(award):
         'aliases': []
     })
     return item
+
+
+@pytest.fixture
+def award_v2(award, user_v1):
+    item = award.copy()
+    item.update({
+        'schema_version': '2',
+        'pi': [user_v1['@id']]
+    })
+    return item
