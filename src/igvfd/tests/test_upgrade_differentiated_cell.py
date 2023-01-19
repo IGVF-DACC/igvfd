@@ -73,3 +73,11 @@ def test_differentiated_cell_upgrade_7_8(upgrader, differentiated_cell_v7):
     assert 'donor' not in value
     assert 'donors' in value
     assert value['schema_version'] == '8'
+
+
+def test_differentiated_cell_upgrade_8_9(upgrader, differentiated_cell_v8):
+    biomarkers = differentiated_cell_v8['biomarker']
+    value = upgrader.upgrade('differentiated_cell', differentiated_cell_v8, current_version='8', target_version='9')
+    assert 'biomarker' not in value
+    assert biomarkers == value['biomarkers']
+    assert value['schema_version'] == '9'

@@ -51,3 +51,11 @@ def test_cell_line_upgrade_6_7(upgrader, cell_line_v6):
     assert 'donor' not in value
     assert 'donors' in value
     assert value['schema_version'] == '7'
+
+
+def test_cell_line_upgrade_7_8(upgrader, cell_line_v7):
+    biomarkers = cell_line_v7['biomarker']
+    value = upgrader.upgrade('cell_line', cell_line_v7, current_version='7', target_version='8')
+    assert 'biomarker' not in value
+    assert biomarkers == value['biomarkers']
+    assert value['schema_version'] == '8'
