@@ -6,14 +6,14 @@ def test_accession(human_donor, testapp):
     assert res.json['accession'][:6] == 'IGVFDO'
 
 
-def test_ethnicity(human_donor, testapp):
+def test_ethnicities(human_donor, testapp):
     res = testapp.patch_json(
         human_donor['@id'],
-        {'ethnicity': ['European']})
+        {'ethnicities': ['European']})
     assert res.status_code == 200
     res = testapp.patch_json(
         human_donor['@id'],
-        {'ethnicity': ['Elf']}, expect_errors=True)
+        {'ethnicities': ['Elf']}, expect_errors=True)
     assert res.status_code == 422
 
 

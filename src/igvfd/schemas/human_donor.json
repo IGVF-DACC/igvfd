@@ -52,7 +52,7 @@
                 "type": "string"
             }
         },
-        "ethnicity": {
+        "ethnicities": {
             "title": "Ethnicity",
             "comment": "We use http://bioportal.bioontology.org/ontologies/HANCESTRO as a template for the enum list of ethnicities.",
             "type": "array",
@@ -113,8 +113,8 @@
         "award": {
             "title": "Award"
         },
-        "ethnicity": {
-            "title": "Ethnicity"
+        "ethnicities": {
+            "title": "Ethnicities"
         },
         "lab": {
             "title": "Lab"
@@ -130,7 +130,7 @@
         "accession": 1.0,
         "@type": 1.0,
         "taxa": 1.0,
-        "ethnicity": 1.0
+        "ethnicities": 1.0
     },
     "changelog": "/profiles/changelogs/human_donor.md"
 }
