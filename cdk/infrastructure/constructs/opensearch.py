@@ -71,7 +71,7 @@ class Opensearch(Construct):
         self.domain = Domain(
             self,
             'Domain',
-            version=EngineVersion.OPENSEARCH_1_2,
+            version=EngineVersion.OPENSEARCH_2_3,
             capacity=self.props.capacity,
             ebs=EbsOptions(
                 volume_size=self.props.volume_size,
