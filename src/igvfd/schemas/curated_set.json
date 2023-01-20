@@ -57,5 +57,62 @@
             ]
         }
     },
+    "facets": {
+        "status": {
+            "title": "Status"
+        },
+        "sample": {
+            "title": "Sample"
+        },
+        "donor": {
+            "title": "Donor"
+        },
+        "lab": {
+            "title": "Lab"
+        },
+        "award": {
+            "title": "Award"
+        },
+        "taxa": {
+            "title": "Taxa"
+        },
+        "curated_set_type": {
+            "title": "Curated Set Type"
+        }
+    },
+    "columns": {
+        "uuid": {
+            "title": "UUID"
+        },
+        "aliases": {
+            "title": "Aliases"
+        },
+        "status": {
+            "title": "Status"
+        },
+        "sample": {
+            "title": "Sample"
+        },
+        "donor": {
+            "title": "Donor"
+        },
+        "lab": {
+            "title": "Lab"
+        },
+        "award": {
+            "title": "Award"
+        },
+        "taxa": {
+            "title": "Taxa"
+        },
+        "curated_set_type": {
+            "title": "Curated Set Type"
+        }
+    },
+    "boost_values": {
+        "@type": 1.0,
+        "taxa": 1.0,
+        "curated_set_type": 1.0
+    },
     "changelog": "/profiles/changelogs/curated_set.md"
 }
