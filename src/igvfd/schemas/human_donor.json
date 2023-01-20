@@ -44,44 +44,12 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "2"
+            "default": "3"
         },
         "parents": {
             "items": {
                 "linkTo": "HumanDonor",
                 "type": "string"
-            }
-        },
-        "health_status_history": {
-            "title": "Health Status History",
-            "description": "Relevent health status changes in the donor",
-            "type": "array",
-            "minItems": 1,
-            "items": {
-                "title": "Health Status",
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                    "health_description": {
-                        "title": "Description of Donor Health",
-                        "description": "Description of the health status change.",
-                        "type": "string",
-                        "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-                        "formInput": "textarea"
-                    },
-                    "date_start": {
-                        "title": "Date Health Change Started",
-                        "description": "The date the donor health change started.",
-                        "type": "string",
-                        "format": "date"
-                    },
-                    "date_end": {
-                        "title": "Date Health Change Ended",
-                        "description": "The date the donor health change ended.  This value is not set if the health status is continuing, or if there is a following health status.",
-                        "type": "string",
-                        "format": "date"
-                    }
-                }
             }
         },
         "ethnicity": {

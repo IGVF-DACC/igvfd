@@ -9,5 +9,49 @@
         "notes": "Phenotypic feature of body weight",
         "lab": "j-michael-cherry",
         "award": "HG012012"
+    },
+    {
+        "feature": "f0aa38a6-fdf2-11ec-7aee-fc96ac1250ce",
+        "quantity": 60,
+        "quantity_units": "kilogram",
+        "observation_date": "2022-10-21",
+        "status": "released",
+        "uuid": "2eb275d6-8fb3-11ed-a1eb-0242ac120002",
+        "notes": "Phenotypic feature of body weight",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "feature": "f0aa38a6-fdf2-11ec-7aee-fc96ac1250ce",
+        "quantity": 200,
+        "quantity_units": "gram",
+        "observation_date": "2022-10-22",
+        "status": "released",
+        "uuid": "65c30d42-8fb3-11ed-a1eb-0242ac120002",
+        "notes": "Phenotypic feature of body weight",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "feature": "f0aa38a6-fdf2-11ec-7aee-fc96ac1250ce",
+        "quantity": 236,
+        "quantity_units": "gram",
+        "observation_date": "2022-09-03",
+        "status": "released",
+        "uuid": "762bc1e2-8fb3-11ed-a1eb-0242ac120002",
+        "notes": "Phenotypic feature of body weight",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
+    },
+    {
+        "feature": "f0aa38a6-fdf2-11ec-7aee-fc96ac1250ce",
+        "quantity": 237,
+        "quantity_units": "gram",
+        "observation_date": "2022-01-04",
+        "status": "released",
+        "uuid": "847d7bdc-8fb3-11ed-a1eb-0242ac120002",
+        "notes": "Phenotypic feature of body weight",
+        "lab": "j-michael-cherry",
+        "award": "HG012012"
     }
 ]

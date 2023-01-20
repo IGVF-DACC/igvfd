@@ -24,6 +24,9 @@
             "/phenotype-terms/1b267ef2-f42e-11ec-b939-0242ac120002/",
             "/phenotype-terms/HP_0001658/"
         ],
+        "phenotypic_features": [
+            "/phenotypic-features/2eb275d6-8fb3-11ed-a1eb-0242ac120002/"
+        ],
         "taxa": "Mus musculus",
         "parents": [],
         "external_resources": [
@@ -60,6 +63,10 @@
         "taxa": "Mus musculus",
         "parents": [
             "c37934b0-4269-4470-be53-9eac7b196447"
+        ],
+        "phenotypic_features": [
+            "/phenotypic-features/65c30d42-8fb3-11ed-a1eb-0242ac120002/",
+            "/phenotypic-features/762bc1e2-8fb3-11ed-a1eb-0242ac120002/"
         ],
         "external_resources": [
             {

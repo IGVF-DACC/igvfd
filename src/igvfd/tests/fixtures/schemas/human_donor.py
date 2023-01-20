@@ -76,3 +76,24 @@ def human_donor_v1(human_donor):
         'references': []
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v2(human_donor):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '2',
+        'health_status_history': [
+            {
+                'health_description': 'Running fever 103F, feeling tired',
+                'date_start': '2022-01-04',
+                'date_end': '2022-01-10'
+            },
+            {
+                'health_description': 'Running fever 103F, feeling tired',
+                'date_start': '2021-12-03',
+                'date_end': '2022-01-10'
+            }
+        ]
+    })
+    return item

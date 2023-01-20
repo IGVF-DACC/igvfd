@@ -81,6 +81,20 @@
                 "linkTo": "PhenotypeTerm"
             }
         },
+        "phenotypic_features": {
+            "title": "Phenotypic Features",
+            "description": "A list of associated phenotypic features of the donor",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "Phenotypic Feature",
+                "description": "Phenotypic feature",
+                "comment": "See phenotypic_feature.json for available identifiers.",
+                "type": "string",
+                "linkTo": "PhenotypicFeature"
+            }
+        },
         "external_resources": {
             "title": "External Resources",
             "description": "A list of external resources associated with the donor.",

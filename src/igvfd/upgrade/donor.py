@@ -26,3 +26,10 @@ def donor_1_2(value, system):
     if 'references' in value:
         if len(value['references']) == 0:
             del value['references']
+
+
+@upgrade_step('human_donor', '2', '3')
+def human_donor_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-90
+    if 'health_status_history' in value:
+        del value['health_status_history']

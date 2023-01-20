@@ -22,6 +22,7 @@ ORDER = [
     'sample_term',
     'assay_term',
     'phenotype_term',
+    'phenotypic_feature',
     'human_donor',
     'rodent_donor',
     'treatment',
@@ -45,8 +46,7 @@ ORDER = [
     'measurement_set',
     'analysis_set',
     'reference_data',
-    'sequence_data',
-    'phenotypic_feature'
+    'sequence_data'
 ]
 
 IS_ATTACHMENT = [

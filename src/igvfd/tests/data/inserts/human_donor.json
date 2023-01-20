@@ -11,18 +11,6 @@
         "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
-        "health_status_history": [
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2022-01-04",
-                "date_end": "2022-01-10"
-            },
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2021-12-03",
-                "date_end": "2022-01-10"
-            }
-        ],
         "ethnicity": [
             "Hispanic"
         ],
@@ -30,6 +18,9 @@
         "taxa": "Homo sapiens",
         "traits": [
             "/phenotype-terms/HP_0000648/"
+        ],
+        "phenotypic_features": [
+            "/phenotypic-features/ae1b4a0b-78e6-af0a-8e6d-c0c9b45905fa/"
         ],
         "parents": [],
         "external_resources": [],
@@ -49,18 +40,6 @@
         "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
-        "health_status_history": [
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2022-01-04",
-                "date_end": "2022-01-10"
-            },
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2021-12-03",
-                "date_end": "2022-01-10"
-            }
-        ],
         "ethnicity": [
             "Eskimo",
             "Arab"
@@ -68,6 +47,9 @@
         "sex": "female",
         "taxa": "Homo sapiens",
         "parents": [],
+        "phenotypic_features": [
+            "/phenotypic-features/2eb275d6-8fb3-11ed-a1eb-0242ac120002/"
+        ],
         "external_resources": [
             {
                 "resource_name": "{control region, restriction length polymorphism RFLP} [human, Senegalese Mandenka West African population sample, Mitochondrial, 89 nt]",
@@ -91,18 +73,6 @@
         "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
-        "health_status_history": [
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2022-01-04",
-                "date_end": "2022-01-10"
-            },
-            {
-                "health_description": "Running fever 103F, feeling tired",
-                "date_start": "2021-12-03",
-                "date_end": "2022-01-10"
-            }
-        ],
         "ethnicity": [
             "Eskimo",
             "Arab"
