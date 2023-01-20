@@ -41,6 +41,12 @@ class SequenceData(File):
             if 'md5sum' in properties:
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
+        if properties.get('status') not in ['deleted', 'replaced']:
+            if 'illumina_read_type' in properties:
+                value = f'sequencing_run:{properties["file_set"]}:{properties["sequencing_run"]}:{properties["illumina_read_type"]}'
+            else:
+                value = f'sequencing_run:{properties["file_set"]}:{properties["sequencing_run"]}'
+            keys.setdefault('sequencing_run', []).append(value)
         return keys
 
 
