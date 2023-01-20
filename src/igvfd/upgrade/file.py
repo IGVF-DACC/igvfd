@@ -7,4 +7,4 @@ def file_1_2(value, system):
     # https://igvf.atlassian.net/browse/IGVF-398
     if 'accession' in value:
         accession = value['accession']
-        accession = accession.replace('FFF', 'FFI')
+        accession = accession.replace('IGVFFF', 'IGVFFI')

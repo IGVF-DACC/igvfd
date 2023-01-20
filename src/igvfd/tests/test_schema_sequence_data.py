@@ -3,7 +3,7 @@ import pytest
 
 def test_sequence_data_1(testapp, sequence_data):
     res = testapp.get(sequence_data['@id'])
-    assert res.json['accession'][:6] == 'IGVFFF'
+    assert res.json['accession'][:6] == 'IGVFFI'
 
 
 def test_sequence_data_validation_error_detail(testapp, sequence_data):
