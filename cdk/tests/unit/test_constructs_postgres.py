@@ -85,6 +85,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
             'CopyTagsToSnapshot': True,
             'DBName': 'igvfd',
             'DBSubnetGroupName': {'Ref': 'PostgresSubnetGroup68192ADF'},
+            'EnablePerformanceInsights': True,
             'Engine': 'postgres',
             'EngineVersion': '14.3',
             'MasterUsername': {
@@ -108,6 +109,7 @@ def test_constructs_postgres_initialize_postgres_construct(stack, vpc, instance_
                 ]
             },
             'MaxAllocatedStorage': 20,
+            'PerformanceInsightsRetentionPeriod': 7,
             'PubliclyAccessible': False,
             'StorageType': 'gp2',
             'Tags': [
