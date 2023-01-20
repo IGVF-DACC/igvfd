@@ -315,7 +315,7 @@ class TestingIGVFItem(IGVFItem):
                 'format': 'accession',
                 'serverDefault': 'accession',
                 'permission': 'import_items',
-                'accessionType': 'FF',
+                'accessionType': 'FI',
             },
             'status': {
                 'title': 'Status',
