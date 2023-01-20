@@ -1,5 +1,9 @@
 ## Changelog for *`gene.json`*
 
+### Minor changes since schema version 3
+
+* Add `GRCM39` to `dependentSchemas` and `locations` assemblies
+
 ### Schema version 3
 
 * Remove `ncbi_entrez_status`.
