@@ -51,3 +51,12 @@ def sequence_data_sequencing_run_2(testapp, lab, award, analysis_set_with_sample
         'sequencing_run': 2
     }
     return testapp.post_json('/sequence_data', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def sequence_data_v1(sequence_data):
+    item = sequence_data.copy()
+    item.update({
+        'schema_version': '1'
+    })
+    return item

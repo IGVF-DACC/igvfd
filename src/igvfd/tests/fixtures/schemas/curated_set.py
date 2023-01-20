@@ -20,3 +20,12 @@ def curated_set_v1(analysis_set_base, human_donor, cell_line):
         'donor': [human_donor['@id']]
     })
     return item
+
+
+@pytest.fixture
+def curated_set_v2(curated_set_genome):
+    item = curated_set_genome.copy()
+    item.update({
+        'schema_version': '1'
+    })
+    return item
