@@ -20,7 +20,7 @@ def file_set_1_2(value, system):
 @upgrade_step('analysis_set', '2', '3')
 @upgrade_step('curated_set', '2', '3')
 @upgrade_step('measurement_set', '2', '3')
-def fileseeet_2_3(value, system):
+def file_set_2_3(value, system):
     # https://igvf.atlassian.net/browse/IGVF-398
     if 'accession' in value:
         accession = value['accession']
