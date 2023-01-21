@@ -2,7 +2,7 @@
 
 ### Schema version 3
 
-* Rename `resource_identifier` to `donor_identifier` and linked `resource_name` to `Source` in `external_resource` from base class `donor`.
+* Remove `external_resource` from base class `donor`.
 
 ### Minor changes since schema version 2
 

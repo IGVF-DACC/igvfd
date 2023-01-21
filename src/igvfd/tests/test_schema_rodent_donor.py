@@ -80,46 +80,6 @@ def test_collections_fail(rodent_donor, testapp):
     assert res.status_code == 422
 
 
-def test_external_resources(rodent_donor, source, testapp):
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {'external_resources': [
-            {
-                'resource_name': source['@id'],
-                'donor_identifier': 'GenBank: S69760.1',
-                'resource_url': 'https://www.ncbi.nlm.nih.gov/nuccore/S69760.1'
-            }
-        ]})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {'external_resources': [
-            {
-                'resource_name': source['@id'],
-                'donor_identifier': 'GenBank: S69760.1'
-            }
-        ]})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {'external_resources': [
-            {
-                'resource_name': source['@id'],
-                'resource_url': 'https://www.ncbi.nlm.nih.gov/nuccore/S69760.1'
-            }
-        ]}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {'external_resources': [
-            {
-                'donor_identifier': 'GenBank: S69760.1',
-                'resource_url': 'https://www.ncbi.nlm.nih.gov/nuccore/S69760.1'
-            }
-        ]})
-    assert res.status_code == 200
-
-
 def test_taxa(award, lab, testapp):
     res = testapp.post_json(
         '/rodent_donor',

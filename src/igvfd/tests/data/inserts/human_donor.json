@@ -21,8 +21,6 @@
         "phenotypic_features": [
             "/phenotypic-features/ae1b4a0b-78e6-af0a-8e6d-c0c9b45905fa/"
         ],
-        "parents": [],
-        "external_resources": [],
         "collections": [
             "ENCODE"
         ]
@@ -44,16 +42,8 @@
         ],
         "sex": "female",
         "taxa": "Homo sapiens",
-        "parents": [],
         "phenotypic_features": [
             "/phenotypic-features/2eb275d6-8fb3-11ed-a1eb-0242ac120002/"
-        ],
-        "external_resources": [
-            {
-                "resource_name": "genbank",
-                "donor_identifier": "GenBank: S77007.1",
-                "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S77007.1"
-            }
         ],
         "collections": [
             "ENCODE"
@@ -78,13 +68,6 @@
         "taxa": "Homo sapiens",
         "parents": [
             "a1abeff6-8024-41d3-a713-5d22c86ffc57"
-        ],
-        "external_resources": [
-            {
-                "resource_name": "genbank",
-                "donor_identifier": "GenBank: S78558.1",
-                "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S78558.1"
-            }
         ],
         "collections": [
             "ENCODE"

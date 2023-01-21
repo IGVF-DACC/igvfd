@@ -51,3 +51,17 @@ def donor_4_5(value, system):
         accession_prefix = value['accession'][0:6]
         accession_suffix = value['accession'][6:]
         value['accession'] = f'{accession_prefix}0{accession_suffix}A'
+
+
+@upgrade_step('human_donor', '3', '4')
+def human_donor_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-386
+    if 'external_resources' in value:
+        del value['external_resources']
+
+
+@upgrade_step('rodent_donor', '2', '3')
+def rodent_donor_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-386
+    if 'external_resources' in value:
+        del value['external_resources']

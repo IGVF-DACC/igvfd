@@ -28,13 +28,6 @@
             "/phenotypic-features/2eb275d6-8fb3-11ed-a1eb-0242ac120002/"
         ],
         "taxa": "Mus musculus",
-        "external_resources": [
-            {
-                "resource_name": "clinvar",
-                "donor_identifier": "Allele ID 29539",
-                "resource_url": "https://www.ncbi.nlm.nih.gov/clinvar/variation/14500/?new_evidence=false"
-            }
-        ],
         "collections": [
             "ENCODE"
         ]
@@ -66,13 +59,6 @@
         "phenotypic_features": [
             "/phenotypic-features/65c30d42-8fb3-11ed-a1eb-0242ac120002/",
             "/phenotypic-features/762bc1e2-8fb3-11ed-a1eb-0242ac120002/"
-        ],
-        "external_resources": [
-            {
-                "resource_name": "omim",
-                "donor_identifier": "OMIM: 613083",
-                "resource_url": "https://omim.org/entry/613083"
-            }
         ],
         "collections": [
             "ENCODE"

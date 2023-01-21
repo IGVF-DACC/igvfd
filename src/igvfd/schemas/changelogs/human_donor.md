@@ -8,6 +8,10 @@
 
 * Rename `ethnicity` to `ethnicities`.
 
+### Schema version 4
+
+* Remove `external_resource` from base class `donor`.
+
 ### Schema version 3
 
 * Remove `health_status_history`.

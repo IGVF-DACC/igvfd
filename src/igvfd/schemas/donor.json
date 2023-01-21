@@ -94,41 +94,6 @@
                 "type": "string",
                 "linkTo": "PhenotypicFeature"
             }
-        },
-        "external_resources": {
-            "title": "External Resources",
-            "comment": "External identifier that uniquely identify the donor of the sample, e.g. for strains it might be a strain identifier at a repository or a de-identified donor ID for a person.",
-            "description": "A list of external resources associated with the donor.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": false,
-            "items": {
-                "title": "External Resource",
-                "description": "An external resource associated with the donor.",
-                "type": "object",
-                "required": [
-                    "donor_identifier"
-                ],
-                "additionalProperties": false,
-                "properties": {
-                    "resource_name": {
-                        "title": "External Resource Name",
-                        "description": "Name of external source, such as the lab or company.",
-                        "type": "string",
-                        "linkTo": "Source"
-                    },
-                    "donor_identifier": {
-                        "title": "External Donor Identifier",
-                        "description": "External identifier that uniquely identify the donor of the sample.",
-                        "type": "string"
-                    },
-                    "resource_url": {
-                        "title": "External Resource URL",
-                        "description": "URL for the external resource",
-                        "type": "string"
-                    }
-                }
-            }
         }
     }
 }
