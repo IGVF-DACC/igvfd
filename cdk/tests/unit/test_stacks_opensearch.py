@@ -40,7 +40,7 @@ def test_stacks_opensearch_initialize_opensearch_stack(config):
             'EncryptionAtRestOptions': {
                 'Enabled': False
             },
-            'EngineVersion': 'OpenSearch_1.2',
+            'EngineVersion': 'OpenSearch_2.3',
             'LogPublishingOptions': {
                 'ES_APPLICATION_LOGS': {
                     'CloudWatchLogsLogGroupArn': {
