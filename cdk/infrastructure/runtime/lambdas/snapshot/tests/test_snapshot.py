@@ -173,7 +173,7 @@ def test_runtime_lambdas_rds_snapshot_get_latest_snapshot_id(aws_credentials, mo
     latest_snapshot = get_latest_rds_snapshot_id(
         event={
             'ResourceProperties': {
-                'db_instance_identifier': 'xyz123',
+                'db_instance_identifier': 'xyz123-demo-rds',
             }
         },
         context={}
@@ -194,7 +194,7 @@ def test_runtime_lambdas_rds_snapshot_on_create(aws_credentials, mocker):
     results = on_create(
         event={
             'ResourceProperties': {
-                'db_instance_identifier': 'xyz123',
+                'db_instance_identifier': 'xyz123-demo-rds',
             }
         },
         context={}
@@ -211,7 +211,7 @@ def test_runtime_lambdas_rds_snapshot_custom_resource_handler(aws_credentials, m
     )
     event = {
         'ResourceProperties': {
-            'db_instance_identifier': 'xyz123',
+            'db_instance_identifier': 'xyz123-demo-rds',
         }
     }
     event['RequestType'] = 'Create'
