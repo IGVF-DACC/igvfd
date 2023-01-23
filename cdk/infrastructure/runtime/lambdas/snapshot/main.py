@@ -62,7 +62,8 @@ def get_latest_rds_snapshot_id(event, context):
     client = get_rds_client()
     paginator = get_describe_db_snapshots_paginator(client)
     query = make_query(
-        paginator
+        paginator,
+        IncludeShared=True,
     )
     results = get_results(query)
     filtered_results = filter_results_by_db_instance_identifier(results, db_instance_identifier)
