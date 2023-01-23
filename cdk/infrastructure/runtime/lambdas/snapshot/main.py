@@ -67,7 +67,6 @@ def get_latest_rds_snapshot_id(event, context):
     )
     results = get_results(query)
     filtered_results = filter_results_by_db_instance_identifier(results, db_instance_identifier)
-    print(filtered_results)
     sorted_results = sort_results_by_create_time(
         filtered_results
     )
