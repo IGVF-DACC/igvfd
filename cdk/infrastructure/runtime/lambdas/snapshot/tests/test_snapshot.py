@@ -101,6 +101,34 @@ def raw_results():
             'OriginalSnapshotCreateTime': datetime.datetime(2022, 5, 9, 7, 14, 31, 987000, tzinfo=tzutc()),
             'SnapshotTarget': 'region'
         },
+        {
+            'DBSnapshotIdentifier': 'arn:aws:rds:us-west-2:109189702753:snapshot:ipbe3yif4qeg11-2023-01-20-07-58',
+            'DBInstanceIdentifier': 'ipbe3yif4qeg11',
+            'SnapshotCreateTime': datetime.datetime(2023, 1, 20, 22, 46, 2, 453000, tzinfo=tzutc()),
+            'Engine': 'postgres',
+            'AllocatedStorage': 10,
+            'Status': 'available',
+            'Port': 5432,
+            'AvailabilityZone': 'us-west-2b',
+            'VpcId': 'vpc-0b5e3b97317057133',
+            'InstanceCreateTime': datetime.datetime(2022, 7, 1, 21, 48, 24, 404000, tzinfo=tzutc()),
+            'MasterUsername': 'postgres',
+            'EngineVersion': '14.3',
+            'LicenseModel': 'postgresql-license',
+            'SnapshotType': 'shared',
+            'OptionGroupName': 'default:postgres-14',
+            'PercentProgress': 100,
+            'SourceRegion': 'us-west-2',
+            'SourceDBSnapshotIdentifier': 'arn:aws:rds:us-west-2:109189702753:snapshot:rds:ipbe3yif4qeg11-2023-01-20-07-58',
+            'StorageType': 'gp2',
+            'Encrypted': False,
+            'DBSnapshotArn': 'arn:aws:rds:us-west-2:109189702753:snapshot:ipbe3yif4qeg11-2023-01-20-07-58',
+            'IAMDatabaseAuthenticationEnabled': False,
+            'ProcessorFeatures': [],
+            'DbiResourceId': 'db-W3VKOJXXCUUPIL7NCUEOQGQUAI',
+            'OriginalSnapshotCreateTime': datetime.datetime(2023, 1, 20, 7, 58, 43, 811000, tzinfo=tzutc()),
+            'SnapshotTarget': 'region'
+        }
     ]
 
 
@@ -150,7 +178,7 @@ def test_runtime_lambdas_rds_snapshot_sort_results_by_create_time(aws_credential
     from snapshot.main import sort_results_by_create_time
     sorted_results = sort_results_by_create_time(raw_results())
     assert (
-        sorted_results[0]['DBSnapshotIdentifier'] == 'rds:xyz123-demo-rds-2022-05-22-07-13'
+        sorted_results[0]['DBSnapshotIdentifier'] == 'arn:aws:rds:us-west-2:109189702753:snapshot:ipbe3yif4qeg11-2023-01-20-07-58'
     )
 
 
@@ -160,7 +188,7 @@ def test_runtime_lambdas_rds_snapshot_get_latest_result(aws_credentials):
     from snapshot.main import get_latest_result
     sorted_results = sort_results_by_create_time(raw_results())
     latest_result = get_latest_result(sorted_results)
-    assert latest_result['DBSnapshotIdentifier'] == 'rds:xyz123-demo-rds-2022-05-22-07-13'
+    assert latest_result['DBSnapshotIdentifier'] == 'arn:aws:rds:us-west-2:109189702753:snapshot:ipbe3yif4qeg11-2023-01-20-07-58'
 
 
 @mock_rds
