@@ -5,7 +5,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias10"
+            "igvf:alias10"
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
@@ -47,7 +47,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:treated_primary_cells"
+            "igvf:treated_primary_cells"
         ],
         "status": "released",
         "submitter_comment": "This is a treated primary cell sample.",
@@ -77,7 +77,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:pooled_primary_cell"
+            "igvf:pooled_primary_cell"
         ],
         "donors": [
             "j-michael-cherry:alias_human_donor_child"
@@ -101,7 +101,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:part_of_treated_primary_cells"
+            "igvf:part_of_treated_primary_cells"
         ],
         "status": "released",
         "submitter_comment": "This is a part of a treated primary cell sample.",
@@ -132,7 +132,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:primary_cell_part_of_whole_organism"
+            "igvf:primary_cell_part_of_whole_organism"
         ],
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"

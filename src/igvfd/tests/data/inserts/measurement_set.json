@@ -1,7 +1,7 @@
 [
     {
         "aliases": [
-            "j-michael-cherry:basic_measurement_set"
+            "igvf:basic_measurement_set"
         ],
         "submitter_comment": "Comment for a measurement set.",
         "description": "A basic measurement set.",

@@ -5,7 +5,7 @@
         "status": "released",
         "uuid": "93634a0b-e033-3730-b64c-c0c9b4597e0e",
         "aliases": [
-            "j-michael-cherry:alzheimers-disease"
+            "igvf:alzheimers-disease"
         ],
         "notes": "Phenotype ontology term object for Alzheimer's disease"
     },
@@ -27,7 +27,7 @@
         "status": "released",
         "uuid": "df2e1dab-3484-f4bb-f2dc-b1f8b451dace",
         "aliases": [
-            "j-michael-cherry:epilepsy_trait"
+            "igvf:epilepsy_trait"
         ],
         "notes": "Phenotype ontology term object for epilepsy"
     },

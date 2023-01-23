@@ -45,7 +45,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:treated_cell_line"
+            "igvf:treated_cell_line"
         ],
         "status": "released",
         "submitter_comment": "This is s a treated cell line.",

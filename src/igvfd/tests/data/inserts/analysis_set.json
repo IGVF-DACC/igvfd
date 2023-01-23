@@ -1,7 +1,7 @@
 [
     {
         "aliases": [
-            "j-michael-cherry:basic_analysis_set"
+            "igvf:basic_analysis_set"
         ],
         "submitter_comment": "Comment for an analysis set.",
         "description": "A basic analysis set.",
@@ -18,7 +18,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:analysis_set_with_input"
+            "igvf:analysis_set_with_input"
         ],
         "submitter_comment": "Comment for an analysis set.",
         "description": "An analysis set with an input file set.",

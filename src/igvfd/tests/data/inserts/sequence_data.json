@@ -5,7 +5,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:bam_subreads_file"
+            "igvf:bam_subreads_file"
         ],
         "status": "released",
         "md5sum": "77ffd7ed8bcd82ec3f01887601778db3",
@@ -23,7 +23,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:fastq_reads_file_paired_end_1"
+            "igvf:fastq_reads_file_paired_end_1"
         ],
         "status": "released",
         "md5sum": "7eaf2b1427763a9c92f802cc7557e164",
@@ -53,7 +53,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:fastq_reads_file_paired_end_2"
+            "igvf:fastq_reads_file_paired_end_2"
         ],
         "status": "released",
         "md5sum": "76c86bacf6763a9c92f89c41755759c4",

@@ -5,7 +5,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias3"
+            "igvf:alias3"
         ],
         "donors": [
             "j-michael-cherry:alias_human_donor2"
@@ -32,7 +32,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:treated_tissue"
+            "igvf:treated_tissue"
         ],
         "status": "released",
         "taxa": "Homo sapiens",
@@ -56,7 +56,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:pooled_tissue"
+            "igvf:pooled_tissue"
         ],
         "donors": [
             "j-michael-cherry:alias_human_donor_child"
@@ -76,7 +76,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:tissue_part_of_tissue"
+            "igvf:tissue_part_of_tissue"
         ],
         "status": "released",
         "taxa": "Homo sapiens",
@@ -104,7 +104,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:tissue_part_of_whole_organism"
+            "igvf:tissue_part_of_whole_organism"
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",

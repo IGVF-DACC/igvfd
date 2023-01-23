@@ -5,7 +5,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:fastq_genome_reference_file"
+            "igvf:fastq_genome_reference_file"
         ],
         "status": "released",
         "md5sum": "7f1987dea86105dd9d2582c0a91c3856",
@@ -24,7 +24,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:txt_sequence_barcodes_file"
+            "igvf:txt_sequence_barcodes_file"
         ],
         "status": "released",
         "md5sum": "0fe14d38d30dc30f393bf163a9772eac",

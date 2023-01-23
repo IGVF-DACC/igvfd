@@ -1,7 +1,7 @@
 [
     {
         "aliases": [
-            "j-michael-cherry:Antibody_characterization_standards_IGVF"
+            "igvf:Antibody_characterization_standards_IGVF"
         ],
         "description": "AB characterization standards.",
         "attachment": "Antibody_Characterization_IGVF.pdf",
@@ -13,7 +13,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:characterization_massspec_insert"
+            "igvf:characterization_massspec_insert"
         ],
         "description": "Characterization of a biosample K562, lane 33.",
         "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
@@ -26,7 +26,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:characterization_restriction_insert"
+            "igvf:characterization_restriction_insert"
         ],
         "description": "Characterization of a biosample HepG2, lane 233.",
         "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
@@ -39,7 +39,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:computational_protocol_insert"
+            "igvf:computational_protocol_insert"
         ],
         "description": "Computtaional analysis pipeline description and diagram.",
         "attachment": "iCLIP_pipeline_ENCODE.pdf",
@@ -51,7 +51,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:experimental_protocol"
+            "igvf:experimental_protocol"
         ],
         "description": "Protocol of the experimental procedure.",
         "attachment": "Stam_15_protocols.pdf",
@@ -63,7 +63,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:file_format_specification_insert"
+            "igvf:file_format_specification_insert"
         ],
         "description": "File format specs. Column 1 through 25 explained.",
         "attachment": "bedMethyl.txt",
@@ -75,7 +75,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:image_svs_insert"
+            "igvf:image_svs_insert"
         ],
         "description": "Gel image.",
         "attachment": "PathologyImage_CMU-1.svs",
@@ -87,7 +87,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:image_tif_insert"
+            "igvf:image_tif_insert"
         ],
         "description": "Pathology high resolution image.",
         "attachment": "hnRNPA1_aviva-1_WB_HeLa_Fu.TIF",
@@ -99,7 +99,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:plasmid_map_insert"
+            "igvf:plasmid_map_insert"
         ],
         "description": "Vector map.",
         "attachment": "pLKO1_vector.png",
@@ -111,7 +111,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:characterization_RT-qPCR_insert"
+            "igvf:characterization_RT-qPCR_insert"
         ],
         "description": "Characterization of a sample using RT-qPCR.",
         "attachment": "jocelyn.jpg",
@@ -124,7 +124,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:characterization_PCR_insert"
+            "igvf:characterization_PCR_insert"
         ],
         "description": "Characterization of a sample using PCR.",
         "attachment": "jocelyn.jpg",
@@ -137,7 +137,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:characterization_immunoprecipitation_insert"
+            "igvf:characterization_immunoprecipitation_insert"
         ],
         "description": "Characterization of a sample using immunoprecipitation.",
         "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
@@ -150,7 +150,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:characterization_sequencing_insert"
+            "igvf:characterization_sequencing_insert"
         ],
         "description": "Characterization of a sample using sequencing.",
         "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
@@ -163,7 +163,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:characterization_immunofluorescence_insert"
+            "igvf:characterization_immunofluorescence_insert"
         ],
         "description": "Characterization of a sample using immunofluorescence.",
         "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
@@ -176,7 +176,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:characterization_immunoblot_insert"
+            "igvf:characterization_immunoblot_insert"
         ],
         "description": "Characterization of a sample with immunoblot.",
         "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",
@@ -189,7 +189,7 @@
     },
     {
         "aliases": [
-            "j-michael-cherry:characterization_FACS_insert"
+            "igvf:characterization_FACS_insert"
         ],
         "description": "Characterization of a sample using FACS.",
         "attachment": "mouse_H3K4me3_07-473_validation_Hardison.pdf",

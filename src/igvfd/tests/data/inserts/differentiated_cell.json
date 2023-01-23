@@ -5,7 +5,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias5"
+            "igvf:alias5"
         ],
         "donors": [
             "j-michael-cherry:alias_human_donor2"
@@ -78,7 +78,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:differentiated_cell_part_of"
+            "igvf:differentiated_cell_part_of"
         ],
         "status": "released",
         "taxa": "Homo sapiens",
