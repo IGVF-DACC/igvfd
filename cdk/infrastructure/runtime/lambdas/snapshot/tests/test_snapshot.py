@@ -232,3 +232,10 @@ def test_runtime_lambdas_rds_snapshot_custom_resource_handler(aws_credentials, m
         context={}
     )
     assert response is None
+
+
+def test_filter_results_by_db_instance_identifier():
+    from snapshot.main import filter_results_by_db_instance_identifier
+    results = raw_results()
+    filtered_results = filter_results_by_db_instance_identifier(results, 'xyz123-demo-rds')
+    assert len(filtered_results) == 3
