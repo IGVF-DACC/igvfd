@@ -47,6 +47,11 @@ def sort_results_by_create_time(results):
     )
 
 
+def filter_results_by_db_instance_identifier(results, db_instance_identifier):
+    filtered_results = [result for result in results if result['DBInstanceIdentifier'] == db_instance_identifier]
+    return filtered_results
+
+
 @log(message='Getting latest result')
 def get_latest_result(sorted_results):
     return list(sorted_results)[0]
@@ -57,12 +62,13 @@ def get_latest_rds_snapshot_id(event, context):
     client = get_rds_client()
     paginator = get_describe_db_snapshots_paginator(client)
     query = make_query(
-        paginator,
-        DBInstanceIdentifier=db_instance_identifier,
+        paginator
     )
     results = get_results(query)
+    filtered_results = filter_results_by_db_instance_identifier(results, db_instance_identifier)
+    print(filtered_results)
     sorted_results = sort_results_by_create_time(
-        results
+        filtered_results
     )
     latest_result = get_latest_result(sorted_results)
     # Serialize datetime objects to str.
