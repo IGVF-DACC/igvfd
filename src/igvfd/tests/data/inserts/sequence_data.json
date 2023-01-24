@@ -14,7 +14,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/subreads.bam",
         "file_size": 31208300,
         "upload_status": "pending",
-        "file_set": "j-michael-cherry:basic_analysis_set",
+        "file_set": "igvf:basic_analysis_set",
         "sequencing_run": 1
     },
     {
@@ -43,7 +43,7 @@
         "dbxrefs": [
             "SRA:SRR0000005"
         ],
-        "file_set": "j-michael-cherry:basic_analysis_set",
+        "file_set": "igvf:basic_analysis_set",
         "sequencing_run": 1,
         "illumina_read_type": "R1"
     },
@@ -73,7 +73,7 @@
         "dbxrefs": [
             "SRA:SRR0000005"
         ],
-        "file_set": "j-michael-cherry:basic_analysis_set",
+        "file_set": "igvf:basic_analysis_set",
         "sequencing_run": 1,
         "illumina_read_type": "R2"
     }

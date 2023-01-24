@@ -8,12 +8,12 @@
         "award": "HG012012",
         "lab": "j-michael-cherry",
         "documents": [
-            "j-michael-cherry:Antibody_characterization_standards_IGVF"
+            "igvf:Antibody_characterization_standards_IGVF"
         ],
         "status": "released",
         "uuid": "609869e7-cbd9-4d06-9569-d3fdb4604ccd",
         "sample": [
-            "j-michael-cherry:treated_tissue"
+            "igvf:treated_tissue"
         ]
     },
     {
@@ -25,15 +25,15 @@
         "award": "HG012012",
         "lab": "j-michael-cherry",
         "documents": [
-            "j-michael-cherry:Antibody_characterization_standards_IGVF"
+            "igvf:Antibody_characterization_standards_IGVF"
         ],
         "status": "released",
         "uuid": "dd171b83-cbd9-4d06-4aa1-b77ab49569cd",
         "donor": [
-            "j-michael-cherry:alias_human_donor1"
+            "igvf:alias_human_donor1"
         ],
         "input_file_set": [
-            "j-michael-cherry:basic_analysis_set"
+            "igvf:basic_analysis_set"
         ]
     }
 ]

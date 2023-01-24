@@ -8,14 +8,14 @@
         "award": "HG012012",
         "lab": "j-michael-cherry",
         "documents": [
-            "j-michael-cherry:Antibody_characterization_standards_IGVF"
+            "igvf:Antibody_characterization_standards_IGVF"
         ],
         "status": "released",
         "uuid": "67380d9f-06da-f9fe-9569-d31ce0607eae",
         "sample": [
-            "j-michael-cherry:treated_tissue"
+            "igvf:treated_tissue"
         ],
-        "assay_term": "j-michael-cherry:starr-seq",
+        "assay_term": "igvf:starr-seq",
         "protocol": "https://www.protocols.io/test-protocols-url-12345"
     }
 ]

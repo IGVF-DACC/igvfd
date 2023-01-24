@@ -8,7 +8,7 @@
             "igvf:organoid"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor2"
+            "igvf:alias_human_donor2"
         ],
         "status": "released",
         "taxa": "Homo sapiens",
@@ -36,7 +36,7 @@
             "igvf:gastruloid"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor1"
+            "igvf:alias_human_donor1"
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",
@@ -55,7 +55,7 @@
             "igvf:pooled_gastruloid"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor_child"
+            "igvf:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",
@@ -81,7 +81,7 @@
         "source": "/labs/j-michael-cherry/",
         "part_of": "IGVFSM000BBB",
         "donors": [
-            "j-michael-cherry:alias_human_donor2"
+            "igvf:alias_human_donor2"
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "post_differentiation_time": 5,

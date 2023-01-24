@@ -9,7 +9,7 @@
             "igvf-dacc:in_vitro_system_cell_line"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor1"
+            "igvf:alias_human_donor1"
         ],
         "passage_number": 2,
         "status": "released",

@@ -28,7 +28,7 @@
             "igvf:yeastF"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor1"
+            "igvf:alias_human_donor1"
         ],
         "biosample_term": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/",
         "status": "released",
@@ -45,7 +45,7 @@
             "igvf:yeastF2"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor_child"
+            "igvf:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/",
         "status": "released",
@@ -82,7 +82,7 @@
             "igvf:revoked_whole_organism"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor_child"
+            "igvf:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/",
         "status": "revoked",
