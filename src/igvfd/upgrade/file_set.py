@@ -24,4 +24,4 @@ def file_set_2_3(value, system):
     # https://igvf.atlassian.net/browse/IGVF-398
     if 'accession' in value:
         accession = value['accession']
-        accession = accession.replace('IGVFFS', 'IGVFDS')
+        value['accession'] = accession.replace('IGVFFS', 'IGVFDS')
