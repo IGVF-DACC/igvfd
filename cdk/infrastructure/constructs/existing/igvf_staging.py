@@ -8,6 +8,8 @@ from shared_infrastructure.igvf_staging.network import Network
 from shared_infrastructure.igvf_staging.notification import Notification
 from shared_infrastructure.igvf_staging.bus import Bus
 from shared_infrastructure.igvf_staging.secret import PortalCredentials
+from shared_infrastructure.igvf_staging.policy import BucketAccessPolicies
+from shared_infrastructure.igvf_staging.secret import UploadFilesUserAccessKeys
 
 from typing import Any
 
@@ -43,4 +45,12 @@ class Resources(Construct):
         self.bus = Bus(
             self,
             'Bus',
+        )
+        self.bucket_access_policies = BucketAccessPolicies(
+            self,
+            'BucketAccessPolicies',
+        )
+        self.upload_igvf_files_user_access_keys = UploadFilesUserAccessKeys(
+            self,
+            'UploadFilesUserAccessKeys',
         )

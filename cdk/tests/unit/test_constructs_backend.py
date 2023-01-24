@@ -215,7 +215,14 @@ def test_constructs_backend_initialize_backend_construct(
                             'Value': {
                                 'Ref': 'InvalidationQueue8614463D'
                             }
+                        },
+                        {
+                            'Name': 'UPLOAD_USER_ACCESS_KEYS_SECRET_ARN',
+                            'Value': {
+                                'Ref': 'TestSecret16AF87B1'
+                            }
                         }
+
                     ],
                     'Essential': True,
                     'LogConfiguration': {
@@ -555,6 +562,16 @@ def test_constructs_backend_initialize_backend_construct(
                                 'Arn'
                             ]
                         }
+                    },
+                    {
+                        'Action': [
+                            'secretsmanager:GetSecretValue',
+                            'secretsmanager:DescribeSecret'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Ref': 'TestSecret16AF87B1'
+                        }
                     }
                 ],
                 'Version': '2012-10-17'
@@ -756,6 +773,31 @@ def test_constructs_backend_initialize_backend_construct(
                 ]
             },
             'InstallLatestAwsSdk': True
+        }
+    )
+    template.has_resource_properties(
+        'AWS::IAM::Role',
+        {
+            'ManagedPolicyArns': [
+                {
+                    'Ref': 'DownloadManagedPolicyF8118CAF'
+                },
+                {
+                    'Ref': 'UploadManagedPolicy7658189E'
+                },
+                {
+                    'Fn::Join': [
+                        '',
+                        [
+                            'arn:',
+                            {
+                                'Ref': 'AWS::Partition'
+                            },
+                            ':iam::aws:policy/AmazonSSMManagedInstanceCore'
+                        ]
+                    ]
+                }
+            ]
         }
     )
 
