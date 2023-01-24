@@ -106,3 +106,12 @@ def rodent_donor_v3(rodent_donor):
         ]
     })
     return item
+
+
+@pytest.fixture
+def rodent_donor_v4(rodent_donor):
+    item = rodent_donor.copy()
+    item.update({
+        'schema_version': '4'
+    })
+    return item
