@@ -36,6 +36,7 @@ ORDER = [
     'differentiated_cell',
     'technical_sample',
     'whole_organism',
+    'sequencing_library',
     'curated_set',
     'software',
     'software_version',
