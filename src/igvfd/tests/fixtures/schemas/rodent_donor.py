@@ -8,7 +8,8 @@ def rodent_donor(testapp, lab, award):
         'lab': lab['@id'],
         'taxa': 'Mus musculus',
         'strain': 'strain1',
-        'sex': 'male'
+        'sex': 'male',
+        'individual_rodent': False
     }
     return testapp.post_json('/rodent_donor', item, status=201).json['@graph'][0]
 
@@ -20,7 +21,8 @@ def parent_rodent_donor_1(testapp, lab, award):
         'lab': lab['@id'],
         'taxa': 'Mus musculus',
         'strain': 'strain2',
-        'sex': 'female'
+        'sex': 'female',
+        'individual_rodent': False
     }
     return testapp.post_json('/rodent_donor', item, status=201).json['@graph'][0]
 
@@ -32,7 +34,8 @@ def parent_rodent_donor_2(testapp, lab, award):
         'lab': lab['@id'],
         'taxa': 'Mus musculus',
         'strain': 'strain3',
-        'sex': 'male'
+        'sex': 'male',
+        'individual_rodent': False
     }
     return testapp.post_json('/rodent_donor', item, status=201).json['@graph'][0]
 
@@ -44,7 +47,8 @@ def parent_rodent_donor_3(testapp, lab, award):
         'lab': lab['@id'],
         'taxa': 'Mus musculus',
         'strain': 'strain4',
-        'sex': 'male'
+        'sex': 'male',
+        'individual_rodent': False
     }
     return testapp.post_json('/rodent_donor', item, status=201).json['@graph'][0]
 
@@ -56,7 +60,8 @@ def rodent_donor_orphan(testapp, lab, award):
         'lab': lab['@id'],
         'taxa': 'Mus musculus',
         'strain': 'strain5',
-        'sex': 'female'
+        'sex': 'female',
+        'individual_rodent': False
     }
     return testapp.post_json('/rodent_donor', item, status=201).json['@graph'][0]
 

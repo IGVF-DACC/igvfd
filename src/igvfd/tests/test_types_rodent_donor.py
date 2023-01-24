@@ -7,7 +7,8 @@ def test_rodent_donor_duplicate_strain_sex(testapp, lab, award):
         'lab': lab['@id'],
         'taxa': 'Mus musculus',
         'strain': 'strain10',
-        'sex': 'female'
+        'sex': 'female',
+        'individual_rodent': False
     }
     response1 = testapp.post_json('/rodent_donor', item1, status=201)
     assert response1.status_code == 201
@@ -16,7 +17,8 @@ def test_rodent_donor_duplicate_strain_sex(testapp, lab, award):
         'lab': lab['@id'],
         'taxa': 'Mus musculus',
         'strain': 'strain10',
-        'sex': 'female'
+        'sex': 'female',
+        'individual_rodent': False
     }
     response2 = testapp.post_json('/rodent_donor', item2, status=409)
     assert response2.status_code == 409
