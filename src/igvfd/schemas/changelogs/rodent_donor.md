@@ -1,14 +1,21 @@
 ## Changelog for *`rodent_donor.json`*
 
+<<<<<<< HEAD
 ### Schema version 5
+=======
+### Schema version 3
+>>>>>>> 7eee2ecc (changelogs)
 
 * Add `rodent_identifier`.
 * Add `individual_rodent`.
 
+<<<<<<< HEAD
 ### Schema version 4
 
 * Remove `external_resource`.
 
+=======
+>>>>>>> 7eee2ecc (changelogs)
 ### Minor changes since schema version 2
 
 * Add `description`.
