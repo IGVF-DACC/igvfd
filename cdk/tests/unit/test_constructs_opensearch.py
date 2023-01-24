@@ -40,7 +40,7 @@ def test_constructs_opensearch_initialize_opensearch_construct(stack, vpc, insta
             'EncryptionAtRestOptions': {
                 'Enabled': False
             },
-            'EngineVersion': 'OpenSearch_1.2',
+            'EngineVersion': 'OpenSearch_2.3',
             'LogPublishingOptions': {
                 'ES_APPLICATION_LOGS': {
                     'CloudWatchLogsLogGroupArn': {
