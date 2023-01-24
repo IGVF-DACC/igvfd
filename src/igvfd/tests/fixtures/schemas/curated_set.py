@@ -26,6 +26,7 @@ def curated_set_v1(analysis_set_base, human_donor, cell_line):
 def curated_set_v2(curated_set_genome):
     item = curated_set_genome.copy()
     item.update({
-        'schema_version': '1'
+        'schema_version': '1',
+        'accession': 'IGVFFS000ZZZ'
     })
     return item
