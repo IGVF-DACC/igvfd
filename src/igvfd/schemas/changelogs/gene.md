@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 3
 
-* Add `GRCM39` to `locations` assemblies
+* Add `GRCm39` to `locations.assembly`
 
 ### Schema version 3
 
