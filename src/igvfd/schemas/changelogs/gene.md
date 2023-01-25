@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 3
 
-* Add `GRCM39` to `dependentSchemas` and `locations` assemblies
+* Add `GRCM39` to `locations` assemblies
 
 ### Schema version 3
 
