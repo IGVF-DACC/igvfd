@@ -61,7 +61,7 @@ def human_donor_3_4(value, system):
 
 
 @upgrade_step('rodent_donor', '2', '3')
-def rodent_donor_2_3(value, system):
+def donor_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-386
     if 'external_resources' in value:
         del value['external_resources']

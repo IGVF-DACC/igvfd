@@ -2,7 +2,7 @@
 
 ### Schema version 3
 
-* Remove `external_resource` from base class `donor`.
+* Remove `external_resource`.
 
 ### Minor changes since schema version 2
 
