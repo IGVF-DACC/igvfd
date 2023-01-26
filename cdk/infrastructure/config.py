@@ -154,7 +154,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
-                            'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:dev-db-12-01-2022',
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:dev-01-26-23',
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
@@ -203,7 +203,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
-                            'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:dev-db-12-01-2022',
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:dev-01-26-23',
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
