@@ -4,7 +4,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias_human_donor1"
+            "igvf:alias_human_donor1"
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
@@ -33,7 +33,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias_human_donor2"
+            "igvf:alias_human_donor2"
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
@@ -66,7 +66,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias_human_donor_child"
+            "igvf:alias_human_donor_child"
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",

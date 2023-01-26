@@ -4,8 +4,8 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias_rodent_donor_1",
-            "j-michael-cherry:rodent_donor_with_arterial_blood_pressure_trait"
+            "igvf:alias_rodent_donor_1",
+            "igvf:rodent_donor_with_arterial_blood_pressure_trait"
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
@@ -45,7 +45,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias_rodent_donor_2"
+            "igvf:alias_rodent_donor_2"
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",

@@ -5,7 +5,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias10"
+            "igvf:alias10"
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
@@ -13,7 +13,7 @@
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor2"
+            "igvf:alias_human_donor2"
         ],
         "notes": "This is a note.",
         "product_id": "CL000001",
@@ -47,7 +47,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:treated_primary_cells"
+            "igvf:treated_primary_cells"
         ],
         "status": "released",
         "submitter_comment": "This is a treated primary cell sample.",
@@ -68,7 +68,7 @@
         "date_obtained": "2022-04-02",
         "source": "/labs/j-michael-cherry/",
         "donors": [
-            "j-michael-cherry:alias_human_donor1"
+            "igvf:alias_human_donor1"
         ]
     },
     {
@@ -77,10 +77,10 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:pooled_primary_cell"
+            "igvf:pooled_primary_cell"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor_child"
+            "igvf:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
@@ -101,7 +101,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:part_of_treated_primary_cells"
+            "igvf:part_of_treated_primary_cells"
         ],
         "status": "released",
         "submitter_comment": "This is a part of a treated primary cell sample.",
@@ -123,7 +123,7 @@
         "date_obtained": "2022-04-02",
         "source": "/labs/j-michael-cherry/",
         "donors": [
-            "j-michael-cherry:alias_human_donor1"
+            "igvf:alias_human_donor1"
         ]
     },
     {
@@ -132,7 +132,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:primary_cell_part_of_whole_organism"
+            "igvf:primary_cell_part_of_whole_organism"
         ],
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
@@ -141,6 +141,6 @@
         "status": "released",
         "taxa": "Mus musculus",
         "source": "/labs/j-michael-cherry/",
-        "part_of": "j-michael-cherry:live_mouse_embryo"
+        "part_of": "igvf:live_mouse_embryo"
     }
 ]

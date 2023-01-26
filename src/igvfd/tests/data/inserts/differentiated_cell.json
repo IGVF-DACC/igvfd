@@ -5,10 +5,10 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:alias5"
+            "igvf:alias5"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor2"
+            "igvf:alias_human_donor2"
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
@@ -33,7 +33,7 @@
             "gary-hon:cardiomyocytes"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor_child"
+            "igvf:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
@@ -59,7 +59,7 @@
             "gary-hon:pooled_cardiomyocytes"
         ],
         "donors": [
-            "j-michael-cherry:alias_human_donor_child"
+            "igvf:alias_human_donor_child"
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
@@ -78,7 +78,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "j-michael-cherry:differentiated_cell_part_of"
+            "igvf:differentiated_cell_part_of"
         ],
         "status": "released",
         "taxa": "Homo sapiens",
@@ -86,7 +86,7 @@
         "source": "/labs/j-michael-cherry/",
         "part_of": "IGVFSM000CCC",
         "donors": [
-            "j-michael-cherry:alias_human_donor2"
+            "igvf:alias_human_donor2"
         ],
         "post_differentiation_time": 5,
         "post_differentiation_time_units": "day",
