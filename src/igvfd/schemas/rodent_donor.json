@@ -55,7 +55,7 @@
             "comment": "Donor with lot_id must include product_id."
         },
         "individual_rodent": {
-            "comment": "A rodent identifier is required if the donor is an individual rodent but may not be submitted if it is not.",
+            "comment": "A rodent identifier is required if the donor is an individual rodent.",
             "if": {
                 "properties": {
                     "individual_rodent": {
