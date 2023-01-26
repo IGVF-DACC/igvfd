@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Minor changes since schema version 4
+
+* Add `African Caribbean`, `Colombian`, `Dai Chinese`, `Kinh Vietnamese`, `Puerto Rican` to `ethnicities`.
+
 ### Schema version 4
 
 * Rename `ethnicity` to `ethnicities`.
