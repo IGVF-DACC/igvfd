@@ -9,8 +9,7 @@
         "lab",
         "taxa",
         "sex",
-        "strain",
-        "individual_rodent"
+        "strain"
     ],
     "identifyingProperties": [
         "uuid",

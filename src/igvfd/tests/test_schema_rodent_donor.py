@@ -88,8 +88,7 @@ def test_taxa(award, lab, testapp):
             'lab': lab['@id'],
             'taxa': 'Mus musculus',
             'sex': 'male',
-            'strain': 'B6',
-            'individual_rodent': False
+            'strain': 'B6'
         })
     assert res.status_code == 201
     res = testapp.post_json(
@@ -99,8 +98,7 @@ def test_taxa(award, lab, testapp):
             'lab': lab['@id'],
             'taxa': 'Homo sapiens',
             'sex': 'male',
-            'strain': 'B6',
-            'individual_rodent': False
+            'strain': 'B6'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.post_json(
@@ -110,8 +108,7 @@ def test_taxa(award, lab, testapp):
             'lab': lab['@id'],
             'taxa': 'Saccharomyces',
             'sex': 'male',
-            'strain': 'B6',
-            'individual_rodent': False
+            'strain': 'B6'
         }, expect_errors=True)
     assert res.status_code == 422
 
