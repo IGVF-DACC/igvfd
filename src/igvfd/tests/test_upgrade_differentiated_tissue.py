@@ -82,3 +82,9 @@ def test_differentiated_cell_upgrade_8_9(upgrader, differentiated_tissue_v8):
     assert 'biomarker' not in value
     assert biomarkers == value['biomarkers']
     assert value['schema_version'] == '9'
+
+
+def test_differentiated_tissue_upgrade_9_10(upgrader, differentiated_tissue_v9):
+    value = upgrader.upgrade('differentiated_tissue', differentiated_tissue_v9, current_version='9', target_version='10')
+    assert value['accession'] == 'IGVFBS0777DDTA'
+    assert value['schema_version'] == '10'

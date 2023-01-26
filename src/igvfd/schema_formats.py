@@ -4,9 +4,9 @@ from jsonschema import FormatChecker
 from pyramid.threadlocal import get_current_request
 from uuid import UUID
 
-accession_re = re.compile(r'^IGVF(FI|DS|SR|AB|SM|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9][A-Z][A-Z][A-Z]$')
+accession_re = re.compile(r'^IGVF(FI|DS|SR|AB|SM|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9][0-9][A-Z][A-Z][A-Z][A-Z]$')
 test_accession_re = re.compile(
-    r'^TST(FI|DS|SR|AB|SM|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9]([0-9][0-9][0-9]|[A-Z][A-Z][A-Z])$')
+    r'^TST(FI|DS|SR|AB|SM|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9][0-9]([0-9][0-9][0-9][0-9]|[A-Z][A-Z][A-Z][A-Z])$')
 uuid_re = re.compile(r'(?i)\{?(?:[0-9a-f]{4}-?){8}\}?')
 
 

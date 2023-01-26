@@ -24,3 +24,9 @@ def test_human_donor_upgrade_3_4(upgrader, human_donor_v3):
     value = upgrader.upgrade('human_donor', human_donor_v3, current_version='3', target_version='4')
     assert 'ethnicity' not in value
     assert ethnicites == value['ethnicities']
+
+
+def test_human_donor_upgrade_4_5(upgrader, human_donor_v4):
+    value = upgrader.upgrade('human_donor', human_donor_v4, current_version='4', target_version='5')
+    assert value['accession'] == 'IGVFDO0999HHSA'
+    assert value['schema_version'] == '5'

@@ -1,7 +1,7 @@
 [
     {
         "uuid": "692a559c-99ac-4892-9c31-929c5ebfc3da",
-        "accession": "IGVFSM000KAS",
+        "accession": "IGVFSM0000KASA",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -21,7 +21,7 @@
     },
     {
         "uuid": "3fdd8d04-f990-4d7c-98b5-0bfb6750bdc5",
-        "accession": "IGVFSM001KAS",
+        "accession": "IGVFSM0001KASA",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -38,7 +38,7 @@
     },
     {
         "uuid": "2380761b-a127-4af8-92e7-63cc53828308",
-        "accession": "IGVFSM002KAS",
+        "accession": "IGVFSM0002KASA",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -54,7 +54,7 @@
     },
     {
         "uuid": "d4c46526-0307-11ed-b939-0242ac120002",
-        "accession": "IGVFSM003KAS",
+        "accession": "IGVFSM0003KASA",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -75,7 +75,7 @@
     },
     {
         "uuid": "2030dc5c-9e6b-ece2-92e7-6d5ad383fd08",
-        "accession": "IGVFSM002REV",
+        "accession": "IGVFSM0002REVO",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [

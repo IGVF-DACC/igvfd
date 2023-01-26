@@ -42,3 +42,13 @@ def technical_sample_v3(tissue):
         'schema_version': '3'
     })
     return item
+
+
+@pytest.fixture
+def technical_sample_v4(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '4',
+        'accession': 'IGVFBS111TTT'
+    })
+    return item

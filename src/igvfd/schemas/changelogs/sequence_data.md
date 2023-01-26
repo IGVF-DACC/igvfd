@@ -1,6 +1,6 @@
 ## Changelog for *`sequence_data.json`*
 
-## Schema version 2
+### Schema version 2
 
 * Change `accessionType` to `FI`
 

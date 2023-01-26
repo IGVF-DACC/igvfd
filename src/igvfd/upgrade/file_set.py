@@ -23,5 +23,5 @@ def file_set_1_2(value, system):
 def file_set_2_3(value, system):
     # https://igvf.atlassian.net/browse/IGVF-398
     if 'accession' in value:
-        accession = value['accession']
-        value['accession'] = accession.replace('IGVFFS', 'IGVFDS')
+        accession_suffix = value['accession'][6:]
+        value['accession'] = f'IGVFDS0{accession_suffix}A'

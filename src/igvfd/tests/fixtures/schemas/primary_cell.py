@@ -148,3 +148,13 @@ def primary_cell_v7(primary_cell, biomarker_CD1e_low):
         'biomarker': [biomarker_CD1e_low['@id']]
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v8(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '8',
+        'accession': 'IGVFBS666PPC'
+    })
+    return item

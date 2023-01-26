@@ -110,3 +110,13 @@ def whole_organism_v6(whole_organism, biomarker_CD1e_low):
         'biomarker': [biomarker_CD1e_low['@id']]
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v7(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '7',
+        'accession': 'IGVFBS111WWO'
+    })
+    return item

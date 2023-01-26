@@ -41,3 +41,13 @@ def donor_3_4(value, system):
     if 'ethnicity' in value:
         value['ethnicities'] = value['ethnicity']
         del value['ethnicity']
+
+
+@upgrade_step('human_donor', '4', '5')
+@upgrade_step('rodent_donor', '2', '3')
+def donor_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-398
+    if 'accession' in value:
+        accession_prefix = value['accession'][0:6]
+        accession_suffix = value['accession'][6:]
+        value['accession'] = f'{accession_prefix}0{accession_suffix}A'

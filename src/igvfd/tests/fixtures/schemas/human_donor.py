@@ -107,3 +107,13 @@ def human_donor_v3(human_donor):
         'ethnicity': ['Hispanic', 'Han Chinese']
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v4(human_donor):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '4',
+        'accession': 'IGVFDO999HHS'
+    })
+    return item

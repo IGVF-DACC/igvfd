@@ -59,3 +59,10 @@ def test_primary_cell_upgrade_7_8(upgrader, primary_cell_v7):
     assert 'biomarker' not in value
     assert biomarkers == value['biomarkers']
     assert value['schema_version'] == '8'
+
+
+def test_primary_cell_upgrade_8_9(upgrader, primary_cell_v8):
+    value = upgrader.upgrade('primary_cell', primary_cell_v8, current_version='8', target_version='9')
+    assert value['accession'] == 'IGVFBS0666PPCA'
+    assert value['schema_version'] == '9'
+
