@@ -110,5 +110,61 @@
             "/phenotype-terms/DOID_10652/",
             "/phenotype-terms/HP_0001658/"
         ]
+    },
+    {
+        "uuid": "",
+        "lab": "chongyuan-luo",
+        "award": "1U01HG012079-01",
+        "aliases": [
+            "corinntest1"
+        ],
+        "status": "",
+        "ethnicity": [
+            "African Caribbean",
+            "Colombian"
+        ],
+        "sex": "female",
+        "taxa": "Homo sapiens",
+        "traits": [
+            "/phenotype-terms/DOID_10652/",
+            "/phenotype-terms/HP_0001658/"
+        ]
+    },
+    {
+        "uuid": "",
+        "lab": "chongyuan-luo",
+        "award": "1U01HG012079-01",
+        "aliases": [
+            "corinntest2"
+        ],
+        "status": "",
+        "ethnicity": [
+            "Dai Chinese",
+            "Kinh Vietnamese"
+        ],
+        "sex": "female",
+        "taxa": "Homo sapiens",
+        "traits": [
+            "/phenotype-terms/DOID_10652/",
+            "/phenotype-terms/HP_0001658/"
+        ]
+    },
+    {
+        "uuid": "",
+        "lab": "chongyuan-luo",
+        "award": "1U01HG012079-01",
+        "aliases": [
+            "corinntest3"
+        ],
+        "status": "",
+        "ethnicity": [
+            "Puerto Rican"
+        ],
+        "sex": "female",
+        "taxa": "Homo sapiens",
+        "traits": [
+            "/phenotype-terms/DOID_10652/",
+            "/phenotype-terms/HP_0001658/"
+        ]
     }
 ]
