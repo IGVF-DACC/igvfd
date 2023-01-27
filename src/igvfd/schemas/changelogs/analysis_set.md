@@ -9,4 +9,3 @@
 * Rename `sample` to `samples`.
 * Rename `donor` to `donors`.
 * Rename `input_file_set` to `input_file_sets`.
-
