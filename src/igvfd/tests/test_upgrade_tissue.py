@@ -65,4 +65,3 @@ def test_tissue_upgrade_8_9(upgrader, tissue_v8):
     value = upgrader.upgrade('tissue', tissue_v8, current_version='8', target_version='9')
     assert value['accession'] == 'IGVFBS0333TTSA'
     assert value['schema_version'] == '9'
-    
