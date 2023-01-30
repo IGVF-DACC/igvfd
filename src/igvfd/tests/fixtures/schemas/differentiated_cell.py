@@ -147,3 +147,13 @@ def differentiated_cell_v7(testapp, lab, award, source, human_donor, sample_term
         'biosample_term': sample_term_K562['@id']
     }
     return item
+
+
+@pytest.fixture
+def differentiated_cell_v8(differentiated_cell, biomarker_CD1e_low):
+    item = differentiated_cell.copy()
+    item.update({
+        'schema_version': '8',
+        'biomarker': [biomarker_CD1e_low['@id']]
+    })
+    return item

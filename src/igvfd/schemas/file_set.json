@@ -24,18 +24,18 @@
         }
     ],
     "dependentSchemas": {
-        "sample": {
+        "samples": {
             "not": {
                 "required": [
-                    "donor"
+                    "donors"
                 ]
             },
             "comment": "Specification of samples is mutually exclusive with specification of donors."
         },
-        "donor": {
+        "donors": {
             "not": {
                 "required": [
-                    "sample"
+                    "samples"
                 ]
             },
             "comment": "Specification of donors is mutually exclusive with specification of samples."
@@ -48,8 +48,8 @@
         "accession": {
             "accessionType": "FS"
         },
-        "sample": {
-            "title": "Sample",
+        "samples": {
+            "title": "Samples",
             "description": "The sample(s) associated with this file set.",
             "type": "array",
             "uniqueItems": true,
@@ -62,8 +62,8 @@
                 "linkTo": "Sample"
             }
         },
-        "donor": {
-            "title": "Donor",
+        "donors": {
+            "title": "Donors",
             "description": "The donor(s) associated with this file set.",
             "type": "array",
             "uniqueItems": true,

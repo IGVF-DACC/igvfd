@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 4
+
+* Rename `ethnicity` to `ethnicities`.
+
 ### Schema version 3
 
 * Remove `health_status_history`.

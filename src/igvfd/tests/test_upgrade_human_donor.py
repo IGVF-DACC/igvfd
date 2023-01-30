@@ -17,3 +17,10 @@ def test_human_donor_upgrade_2_3(upgrader, human_donor_v2):
     value = upgrader.upgrade('human_donor', human_donor_v2, current_version='2', target_version='3')
     assert 'health_status_history' not in value
     assert value['schema_version'] == '3'
+
+
+def test_human_donor_upgrade_3_4(upgrader, human_donor_v3):
+    ethnicites = human_donor_v3['ethnicity']
+    value = upgrader.upgrade('human_donor', human_donor_v3, current_version='3', target_version='4')
+    assert 'ethnicity' not in value
+    assert ethnicites == value['ethnicities']

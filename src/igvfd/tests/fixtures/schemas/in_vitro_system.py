@@ -55,3 +55,13 @@ def in_vitro_system_v1(testapp, lab, award, source, human_donor, sample_term_adr
         'biosample_term': sample_term_adrenal_gland['@id']
     }
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v2(in_vitro_cell_line, biomarker_CD1e_low):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '2',
+        'biomarker': [biomarker_CD1e_low['@id']]
+    })
+    return item

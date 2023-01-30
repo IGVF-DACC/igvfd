@@ -12,7 +12,7 @@
         ],
         "status": "released",
         "uuid": "609869e7-cbd9-4d06-9569-d3fdb4604ccd",
-        "sample": [
+        "samples": [
             "igvf:treated_tissue"
         ]
     },
@@ -29,10 +29,10 @@
         ],
         "status": "released",
         "uuid": "dd171b83-cbd9-4d06-4aa1-b77ab49569cd",
-        "donor": [
+        "donors": [
             "igvf:alias_human_donor1"
         ],
-        "input_file_set": [
+        "input_file_sets": [
             "igvf:basic_analysis_set"
         ]
     }

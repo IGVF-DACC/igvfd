@@ -127,3 +127,13 @@ def cell_line_v6(testapp, other_lab, award, human_donor, sample_term_K562):
         'biosample_term': sample_term_K562['@id']
     }
     return item
+
+
+@pytest.fixture
+def cell_line_v7(cell_line, biomarker_CD1e_low):
+    item = cell_line.copy()
+    item.update({
+        'schema_version': '7',
+        'biomarker': [biomarker_CD1e_low['@id']]
+    })
+    return item

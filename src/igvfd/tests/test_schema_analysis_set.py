@@ -10,13 +10,13 @@ def test_analysis_set_sample_donor_dependency(
 ):
     res = testapp.patch_json(
         analysis_set_with_donor['@id'],
-        {'sample': [cell_line['@id']]},
+        {'samples': [cell_line['@id']]},
         expect_errors=True
     )
     assert res.status_code == 422
     res = testapp.patch_json(
         analysis_set_with_sample['@id'],
-        {'donor': [human_donor['@id']]},
+        {'donors': [human_donor['@id']]},
         expect_errors=True
     )
     assert res.status_code == 422

@@ -33,3 +33,11 @@ def human_donor_2_3(value, system):
     # https://igvf.atlassian.net/browse/IGVF-90
     if 'health_status_history' in value:
         del value['health_status_history']
+
+
+@upgrade_step('human_donor', '3', '4')
+def donor_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-321
+    if 'ethnicity' in value:
+        value['ethnicities'] = value['ethnicity']
+        del value['ethnicity']

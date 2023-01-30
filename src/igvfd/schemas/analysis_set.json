@@ -39,10 +39,10 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
-        "input_file_set": {
-            "title": "Input File Set",
+        "input_file_sets": {
+            "title": "Input File Sets",
             "description": "The file set(s) to which any files used in this analysis set belong.",
             "type": "array",
             "minItems": 1,

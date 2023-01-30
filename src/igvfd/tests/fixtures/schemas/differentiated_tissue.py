@@ -147,3 +147,13 @@ def differentiated_tissue_v7(testapp, lab, award, source, human_donor, sample_te
         'biosample_term': sample_term_adrenal_gland['@id']
     }
     return item
+
+
+@pytest.fixture
+def differentiated_tissue_v8(differentiated_tissue, biomarker_CD1e_low):
+    item = differentiated_tissue.copy()
+    item.update({
+        'schema_version': '8',
+        'biomarker': [biomarker_CD1e_low['@id']]
+    })
+    return item

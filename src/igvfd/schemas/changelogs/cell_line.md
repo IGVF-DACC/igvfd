@@ -1,5 +1,9 @@
 ## Changelog for *`cell_line.json`*
 
+### Schema version 8
+
+* Rename `biomarker` to `biomarkers`.
+
 ### Schema version 7
 
 * Rename `donor` to `donors`.

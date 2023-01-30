@@ -12,7 +12,7 @@
         ],
         "status": "released",
         "uuid": "67380d9f-06da-f9fe-9569-d31ce0607eae",
-        "sample": [
+        "samples": [
             "igvf:treated_tissue"
         ],
         "assay_term": "igvf:starr-seq",

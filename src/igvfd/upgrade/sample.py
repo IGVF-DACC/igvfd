@@ -134,3 +134,17 @@ def sample_7_8(value, system):
     if 'donor' in value:
         value['donors'] = value['donor']
         value.pop('donor')
+
+
+@upgrade_step('cell_line', '7', '8')
+@upgrade_step('differentiated_cell', '8', '9')
+@upgrade_step('differentiated_tissue', '8', '9')
+@upgrade_step('primary_cell', '7', '8')
+@upgrade_step('tissue', '7', '8')
+@upgrade_step('whole_organism', '6', '7')
+@upgrade_step('in_vitro_system', '2', '3')
+def sample_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-321
+    if 'biomarker' in value:
+        value['biomarkers'] = value['biomarker']
+        del value['biomarker']

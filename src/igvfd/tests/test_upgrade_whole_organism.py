@@ -46,3 +46,11 @@ def test_whole_organism_upgrade_5_6(upgrader, whole_organism_v5):
     assert 'donor' not in value
     assert 'donors' in value
     assert value['schema_version'] == '6'
+
+
+def test_whole_organism_upgrade_6_7(upgrader, whole_organism_v6):
+    biomarkers = whole_organism_v6['biomarker']
+    value = upgrader.upgrade('whole_organism', whole_organism_v6, current_version='6', target_version='7')
+    assert 'biomarker' not in value
+    assert biomarkers == value['biomarkers']
+    assert value['schema_version'] == '7'

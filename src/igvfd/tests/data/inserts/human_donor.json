@@ -11,7 +11,7 @@
         "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
-        "ethnicity": [
+        "ethnicities": [
             "Hispanic"
         ],
         "sex": "male",
@@ -40,7 +40,7 @@
         "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
-        "ethnicity": [
+        "ethnicities": [
             "Eskimo",
             "Arab"
         ],
@@ -73,7 +73,7 @@
         "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
-        "ethnicity": [
+        "ethnicities": [
             "Eskimo",
             "Arab"
         ],
@@ -101,7 +101,7 @@
             "chongyuan-luo:AA F donor of fibroblasts"
         ],
         "status": "released",
-        "ethnicity": [
+        "ethnicities": [
             "African American"
         ],
         "sex": "female",
