@@ -23,5 +23,5 @@ def test_technical_sample_upgrade_3_4(upgrader, technical_sample_v3):
 
 def test_technical_sample_upgrade_4_5(upgrader, technical_sample_v4):
     value = upgrader.upgrade('technical_sample', technical_sample_v4, current_version='4', target_version='5')
-    assert value['accession'] == 'IGVFBS0111TTTA'
+    assert value['accession'] == 'IGVFSM0111TTTA'
     assert value['schema_version'] == '5'

@@ -164,6 +164,6 @@ def differentiated_tissue_v9(differentiated_tissue):
     item = differentiated_tissue.copy()
     item.update({
         'schema_version': '9',
-        'accession': 'IGVFBS777DDT'
+        'accession': 'IGVFSM777DDT'
     })
     return item

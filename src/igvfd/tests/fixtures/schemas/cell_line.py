@@ -144,6 +144,6 @@ def cell_line_v8(cell_line):
     item = cell_line.copy()
     item.update({
         'schema_version': '8',
-        'accession': 'IGVFBS222CCL'
+        'accession': 'IGVFSM222CCL'
     })
     return item

@@ -164,6 +164,6 @@ def differentiated_cell_v9(differentiated_cell):
     item = differentiated_cell.copy()
     item.update({
         'schema_version': '9',
-        'accession': 'IGVFBS888DDC'
+        'accession': 'IGVFSM888DDC'
     })
     return item

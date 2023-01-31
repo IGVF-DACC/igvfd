@@ -117,6 +117,6 @@ def whole_organism_v7(whole_organism):
     item = whole_organism.copy()
     item.update({
         'schema_version': '7',
-        'accession': 'IGVFBS111WWO'
+        'accession': 'IGVFSM111WWO'
     })
     return item

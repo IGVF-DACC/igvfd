@@ -49,6 +49,6 @@ def technical_sample_v4(tissue):
     item = tissue.copy()
     item.update({
         'schema_version': '4',
-        'accession': 'IGVFBS111TTT'
+        'accession': 'IGVFSM111TTT'
     })
     return item

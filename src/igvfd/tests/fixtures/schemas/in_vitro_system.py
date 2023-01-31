@@ -72,6 +72,6 @@ def in_vitro_system_v3(in_vitro_cell_line):
     item = in_vitro_cell_line.copy()
     item.update({
         'schema_version': '3',
-        'accession': 'IGVFBS222IIV'
+        'accession': 'IGVFSM222IIV'
     })
     return item

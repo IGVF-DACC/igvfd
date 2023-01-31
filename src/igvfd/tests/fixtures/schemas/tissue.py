@@ -142,6 +142,6 @@ def tissue_v8(tissue):
     item = tissue.copy()
     item.update({
         'schema_version': '8',
-        'accession': 'IGVFBS333TTS'
+        'accession': 'IGVFSM333TTS'
     })
     return item

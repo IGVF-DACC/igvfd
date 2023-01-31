@@ -63,5 +63,5 @@ def test_cell_line_upgrade_7_8(upgrader, cell_line_v7):
 
 def test_cell_line_upgrade_8_9(upgrader, cell_line_v8):
     value = upgrader.upgrade('cell_line', cell_line_v8, current_version='8', target_version='9')
-    assert value['accession'] == 'IGVFBS0222CCLA'
+    assert value['accession'] == 'IGVFSM0222CCLA'
     assert value['schema_version'] == '9'
