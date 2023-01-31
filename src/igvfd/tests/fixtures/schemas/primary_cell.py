@@ -155,6 +155,6 @@ def primary_cell_v8(primary_cell):
     item = primary_cell.copy()
     item.update({
         'schema_version': '8',
-        'accession': 'IGVFBS666PPC'
+        'accession': 'IGVFSM666PPC'
     })
     return item
