@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 5
+
+* Remove `external_resource`.
+
 ### Minor changes since schema version 4
 
 * Add `African Caribbean`, `Colombian`, `Dai Chinese`, `Kinh Vietnamese`, `Puerto Rican` to `ethnicities`.
@@ -7,11 +11,6 @@
 ### Schema version 4
 
 * Rename `ethnicity` to `ethnicities`.
-
-### Schema version 4
-
-* Remove `external_resource` from base class `donor`.
-* Remove `external_resource`.
 
 ### Schema version 3
 

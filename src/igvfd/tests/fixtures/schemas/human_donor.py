@@ -123,7 +123,7 @@ def human_donor_v4(human_donor):
 def human_donor_v3(human_donor):
     item = human_donor.copy()
     item.update({
-        'schema_version': '3',
+        'schema_version': '4',
         'external_resources': [
             {
                 'resource_name': '{control region, restriction length polymorphism RFLP} [human, Senegalese Mandenka West African population sample, Mitochondrial, 89 nt]',

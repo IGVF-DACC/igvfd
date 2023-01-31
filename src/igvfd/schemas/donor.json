@@ -36,7 +36,7 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "3"
+            "hidden comment": "Bump the default in the subclasses."
         },
         "accession": {
             "accessionType": "DO"
