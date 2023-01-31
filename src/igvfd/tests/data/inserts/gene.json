@@ -199,6 +199,12 @@
                 "chromosome": "chr13",
                 "start": 50639995,
                 "end": 50640103
+            },
+            {
+                "assembly": "GRCm39",
+                "chromosome": "chr13",
+                "start": 51693254,
+                "end": 51693339
             }
         ],
         "name": "microRNA 683-2",

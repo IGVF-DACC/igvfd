@@ -59,7 +59,8 @@
                                     "assembly": {
                                         "enum": [
                                             "mm10",
-                                            "mm9"
+                                            "mm9",
+                                            "GRCm39"
                                         ]
                                     }
                                 }
@@ -157,7 +158,8 @@
                             "GRCh38",
                             "hg19",
                             "mm10",
-                            "mm9"
+                            "mm9",
+                            "GRCm39"
                         ]
                     },
                     "chromosome": {
