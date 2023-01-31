@@ -186,8 +186,8 @@ This new object is an array of example objects that can successfully POST agains
 11. If this object has an accession, you will need to update **schema_formats.py** to add the 2 character prefix.
 To add an object with accession prefix 'SM':
 
-            accession_re = re.compile(r'^IGVF(SM|FF|SR|AB|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9][A-Z][A-Z][A-Z]$')
-            est_accession_re = re.compile(r'^TST(SM|FF|SR|AB|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9]([0-9][0-9][0-9]|[A-Z][A-Z][A-Z])$')
+            accession_re = re.compile(r'^IGVF(FI|DS|SR|AB|SM|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9][A-Z][A-Z][A-Z]$')
+            est_accession_re = re.compile(r'^TST(FI|DS|SR|AB|SM|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9]([0-9][0-9][0-9]|[A-Z][A-Z][A-Z])$')
 
 12.  Add a change log markdown file for the new schema to the **schemas/changelogs** directory.
 

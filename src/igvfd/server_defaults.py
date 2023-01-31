@@ -60,7 +60,10 @@ def accession(instance, subschema):
     raise AssertionError('Free accession not found in %d attempts' % ATTEMPTS)
 
 
-PROD_ACCESSION_FORMAT = (digits, digits, digits, ascii_uppercase, ascii_uppercase, ascii_uppercase)
+PROD_ACCESSION_FORMAT = (
+    digits, digits, digits, digits,
+    ascii_uppercase, ascii_uppercase, ascii_uppercase, ascii_uppercase
+)
 
 
 def prod_accession(accession_type):
@@ -68,7 +71,7 @@ def prod_accession(accession_type):
     return 'IGVF' + accession_type + random_part
 
 
-TEST_ACCESSION_FORMAT = (digits, ) * 6
+TEST_ACCESSION_FORMAT = (digits, ) * 8
 
 
 def test_accession(accession_type):

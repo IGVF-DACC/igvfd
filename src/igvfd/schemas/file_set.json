@@ -46,7 +46,7 @@
             "hidden comment": "Bump the default in the subclasses."
         },
         "accession": {
-            "accessionType": "FS"
+            "accessionType": "DS"
         },
         "samples": {
             "title": "Samples",

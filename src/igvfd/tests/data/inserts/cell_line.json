@@ -2,7 +2,7 @@
     {
         "uuid": "467c72a2-4f84-2c8f-96b0-ec8715e18185",
         "lab": "j-michael-cherry",
-        "accession": "IGVFSM000AAA",
+        "accession": "IGVFSM0000AAAA",
         "award": "HG012012",
         "aliases": [
             "igvf-dacc:cell_line"
@@ -41,7 +41,7 @@
     },
     {
         "uuid": "3736b93a-c748-11ec-9d64-0242ac120002",
-        "accession": "IGVFSM001AAA",
+        "accession": "IGVFSM0001AAAA",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -71,7 +71,7 @@
     },
     {
         "uuid": "8e35b598-e688-443b-bf0d-9ea1783d171e",
-        "accession": "IGVFSM002AAA",
+        "accession": "IGVFSM0002AAAA",
         "lab": "ali-mortazavi",
         "award": "HG012012",
         "aliases": [
@@ -92,7 +92,7 @@
     {
         "uuid": "7783e7b0-0302-11ed-b939-0242ac120002",
         "lab": "j-michael-cherry",
-        "accession": "IGVFSM003AAA",
+        "accession": "IGVFSM0003AAAA",
         "award": "HG012012",
         "aliases": [
             "igvf-dacc:part_of_cell_line"

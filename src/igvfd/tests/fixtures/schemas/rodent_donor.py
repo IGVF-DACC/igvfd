@@ -75,3 +75,13 @@ def rodent_donor_v1(rodent_donor):
         'references': []
     })
     return item
+
+
+@pytest.fixture
+def rodent_donor_v2(rodent_donor):
+    item = rodent_donor.copy()
+    item.update({
+        'schema_version': '2',
+        'accession': 'IGVFDO555MMM'
+    })
+    return item

@@ -135,3 +135,13 @@ def tissue_v7(tissue, biomarker_CD1e_low):
         'biomarker': [biomarker_CD1e_low['@id']]
     })
     return item
+
+
+@pytest.fixture
+def tissue_v8(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '8',
+        'accession': 'IGVFSM333TTS'
+    })
+    return item

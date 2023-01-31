@@ -157,3 +157,13 @@ def differentiated_tissue_v8(differentiated_tissue, biomarker_CD1e_low):
         'biomarker': [biomarker_CD1e_low['@id']]
     })
     return item
+
+
+@pytest.fixture
+def differentiated_tissue_v9(differentiated_tissue):
+    item = differentiated_tissue.copy()
+    item.update({
+        'schema_version': '9',
+        'accession': 'IGVFSM777DDT'
+    })
+    return item

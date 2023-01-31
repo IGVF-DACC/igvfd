@@ -148,3 +148,19 @@ def sample_8_9(value, system):
     if 'biomarker' in value:
         value['biomarkers'] = value['biomarker']
         del value['biomarker']
+
+
+@upgrade_step('cell_line', '8', '9')
+@upgrade_step('differentiated_cell', '9', '10')
+@upgrade_step('differentiated_tissue', '9', '10')
+@upgrade_step('primary_cell', '8', '9')
+@upgrade_step('tissue', '8', '9')
+@upgrade_step('whole_organism', '7', '8')
+@upgrade_step('in_vitro_system', '3', '4')
+@upgrade_step('technical_sample', '4', '5')
+def sample_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-398
+    if 'accession' in value:
+        accession_prefix = value['accession'][0:6]
+        accession_suffix = value['accession'][6:]
+        value['accession'] = f'{accession_prefix}0{accession_suffix}A'

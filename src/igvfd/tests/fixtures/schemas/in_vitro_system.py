@@ -65,3 +65,13 @@ def in_vitro_system_v2(in_vitro_cell_line, biomarker_CD1e_low):
         'biomarker': [biomarker_CD1e_low['@id']]
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v3(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '3',
+        'accession': 'IGVFSM222IIV'
+    })
+    return item

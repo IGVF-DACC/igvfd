@@ -137,3 +137,13 @@ def cell_line_v7(cell_line, biomarker_CD1e_low):
         'biomarker': [biomarker_CD1e_low['@id']]
     })
     return item
+
+
+@pytest.fixture
+def cell_line_v8(cell_line):
+    item = cell_line.copy()
+    item.update({
+        'schema_version': '8',
+        'accession': 'IGVFSM222CCL'
+    })
+    return item

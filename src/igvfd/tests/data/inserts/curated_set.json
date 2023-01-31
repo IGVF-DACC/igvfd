@@ -4,7 +4,7 @@
         "lab": "/labs/j-michael-cherry/",
         "uuid": "40f1e08c-5d6d-4d19-8f69-3fd91420c09f",
         "curated_set_type": "genome",
-        "accession": "IGVFFS000AAA",
+        "accession": "IGVFDS0000AAAA",
         "status": "released",
         "taxa": "Homo sapiens",
         "documents": [
@@ -25,7 +25,7 @@
         "lab": "/labs/tim-reddy/",
         "uuid": "7c7c2dbb-10b4-4a62-a9d3-37ce57755a26",
         "curated_set_type": "transcriptome",
-        "accession": "IGVFFS111BBB",
+        "accession": "IGVFDS1111BBBB",
         "status": "in progress",
         "taxa": "Homo sapiens",
         "documents": [
@@ -45,7 +45,7 @@
         "lab": "/labs/ansuman-satpathy/",
         "uuid": "3d9b4df4-defb-4f47-8bf5-b18e09506e66",
         "curated_set_type": "variants",
-        "accession": "IGVFFS222CCC",
+        "accession": "IGVFDS2222CCCC",
         "status": "in progress",
         "taxa": "Mus musculus",
         "documents": [
