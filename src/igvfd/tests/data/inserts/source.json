@@ -182,21 +182,5 @@
         "title": "GenBank",
         "url": "https://www.ncbi.nlm.nih.gov/genbank/",
         "uuid": "a2c6977d-64e8-41aa-b476-9bb5cc4846a3"
-    },
-    {
-        "description": "ClinVar at NIH",
-        "name": "clinvar",
-        "status": "released",
-        "title": "ClinVar",
-        "url": "https://www.ncbi.nlm.nih.gov/clinvar/",
-        "uuid": "ed51bcf6-9443-11ed-a1eb-0242ac120002"
-    },
-    {
-        "description": "OMIM Online Catalog of Human Genes and Genetic Disorders",
-        "name": "omim",
-        "status": "released",
-        "title": "OMIM",
-        "url": "https://omim.org/",
-        "uuid": "97dfd248-9444-11ed-a1eb-0242ac120002"
     }
 ]
