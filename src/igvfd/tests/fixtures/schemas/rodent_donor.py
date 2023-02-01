@@ -88,10 +88,10 @@ def rodent_donor_v2(rodent_donor):
 
 
 @pytest.fixture
-def rodent_donor_v2(rodent_donor):
+def rodent_donor_v3(rodent_donor):
     item = rodent_donor.copy()
     item.update({
-        'schema_version': '2',
+        'schema_version': '3',
         'external_resources': [
             {
                 'resource_name': 'Jacks Lab of many unusual rodents',

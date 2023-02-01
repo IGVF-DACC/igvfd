@@ -32,7 +32,7 @@ def test_human_donor_upgrade_4_5(upgrader, human_donor_v4):
     assert value['schema_version'] == '5'
 
 
-def test_human_donor_upgrade_3_4(upgrader, human_donor_v3):
-    value = upgrader.upgrade('human_donor', human_donor_v3, current_version='3', target_version='4')
+def test_human_donor_upgrade_5_6(upgrader, human_donor_v5):
+    value = upgrader.upgrade('human_donor', human_donor_v5, current_version='5', target_version='6')
     assert 'external_resources' not in value
-    assert value['schema_version'] == '5'
+    assert value['schema_version'] == '6'

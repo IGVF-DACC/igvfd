@@ -120,10 +120,10 @@ def human_donor_v4(human_donor):
 
 
 @pytest.fixture
-def human_donor_v3(human_donor):
+def human_donor_v5(human_donor):
     item = human_donor.copy()
     item.update({
-        'schema_version': '4',
+        'schema_version': '5',
         'external_resources': [
             {
                 'resource_name': '{control region, restriction length polymorphism RFLP} [human, Senegalese Mandenka West African population sample, Mitochondrial, 89 nt]',

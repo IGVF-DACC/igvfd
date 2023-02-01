@@ -1,6 +1,6 @@
 ## Changelog for *`rodent_donor.json`*
 
-### Schema version 3
+### Schema version 4
 
 * Remove `external_resource`.
 

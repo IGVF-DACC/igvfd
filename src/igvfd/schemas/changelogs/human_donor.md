@@ -1,6 +1,6 @@
 ## Changelog for *`human_donor.json`*
 
-### Schema version 5
+### Schema version 6
 
 * Remove `external_resource`.
 
