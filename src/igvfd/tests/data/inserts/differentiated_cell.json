@@ -84,7 +84,7 @@
         "taxa": "Homo sapiens",
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "source": "/labs/j-michael-cherry/",
-        "part_of": "IGVFSM000CCC",
+        "part_of": "IGVFSM0000CCCC",
         "donors": [
             "igvf:alias_human_donor2"
         ],
