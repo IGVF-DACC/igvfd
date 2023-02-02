@@ -62,11 +62,14 @@
                 "type": "string",
                 "enum": [
                     "African American",
+                    "African Caribbean",
                     "Arab",
                     "Asian",
                     "Black",
                     "Black African",
                     "Chinese",
+                    "Colombian",
+                    "Dai Chinese",
                     "Esan",
                     "Eskimo",
                     "European",
@@ -75,11 +78,13 @@
                     "Hispanic",
                     "Indian",
                     "Japanese",
+                    "Kinh Vietnamese",
                     "Luhya",
                     "Maasai",
                     "Mende",
                     "Native Hawaiian",
                     "Pacific Islander",
+                    "Puerto Rican",
                     "Yoruba"
                 ]
             }
