@@ -113,65 +113,6 @@
                     }
                 }
             ]
-        },
-        "life_stage": {
-            "comment": "Specification of life_stages relevant to the various biosample types.",
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "taxa": {
-                                "enum": [
-                                    "Mus musculus"
-                                ]
-                            }
-                        },
-                        "required": [
-                            "taxa"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "life_stage": {
-                                "enum": [
-                                    "adult",
-                                    "postnatal",
-                                    "embryonic",
-                                    "unknown"
-                                ]
-                            }
-                        }
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "taxa": {
-                                "enum": [
-                                    "Saccharomyces"
-                                ]
-                            }
-                        },
-                        "required": [
-                            "taxa"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "life_stage": {
-                                "enum": [
-                                    "lag",
-                                    "fermentative",
-                                    "respirative",
-                                    "stationary",
-                                    "decline",
-                                    "unknown"
-                                ]
-                            }
-                        }
-                    }
-                }
-            ]
         }
     },
     "properties": {
@@ -191,9 +132,6 @@
         },
         "donor": {
             "title": "Donor"
-        },
-        "life_stage": {
-            "title": "Life Stage"
         },
         "date_obtained": {
             "title": "Date Obtained"
