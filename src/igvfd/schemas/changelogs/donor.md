@@ -1,5 +1,9 @@
 ## Changelog for *`donor.json`*
 
+### Schema version 4
+
+* Remove `external_resource`.
+
 ### Minor changes since schema version 2
 
 * Add `description`.

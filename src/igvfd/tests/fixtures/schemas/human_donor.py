@@ -117,3 +117,19 @@ def human_donor_v4(human_donor):
         'accession': 'IGVFDO999HHS'
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v5(human_donor):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '5',
+        'external_resources': [
+            {
+                'resource_name': '{control region, restriction length polymorphism RFLP} [human, Senegalese Mandenka West African population sample, Mitochondrial, 89 nt]',
+                'resource_identifier': 'GenBank: S77007.1',
+                'resource_url': 'https://www.ncbi.nlm.nih.gov/nuccore/S77007.1'
+            }
+        ]
+    })
+    return item

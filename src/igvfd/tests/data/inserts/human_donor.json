@@ -8,7 +8,6 @@
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
-        "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
         "ethnicities": [
@@ -22,8 +21,6 @@
         "phenotypic_features": [
             "/phenotypic-features/ae1b4a0b-78e6-af0a-8e6d-c0c9b45905fa/"
         ],
-        "parents": [],
-        "external_resources": [],
         "collections": [
             "ENCODE"
         ]
@@ -37,7 +34,6 @@
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
-        "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
         "ethnicities": [
@@ -46,16 +42,8 @@
         ],
         "sex": "female",
         "taxa": "Homo sapiens",
-        "parents": [],
         "phenotypic_features": [
             "/phenotypic-features/2eb275d6-8fb3-11ed-a1eb-0242ac120002/"
-        ],
-        "external_resources": [
-            {
-                "resource_name": "{control region, restriction length polymorphism RFLP} [human, Senegalese Mandenka West African population sample, Mitochondrial, 89 nt]",
-                "resource_identifier": "GenBank: S77007.1",
-                "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S77007.1"
-            }
         ],
         "collections": [
             "ENCODE"
@@ -70,7 +58,6 @@
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
-        "documents": [],
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
         "ethnicities": [
@@ -81,13 +68,6 @@
         "taxa": "Homo sapiens",
         "parents": [
             "a1abeff6-8024-41d3-a713-5d22c86ffc57"
-        ],
-        "external_resources": [
-            {
-                "resource_name": "BRCA1 {exon 23, internal fragment} [human, serous papillary ovarian adenocarcinoma, patient sample 61, Genomic Mutant, 68 nt]",
-                "resource_identifier": "GenBank: S78558.1",
-                "resource_url": "https://www.ncbi.nlm.nih.gov/nuccore/S78558.1"
-            }
         ],
         "collections": [
             "ENCODE"
