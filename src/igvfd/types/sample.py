@@ -82,6 +82,21 @@ class Biosample(Sample):
         else:
             return 'unknown'
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, biosample_term, taxa, age=None, age_units=None, classification=None):
+        sample_term_object = request.embed(biosample_term, '@@object')
+        term_name = sample_term_object.get('term_name')
+        if classification:
+            return f'{term_name} {classification}, {taxa}, {age}, {age_units}'
+        else:
+            return f'{term_name} {self.item_type}, {taxa}, {age}, {age_units}'
+
 
 @collection(
     name='primary-cells',
