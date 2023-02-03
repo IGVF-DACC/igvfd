@@ -3,6 +3,20 @@ import pytest
 from aws_cdk.assertions import Template
 
 
+def test_get_args_too_long_branch_name_raises_ValueError():
+    from aws_cdk import App
+    from infrastructure.build import Args
+    from infrastructure.build import get_args
+    app = App(
+        context={
+            'branch': 'seriously-this-branch-name-is-like-some-novel'
+        }
+    )
+    with pytest.raises(ValueError) as e:
+        args = get_args(app)
+    assert str(e.value) == 'Branch length 45 exceeds the maximum branch length of 44 characters.'
+
+
 def test_synth_get_args():
     from aws_cdk import App
     from infrastructure.build import Args
