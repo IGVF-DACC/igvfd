@@ -14,7 +14,7 @@ def test_get_args_too_long_branch_name_raises_ValueError():
     )
     with pytest.raises(ValueError) as e:
         args = get_args(app)
-    assert str(e.value) == 'Branch name must not be longer than 44 characters.'
+    assert str(e.value) == 'Branch length 45 exceeds the maximum branch length of 44 characters.'
 
 
 def test_synth_get_args():

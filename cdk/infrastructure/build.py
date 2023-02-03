@@ -30,7 +30,7 @@ def get_args(app: App) -> Args:
     if branch is None:
         raise ValueError('Must specify branch context: `-c branch=$BRANCH`')
     if branch_name_is_too_long(branch):
-        raise ValueError('Branch name must not be longer than 44 characters.')
+        raise ValueError(f'Branch length {len(branch)} exceeds the maximum branch length of 44 characters.')
     config_name = (
         app.node.try_get_context('config-name')
         or get_pipeline_config_name_from_branch(branch)
