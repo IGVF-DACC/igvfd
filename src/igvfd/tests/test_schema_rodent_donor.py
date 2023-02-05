@@ -155,6 +155,10 @@ def test_rodent_identifier_dependency(rodent_donor, award, lab, testapp):
         rodent_donor['@id'],
         {'individual_rodent': True, 'rodent_identifier': '045'})
     assert res.status_code == 200
+    res = testapp.delete(
+        rodent_donor['@id'],
+        {'individual_rodent'})
+    assert res.status_code == 422
     res = testapp.patch_json(
         rodent_donor['@id'],
         {'individual_rodent': False}, expect_errors=True)

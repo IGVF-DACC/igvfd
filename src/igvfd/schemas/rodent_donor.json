@@ -56,25 +56,41 @@
         },
         "individual_rodent": {
             "comment": "A rodent identifier is required if the donor is an individual rodent.",
-            "if": {
-                "properties": {
-                    "individual_rodent": {
-                        "const": true
-                    }
-                }
-            },
-            "then": {
-                "required": [
-                    "rodent_identifier"
-                ]
-            },
-            "else": {
-                "not": {
+            "oneOf": [
+                {
                     "required": [
                         "rodent_identifier"
-                    ]
+                    ],
+                    "properties": {
+                        "individual_rodent": {
+                            "const": true
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "oneOf": [
+                            {
+                                "required": [
+                                    "rodent_identifier"
+                                ],
+                                "properties": {
+                                    "individual_rodent": {
+                                        "const": false
+                                    }
+                                }
+                            },
+                            {
+                                "properties": {
+                                    "individual_rodent": {
+                                        "const": true
+                                    }
+                                }
+                            }
+                        ]
+                    }
                 }
-            }
+            ]
         }
     },
     "properties": {
