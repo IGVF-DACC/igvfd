@@ -92,9 +92,6 @@ def technical_sample_3_4(value, system):
     return
 
 
-@upgrade_step('cell_line', '6', '7')
-@upgrade_step('differentiated_cell', '7', '8')
-@upgrade_step('differentiated_tissue', '7', '8')
 @upgrade_step('primary_cell', '6', '7')
 @upgrade_step('tissue', '6', '7')
 @upgrade_step('whole_organism', '5', '6')
@@ -106,9 +103,6 @@ def sample_7_8(value, system):
         value.pop('donor')
 
 
-@upgrade_step('cell_line', '7', '8')
-@upgrade_step('differentiated_cell', '8', '9')
-@upgrade_step('differentiated_tissue', '8', '9')
 @upgrade_step('primary_cell', '7', '8')
 @upgrade_step('tissue', '7', '8')
 @upgrade_step('whole_organism', '6', '7')
@@ -120,9 +114,6 @@ def sample_8_9(value, system):
         del value['biomarker']
 
 
-@upgrade_step('cell_line', '8', '9')
-@upgrade_step('differentiated_cell', '9', '10')
-@upgrade_step('differentiated_tissue', '9', '10')
 @upgrade_step('primary_cell', '8', '9')
 @upgrade_step('tissue', '8', '9')
 @upgrade_step('whole_organism', '7', '8')

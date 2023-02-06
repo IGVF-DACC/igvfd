@@ -507,12 +507,6 @@ PHASE1_PIPELINES = {
     'user': [
         remove_keys('lab', 'submits_for'),
     ],
-<<<<<<< HEAD
-    'cell_line': [
-        remove_keys('pooled_from', 'part_of')
-    ],
-=======
->>>>>>> IGVF-349-in-vitro-system
     'in_vitro_system': [
         remove_keys('pooled_from', 'part_of', 'originated_from'),
     ],
