@@ -72,7 +72,7 @@ config: Dict[str, Any] = {
                 'clusters': [
                     {
                         'construct_id': 'Opensearch',
-                        'on': False,
+                        'on': True,
                         'props': {
                             'capacity': CapacityConfig(
                                 data_node_instance_type='t3.small.search',
@@ -101,8 +101,8 @@ config: Dict[str, Any] = {
                 'max_capacity': 4,
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
-                'read_from_opensearch_named': 'Opensearch2',
-                'write_to_opensearch_named': 'Opensearch2',
+                'read_from_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch',
             },
             'invalidation_service': {
                 'cpu': 256,
