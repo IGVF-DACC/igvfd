@@ -30,7 +30,10 @@ from infrastructure.constructs.queue import InvalidationQueue
 
 from infrastructure.constructs.existing.types import ExistingResources
 
+from infrastructure.multiplexer import Multiplexer
+
 from typing import Any
+from typing import cast
 from typing import List
 
 from dataclasses import dataclass
@@ -92,7 +95,8 @@ class IndexerProps:
     cluster: ICluster
     transaction_queue: TransactionQueue
     invalidation_queue: InvalidationQueue
-    opensearch: Opensearch
+    opensearch_multiplexer: Multiplexer
+    use_opensearch_named: str
     backend_url: str
     resources_index: str
     invalidation_service_props: InvalidationServiceProps
@@ -102,6 +106,7 @@ class IndexerProps:
 class Indexer(Construct):
 
     props: IndexerProps
+    opensearch: Opensearch
     services_image: ContainerImage
     invalidation_service: QueueProcessingFargateService
     indexing_service: QueueProcessingFargateService
@@ -117,6 +122,7 @@ class Indexer(Construct):
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
         self.props = props
+        self._define_opensearch()
         self._define_docker_assets()
         self._define_invalidation_service()
         self._allow_invalidation_service_to_write_to_invalidation_queue()
@@ -126,6 +132,14 @@ class Indexer(Construct):
         self._allow_indexing_service_to_connect_to_opensearch()
         self._add_alarms_to_invalidation_service()
         self._add_alarms_to_indexing_service()
+
+    def _define_opensearch(self) -> None:
+        self.opensearch = cast(
+            Opensearch,
+            self.props.opensearch_multiplexer.resources.get(
+                self.props.use_opensearch_named,
+            )
+        )
 
     def _define_docker_assets(self) -> None:
         self.services_image = ContainerImage.from_asset(
