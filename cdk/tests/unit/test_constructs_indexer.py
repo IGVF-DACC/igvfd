@@ -10,7 +10,7 @@ def test_constructs_indexer_initialize_indexer(
         application_load_balanced_fargate_service,
         transaction_queue,
         invalidation_queue,
-        opensearch,
+        opensearch_multiplexer,
 ):
     from infrastructure.constructs.indexer import InvalidationServiceProps
     from infrastructure.constructs.indexer import IndexingServiceProps
@@ -25,7 +25,8 @@ def test_constructs_indexer_initialize_indexer(
             cluster=application_load_balanced_fargate_service.cluster,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
-            opensearch=opensearch,
+            opensearch_multiplexer=opensearch_multiplexer,
+            use_opensearch_named='Opensearch',
             backend_url='some-url.test',
             resources_index='some-resources-index',
             invalidation_service_props=InvalidationServiceProps(

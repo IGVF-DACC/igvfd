@@ -83,8 +83,9 @@ def test_config_build_config_from_name():
         'snapshot_source_db_identifier' in postgres_instance_props
         or 'snapshot_arn' in postgres_instance_props
     )
-    assert 'capacity' in config.opensearch
-    assert 'volume_size' in config.opensearch
+    opensearch_instance_props = config.opensearch['clusters'][0]['props']
+    assert 'capacity' in opensearch_instance_props
+    assert 'volume_size' in opensearch_instance_props
     assert 'cpu' in config.invalidation_service
     assert 'memory_limit_mib' in config.invalidation_service
     assert 'min_scaling_capacity' in config.invalidation_service
@@ -112,8 +113,9 @@ def test_config_build_config_from_name():
         'snapshot_source_db_identifier' not in postgres_instance_props
         and 'snapshot_arn' not in postgres_instance_props
     )
-    assert 'capacity' in config.opensearch
-    assert 'volume_size' in config.opensearch
+    opensearch_instance_props = config.opensearch['clusters'][0]['props']
+    assert 'capacity' in opensearch_instance_props
+    assert 'volume_size' in opensearch_instance_props
     assert 'cpu' in config.invalidation_service
     assert 'memory_limit_mib' in config.invalidation_service
     assert 'min_scaling_capacity' in config.invalidation_service
