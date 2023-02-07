@@ -163,7 +163,7 @@ class UpdateMapping(Construct):
                     ]
                 },
                 physical_resource_id=PhysicalResourceId.of(
-                    f'{self.mapping_folder.asset_hash}'
+                    self.mapping_folder.asset_hash
                 )
             ),
             log_retention=RetentionDays.ONE_DAY,
