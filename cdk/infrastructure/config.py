@@ -81,6 +81,17 @@ config: Dict[str, Any] = {
                             'volume_size': 10,
                         }
                     },
+                    {
+                        'construct_id': 'Opensearch2',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='t3.small.search',
+                                data_nodes=1,
+                            ),
+                            'volume_size': 10,
+                        }
+                    },
                 ],
             },
             'backend': {
@@ -91,7 +102,7 @@ config: Dict[str, Any] = {
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch',
-                'write_to_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch2',
             },
             'invalidation_service': {
                 'cpu': 256,
