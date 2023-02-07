@@ -4,7 +4,7 @@ from snovault.elasticsearch.searches.configs import search_config
 @search_config(
     name='Award'
 )
-def award_search_config():
+def award():
     return {
         'facets': {
             'project': {

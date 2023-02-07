@@ -363,5 +363,6 @@ def test_search_views_search_config_registry(workbook, testapp):
     )
     assert len(r.json) > 40
     assert 'User' in r.json
-    assert 'AwardFacets' in r.json
-    assert 'AwardColumns' in r.json
+    assert 'Award' in r.json
+    assert 'facets' in r.json['Award']
+    assert 'columns' in r.json['Award']
