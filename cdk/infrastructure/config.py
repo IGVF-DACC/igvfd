@@ -72,7 +72,7 @@ config: Dict[str, Any] = {
                 'clusters': [
                     {
                         'construct_id': 'Opensearch',
-                        'on': True,
+                        'on': False,
                         'props': {
                             'capacity': CapacityConfig(
                                 data_node_instance_type='t3.small.search',
