@@ -165,7 +165,7 @@ class Indexer(Construct):
                 rollback=True,
             ),
             environment={
-                'OPENSEARCH_URL': self.props.opensearch.url,
+                'OPENSEARCH_URL': self.opensearch.url,
                 'TRANSACTION_QUEUE_URL': self.props.transaction_queue.queue.queue_url,
                 'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
                 'RESOURCES_INDEX': self.props.resources_index,
@@ -205,7 +205,7 @@ class Indexer(Construct):
             ),
             environment={
                 'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
-                'OPENSEARCH_URL': self.props.opensearch.url,
+                'OPENSEARCH_URL': self.opensearch.url,
                 'RESOURCES_INDEX': self.props.resources_index,
                 'BACKEND_URL': self.props.backend_url,
             },
@@ -228,14 +228,14 @@ class Indexer(Construct):
 
     def _allow_invalidation_service_to_connect_to_opensearch(self) -> None:
         self.invalidation_service.service.connections.allow_to(
-            self.props.opensearch.domain,
+            self.opensearch.domain,
             Port.tcp(443),
             description='Allow connection to Opensearch',
         )
 
     def _allow_indexing_service_to_connect_to_opensearch(self) -> None:
         self.indexing_service.service.connections.allow_to(
-            self.props.opensearch.domain,
+            self.opensearch.domain,
             Port.tcp(443),
             description='Allow connection to Opensearch',
         )
