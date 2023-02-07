@@ -65,18 +65,18 @@ def test_collections(primary_cell, testapp):
     assert res.status_code == 422
 
 
-def test_part_of_primary_cell(primary_cell, primary_cell_part_of, differentiated_cell, differentiated_tissue, cell_line, tissue_part_of, whole_organism_part_of, testapp):
+def test_part_of_primary_cell(primary_cell, primary_cell_part_of, in_vitro_differentiated_cell, in_vitro_differentiated_tissue, in_vitro_cell_line, tissue_part_of, whole_organism_part_of, testapp):
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'part_of': differentiated_cell['@id']}, expect_errors=True)
+        {'part_of': in_vitro_differentiated_cell['@id']}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'part_of': differentiated_tissue['@id']}, expect_errors=True)
+        {'part_of': in_vitro_differentiated_tissue['@id']}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'part_of': cell_line['@id']}, expect_errors=True)
+        {'part_of': in_vitro_cell_line['@id']}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         primary_cell['@id'],
