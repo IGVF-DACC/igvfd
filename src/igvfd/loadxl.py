@@ -533,9 +533,6 @@ PHASE2_PIPELINES = {
     'in_vitro_system': [
         skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from'),
     ],
-    'in_vitro_system': [
-        skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from'),
-    ],
     'tissue': [
         skip_rows_missing_all_keys('pooled_from', 'part_of'),
     ],

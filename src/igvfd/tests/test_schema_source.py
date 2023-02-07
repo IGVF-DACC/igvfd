@@ -4,13 +4,14 @@ def test_sample_1(source, testapp):
 
 
 def test_lab_as_source(lab, award, testapp, human_donor, sample_term_K562):
-    res = testapp.post_json('/cell_line',
+    res = testapp.post_json('/in_vitro_system',
                             {
                                 'award': award['@id'],
                                 'lab': lab['@id'],
                                 'source': lab['@id'],
                                 'taxa': 'Homo sapiens',
                                 'donors': [human_donor['@id']],
-                                'biosample_term': sample_term_K562['@id']
+                                'biosample_term': sample_term_K562['@id'],
+                                'classification': 'cell line'
                             })
     assert res.status_code == 201
