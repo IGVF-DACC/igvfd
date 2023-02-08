@@ -220,26 +220,6 @@
             "type": "string"
         }
     },
-    "columns": {
-        "uuid": {
-            "title": "UUID"
-        },
-        "treatment_term_name": {
-            "title": "Treatment Term Name"
-        },
-        "treatment_type": {
-            "title": "Treatment Type"
-        },
-        "treatment_term_id": {
-            "title": "Treatment Term ID"
-        },
-        "purpose": {
-            "title": "Purpose"
-        },
-        "status": {
-            "title": "Status"
-        }
-    },
     "boost_values": {
         "@type": 1.0,
         "treatment_term_name": 1.0,

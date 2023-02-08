@@ -151,38 +151,6 @@
             "type": "string"
         }
     },
-    "columns": {
-        "uuid": {
-            "title": "UUID"
-        },
-        "accession": {
-            "title": "Accession"
-        },
-        "aliases": {
-            "title": "Aliases"
-        },
-        "taxa": {
-            "title": "Taxa"
-        },
-        "sex": {
-            "title": "Sex"
-        },
-        "award": {
-            "title": "Award"
-        },
-        "strain": {
-            "title": "Strain"
-        },
-        "lab": {
-            "title": "Lab"
-        },
-        "status": {
-            "title": "Status"
-        },
-        "submitted_by": {
-            "title": "Submitted By"
-        }
-    },
     "boost_values": {
         "accession": 1.0,
         "@type": 1.0,
