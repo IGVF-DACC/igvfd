@@ -80,18 +80,7 @@ config: Dict[str, Any] = {
                             ),
                             'volume_size': 10,
                         }
-                    },
-                    {
-                        'construct_id': 'Opensearch2',
-                        'on': True,
-                        'props': {
-                            'capacity': CapacityConfig(
-                                data_node_instance_type='t3.small.search',
-                                data_nodes=1,
-                            ),
-                            'volume_size': 10,
-                        }
-                    },
+                    }
                 ],
             },
             'backend': {
