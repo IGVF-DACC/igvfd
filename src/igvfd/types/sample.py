@@ -63,15 +63,15 @@ class Biosample(Sample):
         elif len(sexes) > 1:
             return 'mixed'
 
-    @calculated_property(
-        schema={
-            'title': 'Age',
-            'description': 'Age of organism at the time of collection of the sample.',
-            'type': 'string',
-            'pattern': '^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$',
-            'notSubmittable': True,
-        }
-    )
+    @calculated_property(define=True,
+                         schema={
+                             'title': 'Age',
+                             'description': 'Age of organism at the time of collection of the sample.',
+                             'type': 'string',
+                             'pattern': '^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$',
+                             'notSubmittable': True,
+                         }
+                         )
     def age(self, lower_bound_age=None, upper_bound_age=None, age_units=None):
         if lower_bound_age and upper_bound_age:
             if lower_bound_age == upper_bound_age:
@@ -89,13 +89,13 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, biosample_term, taxa, age=None, age_units=None, classification=None):
+    def summary(self, request, biosample_term, taxa, age, age_units=None):
         sample_term_object = request.embed(biosample_term, '@@object')
         term_name = sample_term_object.get('term_name')
-        if classification:
-            return f'{term_name} {classification}, {taxa}, {age}, {age_units}'
+        if age == 'unknown':
+            return f'{term_name} {self.item_type.replace("_", " ")}, {taxa}'
         else:
-            return f'{term_name} {self.item_type}, {taxa}, {age}, {age_units}'
+            return f'{term_name} {self.item_type.replace("_", " ")}, {taxa}, {age} {age_units}'
 
 
 @collection(
@@ -121,6 +121,21 @@ class PrimaryCell(Biosample):
 class InVitroSystem(Biosample):
     item_type = 'in_vitro_system'
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, biosample_term, taxa, classification=None, time_post_factors_introduction=None, time_post_factors_introduction_units=None):
+        sample_term_object = request.embed(biosample_term, '@@object')
+        term_name = sample_term_object.get('term_name')
+        if time_post_factors_introduction and time_post_factors_introduction_units:
+            return f'{term_name} {classification}, {taxa} ({time_post_factors_introduction} {time_post_factors_introduction_units})'
+        else:
+            return f'{term_name} {classification}, {taxa}'
 
 
 @collection(
@@ -160,3 +175,18 @@ class TechnicalSample(Sample):
 class WholeOrganism(Biosample):
     item_type = 'whole_organism'
     schema = load_schema('igvfd:schemas/whole_organism.json')
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, biosample_term, taxa, age, age_units=None):
+        sample_term_object = request.embed(biosample_term, '@@object')
+        term_name = sample_term_object.get('term_name')
+        if age == 'unknown':
+            return f'{term_name}, {taxa}'
+        else:
+            return f'{term_name}, {taxa}, {age} {age_units}'
