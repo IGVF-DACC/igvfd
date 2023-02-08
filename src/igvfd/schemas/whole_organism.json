@@ -53,7 +53,7 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "sample.json#/dependentSchemas"
+            "biosample.json#/dependentSchemas"
         ],
         "taxa": {
             "comment": "Since the IGVF DACC is not expecting metadata submission of human whole organism samples, the schema excludes Homo sapiens taxa.",
@@ -64,55 +64,6 @@
                     }
                 }
             }
-        },
-        "age": {
-            "comment": "Biosample with a defined age requires age_units.",
-            "if": {
-                "not": {
-                    "properties": {
-                        "age": {
-                            "const": "unknown"
-                        }
-                    }
-                }
-            },
-            "then": {
-                "required": [
-                    "age_units"
-                ]
-            }
-        },
-        "age_units": {
-            "comment": "Yeast biosamples cannot have age units of years or months.",
-            "required": [
-                "age"
-            ],
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "taxa": {
-                                "const": "Saccharomyces"
-                            }
-                        },
-                        "required": [
-                            "taxa"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "age_units": {
-                                "enum": [
-                                    "minute",
-                                    "hour",
-                                    "day",
-                                    "week"
-                                ]
-                            }
-                        }
-                    }
-                }
-            ]
         }
     },
     "properties": {
