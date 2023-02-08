@@ -61,6 +61,10 @@
         "collections": [
             "ENCODE"
         ],
-        "individual_rodent": false
+        "individual_rodent": false,
+        "dbxrefs": [
+            "IMSR_JAX:000664",
+            "GEO:SAMN31260610"
+        ]
     }
 ]

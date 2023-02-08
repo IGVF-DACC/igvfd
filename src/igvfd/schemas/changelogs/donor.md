@@ -1,5 +1,9 @@
 ## Changelog for *`donor.json`*
 
+### Release v5
+
+* Add `dbxrefs`.
+
 ### Release v2
 
 * Remove `traits`.

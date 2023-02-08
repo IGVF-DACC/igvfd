@@ -41,6 +41,21 @@
         "accession": {
             "accessionType": "DO"
         },
+        "dbxrefs": {
+            "@type": "@id",
+            "rdfs:subPropertyOf": "rdfs:seeAlso",
+            "title": "External Resources",
+            "description": "Identifiers from external resources that may have 1-to-1 or 1-to-many relationships with IGVF donors.",
+            "comment": "This property is overwritten by the subclasses to define specific enum values.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "title": "External identifier",
+                "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF donors.",
+                "type": "string",
+                "pattern": "^GEO:SAMN\\d+$"
+            }
+        },
         "sex": {
             "title": "Sex",
             "description": "Sex of the donor.",

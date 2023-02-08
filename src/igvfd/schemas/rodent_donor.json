@@ -145,6 +145,14 @@
             "description": "The identifier for this individual rodent donor.",
             "comment": "`individual_rodent` should be submitted as true with submission of this property.",
             "type": "string"
+        },
+        "dbxrefs": {
+            "items": {
+                "title": "External identifier",
+                "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF donors.",
+                "type": "string",
+                "pattern": "^(GEO:SAMN\\d+)|(IMSR_JAX:\\d{6})$"
+            }
         }
     },
     "boost_values": {

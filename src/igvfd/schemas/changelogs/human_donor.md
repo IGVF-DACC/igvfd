@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Minor changes since schema version 7
+
+* Add `dbxrefs`.
+
 ### Schema version 7
 
 * Remove `traits`.
