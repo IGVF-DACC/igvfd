@@ -3,7 +3,7 @@
 ### Release v2
 
 * Rename `biomarker` to `biomarkers`.
-* Remove `DifferentiatedTissue`, `DifferentiatedCell`, `CellLine` schemas.
+* Deprecate `differentiated_tissue`, `differentiated_cell`, `cell_line` schemas.
 
 ### Schema version 6
 
