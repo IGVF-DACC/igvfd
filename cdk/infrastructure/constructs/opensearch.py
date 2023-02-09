@@ -1,3 +1,4 @@
+from aws_cdk import Stack
 from aws_cdk import RemovalPolicy
 from aws_cdk import Tags
 
@@ -66,6 +67,7 @@ class Opensearch(Construct):
         self._add_tags_to_domain()
         self._define_url()
         self._add_alarms()
+        self._export_values()
 
     def _define_domain(self) -> None:
         self.domain = Domain(
@@ -142,4 +144,18 @@ class Opensearch(Construct):
                 domain=self.domain,
                 volume_size=self.props.volume_size,
             ),
+        )
+
+    def _export_values(self) -> None:
+        export_default_explicit_values(self)
+
+
+def export_default_explicit_values(opensearch: Opensearch) -> None:
+    parent_stack = Stack.of(opensearch)
+    parent_stack.export_value(
+        opensearch.domain.domain_endpoint,
+    )
+    for security_group in opensearch.domain.connections.security_groups:
+        parent_stack.export_value(
+            security_group.security_group_id
         )

@@ -45,7 +45,7 @@ class SandboxDeployStage(Stage):
             'BackendStack',
             config=config,
             postgres_multiplexer=self.postgres_stack.multiplexer,
-            opensearch=self.opensearch_stack.opensearch,
+            opensearch_multiplexer=self.opensearch_stack.multiplexer,
             existing_resources_class=igvf_sandbox.Resources,
             env=igvf_sandbox.US_WEST_2,
         )

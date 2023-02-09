@@ -29,7 +29,7 @@ def test_stacks_backend_initialize_backend_stack(config):
         'TestBackendStack',
         config=config,
         postgres_multiplexer=postgres_stack.multiplexer,
-        opensearch=opensearch_stack.opensearch,
+        opensearch_multiplexer=opensearch_stack.multiplexer,
         existing_resources_class=igvf_dev.Resources,
         env=igvf_dev.US_WEST_2,
     )

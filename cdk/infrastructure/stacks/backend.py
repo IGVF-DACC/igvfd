@@ -34,7 +34,7 @@ class BackendStack(cdk.Stack):
             *,
             config: Config,
             postgres_multiplexer: Multiplexer,
-            opensearch: Opensearch,
+            opensearch_multiplexer: Multiplexer,
             existing_resources_class: ExistingResourcesClass,
             **kwargs: Any
     ) -> None:
@@ -65,7 +65,7 @@ class BackendStack(cdk.Stack):
                 config=config,
                 existing_resources=self.existing_resources,
                 postgres_multiplexer=postgres_multiplexer,
-                opensearch=opensearch,
+                opensearch_multiplexer=opensearch_multiplexer,
                 transaction_queue=self.transaction_queue,
                 invalidation_queue=self.invalidation_queue,
             )
@@ -79,7 +79,8 @@ class BackendStack(cdk.Stack):
                 cluster=self.backend.fargate_service.cluster,
                 transaction_queue=self.transaction_queue,
                 invalidation_queue=self.invalidation_queue,
-                opensearch=opensearch,
+                opensearch_multiplexer=opensearch_multiplexer,
+                use_opensearch_named=self.backend.props.write_to_opensearch_named,
                 backend_url=f'https://{self.backend.domain_name}',
                 resources_index='snovault-resources',
                 invalidation_service_props=InvalidationServiceProps(

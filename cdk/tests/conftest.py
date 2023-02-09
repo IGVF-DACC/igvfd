@@ -275,8 +275,16 @@ def config(instance_type, capacity_config):
             ],
         },
         opensearch={
-            'capacity': capacity_config,
-            'volume_size': 10,
+            'clusters': [
+                {
+                    'construct_id': 'Opensearch',
+                    'on': True,
+                    'props': {
+                        'capacity': capacity_config,
+                        'volume_size': 10,
+                    },
+                }
+            ],
         },
         backend={
             'cpu': 1024,
@@ -285,6 +293,8 @@ def config(instance_type, capacity_config):
             'max_capacity': 4,
             'ini_name': 'demo.ini',
             'use_postgres_named': 'Postgres',
+            'read_from_opensearch_named': 'Opensearch',
+            'write_to_opensearch_named': 'Opensearch',
         },
         invalidation_service={
             'cpu': 256,
@@ -305,17 +315,49 @@ def config(instance_type, capacity_config):
 
 
 @pytest.fixture
-def opensearch(stack, existing_resources, config):
+def opensearch_props(existing_resources, config):
+    from infrastructure.constructs.opensearch import OpensearchProps
+    return OpensearchProps(
+        **config.opensearch['clusters'][0]['props'],
+        config=config,
+        existing_resources=existing_resources,
+    )
+
+
+@pytest.fixture
+def opensearch(stack, existing_resources, config, opensearch_props):
     from infrastructure.constructs.opensearch import Opensearch
     from infrastructure.constructs.opensearch import OpensearchProps
     return Opensearch(
         stack,
         'Opensearch',
-        props=OpensearchProps(
-            **config.opensearch,
-            config=config,
-            existing_resources=existing_resources
-        )
+        props=opensearch_props,
+    )
+
+
+@pytest.fixture
+def opensearch_multiplexer(stack, existing_resources, capacity_config, config):
+    from infrastructure.constructs.opensearch import Opensearch
+    from infrastructure.constructs.opensearch import OpensearchProps
+    from infrastructure.multiplexer import Multiplexer
+    from infrastructure.multiplexer import MultiplexerConfig
+    return Multiplexer(
+        stack,
+        configs=[
+            MultiplexerConfig(
+                construct_id='Opensearch',
+                on=True,
+                construct_class=Opensearch,
+                kwargs={
+                    'props': OpensearchProps(
+                        config=config,
+                        existing_resources=existing_resources,
+                        capacity=capacity_config,
+                        volume_size=10,
+                    )
+                }
+            ),
+        ]
     )
 
 

@@ -9,7 +9,7 @@ def test_constructs_backend_initialize_backend_construct(
         existing_resources,
         vpc,
         config,
-        opensearch,
+        opensearch_multiplexer,
         transaction_queue,
         invalidation_queue,
 ):
@@ -47,7 +47,7 @@ def test_constructs_backend_initialize_backend_construct(
             config=config,
             existing_resources=existing_resources,
             postgres_multiplexer=postgres_multiplexer,
-            opensearch=opensearch,
+            opensearch_multiplexer=opensearch_multiplexer,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
             cpu=2048,
@@ -55,7 +55,9 @@ def test_constructs_backend_initialize_backend_construct(
             desired_count=4,
             max_capacity=7,
             ini_name='demo.ini',
-            use_postgres_named='Postgres'
+            use_postgres_named='Postgres',
+            read_from_opensearch_named='Opensearch',
+            write_to_opensearch_named='Opensearch',
         )
     )
     template = Template.from_stack(stack)
@@ -189,6 +191,23 @@ def test_constructs_backend_initialize_backend_construct(
                         },
                         {
                             'Name': 'OPENSEARCH_URL',
+                            'Value': {
+                                'Fn::Join': [
+                                    '',
+                                    [
+                                        'https://',
+                                        {
+                                            'Fn::GetAtt': [
+                                                'OpensearchDomainCED7C974',
+                                                'DomainEndpoint'
+                                            ]
+                                        }
+                                    ]
+                                ]
+                            }
+                        },
+                        {
+                            'Name': 'OPENSEARCH_FOR_WRITING_URL',
                             'Value': {
                                 'Fn::Join': [
                                     '',
@@ -808,7 +827,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
         existing_resources,
         vpc,
         config,
-        opensearch,
+        opensearch_multiplexer,
         transaction_queue,
         invalidation_queue,
 ):
@@ -846,7 +865,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
             config=config,
             existing_resources=existing_resources,
             postgres_multiplexer=postgres_multiplexer,
-            opensearch=opensearch,
+            opensearch_multiplexer=opensearch_multiplexer,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
             cpu=2048,
@@ -854,7 +873,9 @@ def test_constructs_backend_backend_construct_define_domain_name(
             desired_count=4,
             max_capacity=7,
             ini_name='demo.ini',
-            use_postgres_named='Postgres'
+            use_postgres_named='Postgres',
+            read_from_opensearch_named='Opensearch',
+            write_to_opensearch_named='Opensearch',
         )
     )
     assert backend.domain_name == 'igvfd-some-branch.my.test.domain.org'
@@ -878,7 +899,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
             config=config_with_prefix,
             existing_resources=existing_resources,
             postgres_multiplexer=postgres_multiplexer,
-            opensearch=opensearch,
+            opensearch_multiplexer=opensearch_multiplexer,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
             cpu=2048,
@@ -886,7 +907,9 @@ def test_constructs_backend_backend_construct_define_domain_name(
             desired_count=4,
             max_capacity=7,
             ini_name='demo.ini',
-            use_postgres_named='Postgres'
+            use_postgres_named='Postgres',
+            read_from_opensearch_named='Opensearch',
+            write_to_opensearch_named='Opensearch',
         )
     )
     assert backend.domain_name == 'some-prefix.my.test.domain.org'

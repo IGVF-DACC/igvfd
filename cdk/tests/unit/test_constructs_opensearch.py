@@ -3,17 +3,13 @@ import pytest
 from aws_cdk.assertions import Template
 
 
-def test_constructs_opensearch_initialize_opensearch_construct(stack, vpc, instance_type, mocker, config, existing_resources):
+def test_constructs_opensearch_initialize_opensearch_construct(stack, vpc, instance_type, mocker, config, existing_resources, opensearch_props):
     from infrastructure.constructs.opensearch import Opensearch
     from infrastructure.constructs.opensearch import OpensearchProps
     opensearch = Opensearch(
         stack,
         'Opensearch',
-        props=OpensearchProps(
-            **config.opensearch,
-            config=config,
-            existing_resources=existing_resources
-        )
+        props=opensearch_props,
     )
     template = Template.from_stack(stack)
     template.has_resource_properties(

@@ -2,6 +2,7 @@ import json
 
 from constructs import Construct
 
+from aws_cdk import AssetHashType
 from aws_cdk import BundlingOptions
 from aws_cdk import DockerImage
 
@@ -142,6 +143,7 @@ class UpdateMapping(Construct):
                     '/scripts/pyramid/put-mapping-in-asset-output-folder.sh'
                 ],
             ),
+            asset_hash_type=AssetHashType.OUTPUT,
         )
 
     def _define_event_trigger(self) -> None:
@@ -163,7 +165,7 @@ class UpdateMapping(Construct):
                     ]
                 },
                 physical_resource_id=PhysicalResourceId.of(
-                    f'{self.mapping_folder.asset_hash}'
+                    self.mapping_folder.asset_hash
                 )
             ),
             log_retention=RetentionDays.ONE_DAY,

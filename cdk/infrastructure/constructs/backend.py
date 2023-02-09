@@ -60,7 +60,7 @@ class BackendProps:
     config: Config
     existing_resources: ExistingResources
     postgres_multiplexer: Multiplexer
-    opensearch: Opensearch
+    opensearch_multiplexer: Multiplexer
     transaction_queue: TransactionQueue
     invalidation_queue: InvalidationQueue
     ini_name: str
@@ -69,12 +69,16 @@ class BackendProps:
     desired_count: int
     max_capacity: int
     use_postgres_named: str
+    read_from_opensearch_named: str
+    write_to_opensearch_named: str
 
 
 class Backend(Construct):
 
     props: BackendProps
     postgres: PostgresConstruct
+    opensearch_for_reading: Opensearch
+    opensearch_for_writing: Opensearch
     application_image: ContainerImage
     domain_name: str
     nginx_image: ContainerImage
@@ -92,13 +96,16 @@ class Backend(Construct):
         super().__init__(scope, construct_id, **kwargs)
         self.props = props
         self._define_postgres()
+        self._define_opensearch_for_reading()
+        self._define_opensearch_for_writing()
         self._generate_session_secret()
         self._define_docker_assets()
         self._define_domain_name()
         self._define_fargate_service()
         self._add_application_container_to_task()
         self._allow_connections_to_database()
-        self._allow_connections_to_opensearch()
+        self._allow_connections_to_opensearch_for_reading()
+        self._allow_connections_to_opensearch_for_writing()
         self._allow_task_to_put_events_on_bus()
         self._allow_task_to_send_messages_to_transaction_queue()
         self._allow_task_to_send_messages_to_invalidation_queue()
@@ -117,7 +124,23 @@ class Backend(Construct):
         self.postgres = cast(
             PostgresConstruct,
             self.props.postgres_multiplexer.resources.get(
-                self.props.use_postgres_named
+                self.props.use_postgres_named,
+            )
+        )
+
+    def _define_opensearch_for_reading(self) -> None:
+        self.opensearch_for_reading = cast(
+            Opensearch,
+            self.props.opensearch_multiplexer.resources.get(
+                self.props.read_from_opensearch_named,
+            )
+        )
+
+    def _define_opensearch_for_writing(self) -> None:
+        self.opensearch_for_writing = cast(
+            Opensearch,
+            self.props.opensearch_multiplexer.resources.get(
+                self.props.write_to_opensearch_named,
             )
         )
 
@@ -205,7 +228,8 @@ class Backend(Construct):
                 'INI_NAME': self.props.ini_name,
                 'DEFAULT_EVENT_BUS': self.props.existing_resources.bus.default.event_bus_arn,
                 'EVENT_SOURCE': get_event_source_from_config(self.props.config),
-                'OPENSEARCH_URL': self.props.opensearch.url,
+                'OPENSEARCH_URL': self.opensearch_for_reading.url,
+                'OPENSEARCH_FOR_WRITING_URL': self.opensearch_for_writing.url,
                 'TRANSACTION_QUEUE_URL': self.props.transaction_queue.queue.queue_url,
                 'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
                 'UPLOAD_USER_ACCESS_KEYS_SECRET_ARN': self.props.existing_resources.upload_igvf_files_user_access_keys.secret.secret_arn,
@@ -227,9 +251,16 @@ class Backend(Construct):
             description='Allow connection to Postgres instance',
         )
 
-    def _allow_connections_to_opensearch(self) -> None:
+    def _allow_connections_to_opensearch_for_reading(self) -> None:
         self.fargate_service.service.connections.allow_to(
-            self.props.opensearch.domain,
+            self.opensearch_for_reading.domain,
+            Port.tcp(443),
+            description='Allow connection to Opensearch',
+        )
+
+    def _allow_connections_to_opensearch_for_writing(self) -> None:
+        self.fargate_service.service.connections.allow_to(
+            self.opensearch_for_writing.domain,
             Port.tcp(443),
             description='Allow connection to Opensearch',
         )

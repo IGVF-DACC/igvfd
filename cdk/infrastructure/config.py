@@ -69,11 +69,19 @@ config: Dict[str, Any] = {
                 ],
             },
             'opensearch': {
-                'capacity': CapacityConfig(
-                    data_node_instance_type='t3.small.search',
-                    data_nodes=1,
-                ),
-                'volume_size': 10,
+                'clusters': [
+                    {
+                        'construct_id': 'Opensearch',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='t3.small.search',
+                                data_nodes=1,
+                            ),
+                            'volume_size': 10,
+                        }
+                    }
+                ],
             },
             'backend': {
                 'cpu': 1024,
@@ -82,6 +90,8 @@ config: Dict[str, Any] = {
                 'max_capacity': 4,
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
+                'read_from_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -118,11 +128,19 @@ config: Dict[str, Any] = {
                 ],
             },
             'opensearch': {
-                'capacity': CapacityConfig(
-                    data_node_instance_type='t3.small.search',
-                    data_nodes=1,
-                ),
-                'volume_size': 10,
+                'clusters': [
+                    {
+                        'construct_id': 'Opensearch',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='t3.small.search',
+                                data_nodes=1,
+                            ),
+                            'volume_size': 10,
+                        }
+                    },
+                ],
             },
             'backend': {
                 'cpu': 1024,
@@ -130,7 +148,9 @@ config: Dict[str, Any] = {
                 'desired_count': 1,
                 'max_capacity': 4,
                 'ini_name': 'demo.ini',
-                'use_postgres_named': 'Postgres'
+                'use_postgres_named': 'Postgres',
+                'read_from_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -166,11 +186,19 @@ config: Dict[str, Any] = {
                 ],
             },
             'opensearch': {
-                'capacity': CapacityConfig(
-                    data_node_instance_type='t3.small.search',
-                    data_nodes=1,
-                ),
-                'volume_size': 10,
+                'clusters': [
+                    {
+                        'construct_id': 'Opensearch',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='t3.small.search',
+                                data_nodes=1,
+                            ),
+                            'volume_size': 10,
+                        }
+                    },
+                ],
             },
             'backend': {
                 'cpu': 1024,
@@ -178,7 +206,9 @@ config: Dict[str, Any] = {
                 'desired_count': 1,
                 'max_capacity': 4,
                 'ini_name': 'staging.ini',
-                'use_postgres_named': 'Postgres'
+                'use_postgres_named': 'Postgres',
+                'read_from_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -215,11 +245,19 @@ config: Dict[str, Any] = {
                 ],
             },
             'opensearch': {
-                'capacity': CapacityConfig(
-                    data_node_instance_type='t3.small.search',
-                    data_nodes=1,
-                ),
-                'volume_size': 10,
+                'clusters': [
+                    {
+                        'construct_id': 'Opensearch',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='t3.small.search',
+                                data_nodes=1,
+                            ),
+                            'volume_size': 10,
+                        }
+                    },
+                ],
             },
             'backend': {
                 'cpu': 1024,
@@ -227,7 +265,9 @@ config: Dict[str, Any] = {
                 'desired_count': 1,
                 'max_capacity': 4,
                 'ini_name': 'sandbox.ini',
-                'use_postgres_named': 'Postgres'
+                'use_postgres_named': 'Postgres',
+                'read_from_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -263,11 +303,19 @@ config: Dict[str, Any] = {
                 ],
             },
             'opensearch': {
-                'capacity': CapacityConfig(
-                    data_node_instance_type='t3.small.search',
-                    data_nodes=1,
-                ),
-                'volume_size': 10,
+                'clusters': [
+                    {
+                        'construct_id': 'Opensearch',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='t3.small.search',
+                                data_nodes=1,
+                            ),
+                            'volume_size': 10,
+                        }
+                    },
+                ],
             },
             'backend': {
                 'cpu': 1024,
@@ -275,7 +323,9 @@ config: Dict[str, Any] = {
                 'desired_count': 1,
                 'max_capacity': 4,
                 'ini_name': 'production.ini',
-                'use_postgres_named': 'Postgres'
+                'use_postgres_named': 'Postgres',
+                'read_from_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch',
             },
             'invalidation_service': {
                 'cpu': 256,
