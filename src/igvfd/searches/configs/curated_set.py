@@ -30,6 +30,9 @@ def curated_set():
             },
         },
         'columns': {
+            'accession': {
+                'title': 'Accession'
+            },
             'uuid': {
                 'title': 'UUID'
             },
@@ -57,5 +60,8 @@ def curated_set():
             'curated_set_type': {
                 'title': 'Curated Set Type'
             },
+            'summary': {
+                'title': 'Summary'
+            }
         }
     }

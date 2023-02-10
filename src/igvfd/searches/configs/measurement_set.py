@@ -30,6 +30,9 @@ def measurement_set():
             },
         },
         'columns': {
+            'accession': {
+                'title': 'Accession'
+            },
             'uuid': {
                 'title': 'UUID'
             },
@@ -57,5 +60,8 @@ def measurement_set():
             'protocol': {
                 'title': 'Protocol'
             },
+            'summary': {
+                'title': 'Summary'
+            }
         }
     }
