@@ -63,15 +63,16 @@ class Biosample(Sample):
         elif len(sexes) > 1:
             return 'mixed'
 
-    @calculated_property(define=True,
-                         schema={
-                             'title': 'Age',
-                             'description': 'Age of organism at the time of collection of the sample.',
-                             'type': 'string',
-                             'pattern': '^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$',
-                             'notSubmittable': True,
-                         }
-                         )
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Age',
+            'description': 'Age of organism at the time of collection of the sample.',
+            'type': 'string',
+            'pattern': '^((\\d+(\\.[1-9])?(\\-\\d+(\\.[1-9])?)?)|(unknown)|([1-8]?\\d)|(90 or above))$',
+            'notSubmittable': True,
+        }
+    )
     def age(self, lower_bound_age=None, upper_bound_age=None, age_units=None):
         if lower_bound_age and upper_bound_age:
             if lower_bound_age == upper_bound_age:
@@ -90,7 +91,7 @@ class Biosample(Sample):
         }
     )
     def summary(self, request, biosample_term, taxa, age, age_units=None):
-        sample_term_object = request.embed(biosample_term, '@@object')
+        sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
         if age == 'unknown':
             return f'{term_name} {self.item_type.replace("_", " ")}, {taxa}'
@@ -130,7 +131,7 @@ class InVitroSystem(Biosample):
         }
     )
     def summary(self, request, biosample_term, taxa, classification=None, time_post_factors_introduction=None, time_post_factors_introduction_units=None):
-        sample_term_object = request.embed(biosample_term, '@@object')
+        sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
         if time_post_factors_introduction and time_post_factors_introduction_units:
             return f'{term_name} {classification}, {taxa} ({time_post_factors_introduction} {time_post_factors_introduction_units})'
@@ -184,7 +185,7 @@ class WholeOrganism(Biosample):
         }
     )
     def summary(self, request, biosample_term, taxa, age, age_units=None):
-        sample_term_object = request.embed(biosample_term, '@@object')
+        sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
         if age == 'unknown':
             return f'{term_name}, {taxa}'
