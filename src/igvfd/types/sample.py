@@ -164,6 +164,18 @@ class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, technical_sample_term, sample_material):
+        sample_term_object = request.embed(technical_sample_term, '@@object?skip_calculated=true')
+        term_name = sample_term_object.get('term_name')
+        return f'{sample_material} {term_name}'
+
 
 @collection(
     name='whole-organisms',

@@ -44,7 +44,7 @@ def test_age_calculation(testapp, in_vitro_cell_line):
     assert res.json.get('age') == '90'
 
 
-def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_line):
+def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_line, technical_sample):
     res = testapp.get(tissue['@id'])
     assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus'
     res = testapp.patch_json(
@@ -92,3 +92,5 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get('summary') == 'K562 cell line, Mus musculus (100 hour)'
+    res = testapp.get(technical_sample['@id'])
+    assert res.json.get('summary') == 'synthetic technical sample'
