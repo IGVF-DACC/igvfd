@@ -55,52 +55,6 @@
             }
         }
     },
-    "facets": {
-        "status": {
-            "title": "Status"
-        },
-        "sample": {
-            "title": "Sample"
-        },
-        "donor": {
-            "title": "Donor"
-        },
-        "lab": {
-            "title": "Lab"
-        },
-        "award": {
-            "title": "Award"
-        },
-        "input_file_set": {
-            "title": "Input File Set"
-        }
-    },
-    "columns": {
-        "uuid": {
-            "title": "UUID"
-        },
-        "aliases": {
-            "title": "Aliases"
-        },
-        "status": {
-            "title": "Status"
-        },
-        "sample": {
-            "title": "Sample"
-        },
-        "donor": {
-            "title": "Donor"
-        },
-        "lab": {
-            "title": "Lab"
-        },
-        "award": {
-            "title": "Award"
-        },
-        "input_file_set": {
-            "title": "Input File Set"
-        }
-    },
     "boost_values": {
         "@type": 1.0
     },

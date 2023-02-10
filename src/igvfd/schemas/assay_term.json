@@ -39,26 +39,6 @@
             "pattern": "^(OBI|NTR):[0-9]{2,8}$"
         }
     },
-    "columns": {
-        "uuid": {
-            "title": "UUID"
-        },
-        "term_id": {
-            "title": "Term ID"
-        },
-        "term_name": {
-            "title": "Term Name"
-        },
-        "synonyms": {
-            "title": "Synonyms"
-        },
-        "status": {
-            "title": "Status"
-        },
-        "submitted_by": {
-            "title": "Submitted By"
-        }
-    },
     "boost_values": {
         "@type": 1.0,
         "term_id": 1.0,

@@ -110,37 +110,6 @@
             ]
         }
     },
-    "facets": {
-        "project": {
-            "title": "Project"
-        },
-        "status": {
-            "title": "Status"
-        },
-        "component": {
-            "title": "Component"
-        }
-    },
-    "columns": {
-        "uuid": {
-            "title": "UUID"
-        },
-        "title": {
-            "title": "Title"
-        },
-        "name": {
-            "title": "Name"
-        },
-        "project": {
-            "title": "Project"
-        },
-        "component": {
-            "title": "Component"
-        },
-        "status": {
-            "title": "Status"
-        }
-    },
     "boost_values": {
         "name": 1.0,
         "@type": 1.0,

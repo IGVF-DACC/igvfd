@@ -50,16 +50,5 @@
             "type": "string",
             "permission": "import_items"
         }
-    },
-    "columns": {
-        "uuid": {
-            "title": "UUID"
-        },
-        "status": {
-            "title": "Status"
-        },
-        "access_key_id": {
-            "title": "Access Key ID"
-        }
     }
 }
