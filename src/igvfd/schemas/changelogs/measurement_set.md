@@ -4,7 +4,6 @@
 
 * Add `dbxrefs`.
 
-
 ### Schema version 3
 
 * Change `accessionType` to `DS`
