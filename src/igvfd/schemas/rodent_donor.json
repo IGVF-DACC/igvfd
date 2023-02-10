@@ -53,11 +53,44 @@
                 "product_id"
             ],
             "comment": "Donor with lot_id must include product_id."
+        },
+        "rodent_identifier": {
+            "comment": "The donor must be an individual rodent to specify a rodent identifier.",
+            "required": [
+                "individual_rodent"
+            ],
+            "properties": {
+                "individual_rodent": {
+                    "const": true
+                }
+            }
+        },
+        "individual_rodent": {
+            "comment": "A rodent identifier is required if the donor is an individual rodent.",
+            "if": {
+                "properties": {
+                    "individual_rodent": {
+                        "const": true
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "rodent_identifier"
+                ]
+            },
+            "else": {
+                "not": {
+                    "required": [
+                        "rodent_identifier"
+                    ]
+                }
+            }
         }
     },
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "parents": {
             "items": {
@@ -104,6 +137,18 @@
         "traits": {
             "description": "A list of known phenotypic traits of the Rodent donor",
             "type": "array"
+        },
+        "individual_rodent": {
+            "title": "Individual Rodent",
+            "description": "This rodent donor represents an individual rodent.",
+            "type": "boolean",
+            "default": false
+        },
+        "rodent_identifier": {
+            "title": "Rodent Identifier",
+            "description": "The identifier for this individual rodent donor.",
+            "comment": "`individual_rodent` should be submitted as true with submission of this property.",
+            "type": "string"
         }
     },
     "columns": {

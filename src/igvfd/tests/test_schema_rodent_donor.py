@@ -144,3 +144,45 @@ def test_patch_phenotypic_feature(rodent_donor, phenotypic_feature_basic, testap
             phenotypic_feature_basic['@id']
         ]})
     assert res.status_code == 200
+
+
+def test_rodent_identifier_dependency(rodent_donor, award, lab, testapp):
+    res = testapp.patch_json(
+        rodent_donor['@id'],
+        {'individual_rodent': True}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        rodent_donor['@id'],
+        {'individual_rodent': True, 'rodent_identifier': '045'})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        rodent_donor['@id'],
+        {'individual_rodent': False}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.post_json(
+        '/rodent_donor',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'taxa': 'Mus musculus',
+            'sex': 'male',
+            'strain': 'PWK',
+            'individual_rodent': False,
+            'rodent_identifier': '123'
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.post_json(
+        '/rodent_donor',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'taxa': 'Mus musculus',
+            'sex': 'male',
+            'strain': 'PWK',
+            'individual_rodent': False
+        })
+    assert res.status_code == 201
+    rodent_donor_no_individual_rodent = testapp.get(rodent_donor['@id'] + '@@edit').json
+    rodent_donor_no_individual_rodent.pop('individual_rodent')
+    res = testapp.put_json(rodent_donor['@id'], rodent_donor_no_individual_rodent, expect_errors=True)
+    assert res.status_code == 422

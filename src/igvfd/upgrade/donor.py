@@ -59,3 +59,10 @@ def donor_5_6(value, system):
     # https://igvf.atlassian.net/browse/IGVF-386
     if 'external_resources' in value:
         del value['external_resources']
+
+
+@upgrade_step('rodent_donor', '4', '5')
+def rodent_donor_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-384
+    if 'individual_rodent' not in value:
+        value['individual_rodent'] = False
