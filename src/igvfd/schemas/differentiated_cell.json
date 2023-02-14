@@ -1,5 +1,5 @@
 {
-    "title": "Differentiated Cell",
+    "title": "Differentiated eell",
     "$id": "/profiles/differentiated_cell.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Schema for submitting a differentiated cell sample.",
