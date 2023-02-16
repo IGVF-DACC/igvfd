@@ -43,15 +43,21 @@ def test_human_donor_upgrade_6_7(
         human_donor_v6_single_trait_no_notes,
         human_donor_v6_multiple_traits_no_notes,
         human_donor_v6_single_trait_with_notes):
-    value = upgrader.upgrade('human_donor', human_donor_v6_single_trait_no_notes,
-                             current_version='6', target_version='7')
+    value = upgrader.upgrade('human_donor',
+                             human_donor_v6_single_trait_no_notes,
+                             current_version='6',
+                             target_version='7')
     assert 'traits' not in value
     assert value['notes'] == 'traits: /phenotype-terms/HP_0000648/'
-    value = upgrader.upgrade('human_donor', human_donor_v6_multiple_traits_no_notes,
-                             current_version='6', target_version='7')
+    value = upgrader.upgrade('human_donor',
+                             human_donor_v6_multiple_traits_no_notes,
+                             current_version='6',
+                             target_version='7')
     assert 'traits' not in value
     assert value['notes'] == 'traits: /phenotype-terms/DOID_10652/  traits: /phenotype-terms/HP_0001658/'
-    value = upgrader.upgrade('human_donor', human_donor_v6_single_trait_with_notes,
-                             current_version='6', target_version='7')
+    value = upgrader.upgrade('human_donor',
+                             human_donor_v6_single_trait_with_notes,
+                             current_version='6',
+                             target_version='7')
     assert 'traits' not in value
     assert value['notes'] == 'This is a note.  traits: /phenotype-terms/DOID_10652/'
