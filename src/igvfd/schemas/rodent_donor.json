@@ -134,10 +134,6 @@
                 "Mus musculus"
             ]
         },
-        "traits": {
-            "description": "A list of known phenotypic traits of the Rodent donor",
-            "type": "array"
-        },
         "individual_rodent": {
             "title": "Individual Rodent",
             "description": "This rodent donor represents an individual rodent.",
