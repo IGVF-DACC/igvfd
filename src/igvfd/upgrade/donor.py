@@ -66,3 +66,20 @@ def rodent_donor_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-384
     if 'individual_rodent' not in value:
         value['individual_rodent'] = False
+
+
+@upgrade_step('human_donor', '6', '7')
+@upgrade_step('rodent_donor', '5', '6')
+def donor_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-444
+    if 'traits' in value:
+        traits = value['traits']
+        new_notes_value = ''
+        if 'notes' in value:
+            new_notes_value = value.get('notes')
+        for current_trait in traits:
+            if len(new_notes_value) > 0:
+                new_notes_value += '  '
+            new_notes_value += f'traits: {current_trait}'
+        value['notes'] = new_notes_value
+        del value['traits']

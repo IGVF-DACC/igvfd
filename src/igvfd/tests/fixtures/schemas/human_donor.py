@@ -133,3 +133,41 @@ def human_donor_v5(human_donor):
         ]
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v6_single_trait_no_notes(human_donor):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '6',
+        'traits': [
+            '/phenotype-terms/HP_0000648/'
+        ]
+    })
+    return item
+
+
+@pytest.fixture
+def human_donor_v6_multiple_traits_no_notes(human_donor):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '6',
+        'traits': [
+            '/phenotype-terms/DOID_10652/',
+            '/phenotype-terms/HP_0001658/'
+        ]
+    })
+    return item
+
+
+@pytest.fixture
+def human_donor_v6_single_trait_with_notes(human_donor):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '6',
+        'traits': [
+            '/phenotype-terms/DOID_10652/'
+        ],
+        'notes': 'This is a note.'
+    })
+    return item

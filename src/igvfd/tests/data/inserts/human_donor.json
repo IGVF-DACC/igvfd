@@ -15,9 +15,6 @@
         ],
         "sex": "male",
         "taxa": "Homo sapiens",
-        "traits": [
-            "/phenotype-terms/HP_0000648/"
-        ],
         "phenotypic_features": [
             "/phenotypic-features/ae1b4a0b-78e6-af0a-8e6d-c0c9b45905fa/"
         ],
@@ -85,11 +82,7 @@
             "African American"
         ],
         "sex": "female",
-        "taxa": "Homo sapiens",
-        "traits": [
-            "/phenotype-terms/DOID_10652/",
-            "/phenotype-terms/HP_0001658/"
-        ]
+        "taxa": "Homo sapiens"
     },
     {
         "uuid": "e37bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
@@ -100,11 +93,7 @@
             "Colombian"
         ],
         "sex": "female",
-        "taxa": "Homo sapiens",
-        "traits": [
-            "/phenotype-terms/DOID_10652/",
-            "/phenotype-terms/HP_0001658/"
-        ]
+        "taxa": "Homo sapiens"
     },
     {
         "uuid": "e47bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
@@ -115,11 +104,7 @@
             "Kinh Vietnamese"
         ],
         "sex": "female",
-        "taxa": "Homo sapiens",
-        "traits": [
-            "/phenotype-terms/DOID_10652/",
-            "/phenotype-terms/HP_0001658/"
-        ]
+        "taxa": "Homo sapiens"
     },
     {
         "uuid": "e57bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
@@ -129,10 +114,6 @@
             "Puerto Rican"
         ],
         "sex": "female",
-        "taxa": "Homo sapiens",
-        "traits": [
-            "/phenotype-terms/DOID_10652/",
-            "/phenotype-terms/HP_0001658/"
-        ]
+        "taxa": "Homo sapiens"
     }
 ]

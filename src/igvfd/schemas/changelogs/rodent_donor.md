@@ -1,5 +1,9 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Schema version 6
+
+* Remove `traits`.
+
 ### Schema version 5
 
 * Add `rodent_identifier`.

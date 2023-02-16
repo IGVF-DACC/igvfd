@@ -2,6 +2,7 @@
 
 ### Release v2
 
+* Remove `traits`.
 * Remove `external_resource`.
 * Add `description`.
 * Add `revoke_detail`.
