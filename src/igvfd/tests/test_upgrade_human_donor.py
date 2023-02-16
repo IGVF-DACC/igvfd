@@ -38,16 +38,17 @@ def test_human_donor_upgrade_5_6(upgrader, human_donor_v5):
     assert value['schema_version'] == '6'
 
 
-def test_human_donor_upgrade_6_7(upgrader, human_donor_v6_single_trait_no_notes, human_donor_v6_multiple_traits_no_notes, human_donor_v6_single_trait_with_notes):
+def test_human_donor_upgrade_6_7(upgrader, human_donor_v6_single_trait_no_notes, human_donor_v6_multiple_traits_no_notes, human_donor_v6_single_trait_with_notes, phenotype_term_alzheimers, phenotype_term_myocardial_infarction):
     value = upgrader.upgrade('human_donor', human_donor_v6_single_trait_no_notes,
                              current_version='6', target_version='7')
     assert 'traits' not in value
-    assert value['notes'] == 'traits: /phenotype-terms/HP_0000648/'
+    assert value['notes'] == 'traits: ' + phenotype_term_alzheimers['@id']
     value = upgrader.upgrade('human_donor', human_donor_v6_multiple_traits_no_notes,
                              current_version='6', target_version='7')
     assert 'traits' not in value
-    assert value['notes'] == 'traits: /phenotype-terms/DOID_10652/  traits: /phenotype-terms/HP_0001658/'
+    assert value['notes'] == 'traits: ' + phenotype_term_alzheimers['@id'] + \
+        '  traits: ' + phenotype_term_myocardial_infarction['@id']
     value = upgrader.upgrade('human_donor', human_donor_v6_single_trait_with_notes,
                              current_version='6', target_version='7')
     assert 'traits' not in value
-    assert value['notes'] == 'This is a note.  traits: /phenotype-terms/DOID_10652/'
+    assert value['notes'] == 'This is a note.  traits: ' + phenotype_term_alzheimers['@id']
