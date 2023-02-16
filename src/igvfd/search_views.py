@@ -254,7 +254,7 @@ def top_hits(context, request):
     return fr.render()
 
 
-@view_config(route_name='search-config-registry', request_method='GET', permission='config')
+@view_config(route_name='search-config-registry', request_method='GET', permission='search')
 def search_config_registry(context, request):
     registry = request.registry[SEARCH_CONFIG]
     return dict(sorted(registry.as_dict().items()))
