@@ -56,7 +56,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         }
     )
     res = testapp.get(tissue['@id'])
-    assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus, 10 month'
+    assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus (10 months)'
     res = testapp.get(primary_cell['@id'])
     assert res.json.get('summary') == 'pluripotent stem cell primary cell, Homo sapiens'
     res = testapp.patch_json(
@@ -68,7 +68,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         }
     )
     res = testapp.get(primary_cell['@id'])
-    assert res.json.get('summary') == 'pluripotent stem cell primary cell, Homo sapiens, 1-3 week'
+    assert res.json.get('summary') == 'pluripotent stem cell primary cell, Homo sapiens (1-3 weeks)'
     res = testapp.get(whole_organism['@id'])
     assert res.json.get('summary') == 'whole organism, Mus musculus'
     res = testapp.patch_json(
@@ -80,7 +80,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         }
     )
     res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == 'whole organism, Mus musculus, 1 hour'
+    assert res.json.get('summary') == 'whole organism, Mus musculus (1 hour)'
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get('summary') == 'K562 cell line, Mus musculus'
     res = testapp.patch_json(
@@ -91,6 +91,6 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
-    assert res.json.get('summary') == 'K562 cell line, Mus musculus (100 hour)'
+    assert res.json.get('summary') == 'K562 cell line, Mus musculus (100 hours)'
     res = testapp.get(technical_sample['@id'])
     assert res.json.get('summary') == 'synthetic technical sample'

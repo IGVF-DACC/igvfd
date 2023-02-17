@@ -96,7 +96,9 @@ class Biosample(Sample):
         if age == 'unknown':
             return f'{term_name} {self.item_type.replace("_", " ")}, {taxa}'
         else:
-            return f'{term_name} {self.item_type.replace("_", " ")}, {taxa}, {age} {age_units}'
+            if age != '1':
+                age_units = age_units + 's'
+            return f'{term_name} {self.item_type.replace("_", " ")}, {taxa} ({age} {age_units})'
 
 
 @collection(
@@ -134,6 +136,8 @@ class InVitroSystem(Biosample):
         sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
         if time_post_factors_introduction and time_post_factors_introduction_units:
+            if time_post_factors_introduction != 1:
+                time_post_factors_introduction_units = time_post_factors_introduction_units + 's'
             return f'{term_name} {classification}, {taxa} ({time_post_factors_introduction} {time_post_factors_introduction_units})'
         else:
             return f'{term_name} {classification}, {taxa}'
@@ -202,4 +206,6 @@ class WholeOrganism(Biosample):
         if age == 'unknown':
             return f'{term_name}, {taxa}'
         else:
-            return f'{term_name}, {taxa}, {age} {age_units}'
+            if age != '1':
+                age_units = age_units + 's'
+            return f'{term_name}, {taxa} ({age} {age_units})'
