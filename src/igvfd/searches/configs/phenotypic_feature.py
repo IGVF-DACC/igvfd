@@ -6,6 +6,17 @@ from snovault.elasticsearch.searches.configs import search_config
 )
 def phenotypic_feature():
     return {
+        'facets': {
+            'lab.title': {
+                'title': 'Lab'
+            },
+            'award.component': {
+                'title': 'Award'
+            },
+            'status': {
+                'title': 'Status'
+            }
+        },
         'columns': {
             'uuid': {
                 'title': 'UUID'
@@ -16,5 +27,8 @@ def phenotypic_feature():
             'status': {
                 'title': 'Status'
             },
+            'lab': {
+                'title': 'Lab'
+            }
         }
     }

@@ -6,6 +6,65 @@ from snovault.elasticsearch.searches.configs import search_config
 )
 def whole_organism():
     return {
+        'facets': {
+            'taxa': {
+                'title': 'Taxa'
+            },
+            'sex': {
+                'title': 'Sex'
+            },
+            'treatments.treatment_type': {
+                'title': 'Treatments'
+            },
+            'biomarkers.classification': {
+                'title': 'Biomarkers'
+            },
+            'source.title': {
+                'title': 'Source'
+            },
+            'biosample_term.term_name': {
+                'title': 'Biosample Term'
+            },
+            'disease_terms.term_name': {
+                'title': 'Disease'
+            },
+            'lab.title': {
+                'title': 'Lab'
+            },
+            'award.component': {
+                'title': 'Award'
+            },
+            'status': {
+                'title': 'Status'
+            },
+        },
+        'facet_groups': [
+            {
+                'title': 'Sample',
+                'facet_fields': [
+                    'taxa',
+                    'sex',
+                    'treatments.treatment_type',
+                    'biomarkers.classification',
+                    'biosample_term.term_name',
+                    'disease_terms.term_name',
+                ]
+            },
+            {
+                'title': 'Provenance',
+                'facet_fields': [
+                    'lab.title',
+                    'award.component',
+                    'source.title',
+                ]
+            },
+            {
+                'title': 'Quality',
+                'facet_fields': [
+                    'status',
+                ]
+            },
+        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'

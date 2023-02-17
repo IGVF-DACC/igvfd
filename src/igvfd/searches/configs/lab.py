@@ -7,6 +7,12 @@ from snovault.elasticsearch.searches.configs import search_config
 def lab():
     return {
         'facets': {
+            'awards.component': {
+                'title': 'Award'
+            },
+            'institute_label': {
+                'title': 'Institute'
+            },
             'status': {
                 'title': 'Status'
             },
