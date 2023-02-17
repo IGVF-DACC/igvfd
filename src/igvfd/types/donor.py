@@ -3,7 +3,7 @@ from snovault import (
     collection,
     load_schema,
 )
-
+from snovault.util import Path
 from .base import (
     Item,
 )
@@ -35,6 +35,10 @@ class Donor(Item):
 class HumanDonor(Donor):
     item_type = 'human_donor'
     schema = load_schema('igvfd:schemas/human_donor.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component', 'name']),
+        Path('lab', include=['@id', 'title']),
+    ]
 
 
 @collection(
@@ -48,6 +52,11 @@ class HumanDonor(Donor):
 class RodentDonor(Donor):
     item_type = 'rodent_donor'
     schema = load_schema('igvfd:schemas/rodent_donor.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component', 'name']),
+        Path('lab', include=['@id', 'title']),
+        Path('source', include=['@id', 'title']),
+    ]
 
     def unique_keys(self, properties):
         keys = super(RodentDonor, self).unique_keys(properties)

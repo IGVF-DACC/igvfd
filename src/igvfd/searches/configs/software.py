@@ -8,15 +8,39 @@ def software():
     return {
         'facets': {
             'used_by': {
-                'title': 'Used by'
-            },
-            'award.component': {
-                'title': 'Award'
+                'title': 'Used By'
             },
             'lab.title': {
                 'title': 'Lab'
             },
+            'award.component': {
+                'title': 'Award'
+            },
+            'status': {
+                'title': 'Status'
+            },
         },
+        'facet_groups': [
+            {
+                'title': 'Software',
+                'facet_fields': [
+                    'used_by',
+                ],
+            },
+            {
+                'title': 'Provenance',
+                'facet_fields': [
+                    'lab.title',
+                    'award.component',
+                ],
+            },
+            {
+                'title': 'Quality',
+                'facet_fields': [
+                    'status',
+                ],
+            },
+        ],
         'columns': {
             'title': {
                 'title': 'Title'

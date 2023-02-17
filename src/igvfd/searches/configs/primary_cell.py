@@ -6,6 +6,68 @@ from snovault.elasticsearch.searches.configs import search_config
 )
 def primary_cell():
     return {
+        'facets': {
+            'biosample_term.term_name': {
+                'title': 'Biosample Term',
+            },
+            'disease_terms.term_name': {
+                'title': 'Disease Terms',
+            },
+            'treatments.treatment_term_name': {
+                'title': 'Treatments',
+            },
+            'taxa': {
+                'title': 'Taxa',
+            },
+            'sex': {
+                'title': 'Sex'
+            },
+            'donors.taxa': {
+                'title': 'Donor Taxa',
+            },
+            'collections': {
+                'title': 'Collections',
+            },
+            'lab.title': {
+                'title': 'Lab',
+            },
+            'award.component': {
+                'title': 'Award',
+            },
+            'source.title': {
+                'title': 'Source',
+            },
+            'status': {
+                'title': 'Status'
+            },
+        },
+        'facet_groups': [
+            {
+                'title': 'Sample',
+                'facet_fields': [
+                    'biosample_term.term_name',
+                    'disease_terms.term_name',
+                    'treatments.treatment_term_name',
+                    'taxa',
+                    'sex',
+                ]
+            },
+            {
+                'title': 'Provenance',
+                'facet_fields': [
+                    'collections',
+                    'lab.title',
+                    'award.component',
+                    'source.title',
+                ]
+            },
+            {
+                'title': 'Quality',
+                'facet_fields': [
+                    'status',
+                ]
+            },
+        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'
@@ -13,7 +75,7 @@ def primary_cell():
             'accession': {
                 'title': 'Accession'
             },
-            'biosample_term': {
+            'biosample_term.term_name': {
                 'title': 'Biosample Term'
             },
             'donors': {
@@ -28,7 +90,7 @@ def primary_cell():
             'award': {
                 'title': 'Award'
             },
-            'lab': {
+            'lab.title': {
                 'title': 'Lab'
             },
             'status': {
