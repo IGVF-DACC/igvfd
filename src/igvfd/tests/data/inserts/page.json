@@ -143,44 +143,6 @@
         }
     },
     {
-        "parent": "/help/samples/",
-        "name": "cell-lines",
-        "title": "Cell Line",
-        "lab": "j-michael-cherry",
-        "submitted_by": "fytanaka@stanford.edu",
-        "status": "released",
-        "uuid": "3f1d53de-6ad0-4978-beaf-ce31613063aa",
-        "layout": {
-            "blocks": [
-                {
-                    "@id": "#block1",
-                    "@type": "markdown",
-                    "body": "# Cell Line Samples\n\nతెలుగు అనేది ద్రావిడ భాషల కుటుంబానికి చెందిన భాష. దీనిని మాట్లాడే ప్రజలు ప్రధానంగా ఆంధ్ర, తెలంగాణాలో ఉన్నారు. ఇది ఆ రాష్ట్రాలలో అధికార భాష. భారతదేశంలో ఒకటి కంటే ఎక్కువ రాష్ట్రాల్లో ప్రాథమిక అధికారిక భాషా హోదా కలిగిన కొద్ది భాషలలో హిందీ, బెంగాలీలతో పాటు ఇది కూడా ఉంది.",
-                    "direction": "ltr"
-                }
-            ]
-        }
-    },
-    {
-        "parent": "/help/samples/",
-        "name": "differentiated-cells",
-        "title": "Differentiated Cells",
-        "lab": "j-michael-cherry",
-        "submitted_by": "fytanaka@stanford.edu",
-        "status": "released",
-        "uuid": "8e95aaf6-8df3-40c7-8a58-098ec06e22bf",
-        "layout": {
-            "blocks": [
-                {
-                    "@id": "#block1",
-                    "@type": "markdown",
-                    "body": "# Differentiated Cells\n\n日本語 は、日本国内や、かつての日本領だった国、そして日本人同士の間で使用されている言語。",
-                    "direction": "ltr"
-                }
-            ]
-        }
-    },
-    {
         "parent": "/help/",
         "name": "donors",
         "title": "Donors",

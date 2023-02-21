@@ -12,11 +12,11 @@ def measurement_set(testapp, lab, award, assay_term_starr):
 
 
 @pytest.fixture
-def measurement_set_v1(measurement_set, cell_line, human_donor):
+def measurement_set_v1(measurement_set, in_vitro_cell_line, human_donor):
     item = measurement_set.copy()
     item.update({
         'schema_version': '1',
-        'sample': [cell_line['@id']],
+        'sample': [in_vitro_cell_line['@id']],
         'donor': [human_donor['@id']]
     })
     return item

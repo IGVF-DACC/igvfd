@@ -1,9 +1,6 @@
 from snovault import upgrade_step
 
 
-@upgrade_step('cell_line', '1', '2')
-@upgrade_step('differentiated_cell', '1', '2')
-@upgrade_step('differentiated_tissue', '1', '2')
 @upgrade_step('primary_cell', '1', '2')
 @upgrade_step('tissue', '1', '2')
 @upgrade_step('whole_organism', '1', '2')
@@ -12,9 +9,6 @@ def sample_1_2(value, system):
     return
 
 
-@upgrade_step('cell_line', '2', '3')
-@upgrade_step('differentiated_cell', '2', '3')
-@upgrade_step('differentiated_tissue', '2', '3')
 @upgrade_step('primary_cell', '2', '3')
 @upgrade_step('tissue', '2', '3')
 def sample_2_3(value, system):
@@ -22,9 +16,6 @@ def sample_2_3(value, system):
     return
 
 
-@upgrade_step('cell_line', '3', '4')
-@upgrade_step('differentiated_cell', '3', '4')
-@upgrade_step('differentiated_tissue', '3', '4')
 @upgrade_step('primary_cell', '3', '4')
 @upgrade_step('tissue', '3', '4')
 @upgrade_step('whole_organism', '2', '3')
@@ -62,9 +53,6 @@ def technical_sample_2_3(value, system):
         del value['additional_description']
 
 
-@upgrade_step('cell_line', '4', '5')
-@upgrade_step('differentiated_cell', '4', '5')
-@upgrade_step('differentiated_tissue', '4', '5')
 @upgrade_step('primary_cell', '4', '5')
 @upgrade_step('tissue', '4', '5')
 @upgrade_step('whole_organism', '3', '4')
@@ -75,9 +63,6 @@ def sample_4_5(value, system):
         value.pop('disease_term')
 
 
-@upgrade_step('cell_line', '5', '6')
-@upgrade_step('differentiated_cell', '5', '6')
-@upgrade_step('differentiated_tissue', '5', '6')
 @upgrade_step('primary_cell', '5', '6')
 @upgrade_step('tissue', '5', '6')
 @upgrade_step('whole_organism', '4', '5')
@@ -101,30 +86,12 @@ def sample_5_6(value, system):
     return
 
 
-@upgrade_step('differentiated_cell', '6', '7')
-@upgrade_step('differentiated_tissue', '6', '7')
-def differentiated_sample_6_7(value, system):
-    # https://igvf.atlassian.net/browse/IGVF-239
-    if value.get('post_differentiation_time_units') == 'stage':
-        old_diff_time = value['post_differentiation_time']
-        old_notes_value = ''
-        if value.get('notes'):
-            old_notes_value = value.get('notes') + '  '
-        value['notes'] = old_notes_value + \
-            f'post_differentiation_time: {old_diff_time}, post_differentiation_time_units: stage.'
-        del value['post_differentiation_time_units']
-        del value['post_differentiation_time']
-
-
 @upgrade_step('technical_sample', '3', '4')
 def technical_sample_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-264
     return
 
 
-@upgrade_step('cell_line', '6', '7')
-@upgrade_step('differentiated_cell', '7', '8')
-@upgrade_step('differentiated_tissue', '7', '8')
 @upgrade_step('primary_cell', '6', '7')
 @upgrade_step('tissue', '6', '7')
 @upgrade_step('whole_organism', '5', '6')
@@ -136,9 +103,6 @@ def sample_7_8(value, system):
         value.pop('donor')
 
 
-@upgrade_step('cell_line', '7', '8')
-@upgrade_step('differentiated_cell', '8', '9')
-@upgrade_step('differentiated_tissue', '8', '9')
 @upgrade_step('primary_cell', '7', '8')
 @upgrade_step('tissue', '7', '8')
 @upgrade_step('whole_organism', '6', '7')
@@ -150,9 +114,6 @@ def sample_8_9(value, system):
         del value['biomarker']
 
 
-@upgrade_step('cell_line', '8', '9')
-@upgrade_step('differentiated_cell', '9', '10')
-@upgrade_step('differentiated_tissue', '9', '10')
 @upgrade_step('primary_cell', '8', '9')
 @upgrade_step('tissue', '8', '9')
 @upgrade_step('whole_organism', '7', '8')

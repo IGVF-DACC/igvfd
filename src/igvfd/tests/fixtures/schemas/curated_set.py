@@ -12,11 +12,11 @@ def curated_set_genome(testapp, lab, award):
 
 
 @pytest.fixture
-def curated_set_v1(analysis_set_base, human_donor, cell_line):
+def curated_set_v1(analysis_set_base, human_donor, in_vitro_cell_line):
     item = analysis_set_base.copy()
     item.update({
         'schema_version': '1',
-        'sample': [cell_line['@id']],
+        'sample': [in_vitro_cell_line['@id']],
         'donor': [human_donor['@id']]
     })
     return item

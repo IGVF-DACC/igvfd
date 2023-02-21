@@ -3,6 +3,10 @@
 ### Release v2
 
 * Rename `biomarker` to `biomarkers`.
+* Deprecate `differentiated_tissue`, `differentiated_cell`, `cell_line` schemas.
+
+### Schema version 6
+
 * Rename `donor` to `donors`.
 * Add `revoke_detail`.
 * Rename `donors` to `donor`.

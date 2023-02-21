@@ -19,13 +19,13 @@ def analysis_set_with_sample(
     testapp,
     award,
     lab,
-    cell_line,
+    in_vitro_cell_line,
     analysis_set_base
 ):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'samples': [cell_line['@id']],
+        'samples': [in_vitro_cell_line['@id']],
         'input_file_sets': [analysis_set_base['@id']]
     }
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
@@ -49,11 +49,11 @@ def analysis_set_with_donor(
 
 
 @pytest.fixture
-def analysis_set_v1(analysis_set_base, curated_set_genome, human_donor, cell_line):
+def analysis_set_v1(analysis_set_base, curated_set_genome, human_donor, in_vitro_cell_line):
     item = analysis_set_base.copy()
     item.update({
         'schema_version': '1',
-        'sample': [cell_line['@id']],
+        'sample': [in_vitro_cell_line['@id']],
         'donor': [human_donor['@id']],
         'input_file_set': [curated_set_genome['@id']]
     })

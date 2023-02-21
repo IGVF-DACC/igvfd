@@ -109,19 +109,6 @@ class InVitroSystem(Biosample):
 
 
 @collection(
-    name='cell-lines',
-    unique_key='accession',
-    properties={
-        'title': 'Cell lines',
-        'description': 'Listing of cell lines',
-    }
-)
-class CellLine(Biosample):
-    item_type = 'cell_line'
-    schema = load_schema('igvfd:schemas/cell_line.json')
-
-
-@collection(
     name='tissues',
     unique_key='accession',
     properties={
@@ -132,32 +119,6 @@ class CellLine(Biosample):
 class Tissue(Biosample):
     item_type = 'tissue'
     schema = load_schema('igvfd:schemas/tissue.json')
-
-
-@collection(
-    name='differentiated-tissues',
-    unique_key='accession',
-    properties={
-        'title': 'Differentiated tissues',
-        'description': 'Listing of differentiated tissues',
-    }
-)
-class DifferentiatedTissue(Biosample):
-    item_type = 'differentiated_tissue'
-    schema = load_schema('igvfd:schemas/differentiated_tissue.json')
-
-
-@collection(
-    name='differentiated-cells',
-    unique_key='accession',
-    properties={
-        'title': 'Differentiated cells',
-        'description': 'Listing of differentiated cells',
-    }
-)
-class DifferentiatedCell(Biosample):
-    item_type = 'differentiated_cell'
-    schema = load_schema('igvfd:schemas/differentiated_cell.json')
 
 
 @collection(
