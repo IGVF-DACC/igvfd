@@ -1,5 +1,5 @@
 {
-    "title": "Software version",
+    "title": "Software Version",
     "description": "Schema for submitting a tagged version of a software object.",
     "$id": "/profiles/software_version.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
