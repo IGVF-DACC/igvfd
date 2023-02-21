@@ -90,7 +90,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "5"
+            "default": "6"
         },
         "parents": {
             "items": {
@@ -133,10 +133,6 @@
             "enum": [
                 "Mus musculus"
             ]
-        },
-        "traits": {
-            "description": "A list of known phenotypic traits of the Rodent donor",
-            "type": "array"
         },
         "individual_rodent": {
             "title": "Individual Rodent",

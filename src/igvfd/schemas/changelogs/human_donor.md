@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 7
+
+* Remove `traits`.
+
 ### Schema version 6
 
 * Remove `external_resource`.

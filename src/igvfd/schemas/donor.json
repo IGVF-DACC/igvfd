@@ -67,20 +67,6 @@
             },
             "maxItems": 2
         },
-        "traits": {
-            "title": "Phenotypic Traits",
-            "description": "A list of known phenotypic traits of the donor",
-            "type": "array",
-            "uniqueItems": true,
-            "minItems": 1,
-            "items": {
-                "title": "Phenotype Term",
-                "description": "Phenotypic trait",
-                "comment": "See phenotype_term.json for available identifiers.",
-                "type": "string",
-                "linkTo": "PhenotypeTerm"
-            }
-        },
         "phenotypic_features": {
             "title": "Phenotypic Features",
             "description": "A list of associated phenotypic features of the donor",

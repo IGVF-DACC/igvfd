@@ -133,3 +133,41 @@ def human_donor_v5(human_donor):
         ]
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v6_single_trait_no_notes(human_donor, phenotype_term_alzheimers):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '6',
+        'traits': [
+            phenotype_term_alzheimers['@id']
+        ]
+    })
+    return item
+
+
+@pytest.fixture
+def human_donor_v6_multiple_traits_no_notes(human_donor, phenotype_term_alzheimers, phenotype_term_myocardial_infarction):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '6',
+        'traits': [
+            phenotype_term_alzheimers['@id'],
+            phenotype_term_myocardial_infarction['@id']
+        ]
+    })
+    return item
+
+
+@pytest.fixture
+def human_donor_v6_single_trait_with_notes(human_donor, phenotype_term_alzheimers):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '6',
+        'traits': [
+            phenotype_term_alzheimers['@id']
+        ],
+        'notes': 'This is a note.'
+    })
+    return item
