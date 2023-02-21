@@ -22,11 +22,14 @@ def analysis_set():
             'award': {
                 'title': 'Award'
             },
-            'input_file_set': {
-                'title': 'Input File Set'
+            'input_file_sets': {
+                'title': 'Input File Sets'
             }
         },
         'columns': {
+            'accession': {
+                'title': 'Accession'
+            },
             'uuid': {
                 'title': 'UUID'
             },
@@ -48,8 +51,11 @@ def analysis_set():
             'award': {
                 'title': 'Award'
             },
-            'input_file_set': {
-                'title': 'Input File Set'
+            'input_file_sets': {
+                'title': 'Input File Sets'
+            },
+            'summary': {
+                'title': 'Summary'
             }
         },
     }
