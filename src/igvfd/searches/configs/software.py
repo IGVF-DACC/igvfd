@@ -39,5 +39,8 @@ def software():
             'used_by': {
                 'title': 'Used by'
             },
+            'lab.title': {
+                'title': 'Lab'
+            },
         }
     }

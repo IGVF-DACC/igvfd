@@ -10,5 +10,19 @@ def software_version():
             'status': {
                 'title': 'Status'
             },
+        },
+        'columns': {
+            'software.title': {
+                'title': 'Title'
+            },
+            'status': {
+                'title': 'Status'
+            },
+            'version': {
+                'title': 'version'
+            },
+            'lab': {
+                'title': 'Lab'
+            },
         }
     }
