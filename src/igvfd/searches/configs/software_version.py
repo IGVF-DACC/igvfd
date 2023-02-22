@@ -19,7 +19,7 @@ def software_version():
                 'title': 'Status'
             },
             'version': {
-                'title': 'version'
+                'title': 'Version'
             },
             'lab': {
                 'title': 'Lab'
