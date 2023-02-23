@@ -94,15 +94,17 @@ class Biosample(Sample):
         sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
         biosample_type = self.item_type.replace('_', ' ')
-        for word in biosample_type.split(' '):
-            if word in term_name.split(' '):
-                term_name = term_name.replace(word, biosample_type)
+        term_and_type = f'{term_name} {biosample_type}'  # default case
+        if 'cell' in biosample_type and 'cell' in term_name:
+            term_and_type = term_name  # if "cell" in term_name and biosample_type, drop biosample_type
+        if 'tissue' in biosample_type and 'tissue' in term_name:
+            term_and_type = term_name  # if "tissue" in term_name and biosample_type, drop biosample_type
         if age == 'unknown':
-            return f'{term_name} {biosample_type}, {taxa}'
+            return f'{term_and_type}, {taxa}'
         else:
             if age != '1':
-                age_units = age_units + 's'
-            return f'{term_name} {biosample_type}, {taxa} ({age} {age_units})'
+                age_units = f'{age_units}s'
+            return f'{term_and_type}, {taxa} ({age} {age_units})'
 
 
 @collection(
@@ -136,15 +138,24 @@ class InVitroSystem(Biosample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, biosample_term, taxa, classification=None, time_post_factors_introduction=None, time_post_factors_introduction_units=None):
+    def summary(self, request, biosample_term, taxa, classification, time_post_factors_introduction=None, time_post_factors_introduction_units=None):
         sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
+        term_and_classification = f'{term_name} {classification}'  # default case
+        if classification in term_name:
+            term_and_classification = term_name  # if classification in term_name, drop classification from summary
+        elif 'cell' in classification and 'cell' in term_name:
+            term_name = term_name.replace('cell', classification)
+            term_and_classification = term_name  # if "cell" in term_name, replace "cell" with classification
+        elif 'tissue' in classification and 'tissue' in term_name:
+            term_name = term_name.replace('tissue', classification)
+            term_and_classification = term_name  # if "tissue" in term_name, replace "tissue" with classification
         if time_post_factors_introduction and time_post_factors_introduction_units:
             if time_post_factors_introduction != 1:
-                time_post_factors_introduction_units = time_post_factors_introduction_units + 's'
-            return f'{term_name} {classification}, {taxa} ({time_post_factors_introduction} {time_post_factors_introduction_units})'
+                time_post_factors_introduction_units = f'{time_post_factors_introduction_units}s'
+            return f'{term_and_classification}, {taxa} ({time_post_factors_introduction} {time_post_factors_introduction_units})'
         else:
-            return f'{term_name} {classification}, {taxa}'
+            return f'{term_and_classification}, {taxa}'
 
 
 @collection(

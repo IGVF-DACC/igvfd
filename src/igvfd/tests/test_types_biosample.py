@@ -44,7 +44,7 @@ def test_age_calculation(testapp, in_vitro_cell_line):
     assert res.json.get('age') == '90'
 
 
-def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_line, technical_sample):
+def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_line, technical_sample, sample_term_endothelial_cell, sample_term_embryoid_body, sample_term_lymphoblastoid):
     res = testapp.get(tissue['@id'])
     assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus'
     res = testapp.patch_json(
@@ -58,7 +58,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     res = testapp.get(tissue['@id'])
     assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus (10 months)'
     res = testapp.get(primary_cell['@id'])
-    assert res.json.get('summary') == 'pluripotent stem cell primary cell, Homo sapiens'
+    assert res.json.get('summary') == 'pluripotent stem cell, Homo sapiens'
     res = testapp.patch_json(
         primary_cell['@id'],
         {
@@ -68,7 +68,15 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         }
     )
     res = testapp.get(primary_cell['@id'])
-    assert res.json.get('summary') == 'pluripotent stem cell primary cell, Homo sapiens (1-3 weeks)'
+    assert res.json.get('summary') == 'pluripotent stem cell, Homo sapiens (1-3 weeks)'
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'biosample_term': sample_term_endothelial_cell['@id'],
+        }
+    )
+    res = testapp.get(primary_cell['@id'])
+    assert res.json.get('summary') == 'endothelial cell of vascular tree, Homo sapiens (1-3 weeks)'
     res = testapp.get(whole_organism['@id'])
     assert res.json.get('summary') == 'whole organism, Mus musculus'
     res = testapp.patch_json(
@@ -92,5 +100,30 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get('summary') == 'K562 cell line, Mus musculus (100 hours)'
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'biosample_term': sample_term_lymphoblastoid['@id']
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'])
+    assert res.json.get('summary') == 'lymphoblastoid cell line, Mus musculus (100 hours)'
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'biosample_term': sample_term_endothelial_cell['@id']
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'])
+    assert res.json.get('summary') == 'endothelial cell line of vascular tree, Mus musculus (100 hours)'
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'biosample_term': sample_term_embryoid_body['@id'],
+            'classification': 'embryoid'
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'])
+    assert res.json.get('summary') == 'embryoid body, Mus musculus (100 hours)'
     res = testapp.get(technical_sample['@id'])
     assert res.json.get('summary') == 'synthetic technical sample'
