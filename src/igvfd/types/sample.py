@@ -93,12 +93,16 @@ class Biosample(Sample):
     def summary(self, request, biosample_term, taxa, age, age_units=None):
         sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
+        biosample_type = self.item_type.replace('_', ' ')
+        for word in biosample_type.split(' '):
+            if word in term_name.split(' '):
+                term_name = term_name.replace(word, biosample_type)
         if age == 'unknown':
-            return f'{term_name} {self.item_type.replace("_", " ")}, {taxa}'
+            return f'{term_name} {biosample_type}, {taxa}'
         else:
             if age != '1':
                 age_units = age_units + 's'
-            return f'{term_name} {self.item_type.replace("_", " ")}, {taxa} ({age} {age_units})'
+            return f'{term_name} {biosample_type}, {taxa} ({age} {age_units})'
 
 
 @collection(
