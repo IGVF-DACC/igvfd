@@ -6,6 +6,7 @@ from pyramid.paster import get_app
 
 from igvfd.loadxl import load_test_data
 
+import time
 
 logging.basicConfig()
 logging.getLogger('igvfd').setLevel(logging.INFO)
@@ -43,6 +44,7 @@ def main():
         args.config_uri,
         args.app_name,
     )
+    time.sleep(25)
     load_test_data(app)
 
 

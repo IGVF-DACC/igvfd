@@ -251,6 +251,8 @@ def main(global_config, **local_config):
     if asbool(settings.get('testing', False)):
         config.include('.tests.testing_views')
 
+    config.include('igvfd.mappings.register')
+
     app = config.make_wsgi_app()
 
     return app

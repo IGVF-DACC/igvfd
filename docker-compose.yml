@@ -80,6 +80,7 @@ services:
       - "/igvfd/src/igvfd.egg-info"
     command: load-development
     depends_on:
+      - create-mapping
       - postgres
       - opensearch
       - localstack

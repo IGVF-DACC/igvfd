@@ -1,1 +1,1 @@
-snovault-index@git+https://github.com/IGVF-DACC/snovault-index.git@v2.0.0
+snovault-index@git+https://github.com/IGVF-DACC/snovault-index.git@SNO2-17-refactor-create-mapping
