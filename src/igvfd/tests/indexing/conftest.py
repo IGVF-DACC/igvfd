@@ -64,7 +64,7 @@ def workbook(app, app_settings):
     from snovault.elasticsearch.manage_mappings import manage_mappings
     from igvfd.loadxl import load_test_data
     testapp = make_test_app(app)
-    manage_mappings(app)
     load_test_data(app)
+    manage_mappings(app)
     wait_for_indexing_poll(testapp)
     yield
