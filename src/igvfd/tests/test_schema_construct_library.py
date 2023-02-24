@@ -29,8 +29,18 @@ def test_dependencies_construct_library(award, lab, testapp,
          'guide_library_details': {'tiling_modality': 'sparse peaks',
                                    'average_guide_coverage': 10
                                    },
-         'reporter_library_detail': {'mpra_library_complexity': 90
-                                     }
+         'reporter_library_details': {'mpra_library_complexity': 90
+                                      }
+         }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        construct_library_genome_wide['@id'],
+        {'scope': 'genome-wide',
+         'targeted_loci': [{'assembly': 'GRCh38',
+                            'chromosome': 'chr9',
+                            'start': 1,
+                            'end': 3500
+                            }]
          }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(

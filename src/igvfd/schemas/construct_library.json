@@ -95,6 +95,24 @@
                     }
                 }
             ]
+        },
+        "targeted_genes": {
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "genes"
+                    ]
+                }
+            }
+        },
+        "targeted_loci": {
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "loci"
+                    ]
+                }
+            }
         }
     },
     "properties": {
@@ -115,14 +133,14 @@
             ]
         },
         "origins": {
-            "title": "Origins of Elements",
-            "description": "The criteria used to select the fragments or elements cloned in the library.",
+            "title": "Origins",
+            "description": "The criteria used to select the sequence material cloned into the library.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Origin of Elements",
-                "description": "The criteria used to select the fragments or elements cloned in the library.",
+                "title": "Origin",
+                "description": "The criteria used to select the sequence material cloned into the library.",
                 "type": "string",
                 "enum": [
                     "accessible genome regions",
