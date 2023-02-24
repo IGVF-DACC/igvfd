@@ -52,20 +52,44 @@
                 "unspecified"
             ]
         },
-        "parents": {
-            "title": "Parents",
-            "description": "Biological parents of this donor",
-            "comment": "A list of parents as it applies to the experiment.",
+        "related_donors": {
+            "title": "Related Donors",
+            "description": "Familial relations of this donor",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Parent",
-                "description": "Biological parent of this donor.",
-                "type": "string",
-                "linkTo": "Donor"
-            },
-            "maxItems": 2
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "donor": {
+                        "title": "Related Donor Identifier",
+                        "description": "An identifier for the related donor.",
+                        "type": "string",
+                        "linkTo": "Donor"
+                    },
+                    "relationship_type": {
+                        "title": "Relationship Type",
+                        "description": "A descriptive term for the related donor’s relationship to this donor.",
+                        "type": "string",
+                        "enum": [
+                            "aunt",
+                            "child",
+                            "first cousin once removed",
+                            "first cousin",
+                            "fraternal twin",
+                            "grandparent",
+                            "half-sibling",
+                            "niece",
+                            "nephew",
+                            "parent",
+                            "paternal twin",
+                            "sibling",
+                            "second cousin"
+                        ]
+                    }
+                }
+            }
         },
         "phenotypic_features": {
             "title": "Phenotypic Features",

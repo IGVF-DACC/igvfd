@@ -92,10 +92,12 @@
         "schema_version": {
             "default": "6"
         },
-        "parents": {
+        "related_donors": {
             "items": {
-                "linkTo": "RodentDonor",
-                "type": "string"
+                "donor": {
+                    "linkTo": "RodentDonor",
+                    "type": "string"
+                }
             }
         },
         "strain_background": {
