@@ -93,6 +93,45 @@
             "enum": [
                 "Homo sapiens"
             ]
+        },
+        "related_donors":{
+            "title": "Related Donors",
+            "description": "Donors that have familial relations to each other.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "donor": {
+                        "title": "Related Donor Identifier",
+                        "description": "The identifier to who this donor is related to.",
+                        "type": "string",
+                        "linkTo": "HumanDonor"
+                    },
+                    "relationship_type": {
+                        "title": "Relationship Type",
+                        "description": "The type of relationship with this donor.",
+                        "type": "string",
+                        "enum": [
+                            "aunt",
+                            "child",
+                            "first cousin once removed",
+                            "first cousin",
+                            "fraternal twin",
+                            "grandparent",
+                            "half-sibling",
+                            "niece",
+                            "nephew",
+                            "parent",
+                            "paternal twin",
+                            "sibling",
+                            "second cousin"
+                        ]
+                    }
+                }
+            }
         }
     },
     "boost_values": {

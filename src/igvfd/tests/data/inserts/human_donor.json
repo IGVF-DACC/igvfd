@@ -115,5 +115,25 @@
         ],
         "sex": "female",
         "taxa": "Homo sapiens"
+    },
+    {
+        "uuid": "e67bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
+        "lab": "chongyuan-luo",
+        "award": "1U01HG012079-01",
+        "ethnicities": [
+            "Puerto Rican"
+        ],
+        "sex": "female",
+        "taxa": "Homo sapiens",
+        "related_donor": [
+            {
+                "donor": "e57bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
+                "relationship_type": "aunt"
+            },
+            {
+                "donor": "e47bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
+                "relationship_type": "sibling"
+            }
+        ]
     }
 ]
