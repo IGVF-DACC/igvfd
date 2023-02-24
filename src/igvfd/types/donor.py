@@ -51,6 +51,11 @@ class RodentDonor(Donor):
 
     def unique_keys(self, properties):
         keys = super(RodentDonor, self).unique_keys(properties)
-        value = u'{strain}/{sex}'.format(**properties)
-        keys.setdefault('rodentdonor:strain_sex', []).append(value)
+        if properties.get('rodent_identifier'):
+            lab = properties.get('lab').split('/')[-1]
+            value = f'{lab}:{properties.get("rodent_identifier")}'
+            keys.setdefault('rodentdonor:lab_rodentid', []).append(value)
+        else:
+            value = u'{strain}/{sex}'.format(**properties)
+            keys.setdefault('rodentdonor:strain_sex', []).append(value)
         return keys
