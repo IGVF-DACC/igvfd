@@ -33,6 +33,24 @@ def wait_for_indexing_poll(testapp):
         time.sleep(10)
 
 
+def wait_for_opensearch(app):
+    import time
+    from snovault.elasticsearch.interfaces import ELASTIC_SEARCH
+    from snovault.elasticsearch.interfaces import RESOURCES_INDEX
+    os = app.registry[ELASTIC_SEARCH]
+    attempt = 0
+    while True:
+        print('Waiting for Opensearch', attempt)
+        attempt += 1
+        time.sleep(10)
+        try:
+            os.indices.get('*')
+            print('Found Opensearch', attempt)
+            break
+        except Exception as e:
+            print(e)
+
+
 @pytest.fixture
 def poll_until_indexing_is_done():
     return wait_for_indexing_poll
@@ -64,7 +82,10 @@ def workbook(app, app_settings):
     from snovault.elasticsearch.manage_mappings import manage_mappings
     from igvfd.loadxl import load_test_data
     testapp = make_test_app(app)
-    load_test_data(app)
+    wait_for_opensearch(app)
+    print('Manage mappings')
     manage_mappings(app)
+    print('Load data inserts')
+    load_test_data(app)
     wait_for_indexing_poll(testapp)
     yield
