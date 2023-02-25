@@ -19,7 +19,6 @@ def includeme(config):
 
 DEFAULT_HASHES = {
     'default': 'aaav1',
-    'award': 'bbbv2',
 }
 
 
