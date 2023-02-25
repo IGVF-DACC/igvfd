@@ -29,3 +29,13 @@ class Award(Item):
         'replaced': DELETED,
         'disabled': ALLOW_CURRENT
     }
+
+    @calculated_property(
+        schema={
+            'title': 'Some Description',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def some_description(self):
+        return 'some description to index'
