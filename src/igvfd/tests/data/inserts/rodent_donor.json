@@ -51,9 +51,6 @@
         "genotype": "some genotype",
         "sex": "female",
         "taxa": "Mus musculus",
-        "parents": [
-            "c37934b0-4269-4470-be53-9eac7b196447"
-        ],
         "phenotypic_features": [
             "/phenotypic-features/65c30d42-8fb3-11ed-a1eb-0242ac120002/",
             "/phenotypic-features/762bc1e2-8fb3-11ed-a1eb-0242ac120002/"

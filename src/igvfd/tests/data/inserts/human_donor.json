@@ -63,9 +63,6 @@
         ],
         "sex": "female",
         "taxa": "Homo sapiens",
-        "parents": [
-            "a1abeff6-8024-41d3-a713-5d22c86ffc57"
-        ],
         "collections": [
             "ENCODE"
         ]
