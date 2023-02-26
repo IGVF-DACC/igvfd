@@ -145,11 +145,11 @@ class InVitroSystem(Biosample):
         if classification in term_name:
             term_and_classification = term_name  # if classification in term_name, drop classification from summary
         elif 'cell' in classification and 'cell' in term_name:
-            term_name = term_name.replace('cell', classification)
-            term_and_classification = term_name  # if "cell" in term_name, replace "cell" with classification
+            # if "cell" in term_name, replace "cell" with classification
+            term_and_classification = term_name.replace('cell', classification)
         elif 'tissue' in classification and 'tissue' in term_name:
-            term_name = term_name.replace('tissue', classification)
-            term_and_classification = term_name  # if "tissue" in term_name, replace "tissue" with classification
+            # if "tissue" in term_name, replace "tissue" with classification
+            term_and_classification = term_name.replace('tissue', classification)
         if time_post_factors_introduction and time_post_factors_introduction_units:
             if time_post_factors_introduction != 1:
                 time_post_factors_introduction_units = f'{time_post_factors_introduction_units}s'
