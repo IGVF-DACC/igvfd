@@ -1,9 +1,12 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 8
+
+* Add `related_donors`.
+
 ### Schema version 7
 
 * Remove `traits`.
-* Add `related_donors`.
 
 ### Schema version 6
 

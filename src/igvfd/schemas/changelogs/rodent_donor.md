@@ -1,5 +1,9 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Schema version 7
+
+* Add `related_donors`.
+
 ### Schema version 6
 
 * Remove `traits`.

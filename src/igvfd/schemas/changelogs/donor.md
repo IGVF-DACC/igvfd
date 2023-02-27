@@ -14,3 +14,5 @@
     ```json
     "unspecified"
     ```
+* Remove `parents`.
+* Add `related_donors`.
