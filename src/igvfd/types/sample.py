@@ -64,6 +64,7 @@ class Biosample(Sample):
             return 'mixed'
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Age',
             'description': 'Age of organism at the time of collection of the sample.',
@@ -81,6 +82,29 @@ class Biosample(Sample):
             return str(lower_bound_age) + '-' + str(upper_bound_age)
         else:
             return 'unknown'
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, biosample_term, taxa, age, age_units=None):
+        sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
+        term_name = sample_term_object.get('term_name')
+        biosample_type = self.item_type.replace('_', ' ')
+        term_and_type = f'{term_name} {biosample_type}'
+        if 'cell' in biosample_type and 'cell' in term_name:
+            term_and_type = term_name
+        if 'tissue' in biosample_type and 'tissue' in term_name:
+            term_and_type = term_name
+        if age == 'unknown':
+            return f'{term_and_type}, {taxa}'
+        else:
+            if age != '1':
+                age_units = f'{age_units}s'
+            return f'{term_and_type}, {taxa} ({age} {age_units})'
 
 
 @collection(
@@ -106,6 +130,30 @@ class PrimaryCell(Biosample):
 class InVitroSystem(Biosample):
     item_type = 'in_vitro_system'
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, biosample_term, taxa, classification, time_post_factors_introduction=None, time_post_factors_introduction_units=None):
+        sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
+        term_name = sample_term_object.get('term_name')
+        term_and_classification = f'{term_name} {classification}'
+        if classification in term_name:
+            term_and_classification = term_name
+        elif 'cell' in classification and 'cell' in term_name:
+            term_and_classification = term_name.replace('cell', classification)
+        elif 'tissue' in classification and 'tissue' in term_name:
+            term_and_classification = term_name.replace('tissue', classification)
+        if time_post_factors_introduction and time_post_factors_introduction_units:
+            if time_post_factors_introduction != 1:
+                time_post_factors_introduction_units = f'{time_post_factors_introduction_units}s'
+            return f'{term_and_classification}, {taxa} ({time_post_factors_introduction} {time_post_factors_introduction_units})'
+        else:
+            return f'{term_and_classification}, {taxa}'
 
 
 @collection(
@@ -133,6 +181,18 @@ class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, technical_sample_term, sample_material):
+        sample_term_object = request.embed(technical_sample_term, '@@object?skip_calculated=true')
+        term_name = sample_term_object.get('term_name')
+        return f'{sample_material} {term_name}'
+
 
 @collection(
     name='whole-organisms',
@@ -145,3 +205,20 @@ class TechnicalSample(Sample):
 class WholeOrganism(Biosample):
     item_type = 'whole_organism'
     schema = load_schema('igvfd:schemas/whole_organism.json')
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, biosample_term, taxa, age, age_units=None):
+        sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
+        term_name = sample_term_object.get('term_name')
+        if age == 'unknown':
+            return f'{term_name}, {taxa}'
+        else:
+            if age != '1':
+                age_units = age_units + 's'
+            return f'{term_name}, {taxa} ({age} {age_units})'
