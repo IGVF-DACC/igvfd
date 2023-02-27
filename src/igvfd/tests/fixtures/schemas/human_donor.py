@@ -67,7 +67,6 @@ def human_donor_v1(human_donor):
     item = human_donor.copy()
     item.update({
         'schema_version': '1',
-        'parents': [],
         'external_resources': [],
         'aliases': [],
         'collections': [],
@@ -167,6 +166,31 @@ def human_donor_v6_single_trait_with_notes(human_donor, phenotype_term_alzheimer
         'schema_version': '6',
         'traits': [
             phenotype_term_alzheimers['@id']
+        ],
+        'notes': 'This is a note.'
+    })
+    return item
+
+
+@pytest.fixture
+def human_donor_v7_with_parents(human_donor, parent_human_donor_1):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '7',
+        'parents': [
+            parent_human_donor_1['@id']
+        ]
+    })
+    return item
+
+
+@pytest.fixture
+def human_donor_v7_with_parents_notes(human_donor, parent_human_donor_1):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '7',
+        'parents': [
+            parent_human_donor_1['@id']
         ],
         'notes': 'This is a note.'
     })

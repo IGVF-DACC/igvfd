@@ -3,7 +3,6 @@ import pytest
 
 def test_human_donor_upgrade_1_2(upgrader, human_donor_v1):
     value = upgrader.upgrade('human_donor', human_donor_v1, current_version='1', target_version='2')
-    assert 'parents' not in value
     assert 'external_resources' not in value
     assert 'aliases' not in value
     assert 'collections' not in value
@@ -52,3 +51,14 @@ def test_human_donor_upgrade_6_7(upgrader, human_donor_v6_single_trait_no_notes,
                              current_version='6', target_version='7')
     assert 'traits' not in value
     assert value['notes'] == 'This is a note.  traits: ' + phenotype_term_alzheimers['@id']
+
+
+def test_human_donor_upgrade_7_8(upgrader, human_donor_v7_with_parents, human_donor_v7_with_parents_notes, parent_human_donor_1):
+    value = upgrader.upgrade('human_donor', human_donor_v7_with_parents,
+                             current_version='7', target_version='8')
+    assert 'parents' not in value
+    assert value['notes'] == 'parents: ' + parent_human_donor_1['@id']
+    value = upgrader.upgrade('human_donor', human_donor_v7_with_parents_notes,
+                             current_version='7', target_version='8')
+    assert 'parents' not in value
+    assert value['notes'] == 'This is a note.  parents: ' + parent_human_donor_1['@id']

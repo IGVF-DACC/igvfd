@@ -77,8 +77,11 @@ def test_taxa(award, lab, testapp):
 def test_patch_parents(human_donor, parent_human_donor_1, testapp):
     res = testapp.patch_json(
         human_donor['@id'],
-        {'parents': [
-            parent_human_donor_1['@id']
+        {'related_donors': [
+            {
+                'donor': parent_human_donor_1['@id'],
+                'relationship_type': 'parent'
+            }
         ]})
     assert res.status_code == 200
 
