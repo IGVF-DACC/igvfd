@@ -1,5 +1,5 @@
 {
-    "title": "Reference data",
+    "title": "Reference Data",
     "$id": "/profiles/reference_data.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Schema for submission of a file containing reference data.",
