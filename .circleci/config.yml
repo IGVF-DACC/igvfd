@@ -118,4 +118,4 @@ jobs:
       - run:
           name: Check Opensearch mappings for diff
           command: |
-              docker compose run pyramid /scripts/pyramid/diff-opensearch-mappings.sh
+              docker-compose run pyramid /scripts/pyramid/diff-opensearch-mappings.sh
