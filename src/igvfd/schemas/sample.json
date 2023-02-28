@@ -90,6 +90,13 @@
             "comment": "Date should be submitted in as YYYY-MM-DD.",
             "type": "string",
             "format": "date"
+        },
+        "sorted_fraction": {
+            "title": "Sorted Fraction",
+            "description": "Links to a larger sample from which this sample was obtained through sorting.",
+            "comment": "The related sample must have the same properties or this will result in an audit.",
+            "type": "string",
+            "linkTo": "Sample"
         }
     }
 }

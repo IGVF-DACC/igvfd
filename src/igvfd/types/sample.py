@@ -23,6 +23,9 @@ class Sample(Item):
     base_types = ['Sample'] + Item.base_types
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/sample.json')
+    audit_inherit = [
+        'sample'
+    ]
 
 
 @abstract_collection(
@@ -37,6 +40,9 @@ class Biosample(Sample):
     item_type = 'biosample'
     base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
+    audit_inherit = [
+        'sample'
+    ]
 
     @calculated_property(
         schema={
@@ -118,6 +124,9 @@ class Biosample(Sample):
 class PrimaryCell(Biosample):
     item_type = 'primary_cell'
     schema = load_schema('igvfd:schemas/primary_cell.json')
+    audit_inherit = [
+        'sample'
+    ]
 
 
 @collection(
@@ -130,6 +139,9 @@ class PrimaryCell(Biosample):
 class InVitroSystem(Biosample):
     item_type = 'in_vitro_system'
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
+    audit_inherit = [
+        'sample'
+    ]
 
     @calculated_property(
         schema={
@@ -167,6 +179,9 @@ class InVitroSystem(Biosample):
 class Tissue(Biosample):
     item_type = 'tissue'
     schema = load_schema('igvfd:schemas/tissue.json')
+    audit_inherit = [
+        'sample'
+    ]
 
 
 @collection(
@@ -180,6 +195,9 @@ class Tissue(Biosample):
 class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
+    audit_inherit = [
+        'sample'
+    ]
 
     @calculated_property(
         schema={
@@ -205,6 +223,9 @@ class TechnicalSample(Sample):
 class WholeOrganism(Biosample):
     item_type = 'whole_organism'
     schema = load_schema('igvfd:schemas/whole_organism.json')
+    audit_inherit = [
+        'sample'
+    ]
 
     @calculated_property(
         schema={
