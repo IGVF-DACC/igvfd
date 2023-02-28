@@ -1,1 +1,1 @@
-## Automatically generated. Do not edit this folder manually.
+Automatically generated. Do not edit this folder manually.
