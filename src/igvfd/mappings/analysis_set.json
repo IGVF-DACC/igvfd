@@ -1,6 +1,6 @@
 {
-    "hash": "f6420d0bd014c3d7af29e612c318a1f3",
-    "index_name": "analysis_set_f6420d0b",
+    "hash": "685f6849974e46a4be81454a4658a9b2",
+    "index_name": "analysis_set_685f6849",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -166,6 +166,9 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
+                        "type": "keyword"
+                    },
+                    "dbxrefs": {
                         "type": "keyword"
                     },
                     "description": {

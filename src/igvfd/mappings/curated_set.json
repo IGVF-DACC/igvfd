@@ -1,6 +1,6 @@
 {
-    "hash": "527841a1d0efbf43a8e40cd6a6c2db61",
-    "index_name": "curated_set_527841a1",
+    "hash": "19652685e21c4fb485cfa1611a73c00c",
+    "index_name": "curated_set_19652685",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -167,6 +167,9 @@
                     },
                     "curated_set_type": {
                         "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "dbxrefs": {
                         "type": "keyword"
                     },
                     "description": {
