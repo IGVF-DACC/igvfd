@@ -1,0 +1,338 @@
+{
+    "hash": "e059298f28d72a2fefc47a5154cbe2f8",
+    "mapping": {
+        "dynamic_templates": [
+            {
+                "template_principals_allowed": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "principals_allowed.*"
+                }
+            },
+            {
+                "template_unique_keys": {
+                    "mapping": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "unique_keys.*"
+                }
+            },
+            {
+                "template_links": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "links.*"
+                }
+            },
+            {
+                "strings": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string"
+                }
+            },
+            {
+                "integers": {
+                    "mapping": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "long"
+                    },
+                    "match_mapping_type": "long"
+                }
+            }
+        ],
+        "properties": {
+            "_all": {
+                "analyzer": "snovault_index_analyzer",
+                "search_analyzer": "snovault_search_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "audit": {
+                "properties": {
+                    "ERROR": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "INTERNAL_ACTION": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "NOT_COMPLIANT": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "WARNING": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "embedded": {
+                "properties": {
+                    "@id": {
+                        "type": "keyword"
+                    },
+                    "@type": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "accession": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "age": {
+                        "type": "keyword"
+                    },
+                    "age_units": {
+                        "type": "keyword"
+                    },
+                    "aliases": {
+                        "type": "keyword"
+                    },
+                    "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "award": {
+                        "type": "keyword"
+                    },
+                    "biomarkers": {
+                        "type": "keyword"
+                    },
+                    "biosample_term": {
+                        "type": "keyword"
+                    },
+                    "collections": {
+                        "type": "keyword"
+                    },
+                    "creation_timestamp": {
+                        "type": "keyword"
+                    },
+                    "date_obtained": {
+                        "type": "keyword"
+                    },
+                    "dbxrefs": {
+                        "type": "keyword"
+                    },
+                    "description": {
+                        "type": "text"
+                    },
+                    "disease_terms": {
+                        "type": "keyword"
+                    },
+                    "documents": {
+                        "type": "keyword"
+                    },
+                    "donors": {
+                        "type": "keyword"
+                    },
+                    "embryonic": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "lab": {
+                        "type": "keyword"
+                    },
+                    "lot_id": {
+                        "type": "keyword"
+                    },
+                    "lower_bound_age": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "nih_institutional_certification": {
+                        "type": "keyword"
+                    },
+                    "notes": {
+                        "type": "text"
+                    },
+                    "part_of": {
+                        "type": "keyword"
+                    },
+                    "pooled_from": {
+                        "type": "keyword"
+                    },
+                    "product_id": {
+                        "type": "keyword"
+                    },
+                    "references": {
+                        "type": "keyword"
+                    },
+                    "revoke_detail": {
+                        "type": "keyword"
+                    },
+                    "schema_version": {
+                        "type": "keyword"
+                    },
+                    "sex": {
+                        "type": "keyword"
+                    },
+                    "source": {
+                        "type": "keyword"
+                    },
+                    "starting_amount": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "starting_amount_units": {
+                        "type": "keyword"
+                    },
+                    "status": {
+                        "type": "keyword"
+                    },
+                    "submitted_by": {
+                        "type": "keyword"
+                    },
+                    "submitter_comment": {
+                        "type": "keyword"
+                    },
+                    "summary": {
+                        "type": "keyword"
+                    },
+                    "taxa": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "treatments": {
+                        "type": "keyword"
+                    },
+                    "upper_bound_age": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "url": {
+                        "type": "keyword"
+                    },
+                    "uuid": {
+                        "type": "keyword"
+                    }
+                },
+                "type": "object"
+            },
+            "embedded_uuids": {
+                "type": "keyword"
+            },
+            "index_name": {
+                "type": "keyword"
+            },
+            "item_type": {
+                "copy_to": "_all",
+                "type": "keyword"
+            },
+            "linked_uuids": {
+                "type": "keyword"
+            },
+            "object": {
+                "enabled": false,
+                "type": "object"
+            },
+            "paths": {
+                "type": "keyword"
+            },
+            "properties": {
+                "enabled": false,
+                "type": "object"
+            },
+            "propsheets": {
+                "enabled": false,
+                "type": "object"
+            },
+            "tid": {
+                "type": "keyword"
+            },
+            "uuid": {
+                "copy_to": "_all",
+                "type": "keyword"
+            }
+        }
+    },
+    "name": "whole_organism"
+}
