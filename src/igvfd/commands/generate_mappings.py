@@ -11,36 +11,48 @@ from pyramid.paster import get_app
 from snovault.elasticsearch.create_mapping import generate_indices_and_mappings
 
 
-def generate_mappings(app):
-    indices, mappings = generate_indices_and_mappings(app)
-    print(indices, mappings.keys())
+def write_annotated_mappings(annotated_mappings, relative_output_directory):
     current_directory = os.path.dirname(__file__)
-    relative_path_to_output_directory = '../mappings'
-    output_directory = Path(current_directory, relative_path_to_output_directory)
-    for index in indices:
-        filename = f'{index}.json'
+    output_directory = Path(current_directory, relative_output_directory)
+    for annotated_mapping in annotated_mappings:
+        filename = f'{annotated_mapping["item_type"]}.json'
         with open(Path(output_directory, filename), 'w') as f:
             print(f'Writing {filename}')
-            mapping = mappings[index]
-            mapping_hash = hashlib.md5(
-                json.dumps(
-                    mapping,
-                    sort_keys=True
-                ).encode('utf-8')
-            ).hexdigest()
             json.dump(
-                {
-                    'item_type': index,
-                    'hash': mapping_hash,
-                    'index_name': f'{index}_{mapping_hash[:8]}',
-                    'mapping': mapping,
-                },
+                annotated_mapping,
                 f,
                 sort_keys=True,
                 indent=4,
             )
             # Always add newline at EOF.
             f.write('\n')
+
+
+def annotate_mappings(indices, mappings):
+    annotated_mappings = []
+    for index in indices:
+        mapping = mappings[index]
+        mapping_hash = hashlib.md5(
+            json.dumps(
+                mapping,
+                sort_keys=True
+            ).encode('utf-8')
+        ).hexdigest()
+        annotated_mappings.append(
+            {
+                'item_type': index,
+                'hash': mapping_hash,
+                'index_name': f'{index}_{mapping_hash[:8]}',
+                'mapping': mapping,
+            }
+        )
+    return annotated_mappings
+
+
+def generate_and_write_mappings(app, output_directory):
+    indices, mappings = generate_indices_and_mappings(app)
+    annotated_mappings = annotate_mappings(indices, mappings)
+    write_annotated_mappings(annotated_mappings, output_directory)
 
 
 def main():
@@ -53,7 +65,7 @@ def main():
         help='Pyramid app name in configfile'
     )
     parser.add_argument(
-        '--out-directory',
+        '--relative-output-directory',
         help='Directory to write mappings'
     )
     parser.add_argument(
@@ -65,7 +77,10 @@ def main():
         args.config_uri,
         args.app_name
     )
-    generate_mappings(app)
+    generate_and_write_mappings(
+        app=app,
+        output_directory=args.relative_output_directory
+    )
 
 
 if __name__ == '__main__':
