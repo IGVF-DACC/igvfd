@@ -300,7 +300,7 @@ def testing_retry(context, request):
     unique_key='accession',
 )
 class TestingIGVFItem(IGVFItem):
-    item_type = 'test-igvf-item'
+    item_type = 'test_igvf_item'
     schema = {
         '$schema': 'http://json-schema.org/draft-04/schema#',
         'type': 'object',
