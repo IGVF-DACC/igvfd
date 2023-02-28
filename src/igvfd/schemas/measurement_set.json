@@ -54,6 +54,19 @@
             "description": "Link to the protocol for conducting the assay on Protocols.io.",
             "type": "string",
             "pattern": "^https://www\\.protocols\\.io/(\\S*)$"
+        },
+        "construct_libraries": {
+            "title": "Construct Libraries",
+            "description": "The construct libraries of vectors introduced to the biosample used to produce data in this measurement set.",
+            "comment": "See construct_library.json for available identifiers.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Construct Library",
+                "type": "string",
+                "linkTo": "ConstructLibrary"
+            }
         }
     },
     "boost_values": {

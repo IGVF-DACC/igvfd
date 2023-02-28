@@ -1,0 +1,63 @@
+[
+    {
+        "aliases": [
+            "igvf:basic_construct_library_0"
+        ],
+        "submitter_comment": "Comment for a construct library.",
+        "description": "A basic loci construct library.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "ff3f9309-d2a3-4c13-a9b2-e34be9c9f7a8",
+        "scope": "loci",
+        "origins": [
+            "transcription start sites"
+        ],
+        "targeted_loci": [
+            {
+                "assembly": "GRCh38",
+                "chromosome": "chr1",
+                "start": 1,
+                "end": 10
+            }
+        ],
+        "plasmid_map": "igvf:plasmid_map_insert",
+        "product_id": "addgene:81225",
+        "status": "released"
+    },
+    {
+        "aliases": [
+            "igvf:basic_construct_library_1"
+        ],
+        "submitter_comment": "Comment for a construct library.",
+        "description": "A basic genes construct library.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "af3f9309-d2a3-4c13-a9b2-e34be9c9f7a8",
+        "scope": "genes",
+        "origins": [
+            "accessible genome regions"
+        ],
+        "targeted_genes": [
+            "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
+        ],
+        "reporter_library_details": {
+            "average_insert_size": 270
+        },
+        "status": "released"
+    },
+    {
+        "aliases": [
+            "igvf:basic_construct_library_2"
+        ],
+        "submitter_comment": "Comment for a construct library.",
+        "description": "A basic genome-wide construct library.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "bf3f9309-d2a3-4c13-a9b2-e34be9c9f7a8",
+        "scope": "genome-wide",
+        "origins": [
+            "TF binding sites"
+        ],
+        "status": "released"
+    }
+]

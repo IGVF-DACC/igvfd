@@ -1,0 +1,380 @@
+{
+    "title": "Construct Library",
+    "$id": "/profiles/construct_library.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submitting a construct library.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "scope"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases",
+        "accession",
+        "alternate_accessions"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/references"
+        }
+    ],
+    "dependentSchemas": {
+        "guide_library_details": {
+            "not": {
+                "required": [
+                    "reporter_library_details"
+                ]
+            },
+            "comment": "Specification of guide_library_details is mutually exclusive with specification of reporter_library_details."
+        },
+        "reporter_library_details": {
+            "not": {
+                "required": [
+                    "guide_library_details"
+                ]
+            },
+            "comment": "Specification of reporter_library_details is mutually exclusive with specification of guide_library_details."
+        },
+        "scope": {
+            "oneOf": [
+                {
+                    "required": [
+                        "targeted_genes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "targeted_loci"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "loci"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "targeted_genes",
+                            "targeted_loci"
+                        ]
+                    },
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genome-wide"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "targeted_genes": {
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "genes"
+                    ]
+                }
+            }
+        },
+        "targeted_loci": {
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "loci"
+                    ]
+                }
+            }
+        }
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "accession": {
+            "accessionType": "DS"
+        },
+        "scope": {
+            "title": "Library Construct Scope",
+            "description": "The scope or scale that this construct library is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the targeted_genes or targeted_loci property.",
+            "type": "string",
+            "enum": [
+                "genes",
+                "loci",
+                "genome-wide"
+            ]
+        },
+        "origins": {
+            "title": "Origins",
+            "description": "The criteria used to select the sequence material cloned into the library.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Origin",
+                "description": "The criteria used to select the sequence material cloned into the library.",
+                "type": "string",
+                "enum": [
+                    "accessible genome regions",
+                    "candidate cis-regulatory elements",
+                    "chromatin states",
+                    "DNase hypersensitive sites",
+                    "essential genes",
+                    "histone modifications",
+                    "sequence variants",
+                    "synthetic elements",
+                    "transcription start sites",
+                    "TF binding sites"
+                ]
+            }
+        },
+        "targeted_genes": {
+            "title": "Targeted Genes",
+            "description": "The specific gene(s) this construct library was designed to target.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "comment": "See gene.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "Gene"
+            }
+        },
+        "targeted_loci": {
+            "title": "Targeted Loci",
+            "description": "The specific chromosomal region(s) this construct library was designed to target.",
+            "comment": "Each locus is defined using 1-based, fully-closed (inclusive) coordinates for a specific version of the reference genome assembly.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Targeted Locus",
+                "type": "object",
+                "required": [
+                    "assembly",
+                    "chromosome",
+                    "start",
+                    "end"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "assembly": {
+                        "title": "Mapping assembly",
+                        "description": "The genome assembly to which coordinates relate (e.g., GRCh38).",
+                        "type": "string",
+                        "enum": [
+                            "GRCh38",
+                            "hg19",
+                            "GRCm39",
+                            "mm10",
+                            "mm9"
+                        ]
+                    },
+                    "chromosome": {
+                        "title": "Chromosome",
+                        "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX",
+                        "type": "string",
+                        "pattern": "^(chr[0-9A-Za-z]+)$"
+                    },
+                    "start": {
+                        "title": "Start",
+                        "description": "The 1-based, closed (inclusive) starting coordinate.",
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "end": {
+                        "title": "End",
+                        "description": "The 1-based, closed (inclusive) ending coordinate.",
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                }
+            }
+        },
+        "plasmid_map": {
+            "title": "Plasmid Map",
+            "description": "An image of the plasmid map used in this construct library.",
+            "type": "string",
+            "comment": "See document.json for a list of available identifiers.",
+            "linkTo": "Document"
+        },
+        "product_id": {
+            "title": "Product ID",
+            "description": "The product or catalog identifier provided following deposition to addgene.org.",
+            "type": "string",
+            "pattern": "^addgene:\\d{5,6}$"
+        },
+        "reporter_library_details": {
+            "title": "Reporter Library Details",
+            "description": "Details about an MPRA, STARR-seq, or other reporter assay construct library.",
+            "type": "object",
+            "additionalProperties": false,
+            "dependentSchemas": {
+                "average_insert_size": {
+                    "not": {
+                        "required": [
+                            "lower_bound_insert_size",
+                            "upper_bound_insert_size"
+                        ]
+                    },
+                    "comment": "Specification of average_insert_size is mutually exclusive with specification of lower_ and upper_bound_insert_size."
+                },
+                "lower_bound_insert_size": {
+                    "not": {
+                        "required": [
+                            "average_size"
+                        ]
+                    },
+                    "required": [
+                        "upper_bound_insert_size"
+                    ],
+                    "comment": "Specification of lower_bound_insert_size is mutually exclusive with specification of average_insert_size."
+                },
+                "upper_bound_insert_size": {
+                    "not": {
+                        "required": [
+                            "average_insert_size"
+                        ]
+                    },
+                    "required": [
+                        "lower_bound_insert_size"
+                    ],
+                    "comment": "Specification of upper_bound_insert_size is mutually exclusive with specification of average_insert_size."
+                }
+            },
+            "properties": {
+                "average_insert_size": {
+                    "title": "Average Insert Size",
+                    "description": "The average size of the inserts cloned into vectors in the library.",
+                    "type": "number",
+                    "minimum": 0
+                },
+                "lower_bound_insert_size": {
+                    "title": "Lower Bound Insert Size",
+                    "description": "Lower bound of the size of the inserts cloned in vectors in the library.",
+                    "type": "integer"
+                },
+                "upper_bound_insert_size": {
+                    "title": "Upper Bound Insert Size",
+                    "description": "Upper bound of the size of the inserts cloned in vectors in the library.",
+                    "type": "integer"
+                }
+            }
+        },
+        "guide_library_details": {
+            "title": "Guide Library Details",
+            "description": "Details about a library of guides cloned into constructs.",
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+                "guide_type"
+            ],
+            "dependentSchemas": {
+                "average_guide_coverage": {
+                    "not": {
+                        "required": [
+                            "upper_bound_guide_coverage",
+                            "lower_bound_guide_coverage"
+                        ]
+                    },
+                    "comment": "Specification of average_guide_coverage is mutually exclusive with specification of upper_ and lower_bound_guide_coverage."
+                },
+                "lower_bound_guide_coverage": {
+                    "not": {
+                        "required": [
+                            "average_guide_coverage"
+                        ]
+                    },
+                    "required": [
+                        "upper_bound_guide_coverage"
+                    ],
+                    "comment": "Specification of lower_bound_guide_coverage is mutually exclusive with specification of average_guide_coverage."
+                },
+                "upper_bound_guide_coverage": {
+                    "not": {
+                        "required": [
+                            "average_guide_coverage"
+                        ]
+                    },
+                    "required": [
+                        "lower_bound_guide_coverage"
+                    ],
+                    "comment": "Specification of upper_bound_guide_coverage is mutually exclusive with specification of average_guide_coverage."
+                }
+            },
+            "properties": {
+                "guide_type": {
+                    "title": "Guide Type",
+                    "description": "The design of guides used in a CRISPR library, paired-guide (pgRNA) or single-guide (sgRNA).",
+                    "type": "string",
+                    "enum": [
+                        "sgRNA",
+                        "pgRNA"
+                    ]
+                },
+                "tiling_modality": {
+                    "title": "Tiling Modality",
+                    "description": "The tiling modality of guides across elements or loci in a CRISPR library.",
+                    "comment": "Peak tiling = all possible gRNA in a selection of peaks. Full tiling = all possible gRNA across an entire locus, including regulatory elements and non regulatory elements. Sparse peaks = a small set of gRNA against a selection of peaks.",
+                    "type": "string",
+                    "enum": [
+                        "peak tiling",
+                        "full tiling",
+                        "sparse peaks"
+                    ]
+                },
+                "average_guide_coverage": {
+                    "title": "Average Guide Coverage",
+                    "description": "The average number of guides targeting each element of interest in the library.",
+                    "type": "number",
+                    "minimum": 0
+                },
+                "lower_bound_guide_coverage": {
+                    "title": "Lower Bound Guide Coverage",
+                    "description": "Lower bound of the number of guides targeting each element of interest in the library.",
+                    "type": "integer"
+                },
+                "upper_bound_guide_coverage": {
+                    "title": "Upper Bound Guide Coverage",
+                    "description": "Upper bound of the number of guides targeting each element of interest in the library.",
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "boost_values": {
+        "accession": 1.0,
+        "aliases": 1.0,
+        "@type": 1.0,
+        "targeted_genes": 1.0
+    },
+    "changelog": "/profiles/changelogs/construct_library.md"
+}

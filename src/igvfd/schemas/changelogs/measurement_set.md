@@ -3,6 +3,7 @@
 ### Minor changes since schema version 3
 
 * Add `dbxrefs`.
+* Add `construct_libraries`.
 
 ### Schema version 3
 
