@@ -4,6 +4,11 @@ from igvfd.batch_download import format_row
 from igvfd.batch_download import _convert_camel_to_snake
 
 
+pytestmark = [
+    pytest.mark.indexing,
+]
+
+
 def test_format_row():
     columns = ['col1', 'col2', 'col3']
     expected = b'col1\tcol2\tcol3\r\n'
