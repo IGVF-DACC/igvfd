@@ -1,6 +1,7 @@
 {
     "hash": "91a53a0899bfa8f4a14c46de05c4cbd1",
     "index_name": "document_91a53a08",
+    "item_type": "document",
     "mapping": {
         "dynamic_templates": [
             {
@@ -276,6 +277,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "document"
+    }
 }

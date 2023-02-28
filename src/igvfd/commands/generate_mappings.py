@@ -30,7 +30,7 @@ def generate_mappings(app):
             ).hexdigest()
             json.dump(
                 {
-                    'name': index,
+                    'item_type': index,
                     'hash': mapping_hash,
                     'index_name': f'{index}_{mapping_hash[:8]}',
                     'mapping': mapping,

@@ -1,6 +1,7 @@
 {
     "hash": "bd1c4bb4fec8c9fd307e0c6149c853fc",
     "index_name": "measurement_set_bd1c4bb4",
+    "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
             {
@@ -250,6 +251,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "measurement_set"
+    }
 }

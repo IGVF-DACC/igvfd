@@ -1,6 +1,7 @@
 {
     "hash": "489d8c8afb476e5564914c4f5d2d47cf",
     "index_name": "page_489d8c8a",
+    "item_type": "page",
     "mapping": {
         "dynamic_templates": [
             {
@@ -254,6 +255,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "page"
+    }
 }

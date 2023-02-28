@@ -1,6 +1,7 @@
 {
     "hash": "e9eeaf99f66115d2547cd88f722df236",
     "index_name": "biomarker_e9eeaf99",
+    "item_type": "biomarker",
     "mapping": {
         "dynamic_templates": [
             {
@@ -239,6 +240,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "biomarker"
+    }
 }

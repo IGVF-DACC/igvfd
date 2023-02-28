@@ -1,6 +1,7 @@
 {
     "hash": "2fd234c7cffbe92fd057ff41dc5e5918",
     "index_name": "human_donor_2fd234c7",
+    "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
             {
@@ -260,6 +261,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "human_donor"
+    }
 }

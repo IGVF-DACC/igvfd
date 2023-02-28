@@ -1,6 +1,7 @@
 {
     "hash": "e0011b512aba9afa4ca1164c2bdc92fe",
     "index_name": "user_e0011b51",
+    "item_type": "user",
     "mapping": {
         "dynamic_templates": [
             {
@@ -242,6 +243,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "user"
+    }
 }

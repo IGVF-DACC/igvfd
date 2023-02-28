@@ -1,6 +1,7 @@
 {
     "hash": "d2b4ee254b6b9abd02f2cff4d889ea04",
     "index_name": "gene_d2b4ee25",
+    "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
             {
@@ -269,6 +270,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "gene"
+    }
 }

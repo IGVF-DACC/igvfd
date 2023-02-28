@@ -1,6 +1,7 @@
 {
     "hash": "e059298f28d72a2fefc47a5154cbe2f8",
     "index_name": "whole_organism_e059298f",
+    "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
             {
@@ -334,6 +335,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "whole_organism"
+    }
 }

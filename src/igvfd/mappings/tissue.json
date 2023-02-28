@@ -1,6 +1,7 @@
 {
     "hash": "a44634f01d87bb2c3365e591c51246b2",
     "index_name": "tissue_a44634f0",
+    "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
             {
@@ -349,6 +350,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "tissue"
+    }
 }

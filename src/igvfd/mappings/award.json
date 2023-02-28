@@ -1,6 +1,7 @@
 {
     "hash": "ccb6c7360511877184d121c8cb296dc8",
     "index_name": "award_ccb6c736",
+    "item_type": "award",
     "mapping": {
         "dynamic_templates": [
             {
@@ -249,6 +250,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "award"
+    }
 }

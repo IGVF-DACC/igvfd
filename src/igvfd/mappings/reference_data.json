@@ -1,6 +1,7 @@
 {
     "hash": "02867c49eec2831ee1aed1d63c13c740",
     "index_name": "reference_data_02867c49",
+    "item_type": "reference_data",
     "mapping": {
         "dynamic_templates": [
             {
@@ -294,6 +295,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "reference_data"
+    }
 }

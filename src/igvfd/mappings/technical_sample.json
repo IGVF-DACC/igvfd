@@ -1,6 +1,7 @@
 {
     "hash": "9910e05d09e8c02369894339c465c544",
     "index_name": "technical_sample_9910e05d",
+    "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
             {
@@ -273,6 +274,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "technical_sample"
+    }
 }

@@ -1,6 +1,7 @@
 {
     "hash": "731a38ccd51020f60e85a868e0ab752a",
     "index_name": "phenotypic_feature_731a38cc",
+    "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
             {
@@ -240,6 +241,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "phenotypic_feature"
+    }
 }

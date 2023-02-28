@@ -1,6 +1,7 @@
 {
     "hash": "384dd38c3dacff1a7031934ce37e6542",
     "index_name": "sequence_data_384dd38c",
+    "item_type": "sequence_data",
     "mapping": {
         "dynamic_templates": [
             {
@@ -336,6 +337,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "sequence_data"
+    }
 }

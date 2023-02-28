@@ -1,6 +1,7 @@
 {
     "hash": "dd4b067aa92fea2ddaa2f15a72e6cc86",
     "index_name": "primary_cell_dd4b067a",
+    "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
             {
@@ -340,6 +341,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "primary_cell"
+    }
 }

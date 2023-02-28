@@ -1,6 +1,7 @@
 {
     "hash": "a97d96a12043b14c834fed40d3e95024",
     "index_name": "lab_a97d96a1",
+    "item_type": "lab",
     "mapping": {
         "dynamic_templates": [
             {
@@ -236,6 +237,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "lab"
+    }
 }

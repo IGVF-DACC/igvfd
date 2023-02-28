@@ -1,6 +1,7 @@
 {
     "hash": "527841a1d0efbf43a8e40cd6a6c2db61",
     "index_name": "curated_set_527841a1",
+    "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
             {
@@ -256,6 +257,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "curated_set"
+    }
 }

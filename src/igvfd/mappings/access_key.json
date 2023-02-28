@@ -1,6 +1,7 @@
 {
     "hash": "469d406e8d8cb764b6b4e7d8882ae6ec",
     "index_name": "access_key_469d406e",
+    "item_type": "access_key",
     "mapping": {
         "dynamic_templates": [
             {
@@ -224,6 +225,5 @@
                 "type": "keyword"
             }
         }
-    },
-    "name": "access_key"
+    }
 }
