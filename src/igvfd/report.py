@@ -52,16 +52,6 @@ def _convert_camel_to_snake(type_str):
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', tmp).lower()
 
 
-def get_report_search_generator(request):
-    # Right now we only have generator for report, may have more different generators in the future.
-    return search_generator
-
-
-def get_endpoint(request):
-    # Right now we only have /report/ endpoint, may have more endpoints in the future.
-    return '/report/'
-
-
 @view_config(route_name='report_download', request_method='GET')
 def report_download(context, request):
     downloadtime = datetime.datetime.now()
@@ -77,13 +67,10 @@ def report_download(context, request):
     schemas = [request.registry[TYPES][type_str].schema]
     columns = list_visible_columns_for_schemas(request, schemas)
     snake_type = _convert_camel_to_snake(type_str).replace("'", '')
-
-    endpoint = get_endpoint(request)
-    report_search_generator = get_report_search_generator(request)
-    results = report_search_generator(request)
+    results = search_generator(request)
 
     def format_header(seq):
-        newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, endpoint, request.query_string)
+        newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, '/report/', request.query_string)
         return(bytes(newheader, 'utf-8'))
 
     # Work around Excel bug; can't open single column TSV with 'ID' header
