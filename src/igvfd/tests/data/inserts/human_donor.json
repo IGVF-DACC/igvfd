@@ -20,6 +20,9 @@
         ],
         "collections": [
             "ENCODE"
+        ],
+        "dbxrefs": [
+            "GEO:SAMN31998833"
         ]
     },
     {

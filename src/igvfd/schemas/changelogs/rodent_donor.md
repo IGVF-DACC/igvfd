@@ -1,5 +1,9 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Minor changes since schema version 6
+
+* Add `dbxrefs`.
+
 ### Schema version 6
 
 * Remove `traits`.
