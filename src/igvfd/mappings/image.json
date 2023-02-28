@@ -1,5 +1,6 @@
 {
     "hash": "505e47bd5dbfaff4216c57bfaa2a181b",
+    "index_name": "image_505e47bd",
     "mapping": {
         "dynamic_templates": [
             {

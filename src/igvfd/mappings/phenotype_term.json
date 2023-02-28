@@ -1,5 +1,6 @@
 {
     "hash": "7f7651a90660e501d8ff7959302aa6c6",
+    "index_name": "phenotype_term_7f7651a9",
     "mapping": {
         "dynamic_templates": [
             {

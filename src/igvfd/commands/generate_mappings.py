@@ -22,15 +22,17 @@ def generate_mappings(app):
         with open(Path(output_directory, filename), 'w') as f:
             print(f'Writing {filename}')
             mapping = mappings[index]
+            mapping_hash = hashlib.md5(
+                json.dumps(
+                    mapping,
+                    sort_keys=True
+                ).encode('utf-8')
+            ).hexdigest()
             json.dump(
                 {
                     'name': index,
-                    'hash': hashlib.md5(
-                        json.dumps(
-                            mapping,
-                            sort_keys=True
-                        ).encode('utf-8')
-                    ).hexdigest(),
+                    'hash': mapping_hash,
+                    'index_name': f'{index}_{mapping_hash[:8]}',
                     'mapping': mapping,
                 },
                 f,

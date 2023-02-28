@@ -1,5 +1,6 @@
 {
     "hash": "942ede0f16806d9501141a94f394a08e",
+    "index_name": "sample_term_942ede0f",
     "mapping": {
         "dynamic_templates": [
             {

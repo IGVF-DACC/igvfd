@@ -1,5 +1,6 @@
 {
     "hash": "611ddf882f113114723e3f768d366cce",
+    "index_name": "human_genomic_variant_611ddf88",
     "mapping": {
         "dynamic_templates": [
             {

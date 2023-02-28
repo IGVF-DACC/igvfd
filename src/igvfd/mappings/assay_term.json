@@ -1,5 +1,6 @@
 {
     "hash": "bdb3df2429ccb323394536880c6366de",
+    "index_name": "assay_term_bdb3df24",
     "mapping": {
         "dynamic_templates": [
             {
