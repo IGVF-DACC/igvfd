@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_summary(testapp, tissue, measurement_set, analysis_set_base, curated_set_genome):
+def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, curated_set_genome):
     testapp.patch_json(
         measurement_set['@id'],
         {
