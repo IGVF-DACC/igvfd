@@ -6,9 +6,9 @@ A failing `igvfd-check-opensearch-mappings` test on CircleCI is a sign that you 
 
 To generate latest Opensearch mappings (run in top-level `igvfd` folder):
 ```bash
-$ docker compose down -v
+$ docker compose down -v && docker compose build
 $ docker compose run pyramid /scripts/pyramid/generate-opensearch-mappings.sh
 ```
-This cleans up old Docker containers first, then writes the lastest Opensearch mappings to the `mappings/` folder.
+This cleans up old Docker containers first, rebuilds the image, then writes the lastest Opensearch mappings to the `mappings/` folder.
 
 You can see generated differences with `git diff`. Commit these and push. CircleCI `igvfd-check-opensearch-mappings` test should pass.
