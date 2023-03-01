@@ -84,7 +84,11 @@ def workbook(app, app_settings):
     testapp = make_test_app(app)
     wait_for_opensearch(app)
     print('Manage mappings')
-    manage_mappings(app)
+    manage_mappings(
+        app=app,
+        relative_mapping_directory='src/igvfd/mappings',
+        should_reindex='never',
+    )
     print('Load data inserts')
     load_test_data(app)
     wait_for_indexing_poll(testapp)
