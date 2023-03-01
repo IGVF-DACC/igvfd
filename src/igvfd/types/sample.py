@@ -23,9 +23,6 @@ class Sample(Item):
     base_types = ['Sample'] + Item.base_types
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/sample.json')
-    audit_inherit = [
-        'sample'
-    ]
 
 
 @abstract_collection(
