@@ -23,5 +23,4 @@ def test_summary(testapp, tissue, measurement_set, analysis_set_base, curated_se
         }
     )
     res = testapp.get(tissue['@id'])
-    print(res.json.get('file_sets'))
     assert res.json.get('file_sets') == [measurement_set['@id'], analysis_set_base['@id'], curated_set_genome['@id']]
