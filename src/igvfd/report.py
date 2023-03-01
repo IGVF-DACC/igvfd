@@ -3,6 +3,7 @@ from pyramid.compat import bytes_
 from pyramid.httpexceptions import HTTPBadRequest
 from pyramid.view import view_config
 from snovault import TYPES
+from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 
 from igvfd.search_views import search_generator
 import datetime
@@ -64,8 +65,9 @@ def report_download(context, request):
     # Make sure we get all results
     request.GET['limit'] = 'all'
     type_str = types[0]
-    schemas = [request.registry[TYPES][type_str].schema]
-    columns = list_visible_columns_for_schemas(request, schemas)
+    schema = request.registry[TYPES][type_str].schema
+    search_config = request.registry[SEARCH_CONFIG].as_dict()[type_str]
+    columns = list_visible_columns_for_schemas(request, schema, search_config)
     snake_type = _convert_camel_to_snake(type_str).replace("'", '')
     results = search_generator(request)
 
@@ -100,25 +102,24 @@ def report_download(context, request):
     return request.response
 
 
-def list_visible_columns_for_schemas(request, schemas):
+def list_visible_columns_for_schemas(request, schema, search_config):
     """
     Returns mapping of default columns for a set of schemas.
     """
     columns = OrderedDict({'@id': {'title': 'ID'}})
-    for schema in schemas:
-        if 'columns' in schema:
-            columns.update(schema['columns'])
-        else:
-            # default columns if not explicitly specified
-            columns.update(OrderedDict(
-                (name, {
-                    'title': schema['properties'][name].get('title', name)
-                })
-                for name in [
-                    '@id', 'title', 'description', 'name', 'accession',
-                    'aliases'
-                ] if name in schema['properties']
-            ))
+    if 'columns' in search_config:
+        columns.update(search_config['columns'])
+    else:
+        # default columns if not explicitly specified
+        columns.update(OrderedDict(
+            (name, {
+                'title': schema['properties'][name].get('title', name)
+            })
+            for name in [
+                '@id', 'title', 'description', 'name', 'accession',
+                'aliases'
+            ] if name in schema['properties']
+        ))
     fields_requested = request.params.getall('field')
     if fields_requested:
         limited_columns = OrderedDict()
@@ -130,11 +131,9 @@ def list_visible_columns_for_schemas(request, schemas):
                 # objects to find property titles. In this case we'll just
                 # show the field's dotted path for now.
                 limited_columns[field] = {'title': field}
-                for schema in schemas:
-                    if field in schema['properties']:
-                        limited_columns[field] = {
-                            'title': schema['properties'][field]['title']
-                        }
-                        break
+                if field in schema['properties']:
+                    limited_columns[field] = {
+                        'title': schema['properties'][field]['title']
+                    }
         columns = limited_columns
     return columns
