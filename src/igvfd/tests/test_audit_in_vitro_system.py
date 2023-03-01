@@ -1,4 +1,5 @@
 import pytest
+import json
 
 
 def test_audit_in_vitro_system_sorted_fraction(testapp, lab, award, source, human_donor, sample_term_K562):
@@ -30,6 +31,7 @@ def test_audit_in_vitro_system_sorted_fraction(testapp, lab, award, source, huma
     res = testapp.get(sorted_fraction_cell['@id'] + '@@index-data')
     errors = res.json['audit']
     errors_list = []
+    print(json.dumps(sorted_fraction_cell, indent=4))
     for error_type in errors:
         errors_list.extend(errors[error_type])
     for error in errors_list:

@@ -11,6 +11,7 @@ from .formatter import (
 
 
 def audit_sample_sorted_fractions(value, system):
+    print('audit_sample_sorted_fractions ran...')
     sorted_fraction_value = value.get('sorted_fraction')
     if sorted_fraction_value is not None:
         value_source = value.get('source')
@@ -26,7 +27,7 @@ def audit_sample_sorted_fractions(value, system):
                 f'the associated sorted fraction {audit_link(path_to_text(sorted_fraction_value["@id"]), sorted_fraction_value["@id"])} '
                 f'has product info source {sorted_fraction_source}.'
             )
-            yield AuditFailure('inconsistent product info source', detail, level='INTERNAL_ACTION')
+            yield AuditFailure('inconsistent product info source', detail, level='WARNING')
         if value_lot_id != sorted_fraction_lot_id:
             detail = (
                 f'Sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
@@ -34,7 +35,7 @@ def audit_sample_sorted_fractions(value, system):
                 f'the associated sorted fraction {audit_link(path_to_text(sorted_fraction_value["@id"]), sorted_fraction_value["@id"])} '
                 f'has product info lot ID {sorted_fraction_lot_id}.'
             )
-            yield AuditFailure('inconsistent product info lot ID', detail, level='INTERNAL_ACTION')
+            yield AuditFailure('inconsistent product info lot ID', detail, level='WARNING')
         if value_product_id != sorted_fraction_product_id:
             detail = (
                 f'Sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
@@ -42,7 +43,7 @@ def audit_sample_sorted_fractions(value, system):
                 f'the associated sorted fraction {audit_link(path_to_text(sorted_fraction_value["@id"]), sorted_fraction_value["@id"])} '
                 f'has product info product ID {sorted_fraction_product_id}.'
             )
-            yield AuditFailure('inconsistent product info product ID', detail, level='INTERNAL_ACTION')
+            yield AuditFailure('inconsistent product info product ID', detail, level='WARNING')
 
 
 function_dispatcher = {
@@ -50,11 +51,9 @@ function_dispatcher = {
 }
 
 
-@audit_checker('Sample',
-               frame=[
-                   'sorted_fraction',
-               ])
+@audit_checker('Sample', frame=['{sorted_fraction}'])
 def audit_sample(value, system):
+    print('audit_sample ran...')
     for function_name in function_dispatcher.keys():
         for failure in function_dispatcher[function_name](value, system):
             yield failure
