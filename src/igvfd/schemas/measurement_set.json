@@ -106,6 +106,12 @@
             "description": "The actual multiplicity of infection (MOI) for vectors introduced to the biosample used to produce data in this measurement set. At least one construct library must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
             "type": "number",
             "minimum": 0
+        },
+        "multiome_size": {
+            "title": "Multiome Size",
+            "description": "The number of datasets included in the multiome experiment this measurement set is a part of.",
+            "type": "number",
+            "minimum": 2
         }
     },
     "boost_values": {

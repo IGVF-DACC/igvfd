@@ -86,6 +86,28 @@ class MeasurementSet(FileSet):
     item_type = 'measurement_set'
     schema = load_schema('igvfd:schemas/measurement_set.json')
 
+    @calculated_property(
+        condition='mutliome_size',
+        schema={
+            'title': 'Related Multiome Datasets',
+            'description': 'Related datasets included in the multiome experiment this measurement set is a part of.',
+            'type': 'array',
+            'uniqueItems': True,
+            'items': {
+                'title': 'Related Multiome Dataset',
+                'description': 'Related dataset included in the multiome experiment this measurement set is a part of.',
+                'type': 'string',
+                'linkTo': 'MeasurementSet'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def related_multiome_datasets(self, request, samples=None, multiome_size=None):
+        related_datasets = []
+        if samples and multiome_size:
+            for sample in samples:
+                sample_object = request.embed(sample, '@@object')
+
 
 @collection(
     name='construct-libraries',
