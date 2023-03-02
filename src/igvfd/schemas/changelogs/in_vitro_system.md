@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 4
+
+* Remove `differentiated_tissue` from enums of classification.
+
 ### Schema version 3
 
 * Rename `biomarker` to `biomarkers`.
