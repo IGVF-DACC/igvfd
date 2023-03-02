@@ -2,8 +2,10 @@ from opensearchpy import OpenSearch
 
 
 def mabye_migrate_from_old_to_new_opensearch_indices(opensearch_url):
+    print('Checking for old-style indices')
     os = OpenSearch(opensearch_url)
     if not os.indices.exists_alias('award'):
+        print('Found old-style indices, deleting all')
         # Old-style index award was not an alias.
         os.indices.delete('*')
 
