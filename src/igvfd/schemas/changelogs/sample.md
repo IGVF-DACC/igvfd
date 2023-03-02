@@ -1,8 +1,11 @@
 ## Changelog for *`sample.json`*
 
-### Release v2
+### Release v6
 
 * Add `sorted_fraction`.
+
+### Release v2
+
 * Add `description`.
 * Add `revoke_detail`.
 * Restrict `dbxrefs`, `aliases`, and `alternate_accessions` to be a non-empty array with at least one item.
