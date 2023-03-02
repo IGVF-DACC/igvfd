@@ -63,3 +63,15 @@ pip install pre-commit==2.17.0
 pre-commit install
 ```
 Now every time you run `git commit` the automatic checks are run to check the changes you made.
+
+
+## Generate Opensearch mappings
+
+The `igvfd-check-opensearch-mappings` test on CircleCI will fail if the mappings haven't been updated after changing schemas, calculated properties, or embedded fields.
+
+```bash
+$ docker compose down -v && docker compose build
+$ docker compose run pyramid /scripts/pyramid/generate-opensearch-mappings.sh
+```
+
+This will regenerate the mappings and allow you to see any differences with `git diff`. Commit the changes and push.
