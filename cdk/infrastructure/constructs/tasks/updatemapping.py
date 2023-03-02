@@ -126,24 +126,10 @@ class UpdateMapping(Construct):
         )
 
     def _define_mapping_folder(self) -> None:
-        image = DockerImage.from_build(
-            '../',
-            file='docker/pyramid/Dockerfile',
-        )
         self.mapping_folder = Asset(
             self,
             'MappingFolder',
-            path='../',
-            bundling=BundlingOptions(
-                image=image,
-                environment={
-                    'AWS_DEFAULT_REGION': 'us-west-2',
-                },
-                command=[
-                    '/scripts/pyramid/put-mapping-in-asset-output-folder.sh'
-                ],
-            ),
-            asset_hash_type=AssetHashType.OUTPUT,
+            path='../src/igvfd/mappings',
         )
 
     def _define_event_trigger(self) -> None:
