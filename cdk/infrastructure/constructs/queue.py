@@ -117,6 +117,6 @@ class InvalidationQueue(QueueBase):
                 existing_resources=self.props.existing_resources,
                 queue=self.queue,
                 dead_letter_queue=self.dead_letter_queue,
-                oldest_message_in_seconds_threshold=600,
+                oldest_message_in_seconds_threshold=3600,
             ),
         )
