@@ -1,7 +1,9 @@
+import argparse
+
 from opensearchpy import OpenSearch
 
 
-def mabye_migrate_from_old_to_new_opensearch_indices(opensearch_url):
+def maybe_migrate_from_old_to_new_opensearch_indices(opensearch_url):
     print('Checking for old-style indices')
     os = OpenSearch(opensearch_url)
     if not os.indices.exists_alias('award'):
@@ -16,7 +18,8 @@ def get_args():
     )
     parser.add_argument(
         '--opensearch-url',
-        help='Opensearch URL'
+        help='Opensearch URL',
+        required=True
     )
     return parser.parse_args()
 
