@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Minor changes since schema version 8
+
+* Add `file_sets`.
+
 ### Schema version 8
 
 * Rename `biomarker` to `biomarkers`.

@@ -1,5 +1,9 @@
 ## Changelog for *`sample.json`*
 
+### Release v6
+
+* Add `file_sets`.
+
 ### Release v2
 
 * Add `description`.

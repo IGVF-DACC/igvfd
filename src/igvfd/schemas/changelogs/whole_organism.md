@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Minor changes since schema version 7
+
+* Add `file_sets`.
+
 ### Schema version 7
 
 * Rename `biomarker` to `biomarkers`.

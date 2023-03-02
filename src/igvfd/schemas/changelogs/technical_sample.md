@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Minor changes since schema version 4
+
+* Add `file_sets`.
+
 ### Schema version 4
 
 * Change `technical_sample_term` to link to `Sample Term`.
