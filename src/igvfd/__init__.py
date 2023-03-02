@@ -236,6 +236,7 @@ def main(global_config, **local_config):
     config.include('.root')
 
     config.include('.ontology')
+    config.include('.report')
 
     if 'elasticsearch.server' in config.registry.settings:
         config.include('snovault.elasticsearch')
