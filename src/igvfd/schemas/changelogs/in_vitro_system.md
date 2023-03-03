@@ -1,6 +1,6 @@
 ## Changelog for *`in_vitro_system.json`*
 
-### Schema version 4
+### Schema version 5
 
 * Remove `differentiated_tissue` from enums of classification.
 
