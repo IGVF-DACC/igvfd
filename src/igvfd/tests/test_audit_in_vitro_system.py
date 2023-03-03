@@ -1,8 +1,7 @@
 import pytest
-import json
 
 
-def test_audit_in_vitro_system_sorted_fraction(testapp, lab, award, source, human_donor, sample_term_K562):
+def test_audit_in_vitro_system_sorted_fraction(testapp, lab, award, source, other_source, human_donor, sample_term_K562):
     item_1 = {
         'classification': 'differentiated cell',
         'award': award['@id'],
@@ -19,7 +18,7 @@ def test_audit_in_vitro_system_sorted_fraction(testapp, lab, award, source, huma
         'classification': 'differentiated cell',
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'source': other_source['@id'],
         'product_id': 'GR000002',
         'lot_id': 'R00002',
         'taxa': 'Homo sapiens',
@@ -31,12 +30,14 @@ def test_audit_in_vitro_system_sorted_fraction(testapp, lab, award, source, huma
     res = testapp.get(sorted_fraction_cell['@id'] + '@@index-data')
     errors = res.json['audit']
     errors_list = []
-    print(json.dumps(sorted_fraction_cell, indent=4))
     for error_type in errors:
         errors_list.extend(errors[error_type])
-    for error in errors_list:
-        print(f'Error: {error}')
-    print()
+    assert any(
+        error['category'] == 'inconsistent product info lot ID'
+        for error in errors_list)
+    assert any(
+        error['category'] == 'inconsistent product info product ID'
+        for error in errors_list)
     assert any(
         error['category'] == 'inconsistent product info source'
         for error in errors_list)

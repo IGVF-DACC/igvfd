@@ -11,9 +11,10 @@ from .formatter import (
 
 
 def audit_sample_sorted_fractions(value, system):
-    print('audit_sample_sorted_fractions ran...')
-    sorted_fraction_value = value.get('sorted_fraction')
-    if sorted_fraction_value is not None:
+    sorted_fraction_id = value.get('sorted_fraction')
+    if sorted_fraction_id is not None:
+        request = system.get('request')
+        sorted_fraction_value = request.embed(sorted_fraction_id + '@@object')
         value_source = value.get('source')
         value_lot_id = value.get('lot_id')
         value_product_id = value.get('product_id')
@@ -51,9 +52,8 @@ function_dispatcher = {
 }
 
 
-@audit_checker('Sample', frame=['{sorted_fraction}'])
+@audit_checker('Sample', frame='object')
 def audit_sample(value, system):
-    print('audit_sample ran...')
     for function_name in function_dispatcher.keys():
         for failure in function_dispatcher[function_name](value, system):
             yield failure
