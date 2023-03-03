@@ -32,7 +32,7 @@ def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sampl
 @pytest.fixture
 def in_vitro_differentiated_tissue(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
     item = {
-        'classification': 'differentiated tissue',
+        'classification': 'organoid',
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
@@ -46,7 +46,7 @@ def in_vitro_differentiated_tissue(testapp, lab, award, source, human_donor, sam
 @pytest.fixture
 def in_vitro_system_v1(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
     item = {
-        'classification': 'differentiated tissue',
+        'classification': 'organoid',
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
