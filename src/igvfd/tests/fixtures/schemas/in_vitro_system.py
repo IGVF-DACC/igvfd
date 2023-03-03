@@ -78,7 +78,7 @@ def in_vitro_system_v3(in_vitro_cell_line):
 
 
 @pytest.fixture
-def in_vitro_system_v5(in_vitro_organoid):
+def in_vitro_system_v4(in_vitro_organoid):
     item = in_vitro_organoid.copy()
     item.update({
         'schema_version': '5',
