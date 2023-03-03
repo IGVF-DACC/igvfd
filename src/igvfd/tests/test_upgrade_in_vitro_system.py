@@ -21,3 +21,9 @@ def test_in_vitro_system_upgrade_3_4(upgrader, in_vitro_system_v3):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v3, current_version='3', target_version='4')
     assert value['accession'] == 'IGVFSM0222IIVA'
     assert value['schema_version'] == '4'
+
+
+def test_in_vitro_system_upgrade_4_5(upgrader, in_vitro_system_v4):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v4, current_version='4', target_version='5')
+    assert value['schema_version'] == '5'
+    assert value.get('classification') == 'organoid'
