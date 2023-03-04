@@ -146,7 +146,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         in_vitro_cell_line['@id'],
         {
             'biosample_term': sample_term_brown_adipose_tissue['@id'],
-            'classification': 'differentiated tissue',
+            'classification': 'organoid',
             'time_post_factors_introduction': 1,
             'time_post_factors_introduction_units': 'month'
         }
