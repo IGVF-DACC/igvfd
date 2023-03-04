@@ -146,12 +146,12 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         in_vitro_cell_line['@id'],
         {
             'biosample_term': sample_term_brown_adipose_tissue['@id'],
-            'classification': 'organoid',
+            'classification': 'differentiated tissue',
             'time_post_factors_introduction': 1,
             'time_post_factors_introduction_units': 'month'
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
-    assert res.json.get('summary') == 'brown adipose organoid, Mus musculus (1 month)'
+    assert res.json.get('summary') == 'brown adipose differentiated tissue, Mus musculus (1 month)'
     res = testapp.get(technical_sample['@id'])
     assert res.json.get('summary') == 'synthetic technical sample'
