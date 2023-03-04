@@ -152,6 +152,6 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
-    assert res.json.get('summary') == 'brown adipose differentiated tissue, Mus musculus (1 month)'
+    assert res.json.get('summary') == 'brown adipose organoid, Mus musculus (1 month)'
     res = testapp.get(technical_sample['@id'])
     assert res.json.get('summary') == 'synthetic technical sample'
