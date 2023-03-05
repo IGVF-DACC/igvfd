@@ -33,11 +33,11 @@ def test_audit_in_vitro_system_sorted_fraction(testapp, lab, award, source, othe
     for error_type in errors:
         errors_list.extend(errors[error_type])
     assert any(
-        error['category'] == 'inconsistent product info lot ID'
+        error['category'] == 'sorted fraction inconsistent source'
         for error in errors_list)
     assert any(
-        error['category'] == 'inconsistent product info product ID'
+        error['category'] == 'sorted fraction inconsistent product_id'
         for error in errors_list)
     assert any(
-        error['category'] == 'inconsistent product info source'
+        error['category'] == 'sorted fraction inconsistent lot_id'
         for error in errors_list)

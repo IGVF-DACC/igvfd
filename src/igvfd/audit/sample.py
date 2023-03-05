@@ -6,45 +6,66 @@ from .formatter import (
     audit_link,
     path_to_text,
 )
+from .compare_dict_values import (
+    DictDifference,
+    compare_dictionary
+)
 
-# Flag samples that have sorted fraction relationships but do not have matching properties
+
+items_to_not_compare = [
+    '@context',
+    '@id',
+    '@type',
+    'accession',
+    'aliases',
+    'audit',
+    'creation_timestamp',
+    'date_obtained',
+    'schema_version',
+    'starting_amount',
+    'starting_amount_units',
+    'status',
+    'submitted_by',
+    'summary',
+    'uuid',
+    'sorted_fraction']
 
 
-def audit_sample_sorted_fractions(value, system):
-    sorted_fraction_id = value.get('sorted_fraction')
-    if sorted_fraction_id is not None:
+def audit_sample_sorted_fractions(child_value, system):
+    child_id = child_value['@id']
+    parent_id = child_value.get('sorted_fraction')
+    if parent_id is not None:
         request = system.get('request')
-        sorted_fraction_value = request.embed(sorted_fraction_id + '@@object')
-        value_source = value.get('source')
-        value_lot_id = value.get('lot_id')
-        value_product_id = value.get('product_id')
-        sorted_fraction_source = sorted_fraction_value.get('source')
-        sorted_fraction_lot_id = sorted_fraction_value.get('lot_id')
-        sorted_fraction_product_id = sorted_fraction_value.get('product_id')
-        if value_source != sorted_fraction_source:
-            detail = (
-                f'Sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has product info source {value_source}, yet '
-                f'the associated sorted fraction {audit_link(path_to_text(sorted_fraction_value["@id"]), sorted_fraction_value["@id"])} '
-                f'has product info source {sorted_fraction_source}.'
-            )
-            yield AuditFailure('inconsistent product info source', detail, level='WARNING')
-        if value_lot_id != sorted_fraction_lot_id:
-            detail = (
-                f'Sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has product info lot ID {value_lot_id}, yet '
-                f'the associated sorted fraction {audit_link(path_to_text(sorted_fraction_value["@id"]), sorted_fraction_value["@id"])} '
-                f'has product info lot ID {sorted_fraction_lot_id}.'
-            )
-            yield AuditFailure('inconsistent product info lot ID', detail, level='WARNING')
-        if value_product_id != sorted_fraction_product_id:
-            detail = (
-                f'Sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has product info product ID {value_product_id}, yet '
-                f'the associated sorted fraction {audit_link(path_to_text(sorted_fraction_value["@id"]), sorted_fraction_value["@id"])} '
-                f'has product info product ID {sorted_fraction_product_id}.'
-            )
-            yield AuditFailure('inconsistent product info product ID', detail, level='WARNING')
+        parent_value = request.embed(parent_id + '@@object')
+        differences = compare_dictionary(
+            child_value,
+            parent_value,
+            items_to_not_compare)
+        for difference in differences:
+            if difference.item_1_value is None:
+                detail = (
+                    f'Sample {audit_link(path_to_text(child_id), child_id)} '
+                    f'does not have property {difference.item_key} which is different from '
+                    f'the associated parent sample {audit_link(path_to_text(parent_id), parent_id)} '
+                    f'where it has property {difference.item_key}: {difference.item_2_value}.'
+                )
+                yield AuditFailure('sorted fraction child missing ' + difference.item_key, detail, level='ERROR')
+            if difference.item_2_value is None:
+                detail = (
+                    f'Sample {audit_link(path_to_text(child_id), child_id)} '
+                    f'has property {difference.item_key}: {difference.item_1_value} that is different from '
+                    f'the associated parent sample {audit_link(path_to_text(parent_id), parent_id)} '
+                    f'where it is missing the property {difference.item_key}.'
+                )
+                yield AuditFailure('sorted fraction parent missing ' + difference.item_key, detail, level='ERROR')
+            if (difference.item_1_value is not None) and (difference.item_2_value is not None):
+                detail = (
+                    f'Sample {audit_link(path_to_text(child_id), child_id)} '
+                    f'has property {difference.item_key}: {difference.item_1_value} that is different from '
+                    f'the associated parent sample {audit_link(path_to_text(parent_id), parent_id)} '
+                    f'where it has property {difference.item_key}: {difference.item_2_value}.'
+                )
+                yield AuditFailure('sorted fraction inconsistent ' + difference.item_key, detail, level='ERROR')
 
 
 function_dispatcher = {
