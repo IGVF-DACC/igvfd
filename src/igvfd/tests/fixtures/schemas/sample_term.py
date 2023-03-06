@@ -57,10 +57,10 @@ def sample_term_embryoid_body(testapp):
 
 
 @pytest.fixture
-def sample_term_brown_adipose_tissue(testapp):
+def sample_term_brown_adipose_organoid(testapp):
     item = {
         'term_id': 'UBERON:0001348',
-        'term_name': 'brown adipose tissue'
+        'term_name': 'brown adipose'
     }
     return testapp.post_json('/sample_term', item, status=201).json['@graph'][0]
 
