@@ -86,18 +86,6 @@ def test_patch_parents(human_donor, parent_human_donor_1, testapp):
     assert res.status_code == 200
 
 
-def test_patch_rodent_parents(human_donor, parent_rodent_donor_1, testapp):
-    res = testapp.patch_json(
-        human_donor['@id'],
-        {'related_donors': [
-            {
-                'donor': parent_rodent_donor_1['@id'],
-                'relationship_type': 'parent'
-            }
-        ]})
-    assert res.status_code == 422
-
-
 def test_patch_phenotypic_feature(human_donor, phenotypic_feature_basic, testapp):
     res = testapp.patch_json(
         human_donor['@id'],

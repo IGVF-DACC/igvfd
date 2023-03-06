@@ -99,8 +99,5 @@ def donor_7_8(value, system):
                     'relationship_type': 'parent'
                 }
             )
-            if len(new_notes_value) > 0:
-                new_notes_value += '  '
-            new_notes_value += f'parents: {parent}'
         value['related_donors'] = related_donors
         del value['parents']

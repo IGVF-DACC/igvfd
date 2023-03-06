@@ -58,6 +58,12 @@
         "collections": [
             "ENCODE"
         ],
-        "individual_rodent": false
+        "individual_rodent": false,
+        "related_donors": [
+            {
+                "donor": "c37934b0-4269-4470-be53-9eac7b196447",
+                "relationship_type": "parent"
+            }
+        ]
     }
 ]
