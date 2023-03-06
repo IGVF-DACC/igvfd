@@ -48,9 +48,11 @@
         },
         "related_donors": {
             "items": {
-                "donor": {
-                    "linkTo": "HumanDonor",
-                    "type": "string"
+                "properties": {
+                    "donor": {
+                        "linkTo": "HumanDonor",
+                        "type": "string"
+                    }
                 }
             }
         },

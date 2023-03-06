@@ -39,8 +39,8 @@ def test_rodent_donor_upgrade_6_7(upgrader, rodent_donor_v6_with_parents, parent
     assert {
         'donor': parent_rodent_donor_1['@id'],
         'relationship_type': 'parent'
-    } in value['related_donor']
+    } in value['related_donors']
     assert {
         'donor': parent_rodent_donor_2['@id'],
         'relationship_type': 'parent'
-    } in value['related_donor']
+    } in value['related_donors']

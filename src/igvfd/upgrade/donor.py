@@ -95,7 +95,7 @@ def donor_7_8(value, system):
         for parent in parents:
             related_donors.append(
                 {
-                    'donor': '{parent}',
+                    'donor': parent,
                     'relationship_type': 'parent'
                 }
             )

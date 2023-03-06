@@ -102,7 +102,7 @@ def test_patch_human_parents(rodent_donor, parent_human_donor_1, testapp):
                 'donor': parent_human_donor_1['@id'],
                 'relationship_type': 'parent'
             }
-        ]})
+        ]}, expect_errors=True)
     assert res.status_code == 422
 
 

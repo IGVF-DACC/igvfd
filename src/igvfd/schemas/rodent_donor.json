@@ -94,9 +94,11 @@
         },
         "related_donors": {
             "items": {
-                "donor": {
-                    "linkTo": "RodentDonor",
-                    "type": "string"
+                "properties": {
+                    "donor": {
+                        "linkTo": "RodentDonor",
+                        "type": "string"
+                    }
                 }
             }
         },

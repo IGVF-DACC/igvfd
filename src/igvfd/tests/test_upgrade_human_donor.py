@@ -60,4 +60,4 @@ def test_human_donor_upgrade_7_8(upgrader, human_donor_v7_with_parents, parent_h
     assert {
         'donor': parent_human_donor_1['@id'],
         'relationship_type': 'parent'
-    } in value['related_donor']
+    } in value['related_donors']
