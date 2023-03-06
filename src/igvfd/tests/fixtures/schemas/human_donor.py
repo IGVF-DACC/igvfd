@@ -182,16 +182,3 @@ def human_donor_v7_with_parents(human_donor, parent_human_donor_1):
         ]
     })
     return item
-
-
-@pytest.fixture
-def human_donor_v7_with_parents_notes(human_donor, parent_human_donor_1):
-    item = human_donor.copy()
-    item.update({
-        'schema_version': '7',
-        'parents': [
-            parent_human_donor_1['@id']
-        ],
-        'notes': 'This is a note.'
-    })
-    return item

@@ -112,25 +112,13 @@ def rodent_donor_v4(rodent_donor):
 
 
 @pytest.fixture
-def rodent_donor_v6_with_parents(rodent_donor, parent_rodent_donor_1):
+def rodent_donor_v6_with_parents(rodent_donor, parent_rodent_donor_1, parent_rodent_donor_2):
     item = rodent_donor.copy()
     item.update({
         'schema_version': '6',
         'parents': [
-            parent_rodent_donor_1['@id']
+            parent_rodent_donor_1['@id'],
+            parent_rodent_donor_2['@id']
         ]
-    })
-    return item
-
-
-@pytest.fixture
-def rodent_donor_v6_with_parents_notes(rodent_donor, parent_rodent_donor_1):
-    item = rodent_donor.copy()
-    item.update({
-        'schema_version': '6',
-        'parents': [
-            parent_rodent_donor_1['@id']
-        ],
-        'notes': 'This is a note.'
     })
     return item

@@ -3,6 +3,7 @@
 ### Schema version 8
 
 * Add `related_donors`.
+* Remove `parents`.
 
 ### Schema version 7
 

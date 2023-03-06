@@ -91,12 +91,16 @@ def donor_7_8(value, system):
     # https://igvf.atlassian.net/browse/IGVF-408
     if 'parents' in value:
         parents = value['parents']
-        new_notes_value = ''
-        if 'notes' in value:
-            new_notes_value = value.get('notes')
+        related_donors = []
         for parent in parents:
+            related_donors.append(
+                {
+                    'donor': '{parent}',
+                    'relationship_type': 'parent'
+                }
+            )
             if len(new_notes_value) > 0:
                 new_notes_value += '  '
             new_notes_value += f'parents: {parent}'
-        value['notes'] = new_notes_value
+        value['related_donors'] = related_donors
         del value['parents']
