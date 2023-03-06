@@ -44,7 +44,7 @@ def test_age_calculation(testapp, in_vitro_cell_line):
     assert res.json.get('age') == '90'
 
 
-def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_line, technical_sample, sample_term_endothelial_cell, sample_term_embryoid_body, sample_term_lymphoblastoid, sample_term_brown_adipose_organoid):
+def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_line, technical_sample, sample_term_endothelial_cell, sample_term_embryoid_body, sample_term_lymphoblastoid, sample_term_brown_adipose_tissue):
     res = testapp.get(tissue['@id'])
     assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus'
     res = testapp.patch_json(
@@ -63,7 +63,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
             'lower_bound_age': 50,
             'upper_bound_age': 100,
             'age_units': 'day',
-            'biosample_term': sample_term_brown_adipose_organoid['@id'],
+            'biosample_term': sample_term_brown_adipose_tissue['@id'],
         }
     )
     res = testapp.get(tissue['@id'])
@@ -145,14 +145,14 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'biosample_term': sample_term_brown_adipose_organoid['@id'],
+            'biosample_term': sample_term_brown_adipose_tissue['@id'],
             'classification': 'organoid',
             'time_post_factors_introduction': 1,
             'time_post_factors_introduction_units': 'month'
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
-    print('SUMMARY: ', res.json.get('summary'))
+    #print('SUMMARY: ', res.json.get('summary'))
     assert res.json.get('summary') == 'brown adipose organoid, Mus musculus (1 month)'
     res = testapp.get(technical_sample['@id'])
     assert res.json.get('summary') == 'synthetic technical sample'
