@@ -23,5 +23,5 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
         }
     )
     res = testapp.get(tissue['@id'])
-    assert set(res.json.get('file_sets')) == set(
-        [measurement_set['@id'], analysis_set_base['@id'], curated_set_genome['@id']])
+    assert set(res.json.get('file_sets')) == {
+        measurement_set['@id'], analysis_set_base['@id'], curated_set_genome['@id']}
