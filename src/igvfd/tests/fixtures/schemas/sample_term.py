@@ -60,7 +60,7 @@ def sample_term_embryoid_body(testapp):
 def sample_term_brown_adipose_tissue(testapp):
     item = {
         'term_id': 'UBERON:0001348',
-        'term_name': 'brown adipose'
+        'term_name': 'brown adipose tissue'
     }
     return testapp.post_json('/sample_term', item, status=201).json['@graph'][0]
 
