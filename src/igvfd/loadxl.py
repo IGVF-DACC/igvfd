@@ -515,6 +515,12 @@ PHASE1_PIPELINES = {
     ],
     'primary_cell': [
         remove_keys('pooled_from', 'part_of'),
+    ],
+    'human_donor': [
+        remove_keys('related_donors')
+    ],
+    'rodent_donor': [
+        remove_keys('related_donors')
     ]
 }
 
@@ -538,6 +544,12 @@ PHASE2_PIPELINES = {
     ],
     'primary_cell': [
         skip_rows_missing_all_keys('pooled_from', 'part_of'),
+    ],
+    'human_donor': [
+        skip_rows_missing_all_keys('related_donors')
+    ],
+    'rodent_donor': [
+        skip_rows_missing_all_keys('related_donors')
     ]
 }
 

@@ -73,19 +73,7 @@
                         "description": "A descriptive term for the related donor’s relationship to this donor.",
                         "type": "string",
                         "enum": [
-                            "aunt",
-                            "child",
-                            "first cousin once removed",
-                            "first cousin",
-                            "fraternal twin",
-                            "grandparent",
-                            "half-sibling",
-                            "niece",
-                            "nephew",
-                            "parent",
-                            "paternal twin",
-                            "sibling",
-                            "second cousin"
+                            "parent"
                         ]
                     }
                 }

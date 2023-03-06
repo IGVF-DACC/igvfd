@@ -52,6 +52,23 @@
                     "donor": {
                         "linkTo": "HumanDonor",
                         "type": "string"
+                    },
+                    "relationship_type": {
+                        "enum": [
+                            "aunt",
+                            "child",
+                            "first cousin once removed",
+                            "first cousin",
+                            "fraternal twin",
+                            "grandparent",
+                            "half-sibling",
+                            "niece",
+                            "nephew",
+                            "parent",
+                            "paternal twin",
+                            "sibling",
+                            "second cousin"
+                        ]
                     }
                 }
             }
