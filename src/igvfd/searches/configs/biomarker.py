@@ -39,5 +39,8 @@ def biomarker():
             'gene': {
                 'title': 'Gene'
             },
+            'lab': {
+                'title': 'Lab'
+            }
         }
     }
