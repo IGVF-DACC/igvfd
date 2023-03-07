@@ -22,9 +22,28 @@ def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sampl
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
+        'product_id': 'GR000001',
+        'lot_id': 'R00001',
         'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_K562['@id']
+    }
+    return testapp.post_json('/in_vitro_system', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def in_vitro_differentiated_cell_other_product_info_sorted_fraction(testapp, lab, award, other_source, human_donor, sample_term_K562, in_vitro_differentiated_cell):
+    item = {
+        'classification': 'differentiated cell',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': other_source['@id'],
+        'product_id': 'GR000002',
+        'lot_id': 'R00002',
+        'taxa': 'Homo sapiens',
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_K562['@id'],
+        'sorted_fraction': in_vitro_differentiated_cell['@id']
     }
     return testapp.post_json('/in_vitro_system', item, status=201).json['@graph'][0]
 

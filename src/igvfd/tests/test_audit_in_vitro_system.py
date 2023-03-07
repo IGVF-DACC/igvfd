@@ -1,43 +1,22 @@
 import pytest
 
 
-def test_audit_in_vitro_system_sorted_fraction(testapp, lab, award, source, other_source, human_donor, sample_term_K562):
-    item_1 = {
-        'classification': 'differentiated cell',
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'source': source['@id'],
-        'product_id': 'GR000001',
-        'lot_id': 'R00001',
-        'taxa': 'Homo sapiens',
-        'donors': [human_donor['@id']],
-        'biosample_term': sample_term_K562['@id']
-    }
-    source_cell = testapp.post_json('/in_vitro_system', item_1, status=201).json['@graph'][0]
-    item_2 = {
-        'classification': 'differentiated cell',
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'source': other_source['@id'],
-        'product_id': 'GR000002',
-        'lot_id': 'R00002',
-        'taxa': 'Homo sapiens',
-        'donors': [human_donor['@id']],
-        'biosample_term': sample_term_K562['@id'],
-        'sorted_fraction': source_cell['@id']
-    }
-    sorted_fraction_cell = testapp.post_json('/in_vitro_system', item_2, status=201).json['@graph'][0]
-    res = testapp.get(sorted_fraction_cell['@id'] + '@@index-data')
-    errors = res.json['audit']
-    errors_list = []
-    for error_type in errors:
-        errors_list.extend(errors[error_type])
-    assert any(
-        error['category'] == 'sorted fraction inconsistent source'
-        for error in errors_list)
-    assert any(
-        error['category'] == 'sorted fraction inconsistent product_id'
-        for error in errors_list)
-    assert any(
-        error['category'] == 'sorted fraction inconsistent lot_id'
-        for error in errors_list)
+def test_audit_in_vitro_system_sorted_fraction(testapp, in_vitro_differentiated_cell_other_product_info_sorted_fraction):
+    res = testapp.get(in_vitro_differentiated_cell_other_product_info_sorted_fraction['@id'] + '@@index-data')
+    audits = res.json['audit']
+    audit_errors = audits.get('ERROR')
+    assert audit_errors is not None
+    assert len(audit_errors) == 3
+    inconsistent_source_count = 0
+    inconsistent_product_id_count = 0
+    inconsistent_lot_id_count = 0
+    for current_audit_error in audit_errors:
+        if current_audit_error['category'] == 'sorted fraction inconsistent source':
+            inconsistent_source_count += 1
+        if current_audit_error['category'] == 'sorted fraction inconsistent product_id':
+            inconsistent_product_id_count += 1
+        if current_audit_error['category'] == 'sorted fraction inconsistent lot_id':
+            inconsistent_lot_id_count += 1
+    assert inconsistent_source_count == 1
+    assert inconsistent_product_id_count == 1
+    assert inconsistent_lot_id_count == 1
