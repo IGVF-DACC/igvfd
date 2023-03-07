@@ -56,8 +56,12 @@
         "uuid": "bf3f9309-d2a3-4c13-a9b2-e34be9c9f7a8",
         "scope": "genome-wide",
         "origins": [
-            "TF binding sites"
+            "TF binding sites",
+            "disease-associated varants"
         ],
-        "status": "released"
+        "status": "released",
+        "associated_diseases": [
+            "igvf:alzheimers-disease"
+        ]
     }
 ]

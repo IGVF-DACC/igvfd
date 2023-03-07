@@ -17,3 +17,16 @@ def construct_library_genome_wide(testapp, lab, award):
                                   }
     }
     return testapp.post_json('/construct_library', item).json['@graph'][0]
+
+
+@pytest.fixture
+def base_construct_library(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'scope': 'genome-wide',
+        'origins': [
+            'transcription start sites'
+        ]
+    }
+    return testapp.post_json('/construct_library', item).json['@graph'][0]
