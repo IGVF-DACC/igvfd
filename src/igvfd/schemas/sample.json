@@ -38,6 +38,14 @@
             "comment": "Sample with lot_id must include product_id."
         }
     },
+    "dependentRequired": {
+        "sorted_fraction": [
+            "sorted_fraction_detail"
+        ],
+        "sorted_fraction_detail": [
+            "sorted_fraction"
+        ]
+    },
     "properties": {
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."
@@ -97,6 +105,12 @@
             "comment": "The parent sample is expected to have similar properties to it's fraction.",
             "type": "string",
             "linkTo": "Sample"
+        },
+        "sorted_fraction_detail": {
+            "title": "Sorted Fraction Detail",
+            "description": "Detail for sample sorted into fractions capturing information about sorting.",
+            "comment": "For example, FACS 10% expression of CTCF-GFP",
+            "type": "string"
         }
     }
 }
