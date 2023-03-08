@@ -7,6 +7,7 @@ from snovault import (
 
 from .base import (
     Item,
+    paths_filtered_by_status
 )
 
 
@@ -23,6 +24,20 @@ class Sample(Item):
     base_types = ['Sample'] + Item.base_types
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/sample.json')
+    rev = {
+        'file_sets': ('FileSet', 'samples')
+    }
+
+    @calculated_property(schema={
+        'title': 'File Sets',
+        'type': 'array',
+        'items': {
+            'type': ['string', 'object'],
+            'linkFrom': 'FileSet.samples',
+        },
+    })
+    def file_sets(self, request, file_sets):
+        return paths_filtered_by_status(request, file_sets)
 
 
 @abstract_collection(

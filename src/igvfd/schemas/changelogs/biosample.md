@@ -1,5 +1,9 @@
 ## Changelog for *`biosample.json`*
 
+### Release v6
+
+* Add `file_sets`.
+
 ### Release v2
 
 * Rename `biomarker` to `biomarkers`.
