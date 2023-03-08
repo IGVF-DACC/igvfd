@@ -7,7 +7,6 @@ from .formatter import (
     path_to_text,
 )
 from .compare_dict_values import (
-    DictDifference,
     compare_dictionary
 )
 
@@ -41,31 +40,21 @@ def audit_sample_sorted_fractions(child_value, system):
             child_value,
             parent_value,
             items_to_not_compare)
-        for difference in differences:
-            if difference.item_1_value is None:
-                detail = (
-                    f'Sample {audit_link(path_to_text(child_id), child_id)} '
-                    f'does not have property {difference.item_key} which is different from '
-                    f'the associated parent sample {audit_link(path_to_text(parent_id), parent_id)} '
-                    f'where it has property {difference.item_key}: {difference.item_2_value}.'
-                )
-                yield AuditFailure('sorted fraction child missing ' + difference.item_key, detail, level='ERROR')
-            if difference.item_2_value is None:
-                detail = (
-                    f'Sample {audit_link(path_to_text(child_id), child_id)} '
-                    f'has property {difference.item_key}: {difference.item_1_value} that is different from '
-                    f'the associated parent sample {audit_link(path_to_text(parent_id), parent_id)} '
-                    f'where it is missing the property {difference.item_key}.'
-                )
-                yield AuditFailure('sorted fraction parent missing ' + difference.item_key, detail, level='ERROR')
-            if (difference.item_1_value is not None) and (difference.item_2_value is not None):
-                detail = (
-                    f'Sample {audit_link(path_to_text(child_id), child_id)} '
-                    f'has property {difference.item_key}: {difference.item_1_value} that is different from '
-                    f'the associated parent sample {audit_link(path_to_text(parent_id), parent_id)} '
-                    f'where it has property {difference.item_key}: {difference.item_2_value}.'
-                )
-                yield AuditFailure('sorted fraction inconsistent ' + difference.item_key, detail, level='ERROR')
+        if len(differences) > 0:
+            is_first_item = True
+            key_diffs_msg = ''
+            for current_key in differences:
+                if is_first_item:
+                    is_first_item = False
+                else:
+                    key_diffs_msg += ', '
+                key_diffs_msg += current_key
+            detail = (
+                f'Sample {audit_link(path_to_text(child_id), child_id)} is different from '
+                f'the associated parent sample {audit_link(path_to_text(parent_id), parent_id)} '
+                f'because the following properties are different: {key_diffs_msg}'
+            )
+            yield AuditFailure('sorted fraction inconsistent', detail, level='ERROR')
 
 
 function_dispatcher = {

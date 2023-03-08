@@ -1,7 +1,6 @@
 import pytest
 import json
 from igvfd.audit.compare_dict_values import (
-    DictDifference,
     compare_dictionary
 )
 
@@ -80,19 +79,7 @@ def test_compare_dictionary(testapp):
         items_to_not_compare)
 
     assert len(differences) == 4
-    assert differences[0].item_key == 'biosample_term'
-    assert differences[0].item_1_value == '/sample-terms/UBERON_0001630/'
-    assert differences[0].item_2_value == '/sample-terms/UBERON_0000955/'
-    assert differences[0].message == 'values are different'
-    assert differences[1].item_key == 'taxa'
-    assert differences[1].item_1_value == 'Mus musculus'
-    assert differences[1].item_2_value == None
-    assert differences[1].message == 'key not in second'
-    assert differences[2].item_key == 'disease_terms'
-    assert differences[2].item_1_value == 'Alzheimer disease'
-    assert differences[2].item_2_value == ['/disease_terms/ba321be7-9c85-4b0c-b5dc-3e870fbd6b3c/']
-    assert differences[2].message == 'values are different types'
-    assert differences[3].item_key == 'treatments'
-    assert differences[3].item_1_value == None
-    assert differences[3].item_2_value == ['/treatments/bc321be7-9c85-4b0c-b5dc-3e870fbd6b3c/']
-    assert differences[3].message == 'key not in first'
+    assert differences[0] == 'biosample_term'
+    assert differences[1] == 'taxa'
+    assert differences[2] == 'disease_terms'
+    assert differences[3] == 'treatments'
