@@ -82,6 +82,6 @@ def in_vitro_system_v4(in_vitro_organoid):
     item = in_vitro_organoid.copy()
     item.update({
         'schema_version': '4',
-        'classification': 'organoid'
+        'classification': 'differentiated tissue'
     })
     return item
