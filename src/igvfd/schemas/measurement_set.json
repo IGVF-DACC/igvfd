@@ -38,6 +38,11 @@
             "file_set.json#/dependentSchemas"
         ]
     },
+    "dependentRequired": {
+        "moi": [
+            "construct_libraries"
+        ]
+    },
     "properties": {
         "schema_version": {
             "default": "3"
@@ -48,6 +53,13 @@
             "comment": "See assay_term.json for available identifiers.",
             "type": "string",
             "linkTo": "AssayTerm"
+        },
+        "library_construction_platform": {
+            "title": "Library Construction Platform",
+            "description": "The platform used to construct the library sequenced in this measurement set.",
+            "comment": "See platform_term.json for available identifiers.",
+            "type": "string",
+            "linkTo": "PlatformTerm"
         },
         "protocol": {
             "title": "Protocol",
@@ -67,6 +79,20 @@
                 "type": "string",
                 "linkTo": "ConstructLibrary"
             }
+        },
+        "preferred_assay_title": {
+            "title": "Preferred Assay Title",
+            "description": "The custom, lab preferred label for the experiment performed in this measurement set.",
+            "type": "string",
+            "enum": [
+                "Perturb-seq",
+                ""
+            ]
+        },
+        "moi": {
+            "title": "Multiplicity Of Infection",
+            "description": "The actual multiplicity of infection (MOI) for vectors introduced to the biosample used to produce data in this measurement set. At least one construct library must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
+            "type": "number"
         }
     },
     "boost_values": {
