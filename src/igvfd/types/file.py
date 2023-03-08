@@ -178,7 +178,7 @@ class File(Item):
     name='sequence-data',
     unique_key='accession',
     properties={
-        'title': 'Sequence data',
+        'title': 'Sequence Data',
         'description': 'Listing of sequence data files',
     }
 )
@@ -205,7 +205,7 @@ class SequenceData(File):
     name='reference-data',
     unique_key='accession',
     properties={
-        'title': 'Reference data',
+        'title': 'Reference Data',
         'description': 'Listing of reference data files',
     }
 )

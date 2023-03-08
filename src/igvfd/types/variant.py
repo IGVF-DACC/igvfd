@@ -27,7 +27,7 @@ class Variant(Item):
     name='human-genomic-variants',
     unique_key='human_genomic_variant:sequence_position_ref_alt',
     properties={
-        'title': 'Human genomic variant',
+        'title': 'Human Genomic Variant',
         'description': 'Listing of human genomic variants',
     }
 )

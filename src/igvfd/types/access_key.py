@@ -33,7 +33,7 @@ from snovault.validators import (
     name='access-keys',
     unique_key='access_key:access_key_id',
     properties={
-        'title': 'Access keys',
+        'title': 'Access Keys',
         'description': 'Programmatic access keys',
     },
     acl=[

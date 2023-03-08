@@ -126,7 +126,7 @@ class Biosample(Sample):
     name='primary-cells',
     unique_key='accession',
     properties={
-        'title': 'Primary cells',
+        'title': 'Primary Cells',
         'description': 'Listing of primary cells',
     }
 )
@@ -213,7 +213,7 @@ class TechnicalSample(Sample):
     name='whole-organisms',
     unique_key='accession',
     properties={
-        'title': 'Whole organism samples',
+        'title': 'Whole Organism Samples',
         'description': 'Listing of whole organism samples',
     }
 )

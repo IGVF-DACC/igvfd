@@ -14,7 +14,7 @@ from .base import (
     name='ontology-terms',
     unique_key='ontology_term:name',
     properties={
-        'title': 'Ontology term',
+        'title': 'Ontology Term',
         'description': 'Ontology terms used by IGVF',
     }
 )
@@ -87,7 +87,7 @@ class OntologyTerm(Item):
     name='sample-terms',
     unique_key='sample_term:name',
     properties={
-        'title': 'Sample ontology term',
+        'title': 'Sample Ontology Term',
         'description': 'Ontology terms used by IGVF for samples',
     }
 )
@@ -163,7 +163,7 @@ class SampleTerm(OntologyTerm):
     name='assay-terms',
     unique_key='assay_term:name',
     properties={
-        'title': 'Assay ontology term',
+        'title': 'Assay Ontology Term',
         'description': 'Ontology terms used by IGVF for assays',
     }
 )
@@ -225,7 +225,7 @@ class AssayTerm(OntologyTerm):
     name='phenotype-terms',
     unique_key='phenotype_term:name',
     properties={
-        'title': 'Phenotype ontology term',
+        'title': 'Phenotype Ontology Term',
         'description': 'Ontology terms used by IGVF for phenotypes, such as traits or diseases.',
     }
 )
