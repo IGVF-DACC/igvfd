@@ -11,7 +11,7 @@ def test_measurement_set_moi_construct_library(
         {'moi': 2.1},
         expect_errors=True
     )
-    assert res.status_code == 400
+    assert res.status_code == 422
     res = testapp.patch_json(
         measurement_set['@id'],
         {
