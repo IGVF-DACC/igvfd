@@ -1,0 +1,24 @@
+[
+    {
+        "term_id": "EFO:0009922",
+        "term_name": "10x 3' v3",
+        "status": "released",
+        "uuid": "93dbca0b-f2e1-3730-b64c-c0c92f94314b",
+        "aliases": [
+            "igvf:10x_RNA_v3"
+        ],
+        "notes": "Platform ontology term object for 10X 3' v3"
+    },
+    {
+        "term_id": "EFO:0008637",
+        "term_name": "Illumina NovaSeq 6000",
+        "status": "released",
+        "uuid": "747dc8bf-9e8c-3dbc-967f-ce9f995cfd28"
+    },
+    {
+        "term_id": "EFO:0009919",
+        "term_name": "SPLiT-seq",
+        "status": "released",
+        "uuid": "9ed48993-8f87-f432-42ac-c34a0f5caa20"
+    }
+]
