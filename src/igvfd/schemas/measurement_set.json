@@ -82,11 +82,23 @@
         },
         "preferred_assay_title": {
             "title": "Preferred Assay Title",
-            "description": "The custom, lab preferred label for the experiment performed in this measurement set.",
+            "description": "The custom lab preferred label for the experiment performed in this measurement set.",
             "type": "string",
             "enum": [
+                "Cell painting",
+                "DOGMA-seq",
+                "MERFISH",
+                "MIAA",
                 "Perturb-seq",
-                ""
+                "Saturation genome editing",
+                "scNT-seq",
+                "SHARE-Seq",
+                "smFISH",
+                "snmC-Seq2",
+                "TAP-seq",
+                "VAMP-seq",
+                "Variant painting",
+                "Yeast two-hybrid"
             ]
         },
         "moi": {
