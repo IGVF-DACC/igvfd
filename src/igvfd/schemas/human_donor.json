@@ -59,8 +59,14 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
+                "title": "Related Donors",
+                "description": "Familial relations of this donor",
                 "type": "object",
                 "additionalProperties": false,
+                "required": [
+                    "donor",
+                    "relationship_type"
+                ],
                 "properties": {
                     "donor": {
                         "title": "Related Donor Identifier",
