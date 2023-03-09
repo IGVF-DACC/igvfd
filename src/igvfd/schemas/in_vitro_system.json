@@ -148,6 +148,12 @@
             "comment": "In calculating passage number, include passages from the source. Use of this property requires classification to be a cell line.",
             "type": "integer",
             "minimum": 0
+        },
+        "targeted_sample_term": {
+            "title": "Targeted Sample Term",
+            "description": "Ontology term identifying the targeted endpoint biosample from differentation or reprogramming.",
+            "type": "string",
+            "linkTo": "SampleTerm"
         }
     },
     "boost_values": {
