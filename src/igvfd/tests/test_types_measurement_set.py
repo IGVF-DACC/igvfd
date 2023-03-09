@@ -41,7 +41,8 @@ def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, me
     testapp.patch_json(
         measurement_set_multiome['@id'],
         {
-            'samples': [in_vitro_cell_line['@id']]
+            'samples': [in_vitro_cell_line['@id']],
+            'multiome_size': 3
         }
     )
     testapp.patch_json(
