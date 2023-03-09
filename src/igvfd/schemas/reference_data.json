@@ -39,7 +39,58 @@
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
-        ]
+        ],
+        "transcriptome_annotation": {
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "GRCh39"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "M30",
+                                    "M31",
+                                    "M32"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "GRCh38"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "V40",
+                                    "V41",
+                                    "V42",
+                                    "V43"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
     },
     "type": "object",
     "properties": {
