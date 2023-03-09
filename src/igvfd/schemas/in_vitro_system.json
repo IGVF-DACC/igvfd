@@ -74,7 +74,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "classification": {
             "title": "Classification",
@@ -88,7 +88,6 @@
                 "embryoid",
                 "cell line",
                 "differentiated cell",
-                "differentiated tissue",
                 "reprogrammed cell"
             ]
         },

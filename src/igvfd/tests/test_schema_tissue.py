@@ -77,14 +77,14 @@ def test_failure_patch_calculated_sex(testapp, tissue):
     assert res.status_code == 422
 
 
-def test_part_of_tissue(tissue, primary_cell_part_of, in_vitro_differentiated_cell, in_vitro_differentiated_tissue, in_vitro_cell_line, tissue_part_of, whole_organism_part_of, testapp):
+def test_part_of_tissue(tissue, primary_cell_part_of, in_vitro_differentiated_cell, in_vitro_organoid, in_vitro_cell_line, tissue_part_of, whole_organism_part_of, testapp):
     res = testapp.patch_json(
         tissue['@id'],
         {'part_of': in_vitro_differentiated_cell['@id']}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         tissue['@id'],
-        {'part_of': in_vitro_differentiated_tissue['@id']}, expect_errors=True)
+        {'part_of': in_vitro_organoid['@id']}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         tissue['@id'],

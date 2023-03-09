@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 5
+
+* Remove `differentiated_tissue` from `classification`.
+
 ### Minor changes since schema version 3
 
 * Add `file_sets`.

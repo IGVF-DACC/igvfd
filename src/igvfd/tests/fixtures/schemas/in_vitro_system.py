@@ -30,9 +30,9 @@ def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sampl
 
 
 @pytest.fixture
-def in_vitro_differentiated_tissue(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
+def in_vitro_organoid(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
     item = {
-        'classification': 'differentiated tissue',
+        'classification': 'organoid',
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
@@ -46,7 +46,7 @@ def in_vitro_differentiated_tissue(testapp, lab, award, source, human_donor, sam
 @pytest.fixture
 def in_vitro_system_v1(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
     item = {
-        'classification': 'differentiated tissue',
+        'classification': 'organoid',
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
@@ -73,5 +73,15 @@ def in_vitro_system_v3(in_vitro_cell_line):
     item.update({
         'schema_version': '3',
         'accession': 'IGVFSM222IIV'
+    })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_v4(in_vitro_organoid):
+    item = in_vitro_organoid.copy()
+    item.update({
+        'schema_version': '4',
+        'classification': 'differentiated tissue'
     })
     return item
