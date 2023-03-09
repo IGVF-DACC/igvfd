@@ -86,7 +86,7 @@ def donor_6_7(value, system):
 
 
 @upgrade_step('rodent_donor', '6', '7')
-def donor_6_7(value, system):
+def rodent_donor_6_7(value, system):
     # https://igvf.atlassian.net/browse/IGVF-408
     if 'parents' in value:
         parents = value['parents']
@@ -101,7 +101,7 @@ def donor_6_7(value, system):
 
 
 @upgrade_step('human_donor', '7', '8')
-def donor_7_8(value, system):
+def human_donor_7_8(value, system):
     # https://igvf.atlassian.net/browse/IGVF-408
     if 'parents' in value:
         parents = value['parents']
