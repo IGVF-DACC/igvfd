@@ -29,6 +29,24 @@ def assay_term_dnase(testapp):
 
 
 @pytest.fixture
+def assay_term_atac(testapp):
+    item = {
+        'term_id': 'OBI:002039',
+        'term_name': 'ATAC-seq'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def assay_term_rna(testapp):
+    item = {
+        'term_id': 'OBI:0001271',
+        'term_name': 'RNA-seq'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def assay_term_v1(assay_term_starr):
     item = assay_term_starr.copy()
     item.update({

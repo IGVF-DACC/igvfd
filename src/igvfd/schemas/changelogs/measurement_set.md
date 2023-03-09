@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 3
 
+* Add `related_multiome_datasets`.
+* Add `multiome_size`.
 * Add `dbxrefs`.
 * Add `construct_libraries`.
 
