@@ -70,7 +70,8 @@
                     },
                     "relationship_type": {
                         "title": "Relationship Type",
-                        "description": "A descriptive term for the related donor’s relationship to this donor. List of enums comes from http://genealogy-quest.com/glossary-terms/relationship-terms/",
+                        "description": "A descriptive term for the related donor’s relationship to this donor.",
+                        "comment": " List of enums comes from http://genealogy-quest.com/glossary-terms/relationship-terms/",
                         "type": "string",
                         "enum": [
                             "aunt",
