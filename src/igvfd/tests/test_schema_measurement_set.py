@@ -20,14 +20,3 @@ def test_measurement_set_moi_construct_library(
         }
     )
     assert res.status_code == 200
-
-
-def test_patch_curated_set(award, lab, curated_set_genome, testapp):
-    res = testapp.patch_json(
-        curated_set_genome['@id'],
-        {'curated_set_type': 'genome'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        curated_set_genome['@id'],
-        {'taxa': 'Homo sapiens'})
-    assert res.status_code == 200
