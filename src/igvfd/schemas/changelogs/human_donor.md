@@ -1,10 +1,13 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 8
+
+* Add `related_donors`.
+* Remove `parents`.
+
 ### Minor changes since schema version 7
 
 * Add `dbxrefs`.
-* Add `related_donors`.
-* Remove `parents`.
 
 ### Schema version 7
 

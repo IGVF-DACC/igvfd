@@ -48,7 +48,7 @@
         },
         "related_donors": {
             "title": "Related Donors",
-            "description": "Familial relations of this donor",
+            "description": "Familial relations of this donor.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
@@ -70,7 +70,7 @@
                     },
                     "relationship_type": {
                         "title": "Relationship Type",
-                        "description": "A descriptive term for the related donor’s relationship to this donor.",
+                        "description": "A descriptive term for the related donor’s relationship to this donor. List of enums comes from http://genealogy-quest.com/glossary-terms/relationship-terms/",
                         "type": "string",
                         "enum": [
                             "aunt",
@@ -85,7 +85,8 @@
                             "parent",
                             "paternal twin",
                             "sibling",
-                            "second cousin"
+                            "second cousin",
+                            "uncle"
                         ]
                     }
                 }
