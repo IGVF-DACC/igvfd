@@ -85,7 +85,7 @@ def donor_6_7(value, system):
         del value['traits']
 
 
-@upgrad_step('rodent_donor', '6', '7')
+@upgrade_step('rodent_donor', '6', '7')
 def donor_6_7(value, system):
     # https://igvf.atlassian.net/browse/IGVF-408
     if 'parents' in value:
@@ -95,7 +95,7 @@ def donor_6_7(value, system):
         for parent in parents:
             if len(new_notes_value) > 0:
                 new_notes_value += '  '
-            new_notes_value += f'parents: {parents}'
+            new_notes_value += f'parents: {parent}'
         value['notes'] = new_notes_value
         del value['parents']
 

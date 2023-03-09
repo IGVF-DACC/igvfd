@@ -32,8 +32,8 @@ def test_rodent_donor_upgrade_4_5(upgrader, rodent_donor_v4):
     assert value['schema_version'] == '5'
 
 
-def test_rodent_donor_upgrade_6_7(upgrader, rodent_donor_v6_with_parents, rodent_donor_v6_with_parents_notes, parent_rodent_donor_1):
-    value = upgrader.upgrade('rodent_donor', rodent_donor_v6_with_parents_notes,
+def test_rodent_donor_upgrade_6_7(upgrader, rodent_donor_v6_with_parents, parent_rodent_donor_1):
+    value = upgrader.upgrade('rodent_donor', rodent_donor_v6_with_parents,
                              current_version='6', target_version='7')
     assert 'parents' not in value
     assert value['notes'] == 'This is a note.  parents: ' + parent_rodent_donor_1['@id']
