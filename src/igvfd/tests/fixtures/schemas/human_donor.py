@@ -171,3 +171,16 @@ def human_donor_v6_single_trait_with_notes(human_donor, phenotype_term_alzheimer
         'notes': 'This is a note.'
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v7_with_parents(human_donor, parent_human_donor_1, parent_human_donor_2):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '7',
+        'parents': [
+            parent_human_donor_1['@id'],
+            parent_human_donor_2['@id']
+        ],
+    })
+    return item

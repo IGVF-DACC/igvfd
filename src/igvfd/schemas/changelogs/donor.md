@@ -3,6 +3,7 @@
 ### Release v5
 
 * Add `dbxrefs`.
+* Remove `parents`.
 
 ### Release v2
 

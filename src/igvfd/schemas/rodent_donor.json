@@ -90,13 +90,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "6"
-        },
-        "parents": {
-            "items": {
-                "linkTo": "RodentDonor",
-                "type": "string"
-            }
+            "default": "7"
         },
         "strain_background": {
             "title": "Strain Background",

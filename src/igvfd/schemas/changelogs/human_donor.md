@@ -4,6 +4,7 @@
 
 * Add `dbxrefs`.
 * Add `related_donors`.
+* Remove `parents`.
 
 ### Schema version 7
 

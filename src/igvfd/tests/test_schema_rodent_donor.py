@@ -31,37 +31,6 @@ def test_strain(rodent_donor, testapp):
     assert res.status_code == 200
 
 
-def test_fail_donor_with_three_parents(rodent_donor, parent_rodent_donor_1, parent_rodent_donor_2, parent_rodent_donor_3, testapp):
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {'parents': [
-            parent_rodent_donor_1['@id'],
-            parent_rodent_donor_2['@id'],
-            parent_rodent_donor_3['@id']
-        ]}, expect_errors=True)
-    assert res.status_code == 422
-
-
-def test_fail_rodent_donor_with_human_parents(rodent_donor, parent_human_donor_1, parent_human_donor_2, testapp):
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {'parents': [
-            parent_human_donor_1['@id'],
-            parent_human_donor_2['@id']
-        ]}, expect_errors=True)
-    assert res.status_code == 422
-
-
-def test_fail_rodent_donor_with_rodent_and_human_parents(rodent_donor, parent_rodent_donor_1, parent_human_donor_2, testapp):
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {'parents': [
-            parent_rodent_donor_1['@id'],
-            parent_human_donor_2['@id']
-        ]}, expect_errors=True)
-    assert res.status_code == 422
-
-
 def test_collections(rodent_donor, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],
@@ -111,15 +80,6 @@ def test_taxa(award, lab, testapp):
             'strain': 'B6'
         }, expect_errors=True)
     assert res.status_code == 422
-
-
-def test_patch_parents(rodent_donor, parent_rodent_donor_1, testapp):
-    res = testapp.patch_json(
-        rodent_donor['@id'],
-        {'parents': [
-            parent_rodent_donor_1['@id']
-        ]})
-    assert res.status_code == 200
 
 
 def test_patch_phenotypic_feature(rodent_donor, phenotypic_feature_basic, testapp):

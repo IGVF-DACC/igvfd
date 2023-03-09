@@ -3,6 +3,7 @@
 ### Minor changes since schema version 6
 
 * Add `dbxrefs`.
+* Remove `parents`.
 
 ### Schema version 6
 
