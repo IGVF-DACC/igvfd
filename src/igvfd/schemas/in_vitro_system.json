@@ -151,7 +151,7 @@
         },
         "targeted_sample_term": {
             "title": "Targeted Sample Term",
-            "description": "Ontology term identifying the targeted endpoint biosample from differentation or reprogramming.",
+            "description": "Ontology term identifying the targeted endpoint biosample resulting from differentation or reprogramming.",
             "type": "string",
             "linkTo": "SampleTerm"
         }
