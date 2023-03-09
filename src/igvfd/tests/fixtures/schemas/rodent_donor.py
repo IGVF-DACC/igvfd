@@ -113,7 +113,7 @@ def rodent_donor_v4(rodent_donor):
 
 
 @pytest.fixture
-def rodent_donor_v6_with_parents_notes(rodent_donor, parent_rodent_donor_1):
+def rodent_donor_v6_with_parents(rodent_donor, parent_rodent_donor_1):
     item = rodent_donor.copy()
     item.update({
         'schema_version': '6',

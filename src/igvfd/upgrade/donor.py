@@ -85,9 +85,8 @@ def donor_6_7(value, system):
         del value['traits']
 
 
-@upgrade_step('human_donor', '7', '8')
-@upgrade_step('rodent_donor', '6', '7')
-def donor_7_8(value, system):
+@upgrad_step('rodent_donor', '6', '7')
+def donor_6_7(value, system):
     # https://igvf.atlassian.net/browse/IGVF-408
     if 'parents' in value:
         parents = value['parents']
@@ -98,14 +97,21 @@ def donor_7_8(value, system):
                 new_notes_value += '  '
             new_notes_value += f'parents: {parents}'
         value['notes'] = new_notes_value
-        if 'HumanDonor' in value:
-            related_donors = []
-            for parent in parents:
-                related_donors.append(
-                    {
-                        'donor': parent,
-                        'relationship_type': 'parent'
-                    }
-                )
-            value['related_donors'] = related_donors
+        del value['parents']
+
+
+@upgrade_step('human_donor', '7', '8')
+def donor_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-408
+    if 'parents' in value:
+        parents = value['parents']
+        related_donors = []
+        for parent in parents:
+            related_donors.append(
+                {
+                    'donor': parent,
+                    'relationship_type': 'parent'
+                }
+            )
+        value['related_donors'] = related_donors
         del value['parents']
