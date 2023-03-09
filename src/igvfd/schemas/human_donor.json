@@ -52,6 +52,45 @@
                 "type": "string"
             }
         },
+        "related_donors": {
+            "title": "Related Donors",
+            "description": "Familial relations of this donor",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "donor": {
+                        "title": "Related Donor Identifier",
+                        "description": "An identifier for the related donor.",
+                        "type": "string",
+                        "linkTo": "Donor"
+                    },
+                    "relationship_type": {
+                        "title": "Relationship Type",
+                        "description": "A descriptive term for the related donor’s relationship to this donor.",
+                        "type": "string",
+                        "enum": [
+                            "aunt",
+                            "child",
+                            "first cousin once removed",
+                            "first cousin",
+                            "fraternal twin",
+                            "grandparent",
+                            "half-sibling",
+                            "niece",
+                            "nephew",
+                            "parent",
+                            "paternal twin",
+                            "sibling",
+                            "second cousin"
+                        ]
+                    }
+                }
+            }
+        },
         "ethnicities": {
             "title": "Ethnicity",
             "comment": "We use http://bioportal.bioontology.org/ontologies/HANCESTRO as a template for the enum list of ethnicities.",

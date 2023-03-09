@@ -3,6 +3,7 @@
 ### Minor changes since schema version 7
 
 * Add `dbxrefs`.
+* Add `related_donors`.
 
 ### Schema version 7
 

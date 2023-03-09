@@ -66,8 +66,15 @@
         ],
         "sex": "female",
         "taxa": "Homo sapiens",
-        "parents": [
-            "a1abeff6-8024-41d3-a713-5d22c86ffc57"
+        "related_donors": [
+            {
+                "donor": "e57bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
+                "relationship_type": "aunt"
+            },
+            {
+                "donor": "e47bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
+                "relationship_type": "sibling"
+            }
         ],
         "collections": [
             "ENCODE"
