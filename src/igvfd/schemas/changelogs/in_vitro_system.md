@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Add `sorted_fraction`.
 * Add `targeted_sample_term`.
 
 ### Schema version 5

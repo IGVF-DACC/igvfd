@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Add `sorted_fraction`.
 * Add `file_sets`.
 
 ### Schema version 8
