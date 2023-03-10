@@ -2,8 +2,11 @@ import pytest
 
 
 @pytest.fixture
-def reference_data_1(testapp):
+def reference_data_1(testapp, lab, award, attachment):
     item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': attachment['md5sum'],
         'file_format': 'gtf',
         'file_set': 'igvf:analysis_set_1',
         'content_type': 'transcriptome reference',
