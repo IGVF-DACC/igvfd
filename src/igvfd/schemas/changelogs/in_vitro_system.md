@@ -3,7 +3,10 @@
 ### Minor changes since schema version 5
 
 * Add `sorted_fraction`.
+<<<<<<< HEAD
 * Add `targeted_sample_term`.
+=======
+>>>>>>> 7bebe4c (IGVF-468 Updated changelog for sample concrete subclasses.)
 
 ### Schema version 5
 
