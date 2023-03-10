@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def reference_data_v1(testapp, award, lab, attachment):
+def reference_data(testapp, award, lab, attachment):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
