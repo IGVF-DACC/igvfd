@@ -46,7 +46,7 @@
                     "if": {
                         "properties": {
                             "assembly": {
-                                "const": "GRCh39"
+                                "const": "GRCm39"
                             }
                         },
                         "required": [
