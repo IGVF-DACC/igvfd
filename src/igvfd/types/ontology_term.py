@@ -239,3 +239,23 @@ class PhenotypeTerm(OntologyTerm):
             keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
         keys.setdefault('phenotype_term:name', []).append(self.name(properties))
         return keys
+
+
+@collection(
+    name='platform-terms',
+    unique_key='platform_term:name',
+    properties={
+        'title': 'Platform ontology term',
+        'description': 'Ontology terms used by IGVF for platforms used for library construction or sequencing.',
+    }
+)
+class PlatformTerm(OntologyTerm):
+    item_type = 'platform_term'
+    schema = load_schema('igvfd:schemas/platform_term.json')
+
+    def unique_keys(self, properties):
+        keys = super(OntologyTerm, self).unique_keys(properties)
+        if 'deprecated_ntr_terms' in properties:
+            keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
+        keys.setdefault('platform_term:name', []).append(self.name(properties))
+        return keys

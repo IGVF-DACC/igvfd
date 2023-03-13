@@ -22,6 +22,7 @@ ORDER = [
     'sample_term',
     'assay_term',
     'phenotype_term',
+    'platform_term',
     'phenotypic_feature',
     'human_donor',
     'rodent_donor',
