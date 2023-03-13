@@ -103,16 +103,17 @@ class MeasurementSet(FileSet):
         }
     )
     def related_multiome_datasets(self, request, accession, samples=None):
-        related_datasets = []
         if samples:
+            related_datasets = []
             for sample in samples:
                 sample_object = request.embed(sample, '@@object')
-                for file_set in sample_object['file_sets']:
-                    if 'measurement-sets' in file_set and \
-                        accession not in file_set and \
-                            file_set not in related_datasets:
-                        related_datasets.append(file_set)
-        return related_datasets
+                if sample_object.get('file_sets'):
+                    for file_set in sample_object.get('file_sets'):
+                        if 'measurement-sets' in file_set and \
+                            accession not in file_set and \
+                                file_set not in related_datasets:
+                            related_datasets.append(file_set)
+            return related_datasets
 
 
 @collection(
