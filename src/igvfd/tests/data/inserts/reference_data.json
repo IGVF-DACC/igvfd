@@ -38,5 +38,20 @@
         "upload_status": "invalidated",
         "validation_error_detail": "Explanation of why this file did not pass validation.",
         "file_set": "igvf:analysis_set_with_input"
+    },
+    {
+        "uuid": "c127ac59-74de-4057-9ee0-d75283c2c39e",
+        "accession": "IGVFFI0000SQBZ",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "a2578edac3f968c991ed3d5b19d797c2",
+        "file_format": "gtf",
+        "content_type": "transcriptome reference",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "transcriptome_annotation": "V40"
     }
 ]
