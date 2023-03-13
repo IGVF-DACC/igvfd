@@ -37,5 +37,17 @@
         "term_name": "technical sample",
         "status": "released",
         "uuid": "9c5e2e32-1017-2c05-59ce-574c5a4bc548"
+    },
+    {
+        "term_id": "EFO:0007093",
+        "term_name": "HUES8",
+        "status": "released",
+        "uuid": "92c5f1a9-7503-460b-99b3-f5b84c82b067"
+    },
+    {
+        "term_id": "UBERON:0005439",
+        "term_name": "definitive endoderm",
+        "status": "released",
+        "uuid": "eed026e7-4afc-4396-94e7-870f8934b2f2"
     }
 ]

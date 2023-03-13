@@ -42,5 +42,28 @@
         "collections": [
             "ENCODE"
         ]
+    },
+    {
+        "uuid": "1b14530d-5514-419a-ad8f-e2f110c26232",
+        "classification": "cell line",
+        "lab": "danwei-huangfu",
+        "accession": "IGVFSM0008HUES",
+        "award": "1U01HG012051-01",
+        "aliases": [
+            "danwei-huangfu:HUES8_differentiated_definitive_endoderm_12hr"
+        ],
+        "donors": [
+            "igvf:alias_human_donor1"
+        ],
+        "introduced_factors": [
+            "/treatments/bd2cb34e-c72c-11ec-9d64-0242ac120002/"
+        ],
+        "status": "released",
+        "time_post_factors_introduction": 24,
+        "time_post_factors_introduction_units": "minute",
+        "taxa": "Homo sapiens",
+        "biosample_term": "/sample-terms/92c5f1a9-7503-460b-99b3-f5b84c82b067/",
+        "targeted_sample_term": "/sample-terms/eed026e7-4afc-4396-94e7-870f8934b2f2/",
+        "source": "/labs/danwei-huangfu/"
     }
 ]
