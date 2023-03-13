@@ -57,7 +57,7 @@
         "scope": "genome-wide",
         "origins": [
             "TF binding sites",
-            "disease-associated varants"
+            "disease-associated variants"
         ],
         "status": "released",
         "associated_diseases": [
