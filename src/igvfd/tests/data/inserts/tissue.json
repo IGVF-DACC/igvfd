@@ -167,6 +167,7 @@
         "upper_bound_age": 20,
         "age_units": "day",
         "embryonic": true,
-        "sorted_fraction": "/tissue/8183c760-0304-11ed-b939-0242ac120002/"
+        "sorted_fraction": "/tissue/8183c760-0304-11ed-b939-0242ac120002/",
+        "sorted_fraction_detail": "FACS 10% expression of CTCF-GFP"
     }
 ]
