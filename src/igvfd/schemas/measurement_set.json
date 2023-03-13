@@ -104,7 +104,8 @@
         "moi": {
             "title": "Multiplicity Of Infection",
             "description": "The actual multiplicity of infection (MOI) for vectors introduced to the biosample used to produce data in this measurement set. At least one construct library must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
-            "type": "number"
+            "type": "number",
+            "minimum": 0
         }
     },
     "boost_values": {
