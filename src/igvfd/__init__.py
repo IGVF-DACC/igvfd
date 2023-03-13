@@ -246,6 +246,7 @@ def main(global_config, **local_config):
     config.include(changelogs)
 
     config.include('.upgrade')
+    config.include('.audit')
 
     if asbool(settings.get('testing', False)):
         config.include('.tests.testing_views')
