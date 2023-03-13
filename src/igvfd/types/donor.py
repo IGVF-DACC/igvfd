@@ -28,7 +28,7 @@ class Donor(Item):
     name='human-donors',
     unique_key='accession',
     properties={
-        'title': 'Human donors',
+        'title': 'Human Donors',
         'description': 'Listing of human donors',
     }
 )
@@ -41,7 +41,7 @@ class HumanDonor(Donor):
     name='rodent-donors',
     unique_key='accession',
     properties={
-        'title': 'Rodent donors',
+        'title': 'Rodent Donors',
         'description': 'Listing of rodent donors',
     }
 )

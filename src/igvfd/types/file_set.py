@@ -14,7 +14,7 @@ from .base import (
     name='file-sets',
     unique_key='accession',
     properties={
-        'title': 'File sets',
+        'title': 'File Sets',
         'description': 'Listing of file sets',
     }
 )
@@ -29,7 +29,7 @@ class FileSet(Item):
     name='analysis-sets',
     unique_key='accession',
     properties={
-        'title': 'Analysis sets',
+        'title': 'Analysis Sets',
         'description': 'Listing of analysis sets',
     }
 )
@@ -79,7 +79,7 @@ class CuratedSet(FileSet):
     name='measurement-sets',
     unique_key='accession',
     properties={
-        'title': 'Measurement sets',
+        'title': 'Measurement Sets',
         'description': 'Listing of measurement sets',
     })
 class MeasurementSet(FileSet):
