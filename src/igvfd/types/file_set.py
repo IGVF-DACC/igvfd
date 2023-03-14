@@ -102,17 +102,18 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def related_multiome_datasets(self, request, accession, samples=None):
+    def related_multiome_datasets(self, request, samples=None):
+        object_id = self.jsonld_id(request)
         if samples:
             related_datasets = []
             for sample in samples:
                 sample_object = request.embed(sample, '@@object')
                 if sample_object.get('file_sets'):
-                    for file_set in sample_object.get('file_sets'):
-                        if 'measurement-sets' in file_set and \
-                            accession not in file_set and \
-                                file_set not in related_datasets:
-                            related_datasets.append(file_set)
+                    for file_set_id in sample_object.get('file_sets'):
+                        if '/measurement-sets/' == file_set_id[:18] and \
+                            object_id != file_set_id and \
+                                file_set_id not in related_datasets:
+                            related_datasets.append(file_set_id)
             return related_datasets
 
 
