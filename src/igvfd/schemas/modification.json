@@ -1,0 +1,101 @@
+{
+    "title": "Modification",
+    "$id": "/profiles/modification.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submitting a modification to .",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "cas",
+        "modality"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/product_info"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "cas": {
+            "title": "Cas",
+            "description": "The name of the CRISPR associated protein used in the modification.",
+            "type": "string",
+            "enum": [
+                "Cas9",
+                "Cas12a",
+                "Cas13",
+                "dCas9",
+                "SpRY"
+            ]
+        },
+        "fused_domain": {
+            "title": "Fused Domain",
+            "description": "The name of the molecule fused to a Cas protein.",
+            "type": "string",
+            "enum": [
+                "ABE8e",
+                "ABE8.20",
+                "BE4",
+                "eA3A-T31A",
+                "ANTI-FLAG",
+                "KRAB",
+                "p300",
+                "VP64",
+                "VPR"
+            ]
+        },
+        "modality": {
+            "title": "Modality",
+            "description": "The purpose or intended effect of a CRISPR modification.",
+            "type": "string",
+            "enum": [
+                "activation",
+                "base editing",
+                "cutting",
+                "interference",
+                "knockout",
+                "localizing",
+                "prime editing"
+            ]
+        },
+        "tagged_protein": {
+            "title": "Tagged Protein",
+            "description": "The tagged protein in modifications in which the Cas nuclease is fused to an antibody.",
+            "type": "string",
+            "linkTo": "Gene"
+        },
+        "product_id": {
+            "title": "Product ID",
+            "description": "The product or catalog identifier provided following deposition to addgene.org.",
+            "type": "string",
+            "pattern": "^addgene:\\d{5,6}$"
+        }
+    },
+    "boost_values": {
+        "accession": 1.0,
+        "@type": 1.0
+    },
+    "changelog": "/profiles/changelogs/modification.md"
+}

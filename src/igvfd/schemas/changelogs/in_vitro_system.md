@@ -8,6 +8,7 @@
 
 * Add `sorted_fraction`.
 * Add `targeted_sample_term`.
+* Add `modification`.
 
 ### Schema version 5
 

@@ -1,0 +1,29 @@
+[
+    {
+        "uuid": "98cbd059-a970-2857-bc2b-ba45729489f8",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:modification_1"
+        ],
+        "cas": "dCas9",
+        "fused_domain": "KRAB",
+        "modality": "interference",
+        "status": "in progress",
+        "product_id": "addgene:000567"
+    },
+    {
+        "uuid": "aa9dd059-4bc8-2857-bc2b-b8cb0294f837",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:modification_2"
+        ],
+        "cas": "dCas9",
+        "fused_domain": "ANTI-FLAG",
+        "modality": "localizing",
+        "gene": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
+        "status": "in progress",
+        "product_id": "addgene:000567"
+    }
+]

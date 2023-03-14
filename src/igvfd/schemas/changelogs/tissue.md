@@ -8,6 +8,7 @@
 
 * Add `sorted_fraction`.
 * Add `file_sets`.
+* Add `modification`.
 
 ### Schema version 8
 

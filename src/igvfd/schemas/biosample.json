@@ -236,6 +236,13 @@
             "title": "Embryonic",
             "description": "Biosample is embryonic.",
             "type": "boolean"
+        },
+        "modification": {
+            "title": "Modification",
+            "description": "Link to a modification applied to this biosample.",
+            "comment": "See modification.json for available identifiers.",
+            "type": "string",
+            "linkTo": "Modification"
         }
     }
 }
