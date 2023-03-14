@@ -1,6 +1,6 @@
 {
-    "hash": "46fbcac5a149d62a0b4ce6c0354ab1b6",
-    "index_name": "measurement_set_46fbcac5",
+    "hash": "60d3d653171b2f66e3f6fb018cde11cc",
+    "index_name": "measurement_set_60d3d653",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -187,8 +187,23 @@
                     "lab": {
                         "type": "keyword"
                     },
+                    "library_construction_platform": {
+                        "type": "keyword"
+                    },
+                    "moi": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
                     "notes": {
                         "type": "text"
+                    },
+                    "preferred_assay_title": {
+                        "type": "keyword"
                     },
                     "protocol": {
                         "copy_to": "_all",

@@ -1,6 +1,6 @@
 {
-    "hash": "0f7074e7c2c0c06ab0ef96138c7b387b",
-    "index_name": "in_vitro_system_0f7074e7",
+    "hash": "2aa60262acd0b096eb4489ca8fcf52c6",
+    "index_name": "in_vitro_system_2aa60262",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -208,6 +208,9 @@
                         "store": true,
                         "type": "boolean"
                     },
+                    "file_sets": {
+                        "type": "keyword"
+                    },
                     "introduced_factors": {
                         "type": "keyword"
                     },
@@ -262,6 +265,9 @@
                     "sex": {
                         "type": "keyword"
                     },
+                    "sorted_fraction": {
+                        "type": "keyword"
+                    },
                     "source": {
                         "type": "keyword"
                     },
@@ -287,6 +293,9 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "targeted_sample_term": {
                         "type": "keyword"
                     },
                     "taxa": {

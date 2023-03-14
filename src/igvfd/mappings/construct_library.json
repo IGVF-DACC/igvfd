@@ -1,6 +1,6 @@
 {
-    "hash": "49592f35f9956154b15c29765b776abf",
-    "index_name": "construct_library_49592f35",
+    "hash": "eb14aa893fcf4c29b10de2eec897fe08",
+    "index_name": "construct_library_eb14aa89",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -156,6 +156,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "associated_diseases": {
                         "type": "keyword"
                     },
                     "award": {

@@ -1,7 +1,7 @@
 {
-    "hash": "11866badc6cd045f7e2c05990928a417",
-    "index_name": "reference_data_11866bad",
-    "item_type": "reference_data",
+    "hash": "7f7651a90660e501d8ff7959302aa6c6",
+    "index_name": "platform_term_7f7651a9",
+    "item_type": "platform_term",
     "mapping": {
         "dynamic_templates": [
             {
@@ -147,85 +147,31 @@
                         "copy_to": "_all",
                         "type": "keyword"
                     },
-                    "accession": {
-                        "copy_to": "_all",
-                        "type": "keyword"
-                    },
                     "aliases": {
                         "type": "keyword"
                     },
-                    "alternate_accessions": {
-                        "type": "keyword"
-                    },
-                    "assembly": {
-                        "type": "keyword"
-                    },
-                    "award": {
-                        "type": "keyword"
-                    },
-                    "collections": {
-                        "type": "keyword"
-                    },
-                    "content_md5sum": {
-                        "type": "keyword"
-                    },
-                    "content_type": {
-                        "copy_to": "_all",
+                    "ancestors": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {
                         "type": "keyword"
                     },
-                    "dbxrefs": {
-                        "type": "keyword"
-                    },
-                    "derived_from": {
+                    "deprecated_ntr_terms": {
                         "type": "keyword"
                     },
                     "description": {
                         "type": "text"
                     },
-                    "documents": {
+                    "is_a": {
                         "type": "keyword"
                     },
-                    "file_format": {
-                        "copy_to": "_all",
-                        "type": "keyword"
-                    },
-                    "file_format_specifications": {
-                        "type": "keyword"
-                    },
-                    "file_set": {
-                        "type": "keyword"
-                    },
-                    "file_size": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "long"
-                    },
-                    "href": {
-                        "type": "keyword"
-                    },
-                    "lab": {
-                        "type": "keyword"
-                    },
-                    "md5sum": {
+                    "name": {
                         "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
                     },
-                    "revoke_detail": {
-                        "type": "keyword"
-                    },
                     "schema_version": {
-                        "type": "keyword"
-                    },
-                    "source": {
                         "type": "keyword"
                     },
                     "status": {
@@ -234,29 +180,25 @@
                     "submitted_by": {
                         "type": "keyword"
                     },
-                    "submitted_file_name": {
-                        "type": "keyword"
-                    },
                     "submitter_comment": {
                         "type": "keyword"
                     },
                     "summary": {
                         "type": "keyword"
                     },
-                    "transcriptome_annotation": {
+                    "synonyms": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
-                    "upload_credentials": {
-                        "properties": {},
-                        "type": "object"
+                    "term_id": {
+                        "copy_to": "_all",
+                        "type": "keyword"
                     },
-                    "upload_status": {
+                    "term_name": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "uuid": {
-                        "type": "keyword"
-                    },
-                    "validation_error_detail": {
                         "type": "keyword"
                     }
                 },

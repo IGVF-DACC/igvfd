@@ -1,6 +1,6 @@
 {
-    "hash": "dd4b067aa92fea2ddaa2f15a72e6cc86",
-    "index_name": "primary_cell_dd4b067a",
+    "hash": "ebb7b8737ddac06f0718c2136abffc82",
+    "index_name": "primary_cell_ebb7b873",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -205,6 +205,9 @@
                         "store": true,
                         "type": "boolean"
                     },
+                    "file_sets": {
+                        "type": "keyword"
+                    },
                     "lab": {
                         "type": "keyword"
                     },
@@ -251,6 +254,9 @@
                         "type": "keyword"
                     },
                     "sex": {
+                        "type": "keyword"
+                    },
+                    "sorted_fraction": {
                         "type": "keyword"
                     },
                     "source": {
