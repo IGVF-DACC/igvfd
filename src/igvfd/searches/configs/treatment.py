@@ -25,5 +25,17 @@ def treatment():
             'status': {
                 'title': 'Status'
             },
+            'amount': {
+                'title': 'Amount'
+            },
+            'amount_units': {
+                'title': 'Amount Units'
+            },
+            'duration': {
+                'title': 'Duration'
+            },
+            'duration_units': {
+                'title': 'Duration Units'
+            },
         }
     }
