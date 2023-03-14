@@ -120,5 +120,53 @@
         "upper_bound_age": 20,
         "age_units": "day",
         "embryonic": true
+    },
+    {
+        "uuid": "03677dc2-b6ff-11ed-afa1-0242ac120002",
+        "accession": "IGVFSM0005DDDD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tissue_part_of_whole_organism_sorted_fraction_1"
+        ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "status": "released",
+        "taxa": "Mus musculus",
+        "part_of": "IGVFSM0000KASA",
+        "source": "/labs/j-michael-cherry/",
+        "nih_institutional_certification": "NICHD1442",
+        "preservation_method": "cryopreservation",
+        "donors": [
+            "05c0a52c-f861-4057-b3eb-751624bdff37"
+        ],
+        "lower_bound_age": 19,
+        "upper_bound_age": 20,
+        "age_units": "day",
+        "embryonic": true,
+        "sorted_fraction": "/tissue/8183c760-0304-11ed-b939-0242ac120002/"
+    },
+    {
+        "uuid": "56f89d18-b6ff-11ed-afa1-0242ac120002",
+        "accession": "IGVFSM0006DDDD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tissue_part_of_whole_organism_sorted_fraction_2"
+        ],
+        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "status": "released",
+        "taxa": "Mus musculus",
+        "part_of": "IGVFSM0000KASA",
+        "source": "/labs/j-michael-cherry/",
+        "nih_institutional_certification": "NICHD1442",
+        "preservation_method": "cryopreservation",
+        "donors": [
+            "05c0a52c-f861-4057-b3eb-751624bdff37"
+        ],
+        "lower_bound_age": 19,
+        "upper_bound_age": 20,
+        "age_units": "day",
+        "embryonic": true,
+        "sorted_fraction": "/tissue/8183c760-0304-11ed-b939-0242ac120002/"
     }
 ]

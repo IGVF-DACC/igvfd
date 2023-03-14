@@ -1,5 +1,9 @@
 ## Changelog for *`sample.json`*
 
+### Release v7
+
+* Add `sorted_fraction`.
+
 ### Release v6
 
 * Add `file_sets`.
