@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 6
+
+* Add `sorted_fraction_detail`.
+
 ### Minor changes since schema version 5
 
 * Add `sorted_fraction`.

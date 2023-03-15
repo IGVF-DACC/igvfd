@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 8
+
+* Add `sorted_fraction_detail`.
+
 ### Minor changes since schema version 7
 
 * Add `sorted_fraction`.
