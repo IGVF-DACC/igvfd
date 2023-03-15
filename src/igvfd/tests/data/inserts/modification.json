@@ -22,8 +22,8 @@
         "cas": "dCas9",
         "fused_domain": "ANTI-FLAG",
         "modality": "localizing",
-        "gene": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
+        "tagged_protein": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
         "status": "in progress",
-        "product_id": "addgene:000567"
+        "product_id": "addgene:111555"
     }
 ]
