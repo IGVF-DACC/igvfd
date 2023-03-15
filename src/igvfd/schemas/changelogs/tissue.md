@@ -1,6 +1,6 @@
 ## Changelog for *`tissue.json`*
 
-### Schema version 9
+### Schema version 10
 
 * Add `sorted_fraction_detail`.
 

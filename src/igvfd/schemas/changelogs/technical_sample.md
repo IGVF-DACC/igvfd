@@ -1,6 +1,6 @@
 ## Changelog for *`technical_sample.json`*
 
-### Schema version 5
+### Schema version 6
 
 * Add `sorted_fraction_detail`.
 
