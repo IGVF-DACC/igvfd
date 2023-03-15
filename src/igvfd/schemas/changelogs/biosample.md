@@ -2,6 +2,7 @@
 
 ### Release v6
 
+* Add `sorted_fraction`.
 * Add `file_sets`.
 
 ### Release v2
