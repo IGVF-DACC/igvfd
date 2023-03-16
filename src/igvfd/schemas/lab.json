@@ -63,6 +63,13 @@
             "type": "string",
             "default": "",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
+        },
+        "institute_label_de": {
+            "title": "Institute Label de",
+            "description": "An abbreviation for the institute the lab is associated with.",
+            "type": "string",
+            "default": "",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
         }
     },
     "boost_values": {
