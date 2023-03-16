@@ -65,3 +65,9 @@ def test_tissue_upgrade_8_9(upgrader, tissue_v8):
     value = upgrader.upgrade('tissue', tissue_v8, current_version='8', target_version='9')
     assert value['accession'] == 'IGVFSM0333TTSA'
     assert value['schema_version'] == '9'
+
+
+def test_tissue_upgrade_9_10(upgrader, tissue_v9):
+    value = upgrader.upgrade('tissue', tissue_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert value['sorted_fraction_detail'] == 'Default upgrade text: please add more details about sorted_fraction, see sample.json for description.'
