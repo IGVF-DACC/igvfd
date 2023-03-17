@@ -574,7 +574,6 @@ def load_test_data(app):
         'REMOTE_USER': 'TEST',
     }
     testapp = TestApp(app, environ)
-
     from pkg_resources import resource_filename
     inserts = resource_filename('igvfd', 'tests/data/inserts/')
     docsdir = [resource_filename('igvfd', 'tests/data/documents/')]

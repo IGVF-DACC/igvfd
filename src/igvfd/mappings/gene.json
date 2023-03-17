@@ -1,0 +1,274 @@
+{
+    "hash": "d2b4ee254b6b9abd02f2cff4d889ea04",
+    "index_name": "gene_d2b4ee25",
+    "item_type": "gene",
+    "mapping": {
+        "dynamic_templates": [
+            {
+                "template_principals_allowed": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "principals_allowed.*"
+                }
+            },
+            {
+                "template_unique_keys": {
+                    "mapping": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "unique_keys.*"
+                }
+            },
+            {
+                "template_links": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "links.*"
+                }
+            },
+            {
+                "strings": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string"
+                }
+            },
+            {
+                "integers": {
+                    "mapping": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "long"
+                    },
+                    "match_mapping_type": "long"
+                }
+            }
+        ],
+        "properties": {
+            "_all": {
+                "analyzer": "snovault_index_analyzer",
+                "search_analyzer": "snovault_search_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "audit": {
+                "properties": {
+                    "ERROR": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "INTERNAL_ACTION": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "NOT_COMPLIANT": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "WARNING": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "embedded": {
+                "properties": {
+                    "@id": {
+                        "type": "keyword"
+                    },
+                    "@type": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "aliases": {
+                        "type": "keyword"
+                    },
+                    "creation_timestamp": {
+                        "type": "keyword"
+                    },
+                    "dbxrefs": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "description": {
+                        "type": "text"
+                    },
+                    "geneid": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "locations": {
+                        "properties": {
+                            "assembly": {
+                                "type": "keyword"
+                            },
+                            "chromosome": {
+                                "type": "keyword"
+                            },
+                            "end": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            },
+                            "start": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "name": {
+                        "type": "keyword"
+                    },
+                    "notes": {
+                        "type": "text"
+                    },
+                    "schema_version": {
+                        "type": "keyword"
+                    },
+                    "status": {
+                        "type": "keyword"
+                    },
+                    "submitted_by": {
+                        "type": "keyword"
+                    },
+                    "submitter_comment": {
+                        "type": "keyword"
+                    },
+                    "summary": {
+                        "type": "keyword"
+                    },
+                    "symbol": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "synonyms": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "taxa": {
+                        "type": "keyword"
+                    },
+                    "title": {
+                        "type": "keyword"
+                    },
+                    "uuid": {
+                        "type": "keyword"
+                    }
+                },
+                "type": "object"
+            },
+            "embedded_uuids": {
+                "type": "keyword"
+            },
+            "index_name": {
+                "type": "keyword"
+            },
+            "item_type": {
+                "copy_to": "_all",
+                "type": "keyword"
+            },
+            "linked_uuids": {
+                "type": "keyword"
+            },
+            "object": {
+                "enabled": false,
+                "type": "object"
+            },
+            "paths": {
+                "type": "keyword"
+            },
+            "properties": {
+                "enabled": false,
+                "type": "object"
+            },
+            "propsheets": {
+                "enabled": false,
+                "type": "object"
+            },
+            "tid": {
+                "type": "keyword"
+            },
+            "uuid": {
+                "copy_to": "_all",
+                "type": "keyword"
+            }
+        }
+    }
+}

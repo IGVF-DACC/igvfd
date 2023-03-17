@@ -1,4 +1,4 @@
-__version__ = '2.0.0'
+__version__ = '3.0.0'
 
 
 import igvfd.schema_formats  # needed to import before snovault to add FormatCheckers
@@ -250,6 +250,8 @@ def main(global_config, **local_config):
 
     if asbool(settings.get('testing', False)):
         config.include('.tests.testing_views')
+
+    config.include('igvfd.mappings.register')
 
     app = config.make_wsgi_app()
 

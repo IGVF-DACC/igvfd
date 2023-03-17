@@ -1,0 +1,202 @@
+{
+    "hash": "e28127ae3d1d9802d2d4ad9d612b24f2",
+    "index_name": "test_igvf_item_e28127ae",
+    "item_type": "test_igvf_item",
+    "mapping": {
+        "dynamic_templates": [
+            {
+                "template_principals_allowed": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "principals_allowed.*"
+                }
+            },
+            {
+                "template_unique_keys": {
+                    "mapping": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "unique_keys.*"
+                }
+            },
+            {
+                "template_links": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string",
+                    "path_match": "links.*"
+                }
+            },
+            {
+                "strings": {
+                    "mapping": {
+                        "type": "keyword"
+                    },
+                    "match_mapping_type": "string"
+                }
+            },
+            {
+                "integers": {
+                    "mapping": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "long"
+                    },
+                    "match_mapping_type": "long"
+                }
+            }
+        ],
+        "properties": {
+            "_all": {
+                "analyzer": "snovault_index_analyzer",
+                "search_analyzer": "snovault_search_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "audit": {
+                "properties": {
+                    "ERROR": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "INTERNAL_ACTION": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "NOT_COMPLIANT": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "WARNING": {
+                        "properties": {
+                            "category": {
+                                "type": "keyword"
+                            },
+                            "detail": {
+                                "index": "true",
+                                "type": "text"
+                            },
+                            "level": {
+                                "type": "integer"
+                            },
+                            "level_name": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "embedded": {
+                "properties": {
+                    "@id": {
+                        "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "@type": {
+                        "type": "keyword"
+                    },
+                    "accession": {
+                        "type": "keyword"
+                    },
+                    "description": {
+                        "type": "text"
+                    },
+                    "status": {
+                        "type": "keyword"
+                    },
+                    "summary": {
+                        "type": "keyword"
+                    }
+                },
+                "type": "object"
+            },
+            "embedded_uuids": {
+                "type": "keyword"
+            },
+            "index_name": {
+                "type": "keyword"
+            },
+            "item_type": {
+                "copy_to": "_all",
+                "type": "keyword"
+            },
+            "linked_uuids": {
+                "type": "keyword"
+            },
+            "object": {
+                "enabled": false,
+                "type": "object"
+            },
+            "paths": {
+                "type": "keyword"
+            },
+            "properties": {
+                "enabled": false,
+                "type": "object"
+            },
+            "propsheets": {
+                "enabled": false,
+                "type": "object"
+            },
+            "tid": {
+                "type": "keyword"
+            },
+            "uuid": {
+                "copy_to": "_all",
+                "type": "keyword"
+            }
+        }
+    }
+}

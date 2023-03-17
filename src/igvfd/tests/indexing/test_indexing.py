@@ -6,28 +6,22 @@ import time
 pytestmark = [pytest.mark.indexing]
 
 
-def wait_for_indexing():
-    time.sleep(30)
-
-
-def test_indexing_simple_igvfd(testapp, workbook):
+def test_indexing_simple_igvfd(testapp, workbook, poll_until_indexing_is_done):
     response = testapp.post_json('/testing-post-put-patch/', {'required': ''})
     response = testapp.post_json('/testing-post-put-patch/', {'required': ''})
-    wait_for_indexing()
+    poll_until_indexing_is_done(testapp)
     response = testapp.get('/search/?type=TestingPostPutPatch')
     assert len(response.json['@graph']) == 2
 
 
-def test_indexing_updated_name_invalidates_dependents(testapp, dummy_request, workbook):
+def test_indexing_updated_name_invalidates_dependents(testapp, dummy_request, workbook, poll_until_indexing_is_done):
     response = testapp.get('/search/?type=User&lab=/labs/j-michael-cherry/')
     assert len(response.json['@graph']) >= 22
-    iq = dummy_request.registry['INVALIDATION_QUEUE']
     testapp.patch_json(
         '/labs/j-michael-cherry/',
         {'name': 'some-other-name'}
     )
-    print('Wait for queue to drain')
-    iq.wait_for_queue_to_drain()
+    poll_until_indexing_is_done(testapp)
     response = testapp.get('/search/?type=User&lab=/labs/some-other-name/')
     assert len(response.json['@graph']) >= 22
     testapp.get('/search/?type=User&lab=/labs/j-michael-cherry/', status=404)
@@ -35,10 +29,7 @@ def test_indexing_updated_name_invalidates_dependents(testapp, dummy_request, wo
         '/labs/some-other-name/',
         {'name': 'j-michael-cherry'}
     )
-    print('Wait for queue to drain')
-    iq.wait_for_queue_to_drain()
-    print('Wait for indexing')
-    wait_for_indexing()
+    poll_until_indexing_is_done(testapp)
     testapp.get('/search/?type=User&lab=/labs/some-other-lab/', status=404)
     response = testapp.get('/search/?type=User&lab=/labs/j-michael-cherry/')
     assert len(response.json['@graph']) >= 22

@@ -16,6 +16,9 @@ workflows:
       - igvfd-pytest:
           requires:
             - lint
+      - igvfd-check-opensearch-mappings:
+          requires:
+            - lint
 
 jobs:
   lint:
@@ -93,3 +96,26 @@ jobs:
               docker-compose run --no-deps -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN pyramid coveralls
       - store_test_results:
           path: test-results
+
+  igvfd-check-opensearch-mappings:
+    machine:
+      image: ubuntu-2004:202111-02
+      docker_layer_caching: true
+    resource_class: medium
+    working_directory: ~/igvfd
+    steps:
+      - checkout
+      - run:
+          name: Build Docker images
+          command: |
+              docker-compose -f docker-compose.yml build
+      - run:
+          name: Set folder permissions for mounted volume
+          command: |
+              sudo useradd -u 1444 igvfd
+              sudo usermod -a -G igvfd circleci
+              sudo chown -R circleci:igvfd ./
+      - run:
+          name: Check Opensearch mappings for diff
+          command: |
+              docker-compose run pyramid /scripts/pyramid/diff-opensearch-mappings.sh
