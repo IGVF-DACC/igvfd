@@ -166,3 +166,34 @@ def tissue_v10(tissue):
         'notes': ''
     })
     return item
+
+
+@pytest.fixture
+def tissue_unsorted_parent(testapp, lab, source, award, rodent_donor, sample_term_adrenal_gland):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id'],
+        'taxa': 'Mus musculus',
+        'donors': [rodent_donor['@id']],
+        'biosample_term': sample_term_adrenal_gland['@id'],
+        'embryonic': True
+    }
+    return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def biosample_sorted_child(
+        testapp, lab, award, source, tissue_unsorted_parent, human_donor, sample_term_adrenal_gland):
+    item = {
+        'donors': [human_donor['@id']],
+        'taxa': 'Homo sapiens',
+        'biosample_term': sample_term_adrenal_gland['@id'],
+        'source': source['@id'],
+        'sorted_fraction': tissue_unsorted_parent['@id'],
+        'sorted_fraction_detail': 'FACS bin 0-10% expression of FEN',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'nih_institutional_certification': 'NIC000ABCD'
+    }
+    return testapp.post_json('/tissue', item, status=201).json['@graph'][0]

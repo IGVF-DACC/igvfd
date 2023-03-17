@@ -106,7 +106,7 @@
         "sorted_fraction": {
             "title": "Sorted Fraction",
             "description": "Links to a larger sample from which this sample was obtained through sorting.",
-            "comment": "The parent sample is expected to have similar properties to it's fraction.",
+            "comment": "The parent sample is expected to have similar properties to its fraction.",
             "type": "string",
             "linkTo": "Sample"
         },
