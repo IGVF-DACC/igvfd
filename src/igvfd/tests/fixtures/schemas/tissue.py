@@ -145,3 +145,18 @@ def tissue_v8(tissue):
         'accession': 'IGVFSM333TTS'
     })
     return item
+
+
+@pytest.fixture
+def biosample_sorted_child(
+        testapp, lab, award, source, tissue, human_donor, sample_term_adrenal_gland):
+    item = {
+        'donors': [human_donor['@id']],
+        'taxa': 'Homo sapiens',
+        'biosample_term': sample_term_adrenal_gland['@id'],
+        'source': source['@id'],
+        'sorted_fraction': tissue['@id'],
+        'award': award['@id'],
+        'lab': lab['@id']
+    }
+    return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
