@@ -1,6 +1,6 @@
 {
-    "hash": "60d3d653171b2f66e3f6fb018cde11cc",
-    "index_name": "measurement_set_60d3d653",
+    "hash": "9b354e02a386cffb714e0b010804a434",
+    "index_name": "measurement_set_9b354e02",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -199,6 +199,15 @@
                         "store": true,
                         "type": "float"
                     },
+                    "multiome_size": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
                     "notes": {
                         "type": "text"
                     },
@@ -207,6 +216,9 @@
                     },
                     "protocol": {
                         "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "related_multiome_datasets": {
                         "type": "keyword"
                     },
                     "revoke_detail": {

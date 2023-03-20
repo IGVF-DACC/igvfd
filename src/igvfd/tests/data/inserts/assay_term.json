@@ -46,5 +46,11 @@
             "93b2cefa-9dfc-5e94-aa5e-faff044f46c1"
         ],
         "uuid": "c19f5da8-1aa5-4749-456b-cee38f5c6c99"
+    },
+    {
+        "term_id": "OBI:0002764",
+        "term_name": "single-cell ATAC-seq",
+        "status": "released",
+        "uuid": "99d4f728-edf2-4c5c-9b89-e280a396ce73"
     }
 ]
