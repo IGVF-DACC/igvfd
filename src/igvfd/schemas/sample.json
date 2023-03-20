@@ -36,15 +36,19 @@
                 "product_id"
             ],
             "comment": "Sample with lot_id must include product_id."
+        },
+        "sorted_fraction": {
+            "required": [
+                "sorted_fraction_detail"
+            ],
+            "comment": "Sample with sorted_fraction must include sorted_fraction_detail."
+        },
+        "sorted_fraction_detail": {
+            "required": [
+                "sorted_fraction"
+            ],
+            "comment": "Sample with sorted_fraction_deatil must include sorted_fraction."
         }
-    },
-    "dependentRequired": {
-        "sorted_fraction": [
-            "sorted_fraction_detail"
-        ],
-        "sorted_fraction_detail": [
-            "sorted_fraction"
-        ]
     },
     "properties": {
         "schema_version": {
