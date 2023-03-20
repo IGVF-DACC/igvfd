@@ -1,6 +1,6 @@
 {
-    "hash": "f3755d05b2e834df2db986205744264d",
-    "index_name": "tissue_f3755d05",
+    "hash": "5487bb63b95e5662e62cd5a3e49a27c3",
+    "index_name": "tissue_5487bb63",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -266,6 +266,9 @@
                         "type": "keyword"
                     },
                     "sorted_fraction": {
+                        "type": "keyword"
+                    },
+                    "sorted_fraction_detail": {
                         "type": "keyword"
                     },
                     "source": {

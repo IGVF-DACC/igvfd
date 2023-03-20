@@ -1,6 +1,6 @@
 {
-    "hash": "2aa60262acd0b096eb4489ca8fcf52c6",
-    "index_name": "in_vitro_system_2aa60262",
+    "hash": "c9de5c6e8b694baee80c65bccffd26f4",
+    "index_name": "in_vitro_system_c9de5c6e",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -266,6 +266,9 @@
                         "type": "keyword"
                     },
                     "sorted_fraction": {
+                        "type": "keyword"
+                    },
+                    "sorted_fraction_detail": {
                         "type": "keyword"
                     },
                     "source": {

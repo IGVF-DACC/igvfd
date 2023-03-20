@@ -1,6 +1,6 @@
 {
-    "hash": "df9dd2c8408e209b5962684ae4029362",
-    "index_name": "whole_organism_df9dd2c8",
+    "hash": "ec102d3b7f4d251e1da74bb18f2a81bf",
+    "index_name": "whole_organism_ec102d3b",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -251,6 +251,9 @@
                         "type": "keyword"
                     },
                     "sorted_fraction": {
+                        "type": "keyword"
+                    },
+                    "sorted_fraction_detail": {
                         "type": "keyword"
                     },
                     "source": {
