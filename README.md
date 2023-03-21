@@ -82,4 +82,4 @@ Note if you are adding a new item type, you must add a template JSON file to the
 $ echo '{"index_name": "", "item_type": ""}' > src/igvfd/mappings/new_type.json
 ```
 
-Once the empty template exists the correct values will be filled in by the `generate-opensearch-mappings.sh` script.
+Once the empty JSON template exists the correct values will be filled in by the `generate-opensearch-mappings.sh` script.
