@@ -75,3 +75,11 @@ $ docker compose run pyramid /scripts/pyramid/generate-opensearch-mappings.sh
 ```
 
 This will regenerate the mappings and allow you to see any differences with `git diff`. Commit the changes and push.
+
+Note if you are adding a new item type, you must add a template JSON file to the `mappings/` folder with the same name as the new type (e.g. `access_key.json`). The template file requires the `index_name` and `item_type` keys, but the values can be empty:
+
+```bash
+$ echo '{"index_name": "", "item_type": ""}' > src/igvfd/mappings/new_type.json
+```
+
+Once the empty template exists the correct values will be filled in by the `generate-opensearch-mappings.sh` script.
