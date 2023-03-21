@@ -72,3 +72,19 @@ def test_technical_sample_technical_sample_term(
         '/technical_sample',
         item_with_term)
     assert res.status_code == 201
+
+
+def test_sorted_fraction_detail_dependency(testapp, technical_sample):
+    res = testapp.patch_json(
+        technical_sample['@id'],
+        {'sorted_fraction': 'sorted fraction id'}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        technical_sample['@id'],
+        {'sorted_fraction_detail': 'I am a sorted fraction detail.'}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        technical_sample['@id'],
+        {'sorted_fraction': 'sorted fraction id',
+         'sorted_fraction_detail': 'I am a sorted fraction detail.'})
+    assert res.status_code == 200
