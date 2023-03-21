@@ -1,5 +1,9 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Schema version 7
+
+* Remove `parents`.
+
 ### Minor changes since schema version 6
 
 * Add `dbxrefs`.

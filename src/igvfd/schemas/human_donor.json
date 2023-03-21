@@ -44,12 +44,53 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "7"
+            "default": "8"
         },
-        "parents": {
+        "related_donors": {
+            "title": "Related Donors",
+            "description": "Familial relations of this donor.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
             "items": {
-                "linkTo": "HumanDonor",
-                "type": "string"
+                "title": "Related Donors",
+                "description": "Familial relations of this donor.",
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                    "donor",
+                    "relationship_type"
+                ],
+                "properties": {
+                    "donor": {
+                        "title": "Related Donor Identifier",
+                        "description": "An identifier for the related donor.",
+                        "type": "string",
+                        "linkTo": "HumanDonor"
+                    },
+                    "relationship_type": {
+                        "title": "Relationship Type",
+                        "description": "A descriptive term for the related donor’s relationship to this donor.",
+                        "comment": "List of enums comes from http://genealogy-quest.com/glossary-terms/relationship-terms/.",
+                        "type": "string",
+                        "enum": [
+                            "aunt",
+                            "child",
+                            "first cousin once removed",
+                            "first cousin",
+                            "fraternal twin",
+                            "grandparent",
+                            "half-sibling",
+                            "niece",
+                            "nephew",
+                            "parent",
+                            "paternal twin",
+                            "sibling",
+                            "second cousin",
+                            "uncle"
+                        ]
+                    }
+                }
             }
         },
         "ethnicities": {

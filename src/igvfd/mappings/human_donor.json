@@ -1,6 +1,6 @@
 {
-    "hash": "cb4e9a8fa19ff59bccced2c459a0973e",
-    "index_name": "human_donor_cb4e9a8f",
+    "hash": "0671084a0dafd2fa0428d9876f8b5e08",
+    "index_name": "human_donor_0671084a",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -185,14 +185,22 @@
                     "notes": {
                         "type": "text"
                     },
-                    "parents": {
-                        "type": "keyword"
-                    },
                     "phenotypic_features": {
                         "type": "keyword"
                     },
                     "references": {
                         "type": "keyword"
+                    },
+                    "related_donors": {
+                        "properties": {
+                            "donor": {
+                                "type": "keyword"
+                            },
+                            "relationship_type": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "revoke_detail": {
                         "type": "keyword"

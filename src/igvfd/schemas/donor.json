@@ -68,21 +68,6 @@
                 "unspecified"
             ]
         },
-        "parents": {
-            "title": "Parents",
-            "description": "Biological parents of this donor",
-            "comment": "A list of parents as it applies to the experiment.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Parent",
-                "description": "Biological parent of this donor.",
-                "type": "string",
-                "linkTo": "Donor"
-            },
-            "maxItems": 2
-        },
         "phenotypic_features": {
             "title": "Phenotypic Features",
             "description": "A list of associated phenotypic features of the donor",

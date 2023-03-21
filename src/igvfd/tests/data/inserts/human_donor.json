@@ -66,9 +66,6 @@
         ],
         "sex": "female",
         "taxa": "Homo sapiens",
-        "parents": [
-            "a1abeff6-8024-41d3-a713-5d22c86ffc57"
-        ],
         "collections": [
             "ENCODE"
         ]
@@ -85,7 +82,17 @@
             "African American"
         ],
         "sex": "female",
-        "taxa": "Homo sapiens"
+        "taxa": "Homo sapiens",
+        "related_donors": [
+            {
+                "donor": "a1abeff6-8024-41d3-a713-5d22c86ffc57",
+                "relationship_type": "aunt"
+            },
+            {
+                "donor": "38d6630f-5b87-47a1-ae7d-174eab5758d2",
+                "relationship_type": "sibling"
+            }
+        ]
     },
     {
         "uuid": "e37bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
