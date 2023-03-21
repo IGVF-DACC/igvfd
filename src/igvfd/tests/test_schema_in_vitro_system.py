@@ -36,10 +36,10 @@ def test_sorted_fraction(testapp, in_vitro_organoid, in_vitro_differentiated_cel
     assert res.status_code == 422
 
 
-def test_sorted_fraction_detail_dependency(testapp, in_vitro_organoid):
+def test_sorted_fraction_detail_dependency(testapp, in_vitro_organoid, primary_cell):
     res = testapp.patch_json(
         in_vitro_organoid['@id'],
-        {'sorted_fraction': 'sorted fraction id'}, expect_errors=True)
+        {'sorted_fraction': primary_cell['@id']}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_organoid['@id'],
@@ -47,6 +47,6 @@ def test_sorted_fraction_detail_dependency(testapp, in_vitro_organoid):
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_organoid['@id'],
-        {'sorted_fraction': 'sorted fraction id',
+        {'sorted_fraction': primary_cell['@id'],
          'sorted_fraction_detail': 'I am a sorted fraction detail.'})
     assert res.status_code == 200

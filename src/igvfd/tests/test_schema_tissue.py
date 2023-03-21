@@ -119,10 +119,10 @@ def test_ccf_id(testapp, tissue, human_tissue):
     assert res.status_code == 422
 
 
-def test_sorted_fraction_detail_dependency(testapp, tissue):
+def test_sorted_fraction_detail_dependency(testapp, tissue, primary_cell):
     res = testapp.patch_json(
         tissue['@id'],
-        {'sorted_fraction': 'sorted fraction id'}, expect_errors=True)
+        {'sorted_fraction': primary_cell['@id']}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         tissue['@id'],
@@ -130,6 +130,6 @@ def test_sorted_fraction_detail_dependency(testapp, tissue):
     assert res.status_code == 422
     res = testapp.patch_json(
         tissue['@id'],
-        {'sorted_fraction': 'sorted fraction id',
+        {'sorted_fraction': primary_cell['@id'],
          'sorted_fraction_detail': 'I am a sorted fraction detail.'})
     assert res.status_code == 200

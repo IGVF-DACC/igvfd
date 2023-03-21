@@ -53,10 +53,10 @@ def test_collections(whole_organism, testapp):
     assert res.status_code == 422
 
 
-def test_sorted_fraction_detail_dependency(testapp, whole_organism):
+def test_sorted_fraction_detail_dependency(testapp, whole_organism, primary_cell):
     res = testapp.patch_json(
         whole_organism['@id'],
-        {'sorted_fraction': 'sorted fraction id'}, expect_errors=True)
+        {'sorted_fraction': primary_cell['@id']}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         whole_organism['@id'],
@@ -64,6 +64,6 @@ def test_sorted_fraction_detail_dependency(testapp, whole_organism):
     assert res.status_code == 422
     res = testapp.patch_json(
         whole_organism['@id'],
-        {'sorted_fraction': 'sorted fraction id',
+        {'sorted_fraction': primary_cell['@id'],
          'sorted_fraction_detail': 'I am a sorted fraction detail.'})
     assert res.status_code == 200
