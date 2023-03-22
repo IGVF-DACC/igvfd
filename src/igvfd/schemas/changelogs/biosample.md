@@ -1,12 +1,16 @@
 ## Changelog for *`biosample.json`*
 
-### Minor changes since Release v6
+
+### Minor changes since Release v7
 
 * Add `sorted_fraction_detail`.
 
-### Release v6
+### Release v7
 
 * Add `sorted_fraction`.
+
+### Release v6
+
 * Add `file_sets`.
 
 ### Release v2
