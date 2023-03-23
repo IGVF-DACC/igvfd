@@ -313,8 +313,7 @@
             "type": "string",
             "enum": [
                 "Homo sapiens",
-                "Mus musculus",
-                "Saccharomyces"
+                "Mus musculus"
             ]
         }
     }
