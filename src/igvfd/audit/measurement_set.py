@@ -10,8 +10,9 @@ from .formatter import (
 
 @audit_checker('MeasurementSet', frame='object')
 def audit_related_multiome_datasets(value, system):
-    '''MeasurementSet objects included in `related_multiome_datasets` should
-    have a specified `multiome_size` of the same size.'''
+    '''MeasurementSet objects with a specified `multiome_size` should have
+    links to other MeasurementSet objects specified in `related_multiome_datasets`
+    with the same `multiome_size` and `samples`.'''
     audits = []
     detail = ''
     related_multiome_datasets = value.get('related_multiome_datasets', [])
