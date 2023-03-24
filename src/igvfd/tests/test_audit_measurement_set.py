@@ -77,7 +77,7 @@ def test_audit_related_multiome_datasets(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'samples': [in_vitro_cell_line['@id']]
+            'samples': [primary_cell['@id'], in_vitro_cell_line['@id']]
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
@@ -92,3 +92,4 @@ def test_audit_related_multiome_datasets(
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    assert res.json['audit'].get('WARNING', []) == []
