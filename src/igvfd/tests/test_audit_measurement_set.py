@@ -38,7 +38,7 @@ def test_audit_related_multiome_datasets(
     testapp.patch_json(
         measurement_set_multiome['@id'],
         {
-            'samples': [in_vitro_cell_line['@id']]
+            'samples': [primary_cell['@id'], in_vitro_cell_line['@id']]
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
@@ -49,7 +49,7 @@ def test_audit_related_multiome_datasets(
     testapp.patch_json(
         measurement_set_multiome_2['@id'],
         {
-            'samples': [in_vitro_cell_line['@id']]
+            'samples': [primary_cell['@id'], in_vitro_cell_line['@id']]
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
@@ -77,7 +77,7 @@ def test_audit_related_multiome_datasets(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'samples': [primary_cell['@id'], in_vitro_cell_line['@id']]
+            'samples': [in_vitro_cell_line['@id']]
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
@@ -85,3 +85,10 @@ def test_audit_related_multiome_datasets(
         error['category'] == 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
     )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'multiome_size': 3
+        }
+    )
+    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')

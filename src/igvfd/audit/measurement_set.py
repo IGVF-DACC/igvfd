@@ -25,32 +25,36 @@ def audit_related_multiome_datasets(value, system):
         yield AuditFailure('inconsistent multiome metadata', detail, level='WARNING')
     elif related_multiome_datasets and multiome_size:
         samples = value.get('samples')
+        samples_to_link = [audit_link(path_to_text(sample), sample) for sample in samples]
+        datasets_with_different_samples = []
+        datasets_with_different_multiome_sizes = []
         for dataset in related_multiome_datasets:
             dataset_object = system.get('request').embed(dataset, '@@object?skip_calculated=true')
-            different_samples = []
-            different_multiome_sizes = []
             if set(samples) != set(dataset_object.get('samples')):
-                different_samples.append(
-                    f"{audit_link(path_to_text(dataset), dataset)} which has associated sample(s): {dataset_object.get('samples')}")
+                related_samples_to_link = [audit_link(path_to_text(sample), sample)
+                                           for sample in dataset_object.get('samples')]
+                datasets_with_different_samples.append(
+                    f"{audit_link(path_to_text(dataset), dataset)} which has associated sample(s): {', '.join(related_samples_to_link)}")
             if dataset_object.get('multiome_size') is None:
-                different_multiome_sizes.append(
+                datasets_with_different_multiome_sizes.append(
                     f'{audit_link(path_to_text(dataset), dataset)} which does not have a specified multiome size')
-            elif multiome_size != dataset_object.get('multiome_size') and dataset_object.get('multiome_size') is not None:
-                different_multiome_sizes.append(
+            if multiome_size != dataset_object.get('multiome_size') and dataset_object.get('multiome_size') is not None:
+                datasets_with_different_multiome_sizes.append(
                     f"{audit_link(path_to_text(dataset), dataset)} which has a multiome size of: {dataset_object.get('multiome_size')}")
-        different_samples = ', '.join(different_samples)
-        different_multiome_sizes = ', '.join(different_multiome_sizes)
-        if different_samples:
+        datasets_with_different_samples = ', '.join(datasets_with_different_samples)
+        datasets_with_different_multiome_sizes = ', '.join(datasets_with_different_multiome_sizes)
+        samples_to_link = ', '.join(samples_to_link)
+        if datasets_with_different_samples:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'has associated sample(s) {samples} does not have the same associated sample(s) '
-                f'as related multiome MeasurementSet object(s): {different_samples}'
+                f'MeasurementSet {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has associated sample(s): {samples_to_link} which are not the same associated sample(s) '
+                f'of related multiome MeasurementSet object(s): {datasets_with_different_samples}'
             )
             yield AuditFailure('inconsistent multiome metadata', detail, level='WARNING')
-        if different_multiome_sizes:
+        if datasets_with_different_multiome_sizes:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'MeasurementSet {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a specified multiome size of {multiome_size}, which does not match the '
-                f'multiome size of related MeasurementSet object(s): {different_multiome_sizes}'
+                f'multiome size of related MeasurementSet object(s): {datasets_with_different_multiome_sizes}'
             )
             yield AuditFailure('inconsistent multiome metadata', detail, level='WARNING')
