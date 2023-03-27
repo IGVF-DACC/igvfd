@@ -143,4 +143,3 @@ def sample_10_11(value, system):
     # https://igvf.atlassian.net/browse/IGVF-486
     if value['sorted_fraction']:
         value['sorted_fraction_detail'] = 'Default upgrade text: please add more details about sorted_fraction, see sample.json for description.'
-
