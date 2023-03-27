@@ -52,3 +52,13 @@ def technical_sample_v4(tissue):
         'accession': 'IGVFSM111TTT'
     })
     return item
+
+
+@pytest.fixture
+def technical_sample_v5(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '5',
+        'sorted_fraction': '/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/'
+    })
+    return item

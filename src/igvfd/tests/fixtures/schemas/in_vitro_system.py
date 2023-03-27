@@ -85,3 +85,13 @@ def in_vitro_system_v4(in_vitro_organoid):
         'classification': 'differentiated tissue'
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v5(in_vitro_organoid):
+    item = in_vitro_organoid.copy()
+    item.update({
+        'schema_version': '5',
+        'sorted_fraction': '/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/'
+    })
+    return item

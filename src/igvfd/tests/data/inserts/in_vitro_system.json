@@ -109,7 +109,8 @@
         "collections": [
             "ENCODE"
         ],
-        "sorted_fraction": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/"
+        "sorted_fraction": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
+        "sorted_fraction_detail": "test insert description"
     },
     {
         "uuid": "390c2a4e-b700-11ed-afa1-0242ac120002",
@@ -154,6 +155,7 @@
         "collections": [
             "ENCODE"
         ],
-        "sorted_fraction": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/"
+        "sorted_fraction": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
+        "sorted_fraction_detail": "test insert description"
     }
 ]

@@ -1,6 +1,6 @@
 {
-    "hash": "ebb7b8737ddac06f0718c2136abffc82",
-    "index_name": "primary_cell_ebb7b873",
+    "hash": "c38d117e13eb72411f2b3c01e8e491f2",
+    "index_name": "primary_cell_c38d117e",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -257,6 +257,9 @@
                         "type": "keyword"
                     },
                     "sorted_fraction": {
+                        "type": "keyword"
+                    },
+                    "sorted_fraction_detail": {
                         "type": "keyword"
                     },
                     "source": {

@@ -1,6 +1,6 @@
 {
-    "hash": "78a774a2e503c439cf7a8ef51a470eb7",
-    "index_name": "technical_sample_78a774a2",
+    "hash": "cdcc588c9ff42c7c91353bb2700cefb3",
+    "index_name": "technical_sample_cdcc588c",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -203,6 +203,9 @@
                         "type": "keyword"
                     },
                     "sorted_fraction": {
+                        "type": "keyword"
+                    },
+                    "sorted_fraction_detail": {
                         "type": "keyword"
                     },
                     "source": {
