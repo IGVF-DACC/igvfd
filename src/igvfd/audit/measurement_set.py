@@ -10,20 +10,27 @@ from .formatter import (
 
 @audit_checker('MeasurementSet', frame='object')
 def audit_related_multiome_datasets(value, system):
-    '''MeasurementSet objects with a specified `multiome_size` should have
-    links to other MeasurementSet objects specified in `related_multiome_datasets`
-    with the same `multiome_size` and `samples`.'''
+    '''MeasurementSet objects with a specified `multiome_size` should have the
+    same amount of links to other MeasurementSet objects (minus itself) specified
+    in `related_multiome_datasets` with the same `multiome_size` and `samples`.'''
     detail = ''
     related_multiome_datasets = value.get('related_multiome_datasets', [])
     multiome_size = value.get('multiome_size')
     if related_multiome_datasets == [] and multiome_size:
         detail = (
             f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-            f'has a mutliome size of {multiome_size}, but no related '
+            f'has a multiome size of {multiome_size}, but no related '
             f'multiome MeasurementSet object(s).'
         )
         yield AuditFailure('inconsistent multiome metadata', detail, level='WARNING')
     elif related_multiome_datasets and multiome_size:
+        if len(related_multiome_datasets) != multiome_size - 1:
+            detail = (
+                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has a multiome size of {multiome_size}, but {len(related_multiome_datasets)} '
+                f'related multiome MeasurementSet object(s) when {multiome_size - 1} are expected.'
+            )
+            yield AuditFailure('inconsistent multiome metadata', detail, level='WARNING')
         samples = value.get('samples')
         samples_to_link = [audit_link(path_to_text(sample), sample) for sample in samples]
         datasets_with_different_samples = []
