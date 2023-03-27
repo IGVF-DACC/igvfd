@@ -5,7 +5,6 @@ def test_audit_related_multiome_datasets(
     testapp,
     primary_cell,
     in_vitro_cell_line,
-    tissue,
     measurement_set_multiome,
     measurement_set_multiome_2,
     measurement_set
