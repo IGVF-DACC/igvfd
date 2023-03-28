@@ -56,7 +56,7 @@ def test_constructs_alarms_indexer_initialize_invalidation_service_alarms(
             ],
             'Period': 300,
             'Statistic': 'Average',
-            'Threshold': 90
+            'Threshold': 95
         },
     )
     template.has_resource_properties(
@@ -152,7 +152,7 @@ def test_constructs_alarms_indexer_initialize_indexing_service_alarms(
             ],
             'Period': 300,
             'Statistic': 'Average',
-            'Threshold': 90
+            'Threshold': 95
         },
     )
     template.has_resource_properties(

@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Any
 
 
-CPU_ALARM_THRESHOLD_PERCENT = 90
+CPU_ALARM_THRESHOLD_PERCENT = 95
 
 MEMORY_ALARM_THRESHOLD_PERCENT = 80
 
