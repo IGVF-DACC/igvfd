@@ -1,5 +1,10 @@
 ## Changelog for *`biosample.json`*
 
+
+### Release v10
+
+* Remove `saccharomyces`.
+
 ### Release v9
 
 * Add `modification`.

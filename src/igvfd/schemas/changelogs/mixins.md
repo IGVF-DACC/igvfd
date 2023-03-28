@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Remove `saccharomyces`. (03/23/2023)
 * Add `revoke_detail` into `accession`. (8/30/2022)
 * Add `archived` to accessioned status. (8/14/2022)
 * Add `description`. (7/21/2022)
