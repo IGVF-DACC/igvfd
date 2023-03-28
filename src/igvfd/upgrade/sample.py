@@ -151,7 +151,6 @@ def sample_10_11(value, system):
 @upgrade_step('in_vitro_system', '6', '7')
 def biosample_6_7(value, system):
     # https://igvf.atlassian.net/browse/IGVF-511
-    if 'Saccharomyces' in value:
-        if value['taxa'] == 'Saccharomyces':
-            value['notes'] = 'Previous taxa: ' + value['taxa'] + 'is no longer valid.'
-            value['taxa'] = 'Mus musculus'
+    if value['taxa'] == 'Saccharomyces':
+        value['notes'] = 'Previous taxa: ' + value['taxa'] + 'is no longer valid.'
+        value['taxa'] = 'Mus musculus'
