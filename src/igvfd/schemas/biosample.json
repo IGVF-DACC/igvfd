@@ -87,30 +87,6 @@
                             }
                         }
                     }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "taxa": {
-                                "const": "Saccharomyces"
-                            }
-                        },
-                        "required": [
-                            "taxa"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "age_units": {
-                                "enum": [
-                                    "minute",
-                                    "hour",
-                                    "day",
-                                    "week"
-                                ]
-                            }
-                        }
-                    }
                 }
             ]
         }
