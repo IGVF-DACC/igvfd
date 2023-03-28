@@ -155,3 +155,13 @@ def tissue_v9(tissue):
         'sorted_fraction': '/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/'
     })
     return item
+
+
+@pytest.fixture
+def tissue_v10(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '10',
+        'taxa': 'Saccharomyces'
+    })
+    return item

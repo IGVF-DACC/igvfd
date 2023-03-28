@@ -168,3 +168,13 @@ def primary_cell_v9(primary_cell):
         'sorted_fraction': '/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/'
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v10(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '10',
+        'taxa': 'Saccharomyces'
+    })
+    return item
