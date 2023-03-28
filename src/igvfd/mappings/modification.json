@@ -1,7 +1,7 @@
 {
-    "hash": "08a3f4628a806b076b66ed617cde9323",
-    "index_name": "primary_cell_08a3f462",
-    "item_type": "primary_cell",
+    "hash": "68e50625eb2fe0318c352c355514c43c",
+    "index_name": "modification_68e50625",
+    "item_type": "modification",
     "mapping": {
         "dynamic_templates": [
             {
@@ -147,65 +147,25 @@
                         "copy_to": "_all",
                         "type": "keyword"
                     },
-                    "accession": {
-                        "copy_to": "_all",
-                        "type": "keyword"
-                    },
-                    "age": {
-                        "type": "keyword"
-                    },
-                    "age_units": {
-                        "type": "keyword"
-                    },
                     "aliases": {
-                        "type": "keyword"
-                    },
-                    "alternate_accessions": {
                         "type": "keyword"
                     },
                     "award": {
                         "type": "keyword"
                     },
-                    "biomarkers": {
-                        "type": "keyword"
-                    },
-                    "biosample_term": {
-                        "type": "keyword"
-                    },
-                    "collections": {
+                    "cas": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {
                         "type": "keyword"
                     },
-                    "date_obtained": {
-                        "type": "keyword"
-                    },
-                    "dbxrefs": {
-                        "type": "keyword"
-                    },
                     "description": {
                         "type": "text"
-                    },
-                    "disease_terms": {
-                        "type": "keyword"
                     },
                     "documents": {
                         "type": "keyword"
                     },
-                    "donors": {
-                        "type": "keyword"
-                    },
-                    "embryonic": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "boolean"
-                    },
-                    "file_sets": {
+                    "fused_domain": {
                         "type": "keyword"
                     },
                     "lab": {
@@ -214,70 +174,19 @@
                     "lot_id": {
                         "type": "keyword"
                     },
-                    "lower_bound_age": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "float"
-                    },
-                    "modification": {
-                        "type": "keyword"
-                    },
-                    "nih_institutional_certification": {
+                    "modality": {
                         "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
                     },
-                    "part_of": {
-                        "type": "keyword"
-                    },
-                    "passage_number": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "long"
-                    },
-                    "pooled_from": {
-                        "type": "keyword"
-                    },
                     "product_id": {
-                        "type": "keyword"
-                    },
-                    "revoke_detail": {
                         "type": "keyword"
                     },
                     "schema_version": {
                         "type": "keyword"
                     },
-                    "sex": {
-                        "type": "keyword"
-                    },
-                    "sorted_fraction": {
-                        "type": "keyword"
-                    },
-                    "sorted_fraction_detail": {
-                        "type": "keyword"
-                    },
                     "source": {
-                        "type": "keyword"
-                    },
-                    "starting_amount": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "float"
-                    },
-                    "starting_amount_units": {
                         "type": "keyword"
                     },
                     "status": {
@@ -292,23 +201,7 @@
                     "summary": {
                         "type": "keyword"
                     },
-                    "taxa": {
-                        "copy_to": "_all",
-                        "type": "keyword"
-                    },
-                    "treatments": {
-                        "type": "keyword"
-                    },
-                    "upper_bound_age": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "float"
-                    },
-                    "url": {
+                    "tagged_protein": {
                         "type": "keyword"
                     },
                     "uuid": {

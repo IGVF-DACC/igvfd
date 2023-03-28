@@ -1,5 +1,8 @@
 ## Changelog for *`biosample.json`*
 
+### Release v9
+
+* Add `modification`.
 
 ### Minor changes since Release v7
 
