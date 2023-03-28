@@ -127,6 +127,13 @@ def sample_9_10(value, system):
         value['accession'] = f'{accession_prefix}0{accession_suffix}A'
 
 
+@upgrade_step('in_vitro_system', '4', '5')
+def in_vitro_system_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-471
+    if value['classification'] == 'differentiated tissue':
+        value['classification'] = 'organoid'
+
+
 @upgrade_step('primary_cell', '9', '10')
 @upgrade_step('tissue', '9', '10')
 @upgrade_step('whole_organism', '8', '9')
