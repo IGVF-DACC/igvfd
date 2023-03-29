@@ -12,7 +12,7 @@ def test_batch_download_report_download(workbook, testapp):
     lines = res.body.splitlines()
     assert b'/report/' in lines[0]
     assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Title', b'Name', b'Project', b'Component', b'Status'
+        b'ID', b'UUID', b'Title', b'Name', b'Project', b'Component', b'Contact P.I.', b'Status'
     ]
     assert len(lines) == 27
 
