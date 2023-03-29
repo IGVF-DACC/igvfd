@@ -175,6 +175,7 @@ def primary_cell_v10(primary_cell):
     item = primary_cell.copy()
     item.update({
         'schema_version': '10',
-        'taxa': 'Saccharomyces'
+        'taxa': 'Saccharomyces',
+        'notes': ''
     })
     return item

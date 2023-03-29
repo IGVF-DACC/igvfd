@@ -137,6 +137,7 @@ def whole_organism_v9(whole_organism):
     item = whole_organism.copy()
     item.update({
         'schema_version': '9',
-        'taxa': 'Saccharomyces'
+        'taxa': 'Saccharomyces',
+        'notes': ''
     })
     return item

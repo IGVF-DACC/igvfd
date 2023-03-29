@@ -162,6 +162,7 @@ def tissue_v10(tissue):
     item = tissue.copy()
     item.update({
         'schema_version': '10',
-        'taxa': 'Saccharomyces'
+        'taxa': 'Saccharomyces',
+        'notes': ''
     })
     return item
