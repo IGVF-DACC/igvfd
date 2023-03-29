@@ -100,10 +100,10 @@
             }
         }
     },
-    "boost_values": {
-        "@type": 1.0,
-        "name": 1.0,
-        "title": 1.0
-    },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "name",
+        "title"
+    ],
     "changelog": "/profiles/changelogs/page.md"
 }

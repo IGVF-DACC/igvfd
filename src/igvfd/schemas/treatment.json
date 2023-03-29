@@ -220,10 +220,10 @@
             "type": "string"
         }
     },
-    "boost_values": {
-        "@type": 1.0,
-        "treatment_term_name": 1.0,
-        "treatment_type": 1.0
-    },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "treatment_term_name",
+        "treatment_type"
+    ],
     "changelog": "/profiles/changelogs/treatment.md"
 }

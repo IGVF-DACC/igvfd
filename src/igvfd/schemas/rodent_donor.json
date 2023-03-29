@@ -149,11 +149,11 @@
             }
         }
     },
-    "boost_values": {
-        "accession": 1.0,
-        "@type": 1.0,
-        "taxa": 1.0,
-        "strain": 1.0
-    },
+    "fuzzy_searchable_fields": [
+        "accession",
+        "@type",
+        "taxa",
+        "strain"
+    ],
     "changelog": "/profiles/changelogs/rodent_donor.md"
 }
