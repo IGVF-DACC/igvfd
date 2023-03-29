@@ -24,6 +24,14 @@ def test_age_unit_dependency(tissue, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         tissue['@id'],
+        {'taxa': 'Saccharomyces'}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'age_units': 'year'})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        tissue['@id'],
         {'taxa': 'Homo sapiens', 'age_units': 'year'})
     assert res.status_code == 200
     res = testapp.patch_json(
