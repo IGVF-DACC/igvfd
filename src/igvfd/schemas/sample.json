@@ -36,6 +36,18 @@
                 "product_id"
             ],
             "comment": "Sample with lot_id must include product_id."
+        },
+        "sorted_fraction": {
+            "required": [
+                "sorted_fraction_detail"
+            ],
+            "comment": "Sample with sorted_fraction must include sorted_fraction_detail."
+        },
+        "sorted_fraction_detail": {
+            "required": [
+                "sorted_fraction"
+            ],
+            "comment": "Sample with sorted_fraction_deatil must include sorted_fraction."
         }
     },
     "properties": {
@@ -97,6 +109,12 @@
             "comment": "The parent sample is expected to have similar properties to it's fraction.",
             "type": "string",
             "linkTo": "Sample"
+        },
+        "sorted_fraction_detail": {
+            "title": "Sorted Fraction Detail",
+            "description": "Detail for sample sorted into fractions capturing information about sorting.",
+            "comment": "For example, FACS 10% expression of CTCF-GFP",
+            "type": "string"
         }
     }
 }

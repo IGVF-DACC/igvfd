@@ -1,6 +1,6 @@
 {
-    "hash": "df9dd2c8408e209b5962684ae4029362",
-    "index_name": "whole_organism_df9dd2c8",
+    "hash": "db23de719320ec69d3e94e8927ce4d98",
+    "index_name": "whole_organism_db23de71",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -223,6 +223,9 @@
                         "store": true,
                         "type": "float"
                     },
+                    "modification": {
+                        "type": "keyword"
+                    },
                     "nih_institutional_certification": {
                         "type": "keyword"
                     },
@@ -251,6 +254,9 @@
                         "type": "keyword"
                     },
                     "sorted_fraction": {
+                        "type": "keyword"
+                    },
+                    "sorted_fraction_detail": {
                         "type": "keyword"
                     },
                     "source": {

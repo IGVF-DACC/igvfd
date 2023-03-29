@@ -1,9 +1,14 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 9
+
+* Add `sorted_fraction_detail`.
+
 ### Minor changes since schema version 7
 
 * Add `sorted_fraction`.
 * Add `file_sets`.
+* Add `modification`.
 
 ### Schema version 7
 

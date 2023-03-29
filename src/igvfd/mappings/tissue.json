@@ -1,6 +1,6 @@
 {
-    "hash": "f3755d05b2e834df2db986205744264d",
-    "index_name": "tissue_f3755d05",
+    "hash": "cb2a4a939a31aaea82b562f8f5d527c7",
+    "index_name": "tissue_cb2a4a93",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -226,6 +226,9 @@
                         "store": true,
                         "type": "float"
                     },
+                    "modification": {
+                        "type": "keyword"
+                    },
                     "nih_institutional_certification": {
                         "type": "keyword"
                     },
@@ -266,6 +269,9 @@
                         "type": "keyword"
                     },
                     "sorted_fraction": {
+                        "type": "keyword"
+                    },
+                    "sorted_fraction_detail": {
                         "type": "keyword"
                     },
                     "source": {

@@ -22,6 +22,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.gene',
     'igvfd.tests.fixtures.schemas.sample_term',
     'igvfd.tests.fixtures.schemas.treatment',
+    'igvfd.tests.fixtures.schemas.modification',
     'igvfd.tests.fixtures.schemas.human_genomic_variant',
     'igvfd.tests.fixtures.schemas.biomarker',
     'igvfd.tests.fixtures.schemas.in_vitro_system',

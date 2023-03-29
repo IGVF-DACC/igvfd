@@ -1,6 +1,6 @@
 {
-    "hash": "2aa60262acd0b096eb4489ca8fcf52c6",
-    "index_name": "in_vitro_system_2aa60262",
+    "hash": "f6bda4f4a786011d8d0fdf846d29e678",
+    "index_name": "in_vitro_system_f6bda4f4",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -229,6 +229,9 @@
                         "store": true,
                         "type": "float"
                     },
+                    "modification": {
+                        "type": "keyword"
+                    },
                     "nih_institutional_certification": {
                         "type": "keyword"
                     },
@@ -266,6 +269,9 @@
                         "type": "keyword"
                     },
                     "sorted_fraction": {
+                        "type": "keyword"
+                    },
+                    "sorted_fraction_detail": {
                         "type": "keyword"
                     },
                     "source": {

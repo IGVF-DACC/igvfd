@@ -120,3 +120,13 @@ def whole_organism_v7(whole_organism):
         'accession': 'IGVFSM111WWO'
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v8(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '8',
+        'sorted_fraction': '/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/'
+    })
+    return item

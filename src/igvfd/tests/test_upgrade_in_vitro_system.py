@@ -27,3 +27,9 @@ def test_in_vitro_system_upgrade_4_5(upgrader, in_vitro_system_v4):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v4, current_version='4', target_version='5')
     assert value['schema_version'] == '5'
     assert value.get('classification') == 'organoid'
+
+
+def test_in_vitro_system_upgrade_5_6(upgrader, in_vitro_system_v5):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v5, current_version='5', target_version='6')
+    assert value['schema_version'] == '6'
+    assert value['sorted_fraction_detail'] == 'Default upgrade text: please add more details about sorted_fraction, see sample.json for description.'
