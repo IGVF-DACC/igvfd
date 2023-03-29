@@ -3,7 +3,7 @@
 
 ### Release v10
 
-* Remove `saccharomyces`.
+* Remove taxa `saccharomyces`.
 
 ### Release v9
 
