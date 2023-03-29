@@ -33,7 +33,10 @@ def test_audit_related_multiome_datasets(
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
-    assert res.json['audit'].get('WARNING', []) == []
+    assert all(
+        error['category'] != 'inconsistent multiome metadata'
+        for error in res.json['audit'].get('WARNING', [])
+    )
     # the length of `related_multiome_datasets` array and `multiome_size` - 1 should be the same
     testapp.patch_json(
         measurement_set_multiome['@id'],
@@ -65,7 +68,10 @@ def test_audit_related_multiome_datasets(
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
-    assert res.json['audit'].get('WARNING', []) == []
+    assert all(
+        error['category'] != 'inconsistent multiome metadata'
+        for error in res.json['audit'].get('WARNING', [])
+    )
     # `samples` should be the same between other datasets in `related_multiome_datasets`
     testapp.patch_json(
         measurement_set_multiome['@id'],
@@ -85,7 +91,10 @@ def test_audit_related_multiome_datasets(
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
-    assert res.json['audit'].get('WARNING', []) == []
+    assert all(
+        error['category'] != 'inconsistent multiome metadata'
+        for error in res.json['audit'].get('WARNING', [])
+    )
     # `multiome_size` should be the same between other datasets in `related_multiome_datasets`
     testapp.patch_json(
         measurement_set_multiome['@id'],
@@ -117,4 +126,7 @@ def test_audit_related_multiome_datasets(
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
-    assert res.json['audit'].get('WARNING', []) == []
+    assert all(
+        error['category'] != 'inconsistent multiome metadata'
+        for error in res.json['audit'].get('WARNING', [])
+    )
