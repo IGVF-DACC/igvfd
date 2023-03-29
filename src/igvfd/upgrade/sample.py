@@ -152,5 +152,5 @@ def sample_10_11(value, system):
 def biosample_6_7(value, system):
     # https://igvf.atlassian.net/browse/IGVF-511
     if value['taxa'] == 'Saccharomyces':
-        value['notes'] = 'Previous taxa: ' + value['taxa'] + 'is no longer valid.'
+        value['notes'] = 'Previous taxa: ' + value['taxa'] + ' is no longer valid.'
         value['taxa'] = 'Mus musculus'
