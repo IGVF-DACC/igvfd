@@ -39,11 +39,11 @@
             "pattern": "^(EFO|NTR):[0-9]{2,8}$"
         }
     },
-    "boost_values": {
-        "@type": 1.0,
-        "term_id": 1.0,
-        "term_name": 1.0,
-        "synonyms": 1.0
-    },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "term_id",
+        "term_name",
+        "synonyms"
+    ],
     "changelog": "/profiles/changelogs/platform_term.md"
 }

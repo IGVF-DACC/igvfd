@@ -55,8 +55,8 @@
             }
         }
     },
-    "boost_values": {
-        "@type": 1.0
-    },
+    "fuzzy_searchable_fields": [
+        "@type"
+    ],
     "changelog": "/profiles/changelogs/analysis_set.md"
 }

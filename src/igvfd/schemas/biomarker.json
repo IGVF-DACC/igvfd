@@ -76,11 +76,11 @@
             "linkTo": "Gene"
         }
     },
-    "boost_values": {
-        "@type": 1.0,
-        "name": 1.0,
-        "gene": 1.0,
-        "quantification": 1.0
-    },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "name",
+        "gene",
+        "quantification"
+    ],
     "changelog": "/profiles/changelogs/biomarker.md"
 }

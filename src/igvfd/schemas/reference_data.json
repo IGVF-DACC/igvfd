@@ -149,11 +149,11 @@
             ]
         }
     },
-    "boost_values": {
-        "accession": 1.0,
-        "@type": 1.0,
-        "content_type": 1.0,
-        "file_format": 1.0
-    },
+    "fuzzy_searchable_fields": [
+        "accession",
+        "@type",
+        "content_type",
+        "file_format"
+    ],
     "changelog": "/profiles/changelogs/reference_data.md"
 }

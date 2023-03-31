@@ -384,11 +384,11 @@
             }
         }
     },
-    "boost_values": {
-        "accession": 1.0,
-        "aliases": 1.0,
-        "@type": 1.0,
-        "targeted_genes": 1.0
-    },
+    "fuzzy_searchable_fields": [
+        "accession",
+        "aliases",
+        "@type",
+        "targeted_genes"
+    ],
     "changelog": "/profiles/changelogs/construct_library.md"
 }

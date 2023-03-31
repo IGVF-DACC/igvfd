@@ -108,10 +108,10 @@
             }
         }
     },
-    "boost_values": {
-        "description": 1.0,
-        "@type": 1.0,
-        "document_type": 1.0
-    },
+    "fuzzy_searchable_fields": [
+        "description",
+        "@type",
+        "document_type"
+    ],
     "changelog": "/profiles/changelogs/document.md"
 }
