@@ -33,6 +33,9 @@ def award():
             'component': {
                 'title': 'Component'
             },
+            'contact_pi': {
+                'title': 'Contact P.I.'
+            },
             'status': {
                 'title': 'Status'
             }
