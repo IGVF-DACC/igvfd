@@ -112,6 +112,14 @@
             "description": "The number of datasets included in the multiome experiment this measurement set is a part of.",
             "type": "number",
             "minimum": 2
+        },
+        "seqspec": {
+            "title": "seqspec YAML File Link",
+            "description": "A URL link to the YAML file in the seqspec repository associated with this measurement set.",
+            "comment": "The repository for seqspec is located here: https://github.com/IGVF/seqspec.",
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https?://github\\.com/IGVF/seqspec/blob/main/assays/.+/spec\\.yaml$"
         }
     },
     "fuzzy_searchable_fields": [
