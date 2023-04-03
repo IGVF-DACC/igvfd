@@ -173,6 +173,23 @@ class File(Item):
             }
         )
 
+    @calculated_property(
+        schema={
+            'title': 'S3 URI',
+            'description': 'The S3 URI of public file object.',
+            'comment': 'Do not submit. Value is calculated from file metadata.',
+            'type': 'string',
+            'notSubmittable': True,
+        },
+        define=True,
+    )
+    def s3_uri(self):
+        try:
+            external = self._get_external_sheet()
+        except HTTPNotFound:
+            return None
+        return 's3://{bucket}/{key}'.format(**external)
+
 
 @collection(
     name='sequence-data',
