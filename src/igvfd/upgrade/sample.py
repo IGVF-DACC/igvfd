@@ -141,7 +141,7 @@ def in_vitro_system_4_5(value, system):
 @upgrade_step('technical_sample', '5', '6')
 def sample_10_11(value, system):
     # https://igvf.atlassian.net/browse/IGVF-486
-    if value['sorted_fraction']:
+    if 'sorted_fraction' in value:
         value['sorted_fraction_detail'] = 'Default upgrade text: please add more details about sorted_fraction, see sample.json for description.'
 
 
