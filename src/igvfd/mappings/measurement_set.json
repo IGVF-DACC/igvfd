@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "2d83287b24c33f7a97666210cd4b043f",
     "index_name": "measurement_set_2d83287b",
+=======
+    "hash": "7ef174690199e2a16bad40b210127d70",
+    "index_name": "measurement_set_7ef17469",
+>>>>>>> 9356feb4 (mappings)
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -541,6 +546,9 @@
                         "type": "keyword"
                     },
                     "schema_version": {
+                        "type": "keyword"
+                    },
+                    "seqspec": {
                         "type": "keyword"
                     },
                     "status": {
