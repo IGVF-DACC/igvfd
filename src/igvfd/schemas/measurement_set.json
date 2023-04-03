@@ -119,7 +119,7 @@
             "comment": "The repository for seqspec is located here: https://github.com/IGVF/seqspec.",
             "type": "string",
             "format": "uri",
-            "pattern": "^https?://github\\.com/IGVF/seqspec/blob/main/assays/.+/spec\\.yaml$"
+            "pattern": "^https?://github\\.com/IGVF/seqspec/blob/main/assays/\\S+/spec\\.yaml$"
         }
     },
     "fuzzy_searchable_fields": [

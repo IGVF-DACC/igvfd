@@ -52,10 +52,10 @@
     },
     {
         "aliases": [
-            "lior-patcher:share_seq"
+            "lior-pachter:share_seq"
         ],
         "award": "1UM1HG012077-01",
-        "lab": "lior-patcher",
+        "lab": "lior-pachter",
         "status": "released",
         "uuid": "06893264-0d44-4fa8-bb3d-924fcdaed346",
         "assay_term": "/assay-terms/NTR_0000739/",

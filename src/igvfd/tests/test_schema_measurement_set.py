@@ -46,3 +46,9 @@ def test_seqspec_pattern(testapp, measurement_set):
         expect_errors=True
     )
     assert res.status_code == 422
+    res = testapp.patch_json(
+        measurement_set['@id'],
+        {'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/mcSCRB seq/spec.yaml'},
+        expect_errors=True
+    )
+    assert res.status_code == 422
