@@ -136,11 +136,11 @@
             ]
         }
     },
-    "fuzzy_searchable_fields": [
-        "accession",
-        "@type",
-        "taxa",
-        "ethnicities"
-    ],
+    "boost_values": {
+        "accession": 1.0,
+        "@type": 1.0,
+        "taxa": 1.0,
+        "ethnicities": 1.0
+    },
     "changelog": "/profiles/changelogs/human_donor.md"
 }

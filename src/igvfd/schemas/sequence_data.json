@@ -143,11 +143,11 @@
             ]
         }
     },
-    "fuzzy_searchable_fields": [
-        "accession",
-        "@type",
-        "content_type",
-        "file_format"
-    ],
+    "boost_values": {
+        "accession": 1.0,
+        "@type": 1.0,
+        "content_type": 1.0,
+        "file_format": 1.0
+    },
     "changelog": "/profiles/changelogs/sequence_data.md"
 }

@@ -114,10 +114,10 @@
             "minimum": 2
         }
     },
-    "fuzzy_searchable_fields": [
-        "@type",
-        "assay_term.term_name",
-        "protocol"
-    ],
+    "boost_values": {
+        "@type": 1.0,
+        "assay_term": 1.0,
+        "protocol": 1.0
+    },
     "changelog": "/profiles/changelogs/measurement_set.md"
 }

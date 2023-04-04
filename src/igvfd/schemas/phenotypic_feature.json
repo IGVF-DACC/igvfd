@@ -74,9 +74,9 @@
             "format": "date"
         }
     },
-    "fuzzy_searchable_fields": [
-        "@type",
-        "feature"
-    ],
+    "boost_values": {
+        "@type": 1.0,
+        "feature": 1.0
+    },
     "changelog": "/profiles/changelogs/phenotypic_feature.md"
 }

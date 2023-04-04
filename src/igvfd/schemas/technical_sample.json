@@ -68,9 +68,9 @@
             "linkTo": "SampleTerm"
         }
     },
-    "fuzzy_searchable_fields": [
-        "accession",
-        "@type"
-    ],
+    "boost_values": {
+        "accession": 1.0,
+        "@type": 1.0
+    },
     "changelog": "/profiles/changelogs/technical_sample.md"
 }

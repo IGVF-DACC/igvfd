@@ -93,8 +93,8 @@
             "pattern": "^addgene:\\d{5,6}$"
         }
     },
-    "fuzzy_searchable_fields": [
-        "@type"
-    ],
+    "boost_values": {
+        "@type": 1.0
+    },
     "changelog": "/profiles/changelogs/modification.md"
 }

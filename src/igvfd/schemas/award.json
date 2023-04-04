@@ -110,12 +110,12 @@
             ]
         }
     },
-    "fuzzy_searchable_fields": [
-        "name",
-        "@type",
-        "title",
-        "project",
-        "component"
-    ],
+    "boost_values": {
+        "name": 1.0,
+        "@type": 1.0,
+        "title": 1.0,
+        "project": 1.0,
+        "component": 1.0
+    },
     "changelog": "/profiles/changelogs/award.md"
 }

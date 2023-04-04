@@ -70,13 +70,13 @@
             }
         }
     },
-    "fuzzy_searchable_fields": [
-        "title",
-        "@type",
-        "name",
-        "used_by",
-        "references",
-        "description"
-    ],
+    "boost_values": {
+        "title": 1.0,
+        "@type": 1.0,
+        "name": 1.0,
+        "used_by": 1.0,
+        "references": 1.0,
+        "description": 1.0
+    },
     "changelog": "/profiles/changelogs/software.md"
 }

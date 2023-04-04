@@ -156,10 +156,10 @@
             "linkTo": "SampleTerm"
         }
     },
-    "fuzzy_searchable_fields": [
-        "accession",
-        "@type",
-        "taxa"
-    ],
+    "boost_values": {
+        "accession": 1.0,
+        "@type": 1.0,
+        "taxa": 1.0
+    },
     "changelog": "/profiles/changelogs/in_vitro_system.md"
 }

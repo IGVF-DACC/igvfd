@@ -185,12 +185,12 @@
             "permission": "import_items"
         }
     },
-    "fuzzy_searchable_fields": [
-        "@type",
-        "geneid",
-        "symbol",
-        "synonyms",
-        "dbxrefs"
-    ],
+    "boost_values": {
+        "@type": 1.0,
+        "geneid": 1.0,
+        "symbol": 1.0,
+        "synonyms": 1.0,
+        "dbxrefs": 1.0
+    },
     "changelog": "/profiles/changelogs/gene.md"
 }

@@ -57,10 +57,10 @@
             ]
         }
     },
-    "fuzzy_searchable_fields": [
-        "@type",
-        "taxa",
-        "curated_set_type"
-    ],
+    "boost_values": {
+        "@type": 1.0,
+        "taxa": 1.0,
+        "curated_set_type": 1.0
+    },
     "changelog": "/profiles/changelogs/curated_set.md"
 }
