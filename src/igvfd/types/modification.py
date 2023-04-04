@@ -3,6 +3,7 @@ from snovault import (
     load_schema,
     calculated_property
 )
+from snovault.util import Path
 from .base import (
     Item
 )
@@ -18,6 +19,10 @@ from .base import (
 class Modification(Item):
     item_type = 'modification'
     schema = load_schema('igvfd:schemas/modification.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+    ]
 
     @calculated_property(
         schema={

@@ -4,6 +4,7 @@ from snovault import (
     collection,
     load_schema,
 )
+from snovault.util import Path
 
 from .base import (
     Item
@@ -36,6 +37,11 @@ class FileSet(Item):
 class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('donors', include=['@id', 'taxa']),
+        Path('lab', include=['@id', 'title']),
+    ]
 
     @calculated_property(
         schema={
@@ -73,6 +79,10 @@ class AnalysisSet(FileSet):
 class CuratedSet(FileSet):
     item_type = 'curated_set'
     schema = load_schema('igvfd:schemas/curated_set.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+    ]
 
 
 @collection(
@@ -85,6 +95,12 @@ class CuratedSet(FileSet):
 class MeasurementSet(FileSet):
     item_type = 'measurement_set'
     schema = load_schema('igvfd:schemas/measurement_set.json')
+    embedded_with_frame = [
+        Path('assay_term', include=['@id', 'term_name']),
+        Path('award', include=['@id', 'component']),
+        Path('donors', include=['@id', 'taxa']),
+        Path('lab', include=['@id', 'title']),
+    ]
 
     @calculated_property(
         condition='multiome_size',
@@ -127,3 +143,7 @@ class MeasurementSet(FileSet):
 class ConstructLibrary(FileSet):
     item_type = 'construct_library'
     schema = load_schema('igvfd:schemas/construct_library.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+    ]

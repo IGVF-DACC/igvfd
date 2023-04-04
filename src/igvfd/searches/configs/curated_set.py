@@ -10,25 +10,45 @@ def curated_set():
             'status': {
                 'title': 'Status'
             },
-            'sample': {
-                'title': 'Sample'
-            },
-            'donor': {
-                'title': 'Donor'
-            },
-            'lab': {
+            'lab.title': {
                 'title': 'Lab'
             },
-            'award': {
+            'award.component': {
                 'title': 'Award'
             },
             'taxa': {
                 'title': 'Taxa'
             },
+            'collections': {
+                'title': 'Collections'
+            },
             'curated_set_type': {
                 'title': 'Curated Set Type'
             },
         },
+        'facet_groups': [
+            {
+                'title': 'Sample',
+                'facet_fields': [
+                    'taxa',
+                    'curated_set_type',
+                ],
+            },
+            {
+                'title': 'Provenance',
+                'facet_fields': [
+                    'collections',
+                    'lab.title',
+                    'award.component',
+                ],
+            },
+            {
+                'title': 'Quality',
+                'facet_fields': [
+                    'status',
+                ],
+            },
+        ],
         'columns': {
             'accession': {
                 'title': 'Accession'

@@ -6,6 +6,14 @@ from snovault.elasticsearch.searches.configs import search_config
 )
 def gene():
     return {
+        'facets': {
+            'taxa': {
+                'title': 'Taxa'
+            },
+            'status': {
+                'title': 'Status'
+            }
+        },
         'columns': {
             'uuid': {
                 'title': 'UUID'

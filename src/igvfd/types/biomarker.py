@@ -3,7 +3,7 @@ from snovault import (
     collection,
     load_schema,
 )
-
+from snovault.util import Path
 from .base import (
     Item,
 )
@@ -19,6 +19,10 @@ from .base import (
 class Biomarker(Item):
     item_type = 'biomarker'
     schema = load_schema('igvfd:schemas/biomarker.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'name', 'component']),
+        Path('lab', include=['@id', 'title']),
+    ]
 
     @calculated_property(
         schema={

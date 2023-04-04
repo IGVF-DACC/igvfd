@@ -25,6 +25,8 @@ from snovault.attachment import InternalRedirect
 
 from snovault.schema_utils import schema_validator
 
+from snovault.util import Path
+
 from igvfd.types.base import Item
 
 from igvfd.upload_credentials import get_s3_client
@@ -185,6 +187,10 @@ class File(Item):
 class SequenceData(File):
     item_type = 'sequence_data'
     schema = load_schema('igvfd:schemas/sequence_data.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+    ]
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -212,6 +218,10 @@ class SequenceData(File):
 class ReferenceData(File):
     item_type = 'reference_data'
     schema = load_schema('igvfd:schemas/reference_data.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+    ]
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)

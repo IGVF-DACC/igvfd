@@ -6,6 +6,11 @@ from snovault.elasticsearch.searches.configs import search_config
 )
 def phenotype_term():
     return {
+        'facets': {
+            'status': {
+                'title': 'Status'
+            },
+        },
         'columns': {
             'uuid': {
                 'title': 'UUID'
