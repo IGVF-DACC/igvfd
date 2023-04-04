@@ -1,6 +1,6 @@
 {
-    "hash": "78d28aa870d2993c4811981a29f6e7fd",
-    "index_name": "sequence_data_78d28aa8",
+    "hash": "a88ccbc7f39d80827a863ec4bf50e191",
+    "index_name": "sequence_data_a88ccbc7",
     "item_type": "sequence_data",
     "mapping": {
         "dynamic_templates": [
@@ -380,6 +380,9 @@
                         "type": "long"
                     },
                     "revoke_detail": {
+                        "type": "keyword"
+                    },
+                    "s3_uri": {
                         "type": "keyword"
                     },
                     "schema_version": {
