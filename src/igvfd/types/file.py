@@ -81,6 +81,12 @@ def show_upload_credentials(request=None, context=None, upload_status=None):
     return request.has_permission('edit', context)
 
 
+def show_cloud_metadata(status=None, md5sum=None, file_size=None, restricted=None, no_file_available=None):
+    if restricted or not md5sum or not file_size or no_file_available:
+        return False
+    return True
+
+
 @abstract_collection(
     name='files',
     unique_key='accession',
@@ -113,6 +119,7 @@ class File(Item):
         )
 
     @calculated_property(
+        condition=show_cloud_metadata,
         schema={
             'title': 'S3 URI',
             'description': 'The S3 URI of public file object.',
