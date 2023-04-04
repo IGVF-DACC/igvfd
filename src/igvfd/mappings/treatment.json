@@ -1,6 +1,6 @@
 {
-    "hash": "1714d65b0d9ff27d83aa9bb6b643006a",
-    "index_name": "treatment_1714d65b",
+    "hash": "918391eb756540e89a13eeaebc3b2048",
+    "index_name": "treatment_918391eb",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -220,63 +220,7 @@
                         "type": "keyword"
                     },
                     "source": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "awards": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "institute_label": {
-                                "type": "keyword"
-                            },
-                            "name": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "pi": {
-                                "type": "keyword"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "title": {
-                                "type": "keyword"
-                            },
-                            "url": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
+                        "type": "keyword"
                     },
                     "status": {
                         "type": "keyword"

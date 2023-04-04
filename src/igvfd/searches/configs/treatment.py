@@ -6,41 +6,6 @@ from snovault.elasticsearch.searches.configs import search_config
 )
 def treatment():
     return {
-        'facets': {
-            'purpose': {
-                'title': 'Purpose'
-            },
-            'treatment_type': {
-                'title': 'Treatment Type'
-            },
-            'source.title': {
-                'title': 'Source'
-            },
-            'status': {
-                'title': 'Status'
-            }
-        },
-        'facet_groups': [
-            {
-                'title': 'Treatment',
-                'facet_fields': [
-                    'purpose',
-                    'treatment_type',
-                ],
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'source.title',
-                ],
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                ],
-            }
-        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'

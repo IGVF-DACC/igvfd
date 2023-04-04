@@ -3,7 +3,6 @@ from snovault import (
     load_schema,
     calculated_property
 )
-from snovault.util import Path
 from .base import (
     Item,
     paths_filtered_by_status
@@ -22,9 +21,10 @@ class Software(Item):
     item_type = 'software'
     schema = load_schema('igvfd:schemas/software.json')
     name_key = 'name'
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
+    embedded = [
+        'versions',
+        'lab',
+        'award'
     ]
     rev = {
         'versions': ('SoftwareVersion', 'software')

@@ -3,7 +3,6 @@ from snovault import (
     collection,
     load_schema
 )
-from snovault.util import Path
 from .base import (
     Item
 )
@@ -24,10 +23,7 @@ from pyramid.traversal import (
 class SoftwareVersion(Item):
     item_type = 'software_version'
     schema = load_schema('igvfd:schemas/software_version.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-    ]
+    embedded = ['software']
 
     def unique_keys(self, properties):
         keys = super(SoftwareVersion, self).unique_keys(properties)

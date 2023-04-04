@@ -4,7 +4,7 @@ from snovault import (
     collection,
     load_schema,
 )
-from snovault.util import Path
+
 from .base import (
     Item,
     paths_filtered_by_status
@@ -133,14 +133,6 @@ class Biosample(Sample):
 class PrimaryCell(Biosample):
     item_type = 'primary_cell'
     schema = load_schema('igvfd:schemas/primary_cell.json')
-    embedded = ['treatments']
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('biosample_term', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
-        Path('lab', include=['@id', 'title']),
-        Path('source', include=['@id', 'title']),
-    ]
 
 
 @collection(
@@ -153,14 +145,6 @@ class PrimaryCell(Biosample):
 class InVitroSystem(Biosample):
     item_type = 'in_vitro_system'
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('biosample_term', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
-        Path('lab', include=['@id', 'title']),
-        Path('source', include=['@id', 'title']),
-        Path('treatments', include=['@id', 'treatment_term_name']),
-    ]
 
     @calculated_property(
         schema={
@@ -198,13 +182,6 @@ class InVitroSystem(Biosample):
 class Tissue(Biosample):
     item_type = 'tissue'
     schema = load_schema('igvfd:schemas/tissue.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('biosample_term', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
-        Path('lab', include=['@id', 'title']),
-        Path('source', include=['@id', 'title']),
-    ]
 
 
 @collection(
@@ -218,12 +195,6 @@ class Tissue(Biosample):
 class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'name', 'component']),
-        Path('lab', include=['@id', 'title']),
-        Path('source', include=['@id', 'title']),
-        Path('technical_sample_term', include=['@id', 'term_name']),
-    ]
 
     @calculated_property(
         schema={
@@ -249,15 +220,6 @@ class TechnicalSample(Sample):
 class WholeOrganism(Biosample):
     item_type = 'whole_organism'
     schema = load_schema('igvfd:schemas/whole_organism.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('biomarkers', include=['@id', 'classification']),
-        Path('biosample_term', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
-        Path('lab', include=['@id', 'title']),
-        Path('source', include=['@id', 'title']),
-        Path('treatments', include=['@id', 'treatment_type']),
-    ]
 
     @calculated_property(
         schema={

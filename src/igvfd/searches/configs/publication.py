@@ -6,41 +6,6 @@ from snovault.elasticsearch.searches.configs import search_config
 )
 def publication():
     return {
-        'facets': {
-            'published_by': {
-                'title': 'Published By'
-            },
-            'lab.title': {
-                'title': 'Lab'
-            },
-            'award.component': {
-                'title': 'Award'
-            },
-            'status': {
-                'title': 'Status'
-            },
-        },
-        'facet_groups': [
-            {
-                'title': 'Publication',
-                'facet_fields': [
-                    'published_by',
-                ]
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'lab.title',
-                    'award.component',
-                ]
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                ]
-            },
-        ],
         'columns': {
             'title': {
                 'title': 'Title'

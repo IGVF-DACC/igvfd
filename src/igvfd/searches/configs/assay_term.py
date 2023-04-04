@@ -6,36 +6,6 @@ from snovault.elasticsearch.searches.configs import search_config
 )
 def assay_term():
     return {
-        'facets': {
-            'assay_slims': {
-                'title': 'Assay Type',
-            },
-            'category_slims': {
-                'title': 'Assay Category',
-            },
-            'objective_slims': {
-                'title': 'Assay Objective',
-            },
-            'status': {
-                'title': 'Status'
-            },
-        },
-        'facet_groups': [
-            {
-                'title': 'Assay',
-                'facet_fields': [
-                    'assay_slims',
-                    'category_slims',
-                    'objective_slims',
-                ]
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                ]
-            },
-        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'

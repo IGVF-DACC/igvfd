@@ -6,14 +6,6 @@ from snovault.elasticsearch.searches.configs import search_config
 )
 def human_genomic_variant():
     return {
-        'facets': {
-            'assembly': {
-                'title': 'Genome Assembly'
-            },
-            'status': {
-                'title': 'Status'
-            },
-        },
         'columns': {
             'uuid': {
                 'title': 'UUID'

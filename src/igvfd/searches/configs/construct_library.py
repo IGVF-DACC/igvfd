@@ -10,10 +10,10 @@ def cell_line():
             'status': {
                 'title': 'Status'
             },
-            'award.component': {
+            'award': {
                 'title': 'Award'
             },
-            'lab.title': {
+            'lab': {
                 'title': 'Lab'
             },
             'scope': {
@@ -33,7 +33,7 @@ def cell_line():
             'status': {
                 'title': 'Status'
             },
-            'lab': {
+            'lab.title': {
                 'title': 'Lab'
             },
             'scope': {

@@ -16,30 +16,10 @@ def biomarker():
             'classification': {
                 'title': 'Classification'
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
-            'award.component': {
-                'title': 'Award'
+            'gene': {
+                'title': 'Gene'
             },
         },
-        'facet_groups': [
-            {
-                'title': 'Biomarker',
-                'facet_fields': [
-                    'name',
-                    'quantification',
-                    'classification',
-                ]
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'lab.title',
-                    'award.component',
-                ]
-            },
-        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'

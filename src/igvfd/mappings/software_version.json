@@ -1,6 +1,6 @@
 {
-    "hash": "a86d2859168c281dbd17fda912da4544",
-    "index_name": "software_version_a86d2859",
+    "hash": "64aa9770c0cb05ca38a9f8d1b9257e44",
+    "index_name": "software_version_64aa9770",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -151,75 +151,7 @@
                         "type": "keyword"
                     },
                     "award": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "component": {
-                                "type": "keyword"
-                            },
-                            "contact_pi": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "end_date": {
-                                "type": "keyword"
-                            },
-                            "name": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "pis": {
-                                "type": "keyword"
-                            },
-                            "project": {
-                                "type": "keyword"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "start_date": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "title": {
-                                "type": "keyword"
-                            },
-                            "url": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            },
-                            "viewing_group": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
+                        "type": "keyword"
                     },
                     "creation_timestamp": {
                         "type": "keyword"
@@ -234,6 +166,21 @@
                         "type": "keyword"
                     },
                     "lab": {
+                        "type": "keyword"
+                    },
+                    "name": {
+                        "type": "keyword"
+                    },
+                    "notes": {
+                        "type": "text"
+                    },
+                    "references": {
+                        "type": "keyword"
+                    },
+                    "schema_version": {
+                        "type": "keyword"
+                    },
+                    "software": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -244,7 +191,7 @@
                             "aliases": {
                                 "type": "keyword"
                             },
-                            "awards": {
+                            "award": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -253,7 +200,7 @@
                             "description": {
                                 "type": "text"
                             },
-                            "institute_label": {
+                            "lab": {
                                 "type": "keyword"
                             },
                             "name": {
@@ -262,10 +209,13 @@
                             "notes": {
                                 "type": "text"
                             },
-                            "pi": {
+                            "references": {
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "source_url": {
                                 "type": "keyword"
                             },
                             "status": {
@@ -283,29 +233,17 @@
                             "title": {
                                 "type": "keyword"
                             },
-                            "url": {
+                            "used_by": {
                                 "type": "keyword"
                             },
                             "uuid": {
                                 "type": "keyword"
+                            },
+                            "versions": {
+                                "type": "keyword"
                             }
                         },
                         "type": "object"
-                    },
-                    "name": {
-                        "type": "keyword"
-                    },
-                    "notes": {
-                        "type": "text"
-                    },
-                    "references": {
-                        "type": "keyword"
-                    },
-                    "schema_version": {
-                        "type": "keyword"
-                    },
-                    "software": {
-                        "type": "keyword"
                     },
                     "status": {
                         "type": "keyword"

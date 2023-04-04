@@ -3,7 +3,7 @@ from snovault import (
     load_schema,
     calculated_property
 )
-from snovault.util import Path
+
 from .base import (
     Item,
     datetime
@@ -21,10 +21,6 @@ from .base import (
 class Publication(Item):
     item_type = 'publication'
     schema = load_schema('igvfd:schemas/publication.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-    ]
 
     def unique_keys(self, properties):
         keys = super(Publication, self).unique_keys(properties)

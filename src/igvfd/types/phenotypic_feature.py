@@ -3,7 +3,6 @@ from snovault import (
     load_schema,
     calculated_property
 )
-from snovault.util import Path
 from .base import (
     Item
 )
@@ -19,7 +18,3 @@ from .base import (
 class PhenotypicFeature(Item):
     item_type = 'phenotypic_feature'
     schema = load_schema('igvfd:schemas/phenotypic_feature.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-    ]

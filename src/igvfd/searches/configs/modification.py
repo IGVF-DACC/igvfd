@@ -12,39 +12,8 @@ def modification():
             },
             'modality': {
                 'title': 'Modality'
-            },
-            'lab.title': {
-                'title': 'Lab'
-            },
-            'award.component': {
-                'title': 'Award'
-            },
-            'status': {
-                'title': 'Status'
-            },
+            }
         },
-        'facet_groups': [
-            {
-                'title': 'Modification',
-                'facet_fields': [
-                    'cas',
-                    'modality',
-                ]
-            },
-            {
-                'title': 'Provenance',
-                'facet_fields': [
-                    'lab.title',
-                    'award.component',
-                ]
-            },
-            {
-                'title': 'Quality',
-                'facet_fields': [
-                    'status',
-                ]
-            },
-        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'
@@ -66,9 +35,6 @@ def modification():
             },
             'product_id': {
                 'title': 'Product ID'
-            },
-            'lab': {
-                'title': 'Lab'
             }
         }
     }

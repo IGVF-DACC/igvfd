@@ -3,7 +3,6 @@ from snovault import (
     load_schema,
     calculated_property
 )
-from snovault.util import Path
 from .base import (
     Item
 )
@@ -19,9 +18,6 @@ from .base import (
 class Treatment(Item):
     item_type = 'treatment'
     schema = load_schema('igvfd:schemas/treatment.json')
-    embedded_with_frame = [
-        Path('source', include=['@id', 'title']),
-    ]
 
     @calculated_property(
         schema={

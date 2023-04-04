@@ -3,7 +3,6 @@ from snovault import (
     collection,
     load_schema,
 )
-from snovault.util import Path
 from .base import (
     Item,
     paths_filtered_by_status,
@@ -22,7 +21,3 @@ from .base import (
 class Document(ItemWithAttachment, Item):
     item_type = 'document'
     schema = load_schema('igvfd:schemas/document.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-    ]

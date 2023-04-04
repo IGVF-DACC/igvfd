@@ -116,7 +116,7 @@
     },
     "fuzzy_searchable_fields": [
         "@type",
-        "assay_term.term_name",
+        "assay_term",
         "protocol"
     ],
     "changelog": "/profiles/changelogs/measurement_set.md"
