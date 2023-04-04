@@ -84,5 +84,11 @@ def rodent_donor():
             'submitted_by': {
                 'title': 'Submitted By'
             },
+            'collections': {
+                'title': 'Collections'
+            },
+            'phenotypic_features': {
+                'title': 'Phenotypic Features'
+            }
         }
     }
