@@ -114,7 +114,7 @@
             "minimum": 2
         },
         "seqspec": {
-            "title": "seqspec YAML File Link",
+            "title": "Link to seqspec YAML File",
             "description": "A URL link to the YAML file in the seqspec repository associated with this measurement set.",
             "comment": "The repository for seqspec is located here: https://github.com/IGVF/seqspec.",
             "type": "string",
