@@ -3,7 +3,7 @@
 
 ### Schema version 7
 
-* Remove taxa `saccharomyces`.
+* Remove taxa `Saccharomyces`.
 
 ### Schema version 6
 
