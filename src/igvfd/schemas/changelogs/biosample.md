@@ -9,12 +9,9 @@
 
 * Add `modification`.
 
-### Minor changes since Release v7
-
-* Add `sorted_fraction_detail`.
-
 ### Release v7
 
+* Add `sorted_fraction_detail`.
 * Add `sorted_fraction`.
 
 ### Release v6
