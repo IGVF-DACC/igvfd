@@ -45,3 +45,7 @@ def test_types_file_set_external_sheet(sequence_data, root):
     }
     for k, v in expected.items():
         assert actual[k] == v
+
+
+def test_types_file_s3_uri_is_present(sequence_data):
+    assert 's3_uri' in sequence_data
