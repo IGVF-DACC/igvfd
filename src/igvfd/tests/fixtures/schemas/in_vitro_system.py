@@ -106,3 +106,13 @@ def in_vitro_system_v6(in_vitro_system_v1):
         'notes': ''
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v7(in_vitro_organoid):
+    item = in_vitro_organoid.copy()
+    item.update({
+        'schema_version': '7',
+        'classification': 'differentiated cell'
+    })
+    return item
