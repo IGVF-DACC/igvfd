@@ -1,5 +1,10 @@
 ## Changelog for *`biosample.json`*
 
+
+### Release v10
+
+* Remove taxa `Saccharomyces`.
+
 ### Release v9
 
 * Add `modification`.

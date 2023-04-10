@@ -1,5 +1,10 @@
 ## Changelog for *`tissue.json`*
 
+
+### Schema version 11
+
+* Remove taxa `Saccharomyces`.
+
 ### Schema version 10
 
 * Add `sorted_fraction_detail`.

@@ -1,5 +1,10 @@
 ## Changelog for *`whole_organism.json`*
 
+
+### Schema version 10
+
+* Remove taxa `Saccharomyces`.
+
 ### Schema version 9
 
 * Add `sorted_fraction_detail`.

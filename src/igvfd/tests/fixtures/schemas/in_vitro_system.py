@@ -95,3 +95,14 @@ def in_vitro_system_v5(in_vitro_organoid):
         'sorted_fraction': '/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/'
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v6(in_vitro_system_v1):
+    item = in_vitro_system_v1.copy()
+    item.update({
+        'schema_version': '6',
+        'taxa': 'Saccharomyces',
+        'notes': ''
+    })
+    return item

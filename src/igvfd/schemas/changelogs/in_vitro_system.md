@@ -1,5 +1,10 @@
 ## Changelog for *`in_vitro_system.json`*
 
+
+### Schema version 7
+
+* Remove taxa `Saccharomyces`.
+
 ### Schema version 6
 
 * Add `sorted_fraction_detail`.

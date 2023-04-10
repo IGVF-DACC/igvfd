@@ -141,5 +141,20 @@ def in_vitro_system_4_5(value, system):
 @upgrade_step('technical_sample', '5', '6')
 def sample_10_11(value, system):
     # https://igvf.atlassian.net/browse/IGVF-486
-    if value['sorted_fraction']:
+    if 'sorted_fraction' in value:
         value['sorted_fraction_detail'] = 'Default upgrade text: please add more details about sorted_fraction, see sample.json for description.'
+
+
+@upgrade_step('primary_cell', '10', '11')
+@upgrade_step('tissue', '10', '11')
+@upgrade_step('whole_organism', '9', '10')
+@upgrade_step('in_vitro_system', '6', '7')
+def biosample_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-511
+    if 'notes' in value:
+        new_notes_value = value.get('notes')
+        if len(new_notes_value) > 0:
+            new_notes_value += '  '
+        if value['taxa'] == 'Saccharomyces':
+            value['notes'] = new_notes_value + 'Previous taxa: ' + value['taxa'] + ' is no longer valid.'
+            value['taxa'] = 'Mus musculus'
