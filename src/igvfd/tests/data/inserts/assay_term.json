@@ -52,5 +52,11 @@
         "term_name": "single-cell ATAC-seq",
         "status": "released",
         "uuid": "99d4f728-edf2-4c5c-9b89-e280a396ce73"
+    },
+    {
+        "term_id": "NTR:0000739",
+        "term_name": "SHARE-seq",
+        "status": "released",
+        "uuid": "e58aa9d3-323c-44e2-867c-a19632853124"
     }
 ]

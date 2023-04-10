@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 3
 
+* Add `seqspec`.
 * Add `related_multiome_datasets`.
 * Add `multiome_size`.
 * Add `dbxrefs`.

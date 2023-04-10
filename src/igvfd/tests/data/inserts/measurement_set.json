@@ -49,5 +49,16 @@
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
         "multiome_size": 2
+    },
+    {
+        "aliases": [
+            "lior-pachter:share_seq"
+        ],
+        "award": "1UM1HG012077-01",
+        "lab": "lior-pachter",
+        "status": "released",
+        "uuid": "06893264-0d44-4fa8-bb3d-924fcdaed346",
+        "assay_term": "/assay-terms/NTR_0000739/",
+        "seqspec": "https://github.com/IGVF/seqspec/blob/main/assays/SHARE-seq/spec.yaml"
     }
 ]
