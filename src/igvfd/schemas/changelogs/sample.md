@@ -1,6 +1,5 @@
 ## Changelog for *`sample.json`*
 
-
 ### Release v7
 
 * Add `sorted_fraction_detail`.
