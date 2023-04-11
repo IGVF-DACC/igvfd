@@ -96,5 +96,8 @@ def whole_organism():
             'submitted_by': {
                 'title': 'Submitted By'
             },
+            'summary': {
+                'title': 'Summary'
+            }
         }
     }

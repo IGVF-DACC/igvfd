@@ -99,5 +99,8 @@ def primary_cell():
             'submitted_by': {
                 'title': 'Submitted By'
             },
+            'summary': {
+                'title': 'Summary'
+            }
         }
     }

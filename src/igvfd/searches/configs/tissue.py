@@ -96,5 +96,8 @@ def tissue():
             'submitted_by': {
                 'title': 'Submitted By'
             },
+            'summary': {
+                'title': 'Summary'
+            }
         }
     }

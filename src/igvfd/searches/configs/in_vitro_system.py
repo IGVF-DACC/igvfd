@@ -103,5 +103,8 @@ def in_vitro_system():
             'submitted_by': {
                 'title': 'Submitted By'
             },
+            'summary': {
+                'title': 'Summary'
+            }
         }
     }
