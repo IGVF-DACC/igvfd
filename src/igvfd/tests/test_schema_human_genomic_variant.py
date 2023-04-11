@@ -161,6 +161,12 @@ def test_refseq_regex(testapp, human_genomic_variant):
             'refseq_id': 'NC_654321.09'
         })
     assert res.status_code == 200
+    res = testapp.patch_json(
+        human_genomic_variant['@id'],
+        {
+            'refseq_id': 'NC_654321x08'
+        }, expect_errors=True)
+    assert res.status_code == 422
 
 
 def test_refseq_id_reference_sequence_dependency(
