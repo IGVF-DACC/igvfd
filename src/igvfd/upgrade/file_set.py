@@ -25,3 +25,11 @@ def file_set_2_3(value, system):
     if 'accession' in value:
         accession_suffix = value['accession'][6:]
         value['accession'] = f'IGVFDS0{accession_suffix}A'
+
+
+@upgrade_step('measurement_set', '3', '4')
+def measurement_set_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-537
+    if 'protocol' in value:
+        if value['protocol'] == 'https://www.protocols.io/':
+            del value['protocol']
