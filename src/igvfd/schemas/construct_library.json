@@ -117,7 +117,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "accession": {
             "accessionType": "DS"
@@ -232,13 +232,6 @@
                     }
                 }
             }
-        },
-        "plasmid_map": {
-            "title": "Plasmid Map",
-            "description": "An image of the plasmid map used in this construct library.",
-            "type": "string",
-            "comment": "See document.json for a list of available identifiers.",
-            "linkTo": "Document"
         },
         "product_id": {
             "title": "Product ID",

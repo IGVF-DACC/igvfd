@@ -33,3 +33,15 @@ def measurement_set_3_4(value, system):
     if 'protocol' in value:
         if value['protocol'] == 'https://www.protocols.io/':
             del value['protocol']
+
+
+@upgrade_step('construct_library', '1', '2')
+def construct_library_1_2(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-474
+    plasmid_map = value.get('plasmid_map', '')
+    if plasmid_map == '':
+        return
+    else:
+        if 'documents' in value:
+            value['documents'].append(value['plasmid_map'])
+            del value['plasmid_map']

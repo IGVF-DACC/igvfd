@@ -20,7 +20,9 @@
                 "end": 10
             }
         ],
-        "plasmid_map": "igvf:plasmid_map_insert",
+        "documents": [
+            "igvf:plasmid_map_insert"
+        ],
         "product_id": "addgene:81225",
         "status": "released"
     },
