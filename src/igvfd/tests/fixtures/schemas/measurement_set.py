@@ -42,3 +42,13 @@ def measurement_set_v1(measurement_set, in_vitro_cell_line, human_donor):
         'donor': [human_donor['@id']]
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v3(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '3',
+        'protocol': 'https://www.protocols.io/'
+    })
+    return item
