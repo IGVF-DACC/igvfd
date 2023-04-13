@@ -40,3 +40,9 @@ def test_in_vitro_system_upgrade_6_7(upgrader, in_vitro_system_v6):
     assert value['schema_version'] == '7'
     assert value['taxa'] != 'Saccharomyces'
     assert value['notes'] == 'Previous taxa: Saccharomyces is no longer valid.'
+
+
+def test_in_vitro_system_upgrade_7_8(upgrader, in_vitro_system_v7):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v7, current_version='7', target_version='8')
+    assert value['schema_version'] == '8'
+    assert value['classification'] == 'differentiated cell specimen'

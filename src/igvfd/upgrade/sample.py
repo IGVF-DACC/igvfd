@@ -158,3 +158,11 @@ def biosample_6_7(value, system):
         if value['taxa'] == 'Saccharomyces':
             value['notes'] = new_notes_value + 'Previous taxa: ' + value['taxa'] + ' is no longer valid.'
             value['taxa'] = 'Mus musculus'
+
+
+@upgrade_step('in_vitro_system', '7', '8')
+def in_vitro_system_7_8(value, system):
+    if value['classification'] == 'differentiated cell':
+        value['classification'] = 'differentiated cell specimen'
+    if value['classification'] == 'reprogrammed cell':
+        value['classification'] = 'reprogrammed cell specimen'

@@ -1,5 +1,10 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 8
+
+* Rename `differentiated cell` to `differentiated cell specimen`.
+* Rename `reprogrammed cell` to `reprogrammed cell specimen`.
+* Add `pooled cell specimen`.
 
 ### Schema version 7
 

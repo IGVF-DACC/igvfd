@@ -18,7 +18,7 @@ def in_vitro_cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562
 @pytest.fixture
 def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K562):
     item = {
-        'classification': 'differentiated cell',
+        'classification': 'differentiated cell specimen',
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
@@ -104,5 +104,15 @@ def in_vitro_system_v6(in_vitro_system_v1):
         'schema_version': '6',
         'taxa': 'Saccharomyces',
         'notes': ''
+    })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_v7(in_vitro_organoid):
+    item = in_vitro_organoid.copy()
+    item.update({
+        'schema_version': '7',
+        'classification': 'differentiated cell'
     })
     return item
