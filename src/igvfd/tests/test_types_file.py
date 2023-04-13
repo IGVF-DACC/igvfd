@@ -1,5 +1,4 @@
 import pytest
-import webtest
 
 
 def test_types_file_get_external_sheet(sequence_data, root):
@@ -68,5 +67,4 @@ def test_types_file_s3_uri_non_submittable(testapp, analysis_set_with_sample, aw
         'sequencing_run': 1,
         's3_uri': 's3://foo/bar/baz.fastq.gz'
     }
-    with pytest.raises(webtest.app.AppError):
-        testapp.post_json('/sequence_data/', item, status=201).json['@graph'][0]
+    testapp.post_json('/sequence_data/', item, status=422)
