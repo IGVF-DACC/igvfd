@@ -60,7 +60,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "rsid": {
             "title": "RS Identifier",
@@ -110,7 +110,7 @@
             "description": "The RefSeq sequence identifier for the sequence this variant is located in.",
             "comment": "If there is no RefSeq sequence identifier available for the sequence this variant is located in, 'reference_sequence' should be submitted instead.",
             "type": "string",
-            "pattern": "^((NC_)[0-9]{6}.[0-9]{1,2})$"
+            "pattern": "^((NC_)[0-9]{6}\\.[0-9]{1,2})$"
         },
         "reference_sequence": {
             "title": "Reference Sequence",
