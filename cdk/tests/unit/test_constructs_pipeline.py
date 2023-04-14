@@ -294,615 +294,669 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
     template.has_resource_properties(
         'AWS::CodePipeline::Pipeline',
         {
-            'RoleArn': {
-                'Fn::GetAtt': [
-                    'TestContinuousDeploymentPipelineRole1B892B27',
-                    'Arn'
-                ]
-            },
-            'Stages': [
-                {
-                    'Actions': [
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Source',
-                                'Owner': 'AWS',
-                                'Provider': 'CodeStarSourceConnection',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'ConnectionArn': 'some-arn',
-                                'FullRepositoryId': 'ABC/xyz',
-                                'BranchName': 'some-branch'
-                            },
-                            'Name': 'ABC_xyz',
-                            'OutputArtifacts': [
-                                {
-                                    'Name': 'ABC_xyz_Source'
-                                }
-                            ],
-                            'RoleArn': {
-                                'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineSourceABCxyzCodePipelineActionRole05FD2804',
-                                    'Arn'
-                                ]
-                            },
-                            'RunOrder': 1
-                        }
-                    ],
-                    'Name': 'Source'
+            'Type': 'AWS::CodePipeline::Pipeline',
+            'Properties': {
+                'RoleArn': {
+                    'Fn::GetAtt': [
+                        'TestContinuousDeploymentPipelineRole1B892B27',
+                        'Arn'
+                    ]
                 },
-                {
-                    'Actions': [
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Build',
-                                'Owner': 'AWS',
-                                'Provider': 'CodeBuild',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'ProjectName': {
-                                    'Ref': 'TestContinuousDeploymentPipelineBuildSynthStepCdkBuildProjectB05B9ED1'
+                'Stages': [
+                    {
+                        'Actions': [
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Source',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeStarSourceConnection',
+                                    'Version': '1'
                                 },
-                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"b9ccd98904a7934c351af87bc8d7a95fc9dba547f23349e5fcc979e3a1b15069\"}]"
-                            },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'ABC_xyz_Source'
-                                }
-                            ],
-                            'Name': 'SynthStep',
-                            'OutputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'RoleArn': {
-                                'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
-                                    'Arn'
-                                ]
-                            },
-                            'RunOrder': 1
-                        }
-                    ],
-                    'Name': 'Build'
-                },
-                {
-                    'Actions': [
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Build',
-                                'Owner': 'AWS',
-                                'Provider': 'CodeBuild',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'ProjectName': {
-                                    'Ref': 'TestContinuousDeploymentPipelineCodePipelineUpdatePipelineSelfMutation9A9B071E'
+                                'Configuration': {
+                                    'ConnectionArn': 'some-arn',
+                                    'FullRepositoryId': 'ABC/xyz',
+                                    'BranchName': 'some-branch'
                                 },
-                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"6664b122059fa50033502909e93d343a2c4a351b3da36fdb62814c766bbdec32\"}]"
+                                'Name': 'ABC_xyz',
+                                'OutputArtifacts': [
+                                    {
+                                        'Name': 'ABC_xyz_Source'
+                                    }
+                                ],
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineSourceABCxyzCodePipelineActionRole05FD2804',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
+                            }
+                        ],
+                        'Name': 'Source'
+                    },
+                    {
+                        'Actions': [
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Build',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeBuild',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'ProjectName': {
+                                        'Ref': 'TestContinuousDeploymentPipelineBuildSynthStepCdkBuildProjectB05B9ED1'
+                                    },
+                                    'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"b9ccd98904a7934c351af87bc8d7a95fc9dba547f23349e5fcc979e3a1b15069\"}]"
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'ABC_xyz_Source'
+                                    }
+                                ],
+                                'Name': 'SynthStep',
+                                'OutputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
+                            }
+                        ],
+                        'Name': 'Build'
+                    },
+                    {
+                        'Actions': [
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Build',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeBuild',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'ProjectName': {
+                                        'Ref': 'TestContinuousDeploymentPipelineCodePipelineUpdatePipelineSelfMutation9A9B071E'
+                                    },
+                                    'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"6664b122059fa50033502909e93d343a2c4a351b3da36fdb62814c766bbdec32\"}]"
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'SelfMutate',
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
+                            }
+                        ],
+                        'Name': 'UpdatePipeline'
+                    },
+                    {
+                        'Actions': [
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Build',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeBuild',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'ProjectName': {
+                                        'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsDockerAsset1AD9A7B99'
+                                    }
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'DockerAsset1',
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
                             },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'SelfMutate',
-                            'RoleArn': {
-                                'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
-                                    'Arn'
-                                ]
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Build',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeBuild',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'ProjectName': {
+                                        'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsDockerAsset2BA745669'
+                                    }
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'DockerAsset2',
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
                             },
-                            'RunOrder': 1
-                        }
-                    ],
-                    'Name': 'UpdatePipeline'
-                },
-                {
-                    'Actions': [
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Build',
-                                'Owner': 'AWS',
-                                'Provider': 'CodeBuild',
-                                'Version': '1'
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Build',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeBuild',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'ProjectName': {
+                                        'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsDockerAsset3806F7DB6'
+                                    }
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'DockerAsset3',
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
                             },
-                            'Configuration': {
-                                'ProjectName': {
-                                    'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsDockerAsset1AD9A7B99'
-                                }
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Build',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeBuild',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'ProjectName': {
+                                        'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsFileAsset17B5D5D3C'
+                                    }
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'FileAsset1',
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
                             },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'DockerAsset1',
-                            'RoleArn': {
-                                'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
-                                    'Arn'
-                                ]
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Build',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeBuild',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'ProjectName': {
+                                        'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsFileAsset23B18D4F0'
+                                    }
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'FileAsset2',
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
                             },
-                            'RunOrder': 1
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Build',
-                                'Owner': 'AWS',
-                                'Provider': 'CodeBuild',
-                                'Version': '1'
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Build',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeBuild',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'ProjectName': {
+                                        'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsFileAsset386012FE7'
+                                    }
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'FileAsset3',
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
                             },
-                            'Configuration': {
-                                'ProjectName': {
-                                    'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsDockerAsset2BA745669'
-                                }
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Build',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeBuild',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'ProjectName': {
+                                        'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsFileAsset4A82AEAC2'
+                                    }
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'FileAsset4',
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
                             },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'DockerAsset2',
-                            'RoleArn': {
-                                'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
-                                    'Arn'
-                                ]
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Build',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeBuild',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'ProjectName': {
+                                        'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsFileAsset5396C5AAE'
+                                    }
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'FileAsset5',
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
                             },
-                            'RunOrder': 1
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Build',
-                                'Owner': 'AWS',
-                                'Provider': 'CodeBuild',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'ProjectName': {
-                                    'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsDockerAsset3806F7DB6'
-                                }
-                            },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'DockerAsset3',
-                            'RoleArn': {
-                                'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
-                                    'Arn'
-                                ]
-                            },
-                            'RunOrder': 1
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Build',
-                                'Owner': 'AWS',
-                                'Provider': 'CodeBuild',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'ProjectName': {
-                                    'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsFileAsset17B5D5D3C'
-                                }
-                            },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'FileAsset1',
-                            'RoleArn': {
-                                'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
-                                    'Arn'
-                                ]
-                            },
-                            'RunOrder': 1
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Build',
-                                'Owner': 'AWS',
-                                'Provider': 'CodeBuild',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'ProjectName': {
-                                    'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsFileAsset23B18D4F0'
-                                }
-                            },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'FileAsset2',
-                            'RoleArn': {
-                                'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
-                                    'Arn'
-                                ]
-                            },
-                            'RunOrder': 1
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Build',
-                                'Owner': 'AWS',
-                                'Provider': 'CodeBuild',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'ProjectName': {
-                                    'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsFileAsset386012FE7'
-                                }
-                            },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'FileAsset3',
-                            'RoleArn': {
-                                'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
-                                    'Arn'
-                                ]
-                            },
-                            'RunOrder': 1
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Build',
-                                'Owner': 'AWS',
-                                'Provider': 'CodeBuild',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'ProjectName': {
-                                    'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsFileAsset4A82AEAC2'
-                                }
-                            },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'FileAsset4',
-                            'RoleArn': {
-                                'Fn::GetAtt': [
-                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
-                                    'Arn'
-                                ]
-                            },
-                            'RunOrder': 1
-                        }
-                    ],
-                    'Name': 'Assets'
-                },
-                {
-                    'Actions': [
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Deploy',
-                                'Owner': 'AWS',
-                                'Provider': 'CloudFormation',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'StackName': 'igvfd-some-branch-DeployContinuousIntegration-ContinuousIntegrationStack',
-                                'Capabilities': 'CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND',
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Build',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CodeBuild',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'ProjectName': {
+                                        'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsFileAsset644AE0E08'
+                                    }
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'FileAsset6',
+                                'RoleArn': {
+                                    'Fn::GetAtt': [
+                                        'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                        'Arn'
+                                    ]
+                                },
+                                'RunOrder': 1
+                            }
+                        ],
+                        'Name': 'Assets'
+                    },
+                    {
+                        'Actions': [
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Deploy',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CloudFormation',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'StackName': 'igvfd-some-branch-DeployContinuousIntegration-ContinuousIntegrationStack',
+                                    'Capabilities': 'CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND',
+                                    'RoleArn': {
+                                        'Fn::Join': [
+                                            '',
+                                            [
+                                                'arn:',
+                                                {
+                                                    'Ref': 'AWS::Partition'
+                                                },
+                                                ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
+                                            ]
+                                        ]
+                                    },
+                                    'TemplateConfiguration': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployContinuousIntegration/TestContinuousDeploymentPipelineigvfdsomebranchDeployContinuousIntegrationContinuousIntegrationStack969A0C2E.template.json.config.json',
+                                    'ActionMode': 'CHANGE_SET_REPLACE',
+                                    'ChangeSetName': 'PipelineChange',
+                                    'TemplatePath': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployContinuousIntegration/TestContinuousDeploymentPipelineigvfdsomebranchDeployContinuousIntegrationContinuousIntegrationStack969A0C2E.template.json'
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'Prepare',
                                 'RoleArn': {
                                     'Fn::Join': [
                                         '',
                                         [
                                             'arn:',
-                                            {
-                                                'Ref': 'AWS::Partition'
-                                            },
-                                            ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
+                                           {
+                                               'Ref': 'AWS::Partition'
+                                           },
+                                            ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                         ]
                                     ]
                                 },
-                                'TemplateConfiguration': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployContinuousIntegration/TestContinuousDeploymentPipelineigvfdsomebranchDeployContinuousIntegrationContinuousIntegrationStack969A0C2E.template.json.config.json',
-                                'ActionMode': 'CHANGE_SET_REPLACE',
-                                'ChangeSetName': 'PipelineChange',
-                                'TemplatePath': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployContinuousIntegration/TestContinuousDeploymentPipelineigvfdsomebranchDeployContinuousIntegrationContinuousIntegrationStack969A0C2E.template.json'
+                                'RunOrder': 1
                             },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'Prepare',
-                            'RoleArn': {
-                                'Fn::Join': [
-                                    '',
-                                    [
-                                        'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
-                                        ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Deploy',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CloudFormation',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'StackName': 'igvfd-some-branch-DeployContinuousIntegration-ContinuousIntegrationStack',
+                                    'ActionMode': 'CHANGE_SET_EXECUTE',
+                                    'ChangeSetName': 'PipelineChange'
+                                },
+                                'Name': 'Deploy',
+                                'RoleArn': {
+                                    'Fn::Join': [
+                                        '',
+                                        [
+                                            'arn:',
+                                           {
+                                               'Ref': 'AWS::Partition'
+                                           },
+                                            ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
+                                        ]
                                     ]
-                                ]
-                            },
-                            'RunOrder': 1
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Deploy',
-                                'Owner': 'AWS',
-                                'Provider': 'CloudFormation',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'StackName': 'igvfd-some-branch-DeployContinuousIntegration-ContinuousIntegrationStack',
-                                'ActionMode': 'CHANGE_SET_EXECUTE',
-                                'ChangeSetName': 'PipelineChange'
-                            },
-                            'Name': 'Deploy',
-                            'RoleArn': {
-                                'Fn::Join': [
-                                    '',
-                                    [
-                                        'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
-                                        ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
+                                },
+                                'RunOrder': 2
+                            }
+                        ],
+                        'Name': 'igvfd-some-branch-DeployContinuousIntegration'
+                    },
+                    {
+                        'Actions': [
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Deploy',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CloudFormation',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'StackName': 'igvfd-some-branch-DeployDevelopment-OpensearchStack',
+                                    'Capabilities': 'CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND',
+                                    'RoleArn': {
+                                        'Fn::Join': [
+                                            '',
+                                            [
+                                                'arn:',
+                                                {
+                                                    'Ref': 'AWS::Partition'
+                                                },
+                                                ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
+                                            ]
+                                        ]
+                                    },
+                                    'TemplateConfiguration': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentOpensearchStackB95E4F35.template.json.config.json',
+                                    'ActionMode': 'CHANGE_SET_REPLACE',
+                                    'ChangeSetName': 'PipelineChange',
+                                    'TemplatePath': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentOpensearchStackB95E4F35.template.json'
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'OpensearchStack.Prepare',
+                                'RoleArn': {
+                                    'Fn::Join': [
+                                        '',
+                                        [
+                                            'arn:',
+                                           {
+                                               'Ref': 'AWS::Partition'
+                                           },
+                                            ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
+                                        ]
                                     ]
-                                ]
+                                },
+                                'RunOrder': 1
                             },
-                            'RunOrder': 2
-                        }
-                    ],
-                    'Name': 'igvfd-some-branch-DeployContinuousIntegration'
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Deploy',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CloudFormation',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'StackName': 'igvfd-some-branch-DeployDevelopment-PostgresStack',
+                                    'Capabilities': 'CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND',
+                                    'RoleArn': {
+                                        'Fn::Join': [
+                                            '',
+                                            [
+                                                'arn:',
+                                                {
+                                                    'Ref': 'AWS::Partition'
+                                                },
+                                                ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
+                                            ]
+                                        ]
+                                    },
+                                    'TemplateConfiguration': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentPostgresStack0D31998D.template.json.config.json',
+                                    'ActionMode': 'CHANGE_SET_REPLACE',
+                                    'ChangeSetName': 'PipelineChange',
+                                    'TemplatePath': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentPostgresStack0D31998D.template.json'
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'PostgresStack.Prepare',
+                                'RoleArn': {
+                                    'Fn::Join': [
+                                        '',
+                                        [
+                                            'arn:',
+                                           {
+                                               'Ref': 'AWS::Partition'
+                                           },
+                                            ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
+                                        ]
+                                    ]
+                                },
+                                'RunOrder': 1
+                            },
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Deploy',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CloudFormation',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'StackName': 'igvfd-some-branch-DeployDevelopment-OpensearchStack',
+                                    'ActionMode': 'CHANGE_SET_EXECUTE',
+                                    'ChangeSetName': 'PipelineChange'
+                                },
+                                'Name': 'OpensearchStack.Deploy',
+                                'RoleArn': {
+                                    'Fn::Join': [
+                                        '',
+                                        [
+                                            'arn:',
+                                           {
+                                               'Ref': 'AWS::Partition'
+                                           },
+                                            ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
+                                        ]
+                                    ]
+                                },
+                                'RunOrder': 2
+                            },
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Deploy',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CloudFormation',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'StackName': 'igvfd-some-branch-DeployDevelopment-PostgresStack',
+                                    'ActionMode': 'CHANGE_SET_EXECUTE',
+                                    'ChangeSetName': 'PipelineChange'
+                                },
+                                'Name': 'PostgresStack.Deploy',
+                                'RoleArn': {
+                                    'Fn::Join': [
+                                        '',
+                                        [
+                                            'arn:',
+                                           {
+                                               'Ref': 'AWS::Partition'
+                                           },
+                                            ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
+                                        ]
+                                    ]
+                                },
+                                'RunOrder': 2
+                            },
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Deploy',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CloudFormation',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'StackName': 'igvfd-some-branch-DeployDevelopment-BackendStack',
+                                    'Capabilities': 'CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND',
+                                    'RoleArn': {
+                                        'Fn::Join': [
+                                            '',
+                                            [
+                                                'arn:',
+                                                {
+                                                    'Ref': 'AWS::Partition'
+                                                },
+                                                ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
+                                            ]
+                                        ]
+                                    },
+                                    'TemplateConfiguration': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentBackendStackCEA09DF5.template.json.config.json',
+                                    'ActionMode': 'CHANGE_SET_REPLACE',
+                                    'ChangeSetName': 'PipelineChange',
+                                    'TemplatePath': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentBackendStackCEA09DF5.template.json'
+                                },
+                                'InputArtifacts': [
+                                    {
+                                        'Name': 'SynthStep_Output'
+                                    }
+                                ],
+                                'Name': 'BackendStack.Prepare',
+                                'RoleArn': {
+                                    'Fn::Join': [
+                                        '',
+                                        [
+                                            'arn:',
+                                           {
+                                               'Ref': 'AWS::Partition'
+                                           },
+                                            ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
+                                        ]
+                                    ]
+                                },
+                                'RunOrder': 3
+                            },
+                            {
+                                'ActionTypeId': {
+                                    'Category': 'Deploy',
+                                    'Owner': 'AWS',
+                                    'Provider': 'CloudFormation',
+                                    'Version': '1'
+                                },
+                                'Configuration': {
+                                    'StackName': 'igvfd-some-branch-DeployDevelopment-BackendStack',
+                                    'ActionMode': 'CHANGE_SET_EXECUTE',
+                                    'ChangeSetName': 'PipelineChange'
+                                },
+                                'Name': 'BackendStack.Deploy',
+                                'RoleArn': {
+                                    'Fn::Join': [
+                                        '',
+                                        [
+                                            'arn:',
+                                           {
+                                               'Ref': 'AWS::Partition'
+                                           },
+                                            ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
+                                        ]
+                                    ]
+                                },
+                                'RunOrder': 4
+                            }
+                        ],
+                        'Name': 'igvfd-some-branch-DeployDevelopment'
+                    }
+                ],
+                'ArtifactStore': {
+                    'Location': {
+                        'Ref': 'TestContinuousDeploymentPipelineArtifactsBucket40CBE2D1'
+                    },
+                    'Type': 'S3'
                 },
-                {
-                    'Actions': [
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Deploy',
-                                'Owner': 'AWS',
-                                'Provider': 'CloudFormation',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'StackName': 'igvfd-some-branch-DeployDevelopment-OpensearchStack',
-                                'Capabilities': 'CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND',
-                                'RoleArn': {
-                                    'Fn::Join': [
-                                        '',
-                                        [
-                                            'arn:',
-                                            {
-                                                'Ref': 'AWS::Partition'
-                                            },
-                                            ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
-                                        ]
-                                    ]
-                                },
-                                'TemplateConfiguration': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentOpensearchStackB95E4F35.template.json.config.json',
-                                'ActionMode': 'CHANGE_SET_REPLACE',
-                                'ChangeSetName': 'PipelineChange',
-                                'TemplatePath': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentOpensearchStackB95E4F35.template.json'
-                            },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'OpensearchStack.Prepare',
-                            'RoleArn': {
-                                'Fn::Join': [
-                                    '',
-                                    [
-                                        'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
-                                        ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
-                                    ]
-                                ]
-                            },
-                            'RunOrder': 1
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Deploy',
-                                'Owner': 'AWS',
-                                'Provider': 'CloudFormation',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'StackName': 'igvfd-some-branch-DeployDevelopment-PostgresStack',
-                                'Capabilities': 'CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND',
-                                'RoleArn': {
-                                    'Fn::Join': [
-                                        '',
-                                        [
-                                            'arn:',
-                                            {
-                                                'Ref': 'AWS::Partition'
-                                            },
-                                            ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
-                                        ]
-                                    ]
-                                },
-                                'TemplateConfiguration': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentPostgresStack0D31998D.template.json.config.json',
-                                'ActionMode': 'CHANGE_SET_REPLACE',
-                                'ChangeSetName': 'PipelineChange',
-                                'TemplatePath': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentPostgresStack0D31998D.template.json'
-                            },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'PostgresStack.Prepare',
-                            'RoleArn': {
-                                'Fn::Join': [
-                                    '',
-                                    [
-                                        'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
-                                        ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
-                                    ]
-                                ]
-                            },
-                            'RunOrder': 1
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Deploy',
-                                'Owner': 'AWS',
-                                'Provider': 'CloudFormation',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'StackName': 'igvfd-some-branch-DeployDevelopment-OpensearchStack',
-                                'ActionMode': 'CHANGE_SET_EXECUTE',
-                                'ChangeSetName': 'PipelineChange'
-                            },
-                            'Name': 'OpensearchStack.Deploy',
-                            'RoleArn': {
-                                'Fn::Join': [
-                                    '',
-                                    [
-                                        'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
-                                        ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
-                                    ]
-                                ]
-                            },
-                            'RunOrder': 2
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Deploy',
-                                'Owner': 'AWS',
-                                'Provider': 'CloudFormation',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'StackName': 'igvfd-some-branch-DeployDevelopment-PostgresStack',
-                                'ActionMode': 'CHANGE_SET_EXECUTE',
-                                'ChangeSetName': 'PipelineChange'
-                            },
-                            'Name': 'PostgresStack.Deploy',
-                            'RoleArn': {
-                                'Fn::Join': [
-                                    '',
-                                    [
-                                        'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
-                                        ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
-                                    ]
-                                ]
-                            },
-                            'RunOrder': 2
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Deploy',
-                                'Owner': 'AWS',
-                                'Provider': 'CloudFormation',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'StackName': 'igvfd-some-branch-DeployDevelopment-BackendStack',
-                                'Capabilities': 'CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND',
-                                'RoleArn': {
-                                    'Fn::Join': [
-                                        '',
-                                        [
-                                            'arn:',
-                                            {
-                                                'Ref': 'AWS::Partition'
-                                            },
-                                            ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
-                                        ]
-                                    ]
-                                },
-                                'TemplateConfiguration': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentBackendStackCEA09DF5.template.json.config.json',
-                                'ActionMode': 'CHANGE_SET_REPLACE',
-                                'ChangeSetName': 'PipelineChange',
-                                'TemplatePath': 'SynthStep_Output::assembly-Default-TestContinuousDeploymentPipeline-igvfd-some-branch-DeployDevelopment/TestContinuousDeploymentPipelineigvfdsomebranchDeployDevelopmentBackendStackCEA09DF5.template.json'
-                            },
-                            'InputArtifacts': [
-                                {
-                                    'Name': 'SynthStep_Output'
-                                }
-                            ],
-                            'Name': 'BackendStack.Prepare',
-                            'RoleArn': {
-                                'Fn::Join': [
-                                    '',
-                                    [
-                                        'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
-                                        ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
-                                    ]
-                                ]
-                            },
-                            'RunOrder': 3
-                        },
-                        {
-                            'ActionTypeId': {
-                                'Category': 'Deploy',
-                                'Owner': 'AWS',
-                                'Provider': 'CloudFormation',
-                                'Version': '1'
-                            },
-                            'Configuration': {
-                                'StackName': 'igvfd-some-branch-DeployDevelopment-BackendStack',
-                                'ActionMode': 'CHANGE_SET_EXECUTE',
-                                'ChangeSetName': 'PipelineChange'
-                            },
-                            'Name': 'BackendStack.Deploy',
-                            'RoleArn': {
-                                'Fn::Join': [
-                                    '',
-                                    [
-                                        'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
-                                        ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
-                                    ]
-                                ]
-                            },
-                            'RunOrder': 4
-                        }
-                    ],
-                    'Name': 'igvfd-some-branch-DeployDevelopment'
-                }
-            ],
-            'ArtifactStore': {
-                'Location': {
-                    'Ref': 'TestContinuousDeploymentPipelineArtifactsBucket40CBE2D1'
-                },
-                'Type': 'S3'
-            },
-            'RestartExecutionOnUpdate': True
-        }
+                'RestartExecutionOnUpdate': True
+            }}
     )
     template.resource_count_is(
         'AWS::S3::Bucket',
@@ -1237,6 +1291,58 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                 }
                             ],
                             'Name': 'FileAsset4',
+                            'RoleArn': {
+                                'Fn::GetAtt': [
+                                    'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
+                                    'Arn'
+                                ]
+                            },
+                            'RunOrder': 1
+                        },
+                        {
+                            'ActionTypeId': {
+                                'Category': 'Build',
+                                'Owner': 'AWS',
+                                'Provider': 'CodeBuild',
+                                'Version': '1'
+                            },
+                            'Configuration': {
+                                'ProjectName': {
+                                    'Ref': 'TestProductionDeploymentPipelineCodePipelineAssetsFileAsset504A5A135'
+                                }
+                            },
+                            'InputArtifacts': [
+                                {
+                                    'Name': 'SynthStep_Output'
+                                }
+                            ],
+                            'Name': 'FileAsset5',
+                            'RoleArn': {
+                                'Fn::GetAtt': [
+                                    'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
+                                    'Arn'
+                                ]
+                            },
+                            'RunOrder': 1
+                        },
+                        {
+                            'ActionTypeId': {
+                                'Category': 'Build',
+                                'Owner': 'AWS',
+                                'Provider': 'CodeBuild',
+                                'Version': '1'
+                            },
+                            'Configuration': {
+                                'ProjectName': {
+                                    'Ref': 'TestProductionDeploymentPipelineCodePipelineAssetsFileAsset6A58D8231'
+                                }
+                            },
+                            'InputArtifacts': [
+                                {
+                                    'Name': 'SynthStep_Output'
+                                }
+                            ],
+                            'Name': 'FileAsset6',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',

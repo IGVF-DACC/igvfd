@@ -110,7 +110,7 @@ def test_config_build_config_from_name():
     ]
     postgres_instance_props = config.postgres['instances'][0]['props']
     assert (
-        'snapshot_source_db_identifier' not in postgres_instance_props
+        'snapshot_source_db_identifier' in postgres_instance_props
         and 'snapshot_arn' not in postgres_instance_props
     )
     opensearch_instance_props = config.opensearch['clusters'][0]['props']
