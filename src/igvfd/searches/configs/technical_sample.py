@@ -77,5 +77,8 @@ def technical_sample():
             'description': {
                 'title': 'Description'
             },
+            'summary': {
+                'title': 'Summary'
+            }
         }
     }
