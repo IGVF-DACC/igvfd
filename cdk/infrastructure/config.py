@@ -15,6 +15,7 @@ from typing import Optional
 from typing import Tuple
 
 from infrastructure.constants import DEV_DATABASE_IDENTIFIER
+from infrastructure.constants import PROD_DATABASE_IDENTIFIER
 
 from infrastructure.constructs.existing import igvf_dev
 from infrastructure.constructs.existing import igvf_prod
@@ -57,7 +58,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
-                            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
+                            'snapshot_source_db_identifier': PROD_DATABASE_IDENTIFIER,
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
@@ -117,6 +118,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
+                            'snapshot_source_db_identifier': PROD_DATABASE_IDENTIFIER,
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
