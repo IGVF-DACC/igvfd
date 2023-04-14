@@ -22,5 +22,5 @@ class PhenotypicFeature(Item):
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
-        Path('feature', include=['term_id', 'term_name'])
+        Path('feature', include=['@id', 'term_id', 'term_name'])
     ]
