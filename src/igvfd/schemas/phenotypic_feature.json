@@ -76,7 +76,7 @@
     },
     "fuzzy_searchable_fields": [
         "@type",
-        "feature"
+        "feature.term_name"
     ],
     "changelog": "/profiles/changelogs/phenotypic_feature.md"
 }
