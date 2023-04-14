@@ -1,6 +1,6 @@
 {
-    "hash": "488e734286c9581a45e5da2cbc5cd29c",
-    "index_name": "reference_data_488e7342",
+    "hash": "651ad7e7b4dbcae24e20034fa3fded86",
+    "index_name": "reference_data_651ad7e7",
     "item_type": "reference_data",
     "mapping": {
         "dynamic_templates": [
@@ -344,6 +344,9 @@
                         "type": "text"
                     },
                     "revoke_detail": {
+                        "type": "keyword"
+                    },
+                    "s3_uri": {
                         "type": "keyword"
                     },
                     "schema_version": {

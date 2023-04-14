@@ -45,3 +45,26 @@ def test_types_file_set_external_sheet(sequence_data, root):
     }
     for k, v in expected.items():
         assert actual[k] == v
+
+
+def test_types_file_s3_uri_is_present(sequence_data):
+    assert 's3_uri' in sequence_data
+
+
+def test_types_file_s3_uri_non_submittable(testapp, analysis_set_with_sample, award, lab):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '515c8a6af303ea86bc59c629ff198277',
+        'file_format': 'fastq',
+        'file_set': analysis_set_with_sample['@id'],
+        'minimum_read_length': 99,
+        'maximum_read_length': 101,
+        'mean_read_length': 100,
+        'read_count': 23040138,
+        'file_size': 5495803,
+        'content_type': 'reads',
+        'sequencing_run': 1,
+        's3_uri': 's3://foo/bar/baz.fastq.gz'
+    }
+    testapp.post_json('/sequence_data/', item, status=422)
