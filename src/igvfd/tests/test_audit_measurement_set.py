@@ -130,3 +130,25 @@ def test_audit_related_multiome_datasets(
         error['category'] != 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_seqspec(
+    testapp,
+    measurement_set
+):
+    res = testapp.get(measurement_set['@id'] + '@@index-data')
+    assert any(
+        error['category'] == 'missing seqspec'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/10x-ATAC/spec.yaml'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@index-data')
+    assert all(
+        error['category'] != 'missing seqspec'
+        for error in res.json['audit'].get('WARNING', [])
+    )
