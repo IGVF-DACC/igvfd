@@ -2,7 +2,7 @@
 
 ### Schema version 2
 
-* Remove `plasmid_map` property. A plasmid map should be submitted to  `documents` property instead.
+* Remove `plasmid_map`. Use `documents` instead.
 
 ### Minor changes since schema version 1
 

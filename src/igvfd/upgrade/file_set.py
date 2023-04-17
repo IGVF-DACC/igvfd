@@ -38,8 +38,8 @@ def measurement_set_3_4(value, system):
 @upgrade_step('construct_library', '1', '2')
 def construct_library_1_2(value, system):
     # https://igvf.atlassian.net/browse/IGVF-474
-    plasmid_map = value.get('plasmid_map', '')
-    if plasmid_map == '':
+    plasmid_map = value.get('plasmid_map', None)
+    if plasmid_map is None:
         return
     else:
         if 'documents' in value:
