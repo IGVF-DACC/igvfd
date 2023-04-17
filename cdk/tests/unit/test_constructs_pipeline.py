@@ -656,10 +656,10 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Fn::Join': [
                                         '',
                                         [
-                                            'arn:',
-                                            {
-                                                'Ref': 'AWS::Partition'
-                                            },
+                                                'arn:',
+                                                {
+                                                    'Ref': 'AWS::Partition'
+                                                },
                                             ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
                                         ]
                                     ]
@@ -680,9 +680,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
+                                       {
+                                           'Ref': 'AWS::Partition'
+                                       },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -707,9 +707,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
+                                       {
+                                           'Ref': 'AWS::Partition'
+                                       },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -735,10 +735,10 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Fn::Join': [
                                         '',
                                         [
-                                            'arn:',
-                                            {
-                                                'Ref': 'AWS::Partition'
-                                            },
+                                                'arn:',
+                                                {
+                                                    'Ref': 'AWS::Partition'
+                                                },
                                             ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
                                         ]
                                     ]
@@ -759,9 +759,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
+                                       {
+                                           'Ref': 'AWS::Partition'
+                                       },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -782,10 +782,10 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Fn::Join': [
                                         '',
                                         [
-                                            'arn:',
-                                            {
-                                                'Ref': 'AWS::Partition'
-                                            },
+                                                'arn:',
+                                                {
+                                                    'Ref': 'AWS::Partition'
+                                                },
                                             ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
                                         ]
                                     ]
@@ -806,9 +806,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
+                                       {
+                                           'Ref': 'AWS::Partition'
+                                       },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -833,9 +833,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
+                                       {
+                                           'Ref': 'AWS::Partition'
+                                       },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -860,9 +860,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
+                                       {
+                                           'Ref': 'AWS::Partition'
+                                       },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -883,10 +883,10 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     'Fn::Join': [
                                         '',
                                         [
-                                            'arn:',
-                                            {
-                                                'Ref': 'AWS::Partition'
-                                            },
+                                                'arn:',
+                                                {
+                                                    'Ref': 'AWS::Partition'
+                                                },
                                             ':iam::109189702753:role/cdk-hnb659fds-cfn-exec-role-109189702753-us-west-2'
                                         ]
                                     ]
@@ -907,9 +907,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
+                                       {
+                                           'Ref': 'AWS::Partition'
+                                       },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -934,9 +934,9 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                     '',
                                     [
                                         'arn:',
-                                        {
-                                            'Ref': 'AWS::Partition'
-                                        },
+                                       {
+                                           'Ref': 'AWS::Partition'
+                                       },
                                         ':iam::109189702753:role/cdk-hnb659fds-deploy-role-109189702753-us-west-2'
                                     ]
                                 ]
@@ -1289,6 +1289,58 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                 }
                             ],
                             'Name': 'FileAsset4',
+                            'RoleArn': {
+                                'Fn::GetAtt': [
+                                    'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
+                                    'Arn'
+                                ]
+                            },
+                            'RunOrder': 1
+                        },
+                        {
+                            'ActionTypeId': {
+                                'Category': 'Build',
+                                'Owner': 'AWS',
+                                'Provider': 'CodeBuild',
+                                'Version': '1'
+                            },
+                            'Configuration': {
+                                'ProjectName': {
+                                    'Ref': 'TestProductionDeploymentPipelineCodePipelineAssetsFileAsset504A5A135'
+                                }
+                            },
+                            'InputArtifacts': [
+                                {
+                                    'Name': 'SynthStep_Output'
+                                }
+                            ],
+                            'Name': 'FileAsset5',
+                            'RoleArn': {
+                                'Fn::GetAtt': [
+                                    'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
+                                    'Arn'
+                                ]
+                            },
+                            'RunOrder': 1
+                        },
+                        {
+                            'ActionTypeId': {
+                                'Category': 'Build',
+                                'Owner': 'AWS',
+                                'Provider': 'CodeBuild',
+                                'Version': '1'
+                            },
+                            'Configuration': {
+                                'ProjectName': {
+                                    'Ref': 'TestProductionDeploymentPipelineCodePipelineAssetsFileAsset6A58D8231'
+                                }
+                            },
+                            'InputArtifacts': [
+                                {
+                                    'Name': 'SynthStep_Output'
+                                }
+                            ],
+                            'Name': 'FileAsset6',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
