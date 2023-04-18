@@ -39,6 +39,9 @@ class HumanDonor(Donor):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
     ]
+    audit_inherit = [
+        'related_donors.donor'
+    ]
 
 
 @collection(
