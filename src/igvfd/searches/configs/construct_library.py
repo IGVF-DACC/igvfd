@@ -42,9 +42,6 @@ def cell_line():
             'origins': {
                 'title': 'Origins'
             },
-            'plasmid_map': {
-                'title': 'Plasmid Map'
-            },
             'guide_library_details': {
                 'title': 'Guide Library Details'
             },

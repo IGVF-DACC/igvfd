@@ -36,3 +36,26 @@ def test_audit_construct_library_associated_disease(
         error['category'] == 'missing metadata'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_construct_library_plasmid_map(
+    testapp,
+    base_construct_library,
+    plasmid_map_document
+):
+    # Every ConstructLibrary should have a "plasmid map" document in
+    # the documents property
+    res = testapp.get(base_construct_library['@id'] + '@@index-data')
+    assert any(
+        error['category'] == 'missing plasmid map'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+    testapp.patch_json(
+        base_construct_library['@id'],
+        {'documents': [plasmid_map_document['@id']]}
+    )
+    res = testapp.get(base_construct_library['@id'] + '@@index-data')
+    assert 'missing plasmid map' not in (
+        error['category'] for error in res.json['audit'].get('WARNING', [])
+    )

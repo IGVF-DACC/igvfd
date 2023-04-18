@@ -1,6 +1,6 @@
 {
-    "hash": "1498e4608840fa5639168e32267f06d3",
-    "index_name": "construct_library_1498e460",
+    "hash": "69a8a537800c22e49a763f355def9285",
+    "index_name": "construct_library_69a8a537",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -348,9 +348,6 @@
                         "type": "text"
                     },
                     "origins": {
-                        "type": "keyword"
-                    },
-                    "plasmid_map": {
                         "type": "keyword"
                     },
                     "product_id": {

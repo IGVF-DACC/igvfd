@@ -27,6 +27,22 @@ def base_construct_library(testapp, lab, award):
         'scope': 'genome-wide',
         'origins': [
             'transcription start sites'
-        ]
+        ],
     }
     return testapp.post_json('/construct_library', item).json['@graph'][0]
+
+
+@pytest.fixture
+def construct_library_v1(
+        testapp, lab, award, plasmid_map_document, document_v1):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'scope': 'genome-wide',
+        'origins': [
+            'transcription start sites'
+        ],
+        'plasmid_map': plasmid_map_document['@id'],
+        'documents': [document_v1['@id']]
+    }
+    return item
