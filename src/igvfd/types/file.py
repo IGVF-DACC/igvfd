@@ -336,7 +336,7 @@ class AlignmentData(File):
             'notSubmittable': True,
         }
     )
-    def content_summary(self, request, redacted=None, filtered=None, content_type):
+    def content_summary(self, request, content_type, redacted=None, filtered=None):
         redacted_phrase = ''
         if redacted is not None and redacted:
             redacted_phrase = 'redacted'
