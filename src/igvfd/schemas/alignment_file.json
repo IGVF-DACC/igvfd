@@ -1,0 +1,85 @@
+{
+    "title": "Alignment File",
+    "$id": "/profiles/alignment_file.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submission of a file containing alignment data.",
+    "required": [
+        "award",
+        "lab",
+        "md5sum",
+        "file_format",
+        "file_set",
+        "content_type"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases",
+        "md5sum"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "file.json#/dependentSchemas"
+        ]
+    },
+    "type": "object",
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "content_type": {
+            "comment": "Content Type describes the content of the file.",
+            "enum": [
+                "alignments"
+            ]
+        },
+        "file_format": {
+            "enum": [
+                "bam"
+            ]
+        },
+        "redacted": {
+            "title": "Redacted",
+            "description": "Whether the alignments have been redacted to mask identifying information or not.",
+            "type": "boolean"
+        },
+        "filtered": {
+            "title": "Filtered",
+            "description": "Whether the alignments have been filtered or not.",
+            "type": "boolean"
+        },
+        "reference": {
+            "title": "Reference",
+            "description": "Link to the reference to which the sequence data was aligned.",
+            "comment": "See file.json for available identifiers.",
+            "type": "string",
+            "linkTo": "File"
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "accession",
+        "@type",
+        "content_type",
+        "file_format"
+    ],
+    "changelog": "/profiles/changelogs/alignment_file.md"
+}
