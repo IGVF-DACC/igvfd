@@ -9,7 +9,8 @@
         "md5sum",
         "file_format",
         "file_set",
-        "content_type"
+        "content_type",
+        "reference"
     ],
     "identifyingProperties": [
         "uuid",
@@ -49,7 +50,8 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
-                "alignments"
+                "alignments",
+                "transcriptome alignments"
             ]
         },
         "file_format": {

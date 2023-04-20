@@ -28,7 +28,7 @@
         "status": "released",
         "md5sum": "7cc757ed8a9c41ec3f018876017c9be1",
         "file_format": "bam",
-        "content_type": "alignments",
+        "content_type": "transcriptome alignments",
         "submitted_file_name": "/Users/igvf/igvf_files/alignments.bam",
         "file_size": 45200010,
         "upload_status": "pending",
