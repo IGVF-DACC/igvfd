@@ -65,3 +65,16 @@ def audit_related_multiome_datasets(value, system):
                 f'multiome size of related MeasurementSet object(s): {datasets_with_different_multiome_sizes}'
             )
             yield AuditFailure('inconsistent multiome metadata', detail, level='WARNING')
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_seqspec(value, system):
+    '''MeasurementSet objects should specify the associated seqspec YAML file
+    located in the seqspec repository: https://github.com/IGVF/seqspec.'''
+    if 'seqspec' not in value:
+        detail = (
+            f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'should specify the associated seqspec YAML file link located in '
+            f'the seqspec repository: https://github.com/IGVF/seqspec.'
+        )
+        yield AuditFailure('missing seqspec', detail, level='WARNING')
