@@ -14,8 +14,8 @@ def audit_related_donors(value, system):
     between each HumanDonor in their related donors.'''
     if 'related_donors' in value:
         for i in range(len(value['related_donors'])):
-            for j in range(len(value['related_donors']) - 1):
-                if value['related_donors'][i]['donor'] == value['related_donors'][j + 1]['donor']:
+            for j in range(i + 1, len(value['related_donors'])):
+                if value['related_donors'][i]['donor'] == value['related_donors'][j]['donor']:
                     duplicated_donor = value['related_donors'][i]['donor']
                     detail = (
                         f'HumanDonor {audit_link(path_to_text(value["@id"]), value["@id"])} '
@@ -23,9 +23,9 @@ def audit_related_donors(value, system):
                     )
                     yield AuditFailure('inconsistent related donors metadata', detail, level='WARNING')
                 related_donor_object = system.get('request').embed(
-                    value['related_donors'][j + 1]['donor'], '@@object?skip_calculated=true')
+                    value['related_donors'][j]['donor'], '@@object?skip_calculated=true')
                 if 'related_donors' not in related_donor_object or value['@id'] not in [donor for donor in related_donor_object['related_donors']['donor']]:
-                    related_donor_not_mutual = value['related_donors'][j + 1]['donor']
+                    related_donor_not_mutual = value['related_donors'][j]['donor']
                     detail = (
                         f'HumanDonor {audit_link(path_to_text(value["@id"]), value["@id"])} '
                         f'has {audit_link(path_to_text(related_donor_not_mutual), related_donor_not_mutual)} '
