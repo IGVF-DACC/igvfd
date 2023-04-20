@@ -402,3 +402,19 @@ def download(context, request):
     if proxy and accel_redirect_header:
         return InternalRedirect(headers={accel_redirect_header: '/_proxy/' + str(location)})
     raise HTTPTemporaryRedirect(location=location)
+
+
+@view_config(
+    name='readcredentials',
+    context=File,
+    request_method='GET',
+    permission='view'
+)
+def get_read_token(context, request):
+    external = context.propsheets.get('external', {})
+    bucket = external.get('bucket')
+    return {
+        'bucket': bucket,
+        'key_id': 'secret_key_id',
+        'secret_key': 'super_secret_key'
+    }
