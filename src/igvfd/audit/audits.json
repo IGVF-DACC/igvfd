@@ -1,0 +1,50 @@
+[
+    {
+        "category": "Metadata Audits",
+        "messages": [
+            {
+                "message": "missing metadata",
+                "levels": [
+                    "ERROR"
+                ],
+                "explanation": "A metadata property is missing and needs to be specified."
+            },
+            {
+                "message": "missing plasmid map",
+                "levels": [
+                    "WARNING"
+                ],
+                "explanation": "ConstructLibrary objects should have a plasmid map Document attached."
+            },
+            {
+                "message": "inconsistent multiome metadata",
+                "levels": [
+                    "WARNING"
+                ],
+                "explanation": "MeasurementSet objects with a specified `multiome_size` should have the same amount of links to other MeasurementSet objects (minus itself) specified in `related_multiome_datasets` with the same `multiome_size` and `samples`."
+            },
+            {
+                "message": "missing seqspec",
+                "levels": [
+                    "WARNING"
+                ],
+                "explanation": "MeasurementSet objects should specify the associated seqspec YAML file located in the seqspec repository: https://github.com/IGVF/seqspec."
+            },
+            {
+                "message": "inconsistent related donors metadata",
+                "levels": [
+                    "WARNING",
+                    "ERROR"
+                ],
+                "explanation": "HumanDonors should have unique related donors and should be mutually specified between each HumanDonor in their related donors."
+            },
+            {
+                "message": "inconsistent sorted fraction metadata",
+                "levels": [
+                    "ERROR"
+                ],
+                "explanation": "Samples that are a sorted_fraction of a parent sample should share most of the parent's metadata properties."
+            }
+        ]
+    }
+]
