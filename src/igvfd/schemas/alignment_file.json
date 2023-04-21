@@ -35,6 +35,9 @@
         },
         {
             "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/processed_files"
         }
     ],
     "dependentSchemas": {
@@ -68,13 +71,6 @@
             "title": "Filtered",
             "description": "Whether the alignments have been filtered or not.",
             "type": "boolean"
-        },
-        "reference": {
-            "title": "Reference",
-            "description": "Link to the reference to which the sequence data was aligned.",
-            "comment": "See file.json for available identifiers.",
-            "type": "string",
-            "linkTo": "File"
         }
     },
     "fuzzy_searchable_fields": [
