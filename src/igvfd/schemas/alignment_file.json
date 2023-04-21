@@ -10,7 +10,7 @@
         "file_format",
         "file_set",
         "content_type",
-        "reference"
+        "references"
     ],
     "identifyingProperties": [
         "uuid",
