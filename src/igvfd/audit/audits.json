@@ -1,34 +1,5 @@
 [
     {
-        "category": "Uniform Pipeline Requirements",
-        "audits": [
-            {
-                "messages": [
-                    {
-                        "message": "Extremely low read length",
-                        "levels": [
-                            "ERROR"
-                        ]
-                    },
-                    {
-                        "message": "Insufficient read length",
-                        "levels": [
-                            "NOT_COMPLIANT"
-                        ]
-                    },
-                    {
-                        "message": "Low read length",
-                        "levels": [
-                            "ERROR",
-                            "WARNING"
-                        ]
-                    }
-                ],
-                "explanation": "The sequencing read length is below the given threshold for the assay type. For a list of standards for individual assay types"
-            }
-        ]
-    },
-    {
         "category": "Metadata Audits",
         "audits": [
             {
