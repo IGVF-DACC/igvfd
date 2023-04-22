@@ -1,5 +1,8 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 11
+
+* Remove `taxa` from `required`.
 
 ### Schema version 10
 
