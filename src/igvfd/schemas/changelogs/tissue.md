@@ -1,5 +1,8 @@
 ## Changelog for *`tissue.json`*
 
+### Schema version 12
+
+* Remove `taxa` from `required`.
 
 ### Schema version 11
 

@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 9
+
+* Remove `taxa` from `required`.
+
 ### Schema version 8
 
 * Rename `differentiated cell` to `differentiated cell specimen`.

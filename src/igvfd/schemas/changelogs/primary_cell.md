@@ -1,5 +1,8 @@
 ## Changelog for *`primary_cell.json`*
 
+### Schema version 12
+
+* Remove `taxa` from `required`.
 
 ### Schema version 11
 
