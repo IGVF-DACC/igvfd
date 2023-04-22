@@ -5,8 +5,7 @@ def test_audit_related_donors(
     testapp,
     human_donor,
     parent_human_donor_1,
-    parent_human_donor_2,
-    parent_human_donor_3
+    parent_human_donor_2
 ):
     # Related donors should not have duplicated donor objects and should mutually specify one another
     testapp.patch_json(
@@ -35,7 +34,7 @@ def test_audit_related_donors(
     testapp.patch_json(
         parent_human_donor_1['@id'],
         {
-            'related_donors': [{'donor': human_donor['@id'], 'relationship_type': 'child'}]
+            'related_donors': [{'donor': parent_human_donor_2['@id'], 'relationship_type': 'child'}]
         }
     )
     res = testapp.get(human_donor['@id'] + '@@index-data')
@@ -43,6 +42,17 @@ def test_audit_related_donors(
         error['category'] != 'inconsistent related donors metadata'
         for error in res.json['audit'].get('WARNING', [])
     )
+    assert any(
+        error['category'] == 'inconsistent related donors metadata'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        parent_human_donor_1['@id'],
+        {
+            'related_donors': [{'donor': human_donor['@id'], 'relationship_type': 'child'}]
+        }
+    )
+    res = testapp.get(human_donor['@id'] + '@@index-data')
     assert all(
         error['category'] != 'inconsistent related donors metadata'
         for error in res.json['audit'].get('ERROR', [])
@@ -85,5 +95,9 @@ def test_audit_related_donors(
     )
     assert all(
         error['category'] != 'inconsistent related donors metadata'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    assert all(
+        error['category'] != 'audit script error'
         for error in res.json['audit'].get('ERROR', [])
     )
