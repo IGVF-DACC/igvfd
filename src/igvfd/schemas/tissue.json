@@ -53,9 +53,6 @@
         ],
         "ccf_id": {
             "comment": "Common coordinate framework identifier only applies to human tissue samples.",
-            "required": [
-                "taxa"
-            ],
             "properties": {
                 "taxa": {
                     "const": "Homo sapiens"
