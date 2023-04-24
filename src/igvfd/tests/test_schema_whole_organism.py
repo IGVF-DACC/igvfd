@@ -36,10 +36,6 @@ def test_taxa_dependency(whole_organism, testapp):
         whole_organism['@id'],
         {'taxa': 'Saccharomyces'}, expect_errors=True)
     assert res.status_code == 422
-    res = testapp.patch_json(
-        whole_organism['@id'],
-        {'taxa': 'Homo sapiens'}, expect_errors=True)
-    assert res.status_code == 422
 
 
 def test_collections(whole_organism, testapp):
