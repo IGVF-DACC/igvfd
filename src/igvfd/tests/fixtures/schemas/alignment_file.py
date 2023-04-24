@@ -11,8 +11,10 @@ def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_data
         'file_set': analysis_set_with_sample['@id'],
         'file_size': 8491803,
         'content_type': 'alignments',
-        'references': [
+        'reference_files': [
             reference_data['@id']
-        ]
+        ],
+        'redacted': False,
+        'filtered': False,
     }
     return testapp.post_json('/alignment_file', item, status=201).json['@graph'][0]

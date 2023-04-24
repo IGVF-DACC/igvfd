@@ -15,9 +15,11 @@
         "file_size": 45200010,
         "upload_status": "pending",
         "file_set": "igvf:basic_analysis_set",
-        "references": [
+        "reference_filess": [
             "IGVFFI0000GNRF"
-        ]
+        ],
+        "redacted": false,
+        "filtered": false
     },
     {
         "uuid": "ea8c86b7-1271-ea86-cc75-bc7d7eb802c8",
@@ -35,7 +37,7 @@
         "file_size": 45200010,
         "upload_status": "pending",
         "file_set": "igvf:basic_analysis_set",
-        "references": [
+        "reference_files": [
             "IGVFFI0000GNRF"
         ],
         "redacted": true,

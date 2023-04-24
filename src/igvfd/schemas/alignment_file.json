@@ -10,7 +10,9 @@
         "file_format",
         "file_set",
         "content_type",
-        "references"
+        "references",
+        "redacted",
+        "filtered"
     ],
     "identifyingProperties": [
         "uuid",
@@ -64,12 +66,12 @@
         },
         "redacted": {
             "title": "Redacted",
-            "description": "Whether the alignments have been redacted to mask identifying information or not.",
+            "description": "Indicates whether the alignments have been modified to redact identifying information, such as variants.",
             "type": "boolean"
         },
         "filtered": {
             "title": "Filtered",
-            "description": "Whether the alignments have been filtered or not.",
+            "description": "Indicates whether reads that did not pass a filtering step, such as duplicated reads, have been removed from the file.",
             "type": "boolean"
         }
     },

@@ -1,6 +1,6 @@
 {
-    "hash": "162dddd6d28da08dac5fb37269c49195",
-    "index_name": "alignment_file_162dddd6",
+    "hash": "7c12a6fdb6638707b0c5a1cfc3ca808e",
+    "index_name": "alignment_file_7c12a6fd",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -361,7 +361,7 @@
                         "store": true,
                         "type": "boolean"
                     },
-                    "references": {
+                    "reference_files": {
                         "type": "keyword"
                     },
                     "revoke_detail": {

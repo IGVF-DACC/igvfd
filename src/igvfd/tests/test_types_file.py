@@ -70,9 +70,9 @@ def test_types_file_s3_uri_non_submittable(testapp, analysis_set_with_sample, aw
     testapp.post_json('/sequence_file/', item, status=422)
 
 
-def test_types_file_s3_uri_non_submittable(testapp, alignment_file):
+def test_types_aligment_file_content_summary(testapp, alignment_file):
     res = testapp.get(alignment_file['@id'])
-    assert res.json.get('content_summary') == 'alignments'
+    assert res.json.get('content_summary') == 'unfiltered alignments'
 
     res = testapp.patch_json(
         alignment_file['@id'],

@@ -333,17 +333,27 @@ class AlignmentData(File):
         schema={
             'title': 'Content Summary',
             'type': 'string',
-            'notSubmittable': True,
+            'notSubmittable': True
         }
     )
-    def content_summary(self, request, content_type, redacted=None, filtered=None):
-        redacted_phrase = ''
-        if redacted is not None and redacted:
+    def content_summary(self, request, content_type, redacted, filtered):
+        if redacted:
             redacted_phrase = 'redacted'
-        filtered_phrase = ''
-        if filtered is not None and filtered:
+        else:
+            redacted_phrase = ''
+        if filtered:
             filtered_phrase = 'filtered'
-        return f'{filtered_phrase} {redacted_phrase} {content_type}'.strip()
+        else:
+            filtered_phrase = 'unfiltered'
+
+        phrases = [
+            filtered_phrase,
+            redacted_phrase,
+            content_type
+        ]
+        non_empty_phrases = [x for x in phrases if x != '']
+
+        return ' '.join(non_empty_phrases)
 
 
 @view_config(
