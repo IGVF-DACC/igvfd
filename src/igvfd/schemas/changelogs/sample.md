@@ -1,17 +1,9 @@
 ## Changelog for *`sample.json`*
 
-### Release v7
-
-* Add `sorted_fraction_detail`.
-* Add `sorted_fraction`.
-
-### Release v6
-
-* Add `file_sets`.
-
-### Release v2
-
-* Add `description`.
-* Add `revoke_detail`.
-* Restrict `dbxrefs`, `aliases`, and `alternate_accessions` to be a non-empty array with at least one item.
-* Add `date_obtained`.
+* Add `sorted_fraction_detail`. (03/15/2023)
+* Add `sorted_fraction`. (03/15/2023)
+* Add `file_sets`. (03/08/2023)
+* Add `description`. (02/08/2023)
+* Add `revoke_detail`. (02/08/2023)
+* Restrict `dbxrefs`, `aliases`, and `alternate_accessions` to be a non-empty array with at least one item. (02/08/2023)
+* Add `date_obtained`. (02/08/2023)

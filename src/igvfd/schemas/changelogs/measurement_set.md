@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 4
+
+* Restrict `protocols` from linking to "https://www.protocols.io/".
+
 ### Minor changes since schema version 3
 
 * Add `seqspec`.

@@ -1,41 +1,26 @@
 ## Changelog for *`biosample.json`*
 
-
-### Release v10
-
-* Remove taxa `Saccharomyces`.
-
-### Release v9
-
-* Add `modification`.
-
-### Release v7
-
-* Add `sorted_fraction_detail`.
-* Add `sorted_fraction`.
-
-### Release v6
-
-* Add `file_sets`.
-
-### Release v2
-
-* Rename `biomarker` to `biomarkers`.
-* Deprecate `differentiated_tissue`, `differentiated_cell`, `cell_line` schemas.
-* Rename `donor` to `donors`.
-* Add `revoke_detail`.
-* Rename `donors` to `donor`.
-* Remove `life_stage`.
-* Add `lower_bound_age`.
-* Add `upper_bound_age`.
-* Add `embryonic`.
-* Convert `age` to be calculated from `lower_bound_age` and `upper_bound_age` and not submittable.
-* Require `biosample_term`.
-* Rename `disease_term` to `disease_terms`.
-* Allow `disease_terms` to be an array of `phenotype_terms`.
-* Add `description`.
-* Restrict `treatments`, `donors`, `dbxrefs`, `aliases`, `collections`, and `alternate_accessions` to be a non-empty array with at least one item.
-* Add `donors` and `taxa` to requirements.
-* Rename `organism` to `taxa`.
-* Remove `related_biosamples` and `related_biosamples_relationship`.
-* Add `pooled_from` and `part_of`.
+* Remove taxa `Saccharomyces`. (04/05/2023)
+* Add `modification`. (03/29/2023)
+* Add `sorted_fraction_detail`. (03/15/2023)
+* Add `sorted_fraction`. (03/15/2023)
+* Add `file_sets`. (03/08/2023)
+* Rename `biomarker` to `biomarkers`. (02/08/2023)
+* Deprecate `differentiated_tissue`, `differentiated_cell`, `cell_line` schemas. (02/08/2023)
+* Rename `donor` to `donors`. (02/08/2023)
+* Add `revoke_detail`. (02/08/2023)
+* Rename `donors` to `donor`. (02/08/2023)
+* Remove `life_stage`. (02/08/2023)
+* Add `lower_bound_age`. (02/08/2023)
+* Add `upper_bound_age`. (02/08/2023)
+* Add `embryonic`. (02/08/2023)
+* Convert `age` to be calculated from `lower_bound_age` and `upper_bound_age` and not submittable. (02/08/2023)
+* Require `biosample_term`. (02/08/2023)
+* Rename `disease_term` to `disease_terms`. (02/08/2023)
+* Allow `disease_terms` to be an array of `phenotype_terms`. (02/08/2023)
+* Add `description`. (02/08/2023)
+* Restrict `treatments`, `donors`, `dbxrefs`, `aliases`, `collections`, and `alternate_accessions` to be a non-empty array with at least one item. (02/08/2023)
+* Add `donors` and `taxa` to requirements. (02/08/2023)
+* Rename `organism` to `taxa`. (02/08/2023)
+* Remove `related_biosamples` and `related_biosamples_relationship`. (02/08/2023)
+* Add `pooled_from` and `part_of`. (02/08/2023)
