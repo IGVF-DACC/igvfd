@@ -100,6 +100,31 @@ class Biosample(Sample):
 
     @calculated_property(
         schema={
+            'title': 'Taxa',
+            'type': 'string',
+            'enum': [
+                    'Homo sapiens',
+                    'Mus musculus'
+            ],
+            'notSubmittable': True
+        }
+    )
+    def taxa(self, request, donors=None):
+        taxas = set()
+        if donors:
+            for d in donors:
+                donor_object = request.embed(d, '@@object')
+                if donor_object.get('taxa'):
+                    taxas.add(donor_object.get('taxa'))
+        # if taxas equate:
+        if len(taxas) == 1:
+            return list(taxas).pop()
+        # if taxa are mixed:
+        elif len(taxas) > 1:
+            return None
+
+    @calculated_property(
+        schema={
             'title': 'Summary',
             'type': 'string',
             'notSubmittable': True,
