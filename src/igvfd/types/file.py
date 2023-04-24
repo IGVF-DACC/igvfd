@@ -33,6 +33,8 @@ from igvfd.upload_credentials import get_s3_client
 from igvfd.upload_credentials import get_sts_client
 from igvfd.upload_credentials import UploadCredentials
 
+from igvfd.checkfiles_credentials import get_checkfiles_mount_credentials
+
 
 FILE_FORMAT_TO_FILE_EXTENSION = {
     '2bit': '.2bit',
@@ -413,8 +415,8 @@ def download(context, request):
 def get_read_token(context, request):
     external = context.propsheets.get('external', {})
     bucket = external.get('bucket')
+    credentials = get_checkfiles_mount_credentials()
     return {
         'bucket': bucket,
-        'key_id': 'secret_key_id',
-        'secret_key': 'super_secret_key'
+        'credentials': credentials,
     }
