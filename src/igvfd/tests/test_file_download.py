@@ -4,7 +4,7 @@ import pytest
 def test_file_download_has_uploading_file_credentials(testapp, sequence_file):
     assert 'upload_credentials' in sequence_file
     accession = sequence_file['accession']
-    assert sequence_file['href'] == f'/sequence-data/{accession}/@@download/{accession}.fastq.gz'
+    assert sequence_file['href'] == f'/sequence-files/{accession}/@@download/{accession}.fastq.gz'
     response = testapp.patch_json(
         sequence_file['@id'],
         {
