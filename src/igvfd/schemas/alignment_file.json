@@ -66,7 +66,7 @@
         },
         "redacted": {
             "title": "Redacted",
-            "description": "Indicates whether the alignments have been modified to redact identifying information, such as variants.",
+            "description": "Indicates whether the alignments data have been sanitized (redacted) to prevent leakage of private and potentially identifying genomic information.",
             "type": "boolean"
         },
         "filtered": {
