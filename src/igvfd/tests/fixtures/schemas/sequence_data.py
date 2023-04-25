@@ -81,3 +81,12 @@ def sequence_data_v1(sequence_data):
         'accession': 'IGVFFF999AAA'
     })
     return item
+
+
+@pytest.fixture
+def sequence_data_v2(sequence_data):
+    item = sequence_data.copy()
+    item.update({
+        'schema_version': '2'
+    })
+    return item

@@ -12,3 +12,12 @@ def reference_data(testapp, lab, award, analysis_set_with_sample):
         'content_type': 'transcriptome reference'
     }
     return testapp.post_json('/reference_data', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def reference_data_v2(reference_data):
+    item = reference_data.copy()
+    item.update({
+        'schema_version': '2'
+    })
+    return item
