@@ -4,7 +4,6 @@
 
 * Restrict `content_type` and `file_format` to admins only.
 
-
 ### Minor changes since schema version 2
 
 * Add `transcriptome_annotation`.
