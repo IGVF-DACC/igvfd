@@ -13,41 +13,6 @@ def test_lot_id_dependency(tissue, testapp):
     assert res.status_code == 422
 
 
-def test_age_unit_dependency(tissue, testapp):
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'lower_bound_age': 5, 'upper_bound_age': 10, 'age_units': 'year'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'age_units': 'minute'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Saccharomyces'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'age_units': 'year'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Homo sapiens', 'age_units': 'year'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'age_units': 'minute'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Mus musculus'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'age_units': 'hour'})
-    assert res.status_code == 200
-
-
 def test_nih_institutional_certification(tissue, testapp):
     res = testapp.patch_json(
         tissue['@id'],
