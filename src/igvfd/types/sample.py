@@ -99,6 +99,7 @@ class Biosample(Sample):
             return 'unknown'
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Taxa',
             'type': 'string',
@@ -109,19 +110,16 @@ class Biosample(Sample):
             'notSubmittable': True
         }
     )
-    def taxa(self, request, donors=None):
+    def taxa(self, request, donors):
         taxas = set()
         if donors:
             for d in donors:
-                donor_object = request.embed(d, '@@object')
+                donor_object = request.embed(d, '@@object?skip_calculated=true')
                 if donor_object.get('taxa'):
                     taxas.add(donor_object.get('taxa'))
         # if taxas equate:
         if len(taxas) == 1:
             return list(taxas).pop()
-        # if taxa are mixed:
-        elif len(taxas) > 1:
-            return None
 
     @calculated_property(
         schema={
