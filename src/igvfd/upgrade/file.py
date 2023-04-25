@@ -14,3 +14,4 @@ def file_1_2(value, system):
 @upgrade_step('sequence_data', '2', '3')
 def file_2_3(value, system):
     # https://igvf.atlassian.net/browse/IGVF-593
+    return
