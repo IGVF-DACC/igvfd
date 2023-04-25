@@ -1,7 +1,7 @@
 [
     {
         "uuid": "2eac4277-30dc-802c-0fe1-9292f8bf92f8",
-        "accession": "IGVFFI0000GNRF",
+        "accession": "IGVFFI0400GNRF",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -20,7 +20,7 @@
     },
     {
         "uuid": "9d214277-99ac-802c-9c31-2cc75ebf92f8",
-        "accession": "IGVFFI0000SQBR",
+        "accession": "IGVFFI0400SQBR",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -41,7 +41,7 @@
     },
     {
         "uuid": "c127ac59-74de-4057-9ee0-d75283c2c39e",
-        "accession": "IGVFFI0000SQBZ",
+        "accession": "IGVFFI4000SQBZ",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "md5sum": "a2578edac3f968c991ed3d5b19d797c2",
