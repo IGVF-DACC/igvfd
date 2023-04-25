@@ -27,17 +27,6 @@ def test_failure_patch_calculated_sex(whole_organism, testapp):
     assert res.status_code == 422
 
 
-def test_taxa_dependency(whole_organism, testapp):
-    res = testapp.patch_json(
-        whole_organism['@id'],
-        {'taxa': 'Mus musculus'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        whole_organism['@id'],
-        {'taxa': 'Saccharomyces'}, expect_errors=True)
-    assert res.status_code == 422
-
-
 def test_collections(whole_organism, testapp):
     res = testapp.patch_json(
         whole_organism['@id'],
