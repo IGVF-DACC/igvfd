@@ -7,7 +7,6 @@ def whole_organism(testapp, lab, source, award, rodent_donor, sample_term_whole_
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
-        'taxa': 'Mus musculus',
         'donors': [rodent_donor['@id']],
         'biosample_term': sample_term_whole_organism['@id']
     }
