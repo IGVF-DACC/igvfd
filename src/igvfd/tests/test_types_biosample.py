@@ -4,7 +4,7 @@ import pytest
 def test_tissue_sex_calculation(testapp, tissue, human_donor, human_male_donor):
     res = testapp.patch_json(
         tissue['@id'],
-        {'donors': [human_donor['@id']], 'taxa': 'Homo sapiens'})
+        {'donors': [human_donor['@id']]})
     res = testapp.get(tissue['@id'])
     assert res.json.get('sex') == 'unspecified'
     res = testapp.patch_json(
@@ -89,6 +89,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     res = testapp.get(primary_cell['@id'])
     assert res.json.get('summary') == 'endothelial cell of vascular tree, Homo sapiens (1-3 weeks)'
     res = testapp.get(whole_organism['@id'])
+    print('RES: ', whole_organism)
     assert res.json.get('summary') == 'whole organism, Mus musculus'
     res = testapp.patch_json(
         whole_organism['@id'],
@@ -155,3 +156,22 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     assert res.json.get('summary') == 'brown adipose tissue organoid, Mus musculus (1 month)'
     res = testapp.get(technical_sample['@id'])
     assert res.json.get('summary') == 'synthetic technical sample'
+
+
+def test_tissue_taxa_calculation(testapp, tissue, human_donor, rodent_donor):
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'donors': [human_donor['@id']]})
+    res = testapp.get(tissue['@id'])
+    assert res.json.get('taxa') == 'Homo sapiens'
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'donors': [rodent_donor['@id']]})
+    res = testapp.get(tissue['@id'])
+    assert res.json.get('taxa') == 'Mus musculus'
+    res = testapp.patch_json(
+        tissue['@id'],
+        {'donors': [human_donor['@id'], rodent_donor['@id']]})
+    res = testapp.get(tissue['@id'])
+    print(res.json.get('taxa'))
+    assert res.json.get('taxa') == None
