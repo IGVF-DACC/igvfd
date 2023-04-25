@@ -1,6 +1,6 @@
 {
-    "title": "Sequence Data",
-    "$id": "/profiles/sequence_data.json",
+    "title": "Sequence File",
+    "$id": "/profiles/sequence_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Schema for submission of a file containing sequence data.",
     "required": [
@@ -69,10 +69,9 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "2"
         },
         "content_type": {
-            "permission": "import_items",
             "comment": "Content Type describes the content of the file. Reads are individual sequences of bases corresponding to DNA or RNA fragments in a FASTQ text file format. Subreads are sequences of bases produced using PacBio platforms.",
             "enum": [
                 "reads",
@@ -80,7 +79,6 @@
             ]
         },
         "file_format": {
-            "permission": "import_items",
             "enum": [
                 "bam",
                 "fastq"
@@ -151,5 +149,5 @@
         "content_type",
         "file_format"
     ],
-    "changelog": "/profiles/changelogs/sequence_data.md"
+    "changelog": "/profiles/changelogs/sequence_file.md"
 }

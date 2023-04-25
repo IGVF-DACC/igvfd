@@ -249,6 +249,62 @@ class ReferenceData(File):
         return keys
 
 
+@collection(
+    name='sequence-files',
+    unique_key='accession',
+    properties={
+        'title': 'Sequence Files',
+        'description': 'Listing of sequence data files',
+    }
+)
+class SequenceFile(File):
+    item_type = 'sequence_file'
+    schema = load_schema('igvfd:schemas/sequence_file.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+    ]
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') != 'replaced':
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        if properties.get('status') not in ['deleted', 'replaced']:
+            if 'illumina_read_type' in properties:
+                value = f'sequencing_run:{properties["file_set"]}:{properties["sequencing_run"]}:{properties["illumina_read_type"]}'
+            else:
+                value = f'sequencing_run:{properties["file_set"]}:{properties["sequencing_run"]}'
+            keys.setdefault('sequencing_run', []).append(value)
+        return keys
+
+
+@collection(
+    name='reference-files',
+    unique_key='accession',
+    properties={
+        'title': 'Reference Files',
+        'description': 'Listing of reference data files',
+    }
+)
+class ReferenceFile(File):
+    item_type = 'reference_file'
+    schema = load_schema('igvfd:schemas/reference_file.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+    ]
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') != 'replaced':
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
+
+
 @view_config(
     name='upload',
     context=File,
