@@ -166,3 +166,20 @@ def in_vitro_system_7_8(value, system):
         value['classification'] = 'differentiated cell specimen'
     if value['classification'] == 'reprogrammed cell':
         value['classification'] = 'reprogrammed cell specimen'
+
+
+@upgrade_step('primary_cell', '11', '12')
+@upgrade_step('tissue', '11', '12')
+@upgrade_step('whole_organism', '10', '11')
+@upgrade_step('in_vitro_system', '8', '9')
+def biosample_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-586
+    if 'taxa' in value:
+        if 'notes' in value:
+            notes_value = value['notes']
+            if len(notes_value) > 0:
+                notes_value += '  '
+            value['notes'] = notes_value + 'Previous taxa: ' + value['taxa'] + ' will now be calculated.'
+        else:
+            value['notes'] = 'Previous taxa: ' + value['taxa'] + ' will now be calculated.'
+    del value['taxa']
