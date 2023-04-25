@@ -1,9 +1,9 @@
 import pytest
 
 
-def test_types_file_get_external_sheet(sequence_data, root):
+def test_types_file_get_external_sheet(sequence_file, root):
     item = root.get_by_uuid(
-        sequence_data['uuid']
+        sequence_file['uuid']
     )
     actual = item._get_external_sheet()
     expected = {
@@ -29,9 +29,9 @@ def test_types_file_get_external_sheet(sequence_data, root):
         assert actual[key] == expected[key]
 
 
-def test_types_file_set_external_sheet(sequence_data, root):
+def test_types_file_set_external_sheet(sequence_file, root):
     item = root.get_by_uuid(
-        sequence_data['uuid']
+        sequence_file['uuid']
     )
     external_to_set = {'bucket': 'new_test_file_bucket', 'key': 'abc.bam'}
     item._set_external_sheet(
@@ -47,8 +47,8 @@ def test_types_file_set_external_sheet(sequence_data, root):
         assert actual[k] == v
 
 
-def test_types_file_s3_uri_is_present(sequence_data):
-    assert 's3_uri' in sequence_data
+def test_types_file_s3_uri_is_present(sequence_file):
+    assert 's3_uri' in sequence_file
 
 
 def test_types_file_s3_uri_non_submittable(testapp, analysis_set_with_sample, award, lab):
@@ -67,4 +67,4 @@ def test_types_file_s3_uri_non_submittable(testapp, analysis_set_with_sample, aw
         'sequencing_run': 1,
         's3_uri': 's3://foo/bar/baz.fastq.gz'
     }
-    testapp.post_json('/sequence_data/', item, status=422)
+    testapp.post_json('/sequence_file/', item, status=422)
