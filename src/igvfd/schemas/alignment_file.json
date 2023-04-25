@@ -71,7 +71,7 @@
         },
         "filtered": {
             "title": "Filtered",
-            "description": "Indicates whether reads that did not pass a filtering step, such as duplicated reads, have been removed from the file.",
+            "description": "Indicates whether reads that did not pass a filtering step, such as PCR duplicates, have been removed from the file.",
             "type": "boolean"
         }
     },
