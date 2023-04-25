@@ -337,14 +337,13 @@ class AlignmentData(File):
         }
     )
     def content_summary(self, request, content_type, redacted, filtered):
+        redacted_phrase = ''
         if redacted:
             redacted_phrase = 'redacted'
-        else:
-            redacted_phrase = ''
+
+        filtered_phrase = 'unfiltered'
         if filtered:
             filtered_phrase = 'filtered'
-        else:
-            filtered_phrase = 'unfiltered'
 
         phrases = [
             filtered_phrase,
@@ -352,7 +351,6 @@ class AlignmentData(File):
             content_type
         ]
         non_empty_phrases = [x for x in phrases if x != '']
-
         return ' '.join(non_empty_phrases)
 
 
