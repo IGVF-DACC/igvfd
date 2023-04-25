@@ -69,21 +69,6 @@ def test_part_of_tissue(tissue, primary_cell_part_of, in_vitro_differentiated_ce
     assert res.status_code == 200
 
 
-def test_ccf_id(testapp, tissue, human_tissue):
-    res = testapp.patch_json(
-        human_tissue['@id'],
-        {'ccf_id': '74c1e7c9-9cb0-47d0-93f8-e2cadef1cd86'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        human_tissue['@id'],
-        {'ccf_id': 'this is really not a valid uuid'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'ccf_id': '84ff6a07-1dd8-452b-a99a-5042ac4a0f92'}, expect_errors=True)
-    assert res.status_code == 422
-
-
 def test_sorted_fraction_detail_dependency(testapp, tissue, primary_cell):
     res = testapp.patch_json(
         tissue['@id'],

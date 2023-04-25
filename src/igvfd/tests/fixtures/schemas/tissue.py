@@ -106,7 +106,6 @@ def human_tissue(testapp, lab, source, award, human_donor, sample_term_adrenal_g
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
-        'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id']
     }
