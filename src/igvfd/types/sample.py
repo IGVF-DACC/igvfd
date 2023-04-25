@@ -130,7 +130,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, biosample_term, taxa, age, age_units=None):
+    def summary(self, request, biosample_term, taxa, donors, age, age_units=None):
         sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
         biosample_type = self.item_type.replace('_', ' ')
@@ -139,6 +139,8 @@ class Biosample(Sample):
             term_and_type = term_name
         if 'tissue' in biosample_type and 'tissue' in term_name:
             term_and_type = term_name
+        if taxa == None:
+            return f'{donors}'
         if age == 'unknown':
             return f'{term_and_type}, {taxa}'
         else:
