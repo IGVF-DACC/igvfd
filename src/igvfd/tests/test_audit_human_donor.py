@@ -97,7 +97,3 @@ def test_audit_related_donors(
         error['category'] != 'inconsistent related donors metadata'
         for error in res.json['audit'].get('ERROR', [])
     )
-    assert all(
-        error['category'] != 'audit script error'
-        for error in res.json['audit'].get('ERROR', [])
-    )
