@@ -7,7 +7,6 @@ def primary_cell(testapp, other_lab, award, human_donor, sample_term_pluripotent
         'award': award['@id'],
         'lab': other_lab['@id'],
         'source': other_lab['@id'],
-        'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
