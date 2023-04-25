@@ -48,7 +48,7 @@
         "file_format": "gtf",
         "content_type": "transcriptome reference",
         "file_format_specifications": [
-            "igvf:file_format_specification_insert"
+            "igvf:file_format_specification_insert_old"
         ],
         "file_set": "igvf:analysis_set_with_input",
         "assembly": "GRCh38",
