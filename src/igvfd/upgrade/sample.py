@@ -155,9 +155,9 @@ def biosample_6_7(value, system):
         new_notes_value = value.get('notes')
         if len(new_notes_value) > 0:
             new_notes_value += '  '
+    if 'taxa' in value:
         if value['taxa'] == 'Saccharomyces':
             value['notes'] = new_notes_value + 'Previous taxa: ' + value['taxa'] + ' is no longer valid.'
-            value['taxa'] = 'Mus musculus'
 
 
 @upgrade_step('in_vitro_system', '7', '8')
