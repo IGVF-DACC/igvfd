@@ -112,3 +112,14 @@ def in_vitro_system_v7(in_vitro_organoid):
         'classification': 'differentiated cell'
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v8(in_vitro_system_v1):
+    item = in_vitro_system_v1.copy()
+    item.update({
+        'schema_version': '8',
+        'taxa': 'Homo sapiens',
+        'notes': 'Test.'
+    })
+    return item

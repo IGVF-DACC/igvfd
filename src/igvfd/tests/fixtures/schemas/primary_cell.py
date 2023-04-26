@@ -175,3 +175,14 @@ def primary_cell_v10(primary_cell):
         'notes': ''
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v11(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '11',
+        'taxa': 'Homo sapiens',
+        'notes': ''
+    })
+    return item
