@@ -72,3 +72,10 @@ def test_whole_organism_upgrade_9_10(upgrader, whole_organism_v9):
     value = upgrader.upgrade('whole_organism', whole_organism_v9, current_version='9', target_version='10')
     assert value['schema_version'] == '10'
     assert value['notes'] == 'Previous taxa: Saccharomyces is no longer valid.'
+
+
+def test_whole_organism_upgrade_10_11(upgrader, whole_organism_v10):
+    value = upgrader.upgrade('whole_organism', whole_organism_v10, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert 'taxa' not in value
+    assert value['notes'] == 'Previous taxa: Homo sapiens will now be calculated.'
