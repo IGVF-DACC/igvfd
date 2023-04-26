@@ -130,6 +130,35 @@ def test_audit_related_multiome_datasets(
         error['category'] != 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
     )
+    # A measurement set should inherit audits from other datasets in `related_multiome_datasets`
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/10x-ATAC/spec.yaml'
+        }
+    )
+    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    assert any(
+        error['category'] == 'missing seqspec'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        measurement_set_multiome_2['@id'],
+        {
+            'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/10x-ATAC/spec.yaml'
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/10x-ATAC/spec.yaml'
+        }
+    )
+    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    assert all(
+        error['category'] != 'missing seqspec'
+        for error in res.json['audit'].get('WARNING', [])
+    )
 
 
 def test_audit_seqspec(
