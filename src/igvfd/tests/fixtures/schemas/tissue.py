@@ -195,3 +195,14 @@ def biosample_sorted_child(
         'nih_institutional_certification': 'NIC000ABCD'
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def tissue_v11(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '11',
+        'taxa': 'Homo sapiens',
+        'notes': ''
+    })
+    return item
