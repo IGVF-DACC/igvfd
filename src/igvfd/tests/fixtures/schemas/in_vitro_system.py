@@ -98,6 +98,7 @@ def in_vitro_system_v6(in_vitro_system_v1):
     item = in_vitro_system_v1.copy()
     item.update({
         'schema_version': '6',
+        'taxa': 'Saccharomyces',
         'notes': ''
     })
     return item
