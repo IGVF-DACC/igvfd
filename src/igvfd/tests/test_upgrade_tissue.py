@@ -77,3 +77,10 @@ def test_tissue_upgrade_10_11(upgrader, tissue_v10):
     value = upgrader.upgrade('tissue', tissue_v10, current_version='10', target_version='11')
     assert value['schema_version'] == '11'
     assert value['notes'] == 'Previous taxa: Saccharomyces is no longer valid.'
+
+
+def test_tissue_upgrade_11_12(upgrader, tissue_v11):
+    value = upgrader.upgrade('tissue', tissue_v11, current_version='11', target_version='12')
+    assert value['schema_version'] == '12'
+    assert 'taxa' not in value
+    assert value['notes'] == 'Previous taxa: Homo sapiens will now be calculated.'
