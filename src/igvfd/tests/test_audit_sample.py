@@ -17,7 +17,6 @@ def test_audit_sample_sorted_fraction_parent_child_check(
     testapp.patch_json(
         biosample_sorted_child['@id'],
         {'donors': [rodent_donor['@id']],
-         'taxa': 'Mus musculus',
          'embryonic': True}
     )
     testapp.patch_json(
