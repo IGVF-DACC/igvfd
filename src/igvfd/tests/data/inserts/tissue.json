@@ -12,7 +12,6 @@
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "in progress",
-        "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
         "nih_institutional_certification": "NICHD1442",
         "pmi": 2,
@@ -35,7 +34,6 @@
             "igvf:treated_tissue"
         ],
         "status": "released",
-        "taxa": "Homo sapiens",
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "source": "/labs/j-michael-cherry/",
         "treatments": [
@@ -63,7 +61,6 @@
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",
-        "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
         "pooled_from": [
             "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/",
@@ -79,7 +76,6 @@
             "igvf:tissue_part_of_tissue"
         ],
         "status": "released",
-        "taxa": "Homo sapiens",
         "part_of": "IGVFSM0000DDDD",
         "source": "/labs/j-michael-cherry/",
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
@@ -108,7 +104,6 @@
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",
-        "taxa": "Mus musculus",
         "part_of": "IGVFSM0000KASA",
         "source": "/labs/j-michael-cherry/",
         "nih_institutional_certification": "NICHD1442",
@@ -131,7 +126,6 @@
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",
-        "taxa": "Mus musculus",
         "part_of": "IGVFSM0000KASA",
         "source": "/labs/j-michael-cherry/",
         "nih_institutional_certification": "NICHD1442",
@@ -156,7 +150,6 @@
         ],
         "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
         "status": "released",
-        "taxa": "Mus musculus",
         "part_of": "IGVFSM0000KASA",
         "source": "/labs/j-michael-cherry/",
         "nih_institutional_certification": "NICHD1442",
