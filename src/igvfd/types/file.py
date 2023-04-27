@@ -313,7 +313,7 @@ class ReferenceFile(File):
         'description': 'Listing of alignment files',
     }
 )
-class AlignmentData(File):
+class AlignmentFile(File):
     item_type = 'alignment_file'
     schema = load_schema('igvfd:schemas/alignment_file.json')
     embedded_with_frame = [
