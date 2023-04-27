@@ -172,7 +172,6 @@ def tissue_unsorted_parent(testapp, lab, source, award, rodent_donor, sample_ter
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
-        'taxa': 'Mus musculus',
         'donors': [rodent_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id'],
         'embryonic': True
@@ -185,7 +184,6 @@ def biosample_sorted_child(
         testapp, lab, award, source, tissue_unsorted_parent, human_donor, sample_term_adrenal_gland):
     item = {
         'donors': [human_donor['@id']],
-        'taxa': 'Homo sapiens',
         'biosample_term': sample_term_adrenal_gland['@id'],
         'source': source['@id'],
         'sorted_fraction': tissue_unsorted_parent['@id'],
