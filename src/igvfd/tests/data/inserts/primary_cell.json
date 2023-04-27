@@ -24,7 +24,6 @@
         "dbxrefs": [
             "GEO:SAMN45"
         ],
-        "taxa": "Homo sapiens",
         "lower_bound_age": 40,
         "upper_bound_age": 45,
         "age_units": "year",
@@ -57,7 +56,6 @@
         "url": "https://www.genome.gov/",
         "starting_amount": 15,
         "starting_amount_units": "μg",
-        "taxa": "Homo sapiens",
         "lower_bound_age": 30,
         "upper_bound_age": 35,
         "age_units": "year",
@@ -84,7 +82,6 @@
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
-        "taxa": "Homo sapiens",
         "source": "/labs/j-michael-cherry/",
         "pooled_from": [
             "/primary-cells/578c72a2-4f84-2c8f-96b0-ec8715e18185/",
@@ -112,7 +109,6 @@
         "url": "https://www.genome.gov/",
         "starting_amount": 2,
         "starting_amount_units": "μg",
-        "taxa": "Homo sapiens",
         "lower_bound_age": 30,
         "upper_bound_age": 35,
         "age_units": "year",
@@ -139,7 +135,6 @@
         ],
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
-        "taxa": "Mus musculus",
         "source": "/labs/j-michael-cherry/",
         "part_of": "igvf:live_mouse_embryo"
     }

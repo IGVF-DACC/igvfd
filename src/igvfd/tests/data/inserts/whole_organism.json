@@ -16,8 +16,7 @@
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
-        "description": "frozen mouse embryo",
-        "taxa": "Mus musculus"
+        "description": "frozen mouse embryo"
     },
     {
         "uuid": "d4c46526-0307-11ed-b939-0242ac120002",
@@ -37,7 +36,6 @@
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
         "description": "10 days mouse embryo",
-        "taxa": "Mus musculus",
         "embryonic": true
     }
 ]
