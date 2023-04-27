@@ -3,7 +3,7 @@
 
 2. Evaluate the changes on `dev` vs. `main`, and decide if the changes grant minor (non-breaking) or major (breaking) version update
 
-3. Make a branch to update the version number to `X.Y.0` in `igvfd/src/igvfd/__init__.py` push and make PR
+3. Make a branch to update the version number to `X.Y.Z` in `igvfd/src/igvfd/__init__.py` push and make PR
 
 4. After approval and merge of the version update branch to `dev` create PR from `dev` to `main` branch
 
@@ -17,6 +17,9 @@ $ git pull
 $ git checkout main
 $ git pull
 $ git merge dev --ff-only
+
+proceed ONLY if no merge conflicts/errors encountered!
+
 $ git push origin main
 ```
 
@@ -30,9 +33,11 @@ $ git pull
 $ git log --pretty
 ```
 
-9. After choosing the commits to be included in the tag. Make the tag for version `X.Y.0`:
+9. After choosing the commits to be included in the tag. Make the tag for version `X.Y.Z`:
 ```
-$ export igvfd_version=X.Y.0
-$ git tag -a "v$igvfd_version"
-$ git push origin "v$igvfd_version"
+$ git checkout dev
+$ git tag -a vX.Y.Z # Add vX.Y.Z to details
+$ git push origin tags/vX.Y.Z
 ```
+
+10. On Github `Make a Release` from the tag, pasting the proper commits in the details.

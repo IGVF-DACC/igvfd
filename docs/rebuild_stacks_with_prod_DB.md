@@ -8,6 +8,6 @@
 
 3. Select `BackendStack` and `Delete` it
 
-4. Only after `BackendStack` has finished to be deleted proceed to `PostgresStack` and `OpensearchStack`
+4. Only after `BackendStack` has finished deleting proceed to `PostgresStack` and `OpensearchStack`
 
-5. If you merge the `PR` to main after these actions, the stacks you deleted would be rebuild with the new DB snapshot.
+5. If you merge the `PR` to main after these actions, the deleted stacks will be recreated with the new DB snapshot.
