@@ -59,5 +59,18 @@
             "igvf-dacc:variant-set"
         ],
         "description": "Variant set."
+    },
+    {
+        "award": "HG012012",
+        "lab": "/labs/j-michael-cherry/",
+        "uuid": "0d35d9d6-9dd1-4e31-ab02-ec71414de5cd",
+        "curated_set_type": "guide RNAs",
+        "accession": "IGVFDS3333DDDD",
+        "status": "released",
+        "notes": "This is a curated set insert.",
+        "aliases": [
+            "j-michael-cherry:gRNAs"
+        ],
+        "description": "A curated set for Cherry lab guide RNAs."
     }
 ]
