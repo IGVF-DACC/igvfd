@@ -10,7 +10,7 @@ from .formatter import (
 
 @audit_checker('Tissue', frame='object')
 def audit_tissue_ccf_id(value, system):
-    '''Tissue objects must specify an common coordinate framework identifier (CCF ID) required for human data.'''
+    '''Tissue objects must specify a common coordinate framework identifier (CCF ID) required for human data.'''
     if ('ccf_id' not in value) and (value.get('taxa') == 'Homo sapiens'):
         value_id = system.get('path')
         detail = (
