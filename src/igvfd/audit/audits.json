@@ -3,71 +3,53 @@
         "category": "Metadata Audits",
         "audits": [
             {
-                "messages": [
-                    {
-                        "message": "inconsistent related donors metadata",
-                        "levels": [
-                            "WARNING",
-                            "ERROR"
-                        ]
-                    }
-                ],
-                "explanation": "HumanDonors should have unique related donors and should be mutually specified between each HumanDonor in their related donors."
+                "object": "HumanDonor",
+                "message": "inconsistent related donors metadata",
+                "level": "WARNING",
+                "explanation": "HumanDonors should have unique related donors.",
+                "function": "audit_related_donors"
             },
             {
-                "messages": [
-                    {
-                        "message": "missing metadata",
-                        "levels": [
-                            "ERROR"
-                        ]
-                    }
-                ],
-                "explanation": "A metadata property is missing and needs to be specified."
+                "object": "HumanDonor",
+                "message": "inconsistent related donors metadata",
+                "level": "WARNING",
+                "explanation": "HumanDonors should mutually specify between each HumanDonor in their related donors.",
+                "function": "audit_related_donors"
             },
             {
-                "messages": [
-                    {
-                        "message": "missing plasmid map",
-                        "levels": [
-                            "WARNING"
-                        ]
-                    }
-                ],
-                "explanation": "ConstructLibrary objects should have a plasmid map Document attached."
+                "object": "ConstructLibrary",
+                "message": "missing metadata",
+                "level": "ERROR",
+                "explanation": "ConstructLibrary objects with origins of disease-associated variants need to specify which associated_disease is relevant, and vice versa",
+                "function": "audit_construct_library_associated_diseases"
             },
             {
-                "messages": [
-                    {
-                        "message": "inconsistent multiome metadata",
-                        "levels": [
-                            "WARNING"
-                        ]
-                    }
-                ],
-                "explanation": "MeasurementSet objects with a specified `multiome_size` should have the same amount of links to other MeasurementSet objects (minus itself) specified in `related_multiome_datasets` with the same `multiome_size` and `samples`."
+                "object": "ConstructLibrary",
+                "message": "missing plasmid map",
+                "level": "WARNING",
+                "explanation": "ConstructLibrary objects should have a plasmid map Document attached.",
+                "function": "audit_construct_library_plasmid_map"
             },
             {
-                "messages": [
-                    {
-                        "message": "missing seqspec",
-                        "levels": [
-                            "WARNING"
-                        ]
-                    }
-                ],
-                "explanation": "MeasurementSet objects should specify the associated seqspec YAML file located in the seqspec repository: https://github.com/IGVF/seqspec."
+                "object": "MeasurementSet",
+                "message": "inconsistent multiome metadata",
+                "level": "WARNING",
+                "explanation": "MeasurementSet objects with a specified `multiome_size` should have the same amount of links to other MeasurementSet objects (minus itself) specified in `related_multiome_datasets` with the same `multiome_size` and `samples`.",
+                "function": "audit_related_multiome_datasets"
             },
             {
-                "messages": [
-                    {
-                        "message": "inconsistent sorted fraction metadata",
-                        "levels": [
-                            "ERROR"
-                        ]
-                    }
-                ],
-                "explanation": "Samples that are a sorted_fraction of a parent sample should share most of the parent's metadata properties."
+                "object": "MeasurementSet",
+                "message": "missing seqspec",
+                "level": "WARNING",
+                "explanation": "MeasurementSet objects with a specified `multiome_size` should have the same amount of links to other MeasurementSet objects (minus itself) specified in `related_multiome_datasets` with the same `multiome_size` and `samples`.",
+                "function": "audit_seqspec"
+            },
+            {
+                "object": "Sample",
+                "message": "inconsistent sorted fraction metadata",
+                "level": "WARNING",
+                "explanation": "Samples that are a sorted_fraction of a parent sample should share most of the parent's metadata properties.",
+                "function": "audit_sample_sorted_fraction_parent_child_check"
             }
         ]
     }
