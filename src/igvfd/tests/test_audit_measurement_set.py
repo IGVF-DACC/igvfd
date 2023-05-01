@@ -132,6 +132,44 @@ def test_audit_related_multiome_datasets(
     )
 
 
+def test_audit_inherit_related_multiome(
+    testapp,
+    primary_cell,
+    measurement_set_multiome,
+    measurement_set_multiome_2
+):
+    # A measurement set should inherit audits from other datasets in `related_multiome_datasets`
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/10x-ATAC/spec.yaml',
+            'samples': [primary_cell['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set_multiome_2['@id'],
+        {
+            'samples': [primary_cell['@id']]
+        }
+    )
+    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    assert any(
+        error['category'] == 'missing seqspec'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        measurement_set_multiome_2['@id'],
+        {
+            'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/10x-ATAC/spec.yaml'
+        }
+    )
+    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    assert all(
+        error['category'] != 'missing seqspec'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+
 def test_audit_seqspec(
     testapp,
     measurement_set

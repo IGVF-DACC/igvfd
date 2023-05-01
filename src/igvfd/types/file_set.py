@@ -101,6 +101,9 @@ class MeasurementSet(FileSet):
         Path('donors', include=['@id', 'taxa']),
         Path('lab', include=['@id', 'title']),
     ]
+    audit_inherit = [
+        'related_multiome_datasets'
+    ]
 
     @calculated_property(
         condition='multiome_size',
