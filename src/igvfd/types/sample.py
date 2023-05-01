@@ -117,7 +117,7 @@ class Biosample(Sample):
                 donor_object = request.embed(d, '@@object?skip_calculated=true')
                 if donor_object.get('taxa'):
                     taxas.add(donor_object.get('taxa'))
-        # if taxas equate:
+
         if len(taxas) == 1:
             return list(taxas).pop()
 
