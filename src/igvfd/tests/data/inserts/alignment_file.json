@@ -16,7 +16,7 @@
         "upload_status": "pending",
         "file_set": "igvf:basic_analysis_set",
         "reference_filess": [
-            "IGVFFI0000GNRF"
+            "IGVFFI0001GNRF"
         ],
         "redacted": false,
         "filtered": false
@@ -38,7 +38,7 @@
         "upload_status": "pending",
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
-            "IGVFFI0000GNRF"
+            "IGVFFI0001GNRF"
         ],
         "redacted": true,
         "filtered": true

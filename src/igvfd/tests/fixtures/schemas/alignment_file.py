@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_data):
+def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -12,7 +12,7 @@ def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_data
         'file_size': 8491803,
         'content_type': 'alignments',
         'reference_files': [
-            reference_data['@id']
+            reference_file['@id']
         ],
         'redacted': False,
         'filtered': False
