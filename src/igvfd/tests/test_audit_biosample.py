@@ -52,3 +52,4 @@ def test_audit_biosample_taxa_check(testapp, tissue, rodent_donor, human_donor, 
         error['category'] == 'inconsistent/mixed donor taxa'
         for error in res.json['audit'].get('ERROR', [])
     )
+
