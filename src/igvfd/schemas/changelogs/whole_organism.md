@@ -3,6 +3,7 @@
 ### Schema version 11
 
 * Remove `taxa` from `required`.
+* Calculate `taxa` from `donors` and not submittable.
 
 ### Schema version 10
 
