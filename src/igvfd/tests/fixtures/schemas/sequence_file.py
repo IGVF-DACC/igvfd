@@ -2,11 +2,11 @@ import pytest
 
 
 @pytest.fixture
-def sequence_data(testapp, lab, award, analysis_set_with_sample):
+def sequence_file(testapp, lab, award, analysis_set_with_sample):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'md5sum': '515c8a6af303ea86bc59c629ff198277',
+        'md5sum': '525c8a6af303ea86bc59c629ff198277',
         'file_format': 'fastq',
         'file_set': analysis_set_with_sample['@id'],
         'minimum_read_length': 99,
@@ -17,11 +17,11 @@ def sequence_data(testapp, lab, award, analysis_set_with_sample):
         'content_type': 'reads',
         'sequencing_run': 1
     }
-    return testapp.post_json('/sequence_data', item, status=201).json['@graph'][0]
+    return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture
-def sequence_data_s3_uri(testapp, lab, award, analysis_set_with_sample):
+def sequence_file_s3_uri(testapp, lab, award, analysis_set_with_sample):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -37,11 +37,11 @@ def sequence_data_s3_uri(testapp, lab, award, analysis_set_with_sample):
         'sequencing_run': 1,
         's3_uri': 's3://foo/bar/baz.fastq.gz'
     }
-    return testapp.post_json('/sequence_data', item, status=201).json['@graph'][0]
+    return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture
-def sequence_data_fastq_no_read_length(testapp, lab, award, analysis_set_with_sample):
+def sequence_file_fastq_no_read_length(testapp, lab, award, analysis_set_with_sample):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -55,7 +55,7 @@ def sequence_data_fastq_no_read_length(testapp, lab, award, analysis_set_with_sa
 
 
 @pytest.fixture
-def sequence_data_sequencing_run_2(testapp, lab, award, analysis_set_with_sample):
+def sequence_file_sequencing_run_2(testapp, lab, award, analysis_set_with_sample):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
@@ -70,23 +70,14 @@ def sequence_data_sequencing_run_2(testapp, lab, award, analysis_set_with_sample
         'content_type': 'reads',
         'sequencing_run': 2
     }
-    return testapp.post_json('/sequence_data', item, status=201).json['@graph'][0]
+    return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture
-def sequence_data_v1(sequence_data):
-    item = sequence_data.copy()
+def sequence_file_v1(sequence_file):
+    item = sequence_file.copy()
     item.update({
         'schema_version': '1',
         'accession': 'IGVFFF999AAA'
-    })
-    return item
-
-
-@pytest.fixture
-def sequence_data_v2(sequence_data):
-    item = sequence_data.copy()
-    item.update({
-        'schema_version': '2'
     })
     return item

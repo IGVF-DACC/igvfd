@@ -46,7 +46,9 @@ ORDER = [
     'measurement_set',
     'analysis_set',
     'reference_data',
-    'sequence_data'
+    'sequence_data',
+    'reference_file',
+    'sequence_file'
 ]
 
 IS_ATTACHMENT = [
@@ -518,6 +520,12 @@ PHASE1_PIPELINES = {
     ],
     'primary_cell': [
         remove_keys('pooled_from', 'part_of'),
+    ],
+    'reference_file': [
+        remove_keys('derived_from', 'file_format_specifications'),
+    ],
+    'sequence_file': [
+        remove_keys('derived_from', 'file_format_specifications'),
     ]
 }
 
@@ -541,6 +549,12 @@ PHASE2_PIPELINES = {
     ],
     'primary_cell': [
         skip_rows_missing_all_keys('pooled_from', 'part_of'),
+    ],
+    'reference_file': [
+        skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
+    ],
+    'sequence_file': [
+        skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
     ]
 }
 
