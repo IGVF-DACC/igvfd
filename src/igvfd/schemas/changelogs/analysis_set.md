@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 3
 
+* Add `files`.
 * Add `dbxrefs`.
 
 ### Schema version 3

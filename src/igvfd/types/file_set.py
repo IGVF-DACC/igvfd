@@ -7,7 +7,8 @@ from snovault import (
 from snovault.util import Path
 
 from .base import (
-    Item
+    Item,
+    paths_filtered_by_status
 )
 
 
@@ -24,6 +25,21 @@ class FileSet(Item):
     base_types = ['FileSet'] + Item.base_types
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/file_set.json')
+    rev = {
+        'files': ('File', 'file_set')
+    }
+
+    @calculated_property(schema={
+        'title': 'Files',
+        'type': 'array',
+        'items': {
+            'type': ['string', 'object'],
+            'linkFrom': 'File.file_set',
+        },
+        'notSubmittable': True
+    })
+    def files(self, request, files):
+        return paths_filtered_by_status(request, files)
 
 
 @collection(
