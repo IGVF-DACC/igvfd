@@ -328,7 +328,7 @@
             "items": {
                 "type": "string",
                 "description": "Link to a reference file used to generate this file.",
-                "linkTo": "ReferenceData"
+                "linkTo": "ReferenceFile"
             }
         }
     }
