@@ -17,6 +17,7 @@ def audit_biosample_nih_institutional_certification(value, system):
         )
         yield AuditFailure('missing nih_institutional_certification', detail, level='ERROR')
 
+
 @audit_checker('Biosample', frame='object')
 def audit_biosample_nih_institutional_certification(value, system):
     '''Biosample objects must specify an NIH Institutional Certification required for human data.'''
