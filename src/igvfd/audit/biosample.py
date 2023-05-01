@@ -18,3 +18,27 @@ def audit_biosample_nih_institutional_certification(value, system):
             f'is missing NIH institutional certificate that is required for human samples.'
         )
         yield AuditFailure('missing nih_institutional_certification', detail, level='ERROR')
+
+
+@audit_checker('Biosample', frame='object')
+def audit_biosample_taxa_check(value, system):
+    '''Flag biosamples associated with donors of different taxas.'''
+
+    if 'donors' in value:
+        sample_id = value['@id']
+        donor_ids = value.get('donors')
+        taxa_dict = {}
+        for d in donor_ids:
+            donor_object = system.get('request').embed(d + '@@object?skip_calculated=true')
+            if donor_object.get('taxa'):
+                taxa = donor_object.get('taxa')
+                if taxa not in taxa_dict:
+                    taxa_dict[taxa] = []
+
+                taxa_dict[taxa].append(d)
+
+        if len(taxa_dict) > 1:
+            detail = ''
+            for k, v in taxa_dict.items():
+                detail += f'Biosample {audit_link(sample_id, sample_id)} has donors {audit_link(v, v)} that are {k}. '
+            yield AuditFailure('inconsistent/mixed donor taxa', detail, level='ERROR')
