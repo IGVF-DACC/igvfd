@@ -73,7 +73,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "8"
+            "default": "9"
         },
         "classification": {
             "title": "Classification",
