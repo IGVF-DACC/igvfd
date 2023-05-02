@@ -4,6 +4,10 @@
 
 * Add `cellular_sub_pool`.
 
+### Schema version 12
+
+* Remove `taxa` from `required` and make it calculated.
+
 ### Schema version 11
 
 * Remove taxa `Saccharomyces`.

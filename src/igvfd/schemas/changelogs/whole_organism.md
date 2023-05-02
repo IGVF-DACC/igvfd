@@ -11,6 +11,7 @@
 ### Schema version 11
 
 * Disallow `part_of` and `pooled_from` properties.
+* Remove `taxa` from `required` and make it calculated.
 
 ### Schema version 10
 

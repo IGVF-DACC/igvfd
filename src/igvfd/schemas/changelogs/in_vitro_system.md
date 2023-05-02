@@ -1,5 +1,10 @@
 ## Changelog for *`in_vitro_system.json`*
 
+
+### Schema version 9
+
+* Remove `taxa` from `required` and make it calculated.
+
 ### Minor changes since schema version 8
 
 * Add `cellular_sub_pool`.
