@@ -67,3 +67,10 @@ def test_sorted_fraction_detail_dependency(testapp, whole_organism, primary_cell
         {'sorted_fraction': primary_cell['@id'],
          'sorted_fraction_detail': 'I am a sorted fraction detail.'})
     assert res.status_code == 200
+
+
+def test_null_properties(testapp, primary_cell, whole_organism):
+    res = testapp.patch_json(
+        whole_organism['@id'],
+        {'part_of': primary_cell['@id']}, expect_errors=True)
+    assert res.status_code == 422
