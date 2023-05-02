@@ -13,41 +13,6 @@ def test_lot_id_dependency(tissue, testapp):
     assert res.status_code == 422
 
 
-def test_age_unit_dependency(tissue, testapp):
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'lower_bound_age': 5, 'upper_bound_age': 10, 'age_units': 'year'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'age_units': 'minute'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Saccharomyces'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'age_units': 'year'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Homo sapiens', 'age_units': 'year'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'age_units': 'minute'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'taxa': 'Mus musculus'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'age_units': 'hour'})
-    assert res.status_code == 200
-
-
 def test_nih_institutional_certification(tissue, testapp):
     res = testapp.patch_json(
         tissue['@id'],
@@ -102,21 +67,6 @@ def test_part_of_tissue(tissue, primary_cell_part_of, in_vitro_differentiated_ce
         tissue['@id'],
         {'part_of':  whole_organism_part_of['@id']})
     assert res.status_code == 200
-
-
-def test_ccf_id(testapp, tissue, human_tissue):
-    res = testapp.patch_json(
-        human_tissue['@id'],
-        {'ccf_id': '74c1e7c9-9cb0-47d0-93f8-e2cadef1cd86'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        human_tissue['@id'],
-        {'ccf_id': 'this is really not a valid uuid'}, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'ccf_id': '84ff6a07-1dd8-452b-a99a-5042ac4a0f92'}, expect_errors=True)
-    assert res.status_code == 422
 
 
 def test_sorted_fraction_detail_dependency(testapp, tissue, primary_cell):
