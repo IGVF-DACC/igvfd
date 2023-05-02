@@ -28,7 +28,6 @@
         ],
         "time_post_factors_introduction": 24,
         "time_post_factors_introduction_units": "minute",
-        "taxa": "Homo sapiens",
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
@@ -62,7 +61,6 @@
         "status": "released",
         "time_post_factors_introduction": 24,
         "time_post_factors_introduction_units": "minute",
-        "taxa": "Homo sapiens",
         "biosample_term": "/sample-terms/92c5f1a9-7503-460b-99b3-f5b84c82b067/",
         "targeted_sample_term": "/sample-terms/eed026e7-4afc-4396-94e7-870f8934b2f2/",
         "source": "/labs/danwei-huangfu/"
@@ -143,7 +141,6 @@
         ],
         "time_post_factors_introduction": 24,
         "time_post_factors_introduction_units": "minute",
-        "taxa": "Homo sapiens",
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
