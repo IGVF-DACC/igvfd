@@ -53,7 +53,8 @@
                 "transcriptome",
                 "elements",
                 "variants",
-                "genes"
+                "genes",
+                "guide RNAs"
             ]
         }
     },

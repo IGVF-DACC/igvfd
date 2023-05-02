@@ -25,5 +25,18 @@
         "tagged_protein": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
         "status": "in progress",
         "product_id": "addgene:111555"
+    },
+    {
+        "uuid": "bae92ec6-c05e-4360-ac2a-1934490e83e5",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:modification_3"
+        ],
+        "cas": "dCas9",
+        "fused_domain": "VPH",
+        "modality": "activation",
+        "status": "in progress",
+        "product_id": "addgene:158091"
     }
 ]

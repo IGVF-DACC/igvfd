@@ -3,6 +3,7 @@
 ### Minor changes since schema version 3
 
 * Add `dbxrefs`.
+* Add `guide RNAs` to `curated_set_type`.
 
 ### Schema version 3
 
