@@ -9,7 +9,6 @@
         "lab",
         "source",
         "donors",
-        "taxa",
         "biosample_term"
     ],
     "identifyingProperties": [
@@ -54,17 +53,7 @@
     "dependentSchemas": {
         "$merge": [
             "biosample.json#/dependentSchemas"
-        ],
-        "taxa": {
-            "comment": "Since the IGVF DACC is not expecting metadata submission of human whole organism samples, the schema excludes Homo sapiens taxa.",
-            "not": {
-                "properties": {
-                    "taxa": {
-                        "const": "Homo sapiens"
-                    }
-                }
-            }
-        }
+        ]
     },
     "properties": {
         "schema_version": {
