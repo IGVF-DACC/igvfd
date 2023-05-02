@@ -7,7 +7,6 @@ def whole_organism(testapp, lab, source, award, rodent_donor, sample_term_whole_
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
-        'taxa': 'Mus musculus',
         'donors': [rodent_donor['@id']],
         'biosample_term': sample_term_whole_organism['@id']
     }
@@ -150,6 +149,16 @@ def whole_organism_v10(whole_organism, primary_cell, tissue, human_tissue):
         'schema_version': '10',
         'part_of': primary_cell['@id'],
         'pooled_from': [tissue['@id'], human_tissue['@id']]
+          })
+    return item
+
+
+def whole_organism_v11(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '11',
+        'taxa': 'Homo sapiens',
+        'notes': ''
     })
     return item
 

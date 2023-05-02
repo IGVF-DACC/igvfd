@@ -1,5 +1,10 @@
 ## Changelog for *`whole_organism.json`*
 
+
+### Schema version 13
+
+* Remove `taxa` from `required` and make it calculated.
+
 ### Schema version 12
 
 * Restrict `biosample_term` to `whole organism`.
@@ -11,7 +16,6 @@
 ### Schema version 11
 
 * Disallow `part_of` and `pooled_from` properties.
-* Remove `taxa` from `required` and make it calculated.
 
 ### Schema version 10
 

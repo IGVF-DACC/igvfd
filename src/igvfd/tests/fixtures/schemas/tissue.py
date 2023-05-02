@@ -7,7 +7,6 @@ def tissue(testapp, lab, source, award, rodent_donor, sample_term_adrenal_gland)
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
-        'taxa': 'Mus musculus',
         'donors': [rodent_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id']
     }
@@ -107,7 +106,6 @@ def human_tissue(testapp, lab, source, award, human_donor, sample_term_adrenal_g
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
-        'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id']
     }
@@ -174,7 +172,6 @@ def tissue_unsorted_parent(testapp, lab, source, award, rodent_donor, sample_ter
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
-        'taxa': 'Mus musculus',
         'donors': [rodent_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id'],
         'embryonic': True
@@ -187,7 +184,6 @@ def biosample_sorted_child(
         testapp, lab, award, source, tissue_unsorted_parent, human_donor, sample_term_adrenal_gland):
     item = {
         'donors': [human_donor['@id']],
-        'taxa': 'Homo sapiens',
         'biosample_term': sample_term_adrenal_gland['@id'],
         'source': source['@id'],
         'sorted_fraction': tissue_unsorted_parent['@id'],
@@ -197,3 +193,14 @@ def biosample_sorted_child(
         'nih_institutional_certification': 'NIC000ABCD'
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def tissue_v11(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '11',
+        'taxa': 'Homo sapiens',
+        'notes': ''
+    })
+    return item
