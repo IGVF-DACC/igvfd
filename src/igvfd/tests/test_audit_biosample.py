@@ -32,7 +32,7 @@ def test_audit_biosample_taxa_check(testapp, tissue, rodent_donor, human_donor, 
                        )
     res = testapp.get(tissue['@id'] + '@@index-data')
     assert any(
-        error['category'] == 'inconsistent/mixed donor taxa'
+        error['category'] == 'inconsistent donor taxa'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(tissue['@id'],
@@ -40,15 +40,15 @@ def test_audit_biosample_taxa_check(testapp, tissue, rodent_donor, human_donor, 
                                    human_male_donor['@id']]}
                        )
     res = testapp.get(tissue['@id'] + '@@index-data')
-    assert not any(
-        error['category'] == 'inconsistent/mixed donor taxa'
+    assert all(
+        error['category'] != 'inconsistent donor taxa'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(tissue['@id'],
                        {'donors': [human_donor['@id']]}
                        )
     res = testapp.get(tissue['@id'] + '@@index-data')
-    assert not any(
-        error['category'] == 'inconsistent/mixed donor taxa'
+    assert all(
+        error['category'] != 'inconsistent donor taxa'
         for error in res.json['audit'].get('ERROR', [])
     )
