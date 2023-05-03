@@ -41,4 +41,4 @@ def audit_biosample_taxa_check(value, system):
             detail = ''
             for k, v in taxa_dict.items():
                 detail += f'Biosample {audit_link(sample_id, sample_id)} has donors {audit_link(v, v)} that are {k}. '
-            yield AuditFailure('inconsistent/mixed donor taxa', detail, level='ERROR')
+            yield AuditFailure('inconsistent donor taxa', detail, level='ERROR')
