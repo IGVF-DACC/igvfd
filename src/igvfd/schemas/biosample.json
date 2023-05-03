@@ -219,6 +219,12 @@
             "comment": "See modification.json for available identifiers.",
             "type": "string",
             "linkTo": "Modification"
+        },
+        "cellular_sub_pool": {
+            "title": "Cellular Sub Pool",
+            "description": "Cellular Sub Pool of a sample",
+            "type": "string",
+            "pattern": "^[a-zA-Z\\d_$.+!*,()'-]+(?:\\s[a-zA-Z\\d_$.+!*,()'-]+)*$"
         }
     }
 }

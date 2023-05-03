@@ -50,3 +50,18 @@ def test_sorted_fraction_detail_dependency(testapp, in_vitro_organoid, primary_c
         {'sorted_fraction': primary_cell['@id'],
          'sorted_fraction_detail': 'I am a sorted fraction detail.'})
     assert res.status_code == 200
+
+
+def test_cellular_sub_pool(testapp, in_vitro_differentiated_cell, primary_cell, in_vitro_organoid):
+    res = testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {'cellular_sub_pool': 'PKR_2627383-A'}, expect_errors=True)
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {'cellular_sub_pool': 'PKR_2627383-A'}, expect_errors=True)
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        in_vitro_organoid['@id'],
+        {'cellular_sub_pool': 'PKR_2627383-B'}, expect_errors=True)
+    assert res.status_code == 200
