@@ -207,7 +207,7 @@ def biosample_7_8(value, system):
     if 'taxa' in value:
         if 'notes' in value:
             notes_value = value['notes']
-            if len(notes_value) > 0:
+            if notes_value:
                 notes_value += '  '
             value['notes'] = notes_value + 'Previous taxa: ' + value['taxa'] + ' will now be calculated.'
         else:
