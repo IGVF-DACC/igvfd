@@ -71,10 +71,12 @@
             "default": "11"
         },
         "part_of": {
-            "type": "null"
+            "type": "null",
+            "comment": "A whole organism sample may not specify that it is part_of another sample."
         },
         "pooled_from": {
-            "type": "null"
+            "type": "null",
+            "comment": "A whole organism sample may not specify that it is pooled_from other samples."
         }
     },
     "fuzzy_searchable_fields": [
