@@ -72,11 +72,11 @@
         },
         "part_of": {
             "type": "null",
-            "comment": "A whole organism sample may not specify that it is part_of another sample."
+            "comment": "Do not submit. A whole organism sample may not specify that it is part_of another sample."
         },
         "pooled_from": {
             "type": "null",
-            "comment": "A whole organism sample may not specify that it is pooled_from other samples."
+            "comment": "Do not submit. A whole organism sample may not specify that it is pooled_from other samples."
         }
     },
     "fuzzy_searchable_fields": [
