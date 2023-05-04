@@ -88,11 +88,6 @@
             "title": "Normalized",
             "description": "Indicates if the signal file is normalized.",
             "type": "boolean"
-        },
-        "predicted": {
-            "title": "Predicted",
-            "description": "Indicates if the signal file is predicted.",
-            "type": "boolean"
         }
     },
     "fuzzy_searchable_fields": [

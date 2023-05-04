@@ -385,11 +385,7 @@ class SignalFile(File):
             'notSubmittable': True
         }
     )
-    def content_summary(self, request, content_type, strand_specificity, filtered, normalized, predicted):
-        predicted_phrase = ''
-        if predicted:
-            predicted_phrase = 'predicted'
-
+    def content_summary(self, request, content_type, strand_specificity, filtered, normalized):
         filtered_phrase = ''
         if filtered:
             filtered_phrase = 'filtered'
@@ -403,7 +399,6 @@ class SignalFile(File):
             strand_phrase += ' strand'
 
         phrases = [
-            predicted_phrase,
             filtered_phrase,
             normalized_phrase,
             strand_phrase,

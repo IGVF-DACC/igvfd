@@ -1,6 +1,6 @@
 {
-    "hash": "6a643ed3d7ea94b81e1fefaa9a9d89dd",
-    "index_name": "signal_file_6a643ed3",
+    "hash": "49f9fcbcdc8779c112e6d725fc5d7914",
+    "index_name": "signal_file_49f9fcbc",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -360,15 +360,6 @@
                     },
                     "notes": {
                         "type": "text"
-                    },
-                    "predicted": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "boolean"
                     },
                     "reference_files": {
                         "type": "keyword"

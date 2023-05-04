@@ -92,11 +92,10 @@ def test_types_signal_file_content_summary(testapp, signal_file):
     res = testapp.patch_json(
         signal_file['@id'],
         {
-            'predicted': True,
             'filtered': True,
             'normalized': True,
             'strand_specificity': 'unstranded'
         }
     )
     res = testapp.get(signal_file['@id'])
-    assert res.json.get('content_summary') == 'predicted filtered normalized unstranded signal of all reads'
+    assert res.json.get('content_summary') == 'filtered normalized unstranded signal of all reads'
