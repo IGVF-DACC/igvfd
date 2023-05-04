@@ -50,3 +50,11 @@ def treatment_v2(treatment_chemical):
         'aliases': []
     })
     return item
+
+
+@pytest.fixture
+def treatment_ntr(treatment_chemical):
+    item = treatment_chemical.copy()
+    item.update({
+        'treatment_term_id': 'NTR:100'
+    })
