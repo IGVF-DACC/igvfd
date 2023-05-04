@@ -62,6 +62,8 @@ def gene_CD1E(testapp):
             'HGNC:1638'
         ],
         'geneid': 'ENSG00000158488',
+        'version_number': '3',
+        'annotation_version': 'GENCODE v42',
         'symbol': 'CD1E',
         'taxa': 'Homo sapiens'
     }
