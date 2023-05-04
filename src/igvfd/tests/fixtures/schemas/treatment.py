@@ -53,9 +53,13 @@ def treatment_v2(treatment_chemical):
 
 
 @pytest.fixture
-def treatment_ntr(treatment_chemical):
-    item = treatment_chemical.copy()
-    item.update({
-        'treatment_term_id': 'NTR:100'
-    })
-    return item
+def treatment_ntr(testapp):
+    item = {
+        'treatment_term_id': 'NTR:100',
+        'treatment_term_name': 'interferon gamma',
+        'treatment_type': 'chemical',
+        'amount': 10,
+        'amount_units': 'mM',
+        'purpose': 'perturbation'
+    }
+    return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
