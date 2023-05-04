@@ -1,6 +1,10 @@
 ## Changelog for *`whole_organism.json`*
 
 
+### Schema version 11
+
+* Disallow `part_of` and `pooled_from` properties.
+
 ### Schema version 10
 
 * Remove taxa `Saccharomyces`.

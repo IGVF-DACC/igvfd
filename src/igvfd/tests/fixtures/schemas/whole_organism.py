@@ -141,3 +141,14 @@ def whole_organism_v9(whole_organism):
         'notes': ''
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v10(whole_organism, primary_cell, tissue, human_tissue):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '10',
+        'part_of': primary_cell['@id'],
+        'pooled_from': [tissue['@id'], human_tissue['@id']]
+    })
+    return item

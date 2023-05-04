@@ -166,3 +166,22 @@ def in_vitro_system_7_8(value, system):
         value['classification'] = 'differentiated cell specimen'
     if value['classification'] == 'reprogrammed cell':
         value['classification'] = 'reprogrammed cell specimen'
+
+
+@upgrade_step('whole_organism', '10', '11')
+def whole_organism_10_11(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-575
+    notes = value.get('notes', '')
+    if 'part_of' in value:
+        part_id = value['part_of']
+        notes += f' Part_of property (previous content: {part_id}) is no longer valid.'
+        del value['part_of']
+    if 'pooled_from' in value:
+        pool_ids = []
+        for sample in value['pooled_from']:
+            pool_ids.append(sample)
+        pool_list = ', '.join(pool_ids)
+        notes += f' Pooled_from property (previous content: {pool_list}) is no longer valid.'
+        del value['pooled_from']
+    new_notes = notes.strip()
+    value['notes'] = new_notes
