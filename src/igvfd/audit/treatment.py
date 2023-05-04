@@ -16,4 +16,4 @@ def audit_treatment_term_id_check(value, system):
         term_id = value['treatment_term_id']
         if term_id.startswith('NTR'):
             detail = f'Treatment {audit_link(path_to_text(treatment_id, treatment_id))} has term_id {audit_link(term_id,term_id)}.'
-            yield AuditFailure('treatment_term_id starts with NTR', detail, level='WARNING')
+            yield AuditFailure('treatment term is newly requested', detail, level='WARNING')
