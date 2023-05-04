@@ -11,7 +11,7 @@
         "file_set",
         "content_type",
         "reference_files",
-        "strand_specificty"
+        "strand_specificity"
     ],
     "identifyingProperties": [
         "uuid",
