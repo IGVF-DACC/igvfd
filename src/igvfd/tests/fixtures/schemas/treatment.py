@@ -58,3 +58,4 @@ def treatment_ntr(treatment_chemical):
     item.update({
         'treatment_term_id': 'NTR:100'
     })
+    return item
