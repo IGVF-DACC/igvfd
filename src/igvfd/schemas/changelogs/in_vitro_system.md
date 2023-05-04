@@ -1,5 +1,10 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Minor changes sinch schema version 8
+
+* Add `cellular_sub_pool`.
+
+
 ### Schema version 8
 
 * Rename `differentiated cell` to `differentiated cell specimen`.

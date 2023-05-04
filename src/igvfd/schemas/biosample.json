@@ -222,7 +222,8 @@
         },
         "cellular_sub_pool": {
             "title": "Cellular Sub Pool",
-            "description": "Cellular Sub Pool of a sample",
+            "description": "cellular sub-pool fraction of the sample. Also known as PKR and sub-library.",
+            "comment": "Barcodes coming from different cellular sub-pools could not be directly comparable due to the higher probability of collisions",
             "type": "string",
             "pattern": "^[a-zA-Z\\d_$.+!*,()'-]+(?:\\s[a-zA-Z\\d_$.+!*,()'-]+)*$"
         }

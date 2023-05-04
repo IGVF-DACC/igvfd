@@ -55,13 +55,13 @@ def test_sorted_fraction_detail_dependency(testapp, in_vitro_organoid, primary_c
 def test_cellular_sub_pool(testapp, in_vitro_differentiated_cell, primary_cell, in_vitro_organoid):
     res = testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
-        {'cellular_sub_pool': 'PKR_2627383-A'}, expect_errors=True)
+        {'cellular_sub_pool': 'SS-PKR_1'}, expect_errors=True)
     assert res.status_code == 200
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'cellular_sub_pool': 'PKR_2627383-A'}, expect_errors=True)
+        {'cellular_sub_pool': 'SS-PKR_1'}, expect_errors=True)
     assert res.status_code == 200
     res = testapp.patch_json(
         in_vitro_organoid['@id'],
-        {'cellular_sub_pool': 'PKR_2627383-B'}, expect_errors=True)
+        {'cellular_sub_pool': 'LW231B-2'}, expect_errors=True)
     assert res.status_code == 200
