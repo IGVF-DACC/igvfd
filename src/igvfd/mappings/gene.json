@@ -1,6 +1,6 @@
 {
-    "hash": "d2b4ee254b6b9abd02f2cff4d889ea04",
-    "index_name": "gene_d2b4ee25",
+    "hash": "e3376b015bf1e19555dc9f6184d68493",
+    "index_name": "gene_e3376b01",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -150,6 +150,9 @@
                     "aliases": {
                         "type": "keyword"
                     },
+                    "annotation_version": {
+                        "type": "keyword"
+                    },
                     "creation_timestamp": {
                         "type": "keyword"
                     },
@@ -162,6 +165,9 @@
                     },
                     "geneid": {
                         "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "geneid_with_version": {
                         "type": "keyword"
                     },
                     "locations": {
@@ -229,6 +235,9 @@
                         "type": "keyword"
                     },
                     "uuid": {
+                        "type": "keyword"
+                    },
+                    "version_number": {
                         "type": "keyword"
                     }
                 },

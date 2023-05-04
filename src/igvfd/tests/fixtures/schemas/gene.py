@@ -9,7 +9,7 @@ def gene_myc_hs(testapp):
         ],
         'geneid': 'ENSG00000136997',
         'version_number': '7',
-        'annotation_version': 'GENCODE v32',
+        'annotation_version': 'GENCODE v42',
         'symbol': 'MYC',
         'taxa': 'Homo sapiens'
     }
