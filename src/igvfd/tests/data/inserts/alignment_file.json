@@ -1,0 +1,46 @@
+[
+    {
+        "uuid": "f5c8a277-e11d-ea86-cc75-bc735eb802c8",
+        "accession": "IGVFFI0000ALGN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:alignments_file"
+        ],
+        "status": "released",
+        "md5sum": "7cc757ed8aacf2ec3f018876017c59c3",
+        "file_format": "bam",
+        "content_type": "alignments",
+        "submitted_file_name": "/Users/igvf/igvf_files/alignments.bam",
+        "file_size": 45200010,
+        "upload_status": "pending",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_filess": [
+            "IGVFFI0001GNRF"
+        ],
+        "redacted": false,
+        "filtered": false
+    },
+    {
+        "uuid": "ea8c86b7-1271-ea86-cc75-bc7d7eb802c8",
+        "accession": "IGVFFI0001ALGN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:alignments_file_redacted_filtered"
+        ],
+        "status": "released",
+        "md5sum": "7cc757ed8a9c41ec3f018876017c9be1",
+        "file_format": "bam",
+        "content_type": "transcriptome alignments",
+        "submitted_file_name": "/Users/igvf/igvf_files/alignments.bam",
+        "file_size": 45200010,
+        "upload_status": "pending",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "redacted": true,
+        "filtered": true
+    }
+]

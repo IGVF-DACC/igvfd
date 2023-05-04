@@ -68,3 +68,18 @@ def test_types_file_s3_uri_non_submittable(testapp, analysis_set_with_sample, aw
         's3_uri': 's3://foo/bar/baz.fastq.gz'
     }
     testapp.post_json('/sequence_file/', item, status=422)
+
+
+def test_types_aligment_file_content_summary(testapp, alignment_file):
+    res = testapp.get(alignment_file['@id'])
+    assert res.json.get('content_summary') == 'unfiltered alignments'
+
+    res = testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'redacted': True,
+            'filtered': True
+        }
+    )
+    res = testapp.get(alignment_file['@id'])
+    assert res.json.get('content_summary') == 'filtered redacted alignments'

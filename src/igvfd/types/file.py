@@ -305,6 +305,55 @@ class ReferenceFile(File):
         return keys
 
 
+@collection(
+    name='alignment-file',
+    unique_key='accession',
+    properties={
+        'title': 'Alignment File',
+        'description': 'Listing of alignment files',
+    }
+)
+class AlignmentFile(File):
+    item_type = 'alignment_file'
+    schema = load_schema('igvfd:schemas/alignment_file.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+    ]
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') != 'replaced':
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
+
+    @calculated_property(
+        schema={
+            'title': 'Content Summary',
+            'type': 'string',
+            'notSubmittable': True
+        }
+    )
+    def content_summary(self, request, content_type, redacted, filtered):
+        redacted_phrase = ''
+        if redacted:
+            redacted_phrase = 'redacted'
+
+        filtered_phrase = 'unfiltered'
+        if filtered:
+            filtered_phrase = 'filtered'
+
+        phrases = [
+            filtered_phrase,
+            redacted_phrase,
+            content_type
+        ]
+        non_empty_phrases = [x for x in phrases if x != '']
+        return ' '.join(non_empty_phrases)
+
+
 @view_config(
     name='upload',
     context=File,

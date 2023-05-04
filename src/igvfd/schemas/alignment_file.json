@@ -1,0 +1,85 @@
+{
+    "title": "Alignment File",
+    "$id": "/profiles/alignment_file.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submission of a file containing alignment data.",
+    "required": [
+        "award",
+        "lab",
+        "md5sum",
+        "file_format",
+        "file_set",
+        "content_type",
+        "reference_files",
+        "redacted",
+        "filtered"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases",
+        "md5sum"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/processed_files"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "file.json#/dependentSchemas"
+        ]
+    },
+    "type": "object",
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "content_type": {
+            "comment": "Content Type describes the content of the file.",
+            "enum": [
+                "alignments",
+                "transcriptome alignments"
+            ]
+        },
+        "file_format": {
+            "enum": [
+                "bam"
+            ]
+        },
+        "redacted": {
+            "title": "Redacted",
+            "description": "Indicates whether the alignments data have been sanitized (redacted) to prevent leakage of private and potentially identifying genomic information.",
+            "type": "boolean"
+        },
+        "filtered": {
+            "title": "Filtered",
+            "description": "Indicates whether reads that did not pass a filtering step, such as PCR duplicates, have been removed from the file.",
+            "type": "boolean"
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "accession",
+        "@type",
+        "content_type",
+        "file_format"
+    ],
+    "changelog": "/profiles/changelogs/alignment_file.md"
+}
