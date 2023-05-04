@@ -1,0 +1,50 @@
+[
+    {
+        "uuid": "cbfaed11-132d-4037-bdb2-4c20d57e84d6",
+        "accession": "IGVFFI0000SIGN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:plus_strand_signal_of_all_reads_file"
+        ],
+        "status": "released",
+        "md5sum": "f3115d2fa53bbbf7a593a51406c76e41",
+        "file_format": "bigWig",
+        "content_type": "signal of all reads",
+        "submitted_file_name": "/Users/igvf/igvf_files/plus_strand_signal_of_all_reads.bigWig",
+        "file_size": 25523553,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_filess": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "plus",
+        "normalized": false,
+        "predicted": false,
+        "filtered": true
+    },
+    {
+        "uuid": "820df686-4bfb-4181-8163-7edb473e861f",
+        "accession": "IGVFFI0001GNAL",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:signal_p_value_file"
+        ],
+        "status": "released",
+        "md5sum": "2be0463d728348cdebaa81b74a30cd4a",
+        "file_format": "bigWig",
+        "content_type": "signal p-value",
+        "submitted_file_name": "/Users/igvf/igvf_files/signal_p_value.bigWig",
+        "file_size": 43523553,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded",
+        "normalized": false,
+        "predicted": false,
+        "filtered": false
+    }
+]

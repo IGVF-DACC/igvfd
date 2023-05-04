@@ -83,3 +83,20 @@ def test_types_aligment_file_content_summary(testapp, alignment_file):
     )
     res = testapp.get(alignment_file['@id'])
     assert res.json.get('content_summary') == 'filtered redacted alignments'
+
+
+def test_types_signal_file_content_summary(testapp, signal_file):
+    res = testapp.get(signal_file['@id'])
+    assert res.json.get('content_summary') == 'plus strand signal of all reads'
+
+    res = testapp.patch_json(
+        signal_file['@id'],
+        {
+            'predicted': True,
+            'filtered': True,
+            'normalized': True,
+            'strand_specificity': 'unstranded'
+        }
+    )
+    res = testapp.get(signal_file['@id'])
+    assert res.json.get('content_summary') == 'predicted filtered normalized unstranded signal of all reads'
