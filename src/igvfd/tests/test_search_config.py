@@ -3,7 +3,7 @@ from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 from snovault import TYPES
 
 
-def test_file_set_columns(registry):
+def test_search_config_file_set_columns(registry):
     item_registry = registry[TYPES]
     search_registry = registry[SEARCH_CONFIG]
     subtypes = item_registry.abstract['FileSet'].subtypes
@@ -14,7 +14,7 @@ def test_file_set_columns(registry):
             assert column in file_set_columns
 
 
-def test_biosample_columns(registry):
+def test_search_config_biosample_columns(registry):
     item_registry = registry[TYPES]
     search_registry = registry[SEARCH_CONFIG]
     subtypes = item_registry.abstract['Biosample'].subtypes
@@ -25,7 +25,7 @@ def test_biosample_columns(registry):
             assert column in biosample_columns
 
 
-def test_items_columns(registry):
+def test_search_config_items_columns(registry):
     item_registry = registry[TYPES]
     search_registry = registry[SEARCH_CONFIG]
     subtypes = item_registry.abstract['Item'].subtypes
@@ -36,7 +36,7 @@ def test_items_columns(registry):
             assert column in item_columns
 
 
-def test_sample_columns(registry):
+def test_search_config_sample_columns(registry):
     item_registry = registry[TYPES]
     search_registry = registry[SEARCH_CONFIG]
     subtypes = item_registry.abstract['Sample'].subtypes
@@ -47,7 +47,7 @@ def test_sample_columns(registry):
             assert column in sample_columns
 
 
-def test_file_columns(registry):
+def test_search_config_file_columns(registry):
     item_registry = registry[TYPES]
     search_registry = registry[SEARCH_CONFIG]
     subtypes = item_registry.abstract['File'].subtypes
