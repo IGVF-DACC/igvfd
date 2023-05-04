@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library.json`*
 
+### Minor changes since schema version 2
+
+* Add `files`.
+
 ### Schema version 2
 
 * Remove `plasmid_map`. Use `documents` instead.
