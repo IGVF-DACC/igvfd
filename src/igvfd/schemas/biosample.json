@@ -55,6 +55,13 @@
                 "lower_bound_age",
                 "age_units"
             ]
+        },
+        "age_units": {
+            "comment": "Human biosamples cannot have age units of minutes or hours. Yeast biosamples cannot have age units of years or months.",
+            "required": [
+                "lower_bound_age",
+                "upper_bound_age"
+            ]
         }
     },
     "properties": {
