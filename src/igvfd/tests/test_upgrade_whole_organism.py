@@ -24,7 +24,11 @@ def test_whole_organism_upgrade_3_4(upgrader, whole_organism_v3, phenotype_term_
     assert value.get('disease_terms') == [phenotype_term_alzheimers['@id']]
 
 
-def test_whole_organism_upgrade_4_5(upgrader, whole_organism_v4, whole_organism_v4_unknown, whole_organism_v4_90_or_above):
+def test_whole_organism_upgrade_4_5(
+        upgrader,
+        whole_organism_v4,
+        whole_organism_v4_unknown,
+        whole_organism_v4_90_or_above):
     value = upgrader.upgrade('whole_organism', whole_organism_v4, current_version='4', target_version='5')
     assert value['lower_bound_age'] == 10 and value['upper_bound_age'] == 10
     assert value['embryonic']

@@ -149,7 +149,7 @@ def whole_organism_v10(whole_organism, primary_cell, tissue, human_tissue):
         'schema_version': '10',
         'part_of': primary_cell['@id'],
         'pooled_from': [tissue['@id'], human_tissue['@id']]
-          })
+    })
     return item
 
 
