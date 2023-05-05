@@ -213,5 +213,3 @@ def biosample_7_8(value, system):
         else:
             value['notes'] = 'Previous taxa: ' + value['taxa'] + ' will now be calculated.'
     del value['taxa']
-
-
