@@ -153,6 +153,7 @@ def whole_organism_v10(whole_organism, primary_cell, tissue, human_tissue):
     return item
 
 
+@pytest.fixture
 def whole_organism_v11(whole_organism):
     item = whole_organism.copy()
     item.update({
