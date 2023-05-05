@@ -1,6 +1,6 @@
 {
-    "hash": "49f9fcbcdc8779c112e6d725fc5d7914",
-    "index_name": "signal_file_49f9fcbc",
+    "hash": "884dbff12d9f097ca2c184b41a23f971",
+    "index_name": "signal_file_884dbff1",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -371,6 +371,9 @@
                         "type": "keyword"
                     },
                     "schema_version": {
+                        "type": "keyword"
+                    },
+                    "start_view_position": {
                         "type": "keyword"
                     },
                     "status": {
