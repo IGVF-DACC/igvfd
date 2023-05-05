@@ -10,7 +10,7 @@ from .formatter import (
 
 @audit_checker('Treatment', frame='object')
 def audit_treatment_term_id_check(value, system):
-    '''If treatment_term_id starts with NTR, flag treatment object with warning of new term request.'''
+    '''This treatment term has been newly requested. It will be replaced with an UNIPROT or CHEBI term following it's addition to the appropriate ontology database.'''
     if 'treatment_term_id' in value:
         term_id = value['treatment_term_id']
         if term_id.startswith('NTR'):
