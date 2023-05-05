@@ -20,7 +20,8 @@
         ],
         "strand_specificity": "plus",
         "normalized": false,
-        "filtered": true
+        "filtered": true,
+        "start_view_position": "chr12:123456789"
     },
     {
         "uuid": "820df686-4bfb-4181-8163-7edb473e861f",
