@@ -172,4 +172,4 @@ def test_tissue_taxa_calculation(testapp, tissue, human_donor, rodent_donor):
         tissue['@id'],
         {'donors': [human_donor['@id'], rodent_donor['@id']]})
     res = testapp.get(tissue['@id'])
-    assert res.json.get('taxa') == None
+    assert res.json.get('taxa', None) == None
