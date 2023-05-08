@@ -9,7 +9,7 @@ def gene_myc_hs(testapp):
         ],
         'geneid': 'ENSG00000136997',
         'version_number': '7',
-        'annotation_version': 'GENCODE v42',
+        'annotation_version': 'GENCODE 42',
         'symbol': 'MYC',
         'taxa': 'Homo sapiens'
     }
@@ -28,7 +28,7 @@ def gene_zscan10_mm(testapp):
         ],
         'geneid': 'ENSMUSG00000023902',
         'version_number': '3',
-        'annotation_version': 'GENCODE vM30',
+        'annotation_version': 'GENCODE M30',
         'symbol': 'Zcan10',
         'taxa': 'Mus musculus'
     }
@@ -63,7 +63,7 @@ def gene_CD1E(testapp):
         ],
         'geneid': 'ENSG00000158488',
         'version_number': '3',
-        'annotation_version': 'GENCODE v42',
+        'annotation_version': 'GENCODE 42',
         'symbol': 'CD1E',
         'taxa': 'Homo sapiens'
     }

@@ -198,10 +198,10 @@
             "description": "The annotation and version of the gene reference resource.",
             "type": "string",
             "enum": [
-                "GENCODE v42",
-                "GENCODE v43",
-                "GENCODE vM30",
-                "GENCODE vM32"
+                "GENCODE 42",
+                "GENCODE 43",
+                "GENCODE M30",
+                "GENCODE M32"
             ],
             "permission": "import_items"
         }

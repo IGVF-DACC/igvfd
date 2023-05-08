@@ -29,9 +29,9 @@ def gene_2_3(value, system):
 def gene_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-629
     if value['taxa'] == 'Homo sapiens':
-        value['annotation_version'] = 'GENCODE v42'
+        value['annotation_version'] = 'GENCODE 42'
     if value['taxa'] == 'Mus musculus':
-        value['annotation_version'] = 'GENCODE vM30'
+        value['annotation_version'] = 'GENCODE M30'
 
     (geneid_new, version_number) = value['geneid'].split('.')
     value['geneid'] = geneid_new

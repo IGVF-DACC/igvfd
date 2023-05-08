@@ -18,4 +18,4 @@ def test_gene_upgrade_3_4(upgrader, gene_v3):
     assert value['schema_version'] == '4'
     assert value['geneid'] == 'ENSMUSG00000004231'
     assert value['version_number'] == '8'
-    assert value['annotation_version'] == 'GENCODE vM30'
+    assert value['annotation_version'] == 'GENCODE M30'
