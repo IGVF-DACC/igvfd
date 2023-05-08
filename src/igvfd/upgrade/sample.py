@@ -193,6 +193,6 @@ def whole_organism_11_12(value, system):
     notes = value.get('notes', '')
     if value['biosample_term'] != '/sample-term/UBERON_0000468/':
         old_term = value['biosample_term']
-        notes += f'Biosample_term (formerly: {old_term}) was automatically upgraded.'
+        notes += f' Biosample_term (formerly: {old_term}) was automatically upgraded.'
         value['biosample_term'] = '/sample-term/UBERON_0000468/'
         value['notes'] = notes.strip()
