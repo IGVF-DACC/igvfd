@@ -201,6 +201,7 @@
                 "GENCODE 42",
                 "GENCODE 43",
                 "GENCODE M30",
+                "GENCODE M31",
                 "GENCODE M32"
             ],
             "permission": "import_items"
