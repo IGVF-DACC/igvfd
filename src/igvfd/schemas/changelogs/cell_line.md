@@ -1,9 +1,5 @@
 ## Changelog for *`cell_line.json`*
 
-### Minor changes since schema version 8
-
-* Add `cellular_sub_pool`.
-
 ### Schema version 8
 
 * Rename `biomarker` to `biomarkers`.

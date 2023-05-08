@@ -1,9 +1,5 @@
 ## Changelog for *`differentiated_cell.json`*
 
-### Minor changes sinch schema version 9
-
-* Add `cellular_sub_pool`.
-
 ### Schema version 9
 
 * Rename `biomarker` to `biomarkers`.
