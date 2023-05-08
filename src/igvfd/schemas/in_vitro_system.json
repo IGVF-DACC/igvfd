@@ -65,9 +65,15 @@
     },
     "dependentRequired": {
         "time_post_factors_introduction": [
-            "time_post_factors_introduction_units"
+            "time_post_factors_introduction_units",
+            "introduced_factors"
         ],
         "time_post_factors_introduction_units": [
+            "time_post_factors_introduction",
+            "introduced_factors"
+        ],
+        "introduced_factors": [
+            "time_post_factors_introduction_units",
             "time_post_factors_introduction"
         ]
     },

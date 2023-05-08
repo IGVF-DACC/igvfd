@@ -121,5 +121,4 @@ def in_vitro_system_v8(in_vitro_system_v1):
         'schema_version': '8',
         'taxa': 'Homo sapiens',
         'notes': 'Test.'
-    })
     return item

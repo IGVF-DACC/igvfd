@@ -53,3 +53,12 @@ def test_in_vitro_system_upgrade_8_9(upgrader, in_vitro_system_v8):
     assert value['schema_version'] == '9'
     assert 'taxa' not in value
     assert value['notes'] == 'Test.  Previous taxa: Homo sapiens will now be calculated.'
+
+
+def test_in_vitro_system_upgrade_8_9(upgrader, in_vitro_system_v8_1, in_vitro_system_v8_2):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v8_1, current_version='8', target_version='9')
+    assert value['schema_version'] == '9'
+    assert 'time_post_factors_introduction' not in in_vitro_system_v8_1 and 'time_post_factors_introduction_units' not in in_vitro_system_v8_1
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v8_2, current_version='8', target_version='9')
+    assert value['schema_version'] == '9'
+    assert 'introduced_factors' not in in_vitro_system_v8_2

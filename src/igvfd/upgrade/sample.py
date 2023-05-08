@@ -214,3 +214,21 @@ def biosample_7_8(value, system):
         else:
             value['notes'] = 'Previous taxa: ' + value['taxa'] + ' will now be calculated.'
         del value['taxa']
+
+
+@upgrade_step('in_vitro_system', '9', '10')
+def in_vitro_system_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-627
+    notes = value.get('notes', '')
+    if 'time_post_factors_introduction' in value and 'time_post_factors_introduction_units' in value and 'introduced_factors' not in value:
+        time_post_factors_introduction = value['time_post_factors_introduction']
+        time_post_factors_introduction_units = value['time_post_factors_introduction_units']
+        del value['time_post_factors_introduction']
+        del value['time_post_factors_introduction_units']
+        notes += f' This sample originally had time_post_factors_introduction of {time_post_factors_introduction} and time_post_factors_introduction_units of {time_post_factors_introduction_units}, but no associated introduced_factors. All three properties are now mutually required for in_vitro_system samples and should be submitted together.'
+    if 'introduced_factors' in value and 'time_post_factors_introduction' not in value and 'time_post_factors_introduction_units' not in value:
+        introduced_factors = value['introduced_factors']
+        del value['introduced_factors']
+        notes += f' This sample originally had introduced_factors of {introduced_factors}, but no associated time_post_factors_introduction or time_post_factors_introduction_units. All three properties are now mutually required for in_vitro_system samples and should be submitted together.'
+    new_notes = notes.strip()
+    value['notes'] = new_notes

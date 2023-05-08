@@ -28,6 +28,9 @@
         ],
         "time_post_factors_introduction": 24,
         "time_post_factors_introduction_units": "minute",
+        "introduced_factors": [
+            "/treatments/10c05ac0-52a2-11e6-bdf4-0800200c9a66/"
+        ],
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
@@ -94,6 +97,9 @@
         ],
         "time_post_factors_introduction": 24,
         "time_post_factors_introduction_units": "minute",
+        "introduced_factors": [
+            "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
+        ],
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
@@ -140,6 +146,9 @@
         ],
         "time_post_factors_introduction": 24,
         "time_post_factors_introduction_units": "minute",
+        "introduced_factors": [
+            "/treatments/2d57c810-c729-11ec-9d64-0242ac120002/"
+        ],
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
