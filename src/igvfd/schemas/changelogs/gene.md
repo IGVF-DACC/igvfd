@@ -1,5 +1,11 @@
 ## Changelog for *`gene.json`*
 
+### Schema version 4
+
+* Change regex pattern of  `geneid`.
+* Add `version_number`.
+* Add `annotation_version`.
+
 ### Minor changes since schema version 3
 
 * Add `GRCm39` to `locations.assembly`

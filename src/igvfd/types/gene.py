@@ -29,3 +29,14 @@ class Gene(SharedItem):
     })
     def title(self, request, taxa, symbol):
         return u'{} ({})'.format(symbol, taxa)
+
+    @calculated_property(schema={
+        'title': 'ENSEMBL GeneID With Version',
+        'type': 'string',
+        'notSubmittable': True,
+    })
+    def geneid_with_version(self, request, geneid, version_number=None):
+        if version_number is not None:
+            return u'{}.{}'.format(geneid, version_number)
+        else:
+            return geneid

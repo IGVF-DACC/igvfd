@@ -6,6 +6,8 @@
     "type": "object",
     "required": [
         "geneid",
+        "version_number",
+        "annotation_version",
         "symbol",
         "dbxrefs",
         "taxa"
@@ -78,13 +80,13 @@
     },
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "4"
         },
         "geneid": {
             "title": "ENSEMBL GeneID",
-            "description": "ENSEMBL GeneID of official nomenclature approved gene.",
+            "description": "ENSEMBL GeneID of official nomenclature approved gene. The GeneID does not include the current version number suffix.",
             "type": "string",
-            "pattern": "ENS[A-Z]*G\\d{11}(\\.\\d+)?",
+            "pattern": "ENS[A-Z]*G\\d{11}?",
             "permission": "import_items",
             "uniqueKey": true
         },
@@ -182,6 +184,26 @@
                     }
                 }
             },
+            "permission": "import_items"
+        },
+        "version_number": {
+            "title": "ENSEMBL GeneID Version Number",
+            "description": "Current ENSEMBL GeneID version number of the gene.",
+            "type": "string",
+            "pattern": "^\\d+?",
+            "permission": "import_items"
+        },
+        "annotation_version": {
+            "title": "Annotation Version",
+            "description": "The annotation and version of the gene reference resource.",
+            "type": "string",
+            "enum": [
+                "GENCODE 42",
+                "GENCODE 43",
+                "GENCODE M30",
+                "GENCODE M31",
+                "GENCODE M32"
+            ],
             "permission": "import_items"
         }
     },
