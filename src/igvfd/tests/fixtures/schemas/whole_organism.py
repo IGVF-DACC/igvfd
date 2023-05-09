@@ -152,3 +152,13 @@ def whole_organism_v10(whole_organism, primary_cell, tissue, human_tissue):
         'pooled_from': [tissue['@id'], human_tissue['@id']]
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v11(whole_organism, sample_term_K562):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '11',
+        'biosample_term': sample_term_K562['@id']
+    })
+    return item

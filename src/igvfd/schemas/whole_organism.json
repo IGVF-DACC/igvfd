@@ -68,7 +68,14 @@
     },
     "properties": {
         "schema_version": {
-            "default": "11"
+            "default": "12"
+        },
+        "biosample_term": {
+            "comment": "Do not submit, value is assigned by the object.",
+            "default": "25d5ad53-15fd-4a44-878a-ece2f7e86509",
+            "linkEnum": [
+                "25d5ad53-15fd-4a44-878a-ece2f7e86509"
+            ]
         },
         "part_of": {
             "type": "null",

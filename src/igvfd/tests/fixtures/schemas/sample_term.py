@@ -33,7 +33,8 @@ def sample_term_pluripotent_stem_cell(testapp):
 def sample_term_whole_organism(testapp):
     item = {
         'term_id': 'UBERON:0000468',
-        'term_name': 'whole organism'
+        'term_name': 'whole organism',
+        'uuid': '25d5ad53-15fd-4a44-878a-ece2f7e86509'
     }
     return testapp.post_json('/sample_term', item, status=201).json['@graph'][0]
 

@@ -1,5 +1,8 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 12
+
+* Restrict `biosample_term` to `whole organism`.
 
 ### Schema version 11
 
