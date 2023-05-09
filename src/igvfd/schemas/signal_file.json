@@ -44,7 +44,58 @@
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
-        ]
+        ],
+        "genome_annotation": {
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "GRCm39"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "genome_annotation": {
+                                "enum": [
+                                    "M30",
+                                    "M31",
+                                    "M32"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "GRCh38"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "genome_annotation": {
+                                "enum": [
+                                    "V40",
+                                    "V41",
+                                    "V42",
+                                    "V43"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
     },
     "type": "object",
     "properties": {
@@ -94,6 +145,31 @@
             "description": "The 0-based coordinate for the default starting position when viewing the signal in a genome browser.",
             "type": "string",
             "pattern": "^(chr(X|Y|M|[1-9]|1[0-9]|2[0-2]):[0-9]+)$"
+        },
+        "assembly": {
+            "title": "Genome Assembly",
+            "description": "Genome assembly applicable for the reference data.",
+            "type": "string",
+            "enum": [
+                "GRCh38",
+                "hg19",
+                "GRCm39",
+                "mm10"
+            ]
+        },
+        "genome_annotation": {
+            "title": "Genome Annotation",
+            "description": "Genome annotation indicates the genome version.",
+            "type": "string",
+            "enum": [
+                "M30",
+                "M31",
+                "M32",
+                "V40",
+                "V41",
+                "V42",
+                "V43"
+            ]
         }
     },
     "fuzzy_searchable_fields": [
