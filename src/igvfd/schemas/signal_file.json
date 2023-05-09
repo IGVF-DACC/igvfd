@@ -148,7 +148,7 @@
         },
         "assembly": {
             "title": "Genome Assembly",
-            "description": "Genome assembly applicable for the reference data.",
+            "description": "The genome assembly the signal file was mapped to.",
             "type": "string",
             "enum": [
                 "GRCh38",
