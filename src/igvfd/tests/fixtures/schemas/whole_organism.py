@@ -154,21 +154,21 @@ def whole_organism_v10(whole_organism, primary_cell, tissue, human_tissue):
 
 
 @pytest.fixture
-def whole_organism_v11(whole_organism):
-    item = whole_organism.copy()
-    item.update({
-        'schema_version': '11',
-        'taxa': 'Homo sapiens',
-        'notes': ''
-    })
-    return item
-
-
-@pytest.fixture
 def whole_organism_v11(whole_organism, sample_term_K562):
     item = whole_organism.copy()
     item.update({
         'schema_version': '11',
         'biosample_term': sample_term_K562['@id']
+    })
+    return item
+
+
+@pytest.fixture
+def whole_organism_v12(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '12',
+        'taxa': 'Homo sapiens',
+        'notes': ''
     })
     return item

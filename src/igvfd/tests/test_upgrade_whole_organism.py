@@ -93,8 +93,8 @@ def test_whole_organism_upgrade_11_12(upgrader, whole_organism_v11):
     assert value['notes'] == 'Biosample_term (formerly: /sample-terms/EFO_0002067/) was automatically upgraded.'
 
 
-def test_whole_organism_upgrade_12_13(upgrader, whole_organism_v11):
-    value = upgrader.upgrade('whole_organism', whole_organism_v11, current_version='12', target_version='13')
+def test_whole_organism_upgrade_12_13(upgrader, whole_organism_v12):
+    value = upgrader.upgrade('whole_organism', whole_organism_v12, current_version='12', target_version='13')
     assert value['schema_version'] == '13'
     assert 'taxa' not in value
     assert value['notes'] == 'Previous taxa: Homo sapiens will now be calculated.'
