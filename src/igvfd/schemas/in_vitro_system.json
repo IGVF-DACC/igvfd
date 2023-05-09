@@ -61,6 +61,31 @@
                     ]
                 }
             }
+        },
+        "classification": {
+            "comment": "If an in vitro system is of classification organoid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, introduced_factors, time_post_factors_introduction, and time_post_factors_introduction_units are required.",
+            "if": {
+                "properties": {
+                    "classification": {
+                        "enum": [
+                            "organoid",
+                            "differentiated cell specimen",
+                            "reprogrammed cell specimen"
+                        ]
+                    }
+                },
+                "required": [
+                    "classification"
+                ]
+            },
+            "then": {
+                "required": [
+                    "time_post_factors_introduction",
+                    "time_post_factors_introduction_units",
+                    "introduced_factors",
+                    "targeted_sample_term"
+                ]
+            }
         }
     },
     "dependentRequired": {
