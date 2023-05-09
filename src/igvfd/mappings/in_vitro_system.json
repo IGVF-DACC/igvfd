@@ -1,6 +1,6 @@
 {
-    "hash": "d7f612070f67c815e0f9e582685b0116",
-    "index_name": "in_vitro_system_d7f61207",
+    "hash": "c2e35b293c43331b74b5a2bb4a808d5b",
+    "index_name": "in_vitro_system_c2e35b29",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -313,6 +313,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "cellular_sub_pool": {
+                        "type": "keyword"
                     },
                     "classification": {
                         "type": "keyword"

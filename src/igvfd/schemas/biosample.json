@@ -219,6 +219,13 @@
             "comment": "See modification.json for available identifiers.",
             "type": "string",
             "linkTo": "Modification"
+        },
+        "cellular_sub_pool": {
+            "title": "Cellular Sub Pool",
+            "description": "cellular sub-pool fraction of the sample. Also known as PKR and sub-library.",
+            "comment": "Barcodes coming from different cellular sub-pools could not be directly comparable due to the higher probability of collisions. Examples of valid identifiers are: 8A, LW231-2, SS-PKR_1, 4e.AB(678), etc.",
+            "type": "string",
+            "pattern": "^[a-zA-Z\\d_.()-]+(?:\\s[a-zA-Z\\d_.()-]+)*$"
         }
     }
 }

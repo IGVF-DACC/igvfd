@@ -4,6 +4,10 @@
 
 * Restrict `biosample_term` to `whole organism`.
 
+### Minor changes since schema version 11
+
+* Add `cellular_sub_pool`.
+
 ### Schema version 11
 
 * Disallow `part_of` and `pooled_from` properties.

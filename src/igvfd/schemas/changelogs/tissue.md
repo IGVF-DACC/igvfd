@@ -1,5 +1,8 @@
 ## Changelog for *`tissue.json`*
 
+### Minor changes since schema version 11
+
+* Add `cellular_sub_pool`.
 
 ### Schema version 11
 

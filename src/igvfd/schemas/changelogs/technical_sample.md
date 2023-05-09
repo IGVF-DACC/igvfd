@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Minor changes since schema version 4
+
+* Add `cellular_sub_pool`.
+
 ### Schema version 6
 
 * Add `sorted_fraction_detail`.

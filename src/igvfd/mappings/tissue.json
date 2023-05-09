@@ -1,6 +1,6 @@
 {
-    "hash": "84cfa5dcee9f11e8fdcea14833fc7376",
-    "index_name": "tissue_84cfa5dc",
+    "hash": "9c088893594790d4a8d533fdbbebc3ba",
+    "index_name": "tissue_9c088893",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -315,6 +315,9 @@
                         "type": "object"
                     },
                     "ccf_id": {
+                        "type": "keyword"
+                    },
+                    "cellular_sub_pool": {
                         "type": "keyword"
                     },
                     "collections": {
