@@ -33,7 +33,7 @@ def audit_construct_library_associated_diseases(value, system):
                 f'disease-associated variants in its origins property.'
             )
     if detail != '':
-        yield AuditFailure('missing metadata',
+        yield AuditFailure('missing associated disease ontology or disease-associated variants',
                            detail, level='NOT_COMPLIANT')
 
 
