@@ -37,13 +37,12 @@ class Gene(SharedItem):
     })
     def geneid_with_version(self, request, geneid, version_number=None):
         corrected_geneid = None
-        par_y = None
         if geneid.endswith('_PAR_Y'):
-            (corrected_geneid, par_y) = geneid.split('_')
+            corrected_geneid = geneid.split('_')[0]
 
         if version_number is not None:
-            if par_y:
-                return u'{}.{}_{}'.format(corrected_geneid, version_number, par_y)
+            if corrected_geneid:
+                return u'{}.{}_PAR_Y'.format(corrected_geneid, version_number)
             else:
                 return u'{}.{}'.format(geneid, version_number)
         else:
