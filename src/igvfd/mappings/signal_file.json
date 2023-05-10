@@ -1,6 +1,6 @@
 {
-    "hash": "a262edecbbbf46978f6b5e37f66e97f4",
-    "index_name": "signal_file_a262edec",
+    "hash": "884dbff12d9f097ca2c184b41a23f971",
+    "index_name": "signal_file_884dbff1",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -157,9 +157,6 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
-                    "assembly": {
-                        "type": "keyword"
-                    },
                     "award": {
                         "properties": {
                             "@id": {
@@ -286,9 +283,6 @@
                         },
                         "store": true,
                         "type": "boolean"
-                    },
-                    "genome_annotation": {
-                        "type": "keyword"
                     },
                     "href": {
                         "type": "keyword"
