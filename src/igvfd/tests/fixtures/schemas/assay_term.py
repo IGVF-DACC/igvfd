@@ -54,3 +54,12 @@ def assay_term_v1(assay_term_starr):
         'aliases': []
     })
     return item
+
+
+@pytest.fixture
+def assay_term_ntr(testapp):
+    item = {
+        'term_id': 'NTR:00001',
+        'term_name': 'example-tn-1'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
