@@ -18,3 +18,10 @@ def test_gene_geneid_with_version(gene_zscan10_mm, testapp):
     )
     res = testapp.get(gene_zscan10_mm['@id'])
     assert res.json['geneid_with_version'] == 'ENSMUSG00000023902.11'
+
+    testapp.patch_json(
+        gene_zscan10_mm['@id'],
+        {'geneid': 'ENSMUSG00000023902_PAR_Y'}
+    )
+    res = testapp.get(gene_zscan10_mm['@id'])
+    assert res.json['geneid_with_version'] == 'ENSMUSG00000023902.11_PAR_Y'
