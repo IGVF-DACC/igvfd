@@ -85,5 +85,5 @@ def test_whole_organism_upgrade_10_11(upgrader, whole_organism_v10):
 def test_whole_organism_upgrade_11_12(upgrader, whole_organism_v11):
     value = upgrader.upgrade('whole_organism', whole_organism_v11, current_version='11', target_version='12')
     assert value['schema_version'] == '12'
-    assert value['biosample_term'] == '/sample-term/UBERON_0000468/'
+    assert value['biosample_term'] == '/sample-terms/UBERON_0000468/'
     assert value['notes'] == 'Biosample_term (formerly: /sample-terms/EFO_0002067/) was automatically upgraded.'

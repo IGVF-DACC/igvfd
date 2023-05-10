@@ -191,8 +191,8 @@ def whole_organism_10_11(value, system):
 def whole_organism_11_12(value, system):
     # https://igvf.atlassian.net/browse/IGVF-577
     notes = value.get('notes', '')
-    if value['biosample_term'] != '/sample-term/UBERON_0000468/':
+    if value['biosample_term'] != '/sample-terms/UBERON_0000468/':
         old_term = value['biosample_term']
         notes += f' Biosample_term (formerly: {old_term}) was automatically upgraded.'
-        value['biosample_term'] = '/sample-term/UBERON_0000468/'
+        value['biosample_term'] = '/sample-terms/UBERON_0000468/'
         value['notes'] = notes.strip()
