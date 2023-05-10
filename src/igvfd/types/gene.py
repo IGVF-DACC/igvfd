@@ -36,6 +36,8 @@ class Gene(SharedItem):
         'notSubmittable': True,
     })
     def geneid_with_version(self, request, geneid, version_number=None):
+        corrected_geneid = None
+        par_y = None
         if geneid.endswith('_PAR_Y'):
             (corrected_geneid, par_y) = geneid.split('_')
 
