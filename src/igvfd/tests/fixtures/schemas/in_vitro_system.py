@@ -129,4 +129,14 @@ def in_vitro_system_v8(in_vitro_system_v1):
         'schema_version': '8',
         'taxa': 'Homo sapiens',
         'notes': 'Test.'
+    })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_v9(in_vitro_organoid):
+    item = in_vitro_organoid.copy()
+    item.update({
+        'schema_version': '9'
+    })
     return item

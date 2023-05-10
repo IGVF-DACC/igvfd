@@ -153,7 +153,8 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
             'classification': 'organoid',
             'time_post_factors_introduction': 1,
             'time_post_factors_introduction_units': 'month',
-            'introduced_factors': [treatment_chemical['@id']]
+            'introduced_factors': [treatment_chemical['@id']],
+            'targeted_sample_term': sample_term_brown_adipose_tissue['@id']
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
