@@ -220,6 +220,9 @@ def biosample_7_8(value, system):
 def in_vitro_system_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-627
     notes = value.get('notes', '')
+    # if value['classification'] in ['organoid', 'differentiated cell specimen', 'reprogrammed cell specimen']:
+    #
+    # else:
     if 'time_post_factors_introduction' in value and 'time_post_factors_introduction_units' in value and 'introduced_factors' not in value:
         time_post_factors_introduction = value['time_post_factors_introduction']
         time_post_factors_introduction_units = value['time_post_factors_introduction_units']

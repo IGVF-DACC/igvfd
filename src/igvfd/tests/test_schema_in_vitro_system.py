@@ -68,4 +68,39 @@ def test_cellular_sub_pool(testapp, in_vitro_differentiated_cell, primary_cell, 
     res = testapp.patch_json(
         in_vitro_organoid['@id'],
         {'cellular_sub_pool': 'LW231B-2'}, expect_errors=True)
+
+
+def test_classification_dependency(testapp, lab, award, source, human_donor, sample_term_K562, treatment_chemical, in_vitro_cell_line, sample_term_brown_adipose_tissue):
+    item = {
+        'classification': 'differentiated cell specimen',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id'],
+        'taxa': 'Homo sapiens',
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_K562['@id'],
+        'introduced_factors': [treatment_chemical['@id']],
+        'time_post_factors_introduction': 5,
+        'time_post_factors_introduction_units': 'minute'
+    }
+    res = testapp.post_json('/in_vitro_system', item, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'classification': 'organoid',
+            'introduced_factors': [treatment_chemical['@id']],
+            'time_post_factors_introduction': 5,
+            'time_post_factors_introduction_units': 'minute'
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'classification': 'organoid',
+            'introduced_factors': [treatment_chemical['@id']],
+            'time_post_factors_introduction': 5,
+            'time_post_factors_introduction_units': 'minute',
+            'targeted_sample_term': sample_term_brown_adipose_tissue['@id']
+        })
     assert res.status_code == 200
