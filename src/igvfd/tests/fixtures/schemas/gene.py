@@ -36,6 +36,21 @@ def gene_zscan10_mm(testapp):
 
 
 @pytest.fixture
+def gene_CRLF2_par_y(testapp):
+    item = {
+        'dbxrefs': [
+            'HGNC:14281'
+        ],
+        'geneid': 'ENSG00000205755_PAR_Y',
+        'version_number': '3',
+        'annotation_version': 'GENCODE 42',
+        'symbol': 'CRLF2',
+        'taxa': 'Homo sapiens'
+    }
+    return testapp.post_json('/gene', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def gene_v1(gene_zscan10_mm):
     item = gene_zscan10_mm.copy()
     item.update({

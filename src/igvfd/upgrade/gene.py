@@ -34,5 +34,8 @@ def gene_3_4(value, system):
         value['annotation_version'] = 'GENCODE M30'
 
     (geneid_new, version_number) = value['geneid'].split('.')
+    if version_number.endswith('_PAR_Y'):
+        version_number = version_number.split('_')[0]
+        geneid_new = geneid_new + '_PAR_Y'
     value['geneid'] = geneid_new
     value['version_number'] = version_number

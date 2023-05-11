@@ -1,6 +1,6 @@
 [
     {
-        "geneid": "ENSG00000158473.2",
+        "geneid": "ENSG00000158473",
         "version_number": "2",
         "annotation_version": "GENCODE 42",
         "uuid": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
@@ -167,6 +167,27 @@
             "GYPD",
             "PAS-2",
             "PAS-2'"
+        ]
+    },
+    {
+        "geneid": "ENSG00000205755_PAR_Y",
+        "version_number": "12",
+        "annotation_version": "GENCODE 42",
+        "uuid": "265a645b-7ed3-496f-85f0-4a524dbe8b2d",
+        "dbxrefs": [
+            "HGNC:14281"
+        ],
+        "name": "cytokine receptor like factor 2",
+        "taxa": "Homo sapiens",
+        "status": "released",
+        "symbol": "CRLF2",
+        "locations": [
+            {
+                "assembly": "GRCh38",
+                "chromosome": "chrY",
+                "start": 1212723,
+                "end": 1187549
+            }
         ]
     },
     {
