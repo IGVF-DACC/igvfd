@@ -35,6 +35,7 @@ class Sample(Item):
             'type': ['string', 'object'],
             'linkFrom': 'FileSet.samples',
         },
+        'notSubmittable': True,
     })
     def file_sets(self, request, file_sets):
         return paths_filtered_by_status(request, file_sets)
