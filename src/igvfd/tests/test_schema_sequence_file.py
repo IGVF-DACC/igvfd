@@ -80,6 +80,11 @@ def test_sequence_file_sequencing_run_uniqueness(
     sequence_file,
     sequence_file_sequencing_run_2
 ):
+    '''
+    Properties combined to check for uniqueness:
+    measurement_set, illumina_read_type, sequencing_run, flowcell_id, lane
+    '''
+
     # If there is no illumina_read_type, there cannot be 2 files with the same sequencing run in a given dataset.
     res = testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
@@ -118,6 +123,53 @@ def test_sequence_file_sequencing_run_uniqueness(
         {
             'sequencing_run': 1,
             'illumina_read_type': 'R2'
+        }
+    )
+    assert res.status_code == 200
+
+    # If flowcell_id differs but all other properties match, there is no clash.
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'sequencing_run': 1,
+            'illumina_read_type': 'R1',
+            'lane': 1,
+            'flowcell_id': 'FCX',
+        }
+    )
+    res = testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'sequencing_run': 1,
+            'illumina_read_type': 'R1',
+            'lane': 1,
+            'flowcell_id': 'FCX',
+
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 409
+    res = testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'sequencing_run': 1,
+            'illumina_read_type': 'R1',
+            'lane': 1,
+            'flowcell_id': 'ABC',
+
+        }
+    )
+    assert res.status_code == 200
+
+    # If lane differs but all other properties match, there is no clash.
+    res = testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'sequencing_run': 1,
+            'illumina_read_type': 'R1',
+            'lane': 2,
+            'flowcell_id': 'FCX',
+
         }
     )
     assert res.status_code == 200

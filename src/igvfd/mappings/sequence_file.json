@@ -1,6 +1,6 @@
 {
-    "hash": "a88ccbc7f39d80827a863ec4bf50e191",
-    "index_name": "sequence_file_a88ccbc7",
+    "hash": "39eb6bef44010752627764e30cae1ad9",
+    "index_name": "sequence_file_39eb6bef",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -272,6 +272,9 @@
                         "store": true,
                         "type": "long"
                     },
+                    "flowcell_id": {
+                        "type": "keyword"
+                    },
                     "href": {
                         "type": "keyword"
                     },
@@ -337,6 +340,15 @@
                         },
                         "type": "object"
                     },
+                    "lane": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "long"
+                    },
                     "maximum_read_length": {
                         "fields": {
                             "raw": {
@@ -386,6 +398,9 @@
                         "type": "keyword"
                     },
                     "schema_version": {
+                        "type": "keyword"
+                    },
+                    "sequencing_platform": {
                         "type": "keyword"
                     },
                     "sequencing_run": {

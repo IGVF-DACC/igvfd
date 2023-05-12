@@ -33,6 +33,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.assay_term',
     'igvfd.tests.fixtures.schemas.phenotype_term',
     'igvfd.tests.fixtures.schemas.phenotypic_feature',
+    'igvfd.tests.fixtures.schemas.platform_term',
     'igvfd.tests.fixtures.schemas.human_donor',
     'igvfd.tests.fixtures.schemas.rodent_donor',
     'igvfd.tests.fixtures.schemas.document',

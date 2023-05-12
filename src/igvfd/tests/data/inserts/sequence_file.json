@@ -15,7 +15,8 @@
         "file_size": 31208300,
         "upload_status": "pending",
         "file_set": "igvf:basic_analysis_set",
-        "sequencing_run": 12
+        "sequencing_run": 12,
+        "sequencing_platform": "/platform-terms/747dc8bf-9e8c-3dbc-967f-ce9f995cfd28/"
     },
     {
         "uuid": "8aacc597-9830-4fd6-a75f-1c6f0b687b52",
@@ -45,7 +46,8 @@
         ],
         "file_set": "igvf:basic_analysis_set",
         "sequencing_run": 12,
-        "illumina_read_type": "R1"
+        "illumina_read_type": "R1",
+        "sequencing_platform": "/platform-terms/747dc8bf-9e8c-3dbc-967f-ce9f995cfd28/"
     },
     {
         "uuid": "825af594-3f4d-49a2-8cdb-aa8e9be9e5b5",
@@ -75,6 +77,7 @@
         ],
         "file_set": "igvf:basic_analysis_set",
         "sequencing_run": 12,
-        "illumina_read_type": "R2"
+        "illumina_read_type": "R2",
+        "sequencing_platform": "/platform-terms/747dc8bf-9e8c-3dbc-967f-ce9f995cfd28/"
     }
 ]
