@@ -204,7 +204,7 @@ def test_audit_protocol(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'protocol': 'example.pdf'
+            'protocol': 'https://www.protocols.io/view/example_protocol'
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@index-data')
