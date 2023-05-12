@@ -190,3 +190,25 @@ def test_audit_seqspec(
         error['category'] != 'missing seqspec'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_protocol(
+    testapp,
+    measurement_set
+):
+    res = testapp.get(measurement_set['@id'] + '@@index-data')
+    assert any(
+        error['category'] == 'missing protocol'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'protocol': 'example.pdf'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@index-data')
+    assert all(
+        error['category'] != 'missing protocol'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
