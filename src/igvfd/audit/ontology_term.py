@@ -17,5 +17,5 @@ def audit_ntr_term_id(value, system):
         ontologyterm_id = value['@id']
         term_id = value['term_id']
         if term_id.startswith('NTR'):
-            detail = f'Ontology term for {audit_link(ontologyterm_id, ontologyterm_id)} has been newly requested. Term {audit_link(term_id,term_id)} will be replaced with an UBERON, EFO, CL, CLO, MONDO, OBA, HP or DOID term following its addition to the appropriate ontology database.'
+            detail = f'Ontology term for {audit_link(ontologyterm_id, ontologyterm_id)} has been newly requested. Term {audit_link(term_id,term_id)} will be replaced with an UBERON, EFO, CL, CLO, MONDO, OBI, HP or DOID term following its addition to the appropriate ontology database.'
             yield AuditFailure('Ontology term has been newly requested', detail, level='WARNING')
