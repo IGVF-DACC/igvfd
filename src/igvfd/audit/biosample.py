@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('Biosample', frame='object')
 def audit_biosample_nih_institutional_certification(value, system):
     '''Biosample objects must specify an NIH Institutional Certification required for human data.'''
-    if ('nih_institutional_certification' not in value) and (value.get('taxa') == 'Homo sapiens'):
+    if ('nih_institutional_certification' not in value) and (any(donor.startswith('/human-donors/') for donor in value.get('donors'))):
         sample_id = value.get('@id')
         detail = (
             f'Biosample {audit_link(path_to_text(sample_id), sample_id)} '

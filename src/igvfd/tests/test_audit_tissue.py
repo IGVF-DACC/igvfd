@@ -3,8 +3,22 @@ import pytest
 
 def test_audit_tissue_ccf_id(
     testapp,
-    human_tissue
+    human_tissue,
+    human_donor,
+    rodent_donor
 ):
+    res = testapp.get(human_tissue['@id'] + '@@index-data')
+    assert any(
+        error['category'] == 'missing ccf_id'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        human_tissue['@id'],
+        {
+            'donors': [human_donor['@id'],
+                       rodent_donor['@id']]
+        }
+    )
     res = testapp.get(human_tissue['@id'] + '@@index-data')
     assert any(
         error['category'] == 'missing ccf_id'
