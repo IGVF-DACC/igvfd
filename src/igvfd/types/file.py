@@ -354,6 +354,60 @@ class AlignmentFile(File):
         return ' '.join(non_empty_phrases)
 
 
+@collection(
+    name='signal-file',
+    unique_key='accession',
+    properties={
+        'title': 'Signal File',
+        'description': 'Listing of signal files',
+    }
+)
+class SignalFile(File):
+    item_type = 'signal_file'
+    schema = load_schema('igvfd:schemas/signal_file.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+    ]
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') != 'replaced':
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
+
+    @calculated_property(
+        schema={
+            'title': 'Content Summary',
+            'type': 'string',
+            'notSubmittable': True
+        }
+    )
+    def content_summary(self, request, content_type, strand_specificity, filtered, normalized):
+        filtered_phrase = ''
+        if filtered:
+            filtered_phrase = 'filtered'
+
+        normalized_phrase = ''
+        if normalized:
+            normalized_phrase = 'normalized'
+
+        strand_phrase = strand_specificity
+        if strand_phrase != 'unstranded':
+            strand_phrase += ' strand'
+
+        phrases = [
+            filtered_phrase,
+            normalized_phrase,
+            strand_phrase,
+            content_type
+        ]
+        non_empty_phrases = [x for x in phrases if x != '']
+        return ' '.join(non_empty_phrases)
+
+
 @view_config(
     name='upload',
     context=File,
