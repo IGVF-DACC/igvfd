@@ -155,6 +155,7 @@ def biosample_6_7(value, system):
         new_notes_value = value.get('notes')
         if len(new_notes_value) > 0:
             new_notes_value += '  '
+    if 'taxa' in value:
         if value['taxa'] == 'Saccharomyces':
             value['notes'] = new_notes_value + 'Previous taxa: ' + value['taxa'] + ' is no longer valid.'
             value['taxa'] = 'Mus musculus'
@@ -196,3 +197,20 @@ def whole_organism_11_12(value, system):
         notes += f' Biosample_term (formerly: {old_term}) was automatically upgraded.'
         value['biosample_term'] = '/sample-terms/UBERON_0000468/'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('primary_cell', '11', '12')
+@upgrade_step('tissue', '11', '12')
+@upgrade_step('whole_organism', '12', '13')
+@upgrade_step('in_vitro_system', '8', '9')
+def biosample_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-586
+    if 'taxa' in value:
+        if 'notes' in value:
+            notes_value = value['notes']
+            if notes_value:
+                notes_value += '  '
+            value['notes'] = notes_value + 'Previous taxa: ' + value['taxa'] + ' will now be calculated.'
+        else:
+            value['notes'] = 'Previous taxa: ' + value['taxa'] + ' will now be calculated.'
+        del value['taxa']

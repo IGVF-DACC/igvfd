@@ -7,7 +7,6 @@ def primary_cell(testapp, other_lab, award, human_donor, sample_term_pluripotent
         'award': award['@id'],
         'lab': other_lab['@id'],
         'source': other_lab['@id'],
-        'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
@@ -20,7 +19,6 @@ def pooled_from_primary_cell(testapp, lab, award, source, human_donor, sample_te
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
-        'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
@@ -33,7 +31,6 @@ def pooled_from_primary_cell_2(testapp, lab, award, source, human_donor, sample_
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
-        'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
@@ -133,7 +130,6 @@ def primary_cell_v6(testapp, other_lab, award, human_donor, sample_term_pluripot
         'award': award['@id'],
         'lab': other_lab['@id'],
         'source': other_lab['@id'],
-        'taxa': 'Homo sapiens',
         'donor': [human_donor['@id']],
         'biosample_term': sample_term_pluripotent_stem_cell['@id']
     }
@@ -176,6 +172,17 @@ def primary_cell_v10(primary_cell):
     item.update({
         'schema_version': '10',
         'taxa': 'Saccharomyces',
+        'notes': ''
+    })
+    return item
+
+
+@pytest.fixture
+def primary_cell_v11(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '11',
+        'taxa': 'Homo sapiens',
         'notes': ''
     })
     return item

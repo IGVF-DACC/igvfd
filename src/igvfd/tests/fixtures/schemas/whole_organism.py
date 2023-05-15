@@ -7,7 +7,6 @@ def whole_organism(testapp, lab, source, award, rodent_donor, sample_term_whole_
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
-        'taxa': 'Mus musculus',
         'donors': [rodent_donor['@id']],
         'biosample_term': sample_term_whole_organism['@id']
     }
@@ -160,5 +159,16 @@ def whole_organism_v11(whole_organism, sample_term_K562):
     item.update({
         'schema_version': '11',
         'biosample_term': sample_term_K562['@id']
+    })
+    return item
+
+
+@pytest.fixture
+def whole_organism_v12(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '12',
+        'taxa': 'Homo sapiens',
+        'notes': ''
     })
     return item

@@ -9,7 +9,6 @@
         "lab",
         "source",
         "donors",
-        "taxa",
         "biosample_term"
     ],
     "identifyingProperties": [
@@ -55,7 +54,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "11"
+            "default": "12"
         },
         "passage_number": {
             "title": "Passage Number",

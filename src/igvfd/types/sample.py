@@ -105,7 +105,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, biosample_term, taxa, age, age_units=None):
+    def summary(self, request, biosample_term, age, taxa=None, age_units=None):
         sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
         biosample_type = self.item_type.replace('_', ' ')
@@ -114,12 +114,43 @@ class Biosample(Sample):
             term_and_type = term_name
         if 'tissue' in biosample_type and 'tissue' in term_name:
             term_and_type = term_name
-        if age == 'unknown':
-            return f'{term_and_type}, {taxa}'
+        if taxa:
+            if age == 'unknown':
+                return f'{term_and_type}, {taxa}'
+            else:
+                if age != '1':
+                    age_units = f'{age_units}s'
+                return f'{term_and_type}, {taxa} ({age} {age_units})'
         else:
-            if age != '1':
-                age_units = f'{age_units}s'
-            return f'{term_and_type}, {taxa} ({age} {age_units})'
+            if age == 'unknown':
+                return f'{term_and_type}'
+            else:
+                if age != '1':
+                    age_units = f'{age_units}s'
+                return f'{term_and_type} ({age} {age_units})'
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Taxa',
+            'type': 'string',
+            'enum': [
+                    'Homo sapiens',
+                    'Mus musculus'
+            ],
+            'notSubmittable': True
+        }
+    )
+    def taxa(self, request, donors):
+        taxas = set()
+        if donors:
+            for d in donors:
+                donor_object = request.embed(d, '@@object?skip_calculated=true')
+                if donor_object.get('taxa'):
+                    taxas.add(donor_object.get('taxa'))
+
+        if len(taxas) == 1:
+            return list(taxas).pop()
 
 
 @collection(
@@ -169,7 +200,7 @@ class InVitroSystem(Biosample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, biosample_term, taxa, classification, time_post_factors_introduction=None, time_post_factors_introduction_units=None):
+    def summary(self, request, biosample_term, classification, taxa=None, time_post_factors_introduction=None, time_post_factors_introduction_units=None):
         sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
         term_and_classification = f'{term_name} {classification}'
@@ -179,12 +210,20 @@ class InVitroSystem(Biosample):
             term_and_classification = term_name.replace('cell', classification)
         elif 'tissue' in classification and 'tissue' in term_name:
             term_and_classification = term_name.replace('tissue', classification)
-        if time_post_factors_introduction and time_post_factors_introduction_units:
-            if time_post_factors_introduction != 1:
-                time_post_factors_introduction_units = f'{time_post_factors_introduction_units}s'
-            return f'{term_and_classification}, {taxa} ({time_post_factors_introduction} {time_post_factors_introduction_units})'
+        if taxa:
+            if time_post_factors_introduction and time_post_factors_introduction_units:
+                if time_post_factors_introduction != 1:
+                    time_post_factors_introduction_units = f'{time_post_factors_introduction_units}s'
+                return f'{term_and_classification}, {taxa} ({time_post_factors_introduction} {time_post_factors_introduction_units})'
+            else:
+                return f'{term_and_classification}, {taxa}'
         else:
-            return f'{term_and_classification}, {taxa}'
+            if time_post_factors_introduction and time_post_factors_introduction_units:
+                if time_post_factors_introduction != 1:
+                    time_post_factors_introduction_units = f'{time_post_factors_introduction_units}s'
+                return f'{term_and_classification}, ({time_post_factors_introduction} {time_post_factors_introduction_units})'
+            else:
+                return f'{term_and_classification}'
 
 
 @collection(
@@ -266,12 +305,20 @@ class WholeOrganism(Biosample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, biosample_term, taxa, age, age_units=None):
+    def summary(self, request, biosample_term, age, taxa=None, age_units=None):
         sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
-        if age == 'unknown':
-            return f'{term_name}, {taxa}'
+        if taxa:
+            if age == 'unknown':
+                return f'{term_name}, {taxa}'
+            else:
+                if age != '1':
+                    age_units = age_units + 's'
+                return f'{term_name}, {taxa} ({age} {age_units})'
         else:
-            if age != '1':
-                age_units = age_units + 's'
-            return f'{term_name}, {taxa} ({age} {age_units})'
+            if age == 'unknown':
+                return f'{term_name}'
+            else:
+                if age != '1':
+                    age_units = age_units + 's'
+                return f'{term_name}, ({age} {age_units})'

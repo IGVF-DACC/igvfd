@@ -78,3 +78,10 @@ def test_primary_cell_upgrade_10_11(upgrader, primary_cell_v10):
     assert value['schema_version'] == '11'
     assert value['taxa'] != 'Saccharomyces'
     assert value['notes'] == 'Previous taxa: Saccharomyces is no longer valid.'
+
+
+def test_primary_cell_upgrade_11_12(upgrader, primary_cell_v11):
+    value = upgrader.upgrade('primary_cell', primary_cell_v11, current_version='11', target_version='12')
+    assert value['schema_version'] == '12'
+    assert 'taxa' not in value
+    assert value['notes'] == 'Previous taxa: Homo sapiens will now be calculated.'
