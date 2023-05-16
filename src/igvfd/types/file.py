@@ -272,10 +272,15 @@ class SequenceFile(File):
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
         if properties.get('status') not in ['deleted', 'replaced']:
-            if 'illumina_read_type' in properties:
-                value = f'sequencing_run:{properties["file_set"]}:{properties["sequencing_run"]}:{properties["illumina_read_type"]}'
-            else:
-                value = f'sequencing_run:{properties["file_set"]}:{properties["sequencing_run"]}'
+            value_list = []
+            illumina_read_type = properties.get('illumina_read_type', '')
+            sequencing_run = str(properties.get('sequencing_run', ''))
+            flowcell_id = properties.get('flowcell_id', '')
+            lane = str(properties.get('lane', ''))
+            file_set = properties.get('file_set', '')
+            value_list += file_set, illumina_read_type, sequencing_run, flowcell_id, lane
+            value_list = [item for item in value_list if item != '']
+            value = ':'.join(value_list)
             keys.setdefault('sequencing_run', []).append(value)
         return keys
 
