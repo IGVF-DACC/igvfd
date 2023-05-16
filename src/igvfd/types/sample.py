@@ -222,7 +222,7 @@ class InVitroSystem(Biosample):
             if time_post_factors_introduction and time_post_factors_introduction_units:
                 if time_post_factors_introduction != 1:
                     time_post_factors_introduction_units = f'{time_post_factors_introduction_units}s'
-                return f'{term_and_classification}, ({time_post_factors_introduction} {time_post_factors_introduction_units})'
+                return f'{term_and_classification} ({time_post_factors_introduction} {time_post_factors_introduction_units})'
             else:
                 return f'{term_and_classification}'
 
@@ -322,4 +322,4 @@ class WholeOrganism(Biosample):
             else:
                 if age != '1':
                     age_units = age_units + 's'
-                return f'{term_name}, ({age} {age_units})'
+                return f'{term_name} ({age} {age_units})'
