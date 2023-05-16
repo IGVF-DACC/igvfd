@@ -23,7 +23,7 @@ def audit_tissue_ccf_id(value, system):
 @audit_checker('Tissue', frame='object')
 def audit_tissue_ccf_id_nonhuman_sample(value, system):
     '''Tissue objects must not specify a common coordinate framework identifier (CCF ID) unless the sample is from a human donor.'''
-    if ('ccf_id' not in value) and (value.get('taxa') != 'Homo sapiens'):
+    if ('ccf_id' in value) and (value.get('taxa') != 'Homo sapiens'):
         value_id = system.get('path')
         detail = (
             f'Tissue {audit_link(path_to_text(value_id), value_id)} '
