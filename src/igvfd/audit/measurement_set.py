@@ -78,3 +78,14 @@ def audit_seqspec(value, system):
             f'the seqspec repository: https://github.com/IGVF/seqspec.'
         )
         yield AuditFailure('missing seqspec', detail, level='WARNING')
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_unspecified_protocol(value, system):
+    '''MeasurementSet objects should specify the associated link to the protocol for conducting the assay on Protocols.io'''
+    if 'protocol' not in value:
+        detail = (
+            f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'should specify the protocols.io link to associated protocol.'
+        )
+        yield AuditFailure('missing protocol', detail, level='NOT_COMPLIANT')
