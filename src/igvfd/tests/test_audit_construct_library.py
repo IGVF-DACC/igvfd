@@ -14,7 +14,7 @@ def test_audit_construct_library_associated_disease(
     )
     res = testapp.get(base_construct_library['@id'] + '@@index-data')
     assert any(
-        error['category'] == 'missing associated_diseases ontology or disease-associated variants'
+        error['category'] == 'inconsistent variants and ontology metadata'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -24,7 +24,7 @@ def test_audit_construct_library_associated_disease(
     edited_lib.pop('associated_diseases')
     testapp.put_json(base_construct_library['@id'], edited_lib)
     res = testapp.get(base_construct_library['@id'] + '@@index-data')
-    assert 'missing associated_diseases ontology or disease-associated variants' not in (
+    assert 'inconsistent variants and ontology metadata' not in (
         error['category'] for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
@@ -33,7 +33,7 @@ def test_audit_construct_library_associated_disease(
     )
     res = testapp.get(base_construct_library['@id'] + '@@index-data')
     assert any(
-        error['category'] == 'missing associated_diseases ontology or disease-associated variants'
+        error['category'] == 'inconsistent variants and ontology metadata'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
