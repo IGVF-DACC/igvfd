@@ -1,6 +1,11 @@
 ## Changelog for *`in_vitro_system.json`*
 
 
+### Schema version 10
+
+* Require `targeted_sample_term`, `introduced_factors`, `time_post_factors_introduction` and `time_post_factors_introduction_units` if `classification` is `organoid`, `differentiated cell specimen`, or `reprogrammed cell specimen`.
+* Mutually require `introduced_factors` with `time_post_factors_introduction` and `time_post_factors_introduction_units`.
+
 ### Schema version 9
 
 * Remove `taxa` from `required` and make it calculated.
