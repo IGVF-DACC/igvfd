@@ -52,3 +52,12 @@ def biomarker_IgA_present(testapp, lab, award):
         'lab': lab['@id']
     }
     return testapp.post_json('/biomarker', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def biomarker_v1(biomarker_CD243_absent):
+    item = biomarker_CD243_absent.copy()
+    item.update({
+        'schema_version': '1'
+    })
+    return item

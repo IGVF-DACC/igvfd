@@ -1,5 +1,5 @@
 ## Changelog for *`biomarker.json`*
 
-### Minor changes since schema version 1
+### Schema version 2
 
 * Add `status`.
