@@ -50,5 +50,5 @@ def test_audit_tissue_ccf_id(
     res = testapp.get(tissue['@id'] + '@@index-data')
     assert any(
         error['category'] == 'unexpected ccf_id'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
