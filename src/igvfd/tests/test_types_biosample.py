@@ -44,7 +44,7 @@ def test_age_calculation(testapp, in_vitro_cell_line):
     assert res.json.get('age') == '90'
 
 
-def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_line, technical_sample, sample_term_endothelial_cell, sample_term_embryoid_body, sample_term_lymphoblastoid, sample_term_brown_adipose_tissue):
+def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_line, technical_sample, sample_term_endothelial_cell, sample_term_embryoid_body, sample_term_lymphoblastoid, sample_term_brown_adipose_tissue, treatment_chemical):
     res = testapp.get(tissue['@id'])
     assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus'
     res = testapp.patch_json(
@@ -106,7 +106,8 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         in_vitro_cell_line['@id'],
         {
             'time_post_factors_introduction': 100,
-            'time_post_factors_introduction_units': 'hour'
+            'time_post_factors_introduction_units': 'hour',
+            'introduced_factors': [treatment_chemical['@id']]
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
@@ -116,7 +117,8 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         {
             'biosample_term': sample_term_lymphoblastoid['@id'],
             'time_post_factors_introduction': 10,
-            'time_post_factors_introduction_units': 'minute'
+            'time_post_factors_introduction_units': 'minute',
+            'introduced_factors': [treatment_chemical['@id']]
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
@@ -126,7 +128,8 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         {
             'biosample_term': sample_term_endothelial_cell['@id'],
             'time_post_factors_introduction': 5,
-            'time_post_factors_introduction_units': 'day'
+            'time_post_factors_introduction_units': 'day',
+            'introduced_factors': [treatment_chemical['@id']]
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
@@ -137,7 +140,8 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
             'biosample_term': sample_term_embryoid_body['@id'],
             'classification': 'embryoid',
             'time_post_factors_introduction': 3,
-            'time_post_factors_introduction_units': 'week'
+            'time_post_factors_introduction_units': 'week',
+            'introduced_factors': [treatment_chemical['@id']]
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
@@ -148,7 +152,9 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
             'biosample_term': sample_term_brown_adipose_tissue['@id'],
             'classification': 'organoid',
             'time_post_factors_introduction': 1,
-            'time_post_factors_introduction_units': 'month'
+            'time_post_factors_introduction_units': 'month',
+            'introduced_factors': [treatment_chemical['@id']],
+            'targeted_sample_term': sample_term_brown_adipose_tissue['@id']
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])

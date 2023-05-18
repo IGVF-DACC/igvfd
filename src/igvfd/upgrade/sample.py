@@ -214,3 +214,10 @@ def biosample_7_8(value, system):
         else:
             value['notes'] = 'Previous taxa: ' + value['taxa'] + ' will now be calculated.'
         del value['taxa']
+
+
+@upgrade_step('in_vitro_system', '9', '10')
+def in_vitro_system_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-627
+    # This upgrade was done manually, see the ticket above.
+    return

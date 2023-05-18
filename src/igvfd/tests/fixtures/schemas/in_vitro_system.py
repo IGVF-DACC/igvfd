@@ -15,27 +15,35 @@ def in_vitro_cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562
 
 
 @pytest.fixture
-def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K562):
+def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K562, treatment_chemical, sample_term_brown_adipose_tissue):
     item = {
         'classification': 'differentiated cell specimen',
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_K562['@id']
+        'biosample_term': sample_term_K562['@id'],
+        'introduced_factors': [treatment_chemical['@id']],
+        'time_post_factors_introduction': 5,
+        'time_post_factors_introduction_units': 'minute',
+        'targeted_sample_term': sample_term_brown_adipose_tissue['@id']
     }
     return testapp.post_json('/in_vitro_system', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture
-def in_vitro_organoid(testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
+def in_vitro_organoid(testapp, lab, award, source, human_donor, sample_term_adrenal_gland, treatment_protein):
     item = {
         'classification': 'organoid',
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_adrenal_gland['@id']
+        'biosample_term': sample_term_adrenal_gland['@id'],
+        'introduced_factors': [treatment_protein['@id']],
+        'time_post_factors_introduction': 10,
+        'time_post_factors_introduction_units': 'day',
+        'targeted_sample_term': sample_term_adrenal_gland['@id']
     }
     return testapp.post_json('/in_vitro_system', item, status=201).json['@graph'][0]
 
@@ -121,5 +129,14 @@ def in_vitro_system_v8(in_vitro_system_v1):
         'schema_version': '8',
         'taxa': 'Homo sapiens',
         'notes': 'Test.'
+    })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_v9(in_vitro_organoid):
+    item = in_vitro_organoid.copy()
+    item.update({
+        'schema_version': '9'
     })
     return item
