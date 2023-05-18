@@ -172,3 +172,15 @@ def whole_organism_v12(whole_organism):
         'notes': ''
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_human(testapp, lab, source, award, human_donor, sample_term_whole_organism):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id'],
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_whole_organism['@id']
+    }
+    return testapp.post_json('/whole_organism', item, status=201).json['@graph'][0]
