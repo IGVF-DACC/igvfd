@@ -158,6 +158,18 @@
                 ]
             }
         },
+        "integrated_content_files": {
+            "title": "Integrated Content Files",
+            "description": "The files containing sequence material of interest either used for insert design or directly cloned into vectors in this library.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "comment": "See file.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "File"
+            }
+        },
         "associated_diseases": {
             "title": "Associated Diseases",
             "description": "Ontological terms for diseases or phenotypes associated with the list of variants cloned in this ConstructLibrary.",
