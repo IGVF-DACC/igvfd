@@ -37,18 +37,12 @@ def test_audit_tissue_ccf_id(
     )
 
 
-def test_audit_tissue_ccf_id(
+def test_audit_tissue_age(
     testapp,
     tissue
 ):
-    testapp.patch_json(
-        tissue['@id'],
-        {
-            'ccf_id': 'af29d0d8-f274-4107-8e8b-e2025cd5adf4'
-        }
-    )
-    res = testapp.get(tissue['@id'] + '@@index-data')
+    res = testapp.get(tissue['@id'] + '@@audit')
     assert any(
-        error['category'] == 'unexpected ccf_id'
-        for error in res.json['audit'].get('ERROR', [])
+        error['category'] == 'missing age properties'
+        for error in res.json['audit'].get('WARNING', [])
     )

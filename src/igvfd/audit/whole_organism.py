@@ -26,3 +26,15 @@ def audit_whole_organism_human_taxa(value, system):
             taxa_set.add(donor_object.get('taxa', ''))
         if 'Homo sapiens' in taxa_set:
             yield AuditFailure('incorrect taxa', detail, level='ERROR')
+
+
+@audit_checker('WholeOrganism', frame='object')
+def audit_tissue_age(value, system):
+    '''WholeOrganism must specify a lower_bound_age, upper_bound_age and age_units.'''
+    if 'lower_bound_age' and 'upper_bound_age' and 'age_units' not in value:
+        value_id = system.get('path')
+        detail = (
+            f'WholeOrganism {audit_link(path_to_text(value_id), value_id)} '
+            f'is missing upper_bound_age, lower_bound_age, and age_units.'
+        )
+        yield AuditFailure('missing age properties', detail, level='WARNING')

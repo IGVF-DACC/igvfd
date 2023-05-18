@@ -17,3 +17,14 @@ def test_audit_whole_organism_human_taxa(
         error['category'] == 'incorrect taxa'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_whole_organism_age(
+    testapp,
+    whole_organism
+):
+    res = testapp.get(whole_organism['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing age properties'
+        for error in res.json['audit'].get('WARNING', [])
+    )
