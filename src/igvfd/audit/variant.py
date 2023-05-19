@@ -10,7 +10,7 @@ from .formatter import (
 
 @audit_checker('Variant', frame='object')
 def audit_variant_ref_alt_check(value, system):
-    '''Varaint object reference allele and alternative allele should never be the same, if they are they should trigger an ERROR.'''
+    '''Variant object reference allele and alternative allele should never be the same, if they are they should trigger an ERROR.'''
     if 'ref' and 'alt' in value:
         if value['ref'] == value['alt']:
             variant_id = value['@id']
