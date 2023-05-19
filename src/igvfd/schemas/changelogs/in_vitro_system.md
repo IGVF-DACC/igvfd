@@ -1,6 +1,10 @@
 ## Changelog for *`in_vitro_system.json`*
 
 
+### Minor changes since schema version 10
+
+* remove `permissions` from `classification` to unrestrict property.
+
 ### Schema version 10
 
 * Require `targeted_sample_term`, `introduced_factors`, `time_post_factors_introduction` and `time_post_factors_introduction_units` if `classification` is `organoid`, `differentiated cell specimen`, or `reprogrammed cell specimen`.
