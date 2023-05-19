@@ -141,6 +141,7 @@ def in_vitro_system_v9(in_vitro_organoid):
     })
     return item
 
+
 @pytest.fixture
 def in_vitro_system_sub(submitter_testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
     item = {
@@ -149,6 +150,6 @@ def in_vitro_system_sub(submitter_testapp, lab, award, source, human_donor, samp
         'source': source['@id'],
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id'],
-        'classification': 'organoid'
+        'classification': 'embryoid'
     }
     return item
