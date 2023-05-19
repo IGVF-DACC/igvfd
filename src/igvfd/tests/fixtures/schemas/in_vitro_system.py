@@ -152,4 +152,3 @@ def in_vitro_system_sub(submitter_testapp, lab, award, source, human_donor, samp
         'classification': 'organoid'
     }
     return item
-
