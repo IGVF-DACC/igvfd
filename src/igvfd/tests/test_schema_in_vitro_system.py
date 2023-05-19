@@ -104,3 +104,11 @@ def test_classification_dependency(testapp, lab, award, source, human_donor, sam
             'targeted_sample_term': sample_term_brown_adipose_tissue['@id']
         })
     assert res.status_code == 200
+
+
+def test_in_vitro_system_submitter(submitter_testapp, in_vitro_system_sub):
+    res = submitter_testapp.patch_json(
+        in_vitro_system_sub['@id'],
+        {'classifcation': 'organoid'}
+    )
+    assert res.status_code == 200
