@@ -15,4 +15,4 @@ def audit_variant_ref_alt_check(value, system):
         if value['ref'] == value['alt']:
             variant_id = value['@id']
             detail = f'Variant {audit_link(variant_id, variant_id)} ref and alt alleles are the same.'
-            yield AuditFailure('variant ref and alt alleles match', detail, level='ERROR')
+            yield AuditFailure('identical ref and alt alleles', detail, level='ERROR')
