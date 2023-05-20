@@ -143,7 +143,7 @@ def in_vitro_system_v9(in_vitro_organoid):
 
 
 @pytest.fixture
-def in_vitro_system_sub(submitter_testapp, lab, award, source, human_donor, sample_term_adrenal_gland):
+def in_vitro_system_sub(lab, award, source, human_donor, sample_term_adrenal_gland):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],

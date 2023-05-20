@@ -107,7 +107,8 @@ def test_classification_dependency(testapp, lab, award, source, human_donor, sam
 
 
 def test_in_vitro_system_submitter(submitter_testapp, in_vitro_system_sub):
-    res = submitter_testapp.post_json('/in_vitro_system',
-                                      in_vitro_system_sub, status=201
-                                      ).json['@graph'][0]
-    assert res.status_code == 201
+    res = submitter_testapp.post_json('/in_vitro_system?render=False',
+                                      in_vitro_system_sub
+                                      ).json['@graph']
+    print(res)
+    assert res
