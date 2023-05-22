@@ -16,7 +16,8 @@
             "igvf:negative_biomarker_CD243"
         ],
         "lab": "j-michael-cherry",
-        "award": "HG012012"
+        "award": "HG012012",
+        "status": "released"
     },
     {
         "name": "CD243",
@@ -35,7 +36,8 @@
             "igvf:positive_biomarker_CD243"
         ],
         "lab": "j-michael-cherry",
-        "award": "HG012012"
+        "award": "HG012012",
+        "status": "in progress"
     },
     {
         "name": "CD243",
@@ -51,7 +53,8 @@
             "PGY1"
         ],
         "lab": "j-michael-cherry",
-        "award": "HG012012"
+        "award": "HG012012",
+        "status": "released"
     },
     {
         "name": "CD243",
@@ -67,7 +70,8 @@
             "PGY1"
         ],
         "lab": "j-michael-cherry",
-        "award": "HG012012"
+        "award": "HG012012",
+        "status": "released"
     },
     {
         "name": "CD243",
@@ -83,7 +87,8 @@
             "PGY1"
         ],
         "lab": "j-michael-cherry",
-        "award": "HG012012"
+        "award": "HG012012",
+        "status": "released"
     },
     {
         "name": "BAP1",
@@ -91,7 +96,8 @@
         "classification": "marker gene",
         "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
         "lab": "j-michael-cherry",
-        "award": "HG012012"
+        "award": "HG012012",
+        "status": "released"
     },
     {
         "name": "BAP1",
@@ -99,7 +105,8 @@
         "classification": "marker gene",
         "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
         "lab": "j-michael-cherry",
-        "award": "HG012012"
+        "award": "HG012012",
+        "status": "released"
     },
     {
         "name": "BAP1",
@@ -107,7 +114,8 @@
         "classification": "marker gene",
         "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
         "lab": "j-michael-cherry",
-        "award": "HG012012"
+        "award": "HG012012",
+        "status": "released"
     },
     {
         "name": "BAP1",
@@ -115,14 +123,16 @@
         "classification": "marker gene",
         "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
         "lab": "j-michael-cherry",
-        "award": "HG012012"
+        "award": "HG012012",
+        "status": "released"
     },
     {
         "name": "CD1",
         "quantification": "positive",
         "classification": "cell surface protein",
         "lab": "j-michael-cherry",
-        "award": "HG012012"
+        "award": "HG012012",
+        "status": "released"
     },
     {
         "name": "CD1D",
@@ -130,6 +140,7 @@
         "classification": "cell surface protein",
         "gene": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
         "lab": "j-michael-cherry",
-        "award": "HG012012"
+        "award": "HG012012",
+        "status": "released"
     }
 ]
