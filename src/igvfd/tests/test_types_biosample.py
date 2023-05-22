@@ -47,7 +47,7 @@ def test_age_calculation(testapp, in_vitro_cell_line):
 def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_line, technical_sample, sample_term_endothelial_cell, sample_term_embryoid_body, sample_term_lymphoblastoid, sample_term_brown_adipose_tissue, treatment_chemical):
     res = testapp.get(tissue['@id'])
     assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus'
-    res = testapp.patch_json(
+    testapp.patch_json(
         tissue['@id'],
         {
             'lower_bound_age': 10,
@@ -57,7 +57,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     )
     res = testapp.get(tissue['@id'])
     assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus (10 months)'
-    res = testapp.patch_json(
+    testapp.patch_json(
         tissue['@id'],
         {
             'lower_bound_age': 50,
@@ -70,7 +70,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     assert res.json.get('summary') == 'brown adipose tissue, Mus musculus (50-100 days)'
     res = testapp.get(primary_cell['@id'])
     assert res.json.get('summary') == 'pluripotent stem cell, Homo sapiens'
-    res = testapp.patch_json(
+    testapp.patch_json(
         primary_cell['@id'],
         {
             'lower_bound_age': 1,
@@ -80,7 +80,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     )
     res = testapp.get(primary_cell['@id'])
     assert res.json.get('summary') == 'pluripotent stem cell, Homo sapiens (1-3 weeks)'
-    res = testapp.patch_json(
+    testapp.patch_json(
         primary_cell['@id'],
         {
             'biosample_term': sample_term_endothelial_cell['@id'],
@@ -90,7 +90,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     assert res.json.get('summary') == 'endothelial cell of vascular tree, Homo sapiens (1-3 weeks)'
     res = testapp.get(whole_organism['@id'])
     assert res.json.get('summary') == 'whole organism, Mus musculus'
-    res = testapp.patch_json(
+    testapp.patch_json(
         whole_organism['@id'],
         {
             'lower_bound_age': 1,
@@ -102,7 +102,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     assert res.json.get('summary') == 'whole organism, Mus musculus (1 hour)'
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get('summary') == 'K562 cell line, Mus musculus'
-    res = testapp.patch_json(
+    testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
             'time_post_factors_introduction': 100,
@@ -112,7 +112,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get('summary') == 'K562 cell line, Mus musculus (100 hours)'
-    res = testapp.patch_json(
+    testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
             'biosample_term': sample_term_lymphoblastoid['@id'],
@@ -123,7 +123,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get('summary') == 'lymphoblastoid cell line, Mus musculus (10 minutes)'
-    res = testapp.patch_json(
+    testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
             'biosample_term': sample_term_endothelial_cell['@id'],
@@ -134,7 +134,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get('summary') == 'endothelial cell line of vascular tree, Mus musculus (5 days)'
-    res = testapp.patch_json(
+    testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
             'biosample_term': sample_term_embryoid_body['@id'],
@@ -146,7 +146,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get('summary') == 'embryoid body, Mus musculus (3 weeks)'
-    res = testapp.patch_json(
+    testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
             'biosample_term': sample_term_brown_adipose_tissue['@id'],
@@ -161,6 +161,31 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     assert res.json.get('summary') == 'brown adipose tissue organoid, Mus musculus (1 month)'
     res = testapp.get(technical_sample['@id'])
     assert res.json.get('summary') == 'synthetic technical sample'
+
+
+def test_summary_mixed_taxa(testapp, whole_organism, in_vitro_cell_line, human_donor, rodent_donor, treatment_chemical):
+    testapp.patch_json(
+        whole_organism['@id'],
+        {
+            'donors': [human_donor['@id'], rodent_donor['@id']],
+            'lower_bound_age': 10,
+            'upper_bound_age': 10,
+            'age_units': 'month'
+        }
+    )
+    res = testapp.get(whole_organism['@id'])
+    assert res.json.get('summary') == 'whole organism (10 months)'
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'donors': [human_donor['@id'], rodent_donor['@id']],
+            'time_post_factors_introduction': 1,
+            'time_post_factors_introduction_units': 'minute',
+            'introduced_factors': [treatment_chemical['@id']]
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'])
+    assert res.json.get('summary') == 'K562 cell line (1 minute)'
 
 
 def test_tissue_taxa_calculation(testapp, tissue, human_donor, rodent_donor):
