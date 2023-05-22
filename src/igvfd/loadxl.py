@@ -48,7 +48,8 @@ ORDER = [
     'reference_data',
     'sequence_data',
     'reference_file',
-    'sequence_file'
+    'sequence_file',
+    'signal_file',
 ]
 
 IS_ATTACHMENT = [

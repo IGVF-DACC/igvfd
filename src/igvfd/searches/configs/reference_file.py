@@ -78,5 +78,8 @@ def reference_file():
             'lab': {
                 'title': 'Lab'
             },
+            'status': {
+                'title': 'Status'
+            }
         }
     }

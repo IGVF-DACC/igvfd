@@ -73,5 +73,8 @@ def sequence_file():
             'lab': {
                 'title': 'Lab'
             },
+            'status': {
+                'title': 'Status'
+            }
         }
     }

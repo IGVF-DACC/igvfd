@@ -360,7 +360,7 @@ class AlignmentFile(File):
 
 
 @collection(
-    name='signal-file',
+    name='signal-files',
     unique_key='accession',
     properties={
         'title': 'Signal File',

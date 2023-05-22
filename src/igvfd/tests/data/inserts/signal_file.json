@@ -15,7 +15,7 @@
         "file_size": 25523553,
         "upload_status": "validated",
         "file_set": "igvf:basic_analysis_set",
-        "reference_filess": [
+        "reference_files": [
             "IGVFFI0001GNRF"
         ],
         "strand_specificity": "plus",
