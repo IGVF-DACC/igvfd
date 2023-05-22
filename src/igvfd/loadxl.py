@@ -522,6 +522,9 @@ PHASE1_PIPELINES = {
     'primary_cell': [
         remove_keys('pooled_from', 'part_of'),
     ],
+    'construct_library': [
+        remove_keys('integrated_content_files'),
+    ],
     'reference_file': [
         remove_keys('derived_from', 'file_format_specifications'),
     ],
@@ -550,6 +553,9 @@ PHASE2_PIPELINES = {
     ],
     'primary_cell': [
         skip_rows_missing_all_keys('pooled_from', 'part_of'),
+    ],
+    'construct_library': [
+        skip_rows_missing_all_keys('integrated_content_files'),
     ],
     'reference_file': [
         skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),

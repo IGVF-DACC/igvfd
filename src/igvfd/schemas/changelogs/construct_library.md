@@ -3,6 +3,7 @@
 ### Minor changes since schema version 2
 
 * Add `files`.
+* Add `integrated_content_files`.
 
 ### Schema version 2
 
