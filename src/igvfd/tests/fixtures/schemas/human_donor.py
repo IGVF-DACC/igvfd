@@ -6,7 +6,7 @@ def human_donor(testapp, lab, award):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'taxa': 'Homo sapiens',
+        'taxa': 'Homo sapiens'
     }
     return testapp.post_json('/human_donor', item, status=201).json['@graph'][0]
 
@@ -207,3 +207,8 @@ def human_donor_v9(human_donor):
         'human_donor_identifier': ['X cell line donor', 'elvis-1']
     })
     return item
+
+
+@pytest.fixture
+def item_donor(human_donor):
+    return human_donor
