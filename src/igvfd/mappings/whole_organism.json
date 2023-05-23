@@ -235,69 +235,7 @@
                         "type": "object"
                     },
                     "biomarkers": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "award": {
-                                "type": "keyword"
-                            },
-                            "classification": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "gene": {
-                                "type": "keyword"
-                            },
-                            "lab": {
-                                "type": "keyword"
-                            },
-                            "name": {
-                                "type": "keyword"
-                            },
-                            "name_quantification": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "quantification": {
-                                "type": "keyword"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "synonyms": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
+                        "type": "keyword"
                     },
                     "biosample_term": {
                         "properties": {
