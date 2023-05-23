@@ -37,4 +37,4 @@ class Treatment(Item):
         else:
             text = 'Treated with {} {} {}'.format(
                 amount, amount_units, treatment_term_name)
-        return text
+        return text + '_new title'
