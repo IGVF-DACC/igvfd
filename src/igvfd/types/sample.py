@@ -68,16 +68,7 @@ class Biosample(Sample):
         }
     )
     def sex(self, request, donors=None):
-        sexes = set()
-        if donors:
-            for d in donors:
-                donor_object = request.embed(d, '@@object')
-                if donor_object.get('sex'):
-                    sexes.add(donor_object.get('sex'))
-        if len(sexes) == 1:
-            return list(sexes).pop()
-        elif len(sexes) > 1:
-            return 'mixed'
+        return 'mixed'
 
     @calculated_property(
         define=True,
