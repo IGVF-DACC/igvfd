@@ -3,7 +3,7 @@
 
 ### Minor changes since schema version 10
 
-* remove `permissions` from `classification` to unrestrict property.
+* remove `permissions` from `classification`.
 
 ### Schema version 10
 
