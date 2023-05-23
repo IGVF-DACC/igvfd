@@ -134,6 +134,18 @@
             "enum": [
                 "Homo sapiens"
             ]
+        },
+        "human_donor_identifier": {
+            "title": "Human Donor Identifier",
+            "type": "array",
+            "description": "Identifiers for this human donor of a cell line or common sample.",
+            "minItems": 1,
+            "uniqueItems": true,
+            "permission": "import_items",
+            "items": {
+                "description": "An identifier for this human donor of a cell line or common sample.",
+                "type": "string"
+            }
         }
     },
     "fuzzy_searchable_fields": [

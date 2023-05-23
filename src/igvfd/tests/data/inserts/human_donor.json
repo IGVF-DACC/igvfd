@@ -23,6 +23,13 @@
         ],
         "dbxrefs": [
             "GEO:SAMN31998833"
+        ],
+        "human_donor_identifier": [
+            "HUES 8",
+            "HUES8",
+            "HUES-8",
+            "HuES8",
+            "HVRDe008-A"
         ]
     },
     {
@@ -47,6 +54,15 @@
         ],
         "collections": [
             "ENCODE"
+        ],
+        "human_donor_identifier": [
+            "K-562",
+            "K562",
+            "K.562",
+            "K 562",
+            "KO",
+            "GM05372",
+            "GM05372E"
         ]
     },
     {
