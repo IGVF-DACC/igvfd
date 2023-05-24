@@ -27,7 +27,7 @@ def audit_biosample_nih_institutional_certifications(value, system):
         sample_id = value.get('@id')
         detail = (
             f'Biosample {audit_link(path_to_text(sample_id), sample_id)} '
-            f'is missing NIH institutional certificate that is required for human samples.'
+            f'is sssssssssmissing NIH institutional certificate that is required for human samples.'
         )
         yield AuditFailure('missing nih_institutional_certification', detail, level='WARNING')
 
