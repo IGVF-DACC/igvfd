@@ -59,6 +59,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "dbxrefs",
         "@type",
         "taxa",
         "curated_set_type"

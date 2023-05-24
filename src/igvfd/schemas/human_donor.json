@@ -138,6 +138,7 @@
     },
     "fuzzy_searchable_fields": [
         "accession",
+        "dbxrefs",
         "@type",
         "taxa",
         "ethnicities"

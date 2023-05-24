@@ -391,6 +391,7 @@
     },
     "fuzzy_searchable_fields": [
         "accession",
+        "dbxrefs",
         "aliases",
         "@type",
         "targeted_genes"
