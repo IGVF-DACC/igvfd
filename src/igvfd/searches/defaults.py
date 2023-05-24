@@ -19,31 +19,24 @@ FREE_TEXT_QUERIES = [
 
 RESERVED_KEYS = NOT_FILTERS = OPTIONAL_PARAMS + FREE_TEXT_QUERIES
 
-DEFAULT_ITEM_TYPES = [
-    'Award',
-    'Biomarker',
-    'Document',
+DEFAULT_ITEM_TYPES 
+TOP_HITS_ITEM_TYPES = [
     'HumanDonor',
     'RodentDonor',
     'AlignmentFile',
-    'ReferenceData',
     'ReferenceFile',
-    'SequenceData',
     'SequenceFile',
     'SignalFile',
     'AnalysisSet',
-    'ConstructLibrary',
     'CuratedSet',
     'MeasurementSet',
     'Gene',
-    'Image',
     'Lab',
     'AssayTerm',
     'PhenotypeTerm',
     'PlatformTerm',
     'SampleTerm',
     'Page',
-    'PhenotypicFeature',
     'Publication',
     'InVitroSystem',
     'PrimaryCell',
@@ -52,43 +45,15 @@ DEFAULT_ITEM_TYPES = [
     'WholeOrganism',
     'Source',
     'Treatment',
-    'User',
-    'HumanGenomicVariant'
+    'User'
 ]
 
-TOP_HITS_ITEM_TYPES = [
+DEFAULT_ITEM_TYPES = TOP_HITS_ITEM_TYPES + [
     'Award',
     'Biomarker',
     'Document',
-    'HumanDonor',
-    'RodentDonor',
-    'AlignmentFile',
-    'ReferenceData',
-    'ReferenceFile',
-    'SequenceData',
-    'SequenceFile',
-    'SignalFile',
-    'AnalysisSet',
     'ConstructLibrary',
-    'CuratedSet',
-    'MeasurementSet',
-    'Gene',
     'Image',
-    'Lab',
-    'AssayTerm',
-    'PhenotypeTerm',
-    'PlatformTerm',
-    'SampleTerm',
-    'Page',
     'PhenotypicFeature',
-    'Publication',
-    'InVitroSystem',
-    'PrimaryCell',
-    'TechnicalSample',
-    'Tissue',
-    'WholeOrganism',
-    'Source',
-    'Treatment',
-    'User',
     'HumanGenomicVariant'
 ]
