@@ -62,7 +62,7 @@ TOP_HITS_ITEM_TYPES = [
     'Document',
     'HumanDonor',
     'RodentDonor',
-    'AligmentFile',
+    'AlignmentFile',
     'ReferenceData',
     'ReferenceFile',
     'SequenceData',
@@ -77,10 +77,10 @@ TOP_HITS_ITEM_TYPES = [
     'Lab',
     'AssayTerm',
     'PhenotypeTerm',
-    'PlatformTerm'
+    'PlatformTerm',
     'SampleTerm',
     'Page',
-    'PhenotypicFeature'
+    'PhenotypicFeature',
     'Publication',
     'InVitroSystem',
     'PrimaryCell',
