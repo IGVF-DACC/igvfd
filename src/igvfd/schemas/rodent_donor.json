@@ -151,7 +151,7 @@
     },
     "fuzzy_searchable_fields": [
         "accession",
-        ""dbxrefs",
+        "dbxrefs",
         "@type",
         "taxa",
         "strain"
