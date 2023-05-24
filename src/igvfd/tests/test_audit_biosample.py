@@ -42,7 +42,8 @@ def test_audit_biosample_taxa_check(testapp, tissue, rodent_donor, human_donor, 
 
     testapp.patch_json(tissue['@id'],
                        {'donors': [rodent_donor['@id'],
-                                   human_donor['@id']]}
+                                   human_donor['@id'],
+                                   human_male_donor['@id']]}
                        )
     res = testapp.get(tissue['@id'] + '@@index-data')
     assert any(

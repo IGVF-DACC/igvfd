@@ -30,15 +30,18 @@ def audit_biosample_taxa_check(value, system):
         taxa_dict = {}
         for d in donor_ids:
             donor_object = system.get('request').embed(d + '@@object?skip_calculated=true')
+            d_link = audit_link(path_to_text(d), d)
             if donor_object.get('taxa'):
                 taxa = donor_object.get('taxa')
                 if taxa not in taxa_dict:
                     taxa_dict[taxa] = []
 
-                taxa_dict[taxa].append(d)
+                taxa_dict[taxa].append(d_link)
 
         if len(taxa_dict) > 1:
-            detail = ''
+            taxa_donors = []
             for k, v in taxa_dict.items():
-                detail += f'Biosample {audit_link(sample_id, sample_id)} has donors {audit_link(v, v)} that are {k}. '
+                taxa_donors.append(f'{k} ({", ".join(v)})')
+            taxa_detail = ', '.join(taxa_donors)
+            detail = f'Biosample {audit_link(path_to_text(sample_id), sample_id)} has donors of taxas {taxa_detail}. '
             yield AuditFailure('inconsistent donor taxa', detail, level='ERROR')
