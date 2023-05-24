@@ -60,6 +60,7 @@ class Biosample(Sample):
     schema = load_schema('igvfd:schemas/biosample.json')
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('biosample_term', include=['@id', 'term_name']),
+        Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'treatment_term_name']),
     ]
 
