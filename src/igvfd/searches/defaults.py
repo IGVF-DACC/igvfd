@@ -25,7 +25,7 @@ DEFAULT_ITEM_TYPES = [
     'Document',
     'HumanDonor',
     'RodentDonor',
-    'AligmentFile',
+    'AlignmentFile',
     'ReferenceData',
     'ReferenceFile',
     'SequenceData',
