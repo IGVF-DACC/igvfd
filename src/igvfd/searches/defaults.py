@@ -21,7 +21,7 @@ RESERVED_KEYS = NOT_FILTERS = OPTIONAL_PARAMS + FREE_TEXT_QUERIES
 
 DEFAULT_ITEM_TYPES = [
     'Award',
-    'Biomarkers',
+    'Biomarker',
     'Document',
     'HumanDonor',
     'RodentDonor',
@@ -58,7 +58,7 @@ DEFAULT_ITEM_TYPES = [
 
 TOP_HITS_ITEM_TYPES = [
     'Award',
-    'Biomarkers',
+    'Biomarker',
     'Document',
     'HumanDonor',
     'RodentDonor',
