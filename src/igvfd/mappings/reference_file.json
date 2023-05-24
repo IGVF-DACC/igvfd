@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "b1f4f91d08be095e0f12eb0de0e69ca4",
     "index_name": "reference_file_b1f4f91d",
+=======
+    "hash": "4ded841e63b5c183e050cab19753a3c0",
+    "index_name": "reference_file_4ded841e",
+>>>>>>> a3a428e (fix mappings)
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -245,6 +250,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "derived_from": {

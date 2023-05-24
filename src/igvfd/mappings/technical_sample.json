@@ -1,6 +1,6 @@
 {
-    "hash": "5a0cb0a86071f8a67b93fa718754896b",
-    "index_name": "technical_sample_5a0cb0a8",
+    "hash": "ef423a4bfc33260e0308543c35b49fb1",
+    "index_name": "technical_sample_ef423a4b",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -238,6 +238,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {

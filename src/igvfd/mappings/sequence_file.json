@@ -1,6 +1,8 @@
 {
     "hash": "e7e641151089ed6876671c75172cdb71",
     "index_name": "sequence_file_e7e64115",
+    "hash": "9ed417dd13525ebb21780b3571040b83",
+    "index_name": "sequence_file_9ed417dd",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -242,6 +244,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "derived_from": {

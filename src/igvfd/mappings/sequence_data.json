@@ -1,6 +1,6 @@
 {
-    "hash": "e7d4c47cfe4158c4d394176b3868363d",
-    "index_name": "sequence_data_e7d4c47c",
+    "hash": "7ca283c5710a5ff73e408c8691b9c40d",
+    "index_name": "sequence_data_7ca283c5",
     "item_type": "sequence_data",
     "mapping": {
         "dynamic_templates": [
@@ -242,6 +242,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "derived_from": {

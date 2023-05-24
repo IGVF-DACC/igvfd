@@ -1,6 +1,6 @@
 {
-    "hash": "fcf899ff845b93892d9c8430d34f89d8",
-    "index_name": "primary_cell_fcf899ff",
+    "hash": "a049cedeed3474dc0a36a73066d5302f",
+    "index_name": "primary_cell_a049cede",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -327,6 +327,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {

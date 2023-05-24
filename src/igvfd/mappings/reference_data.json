@@ -1,6 +1,6 @@
 {
-    "hash": "b1f4f91d08be095e0f12eb0de0e69ca4",
-    "index_name": "reference_data_b1f4f91d",
+    "hash": "4ded841e63b5c183e050cab19753a3c0",
+    "index_name": "reference_data_4ded841e",
     "item_type": "reference_data",
     "mapping": {
         "dynamic_templates": [
@@ -245,6 +245,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "derived_from": {

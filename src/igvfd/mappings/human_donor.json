@@ -1,6 +1,6 @@
 {
-    "hash": "c2801483446a36ccf3ebe310d9a06798",
-    "index_name": "human_donor_c2801483",
+    "hash": "dc0f3aa946433ee0394da4444ad1faa2",
+    "index_name": "human_donor_dc0f3aa9",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -235,6 +235,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {

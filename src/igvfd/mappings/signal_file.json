@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "9d165e745153a56e84a42d53d70174a6",
     "index_name": "signal_file_9d165e74",
+=======
+    "hash": "881943912b09b855bdef3e84ba9f2022",
+    "index_name": "signal_file_88194391",
+>>>>>>> a3a428e (fix mappings)
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -245,6 +250,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "derived_from": {
