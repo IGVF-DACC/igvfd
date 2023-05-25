@@ -30,21 +30,13 @@ TOP_HITS_ITEM_TYPES = [
     'CuratedSet',
     'MeasurementSet',
     'Gene',
-    'Lab',
-    'AssayTerm',
-    'PhenotypeTerm',
-    'PlatformTerm',
-    'SampleTerm',
     'Page',
     'Publication',
     'InVitroSystem',
     'PrimaryCell',
     'TechnicalSample',
     'Tissue',
-    'WholeOrganism',
-    'Source',
-    'Treatment',
-    'User'
+    'WholeOrganism'
 ]
 
 DEFAULT_ITEM_TYPES = TOP_HITS_ITEM_TYPES + [
@@ -52,7 +44,15 @@ DEFAULT_ITEM_TYPES = TOP_HITS_ITEM_TYPES + [
     'Biomarker',
     'Document',
     'ConstructLibrary',
+    'Lab',
+    'AssayTerm',
+    'PhenotypeTerm',
+    'PlatformTerm',
+    'SampleTerm',
     'Image',
     'PhenotypicFeature',
+    'Source',
+    'Treatment',
+    'User',
     'HumanGenomicVariant'
 ]
