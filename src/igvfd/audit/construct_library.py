@@ -10,8 +10,20 @@ from .formatter import (
 
 @audit_checker('ConstructLibrary', frame='object')
 def audit_construct_library_associated_diseases(value, system):
-    '''ConstructLibrary objects with origins of disease-associated variants
-    need to specify which associated_disease is relevant, and vice versa'''
+    '''
+    Audit ConstructLibrary objects for correct associated diseases specification.
+
+    This function checks if ConstructLibrary objects with origins of disease-associated variants
+    specify which associated_disease is relevant, and vice versa. If inconsistency is found,
+    it raises an audit failure.
+
+    Args:
+        value (dict): The ConstructLibrary object to be audited.
+        system (any): System specific parameters.
+
+    Yields:
+        AuditFailure: An AuditFailure object specifying the ConstructLibrary object that fails the check.
+    '''
     detail = ''
     origin_list = value.get('origins', [])
     if 'disease-associated variants' in origin_list:
@@ -39,8 +51,19 @@ def audit_construct_library_associated_diseases(value, system):
 
 @audit_checker('ConstructLibrary', frame='object')
 def audit_construct_library_plasmid_map(value, system):
-    '''ConstructLibrary objects should have a
-    a Document of document_type:plasmid map.'''
+    '''
+    Audit ConstructLibrary objects for plasmid map document attachment.
+
+    This function verifies that ConstructLibrary objects have a document of type "plasmid map"
+    attached to them. If such a document is missing, the function raises an audit failure.
+
+    Args:
+        value (dict): The ConstructLibrary object to be audited.
+        system (any): System specific parameters.
+
+    Yields:
+        AuditFailure: An AuditFailure object specifying the ConstructLibrary object that fails the check.
+    '''
     map_counter = 0
     detail = (
         f'ConstructLibrary {audit_link(path_to_text(value["@id"]),value["@id"])} '

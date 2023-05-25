@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welcome to IGVFD’s documentation! &#8212; IGVFD 8.0.0 documentation</title>
+    <title>Welcome to IGVFD’s audit documentation! &#8212; IGVFD 8.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
@@ -29,8 +29,10 @@
 
           <div class="body" role="main">
 
-  <section id="module-igvfd.audit.biosample">
-<span id="welcome-to-igvfd-s-documentation"></span><h1>Welcome to IGVFD’s documentation!<a class="headerlink" href="#module-igvfd.audit.biosample" title="Permalink to this heading">¶</a></h1>
+  <section id="welcome-to-igvfd-s-audit-documentation">
+<h1>Welcome to IGVFD’s audit documentation!<a class="headerlink" href="#welcome-to-igvfd-s-audit-documentation" title="Permalink to this heading">¶</a></h1>
+<section id="module-igvfd.audit.biosample">
+<span id="biosample-audits"></span><h2>Biosample audits<a class="headerlink" href="#module-igvfd.audit.biosample" title="Permalink to this heading">¶</a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="igvfd.audit.biosample.audit_biosample_nih_institutional_certification">
 <span class="sig-prename descclassname"><span class="pre">igvfd.audit.biosample.</span></span><span class="sig-name descname"><span class="pre">audit_biosample_nih_institutional_certification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igvfd.audit.biosample.audit_biosample_nih_institutional_certification" title="Permalink to this definition">¶</a></dt>
@@ -72,8 +74,78 @@ one taxa, it raises an audit failure.</p>
 </dl>
 </dd></dl>
 
+</section>
+<section id="module-igvfd.audit.construct_library">
+<span id="construct-library-audits"></span><h2>Construct library audits<a class="headerlink" href="#module-igvfd.audit.construct_library" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="igvfd.audit.construct_library.audit_construct_library_associated_diseases">
+<span class="sig-prename descclassname"><span class="pre">igvfd.audit.construct_library.</span></span><span class="sig-name descname"><span class="pre">audit_construct_library_associated_diseases</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igvfd.audit.construct_library.audit_construct_library_associated_diseases" title="Permalink to this definition">¶</a></dt>
+<dd><p>Audit ConstructLibrary objects for correct associated diseases specification.</p>
+<p>This function checks if ConstructLibrary objects with origins of disease-associated variants
+specify which associated_disease is relevant, and vice versa. If inconsistency is found,
+it raises an audit failure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>dict</em>) – The ConstructLibrary object to be audited.</p></li>
+<li><p><strong>system</strong> (<em>any</em>) – System specific parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>AuditFailure</em> – An AuditFailure object specifying the ConstructLibrary object that fails the check.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="igvfd.audit.construct_library.audit_construct_library_plasmid_map">
+<span class="sig-prename descclassname"><span class="pre">igvfd.audit.construct_library.</span></span><span class="sig-name descname"><span class="pre">audit_construct_library_plasmid_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igvfd.audit.construct_library.audit_construct_library_plasmid_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Audit ConstructLibrary objects for plasmid map document attachment.</p>
+<p>This function verifies that ConstructLibrary objects have a document of type “plasmid map”
+attached to them. If such a document is missing, the function raises an audit failure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>dict</em>) – The ConstructLibrary object to be audited.</p></li>
+<li><p><strong>system</strong> (<em>any</em>) – System specific parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>AuditFailure</em> – An AuditFailure object specifying the ConstructLibrary object that fails the check.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-igvfd.audit.human_donor">
+<span id="human-donor-audits"></span><h2>Human donor audits<a class="headerlink" href="#module-igvfd.audit.human_donor" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="igvfd.audit.human_donor.audit_related_donors">
+<span class="sig-prename descclassname"><span class="pre">igvfd.audit.human_donor.</span></span><span class="sig-name descname"><span class="pre">audit_related_donors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">system</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#igvfd.audit.human_donor.audit_related_donors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Audit HumanDonor objects for unique and mutually specified related donors.</p>
+<p>This function checks whether each HumanDonor has unique related donors and if
+the related donors are mutually specified between each other. If any inconsistencies
+are found, it raises an audit failure.</p>
+<dl class="simple">
+<dt>Audit level:</dt><dd><p>INTERNAL_ACTION</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> (<em>dict</em>) – The HumanDonor object to be audited.</p></li>
+<li><p><strong>system</strong> (<em>any</em>) – System specific parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Yields<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>AuditFailure</em> – An AuditFailure object specifying the HumanDonor object that fails the check.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <div class="toctree-wrapper compound">
 </div>
+</section>
 </section>
 <section id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>

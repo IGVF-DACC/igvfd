@@ -10,8 +10,20 @@ from .formatter import (
 
 @audit_checker('HumanDonor', frame='object')
 def audit_related_donors(value, system):
-    '''HumanDonors should have unique related donors and should be mutually specified
-    between each HumanDonor in their related donors.'''
+    '''
+    Audit HumanDonor objects for unique and mutually specified related donors.
+
+    This function checks whether each HumanDonor has unique related donors and if
+    the related donors are mutually specified between each other. If any inconsistencies
+    are found, it raises an audit failure.
+
+    Args:
+        value (dict): The HumanDonor object to be audited.
+        system (any): System specific parameters.
+
+    Yields:
+        AuditFailure: An AuditFailure object specifying the HumanDonor object that fails the check.
+    '''
     if 'related_donors' in value:
         for unique_related_donor in set([related_donor['donor'] for related_donor in value['related_donors']]):
             if [related_donor['donor'] for related_donor in value['related_donors']].count(unique_related_donor) > 1:
