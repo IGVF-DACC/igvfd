@@ -138,12 +138,13 @@
         "human_donor_identifier": {
             "title": "Human Donor Identifier",
             "type": "array",
-            "description": "Identifiers for this human donor of a cell line or common sample.",
+            "description": "Identifiers of a human donor.",
             "minItems": 1,
             "uniqueItems": true,
             "permission": "import_items",
             "items": {
-                "description": "An identifier for this human donor of a cell line or common sample.",
+                "description": "An identifier of a human donor.",
+                "comment": "Cell line donors should specify as so. e.g. 'K562 cell line donor'.",
                 "type": "string"
             }
         }
