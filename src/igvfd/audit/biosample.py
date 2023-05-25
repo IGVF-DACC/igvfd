@@ -10,7 +10,21 @@ from .formatter import (
 
 @audit_checker('Biosample', frame='object')
 def audit_biosample_nih_institutional_certification(value, system):
-    '''Biosample objects must specify an NIH Institutional Certification required for human data.'''
+    '''
+    Check if Biosample objects specify an NIH Institutional Certification which is required for human data.
+
+    The function is meant to audit the 'Biosample' objects in the system, verifying that each Biosample
+    intended for human data has an associated NIH Institutional Certification. If a Biosample object is
+    associated with a human donor but does not specify a NIH Institutional Certification, it raises an audit
+    failure.
+
+    Args:
+        value (dict): The Biosample object to be audited.
+        system (any): System specific parameters.
+
+    Yields:
+        AuditFailure: An AuditFailure object specifying the Biosample object that fails the check.
+    '''
     if ('nih_institutional_certification' not in value) and (any(donor.startswith('/human-donors/') for donor in value.get('donors'))):
         sample_id = value.get('@id')
         detail = (
@@ -22,8 +36,20 @@ def audit_biosample_nih_institutional_certification(value, system):
 
 @audit_checker('Biosample', frame='object')
 def audit_biosample_taxa_check(value, system):
-    '''Flag biosamples associated with donors of different taxas.'''
+    '''
+    Audit function to flag biosamples associated with donors of different taxa.
 
+    This function audits 'Biosample' objects in the system to verify that all donors associated with a
+    Biosample object belong to the same taxa. If a Biosample is associated with donors from more than
+    one taxa, it raises an audit failure.
+
+    Args:
+        value (dict): The Biosample object to be audited.
+        system (any): System specific parameters.
+
+    Yields:
+        AuditFailure: An AuditFailure object specifying the Biosample object that fails the check.
+    '''
     if 'donors' in value:
         sample_id = value['@id']
         donor_ids = value.get('donors')
