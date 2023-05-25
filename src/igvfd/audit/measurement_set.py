@@ -88,4 +88,4 @@ def audit_unspecified_protocol(value, system):
             f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'should specify the protocols.io link to associated protocol.'
         )
-        yield AuditFailure('missing protocol', detail, level='NOT_COMPLIANT')
+        yield AuditFailure('missing x protocol', detail, level='NOT_COMPLIANT')
