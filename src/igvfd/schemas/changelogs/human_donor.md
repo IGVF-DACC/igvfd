@@ -1,6 +1,6 @@
 ## Changelog for *`human_donor.json`*
 
-### Minor changes since schema version 7
+### Minor changes since schema version 8
 
 * Add `human_donor_identifier`.
 
