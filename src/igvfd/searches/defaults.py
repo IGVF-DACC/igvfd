@@ -20,6 +20,9 @@ FREE_TEXT_QUERIES = [
 RESERVED_KEYS = NOT_FILTERS = OPTIONAL_PARAMS + FREE_TEXT_QUERIES
 
 TOP_HITS_ITEM_TYPES = [
+    'Award',
+    'Biomarker',
+    'Document',
     'HumanDonor',
     'RodentDonor',
     'AlignmentFile',
@@ -27,32 +30,35 @@ TOP_HITS_ITEM_TYPES = [
     'SequenceFile',
     'SignalFile',
     'AnalysisSet',
+    'ConstructLibrary',
     'CuratedSet',
     'MeasurementSet',
     'Gene',
-    'Page',
-    'Publication',
-    'InVitroSystem',
-    'PrimaryCell',
-    'TechnicalSample',
-    'Tissue',
-    'WholeOrganism'
-]
-
-DEFAULT_ITEM_TYPES = TOP_HITS_ITEM_TYPES + [
-    'Award',
-    'Biomarker',
-    'Document',
-    'ConstructLibrary',
+    'Image',
     'Lab',
+    'Modification',
     'AssayTerm',
     'PhenotypeTerm',
     'PlatformTerm',
     'SampleTerm',
-    'Image',
+    'Page',
     'PhenotypicFeature',
+    'Publication',
+    'InVitroSystem',
+    'PrimaryCell',
+    'Tissue',
+    'WholeOrganism',
+    'TechnicalSample',
+    'Software',
+    'SoftwareVersion',
     'Source',
     'Treatment',
     'User',
     'HumanGenomicVariant'
 ]
+
+DEFAULT_ITEM_TYPES == TOP_HITS_ITEM_TYPES
+
+# Top_hits_item_types interact with the search box
+# Default item types would be searchable using ?searchTerm=ABC format in the url without having to use &type=Item
+

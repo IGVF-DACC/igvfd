@@ -97,7 +97,6 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "accession",
         "dbxrefs",
         "@type",
         "content_type",
