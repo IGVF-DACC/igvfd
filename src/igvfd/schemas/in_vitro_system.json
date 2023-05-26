@@ -110,7 +110,6 @@
             "title": "Classification",
             "description": "The general category of this type of in vitro system.",
             "comment": "Required property. The specified category should match the ontology type used to describe this type of in vitro system. For example 'brain organoid' uses UBERON ontology, cell lines use CL ontology, etc. Differentiated, reprogrammed, and pooled cell specimen are in concordance with NCIT definitions.",
-            "permission": "import_items",
             "type": "string",
             "enum": [
                 "organoid",
