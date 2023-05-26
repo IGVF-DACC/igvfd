@@ -30,7 +30,7 @@ $ git push origin main
 $ git checkout main
 $ git fetch origin -p
 $ git pull
-$ git log --pretty
+$ git log --pretty=%s
 ```
 
 9. After choosing the commits to be included in the tag. Make the tag for version `X.Y.Z`:
@@ -40,4 +40,10 @@ $ git tag -a vX.Y.Z # Add vX.Y.Z to details
 $ git push origin tags/vX.Y.Z
 ```
 
-10. On Github `Make a Release` from the tag, pasting the proper commits in the details.
+10. Monitor batch-upgrade errors and messages in slack channel #aws-igvf-staging
+
+proceed ONLY if there are no batch-upgrade errors, and if there are no errors (Like dead letter queue) in the slack channel
+
+11. approve release on AWS or reject it in case there were problems
+
+12. On Github `Make a Release` from the tag, pasting the proper commits in the details.
