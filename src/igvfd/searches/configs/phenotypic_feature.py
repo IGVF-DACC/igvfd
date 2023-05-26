@@ -29,6 +29,15 @@ def phenotypic_feature():
             },
             'lab': {
                 'title': 'Lab'
+            },
+            'quantity': {
+                'title': 'Quantity'
+            },
+            'quantity_units': {
+                'title': 'Quantity Units'
+            },
+            'observation_date': {
+                'title': 'Observation Date'
             }
         }
     }
