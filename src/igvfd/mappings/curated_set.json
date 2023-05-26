@@ -1,8 +1,6 @@
 {
-    "hash": "ec5c40c3b1e81823f693247ab565950f",
-    "index_name": "curated_set_ec5c40c3",
-    "hash": "4e67f26c5ca7e2866ad9bdd20ababdd0",
-    "index_name": "curated_set_4e67f26c",
+    "hash": "68cd367ef9defe1a369c7f629a69d342",
+    "index_name": "curated_set_68cd367e",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
