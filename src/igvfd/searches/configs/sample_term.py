@@ -22,6 +22,9 @@ def sample_term():
             'status': {
                 'title': 'Status'
             },
+            'ontology': {
+                'title': 'Ontology'
+            }
         },
         'facet_groups': [
             {

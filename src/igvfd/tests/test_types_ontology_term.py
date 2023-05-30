@@ -39,3 +39,12 @@ def test_term_ancestors(
     res = testapp.get(sample_term_K562['@id'])
     assert 'ancestors' in res.json
     assert len(res.json.get('ancestors')) > 1
+
+
+def test_ontology(
+    sample_term_K562,
+    testapp
+):
+    res = testapp.get(sample_term_K562['@id'])
+    assert 'ontology' in res.json
+    assert res.json.get('ontology') == 'EFO'

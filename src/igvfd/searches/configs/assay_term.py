@@ -19,6 +19,9 @@ def assay_term():
             'status': {
                 'title': 'Status'
             },
+            'ontology': {
+                'title': 'Ontology'
+            },
         },
         'facet_groups': [
             {
