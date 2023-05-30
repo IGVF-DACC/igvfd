@@ -27,6 +27,11 @@ class Sample(Item):
     rev = {
         'file_sets': ('FileSet', 'samples')
     }
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+        Path('source', include=['@id', 'title']),
+    ]
 
     @calculated_property(schema={
         'title': 'File Sets',
@@ -53,6 +58,11 @@ class Biosample(Sample):
     item_type = 'biosample'
     base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
+    embedded_with_frame = Sample.embedded_with_frame + [
+        Path('biosample_term', include=['@id', 'term_name']),
+        Path('disease_terms', include=['@id', 'term_name']),
+        Path('treatments', include=['@id', 'treatment_term_name']),
+    ]
 
     @calculated_property(
         schema={
@@ -165,14 +175,7 @@ class Biosample(Sample):
 class PrimaryCell(Biosample):
     item_type = 'primary_cell'
     schema = load_schema('igvfd:schemas/primary_cell.json')
-    embedded = ['treatments']
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('biosample_term', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
-        Path('lab', include=['@id', 'title']),
-        Path('source', include=['@id', 'title']),
-    ]
+    embedded_with_frame = Biosample.embedded_with_frame
 
 
 @collection(
@@ -185,13 +188,8 @@ class PrimaryCell(Biosample):
 class InVitroSystem(Biosample):
     item_type = 'in_vitro_system'
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('biosample_term', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
-        Path('lab', include=['@id', 'title']),
-        Path('source', include=['@id', 'title']),
-        Path('treatments', include=['@id', 'treatment_term_name']),
+    embedded_with_frame = Biosample.embedded_with_frame + [
+        Path('introduced_factors', include=['@id', 'treatment_term_name']),
     ]
 
     @calculated_property(
@@ -238,13 +236,7 @@ class InVitroSystem(Biosample):
 class Tissue(Biosample):
     item_type = 'tissue'
     schema = load_schema('igvfd:schemas/tissue.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('biosample_term', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
-        Path('lab', include=['@id', 'title']),
-        Path('source', include=['@id', 'title']),
-    ]
+    embedded_with_frame = Biosample.embedded_with_frame
 
 
 @collection(
@@ -258,10 +250,7 @@ class Tissue(Biosample):
 class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'name', 'component']),
-        Path('lab', include=['@id', 'title']),
-        Path('source', include=['@id', 'title']),
+    embedded_with_frame = Sample.embedded_with_frame + [
         Path('technical_sample_term', include=['@id', 'term_name']),
     ]
 
@@ -289,15 +278,7 @@ class TechnicalSample(Sample):
 class WholeOrganism(Biosample):
     item_type = 'whole_organism'
     schema = load_schema('igvfd:schemas/whole_organism.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('biomarkers', include=['@id', 'classification']),
-        Path('biosample_term', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
-        Path('lab', include=['@id', 'title']),
-        Path('source', include=['@id', 'title']),
-        Path('treatments', include=['@id', 'treatment_type']),
-    ]
+    embedded_with_frame = Biosample.embedded_with_frame
 
     @calculated_property(
         schema={
