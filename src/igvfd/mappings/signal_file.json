@@ -1,6 +1,6 @@
 {
-    "hash": "9d165e745153a56e84a42d53d70174a6",
-    "index_name": "signal_file_9d165e74",
+    "hash": "838d9764e98a493bad9264386cab7954",
+    "index_name": "signal_file_838d9764",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -148,7 +148,6 @@
                         "type": "keyword"
                     },
                     "accession": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -245,6 +244,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "derived_from": {

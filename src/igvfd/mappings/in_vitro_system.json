@@ -1,6 +1,6 @@
 {
-    "hash": "2b04dc8bf5dabc0aed3345da55cfc03b",
-    "index_name": "in_vitro_system_2b04dc8b",
+    "hash": "36f2f2ef9606bae7073164ae601bfd6f",
+    "index_name": "in_vitro_system_36f2f2ef",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -148,7 +148,6 @@
                         "type": "keyword"
                     },
                     "accession": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "age": {
@@ -330,6 +329,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {

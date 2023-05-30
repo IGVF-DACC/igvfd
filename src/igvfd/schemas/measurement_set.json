@@ -124,6 +124,7 @@
     },
     "fuzzy_searchable_fields": [
         "@type",
+        "dbxrefs",
         "assay_term.term_name",
         "protocol"
     ],

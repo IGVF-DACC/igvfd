@@ -19,50 +19,45 @@ FREE_TEXT_QUERIES = [
 
 RESERVED_KEYS = NOT_FILTERS = OPTIONAL_PARAMS + FREE_TEXT_QUERIES
 
-DEFAULT_ITEM_TYPES = [
-    'Award',
-    'Document',
-    'HumanDonor',
-    'RodentDonor',
-    'AnalysisSet',
-    'CuratedSet',
-    'Gene',
-    'Image',
-    'Lab',
-    'AssayTerm',
-    'PhenotypeTerm',
-    'SampleTerm',
-    'Page',
-    'Publication',
-    'PrimaryCell',
-    'TechnicalSample',
-    'Tissue',
-    'WholeOrganism',
-    'Source',
-    'Treatment',
-    'User',
-]
-
 TOP_HITS_ITEM_TYPES = [
     'Award',
+    'Biomarker',
     'Document',
     'HumanDonor',
     'RodentDonor',
+    'AlignmentFile',
+    'ReferenceFile',
+    'SequenceFile',
+    'SignalFile',
     'AnalysisSet',
+    'ConstructLibrary',
     'CuratedSet',
+    'MeasurementSet',
     'Gene',
     'Image',
     'Lab',
+    'Modification',
     'AssayTerm',
     'PhenotypeTerm',
+    'PlatformTerm',
     'SampleTerm',
     'Page',
+    'PhenotypicFeature',
     'Publication',
+    'InVitroSystem',
     'PrimaryCell',
-    'TechnicalSample',
     'Tissue',
     'WholeOrganism',
+    'TechnicalSample',
+    'Software',
+    'SoftwareVersion',
     'Source',
     'Treatment',
     'User',
+    'HumanGenomicVariant'
 ]
+
+DEFAULT_ITEM_TYPES = TOP_HITS_ITEM_TYPES
+
+# Top_hits_item_types interact with the search box
+# Default item types would be searchable using ?searchTerm=ABC format in the url without having to use &type=Item

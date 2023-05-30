@@ -60,6 +60,7 @@
     },
     "fuzzy_searchable_fields": [
         "@type",
+        "dbxrefs",
         "taxa",
         "curated_set_type"
     ],
