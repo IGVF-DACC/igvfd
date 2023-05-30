@@ -1,8 +1,6 @@
 {
-    "hash": "755fcf465448a87c8aa4fb94dd0b33fc",
-    "index_name": "whole_organism_755fcf46",
-    "hash": "0667e4609b6862bbca823fbdbdf2b357",
-    "index_name": "whole_organism_0667e460",
+    "hash": "f96a8c9987f282be4a447e70c734c4b8",
+    "index_name": "whole_organism_f96a8c99",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -150,7 +148,6 @@
                         "type": "keyword"
                     },
                     "accession": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "age": {

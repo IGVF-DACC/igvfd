@@ -1,6 +1,6 @@
 {
-    "hash": "98fd16dcf61f2e12f72591c71b7683e0",
-    "index_name": "rodent_donor_98fd16dc",
+    "hash": "2d32ee429663a54a55bf3a815a584575",
+    "index_name": "rodent_donor_2d32ee42",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -148,7 +148,6 @@
                         "type": "keyword"
                     },
                     "accession": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {

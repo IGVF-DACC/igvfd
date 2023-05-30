@@ -1,6 +1,6 @@
 {
-    "hash": "a049cedeed3474dc0a36a73066d5302f",
-    "index_name": "primary_cell_a049cede",
+    "hash": "a84fd8d4d06ad8ec4f31b9758c300428",
+    "index_name": "primary_cell_a84fd8d4",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -148,7 +148,6 @@
                         "type": "keyword"
                     },
                     "accession": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "age": {

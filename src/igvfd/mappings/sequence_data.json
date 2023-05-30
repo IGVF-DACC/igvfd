@@ -1,6 +1,6 @@
 {
-    "hash": "7ca283c5710a5ff73e408c8691b9c40d",
-    "index_name": "sequence_data_7ca283c5",
+    "hash": "dbbf3d3c7f43141aa443d0e1dba370b8",
+    "index_name": "sequence_data_dbbf3d3c",
     "item_type": "sequence_data",
     "mapping": {
         "dynamic_templates": [
@@ -148,7 +148,6 @@
                         "type": "keyword"
                     },
                     "accession": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {

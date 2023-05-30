@@ -1,6 +1,6 @@
 {
-    "hash": "101b366babc5b32e381d35fc519dc72b",
-    "index_name": "construct_library_101b366b",
+    "hash": "ca6d5f111a18e079b3761571410f0ee0",
+    "index_name": "construct_library_ca6d5f11",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -148,11 +148,9 @@
                         "type": "keyword"
                     },
                     "accession": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "alternate_accessions": {

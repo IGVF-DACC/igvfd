@@ -1,6 +1,6 @@
 {
-    "hash": "4ded841e63b5c183e050cab19753a3c0",
-    "index_name": "reference_data_4ded841e",
+    "hash": "b85967971df66498a8d8df99d9367b0c",
+    "index_name": "reference_data_b8596797",
     "item_type": "reference_data",
     "mapping": {
         "dynamic_templates": [
@@ -148,7 +148,6 @@
                         "type": "keyword"
                     },
                     "accession": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
