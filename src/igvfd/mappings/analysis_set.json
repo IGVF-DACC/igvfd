@@ -237,7 +237,6 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {
@@ -285,6 +284,9 @@
                                 "type": "keyword"
                             },
                             "genotype": {
+                                "type": "keyword"
+                            },
+                            "human_donor_identifier": {
                                 "type": "keyword"
                             },
                             "individual_rodent": {

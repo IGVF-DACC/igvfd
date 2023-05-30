@@ -148,6 +148,10 @@
                         "type": "keyword"
                     },
                     "accession": {
+<<<<<<< HEAD
+=======
+                        "copy_to": "_all",
+>>>>>>> cefc9ad9 (mappings)
                         "type": "keyword"
                     },
                     "aliases": {
@@ -234,7 +238,6 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {
@@ -245,6 +248,9 @@
                     },
                     "ethnicities": {
                         "copy_to": "_all",
+                        "type": "keyword"
+                    },
+                    "human_donor_identifier": {
                         "type": "keyword"
                     },
                     "lab": {
