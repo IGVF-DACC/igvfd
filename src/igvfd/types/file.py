@@ -363,7 +363,7 @@ class AlignmentFile(File):
     name='signal-files',
     unique_key='accession',
     properties={
-        'title': 'Signal File',
+        'title': 'Signal Files',
         'description': 'Listing of signal files',
     }
 )
