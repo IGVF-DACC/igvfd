@@ -46,7 +46,6 @@ def test_audit_targeted_sample_term(
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'] + '@@index-data')
-    print(res.json['audit'])
     assert any(
         error['category'] == 'inconsistent introduced_factors treatment purpose'
         for error in res.json['audit'].get('ERROR', [])
