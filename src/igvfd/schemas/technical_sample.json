@@ -69,7 +69,7 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "accession",
+        "dbxrefs",
         "@type"
     ],
     "changelog": "/profiles/changelogs/technical_sample.md"
