@@ -311,10 +311,10 @@ class ReferenceFile(File):
 
 
 @collection(
-    name='alignment-file',
+    name='alignment-files',
     unique_key='accession',
     properties={
-        'title': 'Alignment File',
+        'title': 'Alignment Files',
         'description': 'Listing of alignment files',
     }
 )
