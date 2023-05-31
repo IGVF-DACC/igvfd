@@ -1,6 +1,6 @@
 {
-    "hash": "996b809585fa18b628d2e63b2378edea",
-    "index_name": "tissue_996b8095",
+    "hash": "b1395e737c3ca600a463eea376530e52",
+    "index_name": "tissue_b1395e73",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -277,6 +277,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "ontology": {
+                                "type": "keyword"
+                            },
                             "organ_slims": {
                                 "type": "keyword"
                             },
@@ -366,6 +369,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "ontology": {
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"

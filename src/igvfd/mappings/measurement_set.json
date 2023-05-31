@@ -1,6 +1,6 @@
 {
-    "hash": "93cffed3846685828d76fa564cde2fc6",
-    "index_name": "measurement_set_93cffed3",
+    "hash": "e522d6fbb858443616e8406d8eb0a263",
+    "index_name": "measurement_set_e522d6fb",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -195,6 +195,9 @@
                                 "type": "text"
                             },
                             "objective_slims": {
+                                "type": "keyword"
+                            },
+                            "ontology": {
                                 "type": "keyword"
                             },
                             "schema_version": {

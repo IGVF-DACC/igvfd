@@ -1,6 +1,6 @@
 {
-    "hash": "eb0673a708c537fa42a1aba83e17f25e",
-    "index_name": "technical_sample_eb0673a7",
+    "hash": "03ed823ba83b833e1ae49bb096591519",
+    "index_name": "technical_sample_03ed823b",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -455,6 +455,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "ontology": {
+                                "type": "keyword"
                             },
                             "organ_slims": {
                                 "type": "keyword"

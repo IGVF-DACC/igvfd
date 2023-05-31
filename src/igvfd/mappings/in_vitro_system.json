@@ -1,6 +1,6 @@
 {
-    "hash": "36f2f2ef9606bae7073164ae601bfd6f",
-    "index_name": "in_vitro_system_36f2f2ef",
+    "hash": "a41e5b91da186da408564ee82c2f2f48",
+    "index_name": "in_vitro_system_a41e5b91",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -277,6 +277,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "ontology": {
+                                "type": "keyword"
+                            },
                             "organ_slims": {
                                 "type": "keyword"
                             },
@@ -366,6 +369,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "ontology": {
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"

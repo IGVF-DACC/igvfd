@@ -1,6 +1,6 @@
 {
-    "hash": "5db8f36a73fe4ea38a8d898fa929f07e",
-    "index_name": "whole_organism_5db8f36a",
+    "hash": "32e31a92dbf537a8b6e17977e195457e",
+    "index_name": "whole_organism_32e31a92",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -277,6 +277,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "ontology": {
+                                "type": "keyword"
+                            },
                             "organ_slims": {
                                 "type": "keyword"
                             },
@@ -363,6 +366,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "ontology": {
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"

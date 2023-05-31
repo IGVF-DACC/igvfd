@@ -1,6 +1,6 @@
 {
-    "hash": "dfe9404ddc5754ae08ba6fdbce5de562",
-    "index_name": "assay_term_dfe9404d",
+    "hash": "7951348e6168c101d8fc9003d2aeaec0",
+    "index_name": "assay_term_7951348e",
     "item_type": "assay_term",
     "mapping": {
         "dynamic_templates": [
@@ -178,6 +178,9 @@
                         "type": "text"
                     },
                     "objective_slims": {
+                        "type": "keyword"
+                    },
+                    "ontology": {
                         "type": "keyword"
                     },
                     "schema_version": {
