@@ -46,5 +46,4 @@ def test_ontology(
     testapp
 ):
     res = testapp.get(sample_term_K562['@id'])
-    assert 'ontology' in res.json
-    assert res.json.get('ontology') == 'EFO'
+    assert res.json.get('ontology', '') == 'EFO'

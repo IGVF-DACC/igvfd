@@ -90,8 +90,7 @@ class OntologyTerm(Item):
     def ontology(self, properties=None):
         if properties is None:
             properties = self.upgrade_properties()
-        format_ontology = properties['term_id'].split(':')
-        return u'{}'.format(format_ontology[0])
+        return properties['term_id'].split(':')[0]
 
 
 @collection(
