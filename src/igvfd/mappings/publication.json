@@ -1,6 +1,6 @@
 {
-    "hash": "b76fb5ffca11c873322fd015fb9d922c",
-    "index_name": "publication_b76fb5ff",
+    "hash": "8676ceb4cdfe05b96cbd516a12dde26c",
+    "index_name": "publication_8676ceb4",
     "item_type": "publication",
     "mapping": {
         "dynamic_templates": [
@@ -147,13 +147,18 @@
             "embedded": {
                 "properties": {
                     "@id": {
+<<<<<<< HEAD
                         "copy_to": "_exact",
+=======
+>>>>>>> d31cd2b (fix mappings)
                         "type": "keyword"
                     },
                     "@type": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "abstract": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -290,12 +295,14 @@
                         "type": "text"
                     },
                     "identifiers": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "issue": {
                         "type": "keyword"
                     },
                     "journal": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lab": {
@@ -346,6 +353,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_all",
                                 "type": "keyword"
                             },
                             "url": {
@@ -391,7 +399,10 @@
                         "type": "keyword"
                     },
                     "title": {
+<<<<<<< HEAD
                         "copy_to": "_fuzzy",
+=======
+>>>>>>> d31cd2b (fix mappings)
                         "type": "keyword"
                     },
                     "uuid": {

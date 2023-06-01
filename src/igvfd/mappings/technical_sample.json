@@ -1,6 +1,6 @@
 {
-    "hash": "408168f7a9b4f5585ce8a55980ee36a8",
-    "index_name": "technical_sample_408168f7",
+    "hash": "dd55b5d821e23d169e9971321c71bf58",
+    "index_name": "technical_sample_dd55b5d8",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -253,6 +253,7 @@
                         "type": "keyword"
                     },
                     "file_sets": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lab": {
@@ -315,18 +316,21 @@
                         "type": "object"
                     },
                     "lot_id": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
                     },
                     "product_id": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "revoke_detail": {
                         "type": "keyword"
                     },
                     "sample_material": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {
@@ -422,6 +426,7 @@
                         "type": "keyword"
                     },
                     "technical_sample_term": {
+                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"

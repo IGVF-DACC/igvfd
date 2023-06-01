@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "2075fbddb6416f4cfa87e96dd3f2d001",
     "index_name": "award_2075fbdd",
+=======
+    "hash": "0ebf509ba571dfbbda90158ef0c6ef38",
+    "index_name": "award_0ebf509b",
+>>>>>>> d31cd2b (fix mappings)
     "item_type": "award",
     "mapping": {
         "dynamic_templates": [
@@ -180,6 +185,7 @@
                         "type": "text"
                     },
                     "pis": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "project": {

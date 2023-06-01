@@ -1,6 +1,6 @@
 {
-    "hash": "1fda82b06cf56405192f2364030268fa",
-    "index_name": "source_1fda82b0",
+    "hash": "71f08c708ede8614e439be55932df5c8",
+    "index_name": "source_71f08c70",
     "item_type": "source",
     "mapping": {
         "dynamic_templates": [
@@ -147,10 +147,14 @@
             "embedded": {
                 "properties": {
                     "@id": {
+<<<<<<< HEAD
                         "copy_to": "_exact",
+=======
+>>>>>>> d31cd2b (fix mappings)
                         "type": "keyword"
                     },
                     "@type": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -184,7 +188,10 @@
                         "type": "keyword"
                     },
                     "title": {
+<<<<<<< HEAD
                         "copy_to": "_fuzzy",
+=======
+>>>>>>> d31cd2b (fix mappings)
                         "type": "keyword"
                     },
                     "url": {

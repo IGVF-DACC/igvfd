@@ -1,6 +1,6 @@
 {
-    "hash": "069b4fec481a2a3b30d3353ec2912859",
-    "index_name": "primary_cell_069b4fec",
+    "hash": "0304b8fd024e11bffaf079f18213cb0d",
+    "index_name": "primary_cell_0304b8fd",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -240,9 +240,11 @@
                         "type": "object"
                     },
                     "biomarkers": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "biosample_term": {
+                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -342,6 +344,7 @@
                         "type": "text"
                     },
                     "disease_terms": {
+                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -410,6 +413,7 @@
                         "type": "keyword"
                     },
                     "donors": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "embryonic": {
@@ -422,6 +426,7 @@
                         "type": "boolean"
                     },
                     "file_sets": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lab": {
@@ -484,6 +489,7 @@
                         "type": "object"
                     },
                     "lot_id": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lower_bound_age": {
@@ -496,9 +502,11 @@
                         "type": "float"
                     },
                     "modification": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "nih_institutional_certification": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "notes": {
@@ -520,6 +528,7 @@
                         "type": "keyword"
                     },
                     "product_id": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "revoke_detail": {
@@ -625,6 +634,7 @@
                         "type": "keyword"
                     },
                     "treatments": {
+                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"

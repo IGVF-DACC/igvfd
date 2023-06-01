@@ -1,6 +1,6 @@
 {
-    "hash": "77711c4d17c16610eedcb1c31255a8c7",
-    "index_name": "sequence_file_77711c4d",
+    "hash": "f5df67714a2f2404abe94e31e407273c",
+    "index_name": "sequence_file_f5df6771",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -267,6 +267,7 @@
                         "type": "keyword"
                     },
                     "file_set": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "file_size": {
@@ -282,6 +283,7 @@
                         "type": "keyword"
                     },
                     "href": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "illumina_read_type": {
@@ -365,6 +367,7 @@
                         "type": "long"
                     },
                     "md5sum": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "mean_read_length": {
@@ -401,6 +404,7 @@
                         "type": "keyword"
                     },
                     "s3_uri": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {

@@ -1,6 +1,6 @@
 {
-    "hash": "b7ea3b98b24725839c0e892c12c9439f",
-    "index_name": "curated_set_b7ea3b98",
+    "hash": "e7f36534f72eb11f4dac47637f59a647",
+    "index_name": "curated_set_e7f36534",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -254,9 +254,11 @@
                         "type": "keyword"
                     },
                     "donors": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "files": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lab": {
@@ -307,6 +309,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_all",
                                 "type": "keyword"
                             },
                             "url": {
@@ -322,12 +325,14 @@
                         "type": "text"
                     },
                     "references": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "revoke_detail": {
                         "type": "keyword"
                     },
                     "samples": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {
@@ -337,6 +342,7 @@
                         "type": "keyword"
                     },
                     "submitted_by": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "submitter_comment": {

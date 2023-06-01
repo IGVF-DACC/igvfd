@@ -1,6 +1,6 @@
 {
-    "hash": "a1bfcd6c595c80d93e748622d2739aa6",
-    "index_name": "software_version_a1bfcd6c",
+    "hash": "5e933e3545c6086b2f3e1dc1097714ac",
+    "index_name": "software_version_5e933e35",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -147,10 +147,14 @@
             "embedded": {
                 "properties": {
                     "@id": {
+<<<<<<< HEAD
                         "copy_to": "_exact",
+=======
+>>>>>>> d31cd2b (fix mappings)
                         "type": "keyword"
                     },
                     "@type": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -311,6 +315,7 @@
                         "type": "keyword"
                     },
                     "software": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "status": {

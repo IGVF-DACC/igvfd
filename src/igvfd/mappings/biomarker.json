@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "e38564f3c45463395f6050cc10457f66",
     "index_name": "biomarker_e38564f3",
+=======
+    "hash": "8ea43a2942c6ef2898ffa48880eed556",
+    "index_name": "biomarker_8ea43a29",
+>>>>>>> d31cd2b (fix mappings)
     "item_type": "biomarker",
     "mapping": {
         "dynamic_templates": [
@@ -329,6 +334,7 @@
                         "type": "keyword"
                     },
                     "synonyms": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "uuid": {

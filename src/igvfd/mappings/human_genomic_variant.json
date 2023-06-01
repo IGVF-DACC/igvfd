@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "6ca7ca70569fa094af655cb9f01cfba8",
     "index_name": "human_genomic_variant_6ca7ca70",
+=======
+    "hash": "251e3e18b48806b2d6d30355f897dcec",
+    "index_name": "human_genomic_variant_251e3e18",
+>>>>>>> d31cd2b (fix mappings)
     "item_type": "human_genomic_variant",
     "mapping": {
         "dynamic_templates": [
@@ -147,10 +152,14 @@
             "embedded": {
                 "properties": {
                     "@id": {
+<<<<<<< HEAD
                         "copy_to": "_exact",
+=======
+>>>>>>> d31cd2b (fix mappings)
                         "type": "keyword"
                     },
                     "@type": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -163,6 +172,7 @@
                         "type": "keyword"
                     },
                     "associated_gwas": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "chromosome": {
@@ -193,9 +203,11 @@
                         "type": "keyword"
                     },
                     "refseq_id": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "rsid": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {

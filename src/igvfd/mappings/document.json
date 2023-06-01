@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "7572f3ce2b640c50a39319af3d10e485",
     "index_name": "document_7572f3ce",
+=======
+    "hash": "a633cc1ba183885c1909c891a33054fd",
+    "index_name": "document_a633cc1b",
+>>>>>>> d31cd2b (fix mappings)
     "item_type": "document",
     "mapping": {
         "dynamic_templates": [
@@ -272,6 +277,7 @@
                         "type": "object"
                     },
                     "characterization_method": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "creation_timestamp": {
@@ -286,6 +292,7 @@
                         "type": "keyword"
                     },
                     "lab": {
+                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"

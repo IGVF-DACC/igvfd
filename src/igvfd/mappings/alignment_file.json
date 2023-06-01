@@ -1,6 +1,6 @@
 {
-    "hash": "beea8c05916e79544617df24a9c13207",
-    "index_name": "alignment_file_beea8c05",
+    "hash": "9729d37147586563e5a255dc42b7f598",
+    "index_name": "alignment_file_9729d371",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -270,6 +270,7 @@
                         "type": "keyword"
                     },
                     "file_set": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "file_size": {
@@ -291,6 +292,7 @@
                         "type": "boolean"
                     },
                     "href": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lab": {
@@ -353,6 +355,7 @@
                         "type": "object"
                     },
                     "md5sum": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "notes": {
@@ -374,6 +377,7 @@
                         "type": "keyword"
                     },
                     "s3_uri": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {

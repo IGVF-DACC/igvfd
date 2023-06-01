@@ -1,6 +1,6 @@
 {
-    "hash": "a3d454e7aaa401a94867d6b97491d436",
-    "index_name": "modification_a3d454e7",
+    "hash": "4f050e4fa3ad2ffcadcab689420aa32e",
+    "index_name": "modification_4f050e4f",
     "item_type": "modification",
     "mapping": {
         "dynamic_templates": [
@@ -228,6 +228,7 @@
                         "type": "object"
                     },
                     "cas": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "creation_timestamp": {
@@ -240,6 +241,7 @@
                         "type": "keyword"
                     },
                     "fused_domain": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lab": {
@@ -302,15 +304,18 @@
                         "type": "object"
                     },
                     "lot_id": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "modality": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
                     },
                     "product_id": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {
@@ -332,6 +337,7 @@
                         "type": "keyword"
                     },
                     "tagged_protein": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "uuid": {

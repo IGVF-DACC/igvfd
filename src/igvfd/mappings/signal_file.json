@@ -1,6 +1,6 @@
 {
-    "hash": "94728653098474cc7c11c4e33b3740c7",
-    "index_name": "signal_file_94728653",
+    "hash": "7616676336793d9123ec568b015631dc",
+    "index_name": "signal_file_76166763",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -270,6 +270,7 @@
                         "type": "keyword"
                     },
                     "file_set": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "file_size": {
@@ -291,6 +292,7 @@
                         "type": "boolean"
                     },
                     "href": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lab": {
@@ -353,6 +355,7 @@
                         "type": "object"
                     },
                     "md5sum": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "normalized": {
@@ -374,6 +377,7 @@
                         "type": "keyword"
                     },
                     "s3_uri": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {
