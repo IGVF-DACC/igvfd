@@ -10,6 +10,9 @@ def platform_term():
             'status': {
                 'title': 'Status'
             },
+            'ontology': {
+                'title': 'Ontology'
+            },
         },
         'columns': {
             'uuid': {

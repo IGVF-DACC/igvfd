@@ -1,6 +1,6 @@
 {
-    "hash": "e4f51fc52e9e4ed412fa1680621490df",
-    "index_name": "phenotypic_feature_e4f51fc5",
+    "hash": "d26b76eb84a685eab7894f5b9e4e33ac",
+    "index_name": "phenotypic_feature_d26b76eb",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -258,6 +258,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "ontology": {
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"

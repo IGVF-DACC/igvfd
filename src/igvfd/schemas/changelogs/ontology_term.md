@@ -1,5 +1,6 @@
 ## Changelog for *`ontology_term.json`*
 
+* Add calculated property `ontology`. (06/07/2023)
 * Add `description`. (02/08/2023)
 * Restrict `aliases` to be a non-empty array with at least one item. (02/08/2023)
 * Add calculated properties `assay_slims` and `objective_slims`. (02/08/2023)

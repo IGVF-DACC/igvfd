@@ -1,6 +1,6 @@
 {
-    "hash": "9a26eee3a32de47d2684ef2581767531",
-    "index_name": "primary_cell_9a26eee3",
+    "hash": "4a1c2c4d145e01e147354486dd4c44a8",
+    "index_name": "primary_cell_4a1c2c4d",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -277,6 +277,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "ontology": {
+                                "type": "keyword"
+                            },
                             "organ_slims": {
                                 "type": "keyword"
                             },
@@ -363,6 +366,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "ontology": {
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"

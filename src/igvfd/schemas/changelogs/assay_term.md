@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 2
 
+* Add calculated property `ontology`.
 * Add `description`.
 * Add `is_a`.
 

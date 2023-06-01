@@ -82,6 +82,16 @@ class OntologyTerm(Item):
     def ancestors(self, registry, term_id):
         return self._get_ontology_slims(registry, term_id, 'ancestors')
 
+    @calculated_property(schema={
+        'title': 'Ontology',
+        'type': 'string',
+        'notSubmittable': True,
+    })
+    def ontology(self, properties=None):
+        if properties is None:
+            properties = self.upgrade_properties()
+        return properties['term_id'].split(':')[0]
+
 
 @collection(
     name='sample-terms',
