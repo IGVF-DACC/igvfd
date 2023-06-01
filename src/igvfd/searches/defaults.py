@@ -15,6 +15,7 @@ OPTIONAL_PARAMS = [
 FREE_TEXT_QUERIES = [
     'advancedQuery',
     'searchTerm',
+    'query',
 ]
 
 RESERVED_KEYS = NOT_FILTERS = OPTIONAL_PARAMS + FREE_TEXT_QUERIES
