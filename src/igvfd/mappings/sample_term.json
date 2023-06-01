@@ -1,6 +1,6 @@
 {
-    "hash": "a50386b7c1fd12da4a19f6f133034bf2",
-    "index_name": "sample_term_a50386b7",
+    "hash": "5b8b617d2ba9263b7518c1a660a6753f",
+    "index_name": "sample_term_5b8b617d",
     "item_type": "sample_term",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_all",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,7 +55,13 @@
             }
         ],
         "properties": {
-            "_all": {
+            "_exact": {
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "_fuzzy": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -141,10 +147,11 @@
             "embedded": {
                 "properties": {
                     "@id": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -202,18 +209,18 @@
                         "type": "keyword"
                     },
                     "synonyms": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "system_slims": {
                         "type": "keyword"
                     },
                     "term_id": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "term_name": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "uuid": {
@@ -229,7 +236,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -254,7 +261,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             }
         }

@@ -1,6 +1,6 @@
 {
-    "hash": "1a87538def177174353a97724c22b401",
-    "index_name": "modification_1a87538d",
+    "hash": "74168ff75de7985215a45d1a9cf2a83a",
+    "index_name": "modification_74168ff7",
     "item_type": "modification",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_all",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,7 +55,13 @@
             }
         ],
         "properties": {
-            "_all": {
+            "_exact": {
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "_fuzzy": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -141,10 +147,11 @@
             "embedded": {
                 "properties": {
                     "@id": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -341,7 +348,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -366,7 +373,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             }
         }
