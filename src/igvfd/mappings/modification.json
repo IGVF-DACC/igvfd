@@ -1,6 +1,6 @@
 {
-    "hash": "74168ff75de7985215a45d1a9cf2a83a",
-    "index_name": "modification_74168ff7",
+    "hash": "a3d454e7aaa401a94867d6b97491d436",
+    "index_name": "modification_a3d454e7",
     "item_type": "modification",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {

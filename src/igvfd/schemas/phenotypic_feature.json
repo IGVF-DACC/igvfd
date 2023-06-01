@@ -75,8 +75,10 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "@type",
         "feature.term_name"
+    ],
+    "exact_searchable_fields": [
+        "@type"
     ],
     "changelog": "/profiles/changelogs/phenotypic_feature.md"
 }

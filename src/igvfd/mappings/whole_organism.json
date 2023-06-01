@@ -1,6 +1,6 @@
 {
-    "hash": "f52af6360d53bc6aef851d989a7983e6",
-    "index_name": "whole_organism_f52af636",
+    "hash": "572a23ef6f5880ad65ec27510174dd94",
+    "index_name": "whole_organism_572a23ef",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {

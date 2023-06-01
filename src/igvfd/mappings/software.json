@@ -1,6 +1,6 @@
 {
-    "hash": "a540253ebbe6312992fc8d8eb7b0473a",
-    "index_name": "software_a540253e",
+    "hash": "cb0eb364cd0dcf0350335660b36f8f5a",
+    "index_name": "software_cb0eb364",
     "item_type": "software",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {

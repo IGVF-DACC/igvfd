@@ -1,6 +1,6 @@
 {
-    "hash": "64462fdb81dbe365f7dad564ff81e1ac",
-    "index_name": "page_64462fdb",
+    "hash": "8064c9a8c0d41cba6d9ea8308b9724d1",
+    "index_name": "page_8064c9a8",
     "item_type": "page",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {

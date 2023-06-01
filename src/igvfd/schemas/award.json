@@ -112,10 +112,12 @@
     },
     "fuzzy_searchable_fields": [
         "name",
-        "@type",
         "title",
         "project",
         "component"
+    ],
+    "exact_searchable_fields": [
+        "@type"
     ],
     "changelog": "/profiles/changelogs/award.md"
 }

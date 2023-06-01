@@ -154,7 +154,10 @@
     "fuzzy_searchable_fields": [
         "dbxrefs",
         "@type",
-        "content_type",
+        "content_type"
+    ],
+    "exact_searchable_fields": [
+        "@type",
         "file_format"
     ],
     "changelog": "/profiles/changelogs/reference_data.md"

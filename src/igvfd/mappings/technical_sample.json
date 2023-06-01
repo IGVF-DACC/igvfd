@@ -1,6 +1,6 @@
 {
-    "hash": "968adeac08ae593a1d993c01085e5645",
-    "index_name": "technical_sample_968adeac",
+    "hash": "245918cfba5d9d2e66a5d6a1d34d296f",
+    "index_name": "technical_sample_245918cf",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {

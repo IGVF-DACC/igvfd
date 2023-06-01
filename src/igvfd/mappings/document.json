@@ -1,6 +1,6 @@
 {
-    "hash": "8b121cec67c853ab3d4f3c0de0629463",
-    "index_name": "document_8b121cec",
+    "hash": "7572f3ce2b640c50a39319af3d10e485",
+    "index_name": "document_7572f3ce",
     "item_type": "document",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {

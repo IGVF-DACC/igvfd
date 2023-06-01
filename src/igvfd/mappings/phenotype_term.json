@@ -1,6 +1,6 @@
 {
-    "hash": "350f423d27c70c617e93611481c2c911",
-    "index_name": "phenotype_term_350f423d",
+    "hash": "1aab7aac4468a6a260ca90186496f13f",
+    "index_name": "phenotype_term_1aab7aac",
     "item_type": "phenotype_term",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {

@@ -1,6 +1,6 @@
 {
-    "hash": "31f3eeb0904d7a9066447566c6cb4123",
-    "index_name": "primary_cell_31f3eeb0",
+    "hash": "8eaf8a324f497dea8d3477b44bec8704",
+    "index_name": "primary_cell_8eaf8a32",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {

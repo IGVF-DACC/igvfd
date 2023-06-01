@@ -1,6 +1,6 @@
 {
-    "hash": "b15579ac2aea2bef157d00ed50d6b9f9",
-    "index_name": "analysis_set_b15579ac",
+    "hash": "b497fe827c8449ef71d088bd056baea5",
+    "index_name": "analysis_set_b497fe82",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {

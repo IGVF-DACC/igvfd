@@ -101,9 +101,11 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "@type",
         "name",
         "title"
+    ],
+    "exact_searchable_fields": [
+        "@type"
     ],
     "changelog": "/profiles/changelogs/page.md"
 }

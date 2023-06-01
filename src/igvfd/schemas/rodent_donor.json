@@ -151,9 +151,11 @@
     },
     "fuzzy_searchable_fields": [
         "dbxrefs",
-        "@type",
         "taxa",
         "strain"
+    ],
+    "exact_searchable_fields": [
+        "@type"
     ],
     "changelog": "/profiles/changelogs/rodent_donor.md"
 }

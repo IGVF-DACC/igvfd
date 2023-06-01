@@ -147,8 +147,10 @@
     },
     "fuzzy_searchable_fields": [
         "dbxrefs",
+        "content_type"
+    ],
+    "exact_searchable_fields": [
         "@type",
-        "content_type",
         "file_format"
     ],
     "changelog": "/profiles/changelogs/sequence_data.md"

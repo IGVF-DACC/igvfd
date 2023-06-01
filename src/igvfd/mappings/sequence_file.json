@@ -1,6 +1,6 @@
 {
-    "hash": "3edc2f8b611c55c816ebc421b05faa2f",
-    "index_name": "sequence_file_3edc2f8b",
+    "hash": "77711c4d17c16610eedcb1c31255a8c7",
+    "index_name": "sequence_file_77711c4d",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {
@@ -261,7 +260,7 @@
                         "type": "keyword"
                     },
                     "file_format": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "file_format_specifications": {

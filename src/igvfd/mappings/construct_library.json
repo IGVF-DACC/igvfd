@@ -1,6 +1,6 @@
 {
-    "hash": "d29c820030826fb5d94e06718b3e5c59",
-    "index_name": "construct_library_d29c8200",
+    "hash": "592c1bafd721750152cd5fb1ab1087d8",
+    "index_name": "construct_library_592c1baf",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {

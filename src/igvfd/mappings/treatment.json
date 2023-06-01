@@ -1,6 +1,6 @@
 {
-    "hash": "ded7661165b72e1c755a4311a941e815",
-    "index_name": "treatment_ded76611",
+    "hash": "3a679416c5df1c02965e35e40bf3e2e7",
+    "index_name": "treatment_3a679416",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {

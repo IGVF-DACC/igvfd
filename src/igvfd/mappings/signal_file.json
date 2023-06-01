@@ -1,6 +1,6 @@
 {
-    "hash": "6e603ac16ac5686bba9306e676b56857",
-    "index_name": "signal_file_6e603ac1",
+    "hash": "94728653098474cc7c11c4e33b3740c7",
+    "index_name": "signal_file_94728653",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {
@@ -264,7 +263,7 @@
                         "type": "keyword"
                     },
                     "file_format": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "file_format_specifications": {

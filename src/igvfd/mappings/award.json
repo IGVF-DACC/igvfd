@@ -1,6 +1,6 @@
 {
-    "hash": "223efc6934d8ec7a34e90c27e0e17fa7",
-    "index_name": "award_223efc69",
+    "hash": "2075fbddb6416f4cfa87e96dd3f2d001",
+    "index_name": "award_2075fbdd",
     "item_type": "award",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {

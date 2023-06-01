@@ -1,6 +1,6 @@
 {
-    "hash": "a514c7b016b4e4869bf50f6d4b049ed0",
-    "index_name": "gene_a514c7b0",
+    "hash": "6b58e80baaba824c539ccadc0efc373b",
+    "index_name": "gene_6b58e80b",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {
