@@ -1,6 +1,6 @@
 {
-    "hash": "6b9ab4bb6e1ef28f9a6c936982111b8d",
-    "index_name": "curated_set_6b9ab4bb",
+    "hash": "b7ea3b98b24725839c0e892c12c9439f",
+    "index_name": "curated_set_b7ea3b98",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {

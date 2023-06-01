@@ -112,8 +112,10 @@
     },
     "fuzzy_searchable_fields": [
         "dbxrefs",
-        "@type",
         "taxa"
+    ],
+    "exact_searchable_fields": [
+        "@type"
     ],
     "changelog": "/profiles/changelogs/tissue.md"
 }

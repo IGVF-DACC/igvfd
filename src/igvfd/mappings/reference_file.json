@@ -1,6 +1,6 @@
 {
-    "hash": "0657c2cc7f4cfe6cbd3325016df895b8",
-    "index_name": "reference_file_0657c2cc",
+    "hash": "fcbfec24dfaf70df2816d6d5a8e70685",
+    "index_name": "reference_file_fcbfec24",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {
@@ -264,7 +263,7 @@
                         "type": "keyword"
                     },
                     "file_format": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "file_format_specifications": {

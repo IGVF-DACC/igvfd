@@ -1,6 +1,6 @@
 {
-    "hash": "a3ac050489695acf1404913e7e8a6833",
-    "index_name": "sequence_data_a3ac0504",
+    "hash": "b58e404a1c51b49c8334d9e9c65f0c98",
+    "index_name": "sequence_data_b58e404a",
     "item_type": "sequence_data",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {
@@ -261,7 +260,7 @@
                         "type": "keyword"
                     },
                     "file_format": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "file_format_specifications": {

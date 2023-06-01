@@ -1,6 +1,6 @@
 {
-    "hash": "f39933cb3de7c6caa4afa1b4a18b29ba",
-    "index_name": "user_f39933cb",
+    "hash": "36f06b828c709e983388d2049402cbda",
+    "index_name": "user_36f06b82",
     "item_type": "user",
     "mapping": {
         "dynamic_templates": [
@@ -147,10 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {

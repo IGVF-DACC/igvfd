@@ -123,10 +123,12 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "@type",
         "dbxrefs",
         "assay_term.term_name",
         "protocol"
+    ],
+    "exact_searchable_fields": [
+        "@type"
     ],
     "changelog": "/profiles/changelogs/measurement_set.md"
 }

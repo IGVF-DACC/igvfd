@@ -390,8 +390,10 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "@type",
         "targeted_genes"
+    ],
+    "exact_searchable_fields": [
+        "@type"
     ],
     "changelog": "/profiles/changelogs/construct_library.md"
 }

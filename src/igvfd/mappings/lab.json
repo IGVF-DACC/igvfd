@@ -1,6 +1,6 @@
 {
-    "hash": "c09441f0d97fea76653994af54ac2f42",
-    "index_name": "lab_c09441f0",
+    "hash": "730c678db14deefbf6fa448a6d8a0e8a",
+    "index_name": "lab_730c678d",
     "item_type": "lab",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -246,7 +245,7 @@
                         "type": "text"
                     },
                     "pi": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "schema_version": {

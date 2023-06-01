@@ -66,10 +66,12 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "@type",
-        "pi",
         "name",
         "institute_label"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "pi"
     ],
     "changelog": "/profiles/changelogs/lab.md"
 }

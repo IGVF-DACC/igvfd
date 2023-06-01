@@ -1,6 +1,6 @@
 {
-    "hash": "b8bd240063b806f80f52e477afc13a76",
-    "index_name": "measurement_set_b8bd2400",
+    "hash": "65ffe2e4be68b8844b0d210208ed3335",
+    "index_name": "measurement_set_65ffe2e4",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {

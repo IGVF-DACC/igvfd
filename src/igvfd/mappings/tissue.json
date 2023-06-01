@@ -1,6 +1,6 @@
 {
-    "hash": "f7faddc88666ba93534990d101d8cea7",
-    "index_name": "tissue_f7faddc8",
+    "hash": "884670825724502e3a94cc05ee34f9f2",
+    "index_name": "tissue_88467082",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {
