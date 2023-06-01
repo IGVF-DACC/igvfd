@@ -1,6 +1,6 @@
 {
-    "hash": "5d699297903aed84312830ac7bdea3f3",
-    "index_name": "measurement_set_5d699297",
+    "hash": "93cffed3846685828d76fa564cde2fc6",
+    "index_name": "measurement_set_93cffed3",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -357,6 +357,9 @@
                                 "type": "keyword"
                             },
                             "genotype": {
+                                "type": "keyword"
+                            },
+                            "human_donor_identifier": {
                                 "type": "keyword"
                             },
                             "individual_rodent": {

@@ -23,6 +23,10 @@
         ],
         "dbxrefs": [
             "GEO:SAMN31998833"
+        ],
+        "human_donor_identifier": [
+            "HuES8 cell line donor",
+            "HVRDe008-A cell line donor"
         ]
     },
     {
@@ -47,6 +51,10 @@
         ],
         "collections": [
             "ENCODE"
+        ],
+        "human_donor_identifier": [
+            "K562 cell line donor",
+            "GM05372 cell line donor"
         ]
     },
     {
@@ -125,5 +133,24 @@
         ],
         "sex": "female",
         "taxa": "Homo sapiens"
+    },
+    {
+        "uuid": "4771fdf1-b0cf-4c33-ab30-2c8c7b83996e",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "sex": "male",
+        "taxa": "Homo sapiens",
+        "dbxrefs": [
+            "GEO:SAMN05897796"
+        ],
+        "human_donor_identifier": [
+            "ENC-QWZ",
+            "ENC-001",
+            "PT-1JKYN",
+            "GTEX-1JKYN"
+        ],
+        "aliases": [
+            "igvf:ENTEx_donor_1"
+        ]
     }
 ]
