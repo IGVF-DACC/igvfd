@@ -77,3 +77,23 @@ def test_patch_related_donors(human_donor, parent_human_donor_1, testapp):
             }
         ]})
     assert res.status_code == 200
+
+
+def test_patch_virtual(human_donor, testapp):
+    res = testapp.patch_json(
+        human_donor['@id'],
+        {'virtual': True})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        human_donor['@id'],
+        {'virtual': False})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        human_donor['@id'],
+        {'virtual': ''}, expect_errors=True)
+    assert res.status_code == 422
+
+
+def test_read_virtual(human_male_donor, testapp):
+    res = testapp.get(human_male_donor['@id'])
+    assert res.json['virtual'] == False

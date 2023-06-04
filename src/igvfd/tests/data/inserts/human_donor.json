@@ -27,7 +27,8 @@
         "human_donor_identifier": [
             "HuES8 cell line donor",
             "HVRDe008-A cell line donor"
-        ]
+        ],
+        "virtual": true
     },
     {
         "uuid": "a1abeff6-8024-41d3-a713-5d22c86ffc57",
@@ -55,7 +56,8 @@
         "human_donor_identifier": [
             "K562 cell line donor",
             "GM05372 cell line donor"
-        ]
+        ],
+        "virtual": false
     },
     {
         "uuid": "38d6630f-5b87-47a1-ae7d-174eab5758d2",

@@ -1,5 +1,6 @@
 ## Changelog for *`donor.json`*
 
+* Add `virtual`. (06/05/2023)
 * Add `dbxrefs`. (03/01/2023)
 * Remove `parents`. (03/01/2023)
 * Remove `traits`. (02/08/2023)

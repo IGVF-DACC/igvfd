@@ -1,6 +1,11 @@
 {
+<<<<<<< dev
     "hash": "92b2102ad9e94da9d6037495ea2f8266",
     "index_name": "primary_cell_92b2102a",
+=======
+    "hash": "51b54d5c9ce0a9cf7f8c4c295007b2b4",
+    "index_name": "primary_cell_51b54d5c",
+>>>>>>> IGVF-726 Added virtual to sample and donor.
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -829,6 +834,15 @@
                     },
                     "uuid": {
                         "type": "keyword"
+                    },
+                    "virtual": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     }
                 },
                 "type": "object"

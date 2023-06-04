@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Add `virtual`.
 * Add `cellular_sub_pool`.
 
 ### Schema version 6

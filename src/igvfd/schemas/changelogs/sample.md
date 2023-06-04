@@ -1,5 +1,6 @@
 ## Changelog for *`sample.json`*
 
+* Add `virtual`. (06/05/2023)
 * Add `sorted_fraction_detail`. (03/15/2023)
 * Add `sorted_fraction`. (03/15/2023)
 * Add `file_sets`. (03/08/2023)

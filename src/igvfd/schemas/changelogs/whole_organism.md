@@ -1,6 +1,10 @@
 ## Changelog for *`whole_organism.json`*
 
 
+### Minor changes since schema version 13
+
+Add `virtual`.
+
 ### Schema version 13
 
 * Remove `taxa` from `required` and make it calculated.

@@ -1,6 +1,11 @@
 {
+<<<<<<< dev
     "hash": "684d490eeebba709676375d70a0e67cd",
     "index_name": "technical_sample_684d490e",
+=======
+    "hash": "5238214e3bfefd5b611ec65c86997394",
+    "index_name": "technical_sample_5238214e",
+>>>>>>> IGVF-726 Added virtual to sample and donor.
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -572,6 +577,15 @@
                     },
                     "uuid": {
                         "type": "keyword"
+                    },
+                    "virtual": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     }
                 },
                 "type": "object"

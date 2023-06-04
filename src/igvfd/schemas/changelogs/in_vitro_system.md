@@ -3,6 +3,7 @@
 
 ### Minor changes since schema version 10
 
+* Add `virtual`.
 * remove `permissions` from `classification`.
 
 ### Schema version 10

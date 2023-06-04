@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Add `virtual`.
 * Add `human_donor_identifier`.
 
 ### Schema version 8

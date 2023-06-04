@@ -1,6 +1,11 @@
 {
+<<<<<<< dev
     "hash": "cf209e7ba35533a796b3d109b8cd9ce2",
     "index_name": "in_vitro_system_cf209e7b",
+=======
+    "hash": "1f2df1ef8b6edcaad75f23d8a49ed472",
+    "index_name": "in_vitro_system_1f2df1ef",
+>>>>>>> IGVF-726 Added virtual to sample and donor.
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -976,6 +981,15 @@
                     },
                     "uuid": {
                         "type": "keyword"
+                    },
+                    "virtual": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     }
                 },
                 "type": "object"

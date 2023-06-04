@@ -1,6 +1,11 @@
 {
+<<<<<<< dev
     "hash": "0d4c039ace402ee5451440a1ed530b1a",
     "index_name": "human_donor_0d4c039a",
+=======
+    "hash": "2656cf11d09cb83dc247813d0f4fccd4",
+    "index_name": "human_donor_2656cf11",
+>>>>>>> IGVF-726 Added virtual to sample and donor.
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -431,6 +436,15 @@
                     },
                     "uuid": {
                         "type": "keyword"
+                    },
+                    "virtual": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     }
                 },
                 "type": "object"
