@@ -113,11 +113,11 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "@type",
-        "abstract",
-        "identifiers",
-        "journal",
         "lab.title"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "identifiers"
     ],
     "changelog": "/profiles/changelogs/publication.md"
 }

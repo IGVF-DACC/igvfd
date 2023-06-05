@@ -44,6 +44,9 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "title"
+    ],
+    "exact_searchable_fields": [
         "@type"
     ],
     "changelog": "/profiles/changelogs/source.md"

@@ -70,8 +70,7 @@
         "institute_label"
     ],
     "exact_searchable_fields": [
-        "@type",
-        "pi"
+        "@type"
     ],
     "changelog": "/profiles/changelogs/lab.md"
 }

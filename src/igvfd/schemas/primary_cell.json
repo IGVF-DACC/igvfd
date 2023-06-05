@@ -82,8 +82,6 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "biosample_term",
-        "file_sets",
         "taxa"
     ],
     "exact_searchable_fields": [

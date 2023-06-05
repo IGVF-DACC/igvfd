@@ -132,10 +132,11 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "@type",
-        "associated_gwas",
-        "refseq_id",
-        "rsid"
+        "rsid",
+        "refseq_id"
+    ],
+    "exact_searchable_fields": [
+        "@type"
     ],
     "changelog": "/profiles/changelogs/human_genomic_variant.md"
 }

@@ -40,12 +40,12 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "term_id",
         "term_name",
         "synonyms"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "term_id"
     ],
     "changelog": "/profiles/changelogs/phenotype_term.md"
 }
