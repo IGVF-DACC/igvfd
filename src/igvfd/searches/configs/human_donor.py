@@ -24,6 +24,9 @@ def human_donor():
             },
             'status': {
                 'title': 'Status'
+            },
+            'virtual': {
+                'title': 'Virtual'
             }
         },
         'facet_groups': [
@@ -88,6 +91,9 @@ def human_donor():
             },
             'phenotypic_features': {
                 'title': 'Phenotypic Features'
+            },
+            'virtual': {
+                'title': 'Virtual'
             }
         }
     }

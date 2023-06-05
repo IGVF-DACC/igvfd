@@ -40,6 +40,9 @@ def in_vitro_system():
             'status': {
                 'title': 'Status'
             },
+            'virtual': {
+                'title': 'Virtual'
+            }
         },
         'facet_groups': [
             {
@@ -105,6 +108,9 @@ def in_vitro_system():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'virtual': {
+                'title': 'Virtual'
             }
         }
     }

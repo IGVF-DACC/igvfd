@@ -25,6 +25,9 @@ def technical_sample():
             'status': {
                 'title': 'Status'
             },
+            'virtual': {
+                'title': 'Virtual'
+            }
         },
         'facet_groups': [
             {
@@ -79,6 +82,9 @@ def technical_sample():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'virtual': {
+                'title': 'Virtual'
             }
         }
     }
