@@ -115,3 +115,8 @@ def human_donor_7_8(value, system):
             )
         value['related_donors'] = related_donors
         del value['parents']
+
+
+@upgrade_step('human_donor', '8', '9')
+def human_donor_8_9(value, system):
+    return
