@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "58393d41a46724f31f759d5338e74a3a",
-    "index_name": "analysis_set_58393d41",
-=======
     "hash": "026511972bca1931be9a5a1b908a6f43",
     "index_name": "analysis_set_02651197",
->>>>>>> d31cd2b (fix mappings)
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [

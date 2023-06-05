@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "6b58e80baaba824c539ccadc0efc373b",
-    "index_name": "gene_6b58e80b",
-=======
     "hash": "df060161d05aec6bda2e9a23d0f030d3",
     "index_name": "gene_df060161",
->>>>>>> d31cd2b (fix mappings)
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
