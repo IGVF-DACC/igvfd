@@ -311,10 +311,10 @@ class ReferenceFile(File):
 
 
 @collection(
-    name='alignment-file',
+    name='alignment-files',
     unique_key='accession',
     properties={
-        'title': 'Alignment File',
+        'title': 'Alignment Files',
         'description': 'Listing of alignment files',
     }
 )
@@ -363,7 +363,7 @@ class AlignmentFile(File):
     name='signal-files',
     unique_key='accession',
     properties={
-        'title': 'Signal File',
+        'title': 'Signal Files',
         'description': 'Listing of signal files',
     }
 )

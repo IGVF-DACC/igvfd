@@ -15,7 +15,7 @@
         "file_size": 45200010,
         "upload_status": "pending",
         "file_set": "igvf:basic_analysis_set",
-        "reference_filess": [
+        "reference_files": [
             "IGVFFI0001GNRF"
         ],
         "redacted": false,
