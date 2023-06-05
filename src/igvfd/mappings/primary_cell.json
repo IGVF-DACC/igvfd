@@ -1,6 +1,6 @@
 {
-    "hash": "df092ce828ade14dab3f45f23f91f300",
-    "index_name": "primary_cell_df092ce8",
+    "hash": "35942c7825d4b2dbf81aa8f8bb6c8bf9",
+    "index_name": "primary_cell_35942c78",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -243,7 +243,6 @@
                         "type": "keyword"
                     },
                     "biosample_term": {
-                        "copy_to": "_fuzzy",
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -423,7 +422,6 @@
                         "type": "boolean"
                     },
                     "file_sets": {
-                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "lab": {

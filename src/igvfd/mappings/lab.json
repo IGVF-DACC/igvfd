@@ -1,6 +1,6 @@
 {
-    "hash": "730c678db14deefbf6fa448a6d8a0e8a",
-    "index_name": "lab_730c678d",
+    "hash": "6c2007a32a52cb0372d2702face22033",
+    "index_name": "lab_6c2007a3",
     "item_type": "lab",
     "mapping": {
         "dynamic_templates": [
@@ -245,7 +245,6 @@
                         "type": "text"
                     },
                     "pi": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "schema_version": {

@@ -1,6 +1,6 @@
 {
-    "hash": "b14c0ecd377db06e7967eedde036f954",
-    "index_name": "sample_term_b14c0ecd",
+    "hash": "cad79f9a9e5b4fbd392934cb1d252327",
+    "index_name": "sample_term_cad79f9a",
     "item_type": "sample_term",
     "mapping": {
         "dynamic_templates": [
@@ -216,7 +216,7 @@
                         "type": "keyword"
                     },
                     "term_id": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "term_name": {

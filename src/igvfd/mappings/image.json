@@ -1,6 +1,6 @@
 {
-    "hash": "f67582355cfb52574e39be0f761b26ad",
-    "index_name": "image_f6758235",
+    "hash": "f3cddbe8b76b348416ff843933d1b374",
+    "index_name": "image_f3cddbe8",
     "item_type": "image",
     "mapping": {
         "dynamic_templates": [
@@ -147,11 +147,10 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {
