@@ -147,10 +147,7 @@
             "embedded": {
                 "properties": {
                     "@id": {
-<<<<<<< HEAD
                         "copy_to": "_exact",
-=======
->>>>>>> d31cd2b (fix mappings)
                         "type": "keyword"
                     },
                     "@type": {
@@ -399,10 +396,7 @@
                         "type": "keyword"
                     },
                     "title": {
-<<<<<<< HEAD
                         "copy_to": "_fuzzy",
-=======
->>>>>>> d31cd2b (fix mappings)
                         "type": "keyword"
                     },
                     "uuid": {
