@@ -1,6 +1,6 @@
 {
-    "hash": "9c71dbc60e2d78230145b9bc5aab92de",
-    "index_name": "tissue_9c71dbc6",
+    "hash": "dd60d657e549aa6325747dbd4b737ba7",
+    "index_name": "tissue_dd60d657",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -240,11 +240,9 @@
                         "type": "object"
                     },
                     "biomarkers": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "biosample_term": {
-                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -340,14 +338,13 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "description": {
                         "type": "text"
                     },
                     "disease_terms": {
-                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -416,7 +413,6 @@
                         "type": "keyword"
                     },
                     "donors": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "embryonic": {
@@ -429,7 +425,6 @@
                         "type": "boolean"
                     },
                     "file_sets": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lab": {
@@ -492,7 +487,6 @@
                         "type": "object"
                     },
                     "lot_id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lower_bound_age": {
@@ -505,11 +499,10 @@
                         "type": "float"
                     },
                     "modification": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "nih_institutional_certification": {
-                        "copy_to": "_all",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "notes": {
@@ -537,7 +530,6 @@
                         "type": "keyword"
                     },
                     "product_id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "revoke_detail": {
@@ -643,7 +635,6 @@
                         "type": "keyword"
                     },
                     "treatments": {
-                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"

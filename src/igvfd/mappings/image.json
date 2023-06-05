@@ -1,6 +1,6 @@
 {
-    "hash": "067b4973b478f643b36ffbdabe5cfc1d",
-    "index_name": "image_067b4973",
+    "hash": "f67582355cfb52574e39be0f761b26ad",
+    "index_name": "image_f6758235",
     "item_type": "image",
     "mapping": {
         "dynamic_templates": [
@@ -151,7 +151,7 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -187,7 +187,7 @@
                                 "type": "long"
                             },
                             "type": {
-                                "copy_to": "_all",
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "width": {
@@ -203,7 +203,7 @@
                         "type": "object"
                     },
                     "caption": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "creation_timestamp": {

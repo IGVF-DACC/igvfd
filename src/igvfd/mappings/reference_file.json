@@ -1,6 +1,6 @@
 {
-    "hash": "355e1481a05fa0d16c4bf24bb06f6049",
-    "index_name": "reference_file_355e1481",
+    "hash": "cbbe71b9a1a4b90a623941161df9bf71",
+    "index_name": "reference_file_cbbe71b9",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -250,7 +250,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "derived_from": {
@@ -270,7 +270,6 @@
                         "type": "keyword"
                     },
                     "file_set": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "file_size": {
@@ -283,7 +282,6 @@
                         "type": "long"
                     },
                     "href": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lab": {
@@ -346,7 +344,6 @@
                         "type": "object"
                     },
                     "md5sum": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "notes": {
@@ -356,7 +353,6 @@
                         "type": "keyword"
                     },
                     "s3_uri": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {

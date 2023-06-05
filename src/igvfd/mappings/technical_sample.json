@@ -1,6 +1,6 @@
 {
-    "hash": "dd55b5d821e23d169e9971321c71bf58",
-    "index_name": "technical_sample_dd55b5d8",
+    "hash": "28fbbf38c245bc958767978358e0406a",
+    "index_name": "technical_sample_28fbbf38",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -243,7 +243,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "description": {
@@ -253,7 +253,6 @@
                         "type": "keyword"
                     },
                     "file_sets": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lab": {
@@ -316,21 +315,19 @@
                         "type": "object"
                     },
                     "lot_id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
                     },
                     "product_id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "revoke_detail": {
                         "type": "keyword"
                     },
                     "sample_material": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "schema_version": {
@@ -426,7 +423,6 @@
                         "type": "keyword"
                     },
                     "technical_sample_term": {
-                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"

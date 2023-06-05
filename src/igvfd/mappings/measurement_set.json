@@ -1,6 +1,6 @@
 {
-    "hash": "069607994a264faad7c1f376b8c1e973",
-    "index_name": "measurement_set_06960799",
+    "hash": "c20e2bdf23910f2275a1c8183bda585d",
+    "index_name": "measurement_set_c20e2bdf",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -318,7 +318,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "description": {
@@ -328,7 +328,6 @@
                         "type": "keyword"
                     },
                     "donors": {
-                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -456,7 +455,7 @@
                         "type": "object"
                     },
                     "files": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "lab": {
@@ -507,7 +506,7 @@
                                 "type": "keyword"
                             },
                             "title": {
-                                "copy_to": "_all",
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -544,22 +543,19 @@
                         "type": "text"
                     },
                     "preferred_assay_title": {
-                        "copy_to": "_all",
-                        "type": "keyword"
-                    },
-                    "protocol": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
+                    "protocol": {
+                        "type": "keyword"
+                    },
                     "related_multiome_datasets": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "revoke_detail": {
                         "type": "keyword"
                     },
                     "samples": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {
@@ -628,7 +624,6 @@
                                 "type": "keyword"
                             },
                             "title": {
-                                "copy_to": "_all",
                                 "type": "keyword"
                             },
                             "uuid": {

@@ -1,6 +1,6 @@
 {
-    "hash": "251e3e18b48806b2d6d30355f897dcec",
-    "index_name": "human_genomic_variant_251e3e18",
+    "hash": "b85177ad175bae4b985e0a4867aeee94",
+    "index_name": "human_genomic_variant_b85177ad",
     "item_type": "human_genomic_variant",
     "mapping": {
         "dynamic_templates": [
@@ -151,7 +151,7 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -164,7 +164,7 @@
                         "type": "keyword"
                     },
                     "associated_gwas": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "chromosome": {
@@ -195,11 +195,11 @@
                         "type": "keyword"
                     },
                     "refseq_id": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "rsid": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "schema_version": {

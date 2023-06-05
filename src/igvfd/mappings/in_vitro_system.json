@@ -1,6 +1,6 @@
 {
-    "hash": "e94b9a00516ca2a797fb3f5c5345cd38",
-    "index_name": "in_vitro_system_e94b9a00",
+    "hash": "027694f27a5d8aaed5c59da0b7deb6d7",
+    "index_name": "in_vitro_system_027694f2",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -240,11 +240,9 @@
                         "type": "object"
                     },
                     "biomarkers": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "biosample_term": {
-                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -328,7 +326,7 @@
                         "type": "keyword"
                     },
                     "classification": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "collections": {
@@ -341,14 +339,13 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "description": {
                         "type": "text"
                     },
                     "disease_terms": {
-                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -417,7 +414,6 @@
                         "type": "keyword"
                     },
                     "donors": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "embryonic": {
@@ -430,11 +426,9 @@
                         "type": "boolean"
                     },
                     "file_sets": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "introduced_factors": {
-                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -619,7 +613,6 @@
                         "type": "object"
                     },
                     "lot_id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lower_bound_age": {
@@ -632,18 +625,16 @@
                         "type": "float"
                     },
                     "modification": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "nih_institutional_certification": {
-                        "copy_to": "_all",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
                     },
                     "originated_from": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "part_of": {
@@ -662,7 +653,6 @@
                         "type": "keyword"
                     },
                     "product_id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "revoke_detail": {
@@ -764,7 +754,6 @@
                         "type": "keyword"
                     },
                     "targeted_sample_term": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "taxa": {
@@ -784,7 +773,6 @@
                         "type": "keyword"
                     },
                     "treatments": {
-                        "copy_to": "_all",
                         "properties": {
                             "@id": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "df060161d05aec6bda2e9a23d0f030d3",
-    "index_name": "gene_df060161",
+    "hash": "c1e9d94694193a35ba23405663a4b878",
+    "index_name": "gene_c1e9d946",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -163,7 +163,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "description": {
@@ -206,7 +206,7 @@
                         "type": "object"
                     },
                     "name": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "notes": {

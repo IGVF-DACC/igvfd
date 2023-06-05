@@ -1,6 +1,6 @@
 {
-    "hash": "cb0eb364cd0dcf0350335660b36f8f5a",
-    "index_name": "software_cb0eb364",
+    "hash": "6c1e187a0824ff038c1786d87c6aa384",
+    "index_name": "software_6c1e187a",
     "item_type": "software",
     "mapping": {
         "dynamic_templates": [
@@ -231,7 +231,6 @@
                         "type": "keyword"
                     },
                     "description": {
-                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "lab": {

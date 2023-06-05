@@ -1,6 +1,6 @@
 {
-    "hash": "f5df67714a2f2404abe94e31e407273c",
-    "index_name": "sequence_file_f5df6771",
+    "hash": "862120f042e7709a9dde0fa21486c6ae",
+    "index_name": "sequence_file_862120f0",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -247,7 +247,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "derived_from": {
@@ -267,7 +267,6 @@
                         "type": "keyword"
                     },
                     "file_set": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "file_size": {
@@ -283,7 +282,6 @@
                         "type": "keyword"
                     },
                     "href": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "illumina_read_type": {
@@ -367,7 +365,6 @@
                         "type": "long"
                     },
                     "md5sum": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "mean_read_length": {
@@ -404,7 +401,6 @@
                         "type": "keyword"
                     },
                     "s3_uri": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {

@@ -1,6 +1,6 @@
 {
-    "hash": "e7f36534f72eb11f4dac47637f59a647",
-    "index_name": "curated_set_e7f36534",
+    "hash": "c4bbb22af2bf65bfc95289bfc43ee509",
+    "index_name": "curated_set_c4bbb22a",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -244,7 +244,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "description": {
@@ -254,11 +254,9 @@
                         "type": "keyword"
                     },
                     "donors": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "files": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "lab": {
@@ -309,7 +307,7 @@
                                 "type": "keyword"
                             },
                             "title": {
-                                "copy_to": "_all",
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -325,14 +323,12 @@
                         "type": "text"
                     },
                     "references": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "revoke_detail": {
                         "type": "keyword"
                     },
                     "samples": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {
@@ -342,7 +338,6 @@
                         "type": "keyword"
                     },
                     "submitted_by": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "submitter_comment": {
