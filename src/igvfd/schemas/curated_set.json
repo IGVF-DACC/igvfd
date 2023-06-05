@@ -60,9 +60,7 @@
     },
     "fuzzy_searchable_fields": [
         "curated_set_type",
-        "files",
         "lab.title",
-        "references",
         "taxa"
     ],
     "exact_searchable_fields": [
