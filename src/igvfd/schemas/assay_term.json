@@ -40,7 +40,6 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "assay_slims",
         "term_name",
         "synonyms"
     ],
