@@ -109,8 +109,9 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "description",
-        "document_type"
+        "document_type",
+        "characterization_method",
+        "lab.title"
     ],
     "exact_searchable_fields": [
         "@type"

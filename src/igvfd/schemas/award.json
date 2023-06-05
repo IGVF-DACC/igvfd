@@ -113,8 +113,10 @@
     "fuzzy_searchable_fields": [
         "name",
         "title",
+        "component",
+        "name",
         "project",
-        "component"
+        "title"
     ],
     "exact_searchable_fields": [
         "@type"

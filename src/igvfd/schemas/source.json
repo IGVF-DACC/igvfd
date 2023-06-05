@@ -43,5 +43,8 @@
             "uniqueKey": true
         }
     },
+    "fuzzy_searchable_fields": [
+        "@type"
+    ],
     "changelog": "/profiles/changelogs/source.md"
 }

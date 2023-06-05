@@ -76,5 +76,9 @@
             "format": "uri"
         }
     },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "software"
+    ],
     "changelog": "/profiles/changelogs/software_version.md"
 }

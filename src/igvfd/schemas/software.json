@@ -71,11 +71,10 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "title",
         "name",
-        "used_by",
         "references",
-        "description"
+        "title",
+        "used_by"
     ],
     "exact_searchable_fields": [
         "@type"

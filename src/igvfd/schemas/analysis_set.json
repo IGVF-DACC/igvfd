@@ -56,10 +56,13 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "dbxrefs"
+        "assay_title",
+        "files",
+        "lab.title"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "dbxrefs"
     ],
     "changelog": "/profiles/changelogs/analysis_set.md"
 }

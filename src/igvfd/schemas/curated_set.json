@@ -59,12 +59,15 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "dbxrefs",
-        "taxa",
-        "curated_set_type"
+        "curated_set_type",
+        "files",
+        "lab.title",
+        "references",
+        "taxa"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "dbxrefs"
     ],
     "changelog": "/profiles/changelogs/curated_set.md"
 }

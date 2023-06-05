@@ -76,11 +76,11 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "dbxrefs",
         "content_type"
     ],
     "exact_searchable_fields": [
         "@type",
+        "dbxrefs",
         "file_format"
     ],
     "changelog": "/profiles/changelogs/alignment_file.md"

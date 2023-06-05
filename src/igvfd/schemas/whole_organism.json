@@ -76,11 +76,12 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "dbxrefs",
         "taxa"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "dbxrefs",
+        "nih_institutional_certification"
     ],
     "changelog": "/profiles/changelogs/whole_organism.md"
 }

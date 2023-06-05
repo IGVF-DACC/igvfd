@@ -35,5 +35,10 @@
             "type": "string"
         }
     },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "attachment.type",
+        "caption"
+    ],
     "changelog": "/profiles/changelogs/image.md"
 }

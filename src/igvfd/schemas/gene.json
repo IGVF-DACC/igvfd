@@ -209,12 +209,13 @@
     },
     "fuzzy_searchable_fields": [
         "geneid",
+        "name",
         "symbol",
-        "synonyms",
-        "dbxrefs"
+        "synonyms"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "dbxrefs"
     ],
     "changelog": "/profiles/changelogs/gene.md"
 }

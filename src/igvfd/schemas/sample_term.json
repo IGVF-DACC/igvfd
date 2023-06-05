@@ -59,7 +59,8 @@
         "synonyms"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "dbxrefs"
     ],
     "changelog": "/profiles/changelogs/sample_term.md"
 }

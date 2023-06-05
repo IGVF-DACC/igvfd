@@ -94,6 +94,9 @@
             "pattern": "^addgene:\\d{5,6}$"
         }
     },
+    "fuzzy_searchable_fields": [
+        "modality"
+    ],
     "exact_searchable_fields": [
         "@type"
     ],

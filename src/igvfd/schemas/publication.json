@@ -112,5 +112,12 @@
             }
         }
     },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "abstract",
+        "identifiers",
+        "journal",
+        "lab.title"
+    ],
     "changelog": "/profiles/changelogs/publication.md"
 }

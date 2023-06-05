@@ -82,7 +82,7 @@
     "fuzzy_searchable_fields": [
         "name",
         "gene",
-        "quantification"
+        "synonyms"
     ],
     "exact_searchable_fields": [
         "@type"
