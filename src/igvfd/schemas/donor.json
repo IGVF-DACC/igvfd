@@ -84,7 +84,7 @@
         },
         "virtual": {
             "title": "Virtual",
-            "description": "Donor is virtusal.",
+            "description": "Donor is virtual.",
             "type": "boolean",
             "default": false
         }

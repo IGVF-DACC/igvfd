@@ -118,7 +118,7 @@
         },
         "virtual": {
             "title": "Virtual",
-            "description": "Sample is virtusal.",
+            "description": "Sample is virtual.",
             "type": "boolean",
             "default": false
         }
