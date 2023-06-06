@@ -1,11 +1,16 @@
 {
 <<<<<<< dev
+<<<<<<< dev
     "hash": "b318b2fc6bd1302bc5feac2e7ed6bfa1",
     "index_name": "tissue_b318b2fc",
 =======
     "hash": "85da4d83b907acac1cb059394de47330",
     "index_name": "tissue_85da4d83",
 >>>>>>> IGVF-726 Added virtual to sample and donor.
+=======
+    "hash": "f827091e9a0da6ae408f97887c2aebc2",
+    "index_name": "tissue_f827091e",
+>>>>>>> IGVF-726 Updated mapping.
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [

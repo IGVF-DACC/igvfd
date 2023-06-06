@@ -1,11 +1,16 @@
 {
 <<<<<<< dev
+<<<<<<< dev
     "hash": "2533cf1a776f3fce2207501a57ea251d",
     "index_name": "whole_organism_2533cf1a",
 =======
     "hash": "1e854cb19f5fc7f96f566322751ea14d",
     "index_name": "whole_organism_1e854cb1",
 >>>>>>> IGVF-726 Added virtual to sample and donor.
+=======
+    "hash": "6c5fd9a668b467a61b0283584b657f6f",
+    "index_name": "whole_organism_6c5fd9a6",
+>>>>>>> IGVF-726 Updated mapping.
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
