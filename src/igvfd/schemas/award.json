@@ -111,8 +111,6 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "name",
-        "title",
         "component",
         "name",
         "project",
