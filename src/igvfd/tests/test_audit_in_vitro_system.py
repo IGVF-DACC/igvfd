@@ -16,3 +16,54 @@ def test_audit_targeted_sample_term(
         error['category'] == 'inconsistent targeted_sample_term'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_targeted_sample_term(
+    testapp,
+    in_vitro_cell_line,
+    treatment_chemical,
+    treatment_protein
+):
+    # Treatments in introduced_factors should not be of purpose "perturbation", "agonist", "antagonist", or "control".
+    testapp.patch_json(
+        treatment_chemical['@id'],
+        {
+            'purpose': 'perturbation'
+        }
+    )
+    testapp.patch_json(
+        treatment_protein['@id'],
+        {
+            'purpose': 'control'
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'introduced_factors': [treatment_chemical['@id'], treatment_protein['@id']],
+            'time_post_factors_introduction': 5,
+            'time_post_factors_introduction_units': 'minute'
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@index-data')
+    assert any(
+        error['category'] == 'inconsistent introduced_factors treatment purpose'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        treatment_chemical['@id'],
+        {
+            'purpose': 'differentiation'
+        }
+    )
+    testapp.patch_json(
+        treatment_protein['@id'],
+        {
+            'purpose': 'de-differentiation'
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@index-data')
+    assert all(
+        error['category'] != 'inconsistent introduced_factors treatment purpose'
+        for error in res.json['audit'].get('ERROR', [])
+    )
