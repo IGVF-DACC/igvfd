@@ -57,12 +57,12 @@
     },
     "fuzzy_searchable_fields": [
         "assay_title",
-        "files",
         "lab.title"
     ],
     "exact_searchable_fields": [
         "@type",
-        "dbxrefs"
+        "dbxrefs",
+        "files"
     ],
     "changelog": "/profiles/changelogs/analysis_set.md"
 }
