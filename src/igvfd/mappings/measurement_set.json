@@ -1,6 +1,6 @@
 {
-    "hash": "c20e2bdf23910f2275a1c8183bda585d",
-    "index_name": "measurement_set_c20e2bdf",
+    "hash": "dc3de0f3f4a5f0928704d48c9c144715",
+    "index_name": "measurement_set_dc3de0f3",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -455,7 +455,6 @@
                         "type": "object"
                     },
                     "files": {
-                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "lab": {
