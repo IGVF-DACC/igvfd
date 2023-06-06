@@ -65,7 +65,9 @@
                 "p300",
                 "VPH",
                 "VP64",
-                "VPR"
+                "VPR",
+                "2xVP64",
+                "3xVP64"
             ]
         },
         "modality": {
