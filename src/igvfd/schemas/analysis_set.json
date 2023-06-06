@@ -61,8 +61,7 @@
     ],
     "exact_searchable_fields": [
         "@type",
-        "dbxrefs",
-        "files"
+        "dbxrefs"
     ],
     "changelog": "/profiles/changelogs/analysis_set.md"
 }

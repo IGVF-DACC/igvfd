@@ -129,8 +129,7 @@
     ],
     "exact_searchable_fields": [
         "@type",
-        "dbxrefs",
-        "files"
+        "dbxrefs"
     ],
     "changelog": "/profiles/changelogs/measurement_set.md"
 }
