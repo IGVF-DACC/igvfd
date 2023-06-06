@@ -32,7 +32,7 @@ def test_audit_targeted_sample_term(
         }
     )
     testapp.patch_json(
-        treatment_chemical['@id'],
+        treatment_protein['@id'],
         {
             'purpose': 'control'
         }
@@ -57,7 +57,7 @@ def test_audit_targeted_sample_term(
         }
     )
     testapp.patch_json(
-        treatment_chemical['@id'],
+        treatment_protein['@id'],
         {
             'purpose': 'de-differentiation'
         }
