@@ -10,6 +10,27 @@ def test_patch_cas_species(modification, testapp):
     assert res.status_code == 422
 
 
-def test_read_cas_species(modification_v2, testapp):
-    res = testapp.get(modification_v2['@id'])
-    assert res.json['cas_species'] == 'Streptococcus pyogenes (Sp)'
+def test_read_cas_species(modification, testapp):
+    res = testapp.get(modification['@id'])
+    assert res.json['cas_species'] == 'Streptococcus pyogenes (Sp)'''
+
+
+def test_cas_species_requirement(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'cas': 'dCas9',
+        'cas_species': 'Streptococcus pyogenes (Sp)',
+        'modality': 'interference'
+    }
+    res = testapp.post_json('/modification', item)
+    assert res.status_code == 201
+
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'cas': 'dCas9',
+        'modality': 'interference'
+    }
+    res = testapp.post_json('/modification', item, expect_errors=True)
+    assert res.status_code == 422
