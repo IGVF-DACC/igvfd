@@ -4,7 +4,7 @@
 
 **Q: Why do we define `fuzzy_searchable_fields` and `exact_searchable_fields` in an item's schema?**
 
-A: Opensearch takes the document we give it and copies some values into a field called `_fuzzy` and some values into a field called `_exact`. When you search with a `searchTerm=` or `query=` parameter, the value is compared to values in the `_fuzzy` or `_exact` fields to find documents that contain your query. The main difference between these fields is that Opensearch tokenizes the values copied into the `_fuzzy` field with `ngram` and `English stemming` analyzers, while the `_exact` field stores the exact (lowercase) value:
+A: Opensearch takes the document we give it and copies some values into a field called `_fuzzy` and some values into a field called `_exact`. When you search with a `searchTerm=` or `query=` parameter, the value is compared to values in the `_fuzzy` or `_exact` fields to find documents that contain your query. The main difference between these fields is that Opensearch tokenizes the values copied into the `_fuzzy` field with `ngram` and `English stemming` analyzers, while the `_exact` field stores the exact (`lowercase`) value:
 
 * `_fuzzy`: a value like `User` will get transformed and stored into something like `[u, us, use, user]`
 * `_exact`: a value like `User` will get transformed and stored as `[user]`
