@@ -1,6 +1,6 @@
 {
-    "hash": "1998bd026e635e7a43ef2236e628a722",
-    "index_name": "analysis_set_1998bd02",
+    "hash": "699ff85ab1cb7711c548739fc11be309",
+    "index_name": "analysis_set_699ff85a",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,13 +55,7 @@
             }
         ],
         "properties": {
-            "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
-                "store": false,
-                "type": "text"
-            },
-            "_fuzzy": {
+            "_all": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -150,7 +144,7 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "accession": {
@@ -163,7 +157,6 @@
                         "type": "keyword"
                     },
                     "assay_title": {
-                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "award": {
@@ -244,7 +237,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {
@@ -434,7 +427,6 @@
                                 "type": "keyword"
                             },
                             "title": {
-                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -548,7 +540,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_exact",
+                "copy_to": "_all",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -573,7 +565,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_exact",
+                "copy_to": "_all",
                 "type": "keyword"
             }
         }

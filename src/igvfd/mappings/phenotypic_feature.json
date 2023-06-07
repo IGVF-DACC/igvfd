@@ -1,6 +1,6 @@
 {
-    "hash": "35b6802488b20024d460ac3f2e6b571b",
-    "index_name": "phenotypic_feature_35b68024",
+    "hash": "31a638674bbdfb6b5d0c1155999cdeb1",
+    "index_name": "phenotypic_feature_31a63867",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,13 +55,7 @@
             }
         ],
         "properties": {
-            "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
-                "store": false,
-                "type": "text"
-            },
-            "_fuzzy": {
+            "_all": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -150,7 +144,7 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -290,7 +284,7 @@
                                 "type": "keyword"
                             },
                             "term_name": {
-                                "copy_to": "_fuzzy",
+                                "copy_to": "_all",
                                 "type": "keyword"
                             },
                             "uuid": {
@@ -383,7 +377,72 @@
                         "type": "keyword"
                     },
                     "submitted_by": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "email": {
+                                "type": "keyword"
+                            },
+                            "first_name": {
+                                "type": "keyword"
+                            },
+                            "groups": {
+                                "type": "keyword"
+                            },
+                            "job_title": {
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "last_name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submits_for": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "title": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "viewing_groups": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "submitter_comment": {
                         "type": "keyword"
@@ -404,7 +463,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_exact",
+                "copy_to": "_all",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -429,7 +488,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_exact",
+                "copy_to": "_all",
                 "type": "keyword"
             }
         }

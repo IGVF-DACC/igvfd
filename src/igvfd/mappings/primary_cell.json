@@ -1,6 +1,6 @@
 {
-    "hash": "c1754babbba086c95e7c29d8a6d844bd",
-    "index_name": "primary_cell_c1754bab",
+    "hash": "1d702b686d5705ba64f81c05908cb067",
+    "index_name": "primary_cell_1d702b68",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,13 +55,7 @@
             }
         ],
         "properties": {
-            "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
-                "store": false,
-                "type": "text"
-            },
-            "_fuzzy": {
+            "_all": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -150,7 +144,7 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "accession": {
@@ -335,7 +329,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {
@@ -499,7 +493,6 @@
                         "type": "keyword"
                     },
                     "nih_institutional_certification": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "notes": {
@@ -613,7 +606,72 @@
                         "type": "keyword"
                     },
                     "submitted_by": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "email": {
+                                "type": "keyword"
+                            },
+                            "first_name": {
+                                "type": "keyword"
+                            },
+                            "groups": {
+                                "type": "keyword"
+                            },
+                            "job_title": {
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "last_name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submits_for": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "title": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "viewing_groups": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "submitter_comment": {
                         "type": "keyword"
@@ -622,7 +680,7 @@
                         "type": "keyword"
                     },
                     "taxa": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "treatments": {
@@ -775,7 +833,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_exact",
+                "copy_to": "_all",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -800,7 +858,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_exact",
+                "copy_to": "_all",
                 "type": "keyword"
             }
         }

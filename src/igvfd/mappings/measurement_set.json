@@ -1,6 +1,6 @@
 {
-    "hash": "dc3de0f3f4a5f0928704d48c9c144715",
-    "index_name": "measurement_set_dc3de0f3",
+    "hash": "a380ed4b7fe23946360fd442fa6b0258",
+    "index_name": "measurement_set_a380ed4b",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,13 +55,7 @@
             }
         ],
         "properties": {
-            "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
-                "store": false,
-                "type": "text"
-            },
-            "_fuzzy": {
+            "_all": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -150,7 +144,7 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "accession": {
@@ -228,7 +222,7 @@
                                 "type": "keyword"
                             },
                             "term_name": {
-                                "copy_to": "_fuzzy",
+                                "copy_to": "_all",
                                 "type": "keyword"
                             },
                             "uuid": {
@@ -318,7 +312,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {
@@ -505,7 +499,6 @@
                                 "type": "keyword"
                             },
                             "title": {
-                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "url": {
@@ -542,10 +535,10 @@
                         "type": "text"
                     },
                     "preferred_assay_title": {
-                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "protocol": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "related_multiome_datasets": {
@@ -653,7 +646,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_exact",
+                "copy_to": "_all",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -678,7 +671,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_exact",
+                "copy_to": "_all",
                 "type": "keyword"
             }
         }
