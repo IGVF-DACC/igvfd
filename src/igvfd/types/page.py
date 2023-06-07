@@ -22,6 +22,7 @@ from pyramid.traversal import (
 )
 from pyramid.view import view_config
 import dateutil.parser
+from snovault.util import Path
 
 
 @collection(
@@ -36,6 +37,9 @@ class Page(SharedItem):
     item_type = 'page'
     schema = load_schema('igvfd:schemas/page.json')
     name_key = 'name'
+    embedded_with_frame = [
+        Path('submitted_by', include=['@id', 'title']),
+    ]
 
     def unique_keys(self, properties):
         keys = super(Page, self).unique_keys(properties)

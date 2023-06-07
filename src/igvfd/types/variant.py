@@ -7,6 +7,7 @@ from snovault import (
 from .base import (
     Item
 )
+from snovault.util import Path
 
 
 @abstract_collection(
@@ -21,6 +22,9 @@ class Variant(Item):
     item_type = 'variant'
     base_types = ['Variant'] + Item.base_types
     schema = load_schema('igvfd:schemas/variant.json')
+    embedded_with_frame = [
+        Path('submitted_by', include=['@id', 'title']),
+    ]
 
 
 @collection(
@@ -34,6 +38,7 @@ class Variant(Item):
 class HumanGenomicVariant(Variant):
     item_type = 'human_genomic_variant'
     schema = load_schema('igvfd:schemas/human_genomic_variant.json')
+    embedded_with_frame = Variant.embedded_with_frame
 
     def unique_keys(self, properties):
         keys = super(HumanGenomicVariant, self).unique_keys(properties)

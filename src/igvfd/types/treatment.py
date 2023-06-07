@@ -21,6 +21,7 @@ class Treatment(Item):
     schema = load_schema('igvfd:schemas/treatment.json')
     embedded_with_frame = [
         Path('source', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
     ]
 
     @calculated_property(

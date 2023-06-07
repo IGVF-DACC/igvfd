@@ -7,6 +7,7 @@ from .base import (
     SharedItem,
     paths_filtered_by_status,
 )
+from snovault.util import Path
 
 
 @collection(
@@ -21,6 +22,9 @@ class Gene(SharedItem):
     item_type = 'gene'
     schema = load_schema('igvfd:schemas/gene.json')
     name_key = 'geneid'
+    embedded_with_frame = [
+        Path('submitted_by', include=['@id', 'title']),
+    ]
 
     @calculated_property(schema={
         'title': 'Title',

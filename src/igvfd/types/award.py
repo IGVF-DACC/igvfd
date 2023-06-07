@@ -9,6 +9,7 @@ from .base import (
     ALLOW_CURRENT,
     DELETED,
 )
+from snovault.util import Path
 
 
 @collection(
@@ -29,3 +30,4 @@ class Award(Item):
         'replaced': DELETED,
         'disabled': ALLOW_CURRENT
     }
+    embedded_with_frame = [Path('submitted_by', include=['@id', 'title']), ]

@@ -26,6 +26,7 @@ class Lab(Item):
     name_key = 'name'
     embedded_with_frame = [
         Path('awards', include=['@id', 'component']),
+        Path('submitted_by', include=['@id', 'title']),
     ]
 
     @calculated_property(
