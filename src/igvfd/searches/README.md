@@ -2,7 +2,7 @@
 
 ### Fuzzy and exact search values:
 
-**Q: Why do we define 'fuzzy_searchable_fields' and 'exact_searchable_fields' in an item's schema?**
+**Q: Why do we define `fuzzy_searchable_fields` and `exact_searchable_fields` in an item's schema?**
 
 A: Opensearch takes the document we give it and copies some values into a field called `_fuzzy` and some values into a field called `_exact`. When you search with a `searchTerm=` or `query=` parameter, the value is compared to values in the `_fuzzy` or `_exact` fields to find documents that contain your query. The main difference between these fields is that Opensearch tokenizes the values copied into the `_fuzzy` field with `ngram` and `English stemming` analyzers, while the `_exact` field stores the exact (lowercase) value:
 
@@ -17,7 +17,7 @@ A: Consider if partial matches of the value would be useful. Adding values to '_
 
 **Q: Can I still search for the exact value if it's not included in `exact_searchable_fields`?**
 
-A: Yes, you can always search for exact values if you know the field that you want to use, even on fields that aren't included in either 'fuzzy_searchable_fields' or 'exact_searchable_fields':
+A: Yes, you can always search for exact values if you know the field that you want to use, even on fields that aren't included in either `fuzzy_searchable_fields` or `exact_searchable_fields`:
 
 * `?uuid=1e75d989-a438-4d77-a451-8a297fd3636e`
 * `?status=released`
