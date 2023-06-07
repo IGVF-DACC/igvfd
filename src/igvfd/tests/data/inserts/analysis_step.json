@@ -1,0 +1,24 @@
+[
+    {
+        "uuid": "abafa166-7a25-a1eb-11ed-0242ac125265",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:analysis_step_01"
+        ],
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "title": "Example Analysis Step",
+        "step_label": "example-analysis-step",
+        "analysis_step_types": [
+            "alignment"
+        ],
+        "input_content_types": [
+            "reads"
+        ],
+        "output_content_types": [
+            "alignments"
+        ],
+        "major_version": 1
+    }
+]
