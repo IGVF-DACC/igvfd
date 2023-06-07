@@ -27,3 +27,24 @@ def test_audit_sample_sorted_fraction_parent_child_check(
     assert 'inconsistent sorted fraction metadata' not in (
         error['category'] for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_sample_virtual_donor_check(
+    testapp,
+    virtual_tissue_with_virtual_donor,
+    nonvirtual_tissue_with_virtual_donor
+):
+    # A non-virtual sample should not be linked to a virtual donor.
+    # Testing both virtual sample with virtual donor and non-virtual sample with virtual donor.
+    res = testapp.get(virtual_tissue_with_virtual_donor['@id'] + '@@index-data')
+    print('RES1: ', res)
+    assert 'non-virtual sample linked to virtual donor' not in (
+        error['category'] for error in res.json['audit'].get('ERROR', [])
+    )
+
+    res = testapp.get(nonvirtual_tissue_with_virtual_donor['@id'] + '@@index-data')
+    print('RES2: ', res)
+    assert any(
+        error['category'] == 'non-virtual sample linked to virtual donor'
+        for error in res.json['audit'].get('ERROR', [])
+    )
