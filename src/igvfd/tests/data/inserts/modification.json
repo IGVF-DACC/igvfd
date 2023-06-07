@@ -10,7 +10,8 @@
         "fused_domain": "KRAB",
         "modality": "interference",
         "status": "in progress",
-        "product_id": "addgene:000567"
+        "product_id": "addgene:000567",
+        "cas_species": "Streptococcus pyogenes (Sp)"
     },
     {
         "uuid": "aa9dd059-4bc8-2857-bc2b-b8cb0294f837",
@@ -24,7 +25,8 @@
         "modality": "localizing",
         "tagged_protein": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
         "status": "in progress",
-        "product_id": "addgene:111555"
+        "product_id": "addgene:111555",
+        "cas_species": "Streptococcus pyogenes (Sp)"
     },
     {
         "uuid": "bae92ec6-c05e-4360-ac2a-1934490e83e5",
@@ -37,6 +39,7 @@
         "fused_domain": "VPH",
         "modality": "activation",
         "status": "in progress",
-        "product_id": "addgene:158091"
+        "product_id": "addgene:158091",
+        "cas_species": "Streptococcus pyogenes (Sp)"
     }
 ]
