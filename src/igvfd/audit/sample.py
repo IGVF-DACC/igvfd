@@ -35,3 +35,23 @@ def audit_sample_sorted_fraction_parent_child_check(value, system):
         )
         if prop_errors != '':
             yield AuditFailure('inconsistent sorted fraction metadata', detail, level='ERROR')
+
+
+@audit_checker('Sample', frame='object?skip_calculated=true')
+def audit_sample_virtual_donor_check(value, system):
+    '''Non-virtual samples should not be linked to virtual donors.'''
+    if 'virtual' in value:  # should find tissues with virtual = true and false
+        # first check if tissue is virtual
+        if value['virtual'] == 'true':  # if tissue is virtual
+            value_id = system.get('path')
+            if 'donor' in value:
+                donor_list = value['donor']
+                for d in donor_list:
+                    print(d)
+                    #donor_object = system.get('request').embed(d, '@@object?skip_calculated=true')
+
+                    '''detail = (
+                        f'Non-virtual sample {audit_link(path_to_text(value_id), value_id)} '
+                        f'has virtual donor {} '
+                        )
+                    yield AuditFailure('non-virtual sample linked to virtual donor', detail, level='ERROR')'''
