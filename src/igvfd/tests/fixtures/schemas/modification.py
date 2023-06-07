@@ -11,3 +11,13 @@ def modification(testapp, lab, award):
         'cas_species': 'Streptococcus pyogenes (Sp)'
     }
     return testapp.post_json('/modification', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def modification_missing_cas_sp(modification):
+    item = modification.copy()
+    item.pop('cas_species', None)
+    item.update({
+        'schema_version': '2',
+    })
+    return item
