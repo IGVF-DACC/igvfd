@@ -40,4 +40,4 @@ A: You can mix and match search configs explicitly by specifying one or more sea
 
 **Q: What are DEFAULT_ITEM_TYPES?**
 
-A: Usually a search will have an explicit `type` defined in the query string (e.g. '?type=Award`). (`DEFAULT_ITEM_TYPES`)[https://github.com/IGVF-DACC/igvfd/blob/b3714678fb6695a97a544eecb0afe403cdf149c9/src/igvfd/searches/defaults.py#L22-L60] is a list of item types (and corresponding Opensearch indices) that the system will search over when none are specified in the query string. These are particularly useful in queries where a `searchTerm` or `query` is specified without any types.
+A: Usually a search will have an explicit `type` defined in the query string (e.g. '?type=Award`). [`DEFAULT_ITEM_TYPES`](https://github.com/IGVF-DACC/igvfd/blob/b3714678fb6695a97a544eecb0afe403cdf149c9/src/igvfd/searches/defaults.py#L22-L60) is a list of item types (and corresponding Opensearch indices) that the system will search over when none are specified in the query string. These are particularly useful in queries where a `searchTerm` or `query` is specified without any types.
