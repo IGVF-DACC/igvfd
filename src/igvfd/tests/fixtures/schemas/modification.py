@@ -7,17 +7,7 @@ def modification(testapp, lab, award):
         'award': award['@id'],
         'lab': lab['@id'],
         'cas': 'dCas9',
-        'modality': 'interference'
-    }
-    return testapp.post_json('/modification', item, status=201).json['@graph'][0]
-
-
-@pytest.fixture
-def modification_v2(testapp, lab, award):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'cas': 'dCas9',
-        'modality': 'interference'
+        'modality': 'interference',
+        'cas_species': 'Streptococcus pyogenes (Sp)'
     }
     return testapp.post_json('/modification', item, status=201).json['@graph'][0]
