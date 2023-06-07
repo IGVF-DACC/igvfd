@@ -13,7 +13,7 @@ A: Opensearch takes the document we give it and copies some values into a field 
 
 **Q: Which fields should be fuzzy and which fields should be exact?**
 
-A: Consider if partial matches of the value would be useful. Adding values to '_fuzzy' can create a lot of nonspecific tokens which could make search results less relevant. Things like UUID, @id, accessions, and unique identifiers probably make sense in our system. For example you probably either have a full UUID or nothing, so the overhead of fuzzy matching wouldn't be especially useful.
+A: Consider if partial matches of the value would be useful. Adding values to `_fuzzy` can create a lot of nonspecific tokens which could make search results less relevant. Things like UUID, @id, accessions, and unique identifiers probably make sense in our system. For example you probably either have a full UUID or nothing, so the overhead of fuzzy matching wouldn't be especially useful.
 
 **Q: Can I still search for the exact value if it's not included in `exact_searchable_fields`?**
 
