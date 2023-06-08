@@ -1,6 +1,6 @@
 {
-    "hash": "5af543db7813ae0f244fae7c4f2dda04",
-    "index_name": "construct_library_5af543db",
+    "hash": "d29c820030826fb5d94e06718b3e5c59",
+    "index_name": "construct_library_d29c8200",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_all",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,7 +55,13 @@
             }
         ],
         "properties": {
-            "_all": {
+            "_exact": {
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "_fuzzy": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -141,10 +147,11 @@
             "embedded": {
                 "properties": {
                     "@id": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "accession": {
@@ -417,7 +424,7 @@
                         "type": "keyword"
                     },
                     "targeted_genes": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "targeted_loci": {
@@ -462,7 +469,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -487,7 +494,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             }
         }

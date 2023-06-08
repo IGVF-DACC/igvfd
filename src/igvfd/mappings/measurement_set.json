@@ -1,6 +1,6 @@
 {
-    "hash": "8c35d630188562cd6b8d87372d0f5ef2",
-    "index_name": "measurement_set_8c35d630",
+    "hash": "b8bd240063b806f80f52e477afc13a76",
+    "index_name": "measurement_set_b8bd2400",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_all",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,7 +55,13 @@
             }
         ],
         "properties": {
-            "_all": {
+            "_exact": {
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "_fuzzy": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -141,10 +147,11 @@
             "embedded": {
                 "properties": {
                     "@id": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "accession": {
@@ -222,7 +229,7 @@
                                 "type": "keyword"
                             },
                             "term_name": {
-                                "copy_to": "_all",
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {
@@ -312,7 +319,7 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "description": {
@@ -538,7 +545,7 @@
                         "type": "keyword"
                     },
                     "protocol": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "related_multiome_datasets": {
@@ -581,7 +588,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -606,7 +613,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             }
         }

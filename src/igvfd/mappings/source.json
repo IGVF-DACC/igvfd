@@ -1,6 +1,6 @@
 {
-    "hash": "bd1bb6a09ca822cc37d77f6a61dfe6a0",
-    "index_name": "source_bd1bb6a0",
+    "hash": "1fda82b06cf56405192f2364030268fa",
+    "index_name": "source_1fda82b0",
     "item_type": "source",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_all",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,7 +55,13 @@
             }
         ],
         "properties": {
-            "_all": {
+            "_exact": {
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "_fuzzy": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -141,7 +147,7 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_all",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "@type": {
@@ -178,7 +184,7 @@
                         "type": "keyword"
                     },
                     "title": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "url": {
@@ -197,7 +203,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -222,7 +228,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             }
         }
