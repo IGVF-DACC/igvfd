@@ -84,7 +84,7 @@
             "type": "array",
             "uniqueItems": true,
             "items": {
-                "title": "Input content type",
+                "title": "Input Content Type",
                 "description": "A content type used as input for the analysis step.",
                 "$merge": "#/$defs/content_types"
             }
@@ -95,7 +95,7 @@
             "type": "array",
             "uniqueItems": true,
             "items": {
-                "title": "Output content type",
+                "title": "Output Content Type",
                 "description": "A content type produced as output by the analysis step.",
                 "$merge": "#/$defs/content_types"
             }
