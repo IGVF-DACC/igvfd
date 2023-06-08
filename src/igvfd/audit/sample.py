@@ -48,11 +48,11 @@ def audit_sample_virtual_donor_check(value, system):
         for d in donor_ids:
             donor_object = system.get('request').embed(d + '@@object?skip_calculated=true')
             donor_id = donor_object.get('@id')
-            donor_virtual = donor_object.get('virtual')
+            donor_virtual = donor_object.get('virtual', False)
             if (sample_virtual == 'True') and (donor_virtual == 'True'):  # both virtual = okay
                 print('donor and sample both virtual')  # pass
 
-            if (sample_virtual == 'True') and (donor_virtual == 'False'):  # if virtual sample is linked to a non-virtual donor = ?
+            if (sample_virtual == 'True') and (donor_virtual == 'False'):  # if virtual sample is linked to a non-virtual donor = okay
                 print('Sample is virtual and donor is real...')
 
             if (sample_virtual == 'False') and (donor_virtual == 'True'):  # if non-virtual sample is linked to virtual donor = not okay
@@ -62,6 +62,6 @@ def audit_sample_virtual_donor_check(value, system):
             if (sample_virtual == 'False') and (donor_virtual == 'False'):  # both real = okay
                 print('Sample and donor are both real')  # pass
 
-        if len(donors_error) != 0:
+        if len(donors_error) > 0:
             detail = f'Non-virtual sample {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual donor(s) {audit_link(path_to_text(donors_error),donors_error)}'
             yield AuditFailure('non-virtual sample linked to virtual donor', detail, level='ERROR')
