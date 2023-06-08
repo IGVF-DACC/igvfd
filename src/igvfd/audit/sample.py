@@ -63,5 +63,8 @@ def audit_sample_virtual_donor_check(value, system):
                 print('Sample and donor are both real')  # pass
 
         if len(donors_error) > 0:
-            detail = f'Non-virtual sample {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual donor(s) {audit_link(path_to_text(donors_error),donors_error)}'
+            donors_error_str = ''
+            donors_error_str.append(d for d in donors_error)
+            print(donors_error_str)
+            detail = f'Non-virtual sample {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual donor(s) {audit_link(path_to_text(donors_error_str),donors_error_str)}'
             yield AuditFailure('non-virtual sample linked to virtual donor', detail, level='ERROR')
