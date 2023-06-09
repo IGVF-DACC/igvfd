@@ -69,8 +69,11 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "dbxrefs",
-        "@type"
+        "sample_material"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs"
     ],
     "changelog": "/profiles/changelogs/technical_sample.md"
 }

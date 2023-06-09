@@ -187,9 +187,13 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "dbxrefs",
-        "@type",
+        "classification",
         "taxa"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs",
+        "nih_institutional_certification"
     ],
     "changelog": "/profiles/changelogs/in_vitro_system.md"
 }

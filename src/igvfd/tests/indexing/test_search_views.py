@@ -123,7 +123,7 @@ def test_search_views_search_view_values_invalid_advanced_query(workbook, testap
         '/search/?advancedQuery=[',
         status=400
     )
-    assert r.json['description'] == 'Invalid query: ([)'
+    assert r.json['description'] == 'Invalid query: ['
 
 
 def test_search_views_search_view_embedded_frame(workbook, testapp):

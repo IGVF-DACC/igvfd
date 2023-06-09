@@ -54,10 +54,13 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "@type",
-        "term_id",
         "term_name",
         "synonyms"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs",
+        "term_id"
     ],
     "changelog": "/profiles/changelogs/sample_term.md"
 }

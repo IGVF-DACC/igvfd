@@ -131,5 +131,12 @@
             }
         }
     },
+    "fuzzy_searchable_fields": [
+        "rsid",
+        "refseq_id"
+    ],
+    "exact_searchable_fields": [
+        "@type"
+    ],
     "changelog": "/profiles/changelogs/human_genomic_variant.md"
 }

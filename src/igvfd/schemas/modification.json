@@ -95,6 +95,9 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "modality"
+    ],
+    "exact_searchable_fields": [
         "@type"
     ],
     "changelog": "/profiles/changelogs/modification.md"

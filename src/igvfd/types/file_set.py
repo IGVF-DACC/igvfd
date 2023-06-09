@@ -57,6 +57,7 @@ class AnalysisSet(FileSet):
         Path('award', include=['@id', 'component']),
         Path('donors', include=['@id', 'taxa']),
         Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title'])
     ]
 
     @calculated_property(
@@ -116,6 +117,7 @@ class MeasurementSet(FileSet):
         Path('award', include=['@id', 'component']),
         Path('donors', include=['@id', 'taxa']),
         Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title'])
     ]
     audit_inherit = [
         'related_multiome_datasets'

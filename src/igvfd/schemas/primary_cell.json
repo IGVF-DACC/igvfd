@@ -82,9 +82,12 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "dbxrefs",
-        "@type",
         "taxa"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs",
+        "nih_institutional_certification"
     ],
     "changelog": "/profiles/changelogs/primary_cell.md"
 }

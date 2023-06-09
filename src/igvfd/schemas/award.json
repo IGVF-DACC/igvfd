@@ -111,11 +111,13 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "component",
         "name",
-        "@type",
-        "title",
         "project",
-        "component"
+        "title"
+    ],
+    "exact_searchable_fields": [
+        "@type"
     ],
     "changelog": "/profiles/changelogs/award.md"
 }

@@ -221,9 +221,11 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "@type",
         "treatment_term_name",
         "treatment_type"
+    ],
+    "exact_searchable_fields": [
+        "@type"
     ],
     "changelog": "/profiles/changelogs/treatment.md"
 }
