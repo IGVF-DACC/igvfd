@@ -1,6 +1,6 @@
 {
-    "hash": "c9fbf6c262003c0446e26dc0c1891eb0",
-    "index_name": "modification_c9fbf6c2",
+    "hash": "4270739f0a924f211a61107f100e64ba",
+    "index_name": "modification_4270739f",
     "item_type": "modification",
     "mapping": {
         "dynamic_templates": [
@@ -228,6 +228,9 @@
                         "type": "object"
                     },
                     "cas": {
+                        "type": "keyword"
+                    },
+                    "cas_species": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {
