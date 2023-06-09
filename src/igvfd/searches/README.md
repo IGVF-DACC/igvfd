@@ -24,7 +24,7 @@ A: Yes, you can always search for exact values if you know the field that you wa
 
 **Q: Why are certain terms, like `UUID`, searchable by default?**
 
-A: Certain high-level document values, such as UUIDs and unique keys, are copied by default into the `_exact` field in Opensearch. You can look at the mapping for a type to see if a specific field is copied into `_exact` or `_fuzzy` fields.
+A: Certain high-level document values, such as UUIDs and unique keys, are copied by default into the `_exact` field in Opensearch. You can look at the [mapping](https://github.com/IGVF-DACC/igvfd/tree/dev/src/igvfd/mappings) for a type to see if a specific field is copied into [`_exact`](https://github.com/IGVF-DACC/igvfd/blob/b6f65dfcec7b2104de0b37dbea0d8975b3c5ab08/src/igvfd/mappings/award.json#L255) or [`_fuzzy`](https://github.com/IGVF-DACC/igvfd/blob/b6f65dfcec7b2104de0b37dbea0d8975b3c5ab08/src/igvfd/mappings/award.json#L176) fields.
 
 ### Search configs:
 
