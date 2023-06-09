@@ -1,6 +1,6 @@
 {
-    "hash": "c5f958f2b0553f80b479ae04103ce2c7",
-    "index_name": "biomarker_c5f958f2",
+    "hash": "6f50eca7be347935f112a18a2fd6563a",
+    "index_name": "biomarker_6f50eca7",
     "item_type": "biomarker",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -304,7 +303,6 @@
                         "type": "text"
                     },
                     "quantification": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {
@@ -388,6 +386,7 @@
                         "type": "keyword"
                     },
                     "synonyms": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "uuid": {

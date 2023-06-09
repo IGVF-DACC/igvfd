@@ -1,6 +1,6 @@
 {
-    "hash": "9c328333a0e42845bcecb9f5ddc87292",
-    "index_name": "reference_file_9c328333",
+    "hash": "1cd7ac2444c910a61abb6d0629d1eada",
+    "index_name": "reference_file_1cd7ac24",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "accession": {
@@ -244,7 +243,6 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "derived_from": {
@@ -257,7 +255,6 @@
                         "type": "keyword"
                     },
                     "file_format": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "file_format_specifications": {

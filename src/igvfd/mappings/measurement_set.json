@@ -1,6 +1,6 @@
 {
-    "hash": "a380ed4b7fe23946360fd442fa6b0258",
-    "index_name": "measurement_set_a380ed4b",
+    "hash": "c23373e1050d8d723cae4918e32fdffc",
+    "index_name": "measurement_set_c23373e1",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "accession": {
@@ -312,7 +311,6 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {
@@ -499,6 +497,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_all",
                                 "type": "keyword"
                             },
                             "url": {
@@ -535,10 +534,10 @@
                         "type": "text"
                     },
                     "preferred_assay_title": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "protocol": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "related_multiome_datasets": {

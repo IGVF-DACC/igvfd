@@ -1,6 +1,6 @@
 {
-    "hash": "ebb0e1b1151c40c2662d83cf89bdc0d2",
-    "index_name": "gene_ebb0e1b1",
+    "hash": "a53ed98991e41878874be6ae929aaaeb",
+    "index_name": "gene_a53ed989",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -157,7 +156,6 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {
@@ -200,6 +198,7 @@
                         "type": "object"
                     },
                     "name": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "notes": {

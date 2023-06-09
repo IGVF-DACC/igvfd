@@ -1,6 +1,6 @@
 {
-    "hash": "bf0c414aa798f0b6c7efbd4c1fdfa191",
-    "index_name": "treatment_bf0c414a",
+    "hash": "bbc8a66be86c7a635ee8300f10cc199d",
+    "index_name": "treatment_bbc8a66b",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {

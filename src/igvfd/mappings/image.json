@@ -1,6 +1,6 @@
 {
-    "hash": "2f12ba860026c5f0e84600a16825483f",
-    "index_name": "image_2f12ba86",
+    "hash": "92dae51da9eba2bcaa347d33133f86f4",
+    "index_name": "image_92dae51d",
     "item_type": "image",
     "mapping": {
         "dynamic_templates": [
@@ -141,7 +141,6 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "@type": {
@@ -180,6 +179,7 @@
                                 "type": "long"
                             },
                             "type": {
+                                "copy_to": "_all",
                                 "type": "keyword"
                             },
                             "width": {
@@ -195,6 +195,7 @@
                         "type": "object"
                     },
                     "caption": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "creation_timestamp": {

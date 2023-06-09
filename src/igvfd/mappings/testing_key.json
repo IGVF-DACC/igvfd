@@ -1,6 +1,6 @@
 {
-    "hash": "fdf95988b2e9e48c89f130226af1eba5",
-    "index_name": "testing_key_fdf95988",
+    "hash": "038e9593764566db8c9a9a925fb0f9f6",
+    "index_name": "testing_key_038e9593",
     "item_type": "testing_key",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,13 +55,7 @@
             }
         ],
         "properties": {
-            "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
-                "store": false,
-                "type": "text"
-            },
-            "_fuzzy": {
+            "_all": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -147,7 +141,7 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_exact",
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "@type": {
@@ -169,7 +163,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_exact",
+                "copy_to": "_all",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -194,7 +188,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_exact",
+                "copy_to": "_all",
                 "type": "keyword"
             }
         }

@@ -1,6 +1,6 @@
 {
-    "hash": "2223dfd6fc367517cf6490b7c574e894",
-    "index_name": "in_vitro_system_2223dfd6",
+    "hash": "4c6164e8be3a5d682f0cba5f2f42f3bf",
+    "index_name": "in_vitro_system_4c6164e8",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "accession": {
@@ -320,6 +319,7 @@
                         "type": "keyword"
                     },
                     "classification": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "collections": {
@@ -332,7 +332,6 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {

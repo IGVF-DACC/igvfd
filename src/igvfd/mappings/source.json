@@ -1,6 +1,6 @@
 {
-    "hash": "94ca71c17aceacce7cf744bbef75dc5e",
-    "index_name": "source_94ca71c1",
+    "hash": "e0fceac28b6210339dc415bbcfd2632a",
+    "index_name": "source_e0fceac2",
     "item_type": "source",
     "mapping": {
         "dynamic_templates": [
@@ -141,7 +141,6 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "@type": {

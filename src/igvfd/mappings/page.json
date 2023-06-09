@@ -1,6 +1,6 @@
 {
-    "hash": "0ec1d668eb84004ffc784f59def57d14",
-    "index_name": "page_0ec1d668",
+    "hash": "8e208c97fd8baa4ca3d2bb8dc3cd7a9e",
+    "index_name": "page_8e208c97",
     "item_type": "page",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {

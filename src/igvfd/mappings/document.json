@@ -1,6 +1,6 @@
 {
-    "hash": "18e6b9c6dc731684fafd0b771bbd73d9",
-    "index_name": "document_18e6b9c6",
+    "hash": "e2236b15f550ddb1bc20a5687065cfcf",
+    "index_name": "document_e2236b15",
     "item_type": "document",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -266,13 +265,13 @@
                         "type": "object"
                     },
                     "characterization_method": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "creation_timestamp": {
                         "type": "keyword"
                     },
                     "description": {
-                        "copy_to": "_all",
                         "type": "text"
                     },
                     "document_type": {
@@ -327,6 +326,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_all",
                                 "type": "keyword"
                             },
                             "url": {

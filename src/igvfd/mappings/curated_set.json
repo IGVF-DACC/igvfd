@@ -1,6 +1,6 @@
 {
-    "hash": "5c9c2b66ab208525ca3dd23eb2d3cf98",
-    "index_name": "curated_set_5c9c2b66",
+    "hash": "f50d6426e5bdef5a3d9b7b0dd8e72084",
+    "index_name": "curated_set_f50d6426",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "accession": {
@@ -238,7 +237,6 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {
@@ -301,6 +299,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_all",
                                 "type": "keyword"
                             },
                             "url": {

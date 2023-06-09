@@ -1,6 +1,6 @@
 {
-    "hash": "8b1e7e5374eb4613bd8f77ad51b90c6b",
-    "index_name": "assay_term_8b1e7e53",
+    "hash": "65e0fa0faa9ffbc0416435951fd28282",
+    "index_name": "assay_term_65e0fa0f",
     "item_type": "assay_term",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -268,7 +267,6 @@
                         "type": "keyword"
                     },
                     "term_id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "term_name": {

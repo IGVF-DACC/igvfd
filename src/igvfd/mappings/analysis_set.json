@@ -1,6 +1,6 @@
 {
-    "hash": "699ff85ab1cb7711c548739fc11be309",
-    "index_name": "analysis_set_699ff85a",
+    "hash": "707efe7106b0a610c9000ba087ab6103",
+    "index_name": "analysis_set_707efe71",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "accession": {
@@ -157,6 +156,7 @@
                         "type": "keyword"
                     },
                     "assay_title": {
+                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "award": {
@@ -237,7 +237,6 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "description": {
@@ -427,6 +426,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_all",
                                 "type": "keyword"
                             },
                             "url": {

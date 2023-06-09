@@ -1,6 +1,6 @@
 {
-    "hash": "10b53b0fbb550cff86bcfb8744cc3386",
-    "index_name": "human_donor_10b53b0f",
+    "hash": "fb4d5caa2e434efb0fb2b98580d12303",
+    "index_name": "human_donor_fb4d5caa",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "accession": {

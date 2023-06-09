@@ -1,6 +1,6 @@
 {
-    "hash": "65371b2ce307e602c1cf9142de9f367f",
-    "index_name": "platform_term_65371b2c",
+    "hash": "6f1843d15b713aa6756691640ca8d6b2",
+    "index_name": "platform_term_6f1843d1",
     "item_type": "platform_term",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -259,7 +258,6 @@
                         "type": "keyword"
                     },
                     "term_id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "term_name": {

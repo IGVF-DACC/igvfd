@@ -1,6 +1,6 @@
 {
-    "hash": "8b7d2c371df8881c25fd61ab377a8d45",
-    "index_name": "lab_8b7d2c37",
+    "hash": "ab7d1603cf57f5c2542b2f4d5245186d",
+    "index_name": "lab_ab7d1603",
     "item_type": "lab",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -239,7 +238,6 @@
                         "type": "text"
                     },
                     "pi": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "schema_version": {

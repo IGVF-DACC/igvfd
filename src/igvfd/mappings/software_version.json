@@ -1,6 +1,6 @@
 {
-    "hash": "d481aa8514b7f00dbdce884a524b5c8f",
-    "index_name": "software_version_d481aa85",
+    "hash": "02bdbaad3747ac11e4b0492053c4f0e0",
+    "index_name": "software_version_02bdbaad",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -141,7 +141,6 @@
             "embedded": {
                 "properties": {
                     "@id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "@type": {

@@ -1,6 +1,6 @@
 {
-    "hash": "f5a354d2dd2d1ce13aed33a216812589",
-    "index_name": "sequence_data_f5a354d2",
+    "hash": "6d8b9a0f4c15581827d2ce9f8cd5dd30",
+    "index_name": "sequence_data_6d8b9a0f",
     "item_type": "sequence_data",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "accession": {
@@ -254,7 +253,6 @@
                         "type": "keyword"
                     },
                     "file_format": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "file_format_specifications": {

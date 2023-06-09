@@ -1,6 +1,6 @@
 {
-    "hash": "8e112463c302372d131d5d2c5fec10c0",
-    "index_name": "sample_term_8e112463",
+    "hash": "df937713d5311967f5422185a84884e2",
+    "index_name": "sample_term_df937713",
     "item_type": "sample_term",
     "mapping": {
         "dynamic_templates": [
@@ -144,7 +144,6 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -274,7 +273,6 @@
                         "type": "keyword"
                     },
                     "term_id": {
-                        "copy_to": "_all",
                         "type": "keyword"
                     },
                     "term_name": {
