@@ -30,7 +30,7 @@ A: Certain high-level document values, such as UUIDs and unique keys, are copied
 
 **Q: What are search configs?**
 
-A: Search configs are collections of values that our search system can use at search time to dynamically render search results. These values include the columns (or fields) that should be returned and the facets that should be calculated. By default the search config for a type is used implicitly, but you can also specify explicit configs in the query string like `?type=Award&config=CustomConfig`. This is especially useful for creating dynamic views of different combinations of item types, with varying facets, aggregations, return fields, etc.
+A: [Search configs](https://github.com/IGVF-DACC/igvfd/tree/dev/src/igvfd/searches/configs) are collections of values that our search system can use at search time to dynamically render search results. These values include the columns (or fields) that should be returned and the facets that should be calculated. By default the search config for a type is used implicitly, but you can also specify explicit configs in the query string like `?type=Award&config=CustomConfig`. This is especially useful for creating dynamic views of different combinations of item types, with varying facets, aggregations, return fields, etc.
 
 **Q: How do you mix and match search configs?**
 
