@@ -1,6 +1,6 @@
 {
-    "hash": "422d8f0e7bc8c15099a049c5ad1eeecf",
-    "index_name": "construct_library_422d8f0e",
+    "hash": "9d669c3e678f1d2e9642c854e9b4ea8a",
+    "index_name": "construct_library_9d669c3e",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -247,6 +247,14 @@
                     },
                     "documents": {
                         "type": "keyword"
+                    },
+                    "expression_vector_library_details": {
+                        "properties": {
+                            "cloned_genes": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "files": {
                         "type": "keyword"
