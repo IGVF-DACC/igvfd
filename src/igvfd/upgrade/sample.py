@@ -221,3 +221,16 @@ def in_vitro_system_9_10(value, system):
     # https://igvf.atlassian.net/browse/IGVF-627
     # This upgrade was done manually, see the ticket above.
     return
+
+
+@upgrade_step('primary_cell', '12', '13')
+@upgrade_step('in_vitro_system', '10', '11')
+@upgrade_step('tissue', '12', '13')
+@upgrade_step('technical_sample', '6', '7')
+@upgrade_step('whole_organism', '13', '14')
+def sample_12_13(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-726
+    # This upgrade is to update previous data with
+    # default value for 'virtual' property.
+    # The default value will be automatically populated.
+    return

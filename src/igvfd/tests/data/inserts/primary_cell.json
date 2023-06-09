@@ -93,7 +93,8 @@
         "biomarkers": [
             "CD243-negative",
             "CD1-positive"
-        ]
+        ],
+        "virtual": false
     },
     {
         "uuid": "90449698-0305-11ed-b939-0242ac120002",
@@ -123,7 +124,8 @@
         "source": "/labs/j-michael-cherry/",
         "donors": [
             "igvf:alias_human_donor1"
-        ]
+        ],
+        "virtual": false
     },
     {
         "uuid": "5e2b132e-0307-11ed-b939-0242ac120002",
@@ -139,6 +141,7 @@
         "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
         "status": "released",
         "source": "/labs/j-michael-cherry/",
-        "part_of": "igvf:live_mouse_embryo"
+        "part_of": "igvf:live_mouse_embryo",
+        "virtual": false
     }
 ]

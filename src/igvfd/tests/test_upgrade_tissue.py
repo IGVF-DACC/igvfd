@@ -85,3 +85,9 @@ def test_tissue_upgrade_11_12(upgrader, tissue_v11):
     assert value['schema_version'] == '12'
     assert 'taxa' not in value
     assert value['notes'] == 'Previous taxa: Homo sapiens will now be calculated.'
+
+
+def test_tissue_upgrade_12_13(upgrader, tissue_v12):
+    value = upgrader.upgrade('tissue', tissue_v12, current_version='12', target_version='13')
+    assert value['schema_version'] == '13'
+    assert 'virtual' in value

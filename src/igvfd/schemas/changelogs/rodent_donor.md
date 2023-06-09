@@ -1,6 +1,6 @@
 ## Changelog for *`rodent_donor.json`*
 
-### Minor changes since schema version 7
+### Schema version 8
 
 * Add `virtual`.
 

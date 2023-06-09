@@ -85,3 +85,9 @@ def test_primary_cell_upgrade_11_12(upgrader, primary_cell_v11):
     assert value['schema_version'] == '12'
     assert 'taxa' not in value
     assert value['notes'] == 'Previous taxa: Homo sapiens will now be calculated.'
+
+
+def test_primary_cell_upgrade_12_13(upgrader, primary_cell_v12):
+    value = upgrader.upgrade('primary_cell', primary_cell_v12, current_version='12', target_version='13')
+    assert value['schema_version'] == '13'
+    assert 'virtual' in value

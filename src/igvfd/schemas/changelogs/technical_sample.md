@@ -1,8 +1,11 @@
 ## Changelog for *`technical_sample.json`*
 
-### Minor changes since schema version 4
+### Schema version 7
 
 * Add `virtual`.
+
+### Minor changes since schema version 6
+
 * Add `cellular_sub_pool`.
 
 ### Schema version 6

@@ -78,7 +78,8 @@
         "taxa": "Homo sapiens",
         "collections": [
             "ENCODE"
-        ]
+        ],
+        "virtual": false
     },
     {
         "uuid": "ee99221f-a11a-4f8b-baf3-9919db92f2f9",
@@ -102,7 +103,8 @@
                 "donor": "38d6630f-5b87-47a1-ae7d-174eab5758d2",
                 "relationship_type": "sibling"
             }
-        ]
+        ],
+        "virtual": false
     },
     {
         "uuid": "e37bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
@@ -113,7 +115,8 @@
             "Colombian"
         ],
         "sex": "female",
-        "taxa": "Homo sapiens"
+        "taxa": "Homo sapiens",
+        "virtual": false
     },
     {
         "uuid": "e47bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
@@ -124,7 +127,8 @@
             "Kinh Vietnamese"
         ],
         "sex": "female",
-        "taxa": "Homo sapiens"
+        "taxa": "Homo sapiens",
+        "virtual": false
     },
     {
         "uuid": "e57bc966-3c49-4c7f-8d53-b1c8d6ce83a8",
@@ -134,7 +138,8 @@
             "Puerto Rican"
         ],
         "sex": "female",
-        "taxa": "Homo sapiens"
+        "taxa": "Homo sapiens",
+        "virtual": false
     },
     {
         "uuid": "4771fdf1-b0cf-4c33-ab30-2c8c7b83996e",
@@ -153,6 +158,7 @@
         ],
         "aliases": [
             "igvf:ENTEx_donor_1"
-        ]
+        ],
+        "virtual": false
     }
 ]

@@ -23,7 +23,8 @@
         ],
         "lower_bound_age": 25,
         "upper_bound_age": 30,
-        "age_units": "month"
+        "age_units": "month",
+        "virtual": false
     },
     {
         "uuid": "984a5f8e-c751-11ec-9d64-0242ac120002",
@@ -46,7 +47,8 @@
         ],
         "lower_bound_age": 10,
         "upper_bound_age": 20,
-        "age_units": "week"
+        "age_units": "week",
+        "virtual": false
     },
     {
         "uuid": "e3a862a7-5b37-4b21-8f0f-f1fd170460a7",
@@ -65,7 +67,8 @@
         "pooled_from": [
             "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/",
             "/tissues/984a5f8e-c751-11ec-9d64-0242ac120002/"
-        ]
+        ],
+        "virtual": false
     },
     {
         "uuid": "fd5524f2-0303-11ed-b939-0242ac120002",
@@ -92,7 +95,8 @@
         ],
         "lower_bound_age": 10,
         "upper_bound_age": 20,
-        "age_units": "month"
+        "age_units": "month",
+        "virtual": false
     },
     {
         "uuid": "8183c760-0304-11ed-b939-0242ac120002",
@@ -114,7 +118,8 @@
         "lower_bound_age": 19,
         "upper_bound_age": 20,
         "age_units": "day",
-        "embryonic": true
+        "embryonic": true,
+        "virtual": false
     },
     {
         "uuid": "03677dc2-b6ff-11ed-afa1-0242ac120002",
@@ -138,7 +143,8 @@
         "age_units": "day",
         "embryonic": true,
         "sorted_fraction": "/tissue/8183c760-0304-11ed-b939-0242ac120002/",
-        "sorted_fraction_detail": "FACS 10% expression of CTCF-GFP 1"
+        "sorted_fraction_detail": "FACS 10% expression of CTCF-GFP 1",
+        "virtual": false
     },
     {
         "uuid": "56f89d18-b6ff-11ed-afa1-0242ac120002",
@@ -162,6 +168,7 @@
         "age_units": "day",
         "embryonic": true,
         "sorted_fraction": "/tissue/8183c760-0304-11ed-b939-0242ac120002/",
-        "sorted_fraction_detail": "FACS 10% expression of CTCF-GFP 2"
+        "sorted_fraction_detail": "FACS 10% expression of CTCF-GFP 2",
+        "virtual": false
     }
 ]

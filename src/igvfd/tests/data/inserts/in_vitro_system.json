@@ -44,7 +44,8 @@
         "collections": [
             "ENCODE"
         ],
-        "modification": "aa9dd059-4bc8-2857-bc2b-b8cb0294f837"
+        "modification": "aa9dd059-4bc8-2857-bc2b-b8cb0294f837",
+        "virtual": false
     },
     {
         "uuid": "1b14530d-5514-419a-ad8f-e2f110c26232",
@@ -66,7 +67,8 @@
         "time_post_factors_introduction_units": "minute",
         "biosample_term": "/sample-terms/92c5f1a9-7503-460b-99b3-f5b84c82b067/",
         "targeted_sample_term": "/sample-terms/eed026e7-4afc-4396-94e7-870f8934b2f2/",
-        "source": "/labs/danwei-huangfu/"
+        "source": "/labs/danwei-huangfu/",
+        "virtual": false
     },
     {
         "uuid": "21fb495c-b700-11ed-afa1-0242ac120002",
@@ -115,7 +117,8 @@
         ],
         "cellular_sub_pool": "8A",
         "sorted_fraction": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
-        "sorted_fraction_detail": "test insert description"
+        "sorted_fraction_detail": "test insert description",
+        "virtual": false
     },
     {
         "uuid": "390c2a4e-b700-11ed-afa1-0242ac120002",
@@ -164,6 +167,7 @@
         ],
         "cellular_sub_pool": "SS-PKR_1",
         "sorted_fraction": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
-        "sorted_fraction_detail": "test insert description"
+        "sorted_fraction_detail": "test insert description",
+        "virtual": false
     }
 ]

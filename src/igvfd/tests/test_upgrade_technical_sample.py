@@ -31,3 +31,9 @@ def test_technical_sample_upgrade_5_6(upgrader, technical_sample_v5):
     value = upgrader.upgrade('technical_sample', technical_sample_v5, current_version='5', target_version='6')
     assert value['schema_version'] == '6'
     assert value['sorted_fraction_detail'] == 'Default upgrade text: please add more details about sorted_fraction, see sample.json for description.'
+
+
+def test_technical_sample_upgrade_6_7(upgrader, technical_sample_v6):
+    value = upgrader.upgrade('technical_sample', technical_sample_v6, current_version='6', target_version='7')
+    assert value['schema_version'] == '7'
+    assert 'virtual' in value

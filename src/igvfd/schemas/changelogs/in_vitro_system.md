@@ -1,9 +1,11 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 11
+
+* Add `virtual`.
 
 ### Minor changes since schema version 10
 
-* Add `virtual`.
 * remove `permissions` from `classification`.
 
 ### Schema version 10

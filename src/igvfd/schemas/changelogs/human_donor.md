@@ -1,8 +1,11 @@
 ## Changelog for *`human_donor.json`*
 
-### Minor changes since schema version 8
+### Schema version 9
 
 * Add `virtual`.
+
+### Minor changes since schema version 8
+
 * Add `human_donor_identifier`.
 
 ### Schema version 8

@@ -184,3 +184,16 @@ def human_donor_v7_with_parents(human_donor, parent_human_donor_1, parent_human_
         ],
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v8(human_donor, parent_human_donor_1, parent_human_donor_2):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '8',
+        'parents': [
+            parent_human_donor_1['@id'],
+            parent_human_donor_2['@id']
+        ],
+    })
+    return item

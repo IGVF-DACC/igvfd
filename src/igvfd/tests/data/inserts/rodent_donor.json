@@ -28,7 +28,8 @@
         "taxa": "Mus musculus",
         "collections": [
             "ENCODE"
-        ]
+        ],
+        "virtual": false
     },
     {
         "uuid": "05c0a52c-f861-4057-b3eb-751624bdff37",
@@ -62,6 +63,7 @@
         "dbxrefs": [
             "IMSR_JAX:000664",
             "GEO:SAMN31260610"
-        ]
+        ],
+        "virtual": false
     }
 ]

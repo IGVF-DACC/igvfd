@@ -27,7 +27,8 @@
         "collections": [
             "ENCODE"
         ],
-        "description": "The technical sample is for quality control of vaccine production."
+        "description": "The technical sample is for quality control of vaccine production.",
+        "virtual": false
     },
     {
         "uuid": "f12ab44c-bba8-46cc-9f3d-6a192eb09e7e",
@@ -57,6 +58,7 @@
         "collections": [
             "ENCODE"
         ],
-        "description": "The technical sample was archived due to poor quality."
+        "description": "The technical sample was archived due to poor quality.",
+        "virtual": false
     }
 ]

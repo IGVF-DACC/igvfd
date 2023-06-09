@@ -58,3 +58,9 @@ def test_in_vitro_system_upgrade_8_9(upgrader, in_vitro_system_v8):
 def test_in_vitro_system_upgrade_9_10(upgrader, in_vitro_system_v9):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v9, current_version='9', target_version='10')
     assert value['schema_version'] == '10'
+
+
+def test_in_vitro_system_upgrade_10_11(upgrader, in_vitro_system_v10):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v10, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert 'virtual' in value

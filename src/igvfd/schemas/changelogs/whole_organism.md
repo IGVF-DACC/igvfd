@@ -1,9 +1,8 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 14
 
-### Minor changes since schema version 13
-
-Add `virtual`.
+* Add `virtual`.
 
 ### Schema version 13
 
