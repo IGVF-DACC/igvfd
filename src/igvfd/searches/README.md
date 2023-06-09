@@ -41,3 +41,7 @@ A: You can mix and match search configs explicitly by specifying one or more sea
 **Q: What are DEFAULT_ITEM_TYPES?**
 
 A: Usually a search will have an explicit `type` defined in the query string (e.g. `?type=Award`). [`DEFAULT_ITEM_TYPES`](https://github.com/IGVF-DACC/igvfd/blob/b3714678fb6695a97a544eecb0afe403cdf149c9/src/igvfd/searches/defaults.py#L22-L60) is a list of item types (and corresponding Opensearch indices) that the system will search over when none are specified in the query string. These are particularly useful in queries where a `searchTerm` or `query` is specified without any types.
+
+**Q: What is the difference between DEFAULT_ITEM_TYPES and TOP_HITS_ITEM_TYPES?**
+
+A: These are both lists of types to use when no types are explicitly specified in the query string. `DEFAULT_ITEM_TYPES` is used in the [search](https://github.com/IGVF-DACC/igvfd/blob/b6f65dfcec7b2104de0b37dbea0d8975b3c5ab08/src/igvfd/search_views.py#L70) view, while `TOP_HITS_ITEM_TYPES` is used in the [top-hits](https://github.com/IGVF-DACC/igvfd/blob/b6f65dfcec7b2104de0b37dbea0d8975b3c5ab08/src/igvfd/search_views.py#L237) view. The lists can vary independently if needed but are currently the same.
