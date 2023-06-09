@@ -1,11 +1,16 @@
 {
 <<<<<<< dev
+<<<<<<< dev
     "hash": "998ec8da88fc5e2807f08781e7f02db6",
     "index_name": "rodent_donor_998ec8da",
 =======
     "hash": "f960354f5eabd43c90e52560d4c19564",
     "index_name": "rodent_donor_f960354f",
 >>>>>>> IGVF-726 Added virtual to sample and donor.
+=======
+    "hash": "148bdc3776e618f8eb8aec614f192059",
+    "index_name": "rodent_donor_148bdc37",
+>>>>>>> IGVF-726 Updated mapping.
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [

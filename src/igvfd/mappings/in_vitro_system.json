@@ -2,6 +2,7 @@
 <<<<<<< dev
 <<<<<<< dev
 <<<<<<< dev
+<<<<<<< dev
     "hash": "cf209e7ba35533a796b3d109b8cd9ce2",
     "index_name": "in_vitro_system_cf209e7b",
 =======
@@ -15,6 +16,10 @@
 =======
     "hash": "71063a69bd063f9fdb88feaa7750289c",
     "index_name": "in_vitro_system_71063a69",
+>>>>>>> IGVF-726 Updated mapping.
+=======
+    "hash": "dd64e65d4e9bb3acbb4b77860d19fc54",
+    "index_name": "in_vitro_system_dd64e65d",
 >>>>>>> IGVF-726 Updated mapping.
     "item_type": "in_vitro_system",
     "mapping": {

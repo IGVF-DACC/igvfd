@@ -1,6 +1,7 @@
 {
 <<<<<<< dev
 <<<<<<< dev
+<<<<<<< dev
     "hash": "2533cf1a776f3fce2207501a57ea251d",
     "index_name": "whole_organism_2533cf1a",
 =======
@@ -10,6 +11,10 @@
 =======
     "hash": "6c5fd9a668b467a61b0283584b657f6f",
     "index_name": "whole_organism_6c5fd9a6",
+>>>>>>> IGVF-726 Updated mapping.
+=======
+    "hash": "16d6a353aafd3c24413560ce3b0f027e",
+    "index_name": "whole_organism_16d6a353",
 >>>>>>> IGVF-726 Updated mapping.
     "item_type": "whole_organism",
     "mapping": {

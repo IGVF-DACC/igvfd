@@ -1,6 +1,7 @@
 {
 <<<<<<< dev
 <<<<<<< dev
+<<<<<<< dev
     "hash": "b318b2fc6bd1302bc5feac2e7ed6bfa1",
     "index_name": "tissue_b318b2fc",
 =======
@@ -10,6 +11,10 @@
 =======
     "hash": "f827091e9a0da6ae408f97887c2aebc2",
     "index_name": "tissue_f827091e",
+>>>>>>> IGVF-726 Updated mapping.
+=======
+    "hash": "2f4a6dc38f0df6d1b90e6df2a61c4a09",
+    "index_name": "tissue_2f4a6dc3",
 >>>>>>> IGVF-726 Updated mapping.
     "item_type": "tissue",
     "mapping": {
