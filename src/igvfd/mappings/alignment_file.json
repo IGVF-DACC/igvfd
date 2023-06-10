@@ -1,6 +1,6 @@
 {
-    "hash": "52cdc6e83e9e3b35fed1710cd1040dc6",
-    "index_name": "alignment_file_52cdc6e8",
+    "hash": "58eccf2ace6d3ae34e83c61fcbed66a5",
+    "index_name": "alignment_file_58eccf2a",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_all",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,7 +55,13 @@
             }
         ],
         "properties": {
-            "_all": {
+            "_exact": {
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "_fuzzy": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -144,6 +150,7 @@
                         "type": "keyword"
                     },
                     "@type": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {
@@ -236,13 +243,14 @@
                         "type": "keyword"
                     },
                     "content_type": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "creation_timestamp": {
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "derived_from": {
@@ -255,6 +263,7 @@
                         "type": "keyword"
                     },
                     "file_format": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "file_format_specifications": {
@@ -473,7 +482,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -498,7 +507,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             }
         }

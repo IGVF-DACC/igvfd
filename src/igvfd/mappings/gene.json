@@ -1,6 +1,6 @@
 {
-    "hash": "a53ed98991e41878874be6ae929aaaeb",
-    "index_name": "gene_a53ed989",
+    "hash": "bb1b91fb9c056a82d1912bc1c514007b",
+    "index_name": "gene_bb1b91fb",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_all",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,7 +55,13 @@
             }
         ],
         "properties": {
-            "_all": {
+            "_exact": {
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "_fuzzy": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -144,6 +150,7 @@
                         "type": "keyword"
                     },
                     "@type": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -156,13 +163,14 @@
                         "type": "keyword"
                     },
                     "dbxrefs": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "description": {
                         "type": "text"
                     },
                     "geneid": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "geneid_with_version": {
@@ -198,7 +206,7 @@
                         "type": "object"
                     },
                     "name": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "notes": {
@@ -285,11 +293,11 @@
                         "type": "keyword"
                     },
                     "symbol": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "synonyms": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "taxa": {
@@ -314,7 +322,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -339,7 +347,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             }
         }

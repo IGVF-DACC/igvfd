@@ -1,6 +1,6 @@
 {
-    "hash": "6f50eca7be347935f112a18a2fd6563a",
-    "index_name": "biomarker_6f50eca7",
+    "hash": "b1e9bc3ab7234078ec212b96b188a648",
+    "index_name": "biomarker_b1e9bc3a",
     "item_type": "biomarker",
     "mapping": {
         "dynamic_templates": [
@@ -16,7 +16,7 @@
             {
                 "template_unique_keys": {
                     "mapping": {
-                        "copy_to": "_all",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "match_mapping_type": "string",
@@ -55,7 +55,13 @@
             }
         ],
         "properties": {
-            "_all": {
+            "_exact": {
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
+                "store": false,
+                "type": "text"
+            },
+            "_fuzzy": {
                 "analyzer": "snovault_index_analyzer",
                 "search_analyzer": "snovault_search_analyzer",
                 "store": false,
@@ -144,6 +150,7 @@
                         "type": "keyword"
                     },
                     "@type": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "aliases": {
@@ -230,7 +237,7 @@
                         "type": "text"
                     },
                     "gene": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "lab": {
@@ -293,7 +300,7 @@
                         "type": "object"
                     },
                     "name": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "name_quantification": {
@@ -386,7 +393,7 @@
                         "type": "keyword"
                     },
                     "synonyms": {
-                        "copy_to": "_all",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "uuid": {
@@ -402,7 +409,7 @@
                 "type": "keyword"
             },
             "item_type": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             },
             "linked_uuids": {
@@ -427,7 +434,7 @@
                 "type": "keyword"
             },
             "uuid": {
-                "copy_to": "_all",
+                "copy_to": "_exact",
                 "type": "keyword"
             }
         }
