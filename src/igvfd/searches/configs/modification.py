@@ -22,6 +22,9 @@ def modification():
             'status': {
                 'title': 'Status'
             },
+            'cas_species': {
+                'title': 'Cas Species'
+            },
         },
         'facet_groups': [
             {
@@ -69,6 +72,9 @@ def modification():
             },
             'lab': {
                 'title': 'Lab'
+            },
+            'cas_species': {
+                'title': 'Cas Species'
             }
         }
     }
