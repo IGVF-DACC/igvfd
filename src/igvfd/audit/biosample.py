@@ -42,3 +42,18 @@ def audit_biosample_taxa_check(value, system):
             for k, v in taxa_dict.items():
                 detail += f'Biosample {audit_link(sample_id, sample_id)} has donors {audit_link(v, v)} that are {k}. '
             yield AuditFailure('inconsistent donor taxa', detail, level='ERROR')
+
+
+BiosampleBase = (Tissue, WholeOrganism, PrimaryCell)
+
+
+@audit_checker('BiosampleBase', frame='object')
+def audit_age_properties(value, system):
+    '''Tissue, WholeOrganism, PrimaryCell objects must specify a lower_bound_age, upper_bound_age and age_units.'''
+    if 'lower_bound_age' and 'upper_bound_age' and 'age_units' not in value:
+        value_id = system.get('path')
+        detail = (
+            f'Tissue {audit_link(path_to_text(value_id), value_id)} '
+            f'is missing upper_bound_age, lower_bound_age, and age_units.'
+        )
+        yield AuditFailure('missing age properties', detail, level='WARNING')
