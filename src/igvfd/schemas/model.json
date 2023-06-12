@@ -12,6 +12,13 @@
         "model_version",
         "prediction_objects"
     ],
+    "not": {
+        "comment": "Model file sets may not specify any donors or samples.",
+        "required": [
+            "donors",
+            "samples"
+        ]
+    },
     "identifyingProperties": [
         "uuid",
         "aliases"
@@ -56,7 +63,7 @@
             "title": "Model Version",
             "description": "The semantic version number for this predictive model file set.",
             "type": "string",
-            "pattern": "^v[0-9]\\.[0-9]\\.[0-9]$"
+            "pattern": "^v[0-9]\\.[0-9]\\.[1-9]$"
         },
         "model_type": {
             "title": "Model Type",
@@ -105,7 +112,7 @@
             "title": "Model Zoo Location",
             "description": "The link to the model on the Kipoi repository.",
             "type": "string",
-            "pattern": "^https://kipoi\\.org/models/(\\S+)$"
+            "pattern": "^https?://kipoi\\.org/models/(\\S+)$"
         }
     },
     "fuzzy_searchable_fields": [
