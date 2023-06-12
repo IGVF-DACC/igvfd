@@ -100,7 +100,6 @@
             "title": "Cas species",
             "description": "The originating species of the Cas nuclease.",
             "type": "string",
-            "default": "Streptococcus pyogenes (Sp)",
             "enum": [
                 "Streptococcus pyogenes (Sp)",
                 "Staphylococcus aureus (Sa)",
