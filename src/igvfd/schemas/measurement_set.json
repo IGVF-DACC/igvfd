@@ -132,6 +132,20 @@
                 "adenoviral transduction",
                 "lentiviral transduction"
             ]
+        },
+        "control_file_sets": {
+            "title": "Controls",
+            "description": "A fileset that contain files that can serve as scientific controls for this measurement_set.",
+            "type": "array",
+            "default": [],
+            "uniqueItems": true,
+            "items": {
+                "title": "Control",
+                "description": "A fileset that contains files that can serve as a scientific control for this measurement_set.",
+                "comment": "See fileset.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "FileSet"
+            }
         }
     },
     "fuzzy_searchable_fields": [
