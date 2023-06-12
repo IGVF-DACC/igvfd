@@ -12,7 +12,7 @@ def test_patch_cas_species(modification, testapp):
 
 def test_read_cas_species(modification, testapp):
     res = testapp.get(modification['@id'])
-    assert res.json['cas_species'] == 'Streptococcus pyogenes (Sp)'''
+    assert res.json['cas_species'] == 'Streptococcus pyogenes (Sp)'
 
 
 def test_cas_species_requirement(testapp, lab, award):
