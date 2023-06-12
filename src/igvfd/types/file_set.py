@@ -162,3 +162,20 @@ class ConstructLibrary(FileSet):
     item_type = 'construct_library'
     schema = load_schema('igvfd:schemas/construct_library.json')
     embedded_with_frame = FileSet.embedded_with_frame
+
+
+@collection(
+    name='models',
+    unique_key='accession',
+    properties={
+        'title': 'Model',
+        'description': 'Listing of models',
+    }
+)
+class Model(FileSet):
+    item_type = 'model'
+    schema = load_schema('igvfd:schemas/model.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+    ]

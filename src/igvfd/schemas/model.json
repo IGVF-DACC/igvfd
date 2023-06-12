@@ -1,0 +1,120 @@
+{
+    "title": "Model",
+    "description": "Schema for submitting a predictive model file set.",
+    "$id": "/profiles/model.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "lab",
+        "award",
+        "model_name",
+        "model_type",
+        "model_version",
+        "prediction_objects"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file_set.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/references"
+        },
+        {
+            "$ref": "mixins.json#/taxa"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "model_name": {
+            "title": "Model Name",
+            "description": "The custom lab name given to this predictive model.",
+            "type": "string"
+        },
+        "model_version": {
+            "title": "Model Version",
+            "description": "The semantic version number for this predictive model file set.",
+            "type": "string",
+            "pattern": "^v[0-9]\\.[0-9]\\.[0-9]$"
+        },
+        "model_type": {
+            "title": "Model Type",
+            "description": "The category that best describes this predictive model file set.",
+            "type": "string",
+            "enum": [
+                "neural network",
+                "random forest",
+                "decision tree",
+                "support vector machine"
+            ]
+        },
+        "prediction_objects": {
+            "title": "Predicition Objects",
+            "description": "The objects this predictive model relates to.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "Prediction Object",
+                "description": "An object this predictive model relates to.",
+                "type": "string",
+                "enum": [
+                    "coding variants",
+                    "non-coding variants",
+                    "all variants",
+                    "regulatory elements",
+                    "genes"
+                ]
+            }
+        },
+        "input_file_sets": {
+            "title": "Input File Sets",
+            "description": "The file set(s) to which any files used in this model file set belong.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Input File Set",
+                "description": "A file set with files that are used in this model file set.",
+                "type": "string",
+                "linkTo": "FileSet"
+            }
+        },
+        "model_zoo_location": {
+            "title": "Model Zoo Location",
+            "description": "The link to the model on the Kipoi repository.",
+            "type": "string",
+            "pattern": "^https://kipoi\\.org/models/(\\S+)$"
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "dbxrefs",
+        "taxa",
+        "model_name",
+        "model_type",
+        "prediction_objects"
+    ],
+    "changelog": "/profiles/changelogs/model.md"
+}
