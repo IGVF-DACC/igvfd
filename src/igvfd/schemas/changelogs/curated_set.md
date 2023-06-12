@@ -5,6 +5,7 @@
 * Add `files`.
 * Add `dbxrefs`.
 * Add `guide RNAs` to `curated_set_type`.
+* Add `controlling_file_sets`.
 
 ### Schema version 3
 

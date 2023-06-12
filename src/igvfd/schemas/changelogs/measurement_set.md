@@ -5,6 +5,8 @@
 * Expand `preferred_assay_title` enum list to include `10x multiome` and `MULTI-seq`.
 * Add `nucleic_acid_delivery`.
 * Add `files`.
+* Add `control_file_sets`.
+* Add `controlling_file_sets`.
 
 ### Schema version 4
 

@@ -1,6 +1,6 @@
 {
-    "hash": "b0174c467c72e45e7f4db99ff1a52a1d",
-    "index_name": "model_b0174c46",
+    "hash": "fbc8ae9c832d4f4c7fb935cff933f414",
+    "index_name": "model_fbc8ae9c",
     "item_type": "model",
     "mapping": {
         "dynamic_templates": [
@@ -235,6 +235,9 @@
                         "type": "object"
                     },
                     "collections": {
+                        "type": "keyword"
+                    },
+                    "controlling_file_sets": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {

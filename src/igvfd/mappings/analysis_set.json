@@ -1,6 +1,6 @@
 {
-    "hash": "e2add3461a6a375342a1cfdc01e82453",
-    "index_name": "analysis_set_e2add346",
+    "hash": "de40e631386dbc837cf5f793bab417c9",
+    "index_name": "analysis_set_de40e631",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -238,6 +238,9 @@
                         "type": "object"
                     },
                     "collections": {
+                        "type": "keyword"
+                    },
+                    "controlling_file_sets": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {

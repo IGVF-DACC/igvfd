@@ -1,6 +1,6 @@
 {
-    "hash": "7c3e9c27a24c8f9ba7c79aa5cf7a1ede",
-    "index_name": "measurement_set_7c3e9c27",
+    "hash": "85be25c77bb755fef1db975071a8c2c4",
+    "index_name": "measurement_set_85be25c7",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -312,6 +312,12 @@
                         "type": "keyword"
                     },
                     "construct_libraries": {
+                        "type": "keyword"
+                    },
+                    "control_file_sets": {
+                        "type": "keyword"
+                    },
+                    "controlling_file_sets": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {
