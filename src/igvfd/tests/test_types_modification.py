@@ -19,10 +19,11 @@ def test_modification_summary(testapp, modification, gene_myc_hs):
         modification['@id'],
         {
             'cas': 'Cas13',
+            'cas_species': 'Streptococcus pyogenes (Sp)',
             'modality': 'localizing',
             'fused_domain': 'ANTI-FLAG',
             'tagged_protein': gene_myc_hs['@id']
         }
     )
     res = testapp.get(modification['@id'])
-    assert res.json.get('summary') == 'CRISPR localizing Cas13-ANTI-FLAG fused to MYC'
+    assert res.json.get('summary') == 'CRISPR localizing SpCas13-ANTI-FLAG fused to MYC'
