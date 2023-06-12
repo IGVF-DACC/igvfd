@@ -56,8 +56,8 @@ class FileSet(Item):
         },
         'notSubmittable': True
     })
-    def controlling_file_sets(self, request, file_set):
-        return paths_filtered_by_status(request, file_set)
+    def controlling_file_sets(self, request, controlling_file_sets):
+        return paths_filtered_by_status(request, controlling_file_sets)
 
 
 @collection(
