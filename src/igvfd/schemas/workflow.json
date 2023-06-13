@@ -64,6 +64,7 @@
             "uniqueItems": true,
             "items": {
                 "title": "Respository",
+                "description": "Repository link for the workflow other than the code base in github.",
                 "type": "string",
                 "format": "uri"
             }
