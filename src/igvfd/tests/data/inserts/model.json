@@ -15,7 +15,6 @@
         ],
         "model_zoo_location": "https://kipoi.org/models/Xpresso/human_K562/",
         "accession": "IGVFDS1234MODL",
-        "status": "released",
-        "taxa": "Homo sapiens"
+        "status": "released"
     }
 ]
