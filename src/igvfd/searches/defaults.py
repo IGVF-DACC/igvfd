@@ -34,6 +34,7 @@ TOP_HITS_ITEM_TYPES = [
     'ConstructLibrary',
     'CuratedSet',
     'MeasurementSet',
+    'Model',
     'Gene',
     'Image',
     'Lab',
