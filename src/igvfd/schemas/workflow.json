@@ -42,7 +42,7 @@
             "accessionType": "WF"
         },
         "name": {
-            "title": "Title",
+            "title": "Name",
             "description": "The preferred viewable name of the workflow.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
