@@ -11,6 +11,12 @@
         "donors",
         "biosample_term"
     ],
+    "not": {
+        "required": [
+            "part_of",
+            "pooled_from"
+        ]
+    },
     "identifyingProperties": [
         "uuid",
         "accession",
