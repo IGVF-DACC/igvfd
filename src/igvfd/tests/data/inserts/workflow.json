@@ -1,43 +1,13 @@
 [
     {
-        "uuid": "692a559c-99ac-4892-9c31-929c5ebfc3da",
-        "accession": "IGVFSM0000KASA",
+        "uuid": "b750168a-0804-4f7e-acaf-c19fc8abc6d2",
+        "accession": "IGVFWF0000WORK",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:mouse_embryo"
+            "igvf:workflow"
         ],
         "status": "released",
-        "source": "/labs/j-michael-cherry/",
-        "collections": [
-            "ENCODE"
-        ],
-        "biosample_term": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/",
-        "donors": [
-            "05c0a52c-f861-4057-b3eb-751624bdff37"
-        ],
-        "description": "frozen mouse embryo"
-    },
-    {
-        "uuid": "d4c46526-0307-11ed-b939-0242ac120002",
-        "accession": "IGVFSM0003KASA",
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
-        "aliases": [
-            "igvf:live_mouse_embryo"
-        ],
-        "status": "released",
-        "source": "/labs/j-michael-cherry/",
-        "collections": [
-            "ENCODE"
-        ],
-        "biosample_term": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/",
-        "donors": [
-            "05c0a52c-f861-4057-b3eb-751624bdff37",
-            "c37934b0-4269-4470-be53-9eac7b196447",
-            "9050f480-1d11-4d2a-b6f2-5979c2af4fd6"
-        ],
-        "description": "10 days mouse embryo",
-        "embryonic": true
+        "name": "Workflow"
     }
 ]
