@@ -56,7 +56,7 @@
         },
         "title": {
             "title": "Title",
-            "description": "The preferred viewable name of the analysis step, likely the same as the name.",
+            "description": "The preferred viewable name of the analysis step, likely the same as the step label.",
             "type": "string",
             "pattern": "^[a-zA-Z\\d_().,-]+(?:\\s[a-zA-Z\\d_().,-]+)*[step|Step]$"
         },
