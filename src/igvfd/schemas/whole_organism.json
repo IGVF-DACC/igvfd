@@ -71,14 +71,6 @@
             "linkEnum": [
                 "25d5ad53-15fd-4a44-878a-ece2f7e86509"
             ]
-        },
-        "part_of": {
-            "type": "null",
-            "comment": "Do not submit. A whole organism sample may not specify that it is part_of another sample."
-        },
-        "pooled_from": {
-            "type": "null",
-            "comment": "Do not submit. A whole organism sample may not specify that it is pooled_from other samples."
         }
     },
     "fuzzy_searchable_fields": [
