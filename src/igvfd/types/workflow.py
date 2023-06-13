@@ -9,7 +9,7 @@ from .base import (
 
 @collection(
     name='workflows',
-    unique_key='workflow:name',
+    unique_key='uuid',
     properties={
         'title': 'Workflow',
         'description': 'Listing of workflows',
@@ -18,4 +18,3 @@ from .base import (
 class Workflow(Item):
     item_type = 'workflow'
     schema = load_schema('igvfd:schemas/workflow.json')
-    name_key = 'name'

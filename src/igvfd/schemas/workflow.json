@@ -7,7 +7,6 @@
     "required": [
         "award",
         "lab",
-        "name",
         "source_url"
     ],
     "identifyingProperties": [
