@@ -18,7 +18,7 @@ def modification_missing_cas_sp(modification):
     item = modification.copy()
     item.pop('cas_species', None)
     item.update({
-        'schema_version': '2',
+        'schema_version': '1',
         'notes': 'Test.'
     })
     return item
