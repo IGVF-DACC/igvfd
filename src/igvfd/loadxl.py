@@ -52,7 +52,7 @@ ORDER = [
     'reference_file',
     'sequence_file',
     'signal_file',
-    'alignment_file'
+    'alignment_file',
 ]
 
 IS_ATTACHMENT = [
