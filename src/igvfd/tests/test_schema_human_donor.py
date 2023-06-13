@@ -92,8 +92,3 @@ def test_patch_virtual(human_donor, testapp):
         human_donor['@id'],
         {'virtual': ''}, expect_errors=True)
     assert res.status_code == 422
-
-
-def test_read_virtual(human_male_donor, testapp):
-    res = testapp.get(human_male_donor['@id'])
-    assert res.json['virtual'] == False

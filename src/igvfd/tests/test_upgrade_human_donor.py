@@ -70,4 +70,4 @@ def test_human_donor_upgrade_7_8(upgrader, human_donor_v7_with_parents, parent_h
 def test_human_donor_upgrade_8_9(upgrader, human_donor_v8):
     value = upgrader.upgrade('human_donor', human_donor_v8, current_version='8', target_version='9')
     assert value['schema_version'] == '9'
-    assert 'virtual' in value
+    assert value['virtual'] == False

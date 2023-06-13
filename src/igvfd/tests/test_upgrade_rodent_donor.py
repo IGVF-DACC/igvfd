@@ -42,4 +42,4 @@ def test_rodent_donor_upgrade_6_7(upgrader, rodent_donor_v6_with_parents, parent
 def test_rodent_donor_upgrade_7_8(upgrader, rodent_donor_v7):
     value = upgrader.upgrade('rodent_donor', rodent_donor_v7, current_version='7', target_version='8')
     assert value['schema_version'] == '8'
-    assert 'virtual' in value
+    assert value['virtual'] == False

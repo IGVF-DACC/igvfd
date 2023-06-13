@@ -106,8 +106,3 @@ def test_patch_virtual(primary_cell, testapp):
         primary_cell['@id'],
         {'virtual': ''}, expect_errors=True)
     assert res.status_code == 422
-
-
-def test_read_virtual(primary_cell_v7, testapp):
-    res = testapp.get(primary_cell_v7['@id'])
-    assert res.json['virtual'] == False

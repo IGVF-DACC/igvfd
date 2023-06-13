@@ -36,4 +36,4 @@ def test_technical_sample_upgrade_5_6(upgrader, technical_sample_v5):
 def test_technical_sample_upgrade_6_7(upgrader, technical_sample_v6):
     value = upgrader.upgrade('technical_sample', technical_sample_v6, current_version='6', target_version='7')
     assert value['schema_version'] == '7'
-    assert 'virtual' in value
+    assert value['virtual'] == False
