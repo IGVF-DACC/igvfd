@@ -5,9 +5,14 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:workflow"
+            "igvf:perturb_seq_workflow"
         ],
         "status": "released",
-        "name": "Workflow"
+        "name": "Perturb-seq Pipeline",
+        "source_url": "https://github.com/perturbseq_pipeline",
+        "workflow_repositories": [
+            "https://hub.docker.com/r/perturbseq_pipeline"
+        ],
+        "standards_page": "27f9abd9-0081-4ade-8c82-95ec12b3a7dd"
     }
 ]
