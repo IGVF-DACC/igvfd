@@ -41,5 +41,31 @@
         "description": "10 days mouse embryo",
         "embryonic": true,
         "virtual": false
+    },
+    {
+        "uuid": "d4c46526-0307-11ed-b939-0242ac120003",
+        "accession": "IGVFSM0003KASP",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:live_mouse_embryo_1"
+        ],
+        "status": "released",
+        "source": "/labs/j-michael-cherry/",
+        "collections": [
+            "ENCODE"
+        ],
+        "biosample_term": "/sample-terms/25d5ad53-15fd-4a44-878a-ece2f7e86509/",
+        "donors": [
+            "05c0a52c-f861-4057-b3eb-751624bdff37",
+            "c37934b0-4269-4470-be53-9eac7b196447",
+            "9050f480-1d11-4d2a-b6f2-5979c2af4fd6"
+        ],
+        "description": "11 days mouse embryo",
+        "embryonic": true,
+        "references": [
+            "doi:10.1234/example",
+            "doi:10.9999/this-is_a-test/with:many/possible.characters"
+        ]
     }
 ]
