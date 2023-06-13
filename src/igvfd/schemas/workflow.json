@@ -81,5 +81,5 @@
     "exact_searchable_fields": [
         "@type"
     ],
-    "changelog": "/profiles/changelogs/rodent_donor.md"
+    "changelog": "/profiles/changelogs/workflow.md"
 }
