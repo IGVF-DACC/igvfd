@@ -7,11 +7,11 @@
     "required": [
         "award",
         "lab",
-        "source_url"
+        "source_url",
+        "name"
     ],
     "identifyingProperties": [
         "uuid",
-        "name",
         "accession",
         "alternate_accessions",
         "aliases"
