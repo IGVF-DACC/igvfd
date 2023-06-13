@@ -262,7 +262,7 @@ class PhenotypeTerm(OntologyTerm):
     name='platform-terms',
     unique_key='platform_term:name',
     properties={
-        'title': 'Platform ontology term',
+        'title': 'Platform Ontology Term',
         'description': 'Ontology terms used by IGVF for platforms used for library construction or sequencing.',
     }
 )
