@@ -52,7 +52,7 @@
             "description": "An external resource to the code base of the workflow in github.",
             "type": "string",
             "format": "uri",
-            "pattern": "^https://github\\.com/(\\S+)$"
+            "pattern": "^https?://github\\.com/(\\S+)$"
         },
         "workflow_repositories": {
             "title": "Workflow Repositories",
