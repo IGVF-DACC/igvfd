@@ -115,7 +115,6 @@
     "fuzzy_searchable_fields": [
         "@type",
         "dbxrefs",
-        "taxa",
         "model_name",
         "model_type",
         "prediction_objects"
