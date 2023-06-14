@@ -195,3 +195,14 @@ def whole_organism_v13(whole_organism):
         'notes': ''
     })
     return item
+
+@pytest.fixture
+def whole_organism_v14(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '14',
+        'part_of': 'Null',
+        'pooled_from': 'Null'
+    })
+    return item
+
