@@ -45,6 +45,7 @@ ORDER = [
     'access_key',
     'measurement_set',
     'analysis_set',
+    'prediction_set',
     'reference_data',
     'sequence_data',
     'reference_file',

@@ -42,6 +42,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.analysis_set',
     'igvfd.tests.fixtures.schemas.curated_set',
     'igvfd.tests.fixtures.schemas.measurement_set',
+    'igvfd.tests.fixtures.schemas.prediction_set',
     'igvfd.tests.fixtures.schemas.sequence_data',
     'igvfd.tests.fixtures.schemas.sequence_file',
     'igvfd.tests.fixtures.schemas.alignment_file',
