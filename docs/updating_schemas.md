@@ -99,7 +99,7 @@ Adding a new schema
             ],
             "exact_searchable_fields": [
                  "dbxrefs"
-            ], 
+            ],
 
 5. In the **types** directory add a file (i.e. antibody.py) with a collection class for the object to define the rendering of the object.
 Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/object_lifecycle.md) to understand object rendering. Example of basic collection definition for treatments:
@@ -214,9 +214,8 @@ To add an object with accession prefix 'SM':
                    'Biomarker',
                    'Document',
                    'TrainSet'
-            ]       
+            ]
     
-
 15. In the **igvfd/src/igvfd/searches/configs** directory make a python file for the type (i.e. antibody.py) to hold the columns assignment.
 
            from snovault.elasticsearch.searches.configs import search_config
