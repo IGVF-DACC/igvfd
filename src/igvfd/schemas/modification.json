@@ -8,6 +8,7 @@
         "award",
         "lab",
         "cas",
+        "cas_species",
         "modality"
     ],
     "identifyingProperties": [
@@ -36,7 +37,7 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "cas": {
             "title": "Cas",
@@ -64,7 +65,9 @@
                 "p300",
                 "VPH",
                 "VP64",
-                "VPR"
+                "VPR",
+                "2xVP64",
+                "3xVP64"
             ]
         },
         "modality": {
@@ -92,6 +95,17 @@
             "description": "The product or catalog identifier provided following deposition to addgene.org.",
             "type": "string",
             "pattern": "^addgene:\\d{5,6}$"
+        },
+        "cas_species": {
+            "title": "Cas species",
+            "description": "The originating species of the Cas nuclease.",
+            "type": "string",
+            "enum": [
+                "Streptococcus pyogenes (Sp)",
+                "Staphylococcus aureus (Sa)",
+                "Campylobacter jejuni (Cj)",
+                "Neisseria meningitidis (Nm)"
+            ]
         }
     },
     "fuzzy_searchable_fields": [

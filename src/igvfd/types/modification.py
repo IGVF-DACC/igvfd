@@ -31,7 +31,7 @@ class Modification(Item):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, cas, modality, fused_domain=None, tagged_protein=None):
+    def summary(self, request, cas, cas_species, modality, fused_domain=None, tagged_protein=None):
         crispr_label_mapping = {
             'activation': 'CRISPRa',
             'base editing': 'CRISPR base editing',
@@ -46,7 +46,12 @@ class Modification(Item):
         if fused_domain:
             formatted_domain = f'-{fused_domain}'
 
-        summary = f'{crispr_label_mapping[modality]} {cas}{formatted_domain}'
+        species = ''
+        if cas_species:
+            short = cas_species.split('(')[1].split(')')[0]
+            species = f'{short}'
+
+        summary = f'{crispr_label_mapping[modality]} {species}{cas}{formatted_domain}'
         if tagged_protein:
             tagged_protein_object = request.embed(tagged_protein, '@@object?skip_calculated=true')
             tagged_protein_symbol = tagged_protein_object.get('symbol')
