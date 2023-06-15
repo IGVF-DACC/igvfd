@@ -84,10 +84,11 @@ Adding a new schema
             }
 
 
-3. Identify all required properties for an object type and add them to the "required" array. For example for treatment object type we might have the following properties:
+3. Identify all required properties for an object type and add them to the "required" array. Identify all of the identifying properties and add them to the "identifyingProperties" array.  For example for treatment object type we might have the following properties:
 
+            "required": ["treatment_term_name", "treatment_type"],
+            "identifyingProperties": ["uuid","aliases"],
 
-            "required": ["treatment_term_name", "treatment_type"]
 
 4. Add the "exact_searchable_fields" and "fuzzy_searchable_fields" properties using this [guide](https://github.com/IGVF-DACC/igvfd/tree/dev/src/igvfd/searches).
 
@@ -100,7 +101,7 @@ Adding a new schema
                  "dbxrefs"
             ], 
 
-5. In the **types** directory add a collection class for the object to define the rendering of the object.
+5. In the **types** directory add a file (i.e. antibody.py) with a collection class for the object to define the rendering of the object.
 Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/object_lifecycle.md) to understand object rendering. Example of basic collection definition for treatments:
 
 
@@ -166,8 +167,7 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
                 'igvfd.tests.fixtures.schemas.train',
             ]
 
-9. Add in sample data to test the new schema in **tests** directory. Create a new JSON file in the **data/inserts** directory named after the new metadata object.
-This new object is an array of example objects that can successfully POST against the schema defined, for example:
+9. Add in sample data to test the new schema in **tests** directory. Create a new JSON file in the **data/inserts** directory named after the new metadata object. This new object is an array of example objects that can successfully POST against the schema defined, for example:
 
             [
                 {
@@ -204,6 +204,18 @@ To add an object with accession prefix 'SM':
             est_accession_re = re.compile(r'^TST(FI|DS|SR|AB|SM|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9]([0-9][0-9][0-9]|[A-Z][A-Z][A-Z])$')
 
 13.  Add a change log markdown file for the new schema to the **schemas/changelogs** directory.
+
+            ## Changelog for *`award.json`*
+            
+14. To make sure that the objects of that type are searched in unspecified searches add the item to TOP_HITS_ITEM_TYPES in **igvfd/src/igvfd/searches/defaults.py**.  For example to add a type for train sets 
+
+            TOP_HITS_ITEM_TYPES = [
+                   'Award',
+                   'Biomarker',
+                   'Document',
+                   'TrainSet'
+            ]       
+    
 
 -----
 
