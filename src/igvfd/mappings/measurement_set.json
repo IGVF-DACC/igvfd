@@ -1,6 +1,6 @@
 {
-    "hash": "9c5c26b9707381a2cd5ab1c2c54c647d",
-    "index_name": "measurement_set_9c5c26b9",
+    "hash": "4a4d1a38eaab5def607d716bfaf6fcc3",
+    "index_name": "measurement_set_4a4d1a38",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -321,9 +321,6 @@
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
-                    "delivery": {
-                        "type": "keyword"
-                    },
                     "description": {
                         "type": "text"
                     },
@@ -552,6 +549,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "nucleic_acid_delivery": {
+                        "type": "keyword"
                     },
                     "preferred_assay_title": {
                         "copy_to": "_fuzzy",

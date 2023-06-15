@@ -21,7 +21,7 @@
             "GEO:GSE187549"
         ],
         "library_construction_platform": "9ed48993-8f87-f432-42ac-c34a0f5caa20",
-        "delivery": "viral transduction"
+        "nucleic_acid_delivery": "transfection"
     },
     {
         "aliases": [
@@ -36,7 +36,7 @@
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
         "multiome_size": 2,
-        "delivery": "electroporation"
+        "nucleic_acid_delivery": "adenoviral transduction"
     },
     {
         "aliases": [
