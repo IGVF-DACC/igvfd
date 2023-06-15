@@ -17,7 +17,7 @@ from snovault import (
 )
 from snovault.calculated import calculate_properties
 from snovault.resource_views import item_view_object
-from snovault.util import expand_path
+from snovault.util import (expand_path, Path)
 
 
 ONLY_ADMIN_VIEW_DETAILS = [
@@ -50,6 +50,9 @@ class User(Item):
     item_type = 'user'
     schema = load_schema('igvfd:schemas/user.json')
     # Avoid access_keys reverse link so editing access keys does not reindex content.
+    embedded_with_frame = [
+        Path('submitted_by', include=['@id', 'title']),
+    ]
 
     STATUS_ACL = {
         'current': [(Allow, 'role.owner', ['edit', 'view_details'])] + USER_ALLOW_CURRENT,

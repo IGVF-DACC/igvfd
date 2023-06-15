@@ -8,6 +8,7 @@ from snovault import (
 from .base import (
     Item,
 )
+from snovault.util import Path
 
 
 @abstract_collection(
@@ -21,6 +22,9 @@ from .base import (
 class OntologyTerm(Item):
     base_types = ['OntologyTerm'] + Item.base_types
     schema = load_schema('igvfd:schemas/ontology_term.json')
+    embedded_with_frame = [
+        Path('submitted_by', include=['@id', 'title']),
+    ]
 
     def unique_keys(self, properties):
         keys = super(OntologyTerm, self).unique_keys(properties)
@@ -104,6 +108,7 @@ class OntologyTerm(Item):
 class SampleTerm(OntologyTerm):
     item_type = 'sample_term'
     schema = load_schema('igvfd:schemas/sample_term.json')
+    embedded_with_frame = OntologyTerm.embedded_with_frame
 
     def unique_keys(self, properties):
         keys = super(OntologyTerm, self).unique_keys(properties)
@@ -180,6 +185,7 @@ class SampleTerm(OntologyTerm):
 class AssayTerm(OntologyTerm):
     item_type = 'assay_term'
     schema = load_schema('igvfd:schemas/assay_term.json')
+    embedded_with_frame = OntologyTerm.embedded_with_frame
 
     def unique_keys(self, properties):
         keys = super(OntologyTerm, self).unique_keys(properties)
@@ -242,6 +248,7 @@ class AssayTerm(OntologyTerm):
 class PhenotypeTerm(OntologyTerm):
     item_type = 'phenotype_term'
     schema = load_schema('igvfd:schemas/phenotype_term.json')
+    embedded_with_frame = OntologyTerm.embedded_with_frame
 
     def unique_keys(self, properties):
         keys = super(OntologyTerm, self).unique_keys(properties)
@@ -262,6 +269,7 @@ class PhenotypeTerm(OntologyTerm):
 class PlatformTerm(OntologyTerm):
     item_type = 'platform_term'
     schema = load_schema('igvfd:schemas/platform_term.json')
+    embedded_with_frame = OntologyTerm.embedded_with_frame
 
     def unique_keys(self, properties):
         keys = super(OntologyTerm, self).unique_keys(properties)

@@ -27,6 +27,7 @@ from snovault.crud_views import (
 from snovault.validators import (
     validate_item_content_post,
 )
+from snovault.util import Path
 
 
 @collection(
@@ -48,6 +49,7 @@ class AccessKey(Item):
     item_type = 'access_key'
     schema = load_schema('igvfd:schemas/access_key.json')
     name_key = 'access_key_id'
+    embedded_with_frame = [Path('submitted_by', include=['@id', 'title']), ]
 
     STATUS_ACL = {
         'current': [(Allow, 'role.owner', ['view', 'edit'])] + ONLY_ADMIN_VIEW,

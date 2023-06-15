@@ -22,6 +22,11 @@ class Donor(Item):
     base_types = ['Donor'] + Item.base_types
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/donor.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
+    ]
 
 
 @collection(
@@ -35,10 +40,7 @@ class Donor(Item):
 class HumanDonor(Donor):
     item_type = 'human_donor'
     schema = load_schema('igvfd:schemas/human_donor.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-    ]
+    embedded_with_frame = Donor.embedded_with_frame
     audit_inherit = [
         'related_donors.donor'
     ]
@@ -55,9 +57,7 @@ class HumanDonor(Donor):
 class RodentDonor(Donor):
     item_type = 'rodent_donor'
     schema = load_schema('igvfd:schemas/rodent_donor.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
+    embedded_with_frame = Donor.embedded_with_frame + [
         Path('source', include=['@id', 'title']),
     ]
 

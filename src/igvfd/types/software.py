@@ -25,6 +25,7 @@ class Software(Item):
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
     ]
     rev = {
         'versions': ('SoftwareVersion', 'software')

@@ -31,6 +31,7 @@ class Sample(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('source', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
     ]
 
     @calculated_property(schema={

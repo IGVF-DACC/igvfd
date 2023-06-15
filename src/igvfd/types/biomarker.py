@@ -22,6 +22,7 @@ class Biomarker(Item):
     embedded_with_frame = [
         Path('award', include=['@id', 'name', 'component']),
         Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
     ]
 
     @calculated_property(

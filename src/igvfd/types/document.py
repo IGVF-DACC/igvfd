@@ -25,4 +25,5 @@ class Document(ItemWithAttachment, Item):
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
     ]

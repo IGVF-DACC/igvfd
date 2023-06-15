@@ -5,6 +5,7 @@ from snovault import (
 from .base import (
     Item
 )
+from snovault.util import Path
 
 
 @collection(
@@ -19,3 +20,6 @@ class Source(Item):
     item_type = 'source'
     schema = load_schema('igvfd:schemas/source.json')
     name_key = 'name'
+    embedded_with_frame = [
+        Path('submitted_by', include=['@id', 'title']),
+    ]

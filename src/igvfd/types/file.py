@@ -94,6 +94,11 @@ class File(Item):
     base_types = ['File'] + Item.base_types
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/file.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
+    ]
 
     @calculated_property(
         schema={
@@ -204,10 +209,7 @@ class File(Item):
 class SequenceData(File):
     item_type = 'sequence_data'
     schema = load_schema('igvfd:schemas/sequence_data.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-    ]
+    embedded_with_frame = File.embedded_with_frame
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -235,10 +237,7 @@ class SequenceData(File):
 class ReferenceData(File):
     item_type = 'reference_data'
     schema = load_schema('igvfd:schemas/reference_data.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-    ]
+    embedded_with_frame = File.embedded_with_frame
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -260,10 +259,7 @@ class ReferenceData(File):
 class SequenceFile(File):
     item_type = 'sequence_file'
     schema = load_schema('igvfd:schemas/sequence_file.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-    ]
+    embedded_with_frame = File.embedded_with_frame
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -296,10 +292,7 @@ class SequenceFile(File):
 class ReferenceFile(File):
     item_type = 'reference_file'
     schema = load_schema('igvfd:schemas/reference_file.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-    ]
+    embedded_with_frame = File.embedded_with_frame
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -321,10 +314,7 @@ class ReferenceFile(File):
 class AlignmentFile(File):
     item_type = 'alignment_file'
     schema = load_schema('igvfd:schemas/alignment_file.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-    ]
+    embedded_with_frame = File.embedded_with_frame
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -370,10 +360,7 @@ class AlignmentFile(File):
 class SignalFile(File):
     item_type = 'signal_file'
     schema = load_schema('igvfd:schemas/signal_file.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-    ]
+    embedded_with_frame = File.embedded_with_frame
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)

@@ -7,6 +7,7 @@ from .base import (
     Item,
 )
 from snovault.attachment import ItemWithAttachment
+from snovault.util import Path
 
 
 @collection(
@@ -24,6 +25,9 @@ class Image(ItemWithAttachment, Item):
         'image/png',
         'image/jpeg',
         'image/gif',
+    ]
+    embedded_with_frame = [
+        Path('submitted_by', include=['@id', 'title']),
     ]
 
     def unique_keys(self, properties):
