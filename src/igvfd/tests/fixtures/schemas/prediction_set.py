@@ -1,3 +1,6 @@
+import pytest
+
+
 @pytest.fixture
 def base_prediction_set(testapp, lab, award):
     item = {
