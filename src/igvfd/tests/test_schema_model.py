@@ -13,5 +13,4 @@ def test_model_sample_donor_dependency(
          'donors': [human_donor['@id']]},
         expect_errors=True
     )
-    print(res.status_code)
     assert res.status_code == 422
