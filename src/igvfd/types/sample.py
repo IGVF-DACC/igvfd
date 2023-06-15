@@ -62,7 +62,7 @@ class Biosample(Sample):
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('biosample_term', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
-        Path('treatments', include=['@id', 'treatment_term_name']),
+        Path('treatments', include=['@id', 'treatment_term_name', 'purpose']),
     ]
 
     @calculated_property(
@@ -190,7 +190,7 @@ class InVitroSystem(Biosample):
     item_type = 'in_vitro_system'
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
     embedded_with_frame = Biosample.embedded_with_frame + [
-        Path('introduced_factors', include=['@id', 'treatment_term_name']),
+        Path('introduced_factors', include=['@id', 'treatment_term_name', 'purpose']),
     ]
 
     @calculated_property(
