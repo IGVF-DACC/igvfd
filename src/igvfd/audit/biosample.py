@@ -49,11 +49,13 @@ def audit_biosample_taxa_check(value, system):
 
 @audit_checker('Biosample', frame='object')
 def audit_biosample_age(value, system):
-    '''Biosample objects must specify a lower_bound_age, upper_bound_age and age_units.'''
-    if 'lower_bound_age' and 'upper_bound_age' and 'age_units' not in value:
-        value_id = system.get('path')
-        detail = (
-            f'Biosample {audit_link(path_to_text(value_id), value_id)} '
-            f'is missing upper_bound_age, lower_bound_age, and age_units.'
-        )
-        yield AuditFailure('missing age properties', detail, level='WARNING')
+    '''Tissue, Primary Cell, Whole Organism objects must specify a lower_bound_age, upper_bound_age and age_units.'''
+
+    if ('Tissue' in value['@type']) or ('PrimaryCell' in value['@type']) or ('WholeOrganism' in value['@type']):
+        if 'lower_bound_age' and 'upper_bound_age' and 'age_units' not in value:
+            value_id = system.get('path')
+            detail = (
+                f'{Biosample} {audit_link(path_to_text(value_id), value_id)} '
+                f'is missing upper_bound_age, lower_bound_age, and age_units.'
+            )
+            yield AuditFailure('missing age properties', detail, level='WARNING')
