@@ -4,7 +4,7 @@
 
 * Add `files`.
 * Add `dbxrefs`.
-* Add `controlling_file_sets`.
+* Add `control_of`.
 
 ### Schema version 3
 

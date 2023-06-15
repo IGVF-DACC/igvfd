@@ -34,4 +34,4 @@ def test_control_link(testapp, measurement_set, curated_set_genome):
         }
     )
     res = testapp.get(curated_set_genome['@id'])
-    assert set(res.json.get('controlling_file_sets')) == {measurement_set['@id']}
+    assert set(res.json.get('control_of')) == {measurement_set['@id']}

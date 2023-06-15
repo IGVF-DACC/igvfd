@@ -27,7 +27,7 @@ class FileSet(Item):
     schema = load_schema('igvfd:schemas/file_set.json')
     rev = {
         'files': ('File', 'file_set'),
-        'controlling_file_sets': ('FileSet', 'control_file_sets')
+        'control_of': ('FileSet', 'control_file_sets')
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
@@ -48,7 +48,7 @@ class FileSet(Item):
         return paths_filtered_by_status(request, files)
 
     @calculated_property(schema={
-        'title': 'MeasurementSets this FileSets act as a control.',
+        'title': 'File sets controlled by this file set,
         'type': 'array',
         'items': {
             'type': ['string', 'object'],
@@ -56,8 +56,8 @@ class FileSet(Item):
         },
         'notSubmittable': True
     })
-    def controlling_file_sets(self, request, controlling_file_sets):
-        return paths_filtered_by_status(request, controlling_file_sets)
+    def control_of(self, request, control_of):
+        return paths_filtered_by_status(request, control_of)
 
 
 @collection(

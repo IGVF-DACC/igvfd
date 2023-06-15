@@ -4,7 +4,11 @@
 
 * Add `files`.
 * Add `integrated_content_files`.
+<<<<<<< HEAD
 * Add `expression_vector_library_details`.
+=======
+* Add `control_for`.
+>>>>>>> a0e14e43 (change to rev_link control_of)
 
 ### Schema version 2
 
