@@ -22,9 +22,6 @@ Guide to where to edit Source Code
       * **/searches/defaults.py** - This file contains a list that determines if a new schema is searched by default
       * **/searches/configs** - Directory that has a file for each type that contains the list of fields returned in a search
 
-
------
-
 Adding a new schema
 ----------------
 
@@ -206,8 +203,8 @@ To add an object with accession prefix 'SM':
 13.  Add a change log markdown file for the new schema to the **schemas/changelogs** directory.
 
             ## Changelog for *`award.json`*
-            
-14. To make sure that the objects of that type are searched in unspecified searches add the item to TOP_HITS_ITEM_TYPES in **igvfd/src/igvfd/searches/defaults.py**.  For example to add a type for train sets 
+
+14. To make sure that the objects of that type are searched in unspecified searches add the item to TOP_HITS_ITEM_TYPES in **igvfd/src/igvfd/searches/defaults.py**.  For example to add a type for train sets
 
             TOP_HITS_ITEM_TYPES = [
                    'Award',
@@ -215,7 +212,7 @@ To add an object with accession prefix 'SM':
                    'Document',
                    'TrainSet'
             ]
-    
+
 15. In the **igvfd/src/igvfd/searches/configs** directory make a python file for the type (i.e. antibody.py) to hold the columns assignment.
 
            from snovault.elasticsearch.searches.configs import search_config
