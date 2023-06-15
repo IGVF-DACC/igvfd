@@ -152,7 +152,8 @@
     "fuzzy_searchable_fields": [
         "dbxrefs",
         "taxa",
-        "ethnicities"
+        "ethnicities",
+        "human_donor_identifier"
     ],
     "exact_searchable_fields": [
         "@type"

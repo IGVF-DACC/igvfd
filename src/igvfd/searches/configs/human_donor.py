@@ -71,6 +71,9 @@ def human_donor():
             'ethnicities': {
                 'title': 'Ethnicities'
             },
+            'human_donor_identifier': {
+                'title': 'Human Donor Identifier'
+            },
             'lab': {
                 'title': 'Lab'
             },
