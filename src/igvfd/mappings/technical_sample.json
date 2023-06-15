@@ -1,16 +1,6 @@
 {
-<<<<<<< dev
-<<<<<<< dev
-    "hash": "684d490eeebba709676375d70a0e67cd",
-    "index_name": "technical_sample_684d490e",
-=======
-    "hash": "5238214e3bfefd5b611ec65c86997394",
-    "index_name": "technical_sample_5238214e",
->>>>>>> IGVF-726 Added virtual to sample and donor.
-=======
-    "hash": "b5a2b2710db254d36aef11da90b82887",
-    "index_name": "technical_sample_b5a2b271",
->>>>>>> IGVF-726 Updated mapping.
+    "hash": "5b0eb2e6b9ec3d8727a3a1031af2905e",
+    "index_name": "technical_sample_5b0eb2e6",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [

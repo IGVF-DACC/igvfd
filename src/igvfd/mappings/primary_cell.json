@@ -1,21 +1,6 @@
 {
-<<<<<<< dev
-<<<<<<< dev
-<<<<<<< dev
-    "hash": "92b2102ad9e94da9d6037495ea2f8266",
-    "index_name": "primary_cell_92b2102a",
-=======
-    "hash": "51b54d5c9ce0a9cf7f8c4c295007b2b4",
-    "index_name": "primary_cell_51b54d5c",
->>>>>>> IGVF-726 Added virtual to sample and donor.
-=======
-    "hash": "f50b29a51f1ee06dbe95496e934ebeae",
-    "index_name": "primary_cell_f50b29a5",
->>>>>>> IGVF-726 Updated mapping.
-=======
-    "hash": "27767c8de7bd8ed87bb210e0e8bb3140",
-    "index_name": "primary_cell_27767c8d",
->>>>>>> IGVF-726 Updated mapping.
+    "hash": "99aece434afa69742fa8d92a446eaeb5",
+    "index_name": "primary_cell_99aece43",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [

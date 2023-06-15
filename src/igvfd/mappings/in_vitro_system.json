@@ -1,26 +1,6 @@
 {
-<<<<<<< dev
-<<<<<<< dev
-<<<<<<< dev
-<<<<<<< dev
-    "hash": "cf209e7ba35533a796b3d109b8cd9ce2",
-    "index_name": "in_vitro_system_cf209e7b",
-=======
-    "hash": "1f2df1ef8b6edcaad75f23d8a49ed472",
-    "index_name": "in_vitro_system_1f2df1ef",
->>>>>>> IGVF-726 Added virtual to sample and donor.
-=======
-    "hash": "d51e57308a7f5db5d5b99b07544523fc",
-    "index_name": "in_vitro_system_d51e5730",
->>>>>>> IGVF-726 Updated mapping.
-=======
-    "hash": "71063a69bd063f9fdb88feaa7750289c",
-    "index_name": "in_vitro_system_71063a69",
->>>>>>> IGVF-726 Updated mapping.
-=======
-    "hash": "dd64e65d4e9bb3acbb4b77860d19fc54",
-    "index_name": "in_vitro_system_dd64e65d",
->>>>>>> IGVF-726 Updated mapping.
+    "hash": "bf6fe31b3be8b3115f9e53e90a32bc38",
+    "index_name": "in_vitro_system_bf6fe31b",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
