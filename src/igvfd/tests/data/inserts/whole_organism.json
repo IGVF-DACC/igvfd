@@ -16,7 +16,8 @@
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
-        "description": "frozen mouse embryo"
+        "description": "frozen mouse embryo",
+        "virtual": false
     },
     {
         "uuid": "d4c46526-0307-11ed-b939-0242ac120002",
@@ -38,6 +39,7 @@
             "9050f480-1d11-4d2a-b6f2-5979c2af4fd6"
         ],
         "description": "10 days mouse embryo",
-        "embryonic": true
+        "embryonic": true,
+        "virtual": false
     }
 ]

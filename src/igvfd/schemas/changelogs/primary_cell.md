@@ -1,6 +1,10 @@
 ## Changelog for *`primary_cell.json`*
 
-### Minor changes since schema version 11
+### Schema version 13
+
+* Add `virtual`.
+
+### Minor changes since schema version 12
 
 * Add `cellular_sub_pool`.
 

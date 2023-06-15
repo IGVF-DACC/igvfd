@@ -37,6 +37,9 @@ def whole_organism():
             'status': {
                 'title': 'Status'
             },
+            'virtual': {
+                'title': 'Virtual'
+            }
         },
         'facet_groups': [
             {
@@ -98,6 +101,9 @@ def whole_organism():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'virtual': {
+                'title': 'Virtual'
             }
         }
     }

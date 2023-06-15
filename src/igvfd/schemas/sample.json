@@ -115,6 +115,12 @@
             "description": "Detail for sample sorted into fractions capturing information about sorting.",
             "comment": "For example, FACS 10% expression of CTCF-GFP",
             "type": "string"
+        },
+        "virtual": {
+            "title": "Virtual",
+            "description": "Sample is virtual.",
+            "type": "boolean",
+            "default": false
         }
     }
 }

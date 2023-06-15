@@ -1,6 +1,6 @@
 {
-    "hash": "cf209e7ba35533a796b3d109b8cd9ce2",
-    "index_name": "in_vitro_system_cf209e7b",
+    "hash": "bf6fe31b3be8b3115f9e53e90a32bc38",
+    "index_name": "in_vitro_system_bf6fe31b",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -976,6 +976,15 @@
                     },
                     "uuid": {
                         "type": "keyword"
+                    },
+                    "virtual": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     }
                 },
                 "type": "object"

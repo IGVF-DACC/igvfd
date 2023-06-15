@@ -204,3 +204,14 @@ def tissue_v11(tissue):
         'notes': ''
     })
     return item
+
+
+@pytest.fixture
+def tissue_v12(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '12',
+        'taxa': 'Homo sapiens',
+        'notes': ''
+    })
+    return item

@@ -81,6 +81,12 @@
                 "type": "string",
                 "linkTo": "PhenotypicFeature"
             }
+        },
+        "virtual": {
+            "title": "Virtual",
+            "description": "Donor is virtual.",
+            "type": "boolean",
+            "default": false
         }
     }
 }

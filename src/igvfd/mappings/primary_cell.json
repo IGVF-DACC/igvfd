@@ -1,6 +1,6 @@
 {
-    "hash": "92b2102ad9e94da9d6037495ea2f8266",
-    "index_name": "primary_cell_92b2102a",
+    "hash": "99aece434afa69742fa8d92a446eaeb5",
+    "index_name": "primary_cell_99aece43",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -829,6 +829,15 @@
                     },
                     "uuid": {
                         "type": "keyword"
+                    },
+                    "virtual": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     }
                 },
                 "type": "object"

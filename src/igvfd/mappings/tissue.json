@@ -1,6 +1,6 @@
 {
-    "hash": "b318b2fc6bd1302bc5feac2e7ed6bfa1",
-    "index_name": "tissue_b318b2fc",
+    "hash": "4eddfa5e3a5c214d780129aa538f880b",
+    "index_name": "tissue_4eddfa5e",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -838,6 +838,15 @@
                     },
                     "uuid": {
                         "type": "keyword"
+                    },
+                    "virtual": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     }
                 },
                 "type": "object"

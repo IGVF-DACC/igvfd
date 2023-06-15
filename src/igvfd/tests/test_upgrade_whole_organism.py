@@ -98,3 +98,9 @@ def test_whole_organism_upgrade_12_13(upgrader, whole_organism_v12):
     assert value['schema_version'] == '13'
     assert 'taxa' not in value
     assert value['notes'] == 'Previous taxa: Homo sapiens will now be calculated.'
+
+
+def test_whole_organism_upgrade_13_14(upgrader, whole_organism_v13):
+    value = upgrader.upgrade('whole_organism', whole_organism_v13, current_version='13', target_version='14')
+    assert value['schema_version'] == '14'
+    assert value['virtual'] == False

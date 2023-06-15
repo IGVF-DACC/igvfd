@@ -91,3 +91,18 @@ def test_sorted_fraction_detail_dependency(testapp, primary_cell):
         {'sorted_fraction': primary_cell['@id'],
          'sorted_fraction_detail': 'I am a sorted fraction detail.'})
     assert res.status_code == 200
+
+
+def test_patch_virtual(primary_cell, testapp):
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {'virtual': True})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {'virtual': False})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        primary_cell['@id'],
+        {'virtual': ''}, expect_errors=True)
+    assert res.status_code == 422

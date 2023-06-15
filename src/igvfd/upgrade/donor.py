@@ -115,3 +115,13 @@ def human_donor_7_8(value, system):
             )
         value['related_donors'] = related_donors
         del value['parents']
+
+
+@upgrade_step('human_donor', '8', '9')
+@upgrade_step('rodent_donor', '7', '8')
+def donor_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-726
+    # This upgrade is to update previous data with
+    # default value for 'virtual' property.
+    # The default value will be automatically populated.
+    return

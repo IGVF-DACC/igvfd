@@ -123,3 +123,12 @@ def rodent_donor_v6_with_parents(rodent_donor, parent_rodent_donor_1):
         'notes': 'This is a note.'
     })
     return item
+
+
+@pytest.fixture
+def rodent_donor_v7(rodent_donor):
+    item = rodent_donor.copy()
+    item.update({
+        'schema_version': '7'
+    })
+    return item

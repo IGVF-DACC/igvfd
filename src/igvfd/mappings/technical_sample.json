@@ -1,6 +1,6 @@
 {
-    "hash": "684d490eeebba709676375d70a0e67cd",
-    "index_name": "technical_sample_684d490e",
+    "hash": "5b0eb2e6b9ec3d8727a3a1031af2905e",
+    "index_name": "technical_sample_5b0eb2e6",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -572,6 +572,15 @@
                     },
                     "uuid": {
                         "type": "keyword"
+                    },
+                    "virtual": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     }
                 },
                 "type": "object"

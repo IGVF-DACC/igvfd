@@ -40,6 +40,9 @@ def primary_cell():
             'status': {
                 'title': 'Status'
             },
+            'virtual': {
+                'title': 'Virtual'
+            }
         },
         'facet_groups': [
             {
@@ -101,6 +104,9 @@ def primary_cell():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'virtual': {
+                'title': 'Virtual'
             }
         }
     }

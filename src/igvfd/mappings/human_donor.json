@@ -1,6 +1,6 @@
 {
-    "hash": "0d4c039ace402ee5451440a1ed530b1a",
-    "index_name": "human_donor_0d4c039a",
+    "hash": "84283c6f5c1630e70915b2d6c1b20c7d",
+    "index_name": "human_donor_84283c6f",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -431,6 +431,15 @@
                     },
                     "uuid": {
                         "type": "keyword"
+                    },
+                    "virtual": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     }
                 },
                 "type": "object"

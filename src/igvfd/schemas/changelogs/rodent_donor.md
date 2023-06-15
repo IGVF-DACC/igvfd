@@ -1,5 +1,9 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Schema version 8
+
+* Add `virtual`.
+
 ### Schema version 7
 
 * Remove `parents`.

@@ -184,3 +184,14 @@ def whole_organism_human(testapp, lab, source, award, human_donor, sample_term_w
         'biosample_term': sample_term_whole_organism['@id']
     }
     return testapp.post_json('/whole_organism', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def whole_organism_v13(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '13',
+        'taxa': 'Homo sapiens',
+        'notes': ''
+    })
+    return item
