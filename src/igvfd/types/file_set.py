@@ -48,7 +48,7 @@ class FileSet(Item):
         return paths_filtered_by_status(request, files)
 
     @calculated_property(schema={
-        'title': 'File sets controlled by this file set,
+        'title': 'File sets controlled by this file set',
         'type': 'array',
         'items': {
             'type': ['string', 'object'],
