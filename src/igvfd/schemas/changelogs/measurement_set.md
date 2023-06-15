@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Add `delivery`.
 * Add `files`.
 
 ### Schema version 4
