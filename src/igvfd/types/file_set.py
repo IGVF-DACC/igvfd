@@ -193,3 +193,16 @@ class Model(FileSet):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]
+
+
+@collection(
+    name='auxiliary-sets',
+    unique_key='accession',
+    properties={
+        'title': 'Auxiliary Sets',
+        'description': 'Listing of auxiliary sets',
+    })
+class AuxiliarySet(FileSet):
+    item_type = 'auxiliary_set'
+    schema = load_schema('igvfd:schemas/auxiliary_set.json')
+    embedded_with_frame = FileSet.embedded_with_frame
