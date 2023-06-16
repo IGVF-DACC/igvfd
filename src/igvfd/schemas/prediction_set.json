@@ -37,6 +37,11 @@
             "$ref": "mixins.json#/references"
         }
     ],
+    "dependentSchemas": {
+        "$merge": [
+            "file_set.json#/dependentSchemas"
+        ]
+    },
     "properties": {
         "schema_version": {
             "default": "1"

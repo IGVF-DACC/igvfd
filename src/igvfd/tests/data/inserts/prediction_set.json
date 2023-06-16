@@ -16,7 +16,7 @@
             "igvf:prediction_set_2"
         ],
         "submitter_comment": "Comment for a prediction set.",
-        "description": "A cprediction set with a sample.",
+        "description": "A prediction set with a sample.",
         "prediction_type": "functional effect",
         "samples": [
             "igvf:treated_tissue"

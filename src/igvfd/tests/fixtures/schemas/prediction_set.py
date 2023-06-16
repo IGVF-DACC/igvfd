@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def base_prediction_set(testapp, lab, award):
+def base_prediction_set(testapp, lab, award, in_vitro_cell_line):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],

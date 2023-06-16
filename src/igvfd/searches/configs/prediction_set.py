@@ -36,9 +36,12 @@ def cell_line():
             'prediction_type': {
                 'title': 'Prediction Type'
             },
-            'samples': {
-                'title': 'Samples'
-            }
+            'sample': {
+                'title': 'Sample'
+            },
+            'donor': {
+                'title': 'Donor'
+            },
         }
 
     }
