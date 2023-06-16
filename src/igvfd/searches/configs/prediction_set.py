@@ -36,11 +36,11 @@ def cell_line():
             'prediction_type': {
                 'title': 'Prediction Type'
             },
-            'sample': {
-                'title': 'Sample'
+            'samples': {
+                'title': 'Samples'
             },
-            'donor': {
-                'title': 'Donor'
+            'donors': {
+                'title': 'Donors'
             },
         }
 
