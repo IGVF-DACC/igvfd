@@ -57,3 +57,45 @@ def test_audit_sample_virtual_donor_check(
         error['category'] == 'inconsistent sample metadata'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_virtual_sample_linked_to_non_virtual_sample_with_array_property(
+    testapp,
+    primary_cell_with_pooled_from
+):
+    # Non-virtual samples should not be linked to virtual samples
+    res = testapp.get(primary_cell_with_pooled_from['@id'] + '@@index-data')
+    assert any(
+        error['category'] == 'virtual sample linked to non-virtual sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        primary_cell_with_pooled_from['@id'],
+        {'virtual': False}
+    )
+    res = testapp.get(primary_cell_with_pooled_from['@id'] + '@@index-data')
+    assert all(
+        error['category'] != 'virtual sample linked to non-virtual sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_non_virtual_sample_linked_to_virtual_sample_with_single_property(
+    testapp,
+    primary_cell_with_part_of_virtual_true
+):
+    # Non-virtual samples should not be linked to virtual samples
+    res = testapp.get(primary_cell_with_part_of_virtual_true['@id'] + '@@index-data')
+    assert any(
+        error['category'] == 'non-virtual sample linked to virtual sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        primary_cell_with_part_of_virtual_true['@id'],
+        {'virtual': True}
+    )
+    res = testapp.get(primary_cell_with_part_of_virtual_true['@id'] + '@@index-data')
+    assert all(
+        error['category'] != 'non-virtual sample linked to virtual sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )

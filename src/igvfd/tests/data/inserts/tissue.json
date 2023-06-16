@@ -68,7 +68,7 @@
             "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/",
             "/tissues/984a5f8e-c751-11ec-9d64-0242ac120002/"
         ],
-        "virtual": false
+        "virtual": true
     },
     {
         "uuid": "fd5524f2-0303-11ed-b939-0242ac120002",
@@ -119,7 +119,7 @@
         "upper_bound_age": 20,
         "age_units": "day",
         "embryonic": true,
-        "virtual": false
+        "virtual": true
     },
     {
         "uuid": "03677dc2-b6ff-11ed-afa1-0242ac120002",
@@ -144,7 +144,7 @@
         "embryonic": true,
         "sorted_fraction": "/tissue/8183c760-0304-11ed-b939-0242ac120002/",
         "sorted_fraction_detail": "FACS 10% expression of CTCF-GFP 1",
-        "virtual": false
+        "virtual": true
     },
     {
         "uuid": "56f89d18-b6ff-11ed-afa1-0242ac120002",

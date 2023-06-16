@@ -8,19 +8,21 @@ def primary_cell(testapp, other_lab, award, human_donor, sample_term_pluripotent
         'lab': other_lab['@id'],
         'source': other_lab['@id'],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_pluripotent_stem_cell['@id']
+        'biosample_term': sample_term_pluripotent_stem_cell['@id'],
+        'virtual': True
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
 
 
 @pytest.fixture
-def pooled_from_primary_cell(testapp, lab, award, source, human_donor, sample_term_pluripotent_stem_cell):
+def pooled_from_primary_cell(testapp, lab, award, source, human_donor, sample_term_pluripotent_stem_cell, primary_cell):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_pluripotent_stem_cell['@id']
+        'biosample_term': sample_term_pluripotent_stem_cell['@id'],
+        'virtual': False,
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
 
@@ -32,7 +34,36 @@ def pooled_from_primary_cell_2(testapp, lab, award, source, human_donor, sample_
         'lab': lab['@id'],
         'source': source['@id'],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_pluripotent_stem_cell['@id']
+        'biosample_term': sample_term_pluripotent_stem_cell['@id'],
+        'virtual': False,
+    }
+    return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def primary_cell_with_pooled_from(testapp, other_lab, award, human_donor, sample_term_pluripotent_stem_cell, pooled_from_primary_cell, pooled_from_primary_cell_2):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'source': other_lab['@id'],
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_pluripotent_stem_cell['@id'],
+        'virtual': True,
+        'pooled_from': [pooled_from_primary_cell['@id'], pooled_from_primary_cell_2['@id']]
+    }
+    return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def primary_cell_with_part_of_virtual_true(testapp, other_lab, award, human_donor, sample_term_pluripotent_stem_cell, primary_cell):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'source': other_lab['@id'],
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_pluripotent_stem_cell['@id'],
+        'virtual': False,
+        'part_of': primary_cell['@id']
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
 
