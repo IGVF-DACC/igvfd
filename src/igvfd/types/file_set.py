@@ -27,7 +27,7 @@ class FileSet(Item):
     schema = load_schema('igvfd:schemas/file_set.json')
     rev = {
         'files': ('File', 'file_set'),
-        'control_of': ('FileSet', 'control_file_sets')
+        'control_for': ('FileSet', 'control_file_sets')
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
@@ -56,8 +56,8 @@ class FileSet(Item):
         },
         'notSubmittable': True
     })
-    def control_of(self, request, control_of):
-        return paths_filtered_by_status(request, control_of)
+    def control_for(self, request, control_for):
+        return paths_filtered_by_status(request, control_for)
 
 
 @collection(
