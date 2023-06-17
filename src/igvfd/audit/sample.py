@@ -60,43 +60,41 @@ def audit_sample_virtual_donor_check(value, system):
 @audit_checker('Sample', frame='object')
 def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
     '''Non-virtual samples should not be linked to virtual samples'''
-    is_virtual = value.get('virtual', False)
-    # set up category for audit created later
-    if is_virtual:
-        audit_category = 'virtual sample linked to non-virtual sample'
-        audit_detail_body = 'is virtual'
-        audit_detail_end = 'that is not virtual'
-    else:
-        audit_category = 'non-virtual sample linked to virtual sample'
-        audit_detail_body = 'is not virtual'
-        audit_detail_end = 'that is virtual'
-    value_id = system.get('path')
-    current_type_name = value['@type'][0]
-    # list of properties to check:  Add to this list for additional linked objects with virtual property
+    sample_id = system.get('path')
+    sample_is_virtual = value.get('virtual', False)
     properties_to_check = ['sorted_fraction', 'part_of', 'pooled_from', 'originated_from']
     for current_property_name in properties_to_check:
         current_property_value = value.get(current_property_name, None)
         if current_property_value:
-            # check if property is a list
             if isinstance(current_property_value, list):
-                # the property is a list of linked samples
                 for current_property_id in current_property_value:
-                    linked_data = system.get('request').embed(current_property_id + '@@object?skip_calculated=true')
-                    if linked_data.get('virtual', False) != is_virtual:
-                        detail = (
-                            f'{current_type_name} {audit_link(path_to_text(value_id), value_id)} '
-                            f'{audit_detail_body} and has a linked {current_property_name} '
-                            f'({audit_link(path_to_text(current_property_id), current_property_id)}) {audit_detail_end}.'
-                        )
-                        yield AuditFailure(audit_category, detail, level='ERROR')
+                    audit_failure = raise_audit_failure_if_not_match_virtual(
+                        system, sample_id, sample_is_virtual, current_property_id, current_property_name)
+                    if audit_failure:
+                        yield audit_failure
             else:
-                # the property is a single linked sample
-                current_property_id = current_property_value
-                linked_data = system.get('request').embed(current_property_id + '@@object?skip_calculated=true')
-                if linked_data.get('virtual', False) != is_virtual:
-                    detail = (
-                        f'{current_type_name} {audit_link(path_to_text(value_id), value_id)} '
-                        f'{audit_detail_body} and has a linked {current_property_name} '
-                        f'({audit_link(path_to_text(current_property_id), current_property_id)}) {audit_detail_end}.'
-                    )
-                    yield AuditFailure(audit_category, detail, level='ERROR')
+                audit_failure = raise_audit_failure_if_not_match_virtual(
+                    system, sample_id, sample_is_virtual, current_property_value, current_property_name)
+                if audit_failure:
+                    yield audit_failure
+
+
+def raise_audit_failure_if_not_match_virtual(system, sample_id, sample_is_virtual, current_property_id, current_property_name):
+    linked_data = system.get('request').embed(current_property_id + '@@object?skip_calculated=true')
+    if linked_data.get('virtual', False) != sample_is_virtual:
+        if sample_is_virtual:
+            audit_category = 'virtual sample linked to non-virtual sample'
+            audit_detail_body = 'is virtual'
+            audit_detail_end = 'that is not virtual'
+        else:
+            audit_category = 'non-virtual sample linked to virtual sample'
+            audit_detail_body = 'is not virtual'
+            audit_detail_end = 'that is virtual'
+        detail = (
+            f'Sample {audit_link(path_to_text(sample_id), sample_id)} '
+            f'{audit_detail_body} and has a linked {current_property_name} '
+            f'({audit_link(path_to_text(current_property_id), current_property_id)}) {audit_detail_end}.'
+        )
+        return AuditFailure(audit_category, detail, level='ERROR')
+    else:
+        return None
