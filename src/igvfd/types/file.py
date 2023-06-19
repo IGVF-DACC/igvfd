@@ -213,7 +213,7 @@ class SequenceData(File):
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
-        if properties.get('status') != 'replaced':
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
             if 'md5sum' in properties:
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
@@ -241,7 +241,7 @@ class ReferenceData(File):
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
-        if properties.get('status') != 'replaced':
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
             if 'md5sum' in properties:
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
@@ -263,7 +263,7 @@ class SequenceFile(File):
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
-        if properties.get('status') != 'replaced':
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
             if 'md5sum' in properties:
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
@@ -296,7 +296,7 @@ class ReferenceFile(File):
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
-        if properties.get('status') != 'replaced':
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
             if 'md5sum' in properties:
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
@@ -318,7 +318,7 @@ class AlignmentFile(File):
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
-        if properties.get('status') != 'replaced':
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
             if 'md5sum' in properties:
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
@@ -364,7 +364,7 @@ class SignalFile(File):
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
-        if properties.get('status') != 'replaced':
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
             if 'md5sum' in properties:
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
