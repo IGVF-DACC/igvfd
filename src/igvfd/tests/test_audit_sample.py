@@ -30,20 +30,26 @@ def test_audit_sample_sorted_fraction_parent_child_check(
 
 
 def test_audit_sample_virtual_donor_check(
-    testapp, human_donor, tissue
+    testapp, human_donor, rodent_donor, tissue
 ):
     # A non-virtual sample should not be linked to a virtual donor.
     testapp.patch_json(
         human_donor['@id'],
         {
-            'virtual': 'True'
+            'virtual': True
+        }
+    ),
+    testapp.patch_json(
+        rodent_donor['@id'],
+        {
+            'virtual': True
         }
     )
     testapp.patch_json(
         tissue['@id'],
         {
-            'virtual': 'False',
-            'donors': [human_donor['@id']]
+            'virtual': False,
+            'donors': [human_donor['@id'], rodent_donor['@id']]
         }
     )
     res = testapp.get(tissue['@id'] + '@@index-data')
