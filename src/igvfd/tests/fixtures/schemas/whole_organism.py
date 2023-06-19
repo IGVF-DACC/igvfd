@@ -196,6 +196,7 @@ def whole_organism_v13(whole_organism):
     })
     return item
 
+
 @pytest.fixture
 def whole_organism_v14(whole_organism):
     item = whole_organism.copy()
@@ -205,4 +206,3 @@ def whole_organism_v14(whole_organism):
         'pooled_from': 'Null'
     })
     return item
-
