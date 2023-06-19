@@ -1,6 +1,6 @@
 ## Changelog for *`human_donor.json`*
 
-### Minor changes since schema version 9
+### Schema version 10
 
 * Rename `human_donor_identifier` to `human_donor_identifiers`.
 
