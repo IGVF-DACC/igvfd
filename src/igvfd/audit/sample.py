@@ -37,7 +37,7 @@ def audit_sample_sorted_fraction_parent_child_check(value, system):
             yield AuditFailure('inconsistent sorted fraction metadata', detail, level='ERROR')
 
 
-@audit_checker('Sample', frame='object?skip_calculated=true')
+@audit_checker('Sample', frame='object')
 def audit_sample_virtual_donor_check(value, system):
     '''Non-virtual samples should not be linked to virtual donors.'''
     if 'virtual' and 'donors' in value:
@@ -46,25 +46,22 @@ def audit_sample_virtual_donor_check(value, system):
         donor_ids = value.get('donors')
         donors_error = []
         for d in donor_ids:
-            donor_object = system.get('request').embed(d + '@@object?skip_calculated=true')
+            donor_object = system.get('request').embed(d + '@@object')
             donor_id = donor_object.get('@id')
             donor_virtual = donor_object.get('virtual', False)
-            if (sample_virtual == 'True') and (donor_virtual == 'True'):  # both virtual = okay
-                print('donor and sample both virtual')  # pass
+            if (sample_virtual == True) and (donor_virtual == True):
+                pass
 
-            if (sample_virtual == 'True') and (donor_virtual == 'False'):  # if virtual sample is linked to a non-virtual donor = okay
-                print('Sample is virtual and donor is real...')
+            if (sample_virtual == True) and (donor_virtual == False):
+                pass
 
-            if (sample_virtual == 'False') and (donor_virtual == 'True'):  # if non-virtual sample is linked to virtual donor = not okay
-                print('Sample is real and donor is virtual...')
+            if (sample_virtual == False) and (donor_virtual == True):
                 donors_error.append(donor_id)
 
-            if (sample_virtual == 'False') and (donor_virtual == 'False'):  # both real = okay
-                print('Sample and donor are both real')  # pass
+            if (sample_virtual == False) and (donor_virtual == False):
+                pass
 
         if len(donors_error) > 0:
-            donors_error_str = ''
-            donors_error_str.append(d for d in donors_error)
-            print(donors_error_str)
-            detail = f'Non-virtual sample {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual donor(s) {audit_link(path_to_text(donors_error_str),donors_error_str)}'
+            detail = (f"Non-virtual sample {audit_link(sample_id, value['@id'])} is linked to virtual donor(s):"
+                      f'{[audit_link(path_to_text(d_id),d_id) for d_id in donors_error]}')
             yield AuditFailure('non-virtual sample linked to virtual donor', detail, level='ERROR')
