@@ -68,18 +68,18 @@ def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
         if current_property_value:
             if isinstance(current_property_value, list):
                 for current_property_id in current_property_value:
-                    audit_failure = raise_audit_failure_if_not_match_virtual(
+                    audit_failure = get_virtual_sample_failures(
                         system, sample_id, sample_is_virtual, current_property_id, current_property_name)
                     if audit_failure:
                         yield audit_failure
             else:
-                audit_failure = raise_audit_failure_if_not_match_virtual(
+                audit_failure = get_virtual_sample_failures(
                     system, sample_id, sample_is_virtual, current_property_value, current_property_name)
                 if audit_failure:
                     yield audit_failure
 
 
-def raise_audit_failure_if_not_match_virtual(system, sample_id, sample_is_virtual, current_property_id, current_property_name):
+def get_virtual_sample_failures(system, sample_id, sample_is_virtual, current_property_id, current_property_name):
     linked_data = system.get('request').embed(current_property_id + '@@object?skip_calculated=true')
     if linked_data.get('virtual', False) != sample_is_virtual:
         if sample_is_virtual:
