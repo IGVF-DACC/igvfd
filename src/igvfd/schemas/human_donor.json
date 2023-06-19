@@ -135,7 +135,7 @@
                 "Homo sapiens"
             ]
         },
-        "human_donor_identifier": {
+        "human_donor_identifiers": {
             "title": "Human Donor Identifier",
             "type": "array",
             "description": "Identifiers of this human donor.",
