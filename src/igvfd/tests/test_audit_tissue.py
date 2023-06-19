@@ -52,3 +52,14 @@ def test_audit_tissue_ccf_id(
         error['category'] == 'unexpected ccf_id'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_tissue_age(
+    testapp,
+    tissue
+):
+    res = testapp.get(tissue['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing age properties'
+        for error in res.json['audit'].get('WARNING', [])
+    )
