@@ -19,6 +19,6 @@
         "output_content_types": [
             "alignments"
         ],
-        "major_version": 1
+        "workflow": ""
     }
 ]

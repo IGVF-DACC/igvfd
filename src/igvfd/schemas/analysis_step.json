@@ -9,7 +9,7 @@
         "step_label",
         "analysis_step_types",
         "input_content_types",
-        "major_version"
+        "workflow"
     ],
     "identifyingProperties": [
         "uuid",
@@ -60,11 +60,11 @@
             "type": "string",
             "pattern": "^[a-zA-Z\\d_().,-]+(?:\\s[a-zA-Z\\d_().,-]+)*[step|Step]$"
         },
-        "major_version": {
-            "title": "Major Version",
-            "description": "The major version of the analysis step.",
-            "type": "integer",
-            "minimum": 1
+        "workflow": {
+            "title": "Workflow",
+            "description": "The computational workflow in which this analysis step belongs.",
+            "type": "string",
+            "linkTo": "Workflow"
         },
         "parents": {
             "title": "Parents",

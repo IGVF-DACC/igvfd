@@ -33,7 +33,7 @@ class AnalysisStep(Item):
     @calculated_property(schema={
         'title': 'Name',
         'type': 'string',
-        'description': 'Full name of the analysis step with major version number.',
+        'description': 'Full name of the analysis step.',
         'comment': 'Do not submit. Value is automatically assigned by the server.',
         'uniqueKey': 'name'
     })
@@ -46,4 +46,4 @@ class AnalysisStep(Item):
         return self._name(properties)
 
     def _name(self, properties):
-        return u'{}-v-{}'.format(properties['step_label'], properties['major_version'])
+        return u'{}-{}'.format(properties['workflow'], properties['step_label'])
