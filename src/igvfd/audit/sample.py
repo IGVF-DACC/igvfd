@@ -65,7 +65,7 @@ def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
     links_to_check = [
         value.get('part_of', None),
         value.get('originated_from', None),
-        value.get('fraction', None),
+        value.get('sorted_fraction', None),
     ]
     links_to_check.extend(value.get('pooled_from', []))
     for linked_sample in links_to_check:
