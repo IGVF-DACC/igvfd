@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Add `nucleic_acid_delivery`.
 * Add `files`.
 
 ### Schema version 4

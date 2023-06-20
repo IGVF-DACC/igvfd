@@ -52,3 +52,17 @@ def test_seqspec_pattern(testapp, measurement_set):
         expect_errors=True
     )
     assert res.status_code == 422
+
+
+def test_nucleic_acid_delivery_success(testapp, measurement_set):
+    res = testapp.patch_json(
+        measurement_set['@id'],
+        {'nucleic_acid_delivery': 'adenoviral transduction'})
+    assert res.status_code == 200
+
+
+def test_nucleic_acid_delivery_fail(testapp, measurement_set):
+    res = testapp.patch_json(
+        measurement_set['@id'],
+        {'nucleic_acid_delivery': 'Something not in the enum list'}, expect_errors=True)
+    assert res.status_code == 422

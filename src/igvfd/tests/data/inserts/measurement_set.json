@@ -20,7 +20,8 @@
         "dbxrefs": [
             "GEO:GSE187549"
         ],
-        "library_construction_platform": "9ed48993-8f87-f432-42ac-c34a0f5caa20"
+        "library_construction_platform": "9ed48993-8f87-f432-42ac-c34a0f5caa20",
+        "nucleic_acid_delivery": "transfection"
     },
     {
         "aliases": [
@@ -34,7 +35,8 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
-        "multiome_size": 2
+        "multiome_size": 2,
+        "nucleic_acid_delivery": "adenoviral transduction"
     },
     {
         "aliases": [

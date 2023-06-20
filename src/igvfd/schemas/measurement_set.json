@@ -120,6 +120,16 @@
             "type": "string",
             "format": "uri",
             "pattern": "^https?://github\\.com/IGVF/seqspec/blob/main/assays/\\S+/spec\\.yaml$"
+        },
+        "nucleic_acid_delivery": {
+            "title": "Nucleic Acid Delivery",
+            "description": "Method of introduction of nucleic acid into the cell.",
+            "type": "string",
+            "enum": [
+                "transfection",
+                "adenoviral transduction",
+                "lentiviral transduction"
+            ]
         }
     },
     "fuzzy_searchable_fields": [
