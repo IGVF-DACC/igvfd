@@ -80,6 +80,7 @@ config: Dict[str, Any] = {
                                 data_nodes=1,
                             ),
                             'volume_size': 10,
+                            'logging': False,
                         }
                     }
                 ],
