@@ -43,6 +43,7 @@ class OpensearchProps:
     zone_awareness: ZoneAwarenessConfig = ZoneAwarenessConfig(
         enabled=False,
     )
+    logging: bool = True
 
 
 class Opensearch(Construct):
@@ -79,9 +80,9 @@ class Opensearch(Construct):
                 volume_size=self.props.volume_size,
             ),
             logging=LoggingOptions(
-                app_log_enabled=True,
-                slow_index_log_enabled=True,
-                slow_search_log_enabled=True,
+                app_log_enabled=self.props.logging,
+                slow_index_log_enabled=self.props.logging,
+                slow_search_log_enabled=self.props.logging,
             ),
             removal_policy=RemovalPolicy.DESTROY,
             vpc=self.props.existing_resources.network.vpc,
