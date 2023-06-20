@@ -2,9 +2,9 @@ from snovault.elasticsearch.searches.configs import search_config
 
 
 @search_config(
-    name='Model'
+    name='Workflow'
 )
-def model():
+def workflow():
     return {
         'facets': {
             'collections': {

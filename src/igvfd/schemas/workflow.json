@@ -56,14 +56,14 @@
         },
         "workflow_repositories": {
             "title": "Workflow Repositories",
-            "description": "Repository links for the workflow other than the code base in github.",
-            "comment": "Submit the code base github link in `source_url`.",
+            "description": "Resources hosting the workflow.",
+            "comment": "For example, a dockstore link. Submit the code base github link in `source_url`.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Respository",
-                "description": "Repository link for the workflow other than the code base in github.",
+                "description": "Resource hosting the workflow.",
                 "type": "string",
                 "format": "uri"
             }
