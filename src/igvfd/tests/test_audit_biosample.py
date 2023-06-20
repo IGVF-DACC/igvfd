@@ -7,7 +7,7 @@ def test_audit_biosample_nih_institutional_certification(
     human_donor,
     rodent_donor,
 ):
-    res = testapp.get(primary_cell['@id'] + '@@index-data')
+    res = testapp.get(primary_cell['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing nih_institutional_certification'
         for error in res.json['audit'].get('ERROR', [])
@@ -19,7 +19,7 @@ def test_audit_biosample_nih_institutional_certification(
                        rodent_donor['@id']]
         }
     )
-    res = testapp.get(primary_cell['@id'] + '@@index-data')
+    res = testapp.get(primary_cell['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing nih_institutional_certification'
         for error in res.json['audit'].get('ERROR', [])
@@ -30,7 +30,7 @@ def test_audit_biosample_nih_institutional_certification(
             'nih_institutional_certification': 'NIC00042'
         }
     )
-    res = testapp.get(primary_cell['@id'] + '@@index-data')
+    res = testapp.get(primary_cell['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing nih_institutional_certification'
         for error in res.json['audit'].get('ERROR', [])
@@ -45,7 +45,7 @@ def test_audit_biosample_taxa_check(testapp, tissue, rodent_donor, human_donor, 
                                    human_donor['@id'],
                                    human_male_donor['@id']]}
                        )
-    res = testapp.get(tissue['@id'] + '@@index-data')
+    res = testapp.get(tissue['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent donor taxa'
         for error in res.json['audit'].get('ERROR', [])
@@ -54,7 +54,7 @@ def test_audit_biosample_taxa_check(testapp, tissue, rodent_donor, human_donor, 
                        {'donors': [human_donor['@id'],
                                    human_male_donor['@id']]}
                        )
-    res = testapp.get(tissue['@id'] + '@@index-data')
+    res = testapp.get(tissue['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent donor taxa'
         for error in res.json['audit'].get('ERROR', [])
@@ -62,7 +62,7 @@ def test_audit_biosample_taxa_check(testapp, tissue, rodent_donor, human_donor, 
     testapp.patch_json(tissue['@id'],
                        {'donors': [human_donor['@id']]}
                        )
-    res = testapp.get(tissue['@id'] + '@@index-data')
+    res = testapp.get(tissue['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent donor taxa'
         for error in res.json['audit'].get('ERROR', [])

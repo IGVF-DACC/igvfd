@@ -3,7 +3,7 @@ import pytest
 
 def test_audit_whole_organism_human_taxa(
         testapp, whole_organism_human, human_donor, rodent_donor):
-    res = testapp.get(whole_organism_human['@id'] + '@@index-data')
+    res = testapp.get(whole_organism_human['@id'] + '@@audit')
     assert any(
         error['category'] == 'incorrect taxa'
         for error in res.json['audit'].get('ERROR', [])
@@ -12,7 +12,7 @@ def test_audit_whole_organism_human_taxa(
                        {'donors': [rodent_donor['@id'],
                                    human_donor['@id']]}
                        )
-    res = testapp.get(whole_organism_human['@id'] + '@@index-data')
+    res = testapp.get(whole_organism_human['@id'] + '@@audit')
     assert any(
         error['category'] == 'incorrect taxa'
         for error in res.json['audit'].get('ERROR', [])

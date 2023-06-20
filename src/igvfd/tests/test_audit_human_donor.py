@@ -16,7 +16,7 @@ def test_audit_related_donors(
                                {'donor': parent_human_donor_1['@id'], 'relationship_type': 'second cousin'}]
         }
     )
-    res = testapp.get(human_donor['@id'] + '@@index-data')
+    res = testapp.get(human_donor['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent related donors metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -37,7 +37,7 @@ def test_audit_related_donors(
             'related_donors': [{'donor': parent_human_donor_2['@id'], 'relationship_type': 'child'}]
         }
     )
-    res = testapp.get(human_donor['@id'] + '@@index-data')
+    res = testapp.get(human_donor['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent related donors metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -52,7 +52,7 @@ def test_audit_related_donors(
             'related_donors': [{'donor': human_donor['@id'], 'relationship_type': 'child'}]
         }
     )
-    res = testapp.get(human_donor['@id'] + '@@index-data')
+    res = testapp.get(human_donor['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent related donors metadata'
         for error in res.json['audit'].get('ERROR', [])
@@ -65,7 +65,7 @@ def test_audit_related_donors(
                                {'donor': parent_human_donor_2['@id'], 'relationship_type': 'second cousin'}]
         }
     )
-    res = testapp.get(human_donor['@id'] + '@@index-data')
+    res = testapp.get(human_donor['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent related donors metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -88,7 +88,7 @@ def test_audit_related_donors(
                                {'donor': parent_human_donor_1['@id'], 'relationship_type': 'second cousin'}]
         }
     )
-    res = testapp.get(human_donor['@id'] + '@@index-data')
+    res = testapp.get(human_donor['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent related donors metadata'
         for error in res.json['audit'].get('WARNING', [])
