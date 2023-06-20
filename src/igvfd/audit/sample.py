@@ -62,40 +62,31 @@ def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
     '''Non-virtual samples should not be linked to virtual samples'''
     sample_id = system.get('path')
     sample_is_virtual = value.get('virtual', False)
-    linked_samples = ['sorted_fraction', 'part_of', 'pooled_from', 'originated_from']
-    for linked_sample_name in linked_samples:
-        linked_sample_ids = value.get(linked_sample_name, None)
-        if linked_sample_ids:
-            if isinstance(linked_sample_ids, list):
-                for linked_sample_id in linked_sample_ids:
-                    audit_failure = get_virtual_sample_failures(
-                        system,
-                        sample_id,
-                        sample_is_virtual,
-                        linked_sample_id,
-                        linked_sample_name
-                    )
-                    if audit_failure:
-                        yield audit_failure
-            else:
-                audit_failure = get_virtual_sample_failures(
-                    system,
-                    sample_id,
-                    sample_is_virtual,
-                    linked_sample_ids,
-                    linked_sample_name
-                )
-                if audit_failure:
-                    yield audit_failure
+    links_to_check = [
+        value.get('part_of', None),
+        value.get('originated_from', None),
+        value.get('fraction', None),
+    ]
+    links_to_check.extend(value.get('pooled_from', []))
+    for linked_sample in links_to_check:
+        audit_failure = get_virtual_sample_failures(
+            system,
+            sample_id,
+            sample_is_virtual,
+            linked_sample
+        )
+        if audit_failure:
+            yield audit_failure
 
 
 def get_virtual_sample_failures(
     system,
     sample_id,
     sample_is_virtual,
-    linked_sample_id,
-    linked_sample_name
+    linked_sample_id
 ):
+    if not linked_sample_id:
+        return None
     linked_data = system.get('request').embed(linked_sample_id + '@@object?skip_calculated=true')
     if linked_data.get('virtual', False) != sample_is_virtual:
         if sample_is_virtual:
@@ -108,7 +99,7 @@ def get_virtual_sample_failures(
             audit_detail_end = 'that is virtual'
         detail = (
             f'Sample {audit_link(path_to_text(sample_id), sample_id)} '
-            f'{audit_detail_body} and has a linked {linked_sample_name} '
+            f'{audit_detail_body} and has a linked sample '
             f'({audit_link(path_to_text(linked_sample_id), linked_sample_id)}) {audit_detail_end}.'
         )
         return AuditFailure(audit_category, detail, level='ERROR')
