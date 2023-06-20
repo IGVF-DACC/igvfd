@@ -12,9 +12,18 @@
         "biosample_term"
     ],
     "not": {
-        "required": [
-            "part_of",
-            "pooled_from"
+        "comment": "Whole organisms should not specify part_of or pooled_from.",
+        "anyOf": [
+            {
+                "required": [
+                    "part_of"
+                ]
+            },
+            {
+                "required": [
+                    "pooled_from"
+                ]
+            }
         ]
     },
     "identifyingProperties": [
