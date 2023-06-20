@@ -14,9 +14,17 @@
     ],
     "not": {
         "comment": "Model file sets should not specify any donors or samples.",
-        "required": [
-            "donors",
-            "samples"
+        "anyOf": [
+            {
+                "required": [
+                    "samples"
+                ]
+            },
+            {
+                "required": [
+                    "donors"
+                ]
+            }
         ]
     },
     "identifyingProperties": [
@@ -74,7 +82,7 @@
             ]
         },
         "prediction_objects": {
-            "title": "Predicition Objects",
+            "title": "Prediction Objects",
             "description": "The objects this predictive model is targeting.",
             "type": "array",
             "uniqueItems": true,
@@ -110,6 +118,12 @@
             "description": "The link to the model on the Kipoi repository.",
             "type": "string",
             "pattern": "^https?://kipoi\\.org/models/(\\S+)$"
+        },
+        "software_version": {
+            "title": "Software Version",
+            "description": "Version of software used for the derivation of this model.",
+            "type": "string",
+            "linkTo": "SoftwareVersion"
         }
     },
     "fuzzy_searchable_fields": [
