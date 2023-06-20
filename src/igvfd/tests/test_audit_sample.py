@@ -54,6 +54,6 @@ def test_audit_sample_virtual_donor_check(
     )
     res = testapp.get(tissue['@id'] + '@@index-data')
     assert any(
-        error['category'] == 'non-virtual sample linked to virtual donor'
+        error['category'] == 'inconsistent sample metadata'
         for error in res.json['audit'].get('ERROR', [])
     )
