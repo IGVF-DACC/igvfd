@@ -275,5 +275,8 @@
     "hosted-zone:account=035226225042:domainName=data.igvf.org:region=us-west-2": {
         "Id": "/hostedzone/Z05697883BK6NSVEQKECD",
         "Name": "data.igvf.org."
-    }
+    },
+    "acknowledged-issue-numbers": [
+        25356
+    ]
 }
