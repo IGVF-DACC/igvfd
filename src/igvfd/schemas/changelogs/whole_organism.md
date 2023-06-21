@@ -2,7 +2,7 @@
 
 ### Schema version 15
 
-* Disallow `part_of` and `pooled_from` using not required.
+* Disallow `part_of` and `pooled_from`.
 
 ### Schema version 14
 
