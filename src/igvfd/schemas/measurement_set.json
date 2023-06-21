@@ -138,7 +138,6 @@
             "description": "File sets that can serve as scientific controls for this measurement_set.",
             "type": "array",
             "minimum": 1,
-            "default": [],
             "uniqueItems": true,
             "items": {
                 "title": "Control",
