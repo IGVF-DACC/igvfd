@@ -136,7 +136,7 @@
             ]
         },
         "human_donor_identifiers": {
-            "title": "Human Donor Identifier",
+            "title": "Human Donor Identifiers",
             "type": "array",
             "description": "Identifiers of this human donor.",
             "minItems": 1,
@@ -153,7 +153,7 @@
         "dbxrefs",
         "taxa",
         "ethnicities",
-        "human_donor_identifier"
+        "human_donor_identifiers"
     ],
     "exact_searchable_fields": [
         "@type"
