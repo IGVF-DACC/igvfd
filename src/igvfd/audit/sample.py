@@ -40,7 +40,7 @@ def audit_sample_sorted_fraction_parent_child_check(value, system):
 @audit_checker('Sample', frame='object')
 def audit_sample_virtual_donor_check(value, system):
     '''Non-virtual samples should not be linked to virtual donors.'''
-    if ('donors' in value) and (value['virtual'] == False):
+    if ('donors' in value) and (value.get('virtual', False) == False):
         sample_id = value['@id']
         donor_ids = value.get('donors', [])
         donors_error = []
