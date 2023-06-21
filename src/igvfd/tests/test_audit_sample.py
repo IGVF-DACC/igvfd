@@ -82,9 +82,14 @@ def test_virtual_sample_linked_to_non_virtual_sample_with_array_property(
 
 def test_non_virtual_sample_linked_to_virtual_sample_with_single_property(
     testapp,
-    primary_cell_with_part_of_virtual_true
+    primary_cell_with_part_of_virtual_true,
+    primary_cell
 ):
     # Non-virtual samples should not be linked to virtual samples
+    testapp.patch_json(
+        primary_cell['@id'],
+        {'virtual': True}
+    )
     res = testapp.get(primary_cell_with_part_of_virtual_true['@id'] + '@@index-data')
     assert any(
         error['category'] == 'non-virtual sample linked to virtual sample'
