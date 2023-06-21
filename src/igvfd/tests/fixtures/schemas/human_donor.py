@@ -197,3 +197,13 @@ def human_donor_v8(human_donor, parent_human_donor_1, parent_human_donor_2):
         ],
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v9(human_donor):
+    item = human_donor.copy()
+    item.update({
+        'schema_version': '9',
+        'human_donor_identifier': ['X cell line donor', 'elvis-1']
+    })
+    return item
