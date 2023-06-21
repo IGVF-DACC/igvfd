@@ -10,7 +10,8 @@
         "model_name",
         "model_type",
         "model_version",
-        "prediction_objects"
+        "prediction_objects",
+        "software_version"
     ],
     "not": {
         "comment": "Model file sets should not specify any donors or samples.",
