@@ -15,7 +15,7 @@ def primary_cell(testapp, other_lab, award, human_donor, sample_term_pluripotent
 
 
 @pytest.fixture
-def pooled_from_primary_cell(testapp, lab, award, source, human_donor, sample_term_pluripotent_stem_cell, primary_cell):
+def pooled_from_primary_cell(testapp, lab, award, source, human_donor, sample_term_pluripotent_stem_cell):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
