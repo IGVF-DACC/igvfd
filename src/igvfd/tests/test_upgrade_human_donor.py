@@ -71,3 +71,11 @@ def test_human_donor_upgrade_8_9(upgrader, human_donor_v8):
     value = upgrader.upgrade('human_donor', human_donor_v8, current_version='8', target_version='9')
     assert value['schema_version'] == '9'
     assert value['virtual'] == False
+
+
+def test_human_donor_upgrade_9_10(upgrader, human_donor_v9):
+    identifiers = human_donor_v9['human_donor_identifier']
+    value = upgrader.upgrade('human_donor', human_donor_v9, current_version='9', target_version='10')
+    print(value)
+    assert 'human_donor_identifier' not in value
+    assert identifiers == value['human_donor_identifiers']
