@@ -36,7 +36,8 @@
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
         "multiome_size": 2,
-        "nucleic_acid_delivery": "adenoviral transduction"
+        "nucleic_acid_delivery": "adenoviral transduction",
+        "preferred_assay_title": "10x multiome"
     },
     {
         "aliases": [
@@ -50,7 +51,8 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
-        "multiome_size": 2
+        "multiome_size": 2,
+        "preferred_assay_title": "10x multiome"
     },
     {
         "aliases": [

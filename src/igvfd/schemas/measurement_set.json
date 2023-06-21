@@ -85,10 +85,12 @@
             "description": "The custom lab preferred label for the experiment performed in this measurement set.",
             "type": "string",
             "enum": [
+                "10x multiome",
                 "Cell painting",
                 "DOGMA-seq",
                 "MERFISH",
                 "MIAA",
+                "MULTI-seq",
                 "Perturb-seq",
                 "Saturation genome editing",
                 "scNT-seq",
