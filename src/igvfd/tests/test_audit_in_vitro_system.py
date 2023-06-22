@@ -11,7 +11,7 @@ def test_audit_targeted_sample_term(
         in_vitro_cell_line['@id'],
         {'targeted_sample_term': sample_term_K562['@id']}
     )
-    res = testapp.get(in_vitro_cell_line['@id'] + '@@index-data')
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent targeted_sample_term'
         for error in res.json['audit'].get('WARNING', [])
@@ -45,7 +45,7 @@ def test_audit_targeted_sample_term(
             'time_post_factors_introduction_units': 'minute'
         }
     )
-    res = testapp.get(in_vitro_cell_line['@id'] + '@@index-data')
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent introduced_factors treatment purpose'
         for error in res.json['audit'].get('ERROR', [])
@@ -62,7 +62,7 @@ def test_audit_targeted_sample_term(
             'purpose': 'de-differentiation'
         }
     )
-    res = testapp.get(in_vitro_cell_line['@id'] + '@@index-data')
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent introduced_factors treatment purpose'
         for error in res.json['audit'].get('ERROR', [])

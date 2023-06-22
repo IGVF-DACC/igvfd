@@ -10,7 +10,7 @@ def test_audit_related_multiome_datasets(
     measurement_set
 ):
     # If `multiome_size` is specified, `related_multiome_datasets` should not be empty.
-    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -21,7 +21,7 @@ def test_audit_related_multiome_datasets(
             'samples': [primary_cell['@id']]
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -32,7 +32,7 @@ def test_audit_related_multiome_datasets(
             'samples': [primary_cell['@id']]
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -50,7 +50,7 @@ def test_audit_related_multiome_datasets(
             'multiome_size': 4
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -67,7 +67,7 @@ def test_audit_related_multiome_datasets(
             'multiome_size': 2
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -79,7 +79,7 @@ def test_audit_related_multiome_datasets(
             'samples': [primary_cell['@id'], in_vitro_cell_line['@id']]
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -90,7 +90,7 @@ def test_audit_related_multiome_datasets(
             'samples': [primary_cell['@id'], in_vitro_cell_line['@id']]
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -108,7 +108,7 @@ def test_audit_related_multiome_datasets(
             'samples': [primary_cell['@id'], in_vitro_cell_line['@id']]
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -125,7 +125,7 @@ def test_audit_related_multiome_datasets(
             'multiome_size': 3
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent multiome metadata'
         for error in res.json['audit'].get('WARNING', [])
@@ -152,7 +152,7 @@ def test_audit_inherit_related_multiome(
             'samples': [primary_cell['@id']]
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing seqspec'
         for error in res.json['audit'].get('WARNING', [])
@@ -163,7 +163,7 @@ def test_audit_inherit_related_multiome(
             'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/10x-ATAC/spec.yaml'
         }
     )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@index-data')
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing seqspec'
         for error in res.json['audit'].get('WARNING', [])
@@ -174,7 +174,7 @@ def test_audit_seqspec(
     testapp,
     measurement_set
 ):
-    res = testapp.get(measurement_set['@id'] + '@@index-data')
+    res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing seqspec'
         for error in res.json['audit'].get('WARNING', [])
@@ -185,7 +185,7 @@ def test_audit_seqspec(
             'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/10x-ATAC/spec.yaml'
         }
     )
-    res = testapp.get(measurement_set['@id'] + '@@index-data')
+    res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing seqspec'
         for error in res.json['audit'].get('WARNING', [])
@@ -196,7 +196,7 @@ def test_audit_protocol(
     testapp,
     measurement_set
 ):
-    res = testapp.get(measurement_set['@id'] + '@@index-data')
+    res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing protocol'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
@@ -207,7 +207,7 @@ def test_audit_protocol(
             'protocol': 'https://www.protocols.io/view/example_protocol'
         }
     )
-    res = testapp.get(measurement_set['@id'] + '@@index-data')
+    res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing protocol'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])

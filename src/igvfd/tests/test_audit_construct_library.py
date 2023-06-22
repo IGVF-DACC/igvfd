@@ -12,7 +12,7 @@ def test_audit_construct_library_associated_disease(
         base_construct_library['@id'],
         {'associated_diseases': [phenotype_term_alzheimers['@id']]}
     )
-    res = testapp.get(base_construct_library['@id'] + '@@index-data')
+    res = testapp.get(base_construct_library['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent variants and ontology metadata'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
@@ -23,7 +23,7 @@ def test_audit_construct_library_associated_disease(
     edited_lib = testapp.get(base_construct_library['@id'] + '@@edit').json
     edited_lib.pop('associated_diseases')
     testapp.put_json(base_construct_library['@id'], edited_lib)
-    res = testapp.get(base_construct_library['@id'] + '@@index-data')
+    res = testapp.get(base_construct_library['@id'] + '@@audit')
     assert 'inconsistent variants and ontology metadata' not in (
         error['category'] for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
@@ -31,7 +31,7 @@ def test_audit_construct_library_associated_disease(
         base_construct_library['@id'],
         {'origins': ['disease-associated variants']}
     )
-    res = testapp.get(base_construct_library['@id'] + '@@index-data')
+    res = testapp.get(base_construct_library['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent variants and ontology metadata'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
@@ -45,7 +45,7 @@ def test_audit_construct_library_plasmid_map(
 ):
     # Every ConstructLibrary should have a "plasmid map" document in
     # the documents property
-    res = testapp.get(base_construct_library['@id'] + '@@index-data')
+    res = testapp.get(base_construct_library['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing plasmid map'
         for error in res.json['audit'].get('WARNING', [])
@@ -55,7 +55,7 @@ def test_audit_construct_library_plasmid_map(
         base_construct_library['@id'],
         {'documents': [plasmid_map_document['@id']]}
     )
-    res = testapp.get(base_construct_library['@id'] + '@@index-data')
+    res = testapp.get(base_construct_library['@id'] + '@@audit')
     assert 'missing plasmid map' not in (
         error['category'] for error in res.json['audit'].get('WARNING', [])
     )
