@@ -66,7 +66,7 @@ def test_virtual_sample_linked_to_non_virtual_sample_with_array_property(
     # Non-virtual samples should not be linked to virtual samples
     res = testapp.get(primary_cell_with_pooled_from['@id'] + '@@index-data')
     assert any(
-        error['category'] == 'virtual sample linked to non-virtual sample'
+        error['category'] == 'inconsistent sample metadata'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -75,7 +75,7 @@ def test_virtual_sample_linked_to_non_virtual_sample_with_array_property(
     )
     res = testapp.get(primary_cell_with_pooled_from['@id'] + '@@index-data')
     assert all(
-        error['category'] != 'virtual sample linked to non-virtual sample'
+        error['category'] != 'inconsistent sample metadata'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -92,7 +92,7 @@ def test_non_virtual_sample_linked_to_virtual_sample_with_single_property(
     )
     res = testapp.get(primary_cell_with_part_of_virtual_true['@id'] + '@@index-data')
     assert any(
-        error['category'] == 'non-virtual sample linked to virtual sample'
+        error['category'] == 'inconsistent sample metadata'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -101,6 +101,6 @@ def test_non_virtual_sample_linked_to_virtual_sample_with_single_property(
     )
     res = testapp.get(primary_cell_with_part_of_virtual_true['@id'] + '@@index-data')
     assert all(
-        error['category'] != 'non-virtual sample linked to virtual sample'
+        error['category'] != 'inconsistent sample metadata'
         for error in res.json['audit'].get('ERROR', [])
     )

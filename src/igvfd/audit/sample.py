@@ -62,11 +62,11 @@ def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
     '''Non-virtual samples should not be linked to virtual samples'''
     sample_id = system.get('path')
     sample_is_virtual = value.get('virtual', False)
-    links_to_check = [
+    links_to_check = [item for item in [
         value.get('part_of', None),
         value.get('originated_from', None),
         value.get('sorted_fraction', None),
-    ]
+    ] if item is not None]
     links_to_check.extend(value.get('pooled_from', []))
     for linked_sample in links_to_check:
         audit_failure = get_virtual_sample_failures(
@@ -85,16 +85,12 @@ def get_virtual_sample_failures(
     sample_is_virtual,
     linked_sample_id
 ):
-    if not linked_sample_id:
-        return None
     linked_data = system.get('request').embed(linked_sample_id + '@@object?skip_calculated=true')
     if linked_data.get('virtual', False) != sample_is_virtual:
         if sample_is_virtual:
-            audit_category = 'virtual sample linked to non-virtual sample'
             audit_detail_body = 'is virtual'
             audit_detail_end = 'that is not virtual'
         else:
-            audit_category = 'non-virtual sample linked to virtual sample'
             audit_detail_body = 'is not virtual'
             audit_detail_end = 'that is virtual'
         detail = (
@@ -102,6 +98,6 @@ def get_virtual_sample_failures(
             f'{audit_detail_body} and has a linked sample '
             f'({audit_link(path_to_text(linked_sample_id), linked_sample_id)}) {audit_detail_end}.'
         )
-        return AuditFailure(audit_category, detail, level='ERROR')
+        return AuditFailure('inconsistent sample metadata', detail, level='ERROR')
     else:
         return None
