@@ -125,3 +125,11 @@ def donor_8_9(value, system):
     # default value for 'virtual' property.
     # The default value will be automatically populated.
     return
+
+
+@upgrade_step('human_donor', '9', '10')
+def human_donor_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-765
+    if 'human_donor_identifier' in value:
+        value['human_donor_identifiers'] = value['human_donor_identifier']
+        del value['human_donor_identifier']

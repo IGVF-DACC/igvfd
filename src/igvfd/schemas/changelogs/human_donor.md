@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 10
+
+* Rename `human_donor_identifier` to `human_donor_identifiers`.
+
 ### Schema version 9
 
 * Add `virtual`.

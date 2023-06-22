@@ -44,7 +44,7 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "9"
+            "default": "10"
         },
         "related_donors": {
             "title": "Related Donors",
@@ -135,8 +135,8 @@
                 "Homo sapiens"
             ]
         },
-        "human_donor_identifier": {
-            "title": "Human Donor Identifier",
+        "human_donor_identifiers": {
+            "title": "Human Donor Identifiers",
             "type": "array",
             "description": "Identifiers of this human donor.",
             "minItems": 1,
@@ -153,7 +153,7 @@
         "dbxrefs",
         "taxa",
         "ethnicities",
-        "human_donor_identifier"
+        "human_donor_identifiers"
     ],
     "exact_searchable_fields": [
         "@type"

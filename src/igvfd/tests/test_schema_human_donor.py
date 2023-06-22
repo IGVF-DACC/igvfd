@@ -92,3 +92,14 @@ def test_patch_virtual(human_donor, testapp):
         human_donor['@id'],
         {'virtual': ''}, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_human_donor_identifiers(human_donor, testapp):
+    res = testapp.patch_json(
+        human_donor['@id'],
+        {'human_donor_identifiers': ['K562 cell line donor']}, expect_errors=False)
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        human_donor['@id'],
+        {'human_donor_identifier': ['K562 cell line donor']}, expect_errors=True)
+    assert res.status_code == 422
