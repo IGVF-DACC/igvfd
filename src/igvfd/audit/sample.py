@@ -35,3 +35,23 @@ def audit_sample_sorted_fraction_parent_child_check(value, system):
         )
         if prop_errors != '':
             yield AuditFailure('inconsistent sorted fraction metadata', detail, level='ERROR')
+
+
+@audit_checker('Sample', frame='object')
+def audit_sample_virtual_donor_check(value, system):
+    '''Non-virtual samples should not be linked to virtual donors.'''
+    if ('donors' in value) and (value.get('virtual', False) == False):
+        sample_id = value['@id']
+        donor_ids = value.get('donors', [])
+        donors_error = []
+        for d in donor_ids:
+            donor_object = system.get('request').embed(d + '@@object')
+            donor_id = donor_object.get('@id')
+            donor_virtual = donor_object.get('virtual', False)
+            if donor_virtual == True:
+                donors_error.append(donor_id)
+
+        if len(donors_error) > 0:
+            detail = (f'The sample {audit_link(sample_id, sample_id)} is linked to virtual donor(s):'
+                      f'{[audit_link(path_to_text(d_id),d_id) for d_id in donors_error]}')
+            yield AuditFailure('inconsistent sample metadata', detail, level='ERROR')
