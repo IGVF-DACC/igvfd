@@ -1,0 +1,21 @@
+[
+    {
+        "award": "HG012012",
+        "lab": "/labs/j-michael-cherry/",
+        "uuid": "36472257-48c7-4d71-a75a-2189c10a50c7",
+        "model_name": "Xpresso",
+        "model_version": "v1.3.6",
+        "model_type": "neural network",
+        "prediction_objects": [
+            "genes",
+            "coding variants"
+        ],
+        "input_file_sets": [
+            "67380d9f-06da-f9fe-9569-d31ce0607eae"
+        ],
+        "model_zoo_location": "https://kipoi.org/models/Xpresso/human_K562/",
+        "accession": "IGVFDS1234MODL",
+        "status": "released",
+        "software_version": "/software-versions/igvf:bowtie2 v2.4.4/"
+    }
+]

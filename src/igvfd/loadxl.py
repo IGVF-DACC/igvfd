@@ -45,12 +45,13 @@ ORDER = [
     'access_key',
     'measurement_set',
     'analysis_set',
+    'model',
     'reference_data',
     'sequence_data',
     'reference_file',
     'sequence_file',
     'signal_file',
-    'alignment_file',
+    'alignment_file'
 ]
 
 IS_ATTACHMENT = [
