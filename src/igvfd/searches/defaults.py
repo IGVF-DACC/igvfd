@@ -36,6 +36,7 @@ TOP_HITS_ITEM_TYPES = [
     'MeasurementSet',
     'Model',
     'AuxiliarySet',
+    'Prediction',
     'Gene',
     'Image',
     'Lab',
