@@ -8,7 +8,7 @@ def measurement_set():
     return {
         'facets': {
             'donors.taxa': {
-                'title': 'Donor Taxa',
+                'title': 'Taxa',
             },
             'assay_term.term_name': {
                 'title': 'Assay Term'
@@ -82,6 +82,9 @@ def measurement_set():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'donors.taxa': {
+                'title': 'Taxa'
             }
         }
     }

@@ -11,7 +11,7 @@ def analysis_set():
                 'title': 'Collections',
             },
             'donors.taxa': {
-                'title': 'Donor Taxa',
+                'title': 'Taxa',
             },
             'lab.title': {
                 'title': 'Lab'
@@ -75,6 +75,9 @@ def analysis_set():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'donors.taxa': {
+                'title': 'Taxa'
             }
         },
     }
