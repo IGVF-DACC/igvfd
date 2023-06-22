@@ -146,6 +146,17 @@
                 "type": "string",
                 "linkTo": "FileSet"
             }
+        },
+        "sequencing_library_type": {
+            "title": "Sequencing Library Type",
+            "description": "Description of the library sequenced in this measurement set.",
+            "type": "string",
+            "enum": [
+                "direct RNA",
+                "exome capture",
+                "mRNA enriched",
+                "rRNA depleted"
+            ]
         }
     },
     "fuzzy_searchable_fields": [
