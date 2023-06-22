@@ -12,8 +12,9 @@ def test_post_construct_library(award, lab, testapp):
     assert res.status_code == 201
 
 
-def test_dependencies_construct_library(award, lab, testapp,
-                                        construct_library_genome_wide):
+def test_dependencies_construct_library(award, lab, testapp, gene_myc_hs,
+                                        construct_library_genome_wide,
+                                        base_construct_library):
     res = testapp.patch_json(
         construct_library_genome_wide['@id'],
         {'scope': 'loci',
@@ -29,7 +30,16 @@ def test_dependencies_construct_library(award, lab, testapp,
          'guide_library_details': {'tiling_modality': 'sparse peaks',
                                    'average_guide_coverage': 10
                                    },
-         'reporter_library_details': {'mpra_library_complexity': 90
+         'reporter_library_details': {'average_insert_size': 90
+                                      }
+         }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        base_construct_library['@id'],
+        {'scope': 'loci',
+         'expression_vector_library_details': {'cloned_genes': [gene_myc_hs['@id']]
+                                               },
+         'reporter_library_details': {'average_insert_size': 90
                                       }
          }, expect_errors=True)
     assert res.status_code == 422
