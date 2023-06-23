@@ -2,7 +2,7 @@
     "title": "Workflow",
     "$id": "/profiles/workflow.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a worfklow.",
+    "description": "Schema for submitting a workflow.",
     "type": "object",
     "required": [
         "award",
@@ -62,7 +62,7 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Respository",
+                "title": "Repository",
                 "description": "Resource hosting the workflow.",
                 "type": "string",
                 "format": "uri"
@@ -70,7 +70,7 @@
         },
         "standards_page": {
             "title": "Standards Page",
-            "description": "A link to a page describing the standards for this worfklow.",
+            "description": "A link to a page describing the standards for this workflow.",
             "type": "string",
             "linkTo": "Page"
         }
