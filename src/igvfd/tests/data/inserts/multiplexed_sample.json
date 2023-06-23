@@ -1,0 +1,20 @@
+[
+    {
+        "uuid": "c0c56f08-e0b2-44cd-ace6-3f9fcc41366c",
+        "accession": "IGVFSM0000MPXD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:multiplex_alias"
+        ],
+        "status": "released",
+        "source": "/labs/j-michael-cherry/",
+        "collections": [
+            "ENCODE"
+        ],
+        "multiplexed_samples": [
+            "igvf-dacc:in_vitro_system_cell_line",
+            "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_2"
+        ]
+    }
+]

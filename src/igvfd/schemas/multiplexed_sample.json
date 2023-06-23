@@ -1,0 +1,71 @@
+{
+    "title": "Multiplexed Sample",
+    "$id": "/profiles/multiplexed_sample.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submitting a multiplexed sample.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "source",
+        "multiplexed_samples"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "sample.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "multiplexed_samples": {
+            "description": "The samples multiplexed together to produce this sample.",
+            "comment": "A minimum of 2 samples must be listed.",
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": {
+                "linkTo": "Biosample",
+                "type": "string"
+            }
+        },
+        "cellular_sub_pool": {
+            "title": "Cellular Sub Pool",
+            "description": "cellular sub-pool fraction of the sample. Also known as PKR and sub-library.",
+            "comment": "Barcodes coming from different cellular sub-pools could not be directly comparable due to the higher probability of collisions. Examples of valid identifiers are: 8A, LW231-2, SS-PKR_1, 4e.AB(678), etc.",
+            "type": "string",
+            "pattern": "^[a-zA-Z\\d_.()-]+(?:\\s[a-zA-Z\\d_.()-]+)*$"
+        }
+    },
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs"
+    ],
+    "changelog": "/profiles/changelogs/multiplexed_sample.md"
+}

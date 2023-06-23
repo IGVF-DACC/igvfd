@@ -55,6 +55,7 @@ TOP_HITS_ITEM_TYPES = [
     'Tissue',
     'WholeOrganism',
     'TechnicalSample',
+    'MultiplexedSample',
     'Software',
     'SoftwareVersion',
     'Source',
