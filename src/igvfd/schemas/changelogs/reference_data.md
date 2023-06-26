@@ -3,6 +3,7 @@
 ### Schema version 3
 
 * Restrict `content_type` and `file_format` to admins only.
+* Deprecate `reference_data` schema.
 
 ### Minor changes since schema version 2
 

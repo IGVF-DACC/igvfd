@@ -3,6 +3,7 @@
 ### Schema version 3
 
 * Restrict `content_type` and `file_format` to admins only.
+* Deprecate `sequence_data` schema.
 
 ### Schema version 2
 
