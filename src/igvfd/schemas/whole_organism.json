@@ -11,6 +11,21 @@
         "donors",
         "biosample_term"
     ],
+    "not": {
+        "comment": "Whole organisms should not specify part_of or pooled_from.",
+        "anyOf": [
+            {
+                "required": [
+                    "part_of"
+                ]
+            },
+            {
+                "required": [
+                    "pooled_from"
+                ]
+            }
+        ]
+    },
     "identifyingProperties": [
         "uuid",
         "accession",
@@ -57,7 +72,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "14"
+            "default": "15"
         },
         "biosample_term": {
             "comment": "Do not submit, value is assigned by the object.",
@@ -65,14 +80,6 @@
             "linkEnum": [
                 "25d5ad53-15fd-4a44-878a-ece2f7e86509"
             ]
-        },
-        "part_of": {
-            "type": "null",
-            "comment": "Do not submit. A whole organism sample may not specify that it is part_of another sample."
-        },
-        "pooled_from": {
-            "type": "null",
-            "comment": "Do not submit. A whole organism sample may not specify that it is pooled_from other samples."
         }
     },
     "fuzzy_searchable_fields": [
