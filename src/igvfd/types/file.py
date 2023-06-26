@@ -198,7 +198,7 @@ class File(Item):
         )
 
 
-cf18e0b3 (more to delete)
+@collection(
     name='sequence-files',
     unique_key='accession',
     properties={
