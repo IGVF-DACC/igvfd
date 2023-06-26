@@ -55,3 +55,49 @@ def audit_sample_virtual_donor_check(value, system):
             detail = (f'The sample {audit_link(sample_id, sample_id)} is linked to virtual donor(s):'
                       f'{[audit_link(path_to_text(d_id),d_id) for d_id in donors_error]}')
             yield AuditFailure('inconsistent sample metadata', detail, level='ERROR')
+
+
+@audit_checker('Sample', frame='object')
+def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
+    '''Non-virtual samples should not be linked to virtual samples'''
+    sample_id = system.get('path')
+    sample_is_virtual = value.get('virtual', False)
+    links_to_check = [item for item in [
+        value.get('part_of', None),
+        value.get('originated_from', None),
+        value.get('sorted_fraction', None),
+    ] if item is not None]
+    links_to_check.extend(value.get('pooled_from', []))
+    for linked_sample in links_to_check:
+        audit_failure = get_virtual_sample_failures(
+            system,
+            sample_id,
+            sample_is_virtual,
+            linked_sample
+        )
+        if audit_failure:
+            yield audit_failure
+
+
+def get_virtual_sample_failures(
+    system,
+    sample_id,
+    sample_is_virtual,
+    linked_sample_id
+):
+    linked_data = system.get('request').embed(linked_sample_id + '@@object?skip_calculated=true')
+    if linked_data.get('virtual', False) != sample_is_virtual:
+        if sample_is_virtual:
+            audit_detail_body = 'is virtual'
+            audit_detail_end = 'that is not virtual'
+        else:
+            audit_detail_body = 'is not virtual'
+            audit_detail_end = 'that is virtual'
+        detail = (
+            f'Sample {audit_link(path_to_text(sample_id), sample_id)} '
+            f'{audit_detail_body} and has a linked sample '
+            f'({audit_link(path_to_text(linked_sample_id), linked_sample_id)}) {audit_detail_end}.'
+        )
+        return AuditFailure('inconsistent sample metadata', detail, level='ERROR')
+    else:
+        return None
