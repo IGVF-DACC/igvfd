@@ -23,7 +23,9 @@ from .base import (
 class AnalysisStep(Item):
     item_type = 'analysis_step'
     schema = load_schema('igvfd:schemas/analysis_step.json')
-    embedded_with_frame = []
+    embedded_with_frame = [
+        Path('workflow', include=['@id', 'accession'])
+    ]
 
     def unique_keys(self, properties):
         keys = super(AnalysisStep, self).unique_keys(properties)
