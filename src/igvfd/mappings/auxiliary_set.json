@@ -1,6 +1,6 @@
 {
-    "hash": "2222801c95ff7702a6b434d513fd6b84",
-    "index_name": "auxiliary_set_2222801c",
+    "hash": "3a4fbea18fa900be7e2574fd65bb9598",
+    "index_name": "auxiliary_set_3a4fbea1",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -241,6 +241,9 @@
                         "type": "keyword"
                     },
                     "construct_libraries": {
+                        "type": "keyword"
+                    },
+                    "control_for": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {
