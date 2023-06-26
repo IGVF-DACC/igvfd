@@ -4,6 +4,7 @@
 
 * Add `files`.
 * Add `dbxrefs`.
+* Add `control_for`.
 
 ### Schema version 3
 

@@ -5,6 +5,7 @@
 * Add `files`.
 * Add `integrated_content_files`.
 * Add `expression_vector_library_details`.
+* Add `control_for`.
 
 ### Schema version 2
 

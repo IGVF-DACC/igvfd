@@ -26,7 +26,8 @@ class FileSet(Item):
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/file_set.json')
     rev = {
-        'files': ('File', 'file_set')
+        'files': ('File', 'file_set'),
+        'control_for': ('FileSet', 'control_file_sets')
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
@@ -45,6 +46,18 @@ class FileSet(Item):
     })
     def files(self, request, files):
         return paths_filtered_by_status(request, files)
+
+    @calculated_property(schema={
+        'title': 'File sets controlled by this file set',
+        'type': 'array',
+        'items': {
+            'type': ['string', 'object'],
+            'linkFrom': 'FileSet.control_file_sets',
+        },
+        'notSubmittable': True
+    })
+    def control_for(self, request, control_for):
+        return paths_filtered_by_status(request, control_for)
 
 
 @collection(
