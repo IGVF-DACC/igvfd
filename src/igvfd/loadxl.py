@@ -41,6 +41,7 @@ ORDER = [
     'construct_library',
     'image',
     'page',
+    'workflow',
     'publication',
     'access_key',
     'measurement_set',
@@ -51,7 +52,7 @@ ORDER = [
     'reference_file',
     'sequence_file',
     'signal_file',
-    'alignment_file'
+    'alignment_file',
 ]
 
 IS_ATTACHMENT = [
