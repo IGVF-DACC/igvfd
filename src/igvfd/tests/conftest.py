@@ -49,7 +49,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.software',
     'igvfd.tests.fixtures.schemas.software_version',
     'igvfd.tests.fixtures.schemas.construct_library',
-    'igvfd.tests.fixtures.schemas.model'
+    'igvfd.tests.fixtures.schemas.model',
     'igvfd.tests.fixtures.schemas.reference_file'
 ]
 
