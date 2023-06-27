@@ -7,6 +7,7 @@
 * Add `files`.
 * Add `control_file_sets`.
 * Add `control_for`.
+* Add `sequencing_library_type`.
 
 ### Schema version 4
 
