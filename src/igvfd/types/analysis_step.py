@@ -1,14 +1,16 @@
 from snovault import (
-    abstract_collection,
     calculated_property,
     collection,
     load_schema,
 )
 from snovault.util import Path
-
 from .base import (
     Item,
     paths_filtered_by_status
+)
+from pyramid.traversal import (
+    find_root,
+    resource_path
 )
 
 
@@ -48,4 +50,7 @@ class AnalysisStep(Item):
         return self._name(properties)
 
     def _name(self, properties):
-        return u'{}-{}'.format(properties['workflow'], properties['step_label'])
+        root = find_root(self)
+        workflow_uuid = properties['workflow']
+        workflow = root.get_by_uuid(workflow_uuid)
+        return u'{}-{}'.format(workflow.upgrade_properties()['accession'], properties['step_label'])

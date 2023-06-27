@@ -2,6 +2,5 @@ import pytest
 
 
 def test_analysis_step_name_calcprop(testapp, analysis_step):
-    assert analysis_step['@id'] == '/analysis-steps/IGVFWF0000WRKF-base-analysis-step/'
-    assert analysis_step['name'] == 'IGVFWF0000WRKF-base-analysis-step'
-    assert analysis_step['major_version'] == 1
+    res = testapp.get(analysis_step['@id'])
+    assert res.json.get('name') == 'IGVFWF0000WRKF-base-analysis-step'
