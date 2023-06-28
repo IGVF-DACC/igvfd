@@ -1,4 +1,5 @@
 from snovault import (
+    calculated_property,
     collection,
     load_schema
 )
