@@ -13,7 +13,8 @@
     ],
     "identifyingProperties": [
         "uuid",
-        "aliases"
+        "aliases",
+        "name"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -50,7 +51,7 @@
         "step_label": {
             "title": "Step Label",
             "description": "Unique lowercased label of the analysis step using a naming system where the pipeline, software used, the purpose is described, e.g. rampage-grit-peak-calling-step",
-            "comment": "Unique for each parent analysis_step. Do not include version number in the label, it will be calculated.",
+            "comment": "Unique for each analysis_step.",
             "type": "string",
             "pattern": "^[a-z0-9-]+-step$"
         },
@@ -72,7 +73,7 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
-                "description": "A precusor step.",
+                "description": "A precursor step.",
                 "comment": "See analysis_step.json for available identifiers.",
                 "type": "string",
                 "linkTo": "AnalysisStep"
