@@ -4,7 +4,8 @@ from snovault import (
     load_schema
 )
 from .base import (
-    Item
+    Item,
+    paths_filtered_by_status
 )
 
 
