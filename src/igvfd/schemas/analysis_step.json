@@ -50,8 +50,8 @@
         },
         "step_label": {
             "title": "Step Label",
-            "description": "Unique lowercased label of the analysis step using a naming system where the pipeline, software used, the purpose is described, e.g. rampage-grit-peak-calling-step",
-            "comment": "Unique for each analysis_step.",
+            "description": "Unique lowercased label of the analysis step that includes the software used and the purpose of the step, e.g. rampage-grit-peak-calling-step",
+            "comment": "Unique for each analysis_step in a given workflow.",
             "type": "string",
             "pattern": "^[a-z0-9-]+-step$"
         },
