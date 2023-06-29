@@ -134,7 +134,6 @@
             "title": "File Size",
             "description": "File size specified in bytes.",
             "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
-            "permission": "import_items",
             "type": "integer",
             "minimum": 0
         },
