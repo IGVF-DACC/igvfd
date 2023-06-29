@@ -4,7 +4,7 @@ from snovault.elasticsearch.searches.configs import search_config
 @search_config(
     name='AuxiliarySet'
 )
-def cell_line():
+def auxiliary_set():
     return {
         'facets': {
             'status': {
