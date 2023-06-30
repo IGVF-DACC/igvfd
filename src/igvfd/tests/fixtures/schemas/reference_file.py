@@ -12,3 +12,13 @@ def reference_file(testapp, lab, award, analysis_set_with_sample):
         'content_type': 'transcriptome reference'
     }
     return testapp.post_json('/reference_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def reference_file_v2(reference_file):
+    item = reference_file.copy()
+    item.update({
+        'schema_version': '2',
+        'source_url': 'foo://example.com:8042/over/there?name=ferret#nose'
+    })
+    return item
