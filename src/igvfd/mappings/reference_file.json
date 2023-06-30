@@ -1,6 +1,6 @@
 {
-    "hash": "2a48cc785784306e1bc39c93c179a324",
-    "index_name": "reference_file_2a48cc78",
+    "hash": "f9d4298f8548e4fc155646eb3ea718d2",
+    "index_name": "reference_file_f9d4298f",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -358,7 +358,7 @@
                     "schema_version": {
                         "type": "keyword"
                     },
-                    "source": {
+                    "source_url": {
                         "type": "keyword"
                     },
                     "status": {
