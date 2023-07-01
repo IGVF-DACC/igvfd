@@ -35,6 +35,7 @@ TOP_HITS_ITEM_TYPES = [
     'CuratedSet',
     'MeasurementSet',
     'Model',
+    'AuxiliarySet',
     'Gene',
     'Image',
     'Lab',

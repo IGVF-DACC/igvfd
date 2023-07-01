@@ -47,6 +47,7 @@ ORDER = [
     'measurement_set',
     'analysis_set',
     'model',
+    'auxiliary_set',
     'reference_file',
     'sequence_file',
     'signal_file',

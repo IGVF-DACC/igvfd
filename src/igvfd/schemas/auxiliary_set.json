@@ -1,0 +1,100 @@
+{
+    "title": "Auxiliary Set",
+    "description": "Schema for submitting a file set of auxiliary files produced alongside raw data from a Measurement Set.",
+    "$id": "/profiles/auxiliary_set.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "lab",
+        "award",
+        "auxiliary_type"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file_set.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/references"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "file_set.json#/dependentSchemas"
+        ]
+    },
+    "dependentRequired": {
+        "moi": [
+            "construct_libraries"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "auxiliary_type": {
+            "title": "Auxiliary Type",
+            "description": "The category that best describes this auxiliary file set.",
+            "type": "string",
+            "enum": [
+                "gRNA sequencing",
+                "oligo-conjugated lipids",
+                "oligo-conjugated antibodies"
+            ]
+        },
+        "construct_libraries": {
+            "title": "Construct Libraries",
+            "description": "The construct libraries of vectors introduced to the biosample used to produce data in this auxiliary set.",
+            "comment": "See construct_library.json for available identifiers.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Construct Library",
+                "type": "string",
+                "linkTo": "ConstructLibrary"
+            }
+        },
+        "moi": {
+            "title": "Multiplicity Of Infection",
+            "description": "The actual multiplicity of infection (MOI) for vectors introduced to the biosample used to produce data in this auxiliary set. At least one construct library must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
+            "type": "number",
+            "minimum": 0
+        },
+        "library_construction_platform": {
+            "title": "Library Construction Platform",
+            "description": "The platform used to construct the library sequenced in this auxiliary set.",
+            "comment": "See platform_term.json for available identifiers.",
+            "type": "string",
+            "linkTo": "PlatformTerm"
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "auxiliary_type",
+        "lab.title"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs"
+    ],
+    "changelog": "/profiles/changelogs/auxiliary_set.md"
+}

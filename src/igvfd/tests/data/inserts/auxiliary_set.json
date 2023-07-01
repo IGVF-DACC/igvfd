@@ -1,0 +1,17 @@
+[
+    {
+        "aliases": [
+            "igvf:auxiliary_set_1"
+        ],
+        "submitter_comment": "Comment for a auxiliary set.",
+        "description": "An auxiliary set with a sample.",
+        "auxiliary_type": "gRNA sequencing",
+        "samples": [
+            "igvf:treated_tissue"
+        ],
+        "award": "1UM1HG012077-01",
+        "lab": "ali-mortazavi",
+        "status": "released",
+        "uuid": "f0c5cba2-ed42-4dae-91dc-4bfd55a11c5b"
+    }
+]
