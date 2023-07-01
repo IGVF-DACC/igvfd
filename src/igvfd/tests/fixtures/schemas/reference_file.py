@@ -19,6 +19,6 @@ def reference_file_v2(reference_file):
     item = reference_file.copy()
     item.update({
         'schema_version': '2',
-        'source_url': 'foo://example.com:8042/over/there?name=ferret#nose'
+        'source': 'foo://example.com:8042/over/there?name=ferret#nose'
     })
     return item
