@@ -28,7 +28,6 @@
             "$ref": "mixins.json#/standard_status"
         }
     ],
-    "dependentSchemas": {},
     "properties": {
         "schema_version": {
             "default": "1"
