@@ -48,6 +48,7 @@ ORDER = [
     'analysis_set',
     'model',
     'auxiliary_set',
+    'prediction',
     'reference_file',
     'sequence_file',
     'signal_file',

@@ -206,3 +206,16 @@ class AuxiliarySet(FileSet):
     item_type = 'auxiliary_set'
     schema = load_schema('igvfd:schemas/auxiliary_set.json')
     embedded_with_frame = FileSet.embedded_with_frame
+
+
+@collection(
+    name='predictions',
+    unique_key='accession',
+    properties={
+        'title': 'Prediction',
+        'description': 'Listing of predictions',
+    })
+class Prediction(FileSet):
+    item_type = 'prediction'
+    schema = load_schema('igvfd:schemas/prediction.json')
+    embedded_with_frame = FileSet.embedded_with_frame
