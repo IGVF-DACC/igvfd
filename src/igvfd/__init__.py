@@ -58,7 +58,8 @@ def static_resources(config):
     config.add_view(favicon, route_name='favicon.ico')
 
     def auditdoc(request):
-        json_file_path = os.path.join(os.path.dirname(__file__), 'static/json/hello.json')
+        # serve from /static directly under root dir to avoid getting masked by docker compose volume
+        json_file_path = '/static/json/auditdoc.json'
         with open(json_file_path, 'r') as auditdoc_json:
             data = json.load(auditdoc_json)
         return data
