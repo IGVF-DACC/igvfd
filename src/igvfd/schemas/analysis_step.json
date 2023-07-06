@@ -9,6 +9,7 @@
         "step_label",
         "analysis_step_types",
         "input_content_types",
+        "output_content_types",
         "workflow"
     ],
     "identifyingProperties": [
