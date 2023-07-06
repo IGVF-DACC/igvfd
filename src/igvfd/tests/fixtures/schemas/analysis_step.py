@@ -7,6 +7,7 @@ def analysis_step(testapp, base_workflow):
         'step_label': 'base-analysis-step',
         'title': 'Base Analysis Step',
         'input_content_types': ['reads'],
+        'output_content_types': ['alignments'],
         'analysis_step_types': ['alignment'],
         'workflow': base_workflow['@id']
     }
