@@ -13,5 +13,19 @@
         "lab": "ali-mortazavi",
         "status": "released",
         "uuid": "f0c5cba2-ed42-4dae-91dc-4bfd55a11c5b"
+    },
+    {
+        "aliases": [
+            "igvf:auxiliary_set_2"
+        ],
+        "submitter_comment": "cell hashing comment",
+        "auxiliary_type": "cell hashing",
+        "samples": [
+            "igvf:treated_tissue"
+        ],
+        "award": "1UM1HG012077-01",
+        "lab": "ali-mortazavi",
+        "status": "released",
+        "uuid": "cc8f6087-3a09-485a-8c85-1c16d67199f3"
     }
 ]
