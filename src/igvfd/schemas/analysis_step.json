@@ -104,27 +104,19 @@
     "$defs": {
         "content_types": {
             "type": "string",
-            "enum": [
-                "alignments",
-                "transcriptome alignments",
-                "exclusion list",
-                "genome reference",
-                "guide RNA sequences",
-                "inclusion list",
-                "sequence barcodes",
-                "spike-ins",
-                "transcriptome reference",
-                "vector sequences",
-                "reads",
-                "subreads",
-                "signal",
-                "signal of all reads",
-                "signal of unique reads",
-                "signal p-value",
-                "raw signal",
-                "read-depth signal",
-                "control signal",
-                "fold over change control"
+            "anyOf": [
+                {
+                    "$merge": "alignment_file.json#/properties/content_type"
+                },
+                {
+                    "$merge": "reference_file.json#/properties/content_type"
+                },
+                {
+                    "$merge": "sequence_file.json#/properties/content_type"
+                },
+                {
+                    "$merge": "signal_file.json#/properties/content_type"
+                }
             ]
         }
     },
