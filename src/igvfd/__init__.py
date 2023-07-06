@@ -47,7 +47,7 @@ def static_resources(config):
         favicon_path = '/%s%s' % (config.route_prefix, favicon_path)
     config.add_route('favicon.ico', 'favicon.ico')
 
-    config.add_route('hello.json', 'hello.json')
+    config.add_route('auditdoc', '/auditdoc')
 
     def favicon(request):
         subreq = request.copy()
@@ -63,7 +63,7 @@ def static_resources(config):
             data = json.load(auditdoc_json)
         return data
 
-    config.add_view(auditdoc, route_name='hello.json')
+    config.add_view(auditdoc, route_name='auditdoc')
 
 
 def changelogs(config):
