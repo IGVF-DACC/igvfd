@@ -41,5 +41,47 @@
         "status": "in progress",
         "product_id": "addgene:158091",
         "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "c5c2c310-c05e-4360-3f51-1934490e8e65",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:modification_4"
+        ],
+        "cas": "SpG",
+        "fused_domain": "eA3A-T44D-S45A",
+        "modality": "base editing",
+        "status": "in progress",
+        "product_id": "addgene:158081",
+        "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "e8f582f0-11ee-4360-3f51-0200f8d37b57",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:modification_5"
+        ],
+        "cas": "SpRY",
+        "fused_domain": "BE4max",
+        "modality": "base editing",
+        "status": "in progress",
+        "product_id": "addgene:158021",
+        "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "709b82f0-11ee-4360-1540-5d7148230ba5",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:modification_6"
+        ],
+        "cas": "SpRY",
+        "fused_domain": "eA3A",
+        "modality": "prime editing",
+        "status": "in progress",
+        "product_id": "addgene:148021",
+        "cas_species": "Streptococcus pyogenes (Sp)"
     }
 ]

@@ -48,6 +48,7 @@
                 "Cas12a",
                 "Cas13",
                 "dCas9",
+                "SpG",
                 "SpRY"
             ]
         },
@@ -59,7 +60,10 @@
                 "ABE8e",
                 "ABE8.20",
                 "BE4",
+                "BE4max",
+                "eA3A",
                 "eA3A-T31A",
+                "eA3A-T44D-S45A",
                 "ANTI-FLAG",
                 "KRAB",
                 "p300",
