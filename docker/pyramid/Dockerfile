@@ -34,6 +34,7 @@ RUN mkdir -p $REFERENCE_DATABASE_DIRECTORY
 
 RUN chown -R igvfd:igvfd $REFERENCE_DATABASE_DIRECTORY
 
+
 WORKDIR /scripts
 
 COPY --chown=igvfd:igvfd scripts .
@@ -60,9 +61,21 @@ COPY --chown=igvfd:igvfd assets/ontology.json.gz assets/ontology.json.gz
 
 COPY --chown=igvfd:igvfd src/igvfd/commands/make_reference_db.py src/igvfd/commands/make_reference_db.py
 
+COPY --chown=igvfd:igvfd src/igvfd/commands/make_audit_docstring_json.py src/igvfd/commands/make_audit_docstring_json.py
+
 RUN make-reference-db
 
 COPY --chown=igvfd:igvfd . .
+
+RUN mkdir -p src/igvfd/static/doc/
+
+RUN chown -R igvfd:igvfd src/igvfd/static/doc
+
+RUN touch src/igvfd/static/doc/auditdoc.json
+
+RUN chown -R igvfd:igvfd src/igvfd/static/doc/auditdoc.json
+
+RUN make-audit-docstring-json
 
 EXPOSE 6543
 

@@ -45,6 +45,7 @@ def static_resources(config):
     favicon_path = '/static/img/favicon.ico'
     if config.route_prefix:
         favicon_path = '/%s%s' % (config.route_prefix, favicon_path)
+
     config.add_route('favicon.ico', 'favicon.ico')
 
     def favicon(request):

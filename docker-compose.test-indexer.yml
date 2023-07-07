@@ -60,6 +60,7 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
+      - "/igvfd/src/igvfd/static"
     command: /scripts/pyramid/run-development.sh
     ports:
       - "6543:6543"
@@ -129,6 +130,7 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
+      - "/igvfd/src/igvfd/static"
     command: pytest -rf --cov=igvfd -s -o junit_family=legacy --junitxml=./.test-results/junit.xml --cov-append -m 'indexing'
     depends_on:
       - postgres
