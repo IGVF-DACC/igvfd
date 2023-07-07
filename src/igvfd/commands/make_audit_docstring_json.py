@@ -62,7 +62,7 @@ def main():
     audit_docstring_dict = {}
     for function_name in audit_function_full_names:
         audit_docstring_dict.update(get_docstring_dict_from_function_name(function_name))
-    with open('/static/json/auditdoc.json', 'w') as audit_json:
+    with open('src/igvfd/static/doc/auditdoc.json', 'w') as audit_json:
         json.dump(audit_docstring_dict, audit_json)
 
 

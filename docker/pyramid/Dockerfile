@@ -60,8 +60,6 @@ COPY --chown=igvfd:igvfd src/igvfd/schema_formats.py src/igvfd/schema_formats.py
 
 COPY --chown=igvfd:igvfd src/igvfd/ontology.py src/igvfd/ontology.py
 
-COPY --chown=igvfd:igvfd src/igvfd/audit/* src/igvfd/audit/
-
 COPY --chown=igvfd:igvfd assets/ontology.json.gz assets/ontology.json.gz
 
 COPY --chown=igvfd:igvfd src/igvfd/commands/make_reference_db.py src/igvfd/commands/make_reference_db.py
@@ -70,13 +68,13 @@ COPY --chown=igvfd:igvfd src/igvfd/commands/make_audit_docstring_json.py src/igv
 
 RUN make-reference-db
 
-RUN touch /static/json/auditdoc.json
+COPY --chown=igvfd:igvfd . .
 
-RUN chown -R igvfd:igvfd /static/json/auditdoc.json
+RUN touch src/igvfd/static/doc/auditdoc.json
+
+RUN chown -R igvfd:igvfd src/igvfd/static/doc/auditdoc.json
 
 RUN make-audit-docstring-json
-
-COPY --chown=igvfd:igvfd . .
 
 EXPOSE 6543
 

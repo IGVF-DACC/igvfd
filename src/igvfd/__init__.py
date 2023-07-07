@@ -45,9 +45,8 @@ def static_resources(config):
     favicon_path = '/static/img/favicon.ico'
     if config.route_prefix:
         favicon_path = '/%s%s' % (config.route_prefix, favicon_path)
-    config.add_route('favicon.ico', 'favicon.ico')
 
-    config.add_route('auditdoc', '/auditdoc')
+    config.add_route('favicon.ico', 'favicon.ico')
 
     def favicon(request):
         subreq = request.copy()
@@ -56,15 +55,6 @@ def static_resources(config):
         return response
 
     config.add_view(favicon, route_name='favicon.ico')
-
-    def auditdoc(request):
-        # serve from /static directly under root dir to avoid getting masked by docker compose volume
-        json_file_path = '/static/json/auditdoc.json'
-        with open(json_file_path, 'r') as auditdoc_json:
-            data = json.load(auditdoc_json)
-        return data
-
-    config.add_view(auditdoc, route_name='auditdoc')
 
 
 def changelogs(config):

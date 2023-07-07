@@ -60,6 +60,7 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
+      - "/igvfd/src/igvfd/static"
     command: /scripts/pyramid/run-create-mapping.sh
     depends_on:
       - postgres
@@ -78,6 +79,7 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
+      - "/igvfd/src/igvfd/static"
     command: load-development
     depends_on:
       - create-mapping
@@ -97,6 +99,7 @@ services:
     volumes:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
+      - "/igvfd/src/igvfd/static"
     command: /scripts/pyramid/run-development.sh
     ports:
       - "6543:6543"
