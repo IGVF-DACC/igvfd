@@ -34,9 +34,6 @@ RUN mkdir -p $REFERENCE_DATABASE_DIRECTORY
 
 RUN chown -R igvfd:igvfd $REFERENCE_DATABASE_DIRECTORY
 
-RUN mkdir -p /static/json
-
-RUN chown -R igvfd:igvfd /static/json
 
 WORKDIR /scripts
 
@@ -69,6 +66,10 @@ COPY --chown=igvfd:igvfd src/igvfd/commands/make_audit_docstring_json.py src/igv
 RUN make-reference-db
 
 COPY --chown=igvfd:igvfd . .
+
+RUN mkdir -p src/igvfd/static/doc/
+
+RUN chown -R igvfd:igvfd src/igvfd/static/doc
 
 RUN touch src/igvfd/static/doc/auditdoc.json
 
