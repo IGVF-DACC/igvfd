@@ -56,6 +56,7 @@
             "description": "The category that best describes this auxiliary file set.",
             "type": "string",
             "enum": [
+                "cell hashing",
                 "gRNA sequencing",
                 "oligo-conjugated lipids",
                 "oligo-conjugated antibodies"
