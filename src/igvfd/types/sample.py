@@ -40,7 +40,8 @@ class Sample(Item):
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/sample.json')
     rev = {
-        'file_sets': ('FileSet', 'samples')
+        'file_sets': ('FileSet', 'samples'),
+        'multiplexed_in': ('MultiplexedSample', 'multiplexed_samples')
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
@@ -60,6 +61,18 @@ class Sample(Item):
     })
     def file_sets(self, request, file_sets):
         return paths_filtered_by_status(request, file_sets)
+
+    @calculated_property(schema={
+        'title': 'Multiplexed In',
+        'type': 'array',
+        'items': {
+            'type': ['string', 'object'],
+            'linkFrom': 'MultiplexedSample.multiplexed_samples',
+        },
+        'notSubmittable': True,
+    })
+    def multiplexed_in(self, request, multiplexed_in):
+        return paths_filtered_by_status(request, multiplexed_in)
 
 
 @abstract_collection(

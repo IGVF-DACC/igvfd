@@ -53,3 +53,5 @@ def test_multiplexed_sample_props(
     assert len(res.json.get('modifications')) == 1
     assert len(res.json.get('donors')) == 1
     assert len(res.json.get('biomarkers')) == 3
+    res = testapp.get(tissue['@id'])
+    assert len(res.json.get('multiplexed_in')) == 1

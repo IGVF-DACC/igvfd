@@ -51,7 +51,7 @@
             "minItems": 2,
             "uniqueItems": true,
             "items": {
-                "linkTo": "Biosample",
+                "linkTo": "Sample",
                 "type": "string"
             }
         },
