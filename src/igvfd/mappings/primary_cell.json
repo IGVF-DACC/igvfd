@@ -1,6 +1,6 @@
 {
-    "hash": "1de5ebbdaf6db81e4a5c10f465c8bcd9",
-    "index_name": "primary_cell_1de5ebbd",
+    "hash": "de38f4dfed66301e4e70c5a7644127ef",
+    "index_name": "primary_cell_de38f4df",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -496,6 +496,9 @@
                         "type": "float"
                     },
                     "modification": {
+                        "type": "keyword"
+                    },
+                    "multiplexed_in": {
                         "type": "keyword"
                     },
                     "nih_institutional_certification": {

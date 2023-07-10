@@ -1,6 +1,6 @@
 {
-    "hash": "280650ad031b362762cabe3cb2655464",
-    "index_name": "whole_organism_280650ad",
+    "hash": "d7c5caca64aae575dbbfd47e5061d251",
+    "index_name": "whole_organism_d7c5caca",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -496,6 +496,9 @@
                         "type": "float"
                     },
                     "modification": {
+                        "type": "keyword"
+                    },
+                    "multiplexed_in": {
                         "type": "keyword"
                     },
                     "nih_institutional_certification": {
