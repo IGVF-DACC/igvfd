@@ -8,3 +8,15 @@ def test_reference_file_upgrade_2_3(upgrader, reference_file_v2):
     assert 'source' not in value
     assert 'source_url' in value
     assert value['schema_version'] == '3'
+
+
+def test_ref_file_upgrade_3_4(upgrader, ref_file_v3):
+    ori_ann = ref_file_v3['transcriptome_annotation']
+    if ori_ann.startswith('V'):
+        ori_ann = ori_ann.split('V')[1]
+    match_ann = 'GENCODE ' + ori_ann
+    value = upgrader.upgrade('reference_file', ref_file_v3, current_version='3', target_version='4')
+    assert match_ann == value['transcriptome_annotation']
+    assert 'transcriptome_annotation' in value
+    assert value['schema_version'] == '4'
+
