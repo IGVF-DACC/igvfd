@@ -47,6 +47,7 @@ TOP_HITS_ITEM_TYPES = [
     'SampleTerm',
     'Page',
     'Workflow',
+    'AnalysisStep',
     'PhenotypicFeature',
     'Publication',
     'InVitroSystem',

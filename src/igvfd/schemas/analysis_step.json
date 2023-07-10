@@ -1,0 +1,131 @@
+{
+    "title": "Analysis Step",
+    "description": "Schema for submitting a step in a computational analysis workflow.",
+    "$id": "/profiles/analysis_step.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "title",
+        "step_label",
+        "analysis_step_types",
+        "input_content_types",
+        "output_content_types",
+        "workflow"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases",
+        "name"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        }
+    ],
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "analysis_step_types": {
+            "title": "Analysis Step Types",
+            "description": "The classification of the software.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "title": "Type",
+                "type": "string",
+                "enum": [
+                    "alignment",
+                    "file format conversion",
+                    "signal generation"
+                ]
+            }
+        },
+        "step_label": {
+            "title": "Step Label",
+            "description": "Unique lowercased label of the analysis step that includes the relevant assays, the software used, and the purpose of the step, e.g. rampage-grit-peak-calling-step",
+            "comment": "Unique for each analysis_step in a given workflow.",
+            "type": "string",
+            "pattern": "^[a-z0-9-]+-step$"
+        },
+        "title": {
+            "title": "Title",
+            "description": "The preferred viewable name of the analysis step, likely the same as the step label.",
+            "type": "string",
+            "pattern": "^[a-zA-Z\\d_().,-]+(?:\\s[a-zA-Z\\d_().,-]+)*[step|Step]$"
+        },
+        "workflow": {
+            "title": "Workflow",
+            "description": "The computational workflow in which this analysis step belongs.",
+            "type": "string",
+            "linkTo": "Workflow"
+        },
+        "parents": {
+            "title": "Parents",
+            "description": "The precursor steps.",
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+                "description": "A precursor step.",
+                "comment": "See analysis_step.json for available identifiers.",
+                "type": "string",
+                "linkTo": "AnalysisStep"
+            }
+        },
+        "input_content_types": {
+            "title": "Input Content Types",
+            "description": "The content types used as input for the analysis step.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "title": "Input Content Type",
+                "description": "A content type used as input for the analysis step.",
+                "$merge": "#/$defs/content_types"
+            }
+        },
+        "output_content_types": {
+            "title": "Output Content Types",
+            "description": "The content types produced as output by the analysis step.",
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+                "title": "Output Content Type",
+                "description": "A content type produced as output by the analysis step.",
+                "$merge": "#/$defs/content_types"
+            }
+        }
+    },
+    "$defs": {
+        "content_types": {
+            "type": "string",
+            "anyOf": [
+                {
+                    "$merge": "alignment_file.json#/properties/content_type"
+                },
+                {
+                    "$merge": "reference_file.json#/properties/content_type"
+                },
+                {
+                    "$merge": "sequence_file.json#/properties/content_type"
+                },
+                {
+                    "$merge": "signal_file.json#/properties/content_type"
+                }
+            ]
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "title"
+    ],
+    "exact_searchable_fields": [
+        "@type"
+    ],
+    "changelog": "/profiles/changelogs/analysis_step.md"
+}

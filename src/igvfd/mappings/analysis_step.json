@@ -1,7 +1,7 @@
 {
-    "hash": "90a42674ca7482d7223dd9f01c64814b",
-    "index_name": "workflow_90a42674",
-    "item_type": "workflow",
+    "hash": "6adafede5f217eb8a716cc03d4307f98",
+    "index_name": "analysis_step_6adafede",
+    "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
             {
@@ -153,22 +153,13 @@
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
-                    "accession": {
-                        "type": "keyword"
-                    },
                     "aliases": {
                         "type": "keyword"
                     },
-                    "alternate_accessions": {
-                        "type": "keyword"
-                    },
-                    "analysis_steps": {
+                    "analysis_step_types": {
                         "type": "keyword"
                     },
                     "award": {
-                        "type": "keyword"
-                    },
-                    "collections": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {
@@ -177,35 +168,31 @@
                     "description": {
                         "type": "text"
                     },
-                    "documents": {
+                    "input_content_types": {
                         "type": "keyword"
                     },
                     "lab": {
                         "type": "keyword"
                     },
                     "name": {
-                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
                     },
-                    "references": {
+                    "output_content_types": {
                         "type": "keyword"
                     },
-                    "revoke_detail": {
+                    "parents": {
                         "type": "keyword"
                     },
                     "schema_version": {
                         "type": "keyword"
                     },
-                    "source_url": {
-                        "type": "keyword"
-                    },
-                    "standards_page": {
-                        "type": "keyword"
-                    },
                     "status": {
+                        "type": "keyword"
+                    },
+                    "step_label": {
                         "type": "keyword"
                     },
                     "submitted_by": {
@@ -217,11 +204,92 @@
                     "summary": {
                         "type": "keyword"
                     },
+                    "title": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
                     "uuid": {
                         "type": "keyword"
                     },
-                    "workflow_repositories": {
-                        "type": "keyword"
+                    "workflow": {
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "accession": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "analysis_steps": {
+                                "type": "keyword"
+                            },
+                            "award": {
+                                "type": "keyword"
+                            },
+                            "collections": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "documents": {
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "references": {
+                                "type": "keyword"
+                            },
+                            "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "source_url": {
+                                "type": "keyword"
+                            },
+                            "standards_page": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflow_repositories": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     }
                 },
                 "type": "object"
