@@ -52,6 +52,6 @@
         ],
         "file_set": "igvf:analysis_set_with_input",
         "assembly": "GRCh38",
-        "transcriptome_annotation": "V40"
+        "transcriptome_annotation": "GENCODE 40"
     }
 ]
