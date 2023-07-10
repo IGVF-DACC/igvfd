@@ -7,7 +7,7 @@
     "required": [
         "geneid",
         "version_number",
-        "annotation_version",
+        "transcriptome_annotation",
         "symbol",
         "dbxrefs",
         "taxa"
