@@ -27,6 +27,9 @@
         },
         {
             "$ref": "mixins.json#/taxa"
+        },
+        {
+            "$ref": "mixins.json#/transcriptome_annotation"
         }
     ],
     "dependentSchemas": {
@@ -191,19 +194,6 @@
             "description": "Current ENSEMBL GeneID version number of the gene.",
             "type": "string",
             "pattern": "^\\d+?",
-            "permission": "import_items"
-        },
-        "annotation_version": {
-            "title": "Annotation Version",
-            "description": "The annotation and version of the gene reference resource.",
-            "type": "string",
-            "enum": [
-                "GENCODE 42",
-                "GENCODE 43",
-                "GENCODE M30",
-                "GENCODE M31",
-                "GENCODE M32"
-            ],
             "permission": "import_items"
         }
     },
