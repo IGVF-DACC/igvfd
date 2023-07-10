@@ -115,3 +115,9 @@ class BackendAlarms(Construct):
             evaluation_periods=1,
             threshold=1,
         )
+        unhealthy_host_alarm.add_alarm_action(
+            self.alarm_action
+        )
+        unhealthy_host_alarm.add_ok_action(
+            self.alarm_action
+        )
