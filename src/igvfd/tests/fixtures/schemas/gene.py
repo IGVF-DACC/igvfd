@@ -104,6 +104,6 @@ def gene_v4(gene_myc_hs):
     item.pop('transcriptome_annotation', None)
     item.update({
         'schema_version': '4',
-        'annotation_version': 'GENCODE 42',
+        'annotation_version': 'GENCODE 42'
     })
     return item
