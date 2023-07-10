@@ -141,7 +141,81 @@ def test_constructs_alarms_backend_initialize_backend_alarms(stack, vpc, existin
             'Threshold': 10
         }
     )
+    template.has_resource_properties(
+        'AWS::CloudWatch::Alarm',
+        {
+            'ComparisonOperator': 'GreaterThanOrEqualToThreshold',
+            'EvaluationPeriods': 1,
+            'Dimensions': [
+                {
+                    'Name': 'LoadBalancer',
+                    'Value': {
+                        'Fn::Join': [
+                            '',
+                            [
+                                {
+                                    'Fn::Select': [
+                                        1,
+                                        {
+                                            'Fn::Split': [
+                                                '/',
+                                                {
+                                                    'Ref': 'FargateServiceLBPublicListener4B4929CA'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                '/',
+                                {
+                                    'Fn::Select': [
+                                        2,
+                                        {
+                                            'Fn::Split': [
+                                                '/',
+                                                {
+                                                    'Ref': 'FargateServiceLBPublicListener4B4929CA'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                '/',
+                                {
+                                    'Fn::Select': [
+                                        3,
+                                        {
+                                            'Fn::Split': [
+                                                '/',
+                                                {
+                                                    'Ref': 'FargateServiceLBPublicListener4B4929CA'
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        ]
+                    }
+                },
+                {
+                    'Name': 'TargetGroup',
+                    'Value': {
+                        'Fn::GetAtt': [
+                            'FargateServiceLBPublicListenerECSGroupBE57E081',
+                            'TargetGroupFullName'
+                        ]
+                    }
+                }
+            ],
+            'MetricName': 'UnHealthyHostCount',
+            'Namespace': 'AWS/ApplicationELB',
+            'Period': 60,
+            'Statistic': 'Maximum',
+            'Threshold': 1
+        }
+    )
     template.resource_count_is(
         'AWS::CloudWatch::Alarm',
-        3
+        4
     )
