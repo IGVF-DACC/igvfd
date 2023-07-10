@@ -96,3 +96,17 @@ def gene_v3(testapp):
         'taxa': 'Mus musculus'
     }
     return item
+
+
+@pytest.fixture
+def gene_v4(testapp):
+    item = {
+        'dbxrefs': [
+            'MGI:97486'
+        ],
+        'geneid': 'ENSMUSG00000004231.8',
+        'symbol': 'Pax2',
+        'taxa': 'Mus musculus',
+        'annotation_version': 'GENCODE 42'
+    }
+    return item
