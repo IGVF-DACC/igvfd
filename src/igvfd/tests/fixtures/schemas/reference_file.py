@@ -20,5 +20,14 @@ def reference_file_v2(reference_file):
     item.update({
         'schema_version': '2',
         'source': 'foo://example.com:8042/over/there?name=ferret#nose'
+     })
+    return item
+
+
+def ref_file_v3(reference_file):
+    item = reference_file.copy()
+    item.update({
+        'schema_version': '3',
+        'transcriptome_annotation': 'V40'
     })
     return item
