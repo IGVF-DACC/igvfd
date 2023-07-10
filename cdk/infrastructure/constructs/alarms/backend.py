@@ -1,4 +1,4 @@
-import aws_cdk as cdk
+from aws_cdk import Duration
 
 from constructs import Construct
 
@@ -52,6 +52,7 @@ class BackendAlarms(Construct):
         self._add_cpu_alarm()
         self._add_memory_alarm()
         self._add_load_balancer_500_error_response_alarm()
+        self._add_unhealthy_host_alarm()
 
     def _define_alarm_action(self) -> None:
         # Cloudwatch action targeting SNS topic.
@@ -101,5 +102,22 @@ class BackendAlarms(Construct):
             self.alarm_action
         )
         load_balancer_500_error_response_alarm.add_ok_action(
+            self.alarm_action
+        )
+
+    def _add_unhealthy_host_alarm(self) -> None:
+        unhealthy_host_alarm = self.props.fargate_service.target_group.metric_unhealthy_host_count(
+            statistic='max',
+            period=Duration.minutes(1),
+        ).create_alarm(
+            self,
+            'TargetGroupUnhealthyHostAlarm',
+            evaluation_periods=1,
+            threshold=1,
+        )
+        unhealthy_host_alarm.add_alarm_action(
+            self.alarm_action
+        )
+        unhealthy_host_alarm.add_ok_action(
             self.alarm_action
         )
