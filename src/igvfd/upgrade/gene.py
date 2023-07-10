@@ -39,3 +39,11 @@ def gene_3_4(value, system):
         geneid_new = geneid_new + '_PAR_Y'
     value['geneid'] = geneid_new
     value['version_number'] = version_number
+
+
+@upgrade_step('gene', '4', '5')
+def gene_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-795
+    if 'annotation_version' in value:
+        value['transcriptome_annotation'] = value['annotation_version']
+        del value['annotation_version']
