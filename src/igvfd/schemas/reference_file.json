@@ -60,9 +60,9 @@
                         "properties": {
                             "transcriptome_annotation": {
                                 "enum": [
-                                    "M30",
-                                    "M31",
-                                    "M32"
+                                    "GENCODE M30",
+                                    "GENCODE M31",
+                                    "GENCODE M32"
                                 ]
                             }
                         }
@@ -83,10 +83,10 @@
                         "properties": {
                             "transcriptome_annotation": {
                                 "enum": [
-                                    "V40",
-                                    "V41",
-                                    "V42",
-                                    "V43"
+                                    "GENCODE 40",
+                                    "GENCODE 41",
+                                    "GENCODE 42",
+                                    "GENCODE 43"
                                 ]
                             }
                         }
