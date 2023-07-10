@@ -1,4 +1,5 @@
 import pytest
+import json
 
 
 def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, curated_set_genome):
@@ -30,9 +31,7 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
 def test_multiplexed_sample_props(
         testapp, multiplexed_sample, tissue, modification, in_vitro_cell_line,
         phenotype_term_myocardial_infarction, biomarker_CD243_absent,
-        biomarker_CD1e_low, biomarker_IgA_present):
-    res = testapp.get(multiplexed_sample['@id'])
-    assert len(res.json.get('biosample_terms')) == 2
+        biomarker_CD1e_low, biomarker_IgA_present, request):
     testapp.patch_json(
         tissue['@id'],
         {
@@ -49,6 +48,16 @@ def test_multiplexed_sample_props(
         }
     )
     res = testapp.get(multiplexed_sample['@id'])
+    sample1 = testapp.get(tissue['@id'] + '?frame=embedded')
+    sample2 = testapp.get(in_vitro_cell_line['@id'] + '?frame=embedded')
+
+    terms = dict()
+    terms.update(sample1.json.get('biosample_term'))
+    terms.update(sample2.json.get('biosample_term'))
+    print(terms)
+    print(res.json.get('biosample_terms'))
+    assert res['biosample_terms'] == sorted(set(terms))
+
     assert res.json.get('disease_terms')[0]['term_name'] == 'Myocardial infarction'
     assert len(res.json.get('modifications')) == 1
     assert len(res.json.get('donors')) == 1
