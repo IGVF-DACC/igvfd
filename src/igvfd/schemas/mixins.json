@@ -331,5 +331,21 @@
                 "linkTo": "ReferenceFile"
             }
         }
+    },
+    "transcriptome_annotation": {
+        "transcriptome_annotation": {
+            "title": "Transcriptome Annotation",
+            "description": "The annotation and version of the reference resource.",
+            "type": "string",
+            "enum": [
+                "GENCODE 40",
+                "GENCODE 41",
+                "GENCODE 42",
+                "GENCODE 43",
+                "GENCODE M30",
+                "GENCODE M31",
+                "GENCODE M32"
+            ]
+        }
     }
 }
