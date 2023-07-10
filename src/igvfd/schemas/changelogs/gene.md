@@ -1,5 +1,10 @@
 ## Changelog for *`gene.json`*
 
+### Schema version 5
+
+* Add `transcriptome_annotation`.
+* Remove `annotation_version`.
+
 ### Schema version 4
 
 * Change regex pattern of  `geneid`.
