@@ -31,7 +31,7 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
 def test_multiplexed_sample_props(
         testapp, multiplexed_sample, tissue, modification, in_vitro_cell_line,
         phenotype_term_myocardial_infarction, biomarker_CD243_absent,
-        biomarker_CD1e_low, biomarker_IgA_present, request):
+        biomarker_CD1e_low, biomarker_IgA_present):
     testapp.patch_json(
         tissue['@id'],
         {
@@ -48,19 +48,34 @@ def test_multiplexed_sample_props(
         }
     )
     res = testapp.get(multiplexed_sample['@id'])
-    sample1 = testapp.get(tissue['@id'] + '?frame=embedded')
-    sample2 = testapp.get(in_vitro_cell_line['@id'] + '?frame=embedded')
+    terms_set = set()
+    terms_set.add(tissue.get('biosample_term', None))
+    terms_set.add(in_vitro_cell_line.get('biosample_term', None))
+    multiplexed_term_set = set([entry['@id'] for entry in res.json.get('biosample_terms', [])])
+    assert terms_set == multiplexed_term_set
 
-    terms = dict()
-    terms.update(sample1.json.get('biosample_term'))
-    terms.update(sample2.json.get('biosample_term'))
-    print(terms)
-    print(res.json.get('biosample_terms'))
-    assert res['biosample_terms'] == sorted(set(terms))
+    diseases_set = set()
+    diseases_set.add(phenotype_term_myocardial_infarction['@id'])
+    multiplexed_diseases_set = set([entry['@id'] for entry in res.json.get('disease_terms', [])])
+    assert diseases_set == multiplexed_diseases_set
 
-    assert res.json.get('disease_terms')[0]['term_name'] == 'Myocardial infarction'
-    assert len(res.json.get('modifications')) == 1
-    assert len(res.json.get('donors')) == 1
-    assert len(res.json.get('biomarkers')) == 3
+    modifications_set = set()
+    modifications_set.add(modification['@id'])
+    multiplexed_modifications_set = set([entry for entry in res.json.get('modifications', [])])
+    assert modifications_set == multiplexed_modifications_set
+
+    donors_set = set()
+    donors_set.update(tissue.get('donors', []))
+    donors_set.update(in_vitro_cell_line.get('donors', []))
+    multiplexed_donors_set = set([entry for entry in res.json.get('donors', [])])
+    assert donors_set == multiplexed_donors_set
+
+    biomarkers_set = set()
+    biomarkers_set.add(biomarker_CD243_absent['@id'])
+    biomarkers_set.add(biomarker_CD1e_low['@id'])
+    biomarkers_set.add(biomarker_IgA_present['@id'])
+    multiplexed_biomarkers_set = set([entry for entry in res.json.get('biomarkers', [])])
+    assert biomarkers_set == multiplexed_biomarkers_set
+
     res = testapp.get(tissue['@id'])
-    assert len(res.json.get('multiplexed_in')) == 1
+    assert res.json.get('multiplexed_in') == [multiplexed_sample['@id']]
