@@ -68,6 +68,9 @@ def model():
             'award': {
                 'title': 'Award'
             },
+            'model_name': {
+                'title': 'Model Name'
+            },
             'model_type': {
                 'title': 'Model Type'
             },
