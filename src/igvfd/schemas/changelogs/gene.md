@@ -2,8 +2,7 @@
 
 ### Schema version 5
 
-* Add `transcriptome_annotation`.
-* Remove `annotation_version`.
+* Rename `annotation_version` to `transcriptome_annotation`.
 
 ### Schema version 4
 

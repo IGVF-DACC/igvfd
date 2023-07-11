@@ -8,4 +8,3 @@
 
 * Rename `source` to `source_url`.
 * Add `format` to `source_url`.
-
