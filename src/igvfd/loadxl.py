@@ -35,6 +35,7 @@ ORDER = [
     'primary_cell',
     'technical_sample',
     'whole_organism',
+    'multiplexed_sample',
     'curated_set',
     'software',
     'software_version',

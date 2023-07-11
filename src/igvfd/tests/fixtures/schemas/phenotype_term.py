@@ -14,7 +14,7 @@ def phenotype_term_alzheimers(testapp):
 def phenotype_term_myocardial_infarction(testapp):
     item = {
         'term_id': 'HP:0001658',
-        'term_name': 'Myocardial infraction'
+        'term_name': 'Myocardial infarction'
     }
     return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
 

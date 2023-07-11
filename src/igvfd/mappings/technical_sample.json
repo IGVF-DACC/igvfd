@@ -1,6 +1,6 @@
 {
-    "hash": "f2f575df1b47e4e3e3970100d710bce9",
-    "index_name": "technical_sample_f2f575df",
+    "hash": "b492896326585ec695103dc527033465",
+    "index_name": "technical_sample_b4928963",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -315,6 +315,9 @@
                         "type": "object"
                     },
                     "lot_id": {
+                        "type": "keyword"
+                    },
+                    "multiplexed_in": {
                         "type": "keyword"
                     },
                     "notes": {

@@ -1,7 +1,7 @@
 {
-    "hash": "de38f4dfed66301e4e70c5a7644127ef",
-    "index_name": "primary_cell_de38f4df",
-    "item_type": "primary_cell",
+    "hash": "b58f99fed2766ec411a218e7a9e4ecb9",
+    "index_name": "multiplexed_sample_b58f99fe",
+    "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
             {
@@ -156,12 +156,6 @@
                     "accession": {
                         "type": "keyword"
                     },
-                    "age": {
-                        "type": "keyword"
-                    },
-                    "age_units": {
-                        "type": "keyword"
-                    },
                     "aliases": {
                         "type": "keyword"
                     },
@@ -242,7 +236,7 @@
                     "biomarkers": {
                         "type": "keyword"
                     },
-                    "biosample_term": {
+                    "biosample_terms": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -412,15 +406,6 @@
                     "donors": {
                         "type": "keyword"
                     },
-                    "embryonic": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "boolean"
-                    },
                     "file_sets": {
                         "type": "keyword"
                     },
@@ -486,42 +471,17 @@
                     "lot_id": {
                         "type": "keyword"
                     },
-                    "lower_bound_age": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "float"
-                    },
-                    "modification": {
+                    "modifications": {
                         "type": "keyword"
                     },
                     "multiplexed_in": {
                         "type": "keyword"
                     },
-                    "nih_institutional_certification": {
-                        "copy_to": "_exact",
+                    "multiplexed_samples": {
                         "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
-                    },
-                    "part_of": {
-                        "type": "keyword"
-                    },
-                    "passage_number": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "long"
-                    },
-                    "pooled_from": {
-                        "type": "keyword"
                     },
                     "product_id": {
                         "type": "keyword"
@@ -530,9 +490,6 @@
                         "type": "keyword"
                     },
                     "schema_version": {
-                        "type": "keyword"
-                    },
-                    "sex": {
                         "type": "keyword"
                     },
                     "sorted_fraction": {
@@ -689,10 +646,6 @@
                     "summary": {
                         "type": "keyword"
                     },
-                    "taxa": {
-                        "copy_to": "_fuzzy",
-                        "type": "keyword"
-                    },
                     "treatments": {
                         "properties": {
                             "@id": {
@@ -817,15 +770,6 @@
                             }
                         },
                         "type": "object"
-                    },
-                    "upper_bound_age": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "float"
                     },
                     "url": {
                         "type": "keyword"

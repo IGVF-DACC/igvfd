@@ -11,6 +11,21 @@ from .base import (
 )
 
 
+def collect_multiplexed_samples_prop(request, multiplexed_samples, property_name):
+    property_set = set()
+    for sample in multiplexed_samples:
+        sample_props = request.embed(sample, '@@object?skip_calculated=true')
+        property_contents = sample_props.get(property_name, None)
+        if property_contents:
+            if type(property_contents) == list:
+                for item in property_contents:
+                    property_set.add(item)
+            else:
+                property_set.add(property_contents)
+    property_list = sorted(property_set)
+    return property_list
+
+
 @abstract_collection(
     name='samples',
     unique_key='accession',
@@ -25,7 +40,8 @@ class Sample(Item):
     name_key = 'accession'
     schema = load_schema('igvfd:schemas/sample.json')
     rev = {
-        'file_sets': ('FileSet', 'samples')
+        'file_sets': ('FileSet', 'samples'),
+        'multiplexed_in': ('MultiplexedSample', 'multiplexed_samples')
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
@@ -45,6 +61,18 @@ class Sample(Item):
     })
     def file_sets(self, request, file_sets):
         return paths_filtered_by_status(request, file_sets)
+
+    @calculated_property(schema={
+        'title': 'Multiplexed In',
+        'type': 'array',
+        'items': {
+            'type': ['string', 'object'],
+            'linkFrom': 'MultiplexedSample.multiplexed_samples',
+        },
+        'notSubmittable': True,
+    })
+    def multiplexed_in(self, request, multiplexed_in):
+        return paths_filtered_by_status(request, multiplexed_in)
 
 
 @abstract_collection(
@@ -305,3 +333,105 @@ class WholeOrganism(Biosample):
                 if age != '1':
                     age_units = age_units + 's'
                 return f'{term_name} ({age} {age_units})'
+
+
+@collection(
+    name='multiplexed-samples',
+    unique_key='accession',
+    properties={
+        'title': 'Multiplexed Samples',
+        'description': 'Listing of multiplexed samples',
+    }
+)
+class MultiplexedSample(Sample):
+    item_type = 'multiplexed_sample'
+    schema = load_schema('igvfd:schemas/multiplexed_sample.json')
+    embedded_with_frame = Sample.embedded_with_frame + [
+        Path('biosample_terms', include=['@id', 'term_name']),
+        Path('disease_terms', include=['@id', 'term_name']),
+        Path('treatments', include=['@id', 'treatment_term_name', 'purpose'])
+    ]
+
+    @calculated_property(
+        schema={
+            'title': 'Biosample terms',
+            'type': 'array',
+            'notSubmittable': True,
+            'items': {
+                'type': 'string',
+                'linkTo': 'SampleTerm',
+            }
+        }
+    )
+    def biosample_terms(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'biosample_term')
+
+    @calculated_property(
+        schema={
+            'title': 'Disease terms',
+            'type': 'array',
+            'notSubmittable': True,
+            'items': {
+                'type': 'string',
+                'linkTo': 'PhenotypeTerm'
+            }
+        }
+    )
+    def disease_terms(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'disease_terms')
+
+    @calculated_property(
+        schema={
+            'title': 'Treatments',
+            'type': 'array',
+            'notSubmittable': True,
+            'items': {
+                'type': 'string',
+                'linkTo': 'Treatment'
+            }
+        }
+    )
+    def treatments(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'treatments')
+
+    @calculated_property(
+        schema={
+            'title': 'Modifications',
+            'type': 'array',
+            'notSubmittable': True,
+            'items': {
+                'type': 'string',
+                'linkTo': 'Modification'
+            }
+        }
+    )
+    def modifications(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'modification')
+
+    @calculated_property(
+        schema={
+            'title': 'Donors',
+            'type': 'array',
+            'notSubmittable': True,
+            'items': {
+                'type': 'string',
+                'linkTo': 'Donor'
+            }
+        }
+    )
+    def donors(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'donors')
+
+    @calculated_property(
+        schema={
+            'title': 'Biomarkers',
+            'type': 'array',
+            'notSubmittable': True,
+            'items': {
+                'type': 'string',
+                'linkTo': 'Biomarker'
+            }
+        }
+    )
+    def biomarkers(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'biomarkers')
