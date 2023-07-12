@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/python:3.9.9-slim-buster
+FROM public.ecr.aws/docker/library/python:3.11.4-slim-bookworm
 
 ENV PYTHONDONTWRITEBYTECODE 1
 
@@ -33,7 +33,6 @@ RUN chown -R igvfd:igvfd $VIRTUAL_ENV
 RUN mkdir -p $REFERENCE_DATABASE_DIRECTORY
 
 RUN chown -R igvfd:igvfd $REFERENCE_DATABASE_DIRECTORY
-
 
 WORKDIR /scripts
 
