@@ -4,10 +4,34 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Schema for submitting a construct library.",
     "type": "object",
-    "required": [
-        "award",
-        "lab",
-        "scope"
+    "oneOf": [
+        {
+            "required": [
+                "expression_vector_library_details",
+                "award",
+                "lab",
+                "origins",
+                "scope"
+            ]
+        },
+        {
+            "required": [
+                "guide_library_details",
+                "award",
+                "lab",
+                "origins",
+                "scope"
+            ]
+        },
+        {
+            "required": [
+                "reporter_library_details",
+                "award",
+                "lab",
+                "origins",
+                "scope"
+            ]
+        }
     ],
     "identifyingProperties": [
         "uuid",
@@ -37,57 +61,6 @@
         }
     ],
     "dependentSchemas": {
-        "guide_library_details": {
-            "not": {
-                "anyOf": [
-                    {
-                        "required": [
-                            "reporter_library_details"
-                        ]
-                    },
-                    {
-                        "required": [
-                            "expression_vector_library_details"
-                        ]
-                    }
-                ]
-            },
-            "comment": "Specification of guide_library_details is mutually exclusive with specification of other types of library details."
-        },
-        "reporter_library_details": {
-            "not": {
-                "anyOf": [
-                    {
-                        "required": [
-                            "guide_library_details"
-                        ]
-                    },
-                    {
-                        "required": [
-                            "expression_vector_library_details"
-                        ]
-                    }
-                ]
-            },
-            "comment": "Specification of reporter_library_details is mutually exclusive with specification of other types of library details."
-        },
-        "expression_vector_library_details": {
-            "not": {
-                "anyOf": [
-                    {
-                        "required": [
-                            "guide_library_details"
-                        ]
-                    },
-                    {
-                        "required": [
-                            "reporter_library_details"
-                        ]
-                    }
-                ]
-            },
-            "comment": "Specification of expression_vector_library_details is mutually exclusive with specification of other types of library details."
-        },
         "scope": {
             "oneOf": [
                 {
@@ -152,7 +125,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "2"
+            "default": "3"
         },
         "accession": {
             "accessionType": "DS"

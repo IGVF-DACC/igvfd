@@ -7,7 +7,11 @@ def test_post_construct_library(award, lab, testapp):
         {
             'lab': lab['@id'],
             'award': award['@id'],
-            'scope': 'genome-wide'
+            'scope': 'genome-wide',
+            'origins': ['transcription start sites'],
+            'guide_library_details': {
+                'guide_type': 'sgRNA'
+            }
         })
     assert res.status_code == 201
 
@@ -17,11 +21,7 @@ def test_dependencies_construct_library(award, lab, testapp, gene_myc_hs,
                                         base_construct_library):
     res = testapp.patch_json(
         construct_library_genome_wide['@id'],
-        {'scope': 'loci',
-         'guide_library_details': {'tiling_modality': 'sparse peaks',
-                                   'average_guide_coverage': 10,
-                                   'upper_bound_coverage_range': '5-15'
-                                   }
+        {'scope': 'loci'
          }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
