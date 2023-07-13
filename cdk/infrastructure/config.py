@@ -371,7 +371,9 @@ class Config:
     tags: List[Tuple[str, str]]
     url_prefix: Optional[str] = None
     use_subdomain: bool = True
-    common: Common = field(default_factory=Common)
+    common: Common = field(
+        default_factory=Common
+    )
 
 
 @dataclass
@@ -383,7 +385,9 @@ class PipelineConfig:
     account_and_region: Environment
     tags: List[Tuple[str, str]]
     cross_account_keys: bool = False
-    common: Common = field(default_factory=Common)
+    common: Common = field(
+        default_factory=Common
+    )
 
 
 def build_config_from_name(name: str, **kwargs: Any) -> Config:
