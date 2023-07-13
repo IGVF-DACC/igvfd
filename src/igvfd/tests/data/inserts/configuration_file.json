@@ -1,0 +1,19 @@
+[
+    {
+        "uuid": "0ded92ad-2458-4ef4-9db5-16166d86e7e7",
+        "accession": "IGVFFI0000CONF",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:seqspec_yaml"
+        ],
+        "status": "released",
+        "md5sum": "02d89923100d9385f7fa351e9c35d4ca",
+        "file_format": "yaml",
+        "content_type": "seqspec",
+        "submitted_file_name": "/Users/igvf/igvf_files/seqspec.yaml",
+        "file_size": 167924346,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_measurement_set"
+    }
+]
