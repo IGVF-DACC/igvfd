@@ -28,6 +28,7 @@ from infrastructure.constructs.alarms.opensearch import OpensearchAlarms
 from typing import Any
 
 from dataclasses import dataclass
+from dataclasses import field
 
 
 @dataclass
@@ -36,12 +37,16 @@ class OpensearchProps:
     existing_resources: ExistingResources
     capacity: CapacityConfig
     volume_size: int
-    subnet_selection: SubnetSelection = SubnetSelection(
-        availability_zones=['us-west-2a'],
-        subnet_type=SubnetType.PRIVATE_ISOLATED
+    subnet_selection: SubnetSelection = field(
+        default_factory=lambda: SubnetSelection(
+            availability_zones=['us-west-2a'],
+            subnet_type=SubnetType.PRIVATE_ISOLATED
+        )
     )
-    zone_awareness: ZoneAwarenessConfig = ZoneAwarenessConfig(
-        enabled=False,
+    zone_awareness: ZoneAwarenessConfig = field(
+        default_factory=lambda: ZoneAwarenessConfig(
+            enabled=False,
+        )
     )
     logging: bool = True
 

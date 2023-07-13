@@ -7,6 +7,7 @@ from aws_cdk.aws_ec2 import InstanceSize
 from aws_cdk.aws_opensearchservice import CapacityConfig
 
 from dataclasses import dataclass
+from dataclasses import field
 
 from typing import Any
 from typing import Dict
@@ -370,7 +371,7 @@ class Config:
     tags: List[Tuple[str, str]]
     url_prefix: Optional[str] = None
     use_subdomain: bool = True
-    common: Common = Common()
+    common: Common = field(default_factory=Common)
 
 
 @dataclass
@@ -382,7 +383,7 @@ class PipelineConfig:
     account_and_region: Environment
     tags: List[Tuple[str, str]]
     cross_account_keys: bool = False
-    common: Common = Common()
+    common: Common = field(default_factory=Common)
 
 
 def build_config_from_name(name: str, **kwargs: Any) -> Config:
