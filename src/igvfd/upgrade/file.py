@@ -28,4 +28,3 @@ def ref_file_3_4(value, system):
             original_value = original_value.split('V')[1]
         new_value = 'GENCODE ' + original_value
         value['transcriptome_annotation'] = new_value
-

@@ -20,7 +20,7 @@ def reference_file_v2(reference_file):
     item.update({
         'schema_version': '2',
         'source': 'foo://example.com:8042/over/there?name=ferret#nose'
-     })
+    })
     return item
 
 

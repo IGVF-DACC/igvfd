@@ -19,4 +19,3 @@ def test_ref_file_upgrade_3_4(upgrader, ref_file_v3):
     assert match_ann == value['transcriptome_annotation']
     assert 'transcriptome_annotation' in value
     assert value['schema_version'] == '4'
-
