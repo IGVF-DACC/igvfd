@@ -137,20 +137,6 @@
             "description": "Link to external resource, such as NCBI or GENCODE, where the reference data was obtained.",
             "type": "string",
             "format": "uri"
-        },
-        "transcriptome_annotation": {
-            "title": "Transcriptome Annotation",
-            "description": "Transcriptome annotation indicates the transcriptome version.",
-            "type": "string",
-            "enum": [
-                "M30",
-                "M31",
-                "M32",
-                "V40",
-                "V41",
-                "V42",
-                "V43"
-            ]
         }
     },
     "fuzzy_searchable_fields": [
