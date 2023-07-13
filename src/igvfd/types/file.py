@@ -72,6 +72,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'pairs': '.pairs.gz',
     'starch': '.starch',
     'nucle3d': '.nucle3d',
+    'yaml': '.yaml'
 }
 
 
@@ -358,7 +359,7 @@ class SignalFile(File):
         'description': 'Listing of configuration files',
     }
 )
-class SignalFile(File):
+class ConfigurationFile(File):
     item_type = 'configuration_file'
     schema = load_schema('igvfd:schemas/configuration_file.json')
     embedded_with_frame = File.embedded_with_frame
