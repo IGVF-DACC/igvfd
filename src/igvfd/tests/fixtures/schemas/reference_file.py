@@ -24,6 +24,7 @@ def reference_file_v2(reference_file):
     return item
 
 
+@pytest.fixture
 def ref_file_v3(reference_file):
     item = reference_file.copy()
     item.update({
