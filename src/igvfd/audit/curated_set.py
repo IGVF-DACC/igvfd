@@ -34,3 +34,50 @@ def audit_curated_set_mismatched_donor(value, system):
                 f'has a donor(s) which does not match the donor(s) of the associated Samples.'
             )
             yield AuditFailure('inconsistent donors metadata', detail, level='ERROR')
+
+
+@audit_checker('CuratedSet', frame='object')
+def audit_curated_set_mismatched_taxa(value, system):
+    '''
+    {
+        "audit_detail": "The taxa specified for a Curated Set, the taxa of the associated Samples, and the taxa of the associated Donors should be identical.",
+        "audit_category": "inconsistent taxa metadata",
+        "audit_level": "ERROR"
+    }
+    '''
+    taxa = set(value.get('taxa', ''))
+    samples_taxa = set()
+    donors_taxa = set()
+    if 'samples' in value:
+        samples_taxa = set(
+            [
+                system.get('request').embed(x + '@@object?skip_calculated=true').get('taxa', None)
+                for x in value.get('samples', [])
+            ]
+        )
+    if 'donors' in value:
+        donors_taxa = set(
+            [
+                system.get('request').embed(x + '@@object?skip_calculated=true').get('taxa', None)
+                for x in value.get('donors', [])
+            ]
+        )
+
+    if samples_taxa != taxa:
+        detail = (
+            f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'has a taxa which does not match the taxa of the associated Samples.'
+        )
+        yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')
+    if donors_taxa != taxa:
+        detail = (
+            f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'has a taxa which does not match the taxa of the associated Donors.'
+        )
+        yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')
+    if donors_taxa != samples_taxa:
+        detail = (
+            f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'has Samples with taxa that do not match the taxa of the Donors.'
+        )
+        yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')
