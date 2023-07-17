@@ -75,7 +75,10 @@ def audit_curated_set_mismatched_taxa(value, system):
             )
             yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')
 
-    if 'donors' in value and 'samples' in value and donors_taxa != samples_taxa:
+    if 'donors' in value and \
+            'samples' in value and \
+            donors_taxa != samples_taxa and not \
+            (donors_taxa == {'Mus musculus', 'Homo sapiens'} and samples_taxa == {None}):
         detail = (
             f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'has Samples with taxa that do not match the taxa of the Donors.'
