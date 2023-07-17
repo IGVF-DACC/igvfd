@@ -1,0 +1,38 @@
+from snovault.auditor import (
+    audit_checker,
+    AuditFailure,
+)
+from .formatter import (
+    audit_link,
+    path_to_text,
+)
+
+
+@audit_checker('CuratedSet', frame='object')
+def audit_curated_set_mismatched_donor(value, system):
+    '''
+    {
+        "audit_detail": "The donor specified for CuratedSet and the donor of the associated Samples should be matching.",
+        "audit_category": "inconsistent donor metadata",
+        "audit_level": "ERROR"
+    }
+    '''
+    samples_donors = set()
+    donors_specified = set()
+    if 'samples' in value:
+        sample_ids = value.get('samples')
+        for s in sample_ids:
+            samples_object = system.get('request').embed(s + '@@object?skip_calculated=true')
+            if 'donors' in samples_object:
+                for d in samples_object['donors']:
+                    samples_donors.add(d)
+
+    if 'donors' in value:
+        donors_specified = set(value['donors'])
+
+    if samples_donors != donors_specified:
+        detail = (
+            f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'has a donor(s) which does not match the donor(s) of the associated Samples.'
+        )
+        yield AuditFailure('inconsistent donors metadata', detail, level='ERROR')
