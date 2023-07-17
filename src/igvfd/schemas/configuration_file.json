@@ -2,7 +2,7 @@
     "title": "Configuration File",
     "$id": "/profiles/configuration_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submission of a file containing configuration data.",
+    "description": "Schema for submission of a configuration file.",
     "required": [
         "award",
         "lab",
