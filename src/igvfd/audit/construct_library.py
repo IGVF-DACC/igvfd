@@ -12,7 +12,7 @@ from .formatter import (
 def audit_construct_library_associated_diseases(value, system):
     '''
         audit_detail: ConstructLibrary objects with origins of disease-associated variants
-    need to include an entry in associated_diseases.
+        need to include an entry in associated_diseases.
         audit_category: inconsistent variants and ontology metadata
         audit_levels: NOT_COMPLIANT
     '''
@@ -34,8 +34,11 @@ def audit_construct_library_associated_diseases(value, system):
 
 @audit_checker('ConstructLibrary', frame='object')
 def audit_construct_library_plasmid_map(value, system):
-    '''ConstructLibrary objects should have a
-    a Document of document_type:plasmid map.'''
+    '''
+        audit_detail: ConstructLibrary objects should have a Document of document_type:plasmid map.
+        audit_category: missing plasmid
+        audit_level: WARNING
+    '''
     map_counter = 0
     detail = (
         f'ConstructLibrary {audit_link(path_to_text(value["@id"]),value["@id"])} '
