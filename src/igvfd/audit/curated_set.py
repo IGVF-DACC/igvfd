@@ -55,6 +55,12 @@ def audit_curated_set_mismatched_taxa(value, system):
                 for x in value.get('samples', [])
             ]
         )
+        if samples_taxa != taxa:
+            detail = (
+                f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has a taxa which does not match the taxa of the associated Samples.'
+            )
+            yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')
     if 'donors' in value:
         donors_taxa = set(
             [
@@ -62,20 +68,14 @@ def audit_curated_set_mismatched_taxa(value, system):
                 for x in value.get('donors', [])
             ]
         )
+        if donors_taxa != taxa:
+            detail = (
+                f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has a taxa which does not match the taxa of the associated Donors.'
+            )
+            yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')
 
-    if samples_taxa != taxa:
-        detail = (
-            f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-            f'has a taxa which does not match the taxa of the associated Samples.'
-        )
-        yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')
-    if donors_taxa != taxa:
-        detail = (
-            f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-            f'has a taxa which does not match the taxa of the associated Donors.'
-        )
-        yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')
-    if donors_taxa != samples_taxa:
+    if 'donors' in value and 'samples' in value and donors_taxa != samples_taxa:
         detail = (
             f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'has Samples with taxa that do not match the taxa of the Donors.'
