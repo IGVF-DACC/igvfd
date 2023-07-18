@@ -20,6 +20,11 @@
                 "end": 10
             }
         ],
+        "expression_vector_library_details": {
+            "cloned_genes": [
+                "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
+            ]
+        },
         "documents": [
             "igvf:plasmid_map_insert"
         ],
@@ -68,6 +73,9 @@
         ],
         "integrated_content_files": [
             "IGVFFI0001SQBR"
-        ]
+        ],
+        "guide_library_details": {
+            "guide_type": "sgRNA"
+        }
     }
 ]

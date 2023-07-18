@@ -28,6 +28,9 @@ def base_construct_library(testapp, lab, award):
         'origins': [
             'transcription start sites'
         ],
+        'guide_library_details': {
+            'guide_type': 'sgRNA'
+        }
     }
     return testapp.post_json('/construct_library', item).json['@graph'][0]
 
@@ -44,5 +47,16 @@ def construct_library_v1(
         ],
         'plasmid_map': plasmid_map_document['@id'],
         'documents': [document_v1['@id']]
+    }
+    return item
+
+
+@pytest.fixture
+def construct_library_v2(
+        testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'scope': 'genome-wide'
     }
     return item

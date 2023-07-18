@@ -1,5 +1,8 @@
 ## Changelog for *`construct_library.json`*
 
+### Schema version 3
+* Require `origins` and one of the three library details sub-objects: `expression_vector_library_details`, `guide_library_details`, `reporter_library_details`.
+
 ### Minor changes since schema version 2
 
 * Add `files`.

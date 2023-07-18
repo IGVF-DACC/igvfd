@@ -45,3 +45,19 @@ def construct_library_1_2(value, system):
         if 'documents' in value:
             value['documents'].append(value['plasmid_map'])
             del value['plasmid_map']
+
+
+@upgrade_step('construct_library', '2', '3')
+def construct_library_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-849
+    notes = value.get('notes', '')
+    if 'expression_vector_library_details' not in value:
+        if 'guide_library_details' not in value:
+            if 'reporter_library_details' not in value:
+                value['guide_library_details'] = {'guide_type': 'sgRNA'}
+                notes += f' guide_library_details added via upgrade; update before removing note.'
+                value['notes'] = notes.strip()
+    if 'origins' not in value:
+        value['origins'] = ['TF binding sites']
+        notes += f' origins added via upgrade; update before removing note.'
+        value['notes'] = notes.strip()
