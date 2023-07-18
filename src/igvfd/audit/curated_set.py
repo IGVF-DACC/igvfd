@@ -53,7 +53,6 @@ def audit_curated_set_mismatched_taxa(value, system):
                 for x in value.get('samples', [])
             ]
         )
-
         if samples_taxa != taxa and '' not in taxa:
             detail = (
                 f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
