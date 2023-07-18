@@ -53,10 +53,14 @@ def parse_string_to_dictionary(string):
     lines = string.strip().split('\n')
     for line in lines:
         key, value = map(str.strip, line.split(':', 1))
-        if key == 'audit_levelss':
-            value = [item.strip() for item in value.split(',')]
+        if key == 'audit_detail':
+            if ':' in value:
+                value = ':'.join(value.split(':', 1)[1:]).strip()
+            value = ' '.join(value.split())
+        elif key == 'audit_levels':
+            value = [level.strip() for level in value.split(',')]
         else:
-            value = value.strip()
+            value = ' '.join(value.split())
         result[key] = value
     return result
 

@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('InVitroSystem', frame='object')
 def audit_targeted_sample_term_check(value, system):
     '''
-        audit_detail: Flag biosamples if targeted_sample_term and biosample_term is the same.
+        audit_detail: InVitroSystem objects are not expected to have the same targeted_sample_term and biosample_term.
         audit_category: inconsistent targeted_sample_term
         audit_levels: WARNING
     '''
@@ -30,7 +30,7 @@ def audit_targeted_sample_term_check(value, system):
 @audit_checker('InVitroSystem', frame='embedded')
 def audit_cell_fate_change_treatments_purpose(value, system):
     '''
-        audit_detail: Treatments in introduced_factors should not be of purpose "perturbation", "agonist", "antagonist", or "control".
+        audit_detail: InVitroSystem objects with Treatment objects in introduced_factors should not be have purpose "perturbation", "agonist", "antagonist", or "control".
         audit_category: inconsistent introduced_factors treatment purpose
         audit_levels: ERROR
     '''

@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('MeasurementSet', frame='object')
 def audit_related_multiome_datasets(value, system):
     '''
-        audit_detail: MeasurementSet objects with a specified `multiome_size` should have the same amount of links to other MeasurementSet objects (minus itself) specified in `related_multiome_datasets` with the same `multiome_size` and `samples`.
+        audit_detail: MeasurementSet objects with a specified multiome_size should have the corresponding amount of links to other MeasurementSet objects (excluding itself) in related_multiome_datasets which should have the same multiome_size and samples.
         audit_category: inconsistent multiome metadata
         audit_levels: WARNING
     '''

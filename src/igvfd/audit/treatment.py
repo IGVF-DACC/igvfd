@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('Treatment', frame='object')
 def audit_treatment_term_id_check(value, system):
     '''
-        audit_detail: This treatment term has been newly requested. It will be replaced with a CHEBI or UNIPROT term following its addition to the appropriate ontology database.
+        audit_detail: Treatment objects with a newly requested term ID should have it updated following its addition to the appropriate ontology database.
         audit_category: treatment term has been newly requested
         audit_levels: INTERNAL_ACTION
     '''
