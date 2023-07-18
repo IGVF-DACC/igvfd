@@ -1,4 +1,4 @@
-FROM python:3.9.9-slim-buster
+FROM python:3.11.4-slim-bookworm
 
 ENV PYTHONDONTWRITEBYTECODE 1
 

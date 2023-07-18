@@ -1,4 +1,4 @@
-FROM public.ecr.aws/docker/library/python:3.9.9-slim-buster
+FROM public.ecr.aws/docker/library/python:3.11.4-slim-bookworm
 
 ENV PYTHONDONTWRITEBYTECODE 1
 
@@ -34,7 +34,6 @@ RUN mkdir -p $REFERENCE_DATABASE_DIRECTORY
 
 RUN chown -R igvfd:igvfd $REFERENCE_DATABASE_DIRECTORY
 
-
 WORKDIR /scripts
 
 COPY --chown=igvfd:igvfd scripts .
@@ -49,7 +48,7 @@ COPY --chown=igvfd:igvfd src/igvfd/__init__.py src/igvfd/__init__.py
 
 USER igvfd
 
-RUN python -m pip install --upgrade pip
+RUN python -m pip install --upgrade pip setuptools
 
 RUN pip install -e .[test]
 
