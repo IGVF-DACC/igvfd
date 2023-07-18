@@ -32,6 +32,4 @@ class Award(Item):
     }
     embedded_with_frame = [
         Path('submitted_by', include=['@id', 'title']),
-        Path('pis', include=['@id', 'uuid', 'title', 'first_name', 'last_name']),
-        Path('contact_pi', include=['@id', 'uuid', 'title', 'first_name', 'last_name'])
     ]
