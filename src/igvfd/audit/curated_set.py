@@ -19,7 +19,8 @@ def audit_curated_set_mismatched_donor(value, system):
     '''
     samples_donors = set()
     donors_specified = set()
-    if 'samples' in value:
+    if ('samples' in value) and ('donors' in value):
+        donors_specified = set(value['donors'])
         sample_ids = value.get('samples')
         for s in sample_ids:
             samples_object = system.get('request').embed(s + '@@object?skip_calculated=true')
@@ -27,12 +28,9 @@ def audit_curated_set_mismatched_donor(value, system):
                 for d in samples_object['donors']:
                     samples_donors.add(d)
 
-    if 'donors' in value:
-        donors_specified = set(value['donors'])
-
-    if samples_donors != donors_specified:
-        detail = (
-            f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-            f'has a donor(s) which does not match the donor(s) of the associated Samples.'
-        )
-        yield AuditFailure('inconsistent donors metadata', detail, level='ERROR')
+        if samples_donors != donors_specified:
+            detail = (
+                f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has a donor(s) which does not match the donor(s) of the associated Samples.'
+            )
+            yield AuditFailure('inconsistent donors metadata', detail, level='ERROR')
