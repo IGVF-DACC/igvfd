@@ -45,7 +45,7 @@ def audit_curated_set_mismatched_taxa(value, system):
         "audit_level": "ERROR"
     }
     '''
-    taxa = set(value.get('taxa', ''))
+    taxa = {value.get('taxa', '')}
     samples_taxa = set()
     donors_taxa = set()
     if 'samples' in value:
