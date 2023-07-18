@@ -54,7 +54,7 @@ def audit_curated_set_mismatched_taxa(value, system):
             ]
         )
 
-        if samples_taxa != taxa:
+        if samples_taxa != taxa and '' not in taxa:
             detail = (
                 f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
                 f'has a taxa which does not match the taxa of the associated Samples.'
@@ -67,7 +67,7 @@ def audit_curated_set_mismatched_taxa(value, system):
                 for x in value.get('donors', [])
             ]
         )
-        if donors_taxa != taxa:
+        if donors_taxa != taxa and '' not in taxa:
             detail = (
                 f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
                 f'has a taxa which does not match the taxa of the associated Donors.'
