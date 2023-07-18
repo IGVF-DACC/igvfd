@@ -7,6 +7,7 @@ import igvfd.audit.human_donor
 import igvfd.audit.in_vitro_system
 import igvfd.audit.item
 import igvfd.audit.measurement_set
+import igvfd.audit.curated_set
 import igvfd.audit.ontology_term
 import igvfd.audit.sample
 import igvfd.audit.tissue
@@ -28,6 +29,7 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.in_vitro_system,
     igvfd.audit.item,
     igvfd.audit.measurement_set,
+    igvfd.audit.curated_set,
     igvfd.audit.ontology_term,
     igvfd.audit.sample,
     igvfd.audit.tissue,
