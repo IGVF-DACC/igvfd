@@ -10,9 +10,11 @@ from .formatter import (
 
 @audit_checker('MeasurementSet', frame='object')
 def audit_related_multiome_datasets(value, system):
-    '''MeasurementSet objects with a specified `multiome_size` should have the
-    same amount of links to other MeasurementSet objects (minus itself) specified
-    in `related_multiome_datasets` with the same `multiome_size` and `samples`.'''
+    '''
+        audit_detail: MeasurementSet objects with a specified `multiome_size` should have the same amount of links to other MeasurementSet objects (minus itself) specified in `related_multiome_datasets` with the same `multiome_size` and `samples`.
+        audit_category: inconsistent multiome metadata
+        audit_level: WARNING
+    '''
     detail = ''
     related_multiome_datasets = value.get('related_multiome_datasets', [])
     multiome_size = value.get('multiome_size')
@@ -68,8 +70,28 @@ def audit_related_multiome_datasets(value, system):
 
 
 @audit_checker('MeasurementSet', frame='object')
+def audit_seqspec(value, system):
+    '''
+        audit_detail: MeasurementSet objects should specify the associated seqspec YAML file located in the seqspec repository: https://github.com/IGVF/seqspec.
+        audit_category: missing seqspec
+        audit_level: WARNING
+    '''
+    if 'seqspec' not in value:
+        detail = (
+            f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'should specify the associated seqspec YAML file link located in '
+            f'the seqspec repository: https://github.com/IGVF/seqspec.'
+        )
+        yield AuditFailure('missing seqspec', detail, level='WARNING')
+
+
+@audit_checker('MeasurementSet', frame='object')
 def audit_unspecified_protocol(value, system):
-    '''MeasurementSet objects should specify the associated link to the protocol for conducting the assay on Protocols.io'''
+    '''
+        audit_detail: MeasurementSet objects should specify the associated link to the protocol for conducting the assay on protocols.io.
+        audit_category: missing protocol
+        audit_level: NOT_COMPLIANT
+    '''
     if 'protocol' not in value:
         detail = (
             f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '

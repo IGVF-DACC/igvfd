@@ -10,7 +10,11 @@ from .formatter import (
 
 @audit_checker('WholeOrganism', frame='object')
 def audit_whole_organism_human_taxa(value, system):
-    '''Flag whole organisms associated with taxa Homo sapiens.'''
+    '''
+        audit_detail: Flag whole organisms associated with taxa Homo sapiens.
+        audit_category: incorrect taxa
+        audit_level: ERROR
+    '''
     if 'taxa' in value:
         if value['taxa'] == 'Homo sapiens':
             detail = (

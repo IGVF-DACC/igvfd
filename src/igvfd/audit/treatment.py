@@ -10,7 +10,11 @@ from .formatter import (
 
 @audit_checker('Treatment', frame='object')
 def audit_treatment_term_id_check(value, system):
-    '''This treatment term has been newly requested. It will be replaced with a CHEBI or UNIPROT term following its addition to the appropriate ontology database.'''
+    '''
+        audit_detail: This treatment term has been newly requested. It will be replaced with a CHEBI or UNIPROT term following its addition to the appropriate ontology database.
+        audit_category: treatment term has been newly requested
+        audit_level: INTERNAL_ACTION
+    '''
     if 'treatment_term_id' in value:
         term_id = value['treatment_term_id']
         if term_id.startswith('NTR'):

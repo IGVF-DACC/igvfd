@@ -11,7 +11,9 @@ from .formatter import (
 @audit_checker('OntologyTerm', frame='object')
 def audit_ntr_term_id(value, system):
     '''
-    OntologyTerm objects with a `term_id` that starts with NTR should be flagged with an internal_action audit.
+        audit_detail: OntologyTerm objects with a `term_id` that starts with NTR should be flagged with an internal_action audit.
+        audit_category: Ontology term has been newly requested
+        audit_level: INTERNAL_ACTION
     '''
     if 'term_id' in value:
         ontologyterm_id = value['@id']
