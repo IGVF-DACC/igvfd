@@ -54,6 +54,7 @@ ORDER = [
     'sequence_file',
     'signal_file',
     'alignment_file',
+    'configuration_file',
     'analysis_step'
 ]
 

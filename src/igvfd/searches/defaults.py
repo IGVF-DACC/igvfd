@@ -27,6 +27,7 @@ TOP_HITS_ITEM_TYPES = [
     'HumanDonor',
     'RodentDonor',
     'AlignmentFile',
+    'ConfigurationFile',
     'ReferenceFile',
     'SequenceFile',
     'SignalFile',
