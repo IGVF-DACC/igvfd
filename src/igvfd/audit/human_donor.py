@@ -13,7 +13,7 @@ def audit_related_donors(value, system):
     '''
         audit_detail: HumanDonors should have unique related donors and should be mutually specified between each HumanDonor in their related donors.
         audit_category: inconsistent related donors metadata
-        audit_level: WARNING, ERROR
+        audit_levels: WARNING, ERROR
     '''
     if 'related_donors' in value:
         for unique_related_donor in set([related_donor['donor'] for related_donor in value['related_donors']]):

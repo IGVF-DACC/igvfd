@@ -13,7 +13,7 @@ def audit_biosample_nih_institutional_certification(value, system):
     '''
         audit_detail: Biosample objects must specify an NIH Institutional Certification required for human data.,
         audit_category: missing nih_institutional_certification,
-        audit_level: ERROR
+        audit_levels: ERROR
     '''
     if ('nih_institutional_certification' not in value) and (any(donor.startswith('/human-donors/') for donor in value.get('donors'))):
         sample_id = value.get('@id')
@@ -29,7 +29,7 @@ def audit_biosample_taxa_check(value, system):
     '''
         audit_detail: Flag biosamples associated with donors of different taxas.
         audit_category: inconsistent donor taxa
-        audit_level: ERROR
+        audit_levels: ERROR
     '''
     if 'donors' in value:
         sample_id = value['@id']
@@ -59,7 +59,7 @@ def audit_biosample_age(value, system):
     '''
         audit_detail: Tissue, Primary Cell, Whole Organism objects must specify a lower_bound_age, upper_bound_age and age_units.
         audit_category: missing age properties
-        audit_level: WARNING
+        audit_levels: WARNING
     '''
     if ('Tissue' in value['@type']) or ('PrimaryCell' in value['@type']) or ('WholeOrganism' in value['@type']):
         if 'lower_bound_age' and 'upper_bound_age' and 'age_units' not in value:

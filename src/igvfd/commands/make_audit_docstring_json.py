@@ -48,12 +48,26 @@ def get_audit_function_names_from_module(module):
     return audit_function_names
 
 
+def parse_string_to_dictionary(string):
+    result = {}
+    lines = string.strip().split('\n')
+    for line in lines:
+        key, value = map(str.strip, line.split(':', 1))
+        if key == 'audit_levelss':
+            value = [item.strip() for item in value.split(',')]
+        else:
+            value = value.strip()
+        result[key] = value
+    return result
+
+
 def get_docstring_dict_from_function_name(function_name):
     docstring = eval(function_name + '.__doc__')
     if docstring is not None:
-        return {function_name: docstring.strip()}
+        dict_docstring = parse_string_to_dictionary(docstring)
+        return {function_name: dict_docstring}
     else:
-        return {function_name: ''}
+        return {function_name: {}}
 
 
 def main():

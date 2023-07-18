@@ -37,7 +37,7 @@ def audit_construct_library_plasmid_map(value, system):
     '''
         audit_detail: ConstructLibrary objects should have a Document of document_type:plasmid map.
         audit_category: missing plasmid
-        audit_level: WARNING
+        audit_levels: WARNING
     '''
     map_counter = 0
     detail = (

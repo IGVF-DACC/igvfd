@@ -13,7 +13,7 @@ def audit_whole_organism_human_taxa(value, system):
     '''
         audit_detail: Flag whole organisms associated with taxa Homo sapiens.
         audit_category: incorrect taxa
-        audit_level: ERROR
+        audit_levels: ERROR
     '''
     if 'taxa' in value:
         if value['taxa'] == 'Homo sapiens':

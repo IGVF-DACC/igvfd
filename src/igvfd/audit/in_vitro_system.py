@@ -13,7 +13,7 @@ def audit_targeted_sample_term_check(value, system):
     '''
         audit_detail: Flag biosamples if targeted_sample_term and biosample_term is the same.
         audit_category: inconsistent targeted_sample_term
-        audit_level: WARNING
+        audit_levels: WARNING
     '''
     if 'targeted_sample_term' in value:
         value_id = system.get('path')
@@ -32,7 +32,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
     '''
         audit_detail: Treatments in introduced_factors should not be of purpose "perturbation", "agonist", "antagonist", or "control".
         audit_category: inconsistent introduced_factors treatment purpose
-        audit_level: ERROR
+        audit_levels: ERROR
     '''
     if 'cell_fate_change_treatments' in value:
         for treatment in value.get('cell_fate_change_treatments'):

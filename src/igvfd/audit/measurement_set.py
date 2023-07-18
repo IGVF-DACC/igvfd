@@ -13,7 +13,7 @@ def audit_related_multiome_datasets(value, system):
     '''
         audit_detail: MeasurementSet objects with a specified `multiome_size` should have the same amount of links to other MeasurementSet objects (minus itself) specified in `related_multiome_datasets` with the same `multiome_size` and `samples`.
         audit_category: inconsistent multiome metadata
-        audit_level: WARNING
+        audit_levels: WARNING
     '''
     detail = ''
     related_multiome_datasets = value.get('related_multiome_datasets', [])
@@ -74,7 +74,7 @@ def audit_seqspec(value, system):
     '''
         audit_detail: MeasurementSet objects should specify the associated seqspec YAML file located in the seqspec repository: https://github.com/IGVF/seqspec.
         audit_category: missing seqspec
-        audit_level: WARNING
+        audit_levels: WARNING
     '''
     if 'seqspec' not in value:
         detail = (
@@ -90,7 +90,7 @@ def audit_unspecified_protocol(value, system):
     '''
         audit_detail: MeasurementSet objects should specify the associated link to the protocol for conducting the assay on protocols.io.
         audit_category: missing protocol
-        audit_level: NOT_COMPLIANT
+        audit_levels: NOT_COMPLIANT
     '''
     if 'protocol' not in value:
         detail = (

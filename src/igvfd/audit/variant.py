@@ -13,7 +13,7 @@ def audit_variant_ref_alt_check(value, system):
     '''
         audit_detail: Variant object reference allele and alternative allele should never be the same, if they are they should trigger an ERROR.
         audit_category: identical ref and alt alleles
-        audit_level: ERROR
+        audit_levels: ERROR
     '''
     if 'ref' and 'alt' in value:
         if value['ref'] == value['alt']:
