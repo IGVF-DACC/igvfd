@@ -39,11 +39,9 @@ def audit_curated_set_mismatched_donor(value, system):
 @audit_checker('CuratedSet', frame='object')
 def audit_curated_set_mismatched_taxa(value, system):
     '''
-    {
-        "audit_detail": "The taxa specified for a Curated Set, the taxa of the associated Samples, and the taxa of the associated Donors should be identical.",
-        "audit_category": "inconsistent taxa metadata",
-        "audit_level": "ERROR"
-    }
+        audit_detail: The taxa specified for a Curated Set, the taxa of the associated Samples, and the taxa of the associated Donors should be identical.
+        audit_category: inconsistent taxa metadata
+        audit_levels: ERROR
     '''
     taxa = {value.get('taxa', '')}
     samples_taxa = set()
@@ -51,10 +49,11 @@ def audit_curated_set_mismatched_taxa(value, system):
     if 'samples' in value:
         samples_taxa = set(
             [
-                system.get('request').embed(x + '@@object?skip_calculated=true').get('taxa', None)
+                system.get('request').embed(x).get('taxa', None)
                 for x in value.get('samples', [])
             ]
         )
+
         if samples_taxa != taxa:
             detail = (
                 f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
