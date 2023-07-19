@@ -15,7 +15,7 @@ def test_files_link(testapp, sequence_file, reference_file, measurement_set):
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert set(res.json.get('files')) == {sequence_file['@id'], reference_file['@id']}
+    assert set([file_id['@id'] for file_id in res.json.get('files')]) == {sequence_file['@id'], reference_file['@id']}
     testapp.patch_json(
         sequence_file['@id'],
         {
@@ -23,7 +23,7 @@ def test_files_link(testapp, sequence_file, reference_file, measurement_set):
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert set(res.json.get('files')) == {reference_file['@id']}
+    assert set([file_id['@id'] for file_id in res.json.get('files')]) == {reference_file['@id']}
 
 
 def test_control_link(testapp, measurement_set, curated_set_genome):
@@ -34,4 +34,4 @@ def test_control_link(testapp, measurement_set, curated_set_genome):
         }
     )
     res = testapp.get(curated_set_genome['@id'])
-    assert set(res.json.get('control_for')) == {measurement_set['@id']}
+    assert set([file_set_id['@id'] for file_set_id in res.json.get('control_for')]) == {measurement_set['@id']}

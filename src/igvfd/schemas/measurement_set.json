@@ -165,13 +165,29 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "@type",
         "assay_term.term_name",
+        "collections",
         "lab.title",
-        "preferred_assay_title"
+        "preferred_assay_title",
+        "samples.summary",
+        "samples.biosample_term",
+        "submitted_by.title",
+        "summary"
     ],
     "exact_searchable_fields": [
-        "@type",
-        "dbxrefs"
+        "dbxrefs",
+        "files.accession",
+        "files.aliases",
+        "related_multiome_datasets.accession",
+        "control_file_sets.accession",
+        "control_file_sets.aliases",
+        "control_for.accession",
+        "control_for.aliases",
+        "samples.accession",
+        "samples.aliases",
+        "samples.donors.accession",
+        "samples.donors.aliases"
     ],
     "changelog": "/profiles/changelogs/measurement_set.md"
 }
