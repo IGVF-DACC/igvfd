@@ -57,11 +57,11 @@ def parse_string_to_dictionary(docstring):
         'audit_category': '',
         'audit_levels': []
     }
-    if 'audit_detail' in single_line:
+    if 'audit_detail:' in single_line:
         result_dict['audit_detail'] = single_line.split('audit_detail:')[1].split('audit_category:')[0].strip()
-    if 'audit_category' in single_line:
+    if 'audit_category:' in single_line:
         result_dict['audit_category'] = single_line.split('audit_category:')[1].split('audit_levels:')[0].strip()
-    if 'audit_levels' in single_line:
+    if 'audit_levels:' in single_line:
         audit_levels_str = single_line.split('audit_levels:')[1].strip()
         result_dict['audit_levels'] = [level.strip() for level in audit_levels_str.split(',')]
     return result_dict
