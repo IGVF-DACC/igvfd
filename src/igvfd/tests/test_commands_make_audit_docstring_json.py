@@ -6,7 +6,7 @@ from igvfd.commands.make_audit_docstring_json import get_docstring_dict_from_fun
 def test_get_docstring_dict_from_function_name_docstring_is_defined():
     print(get_docstring_dict_from_function_name('igvfd.tests.fixtures.audit_docstring.function_with_docstring'))
     assert get_docstring_dict_from_function_name('igvfd.tests.fixtures.audit_docstring.function_with_docstring') == {'igvfd.tests.fixtures.audit_docstring.function_with_docstring': {
-        'audit_detail': 'some:detail', 'audit_category': 'audit category', 'audit_levels': ['ERROR', 'WARNING']}}
+        'audit_detail': 'This detail: has colons: and : multiple lines', 'audit_category': 'audit category', 'audit_levels': ['ERROR', 'WARNING']}}
 
 
 def test_get_docstring_dict_from_function_name_docstring_not_defined():

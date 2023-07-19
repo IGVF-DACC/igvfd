@@ -48,21 +48,23 @@ def get_audit_function_names_from_module(module):
     return audit_function_names
 
 
-def parse_string_to_dictionary(string):
-    result = {}
-    lines = string.strip().split('\n')
-    for line in lines:
-        key, value = map(str.strip, line.split(':', 1))
-        if key == 'audit_detail':
-            if ':' in value:
-                value = ':'.join(value.split(':', 1)[1:]).strip()
-            value = ' '.join(value.split())
-        elif key == 'audit_levels':
-            value = [level.strip() for level in value.split(',')]
-        else:
-            value = ' '.join(value.split())
-        result[key] = value
-    return result
+def parse_string_to_dictionary(docstring):
+    lines = docstring.strip().split('\n')
+    single_line = ' '.join(line.strip() for line in lines)
+    single_line.split()
+    result_dict = {
+        'audit_detail': '',
+        'audit_category': '',
+        'audit_levels': []
+    }
+    if 'audit_detail' in single_line:
+        result_dict['audit_detail'] = single_line.split('audit_detail:')[1].split('audit_category:')[0].strip()
+    if 'audit_category' in single_line:
+        result_dict['audit_category'] = single_line.split('audit_category:')[1].split('audit_levels:')[0].strip()
+    if 'audit_levels' in single_line:
+        audit_levels_str = single_line.split('audit_levels:')[1].strip()
+        result_dict['audit_levels'] = [level.strip() for level in audit_levels_str.split(',')]
+    return result_dict
 
 
 def get_docstring_dict_from_function_name(function_name):
