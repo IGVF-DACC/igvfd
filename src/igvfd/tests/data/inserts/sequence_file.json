@@ -17,7 +17,7 @@
         "file_set": "igvf:basic_analysis_set",
         "sequencing_run": 12,
         "sequencing_platform": "/platform-terms/747dc8bf-9e8c-3dbc-967f-ce9f995cfd28/",
-        "seqspec": "0ded92ad-2458-4ef4-9db5-16166d86e7e7"
+        "seqspec": "/configuration-files/IGVFFI0000CONF/"
     },
     {
         "uuid": "8aacc597-9830-4fd6-a75f-1c6f0b687b52",
