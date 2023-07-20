@@ -9,7 +9,7 @@ def test_audit_construct_library_associated_disease(
     # associated_diseases property must be populated
     testapp.patch_json(
         base_construct_library['@id'],
-        {'origins': ['disease-associated variants']}
+        {'selection_criteria': ['disease-associated variants']}
     )
     res = testapp.get(base_construct_library['@id'] + '@@audit')
     assert any(

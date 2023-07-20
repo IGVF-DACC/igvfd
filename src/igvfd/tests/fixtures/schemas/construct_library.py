@@ -7,7 +7,7 @@ def construct_library_genome_wide(testapp, lab, award):
         'award': award['@id'],
         'lab': lab['@id'],
         'scope': 'genome-wide',
-        'origins': [
+        'selection_criteria': [
             'TF binding sites'
         ],
         'product_id': 'addgene:81225',
@@ -25,7 +25,7 @@ def base_construct_library(testapp, lab, award):
         'award': award['@id'],
         'lab': lab['@id'],
         'scope': 'genome-wide',
-        'origins': [
+        'selection_criteria': [
             'transcription start sites'
         ],
         'guide_library_details': {
@@ -58,5 +58,18 @@ def construct_library_v2(
         'award': award['@id'],
         'lab': lab['@id'],
         'scope': 'genome-wide'
+    }
+    return item
+
+
+@pytest.fixture
+def construct_library_v3(
+        testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'scope': 'genome-wide',
+        'schema_version': '3',
+        'origins': ['accessible genome regions']
     }
     return item

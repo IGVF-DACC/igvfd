@@ -8,7 +8,7 @@ def test_post_construct_library(award, lab, testapp):
             'lab': lab['@id'],
             'award': award['@id'],
             'scope': 'genome-wide',
-            'origins': ['transcription start sites'],
+            'selection_criteria': ['transcription start sites'],
             'guide_library_details': {
                 'guide_type': 'sgRNA'
             }
@@ -66,4 +66,16 @@ def test_dependencies_construct_library(award, lab, testapp, gene_myc_hs,
                                    'average_guide_coverage': 10
                                    }
          })
+    assert res.status_code == 200
+
+
+def test_construct_library_selection_criteria(testapp, construct_library_genome_wide):
+    res = testapp.patch_json(
+        construct_library_genome_wide['@id'],
+        {'origins': ['accessible genome regions']
+         }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        construct_library_genome_wide['@id'],
+        {'selection_criteria': ['accessible genome regions']})
     assert res.status_code == 200

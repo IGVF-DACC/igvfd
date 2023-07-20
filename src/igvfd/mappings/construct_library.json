@@ -1,6 +1,6 @@
 {
-    "hash": "d40c9fd315259dafe76c669cefc4f29e",
-    "index_name": "construct_library_d40c9fd3",
+    "hash": "e29a233fd6b4c0f8043fe4514c065848",
+    "index_name": "construct_library_e29a233f",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -891,10 +891,6 @@
                     "notes": {
                         "type": "text"
                     },
-                    "origins": {
-                        "copy_to": "_fuzzy",
-                        "type": "keyword"
-                    },
                     "product_id": {
                         "copy_to": "_exact",
                         "type": "keyword"
@@ -942,6 +938,9 @@
                         "type": "keyword"
                     },
                     "scope": {
+                        "type": "keyword"
+                    },
+                    "selection_criteria": {
                         "type": "keyword"
                     },
                     "source": {

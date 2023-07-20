@@ -17,8 +17,8 @@ def audit_construct_library_associated_diseases(value, system):
         audit_levels: NOT_COMPLIANT
     '''
     detail = ''
-    origin_list = value.get('origins', [])
-    if 'disease-associated variants' in origin_list:
+    selection_criteria_list = value.get('selection_criteria', [])
+    if 'disease-associated variants' in selection_criteria_list:
         assoc_disease = value.get('associated_diseases', [])
         if assoc_disease != []:
             return

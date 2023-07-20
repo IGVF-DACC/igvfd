@@ -19,8 +19,8 @@ def cell_line():
             'scope': {
                 'title': 'Scope'
             },
-            'origins': {
-                'title': 'Origins'
+            'selection_criteria': {
+                'title': 'Selection Criteria'
             }
         },
         'columns': {
@@ -39,8 +39,8 @@ def cell_line():
             'scope': {
                 'title': 'Scope'
             },
-            'origins': {
-                'title': 'Origins'
+            'selection_criteria': {
+                'title': 'Selection Criteria'
             },
             'guide_library_details': {
                 'title': 'Guide Library Details'
