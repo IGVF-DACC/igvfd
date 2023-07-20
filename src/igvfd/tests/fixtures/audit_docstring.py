@@ -18,5 +18,16 @@ def function_with_docstring_improper_keys():
     pass
 
 
+def function_with_docstring_out_of_order():
+    '''
+        audit_levels: ERROR
+        audit_detail: audit details
+    with
+        multiples lines
+        audit_category: audit category
+    '''
+    pass
+
+
 def function_without_docstring():
     pass

@@ -13,6 +13,13 @@ def test_get_docstring_dict_from_function_name_docstring_improper_keys():
         'igvfd.tests.fixtures.audit_docstring.function_with_docstring_improper_keys': {'audit_detail': '', 'audit_category': '', 'audit_levels': []}}
 
 
+def test_get_docstring_dict_from_function_name_docstring_is_defined():
+    print(get_docstring_dict_from_function_name('igvfd.tests.fixtures.audit_docstring.function_with_docstring_out_of_order'))
+    assert(get_docstring_dict_from_function_name('igvfd.tests.fixtures.audit_docstring.function_with_docstring_out_of_order')) == {
+        'igvfd.tests.fixtures.audit_docstring.function_with_docstring_out_of_order': {'audit_detail': 'audit details with multiples lines', 'audit_category': 'audit category', 'audit_levels': ['ERROR']}
+    }
+
+
 def test_get_docstring_dict_from_function_name_docstring_not_defined():
     assert get_docstring_dict_from_function_name('igvfd.tests.fixtures.audit_docstring.function_without_docstring') == {
         'igvfd.tests.fixtures.audit_docstring.function_without_docstring': {}}

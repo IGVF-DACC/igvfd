@@ -57,26 +57,25 @@ def parse_string_to_dictionary(docstring):
         'audit_levels': []
     }
     if 'audit_detail:' in single_line:
-        after_audit_detail = single_line.split('audit_detail:')[1]
+        after_audit_detail = single_line.split('audit_detail:')[1].strip()
         if 'audit_' in after_audit_detail:
             result_dict['audit_detail'] = after_audit_detail.split('audit_')[0].strip()
         else:
-            result_dict['audit_detail'] = after_audit_detail.strip()
-#        result_dict['audit_detail'] = single_line.split('audit_detail:')[1].split('audit_category:')[0].strip()
+            result_dict['audit_detail'] = after_audit_detail
     if 'audit_category:' in single_line:
-        after_audit_category = single_line.split('audit_category:')[1]
+        after_audit_category = single_line.split('audit_category:')[1].strip()
         if 'audit_' in after_audit_category:
             result_dict['audit_category'] = after_audit_category.split('audit_')[0].strip()
         else:
-            result_dict['audit_category'] = after_audit_category.strip()
+            result_dict['audit_category'] = after_audit_category
     if 'audit_levels:' in single_line:
         after_audit_levels = single_line.split('audit_levels:')[1]
         if 'audit_' in after_audit_levels:
             audit_levels_str = after_audit_levels.split('audit_')[0].strip()
-            result_dict['audit_category'] = [level.strip() for level in audit_levels_str.split(',')]
+            result_dict['audit_levels'] = [level.strip() for level in audit_levels_str.split(',')]
         else:
             audit_levels_str = after_audit_levels.strip()
-            result_dict['audit_category'] = [level.strip() for level in audit_levels_str.split(',')]
+            result_dict['audit_levels'] = [level.strip() for level in audit_levels_str.split(',')]
     return result_dict
 
 
