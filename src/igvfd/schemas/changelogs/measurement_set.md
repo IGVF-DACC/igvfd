@@ -8,7 +8,7 @@
 * Add `control_file_sets`.
 * Add `control_for`.
 * Add `sequencing_library_type`.
-* Add `polyA depleted`, `polyA enriched`, `ribo depletion`.
+* Expand `sequence_library_type` enum list to include `polyA depleted`, `polyA enriched`, and `ribo depletion`.
 
 ### Schema version 4
 
