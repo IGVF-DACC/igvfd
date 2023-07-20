@@ -49,6 +49,17 @@ def get_audit_function_names_from_module(module):
 
 
 def parse_string_to_dictionary(docstring):
+    '''
+        The expected input for the docstring is as follows:
+            audit_details: audit details
+            audit_categories: audit categories
+            audit_levels: ERROR, WARNING, NON_COMPLIANT
+        There should be three "keys": audit_details, audit_categories, and audit_levels.
+        The audit_levels should be seperated by commas. Additional keys or values starting with "audit_"
+        should not be included in the input docstring. Ideally the input docstring keys should be in
+        order as above for readability between docstrings, but this function allows for them to be out
+        of order. It also removes whitespace within a key's value, including newlines.
+    '''
     lines = docstring.strip().split('\n')
     single_line = ' '.join(line.strip() for line in lines)
     result_dict = {
