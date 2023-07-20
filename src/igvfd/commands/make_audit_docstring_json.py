@@ -51,7 +51,6 @@ def get_audit_function_names_from_module(module):
 def parse_string_to_dictionary(docstring):
     lines = docstring.strip().split('\n')
     single_line = ' '.join(line.strip() for line in lines)
-    single_line.split()
     result_dict = {
         'audit_detail': '',
         'audit_category': '',
