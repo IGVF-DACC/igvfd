@@ -142,7 +142,7 @@ def test_audit_inherit_related_multiome(
     testapp.patch_json(
         measurement_set_multiome['@id'],
         {
-            'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/10x-ATAC/spec.yaml',
+            'protocol': 'https://www.protocols.io/view/example_protocol',
             'samples': [primary_cell['@id']]
         }
     )
@@ -154,41 +154,19 @@ def test_audit_inherit_related_multiome(
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing seqspec'
-        for error in res.json['audit'].get('WARNING', [])
+        error['category'] == 'missing protocol'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         measurement_set_multiome_2['@id'],
         {
-            'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/10x-ATAC/spec.yaml'
+            'protocol': 'https://www.protocols.io/view/example_protocol'
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing seqspec'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-
-
-def test_audit_seqspec(
-    testapp,
-    measurement_set
-):
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing seqspec'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/10x-ATAC/spec.yaml'
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing seqspec'
-        for error in res.json['audit'].get('WARNING', [])
+        error['category'] != 'missing protocol'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 

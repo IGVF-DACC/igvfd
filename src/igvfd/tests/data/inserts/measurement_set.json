@@ -63,7 +63,6 @@
         "status": "released",
         "uuid": "06893264-0d44-4fa8-bb3d-924fcdaed346",
         "assay_term": "/assay-terms/NTR_0000739/",
-        "seqspec": "https://github.com/IGVF/seqspec/blob/main/assays/SHARE-seq/spec.yaml",
         "control_file_sets": [
             "igvf:basic_measurement_set",
             "igvf:basic_construct_library_0"

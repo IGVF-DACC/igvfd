@@ -61,3 +61,10 @@ def construct_library_2_3(value, system):
         value['origins'] = ['TF binding sites']
         notes += f' origins added via upgrade; update before removing note.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '4', '5')
+def measurement_set_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-679
+    if 'seqspec' in value:
+        del value['seqspec']
