@@ -69,7 +69,8 @@
             "igvf:basic_construct_library_0"
         ],
         "sequencing_library_type": [
-            "mRNA enriched"
+            "mRNA enriched",
+            "polyA depleted"
         ]
     }
 ]

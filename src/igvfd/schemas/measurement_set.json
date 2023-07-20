@@ -159,7 +159,10 @@
                     "direct RNA",
                     "exome capture",
                     "mRNA enriched",
-                    "rRNA depleted"
+                    "rRNA depleted",
+                    "polyA depleted",
+                    "polyA enriched",
+                    "ribo depletion"
                 ]
             }
         }

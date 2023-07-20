@@ -8,6 +8,7 @@
 * Add `control_file_sets`.
 * Add `control_for`.
 * Add `sequencing_library_type`.
+* Add `polyA depleted`, `polyA enriched`, `ribo depletion`.
 
 ### Schema version 4
 
