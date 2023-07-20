@@ -4,8 +4,8 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
-        "amount",
-        "amount_units",
+        "award",
+        "lab",
         "treatment_term_id",
         "treatment_term_name",
         "treatment_type",
@@ -28,6 +28,9 @@
         },
         {
             "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
         }
     ],
     "dependentSchemas": {
@@ -67,6 +70,54 @@
             ],
             "comment": "temperature must be specified if temperature_units is specified"
         },
+        "amount": {
+            "required": [
+                "depletion",
+                "amount_units"
+            ],
+            "comment": "delpetion and amount_units must be specified if amount is specified",
+            "properties": {
+                "depletion": {
+                    "const": false
+                }
+            }
+        },
+        "amount_units": {
+            "required": [
+                "depletion",
+                "amount"
+            ],
+            "comment": "depletion and amount must be specified if anount_untis is specified",
+            "properties": {
+                "depletion": {
+                    "const": false
+                }
+            }
+        },
+        "depletion": {
+            "comment": "amount and amount_units are required if depletion is True.",
+            "if": {
+                "properties": {
+                    "depletion": {
+                        "const": false
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "amount",
+                    "amount_units"
+                ]
+            },
+            "else": {
+                "not": {
+                    "required": [
+                        "amount",
+                        "amount_units"
+                    ]
+                }
+            }
+        },
         "treatment_term_id": {
             "oneOf": [
                 {
@@ -99,7 +150,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "4"
         },
         "documents": {
             "description": "Documents that describe the treatment protocol details."
@@ -218,6 +269,12 @@
             "title": "Treatment Term Name",
             "description": "Ontology term describing a component in the treatment that is the principal component affecting the biosample being treated. Examples: interferon gamma, interleukin-4, Fibroblast growth factor 2, 20-hydroxyecdysone, 5-bromouridine etc.",
             "type": "string"
+        },
+        "depletion": {
+            "title": "Depletion",
+            "description": "Treatment is depleted.",
+            "type": "boolean",
+            "default": false
         }
     },
     "fuzzy_searchable_fields": [

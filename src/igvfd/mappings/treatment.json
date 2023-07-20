@@ -1,6 +1,6 @@
 {
-    "hash": "38c79ef40e7bdbbd5bc8ee449a4881b8",
-    "index_name": "treatment_38c79ef4",
+    "hash": "2c5f31409cd21fb104d66483d1bbce60",
+    "index_name": "treatment_2c5f3140",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -168,8 +168,20 @@
                     "amount_units": {
                         "type": "keyword"
                     },
+                    "award": {
+                        "type": "keyword"
+                    },
                     "creation_timestamp": {
                         "type": "keyword"
+                    },
+                    "depletion": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "description": {
                         "type": "text"
@@ -187,6 +199,9 @@
                         "type": "float"
                     },
                     "duration_units": {
+                        "type": "keyword"
+                    },
+                    "lab": {
                         "type": "keyword"
                     },
                     "lot_id": {

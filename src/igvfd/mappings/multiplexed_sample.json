@@ -1,6 +1,6 @@
 {
-    "hash": "00a6bc8193b854a5bced799e7e09a2b8",
-    "index_name": "multiplexed_sample_00a6bc81",
+    "hash": "cd53a0171a264d13c7876f9e4353441b",
+    "index_name": "multiplexed_sample_cd53a017",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -657,8 +657,20 @@
                             "amount_units": {
                                 "type": "keyword"
                             },
+                            "award": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
+                            },
+                            "depletion": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"
@@ -676,6 +688,9 @@
                                 "type": "float"
                             },
                             "duration_units": {
+                                "type": "keyword"
+                            },
+                            "lab": {
                                 "type": "keyword"
                             },
                             "lot_id": {

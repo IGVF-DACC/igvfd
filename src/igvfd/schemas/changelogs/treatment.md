@@ -1,5 +1,10 @@
 ## Changelog for *`treatment.json`*
 
+### Schema version 4
+* Add `lab` and `award`.
+* Add `depletion`. It is `False` by default. If it is `True`, `amount` and `amount_units` should not be specified.
+* Remove `amount` and `amount_units` from required properties list.
+
 ### Schema version 3
 * Require `purpose`.
 

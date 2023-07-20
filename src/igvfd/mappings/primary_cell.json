@@ -1,6 +1,6 @@
 {
-    "hash": "f2ead5621857514c9b7e9d59b7deb145",
-    "index_name": "primary_cell_f2ead562",
+    "hash": "7de1b117353d4464429a8bd51f943cb1",
+    "index_name": "primary_cell_7de1b117",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -719,8 +719,20 @@
                             "amount_units": {
                                 "type": "keyword"
                             },
+                            "award": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
+                            },
+                            "depletion": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"
@@ -738,6 +750,9 @@
                                 "type": "float"
                             },
                             "duration_units": {
+                                "type": "keyword"
+                            },
+                            "lab": {
                                 "type": "keyword"
                             },
                             "lot_id": {

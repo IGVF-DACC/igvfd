@@ -96,3 +96,59 @@ def test_treatment_purpose_requirement(testapp):
             'amount_units': 'ng/mL'
         }, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_treatment_award_lab_depletion_requirement(testapp, award, lab):
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'UniProtKB:P09919',
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'protein',
+            'amount': 10,
+            'amount_units': 'ng/mL',
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id']
+        })
+    assert res.status_code == 201
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'UniProtKB:P09919',
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'protein',
+            'depletion': True,
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id']
+        })
+    assert res.status_code == 201
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'UniProtKB:P09919',
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'protein',
+            'amount': 10,
+            'amount_units': 'ng/mL',
+            'purpose': 'differentiation',
+        }, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'UniProtKB:P09919',
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'protein',
+            'amount': 10,
+            'amount_units': 'ng/mL',
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'depletion': '',
+        }, expect_errors=True)
+    assert res.status_code == 422
