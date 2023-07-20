@@ -1,5 +1,11 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 12
+
+* Rename `introduced_factors` to `cell_fate_change_treatments`.
+* Rename `time_post_factors_introduction` to `time_post_change`.
+* Rename `time_post_factors_introduction_units` to `time_post_change_units`.
+
 ### Schema version 11
 
 * Add `virtual`.

@@ -15,15 +15,15 @@ def test_passage_number_dependency(in_vitro_cell_line, testapp):
 def test_time_post_factors_dependency(in_vitro_cell_line, treatment_chemical, testapp):
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'time_post_factors_introduction': 3}, expect_errors=True)
+        {'time_post_change': 3}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'introduced_factors': [treatment_chemical['@id']]}, expect_errors=True)
+        {'cell_fate_change_treatments': [treatment_chemical['@id']]}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'time_post_factors_introduction': 3, 'time_post_factors_introduction_units': 'day', 'introduced_factors': [treatment_chemical['@id']]})
+        {'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_treatments': [treatment_chemical['@id']]})
     assert res.status_code == 200
 
 
@@ -79,9 +79,9 @@ def test_classification_dependency(testapp, lab, award, source, human_donor, sam
         'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_K562['@id'],
-        'introduced_factors': [treatment_chemical['@id']],
-        'time_post_factors_introduction': 5,
-        'time_post_factors_introduction_units': 'minute'
+        'cell_fate_change_treatments': [treatment_chemical['@id']],
+        'time_post_change': 5,
+        'time_post_change_units': 'minute'
     }
     res = testapp.post_json('/in_vitro_system', item, expect_errors=True)
     assert res.status_code == 422
@@ -89,18 +89,18 @@ def test_classification_dependency(testapp, lab, award, source, human_donor, sam
         in_vitro_cell_line['@id'],
         {
             'classification': 'organoid',
-            'introduced_factors': [treatment_chemical['@id']],
-            'time_post_factors_introduction': 5,
-            'time_post_factors_introduction_units': 'minute'
+            'cell_fate_change_treatments': [treatment_chemical['@id']],
+            'time_post_change': 5,
+            'time_post_change_units': 'minute'
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
             'classification': 'organoid',
-            'introduced_factors': [treatment_chemical['@id']],
-            'time_post_factors_introduction': 5,
-            'time_post_factors_introduction_units': 'minute',
+            'cell_fate_change_treatments': [treatment_chemical['@id']],
+            'time_post_change': 5,
+            'time_post_change_units': 'minute',
             'targeted_sample_term': sample_term_brown_adipose_tissue['@id']
         })
     assert res.status_code == 200

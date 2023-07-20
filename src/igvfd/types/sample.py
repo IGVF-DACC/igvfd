@@ -218,7 +218,7 @@ class InVitroSystem(Biosample):
     item_type = 'in_vitro_system'
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
     embedded_with_frame = Biosample.embedded_with_frame + [
-        Path('introduced_factors', include=['@id', 'treatment_term_name', 'purpose']),
+        Path('cell_fate_change_treatments', include=['@id', 'treatment_term_name', 'purpose']),
     ]
 
     @calculated_property(
@@ -228,7 +228,7 @@ class InVitroSystem(Biosample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, biosample_term, classification, taxa=None, time_post_factors_introduction=None, time_post_factors_introduction_units=None):
+    def summary(self, request, biosample_term, classification, taxa=None, time_post_change=None, time_post_change_units=None):
         sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
         term_name = sample_term_object.get('term_name')
         term_and_classification = f'{term_name} {classification}'
@@ -239,17 +239,17 @@ class InVitroSystem(Biosample):
         elif 'tissue' in classification and 'tissue' in term_name:
             term_and_classification = term_name.replace('tissue', classification)
         if taxa:
-            if time_post_factors_introduction and time_post_factors_introduction_units:
-                if time_post_factors_introduction != 1:
-                    time_post_factors_introduction_units = f'{time_post_factors_introduction_units}s'
-                return f'{term_and_classification}, {taxa} ({time_post_factors_introduction} {time_post_factors_introduction_units})'
+            if time_post_change and time_post_change_units:
+                if time_post_change != 1:
+                    time_post_change_units = f'{time_post_change_units}s'
+                return f'{term_and_classification}, {taxa} ({time_post_change} {time_post_change_units})'
             else:
                 return f'{term_and_classification}, {taxa}'
         else:
-            if time_post_factors_introduction and time_post_factors_introduction_units:
-                if time_post_factors_introduction != 1:
-                    time_post_factors_introduction_units = f'{time_post_factors_introduction_units}s'
-                return f'{term_and_classification} ({time_post_factors_introduction} {time_post_factors_introduction_units})'
+            if time_post_change and time_post_change_units:
+                if time_post_change != 1:
+                    time_post_change_units = f'{time_post_change_units}s'
+                return f'{term_and_classification} ({time_post_change} {time_post_change_units})'
             else:
                 return f'{term_and_classification}'
 

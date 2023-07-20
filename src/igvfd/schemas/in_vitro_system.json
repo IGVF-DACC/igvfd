@@ -63,7 +63,7 @@
             }
         },
         "classification": {
-            "comment": "If an in vitro system is of classification organoid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, introduced_factors, time_post_factors_introduction, and time_post_factors_introduction_units are required.",
+            "comment": "If an in vitro system is of classification organoid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, cell_fate_change_treatments, time_post_change, and time_post_change_units are required.",
             "if": {
                 "properties": {
                     "classification": {
@@ -80,26 +80,26 @@
             },
             "then": {
                 "required": [
-                    "time_post_factors_introduction",
-                    "time_post_factors_introduction_units",
-                    "introduced_factors",
+                    "time_post_change",
+                    "time_post_change_units",
+                    "cell_fate_change_treatments",
                     "targeted_sample_term"
                 ]
             }
         }
     },
     "dependentRequired": {
-        "time_post_factors_introduction": [
-            "time_post_factors_introduction_units",
-            "introduced_factors"
+        "time_post_change": [
+            "time_post_change_units",
+            "cell_fate_change_treatments"
         ],
-        "time_post_factors_introduction_units": [
-            "time_post_factors_introduction",
-            "introduced_factors"
+        "time_post_change_units": [
+            "time_post_change",
+            "cell_fate_change_treatments"
         ],
-        "introduced_factors": [
-            "time_post_factors_introduction_units",
-            "time_post_factors_introduction"
+        "cell_fate_change_treatments": [
+            "time_post_change_units",
+            "time_post_change"
         ]
     },
     "properties": {
@@ -121,16 +121,16 @@
                 "pooled cell specimen"
             ]
         },
-        "time_post_factors_introduction": {
-            "title": "Time Post Factors Introduction",
-            "description": "The time that elapsed past the time-point when the factors were introduced.",
-            "comment": "Use in conjunction with time_post_factors_introduction_units to specify time elapsed post factors introduction. Use of this property requires time_post_factors_introduction_units specification.",
+        "time_post_change": {
+            "title": "Time Post Change",
+            "description": "The time that elapsed past the time-point when the cell fate change treatments were introduced.",
+            "comment": "Use in conjunction with time_post_change_units to specify time elapsed post cell fate change treatment introduction. Use of this property requires time_post_change_units specification.",
             "type": "number"
         },
-        "time_post_factors_introduction_units": {
-            "title": "Time Post Factors Introduction Units",
-            "description": "The units of time that elapsed past the point when the factors were introduced.",
-            "comment": "Use in conjunction with time_post_factors_introduction to specify time elapsed post factors introduction. Use of this property requires time_post_factors_introduction specification.",
+        "time_post_change_units": {
+            "title": "Time Post Change Units",
+            "description": "The units of time that elapsed past the point when the cell fate change treatments were introduced.",
+            "comment": "Use in conjunction with time_post_change to specify time elapsed post cell fate change treatment introduction. Use of this property requires time_post_change specification.",
             "type": "string",
             "enum": [
                 "minute",
@@ -143,9 +143,9 @@
         "date_obtained": {
             "title": "Date Collected"
         },
-        "introduced_factors": {
-            "title": "Introduced Factors",
-            "description": "A list of treatments applied to the biosample with the purpose of differentiation or reprogramming.",
+        "cell_fate_change_treatments": {
+            "title": "Cell Fate Change Treatments",
+            "description": "A list of treatments applied to the biosample with the purpose of differentiation, dedifferentiation, or reprogramming.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,

@@ -24,7 +24,7 @@ def test_audit_targeted_sample_term(
     treatment_chemical,
     treatment_protein
 ):
-    # Treatments in introduced_factors should not be of purpose "perturbation", "agonist", "antagonist", or "control".
+    # Treatments in cell_fate_change_treatments should not be of purpose "perturbation", "agonist", "antagonist", or "control".
     testapp.patch_json(
         treatment_chemical['@id'],
         {
@@ -40,14 +40,14 @@ def test_audit_targeted_sample_term(
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'introduced_factors': [treatment_chemical['@id'], treatment_protein['@id']],
-            'time_post_factors_introduction': 5,
-            'time_post_factors_introduction_units': 'minute'
+            'cell_fate_change_treatments': [treatment_chemical['@id'], treatment_protein['@id']],
+            'time_post_change': 5,
+            'time_post_change_units': 'minute'
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent introduced_factors treatment purpose'
+        error['category'] == 'inconsistent cell_fate_change_treatments treatment purpose'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -64,6 +64,6 @@ def test_audit_targeted_sample_term(
     )
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent introduced_factors treatment purpose'
+        error['category'] != 'inconsistent cell_fate_change_treatments treatment purpose'
         for error in res.json['audit'].get('ERROR', [])
     )
