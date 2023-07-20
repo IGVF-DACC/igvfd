@@ -1910,9 +1910,6 @@
                     "schema_version": {
                         "type": "keyword"
                     },
-                    "seqspec": {
-                        "type": "keyword"
-                    },
                     "sequencing_library_type": {
                         "type": "keyword"
                     },
