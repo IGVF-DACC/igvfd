@@ -64,3 +64,15 @@ def test_in_vitro_system_upgrade_10_11(upgrader, in_vitro_system_v10):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v10, current_version='10', target_version='11')
     assert value['schema_version'] == '11'
     assert value['virtual'] == False
+
+
+def test_in_vitro_system_upgrade_11_12(upgrader, in_vitro_system_v11, treatment_chemical):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v11, current_version='11', target_version='12')
+    assert value['schema_version'] == '12'
+    assert 'introduced_factors' not in value
+    assert [treatment_chemical['@id']] == value['cell_fate_change_treatments']
+    print(value['cell_fate_change_treatments'])
+    assert 'time_post_factors_introduction' not in value
+    assert value['time_post_change'] == 10
+    assert 'time_post_factors_introduction_units' not in value
+    assert value['time_post_change_units'] == 'minute'

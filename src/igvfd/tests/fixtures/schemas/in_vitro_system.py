@@ -162,3 +162,15 @@ def in_vitro_system_v10(in_vitro_organoid):
         'schema_version': '10'
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v11(in_vitro_cell_line, treatment_chemical, sample_term_brown_adipose_tissue):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '11',
+        'introduced_factors': [treatment_chemical['@id']],
+        'time_post_factors_introduction': 10,
+        'time_post_factors_introduction_units': 'minute'
+    })
+    return item

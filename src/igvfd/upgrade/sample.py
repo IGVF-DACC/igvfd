@@ -234,3 +234,17 @@ def sample_12_13(value, system):
     # default value for 'virtual' property.
     # The default value will be automatically populated.
     return
+
+
+@upgrade_step('in_vitro_system', '11', '12')
+def in_vitro_system_11_12(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-844
+    if 'introduced_factors' in value:
+        value['cell_fate_change_treatments'] = value['introduced_factors']
+        del value['introduced_factors']
+    if 'time_post_factors_introduction' in value:
+        value['time_post_change'] = value['time_post_factors_introduction']
+        del value['time_post_factors_introduction']
+    if 'time_post_factors_introduction_units' in value:
+        value['time_post_change_units'] = value['time_post_factors_introduction_units']
+        del value['time_post_factors_introduction_units']
