@@ -163,7 +163,7 @@
         },
         "seqspec": {
             "title": "Link to seqspec YAML File",
-            "description": "The link to the associated seqspec YAML ConfigurationFile object.",
+            "description": "The link to the associated seqspec YAML configuration file.",
             "type": "string",
             "linkTo": "ConfigurationFile"
         }

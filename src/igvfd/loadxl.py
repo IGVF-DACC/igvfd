@@ -51,10 +51,10 @@ ORDER = [
     'auxiliary_set',
     'prediction',
     'reference_file',
-    'configuration_file',
     'sequence_file',
     'signal_file',
     'alignment_file',
+    'configuration_file',
     'analysis_step'
 ]
 
@@ -535,7 +535,7 @@ PHASE1_PIPELINES = {
         remove_keys('derived_from', 'file_format_specifications'),
     ],
     'sequence_file': [
-        remove_keys('derived_from', 'file_format_specifications'),
+        remove_keys('derived_from', 'file_format_specifications', 'seqspec'),
     ]
 }
 
@@ -567,7 +567,7 @@ PHASE2_PIPELINES = {
         skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
     ],
     'sequence_file': [
-        skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
+        skip_rows_missing_all_keys('derived_from', 'file_format_specifications', 'seqspec'),
     ]
 }
 
