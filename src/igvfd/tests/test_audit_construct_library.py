@@ -5,7 +5,7 @@ def test_audit_construct_library_associated_disease(
     testapp,
     base_construct_library
 ):
-    # If 'disease-associated variants' appears in origins, the
+    # If 'disease-associated variants' appears in selection_criteria, the
     # associated_diseases property must be populated
     testapp.patch_json(
         base_construct_library['@id'],
