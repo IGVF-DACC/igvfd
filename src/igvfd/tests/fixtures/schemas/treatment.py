@@ -77,9 +77,10 @@ def treatment_ntr(testapp, lab, award):
 @pytest.fixture
 def treatment_v3(treatment_chemical):
     item = treatment_chemical.copy()
-    item.pop('purpose', None)
+    item.pop('award', None)
+    item.pop('lab', None)
     item.update({
-        'schema_version': '2',
+        'schema_version': '3',
         'documents': [],
         'aliases': []
     })

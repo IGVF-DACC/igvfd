@@ -26,14 +26,14 @@ def treatment_2_3(value, system):
 
 
 @upgrade_step('treatment', '3', '4')
-def treatment_2_3(value, system):
+def treatment_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-845
     notes = value.get('notes', '')
-    if ('award' not in value) and ('lab' not in value):
+    if 'award' not in value and 'lab' not in value:
         value['award'] = '/awards/HG012012'
         value['lab'] = '/labs/j-michael-cherry'
         if 'notes' in value:
             value['notes'] = f'{value.get("notes")}. This treatment did not have award and lab specified previously, it was upgraded to have Cherry lab and award.'
         else:
-            value['notes'] = ' This treatment did not have award and lab specified previously, it was upgraded to have Cherry lab and award.'
+            value['notes'] = 'This treatment did not have award and lab specified previously, it was upgraded to have Cherry lab and award.'
     return

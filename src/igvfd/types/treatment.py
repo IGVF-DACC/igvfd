@@ -31,7 +31,7 @@ class Treatment(Item):
             'notSubmittable': True,
         }
     )
-    def title(self, treatment_term_name, amount, amount_units, duration=None, duration_units=None):
+    def title(self, treatment_term_name, amount=None, amount_units=None, duration=None, duration_units=None):
         if duration is not None and amount is not None:
             text = 'Treated with {} {} {} for {} {}'.format(
                 amount, amount_units, treatment_term_name, duration, duration_units)

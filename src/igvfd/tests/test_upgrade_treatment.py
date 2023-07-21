@@ -17,7 +17,7 @@ def test_treatment_upgrade_2_3(upgrader, treatment_v2):
 
 def test_treatment_upgrade_3_4(upgrader, treatment_v3):
     value = upgrader.upgrade('treatment', treatment_v3, current_version='3', target_version='4')
-    assert value['notes'] == 'TThis treatment did not have award and lab specified previously, it was upgraded to have Cherry lab and award.'
+    assert value['notes'] == 'This treatment did not have award and lab specified previously, it was upgraded to have Cherry lab and award.'
     assert value['lab'] == '/labs/j-michael-cherry'
     assert value['award'] == '/awards/HG012012'
     assert value['depletion'] == False

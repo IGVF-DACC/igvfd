@@ -73,7 +73,7 @@ def test_treatment_type_dependency(treatment_chemical, testapp):
     assert res.status_code == 422
 
 
-def test_treatment_purpose_requirement(testapp):
+def test_treatment_purpose_requirement(testapp, award, lab):
     res = testapp.post_json(
         '/treatment',
         {
@@ -82,7 +82,10 @@ def test_treatment_purpose_requirement(testapp):
             'treatment_type': 'protein',
             'amount': 10,
             'amount_units': 'ng/mL',
-            'purpose': 'differentiation'
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'depletion': False
         })
     assert res.status_code == 201
 
@@ -93,7 +96,10 @@ def test_treatment_purpose_requirement(testapp):
             'treatment_term_name': 'G-CSF',
             'treatment_type': 'protein',
             'amount': 10,
-            'amount_units': 'ng/mL'
+            'amount_units': 'ng/mL',
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'depletion': False,
         }, expect_errors=True)
     assert res.status_code == 422
 
@@ -109,7 +115,8 @@ def test_treatment_award_lab_depletion_requirement(testapp, award, lab):
             'amount_units': 'ng/mL',
             'purpose': 'differentiation',
             'award': award['@id'],
-            'lab': lab['@id']
+            'lab': lab['@id'],
+            'depletion': False,
         })
     assert res.status_code == 201
 
@@ -135,6 +142,7 @@ def test_treatment_award_lab_depletion_requirement(testapp, award, lab):
             'amount': 10,
             'amount_units': 'ng/mL',
             'purpose': 'differentiation',
+            'depletion': False
         }, expect_errors=True)
     assert res.status_code == 422
 
