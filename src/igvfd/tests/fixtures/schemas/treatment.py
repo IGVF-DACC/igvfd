@@ -66,7 +66,10 @@ def treatment_ntr(testapp, lab, award):
         'treatment_type': 'chemical',
         'amount': 10,
         'amount_units': 'mM',
-        'purpose': 'perturbation'
+        'purpose': 'perturbation',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': False
     }
     return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
 

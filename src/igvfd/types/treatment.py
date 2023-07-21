@@ -32,10 +32,16 @@ class Treatment(Item):
         }
     )
     def title(self, treatment_term_name, amount, amount_units, duration=None, duration_units=None):
-        if duration is not None:
+        if duration is not None and amount is not None:
             text = 'Treated with {} {} {} for {} {}'.format(
                 amount, amount_units, treatment_term_name, duration, duration_units)
-        else:
+        elif duration is None and amount is not None:
             text = 'Treated with {} {} {}'.format(
                 amount, amount_units, treatment_term_name)
+        elif amount is None and duration is not None:
+            text = 'Treated with {} for {} {}'.format(
+                treatment_term_name, duration, duration_units)
+        elif amount is None and duration is None:
+            text = 'Treated with {}'.format(
+                treatment_term_name)
         return text
