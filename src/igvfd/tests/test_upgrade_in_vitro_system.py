@@ -71,7 +71,6 @@ def test_in_vitro_system_upgrade_11_12(upgrader, in_vitro_system_v11, treatment_
     assert value['schema_version'] == '12'
     assert 'introduced_factors' not in value
     assert [treatment_chemical['@id']] == value['cell_fate_change_treatments']
-    print(value['cell_fate_change_treatments'])
     assert 'time_post_factors_introduction' not in value
     assert value['time_post_change'] == 10
     assert 'time_post_factors_introduction_units' not in value
