@@ -325,7 +325,7 @@ class Backend(Construct):
         )
         scalable_task.scale_on_request_count(
             'RequestCountScaling',
-            requests_per_target=600,
+            requests_per_target=300,
             target_group=self.fargate_service.target_group,
             scale_in_cooldown=cdk.Duration.seconds(60),
             scale_out_cooldown=cdk.Duration.seconds(60),
