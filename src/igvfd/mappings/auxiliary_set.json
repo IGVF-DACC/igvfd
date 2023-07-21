@@ -1,6 +1,6 @@
 {
-    "hash": "d57cd0fc68f41272f5d33a4b79494813",
-    "index_name": "auxiliary_set_d57cd0fc",
+    "hash": "2ab9c1a30a611dd08f064be31585bbbc",
+    "index_name": "auxiliary_set_2ab9c1a3",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -150,7 +150,7 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_fuzzy",
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "accession": {
@@ -238,7 +238,6 @@
                         "type": "object"
                     },
                     "collections": {
-                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "construct_libraries": {
@@ -253,11 +252,9 @@
                                 "type": "keyword"
                             },
                             "accession": {
-                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
-                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
@@ -699,11 +696,9 @@
                                 "type": "keyword"
                             },
                             "accession": {
-                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
-                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
@@ -996,7 +991,6 @@
                         "type": "text"
                     },
                     "publication_identifiers": {
-                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "revoke_detail": {
@@ -1011,7 +1005,6 @@
                                 "type": "keyword"
                             },
                             "accession": {
-                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "age": {
@@ -1021,7 +1014,6 @@
                                 "type": "keyword"
                             },
                             "aliases": {
-                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
@@ -1034,7 +1026,6 @@
                                 "type": "keyword"
                             },
                             "biosample_term": {
-                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "biosample_terms": {
@@ -1082,11 +1073,9 @@
                                         "type": "keyword"
                                     },
                                     "accession": {
-                                        "copy_to": "_exact",
                                         "type": "keyword"
                                     },
                                     "aliases": {
-                                        "copy_to": "_exact",
                                         "type": "keyword"
                                     },
                                     "alternate_accessions": {
@@ -1316,6 +1305,9 @@
                             "source": {
                                 "type": "keyword"
                             },
+                            "sources": {
+                                "type": "keyword"
+                            },
                             "starting_amount": {
                                 "fields": {
                                     "raw": {
@@ -1338,7 +1330,6 @@
                                 "type": "keyword"
                             },
                             "summary": {
-                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
@@ -1455,7 +1446,6 @@
                                 "type": "keyword"
                             },
                             "title": {
-                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "uuid": {
@@ -1471,7 +1461,6 @@
                         "type": "keyword"
                     },
                     "summary": {
-                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "url": {

@@ -346,8 +346,12 @@ class WholeOrganism(Biosample):
 class MultiplexedSample(Sample):
     item_type = 'multiplexed_sample'
     schema = load_schema('igvfd:schemas/multiplexed_sample.json')
-    embedded_with_frame = Sample.embedded_with_frame + [
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
         Path('biosample_terms', include=['@id', 'term_name']),
+        Path('sources', include=['@id', 'title']),
         Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'treatment_term_name', 'purpose'])
     ]
@@ -435,3 +439,17 @@ class MultiplexedSample(Sample):
     )
     def biomarkers(self, request, multiplexed_samples):
         return collect_multiplexed_samples_prop(request, multiplexed_samples, 'biomarkers')
+
+    @calculated_property(
+        schema={
+            'title': 'Sources',
+            'type': 'array',
+            'notSubmittable': True,
+            'items': {
+                'type': 'string',
+                'linkTo': 'Source',
+            }
+        }
+    )
+    def sources(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'source')

@@ -3,13 +3,24 @@ import pytest
 
 @pytest.fixture
 def multiplexed_sample(
-        testapp, other_lab, award, source, tissue, in_vitro_cell_line):
+        testapp, other_lab, award, tissue, in_vitro_cell_line):
     item = {
         'award': award['@id'],
         'lab': other_lab['@id'],
-        'source': source['@id'],
         'multiplexed_samples': [
             tissue['@id'], in_vitro_cell_line['@id']
         ]
     }
     return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def multiplexed_sample_v1(multiplexed_sample, source):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '1',
+        'source': source['@id'],
+        'product_id': 'ab272168',
+        'lot_id': '0000001'
+    })
+    return item

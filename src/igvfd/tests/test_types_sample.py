@@ -77,5 +77,11 @@ def test_multiplexed_sample_props(
     multiplexed_biomarkers_set = set([entry for entry in res.json.get('biomarkers', [])])
     assert biomarkers_set == multiplexed_biomarkers_set
 
+    sources_set = set()
+    sources_set.add(tissue.get('source', None))
+    sources_set.add(in_vitro_cell_line.get('source', None))
+    multiplexed_sources_set = set([entry['@id'] for entry in res.json.get('sources', [])])
+    assert sources_set == multiplexed_sources_set
+
     res = testapp.get(tissue['@id'])
     assert res.json.get('multiplexed_in') == [multiplexed_sample['@id']]
