@@ -13,7 +13,7 @@ def audit_curated_set_mismatched_donor(value, system):
     '''
         audit_detail: The donor specified for CuratedSet and the donor of the associated Samples should be matching.
         audit_category: inconsistent donor metadata
-        audit_level: ERROR
+        audit_levels: ERROR
     '''
     samples_donors = set()
     donors_specified = set()

@@ -27,7 +27,7 @@ def audit_biosample_nih_institutional_certification(value, system):
 @audit_checker('Biosample', frame='object')
 def audit_biosample_taxa_check(value, system):
     '''
-        audit_detail: Biosample objects are not expected to have donors with different taxas.
+        audit_detail: Biosample objects are not expected to have donors with different taxa.
         audit_category: inconsistent donor taxa
         audit_levels: ERROR
     '''
