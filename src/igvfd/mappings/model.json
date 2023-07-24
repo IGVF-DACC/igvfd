@@ -1,6 +1,6 @@
 {
-    "hash": "16bfa575beb572415222505467bb1672",
-    "index_name": "model_16bfa575",
+    "hash": "d5cb60b3de8847f5c09b3f56484376e6",
+    "index_name": "model_d5cb60b3",
     "item_type": "model",
     "mapping": {
         "dynamic_templates": [
@@ -852,6 +852,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "seqspec": {
                                 "type": "keyword"
                             },
                             "sequencing_platform": {

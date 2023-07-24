@@ -1,6 +1,6 @@
 {
-    "hash": "0819a833a9a7cd606142b10d3fdd0c49",
-    "index_name": "analysis_set_0819a833",
+    "hash": "c97a18ea369985b50fa1b65314189540",
+    "index_name": "analysis_set_c97a18ea",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -860,6 +860,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "seqspec": {
                                 "type": "keyword"
                             },
                             "sequencing_platform": {

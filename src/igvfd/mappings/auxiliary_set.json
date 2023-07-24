@@ -1,6 +1,6 @@
 {
-    "hash": "97347b4dff8700b7257a2f6c55db7ea7",
-    "index_name": "auxiliary_set_97347b4d",
+    "hash": "e5c186a7d18c840773c83f180d692d14",
+    "index_name": "auxiliary_set_e5c186a7",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -858,6 +858,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "seqspec": {
                                 "type": "keyword"
                             },
                             "sequencing_platform": {
