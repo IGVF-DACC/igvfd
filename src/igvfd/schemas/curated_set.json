@@ -61,13 +61,25 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "@type",
+        "collections",
         "curated_set_type",
         "lab.title",
+        "summary",
         "taxa"
     ],
     "exact_searchable_fields": [
-        "@type",
-        "dbxrefs"
+        "control_for.accession",
+        "control_for.aliases",
+        "dbxrefs",
+        "files.accession",
+        "files.aliases",
+        "references",
+        "samples.donors.accession",
+        "samples.donors.aliases",
+        "samples.accession",
+        "samples.aliases",
+        "submitted_by.title"
     ],
     "changelog": "/profiles/changelogs/curated_set.md"
 }

@@ -56,12 +56,25 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "@type",
         "assay_title",
-        "lab.title"
+        "collections",
+        "lab.title",
+        "samples.summary",
+        "samples.biosample_term",
+        "submitted_by.title",
+        "summary"
     ],
     "exact_searchable_fields": [
-        "@type",
-        "dbxrefs"
+        "control_for.accession",
+        "control_for.aliases",
+        "dbxrefs",
+        "files.accession",
+        "files.aliases",
+        "samples.accession",
+        "samples.aliases",
+        "samples.donors.accession",
+        "samples.donors.aliases"
     ],
     "changelog": "/profiles/changelogs/analysis_set.md"
 }

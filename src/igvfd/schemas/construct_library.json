@@ -418,10 +418,21 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "@type",
+        "collections",
+        "origins",
+        "summary",
         "targeted_genes"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "control_for.accession",
+        "control_for.aliases",
+        "references",
+        "lot_id",
+        "product_id",
+        "submitted_by.title",
+        "files.accession",
+        "files.aliases"
     ],
     "changelog": "/profiles/changelogs/construct_library.md"
 }

@@ -33,6 +33,11 @@ class FileSet(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
+        Path('files', include=['@id', 'accession', 'aliases']),
+        Path('control_for', include=['@id', 'accession', 'aliases']),
+        Path('donors', include=['@id', 'taxa']),
+        Path('samples.donors', include=['@id', 'accession', 'aliases',
+             'biosample_term', 'technical_sample_term', 'summary', 'donors', 'taxa']),
     ]
 
     @calculated_property(schema={
@@ -71,9 +76,7 @@ class FileSet(Item):
 class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
-    embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('donors', include=['@id', 'taxa']),
-    ]
+    embedded_with_frame = FileSet.embedded_with_frame
 
     @calculated_property(
         schema={
@@ -126,7 +129,8 @@ class MeasurementSet(FileSet):
     schema = load_schema('igvfd:schemas/measurement_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('assay_term', include=['@id', 'term_name']),
-        Path('donors', include=['@id', 'taxa']),
+        Path('control_file_sets', include=['@id', 'accession', 'aliases']),
+        Path('related_multiome_datasets', include=['@id', 'accession'])
     ]
 
     audit_inherit = [
@@ -174,7 +178,13 @@ class MeasurementSet(FileSet):
 class ConstructLibrary(FileSet):
     item_type = 'construct_library'
     schema = load_schema('igvfd:schemas/construct_library.json')
-    embedded_with_frame = FileSet.embedded_with_frame
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
+        Path('files', include=['@id', 'accession', 'aliases']),
+        Path('control_for', include=['@id', 'accession', 'aliases'])
+    ]
 
 
 @collection(
@@ -188,11 +198,7 @@ class ConstructLibrary(FileSet):
 class Model(FileSet):
     item_type = 'model'
     schema = load_schema('igvfd:schemas/model.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-        Path('submitted_by', include=['@id', 'title']),
-    ]
+    embedded_with_frame = FileSet.embedded_with_frame
 
 
 @collection(
