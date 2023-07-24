@@ -1,6 +1,6 @@
 {
-    "hash": "861e75596e81db1c966ee5cbe36f4804",
-    "index_name": "auxiliary_set_861e7559",
+    "hash": "97347b4dff8700b7257a2f6c55db7ea7",
+    "index_name": "auxiliary_set_97347b4d",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1034,6 +1034,9 @@
                             "ccf_id": {
                                 "type": "keyword"
                             },
+                            "cell_fate_change_treatments": {
+                                "type": "keyword"
+                            },
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
@@ -1209,9 +1212,6 @@
                             "file_sets": {
                                 "type": "keyword"
                             },
-                            "introduced_factors": {
-                                "type": "keyword"
-                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -1338,7 +1338,7 @@
                             "technical_sample_term": {
                                 "type": "keyword"
                             },
-                            "time_post_factors_introduction": {
+                            "time_post_change": {
                                 "fields": {
                                     "raw": {
                                         "type": "keyword"
@@ -1347,7 +1347,7 @@
                                 "store": true,
                                 "type": "float"
                             },
-                            "time_post_factors_introduction_units": {
+                            "time_post_change_units": {
                                 "type": "keyword"
                             },
                             "treatments": {
