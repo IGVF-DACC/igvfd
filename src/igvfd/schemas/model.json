@@ -131,10 +131,22 @@
     },
     "fuzzy_searchable_fields": [
         "@type",
+        "collections",
         "dbxrefs",
+        "lab.title",
         "model_name",
         "model_type",
-        "prediction_objects"
+        "prediction_objects",
+        "summary"
+    ],
+    "exact_searchable_fields": [
+        "control_for.accession",
+        "control_for.aliases",
+        "dbxrefs",
+        "files.accession",
+        "files.aliases",
+        "references",
+        "submitted_by.title"
     ],
     "changelog": "/profiles/changelogs/model.md"
 }

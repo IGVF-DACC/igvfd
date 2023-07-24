@@ -61,12 +61,20 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "@type",
+        "collections",
         "prediction_type",
-        "lab.title"
+        "lab.title",
+        "summary"
     ],
     "exact_searchable_fields": [
-        "@type",
-        "dbxrefs"
+        "control_for.accession",
+        "control_for.aliases",
+        "dbxrefs",
+        "files.accession",
+        "files.aliases",
+        "references",
+        "submitted_by.title"
     ],
     "changelog": "/profiles/changelogs/prediction.md"
 }
