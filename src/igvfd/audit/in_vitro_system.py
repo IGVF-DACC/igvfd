@@ -36,7 +36,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
     '''
     if 'cell_fate_change_treatments' in value:
         for treatment in value.get('cell_fate_change_treatments'):
-              if treatment['purpose'] in ['perturbation', 'agonist', 'antagonist', 'control']:
+            if treatment['purpose'] in ['perturbation', 'agonist', 'antagonist', 'control']:
                 detail = (
                     f'InVitroSystem {audit_link(path_to_text(value["@id"]), value["@id"])} '
                     f'has introduced factor {audit_link(path_to_text(treatment["@id"]), treatment["@id"])} '
