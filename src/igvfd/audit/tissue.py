@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('Tissue', frame='object')
 def audit_tissue_ccf_id(value, system):
     '''
-        audit_detail: Tissue objects must specify a common coordinate framework identifier (CCF ID) required for human data.
+        audit_detail: Tissues must specify a common coordinate framework identifier (CCF ID) required for human data.
         audit_category: missing ccf_id
         audit_levels: NOT_COMPLIANT
     '''
@@ -27,7 +27,7 @@ def audit_tissue_ccf_id(value, system):
 @audit_checker('Tissue', frame='object')
 def audit_tissue_ccf_id_nonhuman_sample(value, system):
     '''
-        audit_detail: Tissue objects must not specify a common coordinate framework identifier (CCF ID) unless the sample is from a human donor.
+        audit_detail: Tissues must not specify a common coordinate framework identifier (CCF ID) unless the sample is from a human donor.
         audit_category: unexpected ccf_id
         audit_levels: ERROR
     '''

@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('Biosample', frame='object')
 def audit_biosample_nih_institutional_certification(value, system):
     '''
-        audit_detail: Biosample objects should specify a NIH Institutional Certification required for human data.
+        audit_detail: Biosamples should specify a NIH Institutional Certification required for human data.
         audit_category: missing nih_institutional_certification
         audit_levels: ERROR
     '''
@@ -27,7 +27,7 @@ def audit_biosample_nih_institutional_certification(value, system):
 @audit_checker('Biosample', frame='object')
 def audit_biosample_taxa_check(value, system):
     '''
-        audit_detail: Biosample objects are not expected to have donors with different taxa.
+        audit_detail: Biosamples are not expected to have donors with different taxa.
         audit_category: inconsistent donor taxa
         audit_levels: ERROR
     '''
@@ -57,7 +57,7 @@ def audit_biosample_taxa_check(value, system):
 @audit_checker('Biosample', frame='object')
 def audit_biosample_age(value, system):
     '''
-        audit_detail: Tissue, Primary Cell, and Whole Organism objects should specify a lower_bound_age, upper_bound_age and age_units.
+        audit_detail: Tissues, primacy cells, and whole organisms should specify a lower_bound_age, upper_bound_age and age_units.
         audit_category: missing age properties
         audit_levels: WARNING
     '''

@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('MeasurementSet', frame='object')
 def audit_related_multiome_datasets(value, system):
     '''
-        audit_detail: MeasurementSet objects with a specified multiome_size should have the corresponding amount of links to other MeasurementSet objects (excluding itself) in related_multiome_datasets which should have the same multiome_size and samples.
+        audit_detail: Measurement sets with a specified multiome_size should have the corresponding amount of links to other measurement sets (excluding itself) in related_multiome_datasets which should have the same multiome_size and samples.
         audit_category: inconsistent multiome metadata
         audit_levels: WARNING
     '''
@@ -72,7 +72,7 @@ def audit_related_multiome_datasets(value, system):
 @audit_checker('MeasurementSet', frame='object')
 def audit_seqspec(value, system):
     '''
-        audit_detail: MeasurementSet objects should specify the associated seqspec YAML file located in the seqspec repository: https://github.com/IGVF/seqspec.
+        audit_detail: Measurement sets should specify the associated seqspec YAML file located in the seqspec repository: https://github.com/IGVF/seqspec.
         audit_category: missing seqspec
         audit_levels: WARNING
     '''
@@ -88,7 +88,7 @@ def audit_seqspec(value, system):
 @audit_checker('MeasurementSet', frame='object')
 def audit_unspecified_protocol(value, system):
     '''
-        audit_detail: MeasurementSet objects should specify the associated link to the protocol for conducting the assay on protocols.io.
+        audit_detail: Measurement sets should specify the associated link to the protocol for conducting the assay on protocols.io.
         audit_category: missing protocol
         audit_levels: NOT_COMPLIANT
     '''
