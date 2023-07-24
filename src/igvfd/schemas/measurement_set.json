@@ -161,8 +161,7 @@
                     "mRNA enriched",
                     "rRNA depleted",
                     "polyA depleted",
-                    "polyA enriched",
-                    "ribosomal RNA depletion"
+                    "polyA enriched"
                 ]
             }
         }
