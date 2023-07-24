@@ -420,7 +420,7 @@
     "fuzzy_searchable_fields": [
         "@type",
         "collections",
-        "origins",
+        "selection_criteria",
         "summary",
         "targeted_genes"
     ],

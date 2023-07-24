@@ -1,6 +1,6 @@
 {
-    "hash": "efa880752a5c896cade33d7e176c066d",
-    "index_name": "auxiliary_set_efa88075",
+    "hash": "5f08dc652ad4abe8cad741ce2a228c7e",
+    "index_name": "auxiliary_set_5f08dc65",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -405,9 +405,6 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
-                            "origins": {
-                                "type": "keyword"
-                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -471,6 +468,12 @@
                                 "type": "keyword"
                             },
                             "scope": {
+                                "type": "keyword"
+                            },
+                            "selection_criteria": {
+                                "type": "keyword"
+                            },
+                            "seqspec": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {
