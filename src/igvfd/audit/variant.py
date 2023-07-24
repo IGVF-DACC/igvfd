@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('Variant', frame='object')
 def audit_variant_ref_alt_check(value, system):
     '''
-        audit_detail: Variants should have a different reference allele and alternative allele.
+        audit_detail: Variants are expected to have a different reference allele and alternative allele.
         audit_category: identical ref and alt alleles
         audit_levels: ERROR
     '''

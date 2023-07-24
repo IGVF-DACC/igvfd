@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('HumanDonor', frame='object')
 def audit_related_donors(value, system):
     '''
-        audit_detail: Human donors should have unique related donors and should be mutually specified by each related donor.
+        audit_detail: The human donors indicated in the list of related donors are expected to be unique and should include a mutual link to the corresponding donor.
         audit_category: inconsistent related donors metadata
         audit_levels: WARNING, ERROR
     '''

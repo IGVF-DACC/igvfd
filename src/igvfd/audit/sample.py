@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('Sample', frame='object?skip_calculated=true')
 def audit_sample_sorted_fraction_parent_child_check(value, system):
     '''
-        audit_detail: Samples that are a sorted_fraction of a parent sample should share most of the parent's metadata properties.
+        audit_detail: Samples that are a sorted_fraction of a parent sample are expected to share most of the parent's metadata properties.
         audit_category: inconsistent sorted fraction metadata
         audit_levels: ERROR
     '''
@@ -43,7 +43,7 @@ def audit_sample_sorted_fraction_parent_child_check(value, system):
 @audit_checker('Sample', frame='object')
 def audit_sample_virtual_donor_check(value, system):
     '''
-        audit_detail: Non-virtual samples should not be linked to virtual donors.
+        audit_detail: Non-virtual samples are not expected to be derived from to virtual donors.
         audit_category: inconsistent sample metadata
         audit_levels: ERROR
     '''

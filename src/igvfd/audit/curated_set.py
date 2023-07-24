@@ -37,7 +37,7 @@ def audit_curated_set_mismatched_donor(value, system):
 @audit_checker('CuratedSet', frame='object')
 def audit_curated_set_mismatched_taxa(value, system):
     '''
-        audit_detail: The taxa specified for a curated set, the taxa of the associated samples, and the taxa of the associated donors should be identical.
+        audit_detail: The taxa of the curated set, associated samples, and the donors should be matching.
         audit_category: inconsistent taxa metadata
         audit_levels: ERROR
     '''

@@ -30,7 +30,7 @@ def audit_targeted_sample_term_check(value, system):
 @audit_checker('InVitroSystem', frame='embedded')
 def audit_cell_fate_change_treatments_purpose(value, system):
     '''
-        audit_detail: In vitro systems with treatments in cell_fate_change_treatments should not have purpose "perturbation", "agonist", "antagonist", or "control".
+        audit_detail: In vitro systems with treatments in cell_fate_change_treatments are not expected to have purpose "perturbation", "agonist", "antagonist", or "control".
         audit_category: inconsistent cell_fate_change_treatments treatment purpose
         audit_levels: ERROR
     '''
@@ -39,7 +39,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
             if treatment['purpose'] in ['perturbation', 'agonist', 'antagonist', 'control']:
                 detail = (
                     f'InVitroSystem {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                    f'has introduced factor {audit_link(path_to_text(treatment["@id"]), treatment["@id"])} '
+                    f'has cell_fate_change_treatment {audit_link(path_to_text(treatment["@id"]), treatment["@id"])} '
                     f'that has purpose {treatment["purpose"]}.'
                 )
                 yield AuditFailure('inconsistent cell_fate_change_treatments treatment purpose', detail, level='ERROR')
