@@ -26,9 +26,9 @@
         "dbxrefs": [
             "GEO:SAMN1"
         ],
-        "time_post_factors_introduction": 24,
-        "time_post_factors_introduction_units": "minute",
-        "introduced_factors": [
+        "time_post_change": 24,
+        "time_post_change_units": "minute",
+        "cell_fate_change_treatments": [
             "/treatments/10c05ac0-52a2-11e6-bdf4-0800200c9a66/"
         ],
         "lower_bound_age": 40,
@@ -59,12 +59,12 @@
         "donors": [
             "igvf:alias_human_donor1"
         ],
-        "introduced_factors": [
+        "cell_fate_change_treatments": [
             "/treatments/bd2cb34e-c72c-11ec-9d64-0242ac120002/"
         ],
         "status": "released",
-        "time_post_factors_introduction": 24,
-        "time_post_factors_introduction_units": "minute",
+        "time_post_change": 24,
+        "time_post_change_units": "minute",
         "biosample_term": "/sample-terms/92c5f1a9-7503-460b-99b3-f5b84c82b067/",
         "targeted_sample_term": "/sample-terms/eed026e7-4afc-4396-94e7-870f8934b2f2/",
         "source": "/labs/danwei-huangfu/",
@@ -97,9 +97,9 @@
         "dbxrefs": [
             "GEO:SAMN1"
         ],
-        "time_post_factors_introduction": 24,
-        "time_post_factors_introduction_units": "minute",
-        "introduced_factors": [
+        "time_post_change": 24,
+        "time_post_change_units": "minute",
+        "cell_fate_change_treatments": [
             "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
         ],
         "lower_bound_age": 40,
@@ -147,9 +147,9 @@
         "dbxrefs": [
             "GEO:SAMN1"
         ],
-        "time_post_factors_introduction": 24,
-        "time_post_factors_introduction_units": "minute",
-        "introduced_factors": [
+        "time_post_change": 24,
+        "time_post_change_units": "minute",
+        "cell_fate_change_treatments": [
             "/treatments/2d57c810-c729-11ec-9d64-0242ac120002/"
         ],
         "lower_bound_age": 40,

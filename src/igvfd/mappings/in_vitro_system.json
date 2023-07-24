@@ -1,6 +1,6 @@
 {
-    "hash": "1f9f3c53a15578cfefd002975cd777ae",
-    "index_name": "in_vitro_system_1f9f3c53",
+    "hash": "86e776cbac4d456d7a7dcc59391543e1",
+    "index_name": "in_vitro_system_86e776cb",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -322,113 +322,7 @@
                         },
                         "type": "object"
                     },
-                    "cellular_sub_pool": {
-                        "type": "keyword"
-                    },
-                    "classification": {
-                        "copy_to": "_fuzzy",
-                        "type": "keyword"
-                    },
-                    "collections": {
-                        "type": "keyword"
-                    },
-                    "creation_timestamp": {
-                        "type": "keyword"
-                    },
-                    "date_obtained": {
-                        "type": "keyword"
-                    },
-                    "dbxrefs": {
-                        "copy_to": "_exact",
-                        "type": "keyword"
-                    },
-                    "description": {
-                        "type": "text"
-                    },
-                    "disease_terms": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "ancestors": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "deprecated_ntr_terms": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "is_a": {
-                                "type": "keyword"
-                            },
-                            "name": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "ontology": {
-                                "type": "keyword"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "synonyms": {
-                                "type": "keyword"
-                            },
-                            "term_id": {
-                                "type": "keyword"
-                            },
-                            "term_name": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
-                    },
-                    "documents": {
-                        "type": "keyword"
-                    },
-                    "donors": {
-                        "type": "keyword"
-                    },
-                    "embryonic": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "boolean"
-                    },
-                    "file_sets": {
-                        "type": "keyword"
-                    },
-                    "introduced_factors": {
+                    "cell_fate_change_treatments": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -552,6 +446,112 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "cellular_sub_pool": {
+                        "type": "keyword"
+                    },
+                    "classification": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "collections": {
+                        "type": "keyword"
+                    },
+                    "creation_timestamp": {
+                        "type": "keyword"
+                    },
+                    "date_obtained": {
+                        "type": "keyword"
+                    },
+                    "dbxrefs": {
+                        "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "description": {
+                        "type": "text"
+                    },
+                    "disease_terms": {
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "ancestors": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "deprecated_ntr_terms": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "is_a": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "ontology": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "synonyms": {
+                                "type": "keyword"
+                            },
+                            "term_id": {
+                                "type": "keyword"
+                            },
+                            "term_name": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "documents": {
+                        "type": "keyword"
+                    },
+                    "donors": {
+                        "type": "keyword"
+                    },
+                    "embryonic": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "file_sets": {
+                        "type": "keyword"
                     },
                     "lab": {
                         "properties": {
@@ -828,7 +828,7 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "time_post_factors_introduction": {
+                    "time_post_change": {
                         "fields": {
                             "raw": {
                                 "type": "keyword"
@@ -837,7 +837,7 @@
                         "store": true,
                         "type": "float"
                     },
-                    "time_post_factors_introduction_units": {
+                    "time_post_change_units": {
                         "type": "keyword"
                     },
                     "treatments": {

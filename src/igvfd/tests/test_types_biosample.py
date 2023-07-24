@@ -105,9 +105,9 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'time_post_factors_introduction': 100,
-            'time_post_factors_introduction_units': 'hour',
-            'introduced_factors': [treatment_chemical['@id']]
+            'time_post_change': 100,
+            'time_post_change_units': 'hour',
+            'cell_fate_change_treatments': [treatment_chemical['@id']]
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
@@ -116,9 +116,9 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         in_vitro_cell_line['@id'],
         {
             'biosample_term': sample_term_lymphoblastoid['@id'],
-            'time_post_factors_introduction': 10,
-            'time_post_factors_introduction_units': 'minute',
-            'introduced_factors': [treatment_chemical['@id']]
+            'time_post_change': 10,
+            'time_post_change_units': 'minute',
+            'cell_fate_change_treatments': [treatment_chemical['@id']]
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
@@ -127,9 +127,9 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         in_vitro_cell_line['@id'],
         {
             'biosample_term': sample_term_endothelial_cell['@id'],
-            'time_post_factors_introduction': 5,
-            'time_post_factors_introduction_units': 'day',
-            'introduced_factors': [treatment_chemical['@id']]
+            'time_post_change': 5,
+            'time_post_change_units': 'day',
+            'cell_fate_change_treatments': [treatment_chemical['@id']]
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
@@ -139,9 +139,9 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         {
             'biosample_term': sample_term_embryoid_body['@id'],
             'classification': 'embryoid',
-            'time_post_factors_introduction': 3,
-            'time_post_factors_introduction_units': 'week',
-            'introduced_factors': [treatment_chemical['@id']]
+            'time_post_change': 3,
+            'time_post_change_units': 'week',
+            'cell_fate_change_treatments': [treatment_chemical['@id']]
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
@@ -151,9 +151,9 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
         {
             'biosample_term': sample_term_brown_adipose_tissue['@id'],
             'classification': 'organoid',
-            'time_post_factors_introduction': 1,
-            'time_post_factors_introduction_units': 'month',
-            'introduced_factors': [treatment_chemical['@id']],
+            'time_post_change': 1,
+            'time_post_change_units': 'month',
+            'cell_fate_change_treatments': [treatment_chemical['@id']],
             'targeted_sample_term': sample_term_brown_adipose_tissue['@id']
         }
     )
@@ -179,9 +179,9 @@ def test_summary_mixed_taxa(testapp, whole_organism, in_vitro_cell_line, human_d
         in_vitro_cell_line['@id'],
         {
             'donors': [human_donor['@id'], rodent_donor['@id']],
-            'time_post_factors_introduction': 1,
-            'time_post_factors_introduction_units': 'minute',
-            'introduced_factors': [treatment_chemical['@id']]
+            'time_post_change': 1,
+            'time_post_change_units': 'minute',
+            'cell_fate_change_treatments': [treatment_chemical['@id']]
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
