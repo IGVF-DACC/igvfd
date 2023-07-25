@@ -2,7 +2,7 @@
 
 ### Schema version 4
 
-* Rename `transcriptome_annotation` to `transcriptome_annotation`.
+* Rename enums in `transcriptome_annotation` property by adding `GENCODE` prefix to `M30`, `M31`, `M32`, `V40`, `V41`, `V42`, and `V43`.
 
 ### Schema version 3
 

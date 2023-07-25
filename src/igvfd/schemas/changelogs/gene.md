@@ -2,7 +2,7 @@
 
 ### Schema version 5
 
-* Rename `annotation_version` to `transcriptome_annotation`.
+* Rename `annotation_version` to `transcriptome_annotation`. Add two new enums `GENCODE 40` and `GENCODE 41`.
 
 ### Schema version 4
 
