@@ -147,8 +147,8 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Selection Criteria",
-                "description": "The criteria used to select or design the sequence material cloned into the library.",
+                "title": "Selection Criterion",
+                "description": "The criterion used to select or design the sequence material cloned into the library.",
                 "comment": "A construct library of disease-associated variants must list at least one disease or phenotype in the associated_diseases property.",
                 "type": "string",
                 "enum": [
