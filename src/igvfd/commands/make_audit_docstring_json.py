@@ -48,12 +48,55 @@ def get_audit_function_names_from_module(module):
     return audit_function_names
 
 
+def parse_string_to_dictionary(docstring):
+    '''
+        The expected input for the docstring is as follows:
+            audit_details: audit details
+            audit_categories: audit categories
+            audit_levels: ERROR, WARNING, NON_COMPLIANT
+        There should be three "keys": audit_details, audit_categories, and audit_levels.
+        The audit_levels should be seperated by commas. Additional keys or values starting with "audit_"
+        should not be included in the input docstring. Ideally the input docstring keys should be in
+        order as above for readability between docstrings, but this function allows for them to be out
+        of order. It also removes whitespace within a key's value, including newlines.
+    '''
+    lines = docstring.strip().split('\n')
+    single_line = ' '.join(line.strip() for line in lines)
+    result_dict = {
+        'audit_detail': '',
+        'audit_category': '',
+        'audit_levels': []
+    }
+    if 'audit_detail:' in single_line:
+        after_audit_detail = single_line.split('audit_detail:')[1].strip()
+        if 'audit_' in after_audit_detail:
+            result_dict['audit_detail'] = after_audit_detail.split('audit_')[0].strip()
+        else:
+            result_dict['audit_detail'] = after_audit_detail
+    if 'audit_category:' in single_line:
+        after_audit_category = single_line.split('audit_category:')[1].strip()
+        if 'audit_' in after_audit_category:
+            result_dict['audit_category'] = after_audit_category.split('audit_')[0].strip()
+        else:
+            result_dict['audit_category'] = after_audit_category
+    if 'audit_levels:' in single_line:
+        after_audit_levels = single_line.split('audit_levels:')[1]
+        if 'audit_' in after_audit_levels:
+            audit_levels_str = after_audit_levels.split('audit_')[0].strip()
+            result_dict['audit_levels'] = [level.strip() for level in audit_levels_str.split(',')]
+        else:
+            audit_levels_str = after_audit_levels.strip()
+            result_dict['audit_levels'] = [level.strip() for level in audit_levels_str.split(',')]
+    return result_dict
+
+
 def get_docstring_dict_from_function_name(function_name):
     docstring = eval(function_name + '.__doc__')
     if docstring is not None:
-        return {function_name: docstring.strip()}
+        dict_docstring = parse_string_to_dictionary(docstring)
+        return {function_name: dict_docstring}
     else:
-        return {function_name: ''}
+        return {function_name: {}}
 
 
 def main():

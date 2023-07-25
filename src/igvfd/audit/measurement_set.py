@@ -10,9 +10,11 @@ from .formatter import (
 
 @audit_checker('MeasurementSet', frame='object')
 def audit_related_multiome_datasets(value, system):
-    '''MeasurementSet objects with a specified `multiome_size` should have the
-    same amount of links to other MeasurementSet objects (minus itself) specified
-    in `related_multiome_datasets` with the same `multiome_size` and `samples`.'''
+    '''
+        audit_detail: Measurement sets with a specified multiome_size are expected to have the corresponding amount of links to other measurement sets (excluding itself) in related_multiome_datasets which are expected to have the same multiome_size and samples.
+        audit_category: inconsistent multiome metadata
+        audit_levels: WARNING
+    '''
     detail = ''
     related_multiome_datasets = value.get('related_multiome_datasets', [])
     multiome_size = value.get('multiome_size')
@@ -69,10 +71,15 @@ def audit_related_multiome_datasets(value, system):
 
 @audit_checker('MeasurementSet', frame='object')
 def audit_unspecified_protocol(value, system):
-    '''MeasurementSet objects should specify the associated link to the protocol for conducting the assay on Protocols.io'''
+    '''
+        audit_detail: Measurement sets are expected to specify the experimental protocol utilized for conducting the assay on protocols.io.
+        audit_category: missing protocol
+        audit_levels: NOT_COMPLIANT
+    '''
     if 'protocol' not in value:
         detail = (
             f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-            f'should specify the protocols.io link to associated protocol.'
+            f'are expected to specify the experimental protocol utilized for conducting '
+            f'the assay on protocols.io.'
         )
         yield AuditFailure('missing protocol', detail, level='NOT_COMPLIANT')

@@ -10,8 +10,11 @@ from .formatter import (
 
 @audit_checker('Sample', frame='object?skip_calculated=true')
 def audit_sample_sorted_fraction_parent_child_check(value, system):
-    '''Samples that are a sorted_fraction of a parent sample should share
-    most of the parent's metadata properties'''
+    '''
+        audit_detail: Samples that are a sorted_fraction of a parent sample are expected to share most of the parent's metadata properties.
+        audit_category: inconsistent sorted fraction metadata
+        audit_levels: ERROR
+    '''
     if 'sorted_fraction' in value:
         error_keys = []
         prop_errors = ''
@@ -39,7 +42,11 @@ def audit_sample_sorted_fraction_parent_child_check(value, system):
 
 @audit_checker('Sample', frame='object')
 def audit_sample_virtual_donor_check(value, system):
-    '''Non-virtual samples should not be linked to virtual donors.'''
+    '''
+        audit_detail: Non-virtual samples are not expected to be derived from virtual donors.
+        audit_category: inconsistent sample metadata
+        audit_levels: ERROR
+    '''
     if ('donors' in value) and (value.get('virtual', False) == False):
         sample_id = value['@id']
         donor_ids = value.get('donors', [])
@@ -59,7 +66,11 @@ def audit_sample_virtual_donor_check(value, system):
 
 @audit_checker('Sample', frame='object')
 def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
-    '''Non-virtual samples should not be linked to virtual samples'''
+    '''
+        audit_detail: Non-virtual samples are not expected to be derived from virtual samples.
+        audit_category: inconsistent sample metadata
+        audit_levels: ERROR
+    '''
     sample_id = system.get('path')
     sample_is_virtual = value.get('virtual', False)
     links_to_check = [item for item in [

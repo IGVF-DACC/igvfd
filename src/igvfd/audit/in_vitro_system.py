@@ -10,8 +10,11 @@ from .formatter import (
 
 @audit_checker('InVitroSystem', frame='object')
 def audit_targeted_sample_term_check(value, system):
-    '''Flag biosamples if targeted_sample_term and biosample_term is the same'''
-
+    '''
+        audit_detail: In vitro systems are not expected to have the same targeted_sample_term and biosample_term.
+        audit_category: inconsistent targeted_sample_term
+        audit_levels: WARNING
+    '''
     if 'targeted_sample_term' in value:
         value_id = system.get('path')
         biosample_term = value['biosample_term']
@@ -26,14 +29,17 @@ def audit_targeted_sample_term_check(value, system):
 
 @audit_checker('InVitroSystem', frame='embedded')
 def audit_cell_fate_change_treatments_purpose(value, system):
-    '''Treatments in cell_fate_change_treatments should not be of purpose "perturbation", "agonist", "antagonist", or "control".'''
-
+    '''
+        audit_detail: Treatments linked to in an in vitro system's cell_fate_change_treatments are not expected to have purpose "perturbation", "agonist", "antagonist", or "control".
+        audit_category: inconsistent cell_fate_change_treatments treatment purpose
+        audit_levels: ERROR
+    '''
     if 'cell_fate_change_treatments' in value:
         for treatment in value.get('cell_fate_change_treatments'):
             if treatment['purpose'] in ['perturbation', 'agonist', 'antagonist', 'control']:
                 detail = (
                     f'InVitroSystem {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                    f'has introduced factor {audit_link(path_to_text(treatment["@id"]), treatment["@id"])} '
+                    f'has cell_fate_change_treatment {audit_link(path_to_text(treatment["@id"]), treatment["@id"])} '
                     f'that has purpose {treatment["purpose"]}.'
                 )
                 yield AuditFailure('inconsistent cell_fate_change_treatments treatment purpose', detail, level='ERROR')
