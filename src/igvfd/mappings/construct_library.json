@@ -1,6 +1,6 @@
 {
-    "hash": "a8e300d318183f045eb5aabd497d24f8",
-    "index_name": "construct_library_a8e300d3",
+    "hash": "431698813d8af8c29486d6b7778cf0df",
+    "index_name": "construct_library_43169881",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -470,9 +470,6 @@
                                 "type": "keyword"
                             },
                             "scope": {
-                                "type": "keyword"
-                            },
-                            "seqspec": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {
