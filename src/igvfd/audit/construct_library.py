@@ -35,7 +35,7 @@ def audit_construct_library_associated_diseases(value, system):
 @audit_checker('ConstructLibrary', frame='object')
 def audit_construct_library_plasmid_map(value, system):
     '''
-        audit_detail: Construct libraries are expected to be associated with a plasmid lab document.
+        audit_detail: Construct libraries are expected to be associated with a plasmid map document.
         audit_category: missing plasmid
         audit_levels: WARNING
     '''
