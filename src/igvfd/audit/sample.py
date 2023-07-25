@@ -67,7 +67,7 @@ def audit_sample_virtual_donor_check(value, system):
 @audit_checker('Sample', frame='object')
 def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
     '''
-        audit_detail: Non-virtual samples should not be linked to virtual samples.
+        audit_detail: Non-virtual samples are not expected to be derived from virtual samples.
         audit_category: inconsistent sample metadata
         audit_levels: ERROR
     '''
