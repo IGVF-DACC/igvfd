@@ -1,6 +1,6 @@
 {
-    "hash": "db9720a2e0a06ecb21c2a7474830fef7",
-    "index_name": "curated_set_db9720a2",
+    "hash": "876a7eb352468d68aa4f4d743447c03b",
+    "index_name": "curated_set_876a7eb3",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -467,9 +467,6 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
-                                "type": "keyword"
-                            },
-                            "seqspec": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {

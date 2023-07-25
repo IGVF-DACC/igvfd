@@ -1,6 +1,6 @@
 {
-    "hash": "ea48586a724ab3bb0f6916ccd7238593",
-    "index_name": "model_ea48586a",
+    "hash": "971b15d59fc9605ae6fa3da70a342c7a",
+    "index_name": "model_971b15d5",
     "item_type": "model",
     "mapping": {
         "dynamic_templates": [
@@ -465,9 +465,6 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
-                                "type": "keyword"
-                            },
-                            "seqspec": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {

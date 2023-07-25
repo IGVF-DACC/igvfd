@@ -1,6 +1,6 @@
 {
-    "hash": "ecc195842d6e5c8e98a04a4afe740d08",
-    "index_name": "prediction_ecc19584",
+    "hash": "2c2479ecd1cdf671a1b54765736b3bd5",
+    "index_name": "prediction_2c2479ec",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -464,9 +464,6 @@
                                 "type": "keyword"
                             },
                             "selection_criteria": {
-                                "type": "keyword"
-                            },
-                            "seqspec": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {
