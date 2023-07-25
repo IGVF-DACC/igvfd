@@ -43,7 +43,7 @@ def audit_sample_sorted_fraction_parent_child_check(value, system):
 @audit_checker('Sample', frame='object')
 def audit_sample_virtual_donor_check(value, system):
     '''
-        audit_detail: Non-virtual samples are not expected to be derived from to virtual donors.
+        audit_detail: Non-virtual samples are not expected to be derived from virtual donors.
         audit_category: inconsistent sample metadata
         audit_levels: ERROR
     '''
