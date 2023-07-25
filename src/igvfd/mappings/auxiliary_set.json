@@ -150,7 +150,7 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_exact",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "accession": {
@@ -238,6 +238,7 @@
                         "type": "object"
                     },
                     "collections": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "construct_libraries": {
@@ -252,9 +253,11 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
@@ -696,9 +699,11 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
@@ -1005,6 +1010,7 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "age": {
@@ -1014,6 +1020,7 @@
                                 "type": "keyword"
                             },
                             "aliases": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
@@ -1026,6 +1033,7 @@
                                 "type": "keyword"
                             },
                             "biosample_term": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "biosample_terms": {
@@ -1073,9 +1081,11 @@
                                         "type": "keyword"
                                     },
                                     "accession": {
+                                        "copy_to": "_exact",
                                         "type": "keyword"
                                     },
                                     "aliases": {
+                                        "copy_to": "_exact",
                                         "type": "keyword"
                                     },
                                     "alternate_accessions": {
@@ -1327,6 +1337,7 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
@@ -1443,6 +1454,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "uuid": {
@@ -1458,6 +1470,7 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "url": {
