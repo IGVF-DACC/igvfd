@@ -30,7 +30,7 @@ def audit_targeted_sample_term_check(value, system):
 @audit_checker('InVitroSystem', frame='embedded')
 def audit_cell_fate_change_treatments_purpose(value, system):
     '''
-        audit_detail: In vitro systems with treatments in cell_fate_change_treatments are not expected to have purpose "perturbation", "agonist", "antagonist", or "control".
+        audit_detail: Treatments linked to in an in vitro system's cell_fate_change_treatments are not expected to have purpose "perturbation", "agonist", "antagonist", or "control".
         audit_category: inconsistent cell_fate_change_treatments treatment purpose
         audit_levels: ERROR
     '''
