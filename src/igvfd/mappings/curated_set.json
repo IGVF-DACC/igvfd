@@ -1,6 +1,6 @@
 {
-    "hash": "5d3c4918f60c5f307a7c3337e64fee80",
-    "index_name": "curated_set_5d3c4918",
+    "hash": "3385c22a2d13b4cb0033cc4c9e80ed27",
+    "index_name": "curated_set_3385c22a",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -467,9 +467,6 @@
                                 "type": "keyword"
                             },
                             "scope": {
-                                "type": "keyword"
-                            },
-                            "seqspec": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {

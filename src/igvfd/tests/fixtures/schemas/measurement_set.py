@@ -52,3 +52,13 @@ def measurement_set_v3(measurement_set):
         'protocol': 'https://www.protocols.io/'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v4(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '4',
+        'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/SHARE-seq/spec.yaml'
+    })
+    return item

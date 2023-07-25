@@ -61,3 +61,14 @@ def construct_library_2_3(value, system):
         value['origins'] = ['TF binding sites']
         notes += f' origins added via upgrade; update before removing note.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('measurement_set', '4', '5')
+def measurement_set_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-679
+    notes = value.get('notes', '')
+    if 'seqspec' in value:
+        seqspec = value['seqspec']
+        notes += f' This meausurement_set previously linked to {seqspec}, but the property for submitting associated seqspec links has been moved to SequenceFile where it should be submitted as a link to the seqspec yaml file submitted as a ConfigurationFile instead.'
+        value['notes'] = notes.strip()
+        del value['seqspec']

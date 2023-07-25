@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 5
+
+* Remove `seqspec`.
+
 ### Minor changes since schema version 4
 
 * Expand `preferred_assay_title` enum list to include `10x multiome` and `MULTI-seq`.

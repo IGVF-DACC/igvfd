@@ -1,6 +1,6 @@
 {
-    "hash": "a497a8058caa2d55d51e138140e1f379",
-    "index_name": "measurement_set_a497a805",
+    "hash": "6441014843594a9b32d16adc45c69768",
+    "index_name": "measurement_set_64410148",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -547,9 +547,6 @@
                             "scope": {
                                 "type": "keyword"
                             },
-                            "seqspec": {
-                                "type": "keyword"
-                            },
                             "sequencing_library_type": {
                                 "type": "keyword"
                             },
@@ -845,9 +842,6 @@
                                 "type": "keyword"
                             },
                             "scope": {
-                                "type": "keyword"
-                            },
-                            "seqspec": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {
@@ -1490,9 +1484,6 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "seqspec": {
-                                "type": "keyword"
-                            },
                             "sequencing_library_type": {
                                 "type": "keyword"
                             },
@@ -1908,9 +1899,6 @@
                         "type": "object"
                     },
                     "schema_version": {
-                        "type": "keyword"
-                    },
-                    "seqspec": {
                         "type": "keyword"
                     },
                     "sequencing_library_type": {
