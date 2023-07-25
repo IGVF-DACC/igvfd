@@ -535,7 +535,7 @@ PHASE1_PIPELINES = {
         remove_keys('derived_from', 'file_format_specifications'),
     ],
     'sequence_file': [
-        remove_keys('derived_from', 'file_format_specifications'),
+        remove_keys('derived_from', 'file_format_specifications', 'seqspec'),
     ]
 }
 
@@ -567,7 +567,7 @@ PHASE2_PIPELINES = {
         skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
     ],
     'sequence_file': [
-        skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
+        skip_rows_missing_all_keys('derived_from', 'file_format_specifications', 'seqspec'),
     ]
 }
 
