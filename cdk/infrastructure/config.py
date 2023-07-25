@@ -59,7 +59,7 @@ config: Dict[str, Any] = {
                         'construct_id': 'Postgres',
                         'on': True,
                         'props': {
-                            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:920073238245:snapshot:manual-sandbox-7-21-2023',
                             'allocated_storage': 10,
                             'max_allocated_storage': 20,
                             'instance_type': InstanceType.of(
