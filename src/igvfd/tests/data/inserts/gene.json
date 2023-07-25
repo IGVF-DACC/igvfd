@@ -2,7 +2,7 @@
     {
         "geneid": "ENSG00000158473",
         "version_number": "2",
-        "annotation_version": "GENCODE 42",
+        "transcriptome_annotation": "GENCODE 42",
         "uuid": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
         "dbxrefs": [
             "MIM:188410",
@@ -36,7 +36,7 @@
         "uuid": "fff95719-346c-471f-8b72-8a05c0102b1b",
         "geneid": "ENSG00000163930",
         "version_number": "3",
-        "annotation_version": "GENCODE 42",
+        "transcriptome_annotation": "GENCODE 42",
         "locations": [
             {
                 "assembly": "GRCh38",
@@ -73,7 +73,7 @@
         ],
         "geneid": "ENSG00000154832",
         "version_number": "2",
-        "annotation_version": "GENCODE 42",
+        "transcriptome_annotation": "GENCODE 42",
         "name": "CXXC finger protein 1",
         "taxa": "Homo sapiens",
         "status": "released",
@@ -113,7 +113,7 @@
         ],
         "geneid": "ENSG00000207705",
         "version_number": "8",
-        "annotation_version": "GENCODE 42",
+        "transcriptome_annotation": "GENCODE 42",
         "uuid": "cb9e336d-f19e-41df-90ee-62599f04d77b",
         "locations": [
             {
@@ -144,7 +144,7 @@
     {
         "geneid": "ENSG00000136732",
         "version_number": "5",
-        "annotation_version": "GENCODE 42",
+        "transcriptome_annotation": "GENCODE 42",
         "uuid": "83a311d1-7ed3-41bb-85f0-1f00c458e6fc",
         "dbxrefs": [
             "MIM:110750",
@@ -172,7 +172,7 @@
     {
         "geneid": "ENSG00000205755_PAR_Y",
         "version_number": "12",
-        "annotation_version": "GENCODE 42",
+        "transcriptome_annotation": "GENCODE 42",
         "uuid": "265a645b-7ed3-496f-85f0-4a524dbe8b2d",
         "dbxrefs": [
             "HGNC:14281"
@@ -193,7 +193,7 @@
     {
         "geneid": "ENSMUSG00000093769",
         "version_number": "7",
-        "annotation_version": "GENCODE M30",
+        "transcriptome_annotation": "GENCODE M30",
         "uuid": "c1bce75a-44ee-49a0-b950-926fabd6b2db",
         "dbxrefs": [
             "MGI:2448355",
@@ -221,7 +221,7 @@
         "uuid": "25290279-a299-4574-910e-5831edb7d72a",
         "geneid": "ENSMUSG00000094933",
         "version_number": "12",
-        "annotation_version": "GENCODE M30",
+        "transcriptome_annotation": "GENCODE M30",
         "locations": [
             {
                 "assembly": "mm10",

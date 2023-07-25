@@ -34,6 +34,9 @@
         },
         {
             "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/transcriptome_annotation"
         }
     ],
     "dependentSchemas": {
@@ -57,9 +60,9 @@
                         "properties": {
                             "transcriptome_annotation": {
                                 "enum": [
-                                    "M30",
-                                    "M31",
-                                    "M32"
+                                    "GENCODE M30",
+                                    "GENCODE M31",
+                                    "GENCODE M32"
                                 ]
                             }
                         }
@@ -80,10 +83,10 @@
                         "properties": {
                             "transcriptome_annotation": {
                                 "enum": [
-                                    "V40",
-                                    "V41",
-                                    "V42",
-                                    "V43"
+                                    "GENCODE 40",
+                                    "GENCODE 41",
+                                    "GENCODE 42",
+                                    "GENCODE 43"
                                 ]
                             }
                         }
@@ -95,7 +98,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "4"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file. Genome reference are composite nucleic acid sequences assembled from the sequence of several different individual organisms representing the species. Guide RNA sequences are sequences of RNA molecules used in assays involving CRISPR editing. Sequence barcodes are lists of barcodes found in the sequencing library. Spike-ins are nucleic acid fragments of known sequence and quantity used for calibration in high-throughput sequencing. Transcriptome references are transcriptomic sequences of an idealized representative individual in a species. Vector sequences are sequences tested in MPRAs.",
@@ -134,20 +137,6 @@
             "description": "Link to external resource, such as NCBI or GENCODE, where the reference data was obtained.",
             "type": "string",
             "format": "uri"
-        },
-        "transcriptome_annotation": {
-            "title": "Transcriptome Annotation",
-            "description": "Transcriptome annotation indicates the transcriptome version.",
-            "type": "string",
-            "enum": [
-                "M30",
-                "M31",
-                "M32",
-                "V40",
-                "V41",
-                "V42",
-                "V43"
-            ]
         }
     },
     "fuzzy_searchable_fields": [

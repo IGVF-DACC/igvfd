@@ -1,6 +1,6 @@
 {
-    "hash": "1195f9856c51970957bbf56daa184bcc",
-    "index_name": "gene_1195f985",
+    "hash": "35da88025749c68ff30b811a107cf6a3",
+    "index_name": "gene_35da8802",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -156,9 +156,6 @@
                     "aliases": {
                         "type": "keyword"
                     },
-                    "annotation_version": {
-                        "type": "keyword"
-                    },
                     "creation_timestamp": {
                         "type": "keyword"
                     },
@@ -304,6 +301,9 @@
                         "type": "keyword"
                     },
                     "title": {
+                        "type": "keyword"
+                    },
+                    "transcriptome_annotation": {
                         "type": "keyword"
                     },
                     "uuid": {

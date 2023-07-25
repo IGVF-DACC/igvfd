@@ -19,3 +19,12 @@ def test_gene_upgrade_3_4(upgrader, gene_v3):
     assert value['geneid'] == 'ENSMUSG00000004231'
     assert value['version_number'] == '8'
     assert value['annotation_version'] == 'GENCODE M30'
+
+
+def test_gene_upgrade_4_5(upgrader, gene_v4):
+    annotation = gene_v4['annotation_version']
+    value = upgrader.upgrade('gene', gene_v4, current_version='4', target_version='5')
+    assert annotation == value['transcriptome_annotation']
+    assert 'annotation_version' not in value
+    assert 'transcriptome_annotation' in value
+    assert value['schema_version'] == '5'

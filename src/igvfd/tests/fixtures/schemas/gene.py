@@ -9,7 +9,7 @@ def gene_myc_hs(testapp):
         ],
         'geneid': 'ENSG00000136997',
         'version_number': '7',
-        'annotation_version': 'GENCODE 42',
+        'transcriptome_annotation': 'GENCODE 42',
         'symbol': 'MYC',
         'taxa': 'Homo sapiens'
     }
@@ -28,7 +28,7 @@ def gene_zscan10_mm(testapp):
         ],
         'geneid': 'ENSMUSG00000023902',
         'version_number': '3',
-        'annotation_version': 'GENCODE M30',
+        'transcriptome_annotation': 'GENCODE M30',
         'symbol': 'Zcan10',
         'taxa': 'Mus musculus'
     }
@@ -43,7 +43,7 @@ def gene_CRLF2_par_y(testapp):
         ],
         'geneid': 'ENSG00000205755_PAR_Y',
         'version_number': '3',
-        'annotation_version': 'GENCODE 42',
+        'transcriptome_annotation': 'GENCODE 42',
         'symbol': 'CRLF2',
         'taxa': 'Homo sapiens'
     }
@@ -78,7 +78,7 @@ def gene_CD1E(testapp):
         ],
         'geneid': 'ENSG00000158488',
         'version_number': '3',
-        'annotation_version': 'GENCODE 42',
+        'transcriptome_annotation': 'GENCODE 42',
         'symbol': 'CD1E',
         'taxa': 'Homo sapiens'
     }
@@ -95,4 +95,15 @@ def gene_v3(testapp):
         'symbol': 'Pax2',
         'taxa': 'Mus musculus'
     }
+    return item
+
+
+@pytest.fixture
+def gene_v4(gene_myc_hs):
+    item = gene_myc_hs.copy()
+    item.pop('transcriptome_annotation', None)
+    item.update({
+        'schema_version': '4',
+        'annotation_version': 'GENCODE 42'
+    })
     return item
