@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('ConstructLibrary', frame='object')
 def audit_construct_library_associated_diseases(value, system):
     '''
-        audit_detail: ConstructLibrary objects with origins of disease-associated variants
+        audit_detail: Construct libraries with origins of disease-associated variants
     need to include an entry in associated_diseases.
         audit_category: inconsistent variants and ontology metadata
         audit_levels: NOT_COMPLIANT
