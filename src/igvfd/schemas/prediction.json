@@ -65,6 +65,8 @@
         "collections",
         "prediction_type",
         "lab.title",
+        "samples.summary",
+        "samples.biosample_term",
         "summary"
     ],
     "exact_searchable_fields": [
@@ -74,6 +76,10 @@
         "files.accession",
         "files.aliases",
         "references",
+        "samples.accession",
+        "samples.aliases",
+        "samples.donors.accession",
+        "samples.donors.aliases",
         "submitted_by.title"
     ],
     "changelog": "/profiles/changelogs/prediction.md"

@@ -74,6 +74,8 @@
         "dbxrefs",
         "files.accession",
         "files.aliases",
+        "input_file_sets.accession",
+        "input_file_sets.aliases",
         "samples.accession",
         "samples.aliases",
         "samples.donors.accession",
