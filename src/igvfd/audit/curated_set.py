@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('CuratedSet', frame='object')
 def audit_curated_set_mismatched_donor(value, system):
     '''
-        audit_detail: The donor specified for curated set and the donor of the associated samples should be matching.
+        audit_detail: The donor specified for curated set and the donor of the associated samples are expected to be matching.
         audit_category: inconsistent donor metadata
         audit_levels: ERROR
     '''
@@ -37,7 +37,7 @@ def audit_curated_set_mismatched_donor(value, system):
 @audit_checker('CuratedSet', frame='object')
 def audit_curated_set_mismatched_taxa(value, system):
     '''
-        audit_detail: The taxa of the curated set, associated samples, and the donors should be matching.
+        audit_detail: The taxa of the curated set, associated samples, and the donors are expected to be matching.
         audit_category: inconsistent taxa metadata
         audit_levels: ERROR
     '''

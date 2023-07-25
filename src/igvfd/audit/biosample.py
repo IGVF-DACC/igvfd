@@ -57,7 +57,7 @@ def audit_biosample_taxa_check(value, system):
 @audit_checker('Biosample', frame='object')
 def audit_biosample_age(value, system):
     '''
-        audit_detail: Tissues, primary cells, and whole organisms should specify a lower_bound_age, upper_bound_age and age_units.
+        audit_detail: Tissues, primary cells, and whole organisms are expected to specify a lower_bound_age, upper_bound_age and age_units.
         audit_category: missing age properties
         audit_levels: WARNING
     '''

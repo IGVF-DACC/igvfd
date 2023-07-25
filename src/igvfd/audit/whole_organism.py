@@ -11,7 +11,7 @@ from .formatter import (
 @audit_checker('WholeOrganism', frame='object')
 def audit_whole_organism_human_taxa(value, system):
     '''
-        audit_detail: Whole organisms should not have a donor with taxa Homo sapiens.
+        audit_detail: Whole organisms are expected to have a donor with taxa Homo sapiens.
         audit_category: incorrect taxa
         audit_levels: ERROR
     '''
