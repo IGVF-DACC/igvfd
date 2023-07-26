@@ -22,6 +22,9 @@ def biomarker():
             'award.component': {
                 'title': 'Award'
             },
+            'status': {
+                'title': 'Status'
+            }
         },
         'facet_groups': [
             {
@@ -37,6 +40,12 @@ def biomarker():
                 'facet_fields': [
                     'lab.title',
                     'award.component',
+                ]
+            },
+            {
+                'title': 'Quality',
+                'facet_fields': [
+                    'status',
                 ]
             },
         ],
@@ -55,6 +64,9 @@ def biomarker():
             },
             'synonyms': {
                 'title': 'Synonyms'
+            },
+            'status': {
+                'title': 'Status'
             },
             'gene': {
                 'title': 'Gene'
