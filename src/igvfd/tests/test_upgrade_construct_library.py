@@ -25,3 +25,12 @@ def test_construct_library_upgrade_3_4(upgrader, construct_library_v3):
     assert 'origins' not in value
     assert selection_criteria == value['selection_criteria']
     assert value['schema_version'] == '4'
+
+
+def test_construct_library_upgrade_4_5(upgrader, construct_library_v4):
+    value = upgrader.upgrade(
+        'construct_library', construct_library_v4,
+        current_version='4', target_version='5')
+    assert value['schema_version'] == '5'
+    assert 'publication_identifiers' in value
+    assert 'references' not in value
