@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_audit_primary_cell_age(
+def test_audit_inconsistent_seqspec(
     testapp,
     sequence_file
 ):
