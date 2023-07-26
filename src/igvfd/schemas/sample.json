@@ -28,6 +28,9 @@
         },
         {
             "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/references"
         }
     ],
     "dependentSchemas": {

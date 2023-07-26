@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Add `publication_identifiers`. (08/02/2023)
 * Add `virtual`. (06/05/2023)
 * Add `cellular_sub_pool`. (05/10/2023)
 * Remove taxa `Saccharomyces`. (04/05/2023)

@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 5
+
+* Add `publication_identifiers`.
+
 ### Schema version 5
 
 * Remove `seqspec`.

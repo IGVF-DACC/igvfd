@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Minor changes since schema version 13
+
+* Add `publication_identifiers`.
+
 ### Schema version 13
 
 * Add `virtual`.

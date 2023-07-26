@@ -21,6 +21,9 @@
         },
         {
             "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/references"
         }
     ],
     "dependentSchemas": {
