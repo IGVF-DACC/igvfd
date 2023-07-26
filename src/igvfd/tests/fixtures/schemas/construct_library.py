@@ -73,3 +73,13 @@ def construct_library_v3(
         'origins': ['accessible genome regions']
     }
     return item
+
+
+@pytest.fixture
+def construct_library_v4(construct_library_genome_wide):
+    item = construct_library_genome_wide.copy()
+    item.update({
+        'schema_version': '4',
+        'references': ['10.1101/2023.08.02']
+    })
+    return item

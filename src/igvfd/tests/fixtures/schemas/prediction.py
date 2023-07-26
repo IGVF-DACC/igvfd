@@ -10,3 +10,13 @@ def base_prediction(testapp, lab, award, in_vitro_cell_line):
         'samples': [in_vitro_cell_line['@id']]
     }
     return testapp.post_json('/prediction', item).json['@graph'][0]
+
+
+@pytest.fixture
+def prediction_v1(base_prediction):
+    item = base_prediction.copy()
+    item.update({
+        'schema_version': '1',
+        'references': ['10.1101/2023.08.02']
+    })
+    return item

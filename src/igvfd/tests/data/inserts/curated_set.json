@@ -10,7 +10,7 @@
         "documents": [
             "/documents/igvf:Antibody_characterization_standards_IGVF/"
         ],
-        "references": [
+        "publication_identifiers": [
             "doi:10.1101/gr.275819.121"
         ],
         "url": "https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000001405.40/",
@@ -31,7 +31,7 @@
         "documents": [
             "/documents/igvf:characterization_immunoblot_insert/"
         ],
-        "references": [
+        "publication_identifiers": [
             "doi:10.1016/j.cels.2018.06.007"
         ],
         "url": "https://pubmed.ncbi.nlm.nih.gov/30031775/",
@@ -51,7 +51,7 @@
         "documents": [
             "/documents/igvf:characterization_FACS_insert/"
         ],
-        "references": [
+        "publication_identifiers": [
             "doi:10.1016/j.molcel.2021.05.020"
         ],
         "url": "https://pubmed.ncbi.nlm.nih.gov/34087178/",

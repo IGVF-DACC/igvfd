@@ -63,7 +63,7 @@
         ],
         "description": "11 days mouse embryo",
         "embryonic": true,
-        "references": [
+        "publication_identifiers": [
             "doi:10.1234/example",
             "doi:10.9999/this-is_a-test/with:many/possible.characters"
         ]
