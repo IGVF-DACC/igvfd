@@ -29,7 +29,7 @@
             "$ref": "mixins.json#/attribution"
         },
         {
-            "$ref": "mixins.json#/references"
+            "$ref": "mixins.json#/publication_identifiers"
         }
     ],
     "properties": {
