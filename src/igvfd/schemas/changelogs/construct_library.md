@@ -1,9 +1,15 @@
 ## Changelog for *`construct_library.json`*
 
 ### Schema version 4
+<<<<<<< HEAD
 * Rename `origins` to `selection_criteria`.
+=======
+
+* Rename `references` to `publication_identifiers`.
+>>>>>>> 08990ced (replacement upgrade)
 
 ### Schema version 3
+
 * Require `origins` and one of the three library details sub-objects: `expression_vector_library_details`, `guide_library_details`, `reporter_library_details`.
 
 ### Minor changes since schema version 2

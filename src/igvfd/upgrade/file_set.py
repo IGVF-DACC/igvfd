@@ -80,3 +80,15 @@ def construct_library_3_4(value, system):
     if 'origins' in value:
         value['selection_criteria'] = value['origins']
         del value['origins']
+
+
+@upgrade_step('construct_library', '4', '5')
+@upgrade_step('curated_set', '3', '4')
+@upgrade_step('prediction', '1', '2')
+@upgrade_step('model', '1', '2')
+@upgrade_step('auxiliary_set', '1', '2')
+def file_set_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-802
+    if 'references' in value:
+        value['publication_identifiers'] = value['references']
+        del value['references']

@@ -133,3 +133,12 @@ def human_donor_9_10(value, system):
     if 'human_donor_identifier' in value:
         value['human_donor_identifiers'] = value['human_donor_identifier']
         del value['human_donor_identifier']
+
+
+@upgrade_step('human_donor', '10', '11')
+@upgrade_step('rodent_donor', '8', '9')
+def file_set_10_11(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-802
+    if 'references' in value:
+        value['publication_identifiers'] = value['references']
+        del value['references']

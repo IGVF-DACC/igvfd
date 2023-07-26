@@ -248,3 +248,20 @@ def in_vitro_system_11_12(value, system):
     if 'time_post_factors_introduction_units' in value:
         value['time_post_change_units'] = value['time_post_factors_introduction_units']
         del value['time_post_factors_introduction_units']
+
+
+@upgrade_step('whole_organism', '14', '15')
+def whole_organism_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-753
+    if 'part_of' in value:
+        del value['part_of']
+    if 'pooled_from' in value:
+        del value['pooled_from']
+
+
+@upgrade_step('software_version', '15', '16')
+def whole_organism_15_16(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-802
+    if 'references' in value:
+        value['publication_identifiers'] = value['references']
+        del value['references']

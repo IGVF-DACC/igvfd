@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 16
+
+* Rename `references` to `publication_identifiers`.
+
 ### Schema version 15
 
 * Disallow `part_of` and `pooled_from`.

@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 11
+
+* Rename `references` to `publication_identifiers`.
+
 ### Schema version 10
 
 * Rename `human_donor_identifier` to `human_donor_identifiers`.
