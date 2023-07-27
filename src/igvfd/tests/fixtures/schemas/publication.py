@@ -7,7 +7,7 @@ def publication(testapp, lab, award):
         'award': award['@id'],
         'lab': lab['@id'],
         'title': 'Publication',
-        'identifiers': ['PMID:1']
+        'publication_identifiers': ['PMID:1']
     }
     return testapp.post_json('/publication', item, status=201).json['@graph'][0]
 
@@ -19,4 +19,16 @@ def publication_v1(publication):
         'schema_version': '1',
         'aliases': []
     })
+    return item
+
+
+@pytest.fixture
+def publication_v2(
+        testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'title': 'Publication version 2',
+        'identifiers': ['PMID:2']
+    }
     return item

@@ -259,7 +259,7 @@ def whole_organism_14_15(value, system):
         del value['pooled_from']
 
 
-@upgrade_step('software_version', '15', '16')
+@upgrade_step('whole_organism', '15', '16')
 def whole_organism_15_16(value, system):
     # https://igvf.atlassian.net/browse/IGVF-802
     if 'references' in value:
