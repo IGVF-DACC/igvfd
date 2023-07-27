@@ -1,4 +1,4 @@
-FROM opensearchproject/opensearch:2.2.1
+FROM opensearchproject/opensearch:2.7.0
 
 RUN /usr/share/opensearch/bin/opensearch-plugin remove opensearch-reports-scheduler --purge
 
