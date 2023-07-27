@@ -1,6 +1,6 @@
 {
-    "hash": "d227a2da48e1917250d7560b35ac129d",
-    "index_name": "rodent_donor_d227a2da",
+    "hash": "7cb90c8b0fa6a9ec80874260c670cf9e",
+    "index_name": "rodent_donor_7cb90c8b",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -332,7 +332,7 @@
                     "product_id": {
                         "type": "keyword"
                     },
-                    "references": {
+                    "publication_identifiers": {
                         "type": "keyword"
                     },
                     "revoke_detail": {

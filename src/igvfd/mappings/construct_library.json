@@ -419,7 +419,7 @@
                             "protocol": {
                                 "type": "keyword"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {
@@ -895,7 +895,7 @@
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
-                    "references": {
+                    "publication_identifiers": {
                         "copy_to": "_exact",
                         "type": "keyword"
                     },

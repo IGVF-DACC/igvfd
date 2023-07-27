@@ -72,7 +72,7 @@
     },
     "fuzzy_searchable_fields": [
         "name",
-        "references",
+        "publication_identifiers",
         "title",
         "used_by"
     ],

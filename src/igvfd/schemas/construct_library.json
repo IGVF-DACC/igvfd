@@ -427,7 +427,7 @@
     "exact_searchable_fields": [
         "control_for.accession",
         "control_for.aliases",
-        "references",
+        "publication_identifiers",
         "lot_id",
         "product_id",
         "submitted_by.title",

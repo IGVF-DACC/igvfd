@@ -1,6 +1,6 @@
 {
-    "hash": "c54f6aff66e5f349826ce148d2da77db",
-    "index_name": "technical_sample_c54f6aff",
+    "hash": "a69c65aad7253903702e86b37de4a925",
+    "index_name": "technical_sample_a69c65aa",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -324,6 +324,9 @@
                         "type": "text"
                     },
                     "product_id": {
+                        "type": "keyword"
+                    },
+                    "publication_identifiers": {
                         "type": "keyword"
                     },
                     "revoke_detail": {

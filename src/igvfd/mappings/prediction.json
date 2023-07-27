@@ -413,7 +413,7 @@
                             "protocol": {
                                 "type": "keyword"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {
@@ -612,7 +612,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "related_donors": {
@@ -975,7 +975,7 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "references": {
+                    "publication_identifiers": {
                         "type": "keyword"
                     },
                     "revoke_detail": {
@@ -1117,7 +1117,7 @@
                                     "product_id": {
                                         "type": "keyword"
                                     },
-                                    "references": {
+                                    "publication_identifiers": {
                                         "type": "keyword"
                                     },
                                     "related_donors": {
@@ -1266,7 +1266,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "revoke_detail": {
