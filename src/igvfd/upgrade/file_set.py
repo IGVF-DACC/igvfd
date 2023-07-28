@@ -72,3 +72,11 @@ def measurement_set_4_5(value, system):
         notes += f' This meausurement_set previously linked to {seqspec}, but the property for submitting associated seqspec links has been moved to SequenceFile where it should be submitted as a link to the seqspec yaml file submitted as a ConfigurationFile instead.'
         value['notes'] = notes.strip()
         del value['seqspec']
+
+
+@upgrade_step('construct_library', '3', '4')
+def construct_library_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-860
+    if 'origins' in value:
+        value['selection_criteria'] = value['origins']
+        del value['origins']

@@ -1,6 +1,6 @@
 {
-    "hash": "1e4e57f0b04a8798f69a4085c9507a04",
-    "index_name": "prediction_1e4e57f0",
+    "hash": "2c2479ecd1cdf671a1b54765736b3bd5",
+    "index_name": "prediction_2c2479ec",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -398,9 +398,6 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
-                            "origins": {
-                                "type": "keyword"
-                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -464,6 +461,9 @@
                                 "type": "keyword"
                             },
                             "scope": {
+                                "type": "keyword"
+                            },
+                            "selection_criteria": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {

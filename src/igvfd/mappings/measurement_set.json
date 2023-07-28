@@ -1,6 +1,6 @@
 {
-    "hash": "0630f397a2eabba134b03904a16b17a0",
-    "index_name": "measurement_set_0630f397",
+    "hash": "97d6201af6d4b62e2fb7c5572e52e0a7",
+    "index_name": "measurement_set_97d6201a",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -479,9 +479,6 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
-                            "origins": {
-                                "type": "keyword"
-                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -545,6 +542,9 @@
                                 "type": "keyword"
                             },
                             "scope": {
+                                "type": "keyword"
+                            },
+                            "selection_criteria": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {
@@ -776,9 +776,6 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
-                            "origins": {
-                                "type": "keyword"
-                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -842,6 +839,9 @@
                                 "type": "keyword"
                             },
                             "scope": {
+                                "type": "keyword"
+                            },
+                            "selection_criteria": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {

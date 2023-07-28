@@ -9,7 +9,7 @@
         "lab": "j-michael-cherry",
         "uuid": "ff3f9309-d2a3-4c13-a9b2-e34be9c9f7a8",
         "scope": "loci",
-        "origins": [
+        "selection_criteria": [
             "transcription start sites"
         ],
         "targeted_loci": [
@@ -41,7 +41,7 @@
         "lab": "j-michael-cherry",
         "uuid": "af3f9309-d2a3-4c13-a9b2-e34be9c9f7a8",
         "scope": "genes",
-        "origins": [
+        "selection_criteria": [
             "accessible genome regions"
         ],
         "targeted_genes": [
@@ -63,7 +63,7 @@
         "lab": "j-michael-cherry",
         "uuid": "bf3f9309-d2a3-4c13-a9b2-e34be9c9f7a8",
         "scope": "genome-wide",
-        "origins": [
+        "selection_criteria": [
             "TF binding sites",
             "disease-associated variants"
         ],

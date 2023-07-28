@@ -1,6 +1,6 @@
 {
-    "hash": "d40c9fd315259dafe76c669cefc4f29e",
-    "index_name": "construct_library_d40c9fd3",
+    "hash": "502a9bf195487bef7f316e87cf635acc",
+    "index_name": "construct_library_502a9bf1",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -404,9 +404,6 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
-                            "origins": {
-                                "type": "keyword"
-                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -470,6 +467,9 @@
                                 "type": "keyword"
                             },
                             "scope": {
+                                "type": "keyword"
+                            },
+                            "selection_criteria": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {
@@ -891,10 +891,6 @@
                     "notes": {
                         "type": "text"
                     },
-                    "origins": {
-                        "copy_to": "_fuzzy",
-                        "type": "keyword"
-                    },
                     "product_id": {
                         "copy_to": "_exact",
                         "type": "keyword"
@@ -942,6 +938,10 @@
                         "type": "keyword"
                     },
                     "scope": {
+                        "type": "keyword"
+                    },
+                    "selection_criteria": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "source": {
