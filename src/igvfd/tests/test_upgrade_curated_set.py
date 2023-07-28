@@ -19,7 +19,7 @@ def test_curated_set_upgrade_2_3(upgrader, curated_set_v2):
 
 
 def test_curated_set_upgrade_3_4(upgrader, curated_set_v3):
-    ids = curated_set_v3['identifiers']
+    ids = curated_set_v3['references']
     value = upgrader.upgrade(
         'curated_set', curated_set_v3,
         current_version='3', target_version='4')

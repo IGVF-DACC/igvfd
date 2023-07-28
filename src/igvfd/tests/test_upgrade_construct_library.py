@@ -35,7 +35,7 @@ def test_construct_library_upgrade_4_5(upgrader, construct_library_v4):
 
 
 def test_construct_library_upgrade_5_6(upgrader, construct_library_v5):
-    ids = construct_library_v5['identifiers']
+    ids = construct_library_v5['references']
     value = upgrader.upgrade(
         'construct_library', construct_library_v5,
         current_version='5', target_version='6')
