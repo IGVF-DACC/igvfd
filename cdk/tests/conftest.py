@@ -54,6 +54,12 @@ def capacity_config():
 
 
 @pytest.fixture
+def engine_version():
+    from aws_cdk.aws_opensearchservice import EngineVersion
+    return EngineVersion.OPENSEARCH_2_3
+
+
+@pytest.fixture
 def secret(stack):
     from aws_cdk.aws_secretsmanager import Secret
     return Secret(
@@ -256,7 +262,7 @@ def branch():
 
 
 @pytest.fixture
-def config(instance_type, capacity_config):
+def config(instance_type, capacity_config, engine_version):
     from infrastructure.config import Config
     return Config(
         name='demo',
@@ -281,6 +287,7 @@ def config(instance_type, capacity_config):
                     'on': True,
                     'props': {
                         'capacity': capacity_config,
+                        'engine_version': engine_version,
                         'volume_size': 10,
                     },
                 }
@@ -336,7 +343,7 @@ def opensearch(stack, existing_resources, config, opensearch_props):
 
 
 @pytest.fixture
-def opensearch_multiplexer(stack, existing_resources, capacity_config, config):
+def opensearch_multiplexer(stack, existing_resources, capacity_config, config, engine_version):
     from infrastructure.constructs.opensearch import Opensearch
     from infrastructure.constructs.opensearch import OpensearchProps
     from infrastructure.multiplexer import Multiplexer
@@ -353,6 +360,7 @@ def opensearch_multiplexer(stack, existing_resources, capacity_config, config):
                         config=config,
                         existing_resources=existing_resources,
                         capacity=capacity_config,
+                        engine_version=engine_version,
                         volume_size=10,
                     )
                 }
