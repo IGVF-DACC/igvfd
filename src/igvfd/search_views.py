@@ -1,9 +1,11 @@
 from pyramid.view import view_config
+from pyramid.httpexceptions import HTTPBadRequest
 
 from igvfd.searches.defaults import DEFAULT_ITEM_TYPES
 from igvfd.searches.defaults import RESERVED_KEYS
 from igvfd.searches.defaults import TOP_HITS_ITEM_TYPES
 from snosearch.interfaces import AUDIT_TITLE
+from snosearch.interfaces import ITEM
 from snosearch.interfaces import MATRIX_TITLE
 from snosearch.interfaces import REPORT_TITLE
 from snosearch.interfaces import SEARCH_TITLE
@@ -23,7 +25,6 @@ from snosearch.fields import FacetGroupsResponseField
 from snosearch.fields import FiltersResponseField
 from snosearch.fields import IDResponseField
 from snosearch.fields import NotificationResponseField
-from snovault.elasticsearch.searches.fields import NonSortableResponseField
 from snosearch.fields import RawTopHitsResponseField
 from snosearch.fields import SearchBaseResponseField
 from snosearch.fields import SortResponseField
@@ -34,7 +35,9 @@ from snosearch.parsers import ParamsParser
 from snosearch.responses import FieldedGeneratorResponse
 from snosearch.responses import FieldedResponse
 
+from snovault.elasticsearch.searches.fields import NonSortableResponseField
 from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
+from snovault.interfaces import TYPES
 
 
 def includeme(config):
@@ -96,7 +99,7 @@ def search_generator(request):
             BasicSearchResponseField(
                 default_item_types=DEFAULT_ITEM_TYPES,
                 reserved_keys=RESERVED_KEYS,
-            )
+            ),
         ]
     )
     return fgr.render()
@@ -104,6 +107,7 @@ def search_generator(request):
 
 @view_config(route_name='report', request_method='GET', permission='search')
 def report(context, request):
+    validate_report(request)
     fr = FieldedResponse(
         _meta={
             'params_parser': ParamsParser(request)
@@ -258,3 +262,36 @@ def top_hits(context, request):
 def search_config_registry(context, request):
     registry = request.registry[SEARCH_CONFIG]
     return dict(sorted(registry.as_dict().items()))
+
+
+def validate_report(request):
+    item_registry = request.registry[TYPES]
+    types_to_query = request.params.getall('type')
+    if ITEM in types_to_query:
+        msg = 'Report view does not support Item type'
+        raise HTTPBadRequest(explanation=msg)
+    if len(types_to_query) > 1:
+        abstract_types = item_registry.abstract
+        subtypes_to_query = []
+        for item_type in types_to_query:
+            if item_type in abstract_types:
+                for obj in abstract_types[item_type].subtypes:
+                    if obj not in subtypes_to_query:
+                        subtypes_to_query.append(obj)
+            elif item_type not in subtypes_to_query:
+                subtypes_to_query.append(item_type)
+        is_logic_group = False
+        for item_type in abstract_types:
+            subtypes = abstract_types[item_type].subtypes
+            if len(subtypes) == 1 or item_type == 'Item':
+                continue
+            is_logic_group = True
+            for subtype in subtypes_to_query:
+                if subtype not in subtypes:
+                    is_logic_group = False
+                    break
+            if is_logic_group:
+                break
+        if not is_logic_group:
+            msg = f'Report view does not support the group of types: {types_to_query}'
+            raise HTTPBadRequest(explanation=msg)

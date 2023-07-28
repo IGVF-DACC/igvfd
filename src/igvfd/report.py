@@ -6,6 +6,7 @@ from snovault import TYPES
 from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 
 from igvfd.search_views import search_generator
+from igvfd.search_views import validate_report
 import datetime
 import re
 
@@ -55,21 +56,17 @@ def _convert_camel_to_snake(type_str):
 
 @view_config(route_name='report_download', request_method='GET')
 def report_download(context, request):
+    validate_report(request)
     downloadtime = datetime.datetime.now()
-
     types = request.params.getall('type')
-    if len(types) != 1:
-        msg = 'Report view requires specifying a single type.'
-        raise HTTPBadRequest(explanation=msg)
-
     # Make sure we get all results
     request.GET['limit'] = 'all'
-    type_str = types[0]
-    schema = request.registry[TYPES][type_str].schema
-    search_config = request.registry[SEARCH_CONFIG].as_dict()[type_str]
-    columns = list_visible_columns_for_schemas(request, schema, search_config)
-    snake_type = _convert_camel_to_snake(type_str).replace("'", '')
+    types_str = ''.join(types)
+    # schema = request.registry[TYPES][type_str].schema
+    # search_config = request.registry[SEARCH_CONFIG].as_dict()[type_str]
+    snake_types_str = _convert_camel_to_snake(types_str).replace("'", '')
     results = search_generator(request)
+    columns = list_visible_columns_for_schemas(request, types)
 
     def format_header(seq):
         newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, '/report/', request.query_string)
@@ -91,7 +88,7 @@ def report_download(context, request):
     # Stream response using chunked encoding.
     request.response.content_type = 'text/tsv'
     request.response.content_disposition = 'attachment;filename="{}_report_{}_{}_{}_{}h_{}m.tsv"'.format(
-        snake_type,
+        snake_types_str,
         downloadtime.year,
         downloadtime.month,
         downloadtime.day,
@@ -102,24 +99,28 @@ def report_download(context, request):
     return request.response
 
 
-def list_visible_columns_for_schemas(request, schema, search_config):
+def list_visible_columns_for_schemas(request, types):
     """
     Returns mapping of default columns for a set of schemas.
     """
     columns = OrderedDict({'@id': {'title': 'ID'}})
-    if 'columns' in search_config:
-        columns.update(search_config['columns'])
-    else:
-        # default columns if not explicitly specified
-        columns.update(OrderedDict(
-            (name, {
-                'title': schema['properties'][name].get('title', name)
-            })
-            for name in [
-                '@id', 'title', 'description', 'name', 'accession',
-                'aliases'
-            ] if name in schema['properties']
-        ))
+    for type_str in types:
+        schema = request.registry[TYPES][type_str].schema
+        search_config = request.registry[SEARCH_CONFIG].as_dict()[type_str]
+
+        if 'columns' in search_config:
+            columns.update(search_config['columns'])
+        else:
+            # default columns if not explicitly specified
+            columns.update(OrderedDict(
+                (name, {
+                    'title': schema['properties'][name].get('title', name)
+                })
+                for name in [
+                    '@id', 'title', 'description', 'name', 'accession',
+                    'aliases'
+                ] if name in schema['properties']
+            ))
     fields_requested = request.params.getall('field')
     if fields_requested:
         limited_columns = OrderedDict()
@@ -131,9 +132,12 @@ def list_visible_columns_for_schemas(request, schema, search_config):
                 # objects to find property titles. In this case we'll just
                 # show the field's dotted path for now.
                 limited_columns[field] = {'title': field}
-                if field in schema['properties']:
-                    limited_columns[field] = {
-                        'title': schema['properties'][field]['title']
-                    }
+                for type_str in types:
+                    schema = request.registry[TYPES][type_str].schema
+                    if field in schema['properties']:
+                        limited_columns[field] = {
+                            'title': schema['properties'][field]['title']
+                        }
+                        break
         columns = limited_columns
     return columns
