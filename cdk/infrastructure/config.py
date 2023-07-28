@@ -85,6 +85,19 @@ config: Dict[str, Any] = {
                             'volume_size': 10,
                             'logging': False,
                         }
+                    },
+                    {
+                        'construct_id': 'Opensearch27',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='m6g.xlarge.search',
+                                data_nodes=1,
+                            ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_7,
+                            'volume_size': 30,
+                            'logging': False,
+                        }
                     }
                 ],
             },
@@ -96,7 +109,7 @@ config: Dict[str, Any] = {
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch',
-                'write_to_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch27',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -147,6 +160,18 @@ config: Dict[str, Any] = {
                             'volume_size': 10,
                         }
                     },
+                    {
+                        'construct_id': 'Opensearch27',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='m6g.xlarge.search',
+                                data_nodes=1,
+                            ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_7,
+                            'volume_size': 30,
+                        }
+                    },
                 ],
             },
             'backend': {
@@ -157,7 +182,7 @@ config: Dict[str, Any] = {
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch',
-                'write_to_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch27',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -206,6 +231,18 @@ config: Dict[str, Any] = {
                             'volume_size': 10,
                         }
                     },
+                    {
+                        'construct_id': 'Opensearch27',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='m6g.xlarge.search',
+                                data_nodes=1,
+                            ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_7,
+                            'volume_size': 30,
+                        }
+                    },
                 ],
             },
             'backend': {
@@ -216,7 +253,7 @@ config: Dict[str, Any] = {
                 'ini_name': 'staging.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch',
-                'write_to_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch27',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -266,6 +303,18 @@ config: Dict[str, Any] = {
                             'volume_size': 10,
                         }
                     },
+                    {
+                        'construct_id': 'Opensearch27',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='m6g.xlarge.search',
+                                data_nodes=1,
+                            ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_7,
+                            'volume_size': 30,
+                        }
+                    },
                 ],
             },
             'backend': {
@@ -276,7 +325,7 @@ config: Dict[str, Any] = {
                 'ini_name': 'sandbox.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch',
-                'write_to_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch27',
             },
             'invalidation_service': {
                 'cpu': 256,
@@ -325,6 +374,18 @@ config: Dict[str, Any] = {
                             'volume_size': 10,
                         }
                     },
+                    {
+                        'construct_id': 'Opensearch27',
+                        'on': True,
+                        'props': {
+                            'capacity': CapacityConfig(
+                                data_node_instance_type='m6g.xlarge.search',
+                                data_nodes=1,
+                            ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_7,
+                            'volume_size': 30,
+                        }
+                    },
                 ],
             },
             'backend': {
@@ -335,7 +396,7 @@ config: Dict[str, Any] = {
                 'ini_name': 'production.ini',
                 'use_postgres_named': 'Postgres',
                 'read_from_opensearch_named': 'Opensearch',
-                'write_to_opensearch_named': 'Opensearch',
+                'write_to_opensearch_named': 'Opensearch27',
             },
             'invalidation_service': {
                 'cpu': 256,
