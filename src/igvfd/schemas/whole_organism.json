@@ -2,7 +2,7 @@
     "title": "Whole Organism",
     "$id": "/profiles/whole_organism.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submiting a whole organism sample.",
+    "description": "Schema for submitting a whole organism sample.",
     "type": "object",
     "required": [
         "award",
