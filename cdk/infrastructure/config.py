@@ -108,7 +108,7 @@ config: Dict[str, Any] = {
                 'max_capacity': 4,
                 'ini_name': 'demo.ini',
                 'use_postgres_named': 'Postgres',
-                'read_from_opensearch_named': 'Opensearch',
+                'read_from_opensearch_named': 'Opensearch27',
                 'write_to_opensearch_named': 'Opensearch27',
             },
             'invalidation_service': {
