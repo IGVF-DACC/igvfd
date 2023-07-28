@@ -74,19 +74,6 @@ config: Dict[str, Any] = {
             'opensearch': {
                 'clusters': [
                     {
-                        'construct_id': 'Opensearch',
-                        'on': True,
-                        'props': {
-                            'capacity': CapacityConfig(
-                                data_node_instance_type='t3.small.search',
-                                data_nodes=1,
-                            ),
-                            'engine_version': EngineVersion.OPENSEARCH_2_3,
-                            'volume_size': 10,
-                            'logging': False,
-                        }
-                    },
-                    {
                         'construct_id': 'Opensearch27',
                         'on': True,
                         'props': {
