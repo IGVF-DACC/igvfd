@@ -32,5 +32,13 @@ def test_construct_library_upgrade_4_5(upgrader, construct_library_v4):
         'construct_library', construct_library_v4,
         current_version='4', target_version='5')
     assert value['schema_version'] == '5'
-    assert 'publication_identifiers' in value
+
+
+def test_construct_library_upgrade_5_6(upgrader, construct_library_v5):
+    ids = construct_library_v5['identifiers']
+    value = upgrader.upgrade(
+        'construct_library', construct_library_v5,
+        current_version='5', target_version='6')
+    assert value['schema_version'] == '6'
+    assert 'publication_identifiers' in value and value['publication_identifiers'] == ids
     assert 'references' not in value

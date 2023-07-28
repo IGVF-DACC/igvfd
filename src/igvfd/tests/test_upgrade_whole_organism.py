@@ -114,9 +114,10 @@ def test_whole_organism_upgrade_14_15(upgrader, whole_organism_v14):
 
 
 def test_whole_organism_upgrade_15_16(upgrader, whole_organism_v15):
+    ids = whole_organism_v15['identifiers']
     value = upgrader.upgrade(
         'whole_organism', whole_organism_v15,
         current_version='15', target_version='16')
     assert value['schema_version'] == '16'
-    assert 'publication_identifiers' in value
+    assert 'publication_identifiers' in value and value['publication_identifiers'] == ids
     assert 'references' not in value

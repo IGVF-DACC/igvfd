@@ -137,7 +137,7 @@ def human_donor_9_10(value, system):
 
 @upgrade_step('human_donor', '10', '11')
 @upgrade_step('rodent_donor', '8', '9')
-def file_set_10_11(value, system):
+def donor_10_11(value, system):
     # https://igvf.atlassian.net/browse/IGVF-802
     if 'references' in value:
         value['publication_identifiers'] = value['references']
