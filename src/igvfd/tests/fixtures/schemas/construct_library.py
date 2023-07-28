@@ -76,7 +76,7 @@ def construct_library_v3(
 
 
 @pytest.fixture
-def construct_library_v4(construct_library_genome_wide):
+def construct_library_v4(testapp, construct_library_genome_wide):
     item = construct_library_genome_wide.copy()
     item.update({
         'schema_version': '4',

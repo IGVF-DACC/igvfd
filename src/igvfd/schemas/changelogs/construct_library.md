@@ -1,12 +1,12 @@
 ## Changelog for *`construct_library.json`*
 
-### Schema version 4
-<<<<<<< HEAD
-* Rename `origins` to `selection_criteria`.
-=======
+### Schema version 5
 
 * Rename `references` to `publication_identifiers`.
->>>>>>> 08990ced (replacement upgrade)
+
+### Schema version 4
+
+* Rename `origins` to `selection_criteria`.
 
 ### Schema version 3
 
