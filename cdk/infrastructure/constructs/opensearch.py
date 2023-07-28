@@ -37,6 +37,7 @@ class OpensearchProps:
     existing_resources: ExistingResources
     capacity: CapacityConfig
     volume_size: int
+    engine_version: EngineVersion
     subnet_selection: SubnetSelection = field(
         default_factory=lambda: SubnetSelection(
             availability_zones=['us-west-2a'],
@@ -79,7 +80,7 @@ class Opensearch(Construct):
         self.domain = Domain(
             self,
             'Domain',
-            version=EngineVersion.OPENSEARCH_2_3,
+            version=self.props.engine_version,
             capacity=self.props.capacity,
             ebs=EbsOptions(
                 volume_size=self.props.volume_size,

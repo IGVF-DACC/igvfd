@@ -5,6 +5,7 @@ from aws_cdk.aws_ec2 import InstanceClass
 from aws_cdk.aws_ec2 import InstanceSize
 
 from aws_cdk.aws_opensearchservice import CapacityConfig
+from aws_cdk.aws_opensearchservice import EngineVersion
 
 from dataclasses import dataclass
 from dataclasses import field
@@ -80,6 +81,7 @@ config: Dict[str, Any] = {
                                 data_node_instance_type='t3.small.search',
                                 data_nodes=1,
                             ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_3,
                             'volume_size': 10,
                             'logging': False,
                         }
@@ -141,6 +143,7 @@ config: Dict[str, Any] = {
                                 data_node_instance_type='t3.small.search',
                                 data_nodes=1,
                             ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_3,
                             'volume_size': 10,
                         }
                     },
@@ -199,6 +202,7 @@ config: Dict[str, Any] = {
                                 data_node_instance_type='t3.small.search',
                                 data_nodes=1,
                             ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_3,
                             'volume_size': 10,
                         }
                     },
@@ -258,6 +262,7 @@ config: Dict[str, Any] = {
                                 data_node_instance_type='t3.small.search',
                                 data_nodes=1,
                             ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_3,
                             'volume_size': 10,
                         }
                     },
@@ -316,6 +321,7 @@ config: Dict[str, Any] = {
                                 data_node_instance_type='t3.small.search',
                                 data_nodes=1,
                             ),
+                            'engine_version': EngineVersion.OPENSEARCH_2_3,
                             'volume_size': 10,
                         }
                     },
@@ -356,7 +362,7 @@ class Common:
     organization_name: str = 'igvf-dacc'
     project_name: str = 'igvfd'
     default_region: str = 'us-west-2'
-    aws_cdk_version: str = '2.61.0'
+    aws_cdk_version: str = '2.88.0'
 
 
 @dataclass

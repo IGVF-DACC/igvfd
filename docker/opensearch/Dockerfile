@@ -1,6 +1,10 @@
-FROM opensearchproject/opensearch:2.2.1
+FROM opensearchproject/opensearch:2.7.0
 
 RUN /usr/share/opensearch/bin/opensearch-plugin remove opensearch-reports-scheduler --purge
+
+RUN /usr/share/opensearch/bin/opensearch-plugin remove opensearch-observability --purge
+
+RUN /usr/share/opensearch/bin/opensearch-plugin remove opensearch-neural-search --purge
 
 RUN /usr/share/opensearch/bin/opensearch-plugin list | xargs -l /usr/share/opensearch/bin/opensearch-plugin remove --purge
 

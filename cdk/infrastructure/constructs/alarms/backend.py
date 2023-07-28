@@ -89,7 +89,7 @@ class BackendAlarms(Construct):
         )
 
     def _add_load_balancer_500_error_response_alarm(self) -> None:
-        load_balancer_500_error_response_alarm = self.props.fargate_service.load_balancer.metric_http_code_target(
+        load_balancer_500_error_response_alarm = self.props.fargate_service.load_balancer.metrics.http_code_target(
             code=HttpCodeTarget.TARGET_5XX_COUNT,
         ).create_alarm(
             self,
@@ -106,7 +106,7 @@ class BackendAlarms(Construct):
         )
 
     def _add_unhealthy_host_alarm(self) -> None:
-        unhealthy_host_alarm = self.props.fargate_service.target_group.metric_unhealthy_host_count(
+        unhealthy_host_alarm = self.props.fargate_service.target_group.metrics.unhealthy_host_count(
             statistic='max',
             period=Duration.minutes(1),
         ).create_alarm(
