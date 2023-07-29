@@ -398,9 +398,6 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
-                            "origins": {
-                                "type": "keyword"
-                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -416,7 +413,7 @@
                             "protocol": {
                                 "type": "keyword"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {
@@ -464,6 +461,9 @@
                                 "type": "keyword"
                             },
                             "scope": {
+                                "type": "keyword"
+                            },
+                            "selection_criteria": {
                                 "type": "keyword"
                             },
                             "sequencing_library_type": {
@@ -612,7 +612,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "related_donors": {
@@ -975,7 +975,7 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "references": {
+                    "publication_identifiers": {
                         "type": "keyword"
                     },
                     "revoke_detail": {
@@ -1117,7 +1117,7 @@
                                     "product_id": {
                                         "type": "keyword"
                                     },
-                                    "references": {
+                                    "publication_identifiers": {
                                         "type": "keyword"
                                     },
                                     "related_donors": {
@@ -1266,7 +1266,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "revoke_detail": {
