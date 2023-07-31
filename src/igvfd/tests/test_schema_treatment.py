@@ -153,6 +153,30 @@ def test_treatment_award_lab_depletion_requirement(testapp, award, lab):
             'treatment_term_name': 'G-CSF',
             'treatment_type': 'protein',
             'amount': 10,
+            'purpose': 'differentiation',
+            'depletion': False
+        }, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'UniProtKB:P09919',
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'protein',
+            'amount': 10,
+            'purpose': 'differentiation',
+            'depletion': True
+        }, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'UniProtKB:P09919',
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'protein',
+            'amount': 10,
             'amount_units': 'ng/mL',
             'purpose': 'differentiation',
             'award': award['@id'],
