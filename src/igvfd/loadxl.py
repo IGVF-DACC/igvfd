@@ -536,6 +536,15 @@ PHASE1_PIPELINES = {
     ],
     'sequence_file': [
         remove_keys('derived_from', 'file_format_specifications', 'seqspec'),
+    ],
+    'alignment_file': [
+        remove_keys('derived_from', 'file_format_specifications'),
+    ],
+    'configuration_file': [
+        remove_keys('derived_from', 'file_format_specifications'),
+    ],
+    'signal_file': [
+        remove_keys('derived_from', 'file_format_specifications'),
     ]
 }
 
@@ -568,6 +577,15 @@ PHASE2_PIPELINES = {
     ],
     'sequence_file': [
         skip_rows_missing_all_keys('derived_from', 'file_format_specifications', 'seqspec'),
+    ],
+    'alignment_file': [
+        skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
+    ],
+    'configuration_file': [
+        skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
+    ],
+    'signal_file': [
+        skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
     ]
 }
 
