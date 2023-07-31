@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library.json`*
 
+### Schema version 6
+
+* Rename `source` to `sources`.
+
 ### Schema version 5
 
 * Rename `references` to `publication_identifiers`.

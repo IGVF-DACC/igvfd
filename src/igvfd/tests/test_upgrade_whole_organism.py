@@ -89,7 +89,7 @@ def test_whole_organism_upgrade_10_11(upgrader, whole_organism_v10):
 def test_whole_organism_upgrade_11_12(upgrader, whole_organism_v11):
     value = upgrader.upgrade('whole_organism', whole_organism_v11, current_version='11', target_version='12')
     assert value['schema_version'] == '12'
-    assert value['biosample_term'] == '/sample-terms/UBERON_0000468/'
+    assert value['sample_terms'] == ['/sample-terms/UBERON_0000468/']
     assert value['notes'] == 'Biosample_term (formerly: /sample-terms/EFO_0002067/) was automatically upgraded.'
 
 
@@ -121,3 +121,17 @@ def test_whole_organism_upgrade_15_16(upgrader, whole_organism_v15):
     assert value['schema_version'] == '16'
     assert 'publication_identifiers' in value and value['publication_identifiers'] == ids
     assert 'references' not in value
+
+
+def test_whole_organism_upgrade_16_17(upgrader, whole_organism_v16):
+    sources = whole_organism_v16['source']
+    sample_terms = whole_organism_v16['biosample_term']
+    modifications = whole_organism_v16['modification']
+    value = upgrader.upgrade('whole_organism', whole_organism_v16, current_version='16', target_version='17')
+    assert 'source' not in value
+    assert sources == value['sources']
+    assert 'biosample_term' not in value
+    assert sample_terms == value['sample_terms']
+    assert 'modification' not in value
+    assert modifications == value['modifications']
+    assert value['schema_version'] == '17'

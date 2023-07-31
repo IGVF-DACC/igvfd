@@ -6,9 +6,9 @@ def whole_organism(testapp, lab, source, award, rodent_donor, sample_term_whole_
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'donors': [rodent_donor['@id']],
-        'biosample_term': sample_term_whole_organism['@id']
+        'sample_terms': [sample_term_whole_organism['@id']]
     }
     return testapp.post_json('/whole_organism', item, status=201).json['@graph'][0]
 
@@ -93,10 +93,10 @@ def whole_organism_v5(testapp, lab, source, award, rodent_donor, sample_term_who
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'taxa': 'Mus musculus',
         'donor': [rodent_donor['@id']],
-        'biosample_term': sample_term_whole_organism['@id']
+        'sample_terms': [sample_term_whole_organism['@id']]
     }
     return item
 
@@ -158,7 +158,7 @@ def whole_organism_v11(whole_organism, sample_term_K562):
     item = whole_organism.copy()
     item.update({
         'schema_version': '11',
-        'biosample_term': sample_term_K562['@id']
+        'sample_terms': [sample_term_K562['@id']]
     })
     return item
 
@@ -179,9 +179,9 @@ def whole_organism_human(testapp, lab, source, award, human_donor, sample_term_w
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_whole_organism['@id']
+        'sample_terms': [sample_term_whole_organism['@id']]
     }
     return testapp.post_json('/whole_organism', item, status=201).json['@graph'][0]
 
@@ -215,4 +215,18 @@ def whole_organism_v15(whole_organism):
         'schema_version': '15',
         'references': ['10.1101/2023.08.02']
     })
+    return item
+
+
+@pytest.fixture
+def whole_organism_v16(lab, award, source, human_donor, sample_term_adrenal_gland, modification):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id'],
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_adrenal_gland['@id'],
+        'modification': modification['@id'],
+        'schema_version': '16'
+    }
     return item

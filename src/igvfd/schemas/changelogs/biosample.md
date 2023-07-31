@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Rename `source` to `sources`, `biosample_term` to `sample_terms`, and `modification` to `modifications`. (08/09/2023)
 * Add `publication_identifiers`. (08/02/2023)
 * Add `virtual`. (06/05/2023)
 * Add `cellular_sub_pool`. (05/10/2023)

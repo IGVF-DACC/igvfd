@@ -52,7 +52,7 @@ def test_technical_sample_technical_sample_term(
     item_missing_term = {
         'award': award['@id'],
         'lab': other_lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'sample_material': 'synthetic'
     }
     res = testapp.post_json(
@@ -64,9 +64,9 @@ def test_technical_sample_technical_sample_term(
     item_with_term = {
         'award': award['@id'],
         'lab': other_lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'sample_material': 'synthetic',
-        'technical_sample_term': sample_term_technical_sample['@id']
+        'sample_terms': [sample_term_technical_sample['@id']]
     }
     res = testapp.post_json(
         '/technical_sample',

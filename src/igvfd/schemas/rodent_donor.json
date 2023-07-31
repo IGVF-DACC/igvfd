@@ -90,7 +90,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "9"
+            "default": "10"
         },
         "strain_background": {
             "title": "Strain Background",

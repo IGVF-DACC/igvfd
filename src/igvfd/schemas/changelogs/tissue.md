@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Schema version 14
+
+* Rename `source` to `sources`, `biosample_term` to `sample_terms`, and `modification` to `modifications`.
+
 ### Minor changes since schema version 13
 
 * Add `publication_identifiers`.

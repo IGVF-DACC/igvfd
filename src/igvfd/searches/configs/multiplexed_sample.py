@@ -16,8 +16,8 @@ def multiplexed_sample():
             'award.component': {
                 'title': 'Award',
             },
-            'source.title': {
-                'title': 'Source',
+            'sources.title': {
+                'title': 'Sources',
             },
             'status': {
                 'title': 'Status'
@@ -30,8 +30,8 @@ def multiplexed_sample():
             'accession': {
                 'title': 'Accession'
             },
-            'biosample_terms': {
-                'title': 'Biosample Terms'
+            'sample_terms': {
+                'title': 'Sample Terms'
             },
             'donors': {
                 'title': 'Donors'

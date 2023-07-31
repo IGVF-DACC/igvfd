@@ -7,8 +7,8 @@ from snovault.elasticsearch.searches.configs import search_config
 def primary_cell():
     return {
         'facets': {
-            'biosample_term.term_name': {
-                'title': 'Biosample Term',
+            'sample_terms.term_name': {
+                'title': 'Sample Terms',
             },
             'disease_terms.term_name': {
                 'title': 'Disease Terms',
@@ -34,8 +34,8 @@ def primary_cell():
             'award.component': {
                 'title': 'Award',
             },
-            'source.title': {
-                'title': 'Source',
+            'sources.title': {
+                'title': 'Sources',
             },
             'status': {
                 'title': 'Status'
@@ -48,7 +48,7 @@ def primary_cell():
             {
                 'title': 'Sample',
                 'facet_fields': [
-                    'biosample_term.term_name',
+                    'sample_terms.term_name',
                     'disease_terms.term_name',
                     'treatments.treatment_term_name',
                     'taxa',
@@ -61,7 +61,7 @@ def primary_cell():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'source.title',
+                    'sources.title',
                 ]
             },
             {
@@ -78,8 +78,8 @@ def primary_cell():
             'accession': {
                 'title': 'Accession'
             },
-            'biosample_term': {
-                'title': 'Biosample Term'
+            'sample_terms': {
+                'title': 'Sample Terms'
             },
             'donors': {
                 'title': 'Donors'

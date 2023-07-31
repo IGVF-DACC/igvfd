@@ -7,9 +7,9 @@
     "required": [
         "award",
         "lab",
-        "source",
+        "sources",
         "donors",
-        "biosample_term"
+        "sample_terms"
     ],
     "identifyingProperties": [
         "uuid",

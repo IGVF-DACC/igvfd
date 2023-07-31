@@ -10,9 +10,13 @@
         "donors": [
             "igvf:alias_human_donor2"
         ],
-        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "sample_terms": [
+            "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
+        ],
         "status": "in progress",
-        "source": "/labs/j-michael-cherry/",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
         "nih_institutional_certification": "NICHD1442",
         "pmi": 2,
         "pmi_units": "week",
@@ -35,8 +39,12 @@
             "igvf:treated_tissue"
         ],
         "status": "released",
-        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
-        "source": "/labs/j-michael-cherry/",
+        "sample_terms": [
+            "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
+        ],
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
         "treatments": [
             "/treatments/2d57c810-c729-11ec-9d64-0242ac120002/",
             "/treatments/4fbb0dc2-c72e-11ec-9d64-0242ac120002/"
@@ -61,9 +69,13 @@
         "donors": [
             "igvf:alias_human_donor_child"
         ],
-        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "sample_terms": [
+            "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
+        ],
         "status": "released",
-        "source": "/labs/j-michael-cherry/",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
         "pooled_from": [
             "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/",
             "/tissues/984a5f8e-c751-11ec-9d64-0242ac120002/"
@@ -80,8 +92,12 @@
         ],
         "status": "released",
         "part_of": "IGVFSM0000DDDD",
-        "source": "/labs/j-michael-cherry/",
-        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
+        "sample_terms": [
+            "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
+        ],
         "nih_institutional_certification": "NICHD1442",
         "pmi": 2,
         "pmi_units": "week",
@@ -106,10 +122,14 @@
         "aliases": [
             "igvf:tissue_part_of_whole_organism"
         ],
-        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "sample_terms": [
+            "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
+        ],
         "status": "released",
         "part_of": "IGVFSM0000KASA",
-        "source": "/labs/j-michael-cherry/",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
         "nih_institutional_certification": "NICHD1442",
         "preservation_method": "cryopreservation",
         "donors": [
@@ -129,10 +149,14 @@
         "aliases": [
             "igvf:tissue_part_of_whole_organism_sorted_fraction_1"
         ],
-        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "sample_terms": [
+            "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
+        ],
         "status": "released",
         "part_of": "IGVFSM0000KASA",
-        "source": "/labs/j-michael-cherry/",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
         "nih_institutional_certification": "NICHD1442",
         "preservation_method": "cryopreservation",
         "donors": [
@@ -154,10 +178,14 @@
         "aliases": [
             "igvf:tissue_part_of_whole_organism_sorted_fraction_2"
         ],
-        "biosample_term": "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/",
+        "sample_terms": [
+            "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
+        ],
         "status": "released",
         "part_of": "IGVFSM0000KASA",
-        "source": "/labs/j-michael-cherry/",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
         "nih_institutional_certification": "NICHD1442",
         "preservation_method": "cryopreservation",
         "donors": [

@@ -37,3 +37,17 @@ def test_technical_sample_upgrade_6_7(upgrader, technical_sample_v6):
     value = upgrader.upgrade('technical_sample', technical_sample_v6, current_version='6', target_version='7')
     assert value['schema_version'] == '7'
     assert value['virtual'] == False
+
+
+def test_technical_sample_upgrade_7_8(upgrader, technical_sample_v7):
+    sources = technical_sample_v7['source']
+    sample_terms = technical_sample_v7['technical_sample_term']
+    modifications = technical_sample_v7['modification']
+    value = upgrader.upgrade('technical_sample', technical_sample_v7, current_version='7', target_version='8')
+    assert 'source' not in value
+    assert sources == value['sources']
+    assert 'technical_sample_term' not in value
+    assert sample_terms == value['sample_terms']
+    assert 'modification' not in value
+    assert modifications == value['modifications']
+    assert value['schema_version'] == '8'

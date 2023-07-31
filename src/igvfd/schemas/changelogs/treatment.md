@@ -1,6 +1,11 @@
 ## Changelog for *`treatment.json`*
 
+### Schema version 4
+
+* Rename `source` to `sources`.
+
 ### Schema version 3
+
 * Require `purpose`.
 
 ### Minor changes since schema version 2

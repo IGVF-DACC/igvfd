@@ -269,15 +269,23 @@
         }
     },
     "product_info": {
-        "source": {
-            "title": "Source",
-            "description": "The originating lab or vendor.",
-            "comment": "See source.json for available identifiers.",
-            "type": "string",
-            "linkTo": [
-                "Source",
-                "Lab"
-            ]
+        "sources": {
+            "title": "Sources",
+            "description": "The originating lab(s) or vendor(s).",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Source",
+                "description": "The originating lab or vendor.",
+                "type": "string",
+                "comment": "See source.json or lab.json for available identifiers.",
+                "linkTo": [
+                    "Source",
+                    "Lab"
+                ]
+            }
         },
         "lot_id": {
             "title": "Lot ID",

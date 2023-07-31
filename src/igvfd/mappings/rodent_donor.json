@@ -1,6 +1,6 @@
 {
-    "hash": "7cb90c8b0fa6a9ec80874260c670cf9e",
-    "index_name": "rodent_donor_7cb90c8b",
+    "hash": "753d420819cba4dc7b7c4c56bdf060b3",
+    "index_name": "rodent_donor_753d4208",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -347,7 +347,7 @@
                     "sex": {
                         "type": "keyword"
                     },
-                    "source": {
+                    "sources": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"

@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 13
+
+* Rename `source` to `sources`, `biosample_term` to `sample_terms`, and `modification` to `modifications`.
+
 ### Minor changes since schema version 12
 
 * Add `publication_identifiers`.

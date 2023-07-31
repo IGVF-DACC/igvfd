@@ -97,7 +97,7 @@
         "auxiliary_type",
         "lab.title",
         "samples.summary",
-        "samples.biosample_term",
+        "samples.sample_terms",
         "summary"
     ],
     "exact_searchable_fields": [

@@ -91,3 +91,17 @@ def test_primary_cell_upgrade_12_13(upgrader, primary_cell_v12):
     value = upgrader.upgrade('primary_cell', primary_cell_v12, current_version='12', target_version='13')
     assert value['schema_version'] == '13'
     assert 'virtual' in value
+
+
+def test_primary_cell_upgrade_13_14(upgrader, primary_cell_v13):
+    sources = primary_cell_v13['source']
+    sample_terms = primary_cell_v13['biosample_term']
+    modifications = primary_cell_v13['modification']
+    value = upgrader.upgrade('primary_cell', primary_cell_v13, current_version='13', target_version='14')
+    assert 'source' not in value
+    assert sources == value['sources']
+    assert 'biosample_term' not in value
+    assert sample_terms == value['sample_terms']
+    assert 'modification' not in value
+    assert modifications == value['modifications']
+    assert value['schema_version'] == '14'

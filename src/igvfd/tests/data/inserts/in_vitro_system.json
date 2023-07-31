@@ -34,17 +34,23 @@
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
-        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "sample_terms": [
+            "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
+        ],
         "disease_terms": [
             "/phenotype-terms/8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4/"
         ],
         "nih_institutional_certification": "NICHD1442",
         "date_obtained": "2022-02-02",
-        "source": "/labs/j-michael-cherry/",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
         "collections": [
             "ENCODE"
         ],
-        "modification": "aa9dd059-4bc8-2857-bc2b-b8cb0294f837",
+        "modifications": [
+            "aa9dd059-4bc8-2857-bc2b-b8cb0294f837"
+        ],
         "virtual": false
     },
     {
@@ -65,9 +71,13 @@
         "status": "released",
         "time_post_change": 24,
         "time_post_change_units": "minute",
-        "biosample_term": "/sample-terms/92c5f1a9-7503-460b-99b3-f5b84c82b067/",
+        "sample_terms": [
+            "/sample-terms/92c5f1a9-7503-460b-99b3-f5b84c82b067/"
+        ],
         "targeted_sample_term": "/sample-terms/eed026e7-4afc-4396-94e7-870f8934b2f2/",
-        "source": "/labs/danwei-huangfu/",
+        "sources": [
+            "/labs/danwei-huangfu/"
+        ],
         "virtual": false
     },
     {
@@ -105,13 +115,17 @@
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
-        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "sample_terms": [
+            "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
+        ],
         "disease_terms": [
             "/phenotype-terms/8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4/"
         ],
         "nih_institutional_certification": "NICHD1442",
         "date_obtained": "2022-02-02",
-        "source": "/labs/j-michael-cherry/",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
         "collections": [
             "ENCODE"
         ],
@@ -155,13 +169,17 @@
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
-        "biosample_term": "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/",
+        "sample_terms": [
+            "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
+        ],
         "disease_terms": [
             "/phenotype-terms/8dc4d3b8-34b3-4f2b-be97-4ea31f86f7d4/"
         ],
         "nih_institutional_certification": "NICHD1442",
         "date_obtained": "2022-02-02",
-        "source": "/labs/j-michael-cherry/",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
         "collections": [
             "ENCODE"
         ],

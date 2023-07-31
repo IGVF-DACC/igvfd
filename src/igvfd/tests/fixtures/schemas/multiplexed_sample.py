@@ -24,3 +24,12 @@ def multiplexed_sample_v1(multiplexed_sample, source):
         'lot_id': '0000001'
     })
     return item
+
+
+@pytest.fixture
+def multiplexed_sample_v2(multiplexed_sample, source):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '2'
+    })
+    return item

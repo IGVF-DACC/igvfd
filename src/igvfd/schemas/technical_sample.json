@@ -7,9 +7,9 @@
     "required": [
         "award",
         "lab",
-        "source",
+        "sources",
         "sample_material",
-        "technical_sample_term"
+        "sample_terms"
     ],
     "identifyingProperties": [
         "uuid",
@@ -51,7 +51,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "7"
+            "default": "8"
         },
         "sample_material": {
             "title": "Sample Material",
@@ -64,11 +64,20 @@
                 "organic"
             ]
         },
-        "technical_sample_term": {
-            "title": "Technical Sample Term",
-            "description": "Ontology of the technical sample.",
-            "type": "string",
-            "linkTo": "SampleTerm"
+        "sample_terms": {
+            "title": "Sample Terms",
+            "description": "Ontology terms identifying a technical sample.",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Sample Term",
+                "description": "Ontology term identifying a technical sample.",
+                "type": "string",
+                "comment": "See sample_term.json for available identifiers.",
+                "linkTo": "SampleTerm"
+            }
         }
     },
     "fuzzy_searchable_fields": [

@@ -23,3 +23,12 @@ def treatment_2_3(value, system):
         else:
             value['notes'] = 'This treatment did not have purpose specified previously, it was upgraded to have perturbation purpose.'
     return
+
+
+@upgrade_step('treatment', '3', '4')
+def treatment_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-895
+    # Source property is pluralized
+    if 'source' in value:
+        value['sources'] = value['source']
+        del value['source']

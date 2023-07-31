@@ -63,3 +63,13 @@ def treatment_ntr(testapp):
         'purpose': 'perturbation'
     }
     return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def treatment_v3(treatment_chemical, source):
+    item = treatment_chemical.copy()
+    item.update({
+        'schema_version': '3',
+        'source': source['@id']
+    })
+    return item

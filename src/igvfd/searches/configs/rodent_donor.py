@@ -22,8 +22,8 @@ def rodent_donor():
             'award.component': {
                 'title': 'Award',
             },
-            'source.title': {
-                'title': 'Source',
+            'sources.title': {
+                'title': 'Sources',
             },
             'status': {
                 'title': 'Status'
@@ -46,7 +46,7 @@ def rodent_donor():
                     'collection',
                     'lab.title',
                     'award.component',
-                    'source.title',
+                    'sources.title',
                 ],
             },
             {

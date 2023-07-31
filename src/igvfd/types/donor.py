@@ -58,7 +58,7 @@ class RodentDonor(Donor):
     item_type = 'rodent_donor'
     schema = load_schema('igvfd:schemas/rodent_donor.json')
     embedded_with_frame = Donor.embedded_with_frame + [
-        Path('source', include=['@id', 'title']),
+        Path('sources', include=['@id', 'title']),
     ]
 
     def unique_keys(self, properties):

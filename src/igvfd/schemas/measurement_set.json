@@ -175,7 +175,7 @@
         "lab.title",
         "preferred_assay_title",
         "samples.summary",
-        "samples.biosample_term",
+        "samples.sample_terms",
         "submitted_by.title",
         "summary"
     ],

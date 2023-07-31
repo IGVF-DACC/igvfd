@@ -1,6 +1,6 @@
 {
-    "hash": "38c79ef40e7bdbbd5bc8ee449a4881b8",
-    "index_name": "treatment_38c79ef4",
+    "hash": "99cde5b9106b4d3a8a36b0b654080779",
+    "index_name": "treatment_99cde5b9",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -225,7 +225,7 @@
                     "schema_version": {
                         "type": "keyword"
                     },
-                    "source": {
+                    "sources": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
