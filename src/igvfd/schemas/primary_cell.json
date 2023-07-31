@@ -45,6 +45,9 @@
         },
         {
             "$ref": "mixins.json#/taxa"
+        },
+        {
+            "$ref": "mixins.json#/publication_identifiers"
         }
     ],
     "dependentSchemas": {

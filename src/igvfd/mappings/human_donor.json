@@ -1,6 +1,6 @@
 {
-    "hash": "93ccafa43a6a155fa335935048f55a8c",
-    "index_name": "human_donor_93ccafa4",
+    "hash": "61c6bcf339085dce2545b188780623c4",
+    "index_name": "human_donor_61c6bcf3",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -322,7 +322,7 @@
                     "phenotypic_features": {
                         "type": "keyword"
                     },
-                    "references": {
+                    "publication_identifiers": {
                         "type": "keyword"
                     },
                     "related_donors": {

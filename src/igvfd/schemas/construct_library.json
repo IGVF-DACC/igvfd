@@ -57,7 +57,7 @@
             "$ref": "mixins.json#/documents"
         },
         {
-            "$ref": "mixins.json#/references"
+            "$ref": "mixins.json#/publication_identifiers"
         }
     ],
     "dependentSchemas": {
@@ -125,7 +125,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "accession": {
             "accessionType": "DS"
@@ -427,7 +427,7 @@
     "exact_searchable_fields": [
         "control_for.accession",
         "control_for.aliases",
-        "references",
+        "publication_identifiers",
         "lot_id",
         "product_id",
         "submitted_by.title",

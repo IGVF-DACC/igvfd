@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Minor changes since schema version 12
+
+* Add `publication_identifiers`.
+
 ### Schema version 12
 
 * Rename `introduced_factors` to `cell_fate_change_treatments`.

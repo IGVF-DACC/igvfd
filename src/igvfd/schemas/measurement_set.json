@@ -31,6 +31,9 @@
         },
         {
             "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/publication_identifiers"
         }
     ],
     "dependentSchemas": {

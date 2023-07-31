@@ -28,7 +28,7 @@
             "$ref": "mixins.json#/url"
         },
         {
-            "$ref": "mixins.json#/references"
+            "$ref": "mixins.json#/publication_identifiers"
         },
         {
             "$ref": "mixins.json#/taxa"

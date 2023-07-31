@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Minor changes since schema version 87
+
+* Add `publication_identifiers`.
+
 ### Schema version 7
 
 * Add `virtual`.

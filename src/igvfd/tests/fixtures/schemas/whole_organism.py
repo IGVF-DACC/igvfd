@@ -206,3 +206,13 @@ def whole_organism_v14(whole_organism):
         'pooled_from': 'Null'
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v15(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '15',
+        'references': ['10.1101/2023.08.02']
+    })
+    return item

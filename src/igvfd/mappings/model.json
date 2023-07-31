@@ -1,6 +1,6 @@
 {
-    "hash": "971b15d59fc9605ae6fa3da70a342c7a",
-    "index_name": "model_971b15d5",
+    "hash": "4e6da4452a7db41fdbed66298213fc49",
+    "index_name": "model_4e6da445",
     "item_type": "model",
     "mapping": {
         "dynamic_templates": [
@@ -414,7 +414,7 @@
                             "protocol": {
                                 "type": "keyword"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {
@@ -613,7 +613,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "related_donors": {
@@ -992,7 +992,7 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "references": {
+                    "publication_identifiers": {
                         "type": "keyword"
                     },
                     "revoke_detail": {
@@ -1134,7 +1134,7 @@
                                     "product_id": {
                                         "type": "keyword"
                                     },
-                                    "references": {
+                                    "publication_identifiers": {
                                         "type": "keyword"
                                     },
                                     "related_donors": {
@@ -1283,7 +1283,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "revoke_detail": {

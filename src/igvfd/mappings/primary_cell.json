@@ -1,6 +1,6 @@
 {
-    "hash": "51db61c815b29f78076aeb5358f14d77",
-    "index_name": "primary_cell_51db61c8",
+    "hash": "f2ead5621857514c9b7e9d59b7deb145",
+    "index_name": "primary_cell_f2ead562",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -524,6 +524,9 @@
                         "type": "keyword"
                     },
                     "product_id": {
+                        "type": "keyword"
+                    },
+                    "publication_identifiers": {
                         "type": "keyword"
                     },
                     "revoke_detail": {

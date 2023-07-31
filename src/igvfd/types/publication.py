@@ -12,7 +12,7 @@ from .base import (
 
 @collection(
     name='publications',
-    unique_key='publication:identifier',
+    unique_key='publication:publication_identifiers',
     properties={
         'title': 'Publications',
         'description': 'Listing of publications',
@@ -29,8 +29,8 @@ class Publication(Item):
 
     def unique_keys(self, properties):
         keys = super(Publication, self).unique_keys(properties)
-        if properties.get('identifiers'):
-            keys.setdefault('alias', []).extend(properties['identifiers'])
+        if properties.get('publication_identifiers'):
+            keys.setdefault('alias', []).extend(properties['publication_identifiers'])
         return keys
 
     @calculated_property(

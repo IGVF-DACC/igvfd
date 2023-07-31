@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Rename `references` to `publication_identifiers`. (08/02/2023)
 * Add `transcriptome_annotation`. (07/10/2023)
 * Remove taxa `Saccharomyces`. (03/23/2023)
 * Add `revoke_detail` into `accession`. (8/30/2022)

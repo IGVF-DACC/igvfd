@@ -132,3 +132,13 @@ def rodent_donor_v7(rodent_donor):
         'schema_version': '7'
     })
     return item
+
+
+@pytest.fixture
+def rodent_donor_v8(rodent_donor):
+    item = rodent_donor.copy()
+    item.update({
+        'schema_version': '8',
+        'references': ['10.1101/2023.08.02']
+    })
+    return item

@@ -57,8 +57,8 @@ def software():
             'source_url': {
                 'title': 'Source URL'
             },
-            'references': {
-                'title': 'References'
+            'publication_identifiers': {
+                'title': 'Publication Identifiers'
             },
             'used_by': {
                 'title': 'Used by'

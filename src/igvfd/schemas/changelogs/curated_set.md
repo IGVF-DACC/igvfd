@@ -1,5 +1,9 @@
 ## Changelog for *`curated_set.json`*
 
+### Schema version 4
+
+* Rename `references` to `publication_identifiers`.
+
 ### Minor changes since schema version 3
 
 * Add `files`.

@@ -18,3 +18,13 @@ def model_no_input(
         'software_version': software_version['@id']
     }
     return testapp.post_json('/model', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def model_v1(model_no_input):
+    item = model_no_input.copy()
+    item.update({
+        'schema_version': '1',
+        'references': ['10.1101/2023.08.02']
+    })
+    return item

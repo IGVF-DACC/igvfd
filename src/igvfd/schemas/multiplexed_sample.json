@@ -38,6 +38,9 @@
         },
         {
             "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/publication_identifiers"
         }
     ],
     "properties": {

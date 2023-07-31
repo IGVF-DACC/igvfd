@@ -15,11 +15,11 @@ def test_date_published(publication, testapp):
 def test_unique_identifiers(publication, testapp):
     res = testapp.patch_json(
         publication['@id'],
-        {'identifiers': ['PMID:1000', 'doi:10.1000/100']})
+        {'publication_identifiers': ['PMID:1000', 'doi:10.1000/100']})
     assert res.status_code == 200
     res = testapp.patch_json(
         publication['@id'],
-        {'identifiers': ['doi:10.1000/100', 'doi:10.1000/100']}, expect_errors=True)
+        {'publication_identifiers': ['doi:10.1000/100', 'doi:10.1000/100']}, expect_errors=True)
     assert res.status_code == 422
 
 
@@ -37,7 +37,7 @@ def test_required_properties(award, lab, testapp):
         {
             'award': award['@id'],
             'lab': lab['@id'],
-            'identifiers': ['PMID:1000']
+            'publication_identifiers': ['PMID:1000']
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.post_json(
@@ -45,7 +45,7 @@ def test_required_properties(award, lab, testapp):
         {
             'award': award['@id'],
             'title': 'Publication',
-            'identifiers': ['PMID:1000']
+            'publication_identifiers': ['PMID:1000']
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.post_json(
@@ -53,7 +53,7 @@ def test_required_properties(award, lab, testapp):
         {
             'lab': lab['@id'],
             'title': 'Publication',
-            'identifiers': ['PMID:1000']
+            'publication_identifiers': ['PMID:1000']
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.post_json(
@@ -62,7 +62,7 @@ def test_required_properties(award, lab, testapp):
             'lab': lab['@id'],
             'award': award['@id'],
             'title': 'Publication',
-            'identifiers': ['PMID:1000']
+            'publication_identifiers': ['PMID:1000']
         })
     assert res.status_code == 201
 
@@ -70,17 +70,17 @@ def test_required_properties(award, lab, testapp):
 def test_identifier_pattern(publication, testapp):
     res = testapp.patch_json(
         publication['@id'],
-        {'identifiers': ['PMCID:PMC3439153']})
+        {'publication_identifiers': ['PMCID:PMC3439153']})
     assert res.status_code == 200
     res = testapp.patch_json(
         publication['@id'],
-        {'identifiers': ['PMID:21765801']})
+        {'publication_identifiers': ['PMID:21765801']})
     assert res.status_code == 200
     res = testapp.patch_json(
         publication['@id'],
-        {'identifiers': ['doi:10.1038/nphys1170']})
+        {'publication_identifiers': ['doi:10.1038/nphys1170']})
     assert res.status_code == 200
     res = testapp.patch_json(
         publication['@id'],
-        {'identifiers': ['doi:9.1038/nphys1170']}, expect_errors=True)
+        {'publication_identifiers': ['doi:9.1038/nphys1170']}, expect_errors=True)
     assert res.status_code == 422

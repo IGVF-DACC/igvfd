@@ -30,3 +30,13 @@ def curated_set_v2(curated_set_genome):
         'accession': 'IGVFFS000ZZZ'
     })
     return item
+
+
+@pytest.fixture
+def curated_set_v3(curated_set_genome):
+    item = curated_set_genome.copy()
+    item.update({
+        'schema_version': '3',
+        'references': ['10.1101/2023.08.02']
+    })
+    return item

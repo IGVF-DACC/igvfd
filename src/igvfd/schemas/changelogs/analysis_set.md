@@ -5,6 +5,7 @@
 * Add `files`.
 * Add `dbxrefs`.
 * Add `control_for`.
+* Add `publication_identifiers`.
 
 ### Schema version 3
 

@@ -1,5 +1,9 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Schema version 9
+
+* Rename `references` to `publication_identifiers`.
+
 ### Schema version 8
 
 * Add `virtual`.

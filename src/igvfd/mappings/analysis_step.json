@@ -1,6 +1,6 @@
 {
-    "hash": "a016bb565a5a977ef5643f4a6f2822c9",
-    "index_name": "analysis_step_a016bb56",
+    "hash": "92d0aa2536aa3d1f2b3c6a3ac71e9220",
+    "index_name": "analysis_step_92d0aa25",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -255,7 +255,7 @@
                             "notes": {
                                 "type": "text"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "revoke_detail": {

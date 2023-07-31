@@ -41,12 +41,12 @@
             "$ref": "mixins.json#/attribution"
         },
         {
-            "$ref": "mixins.json#/references"
+            "$ref": "mixins.json#/publication_identifiers"
         }
     ],
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "software": {
             "title": "Software",

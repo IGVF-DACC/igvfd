@@ -55,12 +55,12 @@
             "$ref": "mixins.json#/documents"
         },
         {
-            "$ref": "mixins.json#/references"
+            "$ref": "mixins.json#/publication_identifiers"
         }
     ],
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "model_name": {
             "title": "Model Name",
