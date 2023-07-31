@@ -71,5 +71,50 @@
             "mRNA enriched",
             "polyA depleted"
         ]
+    },
+    {
+        "aliases": [
+            "igvf:lentiMPRA"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "uuid": "0707e33c-4fbe-4965-9d8c-196f1ff7f047",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002675/",
+        "nucleic_acid_delivery": "adenoviral transduction",
+        "preferred_assay_title": "lentiMPRA"
+    },
+    {
+        "aliases": [
+            "igvf:mN2H"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "uuid": "cd5a15a7-8e33-4e41-86b9-8ccc0d508bcd",
+        "samples": [
+            "igvf:alias2"
+        ],
+        "assay_term": "/assay-terms/OBI_0000185/",
+        "nucleic_acid_delivery": "transfection",
+        "preferred_assay_title": "yN2H"
+    },
+    {
+        "aliases": [
+            "igvf:scQer"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "uuid": "826c046f-5c06-430b-856c-7c0aefc3c70a",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002675/",
+        "nucleic_acid_delivery": "lentiviral transduction",
+        "preferred_assay_title": "MPRA (scQer)"
     }
 ]
