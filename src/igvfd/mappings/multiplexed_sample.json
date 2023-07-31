@@ -1,6 +1,6 @@
 {
-    "hash": "0e212ba33fdc1bdb004d4771396ed286",
-    "index_name": "multiplexed_sample_0e212ba3",
+    "hash": "c01499f5c5f58f809df27a2c3d0133b4",
+    "index_name": "multiplexed_sample_c01499f5",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -236,86 +236,6 @@
                     "biomarkers": {
                         "type": "keyword"
                     },
-                    "biosample_terms": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "ancestors": {
-                                "type": "keyword"
-                            },
-                            "cell_slims": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "dbxrefs": {
-                                "type": "keyword"
-                            },
-                            "deprecated_ntr_terms": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "developmental_slims": {
-                                "type": "keyword"
-                            },
-                            "is_a": {
-                                "type": "keyword"
-                            },
-                            "name": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "ontology": {
-                                "type": "keyword"
-                            },
-                            "organ_slims": {
-                                "type": "keyword"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "synonyms": {
-                                "type": "keyword"
-                            },
-                            "system_slims": {
-                                "type": "keyword"
-                            },
-                            "term_id": {
-                                "type": "keyword"
-                            },
-                            "term_name": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
-                    },
                     "cellular_sub_pool": {
                         "type": "keyword"
                     },
@@ -485,6 +405,86 @@
                     },
                     "revoke_detail": {
                         "type": "keyword"
+                    },
+                    "sample_terms": {
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "ancestors": {
+                                "type": "keyword"
+                            },
+                            "cell_slims": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "deprecated_ntr_terms": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "developmental_slims": {
+                                "type": "keyword"
+                            },
+                            "is_a": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "ontology": {
+                                "type": "keyword"
+                            },
+                            "organ_slims": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "synonyms": {
+                                "type": "keyword"
+                            },
+                            "system_slims": {
+                                "type": "keyword"
+                            },
+                            "term_id": {
+                                "type": "keyword"
+                            },
+                            "term_name": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -657,20 +657,8 @@
                             "amount_units": {
                                 "type": "keyword"
                             },
-                            "award": {
-                                "type": "keyword"
-                            },
                             "creation_timestamp": {
                                 "type": "keyword"
-                            },
-                            "depletion": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"
@@ -688,9 +676,6 @@
                                 "type": "float"
                             },
                             "duration_units": {
-                                "type": "keyword"
-                            },
-                            "lab": {
                                 "type": "keyword"
                             },
                             "lot_id": {
@@ -729,7 +714,7 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "source": {
+                            "sources": {
                                 "type": "keyword"
                             },
                             "status": {

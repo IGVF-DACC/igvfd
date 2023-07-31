@@ -63,7 +63,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
             'lower_bound_age': 50,
             'upper_bound_age': 100,
             'age_units': 'day',
-            'biosample_term': sample_term_brown_adipose_tissue['@id'],
+            'sample_terms': [sample_term_brown_adipose_tissue['@id']],
         }
     )
     res = testapp.get(tissue['@id'])
@@ -83,7 +83,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     testapp.patch_json(
         primary_cell['@id'],
         {
-            'biosample_term': sample_term_endothelial_cell['@id'],
+            'sample_terms': [sample_term_endothelial_cell['@id']],
         }
     )
     res = testapp.get(primary_cell['@id'])
@@ -115,7 +115,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'biosample_term': sample_term_lymphoblastoid['@id'],
+            'sample_terms': [sample_term_lymphoblastoid['@id']],
             'time_post_change': 10,
             'time_post_change_units': 'minute',
             'cell_fate_change_treatments': [treatment_chemical['@id']]
@@ -126,7 +126,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'biosample_term': sample_term_endothelial_cell['@id'],
+            'sample_terms': [sample_term_endothelial_cell['@id']],
             'time_post_change': 5,
             'time_post_change_units': 'day',
             'cell_fate_change_treatments': [treatment_chemical['@id']]
@@ -137,7 +137,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'biosample_term': sample_term_embryoid_body['@id'],
+            'sample_terms': [sample_term_embryoid_body['@id']],
             'classification': 'embryoid',
             'time_post_change': 3,
             'time_post_change_units': 'week',
@@ -149,7 +149,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'biosample_term': sample_term_brown_adipose_tissue['@id'],
+            'sample_terms': [sample_term_brown_adipose_tissue['@id']],
             'classification': 'organoid',
             'time_post_change': 1,
             'time_post_change_units': 'month',

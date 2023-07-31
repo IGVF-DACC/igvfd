@@ -1,5 +1,6 @@
 ## Changelog for *`sample.json`*
 
+* Rename `biosample_term` to `sample_terms` and `modification` to `modifications`. (08/09/2023)
 * Add `publication_identifiers`. (08/02/2023)
 * Add `virtual`. (06/05/2023)
 * Add `sorted_fraction_detail`. (03/15/2023)

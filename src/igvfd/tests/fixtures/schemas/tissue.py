@@ -6,9 +6,9 @@ def tissue(testapp, lab, source, award, rodent_donor, sample_term_adrenal_gland)
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'donors': [rodent_donor['@id']],
-        'biosample_term': sample_term_adrenal_gland['@id']
+        'sample_terms': [sample_term_adrenal_gland['@id']]
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
 
@@ -105,9 +105,9 @@ def human_tissue(testapp, lab, source, award, human_donor, sample_term_adrenal_g
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_adrenal_gland['@id']
+        'sample_terms': [sample_term_adrenal_gland['@id']]
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
 
@@ -117,10 +117,10 @@ def tissue_v6(testapp, lab, source, award, rodent_donor, sample_term_adrenal_gla
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'taxa': 'Mus musculus',
         'donor': [rodent_donor['@id']],
-        'biosample_term': sample_term_adrenal_gland['@id']
+        'sample_terms': [sample_term_adrenal_gland['@id']]
     }
     return item
 
@@ -171,9 +171,9 @@ def tissue_unsorted_parent(testapp, lab, source, award, rodent_donor, sample_ter
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'donors': [rodent_donor['@id']],
-        'biosample_term': sample_term_adrenal_gland['@id'],
+        'sample_terms': [sample_term_adrenal_gland['@id']],
         'embryonic': True
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
@@ -184,8 +184,8 @@ def biosample_sorted_child(
         testapp, lab, award, source, tissue_unsorted_parent, human_donor, sample_term_adrenal_gland):
     item = {
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_adrenal_gland['@id'],
-        'source': source['@id'],
+        'sample_terms': [sample_term_adrenal_gland['@id']],
+        'sources': [source['@id']],
         'sorted_fraction': tissue_unsorted_parent['@id'],
         'sorted_fraction_detail': 'FACS bin 0-10% expression of FEN',
         'award': award['@id'],
@@ -214,4 +214,17 @@ def tissue_v12(tissue):
         'taxa': 'Homo sapiens',
         'notes': ''
     })
+    return item
+
+
+@pytest.fixture
+def tissue_v13(lab, award, source, human_donor, sample_term_adrenal_gland, modification):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id'],
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_adrenal_gland['@id'],
+        'modification': modification['@id']
+    }
     return item

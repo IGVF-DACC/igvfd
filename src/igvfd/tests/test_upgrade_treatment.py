@@ -22,3 +22,12 @@ def test_treatment_upgrade_3_4(upgrader, treatment_v3):
     assert value['award'] == '/awards/HG012012'
     assert value['depletion'] == False
     assert value['schema_version'] == '4'
+
+
+def test_treatment_upgrade_4_5(upgrader, treatment_v4):
+    sources = [treatment_v4['source']]
+    value = upgrader.upgrade('treatment', treatment_v4, current_version='4', target_version='5')
+    assert 'source' not in value
+    assert sources == value['sources']
+    assert type(value['sources']) == list
+    assert value['schema_version'] == '5'

@@ -7,8 +7,8 @@ from snovault.elasticsearch.searches.configs import search_config
 def in_vitro_system():
     return {
         'facets': {
-            'biosample_term.term_name': {
-                'title': 'Biosample Term',
+            'sample_terms.term_name': {
+                'title': 'Sample Terms',
             },
             'disease_terms.term_name': {
                 'title': 'Disease Terms',
@@ -34,7 +34,7 @@ def in_vitro_system():
             'award.component': {
                 'title': 'Award',
             },
-            'source.title': {
+            'sources.title': {
                 'title': 'Source',
             },
             'status': {
@@ -48,7 +48,7 @@ def in_vitro_system():
             {
                 'title': 'Sample',
                 'facet_fields': [
-                    'biosample_term.term_name',
+                    'sample_terms.term_name',
                     'disease_terms.term_name',
                     'treatments.treatment_term_name',
                     'taxa',
@@ -62,7 +62,7 @@ def in_vitro_system():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'source.title',
+                    'sources.title',
                 ]
             },
             {
@@ -82,8 +82,8 @@ def in_vitro_system():
             'classification': {
                 'title': 'Classification'
             },
-            'biosample_term': {
-                'title': 'Biosample Term'
+            'sample_terms': {
+                'title': 'Sample Terms'
             },
             'donors': {
                 'title': 'Donors'

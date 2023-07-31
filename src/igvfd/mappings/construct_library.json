@@ -1,6 +1,6 @@
 {
-    "hash": "a42749209ed459b68de8f7e18b612ac7",
-    "index_name": "construct_library_a4274920",
+    "hash": "2cd5355d0a7a7384c2794631cba7a9bf",
+    "index_name": "construct_library_2cd5355d",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -478,7 +478,7 @@
                             "software_version": {
                                 "type": "keyword"
                             },
-                            "source": {
+                            "sources": {
                                 "type": "keyword"
                             },
                             "status": {
@@ -944,7 +944,7 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "source": {
+                    "sources": {
                         "type": "keyword"
                     },
                     "status": {

@@ -1,6 +1,6 @@
 {
-    "hash": "5be46a3e3d876649002779adcbf49bb6",
-    "index_name": "curated_set_5be46a3e",
+    "hash": "c02ea4b8a66d55240cb16e7d29d23392",
+    "index_name": "curated_set_c02ea4b8",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -475,7 +475,7 @@
                             "software_version": {
                                 "type": "keyword"
                             },
-                            "source": {
+                            "sources": {
                                 "type": "keyword"
                             },
                             "status": {
@@ -645,7 +645,7 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "source": {
+                            "sources": {
                                 "type": "keyword"
                             },
                             "status": {
@@ -1018,12 +1018,6 @@
                             "biomarkers": {
                                 "type": "keyword"
                             },
-                            "biosample_term": {
-                                "type": "keyword"
-                            },
-                            "biosample_terms": {
-                                "type": "keyword"
-                            },
                             "ccf_id": {
                                 "type": "keyword"
                             },
@@ -1153,7 +1147,7 @@
                                     "sex": {
                                         "type": "keyword"
                                     },
-                                    "source": {
+                                    "sources": {
                                         "type": "keyword"
                                     },
                                     "status": {
@@ -1222,9 +1216,6 @@
                                 "store": true,
                                 "type": "float"
                             },
-                            "modification": {
-                                "type": "keyword"
-                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -1285,6 +1276,9 @@
                             "sample_material": {
                                 "type": "keyword"
                             },
+                            "sample_terms": {
+                                "type": "keyword"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -1295,9 +1289,6 @@
                                 "type": "keyword"
                             },
                             "sorted_fraction_detail": {
-                                "type": "keyword"
-                            },
-                            "source": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1331,9 +1322,6 @@
                                 "type": "keyword"
                             },
                             "taxa": {
-                                "type": "keyword"
-                            },
-                            "technical_sample_term": {
                                 "type": "keyword"
                             },
                             "time_post_change": {

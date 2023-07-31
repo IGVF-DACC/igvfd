@@ -7,9 +7,9 @@
     "required": [
         "award",
         "lab",
-        "source",
+        "sources",
         "donors",
-        "biosample_term"
+        "sample_terms"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -96,11 +96,20 @@
                 "year"
             ]
         },
-        "biosample_term": {
-            "title": "Biosample Term",
-            "description": "Ontology term identifying a biosample.",
-            "type": "string",
-            "linkTo": "SampleTerm"
+        "sample_terms": {
+            "title": "Sample Terms",
+            "description": "Ontology terms identifying a biosample.",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Sample Term",
+                "description": "Ontology term identifying a biosample.",
+                "type": "string",
+                "comment": "See sample_term.json for available identifiers.",
+                "linkTo": "SampleTerm"
+            }
         },
         "disease_terms": {
             "title": "Disease Terms",
@@ -189,12 +198,20 @@
             "description": "Biosample is embryonic.",
             "type": "boolean"
         },
-        "modification": {
-            "title": "Modification",
-            "description": "Link to a modification applied to this biosample.",
-            "comment": "See modification.json for available identifiers.",
-            "type": "string",
-            "linkTo": "Modification"
+        "modifications": {
+            "title": "Modifications",
+            "description": "Links to modifications applied to this biosample.",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Modification",
+                "description": "Link to a modification applied to this biosample.",
+                "type": "string",
+                "comment": "See modification.json for available identifiers.",
+                "linkTo": "Modification"
+            }
         },
         "cellular_sub_pool": {
             "title": "Cellular Sub Pool",

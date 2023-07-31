@@ -22,3 +22,25 @@ def modification_missing_cas_sp(modification):
         'notes': 'Test.'
     })
     return item
+
+
+@pytest.fixture
+def modification_v2(modification, source):
+    item = modification.copy()
+    item.update({
+        'schema_version': '2',
+        'source': source['@id']
+    })
+    return item
+
+
+@pytest.fixture
+def modification_activation(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'cas': 'dCas9',
+        'modality': 'activation',
+        'cas_species': 'Streptococcus pyogenes (Sp)'
+    }
+    return testapp.post_json('/modification', item, status=201).json['@graph'][0]

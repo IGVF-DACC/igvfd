@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 17
+
+* Rename `source` to `sources`, `biosample_term` to `sample_terms`, and `modification` to `modifications`.
+
 ### Schema version 16
 
 * Rename `references` to `publication_identifiers`.

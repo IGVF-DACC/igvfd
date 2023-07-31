@@ -46,7 +46,7 @@ class Sample(Item):
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
-        Path('source', include=['@id', 'title']),
+        Path('sources', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]
 
@@ -88,7 +88,7 @@ class Biosample(Sample):
     base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
     embedded_with_frame = Sample.embedded_with_frame + [
-        Path('biosample_term', include=['@id', 'term_name']),
+        Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'treatment_term_name', 'purpose']),
     ]
@@ -145,9 +145,12 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, biosample_term, age, taxa=None, age_units=None):
-        sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
-        term_name = sample_term_object.get('term_name')
+    def summary(self, request, sample_terms, age, taxa=None, age_units=None):
+        if len(sample_terms) > 1:
+            term_name = 'mixed'
+        else:
+            term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
+            term_name = (term_object.get('term_name'))
         biosample_type = self.item_type.replace('_', ' ')
         term_and_type = f'{term_name} {biosample_type}'
         if 'cell' in biosample_type and 'cell' in term_name:
@@ -228,9 +231,12 @@ class InVitroSystem(Biosample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, biosample_term, classification, taxa=None, time_post_change=None, time_post_change_units=None):
-        sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
-        term_name = sample_term_object.get('term_name')
+    def summary(self, request, sample_terms, classification, taxa=None, time_post_change=None, time_post_change_units=None):
+        if len(sample_terms) > 1:
+            term_name = 'mixed'
+        else:
+            term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
+            term_name = (term_object.get('term_name'))
         term_and_classification = f'{term_name} {classification}'
         if classification in term_name:
             term_and_classification = term_name
@@ -280,7 +286,7 @@ class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
     embedded_with_frame = Sample.embedded_with_frame + [
-        Path('technical_sample_term', include=['@id', 'term_name']),
+        Path('sample_terms', include=['@id', 'term_name']),
     ]
 
     @calculated_property(
@@ -290,9 +296,12 @@ class TechnicalSample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, technical_sample_term, sample_material):
-        sample_term_object = request.embed(technical_sample_term, '@@object?skip_calculated=true')
-        term_name = sample_term_object.get('term_name')
+    def summary(self, request, sample_terms, sample_material):
+        if len(sample_terms) > 1:
+            term_name = 'mixed'
+        else:
+            term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
+            term_name = (term_object.get('term_name'))
         return f'{sample_material} {term_name}'
 
 
@@ -316,9 +325,12 @@ class WholeOrganism(Biosample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, biosample_term, age, taxa=None, age_units=None):
-        sample_term_object = request.embed(biosample_term, '@@object?skip_calculated=true')
-        term_name = sample_term_object.get('term_name')
+    def summary(self, request, sample_terms, age, taxa=None, age_units=None):
+        if len(sample_terms) > 1:
+            term_name = 'mixed'
+        else:
+            term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
+            term_name = (term_object.get('term_name'))
         if taxa:
             if age == 'unknown':
                 return f'{term_name}, {taxa}'
@@ -346,19 +358,15 @@ class WholeOrganism(Biosample):
 class MultiplexedSample(Sample):
     item_type = 'multiplexed_sample'
     schema = load_schema('igvfd:schemas/multiplexed_sample.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-        Path('submitted_by', include=['@id', 'title']),
-        Path('biosample_terms', include=['@id', 'term_name']),
-        Path('sources', include=['@id', 'title']),
+    embedded_with_frame = Sample.embedded_with_frame + [
+        Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'treatment_term_name', 'purpose'])
     ]
 
     @calculated_property(
         schema={
-            'title': 'Biosample terms',
+            'title': 'Sample terms',
             'type': 'array',
             'notSubmittable': True,
             'items': {
@@ -367,8 +375,8 @@ class MultiplexedSample(Sample):
             }
         }
     )
-    def biosample_terms(self, request, multiplexed_samples):
-        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'biosample_term')
+    def sample_terms(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'sample_terms')
 
     @calculated_property(
         schema={
@@ -410,7 +418,7 @@ class MultiplexedSample(Sample):
         }
     )
     def modifications(self, request, multiplexed_samples):
-        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'modification')
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'modifications')
 
     @calculated_property(
         schema={
@@ -452,4 +460,4 @@ class MultiplexedSample(Sample):
         }
     )
     def sources(self, request, multiplexed_samples):
-        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'source')
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'sources')

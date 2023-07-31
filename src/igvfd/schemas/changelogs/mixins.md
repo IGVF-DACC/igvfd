@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Rename `source` to `sources`. (08/09/2023)
 * Rename `references` to `publication_identifiers`. (08/02/2023)
 * Add `transcriptome_annotation`. (07/10/2023)
 * Remove taxa `Saccharomyces`. (03/23/2023)

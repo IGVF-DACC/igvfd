@@ -19,11 +19,11 @@ def whole_organism():
             'biomarkers.classification': {
                 'title': 'Biomarkers'
             },
-            'source.title': {
-                'title': 'Source'
+            'sources.title': {
+                'title': 'Sources'
             },
-            'biosample_term.term_name': {
-                'title': 'Biosample Term'
+            'sample_terms.term_name': {
+                'title': 'Sample Terms'
             },
             'disease_terms.term_name': {
                 'title': 'Disease'
@@ -49,7 +49,7 @@ def whole_organism():
                     'sex',
                     'treatments.treatment_type',
                     'biomarkers.classification',
-                    'biosample_term.term_name',
+                    'sample_terms.term_name',
                     'disease_terms.term_name',
                 ]
             },
@@ -58,7 +58,7 @@ def whole_organism():
                 'facet_fields': [
                     'lab.title',
                     'award.component',
-                    'source.title',
+                    'sources.title',
                 ]
             },
             {
@@ -75,8 +75,8 @@ def whole_organism():
             'accession': {
                 'title': 'Accession'
             },
-            'biosample_term': {
-                'title': 'Biosample Term'
+            'sample_terms': {
+                'title': 'Sample Terms'
             },
             'donor': {
                 'title': 'Donor'

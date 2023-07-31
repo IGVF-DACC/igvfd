@@ -7,8 +7,8 @@ from snovault.elasticsearch.searches.configs import search_config
 def technical_sample():
     return {
         'facets': {
-            'technical_sample_term.term_name': {
-                'title': 'Technical Sample Term',
+            'sample_terms.term_name': {
+                'title': 'Sample Terms',
             },
             'collections': {
                 'title': 'Collections',
@@ -19,8 +19,8 @@ def technical_sample():
             'award.component': {
                 'title': 'Award',
             },
-            'source.title': {
-                'title': 'Source',
+            'sources.title': {
+                'title': 'Sources',
             },
             'status': {
                 'title': 'Status'
@@ -33,7 +33,7 @@ def technical_sample():
             {
                 'title': 'Sample',
                 'facet_fields': [
-                    'technical_sample_term.term_name',
+                    'sample_terms.term_name',
                 ]
             },
             {
@@ -42,7 +42,7 @@ def technical_sample():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'source.title',
+                    'sources.title',
                 ]
             },
             {
@@ -59,8 +59,8 @@ def technical_sample():
             'accession': {
                 'title': 'Accession'
             },
-            'technical_sample_term': {
-                'title': 'Technical Sample Term'
+            'sample_terms': {
+                'title': 'Sample Terms'
             },
             'date_obtained': {
                 'title': 'Date Obtained'

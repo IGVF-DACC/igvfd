@@ -92,3 +92,12 @@ def file_set_3_4(value, system):
     if 'references' in value:
         value['publication_identifiers'] = value['references']
         del value['references']
+
+
+@upgrade_step('construct_library', '5', '6')
+def construct_library_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-895
+    # Source property is pluralized
+    if 'source' in value:
+        value['sources'] = [value['source']]
+        del value['source']

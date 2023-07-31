@@ -7,9 +7,9 @@
     "required": [
         "award",
         "lab",
-        "source",
+        "sources",
         "donors",
-        "biosample_term"
+        "sample_terms"
     ],
     "not": {
         "comment": "Whole organisms should not specify part_of or pooled_from.",
@@ -72,11 +72,13 @@
     },
     "properties": {
         "schema_version": {
-            "default": "16"
+            "default": "17"
         },
-        "biosample_term": {
+        "sample_terms": {
             "comment": "Do not submit, value is assigned by the object.",
-            "default": "25d5ad53-15fd-4a44-878a-ece2f7e86509",
+            "default": [
+                "25d5ad53-15fd-4a44-878a-ece2f7e86509"
+            ],
             "linkEnum": [
                 "25d5ad53-15fd-4a44-878a-ece2f7e86509"
             ]

@@ -86,3 +86,12 @@ def treatment_v3(treatment_chemical):
         'aliases': []
     })
     return item
+
+@pytest.fixture
+def treatment_v4(treatment_chemical, source):
+    item = treatment_chemical.copy()
+    item.update({
+        'schema_version': '4',
+        'source': source['@id']
+    })
+    return item

@@ -36,22 +36,22 @@ def test_multiplexed_sample_props(
         tissue['@id'],
         {
             'disease_terms': [phenotype_term_myocardial_infarction['@id']],
-            'modification': modification['@id'],
+            'modifications': [modification['@id']],
             'biomarkers': [biomarker_CD243_absent['@id'], biomarker_CD1e_low['@id']]
         }
     )
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'modification': modification['@id'],
+            'modifications': [modification['@id']],
             'biomarkers': [biomarker_IgA_present['@id'], biomarker_CD1e_low['@id']]
         }
     )
     res = testapp.get(multiplexed_sample['@id'])
     terms_set = set()
-    terms_set.add(tissue.get('biosample_term', None))
-    terms_set.add(in_vitro_cell_line.get('biosample_term', None))
-    multiplexed_term_set = set([entry['@id'] for entry in res.json.get('biosample_terms', [])])
+    terms_set.update(tissue.get('sample_terms', []))
+    terms_set.update(in_vitro_cell_line.get('sample_terms', []))
+    multiplexed_term_set = set([entry['@id'] for entry in res.json.get('sample_terms', [])])
     assert terms_set == multiplexed_term_set
 
     diseases_set = set()
@@ -78,8 +78,8 @@ def test_multiplexed_sample_props(
     assert biomarkers_set == multiplexed_biomarkers_set
 
     sources_set = set()
-    sources_set.add(tissue.get('source', None))
-    sources_set.add(in_vitro_cell_line.get('source', None))
+    sources_set.update(tissue.get('sources', []))
+    sources_set.update(in_vitro_cell_line.get('sources', []))
     multiplexed_sources_set = set([entry['@id'] for entry in res.json.get('sources', [])])
     assert sources_set == multiplexed_sources_set
 

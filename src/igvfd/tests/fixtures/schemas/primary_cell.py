@@ -6,9 +6,9 @@ def primary_cell(testapp, other_lab, award, human_donor, sample_term_pluripotent
     item = {
         'award': award['@id'],
         'lab': other_lab['@id'],
-        'source': other_lab['@id'],
+        'sources': [other_lab['@id']],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_pluripotent_stem_cell['@id']
+        'sample_terms': [sample_term_pluripotent_stem_cell['@id']]
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
 
@@ -18,9 +18,9 @@ def pooled_from_primary_cell(testapp, lab, award, source, human_donor, sample_te
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_pluripotent_stem_cell['@id'],
+        'sample_terms': [sample_term_pluripotent_stem_cell['@id']],
         'virtual': False,
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
@@ -31,9 +31,9 @@ def pooled_from_primary_cell_2(testapp, lab, award, source, human_donor, sample_
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_pluripotent_stem_cell['@id'],
+        'sample_terms': [sample_term_pluripotent_stem_cell['@id']],
         'virtual': False,
     }
     return testapp.post_json('/primary_cell', item, status=201).json['@graph'][0]
@@ -44,9 +44,9 @@ def primary_cell_with_pooled_from(testapp, other_lab, award, human_donor, sample
     item = {
         'award': award['@id'],
         'lab': other_lab['@id'],
-        'source': other_lab['@id'],
+        'sources': [other_lab['@id']],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_pluripotent_stem_cell['@id'],
+        'sample_terms': [sample_term_pluripotent_stem_cell['@id']],
         'virtual': True,
         'pooled_from': [pooled_from_primary_cell['@id'], pooled_from_primary_cell_2['@id']]
     }
@@ -58,9 +58,9 @@ def primary_cell_with_part_of_virtual_true(testapp, other_lab, award, human_dono
     item = {
         'award': award['@id'],
         'lab': other_lab['@id'],
-        'source': other_lab['@id'],
+        'sources': [other_lab['@id']],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_pluripotent_stem_cell['@id'],
+        'sample_terms': [sample_term_pluripotent_stem_cell['@id']],
         'virtual': False,
         'part_of': primary_cell['@id']
     }
@@ -159,9 +159,9 @@ def primary_cell_v6(testapp, other_lab, award, human_donor, sample_term_pluripot
     item = {
         'award': award['@id'],
         'lab': other_lab['@id'],
-        'source': other_lab['@id'],
+        'sources': [other_lab['@id']],
         'donor': [human_donor['@id']],
-        'biosample_term': sample_term_pluripotent_stem_cell['@id']
+        'sample_terms': [sample_term_pluripotent_stem_cell['@id']]
     }
     return item
 
@@ -226,4 +226,17 @@ def primary_cell_v12(primary_cell):
         'taxa': 'Homo sapiens',
         'notes': ''
     })
+    return item
+
+
+@pytest.fixture
+def primary_cell_v13(lab, award, source, human_donor, sample_term_adrenal_gland, modification):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id'],
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_adrenal_gland['@id'],
+        'modification': modification['@id']
+    }
     return item

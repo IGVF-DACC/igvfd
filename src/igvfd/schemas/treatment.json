@@ -155,7 +155,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "documents": {
             "description": "Documents that describe the treatment protocol details."

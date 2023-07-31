@@ -37,7 +37,7 @@ class FileSet(Item):
         Path('control_for', include=['@id', 'accession', 'aliases']),
         Path('donors', include=['@id', 'taxa']),
         Path('samples.donors', include=['@id', 'accession', 'aliases',
-             'biosample_term', 'technical_sample_term', 'summary', 'donors', 'taxa']),
+             'sample_terms', 'summary', 'donors', 'taxa']),
     ]
 
     @calculated_property(schema={

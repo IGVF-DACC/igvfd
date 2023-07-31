@@ -75,10 +75,10 @@ def test_classification_dependency(testapp, lab, award, source, human_donor, sam
         'classification': 'differentiated cell specimen',
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'taxa': 'Homo sapiens',
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_K562['@id'],
+        'sample_terms': [sample_term_K562['@id']],
         'cell_fate_change_treatments': [treatment_chemical['@id']],
         'time_post_change': 5,
         'time_post_change_units': 'minute'
@@ -108,3 +108,24 @@ def test_classification_dependency(testapp, lab, award, source, human_donor, sam
 
 def test_in_vitro_system_submitter(submitter_testapp, in_vitro_system_sub):
     submitter_testapp.post_json('/in_vitro_system?render=False', in_vitro_system_sub, status=201)
+
+
+def test_maxitems_dependencies(in_vitro_cell_line, modification, modification_activation,
+                               source, source_lonza, assay_term_starr, assay_term_atac, testapp):
+    # Sources, modifications, and sample_terms arrays should only have 1 entry
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'modifications': [modification['@id']]})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'modifications': [modification['@id'], modification_activation['@id']]}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'sources': [source['@id'], source_lonza['@id']]}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'sample_terms': [assay_term_starr['@id'], assay_term_atac['@id']]}, expect_errors=True)
+    assert res.status_code == 422
