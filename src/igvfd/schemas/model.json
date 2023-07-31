@@ -147,7 +147,7 @@
         "files.aliases",
         "input_file_sets.accession",
         "input_file_sets.aliases",
-        "references",
+        "publication_identifiers",
         "submitted_by.title"
     ],
     "changelog": "/profiles/changelogs/model.md"

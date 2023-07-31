@@ -1,6 +1,6 @@
 {
-    "hash": "3ec58f1fb9f4a387b2e1d3dbe4cb9876",
-    "index_name": "prediction_3ec58f1f",
+    "hash": "f6f94d1a88169e0ffd625795741ae86f",
+    "index_name": "prediction_f6f94d1a",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -981,6 +981,7 @@
                         "type": "keyword"
                     },
                     "publication_identifiers": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "revoke_detail": {

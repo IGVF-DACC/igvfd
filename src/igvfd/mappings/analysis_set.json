@@ -1,6 +1,6 @@
 {
-    "hash": "d16decf30ad43382e9044ba6a73ab500",
-    "index_name": "analysis_set_d16decf3",
+    "hash": "073dc088d8446bbd1aac4ed75db50dd9",
+    "index_name": "analysis_set_073dc088",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1096,7 +1096,7 @@
                             "protocol": {
                                 "type": "keyword"
                             },
-                            "references": {
+                            "publication_identifiers": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

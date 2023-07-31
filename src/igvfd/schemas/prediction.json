@@ -75,7 +75,7 @@
         "dbxrefs",
         "files.accession",
         "files.aliases",
-        "references",
+        "publication_identifiers",
         "samples.accession",
         "samples.aliases",
         "samples.donors.accession",

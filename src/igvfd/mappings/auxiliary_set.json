@@ -1,6 +1,6 @@
 {
-    "hash": "ff7087c2b85335f9392f6b038923c431",
-    "index_name": "auxiliary_set_ff7087c2",
+    "hash": "d57cd0fc68f41272f5d33a4b79494813",
+    "index_name": "auxiliary_set_d57cd0fc",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -996,6 +996,7 @@
                         "type": "text"
                     },
                     "publication_identifiers": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "revoke_detail": {
