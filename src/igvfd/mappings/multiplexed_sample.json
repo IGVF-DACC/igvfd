@@ -1,6 +1,6 @@
 {
-    "hash": "8a32671e2c68cfee142875cc300738c8",
-    "index_name": "multiplexed_sample_8a32671e",
+    "hash": "00a6bc8193b854a5bced799e7e09a2b8",
+    "index_name": "multiplexed_sample_00a6bc81",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -468,9 +468,6 @@
                         },
                         "type": "object"
                     },
-                    "lot_id": {
-                        "type": "keyword"
-                    },
                     "modifications": {
                         "type": "keyword"
                     },
@@ -482,9 +479,6 @@
                     },
                     "notes": {
                         "type": "text"
-                    },
-                    "product_id": {
-                        "type": "keyword"
                     },
                     "publication_identifiers": {
                         "type": "keyword"
@@ -501,7 +495,7 @@
                     "sorted_fraction_detail": {
                         "type": "keyword"
                     },
-                    "source": {
+                    "sources": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -512,26 +506,17 @@
                             "aliases": {
                                 "type": "keyword"
                             },
-                            "awards": {
-                                "type": "keyword"
-                            },
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
                             "description": {
                                 "type": "text"
                             },
-                            "institute_label": {
-                                "type": "keyword"
-                            },
                             "name": {
                                 "type": "keyword"
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "pi": {
-                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"

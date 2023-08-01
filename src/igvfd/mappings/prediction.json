@@ -1,6 +1,6 @@
 {
-    "hash": "f6f94d1a88169e0ffd625795741ae86f",
-    "index_name": "prediction_f6f94d1a",
+    "hash": "c486d6582cbaf5e62064e17c68667fd1",
+    "index_name": "prediction_c486d658",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -1299,6 +1299,9 @@
                                 "type": "keyword"
                             },
                             "source": {
+                                "type": "keyword"
+                            },
+                            "sources": {
                                 "type": "keyword"
                             },
                             "starting_amount": {

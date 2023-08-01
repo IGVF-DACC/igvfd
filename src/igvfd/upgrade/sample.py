@@ -265,3 +265,19 @@ def whole_organism_15_16(value, system):
     if 'references' in value:
         value['publication_identifiers'] = value['references']
         del value['references']
+
+
+@upgrade_step('multiplexed_sample', '1', '2')
+def multiplexed_sample_1_2(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-872
+    notes = value.get('notes', '')
+    if 'source' in value:
+        notes += f" Source {value['source']} was removed via upgrade."
+        value.pop('source')
+    if 'product_id' in value:
+        notes += f" Product ID {value['product_id']} was removed via upgrade."
+        value.pop('product_id')
+    if 'lot_id' in value:
+        notes += f" Lot ID {value['lot_id']} was removed via upgrade."
+        value.pop('lot_id')
+    value['notes'] = notes.strip()

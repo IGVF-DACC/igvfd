@@ -1,6 +1,6 @@
 {
-    "hash": "85261618fb41c4f2e01b14373f6e367b",
-    "index_name": "model_85261618",
+    "hash": "2b1c144b73895236627c7c179885c161",
+    "index_name": "model_2b1c144b",
     "item_type": "model",
     "mapping": {
         "dynamic_templates": [
@@ -1605,6 +1605,9 @@
                                 "type": "keyword"
                             },
                             "source": {
+                                "type": "keyword"
+                            },
+                            "sources": {
                                 "type": "keyword"
                             },
                             "starting_amount": {
