@@ -71,16 +71,48 @@
             "comment": "temperature must be specified if temperature_units is specified"
         },
         "amount": {
-            "required": [
-                "amount_units"
-            ],
-            "comment": "amount_units must be specified if amount is specified"
+            "comment": "amount and amount_units are not required if the treatment is depleted.",
+            "if": {
+                "properties": {
+                    "depletion": {
+                        "const": true
+                    }
+                }
+            },
+            "then": {
+                "not": {
+                    "required": [
+                        "amount_units"
+                    ]
+                }
+            },
+            "else": {
+                "required": [
+                    "amount_units"
+                ]
+            }
         },
         "amount_units": {
-            "required": [
-                "amount"
-            ],
-            "comment": "amount must be specified if amount_units is specified"
+            "comment": "amount and amount_units are not required if the treatment is depleted.",
+            "if": {
+                "properties": {
+                    "depletion": {
+                        "const": true
+                    }
+                }
+            },
+            "then": {
+                "not": {
+                    "required": [
+                        "amount"
+                    ]
+                }
+            },
+            "else": {
+                "required": [
+                    "amount"
+                ]
+            }
         },
         "depletion": {
             "comment": "amount and amount_units are not required if the treatment is depleted.",
