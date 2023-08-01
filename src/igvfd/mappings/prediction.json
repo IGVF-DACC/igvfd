@@ -1,6 +1,6 @@
 {
-    "hash": "d053e1612699fc6d22873523b6d65a3a",
-    "index_name": "prediction_d053e161",
+    "hash": "c486d6582cbaf5e62064e17c68667fd1",
+    "index_name": "prediction_c486d658",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -150,7 +150,7 @@
                         "type": "keyword"
                     },
                     "@type": {
-                        "copy_to": "_exact",
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "accession": {
@@ -234,6 +234,7 @@
                         "type": "object"
                     },
                     "collections": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "control_for": {
@@ -245,9 +246,11 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
@@ -689,9 +692,11 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
@@ -976,6 +981,7 @@
                         "type": "keyword"
                     },
                     "publication_identifiers": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "revoke_detail": {
@@ -990,6 +996,7 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "age": {
@@ -999,6 +1006,7 @@
                                 "type": "keyword"
                             },
                             "aliases": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
@@ -1011,6 +1019,7 @@
                                 "type": "keyword"
                             },
                             "biosample_term": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "biosample_terms": {
@@ -1058,9 +1067,11 @@
                                         "type": "keyword"
                                     },
                                     "accession": {
+                                        "copy_to": "_exact",
                                         "type": "keyword"
                                     },
                                     "aliases": {
+                                        "copy_to": "_exact",
                                         "type": "keyword"
                                     },
                                     "alternate_accessions": {
@@ -1315,6 +1326,7 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
@@ -1431,6 +1443,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "uuid": {
@@ -1446,6 +1459,7 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "url": {
