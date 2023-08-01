@@ -92,12 +92,26 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "@type",
+        "collections",
         "auxiliary_type",
-        "lab.title"
+        "lab.title",
+        "samples.summary",
+        "samples.biosample_term",
+        "summary"
     ],
     "exact_searchable_fields": [
-        "@type",
-        "dbxrefs"
+        "control_for.accession",
+        "control_for.aliases",
+        "dbxrefs",
+        "files.accession",
+        "files.aliases",
+        "publication_identifiers",
+        "samples.accession",
+        "samples.aliases",
+        "samples.donors.accession",
+        "samples.donors.aliases",
+        "submitted_by.title"
     ],
     "changelog": "/profiles/changelogs/auxiliary_set.md"
 }

@@ -76,7 +76,9 @@ class FileSet(Item):
 class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
-    embedded_with_frame = FileSet.embedded_with_frame
+    embedded_with_frame = FileSet.embedded_with_frame + [
+        Path('input_file_sets', include=['@id', 'accession', 'aliases'])
+    ]
 
     @calculated_property(
         schema={
@@ -198,7 +200,9 @@ class ConstructLibrary(FileSet):
 class Model(FileSet):
     item_type = 'model'
     schema = load_schema('igvfd:schemas/model.json')
-    embedded_with_frame = FileSet.embedded_with_frame
+    embedded_with_frame = FileSet.embedded_with_frame + [
+        Path('input_file_sets', include=['@id', 'accession', 'aliases'])
+    ]
 
 
 @collection(
