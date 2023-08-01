@@ -71,71 +71,51 @@
             "comment": "temperature must be specified if temperature_units is specified"
         },
         "amount": {
-            "comment": "amount and amount_units are not required if the treatment is depleted.",
-            "if": {
-                "properties": {
-                    "depletion": {
-                        "const": true
-                    }
+            "required": [
+                "depletion",
+                "amount_units"
+            ],
+            "comment": "amount_units must be specified if amount is specified and treatment is not depleted.",
+            "properties": {
+                "depletion": {
+                    "const": false
                 }
-            },
-            "then": {
-                "not": {
-                    "required": [
-                        "amount_units"
-                    ]
-                }
-            },
-            "else": {
-                "required": [
-                    "amount_units"
-                ]
             }
         },
         "amount_units": {
-            "comment": "amount and amount_units are not required if the treatment is depleted.",
-            "if": {
-                "properties": {
-                    "depletion": {
-                        "const": true
-                    }
+            "required": [
+                "depletion",
+                "amount"
+            ],
+            "comment": "amount must be specified if amount_units is specified and treatment is not depleted.",
+            "properties": {
+                "depletion": {
+                    "const": false
                 }
-            },
-            "then": {
-                "not": {
-                    "required": [
-                        "amount"
-                    ]
-                }
-            },
-            "else": {
-                "required": [
-                    "amount"
-                ]
             }
         },
         "depletion": {
-            "comment": "amount and amount_units are not required if the treatment is depleted.",
+            "comment": "amount and amount_units are required if treatment is not depleted.",
             "if": {
                 "properties": {
                     "depletion": {
-                        "const": true
+                        "const": false
                     }
                 }
             },
             "then": {
+                "required": [
+                    "amount",
+                    "amount_units"
+                ]
+            },
+            "else": {
                 "not": {
                     "required": [
                         "amount",
                         "amount_units"
                     ]
                 }
-            },
-            "else": {
-                "required": [
-                    "amount",
-                    "amount_units"
-                ]
             }
         },
         "treatment_term_id": {
