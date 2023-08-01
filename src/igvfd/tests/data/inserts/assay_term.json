@@ -58,5 +58,11 @@
         "term_name": "SHARE-seq",
         "status": "released",
         "uuid": "e58aa9d3-323c-44e2-867c-a19632853124"
+    },
+    {
+        "term_id": "OBI:0000185",
+        "term_name": "imaging assay",
+        "uuid": "a9d2e325-1eb2-43bb-a039-2a87809cfba5",
+        "status": "released"
     }
 ]

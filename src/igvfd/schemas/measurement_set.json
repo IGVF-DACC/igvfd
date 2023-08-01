@@ -89,21 +89,28 @@
             "type": "string",
             "enum": [
                 "10x multiome",
+                "AAV-MPRA",
                 "Cell painting",
+                "CRISPR FlowFISH",
                 "DOGMA-seq",
+                "lentiMPRA",
                 "MERFISH",
                 "MIAA",
+                "mN2H",
+                "MPRA (scQer)",
                 "MULTI-seq",
                 "Perturb-seq",
                 "Saturation genome editing",
                 "scNT-seq",
+                "semi-qY2H",
                 "SHARE-Seq",
                 "smFISH",
                 "snmC-Seq2",
                 "TAP-seq",
                 "VAMP-seq",
                 "Variant painting",
-                "Yeast two-hybrid"
+                "Yeast two-hybrid",
+                "yN2H"
             ]
         },
         "moi": {
