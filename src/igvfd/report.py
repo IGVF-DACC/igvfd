@@ -4,6 +4,7 @@ from pyramid.view import view_config
 from snovault import TYPES
 from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 from snosearch.responses import FieldedResponse
+from snosearch.fields import ColumnsResponseField
 from snosearch.fields import MultipleTypesReportWithFacetsResponseField
 from snosearch.parsers import ParamsParser
 from igvfd.search_views import search_generator
@@ -71,6 +72,8 @@ def report_download(context, request):
                 default_item_types=DEFAULT_ITEM_TYPES,
                 reserved_keys=RESERVED_KEYS,
             ),
+            ColumnsResponseField(),
+
         ]
     )
     response = fr.render()
@@ -89,7 +92,7 @@ def report_download(context, request):
     # Make sure we get all results
     request.GET['limit'] = 'all'
     results = search_generator(request)
-    columns = list_visible_columns_for_schemas(request, types)
+    columns = list_visible_columns_for_schemas(request, types, response.json['facets'])
 
     def format_header(seq):
         newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, '/report/', request.query_string)
@@ -122,28 +125,33 @@ def report_download(context, request):
     return request.response
 
 
-def list_visible_columns_for_schemas(request, types):
+def list_visible_columns_for_schemas(request, types, response_columns):
     """
     Returns mapping of default columns for a set of schemas.
     """
     columns = OrderedDict({'@id': {'title': 'ID'}})
-    for type_str in types:
-        schema = request.registry[TYPES][type_str].schema
-        search_config = request.registry[SEARCH_CONFIG].as_dict()[type_str]
+    config = request.GET('config')
+    print(config)
+    if config:
+        columns.update(response_columns)
+    else:
+        for type_str in types:
+            schema = request.registry[TYPES][type_str].schema
+            search_config = request.registry[SEARCH_CONFIG].as_dict()[type_str]
 
-        if 'columns' in search_config:
-            columns.update(search_config['columns'])
-        else:
-            # default columns if not explicitly specified
-            columns.update(OrderedDict(
-                (name, {
-                    'title': schema['properties'][name].get('title', name)
-                })
-                for name in [
-                    '@id', 'title', 'description', 'name', 'accession',
-                    'aliases'
-                ] if name in schema['properties']
-            ))
+            if 'columns' in search_config:
+                columns.update(search_config['columns'])
+            else:
+                # default columns if not explicitly specified
+                columns.update(OrderedDict(
+                    (name, {
+                        'title': schema['properties'][name].get('title', name)
+                    })
+                    for name in [
+                        '@id', 'title', 'description', 'name', 'accession',
+                        'aliases'
+                    ] if name in schema['properties']
+                ))
     fields_requested = request.params.getall('field')
     if fields_requested:
         limited_columns = OrderedDict()
