@@ -92,7 +92,7 @@ def report_download(context, request):
     # Make sure we get all results
     request.GET['limit'] = 'all'
     results = search_generator(request)
-    columns = list_visible_columns_for_schemas(request, types, response.json['facets'])
+    columns = list_visible_columns_for_schemas(request, types, response.json['columns'])
 
     def format_header(seq):
         newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, '/report/', request.query_string)
@@ -130,9 +130,8 @@ def list_visible_columns_for_schemas(request, types, response_columns):
     Returns mapping of default columns for a set of schemas.
     """
     columns = OrderedDict({'@id': {'title': 'ID'}})
-    config = request.GET('config')
-    print(config)
-    if config:
+    configs = request.params.getall('config')
+    if configs:
         columns.update(response_columns)
     else:
         for type_str in types:
