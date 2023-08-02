@@ -14,7 +14,7 @@ from snosearch.fields import AllResponseField
 from snosearch.fields import BasicMatrixWithFacetsResponseField
 from snosearch.fields import BasicSearchResponseField
 from snosearch.fields import BasicSearchWithFacetsResponseField
-from snosearch.fields import BasicReportWithFacetsResponseField
+from snosearch.fields import MultipleTypesReportWithFacetsResponseField
 from snosearch.fields import ClearFiltersResponseField
 from snosearch.fields import ColumnsResponseField
 from snosearch.fields import ContextResponseField
@@ -117,7 +117,7 @@ def report(context, request):
             ),
             IDResponseField(),
             ContextResponseField(),
-            BasicReportWithFacetsResponseField(
+            MultipleTypesReportWithFacetsResponseField(
                 default_item_types=DEFAULT_ITEM_TYPES,
                 reserved_keys=RESERVED_KEYS,
             ),
