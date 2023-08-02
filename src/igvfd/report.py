@@ -79,20 +79,20 @@ def report_download(context, request):
     response = fr.render()
     facets = response.json['facets']
     abstract_types = get_abstract_types(request)
-    types = []
+    types_in_search_result = []
     for facet in facets:
         if facet['field'] == 'type':
             for term in facet['terms']:
                 type_name = term['key']
                 if type_name not in abstract_types:
-                    types.append(term['key'])
+                    types_in_search_result.append(term['key'])
             break
     types_str = ''.join(request.params.getall('type'))
     snake_types_str = _convert_camel_to_snake(types_str).replace("'", '')
     # Make sure we get all results
     request.GET['limit'] = 'all'
     results = search_generator(request)
-    columns = list_visible_columns_for_schemas(request, types, response.json['columns'])
+    columns = list_visible_columns_for_schemas(request, types_in_search_result, response.json['columns'])
 
     def format_header(seq):
         newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, '/report/', request.query_string)
@@ -125,14 +125,14 @@ def report_download(context, request):
     return request.response
 
 
-def list_visible_columns_for_schemas(request, types, response_columns):
+def list_visible_columns_for_schemas(request, types, report_response_columns):
     """
-    Returns mapping of default columns for a set of schemas.
+    Returns mapping of default columns for a set of types.
     """
     columns = OrderedDict({'@id': {'title': 'ID'}})
     configs = request.params.getall('config')
     if configs:
-        columns.update(response_columns)
+        columns.update(report_response_columns)
     else:
         for type_str in types:
             schema = request.registry[TYPES][type_str].schema

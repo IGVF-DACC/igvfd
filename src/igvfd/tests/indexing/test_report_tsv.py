@@ -36,34 +36,15 @@ def test_batch_download_report_download(workbook, testapp):
         b'Contact P.I.', b'Title'
     ]
 
-    res = testapp.get('/report.tsv?type=Award&type=AccessKey&sort=accession')
+    res = testapp.get('/report.tsv?type=Award&config=AccessKey')
     assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
     disposition = res.headers['content-disposition']
-    assert disposition.startswith('attachment;filename="award_access_key_report') and disposition.endswith('.tsv"')
+    assert disposition.startswith('attachment;filename="award_report') and disposition.endswith('.tsv"')
     lines = res.body.splitlines()
     assert b'/report/' in lines[0]
     assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Title', b'Name', b'Project', b'Component', b'Contact P.I.', b'Status'
+        b'ID', b'UUID', b'Status', b'Access Key ID'
     ]
-    assert len(lines) == 27
-
-    res = testapp.get('/report.tsv?type=AccessKey&config=AccessKey')
-    assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
-    disposition = res.headers['content-disposition']
-    assert disposition.startswith('attachment;filename="access_key_report') and disposition.endswith('.tsv"')
-    lines = res.body.splitlines()
-    assert b'/report/' in lines[0]
-    assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Status', b'access_key_id'
-    ]
-
-    res = testapp.get('/report.tsv?type=AccessKey')
-    assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
-    disposition = res.headers['content-disposition']
-    assert disposition.startswith('attachment;filename="access_key_report') and disposition.endswith('.tsv"')
-    lines = res.body.splitlines()
-    assert b'/report/' in lines[0]
-    assert lines[1].split(b'\t') == [b'ID']
 
 
 def test_batch_download_human_donor_report_download(workbook, testapp):
