@@ -29,9 +29,3 @@ def test_cas_species_requirement(testapp, lab, award):
     }
     res = testapp.post_json('/modification', item, expect_errors=True)
     assert res.status_code == 422
-
-
-def test_modification_fused_domain_ZIM3(modification, testapp):
-    res = testapp.patch_json(modification['@id'],
-                             {'fused_domain': 'ZIM3'})
-    assert res.status_code == 200
