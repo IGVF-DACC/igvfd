@@ -71,7 +71,8 @@
                 "VP64",
                 "VPR",
                 "2xVP64",
-                "3xVP64"
+                "3xVP64",
+                "ZIM3"
             ]
         },
         "modality": {

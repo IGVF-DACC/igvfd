@@ -6,6 +6,7 @@
 
 ### Minor changes since schema version 2
 
+* Add `ZIM3` to `fused_domain`.
 * Add `SpG` to `cas`.
 * Add `BE4max`, `eA3A`, and `eA3A-T44D-S45A` to `fused_domain`.
 
