@@ -34,7 +34,7 @@ _marker = object()
 
 
 def includeme(config):
-    config.scan(__name__)
+    config.scan(__name__, categories=None)
     config.add_route('signup', 'signup')
     config.add_route('login', 'login')
     config.add_route('logout', 'logout')

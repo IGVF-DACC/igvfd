@@ -14,7 +14,7 @@ import re
 def includeme(config):
     config.add_route('report_download', '/report.tsv')
     config.add_route('multitype_report_download', '/multireport.tsv')
-    config.scan(__name__)
+    config.scan(__name__, categories=None)
 
 
 def lookup_column_value(value, path):

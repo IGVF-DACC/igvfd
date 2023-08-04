@@ -17,7 +17,7 @@ REFERENCE_ONTOLOGY_TABLE_NAME = 'ontology'
 
 
 def includeme(config):
-    config.scan(__name__)
+    config.scan(__name__, categories=None)
     config.registry['ontology'] = get_connection_to_reference_database(
         REFERENCE_ONTOLOGY_TABLE_NAME
     )

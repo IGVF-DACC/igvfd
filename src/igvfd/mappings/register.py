@@ -14,7 +14,7 @@ LATE = 10
 
 
 def includeme(config):
-    config.scan(__name__)
+    config.scan(__name__, categories=None)
 
     def configure_opensearch_index_names_later():
         configure_opensearch_index_names(config)

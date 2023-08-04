@@ -53,7 +53,7 @@ def includeme(config):
         under=renderer_tween,
     )
     config.add_tween('.renderers.security_tween_factory', under=EXCVIEW)
-    config.scan(__name__)
+    config.scan(__name__, categories=None)
 
 
 def fix_request_method_tween_factory(handler, registry):

@@ -1,11 +1,11 @@
 import hashlib
 
 from pyramid.view import view_config
-from pyramid.security import NO_PERMISSION_REQUIRED
+from pyramid.authorization import NO_PERMISSION_REQUIRED
 
 
 def includeme(config):
-    config.scan(__name__)
+    config.scan(__name__, categories=None)
     config.add_route('session-cookie-name', '/session-cookie-name{slash:/?}')
 
 

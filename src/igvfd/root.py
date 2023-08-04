@@ -15,7 +15,7 @@ from pyramid.security import (
 
 
 def includeme(config):
-    config.scan(__name__)
+    config.scan(__name__, categories=None)
 
 
 def acl_from_settings(settings):
