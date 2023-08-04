@@ -43,6 +43,15 @@ class Modification(Item):
             'prime editing': 'CRISPR prime editing'
         }
 
+        cas_label_mapping = {
+            'SpG': 'G',
+            'SpRY': 'RY'
+        }
+
+        cas_label = cas
+        if cas in cas_label_mapping:
+            cas_label = cas_label_mapping[cas]
+
         formatted_domain = ''
         if fused_domain:
             formatted_domain = f'-{fused_domain}'
@@ -52,7 +61,7 @@ class Modification(Item):
             short = cas_species.split('(')[1].split(')')[0]
             species = f'{short}'
 
-        summary = f'{crispr_label_mapping[modality]} {species}{cas}{formatted_domain}'
+        summary = f'{crispr_label_mapping[modality]} {species}{cas_label}{formatted_domain}'
         if tagged_protein:
             tagged_protein_object = request.embed(tagged_protein, '@@object?skip_calculated=true')
             tagged_protein_symbol = tagged_protein_object.get('symbol')
