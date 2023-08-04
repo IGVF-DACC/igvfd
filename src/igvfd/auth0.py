@@ -18,7 +18,7 @@ from pyramid.security import (
     remember,
     forget,
 )
-from pyramid.authorization import NO_PERMISSION_REQUIRED
+from pyramid.security import NO_PERMISSION_REQUIRED
 from pyramid.settings import (
     asbool,
     aslist,
