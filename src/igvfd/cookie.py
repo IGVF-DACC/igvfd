@@ -1,7 +1,7 @@
 import hashlib
 
 from pyramid.view import view_config
-from pyramid.authorization import NO_PERMISSION_REQUIRED
+from pyramid.security import NO_PERMISSION_REQUIRED
 
 
 def includeme(config):
