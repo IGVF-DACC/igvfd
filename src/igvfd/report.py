@@ -1,10 +1,10 @@
 from collections import OrderedDict
-from pyramid.compat import bytes_
 from pyramid.httpexceptions import HTTPBadRequest
 from pyramid.view import view_config
 from snovault import TYPES
 from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 from snosearch.parsers import QueryString
+from snovault.compat import bytes_
 from igvfd.search_views import search_generator
 
 import datetime
