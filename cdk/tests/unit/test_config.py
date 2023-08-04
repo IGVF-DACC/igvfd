@@ -139,7 +139,7 @@ def test_config_build_pipeline_config_from_name():
     )
     assert config.common.organization_name == 'igvf-dacc'
     assert config.common.project_name == 'igvfd'
-    assert ('time-to-live-hours', '72') in config.tags
+    assert ('time-to-live-hours', '60') in config.tags
     assert config.branch == 'my-branch'
     assert config.pipeline == 'my-pipeline'
     assert config.name == 'demo'
