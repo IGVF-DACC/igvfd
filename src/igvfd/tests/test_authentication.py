@@ -47,14 +47,14 @@ class TestNamespacedAuthenticationPolicy(unittest.TestCase):
         self.assertEqual(policy.authenticated_userid(request), 'user.fred')
 
     def test_effective_principals_None(self):
-        from pyramid.security import Everyone
+        from pyramid.authorization import Everyone
         request = DummyRequest()
         policy = self._makeOne()
         self.assertEqual(policy.effective_principals(request), [Everyone])
 
     def test_effective_principals(self):
-        from pyramid.security import Everyone
-        from pyramid.security import Authenticated
+        from pyramid.authorization import Everyone
+        from pyramid.authorization import Authenticated
         request = DummyRequest(environ={'REMOTE_USER': 'fred'})
         policy = self._makeOne()
         self.assertEqual(policy.effective_principals(request),

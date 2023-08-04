@@ -5,7 +5,7 @@ from snovault import (
     root,
 )
 from .schema_formats import is_accession
-from pyramid.security import (
+from pyramid.authorization import (
     ALL_PERMISSIONS,
     Allow,
     Authenticated,

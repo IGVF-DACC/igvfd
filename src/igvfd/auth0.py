@@ -15,10 +15,10 @@ from pyramid.httpexceptions import (
     HTTPFound,
 )
 from pyramid.security import (
-    NO_PERMISSION_REQUIRED,
     remember,
     forget,
 )
+from pyramid.authorization import NO_PERMISSION_REQUIRED
 from pyramid.settings import (
     asbool,
     aslist,

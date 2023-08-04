@@ -1,4 +1,4 @@
-from pyramid.security import (
+from pyramid.authorization import (
     Allow,
 )
 from pyramid.view import view_config
