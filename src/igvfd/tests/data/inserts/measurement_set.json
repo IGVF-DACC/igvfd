@@ -85,7 +85,8 @@
         ],
         "assay_term": "/assay-terms/OBI_0002675/",
         "nucleic_acid_delivery": "adenoviral transduction",
-        "preferred_assay_title": "lentiMPRA"
+        "preferred_assay_title": "lentiMPRA",
+        "readout": "/assay-terms/OBI_0003090/"
     },
     {
         "aliases": [
@@ -115,6 +116,7 @@
         ],
         "assay_term": "/assay-terms/OBI_0002675/",
         "nucleic_acid_delivery": "lentiviral transduction",
-        "preferred_assay_title": "MPRA (scQer)"
+        "preferred_assay_title": "MPRA (scQer)",
+        "readout": "/assay-terms/OBI_0002631/"
     }
 ]

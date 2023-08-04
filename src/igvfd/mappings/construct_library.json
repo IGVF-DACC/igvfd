@@ -1,6 +1,6 @@
 {
-    "hash": "ad289f93efb8ebba3d9efe1a6f56175d",
-    "index_name": "construct_library_ad289f93",
+    "hash": "f4d4087acbf411de544eede19e22a238",
+    "index_name": "construct_library_f4d4087a",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -422,6 +422,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "readout": {
+                                "type": "keyword"
+                            },
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
@@ -602,12 +605,6 @@
                             },
                             "description": {
                                 "type": "text"
-                            },
-                            "dimension1": {
-                                "type": "keyword"
-                            },
-                            "dimension2": {
-                                "type": "keyword"
                             },
                             "documents": {
                                 "type": "keyword"

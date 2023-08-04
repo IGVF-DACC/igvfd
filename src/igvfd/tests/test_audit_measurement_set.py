@@ -221,3 +221,46 @@ def test_audit_inconsistent_construct_libraries_details(
         error['category'] != 'inconsistent construct library details'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_readout(
+    testapp,
+    measurement_set_mpra,
+    assay_term_rna,
+    measurement_set_multiome
+):
+    # Screening assays such as CRISPR screen or MPRA must specify readout
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent readout'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'readout': assay_term_rna['@id']
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent readout'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Other "non-screening" assays may not specify readout
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent readout'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set_multiome['@id'],
+        {
+            'readout': assay_term_rna['@id']
+        }
+    )
+    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent readout'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )

@@ -1,6 +1,6 @@
 {
-    "hash": "3b54a43887dff8ed79f877a3aaad339d",
-    "index_name": "measurement_set_3b54a438",
+    "hash": "d6cf71f4ce8e76e4062368c6e6d4a0ac",
+    "index_name": "measurement_set_d6cf71f4",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -497,6 +497,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "readout": {
+                                "type": "keyword"
+                            },
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
@@ -792,6 +795,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {
@@ -1107,12 +1113,6 @@
                             "description": {
                                 "type": "text"
                             },
-                            "dimension1": {
-                                "type": "keyword"
-                            },
-                            "dimension2": {
-                                "type": "keyword"
-                            },
                             "documents": {
                                 "type": "keyword"
                             },
@@ -1391,6 +1391,9 @@
                     "publication_identifiers": {
                         "type": "keyword"
                     },
+                    "readout": {
+                        "type": "keyword"
+                    },
                     "related_multiome_datasets": {
                         "properties": {
                             "@id": {
@@ -1482,6 +1485,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

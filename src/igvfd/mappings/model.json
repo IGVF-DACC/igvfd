@@ -1,6 +1,6 @@
 {
-    "hash": "4eb6b74d19c95fb862765d56e87a8e17",
-    "index_name": "model_4eb6b74d",
+    "hash": "19fda1f3a63f42b994ec2aef202e3c93",
+    "index_name": "model_19fda1f3",
     "item_type": "model",
     "mapping": {
         "dynamic_templates": [
@@ -419,6 +419,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "readout": {
+                                "type": "keyword"
+                            },
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
@@ -731,12 +734,6 @@
                             },
                             "description": {
                                 "type": "text"
-                            },
-                            "dimension1": {
-                                "type": "keyword"
-                            },
-                            "dimension2": {
-                                "type": "keyword"
                             },
                             "documents": {
                                 "type": "keyword"
@@ -1099,6 +1096,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

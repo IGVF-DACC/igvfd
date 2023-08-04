@@ -62,3 +62,13 @@ def measurement_set_v4(measurement_set):
         'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/SHARE-seq/spec.yaml'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_mpra(testapp, lab, award, assay_term_mpra):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_mpra['@id']
+    }
+    return testapp.post_json('/measurement_set', item).json['@graph'][0]
