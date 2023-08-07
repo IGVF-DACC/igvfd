@@ -278,6 +278,19 @@ def test_search_views_report_view_values_bad_type(workbook, testapp):
         status=400
     )
     assert r.json['description'] == "Invalid types: ['Exp']"
+    r = testapp.get(
+        '/report/?status=released&type=Exp&type=Per',
+        status=400
+    )
+    assert r.json['description'] == "Report view requires specifying a single type: [('type', 'Exp'), ('type', 'Per')]"
+
+
+def test_search_views_report_view_values_single_subtype(workbook, testapp):
+    r = testapp.get(
+        '/report/?status=released&type=Item',
+        status=400
+    )
+    assert 'Report view requires a type with no child types:' in r.json['description']
 
 
 def test_search_views_report_view_values_no_type(workbook, testapp):
@@ -285,7 +298,15 @@ def test_search_views_report_view_values_no_type(workbook, testapp):
         '/report/?status=released',
         status=400
     )
-    assert r.json['description'] == 'Report view requires specifying types: []'
+    assert r.json['description'] == 'Report view requires specifying a single type: []'
+
+
+def test_search_views_multireport_view_values_no_type(workbook, testapp):
+    r = testapp.get(
+        '/multireport/?status=released',
+        status=400
+    )
+    assert r.json['description'] == 'Multireport view requires specifying types: []'
 
 
 def test_search_views_collection_listing_es_view(workbook, testapp):
