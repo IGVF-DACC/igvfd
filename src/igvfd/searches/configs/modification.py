@@ -31,6 +31,7 @@ def modification():
                 'title': 'Modification',
                 'facet_fields': [
                     'cas',
+                    'cas_species',
                     'modality',
                 ]
             },

@@ -51,6 +51,7 @@ def whole_organism():
                     'biomarkers.classification',
                     'sample_terms.term_name',
                     'disease_terms.term_name',
+                    'virtual',
                 ]
             },
             {
@@ -78,8 +79,8 @@ def whole_organism():
             'sample_terms': {
                 'title': 'Sample Terms'
             },
-            'donor': {
-                'title': 'Donor'
+            'donors': {
+                'title': 'Donors'
             },
             'date_obtained': {
                 'title': 'Date Obtained'

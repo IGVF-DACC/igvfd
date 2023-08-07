@@ -41,9 +41,6 @@ def lab():
             },
             'institute_label': {
                 'title': 'Institute Label'
-            },
-            'submitted_by': {
-                'title': 'Submitted By'
-            },
+            }
         }
     }

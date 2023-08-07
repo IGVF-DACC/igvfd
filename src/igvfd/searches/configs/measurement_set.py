@@ -62,11 +62,8 @@ def measurement_set():
             'status': {
                 'title': 'Status'
             },
-            'sample': {
-                'title': 'Sample'
-            },
-            'donor': {
-                'title': 'Donor'
+            'samples': {
+                'title': 'Samples'
             },
             'lab': {
                 'title': 'Lab'

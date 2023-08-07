@@ -42,6 +42,9 @@ def in_vitro_system():
             },
             'virtual': {
                 'title': 'Virtual'
+            },
+            'biomarkers.classification': {
+                'titlle': 'Biomarkers Classification'
             }
         },
         'facet_groups': [
@@ -54,6 +57,7 @@ def in_vitro_system():
                     'taxa',
                     'sex',
                     'classification',
+                    'biomarkers.classification',
                 ]
             },
             {

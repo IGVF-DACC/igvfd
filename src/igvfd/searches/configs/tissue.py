@@ -39,6 +39,9 @@ def tissue():
             },
             'virtual': {
                 'title': 'Virtual'
+            },
+            'biomarkers.classification': {
+                'titlle': 'Biomarkers Classification'
             }
         },
         'facet_groups': [
@@ -48,8 +51,11 @@ def tissue():
                     'sample_terms.term_name',
                     'disease_terms.term_name',
                     'treatments.treatment_term_name',
+                    'biosample_term.term_name',
                     'taxa',
                     'sex',
+                    'biomarkers.classification',
+                    'virtual'
                 ]
             },
             {
@@ -95,9 +101,6 @@ def tissue():
             },
             'status': {
                 'title': 'Status'
-            },
-            'submitted_by': {
-                'title': 'Submitted By'
             },
             'summary': {
                 'title': 'Summary'

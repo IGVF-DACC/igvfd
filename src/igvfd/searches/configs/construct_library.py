@@ -4,12 +4,9 @@ from snovault.elasticsearch.searches.configs import search_config
 @search_config(
     name='ConstructLibrary'
 )
-def cell_line():
+def construct_library():
     return {
         'facets': {
-            'status': {
-                'title': 'Status'
-            },
             'award.component': {
                 'title': 'Award'
             },
@@ -21,8 +18,42 @@ def cell_line():
             },
             'selection_criteria': {
                 'title': 'Selection Criteria'
+            },
+            'collections': {
+                'title': 'Collections',
+            },
+            'lab.title': {
+                'title': 'Lab'
+            },
+            'award.component': {
+                'title': 'Award'
+            },
+            'status': {
+                'title': 'Status'
             }
         },
+        'facet_groups': [
+            {
+                'title': 'File Set',
+                'facet_fields': [
+                    'selection_criteria',
+                ],
+            },
+            {
+                'title': 'Provenance',
+                'facet_fields': [
+                    'collections',
+                    'lab.title',
+                    'award.component',
+                ],
+            },
+            {
+                'title': 'Quality',
+                'facet_fields': [
+                    'status',
+                ],
+            },
+        ],
         'columns': {
             'accession': {
                 'title': 'Accession'

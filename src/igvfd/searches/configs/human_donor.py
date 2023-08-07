@@ -35,6 +35,7 @@ def human_donor():
                 'facet_fields': [
                     'ethnicities',
                     'sex',
+                    'virtual',
                 ]
             },
             {

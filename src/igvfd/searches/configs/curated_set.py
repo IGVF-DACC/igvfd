@@ -7,9 +7,6 @@ from snovault.elasticsearch.searches.configs import search_config
 def curated_set():
     return {
         'facets': {
-            'status': {
-                'title': 'Status'
-            },
             'lab.title': {
                 'title': 'Lab'
             },
@@ -25,6 +22,18 @@ def curated_set():
             'curated_set_type': {
                 'title': 'Curated Set Type'
             },
+            'collections': {
+                'title': 'Collections',
+            },
+            'lab.title': {
+                'title': 'Lab'
+            },
+            'award.component': {
+                'title': 'Award'
+            },
+            'status': {
+                'title': 'Status'
+            }
         },
         'facet_groups': [
             {
@@ -62,11 +71,11 @@ def curated_set():
             'status': {
                 'title': 'Status'
             },
-            'sample': {
-                'title': 'Sample'
+            'samples': {
+                'title': 'Samples'
             },
-            'donor': {
-                'title': 'Donor'
+            'donors': {
+                'title': 'Donors'
             },
             'lab': {
                 'title': 'Lab'

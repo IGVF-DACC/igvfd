@@ -38,6 +38,7 @@ def rodent_donor():
                 'facet_fields': [
                     'strain_background',
                     'sex',
+                    'virtual',
                 ],
             },
             {

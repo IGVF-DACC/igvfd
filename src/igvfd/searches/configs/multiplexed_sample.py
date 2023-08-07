@@ -7,6 +7,15 @@ from snovault.elasticsearch.searches.configs import search_config
 def multiplexed_sample():
     return {
         'facets': {
+            'biosample_terms.term_name': {
+                'title': 'Biosample Term',
+            },
+            'disease_terms.term_name': {
+                'title': 'Disease Terms',
+            },
+            'treatments.treatment_term_name': {
+                'title': 'Treatments',
+            },
             'collections': {
                 'title': 'Collections',
             },
@@ -21,8 +30,37 @@ def multiplexed_sample():
             },
             'status': {
                 'title': 'Status'
+            },
+            'biomarkers.classification': {
+                'titlle': 'Biomarkers Classification'
             }
         },
+        'facet_groups': [
+            {
+                'title': 'Sample',
+                'facet_fields': [
+                    'biosample_terms.term_name',
+                    'disease_terms.term_name',
+                    'treatments.treatment_term_name',
+                    'biomarkers.classification',
+                ]
+            },
+            {
+                'title': 'Provenance',
+                'facet_fields': [
+                    'collections',
+                    'lab.title',
+                    'award.component',
+                    'source.title',
+                ]
+            },
+            {
+                'title': 'Quality',
+                'facet_fields': [
+                    'status',
+                ]
+            },
+        ],
         'columns': {
             'uuid': {
                 'title': 'UUID'
@@ -47,9 +85,6 @@ def multiplexed_sample():
             },
             'status': {
                 'title': 'Status'
-            },
-            'submitted_by': {
-                'title': 'Submitted By'
             },
             'summary': {
                 'title': 'Summary'

@@ -34,6 +34,7 @@ def technical_sample():
                 'title': 'Sample',
                 'facet_fields': [
                     'sample_terms.term_name',
+                    'virtual',
                 ]
             },
             {
@@ -73,9 +74,6 @@ def technical_sample():
             },
             'status': {
                 'title': 'Status'
-            },
-            'submitted_by': {
-                'title': 'Submitted By'
             },
             'description': {
                 'title': 'Description'

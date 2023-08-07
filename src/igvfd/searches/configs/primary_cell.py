@@ -42,6 +42,9 @@ def primary_cell():
             },
             'virtual': {
                 'title': 'Virtual'
+            },
+            'biomarkers.classification': {
+                'titlle': 'Biomarkers Classification'
             }
         },
         'facet_groups': [
@@ -53,6 +56,8 @@ def primary_cell():
                     'treatments.treatment_term_name',
                     'taxa',
                     'sex',
+                    'biomarkers.classification',
+                    'virtual'
                 ]
             },
             {
@@ -98,9 +103,6 @@ def primary_cell():
             },
             'status': {
                 'title': 'Status'
-            },
-            'submitted_by': {
-                'title': 'Submitted By'
             },
             'summary': {
                 'title': 'Summary'
