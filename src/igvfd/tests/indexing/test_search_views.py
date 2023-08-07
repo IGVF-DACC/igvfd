@@ -301,14 +301,6 @@ def test_search_views_report_view_values_no_type(workbook, testapp):
     assert r.json['description'] == 'Report view requires specifying a single type: []'
 
 
-def test_search_views_multireport_view_values_no_type(workbook, testapp):
-    r = testapp.get(
-        '/multireport/?status=released',
-        status=400
-    )
-    assert r.json['description'] == 'Multireport view requires specifying types: []'
-
-
 def test_search_views_collection_listing_es_view(workbook, testapp):
     r = testapp.get(
         '/users/'
@@ -374,3 +366,13 @@ def test_search_views_search_config_registry(workbook, testapp):
     assert 'Award' in r.json
     assert 'facets' in r.json['Award']
     assert 'columns' in r.json['Award']
+
+
+def test_search_views_multireport_view_values(workbook, testapp):
+    r = testapp.get(
+        '/multireport/?status=released'
+    )
+    assert r.json['all'] == '/multireport/?status=released&limit=all'
+    assert r.json['notification'] == 'Success'
+    assert r.json['filters'][0] == {'field': 'status', 'remove': '/multireport/', 'term': 'released'}
+    assert r.json['clear_filters'] == '/multireport/'
