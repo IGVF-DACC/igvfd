@@ -35,12 +35,12 @@ def test_batch_download_human_donor_report_download(workbook, testapp):
 
 def test_multitype_report_download(workbook, testapp):
 
-    res = testapp.get('/multireport.tsv/?institute_label=Stanford')
+    res = testapp.get('/multireport.tsv?institute_label=Stanford')
     assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
     disposition = res.headers['content-disposition']
     assert disposition.startswith('attachment;filename="institute_label=Stanford') and disposition.endswith('.tsv"')
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Title', b'Aliases', b'Name', b'Status', b'Principle Investigator', b'Institute Label', b'Submitted By'
+        b'ID', b'UUID', b'Title', b'Aliases', b'Awards', b'Name', b'Status', b'Principle Investigator', b'Institute Label', b'Submitted By'
     ]
