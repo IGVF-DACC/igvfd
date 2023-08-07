@@ -62,22 +62,10 @@ def _convert_camel_to_snake(type_str):
 @view_config(route_name='report_download', request_method='GET')
 def report_download(context, request):
     downloadtime = datetime.datetime.now()
-    request.GET['limit'] = '0'
-    fr = FieldedResponse(
-        _meta={
-            'params_parser': ParamsParser(request)
-        },
-        response_fields=[
-            MultipleTypesReportWithFacetsResponseField(
-                default_item_types=DEFAULT_ITEM_TYPES,
-                reserved_keys=RESERVED_KEYS,
-            ),
-            ColumnsResponseField(),
-
-        ]
-    )
-    response = fr.render()
-    facets = response.json['facets']
+    query_string = request.query_string + '&limit=0'
+    response = request.embed(f'/multireport?{query_string}')
+    print('response!!!!!!!!!!!', response.keys())
+    facets = response['facets']
     abstract_types = get_abstract_types(request)
     types_in_search_result = []
     for facet in facets:
@@ -92,7 +80,7 @@ def report_download(context, request):
     # Make sure we get all results
     request.GET['limit'] = 'all'
     results = search_generator(request)
-    columns = list_visible_columns_for_schemas(request, types_in_search_result, response.json['columns'])
+    columns = list_visible_columns_for_schemas(request, types_in_search_result, response['columns'])
 
     def format_header(seq):
         newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, '/report/', request.query_string)
