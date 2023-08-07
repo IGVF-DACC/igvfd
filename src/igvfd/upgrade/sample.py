@@ -292,16 +292,16 @@ def sample_13_14(value, system):
     # https://igvf.atlassian.net/browse/IGVF-895
     # Three properties are renamed and pluralized in this upgrade
     if 'source' in value:
-        value['sources'] = value['source']
+        value['sources'] = [value['source']]
         del value['source']
     if 'modification' in value:
-        value['modifications'] = value['modification']
+        value['modifications'] = [value['modification']]
         del value['modification']
     if 'biosample_term' in value:
-        value['sample_terms'] = value['biosample_term']
+        value['sample_terms'] = [value['biosample_term']]
         del value['biosample_term']
     if 'technical_sample_term' in value:
-        value['sample_terms'] = value['technical_sample_term']
+        value['sample_terms'] = [value['technical_sample_term']]
         del value['technical_sample_term']
 
 

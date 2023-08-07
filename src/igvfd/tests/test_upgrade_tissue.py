@@ -94,14 +94,17 @@ def test_tissue_upgrade_12_13(upgrader, tissue_v12):
 
 
 def test_tissue_upgrade_13_14(upgrader, tissue_v13):
-    sources = tissue_v13['source']
-    sample_terms = tissue_v13['biosample_term']
-    modifications = tissue_v13['modification']
+    sources = [tissue_v13['source']]
+    sample_terms = [tissue_v13['biosample_term']]
+    modifications = [tissue_v13['modification']]
     value = upgrader.upgrade('tissue', tissue_v13, current_version='13', target_version='14')
     assert 'source' not in value
     assert sources == value['sources']
+    assert type(value['sources']) == list
     assert 'biosample_term' not in value
     assert sample_terms == value['sample_terms']
+    assert type(value['sample_terms']) == list
     assert 'modification' not in value
     assert modifications == value['modifications']
+    assert type(value['modifications']) == list
     assert value['schema_version'] == '14'

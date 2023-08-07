@@ -38,8 +38,9 @@ def test_construct_library_upgrade_4_5(upgrader, construct_library_v4):
 
 
 def test_construct_library_upgrade_5_6(upgrader, construct_library_v5):
-    sources = construct_library_v5['source']
+    sources = [construct_library_v5['source']]
     value = upgrader.upgrade('construct_library', construct_library_v5, current_version='5', target_version='6')
     assert 'source' not in value
     assert sources == value['sources']
+    assert type(value['sources']) == list
     assert value['schema_version'] == '6'

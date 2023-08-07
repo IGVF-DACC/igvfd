@@ -149,5 +149,5 @@ def rodent_donor_9_10(value, system):
     # https://igvf.atlassian.net/browse/IGVF-895
     # Source property is pluralized
     if 'source' in value:
-        value['sources'] = value['source']
+        value['sources'] = [value['source']]
         del value['source']

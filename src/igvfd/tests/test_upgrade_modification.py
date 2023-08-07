@@ -11,8 +11,9 @@ def test_modification_upgrade_1_2(upgrader, modification_missing_cas_sp):
 
 
 def test_modification_upgrade_2_3(upgrader, modification_v2):
-    sources = modification_v2['source']
+    sources = [modification_v2['source']]
     value = upgrader.upgrade('modification', modification_v2, current_version='2', target_version='3')
     assert 'source' not in value
     assert sources == value['sources']
+    assert type(value['sources']) == list
     assert value['schema_version'] == '3'

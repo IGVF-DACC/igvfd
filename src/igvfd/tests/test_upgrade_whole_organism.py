@@ -124,14 +124,17 @@ def test_whole_organism_upgrade_15_16(upgrader, whole_organism_v15):
 
 
 def test_whole_organism_upgrade_16_17(upgrader, whole_organism_v16):
-    sources = whole_organism_v16['source']
-    sample_terms = whole_organism_v16['biosample_term']
-    modifications = whole_organism_v16['modification']
+    sources = [whole_organism_v16['source']]
+    sample_terms = [whole_organism_v16['biosample_term']]
+    modifications = [whole_organism_v16['modification']]
     value = upgrader.upgrade('whole_organism', whole_organism_v16, current_version='16', target_version='17')
     assert 'source' not in value
     assert sources == value['sources']
+    assert type(value['sources']) == list
     assert 'biosample_term' not in value
     assert sample_terms == value['sample_terms']
+    assert type(value['sample_terms']) == list
     assert 'modification' not in value
     assert modifications == value['modifications']
+    assert type(value['modifications']) == list
     assert value['schema_version'] == '17'

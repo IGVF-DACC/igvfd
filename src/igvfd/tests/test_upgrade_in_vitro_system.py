@@ -78,14 +78,17 @@ def test_in_vitro_system_upgrade_11_12(upgrader, in_vitro_system_v11, treatment_
 
 
 def test_in_vitro_system_upgrade_12_13(upgrader, in_vitro_system_v12):
-    sources = in_vitro_system_v12['source']
-    sample_terms = in_vitro_system_v12['biosample_term']
-    modifications = in_vitro_system_v12['modification']
+    sources = [in_vitro_system_v12['source']]
+    sample_terms = [in_vitro_system_v12['biosample_term']]
+    modifications = [in_vitro_system_v12['modification']]
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v12, current_version='12', target_version='13')
     assert 'source' not in value
     assert sources == value['sources']
+    assert type(value['sources']) == list
     assert 'biosample_term' not in value
     assert sample_terms == value['sample_terms']
+    assert type(value['sample_terms']) == list
     assert 'modification' not in value
     assert modifications == value['modifications']
+    assert type(value['modifications']) == list
     assert value['schema_version'] == '13'
