@@ -55,7 +55,7 @@ def tissue():
                     'taxa',
                     'sex',
                     'biomarkers.classification',
-                    'virtual'
+                    'virtual',
                 ]
             },
             {

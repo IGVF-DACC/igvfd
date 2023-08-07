@@ -61,6 +61,9 @@ def analysis_set():
             'samples': {
                 'title': 'Samples'
             },
+            'donors': {
+                'title': 'Donors'
+            },
             'lab': {
                 'title': 'Lab'
             },
