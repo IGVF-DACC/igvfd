@@ -69,8 +69,8 @@ def publication():
             'status': {
                 'title': 'Status'
             },
-            'identifiers': {
-                'title': 'Identifiers'
+            'publication_identifiers': {
+                'title': 'Publication Identifiers'
             },
         }
     }
