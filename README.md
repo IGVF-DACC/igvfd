@@ -36,7 +36,7 @@ $ docker compose -f docker-compose.test-indexer.yml up --exit-code-from indexer-
 $ docker compose -f docker-compose.test-indexer.yml down -v
 ```
 
-Or run tests interactively:
+Or run unit tests interactively:
 1. Start `postgres` and `localstack` services (for use as fixtures).
 ```bash
 $ docker compose -f docker-compose.test.yml up postgres localstack
@@ -45,6 +45,26 @@ $ docker compose -f docker-compose.test.yml up postgres localstack
 ```bash
 # In another terminal (starts interactive container).
 $ docker compose -f docker-compose.test.yml run --service-ports pyramid /bin/bash
+```
+3. Run tests.
+```bash
+# In interactive container (modify pytest command as needed).
+$ pytest
+```
+4. Stop and clean.
+```bash
+docker compose down -v
+```
+
+Or run indexer tests interactively:
+1. Start the services (for use as fixtures): `postgres`, `localstack`, `opensearch`, `pyramid`, `nginx`, `invalidation-service` and `indexing-service`.
+```bash
+$ docker compose -f docker-compose.test-indexer.yml up localstack postgres opensearch pyramid nginx invalidation-service indexing-service
+```
+2. Connect to testing environment.
+```bash
+# In another terminal (starts interactive container).
+$ docker compose -f docker-compose.test-indexer.yml run --service-ports indexer-tests /bin/bash
 ```
 3. Run tests.
 ```bash
