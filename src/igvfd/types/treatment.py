@@ -39,9 +39,9 @@ class Treatment(Item):
             text = 'Treated with {} {} {}'.format(
                 amount, amount_units, treatment_term_name)
         elif amount is None and duration is not None:
-            text = 'Treated with {} for {} {}'.format(
+            text = 'Depleted in {} for {} {}'.format(
                 treatment_term_name, duration, duration_units)
         elif amount is None and duration is None:
-            text = 'Treated with {}'.format(
+            text = 'Depleted in {}'.format(
                 treatment_term_name)
         return text

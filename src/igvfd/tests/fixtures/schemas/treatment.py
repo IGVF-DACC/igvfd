@@ -79,6 +79,7 @@ def treatment_v3(treatment_chemical):
     item = treatment_chemical.copy()
     item.pop('award', None)
     item.pop('lab', None)
+    item.pop('depletion', None)
     item.update({
         'schema_version': '3',
         'documents': [],
