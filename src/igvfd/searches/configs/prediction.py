@@ -24,9 +24,6 @@ def prediction():
             },
             'donors.taxa': {
                 'title': 'Taxa',
-            },
-            'prediction_type': {
-                'title': 'Prediction Type'
             }
         },
         'facet_groups': [
@@ -73,7 +70,6 @@ def prediction():
             },
             'donors': {
                 'title': 'Donors'
-            },
+            }
         }
-
     }

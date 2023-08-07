@@ -26,7 +26,7 @@ def whole_organism():
                 'title': 'Sample Terms'
             },
             'disease_terms.term_name': {
-                'title': 'Disease'
+                'title': 'Disease Terms'
             },
             'lab.title': {
                 'title': 'Lab'
@@ -96,9 +96,6 @@ def whole_organism():
             },
             'status': {
                 'title': 'Status'
-            },
-            'submitted_by': {
-                'title': 'Submitted By'
             },
             'summary': {
                 'title': 'Summary'

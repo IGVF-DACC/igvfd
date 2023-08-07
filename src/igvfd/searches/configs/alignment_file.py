@@ -72,5 +72,5 @@ def alignment_file():
             'status': {
                 'title': 'Status'
             }
-        },
+        }
     }

@@ -41,7 +41,7 @@ def tissue():
                 'title': 'Virtual'
             },
             'biomarkers.classification': {
-                'titlle': 'Biomarkers Classification'
+                'title': 'Biomarkers Classification'
             }
         },
         'facet_groups': [

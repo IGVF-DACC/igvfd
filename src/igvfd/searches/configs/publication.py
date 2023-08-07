@@ -71,6 +71,6 @@ def publication():
             },
             'publication_identifiers': {
                 'title': 'Publication Identifiers'
-            },
+            }
         }
     }

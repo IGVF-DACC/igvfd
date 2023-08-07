@@ -32,7 +32,7 @@ def multiplexed_sample():
                 'title': 'Status'
             },
             'biomarkers.classification': {
-                'titlle': 'Biomarkers Classification'
+                'title': 'Biomarkers Classification'
             }
         },
         'facet_groups': [
@@ -51,7 +51,7 @@ def multiplexed_sample():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'source.title',
+                    'sources.title',
                 ]
             },
             {

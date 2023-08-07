@@ -22,9 +22,6 @@ def primary_cell():
             'sex': {
                 'title': 'Sex'
             },
-            'donors.taxa': {
-                'title': 'Donor Taxa',
-            },
             'collections': {
                 'title': 'Collections',
             },
@@ -44,7 +41,7 @@ def primary_cell():
                 'title': 'Virtual'
             },
             'biomarkers.classification': {
-                'titlle': 'Biomarkers Classification'
+                'title': 'Biomarkers Classification'
             }
         },
         'facet_groups': [

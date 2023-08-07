@@ -22,12 +22,6 @@ def construct_library():
             'collections': {
                 'title': 'Collections',
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
-            'award.component': {
-                'title': 'Award'
-            },
             'status': {
                 'title': 'Status'
             }
@@ -78,7 +72,9 @@ def construct_library():
             },
             'reporter_library_details': {
                 'title': 'Reporter Library Details'
-            }
+            },
+            'expression_library_details': {
+                'title': 'Expression Library Details'
+            },
         }
-
     }

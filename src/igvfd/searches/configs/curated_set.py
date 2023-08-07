@@ -25,19 +25,13 @@ def curated_set():
             'collections': {
                 'title': 'Collections',
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
-            'award.component': {
-                'title': 'Award'
-            },
             'status': {
                 'title': 'Status'
             }
         },
         'facet_groups': [
             {
-                'title': 'Sample',
+                'title': 'File Set',
                 'facet_fields': [
                     'taxa',
                     'curated_set_type',

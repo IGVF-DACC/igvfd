@@ -25,12 +25,6 @@ def auxiliary_set():
             'collections': {
                 'title': 'Collections',
             },
-            'lab.title': {
-                'title': 'Lab'
-            },
-            'award.component': {
-                'title': 'Award'
-            },
         },
         'facet_groups': [
             {
@@ -76,7 +70,6 @@ def auxiliary_set():
             },
             'donors': {
                 'title': 'Donors'
-            },
+            }
         }
-
     }
