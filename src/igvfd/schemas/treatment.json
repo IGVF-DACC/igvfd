@@ -9,7 +9,8 @@
         "treatment_term_id",
         "treatment_term_name",
         "treatment_type",
-        "purpose"
+        "purpose",
+        "depletion"
     ],
     "identifyingProperties": [
         "uuid",
@@ -95,28 +96,32 @@
             }
         },
         "depletion": {
-            "comment": "amount and amount_units are required if treatment is not depleted.",
-            "if": {
-                "properties": {
-                    "depletion": {
-                        "const": false
+            "oneOf": [
+                {
+                    "properties": {
+                        "depletion": {
+                            "const": true
+                        }
+                    },
+                    "not": {
+                        "required": [
+                            "amount",
+                            "amount_units"
+                        ]
                     }
-                }
-            },
-            "then": {
-                "required": [
-                    "amount",
-                    "amount_units"
-                ]
-            },
-            "else": {
-                "not": {
+                },
+                {
+                    "properties": {
+                        "depletion": {
+                            "const": false
+                        }
+                    },
                     "required": [
                         "amount",
                         "amount_units"
                     ]
                 }
-            }
+            ]
         },
         "treatment_term_id": {
             "oneOf": [
@@ -273,8 +278,7 @@
         "depletion": {
             "title": "Depletion",
             "description": "Treatment is depleted.",
-            "type": "boolean",
-            "default": false
+            "type": "boolean"
         }
     },
     "fuzzy_searchable_fields": [

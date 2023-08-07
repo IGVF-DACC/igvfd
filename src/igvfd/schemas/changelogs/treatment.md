@@ -1,7 +1,7 @@
 ## Changelog for *`treatment.json`*
 
 ### Schema version 4
-* Add required `lab` and `award`.
+* Add required `lab`, `depletion` and `award`.
 * Add `depletion`.
 * Remove requirement for `amount` and `amount_units`.
 

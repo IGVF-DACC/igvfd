@@ -184,3 +184,16 @@ def test_treatment_award_lab_depletion_requirement(testapp, award, lab):
             'depletion': '',
         }, expect_errors=True)
     assert res.status_code == 422
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_id': 'UniProtKB:P09919',
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'protein',
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'depletion': '',
+        }, expect_errors=True)
+    assert res.status_code == 422
