@@ -141,7 +141,7 @@
         "rodent_identifier": {
             "title": "Rodent Identifier",
             "description": "The identifier for this individual rodent donor.",
-            "comment": "Specification of individual_rodent as true is required for submission of this property.",
+            "comment": "Use of this property requires that individual_rodent be true.",
             "type": "string"
         },
         "dbxrefs": {
