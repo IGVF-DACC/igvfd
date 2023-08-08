@@ -1,6 +1,6 @@
 {
-    "hash": "40f53d6047fe482a4bae05546d03c7b0",
-    "index_name": "modification_40f53d60",
+    "hash": "e878415f9709f8a7699cfe0c372cb12a",
+    "index_name": "modification_e878415f",
     "item_type": "modification",
     "mapping": {
         "dynamic_templates": [
@@ -320,7 +320,7 @@
                     "schema_version": {
                         "type": "keyword"
                     },
-                    "source": {
+                    "sources": {
                         "type": "keyword"
                     },
                     "status": {
