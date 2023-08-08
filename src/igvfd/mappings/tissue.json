@@ -1,6 +1,6 @@
 {
-    "hash": "5f1e6dd31d41f888ba32a4a88e5e44e4",
-    "index_name": "tissue_5f1e6dd3",
+    "hash": "e9664a09284967919ff789ef79aca7f6",
+    "index_name": "tissue_e9664a09",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -728,8 +728,20 @@
                             "amount_units": {
                                 "type": "keyword"
                             },
+                            "award": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
+                            },
+                            "depletion": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"
@@ -747,6 +759,9 @@
                                 "type": "float"
                             },
                             "duration_units": {
+                                "type": "keyword"
+                            },
+                            "lab": {
                                 "type": "keyword"
                             },
                             "lot_id": {

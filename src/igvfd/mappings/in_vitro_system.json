@@ -1,6 +1,6 @@
 {
-    "hash": "ca1a3d2edec35ab461a4b83028d4fb59",
-    "index_name": "in_vitro_system_ca1a3d2e",
+    "hash": "4fb4f61ee9d3bfa821c4fda3c01a6df3",
+    "index_name": "in_vitro_system_4fb4f61e",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -265,8 +265,20 @@
                             "amount_units": {
                                 "type": "keyword"
                             },
+                            "award": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
+                            },
+                            "depletion": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"
@@ -284,6 +296,9 @@
                                 "type": "float"
                             },
                             "duration_units": {
+                                "type": "keyword"
+                            },
+                            "lab": {
                                 "type": "keyword"
                             },
                             "lot_id": {
@@ -866,8 +881,20 @@
                             "amount_units": {
                                 "type": "keyword"
                             },
+                            "award": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
+                            },
+                            "depletion": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"
@@ -885,6 +912,9 @@
                                 "type": "float"
                             },
                             "duration_units": {
+                                "type": "keyword"
+                            },
+                            "lab": {
                                 "type": "keyword"
                             },
                             "lot_id": {

@@ -1,6 +1,6 @@
 {
-    "hash": "ce93063dc46434f03c919bd2c1a364c5",
-    "index_name": "whole_organism_ce93063d",
+    "hash": "87a8819cca06f4735a80e50bc21a8adf",
+    "index_name": "whole_organism_87a8819c",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -710,8 +710,20 @@
                             "amount_units": {
                                 "type": "keyword"
                             },
+                            "award": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
+                            },
+                            "depletion": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"
@@ -729,6 +741,9 @@
                                 "type": "float"
                             },
                             "duration_units": {
+                                "type": "keyword"
+                            },
+                            "lab": {
                                 "type": "keyword"
                             },
                             "lot_id": {
