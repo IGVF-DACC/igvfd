@@ -6,7 +6,7 @@ def test_audit_targeted_sample_term(
     in_vitro_cell_line,
     sample_term_K562
 ):
-    # In vitro systems should not have the same sample_term specified in targeted_sample_term and biosample_term.
+    # In vitro systems should not have the same sample_term specified in targeted_sample_term and sample_terms.
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {'targeted_sample_term': sample_term_K562['@id']}

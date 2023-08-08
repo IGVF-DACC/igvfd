@@ -1,6 +1,6 @@
 {
-    "hash": "0effc0da3053796f7860417c53deacbc",
-    "index_name": "measurement_set_0effc0da",
+    "hash": "9263ed1e652dc6bcca006984b5bb1eb2",
+    "index_name": "measurement_set_9263ed1e",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -553,7 +553,7 @@
                             "software_version": {
                                 "type": "keyword"
                             },
-                            "source": {
+                            "sources": {
                                 "type": "keyword"
                             },
                             "status": {
@@ -850,7 +850,7 @@
                             "software_version": {
                                 "type": "keyword"
                             },
-                            "source": {
+                            "sources": {
                                 "type": "keyword"
                             },
                             "status": {
@@ -1016,7 +1016,7 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "source": {
+                            "sources": {
                                 "type": "keyword"
                             },
                             "status": {
@@ -1545,13 +1545,6 @@
                             "biomarkers": {
                                 "type": "keyword"
                             },
-                            "biosample_term": {
-                                "copy_to": "_fuzzy",
-                                "type": "keyword"
-                            },
-                            "biosample_terms": {
-                                "type": "keyword"
-                            },
                             "ccf_id": {
                                 "type": "keyword"
                             },
@@ -1681,7 +1674,7 @@
                                     "sex": {
                                         "type": "keyword"
                                     },
-                                    "source": {
+                                    "sources": {
                                         "type": "keyword"
                                     },
                                     "status": {
@@ -1750,9 +1743,6 @@
                                 "store": true,
                                 "type": "float"
                             },
-                            "modification": {
-                                "type": "keyword"
-                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -1813,6 +1803,10 @@
                             "sample_material": {
                                 "type": "keyword"
                             },
+                            "sample_terms": {
+                                "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -1823,9 +1817,6 @@
                                 "type": "keyword"
                             },
                             "sorted_fraction_detail": {
-                                "type": "keyword"
-                            },
-                            "source": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1860,9 +1851,6 @@
                                 "type": "keyword"
                             },
                             "taxa": {
-                                "type": "keyword"
-                            },
-                            "technical_sample_term": {
                                 "type": "keyword"
                             },
                             "time_post_change": {

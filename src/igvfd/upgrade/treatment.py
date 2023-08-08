@@ -38,3 +38,12 @@ def treatment_3_4(value, system):
         else:
             value['notes'] = 'This treatment does not have award, lab, depletion specified previously, it was upgraded to have Cherry lab/award and depletion=False.'
     return
+
+
+@upgrade_step('treatment', '4', '5')
+def treatment_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-895
+    # Source property is pluralized
+    if 'source' in value:
+        value['sources'] = [value['source']]
+        del value['source']

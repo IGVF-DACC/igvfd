@@ -1,6 +1,10 @@
 ## Changelog for *`technical_sample.json`*
 
-### Minor changes since schema version 87
+### Schema version 8
+
+* Rename `source` to `sources` and `technical_sample_term` to `sample_terms`.
+
+### Minor changes since schema version 7
 
 * Add `publication_identifiers`.
 

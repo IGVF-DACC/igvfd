@@ -13,8 +13,8 @@ def treatment():
             'treatment_type': {
                 'title': 'Treatment Type'
             },
-            'source.title': {
-                'title': 'Source'
+            'sources.title': {
+                'title': 'Sources'
             },
             'status': {
                 'title': 'Status'
@@ -40,7 +40,7 @@ def treatment():
             {
                 'title': 'Provenance',
                 'facet_fields': [
-                    'source.title',
+                    'sources.title',
                 ],
             },
             {

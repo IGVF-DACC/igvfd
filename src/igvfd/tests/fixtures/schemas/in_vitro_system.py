@@ -7,9 +7,9 @@ def in_vitro_cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562
         'classification': 'cell line',
         'award': award['@id'],
         'lab': other_lab['@id'],
-        'source': other_lab['@id'],
+        'sources': [other_lab['@id']],
         'donors': [rodent_donor['@id']],
-        'biosample_term': sample_term_K562['@id']
+        'sample_terms': [sample_term_K562['@id']]
     }
     return testapp.post_json('/in_vitro_system', item, status=201).json['@graph'][0]
 
@@ -20,9 +20,9 @@ def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sampl
         'classification': 'differentiated cell specimen',
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_K562['@id'],
+        'sample_terms': [sample_term_K562['@id']],
         'cell_fate_change_treatments': [treatment_chemical['@id']],
         'time_post_change': 5,
         'time_post_change_units': 'minute',
@@ -37,9 +37,9 @@ def in_vitro_organoid(testapp, lab, award, source, human_donor, sample_term_adre
         'classification': 'organoid',
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_adrenal_gland['@id'],
+        'sample_terms': [sample_term_adrenal_gland['@id']],
         'cell_fate_change_treatments': [treatment_protein['@id']],
         'time_post_change': 10,
         'time_post_change_units': 'day',
@@ -54,9 +54,9 @@ def in_vitro_system_v1(testapp, lab, award, source, human_donor, sample_term_adr
         'classification': 'organoid',
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'donor': [human_donor['@id']],
-        'biosample_term': sample_term_adrenal_gland['@id']
+        'sample_terms': [sample_term_adrenal_gland['@id']]
     }
     return item
 
@@ -147,9 +147,9 @@ def in_vitro_system_sub(lab, award, source, human_donor, sample_term_adrenal_gla
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'source': source['@id'],
+        'sources': [source['@id']],
         'donors': [human_donor['@id']],
-        'biosample_term': sample_term_adrenal_gland['@id'],
+        'sample_terms': [sample_term_adrenal_gland['@id']],
         'classification': 'embryoid'
     }
     return item
@@ -173,4 +173,17 @@ def in_vitro_system_v11(in_vitro_cell_line, treatment_chemical, sample_term_brow
         'time_post_factors_introduction': 10,
         'time_post_factors_introduction_units': 'minute'
     })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_v12(lab, award, source, human_donor, sample_term_adrenal_gland, modification):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'source': source['@id'],
+        'donors': [human_donor['@id']],
+        'biosample_term': sample_term_adrenal_gland['@id'],
+        'modification': modification['@id']
+    }
     return item

@@ -83,3 +83,13 @@ def construct_library_v4(testapp, construct_library_genome_wide):
         'references': ['10.1101/2023.08.02']
     })
     return item
+
+
+@pytest.fixture
+def construct_library_v5(base_construct_library, source):
+    item = base_construct_library.copy()
+    item.update({
+        'schema_version': '5',
+        'source': source['@id']
+    })
+    return item

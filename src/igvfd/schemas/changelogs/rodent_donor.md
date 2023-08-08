@@ -1,5 +1,9 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Schema version 10
+
+* Rename `source` to `sources`.
+
 ### Schema version 9
 
 * Rename `references` to `publication_identifiers`.

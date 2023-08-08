@@ -8,3 +8,12 @@ def modification_1_2(value, system):
         value['notes'] = (value.get(
             'notes', '') + 'For upgrade, cas_species has been automatically designated as Streptococcus pyogenes (Sp), follow up with associated lab to check if upgrade is valid.').strip()
         value['cas_species'] = 'Streptococcus pyogenes (Sp)'
+
+
+@upgrade_step('modification', '2', '3')
+def modification_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-895
+    # Source property is pluralized
+    if 'source' in value:
+        value['sources'] = [value['source']]
+        del value['source']

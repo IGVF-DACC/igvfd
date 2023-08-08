@@ -7,8 +7,8 @@ from snovault.elasticsearch.searches.configs import search_config
 def tissue():
     return {
         'facets': {
-            'biosample_term.term_name': {
-                'title': 'Biosample Term',
+            'sample_terms.term_name': {
+                'title': 'Sample Terms',
             },
             'disease_terms.term_name': {
                 'title': 'Disease Terms',
@@ -31,8 +31,8 @@ def tissue():
             'award.component': {
                 'title': 'Award',
             },
-            'source.title': {
-                'title': 'Source',
+            'sources.title': {
+                'title': 'Sources',
             },
             'status': {
                 'title': 'Status'
@@ -45,7 +45,7 @@ def tissue():
             {
                 'title': 'Sample',
                 'facet_fields': [
-                    'biosample_term.term_name',
+                    'sample_terms.term_name',
                     'disease_terms.term_name',
                     'treatments.treatment_term_name',
                     'taxa',
@@ -58,7 +58,7 @@ def tissue():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'source.title',
+                    'sources.title',
                 ]
             },
             {
@@ -75,8 +75,8 @@ def tissue():
             'accession': {
                 'title': 'Accession'
             },
-            'biosample_term': {
-                'title': 'Biosample Term'
+            'sample_terms': {
+                'title': 'Sample Terms'
             },
             'donors': {
                 'title': 'Donors'

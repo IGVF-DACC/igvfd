@@ -1,6 +1,6 @@
 {
-    "hash": "c557924ac9dfc7a60cd3b0ac68203a4b",
-    "index_name": "auxiliary_set_c557924a",
+    "hash": "5b48dc9ff74fef1546756d81cc571da1",
+    "index_name": "auxiliary_set_5b48dc9f",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -482,7 +482,7 @@
                             "software_version": {
                                 "type": "keyword"
                             },
-                            "source": {
+                            "sources": {
                                 "type": "keyword"
                             },
                             "status": {
@@ -648,7 +648,7 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "source": {
+                            "sources": {
                                 "type": "keyword"
                             },
                             "status": {
@@ -1033,13 +1033,6 @@
                             "biomarkers": {
                                 "type": "keyword"
                             },
-                            "biosample_term": {
-                                "copy_to": "_fuzzy",
-                                "type": "keyword"
-                            },
-                            "biosample_terms": {
-                                "type": "keyword"
-                            },
                             "ccf_id": {
                                 "type": "keyword"
                             },
@@ -1169,7 +1162,7 @@
                                     "sex": {
                                         "type": "keyword"
                                     },
-                                    "source": {
+                                    "sources": {
                                         "type": "keyword"
                                     },
                                     "status": {
@@ -1238,9 +1231,6 @@
                                 "store": true,
                                 "type": "float"
                             },
-                            "modification": {
-                                "type": "keyword"
-                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -1301,6 +1291,10 @@
                             "sample_material": {
                                 "type": "keyword"
                             },
+                            "sample_terms": {
+                                "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -1311,9 +1305,6 @@
                                 "type": "keyword"
                             },
                             "sorted_fraction_detail": {
-                                "type": "keyword"
-                            },
-                            "source": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1348,9 +1339,6 @@
                                 "type": "keyword"
                             },
                             "taxa": {
-                                "type": "keyword"
-                            },
-                            "technical_sample_term": {
                                 "type": "keyword"
                             },
                             "time_post_change": {

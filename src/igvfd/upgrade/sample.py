@@ -192,10 +192,10 @@ def whole_organism_10_11(value, system):
 def whole_organism_11_12(value, system):
     # https://igvf.atlassian.net/browse/IGVF-577
     notes = value.get('notes', '')
-    if value['biosample_term'] != '/sample-terms/UBERON_0000468/':
-        old_term = value['biosample_term']
+    if value['sample_terms'] != ['/sample-terms/UBERON_0000468/']:
+        old_term = str(value['sample_terms'][0])
         notes += f' Biosample_term (formerly: {old_term}) was automatically upgraded.'
-        value['biosample_term'] = '/sample-terms/UBERON_0000468/'
+        value['sample_terms'] = ['/sample-terms/UBERON_0000468/']
         value['notes'] = notes.strip()
 
 
@@ -281,3 +281,33 @@ def multiplexed_sample_1_2(value, system):
         notes += f" Lot ID {value['lot_id']} was removed via upgrade."
         value.pop('lot_id')
     value['notes'] = notes.strip()
+
+
+@upgrade_step('primary_cell', '13', '14')
+@upgrade_step('in_vitro_system', '12', '13')
+@upgrade_step('tissue', '13', '14')
+@upgrade_step('technical_sample', '7', '8')
+@upgrade_step('whole_organism', '16', '17')
+def sample_13_14(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-895
+    # Three properties are renamed and pluralized in this upgrade
+    if 'source' in value:
+        value['sources'] = [value['source']]
+        del value['source']
+    if 'modification' in value:
+        value['modifications'] = [value['modification']]
+        del value['modification']
+    if 'biosample_term' in value:
+        value['sample_terms'] = [value['biosample_term']]
+        del value['biosample_term']
+    if 'technical_sample_term' in value:
+        value['sample_terms'] = [value['technical_sample_term']]
+        del value['technical_sample_term']
+
+
+@upgrade_step('multiplexed_sample', '2', '3')
+def multiplexed_sample_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-895
+    # Biosample_terms is renamed to sample_terms
+    # The property is calculated so the upgrade is solely to flag the change
+    return

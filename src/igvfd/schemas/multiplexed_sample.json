@@ -41,7 +41,7 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "2"
+            "default": "3"
         },
         "multiplexed_samples": {
             "description": "The samples multiplexed together to produce this sample.",

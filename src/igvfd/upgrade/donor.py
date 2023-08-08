@@ -142,3 +142,12 @@ def donor_10_11(value, system):
     if 'references' in value:
         value['publication_identifiers'] = value['references']
         del value['references']
+
+
+@upgrade_step('rodent_donor', '9', '10')
+def rodent_donor_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-895
+    # Source property is pluralized
+    if 'source' in value:
+        value['sources'] = [value['source']]
+        del value['source']
