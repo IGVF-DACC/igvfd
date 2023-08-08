@@ -74,7 +74,7 @@ def construct_library():
                 'title': 'Reporter Library Details'
             },
             'expression_vector_library_details': {
-                'title': 'Expression Vectory Library Details'
+                'title': 'Expression Vector Library Details'
             },
         }
     }
