@@ -23,3 +23,18 @@ def treatment_2_3(value, system):
         else:
             value['notes'] = 'This treatment did not have purpose specified previously, it was upgraded to have perturbation purpose.'
     return
+
+
+@upgrade_step('treatment', '3', '4')
+def treatment_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-845
+    notes = value.get('notes', '')
+    if 'award' not in value and 'lab' not in value and 'depletion' not in value:
+        value['award'] = '/awards/HG012012'
+        value['lab'] = '/labs/j-michael-cherry'
+        value['depletion'] = False
+        if 'notes' in value:
+            value['notes'] = f'{value.get("notes")}. This treatment does not have award, lab, depletion specified previously, it was upgraded to have Cherry lab/award and depletion=False.'
+        else:
+            value['notes'] = 'This treatment does not have award, lab, depletion specified previously, it was upgraded to have Cherry lab/award and depletion=False.'
+    return

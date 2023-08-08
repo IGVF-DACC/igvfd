@@ -18,6 +18,15 @@ def treatment():
             },
             'status': {
                 'title': 'Status'
+            },
+            'lab.title': {
+                'title': 'Lab'
+            },
+            'award.component': {
+                'title': 'Award'
+            },
+            'depletion': {
+                'title': 'Depletion'
             }
         },
         'facet_groups': [
@@ -72,5 +81,14 @@ def treatment():
             'duration_units': {
                 'title': 'Duration Units'
             },
+            'lab.title': {
+                'title': 'Lab'
+            },
+            'award.component': {
+                'title': 'Award'
+            },
+            'depletion': {
+                'title': 'Depletion'
+            }
         }
     }

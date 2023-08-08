@@ -31,11 +31,17 @@ class Treatment(Item):
             'notSubmittable': True,
         }
     )
-    def title(self, treatment_term_name, amount, amount_units, duration=None, duration_units=None):
-        if duration is not None:
+    def title(self, treatment_term_name, amount=None, amount_units=None, duration=None, duration_units=None):
+        if duration is not None and amount is not None:
             text = 'Treated with {} {} {} for {} {}'.format(
                 amount, amount_units, treatment_term_name, duration, duration_units)
-        else:
+        elif duration is None and amount is not None:
             text = 'Treated with {} {} {}'.format(
                 amount, amount_units, treatment_term_name)
+        elif amount is None and duration is not None:
+            text = 'Depleted in {} for {} {}'.format(
+                treatment_term_name, duration, duration_units)
+        elif amount is None and duration is None:
+            text = 'Depleted in {}'.format(
+                treatment_term_name)
         return text
