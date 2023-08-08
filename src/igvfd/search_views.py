@@ -15,6 +15,7 @@ from snosearch.fields import BasicMatrixWithFacetsResponseField
 from snosearch.fields import BasicSearchResponseField
 from snosearch.fields import BasicSearchWithFacetsResponseField
 from snosearch.fields import BasicReportWithFacetsResponseField
+from snosearch.fields import MultipleTypesReportWithFacetsResponseField
 from snosearch.fields import ClearFiltersResponseField
 from snosearch.fields import ColumnsResponseField
 from snosearch.fields import ContextResponseField
@@ -40,6 +41,7 @@ from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 def includeme(config):
     config.add_route('search', '/search{slash:/?}')
     config.add_route('report', '/report{slash:/?}')
+    config.add_route('multireport', '/multireport{slash:/?}')
     config.add_route('matrix', '/matrix{slash:/?}')
     config.add_route('summary', '/summary{slash:/?}')
     config.add_route('audit', '/audit{slash:/?}')
@@ -118,6 +120,39 @@ def report(context, request):
             IDResponseField(),
             ContextResponseField(),
             BasicReportWithFacetsResponseField(
+                default_item_types=DEFAULT_ITEM_TYPES,
+                reserved_keys=RESERVED_KEYS,
+            ),
+            AllResponseField(),
+            FacetGroupsResponseField(),
+            NotificationResponseField(),
+            FiltersResponseField(),
+            TypeOnlyClearFiltersResponseField(),
+            ColumnsResponseField(),
+            NonSortableResponseField(),
+            SortResponseField(),
+            DebugQueryResponseField()
+        ]
+    )
+    return fr.render()
+
+
+@view_config(route_name='multireport', request_method='GET', permission='search')
+def multireport(context, request):
+    fr = FieldedResponse(
+        _meta={
+            'params_parser': ParamsParser(request)
+        },
+        response_fields=[
+            TitleResponseField(
+                title=REPORT_TITLE
+            ),
+            TypeResponseField(
+                at_type=[REPORT_TITLE]
+            ),
+            IDResponseField(),
+            ContextResponseField(),
+            MultipleTypesReportWithFacetsResponseField(
                 default_item_types=DEFAULT_ITEM_TYPES,
                 reserved_keys=RESERVED_KEYS,
             ),

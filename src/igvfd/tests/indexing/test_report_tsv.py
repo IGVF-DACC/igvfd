@@ -31,3 +31,66 @@ def test_batch_download_human_donor_report_download(workbook, testapp):
     res = testapp.get('/report.tsv?type=HumanDonor&sort=accession')
     disposition = res.headers['content-disposition']
     assert disposition.startswith('attachment;filename="human_donor_report') and disposition.endswith('.tsv"')
+
+
+def test_multitype_report_download(workbook, testapp):
+
+    res = testapp.get('/multireport.tsv?institute_label=Stanford')
+    assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
+    disposition = res.headers['content-disposition']
+    assert disposition.startswith('attachment;filename="institute_label=Stanford') and disposition.endswith('.tsv"')
+    lines = res.body.splitlines()
+    assert b'/multireport/' in lines[0]
+    assert lines[1].split(b'\t') == [
+        b'ID', b'UUID', b'Title', b'Aliases', b'Awards', b'Name', b'Status', b'Principle Investigator', b'Institute Label', b'Submitted By'
+    ]
+
+    res = testapp.get('/multireport.tsv?type=Award&field=contact_pi&field=title&config=Award')
+    assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
+    disposition = res.headers['content-disposition']
+    assert disposition.startswith('attachment;filename="type=Award') and disposition.endswith('.tsv"')
+    lines = res.body.splitlines()
+    assert b'/multireport/' in lines[0]
+    assert lines[1].split(b'\t') == [
+        b'Contact P.I.', b'Title'
+    ]
+
+    res = testapp.get('/multireport.tsv?type=Award&config=AccessKey')
+    assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
+    disposition = res.headers['content-disposition']
+    assert disposition.startswith('attachment;filename="type=Award') and disposition.endswith('.tsv"')
+    lines = res.body.splitlines()
+    assert b'/multireport/' in lines[0]
+    assert lines[1].split(b'\t') == [
+        b'ID', b'UUID', b'Status', b'Access Key ID'
+    ]
+
+    res = testapp.get('/multireport.tsv?type=File&status=released')
+    assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
+    disposition = res.headers['content-disposition']
+    assert disposition.startswith('attachment;filename="type=File') and disposition.endswith('.tsv"')
+    lines = res.body.splitlines()
+    assert b'/multireport/' in lines[0]
+    assert lines[1].split(b'\t') == [
+        b'ID', b'UUID', b'Accession', b'Content Type', b'File Format', b'Lab', b'Status',
+    ]
+
+    res = testapp.get('/multireport.tsv?type=File&status=released')
+    assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
+    disposition = res.headers['content-disposition']
+    assert disposition.startswith('attachment;filename="type=File') and disposition.endswith('.tsv"')
+    lines = res.body.splitlines()
+    assert b'/multireport/' in lines[0]
+    assert lines[1].split(b'\t') == [
+        b'ID', b'UUID', b'Accession', b'Content Type', b'File Format', b'Lab', b'Status',
+    ]
+
+    res = testapp.get('/multireport.tsv?type=SequenceFile&type=AlignmentFile&status=released')
+    assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
+    disposition = res.headers['content-disposition']
+    assert disposition.startswith('attachment;filename="type=SequenceFile') and disposition.endswith('.tsv"')
+    lines = res.body.splitlines()
+    assert b'/multireport/' in lines[0]
+    assert lines[1].split(b'\t') == [
+        b'ID', b'UUID', b'Accession', b'Content Type', b'File Format', b'Lab', b'Status',
+    ]
