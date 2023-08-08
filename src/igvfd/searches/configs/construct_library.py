@@ -31,6 +31,7 @@ def construct_library():
                 'title': 'File Set',
                 'facet_fields': [
                     'selection_criteria',
+                    'scope',
                 ],
             },
             {
