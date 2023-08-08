@@ -73,8 +73,8 @@ def construct_library():
             'reporter_library_details': {
                 'title': 'Reporter Library Details'
             },
-            'expression_library_details': {
-                'title': 'Expression Library Details'
+            'expression_vector_library_details': {
+                'title': 'Expression Vectory Library Details'
             },
         }
     }
