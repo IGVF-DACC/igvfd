@@ -70,6 +70,7 @@
         "samples": {
             "title": "Samples",
             "description": "The sample(s) associated with this file set.",
+            "comment": "Specification of samples is mutually exclusive with specification of donors.",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
@@ -84,6 +85,7 @@
         "donors": {
             "title": "Donors",
             "description": "The donor(s) associated with this file set.",
+            "comment": "Specification of donors is mutually exclusive with specification of samples.",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,

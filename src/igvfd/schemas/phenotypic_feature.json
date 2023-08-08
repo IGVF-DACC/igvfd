@@ -46,11 +46,13 @@
         "quantity": {
             "title": "Quantity",
             "description": "A quantity associated with the phenotypic feature, if applicable.",
+            "comment": "Specification of this property requires quantity_units.",
             "type": "number"
         },
         "quantity_units": {
             "title": "Quantity Units",
             "description": "The unit of measurement for a quantity associated with the phenotypic feature.",
+            "comment": "Specification of this property requires quantity.",
             "type": "string",
             "enum": [
                 "meter",

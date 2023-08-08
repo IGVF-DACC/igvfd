@@ -80,6 +80,7 @@
         "characterization_method": {
             "title": "Characterization Method",
             "description": "The method used for the characterization.",
+            "comment": "If a document has document_type characterization, then characterization_method is required.",
             "type": "string",
             "enum": [
                 "FACS",

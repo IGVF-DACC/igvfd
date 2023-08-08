@@ -127,6 +127,12 @@
             "description": "Version of software used for the derivation of this model.",
             "type": "string",
             "linkTo": "SoftwareVersion"
+        },
+        "samples": {
+            "comment": "Model file sets should not specify any samples."
+        },
+        "donors": {
+            "comment": "Model file sets should not specify any donors."
         }
     },
     "fuzzy_searchable_fields": [

@@ -127,13 +127,13 @@
         "time_post_change": {
             "title": "Time Post Change",
             "description": "The time that elapsed past the time-point when the cell fate change treatments were introduced.",
-            "comment": "Use in conjunction with time_post_change_units to specify time elapsed post cell fate change treatment introduction. Use of this property requires time_post_change_units specification.",
+            "comment": "Use in conjunction with time_post_change_units to specify time elapsed post cell fate change treatment introduction. Use of this property requires time_post_change_units and cell_fate_change_treatments specifications.",
             "type": "number"
         },
         "time_post_change_units": {
             "title": "Time Post Change Units",
             "description": "The units of time that elapsed past the point when the cell fate change treatments were introduced.",
-            "comment": "Use in conjunction with time_post_change to specify time elapsed post cell fate change treatment introduction. Use of this property requires time_post_change specification.",
+            "comment": "Use in conjunction with time_post_change to specify time elapsed post cell fate change treatment introduction. Use of this property requires time_post_change and cell_fate_change_treatments specifications.",
             "type": "string",
             "enum": [
                 "minute",
@@ -149,6 +149,7 @@
         "cell_fate_change_treatments": {
             "title": "Cell Fate Change Treatments",
             "description": "A list of treatments applied to the biosample with the purpose of differentiation, dedifferentiation, or reprogramming.",
+            "comment": "The time_post_change and time_post_change_units are required in conjuction with this specification of this property.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
