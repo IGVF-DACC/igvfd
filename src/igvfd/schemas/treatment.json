@@ -181,7 +181,7 @@
                 "μg/mL",
                 "μM"
             ],
-            "comment": "Use of this property requires amount. If depletion is false this property is required. "
+            "comment": "Use of this property requires amount. If depletion is false this property is required."
         },
         "duration": {
             "title": "Duration",

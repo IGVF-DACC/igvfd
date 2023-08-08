@@ -84,10 +84,10 @@
             ]
         },
         "part_of": {
-            "comment": "Whole organisms should not specify as part of any other sample."
+            "comment": "Whole organism samples should not be part of any other sample."
         },
         "pooled_from": {
-            "comment": "Whole organisms should not specify as pooled from any other sample."
+            "comment": "Whole organism samples should not be pooled from any other sample."
         }
     },
     "fuzzy_searchable_fields": [

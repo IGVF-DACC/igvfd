@@ -133,7 +133,7 @@
         "time_post_change_units": {
             "title": "Time Post Change Units",
             "description": "The units of time that elapsed past the point when the cell fate change treatments were introduced.",
-            "comment": "Use of this property requires time_post_change and cell_fate_change_treatments specifications.",
+            "comment": "Use of this property requires time_post_change and cell_fate_change_treatments.",
             "type": "string",
             "enum": [
                 "minute",

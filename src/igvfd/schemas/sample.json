@@ -50,7 +50,7 @@
             "required": [
                 "sorted_fraction"
             ],
-            "comment": "A sample with sorted_fraction_deatil must include sorted_fraction."
+            "comment": "A sample with sorted_fraction_detail must include sorted_fraction."
         }
     },
     "properties": {
@@ -116,7 +116,7 @@
         "sorted_fraction_detail": {
             "title": "Sorted Fraction Detail",
             "description": "Detail for sample sorted into fractions capturing information about sorting.",
-            "comment": "For example, FACS 10% expression of CTCF-GFP. A sample with sorted_fraction_deatil must include sorted_fraction.",
+            "comment": "For example, FACS 10% expression of CTCF-GFP. A sample with sorted_fraction_detail must include sorted_fraction.",
             "type": "string"
         },
         "virtual": {
