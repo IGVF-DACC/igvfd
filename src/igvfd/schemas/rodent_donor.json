@@ -92,9 +92,6 @@
         "schema_version": {
             "default": "10"
         },
-        "lot_id": {
-            "comment": "A rodent donor with lot_id must include product_id."
-        },
         "strain_background": {
             "title": "Strain Background",
             "description": "The specific parent strain designation of a non-human donor.",

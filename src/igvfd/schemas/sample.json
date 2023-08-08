@@ -106,9 +106,6 @@
             "type": "string",
             "format": "date"
         },
-        "lot_id": {
-            "comment": "A sample with lot_id must include product_id."
-        },
         "sorted_fraction": {
             "title": "Sorted Fraction",
             "description": "Links to a larger sample from which this sample was obtained through sorting.",

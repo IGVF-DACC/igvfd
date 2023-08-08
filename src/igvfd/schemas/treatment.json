@@ -269,7 +269,7 @@
             "description": "Ontology identifier describing a component in the treatment.",
             "type": "string",
             "pattern": "^((CHEBI:[0-9]{1,7})|(UniProtKB:[A-Z0-9]{6})|(NTR:[0-9]{2,8}))$",
-            "comment": "For chemical type treatments, CHEBI ids are required while Uniprot ids are used for protein type."
+            "comment": "For chemical type treatments, CHEBI ids are required while UniProt ids are used for protein type."
         },
         "treatment_term_name": {
             "title": "Treatment Term Name",
