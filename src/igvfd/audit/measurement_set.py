@@ -93,8 +93,8 @@ def audit_construct_libraries(value, system):
         audit_levels: WARNING
     '''
     if 'construct_libraries' in value and len(value['construct_libraries']) > 1:
+        library_details = set()
         for construct_library in value['construct_libraries']:
-            library_details = {}
             construct_library_object = system.get('request').embed(construct_library, '@@object?skip_calculated=true')
             if 'expression_vector_library_details' in construct_library_object:
                 library_details.add('expression_vector_library_details')
@@ -103,11 +103,14 @@ def audit_construct_libraries(value, system):
             elif 'reporter_library_details' in construct_library_object:
                 library_details.add('reporter_library_details')
         if len(library_details) > 1:
-            library_details = list(library_details)
-            library_details = ', and'.join(library_details[:-1].join(', '), library_details[-1])
+            if len(library_details) > 2:
+                library_details = list(library_details)
+                library_details = ', and '.join(library_details[:-1].join(', '), library_details[-1])
+            else:
+                library_details = ' and '.join(library_details)
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'is expected to have construct libraries with the same library details, '
                 f'but has construct libraries with {library_details}.'
             )
-        yield AuditFailure('missing protocol', detail, level='WARNING')
+            yield AuditFailure('inconsistent construct library metadata', detail, level='WARNING')
