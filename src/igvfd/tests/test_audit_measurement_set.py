@@ -192,7 +192,7 @@ def test_audit_protocol(
     )
 
 
-def test_audit_related_multiome_datasets(
+def test_audit_inconsistent_construct_libraries_details(
     testapp,
     measurement_set,
     base_construct_library,
