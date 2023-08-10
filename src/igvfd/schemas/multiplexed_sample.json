@@ -44,6 +44,7 @@
             "default": "3"
         },
         "multiplexed_samples": {
+            "title": "Multiplexed Samples",
             "description": "The samples multiplexed together to produce this sample.",
             "comment": "A minimum of 2 samples must be listed.",
             "type": "array",
