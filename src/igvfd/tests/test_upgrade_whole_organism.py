@@ -138,3 +138,12 @@ def test_whole_organism_upgrade_16_17(upgrader, whole_organism_v16):
     assert modifications == value['modifications']
     assert type(value['modifications']) == list
     assert value['schema_version'] == '17'
+
+
+def test_whole_organism_upgrade_17_18(upgrader, whole_organism_v17_no_units, whole_organism_v17_no_amount):
+    value = upgrader.upgrade('whole_organism', whole_organism_v17_no_units, current_version='17', target_version='18')
+    assert 'starting_amount_units' in value and value['starting_amount_units'] == 'items'
+    assert value['schema_version'] == '18'
+    value = upgrader.upgrade('whole_organism', whole_organism_v17_no_amount, current_version='17', target_version='18')
+    assert 'starting_amount' in value and value['starting_amount'] == 0
+    assert value['schema_version'] == '18'

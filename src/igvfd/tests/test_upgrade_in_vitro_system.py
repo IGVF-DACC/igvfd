@@ -92,3 +92,13 @@ def test_in_vitro_system_upgrade_12_13(upgrader, in_vitro_system_v12):
     assert modifications == value['modifications']
     assert type(value['modifications']) == list
     assert value['schema_version'] == '13'
+
+
+def test_in_vitro_system_upgrade_13_14(upgrader, in_vitro_system_v13_no_units, in_vitro_system_v13_no_amount):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v13_no_units, current_version='13', target_version='14')
+    assert 'starting_amount_units' in value and value['starting_amount_units'] == 'items'
+    assert value['schema_version'] == '14'
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v13_no_amount,
+                             current_version='13', target_version='14')
+    assert 'starting_amount' in value and value['starting_amount'] == 0
+    assert value['schema_version'] == '14'

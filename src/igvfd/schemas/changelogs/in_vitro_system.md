@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 14
+
+* Mutually require `starting_amount` and `starting_amount_units`.
+
 ### Schema version 13
 
 * Rename `source` to `sources`, `biosample_term` to `sample_terms`, and `modification` to `modifications`.

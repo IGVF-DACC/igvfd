@@ -53,11 +53,23 @@
     "dependentSchemas": {
         "$merge": [
             "biosample.json#/dependentSchemas"
-        ]
+        ],
+        "pmi": {
+            "required": [
+                "pmi_units"
+            ],
+            "comment": "A tissue with pmi must include pmi_units."
+        },
+        "pmi_units": {
+            "required": [
+                "pmi"
+            ],
+            "comment": "A tissue with pmi_units must include pmi."
+        }
     },
     "properties": {
         "schema_version": {
-            "default": "14"
+            "default": "15"
         },
         "pmi": {
             "title": "Post-mortem Interval",

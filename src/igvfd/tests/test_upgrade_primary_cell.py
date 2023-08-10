@@ -108,3 +108,12 @@ def test_primary_cell_upgrade_13_14(upgrader, primary_cell_v13):
     assert modifications == value['modifications']
     assert type(value['modifications']) == list
     assert value['schema_version'] == '14'
+
+
+def test_primary_cell_14_15(upgrader, primary_cell_v14_no_units, primary_cell_v14_no_amount):
+    value = upgrader.upgrade('primary_cell', primary_cell_v14_no_units, current_version='14', target_version='15')
+    assert 'starting_amount_units' in value and value['starting_amount_units'] == 'items'
+    assert value['schema_version'] == '15'
+    value = upgrader.upgrade('primary_cell', primary_cell_v14_no_amount, current_version='14', target_version='15')
+    assert 'starting_amount' in value and value['starting_amount'] == 0
+    assert value['schema_version'] == '15'

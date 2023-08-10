@@ -33,3 +33,23 @@ def multiplexed_sample_v2(multiplexed_sample, source):
         'schema_version': '2'
     })
     return item
+
+
+@pytest.fixture
+def multiplexed_sample_v3_no_units(multiplexed_sample):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '3',
+        'starting_amount': 5
+    })
+    return item
+
+
+@pytest.fixture
+def multiplexed_sample_v3_no_amount(multiplexed_sample):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '3',
+        'starting_amount_units': 'g'
+    })
+    return item

@@ -51,6 +51,18 @@
                 "sorted_fraction"
             ],
             "comment": "A sample with sorted_fraction_detail must include sorted_fraction."
+        },
+        "starting_amount": {
+            "required": [
+                "starting_amount_units"
+            ],
+            "comment": "A sample with starting_amount must include starting_amount_units."
+        },
+        "starting_amount_units": {
+            "required": [
+                "starting_amount"
+            ],
+            "comment": "A sample with starting_amount must include starting_amount_units."
         }
     },
     "properties": {

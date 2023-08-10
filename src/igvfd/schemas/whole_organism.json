@@ -72,7 +72,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "17"
+            "default": "18"
         },
         "sample_terms": {
             "comment": "Do not submit, value is assigned by the object.",

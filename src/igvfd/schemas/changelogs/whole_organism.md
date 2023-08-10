@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 15
+
+* Mutually require `starting_amount` and `starting_amount_units`.
+
 ### Schema version 17
 
 * Rename `source` to `sources`, `biosample_term` to `sample_terms`, and `modification` to `modifications`.

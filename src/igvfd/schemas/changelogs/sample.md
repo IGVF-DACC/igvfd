@@ -1,5 +1,6 @@
 ## Changelog for *`sample.json`*
 
+* Mutually require `starting_amount` and `starting_amount_units`. (08/16/2023)
 * Rename `biosample_term` to `sample_terms` and `modification` to `modifications`. (08/09/2023)
 * Add `publication_identifiers`. (08/02/2023)
 * Add `virtual`. (06/05/2023)

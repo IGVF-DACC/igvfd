@@ -187,3 +187,23 @@ def in_vitro_system_v12(lab, award, source, human_donor, sample_term_adrenal_gla
         'modification': modification['@id']
     }
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v13_no_units(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '13',
+        'starting_amount': 5
+    })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_v13_no_amount(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '13',
+        'starting_amount_units': 'g'
+    })
+    return item
