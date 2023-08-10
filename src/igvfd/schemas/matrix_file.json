@@ -1,6 +1,6 @@
 {
     "title": "Matrix File",
-    "$id": "/profiles/alignment_file.json",
+    "$id": "/profiles/matrix_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "Schema for submission of quantification data in multi-dimension format.",
     "required": [
