@@ -4,7 +4,7 @@ from snovault.elasticsearch.searches.configs import search_config
 @search_config(
     name='MatrixFile'
 )
-def alignment_file():
+def matrix_file():
     return {
         'columns': {
             'uuid': {
