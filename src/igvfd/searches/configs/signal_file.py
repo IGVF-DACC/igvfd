@@ -19,9 +19,6 @@ def signal_file():
             'file_format': {
                 'title': 'File Format'
             },
-            'status': {
-                'title': 'Status'
-            },
             'strand_specificity': {
                 'title': 'Strand Specificity'
             },
