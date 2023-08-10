@@ -78,7 +78,7 @@ def whole_organism():
             },
             'sample_terms': {
                 'title': 'Sample Terms'
-            }
+            },
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
