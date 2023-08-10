@@ -38,12 +38,13 @@ def rodent_donor():
                 'facet_fields': [
                     'strain_background',
                     'sex',
+                    'virtual',
                 ],
             },
             {
                 'title': 'Provenance',
                 'facet_fields': [
-                    'collection',
+                    'collections',
                     'lab.title',
                     'award.component',
                     'sources.title',
@@ -62,6 +63,9 @@ def rodent_donor():
             },
             'accession': {
                 'title': 'Accession'
+            },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
             },
             'aliases': {
                 'title': 'Aliases'

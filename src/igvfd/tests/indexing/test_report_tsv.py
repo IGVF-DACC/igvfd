@@ -42,7 +42,7 @@ def test_multitype_report_download(workbook, testapp):
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Title', b'Aliases', b'Awards', b'Name', b'Status', b'Principle Investigator', b'Institute Label', b'Submitted By'
+        b'ID', b'UUID', b'Title', b'Aliases', b'Awards', b'Name', b'Status', b'Principle Investigator', b'Institute Label'
     ]
 
     res = testapp.get('/multireport.tsv?type=Award&field=contact_pi&field=title&config=Award')
@@ -72,17 +72,7 @@ def test_multitype_report_download(workbook, testapp):
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Accession', b'Content Type', b'File Format', b'Lab', b'Status',
-    ]
-
-    res = testapp.get('/multireport.tsv?type=File&status=released')
-    assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
-    disposition = res.headers['content-disposition']
-    assert disposition.startswith('attachment;filename="type=File') and disposition.endswith('.tsv"')
-    lines = res.body.splitlines()
-    assert b'/multireport/' in lines[0]
-    assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Accession', b'Content Type', b'File Format', b'Lab', b'Status',
+        b'ID', b'UUID', b'Accession', b'Alternate Accessions', b'Content Type', b'File Format', b'Lab', b'Status',
     ]
 
     res = testapp.get('/multireport.tsv?type=SequenceFile&type=AlignmentFile&status=released')
@@ -92,5 +82,5 @@ def test_multitype_report_download(workbook, testapp):
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Accession', b'Content Type', b'File Format', b'Lab', b'Status',
+        b'ID', b'UUID', b'Accession', b'Alternate Accessions', b'Content Type', b'File Format', b'Lab', b'Status',
     ]

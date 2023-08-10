@@ -53,6 +53,9 @@ def measurement_set():
             'accession': {
                 'title': 'Accession'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'uuid': {
                 'title': 'UUID'
             },
@@ -62,11 +65,11 @@ def measurement_set():
             'status': {
                 'title': 'Status'
             },
-            'sample': {
-                'title': 'Sample'
+            'samples': {
+                'title': 'Samples'
             },
-            'donor': {
-                'title': 'Donor'
+            'donors': {
+                'title': 'Donors'
             },
             'lab': {
                 'title': 'Lab'

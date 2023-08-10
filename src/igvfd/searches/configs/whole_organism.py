@@ -26,7 +26,7 @@ def whole_organism():
                 'title': 'Sample Terms'
             },
             'disease_terms.term_name': {
-                'title': 'Disease'
+                'title': 'Disease Terms'
             },
             'lab.title': {
                 'title': 'Lab'
@@ -51,6 +51,7 @@ def whole_organism():
                     'biomarkers.classification',
                     'sample_terms.term_name',
                     'disease_terms.term_name',
+                    'virtual',
                 ]
             },
             {
@@ -78,8 +79,11 @@ def whole_organism():
             'sample_terms': {
                 'title': 'Sample Terms'
             },
-            'donor': {
-                'title': 'Donor'
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
+            'donors': {
+                'title': 'Donors'
             },
             'date_obtained': {
                 'title': 'Date Obtained'
@@ -95,9 +99,6 @@ def whole_organism():
             },
             'status': {
                 'title': 'Status'
-            },
-            'submitted_by': {
-                'title': 'Submitted By'
             },
             'summary': {
                 'title': 'Summary'

@@ -18,8 +18,37 @@ def auxiliary_set():
             },
             'auxiliary_type': {
                 'title': 'Auxiliary Type'
-            }
+            },
+            'donors.taxa': {
+                'title': 'Taxa'
+            },
+            'collections': {
+                'title': 'Collections',
+            },
         },
+        'facet_groups': [
+            {
+                'title': 'File Set',
+                'facet_fields': [
+                    'auxiliary_type',
+                    'donors.taxa'
+                ],
+            },
+            {
+                'title': 'Provenance',
+                'facet_fields': [
+                    'collections',
+                    'lab.title',
+                    'award.component',
+                ],
+            },
+            {
+                'title': 'Quality',
+                'facet_fields': [
+                    'status',
+                ],
+            },
+        ],
         'columns': {
             'accession': {
                 'title': 'Accession'
@@ -41,7 +70,6 @@ def auxiliary_set():
             },
             'donors': {
                 'title': 'Donors'
-            },
+            }
         }
-
     }

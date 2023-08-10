@@ -39,6 +39,9 @@ def tissue():
             },
             'virtual': {
                 'title': 'Virtual'
+            },
+            'biomarkers.classification': {
+                'title': 'Biomarkers Classification'
             }
         },
         'facet_groups': [
@@ -50,6 +53,8 @@ def tissue():
                     'treatments.treatment_term_name',
                     'taxa',
                     'sex',
+                    'biomarkers.classification',
+                    'virtual',
                 ]
             },
             {
@@ -78,6 +83,9 @@ def tissue():
             'sample_terms': {
                 'title': 'Sample Terms'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'donors': {
                 'title': 'Donors'
             },
@@ -95,9 +103,6 @@ def tissue():
             },
             'status': {
                 'title': 'Status'
-            },
-            'submitted_by': {
-                'title': 'Submitted By'
             },
             'summary': {
                 'title': 'Summary'

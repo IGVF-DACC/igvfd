@@ -54,9 +54,6 @@ def assay_term():
             },
             'status': {
                 'title': 'Status'
-            },
-            'submitted_by': {
-                'title': 'Submitted By'
-            },
+            }
         }
     }

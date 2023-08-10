@@ -22,9 +22,6 @@ def primary_cell():
             'sex': {
                 'title': 'Sex'
             },
-            'donors.taxa': {
-                'title': 'Donor Taxa',
-            },
             'collections': {
                 'title': 'Collections',
             },
@@ -42,6 +39,9 @@ def primary_cell():
             },
             'virtual': {
                 'title': 'Virtual'
+            },
+            'biomarkers.classification': {
+                'title': 'Biomarkers Classification'
             }
         },
         'facet_groups': [
@@ -53,6 +53,8 @@ def primary_cell():
                     'treatments.treatment_term_name',
                     'taxa',
                     'sex',
+                    'biomarkers.classification',
+                    'virtual'
                 ]
             },
             {
@@ -81,6 +83,9 @@ def primary_cell():
             'sample_terms': {
                 'title': 'Sample Terms'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'donors': {
                 'title': 'Donors'
             },
@@ -98,9 +103,6 @@ def primary_cell():
             },
             'status': {
                 'title': 'Status'
-            },
-            'submitted_by': {
-                'title': 'Submitted By'
             },
             'summary': {
                 'title': 'Summary'

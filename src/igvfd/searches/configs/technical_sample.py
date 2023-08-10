@@ -34,6 +34,7 @@ def technical_sample():
                 'title': 'Sample',
                 'facet_fields': [
                     'sample_terms.term_name',
+                    'virtual',
                 ]
             },
             {
@@ -62,6 +63,9 @@ def technical_sample():
             'sample_terms': {
                 'title': 'Sample Terms'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'date_obtained': {
                 'title': 'Date Obtained'
             },
@@ -73,9 +77,6 @@ def technical_sample():
             },
             'status': {
                 'title': 'Status'
-            },
-            'submitted_by': {
-                'title': 'Submitted By'
             },
             'description': {
                 'title': 'Description'

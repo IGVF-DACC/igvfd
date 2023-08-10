@@ -25,7 +25,7 @@ def analysis_set():
         },
         'facet_groups': [
             {
-                'title': 'Sample',
+                'title': 'File Set',
                 'facet_fields': [
                     'donors.taxa',
                 ],
@@ -58,8 +58,8 @@ def analysis_set():
             'status': {
                 'title': 'Status'
             },
-            'sample': {
-                'title': 'Sample'
+            'samples': {
+                'title': 'Samples'
             },
             'donors': {
                 'title': 'Donors'
