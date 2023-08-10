@@ -7,8 +7,8 @@ from snovault.elasticsearch.searches.configs import search_config
 def multiplexed_sample():
     return {
         'facets': {
-            'biosample_terms.term_name': {
-                'title': 'Biosample Term',
+            'sample_terms.term_name': {
+                'title': 'Sample Terms',
             },
             'disease_terms.term_name': {
                 'title': 'Disease Terms',
@@ -39,7 +39,7 @@ def multiplexed_sample():
             {
                 'title': 'Sample',
                 'facet_fields': [
-                    'biosample_terms.term_name',
+                    'sample_terms.term_name',
                     'disease_terms.term_name',
                     'treatments.treatment_term_name',
                     'biomarkers.classification',

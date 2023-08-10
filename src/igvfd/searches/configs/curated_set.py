@@ -22,9 +22,6 @@ def curated_set():
             'curated_set_type': {
                 'title': 'Curated Set Type'
             },
-            'collections': {
-                'title': 'Collections',
-            },
             'status': {
                 'title': 'Status'
             }

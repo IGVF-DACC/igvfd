@@ -6,7 +6,7 @@ from snovault.elasticsearch.searches.configs import search_config
 )
 def signal_file():
     return {
-        'columns': {
+        'facets': {
             'uuid': {
                 'title': 'UUID'
             },
@@ -18,9 +18,6 @@ def signal_file():
             },
             'file_format': {
                 'title': 'File Format'
-            },
-            'lab': {
-                'title': 'Lab'
             },
             'status': {
                 'title': 'Status'
@@ -85,7 +82,7 @@ def signal_file():
             'file_format': {
                 'title': 'File Format'
             },
-            'lab': {
+            'lab.title': {
                 'title': 'Lab'
             },
             'status': {

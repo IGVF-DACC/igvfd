@@ -51,7 +51,6 @@ def tissue():
                     'sample_terms.term_name',
                     'disease_terms.term_name',
                     'treatments.treatment_term_name',
-                    'biosample_term.term_name',
                     'taxa',
                     'sex',
                     'biomarkers.classification',

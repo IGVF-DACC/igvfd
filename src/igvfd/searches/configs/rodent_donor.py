@@ -44,7 +44,7 @@ def rodent_donor():
             {
                 'title': 'Provenance',
                 'facet_fields': [
-                    'collection',
+                    'collections',
                     'lab.title',
                     'award.component',
                     'sources.title',
