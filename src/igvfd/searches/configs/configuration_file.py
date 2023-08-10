@@ -60,6 +60,9 @@ def configuration_file():
             'accession': {
                 'title': 'Accession'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'content_type': {
                 'title': 'Content Type'
             },

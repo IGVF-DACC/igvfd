@@ -82,7 +82,7 @@ def signal_file():
             'file_format': {
                 'title': 'File Format'
             },
-            'lab.title': {
+            'lab': {
                 'title': 'Lab'
             },
             'status': {
