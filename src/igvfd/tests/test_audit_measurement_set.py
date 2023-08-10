@@ -207,7 +207,7 @@ def test_audit_inconsistent_construct_libraries_details(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent construct library metadata'
+        error['category'] == 'inconsistent construct library details'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -218,6 +218,6 @@ def test_audit_inconsistent_construct_libraries_details(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent construct library metadata'
+        error['category'] != 'inconsistent construct library details'
         for error in res.json['audit'].get('WARNING', [])
     )

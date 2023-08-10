@@ -89,7 +89,7 @@ def audit_unspecified_protocol(value, system):
 def audit_construct_libraries(value, system):
     '''
         audit_detail: Construct libraries linked to in a measurement set are expected to have the same library details.
-        audit_category: inconsistent construct library metadata
+        audit_category: inconsistent construct library details
         audit_levels: WARNING
     '''
     if 'construct_libraries' in value and len(value['construct_libraries']) > 1:
@@ -113,4 +113,4 @@ def audit_construct_libraries(value, system):
                 f'is expected to have construct libraries with the same library details, '
                 f'but has construct libraries with {library_details}.'
             )
-            yield AuditFailure('inconsistent construct library metadata', detail, level='WARNING')
+            yield AuditFailure('inconsistent construct library details', detail, level='WARNING')
