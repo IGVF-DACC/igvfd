@@ -74,6 +74,9 @@ def configuration_file():
             },
             'status': {
                 'title': 'Status'
+            },
+            'file_set': {
+                'title': 'File Set'
             }
         }
     }

@@ -74,6 +74,21 @@ def alignment_file():
             },
             'status': {
                 'title': 'Status'
+            },
+            'file_set': {
+                'title': 'File Set'
+            },
+            'assembly': {
+                'title': 'Assembly'
+            },
+            'transcriptome_annotation': {
+                'title': 'Transcriptome Annotation'
+            },
+            'reference_files': {
+                'title': 'Reference Files'
+            },
+            'content_summary': {
+                'title': 'Content Summary'
             }
         }
     }
