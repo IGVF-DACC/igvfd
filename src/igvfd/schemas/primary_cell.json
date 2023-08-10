@@ -2,7 +2,7 @@
     "title": "Primary Cell",
     "$id": "/profiles/primary_cell.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a primary cell sample.",
+    "description": "Schema for submitting a primary cell sample. Primary cells represent samples that were directly harvested from a donor, such as fibroblasts or immune cells.",
     "type": "object",
     "required": [
         "award",

@@ -2,7 +2,7 @@
     "title": "Technical Sample",
     "$id": "/profiles/technical_sample.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a specific technical sample.",
+    "description": "Schema for submitting a specific technical sample. Technical samples represent samples of nucleic acids which were not directly obtained from a donor or cultured in vitro, but were instead synthetically generated or mixed.",
     "type": "object",
     "required": [
         "award",

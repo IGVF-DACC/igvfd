@@ -2,7 +2,7 @@
     "title": "Analysis Set",
     "$id": "/profiles/analysis_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for an analysis set.",
+    "description": "Schema for an analysis set. Analysis sets represent the results of a computational analysis of raw genomic data.",
     "type": "object",
     "required": [
         "award",
