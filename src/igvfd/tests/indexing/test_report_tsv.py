@@ -42,7 +42,7 @@ def test_multitype_report_download(workbook, testapp):
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Title', b'Aliases', b'Awards', b'Name', b'Status', b'Principle Investigator', b'Institute Label', b'Submitted By'
+        b'ID', b'UUID', b'Title', b'Aliases', b'Awards', b'Name', b'Status', b'Principle Investigator', b'Institute Label'
     ]
 
     res = testapp.get('/multireport.tsv?type=Award&field=contact_pi&field=title&config=Award')
