@@ -84,6 +84,9 @@ def tissue():
             'sample_terms': {
                 'title': 'Sample Terms'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'donors': {
                 'title': 'Donors'
             },

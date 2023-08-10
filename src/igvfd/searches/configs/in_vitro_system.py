@@ -83,6 +83,9 @@ def in_vitro_system():
             'accession': {
                 'title': 'Accession'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'classification': {
                 'title': 'Classification'
             },

@@ -63,6 +63,9 @@ def technical_sample():
             'sample_terms': {
                 'title': 'Sample Terms'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'date_obtained': {
                 'title': 'Date Obtained'
             },
