@@ -23,7 +23,7 @@ def audit_targeted_sample_term_check(value, system):
             if term == targeted_sample_term:
                 detail = (
                     f'InVitroSystem {audit_link(path_to_text(value_id), value_id)} '
-                    f'has specified its targeted_sample_term to be the same as its sample_term.'
+                    f'has specified its targeted_sample_term to be the same as in sample_terms.'
                 )
                 yield AuditFailure('inconsistent targeted_sample_term', detail, level='WARNING')
 
