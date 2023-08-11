@@ -84,6 +84,12 @@ def signal_file():
             },
             'status': {
                 'title': 'Status'
+            },
+            'file_set': {
+                'title': 'File Set'
+            },
+            'content_summary': {
+                'title': 'Content Summary'
             }
         }
     }

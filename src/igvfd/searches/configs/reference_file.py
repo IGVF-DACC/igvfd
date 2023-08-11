@@ -83,6 +83,15 @@ def reference_file():
             },
             'status': {
                 'title': 'Status'
+            },
+            'file_set': {
+                'title': 'File Set'
+            },
+            'assembly': {
+                'title': 'Assembly'
+            },
+            'transcriptome_annotation': {
+                'title': 'Transcriptome Annotation'
             }
         }
     }

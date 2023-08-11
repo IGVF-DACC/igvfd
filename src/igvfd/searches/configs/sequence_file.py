@@ -78,6 +78,15 @@ def sequence_file():
             },
             'status': {
                 'title': 'Status'
+            },
+            'file_set': {
+                'title': 'File Set'
+            },
+            'illumina_read_type': {
+                'title': 'Illumina Read Type'
+            },
+            'dbxrefs': {
+                'title': 'External Identifiers'
             }
         }
     }
