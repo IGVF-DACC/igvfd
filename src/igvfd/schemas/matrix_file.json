@@ -64,6 +64,7 @@
         },
         "dimension1": {
             "comment": "First dimension of the matrix",
+            "type": "string",
             "enum": [
                 "cell",
                 "gene",
@@ -75,6 +76,7 @@
         },
         "dimension2": {
             "comment": "Second dimension of the matrix",
+            "type": "string",
             "enum": [
                 "cell",
                 "gene",
@@ -91,15 +93,15 @@
                 "h5ad",
                 "matrixmarket"
             ]
-        },
-        "fuzzy_searchable_fields": [
-            "content_type"
-        ],
-        "exact_searchable_fields": [
-            "@type",
-            "dbxrefs",
-            "file_format"
-        ],
-        "changelog": "/profiles/changelogs/matrix_file.md"
-    }
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "content_type"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs",
+        "file_format"
+    ],
+    "changelog": "/profiles/changelogs/matrix_file.md"
 }
