@@ -112,7 +112,7 @@
         "classification": {
             "title": "Classification",
             "description": "The general category of this type of in vitro system.",
-            "comment": "The specified category should match the ontology type used to describe this type of in vitro system. For example 'brain organoid' uses UBERON ontology, cell lines use CL ontology, etc. Differentiated, reprogrammed, and pooled cell specimen are in concordance with NCIT definitions.",
+            "comment": "The specified category should match the ontology type used to describe this type of in vitro system. For example 'brain organoid' uses UBERON ontology, cell lines use CL ontology, etc. Differentiated, reprogrammed, and pooled cell specimen are in concordance with NCIT definitions. If an in vitro system has classification organoid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, cell_fate_change_treatments, time_post_change, and time_post_change_units are required.",
             "type": "string",
             "enum": [
                 "organoid",
