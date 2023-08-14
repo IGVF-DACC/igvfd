@@ -112,7 +112,7 @@
         "classification": {
             "title": "Classification",
             "description": "The general category of this type of in vitro system.",
-            "comment": "Required property. The specified category should match the ontology type used to describe this type of in vitro system. For example 'brain organoid' uses UBERON ontology, cell lines use CL ontology, etc. Differentiated, reprogrammed, and pooled cell specimen are in concordance with NCIT definitions.",
+            "comment": "The specified category should match the ontology type used to describe this type of in vitro system. For example 'brain organoid' uses UBERON ontology, cell lines use CL ontology, etc. Differentiated, reprogrammed, and pooled cell specimen are in concordance with NCIT definitions. If an in vitro system has classification organoid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, cell_fate_change_treatments, time_post_change, and time_post_change_units are required.",
             "type": "string",
             "enum": [
                 "organoid",
@@ -127,13 +127,13 @@
         "time_post_change": {
             "title": "Time Post Change",
             "description": "The time that elapsed past the time-point when the cell fate change treatments were introduced.",
-            "comment": "Use in conjunction with time_post_change_units to specify time elapsed post cell fate change treatment introduction. Use of this property requires time_post_change_units specification.",
+            "comment": "Use of this property requires time_post_change_units and cell_fate_change_treatments.",
             "type": "number"
         },
         "time_post_change_units": {
             "title": "Time Post Change Units",
             "description": "The units of time that elapsed past the point when the cell fate change treatments were introduced.",
-            "comment": "Use in conjunction with time_post_change to specify time elapsed post cell fate change treatment introduction. Use of this property requires time_post_change specification.",
+            "comment": "Use of this property requires time_post_change and cell_fate_change_treatments.",
             "type": "string",
             "enum": [
                 "minute",
@@ -149,6 +149,7 @@
         "cell_fate_change_treatments": {
             "title": "Cell Fate Change Treatments",
             "description": "A list of treatments applied to the biosample with the purpose of differentiation, dedifferentiation, or reprogramming.",
+            "comment": "Use of this property requires time_post_change and time_post_change_units.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,

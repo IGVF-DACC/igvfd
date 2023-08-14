@@ -52,7 +52,7 @@
             "required": [
                 "product_id"
             ],
-            "comment": "Donor with lot_id must include product_id."
+            "comment": "A rodent donor with lot_id must include product_id."
         },
         "rodent_identifier": {
             "comment": "The donor must be an individual rodent to specify a rodent identifier.",
@@ -131,13 +131,14 @@
         "individual_rodent": {
             "title": "Individual Rodent",
             "description": "This rodent donor represents an individual rodent.",
+            "comment": "If true, a rodent_identifier is required for identification of the individual rodent donor.",
             "type": "boolean",
             "default": false
         },
         "rodent_identifier": {
             "title": "Rodent Identifier",
             "description": "The identifier for this individual rodent donor.",
-            "comment": "`individual_rodent` should be submitted as true with submission of this property.",
+            "comment": "Use of this property requires that individual_rodent be true.",
             "type": "string"
         },
         "dbxrefs": {

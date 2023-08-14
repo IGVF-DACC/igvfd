@@ -66,6 +66,7 @@
         "document_type": {
             "title": "Document Type",
             "description": "The category that best describes the document.",
+            "comment": "If a document has document_type characterization, then characterization_method is required.",
             "type": "string",
             "enum": [
                 "characterization",

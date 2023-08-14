@@ -262,6 +262,7 @@
         "expression_vector_library_details": {
             "title": "Expression Vector Library Details",
             "description": "Details about a construct library supplying specific gene(s) to be expressed in a sample.",
+            "comment": "Specification of expression_vector_library_details is mutually exclusive with reporter_library_details and guide_library_details.",
             "type": "object",
             "additionalProperties": false,
             "properties": {
@@ -282,6 +283,7 @@
         "reporter_library_details": {
             "title": "Reporter Library Details",
             "description": "Details about an MPRA, STARR-seq, or other reporter assay construct library.",
+            "comment": "Specification of reporter_library_details is mutually exclusive with expression_vector_library_details and guide_library_details.",
             "type": "object",
             "additionalProperties": false,
             "dependentSchemas": {
@@ -339,6 +341,7 @@
         "guide_library_details": {
             "title": "Guide Library Details",
             "description": "Details about a library of guides cloned into constructs.",
+            "comment": "Specification of guide_library_details is mutually exclusive with expression_vector_library_details and reporter_library_details.",
             "type": "object",
             "additionalProperties": false,
             "required": [

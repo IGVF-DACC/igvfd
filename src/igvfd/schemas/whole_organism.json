@@ -82,6 +82,12 @@
             "linkEnum": [
                 "25d5ad53-15fd-4a44-878a-ece2f7e86509"
             ]
+        },
+        "part_of": {
+            "comment": "Do not submit. Whole organism samples should not be part of any other sample."
+        },
+        "pooled_from": {
+            "comment": "Do not submit. Whole organism samples should not be pooled from any other sample."
         }
     },
     "fuzzy_searchable_fields": [
