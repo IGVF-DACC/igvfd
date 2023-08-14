@@ -118,6 +118,9 @@ def in_vitro_system():
             },
             'virtual': {
                 'title': 'Virtual'
+            },
+            'description': {
+                'title': 'Description'
             }
         }
     }

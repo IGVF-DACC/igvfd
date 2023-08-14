@@ -109,6 +109,9 @@ def tissue():
             },
             'virtual': {
                 'title': 'Virtual'
+            },
+            'description': {
+                'title': 'Description'
             }
         }
     }

@@ -105,6 +105,9 @@ def whole_organism():
             },
             'virtual': {
                 'title': 'Virtual'
+            },
+            'description': {
+                'title': 'Description'
             }
         }
     }

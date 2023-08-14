@@ -90,7 +90,10 @@ class Biosample(Sample):
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
-        Path('treatments', include=['@id', 'treatment_term_name', 'purpose']),
+        Path('treatments', include=['@id', 'treatment_term_id', 'treatment_term_name', 'treatment_type',
+             'purpose', 'amount', 'amount_units', 'duration', 'duration_units']),
+        Path('sorted_fraction', include=['@id', 'accession']),
+        Path('modifications', include=['@id', 'modality', 'cas', 'cas_species', 'fused_domain', 'tagged_protein'])
     ]
 
     @calculated_property(
@@ -221,7 +224,9 @@ class InVitroSystem(Biosample):
     item_type = 'in_vitro_system'
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
     embedded_with_frame = Biosample.embedded_with_frame + [
-        Path('cell_fate_change_treatments', include=['@id', 'treatment_term_name', 'purpose']),
+        Path('cell_fate_change_treatments', include=['@id', 'treatment_term_name', 'purpose',
+             'treatment_type', 'treatment_term_id', 'duration', 'duration_units', 'amount', 'amount_units']),
+        Path('originated_from', include=['@id', 'accession']),
     ]
 
     @calculated_property(
