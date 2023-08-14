@@ -36,6 +36,22 @@ def base_construct_library(testapp, lab, award):
 
 
 @pytest.fixture
+def construct_library_reporter_library(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'scope': 'genome-wide',
+        'selection_criteria': [
+            'accessible genome regions'
+        ],
+        'reporter_library_details': {
+            'average_insert_size': 50
+        }
+    }
+    return testapp.post_json('/construct_library', item).json['@graph'][0]
+
+
+@pytest.fixture
 def construct_library_v1(
         testapp, lab, award, plasmid_map_document, document_v1):
     item = {
