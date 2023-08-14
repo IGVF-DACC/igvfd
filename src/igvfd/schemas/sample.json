@@ -62,7 +62,7 @@
             "required": [
                 "starting_amount"
             ],
-            "comment": "A sample with starting_amount must include starting_amount_units."
+            "comment": "A sample with starting_amount_units must include starting_amount."
         }
     },
     "properties": {
@@ -82,7 +82,7 @@
         "starting_amount_units": {
             "title": "Starting Amount Units",
             "description": "The units used to quantify the amount of samples obtained.",
-            "comment": "A sample with starting_amount must include starting_amount_units.",
+            "comment": "A sample with starting_amount_units must include starting_amount.",
             "type": "string",
             "enum": [
                 "cells",
