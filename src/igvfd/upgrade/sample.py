@@ -311,3 +311,27 @@ def multiplexed_sample_2_3(value, system):
     # Biosample_terms is renamed to sample_terms
     # The property is calculated so the upgrade is solely to flag the change
     return
+
+
+@upgrade_step('primary_cell', '14', '15')
+@upgrade_step('in_vitro_system', '13', '14')
+@upgrade_step('tissue', '14', '15')
+@upgrade_step('technical_sample', '8', '9')
+@upgrade_step('whole_organism', '17', '18')
+@upgrade_step('multiplexed_sample', '3', '4')
+def sample_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-949
+    notes = value.get('notes', '')
+    if 'starting_amount' in value and 'starting_amount_units' not in value:
+        value['starting_amount_units'] = 'items'
+        notes += f' This sample has been upgraded to have starting_amount_units as "items" since there was no entry. Please update with the appropriate value for starting_amount_units.'
+    elif 'starting_amount_units' in value and 'starting_amount' not in value:
+        value['starting_amount'] = 0
+        notes += f' This sample has been upgraded to have a starting_amount of 0 since there was no entry. Please update with the appropriate value for starting_amount.'
+    if 'pmi' in value and 'pmi_units' not in value:
+        value['pmi_units'] = 'second'
+        notes += f' This sample has been upgraded to have pmi_units as "second" since there was no entry. Please update with the appropriate value for pmi_units.'
+    elif 'pmi_units' in value and 'pmi' not in value:
+        value['pmi'] = 1
+        notes += f' This sample has been upgraded to have a pmi of 1 since there was no entry. Please update with the appropriate value for pmi.'
+    value['notes'] = notes.strip()

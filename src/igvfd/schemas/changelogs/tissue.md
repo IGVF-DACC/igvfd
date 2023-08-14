@@ -1,5 +1,10 @@
 ## Changelog for *`tissue.json`*
 
+### Schema version 15
+
+* Mutually require `starting_amount` and `starting_amount_units`.
+* Mutually require `pmi` and `pmi_units`.
+
 ### Schema version 14
 
 * Rename `source` to `sources`, `biosample_term` to `sample_terms`, and `modification` to `modifications`.

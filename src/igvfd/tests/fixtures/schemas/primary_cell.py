@@ -240,3 +240,23 @@ def primary_cell_v13(lab, award, source, human_donor, sample_term_adrenal_gland,
         'modification': modification['@id']
     }
     return item
+
+
+@pytest.fixture
+def primary_cell_v14_no_units(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '14',
+        'starting_amount': 5
+    })
+    return item
+
+
+@pytest.fixture
+def primary_cell_v14_no_amount(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '14',
+        'starting_amount_units': 'g'
+    })
+    return item

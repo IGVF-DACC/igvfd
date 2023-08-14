@@ -84,3 +84,23 @@ def technical_sample_v7(lab, award, source, sample_term_adrenal_gland, modificat
         'modification': modification['@id']
     }
     return item
+
+
+@pytest.fixture
+def technical_sample_v8_no_units(technical_sample):
+    item = technical_sample.copy()
+    item.update({
+        'schema_version': '8',
+        'starting_amount': 5
+    })
+    return item
+
+
+@pytest.fixture
+def technical_sample_v8_no_amount(technical_sample):
+    item = technical_sample.copy()
+    item.update({
+        'schema_version': '8',
+        'starting_amount_units': 'g'
+    })
+    return item

@@ -51,6 +51,18 @@
                 "sorted_fraction"
             ],
             "comment": "A sample with sorted_fraction_detail must include sorted_fraction."
+        },
+        "starting_amount": {
+            "required": [
+                "starting_amount_units"
+            ],
+            "comment": "A sample with starting_amount must include starting_amount_units."
+        },
+        "starting_amount_units": {
+            "required": [
+                "starting_amount"
+            ],
+            "comment": "A sample with starting_amount_units must include starting_amount."
         }
     },
     "properties": {
@@ -63,12 +75,14 @@
         "starting_amount": {
             "title": "Starting Amount",
             "description": "The initial quantity of samples obtained.",
+            "comment": "A sample with starting_amount must include starting_amount_units.",
             "type": "number",
             "minimum": 0
         },
         "starting_amount_units": {
             "title": "Starting Amount Units",
             "description": "The units used to quantify the amount of samples obtained.",
+            "comment": "A sample with starting_amount_units must include starting_amount.",
             "type": "string",
             "enum": [
                 "cells",

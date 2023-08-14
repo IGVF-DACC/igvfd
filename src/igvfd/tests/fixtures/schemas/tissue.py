@@ -228,3 +228,25 @@ def tissue_v13(lab, award, source, human_donor, sample_term_adrenal_gland, modif
         'modification': modification['@id']
     }
     return item
+
+
+@pytest.fixture
+def tissue_v14_no_units(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '14',
+        'pmi': 3,
+        'starting_amount': 5
+    })
+    return item
+
+
+@pytest.fixture
+def tissue_v14_no_amount(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '14',
+        'pmi_units': 'minute',
+        'starting_amount_units': 'g'
+    })
+    return item

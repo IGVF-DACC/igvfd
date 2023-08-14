@@ -108,3 +108,14 @@ def test_tissue_upgrade_13_14(upgrader, tissue_v13):
     assert modifications == value['modifications']
     assert type(value['modifications']) == list
     assert value['schema_version'] == '14'
+
+
+def test_tissue_upgrade_14_15(upgrader, tissue_v14_no_units, tissue_v14_no_amount):
+    value = upgrader.upgrade('tissue', tissue_v14_no_units, current_version='14', target_version='15')
+    assert 'starting_amount_units' in value and value['starting_amount_units'] == 'items'
+    assert 'pmi_units' in value and value['pmi_units'] == 'second'
+    assert value['schema_version'] == '15'
+    value = upgrader.upgrade('tissue', tissue_v14_no_amount, current_version='14', target_version='15')
+    assert 'starting_amount' in value and value['starting_amount'] == 0
+    assert 'pmi' in value and value['pmi'] == 1
+    assert value['schema_version'] == '15'

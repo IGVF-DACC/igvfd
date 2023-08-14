@@ -13,3 +13,14 @@ def test_multiplexed_sample_upgrade_1_2(upgrader, multiplexed_sample_v1):
 def test_multiplexed_sample_upgrade_2_3(upgrader, multiplexed_sample_v2):
     value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v2, current_version='2', target_version='3')
     assert value['schema_version'] == '3'
+
+
+def test_multiplexed_sample_3_4(upgrader, multiplexed_sample_v3_no_units, multiplexed_sample_v3_no_amount):
+    value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v3_no_units,
+                             current_version='3', target_version='4')
+    assert 'starting_amount_units' in value and value['starting_amount_units'] == 'items'
+    assert value['schema_version'] == '4'
+    value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v3_no_amount,
+                             current_version='3', target_version='4')
+    assert 'starting_amount' in value and value['starting_amount'] == 0
+    assert value['schema_version'] == '4'

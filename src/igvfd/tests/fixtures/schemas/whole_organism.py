@@ -230,3 +230,23 @@ def whole_organism_v16(lab, award, source, human_donor, sample_term_adrenal_glan
         'schema_version': '16'
     }
     return item
+
+
+@pytest.fixture
+def whole_organism_v17_no_units(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '17',
+        'starting_amount': 5
+    })
+    return item
+
+
+@pytest.fixture
+def whole_organism_v17_no_amount(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '17',
+        'starting_amount_units': 'g'
+    })
+    return item

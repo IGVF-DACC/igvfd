@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Schema version 9
+
+* Mutually require `starting_amount` and `starting_amount_units`.
+
 ### Schema version 8
 
 * Rename `source` to `sources` and `technical_sample_term` to `sample_terms`.

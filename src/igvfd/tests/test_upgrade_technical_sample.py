@@ -54,3 +54,12 @@ def test_technical_sample_upgrade_7_8(upgrader, technical_sample_v7):
     assert modifications == value['modifications']
     assert type(value['modifications']) == list
     assert value['schema_version'] == '8'
+
+
+def test_technical_sample_8_9(upgrader, technical_sample_v8_no_units, technical_sample_v8_no_amount):
+    value = upgrader.upgrade('technical_sample', technical_sample_v8_no_units, current_version='8', target_version='9')
+    assert 'starting_amount_units' in value and value['starting_amount_units'] == 'items'
+    assert value['schema_version'] == '9'
+    value = upgrader.upgrade('technical_sample', technical_sample_v8_no_amount, current_version='8', target_version='9')
+    assert 'starting_amount' in value and value['starting_amount'] == 0
+    assert value['schema_version'] == '9'

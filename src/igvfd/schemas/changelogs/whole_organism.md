@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 18
+
+* Mutually require `starting_amount` and `starting_amount_units`.
+
 ### Schema version 17
 
 * Rename `source` to `sources`, `biosample_term` to `sample_terms`, and `modification` to `modifications`.
@@ -28,7 +32,7 @@
 
 * Add `cellular_sub_pool`.
 
-# Schema version 11
+### Schema version 11
 
 * Disallow `part_of` and `pooled_from` properties.
 
