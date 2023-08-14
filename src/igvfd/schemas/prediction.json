@@ -1,6 +1,6 @@
 {
     "title": "Prediction",
-    "description": "Schema for submitting a file set of computational predictions.",
+    "description": "Schema for submitting a file set of computational predictions. Predictions contain results of analyses to predict functions or traits of genomic features.",
     "$id": "/profiles/prediction.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
