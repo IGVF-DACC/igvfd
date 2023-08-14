@@ -88,7 +88,9 @@ def multiplexed_sample():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'description': {
+                'title': 'Description'
             }
-
         }
     }

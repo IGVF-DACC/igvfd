@@ -109,6 +109,9 @@ def primary_cell():
             },
             'virtual': {
                 'title': 'Virtual'
+            },
+            'description': {
+                'title': 'Description'
             }
         }
     }

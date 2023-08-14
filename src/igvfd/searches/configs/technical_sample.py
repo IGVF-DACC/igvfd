@@ -86,6 +86,6 @@ def technical_sample():
             },
             'virtual': {
                 'title': 'Virtual'
-            }
+            },
         }
     }
