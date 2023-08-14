@@ -53,13 +53,13 @@
             "default": "1"
         },
         "content_type": {
-            "comment": "Content Type describes the content of the file.",
+            "comment": "Content Type describes the content of the file",
             "enum": [
-                "sparse gene count matrix",
                 "contact matrix",
-                "transcriptome annotations",
+                "sparse gene count matrix",
+                "sparse peak count matrix",
                 "sparse transcript count matrix",
-                "sparse peak count matrix"
+                "transcriptome annotations"
             ]
         },
         "dimension1": {
@@ -67,10 +67,10 @@
             "type": "string",
             "enum": [
                 "cell",
-                "gene",
                 "fragment",
-                "treatment",
+                "gene",
                 "time",
+                "treatment",
                 "variant"
             ]
         },
@@ -79,10 +79,10 @@
             "type": "string",
             "enum": [
                 "cell",
-                "gene",
                 "fragment",
-                "treatment",
+                "gene",
                 "time",
+                "treatment",
                 "variant"
             ]
         },
@@ -90,8 +90,7 @@
             "enum": [
                 "h5ad",
                 "hdf5",
-                "h5ad",
-                "matrixmarket"
+                "mtx"
             ]
         }
     },
