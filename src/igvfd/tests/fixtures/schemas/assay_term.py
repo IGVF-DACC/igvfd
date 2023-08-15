@@ -63,3 +63,12 @@ def assay_term_ntr(testapp):
         'term_name': 'example-tn-1'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def assay_term_mpra(testapp):
+    item = {
+        'term_id': 'OBI:0002675',
+        'term_name': 'massively parallel reporter assay'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]

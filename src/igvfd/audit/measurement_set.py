@@ -114,3 +114,31 @@ def audit_construct_libraries(value, system):
                 f'but has construct libraries with {library_details}.'
             )
             yield AuditFailure('inconsistent construct library details', detail, level='WARNING')
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_inconsistent_readout(value, system):
+    '''
+        audit_detail: Screening assays (such as CRISPR screen and MPRA) are required to specify a readout, other assays should not include one.
+        audit_category: inconsistent readout
+        audit_levels: NOT_COMPLIANT
+    '''
+    assay_term = value.get('assay_term')
+    assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    screen_assays = ['Perturb-seq',
+                     'CRISPR screen',
+                     'massively parallel reporter assay']
+    if assay.get('term_name') in screen_assays:
+        if 'readout' not in value:
+            detail = (
+                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'a screening assay (such as CRISPR screen or MPRA) and is expected to specify a data readout.'
+            )
+            yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')
+    else:
+        if 'readout' in value:
+            detail = (
+                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'not expected to specify a data readout.'
+            )
+            yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')

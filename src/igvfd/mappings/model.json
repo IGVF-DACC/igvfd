@@ -1,6 +1,6 @@
 {
-    "hash": "4eb6b74d19c95fb862765d56e87a8e17",
-    "index_name": "model_4eb6b74d",
+    "hash": "86757790a71b4a515424d74ab8f3dbb5",
+    "index_name": "model_86757790",
     "item_type": "model",
     "mapping": {
         "dynamic_templates": [
@@ -417,6 +417,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {
@@ -1099,6 +1102,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

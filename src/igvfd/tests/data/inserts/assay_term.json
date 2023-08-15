@@ -64,5 +64,14 @@
         "term_name": "imaging assay",
         "uuid": "a9d2e325-1eb2-43bb-a039-2a87809cfba5",
         "status": "released"
+    },
+    {
+        "term_id": "OBI:0003090",
+        "term_name": "bulk RNA-seq",
+        "status": "released",
+        "uuid": "45f6baf1-fc25-4915-a43a-c3b083ba9f9c",
+        "aliases": [
+            "igvf:bulk RNA"
+        ]
     }
 ]

@@ -1,6 +1,6 @@
 {
-    "hash": "ad289f93efb8ebba3d9efe1a6f56175d",
-    "index_name": "construct_library_ad289f93",
+    "hash": "6b5147d85e7ec42c7e0aa3ae39fb8154",
+    "index_name": "construct_library_6b5147d8",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -420,6 +420,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

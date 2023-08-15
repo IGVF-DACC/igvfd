@@ -1,6 +1,6 @@
 {
-    "hash": "98c888ff0e0c28fb2ffa4cbb25cc8f45",
-    "index_name": "curated_set_98c888ff",
+    "hash": "6ea3a7c1595718eaf5f7b8eeca2bfb1e",
+    "index_name": "curated_set_6ea3a7c1",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -417,6 +417,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

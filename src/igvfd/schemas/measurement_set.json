@@ -113,6 +113,13 @@
                 "yN2H"
             ]
         },
+        "readout": {
+            "title": "Readout",
+            "description": "The assay term corresponding to the data readout of this measurement set.",
+            "comment": "This property should be used on CRISPR screen and MPRA measurement sets. See assay_term.json for available identifiers.",
+            "type": "string",
+            "linkTo": "AssayTerm"
+        },
         "moi": {
             "title": "Multiplicity Of Infection",
             "description": "The actual multiplicity of infection (MOI) for vectors introduced to the biosample used to produce data in this measurement set. At least one construct library must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",

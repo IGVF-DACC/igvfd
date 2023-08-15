@@ -1,6 +1,6 @@
 {
-    "hash": "b914d082b1032156fb386a8e8754157e",
-    "index_name": "analysis_set_b914d082",
+    "hash": "afb53c85b7fad2c190e0570b8a6e0753",
+    "index_name": "analysis_set_afb53c85",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -421,6 +421,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {
@@ -1103,6 +1106,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

@@ -1,6 +1,6 @@
 {
-    "hash": "4d8d36c78ac057f786145802b11b760b",
-    "index_name": "auxiliary_set_4d8d36c7",
+    "hash": "9f867a0a0272daa8a0e2c544d48d3a42",
+    "index_name": "auxiliary_set_9f867a0a",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -424,6 +424,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {
