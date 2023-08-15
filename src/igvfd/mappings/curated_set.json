@@ -1,6 +1,6 @@
 {
-    "hash": "8d1e1d1ec9b7f5ff9e0b3aaa39f1e2fe",
-    "index_name": "curated_set_8d1e1d1e",
+    "hash": "6ea3a7c1595718eaf5f7b8eeca2bfb1e",
+    "index_name": "curated_set_6ea3a7c1",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -738,6 +738,12 @@
                             },
                             "description": {
                                 "type": "text"
+                            },
+                            "dimension1": {
+                                "type": "keyword"
+                            },
+                            "dimension2": {
+                                "type": "keyword"
                             },
                             "documents": {
                                 "type": "keyword"
