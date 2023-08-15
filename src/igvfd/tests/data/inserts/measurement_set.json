@@ -118,5 +118,19 @@
         "nucleic_acid_delivery": "lentiviral transduction",
         "preferred_assay_title": "MPRA (scQer)",
         "readout": "/assay-terms/OBI_0002631/"
+    },
+    {
+        "aliases": [
+            "igvf:parse_split_seq"
+        ],
+        "award": "1UM1HG012077-01",
+        "lab": "ali-mortazavi",
+        "status": "released",
+        "uuid": "ec4b039c-5c06-11fd-856c-7c09f6bfffb9",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002631/",
+        "preferred_assay_title": "Parse Split-seq"
     }
 ]
