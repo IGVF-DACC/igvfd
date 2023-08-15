@@ -38,7 +38,7 @@ def test_multitype_report_download(workbook, testapp):
     res = testapp.get('/multireport.tsv?institute_label=Stanford')
     assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
     disposition = res.headers['content-disposition']
-    assert disposition.startswith('attachment;filename="institute_label=Stanford') and disposition.endswith('.tsv"')
+    assert disposition.startswith('attachment;filename="igvf_lab') and disposition.endswith('.tsv"')
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [
@@ -48,7 +48,7 @@ def test_multitype_report_download(workbook, testapp):
     res = testapp.get('/multireport.tsv?type=Award&field=contact_pi&field=title&config=Award')
     assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
     disposition = res.headers['content-disposition']
-    assert disposition.startswith('attachment;filename="type=Award') and disposition.endswith('.tsv"')
+    assert disposition.startswith('attachment;filename="igvf_award') and disposition.endswith('.tsv"')
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [
@@ -58,7 +58,7 @@ def test_multitype_report_download(workbook, testapp):
     res = testapp.get('/multireport.tsv?type=Award&config=AccessKey')
     assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
     disposition = res.headers['content-disposition']
-    assert disposition.startswith('attachment;filename="type=Award') and disposition.endswith('.tsv"')
+    assert disposition.startswith('attachment;filename="igvf_award') and disposition.endswith('.tsv"')
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [
@@ -68,7 +68,7 @@ def test_multitype_report_download(workbook, testapp):
     res = testapp.get('/multireport.tsv?type=File&status=released')
     assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
     disposition = res.headers['content-disposition']
-    assert disposition.startswith('attachment;filename="type=File') and disposition.endswith('.tsv"')
+    assert disposition.startswith('attachment;filename="igvf_mixed') and disposition.endswith('.tsv"')
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [
@@ -78,7 +78,7 @@ def test_multitype_report_download(workbook, testapp):
     res = testapp.get('/multireport.tsv?type=SequenceFile&type=AlignmentFile&status=released')
     assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
     disposition = res.headers['content-disposition']
-    assert disposition.startswith('attachment;filename="type=SequenceFile') and disposition.endswith('.tsv"')
+    assert disposition.startswith('attachment;filename="igvf_mixed') and disposition.endswith('.tsv"')
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
     assert lines[1].split(b'\t') == [

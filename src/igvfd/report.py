@@ -155,12 +155,16 @@ def multitype_report_download(context, request):
                 if type_name not in abstract_types:
                     types_in_search_result.append(term['key'])
             break
+    report_type = 'mixed'
+    if len(types_in_search_result) == 1:
+        report_type = _convert_camel_to_snake(types_in_search_result[0]).replace("'", '')
+
     # Make sure we get all results
     request.GET['limit'] = 'all'
     results = search_generator(request)
     columns = list_visible_columns_for_multitype_report_download(request, types_in_search_result, response['columns'])
 
-    def format_header(seq):
+    def format_header():
         newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, '/multireport/', request.query_string)
         return(bytes(newheader, 'utf-8'))
 
@@ -168,19 +172,19 @@ def multitype_report_download(context, request):
     if len(columns) == 1 and '@id' in columns:
         columns['@id']['title'] = 'id'
 
-    header = [column.get('title') or field for field, column in columns.items()]
+    header_row = [column.get('title') or field for field, column in columns.items()]
 
     def generate_rows():
-        yield format_header(header)
-        yield format_row(header)
+        yield format_header()
+        yield format_row(header_row)
         for item in results['@graph']:
             values = [lookup_column_value(item, path) for path in columns]
             yield format_row(values)
 
     # Stream response using chunked encoding.
     request.response.content_type = 'text/tsv'
-    request.response.content_disposition = 'attachment;filename="{}_report_{}_{}_{}_{}h_{}m.tsv"'.format(
-        request.query_string,
+    request.response.content_disposition = 'attachment;filename="igvf_{}_report_{}_{}_{}_{}h_{}m.tsv"'.format(
+        report_type,
         downloadtime.year,
         downloadtime.month,
         downloadtime.day,
