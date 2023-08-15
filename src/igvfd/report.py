@@ -4,6 +4,7 @@ from pyramid.httpexceptions import HTTPBadRequest
 from pyramid.view import view_config
 from snovault import TYPES
 from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
+from snosearch.parsers import QueryString
 from igvfd.search_views import search_generator
 
 import datetime
@@ -143,7 +144,10 @@ def list_visible_columns_for_schemas(request, schema, search_config):
 @view_config(route_name='multitype_report_download', request_method='GET')
 def multitype_report_download(context, request):
     downloadtime = datetime.datetime.now()
-    query_string = request.query_string + '&limit=0'
+    qs = QueryString(request)
+    qs.drop('limit')
+    qs.append(('limit', '0'))
+    query_string = qs.get_query_string()
     response = request.embed(f'/multireport?{query_string}')
     facets = response['facets']
     abstract_types = get_abstract_types(request)
