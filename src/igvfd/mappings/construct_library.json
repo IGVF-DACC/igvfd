@@ -1,6 +1,6 @@
 {
-    "hash": "2cd5355d0a7a7384c2794631cba7a9bf",
-    "index_name": "construct_library_2cd5355d",
+    "hash": "ad289f93efb8ebba3d9efe1a6f56175d",
+    "index_name": "construct_library_ad289f93",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -602,6 +602,12 @@
                             },
                             "description": {
                                 "type": "text"
+                            },
+                            "dimension1": {
+                                "type": "keyword"
+                            },
+                            "dimension2": {
+                                "type": "keyword"
                             },
                             "documents": {
                                 "type": "keyword"

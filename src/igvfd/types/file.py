@@ -301,6 +301,43 @@ class AlignmentFile(File):
 
 
 @collection(
+    name='matrix-files',
+    unique_key='accession',
+    properties={
+        'title': 'Matrix Files',
+        'description': 'Listing of matrix files',
+    }
+)
+class MatrixFile(File):
+    item_type = 'matrix_file'
+    schema = load_schema('igvfd:schemas/matrix_file.json')
+    embedded_with_frame = File.embedded_with_frame
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
+
+    @calculated_property(
+        schema={
+            'title': 'Content Summary',
+            'type': 'string',
+            'notSubmittable': True
+        }
+    )
+    def content_summary(self, request, content_type, file_format):
+        phrases = [
+            file_format,
+            content_type
+        ]
+        non_empty_phrases = [x for x in phrases if x != '']
+        return ' '.join(non_empty_phrases)
+
+
+@collection(
     name='signal-files',
     unique_key='accession',
     properties={

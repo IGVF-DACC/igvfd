@@ -55,6 +55,7 @@ ORDER = [
     'signal_file',
     'alignment_file',
     'configuration_file',
+    'matrix_file',
     'analysis_step'
 ]
 

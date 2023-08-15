@@ -48,6 +48,7 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.sequence_file',
     'igvfd.tests.fixtures.schemas.alignment_file',
     'igvfd.tests.fixtures.schemas.signal_file',
+    'igvfd.tests.fixtures.schemas.matrix_file',
     'igvfd.tests.fixtures.schemas.page',
     'igvfd.tests.fixtures.schemas.software',
     'igvfd.tests.fixtures.schemas.software_version',
