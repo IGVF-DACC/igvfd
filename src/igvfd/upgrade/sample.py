@@ -334,4 +334,5 @@ def sample_14_15(value, system):
     elif 'pmi_units' in value and 'pmi' not in value:
         value['pmi'] = 1
         notes += f' This sample has been upgraded to have a pmi of 1 since there was no entry. Please update with the appropriate value for pmi.'
-    value['notes'] = notes.strip()
+    if notes.strip():
+        value['notes'] = notes.strip()
