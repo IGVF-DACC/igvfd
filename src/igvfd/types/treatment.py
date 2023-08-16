@@ -35,10 +35,10 @@ class Treatment(Item):
     )
     def title(self, treatment_term_name, amount=None, amount_units=None, duration=None, duration_units=None):
         if duration is not None and amount is not None:
-            text = 'Treated of {} {} {} for {} {}'.format(
+            text = 'Treatment of {} {} {} for {} {}'.format(
                 amount, amount_units, treatment_term_name, duration, duration_units)
         elif duration is None and amount is not None:
-            text = 'Treated of {} {} {}'.format(
+            text = 'Treatment of {} {} {}'.format(
                 amount, amount_units, treatment_term_name)
         elif amount is None and duration is not None:
             text = 'Depletion of {} for {} {}'.format(
