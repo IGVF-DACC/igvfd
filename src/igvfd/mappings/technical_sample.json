@@ -1,6 +1,6 @@
 {
-    "hash": "11eab9cfa0b0fd7c356f26ce5df8b3d3",
-    "index_name": "technical_sample_11eab9cf",
+    "hash": "7bf8ae3b45f76e9156aaa97d357c006d",
+    "index_name": "technical_sample_7bf8ae3b",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -420,7 +420,246 @@
                         "type": "keyword"
                     },
                     "sorted_fraction": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "accession": {
+                                "type": "keyword"
+                            },
+                            "age": {
+                                "type": "keyword"
+                            },
+                            "age_units": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "award": {
+                                "type": "keyword"
+                            },
+                            "biomarkers": {
+                                "type": "keyword"
+                            },
+                            "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_fate_change_treatments": {
+                                "type": "keyword"
+                            },
+                            "cellular_sub_pool": {
+                                "type": "keyword"
+                            },
+                            "classification": {
+                                "type": "keyword"
+                            },
+                            "collections": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "date_obtained": {
+                                "type": "keyword"
+                            },
+                            "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "disease_terms": {
+                                "type": "keyword"
+                            },
+                            "documents": {
+                                "type": "keyword"
+                            },
+                            "donors": {
+                                "type": "keyword"
+                            },
+                            "embryonic": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "file_sets": {
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "lot_id": {
+                                "type": "keyword"
+                            },
+                            "lower_bound_age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "modifications": {
+                                "type": "keyword"
+                            },
+                            "multiplexed_in": {
+                                "type": "keyword"
+                            },
+                            "multiplexed_samples": {
+                                "type": "keyword"
+                            },
+                            "nih_institutional_certification": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "originated_from": {
+                                "type": "keyword"
+                            },
+                            "part_of": {
+                                "type": "keyword"
+                            },
+                            "passage_number": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            },
+                            "pmi": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            },
+                            "pmi_units": {
+                                "type": "keyword"
+                            },
+                            "pooled_from": {
+                                "type": "keyword"
+                            },
+                            "preservation_method": {
+                                "type": "keyword"
+                            },
+                            "product_id": {
+                                "type": "keyword"
+                            },
+                            "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_material": {
+                                "type": "keyword"
+                            },
+                            "sample_terms": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "sex": {
+                                "type": "keyword"
+                            },
+                            "sorted_fraction": {
+                                "type": "keyword"
+                            },
+                            "sorted_fraction_detail": {
+                                "type": "keyword"
+                            },
+                            "sources": {
+                                "type": "keyword"
+                            },
+                            "starting_amount": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "starting_amount_units": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_sample_term": {
+                                "type": "keyword"
+                            },
+                            "taxa": {
+                                "type": "keyword"
+                            },
+                            "time_post_change": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "time_post_change_units": {
+                                "type": "keyword"
+                            },
+                            "treatments": {
+                                "type": "keyword"
+                            },
+                            "upper_bound_age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "url": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "virtual": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            }
+                        },
+                        "type": "object"
                     },
                     "sorted_fraction_detail": {
                         "type": "keyword"
