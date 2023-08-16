@@ -33,17 +33,17 @@ class Treatment(Item):
             'notSubmittable': True,
         }
     )
-    def title(self, treatment_term_name, amount=None, amount_units=None, duration=None, duration_units=None):
+    def title(self, purpose, treatment_term_name, amount=None, amount_units=None, duration=None, duration_units=None):
         if duration is not None and amount is not None:
-            text = 'Treatment of {} {} {} for {} {}'.format(
-                amount, amount_units, treatment_term_name, duration, duration_units)
+            text = '{} treatment of {} {} {} for {} {}'.format(
+                purpose, amount, amount_units, treatment_term_name, duration, duration_units)
         elif duration is None and amount is not None:
-            text = 'Treatment of {} {} {}'.format(
-                amount, amount_units, treatment_term_name)
+            text = '{}} treatment of {} {} {}'.format(
+                purpose, amount, amount_units, treatment_term_name)
         elif amount is None and duration is not None:
-            text = 'Depletion of {} for {} {}'.format(
-                treatment_term_name, duration, duration_units)
+            text = '{} depletion of {} for {} {}'.format(
+                purpose, treatment_term_name, duration, duration_units)
         elif amount is None and duration is None:
-            text = 'Depletion of {}'.format(
-                treatment_term_name)
+            text = '{} depletion of {}'.format(
+                purpose, treatment_term_name)
         return text
