@@ -284,11 +284,11 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "treatment_term_name",
-        "treatment_type",
+        "lab.title",
         "purpose",
         "title",
-        "lab.title"
+        "treatment_term_name",
+        "treatment_type"
     ],
     "exact_searchable_fields": [
         "@type",
