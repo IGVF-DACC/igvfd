@@ -285,10 +285,14 @@
     },
     "fuzzy_searchable_fields": [
         "treatment_term_name",
-        "treatment_type"
+        "treatment_type",
+        "purpose",
+        "title",
+        "lab.title"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "submitted_by.title"
     ],
     "changelog": "/profiles/changelogs/treatment.md"
 }

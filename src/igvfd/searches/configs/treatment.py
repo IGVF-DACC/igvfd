@@ -81,6 +81,9 @@ def treatment():
             'duration_units': {
                 'title': 'Duration Units'
             },
+            'title': {
+                'title': 'Title'
+            },
             'lab.title': {
                 'title': 'Lab'
             },
