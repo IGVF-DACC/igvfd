@@ -86,7 +86,7 @@ def audit_unspecified_protocol(value, system):
 
 
 @audit_checker('MeasurementSet', frame='object')
-def audit_construct_libraries(value, system):
+def audit_construct_libraries_details(value, system):
     '''
         audit_detail: Construct libraries linked to in a measurement set are expected to have the same library details.
         audit_category: inconsistent construct library details
@@ -105,7 +105,7 @@ def audit_construct_libraries(value, system):
         if len(library_details) > 1:
             if len(library_details) > 2:
                 library_details = list(library_details)
-                library_details = ', and '.join(library_details[:-1].join(', '), library_details[-1])
+                library_details = ', and '.join(', '.join(library_details[:-1]), library_details[-1])
             else:
                 library_details = ' and '.join(library_details)
             detail = (
