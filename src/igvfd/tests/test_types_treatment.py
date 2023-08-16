@@ -7,4 +7,5 @@ def test_treatment_title(treatment_chemical, treatment_protein, depletion_treatm
     res = testapp.get(treatment_protein['@id'])
     assert res.json['title'] == 'differentiation treatment of 10 ng/mL G-CSF'
     res = testapp.get(depletion_treatment['@id'])
+    print(res.json['title'])
     assert res.json['title'] == 'selection depletion of penicillin for 3 minutes'

@@ -34,10 +34,8 @@ class Treatment(Item):
         }
     )
     def title(self, purpose, treatment_term_name, amount=None, amount_units=None, duration=None, duration_units=None):
-        if amount != 1:
-            amount_units = amount_units = + 's'
-        if duration != 1:
-            duration_units = duration_units = + 's'
+        if duration is not None and duration != 1:
+            duration_units = f'{duration_units}s'
         if amount is not None and duration is not None:
             text = f'{purpose} treatment of {amount} {amount_units} {treatment_term_name} for {duration} {duration_units}'
         elif amount is not None:
