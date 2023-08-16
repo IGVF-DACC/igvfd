@@ -105,7 +105,7 @@ def audit_construct_libraries_details(value, system):
         if len(library_details) > 1:
             if len(library_details) > 2:
                 library_details = list(library_details)
-                library_details = ', and '.join(', '.join(library_details[:-1]), library_details[-1])
+                library_details = ', and '.join([', '.join(library_details[:-1]), library_details[-1]])
             else:
                 library_details = ' and '.join(library_details)
             detail = (
