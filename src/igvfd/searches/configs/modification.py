@@ -53,6 +53,12 @@ def modification():
             'uuid': {
                 'title': 'UUID'
             },
+            'accession': {
+                'title': 'Accession'
+            },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'summary': {
                 'title': 'Summary'
             },

@@ -77,5 +77,8 @@ def construct_library():
             'expression_vector_library_details': {
                 'title': 'Expression Vector Library Details'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            }
         }
     }
