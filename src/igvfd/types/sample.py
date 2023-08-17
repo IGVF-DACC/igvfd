@@ -48,6 +48,7 @@ class Sample(Item):
         Path('lab', include=['@id', 'title']),
         Path('sources', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
+        Path('sorted_fraction', include=['@id', 'accession']),
     ]
 
     @calculated_property(schema={
@@ -92,7 +93,6 @@ class Biosample(Sample):
         Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'treatment_term_id', 'treatment_term_name', 'treatment_type',
              'purpose', 'amount', 'amount_units', 'duration', 'duration_units']),
-        Path('sorted_fraction', include=['@id', 'accession']),
         Path('modifications', include=['@id', 'modality', 'cas', 'cas_species', 'fused_domain', 'tagged_protein'])
     ]
 
