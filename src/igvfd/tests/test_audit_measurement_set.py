@@ -213,6 +213,17 @@ def test_audit_inconsistent_construct_libraries_details(
     testapp.patch_json(
         measurement_set['@id'],
         {
+            'construct_libraries': [base_construct_library['@id'], construct_library_reporter_library['@id'], construct_library_genome_wide['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent construct library details'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
             'construct_libraries': [base_construct_library['@id'], construct_library_genome_wide['@id']]
         }
     )
