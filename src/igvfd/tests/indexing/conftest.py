@@ -66,7 +66,7 @@ def app_settings(ini_file):
     return settings
 
 
-@pytest.yield_fixture(scope='session')
+@pytest.fixture(scope='session')
 def app(app_settings):
     from igvfd import main
     app = main({}, **app_settings)
@@ -77,7 +77,7 @@ def app(app_settings):
     DBSession.bind.pool.dispose()
 
 
-@pytest.yield_fixture(scope='session')
+@pytest.fixture(scope='session')
 def workbook(app, app_settings):
     from snovault.elasticsearch.manage_mappings import manage_mappings
     from igvfd.loadxl import load_test_data
