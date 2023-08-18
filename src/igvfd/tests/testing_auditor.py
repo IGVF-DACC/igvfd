@@ -5,8 +5,8 @@ from snovault.auditor import (
 
 
 def includeme(config):
-    config.scan('.testing_views')
-    config.scan(__name__)
+    config.scan('.testing_views', categories=None)
+    config.scan(__name__, categories=None)
 
 
 def has_condition1(value, system):

@@ -2,7 +2,7 @@ import itertools
 from datetime import datetime
 from functools import lru_cache
 import logging
-from pyramid.security import (
+from pyramid.authorization import (
     ALL_PERMISSIONS,
     Allow,
     Authenticated,

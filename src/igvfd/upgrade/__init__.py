@@ -9,7 +9,7 @@ LATE = 10
 
 
 def includeme(config):
-    config.scan()
+    config.scan(categories=None)
 
     def callback():
         """ add_upgrade for all item types

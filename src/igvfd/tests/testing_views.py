@@ -1,4 +1,4 @@
-from pyramid.security import (
+from pyramid.authorization import (
     Allow,
 )
 from pyramid.view import view_config
@@ -13,7 +13,7 @@ from igvfd.types.base import paths_filtered_by_status
 
 
 def includeme(config):
-    config.scan(__name__)
+    config.scan(__name__, categories=None)
     config.include('.testing_auditor')
 
 

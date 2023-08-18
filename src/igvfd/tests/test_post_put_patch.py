@@ -181,7 +181,7 @@ def test_put_object_adding_child(content_with_child, testapp):
 
 def test_submitter_put_object_adding_disallowed_child(
         root, monkeypatch, content_with_child, submitter_testapp):
-    from pyramid.security import Allow
+    from pyramid.authorization import Allow
     monkeypatch.setattr(root['testing-link-sources'], '__acl__', (), raising=False)
     monkeypatch.setattr(
         root['testing-link-targets'], '__acl__',

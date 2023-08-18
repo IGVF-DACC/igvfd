@@ -1,10 +1,10 @@
 from collections import OrderedDict
-from pyramid.compat import bytes_
 from pyramid.httpexceptions import HTTPBadRequest
 from pyramid.view import view_config
 from snovault import TYPES
 from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 from snosearch.parsers import QueryString
+from snovault.compat import bytes_
 from igvfd.search_views import search_generator
 
 import datetime
@@ -14,7 +14,7 @@ import re
 def includeme(config):
     config.add_route('report_download', '/report.tsv')
     config.add_route('multitype_report_download', '/multireport.tsv')
-    config.scan(__name__)
+    config.scan(__name__, categories=None)
 
 
 def lookup_column_value(value, path):

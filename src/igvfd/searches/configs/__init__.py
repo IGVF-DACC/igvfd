@@ -27,7 +27,7 @@ def register_subtype_columns_in_abstract_search_configs(config):
 
 
 def includeme(config):
-    config.scan()
+    config.scan(categories=None)
     config.action(
         ('register-subtype-columns-in-abstract-search-configs',),
         callable=register_subtype_columns_in_abstract_search_configs,

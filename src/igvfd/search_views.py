@@ -48,7 +48,7 @@ def includeme(config):
     config.add_route('top-hits-raw', '/top-hits-raw{slash:/?}')
     config.add_route('top-hits', '/top-hits{slash:/?}')
     config.add_route('search-config-registry', '/search-config-registry{slash:/?}')
-    config.scan(__name__)
+    config.scan(__name__, categories=None)
 
 
 @view_config(route_name='search', request_method='GET', permission='search')

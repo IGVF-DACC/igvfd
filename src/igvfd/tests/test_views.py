@@ -91,7 +91,7 @@ def test_json(testapp, item_type):
 
 def test_json_basic_auth(anonhtmltestapp):
     from base64 import b64encode
-    from pyramid.compat import ascii_native_
+    from snovault.compat import ascii_native_
     url = '/'
     value = 'Authorization: Basic %s' % ascii_native_(b64encode(b'nobody:pass'))
     res = anonhtmltestapp.get(url, headers={'Authorization': value}, status=401)
@@ -141,7 +141,7 @@ def test_collection_post_missing_content_type(testapp):
 
 def test_collection_post_bad(anontestapp):
     from base64 import b64encode
-    from pyramid.compat import ascii_native_
+    from snovault.compat import ascii_native_
     value = 'Authorization: Basic %s' % ascii_native_(b64encode(b'nobody:pass'))
     anontestapp.post_json('/lab', {}, headers={'Authorization': value}, status=401)
 
