@@ -14,8 +14,8 @@ def technical_sample(testapp, other_lab, award, source, sample_term_technical_sa
 
 
 @pytest.fixture
-def technical_sample_v1(tissue):
-    item = tissue.copy()
+def technical_sample_v1(technical_sample):
+    item = technical_sample.copy()
     item.update({
         'schema_version': '1',
         'dbxrefs': [],
@@ -26,8 +26,8 @@ def technical_sample_v1(tissue):
 
 
 @pytest.fixture
-def technical_sample_v2(tissue):
-    item = tissue.copy()
+def technical_sample_v2(technical_sample):
+    item = technical_sample.copy()
     item.update({
         'schema_version': '2',
         'additional_description': 'This is a description.'
@@ -36,8 +36,8 @@ def technical_sample_v2(tissue):
 
 
 @pytest.fixture
-def technical_sample_v3(tissue):
-    item = tissue.copy()
+def technical_sample_v3(technical_sample):
+    item = technical_sample.copy()
     item.update({
         'schema_version': '3'
     })
@@ -45,8 +45,8 @@ def technical_sample_v3(tissue):
 
 
 @pytest.fixture
-def technical_sample_v4(tissue):
-    item = tissue.copy()
+def technical_sample_v4(technical_sample):
+    item = technical_sample.copy()
     item.update({
         'schema_version': '4',
         'accession': 'IGVFSM111TTT'
@@ -55,8 +55,8 @@ def technical_sample_v4(tissue):
 
 
 @pytest.fixture
-def technical_sample_v5(tissue):
-    item = tissue.copy()
+def technical_sample_v5(technical_sample):
+    item = technical_sample.copy()
     item.update({
         'schema_version': '5',
         'sorted_fraction': '/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/'
@@ -65,8 +65,8 @@ def technical_sample_v5(tissue):
 
 
 @pytest.fixture
-def technical_sample_v6(tissue):
-    item = tissue.copy()
+def technical_sample_v6(technical_sample):
+    item = technical_sample.copy()
     item.update({
         'schema_version': '6',
         'sorted_fraction': '/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/'
