@@ -68,6 +68,9 @@ def multiplexed_sample():
             'accession': {
                 'title': 'Accession'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'sample_terms': {
                 'title': 'Sample Terms'
             },

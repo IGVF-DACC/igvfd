@@ -53,6 +53,9 @@ def auxiliary_set():
             'accession': {
                 'title': 'Accession'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'aliases': {
                 'title': 'Aliases'
             },
