@@ -284,11 +284,15 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "lab.title",
+        "purpose",
+        "title",
         "treatment_term_name",
         "treatment_type"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "submitted_by.title"
     ],
     "changelog": "/profiles/changelogs/treatment.md"
 }

@@ -36,6 +36,22 @@ def treatment_protein(testapp, lab, award):
 
 
 @pytest.fixture
+def depletion_treatment(testapp, lab, award):
+    item = {
+        'treatment_term_id': 'CHEBI:51356',
+        'treatment_term_name': 'penicillin',
+        'treatment_type': 'chemical',
+        'duration': 3,
+        'duration_units': 'minute',
+        'purpose': 'selection',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'depletion': True
+    }
+    return testapp.post_json('/treatment', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def treatment_v1(treatment_chemical):
     item = treatment_chemical.copy()
     item.update({
