@@ -27,7 +27,10 @@ def human_donor():
             },
             'virtual': {
                 'title': 'Virtual'
-            }
+            },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
@@ -44,6 +47,7 @@ def human_donor():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ]
             },
             {

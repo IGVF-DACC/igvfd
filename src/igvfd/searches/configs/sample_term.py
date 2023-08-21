@@ -24,7 +24,10 @@ def sample_term():
             },
             'ontology': {
                 'title': 'Ontology'
-            }
+            },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
@@ -35,6 +38,12 @@ def sample_term():
                     'developmental_slims',
                     'system_slims',
                 ]
+            },
+            {
+                'title': 'Provenance',
+                'facet_fields': [
+                    'type',
+                ],
             },
             {
                 'title': 'Quality',

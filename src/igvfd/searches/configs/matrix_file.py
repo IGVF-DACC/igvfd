@@ -51,6 +51,7 @@ def matrix_file():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {

@@ -42,7 +42,10 @@ def tissue():
             },
             'biomarkers.classification': {
                 'title': 'Biomarkers Classification'
-            }
+            },
+            'type': {
+                'title': 'Object Type'
+            },
         },
         'facet_groups': [
             {
@@ -64,6 +67,7 @@ def tissue():
                     'lab.title',
                     'award.component',
                     'sources.title',
+                    'type',
                 ]
             },
             {

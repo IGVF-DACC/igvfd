@@ -27,7 +27,10 @@ def technical_sample():
             },
             'virtual': {
                 'title': 'Virtual'
-            }
+            },
+            'type': {
+                'title': 'Object Type'
+            },
         },
         'facet_groups': [
             {
@@ -44,6 +47,7 @@ def technical_sample():
                     'lab.title',
                     'award.component',
                     'sources.title',
+                    'type',
                 ]
             },
             {

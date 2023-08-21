@@ -30,7 +30,10 @@ def rodent_donor():
             },
             'virtual': {
                 'title': 'Virtual'
-            }
+            },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
@@ -48,6 +51,7 @@ def rodent_donor():
                     'lab.title',
                     'award.component',
                     'sources.title',
+                    'type',
                 ],
             },
             {

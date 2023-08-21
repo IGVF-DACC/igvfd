@@ -30,7 +30,10 @@ def reference_file():
             },
             'status': {
                 'title': 'Status'
-            }
+            },
+            'type': {
+                'title': 'Type'
+            },
         },
         'facet_groups': [
             {
@@ -52,6 +55,7 @@ def reference_file():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {

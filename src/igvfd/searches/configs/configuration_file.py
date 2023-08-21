@@ -27,7 +27,10 @@ def configuration_file():
             },
             'status': {
                 'title': 'Status'
-            }
+            },
+            'type': {
+                'title': 'Type'
+            },
         },
         'facet_groups': [
             {
@@ -43,6 +46,7 @@ def configuration_file():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {

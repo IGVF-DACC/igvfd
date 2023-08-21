@@ -22,6 +22,9 @@ def assay_term():
             'ontology': {
                 'title': 'Ontology'
             },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
@@ -30,13 +33,19 @@ def assay_term():
                     'assay_slims',
                     'category_slims',
                     'objective_slims',
-                ]
+                ],
+            },
+            {
+                'title': 'Provenance',
+                'facet_fields': [
+                    'type',
+                ],
             },
             {
                 'title': 'Quality',
                 'facet_fields': [
                     'status',
-                ]
+                ],
             },
         ],
         'columns': {

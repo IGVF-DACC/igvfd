@@ -39,7 +39,10 @@ def whole_organism():
             },
             'virtual': {
                 'title': 'Virtual'
-            }
+            },
+            'type': {
+                'title': 'Object Type'
+            },
         },
         'facet_groups': [
             {
@@ -60,6 +63,7 @@ def whole_organism():
                     'lab.title',
                     'award.component',
                     'sources.title',
+                    'type',
                 ]
             },
             {
