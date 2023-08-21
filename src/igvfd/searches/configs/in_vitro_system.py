@@ -45,7 +45,10 @@ def in_vitro_system():
             },
             'biomarkers.classification': {
                 'title': 'Biomarkers Classification'
-            }
+            },
+            'type': {
+                'title': 'Object Type'
+            },
         },
         'facet_groups': [
             {
@@ -68,6 +71,7 @@ def in_vitro_system():
                     'lab.title',
                     'award.component',
                     'sources.title',
+                    'type',
                 ]
             },
             {

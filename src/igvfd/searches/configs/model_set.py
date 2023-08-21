@@ -24,7 +24,10 @@ def model_set():
             },
             'prediction_objects': {
                 'title': 'Prediction Objects'
-            }
+            },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
@@ -40,6 +43,7 @@ def model_set():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {

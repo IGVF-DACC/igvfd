@@ -22,6 +22,9 @@ def analysis_set():
             'status': {
                 'title': 'Status'
             },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
@@ -36,6 +39,7 @@ def analysis_set():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {
