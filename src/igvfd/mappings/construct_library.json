@@ -738,6 +738,9 @@
                             "seqspec": {
                                 "type": "keyword"
                             },
+                            "seqspec_of": {
+                                "type": "keyword"
+                            },
                             "sequencing_platform": {
                                 "type": "keyword"
                             },
