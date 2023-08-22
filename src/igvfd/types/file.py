@@ -416,7 +416,8 @@ class ConfigurationFile(File):
         return keys
 
     @calculated_property(schema={
-        'title': 'Sequence files this file is a seqspec of',
+        'title': 'Seqspec Of',
+        'description': 'Sequence files this file is a seqspec of.',
         'type': 'array',
         'items': {
             'type': ['string', 'object'],
