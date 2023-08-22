@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_seqspec_for_link(testapp, configuration_file_seqspec, sequence_file, sequence_file_sequencing_run_2):
+def test_seqspec_of_link(testapp, configuration_file_seqspec, sequence_file, sequence_file_sequencing_run_2):
     testapp.patch_json(
         sequence_file['@id'],
         {
