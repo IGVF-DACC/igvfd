@@ -104,3 +104,15 @@ def sequence_file_v2(
         'sequencing_run': 1
     }
     return item
+
+
+@pytest.fixture
+def sequence_file_v3(sequence_file):
+    item = sequence_file.copy()
+    item.update({
+        'schema_version': '3',
+        'min_read_length': 300000001,
+        'max_read_length': 5243061353423434123436423,
+        'mean_read_length': 12345678910
+    })
+    return item
