@@ -9,6 +9,6 @@ def configuration_file_seqspec(testapp, lab, award, measurement_set):
         'md5sum': '05c12a287334386c94131ab8aa00d08a',
         'file_format': 'yaml',
         'file_set': measurement_set['@id'],
-        'content_type': 'seqpsec'
+        'content_type': 'seqspec'
     }
     return testapp.post_json('/configuration_file', item).json['@graph'][0]

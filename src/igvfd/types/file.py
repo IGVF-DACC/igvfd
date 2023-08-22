@@ -404,7 +404,7 @@ class ConfigurationFile(File):
     schema = load_schema('igvfd:schemas/configuration_file.json')
     embedded_with_frame = File.embedded_with_frame
     rev = {
-        'seqspec_for': ('SequenceFile', 'seqspec')
+        'seqspec_of': ('SequenceFile', 'seqspec')
     }
 
     def unique_keys(self, properties):
@@ -416,7 +416,7 @@ class ConfigurationFile(File):
         return keys
 
     @calculated_property(schema={
-        'title': 'Sequence files this file is a seqspec for',
+        'title': 'Sequence files this file is a seqspec of',
         'type': 'array',
         'items': {
             'type': ['string', 'object'],
@@ -424,8 +424,8 @@ class ConfigurationFile(File):
         },
         'notSubmittable': True
     })
-    def seqspec_for(self, request, control_for):
-        return paths_filtered_by_status(request, control_for)
+    def seqspec_of(self, request, seqspec_of):
+        return paths_filtered_by_status(request, seqspec_of)
 
 
 @view_config(

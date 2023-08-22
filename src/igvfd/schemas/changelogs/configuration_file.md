@@ -2,4 +2,4 @@
 
 ### Minor changes since schema version 1
 
-* Add `seqspec_for`.
+* Add `seqspec_of`.
