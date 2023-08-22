@@ -39,10 +39,12 @@ def sequence_file_3_4(value, system):
         notes += f' The minimum read length previously exceeded the upper limit of 300000000 so was set to 300000000, please assign the appropriate length.'
         value['notes'] = notes
     if 'maximum_read_length' in value and value['maximum_read_length'] > 300000000:
+        value['maximum_read_length'] = 300000000
         notes = value.get('notes', '')
         notes += f' The maximum read length previously exceeded the upper limit of 300000000 so was set to 300000000, please assign the appropriate length.'
         value['notes'] = notes
     if 'mean_read_length' in value and value['mean_read_length'] > 300000000:
+        value['mean_read_length'] = 300000000
         notes = value.get('notes', '')
         notes += f' The mean read length previously exceeded the upper limit of 300000000 so was set to 300000000, please assign the appropriate length.'
         value['notes'] = notes
