@@ -119,7 +119,8 @@
             "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
             "permission": "import_items",
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "maximum": 300000000
         },
         "maximum_read_length": {
             "title": "Read Length",
@@ -127,7 +128,8 @@
             "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
             "permission": "import_items",
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "maximum": 300000000
         },
         "mean_read_length": {
             "title": "Read Length",
@@ -135,7 +137,8 @@
             "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
             "permission": "import_items",
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "maximum": 300000000
         },
         "sequencing_platform": {
             "title": "Sequencing Platform",
