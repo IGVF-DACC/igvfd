@@ -27,7 +27,10 @@ from snovault.schema_utils import schema_validator
 
 from snovault.util import Path
 
-from igvfd.types.base import Item
+from igvfd.types.base import (
+    Item,
+    paths_filtered_by_status
+)
 
 from igvfd.upload_credentials import get_s3_client
 from igvfd.upload_credentials import get_sts_client
@@ -400,6 +403,9 @@ class ConfigurationFile(File):
     item_type = 'configuration_file'
     schema = load_schema('igvfd:schemas/configuration_file.json')
     embedded_with_frame = File.embedded_with_frame
+    rev = {
+        'seqspec_for': ('SequenceFile', 'seqspec')
+    }
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -408,6 +414,18 @@ class ConfigurationFile(File):
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
         return keys
+
+    @calculated_property(schema={
+        'title': 'Sequence files this file is a seqspec for',
+        'type': 'array',
+        'items': {
+            'type': ['string', 'object'],
+            'linkFrom': 'SequenceFile.seqspec',
+        },
+        'notSubmittable': True
+    })
+    def seqspec_for(self, request, control_for):
+        return paths_filtered_by_status(request, control_for)
 
 
 @view_config(
