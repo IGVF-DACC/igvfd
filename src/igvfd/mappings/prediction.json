@@ -1,6 +1,6 @@
 {
-    "hash": "1fb5a52d6bada3bcad3d4cee974591d9",
-    "index_name": "prediction_1fb5a52d",
+    "hash": "7f7826016ae38b916fe5f2d23f36fb2a",
+    "index_name": "prediction_7f782601",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -811,7 +811,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "long"
+                                "type": "float"
                             },
                             "minimum_read_length": {
                                 "fields": {

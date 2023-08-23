@@ -1,6 +1,6 @@
 {
-    "hash": "afb53c85b7fad2c190e0570b8a6e0753",
-    "index_name": "analysis_set_afb53c85",
+    "hash": "f038cf365120fb9646c3f6d3f8b6bae4",
+    "index_name": "analysis_set_f038cf36",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -815,7 +815,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "long"
+                                "type": "float"
                             },
                             "minimum_read_length": {
                                 "fields": {
