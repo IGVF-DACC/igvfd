@@ -14,6 +14,7 @@ def delimited_file(testapp, lab, award, analysis_set_with_sample, reference_file
         'reference_files': [
             reference_file['@id']
         ],
+        'delimiter': 'comma',
         'column_headers': 'cell,gene',
         'number_of_columns': 2
     }

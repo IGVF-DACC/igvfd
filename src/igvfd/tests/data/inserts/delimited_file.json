@@ -17,6 +17,7 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
+        "delimiter": "comma",
         "column_headers": "cell,gene",
         "number_of_columns": 2
     },
@@ -38,6 +39,7 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
+        "delimiter": "tab",
         "column_headers": "rep1,rep2,false_discovery_rate,log_fold_change",
         "number_of_columns": 4
     }

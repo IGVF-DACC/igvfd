@@ -80,6 +80,7 @@
         },
         "delimiter": {
             "comment": "Delimiter that seperates the columns in the file",
+            "title": "Delimiter",
             "type": "string",
             "enum": [
                 "comma",
