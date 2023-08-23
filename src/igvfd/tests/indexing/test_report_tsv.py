@@ -83,5 +83,5 @@ def test_multitype_report_download(workbook, testapp):
     assert b'/multireport/' in lines[0]
     print(lines[1].split(b'\t'))
     assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Accession', b'Alternate Accessions', b'Content Type', b'File Format', b'Lab', b'Status', b'File Set', b'Illumina Read Type', b'External Identifiers', b'Assembly', b'Transcriptome Annotation', b'Reference Files', b'Content Summary', b'Seqspec Of'
+        b'ID', b'UUID', b'Accession', b'Alternate Accessions', b'Content Type', b'File Format', b'Lab', b'Status', b'File Set', b'Illumina Read Type', b'External Identifiers', b'Assembly', b'Transcriptome Annotation', b'Reference Files', b'Content Summary'
     ]
