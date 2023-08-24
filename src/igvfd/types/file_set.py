@@ -169,6 +169,19 @@ class MeasurementSet(FileSet):
                             related_datasets.append(file_set_id)
             return related_datasets
 
+    @calculated_property(schema={
+        'title': 'Measurement Sets',
+        'description': 'The measurement sets that link to this auxiliary set.',
+        'type': 'array',
+        'items': {
+            'type': ['string', 'object'],
+            'linkFrom': 'MeasurementSet.auxiliary_sets',
+        },
+        'notSubmittable': True
+    })
+    def measurement_sets(self, request, auxiliary_sets):
+        return paths_filtered_by_status(request, auxiliary_sets)
+
 
 @collection(
     name='construct-libraries',

@@ -35,3 +35,21 @@ def test_control_link(testapp, measurement_set, curated_set_genome):
     )
     res = testapp.get(curated_set_genome['@id'])
     assert set([file_set_id['@id'] for file_set_id in res.json.get('control_for')]) == {measurement_set['@id']}
+
+
+def test_control_link(testapp, measurement_set, measurement_set_mpra, base_auxiliary_set):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    res = testapp.get(base_auxiliary_set['@id'])
+    assert set([file_set_id['@id'] for file_set_id in res.json.get('measurement_sets')]
+               ) == {measurement_set['@id'], measurement_set_mpra['@id']}
