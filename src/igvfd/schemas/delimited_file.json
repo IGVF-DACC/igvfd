@@ -57,7 +57,7 @@
             "comment": "Column headers provides a list of column headers in a comma separated format.",
             "title": "Column Headers",
             "type": "string",
-            "pattern": "^[[a-zA-Z0-9_\\-]+, ]+$"
+            "pattern": "^\\w+(?:,\\s*\\w+)*$"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file",

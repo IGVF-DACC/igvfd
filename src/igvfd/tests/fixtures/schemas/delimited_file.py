@@ -6,7 +6,7 @@ def delimited_file(testapp, lab, award, analysis_set_with_sample, reference_file
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'md5sum': 'b64eed15-78b9-4674-95e9-eae39f35f132',
+        'md5sum': '43e21634b50ab6715e3c18f684e9840d',
         'file_format': 'csv',
         'file_set': analysis_set_with_sample['@id'],
         'file_size': 849180,
