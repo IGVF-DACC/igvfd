@@ -217,7 +217,7 @@ class AuxiliarySet(FileSet):
     item_type = 'auxiliary_set'
     schema = load_schema('igvfd:schemas/auxiliary_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('measurement_sets', include=['@id', 'summary', 'accession', 'aliases']),
+        Path('measurement_sets', include=['@id', 'accession', 'aliases']),
     ]
     rev = FileSet.rev | {'measurement_sets': ('MeasurementSet', 'auxiliary_sets')}
 
@@ -242,18 +242,14 @@ class AuxiliarySet(FileSet):
         }
     )
     def summary(self, request, auxiliary_type, measurement_sets):
-        print(measurement_sets)
-        measurement_sets_summaries = [measurement_set['summary'] for measurement_set in measurement_sets]
-        if len(measurement_sets_summaries) > 2:
-            if len(measurement_sets_summaries) == 3:
-                remainder = f', ... and {len(measurement_sets_summaries[2:])} more measurement set'
-            else:
-                remainder = f', ... and {len(measurement_sets_summaries[2:])} more measurement sets'
-            measurement_sets_summaries = remainder.join(
-                [', '.join(measurement_sets_summaries[0:2]), measurement_sets_summaries[2:]])
-        else:
-            measurement_sets_summaries = ', '.join(measurement_sets_summaries[0:2])
-        return f'{auxiliary_type} for {measurement_sets_summaries}'
+        if not measurement_sets:
+            return f'{auxiliary_type}'
+        measurement_sets_summaries = [request.embed(measurement_set, '@@object').get('summary')
+                                      for measurement_set in measurement_sets[:2] if measurement_set]
+        if len(measurement_sets) > 2:
+            remainder = f', ... and {len(measurement_sets) - 2} more measurement set{"s" if len(measurement_sets) - 2 > 1 else ""}'
+            measurement_sets_summaries = measurement_sets_summaries[:2] + [remainder]
+        return f'{auxiliary_type} for {", ".join(measurement_sets_summaries)}'
 
 
 @collection(

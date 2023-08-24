@@ -269,6 +269,9 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
+                            "auxiliary_sets": {
+                                "type": "keyword"
+                            },
                             "auxiliary_type": {
                                 "type": "keyword"
                             },
@@ -367,6 +370,9 @@
                                 "type": "keyword"
                             },
                             "lot_id": {
+                                "type": "keyword"
+                            },
+                            "measurement_sets": {
                                 "type": "keyword"
                             },
                             "model_name": {
@@ -957,6 +963,9 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
+                            "auxiliary_sets": {
+                                "type": "keyword"
+                            },
                             "auxiliary_type": {
                                 "type": "keyword"
                             },
@@ -1055,6 +1064,9 @@
                                 "type": "keyword"
                             },
                             "lot_id": {
+                                "type": "keyword"
+                            },
+                            "measurement_sets": {
                                 "type": "keyword"
                             },
                             "model_name": {

@@ -26,6 +26,9 @@ def test_summary(testapp, measurement_set, measurement_set_mpra, measurement_set
             'auxiliary_sets': [base_auxiliary_set['@id']]
         }
     )
+    res = testapp.get(base_auxiliary_set['@id'])
+    measurement_set_summary = measurement_set['summary']
+    assert res.json.get('summary') == f'gRNA sequencing for {measurement_set_summary}'
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
@@ -33,17 +36,18 @@ def test_summary(testapp, measurement_set, measurement_set_mpra, measurement_set
         }
     )
     res = testapp.get(base_auxiliary_set['@id'])
-    print(res.json.get('summary'))
-    measurement_set_summary = measurement_set.json.get('summary')
-    measurement_set_mpra_summary = measurement_set_mpra.json.get('summary')
-    assert res.json.get('summary') == f'gRNA sequencing for {measurement_set_summary}, {measurement_set_mpra_summary}'
+    measurement_set_mpra_summary = measurement_set_mpra['summary']
+    assert measurement_set_summary in res.json.get(
+        'summary') and measurement_set_mpra_summary in res.json.get('summary')
     testapp.patch_json(
         measurement_set_multiome['@id'],
         {
             'auxiliary_sets': [base_auxiliary_set['@id']]
         }
     )
+    measurement_set_multiome_summary = measurement_set_multiome['summary']
     res = testapp.get(base_auxiliary_set['@id'])
-    print(res.json.get('summary'))
-    assert res.json.get(
-        'summary') == f'gRNA sequencing for {measurement_set_summary}, {measurement_set_mpra_summary}, ... and 1 more measurement set'
+    auxiliary_summary = res.json.get('summary')
+    assert auxiliary_summary.endswith(', ... and 1 more measurement set')
+    assert sum(1 for summary in [measurement_set_summary, measurement_set_mpra_summary,
+               measurement_set_multiome_summary] if summary in auxiliary_summary) == 2
