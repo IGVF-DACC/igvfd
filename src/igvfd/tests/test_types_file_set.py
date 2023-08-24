@@ -37,7 +37,7 @@ def test_control_link(testapp, measurement_set, curated_set_genome):
     assert set([file_set_id['@id'] for file_set_id in res.json.get('control_for')]) == {measurement_set['@id']}
 
 
-def test_control_link(testapp, measurement_set, measurement_set_mpra, base_auxiliary_set):
+def test_measurement_sets_reverse_link(testapp, measurement_set, measurement_set_mpra, base_auxiliary_set):
     testapp.patch_json(
         measurement_set['@id'],
         {

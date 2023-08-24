@@ -216,10 +216,10 @@ class Model(FileSet):
 class AuxiliarySet(FileSet):
     item_type = 'auxiliary_set'
     schema = load_schema('igvfd:schemas/auxiliary_set.json')
-    embedded_with_frame = FileSet.embedded_with_frame
-    rev = {
-        'measurement_sets': ('MeasurementSet', 'auxiliary_sets')
-    }
+    embedded_with_frame = FileSet.embedded_with_frame + [
+        Path('measurement_sets', include=['@id', 'accession', 'aliases']),
+    ]
+    rev = FileSet.rev | {'measurement_sets': ('MeasurementSet', 'auxiliary_sets')}
 
     @calculated_property(schema={
         'title': 'Measurement Sets',

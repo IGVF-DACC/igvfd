@@ -3,6 +3,7 @@
 ### Minor changes since schema version 2
 
 * Add `circularized barcode detection`, `quantification barcode sequencing` enum to `auxiliary_type` property.
+* Add `measurement_sets`.
 
 ### Schema version 2
 
