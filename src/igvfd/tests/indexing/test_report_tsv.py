@@ -81,7 +81,6 @@ def test_multitype_report_download(workbook, testapp):
     assert disposition.startswith('attachment;filename="igvf_mixed') and disposition.endswith('.tsv"')
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
-    print(lines[1].split(b'\t'))
     assert lines[1].split(b'\t') == [
         b'ID', b'UUID', b'Accession', b'Alternate Accessions', b'Content Type', b'File Format', b'Lab', b'Status', b'File Set', b'Illumina Read Type', b'External Identifiers', b'Assembly', b'Transcriptome Annotation', b'Reference Files', b'Content Summary'
     ]
