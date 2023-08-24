@@ -21,7 +21,11 @@
             "GEO:GSE187549"
         ],
         "library_construction_platform": "9ed48993-8f87-f432-42ac-c34a0f5caa20",
-        "nucleic_acid_delivery": "transfection"
+        "nucleic_acid_delivery": "transfection",
+        "auxiliary_sets": [
+            "igvf:auxiliary_set_1",
+            "igvf:auxiliary_set_2"
+        ]
     },
     {
         "aliases": [

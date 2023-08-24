@@ -6,6 +6,7 @@
 * Expand `preferred_assay_title` enum list to include `MPRA (scQer)`, `CRISPR FlowFISH`, `AAV-MPRA`, `lentiMPRA`, `semi-qY2H`, `yN2H`, `mN2H`.
 * Add `readout`.
 * Expand `preferred_assay_title` enum list to include `Parse Split-seq`.
+* Add `auxiliary_sets`.
 
 ### Schema version 5
 
