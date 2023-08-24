@@ -340,7 +340,7 @@
             }
         }
     },
-    "transcriptome_annotation": {
+    "reference_resource": {
         "transcriptome_annotation": {
             "title": "Transcriptome Annotation",
             "description": "The annotation and version of the reference resource.",
@@ -353,6 +353,17 @@
                 "GENCODE M30",
                 "GENCODE M31",
                 "GENCODE M32"
+            ]
+        },
+        "assembly": {
+            "title": "Genome Assembly",
+            "description": "Genome assembly applicable for the reference data.",
+            "type": "string",
+            "enum": [
+                "GRCh38",
+                "hg19",
+                "GRCm39",
+                "mm10"
             ]
         }
     }
