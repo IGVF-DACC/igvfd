@@ -302,7 +302,7 @@ def testing_retry(context, request):
 class TestingIGVFItem(IGVFItem):
     item_type = 'test_igvf_item'
     schema = {
-        '$schema': 'http://json-schema.org/draft-04/schema#',
+        '$schema': 'https://json-schema.org/draft/2020-12/schema',
         'type': 'object',
         'properties': {
             'description': {
