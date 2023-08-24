@@ -1,6 +1,6 @@
 {
-    "hash": "1e20260f9927747fdd4f7de1a11034cf",
-    "index_name": "measurement_set_1e20260f",
+    "hash": "a732cb29d5f7d5febb5ac5d75f2aa24e",
+    "index_name": "measurement_set_a732cb29",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -440,6 +440,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "applied_to_samples": {
+                                "type": "keyword"
+                            },
                             "assay_term": {
                                 "type": "keyword"
                             },
@@ -842,6 +845,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "applied_to_samples": {
                                 "type": "keyword"
                             },
                             "assay_term": {

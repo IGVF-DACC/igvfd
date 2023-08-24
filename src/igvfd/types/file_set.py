@@ -427,5 +427,93 @@ class ConstructLibrarySet(FileSet):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases']),
-        Path('control_for', include=['@id', 'accession', 'aliases'])
+        Path('control_for', include=['@id', 'accession', 'aliases']),
+        Path('associated_phenotypes', include=['@id', 'term_id', 'term_name']),
+        Path('genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
+        Path('applied_to_samples', include=['@id', 'accession', 'aliases']),
     ]
+    rev = FileSet.rev | {'applied_to_samples': ('Sample', 'construct_library_sets')}
+
+    @calculated_property(schema={
+        'title': 'Applied to Samples',
+        'description': 'The samples that link to this construct library set.',
+        'type': 'array',
+        'items': {
+            'type': ['string', 'object'],
+            'linkFrom': 'Sample.construct_library_sets',
+        },
+        'notSubmittable': True
+    })
+    def applied_to_samples(self, request, applied_to_samples):
+        return paths_filtered_by_status(request, applied_to_samples)
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, file_set_type, scope, selection_criteria, genes=None, guide_type=None,
+                loci=None, exon=None, associated_phenotypes=None):
+        library_type = ''
+        target_phrase = ''
+        pheno_terms = []
+        pheno_phrase = ''
+        preposition = ''
+
+        if scope == 'loci':
+            if len(loci) > 1:
+                target_phrase = f' {len(loci)} genomic loci'
+            else:
+                target_phrase = f' a genomic locus'
+        if scope == 'genes':
+            if len(genes) > 1:
+                target_phrase = f' {len(genes)} genes'
+            else:
+                gene_object = request.embed(genes[0], '@@object?skip_calculated=true')
+                gene_name = (gene_object.get('symbol'))
+                target_phrase = f' {gene_name}'
+        if scope == 'exon':
+            gene_object = request.embed(genes[0], '@@object?skip_calculated=true')
+            gene_name = (gene_object.get('symbol'))
+            target_phrase = f' exon {exon} of {gene_name}'
+        if scope == 'genome-wide':
+            target_phrase = ' genome-wide'
+
+        if file_set_type == 'expression vector library':
+            library_type = 'Expression vector library'
+        if file_set_type == 'guide library':
+            if guide_type == 'sgRNA':
+                library_type = 'Guide (sgRNA) library'
+            if guide_type == 'pgRNA':
+                library_type = 'Guide (pgRNA) library'
+        if file_set_type == 'reporter library':
+            library_type = 'Reporter library'
+
+        if associated_phenotypes:
+            for pheno in associated_phenotypes:
+                pheno_object = request.embed(pheno, '@@object?skip_calculated=true')
+                term_name = (pheno_object.get('term_name'))
+                pheno_terms.append(term_name)
+            if len(pheno_terms) in [1, 2]:
+                phenos = ', '.join(pheno_terms)
+                pheno_phrase = f' associated with {phenos}'
+            else:
+                pheno_phrase = f' associated with {len(pheno_terms)} phenotypes'
+
+        if file_set_type == 'expression vector library':
+            if 'genes' in selection_criteria:
+                selection_criteria.remove('genes')
+            selections = ', '.join(selection_criteria)
+            if selections:
+                selections = f' ({selections})'
+            preposition = ' of'
+            return f'{library_type}{preposition}{target_phrase}{selections}{pheno_phrase}'
+        else:
+            selections = ', '.join(selection_criteria)
+            if scope == 'genome-wide':
+                preposition = ''
+            else:
+                preposition = ' in'
+            return f'{library_type} targeting {selections}{preposition}{target_phrase}{pheno_phrase}'
