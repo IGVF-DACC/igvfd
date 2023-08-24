@@ -132,7 +132,8 @@ class MeasurementSet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('assay_term', include=['@id', 'term_name']),
         Path('control_file_sets', include=['@id', 'accession', 'aliases']),
-        Path('related_multiome_datasets', include=['@id', 'accession'])
+        Path('related_multiome_datasets', include=['@id', 'accession']),
+        Path('auxiliary_sets', include=['@id', 'accession', 'aliases']),
     ]
 
     audit_inherit = [
