@@ -2,7 +2,7 @@
     "title": "Sequence File",
     "$id": "/profiles/sequence_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submission of a file containing sequence data.",
+    "description": "A file containing sequencing results in fastq or bam format.",
     "required": [
         "award",
         "lab",

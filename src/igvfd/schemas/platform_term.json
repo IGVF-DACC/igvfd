@@ -1,6 +1,6 @@
 {
     "title": "Platform Term",
-    "description": "Schema for an ontology term identifying a platform.",
+    "description": "An ontology term from Experimental Factor Ontology (EFO) for platforms and instruments used in assays.",
     "$id": "/profiles/platform_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

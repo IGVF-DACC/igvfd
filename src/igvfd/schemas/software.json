@@ -1,6 +1,6 @@
 {
     "title": "Software",
-    "description": "Schema for submitting a software object.",
+    "description": "A software used for computational  analysis. For example, Bowtie2 alignment software.",
     "$id": "/profiles/software.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

@@ -2,7 +2,7 @@
     "title": "Reference File",
     "$id": "/profiles/reference_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submission of a file containing reference data.",
+    "description": "A file containing reference sequences or indexes in fasta, gtf, tar, or txt format.",
     "required": [
         "award",
         "lab",

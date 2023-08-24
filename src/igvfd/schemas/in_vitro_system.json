@@ -2,7 +2,7 @@
     "title": "In Vitro System",
     "$id": "/profiles/in_vitro_system.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a sample grown in an in vitro system. In vitro systems represent biosamples that were cultured, such as immortalized cell lines, organoids, or samples that have been differentiated or reprogrammed.",
+    "description": "A biosample that is cultured, such as immortalized cell lines, organoids, or samples that have been differentiated or reprogrammed.",
     "type": "object",
     "required": [
         "award",

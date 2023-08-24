@@ -1,6 +1,6 @@
 {
     "title": "Sample Term",
-    "description": "Schema for a sample ontology term.",
+    "description": "An ontology term from Cell Ontology (CL), Cell Line Ontology (CLO), Experimental Factor Ontology (EFO), or Uber-anatomy ontology (UBERON) for biological or technical samples.",
     "$id": "/profiles/sample_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

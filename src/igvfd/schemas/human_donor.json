@@ -2,7 +2,7 @@
     "title": "Human Donor",
     "$id": "/profiles/human_donor.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Derived schema submitting human donors.",
+    "description": "A human donor of any biosample, including cell lines. Submission of any sample originating from a human donor requires submission of information about the relevant donor. For example, submission of the donor of K562 is a prerequisite for submission of any K562 cell line samples.",
     "type": "object",
     "required": [
         "award",

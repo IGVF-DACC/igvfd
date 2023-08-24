@@ -1,6 +1,6 @@
 {
     "title": "Gene",
-    "description": "Schema for submitting a gene.",
+    "description": "A gene in the human or mouse genomes. The genes objects in IGVF are imported from GENCODE.",
     "$id": "/profiles/gene.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

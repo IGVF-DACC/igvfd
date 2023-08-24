@@ -1,6 +1,6 @@
 {
     "title": "Analysis Step",
-    "description": "Schema for submitting a step in a computational analysis workflow.",
+    "description": "A step in a computational analysis workflow. For example, a sequence alignment step that represents the phase of the computational analysis in which sequenced reads are being aligned to the reference genome.",
     "$id": "/profiles/analysis_step.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

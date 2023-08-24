@@ -1,6 +1,6 @@
 {
     "title": "Phenotype Term",
-    "description": "Schema for a phenotype ontology term.",
+    "description": "An ontology term from Experimental Factor Ontology (EFO), Human Disease Ontology (DOID), Human Phenotype Ontology (HP), Mondo Disease Ontology (MONDO), National Cancer Institute Thesaurus (NCIT), or Ontology of Biological Attributes (OBA) for phenotypes, diseases, and traits.",
     "$id": "/profiles/phenotype_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

@@ -2,7 +2,7 @@
     "title": "Signal File",
     "$id": "/profiles/signal_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submission of a file containing signal data.",
+    "description": "A file containing analyzed sequencing data in signal form using a bigwig format.",
     "required": [
         "award",
         "lab",

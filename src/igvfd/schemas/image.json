@@ -1,6 +1,6 @@
 {
     "title": "Image",
-    "description": "Schema for images embedded in portal pages",
+    "description": "An image to be displayed on an IGVF portal page. This is not a data object.",
     "$id": "/profiles/image.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

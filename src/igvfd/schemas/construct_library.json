@@ -2,7 +2,7 @@
     "title": "Construct Library",
     "$id": "/profiles/construct_library.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a construct library.",
+    "description": "A file set containing files with guides or reporter sequences for any construct libraries applied to a sample.",
     "type": "object",
     "oneOf": [
         {

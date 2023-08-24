@@ -1,6 +1,6 @@
 {
     "title": "Document",
-    "description": "Schema for submitting a document file.",
+    "description": "A document with additional information regarding another object submitted to the data portal. For example, a plasmid map document associated with a transduced cell line sample.",
     "$id": "/profiles/document.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

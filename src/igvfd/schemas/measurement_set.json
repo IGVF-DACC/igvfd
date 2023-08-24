@@ -2,7 +2,7 @@
     "title": "Measurement Set",
     "$id": "/profiles/measurement_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for a measurement set. Measurement sets represent one distinct measurement, such as the sequencing of a library, and contain the raw data gathered in this measurement.",
+    "description": "A file set for a distinct measurement, such as the sequencing of a library. A measurement set contains the raw data gathered by the measurement.",
     "type": "object",
     "required": [
         "award",

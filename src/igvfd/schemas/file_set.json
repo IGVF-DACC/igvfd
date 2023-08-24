@@ -2,7 +2,7 @@
     "title": "File Set",
     "$id": "/profiles/file_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Abstract schema for a file set.",
+    "description": "A file set is an object that groups together a set of related files.",
     "type": "object",
     "required": [
         "award",

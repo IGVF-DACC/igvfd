@@ -1,6 +1,6 @@
 {
     "title": "Phenotypic Feature",
-    "description": "Schema for submitting a phenotypic feature.",
+    "description": "A phenotypic feature of a donor the sample is coming from. For example, the donor’s height measured at the time of sample collection.",
     "$id": "/profiles/phenotypic_feature.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

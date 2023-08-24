@@ -1,6 +1,6 @@
 {
     "title": "Model",
-    "description": "Schema for submitting a predictive model file set. Models contain software files that could be used to generate predictions or annotations of genomic features.",
+    "description": "A file set of predictive models. Models contain software files that could be used to generate predictions or annotations of genomic features.",
     "$id": "/profiles/model.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
