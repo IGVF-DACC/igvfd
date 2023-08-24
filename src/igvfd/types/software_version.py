@@ -17,7 +17,7 @@ from pyramid.traversal import (
     name='software-versions',
     unique_key='software_version:name',
     properties={
-        'title': 'Software Version',
+        'title': 'Software Versions',
         'description': 'Software version pages',
     }
 )

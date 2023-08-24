@@ -109,7 +109,7 @@ class AnalysisSet(FileSet):
     name='curated-sets',
     unique_key='accession',
     properties={
-        'title': 'Curated Set',
+        'title': 'Curated Sets',
         'description': 'Listing of curated sets',
     }
 )
@@ -174,7 +174,7 @@ class MeasurementSet(FileSet):
     name='construct-libraries',
     unique_key='accession',
     properties={
-        'title': 'Construct Library',
+        'title': 'Construct Libraries',
         'description': 'Listing of construct libraries',
     })
 class ConstructLibrary(FileSet):
@@ -193,7 +193,7 @@ class ConstructLibrary(FileSet):
     name='models',
     unique_key='accession',
     properties={
-        'title': 'Model',
+        'title': 'Models',
         'description': 'Listing of models',
     }
 )
@@ -222,7 +222,7 @@ class AuxiliarySet(FileSet):
     name='predictions',
     unique_key='accession',
     properties={
-        'title': 'Prediction',
+        'title': 'Predictions',
         'description': 'Listing of predictions',
     })
 class Prediction(FileSet):

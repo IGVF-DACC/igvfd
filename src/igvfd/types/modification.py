@@ -12,7 +12,7 @@ from .base import (
 @collection(
     name='modifications',
     properties={
-        'title': 'Modification',
+        'title': 'Modifications',
         'description': 'Listing of modifications',
     }
 )

@@ -101,7 +101,7 @@ class OntologyTerm(Item):
     name='sample-terms',
     unique_key='sample_term:name',
     properties={
-        'title': 'Sample Ontology Term',
+        'title': 'Sample Ontology Terms',
         'description': 'Ontology terms used by IGVF for samples',
     }
 )
@@ -178,7 +178,7 @@ class SampleTerm(OntologyTerm):
     name='assay-terms',
     unique_key='assay_term:name',
     properties={
-        'title': 'Assay Ontology Term',
+        'title': 'Assay Ontology Terms',
         'description': 'Ontology terms used by IGVF for assays',
     }
 )
@@ -241,7 +241,7 @@ class AssayTerm(OntologyTerm):
     name='phenotype-terms',
     unique_key='phenotype_term:name',
     properties={
-        'title': 'Phenotype Ontology Term',
+        'title': 'Phenotype Ontology Terms',
         'description': 'Ontology terms used by IGVF for phenotypes, such as traits or diseases.',
     }
 )
@@ -262,7 +262,7 @@ class PhenotypeTerm(OntologyTerm):
     name='platform-terms',
     unique_key='platform_term:name',
     properties={
-        'title': 'Platform Ontology Term',
+        'title': 'Platform Ontology Terms',
         'description': 'Ontology terms used by IGVF for platforms used for library construction or sequencing.',
     }
 )

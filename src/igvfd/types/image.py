@@ -14,7 +14,7 @@ from snovault.util import Path
     name='images',
     unique_key='image:filename',
     properties={
-        'title': 'Image',
+        'title': 'Images',
         'description': 'Listing of portal images',
     }
 )
