@@ -36,7 +36,7 @@
             "$ref": "mixins.json#/documents"
         },
         {
-            "$ref": "mixins.json#/reference_resource"
+            "$ref": "mixins.json#/transcriptome_annotation"
         }
     ],
     "dependentSchemas": {
@@ -119,6 +119,17 @@
                 "gtf",
                 "tar",
                 "txt"
+            ]
+        },
+        "assembly": {
+            "title": "Genome Assembly",
+            "description": "Genome assembly applicable for the reference data.",
+            "type": "string",
+            "enum": [
+                "GRCh38",
+                "hg19",
+                "GRCm39",
+                "mm10"
             ]
         },
         "source_url": {
