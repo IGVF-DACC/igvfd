@@ -203,6 +203,8 @@
         "summary"
     ],
     "exact_searchable_fields": [
+        "auxiliary_sets.accession",
+        "auxiliary_sets.aliases",
         "dbxrefs",
         "files.accession",
         "files.aliases",
@@ -214,9 +216,7 @@
         "samples.accession",
         "samples.aliases",
         "samples.donors.accession",
-        "samples.donors.aliases",
-        "auxiliary_sets.accession",
-        "auxiliary_sets.aliases"
+        "samples.donors.aliases"
     ],
     "changelog": "/profiles/changelogs/measurement_set.md"
 }
