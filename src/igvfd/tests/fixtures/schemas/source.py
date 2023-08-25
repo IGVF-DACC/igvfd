@@ -12,8 +12,8 @@ def source(testapp):
 
 
 @pytest.fixture
-def source_v1(tissue):
-    item = tissue.copy()
+def source_v1(testapp):
+    item = testapp.copy()
     item.update({
         'schema_version': '1',
         'aliases': []
