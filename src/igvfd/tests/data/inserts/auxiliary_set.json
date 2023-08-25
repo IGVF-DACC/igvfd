@@ -27,5 +27,33 @@
         "lab": "ali-mortazavi",
         "status": "released",
         "uuid": "cc8f6087-3a09-485a-8c85-1c16d67199f3"
+    },
+    {
+        "aliases": [
+            "igvf:auxiliary_set_3"
+        ],
+        "submitter_comment": "circularized barcode detection comment",
+        "auxiliary_type": "circularized barcode detection",
+        "samples": [
+            "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_1"
+        ],
+        "award": "1UM1HG011966-01",
+        "lab": "jay-shendure",
+        "status": "released",
+        "uuid": "37ed98d8-2dbe-4047-a8bf-289c5a92b178"
+    },
+    {
+        "aliases": [
+            "igvf:auxiliary_set_4"
+        ],
+        "submitter_comment": "quantification barcode sequencing comment",
+        "auxiliary_type": "quantification barcode sequencing",
+        "samples": [
+            "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_1"
+        ],
+        "award": "1UM1HG011966-01",
+        "lab": "jay-shendure",
+        "status": "released",
+        "uuid": "19cd5377-1d93-4bb8-99ce-80962b65db0d"
     }
 ]
