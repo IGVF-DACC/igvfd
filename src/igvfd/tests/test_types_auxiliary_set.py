@@ -20,6 +20,8 @@ def test_measurement_sets_reverse_link(testapp, measurement_set, measurement_set
 
 
 def test_summary(testapp, measurement_set, measurement_set_mpra, measurement_set_multiome, base_auxiliary_set):
+    res = testapp.get(base_auxiliary_set['@id'])
+    assert res.json.get('summary') == 'gRNA sequencing'
     testapp.patch_json(
         measurement_set['@id'],
         {
