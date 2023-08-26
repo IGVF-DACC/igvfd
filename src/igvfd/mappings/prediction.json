@@ -1,6 +1,6 @@
 {
-    "hash": "e7077c9d7d1069512dd5b747dc9afa89",
-    "index_name": "prediction_e7077c9d",
+    "hash": "e23417b74b1b1d6dec05c751259187fc",
+    "index_name": "prediction_e23417b7",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -265,9 +265,6 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "file_set_type": {
-                                "type": "keyword"
-                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -308,6 +305,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -402,9 +402,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
@@ -685,6 +682,10 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "file_set_type": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
                     },
                     "files": {
                         "properties": {
@@ -987,10 +988,6 @@
                     },
                     "notes": {
                         "type": "text"
-                    },
-                    "prediction_type": {
-                        "copy_to": "_fuzzy",
-                        "type": "keyword"
                     },
                     "publication_identifiers": {
                         "copy_to": "_exact",

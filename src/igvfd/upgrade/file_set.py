@@ -117,3 +117,11 @@ def auxiliary_set_2_3(value, system):
     if 'auxiliary_type' in value:
         value['file_set_type'] = value['auxiliary_type']
         del value['auxiliary_type']
+
+
+@upgrade_step('prediction', '2', '3')
+def prediction_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1036
+    if 'prediction_type' in value:
+        value['file_set_type'] = value['prediction_type']
+        del value['prediction_type']

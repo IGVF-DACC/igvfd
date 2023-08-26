@@ -1,6 +1,6 @@
 {
-    "hash": "40104884e60311ee5ba408d98353f27a",
-    "index_name": "analysis_set_40104884",
+    "hash": "06e5fb69946bb2352db45ef2fe0461dd",
+    "index_name": "analysis_set_06e5fb69",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -269,9 +269,6 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "file_set_type": {
-                                "type": "keyword"
-                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -312,6 +309,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -406,9 +406,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
@@ -957,9 +954,6 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "file_set_type": {
-                                "type": "keyword"
-                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -1000,6 +994,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -1094,9 +1091,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {

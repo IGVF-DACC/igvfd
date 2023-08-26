@@ -1,6 +1,6 @@
 {
-    "hash": "a9621ef86158472db9af075ec7dadc1f",
-    "index_name": "model_a9621ef8",
+    "hash": "dd67291f597b11cd93f42fcb2a0078dd",
+    "index_name": "model_dd67291f",
     "item_type": "model",
     "mapping": {
         "dynamic_templates": [
@@ -265,9 +265,6 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "file_set_type": {
-                                "type": "keyword"
-                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -308,6 +305,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -402,9 +402,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
@@ -686,6 +683,10 @@
                         },
                         "type": "object"
                     },
+                    "file_set_type": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
                     "files": {
                         "properties": {
                             "@id": {
@@ -953,9 +954,6 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "file_set_type": {
-                                "type": "keyword"
-                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -996,6 +994,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -1090,9 +1091,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
@@ -1286,10 +1284,6 @@
                         "type": "object"
                     },
                     "model_name": {
-                        "copy_to": "_fuzzy",
-                        "type": "keyword"
-                    },
-                    "file_set_type": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
