@@ -109,3 +109,11 @@ def model_2_3(value, system):
     if 'model_type' in value:
         value['file_set_type'] = value['model_type']
         del value['model_type']
+
+
+@upgrade_step('auxiliary_set', '2', '3')
+def auxiliary_set_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1036
+    if 'auxiliary_type' in value:
+        value['file_set_type'] = value['auxiliary_type']
+        del value['auxiliary_type']
