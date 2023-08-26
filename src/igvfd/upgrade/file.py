@@ -28,3 +28,32 @@ def ref_file_3_4(value, system):
             original_value = original_value.split('V')[1]
         new_value = 'GENCODE ' + original_value
         value['transcriptome_annotation'] = new_value
+
+
+@upgrade_step('sequence_file', '3', '4')
+def sequence_file_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1005
+    if 'minimum_read_length' in value and value['minimum_read_length'] > 300000000:
+        value['minimum_read_length'] = 300000000
+        notes = value.get('notes', '')
+        if notes:
+            notes += f' The minimum read length previously exceeded the upper limit of 300000000 so was set to 300000000, please assign the appropriate length.'
+        else:
+            notes = f'The minimum read length previously exceeded the upper limit of 300000000 so was set to 300000000, please assign the appropriate length.'
+        value['notes'] = notes
+    if 'maximum_read_length' in value and value['maximum_read_length'] > 300000000:
+        value['maximum_read_length'] = 300000000
+        notes = value.get('notes', '')
+        if notes:
+            notes += f' The maximum read length previously exceeded the upper limit of 300000000 so was set to 300000000, please assign the appropriate length.'
+        else:
+            notes = f'The maximum read length previously exceeded the upper limit of 300000000 so was set to 300000000, please assign the appropriate length.'
+        value['notes'] = notes
+    if 'mean_read_length' in value and value['mean_read_length'] > 300000000:
+        value['mean_read_length'] = 300000000
+        notes = value.get('notes', '')
+        if notes:
+            notes += f' The mean read length previously exceeded the upper limit of 300000000 so was set to 300000000, please assign the appropriate length.'
+        else:
+            notes = f'The mean read length previously exceeded the upper limit of 300000000 so was set to 300000000, please assign the appropriate length.'
+        value['notes'] = notes

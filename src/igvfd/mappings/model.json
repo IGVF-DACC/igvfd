@@ -1,6 +1,6 @@
 {
-    "hash": "86757790a71b4a515424d74ab8f3dbb5",
-    "index_name": "model_86757790",
+    "hash": "035df1fd1e7105ff904f1d35a5d99027",
+    "index_name": "model_035df1fd",
     "item_type": "model",
     "mapping": {
         "dynamic_templates": [
@@ -811,7 +811,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "long"
+                                "type": "float"
                             },
                             "minimum_read_length": {
                                 "fields": {

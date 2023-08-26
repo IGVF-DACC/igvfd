@@ -1,6 +1,6 @@
 {
-    "hash": "6ea3a7c1595718eaf5f7b8eeca2bfb1e",
-    "index_name": "curated_set_6ea3a7c1",
+    "hash": "d51e3d306025b25949b92b0e2ff5e98f",
+    "index_name": "curated_set_d51e3d30",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -815,7 +815,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "long"
+                                "type": "float"
                             },
                             "minimum_read_length": {
                                 "fields": {
