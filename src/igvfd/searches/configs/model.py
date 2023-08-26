@@ -19,8 +19,8 @@ def model():
             'status': {
                 'title': 'Status'
             },
-            'model_type': {
-                'title': 'Model Type'
+            'file_set_type': {
+                'title': 'File Set Type'
             },
             'prediction_objects': {
                 'title': 'Prediction Objects'
@@ -30,7 +30,7 @@ def model():
             {
                 'title': 'File Set',
                 'facet_fields': [
-                    'model_type',
+                    'file_set_type',
                     'prediction_objects',
                 ],
             },
@@ -74,8 +74,8 @@ def model():
             'model_name': {
                 'title': 'Model Name'
             },
-            'model_type': {
-                'title': 'Model Type'
+            'file_set_type': {
+                'title': 'File Set Type'
             },
             'prediction_objects': {
                 'title': 'Prediction Objects'

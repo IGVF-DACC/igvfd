@@ -8,7 +8,7 @@
         "lab",
         "award",
         "model_name",
-        "model_type",
+        "file_set_type",
         "model_version",
         "prediction_objects",
         "software_version"
@@ -60,7 +60,7 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "2"
+            "default": "3"
         },
         "model_name": {
             "title": "Model Name",
@@ -73,8 +73,8 @@
             "type": "string",
             "pattern": "^v[0-9]\\.[0-9]\\.[1-9]$"
         },
-        "model_type": {
-            "title": "Model Type",
+        "file_set_type": {
+            "title": "File Set Type",
             "description": "The category that best describes this predictive model file set.",
             "type": "string",
             "enum": [
@@ -141,7 +141,7 @@
         "dbxrefs",
         "lab.title",
         "model_name",
-        "model_type",
+        "file_set_type",
         "prediction_objects",
         "summary"
     ],

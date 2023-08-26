@@ -13,7 +13,7 @@ def model_no_input(
         'lab': lab['@id'],
         'model_name': 'predictive model',
         'model_version': 'v0.0.1',
-        'model_type': 'neural network',
+        'file_set_type': 'neural network',
         'prediction_objects': ['genes'],
         'software_version': software_version['@id']
     }
@@ -27,4 +27,23 @@ def model_v1(model_no_input):
         'schema_version': '1',
         'references': ['10.1101/2023.08.02']
     })
+    return item
+
+
+@pytest.fixture
+def model_v2(
+    award,
+    lab,
+    software_version
+):
+    item = {
+        'schema_version': '2',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'model_name': 'predictive model',
+        'model_version': 'v0.0.1',
+        'model_type': 'neural network',
+        'prediction_objects': ['genes'],
+        'software_version': software_version['@id']
+    }
     return item

@@ -5,7 +5,7 @@
         "uuid": "36472257-48c7-4d71-a75a-2189c10a50c7",
         "model_name": "Xpresso",
         "model_version": "v1.3.6",
-        "model_type": "neural network",
+        "file_set_type": "neural network",
         "prediction_objects": [
             "genes",
             "coding variants"
