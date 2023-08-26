@@ -162,7 +162,7 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
-                    "auxiliary_type": {
+                    "file_set_type": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
@@ -272,10 +272,7 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "auxiliary_sets": {
-                                "type": "keyword"
-                            },
-                            "auxiliary_type": {
+                            "file_set_type": {
                                 "type": "keyword"
                             },
                             "award": {
@@ -379,9 +376,6 @@
                                 "type": "keyword"
                             },
                             "model_name": {
-                                "type": "keyword"
-                            },
-                            "file_set_type": {
                                 "type": "keyword"
                             },
                             "model_version": {
