@@ -374,7 +374,7 @@
                             "model_name": {
                                 "type": "keyword"
                             },
-                            "model_type": {
+                            "file_set_type": {
                                 "type": "keyword"
                             },
                             "model_version": {
@@ -1068,7 +1068,7 @@
                             "model_name": {
                                 "type": "keyword"
                             },
-                            "model_type": {
+                            "file_set_type": {
                                 "type": "keyword"
                             },
                             "model_version": {
@@ -1301,7 +1301,7 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "model_type": {
+                    "file_set_type": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
