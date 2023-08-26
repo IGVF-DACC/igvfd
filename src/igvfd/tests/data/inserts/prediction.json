@@ -5,7 +5,7 @@
         ],
         "submitter_comment": "Comment for a prediction file set.",
         "description": "A cell-agnostic prediction without a sample.",
-        "prediction_type": "functional effect",
+        "file_set_type": "functional effect",
         "award": "1U01HG011952-01",
         "lab": "alan-boyle",
         "status": "released",
@@ -17,7 +17,7 @@
         ],
         "submitter_comment": "Comment for a prediction file set.",
         "description": "A prediction with a sample.",
-        "prediction_type": "functional effect",
+        "file_set_type": "functional effect",
         "samples": [
             "igvf:treated_tissue"
         ],
