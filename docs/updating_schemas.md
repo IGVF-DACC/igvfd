@@ -32,7 +32,7 @@ Adding a new schema
                 "title": {Metadata Object},
                 "description": "Description of the metadata that this object aims to capture.",
                 "id": "/profiles/{metadata object}.json",
-                "$schema": "http://json-schema.org/draft-04/schema#",
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
                 "identifyingProperties": ["uuid"],
                 "required": [],
                 "additionalProperties": false,
