@@ -77,6 +77,9 @@ def configuration_file():
             },
             'file_set': {
                 'title': 'File Set'
+            },
+            'seqspec_of': {
+                'title': 'Seqspec Of'
             }
         }
     }

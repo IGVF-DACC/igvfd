@@ -1,6 +1,6 @@
 {
-    "hash": "112a06979263308b5cf4bbd88064d532",
-    "index_name": "configuration_file_112a0697",
+    "hash": "0ea9d6d4bbb3b8f79523aa6ee8f82c76",
+    "index_name": "configuration_file_0ea9d6d4",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -353,6 +353,9 @@
                         "type": "keyword"
                     },
                     "schema_version": {
+                        "type": "keyword"
+                    },
+                    "seqspec_of": {
                         "type": "keyword"
                     },
                     "status": {
