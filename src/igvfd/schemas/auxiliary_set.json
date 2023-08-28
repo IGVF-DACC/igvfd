@@ -59,9 +59,11 @@
             "type": "string",
             "enum": [
                 "cell hashing",
+                "circularized barcode detection",
                 "gRNA sequencing",
                 "oligo-conjugated lipids",
-                "oligo-conjugated antibodies"
+                "oligo-conjugated antibodies",
+                "quantification barcode sequencing"
             ]
         },
         "construct_libraries": {
