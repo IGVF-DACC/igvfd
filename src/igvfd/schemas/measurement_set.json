@@ -175,6 +175,20 @@
                     "polyA enriched"
                 ]
             }
+        },
+        "auxiliary_sets": {
+            "title": "Auxiliary Sets",
+            "description": "The auxiliary sets of files produced alongside raw data from this measurement set.",
+            "type": "array",
+            "minimum": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Auxiliary Set",
+                "description": "An auxiliary set of files produced alongside raw data from this measurement set.",
+                "comment": "See auxiliary_set.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "AuxiliarySet"
+            }
         }
     },
     "fuzzy_searchable_fields": [
@@ -189,6 +203,8 @@
         "summary"
     ],
     "exact_searchable_fields": [
+        "auxiliary_sets.accession",
+        "auxiliary_sets.aliases",
         "dbxrefs",
         "files.accession",
         "files.aliases",

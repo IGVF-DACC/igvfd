@@ -73,6 +73,12 @@ def auxiliary_set():
             },
             'donors': {
                 'title': 'Donors'
+            },
+            'summary': {
+                'title': 'Summary'
+            },
+            'measurement_sets': {
+                'title': 'Measurement Sets'
             }
         }
     }

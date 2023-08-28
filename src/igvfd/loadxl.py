@@ -546,7 +546,13 @@ PHASE1_PIPELINES = {
     ],
     'signal_file': [
         remove_keys('derived_from', 'file_format_specifications'),
-    ]
+    ],
+    'measurement_set': [
+        remove_keys('auxiliary_sets'),
+    ],
+    'auxiliary_set': [
+        remove_keys('measurement_sets'),
+    ],
 }
 
 
@@ -587,7 +593,13 @@ PHASE2_PIPELINES = {
     ],
     'signal_file': [
         skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
-    ]
+    ],
+    'measurement_set': [
+        skip_rows_missing_all_keys('auxiliary_sets'),
+    ],
+    'auxiliary_set': [
+        skip_rows_missing_all_keys('measurement_sets'),
+    ],
 }
 
 

@@ -1,6 +1,6 @@
 {
-    "hash": "01ed30025a0f0c88d9060b746b2d00fb",
-    "index_name": "analysis_set_01ed3002",
+    "hash": "40104884e60311ee5ba408d98353f27a",
+    "index_name": "analysis_set_40104884",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -269,6 +269,9 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
+                            "auxiliary_sets": {
+                                "type": "keyword"
+                            },
                             "auxiliary_type": {
                                 "type": "keyword"
                             },
@@ -367,6 +370,9 @@
                                 "type": "keyword"
                             },
                             "lot_id": {
+                                "type": "keyword"
+                            },
+                            "measurement_sets": {
                                 "type": "keyword"
                             },
                             "model_name": {
@@ -957,6 +963,9 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
+                            "auxiliary_sets": {
+                                "type": "keyword"
+                            },
                             "auxiliary_type": {
                                 "type": "keyword"
                             },
@@ -1055,6 +1064,9 @@
                                 "type": "keyword"
                             },
                             "lot_id": {
+                                "type": "keyword"
+                            },
+                            "measurement_sets": {
                                 "type": "keyword"
                             },
                             "model_name": {

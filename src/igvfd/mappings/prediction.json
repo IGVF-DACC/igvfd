@@ -1,6 +1,6 @@
 {
-    "hash": "931bb3b321ae6f8f78261a42df20d59c",
-    "index_name": "prediction_931bb3b3",
+    "hash": "e7077c9d7d1069512dd5b747dc9afa89",
+    "index_name": "prediction_e7077c9d",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -265,6 +265,9 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
+                            "auxiliary_sets": {
+                                "type": "keyword"
+                            },
                             "auxiliary_type": {
                                 "type": "keyword"
                             },
@@ -363,6 +366,9 @@
                                 "type": "keyword"
                             },
                             "lot_id": {
+                                "type": "keyword"
+                            },
+                            "measurement_sets": {
                                 "type": "keyword"
                             },
                             "model_name": {

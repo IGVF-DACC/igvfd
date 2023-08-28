@@ -132,7 +132,8 @@ class MeasurementSet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('assay_term', include=['@id', 'term_name']),
         Path('control_file_sets', include=['@id', 'accession', 'aliases']),
-        Path('related_multiome_datasets', include=['@id', 'accession'])
+        Path('related_multiome_datasets', include=['@id', 'accession']),
+        Path('auxiliary_sets', include=['@id', 'accession', 'aliases']),
     ]
 
     audit_inherit = [
@@ -215,7 +216,40 @@ class Model(FileSet):
 class AuxiliarySet(FileSet):
     item_type = 'auxiliary_set'
     schema = load_schema('igvfd:schemas/auxiliary_set.json')
-    embedded_with_frame = FileSet.embedded_with_frame
+    embedded_with_frame = FileSet.embedded_with_frame + [
+        Path('measurement_sets', include=['@id', 'accession', 'aliases']),
+    ]
+    rev = FileSet.rev | {'measurement_sets': ('MeasurementSet', 'auxiliary_sets')}
+
+    @calculated_property(schema={
+        'title': 'Measurement Sets',
+        'description': 'The measurement sets that link to this auxiliary set.',
+        'type': 'array',
+        'items': {
+            'type': ['string', 'object'],
+            'linkFrom': 'MeasurementSet.auxiliary_sets',
+        },
+        'notSubmittable': True
+    })
+    def measurement_sets(self, request, measurement_sets):
+        return paths_filtered_by_status(request, measurement_sets)
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, auxiliary_type, measurement_sets=None):
+        if not measurement_sets:
+            return f'{auxiliary_type}'
+        measurement_sets_summaries = [request.embed(measurement_set, '@@object').get('summary')
+                                      for measurement_set in measurement_sets[:2] if measurement_set]
+        if len(measurement_sets) > 2:
+            remainder = f'... and {len(measurement_sets) - 2} more measurement set{"s" if len(measurement_sets) - 2 != 1 else ""}'
+            measurement_sets_summaries = measurement_sets_summaries + [remainder]
+        return f'{auxiliary_type} for {", ".join(measurement_sets_summaries)}'
 
 
 @collection(

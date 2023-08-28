@@ -3,6 +3,7 @@
         "aliases": [
             "igvf:auxiliary_set_1"
         ],
+        "accession": "IGVFDS0001AUXI",
         "submitter_comment": "Comment for a auxiliary set.",
         "description": "An auxiliary set with a sample.",
         "auxiliary_type": "gRNA sequencing",
@@ -18,6 +19,7 @@
         "aliases": [
             "igvf:auxiliary_set_2"
         ],
+        "accession": "IGVFDS0002AUXI",
         "submitter_comment": "cell hashing comment",
         "auxiliary_type": "cell hashing",
         "samples": [
