@@ -1,6 +1,6 @@
 {
-    "hash": "23cf490ed5e7b150be9d5c207d681340",
-    "index_name": "auxiliary_set_23cf490e",
+    "hash": "e05ed724da2541019d0329af25cce07d",
+    "index_name": "auxiliary_set_e05ed724",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -266,6 +266,9 @@
                                 "type": "keyword"
                             },
                             "associated_diseases": {
+                                "type": "keyword"
+                            },
+                            "auxiliary_sets": {
                                 "type": "keyword"
                             },
                             "award": {
