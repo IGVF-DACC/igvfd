@@ -1,6 +1,6 @@
 {
     "title": "Human Genomic Variant",
-    "description": "Schema for submitting a human genomic variant.",
+    "description": "A human genomic variant.",
     "$id": "/profiles/human_genomic_variant.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

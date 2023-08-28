@@ -1,5 +1,6 @@
 {
     "title": "User",
+    "description": "A user of IGVF data portal who is a member or affiliate member of IGVF.",
     "$id": "/profiles/user.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

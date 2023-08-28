@@ -1,5 +1,6 @@
 {
     "title": "Lab",
+    "description": "A lab that is part of or affiliated with the IGVF consortium.",
     "$id": "/profiles/lab.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

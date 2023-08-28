@@ -1,6 +1,6 @@
 {
     "title": "Auxiliary Set",
-    "description": "Schema for submitting a file set of auxiliary files produced alongside raw data from a Measurement Set.",
+    "description": "A file set for auxiliary files produced alongside raw data from a measurement set. For example, gRNA sequences generated in a CRISPR screen experiment.",
     "$id": "/profiles/auxiliary_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

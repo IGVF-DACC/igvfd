@@ -2,7 +2,7 @@
     "title": "Matrix File",
     "$id": "/profiles/matrix_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submission of quantification data in multi-dimension format.",
+    "description": "A file containing quantification data in a multi-dimension format.",
     "required": [
         "award",
         "lab",

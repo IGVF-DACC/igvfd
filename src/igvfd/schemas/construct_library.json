@@ -2,7 +2,7 @@
     "title": "Construct Library",
     "$id": "/profiles/construct_library.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a construct library.",
+    "description": "A file set containing raw data files resulting from sequencing of the library delivered to the sample. For example, a guide RNA library.",
     "type": "object",
     "oneOf": [
         {

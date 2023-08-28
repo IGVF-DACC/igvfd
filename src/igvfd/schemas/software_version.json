@@ -1,6 +1,6 @@
 {
     "title": "Software Version",
-    "description": "Schema for submitting a tagged version of a software object.",
+    "description": "A specific version of a software used for computational analysis. For example, Bowtie2 v2.3.0.",
     "$id": "/profiles/software_version.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

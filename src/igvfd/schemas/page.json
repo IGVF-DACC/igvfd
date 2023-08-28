@@ -1,6 +1,6 @@
 {
     "title": "Page",
-    "description": "Schema for a portal page.",
+    "description": "A page on the IGVF portal.",
     "$id": "/profiles/page.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

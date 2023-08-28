@@ -2,7 +2,7 @@
     "title": "Multiplexed Sample",
     "$id": "/profiles/multiplexed_sample.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a multiplexed sample.",
+    "description": "A sample that is made by multiplexing multiple distinct samples.",
     "type": "object",
     "required": [
         "award",

@@ -1,6 +1,6 @@
 {
     "title": "Curated Set",
-    "description": "Schema for submitting a file set for files originating from external sources.",
+    "description": "A file set for reference files which are utilized in the analysis of IGVF experiments. For example, genomic references from GENCODE.",
     "$id": "/profiles/curated_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",

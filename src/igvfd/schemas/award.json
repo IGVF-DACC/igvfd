@@ -1,5 +1,6 @@
 {
     "title": "Grant",
+    "description": "A grant providing financial support for a scientific project. For example, HG012076 supporting \"Single-cell Mapping Center for Human Regulatory Elements and Gene Activity.\"",
     "$id": "/profiles/award.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "required": [

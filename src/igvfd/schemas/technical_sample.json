@@ -2,7 +2,7 @@
     "title": "Technical Sample",
     "$id": "/profiles/technical_sample.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a specific technical sample.",
+    "description": "A sample that is used as a medium to perform biological measurement without the intent to characterize the technical sample itself. For example, the solution in which RNA oligos binding experiments are performed.",
     "type": "object",
     "required": [
         "award",

@@ -2,7 +2,7 @@
     "title": "Modification",
     "$id": "/profiles/modification.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "Schema for submitting a modification to a sample.",
+    "description": "A genetic modification altering sample genomic material. For example, CRISPRi dCas9-KRAB modification.",
     "type": "object",
     "required": [
         "award",
