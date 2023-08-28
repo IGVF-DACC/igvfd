@@ -12,7 +12,7 @@ from .base import (
 @collection(
     name='phenotypic-features',
     properties={
-        'title': 'Phenotypic Feature',
+        'title': 'Phenotypic Features',
         'description': 'Listing of phenotypic features',
     }
 )

@@ -13,7 +13,7 @@ from .base import (
     name='workflows',
     unique_key='uuid',
     properties={
-        'title': 'Workflow',
+        'title': 'Workflows',
         'description': 'Listing of workflows',
     }
 )
