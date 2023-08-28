@@ -1,6 +1,6 @@
 {
-    "hash": "f02280ce94ced4ef29d3c9c5ab39bc72",
-    "index_name": "measurement_set_f02280ce",
+    "hash": "776b6748832f78189f0bbfdb7a9dbe2c",
+    "index_name": "measurement_set_776b6748",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1189,7 +1189,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "long"
+                                "type": "float"
                             },
                             "minimum_read_length": {
                                 "fields": {
@@ -1243,6 +1243,9 @@
                                 "type": "keyword"
                             },
                             "seqspec": {
+                                "type": "keyword"
+                            },
+                            "seqspec_of": {
                                 "type": "keyword"
                             },
                             "sequencing_platform": {
