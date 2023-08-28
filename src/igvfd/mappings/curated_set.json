@@ -1,6 +1,6 @@
 {
-    "hash": "031b6098e2d98445448b1a1ea5270abc",
-    "index_name": "curated_set_031b6098",
+    "hash": "102d316864ec233b04031f5852e8cb83",
+    "index_name": "curated_set_102d3168",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -263,6 +263,9 @@
                                 "type": "keyword"
                             },
                             "associated_diseases": {
+                                "type": "keyword"
+                            },
+                            "auxiliary_sets": {
                                 "type": "keyword"
                             },
                             "award": {

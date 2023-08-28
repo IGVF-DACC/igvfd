@@ -1,6 +1,6 @@
 {
-    "hash": "e3dc4b0edcb35fb546ddc2eab8b19334",
-    "index_name": "measurement_set_e3dc4b0e",
+    "hash": "8ec15106288a32c9ce95919de4f18478",
+    "index_name": "measurement_set_8ec15106",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -256,9 +256,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
-                                "type": "keyword"
-                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -284,6 +281,9 @@
                                 "type": "keyword"
                             },
                             "donors": {
+                                "type": "keyword"
+                            },
+                            "file_set_type": {
                                 "type": "keyword"
                             },
                             "files": {
@@ -447,6 +447,9 @@
                                 "type": "keyword"
                             },
                             "associated_diseases": {
+                                "type": "keyword"
+                            },
+                            "auxiliary_sets": {
                                 "type": "keyword"
                             },
                             "award": {
@@ -744,6 +747,9 @@
                                 "type": "keyword"
                             },
                             "associated_diseases": {
+                                "type": "keyword"
+                            },
+                            "auxiliary_sets": {
                                 "type": "keyword"
                             },
                             "award": {

@@ -1,6 +1,6 @@
 {
-    "hash": "e23417b74b1b1d6dec05c751259187fc",
-    "index_name": "prediction_e23417b7",
+    "hash": "079685ae94d544ce203644096aaa9bb8",
+    "index_name": "prediction_079685ae",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -263,6 +263,9 @@
                                 "type": "keyword"
                             },
                             "associated_diseases": {
+                                "type": "keyword"
+                            },
+                            "auxiliary_sets": {
                                 "type": "keyword"
                             },
                             "award": {
