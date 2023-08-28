@@ -1,0 +1,113 @@
+{
+    "title": "Delimited File",
+    "$id": "/profiles/delimited_file.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "Schema for submission of quantification data in tab delimited or comma delimited format.",
+    "required": [
+        "award",
+        "lab",
+        "md5sum",
+        "file_format",
+        "file_set",
+        "content_type",
+        "reference_files",
+        "delimiter",
+        "column_headers",
+        "number_of_columns"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases",
+        "md5sum"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/processed_files"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "file.json#/dependentSchemas"
+        ]
+    },
+    "type": "object",
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "column_headers": {
+            "comment": "Column headers provides a list of column headers in a comma separated format.",
+            "title": "Column Headers",
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z]+(,[0-9a-zA-Z]+)*$"
+        },
+        "content_type": {
+            "comment": "Content Type describes the content of the file",
+            "enum": [
+                "construct sequence reference",
+                "data dictionary",
+                "differential expression quantifications",
+                "element quantifications",
+                "elements reference",
+                "enrichment",
+                "gene quantifications",
+                "guide quantifications",
+                "library quantifications",
+                "peaks",
+                "sequence barcodes",
+                "signal",
+                "transcript quantifications",
+                "variant effect quantifications"
+            ]
+        },
+        "delimiter": {
+            "comment": "Delimiter that seperates the columns in the file",
+            "type": "string",
+            "enum": [
+                "comma",
+                "tab"
+            ]
+        },
+        "file_format": {
+            "enum": [
+                "bed",
+                "csv",
+                "tsv",
+                "txt"
+            ]
+        },
+        "number_of_columns": {
+            "comment": "Number of columns provides the exact number of columns in the file.",
+            "title": "Number Of Columns",
+            "type": "number",
+            "minimum": 0
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "content_type"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs",
+        "file_format"
+    ],
+    "changelog": "/profiles/changelogs/delimited_file.md"
+}

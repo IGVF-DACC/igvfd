@@ -1,6 +1,6 @@
 {
-    "hash": "a7dc8d70da752756e1e36cd4a5b9c8ba",
-    "index_name": "construct_library_a7dc8d70",
+    "hash": "179c302ab73eb9d22cbbed5778490754",
+    "index_name": "construct_library_179c302a",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -585,6 +585,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "column_headers": {
+                                "type": "keyword"
+                            },
                             "content_md5sum": {
                                 "type": "keyword"
                             },
@@ -598,6 +601,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "delimiter": {
                                 "type": "keyword"
                             },
                             "derived_from": {
@@ -704,6 +710,15 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "number_of_columns": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "read_count": {
                                 "fields": {

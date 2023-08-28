@@ -1,6 +1,6 @@
 {
-    "hash": "05b23bd2b3dd430b90c83a5d9f5e8cf8",
-    "index_name": "measurement_set_05b23bd2",
+    "hash": "49b6b8f9ed6c40da4313a646e5d1f732",
+    "index_name": "measurement_set_49b6b8f9",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1092,6 +1092,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "column_headers": {
+                                "type": "keyword"
+                            },
                             "content_md5sum": {
                                 "type": "keyword"
                             },
@@ -1105,6 +1108,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "delimiter": {
                                 "type": "keyword"
                             },
                             "derived_from": {
@@ -1211,6 +1217,15 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "number_of_columns": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "read_count": {
                                 "fields": {

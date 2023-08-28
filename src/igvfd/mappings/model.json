@@ -1,6 +1,6 @@
 {
-    "hash": "a85ca0fd560a11f1a5b79356ee91a8b3",
-    "index_name": "model_a85ca0fd",
+    "hash": "89835a27dc9fda60e81f5ac7a0312707",
+    "index_name": "model_89835a27",
     "item_type": "model",
     "mapping": {
         "dynamic_templates": [
@@ -714,6 +714,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "column_headers": {
+                                "type": "keyword"
+                            },
                             "content_md5sum": {
                                 "type": "keyword"
                             },
@@ -727,6 +730,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "delimiter": {
                                 "type": "keyword"
                             },
                             "derived_from": {
@@ -833,6 +839,15 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "number_of_columns": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "read_count": {
                                 "fields": {

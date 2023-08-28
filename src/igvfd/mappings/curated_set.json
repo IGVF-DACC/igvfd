@@ -1,6 +1,6 @@
 {
-    "hash": "26ae27436f31c78d26be28004ce493c2",
-    "index_name": "curated_set_26ae2743",
+    "hash": "f216d1e95911e74011d9065d27c0b19d",
+    "index_name": "curated_set_f216d1e9",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -718,6 +718,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "column_headers": {
+                                "type": "keyword"
+                            },
                             "content_md5sum": {
                                 "type": "keyword"
                             },
@@ -731,6 +734,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "delimiter": {
                                 "type": "keyword"
                             },
                             "derived_from": {
@@ -837,6 +843,15 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "number_of_columns": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "read_count": {
                                 "fields": {

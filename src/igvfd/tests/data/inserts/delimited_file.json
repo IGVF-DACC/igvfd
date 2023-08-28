@@ -1,0 +1,44 @@
+[
+    {
+        "uuid": "828cd4fe-ebb0-4b36-a94a-d2e3a36cc987",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:delimiter_file_csv"
+        ],
+        "status": "released",
+        "md5sum": "33bccdeb0e371979b1ac6ea66c11f374",
+        "file_format": "csv",
+        "content_type": "construct sequence reference",
+        "submitted_file_name": "/Users/igvf/igvf_files/delimiter_file.csv",
+        "file_size": 4200010,
+        "upload_status": "pending",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "column_headers": "cell,gene",
+        "number_of_columns": 2
+    },
+    {
+        "uuid": "0598c868-0b4a-4c5b-9112-8f85c5de5374",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:delimiter_file_tsv"
+        ],
+        "status": "released",
+        "md5sum": "7fdaa7a463783ec487f5d5dd9dbfc7d4",
+        "file_format": "tsv",
+        "content_type": "gene quantifications",
+        "submitted_file_name": "/Users/igvf/igvf_files/delimiter_file.tsv",
+        "file_size": 7520001,
+        "upload_status": "pending",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "column_headers": "rep1,rep2,false_discovery_rate,log_fold_change",
+        "number_of_columns": 4
+    }
+]
