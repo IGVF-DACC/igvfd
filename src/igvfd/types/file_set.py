@@ -118,6 +118,29 @@ class CuratedSet(FileSet):
     schema = load_schema('igvfd:schemas/curated_set.json')
     embedded_with_frame = FileSet.embedded_with_frame
 
+    @calculated_property(
+        schema={
+            'title': 'Assembly',
+            'description': 'The genome assembly to which coordinates relate (e.g., GRCh38).',
+            'type': 'array',
+            'uniqueItems': True,
+            'items': {
+                'type': ['string', 'object'],
+                'linkFrom': 'File.file_set',
+            },
+            'notSubmittable': True,
+        }
+    )
+    def assembly(self, request, input_files=None):
+        assembly_values = set()
+        associated_file_paths = paths_filtered_by_status(request, input_files)
+        if associated_file_paths is not None:
+            for current_file_path in associated_file_paths:
+                file_object = request.embed(current_file_path, '@@object')
+                if file_object.get('assembly'):
+                    assembly_values.add(file_object.get('assembly'))
+        return list(assembly_values)
+
 
 @collection(
     name='measurement-sets',
