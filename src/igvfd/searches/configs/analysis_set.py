@@ -49,6 +49,9 @@ def analysis_set():
             'accession': {
                 'title': 'Accession'
             },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
             'uuid': {
                 'title': 'UUID'
             },
