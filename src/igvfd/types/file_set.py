@@ -234,7 +234,6 @@ class AuxiliarySet(FileSet):
     def measurement_sets(self, request, measurement_sets):
         return paths_filtered_by_status(request, measurement_sets)
 
-
     @calculated_property(
         schema={
             'title': 'Summary',
