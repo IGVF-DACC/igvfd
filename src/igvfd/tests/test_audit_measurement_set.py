@@ -286,6 +286,15 @@ def test_audit_modifications(
     modification,
     modification_activation
 ):
+    # No modifications audits on measurement set with no samples
+    assert all(
+        error['category'] != 'inconsistent modifications'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    assert all(
+        error['category'] != 'missing modification'
+        for error in res.json['audit'].get('ERROR', [])
+    )
     # Modifications should be the same on samples in any measurement set
     testapp.patch_json(
         measurement_set['@id'],
