@@ -151,7 +151,7 @@ def audit_inconsistent_modifications(value, system):
         audit_category: inconsistent modifications
         audit_levels: NOT_COMPLIANT
     '''
-    samples = value.get('samples')
+    samples = value.get('samples', [])
     modifications = []
     for sample in samples:
         sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
@@ -178,7 +178,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
                      'CRISPR screen'
                      ]
     if assay.get('term_name') in screen_assays:
-        samples = value.get('samples')
+        samples = value.get('samples', [])
         bad_samples = []
         for sample in samples:
             sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
