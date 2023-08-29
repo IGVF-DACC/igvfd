@@ -1,6 +1,6 @@
 {
-    "hash": "695f3a0511b39c34e53921e106626c38",
-    "index_name": "whole_organism_695f3a05",
+    "hash": "9a62e38a6f4235c9bedadccd90c3a9d5",
+    "index_name": "whole_organism_9a62e38a",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1599,9 +1599,6 @@
                                 "type": "float"
                             },
                             "temperature_units": {
-                                "type": "keyword"
-                            },
-                            "title": {
                                 "type": "keyword"
                             },
                             "treatment_term_id": {

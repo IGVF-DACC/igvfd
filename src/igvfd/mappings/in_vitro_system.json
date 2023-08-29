@@ -1,6 +1,6 @@
 {
-    "hash": "b77e2aa227a6c0bae51cab2a4fa0567f",
-    "index_name": "in_vitro_system_b77e2aa2",
+    "hash": "b499b2312d3b9946476f86be80dc61db",
+    "index_name": "in_vitro_system_b499b231",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -362,9 +362,6 @@
                                 "type": "float"
                             },
                             "temperature_units": {
-                                "type": "keyword"
-                            },
-                            "title": {
                                 "type": "keyword"
                             },
                             "treatment_term_id": {
@@ -2003,9 +2000,6 @@
                                 "type": "float"
                             },
                             "temperature_units": {
-                                "type": "keyword"
-                            },
-                            "title": {
                                 "type": "keyword"
                             },
                             "treatment_term_id": {
