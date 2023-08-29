@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Schema version 3
+
+* Rename `auxiliary_type` to `file_set_type`.
+
 ### Minor changes since schema version 2
 
 * Add `circularized barcode detection`, `quantification barcode sequencing` enum to `auxiliary_type` property.

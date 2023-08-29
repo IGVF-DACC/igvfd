@@ -16,8 +16,8 @@ def prediction():
             'lab.title': {
                 'title': 'Lab'
             },
-            'prediction_type': {
-                'title': 'Prediction Type'
+            'file_set_type': {
+                'title': 'File Set Type'
             },
             'collections': {
                 'title': 'Collections',
@@ -31,7 +31,7 @@ def prediction():
                 'title': 'File Set',
                 'facet_fields': [
                     'donors.taxa',
-                    'prediction_type',
+                    'file_set_type',
                 ],
             },
             {
@@ -65,8 +65,8 @@ def prediction():
             'lab': {
                 'title': 'Lab'
             },
-            'prediction_type': {
-                'title': 'Prediction Type'
+            'file_set_type': {
+                'title': 'File Set Type'
             },
             'samples': {
                 'title': 'Samples'

@@ -16,8 +16,8 @@ def auxiliary_set():
             'lab.title': {
                 'title': 'Lab'
             },
-            'auxiliary_type': {
-                'title': 'Auxiliary Type'
+            'file_set_type': {
+                'title': 'File Set Type'
             },
             'donors.taxa': {
                 'title': 'Taxa'
@@ -30,7 +30,7 @@ def auxiliary_set():
             {
                 'title': 'File Set',
                 'facet_fields': [
-                    'auxiliary_type',
+                    'file_set_type',
                     'donors.taxa'
                 ],
             },
@@ -65,8 +65,8 @@ def auxiliary_set():
             'lab': {
                 'title': 'Lab'
             },
-            'auxiliary_type': {
-                'title': 'Auxiliary Type'
+            'file_set_type': {
+                'title': 'File Set Type'
             },
             'samples': {
                 'title': 'Samples'

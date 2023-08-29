@@ -1,6 +1,6 @@
 {
-    "hash": "e7077c9d7d1069512dd5b747dc9afa89",
-    "index_name": "prediction_e7077c9d",
+    "hash": "079685ae94d544ce203644096aaa9bb8",
+    "index_name": "prediction_079685ae",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -268,9 +268,6 @@
                             "auxiliary_sets": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
-                                "type": "keyword"
-                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -311,6 +308,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -374,9 +374,6 @@
                             "model_name": {
                                 "type": "keyword"
                             },
-                            "model_type": {
-                                "type": "keyword"
-                            },
                             "model_version": {
                                 "type": "keyword"
                             },
@@ -408,9 +405,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
@@ -691,6 +685,10 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "file_set_type": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
                     },
                     "files": {
                         "properties": {
@@ -993,10 +991,6 @@
                     },
                     "notes": {
                         "type": "text"
-                    },
-                    "prediction_type": {
-                        "copy_to": "_fuzzy",
-                        "type": "keyword"
                     },
                     "publication_identifiers": {
                         "copy_to": "_exact",

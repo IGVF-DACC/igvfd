@@ -1,6 +1,6 @@
 {
-    "hash": "5c843a6bd38fb3877599a2ce712c5811",
-    "index_name": "measurement_set_5c843a6b",
+    "hash": "8ec15106288a32c9ce95919de4f18478",
+    "index_name": "measurement_set_8ec15106",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -256,9 +256,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
-                                "type": "keyword"
-                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -284,6 +281,9 @@
                                 "type": "keyword"
                             },
                             "donors": {
+                                "type": "keyword"
+                            },
+                            "file_set_type": {
                                 "type": "keyword"
                             },
                             "files": {
@@ -452,9 +452,6 @@
                             "auxiliary_sets": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
-                                "type": "keyword"
-                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -495,6 +492,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -558,9 +558,6 @@
                             "model_name": {
                                 "type": "keyword"
                             },
-                            "model_type": {
-                                "type": "keyword"
-                            },
                             "model_version": {
                                 "type": "keyword"
                             },
@@ -592,9 +589,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
@@ -758,9 +752,6 @@
                             "auxiliary_sets": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
-                                "type": "keyword"
-                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -801,6 +792,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -864,9 +858,6 @@
                             "model_name": {
                                 "type": "keyword"
                             },
-                            "model_type": {
-                                "type": "keyword"
-                            },
                             "model_version": {
                                 "type": "keyword"
                             },
@@ -898,9 +889,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {

@@ -7,7 +7,7 @@
     "required": [
         "lab",
         "award",
-        "prediction_type"
+        "file_set_type"
     ],
     "identifyingProperties": [
         "uuid",
@@ -46,10 +46,10 @@
     },
     "properties": {
         "schema_version": {
-            "default": "2"
+            "default": "3"
         },
-        "prediction_type": {
-            "title": "Prediction Type",
+        "file_set_type": {
+            "title": "File Set Type",
             "description": "The category that best describes this prediction file set.",
             "type": "string",
             "enum": [
@@ -63,7 +63,7 @@
     "fuzzy_searchable_fields": [
         "@type",
         "collections",
-        "prediction_type",
+        "file_set_type",
         "lab.title",
         "samples.summary",
         "samples.sample_terms",

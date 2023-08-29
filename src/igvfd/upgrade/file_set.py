@@ -101,3 +101,27 @@ def construct_library_5_6(value, system):
     if 'source' in value:
         value['sources'] = [value['source']]
         del value['source']
+
+
+@upgrade_step('model', '2', '3')
+def model_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1036
+    if 'model_type' in value:
+        value['file_set_type'] = value['model_type']
+        del value['model_type']
+
+
+@upgrade_step('auxiliary_set', '2', '3')
+def auxiliary_set_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1036
+    if 'auxiliary_type' in value:
+        value['file_set_type'] = value['auxiliary_type']
+        del value['auxiliary_type']
+
+
+@upgrade_step('prediction', '2', '3')
+def prediction_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1036
+    if 'prediction_type' in value:
+        value['file_set_type'] = value['prediction_type']
+        del value['prediction_type']

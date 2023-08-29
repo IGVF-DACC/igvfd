@@ -241,15 +241,15 @@ class AuxiliarySet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, auxiliary_type, measurement_sets=None):
+    def summary(self, request, file_set_type, measurement_sets=None):
         if not measurement_sets:
-            return f'{auxiliary_type}'
+            return f'{file_set_type}'
         measurement_sets_summaries = [request.embed(measurement_set, '@@object').get('summary')
                                       for measurement_set in measurement_sets[:2] if measurement_set]
         if len(measurement_sets) > 2:
             remainder = f'... and {len(measurement_sets) - 2} more measurement set{"s" if len(measurement_sets) - 2 != 1 else ""}'
             measurement_sets_summaries = measurement_sets_summaries + [remainder]
-        return f'{auxiliary_type} for {", ".join(measurement_sets_summaries)}'
+        return f'{file_set_type} for {", ".join(measurement_sets_summaries)}'
 
 
 @collection(

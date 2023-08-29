@@ -1,6 +1,6 @@
 {
-    "hash": "111f725869d5e207d42d1fddfd939fe2",
-    "index_name": "curated_set_111f7258",
+    "hash": "102d316864ec233b04031f5852e8cb83",
+    "index_name": "curated_set_102d3168",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -268,9 +268,6 @@
                             "auxiliary_sets": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
-                                "type": "keyword"
-                            },
                             "award": {
                                 "type": "keyword"
                             },
@@ -311,6 +308,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -374,9 +374,6 @@
                             "model_name": {
                                 "type": "keyword"
                             },
-                            "model_type": {
-                                "type": "keyword"
-                            },
                             "model_version": {
                                 "type": "keyword"
                             },
@@ -408,9 +405,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {

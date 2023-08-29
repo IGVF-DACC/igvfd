@@ -6,7 +6,7 @@
         "accession": "IGVFDS0001AUXI",
         "submitter_comment": "Comment for a auxiliary set.",
         "description": "An auxiliary set with a sample.",
-        "auxiliary_type": "gRNA sequencing",
+        "file_set_type": "gRNA sequencing",
         "samples": [
             "igvf:treated_tissue"
         ],
@@ -21,7 +21,7 @@
         ],
         "accession": "IGVFDS0002AUXI",
         "submitter_comment": "cell hashing comment",
-        "auxiliary_type": "cell hashing",
+        "file_set_type": "cell hashing",
         "samples": [
             "igvf:treated_tissue"
         ],
@@ -35,7 +35,7 @@
             "igvf:auxiliary_set_3"
         ],
         "submitter_comment": "circularized barcode detection comment",
-        "auxiliary_type": "circularized barcode detection",
+        "file_set_type": "circularized barcode detection",
         "samples": [
             "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_1"
         ],
@@ -49,7 +49,7 @@
             "igvf:auxiliary_set_4"
         ],
         "submitter_comment": "quantification barcode sequencing comment",
-        "auxiliary_type": "quantification barcode sequencing",
+        "file_set_type": "quantification barcode sequencing",
         "samples": [
             "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_1"
         ],
