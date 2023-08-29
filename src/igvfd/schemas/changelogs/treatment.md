@@ -1,5 +1,9 @@
 ## Changelog for *`treatment.json`*
 
+### Minor changes since schema version 2
+
+* Rename `title` to `summary`.
+
 ### Schema version 5
 
 * Rename `source` to `sources`.
