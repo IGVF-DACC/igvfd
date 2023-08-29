@@ -151,11 +151,12 @@ def audit_inconsistent_modifications(value, system):
         audit_category: inconsistent modifications
         audit_levels: NOT_COMPLIANT
     '''
-    samples = value.get('samples')
+    samples = value.get('samples', [])
     modifications = []
-    for sample in samples:
-        sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
-        modifications.append(sorted(sample_object.get('modifications', [])))
+    if samples != []:
+        for sample in samples:
+            sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
+            modifications.append(sorted(sample_object.get('modifications', [])))
     modifications = set(tuple(i) for i in modifications)
     if len(modifications) > 1:
         detail = (
@@ -178,12 +179,13 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
                      'CRISPR screen'
                      ]
     if assay.get('term_name') in screen_assays:
-        samples = value.get('samples')
+        samples = value.get('samples', [])
         bad_samples = []
-        for sample in samples:
-            sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
-            if 'modifications' not in sample_object:
-                bad_samples.append(sample)
+        if samples != []:
+            for sample in samples:
+                sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
+                if 'modifications' not in sample_object:
+                    bad_samples.append(sample)
         if bad_samples != []:
             samples_to_link = [audit_link(path_to_text(bad_sample), bad_sample) for bad_sample in bad_samples]
             sample_detail = samples_to_link = ', '.join(samples_to_link)
