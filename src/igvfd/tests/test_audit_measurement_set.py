@@ -275,3 +275,71 @@ def test_audit_readout(
         error['category'] == 'inconsistent readout'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_modifications(
+    testapp,
+    measurement_set,
+    assay_term_crispr,
+    in_vitro_cell_line,
+    in_vitro_organoid,
+    modification,
+    modification_activation
+):
+    # Modifications should be the same on samples in any measurement set
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id'], in_vitro_organoid['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'modifications': [modification['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent modifications'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # CRISPR screens must also have modifications on all their samples
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_crispr['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing modification'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        in_vitro_organoid['@id'],
+        {
+            'modifications': [modification_activation['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent modifications'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        in_vitro_organoid['@id'],
+        {
+            'modifications': [modification['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent modifications'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    assert all(
+        error['category'] != 'missing modification'
+        for error in res.json['audit'].get('ERROR', [])
+    )

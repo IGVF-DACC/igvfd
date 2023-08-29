@@ -142,3 +142,54 @@ def audit_inconsistent_readout(value, system):
                 f'not expected to specify a data readout.'
             )
             yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_inconsistent_modifications(value, system):
+    '''
+        audit_detail: Modifications should be consistent for samples within a measurement set.
+        audit_category: inconsistent modifications
+        audit_levels: NOT_COMPLIANT
+    '''
+    samples = value.get('samples')
+    modifications = []
+    for sample in samples:
+        sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
+        modifications.append(sorted(sample_object.get('modifications', [])))
+    modifications = set(tuple(i) for i in modifications)
+    if len(modifications) > 1:
+        detail = (
+            f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} has '
+            f'samples with inconsistent modifications applied.'
+        )
+        yield AuditFailure('inconsistent modifications', detail, level='NOT_COMPLIANT')
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_CRISPR_screen_lacking_modifications(value, system):
+    '''
+        audit_detail: CRISPR screen (and Perturb-seq) measurement sets are required to have a modification specified on their samples.
+        audit_category: missing modification
+        audit_levels: ERROR
+    '''
+    assay_term = value.get('assay_term')
+    assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    screen_assays = ['Perturb-seq',
+                     'CRISPR screen'
+                     ]
+    if assay.get('term_name') in screen_assays:
+        samples = value.get('samples')
+        bad_samples = []
+        for sample in samples:
+            sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
+            if 'modifications' not in sample_object:
+                bad_samples.append(sample)
+        if bad_samples != []:
+            samples_to_link = [audit_link(path_to_text(bad_sample), bad_sample) for bad_sample in bad_samples]
+            sample_detail = samples_to_link = ', '.join(samples_to_link)
+            detail = (
+                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'a CRISPR screen assay and is expected to specify a modification on its sample(s); '
+                f'modifications are missing on {sample_detail}.'
+            )
+            yield AuditFailure('missing modification', detail, level='ERROR')
