@@ -1,6 +1,6 @@
 {
-    "hash": "102d316864ec233b04031f5852e8cb83",
-    "index_name": "curated_set_102d3168",
+    "hash": "89ba9152deb859ce61355d53f2614d09",
+    "index_name": "curated_set_89ba9152",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -162,6 +162,9 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
+                    "assembly": {
+                        "type": "keyword"
+                    },
                     "award": {
                         "properties": {
                             "@id": {
@@ -260,6 +263,9 @@
                                 "type": "keyword"
                             },
                             "assay_title": {
+                                "type": "keyword"
+                            },
+                            "assembly": {
                                 "type": "keyword"
                             },
                             "associated_diseases": {

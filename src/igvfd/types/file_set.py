@@ -125,18 +125,16 @@ class CuratedSet(FileSet):
             'type': 'array',
             'uniqueItems': True,
             'items': {
-                'type': ['string', 'object'],
-                'linkFrom': 'File.file_set',
+                'type': 'string'
             },
             'notSubmittable': True,
         }
     )
-    def assembly(self, request, input_files=None):
+    def assembly(self, request, files):
         assembly_values = set()
-        associated_file_paths = paths_filtered_by_status(request, input_files)
-        if associated_file_paths is not None:
-            for current_file_path in associated_file_paths:
-                file_object = request.embed(current_file_path, '@@object')
+        if files is not None:
+            for current_file_path in files:
+                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('assembly'):
                     assembly_values.add(file_object.get('assembly'))
         return list(assembly_values)

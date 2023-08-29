@@ -1,6 +1,6 @@
 {
-    "hash": "187aeab7d10326083a978fd2b7e45d8c",
-    "index_name": "auxiliary_set_187aeab7",
+    "hash": "df2cfe01474f69e50ade30b45ff2bc13",
+    "index_name": "auxiliary_set_df2cfe01",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -263,6 +263,9 @@
                                 "type": "keyword"
                             },
                             "assay_title": {
+                                "type": "keyword"
+                            },
+                            "assembly": {
                                 "type": "keyword"
                             },
                             "associated_diseases": {

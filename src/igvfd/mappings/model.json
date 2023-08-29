@@ -1,6 +1,6 @@
 {
-    "hash": "eb57eeed3b68284a726eba593f1dbe3c",
-    "index_name": "model_eb57eeed",
+    "hash": "fe7d563d967346ae9af0e17c664065b5",
+    "index_name": "model_fe7d563d",
     "item_type": "model",
     "mapping": {
         "dynamic_templates": [
@@ -260,6 +260,9 @@
                                 "type": "keyword"
                             },
                             "assay_title": {
+                                "type": "keyword"
+                            },
+                            "assembly": {
                                 "type": "keyword"
                             },
                             "associated_diseases": {
@@ -952,6 +955,9 @@
                                 "type": "keyword"
                             },
                             "assay_title": {
+                                "type": "keyword"
+                            },
+                            "assembly": {
                                 "type": "keyword"
                             },
                             "associated_diseases": {
