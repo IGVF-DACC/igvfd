@@ -287,6 +287,7 @@ def test_audit_modifications(
     modification_activation
 ):
     # No modifications audits on measurement set with no samples
+    res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent modifications'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
