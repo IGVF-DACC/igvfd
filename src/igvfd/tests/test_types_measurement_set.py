@@ -56,3 +56,47 @@ def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, me
     res = testapp.get(measurement_set_multiome['@id'])
     assert set([file_set_id['@id'] for file_set_id in res.json.get('related_multiome_datasets')]
                ) == {measurement_set['@id'], measurement_set_multiome_2['@id']}
+
+
+def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, modification_activation,
+                 assay_term_crispr, primary_cell, modification):
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('summary') == 'STARR-seq'
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id']],
+            'readout': assay_term_chip['@id'],
+            'preferred_assay_title': 'lentiMPRA'
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'modifications': [modification_activation['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('summary') == 'activation STARR-seq (lentiMPRA) followed by ChIP-seq'
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_crispr['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('summary') == 'CRISPR activation screen (lentiMPRA) followed by ChIP-seq'
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id'], primary_cell['@id']]
+        }
+    )
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'modifications': [modification['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('summary') == 'mixed CRISPR screen (lentiMPRA) followed by ChIP-seq'

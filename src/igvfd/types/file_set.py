@@ -170,6 +170,58 @@ class MeasurementSet(FileSet):
                             related_datasets.append(file_set_id)
             return related_datasets
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, assay_term, preferred_assay_title=None, readout=None,
+                samples=None):
+        assay = request.embed(assay_term)['term_name']
+        modality_set = set()
+        modality_phrase = ''
+        assay_phrase = ''
+        readout_phrase = ''
+        preferred_title_phrase = ''
+
+        if samples:
+            for sample in samples:
+                sample_object = request.embed(sample, '@@object')
+                if sample_object.get('modifications'):
+                    for modification in sample_object.get('modifications'):
+                        modality = request.embed(modification)['modality']
+                        modality_set.add(modality)
+        if readout:
+            readout_term = request.embed(readout)['term_name']
+            readout_phrase = f' followed by {readout_term}'
+        if preferred_assay_title:
+            preferred_title_phrase = f' ({preferred_assay_title})'
+        if len(modality_set) > 1:
+            modality_phrase = f'mixed'
+            assay_phrase = f' {assay}'
+        if len(modality_set) == 1:
+            modality_set = ''.join(modality_set)
+            if assay == 'CRISPR screen':
+                assay_phrase = f'CRISPR {modality_set} screen'
+            else:
+                modality_phrase = f'{modality_set}'
+                assay_phrase = f' {assay}'
+        if len(modality_set) == 0:
+            assay_phrase = f'{assay}'
+        sentence = ''
+        sentence_parts = [
+            modality_phrase,
+            assay_phrase,
+            preferred_title_phrase,
+            readout_phrase
+        ]
+        for phrase in sentence_parts:
+            if phrase != '':
+                sentence += phrase
+        return sentence
+
 
 @collection(
     name='construct-libraries',
