@@ -49,6 +49,9 @@ class Sample(Item):
         Path('sources', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('sorted_fraction', include=['@id', 'accession']),
+        Path('file_sets', include=['@id', 'accession', 'aliases', 'lab', 'status']),
+        Path('file_sets.lab', include=['title']),
+        Path('multiplexed_in', include=['@id', 'accession'])
     ]
 
     @calculated_property(schema={
@@ -91,9 +94,8 @@ class Biosample(Sample):
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
-        Path('treatments', include=['@id', 'treatment_term_id', 'treatment_term_name', 'treatment_type',
-             'purpose', 'amount', 'amount_units', 'duration', 'duration_units']),
-        Path('modifications', include=['@id', 'modality', 'cas', 'cas_species', 'fused_domain', 'tagged_protein'])
+        Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
+        Path('modifications', include=['@id', 'modality', 'summary', 'status'])
     ]
 
     @calculated_property(
@@ -224,8 +226,7 @@ class InVitroSystem(Biosample):
     item_type = 'in_vitro_system'
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
     embedded_with_frame = Biosample.embedded_with_frame + [
-        Path('cell_fate_change_treatments', include=['@id', 'treatment_term_name', 'purpose',
-             'treatment_type', 'treatment_term_id', 'duration', 'duration_units', 'amount', 'amount_units']),
+        Path('cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('originated_from', include=['@id', 'accession']),
     ]
 
@@ -366,7 +367,13 @@ class MultiplexedSample(Sample):
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
-        Path('treatments', include=['@id', 'treatment_term_name', 'purpose'])
+        Path('multiplexed_samples', include=['@id', 'accession', '@type',
+             'summary', 'sample_terms', 'disease_terms', 'donors', 'status']),
+        Path('multiplexed_samples.sample_terms', include=['term_name']),
+        Path('multiplexed_samples.disease_terms', include=['term_name']),
+        Path('multiplexed_samples.donors', include=['@id', 'accession']),
+        Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
+        Path('modifications', include=['@id', 'modality', 'summary', 'status'])
     ]
 
     @calculated_property(

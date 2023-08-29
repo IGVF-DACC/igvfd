@@ -10,7 +10,10 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
         }
     )
     res = testapp.get(tissue['@id'])
-    assert res.json.get('file_sets') == [measurement_set['@id']]
+    f_id = []
+    for f in res.json.get('file_sets'):
+        f_id.append(f['@id'])
+    assert f_id == [measurement_set['@id']]
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -24,7 +27,10 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
         }
     )
     res = testapp.get(tissue['@id'])
-    assert set(res.json.get('file_sets')) == {
+    f_id = []
+    for f in res.json.get('file_sets'):
+        f_id.append(f['@id'])
+    assert set(f_id) == {
         measurement_set['@id'], analysis_set_base['@id'], curated_set_genome['@id']}
 
 
@@ -61,8 +67,10 @@ def test_multiplexed_sample_props(
 
     modifications_set = set()
     modifications_set.add(modification['@id'])
-    multiplexed_modifications_set = set([entry for entry in res.json.get('modifications', [])])
-    assert modifications_set == multiplexed_modifications_set
+    multiplexed_modifications_set = []
+    for m in res.json.get('modifications'):
+        multiplexed_modifications_set.append(m['@id'])
+    assert modifications_set == set(multiplexed_modifications_set)
 
     donors_set = set()
     donors_set.update(tissue.get('donors', []))
@@ -82,6 +90,8 @@ def test_multiplexed_sample_props(
     sources_set.update(in_vitro_cell_line.get('sources', []))
     multiplexed_sources_set = set([entry['@id'] for entry in res.json.get('sources', [])])
     assert sources_set == multiplexed_sources_set
-
     res = testapp.get(tissue['@id'])
-    assert res.json.get('multiplexed_in') == [multiplexed_sample['@id']]
+    multiplexed_in = []
+    for m in res.json.get('multiplexed_in'):
+        multiplexed_in.append(m['@id'])
+    assert multiplexed_in == [multiplexed_sample['@id']]
