@@ -1,6 +1,6 @@
 {
-    "hash": "c521128d63209e76367c4bbbcffa7895",
-    "index_name": "technical_sample_c521128d",
+    "hash": "35bbe7b7d1145bd770ea0c585a3023d8",
+    "index_name": "technical_sample_35bbe7b7",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -278,7 +278,7 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
+                            "auxiliary_sets": {
                                 "type": "keyword"
                             },
                             "award": {
@@ -321,6 +321,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -434,10 +437,10 @@
                             "lot_id": {
                                 "type": "keyword"
                             },
-                            "model_name": {
+                            "measurement_sets": {
                                 "type": "keyword"
                             },
-                            "model_type": {
+                            "model_name": {
                                 "type": "keyword"
                             },
                             "model_version": {
@@ -471,9 +474,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {

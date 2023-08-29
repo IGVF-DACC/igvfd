@@ -1,6 +1,6 @@
 {
-    "hash": "e04282d9e3be2fa6701632d04f3642ae",
-    "index_name": "whole_organism_e04282d9",
+    "hash": "695f3a0511b39c34e53921e106626c38",
+    "index_name": "whole_organism_695f3a05",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -367,7 +367,7 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
+                            "auxiliary_sets": {
                                 "type": "keyword"
                             },
                             "award": {
@@ -410,6 +410,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -523,10 +526,10 @@
                             "lot_id": {
                                 "type": "keyword"
                             },
-                            "model_name": {
+                            "measurement_sets": {
                                 "type": "keyword"
                             },
-                            "model_type": {
+                            "model_name": {
                                 "type": "keyword"
                             },
                             "model_version": {
@@ -560,9 +563,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {

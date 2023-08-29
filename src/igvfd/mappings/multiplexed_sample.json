@@ -1,6 +1,6 @@
 {
-    "hash": "a32a5941dfd68749c8261aecaaf38170",
-    "index_name": "multiplexed_sample_a32a5941",
+    "hash": "88d996df1cd58e00287ee4c986ebacb2",
+    "index_name": "multiplexed_sample_88d996df",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -352,7 +352,7 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
+                            "auxiliary_sets": {
                                 "type": "keyword"
                             },
                             "award": {
@@ -395,6 +395,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -508,10 +511,10 @@
                             "lot_id": {
                                 "type": "keyword"
                             },
-                            "model_name": {
+                            "measurement_sets": {
                                 "type": "keyword"
                             },
-                            "model_type": {
+                            "model_name": {
                                 "type": "keyword"
                             },
                             "model_version": {
@@ -545,9 +548,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {

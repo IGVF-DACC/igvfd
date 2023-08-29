@@ -1,6 +1,6 @@
 {
-    "hash": "13386bc7ecb9efe864d7cac79ac6fa61",
-    "index_name": "in_vitro_system_13386bc7",
+    "hash": "b77e2aa227a6c0bae51cab2a4fa0567f",
+    "index_name": "in_vitro_system_b77e2aa2",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -511,7 +511,7 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
+                            "auxiliary_sets": {
                                 "type": "keyword"
                             },
                             "award": {
@@ -554,6 +554,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -667,10 +670,10 @@
                             "lot_id": {
                                 "type": "keyword"
                             },
-                            "model_name": {
+                            "measurement_sets": {
                                 "type": "keyword"
                             },
-                            "model_type": {
+                            "model_name": {
                                 "type": "keyword"
                             },
                             "model_version": {
@@ -704,9 +707,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {

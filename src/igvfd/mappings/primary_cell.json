@@ -1,6 +1,6 @@
 {
-    "hash": "b0d6a81de0f1acf7b535eb8e6339b5fe",
-    "index_name": "primary_cell_b0d6a81d",
+    "hash": "20afd1bfc9c8fba57a62cefbe9452284",
+    "index_name": "primary_cell_20afd1bf",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -367,7 +367,7 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
+                            "auxiliary_sets": {
                                 "type": "keyword"
                             },
                             "award": {
@@ -410,6 +410,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -523,10 +526,10 @@
                             "lot_id": {
                                 "type": "keyword"
                             },
-                            "model_name": {
+                            "measurement_sets": {
                                 "type": "keyword"
                             },
-                            "model_type": {
+                            "model_name": {
                                 "type": "keyword"
                             },
                             "model_version": {
@@ -560,9 +563,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {

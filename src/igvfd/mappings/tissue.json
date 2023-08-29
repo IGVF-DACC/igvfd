@@ -1,6 +1,6 @@
 {
-    "hash": "c397b3dd87f3c3cfa54e40123ef490da",
-    "index_name": "tissue_c397b3dd",
+    "hash": "1c99d498067c9f210b77c22d805ad2f2",
+    "index_name": "tissue_1c99d498",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -370,7 +370,7 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
-                            "auxiliary_type": {
+                            "auxiliary_sets": {
                                 "type": "keyword"
                             },
                             "award": {
@@ -413,6 +413,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "file_set_type": {
+                                "type": "keyword"
                             },
                             "files": {
                                 "type": "keyword"
@@ -526,10 +529,10 @@
                             "lot_id": {
                                 "type": "keyword"
                             },
-                            "model_name": {
+                            "measurement_sets": {
                                 "type": "keyword"
                             },
-                            "model_type": {
+                            "model_name": {
                                 "type": "keyword"
                             },
                             "model_version": {
@@ -563,9 +566,6 @@
                                 "type": "keyword"
                             },
                             "prediction_objects": {
-                                "type": "keyword"
-                            },
-                            "prediction_type": {
                                 "type": "keyword"
                             },
                             "preferred_assay_title": {
