@@ -79,3 +79,36 @@ def test_curated_set_transcriptome_annotation(testapp, reference_file, reference
     assert len(curated_set_result['transcriptome_annotation']) == 2
     assert 'GENCODE 40' in curated_set_result['transcriptome_annotation']
     assert 'GENCODE 41' in curated_set_result['transcriptome_annotation']
+
+
+def test_curated_set_summary(testapp, reference_file, reference_file_two, curated_set_genome):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'file_set': curated_set_genome['@id'],
+            'transcriptome_annotation': 'GENCODE 40',
+            'assembly': 'GRCh38'
+        }
+    )
+    testapp.patch_json(
+        reference_file_two['@id'],
+        {
+            'file_set': curated_set_genome['@id'],
+            'transcriptome_annotation': 'GENCODE 41',
+            'assembly': 'hg19'
+        }
+    )
+    testapp.patch_json(
+        curated_set_genome['@id'],
+        {
+            'taxa': 'Homo sapiens'
+        }
+    )
+    curated_set_result = testapp.get(curated_set_genome['@id']).json
+    assert 'summary' in curated_set_result
+    assert 'genome' in curated_set_result['summary']
+    assert 'Homo sapiens' in curated_set_result['summary']
+    assert 'GRCh38' in curated_set_result['summary']
+    assert 'hg19' in curated_set_result['summary']
+    assert 'GENCODE 40' in curated_set_result['summary']
+    assert 'GENCODE 41' in curated_set_result['summary']
