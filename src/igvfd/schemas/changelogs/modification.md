@@ -3,6 +3,7 @@
 ### Schema version 3
 
 * Rename `source` to `sources`.
+* Remove `accession` and `alternate_accessions` from identifying properties.
 
 ### Minor changes since schema version 2
 
