@@ -160,6 +160,34 @@ class CuratedSet(FileSet):
                     annotation_values.add(file_object.get('transcriptome_annotation'))
         return list(annotation_values)
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, curated_set_type, files, taxa=None):
+        message_list = []
+        message_list.append(curated_set_type)
+        if taxa:
+            message_list.append(taxa)
+        if files is not None:
+            assembly_values = set()
+            annotation_values = set()
+            for current_file_path in files:
+                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+                if file_object.get('assembly'):
+                    assembly_values.add(file_object.get('assembly'))
+                if file_object.get('transcriptome_annotation'):
+                    annotation_values.add(file_object.get('transcriptome_annotation'))
+            for assembly_value in assembly_values:
+                message_list.append(assembly_value)
+            for annotation_value in annotation_values:
+                message_list.append(annotation_value)
+        summary_message = ' '.join(message_list)
+        return summary_message
+
 
 @collection(
     name='measurement-sets',
