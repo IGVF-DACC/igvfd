@@ -53,10 +53,7 @@ def test_curated_set_assembly(testapp, reference_file, reference_file_two, curat
         }
     )
     curated_set_result = testapp.get(curated_set_genome['@id']).json
-    assert 'assembly' in curated_set_result
-    assert len(curated_set_result['assembly']) == 2
-    assert 'GRCh38' in curated_set_result['assembly']
-    assert 'hg19' in curated_set_result['assembly']
+    assert set(['GRCh38', 'hg19']) == set(curated_set_result.get('assembly', []))
 
 
 def test_curated_set_transcriptome_annotation(testapp, reference_file, reference_file_two, curated_set_genome):
@@ -75,10 +72,7 @@ def test_curated_set_transcriptome_annotation(testapp, reference_file, reference
         }
     )
     curated_set_result = testapp.get(curated_set_genome['@id']).json
-    assert 'transcriptome_annotation' in curated_set_result
-    assert len(curated_set_result['transcriptome_annotation']) == 2
-    assert 'GENCODE 40' in curated_set_result['transcriptome_annotation']
-    assert 'GENCODE 41' in curated_set_result['transcriptome_annotation']
+    assert set(['GENCODE 40', 'GENCODE 41']) == set(curated_set_result.get('transcriptome_annotation', []))
 
 
 def test_curated_set_summary(testapp, reference_file, reference_file_two, curated_set_genome):
@@ -105,10 +99,4 @@ def test_curated_set_summary(testapp, reference_file, reference_file_two, curate
         }
     )
     curated_set_result = testapp.get(curated_set_genome['@id']).json
-    assert 'summary' in curated_set_result
-    assert 'genome' in curated_set_result['summary']
-    assert 'Homo sapiens' in curated_set_result['summary']
-    assert 'GRCh38' in curated_set_result['summary']
-    assert 'hg19' in curated_set_result['summary']
-    assert 'GENCODE 40' in curated_set_result['summary']
-    assert 'GENCODE 41' in curated_set_result['summary']
+    assert curated_set_result.get('summary', '') == 'genome Homo sapiens GRCh38 hg19 GENCODE 40 GENCODE 41'

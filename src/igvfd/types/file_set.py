@@ -121,7 +121,7 @@ class CuratedSet(FileSet):
     @calculated_property(
         schema={
             'title': 'Assembly',
-            'description': 'The genome assembly to which coordinates relate (e.g., GRCh38).',
+            'description': 'The genome assembly to which the referencing files in the file set are utilizing (e.g., GRCh38).',
             'type': 'array',
             'uniqueItems': True,
             'items': {
@@ -137,7 +137,11 @@ class CuratedSet(FileSet):
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('assembly'):
                     assembly_values.add(file_object.get('assembly'))
-        return list(assembly_values)
+        assembly_value_list = list(assembly_values)
+        assembly_value_list.sort()
+        if len(assembly_value_list) == 0:
+            assembly_value_list = None
+        return assembly_value_list
 
     @calculated_property(
         schema={
@@ -158,7 +162,11 @@ class CuratedSet(FileSet):
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('transcriptome_annotation'):
                     annotation_values.add(file_object.get('transcriptome_annotation'))
-        return list(annotation_values)
+        annotation_value_list = list(annotation_values)
+        annotation_value_list.sort()
+        if len(annotation_value_list) == 0:
+            annotation_value_list = None
+        return annotation_value_list
 
     @calculated_property(
         schema={
@@ -168,24 +176,34 @@ class CuratedSet(FileSet):
         }
     )
     def summary(self, request, curated_set_type, files, taxa=None):
-        message_list = []
-        message_list.append(curated_set_type)
-        if taxa:
-            message_list.append(taxa)
+
+        assembly_values_set = set()
+        annotation_values_set = set()
         if files is not None:
-            assembly_values = set()
-            annotation_values = set()
             for current_file_path in files:
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('assembly'):
-                    assembly_values.add(file_object.get('assembly'))
+                    assembly_values_set.add(file_object.get('assembly'))
                 if file_object.get('transcriptome_annotation'):
-                    annotation_values.add(file_object.get('transcriptome_annotation'))
-            for assembly_value in assembly_values:
-                message_list.append(assembly_value)
-            for annotation_value in annotation_values:
-                message_list.append(annotation_value)
-        summary_message = ' '.join(message_list)
+                    annotation_values_set.add(file_object.get('transcriptome_annotation'))
+
+        summary_message = curated_set_type
+
+        if taxa:
+            summary_message += f' {taxa}'
+
+        if len(assembly_values_set) > 0:
+            assembly_values_list = list(assembly_values_set)
+            assembly_values_list.sort()
+            assembly_values_joined = ' '.join(assembly_values_list)
+            summary_message += f' {assembly_values_joined}'
+
+        if len(annotation_values_set) > 0:
+            annotation_values_list = list(annotation_values_set)
+            annotation_values_list.sort()
+            annotation_values_joined = ' '.join(annotation_values_list)
+            summary_message += f' {annotation_values_joined}'
+
         return summary_message
 
 
