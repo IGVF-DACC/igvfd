@@ -1,6 +1,6 @@
 ## Changelog for *`treatment.json`*
 
-### Minor changes since schema version 2
+### Minor changes since schema version 5
 
 * Rename `title` to `summary`.
 
