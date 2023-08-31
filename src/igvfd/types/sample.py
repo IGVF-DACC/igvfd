@@ -198,25 +198,20 @@ class PrimaryCell(Biosample):
             'notSubmittable': True,
         }
     )
-    @calculated_property(
-        schema={
-            'title': 'Summary',
-            'type': 'string',
-            'notSubmittable': True,
-        }
-    )
-    def summary(self, request, sample_terms, age, donors, sex=None, biomarkers=None, treatments=None, embryonic=False, virtual=False, taxa=None, age_units=None):
+    def summary(self, request, sample_terms, age, donors, cellular_sub_pool=None, sex=None, biomarkers=None, treatments=None, embryonic=False, virtual=False, taxa=None, age_units=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         if 'cell' not in term_name:
-            term_name = f'{term_name} primary cell'
+            term_name = f'{term_name} cell'
         summary_terms = term_name
+        if cellular_sub_pool:
+            summary_terms = f'{summary_terms} ({cellular_sub_pool})'
         if embryonic:
             summary_terms = f'embryonic {summary_terms}'
         if virtual:
             summary_terms = f'virtual {summary_terms}'
         summary_terms = f'{summary_terms},'
-        if sex:
+        if sex and sex != 'unspecified':
             if sex == 'mixed':
                 sex = 'mixed sex'
             summary_terms = f'{summary_terms} {sex}'
@@ -236,8 +231,16 @@ class PrimaryCell(Biosample):
             biomarker_summaries = []
             for biomarker in biomarkers:
                 biomarker_object = request.embed(biomarker)
-                biomarker_summaries.append(biomarker_object.get('summary'))
-            summary_terms = f'{summary_terms} {", ".join(biomarker_summaries)}'
+                if biomarker_object['quantification'] in ['positive', 'negative']:
+                    biomarker_summary = f'{biomarker_object["quantification"]} detection of {biomarker_object["name"]}'
+                elif biomarker_object['quantification'] in ['high', 'intermediate', 'low']:
+                    if biomarker_object.get('classification') == 'marker gene':
+                        biomarker_summary = f'{biomarker_object["quantification"]} expression of {biomarker_object["name"]}'
+                    else:
+                        biomarker_summary = f'{biomarker_object["quantification"]} level of {biomarker_object["name"]}'
+                biomarker_summaries.append(biomarker_summary)
+                biomarker_summaries = sorted(biomarker_summaries)
+            summary_terms = f'{summary_terms} characterized by {", ".join(biomarker_summaries)}'
         if treatments:
             treatment_summaries = []
             for treatment in treatments:

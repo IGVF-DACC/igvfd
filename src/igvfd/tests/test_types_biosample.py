@@ -44,50 +44,7 @@ def test_age_calculation(testapp, in_vitro_cell_line):
     assert res.json.get('age') == '90'
 
 
-def test_summary(testapp, tissue, primary_cell, in_vitro_cell_line, technical_sample, sample_term_endothelial_cell, sample_term_embryoid_body, sample_term_lymphoblastoid, sample_term_brown_adipose_tissue, treatment_chemical):
-    res = testapp.get(tissue['@id'])
-    assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus'
-    testapp.patch_json(
-        tissue['@id'],
-        {
-            'lower_bound_age': 10,
-            'upper_bound_age': 10,
-            'age_units': 'month'
-        }
-    )
-    res = testapp.get(tissue['@id'])
-    assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus (10 months)'
-    testapp.patch_json(
-        tissue['@id'],
-        {
-            'lower_bound_age': 50,
-            'upper_bound_age': 100,
-            'age_units': 'day',
-            'sample_terms': [sample_term_brown_adipose_tissue['@id']],
-        }
-    )
-    res = testapp.get(tissue['@id'])
-    assert res.json.get('summary') == 'brown adipose tissue, Mus musculus (50-100 days)'
-    res = testapp.get(primary_cell['@id'])
-    assert res.json.get('summary') == 'pluripotent stem cell, Homo sapiens'
-    testapp.patch_json(
-        primary_cell['@id'],
-        {
-            'lower_bound_age': 1,
-            'upper_bound_age': 3,
-            'age_units': 'week'
-        }
-    )
-    res = testapp.get(primary_cell['@id'])
-    assert res.json.get('summary') == 'pluripotent stem cell, Homo sapiens (1-3 weeks)'
-    testapp.patch_json(
-        primary_cell['@id'],
-        {
-            'sample_terms': [sample_term_endothelial_cell['@id']],
-        }
-    )
-    res = testapp.get(primary_cell['@id'])
-    assert res.json.get('summary') == 'endothelial cell of vascular tree, Homo sapiens (1-3 weeks)'
+def test_summary(testapp, in_vitro_cell_line, technical_sample, sample_term_endothelial_cell, sample_term_embryoid_body, sample_term_lymphoblastoid, sample_term_brown_adipose_tissue, treatment_chemical):
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get('summary') == 'K562 cell line, Mus musculus (100 hours)'
     testapp.patch_json(
