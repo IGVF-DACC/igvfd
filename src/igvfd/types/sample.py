@@ -222,7 +222,7 @@ class PrimaryCell(Biosample):
                     donor_object = request.embed(donor, '@@object?skip_calculated=true')
                     strains.append(donor_object['strain'])
                 strains = ', '.join(sorted(list(set(strains))))
-                taxa = f'{taxa} ({strains})'
+                taxa = f'{taxa} {strains}'
             summary_terms = f'{summary_terms} {taxa}'
         if age != 'unknown':
             age = concat_numeric_and_units(age, age_units)
@@ -276,33 +276,66 @@ class InVitroSystem(Biosample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, classification, taxa=None, time_post_change=None, time_post_change_units=None):
-        if len(sample_terms) > 1:
-            term_name = 'mixed'
-        else:
-            term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
-            term_name = (term_object.get('term_name'))
-        term_and_classification = f'{term_name} {classification}'
+    def summary(self, request, sample_terms, classification, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, sex=None, taxa=None, sorted_fraction_detail=None, donors=None, biomarkers=None, treatments=None):
+        term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
+        term_name = term_object.get('term_name')
+        summary_terms = f'{term_name} {classification}'
         if classification in term_name:
-            term_and_classification = term_name
+            summary_terms = term_name
         elif 'cell' in classification and 'cell' in term_name:
-            term_and_classification = term_name.replace('cell', classification)
+            summary_terms = term_name.replace('cell', classification)
         elif 'tissue' in classification and 'tissue' in term_name:
-            term_and_classification = term_name.replace('tissue', classification)
+            summary_terms = term_name.replace('tissue', classification)
+        if time_post_change and time_post_change_units:
+            time_post_change = concat_numeric_and_units(time_post_change, time_post_change_units)
+            if targeted_sample_term:
+                targeted_term_object = request.embed(targeted_sample_term, '@@object?skip_calculated=true')
+                targeted_term_name = targeted_term_object.get('term_name')
+                summary_terms = f'{summary_terms} induced to {targeted_term_name} for {time_post_change}'
+            else:
+                summary_terms = f'{summary_terms} induced for {time_post_change}'
+        summary_terms = f'{summary_terms},'
+        if sex:
+            if sex != 'unspecified':
+                if sex == 'mixed':
+                    sex = 'mixed sex'
+                summary_terms = f'{summary_terms} {sex}'
         if taxa:
-            if time_post_change and time_post_change_units:
-                if time_post_change != 1:
-                    time_post_change_units = f'{time_post_change_units}s'
-                return f'{term_and_classification}, {taxa} ({time_post_change} {time_post_change_units})'
-            else:
-                return f'{term_and_classification}, {taxa}'
-        else:
-            if time_post_change and time_post_change_units:
-                if time_post_change != 1:
-                    time_post_change_units = f'{time_post_change_units}s'
-                return f'{term_and_classification} ({time_post_change} {time_post_change_units})'
-            else:
-                return f'{term_and_classification}'
+            if taxa == 'Mus musculus':
+                strains = []
+                for donor in donors:
+                    donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                    strains.append(donor_object['strain'])
+                strains = ', '.join(sorted(list(set(strains))))
+                taxa = f'{taxa} {strains}'
+            summary_terms = f'{summary_terms} {taxa}'
+        if sorted_fraction_detail:
+            summary_terms = f'{summary_terms} (sorting details: {sorted_fraction_detail})'
+        if biomarkers:
+            biomarker_summaries = []
+            for biomarker in biomarkers:
+                biomarker_object = request.embed(biomarker)
+                if biomarker_object['quantification'] in ['positive', 'negative']:
+                    biomarker_summary = f'{biomarker_object["quantification"]} detection of {biomarker_object["name"]}'
+                elif biomarker_object['quantification'] in ['high', 'intermediate', 'low']:
+                    if biomarker_object.get('classification') == 'marker gene':
+                        biomarker_summary = f'{biomarker_object["quantification"]} expression of {biomarker_object["name"]}'
+                    else:
+                        biomarker_summary = f'{biomarker_object["quantification"]} level of {biomarker_object["name"]}'
+                biomarker_summaries.append(biomarker_summary)
+                biomarker_summaries = sorted(biomarker_summaries)
+            summary_terms = f'{summary_terms} characterized by {", ".join(biomarker_summaries)}'
+        if treatments:
+            treatment_summaries = []
+            for treatment in treatments:
+                treatment_object = request.embed(treatment)
+                if treatment_object['title'].startswith('Treatment of'):
+                    treatment_summary = treatment_object['title'].replace('Treatment of', 'treated with')
+                elif treatment_object['title'].startswith('Depletion of'):
+                    treatment_summary = treatment_object['title'].replace('Depletion of', 'depleted of')
+                treatment_summaries.append(treatment_summary)
+            summary_terms = f'{summary_terms} {", ".join(treatment_summaries)}'
+        return summary_terms
 
 
 @collection(
@@ -347,7 +380,7 @@ class Tissue(Biosample):
                     donor_object = request.embed(donor, '@@object?skip_calculated=true')
                     strains.append(donor_object['strain'])
                 strains = ', '.join(sorted(list(set(strains))))
-                taxa = f'{taxa} ({strains})'
+                taxa = f'{taxa} {strains}'
             summary_terms = f'{summary_terms} {taxa}'
         if age != 'unknown':
             age = concat_numeric_and_units(age, age_units)
@@ -418,7 +451,7 @@ class WholeOrganism(Biosample):
     )
     def summary(self, request, sample_terms, age, donors, taxa=None, age_units=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
-        term_name = (term_object.get('term_name'))
+        term_name = term_object.get('term_name')
         summary_terms = concat_numeric_and_units(len(donors), term_name, no_numeric_on_one=True)
         summary_terms = f'{summary_terms},'
         if taxa:
@@ -427,7 +460,8 @@ class WholeOrganism(Biosample):
                 for donor in donors:
                     donor_object = request.embed(donor, '@@object?skip_calculated=true')
                     strains.append(donor_object['strain'])
-                taxa = f'{taxa} ({", ".join(strains)})'
+                strains = ', '.join(sorted(list(set(strains))))
+                taxa = f'{taxa} {strains}'
             summary_terms = f'{summary_terms} {taxa}'
         if age != 'unknown':
             age = concat_numeric_and_units(age, age_units)

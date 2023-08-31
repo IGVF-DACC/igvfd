@@ -3,7 +3,7 @@ import pytest
 
 def test_summary(testapp, whole_organism, rodent_donor, parent_rodent_donor_1, human_donor):
     res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == 'whole organism, Mus musculus (strain1)'
+    assert res.json.get('summary') == 'whole organism, Mus musculus strain1'
     testapp.patch_json(
         whole_organism['@id'],
         {
@@ -13,7 +13,7 @@ def test_summary(testapp, whole_organism, rodent_donor, parent_rodent_donor_1, h
         }
     )
     res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == 'whole organism, Mus musculus (strain1) (1 hour)'
+    assert res.json.get('summary') == 'whole organism, Mus musculus strain1 (1 hour)'
     testapp.patch_json(
         whole_organism['@id'],
         {
@@ -24,7 +24,7 @@ def test_summary(testapp, whole_organism, rodent_donor, parent_rodent_donor_1, h
         }
     )
     res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == '2 whole organisms, Mus musculus (strain1, strain2) (1-5 hours)'
+    assert res.json.get('summary') == '2 whole organisms, Mus musculus strain1, strain2 (1-5 hours)'
     testapp.patch_json(
         whole_organism['@id'],
         {

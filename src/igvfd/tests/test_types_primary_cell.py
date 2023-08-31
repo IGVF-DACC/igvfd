@@ -66,7 +66,6 @@ def test_summary(testapp, primary_cell, human_donor, rodent_donor, parent_rodent
     )
     treatment_summary = testapp.get(treatment_protein['@id']).json.get('title')
     treatment_summary = treatment_summary.replace('Treatment of', 'treated with')
-    treatment_summary
     testapp.patch_json(
         primary_cell['@id'],
         {
@@ -75,6 +74,5 @@ def test_summary(testapp, primary_cell, human_donor, rodent_donor, parent_rodent
         }
     )
     res = testapp.get(primary_cell['@id'])
-    print(res.json.get('summary'))
     assert res.json.get(
-        'summary') == f'virtual embryonic endothelial cell of vascular tree (PKR-123), mixed sex Mus musculus (strain1, strain3) (1 month) characterized by high level of CD243, negative detection of CD243 {treatment_summary}'
+        'summary') == f'virtual embryonic endothelial cell of vascular tree (PKR-123), mixed sex Mus musculus strain1, strain3 (1 month) characterized by high level of CD243, negative detection of CD243 {treatment_summary}'
