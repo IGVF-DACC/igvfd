@@ -109,6 +109,7 @@ class Biosample(Sample):
     ]
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Sex',
             'type': 'string',
@@ -289,6 +290,51 @@ class Tissue(Biosample):
     schema = load_schema('igvfd:schemas/tissue.json')
     embedded_with_frame = Biosample.embedded_with_frame
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, sample_terms, age, donors, sex=None, treatments=None, embryonic=False, virtual=False, taxa=None, age_units=None):
+        term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
+        term_name = term_object.get('term_name')
+        if 'tissue' not in term_name:
+            term_name = f'{term_name} tissue'
+        summary_terms = term_name
+        if embryonic:
+            summary_terms = f'embryonic {summary_terms}'
+        if virtual:
+            summary_terms = f'virtual {summary_terms}'
+        summary_terms = f'{summary_terms},'
+        if sex:
+            if sex == 'mixed':
+                sex = 'mixed sex'
+            summary_terms = f'{summary_terms} {sex}'
+        if taxa:
+            if taxa == 'Mus musculus':
+                strains = []
+                for donor in donors:
+                    donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                    strains.append(donor_object['strain'])
+                taxa = f'{taxa} ({", ".join(strains)})'
+            summary_terms = f'{summary_terms} {taxa}'
+        if age != 'unknown':
+            age = concat_numeric_and_units(age, age_units)
+            summary_terms = f'{summary_terms} ({age})'
+        if treatments:
+            treatment_summaries = []
+            for treatment in treatments:
+                treatment_object = request.embed(treatment)
+                if treatment_object['title'].startswith('Treatment of'):
+                    treatment_summary = treatment_object['title'].replace('Treatment of', 'treated with')
+                elif treatment_object['title'].startswith('Depletion of'):
+                    treatment_summary = treatment_object['title'].replace('Depletion of', 'depleted of')
+                treatment_summaries.append(treatment_summary)
+            summary_terms = f'{summary_terms} {", ".join(treatment_summaries)}'
+        return summary_terms
+
 
 @collection(
     name='technical-samples',
@@ -344,19 +390,20 @@ class WholeOrganism(Biosample):
     def summary(self, request, sample_terms, age, donors, taxa=None, age_units=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = (term_object.get('term_name'))
-        number_of_organisms = concat_numeric_and_units(len(donors), term_name, no_numeric_on_one=True)
+        summary_terms = concat_numeric_and_units(len(donors), term_name, no_numeric_on_one=True)
+        summary_terms = f'{summary_terms},'
+        if taxa:
+            if taxa == 'Mus musculus':
+                strains = []
+                for donor in donors:
+                    donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                    strains.append(donor_object['strain'])
+                taxa = f'{taxa} ({", ".join(strains)})'
+            summary_terms = f'{summary_terms} {taxa}'
         if age != 'unknown':
             age = concat_numeric_and_units(age, age_units)
-        if taxa == 'Mus musculus':
-            strains = []
-            for donor in donors:
-                donor_object = request.embed(donor, '@@object?skip_calculated=true')
-                strains.append(donor_object['strain'])
-            taxa = f'{taxa} ({", ".join(strains)})'
-        if taxa:
-            return f'{number_of_organisms}, {taxa} ({age})' if age != 'unknown' else f'{number_of_organisms}, {taxa}'
-        else:
-            return f'{number_of_organisms}, ({age})' if age != 'unknown' else f'{number_of_organisms}'
+            summary_terms = f'{summary_terms} ({age})'
+        return summary_terms
 
 
 @collection(
