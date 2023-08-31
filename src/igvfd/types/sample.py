@@ -155,40 +155,6 @@ class Biosample(Sample):
             return 'unknown'
 
     @calculated_property(
-        schema={
-            'title': 'Summary',
-            'type': 'string',
-            'notSubmittable': True,
-        }
-    )
-    def summary(self, request, sample_terms, age, taxa=None, age_units=None):
-        if len(sample_terms) > 1:
-            term_name = 'mixed'
-        else:
-            term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
-            term_name = (term_object.get('term_name'))
-        biosample_type = self.item_type.replace('_', ' ')
-        term_and_type = f'{term_name} {biosample_type}'
-        if 'cell' in biosample_type and 'cell' in term_name:
-            term_and_type = term_name
-        if 'tissue' in biosample_type and 'tissue' in term_name:
-            term_and_type = term_name
-        if taxa:
-            if age == 'unknown':
-                return f'{term_and_type}, {taxa}'
-            else:
-                if age != '1':
-                    age_units = f'{age_units}s'
-                return f'{term_and_type}, {taxa} ({age} {age_units})'
-        else:
-            if age == 'unknown':
-                return f'{term_and_type}'
-            else:
-                if age != '1':
-                    age_units = f'{age_units}s'
-                return f'{term_and_type} ({age} {age_units})'
-
-    @calculated_property(
         define=True,
         schema={
             'title': 'Taxa',
@@ -232,11 +198,18 @@ class PrimaryCell(Biosample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, age, donors, sex=None, treatments=None, embryonic=False, virtual=False, taxa=None, age_units=None):
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, sample_terms, age, donors, sex=None, biomarkers=None, treatments=None, embryonic=False, virtual=False, taxa=None, age_units=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
-        if 'tissue' not in term_name:
-            term_name = f'{term_name} tissue'
+        if 'cell' not in term_name:
+            term_name = f'{term_name} primary cell'
         summary_terms = term_name
         if embryonic:
             summary_terms = f'embryonic {summary_terms}'
@@ -253,11 +226,18 @@ class PrimaryCell(Biosample):
                 for donor in donors:
                     donor_object = request.embed(donor, '@@object?skip_calculated=true')
                     strains.append(donor_object['strain'])
-                taxa = f'{taxa} ({", ".join(strains)})'
+                strains = ', '.join(sorted(list(set(strains))))
+                taxa = f'{taxa} ({strains})'
             summary_terms = f'{summary_terms} {taxa}'
         if age != 'unknown':
             age = concat_numeric_and_units(age, age_units)
             summary_terms = f'{summary_terms} ({age})'
+        if biomarkers:
+            biomarker_summaries = []
+            for biomarker in biomarkers:
+                biomarker_object = request.embed(biomarker)
+                biomarker_summaries.append(biomarker_object.get('summary'))
+            summary_terms = f'{summary_terms} {", ".join(biomarker_summaries)}'
         if treatments:
             treatment_summaries = []
             for treatment in treatments:

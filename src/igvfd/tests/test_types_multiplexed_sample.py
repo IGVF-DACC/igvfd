@@ -15,7 +15,6 @@ def test_summary(testapp, multiplexed_sample, tissue, in_vitro_cell_line, whole_
     )
     whole_organism_summary = testapp.get(whole_organism['@id']).json.get('summary')
     res = testapp.get(multiplexed_sample['@id'])
-    print(res.json.get('summary'))
     assert res.json.get('summary').endswith(', ... and 1 more sample')
     assert sum(1 for summary in [tissue_summary, in_vitro_cell_line_summary,
                whole_organism_summary] if summary in res.json.get('summary')) == 2
