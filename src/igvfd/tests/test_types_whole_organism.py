@@ -35,4 +35,4 @@ def test_summary(testapp, whole_organism, rodent_donor, parent_rodent_donor_1, h
         }
     )
     res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == '2 mixed whole organisms, (10 months)'
+    assert res.json.get('summary') == '2 whole organisms, (10 months)'

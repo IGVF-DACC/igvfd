@@ -356,7 +356,6 @@ class WholeOrganism(Biosample):
         if taxa:
             return f'{number_of_organisms}, {taxa} ({age})' if age != 'unknown' else f'{number_of_organisms}, {taxa}'
         else:
-            number_of_organisms = f'{len(donors)} mixed whole organisms'
             return f'{number_of_organisms}, ({age})' if age != 'unknown' else f'{number_of_organisms}'
 
 
