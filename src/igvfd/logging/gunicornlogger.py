@@ -16,20 +16,10 @@ from gunicorn import util
 import gunicorn.glogging
 
 
-class XStatsFilter(logging.Filter):
-
-    def filter(self, record):
-        print('Filter method called')
-        record.estime = 666
-        print('Record after modification:', record.__dict__)
-        return True
-
-
 class MyGunicornLogger(gunicorn.glogging.Logger):
 
     def setup(self, cfg):
         super().setup(cfg)
-        print('Using MyGuniconrnLogger!!!!!!!!!!!!!!!!!!1')
 
     def atoms(self, resp, req, environ, request_time):
         """ Gets atoms for log formatting.
@@ -85,9 +75,11 @@ class MyGunicornLogger(gunicorn.glogging.Logger):
 
         # separate x-stats and add to atoms
         if '{x-stats}o' in atoms:
-            x_stats = atoms['{x-stats}o'].split('&')
-            if len(x_stats) > 1:
+            try:
+                x_stats = atoms['{x-stats}o'].split('&')
                 x_stats_tokens = [{x[0]: x[1]} for x in [x.split('=') for x in x_stats]]
-            for token in x_stats_tokens:
-                atoms.update(token)
+                for token in x_stats_tokens:
+                    atoms.update(token)
+            except IndexError:
+                return atoms
         return atoms
