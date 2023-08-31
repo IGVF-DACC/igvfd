@@ -7,7 +7,7 @@ from gunicorn.config import Config
 from igvfd.logging.gunicornlogger import MyGunicornLogger
 
 
-def test_atoms_no_x_stats():
+def test_no_x_stats():
     response = SimpleNamespace(
         status='200', response_length=1024,
         headers=(('Content-Type', 'application/json'),),
