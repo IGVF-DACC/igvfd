@@ -225,6 +225,51 @@ class PrimaryCell(Biosample):
     schema = load_schema('igvfd:schemas/primary_cell.json')
     embedded_with_frame = Biosample.embedded_with_frame
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, sample_terms, age, donors, sex=None, treatments=None, embryonic=False, virtual=False, taxa=None, age_units=None):
+        term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
+        term_name = term_object.get('term_name')
+        if 'tissue' not in term_name:
+            term_name = f'{term_name} tissue'
+        summary_terms = term_name
+        if embryonic:
+            summary_terms = f'embryonic {summary_terms}'
+        if virtual:
+            summary_terms = f'virtual {summary_terms}'
+        summary_terms = f'{summary_terms},'
+        if sex:
+            if sex == 'mixed':
+                sex = 'mixed sex'
+            summary_terms = f'{summary_terms} {sex}'
+        if taxa:
+            if taxa == 'Mus musculus':
+                strains = []
+                for donor in donors:
+                    donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                    strains.append(donor_object['strain'])
+                taxa = f'{taxa} ({", ".join(strains)})'
+            summary_terms = f'{summary_terms} {taxa}'
+        if age != 'unknown':
+            age = concat_numeric_and_units(age, age_units)
+            summary_terms = f'{summary_terms} ({age})'
+        if treatments:
+            treatment_summaries = []
+            for treatment in treatments:
+                treatment_object = request.embed(treatment)
+                if treatment_object['title'].startswith('Treatment of'):
+                    treatment_summary = treatment_object['title'].replace('Treatment of', 'treated with')
+                elif treatment_object['title'].startswith('Depletion of'):
+                    treatment_summary = treatment_object['title'].replace('Depletion of', 'depleted of')
+                treatment_summaries.append(treatment_summary)
+            summary_terms = f'{summary_terms} {", ".join(treatment_summaries)}'
+        return summary_terms
+
 
 @collection(
     name='in-vitro-systems',
@@ -318,7 +363,8 @@ class Tissue(Biosample):
                 for donor in donors:
                     donor_object = request.embed(donor, '@@object?skip_calculated=true')
                     strains.append(donor_object['strain'])
-                taxa = f'{taxa} ({", ".join(strains)})'
+                strains = ', '.join(sorted(list(set(strains))))
+                taxa = f'{taxa} ({strains})'
             summary_terms = f'{summary_terms} {taxa}'
         if age != 'unknown':
             age = concat_numeric_and_units(age, age_units)
@@ -428,6 +474,21 @@ class MultiplexedSample(Sample):
         Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('modifications', include=['@id', 'modality', 'summary', 'status'])
     ]
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, multiplexed_samples):
+        multiplexed_sample_summaries = [request.embed(
+            multiplexed_sample, '@@object').get('summary') for multiplexed_sample in multiplexed_samples[:2]]
+        if len(multiplexed_samples) > 2:
+            remainder = f'... and {len(multiplexed_samples) - 2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
+            multiplexed_sample_summaries = multiplexed_sample_summaries + [remainder]
+        return f'multiplexed sample of {", ".join(multiplexed_sample_summaries)}'
 
     @calculated_property(
         schema={

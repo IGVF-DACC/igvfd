@@ -1,5 +1,9 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Minor changes since schema version 4
+
+* Add `summary`.
+
 ### Schema version 4
 
 * Mutually require `starting_amount` and `starting_amount_units`.
