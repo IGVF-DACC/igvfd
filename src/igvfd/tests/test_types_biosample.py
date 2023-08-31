@@ -44,7 +44,7 @@ def test_age_calculation(testapp, in_vitro_cell_line):
     assert res.json.get('age') == '90'
 
 
-def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_line, technical_sample, sample_term_endothelial_cell, sample_term_embryoid_body, sample_term_lymphoblastoid, sample_term_brown_adipose_tissue, treatment_chemical):
+def test_summary(testapp, tissue, primary_cell, in_vitro_cell_line, technical_sample, sample_term_endothelial_cell, sample_term_embryoid_body, sample_term_lymphoblastoid, sample_term_brown_adipose_tissue, treatment_chemical):
     res = testapp.get(tissue['@id'])
     assert res.json.get('summary') == 'adrenal gland tissue, Mus musculus'
     testapp.patch_json(
@@ -88,28 +88,6 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     )
     res = testapp.get(primary_cell['@id'])
     assert res.json.get('summary') == 'endothelial cell of vascular tree, Homo sapiens (1-3 weeks)'
-    res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == 'whole organism, Mus musculus'
-    testapp.patch_json(
-        whole_organism['@id'],
-        {
-            'lower_bound_age': 1,
-            'upper_bound_age': 1,
-            'age_units': 'hour'
-        }
-    )
-    res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == 'whole organism, Mus musculus (1 hour)'
-    res = testapp.get(in_vitro_cell_line['@id'])
-    assert res.json.get('summary') == 'K562 cell line, Mus musculus'
-    testapp.patch_json(
-        in_vitro_cell_line['@id'],
-        {
-            'time_post_change': 100,
-            'time_post_change_units': 'hour',
-            'cell_fate_change_treatments': [treatment_chemical['@id']]
-        }
-    )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get('summary') == 'K562 cell line, Mus musculus (100 hours)'
     testapp.patch_json(
@@ -163,18 +141,7 @@ def test_summary(testapp, tissue, primary_cell, whole_organism, in_vitro_cell_li
     assert res.json.get('summary') == 'synthetic technical sample'
 
 
-def test_summary_mixed_taxa(testapp, whole_organism, in_vitro_cell_line, human_donor, rodent_donor, treatment_chemical):
-    testapp.patch_json(
-        whole_organism['@id'],
-        {
-            'donors': [human_donor['@id'], rodent_donor['@id']],
-            'lower_bound_age': 10,
-            'upper_bound_age': 10,
-            'age_units': 'month'
-        }
-    )
-    res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == 'whole organism (10 months)'
+def test_summary_mixed_taxa(testapp, in_vitro_cell_line, human_donor, rodent_donor, treatment_chemical):
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {

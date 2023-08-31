@@ -26,6 +26,16 @@ def collect_multiplexed_samples_prop(request, multiplexed_samples, property_name
     return property_list
 
 
+def concat_numeric_and_units(numeric, numeric_units, no_numeric_on_one=False):
+    if str(numeric) == '1':
+        if no_numeric_on_one:
+            return f'{numeric_units}'
+        else:
+            return f'{numeric} {numeric_units}'
+    else:
+        return f'{numeric} {numeric_units}s'
+
+
 @abstract_collection(
     name='samples',
     unique_key='accession',
@@ -331,26 +341,23 @@ class WholeOrganism(Biosample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, age, taxa=None, age_units=None):
-        if len(sample_terms) > 1:
-            term_name = 'mixed'
-        else:
-            term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
-            term_name = (term_object.get('term_name'))
+    def summary(self, request, sample_terms, age, donors, taxa=None, age_units=None):
+        term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
+        term_name = (term_object.get('term_name'))
+        number_of_organisms = concat_numeric_and_units(len(donors), term_name, no_numeric_on_one=True)
+        if age != 'unknown':
+            age = concat_numeric_and_units(age, age_units)
+        if taxa == 'Mus musculus':
+            strains = []
+            for donor in donors:
+                donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                strains.append(donor_object['strain'])
+            taxa = f'{taxa} ({", ".join(strains)})'
         if taxa:
-            if age == 'unknown':
-                return f'{term_name}, {taxa}'
-            else:
-                if age != '1':
-                    age_units = age_units + 's'
-                return f'{term_name}, {taxa} ({age} {age_units})'
+            return f'{number_of_organisms}, {taxa} ({age})' if age != 'unknown' else f'{number_of_organisms}, {taxa}'
         else:
-            if age == 'unknown':
-                return f'{term_name}'
-            else:
-                if age != '1':
-                    age_units = age_units + 's'
-                return f'{term_name} ({age} {age_units})'
+            number_of_organisms = f'{len(donors)} mixed whole organisms'
+            return f'{number_of_organisms}, ({age})' if age != 'unknown' else f'{number_of_organisms}'
 
 
 @collection(
