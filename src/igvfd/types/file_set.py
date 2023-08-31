@@ -119,6 +119,7 @@ class CuratedSet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Assembly',
             'description': 'The genome assembly to which the referencing files in the file set are utilizing (e.g., GRCh38).',
@@ -141,6 +142,7 @@ class CuratedSet(FileSet):
             return list(assembly_values)
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Transcriptome Annotation',
             'description': 'The annotation and version of the reference resource.',
