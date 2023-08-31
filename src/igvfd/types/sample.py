@@ -184,7 +184,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, embryonic=None, virtual=None, classification=None, cellular_sub_pool=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, sex=None, taxa=None, age=None, age_units=None, sorted_fraction_detail=None, donors=None, biomarkers=None, treatments=None):
+    def summary(self, request, sample_terms, age, age_units=None, embryonic=None, virtual=None, classification=None, cellular_sub_pool=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, sex=None, taxa=None, sorted_fraction_detail=None, donors=None, biomarkers=None, treatments=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         if self.item_type == 'primary_cell':
