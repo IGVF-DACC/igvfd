@@ -80,6 +80,9 @@ def configuration_file():
             },
             'seqspec_of': {
                 'title': 'Seqspec Of'
+            },
+            'upload_status': {
+                'title': 'Upload Status'
             }
         }
     }

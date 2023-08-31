@@ -87,6 +87,9 @@ def sequence_file():
             },
             'dbxrefs': {
                 'title': 'External Identifiers'
+            },
+            'upload_status': {
+                'title': 'Upload Status'
             }
         }
     }

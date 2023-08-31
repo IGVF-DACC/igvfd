@@ -89,6 +89,9 @@ def alignment_file():
             },
             'content_summary': {
                 'title': 'Content Summary'
+            },
+            'upload_status': {
+                'title': 'Upload Status'
             }
         }
     }
