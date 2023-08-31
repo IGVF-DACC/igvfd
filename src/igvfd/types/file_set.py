@@ -171,35 +171,18 @@ class CuratedSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, curated_set_type, files, taxa=None):
-
-        assembly_values_set = set()
-        annotation_values_set = set()
-        if files is not None:
-            for current_file_path in files:
-                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
-                if file_object.get('assembly'):
-                    assembly_values_set.add(file_object.get('assembly'))
-                if file_object.get('transcriptome_annotation'):
-                    annotation_values_set.add(file_object.get('transcriptome_annotation'))
-
+    def summary(self, curated_set_type, assembly=None, transcriptome_annotation=None, taxa=None):
         summary_message = curated_set_type
-
         if taxa:
             summary_message += f' {taxa}'
-
-        if len(assembly_values_set) > 0:
-            assembly_values_list = list(assembly_values_set)
-            assembly_values_list.sort()
-            assembly_values_joined = ' '.join(assembly_values_list)
+        if assembly:
+            assembly.sort()
+            assembly_values_joined = ' '.join(assembly)
             summary_message += f' {assembly_values_joined}'
-
-        if len(annotation_values_set) > 0:
-            annotation_values_list = list(annotation_values_set)
-            annotation_values_list.sort()
-            annotation_values_joined = ' '.join(annotation_values_list)
+        if transcriptome_annotation:
+            transcriptome_annotation.sort()
+            annotation_values_joined = ' '.join(transcriptome_annotation)
             summary_message += f' {annotation_values_joined}'
-
         return summary_message
 
 
