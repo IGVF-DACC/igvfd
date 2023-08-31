@@ -67,11 +67,12 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
             'targeted_sample_term': sample_term_endothelial_cell['@id'],
             'biomarkers': [biomarker_CD243_absent['@id'], biomarker_CD243_high['@id']],
             'sorted_fraction': in_vitro_differentiated_cell['@id'],
-            'sorted_fraction_detail': 'some detail about sorting'
+            'sorted_fraction_detail': 'some detail about sorting',
+            'virtual': True
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     treatment_summary = testapp.get(treatment_protein['@id']).json.get('title')
     treatment_summary = treatment_summary.replace('Treatment of', 'treated with')
     assert res.json.get(
-        'summary') == f'embryoid body induced to endothelial cell of vascular tree for 3 weeks, mixed sex (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243 {treatment_summary}'
+        'summary') == f'virtual embryoid body induced to endothelial cell of vascular tree for 3 weeks, mixed sex (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243 {treatment_summary}'
