@@ -139,6 +139,27 @@ class CuratedSet(FileSet):
                     assembly_values.add(file_object.get('assembly'))
         return list(assembly_values)
 
+    @calculated_property(
+        schema={
+            'title': 'Transcriptome Annotation',
+            'description': 'The annotation and version of the reference resource.',
+            'type': 'array',
+            'uniqueItems': True,
+            'items': {
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def transcriptome_annotation(self, request, files):
+        annotation_values = set()
+        if files is not None:
+            for current_file_path in files:
+                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+                if file_object.get('transcriptome_annotation'):
+                    annotation_values.add(file_object.get('transcriptome_annotation'))
+        return list(annotation_values)
+
 
 @collection(
     name='measurement-sets',

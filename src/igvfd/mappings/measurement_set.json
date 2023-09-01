@@ -1,6 +1,6 @@
 {
-    "hash": "ff9b5962e6a5d1fedf19728512cfcd92",
-    "index_name": "measurement_set_ff9b5962",
+    "hash": "64c82c85d8043bd25c1e22b5c0c9eca9",
+    "index_name": "measurement_set_64c82c85",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -715,6 +715,9 @@
                             "taxa": {
                                 "type": "keyword"
                             },
+                            "transcriptome_annotation": {
+                                "type": "keyword"
+                            },
                             "url": {
                                 "type": "keyword"
                             },
@@ -1016,6 +1019,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {

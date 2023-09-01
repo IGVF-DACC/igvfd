@@ -35,3 +35,47 @@ def test_control_link(testapp, measurement_set, curated_set_genome):
     )
     res = testapp.get(curated_set_genome['@id'])
     assert set([file_set_id['@id'] for file_set_id in res.json.get('control_for')]) == {measurement_set['@id']}
+
+
+def test_curated_set_assembly(testapp, reference_file, reference_file_two, curated_set_genome):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'file_set': curated_set_genome['@id'],
+            'assembly': 'GRCh38'
+        }
+    )
+    testapp.patch_json(
+        reference_file_two['@id'],
+        {
+            'file_set': curated_set_genome['@id'],
+            'assembly': 'hg19'
+        }
+    )
+    curated_set_result = testapp.get(curated_set_genome['@id']).json
+    assert 'assembly' in curated_set_result
+    assert len(curated_set_result['assembly']) == 2
+    assert 'GRCh38' in curated_set_result['assembly']
+    assert 'hg19' in curated_set_result['assembly']
+
+
+def test_curated_set_transcriptome_annotation(testapp, reference_file, reference_file_two, curated_set_genome):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'file_set': curated_set_genome['@id'],
+            'transcriptome_annotation': 'GENCODE 40'
+        }
+    )
+    testapp.patch_json(
+        reference_file_two['@id'],
+        {
+            'file_set': curated_set_genome['@id'],
+            'transcriptome_annotation': 'GENCODE 41'
+        }
+    )
+    curated_set_result = testapp.get(curated_set_genome['@id']).json
+    assert 'transcriptome_annotation' in curated_set_result
+    assert len(curated_set_result['transcriptome_annotation']) == 2
+    assert 'GENCODE 40' in curated_set_result['transcriptome_annotation']
+    assert 'GENCODE 41' in curated_set_result['transcriptome_annotation']
