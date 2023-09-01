@@ -48,6 +48,12 @@
         "schema_version": {
             "default": "3"
         },
+        "award": {
+            "permission": "import_items"
+        },
+        "lab": {
+            "permission": "import_items"
+        },
         "file_set_type": {
             "title": "File Set Type",
             "description": "The category that best describes this prediction file set.",

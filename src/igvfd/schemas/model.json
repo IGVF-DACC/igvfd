@@ -62,6 +62,12 @@
         "schema_version": {
             "default": "3"
         },
+        "award": {
+            "permission": "import_items"
+        },
+        "lab": {
+            "permission": "import_items"
+        },
         "model_name": {
             "title": "Model Name",
             "description": "The custom lab name given to this predictive model.",
