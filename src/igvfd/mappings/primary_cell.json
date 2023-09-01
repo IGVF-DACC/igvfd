@@ -1,6 +1,6 @@
 {
-    "hash": "20afd1bfc9c8fba57a62cefbe9452284",
-    "index_name": "primary_cell_20afd1bf",
+    "hash": "d1963a7f8aa451952a2c74f7122ef846",
+    "index_name": "primary_cell_d1963a7f",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1608,9 +1608,6 @@
                                 "type": "float"
                             },
                             "temperature_units": {
-                                "type": "keyword"
-                            },
-                            "title": {
                                 "type": "keyword"
                             },
                             "treatment_term_id": {

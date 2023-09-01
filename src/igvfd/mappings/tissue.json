@@ -1,6 +1,6 @@
 {
-    "hash": "1c99d498067c9f210b77c22d805ad2f2",
-    "index_name": "tissue_1c99d498",
+    "hash": "0437b0f29a8db346e033f95b7517b0a6",
+    "index_name": "tissue_0437b0f2",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1617,9 +1617,6 @@
                                 "type": "float"
                             },
                             "temperature_units": {
-                                "type": "keyword"
-                            },
-                            "title": {
                                 "type": "keyword"
                             },
                             "treatment_term_id": {

@@ -1,6 +1,6 @@
 {
-    "hash": "62584f3adfbbb32ce9942a8bf82fe218",
-    "index_name": "treatment_62584f3a",
+    "hash": "d252096056f8a7f2b969c5091ed8e0c3",
+    "index_name": "treatment_d2520960",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -501,6 +501,7 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "temperature": {
@@ -513,10 +514,6 @@
                         "type": "float"
                     },
                     "temperature_units": {
-                        "type": "keyword"
-                    },
-                    "title": {
-                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "treatment_term_id": {

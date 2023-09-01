@@ -1,6 +1,6 @@
 {
-    "hash": "88d996df1cd58e00287ee4c986ebacb2",
-    "index_name": "multiplexed_sample_88d996df",
+    "hash": "11b466ef8042497186658e79929cae1b",
+    "index_name": "multiplexed_sample_11b466ef",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -2057,9 +2057,6 @@
                                 "type": "float"
                             },
                             "temperature_units": {
-                                "type": "keyword"
-                            },
-                            "title": {
                                 "type": "keyword"
                             },
                             "treatment_term_id": {

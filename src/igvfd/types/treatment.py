@@ -28,12 +28,12 @@ class Treatment(Item):
 
     @calculated_property(
         schema={
-            'title': 'Title',
+            'title': 'Summary',
             'type': 'string',
             'notSubmittable': True,
         }
     )
-    def title(self, treatment_term_name, amount=None, amount_units=None, duration=None, duration_units=None):
+    def summary(self, treatment_term_name, amount=None, amount_units=None, duration=None, duration_units=None):
         if duration is not None and duration != 1:
             duration_units = f'{duration_units}s'
         if amount is not None and duration is not None:
