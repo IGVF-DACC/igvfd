@@ -296,7 +296,7 @@ class Biosample(Sample):
                 biomarker_summaries = sorted(biomarker_summaries)
             summary_terms = f'{summary_terms} characterized by {", ".join(biomarker_summaries)}'
 
-        # treatment summaries added to the end of the summary
+        # treatment summaries are appended to the end of the summary
         if (treatments and
                 self.item_type in ['primary_cell', 'in_vitro_system' 'tissue']):
             treatment_summaries = []
