@@ -131,15 +131,15 @@ class CuratedSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def assembly(self, request, files):
-        if files is not None:
+    def assembly(self, request, files=None):
+        if files:
             assembly_values = set()
             for current_file_path in files:
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('assembly'):
                     assembly_values.add(file_object.get('assembly'))
-        if assembly_values:
-            return list(assembly_values)
+            if assembly_values:
+                return list(assembly_values)
 
     @calculated_property(
         define=True,
@@ -154,15 +154,15 @@ class CuratedSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def transcriptome_annotation(self, request, files):
-        if files is not None:
+    def transcriptome_annotation(self, request, files=None):
+        if files:
             annotation_values = set()
             for current_file_path in files:
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('transcriptome_annotation'):
                     annotation_values.add(file_object.get('transcriptome_annotation'))
-        if annotation_values:
-            return list(annotation_values)
+            if annotation_values:
+                return list(annotation_values)
 
     @calculated_property(
         schema={
