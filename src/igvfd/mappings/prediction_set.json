@@ -1,6 +1,6 @@
 {
-    "hash": "079685ae94d544ce203644096aaa9bb8",
-    "index_name": "prediction_set_079685ae",
+    "hash": "6427ce1379aa56748c5e5912bf62920f",
+    "index_name": "prediction_set_6427ce13",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1383,6 +1383,9 @@
                     "schema_version": {
                         "type": "keyword"
                     },
+                    "scope": {
+                        "type": "keyword"
+                    },
                     "status": {
                         "type": "keyword"
                     },
@@ -1461,6 +1464,38 @@
                     "summary": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
+                    },
+                    "targeted_genes": {
+                        "type": "keyword"
+                    },
+                    "targeted_loci": {
+                        "properties": {
+                            "assembly": {
+                                "type": "keyword"
+                            },
+                            "chromosome": {
+                                "type": "keyword"
+                            },
+                            "end": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            },
+                            "start": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            }
+                        },
+                        "type": "object"
                     },
                     "url": {
                         "type": "keyword"
