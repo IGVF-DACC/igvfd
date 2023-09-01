@@ -63,10 +63,12 @@
             "default": "3"
         },
         "award": {
-            "permission": "import_items"
+            "permission": "import_items",
+            "comment": "Restricted to submission by admins only. The model schema has been deprecated, please submit model sets instead."
         },
         "lab": {
-            "permission": "import_items"
+            "permission": "import_items",
+            "comment": "Restricted to submission by admins only. The model schema has been deprecated, please submit model sets instead."
         },
         "model_name": {
             "title": "Model Name",

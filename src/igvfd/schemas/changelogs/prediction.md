@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 3
 
-* Make required properties `lab` and `award` not submittable. No further submission of predictions are accepted, please submit prediction sets instead.
+* Restrict `lab` and `award` to submittable by admins only. No further submission of models are accepted, please submit prediction sets instead.
 
 ### Schema version 3
 
