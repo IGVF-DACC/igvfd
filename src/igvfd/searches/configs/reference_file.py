@@ -92,6 +92,9 @@ def reference_file():
             },
             'transcriptome_annotation': {
                 'title': 'Transcriptome Annotation'
+            },
+            'upload_status': {
+                'title': 'Upload Status'
             }
         }
     }

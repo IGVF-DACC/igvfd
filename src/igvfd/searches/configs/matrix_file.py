@@ -27,6 +27,9 @@ def matrix_file():
             },
             'status': {
                 'title': 'Status'
+            },
+            'upload_status': {
+                'title': 'Upload Status'
             }
         }
     }
