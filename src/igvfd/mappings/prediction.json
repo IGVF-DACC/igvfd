@@ -1,6 +1,6 @@
 {
-    "hash": "8bed2286c3a10a5e8f9a1188fcd28685",
-    "index_name": "prediction_8bed2286",
+    "hash": "30cf98eb89788967d871ed15a1f3b766",
+    "index_name": "prediction_30cf98eb",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -529,6 +529,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {

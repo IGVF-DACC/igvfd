@@ -1,6 +1,6 @@
 {
-    "hash": "df2cfe01474f69e50ade30b45ff2bc13",
-    "index_name": "auxiliary_set_df2cfe01",
+    "hash": "e10ca42c72dbe53c9934797dc59344e8",
+    "index_name": "auxiliary_set_e10ca42c",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -532,6 +532,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {

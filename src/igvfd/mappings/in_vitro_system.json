@@ -505,6 +505,9 @@
                             "assay_title": {
                                 "type": "keyword"
                             },
+                            "assembly": {
+                                "type": "keyword"
+                            },
                             "associated_diseases": {
                                 "type": "keyword"
                             },
@@ -825,6 +828,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {

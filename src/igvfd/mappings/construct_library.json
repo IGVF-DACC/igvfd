@@ -1,6 +1,6 @@
 {
-    "hash": "33a1cec1b5fb6018f03be3fae8849f90",
-    "index_name": "construct_library_33a1cec1",
+    "hash": "f581abec13aa60476607c3c5f84436a8",
+    "index_name": "construct_library_f581abec",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -532,6 +532,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {

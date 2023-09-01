@@ -1,6 +1,6 @@
 {
-    "hash": "89ba9152deb859ce61355d53f2614d09",
-    "index_name": "curated_set_89ba9152",
+    "hash": "25050e7108333892afa2bc1fa6f13a6a",
+    "index_name": "curated_set_25050e71",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -532,6 +532,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {
@@ -1468,6 +1471,9 @@
                     },
                     "taxa": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "transcriptome_annotation": {
                         "type": "keyword"
                     },
                     "url": {
