@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_model_sample_donor_dependency(
+def test_model_set_sample_donor_dependency(
     testapp,
     model_set_no_input,
     human_donor,
