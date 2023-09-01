@@ -40,6 +40,5 @@ def test_summary(testapp, whole_organism, rodent_donor, parent_rodent_donor_1, h
             'age_units': 'month'
         }
     )
-    print(res.json.get('summary'))
     res = testapp.get(whole_organism['@id'])
-    assert res.json.get('summary') == '2 whole organisms, males (10 months)'
+    assert res.json.get('summary') == '2 whole organisms, males Homo sapiens and Mus musculus strain1 (10 months)'

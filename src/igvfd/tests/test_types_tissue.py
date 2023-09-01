@@ -46,9 +46,6 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
             'sex': 'male',
         }
     )
-    treatment_summary = testapp.get(treatment_chemical['@id']).json.get('title')
-    treatment_summary = treatment_summary.replace('Treatment of', 'treated with')
-    treatment_summary
     testapp.patch_json(
         tissue['@id'],
         {
@@ -58,4 +55,4 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
     )
     res = testapp.get(tissue['@id'])
     assert res.json.get(
-        'summary') == f'virtual embryonic brown adipose tissue, mixed sex Mus musculus strain1, strain3 (50-100 days) {treatment_summary}'
+        'summary') == f'virtual embryonic brown adipose tissue, mixed sex Mus musculus strain1, strain3 (50-100 days) treated with 10 mM lactate for 1 hour'

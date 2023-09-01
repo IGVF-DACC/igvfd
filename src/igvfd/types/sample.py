@@ -184,9 +184,10 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, age, age_units=None, embryonic=None, virtual=None, classification=None, cellular_sub_pool=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, sex=None, taxa=None, sorted_fraction_detail=None, donors=None, biomarkers=None, treatments=None):
+    def summary(self, request, sample_terms, donors, age, age_units=None, embryonic=None, virtual=None, classification=None, cellular_sub_pool=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, sex=None, taxa=None, sorted_fraction_detail=None, biomarkers=None, treatments=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
+
         if self.item_type == 'primary_cell':
             if 'cell' not in term_name:
                 summary_terms = f'{term_name} cell'
@@ -207,12 +208,16 @@ class Biosample(Sample):
                 summary_terms = term_name
         elif self.item_type == 'whole_organism':
             summary_terms = concat_numeric_and_units(len(donors), term_name, no_numeric_on_one=True)
+
         if cellular_sub_pool and self.item_type in ['primary_cell']:
             summary_terms = f'{summary_terms} ({cellular_sub_pool})'
+
         if embryonic and self.item_type in ['primary_cell', 'tissue']:
             summary_terms = f'embryonic {summary_terms}'
+
         if virtual and self.item_type in ['primary_cell', 'in_vitro_system', 'tissue']:
             summary_terms = f'virtual {summary_terms}'
+
         if time_post_change and time_post_change_units and self.item_type in ['in_vitro_system']:
             time_post_change = concat_numeric_and_units(time_post_change, time_post_change_units)
             if targeted_sample_term:
@@ -221,7 +226,9 @@ class Biosample(Sample):
                 summary_terms = f'{summary_terms} induced to {targeted_term_name} for {time_post_change}'
             else:
                 summary_terms = f'{summary_terms} induced for {time_post_change}'
+
         summary_terms = f'{summary_terms},'
+
         if sex and self.item_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']:
             if sex != 'unspecified':
                 if sex == 'mixed':
@@ -229,20 +236,31 @@ class Biosample(Sample):
                 elif len(donors) > 1:
                     sex = f'{sex}s'
                 summary_terms = f'{summary_terms} {sex}'
-        if taxa and self.item_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']:
-            if taxa == 'Mus musculus':
+
+        if donors and self.item_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']:
+            if not taxa or taxa == 'Mus musculus':
+                taxa_list = []
                 strains = []
                 for donor in donors:
                     donor_object = request.embed(donor, '@@object?skip_calculated=true')
-                    strains.append(donor_object['strain'])
-                strains = ', '.join(sorted(list(set(strains))))
-                taxa = f'{taxa} {strains}'
+                    taxa_list.append(donor_object['taxa'])
+                    if donor_object['taxa'] == 'Mus musculus':
+                        strains.append(donor_object.get('strain'))
+                    strains = ', '.join(sorted(list(set(strains))))
+                taxa_list = sorted(list(set(taxa_list)))
+                if 'Mus musculus' in taxa_list:
+                    mouse_index = taxa_list.index('Mus musculus')
+                    taxa_list[mouse_index] += strains
+                taxa = ' and '.join(taxa_list)
             summary_terms = f'{summary_terms} {taxa}'
+
         if age != 'unknown' and self.item_type in ['primary_cell', 'tissue', 'whole_organism']:
             age = concat_numeric_and_units(age, age_units)
             summary_terms = f'{summary_terms} ({age})'
+
         if sorted_fraction_detail and self.item_type in ['in_vitro_system']:
             summary_terms = f'{summary_terms} (sorting details: {sorted_fraction_detail})'
+
         if biomarkers and self.item_type in ['primary_cell', 'in_vitro_system']:
             biomarker_summaries = []
             for biomarker in biomarkers:
@@ -257,16 +275,18 @@ class Biosample(Sample):
                 biomarker_summaries.append(biomarker_summary)
                 biomarker_summaries = sorted(biomarker_summaries)
             summary_terms = f'{summary_terms} characterized by {", ".join(biomarker_summaries)}'
+
         if treatments and self.item_type in ['primary_cell', 'in_vitro_system', 'tissue']:
             treatment_summaries = []
             for treatment in treatments:
                 treatment_object = request.embed(treatment)
-                if treatment_object['title'].startswith('Treatment of'):
-                    treatment_summary = treatment_object['title'].replace('Treatment of', 'treated with')
-                elif treatment_object['title'].startswith('Depletion of'):
-                    treatment_summary = treatment_object['title'].replace('Depletion of', 'depleted of')
+                if treatment_object['summary'].startswith('Treatment of'):
+                    treatment_summary = treatment_object['summary'].replace('Treatment of', 'treated with')
+                elif treatment_object['summary'].startswith('Depletion of'):
+                    treatment_summary = treatment_object['summary'].replace('Depletion of', 'depleted of')
                 treatment_summaries.append(treatment_summary)
             summary_terms = f'{summary_terms} {", ".join(treatment_summaries)}'
+
         return summary_terms
 
 

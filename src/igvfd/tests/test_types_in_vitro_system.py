@@ -54,7 +54,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get(
-        'summary') == 'brown adipose tissue organoid induced to brown adipose tissue for 5 minutes, mixed sex'
+        'summary') == 'brown adipose tissue organoid induced to brown adipose tissue for 5 minutes, mixed sex Homo sapiens and Mus musculus strain1'
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
@@ -72,7 +72,5 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
-    treatment_summary = testapp.get(treatment_protein['@id']).json.get('title')
-    treatment_summary = treatment_summary.replace('Treatment of', 'treated with')
     assert res.json.get(
-        'summary') == f'virtual embryoid body induced to endothelial cell of vascular tree for 3 weeks, mixed sex (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243 {treatment_summary}'
+        'summary') == f'virtual embryoid body induced to endothelial cell of vascular tree for 3 weeks, mixed sex Homo sapiens and Mus musculus strain1 (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243 treated with 10 ng/mL G-CSF'
