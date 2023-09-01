@@ -6,6 +6,13 @@ logging.Logger.manager.emittedNoHandlerWarning = 1  # noqa
 import gunicorn.glogging
 
 
+def try_to_convert_to_int(item):
+    try:
+        return int(item)
+    except ValueError:
+        return -1
+
+
 class MyGunicornLogger(gunicorn.glogging.Logger):
 
     def setup(self, cfg):
@@ -39,6 +46,17 @@ class MyGunicornLogger(gunicorn.glogging.Logger):
             'M': (request_time.seconds * 1000) + int(request_time.microseconds / 1000),
             'L': '%d.%06d' % (request_time.seconds, request_time.microseconds),
             'p': '<%s>' % os.getpid(),
+            # need to initialize these to prevent '-' from being emitted for missing values
+            'db_count': -1,
+            'db_time': -1,
+            'es_count': -1,
+            'es_time': -1,
+            'rss_begin': -1,
+            'rss_end': -1,
+            'rss_change': -1,
+            'wsgi_begin': -1,
+            'wsgi_end': -1,
+            'wsgi_time': -1,
         }
 
         # add request headers
@@ -67,7 +85,7 @@ class MyGunicornLogger(gunicorn.glogging.Logger):
         if '{x-stats}o' in atoms:
             try:
                 x_stats = atoms['{x-stats}o'].split('&')
-                x_stats_tokens = [{x[0]: x[1]} for x in [x.split('=') for x in x_stats]]
+                x_stats_tokens = [{x[0]: try_to_convert_to_int(x[1])} for x in [x.split('=') for x in x_stats]]
                 for token in x_stats_tokens:
                     atoms.update(token)
             except IndexError:

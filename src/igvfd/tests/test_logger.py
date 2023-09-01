@@ -5,6 +5,7 @@ import pytest
 
 from gunicorn.config import Config
 from igvfd.logging.gunicornlogger import MyGunicornLogger
+from igvfd.logging.gunicornlogger import try_to_convert_to_int
 
 
 def test_no_x_stats():
@@ -44,7 +45,7 @@ def test_one_x_stat_token():
     logger = MyGunicornLogger(Config())
     atoms = logger.atoms(response, request, environ, datetime.timedelta(seconds=1))
     assert '{x-stats}o' in atoms
-    assert atoms['x'] == 'y'
+    assert atoms['x'] == -1
 
 
 def test_two_x_stat_tokens():
@@ -52,7 +53,7 @@ def test_two_x_stat_tokens():
         status='200', response_length=1024,
         headers=(
             ('Content-Type', 'application/json'),
-            ('X-Stats', 'x=y&foo=bar'),
+            ('X-Stats', 'x=y&foo=42'),
         ),
         sent=1024,
     )
@@ -64,8 +65,8 @@ def test_two_x_stat_tokens():
     }
     logger = MyGunicornLogger(Config())
     atoms = logger.atoms(response, request, environ, datetime.timedelta(seconds=1))
-    assert atoms['x'] == 'y'
-    assert atoms['foo'] == 'bar'
+    assert atoms['x'] == -1
+    assert atoms['foo'] == 42
 
 
 def test_no_x_stat_tokens():
@@ -87,3 +88,13 @@ def test_no_x_stat_tokens():
     atoms = logger.atoms(response, request, environ, datetime.timedelta(seconds=1))
     assert isinstance(atoms, dict)
     assert '{x-stats}o' in atoms
+
+
+def test_try_to_convert_to_int_int():
+    result = try_to_convert_to_int('42')
+    assert result == 42
+
+
+def test_try_to_convert_to_int_not_int():
+    result = try_to_convert_to_int('foo')
+    assert result == -1
