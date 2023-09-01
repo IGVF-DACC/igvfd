@@ -467,7 +467,10 @@ class MultiplexedSample(Sample):
             'notSubmittable': True,
             'items': {
                 'type': 'string',
-                'linkTo': 'Source',
+                'linkTo': [
+                    'Source',
+                    'Lab'
+                ]
             }
         }
     )
