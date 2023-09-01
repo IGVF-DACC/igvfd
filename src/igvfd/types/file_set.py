@@ -331,3 +331,16 @@ class Prediction(FileSet):
     item_type = 'prediction'
     schema = load_schema('igvfd:schemas/prediction.json')
     embedded_with_frame = FileSet.embedded_with_frame
+
+
+@collection(
+    name='prediction-sets',
+    unique_key='accession',
+    properties={
+        'title': 'Prediction Sets',
+        'description': 'Listing of prediction sets',
+    })
+class PredictionSet(FileSet):
+    item_type = 'prediction_set'
+    schema = load_schema('igvfd:schemas/prediction_set.json')
+    embedded_with_frame = FileSet.embedded_with_frame

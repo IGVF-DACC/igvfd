@@ -1,0 +1,86 @@
+{
+    "title": "Prediction Set",
+    "description": "A file set of computational predictions. Prediction sets contain results of analyses to predict functions or traits of genomic features.",
+    "$id": "/profiles/prediction.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "lab",
+        "award",
+        "file_set_type"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file_set.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/url"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/publication_identifiers"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "file_set.json#/dependentSchemas"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "3"
+        },
+        "file_set_type": {
+            "title": "File Set Type",
+            "description": "The category that best describes this prediction file set.",
+            "type": "string",
+            "enum": [
+                "pathogenicity",
+                "functional effect",
+                "protein stability",
+                "activity level"
+            ]
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "collections",
+        "file_set_type",
+        "lab.title",
+        "samples.summary",
+        "samples.sample_terms",
+        "summary"
+    ],
+    "exact_searchable_fields": [
+        "control_for.accession",
+        "control_for.aliases",
+        "dbxrefs",
+        "files.accession",
+        "files.aliases",
+        "publication_identifiers",
+        "samples.accession",
+        "samples.aliases",
+        "samples.donors.accession",
+        "samples.donors.aliases",
+        "submitted_by.title"
+    ],
+    "changelog": "/profiles/changelogs/prediction_set.md"
+}
