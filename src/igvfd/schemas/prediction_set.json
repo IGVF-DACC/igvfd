@@ -42,15 +42,76 @@
     "dependentSchemas": {
         "$merge": [
             "file_set.json#/dependentSchemas"
-        ]
+        ],
+        "scope": {
+            "oneOf": [
+                {
+                    "required": [
+                        "targeted_genes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "targeted_loci"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "loci"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "targeted_genes",
+                            "targeted_loci"
+                        ]
+                    },
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genome-wide"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "targeted_genes": {
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "genes"
+                    ]
+                }
+            }
+        },
+        "targeted_loci": {
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "loci"
+                    ]
+                }
+            }
+        }
     },
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "1"
         },
         "file_set_type": {
             "title": "File Set Type",
-            "description": "The category that best describes this prediction file set.",
+            "description": "The category that best describes this prediction set.",
             "type": "string",
             "enum": [
                 "pathogenicity",
@@ -58,6 +119,79 @@
                 "protein stability",
                 "activity level"
             ]
+        },
+        "scope": {
+            "title": "Prediction Scope",
+            "description": "The scope or scale that this prediction set is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the targeted_genes or targeted_loci property.",
+            "type": "string",
+            "enum": [
+                "genes",
+                "loci",
+                "genome-wide"
+            ]
+        },
+        "targeted_genes": {
+            "title": "Targeted Genes",
+            "description": "The specific gene(s) this prediction set was designed to target.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "comment": "See gene.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "Gene"
+            }
+        },
+        "targeted_loci": {
+            "title": "Targeted Loci",
+            "description": "The specific chromosomal region(s) this prediction set was designed to target.",
+            "comment": "Each locus is defined using 1-based, fully-closed (inclusive) coordinates for a specific version of the reference genome assembly.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Targeted Locus",
+                "type": "object",
+                "required": [
+                    "assembly",
+                    "chromosome",
+                    "start",
+                    "end"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "assembly": {
+                        "title": "Mapping assembly",
+                        "description": "The genome assembly to which coordinates relate (e.g., GRCh38).",
+                        "type": "string",
+                        "enum": [
+                            "GRCh38",
+                            "hg19",
+                            "GRCm39",
+                            "mm10",
+                            "mm9"
+                        ]
+                    },
+                    "chromosome": {
+                        "title": "Chromosome",
+                        "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX",
+                        "type": "string",
+                        "pattern": "^(chr[0-9A-Za-z]+)$"
+                    },
+                    "start": {
+                        "title": "Start",
+                        "description": "The 1-based, closed (inclusive) starting coordinate.",
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "end": {
+                        "title": "End",
+                        "description": "The 1-based, closed (inclusive) ending coordinate.",
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                }
+            }
         }
     },
     "fuzzy_searchable_fields": [
