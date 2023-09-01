@@ -60,22 +60,22 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "1"
         },
         "model_name": {
             "title": "Model Name",
-            "description": "The custom lab name given to this predictive model.",
+            "description": "The custom lab name given to this predictive model set.",
             "type": "string"
         },
         "model_version": {
             "title": "Model Version",
-            "description": "The semantic version number for this predictive model file set.",
+            "description": "The semantic version number for this predictive model set.",
             "type": "string",
             "pattern": "^v[0-9]\\.[0-9]\\.[1-9]$"
         },
         "file_set_type": {
             "title": "File Set Type",
-            "description": "The category that best describes this predictive model file set.",
+            "description": "The category that best describes this predictive model set.",
             "type": "string",
             "enum": [
                 "neural network",
@@ -86,13 +86,13 @@
         },
         "prediction_objects": {
             "title": "Prediction Objects",
-            "description": "The objects this predictive model is targeting.",
+            "description": "The objects this predictive model set is targeting.",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
             "items": {
                 "title": "Prediction Object",
-                "description": "An object this predictive model is targeting.",
+                "description": "An object this predictive model set is targeting.",
                 "type": "string",
                 "enum": [
                     "coding variants",
@@ -105,13 +105,13 @@
         },
         "input_file_sets": {
             "title": "Input File Sets",
-            "description": "The file set(s) that served as inputs for the derivation of this model.",
+            "description": "The file set(s) that served as inputs for the derivation of this model set.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Input File Set",
-                "description": "A file set that serves as input for the derivation of this model.",
+                "description": "A file set that serves as input for the derivation of this model set.",
                 "type": "string",
                 "linkTo": "FileSet"
             }
@@ -124,15 +124,15 @@
         },
         "software_version": {
             "title": "Software Version",
-            "description": "Version of software used for the derivation of this model.",
+            "description": "Version of software used for the derivation of this model set.",
             "type": "string",
             "linkTo": "SoftwareVersion"
         },
         "samples": {
-            "comment": "Do not submit. Model file sets should not specify any samples."
+            "comment": "Do not submit. Model sets should not specify any samples."
         },
         "donors": {
-            "comment": "Do not submit. Model file sets should not specify any donors."
+            "comment": "Do not submit. Model sets should not specify any donors."
         }
     },
     "fuzzy_searchable_fields": [
