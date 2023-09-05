@@ -1,6 +1,6 @@
 {
-    "hash": "11b466ef8042497186658e79929cae1b",
-    "index_name": "multiplexed_sample_11b466ef",
+    "hash": "eee8a464da5f28c3fe22f2b1bf8c8db2",
+    "index_name": "multiplexed_sample_eee8a464",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1809,17 +1809,26 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "awards": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
                             "description": {
                                 "type": "text"
                             },
+                            "institute_label": {
+                                "type": "keyword"
+                            },
                             "name": {
                                 "type": "keyword"
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "pi": {
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"
