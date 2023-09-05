@@ -63,4 +63,4 @@ def test_curated_set_summary(testapp, reference_file, reference_file_two, curate
         }
     )
     curated_set_result = testapp.get(curated_set_genome['@id']).json
-    assert curated_set_result.get('summary', '') == 'genome Homo sapiens GRCh38 hg19 GENCODE 40 GENCODE 41'
+    assert curated_set_result.get('summary', '') == 'Homo sapiens GRCh38 hg19 GENCODE 40 GENCODE 41 genome'

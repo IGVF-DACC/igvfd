@@ -174,15 +174,15 @@ class CuratedSet(FileSet):
     def summary(self, curated_set_type, assembly=None, transcriptome_annotation=None, taxa=None):
         summary_message = curated_set_type
         if taxa:
-            summary_message += f' {taxa}'
+            summary_message = f'{taxa} {summary_message}'
         if assembly:
             assembly.sort()
             assembly_values_joined = ' '.join(assembly)
-            summary_message += f' {assembly_values_joined}'
+            summary_message = f'{assembly_values_joined} {summary_message}'
         if transcriptome_annotation:
             transcriptome_annotation.sort()
             annotation_values_joined = ' '.join(transcriptome_annotation)
-            summary_message += f' {annotation_values_joined}'
+            summary_message = f'{annotation_values_joined} {summary_message}'
         return summary_message
 
 
