@@ -211,19 +211,19 @@ class Biosample(Sample):
             summary_terms = concat_numeric_and_units(len(donors), term_name, no_numeric_on_one=True)
 
         # embryonic is prepended to the start of the summary
-        if (embryonic
-                and self.item_type in ['primary_cell', 'tissue']):
+        if (embryonic and
+                self.item_type in ['primary_cell', 'tissue']):
             summary_terms = f'embryonic {summary_terms}'
 
         # virtual is prepended to the start of the summary
-        if (virtual
-                and self.item_type in ['primary_cell', 'in_vitro_system', 'in_vitro_system']):
+        if (virtual and
+                self.item_type in ['primary_cell', 'in_vitro_system', 'tissue']):
             summary_terms = f'virtual {summary_terms}'
 
         # cellular sub pool is appended to the end of the summary in parentheses
-        if (cellular_sub_pool
-                and self.item_type in ['primary_cell']):
-            summary_terms = f'{summary_terms} ({cellular_sub_pool})'
+        if (cellular_sub_pool and
+                self.item_type in ['primary_cell']):
+            summary_terms += f' ({cellular_sub_pool})'
 
         # time post change and targeted term are appended to the end of the summary
         if (time_post_change and
@@ -232,12 +232,12 @@ class Biosample(Sample):
             if targeted_sample_term:
                 targeted_term_object = request.embed(targeted_sample_term, '@@object?skip_calculated=true')
                 targeted_term_name = targeted_term_object.get('term_name')
-                summary_terms = f'{summary_terms} induced to {targeted_term_name} for {time_post_change}'
+                summary_terms += f' induced to {targeted_term_name} for {time_post_change}'
             else:
-                summary_terms = f'{summary_terms} induced for {time_post_change}'
+                summary_terms += f' induced for {time_post_change}'
 
         # a comma is added before sex or taxa if sex is unspecified
-        summary_terms = f'{summary_terms},'
+        summary_terms += ','
 
         # sex is appended to the end of the summary
         if (sex and
@@ -247,37 +247,37 @@ class Biosample(Sample):
                     sex = 'mixed sex'
                 elif len(donors) > 1:
                     sex = f'{sex}s'
-                summary_terms = f'{summary_terms} {sex}'
+                summary_terms += f' {sex}'
 
         # taxa of the donor(s) is appended to the end of the summary
         if (donors and
                 self.item_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
             if not taxa or taxa == 'Mus musculus':
-                taxa_list = []
-                strains = []
+                taxa_set = set()
+                strains_set = set()
                 for donor in donors:
                     donor_object = request.embed(donor, '@@object?skip_calculated=true')
-                    taxa_list.append(donor_object['taxa'])
+                    taxa_set.add(donor_object['taxa'])
                     if donor_object['taxa'] == 'Mus musculus':
-                        strains.append(donor_object.get('strain', ''))
-                strains = ', '.join(sorted(list(set(strains))))
-                taxa_list = sorted(list(set(taxa_list)))
+                        strains_set.add(donor_object.get('strain', ''))
+                strains = ', '.join(sorted(strains_set))
+                taxa_list = sorted(list(taxa_set))
                 if 'Mus musculus' in taxa_list:
                     mouse_index = taxa_list.index('Mus musculus')
-                    taxa_list[mouse_index] += strains
+                    taxa_list[mouse_index] += f' {strains}'
                 taxa = ' and '.join(taxa_list)
-            summary_terms = f'{summary_terms} {taxa}'
+            summary_terms += f' {taxa}'
 
         # age is appended to the end of the summary
         if (age != 'unknown' and
                 self.item_type in ['primary_cell', 'tissue', 'whole_organism']):
             age = concat_numeric_and_units(age, age_units)
-            summary_terms = f'{summary_terms} ({age})'
+            summary_terms += f' ({age})'
 
         # sorted fraction detail is appended to the end of the summary
         if (sorted_fraction_detail and
                 self.item_type in ['in_vitro_system']):
-            summary_terms = f'{summary_terms} (sorting details: {sorted_fraction_detail})'
+            summary_terms += f' (sorting details: {sorted_fraction_detail})'
 
         # biomarker summaries are appended to the end of the summary
         if (biomarkers and
@@ -294,20 +294,20 @@ class Biosample(Sample):
                         biomarker_summary = f'{biomarker_object["quantification"]} level of {biomarker_object["name"]}'
                 biomarker_summaries.append(biomarker_summary)
                 biomarker_summaries = sorted(biomarker_summaries)
-            summary_terms = f'{summary_terms} characterized by {", ".join(biomarker_summaries)}'
+            summary_terms += f' characterized by {", ".join(biomarker_summaries)}'
 
         # treatment summaries are appended to the end of the summary
         if (treatments and
-                self.item_type in ['primary_cell', 'in_vitro_system' 'tissue']):
-            treatment_summaries = []
-            for treatment in treatments:
-                treatment_object = request.embed(treatment)
-                if treatment_object['summary'].startswith('Treatment of'):
-                    treatment_summary = treatment_object['summary'].replace('Treatment of', 'treated with')
-                elif treatment_object['summary'].startswith('Depletion of'):
-                    treatment_summary = treatment_object['summary'].replace('Depletion of', 'depleted of')
-                treatment_summaries.append(treatment_summary)
-            summary_terms = f'{summary_terms} {", ".join(treatment_summaries)}'
+                self.item_type in ['primary_cell', 'in_vitro_system', 'tissue']):
+            treatment_objects = [request.embed(treatment) for treatment in treatments]
+            depleted_treatment_summaries = sorted([treatment.get('summary')[13:]
+                                                  for treatment in treatment_objects if treatment.get('depletion')])
+            perturbation_treatment_summaries = sorted([treatment.get('summary')[13:]
+                                                      for treatment in treatment_objects if not treatment.get('depletion')])
+            if depleted_treatment_summaries:
+                summary_terms += f' depleted of {", ".join(depleted_treatment_summaries)}'
+            if perturbation_treatment_summaries:
+                summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)}'
 
         return summary_terms
 
