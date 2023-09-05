@@ -139,7 +139,7 @@ class CuratedSet(FileSet):
                 if file_object.get('assembly'):
                     assembly_values.add(file_object.get('assembly'))
             if assembly_values:
-                return list(assembly_values)
+                return sorted(list(assembly_values))
 
     @calculated_property(
         define=True,
@@ -162,7 +162,7 @@ class CuratedSet(FileSet):
                 if file_object.get('transcriptome_annotation'):
                     annotation_values.add(file_object.get('transcriptome_annotation'))
             if annotation_values:
-                return list(annotation_values)
+                return sorted(list(annotation_values))
 
     @calculated_property(
         schema={
@@ -172,17 +172,16 @@ class CuratedSet(FileSet):
         }
     )
     def summary(self, curated_set_type, assembly=None, transcriptome_annotation=None, taxa=None):
-        summary_message = curated_set_type
+        summary_message = ''
         if taxa:
-            summary_message = f'{taxa} {summary_message}'
+            summary_message += f'{taxa} '
         if assembly:
-            assembly.sort()
             assembly_values_joined = ' '.join(assembly)
-            summary_message = f'{assembly_values_joined} {summary_message}'
+            summary_message += f'{assembly_values_joined} '
         if transcriptome_annotation:
-            transcriptome_annotation.sort()
             annotation_values_joined = ' '.join(transcriptome_annotation)
-            summary_message = f'{annotation_values_joined} {summary_message}'
+            summary_message += f'{annotation_values_joined} '
+        summary_message += curated_set_type
         return summary_message
 
 
