@@ -1,7 +1,7 @@
 {
     "title": "Prediction Set",
     "description": "A file set of computational predictions. Prediction sets contain results of analyses to predict functions or traits of genomic features.",
-    "$id": "/profiles/prediction.json",
+    "$id": "/profiles/prediction_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
