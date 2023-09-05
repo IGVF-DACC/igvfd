@@ -9,6 +9,36 @@
         "lab",
         "multiplexed_samples"
     ],
+    "not": {
+        "comment": "Multiplexed samples should not specify construct_library_sets, moi, nucleic_acid_delivery, or time_post_library_delivery/time_post_library_delivery_units.",
+        "anyOf": [
+            {
+                "required": [
+                    "construct_library_sets"
+                ]
+            },
+            {
+                "required": [
+                    "moi"
+                ]
+            },
+            {
+                "required": [
+                    "nucleic_acid_delivery"
+                ]
+            },
+            {
+                "required": [
+                    "time_post_library_delivery"
+                ]
+            },
+            {
+                "required": [
+                    "time_post_library_delivery_units"
+                ]
+            }
+        ]
+    },
     "identifyingProperties": [
         "uuid",
         "accession",
@@ -61,6 +91,21 @@
             "comment": "Barcodes coming from different cellular sub-pools could not be directly comparable due to the higher probability of collisions. Examples of valid identifiers are: 8A, LW231-2, SS-PKR_1, 4e.AB(678), etc.",
             "type": "string",
             "pattern": "^[a-zA-Z\\d_.()-]+(?:\\s[a-zA-Z\\d_.()-]+)*$"
+        },
+        "construct_library_sets": {
+            "comment": "Do not submit. Construct library sets should only be specified on individual samples contributing to a multiplexed sample object."
+        },
+        "moi": {
+            "comment": "Do not submit. MOI should only be specified on individual samples contributing to a multiplexed sample object."
+        },
+        "nucleic_acid_delivery": {
+            "comment": "Do not submit. Nucleic acid delivery should only be specified on individual samples contributing to a multiplexed sample object."
+        },
+        "time_post_library_delivery": {
+            "comment": "Do not submit. Time post library delivery should only be specified on individual samples contributing to a multiplexed sample object."
+        },
+        "time_post_library_delivery_units": {
+            "comment": "Do not submit. Time post library delivery units should only be specified on individual samples contributing to a multiplexed sample object."
         }
     },
     "exact_searchable_fields": [

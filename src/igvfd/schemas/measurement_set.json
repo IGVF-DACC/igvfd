@@ -71,6 +71,7 @@
             "pattern": "^https://www\\.protocols\\.io/(\\S+)$"
         },
         "construct_libraries": {
+            "permission": "import_items",
             "title": "Construct Libraries",
             "description": "The construct libraries of vectors introduced to the biosample used to produce data in this measurement set.",
             "comment": "See construct_library.json for available identifiers.",
@@ -122,6 +123,7 @@
             "linkTo": "AssayTerm"
         },
         "moi": {
+            "permission": "import_items",
             "title": "Multiplicity Of Infection",
             "description": "The actual multiplicity of infection (MOI) for vectors introduced to the biosample used to produce data in this measurement set. At least one construct library must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
             "comment": "Use of this property requires construct_libraries.",
@@ -135,6 +137,7 @@
             "minimum": 2
         },
         "nucleic_acid_delivery": {
+            "permission": "import_items",
             "title": "Nucleic Acid Delivery",
             "description": "Method of introduction of nucleic acid into the cell.",
             "type": "string",

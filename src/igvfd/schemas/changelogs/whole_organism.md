@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Minor changes since schema version 18
+
+* Add `construct_library_sets`, `moi`, `nucleic_acid_delivery`, `time_post_library_delivery`, and `time_post_library_delivery_units`.
+
 ### Schema version 18
 
 * Mutually require `starting_amount` and `starting_amount_units`.

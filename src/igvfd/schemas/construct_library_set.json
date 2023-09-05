@@ -1,0 +1,563 @@
+{
+    "title": "Construct Library Set",
+    "$id": "/profiles/construct_library_set.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "A file set containing raw data files resulting from sequencing of the library delivered to the sample. For example, a guide RNA library.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "file_set_type",
+        "selection_criteria",
+        "scope"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases",
+        "accession",
+        "alternate_accessions"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/publication_identifiers"
+        }
+    ],
+    "dependentSchemas": {
+        "file_set_type": {
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "file_set_type": {
+                                "const": "guide library"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "guide_type"
+                        ],
+                        "not": {
+                            "anyOf": [
+                                {
+                                    "required": [
+                                        "average_insert_size"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "lower_bound_insert_size"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "upper_bound_insert_size"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "file_set_type": {
+                                "const": "reporter library"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "scope": {
+                                "enum": [
+                                    "genome-wide",
+                                    "loci"
+                                ]
+                            }
+                        },
+                        "not": {
+                            "anyOf": [
+                                {
+                                    "required": [
+                                        "guide_type"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "tiling_modality"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "average_guide_coverage"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "lower_bound_guide_coverage"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "upper_bound_guide_coverage"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "file_set_type": {
+                                "const": "expression vector library"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "genes"
+                        ],
+                        "properties": {
+                            "scope": {
+                                "oneOf": [
+                                    {
+                                        "const": "exon"
+                                    },
+                                    {
+                                        "const": "genes"
+                                    }
+                                ]
+                            }
+                        },
+                        "not": {
+                            "anyOf": [
+                                {
+                                    "required": [
+                                        "guide_type"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "tiling_modality"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "average_guide_coverage"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "lower_bound_guide_coverage"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "upper_bound_guide_coverage"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "scope": {
+            "oneOf": [
+                {
+                    "required": [
+                        "genes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "exon",
+                        "genes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "exon"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "loci"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "loci"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "exon",
+                            "genes",
+                            "loci"
+                        ]
+                    },
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genome-wide"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "genes": {
+            "properties": {
+                "scope": {
+                    "oneOf": [
+                        {
+                            "const": "exon"
+                        },
+                        {
+                            "const": "genes"
+                        }
+                    ]
+                }
+            }
+        },
+        "loci": {
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "loci"
+                    ]
+                }
+            }
+        },
+        "exon": {
+            "required": [
+                "genes"
+            ],
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "exon"
+                    ]
+                }
+            }
+        },
+        "average_insert_size": {
+            "not": {
+                "required": [
+                    "lower_bound_insert_size",
+                    "upper_bound_insert_size"
+                ]
+            },
+            "comment": "Specification of average_insert_size is mutually exclusive with specification of lower_ and upper_bound_insert_size."
+        },
+        "lower_bound_insert_size": {
+            "not": {
+                "required": [
+                    "average_insert_size"
+                ]
+            },
+            "required": [
+                "upper_bound_insert_size"
+            ],
+            "comment": "Specification of lower_bound_insert_size is mutually exclusive with specification of average_insert_size."
+        },
+        "upper_bound_insert_size": {
+            "not": {
+                "required": [
+                    "average_insert_size"
+                ]
+            },
+            "required": [
+                "lower_bound_insert_size"
+            ],
+            "comment": "Specification of upper_bound_insert_size is mutually exclusive with specification of average_insert_size."
+        },
+        "average_guide_coverage": {
+            "not": {
+                "required": [
+                    "upper_bound_guide_coverage",
+                    "lower_bound_guide_coverage"
+                ]
+            },
+            "comment": "Specification of average_guide_coverage is mutually exclusive with specification of upper_ and lower_bound_guide_coverage."
+        },
+        "lower_bound_guide_coverage": {
+            "not": {
+                "required": [
+                    "average_guide_coverage"
+                ]
+            },
+            "required": [
+                "upper_bound_guide_coverage"
+            ],
+            "comment": "Specification of lower_bound_guide_coverage is mutually exclusive with specification of average_guide_coverage."
+        },
+        "upper_bound_guide_coverage": {
+            "not": {
+                "required": [
+                    "average_guide_coverage"
+                ]
+            },
+            "required": [
+                "lower_bound_guide_coverage"
+            ],
+            "comment": "Specification of upper_bound_guide_coverage is mutually exclusive with specification of average_guide_coverage."
+        }
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "accession": {
+            "accessionType": "DS"
+        },
+        "file_set_type": {
+            "title": "File Set Type",
+            "description": "The type or category of this construct library set.",
+            "type": "string",
+            "enum": [
+                "guide library",
+                "reporter library",
+                "expression vector library"
+            ]
+        },
+        "scope": {
+            "title": "Library Construct Scope",
+            "description": "The scope or scale that this construct library is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the genes or loci property. If exon is specified, an exon identifier and the associated gene will need to be listed in exon and genes properties.",
+            "type": "string",
+            "enum": [
+                "exon",
+                "genes",
+                "loci",
+                "genome-wide"
+            ]
+        },
+        "selection_criteria": {
+            "title": "Selection Criteria",
+            "description": "The criteria used to select the sequence material cloned into the library.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Selection Criterion",
+                "description": "The criterion used to select or design the sequence material cloned into the library.",
+                "comment": "A construct library of phenotype-associated variants must list at least one disease or phenotype in the associated_phenotypes property.",
+                "type": "string",
+                "enum": [
+                    "accessible genome regions",
+                    "candidate cis-regulatory elements",
+                    "chromatin states",
+                    "phenotype-associated variants",
+                    "DNase hypersensitive sites",
+                    "genes",
+                    "histone modifications",
+                    "protein interactors",
+                    "sequence variants",
+                    "synthetic elements",
+                    "transcription start sites",
+                    "TF binding sites"
+                ]
+            }
+        },
+        "integrated_content_files": {
+            "title": "Integrated Content Files",
+            "description": "The files containing sequence material of interest either used for insert design or directly cloned into vectors in this library.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "comment": "See file.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "File"
+            }
+        },
+        "associated_phenotypes": {
+            "title": "Associated Phenotypes",
+            "description": "Ontological terms for diseases or phenotypes associated with the sequence material cloned in this construct library.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "comment": "See phenotype_term.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "PhenotypeTerm"
+            }
+        },
+        "genes": {
+            "title": "Genes",
+            "description": "The specific gene(s) this construct library was designed to target.",
+            "comment": "For a guide library, guides should directly map to or target the gene(s) listed here. Genes are disallowed from submission in a reporter library.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "comment": "See gene.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "Gene"
+            }
+        },
+        "loci": {
+            "title": "Loci",
+            "description": "The specific chromosomal region(s) this construct library was designed to target.",
+            "comment": "Each locus is defined using 1-based, fully-closed (inclusive) coordinates for a specific version of the reference genome assembly.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Locus",
+                "type": "object",
+                "required": [
+                    "assembly",
+                    "chromosome",
+                    "start",
+                    "end"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                    "assembly": {
+                        "title": "Mapping assembly",
+                        "description": "The genome assembly to which coordinates relate (e.g., GRCh38).",
+                        "type": "string",
+                        "enum": [
+                            "GRCh38",
+                            "hg19",
+                            "GRCm39",
+                            "mm10",
+                            "mm9"
+                        ]
+                    },
+                    "chromosome": {
+                        "title": "Chromosome",
+                        "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX",
+                        "type": "string",
+                        "pattern": "^(chr[0-9A-Za-z]+)$"
+                    },
+                    "start": {
+                        "title": "Start",
+                        "description": "The 1-based, closed (inclusive) starting coordinate.",
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "end": {
+                        "title": "End",
+                        "description": "The 1-based, closed (inclusive) ending coordinate.",
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                }
+            }
+        },
+        "exon": {
+            "title": "Exon",
+            "description": "An identifier in plain text for the specific exon in an expression vector library. The associated gene must be listed in genes property.",
+            "type": "string",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
+        },
+        "product_id": {
+            "title": "Product ID",
+            "description": "The product or catalog identifier provided following deposition to addgene.org.",
+            "type": "string",
+            "pattern": "^addgene:\\d{5,6}$"
+        },
+        "guide_type": {
+            "title": "Guide Type",
+            "description": "The design of guides used in a CRISPR library, paired-guide (pgRNA) or single-guide (sgRNA).",
+            "type": "string",
+            "enum": [
+                "sgRNA",
+                "pgRNA"
+            ]
+        },
+        "tiling_modality": {
+            "title": "Tiling Modality",
+            "description": "The tiling modality of guides across elements or loci in a CRISPR library.",
+            "comment": "Peak tiling = all possible gRNA in a selection of peaks. Full tiling = all possible gRNA across an entire locus, including regulatory elements and non regulatory elements. Sparse peaks = a small set of gRNA against a selection of peaks.",
+            "type": "string",
+            "enum": [
+                "peak tiling",
+                "full tiling",
+                "sparse peaks"
+            ]
+        },
+        "average_guide_coverage": {
+            "title": "Average Guide Coverage",
+            "description": "The average number of guides targeting each element of interest in the library.",
+            "type": "number",
+            "minimum": 0
+        },
+        "lower_bound_guide_coverage": {
+            "title": "Lower Bound Guide Coverage",
+            "description": "Lower bound of the number of guides targeting each element of interest in the library.",
+            "type": "integer"
+        },
+        "upper_bound_guide_coverage": {
+            "title": "Upper Bound Guide Coverage",
+            "description": "Upper bound of the number of guides targeting each element of interest in the library.",
+            "type": "integer"
+        },
+        "average_insert_size": {
+            "title": "Average Insert Size",
+            "description": "The average size of the inserts cloned into vectors in the library.",
+            "type": "number",
+            "minimum": 0
+        },
+        "lower_bound_insert_size": {
+            "title": "Lower Bound Insert Size",
+            "description": "Lower bound of the size of the inserts cloned in vectors in the library.",
+            "type": "integer"
+        },
+        "upper_bound_insert_size": {
+            "title": "Upper Bound Insert Size",
+            "description": "Upper bound of the size of the inserts cloned in vectors in the library.",
+            "type": "integer"
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "@type",
+        "collections",
+        "selection_criteria",
+        "summary",
+        "genes"
+    ],
+    "exact_searchable_fields": [
+        "control_for.accession",
+        "control_for.aliases",
+        "publication_identifiers",
+        "lot_id",
+        "product_id",
+        "submitted_by.title",
+        "files.accession",
+        "files.aliases"
+    ],
+    "changelog": "/profiles/changelogs/construct_library_set.md"
+}

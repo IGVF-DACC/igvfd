@@ -34,6 +34,7 @@ TOP_HITS_ITEM_TYPES = [
     'MatrixFile',
     'AnalysisSet',
     'ConstructLibrary',
+    'ConstructLibrarySet',
     'CuratedSet',
     'MeasurementSet',
     'Model',

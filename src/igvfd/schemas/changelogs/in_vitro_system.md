@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Minor changes since schema version 14
+
+* Add `construct_library_sets`, `moi`, `nucleic_acid_delivery`, `time_post_library_delivery`, and `time_post_library_delivery_units`.
+
 ### Schema version 14
 
 * Mutually require `starting_amount` and `starting_amount_units`.

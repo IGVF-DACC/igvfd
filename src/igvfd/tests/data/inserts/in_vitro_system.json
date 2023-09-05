@@ -78,7 +78,12 @@
         "sources": [
             "/labs/danwei-huangfu/"
         ],
-        "virtual": false
+        "virtual": false,
+        "construct_library_sets": [
+            "igvf:basic_construct_library_set_1"
+        ],
+        "moi": 1,
+        "nucleic_acid_delivery": "transfection"
     },
     {
         "uuid": "21fb495c-b700-11ed-afa1-0242ac120002",

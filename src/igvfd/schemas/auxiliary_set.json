@@ -67,6 +67,7 @@
             ]
         },
         "construct_libraries": {
+            "permission": "import_items",
             "title": "Construct Libraries",
             "description": "The construct libraries of vectors introduced to the biosample used to produce data in this auxiliary set.",
             "comment": "See construct_library.json for available identifiers.",
@@ -80,6 +81,7 @@
             }
         },
         "moi": {
+            "permission": "import_items",
             "title": "Multiplicity Of Infection",
             "description": "The actual multiplicity of infection (MOI) for vectors introduced to the biosample used to produce data in this auxiliary set. At least one construct library must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
             "type": "number",

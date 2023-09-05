@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Minor changes since schema version 2
+
+* Make `moi` and `construct_libraries` not submittable. These properties will be moved to Sample objects.
+
 ### Schema version 3
 
 * Rename `auxiliary_type` to `file_set_type`.

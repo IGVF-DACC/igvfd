@@ -1,0 +1,50 @@
+[
+    {
+        "aliases": [
+            "igvf:basic_construct_library_set_0"
+        ],
+        "submitter_comment": "Comment for a construct library set.",
+        "description": "A basic loci construct library set.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "ab2f2707-5bfd-4b34-bb78-45410d166b63",
+        "file_set_type": "reporter library",
+        "scope": "loci",
+        "selection_criteria": [
+            "transcription start sites"
+        ],
+        "loci": [
+            {
+                "assembly": "GRCh38",
+                "chromosome": "chr1",
+                "start": 1,
+                "end": 10
+            }
+        ],
+        "average_insert_size": 270,
+        "documents": [
+            "igvf:plasmid_map_insert"
+        ],
+        "product_id": "addgene:81225",
+        "status": "released"
+    },
+    {
+        "aliases": [
+            "igvf:basic_construct_library_set_1"
+        ],
+        "submitter_comment": "Comment for a construct library set.",
+        "description": "A basic genes construct library set.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "55331dc3-f168-4177-a054-10a42f332b19",
+        "file_set_type": "expression vector library",
+        "scope": "genes",
+        "selection_criteria": [
+            "accessible genome regions"
+        ],
+        "genes": [
+            "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
+        ],
+        "status": "released"
+    }
+]

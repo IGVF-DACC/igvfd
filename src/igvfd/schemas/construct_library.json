@@ -130,6 +130,12 @@
         "accession": {
             "accessionType": "DS"
         },
+        "award": {
+            "permission": "import_items"
+        },
+        "lab": {
+            "permission": "import_items"
+        },
         "scope": {
             "title": "Library Construct Scope",
             "description": "The scope or scale that this construct library is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the targeted_genes or targeted_loci property.",

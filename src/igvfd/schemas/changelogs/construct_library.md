@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library.json`*
 
+### Minor changes since schema version 6
+
+* Make required properties `lab` and `award` not submittable. No further submissions of construct_library are accepted.
+
 ### Schema version 6
 
 * Rename `source` to `sources`.

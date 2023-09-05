@@ -65,6 +65,19 @@
             "comment": "A sample with starting_amount_units must include starting_amount."
         }
     },
+    "dependentRequired": {
+        "moi": [
+            "construct_library_sets"
+        ],
+        "time_post_library_delivery": [
+            "time_post_library_delivery_units",
+            "construct_library_sets"
+        ],
+        "time_post_library_delivery_units": [
+            "time_post_library_delivery",
+            "construct_library_sets"
+        ]
+    },
     "properties": {
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."
@@ -138,6 +151,55 @@
             "description": "Sample is virtual.",
             "type": "boolean",
             "default": false
+        },
+        "construct_library_sets": {
+            "title": "Construct Library Sets",
+            "description": "The construct library sets of vectors introduced to this sample prior to performing an assay.",
+            "comment": "See construct_library_set.json for available identifiers.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Construct Library Set",
+                "type": "string",
+                "linkTo": "ConstructLibrarySet"
+            }
+        },
+        "moi": {
+            "title": "Multiplicity Of Infection",
+            "description": "The actual multiplicity of infection (MOI) for vectors introduced to this sample. At least one construct library set must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
+            "comment": "Use of this property requires construct_library_sets.",
+            "type": "number",
+            "minimum": 0
+        },
+        "nucleic_acid_delivery": {
+            "title": "Nucleic Acid Delivery",
+            "description": "Method of introduction of nucleic acid into the cell.",
+            "type": "string",
+            "enum": [
+                "transfection",
+                "adenoviral transduction",
+                "lentiviral transduction"
+            ]
+        },
+        "time_post_library_delivery": {
+            "title": "Time Post Library Delivery",
+            "description": "The time that elapsed past the time-point when the construct library sets were introduced.",
+            "comment": "Use of this property requires time_post_library_delivery_units and construct_library_sets.",
+            "type": "number"
+        },
+        "time_post_library_delivery_units": {
+            "title": "Time Post Library Delivery Units",
+            "description": "The units of time that elapsed past the point when the construct library sets were introduced.",
+            "comment": "Use of this property requires time_post_library_delivery and construct_library_sets.",
+            "type": "string",
+            "enum": [
+                "minute",
+                "hour",
+                "day",
+                "week",
+                "month"
+            ]
         }
     }
 }
