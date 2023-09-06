@@ -450,8 +450,8 @@ class MultiplexedSample(Sample):
     )
     def summary(self, request, multiplexed_samples=None):
         if multiplexed_samples:
-            multiplexed_sample_summaries = [request.embed(
-                multiplexed_sample, '@@object').get('summary') for multiplexed_sample in multiplexed_samples[:2]]
+            multiplexed_sample_summaries = sorted([request.embed(
+                multiplexed_sample, '@@object').get('summary') for multiplexed_sample in sorted(multiplexed_samples)[:2]])
             if len(multiplexed_samples) > 2:
                 remainder = f'... and {len(multiplexed_samples) - 2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
                 multiplexed_sample_summaries = multiplexed_sample_summaries + [remainder]
