@@ -26,6 +26,16 @@ def collect_multiplexed_samples_prop(request, multiplexed_samples, property_name
     return property_list
 
 
+def concat_numeric_and_units(numeric, numeric_units, no_numeric_on_one=False):
+    if str(numeric) == '1':
+        if no_numeric_on_one:
+            return f'{numeric_units}'
+        else:
+            return f'{numeric} {numeric_units}'
+    else:
+        return f'{numeric} {numeric_units}s'
+
+
 @abstract_collection(
     name='samples',
     unique_key='accession',
@@ -99,6 +109,7 @@ class Biosample(Sample):
     ]
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Sex',
             'type': 'string',
@@ -144,40 +155,6 @@ class Biosample(Sample):
             return 'unknown'
 
     @calculated_property(
-        schema={
-            'title': 'Summary',
-            'type': 'string',
-            'notSubmittable': True,
-        }
-    )
-    def summary(self, request, sample_terms, age, taxa=None, age_units=None):
-        if len(sample_terms) > 1:
-            term_name = 'mixed'
-        else:
-            term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
-            term_name = (term_object.get('term_name'))
-        biosample_type = self.item_type.replace('_', ' ')
-        term_and_type = f'{term_name} {biosample_type}'
-        if 'cell' in biosample_type and 'cell' in term_name:
-            term_and_type = term_name
-        if 'tissue' in biosample_type and 'tissue' in term_name:
-            term_and_type = term_name
-        if taxa:
-            if age == 'unknown':
-                return f'{term_and_type}, {taxa}'
-            else:
-                if age != '1':
-                    age_units = f'{age_units}s'
-                return f'{term_and_type}, {taxa} ({age} {age_units})'
-        else:
-            if age == 'unknown':
-                return f'{term_and_type}'
-            else:
-                if age != '1':
-                    age_units = f'{age_units}s'
-                return f'{term_and_type} ({age} {age_units})'
-
-    @calculated_property(
         define=True,
         schema={
             'title': 'Taxa',
@@ -199,6 +176,151 @@ class Biosample(Sample):
 
         if len(taxas) == 1:
             return list(taxas).pop()
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, embryonic=None, virtual=None, classification=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_fraction_detail=None, disease_terms=None, biomarkers=None, treatments=None):
+        term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
+        term_name = term_object.get('term_name')
+        biosample_type = self.item_type
+
+        # sample term customization based on biosample type
+        if biosample_type == 'primary_cell':
+            if 'cell' not in term_name:
+                summary_terms = f'{term_name} cell'
+            else:
+                summary_terms = term_name
+        elif biosample_type == 'in_vitro_system':
+            summary_terms = f'{term_name} {classification}'
+            if classification in term_name:
+                summary_terms = term_name
+            elif 'cell' in classification and 'cell' in term_name:
+                summary_terms = term_name.replace('cell', classification)
+            elif 'tissue' in classification and 'tissue' in term_name:
+                summary_terms = term_name.replace('tissue', classification)
+        elif biosample_type == 'tissue':
+            if 'tissue' not in term_name:
+                summary_terms = f'{term_name} tissue'
+            else:
+                summary_terms = term_name
+        elif biosample_type == 'whole_organism':
+            summary_terms = concat_numeric_and_units(len(donors), term_name, no_numeric_on_one=True)
+        elif len(sample_terms) > 1:
+            summary_terms = 'mixed'
+
+        # embryonic is prepended to the start of the summary
+        if (embryonic and
+                biosample_type in ['primary_cell', 'tissue']):
+            summary_terms = f'embryonic {summary_terms}'
+
+        # virtual is prepended to the start of the summary
+        if (virtual and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue']):
+            summary_terms = f'virtual {summary_terms}'
+
+        # time post change and targeted term are appended to the end of the summary
+        if (time_post_change and
+                biosample_type in ['in_vitro_system']):
+            time_post_change = concat_numeric_and_units(time_post_change, time_post_change_units)
+            if targeted_sample_term:
+                targeted_term_object = request.embed(targeted_sample_term, '@@object?skip_calculated=true')
+                targeted_term_name = targeted_term_object.get('term_name')
+                summary_terms += f' induced to {targeted_term_name} for {time_post_change}'
+            else:
+                summary_terms += f' induced for {time_post_change}'
+
+        # cellular sub pool is appended to the end of the summary in parentheses
+        if (cellular_sub_pool and
+                biosample_type in ['primary_cell', 'in_vitro_system']):
+            summary_terms += f' ({cellular_sub_pool})'
+
+        # a comma is added before sex or taxa if sex is unspecified
+        summary_terms += ','
+
+        # sex is appended to the end of the summary
+        if (sex and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+            if sex != 'unspecified':
+                if sex == 'mixed':
+                    sex = 'mixed sex'
+                elif len(donors) > 1:
+                    sex = f'{sex}s'
+                summary_terms += f' {sex}'
+
+        # taxa of the donor(s) is appended to the end of the summary
+        if (donors and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+            if not taxa or taxa == 'Mus musculus':
+                taxa_set = set()
+                strains_set = set()
+                for donor in donors:
+                    donor_object = request.embed(donor, '@@object?skip_calculated=true')
+                    taxa_set.add(donor_object['taxa'])
+                    if donor_object['taxa'] == 'Mus musculus':
+                        strains_set.add(donor_object.get('strain', ''))
+                strains = ', '.join(sorted(strains_set))
+                taxa_list = sorted(list(taxa_set))
+                if 'Mus musculus' in taxa_list:
+                    mouse_index = taxa_list.index('Mus musculus')
+                    taxa_list[mouse_index] += f' {strains}'
+                taxa = ' and '.join(taxa_list)
+            summary_terms += f' {taxa}'
+
+        # age is appended to the end of the summary
+        if (age != 'unknown' and
+                biosample_type in ['primary_cell', 'tissue', 'whole_organism']):
+            age = concat_numeric_and_units(age, age_units)
+            summary_terms += f' ({age})'
+
+        # sorted fraction detail is appended to the end of the summary
+        if (sorted_fraction_detail and
+                biosample_type in ['in_vitro_system']):
+            summary_terms += f' (sorting details: {sorted_fraction_detail})'
+
+        # biomarker summaries are appended to the end of the summary
+        if (biomarkers and
+                biosample_type in ['primary_cell', 'in_vitro_system']):
+            biomarker_summaries = []
+            for biomarker in biomarkers:
+                biomarker_object = request.embed(biomarker)
+                if biomarker_object['quantification'] in ['positive', 'negative']:
+                    biomarker_summary = f'{biomarker_object["quantification"]} detection of {biomarker_object["name"]}'
+                elif biomarker_object['quantification'] in ['high', 'intermediate', 'low']:
+                    if biomarker_object.get('classification') == 'marker gene':
+                        biomarker_summary = f'{biomarker_object["quantification"]} expression of {biomarker_object["name"]}'
+                    else:
+                        biomarker_summary = f'{biomarker_object["quantification"]} level of {biomarker_object["name"]}'
+                biomarker_summaries.append(biomarker_summary)
+                biomarker_summaries = sorted(biomarker_summaries)
+            summary_terms += f' characterized by {", ".join(biomarker_summaries)},'
+
+        # disease terms are appended to the end of the summary
+        if (disease_terms and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+            phenotype_term_names = sorted([request.embed(disease_term).get('term_name')
+                                          for disease_term in disease_terms])
+            #phenotype_term_names = sorted([phenotype_term.get('term_name') for phenotype_term in phenotype_term_objects])
+            summary_terms += f' associated with {", ".join(phenotype_term_names)},'
+
+        # treatment summaries are appended to the end of the summary
+        if (treatments and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+            treatment_objects = [request.embed(treatment) for treatment in treatments]
+            depleted_treatment_summaries = sorted([treatment.get('summary')[13:]
+                                                  for treatment in treatment_objects if treatment.get('depletion')])
+            perturbation_treatment_summaries = sorted([treatment.get('summary')[13:]
+                                                      for treatment in treatment_objects if not treatment.get('depletion')])
+            if depleted_treatment_summaries:
+                summary_terms += f' depleted of {", ".join(depleted_treatment_summaries)},'
+            if perturbation_treatment_summaries:
+                summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)}'
+
+        return summary_terms.strip(',')
 
 
 @collection(
@@ -229,41 +351,6 @@ class InVitroSystem(Biosample):
         Path('cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('originated_from', include=['@id', 'accession']),
     ]
-
-    @calculated_property(
-        schema={
-            'title': 'Summary',
-            'type': 'string',
-            'notSubmittable': True,
-        }
-    )
-    def summary(self, request, sample_terms, classification, taxa=None, time_post_change=None, time_post_change_units=None):
-        if len(sample_terms) > 1:
-            term_name = 'mixed'
-        else:
-            term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
-            term_name = (term_object.get('term_name'))
-        term_and_classification = f'{term_name} {classification}'
-        if classification in term_name:
-            term_and_classification = term_name
-        elif 'cell' in classification and 'cell' in term_name:
-            term_and_classification = term_name.replace('cell', classification)
-        elif 'tissue' in classification and 'tissue' in term_name:
-            term_and_classification = term_name.replace('tissue', classification)
-        if taxa:
-            if time_post_change and time_post_change_units:
-                if time_post_change != 1:
-                    time_post_change_units = f'{time_post_change_units}s'
-                return f'{term_and_classification}, {taxa} ({time_post_change} {time_post_change_units})'
-            else:
-                return f'{term_and_classification}, {taxa}'
-        else:
-            if time_post_change and time_post_change_units:
-                if time_post_change != 1:
-                    time_post_change_units = f'{time_post_change_units}s'
-                return f'{term_and_classification} ({time_post_change} {time_post_change_units})'
-            else:
-                return f'{term_and_classification}'
 
 
 @collection(
@@ -302,13 +389,19 @@ class TechnicalSample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, sample_material):
+    def summary(self, request, sample_terms, sample_material, virtual=None):
         if len(sample_terms) > 1:
-            term_name = 'mixed'
+            summary_terms = 'mixed'
         else:
             term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
-            term_name = (term_object.get('term_name'))
-        return f'{sample_material} {term_name}'
+            summary_terms = term_object.get('term_name')
+
+        summary_terms = f'{sample_material} {summary_terms}'
+
+        if virtual:
+            summary_terms = f'virtual {summary_terms}'
+
+        return summary_terms
 
 
 @collection(
@@ -323,34 +416,6 @@ class WholeOrganism(Biosample):
     item_type = 'whole_organism'
     schema = load_schema('igvfd:schemas/whole_organism.json')
     embedded_with_frame = Biosample.embedded_with_frame
-
-    @calculated_property(
-        schema={
-            'title': 'Summary',
-            'type': 'string',
-            'notSubmittable': True,
-        }
-    )
-    def summary(self, request, sample_terms, age, taxa=None, age_units=None):
-        if len(sample_terms) > 1:
-            term_name = 'mixed'
-        else:
-            term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
-            term_name = (term_object.get('term_name'))
-        if taxa:
-            if age == 'unknown':
-                return f'{term_name}, {taxa}'
-            else:
-                if age != '1':
-                    age_units = age_units + 's'
-                return f'{term_name}, {taxa} ({age} {age_units})'
-        else:
-            if age == 'unknown':
-                return f'{term_name}'
-            else:
-                if age != '1':
-                    age_units = age_units + 's'
-                return f'{term_name} ({age} {age_units})'
 
 
 @collection(
@@ -375,6 +440,24 @@ class MultiplexedSample(Sample):
         Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('modifications', include=['@id', 'modality', 'summary', 'status'])
     ]
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, multiplexed_samples=None):
+        if multiplexed_samples:
+            multiplexed_sample_summaries = sorted([request.embed(
+                multiplexed_sample, '@@object').get('summary') for multiplexed_sample in sorted(multiplexed_samples)[:2]])
+            if len(multiplexed_samples) > 2:
+                remainder = f'... and {len(multiplexed_samples) - 2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
+                multiplexed_sample_summaries = multiplexed_sample_summaries + [remainder]
+            return f'multiplexed sample of {", ".join(multiplexed_sample_summaries)}'
+        else:
+            return 'multiplexed sample'
 
     @calculated_property(
         schema={

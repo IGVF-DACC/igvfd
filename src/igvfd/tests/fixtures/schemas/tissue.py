@@ -4,6 +4,7 @@ import pytest
 @pytest.fixture
 def tissue(testapp, lab, source, award, rodent_donor, sample_term_adrenal_gland):
     item = {
+        'accession': 'IGVFSM1111AAAA',
         'award': award['@id'],
         'lab': lab['@id'],
         'sources': [source['@id']],
@@ -103,6 +104,7 @@ def tissue_v5_90_or_above(tissue):
 @pytest.fixture
 def human_tissue(testapp, lab, source, award, human_donor, sample_term_adrenal_gland):
     item = {
+        'accession': 'IGVFSM0000AAAA',
         'award': award['@id'],
         'lab': lab['@id'],
         'sources': [source['@id']],

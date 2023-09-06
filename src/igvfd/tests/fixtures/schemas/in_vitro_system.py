@@ -4,6 +4,7 @@ import pytest
 @pytest.fixture
 def in_vitro_cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562):
     item = {
+        'accession': 'IGVFSM2222BBBB',
         'classification': 'cell line',
         'award': award['@id'],
         'lab': other_lab['@id'],
