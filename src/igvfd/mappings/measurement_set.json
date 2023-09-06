@@ -1,6 +1,6 @@
 {
-    "hash": "f8fce2f31990d9717160bb27c4f9fbc7",
-    "index_name": "measurement_set_f8fce2f3",
+    "hash": "f11243763187400f7bc28dfb1796c337",
+    "index_name": "measurement_set_f1124376",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -446,6 +446,9 @@
                             "assay_title": {
                                 "type": "keyword"
                             },
+                            "assembly": {
+                                "type": "keyword"
+                            },
                             "associated_diseases": {
                                 "type": "keyword"
                             },
@@ -710,6 +713,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {
@@ -746,6 +752,9 @@
                             "assay_title": {
                                 "type": "keyword"
                             },
+                            "assembly": {
+                                "type": "keyword"
+                            },
                             "associated_diseases": {
                                 "type": "keyword"
                             },
@@ -1010,6 +1019,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {

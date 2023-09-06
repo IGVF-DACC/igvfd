@@ -1,6 +1,6 @@
 {
-    "hash": "b499b2312d3b9946476f86be80dc61db",
-    "index_name": "in_vitro_system_b499b231",
+    "hash": "fc748d6915ff016117c861665b0c7c88",
+    "index_name": "in_vitro_system_fc748d69",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -505,6 +505,9 @@
                             "assay_title": {
                                 "type": "keyword"
                             },
+                            "assembly": {
+                                "type": "keyword"
+                            },
                             "associated_diseases": {
                                 "type": "keyword"
                             },
@@ -825,6 +828,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {

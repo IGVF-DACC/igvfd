@@ -1,6 +1,6 @@
 {
-    "hash": "102d316864ec233b04031f5852e8cb83",
-    "index_name": "curated_set_102d3168",
+    "hash": "49717a2ba82507e13ea5fd635e9a9851",
+    "index_name": "curated_set_49717a2b",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -162,6 +162,9 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
+                    "assembly": {
+                        "type": "keyword"
+                    },
                     "award": {
                         "properties": {
                             "@id": {
@@ -260,6 +263,9 @@
                                 "type": "keyword"
                             },
                             "assay_title": {
+                                "type": "keyword"
+                            },
+                            "assembly": {
                                 "type": "keyword"
                             },
                             "associated_diseases": {
@@ -526,6 +532,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {
@@ -1462,6 +1471,9 @@
                     },
                     "taxa": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "transcriptome_annotation": {
                         "type": "keyword"
                     },
                     "url": {

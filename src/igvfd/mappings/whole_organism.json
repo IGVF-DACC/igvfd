@@ -1,6 +1,6 @@
 {
-    "hash": "9a62e38a6f4235c9bedadccd90c3a9d5",
-    "index_name": "whole_organism_9a62e38a",
+    "hash": "2b4d750a2ea9e379e4431d4b9a400938",
+    "index_name": "whole_organism_2b4d750a",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -364,6 +364,9 @@
                             "assay_title": {
                                 "type": "keyword"
                             },
+                            "assembly": {
+                                "type": "keyword"
+                            },
                             "associated_diseases": {
                                 "type": "keyword"
                             },
@@ -684,6 +687,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {

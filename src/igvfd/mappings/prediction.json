@@ -1,6 +1,6 @@
 {
-    "hash": "079685ae94d544ce203644096aaa9bb8",
-    "index_name": "prediction_079685ae",
+    "hash": "30cf98eb89788967d871ed15a1f3b766",
+    "index_name": "prediction_30cf98eb",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -260,6 +260,9 @@
                                 "type": "keyword"
                             },
                             "assay_title": {
+                                "type": "keyword"
+                            },
+                            "assembly": {
                                 "type": "keyword"
                             },
                             "associated_diseases": {
@@ -526,6 +529,9 @@
                                 "type": "object"
                             },
                             "taxa": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "url": {

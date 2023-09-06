@@ -118,6 +118,72 @@ class CuratedSet(FileSet):
     schema = load_schema('igvfd:schemas/curated_set.json')
     embedded_with_frame = FileSet.embedded_with_frame
 
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Assembly',
+            'description': 'The genome assembly to which the referencing files in the file set are utilizing (e.g., GRCh38).',
+            'type': 'array',
+            'uniqueItems': True,
+            'items': {
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def assembly(self, request, files=None):
+        if files:
+            assembly_values = set()
+            for current_file_path in files:
+                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+                if file_object.get('assembly'):
+                    assembly_values.add(file_object.get('assembly'))
+            if assembly_values:
+                return sorted(list(assembly_values))
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Transcriptome Annotation',
+            'description': 'The annotation and version of the reference resource.',
+            'type': 'array',
+            'uniqueItems': True,
+            'items': {
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def transcriptome_annotation(self, request, files=None):
+        if files:
+            annotation_values = set()
+            for current_file_path in files:
+                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+                if file_object.get('transcriptome_annotation'):
+                    annotation_values.add(file_object.get('transcriptome_annotation'))
+            if annotation_values:
+                return sorted(list(annotation_values))
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, curated_set_type, assembly=None, transcriptome_annotation=None, taxa=None):
+        summary_message = ''
+        if taxa:
+            summary_message += f'{taxa} '
+        if assembly:
+            assembly_values_joined = ' '.join(assembly)
+            summary_message += f'{assembly_values_joined} '
+        if transcriptome_annotation:
+            annotation_values_joined = ' '.join(transcriptome_annotation)
+            summary_message += f'{annotation_values_joined} '
+        summary_message += curated_set_type
+        return summary_message
+
 
 @collection(
     name='measurement-sets',
