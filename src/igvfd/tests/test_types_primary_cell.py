@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_summary(testapp, primary_cell, human_donor, rodent_donor, parent_rodent_donor_2, biomarker_CD243_absent, biomarker_CD243_high, sample_term_endothelial_cell, treatment_protein):
+def test_summary(testapp, primary_cell, human_donor, rodent_donor, parent_rodent_donor_2, biomarker_CD243_absent, biomarker_CD243_high, sample_term_endothelial_cell, treatment_protein, phenotype_term_myocardial_infarction, phenotype_term_alzheimers):
     res = testapp.get(primary_cell['@id'])
     assert res.json.get('summary') == 'pluripotent stem cell, Homo sapiens'
     testapp.patch_json(
@@ -68,9 +68,10 @@ def test_summary(testapp, primary_cell, human_donor, rodent_donor, parent_rodent
         primary_cell['@id'],
         {
             'donors': [rodent_donor['@id'], parent_rodent_donor_2['@id']],
-            'treatments': [treatment_protein['@id']]
+            'treatments': [treatment_protein['@id']],
+            'disease_terms': [phenotype_term_myocardial_infarction['@id'], phenotype_term_alzheimers['@id']]
         }
     )
     res = testapp.get(primary_cell['@id'])
     assert res.json.get(
-        'summary') == f'virtual embryonic endothelial cell of vascular tree (PKR-123), mixed sex Mus musculus strain1, strain3 (1 month) characterized by high level of CD243, negative detection of CD243 treated with 10 ng/mL G-CSF'
+        'summary') == f'virtual embryonic endothelial cell of vascular tree (PKR-123), mixed sex Mus musculus strain1, strain3 (1 month) characterized by high level of CD243, negative detection of CD243, associated with Alzheimer\'s disease, Myocardial infarction, treated with 10 ng/mL G-CSF'

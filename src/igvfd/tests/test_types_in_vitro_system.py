@@ -68,9 +68,10 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
             'biomarkers': [biomarker_CD243_absent['@id'], biomarker_CD243_high['@id']],
             'sorted_fraction': in_vitro_differentiated_cell['@id'],
             'sorted_fraction_detail': 'some detail about sorting',
-            'virtual': True
+            'virtual': True,
+            'cellular_sub_pool': 'PKR-456',
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get(
-        'summary') == f'virtual embryoid body induced to endothelial cell of vascular tree for 3 weeks, mixed sex Homo sapiens and Mus musculus strain1 (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243 depleted of penicillin for 3 minutes treated with 10 ng/mL G-CSF'
+        'summary') == f'virtual embryoid body induced to endothelial cell of vascular tree for 3 weeks (PKR-456), mixed sex Homo sapiens and Mus musculus strain1 (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243, depleted of penicillin for 3 minutes, treated with 10 ng/mL G-CSF'
