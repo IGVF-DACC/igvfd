@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library.json`*
 
+### Minor changes since schema version 6
+
+* Restrict `lab` and `award` to submittable by admins only. No further submissions of construct_libraries are accepted, please submit construct_library_set objects instead.
+
 ### Schema version 6
 
 * Rename `source` to `sources`.

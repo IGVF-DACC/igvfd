@@ -410,3 +410,22 @@ class PredictionSet(FileSet):
     item_type = 'prediction_set'
     schema = load_schema('igvfd:schemas/prediction_set.json')
     embedded_with_frame = FileSet.embedded_with_frame
+
+
+@collection(
+    name='construct-library-sets',
+    unique_key='accession',
+    properties={
+        'title': 'Construct Library Sets',
+        'description': 'Listing of construct library sets',
+    })
+class ConstructLibrarySet(FileSet):
+    item_type = 'construct_library_set'
+    schema = load_schema('igvfd:schemas/construct_library_set.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
+        Path('files', include=['@id', 'accession', 'aliases']),
+        Path('control_for', include=['@id', 'accession', 'aliases'])
+    ]

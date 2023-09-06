@@ -40,6 +40,7 @@ ORDER = [
     'software',
     'software_version',
     'construct_library',
+    'construct_library_set',
     'image',
     'page',
     'workflow',
@@ -522,14 +523,28 @@ PHASE1_PIPELINES = {
     'user': [
         remove_keys('lab', 'submits_for'),
     ],
+    'construct_library_set': [
+        remove_keys('integrated_content_files'),
+    ],
     'in_vitro_system': [
-        remove_keys('pooled_from', 'part_of', 'originated_from'),
+        remove_keys('pooled_from', 'part_of', 'originated_from', 'construct_library_sets', 'moi',
+                    'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'tissue': [
-        remove_keys('pooled_from', 'part_of'),
+        remove_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi', 'nucleic_acid_delivery',
+                    'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'primary_cell': [
-        remove_keys('pooled_from', 'part_of'),
+        remove_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi', 'nucleic_acid_delivery',
+                    'time_post_library_delivery', 'time_post_library_delivery_units'),
+    ],
+    'whole_organism': [
+        remove_keys('construct_library_sets', 'moi', 'nucleic_acid_delivery',
+                    'time_post_library_delivery', 'time_post_library_delivery_units'),
+    ],
+    'technical_sample': [
+        remove_keys('construct_library_sets', 'moi', 'nucleic_acid_delivery',
+                    'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'construct_library': [
         remove_keys('integrated_content_files'),
@@ -550,7 +565,7 @@ PHASE1_PIPELINES = {
         remove_keys('derived_from', 'file_format_specifications'),
     ],
     'measurement_set': [
-        remove_keys('auxiliary_sets'),
+        remove_keys('auxiliary_sets', 'control_file_sets'),
     ],
     'auxiliary_set': [
         remove_keys('measurement_sets'),
@@ -569,14 +584,28 @@ PHASE2_PIPELINES = {
     'user': [
         skip_rows_missing_all_keys('lab', 'submits_for'),
     ],
+    'construct_library_set': [
+        skip_rows_missing_all_keys('integrated_content_files'),
+    ],
     'in_vitro_system': [
-        skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from'),
+        skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from', 'construct_library_sets',
+                                   'moi', 'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'tissue': [
-        skip_rows_missing_all_keys('pooled_from', 'part_of'),
+        skip_rows_missing_all_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi',
+                                   'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'primary_cell': [
-        skip_rows_missing_all_keys('pooled_from', 'part_of'),
+        skip_rows_missing_all_keys('pooled_from', 'part_of', 'construct_library_sets', 'moi',
+                                   'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units'),
+    ],
+    'whole_organism': [
+        skip_rows_missing_all_keys('construct_library_sets', 'moi', 'nucleic_acid_delivery',
+                                   'time_post_library_delivery', 'time_post_library_delivery_units'),
+    ],
+    'technical_sample': [
+        skip_rows_missing_all_keys('construct_library_sets', 'moi', 'nucleic_acid_delivery',
+                                   'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'construct_library': [
         skip_rows_missing_all_keys('integrated_content_files'),
@@ -597,7 +626,7 @@ PHASE2_PIPELINES = {
         skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),
     ],
     'measurement_set': [
-        skip_rows_missing_all_keys('auxiliary_sets'),
+        skip_rows_missing_all_keys('auxiliary_sets', 'control_file_sets'),
     ],
     'auxiliary_set': [
         skip_rows_missing_all_keys('measurement_sets'),

@@ -7,6 +7,7 @@
 * Add `readout`.
 * Expand `preferred_assay_title` enum list to include `Parse Split-seq`.
 * Add `auxiliary_sets`.
+* Restrict `nucleic_acid_delivery`, `moi`, and `construct_libraries` to submittable by admins only. These properties will be moved to Sample objects.
 
 ### Schema version 5
 

@@ -129,3 +129,24 @@ def test_maxitems_dependencies(in_vitro_cell_line, modification, modification_ac
         in_vitro_cell_line['@id'],
         {'sample_terms': [assay_term_starr['@id'], assay_term_atac['@id']]}, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_sample_moi_construct_library(
+    testapp,
+    in_vitro_cell_line,
+    construct_library_set_genome_wide
+):
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'moi': 2.1},
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'moi': 2.1,
+            'construct_library_sets': [construct_library_set_genome_wide['@id']]
+        }
+    )
+    assert res.status_code == 200

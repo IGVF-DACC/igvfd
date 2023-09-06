@@ -1,5 +1,9 @@
 ## Changelog for *`primary_cell.json`*
 
+### Minor changes since schema version 15
+
+* Add `construct_library_sets`, `moi`, `nucleic_acid_delivery`, `time_post_library_delivery`, and `time_post_library_delivery_units`.
+
 ### Schema version 15
 
 * Mutually require `starting_amount` and `starting_amount_units`.

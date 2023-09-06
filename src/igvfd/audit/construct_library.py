@@ -18,8 +18,8 @@ def audit_construct_library_associated_diseases(value, system):
     detail = ''
     selection_criteria_list = value.get('selection_criteria', [])
     if 'disease-associated variants' in selection_criteria_list:
-        assoc_disease = value.get('associated_diseases', [])
-        if assoc_disease != []:
+        assoc_pheno = value.get('associated_diseases', [])
+        if assoc_pheno != []:
             return
         else:
             detail = (

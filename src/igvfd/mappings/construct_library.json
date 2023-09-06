@@ -1,6 +1,6 @@
 {
-    "hash": "f581abec13aa60476607c3c5f84436a8",
-    "index_name": "construct_library_f581abec",
+    "hash": "cbb28f334811ef447b8d15d6c8fbd83a",
+    "index_name": "construct_library_cbb28f33",
     "item_type": "construct_library",
     "mapping": {
         "dynamic_templates": [
@@ -271,8 +271,29 @@
                             "associated_diseases": {
                                 "type": "keyword"
                             },
+                            "associated_phenotypes": {
+                                "type": "keyword"
+                            },
                             "auxiliary_sets": {
                                 "type": "keyword"
+                            },
+                            "average_guide_coverage": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "average_insert_size": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
                             },
                             "award": {
                                 "type": "keyword"
@@ -307,6 +328,9 @@
                             "donors": {
                                 "type": "keyword"
                             },
+                            "exon": {
+                                "type": "keyword"
+                            },
                             "expression_vector_library_details": {
                                 "properties": {
                                     "cloned_genes": {
@@ -319,6 +343,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "genes": {
                                 "type": "keyword"
                             },
                             "guide_library_details": {
@@ -359,6 +386,9 @@
                                 },
                                 "type": "object"
                             },
+                            "guide_type": {
+                                "type": "keyword"
+                            },
                             "input_file_sets": {
                                 "type": "keyword"
                             },
@@ -371,8 +401,55 @@
                             "library_construction_platform": {
                                 "type": "keyword"
                             },
+                            "loci": {
+                                "properties": {
+                                    "assembly": {
+                                        "type": "keyword"
+                                    },
+                                    "chromosome": {
+                                        "type": "keyword"
+                                    },
+                                    "end": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "start": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
+                            },
                             "lot_id": {
                                 "type": "keyword"
+                            },
+                            "lower_bound_guide_coverage": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            },
+                            "lower_bound_insert_size": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
                             },
                             "measurement_sets": {
                                 "type": "keyword"
@@ -534,8 +611,29 @@
                             "taxa": {
                                 "type": "keyword"
                             },
+                            "tiling_modality": {
+                                "type": "keyword"
+                            },
                             "transcriptome_annotation": {
                                 "type": "keyword"
+                            },
+                            "upper_bound_guide_coverage": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            },
+                            "upper_bound_insert_size": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
                             },
                             "url": {
                                 "type": "keyword"

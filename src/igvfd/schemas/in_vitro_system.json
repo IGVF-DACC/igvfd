@@ -92,6 +92,9 @@
         }
     },
     "dependentRequired": {
+        "$merge": [
+            "sample.json#/dependentRequired"
+        ],
         "time_post_change": [
             "time_post_change_units",
             "cell_fate_change_treatments"

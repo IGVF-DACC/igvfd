@@ -67,6 +67,11 @@
             ]
         }
     },
+    "dependentRequired": {
+        "$merge": [
+            "sample.json#/dependentRequired"
+        ]
+    },
     "properties": {
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."

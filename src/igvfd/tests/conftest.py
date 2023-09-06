@@ -59,7 +59,8 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.reference_file',
     'igvfd.tests.fixtures.schemas.analysis_step',
     'igvfd.tests.fixtures.schemas.workflow',
-    'igvfd.tests.fixtures.schemas.configuration_file'
+    'igvfd.tests.fixtures.schemas.configuration_file',
+    'igvfd.tests.fixtures.schemas.construct_library_set'
 ]
 
 
