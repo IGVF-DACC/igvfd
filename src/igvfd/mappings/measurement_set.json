@@ -1,6 +1,6 @@
 {
-    "hash": "7a0312edcd71312a58bf64b7b448d58f",
-    "index_name": "measurement_set_7a0312ed",
+    "hash": "1e20260f9927747fdd4f7de1a11034cf",
+    "index_name": "measurement_set_1e20260f",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -446,6 +446,9 @@
                             "assay_title": {
                                 "type": "keyword"
                             },
+                            "assembly": {
+                                "type": "keyword"
+                            },
                             "associated_diseases": {
                                 "type": "keyword"
                             },
@@ -790,6 +793,9 @@
                                 "type": "keyword"
                             },
                             "tiling_modality": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {
@@ -844,6 +850,9 @@
                             "assay_title": {
                                 "type": "keyword"
                             },
+                            "assembly": {
+                                "type": "keyword"
+                            },
                             "associated_diseases": {
                                 "type": "keyword"
                             },
@@ -1188,6 +1197,9 @@
                                 "type": "keyword"
                             },
                             "tiling_modality": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

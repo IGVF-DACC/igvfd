@@ -1,6 +1,6 @@
 {
-    "hash": "37b28317560a9cf3001b533d552a66aa",
-    "index_name": "in_vitro_system_37b28317",
+    "hash": "87c33f51436f2b6325c8318deaa60068",
+    "index_name": "in_vitro_system_87c33f51",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -508,6 +508,9 @@
                             "assay_title": {
                                 "type": "keyword"
                             },
+                            "assembly": {
+                                "type": "keyword"
+                            },
                             "associated_diseases": {
                                 "type": "keyword"
                             },
@@ -908,6 +911,9 @@
                                 "type": "keyword"
                             },
                             "tiling_modality": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

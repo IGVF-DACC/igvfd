@@ -1,6 +1,6 @@
 {
-    "hash": "f9a2e59e1e047370fb126c0dbe0aefc6",
-    "index_name": "prediction_set_f9a2e59e",
+    "hash": "1a95652b16bcb979861fe455d22e4d74",
+    "index_name": "prediction_set_1a95652b",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -260,6 +260,9 @@
                                 "type": "keyword"
                             },
                             "assay_title": {
+                                "type": "keyword"
+                            },
+                            "assembly": {
                                 "type": "keyword"
                             },
                             "associated_diseases": {
@@ -606,6 +609,9 @@
                                 "type": "keyword"
                             },
                             "tiling_modality": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

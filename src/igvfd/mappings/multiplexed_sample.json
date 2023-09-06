@@ -1,6 +1,6 @@
 {
-    "hash": "8d7f62fe3b626748aaaf0c2d9bace0d6",
-    "index_name": "multiplexed_sample_8d7f62fe",
+    "hash": "4a82c1b4f5f2bcf54e082ed6350c2c13",
+    "index_name": "multiplexed_sample_4a82c1b4",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -350,6 +350,9 @@
                                 "type": "keyword"
                             },
                             "assay_title": {
+                                "type": "keyword"
+                            },
+                            "assembly": {
                                 "type": "keyword"
                             },
                             "associated_diseases": {
@@ -752,6 +755,9 @@
                                 "type": "keyword"
                             },
                             "tiling_modality": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

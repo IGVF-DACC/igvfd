@@ -1,6 +1,6 @@
 {
-    "hash": "581d16144db52fade5fa7a7aebc87a8e",
-    "index_name": "tissue_581d1614",
+    "hash": "1674c6fd491700cbcb1ab0f8ed922eed",
+    "index_name": "tissue_1674c6fd",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -368,6 +368,9 @@
                                 "type": "keyword"
                             },
                             "assay_title": {
+                                "type": "keyword"
+                            },
+                            "assembly": {
                                 "type": "keyword"
                             },
                             "associated_diseases": {
@@ -770,6 +773,9 @@
                                 "type": "keyword"
                             },
                             "tiling_modality": {
+                                "type": "keyword"
+                            },
+                            "transcriptome_annotation": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {
