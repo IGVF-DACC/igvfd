@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 2
 
-* Make `moi` and `construct_libraries` not submittable. These properties will be moved to Sample objects.
+* Restrict `moi` and `construct_libraries` to submittable by admins only. These properties will be moved to Sample objects.
 
 ### Schema version 3
 

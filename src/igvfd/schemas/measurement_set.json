@@ -72,9 +72,9 @@
         },
         "construct_libraries": {
             "permission": "import_items",
+            "comment": "Do not submit. This property has been moved to Sample objects.",
             "title": "Construct Libraries",
             "description": "The construct libraries of vectors introduced to the biosample used to produce data in this measurement set.",
-            "comment": "See construct_library.json for available identifiers.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
@@ -124,9 +124,9 @@
         },
         "moi": {
             "permission": "import_items",
+            "comment": "Do not submit. This property has been moved to Sample objects.",
             "title": "Multiplicity Of Infection",
             "description": "The actual multiplicity of infection (MOI) for vectors introduced to the biosample used to produce data in this measurement set. At least one construct library must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
-            "comment": "Use of this property requires construct_libraries.",
             "type": "number",
             "minimum": 0
         },
@@ -138,8 +138,8 @@
         },
         "nucleic_acid_delivery": {
             "permission": "import_items",
+            "comment": "Do not submit. This property has been moved to Sample objects.",
             "title": "Nucleic Acid Delivery",
-            "description": "Method of introduction of nucleic acid into the cell.",
             "type": "string",
             "enum": [
                 "transfection",

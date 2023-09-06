@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 6
 
-* Make required properties `lab` and `award` not submittable. No further submissions of construct_library are accepted.
+* Restrict `lab` and `award` to submittable by admins only. No further submissions of construct_libraries are accepted, please submit construct_library_set objects instead.
 
 ### Schema version 6
 
