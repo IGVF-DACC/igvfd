@@ -7,12 +7,6 @@ from snovault.elasticsearch.searches.configs import search_config
 def matrix_file():
     return {
         'facets': {
-            'uuid': {
-                'title': 'UUID'
-            },
-            'accession': {
-                'title': 'Accession'
-            },
             'content_type': {
                 'title': 'Content Type'
             },
