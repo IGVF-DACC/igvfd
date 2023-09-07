@@ -26,7 +26,7 @@ def matrix_file():
                 'title': 'Lab'
             },
             'award.component': {
-                'title': 'Award',
+                'title': 'Award'
             },
             'upload_status': {
                 'title': 'Upload Status'
