@@ -28,20 +28,20 @@
     ],
     "dependentSchemas": {
         "samples": {
+            "comment": "Specification of samples is mutually exclusive with specification of donors.",
             "not": {
                 "required": [
                     "donors"
                 ]
-            },
-            "comment": "Specification of samples is mutually exclusive with specification of donors."
+            }
         },
         "donors": {
+            "comment": "Specification of donors is mutually exclusive with specification of samples.",
             "not": {
                 "required": [
                     "samples"
                 ]
-            },
-            "comment": "Specification of donors is mutually exclusive with specification of samples."
+            }
         }
     },
     "properties": {
@@ -70,7 +70,6 @@
         "samples": {
             "title": "Samples",
             "description": "The sample(s) associated with this file set.",
-            "comment": "Specification of samples is mutually exclusive with specification of donors.",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
@@ -85,7 +84,6 @@
         "donors": {
             "title": "Donors",
             "description": "The donor(s) associated with this file set.",
-            "comment": "Specification of donors is mutually exclusive with specification of samples.",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,

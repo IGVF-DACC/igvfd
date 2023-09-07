@@ -44,6 +44,7 @@
             "file.json#/dependentSchemas"
         ],
         "transcriptome_annotation": {
+            "comment": "The assembly shoud be consistent with annotation versions of respective species.",
             "allOf": [
                 {
                     "if": {

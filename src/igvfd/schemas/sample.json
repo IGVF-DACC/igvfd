@@ -35,48 +35,55 @@
     ],
     "dependentSchemas": {
         "lot_id": {
+            "comment": "Specification of lot_id requires product_id.",
             "required": [
                 "product_id"
-            ],
-            "comment": "A sample with lot_id must include product_id."
+            ]
         },
         "sorted_fraction": {
+            "comment": "Specification of sorted_fraction requires sorted_fraction_detail.",
             "required": [
                 "sorted_fraction_detail"
-            ],
-            "comment": "A sample with sorted_fraction must include sorted_fraction_detail."
+            ]
         },
         "sorted_fraction_detail": {
+            "comment": "Specification of sorted_fraction_detail requires sorted_fraction.",
             "required": [
                 "sorted_fraction"
-            ],
-            "comment": "A sample with sorted_fraction_detail must include sorted_fraction."
+            ]
         },
         "starting_amount": {
+            "comment": "Specification of starting_amount requires starting_amount_units.",
             "required": [
                 "starting_amount_units"
-            ],
-            "comment": "A sample with starting_amount must include starting_amount_units."
+            ]
         },
         "starting_amount_units": {
+            "comment": "Specification of starting_amount_units requires starting_amount.",
             "required": [
                 "starting_amount"
-            ],
-            "comment": "A sample with starting_amount_units must include starting_amount."
+            ]
+        },
+        "moi": {
+            "comment": "Specification of moi requires construct_library_sets.",
+            "required": [
+                "construct_library_sets"
+            ]
+        },
+        "time_post_library_delivery": {
+            "comment": "Specification of time_post_library_delivery requires time_post_library_delivery_units and construct_library_sets.",
+            "required": [
+                "time_post_library_delivery_units",
+                "construct_library_sets"
+            ]
+        },
+        "time_post_library_delivery_units": {
+            "comment": "Specification of time_post_library_delivery_units requires time_post_library_delivery and construct_library_sets.",
+            "required": [
+                "time_post_library_delivery",
+                "construct_library_sets"
+            ]
         }
-    },
-    "dependentRequired": {
-        "moi": [
-            "construct_library_sets"
-        ],
-        "time_post_library_delivery": [
-            "time_post_library_delivery_units",
-            "construct_library_sets"
-        ],
-        "time_post_library_delivery_units": [
-            "time_post_library_delivery",
-            "construct_library_sets"
-        ]
     },
     "properties": {
         "schema_version": {

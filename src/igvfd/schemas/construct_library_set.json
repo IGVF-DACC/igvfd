@@ -40,6 +40,7 @@
     ],
     "dependentSchemas": {
         "file_set_type": {
+            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes and that scope be genes or exon and should not specify any guide properties.",
             "allOf": [
                 {
                     "if": {
@@ -180,6 +181,7 @@
             ]
         },
         "scope": {
+            "comment": "If scope is genes then genes is required, if scope is exon then both genes and exon are required, if scope is genome-wide then exon, genes, and loci shouldn't be specified.",
             "oneOf": [
                 {
                     "required": [
@@ -237,6 +239,7 @@
             ]
         },
         "genes": {
+            "comment": "Specification of genes requires that scope is exon or genes.",
             "properties": {
                 "scope": {
                     "oneOf": [
@@ -251,6 +254,7 @@
             }
         },
         "loci": {
+            "comment": "Specification of loci requires that scope is loci.",
             "properties": {
                 "scope": {
                     "enum": [
@@ -260,6 +264,7 @@
             }
         },
         "exon": {
+            "comment": "Specification of exon requires genes and that scope is exon.",
             "required": [
                 "genes"
             ],
@@ -272,15 +277,16 @@
             }
         },
         "average_insert_size": {
+            "comment": "Specification of average_insert_size is mutually exclusive with specification of lower_bound_insert_size and upper_bound_insert_size.",
             "not": {
                 "required": [
                     "lower_bound_insert_size",
                     "upper_bound_insert_size"
                 ]
-            },
-            "comment": "Specification of average_insert_size is mutually exclusive with specification of lower_ and upper_bound_insert_size."
+            }
         },
         "lower_bound_insert_size": {
+            "comment": "Specification of lower_bound_insert_size is mutually exclusive with specification of average_insert_size.",
             "not": {
                 "required": [
                     "average_insert_size"
@@ -288,10 +294,10 @@
             },
             "required": [
                 "upper_bound_insert_size"
-            ],
-            "comment": "Specification of lower_bound_insert_size is mutually exclusive with specification of average_insert_size."
+            ]
         },
         "upper_bound_insert_size": {
+            "comment": "Specification of upper_bound_insert_size is mutually exclusive with specification of average_insert_size.",
             "not": {
                 "required": [
                     "average_insert_size"
@@ -299,19 +305,19 @@
             },
             "required": [
                 "lower_bound_insert_size"
-            ],
-            "comment": "Specification of upper_bound_insert_size is mutually exclusive with specification of average_insert_size."
+            ]
         },
         "average_guide_coverage": {
+            "comment": "Specification of average_guide_coverage is mutually exclusive with specification of upper_ and lower_bound_guide_coverage.",
             "not": {
                 "required": [
                     "upper_bound_guide_coverage",
                     "lower_bound_guide_coverage"
                 ]
-            },
-            "comment": "Specification of average_guide_coverage is mutually exclusive with specification of upper_ and lower_bound_guide_coverage."
+            }
         },
         "lower_bound_guide_coverage": {
+            "comment": "Specification of lower_bound_guide_coverage is mutually exclusive with specification of average_guide_coverage.",
             "not": {
                 "required": [
                     "average_guide_coverage"
@@ -319,10 +325,10 @@
             },
             "required": [
                 "upper_bound_guide_coverage"
-            ],
-            "comment": "Specification of lower_bound_guide_coverage is mutually exclusive with specification of average_guide_coverage."
+            ]
         },
         "upper_bound_guide_coverage": {
+            "comment": "Specification of upper_bound_guide_coverage is mutually exclusive with specification of average_guide_coverage.",
             "not": {
                 "required": [
                     "average_guide_coverage"
@@ -330,8 +336,7 @@
             },
             "required": [
                 "lower_bound_guide_coverage"
-            ],
-            "comment": "Specification of upper_bound_guide_coverage is mutually exclusive with specification of average_guide_coverage."
+            ]
         }
     },
     "properties": {

@@ -42,20 +42,20 @@
     ],
     "dependentSchemas": {
         "refseq_id": {
+            "comment": "Specification of refseq_id is mutually exclusive with specification of reference_sequence.",
             "not": {
                 "required": [
                     "reference_sequence"
                 ]
-            },
-            "comment": "Specification of refseq_id is mutually exclusive with specification of reference_sequence."
+            }
         },
         "reference_sequence": {
+            "comment": "Specification of reference_sequence is mutually exclusive with specification of refseq_id.",
             "not": {
                 "required": [
                     "refseq_id"
                 ]
-            },
-            "comment": "Specification of reference_sequence is mutually exclusive with specification of refseq_id."
+            }
         }
     },
     "properties": {
