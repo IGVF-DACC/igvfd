@@ -47,7 +47,8 @@ def matrix_file():
                 'facet_fields': [
                     'file_format',
                     'content_type',
-                    'strand_specificity',
+                    'dimension1',
+                    'dimension2',
                 ],
             },
             {
