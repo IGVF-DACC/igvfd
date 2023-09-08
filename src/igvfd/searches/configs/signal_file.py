@@ -7,12 +7,6 @@ from snovault.elasticsearch.searches.configs import search_config
 def signal_file():
     return {
         'facets': {
-            'uuid': {
-                'title': 'UUID'
-            },
-            'accession': {
-                'title': 'Accession'
-            },
             'content_type': {
                 'title': 'Content Type'
             },
@@ -29,7 +23,7 @@ def signal_file():
                 'title': 'Lab'
             },
             'award.component': {
-                'title': 'Award',
+                'title': 'Award'
             },
             'upload_status': {
                 'title': 'Upload Status'
