@@ -74,13 +74,13 @@
         "lower_bound_age": {
             "title": "Lower Bound Age",
             "description": "Lower bound of age of the organism at the time of collection of the sample.",
-            "comment": "For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
+            "comment": "To submit a biosample with a singular, defined age lower_bound_age and upper_bound_age should be equal. For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
             "type": "number"
         },
         "upper_bound_age": {
             "title": "Upper Bound Age",
             "description": "Upper bound of age of the organism at the time of collection of the sample.",
-            "comment": "For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
+            "comment": "To submit a biosample with a singular, defined age lower_bound_age and upper_bound_age should be equal. For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
             "type": "number"
         },
         "age_units": {
