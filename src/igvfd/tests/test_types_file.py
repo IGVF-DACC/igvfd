@@ -103,13 +103,13 @@ def test_types_signal_file_content_summary(testapp, signal_file):
 
 def test_types_matrix_file_content_summary(testapp, matrix_file):
     res = testapp.get(matrix_file['@id'])
-    assert res.json.get('content_summary') == 'cell by gene parse gene count matrix'
+    assert res.json.get('content_summary') == 'cell by gene sparse gene count matrix'
     res = testapp.patch_json(
         matrix_file['@id'],
         {
             'dimension1': 'variant',
             'dimension2': 'treatment',
-            'strand_specificity': 'transcriptome annotations'
+            'content_type': 'transcriptome annotations'
         }
     )
     res = testapp.get(matrix_file['@id'])
