@@ -308,7 +308,7 @@
             ]
         },
         "average_guide_coverage": {
-            "comment": "Specification of average_guide_coverage is mutually exclusive with specification of upper_ and lower_bound_guide_coverage.",
+            "comment": "Specification of average_guide_coverage is mutually exclusive with specification of upper_bound_guide_coverage and lower_bound_guide_coverage.",
             "not": {
                 "required": [
                     "upper_bound_guide_coverage",
