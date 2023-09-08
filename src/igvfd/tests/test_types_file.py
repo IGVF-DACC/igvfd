@@ -99,3 +99,18 @@ def test_types_signal_file_content_summary(testapp, signal_file):
     )
     res = testapp.get(signal_file['@id'])
     assert res.json.get('content_summary') == 'filtered normalized unstranded signal of all reads'
+
+
+def test_types_matrix_file_content_summary(testapp, matrix_file):
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get('content_summary') == 'cell by gene parse gene count matrix'
+    res = testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'dimension1': 'variant',
+            'dimension2': 'treatment',
+            'strand_specificity': 'transcriptome annotations'
+        }
+    )
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get('content_summary') == 'variant by treatment transcriptome annotations'

@@ -331,13 +331,8 @@ class MatrixFile(File):
             'notSubmittable': True
         }
     )
-    def content_summary(self, request, content_type, file_format):
-        phrases = [
-            file_format,
-            content_type
-        ]
-        non_empty_phrases = [x for x in phrases if x != '']
-        return ' '.join(non_empty_phrases)
+    def content_summary(self, request, dimension1, dimension2, content_type):
+        return f'{dimension1} by {dimension2} {content_type}'
 
 
 @collection(
