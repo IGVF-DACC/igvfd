@@ -55,22 +55,17 @@
             "biosample.json#/dependentSchemas"
         ],
         "pmi": {
+            "comment": "Specification of pmi requires pmi_units.",
             "required": [
                 "pmi_units"
-            ],
-            "comment": "A tissue with pmi must include pmi_units."
+            ]
         },
         "pmi_units": {
+            "comment": "Specification of pmi_units requires pmi.",
             "required": [
                 "pmi"
-            ],
-            "comment": "A tissue with pmi_units must include pmi."
+            ]
         }
-    },
-    "dependentRequired": {
-        "$merge": [
-            "sample.json#/dependentRequired"
-        ]
     },
     "properties": {
         "schema_version": {

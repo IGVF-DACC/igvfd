@@ -49,13 +49,13 @@
     ],
     "dependentSchemas": {
         "lot_id": {
+            "comment": "Specification of lot_id requires product_id.",
             "required": [
                 "product_id"
-            ],
-            "comment": "A rodent donor with lot_id must include product_id."
+            ]
         },
         "rodent_identifier": {
-            "comment": "The donor must be an individual rodent to specify a rodent identifier.",
+            "comment": "Specification of rodent_identifier requires that individual_rodent be true.",
             "required": [
                 "individual_rodent"
             ],
@@ -66,7 +66,7 @@
             }
         },
         "individual_rodent": {
-            "comment": "A rodent identifier is required if the donor is an individual rodent.",
+            "comment": "Specification of individual_rodent as true requires rodent_identifier.",
             "if": {
                 "properties": {
                     "individual_rodent": {
@@ -131,14 +131,12 @@
         "individual_rodent": {
             "title": "Individual Rodent",
             "description": "This rodent donor represents an individual rodent.",
-            "comment": "If true, a rodent_identifier is required for identification of the individual rodent donor.",
             "type": "boolean",
             "default": false
         },
         "rodent_identifier": {
             "title": "Rodent Identifier",
             "description": "The identifier for this individual rodent donor.",
-            "comment": "Use of this property requires that individual_rodent be true.",
             "type": "string"
         },
         "dbxrefs": {

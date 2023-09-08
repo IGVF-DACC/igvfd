@@ -46,31 +46,26 @@
             "sample.json#/dependentSchemas"
         ],
         "lower_bound_age": {
-            "comment": "Biosample with a defined lower_bound_age requires upper_bound_age and age_units.",
+            "comment": "A biosample with a defined lower_bound_age requires upper_bound_age and age_units.",
             "required": [
                 "upper_bound_age",
                 "age_units"
             ]
         },
         "upper_bound_age": {
-            "comment": "Biosample with a defined upper_bound_age requires lower_bound_age and age_units.",
+            "comment": "A biosample with a defined upper_bound_age requires lower_bound_age and age_units.",
             "required": [
                 "lower_bound_age",
                 "age_units"
             ]
         },
         "age_units": {
-            "comment": "Human biosamples cannot have age units of minutes or hours. Yeast biosamples cannot have age units of years or months.",
+            "comment": "A biosample with defined age_units requires lower_bound_age and upper_bound_age.",
             "required": [
                 "lower_bound_age",
                 "upper_bound_age"
             ]
         }
-    },
-    "dependentRequired": {
-        "$merge": [
-            "sample.json#/dependentRequired"
-        ]
     },
     "properties": {
         "schema_version": {
@@ -79,19 +74,18 @@
         "lower_bound_age": {
             "title": "Lower Bound Age",
             "description": "Lower bound of age of the organism at the time of collection of the sample.",
-            "comment": "Use of this property requires upper_bound_age and age_units. For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
+            "comment": "To submit a biosample with a singular, defined age lower_bound_age and upper_bound_age should be equal. For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
             "type": "number"
         },
         "upper_bound_age": {
             "title": "Upper Bound Age",
             "description": "Upper bound of age of the organism at the time of collection of the sample.",
-            "comment": "Use of this property requires lower_bound_age and age_units. For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
+            "comment": "To submit a biosample with a singular, defined age lower_bound_age and upper_bound_age should be equal. For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
             "type": "number"
         },
         "age_units": {
             "title": "Age Units",
             "description": "The units of time associated with age of the biosample.",
-            "comment": "Use of this property requires lower_bound_age and upper_bound_age.",
             "type": "string",
             "enum": [
                 "minute",

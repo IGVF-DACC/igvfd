@@ -25,13 +25,19 @@
             "$ref": "mixins.json#/standard_status"
         }
     ],
-    "dependentRequired": {
-        "quantity": [
-            "quantity_units"
-        ],
-        "quantity_units": [
-            "quantity"
-        ]
+    "dependentSchemas": {
+        "quantity": {
+            "comment": "Specification of quantity requires quantity_units.",
+            "required": [
+                "quantity_units"
+            ]
+        },
+        "quantity_units": {
+            "comment": "Specification of quantity_units requires quantity.",
+            "required": [
+                "quantity"
+            ]
+        }
     },
     "properties": {
         "schema_version": {
@@ -46,13 +52,11 @@
         "quantity": {
             "title": "Quantity",
             "description": "A quantity associated with the phenotypic feature, if applicable.",
-            "comment": "Use of this property requires quantity_units.",
             "type": "number"
         },
         "quantity_units": {
             "title": "Quantity Units",
             "description": "The unit of measurement for a quantity associated with the phenotypic feature.",
-            "comment": "Use of this property requires quantity.",
             "type": "string",
             "enum": [
                 "meter",

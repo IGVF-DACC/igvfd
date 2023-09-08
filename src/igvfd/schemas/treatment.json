@@ -37,47 +37,47 @@
     ],
     "dependentSchemas": {
         "duration": {
+            "comment": "Specification of duration requires duration_units.",
             "required": [
                 "duration_units"
-            ],
-            "comment": "duration_units must be specified if duration is specified"
+            ]
         },
         "duration_units": {
+            "comment": "Specification of duration_units requires duration.",
             "required": [
                 "duration"
-            ],
-            "comment": "duration must be specified if duration_units is specified"
+            ]
         },
         "post_treatment_time": {
+            "comment": "Specification of post_treatment_time requires post_treatment_time_units.",
             "required": [
                 "post_treatment_time_units"
-            ],
-            "comment": "post_treatment_time_units must be specified if post_treatment_time is specified"
+            ]
         },
         "post_treatment_time_units": {
+            "comment": "Specification of post_treatment_time_units requires post_treatment_time.",
             "required": [
                 "post_treatment_time"
-            ],
-            "comment": "post_treatment_time must be specified if post_treatment_time_units is specified"
+            ]
         },
         "temperature": {
+            "comment": "Specification of temperature requires temperature_units.",
             "required": [
                 "temperature_units"
-            ],
-            "comment": "temperature_units must be specified if temperature is specified"
+            ]
         },
         "temperature_units": {
+            "comment": "Specification of temperature_units requires temperature.",
             "required": [
                 "temperature"
-            ],
-            "comment": "temperature must be specified if temperature_units is specified"
+            ]
         },
         "amount": {
+            "comment": "Specification of amount requires amount_units and depletion is false.",
             "required": [
                 "depletion",
                 "amount_units"
             ],
-            "comment": "amount_units must be specified if amount is specified and treatment is not depleted.",
             "properties": {
                 "depletion": {
                     "const": false
@@ -85,11 +85,11 @@
             }
         },
         "amount_units": {
+            "comment": "Specification of amount_units requires amount and depletion is false.",
             "required": [
                 "depletion",
                 "amount"
             ],
-            "comment": "amount must be specified if amount_units is specified and treatment is not depleted.",
             "properties": {
                 "depletion": {
                     "const": false
@@ -97,6 +97,7 @@
             }
         },
         "depletion": {
+            "comment": "Specification of depletion as true is mutually exclusive with specification of amount and amount_units.",
             "oneOf": [
                 {
                     "properties": {
@@ -125,6 +126,7 @@
             ]
         },
         "treatment_term_id": {
+            "comment": "If treatment_type is protein, only Uniprot ids are allowed while if treatment_type is chemical, only CHEBI ids are allowed. NTRs are allowed for both in cases where there is no existing term id.",
             "oneOf": [
                 {
                     "properties": {
@@ -150,8 +152,7 @@
                         }
                     }
                 }
-            ],
-            "comment": "If treatment_type is protein, only Uniprot ids are allowed while if treatment_type is chemical, only CHEBI ids are allowed. NTRs are allowed in special cases for both"
+            ]
         }
     },
     "properties": {
@@ -164,8 +165,7 @@
         "amount": {
             "title": "Amount",
             "type": "number",
-            "description": "Specific quantity of the applied treatment (used in conjunction with amount_units).",
-            "comment": "Use of this property requires amount_units. If depletion is false this property is required."
+            "description": "Specific quantity of the applied treatment (used in conjunction with amount_units)."
         },
         "amount_units": {
             "title": "Amount Units",
@@ -181,14 +181,12 @@
                 "μg/kg",
                 "μg/mL",
                 "μM"
-            ],
-            "comment": "Use of this property requires amount. If depletion is false this property is required."
+            ]
         },
         "duration": {
             "title": "Duration",
             "type": "number",
-            "description": "Duration indicates the time elapsed between the start and end of the treatment.",
-            "comment": "Use of this property requires duration_units."
+            "description": "Duration indicates the time elapsed between the start and end of the treatment."
         },
         "duration_units": {
             "title": "Duration Units",
@@ -198,8 +196,7 @@
                 "minute",
                 "hour",
                 "day"
-            ],
-            "comment": "Use of this property requires duration."
+            ]
         },
         "pH": {
             "title": "pH",
@@ -225,8 +222,7 @@
         "post_treatment_time": {
             "title": "Post-treatment Time",
             "description": "Post treatment time in conjunction with post treatment time units is used to specify the time that has passed between the point when biosamples were removed from the treatment solution before being sampled or treated with the next treatment.",
-            "type": "number",
-            "comment": "Use of this property requires post_treatment_time_units."
+            "type": "number"
         },
         "post_treatment_time_units": {
             "title": "Post-treatment Time Units",
@@ -237,22 +233,19 @@
                 "day",
                 "week",
                 "month"
-            ],
-            "comment": "Use of this property requires post_treatment_time."
+            ]
         },
         "temperature": {
             "title": "Temperature",
             "type": "number",
-            "description": "The temperature in Celsius to which the sample was exposed",
-            "comment": "Use of this property requires temperature_units."
+            "description": "The temperature in Celsius to which the sample was exposed"
         },
         "temperature_units": {
             "title": "Temperature Units",
             "type": "string",
             "enum": [
                 "Celsius"
-            ],
-            "comment": "Use of this property requires temperature."
+            ]
         },
         "treatment_type": {
             "title": "Treatment Type",
@@ -261,8 +254,7 @@
                 "chemical",
                 "protein"
             ],
-            "description": "The classification of treatment agent that specifies its exact molecular nature. Chemical type refers to (natural or synthetic) organic/inorganic compounds and also includes drugs, while protein type is restricted to active protein biomolecules that are naturally or artifically synthesized via cellular translation mechanism of converting DNA into a protein. Example of chemical type: lactate, ethanol,hydrocortisone, LPS etc. Example of protein type: Interferons, interlukin, antibodies, etc.",
-            "comment": "treatment_term_id must be provided for both types. For chemical types, CHEBI ids are required while Uniprot ids are used for protein type."
+            "description": "The classification of treatment agent that specifies its exact molecular nature. Chemical type refers to (natural or synthetic) organic/inorganic compounds and also includes drugs, while protein type is restricted to active protein biomolecules that are naturally or artifically synthesized via cellular translation mechanism of converting DNA into a protein. Example of chemical type: lactate, ethanol,hydrocortisone, LPS etc. Example of protein type: Interferons, interlukin, antibodies, etc."
         },
         "treatment_term_id": {
             "@type": "@id",
@@ -280,8 +272,7 @@
         "depletion": {
             "title": "Depletion",
             "description": "Treatment is depleted.",
-            "type": "boolean",
-            "comment": "If this property is false, amount and amount_units are required."
+            "type": "boolean"
         }
     },
     "fuzzy_searchable_fields": [

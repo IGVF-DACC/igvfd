@@ -66,7 +66,7 @@
             }
         },
         "classification": {
-            "comment": "If an in vitro system is of classification organoid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, cell_fate_change_treatments, time_post_change, and time_post_change_units are required.",
+            "comment": "If an in vitro system has classification organoid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, cell_fate_change_treatments, time_post_change, and time_post_change_units are required.",
             "if": {
                 "properties": {
                     "classification": {
@@ -89,24 +89,28 @@
                     "targeted_sample_term"
                 ]
             }
+        },
+        "time_post_change": {
+            "comment": "Specification of time_post_change requires time_post_change_units and cell_fate_change_treatments.",
+            "required": [
+                "time_post_change_units",
+                "cell_fate_change_treatments"
+            ]
+        },
+        "time_post_change_units": {
+            "comment": "Specification of time_post_change_units requires time_post_change and cell_fate_change_treatments.",
+            "required": [
+                "time_post_change",
+                "cell_fate_change_treatments"
+            ]
+        },
+        "cell_fate_change_treatments": {
+            "comment": "Specification of cell_fate_change_treatments requires time_post_change_units and time_post_change.",
+            "required": [
+                "time_post_change_units",
+                "time_post_change"
+            ]
         }
-    },
-    "dependentRequired": {
-        "$merge": [
-            "sample.json#/dependentRequired"
-        ],
-        "time_post_change": [
-            "time_post_change_units",
-            "cell_fate_change_treatments"
-        ],
-        "time_post_change_units": [
-            "time_post_change",
-            "cell_fate_change_treatments"
-        ],
-        "cell_fate_change_treatments": [
-            "time_post_change_units",
-            "time_post_change"
-        ]
     },
     "properties": {
         "schema_version": {
@@ -115,7 +119,7 @@
         "classification": {
             "title": "Classification",
             "description": "The general category of this type of in vitro system.",
-            "comment": "The specified category should match the ontology type used to describe this type of in vitro system. For example 'brain organoid' uses UBERON ontology, cell lines use CL ontology, etc. Differentiated, reprogrammed, and pooled cell specimen are in concordance with NCIT definitions. If an in vitro system has classification organoid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, cell_fate_change_treatments, time_post_change, and time_post_change_units are required.",
+            "comment": "The specified category should match the ontology type used to describe this type of in vitro system. For example 'brain organoid' uses UBERON ontology, cell lines use CL ontology, etc. Differentiated, reprogrammed, and pooled cell specimen are in concordance with NCIT definitions.",
             "type": "string",
             "enum": [
                 "organoid",
@@ -130,13 +134,11 @@
         "time_post_change": {
             "title": "Time Post Change",
             "description": "The time that elapsed past the time-point when the cell fate change treatments were introduced.",
-            "comment": "Use of this property requires time_post_change_units and cell_fate_change_treatments.",
             "type": "number"
         },
         "time_post_change_units": {
             "title": "Time Post Change Units",
             "description": "The units of time that elapsed past the point when the cell fate change treatments were introduced.",
-            "comment": "Use of this property requires time_post_change and cell_fate_change_treatments.",
             "type": "string",
             "enum": [
                 "minute",
@@ -152,7 +154,6 @@
         "cell_fate_change_treatments": {
             "title": "Cell Fate Change Treatments",
             "description": "A list of treatments applied to the biosample with the purpose of differentiation, dedifferentiation, or reprogramming.",
-            "comment": "Use of this property requires time_post_change and time_post_change_units.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
@@ -182,7 +183,7 @@
         "passage_number": {
             "title": "Passage Number",
             "description": "Number of passages including the passages from the source.",
-            "comment": "In calculating passage number, include passages from the source. Use of this property requires classification to be a cell line.",
+            "comment": "In calculating passage number, include passages from the source.",
             "type": "integer",
             "minimum": 0
         },

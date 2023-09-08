@@ -70,11 +70,6 @@
             "biosample.json#/dependentSchemas"
         ]
     },
-    "dependentRequired": {
-        "$merge": [
-            "sample.json#/dependentRequired"
-        ]
-    },
     "properties": {
         "schema_version": {
             "default": "18"
