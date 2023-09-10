@@ -551,8 +551,7 @@
         "@type",
         "collections",
         "selection_criteria",
-        "summary",
-        "genes"
+        "genes.symbol"
     ],
     "exact_searchable_fields": [
         "control_for.accession",
