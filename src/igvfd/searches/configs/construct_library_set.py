@@ -89,6 +89,6 @@ def construct_library_set():
             },
             'summary': {
                 'title': 'Summary'
-            }
+            },
         }
     }

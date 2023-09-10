@@ -1,6 +1,6 @@
 {
-    "hash": "87d232a890c59dd929564446f57105b6",
-    "index_name": "construct_library_set_87d232a8",
+    "hash": "943f2f34d76f5d297d8bac1b451bd8c1",
+    "index_name": "construct_library_set_943f2f34",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1251,7 +1251,6 @@
                         "type": "object"
                     },
                     "genes": {
-                        "copy_to": "_fuzzy",
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -1328,6 +1327,7 @@
                                 "type": "keyword"
                             },
                             "symbol": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "synonyms": {
@@ -1570,7 +1570,6 @@
                         "type": "keyword"
                     },
                     "summary": {
-                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "tiling_modality": {
