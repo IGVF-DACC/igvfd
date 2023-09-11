@@ -33,6 +33,9 @@ def multiplexed_sample():
             },
             'biomarkers.classification': {
                 'title': 'Biomarkers Classification'
+            },
+            'virtual': {
+                'title': 'Virtual'
             }
         },
         'facet_groups': [
@@ -43,6 +46,7 @@ def multiplexed_sample():
                     'disease_terms.term_name',
                     'treatments.treatment_term_name',
                     'biomarkers.classification',
+                    'virtual',
                 ]
             },
             {
@@ -91,6 +95,9 @@ def multiplexed_sample():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'virtual': {
+                'title': 'Virtual'
             },
             'description': {
                 'title': 'Description'
