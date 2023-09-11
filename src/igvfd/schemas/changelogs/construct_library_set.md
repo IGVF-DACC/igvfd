@@ -2,4 +2,4 @@
 
 ### Minor changes since schema version 1
 
-* Add `summary` and `applied_to_samples` properties.
+* Add `summary` and `applied_to_samples`.
