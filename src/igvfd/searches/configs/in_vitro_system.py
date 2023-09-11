@@ -58,6 +58,7 @@ def in_vitro_system():
                     'sex',
                     'classification',
                     'biomarkers.classification',
+                    'virtual',
                 ]
             },
             {
