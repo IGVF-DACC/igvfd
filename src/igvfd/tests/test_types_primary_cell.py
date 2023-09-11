@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_summary(testapp, primary_cell, human_donor, rodent_donor, parent_rodent_donor_2, biomarker_CD243_absent, biomarker_CD243_high, sample_term_endothelial_cell, treatment_protein, phenotype_term_myocardial_infarction, phenotype_term_alzheimers):
+def test_summary(testapp, primary_cell, pooled_from_primary_cell, human_donor, rodent_donor, parent_rodent_donor_2, biomarker_CD243_absent, biomarker_CD243_high, sample_term_endothelial_cell, treatment_protein, phenotype_term_myocardial_infarction, phenotype_term_alzheimers):
     res = testapp.get(primary_cell['@id'])
     assert res.json.get('summary') == 'pluripotent stem cell, Homo sapiens'
     testapp.patch_json(
@@ -19,7 +19,7 @@ def test_summary(testapp, primary_cell, human_donor, rodent_donor, parent_rodent
         }
     )
     res = testapp.get(primary_cell['@id'])
-    assert res.json.get('summary') == 'pluripotent stem cell, female Homo sapiens (1-3 weeks)'
+    assert res.json.get('summary') == 'pluripotent stem cell, female, Homo sapiens (1-3 weeks)'
     testapp.patch_json(
         primary_cell['@id'],
         {
@@ -32,7 +32,8 @@ def test_summary(testapp, primary_cell, human_donor, rodent_donor, parent_rodent
         }
     )
     res = testapp.get(primary_cell['@id'])
-    assert res.json.get('summary') == 'virtual embryonic pluripotent stem cell (PKR-123), female Homo sapiens (1 month)'
+    assert res.json.get(
+        'summary') == 'virtual embryonic pluripotent stem cell (PKR-123), female, Homo sapiens (1 month)'
     testapp.patch_json(
         primary_cell['@id'],
         {
@@ -42,7 +43,7 @@ def test_summary(testapp, primary_cell, human_donor, rodent_donor, parent_rodent
     )
     res = testapp.get(primary_cell['@id'])
     assert res.json.get(
-        'summary') == 'virtual embryonic endothelial cell of vascular tree (PKR-123), female Homo sapiens (1 month) characterized by high level of CD243, negative detection of CD243'
+        'summary') == 'virtual embryonic endothelial cell of vascular tree (PKR-123), female, Homo sapiens (1 month) characterized by high level of CD243, negative detection of CD243'
     testapp.patch_json(
         primary_cell['@id'],
         {
@@ -51,7 +52,7 @@ def test_summary(testapp, primary_cell, human_donor, rodent_donor, parent_rodent
     )
     res = testapp.get(primary_cell['@id'])
     assert res.json.get(
-        'summary') == 'virtual embryonic endothelial cell of vascular tree (PKR-123), mixed sex Homo sapiens and Mus musculus strain1 (1 month) characterized by high level of CD243, negative detection of CD243'
+        'summary') == 'virtual embryonic endothelial cell of vascular tree (PKR-123), mixed sex, Homo sapiens and Mus musculus strain1 (1 month) characterized by high level of CD243, negative detection of CD243'
     testapp.patch_json(
         rodent_donor['@id'],
         {
@@ -69,9 +70,11 @@ def test_summary(testapp, primary_cell, human_donor, rodent_donor, parent_rodent
         {
             'donors': [rodent_donor['@id'], parent_rodent_donor_2['@id']],
             'treatments': [treatment_protein['@id']],
-            'disease_terms': [phenotype_term_myocardial_infarction['@id'], phenotype_term_alzheimers['@id']]
+            'disease_terms': [phenotype_term_myocardial_infarction['@id'], phenotype_term_alzheimers['@id']],
+            'sorted_fraction': pooled_from_primary_cell['@id'],
+            'sorted_fraction_detail': 'some more details about sorting'
         }
     )
     res = testapp.get(primary_cell['@id'])
     assert res.json.get(
-        'summary') == f'virtual embryonic endothelial cell of vascular tree (PKR-123), mixed sex Mus musculus strain1, strain3 (1 month) characterized by high level of CD243, negative detection of CD243, associated with Alzheimer\'s disease, Myocardial infarction, treated with 10 ng/mL G-CSF'
+        'summary') == f'virtual embryonic endothelial cell of vascular tree (PKR-123), mixed sex, Mus musculus strain1, strain3 (1 month) (sorting details: some more details about sorting) characterized by high level of CD243, negative detection of CD243, associated with Alzheimer\'s disease, Myocardial infarction, treated with 10 ng/mL G-CSF'

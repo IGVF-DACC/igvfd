@@ -248,9 +248,7 @@ class Biosample(Sample):
             if sex != 'unspecified':
                 if sex == 'mixed':
                     sex = 'mixed sex'
-                elif len(donors) > 1:
-                    sex = f'{sex}s'
-                summary_terms += f' {sex}'
+                summary_terms += f' {sex},'
 
         # taxa of the donor(s) is appended to the end of the summary
         if (donors and
@@ -279,7 +277,7 @@ class Biosample(Sample):
 
         # sorted fraction detail is appended to the end of the summary
         if (sorted_fraction_detail and
-                biosample_type in ['in_vitro_system']):
+                biosample_type in ['primary_cell', 'in_vitro_system']):
             summary_terms += f' (sorting details: {sorted_fraction_detail})'
 
         # biomarker summaries are appended to the end of the summary
