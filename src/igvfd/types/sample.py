@@ -302,7 +302,6 @@ class Biosample(Sample):
                 biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
             phenotype_term_names = sorted([request.embed(disease_term).get('term_name')
                                           for disease_term in disease_terms])
-            #phenotype_term_names = sorted([phenotype_term.get('term_name') for phenotype_term in phenotype_term_objects])
             summary_terms += f' associated with {", ".join(phenotype_term_names)},'
 
         # treatment summaries are appended to the end of the summary
