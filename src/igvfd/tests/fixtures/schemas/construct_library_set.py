@@ -48,3 +48,18 @@ def construct_library_set_reporter(testapp, lab, award):
         'average_insert_size': 50
     }
     return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def construct_library_set_y2h(testapp, lab, award, gene_myc_hs, gene_CRLF2_par_y):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'expression vector library',
+        'scope': 'genes',
+        'genes': [gene_myc_hs['@id'], gene_CRLF2_par_y['@id']],
+        'selection_criteria': [
+            'protein interactors'
+        ]
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]

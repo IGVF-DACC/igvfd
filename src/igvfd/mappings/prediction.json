@@ -1,6 +1,6 @@
 {
-    "hash": "f3b556a35f0db79781575e2afd12d576",
-    "index_name": "prediction_f3b556a3",
+    "hash": "6d7ea69f8d54146e6d4838e742abd1dd",
+    "index_name": "prediction_6d7ea69f",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -254,6 +254,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "applied_to_samples": {
                                 "type": "keyword"
                             },
                             "assay_term": {

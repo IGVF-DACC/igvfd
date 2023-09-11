@@ -75,8 +75,20 @@ def construct_library_set():
             'selection_criteria': {
                 'title': 'Selection Criteria'
             },
+            'genes.symbol': {
+                'title': 'Genes'
+            },
+            'loci': {
+                'title': 'Loci'
+            },
+            'associated_phenotypes.term_name': {
+                'title': 'Associated Phenotypes'
+            },
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
-            }
+            },
+            'summary': {
+                'title': 'Summary'
+            },
         }
     }

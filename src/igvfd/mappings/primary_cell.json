@@ -1,6 +1,6 @@
 {
-    "hash": "0d208bd824916cfe014010b49e8ef0d3",
-    "index_name": "primary_cell_0d208bd8",
+    "hash": "bde003a0f52a73f63d6ff730ac73304c",
+    "index_name": "primary_cell_bde003a0",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -359,6 +359,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "applied_to_samples": {
                                 "type": "keyword"
                             },
                             "assay_term": {
