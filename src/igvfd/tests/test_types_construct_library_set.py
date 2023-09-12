@@ -65,7 +65,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     assert res.json.get(
         'summary') == 'Reporter library targeting accessible genome regions, phenotype-associated variants in 3 genomic loci associated with Alzheimer\'s disease, Myocardial infarction'
     # An exon-scope object should only have 1 gene specified; the first gene symbol is used in the summary
-    # The selection_criteria of 'genes' is redundant for an expression vector library
+    # The selection_criteria of 'genes' is redundant for an expression vector library, but actual selection_criteria property should not be altered
     testapp.patch_json(
         base_expression_construct_library_set['@id'],
         {
@@ -74,6 +74,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
         }
     )
     res = testapp.get(base_expression_construct_library_set['@id'])
+    assert res.json.get('selection_criteria') == ['genes']
     assert res.json.get('summary') == 'Expression vector library of exon E3 of MYC'
     res = testapp.get(construct_library_set_y2h['@id'])
     assert res.json.get('summary') == 'Expression vector library of 2 genes (protein interactors)'
