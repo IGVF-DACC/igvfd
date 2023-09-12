@@ -461,6 +461,8 @@ class ConstructLibrarySet(FileSet):
         pheno_terms = []
         pheno_phrase = ''
         preposition = ''
+        criteria = []
+        criteria = criteria + selection_criteria
 
         if scope == 'loci':
             if len(loci) > 1:
@@ -503,15 +505,15 @@ class ConstructLibrarySet(FileSet):
                 pheno_phrase = f' associated with {len(pheno_terms)} phenotypes'
 
         if file_set_type == 'expression vector library':
-            if 'genes' in selection_criteria:
-                selection_criteria.remove('genes')
-            selections = ', '.join(selection_criteria)
+            if 'genes' in criteria:
+                criteria.remove('genes')
+            selections = ', '.join(criteria)
             if selections:
                 selections = f' ({selections})'
             preposition = ' of'
             return f'{library_type}{preposition}{target_phrase}{selections}{pheno_phrase}'
         else:
-            selections = ', '.join(selection_criteria)
+            selections = ', '.join(criteria)
             if scope == 'genome-wide':
                 preposition = ''
             else:
