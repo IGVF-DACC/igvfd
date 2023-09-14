@@ -447,14 +447,18 @@ class MultiplexedSample(Sample):
     )
     def summary(self, request, multiplexed_samples=None):
         if multiplexed_samples:
+            multiplexed_sample_objects = {self.item_id}
             while any(sample.startswith('/multiplexed-samples/') for sample in multiplexed_samples):
                 for multiplexed_sample in multiplexed_samples:
                     if multiplexed_sample.startswith('/multiplexed-samples/'):
                         decomposed_samples = request.embed(multiplexed_sample, '@@object').get('multiplexed_samples')
-                        # control for circular multiplexed_samples
-                        if decomposed_samples and decomposed_samples not in multiplexed_samples:
-                            multiplexed_samples += decomposed_samples
+                        multiplexed_sample_objects.add(multiplexed_sample)
                         multiplexed_samples.remove(multiplexed_sample)
+                        # control for circular multiplexed_samples
+                        if decomposed_samples:
+                            for decomposed_sample in decomposed_samples:
+                                if decomposed_sample not in multiplexed_samples and decomposed_sample not in multiplexed_sample_objects:
+                                    multiplexed_samples += [decomposed_sample]
             sample_summaries = sorted([request.embed(
                 sample, '@@object').get('summary') for sample in sorted(multiplexed_samples)[:2]])
             if len(multiplexed_samples) > 2:
