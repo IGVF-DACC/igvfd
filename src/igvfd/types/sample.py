@@ -447,12 +447,20 @@ class MultiplexedSample(Sample):
     )
     def summary(self, request, multiplexed_samples=None):
         if multiplexed_samples:
-            multiplexed_sample_summaries = sorted([request.embed(
-                multiplexed_sample, '@@object').get('summary') for multiplexed_sample in sorted(multiplexed_samples)[:2]])
+            while any(sample.startswith('/multiplexed-samples/') for sample in multiplexed_samples):
+                for multiplexed_sample in multiplexed_samples:
+                    if multiplexed_sample.startswith('/multiplexed-samples/'):
+                        decomposed_samples = request.embed(multiplexed_sample, '@@object').get('multiplexed_samples')
+                        # control for circular multiplexed_samples
+                        if decomposed_samples and decomposed_samples not in multiplexed_samples:
+                            multiplexed_samples += decomposed_samples
+                        multiplexed_samples.remove(multiplexed_sample)
+            sample_summaries = sorted([request.embed(
+                sample, '@@object').get('summary') for sample in sorted(multiplexed_samples)[:2]])
             if len(multiplexed_samples) > 2:
                 remainder = f'... and {len(multiplexed_samples) - 2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
-                multiplexed_sample_summaries = multiplexed_sample_summaries + [remainder]
-            return f'multiplexed sample of {", ".join(multiplexed_sample_summaries)}'
+                sample_summaries += [remainder]
+            return f'multiplexed sample of {", ".join(sample_summaries)}'
         else:
             return 'multiplexed sample'
 
