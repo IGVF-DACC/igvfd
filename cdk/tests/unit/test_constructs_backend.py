@@ -12,6 +12,7 @@ def test_constructs_backend_initialize_backend_construct(
         opensearch_multiplexer,
         transaction_queue,
         invalidation_queue,
+        feature_flag_service,
 ):
     from infrastructure.constructs.backend import Backend
     from infrastructure.constructs.backend import BackendProps
@@ -50,6 +51,7 @@ def test_constructs_backend_initialize_backend_construct(
             opensearch_multiplexer=opensearch_multiplexer,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
+            feature_flag_service=feature_flag_service,
             cpu=2048,
             memory_limit_mib=4096,
             desired_count=4,
@@ -240,8 +242,19 @@ def test_constructs_backend_initialize_backend_construct(
                             'Value': {
                                 'Ref': 'TestSecret16AF87B1'
                             }
+                        },
+                        {
+                            'Name': 'APPCONFIG_APPLICATION',
+                            'Value': 'some-branch'
+                        },
+                        {
+                            'Name': 'APPCONFIG_ENVIRONMENT',
+                            'Value': 'some-environment'
+                        },
+                        {
+                            'Name': 'APPCONFIG_PROFILE',
+                            'Value': 'some-branch-some-environment-feature-flags'
                         }
-
                     ],
                     'Essential': True,
                     'LogConfiguration': {
@@ -591,6 +604,14 @@ def test_constructs_backend_initialize_backend_construct(
                         'Resource': {
                             'Ref': 'TestSecret16AF87B1'
                         }
+                    },
+                    {
+                        'Action': [
+                            'appconfig:StartConfigurationSession',
+                            'appconfig:GetLatestConfiguration'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': '*'
                     }
                 ],
                 'Version': '2012-10-17'
@@ -830,6 +851,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
         opensearch_multiplexer,
         transaction_queue,
         invalidation_queue,
+        feature_flag_service,
 ):
     from infrastructure.config import Config
     from infrastructure.constructs.backend import Backend
@@ -868,6 +890,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
             opensearch_multiplexer=opensearch_multiplexer,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
+            feature_flag_service=feature_flag_service,
             cpu=2048,
             memory_limit_mib=4096,
             desired_count=4,
@@ -902,6 +925,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
             opensearch_multiplexer=opensearch_multiplexer,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
+            feature_flag_service=feature_flag_service,
             cpu=2048,
             memory_limit_mib=4096,
             desired_count=4,
@@ -926,6 +950,7 @@ def test_constructs_backend_get_url_prefix():
         opensearch={},
         invalidation_service={},
         indexing_service={},
+        feature_flag_service={},
         tags=[],
     )
     url_prefix = get_url_prefix(config_without_prefix)
@@ -938,6 +963,7 @@ def test_constructs_backend_get_url_prefix():
         opensearch={},
         invalidation_service={},
         indexing_service={},
+        feature_flag_service={},
         tags=[],
         url_prefix='some-prefix',
     )

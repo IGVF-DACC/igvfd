@@ -21,6 +21,7 @@ def test_config_config_dataclass():
         branch='xyz-branch',
         postgres={},
         opensearch={},
+        feature_flag_service={},
         backend={},
         invalidation_service={},
         indexing_service={},
@@ -33,6 +34,7 @@ def test_config_config_dataclass():
     assert config.common.project_name == 'igvfd'
     assert config.postgres == {}
     assert config.opensearch == {}
+    assert config.feature_flag_service == {}
     assert config.backend == {}
     assert config.invalidation_service == {}
     assert config.indexing_service == {}
