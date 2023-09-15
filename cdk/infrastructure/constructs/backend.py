@@ -101,6 +101,7 @@ class Backend(Construct):
         self._generate_session_secret()
         self._define_docker_assets()
         self._define_domain_name()
+        self._define_log_driver_for_pyramid_container()
         self._define_fargate_service()
         self._add_application_container_to_task()
         self._allow_connections_to_database()
@@ -119,6 +120,12 @@ class Backend(Construct):
         self._run_batch_upgrade_automatically()
         self._run_update_mapping_automatically()
         self._add_alarms()
+
+    def _define_log_driver_for_pyramid_container(self) -> None:
+        self.pyramid_log_driver = LogDriver.aws_logs(
+            stream_prefix='pyramid',
+            mode=AwsLogDriverMode.NON_BLOCKING
+        )
 
     def _define_postgres(self) -> None:
         self.postgres = cast(
@@ -238,10 +245,7 @@ class Backend(Construct):
                 'DB_PASSWORD': self._get_database_secret(),
                 'SESSION_SECRET': self._get_session_secret(),
             },
-            logging=LogDriver.aws_logs(
-                stream_prefix=container_name,
-                mode=AwsLogDriverMode.NON_BLOCKING,
-            ),
+            logging=self.pyramid_log_driver,
         )
 
     def _allow_connections_to_database(self) -> None:
