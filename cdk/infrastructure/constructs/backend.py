@@ -19,6 +19,9 @@ from aws_cdk.aws_iam import ManagedPolicy
 from aws_cdk.aws_secretsmanager import Secret as SMSecret
 from aws_cdk.aws_secretsmanager import SecretStringGenerator
 
+from aws_cdk.aws_cloudwatch import Dashboard
+from aws_cdk.aws_cloudwatch import LogQueryWidget
+
 from infrastructure.config import Config
 
 from infrastructure.constructs.alarms.backend import BackendAlarmsProps
@@ -120,6 +123,7 @@ class Backend(Construct):
         self._run_batch_upgrade_automatically()
         self._run_update_mapping_automatically()
         self._add_alarms()
+        self._add_dashboard()
 
     def _define_log_driver_for_pyramid_container(self) -> None:
         self.pyramid_log_driver = LogDriver.aws_logs(
@@ -367,3 +371,17 @@ class Backend(Construct):
                 fargate_service=self.fargate_service
             )
         )
+
+    def _add_dashboard(self) -> None:
+        self.dashboard = Dashboard(
+            self,
+            'ResposesDash'
+        )
+        log_query_widget = LogQueryWidget(
+            log_group_names=[self.pyramid_log_driver.log_group.log_group_name],
+            query_lines=[
+                'fields status',
+                'filter status=200'
+            ]
+        )
+        self.dashboard.add_widgets(log_query_widget)
