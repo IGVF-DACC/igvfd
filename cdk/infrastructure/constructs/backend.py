@@ -16,6 +16,7 @@ from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedFargateService
 from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedTaskImageOptions
 
 from aws_cdk.aws_iam import ManagedPolicy
+from aws_cdk.aws_iam import PolicyStatement
 
 from aws_cdk.aws_secretsmanager import Secret as SMSecret
 from aws_cdk.aws_secretsmanager import SecretStringGenerator
@@ -38,6 +39,8 @@ from infrastructure.constructs.postgres import PostgresConstruct
 
 from infrastructure.constructs.queue import InvalidationQueue
 from infrastructure.constructs.queue import TransactionQueue
+
+from infrastructure.constructs.flag import FeatureFlagService
 
 from infrastructure.constructs.tasks.batchupgrade import BatchUpgrade
 from infrastructure.constructs.tasks.batchupgrade import BatchUpgradeProps
@@ -69,6 +72,7 @@ class BackendProps:
     opensearch_multiplexer: Multiplexer
     transaction_queue: TransactionQueue
     invalidation_queue: InvalidationQueue
+    feature_flag_service: FeatureFlagService
     ini_name: str
     cpu: int
     memory_limit_mib: int
@@ -120,6 +124,7 @@ class Backend(Construct):
         self._allow_task_to_download_from_files_buckets()
         self._allow_task_to_upload_to_files_buckets()
         self._allow_task_to_read_upload_files_user_access_keys_secret()
+        self._allow_task_to_read_feature_flags()
         self._configure_health_check()
         self._add_tags_to_fargate_service()
         self._enable_exec_command()
@@ -248,6 +253,9 @@ class Backend(Construct):
                 'TRANSACTION_QUEUE_URL': self.props.transaction_queue.queue.queue_url,
                 'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
                 'UPLOAD_USER_ACCESS_KEYS_SECRET_ARN': self.props.existing_resources.upload_igvf_files_user_access_keys.secret.secret_arn,
+                'APPCONFIG_APPLICATION': self.props.feature_flag_service.application.name,
+                'APPCONFIG_ENVIRONMENT': self.props.feature_flag_service.environment.name,
+                'APPCONFIG_PROFILE': self.props.feature_flag_service.configuration_profile.name,
             },
             secrets={
                 'DB_PASSWORD': self._get_database_secret(),
@@ -305,6 +313,17 @@ class Backend(Construct):
     def _allow_task_to_read_upload_files_user_access_keys_secret(self) -> None:
         self.props.existing_resources.upload_igvf_files_user_access_keys.secret.grant_read(
             self.fargate_service.task_definition.task_role
+        )
+
+    def _allow_task_to_read_feature_flags(self) -> None:
+        self.fargate_service.task_definition.add_to_task_role_policy(
+            PolicyStatement(
+                actions=[
+                    'appconfig:StartConfigurationSession',
+                    'appconfig:GetLatestConfiguration',
+                ],
+                resources=['*']
+            )
         )
 
     def _configure_health_check(self) -> None:

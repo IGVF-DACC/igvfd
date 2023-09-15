@@ -88,6 +88,11 @@ config: Dict[str, Any] = {
                     }
                 ],
             },
+            'feature_flag_service': {
+                'flags': {
+                    'block_database_writes': False,
+                }
+            },
             'backend': {
                 'cpu': 2048,
                 'memory_limit_mib': 4096,
@@ -149,6 +154,11 @@ config: Dict[str, Any] = {
                     },
                 ],
             },
+            'feature_flag_service': {
+                'flags': {
+                    'block_database_writes': False,
+                }
+            },
             'backend': {
                 'cpu': 2048,
                 'memory_limit_mib': 4096,
@@ -207,6 +217,11 @@ config: Dict[str, Any] = {
                         }
                     },
                 ],
+            },
+            'feature_flag_service': {
+                'flags': {
+                    'block_database_writes': False,
+                }
             },
             'backend': {
                 'cpu': 2048,
@@ -268,6 +283,11 @@ config: Dict[str, Any] = {
                     },
                 ],
             },
+            'feature_flag_service': {
+                'flags': {
+                    'block_database_writes': False,
+                }
+            },
             'backend': {
                 'cpu': 2048,
                 'memory_limit_mib': 4096,
@@ -327,6 +347,11 @@ config: Dict[str, Any] = {
                     },
                 ],
             },
+            'feature_flag_service': {
+                'flags': {
+                    'block_database_writes': False,
+                }
+            },
             'backend': {
                 'cpu': 2048,
                 'memory_limit_mib': 4096,
@@ -371,6 +396,7 @@ class Config:
     branch: str
     postgres: Dict[str, Any]
     opensearch: Dict[str, Any]
+    feature_flag_service: Dict[str, Any]
     backend: Dict[str, Any]
     invalidation_service: Dict[str, Any]
     indexing_service: Dict[str, Any]
