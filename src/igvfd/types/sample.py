@@ -460,7 +460,7 @@ class MultiplexedSample(Sample):
                                 if decomposed_sample not in multiplexed_samples and decomposed_sample not in multiplexed_sample_objects:
                                     multiplexed_samples += [decomposed_sample]
             sample_summaries = sorted([request.embed(
-                sample, '@@object').get('summary') for sample in sorted(multiplexed_samples)[:2]])
+                sample, '@@object').get('summary') for sample in sorted(multiplexed_samples)[:2] if multiplexed_samples])
             if len(multiplexed_samples) > 2:
                 remainder = f'... and {len(multiplexed_samples) - 2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
                 sample_summaries += [remainder]
