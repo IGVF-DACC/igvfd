@@ -293,6 +293,11 @@ def config(instance_type, capacity_config, engine_version):
                 }
             ],
         },
+        feature_flag_service={
+            'flags': {
+                'block_database_writes': False
+            }
+        },
         backend={
             'cpu': 1024,
             'memory_limit_mib': 2048,

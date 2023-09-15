@@ -20,15 +20,15 @@ from typing import Dict
 
 
 @dataclass
-class FeatureFlagsProps:
+class FeatureFlagServiceProps:
     branch: str
     environment_name: str
     flags: Dict[str, bool]
 
 
-class FeatureFlags(Construct):
+class FeatureFlagService(Construct):
 
-    props: FeatureFlagsProps
+    props: FeatureFlagServiceProps
     application: CfnApplication
     environment: CfnEnvironment
     configuration_profile: CfnConfigurationProfile
@@ -42,7 +42,7 @@ class FeatureFlags(Construct):
             scope: Construct,
             construct_id: str,
             *,
-            props: FeatureFlagsProps,
+            props: FeatureFlagServiceProps,
             **kwargs: Any,
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
