@@ -447,7 +447,7 @@ class MultiplexedSample(Sample):
     )
     def summary(self, request, multiplexed_samples=None):
         if multiplexed_samples:
-            multiplexed_sample_objects = {self.item_id}
+            multiplexed_sample_objects = {self.jsonld_id(request)}
             while any(sample.startswith('/multiplexed-samples/') for sample in multiplexed_samples):
                 for multiplexed_sample in multiplexed_samples:
                     if multiplexed_sample.startswith('/multiplexed-samples/'):
