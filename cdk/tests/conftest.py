@@ -401,6 +401,24 @@ def invalidation_queue(stack, existing_resources):
 
 
 @pytest.fixture
+def feature_flag_service(stack):
+    from infrastructure.constructs.flag import FeatureFlagServiceProps
+    from infrastructure.constructs.flag import FeatureFlagService
+    return FeatureFlagService(
+        stack,
+        'FeatureFlagService',
+        props=FeatureFlagServiceProps(
+            branch='some-branch',
+            environment_name='some-environment',
+            flags={
+                'flag1': True,
+                'flag2': False
+            }
+        )
+    )
+
+
+@pytest.fixture
 def application_load_balanced_fargate_service(stack, existing_resources):
     from aws_cdk.aws_ecs import ContainerImage
     from aws_cdk.aws_ecs_patterns import ApplicationLoadBalancedFargateService
