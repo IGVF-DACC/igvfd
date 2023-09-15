@@ -454,9 +454,9 @@ class MultiplexedSample(Sample):
                         decomposed_samples = request.embed(multiplexed_sample, '@@object').get('multiplexed_samples')
                         multiplexed_sample_objects.add(multiplexed_sample)
                         multiplexed_samples.remove(multiplexed_sample)
-                        # control for circular multiplexed_samples
                         if decomposed_samples:
                             for decomposed_sample in decomposed_samples:
+                                # duplicated samples & circular multiplexed samples are not added to the summary
                                 if decomposed_sample not in multiplexed_samples and decomposed_sample not in multiplexed_sample_objects:
                                     multiplexed_samples += [decomposed_sample]
             sample_summaries = sorted([request.embed(
