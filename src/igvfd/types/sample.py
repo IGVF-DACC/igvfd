@@ -446,17 +446,15 @@ class MultiplexedSample(Sample):
         }
     )
     def summary(self, request, multiplexed_samples=None):
-        multiplexed_sample_objects = {self.jsonld_id(request)}
         while any(sample.startswith('/multiplexed-samples/') for sample in multiplexed_samples):
             for multiplexed_sample in multiplexed_samples:
                 if multiplexed_sample.startswith('/multiplexed-samples/'):
                     decomposed_samples = request.embed(multiplexed_sample, '@@object').get('multiplexed_samples')
-                    multiplexed_sample_objects.add(multiplexed_sample)
                     multiplexed_samples.remove(multiplexed_sample)
                     if decomposed_samples:
                         for decomposed_sample in decomposed_samples:
-                            # duplicated samples & circular multiplexed samples are not added to the summary
-                            if decomposed_sample not in multiplexed_samples and decomposed_sample not in multiplexed_sample_objects:
+                            # duplicated samples are not added to the summary
+                            if decomposed_sample not in multiplexed_samples:
                                 multiplexed_samples += [decomposed_sample]
         if multiplexed_samples:
             sample_summaries = sorted([request.embed(

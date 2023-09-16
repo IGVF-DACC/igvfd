@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_summary(testapp, multiplexed_sample, tissue, in_vitro_cell_line, human_tissue, multiplexed_sample_x2, circular_multiplexed_sample):
+def test_summary(testapp, multiplexed_sample, tissue, in_vitro_cell_line, human_tissue, multiplexed_sample_x2, multiplexed_sample_x3):
     res = testapp.get(multiplexed_sample['@id'])
     assert res.json.get(
         'summary') == 'multiplexed sample of K562 cell line, male, Mus musculus strain1, adrenal gland tissue, male, Mus musculus strain1'
@@ -17,6 +17,6 @@ def test_summary(testapp, multiplexed_sample, tissue, in_vitro_cell_line, human_
     res = testapp.get(multiplexed_sample_x2['@id'])
     assert res.json.get(
         'summary') == 'multiplexed sample of K562 cell line, male, Mus musculus strain1, pluripotent stem cell, Homo sapiens, ... and 2 more samples'
-    res = testapp.get(circular_multiplexed_sample['@id'])
+    res = testapp.get(multiplexed_sample_x3['@id'])
     assert res.json.get(
         'summary') == 'multiplexed sample of K562 cell line, male, Mus musculus strain1, pluripotent stem cell, Homo sapiens, ... and 2 more samples'

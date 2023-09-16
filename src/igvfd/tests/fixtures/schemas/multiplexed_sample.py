@@ -28,13 +28,13 @@ def multiplexed_sample_x2(
 
 
 @pytest.fixture
-def circular_multiplexed_sample(
-        testapp, other_lab, award, multiplexed_sample_x2, multiplexed_sample, in_vitro_cell_line):
+def multiplexed_sample_x3(
+        testapp, other_lab, award, multiplexed_sample_x2, in_vitro_cell_line):
     item = {
         'award': award['@id'],
         'lab': other_lab['@id'],
         'multiplexed_samples': [
-            multiplexed_sample_x2['@id'], multiplexed_sample['@id'], in_vitro_cell_line['@id']
+            multiplexed_sample_x2['@id'], in_vitro_cell_line['@id']
         ]
     }
     return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
