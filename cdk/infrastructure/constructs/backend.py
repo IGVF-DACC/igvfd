@@ -24,6 +24,7 @@ from aws_cdk.aws_cloudwatch import Dashboard
 from aws_cdk.aws_cloudwatch import GraphWidget
 from aws_cdk.aws_cloudwatch import LogQueryWidget
 from aws_cdk.aws_cloudwatch import Unit
+from aws_cdk.aws_cloudwatch import YAxisProps
 
 from aws_cdk.aws_logs import MetricFilter
 from aws_cdk.aws_logs import FilterPattern
@@ -396,6 +397,7 @@ class Backend(Construct):
         )
         self._wsgi_time_widget = GraphWidget(
             left=[wsgi_time_metric],
+            left_y_axis=YAxisProps(show_units=False),
         )
 
     def _define_200_log_query_widget(self) -> None:
