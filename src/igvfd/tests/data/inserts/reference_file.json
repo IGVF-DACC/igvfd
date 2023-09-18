@@ -53,5 +53,22 @@
         "file_set": "igvf:analysis_set_with_input",
         "assembly": "GRCh38",
         "transcriptome_annotation": "GENCODE 40"
+    },
+    {
+        "uuid": "e29019cc-c39e-0e6e-b9ee-fbf3376ea128",
+        "accession": "IGVFFI0001VARI",
+        "aliases": [
+            "igvf:vcf_variants_reference_file"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "0df01bf6c3f3b1f303ed3d5b1b346c46",
+        "file_format": "vcf",
+        "content_type": "variants",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38"
     }
 ]
