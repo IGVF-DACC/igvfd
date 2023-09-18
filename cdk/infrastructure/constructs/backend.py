@@ -395,7 +395,7 @@ class Backend(Construct):
             unit=Unit.MILLISECONDS,
         )
         self._wsgi_time_widget = GraphWidget(
-            left=wsgi_time_metric,
+            left=[wsgi_time_metric],
         )
 
     def _define_200_log_query_widget(self) -> None:
