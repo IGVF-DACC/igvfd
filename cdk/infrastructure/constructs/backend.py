@@ -398,6 +398,7 @@ class Backend(Construct):
         self._wsgi_time_widget = GraphWidget(
             left=[wsgi_time_metric],
             left_y_axis=YAxisProps(show_units=False),
+            period=cdk.Duration.seconds(60),
         )
 
     def _define_200_log_query_widget(self) -> None:
