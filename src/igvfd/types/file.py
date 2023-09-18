@@ -62,6 +62,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'hdf5': '.h5',
     'idat': '.idat',
     'PWM': '.pwm',
+    'mtx': '.mtx',
     'rcc': '.rcc',
     'sra': '.sra',
     'tagAlign': '.tagAlign.gz',
