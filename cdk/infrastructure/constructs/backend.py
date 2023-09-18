@@ -130,7 +130,7 @@ class Backend(Construct):
         self._run_update_mapping_automatically()
         self._add_alarms()
         self._define_200_log_query_widget()
-        self._define_pyramid_wsgi_time_widget
+        self._define_pyramid_wsgi_time_widget()
         self._add_dashboard()
 
     def _define_log_driver_for_pyramid_container(self) -> None:
