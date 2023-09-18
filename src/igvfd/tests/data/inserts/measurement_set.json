@@ -152,7 +152,7 @@
     },
     {
         "aliases": [
-            "igvf:multiome_multi-seq_scatac_seq"
+            "igvf:multiome_snMCT-seq"
         ],
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
