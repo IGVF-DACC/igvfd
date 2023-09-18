@@ -130,8 +130,8 @@ class Backend(Construct):
         self._run_batch_upgrade_automatically()
         self._run_update_mapping_automatically()
         self._add_alarms()
-        self._define_200_log_query_widget()
         self._define_pyramid_wsgi_time_widget()
+        self._define_pyramid_es_time_widget()
         self._add_dashboard()
 
     def _define_log_driver_for_pyramid_container(self) -> None:
@@ -387,13 +387,12 @@ class Backend(Construct):
             'WsgiTimeMetricFilter',
             log_group=self.pyramid_log_driver.log_group,
             metric_namespace=self.props.config.branch,
-            metric_name='wsgi_time_metric',
+            metric_name='WSGI Time',
             filter_pattern=FilterPattern.exists('$.wsgi_time'),
             metric_value='$.wsgi_time'
         )
         wsgi_time_metric = wsgi_time_metric_filter.metric(
-            label='WSGI Time',
-            unit=Unit.NONE,
+            label='WSGI Time microseconds',
         )
         self._wsgi_time_widget = GraphWidget(
             left=[wsgi_time_metric],
@@ -401,13 +400,26 @@ class Backend(Construct):
             period=cdk.Duration.seconds(60),
         )
 
-    def _define_200_log_query_widget(self) -> None:
-        self._log_query_widget = LogQueryWidget(
-            log_group_names=[self.pyramid_log_driver.log_group.log_group_name],
-            query_lines=[
-                'fields status',
-                'filter status=200'
-            ]
+    def _define_pyramid_es_time_widget(self) -> None:
+        es_time_metric_filter = MetricFilter(
+            self,
+            'ESTimeMetricFilter',
+            log_group=self.pyramid_log_driver.log_group,
+            metric_namespace=self.props.config.branch,
+            metric_name='ES Time',
+            filter_pattern=FilterPattern.all(
+                FilterPattern.exists('$.es_time'),
+                FilterPattern.number_value('$.es_time', '>', 0)
+            ),
+            metric_value='$.es_time',
+        )
+        es_time_metric = es_time_metric_filter.metric(
+            label='ES Time microseconds',
+        )
+        self._es_time_widget = GraphWidget(
+            left=[es_time_metric],
+            left_y_axis=YAxisProps(show_units=False),
+            period=cdk.Duration.seconds(60),
         )
 
     def _add_dashboard(self) -> None:
@@ -416,6 +428,6 @@ class Backend(Construct):
             'ResposesDash'
         )
         self.dashboard.add_widgets(
-            self._log_query_widget,
             self._wsgi_time_widget,
+            self._es_time_widget,
         )
