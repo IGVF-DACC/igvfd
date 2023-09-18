@@ -392,7 +392,6 @@ class Backend(Construct):
         )
         wsgi_time_metric = wsgi_time_metric_filter.metric(
             label='WSGI Time',
-            unit=Unit.MILLISECONDS,
         )
         self._wsgi_time_widget = GraphWidget(
             left=[wsgi_time_metric],
