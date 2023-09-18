@@ -21,7 +21,12 @@ from aws_cdk.aws_secretsmanager import Secret as SMSecret
 from aws_cdk.aws_secretsmanager import SecretStringGenerator
 
 from aws_cdk.aws_cloudwatch import Dashboard
+from aws_cdk.aws_cloudwatch import GraphWidget
 from aws_cdk.aws_cloudwatch import LogQueryWidget
+from aws_cdk.aws_cloudwatch import Unit
+
+from aws_cdk.aws_logs import MetricFilter
+from aws_cdk.aws_logs import FilterPattern
 
 from infrastructure.config import Config
 
@@ -124,15 +129,15 @@ class Backend(Construct):
         self._run_batch_upgrade_automatically()
         self._run_update_mapping_automatically()
         self._add_alarms()
+        self._define_200_log_query_widget()
+        self._define_pyramid_wsgi_time_widget
         self._add_dashboard()
 
     def _define_log_driver_for_pyramid_container(self) -> None:
-        self.pyramid_log_driver = cast(AwsLogDriver,
-                                       LogDriver.aws_logs(
-                                           stream_prefix='pyramid',
-                                           mode=AwsLogDriverMode.NON_BLOCKING
-                                       )
-                                       )
+        self.pyramid_log_driver = LogDriver.aws_logs(
+            stream_prefix='pyramid',
+            mode=AwsLogDriverMode.NON_BLOCKING,
+        )
 
     def _define_postgres(self) -> None:
         self.postgres = cast(
@@ -375,16 +380,37 @@ class Backend(Construct):
             )
         )
 
-    def _add_dashboard(self) -> None:
-        self.dashboard = Dashboard(
-            self,
-            'ResposesDash'
+    def _define_pyramid_wsgi_time_widget(self) -> None:
+        wsgi_time_metric_filter = MetricFilter(
+            log_group=self.pyramid_log_driver.log_group,
+            metric_namespace=self.props.config.branch,
+            metric_name='wsgi_time_metric',
+            filter_pattern=FilterPattern.exists('$.wsgi_time'),
+            metric_value='$.wsgi_time'
         )
-        log_query_widget = LogQueryWidget(
+        wsgi_time_metric = wsgi_time_metric_filter.metric(
+            label='WSGI Time',
+            unit=Unit.MILLISECONDS,
+        )
+        self._wsgi_time_widget = GraphWidget(
+            left=wsgi_time_metric,
+        )
+
+    def _define_200_log_query_widget(self) -> None:
+        self._log_query_widget = LogQueryWidget(
             log_group_names=[self.pyramid_log_driver.log_group.log_group_name],
             query_lines=[
                 'fields status',
                 'filter status=200'
             ]
         )
-        self.dashboard.add_widgets(log_query_widget)
+
+    def _add_dashboard(self) -> None:
+        self.dashboard = Dashboard(
+            self,
+            'ResposesDash'
+        )
+        self.dashboard.add_widgets(
+            self._log_query_widget,
+            self._wsgi_time_widget,
+        )
