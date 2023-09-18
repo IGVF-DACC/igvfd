@@ -382,6 +382,8 @@ class Backend(Construct):
 
     def _define_pyramid_wsgi_time_widget(self) -> None:
         wsgi_time_metric_filter = MetricFilter(
+            self,
+            'WsgiTimeMetricFilter',
             log_group=self.pyramid_log_driver.log_group,
             metric_namespace=self.props.config.branch,
             metric_name='wsgi_time_metric',
