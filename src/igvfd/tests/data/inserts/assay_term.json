@@ -73,5 +73,11 @@
         "aliases": [
             "igvf:bulk RNA"
         ]
+    },
+    {
+        "term_id": "NTR:0000744",
+        "term_name": "snMCT-seq",
+        "status": "released",
+        "uuid": "4bec81f7-c661-40c7-ac64-aa7e02fb52fb"
     }
 ]

@@ -149,5 +149,19 @@
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
         "preferred_assay_title": "10x multiome with MULTI-seq"
+    },
+    {
+        "aliases": [
+            "igvf:multiome_multi-seq_scatac_seq"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "uuid": "2c2e2b40-ada6-4a8b-8be0-e0e84c42d8ad",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/NTR_0000744/",
+        "preferred_assay_title": "snMCT-seq"
     }
 ]
