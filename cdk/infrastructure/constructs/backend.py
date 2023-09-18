@@ -4,6 +4,7 @@ from constructs import Construct
 
 from aws_cdk.aws_ec2 import Port
 
+from aws_cdk.aws_ecs import AwsLogDriver
 from aws_cdk.aws_ecs import AwsLogDriverMode
 from aws_cdk.aws_ecs import CfnService
 from aws_cdk.aws_ecs import ContainerImage
@@ -126,10 +127,12 @@ class Backend(Construct):
         self._add_dashboard()
 
     def _define_log_driver_for_pyramid_container(self) -> None:
-        self.pyramid_log_driver = LogDriver.aws_logs(
-            stream_prefix='pyramid',
-            mode=AwsLogDriverMode.NON_BLOCKING
-        )
+        self.pyramid_log_driver = cast(AwsLogDriver,
+                                       LogDriver.aws_logs(
+                                           stream_prefix='pyramid',
+                                           mode=AwsLogDriverMode.NON_BLOCKING
+                                       )
+                                       )
 
     def _define_postgres(self) -> None:
         self.postgres = cast(
