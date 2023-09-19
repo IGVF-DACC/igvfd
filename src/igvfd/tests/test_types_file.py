@@ -73,8 +73,7 @@ def test_types_file_s3_uri_non_submittable(testapp, analysis_set_with_sample, aw
 def test_types_aligment_file_content_summary(testapp, alignment_file):
     res = testapp.get(alignment_file['@id'])
     assert res.json.get('content_summary') == 'unfiltered alignments'
-
-    res = testapp.patch_json(
+    testapp.patch_json(
         alignment_file['@id'],
         {
             'redacted': True,
@@ -88,8 +87,7 @@ def test_types_aligment_file_content_summary(testapp, alignment_file):
 def test_types_signal_file_content_summary(testapp, signal_file):
     res = testapp.get(signal_file['@id'])
     assert res.json.get('content_summary') == 'plus strand signal of all reads'
-
-    res = testapp.patch_json(
+    testapp.patch_json(
         signal_file['@id'],
         {
             'filtered': True,
@@ -99,3 +97,18 @@ def test_types_signal_file_content_summary(testapp, signal_file):
     )
     res = testapp.get(signal_file['@id'])
     assert res.json.get('content_summary') == 'filtered normalized unstranded signal of all reads'
+
+
+def test_types_matrix_file_content_summary(testapp, matrix_file):
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get('content_summary') == 'cell by gene sparse gene count matrix'
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'dimension1': 'variant',
+            'dimension2': 'treatment',
+            'content_type': 'transcriptome annotations'
+        }
+    )
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get('content_summary') == 'variant by treatment transcriptome annotations'
