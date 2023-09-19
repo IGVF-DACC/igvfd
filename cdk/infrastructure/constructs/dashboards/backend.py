@@ -26,7 +26,7 @@ class BackendDashboardProps:
 
 class BackendDashboard(Construct):
 
-    props: BackendAlarmsProps
+    props: BackendDashboardProps
 
     def __init__(
             self,
