@@ -5,6 +5,7 @@ from constructs import Construct
 from aws_cdk.aws_cloudwatch import Dashboard
 from aws_cdk.aws_cloudwatch import GraphWidget
 from aws_cdk.aws_cloudwatch import LogQueryWidget
+from aws_cdk.aws_cloudwatch import Stats
 from aws_cdk.aws_cloudwatch import YAxisProps
 
 from aws_cdk.aws_logs import LogGroup
@@ -122,6 +123,7 @@ class BackendDashboard(Construct):
         )
         response_2xx_metric = response_2xx_count_metric_filter.metric(
             label='2xx Response Count',
+            statistic=Stats.SUM,
         )
         response_2xx_widget = GraphWidget(
             left=[response_2xx_metric],
@@ -142,6 +144,7 @@ class BackendDashboard(Construct):
         )
         response_4xx_metric = response_4xx_count_metric_filter.metric(
             label='4xx Response Count',
+            statistic=Stats.SUM,
         )
         response_4xx_widget = GraphWidget(
             left=[response_4xx_metric],
@@ -162,6 +165,7 @@ class BackendDashboard(Construct):
         )
         response_5xx_metric = response_5xx_count_metric_filter.metric(
             label='5xx Response Count',
+            statistic=Stats.SUM,
         )
         response_5xx_widget = GraphWidget(
             left=[response_5xx_metric],
