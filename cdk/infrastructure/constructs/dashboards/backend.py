@@ -38,9 +38,13 @@ class BackendDashboard(Construct):
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
         self.props = props
+        self._widgets = []
         self._define_pyramid_wsgi_time_widget()
         self._define_pyramid_es_time_widget()
         self._define_pyramid_response_length_widget()
+        self._define_response_2xx_count_widget()
+        self._define_response_4xx_count_widget()
+        self._define_response_5xx_count_widget()
         self._define_dashboard()
 
     def _define_pyramid_wsgi_time_widget(self) -> None:
@@ -56,11 +60,12 @@ class BackendDashboard(Construct):
         wsgi_time_metric = wsgi_time_metric_filter.metric(
             label='WSGI Time microseconds',
         )
-        self._wsgi_time_widget = GraphWidget(
+        wsgi_time_widget = GraphWidget(
             left=[wsgi_time_metric],
             left_y_axis=YAxisProps(show_units=False),
             period=cdk.Duration.seconds(60),
         )
+        self._widgets.append(wsgi_time_widget)
 
     def _define_pyramid_es_time_widget(self) -> None:
         es_time_metric_filter = MetricFilter(
@@ -78,11 +83,12 @@ class BackendDashboard(Construct):
         es_time_metric = es_time_metric_filter.metric(
             label='ES Time microseconds',
         )
-        self._es_time_widget = GraphWidget(
+        es_time_widget = GraphWidget(
             left=[es_time_metric],
             left_y_axis=YAxisProps(show_units=False),
             period=cdk.Duration.seconds(60),
         )
+        self._widgets.append(es_time_widget)
 
     def _define_pyramid_response_length_widget(self) -> None:
         response_length_metric_filter = MetricFilter(
@@ -97,19 +103,76 @@ class BackendDashboard(Construct):
         response_length_metric = response_length_metric_filter.metric(
             label='Response Length bytes',
         )
-        self._response_length_widget = GraphWidget(
+        response_length_widget = GraphWidget(
             left=[response_length_metric],
             left_y_axis=YAxisProps(show_units=False),
             period=cdk.Duration.seconds(60),
         )
+        self._widgets.append(response_length_widget)
+
+    def _define_response_2xx_count_widget(self) -> None:
+        response_2xx_count_metric_filter = MetricFilter(
+            self,
+            '2xxResponseCountFilter',
+            log_group=self.props.log_group,
+            metric_namespace=self.props.config.branch,
+            metric_name='2xx Response Count',
+            filter_pattern=FilterPattern.string_value('$.status', '=', '2**'),
+            metric_value=1,
+        )
+        response_2xx_metric = response_2xx_metric_filter.metric(
+            label='2xx Response Count',
+        )
+        response_2xx_widget = GraphWidget(
+            left=[response_2xx_metric],
+            left_y_axis=YAxisProps(show_units=False),
+            period=cdk.Duration.seconds(60),
+        )
+        self._widgets.append(response_2xx_widget)
+
+    def _define_response_4xx_count_widget(self) -> None:
+        response_4xx_count_metric_filter = MetricFilter(
+            self,
+            '4xxResponseCountFilter',
+            log_group=self.props.log_group,
+            metric_namespace=self.props.config.branch,
+            metric_name='4xx Response Count',
+            filter_pattern=FilterPattern.string_value('$.status', '=', '4**'),
+            metric_value=1,
+        )
+        response_4xx_metric = response_4xx_metric_filter.metric(
+            label='4xx Response Count',
+        )
+        response_4xx_widget = GraphWidget(
+            left=[response_4xx_metric],
+            left_y_axis=YAxisProps(show_units=False),
+            period=cdk.Duration.seconds(60),
+        )
+        self._widgets.append(response_4xx_widget)
+
+    def _define_response_5xx_count_widget(self) -> None:
+        response_5xx_count_metric_filter = MetricFilter(
+            self,
+            '5xxResponseCountFilter',
+            log_group=self.props.log_group,
+            metric_namespace=self.props.config.branch,
+            metric_name='5xx Response Count',
+            filter_pattern=FilterPattern.string_value('$.status', '=', '5**'),
+            metric_value=1,
+        )
+        response_5xx_metric = response_5xx_metric_filter.metric(
+            label='5xx Response Count',
+        )
+        response_5xx_widget = GraphWidget(
+            left=[response_5xx_metric],
+            left_y_axis=YAxisProps(show_units=False),
+            period=cdk.Duration.seconds(60),
+        )
+        self._widgets.append(response_5xx_widget)
 
     def _define_dashboard(self) -> None:
         self.dashboard = Dashboard(
             self,
             'BackendDashBoard'
         )
-        self.dashboard.add_widgets(
-            self._wsgi_time_widget,
-            self._es_time_widget,
-            self._response_length_widget,
-        )
+        self.dashboard.add_widgets(*self._widgets)
