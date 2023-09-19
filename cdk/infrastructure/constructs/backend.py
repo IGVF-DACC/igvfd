@@ -33,8 +33,8 @@ from infrastructure.config import Config
 from infrastructure.constructs.alarms.backend import BackendAlarmsProps
 from infrastructure.constructs.alarms.backend import BackendAlarms
 
-from infrastructure.constructs.dashboards import BackendDashboardProps
-from infrastructure.constructs.dashboards import BackendDashboard
+from infrastructure.constructs.dashboards.backend import BackendDashboardProps
+from infrastructure.constructs.dashboards.backend import BackendDashboard
 
 from infrastructure.constructs.existing.types import ExistingResources
 
