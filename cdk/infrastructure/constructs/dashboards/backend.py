@@ -118,7 +118,7 @@ class BackendDashboard(Construct):
             metric_namespace=self.props.config.branch,
             metric_name='2xx Response Count',
             filter_pattern=FilterPattern.string_value('$.status', '=', '2**'),
-            metric_value=1,
+            metric_value='1',
         )
         response_2xx_metric = response_2xx_metric_filter.metric(
             label='2xx Response Count',
@@ -138,7 +138,7 @@ class BackendDashboard(Construct):
             metric_namespace=self.props.config.branch,
             metric_name='4xx Response Count',
             filter_pattern=FilterPattern.string_value('$.status', '=', '4**'),
-            metric_value=1,
+            metric_value='1',
         )
         response_4xx_metric = response_4xx_metric_filter.metric(
             label='4xx Response Count',
@@ -158,7 +158,7 @@ class BackendDashboard(Construct):
             metric_namespace=self.props.config.branch,
             metric_name='5xx Response Count',
             filter_pattern=FilterPattern.string_value('$.status', '=', '5**'),
-            metric_value=1,
+            metric_value='1',
         )
         response_5xx_metric = response_5xx_metric_filter.metric(
             label='5xx Response Count',
