@@ -114,7 +114,6 @@ class FeatureFlagService(Construct):
             'HostedConfigurationVersion',
             application_id=self.application.ref,
             configuration_profile_id=self.configuration_profile.ref,
-            latest_version_number=1,
             content_type='application/json',
             content=self.raw_flags,
         )
