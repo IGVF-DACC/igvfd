@@ -120,7 +120,7 @@ class BackendDashboard(Construct):
             filter_pattern=FilterPattern.string_value('$.status', '=', '2**'),
             metric_value='1',
         )
-        response_2xx_metric = response_2xx_metric_filter.metric(
+        response_2xx_metric = response_2xx_count_metric_filter.metric(
             label='2xx Response Count',
         )
         response_2xx_widget = GraphWidget(
@@ -140,7 +140,7 @@ class BackendDashboard(Construct):
             filter_pattern=FilterPattern.string_value('$.status', '=', '4**'),
             metric_value='1',
         )
-        response_4xx_metric = response_4xx_metric_filter.metric(
+        response_4xx_metric = response_4xx_count_metric_filter.metric(
             label='4xx Response Count',
         )
         response_4xx_widget = GraphWidget(
@@ -160,7 +160,7 @@ class BackendDashboard(Construct):
             filter_pattern=FilterPattern.string_value('$.status', '=', '5**'),
             metric_value='1',
         )
-        response_5xx_metric = response_5xx_metric_filter.metric(
+        response_5xx_metric = response_5xx_count_metric_filter.metric(
             label='5xx Response Count',
         )
         response_5xx_widget = GraphWidget(
