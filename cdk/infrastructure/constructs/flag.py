@@ -2,7 +2,6 @@ import json
 
 from aws_cdk import App
 from aws_cdk import Stack
-from aws_cdk import RemovalPolicy
 
 from aws_cdk.aws_appconfig import CfnApplication
 from aws_cdk.aws_appconfig import CfnEnvironment
@@ -61,9 +60,6 @@ class FeatureFlagService(Construct):
             'Application',
             name=self.props.branch,
         )
-        self.application.apply_removal_policy(
-            policy=RemovalPolicy.DESTROY
-        )
 
     def _define_environment(self) -> None:
         self.environment = CfnEnvironment(
@@ -71,9 +67,6 @@ class FeatureFlagService(Construct):
             'Environment',
             application_id=self.application.ref,
             name=self.props.environment_name,
-        )
-        self.environment.apply_removal_policy(
-            policy=RemovalPolicy.DESTROY
         )
 
     def _define_configuration_profile(self) -> None:
@@ -85,9 +78,6 @@ class FeatureFlagService(Construct):
             name=f'{self.props.branch}-{self.props.environment_name}-feature-flags',
             type='AWS.AppConfig.FeatureFlags',
         )
-        self.configuration_profile.apply_removal_policy(
-            policy=RemovalPolicy.DESTROY
-        )
 
     def _define_deployment_strategy(self) -> None:
         self.deployment_strategy = CfnDeploymentStrategy(
@@ -97,9 +87,6 @@ class FeatureFlagService(Construct):
             deployment_duration_in_minutes=0,
             growth_factor=100,
             replicate_to='NONE',
-        )
-        self.deployment_strategy.apply_removal_policy(
-            policy=RemovalPolicy.DESTROY
         )
 
     def _define_raw_flags(self) -> None:
@@ -130,9 +117,6 @@ class FeatureFlagService(Construct):
             latest_version_number=1,
             content_type='application/json',
             content=self.raw_flags,
-        )
-        self.configuration_version.apply_removal_policy(
-            policy=RemovalPolicy.DESTROY
         )
 
     def _define_deployment(self) -> None:
