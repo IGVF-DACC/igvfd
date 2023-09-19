@@ -2,6 +2,7 @@ import json
 
 from aws_cdk import App
 from aws_cdk import Stack
+from aws_cdk import RemovalPolicy
 
 from aws_cdk.aws_appconfig import CfnApplication
 from aws_cdk.aws_appconfig import CfnEnvironment
@@ -116,6 +117,9 @@ class FeatureFlagService(Construct):
             configuration_profile_id=self.configuration_profile.ref,
             content_type='application/json',
             content=self.raw_flags,
+        )
+        self.configuration_version.apply_removal_policy(
+            policy=RemovalPolicy.DESTROY
         )
 
     def _define_deployment(self) -> None:
