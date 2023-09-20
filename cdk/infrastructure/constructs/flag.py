@@ -12,15 +12,14 @@ from aws_cdk.aws_appconfig import CfnDeploymentStrategy
 from aws_cdk.aws_appconfig import CfnHostedConfigurationVersion
 from aws_cdk.aws_appconfig import CfnDeployment
 
+from aws_cdk.custom_resources import Provider
 
 from aws_cdk.aws_iam import PolicyStatement
 from aws_cdk.aws_iam import Role
 
-from aws_cdk.custom_resources import Provider
+from aws_cdk.aws_lambda import Runtime
 
 from aws_cdk.aws_lambda_python_alpha import PythonFunction
-
-from aws_cdk.aws_lambda import Runtime
 
 from aws_cdk.aws_logs import RetentionDays
 
