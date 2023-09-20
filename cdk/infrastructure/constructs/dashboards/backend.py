@@ -96,6 +96,29 @@ class BackendDashboard(Construct):
         )
         self._widgets.append(es_time_widget)
 
+    def _define_pyramid_db_time_widget(self) -> None:
+        db_time_metric_filter = MetricFilter(
+            self,
+            'DBTimeMetricFilter',
+            log_group=self.props.log_group,
+            metric_namespace=self.props.config.branch,
+            metric_name='DB Time',
+            filter_pattern=FilterPattern.all(
+                FilterPattern.exists('$.db_time'),
+                FilterPattern.number_value('$.db_time', '>', 0)
+            ),
+            metric_value='$.db_time',
+        )
+        db_time_metric = db_time_metric_filter.metric(
+            label='DB Time microseconds',
+        )
+        db_time_widget = GraphWidget(
+            left=[db_time_metric],
+            left_y_axis=YAxisProps(show_units=False),
+            period=cdk.Duration.seconds(60),
+        )
+        self._widgets.append(db_time_widget)
+
     def _define_pyramid_response_length_widget(self) -> None:
         response_length_metric_filter = MetricFilter(
             self,
