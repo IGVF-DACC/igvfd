@@ -45,15 +45,16 @@ class BackendDashboard(Construct):
         super().__init__(scope, construct_id, **kwargs)
         self.props = props
         self._widgets = []
-        self._define_pyramid_wsgi_time_widget()
-        self._define_pyramid_es_time_widget()
-        self._define_pyramid_response_length_widget()
+        self._define_wsgi_time_widget()
+        self._define_es_time_widget()
+        self._define_db_time_widget()
+        self._define_response_length_widget()
         self._define_response_2xx_count_widget()
         self._define_response_4xx_count_widget()
         self._define_response_5xx_count_widget()
         self._define_dashboard()
 
-    def _define_pyramid_wsgi_time_widget(self) -> None:
+    def _define_wsgi_time_widget(self) -> None:
         wsgi_time_metric_filter = MetricFilter(
             self,
             'WsgiTimeMetricFilter',
@@ -73,7 +74,7 @@ class BackendDashboard(Construct):
         )
         self._widgets.append(wsgi_time_widget)
 
-    def _define_pyramid_es_time_widget(self) -> None:
+    def _define_es_time_widget(self) -> None:
         es_time_metric_filter = MetricFilter(
             self,
             'ESTimeMetricFilter',
@@ -96,7 +97,7 @@ class BackendDashboard(Construct):
         )
         self._widgets.append(es_time_widget)
 
-    def _define_pyramid_db_time_widget(self) -> None:
+    def _define_db_time_widget(self) -> None:
         db_time_metric_filter = MetricFilter(
             self,
             'DBTimeMetricFilter',
@@ -119,7 +120,7 @@ class BackendDashboard(Construct):
         )
         self._widgets.append(db_time_widget)
 
-    def _define_pyramid_response_length_widget(self) -> None:
+    def _define_response_length_widget(self) -> None:
         response_length_metric_filter = MetricFilter(
             self,
             'ResponseLengthMetricFilter',
