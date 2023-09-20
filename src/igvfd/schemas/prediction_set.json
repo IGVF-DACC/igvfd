@@ -4,10 +4,23 @@
     "$id": "/profiles/prediction_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
-    "required": [
-        "lab",
-        "award",
-        "file_set_type"
+    "anyOf": [
+        {
+            "required": [
+                "lab",
+                "award",
+                "file_set_type",
+                "samples"
+            ]
+        },
+        {
+            "required": [
+                "lab",
+                "award",
+                "file_set_type",
+                "donors"
+            ]
+        }
     ],
     "identifyingProperties": [
         "uuid",
