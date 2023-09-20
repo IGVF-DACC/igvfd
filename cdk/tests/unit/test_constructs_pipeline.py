@@ -636,6 +636,32 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                 ]
                             },
                             'RunOrder': 1
+                        },
+                        {
+                            'ActionTypeId': {
+                                'Category': 'Build',
+                                'Owner': 'AWS',
+                                'Provider': 'CodeBuild',
+                                'Version': '1'
+                            },
+                            'Configuration': {
+                                'ProjectName': {
+                                    'Ref': 'TestContinuousDeploymentPipelineCodePipelineAssetsFileAsset76EAD64B9'
+                                }
+                            },
+                            'InputArtifacts': [
+                                {
+                                    'Name': 'SynthStep_Output'
+                                }
+                            ],
+                            'Name': 'FileAsset7',
+                            'RoleArn': {
+                                'Fn::GetAtt': [
+                                    'TestContinuousDeploymentPipelineCodePipelineCodeBuildActionRole25F1910E',
+                                    'Arn'
+                                ]
+                            },
+                            'RunOrder': 1
                         }
                     ],
                     'Name': 'Assets'
@@ -1341,6 +1367,32 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                 }
                             ],
                             'Name': 'FileAsset6',
+                            'RoleArn': {
+                                'Fn::GetAtt': [
+                                    'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
+                                    'Arn'
+                                ]
+                            },
+                            'RunOrder': 1
+                        },
+                        {
+                            'ActionTypeId': {
+                                'Category': 'Build',
+                                'Owner': 'AWS',
+                                'Provider': 'CodeBuild',
+                                'Version': '1'
+                            },
+                            'Configuration': {
+                                'ProjectName': {
+                                    'Ref': 'TestProductionDeploymentPipelineCodePipelineAssetsFileAsset7533594B1'
+                                }
+                            },
+                            'InputArtifacts': [
+                                {
+                                    'Name': 'SynthStep_Output'
+                                }
+                            ],
+                            'Name': 'FileAsset7',
                             'RoleArn': {
                                 'Fn::GetAtt': [
                                     'TestProductionDeploymentPipelineCodePipelineCodeBuildActionRole650FEAB8',
