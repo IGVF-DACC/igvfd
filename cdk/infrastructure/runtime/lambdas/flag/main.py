@@ -5,7 +5,7 @@ import logging
 
 logging.basicConfig(
     level=logging.INFO,
-    force=True
+    force=True,
 )
 
 
@@ -19,7 +19,7 @@ def get_all_version_nubmers(client, application_id, configuration_profile_id):
         for x in client.list_hosted_configuration_versions(
             ApplicationId=application_id,
             ConfigurationProfileId=configuration_profile_id,
-            MaxResults=50
+            MaxResults=50,
         )['Items']
     ]
 
@@ -30,7 +30,7 @@ def delete_all_versions(client, application_id, configuration_profile_id, versio
             response = client.delete_hosted_configuration_version(
                 ApplicationId=application_id,
                 ConfigurationProfileId=configuration_profile_id,
-                VersionNumber=version_number
+                VersionNumber=version_number,
             )
             logging.info(f'Deleting version {version_number}: {response}')
         except Exception as e:
@@ -44,13 +44,13 @@ def delete_all_hosted_configuration_versions(event, context):
     version_numbers = get_all_version_nubmers(
         client,
         application_id,
-        configuration_profile_id
+        configuration_profile_id,
     )
     delete_all_versions(
         client,
         application_id,
         configuration_profile_id,
-        version_numbers
+        version_numbers,
     )
 
 
