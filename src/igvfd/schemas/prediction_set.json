@@ -123,7 +123,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "file_set_type": {
             "title": "File Set Type",
