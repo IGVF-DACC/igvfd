@@ -4,7 +4,10 @@
             "igvf:prediction_set_1"
         ],
         "submitter_comment": "Comment for a prediction file set.",
-        "description": "A cell-agnostic prediction without a sample.",
+        "description": "A cell-agnostic prediction with a donor.",
+        "donors": [
+            "igvf:alias_human_donor1"
+        ],
         "file_set_type": "functional effect",
         "award": "1U01HG011952-01",
         "lab": "alan-boyle",

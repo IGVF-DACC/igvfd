@@ -71,6 +71,9 @@
             "igvf:basic_measurement_set",
             "igvf:basic_construct_library_0"
         ],
+        "samples": [
+            "igvf:alias10"
+        ],
         "sequencing_library_type": [
             "mRNA enriched",
             "polyA depleted"
