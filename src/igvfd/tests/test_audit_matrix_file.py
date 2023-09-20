@@ -16,6 +16,7 @@ def test_audit_inconsistent_dimensions(
             'dimension1': 'gene'
         }
     )
+    res = testapp.get(matrix_file['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent dimensions'
         for error in res.json['audit'].get('WARNING', [])
