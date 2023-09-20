@@ -89,6 +89,7 @@ class Backend(Construct):
 
     props: BackendProps
     postgres: PostgresConstruct
+    pyramid_log_driver: AwsLogDriver
     opensearch_for_reading: Opensearch
     opensearch_for_writing: Opensearch
     application_image: ContainerImage
@@ -135,7 +136,7 @@ class Backend(Construct):
         self._add_dashboard()
 
     def _define_log_driver_for_pyramid_container(self) -> None:
-        self.pyramid_log_driver = LogDriver.aws_logs(
+        self.pyramid_log_driver = AwsLogDriver(
             stream_prefix='pyramid',
             mode=AwsLogDriverMode.NON_BLOCKING,
         )
