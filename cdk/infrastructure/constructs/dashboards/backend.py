@@ -4,6 +4,7 @@ from constructs import Construct
 
 from aws_cdk.aws_cloudwatch import Dashboard
 from aws_cdk.aws_cloudwatch import GraphWidget
+from aws_cdk.aws_cloudwatch import IWidget
 from aws_cdk.aws_cloudwatch import LogQueryWidget
 from aws_cdk.aws_cloudwatch import Stats
 from aws_cdk.aws_cloudwatch import YAxisProps
@@ -15,6 +16,7 @@ from aws_cdk.aws_logs import FilterPattern
 from dataclasses import dataclass
 
 from typing import Any
+from typing import List
 
 from infrastructure.config import Config
 
@@ -39,7 +41,7 @@ class BackendDashboard(Construct):
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
         self.props = props
-        self._widgets = []
+        self._widgets: List[IWidget] = []
         self._define_pyramid_wsgi_time_widget()
         self._define_pyramid_es_time_widget()
         self._define_pyramid_response_length_widget()
