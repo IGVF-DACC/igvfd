@@ -25,8 +25,7 @@ from aws_cdk.aws_cloudwatch import GraphWidget
 from aws_cdk.aws_cloudwatch import LogQueryWidget
 from aws_cdk.aws_cloudwatch import YAxisProps
 
-from aws_cdk.aws_logs import MetricFilter
-from aws_cdk.aws_logs import FilterPattern
+from aws_cdk.aws_logs import LogGroup
 
 from infrastructure.config import Config
 
@@ -89,7 +88,7 @@ class Backend(Construct):
 
     props: BackendProps
     postgres: PostgresConstruct
-    pyramid_log_driver: AwsLogDriver
+    pyramid_log_driver: LogDriver
     opensearch_for_reading: Opensearch
     opensearch_for_writing: Opensearch
     application_image: ContainerImage
@@ -136,7 +135,7 @@ class Backend(Construct):
         self._add_dashboard()
 
     def _define_log_driver_for_pyramid_container(self) -> None:
-        self.pyramid_log_driver = AwsLogDriver(
+        self.pyramid_log_driver = LogDriver.aws_logs(
             stream_prefix='pyramid',
             mode=AwsLogDriverMode.NON_BLOCKING,
         )
@@ -383,11 +382,13 @@ class Backend(Construct):
         )
 
     def _add_dashboard(self) -> None:
+        aws_logs = cast(AwsLogDriver, self.pyramid_log_driver)
+        log_group = cast(LogGroup, aws_logs.log_group)
         self.dashboard = BackendDashboard(
             self,
             'PyramidDashBoard',
             props=BackendDashboardProps(
                 config=self.props.config,
-                log_group=self.pyramid_log_driver.log_group
+                log_group=log_group
             )
         )
