@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 6
+
+* Require `samples` or `donors`.
+
 ### Minor changes since schema version 5
 
 * Add `publication_identifiers`.

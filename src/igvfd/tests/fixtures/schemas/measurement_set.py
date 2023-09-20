@@ -76,3 +76,12 @@ def measurement_set_mpra(testapp, lab, award, assay_term_mpra, primary_cell):
         'samples': primary_cell['@id']
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def measurement_set_v5(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '5'
+    })
+    return item
