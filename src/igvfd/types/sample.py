@@ -341,9 +341,7 @@ class PrimaryCell(Biosample):
             'notSubmittable': True,
         }
     )
-    def classification(self, classification=None):
-        if classification:
-            return classification
+    def classification(self):
         return self.item_type.replace('_', ' ')
 
 
@@ -384,9 +382,7 @@ class Tissue(Biosample):
             'notSubmittable': True,
         }
     )
-    def classification(self, classification=None):
-        if classification:
-            return classification
+    def classification(self):
         return self.item_type.replace('_', ' ')
 
 
@@ -434,9 +430,7 @@ class TechnicalSample(Sample):
             'notSubmittable': True,
         }
     )
-    def classification(self, classification=None):
-        if classification:
-            return classification
+    def classification(self):
         return self.item_type.replace('_', ' ')
 
 
@@ -461,9 +455,7 @@ class WholeOrganism(Biosample):
             'notSubmittable': True,
         }
     )
-    def classification(self, classification=None):
-        if classification:
-            return classification
+    def classification(self):
         return self.item_type.replace('_', ' ')
 
 
@@ -642,7 +634,5 @@ class MultiplexedSample(Sample):
             'notSubmittable': True,
         }
     )
-    def classification(self, classification=None):
-        if classification:
-            return classification
+    def classification(self):
         return self.item_type.replace('_', ' ')
