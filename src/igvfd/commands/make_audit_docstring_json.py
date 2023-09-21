@@ -5,7 +5,6 @@ import igvfd.audit.construct_library
 import igvfd.audit.formatter
 import igvfd.audit.human_donor
 import igvfd.audit.in_vitro_system
-import igvfd.audit.item
 import igvfd.audit.curated_set
 import igvfd.audit.measurement_set
 import igvfd.audit.curated_set
@@ -29,7 +28,6 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.formatter,
     igvfd.audit.human_donor,
     igvfd.audit.in_vitro_system,
-    igvfd.audit.item,
     igvfd.audit.curated_set,
     igvfd.audit.measurement_set,
     igvfd.audit.curated_set,
