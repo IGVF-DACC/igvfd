@@ -20,11 +20,6 @@ from aws_cdk.aws_iam import ManagedPolicy
 from aws_cdk.aws_secretsmanager import Secret as SMSecret
 from aws_cdk.aws_secretsmanager import SecretStringGenerator
 
-from aws_cdk.aws_cloudwatch import Dashboard
-from aws_cdk.aws_cloudwatch import GraphWidget
-from aws_cdk.aws_cloudwatch import LogQueryWidget
-from aws_cdk.aws_cloudwatch import YAxisProps
-
 from aws_cdk.aws_logs import LogGroup
 
 from infrastructure.config import Config
@@ -88,7 +83,7 @@ class Backend(Construct):
 
     props: BackendProps
     postgres: PostgresConstruct
-    pyramid_log_driver: LogDriver
+    application_log_driver: LogDriver
     opensearch_for_reading: Opensearch
     opensearch_for_writing: Opensearch
     application_image: ContainerImage
@@ -113,8 +108,8 @@ class Backend(Construct):
         self._generate_session_secret()
         self._define_docker_assets()
         self._define_domain_name()
-        self._define_log_driver_for_pyramid_container()
         self._define_fargate_service()
+        self._define_log_driver_for_application_container()
         self._add_application_container_to_task()
         self._allow_connections_to_database()
         self._allow_connections_to_opensearch_for_reading()
@@ -133,12 +128,6 @@ class Backend(Construct):
         self._run_update_mapping_automatically()
         self._add_alarms()
         self._add_dashboard()
-
-    def _define_log_driver_for_pyramid_container(self) -> None:
-        self.pyramid_log_driver = LogDriver.aws_logs(
-            stream_prefix='pyramid',
-            mode=AwsLogDriverMode.NON_BLOCKING,
-        )
 
     def _define_postgres(self) -> None:
         self.postgres = cast(
@@ -236,6 +225,12 @@ class Backend(Construct):
             self.session_secret
         )
 
+    def _define_log_driver_for_application_container(self) -> None:
+        self.application_log_driver = LogDriver.aws_logs(
+            stream_prefix='pyramid',
+            mode=AwsLogDriverMode.NON_BLOCKING,
+        )
+
     def _add_application_container_to_task(self) -> None:
         container_name = 'pyramid'
         self.fargate_service.task_definition.add_container(
@@ -258,7 +253,7 @@ class Backend(Construct):
                 'DB_PASSWORD': self._get_database_secret(),
                 'SESSION_SECRET': self._get_session_secret(),
             },
-            logging=self.pyramid_log_driver,
+            logging=self.application_log_driver,
         )
 
     def _allow_connections_to_database(self) -> None:
@@ -382,11 +377,11 @@ class Backend(Construct):
         )
 
     def _add_dashboard(self) -> None:
-        aws_logs = cast(AwsLogDriver, self.pyramid_log_driver)
+        aws_logs = cast(AwsLogDriver, self.application_log_driver)
         log_group = cast(LogGroup, aws_logs.log_group)
-        self.dashboard = BackendDashboard(
+        dashboard = BackendDashboard(
             self,
-            'PyramidDashBoard',
+            'BackendDashBoard',
             props=BackendDashboardProps(
                 config=self.props.config,
                 log_group=log_group

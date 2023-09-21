@@ -206,6 +206,6 @@ class BackendDashboard(Construct):
     def _define_dashboard(self) -> None:
         self.dashboard = Dashboard(
             self,
-            'BackendDashBoard'
+            'DashBoard'
         )
         self.dashboard.add_widgets(*self._widgets)
