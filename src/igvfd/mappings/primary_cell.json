@@ -245,6 +245,9 @@
                     "cellular_sub_pool": {
                         "type": "keyword"
                     },
+                    "classification": {
+                        "type": "keyword"
+                    },
                     "collections": {
                         "type": "keyword"
                     },
@@ -983,6 +986,9 @@
                                 "type": "keyword"
                             },
                             "cellular_sub_pool": {
+                                "type": "keyword"
+                            },
+                            "classification": {
                                 "type": "keyword"
                             },
                             "collections": {
