@@ -10,6 +10,9 @@ def technical_sample():
             'sample_terms.term_name': {
                 'title': 'Sample Terms',
             },
+            'classification': {
+                'title': 'Classification',
+            },
             'collections': {
                 'title': 'Collections',
             },
@@ -35,6 +38,7 @@ def technical_sample():
                 'facet_fields': [
                     'sample_terms.term_name',
                     'virtual',
+                    'classification',
                 ]
             },
             {
@@ -65,6 +69,9 @@ def technical_sample():
             },
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
+            },
+            'classification': {
+                'title': 'Classification',
             },
             'date_obtained': {
                 'title': 'Date Obtained'

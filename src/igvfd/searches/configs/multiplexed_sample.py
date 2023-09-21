@@ -16,6 +16,9 @@ def multiplexed_sample():
             'treatments.treatment_term_name': {
                 'title': 'Treatments',
             },
+            'classification': {
+                'title': 'Classification',
+            },
             'collections': {
                 'title': 'Collections',
             },
@@ -47,6 +50,7 @@ def multiplexed_sample():
                     'treatments.treatment_term_name',
                     'biomarkers.classification',
                     'virtual',
+                    'classification',
                 ]
             },
             {
@@ -74,6 +78,9 @@ def multiplexed_sample():
             },
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
+            },
+            'classification': {
+                'title': 'Classification',
             },
             'sample_terms': {
                 'title': 'Sample Terms'

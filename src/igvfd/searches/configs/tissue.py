@@ -22,6 +22,9 @@ def tissue():
             'sex': {
                 'title': 'Sex'
             },
+            'classification': {
+                'title': 'Classification',
+            },
             'collections': {
                 'title': 'Collections',
             },
@@ -53,6 +56,7 @@ def tissue():
                     'treatments.treatment_term_name',
                     'taxa',
                     'sex',
+                    'classification',
                     'biomarkers.classification',
                     'virtual',
                 ]
@@ -85,6 +89,9 @@ def tissue():
             },
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
+            },
+            'classification': {
+                'title': 'Classification'
             },
             'donors': {
                 'title': 'Donors'
