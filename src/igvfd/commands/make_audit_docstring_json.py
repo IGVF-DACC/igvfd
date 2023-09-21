@@ -1,7 +1,7 @@
 import json
 
 import igvfd.audit.biosample
-import igvfd.audit.construct_library
+import igvfd.audit.construct_library_set
 import igvfd.audit.formatter
 import igvfd.audit.human_donor
 import igvfd.audit.in_vitro_system
@@ -25,7 +25,7 @@ NON_AUDIT_FUNCTION_NAMES = [
 
 AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.biosample,
-    igvfd.audit.construct_library,
+    igvfd.audit.construct_library_set,
     igvfd.audit.formatter,
     igvfd.audit.human_donor,
     igvfd.audit.in_vitro_system,
