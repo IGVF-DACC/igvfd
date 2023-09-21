@@ -32,7 +32,7 @@ config: Dict[str, Any] = {
             'existing_resources_class': igvf_dev.Resources,
             'account_and_region': igvf_dev.US_WEST_2,
             'tags': [
-                ('time-to-live-hours', '84'),
+                ('time-to-live-hours', '60'),
                 ('turn-off-on-friday-night', 'yes'),
             ],
         },
