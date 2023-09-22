@@ -73,7 +73,7 @@ def measurement_set_mpra(testapp, lab, award, assay_term_mpra, primary_cell):
         'award': award['@id'],
         'lab': lab['@id'],
         'assay_term': assay_term_mpra['@id'],
-        'samples': primary_cell['@id']
+        'samples': [primary_cell['@id']]
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
