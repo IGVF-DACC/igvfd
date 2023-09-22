@@ -15,7 +15,7 @@ class ResultColumnsResponseField(ResponseField):
         facets = self.parent.response.get('facets', [])
         columns = self.parent.response.get('columns', [])
         return {
-            'result_colums': get_result_columns(request, facets, columns)
+            'result_columns': get_result_columns(request, facets, columns)
         }
 
 

@@ -6,7 +6,7 @@ from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 from snosearch.parsers import QueryString
 from snovault.compat import bytes_
 from igvfd.search_views import search_generator
-from igvfd.searches.fields import get_result_columns, get_abstract_types
+from igvfd.searches.fields import get_abstract_types
 
 
 import datetime
@@ -152,7 +152,7 @@ def multitype_report_download(context, request):
     query_string = qs.get_query_string()
     response = request.embed(f'/multireport?{query_string}')
     facets = response['facets']
-    columns = get_result_columns(request, facets, response['columns'])
+    columns = response['result_columns']
 
     abstract_types = get_abstract_types(request)
     types_in_search_result = []
