@@ -37,20 +37,24 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
 def test_multiplexed_sample_props(
         testapp, multiplexed_sample, tissue, modification, in_vitro_cell_line,
         phenotype_term_myocardial_infarction, biomarker_CD243_absent,
-        biomarker_CD1e_low, biomarker_IgA_present):
+        biomarker_CD1e_low, biomarker_IgA_present, construct_library_set_genome_wide,
+        base_expression_construct_library_set, construct_library_set_reporter):
     testapp.patch_json(
         tissue['@id'],
         {
             'disease_terms': [phenotype_term_myocardial_infarction['@id']],
             'modifications': [modification['@id']],
-            'biomarkers': [biomarker_CD243_absent['@id'], biomarker_CD1e_low['@id']]
+            'biomarkers': [biomarker_CD243_absent['@id'], biomarker_CD1e_low['@id']],
+            'construct_library_sets': [construct_library_set_genome_wide['@id'],
+                                       base_expression_construct_library_set['@id']]
         }
     )
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
             'modifications': [modification['@id']],
-            'biomarkers': [biomarker_IgA_present['@id'], biomarker_CD1e_low['@id']]
+            'biomarkers': [biomarker_IgA_present['@id'], biomarker_CD1e_low['@id']],
+            'construct_library_sets': [base_expression_construct_library_set['@id'], construct_library_set_reporter['@id']]
         }
     )
     res = testapp.get(multiplexed_sample['@id'])
@@ -84,6 +88,13 @@ def test_multiplexed_sample_props(
     biomarkers_set.add(biomarker_IgA_present['@id'])
     multiplexed_biomarkers_set = set([entry for entry in res.json.get('biomarkers', [])])
     assert biomarkers_set == multiplexed_biomarkers_set
+
+    cls_set = set()
+    cls_set.add(construct_library_set_genome_wide['@id'])
+    cls_set.add(base_expression_construct_library_set['@id'])
+    cls_set.add(construct_library_set_reporter['@id'])
+    multiplexed_cls_set = set([entry['@id'] for entry in res.json.get('construct_library_sets', [])])
+    assert cls_set == multiplexed_cls_set
 
     sources_set = set()
     sources_set.update(tissue.get('sources', []))
