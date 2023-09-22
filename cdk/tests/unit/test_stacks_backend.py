@@ -164,3 +164,7 @@ def test_stacks_backend_initialize_backend_stack(config):
         'AWS::Events::Rule',
         2
     )
+    template.resource_count_is(
+        'AWS::AppConfig::Application',
+        1
+    )

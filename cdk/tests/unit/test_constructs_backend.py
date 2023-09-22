@@ -245,15 +245,15 @@ def test_constructs_backend_initialize_backend_construct(
                         },
                         {
                             'Name': 'APPCONFIG_APPLICATION',
-                            'Value': 'some-branch'
+                            'Value': 'igvfd-some-branch'
                         },
                         {
                             'Name': 'APPCONFIG_ENVIRONMENT',
-                            'Value': 'some-environment'
+                            'Value': 'demo'
                         },
                         {
                             'Name': 'APPCONFIG_PROFILE',
-                            'Value': 'some-branch-some-environment-feature-flags'
+                            'Value': 'igvfd-some-branch-demo-feature-flags'
                         }
                     ],
                     'Essential': True,
@@ -839,6 +839,10 @@ def test_constructs_backend_initialize_backend_construct(
                 }
             ]
         }
+    )
+    template.resource_count_is(
+        'AWS::AppConfig::Application',
+        1
     )
 
 
