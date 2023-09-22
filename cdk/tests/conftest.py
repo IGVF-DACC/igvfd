@@ -401,19 +401,18 @@ def invalidation_queue(stack, existing_resources):
 
 
 @pytest.fixture
-def feature_flag_service(stack):
+def feature_flag_service(stack, config):
     from infrastructure.constructs.flag import FeatureFlagServiceProps
     from infrastructure.constructs.flag import FeatureFlagService
     return FeatureFlagService(
         stack,
         'FeatureFlagService',
         props=FeatureFlagServiceProps(
-            branch='some-branch',
-            environment_name='some-environment',
             flags={
                 'flag1': True,
                 'flag2': False
-            }
+            },
+            config=config,
         )
     )
 
