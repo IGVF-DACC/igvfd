@@ -27,6 +27,8 @@ from constructs import Construct
 
 from dataclasses import dataclass
 
+from infrastructure.config import Config
+
 from typing import Any
 from typing import Dict
 from typing import cast
@@ -34,14 +36,14 @@ from typing import cast
 
 @dataclass
 class FeatureFlagServiceProps:
-    branch: str
-    environment_name: str
+    config: Config
     flags: Dict[str, bool]
 
 
 class FeatureFlagService(Construct):
 
     props: FeatureFlagServiceProps
+    name: str
     application: CfnApplication
     environment: CfnEnvironment
     configuration_profile: CfnConfigurationProfile
@@ -60,6 +62,7 @@ class FeatureFlagService(Construct):
     ) -> None:
         super().__init__(scope, construct_id, **kwargs)
         self.props = props
+        self._define_name()
         self._define_application()
         self._define_environment()
         self._define_configuration_profile()
@@ -69,11 +72,14 @@ class FeatureFlagService(Construct):
         self._define_deployment()
         self._define_configuration_version_cleaner()
 
+    def _define_name(self) -> None:
+        self.name = f'{self.props.config.common.project_name}-{self.props.config.branch}'
+
     def _define_application(self) -> None:
         self.application = CfnApplication(
             self,
             'Application',
-            name=self.props.branch,
+            name=self.name,
         )
 
     def _define_environment(self) -> None:
@@ -81,7 +87,7 @@ class FeatureFlagService(Construct):
             self,
             'Environment',
             application_id=self.application.ref,
-            name=self.props.environment_name,
+            name=self.props.config.name,
         )
 
     def _define_configuration_profile(self) -> None:
@@ -90,7 +96,7 @@ class FeatureFlagService(Construct):
             'ConfigurationProfile',
             application_id=self.application.ref,
             location_uri='hosted',
-            name=f'{self.props.branch}-{self.props.environment_name}-feature-flags',
+            name=f'{self.name}-{self.props.config.name}-feature-flags',
             type='AWS.AppConfig.FeatureFlags',
         )
 
@@ -98,7 +104,7 @@ class FeatureFlagService(Construct):
         self.deployment_strategy = CfnDeploymentStrategy(
             self,
             'DeploymentStrategy',
-            name=f'{self.props.branch}-{self.props.environment_name}-deployment-strategy',
+            name=f'{self.name}-{self.props.config.name}-deployment-strategy',
             deployment_duration_in_minutes=0,
             growth_factor=100,
             replicate_to='NONE',

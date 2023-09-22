@@ -65,8 +65,7 @@ class BackendStack(cdk.Stack):
             'FeatureFlags',
             props=FeatureFlagServiceProps(
                 **config.feature_flag_service,
-                branch=config.branch,
-                environment_name=config.name,
+                config=config,
             )
         )
         self.backend = Backend(
