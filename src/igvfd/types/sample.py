@@ -248,9 +248,7 @@ class Biosample(Sample):
             if sex != 'unspecified':
                 if sex == 'mixed':
                     sex = 'mixed sex'
-                elif len(donors) > 1:
-                    sex = f'{sex}s'
-                summary_terms += f' {sex}'
+                summary_terms += f' {sex},'
 
         # taxa of the donor(s) is appended to the end of the summary
         if (donors and
@@ -279,7 +277,7 @@ class Biosample(Sample):
 
         # sorted fraction detail is appended to the end of the summary
         if (sorted_fraction_detail and
-                biosample_type in ['in_vitro_system']):
+                biosample_type in ['primary_cell', 'in_vitro_system']):
             summary_terms += f' (sorting details: {sorted_fraction_detail})'
 
         # biomarker summaries are appended to the end of the summary
@@ -304,7 +302,6 @@ class Biosample(Sample):
                 biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
             phenotype_term_names = sorted([request.embed(disease_term).get('term_name')
                                           for disease_term in disease_terms])
-            #phenotype_term_names = sorted([phenotype_term.get('term_name') for phenotype_term in phenotype_term_objects])
             summary_terms += f' associated with {", ".join(phenotype_term_names)},'
 
         # treatment summaries are appended to the end of the summary
@@ -449,13 +446,23 @@ class MultiplexedSample(Sample):
         }
     )
     def summary(self, request, multiplexed_samples=None):
+        while any(sample.startswith('/multiplexed-samples/') for sample in multiplexed_samples):
+            for multiplexed_sample in multiplexed_samples:
+                if multiplexed_sample.startswith('/multiplexed-samples/'):
+                    decomposed_samples = request.embed(multiplexed_sample, '@@object').get('multiplexed_samples')
+                    multiplexed_samples.remove(multiplexed_sample)
+                    if decomposed_samples:
+                        for decomposed_sample in decomposed_samples:
+                            # duplicated samples are not added to the summary
+                            if decomposed_sample not in multiplexed_samples:
+                                multiplexed_samples += [decomposed_sample]
         if multiplexed_samples:
-            multiplexed_sample_summaries = sorted([request.embed(
-                multiplexed_sample, '@@object').get('summary') for multiplexed_sample in sorted(multiplexed_samples)[:2]])
+            sample_summaries = sorted([request.embed(
+                sample, '@@object').get('summary') for sample in sorted(multiplexed_samples)[:2]])
             if len(multiplexed_samples) > 2:
                 remainder = f'... and {len(multiplexed_samples) - 2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
-                multiplexed_sample_summaries = multiplexed_sample_summaries + [remainder]
-            return f'multiplexed sample of {", ".join(multiplexed_sample_summaries)}'
+                sample_summaries += [remainder]
+            return f'multiplexed sample of {", ".join(sample_summaries)}'
         else:
             return 'multiplexed sample'
 

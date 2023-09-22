@@ -15,6 +15,32 @@ def multiplexed_sample(
 
 
 @pytest.fixture
+def multiplexed_sample_x2(
+        testapp, other_lab, award, multiplexed_sample, primary_cell):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'multiplexed_samples': [
+            multiplexed_sample['@id'], primary_cell['@id']
+        ]
+    }
+    return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def multiplexed_sample_x3(
+        testapp, other_lab, award, multiplexed_sample_x2, in_vitro_cell_line):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'multiplexed_samples': [
+            multiplexed_sample_x2['@id'], in_vitro_cell_line['@id']
+        ]
+    }
+    return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def multiplexed_sample_v1(multiplexed_sample, source):
     item = multiplexed_sample.copy()
     item.update({
