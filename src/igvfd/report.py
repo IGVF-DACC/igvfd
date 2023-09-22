@@ -8,7 +8,6 @@ from snovault.compat import bytes_
 from igvfd.search_views import search_generator
 from igvfd.searches.fields import get_abstract_types
 
-
 import datetime
 import re
 
@@ -153,7 +152,6 @@ def multitype_report_download(context, request):
     response = request.embed(f'/multireport?{query_string}')
     facets = response['facets']
     columns = response['result_columns']
-
     abstract_types = get_abstract_types(request)
     types_in_search_result = []
     for facet in facets:

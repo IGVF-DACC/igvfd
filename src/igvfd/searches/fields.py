@@ -18,30 +18,27 @@ class ResultColumnsResponseField(ResponseField):
             'result_columns': get_result_columns(request, facets, columns)
         }
 
-
-def get_result_columns(request, facets, columns):
-    abstract_types = get_abstract_types(request)
-    types_in_search_result = []
-    for facet in facets:
-        if facet['field'] == 'type':
-            for term in facet['terms']:
-                type_name = term['key']
-                if type_name not in abstract_types:
-                    types_in_search_result.append(term['key'])
-            break
-    return list_visible_columns_for_multitype_report_download(request, types_in_search_result, columns)
+# only return the columns of the concrete types if the type is returned in search restult
 
 
-def list_visible_columns_for_multitype_report_download(request, types, report_response_columns):
-    """
-    Returns mapping of default columns for a set of types.
-    """
+def get_result_columns(request, facets, report_response_columns):
     columns = OrderedDict({'@id': {'title': 'ID'}})
     configs = request.params.getall('config')
+    # if config in query string
     if configs:
         columns.update(report_response_columns)
+
     else:
-        for type_str in types:
+        abstract_types = get_abstract_types(request)
+        types_in_search_result = []
+        for facet in facets:
+            if facet['field'] == 'type':
+                for term in facet['terms']:
+                    type_name = term['key']
+                    if type_name not in abstract_types:
+                        types_in_search_result.append(term['key'])
+                break
+        for type_str in types_in_search_result:
             schema = request.registry[TYPES][type_str].schema
             search_config = request.registry[SEARCH_CONFIG].as_dict()[type_str]
 
@@ -59,6 +56,7 @@ def list_visible_columns_for_multitype_report_download(request, types, report_re
                     ] if name in schema['properties']
                 ))
     fields_requested = request.params.getall('field')
+    # if field in query string
     if fields_requested:
         limited_columns = OrderedDict()
         for field in fields_requested:
@@ -69,7 +67,7 @@ def list_visible_columns_for_multitype_report_download(request, types, report_re
                 # objects to find property titles. In this case we'll just
                 # show the field's dotted path for now.
                 limited_columns[field] = {'title': field}
-                for type_str in types:
+                for type_str in types_in_search_result:
                     schema = request.registry[TYPES][type_str].schema
                     if field in schema['properties']:
                         limited_columns[field] = {
