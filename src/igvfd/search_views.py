@@ -1,8 +1,8 @@
 from pyramid.view import view_config
-
 from igvfd.searches.defaults import DEFAULT_ITEM_TYPES
 from igvfd.searches.defaults import RESERVED_KEYS
 from igvfd.searches.defaults import TOP_HITS_ITEM_TYPES
+from igvfd.searches.fields import ResultColumnsResponseField
 from snosearch.interfaces import AUDIT_TITLE
 from snosearch.interfaces import MATRIX_TITLE
 from snosearch.interfaces import REPORT_TITLE
@@ -162,6 +162,7 @@ def multireport(context, request):
             FiltersResponseField(),
             TypeOnlyClearFiltersResponseField(),
             ColumnsResponseField(),
+            ResultColumnsResponseField(),
             NonSortableResponseField(),
             SortResponseField(),
             DebugQueryResponseField()
