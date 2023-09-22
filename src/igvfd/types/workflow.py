@@ -19,6 +19,7 @@ from .base import (
 )
 class Workflow(Item):
     item_type = 'workflow'
+    name_key = 'accession'
     schema = load_schema('igvfd:schemas/workflow.json')
     rev = {
         'analysis_steps': ('AnalysisStep', 'workflow')
