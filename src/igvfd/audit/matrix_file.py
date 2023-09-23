@@ -21,4 +21,4 @@ def audit_matrix_file_dimensions(value, system):
             f'is expected to have different values for each dimension, but has '
             f'{value["dimension1"]} for both dimension 1 and dimension 2.'
         )
-        yield AuditFailure('inconsistent dimensions', detail, level='WARNING')
+        yield AuditFailure('identical dimensions', detail, level='WARNING')
