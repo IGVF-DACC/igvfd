@@ -1,13 +1,13 @@
 import pytest
 
 
-def test_audit_inconsistent_dimensions(
+def test_audit_identical_dimensions(
     testapp,
     matrix_file
 ):
     res = testapp.get(matrix_file['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent dimensions'
+        error['category'] != 'identical dimensions'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -18,6 +18,6 @@ def test_audit_inconsistent_dimensions(
     )
     res = testapp.get(matrix_file['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent dimensions'
+        error['category'] == 'identical dimensions'
         for error in res.json['audit'].get('WARNING', [])
     )
