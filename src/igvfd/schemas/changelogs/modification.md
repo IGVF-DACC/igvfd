@@ -1,5 +1,9 @@
 ## Changelog for *`modification.json`*
 
+### Minor changes since schema version 3
+
+* Add `TdCBE`, `TdCGBE`, and `TdDE` to `fused_domain`.
+
 ### Schema version 3
 
 * Rename `source` to `sources`.
