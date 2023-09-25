@@ -3,6 +3,7 @@
 ### Minor changes since schema version 4
 
 * Add `summary`.
+* Add `construct_library_sets`.
 
 ### Schema version 4
 

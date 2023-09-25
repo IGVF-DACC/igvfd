@@ -435,7 +435,8 @@ class MultiplexedSample(Sample):
         Path('multiplexed_samples.disease_terms', include=['term_name']),
         Path('multiplexed_samples.donors', include=['@id', 'accession']),
         Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
-        Path('modifications', include=['@id', 'modality', 'summary', 'status'])
+        Path('modifications', include=['@id', 'modality', 'summary', 'status']),
+        Path('construct_library_sets', include=['@id', 'accession'])
     ]
 
     @calculated_property(
@@ -468,7 +469,7 @@ class MultiplexedSample(Sample):
 
     @calculated_property(
         schema={
-            'title': 'Sample terms',
+            'title': 'Sample Terms',
             'type': 'array',
             'notSubmittable': True,
             'items': {
@@ -482,7 +483,7 @@ class MultiplexedSample(Sample):
 
     @calculated_property(
         schema={
-            'title': 'Disease terms',
+            'title': 'Disease Terms',
             'type': 'array',
             'notSubmittable': True,
             'items': {
@@ -566,3 +567,17 @@ class MultiplexedSample(Sample):
     )
     def sources(self, request, multiplexed_samples):
         return collect_multiplexed_samples_prop(request, multiplexed_samples, 'sources')
+
+    @calculated_property(
+        schema={
+            'title': 'Construct Library Sets',
+            'type': 'array',
+            'notSubmittable': True,
+            'items': {
+                'type': 'string',
+                'linkTo': 'ConstructLibrarySet'
+            }
+        }
+    )
+    def construct_library_sets(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'construct_library_sets')
