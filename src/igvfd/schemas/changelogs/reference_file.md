@@ -1,5 +1,10 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 4
+
+* Add `vcf` to `file_format`.
+* Add `variants` to `content_type`.
+
 ### Schema version 4
 
 * Update enums in `transcriptome_annotation` to include `GENCODE` prefix.

@@ -2,7 +2,7 @@
     "title": "Reference File",
     "$id": "/profiles/reference_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A file containing reference sequences or indexes in fasta, gtf, tar, or txt format.",
+    "description": "A file containing reference sequences or indexes in fasta, gtf, tar, txt, or vcf format.",
     "required": [
         "award",
         "lab",
@@ -94,6 +94,26 @@
                     }
                 }
             ]
+        },
+        "file_format": {
+            "comment": "Vcf files must specify a relevant assembly.",
+            "if": {
+                "properties": {
+                    "file_format": {
+                        "enum": [
+                            "vcf"
+                        ]
+                    }
+                },
+                "required": [
+                    "file_format"
+                ]
+            },
+            "then": {
+                "required": [
+                    "assembly"
+                ]
+            }
         }
     },
     "type": "object",
@@ -111,6 +131,7 @@
                 "sequence barcodes",
                 "spike-ins",
                 "transcriptome reference",
+                "variants",
                 "vector sequences"
             ]
         },
@@ -119,7 +140,8 @@
                 "fasta",
                 "gtf",
                 "tar",
-                "txt"
+                "txt",
+                "vcf"
             ]
         },
         "assembly": {
