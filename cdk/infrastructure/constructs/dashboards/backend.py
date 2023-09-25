@@ -51,7 +51,7 @@ class BackendDashboard(Construct):
         self._define_response_length_widget()
         self._define_response_2xx_count_widget()
         self._define_response_4xx_count_widget()
-        self._define_response_5xx_count_widget()
+#        self._define_response_5xx_count_widget()
         self._define_dashboard()
 
     def _define_wsgi_time_widget(self) -> None:
