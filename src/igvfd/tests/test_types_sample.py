@@ -106,3 +106,18 @@ def test_multiplexed_sample_props(
     for m in res.json.get('multiplexed_in'):
         multiplexed_in.append(m['@id'])
     assert multiplexed_in == [multiplexed_sample['@id']]
+
+
+def test_classification(testapp, primary_cell, technical_sample, whole_organism, tissue, in_vitro_cell_line, multiplexed_sample):
+    res = testapp.get(primary_cell['@id'])
+    assert res.json.get('classification') == 'primary cell'
+    res = testapp.get(technical_sample['@id'])
+    assert res.json.get('classification') == 'technical sample'
+    res = testapp.get(whole_organism['@id'])
+    assert res.json.get('classification') == 'whole organism'
+    res = testapp.get(tissue['@id'])
+    assert res.json.get('classification') == 'tissue'
+    res = testapp.get(in_vitro_cell_line['@id'])
+    assert res.json.get('classification') == 'cell line'
+    res = testapp.get(multiplexed_sample['@id'])
+    assert res.json.get('classification') == 'multiplexed sample'

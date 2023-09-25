@@ -1,6 +1,6 @@
 {
-    "hash": "39ad7d80ce988a971fba7cba87d2e1a6",
-    "index_name": "primary_cell_39ad7d80",
+    "hash": "233d02f7aeef354b35f0bdd1f55d612c",
+    "index_name": "primary_cell_233d02f7",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -243,6 +243,9 @@
                         "type": "keyword"
                     },
                     "cellular_sub_pool": {
+                        "type": "keyword"
+                    },
+                    "classification": {
                         "type": "keyword"
                     },
                     "collections": {
@@ -983,6 +986,9 @@
                                 "type": "keyword"
                             },
                             "cellular_sub_pool": {
+                                "type": "keyword"
+                            },
+                            "classification": {
                                 "type": "keyword"
                             },
                             "collections": {

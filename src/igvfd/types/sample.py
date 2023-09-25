@@ -333,6 +333,17 @@ class PrimaryCell(Biosample):
     schema = load_schema('igvfd:schemas/primary_cell.json')
     embedded_with_frame = Biosample.embedded_with_frame
 
+    @calculated_property(
+        schema={
+            'title': 'Classification',
+            'description': 'The general category of this type of sample.',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def classification(self):
+        return self.item_type.replace('_', ' ')
+
 
 @collection(
     name='in-vitro-systems',
@@ -362,6 +373,17 @@ class Tissue(Biosample):
     item_type = 'tissue'
     schema = load_schema('igvfd:schemas/tissue.json')
     embedded_with_frame = Biosample.embedded_with_frame
+
+    @calculated_property(
+        schema={
+            'title': 'Classification',
+            'description': 'The general category of this type of sample.',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def classification(self):
+        return self.item_type.replace('_', ' ')
 
 
 @collection(
@@ -400,6 +422,17 @@ class TechnicalSample(Sample):
 
         return summary_terms
 
+    @calculated_property(
+        schema={
+            'title': 'Classification',
+            'description': 'The general category of this type of sample.',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def classification(self):
+        return self.item_type.replace('_', ' ')
+
 
 @collection(
     name='whole-organisms',
@@ -413,6 +446,17 @@ class WholeOrganism(Biosample):
     item_type = 'whole_organism'
     schema = load_schema('igvfd:schemas/whole_organism.json')
     embedded_with_frame = Biosample.embedded_with_frame
+
+    @calculated_property(
+        schema={
+            'title': 'Classification',
+            'description': 'The general category of this type of sample.',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def classification(self):
+        return self.item_type.replace('_', ' ')
 
 
 @collection(
@@ -581,3 +625,14 @@ class MultiplexedSample(Sample):
     )
     def construct_library_sets(self, request, multiplexed_samples):
         return collect_multiplexed_samples_prop(request, multiplexed_samples, 'construct_library_sets')
+
+    @calculated_property(
+        schema={
+            'title': 'Classification',
+            'description': 'The general category of this type of sample.',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def classification(self):
+        return self.item_type.replace('_', ' ')
