@@ -12,7 +12,6 @@ from snosearch.interfaces import SUMMARY_TITLE
 from snosearch.fields import AuditMatrixWithFacetsResponseField
 from snosearch.fields import AllResponseField
 from snosearch.fields import BasicMatrixWithFacetsResponseField
-from snosearch.fields import BasicSearchResponseField
 from snosearch.fields import BasicSearchWithFacetsResponseField
 from snosearch.fields import BasicReportWithFacetsResponseField
 from snosearch.fields import MultipleTypesReportWithFacetsResponseField
@@ -32,7 +31,6 @@ from snosearch.fields import TitleResponseField
 from snosearch.fields import TypeOnlyClearFiltersResponseField
 from snosearch.fields import TypeResponseField
 from snosearch.parsers import ParamsParser
-from snosearch.responses import FieldedGeneratorResponse
 from snosearch.responses import FieldedResponse
 
 from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
@@ -83,25 +81,6 @@ def search(context, request):
         ]
     )
     return fr.render()
-
-
-def search_generator(request):
-    '''
-    For internal use (no view). Like search_quick but returns raw generator
-    of search hits in @graph field.
-    '''
-    fgr = FieldedGeneratorResponse(
-        _meta={
-            'params_parser': ParamsParser(request)
-        },
-        response_fields=[
-            BasicSearchResponseField(
-                default_item_types=DEFAULT_ITEM_TYPES,
-                reserved_keys=RESERVED_KEYS,
-            )
-        ]
-    )
-    return fgr.render()
 
 
 @view_config(route_name='report', request_method='GET', permission='search')
