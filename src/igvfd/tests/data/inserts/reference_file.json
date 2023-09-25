@@ -72,7 +72,7 @@
         "assembly": "GRCh38"
     },
     {
-        "uuid": "e29019cc-c39e-0e6e-b9ee-fbf3376ea128",
+        "uuid": "2205ea97-1349-4d82-842a-a3952cabc106",
         "accession": "IGVFFI1530UROX",
         "aliases": [
             "igvf:vcf_gds_catalog_file"
@@ -89,7 +89,7 @@
         "assembly": "GRCh38"
     },
     {
-        "uuid": "e29019cc-c39e-0e6e-b9ee-fbf3376ea128",
+        "uuid": "20571fef-4569-4c5f-87c0-a5e4404acc40",
         "accession": "IGVFFI5806YYFK",
         "aliases": [
             "igvf:vcf_xml_catalog_file"
