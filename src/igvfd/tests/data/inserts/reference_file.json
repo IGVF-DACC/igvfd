@@ -73,7 +73,7 @@
     },
     {
         "uuid": "2205ea97-1349-4d82-842a-a3952cabc106",
-        "accession": "IGVFFI1530UROX",
+        "accession": "IGVFFI1530UZOX",
         "aliases": [
             "igvf:vcf_gds_catalog_file"
         ],
@@ -90,7 +90,7 @@
     },
     {
         "uuid": "20571fef-4569-4c5f-87c0-a5e4404acc40",
-        "accession": "IGVFFI5806YYFK",
+        "accession": "IGVFFI5806YWFK",
         "aliases": [
             "igvf:vcf_xml_catalog_file"
         ],
