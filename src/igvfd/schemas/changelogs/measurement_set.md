@@ -3,7 +3,7 @@
 ### Minor changes since schema version 5
 
 * Add `publication_identifiers`.
-* Expand `preferred_assay_title` enum list to include `MPRA (scQer)`, `CRISPR FlowFISH`, `AAV-MPRA`, `lentiMPRA`, `semi-qY2H`, `yN2H`, `mN2H`.
+* Expand `preferred_assay_title` enum list to include `MPRA (scQer)`, `CRISPR FlowFISH`, `AAV-MPRA`, `lentiMPRA`, `semi-qY2H`, `yN2H`, `mN2H`, `CERES-seq`, and `SUPERSTARR`.
 * Add `readout`.
 * Expand `preferred_assay_title` enum list to include `Parse Split-seq`.
 * Add `auxiliary_sets`.

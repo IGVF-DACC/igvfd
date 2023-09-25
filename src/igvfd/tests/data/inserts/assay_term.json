@@ -79,5 +79,14 @@
         "term_name": "snMCT-seq",
         "status": "released",
         "uuid": "4bec81f7-c661-40c7-ac64-aa7e02fb52fb"
+    },
+    {
+        "term_id": "OBI:0003133",
+        "term_name": "CRISPR screen",
+        "status": "released",
+        "uuid": "cafde37c-1421-4378-8ca1-e31360d5f70c",
+        "aliases": [
+            "igvf:CRISPR screen"
+        ]
     }
 ]
