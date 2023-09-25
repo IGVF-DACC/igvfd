@@ -127,6 +127,7 @@
                 "exclusion list",
                 "genome reference",
                 "guide RNA sequences",
+                "igvf catalog",
                 "inclusion list",
                 "sequence barcodes",
                 "spike-ins",
@@ -137,11 +138,20 @@
         },
         "file_format": {
             "enum": [
+                "bed",
+                "csv",
+                "dat",
                 "fasta",
+                "gaf",
+                "gds",
                 "gtf",
+                "obo",
+                "owl",
+                "pwm",
                 "tar",
                 "txt",
-                "vcf"
+                "vcf",
+                "xml"
             ]
         },
         "assembly": {

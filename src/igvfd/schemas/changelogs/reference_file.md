@@ -1,9 +1,12 @@
 ## Changelog for *`reference_file.json`*
 
+
 ### Minor changes since schema version 4
 
 * Add `vcf` to `file_format`.
 * Add `variants` to `content_type`.
+* Add `bed`, `csv`, `dat`, `gaf`, `gds`, `obo`, `owl, `pwm` and `xml` too `file_format`.
+* Add `igvf catalog` to `content_type`.
 
 ### Schema version 4
 
