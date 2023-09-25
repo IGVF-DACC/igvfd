@@ -14,3 +14,5 @@ def test_searches_fields_result_columns_response_field_query(workbook, testapp):
     )
     assert 'result_columns' in r.json
     assert len(r.json['result_columns']) < len(r.json['columns'])
+    assert 'pi' in r.json['result_columns']
+    assert 'institute_label' in r.json['result_columns']
