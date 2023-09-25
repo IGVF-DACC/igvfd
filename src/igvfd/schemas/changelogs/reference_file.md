@@ -5,7 +5,7 @@
 
 * Add `vcf` to `file_format`.
 * Add `variants` to `content_type`.
-* Add `bed`, `csv`, `dat`, `gaf`, `gds`, `obo`, `owl, `pwm` and `xml` too `file_format`.
+* Add `bed`, `csv`, `dat`, `gaf`, `gds`, `obo`, `owl, `pwm` and `xml` to `file_format`.
 * Add `igvf catalog` to `content_type`.
 
 ### Schema version 4

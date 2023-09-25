@@ -81,7 +81,7 @@
         "award": "HG012012",
         "md5sum": "0df01bf6c3f3b1f303ed3d5b1b346c46",
         "file_format": "gds",
-        "content_type": "igvf_catalog",
+        "content_type": "igvf catalog",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
