@@ -381,7 +381,7 @@ class Backend(Construct):
         log_group = cast(LogGroup, aws_logs.log_group)
         dashboard = BackendDashboard(
             self,
-            'BackendDashBoard',
+            'BackendDashboard',
             props=BackendDashboardProps(
                 config=self.props.config,
                 log_group=log_group
