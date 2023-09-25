@@ -27,9 +27,12 @@
     },
     {
         "term_id": "OBI:0003133",
-        "term_name": "cas mediated mutagenesis",
+        "term_name": "CRISPR screen",
         "status": "released",
-        "uuid": "0393b224-8f87-5e94-7aeb-faff044f707d"
+        "uuid": "0393b224-8f87-5e94-7aeb-faff044f707d",
+        "aliases": [
+            "igvf:CRISPR screen"
+        ]
     },
     {
         "term_id": "OBI:0002631",
@@ -79,14 +82,5 @@
         "term_name": "snMCT-seq",
         "status": "released",
         "uuid": "4bec81f7-c661-40c7-ac64-aa7e02fb52fb"
-    },
-    {
-        "term_id": "OBI:0003133",
-        "term_name": "CRISPR screen",
-        "status": "released",
-        "uuid": "cafde37c-1421-4378-8ca1-e31360d5f70c",
-        "aliases": [
-            "igvf:CRISPR screen"
-        ]
     }
 ]
