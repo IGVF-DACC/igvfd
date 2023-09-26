@@ -4,6 +4,7 @@ from constructs import Construct
 
 from aws_cdk.aws_ec2 import Port
 
+from aws_cdk.aws_ecs import AwsLogDriver
 from aws_cdk.aws_ecs import AwsLogDriverMode
 from aws_cdk.aws_ecs import CfnService
 from aws_cdk.aws_ecs import ContainerImage
@@ -19,10 +20,15 @@ from aws_cdk.aws_iam import ManagedPolicy
 from aws_cdk.aws_secretsmanager import Secret as SMSecret
 from aws_cdk.aws_secretsmanager import SecretStringGenerator
 
+from aws_cdk.aws_logs import LogGroup
+
 from infrastructure.config import Config
 
 from infrastructure.constructs.alarms.backend import BackendAlarmsProps
 from infrastructure.constructs.alarms.backend import BackendAlarms
+
+from infrastructure.constructs.dashboards.backend import BackendDashboardProps
+from infrastructure.constructs.dashboards.backend import BackendDashboard
 
 from infrastructure.constructs.existing.types import ExistingResources
 
@@ -77,6 +83,7 @@ class Backend(Construct):
 
     props: BackendProps
     postgres: PostgresConstruct
+    application_log_driver: LogDriver
     opensearch_for_reading: Opensearch
     opensearch_for_writing: Opensearch
     application_image: ContainerImage
@@ -102,6 +109,7 @@ class Backend(Construct):
         self._define_docker_assets()
         self._define_domain_name()
         self._define_fargate_service()
+        self._define_log_driver_for_application_container()
         self._add_application_container_to_task()
         self._allow_connections_to_database()
         self._allow_connections_to_opensearch_for_reading()
@@ -119,6 +127,7 @@ class Backend(Construct):
         self._run_batch_upgrade_automatically()
         self._run_update_mapping_automatically()
         self._add_alarms()
+        self._add_dashboard()
 
     def _define_postgres(self) -> None:
         self.postgres = cast(
@@ -216,6 +225,12 @@ class Backend(Construct):
             self.session_secret
         )
 
+    def _define_log_driver_for_application_container(self) -> None:
+        self.application_log_driver = LogDriver.aws_logs(
+            stream_prefix='pyramid',
+            mode=AwsLogDriverMode.NON_BLOCKING,
+        )
+
     def _add_application_container_to_task(self) -> None:
         container_name = 'pyramid'
         self.fargate_service.task_definition.add_container(
@@ -238,10 +253,7 @@ class Backend(Construct):
                 'DB_PASSWORD': self._get_database_secret(),
                 'SESSION_SECRET': self._get_session_secret(),
             },
-            logging=LogDriver.aws_logs(
-                stream_prefix=container_name,
-                mode=AwsLogDriverMode.NON_BLOCKING,
-            ),
+            logging=self.application_log_driver,
         )
 
     def _allow_connections_to_database(self) -> None:
@@ -361,5 +373,17 @@ class Backend(Construct):
                 config=self.props.config,
                 existing_resources=self.props.existing_resources,
                 fargate_service=self.fargate_service
+            )
+        )
+
+    def _add_dashboard(self) -> None:
+        aws_logs = cast(AwsLogDriver, self.application_log_driver)
+        log_group = cast(LogGroup, aws_logs.log_group)
+        dashboard = BackendDashboard(
+            self,
+            'BackendDashboard',
+            props=BackendDashboardProps(
+                config=self.props.config,
+                log_group=log_group
             )
         )
