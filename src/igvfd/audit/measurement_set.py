@@ -86,37 +86,6 @@ def audit_unspecified_protocol(value, system):
 
 
 @audit_checker('MeasurementSet', frame='object')
-def audit_construct_libraries_details(value, system):
-    '''
-        audit_detail: Construct libraries linked to in a measurement set are expected to have the same library details.
-        audit_category: inconsistent construct library details
-        audit_levels: WARNING
-    '''
-    if 'construct_libraries' in value and len(value['construct_libraries']) > 1:
-        library_details = set()
-        for construct_library in value['construct_libraries']:
-            construct_library_object = system.get('request').embed(construct_library, '@@object?skip_calculated=true')
-            if 'expression_vector_library_details' in construct_library_object:
-                library_details.add('expression_vector_library_details')
-            elif 'guide_library_details' in construct_library_object:
-                library_details.add('guide_library_details')
-            elif 'reporter_library_details' in construct_library_object:
-                library_details.add('reporter_library_details')
-        if len(library_details) > 1:
-            if len(library_details) > 2:
-                library_details = list(library_details)
-                library_details = ', and '.join([', '.join(library_details[:-1]), library_details[-1]])
-            else:
-                library_details = ' and '.join(library_details)
-            detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'is expected to have construct libraries with the same library details, '
-                f'but has construct libraries with {library_details}.'
-            )
-            yield AuditFailure('inconsistent construct library details', detail, level='WARNING')
-
-
-@audit_checker('MeasurementSet', frame='object')
 def audit_inconsistent_readout(value, system):
     '''
         audit_detail: Screening assays (such as CRISPR screen and MPRA) are required to specify a readout, other assays should not include one.

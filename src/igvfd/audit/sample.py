@@ -112,3 +112,29 @@ def get_virtual_sample_failures(
         return AuditFailure('inconsistent sample metadata', detail, level='ERROR')
     else:
         return None
+
+
+@audit_checker('Sample', frame='object')
+def audit_construct_library_sets_types(value, system):
+    '''
+        audit_detail: Construct library sets linked in a sample are expected to have the same file_set_type.
+        audit_category: inconsistent construct library set details
+        audit_levels: WARNING
+    '''
+    if 'construct_library_sets' in value and len(value['construct_library_sets']) > 1:
+        library_types = set()
+        for CLS in value['construct_library_sets']:
+            CLS_object = system.get('request').embed(CLS, '@@object?skip_calculated=true')
+            library_types.add(CLS_object['file_set_type'])
+        if len(library_types) > 1:
+            if len(library_types) > 2:
+                library_types = list(library_types)
+                library_types = ', and '.join([', '.join(library_types[:-1]), library_types[-1]])
+            else:
+                library_types = ' and '.join(library_types)
+            detail = (
+                f'Sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'is expected to have construct library sets of the same type but '
+                f'has construct library sets of type {library_types}.'
+            )
+            yield AuditFailure('inconsistent construct library set details', detail, level='WARNING')
