@@ -1,6 +1,6 @@
 {
-    "hash": "7eb7088efe1a5dbfc942b7e04a16f4c8",
-    "index_name": "in_vitro_system_7eb7088e",
+    "hash": "5cfb5d19697499473e0c5cf341ab704b",
+    "index_name": "in_vitro_system_5cfb5d19",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1124,6 +1124,9 @@
                                 "type": "keyword"
                             },
                             "cellular_sub_pool": {
+                                "type": "keyword"
+                            },
+                            "classification": {
                                 "type": "keyword"
                             },
                             "collections": {

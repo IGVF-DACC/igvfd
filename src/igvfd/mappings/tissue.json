@@ -1,6 +1,6 @@
 {
-    "hash": "139c2a6537db65a5293e8d6c6090755f",
-    "index_name": "tissue_139c2a65",
+    "hash": "cedf36f0c6bc073c69005075b05c8351",
+    "index_name": "tissue_cedf36f0",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -246,6 +246,9 @@
                         "type": "keyword"
                     },
                     "cellular_sub_pool": {
+                        "type": "keyword"
+                    },
+                    "classification": {
                         "type": "keyword"
                     },
                     "collections": {
@@ -986,6 +989,9 @@
                                 "type": "keyword"
                             },
                             "cellular_sub_pool": {
+                                "type": "keyword"
+                            },
+                            "classification": {
                                 "type": "keyword"
                             },
                             "collections": {
