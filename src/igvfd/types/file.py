@@ -52,7 +52,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'csqual': '.csqual.gz',
     'cndb': '.cndb',
     'database': '.db',
-    'dat': '.dat',
+    'dat': '.dat.gz',
     'fasta': '.fasta.gz',
     'fastq': '.fastq.gz',
     'gaf': '.gaf.gz',
