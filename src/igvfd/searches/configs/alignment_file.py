@@ -27,7 +27,10 @@ def alignment_file():
             },
             'status': {
                 'title': 'Status'
-            }
+            },
+            'type': {
+                'title': 'Object Type'
+            },
         },
         'facet_groups': [
             {
@@ -43,6 +46,7 @@ def alignment_file():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {
@@ -77,12 +81,6 @@ def alignment_file():
             },
             'file_set': {
                 'title': 'File Set'
-            },
-            'assembly': {
-                'title': 'Assembly'
-            },
-            'transcriptome_annotation': {
-                'title': 'Transcriptome Annotation'
             },
             'reference_files': {
                 'title': 'Reference Files'

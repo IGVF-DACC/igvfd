@@ -25,6 +25,9 @@ def measurement_set():
             'status': {
                 'title': 'Status'
             },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
@@ -40,6 +43,7 @@ def measurement_set():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {

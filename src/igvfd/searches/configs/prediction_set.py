@@ -24,7 +24,10 @@ def prediction_set():
             },
             'donors.taxa': {
                 'title': 'Taxa',
-            }
+            },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
@@ -40,6 +43,7 @@ def prediction_set():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {

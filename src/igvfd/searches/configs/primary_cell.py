@@ -45,7 +45,10 @@ def primary_cell():
             },
             'biomarkers.classification': {
                 'title': 'Biomarkers Classification'
-            }
+            },
+            'type': {
+                'title': 'Object Type'
+            },
         },
         'facet_groups': [
             {
@@ -68,6 +71,7 @@ def primary_cell():
                     'lab.title',
                     'award.component',
                     'sources.title',
+                    'type',
                 ]
             },
             {

@@ -25,6 +25,9 @@ def auxiliary_set():
             'collections': {
                 'title': 'Collections',
             },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
@@ -40,6 +43,7 @@ def auxiliary_set():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {

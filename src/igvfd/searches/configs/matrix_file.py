@@ -33,7 +33,10 @@ def matrix_file():
             },
             'status': {
                 'title': 'Status'
-            }
+            },
+            'type': {
+                'title': 'Object Type'
+            },
         },
         'facet_groups': [
             {
@@ -51,6 +54,7 @@ def matrix_file():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {

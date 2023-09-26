@@ -27,7 +27,10 @@ def construct_library_set():
             },
             'status': {
                 'title': 'Status'
-            }
+            },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
@@ -44,6 +47,7 @@ def construct_library_set():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {
