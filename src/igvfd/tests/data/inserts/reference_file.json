@@ -75,7 +75,7 @@
         "uuid": "2205ea97-1349-4d82-842a-a3952cabc106",
         "accession": "IGVFFI1530UZOX",
         "aliases": [
-            "igvf:vcf_gds_catalog_file"
+            "igvf:gds_catalog_file"
         ],
         "lab": "j-michael-cherry",
         "award": "HG012012",
@@ -92,7 +92,7 @@
         "uuid": "20571fef-4569-4c5f-87c0-a5e4404acc40",
         "accession": "IGVFFI5806YWFK",
         "aliases": [
-            "igvf:vcf_xml_catalog_file"
+            "igvf:xml_catalog_file"
         ],
         "lab": "j-michael-cherry",
         "award": "HG012012",
