@@ -5,7 +5,7 @@ from snovault import TYPES
 from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 from snosearch.parsers import QueryString
 from snovault.compat import bytes_
-from igvfd.search_generator import search_generator
+from igvfd.searches.generator import search_generator
 
 import datetime
 import re
