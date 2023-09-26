@@ -52,6 +52,9 @@ def workflow():
             'status': {
                 'title': 'Status'
             },
+            'name': {
+                'title': 'Name'
+            },
             'lab': {
                 'title': 'Lab'
             },
