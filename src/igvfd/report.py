@@ -5,7 +5,7 @@ from snovault import TYPES
 from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 from snosearch.parsers import QueryString
 from snovault.compat import bytes_
-from igvfd.search_views import search_generator
+from igvfd.searches.generator import search_generator
 
 import datetime
 import re
@@ -150,6 +150,7 @@ def multitype_report_download(context, request):
     query_string = qs.get_query_string()
     response = request.embed(f'/multireport?{query_string}')
     facets = response['facets']
+    columns = response['result_columns']
     abstract_types = get_abstract_types(request)
     types_in_search_result = []
     for facet in facets:
@@ -166,7 +167,6 @@ def multitype_report_download(context, request):
     # Make sure we get all results
     request.GET['limit'] = 'all'
     results = search_generator(request)
-    columns = list_visible_columns_for_multitype_report_download(request, types_in_search_result, response['columns'])
 
     def format_header():
         newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, '/multireport/', request.query_string)
@@ -198,17 +198,27 @@ def multitype_report_download(context, request):
     request.response.app_iter = generate_rows()
     return request.response
 
+# only return the columns of the concrete types if the type is returned in search restult
 
-def list_visible_columns_for_multitype_report_download(request, types, report_response_columns):
-    """
-    Returns mapping of default columns for a set of types.
-    """
+
+def get_result_columns(request, facets, report_response_columns):
     columns = OrderedDict({'@id': {'title': 'ID'}})
     configs = request.params.getall('config')
+    # if config in query string
     if configs:
         columns.update(report_response_columns)
+
     else:
-        for type_str in types:
+        abstract_types = get_abstract_types(request)
+        types_in_search_result = []
+        for facet in facets:
+            if facet['field'] == 'type':
+                for term in facet['terms']:
+                    type_name = term['key']
+                    if type_name not in abstract_types:
+                        types_in_search_result.append(term['key'])
+                break
+        for type_str in types_in_search_result:
             schema = request.registry[TYPES][type_str].schema
             search_config = request.registry[SEARCH_CONFIG].as_dict()[type_str]
 
@@ -226,6 +236,7 @@ def list_visible_columns_for_multitype_report_download(request, types, report_re
                     ] if name in schema['properties']
                 ))
     fields_requested = request.params.getall('field')
+    # if field in query string
     if fields_requested:
         limited_columns = OrderedDict()
         for field in fields_requested:
@@ -236,7 +247,7 @@ def list_visible_columns_for_multitype_report_download(request, types, report_re
                 # objects to find property titles. In this case we'll just
                 # show the field's dotted path for now.
                 limited_columns[field] = {'title': field}
-                for type_str in types:
+                for type_str in types_in_search_result:
                     schema = request.registry[TYPES][type_str].schema
                     if field in schema['properties']:
                         limited_columns[field] = {

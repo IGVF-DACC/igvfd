@@ -171,7 +171,7 @@ def test_search_views_search_generator(workbook, dummy_request, threadlocals):
     dummy_request.environ['QUERY_STRING'] = (
         'type=*&limit=all'
     )
-    from igvfd.search_views import search_generator
+    from igvfd.searches.generator import search_generator
     r = search_generator(dummy_request)
     assert '@graph' in r
     assert len(r.keys()) == 1
@@ -186,7 +186,7 @@ def test_search_views_search_generator_field_specified(workbook, dummy_request, 
     dummy_request.environ['QUERY_STRING'] = (
         'type=User&field=@id&limit=5'
     )
-    from igvfd.search_views import search_generator
+    from igvfd.searches.generator import search_generator
     r = search_generator(dummy_request)
     assert '@graph' in r
     assert len(r.keys()) == 1
