@@ -245,15 +245,15 @@ def test_constructs_backend_initialize_backend_construct(
                         },
                         {
                             'Name': 'APPCONFIG_APPLICATION',
-                            'Value': 'igvfd-some-branch'
+                            'Value': 'igvfd-demo-some-branch-application'
                         },
                         {
                             'Name': 'APPCONFIG_ENVIRONMENT',
-                            'Value': 'demo'
+                            'Value': 'igvfd-demo-some-branch-environment'
                         },
                         {
                             'Name': 'APPCONFIG_PROFILE',
-                            'Value': 'igvfd-some-branch-demo-feature-flags'
+                            'Value': 'igvfd-demo-some-branch-configuration-profile'
                         }
                     ],
                     'Essential': True,
