@@ -180,7 +180,7 @@
     },
     {
         "aliases": [
-            "igvf:CRISPR"
+            "igvf:CERES-seq"
         ],
         "award": "1UM1HG012053-01",
         "lab": "/labs/tim-reddy/",
@@ -189,7 +189,7 @@
         "samples": [
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
-        "assay_term": "/assay-terms/igvf:CRISPR screen/",
+        "assay_term": "/assay-terms/igvf:CRISPR/",
         "preferred_assay_title": "CERES-seq"
     }
 ]
