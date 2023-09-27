@@ -71,13 +71,13 @@ class FeatureFlagService(Construct):
         self._define_configuration_version_cleaner()
 
     def _define_name(self) -> None:
-        self.name = f'{self.props.config.common.project_name}-{self.props.config.branch}'
+        self.name = f'{self.props.config.common.project_name}-{self.props.config.name}-{self.props.config.branch}'
 
     def _define_application(self) -> None:
         self.application = CfnApplication(
             self,
             'Application',
-            name=self.name,
+            name=f'{self.name}-application',
         )
 
     def _define_environment(self) -> None:
@@ -85,7 +85,7 @@ class FeatureFlagService(Construct):
             self,
             'Environment',
             application_id=self.application.ref,
-            name=self.props.config.name,
+            name=f'{self.name}-environment',
         )
 
     def _define_configuration_profile(self) -> None:
@@ -94,7 +94,7 @@ class FeatureFlagService(Construct):
             'ConfigurationProfile',
             application_id=self.application.ref,
             location_uri='hosted',
-            name=f'{self.name}-{self.props.config.name}-feature-flags',
+            name=f'{self.name}-configuration-profile',
             type='AWS.AppConfig.FeatureFlags',
         )
 
@@ -102,7 +102,7 @@ class FeatureFlagService(Construct):
         self.deployment_strategy = CfnDeploymentStrategy(
             self,
             'DeploymentStrategy',
-            name=f'{self.name}-{self.props.config.name}-deployment-strategy',
+            name=f'{self.name}-deployment-strategy',
             deployment_duration_in_minutes=0,
             growth_factor=100,
             replicate_to='NONE',
