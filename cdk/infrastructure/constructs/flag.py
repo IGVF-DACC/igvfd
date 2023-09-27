@@ -1,7 +1,5 @@
 import json
 
-from aws_cdk import App
-from aws_cdk import Stack
 from aws_cdk import CustomResource
 from aws_cdk import Duration
 
