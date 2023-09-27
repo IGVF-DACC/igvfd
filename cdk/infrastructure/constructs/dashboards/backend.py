@@ -207,6 +207,6 @@ class BackendDashboard(Construct):
         self.dashboard = Dashboard(
             self,
             'Dashboard',
-            dashboard_name=f'{self.props.config.common.project_name}-{self.props.config.branch}-backend',
+            dashboard_name=f'{self.props.config.common.project_name}-{self.props.config.name}-{self.props.config.branch}-backend',
         )
         self.dashboard.add_widgets(*self._widgets)
