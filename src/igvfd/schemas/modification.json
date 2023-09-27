@@ -46,6 +46,7 @@
                 "Cas12a",
                 "Cas13",
                 "dCas9",
+                "nCas9",
                 "SpG",
                 "SpRY"
             ]
@@ -64,6 +65,7 @@
                 "eA3A-T44D-S45A",
                 "ANTI-FLAG",
                 "KRAB",
+                "M-MLV RT (PE2)",
                 "p300",
                 "TdCBE",
                 "TdCGBE",

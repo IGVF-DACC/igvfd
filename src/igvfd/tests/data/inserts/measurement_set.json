@@ -191,5 +191,19 @@
         ],
         "assay_term": "/assay-terms/igvf:CRISPR/",
         "preferred_assay_title": "CERES-seq"
+    },
+    {
+        "aliases": [
+            "igvf:variant FlowFISH"
+        ],
+        "award": "1UM1HG011972-01",
+        "lab": "/labs/jesse-engreitz/",
+        "status": "released",
+        "uuid": "185b7ca8-e741-4ffe-96af-4b91c13428b4",
+        "samples": [
+            "igvf:alias2"
+        ],
+        "assay_term": "/assay-terms/OBI_0003133/",
+        "preferred_assay_title": "variant FlowFISH"
     }
 ]
