@@ -40,7 +40,9 @@ class Donor(Item):
 class HumanDonor(Donor):
     item_type = 'human_donor'
     schema = load_schema('igvfd:schemas/human_donor.json')
-    embedded_with_frame = Donor.embedded_with_frame
+    embedded_with_frame = Donor.embedded_with_frame + [
+        Path('related_donors.donor', include=['@id', 'accession']),
+    ]
     audit_inherit = [
         'related_donors.donor'
     ]

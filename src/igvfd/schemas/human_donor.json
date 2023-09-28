@@ -156,7 +156,8 @@
         "human_donor_identifiers"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "related_donors.donor.accession"
     ],
     "changelog": "/profiles/changelogs/human_donor.md"
 }
