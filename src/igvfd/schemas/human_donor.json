@@ -158,8 +158,7 @@
     ],
     "exact_searchable_fields": [
         "@type",
-        "related_donors.donor.accession",
-        "dbxrefs"
+        "related_donors.donor.accession"
     ],
     "changelog": "/profiles/changelogs/human_donor.md"
 }

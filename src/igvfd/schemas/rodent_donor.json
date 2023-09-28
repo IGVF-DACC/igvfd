@@ -158,7 +158,6 @@
     ],
     "exact_searchable_fields": [
         "@type",
-        "dbxrefs",
         "rodent_identifier"
     ],
     "changelog": "/profiles/changelogs/rodent_donor.md"

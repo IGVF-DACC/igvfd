@@ -1,6 +1,6 @@
 {
-    "hash": "753d420819cba4dc7b7c4c56bdf060b3",
-    "index_name": "rodent_donor_753d4208",
+    "hash": "1b3997a479f1add6dd72ba79e97212ae",
+    "index_name": "rodent_donor_1b3997a4",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -250,6 +250,7 @@
                         "type": "keyword"
                     },
                     "genotype": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "individual_rodent": {
@@ -327,7 +328,132 @@
                         "type": "text"
                     },
                     "phenotypic_features": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "award": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "feature": {
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "ancestors": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "keyword"
+                                    },
+                                    "deprecated_ntr_terms": {
+                                        "type": "keyword"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "is_a": {
+                                        "type": "keyword"
+                                    },
+                                    "name": {
+                                        "type": "keyword"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "ontology": {
+                                        "type": "keyword"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "synonyms": {
+                                        "type": "keyword"
+                                    },
+                                    "term_id": {
+                                        "type": "keyword"
+                                    },
+                                    "term_name": {
+                                        "copy_to": "_fuzzy",
+                                        "type": "keyword"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "observation_date": {
+                                "type": "keyword"
+                            },
+                            "quantity": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "quantity_units": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "product_id": {
                         "type": "keyword"
@@ -339,6 +465,7 @@
                         "type": "keyword"
                     },
                     "rodent_identifier": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "schema_version": {
@@ -414,6 +541,7 @@
                         "type": "keyword"
                     },
                     "strain_background": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "submitted_by": {
