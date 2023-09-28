@@ -153,11 +153,13 @@
         "dbxrefs",
         "taxa",
         "ethnicities",
-        "human_donor_identifiers"
+        "human_donor_identifiers",
+        "phenotypic_features.feature.term_name"
     ],
     "exact_searchable_fields": [
         "@type",
-        "related_donors.donor.accession"
+        "related_donors.donor.accession",
+        "dbxrefs"
     ],
     "changelog": "/profiles/changelogs/human_donor.md"
 }
