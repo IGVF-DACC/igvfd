@@ -3,6 +3,7 @@ from snovault import (
     collection,
     load_schema
 )
+from snovault.util import Path
 from .base import (
     Item,
     paths_filtered_by_status
@@ -24,6 +25,12 @@ class Workflow(Item):
     rev = {
         'analysis_steps': ('AnalysisStep', 'workflow')
     }
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
+        Path('standards_page', include=['@id', 'title'])
+    ]
 
     @calculated_property(schema={
         'title': 'Analysis Steps',
