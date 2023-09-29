@@ -1,5 +1,8 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Minor changes since schema version 10
+* Expand `collections` enum list to include `ClinGen`, `GREGoR`, and `MaveDB`.
+
 ### Schema version 10
 
 * Rename `source` to `sources`.

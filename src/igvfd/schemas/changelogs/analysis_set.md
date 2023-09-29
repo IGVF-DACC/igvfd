@@ -7,6 +7,7 @@
 * Add `control_for`.
 * Add `publication_identifiers`.
 * Convert `donors` to be calculated from `samples`.
+* Expand `collections` enum list to include `ClinGen`, `GREGoR`, and `MaveDB`.
 
 ### Schema version 3
 

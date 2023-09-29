@@ -3,6 +3,7 @@
 ### Minor changes since schema version 18
 
 * Add `construct_library_sets`, `moi`, `nucleic_acid_delivery`, `time_post_library_delivery`, and `time_post_library_delivery_units`.
+* Expand `collections` enum list to include `ClinGen`, `GREGoR`, and `MaveDB`.
 
 ### Schema version 18
 

@@ -4,6 +4,7 @@
 
 * Add `summary`.
 * Add `construct_library_sets`.
+* Expand `collections` enum list to include `ClinGen`, `GREGoR`, and `MaveDB`.
 
 ### Schema version 4
 

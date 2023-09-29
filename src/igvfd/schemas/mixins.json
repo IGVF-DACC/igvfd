@@ -114,7 +114,10 @@
             "items": {
                 "type": "string",
                 "enum": [
-                    "ENCODE"
+                    "ClinGen",
+                    "ENCODE",
+                    "GREGoR",
+                    "MaveDB"
                 ]
             }
         },
