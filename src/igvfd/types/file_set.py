@@ -121,12 +121,7 @@ class AnalysisSet(FileSet):
         }
     )
     def donors(self, request, samples=None):
-        donor_objects = []
-        if samples:
-            for sample in samples:
-                donor_objects += request.embed(sample, '@@object').get('donors', [])
-        donor_objects = list(donor_objects)
-        return donor_objects
+        return list(set(request.embed(sample, '@@object').get('donors', []) for sample in (samples or [])))
 
 
 @collection(
@@ -329,12 +324,7 @@ class MeasurementSet(FileSet):
         }
     )
     def donors(self, request, samples=None):
-        donor_objects = []
-        if samples:
-            for sample in samples:
-                donor_objects += request.embed(sample, '@@object').get('donors', [])
-        donor_objects = list(donor_objects)
-        return donor_objects
+        return list(set(request.embed(sample, '@@object').get('donors', []) for sample in (samples or [])))
 
 
 @collection(
@@ -450,12 +440,7 @@ class AuxiliarySet(FileSet):
         }
     )
     def donors(self, request, samples=None):
-        donor_objects = []
-        if samples:
-            for sample in samples:
-                donor_objects += request.embed(sample, '@@object').get('donors', [])
-        donor_objects = list(donor_objects)
-        return donor_objects
+        return list(set(request.embed(sample, '@@object').get('donors', []) for sample in (samples or [])))
 
 
 @collection(
