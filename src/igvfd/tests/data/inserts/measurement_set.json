@@ -163,5 +163,33 @@
         ],
         "assay_term": "/assay-terms/NTR_0000744/",
         "preferred_assay_title": "snMCT-seq"
+    },
+    {
+        "aliases": [
+            "igvf:SUPERSTARR"
+        ],
+        "award": "1UM1HG012053-01",
+        "lab": "/labs/tim-reddy/",
+        "status": "released",
+        "uuid": "bb40e507-93cb-4ba6-b0b2-fd73e4ba1736",
+        "samples": [
+            "/multiplexed-samples/IGVFSM0000MPXD/"
+        ],
+        "assay_term": "/assay-terms/igvf:starr-seq/",
+        "preferred_assay_title": "SUPERSTARR"
+    },
+    {
+        "aliases": [
+            "igvf:CERES-seq"
+        ],
+        "award": "1UM1HG012053-01",
+        "lab": "/labs/tim-reddy/",
+        "status": "released",
+        "uuid": "3f757230-b466-4da8-bae7-9a6f3c5ee290",
+        "samples": [
+            "/multiplexed-samples/IGVFSM0000MPXD/"
+        ],
+        "assay_term": "/assay-terms/igvf:CRISPR/",
+        "preferred_assay_title": "CERES-seq"
     }
 ]

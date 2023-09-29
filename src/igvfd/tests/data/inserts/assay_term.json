@@ -29,7 +29,10 @@
         "term_id": "OBI:0003133",
         "term_name": "cas mediated mutagenesis",
         "status": "released",
-        "uuid": "0393b224-8f87-5e94-7aeb-faff044f707d"
+        "uuid": "0393b224-8f87-5e94-7aeb-faff044f707d",
+        "aliases": [
+            "igvf:CRISPR"
+        ]
     },
     {
         "term_id": "OBI:0002631",
