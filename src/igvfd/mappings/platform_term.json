@@ -1,6 +1,6 @@
 {
-    "hash": "c8a1ebdc12ef015d09ca69d80c882ba1",
-    "index_name": "platform_term_c8a1ebdc",
+    "hash": "5dfc3bb391f1794505e3ea580089470e",
+    "index_name": "platform_term_5dfc3bb3",
     "item_type": "platform_term",
     "mapping": {
         "dynamic_templates": [
@@ -157,6 +157,9 @@
                         "type": "keyword"
                     },
                     "ancestors": {
+                        "type": "keyword"
+                    },
+                    "company": {
                         "type": "keyword"
                     },
                     "creation_timestamp": {
