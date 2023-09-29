@@ -25,13 +25,6 @@ def phenotype_term():
         },
         'facet_groups': [
             {
-                'title': 'Phenotype',
-                'facet_fields': [
-                    'term_id',
-                    'term_name',
-                ],
-            },
-            {
                 'title': 'Provenance',
                 'facet_fields': [
                     'type',

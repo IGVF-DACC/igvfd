@@ -27,8 +27,7 @@ def platform_term():
             {
                 'title': 'Platform',
                 'facet_fields': [
-                    'term_id',
-                    'term_name',
+                    'company'
                 ],
             },
             {
