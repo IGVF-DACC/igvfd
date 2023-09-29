@@ -293,6 +293,11 @@ def config(instance_type, capacity_config, engine_version):
                 }
             ],
         },
+        feature_flag_service={
+            'flags': {
+                'block_database_writes': False
+            }
+        },
         backend={
             'cpu': 1024,
             'memory_limit_mib': 2048,
@@ -392,6 +397,23 @@ def invalidation_queue(stack, existing_resources):
         props=QueueProps(
             existing_resources=existing_resources,
         ),
+    )
+
+
+@pytest.fixture
+def feature_flag_service(stack, config):
+    from infrastructure.constructs.flag import FeatureFlagServiceProps
+    from infrastructure.constructs.flag import FeatureFlagService
+    return FeatureFlagService(
+        stack,
+        'FeatureFlagService',
+        props=FeatureFlagServiceProps(
+            flags={
+                'flag1': True,
+                'flag2': False
+            },
+            config=config,
+        )
     )
 
 

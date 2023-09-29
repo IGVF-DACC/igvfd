@@ -253,6 +253,7 @@ def main(global_config, **local_config):
         config.include('.tests.testing_views')
 
     config.include('igvfd.mappings.register')
+    config.include('igvfd.feature_flags')
 
     app = config.make_wsgi_app()
 

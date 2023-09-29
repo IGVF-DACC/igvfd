@@ -16,6 +16,9 @@ from infrastructure.constructs.queue import QueueProps
 from infrastructure.constructs.queue import TransactionQueue
 from infrastructure.constructs.queue import InvalidationQueue
 
+from infrastructure.constructs.flag import FeatureFlagServiceProps
+from infrastructure.constructs.flag import FeatureFlagService
+
 from infrastructure.constructs.opensearch import Opensearch
 
 from infrastructure.constructs.existing.types import ExistingResourcesClass
@@ -57,6 +60,14 @@ class BackendStack(cdk.Stack):
                 existing_resources=self.existing_resources,
             ),
         )
+        self.feature_flag_service = FeatureFlagService(
+            self,
+            'FeatureFlags',
+            props=FeatureFlagServiceProps(
+                **config.feature_flag_service,
+                config=config,
+            )
+        )
         self.backend = Backend(
             self,
             'Backend',
@@ -68,6 +79,7 @@ class BackendStack(cdk.Stack):
                 opensearch_multiplexer=opensearch_multiplexer,
                 transaction_queue=self.transaction_queue,
                 invalidation_queue=self.invalidation_queue,
+                feature_flag_service=self.feature_flag_service,
             )
         )
         self.indexer = Indexer(
