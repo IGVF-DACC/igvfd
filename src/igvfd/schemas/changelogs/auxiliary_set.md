@@ -1,8 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
-### Minor changes since schema version 2
+### Minor changes since schema version 3
 
 * Restrict `moi` and `construct_libraries` to submittable by admins only. These properties will be moved to Sample objects.
+* Convert `donors` to be calculated from `samples`.
 
 ### Schema version 3
 

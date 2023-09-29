@@ -2,7 +2,8 @@
 
 ### Schema version 6
 
-* Require `samples` or `donors`.
+* Require `samples`.
+* Convert `donors` to be calculated from `samples`.
 
 ### Minor changes since schema version 5
 
