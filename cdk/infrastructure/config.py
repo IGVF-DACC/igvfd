@@ -91,6 +91,7 @@ config: Dict[str, Any] = {
             'feature_flag_service': {
                 'flags': {
                     'block_database_writes': False,
+                    'new_flag': True,
                 }
             },
             'backend': {
