@@ -204,20 +204,20 @@ def multitype_report_download(context, request):
 def get_result_columns(request, facets, report_response_columns):
     columns = OrderedDict({'@id': {'title': 'ID'}})
     configs = request.params.getall('config')
+    abstract_types = get_abstract_types(request)
+    types_in_search_result = []
+    for facet in facets:
+        if facet['field'] == 'type':
+            for term in facet['terms']:
+                type_name = term['key']
+                if type_name not in abstract_types:
+                    types_in_search_result.append(term['key'])
+            break
     # if config in query string
     if configs:
         columns.update(report_response_columns)
 
     else:
-        abstract_types = get_abstract_types(request)
-        types_in_search_result = []
-        for facet in facets:
-            if facet['field'] == 'type':
-                for term in facet['terms']:
-                    type_name = term['key']
-                    if type_name not in abstract_types:
-                        types_in_search_result.append(term['key'])
-                break
         for type_str in types_in_search_result:
             schema = request.registry[TYPES][type_str].schema
             search_config = request.registry[SEARCH_CONFIG].as_dict()[type_str]
