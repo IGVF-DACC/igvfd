@@ -224,8 +224,8 @@
         "control_for.aliases",
         "samples.accession",
         "samples.aliases",
-        "samples.donors.accession",
-        "samples.donors.aliases"
+        "donors.accession",
+        "donors.aliases"
     ],
     "changelog": "/profiles/changelogs/measurement_set.md"
 }
