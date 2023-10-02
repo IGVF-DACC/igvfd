@@ -98,7 +98,7 @@
         "award": "HG012012",
         "md5sum": "08ba1e3f1348f6bd383215ac528321b2",
         "file_format": "xml",
-        "content_type": "disease_gene",
+        "content_type": "diseases_genes",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
