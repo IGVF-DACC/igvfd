@@ -64,8 +64,8 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'h5ad': '.h5ad',
     'hdf5': '.h5',
     'idat': '.idat',
-    'obo': '.obo',
-    'owl': '.owl',
+    'obo': '.obo.gz',
+    'owl': '.owl.gz',
     'PWM': '.pwm',
     'mtx': '.mtx',
     'rcc': '.rcc',
@@ -81,7 +81,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'pairs': '.pairs.gz',
     'starch': '.starch',
     'nucle3d': '.nucle3d',
-    'xml': '.xml',
+    'xml': '.xml.gz',
     'yaml': '.yaml'
 }
 
