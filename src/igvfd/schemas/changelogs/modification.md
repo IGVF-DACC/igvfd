@@ -2,7 +2,8 @@
 
 ### Minor changes since schema version 3
 
-* Add `TdCBE`, `TdCGBE`, and `TdDE` to `fused_domain`.
+* Add `M-MLV RT (PE2)`, `TdCBE`, `TdCGBE`, and `TdDE` to `fused_domain`.
+* Add `nCas9` to `cas`.
 
 ### Schema version 3
 

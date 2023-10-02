@@ -97,5 +97,19 @@
         "status": "in progress",
         "product_id": "addgene:148021",
         "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "c24c5e67-1a5a-419d-80ec-97948a1b91cd",
+        "lab": "jesse-engreitz",
+        "award": "1UM1HG011972-01",
+        "aliases": [
+            "igvf:prime_editing_system_2"
+        ],
+        "cas": "nCas9",
+        "fused_domain": "M-MLV RT (PE2)",
+        "modality": "prime editing",
+        "status": "in progress",
+        "product_id": "addgene:132775",
+        "cas_species": "Streptococcus pyogenes (Sp)"
     }
 ]
