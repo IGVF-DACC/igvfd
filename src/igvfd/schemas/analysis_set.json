@@ -55,6 +55,10 @@
                 "description": "A file set with files that are used in this analysis set.",
                 "type": "string",
                 "linkTo": "FileSet"
+            },
+            "submissionExample": {
+                "appscript": "john-doe:file_set01 or IGVFDS4321DCBA",
+                "igvf_utils": "john-doe:file_set01 or IGVFDS4321DCBA"
             }
         }
     },

@@ -66,12 +66,20 @@
             "title": "RS Identifier",
             "description": "An NCBI assigned reference SNP cluster ID for the variant.",
             "type": "string",
-            "pattern": "^rs[0-9]+$"
+            "pattern": "^rs[0-9]+$",
+            "submissionExample": {
+                "appscript": "rs334",
+                "igvf_utils": "rs334"
+            }
         },
         "assembly": {
             "enum": [
                 "GRCh38"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "Homo sapiens",
+                "igvf_utils": "Homo sapiens"
+            }
         },
         "chromosome": {
             "title": "Chromosome",
@@ -103,21 +111,33 @@
                 "chrX",
                 "chrY",
                 "chrM"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "chr1",
+                "igvf_utils": "chr1"
+            }
         },
         "refseq_id": {
             "title": "RefSeq Sequence Identifier",
             "description": "The RefSeq sequence identifier for the sequence this variant is located in.",
             "comment": "If there is no RefSeq sequence identifier available for the sequence this variant is located in, 'reference_sequence' should be submitted instead.",
             "type": "string",
-            "pattern": "^((NC_)[0-9]{6}\\.[0-9]{1,2})$"
+            "pattern": "^((NC_)[0-9]{6}\\.[0-9]{1,2})$",
+            "submissionExample": {
+                "appscript": "NC_001411018.1",
+                "igvf_utils": "NC_001411018.1"
+            }
         },
         "reference_sequence": {
             "title": "Reference Sequence",
             "description": "The reference sequence for the sequence this variant is located in.",
             "comment": "This should only be submitted if there is no RefSeq sequence identifier available for submission.",
             "type": "string",
-            "pattern": "^[ATCG]*$"
+            "pattern": "^[ATCG]*$",
+            "submissionExample": {
+                "appscript": "AGGAAATCAA",
+                "igvf_utils": "AGGAAATCAA"
+            }
         },
         "associated_gwas": {
             "title": "Associated Genome-wide Association Studies (GWAS)",
@@ -129,6 +149,10 @@
                 "type": "string",
                 "pattern": "^GCST[0-9]+$",
                 "minItems": 1
+            },
+            "submissionExample": {
+                "appscript": "GCST000510",
+                "igvf_utils": "GCST000510"
             }
         }
     },

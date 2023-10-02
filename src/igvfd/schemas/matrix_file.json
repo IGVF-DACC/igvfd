@@ -60,7 +60,11 @@
                 "sparse peak count matrix",
                 "sparse transcript count matrix",
                 "transcriptome annotations"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "contact matrix",
+                "igvf_utils": "contact matrix"
+            }
         },
         "dimension1": {
             "title": "Dimension 1",
@@ -73,7 +77,11 @@
                 "time",
                 "treatment",
                 "variant"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "cell",
+                "igvf_utils": "cell"
+            }
         },
         "dimension2": {
             "title": "Dimension 2",
@@ -86,14 +94,22 @@
                 "time",
                 "treatment",
                 "variant"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "gene",
+                "igvf_utils": "gene"
+            }
         },
         "file_format": {
             "enum": [
                 "h5ad",
                 "hdf5",
                 "mtx"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "h5ad",
+                "igvf_utils": "h5ad"
+            }
         }
     },
     "fuzzy_searchable_fields": [

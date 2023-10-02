@@ -50,12 +50,20 @@
             "comment": "Content Type describes the content of the file.",
             "enum": [
                 "seqspec"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "seqspec",
+                "igvf_utils": "seqspec"
+            }
         },
         "file_format": {
             "enum": [
                 "yaml"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "yaml",
+                "igvf_utils": "yaml"
+            }
         }
     },
     "fuzzy_searchable_fields": [

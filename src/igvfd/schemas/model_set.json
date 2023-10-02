@@ -65,13 +65,21 @@
         "model_name": {
             "title": "Model Name",
             "description": "The custom lab name given to this predictive model set.",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "ABC model",
+                "igvf_utils": "ABC model"
+            }
         },
         "model_version": {
             "title": "Model Version",
             "description": "The semantic version number for this predictive model set.",
             "type": "string",
-            "pattern": "^v[0-9]\\.[0-9]\\.[1-9]$"
+            "pattern": "^v[0-9]\\.[0-9]\\.[1-9]$",
+            "submissionExample": {
+                "appscript": "v1.0.1",
+                "igvf_utils": "v1.0.1"
+            }
         },
         "file_set_type": {
             "title": "File Set Type",
@@ -82,7 +90,11 @@
                 "random forest",
                 "decision tree",
                 "support vector machine"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "neural network",
+                "igvf_utils": "neural network"
+            }
         },
         "prediction_objects": {
             "title": "Prediction Objects",
@@ -101,6 +113,10 @@
                     "regulatory elements",
                     "genes"
                 ]
+            },
+            "submissionExample": {
+                "appscript": "[\"coding variants\", \"genes\"]",
+                "igvf_utils": "coding variants, genes"
             }
         },
         "input_file_sets": {
@@ -114,19 +130,31 @@
                 "description": "A file set that serves as input for the derivation of this model set.",
                 "type": "string",
                 "linkTo": "FileSet"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:measurement_set01\", \"TSTDS98084730\"]",
+                "igvf_utils": "john-doe:measurement_set01, TSTDS98084730"
             }
         },
         "model_zoo_location": {
             "title": "Model Zoo Location",
             "description": "The link to the model on the Kipoi repository.",
             "type": "string",
-            "pattern": "^https?://kipoi\\.org/models/(\\S+)$"
+            "pattern": "^https?://kipoi\\.org/models/(\\S+)$",
+            "submissionExample": {
+                "appscript": "https://kipoi.org/models/Basset/",
+                "igvf_utils": "https://kipoi.org/models/Basset/"
+            }
         },
         "software_version": {
             "title": "Software Version",
             "description": "Version of software used for the derivation of this model set.",
             "type": "string",
-            "linkTo": "SoftwareVersion"
+            "linkTo": "SoftwareVersion",
+            "submissionExample": {
+                "appscript": "igvf:bedtoolsv109 or bedtools-v.1.0.9",
+                "igvf_utils": "igvf:bedtoolsv109 or bedtools-v.1.0.9"
+            }
         },
         "samples": {
             "comment": "Do not submit. Model sets should not specify any samples."

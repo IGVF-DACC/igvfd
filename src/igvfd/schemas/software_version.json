@@ -53,27 +53,43 @@
             "description": "Unique name of the software package.",
             "comment": "See software.json for available identifiers.",
             "type": "string",
-            "linkTo": "Software"
+            "linkTo": "Software",
+            "submissionExample": {
+                "appscript": "igvf:bedtools or bedtools",
+                "igvf_utils": "igvf:bedtools or bedtools"
+            }
         },
         "version": {
             "title": "Version",
             "description": "The version of a particular software.",
             "comment": "A string to identify a specific version of the software.",
             "type": "string",
-            "pattern": "^[0-9].*"
+            "pattern": "^[0-9].*",
+            "submissionExample": {
+                "appscript": "2.16.2",
+                "igvf_utils": "2.16.2"
+            }
         },
         "download_id": {
             "title": "Download ID",
             "description": "The MD5 checksum, SHA-1 commit ID, image hash, or similar permanent identifier of the particular version of software used.",
             "comment": "Prefer SHA-1 of commit ID if available, otherwise use md5sum of downloaded software.",
             "type": "string",
-            "format": "hex"
+            "format": "hex",
+            "submissionExample": {
+                "appscript": "5e19e19 or 0038f918e316f4ee5a5d7bd65e895234",
+                "igvf_utils": "5e19e19 or 0038f918e316f4ee5a5d7bd65e895234"
+            }
         },
         "downloaded_url": {
             "title": "Download URL",
             "description": "An external resource to track the version of the software downloaded.",
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "submissionExample": {
+                "appscript": "https://github.com/arq5x/bedtools/archive/v2.16.2.tar.gz",
+                "igvf_utils": "https://github.com/arq5x/bedtools/archive/v2.16.2.tar.gz"
+            }
         }
     },
     "fuzzy_searchable_fields": [],

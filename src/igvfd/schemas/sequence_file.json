@@ -77,33 +77,53 @@
             "enum": [
                 "reads",
                 "subreads"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "reads",
+                "igvf_utils": "reads"
+            }
         },
         "file_format": {
             "enum": [
                 "bam",
                 "fastq"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "fastq",
+                "igvf_utils": "fastq"
+            }
         },
         "dbxrefs": {
             "items": {
                 "title": "External identifier",
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
                 "type": "string",
-                "pattern": "^(SRA:(SRR|SRX)\\d+)$"
+                "pattern": "^(SRA:(SRR|SRX)\\d+)$",
+                "submissionExample": {
+                    "appscript": "SRA:SRR1234 or SRA:SRX1234",
+                    "igvf_utils": "SRA:SRR1234 or SRA:SRX1234"
+                }
             }
         },
         "flowcell_id": {
             "title": "Flowcell ID",
             "description": "The alphanumeric identifier for the flowcell of a sequencing machine.",
             "type": "string",
-            "pattern": "^[a-zA-Z0-9]+$"
+            "pattern": "^[a-zA-Z0-9]+$",
+            "submissionExample": {
+                "appscript": "HJTW3BBXY",
+                "igvf_utils": "HJTW3BBXY"
+            }
         },
         "lane": {
             "title": "Lane",
             "description": "An integer identifying the lane of a sequencing machine.",
             "type": "integer",
-            "minimum": 1
+            "minimum": 1,
+            "submissionExample": {
+                "appscript": 1,
+                "igvf_utils": 1
+            }
         },
         "read_count": {
             "title": "Read Count",
@@ -144,13 +164,21 @@
             "title": "Sequencing Platform",
             "description": "The measurement device used to produce sequencing data.",
             "type": "string",
-            "linkTo": "PlatformTerm"
+            "linkTo": "PlatformTerm",
+            "submissionExample": {
+                "appscript": "/platform-terms/EFO_0004203/",
+                "igvf_utils": "/platform-terms/EFO_0004203/"
+            }
         },
         "sequencing_run": {
             "title": "Sequencing Run",
             "description": "An ordinal number indicating which sequencing run of the associated library that the file belongs to.",
             "type": "integer",
-            "minimum": 1
+            "minimum": 1,
+            "submissionExample": {
+                "appscript": 2,
+                "igvf_utils": 2
+            }
         },
         "illumina_read_type": {
             "title": "Illumina Read Type",
@@ -162,7 +190,11 @@
                 "R3",
                 "I1",
                 "I2"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "R1",
+                "igvf_utils": "R1"
+            }
         },
         "seqspec": {
             "title": "Link to seqspec YAML File",
@@ -173,7 +205,12 @@
         "index": {
             "title": "Index",
             "description": "An Illumina index associated with the file.",
-            "type": "string"
+            "type": "string",
+            "linkTo": "ConfigurationFile",
+            "submissionExample": {
+                "appscript": "john-doe:configuration_file01 or IGVFFI1234ABCE",
+                "igvf_utils": "john-doe:configuration_file01 or IGVFFI1234ABCE"
+            }
         }
     },
     "fuzzy_searchable_fields": [

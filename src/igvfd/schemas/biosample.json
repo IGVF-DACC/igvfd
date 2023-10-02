@@ -75,13 +75,21 @@
             "title": "Lower Bound Age",
             "description": "Lower bound of age of the organism at the time of collection of the sample.",
             "comment": "To submit a biosample with a singular, defined age lower_bound_age and upper_bound_age should be equal. For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
-            "type": "number"
+            "type": "number",
+            "submissionExample": {
+                "appscript": 1,
+                "igvf_utils": 1
+            }
         },
         "upper_bound_age": {
             "title": "Upper Bound Age",
             "description": "Upper bound of age of the organism at the time of collection of the sample.",
             "comment": "To submit a biosample with a singular, defined age lower_bound_age and upper_bound_age should be equal. For samples from human donors older than 89 years, the lower bound of age has to be 90 and upper bound has to be 90, for de-identification purposes.",
-            "type": "number"
+            "type": "number",
+            "submissionExample": {
+                "appscript": 21,
+                "igvf_utils": 21
+            }
         },
         "age_units": {
             "title": "Age Units",
@@ -94,7 +102,11 @@
                 "week",
                 "month",
                 "year"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "year",
+                "igvf_utils": "year"
+            }
         },
         "sample_terms": {
             "title": "Sample Terms",
@@ -109,6 +121,10 @@
                 "type": "string",
                 "comment": "See sample_term.json for available identifiers.",
                 "linkTo": "SampleTerm"
+            },
+            "submissionExample": {
+                "appscript": "[\"/sample-terms/UBERON_0002369/\", \"/sample-terms/UBERON_0001388/\"]",
+                "igvf_utils": "/sample-terms/UBERON_0002369/, /sample-terms/UBERON_0001388/"
             }
         },
         "disease_terms": {
@@ -123,6 +139,10 @@
                 "comment": "See phenotype_term.json for available identifiers.",
                 "type": "string",
                 "linkTo": "PhenotypeTerm"
+            },
+            "submissionExample": {
+                "appscript": "[\"/phenotype-terms/MONDO_0008564/\", \"/phenotype-terms/MONDO_0005148/\"]",
+                "igvf_utils": "/phenotype-terms/MONDO_0008564/, /phenotype-terms/MONDO_0005148/"
             }
         },
         "nih_institutional_certification": {
@@ -130,7 +150,11 @@
             "description": "Institutional certification given by the NIH for human biosamples.",
             "comment": "Required for IGVF human biosamples.",
             "type": "string",
-            "pattern": "^NIC[A-Z0-9]+$"
+            "pattern": "^NIC[A-Z0-9]+$",
+            "submissionExample": {
+                "appscript": "NIC00017",
+                "igvf_utils": "NIC00017"
+            }
         },
         "pooled_from": {
             "title": "Biosamples Pooled From",
@@ -144,6 +168,10 @@
                 "comment": "See biosample.json for available identifiers.",
                 "type": "string",
                 "linkTo": "Biosample"
+            },
+            "submissionExample": {
+                "appscript": "TSTSM02881437 or john-doe:tissue01",
+                "igvf_utils": "TSTSM02881437 or john-doe:tissue01"
             }
         },
         "part_of": {
@@ -151,7 +179,11 @@
             "description": "Links to a biosample which represents a larger sample from which this sample was taken regardless of whether it is a tissue taken from an organism or smaller slices of a piece of tissue or aliquots of a cell growth.",
             "comment": "For other specific relationships such as differentiation or hosting there are separate properties.",
             "type": "string",
-            "linkTo": "Biosample"
+            "linkTo": "Biosample",
+            "submissionExample": {
+                "appscript": "TSTSM02881437 or john-doe:tissue01",
+                "igvf_utils": "TSTSM02881437 or john-doe:tissue01"
+            }
         },
         "treatments": {
             "title": "Treatments",
@@ -164,6 +196,10 @@
                 "comment": "See treatment.json for available identifiers.",
                 "type": "string",
                 "linkTo": "Treatment"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:treatment01\", \"/treatments/ffe525b2-bd67-4021-835e-29748513b560/\"]",
+                "igvf_utils": "john-doe:treatment01, /treatments/ffe525b2-bd67-4021-835e-29748513b560/"
             }
         },
         "donors": {
@@ -178,6 +214,10 @@
                 "comment": "See concrete class human_donor.json or rodent_donor.json for available identifiers.",
                 "type": "string",
                 "linkTo": "Donor"
+            },
+            "submissionExample": {
+                "appscript": "[\"igvf:donor_of_HepG2\", \"/IGVFDO2837BRET\"]",
+                "igvf_utils": "igvf:donor_of_HepG2, IGVFDO2837BRET"
             }
         },
         "biomarkers": {
@@ -191,12 +231,20 @@
                 "description": "Associated biomarker.",
                 "type": "string",
                 "linkTo": "Biomarker"
+            },
+            "submissionExample": {
+                "appscript": "[\"igvf:biomarker01\", \"/biomarkers/ead6e36b-774e-4d34-9247-1bb02833d77d/\"]",
+                "igvf_utils": "igvf:biomarker01, /biomarkers/ead6e36b-774e-4d34-9247-1bb02833d77d/"
             }
         },
         "embryonic": {
             "title": "Embryonic",
             "description": "Biosample is embryonic.",
-            "type": "boolean"
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
         },
         "modifications": {
             "title": "Modifications",
@@ -211,6 +259,10 @@
                 "type": "string",
                 "comment": "See modification.json for available identifiers.",
                 "linkTo": "Modification"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:modification01\", \"/modifiations/ad8f26b5-4180-4301-97a4-38459ddf3dab/\"]",
+                "igvf_utils": "john-doe:modification01, /modifiations/ad8f26b5-4180-4301-97a4-38459ddf3dab/"
             }
         },
         "cellular_sub_pool": {
@@ -218,7 +270,11 @@
             "description": "Cellular sub-pool fraction of the sample. Also known as PKR and sub-library.",
             "comment": "Barcodes coming from different cellular sub-pools could not be directly comparable due to the higher probability of collisions. Examples of valid identifiers are: 8A, LW231-2, SS-PKR_1, 4e.AB(678), etc.",
             "type": "string",
-            "pattern": "^[a-zA-Z\\d_.()-]+(?:\\s[a-zA-Z\\d_.()-]+)*$"
+            "pattern": "^[a-zA-Z\\d_.()-]+(?:\\s[a-zA-Z\\d_.()-]+)*$",
+            "submissionExample": {
+                "appscript": "subPool_1234",
+                "igvf_utils": "subPool_l1234"
+            }
         }
     }
 }

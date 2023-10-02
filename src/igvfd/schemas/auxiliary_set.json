@@ -59,14 +59,48 @@
                 "oligo-conjugated lipids",
                 "oligo-conjugated antibodies",
                 "quantification barcode sequencing"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "cell hashing",
+                "igvf_utils": "cell hashing"
+            }
+        },
+        "construct_libraries": {
+            "permission": "import_items",
+            "comment": "Do not submit. This property has been moved to Sample objects.",
+            "title": "Construct Libraries",
+            "description": "The construct libraries of vectors introduced to the biosample used to produce data in this auxiliary set.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Construct Library",
+                "type": "string",
+                "linkTo": "ConstructLibrary"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:construct_library01\", \"TSTDS98084729\"]",
+                "igvf_utils": "john-doe:construct_library01, TSTDS98084729"
+            }
+        },
+        "moi": {
+            "permission": "import_items",
+            "comment": "Do not submit. This property has been moved to Sample objects.",
+            "title": "Multiplicity Of Infection",
+            "description": "The actual multiplicity of infection (MOI) for vectors introduced to the biosample used to produce data in this auxiliary set. At least one construct library must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
+            "type": "number",
+            "minimum": 0
         },
         "library_construction_platform": {
             "title": "Library Construction Platform",
             "description": "The platform used to construct the library sequenced in this auxiliary set.",
             "comment": "See platform_term.json for available identifiers.",
             "type": "string",
-            "linkTo": "PlatformTerm"
+            "linkTo": "PlatformTerm",
+            "submissionExample": {
+                "appscript": "/platform-terms/EFO_0004203/ or john-doe:platform01",
+                "igvf_utils": "/platform-terms/EFO_0004203/ or john-doe:platform01"
+            }
         }
     },
     "fuzzy_searchable_fields": [

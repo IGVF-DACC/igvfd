@@ -46,7 +46,11 @@
             "enum": [
                 "cell surface protein",
                 "marker gene"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "marker gene",
+                "igvf_utils": "marker gene"
+            }
         },
         "quantification": {
             "title": "Quantification",
@@ -71,13 +75,21 @@
             "items": {
                 "title": "Synonym",
                 "type": "string"
+            },
+            "submissionExample": {
+                "appscript": "[\"CD28\", \"Cluster of Differentiation 28\"]",
+                "igvf_utils": "CD28, Cluster of Differentiation 28"
             }
         },
         "gene": {
             "title": "Gene",
             "description": "Biomarker gene.",
             "type": "string",
-            "linkTo": "Gene"
+            "linkTo": "Gene",
+            "submissionExample": {
+                "appscript": "ENSMUSG00000044487 or john-doe:gene01",
+                "igvf_utils": "ENSMUSG00000044487 or john-doe:gene01"
+            }
         }
     },
     "fuzzy_searchable_fields": [

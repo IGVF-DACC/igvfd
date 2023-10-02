@@ -76,7 +76,11 @@
             "description": "The amount of time elapsed since death.",
             "comment": "Post-mortem interval for tissues should be reported, if known.",
             "type": "integer",
-            "minimum": 1
+            "minimum": 1,
+            "submissionExample": {
+                "appscript": 8,
+                "igvf_utils": 8
+            }
         },
         "pmi_units": {
             "title": "Post-mortem Interval Units",
@@ -89,14 +93,22 @@
                 "hour",
                 "day",
                 "week"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "minute",
+                "igvf_utils": "minute"
+            }
         },
         "ccf_id": {
             "title": "Common Coordinate Framework Identifier",
             "description": "HubMap Common Coordinate Framework unique identifier corresponding to the organ, biological structure, and spatial location of the tissue specimen.",
             "comment": "This identifier will be later linked to: https://portal.hubmapconsortium.org/ccf-eui",
             "type": "string",
-            "format": "uuid"
+            "format": "uuid",
+            "submissionExample": {
+                "appscript": "78d06f07-f1cb-4d21-b578-b01c7388804f",
+                "igvf_utils": "78d06f07-f1cb-4d21-b578-b01c7388804f"
+            }
         },
         "preservation_method": {
             "title": "Preservation Method",
@@ -106,23 +118,39 @@
             "enum": [
                 "cryopreservation",
                 "flash-freezing"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "flash-freezing",
+                "igvf_utils": "flash-freezing"
+            }
         },
         "date_obtained": {
-            "title": "Date Harvested"
+            "title": "Date Harvested",
+            "submissionExample": {
+                "appscript": "2021-08-29",
+                "igvf_utils": "2021-08-29"
+            }
         },
         "part_of": {
             "linkTo": [
                 "Tissue",
                 "WholeOrganism"
             ],
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "TSTSM02881438 or john-doe:whole_organism01",
+                "igvf_utils": "TSTSM02881438 or jjohn-doe:whole_organism01"
+            }
         },
         "pooled_from": {
             "items": {
                 "title": "Tissue Pooled From",
                 "linkTo": "Tissue",
                 "type": "string"
+            },
+            "submissionExample": {
+                "appscript": "TSTSM02881437 or john-doe:tissue01",
+                "igvf_utils": "TSTSM02881437 or john-doe:tissue01"
             }
         }
     },

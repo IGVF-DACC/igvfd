@@ -33,14 +33,22 @@
             "title": "Title",
             "description": "The complete name of the originating lab or vendor.",
             "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "submissionExample": {
+                "appscript": "Sigma",
+                "igvf_utils": "Sigma"
+            }
         },
         "name": {
             "title": "Name",
             "comment": "A short unique name for the source, current convention is lowercase and hyphen-delimited version of title (e.g. john-doe).",
             "type": "string",
             "pattern": "^[a-z0-9\\-]+$",
-            "uniqueKey": true
+            "uniqueKey": true,
+            "submissionExample": {
+                "appscript": "sigma",
+                "igvf_utils": "sigma"
+            }
         }
     },
     "fuzzy_searchable_fields": [

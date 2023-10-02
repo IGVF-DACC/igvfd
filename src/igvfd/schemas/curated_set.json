@@ -62,7 +62,11 @@
                 "variants",
                 "genes",
                 "guide RNAs"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "guide RNAs",
+                "igvf_utils": "guide RNAs"
+            }
         }
     },
     "fuzzy_searchable_fields": [

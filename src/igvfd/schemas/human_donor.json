@@ -91,6 +91,10 @@
                         ]
                     }
                 }
+            },
+            "submissionExample": {
+                "appscript": "[{\"donor\": \"john-doe:donor02\", \"relationship_type\": \"child\"}, {\"donor\": \"john-doe:donor03\", \"relationship_type\": \"sibling\"}]",
+                "igvf_utils": "{\"donor\": \"john-doe:donor02\", \"relationship_type\": \"child\"}, {\"donor\": \"john-doe:donor03\", \"relationship_type\": \"sibling\"}]"
             }
         },
         "ethnicities": {
@@ -128,12 +132,20 @@
                     "Puerto Rican",
                     "Yoruba"
                 ]
+            },
+            "submissionExample": {
+                "appscript": "Japanese",
+                "igvf_utils": "Japanese"
             }
         },
         "taxa": {
             "enum": [
                 "Homo sapiens"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "Homo sapiens",
+                "igvf_utils": "Homo sapiens"
+            }
         },
         "human_donor_identifiers": {
             "title": "Human Donor Identifiers",

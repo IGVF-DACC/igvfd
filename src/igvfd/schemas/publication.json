@@ -41,47 +41,83 @@
             "title": "Title",
             "description": "Title of the publication or communication.",
             "uniqueKey": true,
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "The EN-TEx resource of multi-tissue personal epigenomes & variant-impact models",
+                "igvf_utils": "The EN-TEx resource of multi-tissue personal epigenomes & variant-impact models"
+            }
         },
         "abstract": {
             "title": "Abstract",
             "description": "Abstract of the publication or communication.",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "Understanding how genetic variants impact molecular phenotypes is a key goal of functional genomics, currently hindered by reliance on a single haploid reference genome. Here, we present the EN-TEx resource of personal epigenomes, for ∼25 tissues and >10 assays in four donors (>1500 open-access functional genomic and proteomic datasets, in total). Each dataset is mapped to a matched, diploid personal genome, which has long-read phasing and structural variants.",
+                "igvf_utils": "Understanding how genetic variants impact molecular phenotypes is a key goal of functional genomics, currently hindered by reliance on a single haploid reference genome. Here, we present the EN-TEx resource of personal epigenomes, for ∼25 tissues and >10 assays in four donors (>1500 open-access functional genomic and proteomic datasets, in total). Each dataset is mapped to a matched, diploid personal genome, which has long-read phasing and structural variants."
+            }
         },
         "authors": {
             "title": "Authors",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "Joel Rozowsky, Jiahao Gao, Beatrice Borsari, et al.",
+                "igvf_utils": "Joel Rozowsky, Jiahao Gao, Beatrice Borsari, et al."
+            }
         },
         "date_published": {
             "title": "Publication Date",
             "description": "The date the publication or communication was published; must be in YYYY-MM-DD format.",
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "submissionExample": {
+                "appscript": "2023-03-30",
+                "igvf_utils": "2023-03-30"
+            }
         },
         "date_revised": {
             "title": "Date Revised",
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "submissionExample": {
+                "appscript": "2023-02-30",
+                "igvf_utils": "2023-02-30"
+            }
         },
         "issue": {
             "title": "Issue",
             "description": "The issue of the publication.",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "1",
+                "igvf_utils": "1"
+            }
         },
         "page": {
             "title": "Page",
             "description": "Pagination of the reference",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "13",
+                "igvf_utils": "13"
+            }
         },
         "volume": {
             "title": "Volume",
             "description": "The volume of the publication.",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "2",
+                "igvf_utils": "2"
+            }
         },
         "journal": {
             "title": "Journal",
             "description": "The journal of the publication.",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "Nature",
+                "igvf_utils": "Nature"
+            }
         },
         "publication_identifiers": {
             "items": {
@@ -89,7 +125,11 @@
                 "description": "An identifier that references data found in the object.",
                 "type": "string",
                 "uniqueKey": "publication:publication_identifiers",
-                "pattern": "^(PMID:[0-9]+|doi:10\\.[0-9]{4}[\\d\\s\\S:\\.\\/]+|PMCID:PMC[0-9]+|[0-9]{4}\\.[0-9]{4})$"
+                "pattern": "^(PMID:[0-9]+|doi:10\\.[0-9]{4}[\\d\\s\\S:\\.\\/]+|PMCID:PMC[0-9]+|[0-9]{4}\\.[0-9]{4})$",
+                "submissionExample": {
+                    "appscript": "PMID:34620214 or PMCID:PMC8495978 or doi:10.1186/s13059-021-02505-w",
+                    "igvf_utils": "PMID:34620214 or PMCID:PMC8495978 or doi:10.1186/s13059-021-02505-w"
+                }
             }
         },
         "published_by": {
@@ -107,6 +147,10 @@
                     "IGVF",
                     "ENCODE"
                 ]
+            },
+            "submissionExample": {
+                "appscript": "IGVF",
+                "igvf_utils": "IGVF"
             }
         }
     },

@@ -62,12 +62,20 @@
                 "read-depth signal",
                 "control signal",
                 "fold over change control"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "signal",
+                "igvf_utils": "signal"
+            }
         },
         "file_format": {
             "enum": [
                 "bigWig"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "bigWig",
+                "igvf_utils": "bigWig"
+            }
         },
         "strand_specificity": {
             "title": "Strand Specificity",
@@ -77,23 +85,39 @@
                 "plus",
                 "minus",
                 "unstranded"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "unstranded",
+                "igvf_utils": "unstranded"
+            }
         },
         "filtered": {
             "title": "Filtered",
             "description": "Indicates if the signal file is filtered.",
-            "type": "boolean"
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": true,
+                "igvf_utils": true
+            }
         },
         "normalized": {
             "title": "Normalized",
             "description": "Indicates if the signal file is normalized.",
-            "type": "boolean"
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
         },
         "start_view_position": {
             "title": "Start View Position",
             "description": "The 0-based coordinate for the default starting position when viewing the signal in a genome browser.",
             "type": "string",
-            "pattern": "^(chr(X|Y|M|[1-9]|1[0-9]|2[0-2]):[0-9]+)$"
+            "pattern": "^(chr(X|Y|M|[1-9]|1[0-9]|2[0-2]):[0-9]+)$",
+            "submissionExample": {
+                "appscript": "chr12:123456789",
+                "igvf_utils": "chr12:123456789"
+            }
         }
     },
     "fuzzy_searchable_fields": [

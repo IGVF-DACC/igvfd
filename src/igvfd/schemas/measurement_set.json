@@ -100,20 +100,47 @@
                 "Variant painting",
                 "Yeast two-hybrid",
                 "yN2H"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "10x multiome",
+                "igvf_utils": "10x multiome"
+            }
         },
         "readout": {
             "title": "Readout",
             "description": "The assay term corresponding to the data readout of this measurement set.",
             "comment": "This property should be used on CRISPR screen and MPRA measurement sets. See assay_term.json for available identifiers.",
             "type": "string",
-            "linkTo": "AssayTerm"
+            "linkTo": "AssayTerm",
+            "submissionExample": {
+                "appscript": "/assay-terms/OBI_0000716/ or igvf:chip-seq",
+                "igvf_utils": "/assay-terms/OBI_0000716/ or igvf:chip-seq"
+            }
         },
         "multiome_size": {
             "title": "Multiome Size",
             "description": "The number of datasets included in the multiome experiment this measurement set is a part of.",
             "type": "number",
-            "minimum": 2
+            "minimum": 2,
+            "submissionExample": {
+                "appscript": 2,
+                "igvf_utils": 2
+            }
+        },
+        "nucleic_acid_delivery": {
+            "permission": "import_items",
+            "comment": "Do not submit. This property has been moved to Sample objects.",
+            "title": "Nucleic Acid Delivery",
+            "type": "string",
+            "enum": [
+                "transfection",
+                "adenoviral transduction",
+                "lentiviral transduction"
+            ],
+            "submissionExample": {
+                "appscript": "transfection",
+                "igvf_utils": "transfection"
+            }
         },
         "control_file_sets": {
             "title": "Controls",
@@ -127,6 +154,10 @@
                 "comment": "See fileset.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "FileSet"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:measurement_set01\", \"TSTDS98084730\"]",
+                "igvf_utils": "john-doe:measurement_set01, TSTDS98084730"
             }
         },
         "sequencing_library_type": {
@@ -146,6 +177,10 @@
                     "polyA depleted",
                     "polyA enriched"
                 ]
+            },
+            "submissionExample": {
+                "appscript": "direct RNA",
+                "igvf_utils": "direct RNA"
             }
         },
         "auxiliary_sets": {
@@ -160,6 +195,10 @@
                 "comment": "See auxiliary_set.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "AuxiliarySet"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:auxiliary_set01\", \"TSTDS98084731\"]",
+                "igvf_utils": "john-doe:auxiliary_set01, TSTDS98084731"
             }
         }
     },

@@ -57,22 +57,38 @@
             "enum": [
                 "alignments",
                 "transcriptome alignments"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "alignments",
+                "igvf_utils": "alignments"
+            }
         },
         "file_format": {
             "enum": [
                 "bam"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "bam",
+                "igvf_utils": "bam"
+            }
         },
         "redacted": {
             "title": "Redacted",
             "description": "Indicates whether the alignments data have been sanitized (redacted) to prevent leakage of private and potentially identifying genomic information.",
-            "type": "boolean"
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
         },
         "filtered": {
             "title": "Filtered",
             "description": "Indicates whether reads that did not pass a filtering step, such as PCR duplicates, have been removed from the file.",
-            "type": "boolean"
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": true,
+                "igvf_utils": true
+            }
         }
     },
     "fuzzy_searchable_fields": [

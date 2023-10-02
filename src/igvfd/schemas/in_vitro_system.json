@@ -129,12 +129,20 @@
                 "differentiated cell specimen",
                 "reprogrammed cell specimen",
                 "pooled cell specimen"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "differentiated cell specimen",
+                "igvf_utils": "differentiated cell specimen"
+            }
         },
         "time_post_change": {
             "title": "Time Post Change",
             "description": "The time that elapsed past the time-point when the cell fate change treatments were introduced.",
-            "type": "number"
+            "type": "number",
+            "submissionExample": {
+                "appscript": 27,
+                "igvf_utils": 27
+            }
         },
         "time_post_change_units": {
             "title": "Time Post Change Units",
@@ -146,7 +154,11 @@
                 "day",
                 "week",
                 "month"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "minute",
+                "igvf_utils": "minute"
+            }
         },
         "date_obtained": {
             "title": "Date Collected"
@@ -162,22 +174,38 @@
                 "description": "A treatment applied to the biosample.",
                 "type": "string",
                 "linkTo": "Treatment"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:treatment01\", \"/treatments/ffe525b2-bd67-4021-835e-29748513b560/\"]",
+                "igvf_utils": "john-doe:treatment01, /treatments/ffe525b2-bd67-4021-835e-29748513b560/"
             }
         },
         "originated_from": {
             "title": "Originated From",
             "description": "The biosample this in vitro system sample was originated from.",
             "type": "string",
-            "linkTo": "Biosample"
+            "linkTo": "Biosample",
+            "submissionExample": {
+                "appscript": "TSTSM02881437 or john-doe:tissue01",
+                "igvf_utils": "TSTSM02881437 or john-doe:tissue01"
+            }
         },
         "part_of": {
             "linkTo": "Biosample",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "TSTSM02881436 or john-doe:tissue02",
+                "igvf_utils": "TSTSM02881436 or john-doe:tissue02"
+            }
         },
         "pooled_from": {
             "items": {
                 "linkTo": "Biosample",
                 "type": "string"
+            },
+            "submissionExample": {
+                "appscript": "TSTSM02881435 or john-doe:tissue03",
+                "igvf_utils": "TSTSM02881435 or john-doe:tissue03"
             }
         },
         "passage_number": {
@@ -185,13 +213,21 @@
             "description": "Number of passages including the passages from the source.",
             "comment": "In calculating passage number, include passages from the source.",
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "submissionExample": {
+                "appscript": 3,
+                "igvf_utils": 3
+            }
         },
         "targeted_sample_term": {
             "title": "Targeted Sample Term",
             "description": "Ontology term identifying the targeted endpoint biosample resulting from differentation or reprogramming.",
             "type": "string",
-            "linkTo": "SampleTerm"
+            "linkTo": "SampleTerm",
+            "submissionExample": {
+                "appscript": "/sample-terms/UBERON_0002367/",
+                "igvf_utils": "/sample-terms/UBERON_0002367/"
+            }
         }
     },
     "fuzzy_searchable_fields": [

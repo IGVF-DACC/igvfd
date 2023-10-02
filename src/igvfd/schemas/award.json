@@ -36,26 +36,42 @@
             "title": "Title",
             "description": "The grant name from the NIH database, if applicable.",
             "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "submissionExample": {
+                "appscript": "A Data and Administrative Coordinating Center for the Impact of Genomic Variation on Function Consortium",
+                "igvf_utils": "A Data and Administrative Coordinating Center for the Impact of Genomic Variation on Function Consortium"
+            }
         },
         "name": {
             "title": "Name",
             "description": "The official grant number from the NIH database, if applicable",
             "type": "string",
             "pattern": "^[A-Za-z0-9\\-]+$",
-            "uniqueKey": true
+            "uniqueKey": true,
+            "submissionExample": {
+                "appscript": "HG012012",
+                "igvf_utils": "HG012012"
+            }
         },
         "start_date": {
             "title": "Start Date",
             "comment": "Date can be submitted as YYYY-MM-DD.",
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "submissionExample": {
+                "appscript": "2021-09-01",
+                "igvf_utils": "2021-09-01"
+            }
         },
         "end_date": {
             "title": "End Date",
             "comment": "Date can be submitted as YYYY-MM-DD.",
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "submissionExample": {
+                "appscript": "2026-05-31",
+                "igvf_utils": "2026-05-31"
+            }
         },
         "pis": {
             "title": "Principal Investigators",
@@ -68,13 +84,21 @@
                 "description": "User object of the investigator.",
                 "type": "string",
                 "linkTo": "User"
+            },
+            "submissionExample": {
+                "appscript": "[\"/users/f73829f9-e8a0-4f16-861d-275e7ac392d3/\", \"login_name@email.edu\"]",
+                "igvf_utils": "/users/f73829f9-e8a0-4f16-861d-275e7ac392d3/, login_name@email.edu"
             }
         },
         "contact_pi": {
             "title": "Contact P.I.",
             "description": "The contact Principal Investigator of the grant.",
             "type": "string",
-            "linkTo": "User"
+            "linkTo": "User",
+            "submissionExample": {
+                "appscript": "/users/f73829f9-e8a0-4f16-861d-275e7ac392d3/ or john_doe@email.edu",
+                "igvf_utils": "/users/f73829f9-e8a0-4f16-861d-275e7ac392d3/ or john_doe@email.edu"
+            }
         },
         "project": {
             "title": "Project",
@@ -84,7 +108,11 @@
                 "community",
                 "ENCODE",
                 "IGVF"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "IGVF",
+                "igvf_utils": "IGVF"
+            }
         },
         "viewing_group": {
             "title": "View Access Group",
@@ -93,7 +121,11 @@
             "enum": [
                 "community",
                 "IGVF"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "community",
+                "igvf_utils": "community"
+            }
         },
         "component": {
             "title": "Project Component",
@@ -108,7 +140,11 @@
                 "mapping",
                 "networks",
                 "predictive modeling"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "data coordination",
+                "igvf_utils": "data coordination"
+            }
         }
     },
     "fuzzy_searchable_fields": [
