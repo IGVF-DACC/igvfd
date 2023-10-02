@@ -77,7 +77,7 @@ def assay_term_mpra(testapp):
 @pytest.fixture
 def assay_term_crispr(testapp):
     item = {
-        'term_id': 'OBI:0003133',
+        'term_id': 'NTR:0000520',
         'term_name': 'CRISPR screen'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]

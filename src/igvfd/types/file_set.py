@@ -477,9 +477,12 @@ class ConstructLibrarySet(FileSet):
                 gene_name = (gene_object.get('symbol'))
                 target_phrase = f' {gene_name}'
         if scope == 'exon':
-            gene_object = request.embed(genes[0], '@@object?skip_calculated=true')
-            gene_name = (gene_object.get('symbol'))
-            target_phrase = f' exon {exon} of {gene_name}'
+            if len(genes) > 1:
+                target_phrase = f' exon {exon} of multiple genes'
+            else:
+                gene_object = request.embed(genes[0], '@@object?skip_calculated=true')
+                gene_name = (gene_object.get('symbol'))
+                target_phrase = f' exon {exon} of {gene_name}'
         if scope == 'genome-wide':
             target_phrase = ' genome-wide'
 

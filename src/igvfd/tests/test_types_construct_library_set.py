@@ -70,12 +70,21 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
         base_expression_construct_library_set['@id'],
         {
             'selection_criteria': ['genes'],
+            'genes': [gene_myc_hs['@id']]
+        }
+    )
+    res = testapp.get(base_expression_construct_library_set['@id'])
+    assert res.json.get('summary') == 'Expression vector library of exon E3 of MYC'
+    testapp.patch_json(
+        base_expression_construct_library_set['@id'],
+        {
+            'selection_criteria': ['genes'],
             'genes': [gene_myc_hs['@id'], gene_zscan10_mm['@id']]
         }
     )
     res = testapp.get(base_expression_construct_library_set['@id'])
     assert res.json.get('selection_criteria') == ['genes']
-    assert res.json.get('summary') == 'Expression vector library of exon E3 of MYC'
+    assert res.json.get('summary') == 'Expression vector library of exon E3 of multiple genes'
     res = testapp.get(construct_library_set_y2h['@id'])
     assert res.json.get('summary') == 'Expression vector library of 2 genes (protein interactors)'
     testapp.patch_json(
