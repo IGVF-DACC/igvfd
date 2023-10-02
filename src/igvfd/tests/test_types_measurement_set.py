@@ -110,7 +110,15 @@ def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, 
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert set(res.json.get('donors')) == {human_donor['@id']}
+    assert set([donor['@id'] for donor in res.json.get('donors')]) == {human_donor['@id']}
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'donors': [human_donor['@id'], rodent_donor['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert set([donor['@id'] for donor in res.json.get('donors')]) == {human_donor['@id'], rodent_donor['@id']}
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -118,4 +126,4 @@ def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, 
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert set(res.json.get('donors')) == {rodent_donor['@id']}
+    assert set([donor['@id'] for donor in res.json.get('donors')]) == {rodent_donor['@id']}

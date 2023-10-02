@@ -35,10 +35,9 @@ class FileSet(Item):
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
-        Path('donors', include=['@id', 'taxa']),
-        Path('samples.donors', include=['@id', 'accession', 'aliases',
-             'sample_terms', 'summary', 'donors', 'taxa']),
-    ]
+        Path('donors', include=['@id', 'accession', 'aliases', 'taxa']),
+        Path('samples', include=['@id', 'accession', 'aliases',
+             'sample_terms', 'summary', 'taxa']),]
 
     @calculated_property(schema={
         'title': 'Files',
@@ -103,6 +102,29 @@ class AnalysisSet(FileSet):
                         'MeasurementSet' in file_set_object.get('@type'):
                     assay_title.add(file_set_object.get('assay_title'))
             return list(assay_title)
+
+    @calculated_property(
+        condition='samples',
+        schema={
+            'title': 'Donors',
+            'description': 'The donors of the samples associated with this measurement set.',
+            'type': 'array',
+            'uniqueItems': True,
+            'items': {
+                'title': 'Donor',
+                'description': 'Donor of a sample associated with this measurement set.',
+                'type': 'string',
+                'linkTo': 'Donor'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def donors(self, request, samples=None):
+        donor_objects = []
+        for sample in samples:
+            donor_objects += request.embed(sample, '@@object').get('donors', [])
+        donor_objects = list(set(donor_objects))
+        return donor_objects
 
 
 @collection(
@@ -288,6 +310,29 @@ class MeasurementSet(FileSet):
                 sentence += phrase
         return sentence
 
+    @calculated_property(
+        condition='samples',
+        schema={
+            'title': 'Donors',
+            'description': 'The donors of the samples associated with this measurement set.',
+            'type': 'array',
+            'uniqueItems': True,
+            'items': {
+                'title': 'Donor',
+                'description': 'Donor of a sample associated with this measurement set.',
+                'type': 'string',
+                'linkTo': 'Donor'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def donors(self, request, samples=None):
+        donor_objects = []
+        for sample in samples:
+            donor_objects += request.embed(sample, '@@object').get('donors', [])
+        donor_objects = list(set(donor_objects))
+        return donor_objects
+
 
 @collection(
     name='construct-libraries',
@@ -384,6 +429,29 @@ class AuxiliarySet(FileSet):
             remainder = f'... and {len(measurement_sets) - 2} more measurement set{"s" if len(measurement_sets) - 2 != 1 else ""}'
             measurement_sets_summaries = measurement_sets_summaries + [remainder]
         return f'{file_set_type} for {", ".join(measurement_sets_summaries)}'
+
+    @calculated_property(
+        condition='samples',
+        schema={
+            'title': 'Donors',
+            'description': 'The donors of the samples associated with this measurement set.',
+            'type': 'array',
+            'uniqueItems': True,
+            'items': {
+                'title': 'Donor',
+                'description': 'Donor of a sample associated with this measurement set.',
+                'type': 'string',
+                'linkTo': 'Donor'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def donors(self, request, samples=None):
+        donor_objects = []
+        for sample in samples:
+            donor_objects += request.embed(sample, '@@object').get('donors', [])
+        donor_objects = list(set(donor_objects))
+        return donor_objects
 
 
 @collection(

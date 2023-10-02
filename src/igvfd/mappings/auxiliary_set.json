@@ -1,6 +1,6 @@
 {
-    "hash": "3f027a10863986185482d700e64f861c",
-    "index_name": "auxiliary_set_3f027a10",
+    "hash": "06bf39309662302245ebdad1c1e04ecc",
+    "index_name": "auxiliary_set_06bf3930",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -669,9 +669,11 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
@@ -1322,142 +1324,7 @@
                                 "type": "keyword"
                             },
                             "donors": {
-                                "properties": {
-                                    "@id": {
-                                        "type": "keyword"
-                                    },
-                                    "@type": {
-                                        "type": "keyword"
-                                    },
-                                    "accession": {
-                                        "copy_to": "_exact",
-                                        "type": "keyword"
-                                    },
-                                    "aliases": {
-                                        "copy_to": "_exact",
-                                        "type": "keyword"
-                                    },
-                                    "alternate_accessions": {
-                                        "type": "keyword"
-                                    },
-                                    "award": {
-                                        "type": "keyword"
-                                    },
-                                    "collections": {
-                                        "type": "keyword"
-                                    },
-                                    "creation_timestamp": {
-                                        "type": "keyword"
-                                    },
-                                    "dbxrefs": {
-                                        "type": "keyword"
-                                    },
-                                    "description": {
-                                        "type": "text"
-                                    },
-                                    "documents": {
-                                        "type": "keyword"
-                                    },
-                                    "ethnicities": {
-                                        "type": "keyword"
-                                    },
-                                    "genotype": {
-                                        "type": "keyword"
-                                    },
-                                    "human_donor_identifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "individual_rodent": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
-                                        "store": true,
-                                        "type": "boolean"
-                                    },
-                                    "lab": {
-                                        "type": "keyword"
-                                    },
-                                    "lot_id": {
-                                        "type": "keyword"
-                                    },
-                                    "notes": {
-                                        "type": "text"
-                                    },
-                                    "phenotypic_features": {
-                                        "type": "keyword"
-                                    },
-                                    "product_id": {
-                                        "type": "keyword"
-                                    },
-                                    "publication_identifiers": {
-                                        "type": "keyword"
-                                    },
-                                    "related_donors": {
-                                        "properties": {
-                                            "donor": {
-                                                "type": "keyword"
-                                            },
-                                            "relationship_type": {
-                                                "type": "keyword"
-                                            }
-                                        },
-                                        "type": "object"
-                                    },
-                                    "revoke_detail": {
-                                        "type": "keyword"
-                                    },
-                                    "rodent_identifier": {
-                                        "type": "keyword"
-                                    },
-                                    "schema_version": {
-                                        "type": "keyword"
-                                    },
-                                    "sex": {
-                                        "type": "keyword"
-                                    },
-                                    "sources": {
-                                        "type": "keyword"
-                                    },
-                                    "status": {
-                                        "type": "keyword"
-                                    },
-                                    "strain": {
-                                        "type": "keyword"
-                                    },
-                                    "strain_background": {
-                                        "type": "keyword"
-                                    },
-                                    "submitted_by": {
-                                        "type": "keyword"
-                                    },
-                                    "submitter_comment": {
-                                        "type": "keyword"
-                                    },
-                                    "summary": {
-                                        "type": "keyword"
-                                    },
-                                    "taxa": {
-                                        "type": "keyword"
-                                    },
-                                    "url": {
-                                        "type": "keyword"
-                                    },
-                                    "uuid": {
-                                        "type": "keyword"
-                                    },
-                                    "virtual": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
-                                        "store": true,
-                                        "type": "boolean"
-                                    }
-                                },
-                                "type": "object"
+                                "type": "keyword"
                             },
                             "embryonic": {
                                 "fields": {

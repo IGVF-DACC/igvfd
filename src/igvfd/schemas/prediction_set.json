@@ -228,8 +228,8 @@
         "publication_identifiers",
         "samples.accession",
         "samples.aliases",
-        "samples.donors.accession",
-        "samples.donors.aliases",
+        "donors.accession",
+        "donors.aliases",
         "submitted_by.title"
     ],
     "changelog": "/profiles/changelogs/prediction_set.md"
