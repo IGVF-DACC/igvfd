@@ -63,6 +63,7 @@ def test_calculated_donors(testapp, base_auxiliary_set, primary_cell, human_dono
         }
     )
     res = testapp.get(base_auxiliary_set['@id'])
+    print(res.json.get('donors'))
     assert set(res.json.get('donors')) == {human_donor['@id']}
     testapp.patch_json(
         base_auxiliary_set['@id'],
