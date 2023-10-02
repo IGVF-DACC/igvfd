@@ -12,6 +12,13 @@ from .base import (
 )
 
 
+def get_donors_from_samples(request, samples):
+    donor_objects = []
+    for sample in samples:
+        donor_objects += request.embed(sample, '@@object').get('donors', [])
+    return list(set(donor_objects))
+
+
 @abstract_collection(
     name='file-sets',
     unique_key='accession',
@@ -107,12 +114,12 @@ class AnalysisSet(FileSet):
         condition='samples',
         schema={
             'title': 'Donors',
-            'description': 'The donors of the samples associated with this measurement set.',
+            'description': 'The donors of the samples associated with this analysis set.',
             'type': 'array',
             'uniqueItems': True,
             'items': {
                 'title': 'Donor',
-                'description': 'Donor of a sample associated with this measurement set.',
+                'description': 'Donor of a sample associated with this analysis set.',
                 'type': 'string',
                 'linkTo': 'Donor'
             },
@@ -120,11 +127,7 @@ class AnalysisSet(FileSet):
         }
     )
     def donors(self, request, samples=None):
-        donor_objects = []
-        for sample in samples:
-            donor_objects += request.embed(sample, '@@object').get('donors', [])
-        donor_objects = list(set(donor_objects))
-        return donor_objects
+        return get_donors_from_samples(request, samples)
 
 
 @collection(
@@ -327,11 +330,7 @@ class MeasurementSet(FileSet):
         }
     )
     def donors(self, request, samples=None):
-        donor_objects = []
-        for sample in samples:
-            donor_objects += request.embed(sample, '@@object').get('donors', [])
-        donor_objects = list(set(donor_objects))
-        return donor_objects
+        return get_donors_from_samples(request, samples)
 
 
 @collection(
@@ -434,12 +433,12 @@ class AuxiliarySet(FileSet):
         condition='samples',
         schema={
             'title': 'Donors',
-            'description': 'The donors of the samples associated with this measurement set.',
+            'description': 'The donors of the samples associated with this auxiliary set.',
             'type': 'array',
             'uniqueItems': True,
             'items': {
                 'title': 'Donor',
-                'description': 'Donor of a sample associated with this measurement set.',
+                'description': 'Donor of a sample associated with this auxiliary set.',
                 'type': 'string',
                 'linkTo': 'Donor'
             },
@@ -447,11 +446,7 @@ class AuxiliarySet(FileSet):
         }
     )
     def donors(self, request, samples=None):
-        donor_objects = []
-        for sample in samples:
-            donor_objects += request.embed(sample, '@@object').get('donors', [])
-        donor_objects = list(set(donor_objects))
-        return donor_objects
+        return get_donors_from_samples(request, samples)
 
 
 @collection(
