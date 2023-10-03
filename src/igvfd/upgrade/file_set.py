@@ -125,3 +125,10 @@ def prediction_2_3(value, system):
     if 'prediction_type' in value:
         value['file_set_type'] = value['prediction_type']
         del value['prediction_type']
+
+
+@upgrade_step('measurement_set', '5', '6')
+@upgrade_step('prediction_set', '1', '2')
+def file_set_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1111
+    return

@@ -1,5 +1,10 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 6
+
+* Require `samples`.
+* Convert `donors` to be calculated from `samples`.
+
 ### Minor changes since schema version 5
 
 * Add `publication_identifiers`.

@@ -75,8 +75,8 @@
         "files.accession",
         "files.aliases",
         "publication_identifiers",
-        "samples.donors.accession",
-        "samples.donors.aliases",
+        "donors.accession",
+        "donors.aliases",
         "samples.accession",
         "samples.aliases",
         "submitted_by.title"

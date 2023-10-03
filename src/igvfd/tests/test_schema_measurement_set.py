@@ -22,14 +22,11 @@ def test_measurement_set_moi_construct_library(
     assert res.status_code == 200
 
 
-def test_nucleic_acid_delivery_success(testapp, measurement_set):
+def test_nucleic_acid_delivery_enum(testapp, measurement_set):
     res = testapp.patch_json(
         measurement_set['@id'],
         {'nucleic_acid_delivery': 'adenoviral transduction'})
     assert res.status_code == 200
-
-
-def test_nucleic_acid_delivery_fail(testapp, measurement_set):
     res = testapp.patch_json(
         measurement_set['@id'],
         {'nucleic_acid_delivery': 'Something not in the enum list'}, expect_errors=True)

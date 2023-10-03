@@ -4,10 +4,23 @@
     "$id": "/profiles/prediction_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
-    "required": [
-        "lab",
-        "award",
-        "file_set_type"
+    "oneOf": [
+        {
+            "required": [
+                "lab",
+                "award",
+                "file_set_type",
+                "samples"
+            ]
+        },
+        {
+            "required": [
+                "lab",
+                "award",
+                "file_set_type",
+                "donors"
+            ]
+        }
     ],
     "identifyingProperties": [
         "uuid",
@@ -110,7 +123,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "file_set_type": {
             "title": "File Set Type",
@@ -215,8 +228,8 @@
         "publication_identifiers",
         "samples.accession",
         "samples.aliases",
-        "samples.donors.accession",
-        "samples.donors.aliases",
+        "donors.accession",
+        "donors.aliases",
         "submitted_by.title"
     ],
     "changelog": "/profiles/changelogs/prediction_set.md"

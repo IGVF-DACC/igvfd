@@ -53,3 +53,22 @@ def test_summary(testapp, measurement_set, measurement_set_mpra, measurement_set
     assert auxiliary_summary.endswith(', ... and 1 more measurement set')
     assert sum(1 for summary in [measurement_set_summary, measurement_set_mpra_summary,
                measurement_set_multiome_summary] if summary in auxiliary_summary) == 2
+
+
+def test_calculated_donors(testapp, base_auxiliary_set, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'samples': [primary_cell['@id']]
+        }
+    )
+    res = testapp.get(base_auxiliary_set['@id'])
+    assert set([donor['@id'] for donor in res.json.get('donors')]) == {human_donor['@id']}
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id']]
+        }
+    )
+    res = testapp.get(base_auxiliary_set['@id'])
+    assert set([donor['@id'] for donor in res.json.get('donors')]) == {rodent_donor['@id']}

@@ -78,8 +78,8 @@
         "input_file_sets.aliases",
         "samples.accession",
         "samples.aliases",
-        "samples.donors.accession",
-        "samples.donors.aliases"
+        "donors.accession",
+        "donors.aliases"
     ],
     "changelog": "/profiles/changelogs/analysis_set.md"
 }

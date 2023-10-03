@@ -100,3 +100,30 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
     )
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('summary') == 'mixed CRISPR screen (lentiMPRA) followed by ChIP-seq'
+
+
+def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [primary_cell['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert set([donor['@id'] for donor in res.json.get('donors')]) == {human_donor['@id']}
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'donors': [human_donor['@id'], rodent_donor['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert set([donor['@id'] for donor in res.json.get('donors')]) == {human_donor['@id'], rodent_donor['@id']}
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [in_vitro_cell_line['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert set([donor['@id'] for donor in res.json.get('donors')]) == {rodent_donor['@id']}

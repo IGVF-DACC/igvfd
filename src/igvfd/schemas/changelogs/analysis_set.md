@@ -6,6 +6,7 @@
 * Add `dbxrefs`.
 * Add `control_for`.
 * Add `publication_identifiers`.
+* Convert `donors` to be calculated from `samples`.
 
 ### Schema version 3
 
