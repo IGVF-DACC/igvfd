@@ -24,7 +24,8 @@
         "nucleic_acid_delivery": "transfection",
         "auxiliary_sets": [
             "IGVFDS0001AUXI"
-        ]
+        ],
+        "accession": "IGVFDS0000MSET"
     },
     {
         "aliases": [
@@ -73,7 +74,8 @@
         "sequencing_library_type": [
             "mRNA enriched",
             "polyA depleted"
-        ]
+        ],
+        "accession": "IGVFDS0987SHAR"
     },
     {
         "aliases": [
