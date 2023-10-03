@@ -13,12 +13,6 @@ def phenotype_term():
             'status': {
                 'title': 'Status'
             },
-            'term_id': {
-                'title': 'Term ID'
-            },
-            'term_name': {
-                'title': 'Term Name'
-            },
             'type': {
                 'title': 'Object Type'
             },
