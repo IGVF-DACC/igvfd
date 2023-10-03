@@ -23,7 +23,7 @@ def test_constructs_flag_initialize_feature_flag_service(stack, config):
     template.has_resource_properties(
         'AWS::AppConfig::Application',
         {
-            'Name': 'igvfd-demo-some-branch-application'
+            'Name': 'igvfd-demo-some-branch-app'
         }
     )
     template.has_resource_properties(
@@ -32,7 +32,7 @@ def test_constructs_flag_initialize_feature_flag_service(stack, config):
             'ApplicationId': {
                 'Ref': 'FeatureFlagServiceApplicationB66919AF'
             },
-            'Name': 'igvfd-demo-some-branch-environment'
+            'Name': 'igvfd-demo-some-branch-env'
         }
     )
     template.has_resource_properties(
@@ -42,7 +42,7 @@ def test_constructs_flag_initialize_feature_flag_service(stack, config):
                 'Ref': 'FeatureFlagServiceApplicationB66919AF'
             },
             'LocationUri': 'hosted',
-            'Name': 'igvfd-demo-some-branch-configuration-profile',
+            'Name': 'igvfd-demo-some-branch-flags',
             'Type': 'AWS.AppConfig.FeatureFlags'
         }
     )
@@ -51,7 +51,7 @@ def test_constructs_flag_initialize_feature_flag_service(stack, config):
         {
             'DeploymentDurationInMinutes': 0,
             'GrowthFactor': 100,
-            'Name': 'igvfd-demo-some-branch-deployment-strategy',
+            'Name': 'igvfd-demo-some-branch-ds',
             'ReplicateTo': 'NONE'
         }
     )

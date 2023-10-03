@@ -77,7 +77,7 @@ class FeatureFlagService(Construct):
         self.application = CfnApplication(
             self,
             'Application',
-            name=f'{self.name}-application',
+            name=f'{self.name}-app',
         )
 
     def _define_environment(self) -> None:
@@ -85,7 +85,7 @@ class FeatureFlagService(Construct):
             self,
             'Environment',
             application_id=self.application.ref,
-            name=f'{self.name}-environment',
+            name=f'{self.name}-env',
         )
 
     def _define_configuration_profile(self) -> None:
@@ -94,7 +94,7 @@ class FeatureFlagService(Construct):
             'ConfigurationProfile',
             application_id=self.application.ref,
             location_uri='hosted',
-            name=f'{self.name}-configuration-profile',
+            name=f'{self.name}-flags',
             type='AWS.AppConfig.FeatureFlags',
         )
 
@@ -102,7 +102,7 @@ class FeatureFlagService(Construct):
         self.deployment_strategy = CfnDeploymentStrategy(
             self,
             'DeploymentStrategy',
-            name=f'{self.name}-deployment-strategy',
+            name=f'{self.name}-ds',
             deployment_duration_in_minutes=0,
             growth_factor=100,
             replicate_to='NONE',
