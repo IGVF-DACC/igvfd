@@ -149,7 +149,7 @@
                 ]
             },
             "submissionExample": {
-                "appscript": "IGVF",
+                "appscript": "[\"IGVF\"]",
                 "igvf_utils": "IGVF"
             }
         }

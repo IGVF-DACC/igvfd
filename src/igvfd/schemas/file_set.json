@@ -85,8 +85,8 @@
                 "linkTo": "Sample"
             },
             "submissionExample": {
-                "appscript": "TSTSM02881437 or john-doe:tissue01",
-                "igvf_utils": "TSTSM02881437 or john-doe:tissue01"
+                "appscript": "[\"TSTSM02881437\", \"john-doe:tissue01\"]",
+                "igvf_utils": "TSTSM02881437, john-doe:tissue01"
             }
         },
         "donors": {

@@ -57,8 +57,8 @@
                 "linkTo": "FileSet"
             },
             "submissionExample": {
-                "appscript": "john-doe:file_set01 or IGVFDS4321DCBA",
-                "igvf_utils": "john-doe:file_set01 or IGVFDS4321DCBA"
+                "appscript": "[\"john-doe:file_set01\", \"IGVFDS4321DCBA\"]",
+                "igvf_utils": "john-doe:file_set01, IGVFDS4321DCBA"
             }
         }
     },
