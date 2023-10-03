@@ -70,5 +70,39 @@
         ],
         "file_set": "igvf:analysis_set_with_input",
         "assembly": "GRCh38"
+    },
+    {
+        "uuid": "2205ea97-1349-4d82-842a-a3952cabc106",
+        "accession": "IGVFFI1530UZOX",
+        "aliases": [
+            "igvf:motif_catalog_file"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "91e20f3990eb96c1ad4ba603db78298e",
+        "file_format": "PWM",
+        "content_type": "motifs",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38"
+    },
+    {
+        "uuid": "20571fef-4569-4c5f-87c0-a5e4404acc40",
+        "accession": "IGVFFI5806YWFK",
+        "aliases": [
+            "igvf:xml_catalog_file"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "08ba1e3f1348f6bd383215ac528321b2",
+        "file_format": "xml",
+        "content_type": "diseases_genes",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38"
     }
 ]

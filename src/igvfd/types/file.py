@@ -52,8 +52,11 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'csqual': '.csqual.gz',
     'cndb': '.cndb',
     'database': '.db',
+    'dat': '.dat.gz',
     'fasta': '.fasta.gz',
     'fastq': '.fastq.gz',
+    'gaf': '.gaf.gz',
+    'gds': '.gds.gz',
     'gff': '.gff.gz',
     'gtf': '.gtf.gz',
     'idx': '.idx',
@@ -61,6 +64,8 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'h5ad': '.h5ad',
     'hdf5': '.h5',
     'idat': '.idat',
+    'obo': '.obo.gz',
+    'owl': '.owl.gz',
     'PWM': '.pwm',
     'mtx': '.mtx',
     'rcc': '.rcc',
@@ -76,6 +81,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'pairs': '.pairs.gz',
     'starch': '.starch',
     'nucle3d': '.nucle3d',
+    'xml': '.xml.gz',
     'yaml': '.yaml'
 }
 
