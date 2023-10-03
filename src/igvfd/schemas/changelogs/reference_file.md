@@ -5,8 +5,8 @@
 
 * Add `vcf` to `file_format`.
 * Add `variants` to `content_type`.
-* Add `bed`, `csv`, `dat`, `gaf`, `gds`, `obo`, `owl`, `pwm` and `xml` to `file_format`.
-* Add `biological_context`,`complexes`, `complexes_complexes`, `complexes_proteins`, `complexes_terms`, `diseases_genes`, `drugs`, `elements_genes`, `genes`, `genes_genes`, `genes_pathways`, `genes_terms`, `genes_transcripts`, `go_terms_proteins`, `motifs`, `motifs_proteins`, `ontology_terms`, `ontology_terms_ontology_terms`, `pathways`, `pathways_pathways`, `proteins`, `regulatory_regions`, `studies`, `studies_variants`, `studies_variants_phenotypes`, `transcriptome reference`, `transcripts`, `transcripts_proteins`, `variants`, `variants_drugs`, `variants_drugs_genes`, `variants_genes`, `variants_proteins`, `variants_proteins_terms`, `variants_regulatory_regions`, `variants_variants`  to `content_type`.
+* Add `bed`, `csv`, `dat`, `gaf`, `gds`, `obo`, `owl`, `PWM` and `xml` to `file_format`.
+* Add `biological_context`,`complexes`, `complexes_complexes`, `complexes_proteins`, `complexes_terms`, `diseases_genes`, `drugs`, `elements_genes`, `genes`, `genes_genes`, `genes_pathways`, `genes_terms`, `genes_transcripts`, `go_terms_proteins`, `motifs`, `motifs_proteins`, `ontology_terms`, `ontology_terms_ontology_terms`, `pathways`, `pathways_pathways`, `proteins`, `regulatory_regions`, `studies`, `studies_variants`, `studies_variants_phenotypes`, `transcriptome reference`, `transcripts`, `transcripts_proteins`, `variants`, `variants_drugs`, `variants_drugs_genes`, `variants_genes`, `variants_proteins`, `variants_proteins_terms`, `variants_regulatory_regions`,`variants_variants` to `content_type`.
 
 ### Schema version 4
 

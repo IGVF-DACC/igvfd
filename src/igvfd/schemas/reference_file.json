@@ -2,7 +2,7 @@
     "title": "Reference File",
     "$id": "/profiles/reference_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A file containing reference sequences or indexes in fasta, gtf, tar, txt, or vcf format.",
+    "description": "A file containing diverse reference related information.",
     "required": [
         "award",
         "lab",
