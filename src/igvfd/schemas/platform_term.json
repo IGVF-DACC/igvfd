@@ -50,7 +50,11 @@
                 "Parse Biosciences",
                 "Roche"
             ],
-            "description": "The company that developed and sells the instrument."
+            "description": "The company that developed and sells the instrument.",
+            "submissionExample": {
+                "appscript": "Illumina",
+                "igvf_utils": "Illumina"
+            }
         }
     },
     "fuzzy_searchable_fields": [
