@@ -37,6 +37,24 @@
             "permission": "import_items",
             "type": "string",
             "pattern": "^(EFO|NTR):[0-9]{2,8}$"
+        },
+        "company": {
+            "title": "Company",
+            "type": "string",
+            "enum": [
+                "10X Genomics",
+                "Illumina",
+                "Life Technologies",
+                "Oxford Nanopore Technologies",
+                "Pacific Biosciences",
+                "Parse Biosciences",
+                "Roche"
+            ],
+            "description": "The company that developed and sells the instrument.",
+            "submissionExample": {
+                "appscript": "Illumina",
+                "igvf_utils": "Illumina"
+            }
         }
     },
     "fuzzy_searchable_fields": [

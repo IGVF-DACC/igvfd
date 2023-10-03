@@ -13,11 +13,8 @@ def platform_term():
             'status': {
                 'title': 'Status'
             },
-            'term_id': {
-                'title': 'Term ID'
-            },
-            'term_name': {
-                'title': 'Term Name'
+            'company': {
+                'title': 'Company'
             },
             'type': {
                 'title': 'Object Type',
@@ -27,8 +24,7 @@ def platform_term():
             {
                 'title': 'Platform',
                 'facet_fields': [
-                    'term_id',
-                    'term_name',
+                    'company'
                 ],
             },
             {

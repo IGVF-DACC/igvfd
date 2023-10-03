@@ -13,24 +13,11 @@ def phenotype_term():
             'status': {
                 'title': 'Status'
             },
-            'term_id': {
-                'title': 'Term ID'
-            },
-            'term_name': {
-                'title': 'Term Name'
-            },
             'type': {
                 'title': 'Object Type'
             },
         },
         'facet_groups': [
-            {
-                'title': 'Phenotype',
-                'facet_fields': [
-                    'term_id',
-                    'term_name',
-                ],
-            },
             {
                 'title': 'Provenance',
                 'facet_fields': [
