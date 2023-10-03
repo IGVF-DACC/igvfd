@@ -26,6 +26,7 @@ class Donor(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
+        Path('phenotypic_features.feature', include=['@id', 'feature', 'term_name'])
     ]
 
 
@@ -40,7 +41,9 @@ class Donor(Item):
 class HumanDonor(Donor):
     item_type = 'human_donor'
     schema = load_schema('igvfd:schemas/human_donor.json')
-    embedded_with_frame = Donor.embedded_with_frame
+    embedded_with_frame = Donor.embedded_with_frame + [
+        Path('related_donors.donor', include=['@id', 'accession']),
+    ]
     audit_inherit = [
         'related_donors.donor'
     ]

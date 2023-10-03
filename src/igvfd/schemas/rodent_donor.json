@@ -151,10 +151,14 @@
     "fuzzy_searchable_fields": [
         "dbxrefs",
         "taxa",
-        "strain"
+        "strain",
+        "strain_background",
+        "genotype",
+        "phenotypic_features.feature.term_name"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "rodent_identifier"
     ],
     "changelog": "/profiles/changelogs/rodent_donor.md"
 }
