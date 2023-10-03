@@ -139,7 +139,7 @@
             "type": "string",
             "submissionExample": {
                 "appscript": "TSTSM02881438 or john-doe:whole_organism01",
-                "igvf_utils": "TSTSM02881438 or jjohn-doe:whole_organism01"
+                "igvf_utils": "TSTSM02881438 or john-doe:whole_organism01"
             }
         },
         "pooled_from": {

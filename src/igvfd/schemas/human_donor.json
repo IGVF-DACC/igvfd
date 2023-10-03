@@ -134,8 +134,8 @@
                 ]
             },
             "submissionExample": {
-                "appscript": "Japanese",
-                "igvf_utils": "Japanese"
+                "appscript": "[\"Japanese\", \"European\"]",
+                "igvf_utils": "Japanese, European"
             }
         },
         "taxa": {

@@ -161,7 +161,11 @@
             }
         },
         "date_obtained": {
-            "title": "Date Collected"
+            "title": "Date Collected",
+            "submissionExample": {
+                "appscript": "2022-02-20",
+                "igvf_utils": "2022-02-20"
+            }
         },
         "cell_fate_change_treatments": {
             "title": "Cell Fate Change Treatments",

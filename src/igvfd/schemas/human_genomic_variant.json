@@ -77,8 +77,8 @@
                 "GRCh38"
             ],
             "submissionExample": {
-                "appscript": "Homo sapiens",
-                "igvf_utils": "Homo sapiens"
+                "appscript": "GRCh38",
+                "igvf_utils": "GRCh38"
             }
         },
         "chromosome": {
@@ -151,8 +151,8 @@
                 "minItems": 1
             },
             "submissionExample": {
-                "appscript": "GCST000510",
-                "igvf_utils": "GCST000510"
+                "appscript": "[\"GCST000510\", \"GCST000511\"]",
+                "igvf_utils": "GCST000510, GCST000511"
             }
         }
     },

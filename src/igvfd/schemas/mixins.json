@@ -132,10 +132,6 @@
                     "IGVF_catalog_beta_v0.1",
                     "MaveDB"
                 ]
-            },
-            "submissionExample": {
-                "appscript": "[\"ENCODE\"]",
-                "igvf_utils": "ENCODE"
             }
         },
         "status": {

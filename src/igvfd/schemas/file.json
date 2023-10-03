@@ -137,8 +137,8 @@
                 "linkTo": "Document"
             },
             "submissionExample": {
-                "appscript": "[\"IGVFFI1234ABCD\", \"john-doe:file01\"]",
-                "igvf_utils": "IGVFFI1234ABCD, john-doe:file01"
+                "appscript": "[\"/documents/ed53a041-bd66-4afc-938d-d75eeede26da/\", \"john-doe:document01\"]",
+                "igvf_utils": "/documents/ed53a041-bd66-4afc-938d-d75eeede26da/, john-doe:document01"
             }
         },
         "file_set": {

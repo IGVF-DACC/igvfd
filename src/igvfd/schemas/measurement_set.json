@@ -51,20 +51,32 @@
             "description": "The assay used to produce data in this measurement set.",
             "comment": "See assay_term.json for available identifiers.",
             "type": "string",
-            "linkTo": "AssayTerm"
+            "linkTo": "AssayTerm",
+            "submissionExample": {
+                "appscript": "/assay-terms/OBI_0002762/ or igvf:snATAC-seq",
+                "igvf_utils": "/assay-terms/OBI_0002762/ or igvf:snATAC-seq"
+            }
         },
         "library_construction_platform": {
             "title": "Library Construction Platform",
             "description": "The platform used to construct the library sequenced in this measurement set.",
             "comment": "See platform_term.json for available identifiers.",
             "type": "string",
-            "linkTo": "PlatformTerm"
+            "linkTo": "PlatformTerm",
+            "submissionExample": {
+                "appscript": "/platform-terms/EFO_0008567/ or igvf:illumina-hiseq-x",
+                "igvf_utils": "/platform-terms/EFO_0008567/ or igvf:illumina-hiseq-x"
+            }
         },
         "protocol": {
             "title": "Protocol",
             "description": "Link to the protocol for conducting the assay on Protocols.io.",
             "type": "string",
-            "pattern": "^https://www\\.protocols\\.io/(\\S+)$"
+            "pattern": "^https://www\\.protocols\\.io/(\\S+)$",
+            "submissionExample": {
+                "appscript": "https://www.protocols.io/link/to/protocol",
+                "igvf_utils": "https://www.protocols.io/link/to/protocol"
+            }
         },
         "preferred_assay_title": {
             "title": "Preferred Assay Title",
@@ -136,11 +148,7 @@
                 "transfection",
                 "adenoviral transduction",
                 "lentiviral transduction"
-            ],
-            "submissionExample": {
-                "appscript": "transfection",
-                "igvf_utils": "transfection"
-            }
+            ]
         },
         "control_file_sets": {
             "title": "Controls",
@@ -179,7 +187,7 @@
                 ]
             },
             "submissionExample": {
-                "appscript": "direct RNA",
+                "appscript": "[\"direct RNA\"]",
                 "igvf_utils": "direct RNA"
             }
         },

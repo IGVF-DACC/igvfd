@@ -77,10 +77,6 @@
                 "title": "Construct Library",
                 "type": "string",
                 "linkTo": "ConstructLibrary"
-            },
-            "submissionExample": {
-                "appscript": "[\"john-doe:construct_library01\", \"TSTDS98084729\"]",
-                "igvf_utils": "john-doe:construct_library01, TSTDS98084729"
             }
         },
         "moi": {

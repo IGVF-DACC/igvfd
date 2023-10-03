@@ -162,8 +162,8 @@
         "documents": {
             "description": "Documents that describe the treatment protocol details.",
             "submissionExample": {
-                "appscript": "Treatment of 10 mg/kg lipopolysaccharide for 6 hours",
-                "igvf_utils": "Treatment of 10 mg/kg lipopolysaccharide for 6 hours"
+                "appscript": "[\"/documents/ed53a041-bd66-4afc-938d-d75eeede26da/\", \"john-doe:document01\"]",
+                "igvf_utils": "/documents/ed53a041-bd66-4afc-938d-d75eeede26da/, john-doe:document01"
             }
         },
         "amount": {
@@ -274,7 +274,11 @@
         "temperature": {
             "title": "Temperature",
             "type": "number",
-            "description": "The temperature in Celsius to which the sample was exposed"
+            "description": "The temperature in Celsius to which the sample was exposed",
+            "submissionExample": {
+                "appscript": 27,
+                "igvf_utils": 27
+            }
         },
         "temperature_units": {
             "title": "Temperature Units",
@@ -283,8 +287,8 @@
                 "Celsius"
             ],
             "submissionExample": {
-                "appscript": 27,
-                "igvf_utils": 27
+                "appscript": "Celsius",
+                "igvf_utils": "Celsius"
             }
         },
         "treatment_type": {

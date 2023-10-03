@@ -66,8 +66,8 @@
                 "linkTo": "Award"
             },
             "submissionExample": {
-                "appscript": "/awards/HG012047/ or john-doe:award01",
-                "igvf_utils": "/awards/HG012047/ or john-doe:award01"
+                "appscript": "[\"/awards/HG012047/\", \"john-doe:award01\"]",
+                "igvf_utils": "/awards/HG012047/,john-doe:award01"
             }
         },
         "institute_label": {
