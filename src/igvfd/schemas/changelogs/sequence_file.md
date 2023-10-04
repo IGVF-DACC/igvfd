@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Minor changes since schema version 4
+
+* Add `index`.
+
 ### Schema version 4
 
 * Restrict `minimum_read_length` to a maximum value of 300000000.

@@ -169,6 +169,11 @@
             "description": "The link to the associated seqspec YAML configuration file.",
             "type": "string",
             "linkTo": "ConfigurationFile"
+        },
+        "index": {
+            "title": "Index",
+            "description": "An Illumina index associated with the file.",
+            "type": "string"
         }
     },
     "fuzzy_searchable_fields": [
