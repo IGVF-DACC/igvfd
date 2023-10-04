@@ -310,9 +310,6 @@
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
-                            "curated_set_type": {
-                                "type": "keyword"
-                            },
                             "dbxrefs": {
                                 "type": "keyword"
                             },
@@ -554,10 +551,6 @@
                     "creation_timestamp": {
                         "type": "keyword"
                     },
-                    "curated_set_type": {
-                        "copy_to": "_fuzzy",
-                        "type": "keyword"
-                    },
                     "dbxrefs": {
                         "copy_to": "_exact",
                         "type": "keyword"
@@ -705,6 +698,10 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "file_set_type": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
                     },
                     "files": {
                         "properties": {

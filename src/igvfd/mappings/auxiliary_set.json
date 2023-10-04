@@ -307,9 +307,6 @@
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
-                            "curated_set_type": {
-                                "type": "keyword"
-                            },
                             "dbxrefs": {
                                 "type": "keyword"
                             },

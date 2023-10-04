@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "f7c1187468814979938c50deca9be4e0",
     "index_name": "construct_library_set_f7c11874",
+=======
+    "hash": "5e65cb023724703a3d39c955867b6dc0",
+    "index_name": "construct_library_set_5e65cb02",
+>>>>>>> 2d1eebdc (mappings)
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -657,9 +662,6 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "curated_set_type": {
                                 "type": "keyword"
                             },
                             "dbxrefs": {

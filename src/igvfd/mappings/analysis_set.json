@@ -311,9 +311,6 @@
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
-                            "curated_set_type": {
-                                "type": "keyword"
-                            },
                             "dbxrefs": {
                                 "type": "keyword"
                             },
@@ -1013,9 +1010,6 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "curated_set_type": {
                                 "type": "keyword"
                             },
                             "dbxrefs": {
