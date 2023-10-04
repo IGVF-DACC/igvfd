@@ -125,11 +125,11 @@
                 "description": "An identifier that references data found in the object.",
                 "type": "string",
                 "uniqueKey": "publication:publication_identifiers",
-                "pattern": "^(PMID:[0-9]+|doi:10\\.[0-9]{4}[\\d\\s\\S:\\.\\/]+|PMCID:PMC[0-9]+|[0-9]{4}\\.[0-9]{4})$",
-                "submissionExample": {
-                    "appscript": "PMID:34620214 or PMCID:PMC8495978 or doi:10.1186/s13059-021-02505-w",
-                    "igvf_utils": "PMID:34620214 or PMCID:PMC8495978 or doi:10.1186/s13059-021-02505-w"
-                }
+                "pattern": "^(PMID:[0-9]+|doi:10\\.[0-9]{4}[\\d\\s\\S:\\.\\/]+|PMCID:PMC[0-9]+|[0-9]{4}\\.[0-9]{4})$"
+            },
+            "submissionExample": {
+                "appscript": "PMID:34620214 or PMCID:PMC8495978 or doi:10.1186/s13059-021-02505-w",
+                "igvf_utils": "PMID:34620214 or PMCID:PMC8495978 or doi:10.1186/s13059-021-02505-w"
             }
         },
         "published_by": {
@@ -149,8 +149,8 @@
                 ]
             },
             "submissionExample": {
-                "appscript": "[\"IGVF\"]",
-                "igvf_utils": "IGVF"
+                "appscript": "[\"IGVF\", \"ENCODE\"]",
+                "igvf_utils": "IGVF, ENCODE"
             }
         }
     },

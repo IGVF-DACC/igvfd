@@ -76,8 +76,8 @@
                 "format": "uri"
             },
             "submissionExample": {
-                "appscript": "[\"https://dockstore.org/workflows/github.com/ENCODE-DCC/chip-seq-pipeline2:master?tab=info\"]",
-                "igvf_utils": "https://dockstore.org/workflows/github.com/ENCODE-DCC/chip-seq-pipeline2:master?tab=info"
+                "appscript": "[\"https://dockstore.org/workflows/github.com/ENCODE-DCC/atac-seq-pipeline:master?tab=info\", \"https://dockstore.org/workflows/github.com/ENCODE-DCC/chip-seq-pipeline2:master?tab=info\"]",
+                "igvf_utils": "https://dockstore.org/workflows/github.com/ENCODE-DCC/atac-seq-pipeline:master?tab=info, https://dockstore.org/workflows/github.com/ENCODE-DCC/chip-seq-pipeline2:master?tab=info"
             }
         },
         "standards_page": {

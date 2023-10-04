@@ -78,11 +78,11 @@
                     "consortium analysis",
                     "DACC",
                     "processing pipelines"
-                ],
-                "submissionExample": {
-                    "appscript": "[\"DACC\", \"processing pipelines\"]",
-                    "igvf_utils": "DACC, processing pipelines"
-                }
+                ]
+            },
+            "submissionExample": {
+                "appscript": "[\"DACC\", \"processing pipelines\"]",
+                "igvf_utils": "DACC, processing pipelines"
             }
         }
     },

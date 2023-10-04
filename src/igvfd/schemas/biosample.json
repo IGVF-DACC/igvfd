@@ -123,8 +123,8 @@
                 "linkTo": "SampleTerm"
             },
             "submissionExample": {
-                "appscript": "[\"/sample-terms/UBERON_0002369/\", \"/sample-terms/UBERON_0001388/\"]",
-                "igvf_utils": "/sample-terms/UBERON_0002369/, /sample-terms/UBERON_0001388/"
+                "appscript": "[\"/sample-terms/UBERON_0002369/\"]",
+                "igvf_utils": "/sample-terms/UBERON_0002369/"
             }
         },
         "disease_terms": {
@@ -261,8 +261,8 @@
                 "linkTo": "Modification"
             },
             "submissionExample": {
-                "appscript": "[\"john-doe:modification01\", \"/modifiations/ad8f26b5-4180-4301-97a4-38459ddf3dab/\"]",
-                "igvf_utils": "john-doe:modification01, /modifiations/ad8f26b5-4180-4301-97a4-38459ddf3dab/"
+                "appscript": "[\"john-doe:modification01\", \"/modifications/ad8f26b5-4180-4301-97a4-38459ddf3dab/\"]",
+                "igvf_utils": "john-doe:modification01, /modifications/ad8f26b5-4180-4301-97a4-38459ddf3dab/"
             }
         },
         "cellular_sub_pool": {

@@ -111,8 +111,8 @@
                 "$merge": "#/$defs/content_types"
             },
             "submissionExample": {
-                "appscript": "[\"reads\"]",
-                "igvf_utils": "reads"
+                "appscript": "[\"reads\", \"alignments\"]",
+                "igvf_utils": "reads, alignments"
             }
         },
         "output_content_types": {
