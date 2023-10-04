@@ -79,6 +79,7 @@
         },
         "pooled_from": {
             "items": {
+                "title": "Primary Cell Pooled From",
                 "linkTo": "PrimaryCell",
                 "type": "string"
             }

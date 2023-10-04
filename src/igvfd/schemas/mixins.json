@@ -203,6 +203,7 @@
                     "type": "string"
                 },
                 "href": {
+                    "title": "Hypertext REFerence",
                     "comment": "Internal webapp URL for document file",
                     "type": "string"
                 },
@@ -338,6 +339,7 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
+                "title": "Reference File",
                 "type": "string",
                 "description": "Link to a reference file used to generate this file.",
                 "linkTo": "ReferenceFile"

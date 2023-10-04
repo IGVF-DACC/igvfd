@@ -36,6 +36,7 @@ class Workflow(Item):
         'title': 'Analysis Steps',
         'type': 'array',
         'items': {
+            'title': 'Analysis Step',
             'type': ['string', 'object'],
             'linkFrom': 'AnalysisStep.workflow',
         },

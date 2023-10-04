@@ -53,8 +53,8 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Related Donors",
-                "description": "Familial relations of this donor.",
+                "title": "Related Donor",
+                "description": "Familial relation of this donor.",
                 "type": "object",
                 "additionalProperties": false,
                 "required": [
@@ -143,6 +143,7 @@
             "uniqueItems": true,
             "permission": "import_items",
             "items": {
+                "title": "Human Donor Identifier",
                 "description": "An identifier of this human donor.",
                 "comment": "Cell line donors should specify as so. e.g. 'K562 cell line donor'.",
                 "type": "string"

@@ -61,6 +61,7 @@
                 "blocks": {
                     "type": "array",
                     "items": {
+                        "title": "Page Layout Components",
                         "type": "object",
                         "additionalProperties": false,
                         "properties": {

@@ -176,6 +176,7 @@
         },
         "pooled_from": {
             "items": {
+                "title": "Biosample Pooled From",
                 "linkTo": "Biosample",
                 "type": "string"
             }

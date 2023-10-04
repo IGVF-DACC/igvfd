@@ -53,7 +53,7 @@
             "default": "1"
         },
         "content_type": {
-            "comment": "Content Type describes the content of the file",
+            "comment": "Content Type describes the content of the file.",
             "enum": [
                 "contact matrix",
                 "sparse gene count matrix",
@@ -63,7 +63,8 @@
             ]
         },
         "dimension1": {
-            "comment": "First dimension of the matrix",
+            "title": "Dimension 1",
+            "description": "First dimension of the matrix.",
             "type": "string",
             "enum": [
                 "cell",
@@ -75,7 +76,8 @@
             ]
         },
         "dimension2": {
-            "comment": "Second dimension of the matrix",
+            "title": "Dimension 2",
+            "description": "Second dimension of the matrix.",
             "type": "string",
             "enum": [
                 "cell",

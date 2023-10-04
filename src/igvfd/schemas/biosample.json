@@ -126,21 +126,21 @@
             }
         },
         "nih_institutional_certification": {
-            "type": "string",
             "title": "NIH Institutional Certification",
             "description": "Institutional certification given by the NIH for human biosamples.",
             "comment": "Required for IGVF human biosamples.",
+            "type": "string",
             "pattern": "^NIC[A-Z0-9]+$"
         },
         "pooled_from": {
-            "title": "Biosample(s) Pooled From",
-            "description": "The biosample(s) this biosample is pooled from.",
+            "title": "Biosamples Pooled From",
+            "description": "The biosamples this biosample is pooled from.",
             "type": "array",
             "uniqueItems": true,
             "minItems": 2,
             "items": {
                 "title": "Biosample",
-                "description": "Biosample(s).",
+                "description": "A biosample this biosample is pooled from.",
                 "comment": "See biosample.json for available identifiers.",
                 "type": "string",
                 "linkTo": "Biosample"

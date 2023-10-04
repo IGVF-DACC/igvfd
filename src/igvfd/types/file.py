@@ -423,6 +423,7 @@ class ConfigurationFile(File):
         'description': 'Sequence files this file is a seqspec of.',
         'type': 'array',
         'items': {
+            'title': 'Seqspec Of',
             'type': ['string', 'object'],
             'linkFrom': 'SequenceFile.seqspec',
         },

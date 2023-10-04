@@ -36,6 +36,7 @@ class Software(Item):
         'type': 'array',
         'notSubmittable': True,
         'items': {
+            'title': 'Version',
             'type': 'string',
             'linkTo': 'SoftwareVersion'
         }

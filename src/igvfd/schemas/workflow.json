@@ -62,7 +62,7 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Repository",
+                "title": "Workflow Repository",
                 "description": "Resource hosting the workflow.",
                 "type": "string",
                 "format": "uri"

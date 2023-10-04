@@ -136,6 +136,7 @@
             "minimum": 1,
             "uniqueItems": true,
             "items": {
+                "title": "Sequencing Library Type",
                 "type": "string",
                 "enum": [
                     "direct RNA",

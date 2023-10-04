@@ -59,6 +59,7 @@
             "uniqueItems": true,
             "permission": "import_items",
             "items": {
+                "title": "Lab Submittable For",
                 "description": "A lab user is authorized to submit for.",
                 "comment": "See lab.json for available identifiers.",
                 "type": "string",
@@ -73,6 +74,7 @@
             "uniqueItems": true,
             "permission": "import_items",
             "items": {
+                "title": "Group",
                 "type": "string",
                 "enum": [
                     "admin",
@@ -82,12 +84,13 @@
             }
         },
         "viewing_groups": {
-            "title": "View Access Group",
+            "title": "View Access Groups",
             "description": "The group that determines which set of data the user has permission to view.",
             "type": "array",
             "uniqueItems": true,
             "permission": "import_items",
             "items": {
+                "title": "View Access Group",
                 "type": "string",
                 "enum": [
                     "community",
