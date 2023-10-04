@@ -1,30 +1,10 @@
 import pytest
 
 
-def test_audit_donors_mismatch(
+def test_audit_inconsistent_taxa(
     testapp,
     curated_set_genome,
-    human_donor,
-    in_vitro_cell_line,
-    in_vitro_differentiated_cell
-):
-    testapp.patch_json(
-        curated_set_genome['@id'],
-        {
-            'samples': [in_vitro_cell_line['@id'], in_vitro_differentiated_cell['@id']],
-            'donors': [human_donor['@id']]
-        }
-    )
-    res = testapp.get(curated_set_genome['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent donors metadata'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-
-
-def test_audit_related_multiome_datasets(
-    testapp,
-    curated_set_genome,
+    curated_set_transcriptome,
     human_donor,
     in_vitro_cell_line
 ):
@@ -33,6 +13,17 @@ def test_audit_related_multiome_datasets(
         {
             'taxa': 'Homo sapiens',
             'samples': [in_vitro_cell_line['@id']],
+        }
+    )
+    res = testapp.get(curated_set_genome['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent taxa metadata'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        curated_set_transcriptome['@id'],
+        {
+            'taxa': 'Mus musculus',
             'donors': [human_donor['@id']]
         }
     )
