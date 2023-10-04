@@ -1,5 +1,10 @@
 ## Changelog for *`curated_set.json`*
 
+### Schema version 5
+
+* Rename `curated_set_type` to `file_set_type`.
+* Make `samples` and `donors` mutually exclusive.
+
 ### Minor changes since schema version 4
 * Expand `collections` enum list to include `ClinGen`, `GREGoR`, `IGVF_catalog_beta_v0.1`, and `MaveDB`.
 

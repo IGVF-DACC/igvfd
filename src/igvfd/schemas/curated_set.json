@@ -7,7 +7,7 @@
     "required": [
         "lab",
         "award",
-        "curated_set_type"
+        "file_set_type"
     ],
     "identifyingProperties": [
         "uuid",
@@ -42,12 +42,17 @@
             "$ref": "mixins.json#/taxa"
         }
     ],
+    "dependentSchemas": {
+        "$merge": [
+            "file_set.json#/dependentSchemas"
+        ]
+    },
     "properties": {
         "schema_version": {
             "default": "4"
         },
-        "curated_set_type": {
-            "title": "Curated Set Type",
+        "file_set_type": {
+            "title": "File Set Type",
             "description": "The category that best describes this curated file set.",
             "type": "string",
             "enum": [
@@ -63,7 +68,7 @@
     "fuzzy_searchable_fields": [
         "@type",
         "collections",
-        "curated_set_type",
+        "file_set_type",
         "lab.title",
         "summary",
         "taxa"
