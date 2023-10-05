@@ -58,7 +58,11 @@
         "aliases": [
             "igvf-dacc:variant-set"
         ],
-        "description": "Variant set."
+        "description": "Variant set.",
+        "collections": [
+            "ENCODE",
+            "MaveDB"
+        ]
     },
     {
         "award": "HG012012",

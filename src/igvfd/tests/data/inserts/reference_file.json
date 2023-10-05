@@ -103,6 +103,10 @@
             "igvf:file_format_specification_insert"
         ],
         "file_set": "igvf:analysis_set_with_input",
-        "assembly": "GRCh38"
+        "assembly": "GRCh38",
+        "collections": [
+            "ClinGen",
+            "GREGoR"
+        ]
     }
 ]
