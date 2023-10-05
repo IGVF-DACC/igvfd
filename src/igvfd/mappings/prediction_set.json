@@ -1,6 +1,6 @@
 {
-    "hash": "3fd3e1247da27828c9d834febf692e40",
-    "index_name": "prediction_set_3fd3e124",
+    "hash": "ccc701c208ced03cfc761ac628d65e4c",
+    "index_name": "prediction_set_ccc701c2",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -795,6 +795,9 @@
                                 "type": "keyword"
                             },
                             "illumina_read_type": {
+                                "type": "keyword"
+                            },
+                            "index": {
                                 "type": "keyword"
                             },
                             "lab": {

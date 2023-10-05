@@ -1,6 +1,6 @@
 {
-    "hash": "7760f2a3fe9225d014fde7725a22fe9c",
-    "index_name": "model_set_7760f2a3",
+    "hash": "7afbf03feb2c73458eac2a6b50686dd6",
+    "index_name": "model_set_7afbf03f",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -793,6 +793,9 @@
                                 "type": "keyword"
                             },
                             "illumina_read_type": {
+                                "type": "keyword"
+                            },
+                            "index": {
                                 "type": "keyword"
                             },
                             "lab": {
