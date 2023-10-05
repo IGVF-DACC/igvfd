@@ -95,3 +95,10 @@ def curated_set_type_4_5(value, system):
         value['file_set_type'] = value['curated_set_type']
         del value['curated_set_type']
     return
+
+
+@upgrade_step('measurement_set', '7', '8')
+def measurement_set_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1169
+    if 'multiome_size' in value:
+        value['multiome_size'] = int(value['multiome_size'])
