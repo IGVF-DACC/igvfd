@@ -27,6 +27,8 @@
 
 Instructions for swapping Opensearch.
 
+![Swap Opensearch Diagram](./images/swap-opensearch-diagram.png)
+
 ---
 
 ## Swap Postgres
