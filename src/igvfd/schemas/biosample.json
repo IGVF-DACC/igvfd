@@ -139,8 +139,8 @@
             "uniqueItems": true,
             "minItems": 2,
             "items": {
-                "title": "Biosample",
-                "description": "A biosample this biosample is pooled from.",
+                "title": "Biosample Pooled From",
+                "description": "Pooled biosample.",
                 "comment": "See biosample.json for available identifiers.",
                 "type": "string",
                 "linkTo": "Biosample"
