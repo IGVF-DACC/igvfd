@@ -29,6 +29,10 @@ Instructions for swapping Opensearch.
 
 ![Swap Opensearch Diagram](./images/swap-opensearch-diagram.png)
 
+<p align="center">
+  <img src="./images/swap-opensearch-diagram.png" alt="Swap Opensearch Diagram" width="500">
+</p>
+
 ---
 
 ## Swap Postgres
