@@ -2,72 +2,37 @@
 
 ## Table of Contents
 
-- [Swap Opensearch](#swap-opensearch)
-- [Swap Postgres](#swap-postgres)
-- [Trigger reindexing](#trigger-reindexing)
-- [Trigger index creation](#trigger-index-creation)
-- [Trigger batch upgrade](#trigger-batch-upgrade)
-- [Flip a feature flag](#flip-a-feature-flag)
-- [Add new feature flag](#add-new-feature-flag)
+- [Debug release pipeline](#debug-release-pipeline)
+- [Retrigger release pipeline](#retrigger-release-pipeline)
 - [Check backend logs](#check-backend-logs)
 - [Check frontend logs](#check-frontend-logs)
 - [Check Postgres logs](#check-postgres-logs)
 - [Check Opensearch logs](#check-opensearch-logs)
 - [Check metrics](#check-metrics)
-- [Clear dead-letter queue for indexing](#clear-dead-letter-queue-for-indexing)
 - [Log into running container](#log-into-running-container)
+- [Debug indexing and clear dead-letter queue for indexing](#debug-indexing-and-clear-dead-letter-queue-for-indexing)
+- [Trigger index creation](#trigger-index-creation)
+- [Trigger batch upgrade](#trigger-batch-upgrade)
+- [Trigger reindexing](#trigger-reindexing)
+- [Flip a feature flag](#flip-a-feature-flag)
+- [Add new feature flag](#add-new-feature-flag)
 - [Connect to Postgres with psql](#connect-to-postgres-with-psql)
 - [Connect to Opensearch](#connect-to-opensearch)
 - [Restore database snapshot to lower environments](#restore-database-snapshot-to-lower-environments)
-- [Trigger release pipeline](#trigger-release-pipeline)
+- [Swap Opensearch](#swap-opensearch)
+- [Swap Postgres](#swap-postgres)
 
 ---
 
-## Swap Opensearch
+## Debug release pipeline
 
-Instructions for swapping Opensearch.
-
-![Swap Opensearch Diagram](./images/swap-opensearch-diagram.png)
-
-<p align="center">
-  <img src="./images/swap-opensearch-diagram.png" alt="Swap Opensearch Diagram" width="500">
-</p>
+Guide on triggering the release pipeline.
 
 ---
 
-## Swap Postgres
+## Retrigger release pipeline
 
-Instructions for swapping Postgres.
-
----
-
-## Trigger reindexing
-
-Steps to trigger reindexing.
-
----
-
-## Trigger index creation
-
-Steps to trigger index creation.
-
----
-
-## Trigger batch upgrade
-
-Steps to trigger a batch upgrade.
-
----
-
-## Flip a feature flag
-
-Guide on how to flip an existing feature flag.
-
----
-
-## Add new feature flag
-
-Instructions to add a new feature flag.
+Guide on triggering the release pipeline.
 
 ---
 
@@ -101,7 +66,7 @@ Steps to check various metrics.
 
 ---
 
-## Clear dead-letter queue for indexing
+## Debug indexing and clear dead-letter queue for indexing
 
 Instructions to clear the dead-letter queue for indexing.
 
@@ -110,6 +75,36 @@ Instructions to clear the dead-letter queue for indexing.
 ## Log into running container
 
 Steps to log into a running container.
+
+---
+
+## Trigger index creation
+
+Steps to trigger index creation.
+
+---
+
+## Trigger batch upgrade
+
+Steps to trigger a batch upgrade.
+
+---
+
+## Trigger reindexing
+
+Steps to trigger reindexing.
+
+---
+
+## Flip a feature flag
+
+Guide on how to flip an existing feature flag.
+
+---
+
+## Add new feature flag
+
+Instructions to add a new feature flag.
 
 ---
 
@@ -131,8 +126,20 @@ Steps to restore a database snapshot to lower environments.
 
 ---
 
-## Trigger release pipeline
+## Swap Opensearch
 
-Guide on triggering the release pipeline.
+Instructions for swapping Opensearch.
+
+![Swap Opensearch Diagram](./images/swap-opensearch-diagram.png)
+
+<p align="center">
+  <img src="./images/swap-opensearch-diagram.png" alt="Swap Opensearch Diagram" width="500">
+</p>
+
+---
+
+## Swap Postgres
+
+Instructions for swapping Postgres.
 
 ---
