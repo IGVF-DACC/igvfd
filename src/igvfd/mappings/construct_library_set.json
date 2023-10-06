@@ -1,6 +1,6 @@
 {
-    "hash": "e5120f67c0be5ecf78ec4c5a48c53162",
-    "index_name": "construct_library_set_e5120f67",
+    "hash": "70fabdbbdb175d8fcf0473f836724257",
+    "index_name": "construct_library_set_70fabdbb",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -767,7 +767,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"

@@ -1,6 +1,6 @@
 {
-    "hash": "6cd97073675a9e36d11de2a03d69047b",
-    "index_name": "auxiliary_set_6cd97073",
+    "hash": "86fec932443b802005f964abdd06d625",
+    "index_name": "auxiliary_set_86fec932",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -415,7 +415,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"
@@ -1073,7 +1073,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"

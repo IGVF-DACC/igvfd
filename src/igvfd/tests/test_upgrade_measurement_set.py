@@ -37,7 +37,7 @@ def test_measurement_set_upgrade_6_7(upgrader, measurement_set_v6):
     assert value['schema_version'] == '7'
 
 
-def test_measurement_set_upgrade_7_8(upgrader, measurement_set_multiome):
+def test_measurement_set_upgrade_7_8(testapp, upgrader, measurement_set_multiome):
     testapp.patch_json(
         measurement_set_multiome['@id'],
         {

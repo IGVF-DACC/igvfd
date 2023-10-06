@@ -1,6 +1,6 @@
 {
-    "hash": "d200971a524245aaa5f25488df762de2",
-    "index_name": "prediction_set_d200971a",
+    "hash": "f6c5d1c9dfe71412d331713b8b37e3f6",
+    "index_name": "prediction_set_f6c5d1c9",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -415,7 +415,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"

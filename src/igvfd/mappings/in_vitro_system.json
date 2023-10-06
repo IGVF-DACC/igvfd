@@ -1,6 +1,6 @@
 {
-    "hash": "8649827fc9a459fea0e42b30f15fb71b",
-    "index_name": "in_vitro_system_8649827f",
+    "hash": "04fe58baa86f3adab5beeef0edbe3543",
+    "index_name": "in_vitro_system_04fe58ba",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -717,7 +717,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"

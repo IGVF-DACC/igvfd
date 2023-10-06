@@ -1,6 +1,6 @@
 {
-    "hash": "afc55c87339302c5d26f2f8315abc09c",
-    "index_name": "curated_set_afc55c87",
+    "hash": "6ec2bc624611513156cc3e3897dc73c9",
+    "index_name": "curated_set_6ec2bc62",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -418,7 +418,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"

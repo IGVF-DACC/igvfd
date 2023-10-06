@@ -1,6 +1,6 @@
 {
-    "hash": "0a4b9775a4923dc2465c29860cd754f9",
-    "index_name": "tissue_0a4b9775",
+    "hash": "693d6a9406cde6479ac3fb86dce520b9",
+    "index_name": "tissue_693d6a94",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -582,7 +582,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"

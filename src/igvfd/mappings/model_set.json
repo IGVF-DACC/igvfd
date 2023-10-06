@@ -1,6 +1,6 @@
 {
-    "hash": "053d85c50f25a34311ac855e922f7ea7",
-    "index_name": "model_set_053d85c5",
+    "hash": "d3dfaf247411273cd10e14f14a4900ca",
+    "index_name": "model_set_d3dfaf24",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -415,7 +415,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"
@@ -1118,7 +1118,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"
