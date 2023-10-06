@@ -1,7 +1,7 @@
 ## Changelog for *`rodent_donor.json`*
 
 ### Minor changes since schema version 10
-* Expand `collections` enum list to include `ClinGen`, `GREGoR`, and `MaveDB`.
+* Expand `collections` enum list to include `ClinGen`, `GREGoR`, `IGVF_catalog_beta_v0.1`, and `MaveDB`.
 
 ### Schema version 10
 

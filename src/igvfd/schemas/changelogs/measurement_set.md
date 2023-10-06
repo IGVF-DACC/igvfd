@@ -18,7 +18,7 @@
 * Add `auxiliary_sets`.
 * Restrict `nucleic_acid_delivery`, `moi`, and `construct_libraries` to submittable by admins only. These properties will be moved to Sample objects.
 * Expand `preferred_assay_title` enum list to include `10x multiome with MULTI-seq` and `snMCT-seq`.
-* Expand `collections` enum list to include `ClinGen`, `GREGoR`, and `MaveDB`.
+* Expand `collections` enum list to include `ClinGen`, `GREGoR`, `IGVF_catalog_beta_v0.1`, and `MaveDB`.
 
 ### Schema version 5
 
