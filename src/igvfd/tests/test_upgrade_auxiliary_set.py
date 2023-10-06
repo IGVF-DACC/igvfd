@@ -11,7 +11,7 @@ def test_auxiliary_set_upgrade_1_2(upgrader, auxiliary_set_v1):
     assert 'references' not in value
 
 
-def test_auxiliary_set_upgrade_2_3(upgrader, auxiliary_set_v3):
+def test_auxiliary_set_upgrade_3_4(upgrader, auxiliary_set_v3):
     value = upgrader.upgrade(
         'auxiliary_set', auxiliary_set_v3,
         current_version='3', target_version='4')
