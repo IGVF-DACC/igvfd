@@ -74,7 +74,41 @@ Instructions to clear the dead-letter queue for indexing.
 
 ## Log into running container
 
-Steps to log into a running container.
+1. Find cluster in ECS console:
+
+<p align="center">
+  <img src="./images/howto/connect-to-running-container_1.png" alt="Connect to running container 1" width="500">
+</p>
+
+2. Click on desired service:
+
+<p align="center">
+  <img src="./images/howto/connect-to-running-container_2.png" alt="Connect to running container 2" width="500">
+</p>
+
+3. Find task ID:
+
+<p align="center">
+  <img src="./images/howto/connect-to-running-container_3.png" alt="Connect to running container 3" width="500">
+</p>
+
+4. Find container name (if task has multiple containers):
+
+<p align="center">
+  <img src="./images/howto/connect-to-running-container_4.png" alt="Connect to running container 4" width="500">
+</p>
+
+5. Run command in terminal, filling in cluster, task, container name, and profile:
+
+```bash
+aws ecs execute-command \
+    --command "/bin/bash" \
+    --interactive \
+    --cluster igvfd-dev-DeployDevelopment-BackendStack-EcsDefaultClusterMnL3mNNYNDemoVpc278C9613-7BVzDrMc52Ln \
+    --task 26f42c00797144ec89393019c15c3d2b \
+    --container pyramid \
+    --profile igvf-dev
+```
 
 ---
 
