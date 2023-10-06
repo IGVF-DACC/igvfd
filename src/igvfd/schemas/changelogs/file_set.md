@@ -5,3 +5,4 @@
 * Add `dbxrefs`. (03/01/2023)
 * Rename `sample` to `samples`. (02/08/2023)
 * Rename `donor` to `donors`. (02/08/2023)
+* Deprecate `construct_library` schema. (10/11/2023)

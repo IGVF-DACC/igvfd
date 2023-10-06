@@ -334,25 +334,6 @@ class MeasurementSet(FileSet):
 
 
 @collection(
-    name='construct-libraries',
-    unique_key='accession',
-    properties={
-        'title': 'Construct Libraries',
-        'description': 'Listing of construct libraries',
-    })
-class ConstructLibrary(FileSet):
-    item_type = 'construct_library'
-    schema = load_schema('igvfd:schemas/construct_library.json')
-    embedded_with_frame = [
-        Path('award', include=['@id', 'component']),
-        Path('lab', include=['@id', 'title']),
-        Path('submitted_by', include=['@id', 'title']),
-        Path('files', include=['@id', 'accession', 'aliases']),
-        Path('control_for', include=['@id', 'accession', 'aliases'])
-    ]
-
-
-@collection(
     name='models',
     unique_key='accession',
     properties={

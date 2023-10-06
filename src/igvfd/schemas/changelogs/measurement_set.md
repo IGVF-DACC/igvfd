@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 7
+
+* Remove `nucleic_acid_delivery`, `moi`, and `construct_libraries` properties.
+
 ### Schema version 6
 
 * Require `samples`.

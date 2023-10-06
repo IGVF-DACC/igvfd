@@ -44,14 +44,9 @@
             "file_set.json#/dependentSchemas"
         ]
     },
-    "dependentRequired": {
-        "moi": [
-            "construct_libraries"
-        ]
-    },
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "4"
         },
         "file_set_type": {
             "title": "File Set Type",
@@ -65,28 +60,6 @@
                 "oligo-conjugated antibodies",
                 "quantification barcode sequencing"
             ]
-        },
-        "construct_libraries": {
-            "permission": "import_items",
-            "comment": "Do not submit. This property has been moved to Sample objects.",
-            "title": "Construct Libraries",
-            "description": "The construct libraries of vectors introduced to the biosample used to produce data in this auxiliary set.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Construct Library",
-                "type": "string",
-                "linkTo": "ConstructLibrary"
-            }
-        },
-        "moi": {
-            "permission": "import_items",
-            "comment": "Do not submit. This property has been moved to Sample objects.",
-            "title": "Multiplicity Of Infection",
-            "description": "The actual multiplicity of infection (MOI) for vectors introduced to the biosample used to produce data in this auxiliary set. At least one construct library must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
-            "type": "number",
-            "minimum": 0
         },
         "library_construction_platform": {
             "title": "Library Construction Platform",

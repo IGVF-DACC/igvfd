@@ -30,3 +30,15 @@ def auxiliary_set_v2(lab, award):
         'auxiliary_type': 'gRNA sequencing'
     }
     return item
+
+
+@pytest.fixture
+def auxiliary_set_v3(base_auxiliary_set):
+    item = base_auxiliary_set.copy()
+    item.update({
+        'schema_version': '3',
+        'moi': 1,
+        'construct_libraries': 'TSTDSobject',
+        'notes': 'Previous note.'
+    })
+    return item

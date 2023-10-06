@@ -33,7 +33,6 @@ TOP_HITS_ITEM_TYPES = [
     'SignalFile',
     'MatrixFile',
     'AnalysisSet',
-    'ConstructLibrary',
     'ConstructLibrarySet',
     'CuratedSet',
     'MeasurementSet',
