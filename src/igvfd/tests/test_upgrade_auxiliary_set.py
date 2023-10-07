@@ -19,3 +19,12 @@ def test_auxiliary_set_upgrade_2_3(upgrader, auxiliary_set_v2):
     assert value['schema_version'] == '3'
     assert 'file_set_type' in value and value['file_set_type'] == old_auxiliary_type
     assert 'auxiliary_type' not in value
+
+
+def test_auxiliary_set_upgrade_3_4(upgrader, auxiliary_set_v3):
+    value = upgrader.upgrade(
+        'auxiliary_set', auxiliary_set_v3,
+        current_version='3', target_version='4')
+    assert value['schema_version'] == '4'
+    assert 'construct_libraries' not in value
+    assert 'moi' not in value

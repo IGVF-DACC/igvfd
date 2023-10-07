@@ -39,7 +39,6 @@ ORDER = [
     'curated_set',
     'software',
     'software_version',
-    'construct_library',
     'construct_library_set',
     'image',
     'page',
@@ -546,9 +545,6 @@ PHASE1_PIPELINES = {
         remove_keys('construct_library_sets', 'moi', 'nucleic_acid_delivery',
                     'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
-    'construct_library': [
-        remove_keys('integrated_content_files'),
-    ],
     'reference_file': [
         remove_keys('derived_from', 'file_format_specifications'),
     ],
@@ -606,9 +602,6 @@ PHASE2_PIPELINES = {
     'technical_sample': [
         skip_rows_missing_all_keys('construct_library_sets', 'moi', 'nucleic_acid_delivery',
                                    'time_post_library_delivery', 'time_post_library_delivery_units'),
-    ],
-    'construct_library': [
-        skip_rows_missing_all_keys('integrated_content_files'),
     ],
     'reference_file': [
         skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),

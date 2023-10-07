@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Schema version 4
+
+* Remove `moi` and `construct_libraries` properties.
+
 ### Minor changes since schema version 3
 
 * Restrict `moi` and `construct_libraries` to submittable by admins only. These properties will be moved to Sample objects.

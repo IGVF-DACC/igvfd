@@ -35,34 +35,6 @@ def measurement_set_3_4(value, system):
             del value['protocol']
 
 
-@upgrade_step('construct_library', '1', '2')
-def construct_library_1_2(value, system):
-    # https://igvf.atlassian.net/browse/IGVF-474
-    plasmid_map = value.get('plasmid_map', None)
-    if plasmid_map is None:
-        return
-    else:
-        if 'documents' in value:
-            value['documents'].append(value['plasmid_map'])
-            del value['plasmid_map']
-
-
-@upgrade_step('construct_library', '2', '3')
-def construct_library_2_3(value, system):
-    # https://igvf.atlassian.net/browse/IGVF-849
-    notes = value.get('notes', '')
-    if 'expression_vector_library_details' not in value:
-        if 'guide_library_details' not in value:
-            if 'reporter_library_details' not in value:
-                value['guide_library_details'] = {'guide_type': 'sgRNA'}
-                notes += f' guide_library_details added via upgrade; update before removing note.'
-                value['notes'] = notes.strip()
-    if 'origins' not in value:
-        value['origins'] = ['TF binding sites']
-        notes += f' origins added via upgrade; update before removing note.'
-        value['notes'] = notes.strip()
-
-
 @upgrade_step('measurement_set', '4', '5')
 def measurement_set_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-679
@@ -74,15 +46,6 @@ def measurement_set_4_5(value, system):
         del value['seqspec']
 
 
-@upgrade_step('construct_library', '3', '4')
-def construct_library_3_4(value, system):
-    # https://igvf.atlassian.net/browse/IGVF-860
-    if 'origins' in value:
-        value['selection_criteria'] = value['origins']
-        del value['origins']
-
-
-@upgrade_step('construct_library', '4', '5')
 @upgrade_step('curated_set', '3', '4')
 @upgrade_step('prediction', '1', '2')
 @upgrade_step('model', '1', '2')
@@ -92,15 +55,6 @@ def file_set_3_4(value, system):
     if 'references' in value:
         value['publication_identifiers'] = value['references']
         del value['references']
-
-
-@upgrade_step('construct_library', '5', '6')
-def construct_library_5_6(value, system):
-    # https://igvf.atlassian.net/browse/IGVF-895
-    # Source property is pluralized
-    if 'source' in value:
-        value['sources'] = [value['source']]
-        del value['source']
 
 
 @upgrade_step('model', '2', '3')
@@ -131,4 +85,23 @@ def prediction_2_3(value, system):
 @upgrade_step('prediction_set', '1', '2')
 def file_set_5_6(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1111
+    return
+
+
+@upgrade_step('measurement_set', '6', '7')
+@upgrade_step('auxiliary_set', '3', '4')
+def file_set_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1177
+    notes = value.get('notes', '')
+    if 'construct_libraries' in value:
+        notes += f" ConstructLibrary object(s) {value['construct_libraries']} removed via upgrade."
+        value.pop('construct_libraries')
+    if 'moi' in value:
+        notes += f" MOI {value['moi']} was removed via upgrade."
+        value.pop('moi')
+    if 'nucleic_acid_delivery' in value:
+        notes += f" Nucleic acid delivery {value['nucleic_acid_delivery']} was removed via upgrade."
+        value.pop('nucleic_acid_delivery')
+    if notes != '':
+        value['notes'] = notes.strip()
     return

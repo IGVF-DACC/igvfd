@@ -85,3 +85,14 @@ def measurement_set_v5(measurement_set):
         'schema_version': '5'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v6(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '6',
+        'moi': '5',
+        'nucleic_acid_delivery': 'adenoviral transduction'
+    })
+    return item

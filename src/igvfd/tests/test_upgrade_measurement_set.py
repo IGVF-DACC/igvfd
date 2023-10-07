@@ -27,3 +27,11 @@ def test_measurement_set_upgrade_4_5(upgrader, measurement_set_v4):
 def test_measurement_set_upgrade_5_6(upgrader, measurement_set_v5):
     value = upgrader.upgrade('measurement_set', measurement_set_v5, current_version='5', target_version='6')
     assert value['schema_version'] == '6'
+
+
+def test_measurement_set_upgrade_6_7(upgrader, measurement_set_v6):
+    value = upgrader.upgrade('measurement_set', measurement_set_v6, current_version='6', target_version='7')
+    assert 'construct_libraries' not in value
+    assert 'moi' not in value
+    assert 'nucleic_acid_delivery' not in value
+    assert value['schema_version'] == '7'

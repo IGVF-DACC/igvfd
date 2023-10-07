@@ -21,7 +21,6 @@
             "GEO:GSE187549"
         ],
         "library_construction_platform": "9ed48993-8f87-f432-42ac-c34a0f5caa20",
-        "nucleic_acid_delivery": "transfection",
         "auxiliary_sets": [
             "IGVFDS0001AUXI"
         ],
@@ -40,7 +39,6 @@
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
         "multiome_size": 2,
-        "nucleic_acid_delivery": "adenoviral transduction",
         "preferred_assay_title": "10x multiome"
     },
     {
@@ -68,8 +66,7 @@
         "uuid": "06893264-0d44-4fa8-bb3d-924fcdaed346",
         "assay_term": "/assay-terms/NTR_0000739/",
         "control_file_sets": [
-            "igvf:basic_measurement_set",
-            "igvf:basic_construct_library_0"
+            "igvf:basic_measurement_set"
         ],
         "samples": [
             "igvf:alias10"
@@ -92,7 +89,6 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002675/",
-        "nucleic_acid_delivery": "adenoviral transduction",
         "preferred_assay_title": "lentiMPRA",
         "readout": "/assay-terms/OBI_0003090/"
     },
@@ -108,7 +104,6 @@
             "igvf:alias2"
         ],
         "assay_term": "/assay-terms/OBI_0000185/",
-        "nucleic_acid_delivery": "transfection",
         "preferred_assay_title": "yN2H"
     },
     {
@@ -123,7 +118,6 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002675/",
-        "nucleic_acid_delivery": "lentiviral transduction",
         "preferred_assay_title": "MPRA (scQer)",
         "readout": "/assay-terms/OBI_0002631/"
     },

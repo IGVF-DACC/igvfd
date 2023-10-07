@@ -3,6 +3,7 @@
 ### Minor changes since schema version 6
 
 * Restrict `lab` and `award` to submittable by admins only. No further submissions of construct_libraries are accepted, please submit construct_library_set objects instead.
+* Deprecate `construct_library` schema.
 
 ### Schema version 6
 
