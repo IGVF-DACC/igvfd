@@ -1,6 +1,6 @@
 {
-    "hash": "c9d977f6a17ff4136d7ac600b93eabe4",
-    "index_name": "prediction_c9d977f6",
+    "hash": "5294c1d7652247743a115df5ace860c3",
+    "index_name": "prediction_5294c1d7",
     "item_type": "prediction",
     "mapping": {
         "dynamic_templates": [
@@ -795,6 +795,9 @@
                                 "type": "keyword"
                             },
                             "illumina_read_type": {
+                                "type": "keyword"
+                            },
+                            "index": {
                                 "type": "keyword"
                             },
                             "lab": {

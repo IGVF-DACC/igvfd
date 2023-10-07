@@ -1,6 +1,6 @@
 {
-    "hash": "7329c6927875f9a9703521f452cf0629",
-    "index_name": "auxiliary_set_7329c692",
+    "hash": "e08fdcb7353a06a721f8c4e66768a86e",
+    "index_name": "auxiliary_set_e08fdcb7",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -795,6 +795,9 @@
                                 "type": "keyword"
                             },
                             "illumina_read_type": {
+                                "type": "keyword"
+                            },
+                            "index": {
                                 "type": "keyword"
                             },
                             "lab": {

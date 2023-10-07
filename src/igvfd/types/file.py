@@ -235,7 +235,8 @@ class SequenceFile(File):
             flowcell_id = properties.get('flowcell_id', '')
             lane = str(properties.get('lane', ''))
             file_set = properties.get('file_set', '')
-            value_list += file_set, illumina_read_type, sequencing_run, flowcell_id, lane
+            index = properties.get('index', '')
+            value_list += file_set, illumina_read_type, sequencing_run, flowcell_id, lane, index
             value_list = [item for item in value_list if item != '']
             value = ':'.join(value_list)
             keys.setdefault('sequencing_run', []).append(value)

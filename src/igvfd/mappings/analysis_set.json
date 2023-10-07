@@ -1,6 +1,6 @@
 {
-    "hash": "edcfa282e59c817314446aaa7d383d47",
-    "index_name": "analysis_set_edcfa282",
+    "hash": "531eedc635a1f5f837d33723ed72b396",
+    "index_name": "analysis_set_531eedc6",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -795,6 +795,9 @@
                                 "type": "keyword"
                             },
                             "illumina_read_type": {
+                                "type": "keyword"
+                            },
+                            "index": {
                                 "type": "keyword"
                             },
                             "lab": {
