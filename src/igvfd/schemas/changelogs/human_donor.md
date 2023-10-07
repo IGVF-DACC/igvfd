@@ -1,5 +1,8 @@
 ## Changelog for *`human_donor.json`*
 
+### Minor changes since schema version 11
+* Expand `collections` enum list to include `ClinGen`, `GREGoR`, `IGVF_catalog_beta_v0.1`, and `MaveDB`.
+
 ### Schema version 11
 
 * Rename `references` to `publication_identifiers`.

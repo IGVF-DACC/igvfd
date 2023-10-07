@@ -1,5 +1,8 @@
 ## Changelog for *`curated_set.json`*
 
+### Minor changes since schema version 4
+* Expand `collections` enum list to include `ClinGen`, `GREGoR`, `IGVF_catalog_beta_v0.1`, and `MaveDB`.
+
 ### Schema version 4
 
 * Rename `references` to `publication_identifiers`.

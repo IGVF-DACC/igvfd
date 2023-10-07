@@ -1,8 +1,8 @@
 ## Changelog for *`sequence_file.json`*
 
 ### Minor changes since schema version 4
-
 * Add `index`.
+* Expand `collections` enum list to include `ClinGen`, `GREGoR`, `IGVF_catalog_beta_v0.1`, and `MaveDB`.
 
 ### Schema version 4
 

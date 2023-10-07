@@ -114,7 +114,11 @@
             "items": {
                 "type": "string",
                 "enum": [
-                    "ENCODE"
+                    "ClinGen",
+                    "ENCODE",
+                    "GREGoR",
+                    "IGVF_catalog_beta_v0.1",
+                    "MaveDB"
                 ]
             }
         },
