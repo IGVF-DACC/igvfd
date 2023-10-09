@@ -74,8 +74,8 @@
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "formInput": "textarea",
             "submissionExample": {
-                "appscript": "this is submitter comment",
-                "igvf_utils": "this is submitter comment"
+                "appscript": "this is a submitter comment",
+                "igvf_utils": "this is a submitter comment"
             }
         },
         "description": {
@@ -85,8 +85,8 @@
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
             "formInput": "textarea",
             "submissionExample": {
-                "appscript": "this is description",
-                "igvf_utils": "this is description"
+                "appscript": "this is a description",
+                "igvf_utils": "this is a description"
             }
         }
     },
