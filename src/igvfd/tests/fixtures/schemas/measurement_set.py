@@ -99,6 +99,7 @@ def measurement_set_v6(measurement_set):
 
 
 @pytest.fixture
+<<<<<<< HEAD
 def measurement_set_v7_multiome(testapp, lab, award, assay_term_atac, tissue):
     item = {
         'schema_version': '7',
@@ -108,4 +109,12 @@ def measurement_set_v7_multiome(testapp, lab, award, assay_term_atac, tissue):
         'multiome_size': 2.789,
         'samples': [tissue['@id']]
     }
+=======
+def measurement_set_v7(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '7',
+        'sequencing_library_type': ['direct RNA', 'exome capture']
+    })
+>>>>>>> 55a545bf (sequencing_library_types)
     return item

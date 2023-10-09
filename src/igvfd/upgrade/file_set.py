@@ -110,6 +110,13 @@ def curated_set_type_4_5(value, system):
 
 @upgrade_step('measurement_set', '7', '8')
 def measurement_set_7_8(value, system):
+<<<<<<< HEAD
     # https://igvf.atlassian.net/browse/IGVF-1169
     if 'multiome_size' in value:
         value['multiome_size'] = int(value['multiome_size'])
+=======
+    # https://igvf.atlassian.net/browse/IGVF-1167
+    if 'sequencing_library_type' in value:
+        value['sequencing_library_types'] = value['sequencing_library_type']
+        del value['sequencing_library_type']
+>>>>>>> 55a545bf (sequencing_library_types)
