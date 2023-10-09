@@ -163,6 +163,7 @@
                         "type": "keyword"
                     },
                     "assemblies": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "award": {
@@ -1373,6 +1374,7 @@
                         "type": "keyword"
                     },
                     "transcriptome_annotations": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "url": {

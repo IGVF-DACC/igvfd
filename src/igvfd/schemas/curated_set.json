@@ -88,7 +88,9 @@
         "donors.aliases",
         "samples.accession",
         "samples.aliases",
-        "submitted_by.title"
+        "submitted_by.title",
+        "assemblies",
+        "transcriptome_annotations"
     ],
     "changelog": "/profiles/changelogs/curated_set.md"
 }
