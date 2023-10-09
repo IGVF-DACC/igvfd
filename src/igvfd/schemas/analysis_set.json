@@ -64,7 +64,7 @@
     },
     "fuzzy_searchable_fields": [
         "@type",
-        "assay_title",
+        "assay_titles",
         "collections",
         "lab.title",
         "samples.summary",
