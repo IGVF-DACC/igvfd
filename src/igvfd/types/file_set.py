@@ -90,7 +90,7 @@ class AnalysisSet(FileSet):
 
     @calculated_property(
         schema={
-            'title': 'Assay Title',
+            'title': 'Assay Titles',
             'description': 'Title(s) of assays that produced data analyzed in the analysis set.',
             'type': 'array',
             'uniqueItems': True,
@@ -102,7 +102,7 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def assay_title(self, request, input_file_sets=None):
+    def assay_titles(self, request, input_file_sets=None):
         assay_title = set()
         if input_file_sets is not None:
             for fileset in input_file_sets:
@@ -148,8 +148,8 @@ class CuratedSet(FileSet):
     @calculated_property(
         define=True,
         schema={
-            'title': 'Assembly',
-            'description': 'The genome assembly to which the referencing files in the file set are utilizing (e.g., GRCh38).',
+            'title': 'Assemblies',
+            'description': 'The genome assemblies to which the referencing files in the file set are utilizing (e.g., GRCh38).',
             'type': 'array',
             'uniqueItems': True,
             'items': {
@@ -159,7 +159,7 @@ class CuratedSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def assembly(self, request, files=None):
+    def assemblies(self, request, files=None):
         if files:
             assembly_values = set()
             for current_file_path in files:
@@ -172,8 +172,8 @@ class CuratedSet(FileSet):
     @calculated_property(
         define=True,
         schema={
-            'title': 'Transcriptome Annotation',
-            'description': 'The annotation and version of the reference resource.',
+            'title': 'Transcriptome Annotations',
+            'description': 'The annotation versions of the reference resource.',
             'type': 'array',
             'uniqueItems': True,
             'items': {
@@ -183,7 +183,7 @@ class CuratedSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def transcriptome_annotation(self, request, files=None):
+    def transcriptome_annotations(self, request, files=None):
         if files:
             annotation_values = set()
             for current_file_path in files:
@@ -200,15 +200,15 @@ class CuratedSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, file_set_type, assembly=None, transcriptome_annotation=None, taxa=None):
+    def summary(self, file_set_type, assemblies=None, transcriptome_annotations=None, taxa=None):
         summary_message = ''
         if taxa:
             summary_message += f'{taxa} '
-        if assembly:
-            assembly_values_joined = ' '.join(assembly)
+        if assemblies:
+            assembly_values_joined = ' '.join(assemblies)
             summary_message += f'{assembly_values_joined} '
-        if transcriptome_annotation:
-            annotation_values_joined = ' '.join(transcriptome_annotation)
+        if transcriptome_annotations:
+            annotation_values_joined = ' '.join(transcriptome_annotations)
             summary_message += f'{annotation_values_joined} '
         summary_message += file_set_type
         return summary_message
