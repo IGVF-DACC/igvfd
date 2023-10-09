@@ -200,16 +200,19 @@
             "title": "Link to seqspec YAML File",
             "description": "The link to the associated seqspec YAML configuration file.",
             "type": "string",
-            "linkTo": "ConfigurationFile"
+            "linkTo": "ConfigurationFile",
+            "submissionExample": {
+                "appscript": "john-doe:configuration_file01 or IGVFFI1234ABCE",
+                "igvf_utils": "john-doe:configuration_file01 or IGVFFI1234ABCE"
+            }
         },
         "index": {
             "title": "Index",
             "description": "An Illumina index associated with the file.",
             "type": "string",
-            "linkTo": "ConfigurationFile",
             "submissionExample": {
-                "appscript": "john-doe:configuration_file01 or IGVFFI1234ABCE",
-                "igvf_utils": "john-doe:configuration_file01 or IGVFFI1234ABCE"
+                "appscript": "ACTGGTCC",
+                "igvf_utils": "ACTGGTCC"
             }
         }
     },
