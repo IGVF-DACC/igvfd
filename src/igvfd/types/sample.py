@@ -68,6 +68,7 @@ class Sample(Item):
         'title': 'File Sets',
         'type': 'array',
         'items': {
+            'title': 'File Set',
             'type': ['string', 'object'],
             'linkFrom': 'FileSet.samples',
         },
@@ -80,6 +81,7 @@ class Sample(Item):
         'title': 'Multiplexed In',
         'type': 'array',
         'items': {
+            'title': 'Multiplexed In',
             'type': ['string', 'object'],
             'linkFrom': 'MultiplexedSample.multiplexed_samples',
         },
@@ -517,6 +519,7 @@ class MultiplexedSample(Sample):
             'type': 'array',
             'notSubmittable': True,
             'items': {
+                'title': 'Sample Term',
                 'type': 'string',
                 'linkTo': 'SampleTerm',
             }
@@ -531,6 +534,7 @@ class MultiplexedSample(Sample):
             'type': 'array',
             'notSubmittable': True,
             'items': {
+                'title': 'Disease Term',
                 'type': 'string',
                 'linkTo': 'PhenotypeTerm'
             }
@@ -545,6 +549,7 @@ class MultiplexedSample(Sample):
             'type': 'array',
             'notSubmittable': True,
             'items': {
+                'title': 'Treatment',
                 'type': 'string',
                 'linkTo': 'Treatment'
             }
@@ -559,6 +564,7 @@ class MultiplexedSample(Sample):
             'type': 'array',
             'notSubmittable': True,
             'items': {
+                'title': 'Modification',
                 'type': 'string',
                 'linkTo': 'Modification'
             }
@@ -573,6 +579,7 @@ class MultiplexedSample(Sample):
             'type': 'array',
             'notSubmittable': True,
             'items': {
+                'title': 'Donor',
                 'type': 'string',
                 'linkTo': 'Donor'
             }
@@ -587,6 +594,7 @@ class MultiplexedSample(Sample):
             'type': 'array',
             'notSubmittable': True,
             'items': {
+                'title': 'Biomarker',
                 'type': 'string',
                 'linkTo': 'Biomarker'
             }
@@ -601,6 +609,7 @@ class MultiplexedSample(Sample):
             'type': 'array',
             'notSubmittable': True,
             'items': {
+                'title': 'Source',
                 'type': 'string',
                 'linkTo': [
                     'Source',
@@ -618,6 +627,7 @@ class MultiplexedSample(Sample):
             'type': 'array',
             'notSubmittable': True,
             'items': {
+                'title': 'Construct Library Set',
                 'type': 'string',
                 'linkTo': 'ConstructLibrarySet'
             }

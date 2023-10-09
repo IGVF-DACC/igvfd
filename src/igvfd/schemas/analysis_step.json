@@ -73,6 +73,7 @@
             "uniqueItems": true,
             "type": "array",
             "items": {
+                "title": "Parent",
                 "description": "A precursor step.",
                 "comment": "See analysis_step.json for available identifiers.",
                 "type": "string",

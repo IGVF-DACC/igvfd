@@ -401,6 +401,7 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
+                "title": "Integrated Content File",
                 "comment": "See file.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "File"
@@ -413,6 +414,7 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
+                "title": "Associated Phenotype",
                 "comment": "See phenotype_term.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "PhenotypeTerm"
@@ -426,6 +428,7 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
+                "title": "Gene",
                 "comment": "See gene.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "Gene"

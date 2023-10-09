@@ -81,6 +81,7 @@
             "minItems": 2,
             "uniqueItems": true,
             "items": {
+                "title": "Multiplexed Sample",
                 "linkTo": "Sample",
                 "type": "string"
             }

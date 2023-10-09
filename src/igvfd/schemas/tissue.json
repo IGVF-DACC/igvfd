@@ -92,7 +92,7 @@
             ]
         },
         "ccf_id": {
-            "title": "Common coordinate framework identifier",
+            "title": "Common Coordinate Framework Identifier",
             "description": "HubMap Common Coordinate Framework unique identifier corresponding to the organ, biological structure, and spatial location of the tissue specimen.",
             "comment": "This identifier will be later linked to: https://portal.hubmapconsortium.org/ccf-eui",
             "type": "string",
@@ -120,6 +120,7 @@
         },
         "pooled_from": {
             "items": {
+                "title": "Tissue Pooled From",
                 "linkTo": "Tissue",
                 "type": "string"
             }

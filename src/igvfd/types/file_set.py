@@ -50,6 +50,7 @@ class FileSet(Item):
         'title': 'Files',
         'type': 'array',
         'items': {
+            'title': 'File',
             'type': ['string', 'object'],
             'linkFrom': 'File.file_set',
         },
@@ -59,9 +60,10 @@ class FileSet(Item):
         return paths_filtered_by_status(request, files)
 
     @calculated_property(schema={
-        'title': 'File sets controlled by this file set',
+        'title': 'File Sets Controlled By This File Set',
         'type': 'array',
         'items': {
+            'title': 'File Set Controlled By This File Set',
             'type': ['string', 'object'],
             'linkFrom': 'FileSet.control_file_sets',
         },
@@ -151,6 +153,7 @@ class CuratedSet(FileSet):
             'type': 'array',
             'uniqueItems': True,
             'items': {
+                'title': 'Assembly',
                 'type': 'string'
             },
             'notSubmittable': True,
@@ -174,6 +177,7 @@ class CuratedSet(FileSet):
             'type': 'array',
             'uniqueItems': True,
             'items': {
+                'title': 'Transcriptome Annotation',
                 'type': 'string'
             },
             'notSubmittable': True,
@@ -369,6 +373,7 @@ class AuxiliarySet(FileSet):
         'description': 'The measurement sets that link to this auxiliary set.',
         'type': 'array',
         'items': {
+            'title': 'Measurement Set',
             'type': ['string', 'object'],
             'linkFrom': 'MeasurementSet.auxiliary_sets',
         },
@@ -454,6 +459,7 @@ class ConstructLibrarySet(FileSet):
         'description': 'The samples that link to this construct library set.',
         'type': 'array',
         'items': {
+            'title': 'Applied to Sample',
             'type': ['string', 'object'],
             'linkFrom': 'Sample.construct_library_sets',
         },

@@ -88,7 +88,7 @@
             "type": "array",
             "uniqueItems": true,
             "items": {
-                "title": "External identifier",
+                "title": "External Identifier",
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
                 "type": "string",
                 "pattern": "^$"
@@ -100,6 +100,7 @@
             "type": "array",
             "uniqueItems": true,
             "items": {
+                "title": "File Derived From",
                 "comment": "See file.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "File"
@@ -118,6 +119,7 @@
             "type": "array",
             "uniqueItems": true,
             "items": {
+                "title": "File Format Specifications Document",
                 "comment": "See document.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "Document"

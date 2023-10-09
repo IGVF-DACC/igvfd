@@ -79,6 +79,7 @@ class User(Item):
             'title': 'Access Keys',
             'type': 'array',
             'items': {
+                'title': 'Access Key',
                 'type': ['string', 'object'],
                 'linkFrom': 'AccessKey.user',
                 'notSubmittable': True,
