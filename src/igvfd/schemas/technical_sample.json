@@ -83,8 +83,8 @@
                 "linkTo": "SampleTerm"
             },
             "submissionExample": {
-                "appscript": "[\"/sample-terms/UBERON_0002369/\", \"/sample-terms/UBERON_0001388/\"]",
-                "igvf_utils": "/sample-terms/UBERON_0002369/, /sample-terms/UBERON_0001388/"
+                "appscript": "[\"/sample-terms/UBERON_0001388/\"]",
+                "igvf_utils": "/sample-terms/UBERON_0001388/"
             }
         }
     },
