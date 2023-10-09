@@ -1,6 +1,6 @@
 {
-    "hash": "fa2deab60cab01774fce696ee2036ef8",
-    "index_name": "tissue_fa2deab6",
+    "hash": "0a4b9775a4923dc2465c29860cd754f9",
+    "index_name": "tissue_0a4b9775",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -409,9 +409,6 @@
                             "collections": {
                                 "type": "keyword"
                             },
-                            "construct_libraries": {
-                                "type": "keyword"
-                            },
                             "control_file_sets": {
                                 "type": "keyword"
                             },
@@ -578,15 +575,6 @@
                             "model_zoo_location": {
                                 "type": "keyword"
                             },
-                            "moi": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "float"
-                            },
                             "multiome_size": {
                                 "fields": {
                                     "raw": {
@@ -598,9 +586,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"

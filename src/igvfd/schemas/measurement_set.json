@@ -139,17 +139,6 @@
                 "igvf_utils": 2
             }
         },
-        "nucleic_acid_delivery": {
-            "permission": "import_items",
-            "comment": "Do not submit. This property has been moved to Sample objects.",
-            "title": "Nucleic Acid Delivery",
-            "type": "string",
-            "enum": [
-                "transfection",
-                "adenoviral transduction",
-                "lentiviral transduction"
-            ]
-        },
         "control_file_sets": {
             "title": "Controls",
             "description": "File sets that can serve as scientific controls for this measurement_set.",

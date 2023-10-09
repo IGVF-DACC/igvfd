@@ -65,28 +65,6 @@
                 "igvf_utils": "cell hashing"
             }
         },
-        "construct_libraries": {
-            "permission": "import_items",
-            "comment": "Do not submit. This property has been moved to Sample objects.",
-            "title": "Construct Libraries",
-            "description": "The construct libraries of vectors introduced to the biosample used to produce data in this auxiliary set.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Construct Library",
-                "type": "string",
-                "linkTo": "ConstructLibrary"
-            }
-        },
-        "moi": {
-            "permission": "import_items",
-            "comment": "Do not submit. This property has been moved to Sample objects.",
-            "title": "Multiplicity Of Infection",
-            "description": "The actual multiplicity of infection (MOI) for vectors introduced to the biosample used to produce data in this auxiliary set. At least one construct library must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
-            "type": "number",
-            "minimum": 0
-        },
         "library_construction_platform": {
             "title": "Library Construction Platform",
             "description": "The platform used to construct the library sequenced in this auxiliary set.",

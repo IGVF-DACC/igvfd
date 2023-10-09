@@ -1,6 +1,6 @@
 {
-    "hash": "c4f8f838030d511c99e7328ed835769e",
-    "index_name": "auxiliary_set_c4f8f838",
+    "hash": "6cd97073675a9e36d11de2a03d69047b",
+    "index_name": "auxiliary_set_6cd97073",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -237,9 +237,6 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "construct_libraries": {
-                        "type": "keyword"
-                    },
                     "control_for": {
                         "properties": {
                             "@id": {
@@ -299,9 +296,6 @@
                                 "type": "keyword"
                             },
                             "collections": {
-                                "type": "keyword"
-                            },
-                            "construct_libraries": {
                                 "type": "keyword"
                             },
                             "control_file_sets": {
@@ -414,15 +408,6 @@
                             "model_zoo_location": {
                                 "type": "keyword"
                             },
-                            "moi": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "float"
-                            },
                             "multiome_size": {
                                 "fields": {
                                     "raw": {
@@ -434,9 +419,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"
@@ -1096,9 +1078,6 @@
                             "notes": {
                                 "type": "text"
                             },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
-                            },
                             "preferred_assay_title": {
                                 "type": "keyword"
                             },
@@ -1143,15 +1122,6 @@
                             }
                         },
                         "type": "object"
-                    },
-                    "moi": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "float"
                     },
                     "notes": {
                         "type": "text"

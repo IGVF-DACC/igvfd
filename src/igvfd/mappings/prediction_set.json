@@ -1,6 +1,6 @@
 {
-    "hash": "4cef3b7444320e032fa8e70afda28158",
-    "index_name": "prediction_set_4cef3b74",
+    "hash": "d200971a524245aaa5f25488df762de2",
+    "index_name": "prediction_set_d200971a",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -298,9 +298,6 @@
                             "collections": {
                                 "type": "keyword"
                             },
-                            "construct_libraries": {
-                                "type": "keyword"
-                            },
                             "control_file_sets": {
                                 "type": "keyword"
                             },
@@ -411,15 +408,6 @@
                             "model_zoo_location": {
                                 "type": "keyword"
                             },
-                            "moi": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "float"
-                            },
                             "multiome_size": {
                                 "fields": {
                                     "raw": {
@@ -431,9 +419,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"

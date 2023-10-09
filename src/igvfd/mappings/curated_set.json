@@ -1,6 +1,6 @@
 {
-    "hash": "84c9c1b84e56e5c38a975d9c0d374b03",
-    "index_name": "curated_set_84c9c1b8",
+    "hash": "afc55c87339302c5d26f2f8315abc09c",
+    "index_name": "curated_set_afc55c87",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -301,9 +301,6 @@
                             "collections": {
                                 "type": "keyword"
                             },
-                            "construct_libraries": {
-                                "type": "keyword"
-                            },
                             "control_file_sets": {
                                 "type": "keyword"
                             },
@@ -414,15 +411,6 @@
                             "model_zoo_location": {
                                 "type": "keyword"
                             },
-                            "moi": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "float"
-                            },
                             "multiome_size": {
                                 "fields": {
                                     "raw": {
@@ -434,9 +422,6 @@
                             },
                             "notes": {
                                 "type": "text"
-                            },
-                            "nucleic_acid_delivery": {
-                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"
