@@ -334,22 +334,6 @@ class MeasurementSet(FileSet):
 
 
 @collection(
-    name='models',
-    unique_key='accession',
-    properties={
-        'title': 'Models',
-        'description': 'Listing of models',
-    }
-)
-class Model(FileSet):
-    item_type = 'model'
-    schema = load_schema('igvfd:schemas/model.json')
-    embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('input_file_sets', include=['@id', 'accession', 'aliases'])
-    ]
-
-
-@collection(
     name='model-sets',
     unique_key='accession',
     properties={
@@ -428,19 +412,6 @@ class AuxiliarySet(FileSet):
     )
     def donors(self, request, samples=None):
         return get_donors_from_samples(request, samples)
-
-
-@collection(
-    name='predictions',
-    unique_key='accession',
-    properties={
-        'title': 'Predictions',
-        'description': 'Listing of predictions',
-    })
-class Prediction(FileSet):
-    item_type = 'prediction'
-    schema = load_schema('igvfd:schemas/prediction.json')
-    embedded_with_frame = FileSet.embedded_with_frame
 
 
 @collection(
