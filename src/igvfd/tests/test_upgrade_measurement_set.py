@@ -40,4 +40,5 @@ def test_measurement_set_upgrade_6_7(upgrader, measurement_set_v6):
 def test_measurement_set_upgrade_7_8(upgrader, measurement_set_v7_multiome):
     value = upgrader.upgrade('measurement_set', measurement_set_v7_multiome, current_version='7', target_version='8')
     assert value['schema_version'] == '8'
+    assert type(value['multiome_size']) == int
     assert value['multiome_size'] == 2
