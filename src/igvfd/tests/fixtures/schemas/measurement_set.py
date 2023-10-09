@@ -99,9 +99,9 @@ def measurement_set_v6(measurement_set):
 
 
 @pytest.fixture
-def measurement_set_v6_multiome(testapp, lab, award, assay_term_atac, tissue):
+def measurement_set_v7_multiome(testapp, lab, award, assay_term_atac, tissue):
     item = {
-        'schema_version': '6',
+        'schema_version': '7',
         'award': award['@id'],
         'lab': lab['@id'],
         'assay_term': assay_term_atac['@id'],
