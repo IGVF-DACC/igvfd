@@ -1,6 +1,6 @@
 {
-    "hash": "3bbfabac9d17462c93c63970f298a2cf",
-    "index_name": "technical_sample_3bbfabac",
+    "hash": "162d203dfa5e9a174ae8dd15f041f8dc",
+    "index_name": "technical_sample_162d203d",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -317,6 +317,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "construct_libraries": {
+                                "type": "keyword"
+                            },
                             "control_file_sets": {
                                 "type": "keyword"
                             },
@@ -483,6 +486,15 @@
                             "model_zoo_location": {
                                 "type": "keyword"
                             },
+                            "moi": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "multiome_size": {
                                 "fields": {
                                     "raw": {
@@ -494,6 +506,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "nucleic_acid_delivery": {
+                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"

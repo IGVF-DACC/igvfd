@@ -1,6 +1,6 @@
 {
-    "hash": "8649827fc9a459fea0e42b30f15fb71b",
-    "index_name": "in_vitro_system_8649827f",
+    "hash": "e4fd5459ddd79311136a72856c0134ef",
+    "index_name": "in_vitro_system_e4fd5459",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -544,6 +544,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "construct_libraries": {
+                                "type": "keyword"
+                            },
                             "control_file_sets": {
                                 "type": "keyword"
                             },
@@ -710,6 +713,15 @@
                             "model_zoo_location": {
                                 "type": "keyword"
                             },
+                            "moi": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "multiome_size": {
                                 "fields": {
                                     "raw": {
@@ -721,6 +733,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "nucleic_acid_delivery": {
+                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"

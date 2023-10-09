@@ -1,6 +1,6 @@
 {
-    "hash": "bbc40335373234ef0597883caf0f6ae9",
-    "index_name": "whole_organism_bbc40335",
+    "hash": "49037fe4f4a48eed1f8829fd2bda5b32",
+    "index_name": "whole_organism_49037fe4",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -406,6 +406,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "construct_libraries": {
+                                "type": "keyword"
+                            },
                             "control_file_sets": {
                                 "type": "keyword"
                             },
@@ -572,6 +575,15 @@
                             "model_zoo_location": {
                                 "type": "keyword"
                             },
+                            "moi": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "multiome_size": {
                                 "fields": {
                                     "raw": {
@@ -583,6 +595,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "nucleic_acid_delivery": {
+                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"
