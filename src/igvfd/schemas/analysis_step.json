@@ -97,7 +97,7 @@
             },
             "submissionExample": {
                 "appscript": "[\"john-doe:analysis_step01\", \"/analysis-steps/TSTWF62585875-chip-seq-alignment-example-step/\"]",
-                "igvf_utils": "john-doe:analysis_step01 or /analysis-steps/TSTWF62585875-chip-seq-alignment-example-step/"
+                "igvf_utils": "john-doe:analysis_step01, /analysis-steps/TSTWF62585875-chip-seq-alignment-example-step/"
             }
         },
         "input_content_types": {
