@@ -177,7 +177,7 @@
             },
             "submissionExample": {
                 "appscript": "[\"direct RNA\", \"exome capture\"]",
-                "igvf_utils": "direct RNA"
+                "igvf_utils": "direct RNA, exome capture"
             }
         },
         "auxiliary_sets": {

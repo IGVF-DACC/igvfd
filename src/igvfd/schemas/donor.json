@@ -57,8 +57,8 @@
                 "pattern": "^GEO:SAMN\\d+$"
             },
             "submissionExample": {
-                "appscript": "[\"GEO:SAMN31998833\"]",
-                "igvf_utils": "GEO:SAMN31998833"
+                "appscript": "[\"GEO:SAMN31998833\", \"GEO:SAMN31998834\"]",
+                "igvf_utils": "GEO:SAMN31998833, GEO:SAMN31998834"
             }
         },
         "sex": {
