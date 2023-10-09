@@ -171,8 +171,8 @@
                 "pattern": "^(GEO:SAMN\\d+)|(IMSR_JAX:\\d{6})$"
             },
             "submissionExample": {
-                "appscript": "GEO:SAMN31260610 or IMSR_JAX:123456",
-                "igvf_utils": "GEO:SAMN31260610 or IMSR_JAX:123456"
+                "appscript": "[\"GEO:SAMN31260610\", \"IMSR_JAX:123456\"]",
+                "igvf_utils": "GEO:SAMN31260610, IMSR_JAX:123456"
             }
         }
     },

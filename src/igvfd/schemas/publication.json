@@ -128,8 +128,8 @@
                 "pattern": "^(PMID:[0-9]+|doi:10\\.[0-9]{4}[\\d\\s\\S:\\.\\/]+|PMCID:PMC[0-9]+|[0-9]{4}\\.[0-9]{4})$"
             },
             "submissionExample": {
-                "appscript": "PMID:34620214 or PMCID:PMC8495978 or doi:10.1186/s13059-021-02505-w",
-                "igvf_utils": "PMID:34620214 or PMCID:PMC8495978 or doi:10.1186/s13059-021-02505-w"
+                "appscript": "[\"PMID:34620214\", \"PMCID:PMC8495978\",\"doi:10.1186/s13059-021-02505-w\"]",
+                "igvf_utils": "PMID:34620214, PMCID:PMC8495978, doi:10.1186/s13059-021-02505-w"
             }
         },
         "published_by": {

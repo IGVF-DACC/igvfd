@@ -101,8 +101,8 @@
                 "pattern": "^(SRA:(SRR|SRX)\\d+)$"
             },
             "submissionExample": {
-                "appscript": "SRA:SRR1234 or SRA:SRX1234",
-                "igvf_utils": "SRA:SRR1234 or SRA:SRX1234"
+                "appscript": "[\"SRA:SRR1234\", \"SRA:SRX1234\"]",
+                "igvf_utils": "SRA:SRR1234, SRA:SRX1234"
             }
         },
         "flowcell_id": {
