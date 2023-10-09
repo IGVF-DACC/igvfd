@@ -8,6 +8,7 @@
 * Add `publication_identifiers`.
 * Convert `donors` to be calculated from `samples`.
 * Expand `collections` enum list to include `ClinGen`, `GREGoR`, `IGVF_catalog_beta_v0.1`, and `MaveDB`.
+* Rename `assay_title` to `assay_titles`.
 
 ### Schema version 3
 
