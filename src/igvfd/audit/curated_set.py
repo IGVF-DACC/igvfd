@@ -9,35 +9,9 @@ from .formatter import (
 
 
 @audit_checker('CuratedSet', frame='object')
-def audit_curated_set_mismatched_donor(value, system):
-    '''
-        audit_detail: The donor specified for curated set and the donor of the associated samples are expected to be matching.
-        audit_category: inconsistent donor metadata
-        audit_levels: ERROR
-    '''
-    samples_donors = set()
-    donors_specified = set()
-    if ('samples' in value) and ('donors' in value):
-        donors_specified = set(value['donors'])
-        sample_ids = value.get('samples')
-        for s in sample_ids:
-            samples_object = system.get('request').embed(s + '@@object?skip_calculated=true')
-            if 'donors' in samples_object:
-                for d in samples_object['donors']:
-                    samples_donors.add(d)
-
-        if samples_donors != donors_specified:
-            detail = (
-                f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'has a donor(s) which does not match the donor(s) of the associated Samples.'
-            )
-            yield AuditFailure('inconsistent donors metadata', detail, level='ERROR')
-
-
-@audit_checker('CuratedSet', frame='object')
 def audit_curated_set_mismatched_taxa(value, system):
     '''
-        audit_detail: The taxa of the curated set, associated samples, and the donors are expected to be matching.
+        audit_detail: The taxa of the curated set and associated samples or donors are expected to be matching.
         audit_category: inconsistent taxa metadata
         audit_levels: ERROR
     '''
@@ -70,13 +44,3 @@ def audit_curated_set_mismatched_taxa(value, system):
                 f'has a taxa which does not match the taxa of the associated Donors.'
             )
             yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')
-
-    if 'donors' in value and \
-            'samples' in value and \
-            donors_taxa != samples_taxa and not \
-            (donors_taxa == {'Mus musculus', 'Homo sapiens'} and samples_taxa == {None}):
-        detail = (
-            f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-            f'has Samples with taxa that do not match the taxa of the Donors.'
-        )
-        yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')

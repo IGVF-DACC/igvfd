@@ -1,6 +1,6 @@
 {
-    "hash": "e39b0350dce886c81188ee70070479ef",
-    "index_name": "curated_set_e39b0350",
+    "hash": "afc55c87339302c5d26f2f8315abc09c",
+    "index_name": "curated_set_afc55c87",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -310,9 +310,6 @@
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
-                            "curated_set_type": {
-                                "type": "keyword"
-                            },
                             "dbxrefs": {
                                 "type": "keyword"
                             },
@@ -554,10 +551,6 @@
                     "creation_timestamp": {
                         "type": "keyword"
                     },
-                    "curated_set_type": {
-                        "copy_to": "_fuzzy",
-                        "type": "keyword"
-                    },
                     "dbxrefs": {
                         "copy_to": "_exact",
                         "type": "keyword"
@@ -705,6 +698,10 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "file_set_type": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
                     },
                     "files": {
                         "properties": {

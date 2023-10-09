@@ -1,6 +1,6 @@
 {
-    "hash": "69c4771a0fad2c4dd722045615d840b7",
-    "index_name": "whole_organism_69c4771a",
+    "hash": "bbc40335373234ef0597883caf0f6ae9",
+    "index_name": "whole_organism_bbc40335",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -413,9 +413,6 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "curated_set_type": {
                                 "type": "keyword"
                             },
                             "dbxrefs": {

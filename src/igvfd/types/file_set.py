@@ -196,7 +196,7 @@ class CuratedSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, curated_set_type, assembly=None, transcriptome_annotation=None, taxa=None):
+    def summary(self, file_set_type, assembly=None, transcriptome_annotation=None, taxa=None):
         summary_message = ''
         if taxa:
             summary_message += f'{taxa} '
@@ -206,7 +206,7 @@ class CuratedSet(FileSet):
         if transcriptome_annotation:
             annotation_values_joined = ' '.join(transcriptome_annotation)
             summary_message += f'{annotation_values_joined} '
-        summary_message += curated_set_type
+        summary_message += file_set_type
         return summary_message
 
 

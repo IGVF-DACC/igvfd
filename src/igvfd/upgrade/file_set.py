@@ -104,4 +104,12 @@ def file_set_6_7(value, system):
         value.pop('nucleic_acid_delivery')
     if notes != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('curated_set', '4', '5')
+def curated_set_type_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1070
+    if 'curated_set_type' in value:
+        value['file_set_type'] = value['curated_set_type']
+        del value['curated_set_type']
     return

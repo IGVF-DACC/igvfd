@@ -19,8 +19,8 @@ def curated_set():
             'collections': {
                 'title': 'Collections'
             },
-            'curated_set_type': {
-                'title': 'Curated Set Type'
+            'file_set_type': {
+                'title': 'File Set Type'
             },
             'status': {
                 'title': 'Status'
@@ -34,7 +34,7 @@ def curated_set():
                 'title': 'File Set',
                 'facet_fields': [
                     'taxa',
-                    'curated_set_type',
+                    'file_set_type',
                 ],
             },
             {
@@ -84,8 +84,8 @@ def curated_set():
             'taxa': {
                 'title': 'Taxa'
             },
-            'curated_set_type': {
-                'title': 'Curated Set Type'
+            'file_set_type': {
+                'title': 'File Set Type'
             },
             'summary': {
                 'title': 'Summary'

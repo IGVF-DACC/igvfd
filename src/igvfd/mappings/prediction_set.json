@@ -1,6 +1,6 @@
 {
-    "hash": "ccc701c208ced03cfc761ac628d65e4c",
-    "index_name": "prediction_set_ccc701c2",
+    "hash": "d200971a524245aaa5f25488df762de2",
+    "index_name": "prediction_set_d200971a",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -305,9 +305,6 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "curated_set_type": {
                                 "type": "keyword"
                             },
                             "dbxrefs": {

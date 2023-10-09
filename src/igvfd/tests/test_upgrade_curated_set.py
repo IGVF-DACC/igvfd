@@ -26,3 +26,12 @@ def test_curated_set_upgrade_3_4(upgrader, curated_set_v3):
     assert value['schema_version'] == '4'
     assert 'publication_identifiers' in value and value['publication_identifiers'] == ids
     assert 'references' not in value
+
+
+def test_curated_set_upgrade_4_5(upgrader, curated_set_v4):
+    curated_set_type = curated_set_v4['curated_set_type']
+    value = upgrader.upgrade(
+        'curated_set', curated_set_v4,
+        current_version='4', target_version='5')
+    assert value['schema_version'] == '5'
+    assert 'file_set_type' in value and value['file_set_type'] == curated_set_type

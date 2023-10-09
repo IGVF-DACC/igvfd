@@ -4,7 +4,17 @@ import pytest
 @pytest.fixture
 def curated_set_genome(testapp, lab, award):
     item = {
-        'curated_set_type': 'genome',
+        'file_set_type': 'genome',
+        'award': award['@id'],
+        'lab': lab['@id']
+    }
+    return testapp.post_json('/curated_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def curated_set_transcriptome(testapp, lab, award):
+    item = {
+        'file_set_type': 'transcriptome',
         'award': award['@id'],
         'lab': lab['@id']
     }
@@ -39,4 +49,15 @@ def curated_set_v3(curated_set_genome):
         'schema_version': '3',
         'references': ['10.1101/2023.08.02']
     })
+    return item
+
+
+@pytest.fixture
+def curated_set_v4(lab, award):
+    item = {
+        'curated_set_type': 'genome',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'schema_version': '4'
+    }
     return item
