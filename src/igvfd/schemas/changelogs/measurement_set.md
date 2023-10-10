@@ -1,9 +1,11 @@
 ## Changelog for *`measurement_set.json`*
 
 ### Schema version 9
+
 * Rename `sequencing_library_type` to `sequencing_library_types`.
 
 ### Schema version 8
+
 * Change `multiome_size` to integer type.
 
 ### Schema version 7

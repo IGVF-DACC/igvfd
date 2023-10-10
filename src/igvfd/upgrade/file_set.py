@@ -116,7 +116,7 @@ def measurement_set_7_8(value, system):
 
 
 @upgrade_step('measurement_set', '8', '9')
-def measurement_set_7_8(value, system):
+def measurement_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1167
     if 'sequencing_library_type' in value:
         value['sequencing_library_types'] = value['sequencing_library_type']
