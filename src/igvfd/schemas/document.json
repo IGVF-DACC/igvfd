@@ -76,7 +76,11 @@
                 "image",
                 "plasmid map",
                 "standards"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "plasmid map",
+                "igvf_utils": "plasmid map"
+            }
         },
         "characterization_method": {
             "title": "Characterization Method",
@@ -92,7 +96,11 @@
                 "restriction digest",
                 "RT-qPCR",
                 "sequencing"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "sequencing",
+                "igvf_utils": "sequencing"
+            }
         },
         "urls": {
             "rdfs:subPropertyOf": "rdfs:seeAlso",
@@ -106,6 +114,10 @@
                 "description": "An external resource with additional information to the document.",
                 "type": "string",
                 "format": "uri"
+            },
+            "submissionExample": {
+                "appscript": "[\"https://www.addgene.org/search/catalog/plasmids/?q=cas9\"]",
+                "igvf_utils": "https://www.addgene.org/search/catalog/plasmids/?q=cas9"
             }
         }
     },

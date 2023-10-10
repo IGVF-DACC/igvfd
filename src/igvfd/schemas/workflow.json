@@ -45,14 +45,22 @@
             "title": "Name",
             "description": "The preferred viewable name of the workflow.",
             "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "submissionExample": {
+                "appscript": "ChIP-seq pipeline",
+                "igvf_utils": "ChIP-seq pipeline"
+            }
         },
         "source_url": {
             "title": "Source URL",
             "description": "An external resource to the code base of the workflow in github.",
             "type": "string",
             "format": "uri",
-            "pattern": "^https?://github\\.com/(\\S+)$"
+            "pattern": "^https?://github\\.com/(\\S+)$",
+            "submissionExample": {
+                "appscript": "https://github.com/ENCODE-DCC/chip-seq-pipeline2",
+                "igvf_utils": "https://github.com/ENCODE-DCC/chip-seq-pipeline2"
+            }
         },
         "workflow_repositories": {
             "title": "Workflow Repositories",
@@ -66,13 +74,21 @@
                 "description": "Resource hosting the workflow.",
                 "type": "string",
                 "format": "uri"
+            },
+            "submissionExample": {
+                "appscript": "[\"https://dockstore.org/workflows/github.com/ENCODE-DCC/atac-seq-pipeline:master?tab=info\", \"https://dockstore.org/workflows/github.com/ENCODE-DCC/chip-seq-pipeline2:master?tab=info\"]",
+                "igvf_utils": "https://dockstore.org/workflows/github.com/ENCODE-DCC/atac-seq-pipeline:master?tab=info, https://dockstore.org/workflows/github.com/ENCODE-DCC/chip-seq-pipeline2:master?tab=info"
             }
         },
         "standards_page": {
             "title": "Standards Page",
             "description": "A link to a page describing the standards for this workflow.",
             "type": "string",
-            "linkTo": "Page"
+            "linkTo": "Page",
+            "submissionExample": {
+                "appscript": "/help/chip-seq-standards",
+                "igvf_utils": "/help/chip-seq-standards"
+            }
         }
     },
     "fuzzy_searchable_fields": [

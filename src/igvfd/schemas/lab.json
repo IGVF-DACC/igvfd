@@ -35,14 +35,22 @@
             "description": "A short unique name for the lab, current convention is lower cased and hyphen delimited of PI's first and last name (e.g. john-doe).",
             "type": "string",
             "pattern": "^[a-z0-9\\-]+$",
-            "uniqueKey": "lab:name"
+            "uniqueKey": "lab:name",
+            "submissionExample": {
+                "appscript": "john-doe",
+                "igvf_utils": "john-doe"
+            }
         },
         "pi": {
             "title": "P.I.",
             "description": "Principle Investigator of the lab.",
             "comment": "See user.json for available identifiers.",
             "type": "string",
-            "linkTo": "User"
+            "linkTo": "User",
+            "submissionExample": {
+                "appscript": "/users/ffc520df-7ed9-4769-a30d-143f0633cf5g/",
+                "igvf_utils": "/users/ffc520df-7ed9-4769-a30d-143f0633cf5g/"
+            }
         },
         "awards": {
             "title": "Award",
@@ -56,6 +64,10 @@
                 "comment": "See award.json for available identifiers.",
                 "type": "string",
                 "linkTo": "Award"
+            },
+            "submissionExample": {
+                "appscript": "[\"/awards/HG012047/\", \"john-doe:award01\"]",
+                "igvf_utils": "/awards/HG012047/, john-doe:award01"
             }
         },
         "institute_label": {
@@ -63,7 +75,11 @@
             "description": "An abbreviation for the institute the lab is associated with.",
             "type": "string",
             "default": "",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
+            "submissionExample": {
+                "appscript": "Stanford",
+                "igvf_utils": "Stanford"
+            }
         }
     },
     "fuzzy_searchable_fields": [

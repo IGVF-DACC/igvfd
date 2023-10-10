@@ -51,20 +51,32 @@
             "description": "The assay used to produce data in this measurement set.",
             "comment": "See assay_term.json for available identifiers.",
             "type": "string",
-            "linkTo": "AssayTerm"
+            "linkTo": "AssayTerm",
+            "submissionExample": {
+                "appscript": "/assay-terms/OBI_0002762/ or igvf:snATAC-seq",
+                "igvf_utils": "/assay-terms/OBI_0002762/ or igvf:snATAC-seq"
+            }
         },
         "library_construction_platform": {
             "title": "Library Construction Platform",
             "description": "The platform used to construct the library sequenced in this measurement set.",
             "comment": "See platform_term.json for available identifiers.",
             "type": "string",
-            "linkTo": "PlatformTerm"
+            "linkTo": "PlatformTerm",
+            "submissionExample": {
+                "appscript": "/platform-terms/EFO_0008567/ or igvf:illumina-hiseq-x",
+                "igvf_utils": "/platform-terms/EFO_0008567/ or igvf:illumina-hiseq-x"
+            }
         },
         "protocol": {
             "title": "Protocol",
             "description": "Link to the protocol for conducting the assay on Protocols.io.",
             "type": "string",
-            "pattern": "^https://www\\.protocols\\.io/(\\S+)$"
+            "pattern": "^https://www\\.protocols\\.io/(\\S+)$",
+            "submissionExample": {
+                "appscript": "https://www.protocols.io/link/to/protocol",
+                "igvf_utils": "https://www.protocols.io/link/to/protocol"
+            }
         },
         "preferred_assay_title": {
             "title": "Preferred Assay Title",
@@ -100,20 +112,32 @@
                 "Variant painting",
                 "Yeast two-hybrid",
                 "yN2H"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "10x multiome",
+                "igvf_utils": "10x multiome"
+            }
         },
         "readout": {
             "title": "Readout",
             "description": "The assay term corresponding to the data readout of this measurement set.",
             "comment": "This property should be used on CRISPR screen and MPRA measurement sets. See assay_term.json for available identifiers.",
             "type": "string",
-            "linkTo": "AssayTerm"
+            "linkTo": "AssayTerm",
+            "submissionExample": {
+                "appscript": "/assay-terms/OBI_0000716/ or igvf:chip-seq",
+                "igvf_utils": "/assay-terms/OBI_0000716/ or igvf:chip-seq"
+            }
         },
         "multiome_size": {
             "title": "Multiome Size",
             "description": "The number of datasets included in the multiome experiment this measurement set is a part of.",
             "type": "number",
-            "minimum": 2
+            "minimum": 2,
+            "submissionExample": {
+                "appscript": 2,
+                "igvf_utils": 2
+            }
         },
         "control_file_sets": {
             "title": "Controls",
@@ -127,6 +151,10 @@
                 "comment": "See fileset.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "FileSet"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:measurement_set01\", \"TSTDS98084730\"]",
+                "igvf_utils": "john-doe:measurement_set01, TSTDS98084730"
             }
         },
         "sequencing_library_type": {
@@ -146,6 +174,10 @@
                     "polyA depleted",
                     "polyA enriched"
                 ]
+            },
+            "submissionExample": {
+                "appscript": "[\"direct RNA\", \"exome capture\"]",
+                "igvf_utils": "direct RNA, exome capture"
             }
         },
         "auxiliary_sets": {
@@ -160,6 +192,10 @@
                 "comment": "See auxiliary_set.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "AuxiliarySet"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:auxiliary_set01\", \"TSTDS98084731\"]",
+                "igvf_utils": "john-doe:auxiliary_set01, TSTDS98084731"
             }
         }
     },

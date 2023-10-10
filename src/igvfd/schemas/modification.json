@@ -49,7 +49,11 @@
                 "nCas9",
                 "SpG",
                 "SpRY"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "Cas9",
+                "igvf_utils": "Cas9"
+            }
         },
         "fused_domain": {
             "title": "Fused Domain",
@@ -76,7 +80,11 @@
                 "2xVP64",
                 "3xVP64",
                 "ZIM3"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "KRAB",
+                "igvf_utils": "KRAB"
+            }
         },
         "modality": {
             "title": "Modality",
@@ -90,19 +98,31 @@
                 "knockout",
                 "localizing",
                 "prime editing"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "activation",
+                "igvf_utils": "activation"
+            }
         },
         "tagged_protein": {
             "title": "Tagged Protein",
             "description": "The tagged protein in modifications in which the Cas nuclease is fused to an antibody.",
             "type": "string",
-            "linkTo": "Gene"
+            "linkTo": "Gene",
+            "submissionExample": {
+                "appscript": "/genes/ENSG00000237415/ or igvf:gene01",
+                "igvf_utils": "/genes/ENSG00000237415/ or igvf:gene01"
+            }
         },
         "product_id": {
             "title": "Product ID",
             "description": "The product or catalog identifier provided following deposition to addgene.org.",
             "type": "string",
-            "pattern": "^addgene:\\d{5,6}$"
+            "pattern": "^addgene:\\d{5,6}$",
+            "submissionExample": {
+                "appscript": "addgene:12345",
+                "igvf_utils": "addgene:12345"
+            }
         },
         "cas_species": {
             "title": "Cas species",
@@ -113,7 +133,11 @@
                 "Staphylococcus aureus (Sa)",
                 "Campylobacter jejuni (Cj)",
                 "Neisseria meningitidis (Nm)"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "Streptococcus pyogenes (Sp)",
+                "igvf_utils": "Streptococcus pyogenes (Sp)"
+            }
         }
     },
     "fuzzy_searchable_fields": [

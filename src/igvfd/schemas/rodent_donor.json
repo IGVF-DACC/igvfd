@@ -109,35 +109,59 @@
                 "CAST (M. m. castaneus)",
                 "WSB (M. m. domesticus)",
                 "PWK (M. m. musculus)"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "C57BL/6J (B6)",
+                "igvf_utils": "C57BL/6J (B6)"
+            }
         },
         "strain": {
             "title": "Strain Name",
             "description": "The specific strain designation of a non-human donor.",
             "comment": "Strain name of rodent strains.",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "B6XCast",
+                "igvf_utils": "B6XCast"
+            }
         },
         "genotype": {
             "title": "Strain Genotype",
             "description": "The genotype of the strain according to accepted nomenclature conventions.",
             "comment": "Genotype of rodent strains.",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "B6SJL-Tg(APPSwFlLon,PSEN1*M146L*L286V)6799Vas/Mmjax x CAST/EiJ",
+                "igvf_utils": "B6SJL-Tg(APPSwFlLon,PSEN1*M146L*L286V)6799Vas/Mmjax x CAST/EiJ"
+            }
         },
         "taxa": {
             "enum": [
                 "Mus musculus"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "Mus musculus",
+                "igvf_utils": "Mus musculus"
+            }
         },
         "individual_rodent": {
             "title": "Individual Rodent",
             "description": "This rodent donor represents an individual rodent.",
             "type": "boolean",
-            "default": false
+            "default": false,
+            "submissionExample": {
+                "appscript": true,
+                "igvf_utils": true
+            }
         },
         "rodent_identifier": {
             "title": "Rodent Identifier",
             "description": "The identifier for this individual rodent donor.",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "028_AJ_10F",
+                "igvf_utils": "028_AJ_10F"
+            }
         },
         "dbxrefs": {
             "items": {
@@ -145,6 +169,10 @@
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF donors.",
                 "type": "string",
                 "pattern": "^(GEO:SAMN\\d+)|(IMSR_JAX:\\d{6})$"
+            },
+            "submissionExample": {
+                "appscript": "[\"GEO:SAMN31260610\", \"IMSR_JAX:123456\"]",
+                "igvf_utils": "GEO:SAMN31260610, IMSR_JAX:123456"
             }
         }
     },

@@ -62,7 +62,11 @@
                 "inorganic",
                 "synthetic",
                 "organic"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "organic",
+                "igvf_utils": "organic"
+            }
         },
         "sample_terms": {
             "title": "Sample Terms",
@@ -77,6 +81,10 @@
                 "type": "string",
                 "comment": "See sample_term.json for available identifiers.",
                 "linkTo": "SampleTerm"
+            },
+            "submissionExample": {
+                "appscript": "[\"/sample-terms/UBERON_0001388/\"]",
+                "igvf_utils": "/sample-terms/UBERON_0001388/"
             }
         }
     },

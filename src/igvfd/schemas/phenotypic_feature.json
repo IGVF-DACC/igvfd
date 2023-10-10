@@ -47,12 +47,20 @@
             "title": "Phenotypic Feature",
             "description": "The phenotypic feature observed for the donor.",
             "type": "string",
-            "linkTo": "PhenotypeTerm"
+            "linkTo": "PhenotypeTerm",
+            "submissionExample": {
+                "appscript": "/phenotype-terms/MONDO_0008564/",
+                "igvf_utils": "/phenotype-terms/MONDO_0008564/"
+            }
         },
         "quantity": {
             "title": "Quantity",
             "description": "A quantity associated with the phenotypic feature, if applicable.",
-            "type": "number"
+            "type": "number",
+            "submissionExample": {
+                "appscript": 1,
+                "igvf_utils": 1
+            }
         },
         "quantity_units": {
             "title": "Quantity Units",
@@ -70,14 +78,22 @@
                 "picogram per milliliter",
                 "nanogram per milliliter",
                 "milligram per deciliter"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "gram",
+                "igvf_utils": "gram"
+            }
         },
         "observation_date": {
             "title": "Observation Date",
             "description": "The date the feature was observed or measured.",
             "comment": "Date should be submitted as YYYY-MM-DD.",
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "submissionExample": {
+                "appscript": "2023-10-02",
+                "igvf_utils": "2023-10-02"
+            }
         }
     },
     "fuzzy_searchable_fields": [

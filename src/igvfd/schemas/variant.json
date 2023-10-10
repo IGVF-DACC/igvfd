@@ -20,20 +20,32 @@
         "selection_criteria": {
             "title": "Variant Selection Criteria Details",
             "description": "The reasoning for selecting this variant for study.",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "GWAS queried",
+                "igvf_utils": "GWAS queried"
+            }
         },
         "ref": {
             "title": "Reference Allele",
             "description": "The sequence of the reference allele for this variant.",
             "type": "string",
-            "pattern": "^[ATCG]*$"
+            "pattern": "^[ATCG]*$",
+            "submissionExample": {
+                "appscript": "ATCGAATT",
+                "igvf_utils": "ATCGAATT"
+            }
         },
         "alt": {
             "title": "Alternative Allele",
             "description": "The sequence of the alternative allele for this variant.",
             "comment": "For deletions in the sequence use '-'.",
             "type": "string",
-            "pattern": "^[ATCG]*$|^-$"
+            "pattern": "^[ATCG]*$|^-$",
+            "submissionExample": {
+                "appscript": "AACGAATT",
+                "igvf_utils": "AACGAATT"
+            }
         },
         "assembly": {
             "title": "Genome Assembly",
@@ -42,13 +54,21 @@
             "enum": [
                 "GRCh38",
                 "GRCm39"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "GRCh38",
+                "igvf_utils": "GRCh38"
+            }
         },
         "position": {
             "title": "Position",
             "description": "The position of the variant in the reference sequence, specified using 1-indexed coordinates system.",
             "type": "integer",
-            "minimum": 1
+            "minimum": 1,
+            "submissionExample": {
+                "appscript": 12343,
+                "igvf_utils": 12343
+            }
         }
     },
     "changelog": "/profiles/changelogs/variant.md"

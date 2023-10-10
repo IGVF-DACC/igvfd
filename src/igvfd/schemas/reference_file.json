@@ -167,7 +167,11 @@
                 "variants_regulatory_regions",
                 "variants_variants",
                 "vector sequences"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "variants",
+                "igvf_utils": "variants"
+            }
         },
         "file_format": {
             "enum": [
@@ -185,7 +189,11 @@
                 "txt",
                 "vcf",
                 "xml"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "vcf",
+                "igvf_utils": "vcf"
+            }
         },
         "assembly": {
             "title": "Genome Assembly",
@@ -196,13 +204,21 @@
                 "hg19",
                 "GRCm39",
                 "mm10"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "GRCh38",
+                "igvf_utils": "GRCh38"
+            }
         },
         "source_url": {
             "title": "Source Url",
             "description": "Link to external resource, such as NCBI or GENCODE, where the reference data was obtained.",
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "submissionExample": {
+                "appscript": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/",
+                "igvf_utils": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/"
+            }
         }
     },
     "fuzzy_searchable_fields": [

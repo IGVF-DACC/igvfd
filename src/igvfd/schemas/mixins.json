@@ -42,6 +42,10 @@
                 "comment": "Current convention is colon separated lab name and lab identifier. (e.g. john-doe:42).",
                 "type": "string",
                 "pattern": "^(?:j-michael-cherry|ali-mortazavi|barbara-wold|lior-pachter|grant-macgregor|kim-green|mark-craven|qiongshi-lu|audrey-gasch|robert-steiner|jesse-engreitz|thomas-quertermous|anshul-kundaje|michael-bassik|will-greenleaf|marlene-rabinovitch|lars-steinmetz|jay-shendure|nadav-ahituv|martin-kircher|danwei-huangfu|michael-beer|anna-katerina-hadjantonakis|christina-leslie|alexander-rudensky|laura-donlin|hannah-carter|bing-ren|kyle-gaulton|maike-sander|charles-gersbach|gregory-crawford|tim-reddy|ansuman-satpathy|andrew-allen|gary-hon|nikhil-munshi|w-lee-kraus|lea-starita|doug-fowler|luca-pinello|guillaume-lettre|benhur-lee|daniel-bauer|richard-sherwood|benjamin-kleinstiver|marc-vidal|david-hill|frederick-roth|mikko-taipale|anne-carpenter|hyejung-won|karen-mohlke|michael-love|jason-buenrostro|bradley-bernstein|hilary-finucane|chongyuan-luo|noah-zaitlen|kathrin-plath|roy-wollman|jason-ernst|zhiping-weng|manuel-garber|xihong-lin|alan-boyle|ryan-mills|jie-liu|maureen-sartor|joshua-welch|stephen-montgomery|alexis-battle|livnat-jerby|jonathan-pritchard|predrag-radivojac|sean-mooney|harinder-singh|nidhi-sahni|jishnu-das|hao-wu|sreeram-kannan|hongjun-song|alkes-price|soumya-raychaudhuri|shamil-sunyaev|len-pennacchio|axel-visel|jill-moore|ting-wang|feng-yue|igvf|igvf-dacc):[a-zA-Z\\d_$.+!*,()'-]+(?:\\s[a-zA-Z\\d_$.+!*,()'-]+)*$"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:aliases01\", \"john-doe:aliases02\"]",
+                "igvf_utils": "john-doe:aliases01, john-doe:aliases02"
             }
         },
         "creation_timestamp": {
@@ -68,14 +72,22 @@
             "description": "Additional information specified by the submitter to be displayed as a comment on the portal.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "formInput": "textarea"
+            "formInput": "textarea",
+            "submissionExample": {
+                "appscript": "this is a submitter comment",
+                "igvf_utils": "this is a submitter comment"
+            }
         },
         "description": {
             "title": "Description",
             "description": "A plain text description of the object.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
-            "formInput": "textarea"
+            "formInput": "textarea",
+            "submissionExample": {
+                "appscript": "this is a description",
+                "igvf_utils": "this is a description"
+            }
         }
     },
     "accession": {
@@ -166,6 +178,7 @@
             "title": "Status",
             "type": "string",
             "default": "current",
+            "permission": "import_items",
             "enum": [
                 "current",
                 "deleted",
@@ -180,14 +193,22 @@
             "comment": "Required. See lab.json for list of available identifiers.",
             "type": "string",
             "linkTo": "Lab",
-            "linkSubmitsFor": true
+            "linkSubmitsFor": true,
+            "submissionExample": {
+                "appscript": "/labs/john-doe/",
+                "igvf_utils": "/labs/john-doe/"
+            }
         },
         "award": {
             "title": "Award",
             "description": "Grant associated with the submission.",
             "comment": "Required. See award.json for list of available identifiers.",
             "type": "string",
-            "linkTo": "Award"
+            "linkTo": "Award",
+            "submissionExample": {
+                "appscript": "/awards/HG012012/",
+                "igvf_utils": "/awards/HG012012/"
+            }
         }
     },
     "attachment": {
@@ -244,6 +265,9 @@
                     "type": "integer",
                     "minimum": 0
                 }
+            },
+            "submissionExample": {
+                "igvf_utils": "{\"path\":\"/path/to/attachment.pdf\"}"
             }
         }
     },
@@ -254,7 +278,11 @@
             "title": "URL",
             "description": "An external resource with additional information.",
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "submissionExample": {
+                "appscript": "https://github.com/IGVF-DACC/igvfd",
+                "igvf_utils": "https://github.com/IGVF-DACC/igvfd"
+            }
         }
     },
     "documents": {
@@ -270,6 +298,10 @@
                 "type": "string",
                 "comment": "See document.json for available identifiers.",
                 "linkTo": "Document"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:document01\", \"/documents/ed53a041-bd66-4afc-938d-d75eeede26da/\"]",
+                "igvf_utils": "john-doe:document01, /documents/ed53a041-bd66-4afc-938d-d75eeede26da/"
             }
         }
     },
@@ -290,19 +322,31 @@
                     "Source",
                     "Lab"
                 ]
+            },
+            "submissionExample": {
+                "appscript": "[\"/labs/john-doe/\", \"/sources/abcam/\"]",
+                "igvf_utils": "/labs/john-doe/, /sources/abcam/"
             }
         },
         "lot_id": {
             "title": "Lot ID",
             "description": "The lot identifier provided by the originating lab or vendor.",
             "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "submissionExample": {
+                "appscript": "59300853",
+                "igvf_utils": "59300853"
+            }
         },
         "product_id": {
             "title": "Product ID",
             "description": "The product identifier provided by the originating lab or vendor.",
             "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "submissionExample": {
+                "appscript": "59300851",
+                "igvf_utils": "59300851"
+            }
         }
     },
     "publication_identifiers": {
@@ -317,6 +361,10 @@
                 "description": "A publication identifier that provides more information about the object.",
                 "type": "string",
                 "pattern": "^(PMID:[0-9]+|doi:10\\.[0-9]{4}[\\d\\s\\S:\\.\\/]+|PMCID:PMC[0-9]+|[0-9]{4}\\.[0-9]{4})$"
+            },
+            "submissionExample": {
+                "appscript": "[\"10.1016/j.cell.2023.02.018\", \"PMID:37001506\", \"PMCID:PMC8495978\"]",
+                "igvf_utils": "10.1016/j.cell.2023.02.018, PMID:37001506, PMCID:PMC8495978"
             }
         }
     },
@@ -327,7 +375,11 @@
             "enum": [
                 "Homo sapiens",
                 "Mus musculus"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "Homo sapiens",
+                "igvf_utils": "Homo sapiens"
+            }
         }
     },
     "processed_files": {
@@ -343,6 +395,10 @@
                 "type": "string",
                 "description": "Link to a reference file used to generate this file.",
                 "linkTo": "ReferenceFile"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:reference_file01\", \"IGVFFI1238IUYT\"]",
+                "igvf_utils": "john-doe:reference_file01, IGVFFI1238IUYT"
             }
         }
     },
@@ -359,7 +415,11 @@
                 "GENCODE M30",
                 "GENCODE M31",
                 "GENCODE M32"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "GENCODE 40",
+                "igvf_utils": "GENCODE 40"
+            }
         }
     }
 }

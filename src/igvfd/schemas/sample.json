@@ -97,7 +97,10 @@
             "description": "The initial quantity of samples obtained.",
             "comment": "A sample with starting_amount must include starting_amount_units.",
             "type": "number",
-            "minimum": 0
+            "submissionExample": {
+                "appscript": 4000000,
+                "igvf_utils": 4000000
+            }
         },
         "starting_amount_units": {
             "title": "Starting Amount Units",
@@ -114,7 +117,11 @@
                 "whole embryos",
                 "μg",
                 "ng"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "cells",
+                "igvf_utils": "cells"
+            }
         },
         "dbxrefs": {
             "@type": "@id",
@@ -131,6 +138,10 @@
                 "description": "An identifier from external resource.",
                 "type": "string",
                 "pattern": "^((GEO:SAMN\\d+)|(Cellosaurus:CVCL_\\w{4}))$"
+            },
+            "submissionExample": {
+                "appscript": "[\"GEO:SAMN34251743\", \"Cellosaurus:CVCL_0027\"]",
+                "igvf_utils": "GEO:SAMN34251743, Cellosaurus:CVCL_0027"
             }
         },
         "date_obtained": {
@@ -138,26 +149,42 @@
             "description": "The date the sample was harvested, dissected or created, depending on the type of the sample.",
             "comment": "Date should be submitted in as YYYY-MM-DD.",
             "type": "string",
-            "format": "date"
+            "format": "date",
+            "submissionExample": {
+                "appscript": "2020-09-20",
+                "igvf_utils": "2020-09-20"
+            }
         },
         "sorted_fraction": {
             "title": "Sorted Fraction",
             "description": "Links to a larger sample from which this sample was obtained through sorting.",
             "comment": "The parent sample is expected to have similar properties to its fraction. A sample with sorted_fraction must include sorted_fraction_detail.",
             "type": "string",
-            "linkTo": "Sample"
+            "linkTo": "Sample",
+            "submissionExample": {
+                "appscript": "TSTSM02881437 or john-doe:tissue01",
+                "igvf_utils": "TSTSM02881437 or john-doe:tissue01"
+            }
         },
         "sorted_fraction_detail": {
             "title": "Sorted Fraction Detail",
             "description": "Detail for sample sorted into fractions capturing information about sorting.",
-            "comment": "For example, FACS 10% expression of CTCF-GFP. A sample with sorted_fraction_detail must include sorted_fraction.",
-            "type": "string"
+            "comment": "A sample with sorted_fraction_detail must include sorted_fraction.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "FACS 10% expression of CTCF-GFP",
+                "igvf_utils": "FACS 10% expression of CTCF-GFP"
+            }
         },
         "virtual": {
             "title": "Virtual",
             "description": "Sample is virtual.",
             "type": "boolean",
-            "default": false
+            "default": false,
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
         },
         "construct_library_sets": {
             "title": "Construct Library Sets",
@@ -170,6 +197,10 @@
                 "title": "Construct Library Set",
                 "type": "string",
                 "linkTo": "ConstructLibrarySet"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:construct_library_set01\", \"IGVFDS4284BCDE\"]",
+                "igvf_utils": "john-doe:construct_library_set01, IGVFDS4284BCDE"
             }
         },
         "moi": {
@@ -177,7 +208,11 @@
             "description": "The actual multiplicity of infection (MOI) for vectors introduced to this sample. At least one construct library set must be specified in order to specify MOI. This property should capture the actual MOI, and not the targeted MOI.",
             "comment": "Use of this property requires construct_library_sets.",
             "type": "number",
-            "minimum": 0
+            "minimum": 0,
+            "submissionExample": {
+                "appscript": 2,
+                "igvf_utils": 2
+            }
         },
         "nucleic_acid_delivery": {
             "title": "Nucleic Acid Delivery",
@@ -187,13 +222,21 @@
                 "transfection",
                 "adenoviral transduction",
                 "lentiviral transduction"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "transfection",
+                "igvf_utils": "transfection"
+            }
         },
         "time_post_library_delivery": {
             "title": "Time Post Library Delivery",
             "description": "The time that elapsed past the time-point when the construct library sets were introduced.",
             "comment": "Use of this property requires time_post_library_delivery_units and construct_library_sets.",
-            "type": "number"
+            "type": "number",
+            "submissionExample": {
+                "appscript": 20,
+                "igvf_utils": 20
+            }
         },
         "time_post_library_delivery_units": {
             "title": "Time Post Library Delivery Units",
@@ -206,7 +249,11 @@
                 "day",
                 "week",
                 "month"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "minute",
+                "igvf_utils": "minute"
+            }
         }
     }
 }

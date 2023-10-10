@@ -354,7 +354,11 @@
                 "guide library",
                 "reporter library",
                 "expression vector library"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "guide library",
+                "igvf_utils": "guide library"
+            }
         },
         "scope": {
             "title": "Library Construct Scope",
@@ -365,7 +369,11 @@
                 "genes",
                 "loci",
                 "genome-wide"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "genes",
+                "igvf_utils": "genes"
+            }
         },
         "selection_criteria": {
             "title": "Selection Criteria",
@@ -392,6 +400,10 @@
                     "transcription start sites",
                     "TF binding sites"
                 ]
+            },
+            "submissionExample": {
+                "appscript": "[\"accessible genome regions\", \"chromatin states\"]",
+                "igvf_utils": "accessible genome regions, chromatin states"
             }
         },
         "integrated_content_files": {
@@ -405,6 +417,10 @@
                 "comment": "See file.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "File"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-done:file01\", \"IGVFFI6665ABCD\"]",
+                "igvf_utils": "john-done:file01, IGVFFI6665ABCD"
             }
         },
         "associated_phenotypes": {
@@ -418,6 +434,10 @@
                 "comment": "See phenotype_term.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "PhenotypeTerm"
+            },
+            "submissionExample": {
+                "appscript": "[\"/phenotype-terms/MONDO_0008564/\", \"/phenotype-terms/MONDO_0005148/\"]",
+                "igvf_utils": "/phenotype-terms/MONDO_0008564/, /phenotype-terms/MONDO_0005148/"
             }
         },
         "genes": {
@@ -432,6 +452,10 @@
                 "comment": "See gene.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "Gene"
+            },
+            "submissionExample": {
+                "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
+                "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
             }
         },
         "loci": {
@@ -482,6 +506,10 @@
                         "type": "integer",
                         "minimum": 1
                     }
+                },
+                "submissionExample": {
+                    "appscript": "[{\"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]",
+                    "igvf_utils": "[{\"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]"
                 }
             }
         },
@@ -489,13 +517,21 @@
             "title": "Exon",
             "description": "An identifier in plain text for the specific exon in an expression vector library. The associated gene must be listed in genes property.",
             "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
+            "submissionExample": {
+                "appscript": "exon1",
+                "igvf_utils": "exon1"
+            }
         },
         "product_id": {
             "title": "Product ID",
             "description": "The product or catalog identifier provided following deposition to addgene.org.",
             "type": "string",
-            "pattern": "^addgene:\\d{5,6}$"
+            "pattern": "^addgene:\\d{5,6}$",
+            "submissionExample": {
+                "appscript": "addgene:71489",
+                "igvf_utils": "addgene:71489"
+            }
         },
         "guide_type": {
             "title": "Guide Type",
@@ -504,7 +540,11 @@
             "enum": [
                 "sgRNA",
                 "pgRNA"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "sgRNA",
+                "igvf_utils": "sgRNA"
+            }
         },
         "tiling_modality": {
             "title": "Tiling Modality",
@@ -515,39 +555,67 @@
                 "peak tiling",
                 "full tiling",
                 "sparse peaks"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "peak tiling",
+                "igvf_utils": "peak tiling"
+            }
         },
         "average_guide_coverage": {
             "title": "Average Guide Coverage",
             "description": "The average number of guides targeting each element of interest in the library.",
             "type": "number",
-            "minimum": 0
+            "minimum": 0,
+            "submissionExample": {
+                "appscript": 223.23,
+                "igvf_utils": 223.23
+            }
         },
         "lower_bound_guide_coverage": {
             "title": "Lower Bound Guide Coverage",
             "description": "Lower bound of the number of guides targeting each element of interest in the library.",
-            "type": "integer"
+            "type": "integer",
+            "submissionExample": {
+                "appscript": 34,
+                "igvf_utils": 34
+            }
         },
         "upper_bound_guide_coverage": {
             "title": "Upper Bound Guide Coverage",
             "description": "Upper bound of the number of guides targeting each element of interest in the library.",
-            "type": "integer"
+            "type": "integer",
+            "submissionExample": {
+                "appscript": 434,
+                "igvf_utils": 434
+            }
         },
         "average_insert_size": {
             "title": "Average Insert Size",
             "description": "The average size of the inserts cloned into vectors in the library.",
             "type": "number",
-            "minimum": 0
+            "minimum": 0,
+            "submissionExample": {
+                "appscript": 76.76,
+                "igvf_utils": 76.76
+            }
         },
         "lower_bound_insert_size": {
             "title": "Lower Bound Insert Size",
             "description": "Lower bound of the size of the inserts cloned in vectors in the library.",
-            "type": "integer"
+            "type": "integer",
+            "submissionExample": {
+                "appscript": 26,
+                "igvf_utils": 26
+            }
         },
         "upper_bound_insert_size": {
             "title": "Upper Bound Insert Size",
             "description": "Upper bound of the size of the inserts cloned in vectors in the library.",
-            "type": "integer"
+            "type": "integer",
+            "submissionExample": {
+                "appscript": 126,
+                "igvf_utils": 126
+            }
         }
     },
     "fuzzy_searchable_fields": [

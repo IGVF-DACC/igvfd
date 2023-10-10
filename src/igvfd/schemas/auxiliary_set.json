@@ -59,14 +59,22 @@
                 "oligo-conjugated lipids",
                 "oligo-conjugated antibodies",
                 "quantification barcode sequencing"
-            ]
+            ],
+            "submissionExample": {
+                "appscript": "cell hashing",
+                "igvf_utils": "cell hashing"
+            }
         },
         "library_construction_platform": {
             "title": "Library Construction Platform",
             "description": "The platform used to construct the library sequenced in this auxiliary set.",
             "comment": "See platform_term.json for available identifiers.",
             "type": "string",
-            "linkTo": "PlatformTerm"
+            "linkTo": "PlatformTerm",
+            "submissionExample": {
+                "appscript": "/platform-terms/EFO_0004203/ or john-doe:platform01",
+                "igvf_utils": "/platform-terms/EFO_0004203/ or john-doe:platform01"
+            }
         }
     },
     "fuzzy_searchable_fields": [

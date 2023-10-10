@@ -41,19 +41,31 @@
             "description": "Unique name of the software package; a lowercase version of the title.",
             "type": "string",
             "pattern": "^[a-z0-9\\-\\_]+",
-            "uniqueKey": "software:name"
+            "uniqueKey": "software:name",
+            "submissionExample": {
+                "appscript": "bedtools",
+                "igvf_utils": "bedtools"
+            }
         },
         "title": {
             "title": "Title",
             "description": "The preferred viewable name of the software.",
             "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
+            "submissionExample": {
+                "appscript": "BEDTools",
+                "igvf_utils": "BEDTools"
+            }
         },
         "source_url": {
             "title": "Source URL",
             "description": "An external resource to the codebase.",
             "type": "string",
-            "format": "uri"
+            "format": "uri",
+            "submissionExample": {
+                "appscript": "https://github.com/arq5x/bedtools",
+                "igvf_utils": "https://github.com/arq5x/bedtools"
+            }
         },
         "used_by": {
             "title": "Used by",
@@ -67,6 +79,10 @@
                     "DACC",
                     "processing pipelines"
                 ]
+            },
+            "submissionExample": {
+                "appscript": "[\"DACC\", \"processing pipelines\"]",
+                "igvf_utils": "DACC, processing pipelines"
             }
         }
     },

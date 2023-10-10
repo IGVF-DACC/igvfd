@@ -77,7 +77,11 @@
             "description": "The type of content in the file.",
             "comment": "This property is overwritten by the subclasses to define specific enum values.",
             "type": "string",
-            "enum": []
+            "enum": [],
+            "submissionExample": {
+                "appscript": "alignments",
+                "igvf_utils": "alignments"
+            }
         },
         "dbxrefs": {
             "@type": "@id",
@@ -104,6 +108,10 @@
                 "comment": "See file.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "File"
+            },
+            "submissionExample": {
+                "appscript": "[\"IGVFFI1234ABCD\", \"john-doe:file01\"]",
+                "igvf_utils": "IGVFFI1234ABCD, john-doe:file01"
             }
         },
         "file_format": {
@@ -111,7 +119,11 @@
             "description": "The file format or extension of the file.",
             "comment": "This property is overwritten by the subclasses to define specific enum values.",
             "type": "string",
-            "enum": []
+            "enum": [],
+            "submissionExample": {
+                "appscript": "bam",
+                "igvf_utils": "bam"
+            }
         },
         "file_format_specifications": {
             "title": "File Format Specifications Documents",
@@ -123,6 +135,10 @@
                 "comment": "See document.json for a list of available identifiers.",
                 "type": "string",
                 "linkTo": "Document"
+            },
+            "submissionExample": {
+                "appscript": "[\"/documents/ed53a041-bd66-4afc-938d-d75eeede26da/\", \"john-doe:document01\"]",
+                "igvf_utils": "/documents/ed53a041-bd66-4afc-938d-d75eeede26da/, john-doe:document01"
             }
         },
         "file_set": {
@@ -130,7 +146,11 @@
             "description": "The file set that this file belongs to.",
             "comment": "See file_set.json for a list of available identifiers.",
             "type": "string",
-            "linkTo": "FileSet"
+            "linkTo": "FileSet",
+            "submissionExample": {
+                "appscript": "john-doe:file_set01 or IGVFDS4321DCBA",
+                "igvf_utils": "john-doe:file_set01 or IGVFDS4321DCBA"
+            }
         },
         "file_size": {
             "title": "File Size",
@@ -145,12 +165,20 @@
             "type": "string",
             "format": "hex",
             "maxLength": 32,
-            "pattern": "[a-f\\d]{32}|[A-F\\d]{32}"
+            "pattern": "[a-f\\d]{32}|[A-F\\d]{32}",
+            "submissionExample": {
+                "appscript": "74b87337454200d4d33f80c4663dc5e5",
+                "igvf_utils": "74b87337454200d4d33f80c4663dc5e5"
+            }
         },
         "submitted_file_name": {
             "title": "Submitted File Name",
             "description": "Original name of the file.",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "/path/to/file.fastq.gz",
+                "igvf_utils": "/path/to/file.fastq.gz"
+            }
         },
         "upload_status": {
             "title": "Upload Status",

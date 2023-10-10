@@ -46,6 +46,10 @@
                     "file format conversion",
                     "signal generation"
                 ]
+            },
+            "submissionExample": {
+                "appscript": "[\"alignment\", \"file format conversion\"]",
+                "igvf_utils": "alignment, file format conversion"
             }
         },
         "step_label": {
@@ -53,19 +57,31 @@
             "description": "Unique lowercased label of the analysis step that includes the relevant assays, the software used, and the purpose of the step, e.g. rampage-grit-peak-calling-step",
             "comment": "Unique for each analysis_step in a given workflow.",
             "type": "string",
-            "pattern": "^[a-z0-9-]+-step$"
+            "pattern": "^[a-z0-9-]+-step$",
+            "submissionExample": {
+                "appscript": "chip-seq-alignment-step",
+                "igvf_utils": "chip-seq-alignment-step"
+            }
         },
         "title": {
             "title": "Title",
             "description": "The preferred viewable name of the analysis step, likely the same as the step label.",
             "type": "string",
-            "pattern": "^[a-zA-Z\\d_().,-]+(?:\\s[a-zA-Z\\d_().,-]+)*[step|Step]$"
+            "pattern": "^[a-zA-Z\\d_().,-]+(?:\\s[a-zA-Z\\d_().,-]+)*[step|Step]$",
+            "submissionExample": {
+                "appscript": "chip-seq-alignment-step or Chip-Seq-Alignment-Step",
+                "igvf_utils": "chip-seq-alignment-step or Chip-Seq-Alignment-Step"
+            }
         },
         "workflow": {
             "title": "Workflow",
             "description": "The computational workflow in which this analysis step belongs.",
             "type": "string",
-            "linkTo": "Workflow"
+            "linkTo": "Workflow",
+            "submissionExample": {
+                "appscript": "john-doe:workflow01 or IGVFWF6258ABCD",
+                "igvf_utils": "john-doe:workflow01 or IGVFWF6258ABCD"
+            }
         },
         "parents": {
             "title": "Parents",
@@ -78,6 +94,10 @@
                 "comment": "See analysis_step.json for available identifiers.",
                 "type": "string",
                 "linkTo": "AnalysisStep"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:analysis_step01\", \"/analysis-steps/TSTWF62585875-chip-seq-alignment-example-step/\"]",
+                "igvf_utils": "john-doe:analysis_step01, /analysis-steps/TSTWF62585875-chip-seq-alignment-example-step/"
             }
         },
         "input_content_types": {
@@ -89,6 +109,10 @@
                 "title": "Input Content Type",
                 "description": "A content type used as input for the analysis step.",
                 "$merge": "#/$defs/content_types"
+            },
+            "submissionExample": {
+                "appscript": "[\"reads\", \"alignments\"]",
+                "igvf_utils": "reads, alignments"
             }
         },
         "output_content_types": {
@@ -100,6 +124,10 @@
                 "title": "Output Content Type",
                 "description": "A content type produced as output by the analysis step.",
                 "$merge": "#/$defs/content_types"
+            },
+            "submissionExample": {
+                "appscript": "[\"alignments\", \"transcriptome alignments\"]",
+                "igvf_utils": "alignments, transcriptome alignments"
             }
         }
     },

@@ -64,10 +64,18 @@
             "description": "Number of passages including the passages from the source.",
             "comment": "In calculating passage number, include passages from the source.",
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "submissionExample": {
+                "appscript": 3,
+                "igvf_utils": 3
+            }
         },
         "date_obtained": {
-            "title": "Date Harvested"
+            "title": "Date Harvested",
+            "submissionExample": {
+                "appscript": "2023-10-02",
+                "igvf_utils": "2023-10-02"
+            }
         },
         "part_of": {
             "linkTo": [
@@ -75,13 +83,21 @@
                 "Tissue",
                 "WholeOrganism"
             ],
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "TSTSM02881437 or john-doe:tissue01",
+                "igvf_utils": "TSTSM02881437 or john-doe:tissue01"
+            }
         },
         "pooled_from": {
             "items": {
                 "title": "Primary Cell Pooled From",
                 "linkTo": "PrimaryCell",
                 "type": "string"
+            },
+            "submissionExample": {
+                "appscript": "TSTSM02881434 or john-doe:tissue02",
+                "igvf_utils": "TSTSM02881434 or john-doe:tissue02"
             }
         }
     },
