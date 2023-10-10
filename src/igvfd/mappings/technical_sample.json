@@ -1,6 +1,6 @@
 {
-    "hash": "3bbfabac9d17462c93c63970f298a2cf",
-    "index_name": "technical_sample_3bbfabac",
+    "hash": "0e5d21347698e5e72a1ec2a3f93cce52",
+    "index_name": "technical_sample_0e5d2134",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -490,7 +490,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"

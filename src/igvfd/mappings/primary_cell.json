@@ -1,6 +1,6 @@
 {
-    "hash": "638d7c5b7a14b5bfb07cc34727048814",
-    "index_name": "primary_cell_638d7c5b",
+    "hash": "d9b2eb44ee3533204c8252aa1fb9c2b5",
+    "index_name": "primary_cell_d9b2eb44",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -579,7 +579,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"

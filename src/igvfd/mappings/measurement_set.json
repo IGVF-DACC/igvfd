@@ -1,6 +1,6 @@
 {
-    "hash": "f64bf09fb7e09903faf15e7b7e425814",
-    "index_name": "measurement_set_f64bf09f",
+    "hash": "c74274e3735c9f4fdefddec96a1d4d67",
+    "index_name": "measurement_set_c74274e3",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -584,7 +584,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"
@@ -892,7 +892,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"
@@ -1485,7 +1485,7 @@
                             }
                         },
                         "store": true,
-                        "type": "float"
+                        "type": "long"
                     },
                     "notes": {
                         "type": "text"
@@ -1570,7 +1570,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"

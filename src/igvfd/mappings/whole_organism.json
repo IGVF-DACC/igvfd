@@ -1,6 +1,6 @@
 {
-    "hash": "bbc40335373234ef0597883caf0f6ae9",
-    "index_name": "whole_organism_bbc40335",
+    "hash": "01b3cb5a7e0acef3f44cf5adc21f88da",
+    "index_name": "whole_organism_01b3cb5a",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -579,7 +579,7 @@
                                     }
                                 },
                                 "store": true,
-                                "type": "float"
+                                "type": "long"
                             },
                             "notes": {
                                 "type": "text"
