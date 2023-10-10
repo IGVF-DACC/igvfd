@@ -17,7 +17,8 @@
             "reads"
         ],
         "output_content_types": [
-            "alignments"
+            "alignments",
+            "transcriptome annotations"
         ],
         "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
     }
