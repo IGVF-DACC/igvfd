@@ -10,8 +10,29 @@ def measurement_set():
             'donors.taxa': {
                 'title': 'Taxa',
             },
+            'samples.sample_terms.term_name': {
+                'title': 'Sample Term',
+            },
+            'samples.disease_terms.term_name': {
+                'title': 'Disease Term',
+            },
             'assay_term.term_name': {
                 'title': 'Assay Term'
+            },
+            'readout.term_name': {
+                'title': 'Readout'
+            },
+            'preferred_assay_title': {
+                'title': 'Preferred Assay Title'
+            },
+            'samples.modifications.modality': {
+                'title': 'CRISPR Modality'
+            },
+            'library_construction_platform.term_name': {
+                'title': 'Platform'
+            },
+            'sequencing_library_type': {
+                'title': 'Library Material'
             },
             'collections': {
                 'title': 'Collections',
@@ -33,8 +54,31 @@ def measurement_set():
             {
                 'title': 'File Set',
                 'facet_fields': [
+                    'type',
+                ],
+            },
+            {
+                'title': 'Sample',
+                'facet_fields': [
                     'donors.taxa',
+                    'samples.sample_terms.term_name',
+                    'samples.disease_terms.term_name',
+                ],
+            },
+            {
+                'title': 'Assay',
+                'facet_fields': [
                     'assay_term.term_name',
+                    'readout.term_name',
+                    'preferred_assay_title',
+                    'samples.modifications.modality',
+                ],
+            },
+            {
+                'title': 'Library',
+                'facet_fields': [
+                    'library_construction_platform.term_name',
+                    'sequencing_library_type',
                 ],
             },
             {
@@ -43,7 +87,6 @@ def measurement_set():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'type',
                 ],
             },
             {
@@ -83,6 +126,18 @@ def measurement_set():
             },
             'assay_term': {
                 'title': 'Assay Term'
+            },
+            'preferred_assay_title': {
+                'title': 'Preferred Assay Title'
+            },
+            'readout': {
+                'title': 'Readout'
+            },
+            'library_construction_platform': {
+                'title': 'Library Construction Platform'
+            },
+            'sequencing_library_type': {
+                'title': 'Sequencing Library Type'
             },
             'protocol': {
                 'title': 'Protocol'

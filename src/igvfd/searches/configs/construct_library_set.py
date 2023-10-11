@@ -39,6 +39,7 @@ def construct_library_set():
                     'file_set_type',
                     'selection_criteria',
                     'scope',
+                    'type',
                 ],
             },
             {
@@ -47,7 +48,6 @@ def construct_library_set():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'type',
                 ],
             },
             {
