@@ -35,6 +35,7 @@ def model_set():
                 'facet_fields': [
                     'file_set_type',
                     'prediction_objects',
+                    'type',
                 ],
             },
             {
@@ -43,7 +44,6 @@ def model_set():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'type',
                 ],
             },
             {

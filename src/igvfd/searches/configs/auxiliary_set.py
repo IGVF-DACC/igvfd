@@ -34,7 +34,8 @@ def auxiliary_set():
                 'title': 'File Set',
                 'facet_fields': [
                     'file_set_type',
-                    'donors.taxa'
+                    'donors.taxa',
+                    'type',
                 ],
             },
             {
@@ -43,7 +44,6 @@ def auxiliary_set():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'type',
                 ],
             },
             {
