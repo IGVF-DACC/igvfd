@@ -98,20 +98,6 @@ class User(Item):
 
 @view_config(
     context=User,
-    request_method='GET',
-    name='check_email'
-)
-def email_verification(context, request):
-    if request.authenticated_userid:
-        return {'foo': 'bar',
-                'user': request.authenticated_userid
-                }
-    else:
-        return {'no': 'way'}
-
-
-@view_config(
-    context=User,
     permission='view',
     request_method='GET',
     name='page'
