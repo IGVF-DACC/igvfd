@@ -32,7 +32,11 @@
         },
         "caption": {
             "title": "Caption",
-            "type": "string"
+            "type": "string",
+            "submissionExample": {
+                "appscript": "This is an image caption.",
+                "igvf_utils": "This is an image caption."
+            }
         }
     },
     "fuzzy_searchable_fields": [

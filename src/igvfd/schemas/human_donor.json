@@ -94,7 +94,7 @@
             },
             "submissionExample": {
                 "appscript": "[{\"donor\": \"john-doe:donor02\", \"relationship_type\": \"child\"}, {\"donor\": \"john-doe:donor03\", \"relationship_type\": \"sibling\"}]",
-                "igvf_utils": "{\"donor\": \"john-doe:donor02\", \"relationship_type\": \"child\"}, {\"donor\": \"john-doe:donor03\", \"relationship_type\": \"sibling\"}]"
+                "igvf_utils": "{\"donor\": \"john-doe:donor02\", \"relationship_type\": \"child\"}, {\"donor\": \"john-doe:donor03\", \"relationship_type\": \"sibling\"}"
             }
         },
         "ethnicities": {
