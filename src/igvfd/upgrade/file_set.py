@@ -84,6 +84,19 @@ def file_set_6_7(value, system):
     if 'nucleic_acid_delivery' in value:
         notes += f" Nucleic acid delivery {value['nucleic_acid_delivery']} was removed via upgrade."
         value.pop('nucleic_acid_delivery')
+    if 'control_file_sets' in value:
+        filtered_control_file_sets = []
+        removed_control_file_sets = []
+        for ctrl_file_set in value['control_file_sets']:
+            if ctrl_file_set.startswith('/construct-libraries/'):
+                removed_control_file_sets.append(ctrl_file_set)
+            else:
+                filtered_control_file_sets.append(ctrl_file_set)
+        value['control_file_sets'] = filtered_control_file_sets
+        if len(removed_control_file_sets) > 1:
+            notes += f" Control file sets {', '.join(removed_control_file_sets)} were removed via upgrade."
+        else:
+            notes += f" Control file set {value['nucleic_acid_delivery']} was removed via upgrade."
     if notes != '':
         value['notes'] = notes.strip()
 
