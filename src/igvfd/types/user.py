@@ -3,6 +3,7 @@ from pyramid.view import (
 )
 from pyramid.authorization import (
     Allow,
+    Authenticated,
     Deny,
     Everyone,
 )
@@ -93,6 +94,20 @@ class User(Item):
         uuids = self.registry[CONNECTION].get_rev_links(self.model, 'user', 'AccessKey')
         objects = (request.embed('/', str(uuid), '@@object') for uuid in uuids)
         return [obj for obj in objects if obj['status'] not in ('deleted', 'replaced')]
+
+
+@view_config(
+    context=User,
+    request_method='GET',
+    name='check_email'
+)
+def email_verification(context, request):
+    if request.authenticated_userid:
+        return {'foo': 'bar',
+                'user': request.authenticated_userid
+                }
+    else:
+        return {'no': 'way'}
 
 
 @view_config(
