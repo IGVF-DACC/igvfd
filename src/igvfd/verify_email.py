@@ -18,10 +18,11 @@ def email_verification(context, request):
     if request.authenticated_userid:
         #session = request.registry[STORAGE].DBSession()
         #statement = select(User).filter_by(email=email)
-        email = request.GET.get['email']
+        email = request.GET.get('email')
         return {'foo': 'bar',
                 'user': request.authenticated_userid,
                 'email_to_check': email
                 }
     else:
-        return {'no': 'way'}
+        email = request.params.get('email')
+        return {'no': 'way', 'email': email}
