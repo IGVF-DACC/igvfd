@@ -1,6 +1,5 @@
 from pyramid.httpexceptions import HTTPForbidden
 from pyramid.view import view_config
-from pyramid.security import NO_PERMISSION_REQUIRED
 
 
 def includeme(config):
@@ -11,7 +10,7 @@ def includeme(config):
 @view_config(
     route_name='verify-email',
     request_method='GET',
-    permission='view_raw',
+    permission='view',
 )
 def email_verification(context, request):
     if request.authenticated_userid:
