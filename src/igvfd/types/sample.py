@@ -111,7 +111,7 @@ class Sample(Item):
         'items': {
             'title': 'Child Sample',
             'type': ['string', 'object'],
-            'linkFrom': 'Sample.originated_from',
+            'linkFrom': 'InVitroSystem.originated_from',
         },
         'notSubmittable': True,
     })
@@ -132,7 +132,7 @@ class Biosample(Sample):
     base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
     rev = Sample.rev | {'parent_of': ('Sample', 'part_of'),
-                        'pooled_sample_of': ('Sample', 'pooled_from')}
+                        'pooled_in': ('Sample', 'pooled_from')}
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
@@ -391,13 +391,13 @@ class Biosample(Sample):
         return paths_filtered_by_status(request, parent_of)
 
     @calculated_property(schema={
-        'title': 'Pooled Sample Of',
-        'type': 'string',
+        'title': 'Pooled In',
+        'type': ['string', 'object'],
         'linkFrom': 'Sample.pooled_from',
         'notSubmittable': True,
     })
-    def pooled_sample_of(self, request, pooled_sample_of):
-        return paths_filtered_by_status(request, pooled_sample_of)
+    def pooled_in(self, request, pooled_in):
+        return paths_filtered_by_status(request, pooled_in)
 
 
 @collection(
