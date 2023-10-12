@@ -76,14 +76,14 @@ def file_set_6_7(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1177
     notes = value.get('notes', '')
     if 'construct_libraries' in value:
-        notes += f" ConstructLibrary object(s) {value['construct_libraries']} removed via upgrade."
-        value.pop('construct_libraries')
+        notes += f" ConstructLibrary object(s) {value['construct_libraries']} was removed via upgrade."
+        del value['construct_libraries']
     if 'moi' in value:
         notes += f" MOI {value['moi']} was removed via upgrade."
-        value.pop('moi')
+        del value['moi']
     if 'nucleic_acid_delivery' in value:
         notes += f" Nucleic acid delivery {value['nucleic_acid_delivery']} was removed via upgrade."
-        value.pop('nucleic_acid_delivery')
+        del value['nucleic_acid_delivery']
     if 'control_file_sets' in value:
         filtered_control_file_sets = []
         removed_control_file_sets = []
