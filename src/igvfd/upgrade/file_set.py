@@ -116,7 +116,7 @@ def measurement_set_7_8(value, system):
 
 
 @upgrade_step('measurement_set', '8', '9')
-def measurement_set_7_8(value, system):
+def measurement_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-11694455
     if 'control_file_sets' in value:
         print(value['control_file_sets'])
