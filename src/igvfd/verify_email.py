@@ -16,7 +16,7 @@ def email_verification(context, request):
     if request.authenticated_userid:
         email = request.GET.get('email')
         try:
-            user_to_verify = request.embed(f'/users/{email}')
+            user_to_verify = request.embed(f'/users/{email}', '@@object')
             viewing_groups = user_to_verify.get('viewing_groups', [])
             verified_user = 'IGVF' in viewing_groups
         except KeyError:
@@ -24,6 +24,8 @@ def email_verification(context, request):
         return {
             'email': email,
             'verified': verified_user,
+            'viewing_groups': viewing_groups,
+            'user': user_to_verify
         }
     else:
         raise HTTPForbidden('You are not authorized to perform email address verification.')
