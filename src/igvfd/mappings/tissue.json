@@ -1065,7 +1065,7 @@
                     "pooled_from": {
                         "type": "keyword"
                     },
-                    "pooled_sample_of": {
+                    "pooled_in": {
                         "type": "keyword"
                     },
                     "preservation_method": {
@@ -1324,7 +1324,7 @@
                             "pooled_from": {
                                 "type": "keyword"
                             },
-                            "pooled_sample_of": {
+                            "pooled_in": {
                                 "type": "keyword"
                             },
                             "preservation_method": {
