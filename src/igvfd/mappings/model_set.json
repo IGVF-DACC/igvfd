@@ -1517,7 +1517,13 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "originated_from": {
+                                "type": "keyword"
+                            },
+                            "parent_of": {
                                 "type": "keyword"
                             },
                             "part_of": {
@@ -1545,6 +1551,9 @@
                                 "type": "keyword"
                             },
                             "pooled_from": {
+                                "type": "keyword"
+                            },
+                            "pooled_sample_of": {
                                 "type": "keyword"
                             },
                             "preservation_method": {
@@ -1652,6 +1661,9 @@
                                 "type": "keyword"
                             },
                             "sorted_from_detail": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sources": {

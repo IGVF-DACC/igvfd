@@ -1082,6 +1082,9 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
@@ -1098,6 +1101,9 @@
                                 "type": "keyword"
                             },
                             "sorted_from_detail": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1168,6 +1174,9 @@
                         "type": "text"
                     },
                     "nucleic_acid_delivery": {
+                        "type": "keyword"
+                    },
+                    "origin_of": {
                         "type": "keyword"
                     },
                     "originated_from": {
@@ -1289,7 +1298,13 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "originated_from": {
+                                "type": "keyword"
+                            },
+                            "parent_of": {
                                 "type": "keyword"
                             },
                             "part_of": {
@@ -1319,6 +1334,9 @@
                             "pooled_from": {
                                 "type": "keyword"
                             },
+                            "pooled_sample_of": {
+                                "type": "keyword"
+                            },
                             "preservation_method": {
                                 "type": "keyword"
                             },
@@ -1344,6 +1362,9 @@
                                 "type": "keyword"
                             },
                             "sorted_from_detail": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1433,6 +1454,9 @@
                         },
                         "type": "object"
                     },
+                    "parent_of": {
+                        "type": "keyword"
+                    },
                     "part_of": {
                         "type": "keyword"
                     },
@@ -1446,6 +1470,9 @@
                         "type": "long"
                     },
                     "pooled_from": {
+                        "type": "keyword"
+                    },
+                    "pooled_sample_of": {
                         "type": "keyword"
                     },
                     "product_id": {
@@ -1665,7 +1692,13 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "originated_from": {
+                                "type": "keyword"
+                            },
+                            "parent_of": {
                                 "type": "keyword"
                             },
                             "part_of": {
@@ -1693,6 +1726,9 @@
                                 "type": "keyword"
                             },
                             "pooled_from": {
+                                "type": "keyword"
+                            },
+                            "pooled_sample_of": {
                                 "type": "keyword"
                             },
                             "preservation_method": {
@@ -1723,6 +1759,9 @@
                                 "type": "keyword"
                             },
                             "sorted_from_detail": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1813,6 +1852,9 @@
                         "type": "object"
                     },
                     "sorted_from_detail": {
+                        "type": "keyword"
+                    },
+                    "sorted_fractions": {
                         "type": "keyword"
                     },
                     "sources": {
