@@ -113,3 +113,11 @@ def measurement_set_7_8(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1169
     if 'multiome_size' in value:
         value['multiome_size'] = int(value['multiome_size'])
+
+
+@upgrade_step('measurement_set', '8', '9')
+def measurement_set_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-11694455
+    if 'control_file_sets' in value:
+        print(value['control_file_sets'])
+        value['notes'] = value['control_file_sets']
