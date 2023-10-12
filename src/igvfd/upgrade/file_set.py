@@ -96,7 +96,7 @@ def file_set_6_7(value, system):
         if len(removed_control_file_sets) > 1:
             notes += f" Control file sets {', '.join(removed_control_file_sets)} were removed via upgrade."
         else:
-            notes += f" Control file set {value['nucleic_acid_delivery']} was removed via upgrade."
+            notes += f' Control file set {removed_control_file_sets[0]} was removed via upgrade.'
     if notes != '':
         value['notes'] = notes.strip()
 
