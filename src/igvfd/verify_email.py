@@ -1,7 +1,6 @@
+from pyramid.httpexceptions import HTTPForbidden
 from pyramid.view import view_config
 from pyramid.security import NO_PERMISSION_REQUIRED
-
-from snovault.interfaces import STORAGE
 
 
 def includeme(config):
@@ -16,13 +15,13 @@ def includeme(config):
 )
 def email_verification(context, request):
     if request.authenticated_userid:
-        #session = request.registry[STORAGE].DBSession()
-        #statement = select(User).filter_by(email=email)
         email = request.GET.get('email')
-        return {'foo': 'bar',
-                'user': request.authenticated_userid,
-                'email_to_check': email
-                }
+        user_to_verify = request.embed(f'/users/{email}', '@@object')
+        viewing_groups = user_to_verify.get('viewing_groups', [])
+        verified_user = 'IGVF' in viewing_groups
+        return {
+            'email': email,
+            'verified': verified_user,
+        }
     else:
-        email = request.params.get('email')
-        return {'no': 'way', 'email': email}
+        raise HTTPForbidden('You are not authorized to perform email address verification.')
