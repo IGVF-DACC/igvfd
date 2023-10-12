@@ -93,10 +93,10 @@ class Sample(Item):
         return paths_filtered_by_status(request, multiplexed_in)
 
     @calculated_property(schema={
-        'title': 'Sorted Fraction Child Samples',
+        'title': 'Sorted Fraction Samples',
         'type': 'array',
         'items': {
-            'title': 'Sorted Fraction Child Sample',
+            'title': 'Child Sample',
             'type': ['string', 'object'],
             'linkFrom': 'Sample.sorted_fraction',
         },
@@ -106,10 +106,10 @@ class Sample(Item):
         return paths_filtered_by_status(request, sorted_fractions)
 
     @calculated_property(schema={
-        'title': 'Origin Of',
+        'title': 'Origin Sample Of',
         'type': 'array',
         'items': {
-            'title': 'Origin Of Sample',
+            'title': 'Child Sample',
             'type': ['string', 'object'],
             'linkFrom': 'Sample.originated_from',
         },
@@ -381,7 +381,7 @@ class Biosample(Sample):
         'title': 'Parent Of',
         'type': 'array',
         'items': {
-            'title': 'Parent Of Child Sample',
+            'title': 'Child Sample',
             'type': ['string', 'object'],
             'linkFrom': 'Sample.part_of',
         },
