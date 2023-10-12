@@ -11,7 +11,7 @@ def includeme(config):
 @view_config(
     route_name='verify-email',
     request_method='GET',
-    permission=NO_PERMISSION_REQUIRED,
+    permission='view_raw',
 )
 def email_verification(context, request):
     if request.authenticated_userid:
