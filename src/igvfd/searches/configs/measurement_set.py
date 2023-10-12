@@ -10,6 +10,9 @@ def measurement_set():
             'donors.taxa': {
                 'title': 'Taxa',
             },
+            'samples.classification': {
+                'title': 'Classification',
+            },
             'samples.sample_terms.term_name': {
                 'title': 'Sample Term',
             },
@@ -64,6 +67,7 @@ def measurement_set():
                 'title': 'Sample',
                 'facet_fields': [
                     'donors.taxa',
+                    'samples.classification',
                     'samples.sample_terms.term_name',
                     'samples.targeted_sample_term.term_name',
                     'samples.disease_terms.term_name',
