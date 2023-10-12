@@ -93,10 +93,8 @@ def file_set_6_7(value, system):
             else:
                 filtered_control_file_sets.append(ctrl_file_set)
         value['control_file_sets'] = filtered_control_file_sets
-        if len(removed_control_file_sets) > 1:
+        if len(removed_control_file_sets) > 0:
             notes += f" Control file sets {', '.join(removed_control_file_sets)} were removed via upgrade."
-        else:
-            notes += f' Control file set {removed_control_file_sets[0]} was removed via upgrade.'
     if notes != '':
         value['notes'] = notes.strip()
 
