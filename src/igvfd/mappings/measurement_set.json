@@ -1696,6 +1696,7 @@
                                 "type": "keyword"
                             },
                             "term_name": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {
@@ -1999,6 +2000,7 @@
                                 "type": "keyword"
                             },
                             "classification": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "collections": {
@@ -2076,6 +2078,7 @@
                                         "type": "keyword"
                                     },
                                     "term_name": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "uuid": {
@@ -2156,6 +2159,7 @@
                                         "type": "keyword"
                                     },
                                     "modality": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "notes": {
@@ -2261,7 +2265,6 @@
                                 "type": "keyword"
                             },
                             "sample_terms": {
-                                "copy_to": "_fuzzy",
                                 "properties": {
                                     "@id": {
                                         "type": "keyword"
@@ -2333,6 +2336,7 @@
                                         "type": "keyword"
                                     },
                                     "term_name": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "uuid": {
@@ -2453,6 +2457,7 @@
                                         "type": "keyword"
                                     },
                                     "term_name": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "uuid": {
