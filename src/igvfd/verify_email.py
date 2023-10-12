@@ -16,7 +16,7 @@ def includeme(config):
 def email_verification(context, request):
     if request.authenticated_userid:
         email = request.GET.get('email')
-        user_to_verify = request.embed(f'/users/{email}', '@@object')
+        user_to_verify = request.embed(f'/users/{email}')
         viewing_groups = user_to_verify.get('viewing_groups', [])
         verified_user = 'IGVF' in viewing_groups
         return {
