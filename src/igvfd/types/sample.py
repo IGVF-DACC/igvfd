@@ -51,7 +51,9 @@ class Sample(Item):
     schema = load_schema('igvfd:schemas/sample.json')
     rev = {
         'file_sets': ('FileSet', 'samples'),
-        'multiplexed_in': ('MultiplexedSample', 'multiplexed_samples')
+        'multiplexed_in': ('MultiplexedSample', 'multiplexed_samples'),
+        'sorted_fractions': ('Sample', 'sorted_fraction'),
+        'origin_of': ('Sample', 'originated_from'),
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
@@ -90,6 +92,32 @@ class Sample(Item):
     def multiplexed_in(self, request, multiplexed_in):
         return paths_filtered_by_status(request, multiplexed_in)
 
+    @calculated_property(schema={
+        'title': 'Sorted Fraction Child Samples',
+        'type': 'array',
+        'items': {
+            'title': 'Sorted Fraction Child Sample',
+            'type': ['string', 'object'],
+            'linkFrom': 'Sample.sorted_fraction',
+        },
+        'notSubmittable': True,
+    })
+    def sorted_fractions(self, request, sorted_fractions):
+        return paths_filtered_by_status(request, sorted_fractions)
+
+    @calculated_property(schema={
+        'title': 'Origin Of',
+        'type': 'array',
+        'items': {
+            'title': 'Origin Of Sample',
+            'type': ['string', 'object'],
+            'linkFrom': 'Sample.originated_from',
+        },
+        'notSubmittable': True,
+    })
+    def origin_of(self, request, origin_of):
+        return paths_filtered_by_status(request, origin_of)
+
 
 @abstract_collection(
     name='biosamples',
@@ -103,6 +131,8 @@ class Biosample(Sample):
     item_type = 'biosample'
     base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
+    rev = Sample.rev | {'parent_of': ('Sample', 'part_of'),
+                        'pooled_sample_of': ('Sample', 'pooled_from')}
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
@@ -346,6 +376,28 @@ class Biosample(Sample):
                     summary_terms += f' {verb} multiple libraries,'
 
         return summary_terms.strip(',')
+
+    @calculated_property(schema={
+        'title': 'Parent Of',
+        'type': 'array',
+        'items': {
+            'title': 'Parent Of Child Sample',
+            'type': ['string', 'object'],
+            'linkFrom': 'Sample.part_of',
+        },
+        'notSubmittable': True,
+    })
+    def parent_of(self, request, parent_of):
+        return paths_filtered_by_status(request, parent_of)
+
+    @calculated_property(schema={
+        'title': 'Pooled Sample Of',
+        'type': 'string',
+        'linkFrom': 'Sample.pooled_from',
+        'notSubmittable': True,
+    })
+    def pooled_sample_of(self, request, pooled_sample_of):
+        return paths_filtered_by_status(request, pooled_sample_of)
 
 
 @collection(
