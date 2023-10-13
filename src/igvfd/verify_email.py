@@ -16,12 +16,11 @@ def includeme(config):
 )
 def email_verification(context, request):
     if request.authenticated_userid:
-        userid = request.unauthenticated_userid
         email = request.GET.get('email')
         try:
             has_view_permission = request.has_permission('view')
             is_allowed = isinstance(has_view_permission, Allowed)
-            user_to_verify = request.embed(f'/users/{email}', '@@object', as_user=userid)
+            user_to_verify = request.embed(f'/users/{email}', '@@object', as_user=True)
             viewing_groups = user_to_verify.get('viewing_groups', [])
             verified_user = 'IGVF' in viewing_groups
         except KeyError:
