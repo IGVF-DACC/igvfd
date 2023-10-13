@@ -22,7 +22,7 @@ def igvf_email_verification(context, request):
             viewing_groups = user.get('viewing_groups', [])
             is_igvf_viewer = 'IGVF' in viewing_groups
         except KeyError:
-            verified_user = False
+            is_igvf_viewer = False
         return {
             'email': email,
             'verified': is_igvf_viewer,
