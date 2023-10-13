@@ -25,7 +25,7 @@ def igvf_email_verification(context, request):
             verified_user = False
         return {
             'email': email,
-            'verified': verified_user,
+            'verified': is_igvf_viewer,
         }
     else:
         raise HTTPForbidden('You are not authorized to perform email address verification.')
