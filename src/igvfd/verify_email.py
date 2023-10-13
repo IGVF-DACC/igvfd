@@ -6,34 +6,26 @@ from pyramid.security import Denied
 
 def includeme(config):
     config.scan(__name__, categories=None)
-    config.add_route('verify-email', '/verify-email{slash:/?}')
+    config.add_route('verify-igvf-email', '/verify-igvf-email{slash:/?}')
 
 
 @view_config(
-    route_name='verify-email',
+    route_name='verify-igvf-email',
     request_method='GET',
     permission='view',
 )
-def email_verification(context, request):
+def igvf_email_verification(context, request):
     if request.authenticated_userid:
         email = request.GET.get('email')
-        userid = request.authenticated_userid
         try:
-            has_view_permission = request.has_permission('view')
-            is_allowed = isinstance(has_view_permission, Allowed)
-            user_to_verify = request.embed(f'/users/{email}', as_user=True)
-            viewing_groups = user_to_verify.get('viewing_groups', [])
-            verified_user = 'IGVF' in viewing_groups
+            user = request.embed(f'/users/{email}', as_user=True)
+            viewing_groups = user.get('viewing_groups', [])
+            is_igvf_viewer = 'IGVF' in viewing_groups
         except KeyError:
             verified_user = False
         return {
             'email': email,
             'verified': verified_user,
-            'viewing_groups': viewing_groups,
-            'has_view_permission': has_view_permission,
-            'is_allowed': is_allowed,
-            'user_object': user_to_verify,
-            'requester': userid,
         }
     else:
         raise HTTPForbidden('You are not authorized to perform email address verification.')
