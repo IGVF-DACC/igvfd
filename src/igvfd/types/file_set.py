@@ -37,16 +37,14 @@ class FileSet(Item):
         'control_for': ('FileSet', 'control_file_sets')
     }
     embedded_with_frame = [
-        Path('award', include=['@id', 'component', 'contact_pi']),
-        Path('award.contact_pi', include=['@id', 'title']),
+        Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
         Path('donors', include=['@id', 'accession', 'aliases', 'taxa']),
-        Path('samples', include=['@id', 'accession', 'aliases', 'treatments', 'cell_fate_change_treatments',
-             'classification', 'disease_terms', 'modifications', 'sample_terms', 'summary', 'targeted_sample_term', 'taxa']),
-        Path('samples.sample_terms', include=['@id', 'term_name']),
+        Path('samples.sample_terms', include=['@id', 'accession', 'aliases', 'treatments', 'cell_fate_change_treatments',
+             'classification', 'disease_terms', 'modifications', 'sample_terms', 'summary', 'targeted_sample_term', 'taxa', 'term_name']),
         Path('samples.targeted_sample_term', include=['@id', 'term_name']),
     ]
 
