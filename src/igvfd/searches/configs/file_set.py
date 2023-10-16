@@ -30,8 +30,7 @@ def file_set():
             {
                 'title': 'File Set',
                 'facet_fields': [
-                    'donors.taxa',
-                    'type',
+                    'donors.taxa'
                 ],
             },
             {
@@ -40,6 +39,7 @@ def file_set():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {

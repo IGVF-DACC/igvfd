@@ -35,7 +35,6 @@ def prediction_set():
                 'facet_fields': [
                     'donors.taxa',
                     'file_set_type',
-                    'type',
                 ],
             },
             {
@@ -44,6 +43,7 @@ def prediction_set():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {

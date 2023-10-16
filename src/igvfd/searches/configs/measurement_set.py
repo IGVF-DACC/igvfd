@@ -35,7 +35,7 @@ def measurement_set():
                 'title': 'CRISPR Modality'
             },
             'library_construction_platform.term_name': {
-                'title': 'Platform'
+                'title': 'Library Platform'
             },
             'sequencing_library_type': {
                 'title': 'Library Material'
@@ -57,12 +57,6 @@ def measurement_set():
             },
         },
         'facet_groups': [
-            {
-                'title': 'File Set',
-                'facet_fields': [
-                    'type',
-                ],
-            },
             {
                 'title': 'Sample',
                 'facet_fields': [
@@ -95,6 +89,7 @@ def measurement_set():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'type',
                 ],
             },
             {
