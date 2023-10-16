@@ -433,6 +433,53 @@ class ConfigurationFile(File):
         return paths_filtered_by_status(request, seqspec_of)
 
 
+@collection(
+    name='tabular-files',
+    unique_key='accession',
+    properties={
+        'title': 'Tabular Files',
+        'description': 'Listing of tabular files',
+    }
+)
+class TabularFile(File):
+    item_type = 'configuration_file'
+    schema = load_schema('igvfd:schemas/tabular_file.json')
+    embedded_with_frame = File.embedded_with_frame
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
+
+
+@collection(
+    name='genome-browser-annotation-files',
+    unique_key='accession',
+    properties={
+        'title': 'Genome Browser Annotation Files',
+        'description': 'Listing of genome browser annotation files',
+    }
+)
+class GenomeBrowserAnnotationFile(File):
+    item_type = 'genome_browser_annotation_file'
+    schema = load_schema('igvfd:schemas/genome_browser_annotation_file.json')
+    embedded_with_frame = File.embedded_with_frame
+    rev = {
+        'seqspec_of': ('SequenceFile', 'seqspec')
+    }
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
+
+
 @view_config(
     name='upload',
     context=File,
