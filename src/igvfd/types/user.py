@@ -3,7 +3,6 @@ from pyramid.view import (
 )
 from pyramid.authorization import (
     Allow,
-    Authenticated,
     Deny,
     Everyone,
 )

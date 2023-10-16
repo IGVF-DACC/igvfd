@@ -1,7 +1,5 @@
 from pyramid.httpexceptions import HTTPForbidden
 from pyramid.view import view_config
-from pyramid.security import Allowed
-from pyramid.security import Denied
 
 
 def includeme(config):
