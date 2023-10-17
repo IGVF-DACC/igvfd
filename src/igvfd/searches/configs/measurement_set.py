@@ -37,7 +37,7 @@ def measurement_set():
             'library_construction_platform.term_name': {
                 'title': 'Library Platform'
             },
-            'sequencing_library_type': {
+            'sequencing_library_types': {
                 'title': 'Library Material'
             },
             'collections': {
@@ -139,8 +139,8 @@ def measurement_set():
             'library_construction_platform': {
                 'title': 'Library Construction Platform'
             },
-            'sequencing_library_type': {
-                'title': 'Sequencing Library Type'
+            'sequencing_library_types': {
+                'title': 'Sequencing Library Types'
             },
             'protocol': {
                 'title': 'Protocol'
