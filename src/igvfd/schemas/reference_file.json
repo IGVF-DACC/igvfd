@@ -261,6 +261,18 @@
                 "appscript": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/",
                 "igvf_utils": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/"
             }
+        },
+        "dbxrefs": {
+            "items": {
+                "title": "External identifier",
+                "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
+                "type": "string",
+                "pattern": "^(SRA:(SRR|SRX)\\d+)$"
+            },
+            "submissionExample": {
+                "appscript": "[\"SRA:SRR1234\", \"SRA:SRX1234\"]",
+                "igvf_utils": "SRA:SRR1234, SRA:SRX1234"
+            }
         }
     },
     "fuzzy_searchable_fields": [
