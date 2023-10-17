@@ -622,7 +622,8 @@
         "@type",
         "collections",
         "selection_criteria",
-        "genes.symbol"
+        "genes.symbol",
+        "lab.title"
     ],
     "exact_searchable_fields": [
         "control_for.accession",
