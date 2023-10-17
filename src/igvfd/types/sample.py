@@ -476,7 +476,7 @@ class MultiplexedSample(Sample):
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
         Path('multiplexed_samples', include=['@id', 'accession', '@type',
-             'summary', 'sample_terms', 'disease_terms', 'donors', 'status']),
+             'summary', 'sample_terms', 'construct_library_sets', 'disease_terms', 'donors', 'status']),
         Path('multiplexed_samples.sample_terms', include=['term_name']),
         Path('multiplexed_samples.disease_terms', include=['term_name']),
         Path('multiplexed_samples.donors', include=['@id', 'accession']),
