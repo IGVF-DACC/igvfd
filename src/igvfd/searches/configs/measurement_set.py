@@ -80,7 +80,7 @@ def measurement_set():
                 'title': 'Library',
                 'facet_fields': [
                     'library_construction_platform.term_name',
-                    'sequencing_library_type',
+                    'sequencing_library_types',
                 ],
             },
             {
