@@ -1,6 +1,6 @@
 {
-    "hash": "6ec2bc624611513156cc3e3897dc73c9",
-    "index_name": "curated_set_6ec2bc62",
+    "hash": "8f40091ce20a76fdd80060919551f463",
+    "index_name": "curated_set_8f40091c",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -162,7 +162,8 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
-                    "assembly": {
+                    "assemblies": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "award": {
@@ -265,10 +266,10 @@
                             "assay_term": {
                                 "type": "keyword"
                             },
-                            "assay_title": {
+                            "assay_titles": {
                                 "type": "keyword"
                             },
-                            "assembly": {
+                            "assemblies": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {
@@ -459,7 +460,7 @@
                             "selection_criteria": {
                                 "type": "keyword"
                             },
-                            "sequencing_library_type": {
+                            "sequencing_library_types": {
                                 "type": "keyword"
                             },
                             "software_version": {
@@ -518,7 +519,7 @@
                             "tiling_modality": {
                                 "type": "keyword"
                             },
-                            "transcriptome_annotation": {
+                            "transcriptome_annotations": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {
@@ -1372,7 +1373,8 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "transcriptome_annotation": {
+                    "transcriptome_annotations": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "url": {

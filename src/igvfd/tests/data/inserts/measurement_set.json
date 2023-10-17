@@ -71,7 +71,7 @@
         "samples": [
             "igvf:alias10"
         ],
-        "sequencing_library_type": [
+        "sequencing_library_types": [
             "mRNA enriched",
             "polyA depleted"
         ],

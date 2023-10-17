@@ -1,6 +1,6 @@
 {
-    "hash": "f6c5d1c9dfe71412d331713b8b37e3f6",
-    "index_name": "prediction_set_f6c5d1c9",
+    "hash": "f36f118df0e393f02f638664007afc76",
+    "index_name": "prediction_set_f36f118d",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -262,10 +262,10 @@
                             "assay_term": {
                                 "type": "keyword"
                             },
-                            "assay_title": {
+                            "assay_titles": {
                                 "type": "keyword"
                             },
-                            "assembly": {
+                            "assemblies": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {
@@ -456,7 +456,7 @@
                             "selection_criteria": {
                                 "type": "keyword"
                             },
-                            "sequencing_library_type": {
+                            "sequencing_library_types": {
                                 "type": "keyword"
                             },
                             "software_version": {
@@ -515,7 +515,7 @@
                             "tiling_modality": {
                                 "type": "keyword"
                             },
-                            "transcriptome_annotation": {
+                            "transcriptome_annotations": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

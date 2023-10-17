@@ -1,6 +1,6 @@
 {
-    "hash": "0e5d21347698e5e72a1ec2a3f93cce52",
-    "index_name": "technical_sample_0e5d2134",
+    "hash": "5026ed00e221c997ad1006b0d439848e",
+    "index_name": "technical_sample_5026ed00",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -281,10 +281,10 @@
                             "assay_term": {
                                 "type": "keyword"
                             },
-                            "assay_title": {
+                            "assay_titles": {
                                 "type": "keyword"
                             },
-                            "assembly": {
+                            "assemblies": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {
@@ -531,7 +531,7 @@
                             "selection_criteria": {
                                 "type": "keyword"
                             },
-                            "sequencing_library_type": {
+                            "sequencing_library_types": {
                                 "type": "keyword"
                             },
                             "software_version": {
@@ -590,7 +590,7 @@
                             "tiling_modality": {
                                 "type": "keyword"
                             },
-                            "transcriptome_annotation": {
+                            "transcriptome_annotations": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

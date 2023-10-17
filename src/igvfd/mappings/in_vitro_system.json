@@ -1,6 +1,6 @@
 {
-    "hash": "04fe58baa86f3adab5beeef0edbe3543",
-    "index_name": "in_vitro_system_04fe58ba",
+    "hash": "d691bb0fb853c5e55c734b8d380109ca",
+    "index_name": "in_vitro_system_d691bb0f",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -508,10 +508,10 @@
                             "assay_term": {
                                 "type": "keyword"
                             },
-                            "assay_title": {
+                            "assay_titles": {
                                 "type": "keyword"
                             },
-                            "assembly": {
+                            "assemblies": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {
@@ -758,7 +758,7 @@
                             "selection_criteria": {
                                 "type": "keyword"
                             },
-                            "sequencing_library_type": {
+                            "sequencing_library_types": {
                                 "type": "keyword"
                             },
                             "software_version": {
@@ -817,7 +817,7 @@
                             "tiling_modality": {
                                 "type": "keyword"
                             },
-                            "transcriptome_annotation": {
+                            "transcriptome_annotations": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {

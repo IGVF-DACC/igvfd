@@ -1,6 +1,6 @@
 {
-    "hash": "86fec932443b802005f964abdd06d625",
-    "index_name": "auxiliary_set_86fec932",
+    "hash": "193478ba9289656cd3968a42891ed0ac",
+    "index_name": "auxiliary_set_193478ba",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -262,10 +262,10 @@
                             "assay_term": {
                                 "type": "keyword"
                             },
-                            "assay_title": {
+                            "assay_titles": {
                                 "type": "keyword"
                             },
-                            "assembly": {
+                            "assemblies": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {
@@ -456,7 +456,7 @@
                             "selection_criteria": {
                                 "type": "keyword"
                             },
-                            "sequencing_library_type": {
+                            "sequencing_library_types": {
                                 "type": "keyword"
                             },
                             "software_version": {
@@ -515,7 +515,7 @@
                             "tiling_modality": {
                                 "type": "keyword"
                             },
-                            "transcriptome_annotation": {
+                            "transcriptome_annotations": {
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {
@@ -1102,7 +1102,7 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "sequencing_library_type": {
+                            "sequencing_library_types": {
                                 "type": "keyword"
                             },
                             "status": {

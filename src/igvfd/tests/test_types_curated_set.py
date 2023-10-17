@@ -17,7 +17,7 @@ def test_curated_set_assembly(testapp, reference_file, reference_file_two, curat
         }
     )
     curated_set_result = testapp.get(curated_set_genome['@id']).json
-    assert {'GRCh38', 'hg19'} == set(curated_set_result.get('assembly', []))
+    assert {'GRCh38', 'hg19'} == set(curated_set_result.get('assemblies', []))
 
 
 def test_curated_set_transcriptome_annotation(testapp, reference_file, reference_file_two, curated_set_genome):
@@ -36,7 +36,7 @@ def test_curated_set_transcriptome_annotation(testapp, reference_file, reference
         }
     )
     curated_set_result = testapp.get(curated_set_genome['@id']).json
-    assert {'GENCODE 40', 'GENCODE 41'} == set(curated_set_result.get('transcriptome_annotation', []))
+    assert {'GENCODE 40', 'GENCODE 41'} == set(curated_set_result.get('transcriptome_annotations', []))
 
 
 def test_curated_set_summary(testapp, reference_file, reference_file_two, curated_set_genome):

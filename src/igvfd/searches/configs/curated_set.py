@@ -16,6 +16,12 @@ def curated_set():
             'taxa': {
                 'title': 'Taxa'
             },
+            'assemblies': {
+                'title': 'Assemblies'
+            },
+            'transcriptome_annotations': {
+                'title': 'Transcriptome Annotations'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -35,6 +41,8 @@ def curated_set():
                 'facet_fields': [
                     'taxa',
                     'file_set_type',
+                    'assemblies',
+                    'transcriptome_annotations'
                 ],
             },
             {
@@ -83,6 +91,12 @@ def curated_set():
             },
             'taxa': {
                 'title': 'Taxa'
+            },
+            'assemblies': {
+                'title': 'Assemblies'
+            },
+            'transcriptome_annotations': {
+                'title': 'Transcriptome Annotations'
             },
             'file_set_type': {
                 'title': 'File Set Type'
