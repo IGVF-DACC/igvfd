@@ -277,3 +277,17 @@ def test_profiles(testapp, item_type):
 def test_bad_frame(testapp, lab):
     res = testapp.get(lab['@id'] + '?frame=bad', status=404)
     assert res.json['detail'] == '?frame=bad'
+
+
+def test_verify_igvf_email(testapp):
+    item = {
+        'first_name': 'IGVF',
+        'last_name': 'Viewer',
+        'email': 'igvf@viewer.edu',
+        'viewing_groups': ['IGVF'],
+    }
+    res = testapp.post_json('/user', item)
+    verify_verified = testapp.get('/verify-igvf-email?email=igvf@viewer.edu')
+    verify_unverified = testapp.get('/verify-igvf-email?email=foo@bar.baz')
+    assert verify_verified.json['verified']
+    assert not verify_unverified.json['verified']
