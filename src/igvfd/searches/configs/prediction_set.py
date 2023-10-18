@@ -77,6 +77,9 @@ def prediction_set():
             },
             'donors': {
                 'title': 'Donors'
+            },
+            'scope': {
+                'title': 'Prediction Scope'
             }
         }
     }
