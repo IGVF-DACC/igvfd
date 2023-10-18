@@ -1,112 +1,43 @@
 [
     {
-        "uuid": "a93a0af0-eb3a-49a3-b245-e11ba10f9070",
-        "accession": "IGVFFI0001GNRF",
+        "uuid": "f5f0edaa-579e-49a3-b245-e11ba10f1860",
+        "accession": "IGVFFI0001BGBD",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:fastq_genome_reference_file_new"
+            "igvf:genome_browser_annotation_file_bigbed"
         ],
         "status": "released",
-        "md5sum": "7f1917dea86105dd9d2582c0a91c3156",
-        "file_format": "fasta",
-        "content_type": "genome reference",
-        "submitted_file_name": "/Users/igvf/igvf_files/genome_reference.fasta",
-        "file_size": 5428031,
+        "md5sum": "3d8b17dea86105dd96c182c0a91c3156",
+        "file_format": "bigBed",
+        "content_type": "peaks",
+        "submitted_file_name": "/Users/igvf/igvf_files/peaks_01.bigBed",
+        "file_size": 9828031,
         "upload_status": "file not found",
         "assembly": "GRCh38",
         "source_url": "https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000001405.26/",
         "file_set": "igvf:basic_analysis_set"
     },
     {
-        "uuid": "afa2362e-9488-4d8e-87e5-3d46f46f2166",
-        "accession": "IGVFFI0001SQBR",
+        "uuid": "20571fef-b9ee-4d8e-0e6e-3d46f46fa247",
+        "accession": "IGVFFI0001TABX",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:txt_sequence_barcodes_file_new"
+            "igvf:genome_browser_annotation_file_tabix"
         ],
         "status": "released",
-        "md5sum": "0fe14d38d30dc30f391bf163a1772eac",
-        "file_format": "txt",
-        "content_type": "sequence barcodes",
+        "md5sum": "991e4d38edacc30f391b578ea177791c",
+        "file_format": "tabix",
+        "content_type": "peaks",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
-        "submitted_file_name": "/Users/igvf/igvf_files/sequence_barcodes.txt",
-        "file_size": 9640,
+        "submitted_file_name": "/Users/igvf/igvf_files/peaks_02.tabix",
+        "file_size": 102340,
+        "assembly": "GRCh38",
         "upload_status": "invalidated",
         "validation_error_detail": "Explanation of why this file did not pass validation.",
         "file_set": "igvf:analysis_set_with_input"
-    },
-    {
-        "uuid": "aaee72dc-e847-4710-b9ee-fbf3fbb5db2c",
-        "accession": "IGVFFI0001SQBZ",
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
-        "md5sum": "a2578edac3f968c991ed3d5b19d791c2",
-        "file_format": "gtf",
-        "content_type": "transcriptome reference",
-        "file_format_specifications": [
-            "igvf:file_format_specification_insert"
-        ],
-        "file_set": "igvf:analysis_set_with_input",
-        "assembly": "GRCh38",
-        "transcriptome_annotation": "GENCODE 40"
-    },
-    {
-        "uuid": "e29019cc-c39e-0e6e-b9ee-fbf3376ea128",
-        "accession": "IGVFFI0001VARI",
-        "aliases": [
-            "igvf:vcf_variants_reference_file"
-        ],
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
-        "md5sum": "0df01bf6c3f3b1f303ed3d5b1b346c46",
-        "file_format": "vcf",
-        "content_type": "variants",
-        "file_format_specifications": [
-            "igvf:file_format_specification_insert"
-        ],
-        "file_set": "igvf:analysis_set_with_input",
-        "assembly": "GRCh38"
-    },
-    {
-        "uuid": "2205ea97-1349-4d82-842a-a3952cabc106",
-        "accession": "IGVFFI1530UZOX",
-        "aliases": [
-            "igvf:motif_catalog_file"
-        ],
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
-        "md5sum": "91e20f3990eb96c1ad4ba603db78298e",
-        "file_format": "PWM",
-        "content_type": "motifs",
-        "file_format_specifications": [
-            "igvf:file_format_specification_insert"
-        ],
-        "file_set": "igvf:analysis_set_with_input",
-        "assembly": "GRCh38"
-    },
-    {
-        "uuid": "20571fef-4569-4c5f-87c0-a5e4404acc40",
-        "accession": "IGVFFI5806YWFK",
-        "aliases": [
-            "igvf:xml_catalog_file"
-        ],
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
-        "md5sum": "08ba1e3f1348f6bd383215ac528321b2",
-        "file_format": "xml",
-        "content_type": "diseases_genes",
-        "file_format_specifications": [
-            "igvf:file_format_specification_insert"
-        ],
-        "file_set": "igvf:analysis_set_with_input",
-        "assembly": "GRCh38",
-        "collections": [
-            "ClinGen",
-            "GREGoR"
-        ]
     }
 ]

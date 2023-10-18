@@ -2,7 +2,7 @@
     "title": "Genome Browser Annotation File",
     "$id": "/profiles/genome_browser_annotation_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A file containing genome annotations which can be visualized on a genome browser.",
+    "description": "A binary file containing genome annotations which are indexed and can be visualized on a genome browser.",
     "required": [
         "award",
         "lab",
@@ -105,16 +105,11 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
-                "candidate cis-regulatory elements",
-                "element-gene links",
-                "hotspots",
-                "methylation state",
-                "peaks",
-                "PWMs"
+                "peaks"
             ],
             "submissionExample": {
-                "appscript": "variants",
-                "igvf_utils": "variants"
+                "appscript": "peaks",
+                "igvf_utils": "peaks"
             }
         },
         "file_format": {

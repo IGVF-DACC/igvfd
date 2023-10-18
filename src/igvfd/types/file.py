@@ -38,19 +38,12 @@ from igvfd.upload_credentials import UploadCredentials
 
 
 FILE_FORMAT_TO_FILE_EXTENSION = {
-    '2bit': '.2bit',
-    'CEL': '.cel.gz',
     'bam': '.bam',
     'bed': '.bed.gz',
     'bedpe': '.bedpe.gz',
-    'chain': '.chain',
     'bigBed': '.bigBed',
     'bigInteract': '.bigInteract',
     'bigWig': '.bigWig',
-    'btr': '.btr',
-    'csfasta': '.csfasta.gz',
-    'csqual': '.csqual.gz',
-    'cndb': '.cndb',
     'database': '.db',
     'dat': '.dat.gz',
     'fasta': '.fasta.gz',
@@ -68,19 +61,15 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'owl': '.owl.gz',
     'PWM': '.pwm',
     'mtx': '.mtx',
-    'rcc': '.rcc',
     'sra': '.sra',
     'tagAlign': '.tagAlign.gz',
     'tar': '.tar.gz',
-    'tsv': '.tsv',
-    'csv': '.csv',
+    'tsv': '.tsv.gz',
+    'csv': '.csv.gz',
     'vcf': '.vcf.gz',
-    'wig': '.wig.gz',
     'sam': '.sam.gz',
     'txt': '.txt.gz',
     'pairs': '.pairs.gz',
-    'starch': '.starch',
-    'nucle3d': '.nucle3d',
     'xml': '.xml.gz',
     'yaml': '.yaml'
 }
@@ -442,7 +431,7 @@ class ConfigurationFile(File):
     }
 )
 class TabularFile(File):
-    item_type = 'configuration_file'
+    item_type = 'tabular_file'
     schema = load_schema('igvfd:schemas/tabular_file.json')
     embedded_with_frame = File.embedded_with_frame
 
@@ -467,9 +456,6 @@ class GenomeBrowserAnnotationFile(File):
     item_type = 'genome_browser_annotation_file'
     schema = load_schema('igvfd:schemas/genome_browser_annotation_file.json')
     embedded_with_frame = File.embedded_with_frame
-    rev = {
-        'seqspec_of': ('SequenceFile', 'seqspec')
-    }
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
