@@ -200,7 +200,7 @@
         "status": "released",
         "uuid": "185b7ca8-e741-4ffe-96af-4b91c13428b4",
         "samples": [
-            "igvf-dacc:in_vitro_system_cell_line"
+            "igvf:alias2"
         ],
         "assay_term": "/assay-terms/OBI_0003133/",
         "preferred_assay_title": "Variant FlowFISH"
