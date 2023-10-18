@@ -10,35 +10,8 @@ def measurement_set():
             'donors.taxa': {
                 'title': 'Taxa',
             },
-            'samples.classification': {
-                'title': 'Classification',
-            },
-            'samples.sample_terms.term_name': {
-                'title': 'Sample Term',
-            },
-            'samples.targeted_sample_term.term_name': {
-                'title': 'Targeted Sample Term',
-            },
-            'samples.disease_terms.term_name': {
-                'title': 'Disease Term',
-            },
             'assay_term.term_name': {
                 'title': 'Assay Term'
-            },
-            'readout.term_name': {
-                'title': 'Readout'
-            },
-            'preferred_assay_title': {
-                'title': 'Preferred Assay Title'
-            },
-            'samples.modifications.modality': {
-                'title': 'CRISPR Modality'
-            },
-            'library_construction_platform.term_name': {
-                'title': 'Library Platform'
-            },
-            'sequencing_library_types': {
-                'title': 'Library Material'
             },
             'collections': {
                 'title': 'Collections',
@@ -58,29 +31,10 @@ def measurement_set():
         },
         'facet_groups': [
             {
-                'title': 'Sample',
+                'title': 'File Set',
                 'facet_fields': [
                     'donors.taxa',
-                    'samples.classification',
-                    'samples.sample_terms.term_name',
-                    'samples.targeted_sample_term.term_name',
-                    'samples.disease_terms.term_name',
-                ],
-            },
-            {
-                'title': 'Assay',
-                'facet_fields': [
                     'assay_term.term_name',
-                    'readout.term_name',
-                    'preferred_assay_title',
-                    'samples.modifications.modality',
-                ],
-            },
-            {
-                'title': 'Library',
-                'facet_fields': [
-                    'library_construction_platform.term_name',
-                    'sequencing_library_types',
                 ],
             },
             {
@@ -129,18 +83,6 @@ def measurement_set():
             },
             'assay_term': {
                 'title': 'Assay Term'
-            },
-            'preferred_assay_title': {
-                'title': 'Preferred Assay Title'
-            },
-            'readout': {
-                'title': 'Readout'
-            },
-            'library_construction_platform': {
-                'title': 'Library Construction Platform'
-            },
-            'sequencing_library_types': {
-                'title': 'Sequencing Library Types'
             },
             'protocol': {
                 'title': 'Protocol'
