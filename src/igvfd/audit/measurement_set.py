@@ -146,9 +146,8 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
                      'Perturb-seq'
                      ]
     if value['assay_term']['term_name'] or value.get('preferred_assay_title', '') in crispr_assays:
-        samples = value.get('samples', [])
         bad_samples = []
-        for sample in samples:
+        for sample in value.get('samples', []):
             if 'modifications' not in sample:
                 bad_samples.append(sample['@id'])
         if bad_samples != []:
