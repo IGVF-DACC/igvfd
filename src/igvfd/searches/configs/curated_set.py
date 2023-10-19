@@ -42,7 +42,7 @@ def curated_set():
                     'taxa',
                     'file_set_type',
                     'assemblies',
-                    'transcriptome_annotations',
+                    'transcriptome_annotations'
                 ],
             },
             {

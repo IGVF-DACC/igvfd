@@ -202,15 +202,11 @@
     "fuzzy_searchable_fields": [
         "@type",
         "assay_term.term_name",
-        "readout.term_name",
-        "samples.modifications.modality",
         "collections",
         "lab.title",
         "preferred_assay_title",
         "samples.summary",
-        "samples.sample_terms.term_name",
-        "samples.disease_terms.term_name",
-        "samples.targeted_sample_term.term_name",
+        "samples.sample_terms",
         "submitted_by.title",
         "summary"
     ],
@@ -227,7 +223,6 @@
         "control_for.aliases",
         "samples.accession",
         "samples.aliases",
-        "samples.classification",
         "donors.accession",
         "donors.aliases"
     ],

@@ -37,16 +37,14 @@ class FileSet(Item):
         'control_for': ('FileSet', 'control_file_sets')
     }
     embedded_with_frame = [
-        Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
+        Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
         Path('donors', include=['@id', 'accession', 'aliases', 'taxa']),
-        Path('samples.sample_terms', include=['@id', 'accession', 'aliases', 'treatments', 'cell_fate_change_treatments',
-             'classification', 'disease_terms', 'modifications', 'sample_terms', 'summary', 'targeted_sample_term', 'taxa', 'term_name']),
-        Path('samples.targeted_sample_term', include=['@id', 'term_name']),
-    ]
+        Path('samples', include=['@id', 'accession', 'aliases',
+             'sample_terms', 'summary', 'taxa']),]
 
     @calculated_property(schema={
         'title': 'Files',
@@ -228,15 +226,9 @@ class MeasurementSet(FileSet):
     schema = load_schema('igvfd:schemas/measurement_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('assay_term', include=['@id', 'term_name']),
-        Path('readout', include=['@id', 'term_name']),
-        Path('library_construction_platform', include=['@id', 'term_name']),
         Path('control_file_sets', include=['@id', 'accession', 'aliases']),
         Path('related_multiome_datasets', include=['@id', 'accession']),
         Path('auxiliary_sets', include=['@id', 'accession', 'aliases']),
-        Path('samples.treatments', include=['@id', 'purpose', 'treatment_type', 'summary']),
-        Path('samples.cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary']),
-        Path('samples.disease_terms', include=['@id', 'term_name']),
-        Path('samples.modifications', include=['@id', 'modality']),
     ]
 
     audit_inherit = [

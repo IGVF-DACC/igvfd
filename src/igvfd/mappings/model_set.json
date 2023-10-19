@@ -1,6 +1,6 @@
 {
-    "hash": "9ced21c7f044ab1a637607a123f2bcfa",
-    "index_name": "model_set_9ced21c7",
+    "hash": "fdad2bac904fb24bba4a2edfee2a9580",
+    "index_name": "model_set_fdad2bac",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -177,72 +177,7 @@
                                 "type": "keyword"
                             },
                             "contact_pi": {
-                                "properties": {
-                                    "@id": {
-                                        "type": "keyword"
-                                    },
-                                    "@type": {
-                                        "type": "keyword"
-                                    },
-                                    "aliases": {
-                                        "type": "keyword"
-                                    },
-                                    "creation_timestamp": {
-                                        "type": "keyword"
-                                    },
-                                    "description": {
-                                        "type": "text"
-                                    },
-                                    "email": {
-                                        "type": "keyword"
-                                    },
-                                    "first_name": {
-                                        "type": "keyword"
-                                    },
-                                    "groups": {
-                                        "type": "keyword"
-                                    },
-                                    "job_title": {
-                                        "type": "keyword"
-                                    },
-                                    "lab": {
-                                        "type": "keyword"
-                                    },
-                                    "last_name": {
-                                        "type": "keyword"
-                                    },
-                                    "notes": {
-                                        "type": "text"
-                                    },
-                                    "schema_version": {
-                                        "type": "keyword"
-                                    },
-                                    "status": {
-                                        "type": "keyword"
-                                    },
-                                    "submits_for": {
-                                        "type": "keyword"
-                                    },
-                                    "submitted_by": {
-                                        "type": "keyword"
-                                    },
-                                    "submitter_comment": {
-                                        "type": "keyword"
-                                    },
-                                    "summary": {
-                                        "type": "keyword"
-                                    },
-                                    "title": {
-                                        "type": "keyword"
-                                    },
-                                    "uuid": {
-                                        "type": "keyword"
-                                    },
-                                    "viewing_groups": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "type": "object"
+                                "type": "keyword"
                             },
                             "creation_timestamp": {
                                 "type": "keyword"
@@ -1565,84 +1500,7 @@
                                 "type": "keyword"
                             },
                             "sample_terms": {
-                                "properties": {
-                                    "@id": {
-                                        "type": "keyword"
-                                    },
-                                    "@type": {
-                                        "type": "keyword"
-                                    },
-                                    "aliases": {
-                                        "type": "keyword"
-                                    },
-                                    "ancestors": {
-                                        "type": "keyword"
-                                    },
-                                    "cell_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "creation_timestamp": {
-                                        "type": "keyword"
-                                    },
-                                    "dbxrefs": {
-                                        "type": "keyword"
-                                    },
-                                    "deprecated_ntr_terms": {
-                                        "type": "keyword"
-                                    },
-                                    "description": {
-                                        "type": "text"
-                                    },
-                                    "developmental_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "is_a": {
-                                        "type": "keyword"
-                                    },
-                                    "name": {
-                                        "type": "keyword"
-                                    },
-                                    "notes": {
-                                        "type": "text"
-                                    },
-                                    "ontology": {
-                                        "type": "keyword"
-                                    },
-                                    "organ_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "schema_version": {
-                                        "type": "keyword"
-                                    },
-                                    "status": {
-                                        "type": "keyword"
-                                    },
-                                    "submitted_by": {
-                                        "type": "keyword"
-                                    },
-                                    "submitter_comment": {
-                                        "type": "keyword"
-                                    },
-                                    "summary": {
-                                        "type": "keyword"
-                                    },
-                                    "synonyms": {
-                                        "type": "keyword"
-                                    },
-                                    "system_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "term_id": {
-                                        "type": "keyword"
-                                    },
-                                    "term_name": {
-                                        "type": "keyword"
-                                    },
-                                    "uuid": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "type": "object"
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -1684,84 +1542,7 @@
                                 "type": "keyword"
                             },
                             "targeted_sample_term": {
-                                "properties": {
-                                    "@id": {
-                                        "type": "keyword"
-                                    },
-                                    "@type": {
-                                        "type": "keyword"
-                                    },
-                                    "aliases": {
-                                        "type": "keyword"
-                                    },
-                                    "ancestors": {
-                                        "type": "keyword"
-                                    },
-                                    "cell_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "creation_timestamp": {
-                                        "type": "keyword"
-                                    },
-                                    "dbxrefs": {
-                                        "type": "keyword"
-                                    },
-                                    "deprecated_ntr_terms": {
-                                        "type": "keyword"
-                                    },
-                                    "description": {
-                                        "type": "text"
-                                    },
-                                    "developmental_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "is_a": {
-                                        "type": "keyword"
-                                    },
-                                    "name": {
-                                        "type": "keyword"
-                                    },
-                                    "notes": {
-                                        "type": "text"
-                                    },
-                                    "ontology": {
-                                        "type": "keyword"
-                                    },
-                                    "organ_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "schema_version": {
-                                        "type": "keyword"
-                                    },
-                                    "status": {
-                                        "type": "keyword"
-                                    },
-                                    "submitted_by": {
-                                        "type": "keyword"
-                                    },
-                                    "submitter_comment": {
-                                        "type": "keyword"
-                                    },
-                                    "summary": {
-                                        "type": "keyword"
-                                    },
-                                    "synonyms": {
-                                        "type": "keyword"
-                                    },
-                                    "system_slims": {
-                                        "type": "keyword"
-                                    },
-                                    "term_id": {
-                                        "type": "keyword"
-                                    },
-                                    "term_name": {
-                                        "type": "keyword"
-                                    },
-                                    "uuid": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "type": "object"
+                                "type": "keyword"
                             },
                             "taxa": {
                                 "type": "keyword"
