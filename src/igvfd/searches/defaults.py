@@ -32,6 +32,8 @@ TOP_HITS_ITEM_TYPES = [
     'SequenceFile',
     'SignalFile',
     'MatrixFile',
+    'TabularFile',
+    'GenomeBrowserAnnotationFile',
     'AnalysisSet',
     'ConstructLibrarySet',
     'CuratedSet',
