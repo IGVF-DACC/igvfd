@@ -28,7 +28,7 @@
 
 1. Find failed pipeline in CodePipeline console.
 2. Identify failed step.
-3. Check logs for build steps or details CloudFormation `Events` tab for deployment steps:
+3. Check logs for build steps, or details in CloudFormation `Events` tab for deployment steps:
 
 <p align="center">
   <img src="./images/howto/debug-release-pipeline_1.png" alt="Debug release pipeline 1" width="500">
