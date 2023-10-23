@@ -44,7 +44,6 @@ Guide on triggering the release pipeline.
   <img src="./images/howto/retrigger-release-pipeline_2.png" alt="Retrigger release pipeline 2" width="500">
 </p>
 
-
 ---
 
 ## Check backend logs
@@ -55,7 +54,29 @@ Guide on how to check the backend logs.
 
 ## Check frontend logs
 
-Steps to check the frontend logs.
+1. Find cluster in ECS console:
+
+<p align="center">
+  <img src="./images/howto/check-frontend-logs_1.png" alt="Check frontend logs 1" width="500">
+</p>
+
+2. Click on `Frontend` service:
+
+<p align="center">
+  <img src="./images/howto/check-frontend-logs_2.png" alt="Check frontend logs 2" width="500">
+</p>
+
+3. Click on `Logs` tab and `View in CloudWatch` button (select `ApplicationContainerLogGroup`):
+
+<p align="center">
+  <img src="./images/howto/check-frontend-logs_3.png" alt="Check frontend logs 3" width="500">
+</p>
+
+4. Add custom time range to narrow down logs:
+
+<p align="center">
+  <img src="./images/howto/check-frontend-logs_4.png" alt="Check frontend logs 4" width="500">
+</p>
 
 ---
 
