@@ -1,6 +1,6 @@
 {
-    "hash": "315000682a7c1c5131ef54f0f3bc7a68",
-    "index_name": "analysis_set_31500068",
+    "hash": "1ce165d89b04c68a586fb7b97453c441",
+    "index_name": "analysis_set_1ce165d8",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1554,7 +1554,6 @@
                                 "type": "keyword"
                             },
                             "sample_terms": {
-                                "copy_to": "_fuzzy",
                                 "properties": {
                                     "@id": {
                                         "type": "keyword"
@@ -1626,6 +1625,7 @@
                                         "type": "keyword"
                                     },
                                     "term_name": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "uuid": {
@@ -1746,6 +1746,7 @@
                                         "type": "keyword"
                                     },
                                     "term_name": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "uuid": {

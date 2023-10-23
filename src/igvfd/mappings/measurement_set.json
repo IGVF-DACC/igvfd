@@ -1,6 +1,6 @@
 {
-    "hash": "28c95261dec3db63c034c4391c3ba7b0",
-    "index_name": "measurement_set_28c95261",
+    "hash": "fc907e5073b69f7c404e1bb6b9df37b1",
+    "index_name": "measurement_set_fc907e50",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2078,7 +2078,6 @@
                                         "type": "keyword"
                                     },
                                     "term_name": {
-                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "uuid": {
