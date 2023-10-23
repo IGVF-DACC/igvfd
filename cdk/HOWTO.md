@@ -250,13 +250,43 @@ Steps to trigger reindexing.
 
 ## Flip a feature flag
 
-Guide on how to flip an existing feature flag.
+1. Find application in AppConfig console:
+
+<p align="center">
+  <img src="./images/howto/flip-feature-flag_1.png" alt="Flip feature flag 1" width="500">
+</p>
+
+2. Click on configuration profile:
+
+<p align="center">
+  <img src="./images/howto/flip-feature-flag_2.png" alt="Flip feature flag 2" width="500">
+</p>
+
+3. Toggle desired flag.
+
+<p align="center">
+  <img src="./images/howto/flip-feature-flag_3.png" alt="Flip feature flag 3" width="500">
+</p>
+
+4. Click `Save new version` button and `Start deployment` button.
+
+5. Select deployment method and deploy.
+
+6. Check `{backend_url}/feature-flags` endpoint on backend application.
 
 ---
 
 ## Add new feature flag
 
-Instructions to add a new feature flag.
+1. Add a new feature flag key and value (True/False) to https://github.com/IGVF-DACC/igvfd/blob/dev/cdk/infrastructure/config.py for a specific environment:
+
+<p align="center">
+  <img src="./images/howto/add-new-feature-flag_1.png" alt="Add new feature flag 1" width="500">
+</p>
+
+2. Make sure all flags in the config are set to desired state for next flag deployment (adding or changing any flag in the config will cause a new deployment of the flags, overwritting any flags toggled in the console).
+
+3. Commit code and push.
 
 ---
 
