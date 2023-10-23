@@ -110,13 +110,41 @@ Guide on triggering the release pipeline.
 
 ## Check Opensearch logs
 
-Guide to check Opensearch logs.
+1. Find Opensearch cluster in Opensearch console (see #2 for checking tags if name is obscure):
 
+<p align="center">
+  <img src="./images/howto/check-opensearch-logs_1.png" alt="Check opensearch logs 1" width="500">
+</p>
+
+2. Click on `Tags` tab to ensure cluster corresponds to correct environment:
+
+<p align="center">
+  <img src="./images/howto/check-opensearch-logs_2.png" alt="Check opensearch logs 2" width="500">
+</p>
+
+3. Click on `Cluster health` and `Instance health` tabs to check metrics:
+
+<p align="center">
+  <img src="./images/howto/check-opensearch-logs_3.png" alt="Check opensearch logs 3" width="500">
+</p>
+
+4. Click on `Logs` tab to view logs:
+
+<p align="center">
+  <img src="./images/howto/check-opensearch-logs_4.png" alt="Check opensearch logs 4" width="500">
+</p>
 ---
 
 ## Check metrics
 
-Steps to check various metrics.
+- See monitoring section of [Check Postgres logs](#check-postgres-logs) for Postgres metrics
+- See monitoring section of [Check Opensearch logs](#check-opensearch-logs) for Opensearch metrics
+
+For ECS Fargate:
+
+1. Find cluster in ECS console.
+2. Click on service name.
+3. Look at `Health and metrics` tab for CPU and memory utilzation.
 
 ---
 
