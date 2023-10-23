@@ -144,7 +144,7 @@ For ECS Fargate:
 
 1. Find cluster in ECS console.
 2. Click on service name.
-3. Look at `Health and metrics` tab for CPU and memory utilzation.
+3. Look at `Health and metrics` tab for CPU and memory utilization.
 
 ---
 
