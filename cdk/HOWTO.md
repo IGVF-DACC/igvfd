@@ -292,7 +292,7 @@ Steps to trigger reindexing.
 
 ## Connect to Postgres with psql
 
-1. Log into running backend application container using [Log into running container](#log-into-running-container)
+1. Log into running backend application container using [Log into running container](#log-into-running-container).
 
 2. Install `psql` with `# apt-get update && apt-get install postgresql-client`.
 
@@ -304,7 +304,9 @@ Steps to trigger reindexing.
 
 ## Connect to Opensearch
 
-Instructions for connecting to Opensearch.
+1. Log into running backend application container using [Log into running container](#log-into-running-container).
+
+2. Query with cURL or Python client: `# curl -XGET ${OPENSEARCH_URL}/_cat/indices`.
 
 ---
 
@@ -317,12 +319,6 @@ Steps to restore a database snapshot to lower environments.
 ## Swap Opensearch
 
 Instructions for swapping Opensearch.
-
-![Swap Opensearch Diagram](./images/swap-opensearch-diagram.png)
-
-<p align="center">
-  <img src="./images/swap-opensearch-diagram.png" alt="Swap Opensearch Diagram" width="500">
-</p>
 
 ---
 
