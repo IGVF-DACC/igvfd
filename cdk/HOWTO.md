@@ -79,7 +79,37 @@ Steps to check various metrics.
 
 ## Debug indexing and clear dead-letter queue for indexing
 
-Instructions to clear the dead-letter queue for indexing.
+1. Find dead letter queue with messages in SQS console:
+
+<p align="center">
+  <img src="./images/howto/dead-letter-queue_1.png" alt="Debug dead letter queue 1" width="500">
+</p>
+
+2. Click on `Send and receive messages` button:
+
+<p align="center">
+  <img src="./images/howto/dead-letter-queue_2.png" alt="Debug dead letter queue 2" width="500">
+</p>
+
+3. Click on `Poll for messages` button:
+
+<p align="center">
+  <img src="./images/howto/dead-letter-queue_3.png" alt="Debug dead letter queue 3" width="500">
+</p>
+
+4. Open up the message to get the UUID of the object that failed to index:
+
+<p align="center">
+  <img src="./images/howto/dead-letter-queue_4.png" alt="Debug dead letter queue 4" width="500">
+</p>
+
+5. After cause has been investigated and fixed, click on `Start DLQ redrive` and `DLQ redrive` to send the messages back to primary queue for indexing.
+
+<p align="center">
+  <img src="./images/howto/dead-letter-queue_5.png" alt="Debug dead letter queue 5" width="500">
+</p>
+
+6. Monitor DLQ to make sure objects index correctly and messages don't reappear.
 
 ---
 
