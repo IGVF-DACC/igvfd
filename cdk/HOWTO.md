@@ -46,12 +46,6 @@ Guide on triggering the release pipeline.
 
 ---
 
-## Check backend logs
-
-Guide on how to check the backend logs.
-
----
-
 ## Check frontend logs
 
 1. Find cluster in ECS console:
@@ -77,6 +71,12 @@ Guide on how to check the backend logs.
 <p align="center">
   <img src="./images/howto/check-frontend-logs_4.png" alt="Check frontend logs 4" width="500">
 </p>
+
+---
+
+## Check backend logs
+
+1. Follow [Check frontend logs](#check-frontend-logs) for backend cluster and `Backend` service.
 
 ---
 
