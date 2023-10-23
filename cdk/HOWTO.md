@@ -296,9 +296,9 @@ Steps to trigger reindexing.
 
 2. Install `psql` with `# apt-get update && apt-get install postgresql-client`.
 
-3. Create database url with `# export SQLALCHEMY_URL=postgresql://postgres:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
+3. Create database url with `# export SQLALCHEMY_URL=postgresql://postgres:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`.
 
-4. Connect to database with `# psql $SQLALCHEMY_URL`
+4. Connect to database with `# psql $SQLALCHEMY_URL`.
 
 ---
 
