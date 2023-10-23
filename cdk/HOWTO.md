@@ -82,7 +82,29 @@ Guide on triggering the release pipeline.
 
 ## Check Postgres logs
 
-Steps to check Postgres logs.
+1. Find database in RDS console:
+
+<p align="center">
+  <img src="./images/howto/check-postgres-logs_1.png" alt="Check postgres logs 1" width="500">
+</p>
+
+2. Click on `Monitor` tab to view metrics like CPU utilization:
+
+<p align="center">
+  <img src="./images/howto/check-postgres-logs_2.png" alt="Check postgres logs 2" width="500">
+</p>
+
+3. Click on `Logs` tab to and select log to `View`:
+
+<p align="center">
+  <img src="./images/howto/check-postgres-logs_3.png" alt="Check postgres logs 3" width="500">
+</p>
+
+4. Examine logs:
+
+<p align="center">
+  <img src="./images/howto/check-postgres-logs_4.png" alt="Check postgres logs 4" width="500">
+</p>
 
 ---
 
