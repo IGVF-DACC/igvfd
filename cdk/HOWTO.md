@@ -4,8 +4,8 @@
 
 - [Debug release pipeline](#debug-release-pipeline)
 - [Retrigger release pipeline](#retrigger-release-pipeline)
-- [Check backend logs](#check-backend-logs)
 - [Check frontend logs](#check-frontend-logs)
+- [Check backend logs](#check-backend-logs)
 - [Check Postgres logs](#check-postgres-logs)
 - [Check Opensearch logs](#check-opensearch-logs)
 - [Check metrics](#check-metrics)
