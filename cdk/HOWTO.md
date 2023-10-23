@@ -11,8 +11,8 @@
 - [Check metrics](#check-metrics)
 - [Debug indexing and clear dead-letter queue for indexing](#debug-indexing-and-clear-dead-letter-queue-for-indexing)
 - [Log into running container](#log-into-running-container)
-- [Trigger index creation](#trigger-index-creation)
 - [Trigger batch upgrade](#trigger-batch-upgrade)
+- [Trigger index creation](#trigger-index-creation)
 - [Trigger reindexing](#trigger-reindexing)
 - [Flip a feature flag](#flip-a-feature-flag)
 - [Add new feature flag](#add-new-feature-flag)
@@ -230,21 +230,50 @@ aws ecs execute-command \
 
 ---
 
-## Trigger index creation
+## Trigger batch upgrade
 
-Steps to trigger index creation.
+1. Find BatchUpgrade Rule for environment in EventBridge console:
+
+<p align="center">
+  <img src="./images/howto/run-batch-upgrade_1.png" alt="Run batch upgrade 1" width="500">
+</p>
+
+2. Copy event pattern JSON:
+
+<p align="center">
+  <img src="./images/howto/run-batch-upgrade_2.png" alt="Run batch upgrade 2" width="500">
+</p>
+
+3. Go to Event buses in EventBridge console and click `Send events`:
+
+<p align="center">
+  <img src="./images/howto/run-batch-upgrade_3.png" alt="Run batch upgrade 3" width="500">
+</p>
+
+4. Fill in event source and detail type fields from copied JSON. Put empty JSON in event detail:
+
+<p align="center">
+  <img src="./images/howto/run-batch-upgrade_4.png" alt="Run batch upgrade 4" width="500">
+</p>
+
+5. Click `Send` and watch for output in Slack.
+
 
 ---
 
-## Trigger batch upgrade
+## Trigger index creation
 
-Steps to trigger a batch upgrade.
+1. Follow [Trigger batch upgrade](#trigger-batch-upgrade) with UpdateMapping rule.
 
 ---
 
 ## Trigger reindexing
 
-Steps to trigger reindexing.
+1. Log into running backend application container using [Log into running container](#log-into-running-container).
+
+2. Set database URL: `# export SQLALCHEMY_URL=postgresql://postgres:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`.
+
+3. Reindex all: `python src/igvfd/commands/reindex.py config/pyramid/ini/${INI_NAME} --app-name app`.
 
 ---
 
