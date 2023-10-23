@@ -273,7 +273,7 @@ aws ecs execute-command \
 
 2. Set database URL: `# export SQLALCHEMY_URL=postgresql://postgres:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`.
 
-3. Reindex all: `python src/igvfd/commands/reindex.py config/pyramid/ini/${INI_NAME} --app-name app`.
+3. Reindex all: `# python src/igvfd/commands/reindex.py config/pyramid/ini/${INI_NAME} --app-name app`.
 
 4. Check `{backend_url}/indexer-info` for indexing progress.
 
