@@ -32,7 +32,18 @@ Guide on triggering the release pipeline.
 
 ## Retrigger release pipeline
 
-Guide on triggering the release pipeline.
+1. Find pipeline in CodePipeline console:
+
+<p align="center">
+  <img src="./images/howto/retrigger-release-pipeline_1.png" alt="Retrigger release pipeline 1" width="500">
+</p>
+
+2. Click on `Release Change` button:
+
+<p align="center">
+  <img src="./images/howto/retrigger-release-pipeline_2.png" alt="Retrigger release pipeline 2" width="500">
+</p>
+
 
 ---
 
