@@ -76,5 +76,18 @@
             "j-michael-cherry:gRNAs"
         ],
         "description": "A curated set for Cherry lab guide RNAs."
+    },
+    {
+        "award": "HG012012",
+        "lab": "/labs/j-michael-cherry/",
+        "uuid": "d91aaa2b-43ea-41f9-8138-ca8a0e8f0ff4",
+        "file_set_type": "external data for catalog",
+        "accession": "IGVFDS3334DDDA",
+        "status": "released",
+        "notes": "This is a curated set insert for external data for catalog.",
+        "aliases": [
+            "j-michael-cherry:catalog_files"
+        ],
+        "description": "A curated set for catalog files."
     }
 ]

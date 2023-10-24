@@ -56,12 +56,13 @@
             "description": "The category that best describes this curated file set.",
             "type": "string",
             "enum": [
-                "genome",
-                "transcriptome",
                 "elements",
-                "variants",
+                "external data for catalog",
+                "genome",
                 "genes",
-                "guide RNAs"
+                "guide RNAs",
+                "transcriptome",
+                "variants"
             ],
             "submissionExample": {
                 "appscript": "guide RNAs",
