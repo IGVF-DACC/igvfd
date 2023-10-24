@@ -100,7 +100,7 @@
   <img src="./images/howto/check-postgres-logs_2.png" alt="Check postgres logs 2" width="500">
 </p>
 
-3. Click on `Logs` tab to and select log to `View`:
+3. Click on `Logs` tab and select log to `View`:
 
 <p align="center">
   <img src="./images/howto/check-postgres-logs_3.png" alt="Check postgres logs 3" width="500">
