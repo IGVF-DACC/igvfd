@@ -40,7 +40,7 @@ class FileSet(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('files', include=['@id', 'accession', 'aliases', 'content_type']),
+        Path('files', include=['@id', 'accession', 'aliases', 'content_type', 'file_format']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
         Path('donors', include=['@id', 'accession', 'aliases', 'taxa']),
         Path('samples', include=['@id', 'accession', 'aliases',
