@@ -18,7 +18,10 @@
         "aliases": [
             "igvf-dacc:GRCh38.p14_assembly"
         ],
-        "description": "Genome assembly GRCh38.p14."
+        "description": "Genome assembly GRCh38.p14.",
+        "samples": [
+            "igvf:pooled_tissue"
+        ]
     },
     {
         "award": "1UM1HG012053-01",
@@ -26,7 +29,7 @@
         "uuid": "7c7c2dbb-10b4-4a62-a9d3-37ce57755a26",
         "file_set_type": "transcriptome",
         "accession": "IGVFDS1111BBBB",
-        "status": "in progress",
+        "status": "released",
         "taxa": "Homo sapiens",
         "documents": [
             "/documents/igvf:characterization_immunoblot_insert/"
@@ -46,7 +49,7 @@
         "uuid": "3d9b4df4-defb-4f47-8bf5-b18e09506e66",
         "file_set_type": "variants",
         "accession": "IGVFDS2222CCCC",
-        "status": "in progress",
+        "status": "released",
         "taxa": "Mus musculus",
         "documents": [
             "/documents/igvf:characterization_FACS_insert/"

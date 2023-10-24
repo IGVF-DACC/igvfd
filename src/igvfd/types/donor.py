@@ -26,7 +26,7 @@ class Donor(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('phenotypic_features.feature', include=['@id', 'feature', 'term_name'])
+        Path('phenotypic_features.feature', include=['@id', 'feature', 'term_name', 'quantity', 'quantity_units'])
     ]
 
 

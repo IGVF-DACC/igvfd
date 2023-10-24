@@ -76,6 +76,9 @@
         "file_set_type",
         "lab.title",
         "summary",
+        "samples.summary",
+        "samples.sample_terms.term_name",
+        "samples.targeted_sample_term.term_name",
         "taxa"
     ],
     "exact_searchable_fields": [

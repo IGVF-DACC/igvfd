@@ -232,7 +232,8 @@
         "file_set_type",
         "lab.title",
         "samples.summary",
-        "samples.sample_terms",
+        "samples.sample_terms.term_name",
+        "samples.targeted_sample_term.term_name",
         "summary"
     ],
     "exact_searchable_fields": [
