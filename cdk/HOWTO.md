@@ -293,7 +293,7 @@ aws ecs execute-command \
   <img src="./images/howto/flip-feature-flag_2.png" alt="Flip feature flag 2" width="500">
 </p>
 
-3. Toggle desired flag.
+3. Toggle desired flag:
 
 <p align="center">
   <img src="./images/howto/flip-feature-flag_3.png" alt="Flip feature flag 3" width="500">
