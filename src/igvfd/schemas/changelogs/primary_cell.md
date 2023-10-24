@@ -1,5 +1,10 @@
 ## Changelog for *`primary_cell.json`*
 
+### Schema version 16
+
+* Rename `sorted_fraction` to `sorted_from`.
+* Rename `sorted_fraction_detail` to `sorted_from_detail`.
+
 ### Minor changes since schema version 15
 
 * Add `construct_library_sets`, `moi`, `nucleic_acid_delivery`, `time_post_library_delivery`, and `time_post_library_delivery_units`.
