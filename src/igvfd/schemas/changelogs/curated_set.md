@@ -4,7 +4,7 @@
 
 * Rename `assembly` to `assemblies`.
 * Rename `transcriptome_annotation` to `transcriptome_annotations`.
-* Add `external data for catalog` to the enum list of `file_set_type`.
+* Expand `file_set_type` enum list to include `external data for catalog`.
 
 ### Schema version 5
 
