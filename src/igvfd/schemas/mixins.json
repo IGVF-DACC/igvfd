@@ -421,5 +421,26 @@
                 "igvf_utils": "GENCODE 40"
             }
         }
+    },
+    "file_format_type": {
+        "file_format_type": {
+            "title": "File Format Type",
+            "description": "The subtype of bed files.",
+            "type": "string",
+            "enum": [
+                "bed12",
+                "bed3",
+                "bed3+",
+                "bed5",
+                "bed6",
+                "bed6+",
+                "bed9",
+                "bed9+"
+            ],
+            "submissionExample": {
+                "appscript": "bed3",
+                "igvf_utils": "bed3"
+            }
+        }
     }
 }

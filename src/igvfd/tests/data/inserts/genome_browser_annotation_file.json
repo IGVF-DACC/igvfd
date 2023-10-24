@@ -10,6 +10,7 @@
         "status": "released",
         "md5sum": "3d8b17dea86105dd96c182c0a91c3156",
         "file_format": "bigBed",
+        "file_format_type": "bed3",
         "content_type": "peaks",
         "submitted_file_name": "/Users/igvf/igvf_files/peaks_01.bigBed",
         "file_size": 9828031,

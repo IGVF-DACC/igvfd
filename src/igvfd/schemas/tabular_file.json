@@ -37,6 +37,9 @@
         },
         {
             "$ref": "mixins.json#/transcriptome_annotation"
+        },
+        {
+            "$ref": "mixins.json#/file_format_type"
         }
     ],
     "dependentSchemas": {
@@ -94,6 +97,21 @@
                     }
                 }
             ]
+        },
+        "file_format": {
+            "comment": "Bed files must specify their file format type.",
+            "if": {
+                "properties": {
+                    "file_format": {
+                        "const": "bed"
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "file_format_type"
+                ]
+            }
         }
     },
     "type": "object",
