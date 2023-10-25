@@ -2,6 +2,10 @@
 
 ### Schema version 5
 
+* Enable submission of GENCODE, ENSEMBL, and GRC database references to `dbxrefs`.
+
+### Schema version 5
+
 * Add `file_format_type`.
 
 ### Minor changes since schema version 4

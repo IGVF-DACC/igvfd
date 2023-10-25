@@ -22,10 +22,10 @@ def signal_file(testapp, lab, award, analysis_set_with_sample, reference_file):
 
 
 @pytest.fixture
-def signal_file_v2(signal_file):
+def signal_file_v1(signal_file):
     item = signal_file.copy()
     item.update({
-        'schema_version': '2',
+        'schema_version': '1',
         'dbxrefs': ['']
     })
     return item

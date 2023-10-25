@@ -21,10 +21,10 @@ def matrix_file(testapp, lab, award, analysis_set_with_sample, reference_file):
 
 
 @pytest.fixture
-def matrix_file_v2(matrix_file):
+def matrix_file_v1(matrix_file):
     item = matrix_file.copy()
     item.update({
-        'schema_version': '2',
+        'schema_version': '1',
         'dbxrefs': ['']
     })
     return item

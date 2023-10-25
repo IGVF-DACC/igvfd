@@ -15,10 +15,10 @@ def configuration_file_seqspec(testapp, lab, award, measurement_set):
 
 
 @pytest.fixture
-def configuration_file_v2(configuration_file):
-    item = configuration_file.copy()
+def configuration_file_v1(configuration_file_seqspec):
+    item = configuration_file_seqspec.copy()
     item.update({
-        'schema_version': '2',
+        'schema_version': '1',
         'dbxrefs': ['']
     })
     return item

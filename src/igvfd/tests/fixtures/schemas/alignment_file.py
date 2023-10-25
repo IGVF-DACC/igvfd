@@ -21,10 +21,10 @@ def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_file
 
 
 @pytest.fixture
-def alignment_file_v2(alignment_file):
+def alignment_file_v1(alignment_file):
     item = alignment_file.copy()
     item.update({
-        'schema_version': '2',
+        'schema_version': '1',
         'dbxrefs': ['']
     })
     return item
