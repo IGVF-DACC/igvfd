@@ -19,3 +19,13 @@ def signal_file(testapp, lab, award, analysis_set_with_sample, reference_file):
         'filtered': False
     }
     return testapp.post_json('/signal_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def signal_file_v2(signal_file):
+    item = signal_file.copy()
+    item.update({
+        'schema_version': '2',
+        'dbxrefs': ['']
+    })
+    return item

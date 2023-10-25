@@ -18,3 +18,13 @@ def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_file
         'filtered': False
     }
     return testapp.post_json('/alignment_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def alignment_file_v2(alignment_file):
+    item = alignment_file.copy()
+    item.update({
+        'schema_version': '2',
+        'dbxrefs': ['']
+    })
+    return item

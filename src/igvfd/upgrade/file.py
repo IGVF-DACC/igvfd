@@ -68,3 +68,13 @@ def reference_file_4_5(value, system):
         notes += f' The file_format_type of this bed file was automatically set to bed9+.'
     if notes != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '5', '6')
+@upgrade_step('matrix_file', '1', '2')
+@upgrade_step('signal_file', '1', '2')
+@upgrade_step('configuration_file', '1', '2')
+@upgrade_step('alignment_file', '1', '2')
+def file_4_5(value, system):
+    if 'dbxrefs' in value:
+        del value['dbxrefs']
