@@ -361,7 +361,7 @@ Steps to restore a database snapshot to lower environments.
   <img src="./images/howto/swap-opensearch_1.png" alt="Swap Opensearch 1" width="500">
 </p>
 
-2. Commit, push, and deploy changes through all environments (dev, staging, sandbox prod). For each environment:
+2. Commit, push, and deploy changes through all environments (dev, staging, sandbox, prod). For each environment:
 
    a. Index everything into the new cluster with [Trigger reindexing](#trigger-reindexing).
 
@@ -387,7 +387,7 @@ Steps to restore a database snapshot to lower environments.
   <img src="./images/howto/swap-opensearch_3.png" alt="Swap Opensearch 3" width="500">
 </p>
 
-6. Commit, push, and deploy changes through all environments (dev, staging, sandbox prod). For each environment:
+6. Commit, push, and deploy changes through all environments (dev, staging, sandbox, prod). For each environment:
 
    a. Check that old cluster is gone.
 
