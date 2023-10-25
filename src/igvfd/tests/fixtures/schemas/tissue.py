@@ -188,8 +188,8 @@ def biosample_sorted_child(
         'donors': [human_donor['@id']],
         'sample_terms': [sample_term_adrenal_gland['@id']],
         'sources': [source['@id']],
-        'sorted_fraction': tissue_unsorted_parent['@id'],
-        'sorted_fraction_detail': 'FACS bin 0-10% expression of FEN',
+        'sorted_from': tissue_unsorted_parent['@id'],
+        'sorted_from_detail': 'FACS bin 0-10% expression of FEN',
         'award': award['@id'],
         'lab': lab['@id'],
         'nih_institutional_certification': 'NIC000ABCD'

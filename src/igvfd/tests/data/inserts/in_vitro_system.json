@@ -135,8 +135,8 @@
             "ENCODE"
         ],
         "cellular_sub_pool": "8A",
-        "sorted_fraction": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
-        "sorted_fraction_detail": "test insert description",
+        "sorted_from": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
+        "sorted_from_detail": "test insert description",
         "virtual": false
     },
     {
@@ -189,8 +189,8 @@
             "ENCODE"
         ],
         "cellular_sub_pool": "SS-PKR_1",
-        "sorted_fraction": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
-        "sorted_fraction_detail": "test insert description",
+        "sorted_from": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
+        "sorted_from_detail": "test insert description",
         "virtual": false
     }
 ]

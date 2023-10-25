@@ -151,7 +151,7 @@ def test_whole_organism_upgrade_17_18(upgrader, whole_organism_v17_no_units, who
 
 def test_whole_organism_upgrade_18_19(upgrader, whole_organism_v18):
     sorted_sample = whole_organism_v18['sorted_fraction']
-    sorted_sample_detail = whole_organism_v18['sorted_fraction']
+    sorted_sample_detail = whole_organism_v18['sorted_fraction_detail']
     value = upgrader.upgrade('whole_organism', whole_organism_v18, current_version='18', target_version='19')
     assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
     assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail

@@ -123,7 +123,7 @@ def test_tissue_upgrade_14_15(upgrader, tissue_v14_no_units, tissue_v14_no_amoun
 
 def test_tissue_upgrade_15_16(upgrader, tissue_v15):
     sorted_sample = tissue_v15['sorted_fraction']
-    sorted_sample_detail = tissue_v15['sorted_fraction']
+    sorted_sample_detail = tissue_v15['sorted_fraction_detail']
     value = upgrader.upgrade('tissue', tissue_v15, current_version='15', target_version='16')
     assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
     assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail

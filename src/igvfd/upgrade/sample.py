@@ -344,7 +344,7 @@ def sample_14_15(value, system):
 @upgrade_step('technical_sample', '9', '10')
 @upgrade_step('whole_organism', '18', '19')
 @upgrade_step('multiplexed_sample', '4', '5')
-def sample_13_14(value, system):
+def sample_15_16(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1199
     if 'sorted_fraction' in value:
         value['sorted_from'] = value['sorted_fraction']

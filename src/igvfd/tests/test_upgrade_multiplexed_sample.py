@@ -28,7 +28,7 @@ def test_multiplexed_sample_3_4(upgrader, multiplexed_sample_v3_no_units, multip
 
 def test_multiplexed_sample_upgrade_4_5(upgrader, multiplexed_sample_v4):
     sorted_sample = multiplexed_sample_v4['sorted_fraction']
-    sorted_sample_detail = multiplexed_sample_v4['sorted_fraction']
+    sorted_sample_detail = multiplexed_sample_v4['sorted_fraction_detail']
     value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v4, current_version='4', target_version='5')
     assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
     assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail

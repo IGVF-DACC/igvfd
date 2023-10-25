@@ -77,19 +77,19 @@ def test_part_of_primary_cell(primary_cell, primary_cell_part_of, in_vitro_diffe
     assert res.status_code == 200
 
 
-def test_sorted_fraction_detail_dependency(testapp, primary_cell):
+def test_sorted_from_detail_dependency(testapp, primary_cell):
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'sorted_fraction': primary_cell['@id']}, expect_errors=True)
+        {'sorted_from': primary_cell['@id']}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'sorted_fraction_detail': 'I am a sorted fraction detail.'}, expect_errors=True)
+        {'sorted_from_detail': 'I am a sorted fraction detail.'}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         primary_cell['@id'],
-        {'sorted_fraction': primary_cell['@id'],
-         'sorted_fraction_detail': 'I am a sorted fraction detail.'})
+        {'sorted_from': primary_cell['@id'],
+         'sorted_from_detail': 'I am a sorted fraction detail.'})
     assert res.status_code == 200
 
 

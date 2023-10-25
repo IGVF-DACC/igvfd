@@ -104,3 +104,14 @@ def technical_sample_v8_no_amount(technical_sample):
         'starting_amount_units': 'g'
     })
     return item
+
+
+@pytest.fixture
+def technical_sample_v9(technical_sample, in_vitro_differentiated_cell):
+    item = technical_sample.copy()
+    item.update({
+        'schema_version': '9',
+        'sorted_fraction': in_vitro_differentiated_cell['@id'],
+        'sorted_fraction_detail': 'This is a detail about the sorting.'
+    })
+    return item

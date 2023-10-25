@@ -9,21 +9,21 @@ from .formatter import (
 
 
 @audit_checker('Sample', frame='object?skip_calculated=true')
-def audit_sample_sorted_fraction_parent_child_check(value, system):
+def audit_sample_sorted_from_parent_child_check(value, system):
     '''
-        audit_detail: Samples that are a sorted_fraction of a parent sample are expected to share most of the parent's metadata properties.
-        audit_category: inconsistent sorted fraction metadata
+        audit_detail: Samples that are sorted from a parent sample are expected to share most of the parent's metadata properties.
+        audit_category: inconsistent sorted_from metadata
         audit_levels: ERROR
     '''
-    if 'sorted_fraction' in value:
+    if 'sorted_from' in value:
         error_keys = []
         prop_errors = ''
         value_id = system.get('path')
-        parent_id = value.get('sorted_fraction')
+        parent_id = value.get('sorted_from')
         parent = system.get('request').embed(parent_id + '@@object?skip_calculated=true')
         skip_keys = ['accession', 'alternate_accessions', 'aliases', 'audit', 'creation_timestamp', 'date_obtained',
                      'schema_version', 'starting_amount', 'starting_amount_units', 'submitted_by', 'description',
-                     'sorted_fraction', 'sorted_fraction_detail', 'revoke_detail', 'notes', 'submitter_comment',
+                     'sorted_from', 'sorted_from_detail', 'revoke_detail', 'notes', 'submitter_comment',
                      'documents', 'url', 'dbxrefs', 'pooled_from', 'part_of', 'originated_from']
         all_keys = parent.keys() | value.keys()
         keys_to_check = [k for k in all_keys if k not in skip_keys]
@@ -37,7 +37,7 @@ def audit_sample_sorted_fraction_parent_child_check(value, system):
             f'its associated parent sample {audit_link(path_to_text(parent_id), parent_id)}.'
         )
         if prop_errors != '':
-            yield AuditFailure('inconsistent sorted fraction metadata', detail, level='ERROR')
+            yield AuditFailure('inconsistent sorted_from metadata', detail, level='ERROR')
 
 
 @audit_checker('Sample', frame='object')
@@ -76,7 +76,7 @@ def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
     links_to_check = [item for item in [
         value.get('part_of', None),
         value.get('originated_from', None),
-        value.get('sorted_fraction', None),
+        value.get('sorted_from', None),
     ] if item is not None]
     links_to_check.extend(value.get('pooled_from', []))
     for linked_sample in links_to_check:

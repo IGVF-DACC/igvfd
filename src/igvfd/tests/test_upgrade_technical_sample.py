@@ -67,7 +67,7 @@ def test_technical_sample_8_9(upgrader, technical_sample_v8_no_units, technical_
 
 def test_technical_sample_upgrade_9_10(upgrader, technical_sample_v9):
     sorted_sample = technical_sample_v9['sorted_fraction']
-    sorted_sample_detail = technical_sample_v9['sorted_fraction']
+    sorted_sample_detail = technical_sample_v9['sorted_fraction_detail']
     value = upgrader.upgrade('technical_sample', technical_sample_v9, current_version='9', target_version='10')
     assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
     assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail
