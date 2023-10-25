@@ -16,7 +16,10 @@
         "upload_status": "file not found",
         "assembly": "GRCh38",
         "source_url": "https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000001405.26/",
-        "file_set": "igvf:basic_analysis_set"
+        "file_set": "igvf:basic_analysis_set",
+        "dbxrefs": [
+            "ENSEMBL:ENSG00000101126"
+        ]
     },
     {
         "uuid": "afa2362e-9488-4d8e-87e5-3d46f46f2166",
@@ -37,7 +40,10 @@
         "file_size": 9640,
         "upload_status": "invalidated",
         "validation_error_detail": "Explanation of why this file did not pass validation.",
-        "file_set": "igvf:analysis_set_with_input"
+        "file_set": "igvf:analysis_set_with_input",
+        "dbxrefs": [
+            "GRC:GCA_000001405.29_GRCh38.p14"
+        ]
     },
     {
         "uuid": "aaee72dc-e847-4710-b9ee-fbf3fbb5db2c",
@@ -52,7 +58,10 @@
         ],
         "file_set": "igvf:analysis_set_with_input",
         "assembly": "GRCh38",
-        "transcriptome_annotation": "GENCODE 40"
+        "transcriptome_annotation": "GENCODE 40",
+        "dbxrefs": [
+            "GENCODE:Release 40"
+        ]
     },
     {
         "uuid": "e29019cc-c39e-0e6e-b9ee-fbf3376ea128",
