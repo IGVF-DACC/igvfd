@@ -24,3 +24,12 @@ def test_multiplexed_sample_3_4(upgrader, multiplexed_sample_v3_no_units, multip
                              current_version='3', target_version='4')
     assert 'starting_amount' in value and value['starting_amount'] == 0
     assert value['schema_version'] == '4'
+
+
+def test_multiplexed_sample_upgrade_4_5(upgrader, multiplexed_sample_v4):
+    sorted_sample = multiplexed_sample_v4['sorted_fraction']
+    sorted_sample_detail = multiplexed_sample_v4['sorted_fraction']
+    value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v4, current_version='4', target_version='5')
+    assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
+    assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail
+    assert value['schema_version'] == '5'

@@ -250,3 +250,14 @@ def whole_organism_v17_no_amount(whole_organism):
         'starting_amount_units': 'g'
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v18(whole_organism, in_vitro_differentiated_cell):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '15',
+        'sorted_fraction': in_vitro_differentiated_cell['@id'],
+        'sorted_fraction_detail': 'This is a detail about the sorting.'
+    })
+    return item

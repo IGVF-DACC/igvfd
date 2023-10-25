@@ -260,3 +260,14 @@ def primary_cell_v14_no_amount(primary_cell):
         'starting_amount_units': 'g'
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v15(primary_cell, in_vitro_differentiated_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '15',
+        'sorted_fraction': in_vitro_differentiated_cell['@id'],
+        'sorted_fraction_detail': 'This is a detail about the sorting.'
+    })
+    return item

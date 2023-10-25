@@ -252,3 +252,14 @@ def tissue_v14_no_amount(tissue):
         'starting_amount_units': 'g'
     })
     return item
+
+
+@pytest.fixture
+def tissue_v15(tissue, in_vitro_differentiated_cell):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '15',
+        'sorted_fraction': in_vitro_differentiated_cell['@id'],
+        'sorted_fraction_detail': 'This is a detail about the sorting.'
+    })
+    return item

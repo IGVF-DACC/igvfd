@@ -208,3 +208,14 @@ def in_vitro_system_v13_no_amount(in_vitro_cell_line):
         'starting_amount_units': 'g'
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v14(in_vitro_cell_line, in_vitro_differentiated_cell):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '14',
+        'sorted_fraction': in_vitro_differentiated_cell['@id'],
+        'sorted_fraction_detail': 'This is a detail about the sorting.'
+    })
+    return item
