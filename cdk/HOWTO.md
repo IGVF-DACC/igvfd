@@ -349,7 +349,50 @@ Steps to restore a database snapshot to lower environments.
 
 ## Swap Opensearch
 
-Instructions for swapping Opensearch.
+(Try swapping on demo instance first.)
+
+1. Specify a new Opensearch cluster in https://github.com/IGVF-DACC/igvfd/blob/dev/cdk/infrastructure/config.py for a specific environment:
+
+   a. Use a unique `construct_id` name (e.g. `Opensearch27`).
+
+   b. Update the `backend` config to `write_to_opensearch_named` with the new `construct_id` name  (e.g. `Opensearch27`).
+
+<p align="center">
+  <img src="./images/howto/swap-opensearch_1.png" alt="Swap Opensearch 1" width="500">
+</p>
+
+2. Commit, push, and deploy changes through all environments (dev, staging, sandbox prod). For each environment:
+
+   a. Index everything into the new cluster with [Trigger reindexing](#trigger-reindexing).
+
+   b. Wait for indexing to finish (monitor indexing progress by number of documents metric in [Check Opensearch logs](#check-opensearch-logs)).
+
+   c. Promote change to next environment and repeat (a) and (b).
+
+3. Switch to reading from new cluster:
+
+<p align="center">
+  <img src="./images/howto/swap-opensearch_2.png" alt="Swap Opensearch 2" width="500">
+</p>
+
+4. Commit, push, and deploy changes through all environments (dev, staging, sandbox prod). For each environment:
+
+   a. Make sure application is reading from new cluster (search results show up).
+   b. Promote change to next environment.
+
+5. Delete old cluster in config.py:
+
+<p align="center">
+  <img src="./images/howto/swap-opensearch_3.png" alt="Swap Opensearch 3" width="500">
+</p>
+
+6. Commit, push, and deploy changes through all environments (dev, staging, sandbox prod). For each environment:
+
+   a. Check that old cluster is gone.
+
+   b. Check that application still serving search results from new cluster (search results show up).
+
+   c. Promote change to next environment.
 
 ---
 
