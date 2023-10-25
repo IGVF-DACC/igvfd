@@ -363,7 +363,7 @@ Steps to restore a database snapshot to lower environments.
 
 2. Commit, push, and deploy changes through all environments (dev, staging, sandbox, prod). For each environment:
 
-   a. Index everything into the new cluster with [Trigger reindexing](#trigger-reindexing).
+   a. Index everything into the new cluster with Trigger index creation](#trigger-index-creation) and [Trigger reindexing](#trigger-reindexing).
 
    b. Wait for indexing to finish (monitor indexing progress by number of documents metric in [Check Opensearch logs](#check-opensearch-logs)).
 
