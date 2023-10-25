@@ -19,6 +19,9 @@ def analysis_step_v1(analysis_step):
     item = analysis_step.copy()
     item.update({
         'schema_version': '1',
-        'parents': []
+        'parents': [],
+        'input_content_types': [],
+        'output_content_types': [],
+        'analysis_step_types': [],
     })
     return item
