@@ -379,7 +379,7 @@ Steps to restore a database snapshot to lower environments.
 
    a. Make sure application is reading from new cluster (search results show up).
 
-   b. Promote change to next environment.
+   b. Promote change to next environment and repeat (a).
 
 5. Delete old cluster in config.py:
 
@@ -393,7 +393,7 @@ Steps to restore a database snapshot to lower environments.
 
    b. Check that application still serving search results from new cluster (search results show up).
 
-   c. Promote change to next environment.
+   c. Promote change to next environment and repeat (a) and (b).
 
 ---
 
