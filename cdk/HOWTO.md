@@ -347,7 +347,7 @@ aws ecs execute-command \
 
 2. Update `postgres` config in https://github.com/IGVF-DACC/igvfd/blob/dev/cdk/infrastructure/config.py for a specific environment with a new `snapshot_arn` or `snapshot_source_db_identifier` (or leave the same if you want latest snapshot from same source).
 
-3. Commit code and push.
+3. Commit code and push or, if code hasn't changed, trigger new deployment manually with [Retrigger release pipeline](#retrigger-release-pipeline).
 
 ---
 
