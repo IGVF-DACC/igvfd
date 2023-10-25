@@ -391,7 +391,7 @@ Steps to restore a database snapshot to lower environments.
 
    a. Check that old cluster is gone.
 
-   b. Check that application still serving search results from new cluster (search results show up).
+   b. Check that application is still serving search results from new cluster (search results show up).
 
    c. Promote change to next environment and repeat (a) and (b).
 
