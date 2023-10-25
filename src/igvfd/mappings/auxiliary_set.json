@@ -1,6 +1,6 @@
 {
-    "hash": "792f705e038d12ed65c0151c55294f84",
-    "index_name": "auxiliary_set_792f705e",
+    "hash": "2d9538fe17fe0f9c6c8cbc850c85a606",
+    "index_name": "auxiliary_set_2d9538fe",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1454,10 +1454,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {

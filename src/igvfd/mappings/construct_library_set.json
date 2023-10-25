@@ -1,6 +1,6 @@
 {
-    "hash": "bb4d8ee9e1317a67ac8563573bbf10d4",
-    "index_name": "construct_library_set_bb4d8ee9",
+    "hash": "28d3df508390b83a176a174f4bcae092",
+    "index_name": "construct_library_set_28d3df50",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -338,10 +338,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {

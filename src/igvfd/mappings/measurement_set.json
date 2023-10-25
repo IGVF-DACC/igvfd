@@ -1,6 +1,6 @@
 {
-    "hash": "fc907e5073b69f7c404e1bb6b9df37b1",
-    "index_name": "measurement_set_fc907e50",
+    "hash": "46927945d143bd91bae7c9a279775b90",
+    "index_name": "measurement_set_46927945",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2350,10 +2350,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {

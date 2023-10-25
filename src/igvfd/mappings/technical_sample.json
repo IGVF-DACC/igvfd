@@ -1,6 +1,6 @@
 {
-    "hash": "5026ed00e221c997ad1006b0d439848e",
-    "index_name": "technical_sample_5026ed00",
+    "hash": "a0f412cacf345545a6e8008d48a81cd7",
+    "index_name": "technical_sample_a0f412ca",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -789,10 +789,10 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -957,7 +957,7 @@
                     "schema_version": {
                         "type": "keyword"
                     },
-                    "sorted_fraction": {
+                    "sorted_from": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -1133,10 +1133,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1226,7 +1226,7 @@
                         },
                         "type": "object"
                     },
-                    "sorted_fraction_detail": {
+                    "sorted_from_detail": {
                         "type": "keyword"
                     },
                     "sources": {
