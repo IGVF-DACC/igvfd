@@ -375,7 +375,7 @@ Steps to restore a database snapshot to lower environments.
   <img src="./images/howto/swap-opensearch_2.png" alt="Swap Opensearch 2" width="500">
 </p>
 
-4. Commit, push, and deploy changes through all environments (dev, staging, sandbox prod). For each environment:
+4. Commit, push, and deploy changes through all environments (dev, staging, sandbox, prod). For each environment:
 
    a. Make sure application is reading from new cluster (search results show up).
 
