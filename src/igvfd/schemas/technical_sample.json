@@ -68,6 +68,18 @@
                 "igvf_utils": "organic"
             }
         },
+        "taxa": {
+            "title": "Taxa",
+            "type": "string",
+            "enum": [
+                "Saccharomyces cerevisiae",
+                "Homo sapiens"
+            ],
+            "submissionExample": {
+                "appscript": "Saccharomyces cerevisiae",
+                "igvf_utils": "Saccharomyces cerevisiae"
+            }
+        },
         "sample_terms": {
             "title": "Sample Terms",
             "description": "Ontology terms identifying a technical sample.",
@@ -89,7 +101,8 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "sample_material"
+        "sample_material",
+        "taxa"
     ],
     "exact_searchable_fields": [
         "@type",

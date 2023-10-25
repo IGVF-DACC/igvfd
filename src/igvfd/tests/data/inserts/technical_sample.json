@@ -68,5 +68,26 @@
         ],
         "description": "The technical sample was archived due to poor quality.",
         "virtual": false
+    },
+    {
+        "uuid": "f40930eb-5e7b-402a-8941-9920b06d2bc9",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:yeast two hybrid"
+        ],
+        "status": "released",
+        "notes": "This is a note.",
+        "sample_material": "organic",
+        "taxa": "Saccharomyces cerevisiae",
+        "sample_terms": [
+            "7cd887f0-c065-4380-94f8-e0a9d3b5e1c4"
+        ],
+        "date_obtained": "2022-04-09",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
+        "description": "A yeast technical sample for 2-hybrid assays.",
+        "virtual": false
     }
 ]
