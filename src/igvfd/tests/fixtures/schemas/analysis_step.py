@@ -2,8 +2,10 @@ import pytest
 
 
 @pytest.fixture
-def analysis_step(testapp, base_workflow):
+def analysis_step(testapp, base_workflow, other_lab, award):
     item = {
+        'lab': other_lab['@id'],
+        'award': award['@id'],
         'step_label': 'base-analysis-step',
         'title': 'Base Analysis Step',
         'input_content_types': ['reads'],
