@@ -5,6 +5,8 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
+        "lab",
+        "award",
         "title",
         "step_label",
         "analysis_step_types",
@@ -31,7 +33,7 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "2"
+            "default": "3"
         },
         "analysis_step_types": {
             "title": "Analysis Step Types",

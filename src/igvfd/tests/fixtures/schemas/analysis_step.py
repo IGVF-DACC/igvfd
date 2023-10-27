@@ -25,3 +25,16 @@ def analysis_step_v1(analysis_step):
         'analysis_step_types': [],
     })
     return item
+
+
+@pytest.fixture
+def analysis_step_v2(testapp, base_workflow):
+    item = {
+        'step_label': 'base-analysis-step',
+        'title': 'Base Analysis Step',
+        'input_content_types': ['reads'],
+        'output_content_types': ['alignments'],
+        'analysis_step_types': ['alignment'],
+        'workflow': base_workflow['@id']
+    }
+    return item
