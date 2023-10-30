@@ -108,8 +108,7 @@
                     "properties": {
                         "file_format": {
                             "enum": [
-                                "bed",
-                                "bedpe"
+                                "bed"
                             ]
                         }
                     }
@@ -154,7 +153,6 @@
         "file_format": {
             "enum": [
                 "bed",
-                "bedpe",
                 "csv",
                 "gtf",
                 "tsv",
