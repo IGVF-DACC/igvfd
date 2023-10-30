@@ -454,7 +454,7 @@ class ConstructLibrarySet(FileSet):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('files', include=['@id', 'accession', 'aliases']),
+        Path('files', include=['@id', 'accession', 'aliases', 'content_type', 'file_format']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name']),
         Path('genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
