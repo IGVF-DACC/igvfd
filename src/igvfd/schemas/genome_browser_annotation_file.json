@@ -101,18 +101,34 @@
         },
         "file_format": {
             "comment": "BigBed files must specify their file format type.",
-            "if": {
-                "properties": {
-                    "file_format": {
-                        "const": "bigBed"
+            "oneOf": [
+                {
+                    "required": [
+                        "file_format_type"
+                    ],
+                    "properties": {
+                        "file_format": {
+                            "enum": [
+                                "bigBed"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "file_format_type"
+                        ]
+                    },
+                    "properties": {
+                        "file_format": {
+                            "enum": [
+                                "tabix"
+                            ]
+                        }
                     }
                 }
-            },
-            "then": {
-                "required": [
-                    "file_format_type"
-                ]
-            }
+            ]
         }
     },
     "type": "object",
