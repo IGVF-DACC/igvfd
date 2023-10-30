@@ -1,6 +1,6 @@
 {
-    "hash": "3a2d1d094191f792b2f7bb5b60d94a35",
-    "index_name": "human_genomic_variant_3a2d1d09",
+    "hash": "6f0b1a1a005ac224bcab075e8b4d6432",
+    "index_name": "human_genomic_variant_6f0b1a1a",
     "item_type": "human_genomic_variant",
     "mapping": {
         "dynamic_templates": [
@@ -43,11 +43,6 @@
             {
                 "integers": {
                     "mapping": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -56,14 +51,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
+                "analyzer": "snovault_exact_index_and_search_analyzer",
+                "search_analyzer": "snovault_exact_index_and_search_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_index_analyzer",
-                "search_analyzer": "snovault_search_analyzer",
+                "analyzer": "snovault_fuzzy_index_analyzer",
+                "search_analyzer": "snovault_fuzzy_search_analyzer",
                 "store": false,
                 "type": "text"
             },

@@ -1,6 +1,6 @@
 {
-    "hash": "4062fc2c5c35d135d55aaa1077e1a054",
-    "index_name": "phenotypic_feature_4062fc2c",
+    "hash": "a2ceb7dbac4a63cc859991a2ed2071fc",
+    "index_name": "phenotypic_feature_a2ceb7db",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -43,11 +43,6 @@
             {
                 "integers": {
                     "mapping": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -56,14 +51,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
+                "analyzer": "snovault_exact_index_and_search_analyzer",
+                "search_analyzer": "snovault_exact_index_and_search_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_index_analyzer",
-                "search_analyzer": "snovault_search_analyzer",
+                "analyzer": "snovault_fuzzy_index_analyzer",
+                "search_analyzer": "snovault_fuzzy_search_analyzer",
                 "store": false,
                 "type": "text"
             },

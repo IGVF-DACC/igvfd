@@ -1,6 +1,6 @@
 {
-    "hash": "91033ef14d940aca2f8998af6b3098ff",
-    "index_name": "reference_file_91033ef1",
+    "hash": "badb57ddc9f898fd60084f4d22ad2296",
+    "index_name": "reference_file_badb57dd",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -43,11 +43,6 @@
             {
                 "integers": {
                     "mapping": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -56,14 +51,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
+                "analyzer": "snovault_exact_index_and_search_analyzer",
+                "search_analyzer": "snovault_exact_index_and_search_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_index_analyzer",
-                "search_analyzer": "snovault_search_analyzer",
+                "analyzer": "snovault_fuzzy_index_analyzer",
+                "search_analyzer": "snovault_fuzzy_search_analyzer",
                 "store": false,
                 "type": "text"
             },

@@ -1,6 +1,6 @@
 {
-    "hash": "9c0c17fe71966925c02f25cf7496e5b6",
-    "index_name": "sequence_file_9c0c17fe",
+    "hash": "70c42db1a09734fce5505a85713f5382",
+    "index_name": "sequence_file_70c42db1",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -43,11 +43,6 @@
             {
                 "integers": {
                     "mapping": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -56,14 +51,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
+                "analyzer": "snovault_exact_index_and_search_analyzer",
+                "search_analyzer": "snovault_exact_index_and_search_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_index_analyzer",
-                "search_analyzer": "snovault_search_analyzer",
+                "analyzer": "snovault_fuzzy_index_analyzer",
+                "search_analyzer": "snovault_fuzzy_search_analyzer",
                 "store": false,
                 "type": "text"
             },

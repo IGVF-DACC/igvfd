@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "d289c55f697b9277a22ed5778bb90c2b",
     "index_name": "analysis_step_d289c55f",
+=======
+    "hash": "914662488a3bb4c0df4d2fa851fed046",
+    "index_name": "analysis_step_91466248",
+>>>>>>> 53ace1d3 (Update mapping)
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -43,11 +48,6 @@
             {
                 "integers": {
                     "mapping": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -56,14 +56,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
+                "analyzer": "snovault_exact_index_and_search_analyzer",
+                "search_analyzer": "snovault_exact_index_and_search_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_index_analyzer",
-                "search_analyzer": "snovault_search_analyzer",
+                "analyzer": "snovault_fuzzy_index_analyzer",
+                "search_analyzer": "snovault_fuzzy_search_analyzer",
                 "store": false,
                 "type": "text"
             },
@@ -240,63 +240,7 @@
                         "type": "keyword"
                     },
                     "lab": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "awards": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "institute_label": {
-                                "type": "keyword"
-                            },
-                            "name": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "pi": {
-                                "type": "keyword"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "title": {
-                                "type": "keyword"
-                            },
-                            "url": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
+                        "type": "keyword"
                     },
                     "name": {
                         "type": "keyword"
@@ -308,75 +252,7 @@
                         "type": "keyword"
                     },
                     "parents": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "analysis_step_types": {
-                                "type": "keyword"
-                            },
-                            "award": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "input_content_types": {
-                                "type": "keyword"
-                            },
-                            "lab": {
-                                "type": "keyword"
-                            },
-                            "name": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "output_content_types": {
-                                "type": "keyword"
-                            },
-                            "parents": {
-                                "type": "keyword"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "step_label": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "title": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            },
-                            "workflow": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
+                        "type": "keyword"
                     },
                     "schema_version": {
                         "type": "keyword"

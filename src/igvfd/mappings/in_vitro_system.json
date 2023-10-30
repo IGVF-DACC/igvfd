@@ -1,6 +1,6 @@
 {
-    "hash": "98a9700b088aee42152f259104020d70",
-    "index_name": "in_vitro_system_98a9700b",
+    "hash": "1dedaafce599b68664fd3c19cb5eb967",
+    "index_name": "in_vitro_system_1dedaafc",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -43,11 +43,6 @@
             {
                 "integers": {
                     "mapping": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -56,14 +51,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
+                "analyzer": "snovault_exact_index_and_search_analyzer",
+                "search_analyzer": "snovault_exact_index_and_search_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_index_analyzer",
-                "search_analyzer": "snovault_search_analyzer",
+                "analyzer": "snovault_fuzzy_index_analyzer",
+                "search_analyzer": "snovault_fuzzy_search_analyzer",
                 "store": false,
                 "type": "text"
             },
@@ -1099,10 +1094,10 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "sorted_from": {
+                            "sorted_fraction": {
                                 "type": "keyword"
                             },
-                            "sorted_from_detail": {
+                            "sorted_fraction_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1345,10 +1340,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_from": {
+                            "sorted_fraction": {
                                 "type": "keyword"
                             },
-                            "sorted_from_detail": {
+                            "sorted_fraction_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1548,7 +1543,7 @@
                     "sex": {
                         "type": "keyword"
                     },
-                    "sorted_from": {
+                    "sorted_fraction": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -1724,10 +1719,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_from": {
+                            "sorted_fraction": {
                                 "type": "keyword"
                             },
-                            "sorted_from_detail": {
+                            "sorted_fraction_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1817,7 +1812,7 @@
                         },
                         "type": "object"
                     },
-                    "sorted_from_detail": {
+                    "sorted_fraction_detail": {
                         "type": "keyword"
                     },
                     "sources": {

@@ -1,6 +1,6 @@
 {
-    "hash": "c57694aebce6c935273bf4509f7b5ef5",
-    "index_name": "model_set_c57694ae",
+    "hash": "560df65e42dbef3ee9c74cb3ab25e1d6",
+    "index_name": "model_set_560df65e",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -43,11 +43,6 @@
             {
                 "integers": {
                     "mapping": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -56,14 +51,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
+                "analyzer": "snovault_exact_index_and_search_analyzer",
+                "search_analyzer": "snovault_exact_index_and_search_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_index_analyzer",
-                "search_analyzer": "snovault_search_analyzer",
+                "analyzer": "snovault_fuzzy_index_analyzer",
+                "search_analyzer": "snovault_fuzzy_search_analyzer",
                 "store": false,
                 "type": "text"
             },
@@ -825,9 +820,6 @@
                                 "type": "keyword"
                             },
                             "file_format_specifications": {
-                                "type": "keyword"
-                            },
-                            "file_format_type": {
                                 "type": "keyword"
                             },
                             "file_set": {
@@ -1653,10 +1645,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_from": {
+                            "sorted_fraction": {
                                 "type": "keyword"
                             },
-                            "sorted_from_detail": {
+                            "sorted_fraction_detail": {
                                 "type": "keyword"
                             },
                             "sources": {

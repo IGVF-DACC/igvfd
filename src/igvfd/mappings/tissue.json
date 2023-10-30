@@ -1,6 +1,6 @@
 {
-    "hash": "69f9914a54704b69676e193a9c830e9c",
-    "index_name": "tissue_69f9914a",
+    "hash": "7c43de478a99015272bbbd38a72530bb",
+    "index_name": "tissue_7c43de47",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -43,11 +43,6 @@
             {
                 "integers": {
                     "mapping": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -56,14 +51,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_analyzer",
-                "search_analyzer": "snovault_exact_analyzer",
+                "analyzer": "snovault_exact_index_and_search_analyzer",
+                "search_analyzer": "snovault_exact_index_and_search_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_index_analyzer",
-                "search_analyzer": "snovault_search_analyzer",
+                "analyzer": "snovault_fuzzy_index_analyzer",
+                "search_analyzer": "snovault_fuzzy_search_analyzer",
                 "store": false,
                 "type": "text"
             },
@@ -964,10 +959,10 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "sorted_from": {
+                            "sorted_fraction": {
                                 "type": "keyword"
                             },
-                            "sorted_from_detail": {
+                            "sorted_fraction_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1156,7 +1151,7 @@
                     "sex": {
                         "type": "keyword"
                     },
-                    "sorted_from": {
+                    "sorted_fraction": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -1332,10 +1327,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_from": {
+                            "sorted_fraction": {
                                 "type": "keyword"
                             },
-                            "sorted_from_detail": {
+                            "sorted_fraction_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1425,7 +1420,7 @@
                         },
                         "type": "object"
                     },
-                    "sorted_from_detail": {
+                    "sorted_fraction_detail": {
                         "type": "keyword"
                     },
                     "sources": {
