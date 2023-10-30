@@ -1,5 +1,10 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Schema version 5
+
+* Rename `sorted_fraction` to `sorted_from`.
+* Rename `sorted_fraction_detail` to `sorted_from_detail`.
+
 ### Minor changes since schema version 4
 
 * Add `summary`.

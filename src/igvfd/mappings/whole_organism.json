@@ -1,6 +1,6 @@
 {
-    "hash": "5d82e3a6f6bf28cf19f25eef48925641",
-    "index_name": "whole_organism_5d82e3a6",
+    "hash": "9f6ddef3db3daec753338f5d6353aac5",
+    "index_name": "whole_organism_9f6ddef3",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -961,10 +961,10 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1138,7 +1138,7 @@
                     "sex": {
                         "type": "keyword"
                     },
-                    "sorted_fraction": {
+                    "sorted_from": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -1314,10 +1314,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1407,7 +1407,7 @@
                         },
                         "type": "object"
                     },
-                    "sorted_fraction_detail": {
+                    "sorted_from_detail": {
                         "type": "keyword"
                     },
                     "sources": {

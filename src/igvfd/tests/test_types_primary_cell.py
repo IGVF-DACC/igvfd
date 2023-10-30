@@ -71,8 +71,8 @@ def test_summary(testapp, primary_cell, pooled_from_primary_cell, human_donor, r
             'donors': [rodent_donor['@id'], parent_rodent_donor_2['@id']],
             'treatments': [treatment_protein['@id']],
             'disease_terms': [phenotype_term_myocardial_infarction['@id'], phenotype_term_alzheimers['@id']],
-            'sorted_fraction': pooled_from_primary_cell['@id'],
-            'sorted_fraction_detail': 'some more details about sorting'
+            'sorted_from': pooled_from_primary_cell['@id'],
+            'sorted_from_detail': 'some more details about sorting'
         }
     )
     res = testapp.get(primary_cell['@id'])

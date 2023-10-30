@@ -40,16 +40,16 @@
                 "product_id"
             ]
         },
-        "sorted_fraction": {
-            "comment": "Specification of sorted_fraction requires sorted_fraction_detail.",
+        "sorted_from": {
+            "comment": "Specification of sorted_from requires sorted_from_detail.",
             "required": [
-                "sorted_fraction_detail"
+                "sorted_from_detail"
             ]
         },
-        "sorted_fraction_detail": {
-            "comment": "Specification of sorted_fraction_detail requires sorted_fraction.",
+        "sorted_from_detail": {
+            "comment": "Specification of sorted_from_detail requires sorted_from.",
             "required": [
-                "sorted_fraction"
+                "sorted_from"
             ]
         },
         "starting_amount": {
@@ -155,10 +155,10 @@
                 "igvf_utils": "2020-09-20"
             }
         },
-        "sorted_fraction": {
-            "title": "Sorted Fraction",
+        "sorted_from": {
+            "title": "Sorted From",
             "description": "Links to a larger sample from which this sample was obtained through sorting.",
-            "comment": "The parent sample is expected to have similar properties to its fraction. A sample with sorted_fraction must include sorted_fraction_detail.",
+            "comment": "The parent sample is expected to have similar properties to its fraction. A sample with sorted_from must include sorted_from_detail.",
             "type": "string",
             "linkTo": "Sample",
             "submissionExample": {
@@ -166,10 +166,10 @@
                 "igvf_utils": "TSTSM02881437 or john-doe:tissue01"
             }
         },
-        "sorted_fraction_detail": {
-            "title": "Sorted Fraction Detail",
+        "sorted_from_detail": {
+            "title": "Sorted From Detail",
             "description": "Detail for sample sorted into fractions capturing information about sorting.",
-            "comment": "A sample with sorted_fraction_detail must include sorted_fraction.",
+            "comment": "A sample with sorted_from_detail must include sorted_from.",
             "type": "string",
             "submissionExample": {
                 "appscript": "FACS 10% expression of CTCF-GFP",

@@ -66,8 +66,8 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
             'treatments': [depletion_treatment['@id'], treatment_protein['@id']],
             'targeted_sample_term': sample_term_endothelial_cell['@id'],
             'biomarkers': [biomarker_CD243_absent['@id'], biomarker_CD243_high['@id']],
-            'sorted_fraction': in_vitro_differentiated_cell['@id'],
-            'sorted_fraction_detail': 'some detail about sorting',
+            'sorted_from': in_vitro_differentiated_cell['@id'],
+            'sorted_from_detail': 'some detail about sorting',
             'virtual': True,
             'cellular_sub_pool': 'PKR-456',
         }

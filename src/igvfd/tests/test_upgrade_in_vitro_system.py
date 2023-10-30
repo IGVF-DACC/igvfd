@@ -102,3 +102,12 @@ def test_in_vitro_system_upgrade_13_14(upgrader, in_vitro_system_v13_no_units, i
                              current_version='13', target_version='14')
     assert 'starting_amount' in value and value['starting_amount'] == 0
     assert value['schema_version'] == '14'
+
+
+def test_in_vitro_system_upgrade_14_15(upgrader, in_vitro_system_v14):
+    sorted_sample = in_vitro_system_v14['sorted_fraction']
+    sorted_sample_detail = in_vitro_system_v14['sorted_fraction_detail']
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v14, current_version='14', target_version='15')
+    assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
+    assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail
+    assert value['schema_version'] == '15'

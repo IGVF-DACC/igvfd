@@ -117,3 +117,12 @@ def test_primary_cell_14_15(upgrader, primary_cell_v14_no_units, primary_cell_v1
     value = upgrader.upgrade('primary_cell', primary_cell_v14_no_amount, current_version='14', target_version='15')
     assert 'starting_amount' in value and value['starting_amount'] == 0
     assert value['schema_version'] == '15'
+
+
+def test_primary_cell_upgrade_15_16(upgrader, primary_cell_v15):
+    sorted_sample = primary_cell_v15['sorted_fraction']
+    sorted_sample_detail = primary_cell_v15['sorted_fraction_detail']
+    value = upgrader.upgrade('primary_cell', primary_cell_v15, current_version='15', target_version='16')
+    assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
+    assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail
+    assert value['schema_version'] == '16'

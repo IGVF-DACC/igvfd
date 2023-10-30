@@ -1,17 +1,17 @@
 import pytest
 
 
-def test_audit_sample_sorted_fraction_parent_child_check(
+def test_audit_sample_sorted_from_parent_child_check(
     testapp,
     biosample_sorted_child,
     tissue_unsorted_parent,
     rodent_donor
 ):
-    # A Sample that is a sorted_fraction of a parent sample should
+    # A Sample that is a sorted_from of a parent sample should
     # share most of the parent's metadata properties
     res = testapp.get(biosample_sorted_child['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent sorted fraction metadata'
+        error['category'] == 'inconsistent sorted_from metadata'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -24,7 +24,7 @@ def test_audit_sample_sorted_fraction_parent_child_check(
         {'nih_institutional_certification': 'NIC000ABCD'}
     )
     res = testapp.get(biosample_sorted_child['@id'] + '@@audit')
-    assert 'inconsistent sorted fraction metadata' not in (
+    assert 'inconsistent sorted_from metadata' not in (
         error['category'] for error in res.json['audit'].get('ERROR', [])
     )
 

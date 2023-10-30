@@ -336,3 +336,19 @@ def sample_14_15(value, system):
         notes += f' This sample has been upgraded to have a pmi of 1 since there was no entry. Please update with the appropriate value for pmi.'
     if notes.strip():
         value['notes'] = notes.strip()
+
+
+@upgrade_step('primary_cell', '15', '16')
+@upgrade_step('in_vitro_system', '14', '15')
+@upgrade_step('tissue', '15', '16')
+@upgrade_step('technical_sample', '9', '10')
+@upgrade_step('whole_organism', '18', '19')
+@upgrade_step('multiplexed_sample', '4', '5')
+def sample_15_16(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1199
+    if 'sorted_fraction' in value:
+        value['sorted_from'] = value['sorted_fraction']
+        del value['sorted_fraction']
+    if 'sorted_fraction_detail' in value:
+        value['sorted_from_detail'] = value['sorted_fraction_detail']
+        del value['sorted_fraction_detail']

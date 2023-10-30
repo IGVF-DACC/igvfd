@@ -79,3 +79,14 @@ def multiplexed_sample_v3_no_amount(multiplexed_sample):
         'starting_amount_units': 'g'
     })
     return item
+
+
+@pytest.fixture
+def multiplexed_sample_v4(multiplexed_sample, in_vitro_differentiated_cell):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '4',
+        'sorted_fraction': in_vitro_differentiated_cell['@id'],
+        'sorted_fraction_detail': 'This is a detail about the sorting.'
+    })
+    return item

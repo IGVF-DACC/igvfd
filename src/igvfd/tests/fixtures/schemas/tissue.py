@@ -188,8 +188,8 @@ def biosample_sorted_child(
         'donors': [human_donor['@id']],
         'sample_terms': [sample_term_adrenal_gland['@id']],
         'sources': [source['@id']],
-        'sorted_fraction': tissue_unsorted_parent['@id'],
-        'sorted_fraction_detail': 'FACS bin 0-10% expression of FEN',
+        'sorted_from': tissue_unsorted_parent['@id'],
+        'sorted_from_detail': 'FACS bin 0-10% expression of FEN',
         'award': award['@id'],
         'lab': lab['@id'],
         'nih_institutional_certification': 'NIC000ABCD'
@@ -250,5 +250,16 @@ def tissue_v14_no_amount(tissue):
         'schema_version': '14',
         'pmi_units': 'minute',
         'starting_amount_units': 'g'
+    })
+    return item
+
+
+@pytest.fixture
+def tissue_v15(tissue, in_vitro_differentiated_cell):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '15',
+        'sorted_fraction': in_vitro_differentiated_cell['@id'],
+        'sorted_fraction_detail': 'This is a detail about the sorting.'
     })
     return item
