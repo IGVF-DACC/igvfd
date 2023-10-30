@@ -116,3 +116,13 @@ def sequence_file_v3(sequence_file):
         'mean_read_length': 12345678910
     })
     return item
+
+
+@pytest.fixture
+def sequence_file_v4(sequence_file):
+    item = sequence_file.copy()
+    item.update({
+        'schema_version': '4',
+        'dbxrefs': []
+    })
+    return item

@@ -267,6 +267,7 @@
                 "title": "External identifier",
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
                 "type": "string",
+                "minItems": 1,
                 "pattern": "^(GENCODE|GRC|ENSEMBL):.+$"
             },
             "submissionExample": {
