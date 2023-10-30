@@ -77,4 +77,8 @@ def reference_file_4_5(value, system):
 @upgrade_step('alignment_file', '1', '2')
 def file_4_5(value, system):
     if 'dbxrefs' in value:
-        del value['dbxrefs']
+        new_dbxrefs = [dbxref for dbxref in value['dbxrefs'] if dbxref != '']
+        if new_dbxrefs:
+            value['dbxrefs'] = new_dbxrefs
+        else:
+            del value['dbxrefs']
