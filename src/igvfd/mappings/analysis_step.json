@@ -1,6 +1,6 @@
 {
-    "hash": "68a246f6619e69e2326f5fc7ad42cbe8",
-    "index_name": "analysis_step_68a246f6",
+    "hash": "d289c55f697b9277a22ed5778bb90c2b",
+    "index_name": "analysis_step_d289c55f",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -160,7 +160,75 @@
                         "type": "keyword"
                     },
                     "award": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "component": {
+                                "type": "keyword"
+                            },
+                            "contact_pi": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "end_date": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "pis": {
+                                "type": "keyword"
+                            },
+                            "project": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "start_date": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "title": {
+                                "type": "keyword"
+                            },
+                            "url": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "viewing_group": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "creation_timestamp": {
                         "type": "keyword"
