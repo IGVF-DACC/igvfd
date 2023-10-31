@@ -49,5 +49,11 @@
         "term_name": "definitive endoderm",
         "status": "released",
         "uuid": "eed026e7-4afc-4396-94e7-870f8934b2f2"
+    },
+    {
+        "term_id": "CL:0000000",
+        "term_name": "cell",
+        "status": "released",
+        "uuid": "7cd887f0-c065-4380-94f8-e0a9d3b5e1c4"
     }
 ]

@@ -1,6 +1,6 @@
 {
-    "hash": "53d35cb67569354d963b510978a23b10",
-    "index_name": "technical_sample_53d35cb6",
+    "hash": "8080d899a1366ab0573cb78eda4a94d5",
+    "index_name": "technical_sample_8080d899",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1375,6 +1375,10 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "taxa": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "time_post_library_delivery": {
