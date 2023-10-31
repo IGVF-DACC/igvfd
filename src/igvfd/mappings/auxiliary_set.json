@@ -1,6 +1,6 @@
 {
-    "hash": "2d9538fe17fe0f9c6c8cbc850c85a606",
-    "index_name": "auxiliary_set_2d9538fe",
+    "hash": "54391ab4f08a4131c12aeb68f39fa992",
+    "index_name": "auxiliary_set_54391ab4",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -827,6 +827,9 @@
                                 "type": "keyword"
                             },
                             "file_format_specifications": {
+                                "type": "keyword"
+                            },
+                            "file_format_type": {
                                 "type": "keyword"
                             },
                             "file_set": {

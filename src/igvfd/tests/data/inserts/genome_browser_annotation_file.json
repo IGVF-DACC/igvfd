@@ -1,0 +1,49 @@
+[
+    {
+        "uuid": "f5f0edaa-579e-49a3-b245-e1a10f1b1860",
+        "accession": "IGVFFI0001BGBD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:genome_browser_annotation_file_bigbed"
+        ],
+        "status": "released",
+        "md5sum": "3d8b17dea86105dd96c182c0a91c3156",
+        "file_format": "bigBed",
+        "file_format_type": "bed3",
+        "content_type": "peaks",
+        "submitted_file_name": "/Users/igvf/igvf_files/peaks_01.bigBed",
+        "file_size": 9828031,
+        "upload_status": "file not found",
+        "assembly": "GRCh38",
+        "file_set": "igvf:basic_analysis_set",
+        "derived_from": [
+            "IGVFFI0001PKBD"
+        ]
+    },
+    {
+        "uuid": "20571fef-b9ee-4d8e-0e6e-46f43d6fa247",
+        "accession": "IGVFFI0001TABX",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:genome_browser_annotation_file_tabix"
+        ],
+        "status": "released",
+        "md5sum": "991c30f3e4d38edac91b578ea177791c",
+        "file_format": "tabix",
+        "content_type": "peaks",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/peaks_02.tabix",
+        "file_size": 102340,
+        "assembly": "GRCh38",
+        "upload_status": "invalidated",
+        "validation_error_detail": "Explanation of why this file did not pass validation.",
+        "file_set": "igvf:analysis_set_with_input",
+        "derived_from": [
+            "IGVFFI0000CSVV"
+        ]
+    }
+]

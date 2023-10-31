@@ -38,19 +38,13 @@ from igvfd.upload_credentials import UploadCredentials
 
 
 FILE_FORMAT_TO_FILE_EXTENSION = {
-    '2bit': '.2bit',
-    'CEL': '.cel.gz',
     'bam': '.bam',
     'bed': '.bed.gz',
     'bedpe': '.bedpe.gz',
-    'chain': '.chain',
     'bigBed': '.bigBed',
     'bigInteract': '.bigInteract',
     'bigWig': '.bigWig',
-    'btr': '.btr',
-    'csfasta': '.csfasta.gz',
-    'csqual': '.csqual.gz',
-    'cndb': '.cndb',
+    'csv': '.csv.gz',
     'database': '.db',
     'dat': '.dat.gz',
     'fasta': '.fasta.gz',
@@ -64,25 +58,21 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'h5ad': '.h5ad',
     'hdf5': '.h5',
     'idat': '.idat',
+    'mtx': '.mtx',
     'obo': '.obo.gz',
     'owl': '.owl.gz',
+    'pairs': '.pairs.gz',
     'PWM': '.pwm',
-    'mtx': '.mtx',
-    'rcc': '.rcc',
+    'sam': '.sam.gz',
     'sra': '.sra',
+    'tabix': '.tabix',
     'tagAlign': '.tagAlign.gz',
     'tar': '.tar.gz',
-    'tsv': '.tsv',
-    'csv': '.csv',
-    'vcf': '.vcf.gz',
-    'wig': '.wig.gz',
-    'sam': '.sam.gz',
+    'tsv': '.tsv.gz',
     'txt': '.txt.gz',
-    'pairs': '.pairs.gz',
-    'starch': '.starch',
-    'nucle3d': '.nucle3d',
+    'vcf': '.vcf.gz',
     'xml': '.xml.gz',
-    'yaml': '.yaml'
+    'yaml': '.yaml.gz'
 }
 
 
@@ -431,6 +421,50 @@ class ConfigurationFile(File):
     })
     def seqspec_of(self, request, seqspec_of):
         return paths_filtered_by_status(request, seqspec_of)
+
+
+@collection(
+    name='tabular-files',
+    unique_key='accession',
+    properties={
+        'title': 'Tabular Files',
+        'description': 'Listing of tabular files',
+    }
+)
+class TabularFile(File):
+    item_type = 'tabular_file'
+    schema = load_schema('igvfd:schemas/tabular_file.json')
+    embedded_with_frame = File.embedded_with_frame
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
+
+
+@collection(
+    name='genome-browser-annotation-files',
+    unique_key='accession',
+    properties={
+        'title': 'Genome Browser Annotation Files',
+        'description': 'Listing of genome browser annotation files',
+    }
+)
+class GenomeBrowserAnnotationFile(File):
+    item_type = 'genome_browser_annotation_file'
+    schema = load_schema('igvfd:schemas/genome_browser_annotation_file.json')
+    embedded_with_frame = File.embedded_with_frame
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
 
 
 @view_config(

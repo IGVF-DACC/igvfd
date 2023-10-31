@@ -1,0 +1,42 @@
+[
+    {
+        "uuid": "637e8584-eb3a-8610-b245-e11ba10f29c3",
+        "accession": "IGVFFI0001PKBD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_01_bed"
+        ],
+        "status": "released",
+        "md5sum": "796067dea861058b242582c0a916aef6",
+        "file_format": "bed",
+        "file_format_type": "bed6+",
+        "content_type": "peaks",
+        "submitted_file_name": "/Users/igvf/igvf_files/peaks_tabular_file.bed.gz",
+        "file_size": 738031,
+        "upload_status": "file not found",
+        "assembly": "GRCh38",
+        "file_set": "igvf:basic_analysis_set"
+    },
+    {
+        "uuid": "1ba1060f-9488-4d8e-ebcc-3d46f46fef54",
+        "accession": "IGVFFI0000CSVV",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_02_csv"
+        ],
+        "status": "released",
+        "md5sum": "0136ad38d30dc30f391bf163a14a25ac",
+        "file_format": "csv",
+        "content_type": "guide RNA sequences",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/guide_rna_sequence.csv.gz",
+        "file_size": 23940,
+        "upload_status": "invalidated",
+        "validation_error_detail": "Explanation of why this file did not pass validation.",
+        "file_set": "igvf:analysis_set_with_input"
+    }
+]
