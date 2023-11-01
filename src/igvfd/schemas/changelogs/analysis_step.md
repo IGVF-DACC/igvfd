@@ -1,5 +1,8 @@
 ## Changelog for *`analysis_step.json`*
 
+### Schema version 3
+* Require `lab` and `award`.
+
 ### Schema version 2
 * Require a minimum of 1 item for `analysis_step_types`, `parents`, `input_content_types`, and `output_content_types`.
 
