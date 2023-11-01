@@ -57,19 +57,6 @@ config: Dict[str, Any] = {
             'postgres': {
                 'instances': [
                     {
-                        'construct_id': 'Postgres',
-                        'on': True,
-                        'props': {
-                            'snapshot_source_db_identifier': DEV_DATABASE_IDENTIFIER,
-                            'allocated_storage': 10,
-                            'max_allocated_storage': 20,
-                            'instance_type': InstanceType.of(
-                                InstanceClass.BURSTABLE3,
-                                InstanceSize.MEDIUM,
-                            ),
-                        },
-                    },
-                    {
                         'construct_id': 'Postgres2',
                         'on': True,
                         'props': {
