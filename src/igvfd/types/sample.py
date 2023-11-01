@@ -96,7 +96,7 @@ class Sample(Item):
         'title': 'Sorted Fraction Samples',
         'type': 'array',
         'items': {
-            'title': 'Child Sample',
+            'title': 'Sorted Fraction Sample',
             'type': ['string', 'object'],
             'linkFrom': 'Sample.sorted_from',
         },
@@ -131,8 +131,8 @@ class Biosample(Sample):
     item_type = 'biosample'
     base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
-    rev = Sample.rev | {'parts': ('Sample', 'parts'),
-                        'pooled_in': ('Sample', 'pooled_from')}
+    rev = Sample.rev | {'parts': ('Biosample', 'part_of'),
+                        'pooled_in': ('Biosample', 'pooled_from')}
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
@@ -378,12 +378,12 @@ class Biosample(Sample):
         return summary_terms.strip(',')
 
     @calculated_property(schema={
-        'title': 'Parent Of',
+        'title': 'Parted Samples',
         'type': 'array',
         'items': {
-            'title': 'Child Sample',
+            'title': 'Parted Child Sample',
             'type': ['string', 'object'],
-            'linkFrom': 'Sample.part_of',
+            'linkFrom': 'Biosample.part_of',
         },
         'notSubmittable': True,
     })
@@ -393,7 +393,7 @@ class Biosample(Sample):
     @calculated_property(schema={
         'title': 'Pooled In',
         'type': ['string', 'object'],
-        'linkFrom': 'Sample.pooled_from',
+        'linkFrom': 'Biosample.pooled_from',
         'notSubmittable': True,
     })
     def pooled_in(self, request, pooled_in):
