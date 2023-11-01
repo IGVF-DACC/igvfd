@@ -68,6 +68,19 @@ config: Dict[str, Any] = {
                                 InstanceSize.MEDIUM,
                             ),
                         },
+                    },
+                    {
+                        'construct_id': 'Postgres2',
+                        'on': True,
+                        'props': {
+                            'snapshot_arn': 'arn:aws:rds:us-west-2:109189702753:snapshot:manual-test-postgres-swap',
+                            'allocated_storage': 11,
+                            'max_allocated_storage': 21,
+                            'instance_type': InstanceType.of(
+                                InstanceClass.BURSTABLE3,
+                                InstanceSize.LARGE,
+                            ),
+                        },
                     }
                 ],
             },
@@ -99,7 +112,7 @@ config: Dict[str, Any] = {
                 'desired_count': 1,
                 'max_capacity': 4,
                 'ini_name': 'demo.ini',
-                'use_postgres_named': 'Postgres',
+                'use_postgres_named': 'Postgres2',
                 'read_from_opensearch_named': 'Opensearch27',
                 'write_to_opensearch_named': 'Opensearch27',
             },
