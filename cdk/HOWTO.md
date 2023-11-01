@@ -403,7 +403,7 @@ aws ecs execute-command \
 
 ## Swap Postgres
 
-1. Enable `block_database_writes` flag using [Flip a feature flag](#flip-a-feature-flag).
+1. Enable `block_database_writes` flag using [Flip a feature flag](#flip-a-feature-flag). Ensure database is not accepting writes (e.g. creating access key fails).
 
 2. Take manaual snapshot of Postgres database.
 
@@ -417,5 +417,16 @@ aws ecs execute-command \
   <img src="./images/howto/swap-postgres_1.png" alt="Swap Postgres 1" width="500">
 </p>
 
+4. Commit, push, and deploy changes through all environments.
+
+5. Disable `block_database_writes` flag using [Flip a feature flag](#flip-a-feature-flag). Ensure database is accepting writes (e.g. creating access key works).
+
+6. Once new Postgres is deployed and active, remove old Postgres:
+
+<p align="center">
+  <img src="./images/howto/swap-postgres_2.png" alt="Swap Postgres 2" width="500">
+</p>
+
+7. Commit, push, and deploy changes through all environments.
 
 ---
