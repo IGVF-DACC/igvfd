@@ -52,7 +52,7 @@ class Sample(Item):
     rev = {
         'file_sets': ('FileSet', 'samples'),
         'multiplexed_in': ('MultiplexedSample', 'multiplexed_samples'),
-        'sorted_fractions': ('Sample', 'sorted_fraction'),
+        'sorted_fractions': ('Sample', 'sorted_from'),
         'origin_of': ('Sample', 'originated_from'),
     }
     embedded_with_frame = [
@@ -98,7 +98,7 @@ class Sample(Item):
         'items': {
             'title': 'Child Sample',
             'type': ['string', 'object'],
-            'linkFrom': 'Sample.sorted_fraction',
+            'linkFrom': 'Sample.sorted_from',
         },
         'notSubmittable': True,
     })
@@ -131,7 +131,7 @@ class Biosample(Sample):
     item_type = 'biosample'
     base_types = ['Biosample'] + Sample.base_types
     schema = load_schema('igvfd:schemas/biosample.json')
-    rev = Sample.rev | {'parent_of': ('Sample', 'part_of'),
+    rev = Sample.rev | {'parts': ('Sample', 'parts'),
                         'pooled_in': ('Sample', 'pooled_from')}
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('sample_terms', include=['@id', 'term_name']),
@@ -387,8 +387,8 @@ class Biosample(Sample):
         },
         'notSubmittable': True,
     })
-    def parent_of(self, request, parent_of):
-        return paths_filtered_by_status(request, parent_of)
+    def parts(self, request, parts):
+        return paths_filtered_by_status(request, parts)
 
     @calculated_property(schema={
         'title': 'Pooled In',

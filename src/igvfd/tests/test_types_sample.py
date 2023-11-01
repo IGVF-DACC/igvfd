@@ -127,15 +127,15 @@ def test_sorted_fractions(testapp, primary_cell, tissue, in_vitro_cell_line):
     testapp.patch_json(
         tissue['@id'],
         {
-            'sorted_fraction': primary_cell['@id'],
-            'sorted_fraction_detail': 'something',
+            'sorted_from': primary_cell['@id'],
+            'sorted_from_detail': 'something',
         }
     )
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'sorted_fraction': primary_cell['@id'],
-            'sorted_fraction_detail': 'something',
+            'sorted_from': primary_cell['@id'],
+            'sorted_from_detail': 'something',
         }
     )
     res = testapp.get(primary_cell['@id'])

@@ -62,7 +62,7 @@ def test_tissue_taxa_calculation(testapp, tissue, human_donor, rodent_donor):
     assert res.json.get('taxa', None) == None
 
 
-def test_parent_of(testapp, primary_cell, tissue, in_vitro_cell_line):
+def test_parts(testapp, primary_cell, tissue, in_vitro_cell_line):
     testapp.patch_json(
         primary_cell['@id'],
         {
@@ -76,7 +76,7 @@ def test_parent_of(testapp, primary_cell, tissue, in_vitro_cell_line):
         }
     )
     res = testapp.get(tissue['@id'])
-    assert set(res.json.get('parent_of')) == {in_vitro_cell_line['@id'], primary_cell['@id']}
+    assert set(res.json.get('parts')) == {in_vitro_cell_line['@id'], primary_cell['@id']}
 
 
 def test_pooled_in(testapp, primary_cell, tissue, in_vitro_cell_line):
@@ -87,5 +87,4 @@ def test_pooled_in(testapp, primary_cell, tissue, in_vitro_cell_line):
         }
     )
     res = testapp.get(tissue['@id'])
-    print(res.json.get('pooled_in'))
     assert res.json.get('pooled_in') == in_vitro_cell_line['@id']
