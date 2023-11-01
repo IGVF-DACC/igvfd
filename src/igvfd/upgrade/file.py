@@ -76,6 +76,8 @@ def reference_file_4_5(value, system):
 @upgrade_step('configuration_file', '1', '2')
 @upgrade_step('alignment_file', '1', '2')
 @upgrade_step('sequence_file', '4', '5')
+@upgrade_step('genome_browser_annotation_file', '1', '2')
+@upgrade_step('tabular_file', '1', '2')
 def file_4_5(value, system):
     if 'dbxrefs' in value:
         new_dbxrefs = [dbxref for dbxref in value['dbxrefs'] if dbxref != '']

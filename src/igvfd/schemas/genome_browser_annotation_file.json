@@ -170,6 +170,9 @@
                 "appscript": "GRCh38",
                 "igvf_utils": "GRCh38"
             }
+        },
+        "dbxrefs": {
+            "comment": "This file type currently does not support any external resource submission."
         }
     },
     "fuzzy_searchable_fields": [

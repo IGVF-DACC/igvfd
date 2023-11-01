@@ -2,7 +2,7 @@
 
 ### Schema version 2
 
-* Disallow submission of empty string in `dbxrefs`.
+* Require a minimum of 1 item for `dbxrefs`.
 
 ### Minor changes since schema version 1
 

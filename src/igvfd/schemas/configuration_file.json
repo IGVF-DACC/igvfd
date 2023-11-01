@@ -64,6 +64,9 @@
                 "appscript": "yaml",
                 "igvf_utils": "yaml"
             }
+        },
+        "dbxrefs": {
+            "comment": "This file type currently does not support any external resource submission."
         }
     },
     "fuzzy_searchable_fields": [
