@@ -403,6 +403,8 @@ aws ecs execute-command \
 
 ## Swap Postgres
 
-Instructions for swapping Postgres.
+1. Enable `block_database_writes` flag using [Flip a feature flag](#flip-a-feature-flag).
+
+2. Take manaual snapshot of Postgres database.
 
 ---
