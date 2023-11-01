@@ -409,9 +409,9 @@ aws ecs execute-command \
 
 3. Specify a new Postgres instance in https://github.com/IGVF-DACC/igvfd/blob/dev/cdk/infrastructure/config.py for a specific environment:
 
- a. Use a unique `construct_id` name (e.g. `Postgres2`).
+   a. Use a unique `construct_id` name (e.g. `Postgres2`).
 
- b. Update the `backend` config to `use_postgres_named` with the new `construct_id` name  (e.g. `Postgres2`).
+   b. Update the `backend` config to `use_postgres_named` with the new `construct_id` name  (e.g. `Postgres2`).
 
 <p align="center">
   <img src="./images/howto/swap-postgres_1.png" alt="Swap Postgres 1" width="500">
