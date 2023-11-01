@@ -1122,13 +1122,13 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
+                            "sorted_fractions": {
+                                "type": "keyword"
+                            },
                             "sorted_from": {
                                 "type": "keyword"
                             },
                             "sorted_from_detail": {
-                                "type": "keyword"
-                            },
-                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1514,10 +1514,10 @@
                             "originated_from": {
                                 "type": "keyword"
                             },
-                            "parent_of": {
+                            "part_of": {
                                 "type": "keyword"
                             },
-                            "part_of": {
+                            "parts": {
                                 "type": "keyword"
                             },
                             "passage_number": {
@@ -1648,13 +1648,13 @@
                             "sex": {
                                 "type": "keyword"
                             },
+                            "sorted_fractions": {
+                                "type": "keyword"
+                            },
                             "sorted_from": {
                                 "type": "keyword"
                             },
                             "sorted_from_detail": {
-                                "type": "keyword"
-                            },
-                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1842,6 +1842,9 @@
                     "schema_version": {
                         "type": "keyword"
                     },
+                    "sorted_fractions": {
+                        "type": "keyword"
+                    },
                     "sorted_from": {
                         "properties": {
                             "@id": {
@@ -1970,10 +1973,10 @@
                             "originated_from": {
                                 "type": "keyword"
                             },
-                            "parent_of": {
+                            "part_of": {
                                 "type": "keyword"
                             },
-                            "part_of": {
+                            "parts": {
                                 "type": "keyword"
                             },
                             "passage_number": {
@@ -2027,13 +2030,13 @@
                             "sex": {
                                 "type": "keyword"
                             },
+                            "sorted_fractions": {
+                                "type": "keyword"
+                            },
                             "sorted_from": {
                                 "type": "keyword"
                             },
                             "sorted_from_detail": {
-                                "type": "keyword"
-                            },
-                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -2124,9 +2127,6 @@
                         "type": "object"
                     },
                     "sorted_from_detail": {
-                        "type": "keyword"
-                    },
-                    "sorted_fractions": {
                         "type": "keyword"
                     },
                     "sources": {
