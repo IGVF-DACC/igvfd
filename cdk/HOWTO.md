@@ -405,7 +405,7 @@ aws ecs execute-command \
 
 1. Enable `block_database_writes` flag using [Flip a feature flag](#flip-a-feature-flag). Ensure database is not accepting writes (e.g. creating access key fails).
 
-2. Take manaual snapshot of Postgres database.
+2. Take manual snapshot of Postgres database.
 
 3. Specify a new Postgres instance in https://github.com/IGVF-DACC/igvfd/blob/dev/cdk/infrastructure/config.py for a specific environment:
 
