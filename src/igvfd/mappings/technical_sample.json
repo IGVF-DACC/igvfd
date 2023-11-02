@@ -1,6 +1,6 @@
 {
-    "hash": "696d484bfdc7490267d059d13e6c53a5",
-    "index_name": "technical_sample_696d484b",
+    "hash": "68c12da41357ea3c54512dfe75550101",
+    "index_name": "technical_sample_68c12da4",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -784,10 +784,10 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -952,7 +952,7 @@
                     "schema_version": {
                         "type": "keyword"
                     },
-                    "sorted_fraction": {
+                    "sorted_from": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -1128,10 +1128,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1221,7 +1221,7 @@
                         },
                         "type": "object"
                     },
-                    "sorted_fraction_detail": {
+                    "sorted_from_detail": {
                         "type": "keyword"
                     },
                     "sources": {
@@ -1370,6 +1370,10 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "taxa": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "time_post_library_delivery": {

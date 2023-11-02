@@ -1,6 +1,6 @@
 {
-    "hash": "dfffcdd7f03d34221e7cedd597bc0ac6",
-    "index_name": "multiplexed_sample_dfffcdd7",
+    "hash": "bd8dbefaf630c584d186e42e2938c627",
+    "index_name": "multiplexed_sample_bd8dbefa",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1119,10 +1119,10 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1633,10 +1633,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1821,7 +1821,7 @@
                     "schema_version": {
                         "type": "keyword"
                     },
-                    "sorted_fraction": {
+                    "sorted_from": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -1997,10 +1997,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -2090,7 +2090,7 @@
                         },
                         "type": "object"
                     },
-                    "sorted_fraction_detail": {
+                    "sorted_from_detail": {
                         "type": "keyword"
                     },
                     "sources": {

@@ -1,6 +1,6 @@
 {
-    "hash": "7c43de478a99015272bbbd38a72530bb",
-    "index_name": "tissue_7c43de47",
+    "hash": "ffa5554e9d2225df875a8e2476894742",
+    "index_name": "tissue_ffa5554e",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -959,10 +959,10 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1151,7 +1151,7 @@
                     "sex": {
                         "type": "keyword"
                     },
-                    "sorted_fraction": {
+                    "sorted_from": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -1327,10 +1327,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1420,7 +1420,7 @@
                         },
                         "type": "object"
                     },
-                    "sorted_fraction_detail": {
+                    "sorted_from_detail": {
                         "type": "keyword"
                     },
                     "sources": {

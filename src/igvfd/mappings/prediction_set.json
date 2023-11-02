@@ -1,6 +1,6 @@
 {
-    "hash": "a884d1c2cf9ba9e0b308796899cdd3a9",
-    "index_name": "prediction_set_a884d1c2",
+    "hash": "c1bb9f607efdcb500ab53e2e8cdf74e2",
+    "index_name": "prediction_set_c1bb9f60",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -824,6 +824,9 @@
                             "file_format_specifications": {
                                 "type": "keyword"
                             },
+                            "file_format_type": {
+                                "type": "keyword"
+                            },
                             "file_set": {
                                 "type": "keyword"
                             },
@@ -1328,10 +1331,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {

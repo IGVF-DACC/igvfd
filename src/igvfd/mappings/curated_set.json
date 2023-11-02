@@ -1,6 +1,6 @@
 {
-    "hash": "378ddd9501af539744571685150ee199",
-    "index_name": "curated_set_378ddd95",
+    "hash": "294bd6f1795f5dd24cc032bb7849439b",
+    "index_name": "curated_set_294bd6f1",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -828,6 +828,9 @@
                             "file_format_specifications": {
                                 "type": "keyword"
                             },
+                            "file_format_type": {
+                                "type": "keyword"
+                            },
                             "file_set": {
                                 "type": "keyword"
                             },
@@ -1332,10 +1335,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {

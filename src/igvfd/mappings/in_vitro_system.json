@@ -1,6 +1,6 @@
 {
-    "hash": "1dedaafce599b68664fd3c19cb5eb967",
-    "index_name": "in_vitro_system_1dedaafc",
+    "hash": "da1bc7e6310b973813c133bebddfa8e6",
+    "index_name": "in_vitro_system_da1bc7e6",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1094,10 +1094,10 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1340,10 +1340,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1543,7 +1543,7 @@
                     "sex": {
                         "type": "keyword"
                     },
-                    "sorted_fraction": {
+                    "sorted_from": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -1719,10 +1719,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1812,7 +1812,7 @@
                         },
                         "type": "object"
                     },
-                    "sorted_fraction_detail": {
+                    "sorted_from_detail": {
                         "type": "keyword"
                     },
                     "sources": {

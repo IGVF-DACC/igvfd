@@ -1,6 +1,6 @@
 {
-    "hash": "f406e7db04d1893541dc963ee0933aa8",
-    "index_name": "primary_cell_f406e7db",
+    "hash": "cca82be26201b3ca0297e4419b1bcf4a",
+    "index_name": "primary_cell_cca82be2",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -956,10 +956,10 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1142,7 +1142,7 @@
                     "sex": {
                         "type": "keyword"
                     },
-                    "sorted_fraction": {
+                    "sorted_from": {
                         "properties": {
                             "@id": {
                                 "type": "keyword"
@@ -1318,10 +1318,10 @@
                             "sex": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction": {
+                            "sorted_from": {
                                 "type": "keyword"
                             },
-                            "sorted_fraction_detail": {
+                            "sorted_from_detail": {
                                 "type": "keyword"
                             },
                             "sources": {
@@ -1411,7 +1411,7 @@
                         },
                         "type": "object"
                     },
-                    "sorted_fraction_detail": {
+                    "sorted_from_detail": {
                         "type": "keyword"
                     },
                     "sources": {
