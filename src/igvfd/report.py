@@ -10,6 +10,11 @@ from igvfd.searches.generator import search_generator
 import datetime
 import re
 
+# Doncument.attachment and Image.attachment have href
+TYPES_WITH_HREF_FEILD = ['ReferenceFile', 'SequenceFile', 'AlignmentFile', 'GenomeBrowserAnnotationFile',
+                         'MatrixFile', 'SignalFile', 'TabularFile', 'ConfigurationFile', 'Document', 'Image']
+HREF_COLUMN_KEYS = ['href', 'attachment', 'attachment.href']
+
 
 def includeme(config):
     config.add_route('report_download', '/report.tsv')
@@ -50,6 +55,28 @@ def format_row(columns):
     return b'\t'.join([bytes_(' '.join(c.strip('\t\n\r').split()), 'utf-8') for c in columns]) + b'\r\n'
 
 
+def format_row_full_url(columns, href_index, host_url):
+    """Format a list of text columns as a tab-separated byte string. add host_url to href to form a full length url"""
+    row = []
+    for index, column in enumerate(columns):
+        ls = column.strip('\t\n\r').split()
+        if index == href_index:
+
+            if len(ls) == 1:
+                ls[0] = host_url + ls[0]
+            # href is embedded
+            else:
+                for index, item in enumerate(ls):
+                    if ''.join([i for i in item if i.isalpha()]) == 'href':
+                        embedded_index = index + 1
+                        break
+                if embedded_index:
+                    ls[embedded_index] = ls[embedded_index][0] + host_url + ls[embedded_index][1:]
+
+        row.append(bytes_(' '.join(ls), 'utf-8'))
+    return b'\t'.join(row) + b'\r\n'
+
+
 def _convert_camel_to_snake(type_str):
     tmp = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', type_str)
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', tmp).lower()
@@ -73,7 +100,7 @@ def report_download(context, request):
     snake_type = _convert_camel_to_snake(type_str).replace("'", '')
     results = search_generator(request)
 
-    def format_header(seq):
+    def format_header():
         newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, '/report/', request.query_string)
         return(bytes(newheader, 'utf-8'))
 
@@ -84,7 +111,7 @@ def report_download(context, request):
     header = [column.get('title') or field for field, column in columns.items()]
 
     def generate_rows():
-        yield format_header(header)
+        yield format_header()
         yield format_row(header)
         for item in results['@graph']:
             values = [lookup_column_value(item, path) for path in columns]
@@ -164,6 +191,10 @@ def multitype_report_download(context, request):
     if len(types_in_search_result) == 1:
         report_type = _convert_camel_to_snake(types_in_search_result[0]).replace("'", '')
 
+    print('types_in_search_result:', types_in_search_result)
+    print('request.host_url:', request.host_url)
+    print('columns:', columns)
+
     # Make sure we get all results
     request.GET['limit'] = 'all'
     results = search_generator(request)
@@ -177,13 +208,22 @@ def multitype_report_download(context, request):
         columns['@id']['title'] = 'id'
 
     header_row = [column.get('title') or field for field, column in columns.items()]
+    print('header_row:', header_row)
+
+    columns_keys = list(columns.keys())
+    href_index = -1
+    for index, item in enumerate(columns_keys):
+        if item in HREF_COLUMN_KEYS:
+            href_index = index
 
     def generate_rows():
         yield format_header()
         yield format_row(header_row)
         for item in results['@graph']:
             values = [lookup_column_value(item, path) for path in columns]
-            yield format_row(values)
+            print('values!!!!!!!!!!!!!!!!:', values)
+
+            yield format_row_full_url(values, href_index, request.host_url)
 
     # Stream response using chunked encoding.
     request.response.content_type = 'text/tsv'
