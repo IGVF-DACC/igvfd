@@ -64,7 +64,7 @@ def reference_file_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1215
     notes = value.get('notes', '')
     if value['file_format'] == 'bed':
-        value['file_format_type'] == 'bed9+'
+        value['file_format_type'] = 'bed9+'
         notes += f' The file_format_type of this bed file was automatically set to bed9+.'
     if notes != '':
         value['notes'] = notes.strip()
