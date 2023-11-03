@@ -10,9 +10,7 @@ from igvfd.searches.generator import search_generator
 import datetime
 import re
 
-# Doncument.attachment and Image.attachment have href
-TYPES_WITH_HREF_FEILD = ['ReferenceFile', 'SequenceFile', 'AlignmentFile', 'GenomeBrowserAnnotationFile',
-                         'MatrixFile', 'SignalFile', 'TabularFile', 'ConfigurationFile', 'Document', 'Image']
+# Those columns contain href value
 HREF_COLUMN_KEYS = ['href', 'attachment', 'attachment.href']
 
 
@@ -61,7 +59,7 @@ def format_row_full_url(columns, href_index, host_url):
     for index, column in enumerate(columns):
         ls = column.strip('\t\n\r').split()
         if index == href_index:
-
+            # href is not embedded, append host_url directly
             if len(ls) == 1:
                 ls[0] = host_url + ls[0]
             # href is embedded
@@ -191,10 +189,6 @@ def multitype_report_download(context, request):
     if len(types_in_search_result) == 1:
         report_type = _convert_camel_to_snake(types_in_search_result[0]).replace("'", '')
 
-    print('types_in_search_result:', types_in_search_result)
-    print('request.host_url:', request.host_url)
-    print('columns:', columns)
-
     # Make sure we get all results
     request.GET['limit'] = 'all'
     results = search_generator(request)
@@ -208,8 +202,6 @@ def multitype_report_download(context, request):
         columns['@id']['title'] = 'id'
 
     header_row = [column.get('title') or field for field, column in columns.items()]
-    print('header_row:', header_row)
-
     columns_keys = list(columns.keys())
     href_index = -1
     for index, item in enumerate(columns_keys):
@@ -221,8 +213,6 @@ def multitype_report_download(context, request):
         yield format_row(header_row)
         for item in results['@graph']:
             values = [lookup_column_value(item, path) for path in columns]
-            print('values!!!!!!!!!!!!!!!!:', values)
-
             yield format_row_full_url(values, href_index, request.host_url)
 
     # Stream response using chunked encoding.
