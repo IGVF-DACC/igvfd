@@ -48,7 +48,7 @@ def ref_file_v3(reference_file):
 
 
 @pytest.fixture
-def reference_file_v4(testapp):
+def reference_file_v4(testapp, lab, award, analysis_set_with_sample):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
