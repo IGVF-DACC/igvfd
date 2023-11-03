@@ -19,3 +19,10 @@ def test_ref_file_upgrade_3_4(upgrader, ref_file_v3):
     assert match_ann == value['transcriptome_annotation']
     assert 'transcriptome_annotation' in value
     assert value['schema_version'] == '4'
+
+
+def test_reference_file_upgrade_4_5(upgrader, reference_file_v4):
+    value = upgrader.upgrade('reference_file', reference_file_v4, current_version='4', target_version='5')
+    assert value['schema_version'] == '5'
+    assert 'file_format_type' in value
+    assert value['file_format_type'] == 'bed9+'
