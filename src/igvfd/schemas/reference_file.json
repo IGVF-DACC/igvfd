@@ -102,25 +102,18 @@
             "comment": "Bed files must specify their file format type. Vcf files must specify a relevant assembly.",
             "oneOf": [
                 {
-                    "if": {
-                        "properties": {
-                            "file_format": {
-                                "enum": [
-                                    "vcf"
-                                ]
-                            }
-                        },
+                    "required": [
+                        "assembly"
+                    ],
+                    "not": {
                         "required": [
-                            "file_format"
+                            "file_format_type"
                         ]
                     },
-                    "then": {
-                        "required": [
-                            "assembly"
-                        ],
-                        "not": {
-                            "required": [
-                                "file_format_type"
+                    "properties": {
+                        "file_format": {
+                            "enum": [
+                                "vcf"
                             ]
                         }
                     }
