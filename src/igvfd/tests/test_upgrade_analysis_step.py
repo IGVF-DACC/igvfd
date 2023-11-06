@@ -8,3 +8,9 @@ def test_analysis_step_upgrade_1_2(upgrader, analysis_step_v1):
     assert value['input_content_types'] == ['reads']
     assert value['output_content_types'] == ['reads']
     assert value['schema_version'] == '2'
+
+
+def test_analysis_step_upgrade_2_3(upgrader, analysis_step_v2):
+    value = upgrader.upgrade('analysis_step', analysis_step_v2, current_version='2', target_version='3')
+    assert value['lab'] == '/labs/j-michael-cherry/'
+    assert value['award'] == '/awards/HG012012/'
