@@ -1,16 +1,6 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "hash": "d289c55f697b9277a22ed5778bb90c2b",
-    "index_name": "analysis_step_d289c55f",
-=======
-    "hash": "914662488a3bb4c0df4d2fa851fed046",
-    "index_name": "analysis_step_91466248",
->>>>>>> 53ace1d3 (Update mapping)
-=======
-    "hash": "5b7c5f00a13a9b0f96eb96a9fa79f7b3",
-    "index_name": "analysis_step_5b7c5f00",
->>>>>>> 9cb05100 (Update mapping)
+    "hash": "16752e2f3e3f5e853716261061810c12",
+    "index_name": "analysis_step_16752e2f",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
