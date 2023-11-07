@@ -109,5 +109,4 @@ def test_multitype_report_download_href(workbook, testapp):
 
     res = testapp.get('/multireport.tsv?type=Lab&field=href')
     lines = res.text.splitlines()
-    server_url = res.headers['X-Request-URL'].split('/multireport.tsv?')[0]
     assert lines[2] == ''

@@ -58,7 +58,7 @@ def format_row_full_url(columns, href_index, host_url, id):
     row = []
     for index, column in enumerate(columns):
         ls = column.strip('\t\n\r').split()
-        if index == href_index:
+        if index in href_index:
             # href is not embedded, append host_url directly
             if len(ls) == 1:
                 # attachment.href
@@ -208,10 +208,10 @@ def multitype_report_download(context, request):
 
     header_row = [column.get('title') or field for field, column in columns.items()]
     columns_keys = list(columns.keys())
-    href_index = -1
+    href_index = []
     for index, item in enumerate(columns_keys):
         if item in HREF_COLUMN_KEYS:
-            href_index = index
+            href_index.append(index)
 
     def generate_rows():
         yield format_header()
