@@ -53,7 +53,7 @@ def format_row(columns):
     return b'\t'.join([bytes_(' '.join(c.strip('\t\n\r').split()), 'utf-8') for c in columns]) + b'\r\n'
 
 
-def format_row_full_url(columns, href_index, host_url):
+def format_row_full_url(columns, href_index, host_url, id):
     """Format a list of text columns as a tab-separated byte string. add host_url to href to form a full length url"""
     row = []
     for index, column in enumerate(columns):
@@ -61,7 +61,12 @@ def format_row_full_url(columns, href_index, host_url):
         if index == href_index:
             # href is not embedded, append host_url directly
             if len(ls) == 1:
-                ls[0] = host_url + ls[0]
+                # attachment.href
+                if ls[0].startswith('@@download'):
+                    ls[0] = host_url + id + ls[0]
+                # href from File
+                else:
+                    ls[0] = host_url + ls[0]
             # href is embedded
             else:
                 for index, item in enumerate(ls):
@@ -69,7 +74,7 @@ def format_row_full_url(columns, href_index, host_url):
                         embedded_index = index + 1
                         break
                 if embedded_index:
-                    ls[embedded_index] = ls[embedded_index][0] + host_url + ls[embedded_index][1:]
+                    ls[embedded_index] = ls[embedded_index][0] + host_url + id + ls[embedded_index][1:]
 
         row.append(bytes_(' '.join(ls), 'utf-8'))
     return b'\t'.join(row) + b'\r\n'
