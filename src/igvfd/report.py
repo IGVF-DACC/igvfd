@@ -217,8 +217,9 @@ def multitype_report_download(context, request):
         yield format_header()
         yield format_row(header_row)
         for item in results['@graph']:
+            id = item['@id']
             values = [lookup_column_value(item, path) for path in columns]
-            yield format_row_full_url(values, href_index, request.host_url)
+            yield format_row_full_url(values, href_index, request.host_url, id)
 
     # Stream response using chunked encoding.
     request.response.content_type = 'text/tsv'
