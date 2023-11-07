@@ -67,8 +67,8 @@
                 "pattern": "^GEO:GSE\\d+$"
             },
             "submissionExample": {
-                "appscript": "[\"GEO:GSM5169185\", \"GEO:GSM5169186\", \"GEO:GSM5169187\"]",
-                "igvf_utils": "GEO:GSM5169185, GEO:GSM5169186, GEO:GSM5169187"
+                "appscript": "[\"GEO:GSE5169185\", \"GEO:GSE5169186\", \"GEO:GSE5169187\"]",
+                "igvf_utils": "GEO:GSE5169185, GEO:GSE5169186, GEO:GSE5169187"
             }
         },
         "samples": {
