@@ -68,7 +68,7 @@ def format_row_full_url(columns, href_index, host_url, id):
                 else:
                     ls[0] = host_url + ls[0]
             # href is embedded
-            else:
+            elif len(ls) > 1:
                 for index, item in enumerate(ls):
                     if ''.join([i for i in item if i.isalpha()]) == 'href':
                         embedded_index = index + 1
