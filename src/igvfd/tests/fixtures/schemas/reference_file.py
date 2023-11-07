@@ -45,3 +45,16 @@ def ref_file_v3(reference_file):
         'transcriptome_annotation': 'V40'
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v4(testapp, lab, award, analysis_set_with_sample):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '7d258f1987e2da2491ddb051a91c3156',
+        'file_format': 'bed',
+        'file_set': analysis_set_with_sample['@id'],
+        'content_type': 'regulatory_regions'
+    }
+    return item

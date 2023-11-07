@@ -1,5 +1,8 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 5
+
+* Add `file_format_type`.
 
 ### Minor changes since schema version 4
 

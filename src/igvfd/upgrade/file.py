@@ -57,3 +57,14 @@ def sequence_file_3_4(value, system):
         else:
             notes = f'The mean read length previously exceeded the upper limit of 300000000 so was set to 300000000, please assign the appropriate length.'
         value['notes'] = notes
+
+
+@upgrade_step('reference_file', '4', '5')
+def reference_file_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1215
+    notes = value.get('notes', '')
+    if value['file_format'] == 'bed':
+        value['file_format_type'] = 'bed9+'
+        notes += f' The file_format_type of this bed file was automatically set to bed9+.'
+    if notes != '':
+        value['notes'] = notes.strip()
