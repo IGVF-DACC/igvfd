@@ -109,7 +109,7 @@ class Sample(Item):
         'title': 'Origin Sample Of',
         'type': 'array',
         'items': {
-            'title': 'Child Sample',
+            'title': 'Originated Sample',
             'type': ['string', 'object'],
             'linkFrom': 'InVitroSystem.originated_from',
         },
@@ -378,10 +378,10 @@ class Biosample(Sample):
         return summary_terms.strip(',')
 
     @calculated_property(schema={
-        'title': 'Parted Samples',
+        'title': 'Biosample Parts',
         'type': 'array',
         'items': {
-            'title': 'Parted Child Sample',
+            'title': 'Biosample Part',
             'type': ['string', 'object'],
             'linkFrom': 'Biosample.part_of',
         },
