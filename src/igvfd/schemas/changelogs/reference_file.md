@@ -1,6 +1,6 @@
 ## Changelog for *`reference_file.json`*
 
-### Schema version 5
+### Schema version 6
 
 * Enable submission of GENCODE, ENSEMBL, and GRC database references to `dbxrefs`.
 * Require a minimum of 1 item for `dbxrefs`.
