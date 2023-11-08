@@ -61,7 +61,7 @@ def format_row_full_url(columns, href_index, host_url, id):
         if index in href_index:
             # href is not embedded, append host_url directly
             if len(ls) == 1:
-                # files.href
+                # files.href, FileSet can have more than one file in files
                 if ',' in ls[0]:
                     files = ls[0].split(',')
                     files_with_host_url = []
@@ -73,7 +73,7 @@ def format_row_full_url(columns, href_index, host_url, id):
                 # attachment.href
                 elif ls[0].startswith('@@download'):
                     ls[0] = host_url + id + ls[0]
-                # href from File
+                # href from File or files.href when there is one file in FileSet
                 else:
                     ls[0] = host_url + ls[0]
             # href is embedded
