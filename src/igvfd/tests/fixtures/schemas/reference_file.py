@@ -60,6 +60,7 @@ def reference_file_v4(testapp, lab, award, analysis_set_with_sample):
     return item
 
 
+@pytest.fixture
 def reference_file_v5(reference_file):
     item = reference_file.copy()
     item.update({
