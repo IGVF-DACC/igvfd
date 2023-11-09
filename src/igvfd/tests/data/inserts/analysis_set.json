@@ -14,7 +14,8 @@
         "uuid": "609869e7-cbd9-4d06-9569-d3fdb4604ccd",
         "samples": [
             "igvf:treated_tissue"
-        ]
+        ],
+        "file_set_type": "intermediate analysis"
     },
     {
         "aliases": [
@@ -34,6 +35,7 @@
         ],
         "input_file_sets": [
             "igvf:basic_analysis_set"
-        ]
+        ],
+        "file_set_type": "primary analysis"
     }
 ]

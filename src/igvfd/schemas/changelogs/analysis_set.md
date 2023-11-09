@@ -1,8 +1,12 @@
 ## Changelog for *`analysis_set.json`*
 
-### Minor changes since schema version 3
+### Schema version 4
 
 * Add `file_set_type`.
+* Require `file_set_type`.
+
+### Minor changes since schema version 3
+
 * Add `files`.
 * Add `dbxrefs`.
 * Add `control_for`.

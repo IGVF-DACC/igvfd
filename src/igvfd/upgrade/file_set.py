@@ -121,3 +121,12 @@ def measurement_set_8_9(value, system):
     if 'sequencing_library_type' in value:
         value['sequencing_library_types'] = value['sequencing_library_type']
         del value['sequencing_library_type']
+
+
+@upgrade_step('analysis_set', '3', '4')
+def analysis_set_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1241
+    value['file_set_type'] = 'intermediate analysis'
+    notes = value.get('notes', '')
+    notes += f' This analyis set has been defaulted to "intermediate analysis" for its file_set_type as this is now a required property, please see the property description and patch with the appropriate file_set_type.'
+    value['notes'] = notes.strip()
