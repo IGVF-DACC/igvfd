@@ -1,1 +1,2 @@
-snovault-index@git+https://github.com/IGVF-DACC/snovault-index.git@SNO2-51-scale-and-upgrade-opensearch
+botocore==1.31.80
+snovault-index@git+https://github.com/IGVF-DACC/snovault-index.git@v4.0.0
