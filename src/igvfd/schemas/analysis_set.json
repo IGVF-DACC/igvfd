@@ -38,7 +38,22 @@
     "dependentSchemas": {
         "$merge": [
             "file_set.json#/dependentSchemas"
-        ]
+        ],
+        "file_set_type": {
+            "comment": "Primary analysis sets require input_file_sets.",
+            "if": {
+                "properties": {
+                    "file_set_type": {
+                        "const": "primary analysis"
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "input_file_sets"
+                ]
+            }
+        }
     },
     "properties": {
         "schema_version": {
@@ -46,19 +61,32 @@
         },
         "input_file_sets": {
             "title": "Input File Sets",
-            "description": "The file set(s) to which any files used in this analysis set belong.",
+            "description": "The file set(s) required for this analysis.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Input File Set",
-                "description": "A file set with files that are used in this analysis set.",
+                "description": "A file set required for this analysis.",
                 "type": "string",
                 "linkTo": "FileSet"
             },
             "submissionExample": {
                 "appscript": "[\"john-doe:file_set01\", \"IGVFDS4321DCBA\"]",
                 "igvf_utils": "john-doe:file_set01, IGVFDS4321DCBA"
+            }
+        },
+        "file_set_type": {
+            "title": "File Set Type",
+            "description": "The level of this analysis set. An intermediate analysis cannot be interpreted on its own and is part of a primary analysis. A primary analysis is the core analysis for an experimental design, the results of which can be interpretable on their own.",
+            "type": "string",
+            "enum": [
+                "intermediate analysis",
+                "primary analysis"
+            ],
+            "submissionExample": {
+                "appscript": "primary analysis",
+                "igvf_utils": "primary analysis"
             }
         }
     },

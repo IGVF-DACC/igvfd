@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 3
 
+* Add `file_set_type`.
 * Add `files`.
 * Add `dbxrefs`.
 * Add `control_for`.
