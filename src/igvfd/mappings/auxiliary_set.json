@@ -1,6 +1,6 @@
 {
-    "hash": "bec6cfaacd89ad59213b9420e43a8d20",
-    "index_name": "auxiliary_set_bec6cfaa",
+    "hash": "50718bc46c95beb1e95ba7a3b98ae60f",
+    "index_name": "auxiliary_set_50718bc4",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -975,6 +975,9 @@
                                 "type": "long"
                             },
                             "source_url": {
+                                "type": "keyword"
+                            },
+                            "sources": {
                                 "type": "keyword"
                             },
                             "start_view_position": {

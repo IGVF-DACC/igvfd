@@ -977,6 +977,9 @@
                             "source_url": {
                                 "type": "keyword"
                             },
+                            "sources": {
+                                "type": "keyword"
+                            },
                             "start_view_position": {
                                 "type": "keyword"
                             },
