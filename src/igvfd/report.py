@@ -11,7 +11,7 @@ import datetime
 import re
 
 # Those columns contain href value
-HREF_COLUMN_KEYS = ['href', 'attachment', 'attachment.href']
+HREF_COLUMN_KEYS = ['href', 'attachment', 'attachment.href', 'files.href']
 
 
 def includeme(config):
@@ -61,10 +61,19 @@ def format_row_full_url(columns, href_index, host_url, id):
         if index in href_index:
             # href is not embedded, append host_url directly
             if len(ls) == 1:
+                # files.href, FileSet can have more than one file in files
+                if ',' in ls[0]:
+                    files = ls[0].split(',')
+                    files_with_host_url = []
+                    for file in files:
+                        file = host_url + file.strip()
+                        files_with_host_url.append(file)
+                    ls[0] = ','.join(files_with_host_url)
+
                 # attachment.href
-                if ls[0].startswith('@@download'):
+                elif ls[0].startswith('@@download'):
                     ls[0] = host_url + id + ls[0]
-                # href from File
+                # href from File or files.href when there is one file in FileSet
                 else:
                     ls[0] = host_url + ls[0]
             # href is embedded

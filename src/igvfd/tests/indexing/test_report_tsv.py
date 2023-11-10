@@ -107,6 +107,17 @@ def test_multitype_report_download_href(workbook, testapp):
     full_href = server_url + id + '@@download/attachment/h3k4me3_millipore_07-473_lot_DAM1651667_WB.png'
     assert full_href in lines[2].split('\t')[1]
 
+    res = testapp.get('/multireport.tsv?type=AnalysisSet&field=%40id&field=files.href&donors.taxa=Homo+sapiens')
+    lines = res.text.splitlines()
+    server_url = res.headers['X-Request-URL'].split('/multireport.tsv?')[0]
+    id = lines[2].split('\t')[0]
+    full_href = server_url + '/reference-files/IGVFFI0001SQBR/@@download/IGVFFI0001SQBR.txt.gz'
+    assert full_href in lines[2].split('\t')[1]
+    full_href = server_url + '/reference-files/IGVFFI0001SQBZ/@@download/IGVFFI0001SQBZ.gtf.gz'
+    assert full_href in lines[2].split('\t')[1]
+    full_href = server_url + '/reference-files/IGVFFI0001VARI/@@download/IGVFFI0001VARI.vcf.gz'
+    assert full_href in lines[2].split('\t')[1]
+
     res = testapp.get('/multireport.tsv?type=Lab&field=href')
     lines = res.text.splitlines()
     assert lines[2] == ''
