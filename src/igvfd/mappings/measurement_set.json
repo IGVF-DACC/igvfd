@@ -1291,6 +1291,18 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "external": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "external_id": {
+                                "type": "keyword"
+                            },
                             "file_format": {
                                 "type": "keyword"
                             },

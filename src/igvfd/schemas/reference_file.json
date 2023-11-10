@@ -40,6 +40,9 @@
         },
         {
             "$ref": "mixins.json#/file_format_type"
+        },
+        {
+            "$merge": "mixins.json#/product_info/sources"
         }
     ],
     "dependentSchemas": {
@@ -156,6 +159,22 @@
                     }
                 }
             ]
+        },
+        "external_id": {
+            "if": {
+                "properties": {
+                    "external": {
+                        "const": false
+                    }
+                }
+            },
+            "then": {
+                "not": {
+                    "required": [
+                        "external_id"
+                    ]
+                }
+            }
         }
     },
     "type": "object",

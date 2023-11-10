@@ -1,6 +1,6 @@
 {
-    "hash": "f13ed139ff73cf0bd01b79768258dae0",
-    "index_name": "reference_file_f13ed139",
+    "hash": "cef175e5b054850eb44c7c7f39d4b9f2",
+    "index_name": "reference_file_cef175e5",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -255,6 +255,18 @@
                         "type": "text"
                     },
                     "documents": {
+                        "type": "keyword"
+                    },
+                    "external": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "external_id": {
                         "type": "keyword"
                     },
                     "file_format": {
