@@ -1,6 +1,6 @@
 {
-    "hash": "860c78210639050b8fd8513bf7a3e9f0",
-    "index_name": "measurement_set_860c7821",
+    "hash": "25273133017cfa43ddf1d1e906446067",
+    "index_name": "measurement_set_25273133",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -43,6 +43,11 @@
             {
                 "integers": {
                     "mapping": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -51,14 +56,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_index_and_search_analyzer",
-                "search_analyzer": "snovault_exact_index_and_search_analyzer",
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_fuzzy_index_analyzer",
-                "search_analyzer": "snovault_fuzzy_search_analyzer",
+                "analyzer": "snovault_index_analyzer",
+                "search_analyzer": "snovault_search_analyzer",
                 "store": false,
                 "type": "text"
             },

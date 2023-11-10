@@ -1,6 +1,6 @@
 {
-    "hash": "db32fad3c972c3bb5f18539b6c21f267",
-    "index_name": "rodent_donor_db32fad3",
+    "hash": "1b3997a479f1add6dd72ba79e97212ae",
+    "index_name": "rodent_donor_1b3997a4",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -43,6 +43,11 @@
             {
                 "integers": {
                     "mapping": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -51,14 +56,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_index_and_search_analyzer",
-                "search_analyzer": "snovault_exact_index_and_search_analyzer",
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_fuzzy_index_analyzer",
-                "search_analyzer": "snovault_fuzzy_search_analyzer",
+                "analyzer": "snovault_index_analyzer",
+                "search_analyzer": "snovault_search_analyzer",
                 "store": false,
                 "type": "text"
             },

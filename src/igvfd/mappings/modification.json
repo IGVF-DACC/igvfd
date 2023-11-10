@@ -1,6 +1,6 @@
 {
-    "hash": "9e6c2efe4889e26c8bae4370436fcebb",
-    "index_name": "modification_9e6c2efe",
+    "hash": "e878415f9709f8a7699cfe0c372cb12a",
+    "index_name": "modification_e878415f",
     "item_type": "modification",
     "mapping": {
         "dynamic_templates": [
@@ -43,6 +43,11 @@
             {
                 "integers": {
                     "mapping": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -51,14 +56,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_index_and_search_analyzer",
-                "search_analyzer": "snovault_exact_index_and_search_analyzer",
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_fuzzy_index_analyzer",
-                "search_analyzer": "snovault_fuzzy_search_analyzer",
+                "analyzer": "snovault_index_analyzer",
+                "search_analyzer": "snovault_search_analyzer",
                 "store": false,
                 "type": "text"
             },

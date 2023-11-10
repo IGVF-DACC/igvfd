@@ -1,6 +1,6 @@
 {
-    "hash": "6ee7c7e6771a919a809c358283e58efc",
-    "index_name": "auxiliary_set_6ee7c7e6",
+    "hash": "54391ab4f08a4131c12aeb68f39fa992",
+    "index_name": "auxiliary_set_54391ab4",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -43,6 +43,11 @@
             {
                 "integers": {
                     "mapping": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -51,14 +56,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_index_and_search_analyzer",
-                "search_analyzer": "snovault_exact_index_and_search_analyzer",
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_fuzzy_index_analyzer",
-                "search_analyzer": "snovault_fuzzy_search_analyzer",
+                "analyzer": "snovault_index_analyzer",
+                "search_analyzer": "snovault_search_analyzer",
                 "store": false,
                 "type": "text"
             },

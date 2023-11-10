@@ -1,6 +1,6 @@
 {
-    "hash": "877d9344f871a78223390264acb86ed1",
-    "index_name": "software_877d9344",
+    "hash": "882a10bdea40a370b4654e0248f67cde",
+    "index_name": "software_882a10bd",
     "item_type": "software",
     "mapping": {
         "dynamic_templates": [
@@ -43,6 +43,11 @@
             {
                 "integers": {
                     "mapping": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
                         "type": "long"
                     },
                     "match_mapping_type": "long"
@@ -51,14 +56,14 @@
         ],
         "properties": {
             "_exact": {
-                "analyzer": "snovault_exact_index_and_search_analyzer",
-                "search_analyzer": "snovault_exact_index_and_search_analyzer",
+                "analyzer": "snovault_exact_analyzer",
+                "search_analyzer": "snovault_exact_analyzer",
                 "store": false,
                 "type": "text"
             },
             "_fuzzy": {
-                "analyzer": "snovault_fuzzy_index_analyzer",
-                "search_analyzer": "snovault_fuzzy_search_analyzer",
+                "analyzer": "snovault_index_analyzer",
+                "search_analyzer": "snovault_search_analyzer",
                 "store": false,
                 "type": "text"
             },
