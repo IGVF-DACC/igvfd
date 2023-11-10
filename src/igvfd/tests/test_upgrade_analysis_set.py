@@ -16,6 +16,7 @@ def test_analysis_set_upgrade_1_2(upgrader, analysis_set_v1):
 
 
 def test_analysis_set_upgrade_3_4(upgrader, analysis_set_v3):
+    assert 'file_set_type' not in analysis_set_v3
     value = upgrader.upgrade('analysis_set', analysis_set_v3, current_version='3', target_version='4')
     assert value['schema_version'] == '4'
     assert value['file_set_type'] == 'intermediate analysis'

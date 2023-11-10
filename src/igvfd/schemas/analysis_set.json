@@ -6,7 +6,8 @@
     "type": "object",
     "required": [
         "award",
-        "lab"
+        "lab",
+        "file_set_type"
     ],
     "identifyingProperties": [
         "uuid",
