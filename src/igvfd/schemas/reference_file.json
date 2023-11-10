@@ -40,9 +40,6 @@
         },
         {
             "$ref": "mixins.json#/file_format_type"
-        },
-        {
-            "$merge": "mixins.json#/product_info/sources"
         }
     ],
     "dependentSchemas": {
@@ -294,6 +291,9 @@
                 "appscript": "[\"GENCODE:Release 44\", \"GRC:GCA_000001405.29_GRCh38.p14\", \"ENSEMBL:ENSG00000101126\"]",
                 "igvf_utils": "GENCODE:Release 44, GRC:GCA_000001405.29_GRCh38.p14, ENSEMBL:ENSG00000101126"
             }
+        },
+        "sources": {
+            "$merge": "mixins.json#/product_info/sources"
         },
         "external": {
             "title": "External",
