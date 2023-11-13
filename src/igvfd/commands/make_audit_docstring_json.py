@@ -6,6 +6,7 @@ import igvfd.audit.formatter
 import igvfd.audit.human_donor
 import igvfd.audit.in_vitro_system
 import igvfd.audit.matrix_file
+import igvfd.audit.analysis_set
 import igvfd.audit.measurement_set
 import igvfd.audit.curated_set
 import igvfd.audit.ontology_term
@@ -29,6 +30,7 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.human_donor,
     igvfd.audit.in_vitro_system,
     igvfd.audit.matrix_file,
+    igvfd.audit.analysis_set,
     igvfd.audit.measurement_set,
     igvfd.audit.curated_set,
     igvfd.audit.ontology_term,

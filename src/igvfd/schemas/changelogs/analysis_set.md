@@ -1,5 +1,10 @@
 ## Changelog for *`analysis_set.json`*
 
+### Schema version 4
+
+* Add `file_set_type`.
+* Require `file_set_type`.
+
 ### Minor changes since schema version 3
 
 * Add `files`.
