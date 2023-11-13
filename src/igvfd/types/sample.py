@@ -186,7 +186,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, donors, sex, age, age_units=None, embryonic=None, virtual=None, classification=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None):
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, embryonic=None, virtual=None, classification=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
@@ -317,7 +317,33 @@ class Biosample(Sample):
             if depleted_treatment_summaries:
                 summary_terms += f' depleted of {", ".join(depleted_treatment_summaries)},'
             if perturbation_treatment_summaries:
-                summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)}'
+                summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)},'
+
+        # construct library set overview is appended to the end of the summary
+        if construct_library_sets:
+            verb = 'modified with'
+            library_types = set()
+            for CLS in construct_library_sets:
+                CLS_object = request.embed(CLS, '@@object?skip_calculated=true')
+                library_types.add(CLS_object['file_set_type'])
+            if nucleic_acid_delivery:
+                if nucleic_acid_delivery == 'lentiviral transduction':
+                    verb = 'transduced (lentivirus) with'
+                elif nucleic_acid_delivery == 'adenoviral transduction':
+                    verb = 'transduced (adenovirus) with'
+                else:
+                    verb = 'transfected with'
+            if len(library_types) == 1:
+                library_types = ', '.join(library_types)
+                if moi:
+                    summary_terms += f' {verb} a {library_types} (MOI of {moi}),'
+                else:
+                    summary_terms += f' {verb} a {library_types},'
+            else:
+                if moi:
+                    summary_terms += f' {verb} multiple libraries (MOI of {moi}),'
+                else:
+                    summary_terms += f' {verb} multiple libraries,'
 
         return summary_terms.strip(',')
 
@@ -410,7 +436,7 @@ class TechnicalSample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, sample_material, virtual=None):
+    def summary(self, request, sample_terms, sample_material, virtual=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None):
         if len(sample_terms) > 1:
             summary_terms = 'mixed'
         else:
@@ -422,6 +448,26 @@ class TechnicalSample(Sample):
         if virtual:
             summary_terms = f'virtual {summary_terms}'
 
+        if construct_library_sets:
+            verb = 'modified with'
+            library_types = set()
+            for CLS in construct_library_sets:
+                CLS_object = request.embed(CLS, '@@object?skip_calculated=true')
+                library_types.add(CLS_object['file_set_type'])
+            if nucleic_acid_delivery:
+                if nucleic_acid_delivery == 'lentiviral transduction':
+                    verb = 'transduced (lentivirus) with'
+                elif nucleic_acid_delivery == 'adenoviral transduction':
+                    verb = 'transduced (adenovirus) with'
+                else:
+                    verb = 'transfected with'
+            if len(library_types) == 1:
+                library_types = ', '.join(library_types)
+                summary_terms = f'{summary_terms} {verb} a {library_types}'
+            else:
+                summary_terms = f'{summary_terms} {verb} multiple libraries'
+        if moi:
+            summary_terms = f'{summary_terms} (MOI of {moi})'
         return summary_terms
 
     @calculated_property(
