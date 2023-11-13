@@ -1,6 +1,6 @@
 {
-    "hash": "8da998e3398aa535f8788e51e4981c5d",
-    "index_name": "construct_library_set_8da998e3",
+    "hash": "0e95a26278045b698b3200221991dcf5",
+    "index_name": "construct_library_set_0e95a262",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -279,10 +279,16 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "originated_from": {
                                 "type": "keyword"
                             },
                             "part_of": {
+                                "type": "keyword"
+                            },
+                            "parts": {
                                 "type": "keyword"
                             },
                             "passage_number": {
@@ -309,6 +315,9 @@
                             "pooled_from": {
                                 "type": "keyword"
                             },
+                            "pooled_in": {
+                                "type": "keyword"
+                            },
                             "preservation_method": {
                                 "type": "keyword"
                             },
@@ -331,6 +340,9 @@
                                 "type": "keyword"
                             },
                             "sex": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sorted_from": {

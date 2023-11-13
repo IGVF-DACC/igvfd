@@ -60,3 +60,38 @@ def test_tissue_taxa_calculation(testapp, tissue, human_donor, rodent_donor):
         {'donors': [human_donor['@id'], rodent_donor['@id']]})
     res = testapp.get(tissue['@id'])
     assert res.json.get('taxa', None) == None
+
+
+def test_pooled_in(testapp, primary_cell, tissue, in_vitro_cell_line, in_vitro_differentiated_cell):
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'pooled_from': [tissue['@id'], primary_cell['@id']]
+        }
+    )
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'pooled_from': [tissue['@id'], primary_cell['@id']]
+        }
+    )
+    res = testapp.get(tissue['@id'])
+    assert set(res.json.get('pooled_in')) == {in_vitro_cell_line['@id'], in_vitro_differentiated_cell['@id']}
+
+
+def test_parts(testapp, primary_cell, tissue, in_vitro_cell_line):
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'part_of': tissue['@id']
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'part_of': tissue['@id']
+        }
+    )
+    res = testapp.get(tissue['@id'])
+    print(res.json)
+    assert set(res.json.get('parts')) == {in_vitro_cell_line['@id'], primary_cell['@id']}

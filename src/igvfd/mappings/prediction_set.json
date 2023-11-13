@@ -1,6 +1,6 @@
 {
-    "hash": "c1bb9f607efdcb500ab53e2e8cdf74e2",
-    "index_name": "prediction_set_c1bb9f60",
+    "hash": "39245bbb74bf3087ad70a00e7b82d977",
+    "index_name": "prediction_set_39245bbb",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1199,10 +1199,16 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "originated_from": {
                                 "type": "keyword"
                             },
                             "part_of": {
+                                "type": "keyword"
+                            },
+                            "parts": {
                                 "type": "keyword"
                             },
                             "passage_number": {
@@ -1227,6 +1233,9 @@
                                 "type": "keyword"
                             },
                             "pooled_from": {
+                                "type": "keyword"
+                            },
+                            "pooled_in": {
                                 "type": "keyword"
                             },
                             "preservation_method": {
@@ -1329,6 +1338,9 @@
                                 "type": "keyword"
                             },
                             "sex": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sorted_from": {

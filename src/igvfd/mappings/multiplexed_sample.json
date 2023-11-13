@@ -1,6 +1,6 @@
 {
-    "hash": "bd8dbefaf630c584d186e42e2938c627",
-    "index_name": "multiplexed_sample_bd8dbefa",
+    "hash": "6d92b09c781e612255a177679f57bcf8",
+    "index_name": "multiplexed_sample_6d92b09c",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1107,6 +1107,9 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
@@ -1117,6 +1120,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sorted_from": {
@@ -1502,10 +1508,16 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "originated_from": {
                                 "type": "keyword"
                             },
                             "part_of": {
+                                "type": "keyword"
+                            },
+                            "parts": {
                                 "type": "keyword"
                             },
                             "passage_number": {
@@ -1530,6 +1542,9 @@
                                 "type": "keyword"
                             },
                             "pooled_from": {
+                                "type": "keyword"
+                            },
+                            "pooled_in": {
                                 "type": "keyword"
                             },
                             "preservation_method": {
@@ -1633,6 +1648,9 @@
                             "sex": {
                                 "type": "keyword"
                             },
+                            "sorted_fractions": {
+                                "type": "keyword"
+                            },
                             "sorted_from": {
                                 "type": "keyword"
                             },
@@ -1732,6 +1750,9 @@
                     "nucleic_acid_delivery": {
                         "type": "keyword"
                     },
+                    "origin_of": {
+                        "type": "keyword"
+                    },
                     "publication_identifiers": {
                         "type": "keyword"
                     },
@@ -1819,6 +1840,9 @@
                         "type": "object"
                     },
                     "schema_version": {
+                        "type": "keyword"
+                    },
+                    "sorted_fractions": {
                         "type": "keyword"
                     },
                     "sorted_from": {
@@ -1943,10 +1967,16 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "originated_from": {
                                 "type": "keyword"
                             },
                             "part_of": {
+                                "type": "keyword"
+                            },
+                            "parts": {
                                 "type": "keyword"
                             },
                             "passage_number": {
@@ -1973,6 +2003,9 @@
                             "pooled_from": {
                                 "type": "keyword"
                             },
+                            "pooled_in": {
+                                "type": "keyword"
+                            },
                             "preservation_method": {
                                 "type": "keyword"
                             },
@@ -1995,6 +2028,9 @@
                                 "type": "keyword"
                             },
                             "sex": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sorted_from": {

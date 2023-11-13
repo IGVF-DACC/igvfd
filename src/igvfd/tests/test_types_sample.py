@@ -121,3 +121,39 @@ def test_classification(testapp, primary_cell, technical_sample, whole_organism,
     assert res.json.get('classification') == 'cell line'
     res = testapp.get(multiplexed_sample['@id'])
     assert res.json.get('classification') == 'multiplexed sample'
+
+
+def test_sorted_fractions(testapp, primary_cell, tissue, in_vitro_cell_line):
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'sorted_from': primary_cell['@id'],
+            'sorted_from_detail': 'something',
+        }
+    )
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'sorted_from': primary_cell['@id'],
+            'sorted_from_detail': 'something',
+        }
+    )
+    res = testapp.get(primary_cell['@id'])
+    assert set(res.json.get('sorted_fractions')) == {in_vitro_cell_line['@id'], tissue['@id']}
+
+
+def test_origin_of(testapp, in_vitro_differentiated_cell, tissue, in_vitro_cell_line):
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'originated_from': tissue['@id'],
+        }
+    )
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'originated_from': tissue['@id'],
+        }
+    )
+    res = testapp.get(tissue['@id'])
+    assert set(res.json.get('origin_of')) == {in_vitro_cell_line['@id'], in_vitro_differentiated_cell['@id']}

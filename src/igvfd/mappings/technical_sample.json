@@ -1,6 +1,6 @@
 {
-    "hash": "b1602db35f0ad3e205797723a8cf670e",
-    "index_name": "technical_sample_b1602db3",
+    "hash": "1dd24985f47cb2283e09870d9ec72f02",
+    "index_name": "technical_sample_1dd24985",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -772,6 +772,9 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
@@ -782,6 +785,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sorted_from": {
@@ -854,6 +860,9 @@
                         "type": "text"
                     },
                     "nucleic_acid_delivery": {
+                        "type": "keyword"
+                    },
+                    "origin_of": {
                         "type": "keyword"
                     },
                     "product_id": {
@@ -950,6 +959,9 @@
                         "type": "object"
                     },
                     "schema_version": {
+                        "type": "keyword"
+                    },
+                    "sorted_fractions": {
                         "type": "keyword"
                     },
                     "sorted_from": {
@@ -1074,10 +1086,16 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "originated_from": {
                                 "type": "keyword"
                             },
                             "part_of": {
+                                "type": "keyword"
+                            },
+                            "parts": {
                                 "type": "keyword"
                             },
                             "passage_number": {
@@ -1104,6 +1122,9 @@
                             "pooled_from": {
                                 "type": "keyword"
                             },
+                            "pooled_in": {
+                                "type": "keyword"
+                            },
                             "preservation_method": {
                                 "type": "keyword"
                             },
@@ -1126,6 +1147,9 @@
                                 "type": "keyword"
                             },
                             "sex": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sorted_from": {

@@ -1,6 +1,6 @@
 {
-    "hash": "294bd6f1795f5dd24cc032bb7849439b",
-    "index_name": "curated_set_294bd6f1",
+    "hash": "8d5c296b9bc20da5ccdf8723d6f88981",
+    "index_name": "curated_set_8d5c296b",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1203,10 +1203,16 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "originated_from": {
                                 "type": "keyword"
                             },
                             "part_of": {
+                                "type": "keyword"
+                            },
+                            "parts": {
                                 "type": "keyword"
                             },
                             "passage_number": {
@@ -1231,6 +1237,9 @@
                                 "type": "keyword"
                             },
                             "pooled_from": {
+                                "type": "keyword"
+                            },
+                            "pooled_in": {
                                 "type": "keyword"
                             },
                             "preservation_method": {
@@ -1333,6 +1342,9 @@
                                 "type": "keyword"
                             },
                             "sex": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sorted_from": {

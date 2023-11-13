@@ -1,6 +1,6 @@
 {
-    "hash": "2027e7b9dca8645f15d8d433ce9622b1",
-    "index_name": "tissue_2027e7b9",
+    "hash": "f1a920560e711d518fcba4c606f371a0",
+    "index_name": "tissue_f1a92056",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -947,6 +947,9 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
@@ -957,6 +960,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sorted_from": {
@@ -1035,7 +1041,13 @@
                     "nucleic_acid_delivery": {
                         "type": "keyword"
                     },
+                    "origin_of": {
+                        "type": "keyword"
+                    },
                     "part_of": {
+                        "type": "keyword"
+                    },
+                    "parts": {
                         "type": "keyword"
                     },
                     "pmi": {
@@ -1051,6 +1063,9 @@
                         "type": "keyword"
                     },
                     "pooled_from": {
+                        "type": "keyword"
+                    },
+                    "pooled_in": {
                         "type": "keyword"
                     },
                     "preservation_method": {
@@ -1149,6 +1164,9 @@
                         "type": "keyword"
                     },
                     "sex": {
+                        "type": "keyword"
+                    },
+                    "sorted_fractions": {
                         "type": "keyword"
                     },
                     "sorted_from": {
@@ -1273,10 +1291,16 @@
                             "nucleic_acid_delivery": {
                                 "type": "keyword"
                             },
+                            "origin_of": {
+                                "type": "keyword"
+                            },
                             "originated_from": {
                                 "type": "keyword"
                             },
                             "part_of": {
+                                "type": "keyword"
+                            },
+                            "parts": {
                                 "type": "keyword"
                             },
                             "passage_number": {
@@ -1303,6 +1327,9 @@
                             "pooled_from": {
                                 "type": "keyword"
                             },
+                            "pooled_in": {
+                                "type": "keyword"
+                            },
                             "preservation_method": {
                                 "type": "keyword"
                             },
@@ -1325,6 +1352,9 @@
                                 "type": "keyword"
                             },
                             "sex": {
+                                "type": "keyword"
+                            },
+                            "sorted_fractions": {
                                 "type": "keyword"
                             },
                             "sorted_from": {
