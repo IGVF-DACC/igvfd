@@ -1,5 +1,4 @@
 ## Changelog for *`file.json`*
 
-### Release v1
-
-* Deprecate `reference_data` and `sequence_data` schemas.
+* Disallow submission of empty string in `dbxrefs`. (11/08/2023)
+* Deprecate `reference_data` and `sequence_data` schemas. (06/27/2023)

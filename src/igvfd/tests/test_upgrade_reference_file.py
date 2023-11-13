@@ -26,3 +26,9 @@ def test_reference_file_upgrade_4_5(upgrader, reference_file_v4):
     assert value['schema_version'] == '5'
     assert 'file_format_type' in value
     assert value['file_format_type'] == 'bed9+'
+
+
+def test_reference_file_upgrade_4_5(upgrader, reference_file_v5):
+    value = upgrader.upgrade('reference_file', reference_file_v5, current_version='5', target_version='6')
+    assert 'dbxrefs' not in value
+    assert value['schema_version'] == '6'

@@ -90,12 +90,13 @@
             "description": "Identifiers from external resources that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
             "comment": "This property is overwritten by the subclasses to define specific enum values.",
             "type": "array",
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "External Identifier",
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
                 "type": "string",
-                "pattern": "^$"
+                "pattern": "(?!)"
             }
         },
         "derived_from": {

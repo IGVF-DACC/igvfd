@@ -18,3 +18,13 @@ def matrix_file(testapp, lab, award, analysis_set_with_sample, reference_file):
         'dimension2': 'gene'
     }
     return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def matrix_file_v1(matrix_file):
+    item = matrix_file.copy()
+    item.update({
+        'schema_version': '1',
+        'dbxrefs': ['']
+    })
+    return item

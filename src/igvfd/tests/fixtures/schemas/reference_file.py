@@ -58,3 +58,13 @@ def reference_file_v4(testapp, lab, award, analysis_set_with_sample):
         'content_type': 'regulatory_regions'
     }
     return item
+
+
+@pytest.fixture
+def reference_file_v5(reference_file):
+    item = reference_file.copy()
+    item.update({
+        'schema_version': '5',
+        'dbxrefs': ['']
+    })
+    return item
