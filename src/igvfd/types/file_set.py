@@ -232,8 +232,8 @@ class MeasurementSet(FileSet):
         Path('readout', include=['@id', 'term_name']),
         Path('library_construction_platform', include=['@id', 'term_name']),
         Path('control_file_sets', include=['@id', 'accession', 'aliases']),
-        Path('related_multiome_datasets', include=['@id', 'accession']),
-        Path('auxiliary_sets', include=['@id', 'accession', 'aliases']),
+        Path('related_multiome_datasets', include=['@id', 'accession', 'summary', 'aliases']),
+        Path('auxiliary_sets', include=['@id', 'accession', 'summary', 'aliases']),
         Path('samples.treatments', include=['@id', 'purpose', 'treatment_type', 'summary']),
         Path('samples.cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary']),
         Path('samples.disease_terms', include=['@id', 'term_name']),
@@ -373,7 +373,7 @@ class AuxiliarySet(FileSet):
     item_type = 'auxiliary_set'
     schema = load_schema('igvfd:schemas/auxiliary_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('measurement_sets', include=['@id', 'accession', 'aliases']),
+        Path('measurement_sets', include=['@id', 'accession', 'summary', 'aliases']),
     ]
     rev = FileSet.rev | {'measurement_sets': ('MeasurementSet', 'auxiliary_sets')}
 
