@@ -128,13 +128,7 @@ Browse using the demo URL (e.g. `https://igvfd-igvf-1234-my-feature-branch.demo.
 
 ## Clean up demo stacks
 
-```bash
-$ cdk destroy -c branch=IGVF-1234-my-feature-branch --profile igvf-dev
-```
-
-This only cleans up the CodePipeline stack, not the application stacks deployed by the pipeline.
-
-In most cases you probably want to clean up everything:
+To clean up demo stacks and the associated CodePipeline:
 
 ```bash
 $ python commands/cdk_destroy_all_stacks.py -c branch=IGVF-1234-my-feature-branch --profile igvf-dev
