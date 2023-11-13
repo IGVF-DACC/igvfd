@@ -59,7 +59,7 @@ class Sample(Item):
         Path('sources', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('sorted_from', include=['@id', 'accession']),
-        Path('file_sets', include=['@id', 'accession', 'aliases', 'lab', 'status']),
+        Path('file_sets', include=['@id', 'accession', 'summary', 'aliases', 'lab', 'status']),
         Path('file_sets.lab', include=['title']),
         Path('multiplexed_in', include=['@id', 'accession'])
     ]
