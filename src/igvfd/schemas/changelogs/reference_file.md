@@ -1,14 +1,14 @@
 ## Changelog for *`reference_file.json`*
 
-### Schema version 6
-
-* Enable submission of GENCODE, ENSEMBL, and GRC database references to `dbxrefs`.
-* Require a minimum of 1 item for `dbxrefs`.
-
 ### Minor changes since schema version 6
 
 * Add `tsv` to `file_format`.
 * Add `variants_proteins_biosamples` and `variants_proteins_phenotypes` to `content_type`.
+
+### Schema version 6
+
+* Enable submission of GENCODE, ENSEMBL, and GRC database references to `dbxrefs`.
+* Require a minimum of 1 item for `dbxrefs`.
 
 ### Schema version 5
 
