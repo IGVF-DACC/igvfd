@@ -128,7 +128,7 @@
         "award": "HG012012",
         "md5sum": "51b94a9ce0adac0eb6ecb5356cabb47e",
         "file_format": "tsv",
-        "content_type": "vaiants_proteins_phenotypes",
+        "content_type": "variants_proteins_phenotypes",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
