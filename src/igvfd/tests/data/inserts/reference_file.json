@@ -117,5 +117,47 @@
             "ClinGen",
             "GREGoR"
         ]
+    },
+    {
+        "uuid": "9f42cbdc-bed9-4037-b67c-78ea8c6a1862",
+        "accession": "IGVFFI0865ETVT",
+        "aliases": [
+            "igvf:tsv_catalog_file1"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "51b94a9ce0adac0eb6ecb5356cabb47e",
+        "file_format": "tsv",
+        "content_type": "vaiants_proteins_phenotypes",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "collections": [
+            "ClinGen",
+            "GREGoR"
+        ]
+    },
+    {
+        "uuid": "e3ae15b1-beb2-48a1-a42c-21bf5e02fd49",
+        "accession": "IGVFFI7115PAJX",
+        "aliases": [
+            "igvf:tsv_catalog_file"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "3b57f00cdaa44e0ed1485a1c706af4e9",
+        "file_format": "tsv",
+        "content_type": "variants_proteins_biosamples",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "collections": [
+            "ClinGen",
+            "GREGoR"
+        ]
     }
 ]

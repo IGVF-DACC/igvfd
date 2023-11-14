@@ -8,7 +8,7 @@
 ### Minor changes since schema version 4
 
 * Add `tsv` to `file_format`.
-* Add `variants_proteins_biology` and `vaiants_proteins_phenotypes` to `content_type`.
+* Add `variants_proteins_biosamples` and `vaiants_proteins_phenotypes` to `content_type`.
 
 ### Schema version 5
 
