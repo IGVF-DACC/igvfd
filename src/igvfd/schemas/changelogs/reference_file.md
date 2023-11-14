@@ -1,6 +1,8 @@
 ## Changelog for *`reference_file.json`*
 
 ### Minor changes since schema version 6
+* Add `tsv` to `file_format`.
+* Add `variants_proteins_biosamples` and `variants_proteins_phenotypes` to `content_type`.
 * Add `sources`.
 * Add `external`.
 * Add `external_id`.
