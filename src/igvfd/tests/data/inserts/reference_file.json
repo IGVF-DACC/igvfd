@@ -116,6 +116,11 @@
         "collections": [
             "ClinGen",
             "GREGoR"
-        ]
+        ],
+        "sources": [
+            "be960dc7-1912-4ff5-8b1a-a7e2e1b2533e"
+        ],
+        "external": true,
+        "external_id": "ENCFF000AAA"
     }
 ]

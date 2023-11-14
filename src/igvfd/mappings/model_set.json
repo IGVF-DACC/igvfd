@@ -1,6 +1,6 @@
 {
-    "hash": "baf22dfbce9dacaa1dae08ec51e5f122",
-    "index_name": "model_set_baf22dfb",
+    "hash": "f7b61e6d9896331f24434d7df47a4eec",
+    "index_name": "model_set_f7b61e6d",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -816,6 +816,18 @@
                             "documents": {
                                 "type": "keyword"
                             },
+                            "external": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "external_id": {
+                                "type": "keyword"
+                            },
                             "file_format": {
                                 "type": "keyword"
                             },
@@ -961,6 +973,9 @@
                                 "type": "long"
                             },
                             "source_url": {
+                                "type": "keyword"
+                            },
+                            "sources": {
                                 "type": "keyword"
                             },
                             "start_view_position": {

@@ -1,5 +1,10 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 6
+* Add `sources`.
+* Add `external`.
+* Add `external_id`.
+
 ### Schema version 6
 
 * Enable submission of GENCODE, ENSEMBL, and GRC database references to `dbxrefs`.
