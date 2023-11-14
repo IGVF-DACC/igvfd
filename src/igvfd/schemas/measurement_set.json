@@ -8,7 +8,8 @@
         "award",
         "lab",
         "assay_term",
-        "samples"
+        "samples",
+        "file_set_type"
     ],
     "identifyingProperties": [
         "uuid",
@@ -197,6 +198,17 @@
             "submissionExample": {
                 "appscript": "[\"john-doe:auxiliary_set01\", \"TSTDS98084731\"]",
                 "igvf_utils": "john-doe:auxiliary_set01, TSTDS98084731"
+            }
+        },
+        "file_set_type": {
+            "type": "string",
+            "description": "The category that best describes this measurement set.",
+            "enum": [
+                "experimental data"
+            ],
+            "submissionExample": {
+                "appscript": "experimental data",
+                "igvf_utils": "experimental data"
             }
         }
     },

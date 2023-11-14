@@ -1288,6 +1288,9 @@
                         },
                         "type": "object"
                     },
+                    "file_set_type": {
+                        "type": "keyword"
+                    },
                     "files": {
                         "properties": {
                             "@id": {
@@ -1825,6 +1828,9 @@
                                 "type": "keyword"
                             },
                             "donors": {
+                                "type": "keyword"
+                            },
+                            "file_set_type": {
                                 "type": "keyword"
                             },
                             "files": {

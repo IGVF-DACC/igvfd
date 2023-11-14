@@ -52,9 +52,8 @@
             "default": "6"
         },
         "file_set_type": {
-            "title": "File Set Type",
-            "description": "The category that best describes this curated file set.",
             "type": "string",
+            "description": "The category that best describes this curated file set.",
             "enum": [
                 "elements",
                 "external data for catalog",

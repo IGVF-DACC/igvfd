@@ -49,9 +49,8 @@
             "default": "5"
         },
         "file_set_type": {
-            "title": "File Set Type",
-            "description": "The category that best describes this auxiliary file set.",
             "type": "string",
+            "description": "The category that best describes this auxiliary file set.",
             "enum": [
                 "cell hashing",
                 "circularized barcode detection",

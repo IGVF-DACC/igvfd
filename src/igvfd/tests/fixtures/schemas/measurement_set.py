@@ -129,3 +129,15 @@ def measurement_set_v9(measurement_set_v8):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v10(testapp, lab, award, assay_term_atac, tissue):
+    item = {
+        'schema_version': '10',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_atac['@id'],
+        'samples': [tissue['@id']]
+    }
+    return item

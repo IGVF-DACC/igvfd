@@ -162,6 +162,5 @@ def file_set_7_8(value, system):
 @upgrade_step('measurement_set', '10', '11')
 def measurement_set_10_11(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1171
-    if 'sequencing_library_type' in value:
-        value['sequencing_library_types'] = value['sequencing_library_type']
-        del value['sequencing_library_type']
+    if 'file_set_type' not in value:
+        value['file_set_type'] = 'experimental data'
