@@ -149,6 +149,7 @@
                                 "owl",
                                 "PWM",
                                 "tar",
+                                "tsv",
                                 "txt",
                                 "xml"
                             ]
@@ -206,6 +207,8 @@
                 "variants_genes",
                 "variants_proteins",
                 "variants_proteins_terms",
+                "variants_proteins_biosamples",
+                "vaiants_proteins_phenotypes",
                 "variants_regulatory_regions",
                 "variants_variants",
                 "vector sequences"
