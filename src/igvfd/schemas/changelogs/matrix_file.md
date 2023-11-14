@@ -1,5 +1,9 @@
 ## Changelog for *`matrix_file.json`*
 
+### Minor changes since schema version 1
+
+* Expand `file_format` enum list to include `tar`.
+
 ### Schema version 2
 
 * Require a minimum of 1 item for `dbxrefs`.

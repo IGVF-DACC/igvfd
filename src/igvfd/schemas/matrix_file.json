@@ -104,7 +104,8 @@
             "enum": [
                 "h5ad",
                 "hdf5",
-                "mtx"
+                "mtx",
+                "tar"
             ],
             "submissionExample": {
                 "appscript": "h5ad",
