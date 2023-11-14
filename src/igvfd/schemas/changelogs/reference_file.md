@@ -5,6 +5,10 @@
 * Enable submission of GENCODE, ENSEMBL, and GRC database references to `dbxrefs`.
 * Require a minimum of 1 item for `dbxrefs`.
 
+### Minor changes since schema version 4
+
+* Add `tsv` to `file_format`.
+
 ### Schema version 5
 
 * Add `file_format_type`.
