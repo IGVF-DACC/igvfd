@@ -116,7 +116,12 @@
         "collections": [
             "ClinGen",
             "GREGoR"
-        ]
+        ],
+        "sources": [
+            "be960dc7-1912-4ff5-8b1a-a7e2e1b2533e"
+        ],
+        "external": true,
+        "external_id": "ENCFF000AAA"
     },
     {
         "uuid": "9f42cbdc-bed9-4037-b67c-78ea8c6a1862",
@@ -158,6 +163,6 @@
         "collections": [
             "ClinGen",
             "GREGoR"
-        ]
+        ],
     }
 ]

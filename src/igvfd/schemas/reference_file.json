@@ -157,6 +157,22 @@
                     }
                 }
             ]
+        },
+        "external_id": {
+            "if": {
+                "properties": {
+                    "external": {
+                        "const": false
+                    }
+                }
+            },
+            "then": {
+                "not": {
+                    "required": [
+                        "external_id"
+                    ]
+                }
+            }
         }
     },
     "type": "object",
@@ -278,6 +294,28 @@
             "submissionExample": {
                 "appscript": "[\"GENCODE:Release 44\", \"GRC:GCA_000001405.29_GRCh38.p14\", \"ENSEMBL:ENSG00000101126\"]",
                 "igvf_utils": "GENCODE:Release 44, GRC:GCA_000001405.29_GRCh38.p14, ENSEMBL:ENSG00000101126"
+            }
+        },
+        "sources": {
+            "$merge": "mixins.json#/product_info/sources"
+        },
+        "external": {
+            "title": "External",
+            "description": "Indicates whether the file was obtained from an external, non-IGVF source.",
+            "type": "boolean",
+            "default": false,
+            "submissionExample": {
+                "appscript": "True",
+                "igvf_utils": "True"
+            }
+        },
+        "external_id": {
+            "title": "External Identifier",
+            "description": "A unique identifier for the file at its original source.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "gencode.v44.annotation",
+                "igvf_utils": "gencode.v44.annotation"
             }
         }
     },

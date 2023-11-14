@@ -252,6 +252,9 @@ class ReferenceFile(File):
             if 'md5sum' in properties:
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
+            if 'external_id' in properties:
+                value = 'external:{external_id}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
         return keys
 
 
