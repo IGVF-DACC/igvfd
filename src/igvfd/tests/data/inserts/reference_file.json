@@ -163,6 +163,10 @@
         "collections": [
             "ClinGen",
             "GREGoR"
+<<<<<<< HEAD
         ],
+=======
+        ]
+>>>>>>> c7f34f8c (add inserts)
     }
 ]
