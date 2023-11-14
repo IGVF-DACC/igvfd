@@ -1,6 +1,6 @@
 ## Changelog for *`matrix_file.json`*
 
-### Minor changes since schema version 1
+### Minor changes since schema version 2
 
 * Expand `file_format` enum list to include `tar`.
 
