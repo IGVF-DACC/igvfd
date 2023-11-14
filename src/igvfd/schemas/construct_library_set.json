@@ -380,6 +380,7 @@
             "accessionType": "DS"
         },
         "file_set_type": {
+            "$merge": "file_set.json#/properties/file_set_type",
             "description": "The type or category of this construct library set.",
             "enum": [
                 "guide library",

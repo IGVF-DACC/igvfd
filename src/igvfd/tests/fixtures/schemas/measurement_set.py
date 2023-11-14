@@ -7,7 +7,8 @@ def measurement_set(testapp, lab, award, assay_term_starr, tissue):
         'award': award['@id'],
         'lab': lab['@id'],
         'assay_term': assay_term_starr['@id'],
-        'samples': [tissue['@id']]
+        'samples': [tissue['@id']],
+        'file_set_type': 'experimental data'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -19,7 +20,8 @@ def measurement_set_multiome(testapp, lab, award, assay_term_atac, tissue):
         'lab': lab['@id'],
         'assay_term': assay_term_atac['@id'],
         'multiome_size': 2,
-        'samples': [tissue['@id']]
+        'samples': [tissue['@id']],
+        'file_set_type': 'experimental data'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -31,7 +33,8 @@ def measurement_set_multiome_2(testapp, lab, award, assay_term_rna, in_vitro_cel
         'lab': lab['@id'],
         'assay_term': assay_term_rna['@id'],
         'multiome_size': 2,
-        'samples': [in_vitro_cell_line['@id']]
+        'samples': [in_vitro_cell_line['@id']],
+        'file_set_type': 'experimental data'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -73,7 +76,8 @@ def measurement_set_mpra(testapp, lab, award, assay_term_mpra, primary_cell):
         'award': award['@id'],
         'lab': lab['@id'],
         'assay_term': assay_term_mpra['@id'],
-        'samples': [primary_cell['@id']]
+        'samples': [primary_cell['@id']],
+        'file_set_type': 'experimental data'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 

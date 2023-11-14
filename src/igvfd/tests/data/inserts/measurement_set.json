@@ -24,7 +24,8 @@
         "auxiliary_sets": [
             "IGVFDS0001AUXI"
         ],
-        "accession": "IGVFDS0000MSET"
+        "accession": "IGVFDS0000MSET",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -39,7 +40,8 @@
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
         "multiome_size": 2,
-        "preferred_assay_title": "10x multiome"
+        "preferred_assay_title": "10x multiome",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -54,7 +56,8 @@
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
         "multiome_size": 2,
-        "preferred_assay_title": "10x multiome"
+        "preferred_assay_title": "10x multiome",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -75,7 +78,8 @@
             "mRNA enriched",
             "polyA depleted"
         ],
-        "accession": "IGVFDS0987SHAR"
+        "accession": "IGVFDS0987SHAR",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -90,7 +94,8 @@
         ],
         "assay_term": "/assay-terms/OBI_0002675/",
         "preferred_assay_title": "lentiMPRA",
-        "readout": "/assay-terms/OBI_0003090/"
+        "readout": "/assay-terms/OBI_0003090/",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -104,7 +109,8 @@
             "igvf:alias2"
         ],
         "assay_term": "/assay-terms/OBI_0000185/",
-        "preferred_assay_title": "yN2H"
+        "preferred_assay_title": "yN2H",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -119,7 +125,8 @@
         ],
         "assay_term": "/assay-terms/OBI_0002675/",
         "preferred_assay_title": "MPRA (scQer)",
-        "readout": "/assay-terms/OBI_0002631/"
+        "readout": "/assay-terms/OBI_0002631/",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -133,7 +140,8 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
-        "preferred_assay_title": "Parse Split-seq"
+        "preferred_assay_title": "Parse Split-seq",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -147,7 +155,8 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
-        "preferred_assay_title": "10x multiome with MULTI-seq"
+        "preferred_assay_title": "10x multiome with MULTI-seq",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -161,7 +170,8 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/NTR_0000744/",
-        "preferred_assay_title": "snMCT-seq"
+        "preferred_assay_title": "snMCT-seq",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -175,7 +185,8 @@
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
         "assay_term": "/assay-terms/igvf:starr-seq/",
-        "preferred_assay_title": "SUPERSTARR"
+        "preferred_assay_title": "SUPERSTARR",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -189,7 +200,8 @@
             "/multiplexed-samples/IGVFSM0000MPXD/"
         ],
         "assay_term": "/assay-terms/igvf:CRISPR/",
-        "preferred_assay_title": "CERES-seq"
+        "preferred_assay_title": "CERES-seq",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -203,7 +215,8 @@
             "igvf-dacc:in_vitro_system_cell_line"
         ],
         "assay_term": "/assay-terms/OBI_0003133/",
-        "preferred_assay_title": "Variant FlowFISH"
+        "preferred_assay_title": "Variant FlowFISH",
+        "file_set_type": "experimental data"
     },
     {
         "aliases": [
@@ -217,6 +230,7 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/NTR_0000745/",
-        "preferred_assay_title": "snM3C-seq"
+        "preferred_assay_title": "snM3C-seq",
+        "file_set_type": "experimental data"
     }
 ]
