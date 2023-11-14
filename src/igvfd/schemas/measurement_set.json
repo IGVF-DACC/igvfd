@@ -201,7 +201,6 @@
             }
         },
         "file_set_type": {
-            "type": "string",
             "description": "The category that best describes this measurement set.",
             "enum": [
                 "experimental data"

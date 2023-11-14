@@ -380,7 +380,6 @@
             "accessionType": "DS"
         },
         "file_set_type": {
-            "type": "string",
             "description": "The type or category of this construct library set.",
             "enum": [
                 "guide library",

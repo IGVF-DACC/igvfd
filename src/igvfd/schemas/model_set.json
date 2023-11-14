@@ -82,7 +82,6 @@
             }
         },
         "file_set_type": {
-            "type": "string",
             "description": "The category that best describes this predictive model set.",
             "enum": [
                 "neural network",

@@ -126,7 +126,6 @@
             "default": "3"
         },
         "file_set_type": {
-            "type": "string",
             "description": "The category that best describes this prediction set.",
             "enum": [
                 "pathogenicity",

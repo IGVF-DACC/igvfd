@@ -49,7 +49,6 @@
             "default": "5"
         },
         "file_set_type": {
-            "type": "string",
             "description": "The category that best describes this auxiliary file set.",
             "enum": [
                 "cell hashing",
