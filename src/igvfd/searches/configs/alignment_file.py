@@ -28,8 +28,17 @@ def alignment_file():
             'status': {
                 'title': 'Status'
             },
-            'type': {
-                'title': 'Object Type'
+            'audit.ERROR.category': {
+                'title': 'Error Audits'
+            },
+            'audit.NOT_COMPLIANT.category': {
+                'title': 'Not Compliant Audits'
+            },
+            'audit.WARNING.category': {
+                'title': 'Warning Audits'
+            },
+            'audit.INTERNAL_ACTION.category': {
+                'title': 'Internal Action Audits'
             },
         },
         'facet_groups': [
@@ -54,6 +63,10 @@ def alignment_file():
                 'facet_fields': [
                     'upload_status',
                     'status',
+                    'audit.ERROR.category',
+                    'audit.NOT_COMPLIANT.category',
+                    'audit.WARNING.category',
+                    'audit.INTERNAL_ACTION.category'
                 ],
             },
         ],
