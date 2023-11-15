@@ -29,16 +29,16 @@ def alignment_file():
                 'title': 'Status'
             },
             'audit.ERROR.category': {
-                'title': 'Error Audits'
+                'title': 'Audit Category: Error'
             },
             'audit.NOT_COMPLIANT.category': {
-                'title': 'Not Compliant Audits'
+                'title': 'Audit Category: Not Compliant'
             },
             'audit.WARNING.category': {
-                'title': 'Warning Audits'
+                'title': 'Audit Category: Warning'
             },
             'audit.INTERNAL_ACTION.category': {
-                'title': 'Internal Action Audits'
+                'title': 'Audit Category: Internal Action'
             },
         },
         'facet_groups': [
