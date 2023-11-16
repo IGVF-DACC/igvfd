@@ -28,7 +28,14 @@ def test_reference_file_upgrade_4_5(upgrader, reference_file_v4):
     assert value['file_format_type'] == 'bed9+'
 
 
-def test_reference_file_upgrade_4_5(upgrader, reference_file_v5):
+def test_reference_file_upgrade_5_6(upgrader, reference_file_v5):
     value = upgrader.upgrade('reference_file', reference_file_v5, current_version='5', target_version='6')
     assert 'dbxrefs' not in value
     assert value['schema_version'] == '6'
+
+
+def test_reference_file_upgrade_6_7(upgrader, reference_file_v6):
+    value = upgrader.upgrade('reference_file', reference_file_v6, current_version='6', target_version='7')
+    assert 'external' in value
+    assert value['external'] is False
+    assert value['schema_version'] == '7'

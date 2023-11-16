@@ -85,3 +85,10 @@ def file_5_6(value, system):
             value['dbxrefs'] = new_dbxrefs
         else:
             del value['dbxrefs']
+
+
+@upgrade_step('reference_file', '6', '7')
+def reference_file_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1272
+    if 'external' not in value:
+        value['external'] = False
