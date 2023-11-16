@@ -96,8 +96,9 @@ def audit_inconsistent_readout(value, system):
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     screen_assays = ['Perturb-seq',
                      'CRISPR screen',
-                     'massively parallel reporter assay']
-    if assay.get('term_name') in screen_assays:
+                     'massively parallel reporter assay',
+                     'cas mediated mutagenesis']
+    if assay.get('term_name') in screen_assays or value.get('preferred_assay_title', '') in screen_assays:
         if 'readout' not in value:
             detail = (
                 f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
