@@ -16,12 +16,36 @@ def audit_biosample_nih_institutional_certification(value, system):
         audit_levels: ERROR
     '''
     if ('nih_institutional_certification' not in value) and (any(donor.startswith('/human-donors/') for donor in value.get('donors'))):
-        sample_id = value.get('@id')
-        detail = (
-            f'Biosample {audit_link(path_to_text(sample_id), sample_id)} '
-            f'is missing NIH institutional certificate that is required for human samples.'
-        )
-        yield AuditFailure('missing nih_institutional_certification', detail, level='ERROR')
+        # Only audit if the sample is associated with at least one non-characterization assay.
+        assay_titles = []
+        assay_ids = []
+        for fs in value.get('file_sets', []):
+            fs_object = system.get('request').embed(fs + '@@object?skip_calculated=true')
+            assay_titles.append(fs_object.get('preferred_assay_title', ''))
+            fs_assay_term = system.get('request').embed(fs_object['assay_term'] + '@@object?skip_calculated=true')
+            assay_ids.append(fs_assay_term['term_id'])
+        excluded_assay_titles = [
+            'VAMP-seq',
+            'Saturation genome editing',
+            'CRISPR FlowFISH',
+            'lentiMPRA',
+            'AAV-MPRA',
+            'MPRA (scQer)',
+            'SUPERSTARR'
+        ]
+        excluded_assay_ids = [
+            'OBI:0002041',  # STARR-seq
+            'OBI:0002675'  # MPRA
+        ]
+        if any(title not in excluded_assay_titles for title in assay_titles) or \
+                any(ont_id not in excluded_assay_ids for ont_id in assay_ids) or \
+                (len(assay_titles) == 0 and len(assay_ids) == 0):
+            sample_id = value.get('@id')
+            detail = (
+                f'Biosample {audit_link(path_to_text(sample_id), sample_id)} '
+                f'is missing NIH institutional certificate that is required for human samples.'
+            )
+            yield AuditFailure('missing nih_institutional_certification', detail, level='ERROR')
 
 
 @audit_checker('Biosample', frame='object')

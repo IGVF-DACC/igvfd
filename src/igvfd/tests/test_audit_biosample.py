@@ -4,6 +4,7 @@ import pytest
 def test_audit_biosample_nih_institutional_certification(
     testapp,
     primary_cell,
+    measurement_set,
     human_donor,
     rodent_donor,
 ):
@@ -23,6 +24,23 @@ def test_audit_biosample_nih_institutional_certification(
     assert any(
         error['category'] == 'missing nih_institutional_certification'
         for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [primary_cell['@id']]
+        }
+    )
+    res = testapp.get(primary_cell['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing nih_institutional_certification'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
     )
     testapp.patch_json(
         primary_cell['@id'],
