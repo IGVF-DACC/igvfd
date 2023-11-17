@@ -18,30 +18,37 @@ def audit_biosample_nih_institutional_certification(value, system):
     if ('nih_institutional_certification' not in value) and (any(donor.startswith('/human-donors/') for donor in value.get('donors'))):
         # Only audit if the sample is associated with at least one non-characterization assay.
         assay_titles = []
-        assay_ids = []
+        assay_terms = []
         for fs in value.get('file_sets', []):
             fs_object = system.get('request').embed(fs + '@@object?skip_calculated=true')
             assay_titles.append(fs_object.get('preferred_assay_title', ''))
             fs_assay_term = system.get('request').embed(fs_object['assay_term'] + '@@object?skip_calculated=true')
-            assay_ids.append(fs_assay_term['term_id'])
+            assay_terms.append(fs_assay_term['term_name'])
         excluded_assay_titles = [
-            'VAMP-seq',
-            'Saturation genome editing',
+            'AAV-MPRA',
+            'CERES-seq',
             'CRISPR FlowFISH',
             'lentiMPRA',
-            'AAV-MPRA',
+            'MIAA',
             'MPRA (scQer)',
-            'SUPERSTARR'
+            'Perturb-seq',
+            'Saturation genome editing',
+            'SUPERSTARR',
+            'TAP-seq',
+            'Variant FlowFISH',
+            'VAMP-seq'
         ]
-        excluded_assay_ids = [
-            'OBI:0002041',  # STARR-seq
-            'OBI:0002675'  # MPRA
+        excluded_assay_terms = [
+            'cas mediated mutagenesis',  # OBI:0003133
+            'CRISPR screen',  # NTR:0000520
+            'self-transcribing active regulatory region sequencing assay',  # OBI:0002041
+            'massively parallel reporter assay'  # OBI:0002675
         ]
 
         assay_titles = [t for t in assay_titles if t != '']
         if any(title not in excluded_assay_titles for title in assay_titles) or \
-                any(ont_id not in excluded_assay_ids for ont_id in assay_ids) or \
-                (len(assay_titles) == 0 and len(assay_ids) == 0):
+                any(term not in excluded_assay_terms for ont_id in assay_terms) or \
+                (len(assay_titles) == 0 and len(assay_terms) == 0):
             sample_id = value.get('@id')
             detail = (
                 f'Biosample {audit_link(path_to_text(sample_id), sample_id)} '
