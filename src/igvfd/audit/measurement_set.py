@@ -94,11 +94,10 @@ def audit_inconsistent_readout(value, system):
     '''
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    assays_with_readout = ['Perturb-seq',
-                           'CRISPR screen',
+    assays_with_readout = ['CRISPR screen',
                            'massively parallel reporter assay',
                            'cas mediated mutagenesis']
-    if assay.get('term_name') in assays_with_readout or value.get('preferred_assay_title', '') in assays_with_readout:
+    if assay.get('term_name') in assays_with_readout:
         if 'readout' not in value:
             detail = (
                 f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
@@ -145,10 +144,9 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     crispr_assays = ['cas mediated mutagenesis',
-                     'CRISPR screen',
-                     'Perturb-seq'
+                     'CRISPR screen'
                      ]
-    if assay.get('term_name') in crispr_assays or value.get('preferred_assay_title', '') in crispr_assays:
+    if assay.get('term_name') in crispr_assays:
         samples = value.get('samples', [])
         bad_samples = []
         for sample in samples:

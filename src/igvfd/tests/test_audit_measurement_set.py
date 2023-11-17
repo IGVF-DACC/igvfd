@@ -279,17 +279,6 @@ def test_audit_missing_modification(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': 'Perturb-seq'
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing modification'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
             'assay_term': assay_term_crispr['@id'],
             'preferred_assay_title': '10x multiome'
         }
