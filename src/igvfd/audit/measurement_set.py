@@ -142,11 +142,13 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
         audit_category: missing modification
         audit_levels: ERROR
     '''
+    assay_term = value.get('assay_term')
+    assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     crispr_assays = ['cas mediated mutagenesis',
                      'CRISPR screen',
                      'Perturb-seq'
                      ]
-    if value['assay_term']['term_name'] in crispr_assays or value.get('preferred_assay_title', '') in crispr_assays:
+    if assay.get('term_name') in crispr_assays or value.get('preferred_assay_title', '') in crispr_assays:
         samples = value.get('samples', [])
         bad_samples = []
         for sample in samples:
