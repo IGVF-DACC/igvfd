@@ -37,6 +37,8 @@ def audit_biosample_nih_institutional_certification(value, system):
             'OBI:0002041',  # STARR-seq
             'OBI:0002675'  # MPRA
         ]
+
+        assay_titles = [t for t in assay_titles if t != '']
         if any(title not in excluded_assay_titles for title in assay_titles) or \
                 any(ont_id not in excluded_assay_ids for ont_id in assay_ids) or \
                 (len(assay_titles) == 0 and len(assay_ids) == 0):

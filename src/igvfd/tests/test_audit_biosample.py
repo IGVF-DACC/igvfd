@@ -4,6 +4,7 @@ import pytest
 def test_audit_biosample_nih_institutional_certification(
     testapp,
     primary_cell,
+    tissue,
     measurement_set,
     human_donor,
     rodent_donor,
