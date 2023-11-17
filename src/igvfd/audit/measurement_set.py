@@ -137,7 +137,7 @@ def audit_inconsistent_modifications(value, system):
 @audit_checker('MeasurementSet', frame='object')
 def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
-        audit_detail: CRISPR screen, cas mediated mutagenesis, and Perturb-seq measurement sets are required to have a modification specified on their samples.
+        audit_detail: CRISPR screen and cas mediated mutagenesis measurement sets are required to have a modification specified on their samples.
         audit_category: missing modification
         audit_levels: ERROR
     '''
