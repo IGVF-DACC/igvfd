@@ -268,7 +268,7 @@ class Biosample(Sample):
 
         # cellular sub pool is appended to the end of the summary in parentheses
         if (cellular_sub_pool and
-                biosample_type in ['primary_cell', 'in_vitro_system']):
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue']):
             summary_terms += f' ({cellular_sub_pool})'
 
         # a comma is added before sex or taxa if sex is unspecified

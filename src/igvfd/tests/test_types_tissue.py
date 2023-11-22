@@ -51,9 +51,10 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
         {
             'donors': [rodent_donor['@id'], parent_rodent_donor_2['@id']],
             'treatments': [treatment_chemical['@id']],
-            'disease_terms': [phenotype_term_alzheimers['@id']]
+            'disease_terms': [phenotype_term_alzheimers['@id']],
+            'cellular_sub_pool': 'PKR-1128',
         }
     )
     res = testapp.get(tissue['@id'])
     assert res.json.get(
-        'summary') == f'virtual embryonic brown adipose tissue, mixed sex, Mus musculus strain1, strain3 (50-100 days) associated with Alzheimer\'s disease, treated with 10 mM lactate for 1 hour'
+        'summary') == f'virtual embryonic brown adipose tissue (PKR-1128), mixed sex, Mus musculus strain1, strain3 (50-100 days) associated with Alzheimer\'s disease, treated with 10 mM lactate for 1 hour'
