@@ -39,7 +39,7 @@ def test_model_set_version_regex(
     assert res.status_code == 200
     res = testapp.patch_json(
         model_set_no_input['@id'],
-        {'model_version': '1.0.0'}
+        {'model_version': 'v1.0.0'}
     )
     assert res.status_code == 200
     res = testapp.patch_json(
