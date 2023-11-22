@@ -75,7 +75,7 @@
             "title": "Model Version",
             "description": "The semantic version number for this predictive model set.",
             "type": "string",
-            "pattern": "^v[0-9]\\.[0-9]\\.[1-9]$",
+            "pattern": "^v(?!0\\.0\\.0$)[0-9]+\\.[0-9]+\\.[0-9]+$",
             "submissionExample": {
                 "appscript": "v1.0.1",
                 "igvf_utils": "v1.0.1"
