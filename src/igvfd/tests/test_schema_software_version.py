@@ -14,7 +14,7 @@ def test_post_software_version(testapp, software, lab, award):
     res = testapp.post_json(
         '/software_version',
         {
-            'version': '2',
+            'version': 'v2.0.0',
             'award': award['@id'],
             'lab': lab['@id'],
             'software': software['@id'],
@@ -24,7 +24,7 @@ def test_post_software_version(testapp, software, lab, award):
     res = testapp.post_json(
         '/software_version',
         {
-            'version': '2.4.4',
+            'version': 'v2.4.4',
             'award': award['@id'],
             'lab': lab['@id'],
             'software': software['@id'],
