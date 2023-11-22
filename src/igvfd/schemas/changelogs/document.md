@@ -1,5 +1,9 @@
 ## Changelog for *`document.json`*
 
+### Minor changes since schema version 2
+
+* Expand `document_type` enum list to include `cell fate change protocol`.
+
 ### Schema version 2
 
 * Restrict `aliases` and `urls` to be a non-empty array with at least one item.
