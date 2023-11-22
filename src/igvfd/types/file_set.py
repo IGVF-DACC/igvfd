@@ -49,6 +49,16 @@ class FileSet(Item):
         Path('samples.targeted_sample_term', include=['@id', 'term_name']),
     ]
 
+    audit_inherit = [
+        'award',
+        'lab',
+        'files',
+        'documents',
+        'control_file_sets',
+        'samples',
+        'donors',
+    ]
+
     @calculated_property(schema={
         'title': 'Files',
         'type': 'array',
@@ -240,8 +250,12 @@ class MeasurementSet(FileSet):
         Path('samples.modifications', include=['@id', 'modality']),
     ]
 
-    audit_inherit = [
-        'related_multiome_datasets'
+    audit_inherit = FileSet.audit_inherit + [
+        'related_multiome_datasets',
+        'auxiliary_sets',
+        'library_construction_platform',
+        'assay_term',
+        'readout',
     ]
 
     @calculated_property(

@@ -66,6 +66,12 @@ class Sample(Item):
         Path('multiplexed_in', include=['@id', 'accession'])
     ]
 
+    audit_inherit = [
+        'award',
+        'lab',
+        'sources'
+    ]
+
     @calculated_property(schema={
         'title': 'File Sets',
         'type': 'array',
@@ -138,6 +144,13 @@ class Biosample(Sample):
         Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('modifications', include=['@id', 'modality', 'summary', 'status'])
+    ]
+
+    audit_inherit = Sample.audit_inherit + [
+        'sample_terms',
+        'disease_terms',
+        'treatments',
+        'modifications',
     ]
 
     @calculated_property(
