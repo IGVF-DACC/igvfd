@@ -350,7 +350,8 @@ class Biosample(Sample):
                 summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)},'
 
         # construct library set overview is appended to the end of the summary
-        if construct_library_sets:
+        if (construct_library_sets and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
             verb = 'modified with'
             library_types = set()
             for CLS in construct_library_sets:
