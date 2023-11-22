@@ -21,3 +21,23 @@ def software_version_v1(software_version):
         'references': ['10.1101/2023.08.02']
     })
     return item
+
+
+@pytest.fixture
+def software_version_v2(software_version):
+    item = software_version.copy()
+    item.update({
+        'schema_version': '2',
+        'version': '2.4.4.5',
+    })
+    return item
+
+
+@pytest.fixture
+def software_version_v2_no_v(software_version):
+    item = software_version.copy()
+    item.update({
+        'schema_version': '2',
+        'version': '2.4.4.5',
+    })
+    return item
