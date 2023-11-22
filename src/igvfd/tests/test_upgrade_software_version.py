@@ -21,4 +21,4 @@ def test_software_version_upgrade_2_3(upgrader, software_version_v2_no_v, softwa
         'software_version', software_version_v2_no_v,
         current_version='2', target_version='3')
     assert value['schema_version'] == '3'
-    assert value['version'] == 'v1.1.0'
+    assert value['version'] == 'v2.4.4'
