@@ -46,13 +46,13 @@ def test_audit_construct_library_set_exon_with_multiple_genes(
     base_expression_construct_library_set,
     gene_myc_hs, gene_CD1E
 ):
-    # If the listed scope is "exon", only 1 entry is expected in genes property
+    # If the listed scope is "exon" or "tile", only 1 entry is expected in genes property
     testapp.patch_json(
         base_expression_construct_library_set['@id'],
         {'genes': [gene_CD1E['@id'], gene_myc_hs['@id']]}
     )
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent exon scope metadata'
+        error['category'] == 'inconsistent scope metadata'
         for error in res.json['audit'].get('WARNING', [])
     )

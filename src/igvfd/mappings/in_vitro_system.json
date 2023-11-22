@@ -1,6 +1,6 @@
 {
-    "hash": "2d158c8ccd3ddc9e3bbae5cdbc80157d",
-    "index_name": "in_vitro_system_2d158c8c",
+    "hash": "80b0e0d15cab9b377dfd56d6c31af745",
+    "index_name": "in_vitro_system_80b0e0d1",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -808,6 +808,32 @@
                             },
                             "taxa": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "properties": {
+                                    "tile_end": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "tile_id": {
+                                        "type": "keyword"
+                                    },
+                                    "tile_start": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "tiling_modality": {
                                 "type": "keyword"

@@ -63,3 +63,35 @@ def construct_library_set_y2h(testapp, lab, award, gene_myc_hs, gene_CRLF2_par_y
         ]
     }
     return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def construct_library_set_tile(testapp, lab, award, gene_myc_hs):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'expression vector library',
+        'scope': 'tile',
+        'tile': {'tile_id': 'tile2', 'tile_start': 91, 'tile_end': 250},
+        'genes': [gene_myc_hs['@id']],
+        'selection_criteria': [
+            'sequence variants'
+        ]
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def construct_library_set_v1(testapp, lab, award, gene_myc_hs):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'expression vector library',
+        'scope': 'exon',
+        'exon': '',
+        'genes': [gene_myc_hs['@id']],
+        'selection_criteria': [
+            'genes'
+        ]
+    }
+    return item

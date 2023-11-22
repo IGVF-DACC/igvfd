@@ -106,3 +106,26 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'exon': 'E6'
         })
     assert res.status_code == 201
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'expression vector library',
+            'scope': 'tile',
+            'selection_criteria': ['transcription start sites'],
+            'genes': [gene_myc_hs['@id']]
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'expression vector library',
+            'scope': 'tile',
+            'selection_criteria': ['transcription start sites'],
+            'genes': [gene_myc_hs['@id']],
+            'tile': {'tile_id': 'tile1', 'tile_start': 1, 'tile_end': 56}
+        })
+    assert res.status_code == 201

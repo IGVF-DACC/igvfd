@@ -98,3 +98,17 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     res = testapp.get(construct_library_set_y2h['@id'])
     assert res.json.get(
         'summary') == 'Expression vector library of MYC (protein interactors, phenotype-associated variants) associated with Myocardial infarction'
+    testapp.patch_json(
+        construct_library_set_y2h['@id'],
+        {
+            'selection_criteria': ['protein interactors', 'genes', 'phenotype-associated variants'],
+            'genes': [gene_myc_hs['@id']],
+            'scope': 'tile',
+            'tile': {'tile_id': 'tile1', 'tile_start': 1, 'tile_end': 96
+                     },
+            'associated_phenotypes': [phenotype_term_myocardial_infarction['@id']]
+        }
+    )
+    res = testapp.get(construct_library_set_y2h['@id'])
+    assert res.json.get(
+        'summary') == 'Expression vector library of tile tile1 of MYC (AA 1-96) (protein interactors, phenotype-associated variants) associated with Myocardial infarction'

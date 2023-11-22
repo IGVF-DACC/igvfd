@@ -1,6 +1,6 @@
 {
-    "hash": "75449bbf9b852e0a87c49cffa8636ce9",
-    "index_name": "tissue_75449bbf",
+    "hash": "7456e0a9251b85258b0a6b50c61a7199",
+    "index_name": "tissue_7456e0a9",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -673,6 +673,32 @@
                             },
                             "taxa": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "properties": {
+                                    "tile_end": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "tile_id": {
+                                        "type": "keyword"
+                                    },
+                                    "tile_start": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "tiling_modality": {
                                 "type": "keyword"

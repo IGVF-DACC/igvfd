@@ -485,7 +485,7 @@ class ConstructLibrarySet(FileSet):
         }
     )
     def summary(self, request, file_set_type, scope, selection_criteria, genes=None, guide_type=None,
-                loci=None, exon=None, associated_phenotypes=None):
+                loci=None, exon=None, tile=None, associated_phenotypes=None):
         library_type = ''
         target_phrase = ''
         pheno_terms = []
@@ -513,6 +513,16 @@ class ConstructLibrarySet(FileSet):
                 gene_object = request.embed(genes[0], '@@object?skip_calculated=true')
                 gene_name = (gene_object.get('symbol'))
                 target_phrase = f' exon {exon} of {gene_name}'
+        if scope == 'tile':
+            if len(genes) > 1:
+                target_phrase = f' tile {tile_id} of multiple genes'
+            else:
+                gene_object = request.embed(genes[0], '@@object?skip_calculated=true')
+                gene_name = (gene_object.get('symbol'))
+                tile_id = tile['tile_id']
+                start = tile['tile_start']
+                end = tile['tile_end']
+                target_phrase = f' tile {tile_id} of {gene_name} (AA {start}-{end})'
         if scope == 'genome-wide':
             target_phrase = ' genome-wide'
 

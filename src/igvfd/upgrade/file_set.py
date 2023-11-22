@@ -131,3 +131,15 @@ def analysis_set_3_4(value, system):
         notes = value.get('notes', '')
         notes += f' This analyis set has been defaulted to "intermediate analysis" for its file_set_type as this is now a required property, please see the property description and patch with the appropriate file_set_type.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('construct_library_set', '1', '2')
+def construct_library_set_1_2(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1151
+    if 'exon' in value:
+        if value['exon'] == '':
+            value['exon'] = 'exon_ID'
+            notes = value.get('notes', '')
+            notes += f' The required exon identifier was defaulted to "exon_ID" in an upgrade, please patch this property with the correct identifier.'
+            value['notes'] = notes.strip()
+    return

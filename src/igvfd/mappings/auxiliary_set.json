@@ -1,6 +1,6 @@
 {
-    "hash": "8d6aa3ed179b38788d0f8e264c8c2721",
-    "index_name": "auxiliary_set_8d6aa3ed",
+    "hash": "2b472e70987787cb6d8ad5b20d601036",
+    "index_name": "auxiliary_set_2b472e70",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -571,6 +571,32 @@
                             },
                             "taxa": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "properties": {
+                                    "tile_end": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "tile_id": {
+                                        "type": "keyword"
+                                    },
+                                    "tile_start": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "tiling_modality": {
                                 "type": "keyword"

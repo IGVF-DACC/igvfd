@@ -1,6 +1,6 @@
 {
-    "hash": "605422e22925fa626894b1f52f6d4229",
-    "index_name": "whole_organism_605422e2",
+    "hash": "b3771b5d53c48111f36d273f52921bec",
+    "index_name": "whole_organism_b3771b5d",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -670,6 +670,32 @@
                             },
                             "taxa": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "properties": {
+                                    "tile_end": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "tile_id": {
+                                        "type": "keyword"
+                                    },
+                                    "tile_start": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "tiling_modality": {
                                 "type": "keyword"
