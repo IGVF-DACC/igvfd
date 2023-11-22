@@ -199,5 +199,17 @@
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
         "uuid": "61fd6155-c9ba-4f09-9055-cfbf606054bf"
+    },
+    {
+        "aliases": [
+            "igvf:cell_fate_change_protocol_doc"
+        ],
+        "description": "Example of a cell fate change protocol.",
+        "attachment": "wtc11_differentation_protocol.pdf",
+        "award": "1UM1HG011996-01",
+        "document_type": "cell fate change protocol",
+        "lab": "j-michael-cherry",
+        "submitted_by": "duis.pede@nonummy.scelerisque",
+        "uuid": "6f2b4155-3389-9a10-1dca-cfbf6057dcbf"
     }
 ]

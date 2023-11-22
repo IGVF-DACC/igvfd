@@ -69,6 +69,7 @@
             "description": "The category that best describes the document.",
             "type": "string",
             "enum": [
+                "cell fate change protocol",
                 "characterization",
                 "computational protocol",
                 "experimental protocol",
