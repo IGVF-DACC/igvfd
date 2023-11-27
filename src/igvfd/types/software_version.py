@@ -65,7 +65,7 @@ class SoftwareVersion(Item):
         software_uuid = properties['software']
         software = root.get_by_uuid(software_uuid)
         source = software.upgrade_properties()['name']
-        return u'{}-v{}'.format(source, properties['version'])
+        return u'{}-{}'.format(source, properties['version'])
 
     def __resource_url__(self, request, info):
         request._linked_uuids.add(str(self.uuid))
