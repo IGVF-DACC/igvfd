@@ -82,5 +82,11 @@
         "term_name": "snMCT-seq",
         "status": "released",
         "uuid": "4bec81f7-c661-40c7-ac64-aa7e02fb52fb"
+    },
+    {
+        "term_id": "NTR:0000745",
+        "term_name": "snM3C-seq",
+        "status": "released",
+        "uuid": "a92815b4-aea9-4676-84dc-f385b00cf8fc"
     }
 ]

@@ -3,6 +3,7 @@
 ### Schema version 9
 
 * Rename `sequencing_library_type` to `sequencing_library_types`.
+* Expand `preferred_assay_title` enum list to include `snM3C-seq`.
 
 ### Schema version 8
 
