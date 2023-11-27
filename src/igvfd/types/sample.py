@@ -69,7 +69,8 @@ class Sample(Item):
     audit_inherit = [
         'award',
         'lab',
-        'sources'
+        'sources',
+        'sample_terms'
     ]
 
     @calculated_property(schema={
@@ -147,7 +148,6 @@ class Biosample(Sample):
     ]
 
     audit_inherit = Sample.audit_inherit + [
-        'sample_terms',
         'disease_terms',
         'treatments',
         'modifications',
@@ -426,6 +426,7 @@ class PrimaryCell(Biosample):
     item_type = 'primary_cell'
     schema = load_schema('igvfd:schemas/primary_cell.json')
     embedded_with_frame = Biosample.embedded_with_frame
+    audit_inherit = Biosample.audit_inherit
 
     @calculated_property(
         schema={
@@ -453,6 +454,7 @@ class InVitroSystem(Biosample):
         Path('cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('originated_from', include=['@id', 'accession']),
     ]
+    audit_inherit = Biosample.audit_inherit
 
 
 @collection(
@@ -467,6 +469,7 @@ class Tissue(Biosample):
     item_type = 'tissue'
     schema = load_schema('igvfd:schemas/tissue.json')
     embedded_with_frame = Biosample.embedded_with_frame
+    audit_inherit = Biosample.audit_inherit
 
     @calculated_property(
         schema={
@@ -494,6 +497,7 @@ class TechnicalSample(Sample):
     embedded_with_frame = Sample.embedded_with_frame + [
         Path('sample_terms', include=['@id', 'term_name']),
     ]
+    audit_inherit = Sample.audit_inherit
 
     @calculated_property(
         schema={
@@ -560,6 +564,11 @@ class WholeOrganism(Biosample):
     item_type = 'whole_organism'
     schema = load_schema('igvfd:schemas/whole_organism.json')
     embedded_with_frame = Biosample.embedded_with_frame
+    audit_inherit = Biosample.audit_inherit + [
+        'disease_terms',
+        'treatments',
+        'modifications',
+    ]
 
     @calculated_property(
         schema={
@@ -596,6 +605,7 @@ class MultiplexedSample(Sample):
         Path('modifications', include=['@id', 'modality', 'summary', 'status']),
         Path('construct_library_sets', include=['@id', 'accession'])
     ]
+    audit_inherit = Biosample.audit_inherit
 
     @calculated_property(
         schema={

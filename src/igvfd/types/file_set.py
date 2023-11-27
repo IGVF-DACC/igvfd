@@ -104,6 +104,7 @@ class AnalysisSet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases'])
     ]
+    audit_inherit = FileSet.audit_inherit
 
     @calculated_property(
         schema={
@@ -161,6 +162,7 @@ class CuratedSet(FileSet):
     item_type = 'curated_set'
     schema = load_schema('igvfd:schemas/curated_set.json')
     embedded_with_frame = FileSet.embedded_with_frame
+    audit_inherit = FileSet.audit_inherit
 
     @calculated_property(
         define=True,
@@ -378,6 +380,7 @@ class ModelSet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases'])
     ]
+    audit_inherit = FileSet.audit_inherit
 
 
 @collection(
@@ -393,6 +396,7 @@ class AuxiliarySet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('measurement_sets', include=['@id', 'accession', 'aliases']),
     ]
+    audit_inherit = FileSet.audit_inherit
     rev = FileSet.rev | {'measurement_sets': ('MeasurementSet', 'auxiliary_sets')}
 
     @calculated_property(schema={
@@ -457,6 +461,7 @@ class PredictionSet(FileSet):
     item_type = 'prediction_set'
     schema = load_schema('igvfd:schemas/prediction_set.json')
     embedded_with_frame = FileSet.embedded_with_frame
+    audit_inherit = FileSet.audit_inherit
 
 
 @collection(
@@ -479,6 +484,7 @@ class ConstructLibrarySet(FileSet):
         Path('genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
         Path('applied_to_samples', include=['@id', 'accession', 'aliases']),
     ]
+    audit_inherit = FileSet.audit_inherit
     rev = FileSet.rev | {'applied_to_samples': ('Sample', 'construct_library_sets')}
 
     @calculated_property(schema={
