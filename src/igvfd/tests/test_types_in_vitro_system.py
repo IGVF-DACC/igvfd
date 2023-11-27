@@ -88,7 +88,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
     )
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get(
-        'summary') == 'virtual embryoid body induced to brown adipose tissue for 5 minutes (PKR-456), mixed sex, Homo sapiens and Mus musculus strain1 (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243, depleted of penicillin for 3 minutes, treated with 10 ng/mL G-CSF, modified with a reporter library'
+        'summary') == 'virtual embryoid body induced to brown adipose tissue for 5 minutes (cellular sub pool: PKR-456), mixed sex, Homo sapiens and Mus musculus strain1 (sorting details: some detail about sorting) characterized by high level of CD243, negative detection of CD243, depleted of penicillin for 3 minutes, treated with 10 ng/mL G-CSF, modified with a reporter library'
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
