@@ -5,7 +5,7 @@ import pytest
 def assay_term_starr(testapp):
     item = {
         'term_id': 'OBI:0002041',
-        'term_name': 'STARR-seq'
+        'term_name': 'self-transcribing active regulatory region sequencing assay'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
 
