@@ -93,5 +93,4 @@ def test_parts(testapp, primary_cell, tissue, in_vitro_cell_line):
         }
     )
     res = testapp.get(tissue['@id'])
-    print(res.json)
     assert set(res.json.get('parts')) == {in_vitro_cell_line['@id'], primary_cell['@id']}
