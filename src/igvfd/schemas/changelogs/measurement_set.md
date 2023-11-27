@@ -1,9 +1,12 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 9
+
+* Expand `preferred_assay_title` enum list to include `snM3C-seq`.
+
 ### Schema version 9
 
 * Rename `sequencing_library_type` to `sequencing_library_types`.
-* Expand `preferred_assay_title` enum list to include `snM3C-seq`.
 
 ### Schema version 8
 
