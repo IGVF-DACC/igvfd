@@ -88,16 +88,16 @@ def audit_unspecified_protocol(value, system):
 @audit_checker('MeasurementSet', frame='object')
 def audit_inconsistent_readout(value, system):
     '''
-        audit_detail: Screening assays (such as CRISPR screen and MPRA) are required to specify a readout, other assays should not include one.
+        audit_detail: CRISPR-based and MPRA assays are required to specify a readout, other assays should not include one.
         audit_category: inconsistent readout
         audit_levels: NOT_COMPLIANT
     '''
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    screen_assays = ['Perturb-seq',
-                     'CRISPR screen',
-                     'massively parallel reporter assay']
-    if assay.get('term_name') in screen_assays:
+    assays_with_readout = ['CRISPR screen',
+                           'massively parallel reporter assay',
+                           'cas mediated mutagenesis']
+    if assay.get('term_name') in assays_with_readout:
         if 'readout' not in value:
             detail = (
                 f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
@@ -137,16 +137,16 @@ def audit_inconsistent_modifications(value, system):
 @audit_checker('MeasurementSet', frame='object')
 def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
-        audit_detail: CRISPR screen (and Perturb-seq) measurement sets are required to have a modification specified on their samples.
+        audit_detail: CRISPR screen and cas mediated mutagenesis measurement sets are required to have a modification specified on their samples.
         audit_category: missing modification
         audit_levels: ERROR
     '''
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    screen_assays = ['Perturb-seq',
+    crispr_assays = ['cas mediated mutagenesis',
                      'CRISPR screen'
                      ]
-    if assay.get('term_name') in screen_assays:
+    if assay.get('term_name') in crispr_assays:
         samples = value.get('samples', [])
         bad_samples = []
         for sample in samples:

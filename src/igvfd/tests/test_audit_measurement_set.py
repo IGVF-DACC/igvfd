@@ -238,21 +238,15 @@ def test_audit_readout(
 def test_audit_modifications(
     testapp,
     measurement_set,
-    assay_term_crispr,
     in_vitro_cell_line,
     in_vitro_organoid,
     modification,
-    modification_activation
 ):
     # No modifications audits on measurement set with no samples
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent modifications'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    assert all(
-        error['category'] != 'missing modification'
-        for error in res.json['audit'].get('ERROR', [])
     )
     # Modifications should be the same on samples in any measurement set
     testapp.patch_json(
@@ -273,11 +267,20 @@ def test_audit_modifications(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
+
+def test_audit_missing_modification(
+    testapp,
+    measurement_set,
+    assay_term_crispr,
+    tissue,
+    modification_activation
+):
     # CRISPR screens must also have modifications on all their samples
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_crispr['@id']
+            'assay_term': assay_term_crispr['@id'],
+            'preferred_assay_title': '10x multiome'
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -286,27 +289,12 @@ def test_audit_modifications(
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
-        in_vitro_organoid['@id'],
+        tissue['@id'],
         {
             'modifications': [modification_activation['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent modifications'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    testapp.patch_json(
-        in_vitro_organoid['@id'],
-        {
-            'modifications': [modification['@id']]
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'inconsistent modifications'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
     assert all(
         error['category'] != 'missing modification'
         for error in res.json['audit'].get('ERROR', [])
