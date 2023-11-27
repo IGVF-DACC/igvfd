@@ -83,6 +83,7 @@
         },
         "file_set_type": {
             "description": "The category that best describes this predictive model set.",
+            "comment": "File set type describes the framework of the model in this model set.",
             "enum": [
                 "neural network",
                 "random forest",

@@ -202,6 +202,7 @@
         },
         "file_set_type": {
             "description": "The category that best describes this measurement set.",
+            "comment": "File set type describes the content of the measurement set. Experimental data refers to any data obtained in a genomics assay.",
             "default": "experimental data",
             "enum": [
                 "experimental data"

@@ -127,6 +127,7 @@
         },
         "file_set_type": {
             "description": "The category that best describes this prediction set.",
+            "comment": "File set type describes the feature being predicted by the results in the prediction set.",
             "enum": [
                 "pathogenicity",
                 "functional effect",
