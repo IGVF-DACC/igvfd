@@ -204,5 +204,19 @@
         ],
         "assay_term": "/assay-terms/OBI_0003133/",
         "preferred_assay_title": "Variant FlowFISH"
+    },
+    {
+        "aliases": [
+            "igvf:snM3C-seq"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "uuid": "4d4cabaa-617d-47bb-857b-66e4347de8d1",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/NTR_0000745/",
+        "preferred_assay_title": "snM3C-seq"
     }
 ]
