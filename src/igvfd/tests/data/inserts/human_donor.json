@@ -53,6 +53,9 @@
         "collections": [
             "ENCODE"
         ],
+        "dbxrefs": [
+            "ENCDO:ENCDO000AAD"
+        ],
         "human_donor_identifiers": [
             "K562 cell line donor",
             "GM05372 cell line donor"
