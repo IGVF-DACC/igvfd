@@ -484,7 +484,13 @@ class ConstructLibrarySet(FileSet):
         Path('genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
         Path('applied_to_samples', include=['@id', 'accession', 'aliases']),
     ]
-    audit_inherit = FileSet.audit_inherit
+    audit_inherit = [
+        'award',
+        'lab',
+        'files',
+        'documents',
+    ]
+
     rev = FileSet.rev | {'applied_to_samples': ('Sample', 'construct_library_sets')}
 
     @calculated_property(schema={
