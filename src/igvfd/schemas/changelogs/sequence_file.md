@@ -1,6 +1,6 @@
 ## Changelog for *`sequence_file.json`*
 
-### Minor changes since schema version 4
+### Minor changes since schema version 5
 
 * Allow hyphens in `dbxrefs`.
 
