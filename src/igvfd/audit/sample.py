@@ -60,7 +60,7 @@ def audit_sample_virtual_donor_check(value, system):
         donors_to_link = [audit_link(path_to_text(d_id), d_id) for d_id in donors_error]
         donors_to_link = ', '.join(donors_to_link)
         if len(donors_error) > 0:
-            detail = (f'The sample {audit_link(sample_id, sample_id)} is linked to virtual donor(s):'
+            detail = (f'The sample {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual donor(s): '
                       f'{donors_to_link}')
             yield AuditFailure('inconsistent sample metadata', detail, level='ERROR')
 
