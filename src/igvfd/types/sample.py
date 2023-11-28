@@ -268,8 +268,8 @@ class Biosample(Sample):
 
         # cellular sub pool is appended to the end of the summary in parentheses
         if (cellular_sub_pool and
-                biosample_type in ['primary_cell', 'in_vitro_system']):
-            summary_terms += f' ({cellular_sub_pool})'
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue']):
+            summary_terms += f' (cellular sub pool: {cellular_sub_pool})'
 
         # a comma is added before sex or taxa if sex is unspecified
         summary_terms += ','
@@ -350,7 +350,8 @@ class Biosample(Sample):
                 summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)},'
 
         # construct library set overview is appended to the end of the summary
-        if construct_library_sets:
+        if (construct_library_sets and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
             verb = 'modified with'
             library_types = set()
             for CLS in construct_library_sets:
