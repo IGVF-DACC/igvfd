@@ -113,7 +113,7 @@ def test_search_views_search_view_values_item_wildcard(workbook, testapp):
 
 def test_search_views_search_view_values_invalid_search_term(workbook, testapp):
     r = testapp.get(
-        '/search/?searchTerm=[',
+        '/search/?query=[',
         status=404
     )
 
@@ -222,7 +222,7 @@ def test_search_views_report_view(workbook, testapp):
 
 def test_search_views_report_response_with_search_term_type_only_clear_filters(workbook, testapp):
     r = testapp.get(
-        '/report/?searchTerm=cherry&type=Lab'
+        '/report/?query=cherry&type=Lab'
     )
     assert 'clear_filters' in r.json
     assert r.json['clear_filters'] == '/report/?type=Lab'
@@ -345,7 +345,7 @@ def test_search_views_collection_listing_db_view(workbook, testapp):
 
 def test_search_views_top_hits_raw_view(workbook, testapp):
     r = testapp.get(
-        '/top-hits-raw/?searchTerm=CXX&field=@id'
+        '/top-hits-raw/?query=CXX&field=@id'
     )
     assert 'aggregations' in r.json
 

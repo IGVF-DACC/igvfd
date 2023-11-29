@@ -4,7 +4,7 @@
 
 **Q: Why do we define [`fuzzy_searchable_fields`](https://github.com/IGVF-DACC/igvfd/blob/b6f65dfcec7b2104de0b37dbea0d8975b3c5ab08/src/igvfd/schemas/assay_term.json#L42-L45) and [`exact_searchable_fields`](https://github.com/IGVF-DACC/igvfd/blob/b6f65dfcec7b2104de0b37dbea0d8975b3c5ab08/src/igvfd/schemas/assay_term.json#L46-L49) in an item's schema?**
 
-A: Opensearch takes the document we give it and copies some values into a field called `_fuzzy` and some values into a field called `_exact`. When you search with a `searchTerm=` or `query=` parameter, the value is compared to values in the `_fuzzy` or `_exact` fields to find documents that contain your query. The main difference between these fields is that Opensearch tokenizes the values copied into the `_fuzzy` field with `ngram` and `English stemming` analyzers, while the `_exact` field stores the exact (`lowercase`) value:
+A: Opensearch takes the document we give it and copies some values into a field called `_fuzzy` and some values into a field called `_exact`. When you search with a `query=` parameter, the value is compared to values in the `_fuzzy` or `_exact` fields to find documents that contain your query. The main difference between these fields is that Opensearch tokenizes the values copied into the `_fuzzy` field with `ngram` and `English stemming` analyzers, while the `_exact` field stores the exact (`lowercase`) value:
 
 * `_fuzzy`: a value like `User` will get transformed and stored into something like `[u, us, use, user]`
 * `_exact`: a value like `User` will get transformed and stored as `[user]`
@@ -40,7 +40,7 @@ A: You can mix and match search configs explicitly by specifying one or more sea
 
 **Q: What are DEFAULT_ITEM_TYPES?**
 
-A: Usually a search will have an explicit `type` defined in the query string (e.g. `?type=Award`). [`DEFAULT_ITEM_TYPES`](https://github.com/IGVF-DACC/igvfd/blob/b3714678fb6695a97a544eecb0afe403cdf149c9/src/igvfd/searches/defaults.py#L22-L60) is a list of item types (and corresponding Opensearch indices) that the system will search over when none are specified in the query string. These are particularly useful in queries where a `searchTerm` or `query` is specified without any types.
+A: Usually a search will have an explicit `type` defined in the query string (e.g. `?type=Award`). [`DEFAULT_ITEM_TYPES`](https://github.com/IGVF-DACC/igvfd/blob/b3714678fb6695a97a544eecb0afe403cdf149c9/src/igvfd/searches/defaults.py#L22-L60) is a list of item types (and corresponding Opensearch indices) that the system will search over when none are specified in the query string. These are particularly useful in queries where `query` is specified without any types.
 
 **Q: What is the difference between DEFAULT_ITEM_TYPES and TOP_HITS_ITEM_TYPES?**
 
