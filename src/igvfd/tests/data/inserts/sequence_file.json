@@ -78,6 +78,7 @@
         ],
         "file_set": "igvf:basic_analysis_set",
         "sequencing_run": 12,
+        "flowcell_id": "HJTW3-BBXY",
         "illumina_read_type": "R2",
         "index": "ACTGGTCC",
         "sequencing_platform": "/platform-terms/747dc8bf-9e8c-3dbc-967f-ce9f995cfd28/"

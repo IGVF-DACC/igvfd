@@ -111,7 +111,7 @@
             "title": "Flowcell ID",
             "description": "The alphanumeric identifier for the flowcell of a sequencing machine.",
             "type": "string",
-            "pattern": "^[a-zA-Z0-9]+$",
+            "pattern": "^[a-zA-Z0-9-]+$",
             "submissionExample": {
                 "appscript": "HJTW3BBXY",
                 "igvf_utils": "HJTW3BBXY"
