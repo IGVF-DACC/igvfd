@@ -80,6 +80,28 @@
                     }
                 }
             }
+        },
+        "file_format": {
+            "comment": "Bam, bed, bedpe, bigWig, bigBed, bigInteract, and tagAlign files must have assembly.",
+            "if": {
+                "properties": {
+                    "file_format": {
+                        "enum": [
+                            "bam",
+                            "bed",
+                            "bedpe",
+                            "bigWig",
+                            "bigInteract",
+                            "tagAlign"
+                        ]
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "assembly"
+                ]
+            }
         }
     },
     "properties": {
