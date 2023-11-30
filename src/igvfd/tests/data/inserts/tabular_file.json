@@ -11,7 +11,6 @@
         "md5sum": "796067dea861058b242582c0a916aef6",
         "file_format": "bed",
         "file_format_type": "bed6+",
-        "assembly": "GRCh38",
         "content_type": "peaks",
         "submitted_file_name": "/Users/igvf/igvf_files/peaks_tabular_file.bed.gz",
         "file_size": 738031,
