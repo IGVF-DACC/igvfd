@@ -78,7 +78,7 @@ def test_schema_reference_file_must_remove_validation_error_detail_before_upload
     testapp.patch_json(reference_file['@id'], {'upload_status': 'pending'}, status=200)
 
 
-def test_schema_reference_file_regeneratiing_upload_credentials_leads_to_valid_schema(testapp, reference_file):
+def test_schema_reference_file_regenerating_upload_credentials_leads_to_valid_schema(testapp, reference_file):
     # Given a file with upload_status: invalidated and validation_error_detail:
     testapp.patch_json(
         reference_file['@id'],
