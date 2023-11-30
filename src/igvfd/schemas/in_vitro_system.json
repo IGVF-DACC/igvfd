@@ -173,15 +173,28 @@
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
-            "items": {
-                "title": "Treatment",
-                "description": "A treatment applied to the biosample.",
-                "type": "string",
-                "linkTo": "Treatment"
-            },
+            "oneOf": [
+                {
+                    "items": {
+                        "title": "Document",
+                        "description": "A document containing the protocol applied to the biosample.",
+                        "type": "string",
+                        "linkTo": "Document"
+                    }
+                },
+                {
+                    "permission": "import_items",
+                    "items": {
+                        "title": "Treatment",
+                        "description": "A treatment applied to the biosample.",
+                        "type": "string",
+                        "linkTo": "Treatment"
+                    }
+                }
+            ],
             "submissionExample": {
-                "appscript": "[\"john-doe:treatment01\", \"/treatments/ffe525b2-bd67-4021-835e-29748513b560/\"]",
-                "igvf_utils": "john-doe:treatment01, /treatments/ffe525b2-bd67-4021-835e-29748513b560/"
+                "appscript": "[\"john-doe:protocol01\", \"/documents/ffe525b2-bd67-4021-835e-29748513b560/\"]",
+                "igvf_utils": "john-doe:protocol01, /documents/ffe525b2-bd67-4021-835e-29748513b560/"
             }
         },
         "originated_from": {
