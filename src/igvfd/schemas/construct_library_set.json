@@ -40,7 +40,7 @@
     ],
     "dependentSchemas": {
         "file_set_type": {
-            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes and that scope be genes or exon and should not specify any guide properties.",
+            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes and that scope be genes, tile, or exon and should not specify any guide properties.",
             "allOf": [
                 {
                     "if": {
@@ -139,6 +139,9 @@
                             "scope": {
                                 "oneOf": [
                                     {
+                                        "const": "tile"
+                                    },
+                                    {
                                         "const": "exon"
                                     },
                                     {
@@ -181,7 +184,7 @@
             ]
         },
         "scope": {
-            "comment": "If scope is genes then genes is required, if scope is exon then both genes and exon are required, if scope is genome-wide then exon, genes, and loci shouldn't be specified.",
+            "comment": "If scope is genes then genes is required, if scope is tile then both tile and genes are required, if scope is exon then both genes and exon are required, if scope is genome-wide then tile, exon, genes, and loci shouldn't be specified.",
             "oneOf": [
                 {
                     "required": [
@@ -191,6 +194,19 @@
                         "scope": {
                             "enum": [
                                 "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "tile",
+                        "genes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "tile"
                             ]
                         }
                     }
@@ -223,6 +239,7 @@
                 {
                     "not": {
                         "required": [
+                            "tile",
                             "exon",
                             "genes",
                             "loci"
@@ -239,10 +256,13 @@
             ]
         },
         "genes": {
-            "comment": "Specification of genes requires that scope is exon or genes.",
+            "comment": "Specification of genes requires that scope is tile, exon, or genes.",
             "properties": {
                 "scope": {
                     "oneOf": [
+                        {
+                            "const": "tile"
+                        },
                         {
                             "const": "exon"
                         },
@@ -272,6 +292,19 @@
                 "scope": {
                     "enum": [
                         "exon"
+                    ]
+                }
+            }
+        },
+        "tile": {
+            "comment": "Specification of tile requires genes and that scope is tile.",
+            "required": [
+                "genes"
+            ],
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "tile"
                     ]
                 }
             }
@@ -341,7 +374,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "accession": {
             "accessionType": "DS"
@@ -362,9 +395,10 @@
         },
         "scope": {
             "title": "Library Construct Scope",
-            "description": "The scope or scale that this construct library is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the genes or loci property. If exon is specified, an exon identifier and the associated gene will need to be listed in exon and genes properties.",
+            "description": "The scope or scale that this construct library is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the genes or loci property. If exon is specified, an exon identifier and the associated gene will need to be listed in exon and genes properties. If tile is specified, a tile identifier, start and stop coordinates, and the associated gene will need to be listed in tile and genes properties.",
             "type": "string",
             "enum": [
+                "tile",
                 "exon",
                 "genes",
                 "loci",
@@ -517,10 +551,40 @@
             "title": "Exon",
             "description": "An identifier in plain text for the specific exon in an expression vector library. The associated gene must be listed in genes property.",
             "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "submissionExample": {
                 "appscript": "exon1",
                 "igvf_utils": "exon1"
+            }
+        },
+        "tile": {
+            "description": "The coordinates and an identifier in plain text for the specific tile of a protein region cloned in an expression vector library. The associated gene for this protein must be listed in genes property.",
+            "comment": "The protein tile locus is defined using 1-based numbering where 1 indicates the N-terminal Methionine initiator.",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "tile_id": {
+                    "title": "Tile ID",
+                    "description": "An identifier in plain text for the specific tile of a protein region cloned in an expression vector library.",
+                    "type": "string",
+                    "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
+                },
+                "tile_start": {
+                    "title": "Tile Start",
+                    "description": "The 1-based, closed (inclusive) starting coordinate.",
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "tile_end": {
+                    "title": "Tile End",
+                    "description": "The 1-based, closed (inclusive) ending coordinate.",
+                    "type": "integer",
+                    "minimum": 1
+                }
+            },
+            "submissionExample": {
+                "appscript": "{\"tile_id\": \"tile1\", \"tile_start\": 1, \"tile_end\": 207}",
+                "igvf_utils": "{\"tile_id\": \"tile1\", \"tile_start\": 1, \"tile_end\": 207}"
             }
         },
         "product_id": {

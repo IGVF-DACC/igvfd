@@ -66,5 +66,29 @@
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
         ],
         "status": "released"
+    },
+    {
+        "aliases": [
+            "igvf:basic_construct_library_set_3"
+        ],
+        "submitter_comment": "Comment for a construct library set.",
+        "description": "A basic tile construct library set.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "1f76ce87-802a-4f9e-bc46-ede2a43d06cb",
+        "file_set_type": "expression vector library",
+        "scope": "tile",
+        "tile": {
+            "tile_id": "tile1",
+            "tile_start": 1,
+            "tile_end": 192
+        },
+        "selection_criteria": [
+            "genes"
+        ],
+        "genes": [
+            "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
+        ],
+        "status": "released"
     }
 ]

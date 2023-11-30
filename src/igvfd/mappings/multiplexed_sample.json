@@ -1,6 +1,6 @@
 {
-    "hash": "6d92b09c781e612255a177679f57bcf8",
-    "index_name": "multiplexed_sample_6d92b09c",
+    "hash": "ba9eeae01783124e506c874ea75203ad",
+    "index_name": "multiplexed_sample_ba9eeae0",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -405,6 +405,32 @@
                             },
                             "summary": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "properties": {
+                                    "tile_end": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "tile_id": {
+                                        "type": "keyword"
+                                    },
+                                    "tile_start": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "tiling_modality": {
                                 "type": "keyword"
@@ -845,6 +871,32 @@
                             },
                             "taxa": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "properties": {
+                                    "tile_end": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "tile_id": {
+                                        "type": "keyword"
+                                    },
+                                    "tile_start": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "tiling_modality": {
                                 "type": "keyword"

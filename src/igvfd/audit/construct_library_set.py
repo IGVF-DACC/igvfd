@@ -59,19 +59,19 @@ def audit_construct_library_set_plasmid_map(value, system):
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
-def audit_construct_library_set_exon_scope(value, system):
+def audit_construct_library_set_scope(value, system):
     '''
-        audit_detail: Construct library sets with a scope of exon are expected to include only 1 element in the genes property.
-        audit_category: inconsistent exon scope metadata
+        audit_detail: Construct library sets with a scope of tile or exon are expected to include only 1 element in the genes property.
+        audit_category: inconsistent scope metadata
         audit_levels: WARNING
     '''
     detail = ''
-    if value.get('scope') == 'exon':
+    if value.get('scope') in ['exon', 'tile']:
         if len(value.get('genes', [])) > 1:
             detail = (
                 f'ConstructLibrarySet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'specifies it has a scope of exon, but multiple genes are listed in the '
+                f'specifies it has a scope of {value["scope"]}, but multiple genes are listed in the '
                 f'genes property.'
             )
-            yield AuditFailure('inconsistent exon scope metadata',
+            yield AuditFailure('inconsistent scope metadata',
                                detail, level='WARNING')

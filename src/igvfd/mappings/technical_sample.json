@@ -1,6 +1,6 @@
 {
-    "hash": "1dd24985f47cb2283e09870d9ec72f02",
-    "index_name": "technical_sample_1dd24985",
+    "hash": "00933ae67b1b897dda2e288d8ae5a22b",
+    "index_name": "technical_sample_00933ae6",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -581,6 +581,32 @@
                             },
                             "taxa": {
                                 "type": "keyword"
+                            },
+                            "tile": {
+                                "properties": {
+                                    "tile_end": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "tile_id": {
+                                        "type": "keyword"
+                                    },
+                                    "tile_start": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "tiling_modality": {
                                 "type": "keyword"
