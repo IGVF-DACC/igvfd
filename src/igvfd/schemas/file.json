@@ -95,6 +95,13 @@
                             "tabix",
                             "tagAlign"
                         ]
+                    },
+                    "output_type": {
+                        "not": {
+                            "enum": [
+                                "subreads"
+                            ]
+                        }
                     }
                 }
             },

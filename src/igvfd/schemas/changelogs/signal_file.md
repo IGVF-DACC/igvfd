@@ -1,5 +1,9 @@
 ## Changelog for *`signal_file.json`*
 
+### Minor changes since schema version 4
+
+* Add `assembly`.
+
 ### Schema version 4
 
 * Require publicly released files to have `upload_status` of `validated` or `invalidated`.
