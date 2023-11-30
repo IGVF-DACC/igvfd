@@ -10,6 +10,7 @@
         "status": "released",
         "md5sum": "71ffd7ed8bcd85ec3f01887601178db6",
         "file_format": "bam",
+        "assembly": "GRCh38",
         "content_type": "subreads",
         "submitted_file_name": "/Users/igvf/igvf_files/subreads.bam",
         "file_size": 31208300,

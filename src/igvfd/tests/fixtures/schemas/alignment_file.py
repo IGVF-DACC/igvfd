@@ -10,6 +10,7 @@ def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_file
         'file_format': 'bam',
         'file_set': analysis_set_with_sample['@id'],
         'file_size': 8491803,
+        'assembly': 'GRCh38',
         'content_type': 'alignments',
         'reference_files': [
             reference_file['@id']

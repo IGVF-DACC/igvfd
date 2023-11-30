@@ -8,6 +8,7 @@ def genome_browser_annotation_file(testapp, lab, award, analysis_set_with_sample
         'lab': lab['@id'],
         'md5sum': '01b08bb5485ac730df19af55ba4bb08c',
         'file_format': 'tabix',
+        'assembly': 'GRCh38',
         'file_set': analysis_set_with_sample['@id'],
         'content_type': 'peaks',
         'derived_from': [reference_file['@id']]

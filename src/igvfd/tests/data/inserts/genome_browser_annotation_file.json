@@ -11,6 +11,7 @@
         "md5sum": "3d8b17dea86105dd96c182c0a91c3156",
         "file_format": "bigBed",
         "file_format_type": "bed3",
+        "assembly": "GRCh38",
         "content_type": "peaks",
         "submitted_file_name": "/Users/igvf/igvf_files/peaks_01.bigBed",
         "file_size": 9828031,
@@ -32,13 +33,13 @@
         "status": "released",
         "md5sum": "991c30f3e4d38edac91b578ea177791c",
         "file_format": "tabix",
+        "assembly": "GRCh38",
         "content_type": "peaks",
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
         "submitted_file_name": "/Users/igvf/igvf_files/peaks_02.tabix",
         "file_size": 102340,
-        "assembly": "GRCh38",
         "upload_status": "invalidated",
         "validation_error_detail": "Explanation of why this file did not pass validation.",
         "file_set": "igvf:analysis_set_with_input",

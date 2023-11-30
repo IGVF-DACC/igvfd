@@ -10,6 +10,7 @@ def signal_file(testapp, lab, award, analysis_set_with_sample, reference_file):
         'file_format': 'bigWig',
         'file_set': analysis_set_with_sample['@id'],
         'file_size': 4328491803,
+        'assembly': 'GRCh38',
         'content_type': 'signal of all reads',
         'reference_files': [
             reference_file['@id']

@@ -92,6 +92,7 @@
                             "bedpe",
                             "bigWig",
                             "bigInteract",
+                            "tabix",
                             "tagAlign"
                         ]
                     }
