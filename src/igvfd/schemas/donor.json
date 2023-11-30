@@ -51,10 +51,10 @@
             "uniqueItems": true,
             "minItems": 1,
             "items": {
-                "title": "External identifier",
+                "title": "External Identifier",
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF donors.",
                 "type": "string",
-                "pattern": "^GEO:SAMN\\d+$"
+                "pattern": "(^GEO:SAMN\\d+$)|(^ENCODE:ENCDO\\d{3}[A-Z]{3}$)"
             },
             "submissionExample": {
                 "appscript": "[\"GEO:SAMN31998833\", \"GEO:SAMN31998834\"]",

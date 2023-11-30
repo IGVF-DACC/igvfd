@@ -62,7 +62,8 @@
         "individual_rodent": false,
         "dbxrefs": [
             "IMSR_JAX:000664",
-            "GEO:SAMN31260610"
+            "GEO:SAMN31260610",
+            "ENCODE:ENCDO236IKC"
         ],
         "virtual": false
     }
