@@ -39,13 +39,23 @@ def test_schema_reference_file_validation_error_detail_only_allowed_when_upload_
     # Given a file with upload_status: pending.
     testapp.patch_json(reference_file['@id'], {'upload_status': 'pending'}, status=200)
     # When validation_error_details added, then patch fails.
-    testapp.patch_json(reference_file['@id'],
-                       {'validation_error_detail': 'some problem with validating the file'}, status=422)
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'validation_error_detail': 'some problem with validating the file'
+        },
+        status=422
+    )
     # Given a file with upload_status: invalidated.
     testapp.patch_json(reference_file['@id'], {'upload_status': 'invalidated'}, status=200)
     # When validation_error_details added, then patch works.
-    testapp.patch_json(reference_file['@id'],
-                       {'validation_error_detail': 'some problem with validating the file'}, status=200)
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'validation_error_detail': 'some problem with validating the file'
+        },
+        status=200
+    )
 
 
 def test_schema_reference_file_must_remove_validation_error_detail_before_upload_status_changed_to_pending(testapp, reference_file):
