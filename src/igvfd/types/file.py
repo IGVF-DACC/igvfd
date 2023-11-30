@@ -58,10 +58,12 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'h5ad': '.h5ad',
     'hdf5': '.h5',
     'idat': '.idat',
+    'jpg': '.jpg',
     'mtx': '.mtx',
     'obo': '.obo.gz',
     'owl': '.owl.gz',
     'pairs': '.pairs.gz',
+    'png': 'png',
     'PWM': '.pwm',
     'sam': '.sam.gz',
     'sra': '.sra',
@@ -459,6 +461,28 @@ class TabularFile(File):
 class GenomeBrowserAnnotationFile(File):
     item_type = 'genome_browser_annotation_file'
     schema = load_schema('igvfd:schemas/genome_browser_annotation_file.json')
+    embedded_with_frame = File.embedded_with_frame
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
+
+
+@collection(
+    name='image-files',
+    unique_key='accession',
+    properties={
+        'title': 'Image Files',
+        'description': 'Listing of image files',
+    }
+)
+class ImageFile(File):
+    item_type = 'image_file'
+    schema = load_schema('igvfd:schemas/image_file.json')
     embedded_with_frame = File.embedded_with_frame
 
     def unique_keys(self, properties):
