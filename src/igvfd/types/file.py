@@ -543,6 +543,7 @@ def post_upload(context, request):
     if properties['upload_status'] != 'pending':
         new_properties = properties.copy()
         new_properties['upload_status'] = 'pending'
+        new_properties.pop('validation_error_detail', None)
     request.registry.notify(
         BeforeModified(
             context,
