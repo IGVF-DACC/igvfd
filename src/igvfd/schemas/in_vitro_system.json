@@ -173,25 +173,23 @@
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
-            "oneOf": [
-                {
-                    "items": {
+            "items": {
+                "type": "string",
+                "oneOf": [
+                    {
                         "title": "Document",
                         "description": "A document containing the protocol applied to the biosample.",
-                        "type": "string",
                         "linkTo": "Document"
-                    }
-                },
-                {
-                    "permission": "import_items",
-                    "items": {
+                    },
+                    {
                         "title": "Treatment",
                         "description": "A treatment applied to the biosample.",
                         "type": "string",
-                        "linkTo": "Treatment"
+                        "linkTo": "Treatment",
+                        "permission": "import_items"
                     }
-                }
-            ],
+                ]
+            },
             "submissionExample": {
                 "appscript": "[\"john-doe:protocol01\", \"/documents/ffe525b2-bd67-4021-835e-29748513b560/\"]",
                 "igvf_utils": "john-doe:protocol01, /documents/ffe525b2-bd67-4021-835e-29748513b560/"
