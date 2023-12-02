@@ -1,6 +1,6 @@
 {
-    "hash": "c217bc9e859747747cbcca440a36db29",
-    "index_name": "prediction_set_c217bc9e",
+    "hash": "1632cca9b5d084845b7731b6287d4bb2",
+    "index_name": "prediction_set_1632cca9",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1148,6 +1148,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_treatments": {

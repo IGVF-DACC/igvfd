@@ -1,6 +1,6 @@
 {
-    "hash": "b2517720db85b8b0bd451acd1fd3acf3",
-    "index_name": "curated_set_b2517720",
+    "hash": "8795a5ab173a7087560d070b3d636a3e",
+    "index_name": "curated_set_8795a5ab",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1152,6 +1152,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_treatments": {
