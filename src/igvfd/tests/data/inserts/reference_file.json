@@ -13,7 +13,7 @@
         "content_type": "genome reference",
         "submitted_file_name": "/Users/igvf/igvf_files/genome_reference.fasta",
         "file_size": 5428031,
-        "upload_status": "file not found",
+        "upload_status": "validated",
         "assembly": "GRCh38",
         "source_url": "https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000001405.26/",
         "file_set": "igvf:basic_analysis_set",

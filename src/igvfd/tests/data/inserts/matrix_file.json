@@ -12,7 +12,7 @@
         "content_type": "sparse gene count matrix",
         "submitted_file_name": "/Users/igvf/igvf_files/matrix_file.hdf5",
         "file_size": 45200010,
-        "upload_status": "pending",
+        "upload_status": "validated",
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
@@ -33,7 +33,7 @@
         "content_type": "sparse peak count matrix",
         "submitted_file_name": "/Users/igvf/igvf_files/matrix_file.h5ad",
         "file_size": 45200010,
-        "upload_status": "pending",
+        "upload_status": "validated",
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"

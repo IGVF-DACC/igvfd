@@ -14,7 +14,7 @@
         "content_type": "peaks",
         "submitted_file_name": "/Users/igvf/igvf_files/peaks_01.bigBed",
         "file_size": 9828031,
-        "upload_status": "file not found",
+        "upload_status": "validated",
         "assembly": "GRCh38",
         "file_set": "igvf:basic_analysis_set",
         "derived_from": [

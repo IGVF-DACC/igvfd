@@ -54,6 +54,32 @@
                     "file_size"
                 ]
             }
+        },
+        "status": {
+            "comment": "Released, revoked, and archived files must not have upload_status pending or file not found.",
+            "if": {
+                "properties": {
+                    "status": {
+                        "enum": [
+                            "archived",
+                            "released",
+                            "revoked"
+                        ]
+                    }
+                }
+            },
+            "then": {
+                "not": {
+                    "properties": {
+                        "upload_status": {
+                            "enum": [
+                                "file not found",
+                                "pending"
+                            ]
+                        }
+                    }
+                }
+            }
         }
     },
     "properties": {
