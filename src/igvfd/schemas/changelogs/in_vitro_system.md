@@ -2,7 +2,8 @@
 
 ### Schema version 17
 
-* Restrict linking of `cell_fate_change_treatments` to Treatment, and allow linking to Document.
+* Restrict linking of `cell_fate_change_treatments` to Treatment.
+* Add `cell_fate_change_protocol`.
 
 ### Schema version 16
 

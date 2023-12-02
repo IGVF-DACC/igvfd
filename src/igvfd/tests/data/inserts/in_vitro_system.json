@@ -171,6 +171,7 @@
         "cell_fate_change_treatments": [
             "/treatments/2d57c810-c729-11ec-9d64-0242ac120002/"
         ],
+        "cell_fate_change_protocol": "bcb5f3c8-d5e9-40d2-805f-4274f940c36d",
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
