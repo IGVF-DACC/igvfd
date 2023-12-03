@@ -352,3 +352,16 @@ def sample_15_16(value, system):
     if 'sorted_fraction_detail' in value:
         value['sorted_from_detail'] = value['sorted_fraction_detail']
         del value['sorted_fraction_detail']
+
+
+@upgrade_step('primary_cell', '16', '17')
+@upgrade_step('in_vitro_system', '15', '16')
+@upgrade_step('tissue', '16', '17')
+@upgrade_step('technical_sample', '10', '11')
+@upgrade_step('whole_organism', '20', '21')
+@upgrade_step('multiplexed_sample', '5', '6')
+def sample_16_17(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1170
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']

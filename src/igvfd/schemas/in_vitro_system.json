@@ -114,7 +114,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "15"
+            "default": "16"
         },
         "classification": {
             "title": "Classification",

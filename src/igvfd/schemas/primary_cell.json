@@ -57,7 +57,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "16"
+            "default": "17"
         },
         "passage_number": {
             "title": "Passage Number",
