@@ -31,7 +31,7 @@ def page_2_3(value, system):
 
 
 @upgrade_step('page', '3', '4')
-def page_2_3(value, system):
+def page_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1170
     if 'description' in value:
         if value['description'] == '':
