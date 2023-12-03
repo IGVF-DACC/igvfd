@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Disallow empty strings in `descriptions`. (12/02/2023)
 * Rename `source` to `sources`. (08/09/2023)
 * Rename `references` to `publication_identifiers`. (08/02/2023)
 * Add `transcriptome_annotation`. (07/10/2023)
