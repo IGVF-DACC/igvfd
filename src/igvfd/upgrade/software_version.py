@@ -24,3 +24,11 @@ def software_version_2_3(value, system):
             value['version'] = version
     new_notes = notes.strip()
     value['notes'] = new_notes
+
+
+@upgrade_step('software_version', '3', '4')
+def software_version_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1170
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']
