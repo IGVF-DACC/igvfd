@@ -15,7 +15,7 @@ def ontology_term_1_2(value, system):
 @upgrade_step('assay_term', '2', '3')
 @upgrade_step('sample_term', '2', '3')
 @upgrade_step('platform_term', '1', '2')
-def sample_2_3(value, system):
+def ontology_term_2_3(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1170
     if 'description' in value:
         if value['description'] == '':
