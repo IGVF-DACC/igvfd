@@ -143,3 +143,17 @@ def construct_library_set_1_2(value, system):
             notes += f' The required exon identifier was defaulted to "exon_ID" in an upgrade, please patch this property with the correct identifier.'
             value['notes'] = notes.strip()
     return
+
+
+@upgrade_step('measurement_set', '9', '10')
+@upgrade_step('auxiliary_set', '4', '5')
+@upgrade_step('analysis_set', '4', '5')
+@upgrade_step('construct_library_set', '2', '3')
+@upgrade_step('curated_set', '5', '6')
+@upgrade_step('model_set', '1', '2')
+@upgrade_step('prediction_set', '2', '3')
+def file_set_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1177
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']
