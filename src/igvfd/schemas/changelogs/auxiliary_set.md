@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Schema version 5
+
+* Disallow empty strings in `description`.
+
 ### Schema version 4
 
 * Remove `moi` and `construct_libraries` properties.
