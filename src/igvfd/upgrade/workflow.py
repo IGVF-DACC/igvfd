@@ -7,3 +7,11 @@ def workflow_1_2(value, system):
     if 'references' in value:
         value['publication_identifiers'] = value['references']
         del value['references']
+
+
+@upgrade_step('workflow', '2', '3')
+def workflow_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1170
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']
