@@ -32,3 +32,11 @@ def analysis_step_2_3(value, system):
         notes += f' This object\'s award was missing and has been set to HG012012 as a placeholder.'
     if notes != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_step', '3', '4')
+def analysis_step_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1170
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']
