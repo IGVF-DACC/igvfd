@@ -14,8 +14,6 @@ def document_1_2(value, system):
 
 @upgrade_step('document', '2', '3')
 def document_2_3(value, system):
-    def workflow_2_3(value, system):
-        # https://igvf.atlassian.net/browse/IGVF-1170
     if 'description' in value:
         if value['description'] == '':
             value['description'] = 'Default upgrade text: please add details about document in description.'
