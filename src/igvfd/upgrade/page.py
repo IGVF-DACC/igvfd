@@ -28,3 +28,11 @@ def page_2_3(value, system):
             for block in richtextblocks:
                 block.update({'@type': 'markdown', 'direction': 'ltr'})
             value['layout']['blocks'] = richtextblocks
+
+
+@upgrade_step('page', '3', '4')
+def page_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1170
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']
