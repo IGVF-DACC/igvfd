@@ -1,5 +1,9 @@
 ## Changelog for *`user.json`*
 
+### Schema version 3
+
+* Disallow empty strings in `description`.
+
 ### Minor changes since schema version 2
 
 * Add `description`.

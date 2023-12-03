@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Schema version 11
+
+* Disallow empty strings in `description`.
+
 ### Schema version 10
 
 * Rename `sorted_fraction` to `sorted_from`.

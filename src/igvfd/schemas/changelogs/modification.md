@@ -1,5 +1,9 @@
 ## Changelog for *`modification.json`*
 
+### Schema version 4
+
+* Disallow empty strings in `description`.
+
 ### Minor changes since schema version 3
 
 * Add `M-MLV RT (PE2)`, `TdCBE`, `TdCGBE`, and `TdDE` to `fused_domain`.

@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 16
+
+* Disallow empty strings in `description`.
+
 ### Schema version 15
 
 * Rename `sorted_fraction` to `sorted_from`.

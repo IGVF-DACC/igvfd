@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 6
+
+* Disallow empty strings in `description`.
+
 ### Minor changes since schema version 5
 
 * Allow hyphens in `dbxrefs`.
