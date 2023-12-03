@@ -1,5 +1,9 @@
 ## Changelog for *`document.json`*
 
+### Schema version 3
+
+* Disallow empty strings in `description`.
+
 ### Minor changes since schema version 2
 
 * Expand `document_type` enum list to include `cell fate change protocol`.
