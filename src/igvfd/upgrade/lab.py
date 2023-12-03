@@ -13,7 +13,7 @@ def lab_1_2(value, system):
 
 
 @upgrade_step('lab', '2', '3')
-def lab_1_2(value, system):
+def lab_2_3(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1170
     if 'description' in value:
         if value['description'] == '':
