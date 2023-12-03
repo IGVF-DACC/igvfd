@@ -47,3 +47,11 @@ def treatment_4_5(value, system):
     if 'source' in value:
         value['sources'] = [value['source']]
         del value['source']
+
+
+@upgrade_step('treatment', '5', '6')
+def treatment_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1170
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']
