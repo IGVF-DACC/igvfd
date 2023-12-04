@@ -31,8 +31,8 @@ def alignment_file_v1(alignment_file):
 
 
 @pytest.fixture
-def alignment_file_v2(alignment_file):
-    item = alignment_file.copy()
+def alignment_file_v2(alignment_file_v1):
+    item = alignment_file_v1.copy()
     item.update({
         'schema_version': '2',
         'description': ''
