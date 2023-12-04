@@ -50,3 +50,23 @@ def alignment_file_v3(alignment_file_v1):
         'status': 'released'
     })
     return item
+
+
+@pytest.fixture
+def alignment_file_v4(testapp, lab, award, analysis_set_with_sample, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '9ea1d1ca6cd01ad85a8f6c86bc528d1b',
+        'file_format': 'bam',
+        'file_set': analysis_set_with_sample['@id'],
+        'file_size': 8491803,
+        'content_type': 'alignments',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'redacted': False,
+        'filtered': False,
+        'schema_version': '4'
+    }
+    return item

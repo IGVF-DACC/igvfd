@@ -45,3 +45,18 @@ def genome_browser_annotation_file_v3(genome_browser_annotation_file_v1):
         'status': 'released'
     })
     return item
+
+
+@pytest.fixture
+def genome_browser_annotation_file_v4(testapp, lab, award, analysis_set_with_sample, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '00df1835ba4bb0301a4babc9af51b07c',
+        'file_format': 'tabix',
+        'file_set': analysis_set_with_sample['@id'],
+        'content_type': 'peaks',
+        'derived_from': [reference_file['@id']],
+        'schema_version': '4'
+    }
+    return item

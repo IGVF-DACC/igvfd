@@ -51,3 +51,11 @@ def test_reference_file_upgrade_8_9(upgrader, reference_file_v8):
     value = upgrader.upgrade('reference_file', reference_file_v8, current_version='8', target_version='9')
     assert value['upload_status'] == 'invalidated'
     assert value['schema_version'] == '9'
+
+
+def test_reference_file_upgrade_9_10(upgrader, reference_file_v9):
+    value = upgrader.upgrade('reference_file', reference_file_v9, current_version='9', target_version='10')
+    assert 'assembly' in value
+    assert value['assembly'] == 'GRCh38'
+    assert value['schema_version'] == '10'
+

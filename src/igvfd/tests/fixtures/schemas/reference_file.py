@@ -105,3 +105,17 @@ def reference_file_v8(reference_file_v6):
         'status': 'released'
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v9(testapp, lab, award, analysis_set_with_sample):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '02c177dab4905127dfb77f9ef8a0648b',
+        'file_format': 'bed',
+        'file_set': analysis_set_with_sample['@id'],
+        'content_type': 'regulatory_regions',
+        'schema_version': '9'
+    }
+    return item

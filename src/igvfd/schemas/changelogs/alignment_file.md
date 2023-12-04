@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 5
+
+* Require `assembly` if `file_format` is one of `bam`, `bed`, `bedpe`, `bigWig`, `bigBed`, `bigInteract`, `tagAlign`, or `vcf`.
+
 ### Minor changes since schema version 4
 
 * Add `assembly`.

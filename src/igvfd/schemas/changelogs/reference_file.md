@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 10
+
+* Require `assembly` if `file_format` is one of `bam`, `bed`, `bedpe`, `bigWig`, `bigBed`, `bigInteract`, `tagAlign`, or `vcf`.
+
 ### Schema version 9
 
 * Require publicly released files to have `upload_status` of `validated` or `invalidated`.
