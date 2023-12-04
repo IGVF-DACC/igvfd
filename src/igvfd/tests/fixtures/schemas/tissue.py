@@ -263,3 +263,13 @@ def tissue_v15(tissue, in_vitro_differentiated_cell):
         'sorted_fraction_detail': 'This is a detail about the sorting.'
     })
     return item
+
+
+@pytest.fixture
+def tissue_v16(tissue_v15):
+    item = tissue_v15.copy()
+    item.update({
+        'schema_version': '16',
+        'description': ''
+    })
+    return item

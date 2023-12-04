@@ -115,3 +115,13 @@ def technical_sample_v9(technical_sample, in_vitro_differentiated_cell):
         'sorted_fraction_detail': 'This is a detail about the sorting.'
     })
     return item
+
+
+@pytest.fixture
+def technical_sample_v10(technical_sample_v9):
+    item = technical_sample_v9.copy()
+    item.update({
+        'schema_version': '10',
+        'description': ''
+    })
+    return item

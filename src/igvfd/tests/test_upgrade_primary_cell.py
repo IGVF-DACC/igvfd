@@ -126,3 +126,9 @@ def test_primary_cell_upgrade_15_16(upgrader, primary_cell_v15):
     assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
     assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail
     assert value['schema_version'] == '16'
+
+
+def test_primary_cell_upgrade_16_17(upgrader, primary_cell_v16):
+    value = upgrader.upgrade('primary_cell', primary_cell_v16, current_version='16', target_version='17')
+    assert value['schema_version'] == '17'
+    assert 'description' not in value

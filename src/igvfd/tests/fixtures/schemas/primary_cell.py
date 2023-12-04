@@ -271,3 +271,13 @@ def primary_cell_v15(primary_cell, in_vitro_differentiated_cell):
         'sorted_fraction_detail': 'This is a detail about the sorting.'
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v16(primary_cell_v15):
+    item = primary_cell_v15.copy()
+    item.update({
+        'schema_version': '16',
+        'description': ''
+    })
+    return item

@@ -261,3 +261,13 @@ def whole_organism_v18(whole_organism, in_vitro_differentiated_cell):
         'sorted_fraction_detail': 'This is a detail about the sorting.'
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v19(whole_organism_v18):
+    item = whole_organism_v18.copy()
+    item.update({
+        'schema_version': '19',
+        'description': ''
+    })
+    return item
