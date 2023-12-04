@@ -22,3 +22,13 @@ def tabular_file_v1(tabular_file):
         'dbxrefs': ['']
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v1(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

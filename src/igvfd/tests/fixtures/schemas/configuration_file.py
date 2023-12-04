@@ -22,3 +22,13 @@ def configuration_file_v1(configuration_file_seqspec):
         'dbxrefs': ['']
     })
     return item
+
+
+@pytest.fixture
+def configuration_file_v2(configuration_file_v1):
+    item = configuration_file_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

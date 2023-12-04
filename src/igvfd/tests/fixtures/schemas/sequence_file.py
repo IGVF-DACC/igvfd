@@ -126,3 +126,13 @@ def sequence_file_v4(sequence_file):
         'dbxrefs': []
     })
     return item
+
+
+@pytest.fixture
+def sequence_file_v5(sequence_file_v4):
+    item = sequence_file.copy()
+    item.update({
+        'schema_version': '5',
+        'description': ''
+    })
+    return item
