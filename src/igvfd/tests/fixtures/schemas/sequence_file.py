@@ -130,7 +130,7 @@ def sequence_file_v4(sequence_file):
 
 @pytest.fixture
 def sequence_file_v5(sequence_file_v4):
-    item = sequence_file.copy()
+    item = sequence_file_v4.copy()
     item.update({
         'schema_version': '5',
         'description': ''
