@@ -95,3 +95,13 @@ def construct_library_set_v1(testapp, lab, award, gene_myc_hs):
         ]
     }
     return item
+
+
+@pytest.fixture
+def construct_library_set_v2(construct_library_set_v1):
+    item = construct_library_set_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

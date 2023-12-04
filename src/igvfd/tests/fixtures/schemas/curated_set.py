@@ -61,3 +61,13 @@ def curated_set_v4(lab, award):
         'schema_version': '4'
     }
     return item
+
+
+@pytest.fixture
+def curated_set_v5(curated_set_v4):
+    item = curated_set_v4.copy()
+    item.update({
+        'schema_version': '5',
+        'description': ''
+    })
+    return item

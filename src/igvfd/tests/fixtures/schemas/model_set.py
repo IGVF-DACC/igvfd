@@ -18,3 +18,13 @@ def model_set_no_input(
         'software_version': software_version['@id']
     }
     return testapp.post_json('/model_set', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def model_set_v1(model_set_no_input):
+    item = model_set_no_input.copy()
+    item.update({
+        'schema_version': '1',
+        'description': ''
+    })
+    return item

@@ -35,3 +35,11 @@ def test_curated_set_upgrade_4_5(upgrader, curated_set_v4):
         current_version='4', target_version='5')
     assert value['schema_version'] == '5'
     assert 'file_set_type' in value and value['file_set_type'] == curated_set_type
+
+
+def test_curated_set_upgrade_5_6(upgrader, curated_set_v5):
+    value = upgrader.upgrade(
+        'curated_set', curated_set_v5,
+        current_version='5', target_version='6')
+    assert value['schema_version'] == '6'
+    assert 'description' not in value
