@@ -28,3 +28,9 @@ def test_gene_upgrade_4_5(upgrader, gene_v4):
     assert 'annotation_version' not in value
     assert 'transcriptome_annotation' in value
     assert value['schema_version'] == '5'
+
+
+def test_gene_upgrade_5_6(upgrader, gene_v5):
+    value = upgrader.upgrade('gene', gene_v5, current_version='5', target_version='6')
+    assert value['schema_version'] == '6'
+    assert 'description' not in value

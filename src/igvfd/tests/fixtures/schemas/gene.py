@@ -107,3 +107,13 @@ def gene_v4(gene_myc_hs):
         'annotation_version': 'GENCODE 42'
     })
     return item
+
+
+@pytest.fixture
+def gene_v5(gene_v4):
+    item = gene_v4.copy()
+    item.update({
+        'schema_version': '5',
+        'description': ''
+    })
+    return item
