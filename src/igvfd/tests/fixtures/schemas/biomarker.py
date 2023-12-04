@@ -61,3 +61,13 @@ def biomarker_v1(biomarker_CD243_absent):
         'schema_version': '1'
     })
     return item
+
+
+@pytest.fixture
+def biomarker_v2(biomarker_v1):
+    item = biomarker_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item
