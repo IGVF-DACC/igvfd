@@ -4,6 +4,10 @@
 
 * Disallow empty strings in `description`.
 
+### Minor changes since schema version 2
+
+* Add a `title` property to the `tile` property to prevent a UI crash.
+
 ### Schema version 2
 
 * Add `tile` enum to `file_set_type` and descriptive `tile` property.

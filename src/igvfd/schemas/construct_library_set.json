@@ -558,6 +558,7 @@
             }
         },
         "tile": {
+            "title": "Tile",
             "description": "The coordinates and an identifier in plain text for the specific tile of a protein region cloned in an expression vector library. The associated gene for this protein must be listed in genes property.",
             "comment": "The protein tile locus is defined using 1-based numbering where 1 indicates the N-terminal Methionine initiator.",
             "type": "object",
