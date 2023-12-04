@@ -52,3 +52,9 @@ def test_rodent_donor_upgrade_9_10(upgrader, rodent_donor_v9):
     assert sources == value['sources']
     assert type(value['sources']) == list
     assert value['schema_version'] == '10'
+
+
+def test_rodent_donor_upgrade_10_11(upgrader, rodent_donor_v10):
+    value = upgrader.upgrade('rodent_donor', rodent_donor_v10, current_version='10', target_version='11')
+    assert 'description' not in value
+    assert value['schema_version'] == '11'

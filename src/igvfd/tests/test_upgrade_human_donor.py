@@ -78,3 +78,9 @@ def test_human_donor_upgrade_9_10(upgrader, human_donor_v9):
     value = upgrader.upgrade('human_donor', human_donor_v9, current_version='9', target_version='10')
     assert 'human_donor_identifier' not in value
     assert identifiers == value['human_donor_identifiers']
+
+
+def test_human_donor_upgrade_11_12(upgrader, human_donor_v11):
+    value = upgrader.upgrade('human_donor', human_donor_v11, current_version='11', target_version='12')
+    assert 'description' not in value
+    assert value['schema_version'] == '12'
