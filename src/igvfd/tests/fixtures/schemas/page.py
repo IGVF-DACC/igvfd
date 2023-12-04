@@ -54,3 +54,13 @@ def page_v2(page):
         }
     )
     return item
+
+
+@pytest.fixture
+def page_v3(page_v2):
+    item = page_v2.copy()
+    item.update({
+        'schema_version': '3',
+        'description': ''
+    })
+    return item
