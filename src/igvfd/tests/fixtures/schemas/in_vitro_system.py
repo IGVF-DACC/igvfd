@@ -227,5 +227,14 @@ def in_vitro_system_v15(in_vitro_system_v14):
     item.update({
         'schema_version': '15',
         'description': ''
+        })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_v16(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '16'
     })
     return item
