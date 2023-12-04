@@ -11,7 +11,7 @@ def test_workflow_upgrade_1_2(upgrader, workflow_v1):
     assert 'references' not in value
 
 
-def test_workflow_upgrade_1_2(upgrader, workflow_v2):
+def test_workflow_upgrade_2_3(upgrader, workflow_v2):
     value = upgrader.upgrade(
         'workflow', workflow_v2,
         current_version='2', target_version='3')
