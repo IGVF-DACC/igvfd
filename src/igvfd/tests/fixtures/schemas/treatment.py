@@ -112,3 +112,13 @@ def treatment_v4(treatment_chemical, source):
         'source': source['@id']
     })
     return item
+
+
+@pytest.fixture
+def treatment_v5(treatment_v4):
+    item = treatment_v4.copy()
+    item.update({
+        'schema_version': '5',
+        'description': ''
+    })
+    return item

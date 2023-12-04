@@ -22,3 +22,11 @@ def test_software_version_upgrade_2_3(upgrader, software_version_v2_no_v, softwa
         current_version='2', target_version='3')
     assert value['schema_version'] == '3'
     assert value['version'] == 'v2.4.4'
+
+
+def test_software_version_upgrade_3_4(upgrader, software_version_v3):
+    value = upgrader.upgrade(
+        'software_version', software_version_v3,
+        current_version='3', target_version='4')
+    assert value['schema_version'] == '4'
+    assert 'description' not in value

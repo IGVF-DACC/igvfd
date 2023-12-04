@@ -41,3 +41,13 @@ def software_version_v2_no_v(software_version):
         'version': '2.4.4',
     })
     return item
+
+
+@pytest.fixture
+def software_version_v3(software_version_v2):
+    item = software_version_v2.copy()
+    item.update({
+        'schema_version': '3',
+        'description': '',
+    })
+    return item

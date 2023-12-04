@@ -7,3 +7,9 @@ def test_user_upgrade_1_2(upgrader, user_v1):
     assert 'aliases' not in value
     assert 'groups' not in value
     assert value['schema_version'] == '2'
+
+
+def test_user_upgrade_2_3(upgrader, user_v2):
+    value = upgrader.upgrade('user', user_v2, current_version='2', target_version='3')
+    assert 'description' not in value
+    assert value['schema_version'] == '3'
