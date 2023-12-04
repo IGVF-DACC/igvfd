@@ -299,3 +299,34 @@ def test_audit_missing_modification(
         error['category'] != 'missing modification'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_inherit_nested_audits(
+    testapp,
+    measurement_set,
+    primary_cell,
+    treatment_chemical
+):
+    testapp.patch_json(
+        treatment_chemical['@id'],
+        {
+            'treatment_term_id': 'NTR:0001185'
+        }
+    )
+    testapp.patch_json(
+        primary_cell['@id'],
+        {
+            'treatments': [treatment_chemical['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [primary_cell['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'treatment term has been newly requested'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
