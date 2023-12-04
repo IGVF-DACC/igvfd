@@ -141,7 +141,6 @@ def file_8_9(value, system):
         'bigWig',
         'bigInteract',
         'tabix',
-        'tagAlign',
         'vcf'
     ]:
         if 'assembly' not in value:
