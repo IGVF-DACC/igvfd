@@ -92,3 +92,13 @@ def sample_term_technical_sample(testapp):
         'term_name': 'technical sample'
     }
     return testapp.post_json('/sample_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def sample_term_v2(sample_term_v1):
+    item = sample_term_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

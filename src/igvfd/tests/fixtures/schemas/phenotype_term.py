@@ -44,3 +44,13 @@ def phenotype_term_ncit_feature(testapp):
         'term_name': 'Body Weight Measurement'
     }
     return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def phenotype_term_v2(phenotype_term_v1):
+    item = phenotype_term_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item
