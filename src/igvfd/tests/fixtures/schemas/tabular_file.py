@@ -25,8 +25,8 @@ def tabular_file_v1(tabular_file):
 
 
 @pytest.fixture
-def tabular_file_v1(tabular_file):
-    item = tabular_file.copy()
+def tabular_file_v2(tabular_file_v1):
+    item = tabular_file_v1.copy()
     item.update({
         'schema_version': '2',
         'description': ''
