@@ -30,3 +30,13 @@ def award_v2(award, pi):
         'pi': [pi['@id']]
     })
     return item
+
+
+@pytest.fixture
+def award_v3(award_v2, pi):
+    item = award_v2.copy()
+    item.update({
+        'schema_version': '3',
+        'description': ''
+    })
+    return item

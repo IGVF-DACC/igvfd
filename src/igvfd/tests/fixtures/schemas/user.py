@@ -122,3 +122,13 @@ def viewing_group_member(testapp, award):
     # User @@object view has keys omitted.
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
+
+
+@pytest.fixture
+def user_v2(user_v1):
+    item = user_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

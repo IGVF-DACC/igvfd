@@ -29,3 +29,13 @@ def signal_file_v1(signal_file):
         'dbxrefs': ['']
     })
     return item
+
+
+@pytest.fixture
+def signal_file_v2(signal_file_v1):
+    item = signal_file_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

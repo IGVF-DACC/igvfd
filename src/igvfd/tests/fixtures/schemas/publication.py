@@ -32,3 +32,13 @@ def publication_v2(
         'identifiers': ['PMID:2']
     }
     return item
+
+
+@pytest.fixture
+def publication_v3(publication_v2):
+    item = publication_v2.copy()
+    item.update({
+        'schema_version': '3',
+        'description': ''
+    })
+    return item

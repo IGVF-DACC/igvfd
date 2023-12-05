@@ -90,3 +90,13 @@ def multiplexed_sample_v4(multiplexed_sample, in_vitro_differentiated_cell):
         'sorted_fraction_detail': 'This is a detail about the sorting.'
     })
     return item
+
+
+@pytest.fixture
+def multiplexed_sample_v5(multiplexed_sample_v4):
+    item = multiplexed_sample_v4.copy()
+    item.update({
+        'schema_version': '5',
+        'description': ''
+    })
+    return item

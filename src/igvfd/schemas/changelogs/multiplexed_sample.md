@@ -1,5 +1,9 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Schema version 6
+
+* Disallow empty strings in `description`.
+
 ### Schema version 5
 
 * Rename `sorted_fraction` to `sorted_from`.

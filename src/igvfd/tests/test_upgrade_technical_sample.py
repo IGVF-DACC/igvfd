@@ -72,3 +72,9 @@ def test_technical_sample_upgrade_9_10(upgrader, technical_sample_v9):
     assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
     assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail
     assert value['schema_version'] == '10'
+
+
+def test_technical_sample_upgrade_10_11(upgrader, technical_sample_v10):
+    value = upgrader.upgrade('technical_sample', technical_sample_v10, current_version='10', target_version='11')
+    assert value['schema_version'] == '11'
+    assert 'description' not in value

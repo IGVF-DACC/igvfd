@@ -1,5 +1,9 @@
 ## Changelog for *`page.json`*
 
+### Schema version 4
+
+* Disallow empty strings in `description`.
+
 ### Schema version 3
 
 * Remove `news`, `news_keywords`, and `news_excerpt` properties.

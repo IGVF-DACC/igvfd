@@ -71,3 +71,13 @@ def analysis_set_v3(award, lab):
         'schema_version': '3'
     }
     return item
+
+
+@pytest.fixture
+def analysis_set_v4(analysis_set_v3):
+    item = analysis_set_v3.copy()
+    item.update({
+        'schema_version': '4',
+        'description': ''
+    })
+    return item

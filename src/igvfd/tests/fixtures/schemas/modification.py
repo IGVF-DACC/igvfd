@@ -44,3 +44,13 @@ def modification_activation(testapp, lab, award):
         'cas_species': 'Streptococcus pyogenes (Sp)'
     }
     return testapp.post_json('/modification', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def modification_v3(modification_activation):
+    item = modification_activation.copy()
+    item.update({
+        'schema_version': '3',
+        'description': ''
+    })
+    return item

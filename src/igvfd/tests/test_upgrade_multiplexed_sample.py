@@ -33,3 +33,9 @@ def test_multiplexed_sample_upgrade_4_5(upgrader, multiplexed_sample_v4):
     assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
     assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail
     assert value['schema_version'] == '5'
+
+
+def test_multiplexed_sample_upgrade_5_6(upgrader, multiplexed_sample_v5):
+    value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v5, current_version='5', target_version='6')
+    assert value['schema_version'] == '6'
+    assert 'description' not in value

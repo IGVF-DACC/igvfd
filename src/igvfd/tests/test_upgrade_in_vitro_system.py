@@ -111,3 +111,9 @@ def test_in_vitro_system_upgrade_14_15(upgrader, in_vitro_system_v14):
     assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
     assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail
     assert value['schema_version'] == '15'
+
+
+def test_in_vitro_system_upgrade_15_16(upgrader, in_vitro_system_v15):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v15, current_version='15', target_version='16')
+    assert value['schema_version'] == '16'
+    assert 'description' not in value

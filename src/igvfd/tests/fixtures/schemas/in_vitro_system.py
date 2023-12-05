@@ -219,3 +219,13 @@ def in_vitro_system_v14(in_vitro_cell_line, in_vitro_differentiated_cell):
         'sorted_fraction_detail': 'This is a detail about the sorting.'
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v15(in_vitro_system_v14):
+    item = in_vitro_system_v14.copy()
+    item.update({
+        'schema_version': '15',
+        'description': ''
+    })
+    return item

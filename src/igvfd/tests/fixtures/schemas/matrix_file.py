@@ -28,3 +28,13 @@ def matrix_file_v1(matrix_file):
         'dbxrefs': ['']
     })
     return item
+
+
+@pytest.fixture
+def matrix_file_v2(matrix_file_v1):
+    item = matrix_file_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

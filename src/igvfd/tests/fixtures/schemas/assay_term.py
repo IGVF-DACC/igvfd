@@ -81,3 +81,13 @@ def assay_term_crispr(testapp):
         'term_name': 'CRISPR screen'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def assay_term_v2(assay_term_v1):
+    item = assay_term_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

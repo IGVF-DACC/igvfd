@@ -28,3 +28,13 @@ def alignment_file_v1(alignment_file):
         'dbxrefs': ['']
     })
     return item
+
+
+@pytest.fixture
+def alignment_file_v2(alignment_file_v1):
+    item = alignment_file_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

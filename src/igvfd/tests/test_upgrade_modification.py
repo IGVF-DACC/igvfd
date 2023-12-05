@@ -17,3 +17,9 @@ def test_modification_upgrade_2_3(upgrader, modification_v2):
     assert sources == value['sources']
     assert type(value['sources']) == list
     assert value['schema_version'] == '3'
+
+
+def test_modification_upgrade_3_4(upgrader, modification_v3):
+    value = upgrader.upgrade('modification', modification_v3, current_version='3', target_version='4')
+    assert value['schema_version'] == '4'
+    assert 'description' not in value

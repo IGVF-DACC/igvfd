@@ -31,3 +31,13 @@ def source_lonza(testapp):
         'description': 'Lonza Group Ltd.'
     }
     return testapp.post_json('/source', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def source_v2(source_v1):
+    item = source_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

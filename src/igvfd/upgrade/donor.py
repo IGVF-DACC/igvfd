@@ -151,3 +151,12 @@ def rodent_donor_9_10(value, system):
     if 'source' in value:
         value['sources'] = [value['source']]
         del value['source']
+
+
+@upgrade_step('human_donor', '11', '12')
+@upgrade_step('rodent_donor', '10', '11')
+def donor_11_12(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1170
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']

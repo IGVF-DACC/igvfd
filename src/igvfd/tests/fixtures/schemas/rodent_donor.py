@@ -152,3 +152,13 @@ def rodent_donor_v9(rodent_donor, source):
         'source': source['@id']
     })
     return item
+
+
+@pytest.fixture
+def rodent_donor_v10(rodent_donor_v9, source):
+    item = rodent_donor_v9.copy()
+    item.update({
+        'schema_version': '10',
+        'description': ''
+    })
+    return item

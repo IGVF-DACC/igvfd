@@ -1,5 +1,9 @@
 ## Changelog for *`publication.json`*
 
+### Schema version 4
+
+* Disallow empty strings in `description`.
+
 ### Schema version 3
 
 * Replace `identifiers` with `publication_identifiers` from mixins.

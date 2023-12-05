@@ -92,3 +92,18 @@ def reference_file_6_7(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1272
     if 'external' not in value:
         value['external'] = False
+
+
+@upgrade_step('reference_file', '7', '8')
+@upgrade_step('matrix_file', '2', '3')
+@upgrade_step('signal_file', '2', '3')
+@upgrade_step('configuration_file', '2', '3')
+@upgrade_step('alignment_file', '2', '3')
+@upgrade_step('sequence_file', '5', '6')
+@upgrade_step('genome_browser_annotation_file', '2', '3')
+@upgrade_step('tabular_file', '2', '3')
+def file_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1170
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']

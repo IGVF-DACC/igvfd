@@ -17,3 +17,11 @@ def modification_2_3(value, system):
     if 'source' in value:
         value['sources'] = [value['source']]
         del value['source']
+
+
+@upgrade_step('modification', '3', '4')
+def modification_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1170
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']

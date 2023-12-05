@@ -30,3 +30,13 @@ def prediction_set_v1(base_prediction_set):
         'schema_version': '1'
     })
     return item
+
+
+@pytest.fixture
+def prediction_set_v2(prediction_set_v1):
+    item = prediction_set_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

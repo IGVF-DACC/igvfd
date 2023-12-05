@@ -156,3 +156,9 @@ def test_whole_organism_upgrade_18_19(upgrader, whole_organism_v18):
     assert 'sorted_from' in value and value['sorted_from'] == sorted_sample
     assert 'sorted_from_detail' in value and value['sorted_from_detail'] == sorted_sample_detail
     assert value['schema_version'] == '19'
+
+
+def test_whole_organism_upgrade_19_20(upgrader, whole_organism_v19):
+    value = upgrader.upgrade('whole_organism', whole_organism_v19, current_version='19', target_version='20')
+    assert value['schema_version'] == '20'
+    assert 'description' not in value

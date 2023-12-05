@@ -42,3 +42,13 @@ def auxiliary_set_v3(base_auxiliary_set):
         'notes': 'Previous note.'
     })
     return item
+
+
+@pytest.fixture
+def auxiliary_set_v4(auxiliary_set_v3):
+    item = auxiliary_set_v3.copy()
+    item.update({
+        'schema_version': '4',
+        'description': ''
+    })
+    return item

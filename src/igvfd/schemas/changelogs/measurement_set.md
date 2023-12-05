@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 10
+
+* Disallow empty strings in `description`.
+
 ### Minor changes since schema version 9
 
 * Expand `preferred_assay_title` enum list to include `snM3C-seq`.

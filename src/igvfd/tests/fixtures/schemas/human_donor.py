@@ -222,3 +222,13 @@ def human_donor_v10(human_donor):
         'references': ['10.1101/2023.08.02']
     })
     return item
+
+
+@pytest.fixture
+def human_donor_v11(human_donor_v10):
+    item = human_donor_v10.copy()
+    item.update({
+        'schema_version': '11',
+        'description': ''
+    })
+    return item

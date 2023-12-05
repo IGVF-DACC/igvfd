@@ -119,3 +119,13 @@ def measurement_set_v8(measurement_set):
         'sequencing_library_type': ['direct RNA', 'exome capture']
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v9(measurement_set_v8):
+    item = measurement_set_v8.copy()
+    item.update({
+        'schema_version': '9',
+        'description': ''
+    })
+    return item

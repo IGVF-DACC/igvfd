@@ -1,5 +1,9 @@
 ## Changelog for *`treatment.json`*
 
+### Schema version 6
+
+* Disallow empty strings in `description`.
+
 ### Minor changes since schema version 5
 
 * Rename `title` to `summary`.

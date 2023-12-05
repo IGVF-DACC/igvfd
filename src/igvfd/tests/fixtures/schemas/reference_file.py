@@ -82,3 +82,13 @@ def reference_file_v6(testapp, lab, award, analysis_set_with_sample):
         'schema_version': '6'
     }
     return item
+
+
+@pytest.fixture
+def reference_file_v7(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '7',
+        'description': ''
+    })
+    return item

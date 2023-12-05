@@ -47,3 +47,11 @@ def gene_4_5(value, system):
     if 'annotation_version' in value:
         value['transcriptome_annotation'] = value['annotation_version']
         del value['annotation_version']
+
+
+@upgrade_step('gene', '5', '6')
+def gene_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1170
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']

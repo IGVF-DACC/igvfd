@@ -39,3 +39,9 @@ def test_reference_file_upgrade_6_7(upgrader, reference_file_v6):
     assert 'external' in value
     assert value['external'] is False
     assert value['schema_version'] == '7'
+
+
+def test_reference_file_upgrade_7_8(upgrader, reference_file_v7):
+    value = upgrader.upgrade('reference_file', reference_file_v7, current_version='7', target_version='8')
+    assert 'description' not in value
+    assert value['schema_version'] == '8'

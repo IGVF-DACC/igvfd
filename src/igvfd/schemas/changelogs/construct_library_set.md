@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Schema version 3
+
+* Disallow empty strings in `description`.
+
 ### Schema version 2
 
 * Add `tile` enum to `file_set_type` and descriptive `tile` property.

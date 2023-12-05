@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 20
+
+* Disallow empty strings in `description`.
+
 ### Schema version 19
 
 * Rename `sorted_fraction` to `sorted_from`.

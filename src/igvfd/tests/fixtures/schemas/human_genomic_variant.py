@@ -51,3 +51,13 @@ def human_genomic_variant_match(testapp):
         'refseq_id': 'NC_999999.00'
     }
     return testapp.post_json('/human_genomic_variant', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def human_genomic_variant_v2(human_genomic_variant_v1):
+    item = human_genomic_variant_v1.copy()
+    item.update({
+        'schema_version': '1',
+        'description': ''
+    })
+    return item

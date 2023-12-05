@@ -15,3 +15,11 @@ def publication_2_3(value, system):
     if 'identifiers' in value:
         value['publication_identifiers'] = value['identifiers']
         del value['identifiers']
+
+
+@upgrade_step('publication', '3', '4')
+def publication_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1170
+    if 'description' in value:
+        if value['description'] == '':
+            del value['description']

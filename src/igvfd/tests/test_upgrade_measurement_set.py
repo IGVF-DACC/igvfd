@@ -50,3 +50,9 @@ def test_measurement_set_upgrade_8_9(upgrader, measurement_set_v8):
     assert 'sequencing_library_type' not in value
     assert 'sequencing_library_types' in value and value['sequencing_library_types'] == sequencing_library_type
     assert value['schema_version'] == '9'
+
+
+def test_measurement_set_upgrade_9_10(upgrader, measurement_set_v9):
+    value = upgrader.upgrade('measurement_set', measurement_set_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert 'description' not in value

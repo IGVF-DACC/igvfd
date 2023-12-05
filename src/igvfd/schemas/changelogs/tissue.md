@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Schema version 17
+
+* Disallow empty strings in `description`.
+
 ### Schema version 16
 
 * Rename `sorted_fraction` to `sorted_from`.

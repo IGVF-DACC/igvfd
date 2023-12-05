@@ -82,7 +82,7 @@
             "title": "Description",
             "description": "A plain text description of the object.",
             "type": "string",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "formInput": "textarea",
             "submissionExample": {
                 "appscript": "this is a description",

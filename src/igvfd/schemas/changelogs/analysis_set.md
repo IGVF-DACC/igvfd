@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_set.json`*
 
+### Schema version 5
+
+* Disallow empty strings in `description`.
+
 ### Schema version 4
 
 * Add `file_set_type`.

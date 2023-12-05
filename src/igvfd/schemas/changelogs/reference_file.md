@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 8
+
+* Disallow empty strings in `description`.
+
 ### Schema version 7
 
 * Add a default value for `external`.

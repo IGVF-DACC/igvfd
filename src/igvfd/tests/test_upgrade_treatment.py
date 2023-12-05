@@ -31,3 +31,9 @@ def test_treatment_upgrade_4_5(upgrader, treatment_v4):
     assert sources == value['sources']
     assert type(value['sources']) == list
     assert value['schema_version'] == '5'
+
+
+def test_treatment_upgrade_5_6(upgrader, treatment_v5):
+    value = upgrader.upgrade('treatment', treatment_v5, current_version='5', target_version='6')
+    assert 'description' not in value
+    assert value['schema_version'] == '6'

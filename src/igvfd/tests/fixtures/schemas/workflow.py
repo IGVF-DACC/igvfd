@@ -21,3 +21,13 @@ def workflow_v1(base_workflow):
         'references': ['10.1101/2023.08.02']
     })
     return item
+
+
+@pytest.fixture
+def workflow_v2(workflow_v1):
+    item = workflow_v1.copy()
+    item.update({
+        'schema_version': '2',
+        'description': ''
+    })
+    return item

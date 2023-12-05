@@ -19,3 +19,9 @@ def test_sequence_file_upgrade_4_5(upgrader, sequence_file_v4):
     value = upgrader.upgrade('sequence_file', sequence_file_v4, current_version='4', target_version='5')
     assert 'dbxrefs' not in value
     assert value['schema_version'] == '5'
+
+
+def test_sequence_file_upgrade_5_6(upgrader, sequence_file_v5):
+    value = upgrader.upgrade('sequence_file', sequence_file_v5, current_version='5', target_version='6')
+    assert 'description' not in value
+    assert value['schema_version'] == '6'

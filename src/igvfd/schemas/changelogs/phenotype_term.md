@@ -1,5 +1,9 @@
 ## Changelog for *`phenotype_term.json`*
 
+### Schema version 3
+
+* Disallow empty strings in `description`.
+
 ### Minor changes since schema version 2
 
 * Add calculated property `ontology`.
