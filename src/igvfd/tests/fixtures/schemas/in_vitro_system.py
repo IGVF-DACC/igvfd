@@ -227,7 +227,7 @@ def in_vitro_system_v15(in_vitro_system_v14):
     item.update({
         'schema_version': '15',
         'description': ''
-        })
+    })
     return item
 
 
