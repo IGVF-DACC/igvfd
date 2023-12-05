@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Minor changes since schema version 3
+
+* Add a `title` property to `tile`.
+
 ### Schema version 3
 
 * Disallow empty strings in `description`.
