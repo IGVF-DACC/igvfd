@@ -1,0 +1,36 @@
+[
+    {
+        "uuid": "e157fa72-35c1-48e7-8c6f-15e79da402be",
+        "accession": "IGVFFI0001IMAG",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:detected_tissue_png"
+        ],
+        "status": "released",
+        "md5sum": "761e99a9275cedb9050edb94bb4bdc36",
+        "file_format": "png",
+        "content_type": "detected tissue",
+        "submitted_file_name": "/Users/igvf/igvf_files/detected_tissue.png",
+        "file_size": 658031,
+        "upload_status": "pending",
+        "file_set": "/measurement-sets/igvf:variant FlowFISH"
+    },
+    {
+        "uuid": "cbfb6e68-7115-44e3-9d18-fd6c131977d8",
+        "accession": "IGVFFI0002JPEG",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:low_resolution_jpeg"
+        ],
+        "status": "released",
+        "md5sum": "8ca9b4b9c4205bdb4c86dad07ae8688d",
+        "file_format": "jpg",
+        "content_type": "low resolution tissue",
+        "submitted_file_name": "/Users/igvf/igvf_files/low_resolution.jpg",
+        "file_size": 543662,
+        "upload_status": "pending",
+        "file_set": "/measurement-sets/igvf:snM3C-seq"
+    }
+]

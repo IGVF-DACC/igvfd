@@ -58,6 +58,7 @@ ORDER = [
     'matrix_file',
     'tabular_file',
     'genome_browser_annotation_file',
+    'image_file',
     'analysis_step'
 ]
 
