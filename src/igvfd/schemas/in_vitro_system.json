@@ -153,7 +153,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "16"
+            "default": "17"
         },
         "classification": {
             "title": "Classification",
