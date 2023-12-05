@@ -12,7 +12,7 @@ from .formatter import (
 def audit_no_files(value, system):
     '''
         audit_detail: File sets are expected to have files.
-        audit_category: inconsistent multiome metadata
+        audit_category: missing files
         audit_levels: WARNING
     '''
     if not(value.get('files', '')):
