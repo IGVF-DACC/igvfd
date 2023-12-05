@@ -15,7 +15,7 @@ def audit_no_files(value, system):
         audit_category: inconsistent multiome metadata
         audit_levels: WARNING
     '''
-    if 'files' in value['@id'] and not(value.get('files', '')):
+    if not(value.get('files', '')):
         detail = (
             f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no files.'
