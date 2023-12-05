@@ -173,3 +173,76 @@ def test_sequence_file_sequencing_run_uniqueness(
         }
     )
     assert res.status_code == 200
+
+
+def test_sequence_file_upload_status(testapp, sequence_file):
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'status': 'released',
+            'upload_status': 'file not found'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'status': 'released',
+            'upload_status': 'pending'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'status': 'revoked',
+            'upload_status': 'file not found'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'status': 'revoked',
+            'upload_status': 'pending'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'status': 'archived',
+            'upload_status': 'file not found'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'status': 'archived',
+            'upload_status': 'pending'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'status': 'released',
+            'upload_status': 'validated'
+        }
+    )
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'status': 'released',
+            'upload_status': 'invalidated'
+        }
+    )
+    assert res.status_code == 200
