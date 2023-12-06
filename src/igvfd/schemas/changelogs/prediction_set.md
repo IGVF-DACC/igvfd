@@ -3,7 +3,7 @@
 ### Schema version 3
 
 * Disallow empty strings in `description`.
-* Allow underscores in the pattern for `chromosome` in `loci`.
+* Allow underscores in the pattern for `chromosome` in `targeted_loci`.
 
 ### Minor changes since schema version 2
 
