@@ -178,7 +178,7 @@ def audit_preferred_assay_title(value, system):
     if preferred_assay_title and preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
-            f'preferred assay title {preferred_assay_title}, but has assay term {assay_term_name}, '
+            f'assay term "{assay_term_name}", but preferred assay title "{preferred_assay_title}", '
             f'which is not an expected preferred assay title for this assay term.'
         )
         yield AuditFailure('inconsistent assay metadata', detail, level='WARNING')
