@@ -13,7 +13,7 @@
         "content_type": "detected tissue",
         "submitted_file_name": "/Users/igvf/igvf_files/detected_tissue.png",
         "file_size": 658031,
-        "upload_status": "pending",
+        "upload_status": "validated",
         "file_set": "/measurement-sets/igvf:variant FlowFISH"
     },
     {
@@ -30,7 +30,7 @@
         "content_type": "low resolution tissue",
         "submitted_file_name": "/Users/igvf/igvf_files/low_resolution.jpg",
         "file_size": 543662,
-        "upload_status": "pending",
+        "upload_status": "validated",
         "file_set": "/measurement-sets/igvf:snM3C-seq"
     }
 ]
