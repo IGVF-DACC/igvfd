@@ -1,6 +1,6 @@
 {
-    "hash": "b4b59cee41a473889c84920031c12ec8",
-    "index_name": "measurement_set_b4b59cee",
+    "hash": "7e8e601e2e9efab74937fdf3be7ca4b5",
+    "index_name": "measurement_set_7e8e601e",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -199,6 +199,9 @@
                                 "type": "keyword"
                             },
                             "ontology": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "schema_version": {
@@ -1737,6 +1740,9 @@
                                 "type": "keyword"
                             },
                             "ontology": {
+                                "type": "keyword"
+                            },
+                            "preferred_assay_titles": {
                                 "type": "keyword"
                             },
                             "schema_version": {
