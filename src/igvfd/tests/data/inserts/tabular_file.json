@@ -14,7 +14,7 @@
         "content_type": "peaks",
         "submitted_file_name": "/Users/igvf/igvf_files/peaks_tabular_file.bed.gz",
         "file_size": 738031,
-        "upload_status": "file not found",
+        "upload_status": "validated",
         "assembly": "GRCh38",
         "file_set": "igvf:basic_analysis_set"
     },

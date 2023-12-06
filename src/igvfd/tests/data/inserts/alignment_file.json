@@ -13,7 +13,7 @@
         "content_type": "alignments",
         "submitted_file_name": "/Users/igvf/igvf_files/alignments.bam",
         "file_size": 45200010,
-        "upload_status": "pending",
+        "upload_status": "validated",
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
@@ -35,7 +35,7 @@
         "content_type": "transcriptome alignments",
         "submitted_file_name": "/Users/igvf/igvf_files/alignments.bam",
         "file_size": 45200010,
-        "upload_status": "pending",
+        "upload_status": "validated",
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
