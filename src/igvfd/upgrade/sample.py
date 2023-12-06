@@ -365,3 +365,10 @@ def sample_16_17(value, system):
     if 'description' in value:
         if value['description'] == '':
             del value['description']
+
+
+@upgrade_step('in_vitro_system', '16', '17')
+def in_vitro_system_16_17(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1291
+    # Restrict cell_fate_change_treatments to admin only.
+    return

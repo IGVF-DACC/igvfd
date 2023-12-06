@@ -1,6 +1,6 @@
 {
-    "hash": "b68fde2b963b3ac909f790656e921b3a",
-    "index_name": "multiplexed_sample_b68fde2b",
+    "hash": "7d09d6b2ab9266b5e7963abffdccee39",
+    "index_name": "multiplexed_sample_7d09d6b2",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1275,6 +1275,9 @@
                             "ccf_id": {
                                 "type": "keyword"
                             },
+                            "cell_fate_change_protocol": {
+                                "type": "keyword"
+                            },
                             "cell_fate_change_treatments": {
                                 "type": "keyword"
                             },
@@ -1927,6 +1930,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_treatments": {

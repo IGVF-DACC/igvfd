@@ -1,6 +1,6 @@
 {
-    "hash": "8b03f547bb12bd5cea03c0a10fd89c88",
-    "index_name": "technical_sample_8b03f547",
+    "hash": "df9ef975a064459989851f47bb9c5b26",
+    "index_name": "technical_sample_df9ef975",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1020,6 +1020,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_treatments": {

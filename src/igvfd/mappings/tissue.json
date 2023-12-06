@@ -1,6 +1,6 @@
 {
-    "hash": "22b9d6dcac2ab020da1eb2ad1e5b0a13",
-    "index_name": "tissue_22b9d6dc",
+    "hash": "9c69b2d186a8c2657ed87fa87460c2a5",
+    "index_name": "tissue_9c69b2d1",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1225,6 +1225,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_treatments": {

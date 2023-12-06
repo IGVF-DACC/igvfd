@@ -1,6 +1,6 @@
 {
-    "hash": "a7b3fcddf3274a987825ee46240e8520",
-    "index_name": "measurement_set_a7b3fcdd",
+    "hash": "b4b59cee41a473889c84920031c12ec8",
+    "index_name": "measurement_set_b4b59cee",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1922,6 +1922,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_treatments": {

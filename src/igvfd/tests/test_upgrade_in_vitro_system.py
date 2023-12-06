@@ -117,3 +117,8 @@ def test_in_vitro_system_upgrade_15_16(upgrader, in_vitro_system_v15):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v15, current_version='15', target_version='16')
     assert value['schema_version'] == '16'
     assert 'description' not in value
+
+
+def test_in_vitro_system_upgrade_16_17(upgrader, in_vitro_system_v16):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v16, current_version='16', target_version='17')
+    assert value['schema_version'] == '17'

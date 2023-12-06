@@ -1,6 +1,6 @@
 {
-    "hash": "24b3ed46f0ea1c116a86a12697c39040",
-    "index_name": "model_set_24b3ed46",
+    "hash": "ebbdcbdedb521993dcf07e7206b93949",
+    "index_name": "model_set_ebbdcbde",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1492,6 +1492,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_treatments": {

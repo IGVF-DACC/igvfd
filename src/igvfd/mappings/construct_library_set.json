@@ -1,6 +1,6 @@
 {
-    "hash": "86479a7a7fc05bb6aac40aded2628de5",
-    "index_name": "construct_library_set_86479a7a",
+    "hash": "b94d82b17a1ba0a64e32baa4e533cc89",
+    "index_name": "construct_library_set_b94d82b1",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -187,6 +187,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_treatments": {

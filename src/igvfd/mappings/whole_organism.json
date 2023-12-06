@@ -1,6 +1,6 @@
 {
-    "hash": "cb81b3958b7fd7d0d9f5fddd01954a69",
-    "index_name": "whole_organism_cb81b395",
+    "hash": "3a48bd794b0e715e1cf4bc525b3e4401",
+    "index_name": "whole_organism_3a48bd79",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1207,6 +1207,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_treatments": {

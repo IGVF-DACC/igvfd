@@ -1,6 +1,6 @@
 {
-    "hash": "c4ca63ea3fec80d452d4732e86d3826c",
-    "index_name": "in_vitro_system_c4ca63ea",
+    "hash": "3c0c48fb2a0b898cac6b62b589eaa541",
+    "index_name": "in_vitro_system_3c0c48fb",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -235,6 +235,9 @@
                         "type": "object"
                     },
                     "biomarkers": {
+                        "type": "keyword"
+                    },
+                    "cell_fate_change_protocol": {
                         "type": "keyword"
                     },
                     "cell_fate_change_treatments": {
@@ -1237,6 +1240,9 @@
                             "ccf_id": {
                                 "type": "keyword"
                             },
+                            "cell_fate_change_protocol": {
+                                "type": "keyword"
+                            },
                             "cell_fate_change_treatments": {
                                 "type": "keyword"
                             },
@@ -1629,6 +1635,9 @@
                                 "type": "keyword"
                             },
                             "ccf_id": {
+                                "type": "keyword"
+                            },
+                            "cell_fate_change_protocol": {
                                 "type": "keyword"
                             },
                             "cell_fate_change_treatments": {

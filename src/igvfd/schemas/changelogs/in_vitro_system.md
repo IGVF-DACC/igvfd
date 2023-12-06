@@ -1,5 +1,10 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 17
+
+* Restrict linking of `cell_fate_change_treatments` to Treatment.
+* Add `cell_fate_change_protocol`.
+
 ### Schema version 16
 
 * Disallow empty strings in `description`.
