@@ -39,3 +39,14 @@ def signal_file_v2(signal_file_v1):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def signal_file_v3(signal_file_v1):
+    item = signal_file_v1.copy()
+    item.update({
+        'schema_version': '3',
+        'upload_status': 'pending',
+        'status': 'released'
+    })
+    return item

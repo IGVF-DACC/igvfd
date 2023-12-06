@@ -107,3 +107,21 @@ def file_6_7(value, system):
     if 'description' in value:
         if value['description'] == '':
             del value['description']
+
+
+@upgrade_step('reference_file', '8', '9')
+@upgrade_step('matrix_file', '3', '4')
+@upgrade_step('signal_file', '3', '4')
+@upgrade_step('configuration_file', '3', '4')
+@upgrade_step('alignment_file', '3', '4')
+@upgrade_step('sequence_file', '6', '7')
+@upgrade_step('genome_browser_annotation_file', '3', '4')
+@upgrade_step('tabular_file', '3', '4')
+def file_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1327
+    if value['status'] in ['released', 'revoked', 'archived']:
+        if value['upload_status'] in ['pending', 'file not found']:
+            value['upload_status'] = 'invalidated'
+            notes = value.get('notes', '')
+            notes += f' This publicly available file was previously pending or file not found upload_status, and was moved to invalidated upload_status.'
+            value['notes'] = notes.strip()
