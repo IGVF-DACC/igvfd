@@ -37,6 +37,19 @@
             "permission": "import_items",
             "type": "string",
             "pattern": "^(OBI|NTR):[0-9]{2,8}$"
+        },
+        "preferred_assay_titles": {
+            "title": "Preferred Assay Titles",
+            "description": "The custom lab preferred labels that this assay term may be associated with.",
+            "type": "array",
+            "minimum": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Preferred Assay Title",
+                "description": "A custom lab preferred label that this assay term may be associated with.",
+                "type": "string",
+                "$merge": "measurement_set.json#/properties/preferred_assay_title"
+            }
         }
     },
     "fuzzy_searchable_fields": [
