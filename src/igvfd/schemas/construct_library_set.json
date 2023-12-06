@@ -526,7 +526,7 @@
                         "title": "Chromosome",
                         "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX",
                         "type": "string",
-                        "pattern": "^(chr[0-9A-Za-z]+)$"
+                        "pattern": "^(chr[0-9A-Za-z-]+)$"
                     },
                     "start": {
                         "title": "Start",

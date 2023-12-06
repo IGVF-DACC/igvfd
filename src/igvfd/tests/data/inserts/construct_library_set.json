@@ -16,7 +16,7 @@
         "loci": [
             {
                 "assembly": "GRCh38",
-                "chromosome": "chr1",
+                "chromosome": "chr1_KI270712v1_random",
                 "start": 1,
                 "end": 10
             }
