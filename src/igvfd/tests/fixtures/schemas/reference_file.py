@@ -92,3 +92,14 @@ def reference_file_v7(reference_file_v6):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v8(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '8',
+        'upload_status': 'pending',
+        'status': 'released'
+    })
+    return item

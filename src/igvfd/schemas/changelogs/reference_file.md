@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 9
+
+* Require publicly released files to have `upload_status` of `validated` or `invalidated`.
+
 ### Schema version 8
 
 * Disallow empty strings in `description`.

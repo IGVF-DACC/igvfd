@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 4
+
+* Require publicly released files to have `upload_status` of `validated` or `invalidated`.
+
 ### Schema version 3
 
 * Disallow empty strings in `description`.

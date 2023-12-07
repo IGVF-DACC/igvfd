@@ -45,3 +45,9 @@ def test_reference_file_upgrade_7_8(upgrader, reference_file_v7):
     value = upgrader.upgrade('reference_file', reference_file_v7, current_version='7', target_version='8')
     assert 'description' not in value
     assert value['schema_version'] == '8'
+
+
+def test_reference_file_upgrade_8_9(upgrader, reference_file_v8):
+    value = upgrader.upgrade('reference_file', reference_file_v8, current_version='8', target_version='9')
+    assert value['upload_status'] == 'invalidated'
+    assert value['schema_version'] == '9'

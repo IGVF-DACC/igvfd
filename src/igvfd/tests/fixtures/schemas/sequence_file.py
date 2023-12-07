@@ -136,3 +136,14 @@ def sequence_file_v5(sequence_file_v4):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def sequence_file_v6(sequence_file_v4):
+    item = sequence_file_v4.copy()
+    item.update({
+        'schema_version': '6',
+        'upload_status': 'pending',
+        'status': 'released'
+    })
+    return item

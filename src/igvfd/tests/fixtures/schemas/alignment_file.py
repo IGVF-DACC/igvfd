@@ -38,3 +38,14 @@ def alignment_file_v2(alignment_file_v1):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def alignment_file_v3(alignment_file_v1):
+    item = alignment_file_v1.copy()
+    item.update({
+        'schema_version': '3',
+        'upload_status': 'pending',
+        'status': 'released'
+    })
+    return item

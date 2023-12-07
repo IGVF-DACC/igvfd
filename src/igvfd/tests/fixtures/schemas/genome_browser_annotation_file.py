@@ -30,6 +30,17 @@ def genome_browser_annotation_file_v2(genome_browser_annotation_file_v1):
     item = genome_browser_annotation_file_v1.copy()
     item.update({
         'schema_version': '2',
-        'descriptin': ''
+        'description': ''
+    })
+    return item
+
+
+@pytest.fixture
+def genome_browser_annotation_file_v3(genome_browser_annotation_file_v1):
+    item = genome_browser_annotation_file_v1.copy()
+    item.update({
+        'schema_version': '3',
+        'upload_status': 'pending',
+        'status': 'released'
     })
     return item

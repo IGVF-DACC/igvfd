@@ -32,3 +32,14 @@ def tabular_file_v2(tabular_file_v1):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v3(tabular_file_v1):
+    item = tabular_file_v1.copy()
+    item.update({
+        'schema_version': '3',
+        'upload_status': 'pending',
+        'status': 'released'
+    })
+    return item
