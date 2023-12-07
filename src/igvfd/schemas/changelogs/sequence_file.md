@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 7
+
+* Require publicly released files to have `upload_status` of `validated` or `invalidated`.
+
 ### Schema version 6
 
 * Disallow empty strings in `description`.
