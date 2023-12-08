@@ -12,7 +12,16 @@
         "award": "1U01HG011952-01",
         "lab": "alan-boyle",
         "status": "released",
-        "uuid": "0388810f-76f3-4c21-a994-a0c8bb393950"
+        "uuid": "0388810f-76f3-4c21-a994-a0c8bb393950",
+        "targeted_loci": [
+            {
+                "assembly": "GRCh38",
+                "chromosome": "chr14_GL000009v2_random",
+                "start": 14325,
+                "end": 25432
+            }
+        ],
+        "scope": "loci"
     },
     {
         "aliases": [

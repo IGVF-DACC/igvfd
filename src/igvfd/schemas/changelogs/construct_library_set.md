@@ -3,6 +3,7 @@
 ### Minor changes since schema version 3
 
 * Add a `title` property to `tile`.
+* Allow underscores in the pattern for `chromosome` in `loci`.
 
 ### Schema version 3
 
