@@ -53,7 +53,7 @@ def tabular_file_v4(testapp, lab, award, analysis_set_with_sample):
         'md5sum': '069b0ebb6c5730dfe1d485acaf53b09c',
         'file_format': 'bed',
         'file_set': analysis_set_with_sample['@id'],
-        'content_type': 'peaks'
+        'content_type': 'peaks',
         'schema_version': '4'
     }
     return item
