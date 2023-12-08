@@ -122,3 +122,12 @@ def test_in_vitro_system_upgrade_15_16(upgrader, in_vitro_system_v15):
 def test_in_vitro_system_upgrade_16_17(upgrader, in_vitro_system_v16):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v16, current_version='16', target_version='17')
     assert value['schema_version'] == '17'
+
+
+def test_in_vitro_system_upgrade_17_18(upgrader, in_vitro_system_v17):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v17, current_version='17', target_version='18')
+    assert 'cell_fate_change_treatments' not in value
+    assert 'time_post_change' not in value
+    assert 'time_post_change_units' not in value
+    assert 'targeted_sample_term' not in value
+    assert value['schema_version'] == '18'
