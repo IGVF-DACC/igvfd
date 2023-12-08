@@ -58,4 +58,3 @@ def test_reference_file_upgrade_9_10(upgrader, reference_file_v9):
     assert 'assembly' in value
     assert value['assembly'] == 'GRCh38'
     assert value['schema_version'] == '10'
-
