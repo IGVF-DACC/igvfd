@@ -423,7 +423,7 @@ def test_constructs_indexer_initialize_indexer(
     )
     template.resource_count_is(
         'AWS::ApplicationAutoScaling::ScalingPolicy',
-        6
+        4
     )
     template.resource_count_is(
         'AWS::CloudWatch::Alarm',
@@ -443,7 +443,7 @@ def test_constructs_indexer_initialize_indexer(
             }
         }
     )
-    assert len(cpu_scaling_resources) == 2
+    assert len(cpu_scaling_resources) == 0
     template.has_resource_properties(
         'AWS::ApplicationAutoScaling::ScalingPolicy',
         {

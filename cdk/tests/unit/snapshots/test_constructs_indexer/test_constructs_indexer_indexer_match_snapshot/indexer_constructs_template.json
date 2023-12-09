@@ -315,26 +315,6 @@
             },
             "Type": "AWS::EC2::SecurityGroup"
         },
-        "IndexerIndexingServiceQueueProcessingFargateServiceTaskCountTargetCpuScaling3439BE21": {
-            "DependsOn": [
-                "IndexerIndexingServiceQueueProcessingTaskDefTaskRoleDefaultPolicy8E32F607",
-                "IndexerIndexingServiceQueueProcessingTaskDefTaskRoleAFEF8974"
-            ],
-            "Properties": {
-                "PolicyName": "IndexerIndexingServiceQueueProcessingFargateServiceTaskCountTargetCpuScalingDADDEA67",
-                "PolicyType": "TargetTrackingScaling",
-                "ScalingTargetId": {
-                    "Ref": "IndexerIndexingServiceQueueProcessingFargateServiceTaskCountTargetD4009D0B"
-                },
-                "TargetTrackingScalingPolicyConfiguration": {
-                    "PredefinedMetricSpecification": {
-                        "PredefinedMetricType": "ECSServiceAverageCPUUtilization"
-                    },
-                    "TargetValue": 50
-                }
-            },
-            "Type": "AWS::ApplicationAutoScaling::ScalingPolicy"
-        },
         "IndexerIndexingServiceQueueProcessingFargateServiceTaskCountTargetD4009D0B": {
             "DependsOn": [
                 "IndexerIndexingServiceQueueProcessingTaskDefTaskRoleDefaultPolicy8E32F607",
@@ -945,26 +925,6 @@
                 }
             },
             "Type": "AWS::EC2::SecurityGroup"
-        },
-        "IndexerInvalidationServiceQueueProcessingFargateServiceTaskCountTargetCpuScaling032736B2": {
-            "DependsOn": [
-                "IndexerInvalidationServiceQueueProcessingTaskDefTaskRoleDefaultPolicy6C08482B",
-                "IndexerInvalidationServiceQueueProcessingTaskDefTaskRole1C46CA69"
-            ],
-            "Properties": {
-                "PolicyName": "IndexerInvalidationServiceQueueProcessingFargateServiceTaskCountTargetCpuScalingE8AE90AD",
-                "PolicyType": "TargetTrackingScaling",
-                "ScalingTargetId": {
-                    "Ref": "IndexerInvalidationServiceQueueProcessingFargateServiceTaskCountTargetE5561481"
-                },
-                "TargetTrackingScalingPolicyConfiguration": {
-                    "PredefinedMetricSpecification": {
-                        "PredefinedMetricType": "ECSServiceAverageCPUUtilization"
-                    },
-                    "TargetValue": 50
-                }
-            },
-            "Type": "AWS::ApplicationAutoScaling::ScalingPolicy"
         },
         "IndexerInvalidationServiceQueueProcessingFargateServiceTaskCountTargetE5561481": {
             "DependsOn": [
