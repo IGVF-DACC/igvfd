@@ -429,3 +429,38 @@ def test_constructs_indexer_initialize_indexer(
         'AWS::CloudWatch::Alarm',
         18
     )
+    cpu_scaling_resources = template.find_resources(
+        'AWS::ApplicationAutoScaling::ScalingPolicy',
+        {
+            'Properties': {
+                'PolicyType': 'TargetTrackingScaling',
+                'TargetTrackingScalingPolicyConfiguration': {
+                    'PredefinedMetricSpecification': {
+                        'PredefinedMetricType': 'ECSServiceAverageCPUUtilization'
+                    },
+                    'TargetValue': 50
+                }
+            }
+        }
+    )
+    assert len(cpu_scaling_resources) == 2
+    template.has_resource_properties(
+        'AWS::ApplicationAutoScaling::ScalingPolicy',
+        {
+            'PolicyName': 'IndexerInvalidationServiceQueueProcessingFargateServiceTaskCountTargetQueueMessagesVisibleScalingLowerPolicyA4356389',
+            'PolicyType': 'StepScaling',
+            'ScalingTargetId': {
+                'Ref': 'IndexerInvalidationServiceQueueProcessingFargateServiceTaskCountTargetE5561481'
+            },
+            'StepScalingPolicyConfiguration': {
+                'AdjustmentType': 'ChangeInCapacity',
+                'MetricAggregationType': 'Maximum',
+                'StepAdjustments': [
+                    {
+                        'MetricIntervalUpperBound': 0,
+                        'ScalingAdjustment': -1
+                    }
+                ]
+            }
+        }
+    )
