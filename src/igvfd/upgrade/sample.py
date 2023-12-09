@@ -382,7 +382,7 @@ def in_vitro_system_17_18(value, system):
     cell_fate_change_properties = [
         'cell_fate_change_protocol',
         'cell_fate_change_treatments',
-        'targeted_sample_term'
+        'targeted_sample_term',
         'time_post_change',
         'time_post_change_units'
     ]
