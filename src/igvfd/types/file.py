@@ -32,9 +32,12 @@ from igvfd.types.base import (
     paths_filtered_by_status
 )
 
+from igvfd.upload_credentials import get_gcs_client
+from igvfd.upload_credentials import get_gcp_credentials
 from igvfd.upload_credentials import get_s3_client
 from igvfd.upload_credentials import get_sts_client
-from igvfd.upload_credentials import UploadCredentials
+from igvfd.upload_credentials import GcsUploadCredentials
+from igvfd.upload_credentials import S3UploadCredentials
 
 
 FILE_FORMAT_TO_FILE_EXTENSION = {
@@ -162,16 +165,28 @@ class File(Item):
             key = f'{date}/{uuid}/{accession}{file_extension}'
             name = f'up{time.time():.6f}-{accession}'[:32]  # max 32 chars
             profile_name = registry.settings.get('file_upload_profile_name')
-            upload_credentials = UploadCredentials(
-                bucket=bucket,
-                key=key,
-                name=name,
-                sts_client=get_sts_client(
-                    localstack_endpoint_url=os.environ.get(
-                        'LOCALSTACK_ENDPOINT_URL'
+
+            if properties.get('controlled_access'):
+                storage_type = properties.get('controlled_access_storage_type')
+                if storage_type == 'gcs':
+                    upload_credentials = GcsUploadCredentials(
+                        bucket=bucket,
+                        key=key,
+                        name=name,
+                        gcs_client=get_gcs_client(),
+                        gcp_credentials=get_gcp_credentials(),
                     )
-                ),
-            )
+            else:
+                upload_credentials = S3UploadCredentials(
+                    bucket=bucket,
+                    key=key,
+                    name=name,
+                    sts_client=get_sts_client(
+                        localstack_endpoint_url=os.environ.get(
+                            'LOCALSTACK_ENDPOINT_URL'
+                        )
+                    ),
+                )
             sheets['external'] = upload_credentials.external_creds()
         return super(File, cls).create(registry, uuid, properties, sheets)
 
@@ -504,10 +519,15 @@ def get_upload(context, request):
     external = context.propsheets.get('external', {})
     upload_credentials = external.get('upload_credentials')
     # Show s3 location info for files originally submitted to EDW.
-    if upload_credentials is None and external.get('service') == 's3':
-        upload_credentials = {
-            'upload_url': 's3://{bucket}/{key}'.format(**external),
-        }
+    if upload_credentials is None:
+        if external.get('service') == 's3':
+            upload_credentials = {
+                'upload_url': 's3://{bucket}/{key}'.format(**external),
+            }
+        elif external.get('service') == 'gcs':
+            upload_credentials = {
+                'upload_url': 'gs://{bucket}/{key}'.format(**external),
+            }
     return {
         '@graph': [
             {
@@ -535,13 +555,14 @@ def post_upload(context, request):
     properties = context.upgrade_properties()
     if properties['upload_status'] == 'validated':
         raise HTTPForbidden(
-            'Unable to issue new credentials when uploading_status is validated'
+            'Unable to issue new credentials or presigned URL when '
+            'uploading_status is validated'
         )
     external = context.propsheets.get(
         'external',
         {}
     )
-    if external.get('service') == 's3':
+    if external.get('service') in ['s3', 'gcs']:
         bucket = external['bucket']
         key = external['key']
     else:
@@ -552,16 +573,27 @@ def post_upload(context, request):
     name = f'up{time.time():.6f}-{accession}'[:32]  # max 32 chars
     file_upload_bucket = request.registry.settings['file_upload_bucket']
     profile_name = request.registry.settings.get('file_upload_profile_name')
-    upload_credentials = UploadCredentials(
-        bucket=bucket,
-        key=key,
-        name=name,
-        sts_client=get_sts_client(
-            localstack_endpoint_url=os.environ.get(
-                'LOCALSTACK_ENDPOINT_URL'
-            )
-        ),
-    )
+
+    if external.get('service') == 's3':
+        upload_credentials = S3UploadCredentials(
+            bucket=bucket,
+            key=key,
+            name=name,
+            sts_client=get_sts_client(
+                localstack_endpoint_url=os.environ.get(
+                    'LOCALSTACK_ENDPOINT_URL'
+                )
+            ),
+        )
+    elif external.get('service') == 'gcs':
+        upload_credentials = GcsUploadCredentials(
+            bucket=bucket,
+            key=key,
+            name=name,
+            gcs_client=get_gcs_client(),
+            gcp_credentials=get_gcp_credentials(),
+        )
+
     external_credentials = upload_credentials.external_creds()
     new_properties = None
     if properties['upload_status'] != 'pending':

@@ -1,4 +1,5 @@
 import copy
+import datetime
 import json
 import os
 
@@ -6,6 +7,13 @@ import boto3
 import botocore
 
 from botocore.client import BaseClient
+
+from datetime import timedelta
+from datetime import timezone
+
+from google.api_core.exceptions import ClientError
+from google.cloud import storage
+from google.oauth2.service_account import Credentials
 
 from typing import Optional
 
@@ -54,6 +62,31 @@ def get_s3_client(localstack_endpoint_url: Optional[str] = None) -> BaseClient:
         )
     return boto3.client(
         's3'
+    )
+
+
+def get_gcp_project():
+    upload_files_user_keys = get_upload_files_user_access_key_and_secret_access_key()
+    return upload_files_user_keys['GCP_PROJECT']
+
+
+def get_gcp_service_account_json():
+    upload_files_user_keys = get_upload_files_user_access_key_and_secret_access_key()
+    return json.loads(
+        upload_files_user_keys['GCP_SERVICE_ACCOUNT_JSON_STR']
+    )
+
+
+def get_gcp_credentials():
+    return Credentials.from_service_account_info(
+        get_gcp_service_account_json()
+    )
+
+
+def get_gcs_client():
+    return storage.Client(
+        project=get_gcp_project(),
+        credentials=get_gcp_credentials(),
     )
 
 
@@ -120,7 +153,7 @@ def _get_external_bucket_policy(file_path):
         return None
 
 
-class UploadCredentials(object):
+class S3UploadCredentials(object):
     # pylint: disable=too-few-public-methods
     '''
     Build and distribute federate aws credentials for submitting files
@@ -204,6 +237,69 @@ class UploadCredentials(object):
         }
         return {
             'service': 's3',
+            'bucket': self._bucket,
+            'key': self._key,
+            'upload_credentials': credentials,
+        }
+
+
+class GcsUploadCredentials(object):
+    # pylint: disable=too-few-public-methods
+    '''
+    Build and distribute presigned URLs (https://) for submitting files
+    '''
+
+    def __init__(self, bucket, key, name, gcs_client, gcp_credentials):
+        self._bucket = bucket
+        self._key = key
+        self._name = name
+        self._gcs_client = gcs_client
+        self._file_url = 'gs://{bucket}/{key}'.format(
+            bucket=self._bucket,
+            key=self._key
+        )
+        self._gcp_credentials = gcp_credentials
+
+    def _get_presigned_url(self, file_url, expiration_sec):
+        '''
+        Used to generate a presigned URL for PUT method.
+        '''
+        try:
+            bucket_obj = self._gcs_client.get_bucket(self._bucket)
+            blob = storage.Blob(name=self._key, bucket=bucket_obj)
+
+            return blob.generate_signed_url(
+                version='V4',
+                method='PUT',
+                expiration=timedelta(seconds=self._expiration_sec),
+                credentials=self._gcp_credentials,
+            )
+
+        except ClientError as ecp:
+            print('Warning: ', ecp)
+            return None
+
+    def external_creds(self):
+        '''
+        Used to get the presigned URL.
+        '''
+        expiration_sec = os.environ['GCS_UPLOAD_EXPIRATION_SEC']
+
+        upload_url = self._get_presigned_url(
+            file_url=self._file_url,
+            expiration_sec=expiration_sec,
+        )
+
+        expiration = (
+            datetime.now(timezone.utc) + timedelta(seconds=expiration_sec)
+        ).isoformat()
+
+        credentials = {
+            'expiration': expiration,
+            'upload_url': upload_url,
+        }
+        return {
+            'service': 'gcs',
             'bucket': self._bucket,
             'key': self._key,
             'upload_credentials': credentials,

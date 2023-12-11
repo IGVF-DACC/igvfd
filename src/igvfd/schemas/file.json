@@ -9,7 +9,9 @@
         "lab",
         "md5sum",
         "file_format",
-        "content_type"
+        "content_type",
+        "controlled_access",
+        "controlled_access_storage_type"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -107,6 +109,30 @@
             "submissionExample": {
                 "appscript": "alignments",
                 "igvf_utils": "alignments"
+            }
+        },
+        "controlled_access": {
+            "title": "Controlled Access",
+            "description": "File is protected and under controlled access.",
+            "comment": "File with controlled access will be stored in a storage defined with controlled_access_storage_type.",
+            "type": "boolean",
+            "default": false,
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            },
+        },
+        "controlled_access_storage_type": {
+            "title": "Controlled Access Storage Type",
+            "description": "Storage type for a file with controlled_access.",
+            "type": "string",
+            "default": "gcs",
+            "enum": [
+                "gcs"
+            ],
+            "submissionExample": {
+                "appscript": "gcs",
+                "igvf_utils": "gcs"
             }
         },
         "dbxrefs": {

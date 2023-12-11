@@ -2,10 +2,10 @@ import pytest
 import os
 
 
-def test_upload_credentials_init_upload_credentials():
+def test_upload_credentials_init_s3_upload_credentials():
     from igvfd.upload_credentials import get_sts_client
-    from igvfd.upload_credentials import UploadCredentials
-    upload_credentials = UploadCredentials(
+    from igvfd.upload_credentials import S3UploadCredentials
+    upload_credentials = S3UploadCredentials(
         bucket='some-bucket',
         key='some-key',
         name='some-name',
@@ -15,13 +15,17 @@ def test_upload_credentials_init_upload_credentials():
             )
         )
     )
-    assert isinstance(upload_credentials, UploadCredentials)
+    assert isinstance(upload_credentials, S3UploadCredentials)
 
 
-def test_upload_credentials_upload_credentials_external_credentials():
+def test_upload_credentials_init_gcs_upload_credentials():
+    pass
+
+
+def test_upload_credentials_s3_upload_credentials_external_credentials():
     from igvfd.upload_credentials import get_sts_client
-    from igvfd.upload_credentials import UploadCredentials
-    upload_credentials = UploadCredentials(
+    from igvfd.upload_credentials import S3UploadCredentials
+    upload_credentials = S3UploadCredentials(
         bucket='some-bucket',
         key='some-key',
         name='some-name',
@@ -53,3 +57,7 @@ def test_upload_credentials_upload_credentials_external_credentials():
     for key in expected['upload_credentials']:
         assert key in actual['upload_credentials']
     assert actual['upload_credentials']['upload_url'] == 's3://some-bucket/some-key'
+
+
+def test_upload_credentials_gcs_upload_credentials_external_credentials():
+    pass
