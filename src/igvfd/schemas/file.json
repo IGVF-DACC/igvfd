@@ -120,7 +120,7 @@
             "submissionExample": {
                 "appscript": false,
                 "igvf_utils": false
-            },
+            }
         },
         "controlled_access_storage_type": {
             "title": "Controlled Access Storage Type",
