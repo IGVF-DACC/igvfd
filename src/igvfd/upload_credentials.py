@@ -282,8 +282,9 @@ class GcsUploadCredentials(object):
     def external_creds(self):
         '''
         Used to get the presigned URL.
+        Such URL expires in _FEDERATION_TOKEN_DURATION_SECONDS.
         '''
-        expiration_sec = os.environ['GCS_UPLOAD_EXPIRATION_SEC']
+        expiration_sec = _FEDERATION_TOKEN_DURATION_SECONDS
 
         upload_url = self._get_presigned_url(
             file_url=self._file_url,
