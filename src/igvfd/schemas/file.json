@@ -82,7 +82,7 @@
             }
         },
         "file_format": {
-            "comment": "Bam, bed, bedpe, bigWig, bigBed, bigInteract, tagAlign, vcf files must have assembly.",
+            "comment": "Bam, bed, bedpe, bigWig, bigBed, bigInteract, tagAlign, vcf files must have assembly. This dependency is not relevant for sequence files.",
             "if": {
                 "properties": {
                     "file_format": {
@@ -95,13 +95,6 @@
                             "tabix",
                             "vcf"
                         ]
-                    },
-                    "output_type": {
-                        "not": {
-                            "enum": [
-                                "subreads"
-                            ]
-                        }
                     }
                 }
             },
