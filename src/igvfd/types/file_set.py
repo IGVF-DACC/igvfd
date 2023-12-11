@@ -44,8 +44,22 @@ class FileSet(Item):
              'file_format', 'file_size', 'href', 's3_uri', 'submitted_file_name']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
         Path('donors', include=['@id', 'accession', 'aliases', 'taxa']),
-        Path('samples.sample_terms', include=['@id', 'accession', 'aliases', 'treatments', 'cell_fate_change_treatments',
-             'classification', 'disease_terms', 'modifications', 'sample_terms', 'summary', 'targeted_sample_term', 'taxa', 'term_name']),
+        Path('samples.sample_terms', include=[
+            '@id',
+            'accession',
+            'aliases',
+            'treatments',
+            'cell_fate_change_treatments',
+            'classification',
+            'construct_library_sets',
+            'disease_terms',
+            'modifications',
+            'sample_terms',
+            'summary',
+            'targeted_sample_term',
+            'taxa',
+            'term_name',
+        ]),
         Path('samples.targeted_sample_term', include=['@id', 'term_name']),
     ]
 
@@ -254,6 +268,7 @@ class MeasurementSet(FileSet):
         Path('samples.cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary']),
         Path('samples.disease_terms', include=['@id', 'term_name']),
         Path('samples.modifications', include=['@id', 'modality']),
+        Path('samples.construct_library_sets', include=['@id', 'accession', 'summary']),
     ]
 
     audit_inherit = FileSet.audit_inherit + [
@@ -460,7 +475,9 @@ class AuxiliarySet(FileSet):
 class PredictionSet(FileSet):
     item_type = 'prediction_set'
     schema = load_schema('igvfd:schemas/prediction_set.json')
-    embedded_with_frame = FileSet.embedded_with_frame
+    embedded_with_frame = FileSet.embedded_with_frame + [
+        Path('samples.construct_library_sets', include=['@id', 'accession', 'summary']),
+    ]
     audit_inherit = FileSet.audit_inherit
 
 

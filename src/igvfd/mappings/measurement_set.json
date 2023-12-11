@@ -1,6 +1,6 @@
 {
-    "hash": "4ff07a9192f27e9172a9669ae08d8b86",
-    "index_name": "measurement_set_4ff07a91",
+    "hash": "8658f881f2cf619ac12e6bed34adb152",
+    "index_name": "measurement_set_8658f881",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2087,7 +2087,223 @@
                                 "type": "keyword"
                             },
                             "construct_library_sets": {
-                                "type": "keyword"
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "accession": {
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "alternate_accessions": {
+                                        "type": "keyword"
+                                    },
+                                    "applied_to_samples": {
+                                        "type": "keyword"
+                                    },
+                                    "associated_phenotypes": {
+                                        "type": "keyword"
+                                    },
+                                    "average_guide_coverage": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "average_insert_size": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "float"
+                                    },
+                                    "award": {
+                                        "type": "keyword"
+                                    },
+                                    "collections": {
+                                        "type": "keyword"
+                                    },
+                                    "control_for": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "keyword"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "exon": {
+                                        "type": "keyword"
+                                    },
+                                    "file_set_type": {
+                                        "type": "keyword"
+                                    },
+                                    "files": {
+                                        "type": "keyword"
+                                    },
+                                    "genes": {
+                                        "type": "keyword"
+                                    },
+                                    "guide_type": {
+                                        "type": "keyword"
+                                    },
+                                    "integrated_content_files": {
+                                        "type": "keyword"
+                                    },
+                                    "lab": {
+                                        "type": "keyword"
+                                    },
+                                    "loci": {
+                                        "properties": {
+                                            "assembly": {
+                                                "type": "keyword"
+                                            },
+                                            "chromosome": {
+                                                "type": "keyword"
+                                            },
+                                            "end": {
+                                                "fields": {
+                                                    "raw": {
+                                                        "type": "keyword"
+                                                    }
+                                                },
+                                                "store": true,
+                                                "type": "long"
+                                            },
+                                            "start": {
+                                                "fields": {
+                                                    "raw": {
+                                                        "type": "keyword"
+                                                    }
+                                                },
+                                                "store": true,
+                                                "type": "long"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "lot_id": {
+                                        "type": "keyword"
+                                    },
+                                    "lower_bound_guide_coverage": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "lower_bound_insert_size": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "product_id": {
+                                        "type": "keyword"
+                                    },
+                                    "publication_identifiers": {
+                                        "type": "keyword"
+                                    },
+                                    "revoke_detail": {
+                                        "type": "keyword"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "scope": {
+                                        "type": "keyword"
+                                    },
+                                    "selection_criteria": {
+                                        "type": "keyword"
+                                    },
+                                    "sources": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "tile": {
+                                        "properties": {
+                                            "tile_end": {
+                                                "fields": {
+                                                    "raw": {
+                                                        "type": "keyword"
+                                                    }
+                                                },
+                                                "store": true,
+                                                "type": "long"
+                                            },
+                                            "tile_id": {
+                                                "type": "keyword"
+                                            },
+                                            "tile_start": {
+                                                "fields": {
+                                                    "raw": {
+                                                        "type": "keyword"
+                                                    }
+                                                },
+                                                "store": true,
+                                                "type": "long"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "tiling_modality": {
+                                        "type": "keyword"
+                                    },
+                                    "upper_bound_guide_coverage": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "upper_bound_insert_size": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "creation_timestamp": {
                                 "type": "keyword"
