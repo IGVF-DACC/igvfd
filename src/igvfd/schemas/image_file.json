@@ -9,7 +9,8 @@
         "md5sum",
         "file_format",
         "file_set",
-        "content_type"
+        "content_type",
+        "upload_storage_service"
     ],
     "identifyingProperties": [
         "uuid",
@@ -44,7 +45,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",

@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 10
+
+* Add and require `upload_storage_service`.
+
 ### Schema version 9
 
 * Require publicly released files to have `upload_status` of `validated` or `invalidated`.

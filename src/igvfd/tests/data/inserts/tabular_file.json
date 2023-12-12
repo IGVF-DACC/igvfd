@@ -15,6 +15,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/peaks_tabular_file.bed.gz",
         "file_size": 738031,
         "upload_status": "validated",
+        "upload_storage_service": "s3",
         "assembly": "GRCh38",
         "file_set": "igvf:basic_analysis_set"
     },
@@ -36,6 +37,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/guide_rna_sequence.csv.gz",
         "file_size": 23940,
         "upload_status": "invalidated",
+        "upload_storage_service": "s3",
         "validation_error_detail": "Explanation of why this file did not pass validation.",
         "file_set": "igvf:analysis_set_with_input"
     }

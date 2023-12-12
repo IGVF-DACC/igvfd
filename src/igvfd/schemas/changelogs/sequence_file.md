@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 8
+
+* Add and require `upload_storage_service`.
+
 ### Schema version 7
 
 * Require publicly released files to have `upload_status` of `validated` or `invalidated`.
