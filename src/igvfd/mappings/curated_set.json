@@ -1,6 +1,6 @@
 {
-    "hash": "8795a5ab173a7087560d070b3d636a3e",
-    "index_name": "curated_set_8795a5ab",
+    "hash": "d0ec01bde5db6ab45b01fac25e4de014",
+    "index_name": "curated_set_d0ec01bd",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1039,6 +1039,9 @@
                                 "type": "object"
                             },
                             "upload_status": {
+                                "type": "keyword"
+                            },
+                            "upload_storage_service": {
                                 "type": "keyword"
                             },
                             "uuid": {

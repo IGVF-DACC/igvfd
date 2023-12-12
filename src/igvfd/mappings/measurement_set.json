@@ -1,6 +1,6 @@
 {
-    "hash": "b4b59cee41a473889c84920031c12ec8",
-    "index_name": "measurement_set_b4b59cee",
+    "hash": "50709822fd804848e4057e9803c5c72b",
+    "index_name": "measurement_set_50709822",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1534,6 +1534,9 @@
                                 "type": "object"
                             },
                             "upload_status": {
+                                "type": "keyword"
+                            },
+                            "upload_storage_service": {
                                 "type": "keyword"
                             },
                             "uuid": {

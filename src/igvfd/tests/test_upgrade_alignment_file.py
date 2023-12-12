@@ -17,3 +17,9 @@ def test_alignment_file_upgrade_3_4(upgrader, alignment_file_v3):
     value = upgrader.upgrade('alignment_file', alignment_file_v3, current_version='3', target_version='4')
     assert value['upload_status'] == 'invalidated'
     assert value['schema_version'] == '4'
+
+
+def test_alignment_file_upgrade_4_5(upgrader, alignment_file_v4):
+    value = upgrader.upgrade('alignment_file', alignment_file_v4, current_version='4', target_version='5')
+    assert value['upload_storage_service'] == 's3'
+    assert value['schema_version'] == '5'

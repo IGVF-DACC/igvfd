@@ -14,6 +14,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/genome_reference.fasta",
         "file_size": 5428031,
         "upload_status": "validated",
+        "upload_storage_service": "s3",
         "assembly": "GRCh38",
         "source_url": "https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000001405.26/",
         "file_set": "igvf:basic_analysis_set",
@@ -39,6 +40,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/sequence_barcodes.txt",
         "file_size": 9640,
         "upload_status": "invalidated",
+        "upload_storage_service": "s3",
         "validation_error_detail": "Explanation of why this file did not pass validation.",
         "file_set": "igvf:analysis_set_with_input",
         "dbxrefs": [
@@ -61,7 +63,8 @@
         "transcriptome_annotation": "GENCODE 40",
         "dbxrefs": [
             "GENCODE:Release 40"
-        ]
+        ],
+        "upload_storage_service": "s3"
     },
     {
         "uuid": "e29019cc-c39e-0e6e-b9ee-fbf3376ea128",
@@ -78,7 +81,8 @@
             "igvf:file_format_specification_insert"
         ],
         "file_set": "igvf:analysis_set_with_input",
-        "assembly": "GRCh38"
+        "assembly": "GRCh38",
+        "upload_storage_service": "s3"
     },
     {
         "uuid": "2205ea97-1349-4d82-842a-a3952cabc106",
@@ -95,7 +99,8 @@
             "igvf:file_format_specification_insert"
         ],
         "file_set": "igvf:analysis_set_with_input",
-        "assembly": "GRCh38"
+        "assembly": "GRCh38",
+        "upload_storage_service": "s3"
     },
     {
         "uuid": "20571fef-4569-4c5f-87c0-a5e4404acc40",
@@ -113,6 +118,7 @@
         ],
         "file_set": "igvf:analysis_set_with_input",
         "assembly": "GRCh38",
+        "upload_storage_service": "s3",
         "collections": [
             "ClinGen",
             "GREGoR"
@@ -137,6 +143,7 @@
         "file_format_specifications": [
             "igvf:file_format_specification_insert"
         ],
+        "upload_storage_service": "s3",
         "file_set": "igvf:analysis_set_with_input",
         "assembly": "GRCh38",
         "collections": [
@@ -160,6 +167,7 @@
         ],
         "file_set": "igvf:analysis_set_with_input",
         "assembly": "GRCh38",
+        "upload_storage_service": "s3",
         "collections": [
             "ClinGen",
             "GREGoR"

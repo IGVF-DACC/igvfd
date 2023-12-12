@@ -16,6 +16,7 @@
         "file_size": 9828031,
         "upload_status": "validated",
         "assembly": "GRCh38",
+        "upload_storage_service": "s3",
         "file_set": "igvf:basic_analysis_set",
         "derived_from": [
             "IGVFFI0001PKBD"
@@ -40,6 +41,7 @@
         "file_size": 102340,
         "assembly": "GRCh38",
         "upload_status": "invalidated",
+        "upload_storage_service": "s3",
         "validation_error_detail": "Explanation of why this file did not pass validation.",
         "file_set": "igvf:analysis_set_with_input",
         "derived_from": [

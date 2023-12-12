@@ -1,6 +1,6 @@
 {
-    "hash": "c9ad5a933f9ec102019ab5bda792e281",
-    "index_name": "tabular_file_c9ad5a93",
+    "hash": "9d72c92976c7d1d0f657a83335ae025c",
+    "index_name": "tabular_file_9d72c929",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -444,6 +444,9 @@
                         "type": "object"
                     },
                     "upload_status": {
+                        "type": "keyword"
+                    },
+                    "upload_storage_service": {
                         "type": "keyword"
                     },
                     "uuid": {

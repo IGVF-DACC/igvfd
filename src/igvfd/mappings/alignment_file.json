@@ -1,6 +1,6 @@
 {
-    "hash": "1628f750defcfc1ab8c4392bbcf5f288",
-    "index_name": "alignment_file_1628f750",
+    "hash": "44fe25dd606a4ad0244d46a3568c66dc",
+    "index_name": "alignment_file_44fe25dd",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -459,6 +459,9 @@
                         "type": "object"
                     },
                     "upload_status": {
+                        "type": "keyword"
+                    },
+                    "upload_storage_service": {
                         "type": "keyword"
                     },
                     "uuid": {

@@ -1,6 +1,6 @@
 {
-    "hash": "ebbdcbdedb521993dcf07e7206b93949",
-    "index_name": "model_set_ebbdcbde",
+    "hash": "b58bad51a5373eb2921dc080fd98e618",
+    "index_name": "model_set_b58bad51",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1033,6 +1033,9 @@
                                 "type": "object"
                             },
                             "upload_status": {
+                                "type": "keyword"
+                            },
+                            "upload_storage_service": {
                                 "type": "keyword"
                             },
                             "uuid": {

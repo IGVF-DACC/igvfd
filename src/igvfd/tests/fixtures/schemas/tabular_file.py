@@ -9,6 +9,7 @@ def tabular_file(testapp, lab, award, analysis_set_with_sample):
         'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
         'file_format': 'tsv',
         'file_set': analysis_set_with_sample['@id'],
+        'upload_storage_service': 's3',
         'content_type': 'peaks'
     }
     return testapp.post_json('/tabular_file', item, status=201).json['@graph'][0]

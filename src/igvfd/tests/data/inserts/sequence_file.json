@@ -14,6 +14,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/subreads.bam",
         "file_size": 31208300,
         "upload_status": "validated",
+        "upload_storage_service": "s3",
         "file_set": "igvf:basic_analysis_set",
         "sequencing_run": 12,
         "sequencing_platform": "/platform-terms/747dc8bf-9e8c-3dbc-967f-ce9f995cfd28/",
@@ -42,6 +43,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/reads_R1.fastq",
         "file_size": 23940124,
         "upload_status": "validated",
+        "upload_storage_service": "s3",
         "dbxrefs": [
             "SRA:SRR0000015"
         ],
@@ -73,6 +75,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/reads_R2.fastq",
         "file_size": 23940918,
         "upload_status": "validated",
+        "upload_storage_service": "s3",
         "dbxrefs": [
             "SRA:SRR0000015"
         ],
