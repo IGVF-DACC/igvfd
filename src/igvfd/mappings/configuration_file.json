@@ -1,6 +1,6 @@
 {
-    "hash": "5547dcc5766304aec229b57273dd418f",
-    "index_name": "configuration_file_5547dcc5",
+    "hash": "7080b41ae4448b514454898953f32a9b",
+    "index_name": "configuration_file_7080b41a",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -438,6 +438,9 @@
                         "type": "object"
                     },
                     "upload_status": {
+                        "type": "keyword"
+                    },
+                    "upload_storage_service": {
                         "type": "keyword"
                     },
                     "uuid": {

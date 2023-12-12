@@ -1,6 +1,6 @@
 {
-    "hash": "b94d82b17a1ba0a64e32baa4e533cc89",
-    "index_name": "construct_library_set_b94d82b1",
+    "hash": "d3058d0945da1431072a4178b6c4472e",
+    "index_name": "construct_library_set_d3058d09",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1197,6 +1197,9 @@
                                 "type": "object"
                             },
                             "upload_status": {
+                                "type": "keyword"
+                            },
+                            "upload_storage_service": {
                                 "type": "keyword"
                             },
                             "uuid": {

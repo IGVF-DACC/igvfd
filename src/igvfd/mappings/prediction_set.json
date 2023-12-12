@@ -1,6 +1,6 @@
 {
-    "hash": "1632cca9b5d084845b7731b6287d4bb2",
-    "index_name": "prediction_set_1632cca9",
+    "hash": "2112e967973a1f5ccdbf20e07337bb7c",
+    "index_name": "prediction_set_2112e967",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1035,6 +1035,9 @@
                                 "type": "object"
                             },
                             "upload_status": {
+                                "type": "keyword"
+                            },
+                            "upload_storage_service": {
                                 "type": "keyword"
                             },
                             "uuid": {

@@ -1,6 +1,6 @@
 {
-    "hash": "14bbf95cfaaed553340d3d91ac8a74a3",
-    "index_name": "reference_file_14bbf95c",
+    "hash": "769577e53604ddcf70b0bf60a39e1146",
+    "index_name": "reference_file_769577e5",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -462,6 +462,9 @@
                         "type": "object"
                     },
                     "upload_status": {
+                        "type": "keyword"
+                    },
+                    "upload_storage_service": {
                         "type": "keyword"
                     },
                     "uuid": {
