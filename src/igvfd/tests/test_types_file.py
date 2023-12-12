@@ -65,6 +65,7 @@ def test_types_file_s3_uri_non_submittable(testapp, analysis_set_with_sample, aw
         'file_size': 5495803,
         'content_type': 'reads',
         'sequencing_run': 1,
+        'upload_storage_service': 's3',
         's3_uri': 's3://foo/bar/baz.fastq.gz'
     }
     testapp.post_json('/sequence_file/', item, status=422)

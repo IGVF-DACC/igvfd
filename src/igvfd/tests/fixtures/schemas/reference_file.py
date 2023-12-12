@@ -9,6 +9,7 @@ def reference_file(testapp, lab, award, analysis_set_with_sample):
         'md5sum': '7f1987dea86105dd9d2582c0a91c3156',
         'file_format': 'gtf',
         'file_set': analysis_set_with_sample['@id'],
+        'upload_storage_service': 's3',
         'content_type': 'transcriptome reference'
     }
     return testapp.post_json('/reference_file', item, status=201).json['@graph'][0]
@@ -22,6 +23,7 @@ def reference_file_two(testapp, lab, award, analysis_set_with_sample):
         'md5sum': '7f1987dea86105dd9d2582c0a91c1111',
         'file_format': 'gtf',
         'file_set': analysis_set_with_sample['@id'],
+        'upload_storage_service': 's3',
         'content_type': 'transcriptome reference'
     }
     return testapp.post_json('/reference_file', item, status=201).json['@graph'][0]
@@ -55,6 +57,7 @@ def reference_file_v4(testapp, lab, award, analysis_set_with_sample):
         'md5sum': '7d258f1987e2da2491ddb051a91c3156',
         'file_format': 'bed',
         'file_set': analysis_set_with_sample['@id'],
+        'upload_storage_service': 's3',
         'content_type': 'regulatory_regions'
     }
     return item
@@ -79,6 +82,7 @@ def reference_file_v6(testapp, lab, award, analysis_set_with_sample):
         'file_format': 'bed',
         'file_set': analysis_set_with_sample['@id'],
         'content_type': 'regulatory_regions',
+        'upload_storage_service': 's3',
         'schema_version': '6'
     }
     return item

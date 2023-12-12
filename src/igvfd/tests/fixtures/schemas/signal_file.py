@@ -16,6 +16,7 @@ def signal_file(testapp, lab, award, analysis_set_with_sample, reference_file):
         ],
         'strand_specificity': 'plus',
         'normalized': False,
+        'upload_storage_service': 's3',
         'filtered': False
     }
     return testapp.post_json('/signal_file', item, status=201).json['@graph'][0]

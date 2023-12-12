@@ -10,6 +10,7 @@ def genome_browser_annotation_file(testapp, lab, award, analysis_set_with_sample
         'file_format': 'tabix',
         'file_set': analysis_set_with_sample['@id'],
         'content_type': 'peaks',
+        'upload_storage_service': 's3',
         'derived_from': [reference_file['@id']]
     }
     return testapp.post_json('/genome_browser_annotation_file', item, status=201).json['@graph'][0]
