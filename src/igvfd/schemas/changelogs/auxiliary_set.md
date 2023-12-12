@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Schema version 6
+
+* Remove `oligo-conjugated antibodies` from `file_set_type` property.
+
 ### Schema version 5
 
 * Disallow empty strings in `description`.
