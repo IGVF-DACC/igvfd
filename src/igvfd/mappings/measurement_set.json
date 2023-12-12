@@ -1542,6 +1542,9 @@
                             "upload_status": {
                                 "type": "keyword"
                             },
+                            "upload_storage_service": {
+                                "type": "keyword"
+                            },
                             "uuid": {
                                 "type": "keyword"
                             },

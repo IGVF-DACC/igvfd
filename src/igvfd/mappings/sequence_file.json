@@ -1,6 +1,6 @@
 {
-    "hash": "70c42db1a09734fce5505a85713f5382",
-    "index_name": "sequence_file_70c42db1",
+    "hash": "851d3e486f1ac0095608c5df645e6796",
+    "index_name": "sequence_file_851d3e48",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -504,6 +504,9 @@
                         "type": "object"
                     },
                     "upload_status": {
+                        "type": "keyword"
+                    },
+                    "upload_storage_service": {
                         "type": "keyword"
                     },
                     "uuid": {

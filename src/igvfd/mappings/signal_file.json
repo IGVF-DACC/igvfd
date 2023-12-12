@@ -1,6 +1,6 @@
 {
-    "hash": "f84325beca758e727cce1231b08168fe",
-    "index_name": "signal_file_f84325be",
+    "hash": "e5e8bf5852ff7c8927c7f1c7e055accb",
+    "index_name": "signal_file_e5e8bf58",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -465,6 +465,9 @@
                         "type": "object"
                     },
                     "upload_status": {
+                        "type": "keyword"
+                    },
+                    "upload_storage_service": {
                         "type": "keyword"
                     },
                     "uuid": {

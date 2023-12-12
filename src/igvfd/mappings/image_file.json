@@ -1,6 +1,6 @@
 {
-    "hash": "2165f357f65213465dd45754a30bf25f",
-    "index_name": "image_file_2165f357",
+    "hash": "fec36477d0f58a4c845746365dffea54",
+    "index_name": "image_file_fec36477",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -435,6 +435,9 @@
                         "type": "object"
                     },
                     "upload_status": {
+                        "type": "keyword"
+                    },
+                    "upload_storage_service": {
                         "type": "keyword"
                     },
                     "uuid": {

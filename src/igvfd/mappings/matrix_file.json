@@ -1,6 +1,6 @@
 {
-    "hash": "131738acb07b10246244b343a049005c",
-    "index_name": "matrix_file_131738ac",
+    "hash": "32ebf13dcb4af55058b0ca34c2a046af",
+    "index_name": "matrix_file_32ebf13d",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -447,6 +447,9 @@
                         "type": "object"
                     },
                     "upload_status": {
+                        "type": "keyword"
+                    },
+                    "upload_storage_service": {
                         "type": "keyword"
                     },
                     "uuid": {
