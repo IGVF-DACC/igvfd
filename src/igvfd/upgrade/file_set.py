@@ -160,7 +160,7 @@ def file_set_7_8(value, system):
 
 
 @upgrade_step('auxiliary_set', '5', '6')
-def construct_library_set_1_2(value, system):
+def auxiliary_set_5_6(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1337
     if 'file_set_type' in value:
         if value['file_set_type'] == 'oligo-conjugated antibodies':
