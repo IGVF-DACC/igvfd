@@ -53,7 +53,7 @@ def alignment_file_v3(alignment_file_v1):
 
 
 @pytest.fixture
-def alignment_file_v4(alignment_file_v1):
+def alignment_file_v4(alignment_file_v3):
     item = alignment_file_v3.copy()
     item.pop('upload_storage_service')
     item.update({
