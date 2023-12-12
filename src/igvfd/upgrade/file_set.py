@@ -177,3 +177,15 @@ def measurement_set_10_11(value, system):
     if 'file_set_type' not in value:
         value['file_set_type'] = 'experimental data'
 
+
+@upgrade_step('auxiliary_set', '5', '6')
+def construct_library_set_1_2(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1337
+    if 'file_set_type' in value:
+        if value['file_set_type'] == 'oligo-conjugated antibodies':
+            value['file_set_type'] = 'cell hashing'
+            notes = value.get('notes', '')
+            notes += f'Original file_set_type was oligo-conjugated antibodies. This was replaced to be cell hashing during upgrade.'
+            value['notes'] = notes.strip()
+    return
+
