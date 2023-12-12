@@ -15,6 +15,7 @@ def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_file
             reference_file['@id']
         ],
         'redacted': False,
+        'upload_storage_service': 's3',
         'filtered': False
     }
     return testapp.post_json('/alignment_file', item, status=201).json['@graph'][0]
@@ -54,6 +55,7 @@ def alignment_file_v3(alignment_file_v1):
 @pytest.fixture
 def alignment_file_v4(alignment_file_v1):
     item = alignment_file_v3.copy()
+    item.pop('upload_storage_service')
     item.update({
         'schema_version': '4',
         'upload_status': 'validated',

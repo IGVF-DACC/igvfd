@@ -7,6 +7,7 @@ def matrix_file(testapp, lab, award, analysis_set_with_sample, reference_file):
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '01b08bb5485ac730df19af55ba4bb01c',
+        'upload_storage_service': 's3',
         'file_format': 'hdf5',
         'file_set': analysis_set_with_sample['@id'],
         'file_size': 8491803,

@@ -17,6 +17,7 @@ def sequence_file(
         'file_size': 5495803,
         'content_type': 'reads',
         'sequencing_run': 1,
+        'upload_storage_service': 's3',
         'sequencing_platform': platform_term_HiSeq['@id']
     }
     return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
@@ -38,6 +39,7 @@ def sequence_file_s3_uri(
         'file_size': 5495803,
         'content_type': 'reads',
         'sequencing_run': 1,
+        'upload_storage_service': 's3',
         's3_uri': 's3://foo/bar/baz.fastq.gz',
         'sequencing_platform': platform_term_HiSeq['@id']
     }
@@ -55,6 +57,7 @@ def sequence_file_fastq_no_read_length(
         'file_set': analysis_set_with_sample['@id'],
         'content_type': 'reads',
         'sequencing_run': 1,
+        'upload_storage_service': 's3',
         'sequencing_platform': platform_term_HiSeq['@id']
     }
     return item
@@ -75,6 +78,7 @@ def sequence_file_sequencing_run_2(
         'read_count': 23040138,
         'file_size': 5495803,
         'content_type': 'reads',
+        'upload_storage_service': 's3',
         'sequencing_run': 2,
         'sequencing_platform': platform_term_HiSeq['@id']
     }
@@ -101,6 +105,7 @@ def sequence_file_v2(
         'file_format': 'fastq',
         'file_set': analysis_set_with_sample['@id'],
         'content_type': 'reads',
+        'upload_storage_service': 's3',
         'sequencing_run': 1
     }
     return item
