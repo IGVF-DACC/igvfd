@@ -166,16 +166,14 @@ class File(Item):
             name = f'up{time.time():.6f}-{accession}'[:32]  # max 32 chars
             profile_name = registry.settings.get('file_upload_profile_name')
 
-            if properties.get('controlled_access'):
-                storage_type = properties.get('controlled_access_storage_type')
-                if storage_type == 'gcs':
-                    upload_credentials = GcsUploadCredentials(
-                        bucket=bucket,
-                        key=key,
-                        name=name,
-                        gcs_client=get_gcs_client(),
-                        gcp_credentials=get_gcp_credentials(),
-                    )
+            if properties.get('upload_storage_service') == 'gcs':
+                upload_credentials = GcsUploadCredentials(
+                    bucket=bucket,
+                    key=key,
+                    name=name,
+                    gcs_client=get_gcs_client(),
+                    gcp_credentials=get_gcp_credentials(),
+                )
             else:
                 upload_credentials = S3UploadCredentials(
                     bucket=bucket,
