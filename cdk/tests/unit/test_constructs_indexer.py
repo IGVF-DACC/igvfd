@@ -423,9 +423,91 @@ def test_constructs_indexer_initialize_indexer(
     )
     template.resource_count_is(
         'AWS::ApplicationAutoScaling::ScalingPolicy',
-        6
+        4
     )
     template.resource_count_is(
         'AWS::CloudWatch::Alarm',
         18
+    )
+    cpu_scaling_resources = template.find_resources(
+        'AWS::ApplicationAutoScaling::ScalingPolicy',
+        {
+            'Properties': {
+                'PolicyType': 'TargetTrackingScaling',
+                'TargetTrackingScalingPolicyConfiguration': {
+                    'PredefinedMetricSpecification': {
+                        'PredefinedMetricType': 'ECSServiceAverageCPUUtilization'
+                    },
+                    'TargetValue': 50
+                }
+            }
+        }
+    )
+    assert len(cpu_scaling_resources) == 0
+    template.has_resource_properties(
+        'AWS::ApplicationAutoScaling::ScalingPolicy',
+        {
+            'PolicyName': 'IndexerInvalidationServiceQueueProcessingFargateServiceTaskCountTargetQueueMessagesVisibleScalingLowerPolicyA4356389',
+            'PolicyType': 'StepScaling',
+            'ScalingTargetId': {
+                'Ref': 'IndexerInvalidationServiceQueueProcessingFargateServiceTaskCountTargetE5561481'
+            },
+            'StepScalingPolicyConfiguration': {
+                'AdjustmentType': 'ChangeInCapacity',
+                'MetricAggregationType': 'Maximum',
+                'StepAdjustments': [
+                    {
+                        'MetricIntervalUpperBound': 0,
+                        'ScalingAdjustment': -1
+                    }
+                ]
+            }
+        }
+    )
+
+
+def test_constructs_indexer_indexer_match_snapshot(
+    stack,
+    config,
+    existing_resources,
+    application_load_balanced_fargate_service,
+    transaction_queue,
+    invalidation_queue,
+    opensearch_multiplexer,
+    snapshot,
+):
+    import json
+    from infrastructure.constructs.indexer import InvalidationServiceProps
+    from infrastructure.constructs.indexer import IndexingServiceProps
+    from infrastructure.constructs.indexer import IndexerProps
+    from infrastructure.constructs.indexer import Indexer
+    indexer = Indexer(
+        stack,
+        'Indexer',
+        props=IndexerProps(
+            config=config,
+            existing_resources=existing_resources,
+            cluster=application_load_balanced_fargate_service.cluster,
+            transaction_queue=transaction_queue,
+            invalidation_queue=invalidation_queue,
+            opensearch_multiplexer=opensearch_multiplexer,
+            use_opensearch_named='Opensearch',
+            backend_url='some-url.test',
+            resources_index='some-resources-index',
+            invalidation_service_props=InvalidationServiceProps(
+                **config.invalidation_service,
+            ),
+            indexing_service_props=IndexingServiceProps(
+                **config.indexing_service,
+            )
+        )
+    )
+    template = Template.from_stack(stack)
+    snapshot.assert_match(
+        json.dumps(
+            template.to_json(),
+            indent=4,
+            sort_keys=True
+        ),
+        'indexer_constructs_template.json'
     )
