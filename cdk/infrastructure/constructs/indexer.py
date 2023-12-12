@@ -125,9 +125,11 @@ class Indexer(Construct):
         self._define_opensearch()
         self._define_docker_assets()
         self._define_invalidation_service()
+        self._remove_cpu_scaling_from_invalidation_service()
         self._allow_invalidation_service_to_write_to_invalidation_queue()
         self._define_portal_credentials()
         self._define_indexing_service()
+        self._remove_cpu_scaling_from_indexing_service()
         self._allow_invalidation_service_to_connect_to_opensearch()
         self._allow_indexing_service_to_connect_to_opensearch()
         self._add_alarms_to_invalidation_service()
@@ -177,6 +179,15 @@ class Indexer(Construct):
             ),
         )
 
+    def _remove_cpu_scaling_from_invalidation_service(self) -> None:
+        self.invalidation_service.service.node.find_child(
+            'TaskCount'
+        ).node.find_child(
+            'Target'
+        ).node.try_remove_child(
+            'CpuScaling'
+        )
+
     def _allow_invalidation_service_to_write_to_invalidation_queue(self) -> None:
         self.props.invalidation_queue.queue.grant_send_messages(
             self.invalidation_service.task_definition.task_role
@@ -224,6 +235,15 @@ class Indexer(Construct):
                 stream_prefix='indexing-service',
                 mode=AwsLogDriverMode.NON_BLOCKING,
             ),
+        )
+
+    def _remove_cpu_scaling_from_indexing_service(self) -> None:
+        self.indexing_service.service.node.find_child(
+            'TaskCount'
+        ).node.find_child(
+            'Target'
+        ).node.try_remove_child(
+            'CpuScaling'
         )
 
     def _allow_invalidation_service_to_connect_to_opensearch(self) -> None:
