@@ -49,3 +49,14 @@ def alignment_file_v3(alignment_file_v1):
         'status': 'released'
     })
     return item
+
+
+@pytest.fixture
+def alignment_file_v4(alignment_file_v1):
+    item = alignment_file_v3.copy()
+    item.update({
+        'schema_version': '4',
+        'upload_status': 'validated',
+        'status': 'in progress'
+    })
+    return item

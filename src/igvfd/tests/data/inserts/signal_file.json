@@ -14,6 +14,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/plus_strand_signal_of_all_reads.bigWig",
         "file_size": 25523553,
         "upload_status": "validated",
+        "upload_storage_service": "s3",
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
@@ -38,6 +39,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/signal_p_value.bigWig",
         "file_size": 43523553,
         "upload_status": "validated",
+        "upload_storage_service": "s3",
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"

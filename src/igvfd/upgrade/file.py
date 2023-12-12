@@ -125,3 +125,17 @@ def file_7_8(value, system):
             notes = value.get('notes', '')
             notes += f' This publicly available file was previously pending or file not found upload_status, and was moved to invalidated upload_status.'
             value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '9', '10')
+@upgrade_step('matrix_file', '4', '5')
+@upgrade_step('signal_file', '4', '5')
+@upgrade_step('configuration_file', '4', '5')
+@upgrade_step('alignment_file', '4', '5')
+@upgrade_step('sequence_file', '7', '8')
+@upgrade_step('genome_browser_annotation_file', '4', '5')
+@upgrade_step('tabular_file', '4', '5')
+@upgrade_step('image_file', '1', '2')
+def file_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1306
+    value['upload_storage_service'] = 's3'

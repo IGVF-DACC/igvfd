@@ -18,6 +18,7 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
+        "upload_storage_service": "s3",
         "redacted": false,
         "filtered": false
     },
@@ -40,6 +41,7 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
+        "upload_storage_service": "s3",
         "redacted": true,
         "filtered": true
     }

@@ -9,7 +9,8 @@
         "lab",
         "md5sum",
         "file_format",
-        "content_type"
+        "content_type",
+        "upload_storage_service"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -219,6 +220,20 @@
                 "invalidated",
                 "validated"
             ]
+        },
+        "upload_storage_service": {
+            "title": "Upload Storage Service",
+            "description": "Cloud storage service type for a file.",
+            "comment": "Cloud storage service, such as S3.",
+            "type": "string",
+            "enum": [
+                "s3",
+                "gcs"
+            ],
+            "submissionExample": {
+                "appscript": "s3",
+                "igvf_utils": "s3"
+            }
         },
         "validation_error_detail": {
             "title": "Validation Error Detail",
