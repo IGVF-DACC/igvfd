@@ -138,6 +138,7 @@ def file_8_9(value, system):
         'bam',
         'bed',
         'bedpe',
+        'bigBed',
         'bigWig',
         'bigInteract',
         'tabix',

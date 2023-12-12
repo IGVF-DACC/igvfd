@@ -100,36 +100,43 @@
         },
         "file_format": {
             "comment": "Bed files must specify their file format type.",
-            "oneOf": [
+            "allOf": [
                 {
-                    "required": [
-                        "file_format_type"
-                    ],
-                    "properties": {
-                        "file_format": {
-                            "enum": [
-                                "bed"
-                            ]
-                        }
-                    }
+                    "$merge": "file.json#/dependentSchemas/file_format"
                 },
                 {
-                    "not": {
-                        "required": [
-                            "file_format_type"
-                        ]
-                    },
-                    "properties": {
-                        "file_format": {
-                            "enum": [
-                                "csv",
-                                "gtf",
-                                "tsv",
-                                "txt",
-                                "vcf"
-                            ]
+                    "oneOf": [
+                        {
+                            "required": [
+                                "file_format_type"
+                            ],
+                            "properties": {
+                                "file_format": {
+                                    "enum": [
+                                        "bed"
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "not": {
+                                "required": [
+                                    "file_format_type"
+                                ]
+                            },
+                            "properties": {
+                                "file_format": {
+                                    "enum": [
+                                        "csv",
+                                        "gtf",
+                                        "tsv",
+                                        "txt",
+                                        "vcf"
+                                    ]
+                                }
+                            }
                         }
-                    }
+                    ]
                 }
             ]
         }

@@ -100,61 +100,65 @@
         },
         "file_format": {
             "comment": "Bed files must specify their file format type. Vcf files must specify a relevant assembly.",
-            "oneOf": [
+            "allOf": [
                 {
-                    "required": [
-                        "assembly"
-                    ],
-                    "not": {
-                        "required": [
-                            "file_format_type"
-                        ]
-                    },
-                    "properties": {
-                        "file_format": {
-                            "enum": [
-                                "vcf"
-                            ]
-                        }
-                    }
+                    "$merge": "file.json#/dependentSchemas/file_format"
                 },
                 {
-                    "required": [
-                        "file_format_type"
-                    ],
-                    "properties": {
-                        "file_format": {
-                            "enum": [
-                                "bed"
-                            ]
+                    "oneOf": [
+                        {
+                            "not": {
+                                "required": [
+                                    "file_format_type"
+                                ]
+                            },
+                            "properties": {
+                                "file_format": {
+                                    "enum": [
+                                        "vcf"
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "required": [
+                                "file_format_type"
+                            ],
+                            "properties": {
+                                "file_format": {
+                                    "enum": [
+                                        "bed"
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "not": {
+                                "required": [
+                                    "file_format_type"
+                                ]
+                            },
+                            "properties": {
+                                "file_format": {
+                                    "enum": [
+                                        "csv",
+                                        "dat",
+                                        "fasta",
+                                        "gaf",
+                                        "gds",
+                                        "gtf",
+                                        "obo",
+                                        "owl",
+                                        "PWM",
+                                        "tar",
+                                        "tsv",
+                                        "txt",
+                                        "xml"
+                                    ]
+                                }
+                            }
                         }
-                    }
-                },
-                {
-                    "not": {
-                        "required": [
-                            "file_format_type"
-                        ]
-                    },
-                    "properties": {
-                        "file_format": {
-                            "enum": [
-                                "csv",
-                                "dat",
-                                "fasta",
-                                "gaf",
-                                "gds",
-                                "gtf",
-                                "obo",
-                                "owl",
-                                "PWM",
-                                "tar",
-                                "tsv",
-                                "txt",
-                                "xml"
-                            ]
-                        }
-                    }
+                    ]
                 }
             ]
         },
