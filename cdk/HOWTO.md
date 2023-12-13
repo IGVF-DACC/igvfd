@@ -21,6 +21,7 @@
 - [Restore database snapshot to lower environments](#restore-database-snapshot-to-lower-environments)
 - [Swap Opensearch](#swap-opensearch)
 - [Swap Postgres](#swap-postgres)
+- [Upgrade CDK version](#upgrade-cdk-version)
 
 ---
 
@@ -429,4 +430,34 @@ aws ecs execute-command \
 
 7. Commit, push, and deploy changes through all environments.
 
+---
+
+## Upgrade CDK version
+
+1. Update to latest CDK version on system:
+
+```
+npm install -g aws-cdk@latest && cdk version
+```
+
+2. Pin latest version in `requirements.txt` and `infrastructure/config.py` (https://github.com/IGVF-DACC/igvfd/blob/0109d69c189711f2c78124e34f98de69818b1016/cdk/infrastructure/config.py#L390):
+
+```
+$ cat requirements.txt
+aws-cdk-lib==2.114.1
+aws-cdk.aws-lambda-python-alpha==2.114.1a0
+...
+```
+
+4. `pip install -r requirements.txt` in Python environment.
+
+5. Update tests (usually pipeline hashes and CodeBuild versions).
+
+6. Deploy demo and QA.
+
+7. Redeploy dev and production pipelines after code is merged.
+
+8. Repeat for `igvf-ui`.
+
+9. Notify developers to upgrade local CDK version and reinstall `requirements.txt` in Python environment.
 ---
