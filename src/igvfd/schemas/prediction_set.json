@@ -53,6 +53,9 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/genes"
         }
     ],
     "dependentSchemas": {
@@ -60,58 +63,13 @@
             "file_set.json#/dependentSchemas"
         ],
         "scope": {
-            "comment": "If scope is genes then targeted_genes is required, if scope is loci then targeted_loci is required, if scope is genome-wide then targeted_genes and targeted_loci shouldn't be specified.",
-            "oneOf": [
-                {
-                    "required": [
-                        "targeted_genes"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "genes"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "targeted_loci"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "loci"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "not": {
-                        "required": [
-                            "targeted_genes",
-                            "targeted_loci"
-                        ]
-                    },
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "genome-wide"
-                            ]
-                        }
-                    }
-                }
-            ]
+            "$merge": "construct_library.json#/dependentSchemas/scope"
         },
-        "targeted_genes": {
-            "comment": "Specification of targeted_genes requires that scope is genes.",
-            "properties": {
-                "scope": {
-                    "enum": [
-                        "genes"
-                    ]
-                }
-            }
+        "small_scale_gene_list": {
+            "$merge": "construct_library.json#/dependentSchemas/small_scale_gene_list"
+        },
+        "large_scale_gene_list": {
+            "$merge": "construct_library.json#/dependentSchemas/large_scale_gene_list"
         },
         "targeted_loci": {
             "comment": "Specification of targeted_loci requires that scope is loci.",

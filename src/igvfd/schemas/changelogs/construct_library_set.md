@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Schema version 4
+
+* Replace `genes` with `small_scale_gene_list` and `large_scale_gene_list`.
+
 ### Minor changes since schema version 3
 
 * Add a `title` property to `tile`.

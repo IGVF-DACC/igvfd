@@ -452,5 +452,35 @@
             "format": "date-time",
             "permission": "import_items"
         }
+    },
+    "genes": {
+        "small_scale_gene_list": {
+            "title": "Small Scale Gene List",
+            "description": "A small scale list (<=100) of gene(s).",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "uniqueItems": true,
+            "items": {
+                "title": "Gene",
+                "comment": "See gene.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "Gene"
+            },
+            "submissionExample": {
+                "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
+                "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
+            }
+        },
+        "large_scale_gene_list": {
+            "title": "Large Scale Gene List",
+            "description": "A large scale list (>100) of genes.",
+            "type": "string",
+            "linkTo": "TabularFile",
+            "submissionExample": {
+                "appscript": "IGVFFI5432ENEG or john-doe:gene_list",
+                "igvf_utils": "IGVFFI5432ENEG or john-doe:gene_list"
+            }
+        }
     }
 }

@@ -39,11 +39,14 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/genes"
         }
     ],
     "dependentSchemas": {
         "file_set_type": {
-            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes and that scope be genes, tile, or exon and should not specify any guide properties.",
+            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require small_scale_gene_list or large_scale_gene_list and that scope be genes, tile, or exon and should not specify any guide properties.",
             "allOf": [
                 {
                     "if": {
@@ -135,63 +138,116 @@
                         }
                     },
                     "then": {
-                        "required": [
-                            "genes"
-                        ],
-                        "properties": {
-                            "scope": {
-                                "oneOf": [
-                                    {
-                                        "const": "tile"
-                                    },
-                                    {
-                                        "const": "exon"
-                                    },
-                                    {
-                                        "const": "genes"
+                        "oneOf": [
+                            {
+                                "required": [
+                                    "small_scale_gene_list"
+                                ],
+                                "properties": {
+                                    "scope": {
+                                        "oneOf": [
+                                            {
+                                                "const": "tile"
+                                            },
+                                            {
+                                                "const": "exon"
+                                            },
+                                            {
+                                                "const": "small_scale_gene_list"
+                                            }
+                                        ]
                                     }
-                                ]
-                            }
-                        },
-                        "not": {
-                            "anyOf": [
-                                {
-                                    "required": [
-                                        "guide_type"
-                                    ]
                                 },
-                                {
-                                    "required": [
-                                        "tiling_modality"
-                                    ]
-                                },
-                                {
-                                    "required": [
-                                        "average_guide_coverage"
-                                    ]
-                                },
-                                {
-                                    "required": [
-                                        "lower_bound_guide_coverage"
-                                    ]
-                                },
-                                {
-                                    "required": [
-                                        "upper_bound_guide_coverage"
+                                "not": {
+                                    "anyOf": [
+                                        {
+                                            "required": [
+                                                "guide_type"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "tiling_modality"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "average_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "lower_bound_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "upper_bound_guide_coverage"
+                                            ]
+                                        }
                                     ]
                                 }
-                            ]
-                        }
+                            },
+                            {
+                                "required": [
+                                    "large_scale_gene_list"
+                                ],
+                                "properties": {
+                                    "scope": {
+                                        "oneOf": [
+                                            {
+                                                "const": "tile"
+                                            },
+                                            {
+                                                "const": "exon"
+                                            },
+                                            {
+                                                "const": "large_scale_gene_list"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "not": {
+                                    "anyOf": [
+                                        {
+                                            "required": [
+                                                "guide_type"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "tiling_modality"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "average_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "lower_bound_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "upper_bound_guide_coverage"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
                     }
                 }
             ]
         },
         "scope": {
-            "comment": "If scope is genes then genes is required, if scope is tile then both tile and genes are required, if scope is exon then both genes and exon are required, if scope is genome-wide then tile, exon, genes, and loci shouldn't be specified.",
+            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list or large_scale_gene_list are required, if scope is exon then both small_scale_gene_list or large_scale_gene_list and exon are required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, and loci shouldn't be specified.",
             "oneOf": [
                 {
                     "required": [
-                        "genes"
+                        "small_scale_gene_list"
                     ],
                     "properties": {
                         "scope": {
@@ -204,7 +260,7 @@
                 {
                     "required": [
                         "tile",
-                        "genes"
+                        "small_scale_gene_list"
                     ],
                     "properties": {
                         "scope": {
@@ -217,7 +273,45 @@
                 {
                     "required": [
                         "exon",
-                        "genes"
+                        "small_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "exon"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "large_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "tile",
+                        "large_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "tile"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "exon",
+                        "large_scale_gene_list"
                     ],
                     "properties": {
                         "scope": {
@@ -244,7 +338,8 @@
                         "required": [
                             "tile",
                             "exon",
-                            "genes",
+                            "small_scale_gene_list",
+                            "large_scale_gene_list",
                             "loci"
                         ]
                     },
@@ -258,23 +353,63 @@
                 }
             ]
         },
-        "genes": {
-            "comment": "Specification of genes requires that scope is tile, exon, or genes.",
-            "properties": {
-                "scope": {
-                    "oneOf": [
-                        {
-                            "const": "tile"
-                        },
-                        {
-                            "const": "exon"
-                        },
-                        {
-                            "const": "genes"
+        "small_scale_gene_list": {
+            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, or genes.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "oneOf": [
+                                {
+                                    "const": "tile"
+                                },
+                                {
+                                    "const": "exon"
+                                },
+                                {
+                                    "const": "genes"
+                                }
+                            ]
                         }
-                    ]
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "large_scale_gene_list"
+                        ]
+                    }
                 }
-            }
+            ]
+        },
+        "large_scale_gene_list": {
+            "comment": "Specification of large_scale_gene_list requires that scope is tile, exon, or genes.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "oneOf": [
+                                {
+                                    "const": "tile"
+                                },
+                                {
+                                    "const": "exon"
+                                },
+                                {
+                                    "const": "genes"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "small_scale_gene_list"
+                        ]
+                    }
+                }
+            ]
         },
         "loci": {
             "comment": "Specification of loci requires that scope is loci.",
@@ -287,30 +422,62 @@
             }
         },
         "exon": {
-            "comment": "Specification of exon requires genes and that scope is exon.",
-            "required": [
-                "genes"
-            ],
-            "properties": {
-                "scope": {
-                    "enum": [
-                        "exon"
-                    ]
+            "comment": "Specification of exon requires small_scale_gene_list or large_scale_gene_list and that scope is exon.",
+            "oneOf": [
+                {
+                    "required": [
+                        "small_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "exon"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "large_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "exon"
+                            ]
+                        }
+                    }
                 }
-            }
+            ]
         },
         "tile": {
-            "comment": "Specification of tile requires genes and that scope is tile.",
-            "required": [
-                "genes"
-            ],
-            "properties": {
-                "scope": {
-                    "enum": [
-                        "tile"
-                    ]
+            "comment": "Specification of tile requires small_scale_gene_list or large_scale_gene_list and that scope is tile.",
+            "oneOf": [
+                {
+                    "required": [
+                        "small_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "tile"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "large_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "tile"
+                            ]
+                        }
+                    }
                 }
-            }
+            ]
         },
         "average_insert_size": {
             "comment": "Specification of average_insert_size is mutually exclusive with specification of lower_bound_insert_size and upper_bound_insert_size.",
@@ -398,7 +565,7 @@
         },
         "scope": {
             "title": "Library Construct Scope",
-            "description": "The scope or scale that this construct library is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the genes or loci property. If exon is specified, an exon identifier and the associated gene will need to be listed in exon and genes properties. If tile is specified, a tile identifier, start and stop coordinates, and the associated gene will need to be listed in tile and genes properties.",
+            "description": "The scope or scale that this construct library is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the genes or loci property. If exon is specified, an exon identifier and the associated gene will need to be listed in exon and genes properties. If tile is specified, a tile identifier, start and stop coordinates, and the associated gene will need to be listed in tile and small_scale_gene_list or large_scale_gene_list properties.",
             "type": "string",
             "enum": [
                 "tile",
@@ -477,23 +644,13 @@
                 "igvf_utils": "/phenotype-terms/MONDO_0008564/, /phenotype-terms/MONDO_0005148/"
             }
         },
-        "genes": {
-            "title": "Genes",
-            "description": "The specific gene(s) this construct library was designed to target.",
-            "comment": "For a guide library, guides should directly map to or target the gene(s) listed here. Genes are disallowed from submission in a reporter library.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Gene",
-                "comment": "See gene.json for a list of available identifiers.",
-                "type": "string",
-                "linkTo": "Gene"
-            },
-            "submissionExample": {
-                "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
-                "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
-            }
+        "small_scale_gene_list": {
+            "description": "The specific, small scale list of (<=100) gene(s) this construct library was designed to target.",
+            "comment": "If more than 100 genes were targeted, submit large_scale_gene_list instead. For a guide library, guides should directly map to or target the gene(s) listed here. Genes are disallowed from submission in a reporter library."
+        },
+        "large_scale_gene_list": {
+            "description": "The large scale list of (>100 genes) this construct library was designed to target.",
+            "comment": "If 100 or fewer genes were targeted, submit small_scale_gene_list instead. For a guide library, guides should directly map to or target the gene(s) listed here. Genes are disallowed from submission in a reporter library."
         },
         "loci": {
             "title": "Loci",
@@ -552,7 +709,7 @@
         },
         "exon": {
             "title": "Exon",
-            "description": "An identifier in plain text for the specific exon in an expression vector library. The associated gene must be listed in genes property.",
+            "description": "An identifier in plain text for the specific exon in an expression vector library. The associated gene must be listed in the small_scale_gene_list or large_scale_gene_list property.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "submissionExample": {
@@ -562,7 +719,7 @@
         },
         "tile": {
             "title": "Tile",
-            "description": "The coordinates and an identifier in plain text for the specific tile of a protein region cloned in an expression vector library. The associated gene for this protein must be listed in genes property.",
+            "description": "The coordinates and an identifier in plain text for the specific tile of a protein region cloned in an expression vector library. The associated gene for this protein must be listed in the small_scale_gene_list or large_scale_gene_list property.",
             "comment": "The protein tile locus is defined using 1-based numbering where 1 indicates the N-terminal Methionine initiator.",
             "type": "object",
             "additionalProperties": false,
@@ -690,7 +847,7 @@
         "@type",
         "collections",
         "selection_criteria",
-        "genes.symbol",
+        "small_scale_gene_list.symbol",
         "lab.title"
     ],
     "exact_searchable_fields": [

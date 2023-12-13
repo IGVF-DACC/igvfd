@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_dependencies_construct_library(testapp, gene_myc_hs, base_prediction_set, prediction_set_functional_effect):
+def test_dependencies_prediction_set(testapp, gene_myc_hs, base_prediction_set, prediction_set_functional_effect):
     res = testapp.patch_json(
         base_prediction_set['@id'],
         {'scope': 'loci'
@@ -29,13 +29,13 @@ def test_dependencies_construct_library(testapp, gene_myc_hs, base_prediction_se
     assert res.status_code == 200
     res = testapp.patch_json(
         prediction_set_functional_effect['@id'],
-        {'scope': 'gene'
+        {'scope': 'genes'
          }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         prediction_set_functional_effect['@id'],
         {'scope': 'genes',
-         'targeted_genes': [gene_myc_hs['@id']]
+         'small_scale_gene_list': [gene_myc_hs['@id']]
          })
     assert res.status_code == 200
 
