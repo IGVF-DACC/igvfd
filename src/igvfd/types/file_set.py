@@ -21,30 +21,33 @@ def get_donors_from_samples(request, samples):
     return list(set(donor_objects))
 
 
-def inspect_fileset(request, fileset, inspected_filesets):
-    assay_terms = set()
-    fileset_types = set()
-    if fileset in inspected_filesets:
-        return (assay_terms, fileset_types)
-    else:
-        inspected_filesets.add(fileset)
-        fileset_object = request.embed(fileset, '@@object?skip_calculated=true')
+def inspect_fileset(request, fileset):
+    inspected = set()
+    measurement_terms = set()
+    other_set_terms = set()
+    interim_results = tuple()
 
-        if fileset_object['@type'][0] == 'MeasurementSet':
-            if 'preferred_assay_title' in fileset_object:
-                assay_terms.add(fileset_object['preferred_assay_title'])
+    if fileset in inspected:
+        return
+    else:
+        inspected.add(fileset)
+    fileset_object = request.embed(fileset, '@@object?skip_calculated=true')
+    if fileset_object.get('input_file_sets', None) is not None:
+        for fs in fileset_object.get('input_file_sets'):
+            fs_object = request.embed(fs, '@@object')
+            if fs_object['@id'].startswith('/analysis-sets/'):
+                interim_results = inspect_fileset(request, fs_object['accession'])
+                measurement_terms.update(interim_results[0])
+                other_set_terms.update(interim_results[1])
+            elif fs_object['@id'].startswith('/measurement-sets/'):
+                if 'preferred_assay_title' in fs_object:
+                    measurement_terms.add(fs_object['preferred_assay_title'])
+                else:
+                    assay_object = request.embed(fs_object['assay_term'], '@@object?skip_calculated=true')
+                    measurement_terms.add(assay_object['term_name'])
             else:
-                assay_terms.add(request.embed(fileset_object['assay_term'],
-                                '@@object?skip_calculated=true')['term_name'])
-        elif fileset_object['@type'][0] != 'AnalysisSet':
-            fileset_types.add(fileset_object['file_set_type'])
-        elif (fileset_object['@type'][0] == 'AnalysisSet' and
-              fileset_object.get('input_file_sets', False)):
-            for input_fileset in fileset_object.get('input_file_sets'):
-                inspection = inspect_fileset(request, input_fileset, inspected_filesets)
-                assay_terms.update(inspection[0])
-                fileset_types.update(inspection[1])
-        return (assay_terms, fileset_types)
+                other_set_terms.add(fs_object['file_set_type'])
+    return (measurement_terms, other_set_terms)
 
 
 @abstract_collection(
@@ -186,19 +189,18 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type):
+    def summary(self, request, accession, file_set_type, input_file_sets=None):
         sentence = f'{file_set_type}'
         results = tuple()
         measurement_terms = set()
         other_set_terms = set()
 
-        fileset_id = self.jsonld_id(request)
-        results = inspect_fileset(request, fileset_id, set())
+        results = inspect_fileset(request, accession)
 
-        if results[0]:
+        if results[0] != set():
             measurement_terms = ', '.join(sorted(results[0]))
             sentence += f' of {measurement_terms} data'
-        elif results[1]:
+        elif results[1] != set():
             other_set_terms = ', '.join(sorted(results[1]))
             sentence += f' of {other_set_terms} data'
         else:
