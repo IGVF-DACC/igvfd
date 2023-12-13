@@ -162,3 +162,23 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
                 f'modifications are missing on {sample_detail}.'
             )
             yield AuditFailure('missing modification', detail, level='ERROR')
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_preferred_assay_title(value, system):
+    '''
+        audit_detail: Measurement sets with a preferred assay title are expected to specify an appropriate assay term.
+        audit_category: inconsistent assay metadata
+        audit_levels: WARNING
+    '''
+    assay_term = value.get('assay_term')
+    assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    assay_term_name = assay_object.get('term_name')
+    preferred_assay_title = value.get('preferred_assay_title', '')
+    if preferred_assay_title and preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
+            f'assay term "{assay_term_name}", but preferred assay title "{preferred_assay_title}", '
+            f'which is not an expected preferred assay title for this assay term.'
+        )
+        yield AuditFailure('inconsistent assay metadata', detail, level='WARNING')

@@ -330,3 +330,33 @@ def test_audit_inherit_nested_audits(
         error['category'] == 'treatment term has been newly requested'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
+
+
+def test_audit_inherit_nested_audits(
+    testapp,
+    measurement_set,
+    assay_term_starr
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_starr['@id'],
+            'preferred_assay_title': 'SUPERSTARR'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent assay metadata'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        assay_term_starr['@id'],
+        {
+            'preferred_assay_titles': ['SUPERSTARR']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent assay metadata'
+        for error in res.json['audit'].get('WARNING', [])
+    )

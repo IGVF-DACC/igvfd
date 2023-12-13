@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Minor changes since schema version 3
+
+* Add `preferred_assay_titles`.
+
 ### Schema version 3
 
 * Disallow empty strings in `description`.
