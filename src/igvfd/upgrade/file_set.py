@@ -166,6 +166,6 @@ def auxiliary_set_5_6(value, system):
         if value['file_set_type'] == 'oligo-conjugated antibodies':
             value['file_set_type'] = 'cell hashing'
             notes = value.get('notes', '')
-            notes += f'Original file_set_type was oligo-conjugated antibodies. This was replaced to be cell hashing during upgrade.'
+            notes += f' Original file_set_type was oligo-conjugated antibodies. This was replaced to be cell hashing during upgrade.'
             value['notes'] = notes.strip()
     return
