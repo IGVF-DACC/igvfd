@@ -444,9 +444,9 @@ aws ecs execute-command \
 
 6. Deploy demo and QA.
 
-7. Redeploy dev and production pipelines after code is merged.
+7. Repeat for `igvf-ui`.
 
-8. Repeat for `igvf-ui`.
+8. Redeploy dev and production pipelines after code is merged.
 
 9. Notify developers to upgrade local CDK version and reinstall `requirements.txt` in Python environment.
 ---
