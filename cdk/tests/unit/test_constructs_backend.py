@@ -711,7 +711,7 @@ def test_constructs_backend_initialize_backend_construct(
             'PolicyDocument': {
                 'Statement': [
                     {
-                        'Action': 'eventbridge:PutEvents',
+                        'Action': 'events:PutEvents',
                         'Effect': 'Allow',
                         'Resource': {
                             'Fn::GetAtt': [
