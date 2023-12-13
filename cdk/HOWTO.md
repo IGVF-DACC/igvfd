@@ -434,22 +434,11 @@ aws ecs execute-command \
 
 ## Upgrade CDK version
 
-1. Update to latest CDK version on system:
+1. Update to latest CDK version on system: `npm install -g aws-cdk@latest && cdk version`
 
-```
-npm install -g aws-cdk@latest && cdk version
-```
+2. Pin latest version in `requirements.txt` and `infrastructure/config.py`.
 
-2. Pin latest version in `requirements.txt` and `infrastructure/config.py` (https://github.com/IGVF-DACC/igvfd/blob/0109d69c189711f2c78124e34f98de69818b1016/cdk/infrastructure/config.py#L390):
-
-```
-$ cat requirements.txt
-aws-cdk-lib==2.114.1
-aws-cdk.aws-lambda-python-alpha==2.114.1a0
-...
-```
-
-4. `pip install -r requirements.txt` in Python environment.
+4. Install latest Python CDK with `pip install -r requirements.txt` in Python environment.
 
 5. Update tests (usually pipeline hashes and CodeBuild versions).
 
