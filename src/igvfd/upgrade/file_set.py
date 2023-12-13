@@ -157,3 +157,10 @@ def file_set_7_8(value, system):
     if 'description' in value:
         if value['description'] == '':
             del value['description']
+
+
+@upgrade_step('measurement_set', '10', '11')
+def measurement_set_10_11(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1171
+    if 'file_set_type' not in value:
+        value['file_set_type'] = 'experimental data'

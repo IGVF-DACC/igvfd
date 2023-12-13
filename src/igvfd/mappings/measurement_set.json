@@ -1,6 +1,6 @@
 {
-    "hash": "0e8937cce947284f54d05a279c00c661",
-    "index_name": "measurement_set_0e8937cc",
+    "hash": "40bfb0fdc046b5de4dd1aaabfbb4a6d9",
+    "index_name": "measurement_set_40bfb0fd",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1288,6 +1288,9 @@
                         },
                         "type": "object"
                     },
+                    "file_set_type": {
+                        "type": "keyword"
+                    },
                     "files": {
                         "properties": {
                             "@id": {
@@ -1825,6 +1828,9 @@
                                 "type": "keyword"
                             },
                             "donors": {
+                                "type": "keyword"
+                            },
+                            "file_set_type": {
                                 "type": "keyword"
                             },
                             "files": {

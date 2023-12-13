@@ -52,9 +52,8 @@
             "default": "6"
         },
         "file_set_type": {
-            "title": "File Set Type",
             "description": "The category that best describes this curated file set.",
-            "type": "string",
+            "comment": "File set type describes the content of the curated set. Elements are lists of elements in the genome. External data for catalog are reference files from other sources utilized in the IGVF catalog. Genome file sets are genome references. Guide RNAs are guides used in CRISPR screen assays. Transcriptome file sets are transcriptome references. Variants are lists of variants.",
             "enum": [
                 "elements",
                 "external data for catalog",
