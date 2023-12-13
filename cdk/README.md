@@ -17,10 +17,10 @@ $ nvm use 18
 $ node --version
 ```
 
-Install CDK toolkit (requires Node.js 16.x):
+Install CDK toolkit (requires Node.js 18.x):
 
 ```
-$ npm install -g aws-cdk@2.88.0
+$ npm install -g aws-cdk@2.114.1
 ```
 
 Create virtual Python 3.11 environment and install requirements:
