@@ -81,3 +81,19 @@ def analysis_set_v4(analysis_set_v3):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def primary_analysis_set(
+    testapp,
+    award,
+    lab,
+    measurement_set
+):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'input_file_sets': [measurement_set['@id']],
+        'file_set_type': 'primary analysis'
+    }
+    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]

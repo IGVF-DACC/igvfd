@@ -21,6 +21,35 @@ def get_donors_from_samples(request, samples):
     return list(set(donor_objects))
 
 
+def inspect_fileset(request, fileset):
+    inspected = set()
+    measurement_terms = set()
+    other_set_terms = set()
+    interim_results = tuple()
+
+    if fileset in inspected:
+        return
+    else:
+        inspected.add(fileset)
+    fileset_object = request.embed(fileset, '@@object?skip_calculated=true')
+    if fileset_object.get('input_file_sets', None) is not None:
+        for fs in fileset_object.get('input_file_sets'):
+            fs_object = request.embed(fs, '@@object')
+            if fs_object['@id'].startswith('/analysis-sets/'):
+                interim_results = inspect_fileset(request, fs_object['accession'])
+                measurement_terms.update(interim_results[0])
+                other_set_terms.update(interim_results[1])
+            elif fs_object['@id'].startswith('/measurement-sets/'):
+                if 'preferred_assay_title' in fs_object:
+                    measurement_terms.add(fs_object['preferred_assay_title'])
+                else:
+                    assay_object = request.embed(fs_object['assay_term'], '@@object?skip_calculated=true')
+                    measurement_terms.add(assay_object['term_name'])
+            else:
+                other_set_terms.add(fs_object['file_set_type'])
+    return (measurement_terms, other_set_terms)
+
+
 @abstract_collection(
     name='file-sets',
     unique_key='accession',
@@ -147,11 +176,36 @@ class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('input_file_sets', include=['@id', 'accession', 'aliases'])
+        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
     set_status_down = FileSet.set_status_down + []
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, accession, file_set_type, input_file_sets=None):
+        sentence = f'{file_set_type}'
+        results = tuple()
+        measurement_terms = set()
+        other_set_terms = set()
+
+        results = inspect_fileset(request, accession)
+
+        if results[0] != set():
+            measurement_terms = ', '.join(sorted(results[0]))
+            sentence += f' of {measurement_terms} data'
+        elif results[1] != set():
+            other_set_terms = ', '.join(sorted(results[1]))
+            sentence += f' of {other_set_terms} data'
+        else:
+            sentence += f' of data'
+        return sentence
 
     @calculated_property(
         schema={
@@ -172,9 +226,12 @@ class AnalysisSet(FileSet):
         if input_file_sets is not None:
             for fileset in input_file_sets:
                 file_set_object = request.embed(fileset, '@@object')
-                if file_set_object.get('assay_title') and \
+                if file_set_object.get('preferred_assay_title') and \
                         'MeasurementSet' in file_set_object.get('@type'):
-                    assay_title.add(file_set_object.get('assay_title'))
+                    assay_title.add(file_set_object.get('preferred_assay_title'))
+                elif 'MeasurementSet' in file_set_object.get('@type'):
+                    assay = request.embed(file_set_object['assay_term'], '@@object')
+                    assay_title.add(assay.get('term_name'))
             return list(assay_title)
 
     @calculated_property(
