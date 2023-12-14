@@ -240,7 +240,7 @@
             ]
         },
         "scope": {
-            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list or large_scale_gene_list are required, if scope is exon then both small_scale_gene_list or large_scale_gene_list and exon are required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, and loci shouldn't be specified.",
+            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list or large_scale_gene_list are required, if scope is exon then both small_scale_gene_list and exon are required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, and loci shouldn't be specified.",
             "oneOf": [
                 {
                     "required": [
@@ -338,7 +338,7 @@
             ]
         },
         "small_scale_gene_list": {
-            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, or genes.",
+            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, or genes and is mutually exlusive with specification of large_scale_gene_list.",
             "allOf": [
                 {
                     "properties": {
@@ -367,7 +367,7 @@
             ]
         },
         "large_scale_gene_list": {
-            "comment": "Specification of large_scale_gene_list requires that scope is tile or genes.",
+            "comment": "Specification of large_scale_gene_list requires that scope is tile or genes and is mutually exlusive with specification of small_scale_gene_list.",
             "allOf": [
                 {
                     "properties": {
