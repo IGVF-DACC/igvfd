@@ -188,4 +188,3 @@ def construct_library_set_1_2(value, system):
             notes += f'Original file_set_type was oligo-conjugated antibodies. This was replaced to be cell hashing during upgrade.'
             value['notes'] = notes.strip()
     return
-
