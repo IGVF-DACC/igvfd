@@ -5,7 +5,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
     res = testapp.get(in_vitro_cell_line['@id'])
     assert res.json.get('summary') == 'K562 cell line, male, Mus musculus strain1'
     testapp.patch_json(
-        in_vitro_cell_line['@id'],
+        in_vitro_differentiated_cell['@id'],
         {
             'sample_terms': [sample_term_lymphoblastoid['@id']],
             'time_post_change': 10,
@@ -13,10 +13,11 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
             'cell_fate_change_treatments': [treatment_protein['@id']]
         }
     )
-    res = testapp.get(in_vitro_cell_line['@id'])
-    assert res.json.get('summary') == 'lymphoblastoid cell line induced for 10 minutes, male, Mus musculus strain1'
+    res = testapp.get(in_vitro_differentiated_cell['@id'])
+    assert res.json.get(
+        'summary') == 'lymphoblastoid differentiated cell specimen line induced to brown adipose tissue for 10 minutes, Homo sapiens'
     testapp.patch_json(
-        in_vitro_cell_line['@id'],
+        in_vitro_differentiated_cell['@id'],
         {
             'sample_terms': [sample_term_lymphoblastoid['@id']],
             'time_post_change': 5,
@@ -25,9 +26,9 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
             'targeted_sample_term': sample_term_endothelial_cell['@id']
         }
     )
-    res = testapp.get(in_vitro_cell_line['@id'])
+    res = testapp.get(in_vitro_differentiated_cell['@id'])
     assert res.json.get(
-        'summary') == 'lymphoblastoid cell line induced to endothelial cell of vascular tree for 5 days, male, Mus musculus strain1'
+        'summary') == 'lymphoblastoid differentiated cell specimen line induced to endothelial cell of vascular tree for 5 days, Homo sapiens'
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
@@ -94,9 +95,11 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
         {
             'moi': 2,
             'nucleic_acid_delivery': 'transfection',
-            'construct_library_sets': [construct_library_set_reporter['@id']]
+            'construct_library_sets': [construct_library_set_reporter['@id']],
+            'targeted_sample_term': sample_term_brown_adipose_tissue['@id'],
+            'time_post_change_units': 'minute'
         }
     )
     res = testapp.get(in_vitro_differentiated_cell['@id'])
     assert res.json.get(
-        'summary') == 'K562 differentiated cell specimen induced to brown adipose tissue for 5 minutes, Homo sapiens transfected with a reporter library (MOI of 2)'
+        'summary') == 'lymphoblastoid differentiated cell specimen line induced to brown adipose tissue for 5 minutes, Homo sapiens transfected with a reporter library (MOI of 2)'

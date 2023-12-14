@@ -12,18 +12,22 @@ def test_passage_number_dependency(in_vitro_cell_line, testapp):
     assert res.status_code == 422
 
 
-def test_time_post_factors_dependency(in_vitro_cell_line, treatment_chemical, testapp):
+def test_time_post_factors_dependency(in_vitro_cell_line, treatment_chemical, sample_term_endothelial_cell, testapp):
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'time_post_change': 3}, expect_errors=True)
+        {
+            'classification': 'differentiated cell specimen',
+            'time_post_change': 3
+        },
+        expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'cell_fate_change_treatments': [treatment_chemical['@id']]}, expect_errors=True)
+        {'classification': 'differentiated cell specimen', 'cell_fate_change_treatments': [treatment_chemical['@id']]}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_treatments': [treatment_chemical['@id']]})
+        {'classification': 'differentiated cell specimen', 'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_treatments': [treatment_chemical['@id']], 'targeted_sample_term': sample_term_endothelial_cell['@id']})
     assert res.status_code == 200
 
 

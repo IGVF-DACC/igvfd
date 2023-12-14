@@ -82,7 +82,7 @@
     },
     {
         "uuid": "21fb495c-b700-11ed-afa1-0242ac120002",
-        "classification": "reprogrammed cell specimen",
+        "classification": "cell line",
         "lab": "j-michael-cherry",
         "accession": "IGVFSM0001AAAZ",
         "award": "HG012012",
@@ -107,12 +107,6 @@
         "dbxrefs": [
             "GEO:SAMN1"
         ],
-        "time_post_change": 24,
-        "time_post_change_units": "minute",
-        "cell_fate_change_treatments": [
-            "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
-        ],
-        "targeted_sample_term": "eed026e7-4afc-4396-94e7-870f8934b2f2",
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
@@ -137,7 +131,7 @@
     },
     {
         "uuid": "390c2a4e-b700-11ed-afa1-0242ac120002",
-        "classification": "organoid",
+        "classification": "cell line",
         "lab": "j-michael-cherry",
         "accession": "IGVFSM0002AAAZ",
         "award": "HG012012",
@@ -162,10 +156,6 @@
         "dbxrefs": [
             "GEO:SAMN1"
         ],
-        "time_post_change": 24,
-        "time_post_change_units": "minute",
-        "cell_fate_change_protocol": "bcb5f3c8-d5e9-40d2-805f-4274f940c36d",
-        "targeted_sample_term": "9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc",
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
