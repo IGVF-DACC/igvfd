@@ -42,9 +42,7 @@
         "selection_criteria": [
             "accessible genome regions"
         ],
-        "small_scale_genes_list": [
-            "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
-        ],
+        "large_scale_gene_list": "igvf:tabular_file_01_bed",
         "status": "released"
     },
     {
@@ -62,7 +60,9 @@
         "selection_criteria": [
             "genes"
         ],
-        "large_scale_genes_list": "637e8584-eb3a-8610-b245-e11ba10f29c3",
+        "small_scale_gene_list": [
+            "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
+        ],
         "status": "released"
     },
     {
@@ -84,7 +84,7 @@
         "selection_criteria": [
             "genes"
         ],
-        "genes": [
+        "small_scale_gene_list": [
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
         ],
         "status": "released"

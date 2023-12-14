@@ -153,7 +153,7 @@
                                                 "const": "exon"
                                             },
                                             {
-                                                "const": "small_scale_gene_list"
+                                                "const": "genes"
                                             }
                                         ]
                                     }
@@ -199,10 +199,7 @@
                                                 "const": "tile"
                                             },
                                             {
-                                                "const": "exon"
-                                            },
-                                            {
-                                                "const": "large_scale_gene_list"
+                                                "const": "genes"
                                             }
                                         ]
                                     }
@@ -310,19 +307,6 @@
                 },
                 {
                     "required": [
-                        "exon",
-                        "large_scale_gene_list"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "exon"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
                         "loci"
                     ],
                     "properties": {
@@ -383,7 +367,7 @@
             ]
         },
         "large_scale_gene_list": {
-            "comment": "Specification of large_scale_gene_list requires that scope is tile, exon, or genes.",
+            "comment": "Specification of large_scale_gene_list requires that scope is tile or genes.",
             "allOf": [
                 {
                     "properties": {
@@ -391,9 +375,6 @@
                             "oneOf": [
                                 {
                                     "const": "tile"
-                                },
-                                {
-                                    "const": "exon"
                                 },
                                 {
                                     "const": "genes"
@@ -422,23 +403,11 @@
             }
         },
         "exon": {
-            "comment": "Specification of exon requires small_scale_gene_list or large_scale_gene_list and that scope is exon.",
+            "comment": "Specification of exon requires small_scale_gene_list and that scope is exon.",
             "oneOf": [
                 {
                     "required": [
                         "small_scale_gene_list"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "exon"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "large_scale_gene_list"
                     ],
                     "properties": {
                         "scope": {
@@ -709,7 +678,7 @@
         },
         "exon": {
             "title": "Exon",
-            "description": "An identifier in plain text for the specific exon in an expression vector library. The associated gene must be listed in the small_scale_gene_list or large_scale_gene_list property.",
+            "description": "An identifier in plain text for the specific exon in an expression vector library. The associated gene must be listed in the small_scale_gene_list property.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "submissionExample": {

@@ -552,7 +552,7 @@ class ConstructLibrarySet(FileSet):
         }
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, guide_type=None,
-                loci=None, exon=None, tile=None, associated_phenotypes=None):
+                loci=None, exon=None, tile=None, associated_phenotypes=None, large_scale_gene_list=None):
         library_type = ''
         target_phrase = ''
         pheno_terms = []
@@ -569,12 +569,14 @@ class ConstructLibrarySet(FileSet):
         if scope == 'genes':
             if len(small_scale_gene_list) > 1:
                 target_phrase = f' {len(small_scale_gene_list)} genes'
+            elif large_scale_gene_list:
+                target_phrase = f' many genes'
             else:
                 gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
                 gene_name = (gene_object.get('symbol'))
                 target_phrase = f' {gene_name}'
         if scope == 'exon':
-            if len(small_scale_gene_list) > 1:
+            if len(small_scale_gene_list) > 1 or large_scale_gene_list:
                 target_phrase = f' exon {exon} of multiple genes'
             else:
                 gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
@@ -584,7 +586,7 @@ class ConstructLibrarySet(FileSet):
             tile_id = tile['tile_id']
             start = tile['tile_start']
             end = tile['tile_end']
-            if len(small_scale_gene_list) > 1:
+            if len(small_scale_gene_list) > 1 or large_scale_gene_list:
                 target_phrase = f' tile {tile_id} of multiple genes'
             else:
                 gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')

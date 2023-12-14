@@ -63,13 +63,16 @@
             "file_set.json#/dependentSchemas"
         ],
         "scope": {
-            "$merge": "construct_library.json#/dependentSchemas/scope"
+            "$merge": "construct_library_set.json#/dependentSchemas/scope"
         },
         "small_scale_gene_list": {
-            "$merge": "construct_library.json#/dependentSchemas/small_scale_gene_list"
+            "$merge": "construct_library_set.json#/dependentSchemas/small_scale_gene_list"
         },
         "large_scale_gene_list": {
-            "$merge": "construct_library.json#/dependentSchemas/large_scale_gene_list"
+            "$merge": "construct_library_set.json#/dependentSchemas/large_scale_gene_list"
+        },
+        "loci": {
+            "$merge": "construct_library_set.json#/dependentSchemas/loci"
         },
         "targeted_loci": {
             "comment": "Specification of targeted_loci requires that scope is loci.",
@@ -114,23 +117,15 @@
                 "igvf_utils": "genes"
             }
         },
-        "targeted_genes": {
-            "title": "Targeted Genes",
-            "description": "The specific gene(s) this prediction set was designed to target.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "comment": "See gene.json for a list of available identifiers.",
-                "type": "string",
-                "linkTo": "Gene"
-            },
-            "submissionExample": {
-                "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
-                "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
-            }
+        "small_scale_gene_list": {
+            "description": "The specific, small scale list of (<=100) gene(s) this prediction set targets.",
+            "comment": "If more than 100 genes were targeted, submit large_scale_gene_list instead."
         },
-        "targeted_loci": {
+        "large_scale_gene_list": {
+            "description": "The large scale list of (>100 genes) this this prediction set targets.",
+            "comment": "If 100 or fewer genes were targeted, submit small_scale_gene_list instead."
+        },
+        "loci": {
             "title": "Targeted Loci",
             "description": "The specific chromosomal region(s) this prediction set was designed to target.",
             "comment": "Each locus is defined using 1-based, fully-closed (inclusive) coordinates for a specific version of the reference genome assembly.",
