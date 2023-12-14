@@ -87,7 +87,7 @@
     },
     {
         "uuid": "21fb495c-b700-11ed-afa1-0242ac120002",
-        "classification": "cell line",
+        "classification": "reprogrammed cell specimen",
         "lab": "j-michael-cherry",
         "accession": "IGVFSM0001AAAZ",
         "award": "HG012012",
@@ -141,7 +141,7 @@
     },
     {
         "uuid": "390c2a4e-b700-11ed-afa1-0242ac120002",
-        "classification": "cell line",
+        "classification": "organoid",
         "lab": "j-michael-cherry",
         "accession": "IGVFSM0002AAAZ",
         "award": "HG012012",
