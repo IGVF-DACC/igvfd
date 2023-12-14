@@ -17,3 +17,10 @@ def test_signal_file_upgrade_3_4(upgrader, signal_file_v3):
     value = upgrader.upgrade('signal_file', signal_file_v3, current_version='3', target_version='4')
     assert value['upload_status'] == 'invalidated'
     assert value['schema_version'] == '4'
+
+
+def test_signal_file_upgrade_4_5(upgrader, signal_file_v4):
+    value = upgrader.upgrade('signal_file', signal_file_v4, current_version='4', target_version='5')
+    assert 'assembly' in value
+    assert value['assembly'] == 'GRCh38'
+    assert value['schema_version'] == '5'

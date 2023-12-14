@@ -44,3 +44,21 @@ def audit_cell_fate_change_treatments_purpose(value, system):
                     f'that has purpose {treatment["purpose"]}.'
                 )
                 yield AuditFailure('inconsistent cell_fate_change_treatments treatment purpose', detail, level='ERROR')
+
+
+@audit_checker('InVitroSystem', frame='embedded')
+def audit_cell_fate_change_protocol_document_type(value, system):
+    '''
+        audit_detail: A document linked to in an in vitro system's cell_fate_change_protocol must be of document_type cell fate change protocol.
+        audit_category: inconsistent cell_fate_change_protocol document type
+        audit_levels: ERROR
+    '''
+    if 'cell_fate_change_protocol' in value:
+        doc_object = system.get('request').embed(value['cell_fate_change_protocol'] + '@@object?skip_calculated=true')
+        if doc_object['document_type'] != 'cell fate change protocol':
+            detail = (
+                f'InVitroSystem {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has cell_fate_change_protocol {audit_link(path_to_text(value["cell_fate_change_protocol"]), value["cell_fate_change_protocol"])} '
+                f'that is not of document_type cell fate change protocol.'
+            )
+            yield AuditFailure('inconsistent cell_fate_change_protocol document type', detail, level='ERROR')

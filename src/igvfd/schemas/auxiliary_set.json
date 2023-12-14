@@ -49,9 +49,8 @@
             "default": "6"
         },
         "file_set_type": {
-            "title": "File Set Type",
             "description": "The category that best describes this auxiliary file set.",
-            "type": "string",
+            "comment": "File set type describes the content of the construct library set. Cell hashing is the antibody barcoding of cell batches. Circularized barcode detection is reporter detection (such as for MPRA) through sequencing circularized barcoded RNA molecules. gRNA sequencing is sequencing data of guide RNAs. Oligo-conjugated lipids are lipid- and cholesterol-modified oligonucleotides. Quantification barcode sequencing is sequencing data of barcodes, such as for MPRA.",
             "enum": [
                 "cell hashing",
                 "circularized barcode detection",

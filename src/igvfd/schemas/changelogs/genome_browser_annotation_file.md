@@ -1,5 +1,9 @@
 ## Changelog for *`genome_browser_annotation_file.json`*
 
+### Schema version 5
+
+* Require `assembly` if `file_format` is one of `bam`, `bed`, `bedpe`, `bigWig`, `bigBed`, `bigInteract`, or `vcf`.
+
 ### Schema version 4
 
 * Require publicly released files to have `upload_status` of `validated` or `invalidated`.

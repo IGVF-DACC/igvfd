@@ -6,7 +6,8 @@
     "type": "object",
     "required": [
         "award",
-        "lab"
+        "lab",
+        "file_set_type"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -105,6 +106,17 @@
             "submissionExample": {
                 "appscript": "[\"igvf:donor_of_HepG2\", \"/IGVFDO2837BRET\"]",
                 "igvf_utils": "igvf:donor_of_HepG2, IGVFDO2837BRET"
+            }
+        },
+        "file_set_type": {
+            "title": "File Set Type",
+            "description": "The category that best describes this file set.",
+            "comment": "This property is overwritten by the subclasses to define specific enum values.",
+            "type": "string",
+            "enum": [],
+            "submissionExample": {
+                "appscript": "experimental data",
+                "igvf_utils": "experimental data"
             }
         }
     }

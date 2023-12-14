@@ -125,3 +125,27 @@ def file_7_8(value, system):
             notes = value.get('notes', '')
             notes += f' This publicly available file was previously pending or file not found upload_status, and was moved to invalidated upload_status.'
             value['notes'] = notes.strip()
+
+
+@upgrade_step('alignment_file', '4', '5')
+@upgrade_step('genome_browser_annotation_file', '4', '5')
+@upgrade_step('reference_file', '9', '10')
+@upgrade_step('signal_file', '4', '5')
+@upgrade_step('tabular_file', '4', '5')
+def file_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1293
+    if value['file_format'] in [
+        'bam',
+        'bed',
+        'bedpe',
+        'bigBed',
+        'bigWig',
+        'bigInteract',
+        'tabix',
+        'vcf'
+    ]:
+        if 'assembly' not in value:
+            value['assembly'] = 'GRCh38'
+            notes = value.get('notes', '')
+            notes += f' This file was automatically upgraded to have assembly GRCh38.'
+            value['notes'] = notes.strip()

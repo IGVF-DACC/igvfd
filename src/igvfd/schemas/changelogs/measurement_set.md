@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 11
+
+* Add `file_set_type`.
+
 ### Schema version 10
 
 * Disallow empty strings in `description`.
