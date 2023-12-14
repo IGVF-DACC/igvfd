@@ -25,6 +25,9 @@ def prediction_set():
             'donors.taxa': {
                 'title': 'Taxa',
             },
+            'file_set_type': {
+                'title': 'File Set Type',
+            },
             'type': {
                 'title': 'Object Type',
             },
@@ -45,8 +48,8 @@ def prediction_set():
             {
                 'title': 'File Set',
                 'facet_fields': [
-                    'donors.taxa',
                     'file_set_type',
+                    'donors.taxa',
                 ],
             },
             {
@@ -96,6 +99,6 @@ def prediction_set():
             },
             'scope': {
                 'title': 'Prediction Scope'
-            }
+            },
         }
     }

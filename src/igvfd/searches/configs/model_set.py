@@ -25,6 +25,9 @@ def model_set():
             'prediction_objects': {
                 'title': 'Prediction Objects'
             },
+            'file_set_type': {
+                'title': 'File Set Type',
+            },
             'type': {
                 'title': 'Object Type',
             },

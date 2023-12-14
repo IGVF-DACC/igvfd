@@ -25,6 +25,9 @@ def auxiliary_set():
             'collections': {
                 'title': 'Collections',
             },
+            'file_set_type': {
+                'title': 'File Set Type',
+            },
             'type': {
                 'title': 'Object Type',
             },
