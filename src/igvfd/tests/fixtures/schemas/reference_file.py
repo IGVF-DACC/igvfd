@@ -54,6 +54,7 @@ def reference_file_v4(testapp, lab, award, analysis_set_with_sample):
         'lab': lab['@id'],
         'md5sum': '7d258f1987e2da2491ddb051a91c3156',
         'file_format': 'bed',
+        'assembly': 'GRCh38',
         'file_set': analysis_set_with_sample['@id'],
         'content_type': 'regulatory_regions'
     }
@@ -77,6 +78,7 @@ def reference_file_v6(testapp, lab, award, analysis_set_with_sample):
         'lab': lab['@id'],
         'md5sum': 'fa751ddb77da240287e29051b863888b',
         'file_format': 'bed',
+        'assembly': 'GRCh38',
         'file_set': analysis_set_with_sample['@id'],
         'content_type': 'regulatory_regions',
         'schema_version': '6'
@@ -102,4 +104,18 @@ def reference_file_v8(reference_file_v6):
         'upload_status': 'pending',
         'status': 'released'
     })
+    return item
+
+
+@pytest.fixture
+def reference_file_v9(testapp, lab, award, analysis_set_with_sample):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '02c177dab4905127dfb77f9ef8a0648b',
+        'file_format': 'bed',
+        'file_set': analysis_set_with_sample['@id'],
+        'content_type': 'regulatory_regions',
+        'schema_version': '9'
+    }
     return item

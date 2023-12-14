@@ -10,6 +10,7 @@ def signal_file(testapp, lab, award, analysis_set_with_sample, reference_file):
         'file_format': 'bigWig',
         'file_set': analysis_set_with_sample['@id'],
         'file_size': 4328491803,
+        'assembly': 'GRCh38',
         'content_type': 'signal of all reads',
         'reference_files': [
             reference_file['@id']
@@ -49,4 +50,25 @@ def signal_file_v3(signal_file_v1):
         'upload_status': 'pending',
         'status': 'released'
     })
+    return item
+
+
+@pytest.fixture
+def signal_file_v4(testapp, lab, award, analysis_set_with_sample, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'b9d3d6e1c3b0793dc09853c229675937',
+        'file_format': 'bigWig',
+        'file_set': analysis_set_with_sample['@id'],
+        'file_size': 4328491803,
+        'content_type': 'signal of all reads',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'strand_specificity': 'plus',
+        'normalized': False,
+        'filtered': False,
+        'schema_version': '4'
+    }
     return item

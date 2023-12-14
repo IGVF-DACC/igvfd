@@ -101,32 +101,39 @@
         },
         "file_format": {
             "comment": "BigBed files must specify their file format type.",
-            "oneOf": [
+            "allOf": [
                 {
-                    "required": [
-                        "file_format_type"
-                    ],
-                    "properties": {
-                        "file_format": {
-                            "enum": [
-                                "bigBed"
-                            ]
-                        }
-                    }
+                    "$merge": "file.json#/dependentSchemas/file_format"
                 },
                 {
-                    "not": {
-                        "required": [
-                            "file_format_type"
-                        ]
-                    },
-                    "properties": {
-                        "file_format": {
-                            "enum": [
-                                "tabix"
-                            ]
+                    "oneOf": [
+                        {
+                            "required": [
+                                "file_format_type"
+                            ],
+                            "properties": {
+                                "file_format": {
+                                    "enum": [
+                                        "bigBed"
+                                    ]
+                                }
+                            }
+                        },
+                        {
+                            "not": {
+                                "required": [
+                                    "file_format_type"
+                                ]
+                            },
+                            "properties": {
+                                "file_format": {
+                                    "enum": [
+                                        "tabix"
+                                    ]
+                                }
+                            }
                         }
-                    }
+                    ]
                 }
             ]
         }
@@ -134,7 +141,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",

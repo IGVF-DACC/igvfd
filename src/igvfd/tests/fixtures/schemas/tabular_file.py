@@ -43,3 +43,17 @@ def tabular_file_v3(tabular_file_v1):
         'status': 'released'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v4(testapp, lab, award, analysis_set_with_sample):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '069b0ebb6c5730dfe1d485acaf53b09c',
+        'file_format': 'bed',
+        'file_set': analysis_set_with_sample['@id'],
+        'content_type': 'peaks',
+        'schema_version': '4'
+    }
+    return item
