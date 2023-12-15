@@ -11,7 +11,7 @@ from .base import (
 
 @collection(
     name='institutional-certificates',
-    unique_key='institutional_certification:number',
+    unique_key='institutional_certification:certificate_identifier',
     properties={
         'title': 'Institutional Certificates',
         'description': 'Listing of institutional certificates',
@@ -28,5 +28,6 @@ class InstitutionalCertificate(Item):
 
     def unique_keys(self, properties):
         keys = super(InstitutionalCertificate, self).unique_keys(properties)
-        keys.setdefault('institutional_certification:number', []).append(properties['number'])
+        keys.setdefault('institutional_certification:certificate_identifier',
+                        []).append(properties['certificate_identifier'])
         return keys
