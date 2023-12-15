@@ -1,0 +1,19 @@
+[
+    {
+        "aliases": [
+            "igvf:institutional_certificate_IP100-00"
+        ],
+        "data_use_limitation": "GRU",
+        "data_use_limitation_modifiers": [
+            "PUB"
+        ],
+        "samples": [
+            "3de8faf0-7a25-11ed-a1eb-0242ac120002"
+        ],
+        "certificate_identifier": "IP100-00",
+        "controlled_access": true,
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "ed7bb4fd-b1d5-442b-a4ab-4de1291d07b5"
+    }
+]

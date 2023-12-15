@@ -36,6 +36,7 @@ ORDER = [
     'technical_sample',
     'whole_organism',
     'multiplexed_sample',
+    'institutional_certificate',
     'curated_set',
     'software',
     'software_version',
