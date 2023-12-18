@@ -8,7 +8,8 @@
         "award",
         "lab",
         "certificate_identifier",
-        "controlled_access"
+        "controlled_access",
+        "urls"
     ],
     "identifyingProperties": [
         "uuid",
@@ -37,6 +38,7 @@
             "description": "A unique identifier for the certificate.",
             "type": "string",
             "pattern": "^IP\\d{3}-\\d{2}$",
+            "permission": "import_items",
             "submissionExample": {
                 "appscript": "IP123-45",
                 "igvf_utils": "IP123-45"
@@ -104,6 +106,25 @@
             "submissionExample": {
                 "appscript": "[\"IGVFSM0000AAAA\", \"john-doe:igvf_sample_01\"]",
                 "igvf_utils": "IGVFSM0000AAAA, john-doe:igvf_sample_01"
+            }
+        },
+        "urls": {
+            "rdfs:subPropertyOf": "rdfs:seeAlso",
+            "title": "URL",
+            "description": "Link to the institutional certification form.",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "URL",
+                "description": "An institutional certification form.",
+                "type": "string",
+                "format": "uri"
+            },
+            "submissionExample": {
+                "appscript": "[\"https://drive.google.com/file/d/7FH5GQ86h5D1JGkRpcmeySb4tn7/view\"]",
+                "igvf_utils": "https://drive.google.com/file/d/7FH5GQ86h5D1JGkRpcmeySb4tn7/view"
             }
         }
     },

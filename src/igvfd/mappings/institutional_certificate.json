@@ -1,6 +1,6 @@
 {
-    "hash": "dfa7427d56c2883b82fd81bdc9850684",
-    "index_name": "institutional_certificate_dfa7427d",
+    "hash": "09100ef238c5f0b76a50eafc78bb106d",
+    "index_name": "institutional_certificate_09100ef2",
     "item_type": "institutional_certificate",
     "mapping": {
         "dynamic_templates": [
@@ -390,6 +390,9 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "urls": {
                         "type": "keyword"
                     },
                     "uuid": {
