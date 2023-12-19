@@ -448,13 +448,7 @@
                 {
                     "not": {
                         "required": [
-                            "small_scale_gene_list"
-                        ]
-                    }
-                },
-                {
-                    "not": {
-                        "required": [
+                            "small_scale_gene_list",
                             "large_scale_gene_list"
                         ]
                     }
@@ -484,13 +478,7 @@
                 {
                     "not": {
                         "required": [
-                            "genes"
-                        ]
-                    }
-                },
-                {
-                    "not": {
-                        "required": [
+                            "genes",
                             "large_scale_gene_list"
                         ]
                     }
@@ -517,13 +505,7 @@
                 {
                     "not": {
                         "required": [
-                            "genes"
-                        ]
-                    }
-                },
-                {
-                    "not": {
-                        "required": [
+                            "genes",
                             "small_scale_gene_list"
                         ]
                     }
@@ -543,6 +525,18 @@
         "exon": {
             "comment": "Specification of exon requires small_scale_gene_list and that scope is exon.",
             "oneOf": [
+                {
+                    "required": [
+                        "genes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "exon"
+                            ]
+                        }
+                    }
+                },
                 {
                     "required": [
                         "small_scale_gene_list"
