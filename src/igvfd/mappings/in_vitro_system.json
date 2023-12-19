@@ -578,9 +578,6 @@
                             "files": {
                                 "type": "keyword"
                             },
-                            "genes": {
-                                "type": "keyword"
-                            },
                             "guide_type": {
                                 "type": "keyword"
                             },
@@ -648,6 +645,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "large_scale_gene_list": {
+                                "type": "keyword"
                             },
                             "library_construction_platform": {
                                 "type": "keyword"
@@ -768,6 +768,9 @@
                             "sequencing_library_types": {
                                 "type": "keyword"
                             },
+                            "small_scale_gene_list": {
+                                "type": "keyword"
+                            },
                             "software_version": {
                                 "type": "keyword"
                             },
@@ -785,38 +788,6 @@
                             },
                             "summary": {
                                 "type": "keyword"
-                            },
-                            "targeted_genes": {
-                                "type": "keyword"
-                            },
-                            "targeted_loci": {
-                                "properties": {
-                                    "assembly": {
-                                        "type": "keyword"
-                                    },
-                                    "chromosome": {
-                                        "type": "keyword"
-                                    },
-                                    "end": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
-                                        "store": true,
-                                        "type": "long"
-                                    },
-                                    "start": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
-                                        "store": true,
-                                        "type": "long"
-                                    }
-                                },
-                                "type": "object"
                             },
                             "taxa": {
                                 "type": "keyword"
