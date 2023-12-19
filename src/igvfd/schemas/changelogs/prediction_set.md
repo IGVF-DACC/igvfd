@@ -2,10 +2,9 @@
 
 ### Schema version 4
 
-* Replace `genes` with `small_scale_gene_list` and `large_scale_gene_list`.
-* Add `small_scale_gene_list` and `large_scale_gene_list`.
 * Rename `targeted_genes` to `genes`.
 * Rename `targeted_loci` to `loci`.
+* Add `small_scale_gene_list`, `large_scale_gene_list`, `small_scale_loci_list`, and `large_scale_loci_list`.
 
 
 ### Minor changes since schema version 3

@@ -511,6 +511,9 @@
                             "large_scale_gene_list": {
                                 "type": "keyword"
                             },
+                            "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
                             "library_construction_platform": {
                                 "type": "keyword"
                             },
@@ -632,6 +635,35 @@
                             },
                             "small_scale_gene_list": {
                                 "type": "keyword"
+                            },
+                            "small_scale_loci_list": {
+                                "properties": {
+                                    "assembly": {
+                                        "type": "keyword"
+                                    },
+                                    "chromosome": {
+                                        "type": "keyword"
+                                    },
+                                    "end": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "start": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "software_version": {
                                 "type": "keyword"

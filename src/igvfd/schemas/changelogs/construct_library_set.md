@@ -5,7 +5,7 @@
 * Add a `title` property to `tile`.
 * Allow underscores in the pattern for `chromosome` in `loci`.
 * Add `release_timestamp`.
-* Add `small_scale_gene_list` and `large_scale_gene_list`.
+* Add `small_scale_gene_list`, `large_scale_gene_list`, `small_scale_loci_list`, and `large_scale_loci_list`.
 
 ### Schema version 3
 

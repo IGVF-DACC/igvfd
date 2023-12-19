@@ -56,6 +56,9 @@
         },
         {
             "$ref": "mixins.json#/genes"
+        },
+        {
+            "$ref": "mixins.json#/loci"
         }
     ],
     "dependentSchemas": {
@@ -76,6 +79,12 @@
         },
         "loci": {
             "$merge": "construct_library_set.json#/dependentSchemas/loci"
+        },
+        "small_scale_loci_list": {
+            "$merge": "construct_library_set.json#/dependentSchemas/small_scale_loci_list"
+        },
+        "large_scale_loci_list": {
+            "$merge": "construct_library_set.json#/dependentSchemas/large_scale_loci_list"
         }
     },
     "properties": {
