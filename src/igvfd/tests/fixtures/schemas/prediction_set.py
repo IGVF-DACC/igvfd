@@ -40,3 +40,19 @@ def prediction_set_v2(prediction_set_v1):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def prediction_set_v3(base_prediction_set, gene_myc_hs):
+    item = base_prediction_set.copy()
+    item.update({
+        'schema_version': '3',
+        'targeted_loci': {
+            'assembly': 'GRCh38',
+            'chromosome': 'chr1',
+            'start': 1,
+            'end': 10
+        },
+        'targeted_genes': [gene_myc_hs['@id']]
+    })
+    return item

@@ -160,6 +160,7 @@ def file_set_7_8(value, system):
 
 
 @upgrade_step('measurement_set', '10', '11')
+@upgrade_step('construct_library_set', '3', '4')
 def measurement_set_10_11(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1171
     if 'file_set_type' not in value:
@@ -184,3 +185,15 @@ def measurement_set_11_12(value, system):
     if 'protocol' in value:
         value['protocols'] = [value['protocol']]
         del value['protocol']
+
+
+@upgrade_step('prediction_set', '3', '4')
+def prediction_set_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1311
+    if 'targeted_genes' in value:
+        value['genes'] = value['targeted_genes']
+        del value['targeted_genes']
+    if 'targeted_loci' in value:
+        value['loci'] = value['targeted_loci']
+        del value['targeted_loci']
+    return
