@@ -160,7 +160,6 @@ def file_set_7_8(value, system):
 
 
 @upgrade_step('measurement_set', '10', '11')
-@upgrade_step('construct_library_set', '3', '4')
 def measurement_set_10_11(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1171
     if 'file_set_type' not in value:
