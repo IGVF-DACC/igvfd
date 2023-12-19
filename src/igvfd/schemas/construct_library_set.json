@@ -251,6 +251,9 @@
                                                 "const": "tile"
                                             },
                                             {
+                                                "const": "exon"
+                                            },
+                                            {
                                                 "const": "genes"
                                             }
                                         ]
@@ -397,6 +400,19 @@
                 },
                 {
                     "required": [
+                        "exon",
+                        "large_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "exon"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
                         "loci"
                     ],
                     "properties": {
@@ -525,6 +541,9 @@
                                     "const": "tile"
                                 },
                                 {
+                                    "const": "exon"
+                                },
+                                {
                                     "const": "genes"
                                 }
                             ]
@@ -619,6 +638,18 @@
                 {
                     "required": [
                         "small_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "exon"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "large_scale_gene_list"
                     ],
                     "properties": {
                         "scope": {

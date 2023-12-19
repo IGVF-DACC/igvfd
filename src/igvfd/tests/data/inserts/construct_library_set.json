@@ -42,7 +42,7 @@
         "selection_criteria": [
             "accessible genome regions"
         ],
-        "large_scale_gene_list": "igvf:tabular_file_01_bed",
+        "large_scale_gene_list": "/tabular-files/igvf:tabular_file_01_bed",
         "status": "released"
     },
     {

@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_dependencies_prediction_set(testapp, gene_myc_hs, base_prediction_set, prediction_set_functional_effect):
+def test_dependencies_prediction_set(testapp, gene_myc_hs, base_prediction_set, prediction_set_functional_effect, prediction_set_activity_level, tabular_file):
     res = testapp.patch_json(
         base_prediction_set['@id'],
         {'scope': 'loci'
@@ -28,14 +28,19 @@ def test_dependencies_prediction_set(testapp, gene_myc_hs, base_prediction_set, 
          })
     assert res.status_code == 200
     res = testapp.patch_json(
-        prediction_set_functional_effect['@id'],
-        {'scope': 'genes'
-         }, expect_errors=True)
-    assert res.status_code == 422
+        prediction_set_activity_level['@id'],
+        {'scope': 'loci',
+         'large_scale_loci_list': tabular_file['@id']
+         })
+    assert res.status_code == 200
     res = testapp.patch_json(
         prediction_set_functional_effect['@id'],
-        {'scope': 'genes',
-         'small_scale_gene_list': [gene_myc_hs['@id']]
+        {'scope': 'loci',
+         'small_scale_loci_list': [{'assembly': 'GRCh38',
+                                    'chromosome': 'chr9',
+                                    'start': 1,
+                                    'end': 3500
+                                    }]
          })
     assert res.status_code == 200
 
