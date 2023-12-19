@@ -448,6 +448,13 @@
                 {
                     "not": {
                         "required": [
+                            "small_scale_gene_list"
+                        ]
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
                             "large_scale_gene_list"
                         ]
                     }
@@ -477,6 +484,13 @@
                 {
                     "not": {
                         "required": [
+                            "genes"
+                        ]
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
                             "large_scale_gene_list"
                         ]
                     }
@@ -498,6 +512,13 @@
                                 }
                             ]
                         }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "genes"
+                        ]
                     }
                 },
                 {

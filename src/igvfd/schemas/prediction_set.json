@@ -65,6 +65,9 @@
         "scope": {
             "$merge": "construct_library_set.json#/dependentSchemas/scope"
         },
+        "genes": {
+            "$merge": "construct_library_set.json#/dependentSchemas/genes"
+        },
         "small_scale_gene_list": {
             "$merge": "construct_library_set.json#/dependentSchemas/small_scale_gene_list"
         },
@@ -107,14 +110,6 @@
                 "igvf_utils": "genes"
             }
         },
-        "small_scale_gene_list": {
-            "description": "The specific, small scale list of (<=100) gene(s) this prediction set targets.",
-            "comment": "If more than 100 genes were targeted, submit large_scale_gene_list instead."
-        },
-        "large_scale_gene_list": {
-            "description": "The large scale list of (>100 genes) this this prediction set targets.",
-            "comment": "If 100 or fewer genes were targeted, submit small_scale_gene_list instead."
-        },
         "genes": {
             "title": "Targeted Genes",
             "description": "The specific gene(s) this prediction set was designed to target.",
@@ -130,6 +125,14 @@
                 "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
                 "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
             }
+        },
+        "small_scale_gene_list": {
+            "description": "The specific, small scale list of (<=100) gene(s) this prediction set targets.",
+            "comment": "If more than 100 genes were targeted, submit large_scale_gene_list instead."
+        },
+        "large_scale_gene_list": {
+            "description": "The large scale list of (>100 genes) this this prediction set targets.",
+            "comment": "If 100 or fewer genes were targeted, submit small_scale_gene_list instead."
         },
         "loci": {
             "title": "Targeted Loci",

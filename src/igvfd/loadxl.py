@@ -527,6 +527,9 @@ PHASE1_PIPELINES = {
     'construct_library_set': [
         remove_keys('integrated_content_files', 'large_scale_gene_list'),
     ],
+    'prediction_set': [
+        remove_keys('large_scale_gene_list'),
+    ],
     'in_vitro_system': [
         remove_keys('pooled_from', 'part_of', 'originated_from', 'construct_library_sets', 'moi',
                     'nucleic_acid_delivery', 'time_post_library_delivery', 'time_post_library_delivery_units'),
@@ -587,6 +590,9 @@ PHASE2_PIPELINES = {
     ],
     'construct_library_set': [
         skip_rows_missing_all_keys('integrated_content_files', 'large_scale_gene_list'),
+    ],
+    'prediction_set': [
+        skip_rows_missing_all_keys('large_scale_gene_list'),
     ],
     'in_vitro_system': [
         skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from', 'construct_library_sets',
