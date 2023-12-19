@@ -28,7 +28,31 @@
             "$ref": "mixins.json#/standard_status"
         }
     ],
-    "dependentSchemas": {},
+    "dependentSchemas": {
+        "controlled_access": {
+            "comment": "If controlled_access is true, there must be a data_use_limitation.",
+            "if": {
+                "properties": {
+                    "controlled_access": {
+                        "const": true
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "data_use_limitation"
+                ]
+            }
+        },
+        "data_use_limitation": {
+            "comment": "Data_use_limitation can only be specified if controlled_access is true.",
+            "properties": {
+                "controlled_access": {
+                    "const": true
+                }
+            }
+        }
+    },
     "properties": {
         "schema_version": {
             "default": "1"
