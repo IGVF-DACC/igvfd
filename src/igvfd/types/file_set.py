@@ -518,7 +518,7 @@ class ConstructLibrarySet(FileSet):
         Path('files', include=['@id', 'accession', 'aliases', 'content_type', 'file_format']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name']),
-        Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
+        Path('genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
         Path('applied_to_samples', include=['@id', 'accession', 'aliases']),
     ]
     audit_inherit = [
@@ -551,7 +551,7 @@ class ConstructLibrarySet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, guide_type=None,
+    def summary(self, request, file_set_type, scope, selection_criteria, genes=None, guide_type=None,
                 loci=None, exon=None, tile=None, associated_phenotypes=None, large_scale_gene_list=None):
         library_type = ''
         target_phrase = ''
@@ -567,29 +567,27 @@ class ConstructLibrarySet(FileSet):
             else:
                 target_phrase = f' a genomic locus'
         if scope == 'genes':
-            if len(small_scale_gene_list) > 1:
-                target_phrase = f' {len(small_scale_gene_list)} genes'
-            elif large_scale_gene_list:
-                target_phrase = f' many genes'
+            if len(genes) > 1:
+                target_phrase = f' {len(genes)} genes'
             else:
-                gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
+                gene_object = request.embed(genes[0], '@@object?skip_calculated=true')
                 gene_name = (gene_object.get('symbol'))
                 target_phrase = f' {gene_name}'
         if scope == 'exon':
-            if len(small_scale_gene_list) > 1 or large_scale_gene_list:
+            if len(genes) > 1 or large_scale_gene_list:
                 target_phrase = f' exon {exon} of multiple genes'
             else:
-                gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
+                gene_object = request.embed(genes[0], '@@object?skip_calculated=true')
                 gene_name = (gene_object.get('symbol'))
                 target_phrase = f' exon {exon} of {gene_name}'
         if scope == 'tile':
             tile_id = tile['tile_id']
             start = tile['tile_start']
             end = tile['tile_end']
-            if len(small_scale_gene_list) > 1 or large_scale_gene_list:
+            if len(genes) > 1 or large_scale_gene_list:
                 target_phrase = f' tile {tile_id} of multiple genes'
             else:
-                gene_object = request.embed(small_scale_gene_list[0], '@@object?skip_calculated=true')
+                gene_object = request.embed(genes[0], '@@object?skip_calculated=true')
                 gene_name = (gene_object.get('symbol'))
                 target_phrase = f' tile {tile_id} of {gene_name} (AA {start}-{end})'
         if scope == 'genome-wide':

@@ -141,6 +141,55 @@
                         "oneOf": [
                             {
                                 "required": [
+                                    "genes"
+                                ],
+                                "properties": {
+                                    "scope": {
+                                        "oneOf": [
+                                            {
+                                                "const": "tile"
+                                            },
+                                            {
+                                                "const": "exon"
+                                            },
+                                            {
+                                                "const": "genes"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "not": {
+                                    "anyOf": [
+                                        {
+                                            "required": [
+                                                "guide_type"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "tiling_modality"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "average_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "lower_bound_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "upper_bound_guide_coverage"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "required": [
                                     "small_scale_gene_list"
                                 ],
                                 "properties": {
@@ -244,6 +293,44 @@
             "oneOf": [
                 {
                     "required": [
+                        "genes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "tile",
+                        "genes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "tile"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "exon",
+                        "genes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "exon"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
                         "small_scale_gene_list"
                     ],
                     "properties": {
@@ -322,6 +409,7 @@
                         "required": [
                             "tile",
                             "exon",
+                            "genes",
                             "small_scale_gene_list",
                             "large_scale_gene_list",
                             "loci"
@@ -333,6 +421,35 @@
                                 "genome-wide"
                             ]
                         }
+                    }
+                }
+            ]
+        },
+        "genes": {
+            "comment": "Specification of genes requires that scope is tile, exon, or genes.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "oneOf": [
+                                {
+                                    "const": "tile"
+                                },
+                                {
+                                    "const": "exon"
+                                },
+                                {
+                                    "const": "genes"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "large_scale_gene_list"
+                        ]
                     }
                 }
             ]
@@ -422,6 +539,18 @@
         "tile": {
             "comment": "Specification of tile requires small_scale_gene_list or large_scale_gene_list and that scope is tile.",
             "oneOf": [
+                {
+                    "required": [
+                        "genes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "tile"
+                            ]
+                        }
+                    }
+                },
                 {
                     "required": [
                         "small_scale_gene_list"
@@ -611,6 +740,24 @@
             "submissionExample": {
                 "appscript": "[\"/phenotype-terms/MONDO_0008564/\", \"/phenotype-terms/MONDO_0005148/\"]",
                 "igvf_utils": "/phenotype-terms/MONDO_0008564/, /phenotype-terms/MONDO_0005148/"
+            }
+        },
+        "genes": {
+            "title": "Genes",
+            "description": "The specific gene(s) this construct library was designed to target.",
+            "comment": "For a guide library, guides should directly map to or target the gene(s) listed here. Genes are disallowed from submission in a reporter library.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Gene",
+                "comment": "See gene.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "Gene"
+            },
+            "submissionExample": {
+                "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
+                "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
             }
         },
         "small_scale_gene_list": {

@@ -1,14 +1,16 @@
 ## Changelog for *`prediction_set.json`*
 
-<<<<<<< HEAD
-### Minor changes since schema version 3
-
-* Add `release_timestamp`.
-=======
 ### Schema version 4
 
 * Replace `genes` with `small_scale_gene_list` and `large_scale_gene_list`.
->>>>>>> efd073ed (replaced gene property)
+* Add `small_scale_gene_list` and `large_scale_gene_list`.
+* Rename `targeted_genes` to `genes`.
+* Rename `targeted_loci` to `loci`.
+
+
+### Minor changes since schema version 3
+
+* Add `release_timestamp`.
 
 ### Schema version 3
 
