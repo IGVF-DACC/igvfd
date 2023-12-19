@@ -201,7 +201,11 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "classifications": {
+=======
+                            "classification": {
+>>>>>>> 3690c701 (mappings)
                                 "type": "keyword"
                             },
                             "collections": {
@@ -336,9 +340,12 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "release_timestamp": {
                                 "type": "keyword"
                             },
+=======
+>>>>>>> 3690c701 (mappings)
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -485,9 +492,12 @@
                             "ontology": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "release_timestamp": {
                                 "type": "keyword"
                             },
+=======
+>>>>>>> 3690c701 (mappings)
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -717,6 +727,12 @@
                             "lab": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
+=======
+                            "large_scale_gene_list": {
+                                "type": "keyword"
+                            },
+>>>>>>> 3690c701 (mappings)
                             "library_construction_platform": {
                                 "type": "keyword"
                             },
@@ -815,9 +831,12 @@
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "release_timestamp": {
                                 "type": "keyword"
                             },
+=======
+>>>>>>> 3690c701 (mappings)
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -836,6 +855,12 @@
                             "sequencing_library_types": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
+=======
+                            "small_scale_gene_list": {
+                                "type": "keyword"
+                            },
+>>>>>>> 3690c701 (mappings)
                             "software_version": {
                                 "type": "keyword"
                             },
@@ -854,6 +879,7 @@
                             "summary": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "targeted_genes": {
                                 "type": "keyword"
                             },
@@ -886,6 +912,8 @@
                                 },
                                 "type": "object"
                             },
+=======
+>>>>>>> 3690c701 (mappings)
                             "taxa": {
                                 "type": "keyword"
                             },
@@ -1150,9 +1178,12 @@
                             "reference_files": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "release_timestamp": {
                                 "type": "keyword"
                             },
+=======
+>>>>>>> 3690c701 (mappings)
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -1287,9 +1318,12 @@
                             "notes": {
                                 "type": "text"
                             },
+<<<<<<< HEAD
                             "release_timestamp": {
                                 "type": "keyword"
                             },
+=======
+>>>>>>> 3690c701 (mappings)
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -1396,6 +1430,12 @@
                         },
                         "type": "object"
                     },
+<<<<<<< HEAD
+=======
+                    "large_scale_gene_list": {
+                        "type": "keyword"
+                    },
+>>>>>>> 3690c701 (mappings)
                     "loci": {
                         "properties": {
                             "assembly": {
@@ -1458,9 +1498,12 @@
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
+<<<<<<< HEAD
                     "release_timestamp": {
                         "type": "keyword"
                     },
+=======
+>>>>>>> 3690c701 (mappings)
                     "revoke_detail": {
                         "type": "keyword"
                     },
@@ -1474,6 +1517,12 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
+<<<<<<< HEAD
+=======
+                    "small_scale_gene_list": {
+                        "type": "keyword"
+                    },
+>>>>>>> 3690c701 (mappings)
                     "sources": {
                         "type": "keyword"
                     },

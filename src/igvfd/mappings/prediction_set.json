@@ -388,6 +388,9 @@
                             "files": {
                                 "type": "keyword"
                             },
+                            "genes": {
+                                "type": "keyword"
+                            },
                             "guide_type": {
                                 "type": "keyword"
                             },
@@ -1026,6 +1029,9 @@
                         },
                         "type": "object"
                     },
+                    "genes": {
+                        "type": "keyword"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -1263,6 +1269,9 @@
                                     "lab": {
                                         "type": "keyword"
                                     },
+                                    "large_scale_gene_list": {
+                                        "type": "keyword"
+                                    },
                                     "loci": {
                                         "properties": {
                                             "assembly": {
@@ -1335,6 +1344,9 @@
                                         "type": "keyword"
                                     },
                                     "selection_criteria": {
+                                        "type": "keyword"
+                                    },
+                                    "small_scale_gene_list": {
                                         "type": "keyword"
                                     },
                                     "sources": {
