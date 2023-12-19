@@ -392,6 +392,9 @@
                             "files": {
                                 "type": "keyword"
                             },
+                            "genes": {
+                                "type": "keyword"
+                            },
                             "guide_type": {
                                 "type": "keyword"
                             },

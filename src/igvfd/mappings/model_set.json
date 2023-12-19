@@ -388,6 +388,9 @@
                             "files": {
                                 "type": "keyword"
                             },
+                            "genes": {
+                                "type": "keyword"
+                            },
                             "guide_type": {
                                 "type": "keyword"
                             },
@@ -1113,6 +1116,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "genes": {
                                 "type": "keyword"
                             },
                             "guide_type": {
