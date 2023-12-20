@@ -20,7 +20,7 @@ def test_audit_targeted_sample_term(
 
 def test_audit_targeted_sample_term(
     testapp,
-    in_vitro_cell_line,
+    in_vitro_differentiated_cell,
     treatment_chemical,
     treatment_protein
 ):
@@ -38,14 +38,14 @@ def test_audit_targeted_sample_term(
         }
     )
     testapp.patch_json(
-        in_vitro_cell_line['@id'],
+        in_vitro_differentiated_cell['@id'],
         {
             'cell_fate_change_treatments': [treatment_chemical['@id'], treatment_protein['@id']],
             'time_post_change': 5,
             'time_post_change_units': 'minute'
         }
     )
-    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    res = testapp.get(in_vitro_differentiated_cell['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent cell_fate_change_treatments treatment purpose'
         for error in res.json['audit'].get('ERROR', [])
@@ -62,7 +62,7 @@ def test_audit_targeted_sample_term(
             'purpose': 'de-differentiation'
         }
     )
-    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    res = testapp.get(in_vitro_differentiated_cell['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent cell_fate_change_treatments treatment purpose'
         for error in res.json['audit'].get('ERROR', [])

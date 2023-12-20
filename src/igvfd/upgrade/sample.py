@@ -372,3 +372,35 @@ def in_vitro_system_16_17(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1291
     # Restrict cell_fate_change_treatments to admin only.
     return
+
+
+@upgrade_step('in_vitro_system', '17', '18')
+def in_vitro_system_17_18(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1323
+    # Prevent "cell line" in vitro systems from specifying
+    # cell fate change related properties.
+    cell_fate_change_properties = [
+        'cell_fate_change_protocol',
+        'cell_fate_change_treatments',
+        'targeted_sample_term',
+        'time_post_change',
+        'time_post_change_units'
+    ]
+    removed_metadata = {}
+    if value['classification'] == 'cell line' and \
+            any(p in value for p in cell_fate_change_properties):
+        for p in cell_fate_change_properties:
+            if p in value:
+                removed_metadata[p] = value[p]
+                del value[p]
+    if removed_metadata:
+        key_val_to_str = []
+        for k in sorted(removed_metadata.keys()):
+            key_val_to_str.append(f'{k}: {removed_metadata[k]}')
+        notes = value.get('notes', '')
+        notes += (
+            f' The following properties were removed in an upgrade '
+            f'because they are invalid for a "cell line" in vitro '
+            f'system: {"; ".join(key_val_to_str)}.'
+        )
+        value['notes'] = notes.strip()

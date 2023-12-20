@@ -26,11 +26,6 @@
         "dbxrefs": [
             "GEO:SAMN1"
         ],
-        "time_post_change": 24,
-        "time_post_change_units": "minute",
-        "cell_fate_change_treatments": [
-            "/treatments/10c05ac0-52a2-11e6-bdf4-0800200c9a66/"
-        ],
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
@@ -112,11 +107,6 @@
         "dbxrefs": [
             "GEO:SAMN1"
         ],
-        "time_post_change": 24,
-        "time_post_change_units": "minute",
-        "cell_fate_change_treatments": [
-            "/treatments/3280b708-0f05-40fa-bff2-54e2b6505c13/"
-        ],
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",
@@ -166,9 +156,6 @@
         "dbxrefs": [
             "GEO:SAMN1"
         ],
-        "time_post_change": 24,
-        "time_post_change_units": "minute",
-        "cell_fate_change_protocol": "bcb5f3c8-d5e9-40d2-805f-4274f940c36d",
         "lower_bound_age": 40,
         "upper_bound_age": 40,
         "age_units": "year",

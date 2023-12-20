@@ -122,3 +122,25 @@ def test_in_vitro_system_upgrade_15_16(upgrader, in_vitro_system_v15):
 def test_in_vitro_system_upgrade_16_17(upgrader, in_vitro_system_v16):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v16, current_version='16', target_version='17')
     assert value['schema_version'] == '17'
+
+
+def test_in_vitro_system_upgrade_17_18(
+    upgrader,
+    in_vitro_system_v17,
+    treatment_protein,
+    sample_term_endothelial_cell
+):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v17, current_version='17', target_version='18')
+    assert 'cell_fate_change_treatments' not in value
+    assert 'time_post_change' not in value
+    assert 'time_post_change_units' not in value
+    assert 'targeted_sample_term' not in value
+    assert value['schema_version'] == '18'
+    assert 'notes' in value
+    assert value['notes'] == (
+        f'The following properties were removed in an upgrade because '
+        f'they are invalid for a "cell line" in vitro system: '
+        f'cell_fate_change_treatments: [\'{treatment_protein["@id"]}\']; '
+        f'targeted_sample_term: {sample_term_endothelial_cell["@id"]}; '
+        f'time_post_change: 10; time_post_change_units: day.'
+    )

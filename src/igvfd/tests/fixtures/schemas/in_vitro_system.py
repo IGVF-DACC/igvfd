@@ -238,3 +238,21 @@ def in_vitro_system_v16(in_vitro_cell_line):
         'schema_version': '16'
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v17(
+    in_vitro_system_v1,
+    treatment_protein,
+    sample_term_endothelial_cell
+):
+    item = in_vitro_system_v1.copy()
+    item.update({
+        'schema_version': '17',
+        'classification': 'cell line',
+        'time_post_change': 10,
+        'time_post_change_units': 'day',
+        'cell_fate_change_treatments': [treatment_protein['@id']],
+        'targeted_sample_term': sample_term_endothelial_cell['@id']
+    })
+    return item

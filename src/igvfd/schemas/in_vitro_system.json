@@ -67,40 +67,89 @@
         },
         "classification": {
             "comment": "If an in vitro system has classification organoid, differentiated cell specimen, or reprogrammed cell specimen then targeted_sample_term, cell_fate_change_treatments, time_post_change, and time_post_change_units are required.",
-            "if": {
-                "properties": {
-                    "classification": {
-                        "enum": [
-                            "organoid",
-                            "differentiated cell specimen",
-                            "reprogrammed cell specimen"
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "classification": {
+                                "enum": [
+                                    "organoid",
+                                    "differentiated cell specimen",
+                                    "reprogrammed cell specimen"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "classification"
+                        ]
+                    },
+                    "then": {
+                        "oneOf": [
+                            {
+                                "required": [
+                                    "time_post_change",
+                                    "time_post_change_units",
+                                    "cell_fate_change_treatments",
+                                    "targeted_sample_term"
+                                ]
+                            },
+                            {
+                                "required": [
+                                    "time_post_change",
+                                    "time_post_change_units",
+                                    "cell_fate_change_protocol",
+                                    "targeted_sample_term"
+                                ]
+                            }
                         ]
                     }
                 },
-                "required": [
-                    "classification"
-                ]
-            },
-            "then": {
-                "oneOf": [
-                    {
+                {
+                    "if": {
+                        "properties": {
+                            "classification": {
+                                "enum": [
+                                    "cell line"
+                                ]
+                            }
+                        },
                         "required": [
-                            "time_post_change",
-                            "time_post_change_units",
-                            "cell_fate_change_treatments",
-                            "targeted_sample_term"
+                            "classification"
                         ]
                     },
-                    {
-                        "required": [
-                            "time_post_change",
-                            "time_post_change_units",
-                            "cell_fate_change_protocol",
-                            "targeted_sample_term"
-                        ]
+                    "then": {
+                        "not": {
+                            "anyOf": [
+                                {
+                                    "required": [
+                                        "cell_fate_change_protocol"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "cell_fate_change_treatments"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "targeted_sample_term"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "time_post_change"
+                                    ]
+                                },
+                                {
+                                    "required": [
+                                        "time_post_change_units"
+                                    ]
+                                }
+                            ]
+                        }
                     }
-                ]
-            }
+                }
+            ]
         },
         "time_post_change": {
             "comment": "Specification of time_post_change requires time_post_change_units and cell_fate_change_treatments.",
@@ -153,7 +202,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "17"
+            "default": "18"
         },
         "classification": {
             "title": "Classification",
