@@ -2,7 +2,7 @@
 
 ### Schema version 5
 
-* Require `assembly` if `file_format` is one of `bam`, `bed`, `bedpe`, `bigWig`, `bigBed`, `bigInteract`, or `vcf`.
+* Require `assembly` if `file_format` is one of `bam`, `bed`, `bedpe`, `bigWig`, `bigBed`, `bigInteract`, `tabix`, or `vcf`.
 
 ### Schema version 4
 
