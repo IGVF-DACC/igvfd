@@ -52,6 +52,9 @@ def measurement_set():
             'status': {
                 'title': 'Status'
             },
+            'file_set_type': {
+                'title': 'File Set Type',
+            },
             'type': {
                 'title': 'Object Type',
             },
@@ -86,6 +89,7 @@ def measurement_set():
                     'readout.term_name',
                     'preferred_assay_title',
                     'samples.modifications.modality',
+                    'file_set_type',
                 ],
             },
             {
@@ -166,6 +170,9 @@ def measurement_set():
             },
             'donors.taxa': {
                 'title': 'Taxa'
-            }
+            },
+            'file_set_type': {
+                'title': 'File Set Type'
+            },
         }
     }

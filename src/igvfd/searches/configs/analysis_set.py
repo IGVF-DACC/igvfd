@@ -22,6 +22,9 @@ def analysis_set():
             'status': {
                 'title': 'Status'
             },
+            'file_set_type': {
+                'title': 'File Set Type',
+            },
             'type': {
                 'title': 'Object Type',
             },
@@ -43,6 +46,7 @@ def analysis_set():
                 'title': 'File Set',
                 'facet_fields': [
                     'donors.taxa',
+                    'file_set_type',
                 ],
             },
             {
@@ -101,6 +105,9 @@ def analysis_set():
             },
             'donors.taxa': {
                 'title': 'Taxa'
-            }
+            },
+            'file_set_type': {
+                'title': 'File Set Type'
+            },
         },
     }
