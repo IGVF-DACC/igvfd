@@ -38,5 +38,22 @@
         "upload_status": "invalidated",
         "validation_error_detail": "Explanation of why this file did not pass validation.",
         "file_set": "igvf:analysis_set_with_input"
+    },
+    {
+        "uuid": "72bdab4a-9488-b627-ebcc-3d1c59e3b954",
+        "accession": "IGVFFI0000SBRC",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_03_sequence_barcodes"
+        ],
+        "status": "released",
+        "md5sum": "f391b7b201210d0dc307eb3bf84605ac",
+        "file_format": "txt",
+        "content_type": "sequence barcodes",
+        "submitted_file_name": "/Users/igvf/igvf_files/sequence_barcodes.txt.gz",
+        "file_size": 8330,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_input"
     }
 ]

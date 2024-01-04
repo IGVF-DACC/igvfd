@@ -150,7 +150,8 @@
             "comment": "Content Type describes the content of the file.",
             "enum": [
                 "guide RNA sequences",
-                "peaks"
+                "peaks",
+                "sequence barcodes"
             ],
             "submissionExample": {
                 "appscript": "guide RNA sequences",

@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 5
+
+* Add `sequence barcodes` to `content_type`.
+
 ### Schema version 5
 
 * Require `assembly` if `file_format` is one of `bam`, `bed`, `bedpe`, `bigWig`, `bigBed`, `bigInteract`, `tabix`, or `vcf`.
