@@ -191,6 +191,7 @@ def audit_preferred_assay_title(value, system):
 
 
 @audit_checker('MeasurementSet', frame='object')
+<<<<<<< HEAD
 def audit_inconsistent_institutional_certification(value, system):
     '''
         audit_detail: Measurement sets for mapping assays involving samples with a human origin are expected to link to the relevant institutional certificates issued to a matching lab and award.
@@ -241,3 +242,67 @@ def audit_inconsistent_institutional_certification(value, system):
                 f'certificate issued to the lab that submitted this file set.'
             )
             yield AuditFailure('inconsistent institutional certificate', detail, level='ERROR')
+=======
+def audit_inconsistent_seqspec(value, system):
+    '''
+        audit_detail: Sequence files in a measurement set from the same sequencing run are expected to link to the same seqspec file, which should be unique to that sequencing run.
+        audit_category: inconsistent seqspec metadata
+        audit_levels: ERROR
+    '''
+    if 'files' in value:
+        sequencing_run_and_seqspec = {}
+        inconsistent_sequencing_runs = []
+        shared_seqspec_sequencing_runs = []
+        for file in value['files']:
+            if file.startswith('/sequence-files/'):
+                sequence_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
+                if sequence_file_object.get('seqspec') and sequence_file_object.get('seqspec') not in value['files']:
+                    seqspec_path = sequence_file_object['seqspec']
+                    detail = (
+                        f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file '
+                        f'{audit_link(path_to_text(file), file)} which links to seqspec '
+                        f'{audit_link(path_to_text(seqspec_path), seqspec_path)} which does not link to this measurement set.'
+                    )
+                    yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+                sequencing_run = str(sequence_file_object['sequencing_run'])
+                if sequencing_run not in sequencing_run_and_seqspec:
+                    sequencing_run_and_seqspec[sequencing_run] = [
+                        sequence_file_object.get('seqspec', '')]
+                else:
+                    sequencing_run_and_seqspec[sequencing_run] += [sequence_file_object.get('seqspec', '')]
+            if file.startswith('/configuration-files/'):
+                configuration_file_object = system.get('request').embed(file)
+                if configuration_file_object['content_type'] == 'seqspec':
+                    for sequence_file in configuration_file_object.get('seqspec_of'):
+                        if sequence_file not in value['files']:
+                            detail = (
+                                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has seqspec configuration file '
+                                f'{audit_link(path_to_text(file), file)} which links to sequence files which do not link to this measurement set.'
+                            )
+                            yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+        for sequencing_run in sequencing_run_and_seqspec:
+            if len(set(sequencing_run_and_seqspec[sequencing_run])) > 1 or sequencing_run_and_seqspec[sequencing_run].count('') > 1:
+                inconsistent_sequencing_runs.append(sequencing_run)
+            seqspec_files = set(sequencing_run_and_seqspec[sequencing_run])
+            if sequencing_run in shared_seqspec_sequencing_runs:
+                continue
+            for other_sequencing_run, other_seqspecs in sequencing_run_and_seqspec.items():
+                if other_sequencing_run != sequencing_run:
+                    if seqspec_files.intersection(other_seqspecs):
+                        shared_seqspec_sequencing_runs.append(sequencing_run)
+        if inconsistent_sequencing_runs:
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
+                f'associated with sequencing runs {", ".join(inconsistent_sequencing_runs)} which link to different '
+                f'seqspec files or have no associated seqspec link; sequence files from the same sequencing run '
+                f'are expected to link to the same seqspec file.'
+            )
+            yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+        if shared_seqspec_sequencing_runs:
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
+                f'associated with different sequencing runs {", ".join(shared_seqspec_sequencing_runs)} linking to the '
+                f'same seqspec file; only sequence files from the same sequencing run are expected to link to the same seqspec file.'
+            )
+            yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+>>>>>>> 72238879 (mappings)

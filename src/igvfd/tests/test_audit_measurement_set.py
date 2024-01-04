@@ -338,77 +338,105 @@ def test_audit_inherit_nested_audits(
     )
 
 
-def test_audit_inconsistent_institutional_certification(
+def test_audit_inconsistent_seqspec(
     testapp,
     measurement_set,
-    assay_term_mpra,
-    other_lab,
-    tissue,
-    human_donor,
-    assay_term_chip,
-    institutional_certificate
+    measurement_set_multiome,
+    sequence_file,
+    sequence_file_sequencing_run_2,
+    configuration_file_seqspec,
+    configuration_file_seqspec_2
 ):
-    # No audit when there are no associated human donors.
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'inconsistent institutional certificate'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-
-    # Characterization assays are skipped
+    # A seqspec file should link to the measurement set of the sequence files it links to
     testapp.patch_json(
-        tissue['@id'],
+        sequence_file['@id'],
         {
-            'donors': [human_donor['@id']]
+            'file_set': measurement_set['@id'],
+            'seqspec': configuration_file_seqspec['@id'],
+            'illumina_read_type': 'R1'
         }
     )
     testapp.patch_json(
-        measurement_set['@id'],
+        configuration_file_seqspec['@id'],
         {
-            'assay_term': assay_term_mpra['@id']
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'inconsistent institutional certificate'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-
-    # Non-characterization assays are audited
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'assay_term': assay_term_chip['@id']
+            'file_set': measurement_set_multiome['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent institutional certificate'
+        error['category'] == 'inconsistent seqspec metadata'
         for error in res.json['audit'].get('ERROR', [])
     )
-
-    # No flag if the NIC's lab and award match the Measurement Set.
     testapp.patch_json(
-        institutional_certificate['@id'],
+        configuration_file_seqspec['@id'],
         {
-            'samples': [tissue['@id']]
+            'file_set': measurement_set['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent institutional certificate'
+        error['category'] != 'inconsistent seqspec metadata'
         for error in res.json['audit'].get('ERROR', [])
     )
-
-    # Flag when lab or award doesn't match the Measurement Set.
+    # Sequence files with the same sequencing run should link to the same seqspec file
     testapp.patch_json(
-        institutional_certificate['@id'],
+        sequence_file_sequencing_run_2['@id'],
         {
-            'lab': other_lab['@id']
+            'file_set': measurement_set['@id'],
+            'illumina_read_type': 'R2',
+            'sequencing_run': 1
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent institutional certificate'
+        error['category'] == 'inconsistent seqspec metadata'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'seqspec': configuration_file_seqspec['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent seqspec metadata'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'seqspec': configuration_file_seqspec_2['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent seqspec metadata'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # Sequence files with the different sequencing runs should not link to the same seqspec file
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'sequencing_run': 2,
+            'seqspec': configuration_file_seqspec['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent seqspec metadata'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    # If a measurement set links to a seqspec file it should also link to the sequence files the seqspec links to
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'sequencing_run': 1,
+            'file_set': measurement_set_multiome['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent seqspec metadata'
         for error in res.json['audit'].get('ERROR', [])
     )

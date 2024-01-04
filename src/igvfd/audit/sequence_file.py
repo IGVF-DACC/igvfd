@@ -18,7 +18,7 @@ def audit_sequence_file_no_seqspec(value, system):
     if 'seqspec' not in value:
         detail = (
             f'Sequence file {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'is missing a link to its associated YAML configuration file.'
+            f'is missing a link to its associated seqspec YAML configuration file.'
         )
         yield AuditFailure('inconsistent seqspec metadata', detail, level='WARNING')
     else:
