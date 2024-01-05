@@ -52,6 +52,7 @@
         "content_type": "sequence barcodes",
         "submitted_file_name": "/Users/igvf/igvf_files/sequence_barcodes.txt.gz",
         "file_size": 8330,
+        "upload_status": "validated",
         "file_set": "igvf:analysis_set_with_input"
     }
 ]
