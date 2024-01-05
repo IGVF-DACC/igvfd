@@ -1,6 +1,6 @@
 {
-    "hash": "6beba1943c05dcf650af341ebc1714d2",
-    "index_name": "model_set_6beba194",
+    "hash": "4f625825950f6dd9947c7cb179a0e17c",
+    "index_name": "model_set_4f625825",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1543,6 +1543,9 @@
                                 "type": "boolean"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "institutional_certificates": {
                                 "type": "keyword"
                             },
                             "lab": {

@@ -1,6 +1,6 @@
 {
-    "hash": "8ef9446ac17d629770acf1db5f54b85f",
-    "index_name": "primary_cell_8ef9446a",
+    "hash": "fdf2a4aa7ee7d8ef318343177aa6e7af",
+    "index_name": "primary_cell_fdf2a4aa",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -730,6 +730,9 @@
                         },
                         "type": "object"
                     },
+                    "institutional_certificates": {
+                        "type": "keyword"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -941,6 +944,9 @@
                                 "type": "keyword"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "institutional_certificates": {
                                 "type": "keyword"
                             },
                             "lab": {
@@ -1267,6 +1273,9 @@
                                 "type": "boolean"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "institutional_certificates": {
                                 "type": "keyword"
                             },
                             "lab": {

@@ -1,6 +1,6 @@
 {
-    "hash": "b5c3f030d9a7aff03772e27446ede17f",
-    "index_name": "analysis_set_b5c3f030",
+    "hash": "d54648c862f66486bd2b2c98c13a4239",
+    "index_name": "analysis_set_d54648c8",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1535,6 +1535,9 @@
                                 "type": "boolean"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "institutional_certificates": {
                                 "type": "keyword"
                             },
                             "lab": {
