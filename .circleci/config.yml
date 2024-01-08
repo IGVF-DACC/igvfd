@@ -42,7 +42,7 @@ jobs:
 
   cdk-pytest:
     machine:
-      image: ubuntu-2004:2023.04.2
+      image: ubuntu-2004:2023.10.1
       docker_layer_caching: true
     resource_class: medium
     working_directory: ~/igvfd/cdk/
@@ -50,6 +50,9 @@ jobs:
       - checkout:
           path: ~/igvfd
       - run: pyenv global 3.11
+      - run: npm --version
+      - run: nvm list
+      - run: nvm use v20.10.0
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: pytest tests/
 
@@ -65,7 +68,7 @@ jobs:
 
   igvfd-pytest:
     machine:
-      image: ubuntu-2004:2023.04.2
+      image: ubuntu-2004:2023.10.1
       docker_layer_caching: true
     resource_class: medium
     working_directory: ~/igvfd
@@ -99,7 +102,7 @@ jobs:
 
   igvfd-check-opensearch-mappings:
     machine:
-      image: ubuntu-2004:2023.04.2
+      image: ubuntu-2004:2023.10.1
       docker_layer_caching: true
     resource_class: medium
     working_directory: ~/igvfd
