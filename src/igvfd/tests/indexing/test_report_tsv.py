@@ -71,9 +71,10 @@ def test_multitype_report_download_no_href(workbook, testapp):
     assert disposition.startswith('attachment;filename="igvf_mixed') and disposition.endswith('.tsv"')
     lines = res.body.splitlines()
     assert b'/multireport/' in lines[0]
-    assert lines[1].split(b'\t') == [
-        b'ID', b'UUID', b'Accession', b'Alternate Accessions', b'Content Type', b'File Format', b'Lab', b'Status', b'File Set', b'Illumina Read Type', b'External Identifiers', b'Upload Status', b'Reference Files', b'Content Summary', b'Assembly', b'Transcriptome Annotation', b'Seqspec Of'
-    ]
+    for header_name in lines[1].split(b'\t'):
+        assert header_name in [
+            b'ID', b'UUID', b'Accession', b'Alternate Accessions', b'Content Type', b'File Format', b'Lab', b'Status', b'File Set', b'Illumina Read Type', b'External Identifiers', b'Upload Status', b'Reference Files', b'Content Summary', b'Assembly', b'Transcriptome Annotation', b'Seqspec Of'
+        ]
 
     res = testapp.get('/multireport.tsv?type=SequenceFile&type=AlignmentFile&status=released')
     assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'

@@ -45,7 +45,7 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:tabular_file_03_seq_barcodes"
+            "igvf:tabular_file_03_sequence_barcodes"
         ],
         "md5sum": "f391b7b201210d0dc307eb3bf84605ac",
         "file_format": "txt",
@@ -53,6 +53,7 @@
         "submitted_file_name": "/Users/igvf/igvf_files/sequence_barcodes.txt.gz",
         "file_size": 8330,
         "upload_status": "validated",
+        "status": "released",
         "file_set": "igvf:analysis_set_with_input"
     }
 ]
