@@ -50,16 +50,9 @@ jobs:
       - checkout:
           path: ~/igvfd
       - run: pyenv global 3.11
-      - run: |
-          node --version
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: |
-          node --version
           nvm use 20
-          node --version
-      - run: |
-          nvm use 20
-          node --version
           pytest tests/
 
   cdk-lambda-runtime-pytest:
