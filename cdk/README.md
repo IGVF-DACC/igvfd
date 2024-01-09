@@ -1,6 +1,6 @@
 ## Infrastructure
 
-Install Node.js 18 using `nvm` (Node Version Manager):
+Install Node.js 20 using `nvm` (Node Version Manager):
 
 ```
 # Install nvm.
@@ -10,9 +10,9 @@ $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bas
 Then in new terminal:
 
 ```
-# Install and use node 18.
-$ nvm install 18
-$ nvm use 18
+# Install and use node 20.
+$ nvm install 20
+$ nvm use 20
 # Check version.
 $ node --version
 ```
