@@ -609,6 +609,34 @@ def test_constructs_backend_initialize_backend_construct(
                     },
                     {
                         'Action': [
+                            'sqs:SendMessage',
+                            'sqs:GetQueueAttributes',
+                            'sqs:GetQueueUrl'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'TransactionQueueDeadLetterQueueDA53F160',
+                                'Arn'
+                            ]
+                        }
+                    },
+                    {
+                        'Action': [
+                            'sqs:SendMessage',
+                            'sqs:GetQueueAttributes',
+                            'sqs:GetQueueUrl'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'InvalidationQueueDeadLetterQueueFE5C594E',
+                                'Arn'
+                            ]
+                        }
+                    },
+                    {
+                        'Action': [
                             'secretsmanager:GetSecretValue',
                             'secretsmanager:DescribeSecret'
                         ],
