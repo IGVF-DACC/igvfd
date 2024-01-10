@@ -121,6 +121,8 @@ class Backend(Construct):
         self._allow_task_to_put_events_on_bus()
         self._allow_task_to_send_messages_to_transaction_queue()
         self._allow_task_to_send_messages_to_invalidation_queue()
+        self._allow_task_to_send_messages_to_transaction_dead_letter_queue()
+        self._allow_task_to_send_messages_to_invalidation_dead_letter_queue()
         self._allow_task_to_download_from_files_buckets()
         self._allow_task_to_upload_to_files_buckets()
         self._allow_task_to_read_upload_files_user_access_keys_secret()
@@ -252,6 +254,8 @@ class Backend(Construct):
                 'OPENSEARCH_FOR_WRITING_URL': self.opensearch_for_writing.url,
                 'TRANSACTION_QUEUE_URL': self.props.transaction_queue.queue.queue_url,
                 'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
+                'TRANSACTION_DEAD_LETTER_QUEUE_URL': self.props.transaction_queue.dead_letter_queue.queue_url,
+                'INVALIDATION_DEAD_LETTER_QUEUE_URL': self.props.invalidation_queue.dead_letter_queue.queue_url,
                 'UPLOAD_USER_ACCESS_KEYS_SECRET_ARN': self.props.existing_resources.upload_igvf_files_user_access_keys.secret.secret_arn,
                 'APPCONFIG_APPLICATION': self.props.feature_flag_service.application.name,
                 'APPCONFIG_ENVIRONMENT': self.props.feature_flag_service.environment.name,
@@ -297,6 +301,16 @@ class Backend(Construct):
 
     def _allow_task_to_send_messages_to_invalidation_queue(self) -> None:
         self.props.invalidation_queue.queue.grant_send_messages(
+            self.fargate_service.task_definition.task_role
+        )
+
+    def _allow_task_to_send_messages_to_transaction_dead_letter_queue(self) -> None:
+        self.props.transaction_queue.dead_letter_queue.grant_send_messages(
+            self.fargate_service.task_definition.task_role
+        )
+
+    def _allow_task_to_send_messages_to_invalidation_dead_letter_queue(self) -> None:
+        self.props.invalidation_queue.dead_letter_queue.grant_send_messages(
             self.fargate_service.task_definition.task_role
         )
 
