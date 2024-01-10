@@ -52,3 +52,13 @@ def auxiliary_set_v4(auxiliary_set_v3):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def auxiliary_set_v5(auxiliary_set_v4):
+    item = auxiliary_set_v4.copy()
+    item.update({
+        'schema_version': '5',
+        'file_set_type': 'oligo-conjugated antibodies'
+    })
+    return item

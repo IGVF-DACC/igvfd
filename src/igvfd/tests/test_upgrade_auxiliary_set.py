@@ -36,3 +36,11 @@ def test_auxiliary_set_upgrade_4_5(upgrader, auxiliary_set_v4):
         current_version='4', target_version='5')
     assert value['schema_version'] == '5'
     assert 'description' not in value
+
+
+def test_auxiliary_set_upgrade_5_6(upgrader, auxiliary_set_v5):
+    value = upgrader.upgrade(
+        'auxiliary_set', auxiliary_set_v5,
+        current_version='5', target_version='6')
+    assert value['schema_version'] == '6'
+    assert value['file_set_type'] == 'cell hashing'
