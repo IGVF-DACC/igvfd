@@ -238,6 +238,18 @@ def test_constructs_backend_initialize_backend_construct(
                             }
                         },
                         {
+                            'Name': 'TRANSACTION_DEAD_LETTER_QUEUE_URL',
+                            'Value': {
+                                'Ref': 'TransactionQueueDeadLetterQueueDA53F160'
+                            }
+                        },
+                        {
+                            'Name': 'INVALIDATION_DEAD_LETTER_QUEUE_URL',
+                            'Value': {
+                                'Ref': 'InvalidationQueueDeadLetterQueueFE5C594E'
+                            }
+                        },
+                        {
                             'Name': 'UPLOAD_USER_ACCESS_KEYS_SECRET_ARN',
                             'Value': {
                                 'Ref': 'TestSecret16AF87B1'
@@ -591,6 +603,34 @@ def test_constructs_backend_initialize_backend_construct(
                         'Resource': {
                             'Fn::GetAtt': [
                                 'InvalidationQueue8614463D',
+                                'Arn'
+                            ]
+                        }
+                    },
+                    {
+                        'Action': [
+                            'sqs:SendMessage',
+                            'sqs:GetQueueAttributes',
+                            'sqs:GetQueueUrl'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'TransactionQueueDeadLetterQueueDA53F160',
+                                'Arn'
+                            ]
+                        }
+                    },
+                    {
+                        'Action': [
+                            'sqs:SendMessage',
+                            'sqs:GetQueueAttributes',
+                            'sqs:GetQueueUrl'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'InvalidationQueueDeadLetterQueueFE5C594E',
                                 'Arn'
                             ]
                         }
