@@ -1,6 +1,6 @@
 {
-    "hash": "2d6146189e6c9472aa5502c95a1bd22e",
-    "index_name": "whole_organism_2d614618",
+    "hash": "2b0fbe3b27abdf6aca96a5bbdaf52ec5",
+    "index_name": "whole_organism_2b0fbe3b",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -588,7 +588,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {

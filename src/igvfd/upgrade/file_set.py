@@ -176,3 +176,11 @@ def auxiliary_set_5_6(value, system):
             notes += f' Original file_set_type was oligo-conjugated antibodies. This was replaced to be cell hashing during upgrade.'
             value['notes'] = notes.strip()
     return
+
+
+@upgrade_step('measurement_set', '11', '12')
+def measurement_set_11_12(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1373
+    if 'protocol' in value:
+        value['protocols'] = [value['protocol']]
+        del value['protocol']

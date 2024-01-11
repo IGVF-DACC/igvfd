@@ -1,6 +1,6 @@
 {
-    "hash": "9be0f4ab3756ed94dd6325c47302eb7d",
-    "index_name": "in_vitro_system_9be0f4ab",
+    "hash": "c768153c81bc644f9366d378534329a7",
+    "index_name": "in_vitro_system_c768153c",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -729,7 +729,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {

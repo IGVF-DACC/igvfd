@@ -145,3 +145,16 @@ def measurement_set_v10(testapp, lab, award, assay_term_atac, tissue):
         'samples': [tissue['@id']]
     }
     return item
+
+
+@pytest.fixture
+def measurement_set_v11(testapp, lab, award, assay_term_atac, tissue):
+    item = {
+        'schema_version': '11',
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_atac['@id'],
+        'samples': [tissue['@id']],
+        'protocol': 'https://www.protocols.io/test-protocols-url-12345'
+    }
+    return item

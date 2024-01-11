@@ -45,7 +45,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "11"
+            "default": "12"
         },
         "assay_term": {
             "title": "Assay Term",
@@ -69,14 +69,20 @@
                 "igvf_utils": "/platform-terms/EFO_0008567/ or igvf:illumina-hiseq-x"
             }
         },
-        "protocol": {
-            "title": "Protocol",
-            "description": "Link to the protocol for conducting the assay on Protocols.io.",
-            "type": "string",
-            "pattern": "^https://www\\.protocols\\.io/(\\S+)$",
+        "protocols": {
+            "title": "Protocols",
+            "description": "Links to the protocol(s) for conducting the assay on Protocols.io.",
+            "type": "array",
+            "minimum": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Protocol",
+                "type": "string",
+                "pattern": "^https://www\\.protocols\\.io/(\\S+)$"
+            },
             "submissionExample": {
-                "appscript": "https://www.protocols.io/link/to/protocol",
-                "igvf_utils": "https://www.protocols.io/link/to/protocol"
+                "appscript": "[\"https://www.protocols.io/link/to/protocol\",\"https://www.protocols.io/link/to/protocol2\"]",
+                "igvf_utils": "https://www.protocols.io/link/to/protocol,https://www.protocols.io/link/to/protocol2"
             }
         },
         "preferred_assay_title": {

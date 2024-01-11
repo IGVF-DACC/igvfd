@@ -1,6 +1,6 @@
 {
-    "hash": "e25b6dbfa7709a9861ac0682cdeba8ea",
-    "index_name": "multiplexed_sample_e25b6dbf",
+    "hash": "b5c5041447911d58d452be8d911ab743",
+    "index_name": "multiplexed_sample_b5c50414",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -789,7 +789,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {

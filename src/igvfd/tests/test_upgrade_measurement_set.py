@@ -63,3 +63,11 @@ def test_measurement_set_upgrade_10_11(upgrader, measurement_set_v10):
     assert 'file_set_type' in value
     assert value['file_set_type'] == 'experimental data'
     assert value['schema_version'] == '11'
+
+
+def test_measurement_set_upgrade_11_12(upgrader, measurement_set_v11):
+    value = upgrader.upgrade('measurement_set', measurement_set_v11, current_version='11', target_version='12')
+    assert 'protocol' not in value
+    assert 'protocols' in value
+    assert value['protocols'] == ['https://www.protocols.io/test-protocols-url-12345']
+    assert value['schema_version'] == '12'

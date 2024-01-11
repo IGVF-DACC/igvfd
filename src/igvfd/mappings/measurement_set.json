@@ -1,6 +1,6 @@
 {
-    "hash": "bbc6124078d7a3d308f73c26c12f9ec1",
-    "index_name": "measurement_set_bbc61240",
+    "hash": "0d4ded35f9b0ac93f5c898b8e5359f2a",
+    "index_name": "measurement_set_0d4ded35",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -661,7 +661,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
@@ -995,7 +995,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
@@ -1695,7 +1695,7 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "protocol": {
+                    "protocols": {
                         "type": "keyword"
                     },
                     "publication_identifiers": {
@@ -1857,7 +1857,7 @@
                             "preferred_assay_title": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {

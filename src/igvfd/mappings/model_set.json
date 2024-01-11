@@ -1,6 +1,6 @@
 {
-    "hash": "4f625825950f6dd9947c7cb179a0e17c",
-    "index_name": "model_set_4f625825",
+    "hash": "be14ade6de4be4772d1c9253739f5d08",
+    "index_name": "model_set_be14ade6",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -489,7 +489,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
@@ -1236,7 +1236,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {

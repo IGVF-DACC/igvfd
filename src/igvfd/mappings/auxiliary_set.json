@@ -1,6 +1,6 @@
 {
-    "hash": "dbfdf02a81aaa279c286dd79c931c1e2",
-    "index_name": "auxiliary_set_dbfdf02a",
+    "hash": "a26a86a386540ffba382aa4d7cc55a38",
+    "index_name": "auxiliary_set_a26a86a3",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -489,7 +489,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
@@ -1188,7 +1188,7 @@
                             "preferred_assay_title": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
