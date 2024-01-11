@@ -142,7 +142,7 @@ def test_audit_inherit_related_multiome(
     testapp.patch_json(
         measurement_set_multiome['@id'],
         {
-            'protocol': 'https://www.protocols.io/view/example_protocol',
+            'protocols': ['https://www.protocols.io/view/example_protocol'],
             'samples': [primary_cell['@id']]
         }
     )
@@ -160,7 +160,7 @@ def test_audit_inherit_related_multiome(
     testapp.patch_json(
         measurement_set_multiome_2['@id'],
         {
-            'protocol': 'https://www.protocols.io/view/example_protocol'
+            'protocols': ['https://www.protocols.io/view/example_protocol']
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
@@ -182,7 +182,7 @@ def test_audit_protocol(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'protocol': 'https://www.protocols.io/view/example_protocol'
+            'protocols': ['https://www.protocols.io/view/example_protocol']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')

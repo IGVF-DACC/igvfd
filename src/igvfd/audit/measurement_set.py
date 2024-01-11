@@ -76,7 +76,7 @@ def audit_unspecified_protocol(value, system):
         audit_category: missing protocol
         audit_levels: NOT_COMPLIANT
     '''
-    if 'protocol' not in value:
+    if 'protocols' not in value:
         detail = (
             f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'is expected to specify the experimental protocol utilized for conducting '
