@@ -55,7 +55,7 @@ def measurement_set_v3(measurement_set):
     item = measurement_set.copy()
     item.update({
         'schema_version': '3',
-        'protocol': 'https://www.protocols.io/'
+        'protocols': ['https://www.protocols.io/']
     })
     return item
 

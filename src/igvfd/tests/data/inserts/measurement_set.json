@@ -16,7 +16,7 @@
             "igvf:treated_tissue"
         ],
         "assay_term": "igvf:starr-seq",
-        "protocol": [
+        "protocols": [
             "https://www.protocols.io/test-protocols-url-12345"
         ],
         "dbxrefs": [
