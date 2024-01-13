@@ -86,3 +86,12 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'intermediate analysis of ATAC-seq, STARR-seq, lentiMPRA data'
+    # An infinite loop should be avoided
+    testapp.patch_json(
+        primary_analysis_set['@id'],
+        {
+            'input_file_sets': [analysis_set_base['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    assert res.get('summary', '') == 'intermediate analysis of ATAC-seq, STARR-seq, lentiMPRA data'
