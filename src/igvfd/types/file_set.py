@@ -26,25 +26,28 @@ def inspect_fileset(request, fileset, inspected):
     other_set_terms = set()
     interim_results = tuple()
 
-    fileset_object = request.embed(fileset, '@@object?skip_calculated=true')
-    if fileset_object.get('input_file_sets', None) is not None:
-        for fs in fileset_object.get('input_file_sets'):
-            fs_object = request.embed(fs, '@@object')
-            if fs_object['@id'].startswith('/analysis-sets/'):
-                if fs_object['accession'] not in inspected:
-                    inspected.add(fs_object['accession'])
-                    interim_results = inspect_fileset(request, fs_object['accession'], inspected)
-                    measurement_terms.update(interim_results[0])
-                    other_set_terms.update(interim_results[1])
-                    inspected.update(interim_results[2])
-            elif fs_object['@id'].startswith('/measurement-sets/'):
-                if 'preferred_assay_title' in fs_object:
-                    measurement_terms.add(fs_object['preferred_assay_title'])
+    if fileset in inspected:
+        return (measurement_terms, other_set_terms, inspected)
+    else:
+        inspected.add(fileset)
+        fileset_object = request.embed(fileset, '@@object?skip_calculated=true')
+        if fileset_object.get('input_file_sets', None) is not None:
+            for fs in fileset_object.get('input_file_sets'):
+                fs_object = request.embed(fs, '@@object')
+                if fs_object['@id'].startswith('/analysis-sets/'):
+                    if fs_object['accession'] not in inspected:
+                        interim_results = inspect_fileset(request, fs_object['accession'], inspected)
+                        measurement_terms.update(interim_results[0])
+                        other_set_terms.update(interim_results[1])
+                        inspected.update(interim_results[2])
+                elif fs_object['@id'].startswith('/measurement-sets/'):
+                    if 'preferred_assay_title' in fs_object:
+                        measurement_terms.add(fs_object['preferred_assay_title'])
+                    else:
+                        assay_object = request.embed(fs_object['assay_term'], '@@object?skip_calculated=true')
+                        measurement_terms.add(assay_object['term_name'])
                 else:
-                    assay_object = request.embed(fs_object['assay_term'], '@@object?skip_calculated=true')
-                    measurement_terms.add(assay_object['term_name'])
-            else:
-                other_set_terms.add(fs_object['file_set_type'])
+                    other_set_terms.add(fs_object['file_set_type'])
     return (measurement_terms, other_set_terms, inspected)
 
 
