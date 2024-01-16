@@ -1,6 +1,6 @@
 {
-    "hash": "8658f881f2cf619ac12e6bed34adb152",
-    "index_name": "measurement_set_8658f881",
+    "hash": "bbc6124078d7a3d308f73c26c12f9ec1",
+    "index_name": "measurement_set_bbc61240",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2398,6 +2398,9 @@
                                 "type": "boolean"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "institutional_certificates": {
                                 "type": "keyword"
                             },
                             "lab": {

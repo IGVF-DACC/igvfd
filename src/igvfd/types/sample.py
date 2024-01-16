@@ -54,6 +54,7 @@ class Sample(Item):
         'multiplexed_in': ('MultiplexedSample', 'multiplexed_samples'),
         'sorted_fractions': ('Sample', 'sorted_from'),
         'origin_of': ('Sample', 'originated_from'),
+        'institutional_certificates': ('InstitutionalCertificate', 'samples'),
     }
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
@@ -124,6 +125,19 @@ class Sample(Item):
     })
     def origin_of(self, request, origin_of):
         return paths_filtered_by_status(request, origin_of)
+
+    @calculated_property(schema={
+        'title': 'Institutional Certificates',
+        'type': 'array',
+        'items': {
+            'title': 'Institutional Certificate',
+            'type': ['string', 'object'],
+            'linkFrom': 'InstitutionalCertificate.samples',
+        },
+        'notSubmittable': True,
+    })
+    def institutional_certificates(self, request, institutional_certificates):
+        return paths_filtered_by_status(request, institutional_certificates)
 
 
 @abstract_collection(

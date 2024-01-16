@@ -1,6 +1,6 @@
 {
-    "hash": "988584546a5701bb3732706791d7a863",
-    "index_name": "auxiliary_set_98858454",
+    "hash": "dbfdf02a81aaa279c286dd79c931c1e2",
+    "index_name": "auxiliary_set_dbfdf02a",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1323,6 +1323,9 @@
                                 "type": "boolean"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "institutional_certificates": {
                                 "type": "keyword"
                             },
                             "lab": {

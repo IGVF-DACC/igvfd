@@ -1,6 +1,6 @@
 {
-    "hash": "08791b8ebdd6e7c2b051940b3823e680",
-    "index_name": "prediction_set_08791b8e",
+    "hash": "42ed1cdf44194930250ac3f558e43578",
+    "index_name": "prediction_set_42ed1cdf",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1415,6 +1415,9 @@
                                 "type": "boolean"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "institutional_certificates": {
                                 "type": "keyword"
                             },
                             "lab": {

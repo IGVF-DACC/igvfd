@@ -1,6 +1,6 @@
 {
-    "hash": "7b4fa7d3a3860002a2a11668ce60796b",
-    "index_name": "curated_set_7b4fa7d3",
+    "hash": "ddd9b2d029418bff8ddfa929fb1f7a4b",
+    "index_name": "curated_set_ddd9b2d0",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1203,6 +1203,9 @@
                                 "type": "boolean"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "institutional_certificates": {
                                 "type": "keyword"
                             },
                             "lab": {
