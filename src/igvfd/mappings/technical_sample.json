@@ -1,6 +1,6 @@
 {
-    "hash": "aedade8ea72ddf9f426278ae8185e23e",
-    "index_name": "technical_sample_aedade8e",
+    "hash": "249ca1fe8c8031d6ac6e85123a1bda1f",
+    "index_name": "technical_sample_249ca1fe",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -499,7 +499,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {

@@ -1,6 +1,6 @@
 {
-    "hash": "68147a04f76cbbdc46e7a795c8427058",
-    "index_name": "construct_library_set_68147a04",
+    "hash": "1ab39910a369e88d65a7752801064973",
+    "index_name": "construct_library_set_1ab39910",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -794,7 +794,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {

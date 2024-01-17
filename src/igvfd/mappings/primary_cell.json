@@ -1,6 +1,6 @@
 {
-    "hash": "fdf2a4aa7ee7d8ef318343177aa6e7af",
-    "index_name": "primary_cell_fdf2a4aa",
+    "hash": "88f74d6c2b4f0de93dbb10ed41fb0ae7",
+    "index_name": "primary_cell_88f74d6c",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -588,7 +588,7 @@
                             "product_id": {
                                 "type": "keyword"
                             },
-                            "protocol": {
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {

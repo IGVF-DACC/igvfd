@@ -16,7 +16,9 @@
             "igvf:treated_tissue"
         ],
         "assay_term": "igvf:starr-seq",
-        "protocol": "https://www.protocols.io/test-protocols-url-12345",
+        "protocols": [
+            "https://www.protocols.io/test-protocols-url-12345"
+        ],
         "dbxrefs": [
             "GEO:GSE187549"
         ],

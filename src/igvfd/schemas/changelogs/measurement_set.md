@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 12
+
+* Replace `protocol` with `protocols`.
+
 ### Schema version 11
 
 * Add `file_set_type`.
