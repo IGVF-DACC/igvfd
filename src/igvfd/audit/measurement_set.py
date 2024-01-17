@@ -234,6 +234,5 @@ def audit_inconsistent_institutional_certification(value, system):
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
                 f'a sample {audit_link(path_to_text(s),s)} that lacks a NIH institutional '
                 f'certificate issued to the lab that submitted this file set.'
-                f'{lab} {str(nic_labs)} {award} {str(nic_awards)}'
             )
             yield AuditFailure('inconsistent institutional certificate', detail, level='ERROR')
