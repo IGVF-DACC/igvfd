@@ -256,6 +256,7 @@ def audit_inconsistent_seqspec(value, system):
         for file in value['files']:
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
+                # If a sequence file in the measurement set does not have its associated seqspec also in the measurement set.
                 if sequence_file_object.get('seqspec') and sequence_file_object.get('seqspec') not in value['files']:
                     seqspec_path = sequence_file_object['seqspec']
                     detail = (
@@ -274,6 +275,7 @@ def audit_inconsistent_seqspec(value, system):
                 configuration_file_object = system.get('request').embed(file)
                 if configuration_file_object['content_type'] == 'seqspec':
                     for sequence_file in configuration_file_object.get('seqspec_of'):
+                        # If a configuration file in the measurement set does not have its associated sequence files also in the measurement set.
                         if sequence_file not in value['files']:
                             detail = (
                                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has seqspec configuration file '
