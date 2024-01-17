@@ -182,3 +182,61 @@ def audit_preferred_assay_title(value, system):
             f'which is not an expected preferred assay title for this assay term.'
         )
         yield AuditFailure('inconsistent assay metadata', detail, level='WARNING')
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_inconsistent_institutional_certification(value, system):
+    '''
+        audit_detail: Measurement sets for mapping assays are expected to link to samples covered by an institutional certificate issued to a matching lab and award.
+        audit_category: inconsistent institutional certification
+        audit_levels: ERROR
+    '''
+    characterization_assays = [
+        'AAV-MPRA',
+        'Cell painting',
+        'CERES-seq',
+        'CRISPR FlowFISH',
+        'lentiMPRA',
+        'MPRA',
+        'MPRA (scQer)',
+        'Perturb-seq',
+        'POP-STARR',
+        'Saturation genome editing',
+        'STARR-seq',
+        'SUPERSTARR',
+        'TAP-seq',
+        'VAMP-seq',
+        'Variant FlowFISH',
+        'Variant painting',
+        'Yeast two-hybrid'
+    ]
+    assay_term = value.get('assay_term')
+    assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    preferred_assay_title = value.get('preferred_assay_title', '')
+
+    # Characterization assays do not need to be audited.
+    if preferred_assay_title in characterization_assays:
+        return
+
+    lab = value.get('lab')
+    award = value.get('award')
+    samples = value.get('samples')
+
+    for s in samples:
+        sample_object = system.get('request').embed(s, '@@object')
+        nic_labs = []
+        nic_awards = []
+        for nic in sample_object.get('institutional_certificates', []):
+            nic_object = system.get('request').embed(nic, '@@object?skip_calculated=true')
+
+            nic_labs.append(nic_object.get('lab'))
+            nic_awards.append(nic_object.get('award'))
+
+        if lab not in nic_labs or award not in nic_awards:
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
+                f'a sample {audit_link(path_to_text(s),s)} that lacks a NIH institutional '
+                f'certificate issued to the lab that submitted this file set.'
+                f'{lab} {str(nic_labs)} {award} {str(nic_awards)}'
+            )
+            yield AuditFailure('inconsistent institutional certificate', detail, level='ERROR')
