@@ -191,6 +191,7 @@ def audit_inconsistent_institutional_certification(value, system):
         audit_category: inconsistent institutional certification
         audit_levels: ERROR
     '''
+    # Characterization assays do not need to be audited.
     characterization_assays = [
         'AAV-MPRA',
         'Cell painting',
@@ -210,11 +211,7 @@ def audit_inconsistent_institutional_certification(value, system):
         'Variant painting',
         'Yeast two-hybrid'
     ]
-    assay_term = value.get('assay_term')
-    assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     preferred_assay_title = value.get('preferred_assay_title', '')
-
-    # Characterization assays do not need to be audited.
     if preferred_assay_title in characterization_assays:
         return
 
