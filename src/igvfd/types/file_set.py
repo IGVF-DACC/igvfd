@@ -562,7 +562,7 @@ class ConstructLibrarySet(FileSet):
         criteria = criteria + selection_criteria
 
         if scope == 'loci':
-            if len(loci) > 1:
+            if loci and len(loci) > 1:
                 target_phrase = f' {len(loci)} genomic loci'
             else:
                 target_phrase = f' a genomic locus'

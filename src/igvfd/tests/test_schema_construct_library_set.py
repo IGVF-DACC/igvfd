@@ -18,7 +18,7 @@ def test_post_construct_library_set(award, lab, testapp):
 def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
                                             construct_library_set_genome_wide,
                                             base_expression_construct_library_set,
-                                            construct_library_set_reporter):
+                                            construct_library_set_reporter, tabular_file):
     res = testapp.patch_json(
         construct_library_set_genome_wide['@id'],
         {'scope': 'genes'
@@ -35,7 +35,7 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
     res = testapp.patch_json(
         base_expression_construct_library_set['@id'],
         {'scope': 'loci',
-         'genes': [gene_myc_hs['@id']],
+         'small_scale_gene_list': [gene_myc_hs['@id']],
          'average_insert_size': 90
          }, expect_errors=True)
     assert res.status_code == 422
@@ -52,7 +52,7 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
     res = testapp.patch_json(
         construct_library_set_reporter['@id'],
         {'scope': 'genes',
-         'genes': [gene_myc_hs['@id']]
+         'small_scale_gene_list': [gene_myc_hs['@id']]
          }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
@@ -65,11 +65,11 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
     res = testapp.patch_json(
         construct_library_set_reporter['@id'],
         {'scope': 'loci',
-         'loci': [{'assembly': 'GRCh38',
-                   'chromosome': 'chr9',
-                   'start': 1,
-                   'end': 3500
-                   }]
+         'small_scale_loci_list': [{'assembly': 'GRCh38',
+                                    'chromosome': 'chr9',
+                                    'start': 1,
+                                    'end': 3500
+                                    }]
          })
     assert res.status_code == 200
     res = testapp.patch_json(
@@ -80,7 +80,7 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
     res = testapp.patch_json(
         base_expression_construct_library_set['@id'],
         {'scope': 'exon',
-         'genes': [gene_myc_hs['@id']]
+         'small_scale_gene_list': [gene_myc_hs['@id']]
          }, expect_errors=True)
     assert res.status_code == 200
     res = testapp.post_json(
@@ -91,7 +91,7 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'file_set_type': 'expression vector library',
             'scope': 'exon',
             'selection_criteria': ['transcription start sites'],
-            'genes': [gene_myc_hs['@id']]
+            'small_scale_gene_list': [gene_myc_hs['@id']]
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.post_json(
@@ -102,7 +102,7 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'file_set_type': 'expression vector library',
             'scope': 'exon',
             'selection_criteria': ['transcription start sites'],
-            'genes': [gene_myc_hs['@id']],
+            'small_scale_gene_list': [gene_myc_hs['@id']],
             'exon': 'E6'
         })
     assert res.status_code == 201
@@ -114,7 +114,7 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'file_set_type': 'expression vector library',
             'scope': 'tile',
             'selection_criteria': ['transcription start sites'],
-            'genes': [gene_myc_hs['@id']]
+            'large_scale_gene_list': tabular_file['@id']
         }, expect_errors=True)
     assert res.status_code == 422
     res = testapp.post_json(
@@ -125,7 +125,7 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'file_set_type': 'expression vector library',
             'scope': 'tile',
             'selection_criteria': ['transcription start sites'],
-            'genes': [gene_myc_hs['@id']],
+            'large_scale_gene_list': tabular_file['@id'],
             'tile': {'tile_id': 'tile1', 'tile_start': 1, 'tile_end': 56}
         })
     assert res.status_code == 201
