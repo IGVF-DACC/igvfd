@@ -3,6 +3,7 @@
         "aliases": [
             "igvf:basic_construct_library_set_0"
         ],
+        "accession": "IGVFDS5436ABCD",
         "submitter_comment": "Comment for a construct library set.",
         "description": "A basic loci construct library set.",
         "award": "HG012012",
@@ -32,6 +33,7 @@
         "aliases": [
             "igvf:basic_construct_library_set_1"
         ],
+        "accession": "IGVFDS5466CONS",
         "submitter_comment": "Comment for a construct library set.",
         "description": "A basic genes construct library set.",
         "award": "HG012012",
@@ -42,13 +44,16 @@
         "selection_criteria": [
             "accessible genome regions"
         ],
-        "large_scale_gene_list": "/tabular-files/igvf:tabular_file_01_bed",
+        "small_scale_gene_list": [
+            "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
+        ],
         "status": "released"
     },
     {
         "aliases": [
             "igvf:basic_construct_library_set_2"
         ],
+        "accession": "IGVFDS7574TRUC",
         "submitter_comment": "Comment for a construct library set.",
         "description": "A basic exon construct library set.",
         "award": "HG012012",
@@ -69,6 +74,7 @@
         "aliases": [
             "igvf:basic_construct_library_set_3"
         ],
+        "accession": "IGVFDS3333PIEF",
         "submitter_comment": "Comment for a construct library set.",
         "description": "A basic tile construct library set.",
         "award": "HG012012",

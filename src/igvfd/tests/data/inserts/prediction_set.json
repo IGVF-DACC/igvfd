@@ -3,6 +3,7 @@
         "aliases": [
             "igvf:prediction_set_1"
         ],
+        "accession": "IGVFDS5145PRED",
         "submitter_comment": "Comment for a prediction file set.",
         "description": "A cell-agnostic prediction with a donor.",
         "donors": [
@@ -27,6 +28,7 @@
         "aliases": [
             "igvf:prediction_set_2"
         ],
+        "accession": "IGVFDS5686ICTI",
         "submitter_comment": "Comment for a prediction file set.",
         "description": "A prediction with a sample.",
         "file_set_type": "functional effect",

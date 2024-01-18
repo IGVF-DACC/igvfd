@@ -528,7 +528,7 @@ PHASE1_PIPELINES = {
         remove_keys('integrated_content_files', 'large_scale_gene_list', 'large_scale_loci_list'),
     ],
     'prediction_set': [
-        remove_keys('large_scale_gene_list', 'large_scale_loci_list'),
+        remove_keys('large_scale_gene_list', 'large_scale_loci_list', 'scope'),
     ],
     'in_vitro_system': [
         remove_keys('pooled_from', 'part_of', 'originated_from', 'construct_library_sets', 'moi',
@@ -592,7 +592,7 @@ PHASE2_PIPELINES = {
         skip_rows_missing_all_keys('integrated_content_files', 'large_scale_gene_list', 'large_scale_loci_list'),
     ],
     'prediction_set': [
-        skip_rows_missing_all_keys('large_scale_gene_list', 'large_scale_loci_list'),
+        skip_rows_missing_all_keys('large_scale_gene_list', 'large_scale_loci_list', 'scope'),
     ],
     'in_vitro_system': [
         skip_rows_missing_all_keys('pooled_from', 'part_of', 'originated_from', 'construct_library_sets',
