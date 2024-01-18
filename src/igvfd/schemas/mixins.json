@@ -541,7 +541,7 @@
         },
         "large_scale_loci_list": {
             "title": "Large Scale Gene List",
-            "description": "A large scale list (>100) of specific chromosomal region(s).",
+            "description": "A large scale list (>100) of specific chromosomal regions.",
             "type": "string",
             "linkTo": "TabularFile",
             "submissionExample": {
