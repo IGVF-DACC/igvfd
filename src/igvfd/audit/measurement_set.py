@@ -225,10 +225,8 @@ def audit_inconsistent_institutional_certification(value, system):
         nic_awards = []
         for nic in sample_object.get('institutional_certificates', []):
             nic_object = system.get('request').embed(nic, '@@object?skip_calculated=true')
-
             nic_labs.append(nic_object.get('lab'))
             nic_awards.append(nic_object.get('award'))
-
         if lab not in nic_labs or award not in nic_awards:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
