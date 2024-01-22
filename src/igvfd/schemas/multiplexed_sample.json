@@ -102,8 +102,8 @@
             }
         },
         "barcode_sample_map": {
-            "title": "Barcode Sample Map",
-            "description": "A tabular file that maps each barcode to the appropriate sample.",
+            "title": "Link to barcode sample map tabular file",
+            "description": "The link to the barcode to sample mapping tabular file.",
             "type": "string",
             "linkTo": "TabularFile",
             "submissionExample": {
