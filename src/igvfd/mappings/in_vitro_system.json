@@ -383,7 +383,7 @@
                     "cellular_sub_pool": {
                         "type": "keyword"
                     },
-                    "classification": {
+                    "classifications": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
@@ -1069,7 +1069,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1273,7 +1273,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1685,7 +1685,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "type": "keyword"
                             },
                             "collections": {

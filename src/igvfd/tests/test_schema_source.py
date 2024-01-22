@@ -11,6 +11,6 @@ def test_lab_as_source(lab, award, testapp, human_donor, sample_term_K562):
                                 'sources': [lab['@id']],
                                 'donors': [human_donor['@id']],
                                 'sample_terms': [sample_term_K562['@id']],
-                                'classification': 'cell line'
+                                'classifications': ['cell line']
                             })
     assert res.status_code == 201

@@ -243,7 +243,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, donors, sex, age, age_units=None, embryonic=None, virtual=None, classification=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None):
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
@@ -255,13 +255,23 @@ class Biosample(Sample):
             else:
                 summary_terms = term_name
         elif biosample_type == 'in_vitro_system':
-            summary_terms = f'{term_name} {classification}'
-            if classification in term_name:
-                summary_terms = term_name
-            elif 'cell' in classification and 'cell' in term_name:
-                summary_terms = term_name.replace('cell', classification)
-            elif 'tissue' in classification and 'tissue' in term_name:
-                summary_terms = term_name.replace('tissue', classification)
+            if len(classifications) == 1:
+                summary_terms = f'{term_name} {classifications[0]}'
+                if classifications[0] in term_name:
+                    summary_terms = term_name
+                elif 'cell' in classifications[0] and 'cell' in term_name:
+                    summary_terms = term_name.replace('cell', classifications[0])
+                elif 'tissue' in classifications[0] and 'tissue' in term_name:
+                    summary_terms = term_name.replace('tissue', classifications[0])
+            elif len(classifications) == 2:
+                if 'differentiated cell specimen' in classifications and 'pooled cell specimen' in classifications:
+                    summary_terms = f'{term_name} pooled differentiated cell specimen'
+                    if 'cell' in term_name:
+                        summary_terms = term_name.replace('cell', 'pooled differentiated cell specimen')
+                elif 'reprogrammed cell specimen' in classifications and 'pooled cell specimen' in classifications:
+                    summary_terms = f'{term_name} pooled reprogrammed cell specimen'
+                    if 'cell' in term_name:
+                        summary_terms = term_name.replace('cell', 'pooled reprogrammed cell specimen')
         elif biosample_type == 'tissue':
             if 'tissue' not in term_name:
                 summary_terms = f'{term_name} tissue'
@@ -444,14 +454,18 @@ class PrimaryCell(Biosample):
 
     @calculated_property(
         schema={
-            'title': 'Classification',
+            'title': 'Classifications',
             'description': 'The general category of this type of sample.',
-            'type': 'string',
+            'type': 'array',
+            'items': {
+                'title': 'Classification',
+                'type': 'string'
+            },
             'notSubmittable': True,
         }
     )
-    def classification(self):
-        return self.item_type.replace('_', ' ')
+    def classifications(self):
+        return [self.item_type.replace('_', ' ')]
 
 
 @collection(
@@ -487,14 +501,18 @@ class Tissue(Biosample):
 
     @calculated_property(
         schema={
-            'title': 'Classification',
+            'title': 'Classifications',
             'description': 'The general category of this type of sample.',
-            'type': 'string',
+            'type': 'array',
+            'items': {
+                'title': 'Classification',
+                'type': 'string'
+            },
             'notSubmittable': True,
         }
     )
-    def classification(self):
-        return self.item_type.replace('_', ' ')
+    def classifications(self):
+        return [self.item_type.replace('_', ' ')]
 
 
 @collection(
@@ -556,14 +574,18 @@ class TechnicalSample(Sample):
 
     @calculated_property(
         schema={
-            'title': 'Classification',
+            'title': 'Classifications',
             'description': 'The general category of this type of sample.',
-            'type': 'string',
+            'type': 'array',
+            'items': {
+                'title': 'Classification',
+                'type': 'string'
+            },
             'notSubmittable': True,
         }
     )
-    def classification(self):
-        return self.item_type.replace('_', ' ')
+    def classifications(self):
+        return [self.item_type.replace('_', ' ')]
 
 
 @collection(
@@ -586,14 +608,18 @@ class WholeOrganism(Biosample):
 
     @calculated_property(
         schema={
-            'title': 'Classification',
+            'title': 'Classifications',
             'description': 'The general category of this type of sample.',
-            'type': 'string',
+            'type': 'array',
+            'items': {
+                'title': 'Classification',
+                'type': 'string'
+            },
             'notSubmittable': True,
         }
     )
-    def classification(self):
-        return self.item_type.replace('_', ' ')
+    def classifications(self):
+        return [self.item_type.replace('_', ' ')]
 
 
 @collection(
@@ -774,11 +800,15 @@ class MultiplexedSample(Sample):
 
     @calculated_property(
         schema={
-            'title': 'Classification',
+            'title': 'Classifications',
             'description': 'The general category of this type of sample.',
-            'type': 'string',
+            'type': 'array',
+            'items': {
+                'title': 'Classification',
+                'type': 'string'
+            },
             'notSubmittable': True,
         }
     )
-    def classification(self):
-        return self.item_type.replace('_', ' ')
+    def classifications(self):
+        return [self.item_type.replace('_', ' ')]

@@ -22,8 +22,8 @@ def in_vitro_system():
             'sex': {
                 'title': 'Sex'
             },
-            'classification': {
-                'title': 'Classification',
+            'classifications': {
+                'title': 'Classifications',
             },
             'collections': {
                 'title': 'Collections',
@@ -71,7 +71,7 @@ def in_vitro_system():
                     'treatments.treatment_term_name',
                     'taxa',
                     'sex',
-                    'classification',
+                    'classifications',
                     'biomarkers.classification',
                     'virtual',
                 ]
@@ -107,8 +107,8 @@ def in_vitro_system():
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
-            'classification': {
-                'title': 'Classification'
+            'classifications': {
+                'title': 'Classifications'
             },
             'sample_terms': {
                 'title': 'Sample Terms'

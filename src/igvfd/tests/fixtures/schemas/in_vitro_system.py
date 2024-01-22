@@ -5,7 +5,7 @@ import pytest
 def in_vitro_cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562):
     item = {
         'accession': 'IGVFSM2222BBBB',
-        'classification': 'cell line',
+        'classifications': ['cell line'],
         'award': award['@id'],
         'lab': other_lab['@id'],
         'sources': [other_lab['@id']],
@@ -18,7 +18,7 @@ def in_vitro_cell_line(testapp, other_lab, award, rodent_donor, sample_term_K562
 @pytest.fixture
 def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sample_term_K562, treatment_chemical, sample_term_brown_adipose_tissue):
     item = {
-        'classification': 'differentiated cell specimen',
+        'classifications': ['differentiated cell specimen'],
         'award': award['@id'],
         'lab': lab['@id'],
         'sources': [source['@id']],
@@ -35,7 +35,7 @@ def in_vitro_differentiated_cell(testapp, lab, award, source, human_donor, sampl
 @pytest.fixture
 def in_vitro_organoid(testapp, lab, award, source, human_donor, sample_term_adrenal_gland, treatment_protein):
     item = {
-        'classification': 'organoid',
+        'classifications': ['organoid'],
         'award': award['@id'],
         'lab': lab['@id'],
         'sources': [source['@id']],
@@ -151,7 +151,7 @@ def in_vitro_system_sub(lab, award, source, human_donor, sample_term_adrenal_gla
         'sources': [source['@id']],
         'donors': [human_donor['@id']],
         'sample_terms': [sample_term_adrenal_gland['@id']],
-        'classification': 'embryoid'
+        'classifications': ['embryoid']
     }
     return item
 
@@ -255,4 +255,17 @@ def in_vitro_system_v17(
         'cell_fate_change_treatments': [treatment_protein['@id']],
         'targeted_sample_term': sample_term_endothelial_cell['@id']
     })
+    return item
+
+
+@pytest.fixture
+def in_vitro_system_v18(lab, award, source, human_donor, sample_term_adrenal_gland):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'sources': [source['@id']],
+        'donors': [human_donor['@id']],
+        'sample_terms': [sample_term_adrenal_gland['@id']],
+        'classification': 'embryoid'
+    }
     return item

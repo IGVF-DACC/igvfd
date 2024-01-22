@@ -8,7 +8,7 @@ def test_passage_number_dependency(in_vitro_cell_line, testapp):
     assert res.status_code == 200
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'classification': 'differentiated cell'}, expect_errors=True)
+        {'classifications': ['differentiated cell']}, expect_errors=True)
     assert res.status_code == 422
 
 
@@ -16,18 +16,18 @@ def test_time_post_factors_dependency(in_vitro_cell_line, treatment_chemical, sa
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'classification': 'differentiated cell specimen',
+            'classifications': ['differentiated cell specimen'],
             'time_post_change': 3
         },
         expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'classification': 'differentiated cell specimen', 'cell_fate_change_treatments': [treatment_chemical['@id']]}, expect_errors=True)
+        {'classifications': ['differentiated cell specimen'], 'cell_fate_change_treatments': [treatment_chemical['@id']]}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'classification': 'differentiated cell specimen', 'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_treatments': [treatment_chemical['@id']], 'targeted_sample_term': sample_term_endothelial_cell['@id']})
+        {'classifications': ['differentiated cell specimen'], 'time_post_change': 3, 'time_post_change_units': 'day', 'cell_fate_change_treatments': [treatment_chemical['@id']], 'targeted_sample_term': sample_term_endothelial_cell['@id']})
     assert res.status_code == 200
 
 
@@ -74,9 +74,9 @@ def test_cellular_sub_pool(testapp, in_vitro_differentiated_cell, primary_cell, 
         {'cellular_sub_pool': 'LW231B-2'}, expect_errors=True)
 
 
-def test_classification_dependency(testapp, lab, award, source, human_donor, sample_term_K562, treatment_chemical, in_vitro_cell_line, sample_term_brown_adipose_tissue):
+def test_classifications_dependency(testapp, lab, award, source, human_donor, sample_term_K562, treatment_chemical, in_vitro_cell_line, sample_term_brown_adipose_tissue):
     item = {
-        'classification': 'differentiated cell specimen',
+        'classifications': ['differentiated cell specimen'],
         'award': award['@id'],
         'lab': lab['@id'],
         'sources': [source['@id']],
@@ -92,7 +92,7 @@ def test_classification_dependency(testapp, lab, award, source, human_donor, sam
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'classification': 'organoid',
+            'classifications': ['organoid'],
             'cell_fate_change_treatments': [treatment_chemical['@id']],
             'time_post_change': 5,
             'time_post_change_units': 'minute'
@@ -101,7 +101,7 @@ def test_classification_dependency(testapp, lab, award, source, human_donor, sam
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'classification': 'organoid',
+            'classifications': ['organoid'],
             'cell_fate_change_treatments': [treatment_chemical['@id']],
             'time_post_change': 5,
             'time_post_change_units': 'minute',

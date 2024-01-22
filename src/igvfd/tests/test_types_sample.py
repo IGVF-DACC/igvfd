@@ -108,19 +108,20 @@ def test_multiplexed_sample_props(
     assert multiplexed_in == [multiplexed_sample['@id']]
 
 
-def test_classification(testapp, primary_cell, technical_sample, whole_organism, tissue, in_vitro_cell_line, multiplexed_sample):
+def test_classifications(testapp, primary_cell, technical_sample, whole_organism, tissue, in_vitro_cell_line, multiplexed_sample):
     res = testapp.get(primary_cell['@id'])
-    assert res.json.get('classification') == 'primary cell'
+    print(res)
+    assert res.json.get('classifications') == ['primary cell']
     res = testapp.get(technical_sample['@id'])
-    assert res.json.get('classification') == 'technical sample'
+    assert res.json.get('classifications') == ['technical sample']
     res = testapp.get(whole_organism['@id'])
-    assert res.json.get('classification') == 'whole organism'
+    assert res.json.get('classifications') == ['whole organism']
     res = testapp.get(tissue['@id'])
-    assert res.json.get('classification') == 'tissue'
+    assert res.json.get('classifications') == ['tissue']
     res = testapp.get(in_vitro_cell_line['@id'])
-    assert res.json.get('classification') == 'cell line'
+    assert res.json.get('classifications') == ['cell line']
     res = testapp.get(multiplexed_sample['@id'])
-    assert res.json.get('classification') == 'multiplexed sample'
+    assert res.json.get('classifications') == ['multiplexed sample']
 
 
 def test_sorted_fractions(testapp, primary_cell, tissue, in_vitro_cell_line):

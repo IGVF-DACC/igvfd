@@ -13,8 +13,8 @@ def whole_organism():
             'sex': {
                 'title': 'Sex'
             },
-            'classification': {
-                'title': 'Classification',
+            'classifications': {
+                'title': 'Classifications',
             },
             'treatments.treatment_type': {
                 'title': 'Treatments'
@@ -65,7 +65,7 @@ def whole_organism():
                 'facet_fields': [
                     'taxa',
                     'sex',
-                    'classification',
+                    'classifications',
                     'treatments.treatment_type',
                     'biomarkers.classification',
                     'sample_terms.term_name',
@@ -106,8 +106,8 @@ def whole_organism():
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
-            'classification': {
-                'title': 'Classification'
+            'classifications': {
+                'title': 'Classifications'
             },
             'donors': {
                 'title': 'Donors'

@@ -1,7 +1,9 @@
 [
     {
         "uuid": "3de8faf0-7a25-11ed-a1eb-0242ac120002",
-        "classification": "cell line",
+        "classifications": [
+            "cell line"
+        ],
         "lab": "j-michael-cherry",
         "accession": "IGVFSM0000AAAZ",
         "award": "HG012012",
@@ -50,7 +52,9 @@
     },
     {
         "uuid": "1b14530d-5514-419a-ad8f-e2f110c26232",
-        "classification": "differentiated cell specimen",
+        "classifications": [
+            "differentiated cell specimen"
+        ],
         "lab": "danwei-huangfu",
         "accession": "IGVFSM0008HUES",
         "award": "1U01HG012051-01",
@@ -82,7 +86,9 @@
     },
     {
         "uuid": "21fb495c-b700-11ed-afa1-0242ac120002",
-        "classification": "cell line",
+        "classifications": [
+            "cell line"
+        ],
         "lab": "j-michael-cherry",
         "accession": "IGVFSM0001AAAZ",
         "award": "HG012012",
@@ -131,7 +137,9 @@
     },
     {
         "uuid": "390c2a4e-b700-11ed-afa1-0242ac120002",
-        "classification": "cell line",
+        "classifications": [
+            "cell line"
+        ],
         "lab": "j-michael-cherry",
         "accession": "IGVFSM0002AAAZ",
         "award": "HG012012",

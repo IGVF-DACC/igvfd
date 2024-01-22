@@ -2115,7 +2115,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "copy_to": "_exact",
                                 "type": "keyword"
                             },
