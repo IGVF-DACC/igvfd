@@ -1,6 +1,6 @@
 {
-    "hash": "c768153c81bc644f9366d378534329a7",
-    "index_name": "in_vitro_system_c768153c",
+    "hash": "45224f8ed40e7a846302d183224d52c9",
+    "index_name": "in_vitro_system_45224f8e",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1048,6 +1048,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "barcode_sample_map": {
+                                "type": "keyword"
+                            },
                             "biomarkers": {
                                 "type": "keyword"
                             },
@@ -1638,6 +1641,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_sample_map": {
                                 "type": "keyword"
                             },
                             "biomarkers": {

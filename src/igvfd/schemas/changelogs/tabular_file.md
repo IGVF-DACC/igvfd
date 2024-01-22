@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 5
 
-* Add `sequence barcodes` to `content_type`.
+* Add `sequence barcodes` and `barcode to sample mapping` to `content_type`.
 
 ### Schema version 5
 

@@ -1,6 +1,6 @@
 {
-    "hash": "a26a86a386540ffba382aa4d7cc55a38",
-    "index_name": "auxiliary_set_a26a86a3",
+    "hash": "fcb8ccdeb62404f63131ae31da1b6c5b",
+    "index_name": "auxiliary_set_fcb8ccde",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1266,6 +1266,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_sample_map": {
                                 "type": "keyword"
                             },
                             "biomarkers": {

@@ -280,8 +280,8 @@
             "type": "string",
             "linkTo": "Document",
             "submissionExample": {
-                "appscript": "[\"john-doe:document01\", \"/documents/1dd3f63d-13b5-08f8-14b2-2974bd674f59/\"]",
-                "igvf_utils": "john-doe:document01, /documents/1dd3f63d-13b5-08f8-14b2-2974bd674f59/"
+                "appscript": "john-doe:document01 or /documents/1dd3f63d-13b5-08f8-14b2-2974bd674f59/",
+                "igvf_utils": "john-doe:document01 or /documents/1dd3f63d-13b5-08f8-14b2-2974bd674f59/"
             }
         },
         "originated_from": {

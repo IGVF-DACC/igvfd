@@ -14,6 +14,7 @@
         "multiplexed_samples": [
             "igvf-dacc:in_vitro_system_cell_line",
             "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_2"
-        ]
+        ],
+        "barcode_sample_map": "IGVFFI0000SBRD"
     }
 ]

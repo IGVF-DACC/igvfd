@@ -101,6 +101,16 @@
                 "igvf_utils": "subPool_l1234"
             }
         },
+        "barcode_sample_map": {
+            "title": "Barcode Sample Map",
+            "description": "A tabular file that maps each barcode to the appropriate sample.",
+            "type": "string",
+            "linkTo": "TabularFile",
+            "submissionExample": {
+                "appscript": "john-doe:tabular_file01 or IGVFFI4067OVRI",
+                "igvf_utils": "john-doe:tabular_file01 or IGVFFI4067OVRI"
+            }
+        },
         "construct_library_sets": {
             "comment": "Do not submit. Construct library sets should only be specified on individual samples contributing to a multiplexed sample object."
         },

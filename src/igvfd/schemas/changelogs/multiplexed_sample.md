@@ -3,6 +3,7 @@
 ### Schema version 6
 
 * Disallow empty strings in `description`.
+* Add `barcode_sample_map`.
 
 ### Schema version 5
 
