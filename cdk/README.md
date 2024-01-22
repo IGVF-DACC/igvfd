@@ -128,7 +128,15 @@ Browse using the demo URL (e.g. `https://igvfd-igvf-1234-my-feature-branch.demo.
 
 ## Clean up demo stacks
 
-To clean up demo stacks and the associated CodePipeline:
+### Delete Github branch
+
+The easiest way to clean up demo stacks is to delete the Github branch associated with it (e.g. after the branch is merged). This will automatically clean up any stacks (frontend or backend) with a matching branch name.
+
+Note there is a lag between when a branch is deleted and when the cleaner runs and deletes demo stacks. If you try to redeploy a demo with the same branch name before the cleaner is done processing a branch, the new stacks will also get deleted.
+
+### Manual clean up
+
+To manually clean up demo stacks and the associated CodePipeline:
 
 ```bash
 $ python commands/cdk_destroy_all_stacks.py -c branch=IGVF-1234-my-feature-branch --profile igvf-dev
@@ -137,7 +145,7 @@ $ python commands/cdk_destroy_all_stacks.py -c branch=IGVF-1234-my-feature-branc
 
 Pass the `--force` flag to bypass the confirmation prompts.
 
-### Automatic clean up
+### Automatic time-based clean up
 
 By default demo stacks have a lifetime of 72 hours, after which they get destroyed. Additionally, by default the demo stacks will be deleted during the Friday night (Friday night means 0000-0659 hours on Saturday, US/Pacific timezone). This behavior is configured in `cdk/infrastructure/config.py`. Altering the default behavior can be done by editing and committing changes to values in
 ```
