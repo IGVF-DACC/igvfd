@@ -133,7 +133,8 @@
             "submissionExample": {
                 "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
                 "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
-            }
+            },
+            "permission": "import_items"
         },
         "small_scale_gene_list": {
             "description": "The specific, small scale list of (<=100) gene(s) this prediction set targets.",
@@ -196,7 +197,8 @@
             "submissionExample": {
                 "appscript": "[{\"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]",
                 "igvf_utils": "[{\"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]"
-            }
+            },
+            "permission": "import_items"
         }
     },
     "fuzzy_searchable_fields": [
