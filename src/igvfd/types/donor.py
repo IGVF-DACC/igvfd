@@ -30,6 +30,9 @@ class Donor(Item):
              'term_name', 'quantity', 'quantity_units', 'observation_date'])
     ]
 
+    set_status_up = []
+    set_status_down = []
+
 
 @collection(
     name='human-donors',

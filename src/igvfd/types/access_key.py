@@ -50,6 +50,8 @@ class AccessKey(Item):
     schema = load_schema('igvfd:schemas/access_key.json')
     name_key = 'access_key_id'
     embedded_with_frame = [Path('submitted_by', include=['@id', 'title']), ]
+    set_status_up = []
+    set_status_down = []
 
     STATUS_ACL = {
         'current': [(Allow, 'role.owner', ['view', 'edit'])] + ONLY_ADMIN_VIEW,

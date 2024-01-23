@@ -25,3 +25,6 @@ class PhenotypicFeature(Item):
         Path('feature', include=['@id', 'term_id', 'term_name']),
         Path('submitted_by', include=['@id', 'title']),
     ]
+
+    set_status_up = []
+    set_status_down = []

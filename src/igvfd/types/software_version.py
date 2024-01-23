@@ -31,6 +31,9 @@ class SoftwareVersion(Item):
         Path('software', include=['@id', 'title']),
     ]
 
+    set_status_up = []
+    set_status_down = []
+
     def unique_keys(self, properties):
         keys = super(SoftwareVersion, self).unique_keys(properties)
         keys.setdefault('software_version:name', []).append(self._name(properties))

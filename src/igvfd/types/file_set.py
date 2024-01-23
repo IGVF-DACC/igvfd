@@ -77,6 +77,9 @@ class FileSet(Item):
         'donors',
     ]
 
+    set_status_up = []
+    set_status_down = []
+
     @calculated_property(schema={
         'title': 'Files',
         'type': 'array',
