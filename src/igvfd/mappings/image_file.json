@@ -1,6 +1,6 @@
 {
-    "hash": "2165f357f65213465dd45754a30bf25f",
-    "index_name": "image_file_2165f357",
+    "hash": "6671e154eae96280a06f65a994189015",
+    "index_name": "image_file_6671e154",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -340,6 +340,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
                     },
                     "revoke_detail": {
                         "type": "keyword"

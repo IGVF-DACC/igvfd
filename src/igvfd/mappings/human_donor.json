@@ -1,6 +1,6 @@
 {
-    "hash": "0734b4c2a8c0d17ef0dbd6522239aba4",
-    "index_name": "human_donor_0734b4c2",
+    "hash": "5d49ae6a63d00b7593a8cfc9bdb5c2b1",
+    "index_name": "human_donor_5d49ae6a",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -369,6 +369,9 @@
                                     "ontology": {
                                         "type": "keyword"
                                     },
+                                    "release_timestamp": {
+                                        "type": "keyword"
+                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -419,6 +422,9 @@
                                 "type": "float"
                             },
                             "quantity_units": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
                                 "type": "keyword"
                             },
                             "schema_version": {
@@ -512,6 +518,9 @@
                                         },
                                         "type": "object"
                                     },
+                                    "release_timestamp": {
+                                        "type": "keyword"
+                                    },
                                     "revoke_detail": {
                                         "type": "keyword"
                                     },
@@ -559,6 +568,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
                     },
                     "revoke_detail": {
                         "type": "keyword"

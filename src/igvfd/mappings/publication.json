@@ -1,6 +1,6 @@
 {
-    "hash": "2130b22df9155ddcf8544653dd94f39b",
-    "index_name": "publication_2130b22d",
+    "hash": "b13d15f9a02e43583fd51196999645c4",
+    "index_name": "publication_b13d15f9",
     "item_type": "publication",
     "mapping": {
         "dynamic_templates": [
@@ -370,6 +370,9 @@
                         "type": "long"
                     },
                     "published_by": {
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
                         "type": "keyword"
                     },
                     "schema_version": {

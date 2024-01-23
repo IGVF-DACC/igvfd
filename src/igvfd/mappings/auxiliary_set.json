@@ -501,6 +501,9 @@
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -727,6 +730,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "release_timestamp": {
+                                "type": "keyword"
                             },
                             "revoke_detail": {
                                 "type": "keyword"
@@ -973,6 +979,9 @@
                             "reference_files": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -1200,6 +1209,9 @@
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -1235,6 +1247,9 @@
                     },
                     "publication_identifiers": {
                         "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
                         "type": "keyword"
                     },
                     "revoke_detail": {
@@ -1421,6 +1436,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -1472,6 +1490,9 @@
                                         "type": "keyword"
                                     },
                                     "organ_slims": {
+                                        "type": "keyword"
+                                    },
+                                    "release_timestamp": {
                                         "type": "keyword"
                                     },
                                     "schema_version": {
@@ -1596,6 +1617,9 @@
                                         "type": "keyword"
                                     },
                                     "organ_slims": {
+                                        "type": "keyword"
+                                    },
+                                    "release_timestamp": {
                                         "type": "keyword"
                                     },
                                     "schema_version": {

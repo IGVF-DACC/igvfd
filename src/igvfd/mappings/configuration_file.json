@@ -1,6 +1,6 @@
 {
-    "hash": "5547dcc5766304aec229b57273dd418f",
-    "index_name": "configuration_file_5547dcc5",
+    "hash": "ce9b6abbc2a910b86846fad0f0145a50",
+    "index_name": "configuration_file_ce9b6abb",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -340,6 +340,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
                     },
                     "revoke_detail": {
                         "type": "keyword"

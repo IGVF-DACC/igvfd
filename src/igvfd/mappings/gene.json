@@ -1,6 +1,6 @@
 {
-    "hash": "9c141efc794fd30e842cf3f57c2ca93c",
-    "index_name": "gene_9c141efc",
+    "hash": "afc67bf3cc7e3d593b6f47010e6b4e28",
+    "index_name": "gene_afc67bf3",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -203,6 +203,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
                     },
                     "schema_version": {
                         "type": "keyword"

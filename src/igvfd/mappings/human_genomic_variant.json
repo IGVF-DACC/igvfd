@@ -1,6 +1,6 @@
 {
-    "hash": "6f0b1a1a005ac224bcab075e8b4d6432",
-    "index_name": "human_genomic_variant_6f0b1a1a",
+    "hash": "b54e80c195ed15b9c59b72985d602e3e",
+    "index_name": "human_genomic_variant_b54e80c1",
     "item_type": "human_genomic_variant",
     "mapping": {
         "dynamic_templates": [
@@ -189,6 +189,9 @@
                     },
                     "refseq_id": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
                         "type": "keyword"
                     },
                     "rsid": {

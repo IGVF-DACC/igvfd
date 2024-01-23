@@ -1,6 +1,6 @@
 {
-    "hash": "86f0e78170ac1490e0ebd2f4d7d770d4",
-    "index_name": "phenotype_term_86f0e781",
+    "hash": "9d7dd4b8ee0c6563a54b91d7b5519618",
+    "index_name": "phenotype_term_9d7dd4b8",
     "item_type": "phenotype_term",
     "mapping": {
         "dynamic_templates": [
@@ -173,6 +173,9 @@
                         "type": "text"
                     },
                     "ontology": {
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
                         "type": "keyword"
                     },
                     "schema_version": {

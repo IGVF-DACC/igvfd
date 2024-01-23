@@ -1,6 +1,6 @@
 {
-    "hash": "db32fad3c972c3bb5f18539b6c21f267",
-    "index_name": "rodent_donor_db32fad3",
+    "hash": "3c08255fd509bce9ee3e17d58862fc8b",
+    "index_name": "rodent_donor_3c08255f",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -377,6 +377,9 @@
                                     "ontology": {
                                         "type": "keyword"
                                     },
+                                    "release_timestamp": {
+                                        "type": "keyword"
+                                    },
                                     "schema_version": {
                                         "type": "keyword"
                                     },
@@ -429,6 +432,9 @@
                             "quantity_units": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -454,6 +460,9 @@
                         "type": "keyword"
                     },
                     "publication_identifiers": {
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
                         "type": "keyword"
                     },
                     "revoke_detail": {
@@ -499,6 +508,9 @@
                                 "type": "text"
                             },
                             "pi": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
                                 "type": "keyword"
                             },
                             "schema_version": {

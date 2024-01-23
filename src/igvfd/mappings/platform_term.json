@@ -1,6 +1,6 @@
 {
-    "hash": "3c0d657af1b6d82805245e607279ee21",
-    "index_name": "platform_term_3c0d657a",
+    "hash": "f8b4f958be5dac7034924912cef80020",
+    "index_name": "platform_term_f8b4f958",
     "item_type": "platform_term",
     "mapping": {
         "dynamic_templates": [
@@ -176,6 +176,9 @@
                         "type": "text"
                     },
                     "ontology": {
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
                         "type": "keyword"
                     },
                     "schema_version": {

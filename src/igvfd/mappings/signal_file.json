@@ -1,6 +1,6 @@
 {
-    "hash": "3378cf5e53eab6e2a11a1ba222520def",
-    "index_name": "signal_file_3378cf5e",
+    "hash": "41e993f40407e8332e9b35311e5bc75e",
+    "index_name": "signal_file_41e993f4",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -366,6 +366,9 @@
                         "type": "text"
                     },
                     "reference_files": {
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
                         "type": "keyword"
                     },
                     "revoke_detail": {
