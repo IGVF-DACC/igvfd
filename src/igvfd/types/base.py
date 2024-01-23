@@ -276,8 +276,8 @@ class Item(snovault.Item):
         # Some release specific functionality.
         if new_status == 'released':
             # This won't be reassigned if you rerelease something.
-            if 'date_released' in schema['properties'] and 'date_released' not in new_properties:
-                new_properties['date_released'] = str(datetime.now().date())
+            if 'release_timestamp' in schema['properties'] and 'release_timestamp' not in new_properties:
+                new_properties['release_timestamp'] = str(datetime.now().date())
         if validate:
             self._validate_set_status_patch(request, schema, new_properties, current_properties)
         # Don't update if update parameter not true.

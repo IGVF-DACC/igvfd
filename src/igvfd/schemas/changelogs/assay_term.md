@@ -3,6 +3,7 @@
 ### Minor changes since schema version 3
 
 * Add `preferred_assay_titles`.
+* Add `release_timestamp`.
 
 ### Schema version 3
 

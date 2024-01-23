@@ -4,6 +4,7 @@
 
 * Add a `title` property to `tile`.
 * Allow underscores in the pattern for `chromosome` in `loci`.
+* Add `release_timestamp`.
 
 ### Schema version 3
 

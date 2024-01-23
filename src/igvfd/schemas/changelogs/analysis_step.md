@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_step.json`*
 
+### Minor changes since schema version 4
+
+* Add `release_timestamp`.
+
 ### Schema version 4
 
 * Disallow empty strings in `description`.

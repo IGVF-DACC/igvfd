@@ -30,6 +30,9 @@
         },
         {
             "$ref": "mixins.json#/transcriptome_annotation"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
         }
     ],
     "dependentSchemas": {

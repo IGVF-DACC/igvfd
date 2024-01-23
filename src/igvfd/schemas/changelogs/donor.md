@@ -1,5 +1,6 @@
 ## Changelog for *`donor.json`*
 
+* Add `release_timestamp`. (01/31/2024)
 * Allow ENCODE donors in `dbxrefs`. (11/28/2023)
 * Rename `references` to `publication_identifiers`. (08/02/2023)
 * Add `virtual`. (06/05/2023)

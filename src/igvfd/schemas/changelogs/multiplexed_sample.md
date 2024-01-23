@@ -3,6 +3,7 @@
 ### Minor changes since schema version 6
 
 * Add `barcode_sample_map`.
+* Add `release_timestamp`.
 
 ### Schema version 6
 

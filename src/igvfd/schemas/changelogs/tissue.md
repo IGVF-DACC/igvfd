@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Minor changes since schema version 17
+
+* Add `release_timestamp`.
+
 ### Schema version 17
 
 * Disallow empty strings in `description`.

@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Add `release_timestamp`. (01/31/2024)
 * Disallow empty strings in `description`. (12/02/2023)
 * Rename `source` to `sources`. (08/09/2023)
 * Rename `references` to `publication_identifiers`. (08/02/2023)

@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Minor changes since schema version 12
+
+* Add `release_timestamp`.
+
 ### Schema version 12
 
 * Disallow empty strings in `description`.

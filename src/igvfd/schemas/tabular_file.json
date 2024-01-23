@@ -40,6 +40,9 @@
         },
         {
             "$ref": "mixins.json#/file_format_type"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
         }
     ],
     "dependentSchemas": {

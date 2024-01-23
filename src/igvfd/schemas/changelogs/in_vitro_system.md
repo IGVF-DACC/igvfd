@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Minor changes since schema version 18
+
+* Add `release_timestamp`.
+
 ### Schema version 18
 
 * Restrict specification of `cell_fate_change_protocol`, `cell_fate_change_treatments`, `targeted_sample_term`, `time_post_change`, and `time_post_change_units` if `classification` is `cell line`.
