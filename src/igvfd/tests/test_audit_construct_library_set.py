@@ -45,9 +45,7 @@ def test_audit_construct_library_set_exon_with_multiple_genes(
     testapp,
     base_expression_construct_library_set,
     gene_myc_hs, gene_CD1E,
-    construct_library_set_tile,
-    construct_library_set_genome_wide,
-    tabular_file
+    construct_library_set_tile
 ):
     # If the listed scope is "exon" or "tile", only 1 entry is expected in small_scale_gene_list property and large_scale_gene_list is not expected
     testapp.patch_json(
@@ -62,17 +60,6 @@ def test_audit_construct_library_set_exon_with_multiple_genes(
     testapp.patch_json(
         construct_library_set_tile['@id'],
         {'small_scale_gene_list': [gene_CD1E['@id'], gene_myc_hs['@id']]}
-    )
-    res = testapp.get(construct_library_set_tile['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent scope metadata'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-    testapp.patch_json(
-        construct_library_set_genome_wide['@id'],
-        {'large_scale_gene_list': tabular_file['@id'],
-         'scope': 'exon',
-         'exon': 'E2'}
     )
     res = testapp.get(construct_library_set_tile['@id'] + '@@audit')
     assert any(

@@ -123,9 +123,8 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'lab': lab['@id'],
             'award': award['@id'],
             'file_set_type': 'expression vector library',
-            'scope': 'tile',
+            'scope': 'genes',
             'selection_criteria': ['transcription start sites'],
-            'large_scale_gene_list': tabular_file['@id'],
-            'tile': {'tile_id': 'tile1', 'tile_start': 1, 'tile_end': 56}
+            'large_scale_gene_list': tabular_file['@id']
         })
     assert res.status_code == 201

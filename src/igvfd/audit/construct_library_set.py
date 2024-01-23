@@ -75,11 +75,3 @@ def audit_construct_library_set_scope(value, system):
             )
             yield AuditFailure('inconsistent scope metadata',
                                detail, level='WARNING')
-        elif value.get('large_scale_gene_list'):
-            detail = (
-                f'ConstructLibrarySet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'specifies it has a scope of {value["scope"]}, but has large_scale_gene_list, '
-                f'which is only expected for multiple (>100) genes.'
-            )
-            yield AuditFailure('inconsistent scope metadata',
-                               detail, level='WARNING')
