@@ -1,6 +1,6 @@
 {
-    "hash": "1ab39910a369e88d65a7752801064973",
-    "index_name": "construct_library_set_1ab39910",
+    "hash": "3e964e1db9d031345e07d0b60d48460c",
+    "index_name": "construct_library_set_3e964e1d",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -181,6 +181,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_sample_map": {
                                 "type": "keyword"
                             },
                             "biomarkers": {

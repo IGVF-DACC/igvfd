@@ -1,6 +1,6 @@
 {
-    "hash": "be14ade6de4be4772d1c9253739f5d08",
-    "index_name": "model_set_be14ade6",
+    "hash": "e40eeffa5a08c00d7803f09a272db0a7",
+    "index_name": "model_set_e40eeffa",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1486,6 +1486,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_sample_map": {
                                 "type": "keyword"
                             },
                             "biomarkers": {

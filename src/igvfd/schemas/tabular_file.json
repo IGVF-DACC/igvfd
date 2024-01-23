@@ -151,7 +151,8 @@
             "enum": [
                 "guide RNA sequences",
                 "peaks",
-                "sequence barcodes"
+                "sequence barcodes",
+                "barcode to sample mapping"
             ],
             "submissionExample": {
                 "appscript": "guide RNA sequences",

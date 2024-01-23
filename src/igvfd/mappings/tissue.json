@@ -1,6 +1,6 @@
 {
-    "hash": "7e15ec0a5cb3cf8997a9e56eebe64d0b",
-    "index_name": "tissue_7e15ec0a",
+    "hash": "6d7317ffbf6adb88f23e6a93201bd772",
+    "index_name": "tissue_6d7317ff",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -910,6 +910,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "barcode_sample_map": {
+                                "type": "keyword"
+                            },
                             "biomarkers": {
                                 "type": "keyword"
                             },
@@ -1225,6 +1228,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_sample_map": {
                                 "type": "keyword"
                             },
                             "biomarkers": {

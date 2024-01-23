@@ -55,5 +55,22 @@
         "upload_status": "validated",
         "status": "released",
         "file_set": "igvf:analysis_set_with_input"
+    },
+    {
+        "uuid": "c9abe4ea-8589-470e-ae1a-653a53d2d24d",
+        "accession": "IGVFFI0000SBRD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_04_barcode_to_sample_mapping"
+        ],
+        "md5sum": "e1b62fa365be8375310b0393fe27a68d",
+        "file_format": "txt",
+        "content_type": "barcode to sample mapping",
+        "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_sample_mapping.txt.gz",
+        "file_size": 8340,
+        "upload_status": "validated",
+        "status": "released",
+        "file_set": "igvf:analysis_set_with_input"
     }
 ]

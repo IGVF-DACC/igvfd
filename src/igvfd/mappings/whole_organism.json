@@ -1,6 +1,6 @@
 {
-    "hash": "2b0fbe3b27abdf6aca96a5bbdaf52ec5",
-    "index_name": "whole_organism_2b0fbe3b",
+    "hash": "909e2d2d96b14d82041057e8e7b96e1f",
+    "index_name": "whole_organism_909e2d2d",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -907,6 +907,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "barcode_sample_map": {
+                                "type": "keyword"
+                            },
                             "biomarkers": {
                                 "type": "keyword"
                             },
@@ -1207,6 +1210,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_sample_map": {
                                 "type": "keyword"
                             },
                             "biomarkers": {
