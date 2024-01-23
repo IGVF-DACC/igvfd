@@ -5,6 +5,7 @@
 * Rename `targeted_genes` to `genes`.
 * Rename `targeted_loci` to `loci`.
 * Add `small_scale_gene_list`, `large_scale_gene_list`, `small_scale_loci_list`, and `large_scale_loci_list`.
+* Restrict `genes` and `loci` to submittable by admins only. Please submit `small_scale_gene_list`, `large_scale_gene_list`, `small_scale_loci_list`, or `large_scale_loci_list` instead.
 
 
 ### Minor changes since schema version 3

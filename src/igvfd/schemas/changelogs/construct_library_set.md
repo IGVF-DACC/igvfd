@@ -6,6 +6,7 @@
 * Allow underscores in the pattern for `chromosome` in `loci`.
 * Add `release_timestamp`.
 * Add `small_scale_gene_list`, `large_scale_gene_list`, `small_scale_loci_list`, and `large_scale_loci_list`.
+* Restrict `genes` and `loci` to submittable by admins only. Please submit `small_scale_gene_list`, `large_scale_gene_list`, `small_scale_loci_list`, or `large_scale_loci_list` instead.
 
 ### Schema version 3
 
