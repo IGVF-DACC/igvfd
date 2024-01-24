@@ -51,6 +51,8 @@ class HumanDonor(Donor):
     audit_inherit = [
         'related_donors.donor'
     ]
+    set_status_up = Donor.set_status_up + []
+    set_status_down = Donor.set_status_down + []
 
 
 @collection(
@@ -67,6 +69,8 @@ class RodentDonor(Donor):
     embedded_with_frame = Donor.embedded_with_frame + [
         Path('sources', include=['@id', 'title']),
     ]
+    set_status_up = Donor.set_status_up + []
+    set_status_down = Donor.set_status_down + []
 
     def unique_keys(self, properties):
         keys = super(RodentDonor, self).unique_keys(properties)

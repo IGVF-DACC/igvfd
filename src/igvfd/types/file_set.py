@@ -77,8 +77,14 @@ class FileSet(Item):
         'donors',
     ]
 
-    set_status_up = []
-    set_status_down = []
+    set_status_up = [
+        'documents',
+        'input_file_sets',
+        'samples'
+    ]
+    set_status_down = [
+        'samples'
+    ]
 
     @calculated_property(schema={
         'title': 'Files',
@@ -122,6 +128,8 @@ class AnalysisSet(FileSet):
         Path('input_file_sets', include=['@id', 'accession', 'aliases'])
     ]
     audit_inherit = FileSet.audit_inherit
+    set_status_up = FileSet.set_status_up + []
+    set_status_down = FileSet.set_status_down + []
 
     @calculated_property(
         schema={
@@ -180,6 +188,8 @@ class CuratedSet(FileSet):
     schema = load_schema('igvfd:schemas/curated_set.json')
     embedded_with_frame = FileSet.embedded_with_frame
     audit_inherit = FileSet.audit_inherit
+    set_status_up = FileSet.set_status_up + []
+    set_status_down = FileSet.set_status_down + []
 
     @calculated_property(
         define=True,
@@ -280,6 +290,13 @@ class MeasurementSet(FileSet):
         'assay_term',
         'readout',
     ]
+
+    set_status_up = FileSet.set_status_up + [
+        'assay_term',
+        'library_construction_platform',
+        'readout'
+    ]
+    set_status_down = FileSet.set_status_down + []
 
     @calculated_property(
         condition='multiome_size',
@@ -419,6 +436,10 @@ class ModelSet(FileSet):
         Path('input_file_sets', include=['@id', 'accession', 'aliases'])
     ]
     audit_inherit = FileSet.audit_inherit
+    set_status_up = FileSet.set_status_up + [
+        'software_version'
+    ]
+    set_status_down = FileSet.set_status_down + []
 
 
 @collection(
@@ -436,6 +457,10 @@ class AuxiliarySet(FileSet):
     ]
     audit_inherit = FileSet.audit_inherit
     rev = FileSet.rev | {'measurement_sets': ('MeasurementSet', 'auxiliary_sets')}
+    set_status_up = FileSet.set_status_up + [
+        'library_construction_platform'
+    ]
+    set_status_down = FileSet.set_status_down + []
 
     @calculated_property(schema={
         'title': 'Measurement Sets',
@@ -502,6 +527,8 @@ class PredictionSet(FileSet):
         Path('samples.construct_library_sets', include=['@id', 'accession', 'summary']),
     ]
     audit_inherit = FileSet.audit_inherit
+    set_status_up = FileSet.set_status_up + []
+    set_status_down = FileSet.set_status_down + []
 
 
 @collection(
@@ -532,6 +559,9 @@ class ConstructLibrarySet(FileSet):
     ]
 
     rev = FileSet.rev | {'applied_to_samples': ('Sample', 'construct_library_sets')}
+
+    set_status_up = FileSet.set_status_up + []
+    set_status_down = FileSet.set_status_down + []
 
     @calculated_property(schema={
         'title': 'Applied to Samples',
