@@ -365,6 +365,7 @@ def test_audit_inherit_nested_audits(
 def test_audit_inconsistent_institutional_certification(
     testapp,
     measurement_set,
+    assay_term_mpra,
     other_lab,
     tissue,
     assay_term_chip,
@@ -374,7 +375,7 @@ def test_audit_inconsistent_institutional_certification(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'preferred_assay_title': 'SUPERSTARR'
+            'assay_term': assay_term_mpra['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -387,8 +388,7 @@ def test_audit_inconsistent_institutional_certification(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_chip['@id'],
-            'preferred_assay_title': 'SHARE-Seq'
+            'assay_term': assay_term_chip['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')

@@ -193,26 +193,18 @@ def audit_inconsistent_institutional_certification(value, system):
     '''
     # Characterization assays do not need to be audited.
     characterization_assays = [
-        'AAV-MPRA',
-        'Cell painting',
-        'CERES-seq',
-        'CRISPR FlowFISH',
-        'lentiMPRA',
-        'MPRA',
-        'MPRA (scQer)',
-        'Perturb-seq',
-        'POP-STARR',
-        'Saturation genome editing',
-        'STARR-seq',
-        'SUPERSTARR',
-        'TAP-seq',
-        'VAMP-seq',
-        'Variant FlowFISH',
-        'Variant painting',
-        'Yeast two-hybrid'
+        'cas mediated mutagenesis',
+        'CRISPR screen',
+        'flow cytometry assay',
+        'imaging assay',
+        'massively parallel reporter assay',
+        'protein-protein interaction detection assay',
+        'self-transcribing active regulatory region sequencing assay'
     ]
-    preferred_assay_title = value.get('preferred_assay_title', '')
-    if preferred_assay_title in characterization_assays:
+    assay_term = value.get('assay_term')
+    assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    assay_term_name = assay_object.get('term_name')
+    if assay_term_name in characterization_assays:
         return
 
     lab = value.get('lab')
