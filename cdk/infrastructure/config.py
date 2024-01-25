@@ -113,7 +113,7 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 4,
+                'max_scaling_capacity': 5,
             },
             'tags': [
                 ('time-to-live-hours', '60'),
@@ -179,7 +179,7 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 4,
+                'max_scaling_capacity': 5,
             },
             'tags': [
             ]
@@ -243,7 +243,7 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 4,
+                'max_scaling_capacity': 5,
             },
             'tags': [
             ],
@@ -308,7 +308,7 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 4,
+                'max_scaling_capacity': 5,
             },
             'tags': [
             ],
@@ -372,7 +372,7 @@ config: Dict[str, Any] = {
                 'cpu': 256,
                 'memory_limit_mib': 512,
                 'min_scaling_capacity': 1,
-                'max_scaling_capacity': 4,
+                'max_scaling_capacity': 5,
             },
             'tags': [
             ],
