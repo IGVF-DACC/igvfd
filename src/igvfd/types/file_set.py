@@ -79,11 +79,11 @@ class FileSet(Item):
 
     set_status_up = [
         'documents',
+        'files',
         'input_file_sets',
         'samples'
     ]
     set_status_down = [
-        'samples'
     ]
 
     @calculated_property(schema={
