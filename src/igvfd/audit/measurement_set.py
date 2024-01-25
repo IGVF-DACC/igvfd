@@ -193,18 +193,18 @@ def audit_inconsistent_institutional_certification(value, system):
     '''
     # Characterization assays do not need to be audited.
     characterization_assays = [
-        'cas mediated mutagenesis',
-        'CRISPR screen',
-        'flow cytometry assay',
-        'imaging assay',
-        'massively parallel reporter assay',
-        'protein-protein interaction detection assay',
-        'self-transcribing active regulatory region sequencing assay'
+        'OBI:0003133',  # cas mediated mutagenesis
+        'NTR:0000520',  # CRISPR screen
+        'OBI:0000916',  # flow cytometry assay
+        'OBI:0000185',  # imaging assay
+        'OBI:0002675',  # massively parallel reporter assay',
+        'OBI:0000288',  # protein-protein interaction detection assay',
+        'OBI:0002041'  # self-transcribing active regulatory region sequencing assay
     ]
     assay_term = value.get('assay_term')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    assay_term_name = assay_object.get('term_name')
-    if assay_term_name in characterization_assays:
+    assay_term_id = assay_object.get('term_id')
+    if assay_term_id in characterization_assays:
         return
 
     lab = value.get('lab')
