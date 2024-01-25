@@ -1,6 +1,11 @@
 {
+<<<<<<< dev
     "hash": "590d3db9d4ac307f2cc4c157c75422a8",
     "index_name": "measurement_set_590d3db9",
+=======
+    "hash": "2d8c94344fcbcf221872e007f069c4b5",
+    "index_name": "measurement_set_2d8c9434",
+>>>>>>> Fix mapping
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
