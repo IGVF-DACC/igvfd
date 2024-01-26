@@ -110,7 +110,6 @@ def test_multiplexed_sample_props(
 
 def test_classifications(testapp, primary_cell, technical_sample, whole_organism, tissue, in_vitro_cell_line, multiplexed_sample):
     res = testapp.get(primary_cell['@id'])
-    print(res)
     assert res.json.get('classifications') == ['primary cell']
     res = testapp.get(technical_sample['@id'])
     assert res.json.get('classifications') == ['technical sample']
