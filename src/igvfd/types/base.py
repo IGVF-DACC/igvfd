@@ -92,9 +92,6 @@ STATUS_TRANSITION_TABLE = {
     'replaced': [],
     'disabled': ['disabled', 'current'],
     'current': ['current'],
-    'uploading': ['uploading', 'upload failed', 'content error'],
-    'content error': ['uploading'],
-    'upload failed': ['uploading'],
 }
 
 # Used to calculate whether new_status is more or less than current_status.
@@ -102,14 +99,11 @@ STATUS_HIERARCHY = {
     'released': 100,
     'current': 100,
     'in progress': 90,
-    'uploading': 80,
     'archived': 70,
     'revoked': 50,
     'disabled': 10,
     'deleted': 0,
     'replaced': -10,
-    'content error': -20,
-    'upload failed': -20,
 }
 
 
