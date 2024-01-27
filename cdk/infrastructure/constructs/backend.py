@@ -375,6 +375,12 @@ class Backend(Construct):
             scale_in_cooldown=cdk.Duration.seconds(60),
             scale_out_cooldown=cdk.Duration.seconds(60),
         )
+        scalable_task.scale_on_cpu_utilization(
+            'CpuScaling',
+            target_utilization_percent=70,
+            scale_in_cooldown=cdk.Duration.seconds(60),
+            scale_out_cooldown=cdk.Duration.seconds(60),
+        )
 
     def _run_batch_upgrade_automatically(self) -> None:
         self.batch_upgrade = BatchUpgrade(

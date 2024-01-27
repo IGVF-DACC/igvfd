@@ -1446,7 +1446,7 @@
                 ],
                 "Period": 300,
                 "Statistic": "Maximum",
-                "Threshold": 3600
+                "Threshold": 86400
             },
             "Type": "AWS::CloudWatch::Alarm"
         },
