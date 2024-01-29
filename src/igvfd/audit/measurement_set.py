@@ -201,15 +201,15 @@ def audit_inconsistent_institutional_certification(value, system):
         'OBI:0000288',  # protein-protein interaction detection assay',
         'OBI:0002041'  # self-transcribing active regulatory region sequencing assay
     ]
-    assay_term = value.get('assay_term')
+    assay_term = value.get('assay_term', '')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    assay_term_id = assay_object.get('term_id')
+    assay_term_id = assay_object.get('term_id', '')
     if assay_term_id in characterization_assays:
         return
 
-    lab = value.get('lab')
-    award = value.get('award')
-    samples = value.get('samples')
+    lab = value.get('lab', '')
+    award = value.get('award', '')
+    samples = value.get('samples', [])
 
     for s in samples:
         sample_object = system.get('request').embed(s, '@@object')
@@ -217,8 +217,8 @@ def audit_inconsistent_institutional_certification(value, system):
         nic_awards = []
         for nic in sample_object.get('institutional_certificates', []):
             nic_object = system.get('request').embed(nic, '@@object?skip_calculated=true')
-            nic_labs.append(nic_object.get('lab'))
-            nic_awards.append(nic_object.get('award'))
+            nic_labs.append(nic_object.get('lab', ''))
+            nic_awards.append(nic_object.get('award', ''))
         if lab not in nic_labs or award not in nic_awards:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
