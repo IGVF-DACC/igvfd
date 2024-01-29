@@ -1,5 +1,9 @@
 ## Changelog for *`document.json`*
 
+### Minor changes since schema version 3
+
+* Add `plasmid sequence` as `document_type`.
+
 ### Schema version 3
 
 * Disallow empty strings in `description`.
