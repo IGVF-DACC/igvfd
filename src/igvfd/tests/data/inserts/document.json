@@ -211,5 +211,17 @@
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
         "uuid": "6f2b4155-3389-9a10-1dca-cfbf6057dcbf"
+    },
+    {
+        "aliases": [
+            "igvf:plasmid_sequence"
+        ],
+        "description": "Plasmid sequence example.",
+        "attachment": "sgOpti-Blast.txt",
+        "award": "1UM1HG011996-01",
+        "document_type": "plasmid sequence",
+        "lab": "j-michael-cherry",
+        "submitted_by": "duis.pede@nonummy.scelerisque",
+        "uuid": "7988b40d-f7fc-4dc2-a7d4-95936e61be5c"
     }
 ]
