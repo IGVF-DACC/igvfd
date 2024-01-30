@@ -353,14 +353,18 @@
                                 "classifications": {
                                     "allOf": [
                                         {
-                                            "enum": [
-                                                "reprogrammed cell specimen"
-                                            ]
+                                            "contains": {
+                                                "enum": [
+                                                    "reprogrammed cell specimen"
+                                                ]
+                                            }
                                         },
                                         {
-                                            "enum": [
-                                                "pooled cell specimen"
-                                            ]
+                                            "contains": {
+                                                "enum": [
+                                                    "pooled cell specimen"
+                                                ]
+                                            }
                                         }
                                     ],
                                     "not": {
