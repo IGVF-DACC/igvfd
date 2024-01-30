@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Minor changes since schema version 7
+
+* Add `release_timestamp`.
+
 ### Schema version 7
 
 * Require publicly released files to have `upload_status` of `validated` or `invalidated`.

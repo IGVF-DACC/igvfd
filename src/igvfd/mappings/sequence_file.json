@@ -1,6 +1,6 @@
 {
-    "hash": "70c42db1a09734fce5505a85713f5382",
-    "index_name": "sequence_file_70c42db1",
+    "hash": "d4ff05063e97bdef737e44d631e64198",
+    "index_name": "sequence_file_d4ff0506",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -394,6 +394,9 @@
                         },
                         "store": true,
                         "type": "long"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
                     },
                     "revoke_detail": {
                         "type": "keyword"

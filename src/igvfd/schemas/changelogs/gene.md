@@ -1,5 +1,9 @@
 ## Changelog for *`gene.json`*
 
+### Minor changes since schema version 6
+
+* Add `release_timestamp`.
+
 ### Schema version 6
 
 * Disallow empty strings in `description`.

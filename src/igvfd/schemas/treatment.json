@@ -33,6 +33,9 @@
         },
         {
             "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
         }
     ],
     "dependentSchemas": {

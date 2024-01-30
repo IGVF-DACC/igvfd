@@ -1,6 +1,6 @@
 {
-    "hash": "131738acb07b10246244b343a049005c",
-    "index_name": "matrix_file_131738ac",
+    "hash": "ef5a9802954dffb7a3c9b5ea5a91d9d2",
+    "index_name": "matrix_file_ef5a9802",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -351,6 +351,9 @@
                         "type": "text"
                     },
                     "reference_files": {
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
                         "type": "keyword"
                     },
                     "revoke_detail": {

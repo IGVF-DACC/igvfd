@@ -31,6 +31,9 @@
         },
         {
             "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
         }
     ],
     "properties": {

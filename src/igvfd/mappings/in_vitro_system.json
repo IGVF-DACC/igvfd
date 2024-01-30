@@ -1,6 +1,6 @@
 {
-    "hash": "45224f8ed40e7a846302d183224d52c9",
-    "index_name": "in_vitro_system_45224f8e",
+    "hash": "5a9aa061d174b030482ef7b63e12ae2b",
+    "index_name": "in_vitro_system_5a9aa061",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -332,6 +332,9 @@
                             "purpose": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -436,6 +439,9 @@
                                 "type": "text"
                             },
                             "ontology": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
                                 "type": "keyword"
                             },
                             "schema_version": {
@@ -741,6 +747,9 @@
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -992,6 +1001,9 @@
                             "product_id": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -1124,6 +1136,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
                                 "type": "keyword"
                             },
                             "revoke_detail": {
@@ -1390,6 +1405,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -1525,6 +1543,9 @@
                     "publication_identifiers": {
                         "type": "keyword"
                     },
+                    "release_timestamp": {
+                        "type": "keyword"
+                    },
                     "revoke_detail": {
                         "type": "keyword"
                     },
@@ -1573,6 +1594,9 @@
                                 "type": "keyword"
                             },
                             "organ_slims": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
                                 "type": "keyword"
                             },
                             "schema_version": {
@@ -1796,6 +1820,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -1940,6 +1967,9 @@
                                 "type": "text"
                             },
                             "pi": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
                                 "type": "keyword"
                             },
                             "schema_version": {
@@ -2179,6 +2209,9 @@
                                 "type": "keyword"
                             },
                             "purpose": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
                                 "type": "keyword"
                             },
                             "schema_version": {

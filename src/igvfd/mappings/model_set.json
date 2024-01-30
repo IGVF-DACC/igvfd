@@ -1,6 +1,6 @@
 {
-    "hash": "e40eeffa5a08c00d7803f09a272db0a7",
-    "index_name": "model_set_e40eeffa",
+    "hash": "7eb056ecaeae8359e0065e254a9926d3",
+    "index_name": "model_set_7eb056ec",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -501,6 +501,9 @@
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -725,6 +728,9 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "release_timestamp": {
+                                "type": "keyword"
                             },
                             "revoke_detail": {
                                 "type": "keyword"
@@ -969,6 +975,9 @@
                                 "type": "boolean"
                             },
                             "reference_files": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
                                 "type": "keyword"
                             },
                             "revoke_detail": {
@@ -1248,6 +1257,9 @@
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -1459,6 +1471,9 @@
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
+                    "release_timestamp": {
+                        "type": "keyword"
+                    },
                     "revoke_detail": {
                         "type": "keyword"
                     },
@@ -1641,6 +1656,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "revoke_detail": {
                                 "type": "keyword"
                             },
@@ -1692,6 +1710,9 @@
                                         "type": "keyword"
                                     },
                                     "organ_slims": {
+                                        "type": "keyword"
+                                    },
+                                    "release_timestamp": {
                                         "type": "keyword"
                                     },
                                     "schema_version": {
@@ -1814,6 +1835,9 @@
                                         "type": "keyword"
                                     },
                                     "organ_slims": {
+                                        "type": "keyword"
+                                    },
+                                    "release_timestamp": {
                                         "type": "keyword"
                                     },
                                     "schema_version": {

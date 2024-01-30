@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 12
+
+* Add `release_timestamp`.
+
 ### Schema version 12
 
 * Replace `protocol` with `protocols`.

@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Minor changes since schema version 6
+
+* Add `release_timestamp`.
+
 ### Schema version 6
 
 * Remove `oligo-conjugated antibodies` from `file_set_type` property.

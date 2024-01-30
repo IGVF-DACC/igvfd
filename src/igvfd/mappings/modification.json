@@ -1,6 +1,6 @@
 {
-    "hash": "9e6c2efe4889e26c8bae4370436fcebb",
-    "index_name": "modification_9e6c2efe",
+    "hash": "e42d2da0e5ef0eb23bac54166458f551",
+    "index_name": "modification_e42d2da0",
     "item_type": "modification",
     "mapping": {
         "dynamic_templates": [
@@ -310,6 +310,9 @@
                         "type": "text"
                     },
                     "product_id": {
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
                         "type": "keyword"
                     },
                     "schema_version": {

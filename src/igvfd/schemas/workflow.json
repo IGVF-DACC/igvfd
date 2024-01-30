@@ -32,6 +32,9 @@
         },
         {
             "$ref": "mixins.json#/publication_identifiers"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
         }
     ],
     "properties": {

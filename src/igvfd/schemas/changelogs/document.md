@@ -2,7 +2,9 @@
 
 ### Minor changes since schema version 3
 
+* Add `release_timestamp`.
 * Add `plasmid sequence` as `document_type`.
+
 
 ### Schema version 3
 

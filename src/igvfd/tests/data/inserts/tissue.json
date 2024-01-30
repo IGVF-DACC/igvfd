@@ -83,7 +83,8 @@
             "/tissues/f1e4d059-a970-4250-bc2b-ba4572945e22/",
             "/tissues/984a5f8e-c751-11ec-9d64-0242ac120002/"
         ],
-        "virtual": true
+        "virtual": true,
+        "release_timestamp": "2024-01-23T12:34:56Z"
     },
     {
         "uuid": "fd5524f2-0303-11ed-b939-0242ac120002",

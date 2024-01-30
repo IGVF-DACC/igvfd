@@ -442,5 +442,15 @@
                 "igvf_utils": "bed3"
             }
         }
+    },
+    "release_timestamp": {
+        "release_timestamp": {
+            "title": "Release Timestamp",
+            "description": "The date the object was released.",
+            "comment": "Do not submit. The date the object is released is assigned by the server.",
+            "type": "string",
+            "format": "date-time",
+            "permission": "import_items"
+        }
     }
 }

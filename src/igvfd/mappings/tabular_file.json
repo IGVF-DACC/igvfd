@@ -1,6 +1,6 @@
 {
-    "hash": "c9ad5a933f9ec102019ab5bda792e281",
-    "index_name": "tabular_file_c9ad5a93",
+    "hash": "8bb6f9244309cc5621fde122fcc4074e",
+    "index_name": "tabular_file_8bb6f924",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -346,6 +346,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
                     },
                     "revoke_detail": {
                         "type": "keyword"

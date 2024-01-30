@@ -1,6 +1,6 @@
 {
-    "hash": "16752e2f3e3f5e853716261061810c12",
-    "index_name": "analysis_step_16752e2f",
+    "hash": "3705c03ebd02cbf4def3c3a131bb9f31",
+    "index_name": "analysis_step_3705c03e",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -343,6 +343,9 @@
                             "parents": {
                                 "type": "keyword"
                             },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
                             "schema_version": {
                                 "type": "keyword"
                             },
@@ -372,6 +375,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -443,6 +449,9 @@
                                 "type": "text"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
                                 "type": "keyword"
                             },
                             "revoke_detail": {

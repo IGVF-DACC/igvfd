@@ -63,6 +63,9 @@
         },
         {
             "$ref": "mixins.json#/taxa"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
         }
     ],
     "dependentSchemas": {

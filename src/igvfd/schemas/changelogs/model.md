@@ -4,6 +4,7 @@
 
 * Restrict `lab` and `award` to submittable by admins only. No further submission of models are accepted, please submit model sets instead.
 * Deprecate `model` schema.
+* Add `release_timestamp`.
 
 ### Schema version 3
 

@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Minor changes since schema version 20
+
+* Add `release_timestamp`.
+
 ### Schema version 20
 
 * Disallow empty strings in `description`.

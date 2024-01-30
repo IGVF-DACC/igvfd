@@ -1,6 +1,6 @@
 {
-    "hash": "702f2f44e81f996572265f95baa44701",
-    "index_name": "workflow_702f2f44",
+    "hash": "ff5d5233aff0799033e32462c8845a35",
+    "index_name": "workflow_ff5d5233",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -312,6 +312,9 @@
                     "publication_identifiers": {
                         "type": "keyword"
                     },
+                    "release_timestamp": {
+                        "type": "keyword"
+                    },
                     "revoke_detail": {
                         "type": "keyword"
                     },
@@ -374,6 +377,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "release_timestamp": {
+                                "type": "keyword"
                             },
                             "schema_version": {
                                 "type": "keyword"

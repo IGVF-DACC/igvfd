@@ -1,5 +1,9 @@
 ## Changelog for *`matrix_file.json`*
 
+### Minor changes since schema version 4
+
+* Add `release_timestamp`.
+
 ### Schema version 4
 
 * Require publicly released files to have `upload_status` of `validated` or `invalidated`.

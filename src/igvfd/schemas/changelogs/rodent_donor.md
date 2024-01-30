@@ -1,5 +1,9 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Minor changes since schema version 11
+
+* Add `release_timestamp`.
+
 ### Schema version 11
 
 * Disallow empty strings in `description`.

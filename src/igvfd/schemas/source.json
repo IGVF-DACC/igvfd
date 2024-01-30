@@ -23,6 +23,9 @@
         },
         {
             "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
         }
     ],
     "properties": {
