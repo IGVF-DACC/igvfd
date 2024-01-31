@@ -360,3 +360,65 @@ def test_audit_inherit_nested_audits(
         error['category'] != 'inconsistent assay metadata'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_inconsistent_institutional_certification(
+    testapp,
+    measurement_set,
+    assay_term_mpra,
+    other_lab,
+    tissue,
+    assay_term_chip,
+    institutional_certificate
+):
+    # Characterization assays are skipped
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_mpra['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent institutional certificate'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+    # Non-characterization assays are audited
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_chip['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent institutional certificate'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+    # No flag if the NIC's lab and award match the Measurement Set.
+    testapp.patch_json(
+        institutional_certificate['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent institutional certificate'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+    # Flag when lab or award doesn't match the Measurement Set.
+    testapp.patch_json(
+        institutional_certificate['@id'],
+        {
+            'lab': other_lab['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent institutional certificate'
+        for error in res.json['audit'].get('ERROR', [])
+    )
