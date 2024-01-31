@@ -66,25 +66,246 @@
             "file_set.json#/dependentSchemas"
         ],
         "scope": {
-            "$merge": "construct_library_set.json#/dependentSchemas/scope"
+            "comment": "If scope is genes then genes, small_scale_gene_list, or large_scale_gene_list is required, if scope is loci then loci, small_scale_loci_list, or large_scale_loci_list are required, if scope is genome-wide then small_scale_gene_list, large_scale_gene_list, loci, small_scale_loci_list, and large_scale_loci_list shouldn't be specified.",
+            "oneOf": [
+                {
+                    "required": [
+                        "genes"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "small_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "tile",
+                        "small_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "tile"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "exon",
+                        "small_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "exon"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "large_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "loci"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "loci"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "small_scale_loci_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "loci"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "large_scale_loci_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "loci"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "genes",
+                            "small_scale_gene_list",
+                            "large_scale_gene_list",
+                            "loci",
+                            "small_scale_loci_list",
+                            "large_scale_loci_list"
+                        ]
+                    },
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genome-wide"
+                            ]
+                        }
+                    }
+                }
+            ]
         },
         "genes": {
-            "$merge": "construct_library_set.json#/dependentSchemas/genes"
+            "comment": "Specification of genes requires that scope is genes and is mutually exlusive with specification of small_scale_gene_list and large_scale_gene_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "genes"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "small_scale_gene_list",
+                            "large_scale_gene_list"
+                        ]
+                    }
+                }
+            ]
         },
         "small_scale_gene_list": {
-            "$merge": "construct_library_set.json#/dependentSchemas/small_scale_gene_list"
+            "comment": "Specification of small_scale_gene_list requires that scope is genes and is mutually exlusive with specification of genes and large_scale_gene_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "genes"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "genes",
+                            "large_scale_gene_list"
+                        ]
+                    }
+                }
+            ]
         },
         "large_scale_gene_list": {
-            "$merge": "construct_library_set.json#/dependentSchemas/large_scale_gene_list"
+            "comment": "Specification of large_scale_gene_list requires that scope is genes and is mutually exlusive with specification of genes and small_scale_gene_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "genes"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "genes",
+                            "small_scale_gene_list"
+                        ]
+                    }
+                }
+            ]
         },
         "loci": {
-            "$merge": "construct_library_set.json#/dependentSchemas/loci"
+            "comment": "Specification of loci requires that scope is loci and is mutually exlusive with specification of small_scale_loci_list and large_scale_loci_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "loci"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "small_scale_loci_list",
+                            "large_scale_loci_list"
+                        ]
+                    }
+                }
+            ]
         },
         "small_scale_loci_list": {
-            "$merge": "construct_library_set.json#/dependentSchemas/small_scale_loci_list"
+            "comment": "Specification of small_scale_loci_list requires that scope is loci and is mutually exlusive with specification of loci and large_scale_loci_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "loci"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "loci",
+                            "large_scale_loci_list"
+                        ]
+                    }
+                }
+            ]
         },
         "large_scale_loci_list": {
-            "$merge": "construct_library_set.json#/dependentSchemas/large_scale_loci_list"
+            "comment": "Specification of large_scale_loci_list requires that scope is loci and is mutually exlusive with specification of loci and small_scale_loci_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "loci"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "loci",
+                            "small_scale_loci_list"
+                        ]
+                    }
+                }
+            ]
         }
     },
     "properties": {

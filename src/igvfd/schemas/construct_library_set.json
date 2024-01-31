@@ -604,7 +604,7 @@
             ]
         },
         "tile": {
-            "comment": "Specification of tile requires genes, small_scale_gene_list, or large_scale_gene_list and that scope is tile.",
+            "comment": "Specification of tile requires genes or small_scale_gene_list and that scope is tile.",
             "oneOf": [
                 {
                     "required": [
@@ -621,18 +621,6 @@
                 {
                     "required": [
                         "small_scale_gene_list"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "tile"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "large_scale_gene_list"
                     ],
                     "properties": {
                         "scope": {
