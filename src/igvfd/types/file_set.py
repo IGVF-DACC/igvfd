@@ -345,7 +345,7 @@ class MeasurementSet(FileSet):
             if assay == 'CRISPR screen':
                 assay_phrase = f'CRISPR {modality_set} screen'
             else:
-                modality_phrase = f'{modality_set}'
+                modality_phrase = f''
                 assay_phrase = f' {assay}'
         if len(modality_set) == 0:
             assay_phrase = f'{assay}'
