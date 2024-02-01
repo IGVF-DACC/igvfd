@@ -9,22 +9,6 @@ from .formatter import (
 
 
 @audit_checker('Biosample', frame='object')
-def audit_biosample_nih_institutional_certification(value, system):
-    '''
-        audit_detail: NIH Institutional Certificates are required for human biosamples.
-        audit_category: missing nih_institutional_certification
-        audit_levels: ERROR
-    '''
-    if ('nih_institutional_certification' not in value) and (any(donor.startswith('/human-donors/') for donor in value.get('donors'))):
-        sample_id = value.get('@id')
-        detail = (
-            f'Biosample {audit_link(path_to_text(sample_id), sample_id)} '
-            f'is missing NIH institutional certificate that is required for human samples.'
-        )
-        yield AuditFailure('missing nih_institutional_certification', detail, level='ERROR')
-
-
-@audit_checker('Biosample', frame='object')
 def audit_biosample_taxa_check(value, system):
     '''
         audit_detail: Biosamples are not expected to have donors with different taxa.
