@@ -59,7 +59,7 @@ def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, me
 
 
 def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, modification_activation,
-                 assay_term_crispr, primary_cell, modification):
+                 assay_term_crispr, primary_cell, modification, construct_library_set_reporter):
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('summary') == 'STARR-seq'
     testapp.patch_json(
@@ -79,13 +79,23 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('summary') == 'STARR-seq (lentiMPRA) followed by ChIP-seq'
     testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'construct_library_sets': [construct_library_set_reporter['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get(
+        'summary') == 'activation STARR-seq (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide followed by ChIP-seq'
+    testapp.patch_json(
         measurement_set['@id'],
         {
             'assay_term': assay_term_crispr['@id']
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('summary') == 'CRISPR activation screen (lentiMPRA) followed by ChIP-seq'
+    assert res.json.get(
+        'summary') == 'CRISPR activation screen (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide followed by ChIP-seq'
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -99,7 +109,8 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('summary') == 'mixed CRISPR screen (lentiMPRA) followed by ChIP-seq'
+    assert res.json.get(
+        'summary') == 'mixed CRISPR screen (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide followed by ChIP-seq'
 
 
 def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):
