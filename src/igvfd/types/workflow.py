@@ -33,6 +33,7 @@ class Workflow(Item):
     ]
 
     set_status_up = [
+        'analysis_steps',
         'standards_page'
     ]
     set_status_down = []

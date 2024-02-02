@@ -32,9 +32,7 @@ class AnalysisStep(Item):
         Path('workflow', include=['@id', 'accession'])
     ]
 
-    set_status_up = [
-        'workflow'
-    ]
+    set_status_up = []
     set_status_down = []
 
     def unique_keys(self, properties):

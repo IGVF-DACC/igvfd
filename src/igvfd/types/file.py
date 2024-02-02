@@ -105,8 +105,7 @@ class File(Item):
 
     set_status_up = [
         'derived_from',
-        'file_format_specifications',
-        'file_set'
+        'file_format_specifications'
     ]
     set_status_down = []
 

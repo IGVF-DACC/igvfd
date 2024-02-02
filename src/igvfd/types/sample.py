@@ -92,6 +92,7 @@ class Sample(Item):
 
     set_status_up = [
         'construct_library_sets',
+        'documents',
         'sorted_from'
     ]
     set_status_down = []
