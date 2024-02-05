@@ -52,14 +52,14 @@ def audit_missing_seqspec(value, system):
                 f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
                 f'{no_seqspec} which do not have a seqspec configuration file.'
             )
-            yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+            yield AuditFailure('missing seqspec', detail, level='ERROR')
 
 
 @audit_checker('FileSet', frame='object')
 def audit_missing_seqspec_files(value, system):
     '''
         audit_detail: All files associated with a seqspec (both sequencing and seqspec files) are expected to be linked on the same file set.
-        audit_category: missing seqspec
+        audit_category: missing related seqspec files
         audit_levels: ERROR
     '''
     if 'files' in value:
@@ -76,7 +76,7 @@ def audit_missing_seqspec_files(value, system):
                             f'{audit_link(path_to_text(file), file)} which links to seqspec '
                             f'{audit_link(path_to_text(seqspec_path), seqspec_path)} which does not link to this file set.'
                         )
-                        yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+                        yield AuditFailure('missing related seqspec files', detail, level='ERROR')
 
             # Audit the file set with a seqspec configuration file without the associated sequence files also in the file set.
             if file.startswith('/configuration-files/'):
@@ -92,61 +92,95 @@ def audit_missing_seqspec_files(value, system):
                             f'{audit_link(path_to_text(file), file)} which links to sequence files: {missing_sequence_files} which '
                             f'do not link to this file set.'
                         )
-                        yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+                        yield AuditFailure('missing related seqspec files', detail, level='ERROR')
 
 
 @audit_checker('FileSet', frame='object')
 def audit_inconsistent_seqspec(value, system):
     '''
-        audit_detail: Sequence files in a file set from the same sequencing run are expected to link to the same seqspec file, which should be unique to that sequencing run.
+        audit_detail: Sequence files in a file set from the same sequencing run and index are expected to link to the same seqspec file, which should be unique to that sequencing run and index.
         audit_category: inconsistent seqspec metadata
         audit_levels: ERROR
     '''
     if 'files' in value:
-        sequencing_run_and_seqspecs = {}
-        inconsistent_sequencing_runs = []
-        shared_seqspec_sequencing_runs = []
+        sequencing_runs = {}
+        indices = {}
         for file in value['files']:
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
 
-                # Get the mapping for sequencing_run to associated seqspec files.
-                sequencing_run = str(sequence_file_object['sequencing_run'])
-                if sequencing_run not in sequencing_run_and_seqspecs:
-                    sequencing_run_and_seqspecs[sequencing_run] = [sequence_file_object.get('seqspec', '')]
+                # Get the mapping for index and sequencing_runs to sequence files and associated seqspec. A sequence file will only be audited wrt index or sequencing run.
+                if 'index' in sequence_file_object:
+                    index = str(sequence_file_object['index'])
+                    if index in indices:
+                        indices[index][file] = {'seqspec': sequence_file_object.get('seqspec', '')}
+                    else:
+                        indices[index] = {file: {'seqspec': sequence_file_object.get('seqspec', '')}}
                 else:
-                    sequencing_run_and_seqspecs[sequencing_run] += [sequence_file_object.get('seqspec', '')]
+                    sequencing_run = str(sequence_file_object['sequencing_run'])
+                    if sequencing_run in sequencing_runs:
+                        sequencing_runs[sequencing_run][file] = {'seqspec': sequence_file_object.get('seqspec', '')}
+                    else:
+                        sequencing_runs[sequencing_run] = {file: {'seqspec': sequence_file_object.get('seqspec', '')}}
 
-        for sequencing_run in sequencing_run_and_seqspecs:
-            # if the associated seqspec files for a sequencing run are not all the same
-            if len(set(sequencing_run_and_seqspecs[sequencing_run])) > 1:
-                inconsistent_sequencing_runs.append(sequencing_run)
-
-            seqspec_files = set(sequencing_run_and_seqspecs[sequencing_run])
-            if sequencing_run in shared_seqspec_sequencing_runs:
-                continue
-            for other_sequencing_run, other_seqspecs in sequencing_run_and_seqspecs.items():
-                if other_sequencing_run != sequencing_run:
-                    if seqspec_files.intersection(other_seqspecs):
-                        shared_seqspec_sequencing_runs.append(sequencing_run)
-
-        # Audit the file set for the each sequencing run which links to multiple seqspec.
-        if inconsistent_sequencing_runs:
-            for sequencing_run in inconsistent_sequencing_runs:
+        # Check that associated seqspec files for an index are the same
+        for index, sequence_files in indices.items():
+            unique_seqspecs = set(file_data['seqspec'] for file_data in sequence_files.values())
+            if len(unique_seqspecs) != 1:
                 detail = (
                     f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
-                    f'associated with sequencing runs {sequencing_run} which link to different '
+                    f'{", ".join([audit_link(path_to_text(sequence_file), sequence_file) for sequence_file in indices[index].keys()])} '
+                    f'associated with index {index} which link to different seqspec files; '
+                    f'sequence files with the same index are expected to link to the '
+                    f'same seqspec file.'
+                )
+                yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+
+        # Check that associated seqspec files for a sequencing run are the same
+        for sequencing_run, sequence_files in sequencing_runs.items():
+            unique_seqspecs = set(file_data['seqspec'] for file_data in sequence_files.values())
+            if len(unique_seqspecs) != 1:
+                detail = (
+                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
+                    f'{", ".join([audit_link(path_to_text(sequence_file), sequence_file) for sequence_file in sequencing_runs[sequencing_run].keys()])} '
+                    f'associated with sequencing run {sequencing_run} which link to different '
                     f'seqspec files; sequence files from the same sequencing run are expected to link to the '
                     f'same seqspec file.'
                 )
                 yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
 
-        # Audit the file set with seperate sequencing runs which link to the same seqspec.
-        if shared_seqspec_sequencing_runs:
-            shared_seqspec_sequencing_runs = ', '.join(shared_seqspec_sequencing_runs)
+        # Check that associated seqspec files are unique for each index
+        for index, sequence_files in indices.items():
+            share_seqspec = []
+            seqspec = set(file_data['seqspec'] for file_data in sequence_files.values())
+            for index_to_compare, sequence_files_to_compare in indices.items():
+                if index == index_to_compare:
+                    continue
+                else:
+                    if seqspec.intersection(set(file_data['seqspec'] for file_data in sequence_files_to_compare.values())):
+                        share_seqspec.append(index_to_compare)
             detail = (
                 f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
-                f'associated with different sequencing runs {shared_seqspec_sequencing_runs} linking to the '
-                f'same seqspec file; only sequence files from the same sequencing run are expected to link to the same seqspec file.'
+                f'{", ".join([audit_link(path_to_text(sequence_file), sequence_file) for sequence_file in indices[index].keys()])} '
+                f'with index {index} sharing the same seqspec file as files associated with index(es) {", ".join(share_seqspec)}; '
+                f'only sequence files with the same index are expected to link to the same seqspec file.'
+            )
+            yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+
+        # Check that associated seqspec files are unique for each sequencing run
+        for sequencing_run, sequence_files in sequencing_runs.items():
+            share_seqspec = []
+            seqspec = set(file_data['seqspec'] for file_data in sequence_files.values())
+            for sequencing_run_to_compare, sequence_files_to_compare in sequencing_runs.items():
+                if sequencing_run == sequencing_run_to_compare:
+                    continue
+                else:
+                    if seqspec.intersection(set(file_data['seqspec'] for file_data in sequence_files_to_compare.values())):
+                        share_seqspec.append(sequencing_run_to_compare)
+            detail = (
+                f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
+                f'{", ".join([audit_link(path_to_text(sequence_file), sequence_file) for sequence_file in sequencing_runs[sequencing_run].keys()])} '
+                f'from sequencing run {sequencing_run} sharing the same seqspec file as files associated with sequencing run(s) {", ".join(share_seqspec)}; '
+                f'only sequence files with the same sequencing run are expected to link to the same seqspec file.'
             )
             yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
