@@ -1,6 +1,6 @@
 {
-    "hash": "f617d6bb2ac218f2204c55bb88a4f2e4",
-    "index_name": "construct_library_set_f617d6bb",
+    "hash": "69d2dea8cd4381e155167c3ba35340dd",
+    "index_name": "construct_library_set_69d2dea8",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -891,38 +891,6 @@
                             },
                             "summary": {
                                 "type": "keyword"
-                            },
-                            "targeted_genes": {
-                                "type": "keyword"
-                            },
-                            "targeted_loci": {
-                                "properties": {
-                                    "assembly": {
-                                        "type": "keyword"
-                                    },
-                                    "chromosome": {
-                                        "type": "keyword"
-                                    },
-                                    "end": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
-                                        "store": true,
-                                        "type": "long"
-                                    },
-                                    "start": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
-                                        "store": true,
-                                        "type": "long"
-                                    }
-                                },
-                                "type": "object"
                             },
                             "taxa": {
                                 "type": "keyword"
