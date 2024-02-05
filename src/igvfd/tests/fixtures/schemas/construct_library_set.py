@@ -105,3 +105,12 @@ def construct_library_set_v2(construct_library_set_v1):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def construct_library_set_v3(construct_library_set_v2):
+    item = construct_library_set_v2.copy()
+    item.update({
+        'schema_version': '3'
+    })
+    return item

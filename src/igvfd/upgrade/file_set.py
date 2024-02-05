@@ -196,3 +196,9 @@ def prediction_set_3_4(value, system):
         value['loci'] = value['targeted_loci']
         del value['targeted_loci']
     return
+
+
+@upgrade_step('construct_library_set', '3', '4')
+def construct_library_set_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1311
+    return
