@@ -156,6 +156,21 @@
         "uuid": "627eedbc-7cb3-4de3-9743-a86266e435a6"
     },
     {
+        "email": "forrest.tanaka@gmail.com",
+        "first_name": "Lorem",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "job_title": "Software Developer",
+        "lab": "/labs/j-michael-cherry/",
+        "last_name": "Ipsum",
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "uuid": "a2cdf3ea-0c5a-45d2-a74e-a8a0a2fa8808"
+    },
+    {
         "email": "gabdank@stanford.edu",
         "first_name": "Idan",
         "groups": [
