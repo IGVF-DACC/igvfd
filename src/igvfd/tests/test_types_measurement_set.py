@@ -77,7 +77,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('summary') == 'activation STARR-seq (lentiMPRA) followed by ChIP-seq'
+    assert res.json.get('summary') == 'STARR-seq (lentiMPRA) followed by ChIP-seq'
     testapp.patch_json(
         measurement_set['@id'],
         {
