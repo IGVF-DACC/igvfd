@@ -1,6 +1,6 @@
 {
-    "hash": "beedf344aed69c6c9a3740a9bbf0735c",
-    "index_name": "measurement_set_beedf344",
+    "hash": "e5c76bcd70879127440514a4551b0ed1",
+    "index_name": "measurement_set_e5c76bcd",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2115,7 +2115,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "copy_to": "_exact",
                                 "type": "keyword"
                             },

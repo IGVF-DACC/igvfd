@@ -144,3 +144,11 @@ def test_in_vitro_system_upgrade_17_18(
         f'targeted_sample_term: {sample_term_endothelial_cell["@id"]}; '
         f'time_post_change: 10; time_post_change_units: day.'
     )
+
+
+def test_in_vitro_system_upgrade_18_19(upgrader, in_vitro_system_v18):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v18, current_version='18', target_version='19')
+    assert value['schema_version'] == '19'
+    assert 'classification' not in value
+    assert 'classifications' in value
+    assert value['classifications'] == ['embryoid']

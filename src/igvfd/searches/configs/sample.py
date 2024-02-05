@@ -7,8 +7,8 @@ from snovault.elasticsearch.searches.configs import search_config
 def sample():
     return {
         'facets': {
-            'classification': {
-                'title': 'Classification',
+            'classifications': {
+                'title': 'Classifications',
             },
             'collections': {
                 'title': 'Collections',
@@ -45,7 +45,7 @@ def sample():
             {
                 'title': 'Sample',
                 'facet_fields': [
-                    'classification',
+                    'classifications',
                     'virtual',
                 ]
             },

@@ -1,6 +1,6 @@
 {
-    "hash": "1599e04ec323603353e540f262d8175d",
-    "index_name": "multiplexed_sample_1599e04e",
+    "hash": "00e5a11161f97a576af13edf18ebb4ef",
+    "index_name": "multiplexed_sample_00e5a111",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -237,7 +237,7 @@
                     "cellular_sub_pool": {
                         "type": "keyword"
                     },
-                    "classification": {
+                    "classifications": {
                         "type": "keyword"
                     },
                     "collections": {
@@ -1120,7 +1120,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1314,7 +1314,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1995,7 +1995,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "type": "keyword"
                             },
                             "collections": {

@@ -1,6 +1,6 @@
 {
-    "hash": "65cfd3ff946c433203c3d1cb75a70502",
-    "index_name": "prediction_set_65cfd3ff",
+    "hash": "b6e7b6b1fc31caef29d827ad9e9bcbdc",
+    "index_name": "prediction_set_b6e7b6b1",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1174,7 +1174,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "type": "keyword"
                             },
                             "collections": {

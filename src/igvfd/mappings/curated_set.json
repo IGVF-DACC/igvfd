@@ -1,6 +1,6 @@
 {
-    "hash": "fc9a3d865778a133e5c312195cef3b24",
-    "index_name": "curated_set_fc9a3d86",
+    "hash": "76b80e1e88558a192f8c8a5a8f8fd16e",
+    "index_name": "curated_set_76b80e1e",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1178,7 +1178,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "type": "keyword"
                             },
                             "collections": {

@@ -249,7 +249,7 @@
         "control_for.aliases",
         "samples.accession",
         "samples.aliases",
-        "samples.classification",
+        "samples.classifications",
         "donors.accession",
         "donors.aliases"
     ],

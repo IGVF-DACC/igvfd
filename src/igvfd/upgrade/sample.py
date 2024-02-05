@@ -404,3 +404,16 @@ def in_vitro_system_17_18(value, system):
             f'system: {"; ".join(key_val_to_str)}.'
         )
         value['notes'] = notes.strip()
+
+
+@upgrade_step('in_vitro_system', '18', '19')
+def in_vitro_system_18_19(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1394
+    value['classifications'] = [value['classification']]
+    del value['classification']
+    notes = value.get('notes', '')
+    notes += (
+        f' The "classification" of this in vitro system was '
+        f'moved into the array property "classifications." '
+    )
+    value['notes'] = notes.strip()

@@ -22,8 +22,8 @@ def primary_cell():
             'sex': {
                 'title': 'Sex'
             },
-            'classification': {
-                'title': 'Classification',
+            'classifications': {
+                'title': 'Classifications',
             },
             'collections': {
                 'title': 'Collections',
@@ -71,7 +71,7 @@ def primary_cell():
                     'treatments.treatment_term_name',
                     'taxa',
                     'sex',
-                    'classification',
+                    'classifications',
                     'biomarkers.classification',
                     'virtual',
                 ]
@@ -110,8 +110,8 @@ def primary_cell():
             'alternate_accessions': {
                 'title': 'Alternate Accessions'
             },
-            'classification': {
-                'title': 'Classification'
+            'classifications': {
+                'title': 'Classifications'
             },
             'donors': {
                 'title': 'Donors'

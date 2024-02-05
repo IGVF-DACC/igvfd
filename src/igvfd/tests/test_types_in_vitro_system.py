@@ -33,7 +33,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
         in_vitro_cell_line['@id'],
         {
             'sample_terms': [sample_term_brown_adipose_tissue['@id']],
-            'classification': 'organoid',
+            'classifications': ['organoid'],
             'time_post_change': 1,
             'time_post_change_units': 'month',
             'cell_fate_change_treatments': [treatment_protein['@id']],
@@ -60,7 +60,7 @@ def test_summary(testapp, in_vitro_cell_line, in_vitro_differentiated_cell, huma
         in_vitro_cell_line['@id'],
         {
             'sample_terms': [sample_term_embryoid_body['@id']],
-            'classification': 'embryoid',
+            'classifications': ['embryoid'],
             'time_post_change': 3,
             'time_post_change_units': 'week',
             'cell_fate_change_treatments': [treatment_protein['@id']],

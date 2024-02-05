@@ -1,6 +1,6 @@
 {
-    "hash": "5a9aa061d174b030482ef7b63e12ae2b",
-    "index_name": "in_vitro_system_5a9aa061",
+    "hash": "4308857b953696651e63c3e503d66411",
+    "index_name": "in_vitro_system_4308857b",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -383,7 +383,7 @@
                     "cellular_sub_pool": {
                         "type": "keyword"
                     },
-                    "classification": {
+                    "classifications": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
@@ -1069,7 +1069,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1273,7 +1273,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1685,7 +1685,7 @@
                             "cellular_sub_pool": {
                                 "type": "keyword"
                             },
-                            "classification": {
+                            "classifications": {
                                 "type": "keyword"
                             },
                             "collections": {

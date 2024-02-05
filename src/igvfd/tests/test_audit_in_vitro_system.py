@@ -79,7 +79,7 @@ def test_audit_cell_fate_change_protocol_document_type(
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'classification': 'organoid',
+            'classifications': ['organoid'],
             'time_post_change': 5,
             'time_post_change_units': 'minute',
             'targeted_sample_term': sample_term_brown_adipose_tissue['@id'],

@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 19
+
+* Replace `classification` with `classifications`.
+
 ### Minor changes since schema version 18
 
 * Add `release_timestamp`.
