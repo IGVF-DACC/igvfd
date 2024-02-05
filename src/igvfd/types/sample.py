@@ -671,10 +671,10 @@ class MultiplexedSample(Sample):
         }
     )
     def summary(self, request, multiplexed_samples=None):
-        if any(sample.startswith('/multiplexed-samples/') for sample in multiplexed_samples):
-            multiplexed_samples = decompose_multiplexed_samples(request, multiplexed_samples)
-        multiplexed_samples = sorted(multiplexed_samples)
         if multiplexed_samples:
+            if any(sample.startswith('/multiplexed-samples/') for sample in multiplexed_samples):
+                multiplexed_samples = decompose_multiplexed_samples(request, multiplexed_samples)
+            multiplexed_samples = sorted(multiplexed_samples)
             sample_summaries = [request.embed(
                 sample, '@@object').get('summary') for sample in multiplexed_samples[:2]]
             if len(multiplexed_samples) > 2:
