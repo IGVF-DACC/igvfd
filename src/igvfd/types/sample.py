@@ -26,6 +26,22 @@ def collect_multiplexed_samples_prop(request, multiplexed_samples, property_name
     return property_list
 
 
+def decompose_multiplexed_samples(request, samples, visited_multiplexed_samples=None):
+    if visited_multiplexed_samples is None:
+        visited_multiplexed_samples = set()
+    decomposed_samples = set()
+    for sample in samples:
+        if sample.startswith('/multiplexed-samples/') and sample not in visited_multiplexed_samples:
+            visited_multiplexed_samples.add(sample)
+            multiplexed_samples = request.embed(sample, '@@object').get('multiplexed_samples')
+            if multiplexed_samples:
+                decomposed_samples.update(decompose_multiplexed_samples(
+                    request, multiplexed_samples, visited_multiplexed_samples))
+        else:
+            decomposed_samples.add(sample)
+    return list(decomposed_samples)
+
+
 def concat_numeric_and_units(numeric, numeric_units, no_numeric_on_one=False):
     if str(numeric) == '1':
         if no_numeric_on_one:
@@ -655,19 +671,12 @@ class MultiplexedSample(Sample):
         }
     )
     def summary(self, request, multiplexed_samples=None):
-        while any(sample.startswith('/multiplexed-samples/') for sample in multiplexed_samples):
-            for multiplexed_sample in multiplexed_samples:
-                if multiplexed_sample.startswith('/multiplexed-samples/'):
-                    decomposed_samples = request.embed(multiplexed_sample, '@@object').get('multiplexed_samples')
-                    multiplexed_samples.remove(multiplexed_sample)
-                    if decomposed_samples:
-                        for decomposed_sample in decomposed_samples:
-                            # duplicated samples are not added to the summary
-                            if decomposed_sample not in multiplexed_samples:
-                                multiplexed_samples += [decomposed_sample]
         if multiplexed_samples:
-            sample_summaries = sorted([request.embed(
-                sample, '@@object').get('summary') for sample in sorted(multiplexed_samples)[:2]])
+            if any(sample.startswith('/multiplexed-samples/') for sample in multiplexed_samples):
+                multiplexed_samples = decompose_multiplexed_samples(request, multiplexed_samples)
+            multiplexed_samples = sorted(multiplexed_samples)
+            sample_summaries = [request.embed(
+                sample, '@@object').get('summary') for sample in multiplexed_samples[:2]]
             if len(multiplexed_samples) > 2:
                 remainder = f'... and {len(multiplexed_samples) - 2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
                 sample_summaries += [remainder]
