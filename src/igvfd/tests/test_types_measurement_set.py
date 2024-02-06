@@ -86,7 +86,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
     )
     res = testapp.get(measurement_set['@id'])
     assert res.json.get(
-        'summary') == 'activation STARR-seq (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide followed by ChIP-seq'
+        'summary') == 'STARR-seq (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide followed by ChIP-seq'
     testapp.patch_json(
         measurement_set['@id'],
         {
