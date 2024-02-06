@@ -320,6 +320,8 @@ class MeasurementSet(FileSet):
                 samples=None):
         assay = request.embed(assay_term)['term_name']
         modality_set = set()
+        cls_set = set()
+        cls_phrase = ''
         modality_phrase = ''
         assay_phrase = ''
         readout_phrase = ''
@@ -332,6 +334,10 @@ class MeasurementSet(FileSet):
                     for modification in sample_object.get('modifications'):
                         modality = request.embed(modification)['modality']
                         modality_set.add(modality)
+                if sample_object.get('construct_library_sets'):
+                    for construct_library in sample_object.get('construct_library_sets'):
+                        cls_summary = request.embed(construct_library)['summary']
+                        cls_set.add(cls_summary)
         if readout:
             readout_term = request.embed(readout)['term_name']
             readout_phrase = f' followed by {readout_term}'
@@ -349,11 +355,26 @@ class MeasurementSet(FileSet):
                 assay_phrase = f'{assay}'
         if len(modality_set) == 0:
             assay_phrase = f'{assay}'
+        if len(cls_set) > 0:
+            cls_phrases = []
+            for summary in cls_set:
+                article = 'a'
+                if any(summary.startswith(x) for x in ['a', 'e', 'i', 'o', 'u']):
+                    article = 'an'
+                cls_phrases.append(f'{article} {summary[0].lower()}{summary[1:]}')
+            if len(cls_phrases) == 1:
+                cls_phrase = cls_phrases[0]
+            elif len(cls_phrases) == 2:
+                cls_phrase = ' and '.join(cls_phrases)
+            elif len(cls_phrases) > 2:
+                cls_phrase = ', '.join(cls_phrases[:-1]) + ', and ' + cls_phrases[-1]
+            cls_phrase = f' integrating {cls_phrase}'
         sentence = ''
         sentence_parts = [
             modality_phrase,
             assay_phrase,
             preferred_title_phrase,
+            cls_phrase,
             readout_phrase
         ]
         for phrase in sentence_parts:
