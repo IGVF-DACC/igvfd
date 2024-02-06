@@ -508,7 +508,9 @@
                     "not": {
                         "required": [
                             "genes",
-                            "small_scale_gene_list"
+                            "small_scale_gene_list",
+                            "exon",
+                            "tile"
                         ]
                     }
                 }

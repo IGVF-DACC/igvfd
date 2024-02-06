@@ -94,32 +94,6 @@
                 },
                 {
                     "required": [
-                        "tile",
-                        "small_scale_gene_list"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "tile"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "exon",
-                        "small_scale_gene_list"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "exon"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
                         "large_scale_gene_list"
                     ],
                     "properties": {
