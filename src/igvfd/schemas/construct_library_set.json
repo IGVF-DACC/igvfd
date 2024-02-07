@@ -435,7 +435,7 @@
             ]
         },
         "genes": {
-            "comment": "Specification of genes requires that scope is tile, exon, or genes and is mutually exlusive with specification of small_scale_gene_list and large_scale_gene_list.",
+            "comment": "Specification of genes requires that scope is tile, exon, or genes and is mutually exclusive with specification of small_scale_gene_list and large_scale_gene_list.",
             "allOf": [
                 {
                     "properties": {
@@ -465,7 +465,7 @@
             ]
         },
         "small_scale_gene_list": {
-            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, or genes and is mutually exlusive with specification of genes and large_scale_gene_list.",
+            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, or genes and is mutually exclusive with specification of genes and large_scale_gene_list.",
             "allOf": [
                 {
                     "properties": {
@@ -495,7 +495,7 @@
             ]
         },
         "large_scale_gene_list": {
-            "comment": "Specification of large_scale_gene_list requires that scope is genes and is mutually exlusive with specification of genes and small_scale_gene_list.",
+            "comment": "Specification of large_scale_gene_list requires that scope is genes and is mutually exclusive with specification of genes and small_scale_gene_list.",
             "allOf": [
                 {
                     "properties": {
@@ -517,7 +517,7 @@
             ]
         },
         "loci": {
-            "comment": "Specification of loci requires that scope is loci and is mutually exlusive with specification of small_scale_loci_list and large_scale_loci_list.",
+            "comment": "Specification of loci requires that scope is loci and is mutually exclusive with specification of small_scale_loci_list and large_scale_loci_list.",
             "allOf": [
                 {
                     "properties": {
@@ -537,7 +537,7 @@
             ]
         },
         "small_scale_loci_list": {
-            "comment": "Specification of small_scale_loci_list requires that scope is loci and is mutually exlusive with specification of loci and large_scale_loci_list.",
+            "comment": "Specification of small_scale_loci_list requires that scope is loci and is mutually exclusive with specification of loci and large_scale_loci_list.",
             "allOf": [
                 {
                     "properties": {
@@ -557,7 +557,7 @@
             ]
         },
         "large_scale_loci_list": {
-            "comment": "Specification of large_scale_loci_list requires that scope is loci and is mutually exlusive with specification of loci and small_scale_loci_list.",
+            "comment": "Specification of large_scale_loci_list requires that scope is loci and is mutually exclusive with specification of loci and small_scale_loci_list.",
             "allOf": [
                 {
                     "properties": {
