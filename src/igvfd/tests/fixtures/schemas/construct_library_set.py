@@ -27,7 +27,7 @@ def base_expression_construct_library_set(testapp, lab, award, gene_myc_hs):
         'file_set_type': 'expression vector library',
         'scope': 'exon',
         'exon': 'E3',
-        'genes': [gene_myc_hs['@id']],
+        'small_scale_gene_list': [gene_myc_hs['@id']],
         'selection_criteria': [
             'genes'
         ]
@@ -57,7 +57,7 @@ def construct_library_set_y2h(testapp, lab, award, gene_myc_hs, gene_CRLF2_par_y
         'lab': lab['@id'],
         'file_set_type': 'expression vector library',
         'scope': 'genes',
-        'genes': [gene_myc_hs['@id'], gene_CRLF2_par_y['@id']],
+        'small_scale_gene_list': [gene_myc_hs['@id'], gene_CRLF2_par_y['@id']],
         'selection_criteria': [
             'protein interactors'
         ]
@@ -73,7 +73,7 @@ def construct_library_set_tile(testapp, lab, award, gene_myc_hs):
         'file_set_type': 'expression vector library',
         'scope': 'tile',
         'tile': {'tile_id': 'tile2', 'tile_start': 91, 'tile_end': 250},
-        'genes': [gene_myc_hs['@id']],
+        'small_scale_gene_list': [gene_myc_hs['@id']],
         'selection_criteria': [
             'sequence variants'
         ]
@@ -103,5 +103,14 @@ def construct_library_set_v2(construct_library_set_v1):
     item.update({
         'schema_version': '2',
         'description': ''
+    })
+    return item
+
+
+@pytest.fixture
+def construct_library_set_v3(construct_library_set_v2):
+    item = construct_library_set_v2.copy()
+    item.update({
+        'schema_version': '3'
     })
     return item

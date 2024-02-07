@@ -1,5 +1,10 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Schema version 4
+
+* Add `small_scale_gene_list`, `large_scale_gene_list`, `small_scale_loci_list`, and `large_scale_loci_list`.
+* Restrict `genes` and `loci` to submittable by admins only.
+
 ### Minor changes since schema version 3
 
 * Add a `title` property to `tile`.

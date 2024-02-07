@@ -1,6 +1,6 @@
 {
-    "hash": "addcd1a606a4e7b3a12d6a989e0101bf",
-    "index_name": "multiplexed_sample_addcd1a6",
+    "hash": "10db1645d6c41a383319f34a633cb84f",
+    "index_name": "multiplexed_sample_10db1645",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -323,6 +323,12 @@
                             "lab": {
                                 "type": "keyword"
                             },
+                            "large_scale_gene_list": {
+                                "type": "keyword"
+                            },
+                            "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
                             "loci": {
                                 "properties": {
                                     "assembly": {
@@ -396,6 +402,38 @@
                             },
                             "selection_criteria": {
                                 "type": "keyword"
+                            },
+                            "small_scale_gene_list": {
+                                "type": "keyword"
+                            },
+                            "small_scale_loci_list": {
+                                "properties": {
+                                    "assembly": {
+                                        "type": "keyword"
+                                    },
+                                    "chromosome": {
+                                        "type": "keyword"
+                                    },
+                                    "end": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "start": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "sources": {
                                 "type": "keyword"
@@ -712,6 +750,12 @@
                                 },
                                 "type": "object"
                             },
+                            "large_scale_gene_list": {
+                                "type": "keyword"
+                            },
+                            "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
                             "library_construction_platform": {
                                 "type": "keyword"
                             },
@@ -831,28 +875,10 @@
                             "sequencing_library_types": {
                                 "type": "keyword"
                             },
-                            "software_version": {
+                            "small_scale_gene_list": {
                                 "type": "keyword"
                             },
-                            "sources": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "targeted_genes": {
-                                "type": "keyword"
-                            },
-                            "targeted_loci": {
+                            "small_scale_loci_list": {
                                 "properties": {
                                     "assembly": {
                                         "type": "keyword"
@@ -880,6 +906,24 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "software_version": {
+                                "type": "keyword"
+                            },
+                            "sources": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
                             },
                             "taxa": {
                                 "type": "keyword"

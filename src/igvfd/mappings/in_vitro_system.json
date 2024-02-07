@@ -1,6 +1,6 @@
 {
-    "hash": "7afea689fbdaed3f28aa2ce33b6f7bf9",
-    "index_name": "in_vitro_system_7afea689",
+    "hash": "d44a422bffddab8524f0e666f0924fae",
+    "index_name": "in_vitro_system_d44a422b",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -649,6 +649,12 @@
                                 },
                                 "type": "object"
                             },
+                            "large_scale_gene_list": {
+                                "type": "keyword"
+                            },
+                            "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
                             "library_construction_platform": {
                                 "type": "keyword"
                             },
@@ -768,28 +774,10 @@
                             "sequencing_library_types": {
                                 "type": "keyword"
                             },
-                            "software_version": {
+                            "small_scale_gene_list": {
                                 "type": "keyword"
                             },
-                            "sources": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "targeted_genes": {
-                                "type": "keyword"
-                            },
-                            "targeted_loci": {
+                            "small_scale_loci_list": {
                                 "properties": {
                                     "assembly": {
                                         "type": "keyword"
@@ -817,6 +805,24 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "software_version": {
+                                "type": "keyword"
+                            },
+                            "sources": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
                             },
                             "taxa": {
                                 "type": "keyword"

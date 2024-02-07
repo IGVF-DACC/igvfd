@@ -53,6 +53,12 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/genes"
+        },
+        {
+            "$ref": "mixins.json#/loci"
         }
     ],
     "dependentSchemas": {
@@ -60,11 +66,11 @@
             "file_set.json#/dependentSchemas"
         ],
         "scope": {
-            "comment": "If scope is genes then targeted_genes is required, if scope is loci then targeted_loci is required, if scope is genome-wide then targeted_genes and targeted_loci shouldn't be specified.",
+            "comment": "If scope is genes then genes, small_scale_gene_list, or large_scale_gene_list is required, if scope is loci then loci, small_scale_loci_list, or large_scale_loci_list are required, if scope is genome-wide then small_scale_gene_list, large_scale_gene_list, loci, small_scale_loci_list, and large_scale_loci_list shouldn't be specified.",
             "oneOf": [
                 {
                     "required": [
-                        "targeted_genes"
+                        "genes"
                     ],
                     "properties": {
                         "scope": {
@@ -76,7 +82,55 @@
                 },
                 {
                     "required": [
-                        "targeted_loci"
+                        "small_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "large_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "genes"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "loci"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "loci"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "small_scale_loci_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "loci"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "large_scale_loci_list"
                     ],
                     "properties": {
                         "scope": {
@@ -89,8 +143,12 @@
                 {
                     "not": {
                         "required": [
-                            "targeted_genes",
-                            "targeted_loci"
+                            "genes",
+                            "small_scale_gene_list",
+                            "large_scale_gene_list",
+                            "loci",
+                            "small_scale_loci_list",
+                            "large_scale_loci_list"
                         ]
                     },
                     "properties": {
@@ -103,30 +161,130 @@
                 }
             ]
         },
-        "targeted_genes": {
-            "comment": "Specification of targeted_genes requires that scope is genes.",
-            "properties": {
-                "scope": {
-                    "enum": [
-                        "genes"
-                    ]
+        "genes": {
+            "comment": "Specification of genes requires that scope is genes and is mutually exclusive with specification of small_scale_gene_list and large_scale_gene_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "genes"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "small_scale_gene_list",
+                            "large_scale_gene_list"
+                        ]
+                    }
                 }
-            }
+            ]
         },
-        "targeted_loci": {
-            "comment": "Specification of targeted_loci requires that scope is loci.",
-            "properties": {
-                "scope": {
-                    "enum": [
-                        "loci"
-                    ]
+        "small_scale_gene_list": {
+            "comment": "Specification of small_scale_gene_list requires that scope is genes and is mutually exclusive with specification of genes and large_scale_gene_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "genes"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "genes",
+                            "large_scale_gene_list"
+                        ]
+                    }
                 }
-            }
+            ]
+        },
+        "large_scale_gene_list": {
+            "comment": "Specification of large_scale_gene_list requires that scope is genes and is mutually exclusive with specification of genes and small_scale_gene_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "genes"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "genes",
+                            "small_scale_gene_list"
+                        ]
+                    }
+                }
+            ]
+        },
+        "loci": {
+            "comment": "Specification of loci requires that scope is loci and is mutually exclusive with specification of small_scale_loci_list and large_scale_loci_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "loci"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "small_scale_loci_list",
+                            "large_scale_loci_list"
+                        ]
+                    }
+                }
+            ]
+        },
+        "small_scale_loci_list": {
+            "comment": "Specification of small_scale_loci_list requires that scope is loci and is mutually exclusive with specification of loci and large_scale_loci_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "loci"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "loci",
+                            "large_scale_loci_list"
+                        ]
+                    }
+                }
+            ]
+        },
+        "large_scale_loci_list": {
+            "comment": "Specification of large_scale_loci_list requires that scope is loci and is mutually exclusive with specification of loci and small_scale_loci_list.",
+            "allOf": [
+                {
+                    "properties": {
+                        "scope": {
+                            "const": "loci"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "required": [
+                            "loci",
+                            "small_scale_loci_list"
+                        ]
+                    }
+                }
+            ]
         }
     },
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "4"
         },
         "file_set_type": {
             "description": "The category that best describes this prediction set.",
@@ -144,7 +302,7 @@
         },
         "scope": {
             "title": "Prediction Scope",
-            "description": "The scope or scale that this prediction set is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the targeted_genes or targeted_loci property.",
+            "description": "The scope or scale that this prediction set is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the genes or loci property.",
             "type": "string",
             "enum": [
                 "genes",
@@ -156,7 +314,7 @@
                 "igvf_utils": "genes"
             }
         },
-        "targeted_genes": {
+        "genes": {
             "title": "Targeted Genes",
             "description": "The specific gene(s) this prediction set was designed to target.",
             "type": "array",
@@ -170,9 +328,18 @@
             "submissionExample": {
                 "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
                 "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
-            }
+            },
+            "permission": "import_items"
         },
-        "targeted_loci": {
+        "small_scale_gene_list": {
+            "description": "The specific, small scale list of (<=100) gene(s) this prediction set targets.",
+            "comment": "If more than 100 genes were targeted, submit large_scale_gene_list instead."
+        },
+        "large_scale_gene_list": {
+            "description": "The large scale list of (>100 genes) this this prediction set targets.",
+            "comment": "If 100 or fewer genes were targeted, submit small_scale_gene_list instead."
+        },
+        "loci": {
             "title": "Targeted Loci",
             "description": "The specific chromosomal region(s) this prediction set was designed to target.",
             "comment": "Each locus is defined using 1-based, fully-closed (inclusive) coordinates for a specific version of the reference genome assembly.",
@@ -225,7 +392,8 @@
             "submissionExample": {
                 "appscript": "[{\"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]",
                 "igvf_utils": "[{\"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]"
-            }
+            },
+            "permission": "import_items"
         }
     },
     "fuzzy_searchable_fields": [

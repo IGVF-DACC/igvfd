@@ -1,6 +1,6 @@
 {
-    "hash": "ab003e92b6b85abb33bb4138d5c3033e",
-    "index_name": "tissue_ab003e92",
+    "hash": "6579d6627e87cd7ec6ec699be3e2a5d2",
+    "index_name": "tissue_6579d662",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -508,6 +508,12 @@
                                 },
                                 "type": "object"
                             },
+                            "large_scale_gene_list": {
+                                "type": "keyword"
+                            },
+                            "large_scale_loci_list": {
+                                "type": "keyword"
+                            },
                             "library_construction_platform": {
                                 "type": "keyword"
                             },
@@ -627,28 +633,10 @@
                             "sequencing_library_types": {
                                 "type": "keyword"
                             },
-                            "software_version": {
+                            "small_scale_gene_list": {
                                 "type": "keyword"
                             },
-                            "sources": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "targeted_genes": {
-                                "type": "keyword"
-                            },
-                            "targeted_loci": {
+                            "small_scale_loci_list": {
                                 "properties": {
                                     "assembly": {
                                         "type": "keyword"
@@ -676,6 +664,24 @@
                                     }
                                 },
                                 "type": "object"
+                            },
+                            "software_version": {
+                                "type": "keyword"
+                            },
+                            "sources": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
                             },
                             "taxa": {
                                 "type": "keyword"

@@ -70,7 +70,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
         base_expression_construct_library_set['@id'],
         {
             'selection_criteria': ['genes'],
-            'genes': [gene_myc_hs['@id']]
+            'small_scale_gene_list': [gene_myc_hs['@id']]
         }
     )
     res = testapp.get(base_expression_construct_library_set['@id'])
@@ -79,7 +79,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
         base_expression_construct_library_set['@id'],
         {
             'selection_criteria': ['genes'],
-            'genes': [gene_myc_hs['@id'], gene_zscan10_mm['@id']]
+            'small_scale_gene_list': [gene_myc_hs['@id'], gene_zscan10_mm['@id']]
         }
     )
     res = testapp.get(base_expression_construct_library_set['@id'])
@@ -91,7 +91,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
         construct_library_set_y2h['@id'],
         {
             'selection_criteria': ['protein interactors', 'genes', 'phenotype-associated variants'],
-            'genes': [gene_myc_hs['@id']],
+            'small_scale_gene_list': [gene_myc_hs['@id']],
             'associated_phenotypes': [phenotype_term_myocardial_infarction['@id']]
         }
     )
@@ -102,7 +102,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
         construct_library_set_y2h['@id'],
         {
             'selection_criteria': ['protein interactors', 'genes', 'phenotype-associated variants'],
-            'genes': [gene_myc_hs['@id']],
+            'small_scale_gene_list': [gene_myc_hs['@id']],
             'scope': 'tile',
             'tile': {'tile_id': 'tile1', 'tile_start': 1, 'tile_end': 96
                      },
