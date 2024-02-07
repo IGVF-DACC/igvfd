@@ -132,44 +132,6 @@ def test_audit_related_multiome_datasets(
     )
 
 
-def test_audit_inherit_related_multiome(
-    testapp,
-    primary_cell,
-    measurement_set_multiome,
-    measurement_set_multiome_2
-):
-    # A measurement set should inherit audits from other datasets in `related_multiome_datasets`
-    testapp.patch_json(
-        measurement_set_multiome['@id'],
-        {
-            'protocols': ['https://www.protocols.io/view/example_protocol'],
-            'samples': [primary_cell['@id']]
-        }
-    )
-    testapp.patch_json(
-        measurement_set_multiome_2['@id'],
-        {
-            'samples': [primary_cell['@id']]
-        }
-    )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing protocol'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    testapp.patch_json(
-        measurement_set_multiome_2['@id'],
-        {
-            'protocols': ['https://www.protocols.io/view/example_protocol']
-        }
-    )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing protocol'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-
-
 def test_audit_protocol(
     testapp,
     measurement_set

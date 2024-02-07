@@ -272,7 +272,6 @@ class MeasurementSet(FileSet):
     ]
 
     audit_inherit = FileSet.audit_inherit + [
-        'related_multiome_datasets',
         'auxiliary_sets',
         'library_construction_platform',
         'assay_term',
