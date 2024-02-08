@@ -584,7 +584,7 @@ class ConstructLibrarySet(FileSet):
                 gene_name = (gene_object.get('symbol'))
                 target_phrase = f' {gene_name}'
             elif large_scale_gene_list:
-                target_phrase = f'many genes'
+                target_phrase = f' many genes'
         if scope == 'exon':
             if (genes and len(genes) > 1) or (small_scale_gene_list and len(small_scale_gene_list) > 1):
                 target_phrase = f' exon {exon} of multiple genes'
