@@ -314,23 +314,6 @@
                 "igvf_utils": "genes"
             }
         },
-        "genes": {
-            "title": "Targeted Genes",
-            "description": "The specific gene(s) this prediction set was designed to target.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "comment": "See gene.json for a list of available identifiers.",
-                "type": "string",
-                "linkTo": "Gene"
-            },
-            "submissionExample": {
-                "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
-                "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
-            },
-            "permission": "import_items"
-        },
         "small_scale_gene_list": {
             "description": "The specific, small scale list of (<=100) gene(s) this prediction set targets.",
             "comment": "If more than 100 genes were targeted, submit large_scale_gene_list instead."
@@ -338,62 +321,6 @@
         "large_scale_gene_list": {
             "description": "The large scale list of (>100 genes) this this prediction set targets.",
             "comment": "If 100 or fewer genes were targeted, submit small_scale_gene_list instead."
-        },
-        "loci": {
-            "title": "Targeted Loci",
-            "description": "The specific chromosomal region(s) this prediction set was designed to target.",
-            "comment": "Each locus is defined using 1-based, fully-closed (inclusive) coordinates for a specific version of the reference genome assembly.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Targeted Locus",
-                "type": "object",
-                "required": [
-                    "assembly",
-                    "chromosome",
-                    "start",
-                    "end"
-                ],
-                "additionalProperties": false,
-                "properties": {
-                    "assembly": {
-                        "title": "Mapping assembly",
-                        "description": "The genome assembly to which coordinates relate (e.g., GRCh38).",
-                        "type": "string",
-                        "enum": [
-                            "GRCh38",
-                            "hg19",
-                            "GRCm39",
-                            "mm10",
-                            "mm9"
-                        ]
-                    },
-                    "chromosome": {
-                        "title": "Chromosome",
-                        "description": "The number (or letter) designation for the chromosome, e.g. chr1 or chrX",
-                        "type": "string",
-                        "pattern": "^(chr[0-9A-Za-z_]+)$"
-                    },
-                    "start": {
-                        "title": "Start",
-                        "description": "The 1-based, closed (inclusive) starting coordinate.",
-                        "type": "integer",
-                        "minimum": 1
-                    },
-                    "end": {
-                        "title": "End",
-                        "description": "The 1-based, closed (inclusive) ending coordinate.",
-                        "type": "integer",
-                        "minimum": 1
-                    }
-                }
-            },
-            "submissionExample": {
-                "appscript": "[{\"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]",
-                "igvf_utils": "[{\"assembly\": \"GRCh38\", \"chromosome\": \"chr1\", \"start\": 100, \"end\": 200}]"
-            },
-            "permission": "import_items"
         }
     },
     "fuzzy_searchable_fields": [

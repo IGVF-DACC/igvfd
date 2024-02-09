@@ -202,3 +202,10 @@ def prediction_set_3_4(value, system):
 def construct_library_set_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1311
     return
+
+
+@upgrade_step('construct_library_set', '4', '5')
+@upgrade_step('prediction_set', '4', '5')
+def construct_library_set_prediction_set_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1426
+    return
