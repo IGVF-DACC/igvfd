@@ -103,86 +103,50 @@ def audit_inconsistent_seqspec(value, system):
         audit_levels: ERROR
     '''
     if 'files' in value:
-        sequencing_runs = {}
-        indices = {}
+        sequence_file_to_seqspec = {}
         for file in value['files']:
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
 
-                # Get the mapping for index and sequencing_runs to sequence files and associated seqspec. A sequence file will only be audited wrt index or sequencing run.
-                if 'index' in sequence_file_object:
-                    index = str(sequence_file_object['index'])
-                    if index in indices:
-                        indices[index][file] = {'seqspec': sequence_file_object.get('seqspec', '')}
-                    else:
-                        indices[index] = {file: {'seqspec': sequence_file_object.get('seqspec', '')}}
+                sequencing_run = str(sequence_file_object.get('sequencing_run', ''))
+                flowcell_id = sequence_file_object.get('flowcell_id', '')
+                lane = str(sequence_file_object.get('lane', ''))
+                index = sequence_file_object.get('index', '')
+                key_list = [sequencing_run, flowcell_id, lane, index]
+                key_list = [item for item in key_list if item != '']
+                key = ':'.join(key_list)
+
+                if key not in sequence_file_to_seqspec:
+                    sequence_file_to_seqspec[key] = {file: sequence_file_object.get('seqpsec', '')}
                 else:
-                    sequencing_run = str(sequence_file_object['sequencing_run'])
-                    if sequencing_run in sequencing_runs:
-                        sequencing_runs[sequencing_run][file] = {'seqspec': sequence_file_object.get('seqspec', '')}
-                    else:
-                        sequencing_runs[sequencing_run] = {file: {'seqspec': sequence_file_object.get('seqspec', '')}}
+                    sequence_file_to_seqspec[key].update({file: sequence_file_object.get('seqpsec', '')})
 
-        # Check that associated seqspec files for an index are the same
-        for index, sequence_files in indices.items():
-            unique_seqspecs = set(file_data['seqspec'] for file_data in sequence_files.values() if file_data['seqspec'])
-            if len(unique_seqspecs) != 1:
+        for key, file_dict in sequence_file_to_seqspec.items():
+            first_seqspec = next(iter(file_dict.values()), None)
+            if not(all(seqspec == first_seqspec for seqspec in file_dict.values())):
+                non_matching_files = [file for file, seqspec in file_dict.items() if seqspec != first_seqspec]
                 detail = (
                     f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
-                    f'{", ".join([audit_link(path_to_text(sequence_file), sequence_file) for sequence_file in indices[index].keys()])} '
-                    f'associated with index {index} which do not link to the same seqspec file; '
-                    f'sequence files with the same index are expected to link to the '
-                    f'same seqspec file.'
+                    f'{", ".join([audit_link(path_to_text(non_matching_files), non_matching_files) for non_matching_files in non_matching_files])} '
+                    f'which belong to the same sequencing set, but do not share the same seqspec file.'
                 )
                 yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
 
-        # Check that associated seqspec files for a sequencing run are the same
-        for sequencing_run, sequence_files in sequencing_runs.items():
-            unique_seqspecs = set(file_data['seqspec'] for file_data in sequence_files.values() if file_data['seqspec'])
-            if len(unique_seqspecs) != 1:
-                detail = (
-                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
-                    f'{", ".join([audit_link(path_to_text(sequence_file), sequence_file) for sequence_file in sequencing_runs[sequencing_run].keys()])} '
-                    f'associated with sequencing run {sequencing_run} do not link to the same seqspec file; '
-                    f'sequence files from the same sequencing run are expected to link to the '
-                    f'same seqspec file.'
-                )
-                yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+        seqspec_file_map = {}
 
-        # Check that associated seqspec files are unique for each index
-        for index, sequence_files in indices.items():
-            share_seqspec = []
-            seqspec = set(file_data['seqspec'] for file_data in sequence_files.values() if file_data['seqspec'])
-            for index_to_compare, sequence_files_to_compare in indices.items():
-                if index == index_to_compare:
-                    continue
+        # Iterate through each key in sequence_file_to_seqspec
+        for key, file_dict in sequence_file_to_seqspec.items():
+            # Iterate through each file and its seqspec
+            for file, seqspec in file_dict.items():
+                # If the seqspec is not in the map, add it with the current file
+                if seqspec not in seqspec_file_map:
+                    seqspec_file_map[seqspec] = [(key, file)]
                 else:
-                    if seqspec.intersection(set(file_data['seqspec'] for file_data in sequence_files_to_compare.values())):
-                        share_seqspec.append(index_to_compare)
-            if share_seqspec:
-                detail = (
-                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
-                    f'{", ".join([audit_link(path_to_text(sequence_file), sequence_file) for sequence_file in indices[index].keys()])} '
-                    f'with index {index} sharing the same seqspec file as files associated with index(es) {", ".join(share_seqspec)}; '
-                    f'only sequence files with the same index are expected to link to the same seqspec file.'
-                )
-                yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+                    # If the seqspec is already in the map, add the current file
+                    seqspec_file_map[seqspec].append((key, file))
 
-        # Check that associated seqspec files are unique for each sequencing run
-        for sequencing_run, sequence_files in sequencing_runs.items():
-            share_seqspec = []
-            seqspec = set(file_data['seqspec'] for file_data in sequence_files.values() if file_data['seqspec'])
-            for sequencing_run_to_compare, sequence_files_to_compare in sequencing_runs.items():
-                if sequencing_run == sequencing_run_to_compare:
-                    continue
-                else:
-                    if seqspec.intersection(set(file_data['seqspec'] for file_data in sequence_files_to_compare.values())):
-                        share_seqspec.append(sequencing_run_to_compare)
-            if share_seqspec:
-                detail = (
-                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
-                    f'{", ".join([audit_link(path_to_text(sequence_file), sequence_file) for sequence_file in sequencing_runs[sequencing_run].keys()])} '
-                    f'from sequencing run {sequencing_run} sharing the same seqspec file as files associated with sequencing run(s) {", ".join(share_seqspec)}; '
-                    f'only sequence files with the same sequencing run are expected to link to the same seqspec file.'
-                )
-                yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
+        for seqspec, files in seqspec_file_map.items():
+            if len(files) > 1:
+                print(f'Error: Seqspec {seqspec} appears in the following files:')
+                for key, file in files:
+                    print(f'   File {file} under key {key}')
