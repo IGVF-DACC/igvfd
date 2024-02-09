@@ -285,46 +285,8 @@
             ]
         },
         "scope": {
-            "comment": "If scope is genes then genes, small_scale_gene_list, or large_scale_gene_list is required, if scope is tile then both tile and genes or small_scale_gene_list are required, if scope is loci then loci, small_scale_loci_list, or large_scale_loci_list are required, if scope is exon then both exon and genes or small_scale_gene_list, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, loci, small_scale_loci_list, and large_scale_loci_list shouldn't be specified.",
+            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified.",
             "oneOf": [
-                {
-                    "required": [
-                        "genes"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "genes"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "tile",
-                        "genes"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "tile"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "exon",
-                        "genes"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "exon"
-                            ]
-                        }
-                    }
-                },
                 {
                     "required": [
                         "small_scale_gene_list"
@@ -377,18 +339,6 @@
                 },
                 {
                     "required": [
-                        "loci"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "loci"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
                         "small_scale_loci_list"
                     ],
                     "properties": {
@@ -416,10 +366,8 @@
                         "required": [
                             "tile",
                             "exon",
-                            "genes",
                             "small_scale_gene_list",
                             "large_scale_gene_list",
-                            "loci",
                             "small_scale_loci_list",
                             "large_scale_loci_list"
                         ]
@@ -434,38 +382,8 @@
                 }
             ]
         },
-        "genes": {
-            "comment": "Specification of genes requires that scope is tile, exon, or genes and is mutually exclusive with specification of small_scale_gene_list and large_scale_gene_list.",
-            "allOf": [
-                {
-                    "properties": {
-                        "scope": {
-                            "oneOf": [
-                                {
-                                    "const": "tile"
-                                },
-                                {
-                                    "const": "exon"
-                                },
-                                {
-                                    "const": "genes"
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "not": {
-                        "required": [
-                            "small_scale_gene_list",
-                            "large_scale_gene_list"
-                        ]
-                    }
-                }
-            ]
-        },
         "small_scale_gene_list": {
-            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, or genes and is mutually exclusive with specification of genes and large_scale_gene_list.",
+            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, or genes and is mutually exclusive with specification of large_scale_gene_list.",
             "allOf": [
                 {
                     "properties": {
@@ -487,7 +405,6 @@
                 {
                     "not": {
                         "required": [
-                            "genes",
                             "large_scale_gene_list"
                         ]
                     }
@@ -495,7 +412,7 @@
             ]
         },
         "large_scale_gene_list": {
-            "comment": "Specification of large_scale_gene_list requires that scope is genes and is mutually exclusive with specification of genes and small_scale_gene_list.",
+            "comment": "Specification of large_scale_gene_list requires that scope is genes and is mutually exclusive with specification of small_scale_gene_list.",
             "allOf": [
                 {
                     "properties": {
@@ -507,7 +424,6 @@
                 {
                     "not": {
                         "required": [
-                            "genes",
                             "small_scale_gene_list",
                             "exon",
                             "tile"
@@ -516,28 +432,8 @@
                 }
             ]
         },
-        "loci": {
-            "comment": "Specification of loci requires that scope is loci and is mutually exclusive with specification of small_scale_loci_list and large_scale_loci_list.",
-            "allOf": [
-                {
-                    "properties": {
-                        "scope": {
-                            "const": "loci"
-                        }
-                    }
-                },
-                {
-                    "not": {
-                        "required": [
-                            "small_scale_loci_list",
-                            "large_scale_loci_list"
-                        ]
-                    }
-                }
-            ]
-        },
         "small_scale_loci_list": {
-            "comment": "Specification of small_scale_loci_list requires that scope is loci and is mutually exclusive with specification of loci and large_scale_loci_list.",
+            "comment": "Specification of small_scale_loci_list requires that scope is loci and is mutually exclusive with specification of large_scale_loci_list.",
             "allOf": [
                 {
                     "properties": {
@@ -557,7 +453,7 @@
             ]
         },
         "large_scale_loci_list": {
-            "comment": "Specification of large_scale_loci_list requires that scope is loci and is mutually exclusive with specification of loci and small_scale_loci_list.",
+            "comment": "Specification of large_scale_loci_list requires that scope is loci and is mutually exclusive with specification of small_scale_loci_list.",
             "allOf": [
                 {
                     "properties": {
@@ -569,7 +465,6 @@
                 {
                     "not": {
                         "required": [
-                            "loci",
                             "small_scale_loci_list"
                         ]
                     }
@@ -577,62 +472,30 @@
             ]
         },
         "exon": {
-            "comment": "Specification of exon requires genes or small_scale_gene_list and that scope is exon.",
-            "oneOf": [
-                {
-                    "required": [
-                        "genes"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "exon"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "small_scale_gene_list"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "exon"
-                            ]
-                        }
-                    }
+            "comment": "Specification of exon requires small_scale_gene_list and that scope is exon.",
+            "required": [
+                "small_scale_gene_list"
+            ],
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "exon"
+                    ]
                 }
-            ]
+            }
         },
         "tile": {
-            "comment": "Specification of tile requires genes or small_scale_gene_list and that scope is tile.",
-            "oneOf": [
-                {
-                    "required": [
-                        "genes"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "tile"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "required": [
-                        "small_scale_gene_list"
-                    ],
-                    "properties": {
-                        "scope": {
-                            "enum": [
-                                "tile"
-                            ]
-                        }
-                    }
+            "comment": "Specification of tile requires small_scale_gene_list and that scope is tile.",
+            "required": [
+                "small_scale_gene_list"
+            ],
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "tile"
+                    ]
                 }
-            ]
+            }
         },
         "average_insert_size": {
             "comment": "Specification of average_insert_size is mutually exclusive with specification of lower_bound_insert_size and upper_bound_insert_size.",
