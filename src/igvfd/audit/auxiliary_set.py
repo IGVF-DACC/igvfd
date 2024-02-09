@@ -6,6 +6,9 @@ from .formatter import (
     audit_link,
     path_to_text,
 )
+from .file_set import (
+    check_for_seq_config_files
+)
 
 
 @audit_checker('AuxiliarySet', frame='object')
@@ -15,10 +18,7 @@ def audit_auxiliary_set_files(value, system):
         audit_category: unexpected file association
         audit_levels: WARNING
     '''
-    non_sequence_files = []
-    for file in value.get('files'):
-        if not(file.startswith('/sequence-files/') or file.startswith('/configuration-files/')):
-            non_sequence_files.append(file)
+    non_sequence_files = check_for_seq_config_files(value)
     if non_sequence_files:
         non_sequence_files = ', '.join(
             [audit_link(path_to_text(file), file) for file in non_sequence_files])

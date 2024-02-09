@@ -8,6 +8,13 @@ from .formatter import (
 )
 
 
+def check_for_seq_config_files(value):
+    non_sequence_files = []
+    for file in value.get('files'):
+        if not(file.startswith('/sequence-files/') or file.startswith('/configuration-files/')):
+            non_sequence_files.append(file)
+
+
 @audit_checker('FileSet', frame='object')
 def audit_no_files(value, system):
     '''
