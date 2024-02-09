@@ -133,20 +133,18 @@ def audit_inconsistent_seqspec(value, system):
                 yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
 
         seqspec_file_map = {}
-
-        # Iterate through each key in sequence_file_to_seqspec
         for key, file_dict in sequence_file_to_seqspec.items():
-            # Iterate through each file and its seqspec
             for file, seqspec in file_dict.items():
-                # If the seqspec is not in the map, add it with the current file
                 if seqspec not in seqspec_file_map:
                     seqspec_file_map[seqspec] = [(key, file)]
                 else:
-                    # If the seqspec is already in the map, add the current file
                     seqspec_file_map[seqspec].append((key, file))
 
-        for seqspec, files in seqspec_file_map.items():
-            if len(files) > 1:
-                print(f'Error: Seqspec {seqspec} appears in the following files:')
-                for key, file in files:
-                    print(f'   File {file} under key {key}')
+        for seqspec, sequence_files in seqspec_file_map.items():
+            if len(sequence_files) > 1:
+                detail = (
+                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
+                    f'{", ".join([audit_link(path_to_text(sequence_files), sequence_files) for sequence_files in sequence_files])} '
+                    f'which do not belong to the same sequencing set, but share the same seqspec file {audit_link(path_to_text(seqspec), seqspec)}.'
+                )
+                yield AuditFailure('inconsistent seqspec metadata', detail, level='ERROR')
