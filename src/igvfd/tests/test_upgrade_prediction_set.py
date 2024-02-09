@@ -21,6 +21,6 @@ def test_prediction_set_upgrade_3_4(upgrader, prediction_set_v3):
     assert 'genes' in value and 'targeted_genes' not in value and value['genes'] == original_genes
 
 
-def test_prediction_set_set_upgrade_4_5(upgrader, prediction_set_v5):
-    value = upgrader.upgrade('prediction_set', prediction_set_v5, current_version='4', target_version='5')
+def test_prediction_set_set_upgrade_4_5(upgrader, prediction_set_v4):
+    value = upgrader.upgrade('prediction_set', prediction_set_v4, current_version='4', target_version='5')
     assert value['schema_version'] == '5'
