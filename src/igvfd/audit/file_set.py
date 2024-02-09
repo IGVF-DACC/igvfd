@@ -13,6 +13,7 @@ def check_for_seq_config_files(value):
     for file in value.get('files'):
         if not(file.startswith('/sequence-files/') or file.startswith('/configuration-files/')):
             non_sequence_files.append(file)
+    return non_sequence_files
 
 
 @audit_checker('FileSet', frame='object')
