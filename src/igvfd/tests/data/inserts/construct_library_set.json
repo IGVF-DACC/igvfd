@@ -14,7 +14,7 @@
         "selection_criteria": [
             "transcription start sites"
         ],
-        "loci": [
+        "small_scale_loci_list": [
             {
                 "assembly": "GRCh38",
                 "chromosome": "chr1_KI270712v1_random",

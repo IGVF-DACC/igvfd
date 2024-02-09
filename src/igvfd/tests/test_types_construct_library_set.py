@@ -23,7 +23,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
             'scope': 'loci',
             'selection_criteria': ['accessible genome regions', 'phenotype-associated variants'],
             'associated_phenotypes': [phenotype_term_alzheimers['@id']],
-            'loci': [{
+            'small_scale_loci_list': [{
                 'assembly': 'GRCh38',
                 'chromosome': 'chr1',
                 'start': 1,
@@ -38,7 +38,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     testapp.patch_json(
         construct_library_set_reporter['@id'],
         {
-            'loci': [
+            'small_scale_loci_list': [
                 {
                     'assembly': 'GRCh38',
                     'chromosome': 'chr1',
