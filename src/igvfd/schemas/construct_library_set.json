@@ -947,6 +947,7 @@
         "@type",
         "collections",
         "selection_criteria",
+        "small_scale_gene_list.symbol",
         "lab.title"
     ],
     "exact_searchable_fields": [
