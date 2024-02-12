@@ -41,5 +41,21 @@
         "uuid": "d84ce280-3014-4c2b-88bb-b7e82352f869",
         "large_scale_loci_list": "/tabular-files/igvf:tabular_file_01_bed",
         "scope": "loci"
+    },
+    {
+        "aliases": [
+            "igvf:prediction_set_3"
+        ],
+        "accession": "IGVFDS5278LBSV",
+        "file_set_type": "pathogenicity",
+        "samples": [
+            "igvf:mouse_embryo"
+        ],
+        "award": "1U01HG011967-01",
+        "lab": "andrew-allen",
+        "status": "released",
+        "uuid": "d41ed7ad-21be-4fa3-9520-f7c001e2c395",
+        "large_scale_gene_list": "igvf:xml_catalog_file",
+        "scope": "genes"
     }
 ]
