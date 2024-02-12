@@ -4,6 +4,7 @@
 
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
+* Add `proteins_proteins`, `regulatory_regions_genes`, `regulatory_regions_genes_biosamples`, `regulatory_regions_genes_biosamples_donors`, `regulatory_regions_genes_biosamples_treatments_chebi`, `regulatory_regions_genes_biosamples_treatments_proteins`, and `variants_genes_terms` to `content_type`.
 
 ### Schema version 10
 
