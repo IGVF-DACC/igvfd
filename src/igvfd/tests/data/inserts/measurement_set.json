@@ -246,7 +246,7 @@
         "samples": [
             "igvf:alias10"
         ],
-        "assay_term": "/assay-terms/OBI:0003090/",
+        "assay_term": "/assay-terms/OBI_0003090/",
         "preferred_assay_title": "RNA-seq",
         "file_set_type": "experimental data"
     },
@@ -261,7 +261,7 @@
         "samples": [
             "igvf:alias10"
         ],
-        "assay_term": "/assay-terms/OBI:0002764/",
+        "assay_term": "/assay-terms/OBI_0002764/",
         "preferred_assay_title": "scATAC-seq",
         "file_set_type": "experimental data"
     },
@@ -276,7 +276,7 @@
         "samples": [
             "igvf:alias10"
         ],
-        "assay_term": "/assay-terms/OBI:0002631/",
+        "assay_term": "/assay-terms/OBI_0002631/",
         "preferred_assay_title": "scRNA-seq",
         "file_set_type": "experimental data"
     }
