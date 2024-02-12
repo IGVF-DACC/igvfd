@@ -234,5 +234,50 @@
         "assay_term": "/assay-terms/NTR_0000745/",
         "preferred_assay_title": "snM3C-seq",
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:RNA-seq"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "uuid": "75762345-c2a7-4b97-832d-731bd060d434",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI:0003090/",
+        "preferred_assay_title": "RNA-seq",
+        "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:scATAC-seq"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "uuid": "9a721e59-98d4-4e10-8244-f08d835cf04f",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI:0002764/",
+        "preferred_assay_title": "scATAC-seq",
+        "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:scRNA-seq"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "uuid": "ac11b2d1-0313-437b-8486-82d0edc1f081",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI:0002631/",
+        "preferred_assay_title": "scRNA-seq",
+        "file_set_type": "experimental data"
     }
 ]
