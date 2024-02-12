@@ -130,7 +130,6 @@
             "description": "The type of content in the file.",
             "comment": "This property is overwritten by the subclasses to define specific enum values.",
             "type": "string",
-            "enum": [],
             "submissionExample": {
                 "appscript": "alignments",
                 "igvf_utils": "alignments"
