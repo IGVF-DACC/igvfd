@@ -104,7 +104,6 @@ class File(Item):
     ]
 
     set_status_up = [
-        'derived_from',
         'file_format_specifications'
     ]
     set_status_down = []
@@ -220,7 +219,6 @@ class SequenceFile(File):
     schema = load_schema('igvfd:schemas/sequence_file.json')
     embedded_with_frame = File.embedded_with_frame
     set_status_up = File.set_status_up + [
-        'seqspec',
         'sequencing_platform'
     ]
     set_status_down = File.set_status_down + []
@@ -285,9 +283,7 @@ class AlignmentFile(File):
     item_type = 'alignment_file'
     schema = load_schema('igvfd:schemas/alignment_file.json')
     embedded_with_frame = File.embedded_with_frame
-    set_status_up = File.set_status_up + [
-        'reference_files'
-    ]
+    set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):
@@ -335,9 +331,7 @@ class MatrixFile(File):
     item_type = 'matrix_file'
     schema = load_schema('igvfd:schemas/matrix_file.json')
     embedded_with_frame = File.embedded_with_frame
-    set_status_up = File.set_status_up + [
-        'reference_files'
-    ]
+    set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):
@@ -371,9 +365,7 @@ class SignalFile(File):
     item_type = 'signal_file'
     schema = load_schema('igvfd:schemas/signal_file.json')
     embedded_with_frame = File.embedded_with_frame
-    set_status_up = File.set_status_up + [
-        'reference_files'
-    ]
+    set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):

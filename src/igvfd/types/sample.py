@@ -87,7 +87,8 @@ class Sample(Item):
         'award',
         'lab',
         'sources',
-        'sample_terms'
+        'sample_terms',
+        'treatments'
     ]
 
     set_status_up = [
