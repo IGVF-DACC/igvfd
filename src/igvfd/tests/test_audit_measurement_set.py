@@ -504,7 +504,11 @@ def test_audit_inconsistent_seqspec(
         {
             'file_set': measurement_set['@id'],
             'seqspec': configuration_file_seqspec['@id'],
-            'illumina_read_type': 'R1'
+            'illumina_read_type': 'R1',
+            'sequencing_run': 1,
+            'flowcell_id': 'HJTW3BBXY',
+            'lane': 1,
+            'index': 'ACTG'
         }
     )
     testapp.patch_json(
@@ -513,7 +517,10 @@ def test_audit_inconsistent_seqspec(
             'file_set': measurement_set['@id'],
             'seqspec': configuration_file_seqspec_2['@id'],
             'illumina_read_type': 'R2',
-            'sequencing_run': 1
+            'sequencing_run': 1,
+            'flowcell_id': 'HJTW3BBXY',
+            'lane': 1,
+            'index': 'ACTG'
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')

@@ -103,12 +103,12 @@ def audit_inconsistent_seqspec(value, system):
         audit_levels: ERROR
     '''
     if 'files' in value:
-        sequence_file_to_seqspec = {}
+        sequence_set_to_seqspec = {}
         for file in value['files']:
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
 
-                sequencing_run = str(sequence_file_object.get('sequencing_run', ''))
+                sequencing_run = str(sequence_file_object.get('sequencing_run'))
                 flowcell_id = sequence_file_object.get('flowcell_id', '')
                 lane = str(sequence_file_object.get('lane', ''))
                 index = sequence_file_object.get('index', '')
@@ -116,12 +116,14 @@ def audit_inconsistent_seqspec(value, system):
                 key_list = [item for item in key_list if item != '']
                 key = ':'.join(key_list)
 
-                if key not in sequence_file_to_seqspec:
-                    sequence_file_to_seqspec[key] = {file: sequence_file_object.get('seqpsec', '')}
+                if key not in sequence_set_to_seqspec:
+                    sequence_set_to_seqspec[key] = {file: sequence_file_object.get('seqspec', '')}
                 else:
-                    sequence_file_to_seqspec[key].update({file: sequence_file_object.get('seqpsec', '')})
+                    sequence_set_to_seqspec[key][file] = sequence_file_object.get('seqspec', '')
 
-        for key, file_dict in sequence_file_to_seqspec.items():
+        print(sequence_set_to_seqspec)
+
+        for key, file_dict in sequence_set_to_seqspec.items():
             first_seqspec = next(iter(file_dict.values()), None)
             if not(all(seqspec == first_seqspec for seqspec in file_dict.values())):
                 non_matching_files = [file for file, seqspec in file_dict.items() if seqspec != first_seqspec]
@@ -133,7 +135,7 @@ def audit_inconsistent_seqspec(value, system):
                 yield AuditFailure('inconsistent sequence specifications', detail, level='ERROR')
 
         seqspec_file_map = {}
-        for key, file_dict in sequence_file_to_seqspec.items():
+        for key, file_dict in sequence_set_to_seqspec.items():
             for file, seqspec in file_dict.items():
                 if seqspec not in seqspec_file_map:
                     seqspec_file_map[seqspec] = [(key, file)]
