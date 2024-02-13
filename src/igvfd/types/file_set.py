@@ -30,6 +30,8 @@ def inspect_fileset(request, fileset, inspected_filesets):
         inspected_filesets.add(fileset)
         fileset_object = request.embed(fileset, '@@object?skip_calculated=true')
 
+        print(fileset_object)
+
         if fileset_object['@type'][0] == 'MeasurementSet':
             if 'preferred_assay_title' in fileset_object:
                 assay_terms.add(fileset_object['preferred_assay_title'])
