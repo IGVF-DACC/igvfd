@@ -1,5 +1,9 @@
 ## Changelog for *`prediction_set.json`*
 
+### Minor changes since schema version 4
+
+* Add ReferenceFile linkTo to `large_scale_gene_list` and `large_scale_loci_list`.
+
 ### Schema version 4
 
 * Rename `targeted_genes` to `genes`.

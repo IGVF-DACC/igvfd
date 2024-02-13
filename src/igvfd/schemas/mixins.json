@@ -476,7 +476,10 @@
             "title": "Large Scale Gene List",
             "description": "A large scale list (>100) of genes.",
             "type": "string",
-            "linkTo": "TabularFile",
+            "linkTo": [
+                "TabularFile",
+                "ReferenceFile"
+            ],
             "submissionExample": {
                 "appscript": "IGVFFI5432ENEG or john-doe:gene_list",
                 "igvf_utils": "IGVFFI5432ENEG or john-doe:gene_list"
@@ -544,7 +547,10 @@
             "title": "Large Scale Loci List",
             "description": "A large scale list (>100) of specific chromosomal regions.",
             "type": "string",
-            "linkTo": "TabularFile",
+            "linkTo": [
+                "TabularFile",
+                "ReferenceFile"
+            ],
             "submissionExample": {
                 "appscript": "IGVFFI5432ENEG or john-doe:loci_list",
                 "igvf_utils": "IGVFFI5432ENEG or john-doe:loci_list"

@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Minor changes since schema version 4
+
+* Add ReferenceFile linkTo to `large_scale_gene_list` and `large_scale_loci_list`.
+
 ### Schema version 4
 
 * Add `small_scale_gene_list`, `large_scale_gene_list`, `small_scale_loci_list`, and `large_scale_loci_list`.
