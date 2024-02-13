@@ -56,7 +56,7 @@ def audit_missing_seqspec(value, system):
 
 
 @audit_checker('FileSet', frame='object')
-def audit_missing_seqspec_files(value, system):
+def audit_files_associated_with_incorrect_fileset(value, system):
     '''
         audit_detail: All files associated with a seqspec (both sequencing and seqspec files) are expected to be linked on the same file set.
         audit_category: missing related files
