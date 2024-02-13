@@ -2,7 +2,7 @@
     "title": "Sequence File",
     "$id": "/profiles/sequence_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A file containing sequencing results in fastq or bam format.",
+    "description": "A file containing sequencing results in bam, fastq, or pod5 formats.",
     "required": [
         "award",
         "lab",
@@ -68,18 +68,53 @@
                     "read_count"
                 ]
             }
+        },
+        "content_type": {
+            "oneOf": [
+                {
+                    "properties": {
+                        "content_type": {
+                            "const": "reads"
+                        },
+                        "file_format": {
+                            "const": "fastq"
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "content_type": {
+                            "const": "PacBio subreads"
+                        },
+                        "file_format": {
+                            "const": "bam"
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "content_type": {
+                            "const": "Nanopore reads"
+                        },
+                        "file_format": {
+                            "const": "pod5"
+                        }
+                    }
+                }
+            ]
         }
     },
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "7"
+            "default": "8"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file. Reads are individual sequences of bases corresponding to DNA or RNA fragments in a FASTQ text file format. Subreads are sequences of bases produced using PacBio platforms.",
             "enum": [
-                "reads",
-                "subreads"
+                "Nanopore reads",
+                "PacBio subreads",
+                "reads"
             ],
             "submissionExample": {
                 "appscript": "reads",
@@ -89,7 +124,8 @@
         "file_format": {
             "enum": [
                 "bam",
-                "fastq"
+                "fastq",
+                "pod5"
             ],
             "submissionExample": {
                 "appscript": "fastq",

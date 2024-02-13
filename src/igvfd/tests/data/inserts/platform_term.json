@@ -23,5 +23,12 @@
         "company": "Parse Biosciences",
         "status": "released",
         "uuid": "9ed48993-8f87-f432-42ac-c34a0f5caa20"
+    },
+    {
+        "term_id": "EFO:0008633",
+        "term_name": "ONT GridION X5",
+        "company": "Oxford Nanopore Technologies",
+        "status": "released",
+        "uuid": "556bf993-70dc-7f34-497c-e6c0fa6a4af0"
     }
 ]

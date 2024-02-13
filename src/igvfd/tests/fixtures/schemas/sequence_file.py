@@ -147,3 +147,14 @@ def sequence_file_v6(sequence_file_v4):
         'status': 'released'
     })
     return item
+
+
+@pytest.fixture
+def sequence_file_v7(sequence_file):
+    item = sequence_file.copy()
+    item.update({
+        'schema_version': '7',
+        'content_type': 'subreads',
+        'file_format': 'bam'
+    })
+    return item

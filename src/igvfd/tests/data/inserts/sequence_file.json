@@ -10,7 +10,7 @@
         "status": "released",
         "md5sum": "71ffd7ed8bcd85ec3f01887601178db6",
         "file_format": "bam",
-        "content_type": "subreads",
+        "content_type": "PacBio subreads",
         "submitted_file_name": "/Users/igvf/igvf_files/subreads.bam",
         "file_size": 31208300,
         "upload_status": "validated",
@@ -82,5 +82,25 @@
         "illumina_read_type": "R2",
         "index": "ACTGGTCC",
         "sequencing_platform": "/platform-terms/747dc8bf-9e8c-3dbc-967f-ce9f995cfd28/"
+    },
+    {
+        "uuid": "fe559e2f-9bb8-49a2-757d-73be9806b9b5",
+        "accession": "IGVFFI5555PODD",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:nanopore_pod5_file"
+        ],
+        "status": "released",
+        "md5sum": "1b31c4117bac12773a9c91ac554b4175",
+        "content_md5sum": "61aa8a43b413bc73bc59c13d6e1271d6",
+        "file_format": "pod5",
+        "content_type": "Nanopore reads",
+        "submitted_file_name": "/Users/igvf/igvf_files/nanopore_raw.pod5",
+        "file_size": 38200183,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_measurement_set",
+        "sequencing_run": 3,
+        "sequencing_platform": "556bf993-70dc-7f34-497c-e6c0fa6a4af0"
     }
 ]

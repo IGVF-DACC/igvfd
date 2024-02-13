@@ -246,3 +246,46 @@ def test_sequence_file_upload_status(testapp, sequence_file):
         }
     )
     assert res.status_code == 200
+
+
+def test_sequence_file_content_type_file_format(testapp, sequence_file):
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_format': 'bam'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'content_type': 'Nanopore reads'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'content_type': 'PacBio subreads'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_format': 'bam',
+            'content_type': 'PacBio subreads'
+        }
+    )
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_format': 'pod5',
+            'content_type': 'Nanopore reads'
+        }
+    )
+    assert res.status_code == 200

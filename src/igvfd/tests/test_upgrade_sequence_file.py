@@ -31,3 +31,9 @@ def test_sequence_file_upgrade_6_7(upgrader, sequence_file_v6):
     value = upgrader.upgrade('sequence_file', sequence_file_v6, current_version='6', target_version='7')
     assert value['upload_status'] == 'invalidated'
     assert value['schema_version'] == '7'
+
+
+def test_sequence_file_upgrade_7_8(upgrader, sequence_file_v7):
+    value = upgrader.upgrade('sequence_file', sequence_file_v7, current_version='7', target_version='8')
+    assert value['content_type'] == 'PacBio subreads'
+    assert value['schema_version'] == '8'
