@@ -186,13 +186,14 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, accession, file_set_type):
+    def summary(self, request, file_set_type):
         sentence = f'{file_set_type}'
         results = tuple()
         measurement_terms = set()
         other_set_terms = set()
 
-        results = inspect_fileset(request, self['@id'], set())
+        fileset_id = self.jsonld_id(request)
+        results = inspect_fileset(request, fileset_id, set())
 
         if results[0]:
             measurement_terms = ', '.join(sorted(results[0]))
