@@ -3,7 +3,7 @@
 ### Minor changes since schema version 12
 
 * Add `release_timestamp`.
-* Expand `preferred_assay_title` enum list to include `ATAC-seq`, `RNA-seq`, `TF ChIP-seq`, `histone ChIP-seq`, `snRNA-seq`, `scRNA-seq`, `snATAC-seq` and `scATAC-seq`.
+* Add `ATAC-seq`, `RNA-seq`, `TF ChIP-seq`, `histone ChIP-seq`, `snRNA-seq`, `scRNA-seq`, `snATAC-seq` and `scATAC-seq` to `preferred_assay_title`.
 
 ### Schema version 12
 
