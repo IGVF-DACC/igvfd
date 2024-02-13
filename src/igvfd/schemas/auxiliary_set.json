@@ -1,6 +1,6 @@
 {
     "title": "Auxiliary Set",
-    "description": "A file set for auxiliary files produced alongside raw data from a measurement set. For example, gRNA sequences generated in a CRISPR screen experiment.",
+    "description": "A file set for auxiliary raw data files that were produced alongside raw data files from a measurement set. For example, in a CRISPR screen experiment the measurement set would capture the result of single-cell transcript sequencing and the auxiliary set the result of gRNA sequencing with the associated cellular barcodes.",
     "$id": "/profiles/auxiliary_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
