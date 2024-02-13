@@ -29,18 +29,15 @@ def inspect_fileset(request, fileset, inspected_filesets):
     else:
         inspected_filesets.add(fileset)
         fileset_object = request.embed(fileset, '@@object?skip_calculated=true')
-
-        print(fileset_object)
-
-        if fileset_object['@type'][0] == 'MeasurementSet':
+        if fileset.split('/')[1] == 'measurement-sets':
             if 'preferred_assay_title' in fileset_object:
                 assay_terms.add(fileset_object['preferred_assay_title'])
             else:
                 assay_terms.add(request.embed(fileset_object['assay_term'],
                                 '@@object?skip_calculated=true')['term_name'])
-        elif fileset_object['@type'][0] != 'AnalysisSet':
+        elif fileset.split('/')[1] != 'analysis-sets':
             fileset_types.add(fileset_object['file_set_type'])
-        elif (fileset_object['@type'][0] == 'AnalysisSet' and
+        elif (fileset.split('/')[1] == 'analysis-sets' and
               fileset_object.get('input_file_sets', False)):
             for input_fileset in fileset_object.get('input_file_sets'):
                 inspection = inspect_fileset(request, input_fileset, inspected_filesets)
@@ -193,10 +190,8 @@ class AnalysisSet(FileSet):
         results = tuple()
         measurement_terms = set()
         other_set_terms = set()
-
         fileset_id = self.jsonld_id(request)
         results = inspect_fileset(request, fileset_id, set())
-
         if results[0]:
             measurement_terms = ', '.join(sorted(results[0]))
             sentence += f' of {measurement_terms} data'
