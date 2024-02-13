@@ -1,5 +1,9 @@
 ## Changelog for *`prediction_set.json`*
 
+### Minor changes since schema version 4
+
+* Add `MPRAbase` to `collections`.
+
 ### Schema version 4
 
 * Rename `targeted_genes` to `genes`.

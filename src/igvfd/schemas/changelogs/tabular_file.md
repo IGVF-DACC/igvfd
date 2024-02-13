@@ -5,6 +5,7 @@
 * Add `sequence barcodes` to `content_type`.
 * Add `barcode to sample mapping` to `content_type`.
 * Add `release_timestamp`.
+* Add `MPRAbase` to `collections`.
 
 ### Schema version 5
 
