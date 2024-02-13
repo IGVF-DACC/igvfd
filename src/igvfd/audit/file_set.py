@@ -98,12 +98,12 @@ def audit_missing_seqspec_files(value, system):
 @audit_checker('FileSet', frame='object')
 def audit_inconsistent_seqspec(value, system):
     '''
-        audit_detail: Sequence files in a file set from the same sequencing run and index are expected to link to the same seqspec file, which should be unique to that sequencing run and index.
+        audit_detail: Sequence files in a file set from the same sequencing run, flowcell_id, lane, and index are expected to link to the same seqspec file, which should be unique to that set of sequence files.
         audit_category: inconsistent sequence specifications
         audit_levels: ERROR
     '''
     if 'files' in value:
-        sequence_set_to_seqspec = {}
+        sequence_to_seqspec = {}
         for file in value['files']:
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
@@ -116,14 +116,12 @@ def audit_inconsistent_seqspec(value, system):
                 key_list = [item for item in key_list if item != '']
                 key = ':'.join(key_list)
 
-                if key not in sequence_set_to_seqspec:
-                    sequence_set_to_seqspec[key] = {file: sequence_file_object.get('seqspec', '')}
+                if key not in sequence_to_seqspec:
+                    sequence_to_seqspec[key] = {file: sequence_file_object.get('seqspec', '')}
                 else:
-                    sequence_set_to_seqspec[key][file] = sequence_file_object.get('seqspec', '')
+                    sequence_to_seqspec[key][file] = sequence_file_object.get('seqspec', '')
 
-        print(sequence_set_to_seqspec)
-
-        for key, file_dict in sequence_set_to_seqspec.items():
+        for key, file_dict in sequence_to_seqspec.items():
             first_seqspec = next(iter(file_dict.values()), None)
             if not(all(seqspec == first_seqspec for seqspec in file_dict.values())):
                 non_matching_files = [file for file, seqspec in file_dict.items() if seqspec != first_seqspec]
@@ -134,15 +132,15 @@ def audit_inconsistent_seqspec(value, system):
                 )
                 yield AuditFailure('inconsistent sequence specifications', detail, level='ERROR')
 
-        seqspec_file_map = {}
-        for key, file_dict in sequence_set_to_seqspec.items():
+        seqspec_to_sequence = {}
+        for key, file_dict in sequence_to_seqspec.items():
             for file, seqspec in file_dict.items():
-                if seqspec not in seqspec_file_map:
-                    seqspec_file_map[seqspec] = [(key, file)]
+                if seqspec not in seqspec_to_sequence:
+                    seqspec_to_sequence[seqspec] = [(key, file)]
                 else:
-                    seqspec_file_map[seqspec].append((key, file))
+                    seqspec_to_sequence[seqspec].append((key, file))
 
-        for seqspec, sequence_files in seqspec_file_map.items():
+        for seqspec, sequence_files in seqspec_to_sequence.items():
             key_set = set()
             for key, file in sequence_files:
                 key_set.add(key)
