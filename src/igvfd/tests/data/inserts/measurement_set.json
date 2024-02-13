@@ -233,6 +233,9 @@
         ],
         "assay_term": "/assay-terms/NTR_0000745/",
         "preferred_assay_title": "snM3C-seq",
-        "file_set_type": "experimental data"
+        "file_set_type": "experimental data",
+        "collections": [
+            "MPRAbase"
+        ]
     }
 ]
