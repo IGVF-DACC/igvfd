@@ -1,6 +1,6 @@
 ## Changelog for *`mixins.json`*
 
-* Add `MPRAbase` to include `collections`.
+* Add `MPRAbase` to `collections`.
 * Add `release_timestamp`. (01/31/2024)
 * Disallow empty strings in `description`. (12/02/2023)
 * Rename `source` to `sources`. (08/09/2023)
