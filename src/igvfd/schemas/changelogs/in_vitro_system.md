@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Minor changes since schema version 19
+
+* Add `MPRAbase` to `collections`.
+
 ### Schema version 19
 
 * Replace `classification` with `classifications`.
