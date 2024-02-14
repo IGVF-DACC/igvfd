@@ -158,7 +158,8 @@ def test_audit_readout(
     testapp,
     measurement_set_mpra,
     assay_term_rna,
-    measurement_set_multiome
+    measurement_set_multiome,
+    assay_term_mpra
 ):
     # Screening assays such as CRISPR screen or MPRA must specify readout
     res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
@@ -194,6 +195,19 @@ def test_audit_readout(
     assert any(
         error['category'] == 'inconsistent readout'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Assay term should not be equivalent to
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'readout': assay_term_mpra['@id']
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent readout'
+        for error in res.json['audit'].get('ERROR', [])
     )
 
 

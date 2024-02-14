@@ -88,9 +88,9 @@ def audit_unspecified_protocol(value, system):
 @audit_checker('MeasurementSet', frame='object')
 def audit_inconsistent_readout(value, system):
     '''
-        audit_detail: CRISPR-based and MPRA assays are required to specify a readout, other assays should not include one.
+        audit_detail: CRISPR-based and MPRA assays are required to specify a readout, other assays should not include one. Also readout is not expected be the same as assay term.
         audit_category: inconsistent readout
-        audit_levels: NOT_COMPLIANT
+        audit_levels: ERROR, NOT_COMPLIANT
     '''
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
@@ -111,6 +111,12 @@ def audit_inconsistent_readout(value, system):
                 f'not expected to specify a data readout.'
             )
             yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')
+    if assay_term == value.get('readout'):
+        detail = (
+            f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+            f'not expected to specify the same readout and assay term.'
+        )
+        yield AuditFailure('inconsistent readout', detail, level='ERROR')
 
 
 @audit_checker('MeasurementSet', frame='object')
