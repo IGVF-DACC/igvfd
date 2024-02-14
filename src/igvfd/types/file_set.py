@@ -21,29 +21,36 @@ def get_donors_from_samples(request, samples):
     return list(set(donor_objects))
 
 
-def inspect_fileset(request, fileset, inspected_filesets):
-    assay_terms = set()
-    fileset_types = set()
-    if fileset in inspected_filesets:
-        return (assay_terms, fileset_types)
-    else:
+def inspect_fileset(request, fileset, inspected_filesets, assay_terms, fileset_types):
+    if fileset not in inspected_filesets:
         inspected_filesets.add(fileset)
         fileset_object = request.embed(fileset, '@@object?skip_calculated=true')
-        if fileset.split('/')[1] == 'measurement-sets':
+
+        print()
+        print('CALL OF INSPECT FILESET')
+        print('inspected: ' + str(inspected_filesets))
+        print('fileset object: ' + str(fileset_object))
+        print('fileset: ' + str(fileset))
+        if fileset.startswith('/measurement-sets/'):
+            print('it is measurement')
             if 'preferred_assay_title' in fileset_object:
                 assay_terms.add(fileset_object['preferred_assay_title'])
             else:
                 assay_terms.add(request.embed(fileset_object['assay_term'],
                                 '@@object?skip_calculated=true')['term_name'])
-        elif fileset.split('/')[1] != 'analysis-sets':
+        elif not fileset.startswith('/analysis-sets/'):
+            print('it is NOT an analysis')
             fileset_types.add(fileset_object['file_set_type'])
-        elif (fileset.split('/')[1] == 'analysis-sets' and
+        elif (fileset.startswith('/analysis-sets/') and
               fileset_object.get('input_file_sets', False)):
+            print('it is an analysis with input file sets')
             for input_fileset in fileset_object.get('input_file_sets'):
-                inspection = inspect_fileset(request, input_fileset, inspected_filesets)
-                assay_terms.update(inspection[0])
-                fileset_types.update(inspection[1])
-        return (assay_terms, fileset_types)
+                #print ('>>>>>>>>>>>>>>>>>>>>>>>>>ONE')
+                print('sending to recursion inspected: ' + str(inspected_filesets))
+                print('input fileset: ' + str(input_fileset))
+                inspect_fileset(request, input_fileset, inspected_filesets, assay_terms, fileset_types)
+        print('<<<<<<<<<<<<<<<<<<<<<<<<<returning ' + str((assay_terms, fileset_types)))
+    return
 
 
 @abstract_collection(
@@ -187,19 +194,27 @@ class AnalysisSet(FileSet):
     )
     def summary(self, request, file_set_type):
         sentence = f'{file_set_type}'
-        results = tuple()
         measurement_terms = set()
         other_set_terms = set()
         fileset_id = self.jsonld_id(request)
-        results = inspect_fileset(request, fileset_id, set())
-        if results[0]:
-            measurement_terms = ', '.join(sorted(results[0]))
+        assay_terms = set()
+        fileset_types = set()
+        inspect_fileset(request, fileset_id, set(), assay_terms, fileset_types)
+        print()
+        #print ()
+        #print ('ASSAY TERMS: ' + str(assay_terms))
+        #print ('FILESET TYPES: ' + str(fileset_types))
+
+        if assay_terms:
+            measurement_terms = ', '.join(sorted(assay_terms))
             sentence += f' of {measurement_terms} data'
-        elif results[1]:
-            other_set_terms = ', '.join(sorted(results[1]))
+        elif fileset_types:
+            other_set_terms = ', '.join(sorted(fileset_types))
             sentence += f' of {other_set_terms} data'
         else:
             sentence += f' of data'
+        print('SUMMARY:' + sentence)
+        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
         return sentence
 
     @calculated_property(

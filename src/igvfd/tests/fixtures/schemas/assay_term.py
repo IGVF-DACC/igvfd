@@ -4,7 +4,7 @@ import pytest
 @pytest.fixture
 def assay_term_starr(testapp):
     item = {
-        'term_id': 'OBI:0002041',
+        'term_id': 'OBI:0102241',
         'term_name': 'STARR-seq'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
@@ -68,7 +68,7 @@ def assay_term_ntr(testapp):
 @pytest.fixture
 def assay_term_mpra(testapp):
     item = {
-        'term_id': 'OBI:0002675',
+        'term_id': 'OBI:0102671',
         'term_name': 'massively parallel reporter assay'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
