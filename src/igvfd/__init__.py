@@ -1,4 +1,4 @@
-__version__ = '25.5.1'
+__version__ = '25.6.0'
 
 
 import igvfd.schema_formats  # needed to import before snovault to add FormatCheckers
