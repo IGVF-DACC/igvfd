@@ -87,8 +87,16 @@ class Sample(Item):
         'award',
         'lab',
         'sources',
-        'sample_terms'
+        'sample_terms',
+        'treatments'
     ]
+
+    set_status_up = [
+        'construct_library_sets',
+        'documents',
+        'sorted_from'
+    ]
+    set_status_down = []
 
     @calculated_property(schema={
         'title': 'File Sets',
@@ -182,6 +190,18 @@ class Biosample(Sample):
         'treatments',
         'modifications',
     ]
+
+    set_status_up = Sample.set_status_up + [
+        'biomarkers',
+        'donors',
+        'modifications',
+        'originated_from',
+        'part_of',
+        'pooled_from',
+        'sample_terms',
+        'targeted_sample_term',
+    ]
+    set_status_down = Sample.set_status_down + []
 
     @calculated_property(
         define=True,
@@ -467,6 +487,8 @@ class PrimaryCell(Biosample):
     schema = load_schema('igvfd:schemas/primary_cell.json')
     embedded_with_frame = Biosample.embedded_with_frame
     audit_inherit = Biosample.audit_inherit
+    set_status_up = Biosample.set_status_up + []
+    set_status_down = Biosample.set_status_down + []
 
     @calculated_property(
         schema={
@@ -499,6 +521,10 @@ class InVitroSystem(Biosample):
         Path('originated_from', include=['@id', 'accession']),
     ]
     audit_inherit = Biosample.audit_inherit
+    set_status_up = Biosample.set_status_up + [
+        'cell_fate_change_protocol'
+    ]
+    set_status_down = Biosample.set_status_down + []
 
 
 @collection(
@@ -514,6 +540,8 @@ class Tissue(Biosample):
     schema = load_schema('igvfd:schemas/tissue.json')
     embedded_with_frame = Biosample.embedded_with_frame
     audit_inherit = Biosample.audit_inherit
+    set_status_up = Biosample.set_status_up + []
+    set_status_down = Biosample.set_status_down + []
 
     @calculated_property(
         schema={
@@ -546,6 +574,8 @@ class TechnicalSample(Sample):
         Path('sample_terms', include=['@id', 'term_name']),
     ]
     audit_inherit = Sample.audit_inherit
+    set_status_up = Biosample.set_status_up + []
+    set_status_down = Biosample.set_status_down + []
 
     @calculated_property(
         schema={
@@ -621,6 +651,8 @@ class WholeOrganism(Biosample):
         'treatments',
         'modifications',
     ]
+    set_status_up = Biosample.set_status_up + []
+    set_status_down = Biosample.set_status_down + []
 
     @calculated_property(
         schema={
@@ -662,6 +694,8 @@ class MultiplexedSample(Sample):
         Path('construct_library_sets', include=['@id', 'accession'])
     ]
     audit_inherit = Biosample.audit_inherit
+    set_status_up = Biosample.set_status_up + []
+    set_status_down = Biosample.set_status_down + []
 
     @calculated_property(
         schema={

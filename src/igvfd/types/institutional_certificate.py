@@ -26,6 +26,9 @@ class InstitutionalCertificate(Item):
         Path('submitted_by', include=['@id', 'title']),
     ]
 
+    set_status_up = []
+    set_status_down = []
+
     def unique_keys(self, properties):
         keys = super(InstitutionalCertificate, self).unique_keys(properties)
         keys.setdefault('institutional_certification:certificate_identifier',
