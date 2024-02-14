@@ -27,3 +27,6 @@ class Document(ItemWithAttachment, Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]
+
+    set_status_up = []
+    set_status_down = []

@@ -103,6 +103,11 @@ class File(Item):
         Path('submitted_by', include=['@id', 'title']),
     ]
 
+    set_status_up = [
+        'file_format_specifications'
+    ]
+    set_status_down = []
+
     @calculated_property(
         schema={
             'title': 'Download URL',
@@ -213,6 +218,10 @@ class SequenceFile(File):
     item_type = 'sequence_file'
     schema = load_schema('igvfd:schemas/sequence_file.json')
     embedded_with_frame = File.embedded_with_frame
+    set_status_up = File.set_status_up + [
+        'sequencing_platform'
+    ]
+    set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -247,6 +256,8 @@ class ReferenceFile(File):
     item_type = 'reference_file'
     schema = load_schema('igvfd:schemas/reference_file.json')
     embedded_with_frame = File.embedded_with_frame
+    set_status_up = File.set_status_up + []
+    set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -272,6 +283,8 @@ class AlignmentFile(File):
     item_type = 'alignment_file'
     schema = load_schema('igvfd:schemas/alignment_file.json')
     embedded_with_frame = File.embedded_with_frame
+    set_status_up = File.set_status_up + []
+    set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -318,6 +331,8 @@ class MatrixFile(File):
     item_type = 'matrix_file'
     schema = load_schema('igvfd:schemas/matrix_file.json')
     embedded_with_frame = File.embedded_with_frame
+    set_status_up = File.set_status_up + []
+    set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -350,6 +365,8 @@ class SignalFile(File):
     item_type = 'signal_file'
     schema = load_schema('igvfd:schemas/signal_file.json')
     embedded_with_frame = File.embedded_with_frame
+    set_status_up = File.set_status_up + []
+    set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -404,6 +421,8 @@ class ConfigurationFile(File):
     rev = {
         'seqspec_of': ('SequenceFile', 'seqspec')
     }
+    set_status_up = File.set_status_up + []
+    set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -440,6 +459,8 @@ class TabularFile(File):
     item_type = 'tabular_file'
     schema = load_schema('igvfd:schemas/tabular_file.json')
     embedded_with_frame = File.embedded_with_frame
+    set_status_up = File.set_status_up + []
+    set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -462,6 +483,8 @@ class GenomeBrowserAnnotationFile(File):
     item_type = 'genome_browser_annotation_file'
     schema = load_schema('igvfd:schemas/genome_browser_annotation_file.json')
     embedded_with_frame = File.embedded_with_frame
+    set_status_up = File.set_status_up + []
+    set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)
@@ -484,6 +507,8 @@ class ImageFile(File):
     item_type = 'image_file'
     schema = load_schema('igvfd:schemas/image_file.json')
     embedded_with_frame = File.embedded_with_frame
+    set_status_up = File.set_status_up + []
+    set_status_down = File.set_status_down + []
 
     def unique_keys(self, properties):
         keys = super(File, self).unique_keys(properties)

@@ -32,6 +32,12 @@ class Workflow(Item):
         Path('standards_page', include=['@id', 'title'])
     ]
 
+    set_status_up = [
+        'analysis_steps',
+        'standards_page'
+    ]
+    set_status_down = []
+
     @calculated_property(schema={
         'title': 'Analysis Steps',
         'type': 'array',
