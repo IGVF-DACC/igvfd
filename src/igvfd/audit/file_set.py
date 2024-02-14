@@ -36,7 +36,7 @@ def audit_missing_seqspec(value, system):
     '''
         audit_detail: Sequence files in a file set are expected to link to a seqspec file.
         audit_category: missing sequence specification
-        audit_levels: ERROR
+        audit_levels: NOT_COMPLIANT
     '''
     if 'files' in value:
         no_seqspec = []
@@ -52,7 +52,7 @@ def audit_missing_seqspec(value, system):
                 f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
                 f'{no_seqspec} which do not have a seqspec configuration file.'
             )
-            yield AuditFailure('missing sequence specification', detail, level='ERROR')
+            yield AuditFailure('missing sequence specification', detail, level='NOT_COMPLIANT')
 
 
 @audit_checker('FileSet', frame='object')

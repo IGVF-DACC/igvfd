@@ -415,7 +415,7 @@ def test_audit_missing_seqspec(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing sequence specification'
-        for error in res.json['audit'].get('ERROR', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         sequence_file['@id'],
@@ -426,11 +426,11 @@ def test_audit_missing_seqspec(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing sequence specification'
-        for error in res.json['audit'].get('ERROR', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 
-def test_audit_missing_related_seqspec_files(
+def test_audit_files_associated_with_incorrect_fileset(
     testapp,
     measurement_set,
     measurement_set_multiome,
