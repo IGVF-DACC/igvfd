@@ -66,3 +66,29 @@ def test_audit_construct_library_set_exon_with_multiple_genes(
         error['category'] == 'inconsistent scope metadata'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_construct_library_set_with_non_sequence_files(
+    testapp,
+    construct_library_set_genome_wide,
+    analysis_set_with_sample,
+    matrix_file
+):
+    testapp.patch_json(
+        matrix_file['@id'],
+        {'file_set': construct_library_set_genome_wide['@id']}
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected file association'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        matrix_file['@id'],
+        {'file_set': analysis_set_with_sample['@id']}
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected file association'
+        for error in res.json['audit'].get('WARNING', [])
+    )

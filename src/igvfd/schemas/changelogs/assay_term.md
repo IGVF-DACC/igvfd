@@ -4,6 +4,7 @@
 
 * Add `preferred_assay_titles`.
 * Add `release_timestamp`.
+* Add `ATAC-seq`, `RNA-seq`, `TF ChIP-seq`, `histone ChIP-seq`, `snRNA-seq`, `scRNA-seq`, `snATAC-seq` and `scATAC-seq` to `preferred_assay_titles`.
 
 ### Schema version 3
 
