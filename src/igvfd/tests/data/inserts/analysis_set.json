@@ -36,6 +36,9 @@
         "input_file_sets": [
             "igvf:basic_analysis_set"
         ],
-        "file_set_type": "primary analysis"
+        "file_set_type": "primary analysis",
+        "collections": [
+            "MPRAbase"
+        ]
     }
 ]

@@ -91,6 +91,9 @@
         "aliases": [
             "j-michael-cherry:catalog_files"
         ],
-        "description": "A curated set for catalog files."
+        "description": "A curated set for catalog files.",
+        "collections": [
+            "MPRAbase"
+        ]
     }
 ]

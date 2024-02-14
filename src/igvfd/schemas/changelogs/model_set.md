@@ -3,6 +3,7 @@
 ### Minor changes since schema version 2
 
 * Add `release_timestamp`.
+* Add `MPRAbase` to `collections`.
 
 ### Schema version 2
 
