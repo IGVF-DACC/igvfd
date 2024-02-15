@@ -88,14 +88,4 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'intermediate analysis of ATAC-seq, STARR-seq, lentiMPRA data'
-    # An infinite loop should be avoided
-    print('PATCH')
-    testapp.patch_json(
-        primary_analysis_set['@id'],
-        {
-            'input_file_sets': [analysis_set_base['@id']]
-        }
-    )
-    print('GET')
-    #res = testapp.get(analysis_set_base['@id']).json
-    #assert res.get('summary', '') == 'intermediate analysis of ATAC-seq, STARR-seq, lentiMPRA data'
+    # An infinite loop should be avoided by the system preventing circles, not by the summary calculation.

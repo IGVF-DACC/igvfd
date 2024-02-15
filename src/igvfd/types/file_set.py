@@ -25,32 +25,29 @@ def inspect_fileset(request, fileset, inspected_filesets, assay_terms, fileset_t
     if fileset not in inspected_filesets:
         inspected_filesets.add(fileset)
         fileset_object = request.embed(fileset, '@@object?skip_calculated=true')
-
-        print()
-        print('CALL OF INSPECT FILESET')
-        print('inspected: ' + str(inspected_filesets))
-        print('fileset object: ' + str(fileset_object))
-        print('fileset: ' + str(fileset))
         if fileset.startswith('/measurement-sets/'):
-            print('it is measurement')
             if 'preferred_assay_title' in fileset_object:
                 assay_terms.add(fileset_object['preferred_assay_title'])
             else:
                 assay_terms.add(request.embed(fileset_object['assay_term'],
                                 '@@object?skip_calculated=true')['term_name'])
         elif not fileset.startswith('/analysis-sets/'):
-            print('it is NOT an analysis')
             fileset_types.add(fileset_object['file_set_type'])
         elif (fileset.startswith('/analysis-sets/') and
               fileset_object.get('input_file_sets', False)):
-            print('it is an analysis with input file sets')
             for input_fileset in fileset_object.get('input_file_sets'):
-                #print ('>>>>>>>>>>>>>>>>>>>>>>>>>ONE')
-                print('sending to recursion inspected: ' + str(inspected_filesets))
-                print('input fileset: ' + str(input_fileset))
-                inspect_fileset(request, input_fileset, inspected_filesets, assay_terms, fileset_types)
-        print('<<<<<<<<<<<<<<<<<<<<<<<<<returning ' + str((assay_terms, fileset_types)))
-    return
+                if input_fileset.startswith('/analysis-sets/'):
+                    properties = {'analysis': input_fileset}
+                    path = Path('analysis', include=['input_file_sets'])
+                    path.expand(request, properties)
+                    if (properties['analysis'] != {}):
+                        pruned_sets = (set(properties['analysis']['input_file_sets']) - inspected_filesets)
+                        for pruned_fileset in pruned_sets:
+                            inspect_fileset(request, pruned_fileset, inspected_filesets, assay_terms, fileset_types)
+                    else:
+                        inspect_fileset(request, input_fileset, inspected_filesets, assay_terms, fileset_types)
+                else:
+                    inspect_fileset(request, input_fileset, inspected_filesets, assay_terms, fileset_types)
 
 
 @abstract_collection(
@@ -200,11 +197,6 @@ class AnalysisSet(FileSet):
         assay_terms = set()
         fileset_types = set()
         inspect_fileset(request, fileset_id, set(), assay_terms, fileset_types)
-        print()
-        #print ()
-        #print ('ASSAY TERMS: ' + str(assay_terms))
-        #print ('FILESET TYPES: ' + str(fileset_types))
-
         if assay_terms:
             measurement_terms = ', '.join(sorted(assay_terms))
             sentence += f' of {measurement_terms} data'
@@ -213,8 +205,6 @@ class AnalysisSet(FileSet):
             sentence += f' of {other_set_terms} data'
         else:
             sentence += f' of data'
-        print('SUMMARY:' + sentence)
-        print('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^')
         return sentence
 
     @calculated_property(
