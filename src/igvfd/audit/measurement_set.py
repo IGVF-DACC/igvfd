@@ -191,6 +191,14 @@ def audit_inconsistent_institutional_certification(value, system):
         audit_category: inconsistent institutional certification
         audit_levels: ERROR
     '''
+    # Only audit Measurement Sets with at least one human sample.
+    samples = value.get('samples', [])
+    taxa = set()
+    for s in samples:
+        taxa.add(s.get('taxa', ''))
+    if 'Homo sapiens' not in taxa:
+        return
+
     # Characterization assays do not need to be audited.
     characterization_assays = [
         'OBI:0003133',  # cas mediated mutagenesis
