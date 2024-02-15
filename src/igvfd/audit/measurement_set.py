@@ -192,10 +192,11 @@ def audit_inconsistent_institutional_certification(value, system):
         audit_levels: ERROR
     '''
     # Only audit Measurement Sets with at least one human sample.
-    samples = value.get('samples', [])
+    donors = value.get('donors', [])
     taxa = set()
-    for s in samples:
-        taxa.add(s.get('taxa', ''))
+    for d in donors:
+        donor_obj = system.get('request').embed(d, '@@object?skip_calculated=true')
+        taxa.add(donor_obj.get('taxa', ''))
     if 'Homo sapiens' not in taxa:
         return
 
