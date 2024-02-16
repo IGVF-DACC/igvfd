@@ -4,6 +4,7 @@
 
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
+* Expand `file_set_type` enum list to include `barcodes`.
 
 ### Schema version 6
 
