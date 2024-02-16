@@ -21,35 +21,6 @@ def get_donors_from_samples(request, samples):
     return list(set(donor_objects))
 
 
-def inspect_fileset(request, fileset, inspected_filesets, assay_terms, fileset_types):
-    if fileset not in inspected_filesets:
-        inspected_filesets.add(fileset)
-        fileset_object = request.embed(fileset, '@@object?skip_calculated=true')
-        if fileset.startswith('/measurement-sets/'):
-            if 'preferred_assay_title' in fileset_object:
-                assay_terms.add(fileset_object['preferred_assay_title'])
-            else:
-                assay_terms.add(request.embed(fileset_object['assay_term'],
-                                '@@object?skip_calculated=true')['term_name'])
-        elif not fileset.startswith('/analysis-sets/'):
-            fileset_types.add(fileset_object['file_set_type'])
-        elif (fileset.startswith('/analysis-sets/') and
-              fileset_object.get('input_file_sets', False)):
-            for input_fileset in fileset_object.get('input_file_sets'):
-                if input_fileset.startswith('/analysis-sets/'):
-                    properties = {'analysis': input_fileset}
-                    path = Path('analysis', include=['input_file_sets'])
-                    path.expand(request, properties)
-                    if (properties['analysis'] != {}):
-                        pruned_sets = (set(properties['analysis']['input_file_sets']) - inspected_filesets)
-                        for pruned_fileset in pruned_sets:
-                            inspect_fileset(request, pruned_fileset, inspected_filesets, assay_terms, fileset_types)
-                    else:
-                        inspect_fileset(request, input_fileset, inspected_filesets, assay_terms, fileset_types)
-                else:
-                    inspect_fileset(request, input_fileset, inspected_filesets, assay_terms, fileset_types)
-
-
 @abstract_collection(
     name='file-sets',
     unique_key='accession',
