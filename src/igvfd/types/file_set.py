@@ -189,20 +189,36 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type):
+    def summary(self, request, file_set_type, input_file_sets=[]):
         sentence = f'{file_set_type}'
-        measurement_terms = set()
-        other_set_terms = set()
-        fileset_id = self.jsonld_id(request)
+        filesets_to_inspect = set()
+        inspected_filesets = set()
         assay_terms = set()
         fileset_types = set()
-        inspect_fileset(request, fileset_id, set(), assay_terms, fileset_types)
+        if input_file_sets:
+            filesets_to_inspect = input_file_sets
+            while filesets_to_inspect:
+                input_fileset = filesets_to_inspect.pop()
+                if input_fileset not in inspected_filesets:
+                    inspected_filesets.add(input_fileset)
+                    fileset_object = request.embed(input_fileset, '@@object?skip_calculated=true')
+                    if input_fileset.startswith('/measurement-sets/'):
+                        if 'preferred_assay_title' in fileset_object:
+                            assay_terms.add(fileset_object['preferred_assay_title'])
+                        else:
+                            assay_terms.add(request.embed(fileset_object['assay_term'],
+                                            '@@object?skip_calculated=true')['term_name'])
+                    elif not input_fileset.startswith('/analysis-sets/'):
+                        fileset_types.add(fileset_object['file_set_type'])
+                    elif (input_fileset.startswith('/analysis-sets/') and
+                          fileset_object.get('input_file_sets', False)):
+                        filesets_to_inspect.append(fileset_object.get('input_file_sets'))
         if assay_terms:
-            measurement_terms = ', '.join(sorted(assay_terms))
-            sentence += f' of {measurement_terms} data'
+            terms = ', '.join(sorted(assay_terms))
+            sentence += f' of {terms} data'
         elif fileset_types:
-            other_set_terms = ', '.join(sorted(fileset_types))
-            sentence += f' of {other_set_terms} data'
+            terms = ', '.join(sorted(fileset_types))
+            sentence += f' of {terms} data'
         else:
             sentence += f' of data'
         return sentence
