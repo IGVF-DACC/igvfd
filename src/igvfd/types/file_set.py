@@ -167,7 +167,7 @@ class AnalysisSet(FileSet):
         assay_terms = set()
         fileset_types = set()
         if input_file_sets:
-            filesets_to_inspect = input_file_sets
+            filesets_to_inspect = input_file_sets.copy()
             while filesets_to_inspect:
                 input_fileset = filesets_to_inspect.pop()
                 if input_fileset not in inspected_filesets:
