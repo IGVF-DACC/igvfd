@@ -1,6 +1,6 @@
 {
-    "hash": "b93908bc9d6d7befe061450c5a6c16d8",
-    "index_name": "primary_cell_b93908bc",
+    "hash": "fdd24eb276613028c16d1575b338361c",
+    "index_name": "primary_cell_fdd24eb2",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -672,6 +672,9 @@
                                 "type": "keyword"
                             },
                             "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitted_files_timestamp": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {

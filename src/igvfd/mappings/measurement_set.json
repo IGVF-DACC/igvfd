@@ -1,6 +1,6 @@
 {
-    "hash": "85217097e599436adaecd3e48be2bca9",
-    "index_name": "measurement_set_85217097",
+    "hash": "89c3b80fed5d2c67baa03f10237269e9",
+    "index_name": "measurement_set_89c3b80f",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -318,6 +318,9 @@
                                 "type": "keyword"
                             },
                             "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitted_files_timestamp": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {
@@ -750,6 +753,9 @@
                             "submitted_by": {
                                 "type": "keyword"
                             },
+                            "submitted_files_timestamp": {
+                                "type": "keyword"
+                            },
                             "submitter_comment": {
                                 "type": "keyword"
                             },
@@ -1091,6 +1097,9 @@
                                 "type": "keyword"
                             },
                             "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitted_files_timestamp": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {
@@ -1926,6 +1935,9 @@
                             "submitted_by": {
                                 "type": "keyword"
                             },
+                            "submitted_files_timestamp": {
+                                "type": "keyword"
+                            },
                             "submitter_comment": {
                                 "type": "keyword"
                             },
@@ -2333,6 +2345,9 @@
                                         "type": "keyword"
                                     },
                                     "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_files_timestamp": {
                                         "type": "keyword"
                                     },
                                     "submitter_comment": {
@@ -3151,6 +3166,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "submitted_files_timestamp": {
+                        "type": "keyword"
                     },
                     "submitter_comment": {
                         "type": "keyword"

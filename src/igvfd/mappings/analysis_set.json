@@ -1,6 +1,6 @@
 {
-    "hash": "4591514ae0ae56cc9d9744cd9eee3990",
-    "index_name": "analysis_set_4591514a",
+    "hash": "6496e55370c8bcdf3f30cd992b5e5b45",
+    "index_name": "analysis_set_6496e553",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -574,6 +574,9 @@
                                 "type": "keyword"
                             },
                             "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitted_files_timestamp": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {
@@ -1339,6 +1342,9 @@
                             "submitted_by": {
                                 "type": "keyword"
                             },
+                            "submitted_files_timestamp": {
+                                "type": "keyword"
+                            },
                             "submitter_comment": {
                                 "type": "keyword"
                             },
@@ -2011,6 +2017,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "submitted_files_timestamp": {
+                        "type": "keyword"
                     },
                     "submitter_comment": {
                         "type": "keyword"
