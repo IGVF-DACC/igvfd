@@ -4,6 +4,7 @@
 
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
+* Add calculated `submitted_files_timestamp`.
 
 ### Schema version 2
 
