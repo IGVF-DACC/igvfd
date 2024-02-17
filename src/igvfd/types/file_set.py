@@ -162,12 +162,12 @@ class AnalysisSet(FileSet):
     )
     def summary(self, request, file_set_type, input_file_sets=[]):
         sentence = f'{file_set_type}'
-        filesets_to_inspect = set()
         inspected_filesets = set()
         assay_terms = set()
         fileset_types = set()
         if input_file_sets:
-            filesets_to_inspect = input_file_sets.copy()
+            filesets_to_inspect = set(input_file_sets.copy())
+
             while filesets_to_inspect:
                 input_fileset = filesets_to_inspect.pop()
                 if input_fileset not in inspected_filesets:
@@ -183,7 +183,7 @@ class AnalysisSet(FileSet):
                         fileset_types.add(fileset_object['file_set_type'])
                     elif (input_fileset.startswith('/analysis-sets/') and
                           fileset_object.get('input_file_sets', False)):
-                        filesets_to_inspect.append(fileset_object.get('input_file_sets'))
+                        filesets_to_inspect.update(set(fileset_object.get('input_file_sets')))
         if assay_terms:
             terms = ', '.join(sorted(assay_terms))
             sentence += f' of {terms} data'
