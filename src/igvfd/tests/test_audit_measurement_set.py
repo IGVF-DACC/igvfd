@@ -197,7 +197,7 @@ def test_audit_readout(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
-    # Assay term should not be equivalent to
+    # Assay term should not be equivalent to readout term
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
