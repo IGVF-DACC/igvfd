@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Schema version 5
+
+* Remove `genes` and `loci`.
+
 ### Minor changes since schema version 4
 
 * Add `MPRAbase` to `collections`.
