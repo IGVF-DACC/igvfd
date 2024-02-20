@@ -44,7 +44,7 @@ class FileSet(Item):
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases', 'content_type',
              'file_format', 'file_size', 'href', 's3_uri', 'submitted_file_name',
-                               'created_timestamp']),
+                               'creation_timestamp']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
         Path('donors', include=['@id', 'accession', 'aliases', 'taxa']),
         Path('samples.sample_terms', include=[
