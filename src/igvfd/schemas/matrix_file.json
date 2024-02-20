@@ -48,7 +48,34 @@
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
-        ]
+        ],
+        "file_format": {
+            "comment": "The assembly shoud be consistent with annotation versions of respective species.",
+            "if": {
+                "properties": {
+                    "file_format": {
+                        "const": "hic"
+                    }
+                },
+                "required": [
+                    "file_format"
+                ]
+            },
+            "then": {
+                "properties": {
+                    "dimension1": {
+                        "enum": [
+                            "genomic position"
+                        ]
+                    },
+                    "dimension2": {
+                        "enum": [
+                            "genomic position"
+                        ]
+                    }
+                }
+            }
+        }
     },
     "type": "object",
     "properties": {
@@ -79,7 +106,8 @@
                 "gene",
                 "time",
                 "treatment",
-                "variant"
+                "variant",
+                "genomic position"
             ],
             "submissionExample": {
                 "appscript": "cell",
@@ -96,7 +124,8 @@
                 "gene",
                 "time",
                 "treatment",
-                "variant"
+                "variant",
+                "genomic position"
             ],
             "submissionExample": {
                 "appscript": "gene",
@@ -108,7 +137,8 @@
                 "h5ad",
                 "hdf5",
                 "mtx",
-                "tar"
+                "tar",
+                "hic"
             ],
             "submissionExample": {
                 "appscript": "h5ad",

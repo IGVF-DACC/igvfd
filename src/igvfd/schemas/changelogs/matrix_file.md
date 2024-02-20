@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 4
 
+* Expand `file_format` enum list to include `hic`.
+* Expand `dimension1` and `dimension2` enum lists to include `genomic position`.
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
 
