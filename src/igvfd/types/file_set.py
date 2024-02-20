@@ -183,7 +183,9 @@ class AnalysisSet(FileSet):
                         fileset_types.add(fileset_object['file_set_type'])
                     elif (input_fileset.startswith('/analysis-sets/') and
                           fileset_object.get('input_file_sets', False)):
-                        filesets_to_inspect.update(set(fileset_object.get('input_file_sets')))
+                        for candidate_fileset in fileset_object.get('input_file_sets'):
+                            if candidate_fileset not in inspected_filesets:
+                                filesets_to_inspect.add(candidate_fileset)
         if assay_terms:
             terms = ', '.join(sorted(assay_terms))
             sentence += f' of {terms} data'
