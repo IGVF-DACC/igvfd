@@ -95,5 +95,17 @@
         "collections": [
             "MPRAbase"
         ]
+    },
+    {
+        "award": "HG012012",
+        "lab": "/labs/j-michael-cherry/",
+        "uuid": "01ce39e5-d7bd-fcf7-8138-4beff90ff744",
+        "file_set_type": "barcodes",
+        "accession": "IGVFDS8484BARC",
+        "status": "released",
+        "aliases": [
+            "j-michael-cherry:barcodes_curated_set"
+        ],
+        "description": "A curated set for barcodes used in library preparation, such as for Parse Split-seq."
     }
 ]

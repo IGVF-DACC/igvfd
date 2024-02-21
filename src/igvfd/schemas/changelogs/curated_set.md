@@ -4,6 +4,7 @@
 
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
+* Add `barcodes` to `file_set_type`.
 
 ### Schema version 6
 
