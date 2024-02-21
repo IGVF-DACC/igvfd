@@ -11,6 +11,8 @@ from .base import (
     paths_filtered_by_status
 )
 
+from datetime import datetime
+
 
 def get_donors_from_samples(request, samples):
     donor_objects = []
@@ -41,7 +43,8 @@ class FileSet(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases', 'content_type',
-             'file_format', 'file_size', 'href', 's3_uri', 'submitted_file_name']),
+             'file_format', 'file_size', 'href', 's3_uri', 'submitted_file_name',
+                               'creation_timestamp']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
         Path('donors', include=['@id', 'accession', 'aliases', 'taxa']),
         Path('samples.sample_terms', include=[
@@ -111,6 +114,25 @@ class FileSet(Item):
     })
     def control_for(self, request, control_for):
         return paths_filtered_by_status(request, control_for)
+
+    @calculated_property(schema={
+        'title': 'Submitted Files Timestamp',
+        'description': 'The timestamp the first file object in the file_set was created.',
+        'comment': 'Do not submit. The timestamp is automatically calculated.',
+        'type': 'string',
+        'format': 'date-time',
+        'notSubmittable': True
+    })
+    def submitted_files_timestamp(self, request, files):
+        if files:
+            timestamps = set()
+            for current_file_path in files:
+                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+                timestamp = file_object.get('creation_timestamp', None)
+                if timestamp:
+                    timestamps.add(timestamp)
+            res = sorted(timestamps, key=lambda x: datetime.strptime(x, '%Y-%m-%dT%H:%M:%S.%f%z'))
+            return res[0]
 
 
 @collection(

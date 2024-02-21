@@ -1,6 +1,6 @@
 {
-    "hash": "384561fa099ebd526dfd5b67105cc26d",
-    "index_name": "construct_library_set_384561fa",
+    "hash": "7af2706e0707262b59cf65dbab875f85",
+    "index_name": "construct_library_set_7af2706e",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -886,6 +886,9 @@
                             "submitted_by": {
                                 "type": "keyword"
                             },
+                            "submitted_files_timestamp": {
+                                "type": "keyword"
+                            },
                             "submitter_comment": {
                                 "type": "keyword"
                             },
@@ -1592,6 +1595,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "submitted_files_timestamp": {
+                        "type": "keyword"
                     },
                     "submitter_comment": {
                         "type": "keyword"

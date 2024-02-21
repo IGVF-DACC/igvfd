@@ -1,6 +1,6 @@
 {
-    "hash": "f29818e42d0f2c315217858ca0130741",
-    "index_name": "technical_sample_f29818e4",
+    "hash": "28fc2346bf457d4f36c7700899ed3fcf",
+    "index_name": "technical_sample_28fc2346",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -580,6 +580,9 @@
                                 "type": "keyword"
                             },
                             "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitted_files_timestamp": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {

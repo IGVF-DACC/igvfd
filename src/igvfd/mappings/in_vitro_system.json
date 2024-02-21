@@ -1,6 +1,6 @@
 {
-    "hash": "d44a422bffddab8524f0e666f0924fae",
-    "index_name": "in_vitro_system_d44a422b",
+    "hash": "5c83f7f64d1dbbd5d7cdfd596c7f2b78",
+    "index_name": "in_vitro_system_5c83f7f6",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -816,6 +816,9 @@
                                 "type": "keyword"
                             },
                             "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitted_files_timestamp": {
                                 "type": "keyword"
                             },
                             "submitter_comment": {

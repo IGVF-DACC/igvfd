@@ -4,6 +4,7 @@
 
 * Add `MPRAbase` to `collections`.
 * Add ReferenceFile linkTo to `large_scale_gene_list` and `large_scale_loci_list`.
+* Add calculated `submitted_files_timestamp`.
 
 ### Schema version 4
 

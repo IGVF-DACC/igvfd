@@ -1,5 +1,6 @@
 ## Changelog for *`file_set.json`*
 
+* Add calculated `submitted_files_timestamp`. (02/21/2024)
 * Add `release_timestamp`. (01/31/2024)
 * Add `publication_identifiers`. (08/02/2023)
 * Add `files`. (05/10/2023)
