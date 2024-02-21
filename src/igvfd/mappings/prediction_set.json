@@ -1,6 +1,6 @@
 {
-    "hash": "58bda845acd9febf83d2dfe268a442da",
-    "index_name": "prediction_set_58bda845",
+    "hash": "430472c8534cbeb33b5dceeb017f2562",
+    "index_name": "prediction_set_430472c8",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -388,9 +388,6 @@
                             "files": {
                                 "type": "keyword"
                             },
-                            "genes": {
-                                "type": "keyword"
-                            },
                             "guide_type": {
                                 "type": "keyword"
                             },
@@ -411,35 +408,6 @@
                             },
                             "library_construction_platform": {
                                 "type": "keyword"
-                            },
-                            "loci": {
-                                "properties": {
-                                    "assembly": {
-                                        "type": "keyword"
-                                    },
-                                    "chromosome": {
-                                        "type": "keyword"
-                                    },
-                                    "end": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
-                                        "store": true,
-                                        "type": "long"
-                                    },
-                                    "start": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
-                                        "store": true,
-                                        "type": "long"
-                                    }
-                                },
-                                "type": "object"
                             },
                             "lot_id": {
                                 "type": "keyword"
@@ -1064,9 +1032,6 @@
                         },
                         "type": "object"
                     },
-                    "genes": {
-                        "type": "keyword"
-                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -1132,35 +1097,6 @@
                     },
                     "large_scale_loci_list": {
                         "type": "keyword"
-                    },
-                    "loci": {
-                        "properties": {
-                            "assembly": {
-                                "type": "keyword"
-                            },
-                            "chromosome": {
-                                "type": "keyword"
-                            },
-                            "end": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
-                            },
-                            "start": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
-                            }
-                        },
-                        "type": "object"
                     },
                     "notes": {
                         "type": "text"
@@ -1295,9 +1231,6 @@
                                     "files": {
                                         "type": "keyword"
                                     },
-                                    "genes": {
-                                        "type": "keyword"
-                                    },
                                     "guide_type": {
                                         "type": "keyword"
                                     },
@@ -1312,35 +1245,6 @@
                                     },
                                     "large_scale_loci_list": {
                                         "type": "keyword"
-                                    },
-                                    "loci": {
-                                        "properties": {
-                                            "assembly": {
-                                                "type": "keyword"
-                                            },
-                                            "chromosome": {
-                                                "type": "keyword"
-                                            },
-                                            "end": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
-                                                "store": true,
-                                                "type": "long"
-                                            },
-                                            "start": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
-                                                "store": true,
-                                                "type": "long"
-                                            }
-                                        },
-                                        "type": "object"
                                     },
                                     "lot_id": {
                                         "type": "keyword"

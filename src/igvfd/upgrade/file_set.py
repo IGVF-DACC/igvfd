@@ -202,3 +202,30 @@ def prediction_set_3_4(value, system):
 def construct_library_set_3_4(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1311
     return
+
+
+@upgrade_step('construct_library_set', '4', '5')
+@upgrade_step('prediction_set', '4', '5')
+def construct_library_set_prediction_set_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1426
+    if 'genes' in value:
+        if len(value.get('genes', [])) <= 100:
+            value['small_scale_gene_list'] = value['genes']
+        else:
+            notes = value.get('notes', '')
+            genes = ', '.join(value.get('genes', []))
+            value['small_scale_gene_list'] = value['genes'][:100]
+            notes += f' This file set previously listed `genes`: {genes}, which has more than 100 genes, please resubmit the genes in large_scale_gene_list.'
+            value['notes'] = notes.strip()
+        del value['genes']
+    elif 'loci' in value:
+        if len(value.get('loci', [])) <= 100:
+            value['small_scale_loci_list'] = value['loci']
+        else:
+            notes = value.get('notes', '')
+            loci = ', '.join(value.get('loci', []))
+            value['small_scale_loci_list'] = value['loci'][:100]
+            notes += f' This file set previously listed `loci`: {loci}, which has more than 100 loci, please resubmit the loci in large_scale_loci_list.'
+            value['notes'] = notes.strip()
+        del value['loci']
+    return

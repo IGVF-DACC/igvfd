@@ -67,3 +67,13 @@ def prediction_set_v3(base_prediction_set, gene_myc_hs):
         'targeted_genes': [gene_myc_hs['@id']]
     })
     return item
+
+
+@pytest.fixture
+def prediction_set_v4(base_prediction_set, gene_myc_hs):
+    item = base_prediction_set.copy()
+    item.update({
+        'schema_version': '4',
+        'genes': [gene_myc_hs['@id']],
+    })
+    return item

@@ -98,7 +98,7 @@ def construct_library_set():
             'selection_criteria': {
                 'title': 'Selection Criteria'
             },
-            'genes.symbol': {
+            'small_scale_gene_list.symbol': {
                 'title': 'Genes'
             },
             'loci': {
