@@ -149,3 +149,13 @@ def file_8_9(value, system):
             notes = value.get('notes', '')
             notes += f' This file was automatically upgraded to have assembly GRCh38.'
             value['notes'] = notes.strip()
+
+
+@upgrade_step('sequence_file', '7', '8')
+def sequence_file_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1250
+    if value['content_type'] == 'subreads':
+        value['content_type'] = 'PacBio subreads'
+        notes = value.get('notes', '')
+        notes += f' This file\'s content_type was upgraded from "subreads" to "PacBio subreads".'
+        value['notes'] = notes.strip()

@@ -1,5 +1,10 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 8
+
+* Replace `subreads` with `PacBio subreads` in `content_type`.
+* Expand `content_type` enum list to include `Nanopore reads`.
+
 ### Minor changes since schema version 7
 
 * Add `release_timestamp`.
