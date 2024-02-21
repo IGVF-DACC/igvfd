@@ -71,7 +71,6 @@ class FileSet(Item):
         'lab',
         'files',
         'documents',
-        'control_file_sets',
         'samples',
         'samples.sample_terms',
         'samples.disease_terms',

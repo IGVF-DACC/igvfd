@@ -89,7 +89,7 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                             [audit_link(path_to_text(sequence_file), sequence_file) for sequence_file in missing_sequence_files])
                         detail = (
                             f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has seqspec configuration file '
-                            f'{audit_link(path_to_text(file), file)} which links to sequence files: {missing_sequence_files} which '
+                            f'{audit_link(path_to_text(file), file)} which links to sequence file(s): {missing_sequence_files} which '
                             f'do not link to this file set.'
                         )
                         yield AuditFailure('missing related files', detail, level='ERROR')
@@ -124,9 +124,9 @@ def audit_inconsistent_seqspec(value, system):
         for key, file_dict in sequence_to_seqspec.items():
             first_seqspec = next(iter(file_dict.values()), None)
             if not(all(seqspec == first_seqspec for seqspec in file_dict.values())):
-                non_matching_files = [file for file, seqspec in file_dict.items() if seqspec != first_seqspec]
+                non_matching_files = [file for file, _ in file_dict.items()]
                 detail = (
-                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
+                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(non_matching_files), non_matching_files) for non_matching_files in non_matching_files])} '
                     f'which belong to the same sequencing set, but do not share the same seqspec file.'
                 )
@@ -146,7 +146,7 @@ def audit_inconsistent_seqspec(value, system):
                 key_set.add(key)
             if len(key_set) > 1:
                 detail = (
-                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
+                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(file), file) for _, file in sequence_files])} '
                     f'which share the same seqspec file {audit_link(path_to_text(seqspec), seqspec)} '
                     f'but belong to different sequencing sets.'
