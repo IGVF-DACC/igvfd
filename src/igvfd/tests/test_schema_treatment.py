@@ -197,3 +197,77 @@ def test_treatment_award_lab_depletion_requirement(testapp, award, lab):
             'depletion': '',
         }, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_treatment_term_id_requirement(testapp, award, lab):
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'protein',
+            'amount': 10,
+            'amount_units': 'ng/mL',
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'depletion': False
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_name': 'G-CSF',
+            'treatment_type': 'chemical',
+            'amount': 10,
+            'amount_units': 'ng/mL',
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'depletion': False
+        }, expect_errors=True)
+    assert res.status_code == 422
+
+
+def test_environmental_treatment(testapp, award, lab):
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_name': 'stiffness',
+            'treatment_type': 'environmental',
+            'amount': 10,
+            'amount_units': 'ng/mL',
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'depletion': False,
+        })
+    assert res.status_code == 201
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_name': 'stiffness',
+            'treatment_term_id': 'NTR:0001185',
+            'treatment_type': 'environmental',
+            'amount': 10,
+            'amount_units': 'ng/mL',
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'depletion': False,
+        }, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.post_json(
+        '/treatment',
+        {
+            'treatment_term_name': 'darkness',
+            'treatment_type': 'environmental',
+            'amount': 10,
+            'amount_units': 'ng/mL',
+            'purpose': 'differentiation',
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'depletion': False,
+        }, expect_errors=True)
+    assert res.status_code == 422
