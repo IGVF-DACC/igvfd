@@ -187,7 +187,7 @@ def audit_preferred_assay_title(value, system):
 @audit_checker('MeasurementSet', frame='object')
 def audit_inconsistent_institutional_certification(value, system):
     '''
-        audit_detail: Measurement sets for mapping assays on human samples are expected to link to samples covered by an institutional certificate issued to a matching lab and award. No NIC is expected for mouse data.
+        audit_detail: Measurement sets for mapping assays involving samples with a human origin are expected to link to the relevant institutional certificates issued to a matching lab and award.
         audit_category: inconsistent institutional certification
         audit_levels: ERROR
     '''
