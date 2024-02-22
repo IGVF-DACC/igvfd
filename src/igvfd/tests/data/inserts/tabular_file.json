@@ -62,7 +62,8 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:tabular_file_04_barcode_to_sample_mapping"
+            "igvf:tabular_file_04_barcode_to_sample_mapping",
+            "maria-chahrour:file_091231_test"
         ],
         "md5sum": "e1b62fa365be8375310b0393fe27a68d",
         "file_format": "txt",
