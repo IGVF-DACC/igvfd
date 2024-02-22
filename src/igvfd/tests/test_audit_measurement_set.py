@@ -330,10 +330,24 @@ def test_audit_inconsistent_institutional_certification(
     assay_term_mpra,
     other_lab,
     tissue,
+    human_donor,
     assay_term_chip,
     institutional_certificate
 ):
+    # No audit when there are no associated human donors.
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent institutional certificate'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
     # Characterization assays are skipped
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'donors': [human_donor['@id']]
+        }
+    )
     testapp.patch_json(
         measurement_set['@id'],
         {

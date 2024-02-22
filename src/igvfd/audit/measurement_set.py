@@ -187,10 +187,19 @@ def audit_preferred_assay_title(value, system):
 @audit_checker('MeasurementSet', frame='object')
 def audit_inconsistent_institutional_certification(value, system):
     '''
-        audit_detail: Measurement sets for mapping assays are expected to link to samples covered by an institutional certificate issued to a matching lab and award.
+        audit_detail: Measurement sets for mapping assays involving samples with a human origin are expected to link to the relevant institutional certificates issued to a matching lab and award.
         audit_category: inconsistent institutional certification
         audit_levels: ERROR
     '''
+    # Only audit Measurement Sets with at least one human sample.
+    donors = value.get('donors', [])
+    taxa = set()
+    for d in donors:
+        donor_obj = system.get('request').embed(d, '@@object?skip_calculated=true')
+        taxa.add(donor_obj.get('taxa', ''))
+    if 'Homo sapiens' not in taxa:
+        return
+
     # Characterization assays do not need to be audited.
     characterization_assays = [
         'OBI:0003133',  # cas mediated mutagenesis
