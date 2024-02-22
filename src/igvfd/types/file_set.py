@@ -147,11 +147,54 @@ class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('input_file_sets', include=['@id', 'accession', 'aliases'])
+        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
     set_status_down = FileSet.set_status_down + []
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, file_set_type, input_file_sets=[]):
+        sentence = f'{file_set_type}'
+        inspected_filesets = set()
+        assay_terms = set()
+        fileset_types = set()
+        if input_file_sets:
+            filesets_to_inspect = set(input_file_sets.copy())
+
+            while filesets_to_inspect:
+                input_fileset = filesets_to_inspect.pop()
+                if input_fileset not in inspected_filesets:
+                    inspected_filesets.add(input_fileset)
+                    fileset_object = request.embed(input_fileset, '@@object?skip_calculated=true')
+                    if input_fileset.startswith('/measurement-sets/'):
+                        if 'preferred_assay_title' in fileset_object:
+                            assay_terms.add(fileset_object['preferred_assay_title'])
+                        else:
+                            assay_terms.add(request.embed(fileset_object['assay_term'],
+                                            '@@object?skip_calculated=true')['term_name'])
+                    elif not input_fileset.startswith('/analysis-sets/'):
+                        fileset_types.add(fileset_object['file_set_type'])
+                    elif (input_fileset.startswith('/analysis-sets/') and
+                          fileset_object.get('input_file_sets', False)):
+                        for candidate_fileset in fileset_object.get('input_file_sets'):
+                            if candidate_fileset not in inspected_filesets:
+                                filesets_to_inspect.add(candidate_fileset)
+        if assay_terms:
+            terms = ', '.join(sorted(assay_terms))
+            sentence += f' of {terms} data'
+        elif fileset_types:
+            terms = ', '.join(sorted(fileset_types))
+            sentence += f' of {terms} data'
+        else:
+            sentence += f' of data'
+        return sentence
 
     @calculated_property(
         schema={
@@ -172,9 +215,12 @@ class AnalysisSet(FileSet):
         if input_file_sets is not None:
             for fileset in input_file_sets:
                 file_set_object = request.embed(fileset, '@@object')
-                if file_set_object.get('assay_title') and \
+                if file_set_object.get('preferred_assay_title') and \
                         'MeasurementSet' in file_set_object.get('@type'):
-                    assay_title.add(file_set_object.get('assay_title'))
+                    assay_title.add(file_set_object.get('preferred_assay_title'))
+                elif 'MeasurementSet' in file_set_object.get('@type'):
+                    assay = request.embed(file_set_object['assay_term'], '@@object')
+                    assay_title.add(assay.get('term_name'))
             return list(assay_title)
 
     @calculated_property(
