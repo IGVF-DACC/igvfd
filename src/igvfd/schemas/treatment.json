@@ -127,7 +127,7 @@
                 }
             ]
         },
-        "treatment_term_id": {
+        "treatment_type": {
             "comment": "If treatment_type is protein, only Uniprot ids are allowed while if treatment_type is chemical, only CHEBI ids are allowed. A term id is required in both cases and NTRs are allowed when there is no existing term id. Environmental treatments should not specify a term id.",
             "allOf": [
                 {
