@@ -154,8 +154,11 @@ def file_8_9(value, system):
 @upgrade_step('sequence_file', '7', '8')
 def sequence_file_7_8(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1250
-    if value['content_type'] == 'subreads':
-        value['content_type'] = 'PacBio subreads'
+    # https://igvf.atlassian.net/browse/IGVF-1484
+    if (value['content_type'] == 'subreads') or \
+        (value['content_type'] == 'reads' and
+         value['file_format'] == 'bam'):
         notes = value.get('notes', '')
-        notes += f' This file\'s content_type was upgraded from "subreads" to "PacBio subreads".'
+        notes += f' This file\'s content_type was upgraded from \"{value["content_type"]}\" to "PacBio subreads".'
+        value['content_type'] = 'PacBio subreads'
         value['notes'] = notes.strip()
