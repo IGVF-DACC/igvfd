@@ -169,3 +169,14 @@ def sequence_file_v7_v2(sequence_file):
         'file_format': 'bam'
     })
     return item
+
+
+@pytest.fixture
+def sequence_file_v7_v3(sequence_file):
+    item = sequence_file.copy()
+    item.update({
+        'schema_version': '7',
+        'content_type': 'subreads',
+        'file_format': 'fastq'
+    })
+    return item
