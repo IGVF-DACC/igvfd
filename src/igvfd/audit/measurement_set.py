@@ -88,27 +88,33 @@ def audit_unspecified_protocol(value, system):
 @audit_checker('MeasurementSet', frame='object')
 def audit_inconsistent_readout(value, system):
     '''
-        audit_detail: CRISPR-based and MPRA assays are required to specify a readout, other assays should not include one.
+        audit_detail: CRISPR-based and MPRA assays are required to specify a readout that is different from the assay term of the measurement set, other assays should not include readout specification.
         audit_category: inconsistent readout
-        audit_levels: NOT_COMPLIANT
+        audit_levels: ERROR, NOT_COMPLIANT
     '''
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assays_with_readout = ['CRISPR screen',
                            'massively parallel reporter assay',
                            'cas mediated mutagenesis']
-    if assay.get('term_name') in assays_with_readout:
-        if 'readout' not in value:
-            detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'a screening assay (such as CRISPR screen or MPRA) and is expected to specify a data readout.'
-            )
-            yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')
-    else:
-        if 'readout' in value:
+    if 'readout' in value:
+        if assay.get('term_name') not in assays_with_readout:
             detail = (
                 f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
                 f'not expected to specify a data readout.'
+            )
+            yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')
+        if assay_term == value.get('readout'):
+            detail = (
+                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'not expected to specify the same readout and assay term.'
+            )
+            yield AuditFailure('inconsistent readout', detail, level='ERROR')
+    else:
+        if assay.get('term_name') in assays_with_readout:
+            detail = (
+                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'a screening assay (such as CRISPR screen or MPRA) and is expected to specify a data readout.'
             )
             yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')
 
