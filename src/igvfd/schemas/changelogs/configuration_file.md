@@ -1,5 +1,9 @@
 ## Changelog for *`configuration_file.json`*
 
+### Schema version 5
+
+* Change `seqspec_of` from a calculated property to a submittable property.
+
 ### Minor changes since schema version 4
 
 * Add `release_timestamp`.

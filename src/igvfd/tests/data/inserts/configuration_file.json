@@ -14,6 +14,9 @@
         "submitted_file_name": "/Users/igvf/igvf_files/seqspec.yaml",
         "file_size": 167924346,
         "upload_status": "validated",
-        "file_set": "igvf:basic_measurement_set"
+        "file_set": "igvf:basic_measurement_set",
+        "seqspec_of": [
+            "IGVFFI0001KASA"
+        ]
     }
 ]

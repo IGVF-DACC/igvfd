@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 9
+
+* Change `seqspec` from a submittable property to a calculated property.
+
 ### Schema version 8
 
 * Replace `subreads` with `PacBio subreads` in `content_type`.
