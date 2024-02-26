@@ -4,7 +4,7 @@
 
 * Add `release_timestamp`.
 * Add `plasmid sequence` as `document_type`.
-
+* Add `archived` to `status`.
 
 ### Schema version 3
 

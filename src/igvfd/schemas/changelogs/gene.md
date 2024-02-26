@@ -3,6 +3,7 @@
 ### Minor changes since schema version 6
 
 * Add `release_timestamp`.
+* Add `archived` to `status`.
 
 ### Schema version 6
 
