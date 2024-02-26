@@ -3,7 +3,7 @@
 ### Minor changes since schema version 6
 
 * Add `release_timestamp`.
-* Expand `treatment_type` enum list to include `environmental`.
+* Add `environmental` to `treatment_type`.
 
 ### Schema version 6
 
