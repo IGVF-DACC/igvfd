@@ -254,5 +254,25 @@
             "mmu-mir-683",
             "mmu-mir-683-2"
         ]
+    },
+    {
+        "dbxrefs": [
+            "MGI:3652189"
+        ],
+        "uuid": "4be74ff9-58d7-f2a5-910e-56d72a5db7e9",
+        "geneid": "ENSMUSG00000084374",
+        "version_number": "2",
+        "transcriptome_annotation": "GENCODE M32",
+        "locations": [
+            {
+                "end": 8639294,
+                "start": 8638748,
+                "assembly": "GRCm39",
+                "chromosome": "chr2"
+            }
+        ],
+        "taxa": "Mus musculus",
+        "status": "archived",
+        "symbol": "Gm13255"
     }
 ]
