@@ -351,7 +351,7 @@ def test_audit_inconsistent_institutional_certification(
     # No audit when there are no associated human donors.
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent institutional certificate'
+        error['category'] != 'inconsistent nih certification'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -371,7 +371,7 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent institutional certificate'
+        error['category'] != 'inconsistent nih certification'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -384,7 +384,7 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent institutional certificate'
+        error['category'] == 'inconsistent nih certification'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -397,7 +397,7 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent institutional certificate'
+        error['category'] != 'inconsistent nih certification'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -410,7 +410,7 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent institutional certificate'
+        error['category'] == 'inconsistent nih certification'
         for error in res.json['audit'].get('ERROR', [])
     )
 

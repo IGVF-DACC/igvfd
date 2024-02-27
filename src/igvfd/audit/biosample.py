@@ -48,7 +48,7 @@ def audit_biosample_age(value, system):
     [
         {
             "audit_description": "Tissues, primary cells, and whole organisms are expected to specify a lower_bound_age, upper_bound_age and age_units.",
-            "audit_category": "missing age properties",
+            "audit_category": "missing age",
             "audit_level": "WARNING"
         }
     ]
@@ -60,4 +60,4 @@ def audit_biosample_age(value, system):
                 f'Biosample {audit_link(path_to_text(value_id), value_id)} '
                 f'is missing upper_bound_age, lower_bound_age, and age_units.'
             )
-            yield AuditFailure('missing age properties', detail, level='WARNING')
+            yield AuditFailure('missing age', detail, level='WARNING')

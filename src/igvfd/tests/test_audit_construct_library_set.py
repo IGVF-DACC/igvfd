@@ -13,7 +13,7 @@ def test_audit_construct_library_set_associated_phenotype(
     )
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent variants and phenotype metadata'
+        error['category'] == 'missing phenotype'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -54,7 +54,7 @@ def test_audit_construct_library_set_exon_with_multiple_genes(
     )
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent scope metadata'
+        error['category'] == 'inconsistent scope'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -63,7 +63,7 @@ def test_audit_construct_library_set_exon_with_multiple_genes(
     )
     res = testapp.get(construct_library_set_tile['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent scope metadata'
+        error['category'] == 'inconsistent scope'
         for error in res.json['audit'].get('WARNING', [])
     )
 

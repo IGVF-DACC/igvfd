@@ -17,7 +17,7 @@ def test_audit_inconsistent_taxa(
     )
     res = testapp.get(curated_set_genome['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent taxa metadata'
+        error['category'] == 'inconsistent taxa'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -29,6 +29,6 @@ def test_audit_inconsistent_taxa(
     )
     res = testapp.get(curated_set_genome['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent taxa metadata'
+        error['category'] == 'inconsistent taxa'
         for error in res.json['audit'].get('ERROR', [])
     )

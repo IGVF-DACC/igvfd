@@ -9,7 +9,7 @@ def test_audit_tissue_ccf_id(
 ):
     res = testapp.get(human_tissue['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing ccf_id'
+        error['category'] == 'missing CCF ID'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
@@ -21,7 +21,7 @@ def test_audit_tissue_ccf_id(
     )
     res = testapp.get(human_tissue['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing ccf_id'
+        error['category'] == 'missing CCF ID'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
@@ -32,7 +32,7 @@ def test_audit_tissue_ccf_id(
     )
     res = testapp.get(human_tissue['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing ccf_id'
+        error['category'] != 'missing CCF ID'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -49,7 +49,7 @@ def test_audit_tissue_ccf_id(
     )
     res = testapp.get(tissue['@id'] + '@@audit')
     assert any(
-        error['category'] == 'unexpected ccf_id'
+        error['category'] == 'unexpected CCF ID'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -60,6 +60,6 @@ def test_audit_tissue_age(
 ):
     res = testapp.get(tissue['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing age properties'
+        error['category'] == 'missing age'
         for error in res.json['audit'].get('WARNING', [])
     )
