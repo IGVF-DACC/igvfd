@@ -45,7 +45,7 @@ def audit_construct_library_set_plasmid_map(value, system):
         {
             "audit_description": "Construct library sets are expected to be associated with a plasmid map document.",
             "audit_category": "missing plasmid",
-            "audit_level": "WARNING"
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
@@ -56,7 +56,7 @@ def audit_construct_library_set_plasmid_map(value, system):
     )
     documents = value.get('documents', [])
     if documents == []:
-        yield AuditFailure('missing plasmid map', detail, level='WARNING')
+        yield AuditFailure('missing plasmid map', detail, level='NOT_COMPLIANT')
     else:
         for document in documents:
             document_obj = system.get('request').embed(document, '@@object?skip_calculated=true')
@@ -66,7 +66,7 @@ def audit_construct_library_set_plasmid_map(value, system):
             else:
                 continue
         if map_counter == 0:
-            yield AuditFailure('missing plasmid map', detail, level='WARNING')
+            yield AuditFailure('missing plasmid map', detail, level='NOT_COMPLIANT')
 
 
 @audit_checker('ConstructLibrarySet', frame='object')

@@ -39,7 +39,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
         {
             "audit_description": "Treatments linked to in as cell fate change treatments are expected to have purpose associated with cell fate change.",
             "audit_category": "inconsistent treatment purpose",
-            "audit_level": "ERROR"
+            "audit_level": "WARNING"
         }
     ]
     '''
@@ -51,7 +51,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
                     f'has cell_fate_change_treatment {audit_link(path_to_text(treatment["@id"]), treatment["@id"])} '
                     f'that has purpose {treatment["purpose"]}.'
                 )
-                yield AuditFailure('inconsistent treatment purpose', detail, level='ERROR')
+                yield AuditFailure('inconsistent treatment purpose', detail, level='WARNING')
 
 
 @audit_checker('InVitroSystem', frame='embedded')
