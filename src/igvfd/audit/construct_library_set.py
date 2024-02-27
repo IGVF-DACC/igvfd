@@ -34,7 +34,7 @@ def audit_construct_library_set_associated_phenotypes(value, system):
                 f'has phenotype-associated variants listed in its selection_criteria, '
                 f'but no phenotype term specified in associated_phenotypes.'
             )
-            yield AuditFailure('inconsistent variants and phenotype metadata',
+            yield AuditFailure('missing phenotype',
                                detail, level='NOT_COMPLIANT')
 
 

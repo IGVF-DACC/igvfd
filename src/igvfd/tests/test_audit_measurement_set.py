@@ -303,7 +303,7 @@ def test_audit_inherit_nested_audits(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'treatment term has been newly requested'
+        error['category'] == 'NTR treatment term id'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
 
