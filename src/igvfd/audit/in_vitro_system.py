@@ -14,7 +14,7 @@ def audit_targeted_sample_term_check(value, system):
     [
         {
             "audit_description": "In vitro systems are expected to have a targeted sample term that is distinct from the starting sample term.",
-            "audit_category": "inconsistent targeted_sample_term",
+            "audit_category": "inconsistent targeted sample term",
             "audit_level": "WARNING"
         }
     ]
@@ -29,7 +29,7 @@ def audit_targeted_sample_term_check(value, system):
                     f'InVitroSystem {audit_link(path_to_text(value_id), value_id)} '
                     f'has specified its targeted_sample_term to be the same as in sample_terms.'
                 )
-                yield AuditFailure('inconsistent targeted_sample_term', detail, level='WARNING')
+                yield AuditFailure('inconsistent targeted sample term', detail, level='WARNING')
 
 
 @audit_checker('InVitroSystem', frame='embedded')
@@ -38,7 +38,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
     [
         {
             "audit_description": "Treatments linked to in as cell fate change treatments are expected to have purpose associated with cell fate change.",
-            "audit_category": "inconsistent cell_fate_change_treatments treatment purpose",
+            "audit_category": "inconsistent treatment purpose",
             "audit_level": "ERROR"
         }
     ]
@@ -51,7 +51,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
                     f'has cell_fate_change_treatment {audit_link(path_to_text(treatment["@id"]), treatment["@id"])} '
                     f'that has purpose {treatment["purpose"]}.'
                 )
-                yield AuditFailure('inconsistent cell_fate_change_treatments treatment purpose', detail, level='ERROR')
+                yield AuditFailure('inconsistent treatment purpose', detail, level='ERROR')
 
 
 @audit_checker('InVitroSystem', frame='embedded')
@@ -60,7 +60,7 @@ def audit_cell_fate_change_protocol_document_type(value, system):
     [
         {
             "audit_description": "A document linked to as a cell fate change protocol is expected to have a cell fate change protocol document type.",
-            "audit_category": "inconsistent cell_fate_change_protocol document type",
+            "audit_category": "inconsistent document type",
             "audit_level": "ERROR"
         }
     ]
@@ -73,4 +73,4 @@ def audit_cell_fate_change_protocol_document_type(value, system):
                 f'has cell_fate_change_protocol {audit_link(path_to_text(value["cell_fate_change_protocol"]), value["cell_fate_change_protocol"])} '
                 f'that is not of document_type cell fate change protocol.'
             )
-            yield AuditFailure('inconsistent cell_fate_change_protocol document type', detail, level='ERROR')
+            yield AuditFailure('inconsistent document type', detail, level='ERROR')

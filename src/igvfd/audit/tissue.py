@@ -14,7 +14,7 @@ def audit_tissue_ccf_id(value, system):
     [
         {
             "audit_description": "Tissues are expected to specify a common coordinate framework identifier (CCF ID).",
-            "audit_category": "missing ccf_id",
+            "audit_category": "missing CCF ID",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
@@ -25,7 +25,7 @@ def audit_tissue_ccf_id(value, system):
             f'Tissue {audit_link(path_to_text(value_id), value_id)} '
             f'is missing common coordinate framework identifier (CCF ID) required for human data.'
         )
-        yield AuditFailure('missing ccf_id', detail, level='NOT_COMPLIANT')
+        yield AuditFailure('missing CCF ID', detail, level='NOT_COMPLIANT')
 
 
 @audit_checker('Tissue', frame='object')
@@ -34,7 +34,7 @@ def audit_tissue_ccf_id_nonhuman_sample(value, system):
     [
         {
             "audit_description": "Non-human tissues are not expected to specify a common coordinate framework identifier (CCF ID).",
-            "audit_category": "unexpected ccf_id",
+            "audit_category": "unexpected CCF ID",
             "audit_level": "ERROR"
         }
     ]
@@ -46,4 +46,4 @@ def audit_tissue_ccf_id_nonhuman_sample(value, system):
             f'has common coordinate framework identifier (CCF ID) '
             f'but is associated with a non-human donor.'
         )
-        yield AuditFailure('unexpected ccf_id', detail, level='ERROR')
+        yield AuditFailure('unexpected CCF ID', detail, level='ERROR')

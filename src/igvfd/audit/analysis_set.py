@@ -14,7 +14,7 @@ def audit_input_file_sets(value, system):
     [
         {
             "audit_description": "Primary analysis sets are expected to have at least one measurement set as an input file set.",
-            "audit_category": "inconsistent input file sets",
+            "audit_category": "missing measurement set",
             "audit_level": "WARNING"
         }
     ]
@@ -27,4 +27,4 @@ def audit_input_file_sets(value, system):
                 f'is a primary analysis, but does not specify any measurement sets as '
                 f'input_file_sets.'
             )
-            yield AuditFailure('inconsistent input file sets', detail, level='WARNING')
+            yield AuditFailure('missing measurement set', detail, level='WARNING')

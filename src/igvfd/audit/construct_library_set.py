@@ -17,7 +17,7 @@ def audit_construct_library_set_associated_phenotypes(value, system):
     [
         {
             "audit_description": "Construct library sets with a selection criteria of phenotype-associated variants are expected to have associated phenotype(s).",
-            "audit_category": "inconsistent variants and phenotype metadata",
+            "audit_category": "missing phenotype",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
@@ -75,7 +75,7 @@ def audit_construct_library_set_scope(value, system):
     [
         {
             "audit_description": "Construct library sets with a scope of tile or exon are expected to only link to one gene.",
-            "audit_category": "inconsistent scope metadata",
+            "audit_category": "inconsistent scope",
             "audit_level": "WARNING"
         }
     ]
@@ -88,7 +88,7 @@ def audit_construct_library_set_scope(value, system):
                 f'specifies it has a scope of {value["scope"]}, but multiple genes are listed in the '
                 f'small_scale_gene_list property.'
             )
-            yield AuditFailure('inconsistent scope metadata',
+            yield AuditFailure('inconsistent scope',
                                detail, level='WARNING')
 
 

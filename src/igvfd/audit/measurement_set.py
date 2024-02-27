@@ -225,7 +225,7 @@ def audit_inconsistent_institutional_certification(value, system):
     [
         {
             "audit_description": "Measurement sets for mapping assays involving samples with a human origin are expected to link to the relevant institutional certificates issued to a matching lab and award.",
-            "audit_category": "inconsistent institutional certification",
+            "audit_category": "inconsistent nih certification",
             "audit_level": "ERROR"
         }
     ]
@@ -273,4 +273,4 @@ def audit_inconsistent_institutional_certification(value, system):
                 f'a sample {audit_link(path_to_text(s),s)} that lacks a NIH institutional '
                 f'certificate issued to the lab that submitted this file set.'
             )
-            yield AuditFailure('inconsistent institutional certificate', detail, level='ERROR')
+            yield AuditFailure('inconsistent nih certification', detail, level='ERROR')

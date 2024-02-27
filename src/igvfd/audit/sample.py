@@ -8,37 +8,13 @@ from .formatter import (
 )
 
 
-def get_virtual_sample_failures(
-    system,
-    sample_id,
-    sample_is_virtual,
-    linked_sample_id
-):
-    linked_data = system.get('request').embed(linked_sample_id + '@@object?skip_calculated=true')
-    if linked_data.get('virtual', False) != sample_is_virtual:
-        if sample_is_virtual:
-            audit_detail_body = 'is virtual'
-            audit_detail_end = 'that is not virtual'
-        else:
-            audit_detail_body = 'is not virtual'
-            audit_detail_end = 'that is virtual'
-        detail = (
-            f'Sample {audit_link(path_to_text(sample_id), sample_id)} '
-            f'{audit_detail_body} and has a linked sample '
-            f'({audit_link(path_to_text(linked_sample_id), linked_sample_id)}) {audit_detail_end}.'
-        )
-        return AuditFailure('inconsistent sample metadata', detail, level='ERROR')
-    else:
-        return None
-
-
 @audit_checker('Sample', frame='object?skip_calculated=true')
 def audit_sample_sorted_from_parent_child_check(value, system):
     '''
     [
         {
             "audit_description": "Samples that are sorted from a parent sample are expected to share most of the parent's metadata properties.",
-            "audit_category": "inconsistent sorted_from metadata",
+            "audit_category": "inconsistent sample association",
             "audit_level": "ERROR"
         }
     ]
@@ -65,7 +41,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             f'its associated parent sample {audit_link(path_to_text(parent_id), parent_id)}.'
         )
         if prop_errors != '':
-            yield AuditFailure('inconsistent sorted_from metadata', detail, level='ERROR')
+            yield AuditFailure('inconsistent sample association', detail, level='ERROR')
 
 
 @audit_checker('Sample', frame='object')
@@ -74,7 +50,7 @@ def audit_sample_virtual_donor_check(value, system):
     [
         {
             "audit_description": "Non-virtual samples are expected to be derived from non-virtual donors.",
-            "audit_category": "inconsistent sample metadata",
+            "audit_category": "unexpected donor association",
             "audit_level": "ERROR"
         }
     ]
@@ -94,7 +70,7 @@ def audit_sample_virtual_donor_check(value, system):
         if len(donors_error) > 0:
             detail = (f'The sample {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual donor(s): '
                       f'{donors_to_link}')
-            yield AuditFailure('inconsistent sample metadata', detail, level='ERROR')
+            yield AuditFailure('unexpected donor association', detail, level='ERROR')
 
 
 @audit_checker('Sample', frame='object')
@@ -103,7 +79,7 @@ def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
     [
         {
             "audit_description": "Non-virtual samples are expected to be derived from non-virtual samples.",
-            "audit_category": "inconsistent sample metadata",
+            "audit_category": "unexpected sample association",
             "audit_level": "ERROR"
         }
     ]
@@ -127,13 +103,37 @@ def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
             yield audit_failure
 
 
+def get_virtual_sample_failures(
+    system,
+    sample_id,
+    sample_is_virtual,
+    linked_sample_id
+):
+    linked_data = system.get('request').embed(linked_sample_id + '@@object?skip_calculated=true')
+    if linked_data.get('virtual', False) != sample_is_virtual:
+        if sample_is_virtual:
+            audit_detail_body = 'is virtual'
+            audit_detail_end = 'that is not virtual'
+        else:
+            audit_detail_body = 'is not virtual'
+            audit_detail_end = 'that is virtual'
+        detail = (
+            f'Sample {audit_link(path_to_text(sample_id), sample_id)} '
+            f'{audit_detail_body} and has a linked sample '
+            f'({audit_link(path_to_text(linked_sample_id), linked_sample_id)}) {audit_detail_end}.'
+        )
+        return AuditFailure('unexpected sample association', detail, level='ERROR')
+    else:
+        return None
+
+
 @audit_checker('Sample', frame='object')
 def audit_construct_library_sets_types(value, system):
     '''
     [
         {
             "audit_description": "Samples are expected to link to a construct library sets with the same file set type.",
-            "audit_category": "inconsistent construct library set details",
+            "audit_category": "inconsistent construct library set",
             "audit_level": "WARNING"
         }
     ]
@@ -154,4 +154,4 @@ def audit_construct_library_sets_types(value, system):
                 f'is expected to have construct library sets of the same type but '
                 f'has construct library sets of type {library_types}.'
             )
-            yield AuditFailure('inconsistent construct library set details', detail, level='WARNING')
+            yield AuditFailure('inconsistent construct library set', detail, level='WARNING')
