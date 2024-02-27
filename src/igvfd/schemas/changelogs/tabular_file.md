@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 5
 
-* Add `fold over change control`, `guide quantifications`, `variant to element mapping`, `element quantifications`, `elements reference`, and `quantified variant effects` to `content_type` to `content_type`.
+* Add `fold over change control`, `guide quantifications`, `variant to element mapping`, `element quantifications`, `elements reference`, and `quantified variant effects` to `content_type`.
 * Add `sequence barcodes` to `content_type`.
 * Add `barcode to sample mapping` to `content_type`.
 * Add `release_timestamp`.
