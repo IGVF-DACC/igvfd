@@ -73,5 +73,22 @@
         "upload_status": "validated",
         "status": "released",
         "file_set": "igvf:analysis_set_with_input"
+    },
+    {
+        "uuid": "f891bb1f-e413-4eda-837e-b452ff7af7c0",
+        "accession": "IGVFFI0000ELEM",
+        "lab": "jay-shendure",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "igvf:tabular_file_05_elements_reference"
+        ],
+        "md5sum": "db0dff0cae05982642b682ffcaa11862",
+        "file_format": "tsv",
+        "content_type": "elements reference",
+        "submitted_file_name": "/Users/igvf/igvf_files/elements_reference.tsv.gz",
+        "file_size": 54343,
+        "upload_status": "validated",
+        "status": "released",
+        "file_set": "igvf:analysis_set_with_input"
     }
 ]
