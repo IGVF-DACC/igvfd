@@ -28,7 +28,7 @@ def test_audit_construct_library_set_plasmid_map(
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing plasmid map'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
     testapp.patch_json(
@@ -37,7 +37,7 @@ def test_audit_construct_library_set_plasmid_map(
     )
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert 'missing plasmid map' not in (
-        error['category'] for error in res.json['audit'].get('WARNING', [])
+        error['category'] for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 

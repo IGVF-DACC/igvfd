@@ -48,7 +48,7 @@ def test_audit_targeted_sample_term(
     res = testapp.get(in_vitro_differentiated_cell['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent treatment purpose'
-        for error in res.json['audit'].get('ERROR', [])
+        for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
         treatment_chemical['@id'],
@@ -65,7 +65,7 @@ def test_audit_targeted_sample_term(
     res = testapp.get(in_vitro_differentiated_cell['@id'] + '@@audit')
     assert all(
         error['category'] != 'inconsistent treatment purpose'
-        for error in res.json['audit'].get('ERROR', [])
+        for error in res.json['audit'].get('WARNING', [])
     )
 
 
