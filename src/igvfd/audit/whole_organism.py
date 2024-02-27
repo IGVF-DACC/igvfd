@@ -13,7 +13,7 @@ def audit_whole_organism_human_taxa(value, system):
     '''
     [
         {
-            "audit_description": "Whole organisms are expected to have a donor with taxa Homo sapiens.",
+            "audit_description": "Whole organisms are expected to have a model organism donor.",
             "audit_category": "incorrect taxa",
             "audit_level": "ERROR"
         }

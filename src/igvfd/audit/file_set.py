@@ -68,7 +68,7 @@ def audit_files_associated_with_incorrect_fileset(value, system):
     '''
     [
         {
-            "audit_description": "All files associated with a seqspec (both sequencing and seqspec files) are expected to be linked on the same file set.",
+            "audit_description": "All files associated with a seqspec (both sequencing and seqspec files) are expected to be linked to the same file set.",
             "audit_category": "missing related files",
             "audit_level": "ERROR"
         }

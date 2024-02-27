@@ -13,7 +13,7 @@ def audit_biosample_taxa_check(value, system):
     '''
     [
         {
-            "audit_description": "Biosamples are not expected to have donors with different taxa.",
+            "audit_description": "Biosamples are expected to have donors with the same taxa.",
             "audit_category": "inconsistent donor taxa",
             "audit_level": "ERROR"
         }

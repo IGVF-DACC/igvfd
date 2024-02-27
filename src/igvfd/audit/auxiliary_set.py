@@ -16,7 +16,7 @@ def audit_auxiliary_set_files(value, system):
     '''
     [
         {
-            "audit_description": "Auxiliary sets are not expected to have any files except sequence files or configuration files.",
+            "audit_description": "Auxiliary sets are expected to contain only sequence files or configuration files.",
             "audit_category": "unexpected file association",
             "audit_level": "WARNING"
         }

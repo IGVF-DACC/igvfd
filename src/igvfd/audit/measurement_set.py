@@ -13,7 +13,7 @@ def audit_related_multiome_datasets(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets with a specified multiome_size are expected to have the corresponding amount of links to other measurement sets (excluding itself) in related_multiome_datasets which are expected to have the same multiome_size and samples.",
+            "audit_description": "Measurement sets with a multiome size are expected to have the corresponding amount of links to other measurement sets (excluding itself) in related multiome datasets, which are expected to have the same multiome size and samples.",
             "audit_category": "inconsistent multiome metadata",
             "audit_level": "WARNING"
         }
@@ -98,12 +98,12 @@ def audit_inconsistent_readout(value, system):
     '''
     [
         {
-            "audit_description": "CRISPR-based and MPRA assays are required to specify a readout, other assays should not include readout specification.",
+            "audit_description": "CRISPR-based and MPRA measurement sets are expected to specify a readout, other assays are not expected to include a readout specification.",
             "audit_category": "inconsistent readout",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "If a readout is specified it should be different than the assay term.",
+            "audit_description": "If a readout is specified it is expected to be different than the assay term.",
             "audit_category": "inconsistent readout",
             "audit_level": "ERROR"
         }
@@ -166,7 +166,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
     [
         {
-            "audit_description": "CRISPR screen and cas mediated mutagenesis measurement sets are required to have a modification specified on their samples.",
+            "audit_description": "CRISPR-based measurement sets are expected to have a modification specified on their samples.",
             "audit_category": "missing modification",
             "audit_level": "ERROR"
         }

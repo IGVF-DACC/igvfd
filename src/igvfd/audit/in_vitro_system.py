@@ -13,7 +13,7 @@ def audit_targeted_sample_term_check(value, system):
     '''
     [
         {
-            "audit_description": "In vitro systems are not expected to have the same targeted_sample_term and sample_terms.",
+            "audit_description": "In vitro systems are expected to have a targeted sample term that is distinct from the starting sample term.",
             "audit_category": "inconsistent targeted_sample_term",
             "audit_level": "WARNING"
         }
@@ -37,7 +37,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
     '''
     [
         {
-            "audit_description": "Treatments linked to in an in vitro system's cell_fate_change_treatments are not expected to have purpose 'perturbation', 'agonist', 'antagonist', or 'control'.",
+            "audit_description": "Treatments linked to in as cell fate change treatments are expected to have purpose associated with cell fate change.",
             "audit_category": "inconsistent cell_fate_change_treatments treatment purpose",
             "audit_level": "ERROR"
         }
@@ -59,7 +59,7 @@ def audit_cell_fate_change_protocol_document_type(value, system):
     '''
     [
         {
-            "audit_description": "A document linked to in an in vitro system's cell_fate_change_protocol must be of document_type cell fate change protocol.",
+            "audit_description": "A document linked to as a cell fate change protocol is expected to have a cell fate change protocol document type.",
             "audit_category": "inconsistent cell_fate_change_protocol document type",
             "audit_level": "ERROR"
         }

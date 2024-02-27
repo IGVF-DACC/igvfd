@@ -16,7 +16,7 @@ def audit_construct_library_set_associated_phenotypes(value, system):
     '''
     [
         {
-            "audit_description": "Construct library sets with selection_criteria of phenotype-associated variants need to include an entry in associated_phenotypes.",
+            "audit_description": "Construct library sets with a selection criteria of phenotype-associated variants are expected to have associated phenotype(s).",
             "audit_category": "inconsistent variants and phenotype metadata",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -74,7 +74,7 @@ def audit_construct_library_set_scope(value, system):
     '''
     [
         {
-            "audit_description": "Construct library sets with a scope of tile or exon are expected to include only 1 element in the genes property.",
+            "audit_description": "Construct library sets with a scope of tile or exon are expected to only link to one gene.",
             "audit_category": "inconsistent scope metadata",
             "audit_level": "WARNING"
         }
@@ -97,7 +97,7 @@ def audit_construct_library_set_files(value, system):
     '''
     [
         {
-            "audit_description": "Construct library sets are not expected to have any files except sequence files or configuration files.",
+            "audit_description": "Construct library sets are expected to contain only sequence files or configuration files.",
             "audit_category": "unexpected file association",
             "audit_level": "WARNING"
         }
