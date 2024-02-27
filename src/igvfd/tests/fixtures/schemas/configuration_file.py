@@ -15,6 +15,19 @@ def configuration_file_seqspec(testapp, lab, award, measurement_set):
 
 
 @pytest.fixture
+def configuration_file_seqspec_2(testapp, lab, award, measurement_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '8bbaaaea2cfba3b552a21c63a79f4543',
+        'file_format': 'yaml',
+        'file_set': measurement_set['@id'],
+        'content_type': 'seqspec'
+    }
+    return testapp.post_json('/configuration_file', item).json['@graph'][0]
+
+
+@pytest.fixture
 def configuration_file_v1(configuration_file_seqspec):
     item = configuration_file_seqspec.copy()
     item.update({
