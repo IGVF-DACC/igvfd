@@ -159,8 +159,9 @@
                 "guide quantifications",
                 "guide RNA sequences",
                 "peaks",
-                "quantified variant effects",
+                "protein to protein interaction score",
                 "sequence barcodes",
+                "variant effects",
                 "variant to element mapping"
             ],
             "submissionExample": {
