@@ -4,3 +4,4 @@
 
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
+* Restrict submission of `fiducial alignment` to admin users.
