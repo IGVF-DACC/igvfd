@@ -4,6 +4,7 @@
 
 * Add `release_timestamp`.
 * Add `environmental` to `treatment_type`.
+* Add `archived` to `status`.
 
 ### Schema version 6
 

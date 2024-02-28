@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Add `archived` to `status` in `standard_status`. (03/05/2024)
 * Add `MPRAbase` to `collections`. (02/14/2024)
 * Add ReferenceFile linkTo to `large_scale_gene_list` and `large_scale_loci_list`. (02/14/2024)
 * Add `small_scale_gene_list`, `large_scale_gene_list`, `small_scale_loci_list`, and `large_scale_loci_list`. (02/07/2024)

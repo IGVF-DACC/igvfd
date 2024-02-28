@@ -168,6 +168,7 @@
             "default": "in progress",
             "permission": "import_items",
             "enum": [
+                "archived",
                 "deleted",
                 "in progress",
                 "released"
