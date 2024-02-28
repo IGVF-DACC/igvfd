@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 4
 
+* Add `hic` to `file_format`.
+* Add `genomic position` to `dimension1` and `dimension2`.
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
 

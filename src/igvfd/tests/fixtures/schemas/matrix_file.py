@@ -21,6 +21,25 @@ def matrix_file(testapp, lab, award, analysis_set_with_sample, reference_file):
 
 
 @pytest.fixture
+def matrix_file_hic(testapp, lab, award, measurement_set, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '7b75ce0d0c2b2fc337145cb471d02dce',
+        'file_format': 'hic',
+        'file_set': measurement_set['@id'],
+        'file_size': 512355134,
+        'content_type': 'contact matrix',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'dimension1': 'genomic position',
+        'dimension2': 'genomic position'
+    }
+    return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def matrix_file_v1(matrix_file):
     item = matrix_file.copy()
     item.update({
