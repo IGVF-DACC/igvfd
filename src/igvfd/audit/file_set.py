@@ -135,10 +135,11 @@ def audit_inconsistent_seqspec(value, system):
         seqspec_to_sequence = {}
         for key, file_dict in sequence_to_seqspec.items():
             for file, seqspec in file_dict.items():
-                if seqspec not in seqspec_to_sequence:
-                    seqspec_to_sequence[seqspec] = [(key, file)]
-                else:
-                    seqspec_to_sequence[seqspec].append((key, file))
+                if seqspec:
+                    if seqspec not in seqspec_to_sequence:
+                        seqspec_to_sequence[seqspec] = [(key, file)]
+                    else:
+                        seqspec_to_sequence[seqspec].append((key, file))
 
         for seqspec, sequence_files in seqspec_to_sequence.items():
             key_set = set()
