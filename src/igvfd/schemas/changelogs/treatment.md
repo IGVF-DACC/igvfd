@@ -3,6 +3,7 @@
 ### Minor changes since schema version 6
 
 * Add `release_timestamp`.
+* Add `environmental` to `treatment_type`.
 
 ### Schema version 6
 
