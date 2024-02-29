@@ -200,6 +200,7 @@
                         "diseases_genes",
                         "drugs",
                         "elements_genes",
+                        "elements reference",
                         "exclusion list",
                         "genes",
                         "genes_genes",

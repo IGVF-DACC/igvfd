@@ -152,10 +152,17 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
+                "barcode to sample mapping",
+                "element quantifications",
+                "elements reference",
+                "fold over change control",
+                "guide quantifications",
                 "guide RNA sequences",
                 "peaks",
+                "protein to protein interaction score",
                 "sequence barcodes",
-                "barcode to sample mapping"
+                "variant effects",
+                "variant to element mapping"
             ],
             "submissionExample": {
                 "appscript": "guide RNA sequences",
