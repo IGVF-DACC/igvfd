@@ -569,7 +569,7 @@ def test_audit_inconsistent_seqspec(
     testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
         {
-            'seqspec': configuration_file_seqspec_2['@id']
+            'seqspec': [configuration_file_seqspec_2['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -599,7 +599,7 @@ def test_audit_inconsistent_seqspec(
     testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
         {
-            'seqspec': configuration_file_seqspec['@id'],
+            'seqspec': [configuration_file_seqspec['@id']],
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
