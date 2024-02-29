@@ -17,7 +17,7 @@ def audit_auxiliary_set_files(value, system):
     [
         {
             "audit_description": "Auxiliary sets are expected to contain only sequence files or configuration files.",
-            "audit_category": "unexpected file association",
+            "audit_category": "unexpected files",
             "audit_level": "WARNING"
         }
     ]
@@ -29,4 +29,4 @@ def audit_auxiliary_set_files(value, system):
         detail = (f'AuxiliarySet {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
                   f'file(s) that are not sequence or configuration files: {non_sequence_files}. This is unexpected as '
                   f'auxiliary sets are only expected to host sequence files or configuration files.')
-        yield AuditFailure('unexpected file association', detail, level='WARNING')
+        yield AuditFailure('unexpected files', detail, level='WARNING')

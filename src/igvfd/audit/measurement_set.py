@@ -14,7 +14,7 @@ def audit_related_multiome_datasets(value, system):
     [
         {
             "audit_description": "Measurement sets with a multiome size are expected to have the corresponding amount of measurement sets (excluding itself) listed in related multiome datasets. Each of these datasets are expected to have the same multiome size and samples.",
-            "audit_category": "inconsistent multiome metadata",
+            "audit_category": "inconsistent multiome datasets",
             "audit_level": "ERROR"
         }
     ]
@@ -28,7 +28,7 @@ def audit_related_multiome_datasets(value, system):
             f'has a multiome size of {multiome_size}, but no related '
             f'multiome MeasurementSet object(s).'
         )
-        yield AuditFailure('inconsistent multiome metadata', detail, level='ERROR')
+        yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
     elif related_multiome_datasets and multiome_size:
         if len(related_multiome_datasets) != multiome_size - 1:
             detail = (
@@ -36,7 +36,7 @@ def audit_related_multiome_datasets(value, system):
                 f'has a multiome size of {multiome_size}, but {len(related_multiome_datasets)} '
                 f'related multiome MeasurementSet object(s) when {multiome_size - 1} are expected.'
             )
-            yield AuditFailure('inconsistent multiome metadata', detail, level='ERROR')
+            yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
         samples = value.get('samples')
         samples_to_link = [audit_link(path_to_text(sample), sample) for sample in samples]
         datasets_with_different_samples = []
@@ -63,14 +63,14 @@ def audit_related_multiome_datasets(value, system):
                 f'has associated sample(s): {samples_to_link} which are not the same associated sample(s) '
                 f'of related multiome MeasurementSet object(s): {datasets_with_different_samples}'
             )
-            yield AuditFailure('inconsistent multiome metadata', detail, level='ERROR')
+            yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
         if datasets_with_different_multiome_sizes:
             detail = (
                 f'MeasurementSet {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a specified multiome size of {multiome_size}, which does not match the '
                 f'multiome size of related MeasurementSet object(s): {datasets_with_different_multiome_sizes}'
             )
-            yield AuditFailure('inconsistent multiome metadata', detail, level='ERROR')
+            yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -201,7 +201,7 @@ def audit_preferred_assay_title(value, system):
     [
         {
             "audit_description": "Measurement sets with a preferred assay title are expected to specify an appropriate assay term.",
-            "audit_category": "inconsistent assay metadata",
+            "audit_category": "inconsistent assays",
             "audit_level": "WARNING"
         }
     ]
@@ -216,16 +216,16 @@ def audit_preferred_assay_title(value, system):
             f'assay term "{assay_term_name}", but preferred assay title "{preferred_assay_title}", '
             f'which is not an expected preferred assay title for this assay term.'
         )
-        yield AuditFailure('inconsistent assay metadata', detail, level='WARNING')
+        yield AuditFailure('inconsistent assays', detail, level='WARNING')
 
 
 @audit_checker('MeasurementSet', frame='object')
-def audit_inconsistent_institutional_certification(value, system):
+def audit_missing_institutional_certification(value, system):
     '''
     [
         {
             "audit_description": "Measurement sets for mapping assays involving samples with a human origin are expected to link to the relevant institutional certificates issued to a matching lab and award.",
-            "audit_category": "inconsistent nih certification",
+            "audit_category": "missing nih certification",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
@@ -273,4 +273,4 @@ def audit_inconsistent_institutional_certification(value, system):
                 f'a sample {audit_link(path_to_text(s),s)} that lacks a NIH institutional '
                 f'certificate issued to the lab that submitted this file set.'
             )
-            yield AuditFailure('inconsistent nih certification', detail, level='NOT_COMPLIANT')
+            yield AuditFailure('missing nih certification', detail, level='NOT_COMPLIANT')

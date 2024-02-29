@@ -14,7 +14,7 @@ def audit_whole_organism_human_taxa(value, system):
     [
         {
             "audit_description": "Whole organisms are expected to have a model organism donor.",
-            "audit_category": "unexpected donor taxa",
+            "audit_category": "unexpected human donor",
             "audit_level": "ERROR"
         }
     ]
@@ -25,7 +25,7 @@ def audit_whole_organism_human_taxa(value, system):
                 f'Whole organism {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'specifies that it is of taxa Homo sapiens, this is disallowed.'
             )
-            yield AuditFailure('unexpected donor taxa', detail, level='ERROR')
+            yield AuditFailure('unexpected human donor', detail, level='ERROR')
     elif 'donors' in value:
         donor_ids = value.get('donors')
         taxa_set = set()
@@ -37,4 +37,4 @@ def audit_whole_organism_human_taxa(value, system):
                 f'Whole organism {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'specifies that it has donor(s) of taxa Homo sapiens, this is disallowed.'
             )
-            yield AuditFailure('unexpected donor taxa', detail, level='ERROR')
+            yield AuditFailure('unexpected human donor', detail, level='ERROR')

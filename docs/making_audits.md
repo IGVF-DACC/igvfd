@@ -44,10 +44,19 @@ objects referred to by an identifier:
 
 3. Write the logic for the metadata check and determine what the ```AuditFailure``` human readable name when displayed on faceted search and the details of the audit to be displayed. Also determine which of the following 4 categories this audit should fall into:
 
-    * *ERROR* - This is wrong no matter what.  Example: term mismatch
-    * *NOT COMPLIANT* - This should not be released this way. Example: in progress ChIP experiment with no control
-    * *WARNING* - Informational warning.  Example: This library is paired end but the replicate is single end.
-    * *DCC ACTION* - DCC needs to update metadata or code to fix. Example NTRs.
+    * *ERROR* - Incorrect or inconsistent metadata. This is wrong no matter what.
+    * *NOT COMPLIANT* - Not fulfilling a compliance standard like attached documents or definitely missing metadata. This should not be released this way.
+    * *WARNING* - Possibly missing or inconsistent metadata. Data will be released with warnings.
+    * *INTERNAL ACTION* - Metadata errors the DACC needs to update.
+
+
+    Categories:
+    * Shorter, precise, non-redundant (no use of "metadata", for example)
+    * missing property or link -> missing "property"/"item"
+    * inconsistency with expectation of property on linked item(s) -> inconsistent "item" "property"
+    * has a property or links to a type it shouldn't -> unexpected "property"
+    * identical properties that are expected to be different -> identical
+
 
     Example of ```library``` where RNA library should have a size_range specified :
 

@@ -17,7 +17,7 @@ def audit_construct_library_set_associated_phenotypes(value, system):
     [
         {
             "audit_description": "Construct library sets with a selection criteria of phenotype-associated variants are expected to have associated phenotype(s).",
-            "audit_category": "missing phenotype",
+            "audit_category": "missing associated phenotype",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
@@ -44,7 +44,7 @@ def audit_construct_library_set_plasmid_map(value, system):
     [
         {
             "audit_description": "Construct library sets are expected to be associated with a plasmid map document.",
-            "audit_category": "missing plasmid",
+            "audit_category": "missing plasmid map",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
@@ -98,7 +98,7 @@ def audit_construct_library_set_files(value, system):
     [
         {
             "audit_description": "Construct library sets are expected to contain only sequence files or configuration files.",
-            "audit_category": "unexpected file association",
+            "audit_category": "unexpected files",
             "audit_level": "WARNING"
         }
     ]
@@ -110,4 +110,4 @@ def audit_construct_library_set_files(value, system):
         detail = (f'ConstructLibrarySet {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
                   f'file(s) that are not sequence or configuration files: {non_sequence_files}. This is unexpected as '
                   f'construct library sets are only expected to host sequence files or configuration files.')
-        yield AuditFailure('unexpected file association', detail, level='WARNING')
+        yield AuditFailure('unexpected files', detail, level='WARNING')

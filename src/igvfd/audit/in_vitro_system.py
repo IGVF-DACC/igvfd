@@ -14,7 +14,7 @@ def audit_targeted_sample_term_check(value, system):
     [
         {
             "audit_description": "In vitro systems are expected to have a targeted sample term that is distinct from the starting sample term.",
-            "audit_category": "inconsistent targeted sample",
+            "audit_category": "inconsistent targeted sample term",
             "audit_level": "WARNING"
         }
     ]
@@ -29,7 +29,7 @@ def audit_targeted_sample_term_check(value, system):
                     f'InVitroSystem {audit_link(path_to_text(value_id), value_id)} '
                     f'has specified its targeted_sample_term to be the same as in sample_terms.'
                 )
-                yield AuditFailure('inconsistent targeted sample', detail, level='WARNING')
+                yield AuditFailure('inconsistent targeted sample term', detail, level='WARNING')
 
 
 @audit_checker('InVitroSystem', frame='embedded')
@@ -37,7 +37,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
     '''
     [
         {
-            "audit_description": "Treatments linked to in as cell fate change treatments are expected to have purpose associated with cell fate change.",
+            "audit_description": "Cell fate change treatments are expected to have a purpose associated with cell fate change.",
             "audit_category": "inconsistent treatment purpose",
             "audit_level": "WARNING"
         }
@@ -59,7 +59,7 @@ def audit_cell_fate_change_protocol_document_type(value, system):
     '''
     [
         {
-            "audit_description": "A document linked to as a cell fate change protocol is expected to have a cell fate change protocol document type.",
+            "audit_description": "A document listed as a cell fate change protocol is expected to have a cell fate change protocol document type.",
             "audit_category": "inconsistent document type",
             "audit_level": "ERROR"
         }
