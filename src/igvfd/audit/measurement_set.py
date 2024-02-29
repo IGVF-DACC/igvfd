@@ -13,7 +13,7 @@ def audit_related_multiome_datasets(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets with a multiome size are expected to have the corresponding amount of links to other measurement sets (excluding itself) in related multiome datasets, which are expected to have the same multiome size and samples.",
+            "audit_description": "Measurement sets with a multiome size are expected to have the corresponding amount of measurement sets (excluding itself) listed in related multiome datasets. Each of these datasets are expected to have the same multiome size and samples.",
             "audit_category": "inconsistent multiome metadata",
             "audit_level": "ERROR"
         }

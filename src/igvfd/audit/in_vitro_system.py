@@ -14,7 +14,7 @@ def audit_targeted_sample_term_check(value, system):
     [
         {
             "audit_description": "In vitro systems are expected to have a targeted sample term that is distinct from the starting sample term.",
-            "audit_category": "inconsistent targeted sample term",
+            "audit_category": "inconsistent targeted sample",
             "audit_level": "WARNING"
         }
     ]
@@ -29,7 +29,7 @@ def audit_targeted_sample_term_check(value, system):
                     f'InVitroSystem {audit_link(path_to_text(value_id), value_id)} '
                     f'has specified its targeted_sample_term to be the same as in sample_terms.'
                 )
-                yield AuditFailure('inconsistent targeted sample term', detail, level='WARNING')
+                yield AuditFailure('inconsistent targeted sample', detail, level='WARNING')
 
 
 @audit_checker('InVitroSystem', frame='embedded')
