@@ -2,6 +2,7 @@
 
 ### Schema version 6
 
+* Add `GENCODE 44`, `GENCODE 45`, `GENCODE M33`, and `GENCODE M34` to `transcriptome_annotation`.
 * Remove `hg19` and `mm10` from `assembly`.
 * Move `assembly` to mixins.
 

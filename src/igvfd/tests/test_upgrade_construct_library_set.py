@@ -23,3 +23,8 @@ def test_construct_library_set_upgrade_4_5(upgrader, construct_library_set_v4):
     value = upgrader.upgrade('construct_library_set', construct_library_set_v4, current_version='4', target_version='5')
     assert 'genes' not in value and value['small_scale_gene_list'] == genes
     assert value['schema_version'] == '5'
+
+
+def test_construct_library_set_upgrade_5_6(upgrader, construct_library_set_v5):
+    value = upgrader.upgrade('construct_library_set', construct_library_set_v5, current_version='5', target_version='6')
+    assert value['schema_version'] == '6'

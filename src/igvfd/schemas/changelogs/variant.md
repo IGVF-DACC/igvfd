@@ -1,5 +1,6 @@
 ## Changelog for variant.json
 
+* Move `assembly` to mixins. (03/05/2024)
 * Add `archived` to `status`. (03/05/2024)
 * Add `release_timestamp` (01/31/2024)
 * Remove `mm10` from assembly (02/08/2023)

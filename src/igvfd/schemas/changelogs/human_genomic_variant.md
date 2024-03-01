@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 3
 
+* Move `assembly` to mixins.
 * Add `release_timestamp`.
 * Add `archived` to `status`.
 

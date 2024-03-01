@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Add `GENCODE 44`, `GENCODE 45`, `GENCODE M33`, and `GENCODE M34` to `transcriptome_annotation`.
 * Remove `hg19`, `mm10`, and `mm9` from `assembly` on `small_scale_loci_list`.
 * Add `assembly`. (03/05/2024).
 * Add `archived` to `status` in `standard_status`. (03/05/2024)

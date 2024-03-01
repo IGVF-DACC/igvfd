@@ -60,3 +60,12 @@ def genome_browser_annotation_file_v4(testapp, lab, award, analysis_set_with_sam
         'schema_version': '4'
     }
     return item
+
+
+@pytest.fixture
+def genome_browser_annotation_file_v5(genome_browser_annotation_file):
+    item = genome_browser_annotation_file.copy()
+    item.update({
+        'schema_version': '5'
+    })
+    return item

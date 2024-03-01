@@ -124,3 +124,12 @@ def construct_library_set_v4(construct_library_set_genome_wide, gene_myc_hs):
         'genes': [gene_myc_hs['@id']],
     })
     return item
+
+
+@pytest.fixture
+def construct_library_set_v5(construct_library_set_genome_wide):
+    item = construct_library_set_genome_wide.copy()
+    item.update({
+        'schema_version': '4'
+    })
+    return item

@@ -229,3 +229,10 @@ def construct_library_set_prediction_set_4_5(value, system):
             value['notes'] = notes.strip()
         del value['loci']
     return
+
+
+@upgrade_step('construct_library_set', '5', '6')
+@upgrade_step('prediction_set', '5', '6')
+def construct_library_set_prediction_set_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1016
+    return

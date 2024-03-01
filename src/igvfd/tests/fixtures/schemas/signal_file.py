@@ -72,3 +72,12 @@ def signal_file_v4(testapp, lab, award, analysis_set_with_sample, reference_file
         'schema_version': '4'
     }
     return item
+
+
+@pytest.fixture
+def signal_file_v5(signal_file):
+    item = signal_file.copy()
+    item.update({
+        'schema_version': '5'
+    })
+    return item

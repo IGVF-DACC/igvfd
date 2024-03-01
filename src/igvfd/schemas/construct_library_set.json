@@ -562,7 +562,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "6"
         },
         "accession": {
             "accessionType": "DS"

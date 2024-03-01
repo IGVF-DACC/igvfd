@@ -70,3 +70,12 @@ def alignment_file_v4(testapp, lab, award, analysis_set_with_sample, reference_f
         'schema_version': '4'
     }
     return item
+
+
+@pytest.fixture
+def alignment_file_v5(alignment_file):
+    item = alignment_file.copy()
+    item.update({
+        'schema_version': '5'
+    })
+    return item

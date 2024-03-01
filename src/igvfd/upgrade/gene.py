@@ -55,3 +55,9 @@ def gene_5_6(value, system):
     if 'description' in value:
         if value['description'] == '':
             del value['description']
+
+
+@upgrade_step('gene', '6', '7')
+def gene_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1016
+    return

@@ -77,3 +77,12 @@ def prediction_set_v4(base_prediction_set, gene_myc_hs):
         'genes': [gene_myc_hs['@id']],
     })
     return item
+
+
+@pytest.fixture
+def prediction_set_v5(base_prediction_set):
+    item = base_prediction_set.copy()
+    item.update({
+        'schema_version': '5'
+    })
+    return item

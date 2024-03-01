@@ -57,3 +57,12 @@ def tabular_file_v4(testapp, lab, award, analysis_set_with_sample):
         'schema_version': '4'
     }
     return item
+
+
+@pytest.fixture
+def tabular_file_v5(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '5'
+    })
+    return item
