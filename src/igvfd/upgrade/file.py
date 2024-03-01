@@ -184,4 +184,14 @@ def image_file_1_2(value, system):
 @upgrade_step('tabular_file', '5', '6')
 def file_9_10(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1016
+    if value.get('assembly') == 'hg19':
+        notes = value.get('notes', '')
+        notes += f' This file\'s assembly was upgraded from {value["assembly"]} to "GRCh38".'
+        value['assembly'] = 'GRCh38'
+        value['notes'] = notes.strip()
+    elif value.get('assembly') == 'mm10':
+        notes = value.get('notes', '')
+        notes += f' This file\'s assembly was upgraded from {value["assembly"]} to "GRCm39".'
+        value['assembly'] = 'GRCm39'
+        value['notes'] = notes.strip()
     return

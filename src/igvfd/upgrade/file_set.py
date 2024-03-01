@@ -235,4 +235,15 @@ def construct_library_set_prediction_set_4_5(value, system):
 @upgrade_step('prediction_set', '5', '6')
 def construct_library_set_prediction_set_5_6(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1016
+    for loci in value.get('small_scale_loci_list', []):
+        if loci['assembly'] == 'hg19':
+            notes = value.get('notes', '')
+            notes += f' This file set listed {loci} as one of its loci but the assembly for this loci has been upgraded to GRCh38.'
+            value['notes'] = notes.strip()
+            loci['assembly'] = 'GRCh38'
+        elif loci['assembly'] in ['mm9', 'mm10']:
+            notes = value.get('notes', '')
+            notes += f' This file set listed {loci} as one of its loci but the assembly for this loci has been upgraded to GRCm39.'
+            value['notes'] = notes.strip()
+            loci['assembly'] = 'GRCm39'
     return

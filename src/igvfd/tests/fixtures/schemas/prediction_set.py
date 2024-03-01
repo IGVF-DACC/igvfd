@@ -83,6 +83,12 @@ def prediction_set_v4(base_prediction_set, gene_myc_hs):
 def prediction_set_v5(base_prediction_set):
     item = base_prediction_set.copy()
     item.update({
-        'schema_version': '5'
+        'schema_version': '5',
+        'small_scale_loci_list': [{
+            'assembly': 'hg19',
+            'chromosome': 'chr1',
+            'start': 1,
+            'end': 10
+        }]
     })
     return item

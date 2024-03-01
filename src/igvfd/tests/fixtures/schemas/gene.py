@@ -123,6 +123,13 @@ def gene_v5(gene_v4):
 def gene_v6(gene_myc_hs):
     item = gene_myc_hs.copy()
     item.update({
-        'schema_version': '6'
+        'schema_version': '6',
+        'locations': [
+            {
+                'assembly': 'mm9',
+                'chromosome': 'chr7',
+                'start': 128207872,
+                'end': 128207943
+            }]
     })
     return item

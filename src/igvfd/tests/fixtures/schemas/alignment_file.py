@@ -76,6 +76,7 @@ def alignment_file_v4(testapp, lab, award, analysis_set_with_sample, reference_f
 def alignment_file_v5(alignment_file):
     item = alignment_file.copy()
     item.update({
+        'assembly': 'mm10',
         'schema_version': '5'
     })
     return item

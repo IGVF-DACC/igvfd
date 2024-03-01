@@ -78,6 +78,7 @@ def signal_file_v4(testapp, lab, award, analysis_set_with_sample, reference_file
 def signal_file_v5(signal_file):
     item = signal_file.copy()
     item.update({
+        'assembly': 'mm10',
         'schema_version': '5'
     })
     return item

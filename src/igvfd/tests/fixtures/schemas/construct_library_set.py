@@ -130,6 +130,12 @@ def construct_library_set_v4(construct_library_set_genome_wide, gene_myc_hs):
 def construct_library_set_v5(construct_library_set_genome_wide):
     item = construct_library_set_genome_wide.copy()
     item.update({
-        'schema_version': '4'
+        'schema_version': '5',
+        'small_scale_loci_list': [{
+                'assembly': 'hg19',
+                'chromosome': 'chr1',
+                'start': 1,
+                'end': 10
+                }]
     })
     return item

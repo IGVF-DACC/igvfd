@@ -27,4 +27,6 @@ def test_construct_library_set_upgrade_4_5(upgrader, construct_library_set_v4):
 
 def test_construct_library_set_upgrade_5_6(upgrader, construct_library_set_v5):
     value = upgrader.upgrade('construct_library_set', construct_library_set_v5, current_version='5', target_version='6')
+    for loci in value['small_scale_loci_list']:
+        assert loci['assembly'] == 'GRCh38'
     assert value['schema_version'] == '6'

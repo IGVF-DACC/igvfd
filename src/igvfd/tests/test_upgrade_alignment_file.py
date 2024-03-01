@@ -28,4 +28,5 @@ def test_alignment_file_upgrade_4_5(upgrader, alignment_file_v4):
 
 def test_alignment_file_upgrade_5_6(upgrader, alignment_file_v5):
     value = upgrader.upgrade('alignment_file', alignment_file_v5, current_version='5', target_version='6')
+    assert value['assembly'] == 'GRCm39'
     assert value['schema_version'] == '6'
