@@ -107,6 +107,58 @@
                     "assembly"
                 ]
             }
+        },
+        "transcriptome_annotation": {
+            "comment": "The assembly shoud be consistent with annotation versions of respective species.",
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "GRCm39"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE M30",
+                                    "GENCODE M31",
+                                    "GENCODE M32"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "GRCh38"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE 40",
+                                    "GENCODE 41",
+                                    "GENCODE 42",
+                                    "GENCODE 43"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
         }
     },
     "properties": {

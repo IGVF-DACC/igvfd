@@ -424,6 +424,21 @@
             }
         }
     },
+    "assembly": {
+        "assembly": {
+            "title": "Genome Assembly",
+            "description": "Genome assembly.",
+            "type": "string",
+            "enum": [
+                "GRCh38",
+                "GRCm39"
+            ],
+            "submissionExample": {
+                "appscript": "GRCh38",
+                "igvf_utils": "GRCh38"
+            }
+        }
+    },
     "file_format_type": {
         "file_format_type": {
             "title": "File Format Type",
@@ -514,10 +529,7 @@
                         "type": "string",
                         "enum": [
                             "GRCh38",
-                            "hg19",
-                            "GRCm39",
-                            "mm10",
-                            "mm9"
+                            "GRCm39"
                         ]
                     },
                     "chromosome": {

@@ -1,5 +1,10 @@
 ## Changelog for *`genome_browser_annotation_file.json`*
 
+### Schema version 6
+
+* Remove `hg19` and `mm10` from `assembly`.
+* Move `assembly` to mixins.
+
 ### Minor changes since schema version 5
 
 * Add `release_timestamp`.

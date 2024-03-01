@@ -42,6 +42,12 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/assembly"
+        },
+        {
+            "$ref": "mixins.json#/transcriptome_annotation"
         }
     ],
     "dependentSchemas": {
@@ -126,19 +132,7 @@
             "comment": "This file type currently does not support any external resource submission."
         },
         "assembly": {
-            "title": "Genome Assembly",
-            "description": "Genome assembly applicable for the annotation data.",
-            "type": "string",
-            "enum": [
-                "GRCh38",
-                "hg19",
-                "GRCm39",
-                "mm10"
-            ],
-            "submissionExample": {
-                "appscript": "GRCh38",
-                "igvf_utils": "GRCh38"
-            }
+            "description": "Genome assembly applicable for the annotation data."
         }
     },
     "fuzzy_searchable_fields": [

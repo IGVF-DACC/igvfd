@@ -1,5 +1,7 @@
 ## Changelog for *`mixins.json`*
 
+* Remove `hg19`, `mm10`, and `mm9` from `assembly` on `small_scale_loci_list`.
+* Add `assembly`. (03/05/2024).
 * Add `archived` to `status` in `standard_status`. (03/05/2024)
 * Add `MPRAbase` to `collections`. (02/14/2024)
 * Add ReferenceFile linkTo to `large_scale_gene_list` and `large_scale_loci_list`. (02/14/2024)

@@ -1,5 +1,10 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 6
+
+* Remove `hg19` and `mm10` from `assembly`.
+* Move `assembly` to mixins.
+
 ### Minor changes since schema version 5
 
 * Add `fold over change control`, `guide quantifications`, `protein to protein interaction score`, `variant to element mapping`, `element quantifications`, `elements reference`, and `variant effects` to `content_type`.

@@ -14,6 +14,9 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/assembly"
         }
     ],
     "properties": {
@@ -51,17 +54,7 @@
             }
         },
         "assembly": {
-            "title": "Genome Assembly",
-            "description": "The genome assembly to which the variant coordinates relate.",
-            "type": "string",
-            "enum": [
-                "GRCh38",
-                "GRCm39"
-            ],
-            "submissionExample": {
-                "appscript": "GRCh38",
-                "igvf_utils": "GRCh38"
-            }
+            "description": "The genome assembly to which the variant coordinates relate."
         },
         "position": {
             "title": "Position",
