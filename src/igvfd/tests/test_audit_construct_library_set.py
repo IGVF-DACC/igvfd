@@ -13,7 +13,7 @@ def test_audit_construct_library_set_associated_phenotype(
     )
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing phenotype'
+        error['category'] == 'missing associated phenotypes'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -80,7 +80,7 @@ def test_audit_construct_library_set_with_non_sequence_files(
     )
     res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert any(
-        error['category'] == 'unexpected file association'
+        error['category'] == 'unexpected files'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -89,6 +89,6 @@ def test_audit_construct_library_set_with_non_sequence_files(
     )
     res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert all(
-        error['category'] != 'unexpected file association'
+        error['category'] != 'unexpected files'
         for error in res.json['audit'].get('WARNING', [])
     )

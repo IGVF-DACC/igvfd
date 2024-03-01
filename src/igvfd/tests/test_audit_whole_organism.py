@@ -5,7 +5,7 @@ def test_audit_whole_organism_human_taxa(
         testapp, whole_organism_human, human_donor, rodent_donor):
     res = testapp.get(whole_organism_human['@id'] + '@@audit')
     assert any(
-        error['category'] == 'unexpected donor taxa'
+        error['category'] == 'unexpected donor'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(whole_organism_human['@id'],
@@ -14,7 +14,7 @@ def test_audit_whole_organism_human_taxa(
                        )
     res = testapp.get(whole_organism_human['@id'] + '@@audit')
     assert any(
-        error['category'] == 'unexpected donor taxa'
+        error['category'] == 'unexpected donor'
         for error in res.json['audit'].get('ERROR', [])
     )
 

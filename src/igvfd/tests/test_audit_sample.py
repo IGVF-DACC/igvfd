@@ -11,7 +11,7 @@ def test_audit_sample_sorted_from_parent_child_check(
     # share most of the parent's metadata properties
     res = testapp.get(biosample_sorted_child['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent sample association'
+        error['category'] == 'inconsistent parent sample'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -24,7 +24,7 @@ def test_audit_sample_sorted_from_parent_child_check(
         {'nih_institutional_certification': 'NIC000ABCD'}
     )
     res = testapp.get(biosample_sorted_child['@id'] + '@@audit')
-    assert 'inconsistent sample association' not in (
+    assert 'inconsistent parent sample' not in (
         error['category'] for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -56,7 +56,7 @@ def test_audit_sample_virtual_donor_check(
     human_donor_res = testapp.get(human_donor['@id'] + '@@index-data')
     rodent_donor_res = testapp.get(rodent_donor['@id'] + '@@index-data')
     assert any(
-        error['category'] == 'unexpected donor association'
+        error['category'] == 'inconsistent donor'
         for error in tissue_res.json['audit'].get('ERROR', [])
     )
     tissue_link = '{' + tissue_res.json['object'].get('accession') + '|' + tissue_res.json['object'].get('@id') + '}'
@@ -80,7 +80,7 @@ def test_virtual_sample_linked_to_non_virtual_sample_with_array_property(
     # Non-virtual samples should not be linked to virtual samples
     res = testapp.get(primary_cell_with_pooled_from['@id'] + '@@index-data')
     assert any(
-        error['category'] == 'unexpected sample association'
+        error['category'] == 'inconsistent parent sample'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -89,7 +89,7 @@ def test_virtual_sample_linked_to_non_virtual_sample_with_array_property(
     )
     res = testapp.get(primary_cell_with_pooled_from['@id'] + '@@index-data')
     assert all(
-        error['category'] != 'unexpected sample association'
+        error['category'] != 'inconsistent parent sample'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -106,7 +106,7 @@ def test_non_virtual_sample_linked_to_virtual_sample_with_single_property(
     )
     res = testapp.get(primary_cell_with_part_of_virtual_true['@id'] + '@@index-data')
     assert any(
-        error['category'] == 'unexpected sample association'
+        error['category'] == 'inconsistent parent sample'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -115,7 +115,7 @@ def test_non_virtual_sample_linked_to_virtual_sample_with_single_property(
     )
     res = testapp.get(primary_cell_with_part_of_virtual_true['@id'] + '@@index-data')
     assert all(
-        error['category'] != 'unexpected sample association'
+        error['category'] != 'inconsistent parent sample'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -137,7 +137,7 @@ def test_audit_inconsistent_construct_library_sets_types(
     )
     res = testapp.get(primary_cell['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent construct library set'
+        error['category'] == 'inconsistent construct library sets'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -150,7 +150,7 @@ def test_audit_inconsistent_construct_library_sets_types(
     )
     res = testapp.get(primary_cell['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent construct library set'
+        error['category'] == 'inconsistent construct library sets'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -161,6 +161,6 @@ def test_audit_inconsistent_construct_library_sets_types(
     )
     res = testapp.get(primary_cell['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent construct library set'
+        error['category'] != 'inconsistent construct library sets'
         for error in res.json['audit'].get('WARNING', [])
     )

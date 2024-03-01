@@ -12,7 +12,7 @@ def test_audit_related_multiome_datasets(
     # If `multiome_size` is specified, `related_multiome_datasets` should not be empty.
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent multiome metadata'
+        error['category'] == 'inconsistent multiome datasets'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -23,7 +23,7 @@ def test_audit_related_multiome_datasets(
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent multiome metadata'
+        error['category'] == 'inconsistent multiome datasets'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -34,7 +34,7 @@ def test_audit_related_multiome_datasets(
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent multiome metadata'
+        error['category'] != 'inconsistent multiome datasets'
         for error in res.json['audit'].get('ERROR', [])
     )
     # the length of `related_multiome_datasets` array and `multiome_size` - 1 should be the same
@@ -52,7 +52,7 @@ def test_audit_related_multiome_datasets(
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent multiome metadata'
+        error['category'] == 'inconsistent multiome datasets'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -69,7 +69,7 @@ def test_audit_related_multiome_datasets(
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent multiome metadata'
+        error['category'] != 'inconsistent multiome datasets'
         for error in res.json['audit'].get('ERROR', [])
     )
     # `samples` should be the same between other datasets in `related_multiome_datasets`
@@ -81,7 +81,7 @@ def test_audit_related_multiome_datasets(
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent multiome metadata'
+        error['category'] == 'inconsistent multiome datasets'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -92,7 +92,7 @@ def test_audit_related_multiome_datasets(
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent multiome metadata'
+        error['category'] != 'inconsistent multiome datasets'
         for error in res.json['audit'].get('ERROR', [])
     )
     # `multiome_size` should be the same between other datasets in `related_multiome_datasets`
@@ -110,7 +110,7 @@ def test_audit_related_multiome_datasets(
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent multiome metadata'
+        error['category'] == 'inconsistent multiome datasets'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -127,7 +127,7 @@ def test_audit_related_multiome_datasets(
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent multiome metadata'
+        error['category'] != 'inconsistent multiome datasets'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -303,7 +303,7 @@ def test_audit_inherit_nested_audits(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'NTR treatment term id'
+        error['category'] == 'NTR treatment term ID'
         for error in res.json['audit'].get('INTERNAL_ACTION', [])
     )
 
@@ -322,7 +322,7 @@ def test_audit_preferred_assay_title(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent assay metadata'
+        error['category'] == 'inconsistent assays'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -333,7 +333,7 @@ def test_audit_preferred_assay_title(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent assay metadata'
+        error['category'] != 'inconsistent assays'
         for error in res.json['audit'].get('WARNING', [])
     )
 
@@ -351,7 +351,7 @@ def test_audit_inconsistent_institutional_certification(
     # No audit when there are no associated human donors.
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent nih certification'
+        error['category'] != 'missing nih certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -371,7 +371,7 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent nih certification'
+        error['category'] != 'missing nih certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -384,7 +384,7 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent nih certification'
+        error['category'] == 'missing nih certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -397,7 +397,7 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent nih certification'
+        error['category'] != 'missing nih certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -410,7 +410,7 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent nih certification'
+        error['category'] == 'missing nih certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 

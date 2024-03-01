@@ -13,7 +13,7 @@ def test_audit_auxiliary_set_with_non_sequence_files(
     )
     res = testapp.get(base_auxiliary_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'unexpected file association'
+        error['category'] == 'unexpected files'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -22,6 +22,6 @@ def test_audit_auxiliary_set_with_non_sequence_files(
     )
     res = testapp.get(base_auxiliary_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'unexpected file association'
+        error['category'] != 'unexpected files'
         for error in res.json['audit'].get('WARNING', [])
     )
