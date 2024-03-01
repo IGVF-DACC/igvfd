@@ -1,6 +1,6 @@
 {
-    "hash": "5994bd3c3efe7a7bb9de25a9bbe83dba",
-    "index_name": "alignment_file_5994bd3c",
+    "hash": "94afd8f5eeeda49dd765aeabc0d17822",
+    "index_name": "alignment_file_94afd8f5",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -458,6 +458,9 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "transcriptome_annotation": {
                         "type": "keyword"
                     },
                     "upload_credentials": {

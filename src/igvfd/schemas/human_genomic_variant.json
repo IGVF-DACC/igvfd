@@ -79,6 +79,7 @@
             }
         },
         "assembly": {
+            "description": "The genome assembly to which the variant coordinates relate.",
             "enum": [
                 "GRCh38"
             ],

@@ -53,9 +53,6 @@
                 "igvf_utils": "AACGAATT"
             }
         },
-        "assembly": {
-            "description": "The genome assembly to which the variant coordinates relate."
-        },
         "position": {
             "title": "Position",
             "description": "The position of the variant in the reference sequence, specified using 1-indexed coordinates system.",
