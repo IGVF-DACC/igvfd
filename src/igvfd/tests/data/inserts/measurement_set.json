@@ -142,7 +142,7 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
-        "preferred_assay_title": "Parse Split-seq",
+        "preferred_assay_title": "Parse SPLiT-seq",
         "file_set_type": "experimental data"
     },
     {

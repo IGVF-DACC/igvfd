@@ -246,4 +246,20 @@ def construct_library_set_prediction_set_5_6(value, system):
             notes += f' This file set listed {loci} as one of its loci but the assembly for this loci has been upgraded to GRCm39.'
             value['notes'] = notes.strip()
             loci['assembly'] = 'GRCm39'
+
+
+@upgrade_step('measurement_set', '12', '13')
+def measurement_set_12_13(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1504
+    if 'preferred_assay_title' in value:
+        if value['preferred_assay_title'] == 'histone ChIP-seq':
+            value['preferred_assay_title'] = 'Histone ChIP-seq'
+        if value['preferred_assay_title'] == 'Parse Split-seq':
+            value['preferred_assay_title'] = 'Parse SPLiT-seq'
+        if value['preferred_assay_title'] == 'Saturation genome editing':
+            value['preferred_assay_title'] = 'SGE'
+        if value['preferred_assay_title'] == 'SHARE-Seq':
+            value['preferred_assay_title'] = 'SHARE-seq'
+        if value['preferred_assay_title'] == 'Yeast two-hybrid':
+            value['preferred_assay_title'] = 'Y2H'
     return

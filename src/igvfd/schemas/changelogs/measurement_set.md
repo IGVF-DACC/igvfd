@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 13
+
+* Replace `histone ChIP-seq`, `Parse Split-seq`, `Saturation genome editing`, `SHARE-Seq`, and `Yeast two-hybrid` with `Histone ChIP-seq`, `Parse SPLiT-seq` `SGE`, `SHARE-seq` and `Y2H` respectively in the enum list for `preferred_assay_title`.
+
 ### Minor changes since schema version 12
 
 * Add `release_timestamp`.
