@@ -211,3 +211,4 @@ def sequence_file_8_9(value, system):
 @upgrade_step('configuration_file', '4', '5')
 def configuration_file_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1481
+    return
