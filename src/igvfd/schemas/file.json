@@ -128,7 +128,9 @@
                                 "enum": [
                                     "GENCODE M30",
                                     "GENCODE M31",
-                                    "GENCODE M32"
+                                    "GENCODE M32",
+                                    "GENCODE M33",
+                                    "GENCODE M34"
                                 ]
                             }
                         }
@@ -152,7 +154,9 @@
                                     "GENCODE 40",
                                     "GENCODE 41",
                                     "GENCODE 42",
-                                    "GENCODE 43"
+                                    "GENCODE 43",
+                                    "GENCODE 44",
+                                    "GENCODE 45"
                                 ]
                             }
                         }
