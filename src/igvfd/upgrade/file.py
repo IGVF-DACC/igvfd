@@ -171,3 +171,9 @@ def sequence_file_7_8(value, system):
         notes += f' This file\'s content_type was upgraded from \"{value["content_type"]}\" to "reads".'
         value['content_type'] = 'reads'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('image_file', '1', '2')
+def image_file_1_2(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1492
+    return
