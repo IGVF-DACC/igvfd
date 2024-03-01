@@ -1950,7 +1950,7 @@
                                 "type": "keyword"
                             },
                             "title": {
-                                "copy_to": "_exact",
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

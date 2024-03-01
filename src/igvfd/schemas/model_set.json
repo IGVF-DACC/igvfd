@@ -178,6 +178,7 @@
         "model_name",
         "file_set_type",
         "prediction_objects",
+        "submitted_by.title",
         "summary"
     ],
     "exact_searchable_fields": [
@@ -188,8 +189,7 @@
         "files.aliases",
         "input_file_sets.accession",
         "input_file_sets.aliases",
-        "publication_identifiers",
-        "submitted_by.title"
+        "publication_identifiers"
     ],
     "changelog": "/profiles/changelogs/model_set.md"
 }

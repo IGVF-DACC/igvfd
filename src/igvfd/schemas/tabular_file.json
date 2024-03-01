@@ -142,7 +142,8 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "content_type"
+        "content_type",
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type",
