@@ -103,11 +103,28 @@ class File(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]
+    rev = {
+        'integrated_in': ('ConstructLibrarySet', 'integrated_content_files')
+    }
 
     set_status_up = [
         'file_format_specifications'
     ]
     set_status_down = []
+
+    @calculated_property(schema={
+        'title': 'Integrated In',
+        'description': 'Construct library sets that this file was used for in insert design or directly cloned as a vector.',
+        'type': 'array',
+        'items': {
+            'title': 'Integrated In',
+            'type': ['string', 'object'],
+            'linkFrom': 'ConstructLibrarySet.integrated_content_files',
+        },
+        'notSubmittable': True
+    })
+    def integrated_in(self, request, integrated_in):
+        return paths_filtered_by_status(request, integrated_in)
 
     @calculated_property(
         schema={
@@ -219,7 +236,7 @@ class SequenceFile(File):
     item_type = 'sequence_file'
     schema = load_schema('igvfd:schemas/sequence_file.json')
     embedded_with_frame = File.embedded_with_frame
-    rev = {
+    rev = File.rev | {
         'seqspecs': ('ConfigurationFile', 'seqspec_of')
     }
     set_status_up = File.set_status_up + [
