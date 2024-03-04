@@ -38,21 +38,6 @@
         }
     ],
     "dependentSchemas": {
-        "file_set_type": {
-            "comment": "Primary analysis sets require input_file_sets.",
-            "if": {
-                "properties": {
-                    "file_set_type": {
-                        "const": "primary analysis"
-                    }
-                }
-            },
-            "then": {
-                "required": [
-                    "input_file_sets"
-                ]
-            }
-        },
         "status": {
             "comment": "Release, archived and revoked status should have release_timestamp specified.",
             "oneOf": [
