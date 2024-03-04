@@ -3,6 +3,7 @@
         "name": "images",
         "title": "Images",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "61edd6b2-bfdb-4db1-b950-8845ac37f65c",
         "layout": {
             "blocks": [
@@ -55,6 +56,7 @@
         "title": "Test Section",
         "lab": "j-michael-cherry",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitted_by": "massa.porta@varius.mauris",
         "uuid": "41c4ea4e-7a8e-4b91-8fe3-384d0adc8735",
         "layout": {
@@ -73,6 +75,7 @@
         "name": "subpage",
         "title": "Subpage",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "lab": "j-michael-cherry",
         "submitted_by": "massa.porta@varius.mauris",
         "uuid": "331928f7-d8f7-4ea6-b4e0-8d380fb22974",
@@ -111,6 +114,7 @@
         "title": "IGVF Help Documentation",
         "lab": "j-michael-cherry",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitted_by": "fytanaka@stanford.edu",
         "uuid": "74aa2c4c-8767-4904-a442-1bf851fa56e4",
         "layout": {
@@ -129,6 +133,7 @@
         "name": "samples",
         "title": "Samples",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "lab": "j-michael-cherry",
         "submitted_by": "fytanaka@stanford.edu",
         "uuid": "1b34820d-7fc1-457a-89c2-2a5accc3e8e6",
@@ -150,6 +155,7 @@
         "lab": "j-michael-cherry",
         "submitted_by": "fytanaka@stanford.edu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "c8733d26-8242-40f3-a663-ce6c7659a0b3",
         "layout": {
             "blocks": [
@@ -169,6 +175,7 @@
         "lab": "j-michael-cherry",
         "submitted_by": "fytanaka@stanford.edu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "d91b048e-2d8a-4562-893d-93f0e68397c0",
         "layout": {
             "blocks": [
@@ -188,6 +195,7 @@
         "lab": "j-michael-cherry",
         "submitted_by": "fytanaka@stanford.edu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "c0557916-f228-4895-8918-554eebb3c651",
         "layout": {
             "blocks": [
@@ -207,6 +215,7 @@
         "lab": "j-michael-cherry",
         "submitted_by": "fytanaka@stanford.edu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "b32b3cb7-e22c-4445-8465-e7636783437d",
         "layout": {
             "blocks": [
@@ -226,6 +235,7 @@
         "lab": "j-michael-cherry",
         "submitted_by": "fytanaka@stanford.edu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "235a1359-74bd-4b95-b0bb-70bf46f7856c",
         "layout": {
             "blocks": [
@@ -245,6 +255,7 @@
         "lab": "j-michael-cherry",
         "submitted_by": "fytanaka@stanford.edu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "cb3e37da-af1b-4f6f-92a5-fd77f3e69154",
         "layout": {
             "blocks": [

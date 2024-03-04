@@ -45,6 +45,11 @@
             "$ref": "mixins.json#/release_timestamp"
         }
     ],
+    "dependentSchemas": {
+        "$merge": [
+            "donor.json#/dependentSchemas"
+        ]
+    },
     "properties": {
         "schema_version": {
             "default": "13"

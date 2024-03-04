@@ -30,7 +30,7 @@
     ],
     "dependentSchemas": {
         "release_timestamp": {
-            "comment": "Release timestamp required if status is released, revoked or archived",
+            "comment": "Release timestamp is required if status is released or archived",
             "required": [
                 "status"
             ],
@@ -42,21 +42,35 @@
                     ]
                 }
             }
-        },
-        "status": {
-            "comment": "If status is released, revoked or archived, release_timestamp is required",
-            "required": [
-                "release_timestamp"
-            ],
-            "properties": {
-                "status": {
-                    "enum": [
-                        "archived",
-                        "released"
-                    ]
+        }
+    },
+    "status": {
+        "comment": "Release and archived status should have release_timestamp specified.",
+        "oneOf": [
+            {
+                "required": [
+                    "release_timestamp"
+                ],
+                "properties": {
+                    "status": {
+                        "enum": [
+                            "archived",
+                            "released"
+                        ]
+                    }
+                }
+            },
+            {
+                "properties": {
+                    "status": {
+                        "enum": [
+                            "deleted",
+                            "in progress"
+                        ]
+                    }
                 }
             }
-        }
+        ]
     },
     "properties": {
         "schema_version": {
