@@ -276,6 +276,9 @@
                     "href": {
                         "type": "keyword"
                     },
+                    "integrated_in": {
+                        "type": "keyword"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {

@@ -1052,6 +1052,9 @@
                             "index": {
                                 "type": "keyword"
                             },
+                            "integrated_in": {
+                                "type": "keyword"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
