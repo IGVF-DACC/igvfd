@@ -15,4 +15,4 @@ def test_seqspec_link(testapp, configuration_file_seqspec, configuration_file_se
         }
     )
     res = testapp.get(sequence_file['@id'])
-    assert set(res.json.get('seqspec')) == {configuration_file_seqspec['@id'], configuration_file_seqspec_2['@id']}
+    assert set(res.json.get('seqspecs')) == {configuration_file_seqspec['@id'], configuration_file_seqspec_2['@id']}
