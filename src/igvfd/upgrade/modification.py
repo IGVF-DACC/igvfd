@@ -28,7 +28,7 @@ def modification_3_4(value, system):
 
 
 @upgrade_step('modification', '4', '5')
-def image_3_4(value, system):
+def modification_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1494
     if value['status'] == 'released' or value['status'] == 'archived':
         if 'release_timestamp' not in value:
