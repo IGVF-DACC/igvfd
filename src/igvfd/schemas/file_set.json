@@ -46,6 +46,36 @@
                     "samples"
                 ]
             }
+        },
+        "release_timestamp": {
+            "comment": "Release timestamp required if status is released, revoked or archived",
+            "required": [
+                "status"
+            ],
+            "properties": {
+                "status": {
+                    "enum": [
+                        "revoked",
+                        "archived",
+                        "released"
+                    ]
+                }
+            }
+        },
+        "status": {
+            "comment": "If status is released, revoked or archived, release_timestamp is required",
+            "required": [
+                "release_timestamp"
+            ],
+            "properties": {
+                "status": {
+                    "enum": [
+                        "revoked",
+                        "archived",
+                        "released"
+                    ]
+                }
+            }
         }
     },
     "properties": {

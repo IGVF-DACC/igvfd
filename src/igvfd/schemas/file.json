@@ -81,7 +81,10 @@
                             ]
                         }
                     }
-                }
+                },
+                "required": [
+                    "release_timestamp"
+                ]
             }
         },
         "file_format": {

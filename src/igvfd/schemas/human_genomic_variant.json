@@ -47,6 +47,9 @@
         }
     ],
     "dependentSchemas": {
+        "$merge": [
+            "variant.json#/dependentSchemas"
+        ],
         "refseq_id": {
             "comment": "Specification of refseq_id is mutually exclusive with specification of reference_sequence.",
             "not": {

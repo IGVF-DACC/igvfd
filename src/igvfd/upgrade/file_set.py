@@ -258,7 +258,7 @@ def construct_library_set_prediction_set_5_6(value, system):
 @upgrade_step('prediction_set', '6', '7')
 def file_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1494
-    if value['status'] == 'released' or value['status'] == 'revoked' or value['status'] == 'archived':
+    if (value['status'] == 'released' or value['status'] == 'revoked' or value['status'] == 'archived'):
         if 'release_timestamp' not in value:
             value['release_timestamp'] == '2024-03-06T12:34:56Z'
             notes = value.get('notes', '')

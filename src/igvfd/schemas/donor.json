@@ -37,6 +37,53 @@
             "$ref": "mixins.json#/release_timestamp"
         }
     ],
+    "dependentSchemas": {
+        "file_set_type": {
+            "comment": "Primary analysis sets require input_file_sets.",
+            "if": {
+                "properties": {
+                    "file_set_type": {
+                        "const": "primary analysis"
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "input_file_sets"
+                ]
+            }
+        },
+        "release_timestamp": {
+            "comment": "Release timestamp required if status is released, revoked or archived",
+            "required": [
+                "status"
+            ],
+            "properties": {
+                "status": {
+                    "enum": [
+                        "revoked",
+                        "archived",
+                        "released"
+                    ]
+                }
+            }
+        },
+        "status": {
+            "comment": "If status is released, revoked or archived, release_timestamp is required",
+            "required": [
+                "release_timestamp"
+            ],
+            "properties": {
+                "status": {
+                    "enum": [
+                        "revoked",
+                        "archived",
+                        "released"
+                    ]
+                }
+            }
+        }
+    },
     "properties": {
         "schema_version": {
             "hidden comment": "Bump the default in the subclasses."

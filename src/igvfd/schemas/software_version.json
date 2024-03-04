@@ -47,6 +47,36 @@
             "$ref": "mixins.json#/release_timestamp"
         }
     ],
+    "dependentSchemas": {
+        "release_timestamp": {
+            "comment": "Release timestamp required if status is released, revoked or archived",
+            "required": [
+                "status"
+            ],
+            "properties": {
+                "status": {
+                    "enum": [
+                        "archived",
+                        "released"
+                    ]
+                }
+            }
+        },
+        "status": {
+            "comment": "If status is released, revoked or archived, release_timestamp is required",
+            "required": [
+                "release_timestamp"
+            ],
+            "properties": {
+                "status": {
+                    "enum": [
+                        "archived",
+                        "released"
+                    ]
+                }
+            }
+        }
+    },
     "properties": {
         "schema_version": {
             "default": "5"
