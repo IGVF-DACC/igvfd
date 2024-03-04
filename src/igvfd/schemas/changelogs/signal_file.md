@@ -4,7 +4,6 @@
 
 * Add `transcriptome_annotation`.
 * Remove `hg19` and `mm10` from `assembly`.
-* Move `assembly` to mixins.
 
 ### Minor changes since schema version 5
 

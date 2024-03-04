@@ -3,7 +3,6 @@
 ### Schema version 7
 
 * Remove `hg19`, `mm10`, and `mm9` from `assembly` on `locations`.
-* Move `assembly` on `locations` to mixins.
 
 ### Minor changes since schema version 6
 
