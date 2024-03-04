@@ -220,7 +220,7 @@ class SequenceFile(File):
     schema = load_schema('igvfd:schemas/sequence_file.json')
     embedded_with_frame = File.embedded_with_frame
     rev = {
-        'seqspec': ('ConfigurationFile', 'seqspec_of')
+        'seqspecs': ('ConfigurationFile', 'seqspec_of')
     }
     set_status_up = File.set_status_up + [
         'sequencing_platform'
