@@ -152,3 +152,11 @@ def test_in_vitro_system_upgrade_18_19(upgrader, in_vitro_system_v18):
     assert 'classification' not in value
     assert 'classifications' in value
     assert value['classifications'] == ['embryoid']
+
+
+def test_in_vitro_system_upgrade_19_20(upgrader, in_vitro_system_v19):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v19, current_version='19', target_version='20')
+    assert value['schema_version'] == '20'
+    assert 'release_timestamp' not in value and (
+        value['status'] == 'released' or value['status'] == 'archived' or value['status'] == 'revoked')
+    assert value['notes'] == 'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'

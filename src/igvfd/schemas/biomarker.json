@@ -33,7 +33,7 @@
     "dependentSchemas": {},
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "4"
         },
         "name": {
             "title": "Name",

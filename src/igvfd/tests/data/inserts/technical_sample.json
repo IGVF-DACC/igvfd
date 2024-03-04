@@ -7,6 +7,7 @@
             "igvf:alias2"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "The submitter had very little to say.",
         "documents": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
@@ -42,6 +43,7 @@
             "igvf:alias_archived"
         ],
         "status": "archived",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "The submitter had very little to say.",
         "documents": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
@@ -77,6 +79,7 @@
             "igvf:yeast two hybrid"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "notes": "This is a note.",
         "sample_material": "organic",
         "taxa": "Saccharomyces cerevisiae",

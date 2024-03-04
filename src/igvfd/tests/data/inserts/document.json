@@ -9,7 +9,9 @@
         "document_type": "standards",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        "uuid": "bcb5f3c8-d5e9-40d2-805f-4274f940c36d",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -22,7 +24,9 @@
         "characterization_method": "mass spectrometry",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "35d583d2-b823-4dee-b82c-b6e45965b51b"
+        "uuid": "35d583d2-b823-4dee-b82c-b6e45965b51b",
+        "status": "revoked",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -35,7 +39,9 @@
         "characterization_method": "restriction digest",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "15d583d2-b823-2dee-b82c-b6e45965b11b"
+        "uuid": "15d583d2-b823-2dee-b82c-b6e45965b11b",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -47,7 +53,9 @@
         "document_type": "computational protocol",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "35d583d2-b823-4dee-b82c-b6e45965b56b"
+        "uuid": "35d583d2-b823-4dee-b82c-b6e45965b56b",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -59,7 +67,9 @@
         "document_type": "experimental protocol",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "ad1f4c5e-27bf-4e37-8b4d-7912eb1ba89e"
+        "uuid": "ad1f4c5e-27bf-4e37-8b4d-7912eb1ba89e",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -71,7 +81,9 @@
         "document_type": "file format specification",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "31dbc0c8-74a5-4d2d-b41f-5d311510b7c3"
+        "uuid": "31dbc0c8-74a5-4d2d-b41f-5d311510b7c3",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -83,7 +95,9 @@
         "document_type": "image",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "ad2f2c2e-22bf-4e33-3b4d-7223eb1ba33e"
+        "uuid": "ad2f2c2e-22bf-4e33-3b4d-7223eb1ba33e",
+        "status": "archived",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -95,7 +109,9 @@
         "document_type": "image",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "ad1f3c3e-23bf-4e33-3b4d-7333eb1ba33e"
+        "uuid": "ad1f3c3e-23bf-4e33-3b4d-7333eb1ba33e",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -107,7 +123,9 @@
         "document_type": "plasmid map",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "ad1f4c5e-27bf-4e37-8b4d-7933eb1ba89e"
+        "uuid": "ad1f4c5e-27bf-4e37-8b4d-7933eb1ba89e",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -120,7 +138,9 @@
         "characterization_method": "RT-qPCR",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "1278577d-9d25-4868-a255-b08823332873"
+        "uuid": "1278577d-9d25-4868-a255-b08823332873",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -133,7 +153,9 @@
         "characterization_method": "PCR",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "1478577d-9d25-4868-a255-b08853332873"
+        "uuid": "1478577d-9d25-4868-a255-b08853332873",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -146,7 +168,9 @@
         "characterization_method": "immunoprecipitation",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "a966613e-c55e-4bf0-96a5-a25f73448560"
+        "uuid": "a966613e-c55e-4bf0-96a5-a25f73448560",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -159,7 +183,9 @@
         "characterization_method": "sequencing",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "05614b59-a421-47db-b4f7-5c7c8954c7e9"
+        "uuid": "05614b59-a421-47db-b4f7-5c7c8954c7e9",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -172,7 +198,9 @@
         "characterization_method": "immunofluorescence",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "c7870a38-4286-42fc-9551-22436306e22a"
+        "uuid": "c7870a38-4286-42fc-9551-22436306e22a",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -185,7 +213,9 @@
         "characterization_method": "immunoblot",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "bd40e085-0b82-4d11-b42f-46c56313a7ce"
+        "uuid": "bd40e085-0b82-4d11-b42f-46c56313a7ce",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -198,7 +228,9 @@
         "characterization_method": "FACS",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "61fd6155-c9ba-4f09-9055-cfbf606054bf"
+        "uuid": "61fd6155-c9ba-4f09-9055-cfbf606054bf",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -210,7 +242,9 @@
         "document_type": "cell fate change protocol",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "6f2b4155-3389-9a10-1dca-cfbf6057dcbf"
+        "uuid": "6f2b4155-3389-9a10-1dca-cfbf6057dcbf",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -222,6 +256,8 @@
         "document_type": "plasmid sequence",
         "lab": "j-michael-cherry",
         "submitted_by": "duis.pede@nonummy.scelerisque",
-        "uuid": "7988b40d-f7fc-4dc2-a7d4-95936e61be5c"
+        "uuid": "7988b40d-f7fc-4dc2-a7d4-95936e61be5c",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]

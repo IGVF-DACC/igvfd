@@ -196,3 +196,22 @@ def file_9_10(value, system):
         value['assembly'] = 'GRCm39'
         value['notes'] = notes.strip()
     return
+
+
+@upgrade_step('reference_file', '10', '11')
+@upgrade_step('matrix_file', '4', '5')
+@upgrade_step('signal_file', '6', '7')
+@upgrade_step('configuration_file', '4', '5')
+@upgrade_step('alignment_file', '6', '7')
+@upgrade_step('sequence_file', '8', '9')
+@upgrade_step('genome_browser_annotation_file', '6', '7')
+@upgrade_step('tabular_file', '6', '7')
+@upgrade_step('image_file', '2', '3')
+def file_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1494
+    if value['status'] == 'released' or value['status'] == 'revoked' or value['status'] == 'archived':
+        if 'release_timestamp' not in value:
+            value['release_timestamp'] == '2024-03-06T12:34:56Z'
+            notes = value.get('notes', '')
+            notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
+            value['notes'] = notes.strip()

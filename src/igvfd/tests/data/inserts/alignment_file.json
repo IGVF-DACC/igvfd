@@ -20,7 +20,8 @@
             "IGVFFI0001GNRF"
         ],
         "redacted": false,
-        "filtered": false
+        "filtered": false,
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "uuid": "ea8c86b7-1271-ea86-cc75-bc7d7eb802c8",
@@ -43,6 +44,7 @@
             "IGVFFI0001GNRF"
         ],
         "redacted": true,
-        "filtered": true
+        "filtered": true,
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]

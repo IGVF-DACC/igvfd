@@ -19,6 +19,7 @@
         "name": "testpage",
         "title": "The IGVF Project",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "27f9abd9-0081-4ade-8c82-95ec12b3a7dd",
         "layout": {
             "blocks": [

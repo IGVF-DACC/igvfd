@@ -17,6 +17,8 @@
         ],
         "award": "HG012012",
         "lab": "j-michael-cherry",
-        "uuid": "ed7bb4fd-b1d5-442b-a4ab-4de1291d07b5"
+        "uuid": "ed7bb4fd-b1d5-442b-a4ab-4de1291d07b5",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]

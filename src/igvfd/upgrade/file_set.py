@@ -247,3 +247,21 @@ def construct_library_set_prediction_set_5_6(value, system):
             value['notes'] = notes.strip()
             loci['assembly'] = 'GRCm39'
     return
+
+
+@upgrade_step('measurement_set', '12', '13')
+@upgrade_step('auxiliary_set', '6', '7')
+@upgrade_step('analysis_set', '5', '6')
+@upgrade_step('construct_library_set', '6', '7')
+@upgrade_step('curated_set', '6', '7')
+@upgrade_step('model_set', '2', '3')
+@upgrade_step('prediction_set', '6', '7')
+def file_set_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1494
+    if value['status'] == 'released' or value['status'] == 'revoked' or value['status'] == 'archived':
+        if 'release_timestamp' not in value:
+            value['release_timestamp'] == '2024-03-06T12:34:56Z'
+            notes = value.get('notes', '')
+            notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
+            value['notes'] = notes.strip()
+    return

@@ -16,6 +16,7 @@
         "issue": "7414",
         "page": "57-74",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "published_by": [
             "ENCODE"
         ]
@@ -31,6 +32,7 @@
         "publication_identifiers": [
             "doi:10.1101/2021.03.31.437978v2"
         ],
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]

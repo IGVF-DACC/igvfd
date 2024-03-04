@@ -16,6 +16,7 @@
         "model_zoo_location": "https://kipoi.org/models/Xpresso/human_K562/",
         "accession": "IGVFDS4321MODL",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "software_version": "/software-versions/igvf:bowtie2 v2.4.4/"
     }
 ]

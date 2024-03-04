@@ -7,7 +7,8 @@
         "aliases": [
             "igvf:starr-seq"
         ],
-        "notes": "Assay ontology term object for STARR-seq"
+        "notes": "Assay ontology term object for STARR-seq",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "term_id": "OBI:0002675",
@@ -17,13 +18,15 @@
             "NTR:0000001",
             "NTR:0000010"
         ],
-        "uuid": "e6a5e43a-9e8c-fd28-967f-358e200536ab"
+        "uuid": "e6a5e43a-9e8c-fd28-967f-358e200536ab",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "term_id": "OBI:0000716",
         "term_name": "ChIP-seq",
         "status": "released",
-        "uuid": "26945da8-8f87-4749-7aeb-cee38f5cfd28"
+        "uuid": "26945da8-8f87-4749-7aeb-cee38f5cfd28",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "term_id": "OBI:0003133",
@@ -32,13 +35,15 @@
         "uuid": "0393b224-8f87-5e94-7aeb-faff044f707d",
         "aliases": [
             "igvf:CRISPR"
-        ]
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "term_id": "OBI:0002631",
         "term_name": "single-cell RNA sequencing assay",
         "status": "released",
-        "uuid": "93b2cefa-9dfc-5e94-aa5e-faff044f46c1"
+        "uuid": "93b2cefa-9dfc-5e94-aa5e-faff044f46c1",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "term_id": "NTR:0000001",
@@ -48,25 +53,29 @@
             "0393b224-8f87-5e94-7aeb-faff044f707d",
             "93b2cefa-9dfc-5e94-aa5e-faff044f46c1"
         ],
-        "uuid": "c19f5da8-1aa5-4749-456b-cee38f5c6c99"
+        "uuid": "c19f5da8-1aa5-4749-456b-cee38f5c6c99",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "term_id": "OBI:0002764",
         "term_name": "single-cell ATAC-seq",
         "status": "released",
-        "uuid": "99d4f728-edf2-4c5c-9b89-e280a396ce73"
+        "uuid": "99d4f728-edf2-4c5c-9b89-e280a396ce73",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "term_id": "NTR:0000739",
         "term_name": "SHARE-seq",
         "status": "released",
-        "uuid": "e58aa9d3-323c-44e2-867c-a19632853124"
+        "uuid": "e58aa9d3-323c-44e2-867c-a19632853124",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "term_id": "OBI:0000185",
         "term_name": "imaging assay",
         "uuid": "a9d2e325-1eb2-43bb-a039-2a87809cfba5",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "term_id": "OBI:0003090",
@@ -75,18 +84,21 @@
         "uuid": "45f6baf1-fc25-4915-a43a-c3b083ba9f9c",
         "aliases": [
             "igvf:bulk RNA"
-        ]
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "term_id": "NTR:0000744",
         "term_name": "snMCT-seq",
         "status": "released",
-        "uuid": "4bec81f7-c661-40c7-ac64-aa7e02fb52fb"
+        "uuid": "4bec81f7-c661-40c7-ac64-aa7e02fb52fb",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "term_id": "NTR:0000745",
         "term_name": "snM3C-seq",
         "status": "released",
-        "uuid": "a92815b4-aea9-4676-84dc-f385b00cf8fc"
+        "uuid": "a92815b4-aea9-4676-84dc-f385b00cf8fc",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]

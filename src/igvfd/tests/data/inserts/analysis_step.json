@@ -20,6 +20,7 @@
             "alignments",
             "transcriptome annotations"
         ],
-        "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
+        "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]

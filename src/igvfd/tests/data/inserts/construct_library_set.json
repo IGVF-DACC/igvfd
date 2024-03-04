@@ -27,7 +27,8 @@
             "igvf:plasmid_map_insert"
         ],
         "product_id": "addgene:81225",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -47,7 +48,8 @@
         "small_scale_gene_list": [
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
         ],
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -68,7 +70,8 @@
         "small_scale_gene_list": [
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
         ],
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "aliases": [
@@ -93,6 +96,7 @@
         "small_scale_gene_list": [
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
         ],
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]

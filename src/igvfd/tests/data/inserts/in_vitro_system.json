@@ -15,6 +15,7 @@
         ],
         "passage_number": 2,
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "The submitter had very little to say.",
         "documents": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
@@ -68,6 +69,7 @@
             "/treatments/bd2cb34e-c72c-11ec-9d64-0242ac120002/"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "time_post_change": 24,
         "time_post_change_units": "minute",
         "sample_terms": [
@@ -100,6 +102,7 @@
         ],
         "passage_number": 2,
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "The submitter had very little to say.",
         "documents": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
@@ -151,6 +154,7 @@
         ],
         "passage_number": 2,
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "The submitter had very little to say.",
         "documents": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"

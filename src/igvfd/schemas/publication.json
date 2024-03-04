@@ -38,7 +38,7 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "title": {
             "title": "Title",

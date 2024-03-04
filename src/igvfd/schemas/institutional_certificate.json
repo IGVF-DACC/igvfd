@@ -58,7 +58,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "certificate_identifier": {
             "title": "Certificate Identifier",
