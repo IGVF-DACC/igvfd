@@ -69,12 +69,12 @@ def audit_files_associated_with_incorrect_fileset(value, system):
 
                 # Audit the file set with sequence files without the associated seqspec also in the file set.
                 if sequence_file_object.get('seqspec'):
-                    for s in sequence_file_object.get('seqspec'):
-                        if s not in value['files']:
+                    for configuration_file in sequence_file_object.get('seqspec'):
+                        if configuration_file not in value['files']:
                             detail = (
                                 f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file '
                                 f'{audit_link(path_to_text(file), file)} which links to seqspec '
-                                f'{audit_link(path_to_text(s), s)} which does not link to this file set.'
+                                f'{audit_link(path_to_text(configuration_file), configuration_file)} which does not link to this file set.'
                             )
                             yield AuditFailure('missing related files', detail, level='ERROR')
 
