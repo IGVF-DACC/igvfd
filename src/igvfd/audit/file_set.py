@@ -43,7 +43,7 @@ def audit_missing_seqspec(value, system):
         for file in value['files']:
             if file.startswith('/sequence-files/'):
                 sequence_file_object = system.get('request').embed(file)
-                if not sequence_file_object.get('seqspec'):
+                if not sequence_file_object.get('seqspecs'):
                     no_seqspec.append(file)
         if no_seqspec:
             no_seqspec = ', '.join([audit_link(path_to_text(file_no_seqspec), file_no_seqspec)
@@ -68,8 +68,8 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                 sequence_file_object = system.get('request').embed(file)
 
                 # Audit the file set with sequence files without the associated seqspec also in the file set.
-                if sequence_file_object.get('seqspec'):
-                    for configuration_file in sequence_file_object.get('seqspec'):
+                if sequence_file_object.get('seqspecs'):
+                    for configuration_file in sequence_file_object.get('seqspecs'):
                         if configuration_file not in value['files']:
                             detail = (
                                 f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file '
@@ -117,9 +117,9 @@ def audit_inconsistent_seqspec(value, system):
                 key = ':'.join(key_list)
 
                 if key not in sequence_to_seqspec:
-                    sequence_to_seqspec[key] = {file: set(sequence_file_object.get('seqspec', []))}
+                    sequence_to_seqspec[key] = {file: set(sequence_file_object.get('seqspecs', []))}
                 else:
-                    sequence_to_seqspec[key][file] = set(sequence_file_object.get('seqspec', []))
+                    sequence_to_seqspec[key][file] = set(sequence_file_object.get('seqspecs', []))
 
         for key, file_dict in sequence_to_seqspec.items():
             first_seqspec = next(iter(file_dict.values()), None)

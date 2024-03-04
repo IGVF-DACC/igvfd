@@ -248,18 +248,18 @@ class SequenceFile(File):
         return keys
 
     @calculated_property(schema={
-        'title': 'Seqspec',
+        'title': 'Seqspecs',
         'description': 'Link(s) to the associated seqspec YAML configuration file(s).',
         'type': 'array',
         'items': {
-            'title': 'Seqspec',
+            'title': 'Seqspecs',
             'type': ['string', 'object'],
             'linkFrom': 'ConfigurationFile.seqspec_of',
         },
         'notSubmittable': True
     })
-    def seqspec(self, request, seqspec):
-        return paths_filtered_by_status(request, seqspec)
+    def seqspecs(self, request, seqspecs):
+        return paths_filtered_by_status(request, seqspecs)
 
 
 @collection(

@@ -1,6 +1,6 @@
 {
-    "hash": "953212f978bd7c93c79579390f2337b0",
-    "index_name": "prediction_set_953212f9",
+    "hash": "bfe88fac7da2f4323939f9b99f1fb94c",
+    "index_name": "prediction_set_bfe88fac",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -968,10 +968,10 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "seqspec": {
+                            "seqspec_of": {
                                 "type": "keyword"
                             },
-                            "seqspec_of": {
+                            "seqspecs": {
                                 "type": "keyword"
                             },
                             "sequencing_platform": {

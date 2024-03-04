@@ -2,7 +2,7 @@
 
 ### Schema version 9
 
-* Change `seqspec` from a submittable property to a calculated property.
+* Remove `seqspec`.
 
 ### Schema version 8
 
