@@ -20,6 +20,7 @@
 * Add `barcode to sample mapping` to `content_type`.
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
+* Add `integrated_in`.
 
 ### Schema version 5
 
