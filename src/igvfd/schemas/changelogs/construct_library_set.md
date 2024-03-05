@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Schema version 6
+
+* Remove `hg19`, `mm10`, and `mm9` from `assembly` on `small_scale_loci_list`.
+
 ### Schema version 5
 
 * Remove `genes` and `loci`.

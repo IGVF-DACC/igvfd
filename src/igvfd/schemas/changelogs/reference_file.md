@@ -3,6 +3,7 @@
 ### Minor changes since schema version 10
 
 * Add `elements reference` to `content_type`.
+* Add `GENCODE 44`, `GENCODE 45`, `GENCODE M33`, and `GENCODE M34` to `transcriptome_annotation`.
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
 * Add `proteins_proteins`, `regulatory_regions_genes`, `regulatory_regions_genes_biosamples`, `regulatory_regions_genes_biosamples_donors`, `regulatory_regions_genes_biosamples_treatments_chebi`, `regulatory_regions_genes_biosamples_treatments_proteins`, and `variants_genes_terms` to `content_type`.

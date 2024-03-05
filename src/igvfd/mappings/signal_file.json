@@ -1,6 +1,6 @@
 {
-    "hash": "41e993f40407e8332e9b35311e5bc75e",
-    "index_name": "signal_file_41e993f4",
+    "hash": "af8801d464e7c6996706ae46fe109a7a",
+    "index_name": "signal_file_af8801d4",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -464,6 +464,9 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "transcriptome_annotation": {
                         "type": "keyword"
                     },
                     "upload_credentials": {

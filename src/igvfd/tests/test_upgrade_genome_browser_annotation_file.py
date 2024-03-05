@@ -28,3 +28,10 @@ def test_genome_browser_annotation_file_upgrade_4_5(upgrader, genome_browser_ann
     assert 'assembly' in value
     assert value['assembly'] == 'GRCh38'
     assert value['schema_version'] == '5'
+
+
+def test_genome_browser_annotation_file_upgrade_5_6(upgrader, genome_browser_annotation_file_v5):
+    value = upgrader.upgrade('genome_browser_annotation_file', genome_browser_annotation_file_v5,
+                             current_version='5', target_version='6')
+    assert value['assembly'] == 'GRCh38'
+    assert value['schema_version'] == '6'

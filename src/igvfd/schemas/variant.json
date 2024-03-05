@@ -14,11 +14,14 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/assembly"
         }
     ],
     "properties": {
         "schema_version": {
-            "default": "1"
+            "hidden comment": "Bump the default in the subclasses."
         },
         "selection_criteria": {
             "title": "Variant Selection Criteria Details",
@@ -48,19 +51,6 @@
             "submissionExample": {
                 "appscript": "AACGAATT",
                 "igvf_utils": "AACGAATT"
-            }
-        },
-        "assembly": {
-            "title": "Genome Assembly",
-            "description": "The genome assembly to which the variant coordinates relate.",
-            "type": "string",
-            "enum": [
-                "GRCh38",
-                "GRCm39"
-            ],
-            "submissionExample": {
-                "appscript": "GRCh38",
-                "igvf_utils": "GRCh38"
             }
         },
         "position": {

@@ -41,6 +41,9 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/assembly"
         }
     ],
     "dependentSchemas": {
@@ -76,6 +79,7 @@
             }
         },
         "assembly": {
+            "description": "The genome assembly to which the variant coordinates relate.",
             "enum": [
                 "GRCh38"
             ],

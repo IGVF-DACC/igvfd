@@ -43,64 +43,15 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/assembly"
         }
     ],
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
         ],
-        "transcriptome_annotation": {
-            "comment": "The assembly shoud be consistent with annotation versions of respective species.",
-            "allOf": [
-                {
-                    "if": {
-                        "properties": {
-                            "assembly": {
-                                "const": "GRCm39"
-                            }
-                        },
-                        "required": [
-                            "assembly"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "transcriptome_annotation": {
-                                "enum": [
-                                    "GENCODE M30",
-                                    "GENCODE M31",
-                                    "GENCODE M32"
-                                ]
-                            }
-                        }
-                    }
-                },
-                {
-                    "if": {
-                        "properties": {
-                            "assembly": {
-                                "const": "GRCh38"
-                            }
-                        },
-                        "required": [
-                            "assembly"
-                        ]
-                    },
-                    "then": {
-                        "properties": {
-                            "transcriptome_annotation": {
-                                "enum": [
-                                    "GENCODE 40",
-                                    "GENCODE 41",
-                                    "GENCODE 42",
-                                    "GENCODE 43"
-                                ]
-                            }
-                        }
-                    }
-                }
-            ]
-        },
         "file_format": {
             "comment": "Bed files must specify their file format type.",
             "allOf": [
@@ -147,7 +98,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "5"
+            "default": "6"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
@@ -184,19 +135,7 @@
             }
         },
         "assembly": {
-            "title": "Genome Assembly",
-            "description": "Genome assembly applicable for the tabular data.",
-            "type": "string",
-            "enum": [
-                "GRCh38",
-                "hg19",
-                "GRCm39",
-                "mm10"
-            ],
-            "submissionExample": {
-                "appscript": "GRCh38",
-                "igvf_utils": "GRCh38"
-            }
+            "description": "Genome assembly applicable for the tabular data."
         },
         "dbxrefs": {
             "comment": "This file type currently does not support any external resource submission."

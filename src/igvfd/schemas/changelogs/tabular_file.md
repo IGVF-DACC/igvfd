@@ -1,5 +1,10 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 6
+
+* Add `GENCODE 44`, `GENCODE 45`, `GENCODE M33`, and `GENCODE M34` to `transcriptome_annotation`.
+* Remove `hg19` and `mm10` from `assembly`.
+
 ### Minor changes since schema version 5
 
 * Add `fold over change control`, `guide quantifications`, `protein to protein interaction score`, `variant to element mapping`, `element quantifications`, `elements reference`, and `variant effects` to `content_type`.

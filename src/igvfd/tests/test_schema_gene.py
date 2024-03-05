@@ -7,20 +7,7 @@ def test_gene_assembly_locations_hs(testapp, gene_myc_hs):
         {
             'locations': [
                 {
-                    'assembly': 'mm10',
-                    'chromosome': 'chr18',
-                    'start': 47808713,
-                    'end': 47814692
-                }
-            ]
-        }, expect_errors=True)
-    assert res.status_code == 422
-    res = testapp.patch_json(
-        gene_myc_hs['@id'],
-        {
-            'locations': [
-                {
-                    'assembly': 'mm9',
+                    'assembly': 'GRCm39',
                     'chromosome': 'chr18',
                     'start': 47808713,
                     'end': 47814692
@@ -46,7 +33,20 @@ def test_gene_assembly_locations_hs(testapp, gene_myc_hs):
         {
             'locations': [
                 {
-                    'assembly': 'hg19',
+                    'assembly': 'GRCm39',
+                    'chromosome': 'chr18',
+                    'start': 47808713,
+                    'end': 47814692
+                }
+            ]
+        }, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        gene_myc_hs['@id'],
+        {
+            'locations': [
+                {
+                    'assembly': 'GRCh38',
                     'chromosome': 'chr18',
                     'start': 47808713,
                     'end': 47814692
@@ -77,7 +77,7 @@ def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
         {
             'locations': [
                 {
-                    'assembly': 'hg19',
+                    'assembly': 'GRCh38',
                     'chromosome': 'chr18',
                     'start': 47808713,
                     'end': 47814692
@@ -103,7 +103,7 @@ def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
         {
             'locations': [
                 {
-                    'assembly': 'mm9',
+                    'assembly': 'GRCm39',
                     'chromosome': 'chr17',
                     'start': 23737823,
                     'end': 23747986
@@ -117,7 +117,7 @@ def test_gene_assembly_locations_mm(testapp, gene_zscan10_mm):
         {
             'locations': [
                 {
-                    'assembly': 'mm10',
+                    'assembly': 'GRCm39',
                     'chromosome': 'chr17',
                     'start': 23600826,
                     'end': 23611019

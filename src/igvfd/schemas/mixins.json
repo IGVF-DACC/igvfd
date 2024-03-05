@@ -414,13 +414,32 @@
                 "GENCODE 41",
                 "GENCODE 42",
                 "GENCODE 43",
+                "GENCODE 44",
+                "GENCODE 45",
                 "GENCODE M30",
                 "GENCODE M31",
-                "GENCODE M32"
+                "GENCODE M32",
+                "GENCODE M33",
+                "GENCODE M34"
             ],
             "submissionExample": {
                 "appscript": "GENCODE 40",
                 "igvf_utils": "GENCODE 40"
+            }
+        }
+    },
+    "assembly": {
+        "assembly": {
+            "title": "Genome Assembly",
+            "description": "Genome assembly.",
+            "type": "string",
+            "enum": [
+                "GRCh38",
+                "GRCm39"
+            ],
+            "submissionExample": {
+                "appscript": "GRCh38",
+                "igvf_utils": "GRCh38"
             }
         }
     },
@@ -514,10 +533,7 @@
                         "type": "string",
                         "enum": [
                             "GRCh38",
-                            "hg19",
-                            "GRCm39",
-                            "mm10",
-                            "mm9"
+                            "GRCm39"
                         ]
                     },
                     "chromosome": {

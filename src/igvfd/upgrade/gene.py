@@ -55,3 +55,20 @@ def gene_5_6(value, system):
     if 'description' in value:
         if value['description'] == '':
             del value['description']
+
+
+@upgrade_step('gene', '6', '7')
+def gene_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1016
+    for location in value.get('locations', []):
+        if location['assembly'] == 'hg19':
+            notes = value.get('notes', '')
+            notes += f' This file set listed {location} as one of its locations but the assembly for this location has been upgraded to GRCh38.'
+            value['notes'] = notes.strip()
+            location['assembly'] = 'GRCh38'
+        elif location['assembly'] in ['mm9', 'mm10']:
+            notes = value.get('notes', '')
+            notes += f' This file set listed {location} as one of its locations but the assembly for this location has been upgraded to GRCm39.'
+            value['notes'] = notes.strip()
+            location['assembly'] = 'GRCm39'
+    return

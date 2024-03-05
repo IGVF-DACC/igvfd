@@ -46,8 +46,7 @@
                                 "properties": {
                                     "assembly": {
                                         "enum": [
-                                            "GRCh38",
-                                            "hg19"
+                                            "GRCh38"
                                         ]
                                     }
                                 }
@@ -67,8 +66,6 @@
                                 "properties": {
                                     "assembly": {
                                         "enum": [
-                                            "mm10",
-                                            "mm9",
                                             "GRCm39"
                                         ]
                                     }
@@ -87,7 +84,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "6"
+            "default": "7"
         },
         "geneid": {
             "title": "ENSEMBL GeneID",
@@ -160,16 +157,9 @@
                 ],
                 "properties": {
                     "assembly": {
+                        "$merge": "mixins.json#/assembly/assembly",
                         "title": "Mapping Assembly",
-                        "description": "The genome assembly to which coordinates relate. e.g. GRCh38.",
-                        "type": "string",
-                        "enum": [
-                            "GRCh38",
-                            "hg19",
-                            "mm10",
-                            "mm9",
-                            "GRCm39"
-                        ]
+                        "description": "The genome assembly to which coordinates relate. e.g. GRCh38."
                     },
                     "chromosome": {
                         "title": "Chromosome",

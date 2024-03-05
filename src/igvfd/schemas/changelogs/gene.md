@@ -1,5 +1,9 @@
 ## Changelog for *`gene.json`*
 
+### Schema version 7
+
+* Remove `hg19`, `mm10`, and `mm9` from `assembly` on `locations`.
+
 ### Minor changes since schema version 6
 
 * Add `release_timestamp`.

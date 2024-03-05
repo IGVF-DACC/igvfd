@@ -34,3 +34,10 @@ def test_gene_upgrade_5_6(upgrader, gene_v5):
     value = upgrader.upgrade('gene', gene_v5, current_version='5', target_version='6')
     assert value['schema_version'] == '6'
     assert 'description' not in value
+
+
+def test_gene_upgrade_6_7(upgrader, gene_v6):
+    value = upgrader.upgrade('gene', gene_v6, current_version='6', target_version='7')
+    assert value['schema_version'] == '7'
+    for location in value['locations']:
+        assert location['assembly'] == 'GRCm39'

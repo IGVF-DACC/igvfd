@@ -24,3 +24,9 @@ def test_signal_file_upgrade_4_5(upgrader, signal_file_v4):
     assert 'assembly' in value
     assert value['assembly'] == 'GRCh38'
     assert value['schema_version'] == '5'
+
+
+def test_signal_file_upgrade_5_6(upgrader, signal_file_v5):
+    value = upgrader.upgrade('signal_file', signal_file_v5, current_version='5', target_version='6')
+    assert value['assembly'] == 'GRCm39'
+    assert value['schema_version'] == '6'
