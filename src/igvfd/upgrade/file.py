@@ -178,6 +178,7 @@ def image_file_1_2(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1492
     return
 
+
 @upgrade_step('alignment_file', '5', '6')
 @upgrade_step('genome_browser_annotation_file', '5', '6')
 @upgrade_step('signal_file', '5', '6')
