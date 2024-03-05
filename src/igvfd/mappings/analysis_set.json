@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "49bc0c1f48b9c1f48f13f7a3471934cf",
     "index_name": "analysis_set_49bc0c1f",
+=======
+    "hash": "95c0d53fb61e78f08ec224e0c550dca6",
+    "index_name": "analysis_set_95c0d53f",
+>>>>>>> 4a2e1976 (mappings)
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [

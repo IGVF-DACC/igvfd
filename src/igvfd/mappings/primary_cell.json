@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "ba737719a0455b30b6ea211777b8c64d",
     "index_name": "primary_cell_ba737719",
+=======
+    "hash": "f7bfccc08833b3e30351191c69932823",
+    "index_name": "primary_cell_f7bfccc0",
+>>>>>>> 4a2e1976 (mappings)
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [

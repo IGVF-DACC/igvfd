@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "00dc88cb0252c93e1c7fb9de6364f453",
     "index_name": "human_donor_00dc88cb",
+=======
+    "hash": "da2b40dc886cd851b314017a98bb6d3c",
+    "index_name": "human_donor_da2b40dc",
+>>>>>>> 4a2e1976 (mappings)
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [

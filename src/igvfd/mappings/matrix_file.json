@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "088654318270731919648b76497c9c14",
     "index_name": "matrix_file_08865431",
+=======
+    "hash": "98b910d92310296b547beaa51d9e84ba",
+    "index_name": "matrix_file_98b910d9",
+>>>>>>> 4a2e1976 (mappings)
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [

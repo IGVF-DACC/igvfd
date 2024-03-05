@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "1658ff62a9f90f803269954aef597f67",
     "index_name": "prediction_set_1658ff62",
+=======
+    "hash": "7af956071ce0416fa2f865f67c011ae4",
+    "index_name": "prediction_set_7af95607",
+>>>>>>> 4a2e1976 (mappings)
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [

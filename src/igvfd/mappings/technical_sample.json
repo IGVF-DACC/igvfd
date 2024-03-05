@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "3e66e513cafc8cd8d23b9c7f582a2b68",
     "index_name": "technical_sample_3e66e513",
+=======
+    "hash": "f854676c2fd7da8cf42ef722fbcac786",
+    "index_name": "technical_sample_f854676c",
+>>>>>>> 4a2e1976 (mappings)
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
