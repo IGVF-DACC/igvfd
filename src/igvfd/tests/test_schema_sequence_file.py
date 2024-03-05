@@ -182,7 +182,6 @@ def test_sequence_file_upload_status(testapp, sequence_file):
             'status': 'released',
             'release_timestamp': '2024-03-06T12:34:56Z',
             'upload_status': 'file not found'
-
         },
         expect_errors=True
     )
