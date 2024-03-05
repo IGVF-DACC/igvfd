@@ -13,14 +13,14 @@ def audit_related_donors(value, system):
     '''
     [
         {
-            audit_description: The human donors indicated in the list of related donors are expected to be unique.,
-            audit_category: inconsistent related donors metadata,
-            audit_level: WARNING
+            "audit_description": "The human donors indicated in the list of related donors are expected to be unique.",
+            "audit_category": "inconsistent related donors metadata",
+            "audit_level": "WARNING"
         },
         {
-            audit_description: The human donors indicated in the list of related donors are expected to include a mutual link to the corresponding donor.,
-            audit_category: inconsistent related donors metadata,
-            audit_level: ERROR
+            "audit_description": "The human donors indicated in the list of related donors are expected to include a mutual link to the corresponding donor.",
+            "audit_category": "inconsistent related donors metadata",
+            "audit_level": "ERROR"
         }
     ]
     '''

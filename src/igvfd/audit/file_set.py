@@ -21,9 +21,9 @@ def audit_no_files(value, system):
     '''
     [
         {
-            audit_description: File sets are expected to have files.,
-            audit_category: missing files,
-            audit_level: WARNING
+            "audit_description": "File sets are expected to have files.",
+            "audit_category": "missing files",
+            "audit_level": "WARNING"
         }
     ]
     '''
@@ -40,9 +40,9 @@ def audit_missing_seqspec(value, system):
     '''
     [
         {
-            audit_description: Sequence files in a file set are expected to link to a seqspec file.,
-            audit_category: missing sequence specification,
-            audit_level: NOT_COMPLIANT
+            "audit_description": "Sequence files in a file set are expected to link to a seqspec file.",
+            "audit_category": "missing sequence specification",
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
@@ -68,9 +68,9 @@ def audit_files_associated_with_incorrect_fileset(value, system):
     '''
     [
         {
-            audit_description: All files associated with a seqspec (both sequencing and seqspec files) are expected to be linked on the same file set.,
-            audit_category: missing related files,
-            audit_level: ERROR
+            "audit_description": "All files associated with a seqspec (both sequencing and seqspec files) are expected to be linked on the same file set.",
+            "audit_category": "missing related files",
+            "audit_level": "ERROR"
         }
     ]
     '''
@@ -112,9 +112,9 @@ def audit_inconsistent_seqspec(value, system):
     '''
     [
         {
-            audit_description: Sequence files in a file set from the same sequencing run, flowcell_id, lane, and index are expected to link to the same seqspec file, which should be unique to that set of sequence files.,
-            audit_category: inconsistent sequence specifications,
-            audit_level: ERROR
+            "audit_description": "Sequence files in a file set from the same sequencing run, flowcell_id, lane, and index are expected to link to the same seqspec file, which should be unique to that set of sequence files.",
+            "audit_category": "inconsistent sequence specifications",
+            "audit_level": "ERROR"
         }
     ]
     '''

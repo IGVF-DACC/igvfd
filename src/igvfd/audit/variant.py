@@ -13,9 +13,9 @@ def audit_variant_ref_alt_check(value, system):
     '''
     [
         {
-            audit_description: Variants are expected to have a different reference allele and alternative allele.,
-            audit_category: identical ref and alt alleles,
-            audit_level: ERROR
+            "audit_description": "Variants are expected to have a different reference allele and alternative allele.",
+            "audit_category": "identical ref and alt alleles",
+            "audit_level": "ERROR"
         }
     ]
     '''

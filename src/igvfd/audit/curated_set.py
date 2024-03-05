@@ -13,9 +13,9 @@ def audit_curated_set_mismatched_taxa(value, system):
     '''
     [
         {
-            audit_description: The taxa of the curated set and associated samples or donors are expected to be matching.,
-            audit_category: inconsistent taxa metadata,
-            audit_level: ERROR
+            "audit_description": "The taxa of the curated set and associated samples or donors are expected to be matching.",
+            "audit_category": "inconsistent taxa metadata",
+            "audit_level": "ERROR"
         }
     ]
     '''

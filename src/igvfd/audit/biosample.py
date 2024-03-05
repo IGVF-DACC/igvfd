@@ -13,9 +13,9 @@ def audit_biosample_taxa_check(value, system):
     '''
     [
         {
-            audit_description: Biosamples are not expected to have donors with different taxa.,
-            audit_category: inconsistent donor taxa,
-            audit_level: ERROR
+            "audit_description": "Biosamples are not expected to have donors with different taxa.",
+            "audit_category": "inconsistent donor taxa",
+            "audit_level": "ERROR"
         }
     ]
     '''
@@ -47,9 +47,9 @@ def audit_biosample_age(value, system):
     '''
     [
         {
-            audit_description: Tissues, primary cells, and whole organisms are expected to specify a lower_bound_age, upper_bound_age and age_units.,
-            audit_category: missing age properties,
-            audit_level: WARNING
+            "audit_description": "Tissues, primary cells, and whole organisms are expected to specify a lower_bound_age, upper_bound_age and age_units.",
+            "audit_category": "missing age properties",
+            "audit_level": "WARNING"
         }
     ]
     '''
