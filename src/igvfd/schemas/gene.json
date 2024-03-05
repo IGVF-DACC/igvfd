@@ -46,8 +46,7 @@
                                 "properties": {
                                     "assembly": {
                                         "enum": [
-                                            "GRCh38",
-                                            "hg19"
+                                            "GRCh38"
                                         ]
                                     }
                                 }
@@ -67,8 +66,6 @@
                                 "properties": {
                                     "assembly": {
                                         "enum": [
-                                            "mm10",
-                                            "mm9",
                                             "GRCm39"
                                         ]
                                     }
