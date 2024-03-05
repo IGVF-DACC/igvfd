@@ -11,9 +11,13 @@ from .formatter import (
 @audit_checker('Treatment', frame='object')
 def audit_treatment_term_id_check(value, system):
     '''
-        audit_detail: Treatments with a newly requested term ID are expected to have it updated following its addition to the appropriate ontology database.
-        audit_category: treatment term has been newly requested
-        audit_levels: INTERNAL_ACTION
+    [
+        {
+            audit_description: Treatments with a newly requested term ID are expected to have it updated following its addition to the appropriate ontology database.,
+            audit_category: treatment term has been newly requested,
+            audit_level: INTERNAL_ACTION
+        }
+    ]
     '''
     if 'treatment_term_id' in value:
         term_id = value['treatment_term_id']

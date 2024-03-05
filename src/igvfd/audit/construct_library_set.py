@@ -14,9 +14,13 @@ from .file_set import (
 @audit_checker('ConstructLibrarySet', frame='object')
 def audit_construct_library_set_associated_phenotypes(value, system):
     '''
-        audit_detail: Construct library sets with selection_criteria of phenotype-associated variants need to include an entry in associated_phenotypes.
-        audit_category: inconsistent variants and phenotype metadata
-        audit_levels: NOT_COMPLIANT
+    [
+        {
+            audit_description: Construct library sets with selection_criteria of phenotype-associated variants need to include an entry in associated_phenotypes.,
+            audit_category: inconsistent variants and phenotype metadata,
+            audit_level: NOT_COMPLIANT
+        }
+    ]
     '''
     detail = ''
     selection_criteria_list = value.get('selection_criteria', [])
@@ -37,9 +41,13 @@ def audit_construct_library_set_associated_phenotypes(value, system):
 @audit_checker('ConstructLibrarySet', frame='object')
 def audit_construct_library_set_plasmid_map(value, system):
     '''
-        audit_detail: Construct library sets are expected to be associated with a plasmid map document.
-        audit_category: missing plasmid
-        audit_levels: WARNING
+    [
+        {
+            audit_description: Construct library sets are expected to be associated with a plasmid map document.,
+            audit_category: missing plasmid,
+            audit_level: WARNING
+        }
+    ]
     '''
     map_counter = 0
     detail = (
@@ -64,9 +72,13 @@ def audit_construct_library_set_plasmid_map(value, system):
 @audit_checker('ConstructLibrarySet', frame='object')
 def audit_construct_library_set_scope(value, system):
     '''
-        audit_detail: Construct library sets with a scope of tile or exon are expected to include only 1 element in the genes property.
-        audit_category: inconsistent scope metadata
-        audit_levels: WARNING
+    [
+        {
+            audit_description: Construct library sets with a scope of tile or exon are expected to include only 1 element in the genes property.,
+            audit_category: inconsistent scope metadata,
+            audit_level: WARNING
+        }
+    ]
     '''
     detail = ''
     if value.get('scope') in ['exon', 'tile']:
@@ -83,9 +95,13 @@ def audit_construct_library_set_scope(value, system):
 @audit_checker('ConstructLibrarySet', frame='object')
 def audit_construct_library_set_files(value, system):
     '''
-        audit_detail: Construct library sets are not expected to have any files except sequence files or configuration files.
-        audit_category: unexpected file association
-        audit_levels: WARNING
+    [
+        {
+            audit_description: Construct library sets are not expected to have any files except sequence files or configuration files.,
+            audit_category: unexpected file association,
+            audit_level: WARNING
+        }
+    ]
     '''
     non_sequence_files = find_non_config_sequence_files(value)
     if non_sequence_files:

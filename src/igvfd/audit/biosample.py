@@ -11,9 +11,13 @@ from .formatter import (
 @audit_checker('Biosample', frame='object')
 def audit_biosample_taxa_check(value, system):
     '''
-        audit_detail: Biosamples are not expected to have donors with different taxa.
-        audit_category: inconsistent donor taxa
-        audit_levels: ERROR
+    [
+        {
+            audit_description: Biosamples are not expected to have donors with different taxa.,
+            audit_category: inconsistent donor taxa,
+            audit_level: ERROR
+        }
+    ]
     '''
     if 'donors' in value:
         sample_id = value['@id']
@@ -41,9 +45,13 @@ def audit_biosample_taxa_check(value, system):
 @audit_checker('Biosample', frame='object')
 def audit_biosample_age(value, system):
     '''
-        audit_detail: Tissues, primary cells, and whole organisms are expected to specify a lower_bound_age, upper_bound_age and age_units.
-        audit_category: missing age properties
-        audit_levels: WARNING
+    [
+        {
+            audit_description: Tissues, primary cells, and whole organisms are expected to specify a lower_bound_age, upper_bound_age and age_units.,
+            audit_category: missing age properties,
+            audit_level: WARNING
+        }
+    ]
     '''
     if ('Tissue' in value['@type']) or ('PrimaryCell' in value['@type']) or ('WholeOrganism' in value['@type']):
         if 'lower_bound_age' and 'upper_bound_age' and 'age_units' not in value:
