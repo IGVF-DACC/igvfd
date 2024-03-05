@@ -47,15 +47,24 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
-            "enum": [
-                "detected tissue",
-                "low resolution tissue",
-                "high resolution tissue",
-                "fiducial alignment"
+            "oneOf": [
+                {
+                    "enum": [
+                        "detected tissue",
+                        "low resolution tissue",
+                        "high resolution tissue"
+                    ]
+                },
+                {
+                    "enum": [
+                        "fiducial alignment"
+                    ],
+                    "permission": "import_items"
+                }
             ],
             "submissionExample": {
                 "appscript": "detected tissue",
