@@ -75,7 +75,7 @@ def gene_6_7(value, system):
 
 
 @upgrade_step('gene', '7', '8')
-def gene_6_7(value, system):
+def gene_7_8(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1494
     if value['status'] == 'released' or value['status'] == 'archived':
         if 'release_timestamp' not in value:

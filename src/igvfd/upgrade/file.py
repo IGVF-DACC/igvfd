@@ -207,7 +207,7 @@ def file_9_10(value, system):
 @upgrade_step('genome_browser_annotation_file', '6', '7')
 @upgrade_step('tabular_file', '6', '7')
 @upgrade_step('image_file', '2', '3')
-def file_9_10(value, system):
+def file_10_11(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1494
     if value['status'] == 'released' or value['status'] == 'revoked' or value['status'] == 'archived':
         if 'release_timestamp' not in value:
