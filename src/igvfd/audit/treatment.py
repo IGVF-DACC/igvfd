@@ -13,9 +13,9 @@ def audit_treatment_term_id_check(value, system):
     '''
     [
         {
-            audit_description: Treatments with a newly requested term ID are expected to have it updated following its addition to the appropriate ontology database.,
-            audit_category: treatment term has been newly requested,
-            audit_level: INTERNAL_ACTION
+            "audit_description": "Treatments with a newly requested term ID are expected to have it updated following its addition to the appropriate ontology database.",
+            "audit_category": "treatment term has been newly requested",
+            "audit_level": "INTERNAL_ACTION"
         }
     ]
     '''

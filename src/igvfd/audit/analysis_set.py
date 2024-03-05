@@ -13,9 +13,9 @@ def audit_input_file_sets(value, system):
     '''
     [
         {
-            audit_description: Primary analysis sets are expected to have at least one measurement set as an input file set.,
-            audit_category: inconsistent input file sets,
-            audit_level: WARNING
+            "audit_description": "Primary analysis sets are expected to have at least one measurement set as an input file set.",
+            "audit_category": "inconsistent input file sets",
+            "audit_level": "WARNING"
         }
     ]
     '''

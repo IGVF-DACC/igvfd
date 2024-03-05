@@ -13,9 +13,9 @@ def audit_matrix_file_dimensions(value, system):
     '''
     [
         {
-            audit_description: Matrix files, with the exception of .hic files are expected to have different values for each dimension.,
-            audit_category: identical dimensions,
-            audit_level: WARNING
+            "audit_description": "Matrix files, with the exception of .hic files are expected to have different values for each dimension.",
+            "audit_category": "identical dimensions",
+            "audit_level": "WARNING"
         }
     ]
     '''
