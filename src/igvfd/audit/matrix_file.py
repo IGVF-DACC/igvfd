@@ -11,9 +11,13 @@ from .formatter import (
 @audit_checker('MatrixFile', frame='object')
 def audit_matrix_file_dimensions(value, system):
     '''
-        audit_detail: Matrix files, with the exception of .hic files are expected to have different values for each dimension.
-        audit_category: identical dimensions
-        audit_levels: WARNING
+    [
+        {
+            audit_description: Matrix files, with the exception of .hic files are expected to have different values for each dimension.,
+            audit_category: identical dimensions,
+            audit_level: WARNING
+        }
+    ]
     '''
     if value['dimension1'] == value['dimension2'] and value['file_format'] != 'hic':
         detail = (

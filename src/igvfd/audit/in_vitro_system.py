@@ -11,9 +11,13 @@ from .formatter import (
 @audit_checker('InVitroSystem', frame='object')
 def audit_targeted_sample_term_check(value, system):
     '''
-        audit_detail: In vitro systems are not expected to have the same targeted_sample_term and sample_terms.
-        audit_category: inconsistent targeted_sample_term
-        audit_levels: WARNING
+    [
+        {
+            audit_description: In vitro systems are not expected to have the same targeted_sample_term and sample_terms.,
+            audit_category: inconsistent targeted_sample_term,
+            audit_level: WARNING
+        }
+    ]
     '''
     if 'targeted_sample_term' in value:
         value_id = system.get('path')
@@ -31,9 +35,13 @@ def audit_targeted_sample_term_check(value, system):
 @audit_checker('InVitroSystem', frame='embedded')
 def audit_cell_fate_change_treatments_purpose(value, system):
     '''
-        audit_detail: Treatments linked to in an in vitro system's cell_fate_change_treatments are not expected to have purpose "perturbation", "agonist", "antagonist", or "control".
-        audit_category: inconsistent cell_fate_change_treatments treatment purpose
-        audit_levels: ERROR
+    [
+        {
+            audit_description: Treatments linked to in an in vitro system's cell_fate_change_treatments are not expected to have purpose "perturbation", "agonist", "antagonist", or "control".,
+            audit_category: inconsistent cell_fate_change_treatments treatment purpose,
+            audit_level: ERROR
+        }
+    ]
     '''
     if 'cell_fate_change_treatments' in value:
         for treatment in value.get('cell_fate_change_treatments'):
@@ -49,9 +57,13 @@ def audit_cell_fate_change_treatments_purpose(value, system):
 @audit_checker('InVitroSystem', frame='embedded')
 def audit_cell_fate_change_protocol_document_type(value, system):
     '''
-        audit_detail: A document linked to in an in vitro system's cell_fate_change_protocol must be of document_type cell fate change protocol.
-        audit_category: inconsistent cell_fate_change_protocol document type
-        audit_levels: ERROR
+    [
+        {
+            audit_description: A document linked to in an in vitro system's cell_fate_change_protocol must be of document_type cell fate change protocol.,
+            audit_category: inconsistent cell_fate_change_protocol document type,
+            audit_level: ERROR
+        }
+    ]
     '''
     if 'cell_fate_change_protocol' in value:
         doc_object = system.get('request').embed(value['cell_fate_change_protocol'] + '@@object?skip_calculated=true')

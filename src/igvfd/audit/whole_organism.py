@@ -11,9 +11,13 @@ from .formatter import (
 @audit_checker('WholeOrganism', frame='object')
 def audit_whole_organism_human_taxa(value, system):
     '''
-        audit_detail: Whole organisms are expected to have a donor with taxa Homo sapiens.
-        audit_category: incorrect taxa
-        audit_levels: ERROR
+    [
+        {
+            audit_description: Whole organisms are expected to have a donor with taxa Homo sapiens.,
+            audit_category: incorrect taxa,
+            audit_level: ERROR
+        }
+    ]
     '''
     if 'taxa' in value:
         if value['taxa'] == 'Homo sapiens':

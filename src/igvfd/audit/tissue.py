@@ -11,9 +11,13 @@ from .formatter import (
 @audit_checker('Tissue', frame='object')
 def audit_tissue_ccf_id(value, system):
     '''
-        audit_detail: Tissues are expected to specify a common coordinate framework identifier (CCF ID).
-        audit_category: missing ccf_id
-        audit_levels: NOT_COMPLIANT
+    [
+        {
+            audit_description: Tissues are expected to specify a common coordinate framework identifier (CCF ID).,
+            audit_category: missing ccf_id,
+            audit_level: NOT_COMPLIANT
+        }
+    ]
     '''
     if ('ccf_id' not in value) and (any(donor.startswith('/human-donors/') for donor in value.get('donors'))):
         value_id = system.get('path')
@@ -27,9 +31,13 @@ def audit_tissue_ccf_id(value, system):
 @audit_checker('Tissue', frame='object')
 def audit_tissue_ccf_id_nonhuman_sample(value, system):
     '''
-        audit_detail: Non-human tissues are not expected to specify a common coordinate framework identifier (CCF ID).
-        audit_category: unexpected ccf_id
-        audit_levels: ERROR
+    [
+        {
+            audit_description: Non-human tissues are not expected to specify a common coordinate framework identifier (CCF ID).,
+            audit_category: unexpected ccf_id,
+            audit_level: ERROR
+        }
+    ]
     '''
     if ('ccf_id' in value) and (value.get('taxa', '') != 'Homo sapiens'):
         value_id = system.get('path')
