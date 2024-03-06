@@ -55,7 +55,11 @@ def get_audit_function_names_from_module(module):
 def get_docstring_dict_from_function_name(function_name):
     docstring = eval(function_name + '.__doc__')
     if docstring is not None:
-        return {function_name: json.loads(docstring)}
+        try:
+            docstring = json.loads(docstring)
+            return {function_name: json.loads(docstring)}
+        except:
+            raise ValueError(f'Error loading audit docstring: {docstring} for {function_name} into JSON-format.')
     else:
         return {function_name: {}}
 
