@@ -639,10 +639,32 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Integrated Content File",
-                "comment": "See file.json for a list of available identifiers.",
-                "type": "string",
-                "linkTo": "File"
+                "oneOf": [
+                    {
+                        "title": "Integrated Content File",
+                        "comment": "See file.json for a list of available identifiers.",
+                        "type": "string",
+                        "linkTo": [
+                            "TabularFile",
+                            "ReferenceFile"
+                        ]
+                    },
+                    {
+                        "title": "Integrated Content File",
+                        "comment": "Submission of these files types for this property is disallowed.",
+                        "type": "string",
+                        "permission": "import_items",
+                        "linkTo": [
+                            "SingalFile",
+                            "GenomeBrowserAnnotationFile",
+                            "SequenceFile",
+                            "AlignmentFile",
+                            "MatrixFile",
+                            "ImageFile",
+                            "ConfigurationFile"
+                        ]
+                    }
+                ]
             },
             "submissionExample": {
                 "appscript": "[\"john-done:file01\", \"IGVFFI6665ABCD\"]",
