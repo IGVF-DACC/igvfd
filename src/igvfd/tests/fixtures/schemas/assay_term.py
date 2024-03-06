@@ -94,8 +94,8 @@ def assay_term_v2(assay_term_v1):
 
 
 @pytest.fixture
-def assay_term_v3(testapp):
-    item = testapp.copy()
+def assay_term_v3(assay_term_crispr):
+    item = assay_term_crispr.copy()
     item.update({
         'schema_version': '3',
         'preferred_assay_title': 'Parse Split-seq'
