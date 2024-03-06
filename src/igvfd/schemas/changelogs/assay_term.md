@@ -1,7 +1,7 @@
 ## Changelog for *`assay_term.json`*
 
 ### Schema version 4
-* Replace `histone ChIP-seq`, `Parse Split-seq`, `Saturation genome editing`, `SHARE-Seq`, and `Yeast two-hybrid` with `Histone ChIP-seq`, `Parse SPLiT-seq`, `SGE`, `SHARE-seq` and `Y2H` respectively in preferred_assay_titles.
+* Renamed `histone ChIP-seq`, `Parse Split-seq`, `Saturation genome editing`, `SHARE-Seq`, and `Yeast two-hybrid` to `Histone ChIP-seq`, `Parse SPLiT-seq`, `SGE`, `SHARE-seq` and `Y2H` respectively in preferred_assay_titles.
 
 ### Minor changes since schema version 3
 
