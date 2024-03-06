@@ -147,7 +147,7 @@ def audit_inconsistent_seqspec(value, system):
             for key, file in sequence_files:
                 key_set.add(key)
             if len(key_set) > 1:
-                seqspec_paths = [audit_link(path_to_text(x), x) for x in ':'.split(seqspec)]
+                seqspec_paths = [audit_link(path_to_text(x), x) for x in seqspec.split(':')]
                 detail = (
                     f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(file), file) for _, file in sequence_files])} '
