@@ -57,7 +57,7 @@ def get_docstring_dict_from_function_name(function_name):
     if docstring is not None:
         try:
             docstring = json.loads(docstring)
-            return {function_name: json.loads(docstring)}
+            return {function_name: docstring}
         except:
             raise ValueError(f'Error loading audit docstring: {docstring} for {function_name} into JSON-format.')
     else:
