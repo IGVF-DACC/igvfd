@@ -127,7 +127,6 @@ def construct_library_set_v4(construct_library_set_genome_wide, gene_myc_hs):
 
 
 @pytest.fixture
-<<<<<<< HEAD
 def construct_library_set_v5(construct_library_set_genome_wide):
     item = construct_library_set_genome_wide.copy()
     item.update({
@@ -137,12 +136,14 @@ def construct_library_set_v5(construct_library_set_genome_wide):
                 'chromosome': 'chr1',
                 'start': 1,
                 'end': 10
-                }]
-=======
+                }]})
+    return item
+
+
+@pytest.fixture
 def construct_library_set_v6(construct_library_set_genome_wide):
     item = construct_library_set_genome_wide.copy()
     item.update({
         'schema_version': '6'
->>>>>>> e16949c8 (upgraded construct library set)
     })
     return item
