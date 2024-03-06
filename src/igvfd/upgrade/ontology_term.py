@@ -20,3 +20,20 @@ def ontology_term_2_3(value, system):
     if 'description' in value:
         if value['description'] == '':
             del value['description']
+
+
+@upgrade_step('assay_term', '3', '4')
+def assay_term_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1504
+    if 'preferred_assay_title' in value:
+        if value['preferred_assay_title'] == 'histone ChIP-seq':
+            value['preferred_assay_title'] = 'Histone ChIP-seq'
+        if value['preferred_assay_title'] == 'Parse Split-seq':
+            value['preferred_assay_title'] = 'Parse SPLiT-seq'
+        if value['preferred_assay_title'] == 'Saturation genome editing':
+            value['preferred_assay_title'] = 'SGE'
+        if value['preferred_assay_title'] == 'SHARE-Seq':
+            value['preferred_assay_title'] = 'SHARE-seq'
+        if value['preferred_assay_title'] == 'Yeast two-hybrid':
+            value['preferred_assay_title'] = 'Y2H'
+    return
