@@ -98,6 +98,6 @@ def assay_term_v3(assay_term_crispr):
     item = assay_term_crispr.copy()
     item.update({
         'schema_version': '3',
-        'preferred_assay_title': 'Parse Split-seq'
+        'preferred_assay_titles': 'Parse Split-seq'
     })
     return item

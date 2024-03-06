@@ -15,6 +15,6 @@ def test_assay_term_upgrade_2_3(upgrader, assay_term_v2):
 
 def test_assay_term_upgrade_3_4(upgrader, assay_term_v3):
     value = upgrader.upgrade('assay_term', assay_term_v3, current_version='3', target_version='4')
-    assert 'preferred_assay_title' in value
-    assert value['preferred_assay_title'] == 'Parse SPLiT-seq'
+    assert 'preferred_assay_titles' in value
+    assert value['preferred_assay_titles'] == 'Parse SPLiT-seq'
     assert value['schema_version'] == '4'
