@@ -1,30 +1,43 @@
 def function_with_docstring():
     '''
-        audit_detail: This detail: has colons: and :
-        multiple
-        lines
-        audit_category: audit category
-        audit_levels: ERROR, WARNING
+    [
+        {
+            "audit_description": "audit description",
+            "audit_category": "audit category",
+            "audit_level": "ERROR"
+        },
+        {
+            "audit_description": "audit description 2",
+            "audit_category": "audit category 2",
+            "audit_level": "WARNING"
+        },
+    ]
     '''
     pass
 
 
 def function_with_docstring_improper_keys():
     '''
-        audit_details: audit details
-        audit_categories: audit categories
-        audit_level: ERROR
+    [
+        {
+            "audit_detail": "audit description",
+            "audit_category": "audit category",
+            "audit_levels": "WARNING"
+        }
+    ]
     '''
     pass
 
 
 def function_with_docstring_out_of_order():
     '''
-        audit_levels: ERROR
-        audit_detail: audit details
-    with
-        multiples lines
-        audit_category: audit category
+    [
+        {
+            "audit_level": "WARNING",
+            "audit_category": "audit category",
+            "audit_description": "audit description"
+        }
+    ]
     '''
     pass
 
