@@ -59,7 +59,7 @@ def get_docstring_dict_from_function_name(function_name):
             docstring = json.loads(docstring)
             return {function_name: docstring}
         except:
-            raise ValueError(f'Error loading audit docstring: {docstring} for {function_name} into JSON-format.')
+            raise ValueError(f'Docstring: {docstring} in function: {function_name} is not valid JSON format.')
     else:
         return {function_name: {}}
 
