@@ -1,5 +1,9 @@
 ## Changelog for *`matrix_file.json`*
 
+### Schema version 5
+
+* Objects with released, archived or revoked status without `release_timestamp` are now automatically updated to have `release_timestamp` `2024-03-06T12:34:56Z`.
+
 ### Minor changes since schema version 4
 
 * Add `hic` to `file_format`.

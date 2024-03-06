@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 9
+
+* Objects with released, archived or revoked status without `release_timestamp` are now automatically updated to have `release_timestamp` `2024-03-06T12:34:56Z`.
+
 ### Schema version 8
 
 * Replace `subreads` with `PacBio subreads` in `content_type`.

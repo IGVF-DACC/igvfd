@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Schema version 18
+
+* Objects with released, archived or revoked status without `release_timestamp` are now automatically updated to have `release_timestamp` `2024-03-06T12:34:56Z`.
+
 ### Minor changes since schema version 17
 
 * Add `release_timestamp`.

@@ -1,5 +1,9 @@
 ## Changelog for *`prediction_set.json`*
 
+### Schema version 7
+
+* Objects with released, archived or revoked status without `release_timestamp` are now automatically updated to have `release_timestamp` `2024-03-06T12:34:56Z`.
+
 ### Schema version 6
 
 * Remove `hg19`, `mm10`, and `mm9` from `assembly` on `small_scale_loci_list`.

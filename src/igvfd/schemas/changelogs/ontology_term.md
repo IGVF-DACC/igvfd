@@ -1,5 +1,6 @@
 ## Changelog for *`ontology_term.json`*
 
+* Objects with released or archived status without `release_timestamp` are now automatically updated to have `release_timestamp` `2024-03-06T12:34:56Z`. (03/06/2024)
 * Add `archived` to `status`. (03/05/2024)
 * Add `release_timestamp`. (01/31/2024)
 * Add calculated property `ontology`. (06/07/2023)
