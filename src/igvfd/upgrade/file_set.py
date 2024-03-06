@@ -231,7 +231,6 @@ def construct_library_set_prediction_set_4_5(value, system):
     return
 
 
-<<<<<<< HEAD
 @upgrade_step('construct_library_set', '5', '6')
 @upgrade_step('prediction_set', '5', '6')
 def construct_library_set_prediction_set_5_6(value, system):
@@ -247,6 +246,7 @@ def construct_library_set_prediction_set_5_6(value, system):
             notes += f' This file set listed {loci} as one of its loci but the assembly for this loci has been upgraded to GRCm39.'
             value['notes'] = notes.strip()
             loci['assembly'] = 'GRCm39'
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 
@@ -285,6 +285,7 @@ def file_set_8_9(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
 
 @upgrade_step('construct_library_set', '7', '8')
 def construct_library_set_7_8(value, system):
