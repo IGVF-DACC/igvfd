@@ -3,6 +3,7 @@
 ### Schema version 9
 
 * Remove `seqspec`.
+* Add calculated property `seqspecs`.
 
 ### Schema version 8
 
