@@ -1,6 +1,6 @@
 {
-    "hash": "a5e1551e9d7d4f5d7f4c47e2ab388609",
-    "index_name": "document_a5e1551e",
+    "hash": "2248353648d4a04bdd996205f1e0ad8a",
+    "index_name": "document_22483536",
     "item_type": "document",
     "mapping": {
         "dynamic_templates": [
@@ -409,6 +409,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {
