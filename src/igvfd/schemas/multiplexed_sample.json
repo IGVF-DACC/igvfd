@@ -135,6 +135,9 @@
             "comment": "Do not submit. Time post library delivery units should only be specified on individual samples contributing to a multiplexed sample object."
         }
     },
+    "fuzzy_searchable_fields": [
+        "submitted_by.title"
+    ],
     "exact_searchable_fields": [
         "@type",
         "dbxrefs"

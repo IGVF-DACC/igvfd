@@ -149,7 +149,8 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "modality"
+        "modality",
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type"

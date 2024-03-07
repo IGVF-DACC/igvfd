@@ -408,7 +408,8 @@
         "purpose",
         "summary",
         "treatment_term_name",
-        "treatment_type"
+        "treatment_type",
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type",

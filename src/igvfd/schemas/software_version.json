@@ -100,7 +100,9 @@
             }
         }
     },
-    "fuzzy_searchable_fields": [],
+    "fuzzy_searchable_fields": [
+        "submitted_by.title"
+    ],
     "exact_searchable_fields": [
         "@type"
     ],

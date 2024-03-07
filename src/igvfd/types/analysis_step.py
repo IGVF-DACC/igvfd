@@ -29,7 +29,8 @@ class AnalysisStep(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('parents', include=['@id', 'title']),
-        Path('workflow', include=['@id', 'accession'])
+        Path('workflow', include=['@id', 'accession']),
+        Path('submitted_by', include=['@id', 'title']),
     ]
 
     set_status_up = []

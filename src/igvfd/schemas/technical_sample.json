@@ -106,7 +106,8 @@
     },
     "fuzzy_searchable_fields": [
         "sample_material",
-        "taxa"
+        "taxa",
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type",
