@@ -52,6 +52,30 @@
             "file_set.json#/dependentSchemas",
             "shared_dependencies.json#/accession_status"
         ],
+        "integrated_content_files": {
+            "comment": "Integrated content files must be tabular or reference files.",
+            "if": {
+                "properties": {
+                    "integrated_content_files": {
+                        "items": {
+                            "not": {
+                                "linkTo": [
+                                    "TabularFile",
+                                    "ReferenceFile"
+                                ]
+                            }
+                        }
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "integrated_content_files": {
+                        "permission": "import_items"
+                    }
+                }
+            }
+        },
         "file_set_type": {
             "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, or large_scale_gene_list and that scope be genes, tile, or exon and should not specify any guide properties.",
             "allOf": [
@@ -641,28 +665,8 @@
             "items": {
                 "title": "Integrated Content File",
                 "type": "string",
-                "oneOf": [
-                    {
-                        "comment": "See file.json for a list of available identifiers.",
-                        "linkTo": [
-                            "TabularFile",
-                            "ReferenceFile"
-                        ]
-                    },
-                    {
-                        "comment": "Submission of these files types for this property is disallowed.",
-                        "permission": "import_items",
-                        "linkTo": [
-                            "SingalFile",
-                            "GenomeBrowserAnnotationFile",
-                            "SequenceFile",
-                            "AlignmentFile",
-                            "MatrixFile",
-                            "ImageFile",
-                            "ConfigurationFile"
-                        ]
-                    }
-                ]
+                "linkTo": "File",
+                "comment": "See file.json for a list of available identifiers."
             },
             "submissionExample": {
                 "appscript": "[\"john-done:file01\", \"IGVFFI6665ABCD\"]",
