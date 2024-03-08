@@ -49,21 +49,29 @@ Adding a new schema
             }
 
 
-2. Add appropriate properties in the "properties" block. Example of different property types:
+2. Add appropriate properties in the "properties" block. Further guidelines for writing properties is explained in the "Schema property guidelines" section. Examples of different property types:
 
             {
                 "example_string": {
-                    "title": "Example string",
+                    "title": "Example String",
                     "description": "An example of a free text property.",
                     "type": "string"
+                    "submissionExample": {
+                        "appscript": "text",
+                        "igvf_utils": "text"
+                    }
                 },
                 "example_number": {
-                    "title": "Example number",
+                    "title": "Example Number",
                     "description": "An example of an integer property.",
                     "type": "integer"
+                    "submissionExample": {
+                        "appscript": "100",
+                        "igvf_utils": "100"
+                    }
                 },
                 "example_enum": {
-                    "title": "Example enum",
+                    "title": "Example Enum",
                     "description": "An example of a property with enumerated values.",
                     "type": "string",
                     "enum": [
@@ -71,12 +79,42 @@ Adding a new schema
                         "option 2",
                         "option 3"
                     ]
+                    "submissionExample": {
+                        "appscript": "option 1",
+                        "igvf_utils": "option 1"
+                    }
                 },
                 "example_pattern": {
-                    "title": "Example string with pattern",
+                    "title": "Example String With Pattern",
                     "description": "An example of a property that must match a pattern",
                     "type": "string",
                     "pattern": "^[\\S\\s\\d\\-\\(\\)\\+]+$"
+                    "submissionExample": {
+                        "appscript": "regexstring",
+                        "igvf_utils": "regexstring"
+                    }
+                },
+                "example_object": {
+                    "title": "Example Object",
+                    "description": "An example of a property that must match a pattern",
+                    "type": "object",
+                    "properties": {
+                        "object_property_one": {
+                            "title": "Object Property One",
+                            "description": "The first property in the object.",
+                            "type": "string"
+                        },
+                        "object_property_two": {
+                            "title": "Object Property 2",
+                            "description": "The second property in the object.",
+                            "type": "integer",
+                            "minimum": 1
+                        }
+                    }
+                    "submissionExample": {
+                        "appscript": "{\"object_property_one\": \"example\", \"object_property_two\": 1}",
+                        "igvf_utils": "{\"object_property_one\": \"example\", \"object_property_two\": 1}"
+                    }
                 }
             }
 
@@ -119,14 +157,19 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
     * *Embedding* - specifying the properties embeded in the object when specifying ```frame=object```, for construct we have:
 
                 embedded = ['target']
+        Typically, embedding with frame is preferred so that we can define which specific properties should be embedded, rather than embedding the entire object:
+
+                embedded_with_frame = [
+                    Path('lab', include=['@id', 'title'])
+                ]
 
     * *Reverse links* - specifying the links that are back calculated from an object that ```linkTo``` this object, for file we have:
 
                 rev = {
-                    'paired_with': ('File', 'paired_with'),
-                    'quality_metrics': ('QualityMetric', 'quality_metric_of'),
-                    'superseded_by': ('File', 'supersedes'),
+                    'files': ('File', 'file_set')
                 }
+
+        Note that reverse links should be paired with a calculated property (see below).
 
     * *Calculated properties* - dynamically calculated before rendering of an object, for platforms we calculate the title:
 
@@ -136,6 +179,19 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
                 })
                 def title(self, term_name):
                     return term_name
+
+                @calculated_property(schema={
+                    'title': 'Files',
+                    'type': 'array',
+                    'items': {
+                        'title': 'File',
+                        'type': ['string', 'object'],
+                        'linkFrom': 'File.file_set',
+                    },
+                    'notSubmittable': True
+                })
+                def files(self, request, files):
+                    return paths_filtered_by_status(request, files)
 
 7. In ``loadxl.py`` add the new metadata object into the ```Order``` array, for example to add new object ```train.json```.
 
@@ -149,7 +205,22 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
                 'train',
             ]
 
-8.  To load test fixtures of the new metadata object add them to ``/tests/conftest.py`` into the ```pytest_plugins``` array, for example to add new object ```train.json```.
+8. Add in fixtures to test the new schema in **tests** directory. Create a new .py file in the **fixtures/schemas** directory named after the new metadata object. Fixtures may be used to validate expected schema behavoir with tests defined in test files in **tests** directory.
+
+                @pytest.fixture
+                def wrangler(testapp):
+                    item = {
+                        'uuid': '4c23ec32-c7c8-4ac0-affb-04befcc881d4',
+                        'first_name': 'Wrangler',
+                        'last_name': 'Admin',
+                        'email': 'wrangler@example.org',
+                        'groups': ['admin'],
+                    }
+                    res = testapp.post_json('/user', item)
+                    return testapp.get(res.location).json
+
+
+9.  To load test fixtures of the new metadata object add them to ``/tests/conftest.py`` into the ```pytest_plugins``` array, for example to add new object ```train.json```.
 
             pytest_plugins = [
                 'igvfd.tests.fixtures.database',
@@ -164,7 +235,7 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
                 'igvfd.tests.fixtures.schemas.train',
             ]
 
-9. Add in sample data to test the new schema in **tests** directory. Create a new JSON file in the **data/inserts** directory named after the new metadata object. This new object is an array of example objects that can successfully POST against the schema defined, for example:
+10. Add in sample data to test the new schema in **tests** directory. Create a new JSON file in the **data/inserts** directory named after the new metadata object. This new object is an array of example objects that can successfully POST against the schema defined, for example:
 
             [
                 {
@@ -178,19 +249,7 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
                     "uuid": "0137a084-57af-4f69-b756-d6a920393fde"
                 }
 
-10. Add in fixtures to test the new schema in **tests** directory. Create a new .py file in the **fixtures/schemas** directory named after the new metadata object. Fixtures may be used to validate expected schema behavoir with tests defined in test files in **tests** directory.
 
-                @pytest.fixture
-                def wrangler(testapp):
-                    item = {
-                        'uuid': '4c23ec32-c7c8-4ac0-affb-04befcc881d4',
-                        'first_name': 'Wrangler',
-                        'last_name': 'Admin',
-                        'email': 'wrangler@example.org',
-                        'groups': ['admin'],
-                    }
-                    res = testapp.post_json('/user', item)
-                    return testapp.get(res.location).json
 
 11. If applicable you may want to add audits on the metadata. Please refer to [making_audits]
 
@@ -235,6 +294,64 @@ To add an object with accession prefix 'SM':
                 }
              }
 
+
+-----
+
+Schema property guidelines
+----------------
+
+* When naming a property, try to avoid overly long names.
+* Array properties must have a plural property name: samples, not sample.
+* All properties must include the following components:
+** `title`: a readable name of the property, in Title Case.
+** `type`: one of `string`, `number`, `integer`, `boolean`, `array`, or `object`.
+** `description`: a definition of the property.
+* Properties may include the following components where necessary:
+** `comment`: Instructions for submitters explaining details of how to submit the property.
+** `submissionExample`: An example of how to specify the property using appscript and igvf_utils tools. Required for any submittable property.
+** `notSubmittable`: A boolean property which is always `True`. Required for every calculated property. Must not be present for any submittable property.
+** `enum`: A list of valid values. Only applicable to string properties which must conform to a strict vocabulary and don't allow free text.
+** `linkTo`: A list of valid objects to link to. Only applicable to strings. Must be the name of another schema.
+** `default`: A default value automatically assigned if no value is provided upon submission.
+** `minimum`: A minimum value. Only applicable to numbers or integers.
+** `maximum`: A minimum value. Only applicable to numbers or integers.
+** `permission`: A string property which is always `import_items`. Required for properties that are limited to admins only. Must not be present for any property that can be modified by any submitter.
+** `pattern`: A regex string applied to the property. Only applicable to strings.
+** `minItems`: An integer indicating the minimum number of items in an array. Required for every array, and must be at least 1.
+** `maxItems`: An integer indicating the maximum number of items in an array. Only applicable to arrays. Optional.
+** `uniqueItems`: A boolean which is always `True`. Required for every array.
+** `properties`: A nested schema. Must obey above requirements for each property: `title`, `type`, and `description`. Required for every object.
+** `items`: A definition of the items that are valid in the array. Required for every array. Must include `type` at minimum.
+
+-----
+
+Changelog guidelines
+----------------
+
+* Changes in calculated properties should be noted in the changelog.
+* Changes to properties which are inherited or merged into other schemas, such as mixins, must be noted in the changelogs of all affected schemas.
+* New changelog entries are added at the top of the changelog.
+* Changes occurring in different PRs should be recorded as separate changelog entries.
+* Changelog entries should mention one property per line. Additionally, only one enum should be mentioned in a line where possible. For example, if 10 enums are added to a property, each one is noted on a separate line.
+* Changelog entries should begin with a present tense verb describing the action: add, remove, rename, update. Adhere to stylebook whenever possible.
+
+
+### Stylebook
+The following table provides common types of schema changes and provides a specific sentence pattern to follow for the changelog entry.
+|Type of schema change|Sentence example|
+|-|-|
+|Add a property|Add \[property name\].|
+|Remove a property|Remove \[property name\].|
+|Replace a property|Rename \[old name\] to \[new name\].|
+|Add an enum|Extend \[property name\] enum list to include \[enum\].|
+|Remove an enum|Reduce \[property name\] enum list to exclude \[enum\].|
+|Replace an enum|Adjust \[property name\] enum list to replace \[old enum\] with \[new enum\].|
+|Restrict an enum to admins|Adjust \[property name\] enum list to restrict usage of \[deprecated term\].|
+|Change a regex|Update \[property name\] regex to \[description of regex\].|
+|Add or change a dependency or requirement|Require \[description of requirement\].|
+|Add a calculated property|Add calculated property \[property name\].|
+|Remove a calculated property|Remove calculated property \[property name\].|
+|Change a calculated property|Update the calculation of \[property name\].|
 
 -----
 
