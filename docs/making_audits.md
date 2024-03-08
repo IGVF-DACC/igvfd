@@ -36,9 +36,9 @@ objects referred to by an identifier:
         def audit_new_audit_name(value, system):
             pass
 
-3. Define the description for the audit. The description should serve to describe what type of metadata is audited in a human-readable format without any technical language like field names. It should be kept in the positive as much as possible and limited to a sentence.
+3. Define the description for the audit. The description should serve to describe what type of metadata is audited in a human-readable format without any technical language, e.g. referencing of properties or object names should be in sentence case. Ideally, the description should be kept in the positive as much as possible and limited to a single sentence.
 
-Additionally, decide on an appropriate ```AuditFailure``` category name for the audit. This category will be displayed on the faceted search. The category should be concise, precise, and avoid unnecessary language (e.g., "metadata" or "associated" since they are implied). Generally, audits will likely fall into one of the following three types of categories.
+Additionally, decide on an appropriate ```AuditFailure``` category name for the audit. This category will be displayed on the faceted search. The category should be concise, precise, and avoid unnecessary language (e.g., use of "metadata" or "associated" since they are implied). Generally, audits will fall into one of the following three types of categories. Additional categories for special cases may be created by discretion of the wrangler. ex. `NTR term ID`.
 
     * a missing property or link -> "missing property/item"
     * an inconsistency with an expectation of metadata on linked item(s) -> inconsistent "item" "property"
@@ -51,16 +51,18 @@ Also determine which of the following 4 levels of severity the audit should fall
     * *WARNING* - Possibly missing or inconsistent metadata. Data will be released with warnings.
     * *INTERNAL ACTION* - Metadata errors the DACC needs to update.
 
-If there are multiple levels for a single category the description should reflect this with the levels in parantheses (ex. "The list of related donors are expected to be unique (WARNING) and should include a mutual link to the corresponding donor (ERROR).")
-
-The description, category, and levels should be listed in the docstring of the audit function shown as following. The docstring for each audit is used to build a row in the audit documentation page for the respective type.
+The description, category, and level should be listed in the docstring of the audit function shown as following. The docstring for each audit is used to build a row in the audit documentation page for the respective type. The docstring should be defined in JSON format.
     '''
-        audit_detail: Description of the audit.
-        audit_category: Category of the audit.
-        audit_levels: Level(s) of the audit. (comma-separated)
+        [
+            {
+                "audit_description": "Description of the audit."
+                "audit_category": "Category of the audit."
+                "audit_level": "Level of the audit."
+            }
+        ]
     '''
 
-4. Write the logic for the metadata check and define the details to be displayed with the audit. The details should display the values for the metadata properties that are resulting in the AuditFailure.
+4. Write the logic for the metadata check and define the details to be displayed with the audit. Details should explain the discrepancy and display the values for the metadata properties that are resulting in the AuditFailure. Details should try to avoid reiterating the audit description unless necessary, since the description is displayed as well in the audit.
 
     Example of a ```measurement_set``` which has a preferred assay title that does not correspond to its assay term:
 
