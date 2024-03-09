@@ -47,7 +47,8 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "donor.json#/dependentSchemas"
+            "donor.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
         ]
     },
     "properties": {

@@ -49,7 +49,8 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "sample.json#/dependentSchemas"
+            "sample.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
         ]
     },
     "properties": {

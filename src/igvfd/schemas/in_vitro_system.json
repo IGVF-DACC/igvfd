@@ -56,7 +56,8 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "biosample.json#/dependentSchemas"
+            "biosample.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
         ],
         "passage_number": {
             "comment": "Only in vitro system with classification as a cell line are allowed to have passage_number property.",

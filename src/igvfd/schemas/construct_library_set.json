@@ -49,7 +49,8 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "file_set.json#/dependentSchemas"
+            "file_set.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
         ],
         "file_set_type": {
             "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, or large_scale_gene_list and that scope be genes, tile, or exon and should not specify any guide properties.",

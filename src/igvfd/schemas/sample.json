@@ -86,51 +86,6 @@
                 "time_post_library_delivery",
                 "construct_library_sets"
             ]
-        },
-        "release_timestamp": {
-            "comment": "Release timestamp is required if status is released, revoked or archived",
-            "required": [
-                "status"
-            ],
-            "properties": {
-                "status": {
-                    "enum": [
-                        "revoked",
-                        "archived",
-                        "released"
-                    ]
-                }
-            }
-        },
-        "status": {
-            "comment": "Release, archived and revoked status should have release_timestamp specified.",
-            "oneOf": [
-                {
-                    "required": [
-                        "release_timestamp"
-                    ],
-                    "properties": {
-                        "status": {
-                            "enum": [
-                                "revoked",
-                                "archived",
-                                "released"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "properties": {
-                        "status": {
-                            "enum": [
-                                "in progress",
-                                "deleted",
-                                "replaced"
-                            ]
-                        }
-                    }
-                }
-            ]
         }
     },
     "properties": {

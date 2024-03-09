@@ -29,6 +29,9 @@
         }
     ],
     "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/standard_status"
+        ],
         "quantity": {
             "comment": "Specification of quantity requires quantity_units.",
             "required": [
@@ -39,48 +42,6 @@
             "comment": "Specification of quantity_units requires quantity.",
             "required": [
                 "quantity"
-            ]
-        },
-        "release_timestamp": {
-            "comment": "Release timestamp is required if status is released or archived.",
-            "required": [
-                "status"
-            ],
-            "properties": {
-                "status": {
-                    "enum": [
-                        "archived",
-                        "released"
-                    ]
-                }
-            }
-        },
-        "status": {
-            "comment": "Release and archived status should have release_timestamp specified.",
-            "oneOf": [
-                {
-                    "required": [
-                        "release_timestamp"
-                    ],
-                    "properties": {
-                        "status": {
-                            "enum": [
-                                "archived",
-                                "released"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "properties": {
-                        "status": {
-                            "enum": [
-                                "deleted",
-                                "in progress"
-                            ]
-                        }
-                    }
-                }
             ]
         }
     },

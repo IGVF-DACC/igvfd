@@ -32,6 +32,9 @@
         }
     ],
     "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/standard_status"
+        ],
         "controlled_access": {
             "comment": "If controlled_access is true, there must be a data_use_limitation.",
             "if": {
@@ -54,48 +57,6 @@
                     "const": true
                 }
             }
-        },
-        "release_timestamp": {
-            "comment": "Release timestamp is required if status is released or archived.",
-            "required": [
-                "status"
-            ],
-            "properties": {
-                "status": {
-                    "enum": [
-                        "archived",
-                        "released"
-                    ]
-                }
-            }
-        },
-        "status": {
-            "comment": "Release and archived status should have release_timestamp specified.",
-            "oneOf": [
-                {
-                    "required": [
-                        "release_timestamp"
-                    ],
-                    "properties": {
-                        "status": {
-                            "enum": [
-                                "archived",
-                                "released"
-                            ]
-                        }
-                    }
-                },
-                {
-                    "properties": {
-                        "status": {
-                            "enum": [
-                                "deleted",
-                                "in progress"
-                            ]
-                        }
-                    }
-                }
-            ]
         }
     },
     "properties": {

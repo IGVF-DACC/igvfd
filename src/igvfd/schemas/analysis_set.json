@@ -41,7 +41,7 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "file_set.json#/dependentSchemas"
+            "shared_dependencies.json#/accession_status"
         ],
         "file_set_type": {
             "comment": "Primary analysis sets require input_file_sets.",

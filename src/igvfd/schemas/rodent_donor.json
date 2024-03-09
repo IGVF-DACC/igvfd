@@ -52,7 +52,8 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "donor.json#/dependentSchemas"
+            "donor.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
         ],
         "lot_id": {
             "comment": "Specification of lot_id requires product_id.",

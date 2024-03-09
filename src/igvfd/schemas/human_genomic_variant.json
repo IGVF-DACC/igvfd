@@ -48,7 +48,8 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "variant.json#/dependentSchemas"
+            "variant.json#/dependentSchemas",
+            "shared_dependencies.json#/standard_status"
         ],
         "refseq_id": {
             "comment": "Specification of refseq_id is mutually exclusive with specification of reference_sequence.",

@@ -63,7 +63,8 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "file_set.json#/dependentSchemas"
+            "file_set.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
         ],
         "scope": {
             "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is genome-wide then small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified.",

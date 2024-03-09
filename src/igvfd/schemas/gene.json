@@ -36,6 +36,9 @@
         }
     ],
     "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/standard_status"
+        ],
         "locations": {
             "comment": "The genome assembly should match the taxa it belongs to.",
             "oneOf": [

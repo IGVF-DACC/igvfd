@@ -31,7 +31,8 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "ontology_term.json#/dependentSchemas"
+            "ontology_term.json#/dependentSchemas",
+            "shared_dependencies.json#/standard_status"
         ]
     },
     "properties": {
