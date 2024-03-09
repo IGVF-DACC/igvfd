@@ -2,8 +2,12 @@
 
 ### Schema version 13
 
-* Renamed `histone ChIP-seq`, `Parse Split-seq`, `Saturation genome editing`, `SHARE-Seq`, and `Yeast two-hybrid` to `Histone ChIP-seq`, `Parse SPLiT-seq`, `SGE`, `SHARE-seq` and `Y2H` respectively in preferred_assay_title.
-* Add `MPRA` to `preferred_assay_title`.
+* Adjust `preferred_assay_title` enum list to replace `histone ChIP-seq` with `Histone ChIP-seq`.
+* Adjust `preferred_assay_title` enum list to replace `Parse Split-seq` with `Parse SPLiT-seq`.
+* Adjust `preferred_assay_title` enum list to replace `Saturation genome editing` with `SGE`.
+* Adjust `preferred_assay_title` enum list to replace `SHARE-Seq` with `SHARE-seq`.
+* Adjust `preferred_assay_title` enum list to replace `Yeast two-hybrid` with `Y2H`.
+* Extend `preferred_assay_title` enum list to include `MPRA`.
 
 ### Minor changes since schema version 12
 
