@@ -2,7 +2,7 @@
 
 ### Schema version 3
 
-* Objects with released, archived or revoked status without `release_timestamp` are now automatically updated to have `release_timestamp` `2024-03-06T12:34:56Z`.
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
 
 ### Schema version 2
 
