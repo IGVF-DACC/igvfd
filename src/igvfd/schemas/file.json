@@ -59,7 +59,7 @@
             }
         },
         "status": {
-            "comment": "Released, revoked, and archived files must not have upload_status pending or file not found.",
+            "comment": "Released, revoked, and archived files must not have upload_status pending or file not found. They are also required to have release_timestamp.",
             "if": {
                 "properties": {
                     "status": {
@@ -81,6 +81,24 @@
                             ]
                         }
                     }
+                },
+                "required": [
+                    "release_timestamp"
+                ]
+            }
+        },
+        "release_timestamp": {
+            "comment": "Release timestamp is required if status is released, revoked or archived",
+            "required": [
+                "status"
+            ],
+            "properties": {
+                "status": {
+                    "enum": [
+                        "revoked",
+                        "archived",
+                        "released"
+                    ]
                 }
             }
         },

@@ -1,5 +1,9 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Schema version 7
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Minor changes since schema version 6
 
 * Add `barcode_sample_map`.

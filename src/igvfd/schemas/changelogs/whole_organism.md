@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 21
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Minor changes since schema version 20
 
 * Add `release_timestamp`.

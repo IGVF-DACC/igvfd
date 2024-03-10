@@ -267,3 +267,20 @@ def measurement_set_12_13(value, system):
             else:
                 value['notes'] = f'Preferred_assay_titles enum {old_assay_title} has been renamed to be {old_to_new[old_assay_title]}.'
     return
+
+
+@upgrade_step('measurement_set', '13', '14')
+@upgrade_step('auxiliary_set', '6', '7')
+@upgrade_step('analysis_set', '5', '6')
+@upgrade_step('construct_library_set', '6', '7')
+@upgrade_step('curated_set', '6', '7')
+@upgrade_step('model_set', '2', '3')
+@upgrade_step('prediction_set', '6', '7')
+def file_set_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1494
+    if value['status'] in ['released', 'archived', 'revoked'] and 'release_timestamp' not in value:
+        value['release_timestamp'] = '2024-03-06T12:34:56Z'
+        notes = value.get('notes', '')
+        notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
+        value['notes'] = notes.strip()
+    return

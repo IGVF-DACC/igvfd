@@ -11,6 +11,7 @@
             "igvf:Antibody_characterization_standards_IGVF"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "67380d9f-06da-f9fe-9569-d31ce0607eae",
         "samples": [
             "igvf:treated_tissue"
@@ -36,6 +37,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "7dd534f7-4349-4485-bc7a-4b7038a55588",
         "samples": [
             "igvf:alias10"
@@ -52,6 +54,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "e78a8e0f-537f-4c3c-8741-db6ae4a8f986",
         "samples": [
             "igvf:alias10"
@@ -68,6 +71,7 @@
         "award": "1UM1HG012077-01",
         "lab": "lior-pachter",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "06893264-0d44-4fa8-bb3d-924fcdaed346",
         "assay_term": "/assay-terms/NTR_0000739/",
         "control_file_sets": [
@@ -90,6 +94,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "0707e33c-4fbe-4965-9d8c-196f1ff7f047",
         "samples": [
             "igvf:alias10"
@@ -106,6 +111,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "cd5a15a7-8e33-4e41-86b9-8ccc0d508bcd",
         "samples": [
             "igvf:alias2"
@@ -121,6 +127,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "826c046f-5c06-430b-856c-7c0aefc3c70a",
         "samples": [
             "igvf:alias10"
@@ -137,6 +144,7 @@
         "award": "1UM1HG012077-01",
         "lab": "ali-mortazavi",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "ec4b039c-5c06-11fd-856c-7c09f6bfffb9",
         "samples": [
             "igvf:alias10"
@@ -152,6 +160,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "2c2e2b40-ada6-4a8b-8be0-e0e84c42d8ad",
         "samples": [
             "igvf:alias10"
@@ -167,6 +176,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "c2c9896e-73e8-4f0c-a914-1f71b9b5553b",
         "samples": [
             "igvf:alias10"
@@ -182,6 +192,7 @@
         "award": "1UM1HG012053-01",
         "lab": "/labs/tim-reddy/",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "bb40e507-93cb-4ba6-b0b2-fd73e4ba1736",
         "samples": [
             "/multiplexed-samples/IGVFSM0000MPXD/"
@@ -197,6 +208,7 @@
         "award": "1UM1HG012053-01",
         "lab": "/labs/tim-reddy/",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "3f757230-b466-4da8-bae7-9a6f3c5ee290",
         "samples": [
             "/multiplexed-samples/IGVFSM0000MPXD/"
@@ -212,6 +224,7 @@
         "award": "1UM1HG011972-01",
         "lab": "/labs/jesse-engreitz/",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "185b7ca8-e741-4ffe-96af-4b91c13428b4",
         "samples": [
             "igvf-dacc:in_vitro_system_cell_line"
@@ -227,6 +240,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "4d4cabaa-617d-47bb-857b-66e4347de8d1",
         "samples": [
             "igvf:alias10"
@@ -245,6 +259,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "75762345-c2a7-4b97-832d-731bd060d434",
         "samples": [
             "igvf:alias10"
@@ -260,6 +275,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "9a721e59-98d4-4e10-8244-f08d835cf04f",
         "samples": [
             "igvf:alias10"
@@ -275,6 +291,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "ac11b2d1-0313-437b-8486-82d0edc1f081",
         "samples": [
             "igvf:alias10"

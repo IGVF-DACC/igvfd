@@ -1,5 +1,9 @@
 ## Changelog for *`page.json`*
 
+### Schema version 5
+
+* Require `release_timestamp` for any objects with `released` or `archived` status.
+
 ### Minor changes since schema version 4
 
 * Add `release_timestamp`.

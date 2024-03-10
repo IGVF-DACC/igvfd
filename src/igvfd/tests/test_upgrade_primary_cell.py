@@ -132,3 +132,10 @@ def test_primary_cell_upgrade_16_17(upgrader, primary_cell_v16):
     value = upgrader.upgrade('primary_cell', primary_cell_v16, current_version='16', target_version='17')
     assert value['schema_version'] == '17'
     assert 'description' not in value
+
+
+def test_primary_cell_upgrade_17_18(upgrader, primary_cell_v17):
+    value = upgrader.upgrade('primary_cell', primary_cell_v17, current_version='17', target_version='18')
+    assert value['schema_version'] == '18'
+    assert value['release_timestamp'] == '2024-03-06T12:34:56Z'
+    assert value['notes'] == 'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'

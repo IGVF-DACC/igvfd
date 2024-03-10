@@ -8,6 +8,7 @@
             "igvf:genome_browser_annotation_file_bigbed"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "3d8b17dea86105dd96c182c0a91c3156",
         "file_format": "bigBed",
         "file_format_type": "bed3",
@@ -30,6 +31,7 @@
             "igvf:genome_browser_annotation_file_tabix"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "991c30f3e4d38edac91b578ea177791c",
         "file_format": "tabix",
         "content_type": "peaks",

@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 13
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Minor changes since schema version 12
 
 * Add `release_timestamp`.

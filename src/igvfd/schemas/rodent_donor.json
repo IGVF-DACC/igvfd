@@ -51,6 +51,9 @@
         }
     ],
     "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/accession_status"
+        ],
         "lot_id": {
             "comment": "Specification of lot_id requires product_id.",
             "required": [
@@ -93,7 +96,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "11"
+            "default": "12"
         },
         "strain_background": {
             "title": "Strain Background",

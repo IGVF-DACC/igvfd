@@ -1,5 +1,8 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 10
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Schema version 9
 
 * Remove `seqspec`.

@@ -13,6 +13,7 @@
         "award": "1UM1HG012077-01",
         "lab": "ali-mortazavi",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "f0c5cba2-ed42-4dae-91dc-4bfd55a11c5b"
     },
     {
@@ -28,6 +29,7 @@
         "award": "1UM1HG012077-01",
         "lab": "ali-mortazavi",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "cc8f6087-3a09-485a-8c85-1c16d67199f3"
     },
     {
@@ -42,6 +44,7 @@
         "award": "1UM1HG011966-01",
         "lab": "jay-shendure",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "37ed98d8-2dbe-4047-a8bf-289c5a92b178"
     },
     {
@@ -56,6 +59,7 @@
         "award": "1UM1HG011966-01",
         "lab": "jay-shendure",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "19cd5377-1d93-4bb8-99ce-80962b65db0d"
     }
 ]

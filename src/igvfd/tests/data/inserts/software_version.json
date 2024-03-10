@@ -9,6 +9,8 @@
         "version": "v2.4.4",
         "award": "HG012012",
         "lab": "j-michael-cherry",
-        "uuid": "2170cada-3182-442b-b5ed-4a6329042db5"
+        "uuid": "2170cada-3182-442b-b5ed-4a6329042db5",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]

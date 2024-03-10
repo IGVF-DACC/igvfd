@@ -1,5 +1,9 @@
 ## Changelog for *`configuration_file.json`*
 
+### Schema version 6
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Schema version 5
 
 * Change `seqspec_of` from a calculated property to a submittable property.

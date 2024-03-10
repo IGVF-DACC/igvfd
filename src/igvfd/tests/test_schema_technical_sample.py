@@ -38,7 +38,7 @@ def test_collections(technical_sample, testapp):
 def test_technical_sample_archived(technical_sample, testapp):
     res = testapp.patch_json(
         technical_sample['@id'],
-        {'status': 'archived'})
+        {'status': 'archived', 'release_timestamp': '2024-03-06T12:34:56Z'})
     assert res.status_code == 200
 
 

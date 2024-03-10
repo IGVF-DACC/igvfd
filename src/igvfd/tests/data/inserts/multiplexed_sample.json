@@ -9,6 +9,7 @@
         ],
         "barcode_sample_map": "igvf:tabular_file_04_barcode_to_sample_mapping",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "collections": [
             "ENCODE"
         ],

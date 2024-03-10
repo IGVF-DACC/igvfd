@@ -8,6 +8,7 @@
             "igvf:tabular_file_01_bed"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "796067dea861058b242582c0a916aef6",
         "file_format": "bed",
         "file_format_type": "bed6+",
@@ -27,6 +28,7 @@
             "igvf:tabular_file_02_csv"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "0136ad38d30dc30f391bf163a14a25ac",
         "file_format": "csv",
         "content_type": "guide RNA sequences",
@@ -54,6 +56,7 @@
         "file_size": 8330,
         "upload_status": "validated",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set"
     },
     {
@@ -72,6 +75,7 @@
         "file_size": 8340,
         "upload_status": "validated",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:analysis_set_with_input"
     },
     {
@@ -89,6 +93,7 @@
         "file_size": 54343,
         "upload_status": "validated",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:analysis_set_with_input"
     }
 ]

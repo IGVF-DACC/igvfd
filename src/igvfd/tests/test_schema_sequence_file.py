@@ -180,6 +180,7 @@ def test_sequence_file_upload_status(testapp, sequence_file):
         sequence_file['@id'],
         {
             'status': 'released',
+            'release_timestamp': '2024-03-06T12:34:56Z',
             'upload_status': 'file not found'
         },
         expect_errors=True
@@ -189,6 +190,7 @@ def test_sequence_file_upload_status(testapp, sequence_file):
         sequence_file['@id'],
         {
             'status': 'released',
+            'release_timestamp': '2024-03-06T12:34:56Z',
             'upload_status': 'pending'
         },
         expect_errors=True
@@ -198,7 +200,8 @@ def test_sequence_file_upload_status(testapp, sequence_file):
         sequence_file['@id'],
         {
             'status': 'revoked',
-            'upload_status': 'file not found'
+            'upload_status': 'file not found',
+            'release_timestamp': '2024-03-06T12:34:56Z',
         },
         expect_errors=True
     )
@@ -207,7 +210,8 @@ def test_sequence_file_upload_status(testapp, sequence_file):
         sequence_file['@id'],
         {
             'status': 'revoked',
-            'upload_status': 'pending'
+            'upload_status': 'pending',
+            'release_timestamp': '2024-03-06T12:34:56Z',
         },
         expect_errors=True
     )
@@ -216,7 +220,8 @@ def test_sequence_file_upload_status(testapp, sequence_file):
         sequence_file['@id'],
         {
             'status': 'archived',
-            'upload_status': 'file not found'
+            'upload_status': 'file not found',
+            'release_timestamp': '2024-03-06T12:34:56Z',
         },
         expect_errors=True
     )
@@ -225,6 +230,7 @@ def test_sequence_file_upload_status(testapp, sequence_file):
         sequence_file['@id'],
         {
             'status': 'archived',
+            'release_timestamp': '2024-03-06T12:34:56Z',
             'upload_status': 'pending'
         },
         expect_errors=True
@@ -234,6 +240,7 @@ def test_sequence_file_upload_status(testapp, sequence_file):
         sequence_file['@id'],
         {
             'status': 'released',
+            'release_timestamp': '2024-03-06T12:34:56Z',
             'upload_status': 'validated'
         }
     )
@@ -242,6 +249,7 @@ def test_sequence_file_upload_status(testapp, sequence_file):
         sequence_file['@id'],
         {
             'status': 'released',
+            'release_timestamp': '2024-03-06T12:34:56Z',
             'upload_status': 'invalidated'
         }
     )

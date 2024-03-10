@@ -6,54 +6,63 @@
             "Cellosaurus:CVCL_0004"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "df2054b1-3484-4d06-b64c-d3fdb450df9f"
     },
     {
         "term_id": "UBERON:0002048",
         "term_name": "lung",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "eea050cd-9e8c-4420-967f-3581b20536ab"
     },
     {
         "term_id": "CL:0000787",
         "term_name": "memory B cell",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "3fc75da8-8f87-4749-939e-cee38f5c7ab0"
     },
     {
         "term_id": "CL:0011001",
         "term_name": "motor neuron",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc"
     },
     {
         "term_id": "UBERON:0000468",
         "term_name": "whole organism",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "25d5ad53-15fd-4a44-878a-ece2f7e86509"
     },
     {
         "term_id": "NTR:0000637",
         "term_name": "technical sample",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "9c5e2e32-1017-2c05-59ce-574c5a4bc548"
     },
     {
         "term_id": "EFO:0007093",
         "term_name": "HUES8",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "92c5f1a9-7503-460b-99b3-f5b84c82b067"
     },
     {
         "term_id": "UBERON:0005439",
         "term_name": "definitive endoderm",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "eed026e7-4afc-4396-94e7-870f8934b2f2"
     },
     {
         "term_id": "CL:0000000",
         "term_name": "cell",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "7cd887f0-c065-4380-94f8-e0a9d3b5e1c4"
     }
 ]

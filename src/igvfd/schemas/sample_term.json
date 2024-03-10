@@ -29,9 +29,14 @@
             "$ref": "mixins.json#/release_timestamp"
         }
     ],
+    "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/standard_status"
+        ]
+    },
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "4"
         },
         "term_id": {
             "@type": "@id",

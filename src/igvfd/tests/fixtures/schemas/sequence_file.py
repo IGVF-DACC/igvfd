@@ -190,3 +190,13 @@ def sequence_file_v8(sequence_file, configuration_file_seqspec):
         'seqspec': configuration_file_seqspec['@id']
     })
     return item
+
+
+@pytest.fixture
+def sequence_file_v9(sequence_file):
+    item = sequence_file.copy()
+    item.update({
+        'schema_version': '9',
+        'status': 'revoked'
+    })
+    return item

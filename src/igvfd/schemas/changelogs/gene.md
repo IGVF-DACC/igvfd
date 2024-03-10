@@ -1,5 +1,9 @@
 ## Changelog for *`gene.json`*
 
+### Schema version 8
+
+* Require `release_timestamp` for any objects with `released` or `archived` status.
+
 ### Schema version 7
 
 * Remove `hg19`, `mm10`, and `mm9` from `assembly` on `locations`.

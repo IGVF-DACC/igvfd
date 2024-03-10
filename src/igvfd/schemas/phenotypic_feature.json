@@ -29,6 +29,9 @@
         }
     ],
     "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/standard_status"
+        ],
         "quantity": {
             "comment": "Specification of quantity requires quantity_units.",
             "required": [
@@ -44,7 +47,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "2"
+            "default": "3"
         },
         "feature": {
             "title": "Phenotypic Feature",

@@ -281,3 +281,13 @@ def primary_cell_v16(primary_cell_v15):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v17(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '17',
+        'status': 'released'
+    })
+    return item

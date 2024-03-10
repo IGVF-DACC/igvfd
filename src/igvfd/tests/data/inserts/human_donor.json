@@ -7,6 +7,7 @@
             "igvf:alias_human_donor1"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "The submitter had very little to say.",
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
@@ -38,6 +39,7 @@
             "igvf:alias_human_donor2"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "The submitter had very little to say.",
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
@@ -70,6 +72,7 @@
             "igvf:alias_human_donor_child"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "The submitter had very little to say.",
         "notes": "This is a note.",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
@@ -92,6 +95,7 @@
             "chongyuan-luo:AA F donor of fibroblasts"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "ethnicities": [
             "African American"
         ],

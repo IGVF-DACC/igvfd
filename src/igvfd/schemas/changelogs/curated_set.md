@@ -1,5 +1,13 @@
 ## Changelog for *`curated_set.json`*
 
+### Schema version 8
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
+### Schema version 7
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Minor changes since schema version 6
 
 * Add `release_timestamp`.

@@ -1,5 +1,9 @@
 ## Changelog for *`model_set.json`*
 
+### Schema version 3
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Minor changes since schema version 2
 
 * Add `release_timestamp`.

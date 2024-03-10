@@ -122,3 +122,13 @@ def treatment_v5(treatment_v4):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def treatment_v6(treatment_v5):
+    item = treatment_v5.copy()
+    item.update({
+        'schema_version': '8',
+        'status': 'archived'
+    })
+    return item

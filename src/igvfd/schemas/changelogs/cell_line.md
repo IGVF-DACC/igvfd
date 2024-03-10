@@ -1,5 +1,9 @@
 ## Changelog for *`cell_line.json`*
 
+### Schema version 9
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Schema version 8
 
 * Rename `biomarker` to `biomarkers`.

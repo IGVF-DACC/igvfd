@@ -28,9 +28,12 @@
             "$ref": "mixins.json#/release_timestamp"
         }
     ],
+    "$merge": [
+        "shared_dependencies.json#/standard_status"
+    ],
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "parent": {
             "title": "Parent Page",

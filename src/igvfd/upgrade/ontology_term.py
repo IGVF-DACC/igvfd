@@ -49,3 +49,17 @@ def assay_term_3_4(value, system):
             value['notes'] = f"{value['notes']} {prefix_note} {', '.join(new_notes)}."
         else:
             value['notes'] = f"{prefix_note} {', '.join(new_notes)}."
+
+
+@upgrade_step('phenotype_term', '3', '4')
+@upgrade_step('assay_term', '4', '5')
+@upgrade_step('sample_term', '3', '4')
+@upgrade_step('platform_term', '2', '3')
+def ontology_term_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1494
+    if value['status'] in ['released', 'archived'] and 'release_timestamp' not in value:
+        value['release_timestamp'] = '2024-03-06T12:34:56Z'
+        notes = value.get('notes', '')
+        notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
+        value['notes'] = notes.strip()
+
