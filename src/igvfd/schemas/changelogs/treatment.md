@@ -2,7 +2,7 @@
 
 ### Schema version 7
 
-* Require `release_timestamp` for any objects with `released` or `archived` status
+* Require `release_timestamp` for any objects with `released` or `archived` status.
 
 ### Minor changes since schema version 6
 

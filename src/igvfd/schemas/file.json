@@ -88,7 +88,7 @@
             }
         },
         "release_timestamp": {
-            "comment": "Release timestamp is required if status is released, revoked or archived",
+            "comment": "Release timestamp is required if status is released, revoked or archived.",
             "required": [
                 "status"
             ],

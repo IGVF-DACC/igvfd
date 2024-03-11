@@ -1,6 +1,6 @@
 ## Changelog for *`modification.json`*
 
-### Schema version 7
+### Schema version 5
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.
 
