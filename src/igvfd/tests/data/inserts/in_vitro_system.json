@@ -150,8 +150,7 @@
             "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_2"
         ],
         "donors": [
-            "igvf:alias_human_donor1",
-            "buenrostro-bernstein:test_donor1"
+            "igvf:alias_human_donor1"
         ],
         "passage_number": 2,
         "status": "released",
