@@ -38,16 +38,16 @@ objects referred to by an identifier:
 
 3. Define the description for the audit. The description should serve to describe what type of metadata is audited in a human-readable format without any technical language, e.g. referencing of properties or object names should be in sentence case. Ideally, the description should be kept in the positive as much as possible and limited to a single sentence.
 
-Additionally, decide on an appropriate ```AuditFailure``` category name for the audit. This category will be displayed on the faceted search. The category should be concise, precise, and avoid unnecessary language (e.g., use of "metadata" or "associated" since they are implied). Generally, audits will fall into one of the following three types of categories. Additional categories for special cases may be created by discretion of the wrangler. ex. `NTR term ID`.
+Additionally, decide on an appropriate ```AuditFailure``` category name for the audit. This category will be displayed on the faceted search. The category should be concise, precise, and avoid redundant language (e.g., use of "metadata" or "associated" since they are implied). Generally, audits will fall into one of the following three types of categories. Additional categories for special cases may be created by discretion of the wrangler. ex. `NTR term ID`.
 
-    * a missing property or link -> "missing property/item"
-    * an inconsistency with an expectation of metadata on linked item(s) -> inconsistent "item" "property"
-    * a property or link to a type that isn't expected -> unexpected "property"/"type"
+    * a missing property or link -> "missing {property}/{item}"
+    * an inconsistency with an expectation of metadata on linked item(s) -> "inconsistent {item} {property}"
+    * a property or link to a type that isn't expected -> "unexpected {property}/{type}
 
 Also determine which of the following 4 levels of severity the audit should fall into.
 
     * *ERROR* - Incorrect or inconsistent metadata. This is wrong no matter what.
-    * *NOT COMPLIANT* - Not fulfilling a compliance standard like attached documents or definitely missing metadata. This should not be released this way.
+    * *NOT_COMPLIANT* - Not fulfilling a compliance standard like attached documents or definitely missing metadata. This should not be released this way.
     * *WARNING* - Possibly missing or inconsistent metadata. Data will be released with warnings.
     * *INTERNAL ACTION* - Metadata errors the DACC needs to update.
 

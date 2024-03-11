@@ -166,7 +166,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
     [
         {
-            "audit_description": "CRISPR-based measurement sets are expected to have a modification specified on their samples.",
+            "audit_description": "Measurement sets from CRISPR-based assays are expected to have a modification specified on their samples.",
             "audit_category": "missing modification",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -189,7 +189,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
             sample_detail = samples_to_link = ', '.join(samples_to_link)
             detail = (
                 f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'a CRISPR screen assay and is expected to specify a modification on its sample(s); '
+                f'a CRISPR screen assay but has no specified modification on its sample(s); '
                 f'modifications are missing on {sample_detail}.'
             )
             yield AuditFailure('missing modification', detail, level='NOT_COMPLIANT')
