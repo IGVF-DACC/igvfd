@@ -133,3 +133,7 @@ def test_integrated_content_files_dependency(testapp, app, submitter, lab, award
         cls['@id'],
         {'integrated_content_files': [signal_file['@id']]}, expect_errors=True)
     assert res.status_code == 422
+    res = test_user.patch_json(
+        cls['@id'],
+        {'integrated_content_files': [signal_file['@id'], tabular_file['@id']]}, expect_errors=True)
+    assert res.status_code == 422

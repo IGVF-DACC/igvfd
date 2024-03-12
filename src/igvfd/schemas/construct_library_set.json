@@ -57,11 +57,15 @@
             "if": {
                 "properties": {
                     "integrated_content_files": {
-                        "items": {
-                            "not": {
-                                "linkTo": [
-                                    "TabularFile",
-                                    "ReferenceFile"
+                        "not": {
+                            "items": {
+                                "anyOf": [
+                                    {
+                                        "linkTo": "TabularFile"
+                                    },
+                                    {
+                                        "linkTo": "ReferenceFile"
+                                    }
                                 ]
                             }
                         }
