@@ -307,6 +307,7 @@
         "award": "1U01HG012051-01",
         "lab": "danwei-huangfu",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "557c36d8-b67d-42b7-9a34-77f075e9a59b",
         "samples": [
             "igvf:alias10"
