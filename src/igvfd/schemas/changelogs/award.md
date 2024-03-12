@@ -1,6 +1,6 @@
 ## Changelog for *`award.json`*
 
-### Minor changes since schema version 2
+### Minor changes since schema version 4
 
 * Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 
