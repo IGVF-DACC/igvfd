@@ -1,5 +1,9 @@
 ## Changelog for *`award.json`*
 
+### Minor changes since schema version 2
+
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
+
 ### Schema version 4
 
 * Disallow empty strings in `description`.

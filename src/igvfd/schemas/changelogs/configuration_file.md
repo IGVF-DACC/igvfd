@@ -10,6 +10,7 @@
 
 ### Minor changes since schema version 4
 
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
 

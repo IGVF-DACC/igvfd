@@ -6,6 +6,7 @@
 
 ### Minor changes since schema version 19
 
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Add `MPRAbase` to `collections`.
 
 ### Schema version 19

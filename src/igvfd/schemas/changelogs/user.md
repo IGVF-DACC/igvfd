@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 3
 
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Add `release_timestamp`.
 
 ### Schema version 3

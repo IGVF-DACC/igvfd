@@ -4,6 +4,10 @@
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
 
+### Minor changes since schema version 6
+
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
+
 ### Schema version 6
 
 * Add `transcriptome_annotation`.

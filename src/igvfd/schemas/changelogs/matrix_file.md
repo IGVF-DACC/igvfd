@@ -6,6 +6,7 @@
 
 ### Minor changes since schema version 4
 
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Add `hic` to `file_format`.
 * Add `genomic position` to `dimension1` and `dimension2`.
 * Add `release_timestamp`.

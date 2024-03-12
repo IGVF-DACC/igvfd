@@ -4,6 +4,11 @@
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
 
+### Minor changes since schema version 8
+
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
+
+
 ### Schema version 8
 
 * Rename `biomarker` to `biomarkers`.
