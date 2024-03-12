@@ -17,6 +17,10 @@
             "NTR:0000001",
             "NTR:0000010"
         ],
+        "preferred_assay_titles": [
+            "MPRA",
+            "Parse SPLiT-seq"
+        ],
         "uuid": "e6a5e43a-9e8c-fd28-967f-358e200536ab"
     },
     {

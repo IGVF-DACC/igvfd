@@ -142,7 +142,7 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
-        "preferred_assay_title": "Parse Split-seq",
+        "preferred_assay_title": "Parse SPLiT-seq",
         "file_set_type": "experimental data"
     },
     {
@@ -281,6 +281,21 @@
         ],
         "assay_term": "/assay-terms/OBI_0002631/",
         "preferred_assay_title": "scRNA-seq",
+        "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:MPRA"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "uuid": "557c36d8-b67d-42b7-9a34-77f075e9a59b",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "assay_term": "/assay-terms/OBI_0002675/",
+        "preferred_assay_title": "MPRA",
         "file_set_type": "experimental data"
     }
 ]

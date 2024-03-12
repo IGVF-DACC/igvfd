@@ -158,3 +158,13 @@ def measurement_set_v11(testapp, lab, award, assay_term_atac, tissue):
         'protocol': 'https://www.protocols.io/test-protocols-url-12345'
     }
     return item
+
+
+@pytest.fixture
+def measurement_set_v12(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '12',
+        'preferred_assay_title': 'Parse Split-seq'
+    })
+    return item

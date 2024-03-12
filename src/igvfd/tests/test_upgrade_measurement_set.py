@@ -71,3 +71,11 @@ def test_measurement_set_upgrade_11_12(upgrader, measurement_set_v11):
     assert 'protocols' in value
     assert value['protocols'] == ['https://www.protocols.io/test-protocols-url-12345']
     assert value['schema_version'] == '12'
+
+
+def test_measurement_set_upgrade_12_13(upgrader, measurement_set_v12):
+    value = upgrader.upgrade('measurement_set', measurement_set_v12, current_version='12', target_version='13')
+    assert 'preferred_assay_title' in value
+    assert value['preferred_assay_title'] == 'Parse SPLiT-seq'
+    assert value['schema_version'] == '13'
+    assert value['notes'] == 'Preferred_assay_titles enum Parse Split-seq has been renamed to be Parse SPLiT-seq.'

@@ -1,5 +1,12 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 4
+* Adjust `preferred_assay_titles` enum list to replace `histone ChIP-seq` with `Histone ChIP-seq`.
+* Adjust `preferred_assay_titles` enum list to replace `Parse Split-seq` with `Parse SPLiT-seq`.
+* Adjust `preferred_assay_titles` enum list to replace `Saturation genome editing` with `SGE`.
+* Adjust `preferred_assay_titles` enum list to replace `SHARE-Seq` with `SHARE-seq`.
+* Adjust `preferred_assay_titles` enum list to replace `Yeast two-hybrid` with `Y2H`.
+
 ### Minor changes since schema version 3
 
 * Add `preferred_assay_titles`.
