@@ -25,7 +25,7 @@ class Lab(Item):
     schema = load_schema('igvfd:schemas/lab.json')
     name_key = 'name'
     embedded_with_frame = [
-        Path('awards', include=['@id', 'component']),
+        Path('awards', include=['@id', 'component', 'name']),
         Path('submitted_by', include=['@id', 'title']),
     ]
 
