@@ -1,0 +1,15 @@
+[
+    {
+        "orf_id": "CCSBORF1234",
+        "geneid": "ENSG00000185069",
+        "gene_symbol": "FOXP1",
+        "protein_id": "ENSP00000001146.2",
+        "dbxrefs": [
+            "hORFeome:8945"
+        ],
+        "pct_of_identical_matches_to_protein": 34,
+        "pct_of_orf_covered_by_protein": 50,
+        "pct_of_protein_covered_by_orf": 50,
+        "version_number": "9.1"
+    }
+]

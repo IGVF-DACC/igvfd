@@ -18,6 +18,7 @@ ORDER = [
     'source',
     'lab',
     'document',
+    'open_reading_frame',
     'gene',
     'sample_term',
     'assay_term',
