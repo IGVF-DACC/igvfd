@@ -1,13 +1,5 @@
 import pytest
-
-
-def _remote_user_testapp(app, remote_user):
-    from webtest import TestApp
-    environ = {
-        'HTTP_ACCEPT': 'application/json',
-        'REMOTE_USER': str(remote_user),
-    }
-    return TestApp(app, environ)
+from igvfd.tests.test_permissions import _remote_user_testapp
 
 
 def test_samples_link(testapp, tissue, base_expression_construct_library_set):
