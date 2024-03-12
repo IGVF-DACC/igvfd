@@ -1,6 +1,6 @@
 {
-    "hash": "525625b357320919eb2ed838fa8f2e72",
-    "index_name": "software_525625b3",
+    "hash": "ebc4ad68467245b3d68f75453d670bc8",
+    "index_name": "software_ebc4ad68",
     "item_type": "software",
     "mapping": {
         "dynamic_templates": [
@@ -367,6 +367,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

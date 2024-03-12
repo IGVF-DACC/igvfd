@@ -188,7 +188,8 @@
         "strain",
         "strain_background",
         "genotype",
-        "phenotypic_features.feature.term_name"
+        "phenotypic_features.feature.term_name",
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type",

@@ -100,7 +100,8 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "name"
+        "name",
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type"

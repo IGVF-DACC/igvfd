@@ -132,7 +132,8 @@
     "fuzzy_searchable_fields": [
         "document_type",
         "characterization_method",
-        "lab.title"
+        "lab.title",
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type"

@@ -262,6 +262,7 @@
         "samples.summary",
         "samples.sample_terms.term_name",
         "samples.targeted_sample_term.term_name",
+        "submitted_by.title",
         "summary"
     ],
     "exact_searchable_fields": [
@@ -274,8 +275,7 @@
         "samples.accession",
         "samples.aliases",
         "donors.accession",
-        "donors.aliases",
-        "submitted_by.title"
+        "donors.aliases"
     ],
     "changelog": "/profiles/changelogs/prediction_set.md"
 }

@@ -815,7 +815,8 @@
         "collections",
         "selection_criteria",
         "small_scale_gene_list.symbol",
-        "lab.title"
+        "lab.title",
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "control_for.accession",
@@ -823,7 +824,6 @@
         "publication_identifiers",
         "lot_id",
         "product_id",
-        "submitted_by.title",
         "files.accession",
         "files.aliases"
     ],

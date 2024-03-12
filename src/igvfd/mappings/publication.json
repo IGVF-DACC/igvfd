@@ -1,6 +1,6 @@
 {
-    "hash": "b13d15f9a02e43583fd51196999645c4",
-    "index_name": "publication_b13d15f9",
+    "hash": "5e718fc3040023527ede1c6b33c1a884",
+    "index_name": "publication_5e718fc3",
     "item_type": "publication",
     "mapping": {
         "dynamic_templates": [
@@ -438,6 +438,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

@@ -1,6 +1,6 @@
 {
-    "hash": "94afd8f5eeeda49dd765aeabc0d17822",
-    "index_name": "alignment_file_94afd8f5",
+    "hash": "ee27c8951eaf0ac94a20918ee25e4d7d",
+    "index_name": "alignment_file_ee27c895",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -440,6 +440,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

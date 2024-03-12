@@ -163,7 +163,8 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "lab.title"
+        "lab.title",
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type",

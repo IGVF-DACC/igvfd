@@ -1,6 +1,6 @@
 {
-    "hash": "5e82b7e2883e531bf19a5d78f5523a9b",
-    "index_name": "sequence_file_5e82b7e2",
+    "hash": "457ded37ca5ca8513740481e9e813598",
+    "index_name": "sequence_file_457ded37",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -482,6 +482,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

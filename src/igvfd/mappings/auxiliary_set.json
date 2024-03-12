@@ -1,6 +1,6 @@
 {
-    "hash": "d10b3aa4dc7e2451a7268b849d489d89",
-    "index_name": "auxiliary_set_d10b3aa4",
+    "hash": "7bd923bc1de4e7ed9b5f95fa6def2e00",
+    "index_name": "auxiliary_set_7bd923bc",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1756,7 +1756,7 @@
                                 "type": "keyword"
                             },
                             "title": {
-                                "copy_to": "_exact",
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

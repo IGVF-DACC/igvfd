@@ -1,6 +1,6 @@
 {
-    "hash": "0895feda81eacb604624d04f5c9dbe20",
-    "index_name": "multiplexed_sample_0895feda",
+    "hash": "2fe2990950543caffed38e3252c885f2",
+    "index_name": "multiplexed_sample_2fe29909",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -2367,6 +2367,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

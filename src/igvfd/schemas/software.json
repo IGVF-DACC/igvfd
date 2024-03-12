@@ -98,7 +98,8 @@
         "name",
         "publication_identifiers",
         "title",
-        "used_by"
+        "used_by",
+        "submitted_by.title"
     ],
     "exact_searchable_fields": [
         "@type"

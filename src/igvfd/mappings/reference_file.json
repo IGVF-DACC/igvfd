@@ -1,6 +1,6 @@
 {
-    "hash": "ce1dbe2d270d856230f80ec08fb5a652",
-    "index_name": "reference_file_ce1dbe2d",
+    "hash": "209afab9bdbc4f77c0c48e372f6cc904",
+    "index_name": "reference_file_209afab9",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -437,6 +437,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

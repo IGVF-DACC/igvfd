@@ -1,6 +1,6 @@
 {
-    "hash": "081a7b071e90a416d7f2ca581e2830c2",
-    "index_name": "primary_cell_081a7b07",
+    "hash": "ba737719a0455b30b6ea211777b8c64d",
+    "index_name": "primary_cell_ba737719",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1620,6 +1620,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {
