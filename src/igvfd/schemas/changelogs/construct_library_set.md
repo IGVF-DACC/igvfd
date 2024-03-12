@@ -1,5 +1,13 @@
 ## Changelog for *`construct_library_set.json`*
 
+
+
+
+
+
+
+
+
 ### Schema version 8
 
 * Restrict linkTo for `integrated_content_files` to ReferenceFile and TabularFile, other file types are submittable by admins only.
