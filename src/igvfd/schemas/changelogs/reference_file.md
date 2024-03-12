@@ -6,6 +6,7 @@
 
 ### Minor changes since schema version 10
 
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Add `elements reference` to `content_type`.
 * Add `GENCODE 44`, `GENCODE 45`, `GENCODE M33`, and `GENCODE M34` to `transcriptome_annotation`.
 * Add `release_timestamp`.

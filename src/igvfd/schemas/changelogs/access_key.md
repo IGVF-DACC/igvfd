@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 2
 
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Add `description`.
 
 ### Schema version 2

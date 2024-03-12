@@ -6,6 +6,7 @@
 
 ### Minor changes since schema version 6
 
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Add `release_timestamp`.
 * Add `environmental` to `treatment_type`.
 * Add `archived` to `status`.

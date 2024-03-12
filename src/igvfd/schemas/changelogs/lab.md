@@ -1,5 +1,9 @@
 ## Changelog for *`lab.json`*
 
+### Minor changes since schema version 3
+
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
+
 ### Schema version 3
 
 * Disallow empty strings in `description`.

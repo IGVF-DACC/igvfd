@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 3
 
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Restrict `lab` and `award` to submittable by admins only. No further submission of models are accepted, please submit model sets instead.
 * Deprecate `model` schema.
 * Add `release_timestamp`.

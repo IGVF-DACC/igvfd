@@ -29,7 +29,8 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
-            "igvf:alignments_file_redacted_filtered"
+            "igvf:alignments_file_redacted_filtered",
+            "buenrostro-bernstein:test_alignment_file"
         ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",

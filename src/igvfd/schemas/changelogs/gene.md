@@ -4,6 +4,10 @@
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.
 
+### Minor changes since schema version 7
+
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
+
 ### Schema version 7
 
 * Remove `hg19`, `mm10`, and `mm9` from `assembly` on `locations`.

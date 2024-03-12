@@ -8,6 +8,10 @@
 * Remove `seqspec`.
 * Add calculated property `seqspecs`.
 
+### Minor changes since schema version 8
+
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
+
 ### Schema version 8
 
 * Replace `subreads` with `PacBio subreads` in `content_type`.

@@ -16,6 +16,7 @@
 
 ### Minor changes since schema version 12
 
+* Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
 * Add `ATAC-seq`, `RNA-seq`, `TF ChIP-seq`, `histone ChIP-seq`, `snRNA-seq`, `scRNA-seq`, `snATAC-seq` and `scATAC-seq` to `preferred_assay_title`.
