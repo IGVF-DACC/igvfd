@@ -180,3 +180,13 @@ def sequence_file_v7_v3(sequence_file):
         'file_format': 'fastq'
     })
     return item
+
+
+@pytest.fixture
+def sequence_file_v8(sequence_file, configuration_file_seqspec):
+    item = sequence_file.copy()
+    item.update({
+        'schema_version': '8',
+        'seqspec': configuration_file_seqspec['@id']
+    })
+    return item

@@ -43,3 +43,9 @@ def test_sequence_file_upgrade_7_8(upgrader, sequence_file_v7_v1, sequence_file_
     value = upgrader.upgrade('sequence_file', sequence_file_v7_v3, current_version='7', target_version='8')
     assert value['content_type'] == 'reads'
     assert value['schema_version'] == '8'
+
+
+def test_sequence_file_upgrade_8_9(upgrader, sequence_file_v8):
+    value = upgrader.upgrade('sequence_file', sequence_file_v8, current_version='8', target_version='9')
+    assert 'seqspec' not in value
+    assert value['schema_version'] == '9'

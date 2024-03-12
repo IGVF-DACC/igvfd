@@ -1,6 +1,6 @@
 {
-    "hash": "7aaa38dce971d61206d077213b55d107",
-    "index_name": "analysis_set_7aaa38dc",
+    "hash": "49bc0c1f48b9c1f48f13f7a3471934cf",
+    "index_name": "analysis_set_49bc0c1f",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -971,10 +971,10 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "seqspec": {
+                            "seqspec_of": {
                                 "type": "keyword"
                             },
-                            "seqspec_of": {
+                            "seqspecs": {
                                 "type": "keyword"
                             },
                             "sequencing_platform": {

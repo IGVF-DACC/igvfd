@@ -1,5 +1,10 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 9
+
+* Remove `seqspec`.
+* Add calculated property `seqspecs`.
+
 ### Schema version 8
 
 * Replace `subreads` with `PacBio subreads` in `content_type`.

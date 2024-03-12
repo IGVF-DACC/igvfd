@@ -107,7 +107,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "8"
+            "default": "9"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file. Reads are individual sequences of bases corresponding to DNA or RNA fragments in a FASTQ text file format. Subreads are sequences of bases produced using PacBio platforms.",
@@ -235,16 +235,6 @@
             "submissionExample": {
                 "appscript": "R1",
                 "igvf_utils": "R1"
-            }
-        },
-        "seqspec": {
-            "title": "Link to seqspec YAML File",
-            "description": "The link to the associated seqspec YAML configuration file.",
-            "type": "string",
-            "linkTo": "ConfigurationFile",
-            "submissionExample": {
-                "appscript": "john-doe:configuration_file01 or IGVFFI1234ABCE",
-                "igvf_utils": "john-doe:configuration_file01 or IGVFFI1234ABCE"
             }
         },
         "index": {

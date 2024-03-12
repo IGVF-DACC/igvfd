@@ -433,9 +433,9 @@ def test_audit_missing_seqspec(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
-        sequence_file['@id'],
+        configuration_file_seqspec['@id'],
         {
-            'seqspec': configuration_file_seqspec['@id']
+            'seqspec_of': [sequence_file['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -453,15 +453,10 @@ def test_audit_files_associated_with_incorrect_fileset(
     configuration_file_seqspec,
 ):
     testapp.patch_json(
-        sequence_file['@id'],
-        {
-            'seqspec': configuration_file_seqspec['@id']
-        }
-    )
-    testapp.patch_json(
         configuration_file_seqspec['@id'],
         {
-            'file_set': measurement_set['@id']
+            'file_set': measurement_set['@id'],
+            'seqspec_of': [sequence_file['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -483,8 +478,7 @@ def test_audit_files_associated_with_incorrect_fileset(
     testapp.patch_json(
         sequence_file['@id'],
         {
-            'file_set': measurement_set_multiome['@id'],
-            'seqspec': configuration_file_seqspec['@id']
+            'file_set': measurement_set_multiome['@id']
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
@@ -518,7 +512,6 @@ def test_audit_inconsistent_seqspec(
         sequence_file['@id'],
         {
             'file_set': measurement_set['@id'],
-            'seqspec': configuration_file_seqspec['@id'],
             'illumina_read_type': 'R1',
             'sequencing_run': 1,
             'flowcell_id': 'HJTW3BBXY',
@@ -530,12 +523,23 @@ def test_audit_inconsistent_seqspec(
         sequence_file_sequencing_run_2['@id'],
         {
             'file_set': measurement_set['@id'],
-            'seqspec': configuration_file_seqspec_2['@id'],
             'illumina_read_type': 'R2',
             'sequencing_run': 1,
             'flowcell_id': 'HJTW3BBXY',
             'lane': 1,
             'index': 'ACTG'
+        }
+    )
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'seqspec_of': [sequence_file['@id']]
+        }
+    )
+    testapp.patch_json(
+        configuration_file_seqspec_2['@id'],
+        {
+            'seqspec_of': [sequence_file_sequencing_run_2['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -544,9 +548,15 @@ def test_audit_inconsistent_seqspec(
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
-        sequence_file_sequencing_run_2['@id'],
+        configuration_file_seqspec['@id'],
         {
-            'seqspec': configuration_file_seqspec['@id'],
+            'seqspec_of': [sequence_file['@id'], sequence_file_sequencing_run_2['@id']]
+        }
+    )
+    testapp.patch_json(
+        configuration_file_seqspec_2['@id'],
+        {
+            'seqspec_of': [sequence_file['@id'], sequence_file_sequencing_run_2['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -567,9 +577,9 @@ def test_audit_inconsistent_seqspec(
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
-        sequence_file_sequencing_run_2['@id'],
+        configuration_file_seqspec_2['@id'],
         {
-            'seqspec': configuration_file_seqspec_2['@id']
+            'seqspec_of': [sequence_file_sequencing_run_2['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -597,9 +607,15 @@ def test_audit_inconsistent_seqspec(
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
-        sequence_file_sequencing_run_2['@id'],
+        configuration_file_seqspec['@id'],
         {
-            'seqspec': configuration_file_seqspec['@id'],
+            'seqspec_of': [sequence_file['@id'], sequence_file_sequencing_run_2['@id']],
+        }
+    )
+    testapp.patch_json(
+        configuration_file_seqspec_2['@id'],
+        {
+            'seqspec_of': [sequence_file['@id'], sequence_file_sequencing_run_2['@id']],
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')

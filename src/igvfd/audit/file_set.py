@@ -42,8 +42,8 @@ def audit_missing_seqspec(value, system):
         no_seqspec = []
         for file in value['files']:
             if file.startswith('/sequence-files/'):
-                sequence_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
-                if not sequence_file_object.get('seqspec'):
+                sequence_file_object = system.get('request').embed(file)
+                if not sequence_file_object.get('seqspecs'):
                     no_seqspec.append(file)
         if no_seqspec:
             no_seqspec = ', '.join([audit_link(path_to_text(file_no_seqspec), file_no_seqspec)
@@ -65,22 +65,22 @@ def audit_files_associated_with_incorrect_fileset(value, system):
     if 'files' in value:
         for file in value['files']:
             if file.startswith('/sequence-files/'):
-                sequence_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
+                sequence_file_object = system.get('request').embed(file)
 
                 # Audit the file set with sequence files without the associated seqspec also in the file set.
-                if sequence_file_object.get('seqspec'):
-                    if sequence_file_object.get('seqspec') not in value['files']:
-                        seqspec_path = sequence_file_object['seqspec']
-                        detail = (
-                            f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file '
-                            f'{audit_link(path_to_text(file), file)} which links to seqspec '
-                            f'{audit_link(path_to_text(seqspec_path), seqspec_path)} which does not link to this file set.'
-                        )
-                        yield AuditFailure('missing related files', detail, level='ERROR')
+                if sequence_file_object.get('seqspecs'):
+                    for configuration_file in sequence_file_object.get('seqspecs'):
+                        if configuration_file not in value['files']:
+                            detail = (
+                                f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file '
+                                f'{audit_link(path_to_text(file), file)} which links to seqspec '
+                                f'{audit_link(path_to_text(configuration_file), configuration_file)} which does not link to this file set.'
+                            )
+                            yield AuditFailure('missing related files', detail, level='ERROR')
 
             # Audit the file set with a seqspec configuration file without the associated sequence files also in the file set.
             if file.startswith('/configuration-files/'):
-                configuration_file_object = system.get('request').embed(file)
+                configuration_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
                 if configuration_file_object['content_type'] == 'seqspec' and configuration_file_object.get('seqspec_of'):
                     missing_sequence_files = list(set(configuration_file_object.get(
                         'seqspec_of', [])).difference(set(value['files'])))
@@ -106,7 +106,7 @@ def audit_inconsistent_seqspec(value, system):
         sequence_to_seqspec = {}
         for file in value['files']:
             if file.startswith('/sequence-files/'):
-                sequence_file_object = system.get('request').embed(file, '@@object?skip_calculated=true')
+                sequence_file_object = system.get('request').embed(file)
 
                 sequencing_run = str(sequence_file_object.get('sequencing_run'))
                 flowcell_id = sequence_file_object.get('flowcell_id', '')
@@ -117,9 +117,9 @@ def audit_inconsistent_seqspec(value, system):
                 key = ':'.join(key_list)
 
                 if key not in sequence_to_seqspec:
-                    sequence_to_seqspec[key] = {file: sequence_file_object.get('seqspec', '')}
+                    sequence_to_seqspec[key] = {file: set(sequence_file_object.get('seqspecs', []))}
                 else:
-                    sequence_to_seqspec[key][file] = sequence_file_object.get('seqspec', '')
+                    sequence_to_seqspec[key][file] = set(sequence_file_object.get('seqspecs', []))
 
         for key, file_dict in sequence_to_seqspec.items():
             first_seqspec = next(iter(file_dict.values()), None)
@@ -128,7 +128,7 @@ def audit_inconsistent_seqspec(value, system):
                 detail = (
                     f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(non_matching_files), non_matching_files) for non_matching_files in non_matching_files])} '
-                    f'which belong to the same sequencing set, but do not share the same seqspec file.'
+                    f'which belong to the same sequencing set, but do not share the same seqspec file(s).'
                 )
                 yield AuditFailure('inconsistent sequence specifications', detail, level='ERROR')
 
@@ -136,20 +136,22 @@ def audit_inconsistent_seqspec(value, system):
         for key, file_dict in sequence_to_seqspec.items():
             for file, seqspec in file_dict.items():
                 if seqspec:
-                    if seqspec not in seqspec_to_sequence:
-                        seqspec_to_sequence[seqspec] = [(key, file)]
+                    seqspec_str_formatted = ':'.join(sorted(list(seqspec)))
+                    if seqspec_str_formatted not in seqspec_to_sequence:
+                        seqspec_to_sequence[seqspec_str_formatted] = [(key, file)]
                     else:
-                        seqspec_to_sequence[seqspec].append((key, file))
+                        seqspec_to_sequence[seqspec_str_formatted].append((key, file))
 
         for seqspec, sequence_files in seqspec_to_sequence.items():
             key_set = set()
             for key, file in sequence_files:
                 key_set.add(key)
             if len(key_set) > 1:
+                seqspec_paths = [audit_link(path_to_text(x), x) for x in seqspec.split(':')]
                 detail = (
                     f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(file), file) for _, file in sequence_files])} '
-                    f'which share the same seqspec file {audit_link(path_to_text(seqspec), seqspec)} '
+                    f'which share the same seqspec file(s) {", ".join(seqspec_paths)} '
                     f'but belong to different sequencing sets.'
                 )
                 yield AuditFailure('inconsistent sequence specifications', detail, level='ERROR')

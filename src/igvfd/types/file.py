@@ -219,6 +219,9 @@ class SequenceFile(File):
     item_type = 'sequence_file'
     schema = load_schema('igvfd:schemas/sequence_file.json')
     embedded_with_frame = File.embedded_with_frame
+    rev = {
+        'seqspecs': ('ConfigurationFile', 'seqspec_of')
+    }
     set_status_up = File.set_status_up + [
         'sequencing_platform'
     ]
@@ -243,6 +246,20 @@ class SequenceFile(File):
             value = ':'.join(value_list)
             keys.setdefault('sequencing_run', []).append(value)
         return keys
+
+    @calculated_property(schema={
+        'title': 'Seqspecs',
+        'description': 'Link(s) to the associated seqspec YAML configuration file(s).',
+        'type': 'array',
+        'items': {
+            'title': 'Seqspecs',
+            'type': ['string', 'object'],
+            'linkFrom': 'ConfigurationFile.seqspec_of',
+        },
+        'notSubmittable': True
+    })
+    def seqspecs(self, request, seqspecs):
+        return paths_filtered_by_status(request, seqspecs)
 
 
 @collection(
@@ -419,9 +436,6 @@ class ConfigurationFile(File):
     item_type = 'configuration_file'
     schema = load_schema('igvfd:schemas/configuration_file.json')
     embedded_with_frame = File.embedded_with_frame
-    rev = {
-        'seqspec_of': ('SequenceFile', 'seqspec')
-    }
     set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []
 
@@ -432,20 +446,6 @@ class ConfigurationFile(File):
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
         return keys
-
-    @calculated_property(schema={
-        'title': 'Seqspec Of',
-        'description': 'Sequence files this file is a seqspec of.',
-        'type': 'array',
-        'items': {
-            'title': 'Seqspec Of',
-            'type': ['string', 'object'],
-            'linkFrom': 'SequenceFile.seqspec',
-        },
-        'notSubmittable': True
-    })
-    def seqspec_of(self, request, seqspec_of):
-        return paths_filtered_by_status(request, seqspec_of)
 
 
 @collection(

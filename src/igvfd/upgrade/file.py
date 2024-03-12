@@ -196,3 +196,19 @@ def file_9_10(value, system):
         value['assembly'] = 'GRCm39'
         value['notes'] = notes.strip()
     return
+
+
+@upgrade_step('sequence_file', '8', '9')
+def sequence_file_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1481
+    if 'seqspec' in value:
+        notes = value.get('notes', '')
+        notes += f' This file previously linked to the configuration file at {value["seqspec"]}.'
+        value['notes'] = notes.strip()
+        del value['seqspec']
+
+
+@upgrade_step('configuration_file', '4', '5')
+def configuration_file_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1481
+    return
