@@ -46,11 +46,11 @@
             "pattern": "^CCSBORF[1-9][0-9]*$",
             "uniqueKey": true
         },
-        "geneid": {
+        "gene": {
             "title": "ENSEMBL GeneID",
             "description": "ENSEMBL GeneID of official nomenclature approved gene. The GeneID does not include the current version number suffix.",
-            "type": "string",
-            "pattern": "^ENS[A-Z]*G\\d{11}(_PAR_Y)?$"
+            "type": "array",
+            "linkTo": "Gene"
         },
         "gene_symbol": {
             "title": "Gene Symbol",
