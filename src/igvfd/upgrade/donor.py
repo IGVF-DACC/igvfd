@@ -160,3 +160,14 @@ def donor_11_12(value, system):
     if 'description' in value:
         if value['description'] == '':
             del value['description']
+
+
+@upgrade_step('human_donor', '12', '13')
+@upgrade_step('rodent_donor', '11', '12')
+def donor_12_13(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1494
+    if value['status'] in ['released', 'archived', 'revoked'] and 'release_timestamp' not in value:
+        value['release_timestamp'] = '2024-03-06T12:34:56Z'
+        notes = value.get('notes', '')
+        notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
+        value['notes'] = notes.strip()

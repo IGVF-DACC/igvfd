@@ -1,5 +1,9 @@
 ## Changelog for *`differentiated_tissue.json`*
 
+### Schema version 10
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Schema version 9
 
 * Rename `biomarker` to `biomarkers`.

@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Schema version 12
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Minor changes since schema version 11
 
 * Add `release_timestamp`.

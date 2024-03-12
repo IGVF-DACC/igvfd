@@ -1,5 +1,6 @@
 ## Changelog for *`file_set.json`*
 
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status. (03/06/2024)
 * Add calculated `submitted_files_timestamp`. (02/21/2024)
 * Add `release_timestamp`. (01/31/2024)
 * Add `publication_identifiers`. (08/02/2023)

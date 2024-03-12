@@ -49,3 +49,10 @@ def test_sequence_file_upgrade_8_9(upgrader, sequence_file_v8):
     value = upgrader.upgrade('sequence_file', sequence_file_v8, current_version='8', target_version='9')
     assert 'seqspec' not in value
     assert value['schema_version'] == '9'
+
+
+def test_sequence_file_upgrade_9_10(upgrader, sequence_file_v9):
+    value = upgrader.upgrade('sequence_file', sequence_file_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert value['release_timestamp'] == '2024-03-06T12:34:56Z'
+    assert value['notes'] == 'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'

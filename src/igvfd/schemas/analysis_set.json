@@ -41,6 +41,7 @@
     ],
     "dependentSchemas": {
         "$merge": [
+            "shared_dependencies.json#/accession_status",
             "file_set.json#/dependentSchemas"
         ],
         "file_set_type": {
@@ -61,7 +62,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "5"
+            "default": "6"
         },
         "input_file_sets": {
             "title": "Input File Sets",

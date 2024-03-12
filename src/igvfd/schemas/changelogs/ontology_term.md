@@ -1,5 +1,6 @@
 ## Changelog for *`ontology_term.json`*
 
+* Require `release_timestamp` for any objects with `released` or `archived` status. (03/06/2024)
 * Add `archived` to `status`. (03/05/2024)
 * Add `release_timestamp`. (01/31/2024)
 * Add calculated property `ontology`. (06/07/2023)

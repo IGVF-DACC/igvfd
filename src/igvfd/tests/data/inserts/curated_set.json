@@ -6,6 +6,7 @@
         "file_set_type": "genome",
         "accession": "IGVFDS0000AAAA",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "taxa": "Homo sapiens",
         "documents": [
             "/documents/igvf:Antibody_characterization_standards_IGVF/"
@@ -30,6 +31,7 @@
         "file_set_type": "transcriptome",
         "accession": "IGVFDS1111BBBB",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "taxa": "Homo sapiens",
         "documents": [
             "/documents/igvf:characterization_immunoblot_insert/"
@@ -50,6 +52,7 @@
         "file_set_type": "variants",
         "accession": "IGVFDS2222CCCC",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "taxa": "Mus musculus",
         "documents": [
             "/documents/igvf:characterization_FACS_insert/"
@@ -74,6 +77,7 @@
         "file_set_type": "guide RNAs",
         "accession": "IGVFDS3333DDDD",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "notes": "This is a curated set insert.",
         "aliases": [
             "j-michael-cherry:gRNAs"
@@ -87,6 +91,7 @@
         "file_set_type": "external data for catalog",
         "accession": "IGVFDS3334DDDA",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "notes": "This is a curated set insert for external data for catalog.",
         "aliases": [
             "j-michael-cherry:catalog_files"
@@ -103,6 +108,7 @@
         "file_set_type": "barcodes",
         "accession": "IGVFDS8484BARC",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "aliases": [
             "j-michael-cherry:barcodes_curated_set"
         ],

@@ -28,6 +28,7 @@ def source_lonza(testapp):
         'name': 'lonza',
         'title': 'Lonza',
         'status': 'released',
+        'release_timestamp': '2024-03-06T12:34:56Z',
         'description': 'Lonza Group Ltd.'
     }
     return testapp.post_json('/source', item, status=201).json['@graph'][0]

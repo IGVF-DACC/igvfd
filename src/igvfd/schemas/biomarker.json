@@ -30,10 +30,14 @@
             "$ref": "mixins.json#/release_timestamp"
         }
     ],
-    "dependentSchemas": {},
+    "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/standard_status"
+        ]
+    },
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "4"
         },
         "name": {
             "title": "Name",

@@ -15,6 +15,7 @@
         "samples": [
             "igvf:treated_tissue"
         ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "intermediate analysis"
     },
     {
@@ -36,6 +37,7 @@
         "input_file_sets": [
             "igvf:basic_analysis_set"
         ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "primary analysis",
         "collections": [
             "MPRAbase"

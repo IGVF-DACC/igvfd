@@ -13,6 +13,7 @@
         "award": "1U01HG011952-01",
         "lab": "alan-boyle",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "0388810f-76f3-4c21-a994-a0c8bb393950",
         "small_scale_loci_list": [
             {
@@ -38,6 +39,7 @@
         "award": "1U01HG011952-01",
         "lab": "alan-boyle",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "d84ce280-3014-4c2b-88bb-b7e82352f869",
         "large_scale_loci_list": "/tabular-files/igvf:tabular_file_01_bed",
         "scope": "loci"
@@ -54,6 +56,7 @@
         "award": "1U01HG011967-01",
         "lab": "andrew-allen",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "d41ed7ad-21be-4fa3-9520-f7c001e2c395",
         "large_scale_gene_list": "igvf:xml_catalog_file",
         "scope": "genes"

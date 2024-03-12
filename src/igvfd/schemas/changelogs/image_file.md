@@ -1,5 +1,9 @@
 ## Changelog for *`image_file.json`*
 
+### Schema version 3
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Schema version 2
 
 * Restrict submission of `fiducial alignment` to admin users.

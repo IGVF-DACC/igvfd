@@ -49,12 +49,13 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "sample.json#/dependentSchemas"
+            "sample.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
         ]
     },
     "properties": {
         "schema_version": {
-            "default": "11"
+            "default": "12"
         },
         "sample_material": {
             "title": "Sample Material",

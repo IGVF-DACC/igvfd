@@ -14,6 +14,7 @@
         "name": "CD1d molecule",
         "taxa": "Homo sapiens",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "CD1D",
         "synonyms": [
             "CD1A",
@@ -55,6 +56,7 @@
         "taxa": "Homo sapiens",
         "schema_version": "3",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "BAP1",
         "synonyms": [
             "UCHL2",
@@ -77,6 +79,7 @@
         "name": "CXXC finger protein 1",
         "taxa": "Homo sapiens",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "CXXC1",
         "synonyms": [
             "2410002I16Rik",
@@ -133,6 +136,7 @@
         "taxa": "Homo sapiens",
         "schema_version": "3",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "MIR129-1",
         "synonyms": [
             "MIRN129-1",
@@ -156,6 +160,7 @@
         "name": "glycophorin C (Gerbich blood group)",
         "taxa": "Homo sapiens",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "GYPC",
         "synonyms": [
             "CD236",
@@ -180,6 +185,7 @@
         "name": "cytokine receptor like factor 2",
         "taxa": "Homo sapiens",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "CRLF2",
         "locations": [
             {
@@ -204,6 +210,7 @@
         "name": "histone cluster 2, H3c1",
         "taxa": "Mus musculus",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "Hist2h3c1",
         "synonyms": [
             "BE691662",
@@ -246,6 +253,7 @@
         "taxa": "Mus musculus",
         "schema_version": "3",
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "Mir683-2",
         "synonyms": [
             "Gm23091",
@@ -273,6 +281,7 @@
         ],
         "taxa": "Mus musculus",
         "status": "archived",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "Gm13255"
     }
 ]

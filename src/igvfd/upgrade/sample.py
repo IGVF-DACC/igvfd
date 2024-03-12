@@ -417,3 +417,18 @@ def in_vitro_system_18_19(value, system):
         f'moved into the array property "classifications." '
     )
     value['notes'] = notes.strip()
+
+
+@upgrade_step('primary_cell', '17', '18')
+@upgrade_step('in_vitro_system', '19', '20')
+@upgrade_step('tissue', '17', '18')
+@upgrade_step('technical_sample', '11', '12')
+@upgrade_step('whole_organism', '20', '21')
+@upgrade_step('multiplexed_sample', '6', '7')
+def sample_17_18(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1494
+    if value['status'] in ['released', 'archived', 'revoked'] and 'release_timestamp' not in value:
+        value['release_timestamp'] = '2024-03-06T12:34:56Z'
+        notes = value.get('notes', '')
+        notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
+        value['notes'] = notes.strip()

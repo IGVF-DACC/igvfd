@@ -17,7 +17,8 @@
         ],
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "name": "CD243",
@@ -54,7 +55,8 @@
         ],
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "name": "CD243",
@@ -71,7 +73,8 @@
         ],
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "name": "CD243",
@@ -88,7 +91,8 @@
         ],
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "name": "BAP1",
@@ -97,7 +101,8 @@
         "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "name": "BAP1",
@@ -106,7 +111,8 @@
         "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "name": "BAP1",
@@ -115,7 +121,8 @@
         "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "name": "BAP1",
@@ -124,7 +131,8 @@
         "gene": "fff95719-346c-471f-8b72-8a05c0102b1b",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "name": "CD1",
@@ -132,7 +140,8 @@
         "classification": "cell surface protein",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "name": "CD1D",
@@ -141,6 +150,7 @@
         "gene": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "status": "released"
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]

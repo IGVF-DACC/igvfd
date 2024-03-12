@@ -1,5 +1,9 @@
 ## Changelog for *`phenotype_term.json`*
 
+### Schema version 4
+
+* Require `release_timestamp` for any objects with `released` or `archived` status.
+
 ### Minor changes since schema version 3
 
 * Add `release_timestamp`.

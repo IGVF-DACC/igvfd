@@ -8,6 +8,7 @@
             "igvf:rodent_donor_with_arterial_blood_pressure_trait"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "The submitter had very little to say.",
         "documents": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
@@ -39,6 +40,7 @@
             "igvf:alias_rodent_donor_2"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "The submitter had very little to say.",
         "documents": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"

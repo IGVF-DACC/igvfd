@@ -43,12 +43,13 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "file_set.json#/dependentSchemas"
+            "file_set.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
         ]
     },
     "properties": {
         "schema_version": {
-            "default": "13"
+            "default": "14"
         },
         "assay_term": {
             "title": "Assay Term",

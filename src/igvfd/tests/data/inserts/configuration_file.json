@@ -8,6 +8,7 @@
             "igvf:seqspec_yaml"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "02d89923100d9385f7fa351e9c35d4ca",
         "file_format": "yaml",
         "content_type": "seqspec",

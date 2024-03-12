@@ -11,7 +11,9 @@
         "refseq_id": "NC_200000.12",
         "associated_gwas": [
             "GCST007240"
-        ]
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     },
     {
         "uuid": "8138364d-f96b-42b9-a719-42199818c6fc",
@@ -21,6 +23,8 @@
         "alt": "GC",
         "assembly": "GRCh38",
         "position": 100000000,
-        "refseq_id": "NC_000001.1"
+        "refseq_id": "NC_000001.1",
+        "status": "archived",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]

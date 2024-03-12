@@ -94,7 +94,8 @@
         "cas": "SpRY",
         "fused_domain": "ZIM3",
         "modality": "prime editing",
-        "status": "in progress",
+        "status": "archived",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "product_id": "addgene:148021",
         "cas_species": "Streptococcus pyogenes (Sp)"
     },
@@ -108,7 +109,8 @@
         "cas": "nCas9",
         "fused_domain": "M-MLV RT (PE2)",
         "modality": "prime editing",
-        "status": "in progress",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "product_id": "addgene:132775",
         "cas_species": "Streptococcus pyogenes (Sp)"
     }

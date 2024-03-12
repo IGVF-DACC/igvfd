@@ -7,6 +7,7 @@
             "igvf:matrix_file"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "0a1827e536b662284e1e7bc938c41a57",
         "file_format": "hdf5",
         "content_type": "sparse gene count matrix",
@@ -28,6 +29,7 @@
             "igvf:matrix_file_sparse_peak_count_matrix"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "7fdaa9a463783ec482f5d5dd8dbfc7d4",
         "file_format": "h5ad",
         "content_type": "sparse peak count matrix",

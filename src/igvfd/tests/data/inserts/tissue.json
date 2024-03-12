@@ -42,6 +42,7 @@
             "igvf:treated_tissue"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "sample_terms": [
             "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
         ],
@@ -95,6 +96,7 @@
             "igvf:tissue_part_of_tissue"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "part_of": "IGVFSM0000DDDD",
         "sources": [
             "/labs/j-michael-cherry/"
@@ -130,6 +132,7 @@
             "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "part_of": "IGVFSM0000KASA",
         "sources": [
             "/labs/j-michael-cherry/"
@@ -157,6 +160,7 @@
             "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "part_of": "IGVFSM0000KASA",
         "sources": [
             "/labs/j-michael-cherry/"
@@ -186,6 +190,7 @@
             "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "part_of": "IGVFSM0000KASA",
         "sources": [
             "/labs/j-michael-cherry/"

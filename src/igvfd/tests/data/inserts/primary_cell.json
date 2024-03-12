@@ -8,6 +8,7 @@
             "igvf:alias10"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "The submitter had very little to say.",
         "documents": [
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
@@ -55,6 +56,7 @@
             "igvf:treated_primary_cells"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "This is a treated primary cell sample.",
         "notes": "This is a note.",
         "product_id": "x001",
@@ -95,6 +97,7 @@
             "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "sources": [
             "/labs/j-michael-cherry/"
         ],
@@ -117,6 +120,7 @@
             "igvf:part_of_treated_primary_cells"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "submitter_comment": "This is a part of a treated primary cell sample.",
         "notes": "This is a note.",
         "product_id": "x001",
@@ -158,6 +162,7 @@
             "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "sources": [
             "/labs/j-michael-cherry/"
         ],

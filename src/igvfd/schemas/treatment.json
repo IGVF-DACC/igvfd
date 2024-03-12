@@ -38,6 +38,9 @@
         }
     ],
     "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/standard_status"
+        ],
         "duration": {
             "comment": "Specification of duration requires duration_units.",
             "required": [
@@ -220,7 +223,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "6"
+            "default": "7"
         },
         "documents": {
             "description": "Documents that describe the treatment protocol details.",

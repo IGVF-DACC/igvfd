@@ -1,6 +1,7 @@
 ## Changelog for *`measurement_set.json`*
 
-### Schema version 13
+
+### Schema version 14
 
 * Adjust `preferred_assay_title` enum list to replace `histone ChIP-seq` with `Histone ChIP-seq`.
 * Adjust `preferred_assay_title` enum list to replace `Parse Split-seq` with `Parse SPLiT-seq`.
@@ -8,6 +9,10 @@
 * Adjust `preferred_assay_title` enum list to replace `SHARE-Seq` with `SHARE-seq`.
 * Adjust `preferred_assay_title` enum list to replace `Yeast two-hybrid` with `Y2H`.
 * Extend `preferred_assay_title` enum list to include `MPRA`.
+
+### Schema version 13
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
 
 ### Minor changes since schema version 12
 

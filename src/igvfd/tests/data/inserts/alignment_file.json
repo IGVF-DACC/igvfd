@@ -8,6 +8,7 @@
             "igvf:alignments_file"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "7cc757ed8aacf2ec3f018876017c59c3",
         "file_format": "bam",
         "assembly": "GRCh38",
@@ -31,6 +32,7 @@
             "igvf:alignments_file_redacted_filtered"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "7cc757ed8a9c41ec3f018876017c9be1",
         "file_format": "bam",
         "assembly": "GRCh38",

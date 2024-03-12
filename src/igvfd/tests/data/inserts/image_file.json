@@ -8,6 +8,7 @@
             "igvf:detected_tissue_png"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "761e99a9275cedb9050edb94bb4bdc36",
         "file_format": "png",
         "content_type": "detected tissue",
@@ -25,6 +26,7 @@
             "igvf:low_resolution_jpeg"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "8ca9b4b9c4205bdb4c86dad07ae8688d",
         "file_format": "jpg",
         "content_type": "low resolution tissue",

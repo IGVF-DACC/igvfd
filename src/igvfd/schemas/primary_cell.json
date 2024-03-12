@@ -55,12 +55,13 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "biosample.json#/dependentSchemas"
+            "biosample.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
         ]
     },
     "properties": {
         "schema_version": {
-            "default": "17"
+            "default": "18"
         },
         "passage_number": {
             "title": "Passage Number",

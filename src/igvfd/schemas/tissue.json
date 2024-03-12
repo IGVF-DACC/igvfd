@@ -55,7 +55,8 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "biosample.json#/dependentSchemas"
+            "biosample.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
         ],
         "pmi": {
             "comment": "Specification of pmi requires pmi_units.",
@@ -72,7 +73,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "17"
+            "default": "18"
         },
         "pmi": {
             "title": "Post-mortem Interval",

@@ -44,12 +44,13 @@
     ],
     "dependentSchemas": {
         "$merge": [
+            "shared_dependencies.json#/accession_status",
             "file_set.json#/dependentSchemas"
         ]
     },
     "properties": {
         "schema_version": {
-            "default": "6"
+            "default": "7"
         },
         "file_set_type": {
             "description": "The category that best describes this auxiliary file set.",

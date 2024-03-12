@@ -8,6 +8,7 @@
             "igvf:plus_strand_signal_of_all_reads_file"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "f3115d2fa53bbbf7a593a51406c76e41",
         "file_format": "bigWig",
         "assembly": "GRCh38",
@@ -33,6 +34,7 @@
             "igvf:signal_p_value_file"
         ],
         "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "2be0463d728348cdebaa81b74a30cd4a",
         "file_format": "bigWig",
         "assembly": "GRCh38",

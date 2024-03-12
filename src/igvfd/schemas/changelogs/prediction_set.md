@@ -1,5 +1,9 @@
 ## Changelog for *`prediction_set.json`*
 
+### Schema version 7
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Schema version 6
 
 * Remove `hg19`, `mm10`, and `mm9` from `assembly` on `small_scale_loci_list`.

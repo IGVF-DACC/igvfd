@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status. (03/06/2024)
 * Add `release_timestamp`. (01/31/2024)
 * Rename `sorted_fraction` to `sorted_from`. (11/01/2023)
 * Rename `sorted_fraction_detail` to `sorted_from_detail`. (11/01/2023)

@@ -1,5 +1,9 @@
 ## Changelog for *`platform_term.json`*
 
+### Schema version 3
+
+* Require `release_timestamp` for any objects with `released` or `archived` status
+
 ### Minor changes since schema version 2
 
 * Add `release_timestamp`.

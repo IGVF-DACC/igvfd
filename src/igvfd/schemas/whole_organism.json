@@ -70,12 +70,13 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "biosample.json#/dependentSchemas"
+            "biosample.json#/dependentSchemas",
+            "shared_dependencies.json#/accession_status"
         ]
     },
     "properties": {
         "schema_version": {
-            "default": "20"
+            "default": "21"
         },
         "sample_terms": {
             "comment": "Do not submit, value is assigned by the object.",

@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 11
+
+* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+
 ### Minor changes since schema version 10
 
 * Add `elements reference` to `content_type`.
