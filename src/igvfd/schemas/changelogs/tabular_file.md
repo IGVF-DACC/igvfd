@@ -3,6 +3,7 @@
 ### Schema version 7
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+* Add calculated property `integrated_in`.
 
 ### Minor changes since schema version 6
 

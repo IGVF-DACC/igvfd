@@ -246,8 +246,7 @@ def construct_library_set_prediction_set_5_6(value, system):
             notes += f' This file set listed {loci} as one of its loci but the assembly for this loci has been upgraded to GRCm39.'
             value['notes'] = notes.strip()
             loci['assembly'] = 'GRCm39'
-<<<<<<< HEAD
-<<<<<<< HEAD
+    return
 
 
 @upgrade_step('measurement_set', '12', '13')

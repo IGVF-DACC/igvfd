@@ -32,6 +32,6 @@ def test_construct_library_set_upgrade_5_6(upgrader, construct_library_set_v5):
     assert value['schema_version'] == '6'
 
 
-def test_construct_library_set_upgrade_6_7(upgrader, construct_library_set_v6):
-    value = upgrader.upgrade('construct_library_set', construct_library_set_v6, current_version='6', target_version='7')
-    assert value['schema_version'] == '7'
+def test_construct_library_set_upgrade_7_8(upgrader, construct_library_set_v7):
+    value = upgrader.upgrade('construct_library_set', construct_library_set_v7, current_version='7', target_version='8')
+    assert value['schema_version'] == '8'

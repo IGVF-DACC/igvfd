@@ -141,9 +141,9 @@ def construct_library_set_v5(construct_library_set_genome_wide):
 
 
 @pytest.fixture
-def construct_library_set_v6(construct_library_set_genome_wide):
+def construct_library_set_v7(construct_library_set_genome_wide):
     item = construct_library_set_genome_wide.copy()
     item.update({
-        'schema_version': '6'
+        'schema_version': '7'
     })
     return item
