@@ -110,14 +110,15 @@ def audit_inconsistent_readout(value, system):
     '''
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    assay = assay.get('term_name')
     assays_with_readout = ['CRISPR screen',
                            'massively parallel reporter assay',
                            'cas mediated mutagenesis']
     if 'readout' in value:
-        if assay.get('term_name') not in assays_with_readout:
+        if assay not in assays_with_readout:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'a {assay.get('term_name')} assay, but specifies a readout.'
+                f'a {assay} assay, but specifies a readout.'
             )
             yield AuditFailure('inconsistent readout', detail, level='ERROR')
         if assay_term == value.get('readout'):
@@ -127,10 +128,10 @@ def audit_inconsistent_readout(value, system):
             )
             yield AuditFailure('inconsistent readout', detail, level='ERROR')
     else:
-        if assay.get('term_name') in assays_with_readout:
+        if assay in assays_with_readout:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'a {assay.get('term_name')} assay and does not specify a readout.'
+                f'a {assay} assay and does not specify a readout.'
             )
             yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')
 
