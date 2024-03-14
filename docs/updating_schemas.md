@@ -94,6 +94,23 @@ Adding a new schema
                         "igvf_utils": "regexstring"
                     }
                 },
+                "example_array_of_items": {
+                    "title": "Example Array of Items",
+                    "description": "An example of a property that is an array.",
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                        "title": "Item",
+                        "description": "An example of a value in an array."
+                        "type": "string",
+                        "linkTo": Sample
+                    }
+                    "submissionExample": {
+                        "appscript": "[\"TSTSM01234567\"]",
+                        "igvf_utils": "TSTSM01234567"
+                    }
+                },
                 "example_object": {
                     "title": "Example Object",
                     "description": "An example of a property that must match a pattern",
