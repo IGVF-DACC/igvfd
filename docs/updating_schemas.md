@@ -125,7 +125,19 @@ Adding a new schema
             "identifyingProperties": ["uuid","aliases"],
 
 
-4. Add the "exact_searchable_fields" and "fuzzy_searchable_fields" properties using this [guide](https://github.com/IGVF-DACC/igvfd/tree/dev/src/igvfd/searches).
+4. Identify dependent properties and add them to the "dependentSchemas" array. Each dependency must have a comment, explaining hte logic of the dependency. Some properties may not have any dependencies, or may only inherit dependencies from a parent class.
+
+            "dependentSchemas": {
+                "duration": {
+                    "comment": "Specification of duration requires duration_units.",
+                    "required": [
+                        "duration_units"
+                    ]
+                }
+            }
+
+
+5. Add the "exact_searchable_fields" and "fuzzy_searchable_fields" properties using this [guide](https://github.com/IGVF-DACC/igvfd/tree/dev/src/igvfd/searches).
 
             "fuzzy_searchable_fields": [
                  "name",
@@ -136,7 +148,7 @@ Adding a new schema
                  "dbxrefs"
             ],
 
-5. In the **types** directory add a file (i.e. antibody.py) with a collection class for the object to define the rendering of the object.
+6. In the **types** directory add a file (i.e. antibody.py) with a collection class for the object to define the rendering of the object.
 Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/object_lifecycle.md) to understand object rendering. Example of basic collection definition for treatments:
 
 
@@ -152,7 +164,7 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
                 schema = load_schema('encoded:schemas/treatment.json')
 
 
-6. Within in a class add in  *embedding*, *reverse links*, and *calculated properties* as necessary.
+7. Within in a class add in  *embedding*, *reverse links*, and *calculated properties* as necessary.
 
     * *Embedding* - specifying the properties embeded in the object when specifying ```frame=object```, for construct we have:
 
@@ -193,7 +205,7 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
                 def files(self, request, files):
                     return paths_filtered_by_status(request, files)
 
-7. In ``loadxl.py`` add the new metadata object into the ```Order``` array, for example to add new object ```train.json```.
+8. In ``loadxl.py`` add the new metadata object into the ```Order``` array, for example to add new object ```train.json```.
 
             ORDER = [
                 'user',
@@ -205,7 +217,7 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
                 'train',
             ]
 
-8. Add in fixtures to test the new schema in **tests** directory. Create a new .py file in the **fixtures/schemas** directory named after the new metadata object. Fixtures may be used to validate expected schema behavoir with tests defined in test files in **tests** directory.
+9. Add in fixtures to test the new schema in **tests** directory. Create a new .py file in the **fixtures/schemas** directory named after the new metadata object. Fixtures may be used to validate expected schema behavoir with tests defined in test files in **tests** directory.
 
                 @pytest.fixture
                 def wrangler(testapp):
@@ -220,7 +232,7 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
                     return testapp.get(res.location).json
 
 
-9.  To load test fixtures of the new metadata object add them to ``/tests/conftest.py`` into the ```pytest_plugins``` array, for example to add new object ```train.json```.
+10.  To load test fixtures of the new metadata object add them to ``/tests/conftest.py`` into the ```pytest_plugins``` array, for example to add new object ```train.json```.
 
             pytest_plugins = [
                 'igvfd.tests.fixtures.database',
@@ -235,7 +247,7 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
                 'igvfd.tests.fixtures.schemas.train',
             ]
 
-10. Add in sample data to test the new schema in **tests** directory. Create a new JSON file in the **data/inserts** directory named after the new metadata object. This new object is an array of example objects that can successfully POST against the schema defined, for example:
+11. Add in sample data to test the new schema in **tests** directory. Create a new JSON file in the **data/inserts** directory named after the new metadata object. This new object is an array of example objects that can successfully POST against the schema defined, for example:
 
             [
                 {
@@ -251,19 +263,19 @@ Refer to [object-lifecycle.md](https://github.com/IGVF-DACC/igvfd/blob/dev/docs/
 
 
 
-11. If applicable you may want to add audits on the metadata. Please refer to [making_audits]
+12. If applicable you may want to add audits on the metadata. Please refer to [making_audits]
 
-12. If this object has an accession, you will need to update **schema_formats.py** to add the 2 character prefix.
+13. If this object has an accession, you will need to update **schema_formats.py** to add the 2 character prefix.
 To add an object with accession prefix 'SM':
 
             accession_re = re.compile(r'^IGVF(FI|DS|SR|AB|SM|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9][A-Z][A-Z][A-Z]$')
             est_accession_re = re.compile(r'^TST(FI|DS|SR|AB|SM|BS|DO|GM|LB|PL|AN)[0-9][0-9][0-9]([0-9][0-9][0-9]|[A-Z][A-Z][A-Z])$')
 
-13.  Add a change log markdown file for the new schema to the **schemas/changelogs** directory.
+14.  Add a change log markdown file for the new schema to the **schemas/changelogs** directory.
 
             ## Changelog for *`award.json`*
 
-14. To make sure that the objects of that type are searched in unspecified searches add the item to TOP_HITS_ITEM_TYPES in **igvfd/src/igvfd/searches/defaults.py**.  For example to add a type for train sets
+15. To make sure that the objects of that type are searched in unspecified searches add the item to TOP_HITS_ITEM_TYPES in **igvfd/src/igvfd/searches/defaults.py**.  For example to add a type for train sets
 
             TOP_HITS_ITEM_TYPES = [
                    'Award',
@@ -272,7 +284,7 @@ To add an object with accession prefix 'SM':
                    'TrainSet'
             ]
 
-15. In the **igvfd/src/igvfd/searches/configs** directory make a python file for the type (i.e. antibody.py) to hold the columns assignment.
+16. In the **igvfd/src/igvfd/searches/configs** directory make a python file for the type (i.e. antibody.py) to hold the columns assignment.
 
            from snovault.elasticsearch.searches.configs import search_config
 
@@ -329,6 +341,7 @@ Changelog guidelines
 ----------------
 
 * Changes in calculated properties should be noted in the changelog.
+* Changes to searches, such as fuzzy vs. exact, or to embedding should not be noted in the changelog.
 * Changes to properties which are inherited or merged into other schemas, such as mixins, must be noted in the changelogs of all affected schemas.
 * New changelog entries are added at the top of the changelog.
 * Changes occurring in different PRs should be recorded as separate changelog entries.
