@@ -23,8 +23,8 @@ def audit_input_file_sets(value, system):
     if value.get('file_set_type') == 'primary analysis':
         if not(any(file_set.startswith('/measurement-sets/') for file_set in value['input_file_sets'])):
             detail = (
-                f'AnalysisSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'is a primary analysis, but does not specify any measurement sets as '
+                f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'is a primary analysis, but does not specify any measurement sets in '
                 f'input_file_sets.'
             )
             yield AuditFailure('missing measurement set', detail, level='WARNING')

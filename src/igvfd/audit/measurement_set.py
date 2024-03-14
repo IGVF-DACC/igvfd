@@ -24,17 +24,17 @@ def audit_related_multiome_datasets(value, system):
     multiome_size = value.get('multiome_size')
     if related_multiome_datasets == [] and multiome_size:
         detail = (
-            f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'has a multiome size of {multiome_size}, but no related '
-            f'multiome MeasurementSet object(s).'
+            f'multiome datasets.'
         )
         yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
     elif related_multiome_datasets and multiome_size:
         if len(related_multiome_datasets) != multiome_size - 1:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
                 f'has a multiome size of {multiome_size}, but {len(related_multiome_datasets)} '
-                f'related multiome MeasurementSet object(s) when {multiome_size - 1} are expected.'
+                f'related multiome datasets when {multiome_size - 1} are expected.'
             )
             yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
         samples = value.get('samples')
@@ -59,16 +59,16 @@ def audit_related_multiome_datasets(value, system):
         samples_to_link = ', '.join(samples_to_link)
         if datasets_with_different_samples:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has associated sample(s): {samples_to_link} which are not the same associated sample(s) '
-                f'of related multiome MeasurementSet object(s): {datasets_with_different_samples}'
+                f'of related multiome dataset(s): {datasets_with_different_samples}'
             )
             yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
         if datasets_with_different_multiome_sizes:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a specified multiome size of {multiome_size}, which does not match the '
-                f'multiome size of related MeasurementSet object(s): {datasets_with_different_multiome_sizes}'
+                f'multiome size of related multiome dataset(s): {datasets_with_different_multiome_sizes}'
             )
             yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
 
@@ -86,9 +86,8 @@ def audit_unspecified_protocol(value, system):
     '''
     if 'protocols' not in value:
         detail = (
-            f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-            f'is expected to specify the experimental protocol utilized for conducting '
-            f'the assay on protocols.io.'
+            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'has no protocol. '
         )
         yield AuditFailure('missing protocol', detail, level='NOT_COMPLIANT')
 
@@ -117,21 +116,21 @@ def audit_inconsistent_readout(value, system):
     if 'readout' in value:
         if assay.get('term_name') not in assays_with_readout:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'not expected to specify a data readout.'
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'a {assay.get('term_name')} assay, but specifies a readout.'
             )
             yield AuditFailure('inconsistent readout', detail, level='ERROR')
         if assay_term == value.get('readout'):
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'not expected to specify the same readout and assay term.'
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} specifies '
+                f'the same readout and assay term.'
             )
             yield AuditFailure('inconsistent readout', detail, level='ERROR')
     else:
         if assay.get('term_name') in assays_with_readout:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'a screening assay (such as CRISPR screen or MPRA) and is expected to specify a data readout.'
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'a {assay.get('term_name')} assay and does not specify a readout.'
             )
             yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')
 
@@ -155,7 +154,7 @@ def audit_inconsistent_modifications(value, system):
     modifications = set(tuple(i) for i in modifications)
     if len(modifications) > 1:
         detail = (
-            f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} has '
+            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
             f'samples with inconsistent modifications applied.'
         )
         yield AuditFailure('inconsistent modifications', detail, level='ERROR')
@@ -188,7 +187,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
             samples_to_link = [audit_link(path_to_text(bad_sample), bad_sample) for bad_sample in bad_samples]
             sample_detail = samples_to_link = ', '.join(samples_to_link)
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
                 f'a CRISPR screen assay but has no specified modification on its sample(s); '
                 f'modifications are missing on {sample_detail}.'
             )
@@ -213,8 +212,7 @@ def audit_preferred_assay_title(value, system):
     if preferred_assay_title and preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
-            f'assay term "{assay_term_name}", but preferred assay title "{preferred_assay_title}", '
-            f'which is not an expected preferred assay title for this assay term.'
+            f'assay_term {assay_term_name}, but preferred_assay_title "{preferred_assay_title}".'
         )
         yield AuditFailure('inconsistent assays', detail, level='WARNING')
 

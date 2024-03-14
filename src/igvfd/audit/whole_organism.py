@@ -23,7 +23,7 @@ def audit_whole_organism_human_taxa(value, system):
         if value['taxa'] == 'Homo sapiens':
             detail = (
                 f'Whole organism {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'specifies that it is of taxa Homo sapiens, this is disallowed.'
+                f'specifies that it is of taxa Homo sapiens.'
             )
             yield AuditFailure('unexpected donor', detail, level='ERROR')
     elif 'donors' in value:
@@ -35,6 +35,6 @@ def audit_whole_organism_human_taxa(value, system):
         if 'Homo sapiens' in taxa_set:
             detail = (
                 f'Whole organism {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'specifies that it has donor(s) of taxa Homo sapiens, this is disallowed.'
+                f'specifies that it has donor(s) of taxa Homo sapiens.'
             )
             yield AuditFailure('unexpected donor', detail, level='ERROR')

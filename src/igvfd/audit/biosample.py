@@ -38,7 +38,7 @@ def audit_biosample_taxa_check(value, system):
             for k, v in taxa_dict.items():
                 taxa_donors.append(f'{k} ({", ".join(v)})')
             taxa_detail = ', '.join(taxa_donors)
-            detail = f'Biosample {audit_link(path_to_text(sample_id), sample_id)} has donors of taxas {taxa_detail}. '
+            detail = f'Biosample {audit_link(path_to_text(sample_id), sample_id)} has donors with taxas {taxa_detail}. '
             yield AuditFailure('inconsistent donor taxa', detail, level='ERROR')
 
 

@@ -40,7 +40,7 @@ def audit_missing_seqspec(value, system):
     '''
     [
         {
-            "audit_description": "Sequence files in a file set are expected to link to a seqspec file.",
+            "audit_description": "Sequence files in a file set are expected to link to a sequence specification file",
             "audit_category": "missing sequence specification",
             "audit_level": "NOT_COMPLIANT"
         }

@@ -13,7 +13,7 @@ def audit_tissue_ccf_id(value, system):
     '''
     [
         {
-            "audit_description": "Tissues are expected to specify a common coordinate framework identifier (CCF ID).",
+            "audit_description": "Human tissues are expected to specify a common coordinate framework identifier (CCF ID).",
             "audit_category": "missing CCF ID",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -23,7 +23,7 @@ def audit_tissue_ccf_id(value, system):
         value_id = system.get('path')
         detail = (
             f'Tissue {audit_link(path_to_text(value_id), value_id)} '
-            f'is missing common coordinate framework identifier (CCF ID) required for human data.'
+            f'is missing common coordinate framework identifier (CCF ID).'
         )
         yield AuditFailure('missing CCF ID', detail, level='NOT_COMPLIANT')
 

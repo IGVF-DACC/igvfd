@@ -26,7 +26,6 @@ def audit_auxiliary_set_files(value, system):
     if non_sequence_files:
         non_sequence_files = ', '.join(
             [audit_link(path_to_text(file), file) for file in non_sequence_files])
-        detail = (f'AuxiliarySet {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
-                  f'file(s) that are not sequence or configuration files: {non_sequence_files}. This is unexpected as '
-                  f'auxiliary sets are only expected to host sequence files or configuration files.')
+        detail = (f'Auxiliary set {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
+                  f'file(s) that are not sequence or configuration files: {non_sequence_files}.')
         yield AuditFailure('unexpected files', detail, level='WARNING')

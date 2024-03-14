@@ -31,8 +31,8 @@ def audit_curated_set_mismatched_taxa(value, system):
         )
         if samples_taxa != taxa and '' not in taxa:
             detail = (
-                f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'has a taxa which does not match the taxa of the associated Samples.'
+                f'Curated set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has a taxa which does not match the taxa of the associated samples.'
             )
             yield AuditFailure('inconsistent taxa', detail, level='ERROR')
     if 'donors' in value:
@@ -44,7 +44,7 @@ def audit_curated_set_mismatched_taxa(value, system):
         )
         if donors_taxa != taxa and '' not in taxa:
             detail = (
-                f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'has a taxa which does not match the taxa of the associated Donors.'
+                f'Curated set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has a taxa which does not match the taxa of the associated donors.'
             )
             yield AuditFailure('inconsistent taxa', detail, level='ERROR')

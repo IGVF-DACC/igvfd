@@ -30,7 +30,7 @@ def audit_construct_library_set_associated_phenotypes(value, system):
             return
         else:
             detail = (
-                f'ConstructLibrarySet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
                 f'has phenotype-associated variants listed in its selection_criteria, '
                 f'but no phenotype term specified in associated_phenotypes.'
             )
@@ -51,7 +51,7 @@ def audit_construct_library_set_plasmid_map(value, system):
     '''
     map_counter = 0
     detail = (
-        f'ConstructLibrarySet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+        f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
         f'does not have a plasmid map document attached.'
     )
     documents = value.get('documents', [])
@@ -84,7 +84,7 @@ def audit_construct_library_set_scope(value, system):
     if value.get('scope') in ['exon', 'tile']:
         if len(value.get('small_scale_gene_list', [])) > 1:
             detail = (
-                f'ConstructLibrarySet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
                 f'specifies it has a scope of {value["scope"]}, but multiple genes are listed in the '
                 f'small_scale_gene_list property.'
             )
@@ -107,7 +107,6 @@ def audit_construct_library_set_files(value, system):
     if non_sequence_files:
         non_sequence_files = ', '.join(
             [audit_link(path_to_text(file), file) for file in non_sequence_files])
-        detail = (f'ConstructLibrarySet {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
-                  f'file(s) that are not sequence or configuration files: {non_sequence_files}. This is unexpected as '
-                  f'construct library sets are only expected to host sequence files or configuration files.')
+        detail = (f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
+                  f'file(s) that are not sequence or configuration files: {non_sequence_files}.')
         yield AuditFailure('unexpected files', detail, level='WARNING')

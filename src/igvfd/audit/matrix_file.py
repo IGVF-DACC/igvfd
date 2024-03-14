@@ -22,7 +22,6 @@ def audit_matrix_file_dimensions(value, system):
     if value['dimension1'] == value['dimension2'] and value['file_format'] != 'hic':
         detail = (
             f'Matrix file {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'is expected to have different dimensions, but has '
-            f'{value["dimension1"]} for both dimension 1 and dimension 2.'
+            f'has {value["dimension1"]} for both dimension 1 and dimension 2.'
         )
         yield AuditFailure('inconsistent dimensions', detail, level='WARNING')
