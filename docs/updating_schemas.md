@@ -331,26 +331,36 @@ Schema property guidelines
 
 * When naming a property, try to avoid overly long names.
 * Array properties must have a plural property name: samples, not sample.
-* All properties must include the following components:
-    * `title`: a readable name of the property, in Title Case.
-    * `type`: one of `string`, `number`, `integer`, `boolean`, `array`, or `object`.
-    * `description`: a definition of the property.
-* Properties may include the following components where necessary:
-    * `comment`: Instructions for submitters explaining details of how to submit the property.
-    * `submissionExample`: An example of how to specify the property using appscript and igvf_utils tools. Required for any submittable property.
-    * `notSubmittable`: A boolean property which is always `True`. Required for every calculated property. Must not be present for any submittable property.
-    * `enum`: A list of valid values. Only applicable to string properties which must conform to a strict vocabulary and don't allow free text.
-    * `linkTo`: A list of valid objects to link to. Only applicable to strings. Must be the name of another schema.
+
+Below are the required and optional components divided according the property's `type`. Those denoted with a * are required.
+* All properties:
+    * `title`\*: A readable name of the property, in Title Case.
+    * `type`\*: `string`, `number`, `integer`, `boolean`, `array`, or `object`.
+    * `description`\*: a definition of the property.
     * `default`: A default value automatically assigned if no value is provided upon submission.
-    * `minimum`: A minimum value. Only applicable to numbers or integers.
-    * `maximum`: A minimum value. Only applicable to numbers or integers.
-    * `permission`: A string property which is always `import_items`. Required for properties that are limited to admins only. Must not be present for any property that can be modified by any submitter.
-    * `pattern`: A regex string applied to the property. Only applicable to strings.
-    * `minItems`: An integer indicating the minimum number of items in an array. Required for every array, and must be at least 1.
-    * `maxItems`: An integer indicating the maximum number of items in an array. Only applicable to arrays. Optional.
-    * `uniqueItems`: A boolean which is always `True`. Required for every array.
-    * `properties`: A nested schema. Must obey above requirements for each property: `title`, `type`, and `description`. Required for every object.
-    * `items`: A definition of the items that are valid in the array. Required for every array. Must include `type` at minimum.
+    * Strings:
+        * `enum`: A list of valid values. Only applicable to string properties which must conform to a strict vocabulary and don't allow free text.
+        * `linkTo`: A list of valid objects to link to. Only applicable to strings. Must be the name of another schema.
+        * `pattern`: A regex string applied to the property. Only applicable to strings.
+    * Numbers or integers:
+        * `minimum`: A minimum value.
+        * `maximum`: A minimum value.
+    * Arrays:
+        * `items`\*: A definition of the items that are valid in the array. Must include `type` at minimum.
+        * `minItems`\*: An integer indicating the minimum number of items in an array. Must be at least 1.
+        * `maxItems`: An integer indicating the maximum number of items in an array.
+        * `uniqueItems`\*: A boolean which is always `True`.
+    * Objects:
+        * `properties`: A nested schema. Must obey above requirements for each property: `title`, `type`, and `description`.
+
+The following are properties categorized by IGVF members' permission to submit. These properties must follow the preceding guidelines according to their `type` in addition to the guidelines below.
+* Submittable properties:
+    * `comment`\*: Instructions for submitters explaining details of how to submit the property. If there is a dependency defined for the property, the comment must include: "This property is affected by dependencies. See \[link\]."
+    * `submissionExample`\*: An example of how to specify the property using appscript and igvf_utils tools.
+* Admin only properties:
+    * `permission`\*: A string property which is always `import_items`. Must not be present for any property that can be modified by any submitter.
+* Calculated properties:
+    * `notSubmittable`\*: A boolean property which is always `True`. Must not be present for any submittable property.
 
 -----
 
