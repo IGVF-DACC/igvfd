@@ -212,6 +212,42 @@
                 "igvf_utils": "/platform-terms/EFO_0004203/"
             }
         },
+        "sequencing_kit": {
+            "title": "Sequencing Kit",
+            "description": "A reagent kit used with a library to prepare it for sequencing.",
+            "type": "string",
+            "enum": [
+                "HiSeq SBS Kit v4",
+                "HiSeq SR Cluser Kit v4-cBot-HS",
+                "HiSeq PE Cluster Kit v4-cBot-HS",
+                "HiSeq SR Rapid Cluster Kit v2",
+                "HiSeq PE Rapid Cluster Kit v2",
+                "HiSeq Rapid SBS Kit v2",
+                "HiSeq 3000/4000 SBS Kit",
+                "HiSeq 3000/4000 SR Cluster Kit",
+                "HiSeq 3000/4000 PE Cluster Kit",
+                "NextSeq 500 Mid Output Kit",
+                "NextSeq 500 High Output Kit",
+                "NextSeq 500 Mid Output v2 Kit",
+                "NextSeq 500 High Output v2 Kit",
+                "NextSeq 500/550 Mid-Output v2.5 Kit",
+                "NextSeq 500/550 High-Output v2.5 Kit",
+                "TG NextSeq 500/550 Mid-Output Kit v2.5",
+                "TG NextSeq 500/550 High-Output Kit v2.5",
+                "NextSeq 1000/2000 P1 XLEAP-SBS Reagent Kit",
+                "NextSeq 1000/2000 P2 XLEAP-SBS Reagent Kit",
+                "NextSeq 2000 P3 XLEAP-SBS Reagent Kit",
+                "NextSeq 2000 P4 XLEAP-SBS Reagent Kit",
+                "NovaSeq 6000 SP Reagent Kit v1.5",
+                "NovaSeq 6000 S1 Reagent Kit v1.5",
+                "NovaSeq 6000 S2 Reagnet Kit v1.5",
+                "NovaSeq 6000 S4 Reagent Kit V1.5"
+            ],
+            "submissionExample": {
+                "appscript": "HiSeq SBS Kit v4",
+                "igvf_utils": "HiSeq SBS Kit v4"
+            }
+        },
         "sequencing_run": {
             "title": "Sequencing Run",
             "description": "An ordinal number indicating which sequencing run of the associated library that the file belongs to.",
