@@ -367,17 +367,17 @@ The following are properties categorized by IGVF members' permission to submit. 
 Changelog guidelines
 ----------------
 
-* Changes in calculated properties should be noted in the changelog.
-* Changes to searches, such as fuzzy vs. exact, or to embedding should not be noted in the changelog.
-* Changes to properties which are inherited or merged into other schemas, such as mixins, must be noted in the changelogs of all affected schemas.
-* New changelog entries are added at the top of the changelog.
-* Changes occurring in different PRs should be recorded as separate changelog entries.
-* Changelog entries should mention one property per line. Additionally, only one enum should be mentioned in a line where possible. For example, if 10 enums are added to a property, each one is noted on a separate line.
-* Changelog entries should begin with a present tense verb describing the action: add, remove, rename, update. Adhere to stylebook whenever possible.
+* Do record changes in calculated properties.
+* Don't record changes to searches, such as fuzzy vs. exact, or to embedding.
+* Add entries to all affected schemas when there is a change to properties which are inherited or merged into other schemas, such as mixins.
+* Add new entries at the top of the changelog.
+* Record changes occurring in different PRs as separate entries.
+* Mention only one property per line. Additionally, only one enum should be mentioned in a line where possible. For example, if 10 enums are added to a property, each one is noted on a separate line.
+* Begin with a present tense verb describing the action: add, remove, rename. Adhere to the stylebook whenever possible.
 
 
 ### Stylebook
-The following table provides common types of schema changes and provides a specific sentence pattern to follow for the changelog entry.
+The following table provides common types of schema changes and provides a specific sentence pattern to follow for the entry.
 |Type of schema change|Sentence example|
 |-|-|
 |Add a property|Add \[property name\].|
