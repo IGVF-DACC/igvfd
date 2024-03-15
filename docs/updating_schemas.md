@@ -332,35 +332,35 @@ Schema property guidelines
 * When naming a property, try to avoid overly long names.
 * Array properties must have a plural property name: samples, not sample.
 
-Below are the required and optional components divided according the property's `type`. Those denoted with a * are required.
+Below are the required and optional components divided according the property's `type`.
 * All properties:
-    * `title`\*: A readable name of the property, in Title Case.
-    * `type`\*: `string`, `number`, `integer`, `boolean`, `array`, or `object`.
-    * `description`\*: a definition of the property.
+    * `title`: Required. A readable name of the property, in Title Case.
+    * `type`: Required. `string`, `number`, `integer`, `boolean`, `array`, or `object`.
+    * `description`: Required. A definition of the property.
     * `default`: A default value automatically assigned if no value is provided upon submission.
     * Strings:
-        * `enum`: A list of valid values. Only applicable to string properties which must conform to a strict vocabulary and don't allow free text.
-        * `linkTo`: A list of valid objects to link to. Only applicable to strings. Must be the name of another schema.
-        * `pattern`: A regex string applied to the property. Only applicable to strings.
+        * `enum`: A list of valid values when a property requires a controlled vocabulary.
+        * `linkTo`: A list of valid objects to link to. Must be the name of a schema, which can be abstract or concrete.
+        * `pattern`: A regex pattern applied to the string.
     * Numbers or integers:
         * `minimum`: A minimum value.
         * `maximum`: A minimum value.
     * Arrays:
-        * `items`\*: A definition of the items that are valid in the array. Must include `type` at minimum.
-        * `minItems`\*: An integer indicating the minimum number of items in an array. Must be at least 1.
+        * `items`: Required. A definition of the items that are valid in the array. Must include `type` at minimum.
+        * `minItems`: Required. An integer indicating the minimum number of items in an array. Must be at least 1.
         * `maxItems`: An integer indicating the maximum number of items in an array.
-        * `uniqueItems`\*: A boolean which is always `True`.
+        * `uniqueItems`: Required. A boolean which is always `True`.
     * Objects:
         * `properties`: A nested schema. Must obey above requirements for each property: `title`, `type`, and `description`.
 
 The following are properties categorized by IGVF members' permission to submit. These properties must follow the preceding guidelines according to their `type` in addition to the guidelines below.
 * Submittable properties:
-    * `comment`\*: Instructions for submitters explaining details of how to submit the property. If there is a dependency defined for the property, the comment must include: "This property is affected by dependencies. See \[link\]."
-    * `submissionExample`\*: An example of how to specify the property using appscript and igvf_utils tools.
+    * `comment`: Required. Instructions for submitters explaining details of how to submit the property. If there is a dependency defined for the property, the comment must include: "This property is affected by dependencies. See \[link\]."
+    * `submissionExample`: Required. An example of how to specify the property using appscript and igvf_utils tools.
 * Admin only properties:
-    * `permission`\*: A string property which is always `import_items`. Must not be present for any property that can be modified by any submitter.
+    * `permission`: Required. A string property which is always `import_items`. Must not be present for any property that can be modified by any submitter.
 * Calculated properties:
-    * `notSubmittable`\*: A boolean property which is always `True`. Must not be present for any submittable property.
+    * `notSubmittable`: Required. A boolean property which is always `True`. Must not be present for any submittable property.
 
 -----
 
