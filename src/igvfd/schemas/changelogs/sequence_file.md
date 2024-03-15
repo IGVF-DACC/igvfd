@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Minor changes since schema version 11
+
+* Add `sequencing_kit`.
+
 ### Schema version 11
 
 * Require `derived_from` to contain at least one value.
