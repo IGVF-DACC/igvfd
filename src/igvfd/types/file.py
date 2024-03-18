@@ -114,7 +114,7 @@ class File(Item):
 
     @calculated_property(schema={
         'title': 'Integrated In',
-        'description': 'Construct library sets that this file was used for in insert design or directly cloned as a vector.',
+        'description': 'Construct library set(s) that this file was used for in insert design.',
         'type': 'array',
         'items': {
             'title': 'Integrated In',
