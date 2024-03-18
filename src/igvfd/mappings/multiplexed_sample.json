@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "2fe2990950543caffed38e3252c885f2",
-    "index_name": "multiplexed_sample_2fe29909",
-=======
-    "hash": "2a711753e127bd5c482beea80a982c69",
-    "index_name": "multiplexed_sample_2a711753",
->>>>>>> 4a2e1976 (mappings)
+    "hash": "4e96fd57c765ba58bceb78dbf5b0b653",
+    "index_name": "multiplexed_sample_4e96fd57",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [

@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "9b1cae3d72a5b067ae6c32575577a79d",
-    "index_name": "model_set_9b1cae3d",
-=======
-    "hash": "5f1e786f3f2cf66e5db6e8862cf79f7f",
-    "index_name": "model_set_5f1e786f",
->>>>>>> 4a2e1976 (mappings)
+    "hash": "1248732a2b3347e310235d41efc3157e",
+    "index_name": "model_set_1248732a",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [

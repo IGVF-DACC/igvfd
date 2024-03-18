@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "4e7d66efd8e35b8b6af78aa5f1e51271",
-    "index_name": "construct_library_set_4e7d66ef",
-=======
-    "hash": "f4f7f99fce99736720793a85bed7c871",
-    "index_name": "construct_library_set_f4f7f99f",
->>>>>>> 4a2e1976 (mappings)
+    "hash": "741ee1a52b0f19a5e6a15d97183274a8",
+    "index_name": "construct_library_set_741ee1a5",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
