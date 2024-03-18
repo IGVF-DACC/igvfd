@@ -1,11 +1,12 @@
 {
     "title": "Open Reading Frame",
-    "description": "Protein-encoding open reading frames (ORFs)",
-    "$id": "/profiles/gene.json",
+    "description": "Protein-encoding open reading frames (ORF)",
+    "$id": "/profiles/open_reading_frame.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "required": [
-        "orf_id"
+        "orf_id",
+        "gene"
     ],
     "identifyingProperties": [
         "uuid",
@@ -52,12 +53,6 @@
             "type": "array",
             "linkTo": "Gene"
         },
-        "gene_symbol": {
-            "title": "Gene Symbol",
-            "description": "Gene symbol approved by the official nomenclature.",
-            "type": "string",
-            "format": "gene_name"
-        },
         "protein_id": {
             "title": "ENSEMBL ProteinID",
             "description": "ENSEMBL ProteinID of official nomenclature approved gene. The GeneID does not include the current version number suffix.",
@@ -78,23 +73,25 @@
                 "pattern": "^(hORFeome:[1-9][0-9]*)$"
             }
         },
-        "pct_of_identical_matches_to_protein": {
+        "pct_identical_protein": {
             "title": "Percentage of identical matches to Ensembl protein ID",
             "description": "The Percentage of identical matches to Ensembl protein ID.",
             "type": "number",
             "minimum": 0,
             "maximum": 100
         },
-        "pct_of_orf_covered_by_protein": {
+        "pct_coverage_protein": {
             "title": "Percentage of ORF covered by Ensembl protein",
             "description": "The percentage of ORF covered by Ensembl protein.",
+            "comment": " The percentage of the alignment between the ORF and it’s corresponding protein id over the length of the protein id.",
             "type": "number",
             "minimum": 0,
             "maximum": 100
         },
-        "pct_of_protein_covered_by_orf": {
+        "pct_coverage_orf": {
             "title": "Percentage of Ensembl protein covered by ORF",
             "description": "The percentage of Ensembl protein covered by ORF.",
+            "comment": " The percentage of the alignment between the ORF and it’s corresponding protein id over the length of the ORF.",
             "type": "number",
             "minimum": 0,
             "maximum": 100
