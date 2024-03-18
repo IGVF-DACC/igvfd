@@ -172,6 +172,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
         }
     ]
     '''
+    description = audit_CRISPR_screen_lacking_modifications.__doc__.json()[0]['audit_detail']
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     crispr_assays = ['cas mediated mutagenesis',
@@ -192,7 +193,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
                 f'a CRISPR screen assay but has no specified modification on its sample(s); '
                 f'modifications are missing on {sample_detail}.'
             )
-            yield AuditFailure('missing modification', detail, level='NOT_COMPLIANT')
+            yield AuditFailure('missing modification', f'{detail} {description}', level='NOT_COMPLIANT')
 
 
 @audit_checker('MeasurementSet', frame='object')
