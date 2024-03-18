@@ -344,7 +344,7 @@ Below are the required and optional components divided according the property's 
         * `pattern`: A regex pattern applied to the string.
     * Numbers or integers:
         * `minimum`: A minimum value.
-        * `maximum`: A minimum value.
+        * `maximum`: A maximum value.
     * Arrays:
         * `items`: Required. A definition of the items that are valid in the array. Must include `type` at minimum.
         * `minItems`: Required. An integer indicating the minimum number of items in an array. Must be at least 1.
@@ -355,7 +355,7 @@ Below are the required and optional components divided according the property's 
 
 The following are properties categorized by IGVF members' permission to submit. These properties must follow the preceding guidelines according to their `type` in addition to the guidelines below.
 * Submittable properties:
-    * `comment`: Required. Instructions for submitters explaining details of how to submit the property. If there is a dependency defined for the property, the comment must include: "This property is affected by dependencies. See \[link\]."
+    * `comment`: Instructions for submitters explaining details of how to submit the property. If there is a dependency defined for the property, the comment must include: "This property is affected by dependencies. See \[link\]."
     * `submissionExample`: Required. An example of how to specify the property using appscript and igvf_utils tools.
 * Admin only properties:
     * `permission`: Required. A string property which is always `import_items`. Must not be present for any property that can be modified by any submitter.
