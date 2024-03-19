@@ -14,9 +14,13 @@ from .file_set import (
 @audit_checker('AuxiliarySet', frame='object')
 def audit_auxiliary_set_files(value, system):
     '''
-        audit_detail: Auxiliary sets are not expected to have any files except sequence files or configuration files.
-        audit_category: unexpected file association
-        audit_levels: WARNING
+    [
+        {
+            "audit_description": "Auxiliary sets are not expected to have any files except sequence files or configuration files.",
+            "audit_category": "unexpected file association",
+            "audit_level": "WARNING"
+        }
+    ]
     '''
     non_sequence_files = find_non_config_sequence_files(value)
     if non_sequence_files:

@@ -19,9 +19,13 @@ def find_non_config_sequence_files(file_set):
 @audit_checker('FileSet', frame='object')
 def audit_no_files(value, system):
     '''
-        audit_detail: File sets are expected to have files.
-        audit_category: missing files
-        audit_levels: WARNING
+    [
+        {
+            "audit_description": "File sets are expected to have files.",
+            "audit_category": "missing files",
+            "audit_level": "WARNING"
+        }
+    ]
     '''
     if not(value.get('files', '')):
         detail = (
@@ -34,9 +38,13 @@ def audit_no_files(value, system):
 @audit_checker('FileSet', frame='object')
 def audit_missing_seqspec(value, system):
     '''
-        audit_detail: Sequence files in a file set are expected to link to a seqspec file.
-        audit_category: missing sequence specification
-        audit_levels: NOT_COMPLIANT
+    [
+        {
+            "audit_description": "Sequence files in a file set are expected to link to a seqspec file.",
+            "audit_category": "missing sequence specification",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
     '''
     if 'files' in value:
         no_seqspec = []
@@ -58,9 +66,13 @@ def audit_missing_seqspec(value, system):
 @audit_checker('FileSet', frame='object')
 def audit_files_associated_with_incorrect_fileset(value, system):
     '''
-        audit_detail: All files associated with a seqspec (both sequencing and seqspec files) are expected to be linked on the same file set.
-        audit_category: missing related files
-        audit_levels: ERROR
+    [
+        {
+            "audit_description": "All files associated with a seqspec (both sequencing and seqspec files) are expected to be linked on the same file set.",
+            "audit_category": "missing related files",
+            "audit_level": "ERROR"
+        }
+    ]
     '''
     if 'files' in value:
         for file in value['files']:
@@ -98,9 +110,13 @@ def audit_files_associated_with_incorrect_fileset(value, system):
 @audit_checker('FileSet', frame='object')
 def audit_inconsistent_seqspec(value, system):
     '''
-        audit_detail: Sequence files in a file set from the same sequencing run, flowcell_id, lane, and index are expected to link to the same seqspec file, which should be unique to that set of sequence files.
-        audit_category: inconsistent sequence specifications
-        audit_levels: ERROR
+    [
+        {
+            "audit_description": "Sequence files in a file set from the same sequencing run, flowcell_id, lane, and index are expected to link to the same seqspec file, which should be unique to that set of sequence files.",
+            "audit_category": "inconsistent sequence specifications",
+            "audit_level": "ERROR"
+        }
+    ]
     '''
     if 'files' in value:
         sequence_to_seqspec = {}

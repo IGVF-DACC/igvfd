@@ -11,9 +11,13 @@ from .formatter import (
 @audit_checker('AnalysisSet', frame='object')
 def audit_input_file_sets(value, system):
     '''
-        audit_detail: Primary analysis sets are expected to have at least one measurement set as an input file set.
-        audit_category: inconsistent input file sets
-        audit_levels: WARNING
+    [
+        {
+            "audit_description": "Primary analysis sets are expected to have at least one measurement set as an input file set.",
+            "audit_category": "inconsistent input file sets",
+            "audit_level": "WARNING"
+        }
+    ]
     '''
     detail = ''
     if value.get('file_set_type') == 'primary analysis':

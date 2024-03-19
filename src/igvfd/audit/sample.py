@@ -11,9 +11,13 @@ from .formatter import (
 @audit_checker('Sample', frame='object?skip_calculated=true')
 def audit_sample_sorted_from_parent_child_check(value, system):
     '''
-        audit_detail: Samples that are sorted from a parent sample are expected to share most of the parent's metadata properties.
-        audit_category: inconsistent sorted_from metadata
-        audit_levels: ERROR
+    [
+        {
+            "audit_description": "Samples that are sorted from a parent sample are expected to share most of the parent's metadata properties.",
+            "audit_category": "inconsistent sorted_from metadata",
+            "audit_level": "ERROR"
+        }
+    ]
     '''
     if 'sorted_from' in value:
         error_keys = []
@@ -43,9 +47,13 @@ def audit_sample_sorted_from_parent_child_check(value, system):
 @audit_checker('Sample', frame='object')
 def audit_sample_virtual_donor_check(value, system):
     '''
-        audit_detail: Non-virtual samples are not expected to be derived from virtual donors.
-        audit_category: inconsistent sample metadata
-        audit_levels: ERROR
+    [
+        {
+            "audit_description": "Non-virtual samples are not expected to be derived from virtual donors.",
+            "audit_category": "inconsistent sample metadata",
+            "audit_level": "ERROR"
+        }
+    ]
     '''
     if ('donors' in value) and (value.get('virtual', False) == False):
         sample_id = value['@id']
@@ -68,9 +76,13 @@ def audit_sample_virtual_donor_check(value, system):
 @audit_checker('Sample', frame='object')
 def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
     '''
-        audit_detail: Non-virtual samples are not expected to be derived from virtual samples.
-        audit_category: inconsistent sample metadata
-        audit_levels: ERROR
+    [
+        {
+            "audit_description": "Non-virtual samples are not expected to be derived from virtual samples.",
+            "audit_category": "inconsistent sample metadata",
+            "audit_level": "ERROR"
+        }
+    ]
     '''
     sample_id = system.get('path')
     sample_is_virtual = value.get('virtual', False)
@@ -118,9 +130,13 @@ def get_virtual_sample_failures(
 @audit_checker('Sample', frame='object')
 def audit_construct_library_sets_types(value, system):
     '''
-        audit_detail: Construct library sets linked in a sample are expected to have the same file_set_type.
-        audit_category: inconsistent construct library set details
-        audit_levels: WARNING
+    [
+        {
+            "audit_description": "Construct library sets linked in a sample are expected to have the same file_set_type.",
+            "audit_category": "inconsistent construct library set details",
+            "audit_level": "WARNING"
+        }
+    ]
     '''
     if 'construct_library_sets' in value and len(value['construct_library_sets']) > 1:
         library_types = set()
