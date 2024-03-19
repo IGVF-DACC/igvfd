@@ -635,3 +635,67 @@ def test_audit_inconsistent_seqspec(
         error['category'] == 'inconsistent sequence specifications'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_inconsistent_sequencing_kit(
+    testapp,
+    measurement_set,
+    sequence_file,
+    sequence_file_sequencing_run_2,
+    platform_term_NovaSeq
+):
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing sequencing kit'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'sequencing_kit': 'HiSeq Rapid SBS Kit v2'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent sequencing kit'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'sequencing_kit': 'NovaSeq 6000 S4 Reagent Kit V1.5',
+            'sequencing_platform': platform_term_NovaSeq['@id']
+        }
+    )
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'file_set': measurement_set['@id'],
+            'illumina_read_type': 'R2',
+            'sequencing_run': 1,
+            'sequencing_kit': 'NovaSeq 6000 SP Reagent Kit v1.5'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent sequencing kit'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'sequencing_kit': 'NovaSeq 6000 S4 Reagent Kit V1.5',
+            'sequencing_platform': platform_term_NovaSeq['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent sequencing kit'
+        for error in res.json['audit'].get('ERROR', [])
+    )
