@@ -1,6 +1,6 @@
 ## Changelog for *`reference_file.json`*
 
-### Minor changes since schema version 7
+### Minor changes since schema version 11
 
 * Add calculated property `integrated_in`.
 
