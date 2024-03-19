@@ -241,7 +241,10 @@
                 "NovaSeq 6000 SP Reagent Kit v1.5",
                 "NovaSeq 6000 S1 Reagent Kit v1.5",
                 "NovaSeq 6000 S2 Reagent Kit v1.5",
-                "NovaSeq 6000 S4 Reagent Kit V1.5"
+                "NovaSeq 6000 S4 Reagent Kit V1.5",
+                "Revio sequencing plate",
+                "Sequel sequencing kit 3.0",
+                "Sequel II sequencing kit 2.0"
             ],
             "submissionExample": {
                 "appscript": "HiSeq SBS Kit v4",
