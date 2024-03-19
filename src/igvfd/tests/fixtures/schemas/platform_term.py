@@ -11,6 +11,15 @@ def platform_term_HiSeq(testapp):
 
 
 @pytest.fixture
+def platform_term_NovaSeq(testapp):
+    item = {
+        'term_id': 'EFO:0008637',
+        'term_name': 'Illumina NovaSeq 6000'
+    }
+    return testapp.post_json('/platform_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def platform_term_v1(platform_term_HiSeq):
     item = platform_term_HiSeq.copy()
     item.update({
