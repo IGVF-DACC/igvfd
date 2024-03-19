@@ -1,5 +1,6 @@
 ## Changelog for *`file.json`*
 
+* Add calculated property `integrated_in`. (03/14/2024)
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status. (03/06/2024)
 * Add `release_timestamp`. (01/31/2024)
 * Disallow submission of empty string in `dbxrefs`. (11/08/2023)

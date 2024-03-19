@@ -1,6 +1,6 @@
 {
-    "hash": "209afab9bdbc4f77c0c48e372f6cc904",
-    "index_name": "reference_file_209afab9",
+    "hash": "f5e45d5fed9cd0885cd386a4a7996530",
+    "index_name": "reference_file_f5e45d5f",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -292,6 +292,9 @@
                         "type": "long"
                     },
                     "href": {
+                        "type": "keyword"
+                    },
+                    "integrated_in": {
                         "type": "keyword"
                     },
                     "lab": {

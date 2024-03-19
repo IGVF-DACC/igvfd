@@ -1,6 +1,6 @@
 {
-    "hash": "49bc0c1f48b9c1f48f13f7a3471934cf",
-    "index_name": "analysis_set_49bc0c1f",
+    "hash": "e15268f5cfdb0539292da3be46191d1f",
+    "index_name": "analysis_set_e15268f5",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -882,6 +882,9 @@
                                 "type": "keyword"
                             },
                             "index": {
+                                "type": "keyword"
+                            },
+                            "integrated_in": {
                                 "type": "keyword"
                             },
                             "lab": {

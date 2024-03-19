@@ -112,3 +112,21 @@ def test_types_matrix_file_content_summary(testapp, matrix_file):
     )
     res = testapp.get(matrix_file['@id'])
     assert res.json.get('content_summary') == 'variant by treatment transcriptome annotations'
+
+
+def test_integrated_in(testapp, construct_library_set_genome_wide, base_expression_construct_library_set, tabular_file):
+    testapp.patch_json(
+        construct_library_set_genome_wide['@id'],
+        {
+            'integrated_content_files': [tabular_file['@id']]
+        }
+    )
+    testapp.patch_json(
+        base_expression_construct_library_set['@id'],
+        {
+            'integrated_content_files': [tabular_file['@id']]
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert set(res.json.get('integrated_in')) == {
+        base_expression_construct_library_set['@id'], construct_library_set_genome_wide['@id']}

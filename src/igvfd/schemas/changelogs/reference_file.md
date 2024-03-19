@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 11
+
+* Add calculated property `integrated_in`.
+
 ### Schema version 11
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.

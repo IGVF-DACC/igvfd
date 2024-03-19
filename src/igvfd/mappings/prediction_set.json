@@ -1,6 +1,6 @@
 {
-    "hash": "1658ff62a9f90f803269954aef597f67",
-    "index_name": "prediction_set_1658ff62",
+    "hash": "02ec5ce17b6d5ab4f873e1d1fcd31438",
+    "index_name": "prediction_set_02ec5ce1",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -879,6 +879,9 @@
                                 "type": "keyword"
                             },
                             "index": {
+                                "type": "keyword"
+                            },
+                            "integrated_in": {
                                 "type": "keyword"
                             },
                             "lab": {

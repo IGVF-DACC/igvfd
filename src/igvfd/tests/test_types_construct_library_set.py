@@ -1,4 +1,5 @@
 import pytest
+from igvfd.tests.test_permissions import _remote_user_testapp
 
 
 def test_samples_link(testapp, tissue, base_expression_construct_library_set):
@@ -112,3 +113,27 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     res = testapp.get(construct_library_set_y2h['@id'])
     assert res.json.get(
         'summary') == 'Expression vector library of tile tile1 of MYC (AA 1-96) (protein interactors, phenotype-associated variants) associated with Myocardial infarction'
+
+
+def test_integrated_content_files_dependency(testapp, app, submitter, lab, award, tabular_file, signal_file):
+    testapp.patch_json(submitter['@id'], {'groups': ['verified']})
+    test_user = _remote_user_testapp(app, submitter['uuid'])
+
+    item = {
+        'lab': lab['@id'],
+        'award': award['@id'],
+        'file_set_type': 'reporter library',
+        'scope': 'genome-wide',
+        'selection_criteria': ['accessible genome regions'],
+        'integrated_content_files': [tabular_file['@id']]
+    }
+    cls = test_user.post_json('/construct_library_set', item, status=201).json['@graph'][0]
+
+    res = test_user.patch_json(
+        cls['@id'],
+        {'integrated_content_files': [signal_file['@id']]}, expect_errors=True)
+    assert res.status_code == 422
+    res = test_user.patch_json(
+        cls['@id'],
+        {'integrated_content_files': [signal_file['@id'], tabular_file['@id']]}, expect_errors=True)
+    assert res.status_code == 422
