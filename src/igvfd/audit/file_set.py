@@ -247,9 +247,18 @@ def audit_loci_valid_chrom_sizes(value, system):
 @audit_checker('FileSet', frame='object')
 def audit_inconsistent_sequencing_kit(value, system):
     '''
-        audit_detail: Sequence files should specify a sequencing kit which is consistent with other files in the same run and with a sequencing platform.
-        audit_category: inconsistent sequencing kit, missing sequencing kit
-        audit_levels: WARNING, ERROR
+    [
+        {
+            "audit_description": "Sequence files should specify a sequencing kit which is consistent with their sequencing platform. Sequence files in the same sequencing run should also specify the same sequencing kit.",
+            "audit_category": "inconsistent sequencing kit",
+            "audit_level": "ERROR"
+        },
+        {
+            "audit_description": "Sequence files should specify a sequencing kit.",
+            "audit_category": "missing sequencing kit",
+            "audit_level": "WARNING"
+        }
+    ]
     '''
     kit_to_platform = {
         'HiSeq SBS Kit v4': ['/platform-terms/EFO_0008565/'],
