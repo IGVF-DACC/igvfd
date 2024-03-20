@@ -3,8 +3,8 @@ import json
 
 
 def audit_link(linkText, uri):
-    """Generate link "markdown" from URI."""
-    return '[{{{}]({}}})'.format(linkText, uri)
+    """Generate link markdown from URI."""
+    return '[{}]({})'.format(linkText, uri)
 
 
 def path_to_text(path):
