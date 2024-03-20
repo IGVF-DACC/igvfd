@@ -15,7 +15,7 @@ def audit_ntr_term_id(value, system):
     [
         {
             "audit_description": "Ontology terms with a newly requested term ID are expected to have it updated following its addition to the appropriate ontology database.",
-            "audit_category": "NTR term id",
+            "audit_category": "NTR term ID",
             "audit_level": "INTERNAL_ACTION"
         }
     ]

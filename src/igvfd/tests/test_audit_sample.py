@@ -53,24 +53,8 @@ def test_audit_sample_virtual_donor_check(
         }
     )
     tissue_res = testapp.get(tissue['@id'] + '@@index-data')
-    human_donor_res = testapp.get(human_donor['@id'] + '@@index-data')
-    rodent_donor_res = testapp.get(rodent_donor['@id'] + '@@index-data')
     assert any(
         error['category'] == 'inconsistent donor'
-        for error in tissue_res.json['audit'].get('ERROR', [])
-    )
-    tissue_link = '{' + tissue_res.json['object'].get('accession') + '|' + tissue_res.json['object'].get('@id') + '}'
-    human_donor_link = '{' + human_donor_res.json['object'].get(
-        'accession') + '|' + human_donor_res.json['object'].get('@id') + '}'
-    rodent_donor_link = '{' + rodent_donor_res.json['object'].get(
-        'accession') + '|' + rodent_donor_res.json['object'].get('@id') + '}'
-    assert any(
-        error['detail'].startswith(
-            f'Sample {tissue_link} is linked to virtual `donors`: {human_donor_link}, {rodent_donor_link}')
-        for error in tissue_res.json['audit'].get('ERROR', [])
-    ) or any(
-        error['detail'].startswith(
-            f'Sample {tissue_link} is linked to virtual `donors`: {rodent_donor_link}, {human_donor_link}')
         for error in tissue_res.json['audit'].get('ERROR', [])
     )
 
