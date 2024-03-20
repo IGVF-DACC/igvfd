@@ -66,11 +66,11 @@ def test_audit_sample_virtual_donor_check(
         'accession') + '|' + rodent_donor_res.json['object'].get('@id') + '}'
     assert any(
         error['detail'].startswith(
-            f'Sample {tissue_link} is linked to virtual donor(s): {human_donor_link}, {rodent_donor_link}')
+            f'Sample {tissue_link} is linked to virtual `donors`: {human_donor_link}, {rodent_donor_link}')
         for error in tissue_res.json['audit'].get('ERROR', [])
     ) or any(
         error['detail'].startswith(
-            f'Sample {tissue_link} is linked to virtual donor(s): {rodent_donor_link}, {human_donor_link}')
+            f'Sample {tissue_link} is linked to virtual `donors`: {rodent_donor_link}, {human_donor_link}')
         for error in tissue_res.json['audit'].get('ERROR', [])
     )
 
