@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 
 
@@ -19,6 +20,7 @@ def audit_whole_organism_human_taxa(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_whole_organism_human_taxa)
     if 'taxa' in value:
         if value['taxa'] == 'Homo sapiens':
             detail = (
@@ -37,4 +39,4 @@ def audit_whole_organism_human_taxa(value, system):
                 f'Whole organism {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'specifies that it has donor(s) of taxa Homo sapiens.'
             )
-            yield AuditFailure('unexpected donor', detail, level='ERROR')
+            yield AuditFailure('unexpected donor', f'{detail} {description}', level='ERROR')

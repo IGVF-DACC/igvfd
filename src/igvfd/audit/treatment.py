@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 
 
@@ -19,9 +20,10 @@ def audit_treatment_term_id_check(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_treatment_term_id_check)
     if 'treatment_term_id' in value:
         term_id = value['treatment_term_id']
         if term_id.startswith('NTR'):
             treatment_id = value['@id']
             detail = f'Treatment term for {audit_link(treatment_id, treatment_id)} has been newly requested. Term {audit_link(term_id,term_id)} should be replaced with a CHEBI or UNIPROT term following its addition to the appropriate ontology database.'
-            yield AuditFailure('NTR treatment term ID', detail, level='INTERNAL_ACTION')
+            yield AuditFailure('NTR treatment term ID', f'{detail} {description}', level='INTERNAL_ACTION')

@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 from .file_set import (
     find_non_config_sequence_files
@@ -22,6 +23,7 @@ def audit_construct_library_set_associated_phenotypes(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_construct_library_set_associated_phenotypes)
     detail = ''
     selection_criteria_list = value.get('selection_criteria', [])
     if 'phenotype-associated variants' in selection_criteria_list:
@@ -35,7 +37,7 @@ def audit_construct_library_set_associated_phenotypes(value, system):
                 f'but no phenotype term specified in associated_phenotypes.'
             )
             yield AuditFailure('missing associated phenotypes',
-                               detail, level='NOT_COMPLIANT')
+                               f'{detail} {description}', level='NOT_COMPLIANT')
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
@@ -49,6 +51,7 @@ def audit_construct_library_set_plasmid_map(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_construct_library_set_plasmid_map)
     map_counter = 0
     detail = (
         f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
@@ -56,7 +59,7 @@ def audit_construct_library_set_plasmid_map(value, system):
     )
     documents = value.get('documents', [])
     if documents == []:
-        yield AuditFailure('missing plasmid map', detail, level='NOT_COMPLIANT')
+        yield AuditFailure('missing plasmid map', f'{detail} {description}', level='NOT_COMPLIANT')
     else:
         for document in documents:
             document_obj = system.get('request').embed(document, '@@object?skip_calculated=true')
@@ -66,7 +69,7 @@ def audit_construct_library_set_plasmid_map(value, system):
             else:
                 continue
         if map_counter == 0:
-            yield AuditFailure('missing plasmid map', detail, level='NOT_COMPLIANT')
+            yield AuditFailure('missing plasmid map', f'{detail} {description}', level='NOT_COMPLIANT')
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
@@ -80,6 +83,7 @@ def audit_construct_library_set_scope(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_construct_library_set_scope)
     detail = ''
     if value.get('scope') in ['exon', 'tile']:
         if len(value.get('small_scale_gene_list', [])) > 1:
@@ -89,7 +93,7 @@ def audit_construct_library_set_scope(value, system):
                 f'small_scale_gene_list property.'
             )
             yield AuditFailure('inconsistent scope',
-                               detail, level='WARNING')
+                               f'{detail} {description}', level='WARNING')
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
@@ -103,10 +107,11 @@ def audit_construct_library_set_files(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_construct_library_set_files)
     non_sequence_files = find_non_config_sequence_files(value)
     if non_sequence_files:
         non_sequence_files = ', '.join(
             [audit_link(path_to_text(file), file) for file in non_sequence_files])
         detail = (f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
                   f'file(s) that are not sequence or configuration files: {non_sequence_files}.')
-        yield AuditFailure('unexpected files', detail, level='WARNING')
+        yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')

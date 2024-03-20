@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 
 
@@ -19,13 +20,14 @@ def audit_tissue_ccf_id(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_tissue_ccf_id)
     if ('ccf_id' not in value) and (any(donor.startswith('/human-donors/') for donor in value.get('donors'))):
         value_id = system.get('path')
         detail = (
             f'Tissue {audit_link(path_to_text(value_id), value_id)} '
             f'is missing common coordinate framework identifier (CCF ID).'
         )
-        yield AuditFailure('missing CCF ID', detail, level='NOT_COMPLIANT')
+        yield AuditFailure('missing CCF ID', f'{detail} {description}', level='NOT_COMPLIANT')
 
 
 @audit_checker('Tissue', frame='object')
@@ -39,6 +41,7 @@ def audit_tissue_ccf_id_nonhuman_sample(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_tissue_ccf_id_nonhuman_sample)
     if ('ccf_id' in value) and (value.get('taxa', '') != 'Homo sapiens'):
         value_id = system.get('path')
         detail = (
@@ -46,4 +49,4 @@ def audit_tissue_ccf_id_nonhuman_sample(value, system):
             f'has common coordinate framework identifier (CCF ID) '
             f'but is associated with a non-human donor.'
         )
-        yield AuditFailure('unexpected CCF ID', detail, level='ERROR')
+        yield AuditFailure('unexpected CCF ID', f'{detail} {description}', level='ERROR')

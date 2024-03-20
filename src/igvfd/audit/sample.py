@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 
 
@@ -19,6 +20,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_sample_sorted_from_parent_child_check)
     if 'sorted_from' in value:
         error_keys = []
         prop_errors = ''
@@ -41,7 +43,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             f'its associated parent sample {audit_link(path_to_text(parent_id), parent_id)}.'
         )
         if prop_errors != '':
-            yield AuditFailure('inconsistent parent sample', detail, level='ERROR')
+            yield AuditFailure('inconsistent parent sample', f'{detail} {description}', level='ERROR')
 
 
 @audit_checker('Sample', frame='object')
@@ -55,6 +57,7 @@ def audit_sample_virtual_donor_check(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_sample_virtual_donor_check)
     if ('donors' in value) and (value.get('virtual', False) == False):
         sample_id = value['@id']
         donor_ids = value.get('donors', [])
@@ -70,7 +73,7 @@ def audit_sample_virtual_donor_check(value, system):
         if len(donors_error) > 0:
             detail = (f'Sample {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual donor(s): '
                       f'{donors_to_link}')
-            yield AuditFailure('inconsistent donor', detail, level='ERROR')
+            yield AuditFailure('inconsistent donor', f'{detail} {description}', level='ERROR')
 
 
 @audit_checker('Sample', frame='object')
@@ -109,6 +112,7 @@ def get_virtual_sample_failures(
     sample_is_virtual,
     linked_sample_id
 ):
+    description = get_audit_description(audit_non_virtual_sample_linked_to_virtual_sample)
     linked_data = system.get('request').embed(linked_sample_id + '@@object?skip_calculated=true')
     if linked_data.get('virtual', False) != sample_is_virtual:
         if sample_is_virtual:
@@ -122,7 +126,7 @@ def get_virtual_sample_failures(
             f'{audit_detail_body} and has a linked sample '
             f'({audit_link(path_to_text(linked_sample_id), linked_sample_id)}) {audit_detail_end}.'
         )
-        return AuditFailure('inconsistent parent sample', detail, level='ERROR')
+        return AuditFailure('inconsistent parent sample', f'{detail} {description}', level='ERROR')
     else:
         return None
 
@@ -138,6 +142,7 @@ def audit_construct_library_sets_types(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_construct_library_sets_types)
     if 'construct_library_sets' in value and len(value['construct_library_sets']) > 1:
         library_types = set()
         for CLS in value['construct_library_sets']:
@@ -153,4 +158,4 @@ def audit_construct_library_sets_types(value, system):
                 f'Sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has construct library sets of multiple types {library_types}.'
             )
-            yield AuditFailure('inconsistent construct library sets', detail, level='WARNING')
+            yield AuditFailure('inconsistent construct library sets', f'{detail} {description}', level='WARNING')

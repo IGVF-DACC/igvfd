@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 
 
@@ -19,6 +20,7 @@ def audit_curated_set_mismatched_taxa(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_curated_set_mismatched_taxa)
     taxa = {value.get('taxa', '')}
     samples_taxa = set()
     donors_taxa = set()
@@ -34,7 +36,7 @@ def audit_curated_set_mismatched_taxa(value, system):
                 f'Curated set {audit_link(path_to_text(value["@id"]),value["@id"])} '
                 f'has a taxa which does not match the taxa of the associated samples.'
             )
-            yield AuditFailure('inconsistent taxa', detail, level='ERROR')
+            yield AuditFailure('inconsistent taxa', f'{detail} {description}', level='ERROR')
     if 'donors' in value:
         donors_taxa = set(
             [
@@ -47,4 +49,4 @@ def audit_curated_set_mismatched_taxa(value, system):
                 f'Curated set {audit_link(path_to_text(value["@id"]),value["@id"])} '
                 f'has a taxa which does not match the taxa of the associated donors.'
             )
-            yield AuditFailure('inconsistent taxa', detail, level='ERROR')
+            yield AuditFailure('inconsistent taxa', f'{detail} {description}', level='ERROR')

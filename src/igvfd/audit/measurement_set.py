@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 
 
@@ -19,6 +20,7 @@ def audit_related_multiome_datasets(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_related_multiome_datasets)
     detail = ''
     related_multiome_datasets = value.get('related_multiome_datasets', [])
     multiome_size = value.get('multiome_size')
@@ -70,7 +72,7 @@ def audit_related_multiome_datasets(value, system):
                 f'has a specified multiome size of {multiome_size}, which does not match the '
                 f'multiome size of related multiome dataset(s): {datasets_with_different_multiome_sizes}'
             )
-            yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
+            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -84,12 +86,13 @@ def audit_unspecified_protocol(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_unspecified_protocol)
     if 'protocols' not in value:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'has no protocol. '
         )
-        yield AuditFailure('missing protocol', detail, level='NOT_COMPLIANT')
+        yield AuditFailure('missing protocol', f'{detail} {description}', level='NOT_COMPLIANT')
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -108,6 +111,8 @@ def audit_inconsistent_readout(value, system):
         }
     ]
     '''
+    description_readout_expectation = get_audit_description(audit_inconsistent_readout)
+    description_identical_readout = get_audit_description(audit_inconsistent_readout, 1)
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay = assay.get('term_name')
@@ -120,20 +125,20 @@ def audit_inconsistent_readout(value, system):
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
                 f'a {assay} assay, but specifies a readout.'
             )
-            yield AuditFailure('inconsistent readout', detail, level='ERROR')
+            yield AuditFailure('inconsistent readout', f'{detail} {description_readout_expectation}', level='ERROR')
         if assay_term == value.get('readout'):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} specifies '
                 f'the same readout and assay term.'
             )
-            yield AuditFailure('inconsistent readout', detail, level='ERROR')
+            yield AuditFailure('inconsistent readout', f'{detail} {description_identical_readout}', level='ERROR')
     else:
         if assay in assays_with_readout:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
                 f'a {assay} assay and does not specify a readout.'
             )
-            yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')
+            yield AuditFailure('inconsistent readout', f'{detail} {description_readout_expectation}', level='NOT_COMPLIANT')
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -147,6 +152,7 @@ def audit_inconsistent_modifications(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_inconsistent_modifications)
     samples = value.get('samples', [])
     modifications = []
     for sample in samples:
@@ -158,7 +164,7 @@ def audit_inconsistent_modifications(value, system):
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
             f'samples with inconsistent modifications applied.'
         )
-        yield AuditFailure('inconsistent modifications', detail, level='ERROR')
+        yield AuditFailure('inconsistent modifications', f'{detail} {description}', level='ERROR')
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -172,7 +178,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
         }
     ]
     '''
-    description = audit_CRISPR_screen_lacking_modifications.__doc__.json()[0]['audit_detail']
+    description = get_audit_description(audit_CRISPR_screen_lacking_modifications)
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     crispr_assays = ['cas mediated mutagenesis',
@@ -207,6 +213,7 @@ def audit_preferred_assay_title(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_preferred_assay_title)
     assay_term = value.get('assay_term')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_term_name = assay_object.get('term_name')
@@ -216,7 +223,7 @@ def audit_preferred_assay_title(value, system):
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
             f'assay_term {assay_term_name}, but preferred_assay_title "{preferred_assay_title}".'
         )
-        yield AuditFailure('inconsistent assays', detail, level='WARNING')
+        yield AuditFailure('inconsistent assays', f'{detail} {description}', level='WARNING')
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -230,6 +237,7 @@ def audit_missing_institutional_certification(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_missing_institutional_certification)
     # Only audit Measurement Sets with at least one human sample.
     donors = value.get('donors', [])
     taxa = set()
@@ -273,4 +281,4 @@ def audit_missing_institutional_certification(value, system):
                 f'a sample {audit_link(path_to_text(s),s)} that lacks a NIH institutional '
                 f'certificate issued to the lab that submitted this file set.'
             )
-            yield AuditFailure('missing nih certification', detail, level='NOT_COMPLIANT')
+            yield AuditFailure('missing nih certification', f'{detail} {description}', level='NOT_COMPLIANT')

@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 
 
@@ -19,9 +20,10 @@ def audit_ntr_term_id(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_ntr_term_id)
     if 'term_id' in value:
         ontologyterm_id = value['@id']
         term_id = value['term_id']
         if term_id.startswith('NTR'):
             detail = f'Ontology term for {audit_link(ontologyterm_id, ontologyterm_id)} has been newly requested. Term {audit_link(term_id,term_id)} should be replaced with another term_id following its addition to the appropriate ontology database.'
-            yield AuditFailure('NTR term ID', detail, level='INTERNAL_ACTION')
+            yield AuditFailure('NTR term ID', f'{detail} {description}', level='INTERNAL_ACTION')
