@@ -29,5 +29,5 @@ def audit_auxiliary_set_files(value, system):
         non_sequence_files = ', '.join(
             [audit_link(path_to_text(file), file) for file in non_sequence_files])
         detail = (f'Auxiliary set {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
-                  f'file(s) that are not sequence or configuration files: {non_sequence_files}.')
+                  f'`files` that are not sequence or configuration files: {non_sequence_files}.')
         yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')

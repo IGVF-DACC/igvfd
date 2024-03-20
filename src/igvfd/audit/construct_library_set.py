@@ -33,8 +33,8 @@ def audit_construct_library_set_associated_phenotypes(value, system):
         else:
             detail = (
                 f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'has phenotype-associated variants listed in its selection_criteria, '
-                f'but no phenotype term specified in associated_phenotypes.'
+                f'has phenotype-associated variants listed in its `selection_criteria`, '
+                f'but no phenotype term specified in `associated_phenotypes`.'
             )
             yield AuditFailure('missing associated phenotypes',
                                f'{detail} {description}', level='NOT_COMPLIANT')
@@ -55,7 +55,7 @@ def audit_construct_library_set_plasmid_map(value, system):
     map_counter = 0
     detail = (
         f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
-        f'does not have a plasmid map document attached.'
+        f'does not have a plasmid map attached in `documents`.'
     )
     documents = value.get('documents', [])
     if documents == []:
@@ -89,8 +89,8 @@ def audit_construct_library_set_scope(value, system):
         if len(value.get('small_scale_gene_list', [])) > 1:
             detail = (
                 f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'specifies it has a scope of {value["scope"]}, but multiple genes are listed in the '
-                f'small_scale_gene_list property.'
+                f'specifies it has a `scope` of {value["scope"]}, but multiple genes are listed in the '
+                f'`small_scale_gene_list` property.'
             )
             yield AuditFailure('inconsistent scope',
                                f'{detail} {description}', level='WARNING')
@@ -113,5 +113,5 @@ def audit_construct_library_set_files(value, system):
         non_sequence_files = ', '.join(
             [audit_link(path_to_text(file), file) for file in non_sequence_files])
         detail = (f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
-                  f'file(s) that are not sequence or configuration files: {non_sequence_files}.')
+                  f'`files` that are not sequence or configuration files: {non_sequence_files}.')
         yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')

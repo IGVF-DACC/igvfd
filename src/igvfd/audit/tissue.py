@@ -25,7 +25,7 @@ def audit_tissue_ccf_id(value, system):
         value_id = system.get('path')
         detail = (
             f'Tissue {audit_link(path_to_text(value_id), value_id)} '
-            f'is missing common coordinate framework identifier (CCF ID).'
+            f'is missing a `ccf_id`.'
         )
         yield AuditFailure('missing CCF ID', f'{detail} {description}', level='NOT_COMPLIANT')
 
@@ -46,7 +46,6 @@ def audit_tissue_ccf_id_nonhuman_sample(value, system):
         value_id = system.get('path')
         detail = (
             f'Tissue {audit_link(path_to_text(value_id), value_id)} '
-            f'has common coordinate framework identifier (CCF ID) '
-            f'but is associated with a non-human donor.'
+            f'has a `ccf_id` but is associated with a non-human donor.'
         )
         yield AuditFailure('unexpected CCF ID', f'{detail} {description}', level='ERROR')

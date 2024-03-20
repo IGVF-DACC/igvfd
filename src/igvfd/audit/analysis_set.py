@@ -27,6 +27,6 @@ def audit_input_file_sets(value, system):
             detail = (
                 f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
                 f'is a primary analysis, but does not specify any measurement sets in '
-                f'input_file_sets.'
+                f'`input_file_sets`.'
             )
             yield AuditFailure('missing measurement set', f'{detail} {description}', level='WARNING')

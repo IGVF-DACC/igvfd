@@ -32,7 +32,7 @@ def audit_no_files(value, system):
     if not(value.get('files', '')):
         detail = (
             f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has no files.'
+            f'has no `files`.'
         )
         yield AuditFailure('missing files', f'{detail} {description}', level='WARNING')
 
@@ -42,7 +42,7 @@ def audit_missing_seqspec(value, system):
     '''
     [
         {
-            "audit_description": "Sequence files in a file set are expected to link to a sequence specification file",
+            "audit_description": "Sequence files in a file set are expected to link to a sequence specification file.",
             "audit_category": "missing sequence specification",
             "audit_level": "NOT_COMPLIANT"
         }

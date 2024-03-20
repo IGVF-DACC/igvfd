@@ -36,7 +36,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
         for key in keys_to_check:
             if value.get(key, None) != parent.get(key, None):
                 error_keys.append(key)
-        prop_errors = ', '.join(error_keys)
+        prop_errors = '`, `'.join(error_keys)
         detail = (
             f'Sample {audit_link(path_to_text(value_id), value_id)} '
             f'has metadata properties ({prop_errors}) inconsistent with '
@@ -71,7 +71,7 @@ def audit_sample_virtual_donor_check(value, system):
         donors_to_link = [audit_link(path_to_text(d_id), d_id) for d_id in donors_error]
         donors_to_link = ', '.join(donors_to_link)
         if len(donors_error) > 0:
-            detail = (f'Sample {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual donor(s): '
+            detail = (f'Sample {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual `donors`: '
                       f'{donors_to_link}')
             yield AuditFailure('inconsistent donor', f'{detail} {description}', level='ERROR')
 
@@ -124,7 +124,7 @@ def get_virtual_sample_failures(
         detail = (
             f'Sample {audit_link(path_to_text(sample_id), sample_id)} '
             f'{audit_detail_body} and has a linked sample '
-            f'({audit_link(path_to_text(linked_sample_id), linked_sample_id)}) {audit_detail_end}.'
+            f'{audit_link(path_to_text(linked_sample_id), linked_sample_id)} {audit_detail_end}.'
         )
         return AuditFailure('inconsistent parent sample', f'{detail} {description}', level='ERROR')
     else:
@@ -156,6 +156,6 @@ def audit_construct_library_sets_types(value, system):
                 library_types = ' and '.join(library_types)
             detail = (
                 f'Sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has construct library sets of multiple types {library_types}.'
+                f'has `construct_library_sets` of multiple types {library_types}.'
             )
             yield AuditFailure('inconsistent construct library sets', f'{detail} {description}', level='WARNING')

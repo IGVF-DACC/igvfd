@@ -24,5 +24,5 @@ def audit_variant_ref_alt_check(value, system):
     if 'ref' and 'alt' in value:
         if value['ref'] == value['alt']:
             variant_id = value['@id']
-            detail = f'Variant {audit_link(variant_id, variant_id)} ref and alt alleles are the same.'
+            detail = f'Variant {audit_link(variant_id, variant_id)} `ref` and `alt` alleles are the same.'
             yield AuditFailure('inconsistent alleles', f'{detail} {description}', level='ERROR')
