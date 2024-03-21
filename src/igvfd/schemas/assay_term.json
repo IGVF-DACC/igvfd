@@ -36,7 +36,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "5"
+            "default": "6"
         },
         "term_id": {
             "@type": "@id",
@@ -50,13 +50,17 @@
             "title": "Preferred Assay Titles",
             "description": "The custom lab preferred labels that this assay term may be associated with.",
             "type": "array",
-            "minimum": 1,
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Preferred Assay Title",
                 "description": "A custom lab preferred label that this assay term may be associated with.",
                 "type": "string",
                 "$merge": "measurement_set.json#/properties/preferred_assay_title"
+            },
+            "submissionExample": {
+                "appscript": "[\"MPRA\"]",
+                "igvf_utils": "MPRA"
             }
         }
     },

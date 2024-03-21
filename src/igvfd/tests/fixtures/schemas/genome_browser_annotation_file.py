@@ -70,3 +70,14 @@ def genome_browser_annotation_file_v5(genome_browser_annotation_file):
         'schema_version': '5'
     })
     return item
+
+
+@pytest.fixture
+def genome_browser_annotation_file_v7(genome_browser_annotation_file):
+    item = genome_browser_annotation_file.copy()
+    item.update({
+        'derived_from': [],
+        'file_format_specifications': [],
+        'schema_version': '7'
+    })
+    return item

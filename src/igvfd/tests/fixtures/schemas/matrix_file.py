@@ -68,3 +68,14 @@ def matrix_file_v3(matrix_file_v1):
         'status': 'released'
     })
     return item
+
+
+@pytest.fixture
+def matrix_file_v5(matrix_file_v1):
+    item = matrix_file_v1.copy()
+    item.update({
+        'schema_version': '5',
+        'derived_from': [],
+        'file_format_specifications': []
+    })
+    return item

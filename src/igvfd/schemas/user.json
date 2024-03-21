@@ -30,6 +30,7 @@
         "email": {
             "title": "Email",
             "type": "string",
+            "description": "The email associated with the user's account.",
             "format": "email",
             "uniqueKey": true
         },
@@ -101,6 +102,7 @@
         "job_title": {
             "title": "Job Title",
             "type": "string",
+            "description": "The role of the user in their lab or organization.",
             "permission": "import_items",
             "enum": [
                 "Principal Investigator",

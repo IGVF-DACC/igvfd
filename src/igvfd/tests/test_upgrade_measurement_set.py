@@ -79,3 +79,12 @@ def test_measurement_set_upgrade_12_13(upgrader, measurement_set_v12):
     assert value['preferred_assay_title'] == 'Parse SPLiT-seq'
     assert value['schema_version'] == '13'
     assert value['notes'] == 'Preferred_assay_titles enum Parse Split-seq has been renamed to be Parse SPLiT-seq.'
+
+
+def test_measurement_set_upgrade_14_15(upgrader, measurement_set_v14):
+    value = upgrader.upgrade('measurement_set', measurement_set_v14, current_version='14', target_version='15')
+    assert 'protocols' not in value
+    assert 'control_file_sets' not in value
+    assert 'sequencing_library_types' not in value
+    assert 'auxiliary_sets' not in value
+    assert value['schema_version'] == '15'

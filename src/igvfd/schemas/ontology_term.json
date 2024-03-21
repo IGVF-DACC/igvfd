@@ -27,9 +27,6 @@
         }
     ],
     "properties": {
-        "schema_version": {
-            "hidden comment": "Bump the default in the subclasses."
-        },
         "term_id": {
             "@type": "@id",
             "title": "Term ID",

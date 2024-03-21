@@ -184,9 +184,6 @@
         }
     },
     "properties": {
-        "schema_version": {
-            "hidden comment": "Bump the default in the subclasses."
-        },
         "accession": {
             "accessionType": "FI"
         },
@@ -229,6 +226,7 @@
             "title": "Derived From",
             "description": "The files participating as inputs into software to produce this output file.",
             "type": "array",
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "File Derived From",
@@ -256,6 +254,7 @@
             "title": "File Format Specifications Documents",
             "description": "Document that further explains the file format.",
             "type": "array",
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "File Format Specifications Document",

@@ -40,6 +40,7 @@ class Gene(SharedItem):
     @calculated_property(schema={
         'title': 'ENSEMBL GeneID With Version',
         'type': 'string',
+        'description': 'The ENSEMBL GeneID concatenated with its version number.',
         'notSubmittable': True,
     })
     def geneid_with_version(self, request, geneid, version_number=None):

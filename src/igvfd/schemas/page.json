@@ -38,6 +38,7 @@
                 "string",
                 "null"
             ],
+            "description": "The parent page associated with this page.",
             "linkTo": "Page",
             "validators": [
                 "isNotCollectionDefaultPage"
@@ -59,7 +60,6 @@
             "description": "Hierarchical description of the page layout.",
             "type": "object",
             "additionalProperties": false,
-            "formInput": "layout",
             "properties": {
                 "blocks": {
                     "type": "array",

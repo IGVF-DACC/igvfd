@@ -57,6 +57,7 @@ class Page(SharedItem):
         schema={
             'title': 'Canonical URI',
             'type': 'string',
+            'description': 'The path of the page.',
             'notSubmittable': True,
         }
     )

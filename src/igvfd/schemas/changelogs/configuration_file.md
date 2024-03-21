@@ -1,5 +1,9 @@
 ## Changelog for *`configuration_file.json`*
 
+### Schema version 7
+
+* Require `seqspec_of` to contain at least one value.
+
 ### Schema version 6
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.

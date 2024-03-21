@@ -67,3 +67,14 @@ def tabular_file_v5(tabular_file):
         'schema_version': '5'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v7(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'derived_from': [],
+        'file_format_specifications': [],
+        'schema_version': '7'
+    })
+    return item

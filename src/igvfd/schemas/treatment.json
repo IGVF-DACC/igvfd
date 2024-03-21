@@ -244,6 +244,7 @@
         "amount_units": {
             "title": "Amount Units",
             "type": "string",
+            "description": "A unit for an amount other than those for time or temperature.",
             "enum": [
                 "mg/kg",
                 "mg/mL",
@@ -274,6 +275,7 @@
         "duration_units": {
             "title": "Duration Units",
             "type": "string",
+            "description": "A unit of time.",
             "enum": [
                 "second",
                 "minute",
@@ -326,6 +328,7 @@
         "post_treatment_time_units": {
             "title": "Post-treatment Time Units",
             "type": "string",
+            "description": "A unit of time.",
             "enum": [
                 "minute",
                 "hour",
@@ -350,6 +353,7 @@
         "temperature_units": {
             "title": "Temperature Units",
             "type": "string",
+            "description": "A unit of temperature.",
             "enum": [
                 "Celsius"
             ],

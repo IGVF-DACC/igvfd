@@ -49,9 +49,6 @@
         }
     },
     "properties": {
-        "schema_version": {
-            "hidden comment": "Bump the default in the subclasses."
-        },
         "accession": {
             "accessionType": "DS"
         },

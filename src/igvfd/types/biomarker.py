@@ -32,6 +32,7 @@ class Biomarker(Item):
         schema={
             'title': 'Name and Quantification',
             'type': 'string',
+            'description': 'A concatenation of the name and quantification of the biomarker.'
             'notSubmittable': True,
         }
     )

@@ -101,3 +101,13 @@ def assay_term_v3(assay_term_crispr):
         'preferred_assay_titles': ['histone ChIP-seq', 'Parse Split-seq', 'Saturation genome editing', 'SHARE-Seq', 'Yeast two-hybrid', 'Cell painting']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v5(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '5',
+        'preferred_assay_titles': []
+    })
+    return item

@@ -17,3 +17,11 @@ def test_configuration_file_upgrade_3_4(upgrader, configuration_file_v3):
     value = upgrader.upgrade('configuration_file', configuration_file_v3, current_version='3', target_version='4')
     assert value['upload_status'] == 'invalidated'
     assert value['schema_version'] == '4'
+
+
+def test_configuration_file_upgrade_6_7(upgrader, configuration_file_v6):
+    value = upgrader.upgrade('configuration_file', configuration_file_v6, current_version='6', target_version='7')
+    assert 'seqspec_of' not in value
+    assert 'derived_from' not in value
+    assert 'file_format_specifications' not in value
+    assert value['schema_version'] == '7'

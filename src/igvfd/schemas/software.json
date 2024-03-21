@@ -78,6 +78,7 @@
         "used_by": {
             "title": "Used by",
             "type": "array",
+            "description": "The component(s) of the IGVF consortium that utilize this software.",
             "uniqueItems": true,
             "items": {
                 "title": "Used by",
