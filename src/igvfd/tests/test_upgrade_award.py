@@ -19,3 +19,9 @@ def test_award_upgrade_3_4(upgrader, award_v3):
     value = upgrader.upgrade('award', award_v3, current_version='3', target_version='4')
     assert 'description' not in value
     assert value['schema_version'] == '4'
+
+
+def test_award_upgrade_4_5(upgrader, award_v4):
+    value = upgrader.upgrade('award', award_v4, current_version='4', target_version='5')
+    assert 'pis' not in value
+    assert value['schema_version'] == '5'

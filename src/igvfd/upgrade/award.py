@@ -23,3 +23,11 @@ def award_3_4(value, system):
     if 'description' in value:
         if value['description'] == '':
             del value['description']
+
+
+@upgrade_step('award', '4', '5')
+def award_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1533
+    if 'pis' in value:
+        if len(value['pis']) < 1:
+            del value['pis']

@@ -41,3 +41,9 @@ def test_gene_upgrade_6_7(upgrader, gene_v6):
     assert value['schema_version'] == '7'
     for location in value['locations']:
         assert location['assembly'] == 'GRCm39'
+
+
+def test_gene_upgrade_8_9(upgrader, gene_v8):
+    value = upgrader.upgrade('gene', gene_v8, current_version='8', target_version='9')
+    assert value['schema_version'] == '9'
+    assert 'synonyms' not in value

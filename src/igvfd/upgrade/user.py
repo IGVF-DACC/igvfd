@@ -21,3 +21,11 @@ def user_2_3(value, system):
     if 'description' in value:
         if value['description'] == '':
             del value['description']
+
+
+@upgrade_step('user', '3', '4')
+def user_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1533
+    if 'viewing_groups' in value:
+        if len(value['viewing_groups']) < 1:
+            del value['viewing_groups']

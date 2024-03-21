@@ -42,3 +42,13 @@ def publication_v3(publication_v2):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def publication_v5(publication_v2):
+    item = publication_v2.copy()
+    item.update({
+        'schema_version': '5',
+        'published_by': []
+    })
+    return item

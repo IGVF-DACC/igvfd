@@ -42,7 +42,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "name": {
             "title": "Name",
@@ -79,6 +79,7 @@
             "title": "Used by",
             "type": "array",
             "description": "The component(s) of the IGVF consortium that utilize this software.",
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Used by",

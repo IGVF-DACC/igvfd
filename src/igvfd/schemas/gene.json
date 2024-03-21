@@ -87,7 +87,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "8"
+            "default": "9"
         },
         "geneid": {
             "title": "ENSEMBL GeneID",
@@ -116,6 +116,7 @@
             "description": "Alternative symbols that have been used to refer to the gene.",
             "comment": "The list of synonyms is maintained using information from NCBI Entrez. Synonyms not included in NCBI gene_info can be added but are not actively maintained.",
             "type": "array",
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Synonym",

@@ -43,7 +43,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "5"
+            "default": "6"
         },
         "title": {
             "title": "Title",
@@ -146,6 +146,7 @@
             "title": "Published By",
             "type": "array",
             "description": "The affiliation of the lab with a larger organization, such as IGVF.",
+            "minItems": 1,
             "uniqueItems": true,
             "default": [
                 "IGVF"

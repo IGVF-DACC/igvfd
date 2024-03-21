@@ -1,5 +1,9 @@
 ## Changelog for *`software.json`*
 
+### Schema version 5
+
+* Require `used_by` to contain at least one value.
+
 ### Schema version 4
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.

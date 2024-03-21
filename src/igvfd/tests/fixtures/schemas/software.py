@@ -33,3 +33,13 @@ def software_v2(software_v1):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def software_v4(software_v1):
+    item = software_v1.copy()
+    item.update({
+        'schema_version': '4',
+        'used_by': []
+    })
+    return item
