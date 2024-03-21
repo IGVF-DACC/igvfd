@@ -36,7 +36,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
         for key in keys_to_check:
             if value.get(key, None) != parent.get(key, None):
                 error_keys.append(key)
-        prop_errors = '`, `'.join(error_keys)
+        prop_errors = ', '.join([f'`{key}`' for key in error_keys])
         detail = (
             f'Sample {audit_link(path_to_text(value_id), value_id)} '
             f'has metadata properties ({prop_errors}) inconsistent with '
