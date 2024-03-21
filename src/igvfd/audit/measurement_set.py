@@ -29,7 +29,7 @@ def audit_related_multiome_datasets(value, system):
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'has a `multiome_size` of {multiome_size}, but no `related_multiome_datasets`.'
         )
-        yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
+        yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
     elif related_multiome_datasets and multiome_size:
         if len(related_multiome_datasets) != multiome_size - 1:
             detail = (
@@ -37,7 +37,7 @@ def audit_related_multiome_datasets(value, system):
                 f'has a `multiome_size` of {multiome_size}, but {len(related_multiome_datasets)} '
                 f'`related_multiome_datasets` when {multiome_size - 1} are expected.'
             )
-            yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
+            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
         samples = value.get('samples')
         samples_to_link = [audit_link(path_to_text(sample), sample) for sample in samples]
         datasets_with_different_samples = []
@@ -64,7 +64,7 @@ def audit_related_multiome_datasets(value, system):
                 f'has associated `samples`: {samples_to_link} which are not the same associated `samples` '
                 f'of `related_multiome_datasets`: {datasets_with_different_samples}'
             )
-            yield AuditFailure('inconsistent multiome datasets', detail, level='ERROR')
+            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
         if datasets_with_different_multiome_sizes:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '

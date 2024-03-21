@@ -27,7 +27,7 @@ def audit_whole_organism_human_taxa(value, system):
                 f'Whole organism {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'specifies that it is of `taxa` Homo sapiens.'
             )
-            yield AuditFailure('unexpected donor', detail, level='ERROR')
+            yield AuditFailure('unexpected donor', f'{detail} {description}', level='ERROR')
     elif 'donors' in value:
         donor_ids = value.get('donors')
         taxa_set = set()

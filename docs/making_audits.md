@@ -44,7 +44,7 @@ Additionally, decide on an appropriate ```AuditFailure``` category name for the 
     * an inconsistency with an expectation of metadata on linked item(s) -> "inconsistent {item} {property}"
     * a property or link to a type that isn't expected -> "unexpected {property}/{type}
 
-Also determine which of the following 4 levels of severity the audit should fall into. Please refer to the [audits page](https://data.igvf.org/audits/) for defintions of severity levels.
+Also determine which of the following 4 levels of severity (ERROR, NOT_COMPLIANT, WARNING, INTERNAL_ACTION) the audit should fall into. Please refer to the [audits page](https://data.igvf.org/audits/) for defintions of severity levels.
 
 The description, category, and level should be listed in the docstring of the audit function shown as following. The docstring for each audit is used to build a row in the audit documentation page for the respective type. The docstring should be defined in JSON format.
     '''
