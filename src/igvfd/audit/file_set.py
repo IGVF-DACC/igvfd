@@ -61,7 +61,7 @@ def audit_missing_seqspec(value, system):
                                    for file_no_seqspec in no_seqspec])
             detail = (
                 f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
-                f'{no_seqspec} which do not have a seqspec configuration file.'
+                f'{no_seqspec} which do not have any `seqspecs`.'
             )
             yield AuditFailure('missing sequence specification', f'{detail} {description}', level='NOT_COMPLIANT')
 
@@ -149,7 +149,7 @@ def audit_inconsistent_seqspec(value, system):
                 detail = (
                     f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(non_matching_files), non_matching_files) for non_matching_files in non_matching_files])} '
-                    f'which belong to the same sequencing set, but do not share the same seqspec file(s).'
+                    f'which belong to the same sequencing set, but do not have the same `seqspecs`.'
                 )
                 yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')
 
@@ -172,7 +172,7 @@ def audit_inconsistent_seqspec(value, system):
                 detail = (
                     f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(file), file) for _, file in sequence_files])} '
-                    f'which share the same seqspec file(s) {", ".join(seqspec_paths)} '
+                    f'which share the same `seqspecs` {", ".join(seqspec_paths)} '
                     f'but belong to different sequencing sets.'
                 )
                 yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')

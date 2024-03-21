@@ -72,7 +72,7 @@ def audit_sample_virtual_donor_check(value, system):
         donors_to_link = ', '.join(donors_to_link)
         if len(donors_error) > 0:
             detail = (f'Sample {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual `donors`: '
-                      f'{donors_to_link}')
+                      f'{donors_to_link}.')
             yield AuditFailure('inconsistent donor', f'{detail} {description}', level='ERROR')
 
 

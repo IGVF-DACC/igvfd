@@ -75,6 +75,6 @@ def audit_cell_fate_change_protocol_document_type(value, system):
             detail = (
                 f'In vitro system {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a protocol {audit_link(path_to_text(value["cell_fate_change_protocol"]), value["cell_fate_change_protocol"])} in `cell_fate_change_protocols` '
-                f'that does not have `document_type` "cell fate change protocol".'
+                f'that does not have `document_type` cell fate change protocol.'
             )
             yield AuditFailure('inconsistent document type', f'{detail} {description}', level='ERROR')

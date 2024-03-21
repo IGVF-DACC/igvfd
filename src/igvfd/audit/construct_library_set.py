@@ -89,8 +89,8 @@ def audit_construct_library_set_scope(value, system):
         if len(value.get('small_scale_gene_list', [])) > 1:
             detail = (
                 f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'specifies it has a `scope` of {value["scope"]}, but multiple genes are listed in the '
-                f'`small_scale_gene_list` property.'
+                f'specifies it has a `scope` of {value["scope"]}, but multiple genes are listed in '
+                f'`small_scale_gene_list`.'
             )
             yield AuditFailure('inconsistent scope',
                                f'{detail} {description}', level='WARNING')

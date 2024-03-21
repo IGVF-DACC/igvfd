@@ -40,7 +40,7 @@ def audit_biosample_taxa_check(value, system):
             for k, v in taxa_dict.items():
                 taxa_donors.append(f'{k} ({", ".join(v)})')
             taxa_detail = ', '.join(taxa_donors)
-            detail = f'Biosample {audit_link(path_to_text(sample_id), sample_id)} has donors with `taxa` {taxa_detail}. '
+            detail = f'Biosample {audit_link(path_to_text(sample_id), sample_id)} has `donors` with `taxa` {taxa_detail}. '
             yield AuditFailure('inconsistent donor taxa', f'{detail} {description}', level='ERROR')
 
 
@@ -49,7 +49,7 @@ def audit_biosample_age(value, system):
     '''
     [
         {
-            "audit_description": "Tissues, primary cells, and whole organisms are expected to specify a lower_bound_age, upper_bound_age and age_units.",
+            "audit_description": "Tissues, primary cells, and whole organisms are expected to specify a lower bound age, upper bound age, and age units.",
             "audit_category": "missing age",
             "audit_level": "WARNING"
         }

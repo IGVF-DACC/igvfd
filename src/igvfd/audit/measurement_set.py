@@ -51,10 +51,10 @@ def audit_related_multiome_datasets(value, system):
                     f"{audit_link(path_to_text(dataset), dataset)} which has associated sample(s): {', '.join(related_samples_to_link)}")
             if dataset_object.get('multiome_size') is None:
                 datasets_with_different_multiome_sizes.append(
-                    f'{audit_link(path_to_text(dataset), dataset)} which does not have a specified multiome size')
+                    f'{audit_link(path_to_text(dataset), dataset)} which does not have a specified `multiome_size`')
             if multiome_size != dataset_object.get('multiome_size') and dataset_object.get('multiome_size') is not None:
                 datasets_with_different_multiome_sizes.append(
-                    f"{audit_link(path_to_text(dataset), dataset)} which has a multiome size of: {dataset_object.get('multiome_size')}")
+                    f"{audit_link(path_to_text(dataset), dataset)} which has a `multiome_size` of: {dataset_object.get('multiome_size')}")
         datasets_with_different_samples = ', '.join(datasets_with_different_samples)
         datasets_with_different_multiome_sizes = ', '.join(datasets_with_different_multiome_sizes)
         samples_to_link = ', '.join(samples_to_link)
