@@ -308,17 +308,17 @@ def audit_inconsistent_sequencing_kit(value, system):
             detail = (
                 f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
                 f'sequence file {audit_link(path_to_text(file), file)} which lacks '
-                f'specification of a sequencing_kit.'
+                f'specification of a `sequencing_kit`.'
             )
             yield AuditFailure('missing sequencing kit', detail, level='WARNING')
 
         if file_info[file]['platform'] != '':
             if file_info[file]['platform'] not in kit_to_platform[file_info[file]['kit']]:
                 detail = (
-                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
-                    f'sequence file {audit_link(path_to_text(file), file)} sequenced on a '
-                    f'sequencing_platform {audit_link(path_to_text(file_info[file]["platform"]), file_info[file]["platform"])} '
-                    f'that is inconsistent with its sequencing_kit {file_info[file]["kit"]}.'
+                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has a sequence '
+                    f'file {audit_link(path_to_text(file), file)} sequenced on a `sequencing_platform` '
+                    f'{audit_link(path_to_text(file_info[file]["platform"]), file_info[file]["platform"])} '
+                    f'that is inconsistent with its `sequencing_kit` {file_info[file]["kit"]}.'
                 )
                 yield AuditFailure('inconsistent sequencing kit', detail, level='ERROR')
 
@@ -336,7 +336,7 @@ def audit_inconsistent_sequencing_kit(value, system):
             detail = (
                 f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
                 f'{", ".join([audit_link(path_to_text(f), f) for f in run_to_kit[run]["files"]])} '
-                f'which are part of the same sequencing run, but specify more than 1 sequencing_kit: '
+                f'which are part of the same sequencing run, but specify more than 1 `sequencing_kit`: '
                 f'{", ".join(run_to_kit[run]["kits"])}'
             )
             yield AuditFailure('inconsistent sequencing kit', detail, level='ERROR')
