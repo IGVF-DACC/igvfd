@@ -21,5 +21,5 @@ def test_human_genomic_variant_upgrade_4_5(upgrader, human_genomic_variant_v4a, 
     assert 'associated_gwas' not in value
     value = upgrader.upgrade('human_genomic_variant', human_genomic_variant_v4b,
                              current_version='4', target_version='5')
-    assert value['schema_version'] == '3'
+    assert value['schema_version'] == '5'
     assert value['associated_gwas'] == ['GCST000510']

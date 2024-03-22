@@ -42,4 +42,4 @@ def test_genome_browser_annotation_file_upgrade_7_8(upgrader, genome_browser_ann
                              current_version='7', target_version='8')
     assert 'derived_from' not in value
     assert 'file_format_specifications' not in value
-    assert value['schema_version'] == '6'
+    assert value['schema_version'] == '8'

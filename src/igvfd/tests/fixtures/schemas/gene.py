@@ -137,7 +137,7 @@ def gene_v6(gene_myc_hs):
 
 @pytest.fixture
 def gene_v8(gene_myc_hs):
-    item = gene_v4.copy()
+    item = gene_myc_hs.copy()
     item.update({
         'schema_version': '8',
         'synonyms': []
