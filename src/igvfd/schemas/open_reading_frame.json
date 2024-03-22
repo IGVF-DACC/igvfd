@@ -59,7 +59,7 @@
         },
         "protein_id": {
             "title": "ENSEMBL ProteinID",
-            "description": "ENSEMBL ProteinID of official nomenclature approved gene. The ProteinID does not include the current version number suffix.",
+            "description": "ENSEMBL ProteinID of official nomenclature approved protein. The ProteinID does not include the current version number suffix.",
             "type": "string",
             "pattern": "^ENS[A-Z]*P\\d{11}(_PAR_Y)?$",
             "submissionExample": {
