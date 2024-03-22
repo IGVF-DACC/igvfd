@@ -1,10 +1,13 @@
 [
     {
+        "uuid": "d300d307-8fd2-4f4c-98fc-6406256b09e0",
         "orf_id": "CCSBORF1234",
-        "geneid": "ENSG00000185069",
         "protein_id": "ENSP00000001146.2",
         "dbxrefs": [
             "hORFeome:8945"
+        ],
+        "gene": [
+            "ENSG00000185069"
         ],
         "pct_identical_protein": 34,
         "pct_coverage_protein": 50,

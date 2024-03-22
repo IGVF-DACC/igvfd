@@ -124,7 +124,8 @@
     ],
     "exact_searchable_fields": [
         "@type",
-        "dbxrefs"
+        "dbxrefs",
+        "orf_id"
     ],
     "changelog": "/profiles/changelogs/open_reading_frame.md"
 }
