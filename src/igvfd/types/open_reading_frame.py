@@ -11,7 +11,7 @@ from snovault.util import Path
 
 
 @collection(
-    name='open_reading_frame',
+    name='open-reading-frame',
     unique_key='open_reading_frame:orf_id',
     properties={
         'title': 'Open Reading Frame',
