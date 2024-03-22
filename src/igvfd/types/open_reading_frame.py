@@ -33,6 +33,8 @@ class OpenReadingFrame(Item):
         'title': 'Gene Symbol',
         'description': 'Gene symbol approved by the official nomenclature.',
         'type': 'array',
+        'uniqueItems': True,
+        'minItems': 1,
         'items': {
             'title': 'Gene Symbol',
             'type': ['array', 'object'],

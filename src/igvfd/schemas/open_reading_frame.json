@@ -50,6 +50,8 @@
             "description": "ENSEMBL GeneID of official nomenclature approved gene. The GeneID does not include the current version number suffix.",
             "type": "array",
             "linkTo": "Gene",
+            "uniqueItems": true,
+            "minItems": 1,
             "submissionExample": {
                 "appscript": "[\"/genes/ENSG00000231542/\", \"ENSG00000264176\", \"/genes/ENSG00000263690/\"]",
                 "igvf_utils": "/genes/ENSG00000231542/, ENSG00000264176, /genes/ENSG00000263690/"
@@ -57,7 +59,7 @@
         },
         "protein_id": {
             "title": "ENSEMBL ProteinID",
-            "description": "ENSEMBL ProteinID of official nomenclature approved gene. The GeneID does not include the current version number suffix.",
+            "description": "ENSEMBL ProteinID of official nomenclature approved gene. The ProteinID does not include the current version number suffix.",
             "type": "string",
             "pattern": "^ENS[A-Z]*P\\d{11}(_PAR_Y)?$",
             "submissionExample": {
@@ -72,7 +74,7 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "External identifier",
+                "title": "External Identifier",
                 "description": "A unique identifier from hORFeome database.",
                 "comment": "Submit as database_name:id. See changelog for potential databases.",
                 "type": "string",
@@ -84,7 +86,7 @@
             }
         },
         "pct_identical_protein": {
-            "title": "Percentage of identical matches to Ensembl protein ID",
+            "title": "Percentage of Identical Matches to Ensembl Protein ID",
             "description": "The Percentage of identical matches to Ensembl protein ID.",
             "type": "number",
             "minimum": 0,
@@ -95,7 +97,7 @@
             }
         },
         "pct_coverage_protein": {
-            "title": "Percentage of ORF covered by Ensembl protein",
+            "title": "Percentage of ORF Covered by Ensembl Protein",
             "description": "The percentage of ORF covered by Ensembl protein.",
             "comment": " The percentage of the alignment between the ORF and it’s corresponding protein id over the length of the protein id.",
             "type": "number",
@@ -107,7 +109,7 @@
             }
         },
         "pct_coverage_orf": {
-            "title": "Percentage of Ensembl protein covered by ORF",
+            "title": "Percentage of Ensembl Protein Covered by ORF",
             "description": "The percentage of Ensembl protein covered by ORF.",
             "comment": " The percentage of the alignment between the ORF and it’s corresponding protein id over the length of the ORF.",
             "type": "number",
