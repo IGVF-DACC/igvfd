@@ -31,5 +31,5 @@ def software_3_4(value, system):
 def software_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1533
     if 'used_by' in value:
-        if value['used_by'] == '':
+        if len(value['used_by']) < 1:
             del value['used_by']
