@@ -189,6 +189,9 @@
                                             },
                                             {
                                                 "const": "genes"
+                                            },
+                                            {
+                                                "const": "interactors"
                                             }
                                         ]
                                     }
@@ -238,6 +241,9 @@
                                             },
                                             {
                                                 "const": "genes"
+                                            },
+                                            {
+                                                "const": "interactors"
                                             }
                                         ]
                                     }
