@@ -12,5 +12,19 @@
         "pct_identical_protein": 34,
         "pct_coverage_protein": 50,
         "pct_coverage_orf": 50
+    },
+    {
+        "uuid": "3786967d-4266-4e6a-b554-6f9fedc06259",
+        "orf_id": "CCSBORF4567",
+        "protein_id": "ENSP00000001248.10",
+        "dbxrefs": [
+            "hORFeome:8975"
+        ],
+        "gene": [
+            "/genes/ENSG00000154832/"
+        ],
+        "pct_identical_protein": 14,
+        "pct_coverage_protein": 60,
+        "pct_coverage_orf": 66
     }
 ]

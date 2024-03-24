@@ -1,6 +1,6 @@
 {
-    "hash": "21371121ac454022d83d104c945fc77e",
-    "index_name": "measurement_set_21371121",
+    "hash": "f523c2b03518be1a9a20c9b8c084a15b",
+    "index_name": "measurement_set_f523c2b0",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -635,6 +635,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "orf_list": {
+                                "type": "keyword"
+                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -948,6 +951,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "orf_list": {
+                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"
@@ -2191,6 +2197,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "orf_list": {
+                                        "type": "keyword"
                                     },
                                     "product_id": {
                                         "type": "keyword"

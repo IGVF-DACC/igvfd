@@ -394,6 +394,18 @@
                     }
                 },
                 {
+                    "required": [
+                        "orf_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "interactors"
+                            ]
+                        }
+                    }
+                },
+                {
                     "not": {
                         "required": [
                             "tile",
@@ -401,7 +413,8 @@
                             "small_scale_gene_list",
                             "large_scale_gene_list",
                             "small_scale_loci_list",
-                            "large_scale_loci_list"
+                            "large_scale_loci_list",
+                            "orf_list"
                         ]
                     },
                     "properties": {
@@ -529,6 +542,16 @@
                 }
             }
         },
+        "orf_list": {
+            "comment": "Specification of orf_list requires that scope is interactors.",
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "interactors"
+                    ]
+                }
+            }
+        },
         "average_insert_size": {
             "comment": "Specification of average_insert_size is mutually exclusive with specification of lower_bound_insert_size and upper_bound_insert_size.",
             "not": {
@@ -622,7 +645,8 @@
                 "exon",
                 "genes",
                 "loci",
-                "genome-wide"
+                "genome-wide",
+                "interactors"
             ],
             "submissionExample": {
                 "appscript": "genes",
@@ -692,6 +716,23 @@
             "submissionExample": {
                 "appscript": "[\"/phenotype-terms/MONDO_0008564/\", \"/phenotype-terms/MONDO_0005148/\"]",
                 "igvf_utils": "/phenotype-terms/MONDO_0008564/, /phenotype-terms/MONDO_0005148/"
+            }
+        },
+        "orf_list": {
+            "title": "List of Open Reading Frames (ORF).",
+            "description": "List of Open Reading Frame this construct library was designed to target.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "List of Open Reading Frames (ORF).",
+                "description": "List of Open Reading Frame this construct library was designed to target.",
+                "linkTo": "OpenReadingFrame",
+                "type": "string"
+            },
+            "submissionExample": {
+                "appscript": "[\"/open-reading-frame/CCSBORF1234/\", \"/open-reading-frame/CCSBORF5678/\", \"CCSBORF9876\"]",
+                "igvf_utils": "/open-reading-frame/CCSBORF1234/, /open-reading-frame/CCSBORF5678/, CCSBORF9876"
             }
         },
         "small_scale_gene_list": {

@@ -768,6 +768,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "orf_list": {
+                                "type": "keyword"
+                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
@@ -1302,6 +1305,9 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "orf_list": {
+                        "type": "keyword"
                     },
                     "product_id": {
                         "copy_to": "_exact",

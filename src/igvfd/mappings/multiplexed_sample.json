@@ -1,6 +1,6 @@
 {
-    "hash": "d1d2690cd9c68ed75af2ba7c04e5360f",
-    "index_name": "multiplexed_sample_d1d2690c",
+    "hash": "6749ed8f3e55fe2687444dff88e98324",
+    "index_name": "multiplexed_sample_6749ed8f",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -349,6 +349,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "orf_list": {
+                                "type": "keyword"
                             },
                             "product_id": {
                                 "type": "keyword"
@@ -771,6 +774,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "orf_list": {
+                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"

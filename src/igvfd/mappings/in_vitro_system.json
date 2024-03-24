@@ -700,6 +700,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "orf_list": {
+                                "type": "keyword"
+                            },
                             "prediction_objects": {
                                 "type": "keyword"
                             },
