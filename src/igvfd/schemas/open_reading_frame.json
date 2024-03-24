@@ -49,9 +49,14 @@
             "title": "ENSEMBL GeneID",
             "description": "ENSEMBL GeneID of official nomenclature approved gene. The GeneID does not include the current version number suffix.",
             "type": "array",
-            "linkTo": "Gene",
             "uniqueItems": true,
             "minItems": 1,
+            "items": {
+                "title": "ENSEMBL GeneID",
+                "description": "An identifier of the Gene.",
+                "linkTo": "Gene",
+                "type": "string"
+            },
             "submissionExample": {
                 "appscript": "[\"/genes/ENSG00000231542/\", \"ENSG00000264176\", \"/genes/ENSG00000263690/\"]",
                 "igvf_utils": "/genes/ENSG00000231542/, ENSG00000264176, /genes/ENSG00000263690/"
@@ -61,7 +66,7 @@
             "title": "ENSEMBL ProteinID",
             "description": "ENSEMBL ProteinID of official nomenclature approved protein. The ProteinID does not include the current version number suffix.",
             "type": "string",
-            "pattern": "^ENS[A-Z]*P\\d{11}(_PAR_Y)?$",
+            "pattern": "^ENSP\\d{11}.?\\d*?$",
             "submissionExample": {
                 "appscript": "ENSP00000001146.2",
                 "igvf_utils": "ENSP00000001146.2"
