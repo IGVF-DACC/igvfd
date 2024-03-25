@@ -24,7 +24,7 @@
         "starting_amount_units": "μg",
         "dbxrefs": [
             "GEO:SAMN45",
-            "ENCODE:ENCDO123AAD"
+            "ENCODE:ENCBS123AAD"
         ],
         "lower_bound_age": 40,
         "upper_bound_age": 45,
