@@ -114,6 +114,9 @@
         "selection_criteria": [
             "protein interactors"
         ],
+        "small_scale_gene_list": [
+            "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
+        ],
         "orf_list": [
             "/open-reading-frame/CCSBORF1234/",
             "/open-reading-frame/CCSBORF4567/"
