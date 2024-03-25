@@ -129,7 +129,7 @@
             "title": "External Resources",
             "description": "Biosample identifiers from external resources, such as Biosample database or Cellosaurus.",
             "comment": "Do not submit. DCC personnel is responsible for submission of biosample external resource identifiers.",
-            "permission": "import_items",
+            "permission": "admin_only",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,

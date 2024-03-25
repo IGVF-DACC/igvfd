@@ -31,7 +31,7 @@
             "@type": "@id",
             "title": "Term ID",
             "description": "An ontology identifier describing a biological sample, assay, trait, or disease.",
-            "permission": "import_items",
+            "permission": "admin_only",
             "type": "string",
             "pattern": "^(UBERON|EFO|CL|CLO|NTR|MONDO|OBA|HP|DOID):[0-9]{2,8}$"
         },
@@ -39,14 +39,14 @@
             "title": "Term Name",
             "description": "Ontology term describing a biological sample, assay, trait, or disease.",
             "comment": "The term should match the term identifiers specified in term_id.",
-            "permission": "import_items",
+            "permission": "admin_only",
             "pattern": "^(?![\\s\"'])[\\S|\\s]*[^\\s\"']$",
             "type": "string"
         },
         "deprecated_ntr_terms": {
             "title": "Deprecated NTR terms",
             "description": "A list of deprecated NTR terms previously associated with this ontology term.",
-            "permission": "import_items",
+            "permission": "admin_only",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
@@ -60,7 +60,7 @@
         "is_a": {
             "title": "Is A",
             "description": "A list of ontology terms which are the nearest ancestor to this ontology term.",
-            "permission": "import_items",
+            "permission": "admin_only",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,

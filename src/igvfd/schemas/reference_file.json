@@ -202,7 +202,7 @@
                         "sequence barcodes",
                         "vector sequences"
                     ],
-                    "permission": "import_items"
+                    "permission": "admin_only"
                 }
             ],
             "submissionExample": {

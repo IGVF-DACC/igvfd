@@ -171,7 +171,7 @@
             "title": "Read Count",
             "description": "Number of reads in a fastq file.",
             "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
-            "permission": "import_items",
+            "permission": "admin_only",
             "type": "integer",
             "minimum": 0
         },
@@ -179,7 +179,7 @@
             "title": "Minimum Read Length",
             "description": "For high-throughput sequencing, the minimum number of contiguous nucleotides determined by sequencing.",
             "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
-            "permission": "import_items",
+            "permission": "admin_only",
             "type": "integer",
             "minimum": 0,
             "maximum": 300000000
@@ -188,7 +188,7 @@
             "title": "Maximum Read Length",
             "description": "For high-throughput sequencing, the maximum number of contiguous nucleotides determined by sequencing.",
             "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
-            "permission": "import_items",
+            "permission": "admin_only",
             "type": "integer",
             "minimum": 0,
             "maximum": 300000000
@@ -197,7 +197,7 @@
             "title": "Mean Read Length",
             "description": "For high-throughput sequencing, the mean number of contiguous nucleotides determined by sequencing.",
             "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
-            "permission": "import_items",
+            "permission": "admin_only",
             "type": "number",
             "minimum": 0,
             "maximum": 300000000

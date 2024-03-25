@@ -63,7 +63,7 @@
                     "enum": [
                         "fiducial alignment"
                     ],
-                    "permission": "import_items"
+                    "permission": "admin_only"
                 }
             ],
             "submissionExample": {
