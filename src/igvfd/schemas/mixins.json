@@ -17,7 +17,7 @@
             "type": "string",
             "format": "uuid",
             "serverDefault": "uuid4",
-            "permission": "import_items",
+            "permission": "admin_only",
             "requestMethod": "POST"
         },
         "notes": {
@@ -26,7 +26,8 @@
             "comment": "Do not submit. A place for the DACC to keep information that does not have a place in the schema.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "permission": "import_items"
+            "permission": "admin_only",
+            "formInput": "textarea"
         },
         "aliases": {
             "title": "Aliases",
@@ -56,7 +57,7 @@
             "type": "string",
             "format": "date-time",
             "serverDefault": "now",
-            "permission": "import_items"
+            "permission": "admin_only"
         },
         "submitted_by": {
             "rdfs:subPropertyOf": "dc:creator",
@@ -66,7 +67,7 @@
             "type": "string",
             "linkTo": "User",
             "serverDefault": "userid",
-            "permission": "import_items"
+            "permission": "admin_only"
         },
         "submitter_comment": {
             "title": "Submitter Comment",
@@ -97,7 +98,7 @@
             "type": "string",
             "format": "accession",
             "serverDefault": "accession",
-            "permission": "import_items"
+            "permission": "admin_only"
         },
         "alternate_accessions": {
             "title": "Alternate Accessions",
@@ -106,7 +107,7 @@
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
-            "permission": "import_items",
+            "permission": "admin_only",
             "items": {
                 "title": "Alternate Accession",
                 "description": "An accession previously assigned to an object that has been merged with this object.",
@@ -121,7 +122,7 @@
             "comment": "Do not submit. Collections are for DACC use only.",
             "type": "array",
             "minItems": 1,
-            "permission": "import_items",
+            "permission": "admin_only",
             "uniqueItems": true,
             "items": {
                 "type": "string",
@@ -138,7 +139,7 @@
         "status": {
             "title": "Status",
             "type": "string",
-            "permission": "import_items",
+            "permission": "admin_only",
             "default": "in progress",
             "description": "The status of the metadata object.",
             "comment": "Do not submit.  This is set by admins along the process of metadata submission.",
@@ -154,7 +155,7 @@
         "revoke_detail": {
             "title": "Revoke Detail",
             "type": "string",
-            "permission": "import_items",
+            "permission": "admin_only",
             "description": "Explanation of why an object was transitioned to the revoked status.",
             "comment": "Do not submit. This is set by admins when an object is revoked.",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$"
@@ -166,7 +167,7 @@
             "type": "string",
             "description": "The status of the metadata object.",
             "default": "in progress",
-            "permission": "import_items",
+            "permission": "admin_only",
             "enum": [
                 "archived",
                 "deleted",
@@ -181,7 +182,7 @@
             "type": "string",
             "description": "The status of the metadata object.",
             "default": "current",
-            "permission": "import_items",
+            "permission": "admin_only",
             "enum": [
                 "current",
                 "deleted",
@@ -473,7 +474,7 @@
             "comment": "Do not submit. The date the object is released is assigned by the server.",
             "type": "string",
             "format": "date-time",
-            "permission": "import_items"
+            "permission": "admin_only"
         }
     },
     "genes": {

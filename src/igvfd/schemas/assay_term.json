@@ -42,7 +42,7 @@
             "@type": "@id",
             "title": "Term ID",
             "description": "An ontology term identifier describing an assay.",
-            "permission": "import_items",
+            "permission": "admin_only",
             "type": "string",
             "pattern": "^(OBI|NTR):[0-9]{2,8}$"
         },

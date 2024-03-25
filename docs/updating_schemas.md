@@ -358,7 +358,7 @@ The following are properties categorized by IGVF members' permission to submit. 
     * `comment`: Instructions for submitters explaining details of how to submit the property. If there is a dependency defined for the property, the comment must include: "This property is affected by dependencies. See \[link\]."
     * `submissionExample`: Required. An example of how to specify the property using appscript and igvf_utils tools.
 * Admin only properties:
-    * `permission`: Required. A string property which is always `import_items`. Must not be present for any property that can be modified by any submitter.
+    * `permission`: Required. A string property which is always `admin_only`. Must not be present for any property that can be modified by any submitter.
 * Calculated properties:
     * `notSubmittable`: Required. A boolean property which is always `True`. Must not be present for any submittable property.
 

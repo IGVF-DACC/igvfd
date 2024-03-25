@@ -75,7 +75,7 @@
             "then": {
                 "properties": {
                     "integrated_content_files": {
-                        "permission": "import_items"
+                        "permission": "admin_only"
                     }
                 }
             }

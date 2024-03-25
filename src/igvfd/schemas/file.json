@@ -191,7 +191,7 @@
             "title": "Content MD5sum",
             "description": "The MD5sum of the uncompressed file.",
             "type": "string",
-            "permission": "import_items",
+            "permission": "admin_only",
             "format": "hex",
             "maxLength": 32,
             "pattern": "[a-f\\d]{32}|[A-F\\d]{32}"
@@ -311,7 +311,7 @@
             "description": "The upload/validation status of the file.",
             "type": "string",
             "default": "pending",
-            "permission": "import_items",
+            "permission": "admin_only",
             "enum": [
                 "pending",
                 "file not found",
@@ -323,7 +323,7 @@
             "title": "Validation Error Detail",
             "description": "Explanation of why the file failed the automated content checks.",
             "type": "string",
-            "permission": "import_items"
+            "permission": "admin_only"
         }
     },
     "changelog": "/profiles/changelogs/file.md"

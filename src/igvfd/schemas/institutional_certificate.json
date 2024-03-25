@@ -68,7 +68,7 @@
             "description": "A unique identifier for the certificate.",
             "type": "string",
             "pattern": "^IP\\d{3}-\\d{2}$",
-            "permission": "import_items",
+            "permission": "admin_only",
             "submissionExample": {
                 "appscript": "IP123-45",
                 "igvf_utils": "IP123-45"

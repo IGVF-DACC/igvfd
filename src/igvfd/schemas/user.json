@@ -48,7 +48,7 @@
             "title": "Lab",
             "description": "Lab user is primarily associated with.",
             "comment": "See lab.json for available identifiers.",
-            "permission": "import_items",
+            "permission": "admin_only",
             "type": "string",
             "linkTo": "Lab"
         },
@@ -58,7 +58,7 @@
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
-            "permission": "import_items",
+            "permission": "admin_only",
             "items": {
                 "title": "Lab Submittable For",
                 "description": "A lab user is authorized to submit for.",
