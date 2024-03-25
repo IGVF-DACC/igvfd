@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Minor changes since schema version 18
+
+* Update `dbxrefs` regex to allow ENCODE sample accessions.
+
 ### Schema version 18
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.

@@ -140,7 +140,7 @@
                 "title": "External Identifier",
                 "description": "An identifier from external resource.",
                 "type": "string",
-                "pattern": "^((GEO:SAMN\\d+)|(Cellosaurus:CVCL_\\w{4}))$"
+                "pattern": "^((GEO:SAMN\\d+)|(Cellosaurus:CVCL_\\w{4})|(ENCODE:ENCBS\\d{3}[A-Z]{3}))$"
             },
             "submissionExample": {
                 "appscript": "[\"GEO:SAMN34251743\", \"Cellosaurus:CVCL_0027\"]",

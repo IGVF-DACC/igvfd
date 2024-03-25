@@ -1,5 +1,9 @@
 ## Changelog for *`cell_line.json`*
 
+### Minor changes since schema version 9
+
+* Update `dbxrefs` regex to allow ENCODE sample accessions.
+
 ### Schema version 9
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
@@ -7,7 +11,6 @@
 ### Minor changes since schema version 8
 
 * Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
-
 
 ### Schema version 8
 

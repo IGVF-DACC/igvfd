@@ -1,5 +1,9 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Minor changes since schema version 7
+
+* Update `dbxrefs` regex to allow ENCODE sample accessions.
+
 ### Schema version 7
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
