@@ -328,8 +328,10 @@ def audit_inconsistent_sequencing_kit(value, system):
             run_to_kit[file_info[file]['run']]['files'].append(file)
             run_to_kit[file_info[file]['run']]['kits'].append(file_info[file]['kit'])
         else:
-            run_to_kit[file_info[file]['run']]['files'] = [file]
-            run_to_kit[file_info[file]['run']]['kits'] = [file_info[file]['kit']]
+            run_to_kit[file_info[file]['run']] = {
+                'files': [file],
+                'kits': [file_info[file]['kit']]
+            }
 
     for run in run_to_kit:
         if len(set(run_to_kit[run]['kits'])) > 1:
