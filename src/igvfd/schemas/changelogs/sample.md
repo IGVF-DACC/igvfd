@@ -1,5 +1,6 @@
 ## Changelog for *`sample.json`*
 
+* Update `dbxrefs` regex to allow ENCODE sample accessions. (03/25/2024)
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status. (03/06/3024)
 * Add `release_timestamp` (01/31/2024).
 * Rename `sorted_fraction` to `sorted_from`. (11/01/2023)

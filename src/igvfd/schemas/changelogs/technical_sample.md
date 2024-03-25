@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Minor changes since schema version 12
+
+* Update `dbxrefs` regex to allow ENCODE sample accessions.
+
 ### Schema version 12
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.

@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Minor changes since schema version 21
+
+* Update `dbxrefs` regex to allow ENCODE sample accessions.
+
 ### Schema version 21
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
