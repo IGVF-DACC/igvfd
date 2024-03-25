@@ -81,7 +81,7 @@
             }
         },
         "file_set_type": {
-            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, large_scale_gene_list or orf_list and that scope be genes, tile, interactors or exon and should not specify any guide properties.",
+            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, or large_scale_gene_list and that scope be genes, tile, exon or interactors and should not specify any guide properties.",
             "allOf": [
                 {
                     "if": {
@@ -189,6 +189,9 @@
                                             },
                                             {
                                                 "const": "genes"
+                                            },
+                                            {
+                                                "const": "interactors"
                                             }
                                         ]
                                     }
@@ -313,45 +316,6 @@
                                         }
                                     ]
                                 }
-                            },
-                            {
-                                "required": [
-                                    "orf_list"
-                                ],
-                                "properties": {
-                                    "scope": {
-                                        "const": "interactors"
-                                    }
-                                },
-                                "not": {
-                                    "anyOf": [
-                                        {
-                                            "required": [
-                                                "guide_type"
-                                            ]
-                                        },
-                                        {
-                                            "required": [
-                                                "tiling_modality"
-                                            ]
-                                        },
-                                        {
-                                            "required": [
-                                                "average_guide_coverage"
-                                            ]
-                                        },
-                                        {
-                                            "required": [
-                                                "lower_bound_guide_coverage"
-                                            ]
-                                        },
-                                        {
-                                            "required": [
-                                                "upper_bound_guide_coverage"
-                                            ]
-                                        }
-                                    ]
-                                }
                             }
                         ]
                     }
@@ -437,7 +401,8 @@
                 },
                 {
                     "required": [
-                        "orf_list"
+                        "orf_list",
+                        "small_scale_gene_list"
                     ],
                     "properties": {
                         "scope": {

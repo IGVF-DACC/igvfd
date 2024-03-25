@@ -7,6 +7,8 @@
 ### Schema version 7
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
+* Add `orf_list`.
+* Extend `scope` enum list to include `interactors`.
 
 ### Minor changes since schema version 6
 
