@@ -1,5 +1,9 @@
 ## Changelog for *`matrix_file.json`*
 
+### Schema version 6
+
+* Require `derived_from` to contain at least one value.
+
 ### Schema version 5
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.

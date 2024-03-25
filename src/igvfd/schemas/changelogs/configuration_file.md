@@ -3,6 +3,7 @@
 ### Schema version 7
 
 * Require `seqspec_of` to contain at least one value.
+* Require `derived_from` to contain at least one value.
 
 ### Schema version 6
 

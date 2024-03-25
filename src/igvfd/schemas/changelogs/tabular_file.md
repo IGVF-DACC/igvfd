@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 8
+
+* Require `derived_from` to contain at least one value.
+
 ### Minor changes since schema version 7
 
 * Add calculated property `integrated_in`.
