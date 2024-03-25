@@ -9,7 +9,7 @@ from snovault.util import Path
 
 
 @collection(
-    name='open-reading-frame',
+    name='open-reading-frames',
     unique_key='open_reading_frame:orf_id',
     properties={
         'title': 'Open Reading Frame',
@@ -23,3 +23,12 @@ class OpenReadingFrame(Item):
     embedded_with_frame = [
         Path('gene', include=['@id', 'symbol']),
     ]
+
+    set_status_up = []
+    set_status_down = []
+
+    def unique_keys(self, properties):
+        keys = super(OpenReadingFrame, self).unique_keys(properties)
+        keys.setdefault('open_reading_frame:orf_id',
+                        []).append(properties['orf_id'])
+        return keys

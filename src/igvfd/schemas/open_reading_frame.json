@@ -91,8 +91,8 @@
             }
         },
         "pct_identical_protein": {
-            "title": "Percentage of Identical Matches to Ensembl Protein ID",
-            "description": "The Percentage of identical matches to Ensembl protein ID.",
+            "title": "Percentage of Identical Matches to Ensembl Protein",
+            "description": "The percentage of identical matches to Ensembl protein.",
             "type": "number",
             "minimum": 0,
             "maximum": 100,
@@ -104,7 +104,7 @@
         "pct_coverage_protein": {
             "title": "Percentage of ORF Covered by Ensembl Protein",
             "description": "The percentage of ORF covered by Ensembl protein.",
-            "comment": " The percentage of the alignment between the ORF and it’s corresponding protein id over the length of the protein id.",
+            "comment": " The percentage of the alignment between the ORF and its corresponding protein over the length of the protein.",
             "type": "number",
             "minimum": 0,
             "maximum": 100,
@@ -116,7 +116,7 @@
         "pct_coverage_orf": {
             "title": "Percentage of Ensembl Protein Covered by ORF",
             "description": "The percentage of Ensembl protein covered by ORF.",
-            "comment": " The percentage of the alignment between the ORF and it’s corresponding protein id over the length of the ORF.",
+            "comment": " The percentage of the alignment between the ORF and its corresponding protein over the length of the ORF.",
             "type": "number",
             "minimum": 0,
             "maximum": 100,

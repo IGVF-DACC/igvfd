@@ -733,7 +733,7 @@
             }
         },
         "orf_list": {
-            "title": "List of Open Reading Frames (ORF).",
+            "title": "List of Open Reading Frames (ORF)",
             "description": "List of Open Reading Frame this construct library was designed to target.",
             "type": "array",
             "uniqueItems": true,
