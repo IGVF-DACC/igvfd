@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 
 
@@ -27,12 +28,13 @@ def audit_no_files(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_no_files)
     if not(value.get('files', '')):
         detail = (
             f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has no files.'
+            f'has no `files`.'
         )
-        yield AuditFailure('missing files', detail, level='WARNING')
+        yield AuditFailure('missing files', f'{detail} {description}', level='WARNING')
 
 
 @audit_checker('FileSet', frame='object')
@@ -40,12 +42,13 @@ def audit_missing_seqspec(value, system):
     '''
     [
         {
-            "audit_description": "Sequence files in a file set are expected to link to a seqspec file.",
+            "audit_description": "Sequence files in a file set are expected to link to a sequence specification file.",
             "audit_category": "missing sequence specification",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
+    description = get_audit_description(audit_missing_seqspec)
     if 'files' in value:
         no_seqspec = []
         for file in value['files']:
@@ -58,9 +61,9 @@ def audit_missing_seqspec(value, system):
                                    for file_no_seqspec in no_seqspec])
             detail = (
                 f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
-                f'{no_seqspec} which do not have a seqspec configuration file.'
+                f'{no_seqspec} which do not have any `seqspecs`.'
             )
-            yield AuditFailure('missing sequence specification', detail, level='NOT_COMPLIANT')
+            yield AuditFailure('missing sequence specification', f'{detail} {description}', level='NOT_COMPLIANT')
 
 
 @audit_checker('FileSet', frame='object')
@@ -68,12 +71,13 @@ def audit_files_associated_with_incorrect_fileset(value, system):
     '''
     [
         {
-            "audit_description": "All files associated with a seqspec (both sequencing and seqspec files) are expected to be linked on the same file set.",
+            "audit_description": "All files associated with a seqspec (both sequencing and seqspec files) are expected to be linked to the same file set.",
             "audit_category": "missing related files",
             "audit_level": "ERROR"
         }
     ]
     '''
+    description = get_audit_description(audit_files_associated_with_incorrect_fileset)
     if 'files' in value:
         for file in value['files']:
             if file.startswith('/sequence-files/'):
@@ -88,7 +92,7 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                                 f'{audit_link(path_to_text(file), file)} which links to seqspec '
                                 f'{audit_link(path_to_text(configuration_file), configuration_file)} which does not link to this file set.'
                             )
-                            yield AuditFailure('missing related files', detail, level='ERROR')
+                            yield AuditFailure('missing related files', f'{detail} {description}', level='ERROR')
 
             # Audit the file set with a seqspec configuration file without the associated sequence files also in the file set.
             if file.startswith('/configuration-files/'):
@@ -104,7 +108,7 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                             f'{audit_link(path_to_text(file), file)} which links to sequence file(s): {missing_sequence_files} which '
                             f'do not link to this file set.'
                         )
-                        yield AuditFailure('missing related files', detail, level='ERROR')
+                        yield AuditFailure('missing related files', f'{detail} {description}', level='ERROR')
 
 
 @audit_checker('FileSet', frame='object')
@@ -118,6 +122,7 @@ def audit_inconsistent_seqspec(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_inconsistent_seqspec)
     if 'files' in value:
         sequence_to_seqspec = {}
         for file in value['files']:
@@ -144,9 +149,9 @@ def audit_inconsistent_seqspec(value, system):
                 detail = (
                     f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(non_matching_files), non_matching_files) for non_matching_files in non_matching_files])} '
-                    f'which belong to the same sequencing set, but do not share the same seqspec file(s).'
+                    f'which belong to the same sequencing set, but do not have the same `seqspecs`.'
                 )
-                yield AuditFailure('inconsistent sequence specifications', detail, level='ERROR')
+                yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')
 
         seqspec_to_sequence = {}
         for key, file_dict in sequence_to_seqspec.items():
@@ -167,7 +172,7 @@ def audit_inconsistent_seqspec(value, system):
                 detail = (
                     f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '
                     f'{", ".join([audit_link(path_to_text(file), file) for _, file in sequence_files])} '
-                    f'which share the same seqspec file(s) {", ".join(seqspec_paths)} '
+                    f'which share the same `seqspecs` {", ".join(seqspec_paths)} '
                     f'but belong to different sequencing sets.'
                 )
-                yield AuditFailure('inconsistent sequence specifications', detail, level='ERROR')
+                yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')

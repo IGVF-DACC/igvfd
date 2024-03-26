@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 
 
@@ -14,11 +15,12 @@ def audit_curated_set_mismatched_taxa(value, system):
     [
         {
             "audit_description": "The taxa of the curated set and associated samples or donors are expected to be matching.",
-            "audit_category": "inconsistent taxa metadata",
+            "audit_category": "inconsistent taxa",
             "audit_level": "ERROR"
         }
     ]
     '''
+    description = get_audit_description(audit_curated_set_mismatched_taxa)
     taxa = {value.get('taxa', '')}
     samples_taxa = set()
     donors_taxa = set()
@@ -31,10 +33,10 @@ def audit_curated_set_mismatched_taxa(value, system):
         )
         if samples_taxa != taxa and '' not in taxa:
             detail = (
-                f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'has a taxa which does not match the taxa of the associated Samples.'
+                f'Curated set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has a `taxa` which does not match the `taxa` of its associated `samples`.'
             )
-            yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')
+            yield AuditFailure('inconsistent taxa', f'{detail} {description}', level='ERROR')
     if 'donors' in value:
         donors_taxa = set(
             [
@@ -44,7 +46,7 @@ def audit_curated_set_mismatched_taxa(value, system):
         )
         if donors_taxa != taxa and '' not in taxa:
             detail = (
-                f'CuratedSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'has a taxa which does not match the taxa of the associated Donors.'
+                f'Curated set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has a `taxa` which does not match the `taxa` of its associated `donors`.'
             )
-            yield AuditFailure('inconsistent taxa metadata', detail, level='ERROR')
+            yield AuditFailure('inconsistent taxa', f'{detail} {description}', level='ERROR')

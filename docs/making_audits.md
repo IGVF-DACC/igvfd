@@ -28,40 +28,52 @@ objects referred to by an identifier:
 
         @audit_checker('{metadata_object}', frame='object')
         def audit_new_audit_name(value, system):
-            '''
-            Description of audit
-            '''
             pass
 
-    * *Requires metadata in other objects* - metadata need for audit are properties of the object as well as properoties within embedded objects:
+    * *Requires metadata in other objects* - metadata need for audit are properties of the object as well as properties within embedded objects:
 
         @audit_checker('{metadata_object}', frame=['{linked_object_1}'])
         def audit_new_audit_name(value, system):
-            '''
-            Description of audit
-            '''
             pass
 
-3. Write the logic for the metadata check and determine what the ```AuditFailure``` human readable name when displayed on faceted search and the details of the audit to be displayed. Also determine which of the following 4 categories this audit should fall into:
+3. Define the description for the audit. The description should serve to describe what type of metadata is audited in a human-readable format without any technical language, e.g. referencing of properties or object names should be in sentence case. Ideally, the description should be kept in the positive as much as possible and limited to a single sentence.
 
-    * *ERROR* - This is wrong no matter what.  Example: term mismatch
-    * *NOT COMPLIANT* - This should not be released this way. Example: in progress ChIP experiment with no control
-    * *WARNING* - Informational warning.  Example: This library is paired end but the replicate is single end.
-    * *DCC ACTION* - DCC needs to update metadata or code to fix. Example NTRs.
+Additionally, decide on an appropriate ```AuditFailure``` category name for the audit. This category will be displayed on the faceted search. The category should be concise, precise, and avoid redundant language (e.g., use of "metadata" or "associated" since they are implied). Generally, audits will fall into one of the following three types of categories. Additional categories for special cases may be created by discretion of the wrangler. ex. `NTR term ID`.
 
-    Example of ```library``` where RNA library should have a size_range specified :
+    * a missing property or link -> "missing {property}/{item}"
+    * an inconsistency with an expectation of metadata on linked item(s) -> "inconsistent {item} {property}"
+    * a property or link to a type that isn't expected -> "unexpected {property}/{type}
 
-        RNAs = ['SO:0000356', 'SO:0000871']
+Also determine which of the following 4 levels of severity (ERROR, NOT_COMPLIANT, WARNING, INTERNAL_ACTION) the audit should fall into. Please refer to the [audits page](https://data.igvf.org/audits/) for defintions of severity levels.
 
-        if (value['nucleic_acid_term_id'] in RNAs) and ('size_range' not in value):
-            detail = 'RNA library {} requires a value for size_range'.format(audit_link(value['accession'], value['@id']))
-            raise AuditFailure('missing size_range', detail, level='ERROR')
+The description, category, and level should be listed in the docstring of the audit function shown as following. The docstring for each audit is used to build a row in the audit documentation page for the respective type. The docstring should be defined in JSON format.
+    '''
+        [
+            {
+                "audit_description": "Description of the audit."
+                "audit_category": "Category of the audit."
+                "audit_level": "Level of the audit."
+            }
+        ]
+    '''
+
+4. Write the logic for the metadata check and define the details to be displayed with the audit. Details should explain the discrepancy and display the values for the metadata properties that are resulting in the AuditFailure. Details should try to avoid reiterating the audit description unless necessary, since the description is displayed as well in the audit.
+
+    Example of a ```measurement_set``` which has a preferred assay title that does not correspond to its assay term:
+
+        if preferred_assay_title and preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
+                f'assay term "{assay_term_name}", but preferred assay title "{preferred_assay_title}", '
+                f'which is not an expected preferred assay title for this assay term.'
+            )
+            yield AuditFailure('inconsistent assays', detail, level='WARNING')
 
     Use ```audit_link``` to format links so that the front end can find and present them. The first parameter is the text to display for the link, while the second is the link path. You must import ```audit_link``` from the .formatter library.
 
     The .formatter library also includes a ```path_to_text``` utility to help generate link text if all you have is the ```@id```. Pass this ```@id``` to ```path_to_text``` and it returns just the accession portion as text that you can use as link text.
 
-4. In the **tests** directory add audit test to an existing/new python file named ```test_audit_{metadata_object}.py```. This example shows the basic structure of setting up ```pytest.fixture``` and test that ```property_1``` is present if ```property_2``` is RNA:
+5. In the **tests** directory add audit test to an existing/new python file named ```test_audit_{metadata_object}.py```. This example shows the basic structure of setting up ```pytest.fixture``` and test that ```property_1``` is present if ```property_2``` is RNA:
 
         @pytest.fixture
         def {metadata_object}_1:

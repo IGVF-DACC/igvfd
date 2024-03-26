@@ -16,7 +16,7 @@ def test_audit_inconsistent_input_file_sets(
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent input file sets'
+        error['category'] == 'missing measurement set'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -27,6 +27,6 @@ def test_audit_inconsistent_input_file_sets(
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent input file sets'
+        error['category'] != 'missing measurement set'
         for error in res.json['audit'].get('WARNING', [])
     )

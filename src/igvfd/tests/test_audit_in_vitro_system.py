@@ -13,7 +13,7 @@ def test_audit_targeted_sample_term(
     )
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent targeted_sample_term'
+        error['category'] == 'inconsistent targeted sample term'
         for error in res.json['audit'].get('WARNING', [])
     )
 
@@ -47,8 +47,8 @@ def test_audit_targeted_sample_term(
     )
     res = testapp.get(in_vitro_differentiated_cell['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent cell_fate_change_treatments treatment purpose'
-        for error in res.json['audit'].get('ERROR', [])
+        error['category'] == 'inconsistent treatment purpose'
+        for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
         treatment_chemical['@id'],
@@ -64,8 +64,8 @@ def test_audit_targeted_sample_term(
     )
     res = testapp.get(in_vitro_differentiated_cell['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent cell_fate_change_treatments treatment purpose'
-        for error in res.json['audit'].get('ERROR', [])
+        error['category'] != 'inconsistent treatment purpose'
+        for error in res.json['audit'].get('WARNING', [])
     )
 
 
@@ -88,7 +88,7 @@ def test_audit_cell_fate_change_protocol_document_type(
     )
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent cell_fate_change_protocol document type'
+        error['category'] == 'inconsistent document type'
         for error in res.json['audit'].get('ERROR', [])
     )
 
@@ -100,6 +100,6 @@ def test_audit_cell_fate_change_protocol_document_type(
     )
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent cell_fate_change_protocol document type'
+        error['category'] != 'inconsistent document type'
         for error in res.json['audit'].get('ERROR', [])
     )

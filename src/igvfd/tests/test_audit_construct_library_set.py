@@ -13,7 +13,7 @@ def test_audit_construct_library_set_associated_phenotype(
     )
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent variants and phenotype metadata'
+        error['category'] == 'missing associated phenotypes'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -28,7 +28,7 @@ def test_audit_construct_library_set_plasmid_map(
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing plasmid map'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
     testapp.patch_json(
@@ -37,7 +37,7 @@ def test_audit_construct_library_set_plasmid_map(
     )
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert 'missing plasmid map' not in (
-        error['category'] for error in res.json['audit'].get('WARNING', [])
+        error['category'] for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 
@@ -54,7 +54,7 @@ def test_audit_construct_library_set_exon_with_multiple_genes(
     )
     res = testapp.get(base_expression_construct_library_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent scope metadata'
+        error['category'] == 'inconsistent scope'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -63,7 +63,7 @@ def test_audit_construct_library_set_exon_with_multiple_genes(
     )
     res = testapp.get(construct_library_set_tile['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent scope metadata'
+        error['category'] == 'inconsistent scope'
         for error in res.json['audit'].get('WARNING', [])
     )
 
@@ -80,7 +80,7 @@ def test_audit_construct_library_set_with_non_sequence_files(
     )
     res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert any(
-        error['category'] == 'unexpected file association'
+        error['category'] == 'unexpected files'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -89,6 +89,6 @@ def test_audit_construct_library_set_with_non_sequence_files(
     )
     res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert all(
-        error['category'] != 'unexpected file association'
+        error['category'] != 'unexpected files'
         for error in res.json['audit'].get('WARNING', [])
     )

@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 
 
@@ -13,30 +14,30 @@ def audit_related_multiome_datasets(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets with a specified multiome_size are expected to have the corresponding amount of links to other measurement sets (excluding itself) in related_multiome_datasets which are expected to have the same multiome_size and samples.",
-            "audit_category": "inconsistent multiome metadata",
-            "audit_level": "WARNING"
+            "audit_description": "Measurement sets with a multiome size are expected to have the corresponding amount of measurement sets (excluding itself) listed in related multiome datasets. Each of these datasets are expected to have the same multiome size and samples.",
+            "audit_category": "inconsistent multiome datasets",
+            "audit_level": "ERROR"
         }
     ]
     '''
+    description = get_audit_description(audit_related_multiome_datasets)
     detail = ''
     related_multiome_datasets = value.get('related_multiome_datasets', [])
     multiome_size = value.get('multiome_size')
     if related_multiome_datasets == [] and multiome_size:
         detail = (
-            f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-            f'has a multiome size of {multiome_size}, but no related '
-            f'multiome MeasurementSet object(s).'
+            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'has a `multiome_size` of {multiome_size}, but no `related_multiome_datasets`.'
         )
-        yield AuditFailure('inconsistent multiome metadata', detail, level='WARNING')
+        yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
     elif related_multiome_datasets and multiome_size:
         if len(related_multiome_datasets) != multiome_size - 1:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'has a multiome size of {multiome_size}, but {len(related_multiome_datasets)} '
-                f'related multiome MeasurementSet object(s) when {multiome_size - 1} are expected.'
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has a `multiome_size` of {multiome_size}, but {len(related_multiome_datasets)} '
+                f'`related_multiome_datasets` when {multiome_size - 1} are expected.'
             )
-            yield AuditFailure('inconsistent multiome metadata', detail, level='WARNING')
+            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
         samples = value.get('samples')
         samples_to_link = [audit_link(path_to_text(sample), sample) for sample in samples]
         datasets_with_different_samples = []
@@ -50,27 +51,27 @@ def audit_related_multiome_datasets(value, system):
                     f"{audit_link(path_to_text(dataset), dataset)} which has associated sample(s): {', '.join(related_samples_to_link)}")
             if dataset_object.get('multiome_size') is None:
                 datasets_with_different_multiome_sizes.append(
-                    f'{audit_link(path_to_text(dataset), dataset)} which does not have a specified multiome size')
+                    f'{audit_link(path_to_text(dataset), dataset)} which does not have a specified `multiome_size`')
             if multiome_size != dataset_object.get('multiome_size') and dataset_object.get('multiome_size') is not None:
                 datasets_with_different_multiome_sizes.append(
-                    f"{audit_link(path_to_text(dataset), dataset)} which has a multiome size of: {dataset_object.get('multiome_size')}")
+                    f"{audit_link(path_to_text(dataset), dataset)} which has a `multiome_size` of: {dataset_object.get('multiome_size')}")
         datasets_with_different_samples = ', '.join(datasets_with_different_samples)
         datasets_with_different_multiome_sizes = ', '.join(datasets_with_different_multiome_sizes)
         samples_to_link = ', '.join(samples_to_link)
         if datasets_with_different_samples:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has associated sample(s): {samples_to_link} which are not the same associated sample(s) '
-                f'of related multiome MeasurementSet object(s): {datasets_with_different_samples}'
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has associated `samples`: {samples_to_link} which are not the same associated `samples` '
+                f'of `related_multiome_datasets`: {datasets_with_different_samples}'
             )
-            yield AuditFailure('inconsistent multiome metadata', detail, level='WARNING')
+            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
         if datasets_with_different_multiome_sizes:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has a specified multiome size of {multiome_size}, which does not match the '
-                f'multiome size of related MeasurementSet object(s): {datasets_with_different_multiome_sizes}'
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has a specified `multiome_size` of {multiome_size}, which does not match the '
+                f'`multiome_size` of `related_multiome_datasets`: {datasets_with_different_multiome_sizes}'
             )
-            yield AuditFailure('inconsistent multiome metadata', detail, level='WARNING')
+            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -84,13 +85,13 @@ def audit_unspecified_protocol(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_unspecified_protocol)
     if 'protocols' not in value:
         detail = (
-            f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-            f'is expected to specify the experimental protocol utilized for conducting '
-            f'the assay on protocols.io.'
+            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'has no `protocols`.'
         )
-        yield AuditFailure('missing protocol', detail, level='NOT_COMPLIANT')
+        yield AuditFailure('missing protocol', f'{detail} {description}', level='NOT_COMPLIANT')
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -98,42 +99,45 @@ def audit_inconsistent_readout(value, system):
     '''
     [
         {
-            "audit_description": "CRISPR-based and MPRA assays are required to specify a readout, other assays should not include readout specification.",
+            "audit_description": "CRISPR-based and MPRA measurement sets are expected to specify a readout, other assays are not expected to include a readout specification.",
             "audit_category": "inconsistent readout",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "If a readout is specified it should be different than the assay term.",
+            "audit_description": "If a readout is specified it is expected to be different than the assay term.",
             "audit_category": "inconsistent readout",
             "audit_level": "ERROR"
         }
     ]
     '''
+    description_readout_expectation = get_audit_description(audit_inconsistent_readout)
+    description_identical_readout = get_audit_description(audit_inconsistent_readout, index=1)
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    assay = assay.get('term_name')
     assays_with_readout = ['CRISPR screen',
                            'massively parallel reporter assay',
                            'cas mediated mutagenesis']
     if 'readout' in value:
-        if assay.get('term_name') not in assays_with_readout:
+        if assay not in assays_with_readout:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'not expected to specify a data readout.'
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'a {assay} `assay_term`, but specifies a readout.'
             )
-            yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')
+            yield AuditFailure('inconsistent readout', f'{detail} {description_readout_expectation}', level='ERROR')
         if assay_term == value.get('readout'):
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'not expected to specify the same readout and assay term.'
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} specifies '
+                f'the same `readout` and `assay_term`.'
             )
-            yield AuditFailure('inconsistent readout', detail, level='ERROR')
+            yield AuditFailure('inconsistent readout', f'{detail} {description_identical_readout}', level='ERROR')
     else:
-        if assay.get('term_name') in assays_with_readout:
+        if assay in assays_with_readout:
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'a screening assay (such as CRISPR screen or MPRA) and is expected to specify a data readout.'
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'a {assay} `assay_term` and does not specify a `readout`.'
             )
-            yield AuditFailure('inconsistent readout', detail, level='NOT_COMPLIANT')
+            yield AuditFailure('inconsistent readout', f'{detail} {description_readout_expectation}', level='NOT_COMPLIANT')
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -143,10 +147,11 @@ def audit_inconsistent_modifications(value, system):
         {
             "audit_description": "Modifications should be consistent for samples within a measurement set.",
             "audit_category": "inconsistent modifications",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "ERROR"
         }
     ]
     '''
+    description = get_audit_description(audit_inconsistent_modifications)
     samples = value.get('samples', [])
     modifications = []
     for sample in samples:
@@ -155,10 +160,10 @@ def audit_inconsistent_modifications(value, system):
     modifications = set(tuple(i) for i in modifications)
     if len(modifications) > 1:
         detail = (
-            f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} has '
-            f'samples with inconsistent modifications applied.'
+            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
+            f'`samples` with inconsistent `modifications` applied.'
         )
-        yield AuditFailure('inconsistent modifications', detail, level='NOT_COMPLIANT')
+        yield AuditFailure('inconsistent modifications', f'{detail} {description}', level='ERROR')
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -166,12 +171,13 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
     [
         {
-            "audit_description": "CRISPR screen and cas mediated mutagenesis measurement sets are required to have a modification specified on their samples.",
+            "audit_description": "Measurement sets from CRISPR-based assays are expected to have a modification specified on their samples.",
             "audit_category": "missing modification",
-            "audit_level": "ERROR"
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
+    description = get_audit_description(audit_CRISPR_screen_lacking_modifications)
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     crispr_assays = ['cas mediated mutagenesis',
@@ -188,11 +194,10 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
             samples_to_link = [audit_link(path_to_text(bad_sample), bad_sample) for bad_sample in bad_samples]
             sample_detail = samples_to_link = ', '.join(samples_to_link)
             detail = (
-                f'MeasurementSet {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'a CRISPR screen assay and is expected to specify a modification on its sample(s); '
-                f'modifications are missing on {sample_detail}.'
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'a CRISPR screen assay but has no specified `modifications` on its `samples`: {sample_detail}.'
             )
-            yield AuditFailure('missing modification', detail, level='ERROR')
+            yield AuditFailure('missing modification', f'{detail} {description}', level='NOT_COMPLIANT')
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -201,11 +206,12 @@ def audit_preferred_assay_title(value, system):
     [
         {
             "audit_description": "Measurement sets with a preferred assay title are expected to specify an appropriate assay term.",
-            "audit_category": "inconsistent assay metadata",
+            "audit_category": "inconsistent assays",
             "audit_level": "WARNING"
         }
     ]
     '''
+    description = get_audit_description(audit_preferred_assay_title)
     assay_term = value.get('assay_term')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_term_name = assay_object.get('term_name')
@@ -213,23 +219,23 @@ def audit_preferred_assay_title(value, system):
     if preferred_assay_title and preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
-            f'assay term "{assay_term_name}", but preferred assay title "{preferred_assay_title}", '
-            f'which is not an expected preferred assay title for this assay term.'
+            f'`assay_term` {assay_term_name}, but `preferred_assay_title` {preferred_assay_title}.'
         )
-        yield AuditFailure('inconsistent assay metadata', detail, level='WARNING')
+        yield AuditFailure('inconsistent assays', f'{detail} {description}', level='WARNING')
 
 
 @audit_checker('MeasurementSet', frame='object')
-def audit_inconsistent_institutional_certification(value, system):
+def audit_missing_institutional_certification(value, system):
     '''
     [
         {
             "audit_description": "Measurement sets for mapping assays involving samples with a human origin are expected to link to the relevant institutional certificates issued to a matching lab and award.",
-            "audit_category": "inconsistent institutional certification",
-            "audit_level": "ERROR"
+            "audit_category": "missing nih certification",
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
+    description = get_audit_description(audit_missing_institutional_certification)
     # Only audit Measurement Sets with at least one human sample.
     donors = value.get('donors', [])
     taxa = set()
@@ -270,7 +276,7 @@ def audit_inconsistent_institutional_certification(value, system):
         if lab not in nic_labs or award not in nic_awards:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
-                f'a sample {audit_link(path_to_text(s),s)} that lacks a NIH institutional '
-                f'certificate issued to the lab that submitted this file set.'
+                f'a sample {audit_link(path_to_text(s),s)} that lacks any `institutional_certificates` '
+                f'issued to the lab that submitted this file set.'
             )
-            yield AuditFailure('inconsistent institutional certificate', detail, level='ERROR')
+            yield AuditFailure('missing nih certification', f'{detail} {description}', level='NOT_COMPLIANT')

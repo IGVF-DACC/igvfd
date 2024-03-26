@@ -5,6 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
+    get_audit_description
 )
 
 
@@ -13,19 +14,20 @@ def audit_whole_organism_human_taxa(value, system):
     '''
     [
         {
-            "audit_description": "Whole organisms are expected to have a donor with taxa Homo sapiens.",
-            "audit_category": "incorrect taxa",
+            "audit_description": "Whole organisms are expected to have a model organism donor.",
+            "audit_category": "unexpected donor",
             "audit_level": "ERROR"
         }
     ]
     '''
+    description = get_audit_description(audit_whole_organism_human_taxa)
     if 'taxa' in value:
         if value['taxa'] == 'Homo sapiens':
             detail = (
                 f'Whole organism {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'specifies that it is of taxa Homo sapiens, this is disallowed.'
+                f'specifies that it is of `taxa` Homo sapiens.'
             )
-            yield AuditFailure('incorrect taxa', detail, level='ERROR')
+            yield AuditFailure('unexpected donor', f'{detail} {description}', level='ERROR')
     elif 'donors' in value:
         donor_ids = value.get('donors')
         taxa_set = set()
@@ -35,6 +37,6 @@ def audit_whole_organism_human_taxa(value, system):
         if 'Homo sapiens' in taxa_set:
             detail = (
                 f'Whole organism {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'specifies that it has donor(s) of taxa Homo sapiens, this is disallowed.'
+                f'specifies that it has `donors` of `taxa` Homo sapiens.'
             )
-            yield AuditFailure('incorrect taxa', detail, level='ERROR')
+            yield AuditFailure('unexpected donor', f'{detail} {description}', level='ERROR')

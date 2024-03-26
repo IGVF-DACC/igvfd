@@ -18,11 +18,11 @@ def test_audit_related_donors(
     )
     res = testapp.get(human_donor['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent related donors metadata'
+        error['category'] == 'inconsistent related donors'
         for error in res.json['audit'].get('WARNING', [])
     )
     assert any(
-        error['category'] == 'inconsistent related donors metadata'
+        error['category'] == 'inconsistent related donors'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -39,11 +39,11 @@ def test_audit_related_donors(
     )
     res = testapp.get(human_donor['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent related donors metadata'
+        error['category'] != 'inconsistent related donors'
         for error in res.json['audit'].get('WARNING', [])
     )
     assert any(
-        error['category'] == 'inconsistent related donors metadata'
+        error['category'] == 'inconsistent related donors'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -54,7 +54,7 @@ def test_audit_related_donors(
     )
     res = testapp.get(human_donor['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent related donors metadata'
+        error['category'] != 'inconsistent related donors'
         for error in res.json['audit'].get('ERROR', [])
     )
     # A donor should inherit audits from a related donor
@@ -67,11 +67,11 @@ def test_audit_related_donors(
     )
     res = testapp.get(human_donor['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent related donors metadata'
+        error['category'] == 'inconsistent related donors'
         for error in res.json['audit'].get('WARNING', [])
     )
     assert any(
-        error['category'] == 'inconsistent related donors metadata'
+        error['category'] == 'inconsistent related donors'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -90,10 +90,10 @@ def test_audit_related_donors(
     )
     res = testapp.get(human_donor['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent related donors metadata'
+        error['category'] != 'inconsistent related donors'
         for error in res.json['audit'].get('WARNING', [])
     )
     assert all(
-        error['category'] != 'inconsistent related donors metadata'
+        error['category'] != 'inconsistent related donors'
         for error in res.json['audit'].get('ERROR', [])
     )
