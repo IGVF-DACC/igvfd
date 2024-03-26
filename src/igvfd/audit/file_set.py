@@ -17,6 +17,17 @@ def find_non_config_sequence_files(file_set):
     return non_sequence_files
 
 
+def load_chrom_sizes_file(file_path):
+    chromosome_sizes = {}
+    with open(file_path, 'r') as file:
+        for line in file:
+            lines = line.split('\t')
+            chromosome = lines[0]
+            size = int(lines[1])
+            chromosome_sizes[chromosome] = size
+    return chromosome_sizes
+
+
 @audit_checker('FileSet', frame='object')
 def audit_no_files(value, system):
     '''
@@ -176,3 +187,39 @@ def audit_inconsistent_seqspec(value, system):
                     f'but belong to different sequencing sets.'
                 )
                 yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')
+
+
+@audit_checker('FileSet', frame='object')
+def audit_loci_valid_chrom_sizes(value, system):
+    '''
+    [
+        {
+            "audit_description": "Loci are expected to specify a valid GRCh38 chromosome name and range.",
+            "audit_category": "inconsistent loci",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_loci_valid_chrom_sizes)
+    chrom_sizes = load_chrom_sizes_file('../_static/GRCh38.chrom.sizes')
+    invalid_chroms = []
+    invalid_loci = []
+    if 'small_scale_loci_list' in value:
+        for loci in value['small_scale_loci_list']:
+            if loci['chromosome'] not in chrom_sizes:
+                invalid_chroms.append(loci['chromosome'])
+            elif loci['start'] > chrom_sizes[loci['chromosome']] or loci['end'] > chrom_sizes[loci['chromosome']]:
+                invalid_loci.append(loci)
+        if invalid_chroms:
+            detail = (
+                f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has unexpected '
+                f'chromosome(s): {invalid_chroms.join(', ')} listed in its `small_scale_loci_list`.'
+            )
+            yield AuditFailure('inconsistent loci', f'{detail} {description}', level='ERROR')
+        if invalid_loci:
+            detail = (
+                f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has loci '
+                f'listed in `small_scale_loci_list`: {invalid_loci.join(', ')} which exceed '
+                f'the valid chromosome size for its respective chromosome.'
+            )
+            yield AuditFailure('inconsistent loci', f'{detail} {description}', level='ERROR')
