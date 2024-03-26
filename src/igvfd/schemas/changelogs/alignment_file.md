@@ -1,5 +1,10 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 8
+
+* Add `upload_status` of `deposited`.
+* Add `controlled_access`.
+
 ### Schema version 7
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.

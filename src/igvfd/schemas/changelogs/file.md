@@ -1,5 +1,7 @@
 ## Changelog for *`file.json`*
 
+* Add `controlled_access`. (03/25/2024)
+* Add `upload_status` of `deposited`. (03/25/2024)
 * Add calculated property `integrated_in`. (03/14/2024)
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status. (03/06/2024)
 * Add `release_timestamp`. (01/31/2024)

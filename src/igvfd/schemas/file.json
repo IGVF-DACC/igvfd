@@ -209,6 +209,16 @@
                 "igvf_utils": "alignments"
             }
         },
+        "controlled_access": {
+            "title": "Controlled Access",
+            "description": "Boolean value, indicating the file being controlled access, if true.",
+            "type": "boolean",
+            "default": false,
+            "submissionExample": {
+                "appscript": false,
+                "igvf_utils": false
+            }
+        },
         "dbxrefs": {
             "@type": "@id",
             "rdfs:subPropertyOf": "rdfs:seeAlso",
@@ -315,6 +325,7 @@
             "permission": "import_items",
             "enum": [
                 "pending",
+                "deposited",
                 "file not found",
                 "invalidated",
                 "validated"
