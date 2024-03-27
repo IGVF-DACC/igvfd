@@ -66,6 +66,22 @@ def construct_library_set_y2h(testapp, lab, award, gene_myc_hs, gene_CRLF2_par_y
 
 
 @pytest.fixture
+def construct_library_set_orf(testapp, lab, award, gene_myc_hs, orf_foxp):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'expression vector library',
+        'scope': 'interactors',
+        'small_scale_gene_list': [gene_myc_hs['@id']],
+        'selection_criteria': [
+            'protein interactors'
+        ],
+        'orf_list': [orf_foxp['@id']]
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def construct_library_set_tile(testapp, lab, award, gene_myc_hs):
     item = {
         'award': award['@id'],

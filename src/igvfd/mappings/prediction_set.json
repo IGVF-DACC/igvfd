@@ -1,6 +1,6 @@
 {
-    "hash": "5ed820ad25e85594c387fb8135d8e7f3",
-    "index_name": "prediction_set_5ed820ad",
+    "hash": "d40b1c1dfeca94769f7221cd5529b20a",
+    "index_name": "prediction_set_d40b1c1d",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -453,6 +453,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "orf_list": {
+                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"
@@ -1272,6 +1275,9 @@
                                     },
                                     "notes": {
                                         "type": "text"
+                                    },
+                                    "orf_list": {
+                                        "type": "keyword"
                                     },
                                     "product_id": {
                                         "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "1e34bd16c464e37149885f634b362bd3",
-    "index_name": "technical_sample_1e34bd16",
+    "hash": "e5745c6b713a046dd7d54a451c51122f",
+    "index_name": "technical_sample_e5745c6b",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -463,6 +463,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "orf_list": {
+                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"

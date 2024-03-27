@@ -19,6 +19,7 @@ ORDER = [
     'lab',
     'document',
     'gene',
+    'open_reading_frame',
     'sample_term',
     'assay_term',
     'phenotype_term',

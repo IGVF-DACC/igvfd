@@ -1,6 +1,6 @@
 {
-    "hash": "a6b00d4080e181793af20a0a1c5d4d84",
-    "index_name": "curated_set_a6b00d40",
+    "hash": "401600d8fb34d2eca6094ae121e84965",
+    "index_name": "curated_set_401600d8",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -457,6 +457,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "orf_list": {
+                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"

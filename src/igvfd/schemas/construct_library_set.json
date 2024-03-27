@@ -81,7 +81,7 @@
             }
         },
         "file_set_type": {
-            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, or large_scale_gene_list and that scope be genes, tile, or exon and should not specify any guide properties.",
+            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, or large_scale_gene_list and that scope be genes, tile, exon or interactors and should not specify any guide properties.",
             "allOf": [
                 {
                     "if": {
@@ -189,6 +189,9 @@
                                             },
                                             {
                                                 "const": "genes"
+                                            },
+                                            {
+                                                "const": "interactors"
                                             }
                                         ]
                                     }
@@ -238,6 +241,9 @@
                                             },
                                             {
                                                 "const": "genes"
+                                            },
+                                            {
+                                                "const": "interactors"
                                             }
                                         ]
                                     }
@@ -317,7 +323,7 @@
             ]
         },
         "scope": {
-            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified.",
+            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is interactors then orf_list is required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified.",
             "oneOf": [
                 {
                     "required": [
@@ -394,6 +400,19 @@
                     }
                 },
                 {
+                    "required": [
+                        "orf_list",
+                        "small_scale_gene_list"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "interactors"
+                            ]
+                        }
+                    }
+                },
+                {
                     "not": {
                         "required": [
                             "tile",
@@ -401,7 +420,8 @@
                             "small_scale_gene_list",
                             "large_scale_gene_list",
                             "small_scale_loci_list",
-                            "large_scale_loci_list"
+                            "large_scale_loci_list",
+                            "orf_list"
                         ]
                     },
                     "properties": {
@@ -415,7 +435,7 @@
             ]
         },
         "small_scale_gene_list": {
-            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, or genes and is mutually exclusive with specification of large_scale_gene_list.",
+            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, genes, or interactors and is mutually exclusive with specification of large_scale_gene_list.",
             "allOf": [
                 {
                     "properties": {
@@ -429,6 +449,9 @@
                                 },
                                 {
                                     "const": "genes"
+                                },
+                                {
+                                    "const": "interactors"
                                 }
                             ]
                         }
@@ -458,7 +481,8 @@
                         "required": [
                             "small_scale_gene_list",
                             "exon",
-                            "tile"
+                            "tile",
+                            "orf_list"
                         ]
                     }
                 }
@@ -525,6 +549,19 @@
                 "scope": {
                     "enum": [
                         "tile"
+                    ]
+                }
+            }
+        },
+        "orf_list": {
+            "comment": "Specification of orf_list requires small_scale_gene_list and that scope is interactors.",
+            "required": [
+                "small_scale_gene_list"
+            ],
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "interactors"
                     ]
                 }
             }
@@ -622,7 +659,8 @@
                 "exon",
                 "genes",
                 "loci",
-                "genome-wide"
+                "genome-wide",
+                "interactors"
             ],
             "submissionExample": {
                 "appscript": "genes",
@@ -692,6 +730,23 @@
             "submissionExample": {
                 "appscript": "[\"/phenotype-terms/MONDO_0008564/\", \"/phenotype-terms/MONDO_0005148/\"]",
                 "igvf_utils": "/phenotype-terms/MONDO_0008564/, /phenotype-terms/MONDO_0005148/"
+            }
+        },
+        "orf_list": {
+            "title": "List of Open Reading Frames (ORF)",
+            "description": "List of Open Reading Frame this construct library was designed to target.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "List of Open Reading Frames (ORF).",
+                "description": "List of Open Reading Frame this construct library was designed to target.",
+                "linkTo": "OpenReadingFrame",
+                "type": "string"
+            },
+            "submissionExample": {
+                "appscript": "[\"/open-reading-frame/CCSBORF1234/\", \"/open-reading-frame/CCSBORF5678/\", \"CCSBORF9876\"]",
+                "igvf_utils": "/open-reading-frame/CCSBORF1234/, /open-reading-frame/CCSBORF5678/, CCSBORF9876"
             }
         },
         "small_scale_gene_list": {

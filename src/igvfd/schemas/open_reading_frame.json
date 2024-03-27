@@ -1,0 +1,138 @@
+{
+    "title": "Open Reading Frame",
+    "description": "Protein-encoding open reading frames (ORF)",
+    "$id": "/profiles/open_reading_frame.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "orf_id",
+        "gene"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "orf_id",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/standard_status"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "orf_id": {
+            "title": "ORF ID",
+            "description": "Open reading frame ID.",
+            "type": "string",
+            "pattern": "^CCSBORF[1-9][0-9]*$",
+            "uniqueKey": true,
+            "submissionExample": {
+                "appscript": "CCSBORF1234",
+                "igvf_utils": "CCSBORF1234"
+            }
+        },
+        "gene": {
+            "title": "ENSEMBL GeneID",
+            "description": "ENSEMBL GeneID of official nomenclature approved gene. The GeneID does not include the current version number suffix.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "ENSEMBL GeneID",
+                "description": "An identifier of the Gene.",
+                "linkTo": "Gene",
+                "type": "string"
+            },
+            "submissionExample": {
+                "appscript": "[\"/genes/ENSG00000231542/\", \"ENSG00000264176\", \"/genes/ENSG00000263690/\"]",
+                "igvf_utils": "/genes/ENSG00000231542/, ENSG00000264176, /genes/ENSG00000263690/"
+            }
+        },
+        "protein_id": {
+            "title": "ENSEMBL ProteinID",
+            "description": "ENSEMBL ProteinID of official nomenclature approved protein. The ProteinID does not include the current version number suffix.",
+            "type": "string",
+            "pattern": "^ENSP\\d{11}.?\\d*?$",
+            "submissionExample": {
+                "appscript": "ENSP00000001146.2",
+                "igvf_utils": "ENSP00000001146.2"
+            }
+        },
+        "dbxrefs": {
+            "title": "External Resources",
+            "description": "Unique identifiers from the hORFeome database",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "External Identifier",
+                "description": "A unique identifier from hORFeome database.",
+                "comment": "Submit as database_name:id. See changelog for potential databases.",
+                "type": "string",
+                "pattern": "^(hORFeome:[1-9][0-9]*)$"
+            },
+            "submissionExample": {
+                "appscript": "[\"hORFeome:8945/\", \"hORFeome:8946\"]",
+                "igvf_utils": "hORFeome:8945, hORFeome:8946"
+            }
+        },
+        "pct_identical_protein": {
+            "title": "Percentage of Identical Matches to Ensembl Protein",
+            "description": "The percentage of identical matches to Ensembl protein.",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "submissionExample": {
+                "appscript": 34,
+                "igvf_utils": 34
+            }
+        },
+        "pct_coverage_protein": {
+            "title": "Percentage of ORF Covered by Ensembl Protein",
+            "description": "The percentage of ORF covered by Ensembl protein.",
+            "comment": " The percentage of the alignment between the ORF and its corresponding protein over the length of the protein.",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "submissionExample": {
+                "appscript": 50,
+                "igvf_utils": 50
+            }
+        },
+        "pct_coverage_orf": {
+            "title": "Percentage of Ensembl Protein Covered by ORF",
+            "description": "The percentage of Ensembl protein covered by ORF.",
+            "comment": " The percentage of the alignment between the ORF and its corresponding protein over the length of the ORF.",
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100,
+            "submissionExample": {
+                "appscript": 50,
+                "igvf_utils": 50
+            }
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "orf_id"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs",
+        "orf_id"
+    ],
+    "changelog": "/profiles/changelogs/open_reading_frame.md"
+}

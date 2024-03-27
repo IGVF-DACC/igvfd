@@ -1,6 +1,6 @@
 {
-    "hash": "4527454f72025cfe4a5a5aaafbdbaff5",
-    "index_name": "analysis_set_4527454f",
+    "hash": "783bff2be0a555c36b52c787582d5cb2",
+    "index_name": "analysis_set_783bff2b",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -457,6 +457,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "orf_list": {
+                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"
@@ -1194,6 +1197,9 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "orf_list": {
+                                "type": "keyword"
                             },
                             "prediction_objects": {
                                 "type": "keyword"
