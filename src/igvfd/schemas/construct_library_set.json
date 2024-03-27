@@ -176,58 +176,6 @@
                         "oneOf": [
                             {
                                 "required": [
-                                    "genes"
-                                ],
-                                "properties": {
-                                    "scope": {
-                                        "oneOf": [
-                                            {
-                                                "const": "tile"
-                                            },
-                                            {
-                                                "const": "exon"
-                                            },
-                                            {
-                                                "const": "genes"
-                                            },
-                                            {
-                                                "const": "interactors"
-                                            }
-                                        ]
-                                    }
-                                },
-                                "not": {
-                                    "anyOf": [
-                                        {
-                                            "required": [
-                                                "guide_type"
-                                            ]
-                                        },
-                                        {
-                                            "required": [
-                                                "tiling_modality"
-                                            ]
-                                        },
-                                        {
-                                            "required": [
-                                                "average_guide_coverage"
-                                            ]
-                                        },
-                                        {
-                                            "required": [
-                                                "lower_bound_guide_coverage"
-                                            ]
-                                        },
-                                        {
-                                            "required": [
-                                                "upper_bound_guide_coverage"
-                                            ]
-                                        }
-                                    ]
-                                }
-                            },
-                            {
-                                "required": [
                                     "small_scale_gene_list"
                                 ],
                                 "properties": {
