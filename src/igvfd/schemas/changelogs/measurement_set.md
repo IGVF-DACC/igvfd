@@ -1,6 +1,6 @@
 ## Changelog for *`measurement_set.json`*
 
-### Minor changes since schema version 6
+### Minor changes since schema version 15
 
 * Extend `preferred_assay_title` enum list to include `scNT-seq2`.
 
