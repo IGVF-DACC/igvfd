@@ -26,8 +26,7 @@
             "comment": "Do not submit. A place for the DACC to keep information that does not have a place in the schema.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
-            "permission": "admin_only",
-            "formInput": "textarea"
+            "permission": "admin_only"
         },
         "aliases": {
             "title": "Aliases",
