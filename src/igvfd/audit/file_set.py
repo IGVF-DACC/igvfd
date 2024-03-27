@@ -176,3 +176,26 @@ def audit_inconsistent_seqspec(value, system):
                     f'but belong to different sequencing sets.'
                 )
                 yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')
+
+
+@audit_checker('AuxiliarySet', frame='object')
+@audit_checker('ConstructLibrarySet', frame='object')
+def audit_auxiliary_set_construct_library_set_files(value, system):
+    '''
+    [
+        {
+            "audit_description": "Auxiliary sets & construct library sets are expected to contain only sequence files or configuration files.",
+            "audit_category": "unexpected files",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_auxiliary_set_construct_library_set_files)
+    non_sequence_files = [file for file in file_set.get('files') if not (
+        file.startswith('/sequence-files/') or file.startswith('/configuration-files/'))]
+    if non_sequence_files:
+        non_sequence_files = ', '.join(
+            [audit_link(path_to_text(file), file) for file in non_sequence_files])
+        detail = (f'File set {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
+                  f'`files` that are not sequence or configuration files: {non_sequence_files}.')
+        yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')
