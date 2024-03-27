@@ -43,6 +43,9 @@ def primary_cell():
             'virtual': {
                 'title': 'Virtual'
             },
+            'file_sets.assay_term.term_name': {
+                'title': 'Assay'
+            },
             'biomarkers.classification': {
                 'title': 'Biomarkers Classification'
             },
@@ -74,6 +77,7 @@ def primary_cell():
                     'classifications',
                     'biomarkers.classification',
                     'virtual',
+                    'file_sets.assay_term.term_name',
                 ]
             },
             {

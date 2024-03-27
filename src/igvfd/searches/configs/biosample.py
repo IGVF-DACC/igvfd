@@ -25,6 +25,9 @@ def biosample():
             'virtual': {
                 'title': 'Virtual'
             },
+            'file_sets.assay_term.term_name': {
+                'title': 'Assay'
+            },
             'type': {
                 'title': 'Object Type'
             },
@@ -47,6 +50,7 @@ def biosample():
                 'facet_fields': [
                     'classifications',
                     'virtual',
+                    'file_sets.assay_term.term_name',
                 ]
             },
             {
