@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Minor changes since schema version 6
+
+* Extend `preferred_assay_titles` enum list to include `scNT-seq2`.
+
 ### Schema version 6
 
 * Require `preferred_assay_titles` to contain at least one value.
