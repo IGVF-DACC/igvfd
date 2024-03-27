@@ -206,8 +206,8 @@ def audit_loci_valid_chrom_sizes(value, system):
         }
     ]
     '''
-    description_inconsistent_assembly = get_audit_description(audit_loci_valid_chrom_sizes, 0)
-    description_inconsistent_loci = get_audit_description(audit_loci_valid_chrom_sizes, 1)
+    description_inconsistent_assembly = get_audit_description(audit_loci_valid_chrom_sizes, index=0)
+    description_inconsistent_loci = get_audit_description(audit_loci_valid_chrom_sizes, index=1)
     GRCh38_chrom_sizes = load_chrom_sizes_file('src/igvfd/audit/_static/GRCh38.chrom.sizes')
     GRCm39_chrom_sizes = load_chrom_sizes_file('src/igvfd/audit/_static/GRCm39.chrom.sizes')
     invalid_chroms = []
