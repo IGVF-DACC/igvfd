@@ -189,7 +189,8 @@ def audit_inconsistent_seqspec(value, system):
                 yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')
 
 
-@audit_checker('FileSet', frame='object')
+@audit_checker('ConstructLibrarySet', frame='object')
+@audit_checker('PredictionSet', frame='object')
 def audit_loci_valid_chrom_sizes(value, system):
     '''
     [
@@ -208,7 +209,7 @@ def audit_loci_valid_chrom_sizes(value, system):
     description_inconsistent_assembly = get_audit_description(audit_loci_valid_chrom_sizes, 0)
     description_inconsistent_loci = get_audit_description(audit_loci_valid_chrom_sizes, 1)
     GRCh38_chrom_sizes = load_chrom_sizes_file('src/igvfd/audit/_static/GRCh38.chrom.sizes')
-    GRCm39_chrom_sizes = load_chrom_sizes_file('src/igvfd/audit/_static/mm39.chrom.sizes')
+    GRCm39_chrom_sizes = load_chrom_sizes_file('src/igvfd/audit/_static/GRCm39.chrom.sizes')
     invalid_chroms = []
     invalid_loci = []
     if 'small_scale_loci_list' in value:
