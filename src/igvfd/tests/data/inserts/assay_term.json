@@ -45,6 +45,9 @@
     {
         "term_id": "OBI:0002631",
         "term_name": "single-cell RNA sequencing assay",
+        "preferred_assay_titles": [
+            "scNT-seq2"
+        ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "93b2cefa-9dfc-5e94-aa5e-faff044f46c1"
