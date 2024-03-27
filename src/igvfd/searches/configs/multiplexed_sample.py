@@ -69,6 +69,7 @@ def multiplexed_sample():
                     'biomarkers.classification',
                     'virtual',
                     'classifications',
+                    'file_sets.assay_term.term_name',
                 ]
             },
             {
@@ -77,7 +78,6 @@ def multiplexed_sample():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'file_sets.assay_term.term_name',
                     'sources.title',
                     'type',
                 ]

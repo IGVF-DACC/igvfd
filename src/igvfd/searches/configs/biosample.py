@@ -50,6 +50,7 @@ def biosample():
                 'facet_fields': [
                     'classifications',
                     'virtual',
+                    'file_sets.assay_term.term_name',
                 ]
             },
             {
@@ -58,7 +59,6 @@ def biosample():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'file_sets.assay_term.term_name',
                     'type',
                 ]
             },

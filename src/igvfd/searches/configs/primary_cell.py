@@ -77,6 +77,7 @@ def primary_cell():
                     'classifications',
                     'biomarkers.classification',
                     'virtual',
+                    'file_sets.assay_term.term_name',
                 ]
             },
             {
@@ -85,7 +86,6 @@ def primary_cell():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'file_sets.assay_term.term_name',
                     'sources.title',
                     'type',
                 ]

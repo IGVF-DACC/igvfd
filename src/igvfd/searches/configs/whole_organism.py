@@ -74,6 +74,7 @@ def whole_organism():
                     'sample_terms.term_name',
                     'disease_terms.term_name',
                     'virtual',
+                    'file_sets.assay_term.term_name',
                 ]
             },
             {
@@ -81,7 +82,6 @@ def whole_organism():
                 'facet_fields': [
                     'lab.title',
                     'award.component',
-                    'file_sets.assay_term.term_name',
                     'sources.title',
                     'type',
                 ]
