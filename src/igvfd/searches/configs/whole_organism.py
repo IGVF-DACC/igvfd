@@ -43,6 +43,9 @@ def whole_organism():
             'virtual': {
                 'title': 'Virtual'
             },
+            'file_sets.assay_term.term_name': {
+                'title': 'Assay'
+            },
             'type': {
                 'title': 'Object Type'
             },
@@ -78,6 +81,7 @@ def whole_organism():
                 'facet_fields': [
                     'lab.title',
                     'award.component',
+                    'file_sets.assay_term.term_name',
                     'sources.title',
                     'type',
                 ]

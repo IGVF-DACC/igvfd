@@ -43,6 +43,9 @@ def in_vitro_system():
             'virtual': {
                 'title': 'Virtual'
             },
+            'file_sets.assay_term.term_name': {
+                'title': 'Assay'
+            },
             'biomarkers.classification': {
                 'title': 'Biomarkers Classification'
             },
@@ -82,6 +85,7 @@ def in_vitro_system():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'file_sets.assay_term.term_name',
                     'sources.title',
                     'type',
                 ]

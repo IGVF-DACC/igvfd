@@ -25,6 +25,9 @@ def sample():
             'virtual': {
                 'title': 'Virtual'
             },
+            'file_sets.assay_term.term_name': {
+                'title': 'Assay'
+            },
             'type': {
                 'title': 'Object Type'
             },
@@ -55,6 +58,7 @@ def sample():
                     'collections',
                     'lab.title',
                     'award.component',
+                    'file_sets.assay_term.term_name',
                     'type',
                 ]
             },
