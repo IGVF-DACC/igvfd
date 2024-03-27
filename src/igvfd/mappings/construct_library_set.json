@@ -1,6 +1,6 @@
 {
-    "hash": "7257fea9f2e90a6dbed54579b8614055",
-    "index_name": "construct_library_set_7257fea9",
+    "hash": "59e79b50e8cac73757622c3a2c130725",
+    "index_name": "construct_library_set_59e79b50",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1149,6 +1149,9 @@
                                 "type": "keyword"
                             },
                             "seqspecs": {
+                                "type": "keyword"
+                            },
+                            "sequencing_kit": {
                                 "type": "keyword"
                             },
                             "sequencing_platform": {
