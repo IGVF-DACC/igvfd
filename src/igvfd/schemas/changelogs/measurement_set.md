@@ -1,5 +1,11 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 15
+
+* Require `auxiliary_sets` to contain at least one value.
+* Require `control_file_sets` to contain at least one value.
+* Require `protocols` to contain at least one value.
+* Require `sequencing_library_types` to contain at least one value.
 
 ### Schema version 14
 

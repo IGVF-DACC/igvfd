@@ -200,3 +200,14 @@ def sequence_file_v9(sequence_file):
         'status': 'revoked'
     })
     return item
+
+
+@pytest.fixture
+def sequence_file_v10(sequence_file):
+    item = sequence_file.copy()
+    item.update({
+        'derived_from': [],
+        'file_format_specifications': [],
+        'schema_version': '10'
+    })
+    return item

@@ -116,6 +116,8 @@ class File(Item):
         'title': 'Integrated In',
         'description': 'Construct library set(s) that this file was used for in insert design.',
         'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'Integrated In',
             'type': ['string', 'object'],
@@ -268,6 +270,8 @@ class SequenceFile(File):
         'title': 'Seqspecs',
         'description': 'Link(s) to the associated seqspec YAML configuration file(s).',
         'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'Seqspecs',
             'type': ['string', 'object'],
@@ -333,6 +337,7 @@ class AlignmentFile(File):
         schema={
             'title': 'Content Summary',
             'type': 'string',
+            'description': 'A summary of the data in the alignment file.',
             'notSubmittable': True
         }
     )
@@ -381,6 +386,7 @@ class MatrixFile(File):
         schema={
             'title': 'Content Summary',
             'type': 'string',
+            'description': 'A summary of the data in the matrix file.',
             'notSubmittable': True
         }
     )
@@ -415,6 +421,7 @@ class SignalFile(File):
         schema={
             'title': 'Content Summary',
             'type': 'string',
+            'description': 'A summary of the data in the signal file.',
             'notSubmittable': True
         }
     )

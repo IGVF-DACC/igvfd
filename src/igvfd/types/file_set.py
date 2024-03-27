@@ -91,6 +91,9 @@ class FileSet(Item):
     @calculated_property(schema={
         'title': 'Files',
         'type': 'array',
+        'description': 'The files associated with this file set.',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'File',
             'type': ['string', 'object'],
@@ -104,6 +107,9 @@ class FileSet(Item):
     @calculated_property(schema={
         'title': 'File Sets Controlled By This File Set',
         'type': 'array',
+        'description': 'The file sets for which this file set is a control.',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'File Set Controlled By This File Set',
             'type': ['string', 'object'],
@@ -200,6 +206,7 @@ class AnalysisSet(FileSet):
             'title': 'Assay Titles',
             'description': 'Title(s) of assays that produced data analyzed in the analysis set.',
             'type': 'array',
+            'minItems': 1,
             'uniqueItems': True,
             'items': {
                 'title': 'Assay Title',
@@ -228,6 +235,7 @@ class AnalysisSet(FileSet):
             'title': 'Donors',
             'description': 'The donors of the samples associated with this analysis set.',
             'type': 'array',
+            'minItems': 1,
             'uniqueItems': True,
             'items': {
                 'title': 'Donor',
@@ -264,6 +272,7 @@ class CuratedSet(FileSet):
             'title': 'Assemblies',
             'description': 'The genome assemblies to which the referencing files in the file set are utilizing (e.g., GRCh38).',
             'type': 'array',
+            'minItems': 1,
             'uniqueItems': True,
             'items': {
                 'title': 'Assembly',
@@ -288,6 +297,7 @@ class CuratedSet(FileSet):
             'title': 'Transcriptome Annotations',
             'description': 'The annotation versions of the reference resource.',
             'type': 'array',
+            'minItems': 1,
             'uniqueItems': True,
             'items': {
                 'title': 'Transcriptome Annotation',
@@ -371,6 +381,7 @@ class MeasurementSet(FileSet):
             'title': 'Related Multiome Datasets',
             'description': 'Related datasets included in the multiome experiment this measurement set is a part of.',
             'type': 'array',
+            'minItems': 1,
             'uniqueItems': True,
             'items': {
                 'title': 'Related Multiome Dataset',
@@ -474,6 +485,7 @@ class MeasurementSet(FileSet):
             'title': 'Donors',
             'description': 'The donors of the samples associated with this measurement set.',
             'type': 'array',
+            'minItems': 1,
             'uniqueItems': True,
             'items': {
                 'title': 'Donor',
@@ -533,6 +545,8 @@ class AuxiliarySet(FileSet):
         'title': 'Measurement Sets',
         'description': 'The measurement sets that link to this auxiliary set.',
         'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'Measurement Set',
             'type': ['string', 'object'],
@@ -566,6 +580,7 @@ class AuxiliarySet(FileSet):
             'title': 'Donors',
             'description': 'The donors of the samples associated with this auxiliary set.',
             'type': 'array',
+            'minItems': 1,
             'uniqueItems': True,
             'items': {
                 'title': 'Donor',
@@ -634,6 +649,8 @@ class ConstructLibrarySet(FileSet):
         'title': 'Applied to Samples',
         'description': 'The samples that link to this construct library set.',
         'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'Applied to Sample',
             'type': ['string', 'object'],

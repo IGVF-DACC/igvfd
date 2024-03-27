@@ -107,6 +107,7 @@
         },
         "ethnicities": {
             "title": "Ethnicity",
+            "description": "Ethnicity of the donor.",
             "comment": "We use http://bioportal.bioontology.org/ontologies/HANCESTRO as a template for the enum list of ethnicities.",
             "type": "array",
             "uniqueItems": true,

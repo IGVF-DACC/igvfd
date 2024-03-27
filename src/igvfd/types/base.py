@@ -220,6 +220,7 @@ class Item(snovault.Item):
         schema={
             'title': 'Summary',
             'type': 'string',
+            'description': 'A summary of the object.',
             'notSubmittable': True,
         }
     )

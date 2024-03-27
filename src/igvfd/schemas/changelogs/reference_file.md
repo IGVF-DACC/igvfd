@@ -1,5 +1,10 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 12
+
+* Require `derived_from` to contain at least one value.
+* Require `file_format_specifications` to contain at least one value.
+
 ### Minor changes since schema version 11
 
 * Add calculated property `integrated_in`.

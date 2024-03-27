@@ -230,3 +230,25 @@ def file_10_11(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('alignment_file', '7', '8')
+@upgrade_step('configuration_file', '6', '7')
+@upgrade_step('genome_browser_annotation_file', '7', '8')
+@upgrade_step('image_file', '3', '4')
+@upgrade_step('matrix_file', '5', '6')
+@upgrade_step('reference_file', '11', '12')
+@upgrade_step('sequence_file', '10', '11')
+@upgrade_step('signal_file', '7', '8')
+@upgrade_step('tabular_file', '7', '8')
+def file_11_12(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1533
+    if 'derived_from' in value:
+        if len(value['derived_from']) < 1:
+            del value['derived_from']
+    if 'file_format_specifications' in value:
+        if len(value['file_format_specifications']) < 1:
+            del value['file_format_specifications']
+    if 'seqspec_of' in value:
+        if len(value['seqspec_of']) < 1:
+            del value['seqspec_of']

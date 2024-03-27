@@ -61,7 +61,8 @@ pytest_plugins = [
     'igvfd.tests.fixtures.schemas.genome_browser_annotation_file',
     'igvfd.tests.fixtures.schemas.tabular_file',
     'igvfd.tests.fixtures.schemas.construct_library_set',
-    'igvfd.tests.fixtures.schemas.institutional_certificate'
+    'igvfd.tests.fixtures.schemas.institutional_certificate',
+    'igvfd.tests.fixtures.schemas.image_file',
 ]
 
 

@@ -41,6 +41,7 @@ class Publication(Item):
         schema={
             'title': 'Publication Year',
             'type': 'integer',
+            'description': 'The year the publication was published.',
             'notSubmittable': True,
         }
     )

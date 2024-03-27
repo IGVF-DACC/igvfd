@@ -13,3 +13,9 @@ def test_user_upgrade_2_3(upgrader, user_v2):
     value = upgrader.upgrade('user', user_v2, current_version='2', target_version='3')
     assert 'description' not in value
     assert value['schema_version'] == '3'
+
+
+def test_user_upgrade_3_4(upgrader, user_v3):
+    value = upgrader.upgrade('user', user_v3, current_version='3', target_version='4')
+    assert 'viewing_groups' not in value
+    assert value['schema_version'] == '4'

@@ -43,6 +43,7 @@ class OntologyTerm(Item):
     @calculated_property(schema={
         'title': 'Name',
         'type': 'string',
+        'description': 'A unique identifier for the ontology term, reformatted from the original term ID.',
         'notSubmittable': True,
     })
     def name(self, properties=None):
@@ -65,6 +66,9 @@ class OntologyTerm(Item):
         schema={
             'title': 'Synonyms',
             'type': 'array',
+            'description': 'Synonyms for the term that have been recorded in an ontology.',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'type': 'string',
             },
@@ -80,6 +84,8 @@ class OntologyTerm(Item):
             'title': 'Ancestors',
             'description': 'List of term names of ontological terms that precede the given term in the ontological tree. These ancestor terms are typically more general ontological terms under which the term is classified.',
             'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'type': 'string',
             },
@@ -92,6 +98,7 @@ class OntologyTerm(Item):
     @calculated_property(schema={
         'title': 'Ontology',
         'type': 'string',
+        'description': 'The ontology in which the term is recorded.',
         'notSubmittable': True,
     })
     def ontology(self, properties=None):
@@ -125,6 +132,9 @@ class SampleTerm(OntologyTerm):
         schema={
             'title': 'Organ',
             'type': 'array',
+            'description': 'Organs associated with the sample term.',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'type': 'string',
             },
@@ -139,6 +149,9 @@ class SampleTerm(OntologyTerm):
         schema={
             'title': 'Cell',
             'type': 'array',
+            'description': 'Cells associated with the sample term.',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'type': 'string',
             },
@@ -153,6 +166,9 @@ class SampleTerm(OntologyTerm):
         schema={
             'title': 'Developmental Slims',
             'type': 'array',
+            'description': 'Developmental stages associated with the sample term.',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'type': 'string',
             },
@@ -167,6 +183,9 @@ class SampleTerm(OntologyTerm):
         schema={
             'title': 'System Slims',
             'type': 'array',
+            'description': 'Organ systems associated with the sample term.',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'type': 'string',
             },
@@ -202,6 +221,9 @@ class AssayTerm(OntologyTerm):
         schema={
             'title': 'Assay Type',
             'type': 'array',
+            'description': 'A broad categorization of the assay term.',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'type': 'string',
             },
@@ -216,6 +238,9 @@ class AssayTerm(OntologyTerm):
         schema={
             'title': 'Assay Category',
             'type': 'array',
+            'description': 'The type of feature or interaction measured by the assay.',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'type': 'string',
             },
@@ -230,6 +255,9 @@ class AssayTerm(OntologyTerm):
         schema={
             'title': 'Assay Objective',
             'type': 'array',
+            'description': 'The purpose of the assay.',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'type': 'string',
             },

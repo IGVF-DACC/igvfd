@@ -29,7 +29,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "title": {
             "rdfs:subPropertyOf": "dc:title",
@@ -55,6 +55,7 @@
         },
         "start_date": {
             "title": "Start Date",
+            "description": "The date when the award begins.",
             "comment": "Date can be submitted as YYYY-MM-DD.",
             "type": "string",
             "format": "date",
@@ -65,6 +66,7 @@
         },
         "end_date": {
             "title": "End Date",
+            "description": "The date when the award concludes.",
             "comment": "Date can be submitted as YYYY-MM-DD.",
             "type": "string",
             "format": "date",
@@ -78,6 +80,7 @@
             "description": "Principal Investigator(s) of the grant.",
             "comment": "See user.json for available identifiers.",
             "type": "array",
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Investigator",

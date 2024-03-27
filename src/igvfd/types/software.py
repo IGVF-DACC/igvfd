@@ -37,6 +37,9 @@ class Software(Item):
     @calculated_property(schema={
         'title': 'Versions',
         'type': 'array',
+        'description': 'A list of versions that have been released for this software.',
+        'minItems': 1,
+        'uniqueItems': True,
         'notSubmittable': True,
         'items': {
             'title': 'Version',

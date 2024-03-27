@@ -290,3 +290,20 @@ def file_set_8_9(value, system):
 def construct_library_set_7_8(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1507
     return
+
+
+@upgrade_step('measurement_set', '14', '15')
+def measurement_set_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1533
+    if 'auxiliary_sets' in value:
+        if len(value['auxiliary_sets']) < 1:
+            del value['auxiliary_sets']
+    if 'control_file_sets' in value:
+        if len(value['control_file_sets']) < 1:
+            del value['control_file_sets']
+    if 'protocols' in value:
+        if len(value['protocols']) < 1:
+            del value['protocols']
+    if 'sequencing_library_types' in value:
+        if len(value['sequencing_library_types']) < 1:
+            del value['sequencing_library_types']

@@ -46,6 +46,7 @@ class AnalysisStep(Item):
         'type': 'string',
         'description': 'Full name of the analysis step.',
         'comment': 'Do not submit. Value is automatically assigned by the server.',
+        'notSubmittable': True,
         'uniqueKey': 'name'
     })
     def name(self):

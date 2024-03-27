@@ -29,3 +29,13 @@ def human_genomic_variant_3_4(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('human_genomic_variant', '4', '5')
+def human_genomic_variant_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1533
+    if 'associated_gwas' in value:
+        if len(value['associated_gwas']) < 1:
+            del value['associated_gwas']
+        else:
+            value['associated_gwas'] = list(set(value['associated_gwas']))

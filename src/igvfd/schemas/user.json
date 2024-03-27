@@ -25,11 +25,12 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "3"
+            "default": "4"
         },
         "email": {
             "title": "Email",
             "type": "string",
+            "description": "The email associated with the user's account.",
             "format": "email",
             "uniqueKey": true
         },
@@ -87,6 +88,7 @@
             "title": "View Access Groups",
             "description": "The group that determines which set of data the user has permission to view.",
             "type": "array",
+            "minItems": 1,
             "uniqueItems": true,
             "permission": "import_items",
             "items": {
@@ -101,6 +103,7 @@
         "job_title": {
             "title": "Job Title",
             "type": "string",
+            "description": "The role of the user in their lab or organization.",
             "permission": "import_items",
             "enum": [
                 "Principal Investigator",

@@ -168,3 +168,16 @@ def measurement_set_v12(measurement_set):
         'preferred_assay_title': 'Parse Split-seq'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v14(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '14',
+        'protocols': [],
+        'control_file_sets': [],
+        'sequencing_library_types': [],
+        'auxiliary_sets': []
+    })
+    return item

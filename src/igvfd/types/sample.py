@@ -101,6 +101,9 @@ class Sample(Item):
     @calculated_property(schema={
         'title': 'File Sets',
         'type': 'array',
+        'description': 'The file sets linked to this sample.',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'File Set',
             'type': ['string', 'object'],
@@ -114,6 +117,9 @@ class Sample(Item):
     @calculated_property(schema={
         'title': 'Multiplexed In',
         'type': 'array',
+        'description': 'The multiplexed samples in which this sample is included.',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'Multiplexed In',
             'type': ['string', 'object'],
@@ -127,6 +133,9 @@ class Sample(Item):
     @calculated_property(schema={
         'title': 'Sorted Fraction Samples',
         'type': 'array',
+        'description': 'The fractions into which this sample has been sorted.',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'Sorted Fraction Sample',
             'type': ['string', 'object'],
@@ -140,6 +149,9 @@ class Sample(Item):
     @calculated_property(schema={
         'title': 'Origin Sample Of',
         'type': 'array',
+        'description': 'The samples which originate from this sample, such as through a process of cell differentiation.',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'Originated Sample',
             'type': ['string', 'object'],
@@ -153,6 +165,9 @@ class Sample(Item):
     @calculated_property(schema={
         'title': 'Institutional Certificates',
         'type': 'array',
+        'description': 'The institutional certificates under which use of this sample is approved.',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'Institutional Certificate',
             'type': ['string', 'object'],
@@ -254,6 +269,7 @@ class Biosample(Sample):
         schema={
             'title': 'Taxa',
             'type': 'string',
+            'description': 'The species of the organism.',
             'enum': [
                     'Homo sapiens',
                     'Mus musculus'
@@ -276,6 +292,7 @@ class Biosample(Sample):
         schema={
             'title': 'Summary',
             'type': 'string',
+            'description': 'A summary of the sample.',
             'notSubmittable': True,
         }
     )
@@ -454,6 +471,9 @@ class Biosample(Sample):
     @calculated_property(schema={
         'title': 'Biosample Parts',
         'type': 'array',
+        'description': 'The parts into which this sample has been divided.',
+        'minItems': 1,
+        'uniqueItems': True,
         'items': {
             'title': 'Biosample Part',
             'type': ['string', 'object'],
@@ -467,6 +487,7 @@ class Biosample(Sample):
     @calculated_property(schema={
         'title': 'Pooled In',
         'type': ['string', 'object'],
+        'description': 'The pooled samples in which this sample is included.',
         'linkFrom': 'Biosample.pooled_from',
         'notSubmittable': True,
     })
@@ -495,6 +516,8 @@ class PrimaryCell(Biosample):
             'title': 'Classifications',
             'description': 'The general category of this type of sample.',
             'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'title': 'Classification',
                 'type': 'string'
@@ -548,6 +571,8 @@ class Tissue(Biosample):
             'title': 'Classifications',
             'description': 'The general category of this type of sample.',
             'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'title': 'Classification',
                 'type': 'string'
@@ -581,6 +606,7 @@ class TechnicalSample(Sample):
         schema={
             'title': 'Summary',
             'type': 'string',
+            'description': 'A summary of this sample.',
             'notSubmittable': True,
         }
     )
@@ -623,6 +649,8 @@ class TechnicalSample(Sample):
             'title': 'Classifications',
             'description': 'The general category of this type of sample.',
             'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'title': 'Classification',
                 'type': 'string'
@@ -659,6 +687,8 @@ class WholeOrganism(Biosample):
             'title': 'Classifications',
             'description': 'The general category of this type of sample.',
             'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
             'items': {
                 'title': 'Classification',
                 'type': 'string'
@@ -701,6 +731,7 @@ class MultiplexedSample(Sample):
         schema={
             'title': 'Summary',
             'type': 'string',
+            'description': 'A summary of this sample.',
             'notSubmittable': True,
         }
     )
@@ -722,6 +753,9 @@ class MultiplexedSample(Sample):
         schema={
             'title': 'Sample Terms',
             'type': 'array',
+            'description': 'The sample terms of the samples included in this multiplexed sample.',
+            'minItems': 1,
+            'uniqueItems': True,
             'notSubmittable': True,
             'items': {
                 'title': 'Sample Term',
@@ -737,6 +771,9 @@ class MultiplexedSample(Sample):
         schema={
             'title': 'Disease Terms',
             'type': 'array',
+            'description': 'The disease terms of the samples included in this multiplexed sample.',
+            'minItems': 1,
+            'uniqueItems': True,
             'notSubmittable': True,
             'items': {
                 'title': 'Disease Term',
@@ -752,6 +789,9 @@ class MultiplexedSample(Sample):
         schema={
             'title': 'Treatments',
             'type': 'array',
+            'description': 'The treatments of the samples included in this multiplexed sample.',
+            'minItems': 1,
+            'uniqueItems': True,
             'notSubmittable': True,
             'items': {
                 'title': 'Treatment',
@@ -767,6 +807,9 @@ class MultiplexedSample(Sample):
         schema={
             'title': 'Modifications',
             'type': 'array',
+            'description': 'The modifications of the samples included in this multiplexed sample.',
+            'minItems': 1,
+            'uniqueItems': True,
             'notSubmittable': True,
             'items': {
                 'title': 'Modification',
@@ -782,6 +825,9 @@ class MultiplexedSample(Sample):
         schema={
             'title': 'Donors',
             'type': 'array',
+            'description': 'The donors of the samples included in this multiplexed sample.',
+            'minItems': 1,
+            'uniqueItems': True,
             'notSubmittable': True,
             'items': {
                 'title': 'Donor',
@@ -797,6 +843,9 @@ class MultiplexedSample(Sample):
         schema={
             'title': 'Biomarkers',
             'type': 'array',
+            'description': 'The biomarkers of the samples included in this multiplexed sample.',
+            'minItems': 1,
+            'uniqueItems': True,
             'notSubmittable': True,
             'items': {
                 'title': 'Biomarker',
@@ -812,6 +861,9 @@ class MultiplexedSample(Sample):
         schema={
             'title': 'Sources',
             'type': 'array',
+            'description': 'The sources of the samples included in this multiplexed sample.',
+            'minItems': 1,
+            'uniqueItems': True,
             'notSubmittable': True,
             'items': {
                 'title': 'Source',
@@ -830,6 +882,9 @@ class MultiplexedSample(Sample):
         schema={
             'title': 'Construct Library Sets',
             'type': 'array',
+            'description': 'The construct library sets of the samples included in this multiplexed sample.',
+            'minItems': 1,
+            'uniqueItems': True,
             'notSubmittable': True,
             'items': {
                 'title': 'Construct Library Set',
@@ -845,6 +900,8 @@ class MultiplexedSample(Sample):
         schema={
             'title': 'Classifications',
             'description': 'The general category of this type of sample.',
+            'minItems': 1,
+            'uniqueItems': True,
             'type': 'array',
             'items': {
                 'title': 'Classification',

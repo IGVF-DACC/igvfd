@@ -1,5 +1,9 @@
 ## Changelog for *`user.json`*
 
+### Schema version 4
+
+* Require `viewing_groups` to contain at least one value.
+
 ### Minor changes since schema version 3
 
 * Update `aliases` regex to add `buenrostro-bernstein` as a namespace.

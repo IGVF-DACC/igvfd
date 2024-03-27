@@ -49,7 +49,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "14"
+            "default": "15"
         },
         "assay_term": {
             "title": "Assay Term",
@@ -77,7 +77,7 @@
             "title": "Protocols",
             "description": "Links to the protocol(s) for conducting the assay on Protocols.io.",
             "type": "array",
-            "minimum": 1,
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Protocol",
@@ -164,7 +164,7 @@
             "title": "Controls",
             "description": "File sets that can serve as scientific controls for this measurement_set.",
             "type": "array",
-            "minimum": 1,
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Control",
@@ -182,7 +182,7 @@
             "title": "Sequencing Library Types",
             "description": "Description of the libraries sequenced in this measurement set.",
             "type": "array",
-            "minimum": 1,
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Sequencing Library Type",
@@ -205,7 +205,7 @@
             "title": "Auxiliary Sets",
             "description": "The auxiliary sets of files produced alongside raw data from this measurement set.",
             "type": "array",
-            "minimum": 1,
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Auxiliary Set",

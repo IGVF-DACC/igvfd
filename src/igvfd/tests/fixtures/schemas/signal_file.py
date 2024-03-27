@@ -82,3 +82,14 @@ def signal_file_v5(signal_file):
         'schema_version': '5'
     })
     return item
+
+
+@pytest.fixture
+def signal_file_v7(signal_file):
+    item = signal_file.copy()
+    item.update({
+        'derived_from': [],
+        'file_format_specifications': [],
+        'schema_version': '7'
+    })
+    return item

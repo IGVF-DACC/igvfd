@@ -20,9 +20,6 @@
         }
     ],
     "properties": {
-        "schema_version": {
-            "hidden comment": "Bump the default in the subclasses."
-        },
         "selection_criteria": {
             "title": "Variant Selection Criteria Details",
             "description": "The reasoning for selecting this variant for study.",

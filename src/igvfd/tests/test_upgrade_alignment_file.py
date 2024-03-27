@@ -30,3 +30,10 @@ def test_alignment_file_upgrade_5_6(upgrader, alignment_file_v5):
     value = upgrader.upgrade('alignment_file', alignment_file_v5, current_version='5', target_version='6')
     assert value['assembly'] == 'GRCm39'
     assert value['schema_version'] == '6'
+
+
+def test_alignment_file_upgrade_7_8(upgrader, alignment_file_v7):
+    value = upgrader.upgrade('alignment_file', alignment_file_v7, current_version='7', target_version='8')
+    assert 'derived_from' not in value
+    assert 'file_format_specifications' not in value
+    assert value['schema_version'] == '8'

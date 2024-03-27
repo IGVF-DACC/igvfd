@@ -62,3 +62,11 @@ def ontology_term_3_4(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('assay_term', '5', '6')
+def ontology_term_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1533
+    if 'preferred_assay_titles' in value:
+        if len(value['preferred_assay_titles']) < 1:
+            del value['preferred_assay_titles']

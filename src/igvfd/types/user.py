@@ -67,6 +67,7 @@ class User(Item):
         schema={
             'title': 'Title',
             'type': 'string',
+            'description': 'The full name of the user.',
             'notSubmittable': True,
         }
     )

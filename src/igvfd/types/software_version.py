@@ -44,6 +44,7 @@ class SoftwareVersion(Item):
     @calculated_property(schema={
         'title': 'Name',
         'type': 'string',
+        'description': 'A unique identifier for a software version.',
         'notSubmittable': True,
     })
     def name(self):

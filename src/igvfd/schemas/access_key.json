@@ -25,6 +25,7 @@
         },
         "user": {
             "title": "User",
+            "description": "The user that is assigned to this access key.",
             "comment": "Only admins are allowed to set this value.",
             "type": "string",
             "linkTo": "User",
@@ -33,12 +34,13 @@
         "description": {
             "title": "Description",
             "type": "string",
+            "description": "Description of the access key.",
             "default": "",
-            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$",
-            "formInput": "textarea"
+            "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$|^$"
         },
         "access_key_id": {
             "title": "Access Key ID",
+            "description": "An access key.",
             "comment": "Only admins are allowed to set this value.",
             "type": "string",
             "permission": "import_items",
@@ -46,6 +48,7 @@
         },
         "secret_access_key_hash": {
             "title": "Secret Access Key Hash",
+            "description": "A secret access key.",
             "comment": "Only admins are allowed to set this value.",
             "type": "string",
             "permission": "import_items"

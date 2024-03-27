@@ -1,5 +1,11 @@
 ## Changelog for *`configuration_file.json`*
 
+### Schema version 7
+
+* Require `seqspec_of` to contain at least one value.
+* Require `derived_from` to contain at least one value.
+* Require `file_format_specifications` to contain at least one value.
+
 ### Schema version 6
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.

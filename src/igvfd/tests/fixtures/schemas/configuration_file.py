@@ -56,3 +56,15 @@ def configuration_file_v3(configuration_file_v1):
         'status': 'released'
     })
     return item
+
+
+@pytest.fixture
+def configuration_file_v6(configuration_file_v1):
+    item = configuration_file_v1.copy()
+    item.update({
+        'schema_version': '6',
+        'seqspec_of': [],
+        'derived_from': [],
+        'file_format_specifications': []
+    })
+    return item

@@ -82,3 +82,11 @@ def gene_7_8(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('gene', '8', '9')
+def gene_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1533
+    if 'synonyms' in value:
+        if len(value['synonyms']) < 1:
+            del value['synonyms']

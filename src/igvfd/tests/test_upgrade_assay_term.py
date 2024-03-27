@@ -30,3 +30,9 @@ def test_assay_term_upgrade_3_4(upgrader, assay_term_v3):
     )
     assert value['schema_version'] == '4'
     assert sorted(value['preferred_assay_titles']) == expectation
+
+
+def test_assay_term_upgrade_5_6(upgrader, assay_term_v5):
+    value = upgrader.upgrade('assay_term', assay_term_v5, current_version='5', target_version='6')
+    assert 'preferred_assay_titles' not in value
+    assert value['schema_version'] == '6'

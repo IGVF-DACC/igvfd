@@ -58,3 +58,10 @@ def test_reference_file_upgrade_9_10(upgrader, reference_file_v9):
     assert 'assembly' in value
     assert value['assembly'] == 'GRCh38'
     assert value['schema_version'] == '10'
+
+
+def test_reference_file_upgrade_11_12(upgrader, reference_file_v11):
+    value = upgrader.upgrade('reference_file', reference_file_v11, current_version='11', target_version='12')
+    assert 'derived_from' not in value
+    assert 'file_format_specifications' not in value
+    assert value['schema_version'] == '12'

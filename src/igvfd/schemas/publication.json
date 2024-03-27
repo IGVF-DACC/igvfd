@@ -43,7 +43,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "5"
+            "default": "6"
         },
         "title": {
             "title": "Title",
@@ -67,6 +67,7 @@
         "authors": {
             "title": "Authors",
             "type": "string",
+            "description": "The authors of the publication.",
             "submissionExample": {
                 "appscript": "Joel Rozowsky, Jiahao Gao, Beatrice Borsari, et al.",
                 "igvf_utils": "Joel Rozowsky, Jiahao Gao, Beatrice Borsari, et al."
@@ -85,6 +86,7 @@
         "date_revised": {
             "title": "Date Revised",
             "type": "string",
+            "description": "The date the publication was revised.",
             "format": "date",
             "submissionExample": {
                 "appscript": "2023-02-30",
@@ -143,6 +145,8 @@
         "published_by": {
             "title": "Published By",
             "type": "array",
+            "description": "The affiliation of the lab with a larger organization, such as IGVF.",
+            "minItems": 1,
             "uniqueItems": true,
             "default": [
                 "IGVF"

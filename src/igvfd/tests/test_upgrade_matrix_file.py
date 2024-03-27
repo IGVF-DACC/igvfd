@@ -17,3 +17,10 @@ def test_matrix_file_upgrade_3_4(upgrader, matrix_file_v3):
     value = upgrader.upgrade('matrix_file', matrix_file_v3, current_version='3', target_version='4')
     assert value['upload_status'] == 'invalidated'
     assert value['schema_version'] == '4'
+
+
+def test_matrix_file_upgrade_5_6(upgrader, matrix_file_v5):
+    value = upgrader.upgrade('matrix_file', matrix_file_v5, current_version='5', target_version='6')
+    assert 'derived_from' not in value
+    assert 'file_format_specifications' not in value
+    assert value['schema_version'] == '6'

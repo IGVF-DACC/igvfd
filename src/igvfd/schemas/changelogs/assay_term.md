@@ -1,6 +1,11 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 6
+
+* Require `preferred_assay_titles` to contain at least one value.
+
 ### Schema version 5
+
 * Adjust `preferred_assay_titles` enum list to replace `histone ChIP-seq` with `Histone ChIP-seq`.
 * Adjust `preferred_assay_titles` enum list to replace `Parse Split-seq` with `Parse SPLiT-seq`.
 * Adjust `preferred_assay_titles` enum list to replace `Saturation genome editing` with `SGE`.
@@ -8,6 +13,7 @@
 * Adjust `preferred_assay_titles` enum list to replace `Yeast two-hybrid` with `Y2H`.
 
 ### Schema version 4
+
 * Require `release_timestamp` for any objects with `released` or `archived` status.
 
 ### Minor changes since schema version 3

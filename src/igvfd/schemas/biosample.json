@@ -71,9 +71,6 @@
         }
     },
     "properties": {
-        "schema_version": {
-            "hidden comment": "Bump the default in the subclasses."
-        },
         "lower_bound_age": {
             "title": "Lower Bound Age",
             "description": "Lower bound of age of the organism at the time of collection of the sample.",

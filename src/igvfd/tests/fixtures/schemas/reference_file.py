@@ -119,3 +119,14 @@ def reference_file_v9(testapp, lab, award, analysis_set_with_sample):
         'schema_version': '9'
     }
     return item
+
+
+@pytest.fixture
+def reference_file_v11(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '11',
+        'derived_from': [],
+        'file_format_specifications': []
+    })
+    return item

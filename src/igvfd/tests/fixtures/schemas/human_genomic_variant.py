@@ -61,3 +61,23 @@ def human_genomic_variant_v2(human_genomic_variant_v1):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def human_genomic_variant_v4a(human_genomic_variant_v1):
+    item = human_genomic_variant_v1.copy()
+    item.update({
+        'schema_version': '4',
+        'associated_gwas': []
+    })
+    return item
+
+
+@pytest.fixture
+def human_genomic_variant_v4b(human_genomic_variant_v1):
+    item = human_genomic_variant_v1.copy()
+    item.update({
+        'schema_version': '4',
+        'associated_gwas': ['GCST000510', 'GCST000510']
+    })
+    return item
