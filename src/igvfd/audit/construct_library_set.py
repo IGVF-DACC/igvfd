@@ -7,9 +7,6 @@ from .formatter import (
     path_to_text,
     get_audit_description
 )
-from .file_set import (
-    find_non_config_sequence_files
-)
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
