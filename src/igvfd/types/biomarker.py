@@ -34,13 +34,8 @@ class Biomarker(Item):
             'type': 'string',
             'description': 'A concatenation of the name and quantification of the biomarker.',
             'notSubmittable': True,
+            'uniqueKey': True
         }
     )
     def name_quantification(self, name, quantification):
         return u'{}-{}'.format(name, quantification)
-
-    def unique_keys(self, properties):
-        keys = super(Biomarker, self).unique_keys(properties)
-        value = self.name_quantification(name=properties['name'], quantification=properties['quantification'])
-        keys.setdefault('biomarker:name_quantification', []).append(value)
-        return keys

@@ -36,18 +36,13 @@ class AnalysisStep(Item):
     set_status_up = []
     set_status_down = []
 
-    def unique_keys(self, properties):
-        keys = super(AnalysisStep, self).unique_keys(properties)
-        keys.setdefault('analysis_step:name', []).append(self._name(properties))
-        return keys
-
     @calculated_property(schema={
         'title': 'Name',
         'type': 'string',
         'description': 'Full name of the analysis step.',
         'comment': 'Do not submit. Value is automatically assigned by the server.',
         'notSubmittable': True,
-        'uniqueKey': 'name'
+        'uniqueKey': True
     })
     def name(self):
         return self.__name__

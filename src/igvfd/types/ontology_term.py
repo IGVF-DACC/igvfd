@@ -33,7 +33,6 @@ class OntologyTerm(Item):
         keys = super(OntologyTerm, self).unique_keys(properties)
         if 'deprecated_ntr_terms' in properties:
             keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
-        keys.setdefault('ontology_term:name', []).append(self.name(properties))
         return keys
 
     @property
@@ -45,6 +44,7 @@ class OntologyTerm(Item):
         'type': 'string',
         'description': 'A unique identifier for the ontology term, reformatted from the original term ID.',
         'notSubmittable': True,
+        'uniqueKey': True
     })
     def name(self, properties=None):
         if properties is None:
@@ -119,13 +119,6 @@ class SampleTerm(OntologyTerm):
     item_type = 'sample_term'
     schema = load_schema('igvfd:schemas/sample_term.json')
     embedded_with_frame = OntologyTerm.embedded_with_frame
-
-    def unique_keys(self, properties):
-        keys = super(OntologyTerm, self).unique_keys(properties)
-        if 'deprecated_ntr_terms' in properties:
-            keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
-        keys.setdefault('sample_term:name', []).append(self.name(properties))
-        return keys
 
     @calculated_property(
         condition='term_id',
@@ -209,13 +202,6 @@ class AssayTerm(OntologyTerm):
     schema = load_schema('igvfd:schemas/assay_term.json')
     embedded_with_frame = OntologyTerm.embedded_with_frame
 
-    def unique_keys(self, properties):
-        keys = super(OntologyTerm, self).unique_keys(properties)
-        if 'deprecated_ntr_terms' in properties:
-            keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
-        keys.setdefault('assay_term:name', []).append(self.name(properties))
-        return keys
-
     @calculated_property(
         condition='term_id',
         schema={
@@ -281,13 +267,6 @@ class PhenotypeTerm(OntologyTerm):
     schema = load_schema('igvfd:schemas/phenotype_term.json')
     embedded_with_frame = OntologyTerm.embedded_with_frame
 
-    def unique_keys(self, properties):
-        keys = super(OntologyTerm, self).unique_keys(properties)
-        if 'deprecated_ntr_terms' in properties:
-            keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
-        keys.setdefault('phenotype_term:name', []).append(self.name(properties))
-        return keys
-
 
 @collection(
     name='platform-terms',
@@ -301,10 +280,3 @@ class PlatformTerm(OntologyTerm):
     item_type = 'platform_term'
     schema = load_schema('igvfd:schemas/platform_term.json')
     embedded_with_frame = OntologyTerm.embedded_with_frame
-
-    def unique_keys(self, properties):
-        keys = super(OntologyTerm, self).unique_keys(properties)
-        if 'deprecated_ntr_terms' in properties:
-            keys.setdefault('alias', []).extend(properties['deprecated_ntr_terms'])
-        keys.setdefault('platform_term:name', []).append(self.name(properties))
-        return keys

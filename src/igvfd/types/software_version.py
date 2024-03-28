@@ -36,16 +36,12 @@ class SoftwareVersion(Item):
     ]
     set_status_down = []
 
-    def unique_keys(self, properties):
-        keys = super(SoftwareVersion, self).unique_keys(properties)
-        keys.setdefault('software_version:name', []).append(self._name(properties))
-        return keys
-
     @calculated_property(schema={
         'title': 'Name',
         'type': 'string',
         'description': 'A unique identifier for a software version.',
         'notSubmittable': True,
+        'uniqueKey': True
     })
     def name(self):
         return self.__name__

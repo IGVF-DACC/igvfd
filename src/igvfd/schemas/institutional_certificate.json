@@ -69,6 +69,7 @@
             "type": "string",
             "pattern": "^IP\\d{3}-\\d{2}$",
             "permission": "admin_only",
+            "uniqueKey": true,
             "submissionExample": {
                 "appscript": "IP123-45",
                 "igvf_utils": "IP123-45"

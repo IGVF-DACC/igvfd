@@ -28,9 +28,3 @@ class InstitutionalCertificate(Item):
 
     set_status_up = []
     set_status_down = []
-
-    def unique_keys(self, properties):
-        keys = super(InstitutionalCertificate, self).unique_keys(properties)
-        keys.setdefault('institutional_certification:certificate_identifier',
-                        []).append(properties['certificate_identifier'])
-        return keys
