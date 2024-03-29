@@ -79,7 +79,6 @@ def test_audit_construct_library_set_with_non_sequence_files(
         {'file_set': construct_library_set_genome_wide['@id']}
     )
     res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
-    print(res.json)
     assert any(
         error['category'] == 'unexpected files'
         for error in res.json['audit'].get('WARNING', [])
