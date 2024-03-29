@@ -43,6 +43,9 @@ def whole_organism():
             'virtual': {
                 'title': 'Virtual'
             },
+            'file_sets.assay_term.term_name': {
+                'title': 'Assay'
+            },
             'type': {
                 'title': 'Object Type'
             },
@@ -71,6 +74,7 @@ def whole_organism():
                     'sample_terms.term_name',
                     'disease_terms.term_name',
                     'virtual',
+                    'file_sets.assay_term.term_name',
                 ]
             },
             {

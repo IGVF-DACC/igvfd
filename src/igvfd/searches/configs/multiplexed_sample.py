@@ -40,6 +40,9 @@ def multiplexed_sample():
             'virtual': {
                 'title': 'Virtual'
             },
+            'file_sets.assay_term.term_name': {
+                'title': 'Assay'
+            },
             'type': {
                 'title': 'Object Type'
             },
@@ -66,6 +69,7 @@ def multiplexed_sample():
                     'biomarkers.classification',
                     'virtual',
                     'classifications',
+                    'file_sets.assay_term.term_name',
                 ]
             },
             {
