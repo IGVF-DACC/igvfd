@@ -311,16 +311,16 @@ def audit_inconsistent_sequencing_kit(value, system):
                 f'specification of a `sequencing_kit`.'
             )
             yield AuditFailure('missing sequencing kit', detail, level='WARNING')
-
-        if file_info[file]['platform'] != '':
-            if file_info[file]['platform'] not in kit_to_platform[file_info[file]['kit']]:
-                detail = (
-                    f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has a sequence '
-                    f'file {audit_link(path_to_text(file), file)} sequenced on a `sequencing_platform` '
-                    f'{audit_link(path_to_text(file_info[file]["platform"]), file_info[file]["platform"])} '
-                    f'that is inconsistent with its `sequencing_kit` {file_info[file]["kit"]}.'
-                )
-                yield AuditFailure('inconsistent sequencing kit', detail, level='ERROR')
+        else:
+            if file_info[file]['platform'] != '':
+                if file_info[file]['platform'] not in kit_to_platform[file_info[file]['kit']]:
+                    detail = (
+                        f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has a sequence '
+                        f'file {audit_link(path_to_text(file), file)} sequenced on a `sequencing_platform` '
+                        f'{audit_link(path_to_text(file_info[file]["platform"]), file_info[file]["platform"])} '
+                        f'that is inconsistent with its `sequencing_kit` {file_info[file]["kit"]}.'
+                    )
+                    yield AuditFailure('inconsistent sequencing kit', detail, level='ERROR')
 
     run_to_kit = {}
     for file in file_info:
