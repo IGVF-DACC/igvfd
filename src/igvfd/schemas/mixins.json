@@ -209,13 +209,6 @@
                 "appscript": "https://lze1a071f63dcb29ba12005.blob.core.windows.net/sc-0f7a85e-9aef-482c-9fb1-73c14877c2f8/SomeFile.fasta.gz",
                 "igvf_utils": "https://lze1a071f63dcb29ba12005.blob.core.windows.net/sc-0f7a85e-9aef-482c-9fb1-73c14877c2f8/SomeFile.fasta.gz"
             }
-        },
-        "anvil_destination_url >>>> SHOULD BE IN TYPES ": {
-            "title": "AnVIL Destination URL",
-            "description": "Destination URL linking to the controlled access file that has been deposited at AnVIL workspace.",
-            "comment": "Do not submit. AnVIL destination URL is a calculated property.",
-            "type": "string",
-            "notSubmittable": true
         }
     },
     "attribution": {

@@ -163,6 +163,22 @@ class File(Item):
         return 's3://{bucket}/{key}'.format(**external)
 
     @calculated_property(
+        schema={
+            'title': 'AnVIL Destination URL',
+            'description': 'Destination URL linking to the controlled access file that has been deposited at AnVIL workspace.',
+            'comment': 'Do not submit. AnVIL destination URL is a calculated property.',
+            'type': 'string',
+            'notSubmittable': True
+        },
+        define=True,
+    )
+    def anvil_destination_url(self, controlled_access=False, file_format, accession):
+        if controlled_access:
+            file_extension = FILE_FORMAT_TO_FILE_EXTENSION[file_format]
+            filename = f'{accession}{file_extension}'
+            return 'some workspace URL' + filename
+
+    @calculated_property(
         condition=show_upload_credentials,
         schema={
             'title': 'Upload Credentials',
