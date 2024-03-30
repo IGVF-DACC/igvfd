@@ -1,6 +1,6 @@
 {
-    "hash": "8d6d8e6f6bb1c11c731e66664de227fe",
-    "index_name": "matrix_file_8d6d8e6f",
+    "hash": "55fff9de7628234d8afab7dbdfd3b0bd",
+    "index_name": "matrix_file_55fff9de",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -155,6 +155,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "anvil_destination_url": {
                         "type": "keyword"
                     },
                     "award": {

@@ -1,6 +1,6 @@
 {
-    "hash": "e4e02ab4cf403d285fa68e2f8b4f04f3",
-    "index_name": "image_file_e4e02ab4",
+    "hash": "aaf26dc32c338da4dae090d7f04cd5a0",
+    "index_name": "image_file_aaf26dc3",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -155,6 +155,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "anvil_destination_url": {
                         "type": "keyword"
                     },
                     "award": {

@@ -789,6 +789,12 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "anvil_destination_url": {
+                                "type": "keyword"
+                            },
+                            "anvil_source_url": {
+                                "type": "keyword"
+                            },
                             "assembly": {
                                 "type": "keyword"
                             },
@@ -806,6 +812,15 @@
                             },
                             "content_type": {
                                 "type": "keyword"
+                            },
+                            "controlled_access": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "keyword"

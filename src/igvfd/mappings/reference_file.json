@@ -1,6 +1,6 @@
 {
-    "hash": "f5e45d5fed9cd0885cd386a4a7996530",
-    "index_name": "reference_file_f5e45d5f",
+    "hash": "37c47ac591617efe4a0b15ff394e736d",
+    "index_name": "reference_file_37c47ac5",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -157,6 +157,12 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
+                    "anvil_destination_url": {
+                        "type": "keyword"
+                    },
+                    "anvil_source_url": {
+                        "type": "keyword"
+                    },
                     "assembly": {
                         "type": "keyword"
                     },
@@ -240,6 +246,15 @@
                     "content_type": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
+                    },
+                    "controlled_access": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "creation_timestamp": {
                         "type": "keyword"

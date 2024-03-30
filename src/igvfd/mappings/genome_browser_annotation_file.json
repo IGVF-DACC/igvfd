@@ -1,6 +1,6 @@
 {
-    "hash": "2c93870a0e64a16ac251d16b6e0c94b7",
-    "index_name": "genome_browser_annotation_file_2c93870a",
+    "hash": "c055b42fec62fd4ea5272266a575721d",
+    "index_name": "genome_browser_annotation_file_c055b42f",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -155,6 +155,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "anvil_destination_url": {
                         "type": "keyword"
                     },
                     "assembly": {

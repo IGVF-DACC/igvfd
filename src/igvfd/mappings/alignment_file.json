@@ -1,6 +1,6 @@
 {
-    "hash": "04ef01fcf8636e9531694f8877f50054",
-    "index_name": "alignment_file_04ef01fc",
+    "hash": "bdac9562142dfe637f8d9dec44a0b0b7",
+    "index_name": "alignment_file_bdac9562",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -157,6 +157,12 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
+                    "anvil_destination_url": {
+                        "type": "keyword"
+                    },
+                    "anvil_source_url": {
+                        "type": "keyword"
+                    },
                     "assembly": {
                         "type": "keyword"
                     },
@@ -243,6 +249,15 @@
                     "content_type": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
+                    },
+                    "controlled_access": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "creation_timestamp": {
                         "type": "keyword"
