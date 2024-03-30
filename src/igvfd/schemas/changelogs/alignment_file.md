@@ -1,14 +1,14 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 9
+
+* Add `upload_status` of `deposited`.
+* Add `controlled_access`.
+
 ### Schema version 8
 
 * Require `derived_from` to contain at least one value.
 * Require `file_format_specifications` to contain at least one value.
-
-### Schema version 8
-
-* Add `upload_status` of `deposited`.
-* Add `controlled_access`.
 
 ### Schema version 7
 
