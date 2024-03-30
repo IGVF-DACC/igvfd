@@ -49,6 +49,9 @@
         },
         {
             "$ref": "mixins.json#/transcriptome_annotation"
+        },
+        {
+            "$ref": "mixins.json#/controlled_access"
         }
     ],
     "dependentSchemas": {
