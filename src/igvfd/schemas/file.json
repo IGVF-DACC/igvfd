@@ -72,19 +72,43 @@
             }
         },
         "upload_status": {
-            "comment": "Validated files must have file_size.",
-            "if": {
-                "properties": {
-                    "upload_status": {
-                        "const": "validated"
+            "allOf": [
+                {
+                    "comment": "Validated files must have file_size.",
+                    "if": {
+                        "properties": {
+                            "upload_status": {
+                                "const": "validated"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "file_size"
+                        ]
+                    }
+                },
+                {
+                    "comment": "Only controlled_access=true files can be in upload_status=deposited",
+                    "if": {
+                        "properties": {
+                            "upload_status": {
+                                "const": "deposited"
+                            }
+                        }
+                    },
+                    "then": {
+                        "required": [
+                            "controlled_access"
+                        ],
+                        "properties": {
+                            "controlled_access": {
+                                "const": true
+                            }
+                        }
                     }
                 }
-            },
-            "then": {
-                "required": [
-                    "file_size"
-                ]
-            }
+            ]
         },
         "status": {
             "comment": "Released, revoked, and archived files must not have upload_status pending or file not found. They are also required to have release_timestamp.",
