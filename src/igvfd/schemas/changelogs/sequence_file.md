@@ -1,5 +1,10 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 12
+
+* Add `upload_status` of `deposited`.
+* Add `controlled_access`.
+
 ### Minor changes since schema version 11
 
 * Add `sequencing_kit`.

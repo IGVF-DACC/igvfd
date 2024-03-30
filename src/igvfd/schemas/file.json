@@ -314,7 +314,6 @@
             "permission": "admin_only",
             "enum": [
                 "pending",
-                "deposited",
                 "file not found",
                 "invalidated",
                 "validated"

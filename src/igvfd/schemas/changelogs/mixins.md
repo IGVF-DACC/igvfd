@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Add `controlled_access`. (03/29/2024)
 * Update `aliases` regex to add `buenrostro-bernstein` as a namespace. (03/11/2024)
 * Add `GENCODE 44`, `GENCODE 45`, `GENCODE M33`, and `GENCODE M34` to `transcriptome_annotation`.
 * Remove `hg19`, `mm10`, and `mm9` from `assembly` on `small_scale_loci_list`.

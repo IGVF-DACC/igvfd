@@ -1,5 +1,10 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 13
+
+* Add `upload_status` of `deposited`.
+* Add `controlled_access`.
+
 ### Schema version 12
 
 * Require `derived_from` to contain at least one value.

@@ -287,6 +287,15 @@
                 "appscript": "ACTGGTCC",
                 "igvf_utils": "ACTGGTCC"
             }
+        },
+        "upload_status": {
+            "enum": [
+                "pending",
+                "deposited",
+                "file not found",
+                "invalidated",
+                "validated"
+            ]
         }
     },
     "fuzzy_searchable_fields": [
