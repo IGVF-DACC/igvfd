@@ -130,3 +130,26 @@ def test_integrated_in(testapp, construct_library_set_genome_wide, base_expressi
     res = testapp.get(tabular_file['@id'])
     assert set(res.json.get('integrated_in')) == {
         base_expression_construct_library_set['@id'], construct_library_set_genome_wide['@id']}
+
+
+def test_types_aligment_file_controlled_access(testapp, alignment_file):
+    res = testapp.get(alignment_file['@id'])
+    assert not res.json.get('controlled_access')
+    res = testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'controlled_access': True
+        }, expect_errors=True)
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'controlled_access': True,
+            'anvil_source_url': 'https://lze1ablob.core.windows.net/sc-0f7a85e-9aeff8/SomeFile.fasta.gz'
+        })
+    assert res.status_code == 200
+
+    accession = alignment_file['@id'].split('/')[2]
+    res = testapp.get(alignment_file['@id'])
+    assert res.json.get('anvil_destination_url') == 'some workspace URL' + accession + '.bam'

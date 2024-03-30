@@ -172,7 +172,7 @@ class File(Item):
         },
         define=True,
     )
-    def anvil_destination_url(self, controlled_access=False, file_format, accession):
+    def anvil_destination_url(self, file_format, accession, controlled_access=False):
         if controlled_access:
             file_extension = FILE_FORMAT_TO_FILE_EXTENSION[file_format]
             filename = f'{accession}{file_extension}'
