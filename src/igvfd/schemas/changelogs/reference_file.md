@@ -4,6 +4,8 @@
 
 * Add `upload_status` of `deposited`.
 * Add `controlled_access`.
+* Add `anvil_source_url`.
+* Add calculated property `anvil_destination_url`.
 
 ### Schema version 12
 
