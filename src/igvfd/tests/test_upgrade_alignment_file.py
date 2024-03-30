@@ -37,3 +37,8 @@ def test_alignment_file_upgrade_7_8(upgrader, alignment_file_v7):
     assert 'derived_from' not in value
     assert 'file_format_specifications' not in value
     assert value['schema_version'] == '8'
+
+
+def test_alignment_file_upgrade_8_9(upgrader, alignment_file_v8):
+    value = upgrader.upgrade('alignment_file', alignment_file_v8, current_version='8', target_version='9')
+    assert value['schema_version'] == '9'

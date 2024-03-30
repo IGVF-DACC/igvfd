@@ -252,3 +252,16 @@ def file_11_12(value, system):
     if 'seqspec_of' in value:
         if len(value['seqspec_of']) < 1:
             del value['seqspec_of']
+
+
+@upgrade_step('alignment_file', '8', '9')
+@upgrade_step('configuration_file', '7', '8')
+@upgrade_step('genome_browser_annotation_file', '8', '9')
+@upgrade_step('image_file', '4', '5')
+@upgrade_step('matrix_file', '6', '7')
+@upgrade_step('reference_file', '12', '13')
+@upgrade_step('sequence_file', '11', '12')
+@upgrade_step('signal_file', '8', '9')
+@upgrade_step('tabular_file', '8', '9')
+def file_12_13(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1531

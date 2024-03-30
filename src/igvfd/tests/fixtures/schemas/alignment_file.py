@@ -91,3 +91,12 @@ def alignment_file_v7(alignment_file):
         'schema_version': '7'
     })
     return item
+
+
+@pytest.fixture
+def alignment_file_v8(alignment_file):
+    item = alignment_file.copy()
+    item.update({
+        'schema_version': '8'
+    })
+    return item
