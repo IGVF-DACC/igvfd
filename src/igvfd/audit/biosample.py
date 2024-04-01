@@ -58,7 +58,7 @@ def audit_biosample_age(value, system):
     ]
     '''
     description = get_audit_description(audit_biosample_age)
-    if 'lower_bound_age' and 'upper_bound_age' and 'age_units' not in value:
+    if 'lower_bound_age' not in value and 'upper_bound_age' not in value and 'age_units' not in value:
         value_id = system.get('path')
         detail = (
             f'Biosample {audit_link(path_to_text(value_id), value_id)} '
