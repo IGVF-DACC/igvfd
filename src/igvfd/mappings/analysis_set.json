@@ -1497,6 +1497,9 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
+                            "demultiplexed_from": {
+                                "type": "keyword"
+                            },
                             "description": {
                                 "type": "text"
                             },

@@ -1,6 +1,6 @@
 {
-    "hash": "287516222ae0fdd66331e475584fad85",
-    "index_name": "tissue_28751622",
+    "hash": "bc6f080623fc121195a2a5c49b4581e8",
+    "index_name": "tissue_bc6f0806",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1339,6 +1339,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_from": {
                                 "type": "keyword"
                             },
                             "description": {
