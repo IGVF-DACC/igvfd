@@ -94,7 +94,7 @@
             "description": "ENSEMBL GeneID of official nomenclature approved gene. The GeneID does not include the current version number suffix.",
             "type": "string",
             "pattern": "^ENS[A-Z]*G\\d{11}(_PAR_Y)?$",
-            "permission": "import_items",
+            "permission": "admin_only",
             "uniqueKey": true
         },
         "symbol": {
@@ -102,14 +102,14 @@
             "description": "Gene symbol approved by the official nomenclature.",
             "type": "string",
             "format": "gene_name",
-            "permission": "import_items"
+            "permission": "admin_only"
         },
         "name": {
             "title": "Name",
             "description": "The full gene name preferably approved by the official nomenclature.",
             "type": "string",
             "format": "gene_name",
-            "permission": "import_items"
+            "permission": "admin_only"
         },
         "synonyms": {
             "title": "Synonyms",
@@ -124,7 +124,7 @@
                 "type": "string",
                 "format": "gene_name"
             },
-            "permission": "import_items"
+            "permission": "admin_only"
         },
         "dbxrefs": {
             "title": "External Resources",
@@ -140,7 +140,7 @@
                 "type": "string",
                 "pattern": "^((ENTREZ:[1-9][0-9]*)|(HGNC:\\d+)|(MGI:\\d+)|(MIM:\\d+)|(UniProtKB:[0-9A-Z]+)|(Vega:OTT[A-Z]+G\\d+)|(miRBase:MI\\d+)|(IMGT/GENE-DB:[0-9A-Za-z/\\(\\)\\-]+)|(RefSeq:[A-Z]{2}_[\\d.]+)|(GeneCards:[0-9a-zA-Z-]+))$"
             },
-            "permission": "import_items"
+            "permission": "admin_only"
         },
         "locations": {
             "title": "Gene Locations",
@@ -185,14 +185,14 @@
                     }
                 }
             },
-            "permission": "import_items"
+            "permission": "admin_only"
         },
         "version_number": {
             "title": "ENSEMBL GeneID Version Number",
             "description": "Current ENSEMBL GeneID version number of the gene.",
             "type": "string",
             "pattern": "^\\d+?",
-            "permission": "import_items"
+            "permission": "admin_only"
         }
     },
     "fuzzy_searchable_fields": [

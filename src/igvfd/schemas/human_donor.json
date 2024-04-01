@@ -162,7 +162,7 @@
             "description": "Identifiers of this human donor.",
             "minItems": 1,
             "uniqueItems": true,
-            "permission": "import_items",
+            "permission": "admin_only",
             "items": {
                 "title": "Human Donor Identifier",
                 "description": "An identifier of this human donor.",

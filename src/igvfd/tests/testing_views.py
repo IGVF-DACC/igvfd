@@ -183,7 +183,7 @@ class TestingPostPutPatch(Item):
                 'description': '',
                 'type': 'string',
                 'format': 'uuid',
-                'permission': 'import_items',
+                'permission': 'admin_only',
                 'requestMethod': 'POST',
             },
             'required': {
@@ -201,14 +201,14 @@ class TestingPostPutPatch(Item):
                 # This should be allowed on PUT so long as value is the same
                 'type': 'string',
                 'default': 'protected default',
-                'permission': 'import_items',
+                'permission': 'admin_only',
             },
             'protected_link': {
                 # This should be allowed on PUT so long as the linked uuid is
                 # the same
                 'type': 'string',
                 'linkTo': 'TestingLinkTarget',
-                'permission': 'import_items',
+                'permission': 'admin_only',
             },
         }
     }
@@ -314,13 +314,13 @@ class TestingIGVFItem(IGVFItem):
                 'type': 'string',
                 'format': 'accession',
                 'serverDefault': 'accession',
-                'permission': 'import_items',
+                'permission': 'admin_only',
                 'accessionType': 'FI',
             },
             'status': {
                 'title': 'Status',
                 'type': 'string',
-                'permission': 'import_items',
+                'permission': 'admin_only',
                 'default': 'in progress',
                 'description': 'The status of the metadata object.',
                 'enum': [

@@ -134,7 +134,7 @@
             "title": "Project Component",
             "description": "The project component the award is associated with.",
             "type": "string",
-            "permission": "import_items",
+            "permission": "admin_only",
             "enum": [
                 "affiliate",
                 "data analysis",

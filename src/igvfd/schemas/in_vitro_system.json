@@ -511,7 +511,7 @@
                 "type": "string",
                 "linkTo": "Treatment"
             },
-            "permission": "import_items",
+            "permission": "admin_only",
             "submissionExample": {
                 "appscript": "[\"john-doe:treatment01\", \"/treatments/ffe525b2-bd67-4021-835e-29748513b560/\"]",
                 "igvf_utils": "john-doe:treatment01, /treatments/ffe525b2-bd67-4021-835e-29748513b560/"

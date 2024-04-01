@@ -44,7 +44,7 @@
             "description": "The biomarker name.",
             "comment": "Only admins are allowed to set this value.",
             "type": "string",
-            "permission": "import_items"
+            "permission": "admin_only"
         },
         "classification": {
             "title": "Classification",
@@ -71,7 +71,7 @@
                 "intermediate",
                 "high"
             ],
-            "permission": "import_items"
+            "permission": "admin_only"
         },
         "synonyms": {
             "title": "Synonyms",
