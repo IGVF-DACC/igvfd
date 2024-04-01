@@ -21,5 +21,5 @@ class OpenReadingFrame(Item):
     schema = load_schema('igvfd:schemas/open_reading_frame.json')
     name_key = 'orf_id'
     embedded_with_frame = [
-        Path('gene', include=['@id', 'symbol']),
+        Path('gene', include=['@id', 'symbol', 'geneid']),
     ]
