@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 15
+
+* Extend `preferred_assay_title` enum list to include `scNT-seq2`.
+
 ### Schema version 15
 
 * Require `auxiliary_sets` to contain at least one value.
