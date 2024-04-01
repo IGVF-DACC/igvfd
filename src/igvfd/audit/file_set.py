@@ -210,6 +210,7 @@ def audit_loci_valid_chrom_sizes(value, system):
     description_inconsistent_loci = get_audit_description(audit_loci_valid_chrom_sizes, index=1)
     GRCh38_chrom_sizes = load_chrom_sizes_file('src/igvfd/audit/_static/GRCh38.chrom.sizes')
     GRCm39_chrom_sizes = load_chrom_sizes_file('src/igvfd/audit/_static/GRCm39.chrom.sizes')
+    chrom_sizes = {'GRCh38': GRCh38_chrom_sizes, 'GRCm39': GRCm39_chrom_sizes}
     invalid_chroms = []
     invalid_loci = []
     if 'small_scale_loci_list' in value:
@@ -221,16 +222,11 @@ def audit_loci_valid_chrom_sizes(value, system):
             )
             yield AuditFailure('inconsistent loci', f'{detail} {description_inconsistent_assembly}', level='ERROR')
         for loci in value['small_scale_loci_list']:
-            if loci['assembly'] == 'GRCh38':
-                if loci['chromosome'] not in GRCh38_chrom_sizes:
-                    invalid_chroms.append(loci['chromosome'])
-                elif loci['start'] > GRCh38_chrom_sizes[loci['chromosome']] or loci['end'] > GRCh38_chrom_sizes[loci['chromosome']]:
-                    invalid_loci.append(loci)
-            elif loci['assembly'] == 'GRCm39':
-                if loci['chromosome'] not in GRCm39_chrom_sizes:
-                    invalid_chroms.append(loci['chromosome'])
-                elif loci['start'] > GRCm39_chrom_sizes[loci['chromosome']] or loci['end'] > GRCm39_chrom_sizes[loci['chromosome']]:
-                    invalid_loci.append(loci)
+            assembly = chrom_sizes[loci['assembly']]
+            if loci['chromosome'] not in assembly:
+                invalid_chroms.append(loci['chromosome'])
+            elif loci['start'] > assembly[loci['chromosome']] or loci['end'] > assembly[loci['chromosome']]:
+                invalid_loci.append(loci)
         if invalid_chroms:
             invalid_chroms = ', '.join(invalid_chroms)
             detail = (
