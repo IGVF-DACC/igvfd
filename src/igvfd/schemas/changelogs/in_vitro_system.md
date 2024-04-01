@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 20
 
+* Add `demultiplexed_from`.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.
 
 ### Schema version 20
