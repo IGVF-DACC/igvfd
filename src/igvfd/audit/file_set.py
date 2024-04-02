@@ -9,14 +9,6 @@ from .formatter import (
 )
 
 
-def find_non_config_sequence_files(file_set):
-    non_sequence_files = []
-    for file in file_set.get('files'):
-        if not(file.startswith('/sequence-files/') or file.startswith('/configuration-files/')):
-            non_sequence_files.append(file)
-    return non_sequence_files
-
-
 def load_chrom_sizes_file(file_path):
     chromosome_sizes = {}
     with open(file_path, 'r') as file:
