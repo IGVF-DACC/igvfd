@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "hash": "da4feee8a23e9a41a2a435a60a96fa5f",
     "index_name": "prediction_set_da4feee8",
+=======
+    "hash": "f6bcb78aea68b8eb61e747b7976cdf23",
+    "index_name": "prediction_set_f6bcb78a",
+>>>>>>> 5b25d120 (Add reverse link)
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1416,6 +1421,9 @@
                                 "type": "keyword"
                             },
                             "demultiplexed_from": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_to": {
                                 "type": "keyword"
                             },
                             "description": {

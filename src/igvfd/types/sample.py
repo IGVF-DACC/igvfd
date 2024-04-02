@@ -540,6 +540,7 @@ class PrimaryCell(Biosample):
 class InVitroSystem(Biosample):
     item_type = 'in_vitro_system'
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
+    rev = Biosample.rev | {'demultiplexed_to': ('InVitroSystem', 'demultiplexed_from')}
     embedded_with_frame = Biosample.embedded_with_frame + [
         Path('cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('originated_from', include=['@id', 'accession']),
@@ -549,6 +550,22 @@ class InVitroSystem(Biosample):
         'cell_fate_change_protocol'
     ]
     set_status_down = Biosample.set_status_down + []
+
+    @calculated_property(schema={
+        'title': 'Demultiplexed To',
+        'type': 'array',
+        'description': 'The parts into which this sample has been demultiplexed.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Demultiplexed To',
+            'type': ['string', 'object'],
+            'linkFrom': 'InVitroSystem.demultiplexed_from',
+        },
+        'notSubmittable': True,
+    })
+    def demultiplexed_to(self, request, demultiplexed_to):
+        return paths_filtered_by_status(request, demultiplexed_to)
 
 
 @collection(

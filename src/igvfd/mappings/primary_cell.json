@@ -1,6 +1,6 @@
 {
-    "hash": "928aca79ddc1bd025fd8e2851357a54c",
-    "index_name": "primary_cell_928aca79",
+    "hash": "4a9f2359667a955d6846c5401d687b44",
+    "index_name": "primary_cell_4a9f2359",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1333,6 +1333,9 @@
                                 "type": "keyword"
                             },
                             "demultiplexed_from": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_to": {
                                 "type": "keyword"
                             },
                             "description": {

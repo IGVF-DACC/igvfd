@@ -2340,6 +2340,9 @@
                             "demultiplexed_from": {
                                 "type": "keyword"
                             },
+                            "demultiplexed_to": {
+                                "type": "keyword"
+                            },
                             "description": {
                                 "type": "text"
                             },
