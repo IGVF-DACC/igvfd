@@ -12,7 +12,7 @@ def open_reading_frame():
             }
         },
         'columns': {
-            'ord_id': {
+            'orf_id': {
                 'title': 'ORF ID'
             },
             'gene': {
