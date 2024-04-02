@@ -280,3 +280,25 @@ def audit_missing_institutional_certification(value, system):
                 f'issued to the lab that submitted this file set.'
             )
             yield AuditFailure('missing nih certification', f'{detail} {description}', level='NOT_COMPLIANT')
+
+
+@audit_checker('MeasurementSet', frame='embedded')
+def audit_CRISPR_screen_lacking_auxiliary_set(value, system):
+    '''
+    [
+        {
+            "audit_description": "Measurement sets from CRISPR screens are expected to link to a gRNA sequencing auxiliary set.",
+            "audit_category": "missing auxiliary set",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_CRISPR_screen_lacking_auxiliary_set)
+    if value['assay_term']['term_name'] == 'CRISPR screen':
+        auxiliary_sets = value.get('auxiliary_sets', '')
+        if not(auxiliary_sets) or not([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'gRNA sequencing']):
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'a CRISPR screen assay but has no gRNA sequencing `auxiliary_sets`.'
+            )
+            yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
