@@ -260,6 +260,8 @@ def audit_inconsistent_sequencing_kit(value, system):
         }
     ]
     '''
+    description_inconsistent_kit = get_audit_description(audit_inconsistent_sequencing_kit, index=0)
+    description_missing_kit = get_audit_description(audit_inconsistent_sequencing_kit, index=1)
     kit_to_platform = {
         'HiSeq SBS Kit v4': ['/platform-terms/EFO_0008565/'],
         'HiSeq SR Cluster Kit v4-cBot-HS': ['/platform-terms/EFO_0008565/'],
@@ -310,7 +312,7 @@ def audit_inconsistent_sequencing_kit(value, system):
                 f'sequence file {audit_link(path_to_text(file), file)} which lacks '
                 f'specification of a `sequencing_kit`.'
             )
-            yield AuditFailure('missing sequencing kit', detail, level='WARNING')
+            yield AuditFailure('missing sequencing kit', f'{detail} {description_missing_kit}', level='WARNING')
         else:
             if file_info[file]['platform'] != '':
                 if file_info[file]['platform'] not in kit_to_platform[file_info[file]['kit']]:
@@ -320,7 +322,7 @@ def audit_inconsistent_sequencing_kit(value, system):
                         f'{audit_link(path_to_text(file_info[file]["platform"]), file_info[file]["platform"])} '
                         f'that is inconsistent with its `sequencing_kit` {file_info[file]["kit"]}.'
                     )
-                    yield AuditFailure('inconsistent sequencing kit', detail, level='ERROR')
+                    yield AuditFailure('inconsistent sequencing kit', f'{detail} {description_inconsistent_kit}', level='ERROR')
 
     run_to_kit = {}
     for file in file_info:
@@ -341,4 +343,4 @@ def audit_inconsistent_sequencing_kit(value, system):
                 f'which are part of the same sequencing run, but specify more than 1 `sequencing_kit`: '
                 f'{", ".join(run_to_kit[run]["kits"])}'
             )
-            yield AuditFailure('inconsistent sequencing kit', detail, level='ERROR')
+            yield AuditFailure('inconsistent sequencing kit', f'{detail} {description_inconsistent_kit}', level='ERROR')
