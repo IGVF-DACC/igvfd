@@ -92,3 +92,90 @@ def test_audit_construct_library_set_with_non_sequence_files(
         error['category'] != 'unexpected files'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_construct_library_set_with_invalid_chroms(
+    testapp,
+    construct_library_set_genome_wide
+):
+    testapp.patch_json(
+        construct_library_set_genome_wide['@id'],
+        {'scope': 'loci',
+         'small_scale_loci_list': [
+             {
+                 'assembly': 'GRCh38',
+                 'chromosome': 'chr9',
+                 'start': 1,
+                 'end': 50
+             },
+             {
+                 'assembly': 'GRCm39',
+                 'chromosome': 'chr9',
+                 'start': 1,
+                 'end': 50
+             }
+         ]
+         }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent loci'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        construct_library_set_genome_wide['@id'],
+        {'small_scale_loci_list': [
+            {
+                'assembly': 'GRCh38',
+                'chromosome': 'chrZ',
+                'start': 1,
+                'end': 50
+            }
+        ]
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent loci'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        construct_library_set_genome_wide['@id'],
+        {'small_scale_loci_list': [
+            {
+                'assembly': 'GRCh38',
+                'chromosome': 'chrX',
+                'start': 1,
+                'end': 156040896
+            }
+        ]
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent loci'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        construct_library_set_genome_wide['@id'],
+        {'small_scale_loci_list': [
+            {
+                'assembly': 'GRCh38',
+                'chromosome': 'chr9',
+                'start': 1,
+                'end': 50
+            },
+            {
+                'assembly': 'GRCh38',
+                'chromosome': 'chr9',
+                'start': 75,
+                'end': 125
+            }
+        ]
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent loci'
+        for error in res.json['audit'].get('ERROR', [])
+    )

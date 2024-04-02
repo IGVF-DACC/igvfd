@@ -17,6 +17,17 @@ def find_non_config_sequence_files(file_set):
     return non_sequence_files
 
 
+def load_chrom_sizes_file(file_path):
+    chromosome_sizes = {}
+    with open(file_path, 'r') as file:
+        for line in file:
+            lines = line.split('\t')
+            chromosome = lines[0]
+            size = int(lines[1])
+            chromosome_sizes[chromosome] = size
+    return chromosome_sizes
+
+
 @audit_checker('FileSet', frame='object')
 def audit_no_files(value, system):
     '''
@@ -176,3 +187,58 @@ def audit_inconsistent_seqspec(value, system):
                     f'but belong to different sequencing sets.'
                 )
                 yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')
+
+
+@audit_checker('ConstructLibrarySet', frame='object')
+@audit_checker('PredictionSet', frame='object')
+def audit_loci_valid_chrom_sizes(value, system):
+    '''
+    [
+        {
+            "audit_description": "Loci are expected to belong to the same assembly.",
+            "audit_category": "inconsistent loci",
+            "audit_level": "ERROR"
+        },
+        {
+            "audit_description": "Loci are expected to specify a valid chromosome name and range from its respective assembly.",
+            "audit_category": "inconsistent loci",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    description_inconsistent_assembly = get_audit_description(audit_loci_valid_chrom_sizes, index=0)
+    description_inconsistent_loci = get_audit_description(audit_loci_valid_chrom_sizes, index=1)
+    GRCh38_chrom_sizes = load_chrom_sizes_file('src/igvfd/audit/_static/GRCh38.chrom.sizes')
+    GRCm39_chrom_sizes = load_chrom_sizes_file('src/igvfd/audit/_static/GRCm39.chrom.sizes')
+    chrom_sizes = {'GRCh38': GRCh38_chrom_sizes, 'GRCm39': GRCm39_chrom_sizes}
+    invalid_chroms = []
+    invalid_loci = []
+    if 'small_scale_loci_list' in value:
+        if len(set([loci['assembly'] for loci in value['small_scale_loci_list']])) > 1:
+            assemblies = ', '.join(set(loci['assembly'] for loci in value['small_scale_loci_list']))
+            detail = (
+                f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has loci '
+                f'from multiple assemblies: {assemblies} listed in its `small_scale_loci_list`.'
+            )
+            yield AuditFailure('inconsistent loci', f'{detail} {description_inconsistent_assembly}', level='ERROR')
+        for loci in value['small_scale_loci_list']:
+            assembly = chrom_sizes[loci['assembly']]
+            if loci['chromosome'] not in assembly:
+                invalid_chroms.append(loci['chromosome'])
+            elif loci['start'] > assembly[loci['chromosome']] or loci['end'] > assembly[loci['chromosome']]:
+                invalid_loci.append(loci)
+        if invalid_chroms:
+            invalid_chroms = ', '.join(invalid_chroms)
+            detail = (
+                f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has unexpected '
+                f'chromosome(s): {invalid_chroms} listed in its `small_scale_loci_list`.'
+            )
+            yield AuditFailure('inconsistent loci', f'{detail} {description_inconsistent_loci}', level='ERROR')
+        if invalid_loci:
+            invalid_loci = ', '.join(str(invalid_locus) for invalid_locus in invalid_loci)
+            detail = (
+                f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has loci '
+                f'listed in `small_scale_loci_list`: {invalid_loci} which exceed '
+                f'the valid chromosome size for its respective chromosome.'
+            )
+            yield AuditFailure('inconsistent loci', f'{detail} {description_inconsistent_loci}', level='ERROR')
