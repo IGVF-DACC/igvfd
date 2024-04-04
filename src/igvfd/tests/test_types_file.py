@@ -135,7 +135,7 @@ def test_integrated_in(testapp, construct_library_set_genome_wide, base_expressi
 def test_types_aligment_file_controlled_access(testapp, alignment_file):
     # Assert not controlled access has s3uri/href.
     res = testapp.get(alignment_file['@id'])
-    assert not res.json.get('controlled_access')
+    assert res.json['controlled_access'] is False
     assert 's3_uri' in res.json
     assert 'href' in res.json
 
@@ -145,7 +145,7 @@ def test_types_aligment_file_controlled_access(testapp, alignment_file):
     testapp.post_json(alignment_file['@id'] + '@@upload', {}, status=200)
     testapp.get(alignment_file['@id'] + '@@download', status=307)
 
-    # Assert controlled_access requireds anvil_source_url.
+    # Assert controlled_access requires anvil_source_url.
     res = testapp.patch_json(
         alignment_file['@id'],
         {
@@ -164,16 +164,16 @@ def test_types_aligment_file_controlled_access(testapp, alignment_file):
 
     # Assert controlled access doesn't have s3uri/href. Does have generated anvil_destination_url'
     res = testapp.get(alignment_file['@id'])
-    assert res.json.get('controlled_access') is True
+    assert res.json['controlled_access'] is True
     assert 's3_uri' not in res.json
     assert 'href' not in res.json
     assert 'anvil_destination_url' in res.json
     assert 'anvil_source_url' in res.json
     # Calculated path depends on workspace, creation date, uuid, accession, e.g.:
     # https://lze1a071f63dcb29ba120b05.blob.core.windows.net/sc-7d3c9ef1-99c2-4948-9811-fe79d626219f/2024/04/04/e55d6d97-f123-462b-8991-4d112d079a41/IGVFFI0968GYLL.bam
-    assert res.json.get('anvil_destination_url').startswith(
+    assert res.json['anvil_destination_url'].startswith(
         'https://lze1a071f63dcb29ba120b05.blob.core.windows.net/sc-7d3c9ef1-99c2-4948-9811-fe79d626219f/')
-    assert res.json.get('anvil_destination_url').endswith(f'/{res.json.get("uuid")}/{res.json.get("accession")}.bam')
+    assert res.json['anvil_destination_url'].endswith(f'/{res.json["uuid"]}/{res.json["accession"]}.bam')
 
     # Assert upload/download fails for controlled access.
     testapp.get(alignment_file['@id'] + '@@upload', status=403)
