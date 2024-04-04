@@ -138,6 +138,7 @@ def test_types_aligment_file_controlled_access(testapp, alignment_file):
     assert res.json['controlled_access'] is False
     assert 's3_uri' in res.json
     assert 'href' in res.json
+    assert 'anvil_destination_url' not in res.json
 
     # Assert upload/download works for not controlled access.
     res = testapp.get(alignment_file['@id'] + '@@upload')
