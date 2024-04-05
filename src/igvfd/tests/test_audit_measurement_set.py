@@ -746,3 +746,32 @@ def test_audit_missing_auxiliary_set(
         error['category'] != 'missing auxiliary set'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_unexpected_virtual_sample(
+    testapp,
+    measurement_set,
+    tissue
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'virtual': True
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
