@@ -90,6 +90,9 @@ def curated_set():
             'aliases': {
                 'title': 'Aliases'
             },
+            'description': {
+                'title': 'Description'
+            },
             'status': {
                 'title': 'Status'
             },
