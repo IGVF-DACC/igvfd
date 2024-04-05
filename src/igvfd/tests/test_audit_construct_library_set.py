@@ -207,7 +207,7 @@ def test_audit_construct_library_set_guide_library_guide_rna_sequences(
     res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing guide RNA sequences'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', []))
 
 
 def test_audit_unexpected_virtual_sample(
