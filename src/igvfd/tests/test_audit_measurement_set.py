@@ -699,3 +699,50 @@ def test_audit_inconsistent_sequencing_kit(
         error['category'] != 'inconsistent sequencing kit'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_missing_auxiliary_set(
+    testapp,
+    measurement_set,
+    assay_term_crispr,
+    base_auxiliary_set
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_crispr['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'file_set_type': 'quantification barcode sequencing'
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'file_set_type': 'gRNA sequencing'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
