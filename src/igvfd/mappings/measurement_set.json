@@ -1,6 +1,6 @@
 {
-    "hash": "17a3bd894e9bc440bf7a4216955d6b73",
-    "index_name": "measurement_set_17a3bd89",
+    "hash": "273f592e3086535702396141bb731e05",
+    "index_name": "measurement_set_273f592e",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1475,6 +1475,9 @@
                                 "type": "keyword"
                             },
                             "seqspecs": {
+                                "type": "keyword"
+                            },
+                            "sequencing_kit": {
                                 "type": "keyword"
                             },
                             "sequencing_platform": {

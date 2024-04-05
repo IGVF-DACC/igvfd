@@ -242,3 +242,105 @@ def audit_loci_valid_chrom_sizes(value, system):
                 f'the valid chromosome size for its respective chromosome.'
             )
             yield AuditFailure('inconsistent loci', f'{detail} {description_inconsistent_loci}', level='ERROR')
+
+
+@audit_checker('FileSet', frame='object')
+def audit_inconsistent_sequencing_kit(value, system):
+    '''
+    [
+        {
+            "audit_description": "Sequence files should specify a sequencing kit which is consistent with their sequencing platform. Sequence files in the same sequencing run should also specify the same sequencing kit.",
+            "audit_category": "inconsistent sequencing kit",
+            "audit_level": "ERROR"
+        },
+        {
+            "audit_description": "Sequence files should specify a sequencing kit.",
+            "audit_category": "missing sequencing kit",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    description_inconsistent_kit = get_audit_description(audit_inconsistent_sequencing_kit, index=0)
+    description_missing_kit = get_audit_description(audit_inconsistent_sequencing_kit, index=1)
+    kit_to_platform = {
+        'HiSeq SBS Kit v4': ['/platform-terms/EFO_0008565/'],
+        'HiSeq SR Cluster Kit v4-cBot-HS': ['/platform-terms/EFO_0008565/'],
+        'HiSeq PE Cluster Kit v4-cBot-HS': ['/platform-terms/EFO_0008565/'],
+        'HiSeq SR Rapid Cluster Kit v2': ['/platform-terms/EFO_0008565/'],
+        'HiSeq PE Rapid Cluster Kit v2': ['/platform-terms/EFO_0008565/'],
+        'HiSeq Rapid SBS Kit v2': ['/platform-terms/EFO_0008565/'],
+        'HiSeq 3000/4000 SBS Kit': ['/platform-terms/EFO_0008563/'],
+        'HiSeq 3000/4000 SR Cluster Kit': ['/platform-terms/EFO_0008563/'],
+        'HiSeq 3000/4000 PE Cluster Kit': ['/platform-terms/EFO_0008563/'],
+        'NextSeq 500 Mid Output Kit': ['/platform-terms/EFO_0009173/'],
+        'NextSeq 500 High Output Kit': ['/platform-terms/EFO_0009173/'],
+        'NextSeq 500 Mid Output v2 Kit': ['/platform-terms/EFO_0009173/'],
+        'NextSeq 500 High Output v2 Kit': ['/platform-terms/EFO_0009173/'],
+        'NextSeq 500/550 Mid-Output v2.5 Kit': ['/platform-terms/EFO_0008566/'],
+        'NextSeq 500/550 High-Output v2.5 Kit': ['/platform-terms/EFO_0008566/'],
+        'TG NextSeq 500/550 Mid-Output Kit v2.5': ['/platform-terms/EFO_0008566/'],
+        'TG NextSeq 500/550 High-Output Kit v2.5': ['/platform-terms/EFO_0008566/'],
+        'NextSeq 1000/2000 P1 XLEAP-SBS Reagent Kit': ['/platform-terms/EFO_0010963/'],
+        'NextSeq 1000/2000 P2 XLEAP-SBS Reagent Kit': ['/platform-terms/EFO_0010963/'],
+        'NextSeq 2000 P3 XLEAP-SBS Reagent Kit': ['/platform-terms/EFO_0010963/'],
+        'NextSeq 2000 P4 XLEAP-SBS Reagent Kit': ['/platform-terms/EFO_0010963/'],
+        'NovaSeq 6000 SP Reagent Kit v1.5': ['/platform-terms/EFO_0008637/'],
+        'NovaSeq 6000 S1 Reagent Kit v1.5': ['/platform-terms/EFO_0008637/'],
+        'NovaSeq 6000 S2 Reagent Kit v1.5': ['/platform-terms/EFO_0008637/'],
+        'NovaSeq 6000 S4 Reagent Kit V1.5': ['/platform-terms/EFO_0008637/'],
+        'Sequel sequencing kit 3.0': ['/platform-terms/EFO_0008630/'],
+        'Sequel II sequencing kit 2.0': ['/platform-terms/EFO_0700015/']
+    }
+    if 'files' in value:
+        file_info = {}
+        for file in value['files']:
+            if file.startswith('/sequence-files/'):
+                sequence_file_object = system.get('request').embed(file)
+
+                sequencing_run = str(sequence_file_object.get('sequencing_run'))
+                sequencing_kit = sequence_file_object.get('sequencing_kit', '')
+                sequencing_platform = sequence_file_object.get('sequencing_platform', '')
+
+                file_info[file] = {'kit': sequencing_kit, 'run': sequencing_run, 'platform': sequencing_platform}
+    if not file_info:
+        return
+
+    for file in file_info:
+        if file_info[file]['kit'] == '':
+            detail = (
+                f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
+                f'sequence file {audit_link(path_to_text(file), file)} which lacks '
+                f'specification of a `sequencing_kit`.'
+            )
+            yield AuditFailure('missing sequencing kit', f'{detail} {description_missing_kit}', level='WARNING')
+        else:
+            if file_info[file]['platform'] != '':
+                if file_info[file]['platform'] not in kit_to_platform[file_info[file]['kit']]:
+                    detail = (
+                        f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has a sequence '
+                        f'file {audit_link(path_to_text(file), file)} sequenced on a `sequencing_platform` '
+                        f'{audit_link(path_to_text(file_info[file]["platform"]), file_info[file]["platform"])} '
+                        f'that is inconsistent with its `sequencing_kit` {file_info[file]["kit"]}.'
+                    )
+                    yield AuditFailure('inconsistent sequencing kit', f'{detail} {description_inconsistent_kit}', level='ERROR')
+
+    run_to_kit = {}
+    for file in file_info:
+        if file_info[file]['run'] in run_to_kit:
+            run_to_kit[file_info[file]['run']]['files'].append(file)
+            run_to_kit[file_info[file]['run']]['kits'].append(file_info[file]['kit'])
+        else:
+            run_to_kit[file_info[file]['run']] = {
+                'files': [file],
+                'kits': [file_info[file]['kit']]
+            }
+
+    for run in run_to_kit:
+        if len(set(run_to_kit[run]['kits'])) > 1:
+            detail = (
+                f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
+                f'{", ".join([audit_link(path_to_text(f), f) for f in run_to_kit[run]["files"]])} '
+                f'which are part of the same sequencing run, but specify more than 1 `sequencing_kit`: '
+                f'{", ".join(run_to_kit[run]["kits"])}'
+            )
+            yield AuditFailure('inconsistent sequencing kit', f'{detail} {description_inconsistent_kit}', level='ERROR')
