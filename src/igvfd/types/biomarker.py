@@ -34,6 +34,7 @@ class Biomarker(Item):
             'type': 'string',
             'description': 'A concatenation of the name and quantification of the biomarker.',
             'notSubmittable': True,
+            'uniqueKey': True
         }
     )
     def name_quantification(self, name, quantification):

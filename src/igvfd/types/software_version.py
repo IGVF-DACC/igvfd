@@ -46,6 +46,7 @@ class SoftwareVersion(Item):
         'type': 'string',
         'description': 'A unique identifier for a software version.',
         'notSubmittable': True,
+        'uniqueKey': True
     })
     def name(self):
         return self.__name__

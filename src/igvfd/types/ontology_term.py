@@ -45,6 +45,7 @@ class OntologyTerm(Item):
         'type': 'string',
         'description': 'A unique identifier for the ontology term, reformatted from the original term ID.',
         'notSubmittable': True,
+        'uniqueKey': True
     })
     def name(self, properties=None):
         if properties is None:
