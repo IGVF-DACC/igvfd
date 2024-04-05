@@ -189,7 +189,7 @@ class File(Item):
         },
         define=True,
     )
-    def anvil_destination_url(self, request, file_format, accession):
+    def anvil_destination_url(self, request):
         try:
             external = self._get_external_sheet()
         except HTTPNotFound:
