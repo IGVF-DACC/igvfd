@@ -632,6 +632,9 @@ class ConstructLibrarySet(FileSet):
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name']),
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
         Path('applied_to_samples', include=['@id', 'accession', 'aliases']),
+        Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
+        Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
+        Path('orf_list', include=['@id', 'accession', 'aliases']),
     ]
     audit_inherit = [
         'award',
