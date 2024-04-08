@@ -607,6 +607,8 @@ class PredictionSet(FileSet):
     schema = load_schema('igvfd:schemas/prediction_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('samples.construct_library_sets', include=['@id', 'accession', 'summary']),
+        Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
+        Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
