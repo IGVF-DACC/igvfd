@@ -115,3 +115,30 @@ def audit_construct_library_set_files(value, system):
         detail = (f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
                   f'`files` that are not sequence or configuration files: {non_sequence_files}.')
         yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')
+
+
+@audit_checker('ConstructLibrarySet', frame='object')
+def audit_construct_library_set_guide_design(value, system):
+    '''
+    [
+        {
+            "audit_description": "Guide libraries are expected to link to an integrated content file of guide RNA sequences.",
+            "audit_category": "missing guide RNA sequences",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_construct_library_set_guide_design)
+    if value.get('file_set_type', '') == 'guide library':
+        integrated_content_files = value.get('integrated_content_files', '')
+        if integrated_content_files:
+            files = [system.get('request').embed(file, '@@object?skip_calculated=true')
+                     for file in integrated_content_files]
+            if not([file for file in files if file['content_type'] == 'guide RNA sequences']):
+                detail = (f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} has no '
+                          f'linked files in `integrated_content_files` with `content_type` "guide RNA sequences".')
+                yield AuditFailure('missing guide RNA sequences', f'{detail} {description}', level='NOT_COMPLIANT')
+        else:
+            detail = (f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} has no '
+                      f'`integrated_content_files`.')
+            yield AuditFailure('missing guide RNA sequences', f'{detail} {description}', level='NOT_COMPLIANT')

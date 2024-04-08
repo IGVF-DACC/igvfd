@@ -179,3 +179,33 @@ def test_audit_construct_library_set_with_invalid_chroms(
         error['category'] != 'inconsistent loci'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_construct_library_set_guide_library_guide_rna_sequences(
+    testapp,
+    construct_library_set_genome_wide,
+    tabular_file
+):
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing guide RNA sequences'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        construct_library_set_genome_wide['@id'],
+        {'integrated_content_files': [tabular_file['@id']]}
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing guide RNA sequences'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {'content_type': 'guide RNA sequences'}
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing guide RNA sequences'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
