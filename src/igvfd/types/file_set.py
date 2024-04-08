@@ -634,7 +634,7 @@ class ConstructLibrarySet(FileSet):
         Path('applied_to_samples', include=['@id', 'accession', 'aliases']),
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
-        Path('orf_list', include=['@id', 'orf_id', 'aliases']),
+        Path('orf_list', include=['@id', 'orf_id', 'gene', 'aliases']),
     ]
     audit_inherit = [
         'award',
