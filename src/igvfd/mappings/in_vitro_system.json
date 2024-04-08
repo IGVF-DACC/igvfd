@@ -1,6 +1,6 @@
 {
-    "hash": "bbe78add7906b78fdac1efaa690a08f9",
-    "index_name": "in_vitro_system_bbe78add",
+    "hash": "728c1351313f58b4e147915a6eeca714",
+    "index_name": "in_vitro_system_728c1351",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -401,6 +401,12 @@
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "demultiplexed_from": {
+                        "type": "keyword"
+                    },
+                    "demultiplexed_to": {
                         "type": "keyword"
                     },
                     "description": {
@@ -1348,6 +1354,12 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
+                            "demultiplexed_from": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_to": {
+                                "type": "keyword"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -1758,6 +1770,12 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_from": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_to": {
                                 "type": "keyword"
                             },
                             "description": {

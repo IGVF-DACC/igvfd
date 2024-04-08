@@ -189,5 +189,47 @@
         "sorted_from": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
         "sorted_from_detail": "test insert description",
         "virtual": false
+    },
+    {
+        "uuid": "577fbe38-b700-20af-624c-02429a9da2cf",
+        "classifications": [
+            "cell line"
+        ],
+        "lab": "j-michael-cherry",
+        "accession": "IGVFSM0011DMPX",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:in_vitro_system_demultiplexed_01"
+        ],
+        "donors": [
+            "igvf:alias_human_donor1"
+        ],
+        "passage_number": 2,
+        "status": "released",
+        "release_timestamp": "2024-03-21T12:34:56Z",
+        "submitter_comment": "The submitter had very little to say.",
+        "documents": [
+            "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
+        ],
+        "notes": "This is a note.",
+        "product_id": "GR000001",
+        "lot_id": "R00001",
+        "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
+        "dbxrefs": [
+            "GEO:SAMN1"
+        ],
+        "lower_bound_age": 40,
+        "upper_bound_age": 40,
+        "age_units": "year",
+        "sample_terms": [
+            "/sample-terms/9ed4fcd8-4f2f-4796-aa20-d3ea314b77dc/"
+        ],
+        "nih_institutional_certification": "NICHD1442",
+        "date_obtained": "2022-02-02",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
+        "demultiplexed_from": "IGVFSM0001AAAZ",
+        "virtual": false
     }
 ]
