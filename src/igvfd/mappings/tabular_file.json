@@ -1,6 +1,6 @@
 {
-    "hash": "df1fa43b804a3b68d0fa37b6f65b6ecd",
-    "index_name": "tabular_file_df1fa43b",
+    "hash": "59775772ff6868e463c9a0e22b8973ae",
+    "index_name": "tabular_file_59775772",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -157,6 +157,12 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
+                    "anvil_destination_url": {
+                        "type": "keyword"
+                    },
+                    "anvil_source_url": {
+                        "type": "keyword"
+                    },
                     "assembly": {
                         "type": "keyword"
                     },
@@ -240,6 +246,15 @@
                     "content_type": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
+                    },
+                    "controlled_access": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "creation_timestamp": {
                         "type": "keyword"

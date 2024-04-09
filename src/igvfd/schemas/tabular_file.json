@@ -46,6 +46,9 @@
         },
         {
             "$ref": "mixins.json#/assembly"
+        },
+        {
+            "$ref": "mixins.json#/controlled_access"
         }
     ],
     "dependentSchemas": {
@@ -98,7 +101,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "8"
+            "default": "9"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
@@ -139,6 +142,15 @@
         },
         "dbxrefs": {
             "comment": "This file type currently does not support any external resource submission."
+        },
+        "upload_status": {
+            "enum": [
+                "pending",
+                "deposited",
+                "file not found",
+                "invalidated",
+                "validated"
+            ]
         }
     },
     "fuzzy_searchable_fields": [

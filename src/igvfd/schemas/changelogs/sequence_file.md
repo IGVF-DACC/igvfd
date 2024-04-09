@@ -1,5 +1,12 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 12
+
+* Extend `upload_status` enum list to include `deposited`.
+* Add `controlled_access`.
+* Add `anvil_source_url`.
+* Add calculated property `anvil_destination_url`.
+
 ### Minor changes since schema version 11
 
 * Add `sequencing_kit`.

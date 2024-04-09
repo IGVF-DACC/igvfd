@@ -1,5 +1,12 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 9
+
+* Extend `upload_status` enum list to include `deposited`.
+* Add `controlled_access`.
+* Add `anvil_source_url`.
+* Add calculated property `anvil_destination_url`.
+
 ### Schema version 8
 
 * Require `derived_from` to contain at least one value.

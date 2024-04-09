@@ -47,5 +47,25 @@
         ],
         "redacted": true,
         "filtered": true
+    },
+    {
+        "uuid": "76cd7e91-8dbc-4f7b-9fe9-a31511cbe4d3",
+        "accession": "IGVFFI0002ALTB",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "status": "in progress",
+        "md5sum": "595f44fec1e92a71d3e9e77456ba80d1",
+        "file_format": "bam",
+        "assembly": "GRCh38",
+        "content_type": "transcriptome alignments",
+        "upload_status": "pending",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "filtered": false,
+        "redacted": false,
+        "controlled_access": true,
+        "anvil_source_url": "https://lze1a071f63dcb29ba120b05.blob.core.windows.net/sc-0f7ac85e-9aef-482c-9fb1-73c14877c2f8/some-lab-folder/alignment_file_1234.bam"
     }
 ]

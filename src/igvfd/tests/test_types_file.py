@@ -130,3 +130,53 @@ def test_integrated_in(testapp, construct_library_set_genome_wide, base_expressi
     res = testapp.get(tabular_file['@id'])
     assert set(res.json.get('integrated_in')) == {
         base_expression_construct_library_set['@id'], construct_library_set_genome_wide['@id']}
+
+
+def test_types_aligment_file_controlled_access(testapp, alignment_file):
+    # Assert not controlled access has s3uri/href.
+    res = testapp.get(alignment_file['@id'])
+    assert res.json['controlled_access'] is False
+    assert 's3_uri' in res.json
+    assert 'href' in res.json
+    assert 'anvil_destination_url' not in res.json
+
+    # Assert upload/download works for not controlled access.
+    res = testapp.get(alignment_file['@id'] + '@@upload')
+    assert 'upload_credentials' in res.json['@graph'][0]
+    testapp.post_json(alignment_file['@id'] + '@@upload', {}, status=200)
+    testapp.get(alignment_file['@id'] + '@@download', status=307)
+
+    # Assert controlled_access requires anvil_source_url.
+    res = testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'controlled_access': True
+        }, expect_errors=True)
+    assert res.status_code == 422
+
+    # Switch to controlled access.
+    res = testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'controlled_access': True,
+            'anvil_source_url': 'https://lze1ablob.core.windows.net/sc-0f7a85e-9aeff8/SomeFile.fasta.gz'
+        })
+    assert res.status_code == 200
+
+    # Assert controlled access doesn't have s3uri/href. Does have generated anvil_destination_url'
+    res = testapp.get(alignment_file['@id'])
+    assert res.json['controlled_access'] is True
+    assert 's3_uri' not in res.json
+    assert 'href' not in res.json
+    assert 'anvil_destination_url' in res.json
+    assert 'anvil_source_url' in res.json
+    # Calculated path depends on workspace, creation date, uuid, accession, e.g.:
+    # https://lze1a071f63dcb29ba120b05.blob.core.windows.net/sc-7d3c9ef1-99c2-4948-9811-fe79d626219f/2024/04/04/e55d6d97-f123-462b-8991-4d112d079a41/IGVFFI0968GYLL.bam
+    assert res.json['anvil_destination_url'].startswith(
+        'https://lze1a071f63dcb29ba120b05.blob.core.windows.net/sc-7d3c9ef1-99c2-4948-9811-fe79d626219f/')
+    assert res.json['anvil_destination_url'].endswith(f'/{res.json["uuid"]}/{res.json["accession"]}.bam')
+
+    # Assert upload/download fails for controlled access.
+    testapp.get(alignment_file['@id'] + '@@upload', status=403)
+    testapp.post_json(alignment_file['@id'] + '@@upload', {}, status=403)
+    testapp.get(alignment_file['@id'] + '@@download', status=403)

@@ -1,6 +1,6 @@
 {
-    "hash": "3a61058ed7fb327ea7c71f046dd0da2e",
-    "index_name": "measurement_set_3a61058e",
+    "hash": "16fea89037fd52981cf2b10f80e92370",
+    "index_name": "measurement_set_16fea890",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1288,6 +1288,12 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "anvil_destination_url": {
+                                "type": "keyword"
+                            },
+                            "anvil_source_url": {
+                                "type": "keyword"
+                            },
                             "assembly": {
                                 "type": "keyword"
                             },
@@ -1305,6 +1311,15 @@
                             },
                             "content_type": {
                                 "type": "keyword"
+                            },
+                            "controlled_access": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "keyword"

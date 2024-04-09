@@ -1,6 +1,6 @@
 {
-    "hash": "424b2e317f641bb28d72baf01b77251d",
-    "index_name": "prediction_set_424b2e31",
+    "hash": "ac4ae19178b2f8d6e4b2893482d1e69d",
+    "index_name": "prediction_set_ac4ae191",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -791,6 +791,12 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "anvil_destination_url": {
+                                "type": "keyword"
+                            },
+                            "anvil_source_url": {
+                                "type": "keyword"
+                            },
                             "assembly": {
                                 "type": "keyword"
                             },
@@ -808,6 +814,15 @@
                             },
                             "content_type": {
                                 "type": "keyword"
+                            },
+                            "controlled_access": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "keyword"
@@ -1118,6 +1133,12 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "anvil_destination_url": {
+                                "type": "keyword"
+                            },
+                            "anvil_source_url": {
+                                "type": "keyword"
+                            },
                             "assembly": {
                                 "type": "keyword"
                             },
@@ -1132,6 +1153,15 @@
                             },
                             "content_type": {
                                 "type": "keyword"
+                            },
+                            "controlled_access": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "keyword"
@@ -1265,6 +1295,12 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "anvil_destination_url": {
+                                "type": "keyword"
+                            },
+                            "anvil_source_url": {
+                                "type": "keyword"
+                            },
                             "assembly": {
                                 "type": "keyword"
                             },
@@ -1279,6 +1315,15 @@
                             },
                             "content_type": {
                                 "type": "keyword"
+                            },
+                            "controlled_access": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "creation_timestamp": {
                                 "type": "keyword"

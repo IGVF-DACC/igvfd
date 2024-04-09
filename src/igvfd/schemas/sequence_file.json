@@ -39,6 +39,9 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/controlled_access"
         }
     ],
     "dependentSchemas": {
@@ -108,7 +111,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "11"
+            "default": "12"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file. Reads are individual sequences of bases corresponding to DNA or RNA fragments in a FASTQ text file format. Subreads are sequences of bases produced using PacBio platforms.",
@@ -284,6 +287,15 @@
                 "appscript": "ACTGGTCC",
                 "igvf_utils": "ACTGGTCC"
             }
+        },
+        "upload_status": {
+            "enum": [
+                "pending",
+                "deposited",
+                "file not found",
+                "invalidated",
+                "validated"
+            ]
         }
     },
     "fuzzy_searchable_fields": [

@@ -1,5 +1,12 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 13
+
+* Extend `upload_status` enum list to include `deposited`.
+* Add `controlled_access`.
+* Add `anvil_source_url`.
+* Add calculated property `anvil_destination_url`.
+
 ### Schema version 12
 
 * Require `derived_from` to contain at least one value.

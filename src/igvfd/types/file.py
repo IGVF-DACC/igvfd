@@ -79,10 +79,24 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
 }
 
 
-def show_upload_credentials(request=None, context=None, upload_status=None):
+def show_upload_credentials(request=None, context=None, upload_status=None, controlled_access=False):
     if request is None or upload_status == 'validated':
         return False
+    if controlled_access is True:
+        return False
     return request.has_permission('edit', context)
+
+
+def show_href(controlled_access=False):
+    return controlled_access is False
+
+
+def show_s3uri(controlled_access=False):
+    return controlled_access is False
+
+
+def show_anvil_destination_url(controlled_access=False):
+    return controlled_access is True
 
 
 @abstract_collection(
@@ -129,6 +143,7 @@ class File(Item):
         return paths_filtered_by_status(request, integrated_in)
 
     @calculated_property(
+        condition=show_href,
         schema={
             'title': 'Download URL',
             'description': 'The download path to obtain file.',
@@ -146,6 +161,7 @@ class File(Item):
         )
 
     @calculated_property(
+        condition=show_s3uri,
         schema={
             'title': 'S3 URI',
             'description': 'The S3 URI of public file object.',
@@ -161,6 +177,24 @@ class File(Item):
         except HTTPNotFound:
             return None
         return 's3://{bucket}/{key}'.format(**external)
+
+    @calculated_property(
+        condition=show_anvil_destination_url,
+        schema={
+            'title': 'AnVIL Destination URL',
+            'description': 'Destination URL linking to the controlled access file that has been deposited at AnVIL workspace.',
+            'comment': 'Do not submit. AnVIL destination URL is a calculated property.',
+            'type': 'string',
+            'notSubmittable': True
+        },
+        define=True,
+    )
+    def anvil_destination_url(self, request):
+        try:
+            external = self._get_external_sheet()
+        except HTTPNotFound:
+            return None
+        return f'{request.registry.settings["anvil_destination_container_url"]}/{external["key"]}'
 
     @calculated_property(
         condition=show_upload_credentials,
@@ -551,6 +585,11 @@ class ImageFile(File):
     permission='edit'
 )
 def get_upload(context, request):
+    properties = context.upgrade_properties()
+    if properties.get('controlled_access') is True:
+        raise HTTPForbidden(
+            'Unable to generate credentials for controlled-access file'
+        )
     external = context.propsheets.get('external', {})
     upload_credentials = external.get('upload_credentials')
     # Show s3 location info for files originally submitted to EDW.
@@ -583,6 +622,10 @@ def get_upload(context, request):
 )
 def post_upload(context, request):
     properties = context.upgrade_properties()
+    if properties.get('controlled_access') is True:
+        raise HTTPForbidden(
+            'Unable to issue credentials for controlled-access file'
+        )
     if properties['upload_status'] == 'validated':
         raise HTTPForbidden(
             'Unable to issue new credentials when uploading_status is validated'
@@ -657,6 +700,10 @@ def post_upload(context, request):
 )
 def download(context, request):
     properties = context.upgrade_properties()
+    if properties.get('controlled_access') is True:
+        raise HTTPForbidden(
+            'Downloading controlled-access file not allowed.'
+        )
     file_extension = FILE_FORMAT_TO_FILE_EXTENSION[properties['file_format']]
     accession = properties['accession']
     filename = f'{accession}{file_extension}'

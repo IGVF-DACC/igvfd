@@ -1,6 +1,6 @@
 {
-    "hash": "9fe07d013e55fc6a82282f70dfba2125",
-    "index_name": "sequence_file_9fe07d01",
+    "hash": "d832958dbfccdb7a9049abe540098632",
+    "index_name": "sequence_file_d832958d",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -157,6 +157,12 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
+                    "anvil_destination_url": {
+                        "type": "keyword"
+                    },
+                    "anvil_source_url": {
+                        "type": "keyword"
+                    },
                     "award": {
                         "properties": {
                             "@id": {
@@ -237,6 +243,15 @@
                     "content_type": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
+                    },
+                    "controlled_access": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "creation_timestamp": {
                         "type": "keyword"
