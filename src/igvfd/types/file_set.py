@@ -607,6 +607,8 @@ class PredictionSet(FileSet):
     schema = load_schema('igvfd:schemas/prediction_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('samples.construct_library_sets', include=['@id', 'accession', 'summary']),
+        Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
+        Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
@@ -632,6 +634,9 @@ class ConstructLibrarySet(FileSet):
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name']),
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
         Path('applied_to_samples', include=['@id', 'accession', 'aliases']),
+        Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
+        Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
+        Path('orf_list', include=['@id', 'orf_id', 'gene', 'aliases']),
     ]
     audit_inherit = [
         'award',
