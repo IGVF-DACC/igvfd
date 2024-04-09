@@ -364,6 +364,7 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
 @audit_checker('MeasurementSet', frame='object')
 @audit_checker('AuxiliarySet', frame='object')
 @audit_checker('ConstructLibrarySet', frame='object')
+@audit_checker('CuratedSet', frame='object')
 def audit_unexpected_virtual_samples(value, system):
     '''
     [
