@@ -72,6 +72,7 @@
             }
         },
         "upload_status": {
+            "comment": "Validated files must have file_size, and only files that are controlled_access=true can be in upload_status of deposited.",
             "allOf": [
                 {
                     "comment": "Validated files must have file_size.",

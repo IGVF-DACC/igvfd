@@ -2,7 +2,7 @@
 
 ### Schema version 13
 
-* Add `upload_status` of `deposited`.
+* Extend `upload_status` enum list to include `deposited`.
 * Add `controlled_access`.
 * Add `anvil_source_url`.
 * Add calculated property `anvil_destination_url`.
