@@ -44,7 +44,9 @@ def audit_biosample_taxa_check(value, system):
             yield AuditFailure('inconsistent donor taxa', f'{detail} {description}', level='ERROR')
 
 
-@audit_checker('Biosample', frame='object')
+@audit_checker('Tissue', frame='object')
+@audit_checker('PrimaryCell', frame='object')
+@audit_checker('WholeOrganism', frame='object')
 def audit_biosample_age(value, system):
     '''
     [
@@ -56,11 +58,10 @@ def audit_biosample_age(value, system):
     ]
     '''
     description = get_audit_description(audit_biosample_age)
-    if ('Tissue' in value['@type']) or ('PrimaryCell' in value['@type']) or ('WholeOrganism' in value['@type']):
-        if 'lower_bound_age' and 'upper_bound_age' and 'age_units' not in value:
-            value_id = system.get('path')
-            detail = (
-                f'Biosample {audit_link(path_to_text(value_id), value_id)} '
-                f'is missing `upper_bound_age`, `lower_bound_age`, and `age_units`.'
-            )
-            yield AuditFailure('missing age', f'{detail} {description}', level='WARNING')
+    if 'lower_bound_age' not in value and 'upper_bound_age' not in value and 'age_units' not in value:
+        value_id = system.get('path')
+        detail = (
+            f'Biosample {audit_link(path_to_text(value_id), value_id)} '
+            f'is missing `upper_bound_age`, `lower_bound_age`, and `age_units`.'
+        )
+        yield AuditFailure('missing age', f'{detail} {description}', level='WARNING')

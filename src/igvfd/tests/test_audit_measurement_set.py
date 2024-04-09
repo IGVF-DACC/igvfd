@@ -164,7 +164,7 @@ def test_audit_readout(
     # Screening assays such as CRISPR screen or MPRA must specify readout
     res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent readout'
+        error['category'] == 'missing readout'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
@@ -175,14 +175,14 @@ def test_audit_readout(
     )
     res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent readout'
+        error['category'] != 'missing readout'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
     # Other "non-screening" assays may not specify readout
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent readout'
+        error['category'] != 'unexpected readout'
         for error in res.json['audit'].get('ERROR', [])
     )
     testapp.patch_json(
@@ -193,7 +193,7 @@ def test_audit_readout(
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
     assert any(
-        error['category'] == 'inconsistent readout'
+        error['category'] == 'unexpected readout'
         for error in res.json['audit'].get('ERROR', [])
     )
 
