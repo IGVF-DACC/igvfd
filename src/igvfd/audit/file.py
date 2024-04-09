@@ -26,7 +26,7 @@ def audit_file_controlled_access_file_in_correct_anvil_workspace(value, system):
         return
     description = get_audit_description(audit_file_controlled_access_file_in_correct_anvil_workspace)
     detail = (
-        f'Move controlled-access file {audit_link(path_to_text(value["@id"]), value["@id"])} '
+        f'Move controlled access file {audit_link(path_to_text(value["@id"]), value["@id"])} '
         f'from submission AnVIL workspace to protected AnVIL workspace. '
         f'Source={value["anvil_source_url"]} '
         f'Destination={value["anvil_destination_url"]}'
