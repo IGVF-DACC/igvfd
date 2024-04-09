@@ -94,27 +94,6 @@ def audit_construct_library_set_scope(value, system):
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
-def audit_construct_library_set_files(value, system):
-    '''
-    [
-        {
-            "audit_description": "Construct library sets are expected to contain only sequence files or configuration files.",
-            "audit_category": "unexpected files",
-            "audit_level": "WARNING"
-        }
-    ]
-    '''
-    description = get_audit_description(audit_construct_library_set_files)
-    non_sequence_files = find_non_config_sequence_files(value)
-    if non_sequence_files:
-        non_sequence_files = ', '.join(
-            [audit_link(path_to_text(file), file) for file in non_sequence_files])
-        detail = (f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
-                  f'`files` that are not sequence or configuration files: {non_sequence_files}.')
-        yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')
-
-
-@audit_checker('ConstructLibrarySet', frame='object')
 def audit_construct_library_set_guide_design(value, system):
     '''
     [
