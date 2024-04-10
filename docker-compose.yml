@@ -154,3 +154,13 @@ services:
     command: run-indexing-service
     depends_on:
       - pyramid
+
+  deduplication-service:
+    build:
+      context: ./docker/dedup/
+    image: igvfd-dedup
+    environment:
+      - QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
+    command: ./dedup
+#    depends_on:
+#      - pyramid
