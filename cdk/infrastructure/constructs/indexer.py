@@ -28,6 +28,9 @@ from infrastructure.constructs.opensearch import Opensearch
 from infrastructure.constructs.queue import TransactionQueue
 from infrastructure.constructs.queue import InvalidationQueue
 
+from infrastructure.constructs.tasks.deduplicatequeue import DeduplicateInvalidationQueue
+from infrastructure.constructs.tasks.deduplicatequeue import DeduplicateInvalidationQueueProps
+
 from infrastructure.constructs.existing.types import ExistingResources
 
 from infrastructure.multiplexer import Multiplexer
@@ -134,6 +137,7 @@ class Indexer(Construct):
         self._allow_indexing_service_to_connect_to_opensearch()
         self._add_alarms_to_invalidation_service()
         self._add_alarms_to_indexing_service()
+        self._run_deduplicate_invalidation_queue_automatically()
 
     def _define_opensearch(self) -> None:
         self.opensearch = cast(
@@ -277,5 +281,21 @@ class Indexer(Construct):
             props=IndexingServiceAlarmsProps(
                 existing_resources=self.props.existing_resources,
                 fargate_service=self.indexing_service,
+            )
+        )
+
+    def _run_deduplicate_invalidation_queue_automatically(self) -> None:
+        DeduplicateInvalidationQueue(
+            self,
+            'DeduplicateInvalidationQueue',
+            props=DeduplicateInvalidationQueueProps(
+                config=self.props.config,
+                existing_resources=self.props.existing_resources,
+                cluster=self.props.cluster,
+                invalidation_queue=self.props.invalidation_queue,
+                number_of_workers='100',
+                minutes_to_wait_between_runs=60,
+                cpu=512,
+                memory_limit_mib=2048,
             )
         )
