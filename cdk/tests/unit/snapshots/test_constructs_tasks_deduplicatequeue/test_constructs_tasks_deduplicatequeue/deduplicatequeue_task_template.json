@@ -1,0 +1,1281 @@
+{
+    "Outputs": {
+        "TestApplicationLoadBalancedFargateServiceLoadBalancerDNS10E9B084": {
+            "Value": {
+                "Fn::GetAtt": [
+                    "TestApplicationLoadBalancedFargateServiceLBC13F6669",
+                    "DNSName"
+                ]
+            }
+        },
+        "TestApplicationLoadBalancedFargateServiceServiceURL6371973E": {
+            "Value": {
+                "Fn::Join": [
+                    "",
+                    [
+                        "http://",
+                        {
+                            "Fn::GetAtt": [
+                                "TestApplicationLoadBalancedFargateServiceLBC13F6669",
+                                "DNSName"
+                            ]
+                        }
+                    ]
+                ]
+            }
+        }
+    },
+    "Parameters": {
+        "BootstrapVersion": {
+            "Default": "/cdk-bootstrap/hnb659fds/version",
+            "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+            "Type": "AWS::SSM::Parameter::Value<String>"
+        }
+    },
+    "Resources": {
+        "DeduplicatorRunDeduplicateInvalidationQueueB8C28A49": {
+            "Properties": {
+                "EventPattern": {
+                    "detail-type": [
+                        "DeduplicateInvalidationQueue"
+                    ],
+                    "source": [
+                        "igvfd.demo.some-branch"
+                    ]
+                },
+                "State": "ENABLED",
+                "Targets": [
+                    {
+                        "Arn": {
+                            "Fn::GetAtt": [
+                                "EcsDefaultClusterMnL3mNNYNTestVpc4872C696",
+                                "Arn"
+                            ]
+                        },
+                        "EcsParameters": {
+                            "LaunchType": "FARGATE",
+                            "NetworkConfiguration": {
+                                "AwsVpcConfiguration": {
+                                    "AssignPublicIp": "ENABLED",
+                                    "SecurityGroups": [
+                                        {
+                                            "Fn::GetAtt": [
+                                                "DeduplicatorScheduledFargateTaskScheduledTaskDefSecurityGroupCE08D645",
+                                                "GroupId"
+                                            ]
+                                        }
+                                    ],
+                                    "Subnets": [
+                                        {
+                                            "Ref": "TestVpcpublicSubnet1Subnet4F70BC85"
+                                        },
+                                        {
+                                            "Ref": "TestVpcpublicSubnet2Subnet96FF72E6"
+                                        }
+                                    ]
+                                }
+                            },
+                            "TaskCount": 1,
+                            "TaskDefinitionArn": {
+                                "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefCE5C11D9"
+                            }
+                        },
+                        "Id": "Target0",
+                        "Input": "{}",
+                        "RoleArn": {
+                            "Fn::GetAtt": [
+                                "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRole8F88A933",
+                                "Arn"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "Type": "AWS::Events::Rule"
+        },
+        "DeduplicatorScheduledFargateTaskScheduledEventRule1F6660B2": {
+            "Properties": {
+                "ScheduleExpression": "rate(25 minutes)",
+                "State": "ENABLED",
+                "Targets": [
+                    {
+                        "Arn": {
+                            "Fn::GetAtt": [
+                                "EcsDefaultClusterMnL3mNNYNTestVpc4872C696",
+                                "Arn"
+                            ]
+                        },
+                        "EcsParameters": {
+                            "LaunchType": "FARGATE",
+                            "NetworkConfiguration": {
+                                "AwsVpcConfiguration": {
+                                    "AssignPublicIp": "ENABLED",
+                                    "SecurityGroups": [
+                                        {
+                                            "Fn::GetAtt": [
+                                                "DeduplicatorScheduledFargateTaskScheduledTaskDefSecurityGroupCE08D645",
+                                                "GroupId"
+                                            ]
+                                        }
+                                    ],
+                                    "Subnets": [
+                                        {
+                                            "Ref": "TestVpcpublicSubnet1Subnet4F70BC85"
+                                        },
+                                        {
+                                            "Ref": "TestVpcpublicSubnet2Subnet96FF72E6"
+                                        }
+                                    ]
+                                }
+                            },
+                            "TaskCount": 1,
+                            "TaskDefinitionArn": {
+                                "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefCE5C11D9"
+                            }
+                        },
+                        "Id": "Target0",
+                        "Input": "{}",
+                        "RoleArn": {
+                            "Fn::GetAtt": [
+                                "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRole8F88A933",
+                                "Arn"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "Type": "AWS::Events::Rule"
+        },
+        "DeduplicatorScheduledFargateTaskScheduledTaskDefCE5C11D9": {
+            "Properties": {
+                "ContainerDefinitions": [
+                    {
+                        "Environment": [
+                            {
+                                "Name": "QUEUE_URL",
+                                "Value": {
+                                    "Ref": "InvalidationQueue8614463D"
+                                }
+                            },
+                            {
+                                "Name": "NUM_WORKERS",
+                                "Value": "50"
+                            }
+                        ],
+                        "Essential": true,
+                        "Image": {
+                            "Fn::Sub": "${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:0532daf9181b2c99f481ae4f516d800623459e34741d9a3fc1f844bd53fc8fff"
+                        },
+                        "LogConfiguration": {
+                            "LogDriver": "awslogs",
+                            "Options": {
+                                "awslogs-group": {
+                                    "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefScheduledContainerLogGroup62EA01D9"
+                                },
+                                "awslogs-region": {
+                                    "Ref": "AWS::Region"
+                                },
+                                "awslogs-stream-prefix": "deduplicator",
+                                "mode": "non-blocking"
+                            }
+                        },
+                        "Name": "ScheduledContainer"
+                    }
+                ],
+                "Cpu": "512",
+                "ExecutionRoleArn": {
+                    "Fn::GetAtt": [
+                        "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRole7F76EF25",
+                        "Arn"
+                    ]
+                },
+                "Family": "DeduplicatorScheduledFargateTaskScheduledTaskDef0046031F",
+                "Memory": "2048",
+                "NetworkMode": "awsvpc",
+                "RequiresCompatibilities": [
+                    "FARGATE"
+                ],
+                "TaskRoleArn": {
+                    "Fn::GetAtt": [
+                        "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRole1CEBF359",
+                        "Arn"
+                    ]
+                }
+            },
+            "Type": "AWS::ECS::TaskDefinition"
+        },
+        "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRole8F88A933": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "events.amazonaws.com"
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRoleDefaultPolicyBC575101": {
+            "Properties": {
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "ecs:RunTask",
+                            "Condition": {
+                                "ArnEquals": {
+                                    "ecs:cluster": {
+                                        "Fn::GetAtt": [
+                                            "EcsDefaultClusterMnL3mNNYNTestVpc4872C696",
+                                            "Arn"
+                                        ]
+                                    }
+                                }
+                            },
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefCE5C11D9"
+                            }
+                        },
+                        {
+                            "Action": "iam:PassRole",
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRole7F76EF25",
+                                    "Arn"
+                                ]
+                            }
+                        },
+                        {
+                            "Action": "iam:PassRole",
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRole1CEBF359",
+                                    "Arn"
+                                ]
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                },
+                "PolicyName": "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRoleDefaultPolicyBC575101",
+                "Roles": [
+                    {
+                        "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRole8F88A933"
+                    }
+                ]
+            },
+            "Type": "AWS::IAM::Policy"
+        },
+        "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRole7F76EF25": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "ecs-tasks.amazonaws.com"
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRoleDefaultPolicy6C3CEC8A": {
+            "Properties": {
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": [
+                                "ecr:BatchCheckLayerAvailability",
+                                "ecr:GetDownloadUrlForLayer",
+                                "ecr:BatchGetImage"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::Join": [
+                                    "",
+                                    [
+                                        "arn:",
+                                        {
+                                            "Ref": "AWS::Partition"
+                                        },
+                                        ":ecr:",
+                                        {
+                                            "Ref": "AWS::Region"
+                                        },
+                                        ":",
+                                        {
+                                            "Ref": "AWS::AccountId"
+                                        },
+                                        ":repository/",
+                                        {
+                                            "Fn::Sub": "cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}"
+                                        }
+                                    ]
+                                ]
+                            }
+                        },
+                        {
+                            "Action": "ecr:GetAuthorizationToken",
+                            "Effect": "Allow",
+                            "Resource": "*"
+                        },
+                        {
+                            "Action": [
+                                "logs:CreateLogStream",
+                                "logs:PutLogEvents"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "DeduplicatorScheduledFargateTaskScheduledTaskDefScheduledContainerLogGroup62EA01D9",
+                                    "Arn"
+                                ]
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                },
+                "PolicyName": "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRoleDefaultPolicy6C3CEC8A",
+                "Roles": [
+                    {
+                        "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRole7F76EF25"
+                    }
+                ]
+            },
+            "Type": "AWS::IAM::Policy"
+        },
+        "DeduplicatorScheduledFargateTaskScheduledTaskDefScheduledContainerLogGroup62EA01D9": {
+            "DeletionPolicy": "Retain",
+            "Properties": {
+                "RetentionInDays": 30
+            },
+            "Type": "AWS::Logs::LogGroup",
+            "UpdateReplacePolicy": "Retain"
+        },
+        "DeduplicatorScheduledFargateTaskScheduledTaskDefSecurityGroupCE08D645": {
+            "Properties": {
+                "GroupDescription": "Default/Deduplicator/ScheduledFargateTask/ScheduledTaskDef/SecurityGroup",
+                "SecurityGroupEgress": [
+                    {
+                        "CidrIp": "0.0.0.0/0",
+                        "Description": "Allow all outbound traffic by default",
+                        "IpProtocol": "-1"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::SecurityGroup"
+        },
+        "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRole1CEBF359": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "ecs-tasks.amazonaws.com"
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRoleDefaultPolicyE9EBD173": {
+            "Properties": {
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": [
+                                "sqs:SendMessage",
+                                "sqs:GetQueueAttributes",
+                                "sqs:GetQueueUrl"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "InvalidationQueue8614463D",
+                                    "Arn"
+                                ]
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                },
+                "PolicyName": "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRoleDefaultPolicyE9EBD173",
+                "Roles": [
+                    {
+                        "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRole1CEBF359"
+                    }
+                ]
+            },
+            "Type": "AWS::IAM::Policy"
+        },
+        "DownloadManagedPolicyF8118CAF": {
+            "Properties": {
+                "Description": "",
+                "Path": "/",
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "s3:GetObject",
+                            "Effect": "Allow",
+                            "Resource": "arn:aws:s3:::some-test-bucket/"
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::ManagedPolicy"
+        },
+        "EcsDefaultClusterMnL3mNNYNTestVpc4872C696": {
+            "Type": "AWS::ECS::Cluster"
+        },
+        "InvalidationQueue8614463D": {
+            "DeletionPolicy": "Delete",
+            "Properties": {
+                "RedrivePolicy": {
+                    "deadLetterTargetArn": {
+                        "Fn::GetAtt": [
+                            "InvalidationQueueDeadLetterQueueFE5C594E",
+                            "Arn"
+                        ]
+                    },
+                    "maxReceiveCount": 3
+                },
+                "VisibilityTimeout": 120
+            },
+            "Type": "AWS::SQS::Queue",
+            "UpdateReplacePolicy": "Delete"
+        },
+        "InvalidationQueueDeadLetterQueueFE5C594E": {
+            "DeletionPolicy": "Delete",
+            "Properties": {
+                "MessageRetentionPeriod": 1209600
+            },
+            "Type": "AWS::SQS::Queue",
+            "UpdateReplacePolicy": "Delete"
+        },
+        "InvalidationQueueInvalidationQueueAlarmsDeadLetterQueueHasMessagesAlarmFDDAE60C": {
+            "Properties": {
+                "AlarmActions": [
+                    {
+                        "Ref": "TestTopic339EC197"
+                    }
+                ],
+                "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+                "Dimensions": [
+                    {
+                        "Name": "QueueName",
+                        "Value": {
+                            "Fn::GetAtt": [
+                                "InvalidationQueueDeadLetterQueueFE5C594E",
+                                "QueueName"
+                            ]
+                        }
+                    }
+                ],
+                "EvaluationPeriods": 1,
+                "MetricName": "ApproximateNumberOfMessagesVisible",
+                "Namespace": "AWS/SQS",
+                "OKActions": [
+                    {
+                        "Ref": "TestTopic339EC197"
+                    }
+                ],
+                "Period": 300,
+                "Statistic": "Maximum",
+                "Threshold": 1
+            },
+            "Type": "AWS::CloudWatch::Alarm"
+        },
+        "InvalidationQueueInvalidationQueueAlarmsQueueHasOldMessagesAlarm11ADDAD4": {
+            "Properties": {
+                "AlarmActions": [
+                    {
+                        "Ref": "TestTopic339EC197"
+                    }
+                ],
+                "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+                "Dimensions": [
+                    {
+                        "Name": "QueueName",
+                        "Value": {
+                            "Fn::GetAtt": [
+                                "InvalidationQueue8614463D",
+                                "QueueName"
+                            ]
+                        }
+                    }
+                ],
+                "EvaluationPeriods": 1,
+                "MetricName": "ApproximateAgeOfOldestMessage",
+                "Namespace": "AWS/SQS",
+                "OKActions": [
+                    {
+                        "Ref": "TestTopic339EC197"
+                    }
+                ],
+                "Period": 300,
+                "Statistic": "Maximum",
+                "Threshold": 86400
+            },
+            "Type": "AWS::CloudWatch::Alarm"
+        },
+        "TestApplicationLoadBalancedFargateService8543A9A0": {
+            "DependsOn": [
+                "TestApplicationLoadBalancedFargateServiceLBPublicListenerECSGroup6D891061",
+                "TestApplicationLoadBalancedFargateServiceLBPublicListener241CC671",
+                "TestApplicationLoadBalancedFargateServiceTaskDefTaskRole3FDBA2D6"
+            ],
+            "Properties": {
+                "Cluster": {
+                    "Ref": "EcsDefaultClusterMnL3mNNYNTestVpc4872C696"
+                },
+                "DeploymentConfiguration": {
+                    "Alarms": {
+                        "AlarmNames": [],
+                        "Enable": false,
+                        "Rollback": false
+                    },
+                    "MaximumPercent": 200,
+                    "MinimumHealthyPercent": 50
+                },
+                "EnableECSManagedTags": false,
+                "HealthCheckGracePeriodSeconds": 60,
+                "LaunchType": "FARGATE",
+                "LoadBalancers": [
+                    {
+                        "ContainerName": "web",
+                        "ContainerPort": 80,
+                        "TargetGroupArn": {
+                            "Ref": "TestApplicationLoadBalancedFargateServiceLBPublicListenerECSGroup6D891061"
+                        }
+                    }
+                ],
+                "NetworkConfiguration": {
+                    "AwsvpcConfiguration": {
+                        "AssignPublicIp": "ENABLED",
+                        "SecurityGroups": [
+                            {
+                                "Fn::GetAtt": [
+                                    "TestApplicationLoadBalancedFargateServiceSecurityGroup7B60D67E",
+                                    "GroupId"
+                                ]
+                            }
+                        ],
+                        "Subnets": [
+                            {
+                                "Ref": "TestVpcpublicSubnet1Subnet4F70BC85"
+                            },
+                            {
+                                "Ref": "TestVpcpublicSubnet2Subnet96FF72E6"
+                            }
+                        ]
+                    }
+                },
+                "TaskDefinition": {
+                    "Ref": "TestApplicationLoadBalancedFargateServiceTaskDefBBD234AC"
+                }
+            },
+            "Type": "AWS::ECS::Service"
+        },
+        "TestApplicationLoadBalancedFargateServiceLBC13F6669": {
+            "DependsOn": [
+                "TestVpcpublicSubnet1DefaultRoute5A98368D",
+                "TestVpcpublicSubnet1RouteTableAssociationEA0572FC",
+                "TestVpcpublicSubnet2DefaultRouteBF011106",
+                "TestVpcpublicSubnet2RouteTableAssociation8BC8AAA7"
+            ],
+            "Properties": {
+                "LoadBalancerAttributes": [
+                    {
+                        "Key": "deletion_protection.enabled",
+                        "Value": "false"
+                    }
+                ],
+                "Scheme": "internet-facing",
+                "SecurityGroups": [
+                    {
+                        "Fn::GetAtt": [
+                            "TestApplicationLoadBalancedFargateServiceLBSecurityGroup0971E8F2",
+                            "GroupId"
+                        ]
+                    }
+                ],
+                "Subnets": [
+                    {
+                        "Ref": "TestVpcpublicSubnet1Subnet4F70BC85"
+                    },
+                    {
+                        "Ref": "TestVpcpublicSubnet2Subnet96FF72E6"
+                    }
+                ],
+                "Type": "application"
+            },
+            "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer"
+        },
+        "TestApplicationLoadBalancedFargateServiceLBPublicListener241CC671": {
+            "Properties": {
+                "DefaultActions": [
+                    {
+                        "TargetGroupArn": {
+                            "Ref": "TestApplicationLoadBalancedFargateServiceLBPublicListenerECSGroup6D891061"
+                        },
+                        "Type": "forward"
+                    }
+                ],
+                "LoadBalancerArn": {
+                    "Ref": "TestApplicationLoadBalancedFargateServiceLBC13F6669"
+                },
+                "Port": 80,
+                "Protocol": "HTTP"
+            },
+            "Type": "AWS::ElasticLoadBalancingV2::Listener"
+        },
+        "TestApplicationLoadBalancedFargateServiceLBPublicListenerECSGroup6D891061": {
+            "Properties": {
+                "Port": 80,
+                "Protocol": "HTTP",
+                "TargetGroupAttributes": [
+                    {
+                        "Key": "stickiness.enabled",
+                        "Value": "false"
+                    }
+                ],
+                "TargetType": "ip",
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::ElasticLoadBalancingV2::TargetGroup"
+        },
+        "TestApplicationLoadBalancedFargateServiceLBSecurityGroup0971E8F2": {
+            "Properties": {
+                "GroupDescription": "Automatically created Security Group for ELB TestApplicationLoadBalancedFargateServiceLBA215F647",
+                "SecurityGroupIngress": [
+                    {
+                        "CidrIp": "0.0.0.0/0",
+                        "Description": "Allow from anyone on port 80",
+                        "FromPort": 80,
+                        "IpProtocol": "tcp",
+                        "ToPort": 80
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::SecurityGroup"
+        },
+        "TestApplicationLoadBalancedFargateServiceLBSecurityGrouptoTestApplicationLoadBalancedFargateServiceSecurityGroup07BD40948022E83761": {
+            "Properties": {
+                "Description": "Load balancer to target",
+                "DestinationSecurityGroupId": {
+                    "Fn::GetAtt": [
+                        "TestApplicationLoadBalancedFargateServiceSecurityGroup7B60D67E",
+                        "GroupId"
+                    ]
+                },
+                "FromPort": 80,
+                "GroupId": {
+                    "Fn::GetAtt": [
+                        "TestApplicationLoadBalancedFargateServiceLBSecurityGroup0971E8F2",
+                        "GroupId"
+                    ]
+                },
+                "IpProtocol": "tcp",
+                "ToPort": 80
+            },
+            "Type": "AWS::EC2::SecurityGroupEgress"
+        },
+        "TestApplicationLoadBalancedFargateServiceSecurityGroup7B60D67E": {
+            "DependsOn": [
+                "TestApplicationLoadBalancedFargateServiceTaskDefTaskRole3FDBA2D6"
+            ],
+            "Properties": {
+                "GroupDescription": "Default/TestApplicationLoadBalancedFargateService/Service/SecurityGroup",
+                "SecurityGroupEgress": [
+                    {
+                        "CidrIp": "0.0.0.0/0",
+                        "Description": "Allow all outbound traffic by default",
+                        "IpProtocol": "-1"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::SecurityGroup"
+        },
+        "TestApplicationLoadBalancedFargateServiceSecurityGroupfromTestApplicationLoadBalancedFargateServiceLBSecurityGroup8A5A22A480EA1AFA65": {
+            "DependsOn": [
+                "TestApplicationLoadBalancedFargateServiceTaskDefTaskRole3FDBA2D6"
+            ],
+            "Properties": {
+                "Description": "Load balancer to target",
+                "FromPort": 80,
+                "GroupId": {
+                    "Fn::GetAtt": [
+                        "TestApplicationLoadBalancedFargateServiceSecurityGroup7B60D67E",
+                        "GroupId"
+                    ]
+                },
+                "IpProtocol": "tcp",
+                "SourceSecurityGroupId": {
+                    "Fn::GetAtt": [
+                        "TestApplicationLoadBalancedFargateServiceLBSecurityGroup0971E8F2",
+                        "GroupId"
+                    ]
+                },
+                "ToPort": 80
+            },
+            "Type": "AWS::EC2::SecurityGroupIngress"
+        },
+        "TestApplicationLoadBalancedFargateServiceTaskDefBBD234AC": {
+            "Properties": {
+                "ContainerDefinitions": [
+                    {
+                        "Essential": true,
+                        "Image": "some-test-image",
+                        "LogConfiguration": {
+                            "LogDriver": "awslogs",
+                            "Options": {
+                                "awslogs-group": {
+                                    "Ref": "TestApplicationLoadBalancedFargateServiceTaskDefwebLogGroup1916795D"
+                                },
+                                "awslogs-region": {
+                                    "Ref": "AWS::Region"
+                                },
+                                "awslogs-stream-prefix": "TestApplicationLoadBalancedFargateService"
+                            }
+                        },
+                        "Name": "web",
+                        "PortMappings": [
+                            {
+                                "ContainerPort": 80,
+                                "Protocol": "tcp"
+                            }
+                        ]
+                    }
+                ],
+                "Cpu": "256",
+                "ExecutionRoleArn": {
+                    "Fn::GetAtt": [
+                        "TestApplicationLoadBalancedFargateServiceTaskDefExecutionRole9F745D1D",
+                        "Arn"
+                    ]
+                },
+                "Family": "TestApplicationLoadBalancedFargateServiceTaskDef0A28FBC0",
+                "Memory": "512",
+                "NetworkMode": "awsvpc",
+                "RequiresCompatibilities": [
+                    "FARGATE"
+                ],
+                "TaskRoleArn": {
+                    "Fn::GetAtt": [
+                        "TestApplicationLoadBalancedFargateServiceTaskDefTaskRole3FDBA2D6",
+                        "Arn"
+                    ]
+                }
+            },
+            "Type": "AWS::ECS::TaskDefinition"
+        },
+        "TestApplicationLoadBalancedFargateServiceTaskDefExecutionRole9F745D1D": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "ecs-tasks.amazonaws.com"
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "TestApplicationLoadBalancedFargateServiceTaskDefExecutionRoleDefaultPolicy54989FA8": {
+            "Properties": {
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": [
+                                "logs:CreateLogStream",
+                                "logs:PutLogEvents"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "TestApplicationLoadBalancedFargateServiceTaskDefwebLogGroup1916795D",
+                                    "Arn"
+                                ]
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                },
+                "PolicyName": "TestApplicationLoadBalancedFargateServiceTaskDefExecutionRoleDefaultPolicy54989FA8",
+                "Roles": [
+                    {
+                        "Ref": "TestApplicationLoadBalancedFargateServiceTaskDefExecutionRole9F745D1D"
+                    }
+                ]
+            },
+            "Type": "AWS::IAM::Policy"
+        },
+        "TestApplicationLoadBalancedFargateServiceTaskDefTaskRole3FDBA2D6": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "ecs-tasks.amazonaws.com"
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "TestApplicationLoadBalancedFargateServiceTaskDefwebLogGroup1916795D": {
+            "DeletionPolicy": "Retain",
+            "Type": "AWS::Logs::LogGroup",
+            "UpdateReplacePolicy": "Retain"
+        },
+        "TestBusF2C65FE8": {
+            "Properties": {
+                "Name": "TestBus"
+            },
+            "Type": "AWS::Events::EventBus"
+        },
+        "TestCertificate6B4956B6": {
+            "Properties": {
+                "DomainName": "*.my.test.domain.org",
+                "DomainValidationOptions": [
+                    {
+                        "DomainName": "*.my.test.domain.org",
+                        "ValidationDomain": "domain.org"
+                    }
+                ],
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Default/TestCertificate"
+                    }
+                ],
+                "ValidationMethod": "EMAIL"
+            },
+            "Type": "AWS::CertificateManager::Certificate"
+        },
+        "TestChatbot57319657": {
+            "Properties": {
+                "ConfigurationName": "some-config-name",
+                "IamRoleArn": {
+                    "Fn::GetAtt": [
+                        "TestChatbotConfigurationRole238BFAFD",
+                        "Arn"
+                    ]
+                },
+                "SlackChannelId": "some-channel-id",
+                "SlackWorkspaceId": "some-workspace-id"
+            },
+            "Type": "AWS::Chatbot::SlackChannelConfiguration"
+        },
+        "TestChatbotConfigurationRole238BFAFD": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "chatbot.amazonaws.com"
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "TestHostedZone68F306E4": {
+            "Properties": {
+                "Name": "my.test.domain.org."
+            },
+            "Type": "AWS::Route53::HostedZone"
+        },
+        "TestSecret16AF87B1": {
+            "DeletionPolicy": "Delete",
+            "Properties": {
+                "GenerateSecretString": {}
+            },
+            "Type": "AWS::SecretsManager::Secret",
+            "UpdateReplacePolicy": "Delete"
+        },
+        "TestTopic339EC197": {
+            "Type": "AWS::SNS::Topic"
+        },
+        "TestVpcE77CE678": {
+            "Properties": {
+                "CidrBlock": "10.4.0.0/16",
+                "EnableDnsHostnames": true,
+                "EnableDnsSupport": true,
+                "InstanceTenancy": "default",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Default/TestVpc"
+                    }
+                ]
+            },
+            "Type": "AWS::EC2::VPC"
+        },
+        "TestVpcIGW9DD53F70": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Default/TestVpc"
+                    }
+                ]
+            },
+            "Type": "AWS::EC2::InternetGateway"
+        },
+        "TestVpcVPCGWF1827B84": {
+            "Properties": {
+                "InternetGatewayId": {
+                    "Ref": "TestVpcIGW9DD53F70"
+                },
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::VPCGatewayAttachment"
+        },
+        "TestVpcisolatedSubnet1RouteTable93EFC1F5": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Default/TestVpc/isolatedSubnet1"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::RouteTable"
+        },
+        "TestVpcisolatedSubnet1RouteTableAssociationB18A00D7": {
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "TestVpcisolatedSubnet1RouteTable93EFC1F5"
+                },
+                "SubnetId": {
+                    "Ref": "TestVpcisolatedSubnet1Subnet2860A680"
+                }
+            },
+            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+        },
+        "TestVpcisolatedSubnet1Subnet2860A680": {
+            "Properties": {
+                "AvailabilityZone": {
+                    "Fn::Select": [
+                        0,
+                        {
+                            "Fn::GetAZs": ""
+                        }
+                    ]
+                },
+                "CidrBlock": "10.4.32.0/20",
+                "MapPublicIpOnLaunch": false,
+                "Tags": [
+                    {
+                        "Key": "aws-cdk:subnet-name",
+                        "Value": "isolated"
+                    },
+                    {
+                        "Key": "aws-cdk:subnet-type",
+                        "Value": "Isolated"
+                    },
+                    {
+                        "Key": "Name",
+                        "Value": "Default/TestVpc/isolatedSubnet1"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::Subnet"
+        },
+        "TestVpcisolatedSubnet2RouteTable7EBE60D9": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Default/TestVpc/isolatedSubnet2"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::RouteTable"
+        },
+        "TestVpcisolatedSubnet2RouteTableAssociation2BB4538E": {
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "TestVpcisolatedSubnet2RouteTable7EBE60D9"
+                },
+                "SubnetId": {
+                    "Ref": "TestVpcisolatedSubnet2SubnetA6454F0B"
+                }
+            },
+            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+        },
+        "TestVpcisolatedSubnet2SubnetA6454F0B": {
+            "Properties": {
+                "AvailabilityZone": {
+                    "Fn::Select": [
+                        1,
+                        {
+                            "Fn::GetAZs": ""
+                        }
+                    ]
+                },
+                "CidrBlock": "10.4.48.0/20",
+                "MapPublicIpOnLaunch": false,
+                "Tags": [
+                    {
+                        "Key": "aws-cdk:subnet-name",
+                        "Value": "isolated"
+                    },
+                    {
+                        "Key": "aws-cdk:subnet-type",
+                        "Value": "Isolated"
+                    },
+                    {
+                        "Key": "Name",
+                        "Value": "Default/TestVpc/isolatedSubnet2"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::Subnet"
+        },
+        "TestVpcpublicSubnet1DefaultRoute5A98368D": {
+            "DependsOn": [
+                "TestVpcVPCGWF1827B84"
+            ],
+            "Properties": {
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "GatewayId": {
+                    "Ref": "TestVpcIGW9DD53F70"
+                },
+                "RouteTableId": {
+                    "Ref": "TestVpcpublicSubnet1RouteTableD55D3AC3"
+                }
+            },
+            "Type": "AWS::EC2::Route"
+        },
+        "TestVpcpublicSubnet1RouteTableAssociationEA0572FC": {
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "TestVpcpublicSubnet1RouteTableD55D3AC3"
+                },
+                "SubnetId": {
+                    "Ref": "TestVpcpublicSubnet1Subnet4F70BC85"
+                }
+            },
+            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+        },
+        "TestVpcpublicSubnet1RouteTableD55D3AC3": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Default/TestVpc/publicSubnet1"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::RouteTable"
+        },
+        "TestVpcpublicSubnet1Subnet4F70BC85": {
+            "Properties": {
+                "AvailabilityZone": {
+                    "Fn::Select": [
+                        0,
+                        {
+                            "Fn::GetAZs": ""
+                        }
+                    ]
+                },
+                "CidrBlock": "10.4.0.0/20",
+                "MapPublicIpOnLaunch": true,
+                "Tags": [
+                    {
+                        "Key": "aws-cdk:subnet-name",
+                        "Value": "public"
+                    },
+                    {
+                        "Key": "aws-cdk:subnet-type",
+                        "Value": "Public"
+                    },
+                    {
+                        "Key": "Name",
+                        "Value": "Default/TestVpc/publicSubnet1"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::Subnet"
+        },
+        "TestVpcpublicSubnet2DefaultRouteBF011106": {
+            "DependsOn": [
+                "TestVpcVPCGWF1827B84"
+            ],
+            "Properties": {
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "GatewayId": {
+                    "Ref": "TestVpcIGW9DD53F70"
+                },
+                "RouteTableId": {
+                    "Ref": "TestVpcpublicSubnet2RouteTable19CD621C"
+                }
+            },
+            "Type": "AWS::EC2::Route"
+        },
+        "TestVpcpublicSubnet2RouteTable19CD621C": {
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "Default/TestVpc/publicSubnet2"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::RouteTable"
+        },
+        "TestVpcpublicSubnet2RouteTableAssociation8BC8AAA7": {
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "TestVpcpublicSubnet2RouteTable19CD621C"
+                },
+                "SubnetId": {
+                    "Ref": "TestVpcpublicSubnet2Subnet96FF72E6"
+                }
+            },
+            "Type": "AWS::EC2::SubnetRouteTableAssociation"
+        },
+        "TestVpcpublicSubnet2Subnet96FF72E6": {
+            "Properties": {
+                "AvailabilityZone": {
+                    "Fn::Select": [
+                        1,
+                        {
+                            "Fn::GetAZs": ""
+                        }
+                    ]
+                },
+                "CidrBlock": "10.4.16.0/20",
+                "MapPublicIpOnLaunch": true,
+                "Tags": [
+                    {
+                        "Key": "aws-cdk:subnet-name",
+                        "Value": "public"
+                    },
+                    {
+                        "Key": "aws-cdk:subnet-type",
+                        "Value": "Public"
+                    },
+                    {
+                        "Key": "Name",
+                        "Value": "Default/TestVpc/publicSubnet2"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::Subnet"
+        },
+        "UploadManagedPolicy7658189E": {
+            "Properties": {
+                "Description": "",
+                "Path": "/",
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "s3:PutObject",
+                            "Effect": "Allow",
+                            "Resource": "arn:aws:s3:::some-test-bucket/"
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::ManagedPolicy"
+        }
+    },
+    "Rules": {
+        "CheckBootstrapVersion": {
+            "Assertions": [
+                {
+                    "Assert": {
+                        "Fn::Not": [
+                            {
+                                "Fn::Contains": [
+                                    [
+                                        "1",
+                                        "2",
+                                        "3",
+                                        "4",
+                                        "5"
+                                    ],
+                                    {
+                                        "Ref": "BootstrapVersion"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+                }
+            ]
+        }
+    }
+}
