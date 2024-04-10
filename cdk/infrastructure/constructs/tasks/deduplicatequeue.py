@@ -39,7 +39,7 @@ class DeduplicateInvalidationQueueProps:
     existing_resources: ExistingResources
     cluster: ICluster
     invalidation_queue: InvalidationQueue
-    number_of_workers: str
+    number_of_workers: int
     minutes_to_wait_between_runs: int
     cpu: int
     memory_limit_mib: int
@@ -100,7 +100,7 @@ class DeduplicateInvalidationQueue(Construct):
                 image=self.application_image,
                 environment={
                     'QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
-                    'NUM_WORKERS': self.props.number_of_workers,
+                    'NUM_WORKERS': f'{self.props.number_of_workers}',
                 },
                 log_driver=self.application_log_driver,
                 cpu=self.props.cpu,
