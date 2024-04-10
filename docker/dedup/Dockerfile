@@ -20,5 +20,4 @@ RUN chmod +x dedup
 
 USER dedup
 
-# Command to run the application
 CMD ["./dedup"]
