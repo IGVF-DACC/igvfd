@@ -529,7 +529,7 @@
         },
         "originated_from": {
             "title": "Originated From",
-            "description": "The biosample this in vitro system sample was originated from due to differentiation, dedifferentiation, or reprogramming.",
+            "description": "The biosample this in vitro system sample was originated from due to differentiation, dedifferentiation, reprogramming, or the introduction of a genetic modification.",
             "type": "string",
             "linkTo": "Biosample",
             "submissionExample": {
