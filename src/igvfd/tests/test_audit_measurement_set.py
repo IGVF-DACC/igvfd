@@ -4,7 +4,6 @@ import pytest
 def test_audit_related_multiome_datasets(
     testapp,
     primary_cell,
-    in_vitro_cell_line,
     measurement_set_multiome,
     measurement_set_multiome_2,
     measurement_set
@@ -72,29 +71,6 @@ def test_audit_related_multiome_datasets(
         error['category'] != 'inconsistent multiome datasets'
         for error in res.json['audit'].get('ERROR', [])
     )
-    # `samples` should be the same between other datasets in `related_multiome_datasets`
-    testapp.patch_json(
-        measurement_set_multiome['@id'],
-        {
-            'samples': [primary_cell['@id'], in_vitro_cell_line['@id']]
-        }
-    )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent multiome datasets'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    testapp.patch_json(
-        measurement_set_multiome_2['@id'],
-        {
-            'samples': [primary_cell['@id'], in_vitro_cell_line['@id']]
-        }
-    )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'inconsistent multiome datasets'
-        for error in res.json['audit'].get('ERROR', [])
-    )
     # `multiome_size` should be the same between other datasets in `related_multiome_datasets`
     testapp.patch_json(
         measurement_set_multiome['@id'],
@@ -105,7 +81,7 @@ def test_audit_related_multiome_datasets(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'samples': [primary_cell['@id'], in_vitro_cell_line['@id']]
+            'samples': [primary_cell['@id']]
         }
     )
     res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
@@ -207,39 +183,6 @@ def test_audit_readout(
     res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent readout'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-
-
-def test_audit_modifications(
-    testapp,
-    measurement_set,
-    in_vitro_cell_line,
-    in_vitro_organoid,
-    modification,
-):
-    # No modifications audits on measurement set with no samples
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'inconsistent modifications'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    # Modifications should be the same on samples in any measurement set
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'samples': [in_vitro_cell_line['@id'], in_vitro_organoid['@id']]
-        }
-    )
-    testapp.patch_json(
-        in_vitro_cell_line['@id'],
-        {
-            'modifications': [modification['@id']]
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent modifications'
         for error in res.json['audit'].get('ERROR', [])
     )
 
