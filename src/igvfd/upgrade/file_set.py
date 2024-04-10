@@ -315,8 +315,8 @@ def file_set_9_10(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1571
     if len(value['samples']) > 1:
         sample = value['samples'][0]
-        other_samples = value['samples'][1:]
+        other_samples = ', '.join(value['samples'][1:])
         notes = value.get('notes', '')
-        notes = f'{notes} This file set used to link to samples: {', '.join(other_samples)}, but has since been upgraded to only link to {sample}.'
+        notes = f'{notes} This file set used to link to samples: {other_samples}, but has since been upgraded to only link to {sample}.'
         value['notes'] = notes
         value['samples'] = [sample]
