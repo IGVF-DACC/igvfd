@@ -62,3 +62,13 @@ def auxiliary_set_v5(auxiliary_set_v4):
         'file_set_type': 'oligo-conjugated antibodies'
     })
     return item
+
+
+@pytest.fixture
+def auxiliary_set_v7(base_auxiliary_set, tissue, primary_cell):
+    item = base_auxiliary_set.copy()
+    item.update({
+        'schema_version': '7',
+        'samples': [tissue['@id'], primary_cell['@id']]
+    })
+    return item

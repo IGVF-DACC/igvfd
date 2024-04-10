@@ -307,3 +307,16 @@ def measurement_set_14_15(value, system):
     if 'sequencing_library_types' in value:
         if len(value['sequencing_library_types']) < 1:
             del value['sequencing_library_types']
+
+
+@upgrade_step('measurement_set', '15', '16')
+@upgrade_step('auxiliary_set', '7', '8')
+def file_set_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1571
+    if len(value['samples']) > 1:
+        sample = value['samples'][0]
+        other_samples = value['samples'][1:]
+        notes = value.get('notes', '')
+        notes = f'{notes} This file set used to link to samples: {', '.join(other_samples)}, but has since been upgraded to only link to {sample}.'
+        value['notes'] = notes
+        value['samples'] = [sample]

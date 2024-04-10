@@ -88,3 +88,11 @@ def test_measurement_set_upgrade_14_15(upgrader, measurement_set_v14):
     assert 'sequencing_library_types' not in value
     assert 'auxiliary_sets' not in value
     assert value['schema_version'] == '15'
+
+
+def test_auxiliary_set_upgrade_15_16(upgrader, auxiliary_set_v15):
+    value = upgrader.upgrade(
+        'auxiliary_set', auxiliary_set_v15,
+        current_version='15', target_version='16')
+    assert value['schema_version'] == '16'
+    assert len(value['samples']) == 1
