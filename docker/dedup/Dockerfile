@@ -1,6 +1,6 @@
 FROM public.ecr.aws/docker/library/golang:1.21.5-bookworm AS builder
 
-ARG VERSION=v0.1.5
+ARG VERSION=v0.1.7
 
 WORKDIR /build
 
@@ -14,10 +14,16 @@ RUN useradd -m dedup
 
 WORKDIR /app
 
+COPY --chown=dedup:dedup *.sh .
+
+RUN chmod +x *.sh
+
 COPY --from=builder /build/dedup .
 
 RUN chmod +x dedup
 
 USER dedup
 
-CMD ["./dedup"]
+ENTRYPOINT ["./entrypoint.sh"]
+
+CMD ["./run-once.sh"]

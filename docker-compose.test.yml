@@ -10,12 +10,10 @@ services:
       - AWS_DEFAULT_REGION=us-west-2
       - AWS_ACCESS_KEY_ID=testing
       - AWS_SECRET_ACCESS_KEY=testing
-      - SERVICES=sqs
+      - SERVICES=sqs,sts
       - LS_LOG=warn
     ports:
       - "4566:4566"
-    volumes:
-      - "./docker/localstack/create_localstack.sh:/docker-entrypoint-initaws.d/create_localstack.sh"
 
   postgres:
     build:
