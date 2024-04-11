@@ -1,4 +1,4 @@
-from src.igvfd.types.base import (
+from ..types.base import (
     STATUS_HIERARCHY
 )
 from snovault import (
