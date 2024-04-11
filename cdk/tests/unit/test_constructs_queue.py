@@ -35,7 +35,7 @@ def test_constructs_queue_initialize_queue_base(stack, existing_resources):
                         'Arn'
                     ]
                 },
-                'maxReceiveCount': 3
+                'maxReceiveCount': 10
             },
             'VisibilityTimeout': 120
         }
