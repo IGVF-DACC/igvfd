@@ -293,7 +293,7 @@ class Indexer(Construct):
                 existing_resources=self.props.existing_resources,
                 cluster=self.props.cluster,
                 invalidation_queue=self.props.invalidation_queue,
-                number_of_workers=100,
+                number_of_workers=1,
                 minutes_to_wait_between_runs=60,
                 cpu=512,
                 memory_limit_mib=2048,
