@@ -153,7 +153,7 @@ class FileSet(Item):
         },
         'notSubmittable': True
     })
-    def applied_to_samples(self, request, input_for):
+    def input_for(self, request, input_for):
         return paths_filtered_by_status(request, input_for)
 
 
