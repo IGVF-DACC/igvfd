@@ -81,8 +81,7 @@ class DeduplicateInvalidationQueue(Construct):
 
     def _define_docker_asset(self) -> None:
         self.application_image = ContainerImage.from_asset(
-            '../',
-            file='docker/dedup/Dockerfile',
+            '../docker/dedup',
         )
 
     def _define_log_driver_for_application_container(self) -> None:
