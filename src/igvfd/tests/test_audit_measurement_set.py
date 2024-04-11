@@ -705,7 +705,8 @@ def test_audit_missing_auxiliary_set(
     testapp,
     measurement_set,
     assay_term_crispr,
-    base_auxiliary_set
+    base_auxiliary_set,
+    assay_term_cas_mediated_mutagenesis
 ):
     testapp.patch_json(
         measurement_set['@id'],
@@ -728,6 +729,17 @@ def test_audit_missing_auxiliary_set(
         measurement_set['@id'],
         {
             'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_cas_mediated_mutagenesis['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
