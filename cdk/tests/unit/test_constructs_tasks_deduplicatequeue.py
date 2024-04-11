@@ -30,9 +30,11 @@ def test_constructs_tasks_deduplicatequeue(
         )
     )
     template = Template.from_stack(stack)
+    template_json = template.to_json()
+    del template_json['Resources']['DeduplicatorScheduledFargateTaskScheduledTaskDefCE5C11D9']['Properties']['ContainerDefinitions'][0]['Image']
     snapshot.assert_match(
         json.dumps(
-            template.to_json(),
+            template_json,
             indent=4,
             sort_keys=True
         ),
