@@ -1,6 +1,6 @@
 FROM public.ecr.aws/docker/library/golang:1.21.5-bookworm AS builder
 
-ARG VERSION=v0.1.7
+ARG VERSION=v0.2.0
 
 WORKDIR /build
 
