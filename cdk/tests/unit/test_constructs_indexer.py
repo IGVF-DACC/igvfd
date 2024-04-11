@@ -53,7 +53,7 @@ def test_constructs_indexer_initialize_indexer(
                         'Arn'
                     ]
                 },
-                'maxReceiveCount': 3
+                'maxReceiveCount': 10
             },
             'VisibilityTimeout': 120
         }
@@ -68,7 +68,7 @@ def test_constructs_indexer_initialize_indexer(
                         'Arn'
                     ]
                 },
-                'maxReceiveCount': 3
+                'maxReceiveCount': 10
             },
             'VisibilityTimeout': 120
         }

@@ -54,7 +54,7 @@ class QueueBase(Construct):
             visibility_timeout=Duration.seconds(120),
             dead_letter_queue=DeadLetterQueue(
                 queue=self.dead_letter_queue,
-                max_receive_count=3,
+                max_receive_count=10,
             )
         )
 

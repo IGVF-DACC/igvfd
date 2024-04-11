@@ -459,7 +459,7 @@
                             "Arn"
                         ]
                     },
-                    "maxReceiveCount": 3
+                    "maxReceiveCount": 10
                 },
                 "VisibilityTimeout": 120
             },
