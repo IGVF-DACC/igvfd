@@ -67,8 +67,7 @@ TOP_HITS_ITEM_TYPES = [
     'SoftwareVersion',
     'Source',
     'Treatment',
-    'User',
-    'HumanGenomicVariant'
+    'User'
 ]
 
 DEFAULT_ITEM_TYPES = TOP_HITS_ITEM_TYPES
