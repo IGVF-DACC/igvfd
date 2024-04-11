@@ -504,8 +504,6 @@ def test_constructs_indexer_indexer_match_snapshot(
     )
     template = Template.from_stack(stack)
     template_json = template.to_json()
-    # Image hash isn't stable.
-    del template_json['Resources']['IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefE4A93369']['Properties']['ContainerDefinitions'][0]['Image']
     snapshot.assert_match(
         json.dumps(
             template_json,
