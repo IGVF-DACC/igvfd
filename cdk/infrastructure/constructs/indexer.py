@@ -295,7 +295,7 @@ class Indexer(Construct):
                 invalidation_queue=self.props.invalidation_queue,
                 number_of_workers=100,
                 minutes_to_wait_between_runs=60,
-                cpu=512,
+                cpu=1024,
                 memory_limit_mib=2048,
             )
         )

@@ -310,7 +310,7 @@
                         "Name": "ScheduledContainer"
                     }
                 ],
-                "Cpu": "512",
+                "Cpu": "1024",
                 "ExecutionRoleArn": {
                     "Fn::GetAtt": [
                         "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefExecutionRoleA0452A42",
