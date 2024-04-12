@@ -53,7 +53,7 @@ def test_constructs_indexer_initialize_indexer(
                         'Arn'
                     ]
                 },
-                'maxReceiveCount': 3
+                'maxReceiveCount': 10
             },
             'VisibilityTimeout': 120
         }
@@ -68,7 +68,7 @@ def test_constructs_indexer_initialize_indexer(
                         'Arn'
                     ]
                 },
-                'maxReceiveCount': 3
+                'maxReceiveCount': 10
             },
             'VisibilityTimeout': 120
         }
@@ -503,9 +503,10 @@ def test_constructs_indexer_indexer_match_snapshot(
         )
     )
     template = Template.from_stack(stack)
+    template_json = template.to_json()
     snapshot.assert_match(
         json.dumps(
-            template.to_json(),
+            template_json,
             indent=4,
             sort_keys=True
         ),

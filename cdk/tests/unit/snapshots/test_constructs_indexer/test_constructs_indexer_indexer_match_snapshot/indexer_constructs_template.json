@@ -161,6 +161,402 @@
         "EcsDefaultClusterMnL3mNNYNTestVpc4872C696": {
             "Type": "AWS::ECS::Cluster"
         },
+        "IndexerDeduplicateInvalidationQueueRunDeduplicateInvalidationQueue15FED8FF": {
+            "Properties": {
+                "EventPattern": {
+                    "detail-type": [
+                        "DeduplicateInvalidationQueue"
+                    ],
+                    "source": [
+                        "igvfd.demo.some-branch"
+                    ]
+                },
+                "State": "ENABLED",
+                "Targets": [
+                    {
+                        "Arn": {
+                            "Fn::GetAtt": [
+                                "EcsDefaultClusterMnL3mNNYNTestVpc4872C696",
+                                "Arn"
+                            ]
+                        },
+                        "EcsParameters": {
+                            "LaunchType": "FARGATE",
+                            "NetworkConfiguration": {
+                                "AwsVpcConfiguration": {
+                                    "AssignPublicIp": "ENABLED",
+                                    "SecurityGroups": [
+                                        {
+                                            "Fn::GetAtt": [
+                                                "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefSecurityGroup20F8552F",
+                                                "GroupId"
+                                            ]
+                                        }
+                                    ],
+                                    "Subnets": [
+                                        {
+                                            "Ref": "TestVpcpublicSubnet1Subnet4F70BC85"
+                                        },
+                                        {
+                                            "Ref": "TestVpcpublicSubnet2Subnet96FF72E6"
+                                        }
+                                    ]
+                                }
+                            },
+                            "TaskCount": 1,
+                            "TaskDefinitionArn": {
+                                "Ref": "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefE4A93369"
+                            }
+                        },
+                        "Id": "Target0",
+                        "Input": "{}",
+                        "RoleArn": {
+                            "Fn::GetAtt": [
+                                "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefEventsRoleF5DF58F5",
+                                "Arn"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "Type": "AWS::Events::Rule"
+        },
+        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledEventRule7AD54F90": {
+            "Properties": {
+                "ScheduleExpression": "rate(1 hour)",
+                "State": "ENABLED",
+                "Targets": [
+                    {
+                        "Arn": {
+                            "Fn::GetAtt": [
+                                "EcsDefaultClusterMnL3mNNYNTestVpc4872C696",
+                                "Arn"
+                            ]
+                        },
+                        "EcsParameters": {
+                            "LaunchType": "FARGATE",
+                            "NetworkConfiguration": {
+                                "AwsVpcConfiguration": {
+                                    "AssignPublicIp": "ENABLED",
+                                    "SecurityGroups": [
+                                        {
+                                            "Fn::GetAtt": [
+                                                "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefSecurityGroup20F8552F",
+                                                "GroupId"
+                                            ]
+                                        }
+                                    ],
+                                    "Subnets": [
+                                        {
+                                            "Ref": "TestVpcpublicSubnet1Subnet4F70BC85"
+                                        },
+                                        {
+                                            "Ref": "TestVpcpublicSubnet2Subnet96FF72E6"
+                                        }
+                                    ]
+                                }
+                            },
+                            "TaskCount": 1,
+                            "TaskDefinitionArn": {
+                                "Ref": "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefE4A93369"
+                            }
+                        },
+                        "Id": "Target0",
+                        "Input": "{}",
+                        "RoleArn": {
+                            "Fn::GetAtt": [
+                                "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefEventsRoleF5DF58F5",
+                                "Arn"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "Type": "AWS::Events::Rule"
+        },
+        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefE4A93369": {
+            "Properties": {
+                "ContainerDefinitions": [
+                    {
+                        "Environment": [
+                            {
+                                "Name": "QUEUE_URL",
+                                "Value": {
+                                    "Ref": "InvalidationQueue8614463D"
+                                }
+                            },
+                            {
+                                "Name": "NUM_WORKERS",
+                                "Value": "100"
+                            }
+                        ],
+                        "Essential": true,
+                        "Image": {
+                            "Fn::Sub": "${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:d2204b0ed3eee50ba68c168de9fe936e0a26108990df5fc7f8559259f7e07215"
+                        },
+                        "LogConfiguration": {
+                            "LogDriver": "awslogs",
+                            "Options": {
+                                "awslogs-group": {
+                                    "Ref": "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefScheduledContainerLogGroupC8D1EDA3"
+                                },
+                                "awslogs-region": {
+                                    "Ref": "AWS::Region"
+                                },
+                                "awslogs-stream-prefix": "deduplicator",
+                                "mode": "non-blocking"
+                            }
+                        },
+                        "Name": "ScheduledContainer"
+                    }
+                ],
+                "Cpu": "1024",
+                "ExecutionRoleArn": {
+                    "Fn::GetAtt": [
+                        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefExecutionRoleA0452A42",
+                        "Arn"
+                    ]
+                },
+                "Family": "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefCF9FD66E",
+                "Memory": "2048",
+                "NetworkMode": "awsvpc",
+                "RequiresCompatibilities": [
+                    "FARGATE"
+                ],
+                "TaskRoleArn": {
+                    "Fn::GetAtt": [
+                        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefTaskRoleF0E8113E",
+                        "Arn"
+                    ]
+                }
+            },
+            "Type": "AWS::ECS::TaskDefinition"
+        },
+        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefEventsRoleDefaultPolicyC00D048D": {
+            "Properties": {
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "ecs:RunTask",
+                            "Condition": {
+                                "ArnEquals": {
+                                    "ecs:cluster": {
+                                        "Fn::GetAtt": [
+                                            "EcsDefaultClusterMnL3mNNYNTestVpc4872C696",
+                                            "Arn"
+                                        ]
+                                    }
+                                }
+                            },
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Ref": "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefE4A93369"
+                            }
+                        },
+                        {
+                            "Action": "iam:PassRole",
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefExecutionRoleA0452A42",
+                                    "Arn"
+                                ]
+                            }
+                        },
+                        {
+                            "Action": "iam:PassRole",
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefTaskRoleF0E8113E",
+                                    "Arn"
+                                ]
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                },
+                "PolicyName": "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefEventsRoleDefaultPolicyC00D048D",
+                "Roles": [
+                    {
+                        "Ref": "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefEventsRoleF5DF58F5"
+                    }
+                ]
+            },
+            "Type": "AWS::IAM::Policy"
+        },
+        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefEventsRoleF5DF58F5": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "events.amazonaws.com"
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefExecutionRoleA0452A42": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "ecs-tasks.amazonaws.com"
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
+        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefExecutionRoleDefaultPolicy7A66BFB3": {
+            "Properties": {
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": [
+                                "ecr:BatchCheckLayerAvailability",
+                                "ecr:GetDownloadUrlForLayer",
+                                "ecr:BatchGetImage"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::Join": [
+                                    "",
+                                    [
+                                        "arn:",
+                                        {
+                                            "Ref": "AWS::Partition"
+                                        },
+                                        ":ecr:",
+                                        {
+                                            "Ref": "AWS::Region"
+                                        },
+                                        ":",
+                                        {
+                                            "Ref": "AWS::AccountId"
+                                        },
+                                        ":repository/",
+                                        {
+                                            "Fn::Sub": "cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}"
+                                        }
+                                    ]
+                                ]
+                            }
+                        },
+                        {
+                            "Action": "ecr:GetAuthorizationToken",
+                            "Effect": "Allow",
+                            "Resource": "*"
+                        },
+                        {
+                            "Action": [
+                                "logs:CreateLogStream",
+                                "logs:PutLogEvents"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefScheduledContainerLogGroupC8D1EDA3",
+                                    "Arn"
+                                ]
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                },
+                "PolicyName": "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefExecutionRoleDefaultPolicy7A66BFB3",
+                "Roles": [
+                    {
+                        "Ref": "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefExecutionRoleA0452A42"
+                    }
+                ]
+            },
+            "Type": "AWS::IAM::Policy"
+        },
+        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefScheduledContainerLogGroupC8D1EDA3": {
+            "DeletionPolicy": "Retain",
+            "Properties": {
+                "RetentionInDays": 30
+            },
+            "Type": "AWS::Logs::LogGroup",
+            "UpdateReplacePolicy": "Retain"
+        },
+        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefSecurityGroup20F8552F": {
+            "Properties": {
+                "GroupDescription": "Default/Indexer/DeduplicateInvalidationQueue/ScheduledFargateTask/ScheduledTaskDef/SecurityGroup",
+                "SecurityGroupEgress": [
+                    {
+                        "CidrIp": "0.0.0.0/0",
+                        "Description": "Allow all outbound traffic by default",
+                        "IpProtocol": "-1"
+                    }
+                ],
+                "VpcId": {
+                    "Ref": "TestVpcE77CE678"
+                }
+            },
+            "Type": "AWS::EC2::SecurityGroup"
+        },
+        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefTaskRoleDefaultPolicyBEE3FB3F": {
+            "Properties": {
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": [
+                                "sqs:ReceiveMessage",
+                                "sqs:ChangeMessageVisibility",
+                                "sqs:GetQueueUrl",
+                                "sqs:DeleteMessage",
+                                "sqs:GetQueueAttributes"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "InvalidationQueue8614463D",
+                                    "Arn"
+                                ]
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                },
+                "PolicyName": "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefTaskRoleDefaultPolicyBEE3FB3F",
+                "Roles": [
+                    {
+                        "Ref": "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefTaskRoleF0E8113E"
+                    }
+                ]
+            },
+            "Type": "AWS::IAM::Policy"
+        },
+        "IndexerDeduplicateInvalidationQueueScheduledFargateTaskScheduledTaskDefTaskRoleF0E8113E": {
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "sts:AssumeRole",
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "ecs-tasks.amazonaws.com"
+                            }
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::Role"
+        },
         "IndexerIndexingServiceAlarmsCPUAlarmD2583FA3": {
             "Properties": {
                 "AlarmActions": [
@@ -1369,7 +1765,7 @@
                             "Arn"
                         ]
                     },
-                    "maxReceiveCount": 3
+                    "maxReceiveCount": 10
                 },
                 "VisibilityTimeout": 120
             },
@@ -2758,7 +3154,7 @@
                             "Arn"
                         ]
                     },
-                    "maxReceiveCount": 3
+                    "maxReceiveCount": 10
                 },
                 "VisibilityTimeout": 120
             },
