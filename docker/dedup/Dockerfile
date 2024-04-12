@@ -1,10 +1,10 @@
 FROM public.ecr.aws/docker/library/golang:1.21.5-bookworm AS builder
 
-ARG VERSION=v0.2.0
+ARG VERSION=v1.0.0
 
 WORKDIR /build
 
-RUN git clone -b ${VERSION} --depth 1 https://github.com/keenangraham/go-sqs-deduplication.git .
+RUN git clone -b ${VERSION} --depth 1 https://github.com/IGVF-DACC/go-sqs-deduplication.git .
 
 RUN CGO_ENABLED=0 go build -ldflags="-X 'main.Version=${VERSION}'" -o dedup cmd/dedup.go
 
