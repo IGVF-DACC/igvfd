@@ -1,6 +1,6 @@
 {
-    "hash": "ac4ae19178b2f8d6e4b2893482d1e69d",
-    "index_name": "prediction_set_ac4ae191",
+    "hash": "5e3ac8cb2bf57f3664d01e9fdcfc9420",
+    "index_name": "prediction_set_5e3ac8cb",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -389,6 +389,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "input_file_set_for": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
@@ -1056,6 +1059,9 @@
                         },
                         "type": "object"
                     },
+                    "input_file_set_for": {
+                        "type": "keyword"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -1574,6 +1580,9 @@
                                         "type": "keyword"
                                     },
                                     "guide_type": {
+                                        "type": "keyword"
+                                    },
+                                    "input_file_set_for": {
                                         "type": "keyword"
                                     },
                                     "integrated_content_files": {
