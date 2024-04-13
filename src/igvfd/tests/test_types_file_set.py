@@ -54,3 +54,16 @@ def test_submitted_files_timestamp(testapp,  reference_file, sequence_file, meas
     )
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('submitted_files_timestamp') == reference_file.get('creation_timestamp')
+
+
+def test_input_file_set_for(testapp, primary_analysis_set, auxiliary_set_v5, measurement_set):
+    testapp.patch_json(
+        primary_analysis_set['@id'],
+        {
+            'input_file_sets': [measurement_set['@id'], auxiliary_set_v5['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('input_file_set_for', []) == [primary_analysis_set['@id']]
+    res = testapp.get(auxiliary_set_v5['@id'])
+    assert res.json.get('input_file_set_for', []) == [primary_analysis_set['@id']]
