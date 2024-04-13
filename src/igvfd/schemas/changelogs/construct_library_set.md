@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Add calculated property `input_file_set_for`.
 * Add `orf_list`.
 * Extend `scope` enum list to include `interactors`.
 

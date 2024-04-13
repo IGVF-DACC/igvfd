@@ -36,7 +36,8 @@ class FileSet(Item):
     schema = load_schema('igvfd:schemas/file_set.json')
     rev = {
         'files': ('File', 'file_set'),
-        'control_for': ('FileSet', 'control_file_sets')
+        'control_for': ('FileSet', 'control_file_sets'),
+        'input_file_set_for': ('AnalysisSet', 'input_file_sets')
     }
     embedded_with_frame = [
         Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
@@ -138,6 +139,22 @@ class FileSet(Item):
                     timestamps.add(timestamp)
             res = sorted(timestamps, key=lambda x: datetime.strptime(x, '%Y-%m-%dT%H:%M:%S.%f%z'))
             return res[0]
+
+    @calculated_property(schema={
+        'title': 'Input FileSet For',
+        'description': 'The analysis sets that use this FileSet as an input.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Input FileSet For',
+            'type': ['string', 'object'],
+            'linkFrom': 'AnalysisSet.input_file_sets',
+        },
+        'notSubmittable': True
+    })
+    def input_file_set_for(self, request, input_file_set_for):
+        return paths_filtered_by_status(request, input_file_set_for)
 
 
 @collection(

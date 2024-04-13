@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_set.json`*
 
+### Minor changes since schema version 6
+
+* Add calculated property `input_file_set_for`.
+
 ### Schema version 6
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.

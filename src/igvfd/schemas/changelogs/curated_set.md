@@ -1,5 +1,9 @@
 ## Changelog for *`curated_set.json`*
 
+### Minor changes since schema version 8
+
+* Add calculated property `input_file_set_for`.
+
 ### Schema version 8
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.

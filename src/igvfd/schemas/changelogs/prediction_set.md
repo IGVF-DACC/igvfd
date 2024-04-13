@@ -1,5 +1,9 @@
 ## Changelog for *`prediction_set.json`*
 
+### Minor changes since schema version 7
+
+* Add calculated property `input_file_set_for`.
+
 ### Schema version 7
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
