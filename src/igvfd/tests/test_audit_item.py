@@ -54,3 +54,47 @@ def test_audit_item_schema_upgrade_validation_failure(testapp, item_donor):
     assert any(
         error['category'] == 'validation error: status' and error['name'] == 'audit_item_schema'
         for error in errors_list)
+
+
+def test_audit_item_mismatched_status(
+    testapp,
+    measurement_set,
+    assay_term_starr,
+    tissue
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {'status': 'in progress'}
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        assay_term_starr['@id'],
+        {'status': 'deleted'}
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'mismatched status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        assay_term_starr['@id'],
+        {'status': 'archived', 'release_timestamp': '2024-03-06T12:34:56Z'}
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'mismatched status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {'status': 'revoked', 'release_timestamp': '2024-03-06T12:34:56Z'}
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'mismatched status'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
