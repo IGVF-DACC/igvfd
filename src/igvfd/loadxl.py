@@ -29,7 +29,6 @@ ORDER = [
     'rodent_donor',
     'treatment',
     'modification',
-    'human_genomic_variant',
     'biomarker',
     'tissue',
     'in_vitro_system',
