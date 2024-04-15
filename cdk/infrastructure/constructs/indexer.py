@@ -287,7 +287,7 @@ class Indexer(Construct):
     def _run_deduplicate_invalidation_queue_automatically(self) -> None:
         DeduplicateInvalidationQueue(
             self,
-            'DeduplicateInvalidationQueue',
+            'DedupIQ',  # Avoid hitting length limit in SG details.
             props=DeduplicateInvalidationQueueProps(
                 config=self.props.config,
                 existing_resources=self.props.existing_resources,

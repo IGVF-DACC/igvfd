@@ -60,7 +60,7 @@
                                     "SecurityGroups": [
                                         {
                                             "Fn::GetAtt": [
-                                                "DeduplicatorScheduledFargateTaskScheduledTaskDefSecurityGroupCE08D645",
+                                                "DeduplicatorTaskScheduledTaskDefSecurityGroupB0F2AF51",
                                                 "GroupId"
                                             ]
                                         }
@@ -77,14 +77,14 @@
                             },
                             "TaskCount": 1,
                             "TaskDefinitionArn": {
-                                "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefCE5C11D9"
+                                "Ref": "DeduplicatorTaskScheduledTaskDef83BCB8C1"
                             }
                         },
                         "Id": "Target0",
                         "Input": "{}",
                         "RoleArn": {
                             "Fn::GetAtt": [
-                                "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRole8F88A933",
+                                "DeduplicatorTaskScheduledTaskDefEventsRole826B00ED",
                                 "Arn"
                             ]
                         }
@@ -93,7 +93,7 @@
             },
             "Type": "AWS::Events::Rule"
         },
-        "DeduplicatorScheduledFargateTaskScheduledEventRule1F6660B2": {
+        "DeduplicatorTaskScheduledEventRule6B71FB82": {
             "Properties": {
                 "ScheduleExpression": "rate(25 minutes)",
                 "State": "ENABLED",
@@ -113,7 +113,7 @@
                                     "SecurityGroups": [
                                         {
                                             "Fn::GetAtt": [
-                                                "DeduplicatorScheduledFargateTaskScheduledTaskDefSecurityGroupCE08D645",
+                                                "DeduplicatorTaskScheduledTaskDefSecurityGroupB0F2AF51",
                                                 "GroupId"
                                             ]
                                         }
@@ -130,14 +130,14 @@
                             },
                             "TaskCount": 1,
                             "TaskDefinitionArn": {
-                                "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefCE5C11D9"
+                                "Ref": "DeduplicatorTaskScheduledTaskDef83BCB8C1"
                             }
                         },
                         "Id": "Target0",
                         "Input": "{}",
                         "RoleArn": {
                             "Fn::GetAtt": [
-                                "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRole8F88A933",
+                                "DeduplicatorTaskScheduledTaskDefEventsRole826B00ED",
                                 "Arn"
                             ]
                         }
@@ -146,7 +146,7 @@
             },
             "Type": "AWS::Events::Rule"
         },
-        "DeduplicatorScheduledFargateTaskScheduledTaskDefCE5C11D9": {
+        "DeduplicatorTaskScheduledTaskDef83BCB8C1": {
             "Properties": {
                 "ContainerDefinitions": [
                     {
@@ -170,7 +170,7 @@
                             "LogDriver": "awslogs",
                             "Options": {
                                 "awslogs-group": {
-                                    "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefScheduledContainerLogGroup62EA01D9"
+                                    "Ref": "DeduplicatorTaskScheduledTaskDefScheduledContainerLogGroup66E3A8BC"
                                 },
                                 "awslogs-region": {
                                     "Ref": "AWS::Region"
@@ -185,11 +185,11 @@
                 "Cpu": "512",
                 "ExecutionRoleArn": {
                     "Fn::GetAtt": [
-                        "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRole7F76EF25",
+                        "DeduplicatorTaskScheduledTaskDefExecutionRole341C9A96",
                         "Arn"
                     ]
                 },
-                "Family": "DeduplicatorScheduledFargateTaskScheduledTaskDef0046031F",
+                "Family": "DeduplicatorTaskScheduledTaskDefC1F74BB8",
                 "Memory": "2048",
                 "NetworkMode": "awsvpc",
                 "RequiresCompatibilities": [
@@ -197,14 +197,14 @@
                 ],
                 "TaskRoleArn": {
                     "Fn::GetAtt": [
-                        "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRole1CEBF359",
+                        "DeduplicatorTaskScheduledTaskDefTaskRole391A26CB",
                         "Arn"
                     ]
                 }
             },
             "Type": "AWS::ECS::TaskDefinition"
         },
-        "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRole8F88A933": {
+        "DeduplicatorTaskScheduledTaskDefEventsRole826B00ED": {
             "Properties": {
                 "AssumeRolePolicyDocument": {
                     "Statement": [
@@ -221,7 +221,7 @@
             },
             "Type": "AWS::IAM::Role"
         },
-        "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRoleDefaultPolicyBC575101": {
+        "DeduplicatorTaskScheduledTaskDefEventsRoleDefaultPolicyBFC4B6B9": {
             "Properties": {
                 "PolicyDocument": {
                     "Statement": [
@@ -239,7 +239,7 @@
                             },
                             "Effect": "Allow",
                             "Resource": {
-                                "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefCE5C11D9"
+                                "Ref": "DeduplicatorTaskScheduledTaskDef83BCB8C1"
                             }
                         },
                         {
@@ -247,7 +247,7 @@
                             "Effect": "Allow",
                             "Resource": {
                                 "Fn::GetAtt": [
-                                    "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRole7F76EF25",
+                                    "DeduplicatorTaskScheduledTaskDefExecutionRole341C9A96",
                                     "Arn"
                                 ]
                             }
@@ -257,7 +257,7 @@
                             "Effect": "Allow",
                             "Resource": {
                                 "Fn::GetAtt": [
-                                    "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRole1CEBF359",
+                                    "DeduplicatorTaskScheduledTaskDefTaskRole391A26CB",
                                     "Arn"
                                 ]
                             }
@@ -265,16 +265,16 @@
                     ],
                     "Version": "2012-10-17"
                 },
-                "PolicyName": "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRoleDefaultPolicyBC575101",
+                "PolicyName": "DeduplicatorTaskScheduledTaskDefEventsRoleDefaultPolicyBFC4B6B9",
                 "Roles": [
                     {
-                        "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefEventsRole8F88A933"
+                        "Ref": "DeduplicatorTaskScheduledTaskDefEventsRole826B00ED"
                     }
                 ]
             },
             "Type": "AWS::IAM::Policy"
         },
-        "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRole7F76EF25": {
+        "DeduplicatorTaskScheduledTaskDefExecutionRole341C9A96": {
             "Properties": {
                 "AssumeRolePolicyDocument": {
                     "Statement": [
@@ -291,7 +291,7 @@
             },
             "Type": "AWS::IAM::Role"
         },
-        "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRoleDefaultPolicy6C3CEC8A": {
+        "DeduplicatorTaskScheduledTaskDefExecutionRoleDefaultPolicyCD707201": {
             "Properties": {
                 "PolicyDocument": {
                     "Statement": [
@@ -339,7 +339,7 @@
                             "Effect": "Allow",
                             "Resource": {
                                 "Fn::GetAtt": [
-                                    "DeduplicatorScheduledFargateTaskScheduledTaskDefScheduledContainerLogGroup62EA01D9",
+                                    "DeduplicatorTaskScheduledTaskDefScheduledContainerLogGroup66E3A8BC",
                                     "Arn"
                                 ]
                             }
@@ -347,16 +347,16 @@
                     ],
                     "Version": "2012-10-17"
                 },
-                "PolicyName": "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRoleDefaultPolicy6C3CEC8A",
+                "PolicyName": "DeduplicatorTaskScheduledTaskDefExecutionRoleDefaultPolicyCD707201",
                 "Roles": [
                     {
-                        "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefExecutionRole7F76EF25"
+                        "Ref": "DeduplicatorTaskScheduledTaskDefExecutionRole341C9A96"
                     }
                 ]
             },
             "Type": "AWS::IAM::Policy"
         },
-        "DeduplicatorScheduledFargateTaskScheduledTaskDefScheduledContainerLogGroup62EA01D9": {
+        "DeduplicatorTaskScheduledTaskDefScheduledContainerLogGroup66E3A8BC": {
             "DeletionPolicy": "Retain",
             "Properties": {
                 "RetentionInDays": 30
@@ -364,9 +364,9 @@
             "Type": "AWS::Logs::LogGroup",
             "UpdateReplacePolicy": "Retain"
         },
-        "DeduplicatorScheduledFargateTaskScheduledTaskDefSecurityGroupCE08D645": {
+        "DeduplicatorTaskScheduledTaskDefSecurityGroupB0F2AF51": {
             "Properties": {
-                "GroupDescription": "Default/Deduplicator/ScheduledFargateTask/ScheduledTaskDef/SecurityGroup",
+                "GroupDescription": "Default/Deduplicator/Task/ScheduledTaskDef/SecurityGroup",
                 "SecurityGroupEgress": [
                     {
                         "CidrIp": "0.0.0.0/0",
@@ -380,7 +380,7 @@
             },
             "Type": "AWS::EC2::SecurityGroup"
         },
-        "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRole1CEBF359": {
+        "DeduplicatorTaskScheduledTaskDefTaskRole391A26CB": {
             "Properties": {
                 "AssumeRolePolicyDocument": {
                     "Statement": [
@@ -397,7 +397,7 @@
             },
             "Type": "AWS::IAM::Role"
         },
-        "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRoleDefaultPolicyE9EBD173": {
+        "DeduplicatorTaskScheduledTaskDefTaskRoleDefaultPolicy093290BD": {
             "Properties": {
                 "PolicyDocument": {
                     "Statement": [
@@ -420,10 +420,10 @@
                     ],
                     "Version": "2012-10-17"
                 },
-                "PolicyName": "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRoleDefaultPolicyE9EBD173",
+                "PolicyName": "DeduplicatorTaskScheduledTaskDefTaskRoleDefaultPolicy093290BD",
                 "Roles": [
                     {
-                        "Ref": "DeduplicatorScheduledFargateTaskScheduledTaskDefTaskRole1CEBF359"
+                        "Ref": "DeduplicatorTaskScheduledTaskDefTaskRole391A26CB"
                     }
                 ]
             },

@@ -94,7 +94,7 @@ class DeduplicateInvalidationQueue(Construct):
     def _define_scheduled_fargate_task(self) -> None:
         self.scheduled_fargate_task = ScheduledFargateTask(
             self,
-            'ScheduledFargateTask',
+            'Task',
             scheduled_fargate_task_image_options=ScheduledFargateTaskImageOptions(
                 image=self.application_image,
                 environment={
