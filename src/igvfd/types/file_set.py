@@ -141,13 +141,13 @@ class FileSet(Item):
             return res[0]
 
     @calculated_property(schema={
-        'title': 'Input FileSet For',
+        'title': 'Input File Set For',
         'description': 'The analysis sets that use this FileSet as an input.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-            'title': 'Input FileSet For',
+            'title': 'Input File Set For',
             'type': ['string', 'object'],
             'linkFrom': 'AnalysisSet.input_file_sets',
         },
