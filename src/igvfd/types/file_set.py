@@ -142,7 +142,7 @@ class FileSet(Item):
 
     @calculated_property(schema={
         'title': 'Input File Set For',
-        'description': 'The analysis sets that use this FileSet as an input.',
+        'description': 'The analysis sets that use this File Set as an input.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
