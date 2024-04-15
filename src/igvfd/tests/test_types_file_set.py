@@ -37,7 +37,7 @@ def test_control_link(testapp, measurement_set, curated_set_genome):
     assert set([file_set_id['@id'] for file_set_id in res.json.get('control_for')]) == {measurement_set['@id']}
 
 
-def test_submitted_files_timestamp(testapp,  reference_file, sequence_file, measurement_set):
+def test_submitted_files_timestamp(testapp,  reference_file, sequence_file, measurement_set, base_auxiliary_set):
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('submitted_files_timestamp', None) is None
     testapp.patch_json(
@@ -50,6 +50,20 @@ def test_submitted_files_timestamp(testapp,  reference_file, sequence_file, meas
         sequence_file['@id'],
         {
             'file_set': measurement_set['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get('submitted_files_timestamp') == reference_file.get('creation_timestamp')
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'file_set': base_auxiliary_set['@id']
         }
     )
     res = testapp.get(measurement_set['@id'])
