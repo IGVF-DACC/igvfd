@@ -432,3 +432,9 @@ def sample_17_18(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('whole_organism', '21', '22')
+def whole_organism_21_22(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1515
+    return

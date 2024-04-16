@@ -175,18 +175,6 @@ def whole_organism_v12(whole_organism):
 
 
 @pytest.fixture
-def whole_organism_human(testapp, lab, source, award, human_donor, sample_term_whole_organism):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'sources': [source['@id']],
-        'donors': [human_donor['@id']],
-        'sample_terms': [sample_term_whole_organism['@id']]
-    }
-    return testapp.post_json('/whole_organism', item, status=201).json['@graph'][0]
-
-
-@pytest.fixture
 def whole_organism_v13(whole_organism):
     item = whole_organism.copy()
     item.update({
@@ -269,5 +257,14 @@ def whole_organism_v19(whole_organism_v18):
     item.update({
         'schema_version': '19',
         'description': ''
+    })
+    return item
+
+
+@pytest.fixture
+def whole_organism_v21(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '21'
     })
     return item

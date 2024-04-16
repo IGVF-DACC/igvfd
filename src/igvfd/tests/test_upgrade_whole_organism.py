@@ -162,3 +162,8 @@ def test_whole_organism_upgrade_19_20(upgrader, whole_organism_v19):
     value = upgrader.upgrade('whole_organism', whole_organism_v19, current_version='19', target_version='20')
     assert value['schema_version'] == '20'
     assert 'description' not in value
+
+
+def test_whole_organism_upgrade_21_22(upgrader, whole_organism_v21):
+    value = upgrader.upgrade('whole_organism', whole_organism_v21, current_version='21', target_version='22')
+    assert value['schema_version'] == '22'
