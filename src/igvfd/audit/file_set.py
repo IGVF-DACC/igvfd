@@ -297,14 +297,10 @@ def audit_inconsistent_sequencing_kit(value, system):
     if not file_info:
         return
 
+    missing_kit = []
     for file in file_info:
         if file_info[file]['kit'] == '':
-            detail = (
-                f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
-                f'sequence file {audit_link(path_to_text(file), file)} which lacks '
-                f'specification of a `sequencing_kit`.'
-            )
-            yield AuditFailure('missing sequencing kit', f'{detail} {description_missing_kit}', level='WARNING')
+            missing_kit.append(file)
         else:
             if file_info[file]['platform'] != '':
                 if file_info[file]['platform'] not in kit_to_platform[file_info[file]['kit']]:
@@ -315,6 +311,14 @@ def audit_inconsistent_sequencing_kit(value, system):
                         f'that is inconsistent with its `sequencing_kit` {file_info[file]["kit"]}.'
                     )
                     yield AuditFailure('inconsistent sequencing kit', f'{detail} {description_inconsistent_kit}', level='ERROR')
+
+    if missing_kit:
+        detail = (
+            f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence '
+            f'file(s) {", ".join([audit_link(path_to_text(f), f) for f in missing_kit])} '
+            f'which lack specification of a `sequencing_kit`.'
+        )
+        yield AuditFailure('missing sequencing kit', f'{detail} {description_missing_kit}', level='WARNING')
 
     run_to_kit = {}
     for file in file_info:
