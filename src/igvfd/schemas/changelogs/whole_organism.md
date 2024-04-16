@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 22
+
+* Restrict `donors` to linking only to RodentDonor.
+
 ### Minor changes since schema version 21
 
 * Update `dbxrefs` regex to allow ENCODE sample accessions.

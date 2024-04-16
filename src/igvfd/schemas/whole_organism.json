@@ -76,7 +76,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "21"
+            "default": "22"
         },
         "sample_terms": {
             "comment": "Do not submit, value is assigned by the object.",
@@ -86,6 +86,12 @@
             "linkEnum": [
                 "25d5ad53-15fd-4a44-878a-ece2f7e86509"
             ]
+        },
+        "donors": {
+            "items": {
+                "linkTo": "RodentDonor",
+                "type": "string"
+            }
         },
         "part_of": {
             "comment": "Do not submit. Whole organism samples should not be part of any other sample."

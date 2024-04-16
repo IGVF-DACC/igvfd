@@ -14,7 +14,6 @@ import igvfd.audit.ontology_term
 import igvfd.audit.sample
 import igvfd.audit.tissue
 import igvfd.audit.treatment
-import igvfd.audit.whole_organism
 
 
 NON_AUDIT_FUNCTION_NAMES = [
@@ -37,7 +36,6 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.sample,
     igvfd.audit.tissue,
     igvfd.audit.treatment,
-    igvfd.audit.whole_organism,
 ]
 
 
