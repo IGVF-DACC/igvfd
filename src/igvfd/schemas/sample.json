@@ -178,7 +178,8 @@
         },
         "virtual": {
             "title": "Virtual",
-            "description": "Sample is virtual.",
+            "description": "Virtual samples are not representing actual physical entities from experiments, but rather capturing metadata about hypothetical samples that the reported analysis results are relevant for.",
+            "comment": "For example, a prediction of a certain TF's binding profile in HepG2 cells should not be associated with an actual batch of HepG2 cells, but with a virtual sample of HepG2 cells, making it clear that the reported prediction is not directly associated with an actual HepG2 sample in a specific lab and experiment.",
             "type": "boolean",
             "default": false,
             "submissionExample": {

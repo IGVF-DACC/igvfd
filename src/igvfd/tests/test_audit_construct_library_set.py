@@ -207,5 +207,33 @@ def test_audit_construct_library_set_guide_library_guide_rna_sequences(
     res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing guide RNA sequences'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', []))
+
+
+def test_audit_unexpected_virtual_sample(
+    testapp,
+    construct_library_set_genome_wide,
+    tissue
+):
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'construct_library_sets': [construct_library_set_genome_wide['@id']]
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'virtual': True
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sample'
+        for error in res.json['audit'].get('ERROR', [])
     )

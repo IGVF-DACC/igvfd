@@ -96,7 +96,8 @@
         },
         "virtual": {
             "title": "Virtual",
-            "description": "Donor is virtual.",
+            "description": "Virtual donors are not representing actual human or model organism donors, samples coming from which were used in experiments, but rather capturing metadata about hypothetical donors that the reported analysis results are relevant for.",
+            "comment": "For example, a prediction of a certain TF's binding profile in mice should not be associated with actual mouse donor, but with a virtual donor, making it clear that the reported predicted binding profile is not associated with actual samples coming from a specific mouse strain.",
             "type": "boolean",
             "default": false,
             "submissionExample": {

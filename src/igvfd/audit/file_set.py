@@ -359,3 +359,33 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
         detail = (f'File set {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
                   f'`files` that are not sequence or configuration files: {non_sequence_files}.')
         yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')
+
+
+@audit_checker('MeasurementSet', frame='object')
+@audit_checker('AuxiliarySet', frame='object')
+@audit_checker('ConstructLibrarySet', frame='object')
+@audit_checker('CuratedSet', frame='object')
+def audit_unexpected_virtual_samples(value, system):
+    '''
+    [
+        {
+            "audit_description": "Only prediction sets and analysis sets are expected to link to virtual samples.",
+            "audit_category": "unexpected sample",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_unexpected_virtual_samples)
+    samples = []
+    if 'samples' in value:
+        samples = value.get('samples')
+    if 'applied_to_samples' in value:
+        samples = value.get('applied_to_samples')
+    for sample in samples:
+        sample_object = system.get('request').embed(sample)
+        if sample_object.get('virtual'):
+            detail = (
+                f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} links to virtual sample '
+                f'{audit_link(path_to_text(sample), sample)} in `samples`.'
+            )
+            yield AuditFailure('unexpected sample', f'{detail} {description}', level='ERROR')
