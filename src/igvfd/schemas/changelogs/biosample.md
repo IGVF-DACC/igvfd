@@ -1,5 +1,6 @@
 ## Changelog for *`biosample.json`*
 
+* Add `originated_from` (04/24/2024)
 * Update `dbxrefs` regex to allow ENCODE sample accessions. (03/25/2024)
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status. (03/06/2024)
 * Add `release_timestamp`. (01/31/2024)

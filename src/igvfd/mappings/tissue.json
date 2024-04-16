@@ -1151,6 +1151,9 @@
                     "origin_of": {
                         "type": "keyword"
                     },
+                    "originated_from": {
+                        "type": "keyword"
+                    },
                     "part_of": {
                         "type": "keyword"
                     },

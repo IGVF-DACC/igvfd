@@ -19,7 +19,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             "audit_level": "ERROR"
         },
         {
-            "audit_description": "Samples are expected to be only sorted from or part of another sample.",
+            "audit_description": "Samples are expected to be either sorted from or part of another sample, but never both.",
             "audit_category": "inconsistent parent sample",
             "audit_level": "ERROR"
         }
