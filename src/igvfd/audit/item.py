@@ -90,18 +90,7 @@ def audit_item_status(value, system):
         linked_level = STATUS_HIERARCHY.get(linked_value['status'], 50)
         if linked_value['status'] in ['archived']:
             linked_level += 30
-        if linked_level == 0:
-            detail = ('{} {} {} has {} subobject {} {}'.format(
-                value['status'].capitalize(),
-                space_in_words(value['@type'][0]).lower(),
-                audit_link(path_to_text(value['@id']), value['@id']),
-                linked_value['status'],
-                space_in_words(linked_value['@type'][0]).lower(),
-                audit_link(path_to_text(linked_value['@id']), linked_value['@id'])
-            )
-            )
-            yield AuditFailure('mismatched status', detail, level='INTERNAL_ACTION')
-        elif linked_level < level:
+        if linked_level < level:
             detail = ('{} {} {} has {} subobject {} {}'.format(
                 value['status'].capitalize(),
                 space_in_words(value['@type'][0]).lower(),
