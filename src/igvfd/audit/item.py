@@ -68,10 +68,10 @@ def audit_item_status(value, system):
     if value['status'] in ['revoked', 'disabled', 'deleted', 'replaced']:
         return
 
+    level = STATUS_HIERARCHY.get(value['status'], 50)
+
     if value['status'] in ['archived']:
         level += 30
-
-    level = STATUS_HIERARCHY.get(value['status'], 50)
 
     context = system['context']
     request = system['request']
