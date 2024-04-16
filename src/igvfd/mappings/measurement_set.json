@@ -1,6 +1,6 @@
 {
-    "hash": "16fea89037fd52981cf2b10f80e92370",
-    "index_name": "measurement_set_16fea890",
+    "hash": "c7a01eb273c99f5d8d100bcdb6ff087d",
+    "index_name": "measurement_set_c7a01eb2",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -287,6 +287,9 @@
                             "files": {
                                 "type": "keyword"
                             },
+                            "input_file_set_for": {
+                                "type": "keyword"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -570,6 +573,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "input_file_set_for": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
@@ -887,6 +893,9 @@
                                 "type": "keyword"
                             },
                             "guide_type": {
+                                "type": "keyword"
+                            },
+                            "input_file_set_for": {
                                 "type": "keyword"
                             },
                             "input_file_sets": {
@@ -1553,6 +1562,9 @@
                         },
                         "type": "object"
                     },
+                    "input_file_set_for": {
+                        "type": "keyword"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -1842,6 +1854,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "input_file_set_for": {
                                 "type": "keyword"
                             },
                             "lab": {
@@ -2178,6 +2193,9 @@
                                         "type": "keyword"
                                     },
                                     "guide_type": {
+                                        "type": "keyword"
+                                    },
+                                    "input_file_set_for": {
                                         "type": "keyword"
                                     },
                                     "integrated_content_files": {

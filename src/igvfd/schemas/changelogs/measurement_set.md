@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Add calculated property `input_file_set_for`.
 * Extend `preferred_assay_title` enum list to include `scNT-seq2`.
 
 ### Schema version 15
