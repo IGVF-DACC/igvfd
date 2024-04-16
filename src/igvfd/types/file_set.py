@@ -131,21 +131,21 @@ class FileSet(Item):
     })
     def submitted_files_timestamp(self, request, files, auxiliary_sets=[]):
         timestamps = set()
+        files_to_traverse = []
         if files:
             for current_file_path in files:
-                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
-                timestamp = file_object.get('creation_timestamp', None)
-                if timestamp:
-                    timestamps.add(timestamp)
+                files_to_traverse.append(current_file_path)
         if auxiliary_sets:
             for auxiliary_set in auxiliary_sets:
                 aux_set_object = request.embed(auxiliary_set, '@@object_with_select_calculated_properties?field=files')
                 if 'files' in aux_set_object:
                     for current_file_path in aux_set_object['files']:
-                        file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
-                        timestamp = file_object.get('creation_timestamp', None)
-                        if timestamp:
-                            timestamps.add(timestamp)
+                        files_to_traverse.append(current_file_path)
+        for current_file_path in files_to_traverse:
+            file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+            timestamp = file_object.get('creation_timestamp', None)
+            if timestamp:
+                timestamps.add(timestamp)
         if timestamps:
             res = sorted(timestamps, key=lambda x: datetime.strptime(x, '%Y-%m-%dT%H:%M:%S.%f%z'))
             return res[0]
