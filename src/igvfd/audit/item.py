@@ -91,7 +91,7 @@ def audit_item_status(value, system):
         if linked_value['status'] in ['archived']:
             linked_level += 30
         if linked_level < level:
-            detail = ('{} {} {} has {} subobject {} {}'.format(
+            detail = ('{} {} {} has {} subobject {} {}.'.format(
                 value['status'].capitalize(),
                 space_in_words(value['@type'][0]).lower(),
                 audit_link(path_to_text(value['@id']), value['@id']),
