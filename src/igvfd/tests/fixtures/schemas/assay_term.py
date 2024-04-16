@@ -84,6 +84,15 @@ def assay_term_crispr(testapp):
 
 
 @pytest.fixture
+def assay_term_cas_mediated_mutagenesis(testapp):
+    item = {
+        'term_id': 'OBI:0003133',
+        'term_name': 'cas mediated mutagenesis'
+    }
+    return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def assay_term_v2(assay_term_v1):
     item = assay_term_v1.copy()
     item.update({
