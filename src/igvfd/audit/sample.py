@@ -45,7 +45,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
         skip_keys = ['accession', 'alternate_accessions', 'aliases', 'audit', 'creation_timestamp', 'date_obtained',
                      'schema_version', 'starting_amount', 'starting_amount_units', 'submitted_by', 'description',
                      'sorted_from', 'sorted_from_detail', 'revoke_detail', 'notes', 'submitter_comment',
-                     'documents', 'url', 'dbxrefs', 'pooled_from', 'part_of', 'originated_from', 'release_timestamp', 'sorted_from']
+                     'documents', 'url', 'dbxrefs', 'pooled_from', 'part_of', 'originated_from', 'release_timestamp']
         all_keys = parent.keys() | value.keys()
         keys_to_check = [k for k in all_keys if k not in skip_keys]
         for key in keys_to_check:
