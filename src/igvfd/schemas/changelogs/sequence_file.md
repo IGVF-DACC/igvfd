@@ -11,7 +11,6 @@
 
 * Extend `sequencing_kit` enum list to include `MiSeq Reagent Kits v2`.
 
-
 ### Schema version 12
 
 * Extend `upload_status` enum list to include `deposited`.
