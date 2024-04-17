@@ -95,7 +95,7 @@ jobs:
       - run:
           name: Upload coverage
           command: |
-              docker-compose run --no-deps --entrypoint "/scripts/pyramid/entrypoint.sh" -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN pyramid coveralls
+              docker-compose run --no-deps -u igvfd --entrypoint "/scripts/pyramid/entrypoint.sh" -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN pyramid coveralls
       - store_test_results:
           path: test-results
 
