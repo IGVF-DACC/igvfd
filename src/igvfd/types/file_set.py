@@ -133,14 +133,12 @@ class FileSet(Item):
         timestamps = set()
         files_to_traverse = []
         if files:
-            for current_file_path in files:
-                files_to_traverse.append(current_file_path)
+            files_to_traverse.extend(files)
         if auxiliary_sets:
             for auxiliary_set in auxiliary_sets:
                 aux_set_object = request.embed(auxiliary_set, '@@object_with_select_calculated_properties?field=files')
                 if 'files' in aux_set_object:
-                    for current_file_path in aux_set_object['files']:
-                        files_to_traverse.append(current_file_path)
+                    files_to_traverse.extend(aux_set_object['files'])
         for current_file_path in files_to_traverse:
             file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
             timestamp = file_object.get('creation_timestamp', None)
