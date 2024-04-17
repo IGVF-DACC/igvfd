@@ -61,6 +61,7 @@ services:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
       - "/igvfd/src/igvfd/static"
+    entrypoint: ./docker/wait-for-local-services-entrypoint.sh
     command: /scripts/pyramid/run-development.sh
     ports:
       - "6543:6543"
@@ -92,6 +93,9 @@ services:
       - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
       - INVALIDATION_QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
       - RESOURCES_INDEX=snovault-resources
+    volumes:
+       - "./docker/wait-for-local-services-entrypoint.sh:/snovault-index/wait-for-local-services-entrypoint.sh"
+    entrypoint: ./wait-for-local-services-entrypoint.sh
     command: run-invalidation-service
     depends_on:
       - postgres
@@ -111,6 +115,9 @@ services:
       - BACKEND_KEY=foobar
       - BACKEND_SECRET_KEY=bazqux
       - RESOURCES_INDEX=snovault-resources
+    volumes:
+       - "./docker/wait-for-local-services-entrypoint.sh:/snovault-index/wait-for-local-services-entrypoint.sh"
+    entrypoint: ./wait-for-local-services-entrypoint.sh
     command: run-indexing-service
     depends_on:
       - postgres
@@ -148,6 +155,7 @@ services:
       - ".:/igvfd"
       - "/igvfd/src/igvfd.egg-info"
       - "/igvfd/src/igvfd/static"
+    entrypoint: ./docker/wait-for-local-services-entrypoint.sh
     command: pytest -rf --cov=igvfd -s -o junit_family=legacy --junitxml=./.test-results/junit.xml --cov-append -m 'indexing'
     depends_on:
       - postgres
