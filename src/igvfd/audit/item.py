@@ -1,3 +1,6 @@
+from ..types.base import (
+    STATUS_HIERARCHY
+)
 from snovault import (
     AuditFailure,
     audit_checker,
@@ -6,6 +9,7 @@ from snovault import (
     UPGRADER,
 )
 from snovault.schema_utils import validate
+from snovault.util import simple_path_ids
 from .formatter import (
     audit_link,
     path_to_text,
@@ -53,3 +57,47 @@ def audit_item_schema(value, system):
         )
         )
         yield AuditFailure(category, detail, level='INTERNAL_ACTION')
+
+
+@audit_checker('Item', frame='object')
+def audit_item_status(value, system):
+    if 'status' not in value:
+        return
+
+    # objects with these statuses are not audited
+    if value['status'] in ['revoked', 'disabled', 'deleted', 'replaced']:
+        return
+
+    level = STATUS_HIERARCHY.get(value['status'], 50)
+
+    if value['status'] in ['archived']:
+        level += 30
+
+    context = system['context']
+    request = system['request']
+    linked = set()
+
+    for schema_path in context.type_info.schema_links:
+        linked.update(simple_path_ids(value, schema_path))
+
+    for path in linked:
+        # Avoid pulling the full @@object frame into request._embedded_uuids.
+        linked_value = request.embed(path + '@@filtered_object?include=@id&include=@type&include=uuid&include=status')
+        if 'status' not in linked_value:
+            continue
+        if linked_value['status'] == 'disabled':
+            continue
+        linked_level = STATUS_HIERARCHY.get(linked_value['status'], 50)
+        if linked_value['status'] in ['archived']:
+            linked_level += 30
+        if linked_level < level:
+            detail = ('{} {} {} has {} subobject {} {}.'.format(
+                value['status'].capitalize(),
+                space_in_words(value['@type'][0]).lower(),
+                audit_link(path_to_text(value['@id']), value['@id']),
+                linked_value['status'],
+                space_in_words(linked_value['@type'][0]).lower(),
+                audit_link(path_to_text(linked_value['@id']), linked_value['@id'])
+            )
+            )
+            yield AuditFailure('mismatched status', detail, level='INTERNAL_ACTION')

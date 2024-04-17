@@ -1,7 +1,7 @@
 {
-    "hash": "e2b6af4e9ecbb440e0dafe18f6da7690",
-    "index_name": "publication_e2b6af4e",
-    "item_type": "publication",
+    "hash": "6f8b2726f94456687b8ddaa2e0d39d1e",
+    "index_name": "human_genomic_variant_6f8b2726",
+    "item_type": "human_genomic_variant",
     "mapping": {
         "dynamic_templates": [
             {
@@ -148,219 +148,31 @@
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
-                    "abstract": {
-                        "type": "keyword"
-                    },
                     "aliases": {
                         "type": "keyword"
                     },
-                    "attachment": {
-                        "properties": {
-                            "download": {
-                                "type": "keyword"
-                            },
-                            "height": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
-                            },
-                            "href": {
-                                "type": "keyword"
-                            },
-                            "md5sum": {
-                                "type": "keyword"
-                            },
-                            "size": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
-                            },
-                            "type": {
-                                "type": "keyword"
-                            },
-                            "width": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
-                            }
-                        },
-                        "type": "object"
-                    },
-                    "authors": {
+                    "alt": {
                         "type": "keyword"
                     },
-                    "award": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "component": {
-                                "type": "keyword"
-                            },
-                            "contact_pi": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "end_date": {
-                                "type": "keyword"
-                            },
-                            "name": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "pis": {
-                                "type": "keyword"
-                            },
-                            "project": {
-                                "type": "keyword"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "start_date": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "title": {
-                                "type": "keyword"
-                            },
-                            "url": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            },
-                            "viewing_group": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
+                    "assembly": {
+                        "type": "keyword"
+                    },
+                    "associated_gwas": {
+                        "type": "keyword"
+                    },
+                    "chromosome": {
+                        "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
-                    },
-                    "date_published": {
-                        "type": "keyword"
-                    },
-                    "date_revised": {
                         "type": "keyword"
                     },
                     "description": {
                         "type": "text"
                     },
-                    "issue": {
-                        "type": "keyword"
-                    },
-                    "journal": {
-                        "type": "keyword"
-                    },
-                    "lab": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "awards": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "institute_label": {
-                                "type": "keyword"
-                            },
-                            "name": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "pi": {
-                                "type": "keyword"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "title": {
-                                "copy_to": "_fuzzy",
-                                "type": "keyword"
-                            },
-                            "url": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
-                    },
                     "notes": {
                         "type": "text"
                     },
-                    "page": {
-                        "type": "keyword"
-                    },
-                    "publication_identifiers": {
-                        "copy_to": "_exact",
-                        "type": "keyword"
-                    },
-                    "publication_year": {
+                    "position": {
                         "fields": {
                             "raw": {
                                 "type": "keyword"
@@ -369,13 +181,27 @@
                         "store": true,
                         "type": "long"
                     },
-                    "published_by": {
+                    "ref": {
+                        "type": "keyword"
+                    },
+                    "reference_sequence": {
+                        "type": "keyword"
+                    },
+                    "refseq_id": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "release_timestamp": {
                         "type": "keyword"
                     },
+                    "rsid": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
                     "schema_version": {
+                        "type": "keyword"
+                    },
+                    "selection_criteria": {
                         "type": "keyword"
                     },
                     "status": {
@@ -438,7 +264,6 @@
                                 "type": "keyword"
                             },
                             "title": {
-                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {
@@ -456,13 +281,7 @@
                     "summary": {
                         "type": "keyword"
                     },
-                    "title": {
-                        "type": "keyword"
-                    },
                     "uuid": {
-                        "type": "keyword"
-                    },
-                    "volume": {
                         "type": "keyword"
                     }
                 },
