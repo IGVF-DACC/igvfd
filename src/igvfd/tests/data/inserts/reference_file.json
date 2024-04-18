@@ -143,7 +143,8 @@
         "assembly": "GRCh38",
         "collections": [
             "ClinGen",
-            "GREGoR"
+            "GREGoR",
+            "IGVF_catalog_beta_v0.2"
         ]
     },
     {
@@ -164,7 +165,8 @@
         "assembly": "GRCh38",
         "collections": [
             "ClinGen",
-            "GREGoR"
+            "GREGoR",
+            "IGVF_catalog_beta_v0.3"
         ]
     }
 ]

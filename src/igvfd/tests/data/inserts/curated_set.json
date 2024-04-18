@@ -112,6 +112,10 @@
         "aliases": [
             "j-michael-cherry:barcodes_curated_set"
         ],
+        "collections": [
+            "IGVF_catalog_beta_v0.2",
+            "IGVF_catalog_beta_v0.3"
+        ],
         "description": "A curated set for barcodes used in library preparation, such as for Parse Split-seq."
     }
 ]

@@ -1,5 +1,11 @@
 ## Changelog for *`matrix_file.json`*
 
+### Minor changes since schema version 6
+
+* Extend `collections` enum list to include `Vista`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.2`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`.
+
 ### Schema version 6
 
 * Require `derived_from` to contain at least one value.

@@ -1,5 +1,11 @@
 ## Changelog for *`sequence_file.json`*
 
+### Minor changes since schema version 12
+
+* Extend `collections` enum list to include `Vista`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.2`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`.
+
 ### Schema version 12
 
 * Extend `upload_status` enum list to include `deposited`.
