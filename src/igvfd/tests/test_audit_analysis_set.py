@@ -58,7 +58,6 @@ def test_audit_missing_input_file_set(
         }
     )
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
-    print(res.json)
     assert any(
         error['category'] == 'missing input file set'
         for error in res.json['audit'].get('ERROR', [])
