@@ -3,6 +3,7 @@
 * Extend `collections` enum list to include `Vista`. (04/17/2024)
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.2`. (04/17/2024)
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`. (04/17/2024)
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.4`. (04/17/2024)
 * Add `controlled_access`. (03/29/2024)
 * Update `aliases` regex to add `buenrostro-bernstein` as a namespace. (03/11/2024)
 * Add `GENCODE 44`, `GENCODE 45`, `GENCODE M33`, and `GENCODE M34` to `transcriptome_annotation`.

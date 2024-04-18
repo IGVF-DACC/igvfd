@@ -166,7 +166,8 @@
         "collections": [
             "ClinGen",
             "GREGoR",
-            "IGVF_catalog_beta_v0.3"
+            "IGVF_catalog_beta_v0.3",
+            "IGVF_catalog_beta_v0.4"
         ]
     }
 ]
