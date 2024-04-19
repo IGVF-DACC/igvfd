@@ -3,6 +3,7 @@
 ### Minor changes since schema version 18
 
 * Update `dbxrefs` regex to allow ENCODE sample accessions.
+* Add `originated_from`.
 
 ### Schema version 18
 

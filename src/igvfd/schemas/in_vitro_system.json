@@ -527,16 +527,6 @@
                 "igvf_utils": "john-doe:document01 or /documents/1dd3f63d-13b5-08f8-14b2-2974bd674f59/"
             }
         },
-        "originated_from": {
-            "title": "Originated From",
-            "description": "The biosample this in vitro system sample was originated from due to differentiation, dedifferentiation, or reprogramming.",
-            "type": "string",
-            "linkTo": "Biosample",
-            "submissionExample": {
-                "appscript": "TSTSM02881437 or john-doe:tissue01",
-                "igvf_utils": "TSTSM02881437 or john-doe:tissue01"
-            }
-        },
         "part_of": {
             "linkTo": "Biosample",
             "type": "string",

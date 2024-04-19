@@ -14,18 +14,33 @@ def audit_sample_sorted_from_parent_child_check(value, system):
     '''
     [
         {
-            "audit_description": "Samples that are sorted from a parent sample are expected to share most of the parent's metadata properties.",
+            "audit_description": "Samples that are sorted from or part of a parent sample are expected to share most of the parent's metadata properties.",
+            "audit_category": "inconsistent parent sample",
+            "audit_level": "ERROR"
+        },
+        {
+            "audit_description": "Samples are expected to be either sorted from or part of another sample, but never both.",
             "audit_category": "inconsistent parent sample",
             "audit_level": "ERROR"
         }
     ]
     '''
-    description = get_audit_description(audit_sample_sorted_from_parent_child_check)
-    if 'sorted_from' in value:
+    description_metadata_inconsistency = get_audit_description(audit_sample_sorted_from_parent_child_check, index=0)
+    description_duplicated_parent = get_audit_description(audit_sample_sorted_from_parent_child_check, index=1)
+    if 'sorted_from' in value or 'part_of' in value:
         error_keys = []
         prop_errors = ''
         value_id = system.get('path')
-        parent_id = value.get('sorted_from')
+        if 'sorted_from' in value:
+            parent_id = value.get('sorted_from')
+        elif 'part_of' in value:
+            parent_id = value.get('part_of')
+        if 'sorted_from' in value and 'part_of' in value:
+            detail = (
+                f'Sample {audit_link(path_to_text(value_id), value_id)} '
+                f'specifies both `sorted_from` and `part_of`.'
+            )
+            yield AuditFailure('inconsistent parent sample', f'{detail} {description_duplicated_parent}', level='ERROR')
         parent = system.get('request').embed(parent_id + '@@object?skip_calculated=true')
         skip_keys = ['accession', 'alternate_accessions', 'aliases', 'audit', 'creation_timestamp', 'date_obtained',
                      'schema_version', 'starting_amount', 'starting_amount_units', 'submitted_by', 'description',
@@ -43,7 +58,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             f'its associated parent sample {audit_link(path_to_text(parent_id), parent_id)}.'
         )
         if prop_errors != '':
-            yield AuditFailure('inconsistent parent sample', f'{detail} {description}', level='ERROR')
+            yield AuditFailure('inconsistent parent sample', f'{detail} {description_metadata_inconsistency}', level='ERROR')
 
 
 @audit_checker('Sample', frame='object')
