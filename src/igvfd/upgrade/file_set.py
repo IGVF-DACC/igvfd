@@ -310,13 +310,12 @@ def measurement_set_14_15(value, system):
 
 
 @upgrade_step('measurement_set', '15', '16')
-@upgrade_step('auxiliary_set', '7', '8')
-def file_set_9_10(value, system):
+def measurement_set_15_16(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1571
     if len(value['samples']) > 1:
         sample = value['samples'][0]
         other_samples = ', '.join(value['samples'][1:])
         notes = value.get('notes', '')
-        notes = f'{notes} This file set used to link to samples: {other_samples}, but has since been upgraded to only link to {sample}.'
+        notes = f'{notes} This measurement set used to link to samples: {other_samples}, but has since been upgraded to only link to {sample}.'
         value['notes'] = notes
         value['samples'] = [sample]
