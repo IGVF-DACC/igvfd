@@ -1,5 +1,12 @@
 ## Changelog for *`alignment_file.json`*
 
+### Minor changes since schema version 9
+
+* Extend `collections` enum list to include `Vista`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.2`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.4`.
+
 ### Schema version 9
 
 * Extend `upload_status` enum list to include `deposited`.

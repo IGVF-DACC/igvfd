@@ -130,8 +130,12 @@
                     "ENCODE",
                     "GREGoR",
                     "IGVF_catalog_beta_v0.1",
+                    "IGVF_catalog_beta_v0.2",
+                    "IGVF_catalog_beta_v0.3",
+                    "IGVF_catalog_beta_v0.4",
                     "MaveDB",
-                    "MPRAbase"
+                    "MPRAbase",
+                    "Vista"
                 ]
             }
         },

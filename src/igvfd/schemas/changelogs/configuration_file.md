@@ -1,5 +1,12 @@
 ## Changelog for *`configuration_file.json`*
 
+### Minor changes since schema version 7
+
+* Extend `collections` enum list to include `Vista`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.2`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.4`.
+
 ### Schema version 7
 
 * Require `seqspec_of` to contain at least one value.

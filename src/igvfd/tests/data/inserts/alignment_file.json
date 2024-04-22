@@ -63,6 +63,9 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
+        "collections": [
+            "Vista"
+        ],
         "filtered": false,
         "redacted": false,
         "controlled_access": true,

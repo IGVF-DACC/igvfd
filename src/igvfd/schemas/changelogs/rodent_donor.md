@@ -1,5 +1,12 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Minor changes since schema version 12
+
+* Extend `collections` enum list to include `Vista`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.2`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`.
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.4`.
+
 ### Schema version 12
 
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
