@@ -8,10 +8,6 @@
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.4`.
 
-### Minor changes since schema version 12
-
-* Extend `sequencing_kit` enum list to include `MiSeq Reagent Kits v2`.
-
 ### Schema version 12
 
 * Extend `upload_status` enum list to include `deposited`.
