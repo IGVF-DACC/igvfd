@@ -634,6 +634,7 @@ class PredictionSet(FileSet):
         Path('samples.construct_library_sets', include=['@id', 'accession', 'summary']),
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
+        Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
