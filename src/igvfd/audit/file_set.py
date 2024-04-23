@@ -264,6 +264,7 @@ def audit_inconsistent_sequencing_kit(value, system):
         'HiSeq 3000/4000 SBS Kit': ['/platform-terms/EFO_0008563/'],
         'HiSeq 3000/4000 SR Cluster Kit': ['/platform-terms/EFO_0008563/'],
         'HiSeq 3000/4000 PE Cluster Kit': ['/platform-terms/EFO_0008563/'],
+        'MiSeq Reagent Kit v2': ['/platform-terms/EFO_0004205/'],
         'NextSeq 500 Mid Output Kit': ['/platform-terms/EFO_0009173/'],
         'NextSeq 500 High Output Kit': ['/platform-terms/EFO_0009173/'],
         'NextSeq 500 Mid Output v2 Kit': ['/platform-terms/EFO_0009173/'],
