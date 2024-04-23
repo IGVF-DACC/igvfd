@@ -1,5 +1,9 @@
 ## Changelog for *`platform_term.json`*
 
+### Minor changes since schema version 3
+
+* Add `sequencing_kits`.
+
 ### Schema version 3
 
 * Require `release_timestamp` for any objects with `released` or `archived` status

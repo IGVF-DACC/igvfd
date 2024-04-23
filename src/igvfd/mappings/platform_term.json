@@ -1,6 +1,6 @@
 {
-    "hash": "11f4d975f47437c3b319446987dc67fc",
-    "index_name": "platform_term_11f4d975",
+    "hash": "280d836a1c0d7618b94e0ba611c75112",
+    "index_name": "platform_term_280d836a",
     "item_type": "platform_term",
     "mapping": {
         "dynamic_templates": [
@@ -182,6 +182,9 @@
                         "type": "keyword"
                     },
                     "schema_version": {
+                        "type": "keyword"
+                    },
+                    "sequencing_kits": {
                         "type": "keyword"
                     },
                     "status": {
