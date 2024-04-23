@@ -91,8 +91,11 @@ def test_measurement_set_upgrade_14_15(upgrader, measurement_set_v14):
 
 
 def test_measurement_set_upgrade_15_16(upgrader, measurement_set_v15):
+    other_samples = measurement_set_v15['samples'][1:]
     value = upgrader.upgrade(
         'measurement_set', measurement_set_v15,
         current_version='15', target_version='16')
     assert value['schema_version'] == '16'
     assert len(value['samples']) == 1
+    for other_sample in other_samples:
+        assert other_sample in value['notes']
