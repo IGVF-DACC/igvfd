@@ -699,6 +699,17 @@ def test_audit_inconsistent_sequencing_kit(
         error['category'] != 'inconsistent sequencing kit'
         for error in res.json['audit'].get('ERROR', [])
     )
+    testapp.patch_json(
+        platform_term_NovaSeq['@id'],
+        {
+            'sequencing_kits': ['NextSeq 2000 P1']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent sequencing kit'
+        for error in res.json['audit'].get('ERROR', [])
+    )
 
 
 def test_audit_missing_auxiliary_set(
