@@ -71,7 +71,7 @@
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Preferred Assay Title",
+                "title": "Sequencing Kit",
                 "description": "A sequencing kit available for this platform.",
                 "type": "string",
                 "$merge": "sequence_file.json#/properties/sequencing_kit"
