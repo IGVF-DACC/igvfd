@@ -322,7 +322,7 @@ def audit_missing_auxiliary_sets(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_auxiliary_sets)
+    description = get_audit_description(audit_missing_auxiliary_sets)
     samples = value.get('samples', [])
     auxiliary_sets = value.get('auxiliary_sets', [])
     for sample in samples:
