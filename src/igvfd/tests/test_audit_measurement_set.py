@@ -712,7 +712,7 @@ def test_audit_inconsistent_sequencing_kit(
     )
 
 
-def test_audit_missing_auxiliary_set(
+def test_audit_missing_gRNA_auxiliary_set(
     testapp,
     measurement_set,
     assay_term_crispr,
@@ -797,4 +797,35 @@ def test_audit_unexpected_virtual_sample(
     assert any(
         error['category'] == 'unexpected sample'
         for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_audit_missing_auxiliary_set(
+    testapp,
+    measurement_set,
+    base_auxiliary_set,
+    tissue
+):
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    print(res.json)
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('WARNING', [])
     )
