@@ -312,7 +312,7 @@ def audit_CRISPR_screen_lacking_auxiliary_set(value, system):
 
 
 @audit_checker('MeasurementSet', frame='object')
-def audit_auxiliary_sets(value, system):
+def audit_missing_auxiliary_sets(value, system):
     '''
     [
         {
