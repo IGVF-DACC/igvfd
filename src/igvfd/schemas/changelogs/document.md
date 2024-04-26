@@ -1,5 +1,9 @@
 ## Changelog for *`document.json`*
 
+### Minor changes since schema version 4
+
+* Extend `document_type` enum list to include `plate map`.
+
 ### Schema version 4
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.
