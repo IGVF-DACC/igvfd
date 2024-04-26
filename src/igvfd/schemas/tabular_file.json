@@ -106,6 +106,7 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
+                "barcode to element mapping",
                 "barcode to sample mapping",
                 "element quantifications",
                 "elements reference",
