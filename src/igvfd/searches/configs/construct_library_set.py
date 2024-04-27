@@ -101,9 +101,6 @@ def construct_library_set():
             'small_scale_gene_list.symbol': {
                 'title': 'Genes'
             },
-            'loci': {
-                'title': 'Loci'
-            },
             'associated_phenotypes.term_name': {
                 'title': 'Associated Phenotypes'
             },

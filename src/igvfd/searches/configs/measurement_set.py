@@ -162,8 +162,8 @@ def measurement_set():
             'sequencing_library_types': {
                 'title': 'Sequencing Library Types'
             },
-            'protocol': {
-                'title': 'Protocol'
+            'protocols': {
+                'title': 'Protocols'
             },
             'summary': {
                 'title': 'Summary'
