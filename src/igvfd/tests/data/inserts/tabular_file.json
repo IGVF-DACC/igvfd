@@ -95,5 +95,25 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:analysis_set_with_input"
+    },
+    {
+        "uuid": "3e161051-2f4c-8610-b245-e11bf2cfa12a",
+        "accession": "IGVFFI0006MPST",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_06_bed_mpra_starr"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "242582c86920afe675a0e7a0f861058b",
+        "file_format": "bed",
+        "file_format_type": "mpra_starr",
+        "content_type": "peaks",
+        "submitted_file_name": "/Users/igvf/igvf_files/mpra_starr_results.bed.gz",
+        "file_size": 84022,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "igvf:basic_analysis_set"
     }
 ]

@@ -484,7 +484,8 @@
                 "bed6",
                 "bed6+",
                 "bed9",
-                "bed9+"
+                "bed9+",
+                "mpra_starr"
             ],
             "submissionExample": {
                 "appscript": "bed3",
