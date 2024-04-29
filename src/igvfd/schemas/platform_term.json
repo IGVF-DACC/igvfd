@@ -63,6 +63,23 @@
                 "appscript": "Illumina",
                 "igvf_utils": "Illumina"
             }
+        },
+        "sequencing_kits": {
+            "title": "Sequencing Kits",
+            "description": "The available sequencing kits for this platform.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Sequencing Kit",
+                "description": "A sequencing kit available for this platform.",
+                "type": "string",
+                "$merge": "sequence_file.json#/properties/sequencing_kit"
+            },
+            "submissionExample": {
+                "appscript": "[\"NextSeq 500/550 High-Output v2.5 Kit\"]",
+                "igvf_utils": "NextSeq 500/550 High-Output v2.5 Kit"
+            }
         }
     },
     "fuzzy_searchable_fields": [

@@ -254,36 +254,6 @@ def audit_inconsistent_sequencing_kit(value, system):
     '''
     description_inconsistent_kit = get_audit_description(audit_inconsistent_sequencing_kit, index=0)
     description_missing_kit = get_audit_description(audit_inconsistent_sequencing_kit, index=1)
-    kit_to_platform = {
-        'HiSeq SBS Kit v4': ['/platform-terms/EFO_0008565/'],
-        'HiSeq SR Cluster Kit v4-cBot-HS': ['/platform-terms/EFO_0008565/'],
-        'HiSeq PE Cluster Kit v4-cBot-HS': ['/platform-terms/EFO_0008565/'],
-        'HiSeq SR Rapid Cluster Kit v2': ['/platform-terms/EFO_0008565/'],
-        'HiSeq PE Rapid Cluster Kit v2': ['/platform-terms/EFO_0008565/'],
-        'HiSeq Rapid SBS Kit v2': ['/platform-terms/EFO_0008565/'],
-        'HiSeq 3000/4000 SBS Kit': ['/platform-terms/EFO_0008563/'],
-        'HiSeq 3000/4000 SR Cluster Kit': ['/platform-terms/EFO_0008563/'],
-        'HiSeq 3000/4000 PE Cluster Kit': ['/platform-terms/EFO_0008563/'],
-        'MiSeq Reagent Kit v2': ['/platform-terms/EFO_0004205/'],
-        'NextSeq 500 Mid Output Kit': ['/platform-terms/EFO_0009173/'],
-        'NextSeq 500 High Output Kit': ['/platform-terms/EFO_0009173/'],
-        'NextSeq 500 Mid Output v2 Kit': ['/platform-terms/EFO_0009173/'],
-        'NextSeq 500 High Output v2 Kit': ['/platform-terms/EFO_0009173/'],
-        'NextSeq 500/550 Mid-Output v2.5 Kit': ['/platform-terms/EFO_0008566/'],
-        'NextSeq 500/550 High-Output v2.5 Kit': ['/platform-terms/EFO_0008566/'],
-        'TG NextSeq 500/550 Mid-Output Kit v2.5': ['/platform-terms/EFO_0008566/'],
-        'TG NextSeq 500/550 High-Output Kit v2.5': ['/platform-terms/EFO_0008566/'],
-        'NextSeq 1000/2000 P1 XLEAP-SBS Reagent Kit': ['/platform-terms/EFO_0010963/'],
-        'NextSeq 1000/2000 P2 XLEAP-SBS Reagent Kit': ['/platform-terms/EFO_0010963/'],
-        'NextSeq 2000 P3 XLEAP-SBS Reagent Kit': ['/platform-terms/EFO_0010963/'],
-        'NextSeq 2000 P4 XLEAP-SBS Reagent Kit': ['/platform-terms/EFO_0010963/'],
-        'NovaSeq 6000 SP Reagent Kit v1.5': ['/platform-terms/EFO_0008637/'],
-        'NovaSeq 6000 S1 Reagent Kit v1.5': ['/platform-terms/EFO_0008637/'],
-        'NovaSeq 6000 S2 Reagent Kit v1.5': ['/platform-terms/EFO_0008637/'],
-        'NovaSeq 6000 S4 Reagent Kit V1.5': ['/platform-terms/EFO_0008637/'],
-        'Sequel sequencing kit 3.0': ['/platform-terms/EFO_0008630/'],
-        'Sequel II sequencing kit 2.0': ['/platform-terms/EFO_0700015/']
-    }
     if 'files' in value:
         file_info = {}
         for file in value['files']:
@@ -304,7 +274,8 @@ def audit_inconsistent_sequencing_kit(value, system):
             missing_kit.append(file)
         else:
             if file_info[file]['platform'] != '':
-                if file_info[file]['platform'] not in kit_to_platform[file_info[file]['kit']]:
+                platform_object = system.get('request').embed(file_info[file]['platform'])
+                if file_info[file]['kit'] not in platform_object.get('sequencing_kits', []):
                     detail = (
                         f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has a sequence '
                         f'file {audit_link(path_to_text(file), file)} sequenced on a `sequencing_platform` '
@@ -337,7 +308,7 @@ def audit_inconsistent_sequencing_kit(value, system):
             detail = (
                 f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
                 f'{", ".join([audit_link(path_to_text(f), f) for f in run_to_kit[run]["files"]])} '
-                f'which are part of the same sequencing run, but specify more than 1 `sequencing_kit`: '
+                f'which are part of the same sequencing run, but do not specify the same `sequencing_kit`: '
                 f'{", ".join(run_to_kit[run]["kits"])}'
             )
             yield AuditFailure('inconsistent sequencing kit', f'{detail} {description_inconsistent_kit}', level='ERROR')
