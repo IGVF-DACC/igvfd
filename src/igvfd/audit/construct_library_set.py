@@ -148,4 +148,4 @@ def audit_construct_library_set_orf_gene(value, system):
                 f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
                 f'has a `small_scale_gene_list` which does not match the genes of its associated `orf_list`.'
             )
-            yield AuditFailure('inconsistent gene', f'{detail} {description}', level='ERROR')
+            yield AuditFailure('inconsistent genes', f'{detail} {description}', level='ERROR')

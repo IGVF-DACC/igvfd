@@ -254,6 +254,6 @@ def test_audit_inconsistent_gene(
     )
     res = testapp.get(construct_library_set_y2h['@id'] + '@@audit')
     assert all(
-        error['category'] == 'inconsistent gene'
+        error['category'] == 'inconsistent genes'
         for error in res.json['audit'].get('ERROR', [])
     )
