@@ -126,7 +126,7 @@ def audit_construct_library_set_orf_gene(value, system):
     [
         {
             "audit_description": "Genes listed in the library are expected to match the open read frame gene.",
-            "audit_category": "inconsistent gene",
+            "audit_category": "inconsistent genes",
             "audit_level": "ERROR"
         }
     ]
@@ -145,7 +145,7 @@ def audit_construct_library_set_orf_gene(value, system):
 
         if orf_genes != library_genes:
             detail = (
-                f'ConstructLibrarySet {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'has a `small_scale_gene_list` which does not match the `gene` of its associated `orf_list`.'
+                f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has a `small_scale_gene_list` which does not match the genes of its associated `orf_list`.'
             )
             yield AuditFailure('inconsistent gene', f'{detail} {description}', level='ERROR')
