@@ -118,3 +118,34 @@ def audit_construct_library_set_guide_design(value, system):
             detail = (f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} has no '
                       f'`integrated_content_files`.')
             yield AuditFailure('missing guide RNA sequences', f'{detail} {description}', level='NOT_COMPLIANT')
+
+
+@audit_checker('ConstructLibrarySet', frame='object')
+def audit_construct_library_set_orf_gene(value, system):
+    '''
+    [
+        {
+            "audit_description": "Genes listed in the library are expected to match the open read frame gene.",
+            "audit_category": "inconsistent gene",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_construct_library_set_orf_gene)
+    library_genes = set()
+    orf_genes = set()
+    if ('small_scale_gene_list' in value) and ('orf_list' in value):
+        library_genes = set(value['small_scale_gene_list'])
+        orf_ids = value.get('orf_list')
+        for o in orf_ids:
+            orf_object = system.get('request').embed(o + '@@object?skip_calculated=true')
+            if 'gene' in orf_object:
+                for d in orf_object['gene']:
+                    orf_genes.add(d)
+
+        if orf_genes != library_genes:
+            detail = (
+                f'ConstructLibrarySet {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has a `small_scale_gene_list` which does not match the `gene` of its associated `orf_list`.'
+            )
+            yield AuditFailure('inconsistent gene', f'{detail} {description}', level='ERROR')

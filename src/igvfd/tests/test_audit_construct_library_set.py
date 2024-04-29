@@ -237,3 +237,23 @@ def test_audit_unexpected_virtual_sample(
         error['category'] == 'unexpected sample'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_inconsistent_gene(
+    testapp,
+    construct_library_set_y2h,
+    orf_foxp,
+    orf_zscan10
+):
+    testapp.patch_json(
+        construct_library_set_y2h['@id'],
+        {
+            'scope': 'interactors',
+            'orf_list': [orf_foxp['@id'], orf_zscan10['@id']]
+        }
+    )
+    res = testapp.get(construct_library_set_y2h['@id'] + '@@audit')
+    assert all(
+        error['category'] == 'inconsistent gene'
+        for error in res.json['audit'].get('ERROR', [])
+    )
