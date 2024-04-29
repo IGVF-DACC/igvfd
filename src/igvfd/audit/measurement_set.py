@@ -309,3 +309,29 @@ def audit_CRISPR_screen_lacking_auxiliary_set(value, system):
                 f'a CRISPR-based assay but has no gRNA sequencing `auxiliary_sets`.'
             )
             yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_missing_auxiliary_sets(value, system):
+    '''
+    [
+        {
+            "audit_description": "Measurement sets are expected to link to auxiliary sets if they share the same sample.",
+            "audit_category": "missing auxiliary set",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_missing_auxiliary_sets)
+    samples = value.get('samples', [])
+    auxiliary_sets = value.get('auxiliary_sets', [])
+    for sample in samples:
+        sample_object = system.get('request').embed(sample, '@@object')
+        for file_set in sample_object.get('file_sets', []):
+            if file_set.startswith('/auxiliary-sets/') and file_set not in auxiliary_sets:
+                detail = (
+                    f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} links '
+                    f'to sample {audit_link(path_to_text(sample),sample)} which links to auxiliary set '
+                    f'{audit_link(path_to_text(file_set),file_set)} but is not in its `auxiliary_sets`.'
+                )
+                yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='WARNING')
