@@ -331,7 +331,7 @@ def audit_missing_auxiliary_sets(value, system):
             if file_set.startswith('/auxiliary-sets/') and file_set not in auxiliary_sets:
                 detail = (
                     f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} links '
-                    f'to sample {audit_link(path_to_text(sample),sample)} which links to auxiliary set'
+                    f'to sample {audit_link(path_to_text(sample),sample)} which links to auxiliary set '
                     f'{audit_link(path_to_text(file_set),file_set)} but is not in its `auxiliary_sets`.'
                 )
                 yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='WARNING')
