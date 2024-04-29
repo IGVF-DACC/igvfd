@@ -255,7 +255,7 @@ def audit_inconsistent_sequencing_kit(value, system):
     description_inconsistent_kit = get_audit_description(audit_inconsistent_sequencing_kit, index=0)
     description_missing_kit = get_audit_description(audit_inconsistent_sequencing_kit, index=1)
 
-    if 'files' in value:
+   if 'files' in value:
         file_info = {}
         for file in value['files']:
             if file.startswith('/sequence-files/'):
