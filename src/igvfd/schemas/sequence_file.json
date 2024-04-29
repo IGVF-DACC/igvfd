@@ -247,7 +247,8 @@
                 "NovaSeq 6000 S2 Reagent Kit v1.5",
                 "NovaSeq 6000 S4 Reagent Kit V1.5",
                 "Sequel sequencing kit 3.0",
-                "Sequel II sequencing kit 2.0"
+                "Sequel II sequencing kit 2.0",
+                "ONT Ligation Sequencing Kit V14"
             ],
             "submissionExample": {
                 "appscript": "HiSeq SBS Kit v4",
