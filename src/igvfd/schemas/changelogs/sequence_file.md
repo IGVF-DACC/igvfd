@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 12
 
-* Extend `sequencing_kit` enum list to include`NovaSeq X Series 10B Reagent Kit`.
+* Extend `sequencing_kit` enum list to include `NovaSeq X Series 10B Reagent Kit`.
 * Extend `sequencing_kit` enum list to include `MiSeq Reagent Kit v2`.
 * Extend `sequencing_kit` enum list to include `NextSeq 1000/2000 P1 Reagent Kit`.
 * Extend `sequencing_kit` enum list to include `NextSeq 1000/2000 P2 Reagent Kit`.
