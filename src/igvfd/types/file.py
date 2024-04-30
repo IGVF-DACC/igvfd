@@ -300,8 +300,7 @@ class SequenceFile(File):
             value_list = [item for item in value_list if item != '']
             value = ':'.join(value_list)
             if not properties.get('derived_from', None) or \
-                (properties.get('status') == 'released' and properties.get('derived_from', None))
-            :
+                    (properties.get('status') == 'released' and properties.get('derived_from', None)):
                 keys.setdefault('sequencing_run', []).append(value)
         return keys
 
