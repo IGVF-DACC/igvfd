@@ -180,8 +180,8 @@ def test_sequence_file_sequencing_run_uniqueness(
     res = testapp.patch_json(
         sequence_file['@id'],
         {
-            'derived_from': sequence_file_pod5['@id'],
-            'sequencing_run': 10,
+            'derived_from': [sequence_file_pod5['@id']],
+            'sequencing_run': 10
         }
     )
     assert res.status_code == 200
@@ -192,15 +192,19 @@ def test_sequence_file_sequencing_run_uniqueness(
         sequence_file['@id'],
         {
             'status': 'released',
+            'upload_status': 'validated',
+            'release_timestamp': '2024-01-01T23:04:37.145369+00:00',
             'lane': 2
         }
     )
     res = testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
         {
-            'derived_from': sequence_file_pod5['@id'],
+            'derived_from': [sequence_file_pod5['@id']],
             'sequencing_run': 10,
-            'status': 'released'
+            'status': 'released',
+            'upload_status': 'validated',
+            'release_timestamp': '2024-01-01T23:04:37.145369+00:00',
         },
         expect_errors=True
     )
@@ -210,8 +214,10 @@ def test_sequence_file_sequencing_run_uniqueness(
     res = testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
         {
-            'derived_from': sequence_file_pod5['@id'],
-            'status': 'archived'
+            'derived_from': [sequence_file_pod5['@id']],
+            'status': 'archived',
+            'upload_status': 'validated',
+            'release_timestamp': '2024-01-01T23:04:37.145369+00:00'
         }
     )
     assert res.status_code == 200

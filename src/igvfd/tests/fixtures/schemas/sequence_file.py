@@ -87,7 +87,7 @@ def sequence_file_pod5(
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'md5sum': 'bc59c629b6409c9ba6af303e4b6040a7',
+        'md5sum': 'c9ba6af303e4b6bc59c629b6409040a7',
         'file_format': 'pod5',
         'file_set': analysis_set_with_sample['@id'],
         'read_count': 23040138,
