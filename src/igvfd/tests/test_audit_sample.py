@@ -161,7 +161,7 @@ def test_audit_parent_sample_singular_children(
     testapp.patch_json(
         in_vitro_differentiated_cell['@id'],
         {
-            'originated_from': [in_vitro_cell_line['@id']]
+            'originated_from': in_vitro_cell_line['@id']
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
@@ -172,7 +172,7 @@ def test_audit_parent_sample_singular_children(
     testapp.patch_json(
         in_vitro_organoid['@id'],
         {
-            'originated_from': [in_vitro_cell_line['@id']]
+            'originated_from': in_vitro_cell_line['@id']
         }
     )
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
