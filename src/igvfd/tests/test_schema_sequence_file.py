@@ -181,7 +181,7 @@ def test_sequence_file_sequencing_run_uniqueness(
         sequence_file['@id'],
         {
             'derived_from': sequence_file_pod5['@id'],
-            'lane': 2
+            'sequencing_run': 10,
         }
     )
     assert res.status_code == 200
@@ -191,13 +191,15 @@ def test_sequence_file_sequencing_run_uniqueness(
     testapp.patch_json(
         sequence_file['@id'],
         {
-            'status': 'released'
+            'status': 'released',
+            'lane': 2
         }
     )
     res = testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
         {
             'derived_from': sequence_file_pod5['@id'],
+            'sequencing_run': 10,
             'status': 'released'
         },
         expect_errors=True
