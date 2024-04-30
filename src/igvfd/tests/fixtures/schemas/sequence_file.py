@@ -93,7 +93,7 @@ def sequence_file_pod5(
         'read_count': 23040138,
         'file_size': 5495803,
         'content_type': 'Nanopore reads',
-        'sequencing_run': 1,
+        'sequencing_run': 10,
         'sequencing_platform': platform_term_HiSeq['@id']
     }
     return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
