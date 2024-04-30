@@ -174,3 +174,26 @@ def audit_construct_library_sets_types(value, system):
                 f'has `construct_library_sets` of multiple types {library_types}.'
             )
             yield AuditFailure('inconsistent construct library sets', f'{detail} {description}', level='WARNING')
+
+
+@audit_checker('Sample', frame='object')
+def audit_parent_sample_with_singular_child(value, system):
+    '''
+    [
+        {
+            "audit_description": "Parent samples are expected to have multiple child samples.",
+            "audit_category": "missing sample",
+            "audit_level": "INTERNAL_ACTION"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_construct_library_sets_types)
+    for child_sample_type in ['parts', 'origin_of', 'sorted_fractions']:
+        if child_sample_type in value and len(value.get(child_sample_type, [])) == 1:
+            child_sample = value.get(child_sample_type)[0]
+            detail = (
+                f'Sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'only has 1 child sample {audit_link(path_to_text(child_sample), child_sample)} '
+                f'in `{child_sample_type}`.'
+            )
+            yield AuditFailure('missing sample', f'{detail} {description}', level='INTERNAL_ACTION')
