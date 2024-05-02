@@ -230,6 +230,7 @@
             "/labs/j-michael-cherry/"
         ],
         "demultiplexed_from": "IGVFSM0001AAAZ",
+        "growth_medium": "DMEM with serum",
         "virtual": false
     }
 ]

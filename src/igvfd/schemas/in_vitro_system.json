@@ -575,6 +575,21 @@
                 "appscript": "/sample-terms/UBERON_0002367/",
                 "igvf_utils": "/sample-terms/UBERON_0002367/"
             }
+        },
+        "growth_medium": {
+            "tile": "Growth Medium",
+            "description": "A growth medium of the in vitro system.",
+            "type": "string",
+            "enum": [
+                "DMEM with serum",
+                "DMEM without serum",
+                "SMBM with serum",
+                "SMBM without serum"
+            ],
+            "submissionExample": {
+                "appscript": "DMEM with serum",
+                "igvf_utils": "DMEM with serum"
+            }
         }
     },
     "fuzzy_searchable_fields": [

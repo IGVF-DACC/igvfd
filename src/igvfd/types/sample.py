@@ -297,7 +297,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, donors, sex, age, age_units=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None):
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
@@ -439,6 +439,10 @@ class Biosample(Sample):
                 summary_terms += f' depleted of {", ".join(depleted_treatment_summaries)},'
             if perturbation_treatment_summaries:
                 summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)},'
+
+        # growth media is appended to the end of the summary
+        if (growth_medium and biosample_type in ['in_vitro_system']):
+            summary_terms += f' grown in {growth_medium}'
 
         # construct library set overview is appended to the end of the summary
         if (construct_library_sets and
