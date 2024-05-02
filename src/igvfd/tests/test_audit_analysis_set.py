@@ -75,7 +75,7 @@ def test_audit_missing_input_file_set(
     )
 
 
-def test_audit_missing_input_file_set(
+def test_audit_missing_samples(
     testapp,
     analysis_set_base,
     measurement_set,
