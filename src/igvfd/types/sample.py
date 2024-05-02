@@ -440,10 +440,6 @@ class Biosample(Sample):
             if perturbation_treatment_summaries:
                 summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)},'
 
-        # growth media is appended to the end of the summary
-        if (growth_medium and biosample_type in ['in_vitro_system']):
-            summary_terms += f' grown in {growth_medium}'
-
         # construct library set overview is appended to the end of the summary
         if (construct_library_sets and
                 biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
@@ -470,6 +466,10 @@ class Biosample(Sample):
                     summary_terms += f' {verb} multiple libraries (MOI of {moi}),'
                 else:
                     summary_terms += f' {verb} multiple libraries,'
+
+        # growth media is appended to the end of the summary
+        if (growth_medium and biosample_type in ['in_vitro_system']):
+            summary_terms += f' grown in {growth_medium}'
 
         return summary_terms.strip(',')
 
