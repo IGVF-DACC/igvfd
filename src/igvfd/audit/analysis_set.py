@@ -106,6 +106,9 @@ def audit_analysis_set_samples(value, system):
             for input_file_set in input_file_sets:
                 input_file_set_object = system.get('request').embed(input_file_set + '@@object?skip_calculated=true')
                 input_file_sets_samples.append(input_file_set_object.get('samples'))
+            # flatten list
+            input_file_sets_samples = [sample for sample_list in input_file_sets_samples for sample in sample_list]
+            print(input_file_sets_samples)
             if not([input_file_sets_sample for input_file_sets_sample in input_file_sets_samples if input_file_sets_sample.startswith('/multiplexed-samples/')]):
                 if set(samples).issubset(set(input_file_sets_samples)) and set(samples) != set(input_file_sets_samples):
                     missing_samples = list(set(input_file_sets_samples) - set(samples))
@@ -122,7 +125,7 @@ def audit_analysis_set_samples(value, system):
                         [audit_link(path_to_text(unexpected_sample), unexpected_sample) for unexpected_sample in unexpected_samples])
                     detail = (
                         f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                        f'specifies unexpected samples {unexpected_samples} not from its `input_file_sets`.'
+                        f'specifies samples {unexpected_samples} not from its `input_file_sets`.'
                     )
                     yield AuditFailure('unexpected samples', f'{detail} {unexpected_description}', level='WARNING')
         else:
