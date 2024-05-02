@@ -1668,6 +1668,9 @@
                             "aliases": {
                                 "type": "keyword"
                             },
+                            "award": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
@@ -1678,6 +1681,9 @@
                                 "type": "text"
                             },
                             "gene": {
+                                "type": "keyword"
+                            },
+                            "lab": {
                                 "type": "keyword"
                             },
                             "notes": {
