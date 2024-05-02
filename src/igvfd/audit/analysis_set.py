@@ -108,7 +108,6 @@ def audit_analysis_set_samples(value, system):
                 input_file_sets_samples.append(input_file_set_object.get('samples'))
             # flatten list
             input_file_sets_samples = [sample for sample_list in input_file_sets_samples for sample in sample_list]
-            print(input_file_sets_samples)
             if not([input_file_sets_sample for input_file_sets_sample in input_file_sets_samples if input_file_sets_sample.startswith('/multiplexed-samples/')]):
                 if set(samples).issubset(set(input_file_sets_samples)) and set(samples) != set(input_file_sets_samples):
                     missing_samples = list(set(input_file_sets_samples) - set(samples))
