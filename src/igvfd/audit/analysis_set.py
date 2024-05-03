@@ -118,8 +118,8 @@ def audit_analysis_set_samples(value, system):
                         f'does not specify samples {missing_samples} from its `input_file_sets`. '
                     )
                     yield AuditFailure('missing samples', f'{detail} {missing_description}', level='WARNING')
-                if (set(samples) - set(input_file_sets_samples)):
-                    unexpected_samples = list(set(input_file_sets_samples) - set(samples))
+                unexpected_samples = list(set(samples) - set(input_file_sets_samples))
+                if unexpected_samples:
                     unexpected_samples = ', '.join(
                         [audit_link(path_to_text(unexpected_sample), unexpected_sample) for unexpected_sample in unexpected_samples])
                     detail = (
