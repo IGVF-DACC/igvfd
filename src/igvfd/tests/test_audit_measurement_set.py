@@ -678,7 +678,17 @@ def test_audit_inconsistent_sequencing_kit(
         {
             'file_set': measurement_set['@id'],
             'illumina_read_type': 'R2',
-            'sequencing_run': 1,
+            'sequencing_run': 1
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent sequencing kit' and 'and unspecified kit(s)' in error['detail']
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
             'sequencing_kit': 'NovaSeq 6000 SP Reagent Kit v1.5'
         }
     )
