@@ -408,12 +408,13 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "description",
         "lab.title",
         "purpose",
+        "submitted_by.title",
         "summary",
         "treatment_term_name",
-        "treatment_type",
-        "submitted_by.title"
+        "treatment_type"
     ],
     "exact_searchable_fields": [
         "@type",

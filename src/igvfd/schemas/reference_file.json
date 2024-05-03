@@ -311,6 +311,7 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
+        "external_id",
         "file_format"
     ],
     "changelog": "/profiles/changelogs/reference_file.md"

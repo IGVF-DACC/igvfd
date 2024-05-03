@@ -105,9 +105,11 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "description",
         "sample_material",
-        "taxa",
-        "submitted_by.title"
+        "submitted_by.title",
+        "summary",
+        "taxa"
     ],
     "exact_searchable_fields": [
         "@type",

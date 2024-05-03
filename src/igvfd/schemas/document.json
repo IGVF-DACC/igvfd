@@ -131,6 +131,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "description",
         "document_type",
         "characterization_method",
         "lab.title",
