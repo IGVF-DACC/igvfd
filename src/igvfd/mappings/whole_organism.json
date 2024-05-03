@@ -1,6 +1,6 @@
 {
-    "hash": "f66b200d6b8072a98e7369ea78e66eac",
-    "index_name": "whole_organism_f66b200d",
+    "hash": "f9a2bda4773fd43c70fc4b4411a490d8",
+    "index_name": "whole_organism_f9a2bda4",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -260,6 +260,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "disease_terms": {
@@ -1719,6 +1720,7 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "taxa": {

@@ -1,6 +1,6 @@
 {
-    "hash": "bf3535c4ee855d110d3c2dccc0bbec8b",
-    "index_name": "treatment_bf3535c4",
+    "hash": "c8feaa228872d10dc3e15f2f902ee7f7",
+    "index_name": "treatment_c8feaa22",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -247,6 +247,7 @@
                         "type": "boolean"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "documents": {

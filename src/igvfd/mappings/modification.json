@@ -1,6 +1,6 @@
 {
-    "hash": "2614a0fca2d6f67bbb9d2337f8da6e87",
-    "index_name": "modification_2614a0fc",
+    "hash": "f4f3aa961e5e151821d5abfc74d8c892",
+    "index_name": "modification_f4f3aa96",
     "item_type": "modification",
     "mapping": {
         "dynamic_templates": [
@@ -397,6 +397,7 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "tagged_protein": {

@@ -1,6 +1,6 @@
 {
-    "hash": "964d9fd580d061c0dcb74679be41f874",
-    "index_name": "signal_file_964d9fd5",
+    "hash": "22128f89335da33885c6db452a902469",
+    "index_name": "signal_file_22128f89",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -258,6 +258,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "documents": {
@@ -465,12 +466,14 @@
                         "type": "object"
                     },
                     "submitted_file_name": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "submitter_comment": {
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {

@@ -1,6 +1,6 @@
 {
-    "hash": "c0c5ef6d253bce0367dc8adc5442d818",
-    "index_name": "sequence_file_c0c5ef6d",
+    "hash": "655b49278c3e67138cc0a841df25e74a",
+    "index_name": "sequence_file_655b4927",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -264,6 +264,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "documents": {
@@ -516,12 +517,14 @@
                         "type": "object"
                     },
                     "submitted_file_name": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "submitter_comment": {
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "upload_credentials": {

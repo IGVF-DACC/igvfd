@@ -1,6 +1,6 @@
 {
-    "hash": "7834a03bdbccaa38d2a4e8b3825fd2cb",
-    "index_name": "multiplexed_sample_7834a03b",
+    "hash": "f287788f54bc05f4d38f493c2be7e157",
+    "index_name": "multiplexed_sample_f287788f",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -491,6 +491,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "disease_terms": {
@@ -2484,6 +2485,7 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "time_post_library_delivery": {

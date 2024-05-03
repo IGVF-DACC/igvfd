@@ -1,6 +1,6 @@
 {
-    "hash": "bec8c8278621826b8faabf569337bebc",
-    "index_name": "genome_browser_annotation_file_bec8c827",
+    "hash": "9cb6c13d9b4adc57e31be41e0204cab4",
+    "index_name": "genome_browser_annotation_file_9cb6c13d",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -255,6 +255,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "documents": {
@@ -425,6 +426,7 @@
                                 "type": "keyword"
                             },
                             "title": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {
@@ -437,12 +439,14 @@
                         "type": "object"
                     },
                     "submitted_file_name": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "submitter_comment": {
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {

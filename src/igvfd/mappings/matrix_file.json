@@ -1,6 +1,6 @@
 {
-    "hash": "2405c9c488c2417c0be33248b6623cc5",
-    "index_name": "matrix_file_2405c9c4",
+    "hash": "f7a0c8698fe533f79b84cbebfeabf018",
+    "index_name": "matrix_file_f7a0c869",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -255,6 +255,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "dimension1": {
@@ -444,12 +445,14 @@
                         "type": "object"
                     },
                     "submitted_file_name": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "submitter_comment": {
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "upload_credentials": {

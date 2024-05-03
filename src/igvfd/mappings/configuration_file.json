@@ -1,6 +1,6 @@
 {
-    "hash": "b98e7e2ab7a699680301abe10c813435",
-    "index_name": "configuration_file_b98e7e2a",
+    "hash": "7b161fe9990e7f11d1cb1112508e05f1",
+    "index_name": "configuration_file_7b161fe9",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -252,6 +252,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "documents": {
@@ -435,12 +436,14 @@
                         "type": "object"
                     },
                     "submitted_file_name": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "submitter_comment": {
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "upload_credentials": {
