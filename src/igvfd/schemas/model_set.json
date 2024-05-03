@@ -174,9 +174,12 @@
         "@type",
         "collections",
         "dbxrefs",
+        "description",
+        "file_set_type",
+        "files.content_type",
+        "files.submitted_file_name",
         "lab.title",
         "model_name",
-        "file_set_type",
         "prediction_objects",
         "submitted_by.title",
         "summary"

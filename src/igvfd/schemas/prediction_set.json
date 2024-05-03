@@ -257,7 +257,10 @@
     "fuzzy_searchable_fields": [
         "@type",
         "collections",
+        "description",
         "file_set_type",
+        "files.content_type",
+        "files.submitted_file_name",
         "lab.title",
         "samples.summary",
         "samples.sample_terms.term_name",

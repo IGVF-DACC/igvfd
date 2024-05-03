@@ -844,9 +844,12 @@
     "fuzzy_searchable_fields": [
         "@type",
         "collections",
+        "description",
+        "files.content_type",
+        "files.submitted_file_name",
+        "lab.title",
         "selection_criteria",
         "small_scale_gene_list.symbol",
-        "lab.title",
         "submitted_by.title"
     ],
     "exact_searchable_fields": [
