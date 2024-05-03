@@ -307,7 +307,7 @@ def audit_inconsistent_sequencing_kit(value, system):
         if len(set(run_to_kit[run]['kits'])) > 1:
             unspecified_kit_phrase = ''
             if None in run_to_kit[run]['kits'] or '' in run_to_kit[run]['kits']:
-                unspecified_kit_phrase = ', and unspecified kit(s)'
+                unspecified_kit_phrase = ' and unspecified kit(s)'
             filtered_kits = [kit for kit in run_to_kit[run]['kits'] if kit not in [None, '']]
             detail = (
                 f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files '
