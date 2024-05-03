@@ -18,7 +18,7 @@ def test_audit_targeted_sample_term(
     )
 
 
-def test_audit_targeted_sample_term(
+def test_audit_cell_fate_change_treatments(
     testapp,
     in_vitro_differentiated_cell,
     treatment_chemical,
