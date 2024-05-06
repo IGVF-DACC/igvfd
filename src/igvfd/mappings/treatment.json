@@ -1,6 +1,6 @@
 {
-    "hash": "bf3535c4ee855d110d3c2dccc0bbec8b",
-    "index_name": "treatment_bf3535c4",
+    "hash": "ffcaa1461366c323acebd70274035ae3",
+    "index_name": "treatment_ffcaa146",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -247,6 +247,7 @@
                         "type": "boolean"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "documents": {
@@ -486,7 +487,7 @@
                                 "type": "keyword"
                             },
                             "title": {
-                                "copy_to": "_exact",
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {

@@ -125,7 +125,11 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "content_type"
+        "content_type",
+        "description",
+        "submitted_by.title",
+        "submitted_file_name",
+        "summary"
     ],
     "exact_searchable_fields": [
         "@type",

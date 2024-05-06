@@ -579,8 +579,10 @@
     },
     "fuzzy_searchable_fields": [
         "classifications",
+        "description",
         "taxa",
-        "submitted_by.title"
+        "submitted_by.title",
+        "summary"
     ],
     "exact_searchable_fields": [
         "@type",

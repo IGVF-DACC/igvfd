@@ -61,6 +61,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "description",
         "title"
     ],
     "exact_searchable_fields": [

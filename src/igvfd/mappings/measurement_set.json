@@ -1,6 +1,6 @@
 {
-    "hash": "c7002a0785177385555575770716cc3f",
-    "index_name": "measurement_set_c7002a07",
+    "hash": "8cf35ddc8bb56d2dc0582cc36b53ad61",
+    "index_name": "measurement_set_8cf35ddc",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1129,6 +1129,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "documents": {
@@ -1319,6 +1320,7 @@
                                 "type": "keyword"
                             },
                             "content_type": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1535,6 +1537,7 @@
                                 "type": "keyword"
                             },
                             "submitted_file_name": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "submitter_comment": {

@@ -97,11 +97,12 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "description",
         "name",
         "publication_identifiers",
+        "submitted_by.title",
         "title",
-        "used_by",
-        "submitted_by.title"
+        "used_by"
     ],
     "exact_searchable_fields": [
         "@type"

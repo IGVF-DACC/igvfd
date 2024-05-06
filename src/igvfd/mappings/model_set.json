@@ -1,6 +1,6 @@
 {
-    "hash": "f4bf888a5713700049f2f4791631b2b9",
-    "index_name": "model_set_f4bf888a",
+    "hash": "c78c62db3f2a0ffb95ecbda18cfa6efd",
+    "index_name": "model_set_c78c62db",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -625,6 +625,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "documents": {
@@ -814,6 +815,7 @@
                                 "type": "keyword"
                             },
                             "content_type": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1030,6 +1032,7 @@
                                 "type": "keyword"
                             },
                             "submitted_file_name": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "submitter_comment": {

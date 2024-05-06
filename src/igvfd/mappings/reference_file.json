@@ -1,6 +1,6 @@
 {
-    "hash": "8d9aa8a067cc4988324e39c00d251e5d",
-    "index_name": "reference_file_8d9aa8a0",
+    "hash": "ba45812a2ef63ace9701e04fb2b1f199",
+    "index_name": "reference_file_ba45812a",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -267,6 +267,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "documents": {
@@ -282,6 +283,7 @@
                         "type": "boolean"
                     },
                     "external_id": {
+                        "copy_to": "_exact",
                         "type": "keyword"
                     },
                     "file_format": {
@@ -468,12 +470,14 @@
                         "type": "object"
                     },
                     "submitted_file_name": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "submitter_comment": {
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {

@@ -1,6 +1,6 @@
 {
-    "hash": "1b039371fdf26235f320dce817c29b97",
-    "index_name": "in_vitro_system_1b039371",
+    "hash": "16f627b2da5b81a016bfd8701c34ab13",
+    "index_name": "in_vitro_system_16f627b2",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -410,6 +410,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "disease_terms": {
@@ -2165,6 +2166,7 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "targeted_sample_term": {

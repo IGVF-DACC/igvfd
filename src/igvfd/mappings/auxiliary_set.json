@@ -1,6 +1,6 @@
 {
-    "hash": "7449ad684977e17e5e6cd1994f4b5a57",
-    "index_name": "auxiliary_set_7449ad68",
+    "hash": "8e48c9328bb9ff0f0bf95f650ea48131",
+    "index_name": "auxiliary_set_8e48c932",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -625,6 +625,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "documents": {
@@ -816,6 +817,7 @@
                                 "type": "keyword"
                             },
                             "content_type": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "controlled_access": {
@@ -1032,6 +1034,7 @@
                                 "type": "keyword"
                             },
                             "submitted_file_name": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "submitter_comment": {

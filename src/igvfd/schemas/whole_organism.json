@@ -95,8 +95,10 @@
         }
     },
     "fuzzy_searchable_fields": [
-        "taxa",
-        "submitted_by.title"
+        "description",
+        "submitted_by.title",
+        "summary",
+        "taxa"
     ],
     "exact_searchable_fields": [
         "@type",

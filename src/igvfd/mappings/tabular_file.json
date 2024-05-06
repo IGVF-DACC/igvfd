@@ -1,6 +1,6 @@
 {
-    "hash": "2d04005fb7def77ce7919c43da007d20",
-    "index_name": "tabular_file_2d04005f",
+    "hash": "9d26dc460d5769eac725879c03efa1c8",
+    "index_name": "tabular_file_9d26dc46",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -267,6 +267,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "documents": {
@@ -450,12 +451,14 @@
                         "type": "object"
                     },
                     "submitted_file_name": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "submitter_comment": {
                         "type": "keyword"
                     },
                     "summary": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "transcriptome_annotation": {
