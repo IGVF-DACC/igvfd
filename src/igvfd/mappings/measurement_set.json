@@ -2471,6 +2471,9 @@
                             "file_sets": {
                                 "type": "keyword"
                             },
+                            "growth_medium": {
+                                "type": "keyword"
+                            },
                             "institutional_certificates": {
                                 "type": "keyword"
                             },

@@ -1,6 +1,6 @@
 {
-    "hash": "16f627b2da5b81a016bfd8701c34ab13",
-    "index_name": "in_vitro_system_16f627b2",
+    "hash": "a2f33dbcea5d356b1a24620087ebb7df",
+    "index_name": "in_vitro_system_a2f33dbc",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -947,6 +947,9 @@
                         },
                         "type": "object"
                     },
+                    "growth_medium": {
+                        "type": "keyword"
+                    },
                     "institutional_certificates": {
                         "type": "keyword"
                     },
@@ -1388,6 +1391,9 @@
                             "file_sets": {
                                 "type": "keyword"
                             },
+                            "growth_medium": {
+                                "type": "keyword"
+                            },
                             "institutional_certificates": {
                                 "type": "keyword"
                             },
@@ -1804,6 +1810,9 @@
                                 "type": "boolean"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "growth_medium": {
                                 "type": "keyword"
                             },
                             "institutional_certificates": {
