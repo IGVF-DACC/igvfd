@@ -229,3 +229,13 @@ def sequence_file_v10(sequence_file):
         'schema_version': '10'
     })
     return item
+
+
+@pytest.fixture
+def sequence_file_v12(sequence_file):
+    item = sequence_file.copy()
+    item.update({
+        'sequencing_kit': 'NovaSeq 6000 S4 Reagent Kit V1.5',
+        'schema_version': '12'
+    })
+    return item

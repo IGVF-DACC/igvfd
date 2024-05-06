@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 13
+
+* Adjust `sequencing_kit` enum list to replace `NovaSeq 6000 S4 Reagent Kit V1.5` with `NovaSeq 6000 S4 Reagent Kit v1.5`.
+
 ### Minor changes since schema version 12
 
 * Extend `sequencing_kit` enum list to include `ONT Ligation Sequencing Kit V14`.

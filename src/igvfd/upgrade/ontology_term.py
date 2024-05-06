@@ -70,3 +70,12 @@ def ontology_term_3_4(value, system):
     if 'preferred_assay_titles' in value:
         if len(value['preferred_assay_titles']) < 1:
             del value['preferred_assay_titles']
+
+
+@upgrade_step('platform_term', '3', '4')
+def platform_term_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1629
+    if 'sequencing_kits' in value:
+        if 'NovaSeq 6000 S4 Reagent Kit V1.5' in value['sequencing_kits']:
+            value['sequencing_kits'].remove('NovaSeq 6000 S4 Reagent Kit V1.5')
+            value['sequencing_kits'].append('NovaSeq 6000 S4 Reagent Kit v1.5')

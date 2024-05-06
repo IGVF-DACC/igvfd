@@ -63,3 +63,16 @@ def test_sequence_file_upgrade_10_11(upgrader, sequence_file_v10):
     assert 'derived_from' not in value
     assert 'file_format_specifications' not in value
     assert value['schema_version'] == '11'
+
+
+def test_sequence_file_upgrade_10_11(upgrader, sequence_file_v10):
+    value = upgrader.upgrade('sequence_file', sequence_file_v10, current_version='10', target_version='11')
+    assert 'derived_from' not in value
+    assert 'file_format_specifications' not in value
+    assert value['schema_version'] == '11'
+
+
+def test_sequence_file_upgrade_12_13(upgrader, sequence_file_v12):
+    value = upgrader.upgrade('sequence_file', sequence_file_v12, current_version='12', target_version='13')
+    assert value['sequencing_kit'] == 'NovaSeq 6000 S4 Reagent Kit v1.5'
+    assert value['schema_version'] == '13'

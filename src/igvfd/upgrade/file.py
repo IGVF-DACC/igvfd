@@ -261,3 +261,12 @@ def file_11_12(value, system):
 def file_12_13(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1531
     return
+
+
+@upgrade_step('sequence_file', '12', '13')
+def sequence_file_12_13(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1629
+    if 'sequencing_kit' in value:
+        if value['sequencing_kit'] == 'NovaSeq 6000 S4 Reagent Kit V1.5':
+            value['sequencing_kit'] = 'NovaSeq 6000 S4 Reagent Kit v1.5'
+    return

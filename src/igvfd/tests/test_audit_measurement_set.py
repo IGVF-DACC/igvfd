@@ -669,7 +669,7 @@ def test_audit_inconsistent_sequencing_kit(
     testapp.patch_json(
         sequence_file['@id'],
         {
-            'sequencing_kit': 'NovaSeq 6000 S4 Reagent Kit V1.5',
+            'sequencing_kit': 'NovaSeq 6000 S4 Reagent Kit v1.5',
             'sequencing_platform': platform_term_NovaSeq['@id']
         }
     )
@@ -700,7 +700,7 @@ def test_audit_inconsistent_sequencing_kit(
     testapp.patch_json(
         sequence_file_sequencing_run_2['@id'],
         {
-            'sequencing_kit': 'NovaSeq 6000 S4 Reagent Kit V1.5',
+            'sequencing_kit': 'NovaSeq 6000 S4 Reagent Kit v1.5',
             'sequencing_platform': platform_term_NovaSeq['@id']
         }
     )
