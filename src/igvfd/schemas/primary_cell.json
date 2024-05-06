@@ -106,6 +106,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "description",
         "summary",
         "submitted_by.title",
         "taxa"

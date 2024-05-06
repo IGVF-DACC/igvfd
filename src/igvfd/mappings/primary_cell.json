@@ -1,6 +1,6 @@
 {
-    "hash": "61253c3a56228e58935baecf1401b6ce",
-    "index_name": "primary_cell_61253c3a",
+    "hash": "64f3f4f5f91ed006969f597ddebe76cd",
+    "index_name": "primary_cell_64f3f4f5",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -260,6 +260,7 @@
                         "type": "keyword"
                     },
                     "description": {
+                        "copy_to": "_fuzzy",
                         "type": "text"
                     },
                     "disease_terms": {

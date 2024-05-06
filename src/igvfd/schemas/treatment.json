@@ -417,8 +417,7 @@
         "treatment_type"
     ],
     "exact_searchable_fields": [
-        "@type",
-        "submitted_by.title"
+        "@type"
     ],
     "changelog": "/profiles/changelogs/treatment.md"
 }
