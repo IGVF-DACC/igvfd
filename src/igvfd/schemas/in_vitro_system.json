@@ -577,7 +577,7 @@
             }
         },
         "growth_medium": {
-            "tile": "Growth Medium",
+            "title": "Growth Medium",
             "description": "A growth medium of the in vitro system.",
             "type": "string",
             "enum": [
