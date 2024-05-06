@@ -150,3 +150,33 @@ def test_audit_inconsistent_construct_library_sets_types(
         error['category'] != 'inconsistent construct library sets'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_parent_sample_singular_children(
+    testapp,
+    in_vitro_cell_line,
+    in_vitro_differentiated_cell,
+    in_vitro_organoid
+):
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'originated_from': in_vitro_cell_line['@id']
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing sample'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
+    testapp.patch_json(
+        in_vitro_organoid['@id'],
+        {
+            'originated_from': in_vitro_cell_line['@id']
+        }
+    )
+    res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing sample'
+        for error in res.json['audit'].get('INTERNAL_ACTION', [])
+    )
