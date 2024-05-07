@@ -82,6 +82,24 @@ def sequence_file_sequencing_run_2(
 
 
 @pytest.fixture
+def sequence_file_pod5(
+        testapp, lab, award, analysis_set_with_sample, platform_term_HiSeq):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'c9ba6af303e4b6bc59c629b6409040a7',
+        'file_format': 'pod5',
+        'file_set': analysis_set_with_sample['@id'],
+        'read_count': 23040138,
+        'file_size': 5495803,
+        'content_type': 'Nanopore reads',
+        'sequencing_run': 10,
+        'sequencing_platform': platform_term_HiSeq['@id']
+    }
+    return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def sequence_file_v1(sequence_file):
     item = sequence_file.copy()
     item.update({

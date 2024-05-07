@@ -295,9 +295,13 @@ class SequenceFile(File):
             file_set = properties.get('file_set', '')
             index = properties.get('index', '')
             value_list += file_set, illumina_read_type, sequencing_run, flowcell_id, lane, index
+            if properties.get('status') == 'released' and properties.get('derived_from', None):
+                value_list += properties.get('status')
             value_list = [item for item in value_list if item != '']
             value = ':'.join(value_list)
-            keys.setdefault('sequencing_run', []).append(value)
+            if not properties.get('derived_from', None) or \
+                    (properties.get('status') == 'released' and properties.get('derived_from', None)):
+                keys.setdefault('sequencing_run', []).append(value)
         return keys
 
     @calculated_property(schema={

@@ -78,11 +78,12 @@ def test_sequence_file_dbxrefs_regex(testapp, sequence_file):
 def test_sequence_file_sequencing_run_uniqueness(
     testapp,
     sequence_file,
-    sequence_file_sequencing_run_2
+    sequence_file_sequencing_run_2,
+    sequence_file_pod5
 ):
     '''
     Properties combined to check for uniqueness:
-    measurement_set, illumina_read_type, sequencing_run, flowcell_id, lane
+    measurement_set, illumina_read_type, sequencing_run, flowcell_id, lane, index
     '''
 
     # If there is no illumina_read_type, there cannot be 2 files with the same sequencing run in a given dataset.
@@ -170,6 +171,53 @@ def test_sequence_file_sequencing_run_uniqueness(
             'lane': 2,
             'flowcell_id': 'FCX',
 
+        }
+    )
+    assert res.status_code == 200
+
+    # If the fastq has derived_from and is not released, there is
+    # no unique key added.
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'derived_from': [sequence_file_pod5['@id']],
+            'sequencing_run': 10
+        }
+    )
+    assert res.status_code == 200
+
+    # If the file is released and has derived from, then there
+    # must not be any other released file.
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'status': 'released',
+            'upload_status': 'validated',
+            'release_timestamp': '2024-01-01T23:04:37.145369+00:00',
+            'lane': 2
+        }
+    )
+    res = testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'derived_from': [sequence_file_pod5['@id']],
+            'sequencing_run': 10,
+            'status': 'released',
+            'upload_status': 'validated',
+            'release_timestamp': '2024-01-01T23:04:37.145369+00:00',
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 409
+
+    # If the other file is not released, there is no clash.
+    res = testapp.patch_json(
+        sequence_file_sequencing_run_2['@id'],
+        {
+            'derived_from': [sequence_file_pod5['@id']],
+            'status': 'archived',
+            'upload_status': 'validated',
+            'release_timestamp': '2024-01-01T23:04:37.145369+00:00'
         }
     )
     assert res.status_code == 200
