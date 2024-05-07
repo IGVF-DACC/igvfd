@@ -2,7 +2,7 @@
 
 ### Schema version 4
 
-* Adjust `sequencing_kit` enum list to replace `NovaSeq 6000 S4 Reagent Kit V1.5` with `NovaSeq 6000 S4 Reagent Kit v1.5`.
+* Adjust `sequencing_kits` enum list to replace `NovaSeq 6000 S4 Reagent Kit V1.5` with `NovaSeq 6000 S4 Reagent Kit v1.5`.
 
 ### Minor changes since schema version 3
 
