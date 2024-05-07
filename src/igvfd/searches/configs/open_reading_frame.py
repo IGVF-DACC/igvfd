@@ -7,6 +7,12 @@ from snovault.elasticsearch.searches.configs import search_config
 def open_reading_frame():
     return {
         'facets': {
+            'lab.title': {
+                'title': 'Lab'
+            },
+            'award.component': {
+                'title': 'Award'
+            },
             'status': {
                 'title': 'Status'
             }
@@ -23,6 +29,12 @@ def open_reading_frame():
             },
             'dbxrefs': {
                 'title': 'External resources'
+            },
+            'lab.title': {
+                'title': 'Lab'
+            },
+            'award.component': {
+                'title': 'Award'
             },
             'status': {
                 'title': 'Status'

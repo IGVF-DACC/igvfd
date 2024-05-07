@@ -9,6 +9,8 @@
         "gene": [
             "/genes/ENSG00000163930/"
         ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
         "pct_identical_protein": 34,
         "pct_coverage_protein": 50,
         "pct_coverage_orf": 50
@@ -23,6 +25,8 @@
         "gene": [
             "/genes/ENSG00000154832/"
         ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
         "pct_identical_protein": 14,
         "pct_coverage_protein": 60,
         "pct_coverage_orf": 66

@@ -6,7 +6,9 @@
     "type": "object",
     "required": [
         "orf_id",
-        "gene"
+        "gene",
+        "lab",
+        "award"
     ],
     "identifyingProperties": [
         "uuid",
@@ -15,6 +17,9 @@
     ],
     "additionalProperties": false,
     "mixinProperties": [
+        {
+            "$ref": "mixins.json#/attribution"
+        },
         {
             "$ref": "mixins.json#/basic_item"
         },
@@ -32,7 +37,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "orf_id": {
             "title": "ORF ID",
