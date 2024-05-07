@@ -1,6 +1,6 @@
 {
-    "hash": "ee28cac6dddf9a205cb740859f1eb7e3",
-    "index_name": "primary_cell_ee28cac6",
+    "hash": "4f9d06f3404086f6e525ea3b257bff1f",
+    "index_name": "primary_cell_4f9d06f3",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1367,6 +1367,9 @@
                                 "type": "boolean"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "growth_medium": {
                                 "type": "keyword"
                             },
                             "institutional_certificates": {

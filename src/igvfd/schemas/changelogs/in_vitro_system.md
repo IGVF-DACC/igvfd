@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 20
 
+* Add `growth_medium`.
 * Add `demultiplexed_from`.
 * Add calculated property `demultiplexed_to`.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.

@@ -1,6 +1,6 @@
 {
-    "hash": "fe683f580c7e4f26e9d4522f3e5859ca",
-    "index_name": "auxiliary_set_fe683f58",
+    "hash": "4904a4cc52e9e7fef46919720ebaaae0",
+    "index_name": "auxiliary_set_4904a4cc",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1363,6 +1363,9 @@
                                 "type": "boolean"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "growth_medium": {
                                 "type": "keyword"
                             },
                             "institutional_certificates": {

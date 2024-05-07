@@ -49,6 +49,9 @@ def in_vitro_system():
             'biomarkers.classification': {
                 'title': 'Biomarkers Classification'
             },
+            'growth_medium': {
+                'title': 'Growth Medium'
+            },
             'type': {
                 'title': 'Object Type'
             },
@@ -78,6 +81,7 @@ def in_vitro_system():
                     'biomarkers.classification',
                     'virtual',
                     'file_sets.assay_term.term_name',
+                    'growth_medium',
                 ]
             },
             {
@@ -146,6 +150,9 @@ def in_vitro_system():
             },
             'description': {
                 'title': 'Description'
-            }
+            },
+            'growth_medium': {
+                'title': 'Growth Medium'
+            },
         }
     }

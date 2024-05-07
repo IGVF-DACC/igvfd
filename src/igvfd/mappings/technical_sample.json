@@ -1,6 +1,6 @@
 {
-    "hash": "d6af905baec070a7bcece79a1512901f",
-    "index_name": "technical_sample_d6af905b",
+    "hash": "f381108011bf496ab915fcee759d708a",
+    "index_name": "technical_sample_f3811080",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1162,6 +1162,9 @@
                                 "type": "boolean"
                             },
                             "file_sets": {
+                                "type": "keyword"
+                            },
+                            "growth_medium": {
                                 "type": "keyword"
                             },
                             "institutional_certificates": {
