@@ -84,12 +84,12 @@ def audit_analysis_set_samples(value, system):
     '''
     [
         {
-            "audit_description": "With the exception of multiplexed data, analysis sets are expected to specify all the samples from its input file sets.",
+            "audit_description": "With the exception of multiplexed data, analysis sets are expected to specify all the samples associated with its input file sets.",
             "audit_category": "missing samples",
             "audit_level": "WARNING"
         },
         {
-            "audit_description": "With the exception of multiplexed data, analysis sets are expected to specify only the samples from its input file sets.",
+            "audit_description": "With the exception of multiplexed data, analysis sets are expected to specify only the samples associated with its input file sets.",
             "audit_category": "unexpected samples",
             "audit_level": "WARNING"
         }
@@ -105,7 +105,9 @@ def audit_analysis_set_samples(value, system):
             input_file_sets_samples = []
             for input_file_set in input_file_sets:
                 input_file_set_object = system.get('request').embed(input_file_set + '@@object?skip_calculated=true')
-                input_file_sets_samples.append(input_file_set_object.get('samples'))
+                input_file_set_samples = input_file_set_object.get('samples')
+                if input_file_set_samples:
+                    input_file_sets_samples.append(input_file_set_samples)
             # flatten list
             input_file_sets_samples = [sample for sample_list in input_file_sets_samples for sample in sample_list]
             if not([input_file_sets_sample for input_file_sets_sample in input_file_sets_samples if input_file_sets_sample.startswith('/multiplexed-samples/')]):
@@ -115,7 +117,7 @@ def audit_analysis_set_samples(value, system):
                                                 for missing_sample in missing_samples])
                     detail = (
                         f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                        f'does not specify samples {missing_samples} from its `input_file_sets`. '
+                        f'does not specify samples {missing_samples} associated with its `input_file_sets`. '
                     )
                     yield AuditFailure('missing samples', f'{detail} {missing_description}', level='WARNING')
                 unexpected_samples = list(set(samples) - set(input_file_sets_samples))
@@ -124,7 +126,7 @@ def audit_analysis_set_samples(value, system):
                         [audit_link(path_to_text(unexpected_sample), unexpected_sample) for unexpected_sample in unexpected_samples])
                     detail = (
                         f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                        f'specifies samples {unexpected_samples} not from its `input_file_sets`.'
+                        f'specifies samples {unexpected_samples} not associated with its `input_file_sets`.'
                     )
                     yield AuditFailure('unexpected samples', f'{detail} {unexpected_description}', level='WARNING')
         else:
