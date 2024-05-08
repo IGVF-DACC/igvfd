@@ -296,7 +296,7 @@ class SequenceFile(File):
             index = properties.get('index', '')
             value_list += file_set, illumina_read_type, sequencing_run, flowcell_id, lane, index
             if properties.get('status') == 'released' and properties.get('derived_from', None):
-                value_list += properties.get('status')
+                value_list += [properties.get('status')]
             value_list = [item for item in value_list if item != '']
             value = ':'.join(value_list)
             if not properties.get('derived_from', None) or \
