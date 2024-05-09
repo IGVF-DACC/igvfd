@@ -1,6 +1,6 @@
 {
-    "hash": "93e9d5b4ef9f4f393d4d676b24e3ceba",
-    "index_name": "construct_library_set_93e9d5b4",
+    "hash": "bcd77d8f5c59a72cc3b0c56b29ea6dbe",
+    "index_name": "construct_library_set_bcd77d8f",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -270,6 +270,15 @@
                                 "store": true,
                                 "type": "float"
                             },
+                            "lower_bound_age_in_hours": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -433,6 +442,15 @@
                                 "type": "keyword"
                             },
                             "upper_bound_age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "upper_bound_age_in_hours": {
                                 "fields": {
                                     "raw": {
                                         "type": "keyword"
