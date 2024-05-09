@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 18
 
+* Add calculated property `upper_bound_age_in_hours`.
+* Add calculated property `lower_bound_age_in_hours`.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.
 * Add `originated_from`.
 
