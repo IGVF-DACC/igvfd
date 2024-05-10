@@ -1,5 +1,10 @@
 ## Changelog for *`modification.json`*
 
+### Minor changes since schema version 5
+
+* Add `activating_agent_term_id`.
+* Add `activating_agent_term_name`.
+
 ### Schema version 5
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.

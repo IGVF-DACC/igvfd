@@ -39,7 +39,19 @@
     "dependentSchemas": {
         "$merge": [
             "shared_dependencies.json#/standard_status"
-        ]
+        ],
+        "activating_agent_term_id": {
+            "comment": "Specification of activating_agent_term_id requires activating_agent_term_name.",
+            "required": [
+                "activating_agent_term_name"
+            ]
+        },
+        "activating_agent_term_name": {
+            "comment": "Specification of activating_agent_term_name requires activating_agent_term_id.",
+            "required": [
+                "activating_agent_term_id"
+            ]
+        }
     },
     "properties": {
         "schema_version": {
@@ -145,6 +157,25 @@
             "submissionExample": {
                 "appscript": "Streptococcus pyogenes (Sp)",
                 "igvf_utils": "Streptococcus pyogenes (Sp)"
+            }
+        },
+        "activating_agent_term_id": {
+            "title": "Activating Agent Term ID",
+            "description": "The CHEBI identifier for the activating agent of the modification.",
+            "type": "string",
+            "pattern": "^CHEBI:[0-9]{1,7}$",
+            "submissionExample": {
+                "appscript": "CHEBI:22676",
+                "igvf_utils": "CHEBI:22676"
+            }
+        },
+        "activating_agent_term_name": {
+            "title": "Activating Agent Term Name",
+            "description": "The CHEBI name for the activating agent of the modification.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "auxin",
+                "igvf_utils": "auxin"
             }
         }
     },
