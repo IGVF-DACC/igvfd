@@ -65,3 +65,37 @@ def audit_biosample_age(value, system):
             f'is missing `upper_bound_age`, `lower_bound_age`, and `age_units`.'
         )
         yield AuditFailure('missing age', f'{detail} {description}', level='WARNING')
+
+
+@audit_checker('Biosample', frame='object')
+def audit_biomarker_name(value, system):
+    '''
+    [
+        {
+            "audit_description": "Biosamples are expected to have biomarkers with different names.",
+            "audit_category": "inconsistent biomarkers",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_biomarker_name)
+    if 'biomarkers' in value:
+        sample_id = value['@id']
+        biomarker_ids = value.get('biomarkers')
+        biomarker_dict = {}
+        for b in biomarker_ids:
+            biomarker_object = system.get('request').embed(b + '@@object?skip_calculated=true')
+            name = biomarker_object.get('name')
+            if name not in biomarker_dict:
+                biomarker_dict[name] = []
+
+            biomarker_dict[name].append(b)
+
+        for name, b_ids in biomarker_dict.items():
+            if len(b_ids) > 1:
+                biomarkers_to_link = ', '.join([audit_link(path_to_text(b_id), b_id) for b_id in b_ids])
+                detail = (
+                    f'Biosample {audit_link(path_to_text(sample_id), sample_id)} has conflicting biomarkers '
+                    f'{biomarkers_to_link} with the same `name`: {name}.'
+                )
+                yield AuditFailure('inconsistent biomarkers', f'{detail} {description}', level='ERROR')
