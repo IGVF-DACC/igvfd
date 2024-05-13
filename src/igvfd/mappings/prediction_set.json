@@ -1,6 +1,6 @@
 {
-    "hash": "87d634d9cc2fd92a7da12cf0b4791231",
-    "index_name": "prediction_set_87d634d9",
+    "hash": "03f68de9c950aae3315c1db5ac9d6f0e",
+    "index_name": "prediction_set_03f68de9",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1811,6 +1811,15 @@
                                 "store": true,
                                 "type": "float"
                             },
+                            "lower_bound_age_in_hours": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -2137,6 +2146,15 @@
                                 "type": "keyword"
                             },
                             "upper_bound_age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "upper_bound_age_in_hours": {
                                 "fields": {
                                     "raw": {
                                         "type": "keyword"

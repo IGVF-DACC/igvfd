@@ -1,6 +1,6 @@
 {
-    "hash": "9313582d086247427d7fda0faee9b485",
-    "index_name": "measurement_set_9313582d",
+    "hash": "6c37dbfda27469dddc6803f75ae3f06a",
+    "index_name": "measurement_set_6c37dbfd",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2492,6 +2492,15 @@
                                 "store": true,
                                 "type": "float"
                             },
+                            "lower_bound_age_in_hours": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "modifications": {
                                 "properties": {
                                     "@id": {
@@ -3030,6 +3039,15 @@
                                 "type": "object"
                             },
                             "upper_bound_age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "upper_bound_age_in_hours": {
                                 "fields": {
                                     "raw": {
                                         "type": "keyword"

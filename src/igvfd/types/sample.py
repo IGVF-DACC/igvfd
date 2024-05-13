@@ -268,6 +268,48 @@ class Biosample(Sample):
     @calculated_property(
         define=True,
         schema={
+            'title': 'Upper Bound Age In Hours',
+            'description': 'Upper bound of age of organism in hours at the time of collection of the sample.',
+            'type': 'number',
+            'notSubmittable': True,
+        }
+    )
+    def upper_bound_age_in_hours(self, upper_bound_age=None, age_units=None):
+        conversion_factors = {
+            'minute': 1/60,
+            'hour': 1,
+            'day': 24,
+            'week': 168,
+            'month': 720,
+            'year': 8760
+        }
+        if upper_bound_age:
+            return upper_bound_age*conversion_factors[age_units]
+
+    @calculated_property(
+        define=True,
+        schema={
+            'title': 'Lower Bound Age In Hours',
+            'description': 'Lower bound of age of organism in hours at the time of collection of the sample .',
+            'type': 'number',
+            'notSubmittable': True,
+        }
+    )
+    def lower_bound_age_in_hours(self, lower_bound_age=None, age_units=None):
+        conversion_factors = {
+            'minute': 1/60,
+            'hour': 1,
+            'day': 24,
+            'week': 168,
+            'month': 720,
+            'year': 8760
+        }
+        if lower_bound_age:
+            return lower_bound_age*conversion_factors[age_units]
+
+    @calculated_property(
+        define=True,
+        schema={
             'title': 'Taxa',
             'type': 'string',
             'description': 'The species of the organism.',

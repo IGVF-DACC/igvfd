@@ -1,6 +1,6 @@
 {
-    "hash": "ec842bddecfd689027c14e2cb42b09ab",
-    "index_name": "curated_set_ec842bdd",
+    "hash": "d1fb2a2d83f7fde323bf7aaff30425fd",
+    "index_name": "curated_set_d1fb2a2d",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1257,6 +1257,15 @@
                                 "store": true,
                                 "type": "float"
                             },
+                            "lower_bound_age_in_hours": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -1583,6 +1592,15 @@
                                 "type": "keyword"
                             },
                             "upper_bound_age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "upper_bound_age_in_hours": {
                                 "fields": {
                                     "raw": {
                                         "type": "keyword"

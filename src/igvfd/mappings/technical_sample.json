@@ -1,6 +1,6 @@
 {
-    "hash": "f381108011bf496ab915fcee759d708a",
-    "index_name": "technical_sample_f3811080",
+    "hash": "5631adbcad9f09752b2b2b1ce09ad81e",
+    "index_name": "technical_sample_5631adbc",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1185,6 +1185,15 @@
                                 "store": true,
                                 "type": "float"
                             },
+                            "lower_bound_age_in_hours": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -1348,6 +1357,15 @@
                                 "type": "keyword"
                             },
                             "upper_bound_age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "upper_bound_age_in_hours": {
                                 "fields": {
                                     "raw": {
                                         "type": "keyword"

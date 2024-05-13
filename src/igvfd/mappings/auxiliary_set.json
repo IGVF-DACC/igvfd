@@ -1,6 +1,6 @@
 {
-    "hash": "4904a4cc52e9e7fef46919720ebaaae0",
-    "index_name": "auxiliary_set_4904a4cc",
+    "hash": "81c50cdef97d4ff6f613831f556fbef1",
+    "index_name": "auxiliary_set_81c50cde",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1386,6 +1386,15 @@
                                 "store": true,
                                 "type": "float"
                             },
+                            "lower_bound_age_in_hours": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -1712,6 +1721,15 @@
                                 "type": "keyword"
                             },
                             "upper_bound_age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "upper_bound_age_in_hours": {
                                 "fields": {
                                     "raw": {
                                         "type": "keyword"

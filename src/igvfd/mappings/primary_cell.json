@@ -1,6 +1,6 @@
 {
-    "hash": "4f9d06f3404086f6e525ea3b257bff1f",
-    "index_name": "primary_cell_4f9d06f3",
+    "hash": "a032052057bc70d7befde586d0d7051e",
+    "index_name": "primary_cell_a0320520",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -871,6 +871,15 @@
                         "store": true,
                         "type": "float"
                     },
+                    "lower_bound_age_in_hours": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
                     "modifications": {
                         "properties": {
                             "@id": {
@@ -1390,6 +1399,15 @@
                                 "store": true,
                                 "type": "float"
                             },
+                            "lower_bound_age_in_hours": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -1553,6 +1571,15 @@
                                 "type": "keyword"
                             },
                             "upper_bound_age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "upper_bound_age_in_hours": {
                                 "fields": {
                                     "raw": {
                                         "type": "keyword"
@@ -1892,6 +1919,15 @@
                         "type": "object"
                     },
                     "upper_bound_age": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "upper_bound_age_in_hours": {
                         "fields": {
                             "raw": {
                                 "type": "keyword"

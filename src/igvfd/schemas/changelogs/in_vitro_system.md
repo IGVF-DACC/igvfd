@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 20
 
+* Add calculated property `upper_bound_age_in_hours`.
+* Add calculated property `lower_bound_age_in_hours`.
 * Add `growth_medium`.
 * Add `demultiplexed_from`.
 * Add calculated property `demultiplexed_to`.

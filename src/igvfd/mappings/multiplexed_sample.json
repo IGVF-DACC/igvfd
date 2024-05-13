@@ -1,6 +1,6 @@
 {
-    "hash": "9cce212a7295cbe80b41997b825f2085",
-    "index_name": "multiplexed_sample_9cce212a",
+    "hash": "30bee8509346945cccd59dde8699dcbe",
+    "index_name": "multiplexed_sample_30bee850",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1660,6 +1660,15 @@
                                 "store": true,
                                 "type": "float"
                             },
+                            "lower_bound_age_in_hours": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -1911,6 +1920,15 @@
                                 "store": true,
                                 "type": "float"
                             },
+                            "upper_bound_age_in_hours": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "url": {
                                 "type": "keyword"
                             },
@@ -2149,6 +2167,15 @@
                                 "store": true,
                                 "type": "float"
                             },
+                            "lower_bound_age_in_hours": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -2312,6 +2339,15 @@
                                 "type": "keyword"
                             },
                             "upper_bound_age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "upper_bound_age_in_hours": {
                                 "fields": {
                                     "raw": {
                                         "type": "keyword"

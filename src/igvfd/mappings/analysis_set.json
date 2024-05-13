@@ -1,6 +1,6 @@
 {
-    "hash": "0758c65dedd2ef2e1e21d36f0047bb3c",
-    "index_name": "analysis_set_0758c65d",
+    "hash": "8c44676a790d2465f11f9d3cf9f2c901",
+    "index_name": "analysis_set_8c44676a",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1575,6 +1575,15 @@
                                 "store": true,
                                 "type": "float"
                             },
+                            "lower_bound_age_in_hours": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
                             "modifications": {
                                 "type": "keyword"
                             },
@@ -1901,6 +1910,15 @@
                                 "type": "keyword"
                             },
                             "upper_bound_age": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "float"
+                            },
+                            "upper_bound_age_in_hours": {
                                 "fields": {
                                     "raw": {
                                         "type": "keyword"

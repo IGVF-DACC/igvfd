@@ -58,3 +58,17 @@ def test_summary(testapp, tissue, human_donor, rodent_donor, parent_rodent_donor
     res = testapp.get(tissue['@id'])
     assert res.json.get(
         'summary') == f'virtual embryonic brown adipose tissue (cellular sub pool: PKR-1128), mixed sex, Mus musculus strain1, strain3 (50-100 days) associated with Alzheimer\'s disease, treated with 10 mM lactate for 1 hour'
+
+
+def test_age_in_hours(testapp, tissue):
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'lower_bound_age': 50,
+            'upper_bound_age': 100,
+            'age_units': 'day'
+        }
+    )
+    res = testapp.get(tissue['@id'])
+    assert res.json.get('upper_bound_age_in_hours') == 2400
+    assert res.json.get('lower_bound_age_in_hours') == 1200
