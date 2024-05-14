@@ -45,7 +45,7 @@ def audit_input_file_sets_derived_from(value, system):
             "audit_description": "Files in an analysis set are expected to be derived from other files.",
             "audit_category": "missing derived from",
             "audit_level": "WARNING"
-        },
+        }
     ]
     '''
     description_missing_input_file_set = get_audit_description(audit_input_file_sets_derived_from, index=0)
