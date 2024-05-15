@@ -387,7 +387,7 @@ def audit_input_file_set_for(value, system):
     description = get_audit_description(audit_input_file_set_for)
     if 'input_file_set_for' not in value:
         detail = (
-            f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set '
-            f'and is not an `input_file_set` for any analysis set.'
+            f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set, '
+            f'but is not an `input_file_set` for any analysis set.'
         )
         yield AuditFailure('missing analysis', f'{detail} {description}', level='WARNING')
