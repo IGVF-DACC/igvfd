@@ -14,7 +14,7 @@ def analysis_set():
                 'title': 'Taxa',
             },
             'assay_titles': {
-                'title': 'Preferred Assay Title'
+                'title': 'Assay Title'
             },
             'samples.sample_terms.term_name': {
                 'title': 'Sample Term'
