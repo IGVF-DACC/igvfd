@@ -809,7 +809,7 @@ class MultiplexedSample(Sample):
             if len(multiplexed_samples) > 2:
                 remainder = f'... and {len(multiplexed_samples) - 2} more sample{"s" if len(multiplexed_samples) - 2 != 1 else ""}'
                 sample_summaries += [remainder]
-            return f'multiplexed sample of {", ".join(sample_summaries)}'
+            return f'multiplexed sample: {"; ".join(sample_summaries)}'
         else:
             return 'multiplexed sample'
 
