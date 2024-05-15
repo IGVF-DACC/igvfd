@@ -385,7 +385,7 @@ def audit_input_file_set_for(value, system):
     ]
     '''
     description = get_audit_description(audit_input_file_set_for)
-    if 'input_file_set_for' not in value:
+    if not value.get('input_file_set_for'):
         detail = (
             f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set, '
             f'but is not an `input_file_set` for any analysis set.'

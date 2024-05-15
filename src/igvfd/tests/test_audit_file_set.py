@@ -38,7 +38,7 @@ def test_audit_input_file_set_for(
     testapp.patch_json(
         analysis_set_base['@id'],
         {
-            'input_file_set': [construct_library_set_reporter['@id']]
+            'input_file_sets': [construct_library_set_reporter['@id']]
         }
     )
     res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
