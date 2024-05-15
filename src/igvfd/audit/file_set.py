@@ -369,3 +369,25 @@ def audit_unexpected_virtual_samples(value, system):
                 f'{audit_link(path_to_text(sample), sample)} in `samples`.'
             )
             yield AuditFailure('unexpected sample', f'{detail} {description}', level='ERROR')
+
+
+@audit_checker('MeasurementSet', frame='object')
+@audit_checker('AuxiliarySet', frame='object')
+@audit_checker('ConstructLibrarySet', frame='object')
+def audit_input_file_set_for(value, system):
+    '''
+    [
+        {
+            "audit_description": "Raw data sets are expected to be associated with an analysis set.",
+            "audit_category": "missing analysis",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_input_file_set_for)
+    if 'input_file_set_for' not in value:
+        detail = (
+            f'File set {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set '
+            f'and is not an `input_file_set` for any analysis set.'
+        )
+        yield AuditFailure('missing analysis', f'{detail} {description}', level='WARNING')
