@@ -54,3 +54,16 @@ def modification_v3(modification_activation):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def modification_prime_editing(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'cas': 'nCas9',
+        'modality': 'prime editing',
+        'fused_domain': 'M-MLV RT (PE2)',
+        'cas_species': 'Streptococcus pyogenes (Sp)'
+    }
+    return testapp.post_json('/modification', item, status=201).json['@graph'][0]
