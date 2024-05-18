@@ -1,3 +1,4 @@
+from igvfd.tests.fixtures.schemas.modification import modification_prime_editing
 import pytest
 
 
@@ -116,14 +117,18 @@ def test_in_vitro_system_submitter(submitter_testapp, in_vitro_system_sub):
 
 def test_maxitems_dependencies(in_vitro_cell_line, modification, modification_activation,
                                source, source_lonza, assay_term_starr, assay_term_atac, testapp):
-    # Sources, modifications, and sample_terms arrays should only have 1 entry
+    # Sources, and sample_terms arrays should only have 1 entry. Modifications array can have maxitems 2.
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
         {'modifications': [modification['@id']]})
     assert res.status_code == 200
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
-        {'modifications': [modification['@id'], modification_activation['@id']]}, expect_errors=True)
+        {'modifications': [modification['@id'], modification_activation['@id']]})
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'modifications': [modification['@id'], modification_activation['@id'], modification_prime_editing['@id']]}, expect_errors=True)
     assert res.status_code == 422
     res = testapp.patch_json(
         in_vitro_cell_line['@id'],
