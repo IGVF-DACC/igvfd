@@ -13,6 +13,12 @@ def analysis_set():
             'donors.taxa': {
                 'title': 'Taxa',
             },
+            'assay_titles': {
+                'title': 'Assay Title'
+            },
+            'samples.sample_terms.term_name': {
+                'title': 'Sample Term'
+            },
             'lab.title': {
                 'title': 'Lab'
             },
@@ -43,10 +49,17 @@ def analysis_set():
         },
         'facet_groups': [
             {
-                'title': 'File Set',
+                'title': 'Sample',
                 'facet_fields': [
                     'donors.taxa',
+                    'samples.sample_terms.term_name'
+                ],
+            },
+            {
+                'title': 'File Set',
+                'facet_fields': [
                     'file_set_type',
+                    'assay_titles'
                 ],
             },
             {
