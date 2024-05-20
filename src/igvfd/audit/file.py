@@ -36,3 +36,27 @@ def audit_file_controlled_access_file_in_correct_anvil_workspace(value, system):
         f'{detail} {description}',
         level='INTERNAL_ACTION'
     )
+
+
+@audit_checker('File', frame='object')
+def audit_upload_status(value, system):
+    '''
+    [
+        {
+            "audit_description": "Files are expected to be validated.",
+            "audit_category": "invalid upload status",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_upload_status)
+    upload_status = value.get('upload_status')
+    if upload_status not in ['validated', 'deposited']:
+        detail = (
+            f'File {audit_link(path_to_text(value["@id"]), value["@id"])} has `upload_status` {upload_status}.'
+        )
+        yield AuditFailure(
+            'invalid upload status',
+            f'{detail} {description}',
+            level='ERROR'
+        )
