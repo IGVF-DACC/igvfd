@@ -75,6 +75,36 @@ def test_audit_missing_input_file_set(
     )
 
 
+def test_audit_missing_derived_from(
+    testapp,
+    analysis_set_base,
+    matrix_file,
+    signal_file
+):
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'file_set': analysis_set_base['@id']
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing derived from'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'derived_from': [signal_file['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing derived from'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+
 def test_audit_missing_samples(
     testapp,
     analysis_set_base,

@@ -40,16 +40,23 @@ def audit_input_file_sets_derived_from(value, system):
             "audit_description": "The file sets of the files that are used to derive the files in an analysis set are expected to be listed in the input file sets.",
             "audit_category": "missing input file set",
             "audit_level": "ERROR"
+        },
+        {
+            "audit_description": "Files in an analysis set are expected to be derived from other files.",
+            "audit_category": "missing derived from",
+            "audit_level": "WARNING"
         }
     ]
     '''
-    description = get_audit_description(audit_input_file_sets_derived_from)
+    description_missing_input_file_set = get_audit_description(audit_input_file_sets_derived_from, index=0)
+    description_missing_derived_from = get_audit_description(audit_input_file_sets_derived_from, index=1)
     detail = ''
     input_file_sets = value.get('input_file_sets', [])
     files = value.get('files', '')
     files_to_link = []
     derived_from_files_to_link = []
     missing_derived_from_file_sets = []
+    missing_derived_from = []
     if files:
         for file in files:
             file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
@@ -63,6 +70,8 @@ def audit_input_file_sets_derived_from(value, system):
                         files_to_link.append(file)
                         derived_from_files_to_link.append(derived_from_file)
                         missing_derived_from_file_sets.append(derived_from_file_set)
+            else:
+                missing_derived_from.append(file)
     if missing_derived_from_file_sets:
         files_to_link = ', '.join([audit_link(path_to_text(file), file) for file in files_to_link])
         derived_from_files_to_link = ', '.join([audit_link(path_to_text(file), file)
@@ -76,7 +85,14 @@ def audit_input_file_sets_derived_from(value, system):
             f'file(s) {derived_from_files_to_link} from file set(s) {missing_derived_from_file_sets} '
             f'which are not in `input_file_sets`.'
         )
-        yield AuditFailure('missing input file set', f'{detail} {description}', level='ERROR')
+        yield AuditFailure('missing input file set', f'{detail} {description_missing_input_file_set}', level='ERROR')
+    if missing_derived_from:
+        missing_derived_from = ', '.join([audit_link(path_to_text(file), file) for file in missing_derived_from])
+        detail = (
+            f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'links to file(s) {missing_derived_from} that have no `derived_from`.'
+        )
+        yield AuditFailure('missing derived from', f'{detail} {description_missing_derived_from}', level='WARNING')
 
 
 @audit_checker('AnalysisSet', frame='object')
