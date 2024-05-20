@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Allow `modifications` to contain a maximum of 2 items.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.
 
 ### Schema version 9
