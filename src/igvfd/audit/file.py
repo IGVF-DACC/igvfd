@@ -52,11 +52,15 @@ def audit_upload_status(value, system):
     description = get_audit_description(audit_upload_status)
     upload_status = value.get('upload_status')
     if upload_status not in ['validated', 'deposited']:
+        if value.get('external'):
+            audit_level = 'WARNING'
+        else:
+            audit_level = 'ERROR'
         detail = (
             f'File {audit_link(path_to_text(value["@id"]), value["@id"])} has `upload_status` {upload_status}.'
         )
         yield AuditFailure(
             'invalid upload status',
             f'{detail} {description}',
-            level='ERROR'
+            level=audit_level
         )
