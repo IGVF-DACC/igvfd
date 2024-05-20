@@ -1,6 +1,6 @@
 {
-    "hash": "9b03614a9529d8e8a9cd29762035cd46",
-    "index_name": "measurement_set_9b03614a",
+    "hash": "d62a50af2e483cb149e4fc54d00248c1",
+    "index_name": "measurement_set_d62a50af",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2507,6 +2507,21 @@
                                         "type": "keyword"
                                     },
                                     "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "activated": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "activating_agent_term_id": {
+                                        "type": "keyword"
+                                    },
+                                    "activating_agent_term_name": {
                                         "type": "keyword"
                                     },
                                     "aliases": {
