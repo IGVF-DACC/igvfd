@@ -41,15 +41,24 @@
             "shared_dependencies.json#/standard_status"
         ],
         "activating_agent_term_id": {
-            "comment": "Specification of activating_agent_term_id requires activating_agent_term_name.",
+            "comment": "Specification of activating_agent_term_id requires activating_agent_term_name and activated.",
             "required": [
+                "activated",
                 "activating_agent_term_name"
             ]
         },
         "activating_agent_term_name": {
-            "comment": "Specification of activating_agent_term_name requires activating_agent_term_id.",
+            "comment": "Specification of activating_agent_term_name requires activating_agent_term_id and activated.",
             "required": [
+                "activated",
                 "activating_agent_term_id"
+            ]
+        },
+        "activated": {
+            "comment": "Specification of activated requires activating_agent_term_id and activating_agent_term_name.",
+            "required": [
+                "activating_agent_term_id",
+                "activating_agent_term_name"
             ]
         }
     },
@@ -159,9 +168,20 @@
                 "igvf_utils": "Streptococcus pyogenes (Sp)"
             }
         },
+        "activated": {
+            "title": "Activated",
+            "description": "A boolean indicating whether the modification has been activated by a chemical agent.",
+            "comment": "This property is affected by dependencies. See https://data.igvf.org/profiles/modification/schema/dependencies/.",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": "true",
+                "igvf_utils": "true"
+            }
+        },
         "activating_agent_term_id": {
             "title": "Activating Agent Term ID",
             "description": "The CHEBI identifier for the activating agent of the modification.",
+            "comment": "This property is affected by dependencies. See https://data.igvf.org/profiles/modification/schema/dependencies/.",
             "type": "string",
             "pattern": "^CHEBI:[0-9]{1,7}$",
             "submissionExample": {
@@ -172,6 +192,7 @@
         "activating_agent_term_name": {
             "title": "Activating Agent Term Name",
             "description": "The CHEBI name for the activating agent of the modification.",
+            "comment": "This property is affected by dependencies. See https://data.igvf.org/profiles/modification/schema/dependencies/.",
             "type": "string",
             "submissionExample": {
                 "appscript": "auxin",

@@ -4,6 +4,7 @@
 
 * Add `activating_agent_term_id`.
 * Add `activating_agent_term_name`.
+* Add `activated`.
 
 ### Schema version 5
 
