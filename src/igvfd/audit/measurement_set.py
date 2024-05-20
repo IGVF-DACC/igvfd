@@ -147,32 +147,6 @@ def audit_inconsistent_readout(value, system):
 
 
 @audit_checker('MeasurementSet', frame='object')
-def audit_inconsistent_modifications(value, system):
-    '''
-    [
-        {
-            "audit_description": "Modifications should be consistent for samples within a measurement set.",
-            "audit_category": "inconsistent modifications",
-            "audit_level": "ERROR"
-        }
-    ]
-    '''
-    description = get_audit_description(audit_inconsistent_modifications)
-    samples = value.get('samples', [])
-    modifications = []
-    for sample in samples:
-        sample_object = system.get('request').embed(sample, '@@object?skip_calculated=true')
-        modifications.append(sorted(sample_object.get('modifications', [])))
-    modifications = set(tuple(i) for i in modifications)
-    if len(modifications) > 1:
-        detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
-            f'`samples` with inconsistent `modifications` applied.'
-        )
-        yield AuditFailure('inconsistent modifications', f'{detail} {description}', level='ERROR')
-
-
-@audit_checker('MeasurementSet', frame='object')
 def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
     [

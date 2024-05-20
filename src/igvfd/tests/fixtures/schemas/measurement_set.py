@@ -181,3 +181,13 @@ def measurement_set_v14(measurement_set):
         'auxiliary_sets': []
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v15(measurement_set, tissue, primary_cell):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '15',
+        'samples': [tissue['@id'], primary_cell['@id']]
+    })
+    return item

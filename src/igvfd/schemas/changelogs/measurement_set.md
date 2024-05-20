@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 16
+
+* Restrict `samples` to 1 item.
+
 ### Minor changes since schema version 15
 
 * Extend `collections` enum list to include `Vista`.

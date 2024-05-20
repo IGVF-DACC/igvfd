@@ -96,21 +96,6 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
     res = testapp.get(measurement_set['@id'])
     assert res.json.get(
         'summary') == 'CRISPR activation screen (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide followed by ChIP-seq'
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'samples': [in_vitro_cell_line['@id'], primary_cell['@id']]
-        }
-    )
-    testapp.patch_json(
-        primary_cell['@id'],
-        {
-            'modifications': [modification['@id']]
-        }
-    )
-    res = testapp.get(measurement_set['@id'])
-    assert res.json.get(
-        'summary') == 'mixed CRISPR screen (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide followed by ChIP-seq'
 
 
 def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):
