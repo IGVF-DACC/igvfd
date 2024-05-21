@@ -1,6 +1,6 @@
 {
-    "hash": "df404693f4bab87e9c6ff211161f3dab",
-    "index_name": "in_vitro_system_df404693",
+    "hash": "764176df9ff6c6d67ae616ab4d76d382",
+    "index_name": "in_vitro_system_764176df",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -673,6 +673,15 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "properties": {

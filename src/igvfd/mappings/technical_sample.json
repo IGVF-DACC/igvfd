@@ -1,6 +1,6 @@
 {
-    "hash": "5631adbcad9f09752b2b2b1ce09ad81e",
-    "index_name": "technical_sample_5631adbc",
+    "hash": "769bf7430107078d2549f6bce74304c5",
+    "index_name": "technical_sample_769bf743",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -431,6 +431,15 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "properties": {

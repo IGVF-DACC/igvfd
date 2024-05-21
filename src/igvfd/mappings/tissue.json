@@ -1,6 +1,6 @@
 {
-    "hash": "69f40a9ec8b474bd9453787eed00d3ec",
-    "index_name": "tissue_69f40a9e",
+    "hash": "1afa1a2d7856117ec3cb7a3ad3182324",
+    "index_name": "tissue_1afa1a2d",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -526,6 +526,15 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "properties": {

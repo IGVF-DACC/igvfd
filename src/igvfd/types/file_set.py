@@ -173,14 +173,12 @@ class FileSet(Item):
             'title': 'Is Control File Set',
             'description': 'If the file set is a control for other file set(s).',
             'comment': 'Do not submit, this property is calculated from `control_for`.',
-            'type': 'string',
+            'type': 'boolean',
             'notSubmittable': True
         })
-    def is_control(self, request, control_for):
+    def is_control(self, control_for):
         if control_for:
             return True
-        else:
-            return False
 
 
 @collection(

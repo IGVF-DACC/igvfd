@@ -1,6 +1,6 @@
 {
-    "hash": "9642aa39f831071896ac7abdc42200e6",
-    "index_name": "auxiliary_set_9642aa39",
+    "hash": "487cd0f7b162f7f2435622686322d150",
+    "index_name": "auxiliary_set_487cd0f7",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -399,6 +399,15 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"
@@ -1065,6 +1074,15 @@
                     "input_file_set_for": {
                         "type": "keyword"
                     },
+                    "is_control": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -1188,6 +1206,15 @@
                             },
                             "input_file_set_for": {
                                 "type": "keyword"
+                            },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"

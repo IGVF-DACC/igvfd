@@ -1,6 +1,6 @@
 {
-    "hash": "9c08174b97125a4da1d85e5cae5a2ff1",
-    "index_name": "primary_cell_9c08174b",
+    "hash": "a0184adf31c983e024cccc80c7979c5b",
+    "index_name": "primary_cell_a0184adf",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -523,6 +523,15 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "properties": {

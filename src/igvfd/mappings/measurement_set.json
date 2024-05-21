@@ -1,6 +1,6 @@
 {
-    "hash": "9b03614a9529d8e8a9cd29762035cd46",
-    "index_name": "measurement_set_9b03614a",
+    "hash": "8465d836d5c780e39561fcddade14577",
+    "index_name": "measurement_set_8465d836",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -289,6 +289,15 @@
                             },
                             "input_file_set_for": {
                                 "type": "keyword"
+                            },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"
@@ -583,6 +592,15 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"
@@ -903,6 +921,15 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"
@@ -1568,6 +1595,15 @@
                     "input_file_set_for": {
                         "type": "keyword"
                     },
+                    "is_control": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "lab": {
                         "properties": {
                             "@id": {
@@ -1864,6 +1900,15 @@
                             },
                             "input_file_set_for": {
                                 "type": "keyword"
+                            },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"
@@ -2206,6 +2251,15 @@
                                     },
                                     "integrated_content_files": {
                                         "type": "keyword"
+                                    },
+                                    "is_control": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
                                     },
                                     "lab": {
                                         "type": "keyword"

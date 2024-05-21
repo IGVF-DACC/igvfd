@@ -1,6 +1,6 @@
 {
-    "hash": "1fad05bae3f8d17b8de5dc56773b3df3",
-    "index_name": "model_set_1fad05ba",
+    "hash": "dbea64c722b2d750c985c0994c2cf4a7",
+    "index_name": "model_set_dbea64c7",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -399,6 +399,15 @@
                             },
                             "integrated_content_files": {
                                 "type": "keyword"
+                            },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "lab": {
                                 "type": "keyword"
@@ -1166,6 +1175,15 @@
                             "integrated_content_files": {
                                 "type": "keyword"
                             },
+                            "is_control": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -1382,6 +1400,15 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "is_control": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "lab": {
                         "properties": {
