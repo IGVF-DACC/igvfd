@@ -261,7 +261,7 @@
             "description": "Links to modifications applied to this biosample.",
             "type": "array",
             "minItems": 1,
-            "maxItems": 1,
+            "maxItems": 2,
             "uniqueItems": true,
             "items": {
                 "title": "Modification",
