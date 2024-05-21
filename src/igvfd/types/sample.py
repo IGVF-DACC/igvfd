@@ -533,9 +533,15 @@ class Biosample(Sample):
 
     @calculated_property(schema={
         'title': 'Pooled In',
-        'type': ['string', 'object'],
-        'description': 'The pooled samples in which this sample is included.',
-        'linkFrom': 'Biosample.pooled_from',
+        'type': 'array',
+        'description': 'The pooled samples in which this sample is included in.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Biosample Pooled In',
+            'type': ['string', 'object'],
+            'linkFrom': 'Biosample.pooled_from',
+        },
         'notSubmittable': True,
     })
     def pooled_in(self, request, pooled_in):
