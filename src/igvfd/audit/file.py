@@ -43,8 +43,8 @@ def audit_upload_status(value, system):
     '''
     [
         {
-            "audit_description": "Files are expected to be validated.",
-            "audit_category": "invalid upload status",
+            "audit_description": "Files are expected to be validated or deposited.",
+            "audit_category": "unvalidated upload status",
             "audit_level": "ERROR"
         }
     ]
@@ -60,7 +60,7 @@ def audit_upload_status(value, system):
             f'File {audit_link(path_to_text(value["@id"]), value["@id"])} has `upload_status` {upload_status}.'
         )
         yield AuditFailure(
-            'invalid upload status',
+            'unvalidated upload status',
             f'{detail} {description}',
             level=audit_level
         )
