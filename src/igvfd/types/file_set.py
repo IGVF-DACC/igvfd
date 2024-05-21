@@ -167,6 +167,21 @@ class FileSet(Item):
     def input_file_set_for(self, request, input_file_set_for):
         return paths_filtered_by_status(request, input_file_set_for)
 
+    @calculated_property(
+        condition='control_for',
+        schema={
+            'title': 'Is Control File Set',
+            'description': 'If the file set is a control for other file set(s).',
+            'comment': 'Do not submit, this property is calculated from `control_for`.',
+            'type': 'string',
+            'notSubmittable': True
+        })
+    def is_control(self, request, control_for):
+        if control_for:
+            return True
+        else:
+            return False
+
 
 @collection(
     name='analysis-sets',

@@ -55,6 +55,9 @@ def measurement_set():
             'file_set_type': {
                 'title': 'File Set Type',
             },
+            'is_control': {
+                'title': 'Control'
+            },
             'type': {
                 'title': 'Object Type',
             },
@@ -90,6 +93,7 @@ def measurement_set():
                     'preferred_assay_title',
                     'samples.modifications.modality',
                     'file_set_type',
+                    'is_control',
                 ],
             },
             {

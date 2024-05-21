@@ -31,6 +31,9 @@ def analysis_set():
             'file_set_type': {
                 'title': 'File Set Type',
             },
+            'is_control': {
+                'title': 'Control'
+            },
             'type': {
                 'title': 'Object Type',
             },
@@ -59,7 +62,8 @@ def analysis_set():
                 'title': 'File Set',
                 'facet_fields': [
                     'file_set_type',
-                    'assay_titles'
+                    'assay_titles',
+                    'is_control',
                 ],
             },
             {

@@ -31,6 +31,9 @@ def construct_library_set():
             'file_set_type': {
                 'title': 'File Set Type',
             },
+            'is_control': {
+                'title': 'Control'
+            },
             'type': {
                 'title': 'Object Type',
             },
@@ -54,6 +57,7 @@ def construct_library_set():
                     'file_set_type',
                     'selection_criteria',
                     'scope',
+                    'control',
                 ],
             },
             {

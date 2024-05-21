@@ -28,6 +28,9 @@ def prediction_set():
             'file_set_type': {
                 'title': 'File Set Type',
             },
+            'is_control': {
+                'title': 'Control'
+            },
             'type': {
                 'title': 'Object Type',
             },
@@ -50,6 +53,7 @@ def prediction_set():
                 'facet_fields': [
                     'file_set_type',
                     'donors.taxa',
+                    'control',
                 ],
             },
             {

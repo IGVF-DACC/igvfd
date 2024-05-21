@@ -28,6 +28,9 @@ def model_set():
             'file_set_type': {
                 'title': 'File Set Type',
             },
+            'is_control': {
+                'title': 'Control'
+            },
             'type': {
                 'title': 'Object Type',
             },
@@ -50,6 +53,7 @@ def model_set():
                 'facet_fields': [
                     'file_set_type',
                     'prediction_objects',
+                    'is_control',
                 ],
             },
             {

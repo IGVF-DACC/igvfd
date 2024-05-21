@@ -28,6 +28,9 @@ def curated_set():
             'file_set_type': {
                 'title': 'File Set Type'
             },
+            'is_control': {
+                'title': 'Control'
+            },
             'status': {
                 'title': 'Status'
             },
@@ -55,6 +58,7 @@ def curated_set():
                     'file_set_type',
                     'assemblies',
                     'transcriptome_annotations',
+                    'is_control',
                 ],
             },
             {
