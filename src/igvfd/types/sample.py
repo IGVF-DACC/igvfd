@@ -788,8 +788,12 @@ class MultiplexedSample(Sample):
         Path('construct_library_sets', include=['@id', 'accession'])
     ]
     audit_inherit = Biosample.audit_inherit
-    set_status_up = Biosample.set_status_up + []
-    set_status_down = Biosample.set_status_down + []
+    set_status_up = Biosample.set_status_up + [
+        'multiplexed_samples'
+    ]
+    set_status_down = Biosample.set_status_down + [
+        'multiplexed_samples'
+    ]
 
     @calculated_property(
         schema={
