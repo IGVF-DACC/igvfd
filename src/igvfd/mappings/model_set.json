@@ -1,6 +1,6 @@
 {
-    "hash": "1fad05bae3f8d17b8de5dc56773b3df3",
-    "index_name": "model_set_1fad05ba",
+    "hash": "45dba2988f2a01231a1ef4a1ce3fafd7",
+    "index_name": "model_set_45dba298",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1727,6 +1727,9 @@
                                 "type": "keyword"
                             },
                             "product_id": {
+                                "type": "keyword"
+                            },
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {

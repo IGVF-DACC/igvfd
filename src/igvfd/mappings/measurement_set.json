@@ -2663,6 +2663,9 @@
                             "product_id": {
                                 "type": "keyword"
                             },
+                            "protocols": {
+                                "type": "keyword"
+                            },
                             "publication_identifiers": {
                                 "type": "keyword"
                             },

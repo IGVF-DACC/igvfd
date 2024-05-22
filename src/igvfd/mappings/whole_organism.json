@@ -1076,6 +1076,9 @@
                             "origin_of": {
                                 "type": "keyword"
                             },
+                            "protocols": {
+                                "type": "keyword"
+                            },
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
@@ -1189,6 +1192,9 @@
                         "type": "keyword"
                     },
                     "product_id": {
+                        "type": "keyword"
+                    },
+                    "protocols": {
                         "type": "keyword"
                     },
                     "publication_identifiers": {
@@ -1484,6 +1490,9 @@
                                 "type": "keyword"
                             },
                             "product_id": {
+                                "type": "keyword"
+                            },
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {

@@ -1,6 +1,6 @@
 {
-    "hash": "cc563ec060974575eeb090d3dddfe3cb",
-    "index_name": "curated_set_cc563ec0",
+    "hash": "831588045c7a2864f2e185d2585a952c",
+    "index_name": "curated_set_83158804",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1401,6 +1401,9 @@
                                 "type": "keyword"
                             },
                             "product_id": {
+                                "type": "keyword"
+                            },
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
