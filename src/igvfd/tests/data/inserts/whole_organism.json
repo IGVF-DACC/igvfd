@@ -22,7 +22,10 @@
             "05c0a52c-f861-4057-b3eb-751624bdff37"
         ],
         "description": "frozen mouse embryo",
-        "virtual": false
+        "virtual": false,
+        "protocols": [
+            "https://www.protocols.io/test-protocols-url-12345"
+        ]
     },
     {
         "uuid": "d4c46526-0307-11ed-b939-0242ac120002",

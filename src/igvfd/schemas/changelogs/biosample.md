@@ -1,7 +1,7 @@
 ## Changelog for *`biosample.json`*
 
-* Allow `modifications` to contain a maximum of 2 items (05/20/2024)
-* Add `originated_from` (04/24/2024)
+* Allow `modifications` to contain a maximum of 2 items. (05/20/2024)
+* Add `originated_from`. (04/24/2024)
 * Update `dbxrefs` regex to allow ENCODE sample accessions. (03/25/2024)
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status. (03/06/2024)
 * Add `release_timestamp`. (01/31/2024)

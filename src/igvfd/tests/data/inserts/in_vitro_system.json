@@ -50,7 +50,10 @@
             "aa9dd059-4bc8-2857-bc2b-b8cb0294f837",
             "bae92ec6-c05e-4360-ac2a-1934490e83e5"
         ],
-        "virtual": false
+        "virtual": false,
+        "protocols": [
+            "https://www.protocols.io/test-protocols-url-12345"
+        ]
     },
     {
         "uuid": "1b14530d-5514-419a-ad8f-e2f110c26232",

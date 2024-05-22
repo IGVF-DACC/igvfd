@@ -168,6 +168,9 @@
             "/labs/j-michael-cherry/"
         ],
         "part_of": "igvf:live_mouse_embryo",
-        "virtual": false
+        "virtual": false,
+        "protocols": [
+            "https://www.protocols.io/test-protocols-url-12345"
+        ]
     }
 ]

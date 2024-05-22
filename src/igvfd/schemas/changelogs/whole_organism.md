@@ -7,6 +7,7 @@
 * Add calculated property `lower_bound_age_in_hours`.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.
 * Add `originated_from`.
+* Add `protocols`.
 
 ### Schema version 21
 
