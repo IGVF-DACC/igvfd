@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Add `protocols`.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.
 
 ### Schema version 7
@@ -32,7 +33,6 @@
 
 ### Schema version 4
 
-* Add `protocols`.
 * Mutually require `starting_amount` and `starting_amount_units`.
 
 ### Schema version 3
