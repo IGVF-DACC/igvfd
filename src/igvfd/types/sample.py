@@ -534,7 +534,7 @@ class Biosample(Sample):
     @calculated_property(schema={
         'title': 'Pooled In',
         'type': 'array',
-        'description': 'The pooled samples in which this sample is included in.',
+        'description': 'The pooled samples in which this sample is included.',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
