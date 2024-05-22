@@ -30,12 +30,9 @@
 * Add `construct_library_sets`.
 * Expand `collections` enum list to include `ClinGen`, `GREGoR`, `IGVF_catalog_beta_v0.1`, and `MaveDB`.
 
-### Minor change since schema version 4
-
-* Add `protocols`.
-
 ### Schema version 4
 
+* Add `protocols`.
 * Mutually require `starting_amount` and `starting_amount_units`.
 
 ### Schema version 3

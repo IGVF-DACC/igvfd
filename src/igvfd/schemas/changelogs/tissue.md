@@ -2,12 +2,12 @@
 
 ### Minor changes since schema version 18
 
+* Add `protocols`.
 * Allow `modifications` to contain a maximum of 2 items.
 * Add calculated property `upper_bound_age_in_hours`.
 * Add calculated property `lower_bound_age_in_hours`.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.
 * Add `originated_from`.
-* Add `protocols`.
 
 ### Schema version 18
 

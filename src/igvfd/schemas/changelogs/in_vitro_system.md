@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 20
 
+* Add `protocols`.
 * Allow `modifications` to contain a maximum of 2 items.
 * Add calculated property `upper_bound_age_in_hours`.
 * Add calculated property `lower_bound_age_in_hours`.
@@ -9,7 +10,6 @@
 * Add `demultiplexed_from`.
 * Add calculated property `demultiplexed_to`.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.
-* Add `protocols`.
 
 ### Schema version 20
 
