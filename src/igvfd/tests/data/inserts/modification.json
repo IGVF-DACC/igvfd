@@ -97,7 +97,10 @@
         "status": "archived",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "product_id": "addgene:148021",
-        "cas_species": "Streptococcus pyogenes (Sp)"
+        "cas_species": "Streptococcus pyogenes (Sp)",
+        "activating_agent_term_id": "CHEBI:50845",
+        "activating_agent_term_name": "doxycycline",
+        "activated": true
     },
     {
         "uuid": "c24c5e67-1a5a-419d-80ec-97948a1b91cd",

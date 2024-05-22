@@ -1,6 +1,6 @@
 {
-    "hash": "0b07f58a5436ab096e00045792a9e4c7",
-    "index_name": "whole_organism_0b07f58a",
+    "hash": "abd0a2805d1cacc97be735fa4e0e1a67",
+    "index_name": "whole_organism_abd0a280",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -886,6 +886,21 @@
                                 "type": "keyword"
                             },
                             "@type": {
+                                "type": "keyword"
+                            },
+                            "activated": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "activating_agent_term_id": {
+                                "type": "keyword"
+                            },
+                            "activating_agent_term_name": {
                                 "type": "keyword"
                             },
                             "aliases": {

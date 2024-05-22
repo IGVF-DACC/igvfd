@@ -1,6 +1,6 @@
 {
-    "hash": "f4f3aa961e5e151821d5abfc74d8c892",
-    "index_name": "modification_f4f3aa96",
+    "hash": "8a92a77a599ca3ceb6103c0e08d5023c",
+    "index_name": "modification_8a92a77a",
     "item_type": "modification",
     "mapping": {
         "dynamic_templates": [
@@ -146,6 +146,21 @@
                     },
                     "@type": {
                         "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "activated": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "activating_agent_term_id": {
+                        "type": "keyword"
+                    },
+                    "activating_agent_term_name": {
                         "type": "keyword"
                     },
                     "aliases": {
