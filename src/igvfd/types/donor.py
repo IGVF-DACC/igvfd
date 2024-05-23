@@ -13,7 +13,7 @@ from .base import (
     name='donors',
     unique_key='accession',
     properties={
-        'title': 'Donor',
+        'title': 'Donors',
         'description': 'Listing of donors',
     }
 )
