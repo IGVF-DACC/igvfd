@@ -101,7 +101,6 @@
         ],
         "assay_term": "/assay-terms/OBI_0002675/",
         "preferred_assay_title": "lentiMPRA",
-        "readout": "/assay-terms/OBI_0003090/",
         "file_set_type": "experimental data"
     },
     {
@@ -134,7 +133,6 @@
         ],
         "assay_term": "/assay-terms/OBI_0002675/",
         "preferred_assay_title": "MPRA (scQer)",
-        "readout": "/assay-terms/OBI_0002631/",
         "file_set_type": "experimental data"
     },
     {

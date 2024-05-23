@@ -319,3 +319,14 @@ def measurement_set_15_16(value, system):
         notes = f'{notes} This measurement set used to link to samples: {other_samples}, but has since been upgraded to only link to {sample}.'
         value['notes'] = notes
         value['samples'] = [sample]
+
+
+@upgrade_step('measurement_set', '16', '17')
+def measurement_set_16_17(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1602
+    if 'readout' in value:
+        readout = value['readout']
+        del value['readout']
+        notes = value.get('notes', '')
+        notes = f'{notes} The readout {readout} was removed from this measurement set.'
+        value['notes'] = notes

@@ -479,9 +479,6 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
-                            "readout": {
-                                "type": "keyword"
-                            },
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
@@ -1244,9 +1241,6 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
-                                "type": "keyword"
-                            },
-                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

@@ -377,7 +377,6 @@ class MeasurementSet(FileSet):
     schema = load_schema('igvfd:schemas/measurement_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('assay_term', include=['@id', 'term_name']),
-        Path('readout', include=['@id', 'term_name']),
         Path('library_construction_platform', include=['@id', 'term_name']),
         Path('control_file_sets', include=['@id', 'accession', 'aliases']),
         Path('related_multiome_datasets', include=['@id', 'accession']),
@@ -393,13 +392,11 @@ class MeasurementSet(FileSet):
         'auxiliary_sets',
         'library_construction_platform',
         'assay_term',
-        'readout',
     ]
 
     set_status_up = FileSet.set_status_up + [
         'assay_term',
         'library_construction_platform',
-        'readout'
     ]
     set_status_down = FileSet.set_status_down + []
 
@@ -441,15 +438,13 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, preferred_assay_title=None, readout=None,
-                samples=None):
+    def summary(self, request, assay_term, preferred_assay_title=None, samples=None):
         assay = request.embed(assay_term)['term_name']
         modality_set = set()
         cls_set = set()
         cls_phrase = ''
         modality_phrase = ''
         assay_phrase = ''
-        readout_phrase = ''
         preferred_title_phrase = ''
 
         if samples:
@@ -463,9 +458,6 @@ class MeasurementSet(FileSet):
                     for construct_library in sample_object.get('construct_library_sets'):
                         cls_summary = request.embed(construct_library)['summary']
                         cls_set.add(cls_summary)
-        if readout:
-            readout_term = request.embed(readout)['term_name']
-            readout_phrase = f' followed by {readout_term}'
         if preferred_assay_title:
             preferred_title_phrase = f' ({preferred_assay_title})'
         if len(modality_set) > 1:
@@ -500,7 +492,6 @@ class MeasurementSet(FileSet):
             assay_phrase,
             preferred_title_phrase,
             cls_phrase,
-            readout_phrase
         ]
         for phrase in sentence_parts:
             if phrase != '':

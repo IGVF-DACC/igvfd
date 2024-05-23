@@ -130,63 +130,6 @@ def test_audit_protocol(
     )
 
 
-def test_audit_readout(
-    testapp,
-    measurement_set_mpra,
-    assay_term_rna,
-    measurement_set_multiome,
-    assay_term_mpra
-):
-    # Screening assays such as CRISPR screen or MPRA must specify readout
-    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing readout'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    testapp.patch_json(
-        measurement_set_mpra['@id'],
-        {
-            'readout': assay_term_rna['@id']
-        }
-    )
-    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing readout'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-
-    # Other "non-screening" assays may not specify readout
-    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'unexpected readout'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    testapp.patch_json(
-        measurement_set_multiome['@id'],
-        {
-            'readout': assay_term_rna['@id']
-        }
-    )
-    res = testapp.get(measurement_set_multiome['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'unexpected readout'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-
-    # Assay term should not be equivalent to readout term
-    testapp.patch_json(
-        measurement_set_mpra['@id'],
-        {
-            'readout': assay_term_mpra['@id']
-        }
-    )
-    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent readout'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-
-
 def test_audit_missing_modification(
     testapp,
     measurement_set,
