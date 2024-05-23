@@ -234,7 +234,6 @@
         "files.submitted_file_name",
         "lab.title",
         "preferred_assay_title",
-        "readout.term_name",
         "samples.modifications.modality",
         "samples.summary",
         "samples.sample_terms.term_name",
