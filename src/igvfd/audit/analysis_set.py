@@ -35,7 +35,7 @@ def audit_input_file_sets(value, system):
     description_auxiliary_set = get_audit_description(audit_input_file_sets, index=2)
     detail = ''
     input_file_sets = value.get('input_file_sets')
-    input_measurement_sets = [file_set.startswith('/measurement-sets/') for file_set in input_file_sets]
+    input_measurement_sets = [file_set for file_set in input_file_sets if file_set.startswith('/measurement-sets/')]
     if not(input_measurement_sets):
         if value.get('file_set_type') == 'primary analysis':
             detail = (
