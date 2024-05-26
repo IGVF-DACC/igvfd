@@ -169,5 +169,26 @@
             "IGVF_catalog_beta_v0.3",
             "IGVF_catalog_beta_v0.4"
         ]
+    },
+    {
+        "uuid": "6d1a1811-2133-474d-b3b1-a07ad1f7e4e1",
+        "accession": "IGVFFI6791GUEE",
+        "aliases": [
+            "igvf:tsv_regulatory_regions_regulatory_regions"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "ee570198468d172dc018978a49b7db53 ",
+        "file_format": "tsv",
+        "content_type": "regulatory_regions_regulatory_regions",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "collections": [
+            "IGVF_catalog_beta_v0.3",
+            "IGVF_catalog_beta_v0.4"
+        ]
     }
 ]

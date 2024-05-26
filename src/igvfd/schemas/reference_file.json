@@ -179,6 +179,7 @@
                         "regulatory_regions_genes_biosamples_donors",
                         "regulatory_regions_genes_biosamples_treatments_chebi",
                         "regulatory_regions_genes_biosamples_treatments_proteins",
+                        "regulatory_regions_regulatory_regions",
                         "spike-ins",
                         "studies",
                         "studies_variants",
