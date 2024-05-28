@@ -105,7 +105,7 @@ def test_audit_missing_derived_from(
     )
 
 
-def test_audit_unexpected_file_set(
+def test_audit_unexpected_input_file_set(
     testapp,
     analysis_set_base,
     matrix_file,
