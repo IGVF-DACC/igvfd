@@ -1,6 +1,6 @@
 {
-    "hash": "cad3375b0b7e72cb7100a0f1e5e1a3e5",
-    "index_name": "primary_cell_cad3375b",
+    "hash": "22dd28449d685fbe7cdb1954565cd873",
+    "index_name": "primary_cell_22dd2844",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1076,6 +1076,9 @@
                             "origin_of": {
                                 "type": "keyword"
                             },
+                            "protocols": {
+                                "type": "keyword"
+                            },
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
@@ -1198,6 +1201,9 @@
                         "type": "keyword"
                     },
                     "product_id": {
+                        "type": "keyword"
+                    },
+                    "protocols": {
                         "type": "keyword"
                     },
                     "publication_identifiers": {
@@ -1493,6 +1499,9 @@
                                 "type": "keyword"
                             },
                             "product_id": {
+                                "type": "keyword"
+                            },
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {

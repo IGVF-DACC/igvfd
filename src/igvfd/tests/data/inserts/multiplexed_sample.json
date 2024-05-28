@@ -16,6 +16,9 @@
         "multiplexed_samples": [
             "igvf-dacc:in_vitro_system_cell_line",
             "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_2"
+        ],
+        "protocols": [
+            "https://www.protocols.io/test-protocols-url-12345"
         ]
     }
 ]

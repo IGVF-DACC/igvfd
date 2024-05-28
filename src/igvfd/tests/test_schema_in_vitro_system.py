@@ -158,3 +158,16 @@ def test_sample_moi_construct_library(
         }
     )
     assert res.status_code == 200
+
+
+def test_protocols(testapp, in_vitro_cell_line):
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'protocols': [
+            'https://www.protocols.io/test-protocols-url-12345'
+        ]}, expect_errors=True)
+    assert res.status_code == 200
+    res = testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {'protocols': 'https://www.protocols.io/test-protocols-url-12345'}, expect_errors=True)
+    assert res.status_code == 422

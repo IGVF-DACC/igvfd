@@ -1,5 +1,6 @@
 ## Changelog for *`sample.json`*
 
+* Add `protocols`. (05/29/2024)
 * Update `dbxrefs` regex to allow ENCODE sample accessions. (03/25/2024)
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status. (03/06/3024)
 * Add `release_timestamp` (01/31/2024).

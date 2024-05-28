@@ -33,7 +33,10 @@
             "ENCODE"
         ],
         "description": "The technical sample is for quality control of vaccine production.",
-        "virtual": false
+        "virtual": false,
+        "protocols": [
+            "https://www.protocols.io/test-protocols-url-12345"
+        ]
     },
     {
         "uuid": "f12ab44c-bba8-46cc-9f3d-6a192eb09e7e",

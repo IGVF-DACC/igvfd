@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Add `protocols`.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.
 
 ### Schema version 7

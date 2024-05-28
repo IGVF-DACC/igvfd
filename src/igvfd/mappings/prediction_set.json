@@ -1,6 +1,6 @@
 {
-    "hash": "83ef2fd61b3eed53d827c208ea5492a9",
-    "index_name": "prediction_set_83ef2fd6",
+    "hash": "ddb42c97cfbc4361c1c7dabc55a62908",
+    "index_name": "prediction_set_ddb42c97",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1955,6 +1955,9 @@
                                 "type": "keyword"
                             },
                             "product_id": {
+                                "type": "keyword"
+                            },
+                            "protocols": {
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
