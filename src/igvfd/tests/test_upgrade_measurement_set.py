@@ -107,3 +107,5 @@ def test_measurement_set_upgrade_16_17(upgrader, measurement_set_v16):
         current_version='16', target_version='17')
     assert value['schema_version'] == '17'
     assert 'readout' not in value
+    assert 'notes' in value
+    assert value['notes'].endswith('The readout /assay-terms/OBI_0001271/ was removed from this measurement set.')
