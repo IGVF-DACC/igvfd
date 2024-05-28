@@ -15,7 +15,7 @@ from snovault.util import Path
     name='ontology-terms',
     unique_key='ontology_term:name',
     properties={
-        'title': 'Ontology Term',
+        'title': 'Ontology Terms',
         'description': 'Ontology terms used by IGVF',
     }
 )

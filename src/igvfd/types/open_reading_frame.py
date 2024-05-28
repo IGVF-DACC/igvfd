@@ -12,7 +12,7 @@ from snovault.util import Path
     name='open-reading-frames',
     unique_key='open_reading_frame:orf_id',
     properties={
-        'title': 'Open Reading Frame',
+        'title': 'Open Reading Frames',
         'description': 'Protein-encoding open reading frames (ORF)',
     }
 )
