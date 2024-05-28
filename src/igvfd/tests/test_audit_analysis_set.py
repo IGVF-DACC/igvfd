@@ -105,6 +105,49 @@ def test_audit_missing_derived_from(
     )
 
 
+def test_audit_unexpected_file_set(
+    testapp,
+    analysis_set_base,
+    matrix_file,
+    signal_file,
+    measurement_set_multiome
+):
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'file_set': analysis_set_base['@id']
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set_multiome['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected input file set'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'derived_from': [signal_file['@id']]
+        }
+    )
+    testapp.patch_json(
+        signal_file['@id'],
+        {
+            'file_set': measurement_set_multiome['@id']
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected input file set'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
 def test_audit_missing_samples(
     testapp,
     analysis_set_base,
