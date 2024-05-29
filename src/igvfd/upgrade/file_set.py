@@ -329,4 +329,4 @@ def measurement_set_16_17(value, system):
         del value['readout']
         notes = value.get('notes', '')
         notes = f'{notes} The readout {readout} was removed from this measurement set.'
-        value['notes'] = notes
+        value['notes'] = notes.strip()
