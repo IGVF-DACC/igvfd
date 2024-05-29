@@ -5,7 +5,8 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description
+    get_audit_description,
+    space_in_words
 )
 
 
@@ -20,6 +21,7 @@ def audit_biosample_taxa_check(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     description = get_audit_description(audit_biosample_taxa_check)
     if 'donors' in value:
         sample_id = value['@id']
@@ -40,7 +42,7 @@ def audit_biosample_taxa_check(value, system):
             for k, v in taxa_dict.items():
                 taxa_donors.append(f'{k} ({", ".join(v)})')
             taxa_detail = ', '.join(taxa_donors)
-            detail = f'Biosample {audit_link(path_to_text(sample_id), sample_id)} has `donors` with `taxa` {taxa_detail}. '
+            detail = f'{object_type} {audit_link(path_to_text(sample_id), sample_id)} has `donors` with `taxa` {taxa_detail}. '
             yield AuditFailure('inconsistent donor taxa', f'{detail} {description}', level='ERROR')
 
 
@@ -57,11 +59,12 @@ def audit_biosample_age(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     description = get_audit_description(audit_biosample_age)
     if 'lower_bound_age' not in value and 'upper_bound_age' not in value and 'age_units' not in value:
         value_id = system.get('path')
         detail = (
-            f'Biosample {audit_link(path_to_text(value_id), value_id)} '
+            f'{object_type} {audit_link(path_to_text(value_id), value_id)} '
             f'is missing `upper_bound_age`, `lower_bound_age`, and `age_units`.'
         )
         yield AuditFailure('missing age', f'{detail} {description}', level='WARNING')
@@ -78,6 +81,7 @@ def audit_biomarker_name(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     description = get_audit_description(audit_biomarker_name)
     if 'biomarkers' in value:
         sample_id = value['@id']
@@ -95,7 +99,7 @@ def audit_biomarker_name(value, system):
             if len(b_ids) > 1:
                 biomarkers_to_link = ', '.join([audit_link(path_to_text(b_id), b_id) for b_id in b_ids])
                 detail = (
-                    f'Biosample {audit_link(path_to_text(sample_id), sample_id)} has conflicting biomarkers '
+                    f'{object_type} {audit_link(path_to_text(sample_id), sample_id)} has conflicting biomarkers '
                     f'{biomarkers_to_link} with the same `name`: {name}.'
                 )
                 yield AuditFailure('inconsistent biomarkers', f'{detail} {description}', level='ERROR')

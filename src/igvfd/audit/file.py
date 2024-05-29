@@ -5,7 +5,8 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description
+    get_audit_description,
+    space_in_words
 )
 
 
@@ -20,13 +21,14 @@ def audit_file_controlled_access_file_in_correct_anvil_workspace(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     if value.get('controlled_access', False) is False:
         return
     if value.get('upload_status') != 'pending':
         return
     description = get_audit_description(audit_file_controlled_access_file_in_correct_anvil_workspace)
     detail = (
-        f'Move controlled access file {audit_link(path_to_text(value["@id"]), value["@id"])} '
+        f'Move controlled access {object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
         f'from submission AnVIL workspace to protected AnVIL workspace. '
         f'Source={value["anvil_source_url"]} '
         f'Destination={value["anvil_destination_url"]}'
@@ -54,6 +56,7 @@ def audit_upload_status(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     upload_status = value.get('upload_status')
     if upload_status not in ['validated', 'deposited']:
         if value.get('external'):
@@ -63,7 +66,7 @@ def audit_upload_status(value, system):
             audit_level = 'ERROR'
             description = get_audit_description(audit_upload_status, index=0)
         detail = (
-            f'File {audit_link(path_to_text(value["@id"]), value["@id"])} has `upload_status` {upload_status}.'
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has `upload_status` {upload_status}.'
         )
         yield AuditFailure(
             'unvalidated upload status',

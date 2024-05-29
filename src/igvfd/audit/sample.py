@@ -5,7 +5,8 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description
+    get_audit_description,
+    space_in_words
 )
 
 
@@ -25,6 +26,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     description_metadata_inconsistency = get_audit_description(audit_sample_sorted_from_parent_child_check, index=0)
     description_duplicated_parent = get_audit_description(audit_sample_sorted_from_parent_child_check, index=1)
     if 'sorted_from' in value or 'part_of' in value:
@@ -37,7 +39,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             parent_id = value.get('part_of')
         if 'sorted_from' in value and 'part_of' in value:
             detail = (
-                f'Sample {audit_link(path_to_text(value_id), value_id)} '
+                f'{object_type} {audit_link(path_to_text(value_id), value_id)} '
                 f'specifies both `sorted_from` and `part_of`.'
             )
             yield AuditFailure('inconsistent parent sample', f'{detail} {description_duplicated_parent}', level='ERROR')
@@ -53,7 +55,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
                 error_keys.append(key)
         prop_errors = ', '.join([f'`{key}`' for key in error_keys])
         detail = (
-            f'Sample {audit_link(path_to_text(value_id), value_id)} '
+            f'{object_type} {audit_link(path_to_text(value_id), value_id)} '
             f'has metadata properties ({prop_errors}) inconsistent with '
             f'its associated parent sample {audit_link(path_to_text(parent_id), parent_id)}.'
         )
@@ -72,6 +74,7 @@ def audit_sample_virtual_donor_check(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     description = get_audit_description(audit_sample_virtual_donor_check)
     if ('donors' in value) and (value.get('virtual', False) == False):
         sample_id = value['@id']
@@ -86,7 +89,7 @@ def audit_sample_virtual_donor_check(value, system):
         donors_to_link = [audit_link(path_to_text(d_id), d_id) for d_id in donors_error]
         donors_to_link = ', '.join(donors_to_link)
         if len(donors_error) > 0:
-            detail = (f'Sample {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual `donors`: '
+            detail = (f'{object_type} {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual `donors`: '
                       f'{donors_to_link}.')
             yield AuditFailure('inconsistent donor', f'{detail} {description}', level='ERROR')
 
@@ -102,6 +105,7 @@ def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     sample_id = system.get('path')
     sample_is_virtual = value.get('virtual', False)
     links_to_check = [item for item in [
@@ -115,7 +119,8 @@ def audit_non_virtual_sample_linked_to_virtual_sample(value, system):
             system,
             sample_id,
             sample_is_virtual,
-            linked_sample
+            linked_sample,
+            object_type
         )
         if audit_failure:
             yield audit_failure
@@ -125,7 +130,8 @@ def get_virtual_sample_failures(
     system,
     sample_id,
     sample_is_virtual,
-    linked_sample_id
+    linked_sample_id,
+    object_type
 ):
     description = get_audit_description(audit_non_virtual_sample_linked_to_virtual_sample)
     linked_data = system.get('request').embed(linked_sample_id + '@@object?skip_calculated=true')
@@ -137,7 +143,7 @@ def get_virtual_sample_failures(
             audit_detail_body = 'is not virtual'
             audit_detail_end = 'that is virtual'
         detail = (
-            f'Sample {audit_link(path_to_text(sample_id), sample_id)} '
+            f'{object_type} {audit_link(path_to_text(sample_id), sample_id)} '
             f'{audit_detail_body} and has a linked sample '
             f'{audit_link(path_to_text(linked_sample_id), linked_sample_id)} {audit_detail_end}.'
         )
@@ -157,6 +163,7 @@ def audit_construct_library_sets_types(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     description = get_audit_description(audit_construct_library_sets_types)
     if 'construct_library_sets' in value and len(value['construct_library_sets']) > 1:
         library_types = set()
@@ -170,7 +177,7 @@ def audit_construct_library_sets_types(value, system):
             else:
                 library_types = ' and '.join(library_types)
             detail = (
-                f'Sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has `construct_library_sets` of multiple types {library_types}.'
             )
             yield AuditFailure('inconsistent construct library sets', f'{detail} {description}', level='WARNING')
@@ -187,12 +194,13 @@ def audit_parent_sample_with_singular_child(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     description = get_audit_description(audit_parent_sample_with_singular_child)
     for child_sample_type in ['parts', 'origin_of', 'sorted_fractions']:
         if child_sample_type in value and len(value.get(child_sample_type, [])) == 1:
             child_sample = value.get(child_sample_type)[0]
             detail = (
-                f'Sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has only 1 child sample {audit_link(path_to_text(child_sample), child_sample)} '
                 f'in `{child_sample_type}`.'
             )

@@ -1,6 +1,6 @@
 {
-    "hash": "20ee45a1bf8b23adfaea0791402e7678",
-    "index_name": "phenotype_term_20ee45a1",
+    "hash": "e26c63e4f4f3c49258a7cce6368256f9",
+    "index_name": "phenotype_term_e26c63e4",
     "item_type": "phenotype_term",
     "mapping": {
         "dynamic_templates": [
