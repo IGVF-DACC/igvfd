@@ -142,3 +142,12 @@ def user_v3(user_v1):
         'viewing_groups': []
     })
     return item
+
+
+@pytest.fixture
+def user_v4(user_v1):
+    item = user_v1.copy()
+    item.update({
+        'schema_version': '4'
+    })
+    return item

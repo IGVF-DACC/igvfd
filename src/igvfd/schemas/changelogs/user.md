@@ -1,5 +1,10 @@
 ## Changelog for *`user.json`*
 
+### Schema version 5
+
+* Add regex for `email`.
+* Require `lab`.
+
 ### Schema version 4
 
 * Require `viewing_groups` to contain at least one value.
