@@ -1,6 +1,6 @@
 {
-    "hash": "17c4d65f23db15cd21221971fc922c29",
-    "index_name": "in_vitro_system_17c4d65f",
+    "hash": "c570b6107e4fed51702bd603e27815ba",
+    "index_name": "in_vitro_system_c570b610",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -803,9 +803,6 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
-                                "type": "keyword"
-                            },
-                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

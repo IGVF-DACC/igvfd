@@ -66,7 +66,6 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
         measurement_set['@id'],
         {
             'samples': [in_vitro_cell_line['@id']],
-            'readout': assay_term_chip['@id'],
             'preferred_assay_title': 'lentiMPRA'
         }
     )
@@ -77,7 +76,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
         }
     )
     res = testapp.get(measurement_set['@id'])
-    assert res.json.get('summary') == 'STARR-seq (lentiMPRA) followed by ChIP-seq'
+    assert res.json.get('summary') == 'STARR-seq (lentiMPRA)'
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
@@ -86,7 +85,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
     )
     res = testapp.get(measurement_set['@id'])
     assert res.json.get(
-        'summary') == 'STARR-seq (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide followed by ChIP-seq'
+        'summary') == 'STARR-seq (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide'
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -95,7 +94,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
     )
     res = testapp.get(measurement_set['@id'])
     assert res.json.get(
-        'summary') == 'CRISPR activation screen (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide followed by ChIP-seq'
+        'summary') == 'CRISPR activation screen (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide'
 
 
 def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):

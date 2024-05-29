@@ -1,6 +1,6 @@
 {
-    "hash": "6ef6a688072be0e2e918f9eb5f977114",
-    "index_name": "technical_sample_6ef6a688",
+    "hash": "89306b2260daa9c4b3131e293a2e9d59",
+    "index_name": "technical_sample_89306b22",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -561,9 +561,6 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
-                                "type": "keyword"
-                            },
-                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

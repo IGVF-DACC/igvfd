@@ -191,3 +191,13 @@ def measurement_set_v15(measurement_set, tissue, primary_cell):
         'samples': [tissue['@id'], primary_cell['@id']]
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v16(measurement_set, assay_term_rna):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '16',
+        'readout': assay_term_rna['@id']
+    })
+    return item

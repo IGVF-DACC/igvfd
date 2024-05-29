@@ -1,6 +1,6 @@
 {
-    "hash": "7f46c31112041a374ab3c37e2d520850",
-    "index_name": "multiplexed_sample_7f46c311",
+    "hash": "4d2914eb61380b57468d8f8810b46d1f",
+    "index_name": "multiplexed_sample_4d2914eb",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -875,9 +875,6 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
-                                "type": "keyword"
-                            },
-                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {
