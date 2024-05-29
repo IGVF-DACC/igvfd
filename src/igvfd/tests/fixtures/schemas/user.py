@@ -2,13 +2,14 @@ import pytest
 
 
 @pytest.fixture
-def disabled_user(testapp, lab, award):
+def disabled_user(testapp, lab):
     item = {
         'first_name': 'IGVF',
         'last_name': 'Submitter',
         'email': 'no_login_submitter@example.org',
         'submits_for': [lab['@id']],
         'status': 'disabled',
+        'lab': lab['@id']
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
@@ -38,48 +39,52 @@ def user_v1(user_0):
 
 
 @pytest.fixture
-def admin(testapp):
+def admin(testapp, lab):
     item = {
         'first_name': 'Test',
         'last_name': 'Admin',
         'email': 'admin@example.org',
         'groups': ['admin'],
+        'lab': lab['@id']
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
 
 
 @pytest.fixture
-def wrangler(testapp):
+def wrangler(testapp, lab):
     item = {
         'uuid': '4c23ec32-c7c8-4ac0-affb-04befcc881d4',
         'first_name': 'Wrangler',
         'last_name': 'Admin',
         'email': 'wrangler@example.org',
         'groups': ['admin'],
+        'lab': lab['@id']
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
 
 
 @pytest.fixture
-def verified_member(testapp, award):
+def verified_member(testapp, lab):
     item = {
         'first_name': 'IGVF',
         'last_name': 'VerifiedMember',
         'email': 'Verified_member@example.org',
         'groups': ['verified'],
+        'lab': lab['@id']
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
 
 
 @pytest.fixture
-def unverified_member(testapp, award):
+def unverified_member(testapp, lab):
     item = {
         'first_name': 'IGVF',
         'last_name': 'NonVerifiedMember',
         'email': 'Non_verified_member@example.org',
+        'lab': lab['@id']
     }
     # User @@object view has keys omitted.
     res = testapp.post_json('/user', item)
@@ -100,24 +105,26 @@ def submitter(testapp, lab, award):
 
 
 @pytest.fixture
-def pi(testapp):
+def pi(testapp, lab):
     item = {
         'first_name': 'Principal',
         'last_name': 'Investigator',
         'email': 'pi@example.org',
         'groups': ['verified'],
+        'lab': lab['@id']
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
 
 
 @pytest.fixture
-def viewing_group_member(testapp, award):
+def viewing_group_member(testapp, award, lab):
     item = {
         'first_name': 'Viewing',
         'last_name': 'Group',
         'email': 'viewing_group_member@example.org',
         'viewing_groups': [award['viewing_group']],
+        'lab': lab['@id']
     }
     # User @@object view has keys omitted.
     res = testapp.post_json('/user', item)
