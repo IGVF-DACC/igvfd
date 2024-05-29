@@ -42,7 +42,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
             )
             yield AuditFailure('inconsistent parent sample', f'{detail} {description_duplicated_parent}', level='ERROR')
         parent = system.get('request').embed(parent_id + '@@object?skip_calculated=true')
-        skip_keys = ['accession', 'alternate_accessions', 'aliases', 'audit', 'creation_timestamp', 'date_obtained',
+        skip_keys = ['accession', 'alternate_accessions', 'aliases', 'audit', 'creation_timestamp', 'cellular_sub_pool', 'date_obtained',
                      'schema_version', 'starting_amount', 'starting_amount_units', 'submitted_by', 'description',
                      'sorted_from', 'sorted_from_detail', 'revoke_detail', 'notes', 'submitter_comment',
                      'documents', 'url', 'dbxrefs', 'pooled_from', 'part_of', 'originated_from', 'release_timestamp']
