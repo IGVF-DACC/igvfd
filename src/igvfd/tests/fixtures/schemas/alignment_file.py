@@ -121,3 +121,14 @@ def alignment_file_v8(alignment_file):
         'schema_version': '8'
     })
     return item
+
+
+@pytest.fixture
+def alignment_file_v9(alignment_file):
+    item = alignment_file.copy()
+    item.update({
+        'schema_version': '9',
+        'controlled_access': True,
+        'anvil_source_url': 'http://abc.123',
+    })
+    return item

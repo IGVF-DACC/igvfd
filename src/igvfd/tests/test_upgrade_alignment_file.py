@@ -42,3 +42,12 @@ def test_alignment_file_upgrade_7_8(upgrader, alignment_file_v7):
 def test_alignment_file_upgrade_8_9(upgrader, alignment_file_v8):
     value = upgrader.upgrade('alignment_file', alignment_file_v8, current_version='8', target_version='9')
     assert value['schema_version'] == '9'
+
+
+def test_alignment_file_upgrade_9_10(upgrader, alignment_file_v9):
+    assert 'anvil_source_url' in alignment_file_v9
+    assert alignment_file_v9['controlled_access'] is True
+    value = upgrader.upgrade('alignment_file', alignment_file_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert 'anvil_source_url' not in value
+    assert value['controlled_access'] is True
