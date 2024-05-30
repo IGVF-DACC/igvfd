@@ -96,10 +96,6 @@ def show_s3uri(controlled_access=False):
     return controlled_access is False
 
 
-def show_anvil_destination_url(controlled_access=False):
-    return controlled_access is True
-
-
 @abstract_collection(
     name='files',
     unique_key='accession',
@@ -178,24 +174,6 @@ class File(Item):
         except HTTPNotFound:
             return None
         return 's3://{bucket}/{key}'.format(**external)
-
-    @calculated_property(
-        condition=show_anvil_destination_url,
-        schema={
-            'title': 'AnVIL Destination URL',
-            'description': 'Destination URL linking to the controlled access file that has been deposited at AnVIL workspace.',
-            'comment': 'Do not submit. AnVIL destination URL is a calculated property.',
-            'type': 'string',
-            'notSubmittable': True
-        },
-        define=True,
-    )
-    def anvil_destination_url(self, request):
-        try:
-            external = self._get_external_sheet()
-        except HTTPNotFound:
-            return None
-        return f'{request.registry.settings["anvil_destination_container_url"]}/{external["key"]}'
 
     @calculated_property(
         condition=show_upload_credentials,
