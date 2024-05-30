@@ -25,6 +25,15 @@ def get_upload_files_user_access_key_and_secret_access_key():
     )
 
 
+def get_restricted_upload_files_user_access_key_and_secret_access_key():
+    client = get_secretsmanager_client()
+    return json.loads(
+        client.get_secret_value(
+            SecretId=os.environ['RESTRICTED_UPLOAD_USER_ACCESS_KEYS_SECRET_ARN']
+        )['SecretString']
+    )
+
+
 def get_sts_client(localstack_endpoint_url: Optional[str] = None) -> BaseClient:
     if localstack_endpoint_url is not None:
         return boto3.client(
@@ -39,6 +48,24 @@ def get_sts_client(localstack_endpoint_url: Optional[str] = None) -> BaseClient:
         'sts',
         aws_access_key_id=upload_files_user_keys['ACCESS_KEY'],
         aws_secret_access_key=upload_files_user_keys['SECRET_ACCESS_KEY'],
+        region_name='us-west-2',
+    )
+
+
+def get_restricted_sts_client(localstack_endpoint_url: Optional[str] = None) -> BaseClient:
+    if localstack_endpoint_url is not None:
+        return boto3.client(
+            'sts',
+            endpoint_url=localstack_endpoint_url,
+            aws_access_key_id='testing',
+            aws_secret_access_key='testing',
+            region_name='us-west-2',
+        )
+    restricted_upload_files_user_keys = get_restricted_upload_files_user_access_key_and_secret_access_key()
+    return boto3.client(
+        'sts',
+        aws_access_key_id=restricted_upload_files_user_keys['ACCESS_KEY'],
+        aws_secret_access_key=restricted_upload_files_user_keys['SECRET_ACCESS_KEY'],
         region_name='us-west-2',
     )
 

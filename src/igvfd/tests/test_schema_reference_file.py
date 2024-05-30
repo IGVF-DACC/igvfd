@@ -117,36 +117,3 @@ def test_schema_reference_file_regenerating_upload_credentials_on_invalid_file_c
     # Then upload_status is pending and validation_error_details are removed:
     assert r.json['@graph'][0]['upload_status'] == 'pending'
     assert 'validation_error_detail' not in r.json['@graph'][0]
-
-
-def test_schema_reference_file_controlled_access(testapp, reference_file):
-    res = testapp.patch_json(
-        reference_file['@id'],
-        {
-            'upload_status': 'deposited'
-        }, expect_errors=True)
-    assert res.status_code == 422
-
-    res = testapp.patch_json(
-        reference_file['@id'],
-        {
-            'anvil_source_url': 'https://lze1ablob.core.windows.net/sc-0f7a85e-9aeff8/SomeFile.fasta.gz'
-        }, expect_errors=True)
-    assert res.status_code == 422
-
-    res = testapp.patch_json(
-        reference_file['@id'],
-        {
-            'anvil_source_url': 'https://lze1ablob.core.windows.net/sc-0f7a85e-9aeff8/SomeFile.fasta.gz',
-            'controlled_access': True
-        }
-    )
-    assert res.status_code == 200
-
-    res = testapp.patch_json(
-        reference_file['@id'],
-        {
-            'upload_status': 'deposited'
-        }
-    )
-    assert res.status_code == 200

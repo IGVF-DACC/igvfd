@@ -43,34 +43,6 @@
                 }
             }
         },
-        "controlled_access": {
-            "comment": "Controlled access files are required to specify the anvil_source_url.",
-            "if": {
-                "properties": {
-                    "controlled_access": {
-                        "const": true
-                    }
-                }
-            },
-            "then": {
-                "required": [
-                    "anvil_source_url"
-                ]
-            }
-        },
-        "anvil_source_url": {
-            "comment": "AnVIL source URL can be specified only for files with controlled_access=true.",
-            "required": [
-                "controlled_access"
-            ],
-            "properties": {
-                "controlled_access": {
-                    "enum": [
-                        true
-                    ]
-                }
-            }
-        },
         "upload_status": {
             "comment": "Validated files must have file_size, and only files that are controlled_access=true can be in upload_status of deposited.",
             "allOf": [

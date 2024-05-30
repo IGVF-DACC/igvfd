@@ -34,6 +34,7 @@ from igvfd.types.base import (
 
 from igvfd.upload_credentials import get_s3_client
 from igvfd.upload_credentials import get_sts_client
+from igvfd.upload_credentials import get_restricted_sts_client
 from igvfd.upload_credentials import UploadCredentials
 
 
@@ -80,20 +81,10 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
 }
 
 
-def show_upload_credentials(request=None, context=None, upload_status=None, controlled_access=False):
+def show_upload_credentials(request=None, context=None, upload_status=None):
     if request is None or upload_status == 'validated':
         return False
-    if controlled_access is True:
-        return False
     return request.has_permission('edit', context)
-
-
-def show_href(controlled_access=False):
-    return controlled_access is False
-
-
-def show_s3uri(controlled_access=False):
-    return controlled_access is False
 
 
 @abstract_collection(
@@ -140,7 +131,6 @@ class File(Item):
         return paths_filtered_by_status(request, integrated_in)
 
     @calculated_property(
-        condition=show_href,
         schema={
             'title': 'Download URL',
             'description': 'The download path to obtain file.',
@@ -158,7 +148,6 @@ class File(Item):
         )
 
     @calculated_property(
-        condition=show_s3uri,
         schema={
             'title': 'S3 URI',
             'description': 'The S3 URI of public file object.',
@@ -193,22 +182,30 @@ class File(Item):
     def create(cls, registry, uuid, properties, sheets=None):
         if properties.get('upload_status') == 'pending':
             sheets = {} if sheets is None else sheets.copy()
-            bucket = registry.settings['file_upload_bucket']
+            if properties.get('controlled_access') is True:
+                bucket = registry.settings['restricted_file_upload_bucket']
+                sts_client = get_restricted_sts_client(
+                    localstack_endpoint_url=os.environ.get(
+                        'LOCALSTACK_ENDPOINT_URL'
+                    )
+                )
+            else:
+                bucket = registry.settings['file_upload_bucket']
+                sts_client = get_sts_client(
+                    localstack_endpoint_url=os.environ.get(
+                        'LOCALSTACK_ENDPOINT_URL'
+                    )
+                )
             file_extension = FILE_FORMAT_TO_FILE_EXTENSION[properties['file_format']]
             date = properties['creation_timestamp'].split('T')[0].replace('-', '/')
             accession = properties.get('accession')
             key = f'{date}/{uuid}/{accession}{file_extension}'
             name = f'up{time.time():.6f}-{accession}'[:32]  # max 32 chars
-            profile_name = registry.settings.get('file_upload_profile_name')
             upload_credentials = UploadCredentials(
                 bucket=bucket,
                 key=key,
                 name=name,
-                sts_client=get_sts_client(
-                    localstack_endpoint_url=os.environ.get(
-                        'LOCALSTACK_ENDPOINT_URL'
-                    )
-                ),
+                sts_client=sts_client,
             )
             sheets['external'] = upload_credentials.external_creds()
         return super(File, cls).create(registry, uuid, properties, sheets)
@@ -593,10 +590,6 @@ class ModelFile(File):
 )
 def get_upload(context, request):
     properties = context.upgrade_properties()
-    if properties.get('controlled_access') is True:
-        raise HTTPForbidden(
-            'Unable to generate credentials for controlled-access file'
-        )
     external = context.propsheets.get('external', {})
     upload_credentials = external.get('upload_credentials')
     # Show s3 location info for files originally submitted to EDW.
@@ -629,10 +622,6 @@ def get_upload(context, request):
 )
 def post_upload(context, request):
     properties = context.upgrade_properties()
-    if properties.get('controlled_access') is True:
-        raise HTTPForbidden(
-            'Unable to issue credentials for controlled-access file'
-        )
     if properties['upload_status'] == 'validated':
         raise HTTPForbidden(
             'Unable to issue new credentials when uploading_status is validated'
@@ -650,17 +639,23 @@ def post_upload(context, request):
         )
     accession = properties['accession']
     name = f'up{time.time():.6f}-{accession}'[:32]  # max 32 chars
-    file_upload_bucket = request.registry.settings['file_upload_bucket']
-    profile_name = request.registry.settings.get('file_upload_profile_name')
+    if properties.get('controlled_access') is True:
+        sts_client = get_restricted_sts_client(
+            localstack_endpoint_url=os.environ.get(
+                'LOCALSTACK_ENDPOINT_URL'
+            )
+        )
+    else:
+        sts_client = get_sts_client(
+            localstack_endpoint_url=os.environ.get(
+                'LOCALSTACK_ENDPOINT_URL'
+            )
+        )
     upload_credentials = UploadCredentials(
         bucket=bucket,
         key=key,
         name=name,
-        sts_client=get_sts_client(
-            localstack_endpoint_url=os.environ.get(
-                'LOCALSTACK_ENDPOINT_URL'
-            )
-        ),
+        sts_client=sts_client,
     )
     external_credentials = upload_credentials.external_creds()
     new_properties = None
@@ -707,10 +702,6 @@ def post_upload(context, request):
 )
 def download(context, request):
     properties = context.upgrade_properties()
-    if properties.get('controlled_access') is True:
-        raise HTTPForbidden(
-            'Downloading controlled-access file not allowed.'
-        )
     file_extension = FILE_FORMAT_TO_FILE_EXTENSION[properties['file_format']]
     accession = properties['accession']
     filename = f'{accession}{file_extension}'

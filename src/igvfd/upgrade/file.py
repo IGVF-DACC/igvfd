@@ -270,3 +270,13 @@ def sequence_file_12_13(value, system):
         if value['sequencing_kit'] == 'NovaSeq 6000 S4 Reagent Kit V1.5':
             value['sequencing_kit'] = 'NovaSeq 6000 S4 Reagent Kit v1.5'
     return
+
+
+@upgrade_step('alignment_file', '9', '10')
+@upgrade_step('reference_file', '13', '14')
+@upgrade_step('sequence_file', '13', '14')
+@upgrade_step('tabular_file', '9', '10')
+def file_13_14(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1682
+    if 'anvil_source_url' in value:
+        del value['anvil_source_url']
