@@ -47,7 +47,7 @@ def audit_input_file_sets_derived_from(value, system):
             "audit_level": "WARNING"
         },
         {
-            "audit_description": "Input file sets are expected to be the represented in the set of file sets of the files that are used to derive the files in an analysis set.",
+            "audit_description": "The analysis set input files are expected to belong to the input file sets.",
             "audit_category": "unexpected input file set",
             "audit_level": "ERROR"
         }
