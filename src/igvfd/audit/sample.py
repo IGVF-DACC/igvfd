@@ -26,7 +26,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
         }
     ]
     '''
-    object_type = space_in_words(value['@type'][0]).capitalize()
+    object_type = space_in_words(system.get('types')[0]).capitalize()
     description_metadata_inconsistency = get_audit_description(audit_sample_sorted_from_parent_child_check, index=0)
     description_duplicated_parent = get_audit_description(audit_sample_sorted_from_parent_child_check, index=1)
     if 'sorted_from' in value or 'part_of' in value:
