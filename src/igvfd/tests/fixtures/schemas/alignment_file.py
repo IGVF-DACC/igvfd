@@ -26,7 +26,7 @@ def controlled_access_alignment_file(testapp, lab, award, analysis_set_with_samp
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'md5sum': 'dc8d8a6af6105a86bc51c389ff19ea1b',
+        'md5sum': 'ec8d8a6af6105a86bc51c389ff19ea1b',
         'file_format': 'bam',
         'file_set': analysis_set_with_sample['@id'],
         'file_size': 9491803,

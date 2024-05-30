@@ -133,6 +133,8 @@ def test_integrated_in(testapp, construct_library_set_genome_wide, base_expressi
 
 
 def test_types_controlled_access_uses_restricted_bucket(testapp, controlled_access_alignment_file, alignment_file):
-    print(controlled_access_alignment_file)
-    print(alignment_file)
-    assert False
+    assert controlled_access_alignment_file['s3_uri'].startswith('s3://igvf-restricted-files-local')
+    assert controlled_access_alignment_file['upload_credentials']['upload_url'].startswith(
+        's3://igvf-restricted-files-local')
+    assert alignment_file['s3_uri'].startswith('s3://igvf-files-local')
+    assert alignment_file['upload_credentials']['upload_url'].startswith('s3://igvf-files-local')
