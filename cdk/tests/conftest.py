@@ -187,14 +187,58 @@ def upload_igvf_files_policy(stack):
 
 
 @pytest.fixture
+def download_igvf_restricted_files_policy(stack):
+    from aws_cdk.aws_iam import PolicyStatement
+    from aws_cdk.aws_iam import ManagedPolicy
+    return ManagedPolicy(
+        stack,
+        'RestrictedDownloadManagedPolicy',
+        statements=[
+            PolicyStatement(
+                actions=[
+                    's3:GetObject',
+                ],
+                resources=[
+                    'arn:aws:s3:::some-test-restricted-bucket/',
+                ]
+            ),
+        ]
+    )
+
+
+@pytest.fixture
+def upload_igvf_restricted_files_policy(stack):
+    from aws_cdk.aws_iam import PolicyStatement
+    from aws_cdk.aws_iam import ManagedPolicy
+    return ManagedPolicy(
+        stack,
+        'RestrictedUploadManagedPolicy',
+        statements=[
+            PolicyStatement(
+                actions=[
+                    's3:PutObject',
+                ],
+                resources=[
+                    'arn:aws:s3:::some-test-restricted_bucket/',
+                ]
+            ),
+        ]
+    )
+
+
+@pytest.fixture
 def bucket_access_policies(
         mocker,
         download_igvf_files_policy,
         upload_igvf_files_policy,
+        download_igvf_restricted_files_policy,
+        upload_igvf_restricted_files_policy,
 ):
     mock = mocker.Mock()
     mock.download_igvf_files_policy = download_igvf_files_policy
     mock.upload_igvf_files_policy = upload_igvf_files_policy
+    mock.download_igvf_restrictedfiles_policy = download_igvf_restricted_files_policy
+    mock.upload_igvf_restricted_files_policy = upload_igvf_restricted_files_policy
     return mock
 
 
@@ -220,6 +264,7 @@ def existing_resources(
     mock.bus = bus
     mock.bucket_access_policies = bucket_access_policies
     mock.upload_igvf_files_user_access_keys.secret = secret
+    mock.upload_igvf_restricted_files_user_access_keys.secret = secret
     return mock
 
 
