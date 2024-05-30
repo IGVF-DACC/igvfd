@@ -138,3 +138,28 @@ def test_types_controlled_access_uses_restricted_bucket(testapp, controlled_acce
         's3://igvf-restricted-files-local')
     assert alignment_file['s3_uri'].startswith('s3://igvf-files-local')
     assert alignment_file['upload_credentials']['upload_url'].startswith('s3://igvf-files-local')
+
+
+def test_types_controlled_access_upload_and_download_bucket_validation(testapp, controlled_access_alignment_file, alignment_file):
+    # Assert upload/download works for non controlled-access file.
+    res = testapp.get(alignment_file['@id'] + '@@upload')
+    assert 'upload_credentials' in res.json['@graph'][0]
+    testapp.post_json(alignment_file['@id'] + '@@upload', {}, status=200)
+    testapp.get(alignment_file['@id'] + '@@download', status=307)
+    # Assert upload/download works for controlled-access file.
+    res = testapp.get(controlled_access_alignment_file['@id'] + '@@upload')
+    assert 'upload_credentials' in res.json['@graph'][0]
+    testapp.post_json(controlled_access_alignment_file['@id'] + '@@upload', {}, status=200)
+    testapp.get(controlled_access_alignment_file['@id'] + '@@download', status=307)
+    # Assert upload/donwload fails after controlled-access patched.
+    testapp.patch_json(alignment_file['@id'], {'controlled_access': True}, status=200)
+    res = testapp.post_json(alignment_file['@id'] + '@@upload', {}, status=403)
+    assert res.json['detail'] == 'File is controlled_access=True but was created using bucket igvf-files-local'
+    res = testapp.get(alignment_file['@id'] + '@@download', status=403)
+    assert res.json['detail'] == 'File is controlled_access=True but was created using bucket igvf-files-local'
+    # Assert upload/donwload fails after controlled-access patched.
+    testapp.patch_json(controlled_access_alignment_file['@id'], {'controlled_access': False}, status=200)
+    res = testapp.post_json(controlled_access_alignment_file['@id'] + '@@upload', {}, status=403)
+    assert res.json['detail'] == 'File is controlled_access=False but was created using bucket igvf-restricted-files-local'
+    res = testapp.get(controlled_access_alignment_file['@id'] + '@@download', status=403)
+    assert res.json['detail'] == 'File is controlled_access=False but was created using bucket igvf-restricted-files-local'

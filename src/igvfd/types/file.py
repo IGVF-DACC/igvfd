@@ -607,6 +607,19 @@ def get_upload(context, request):
     }
 
 
+def validate_bucket_location(request, properties, bucket):
+    if properties.get('controlled_access') is True:
+        if bucket != request.registry.settings['restricted_file_upload_bucket']:
+            raise HTTPForbidden(
+                f'File is controlled_access=True but was created using bucket {bucket}'
+            )
+    else:
+        if bucket != request.registry.settings['file_upload_bucket']:
+            raise HTTPForbidden(
+                f'File is controlled_access=False but was created using bucket {bucket}'
+            )
+
+
 @view_config(
     name='upload',
     context=File,
@@ -630,15 +643,15 @@ def post_upload(context, request):
         'external',
         {}
     )
-    if external.get('service') == 's3':
-        bucket = external['bucket']
-        key = external['key']
-    else:
+    if external.get('service') != 's3':
         raise HTTPNotFound(
             detail=f'External service {external.get("service")} not expected'
         )
+    bucket = external['bucket']
+    key = external['key']
     accession = properties['accession']
     name = f'up{time.time():.6f}-{accession}'[:32]  # max 32 chars
+    validate_bucket_location(request, properties, bucket)
     if properties.get('controlled_access') is True:
         sts_client = get_restricted_sts_client(
             localstack_endpoint_url=os.environ.get(
@@ -712,25 +725,27 @@ def download(context, request):
                 _filename
             )
     external = context.propsheets.get('external', {})
-    if external.get('service') == 's3':
-        s3_client = get_s3_client(
-            localstack_endpoint_url=os.environ.get(
-                'LOCALSTACK_ENDPOINT_URL'
-            )
-        )
-        location = s3_client.generate_presigned_url(
-            ClientMethod='get_object',
-            Params={
-                'Bucket': external['bucket'],
-                'Key': external['key'],
-                'ResponseContentDisposition': 'attachment; filename=' + filename
-            },
-            ExpiresIn=36*60*60,
-        )
-    else:
+    if external.get('service') != 's3':
         raise HTTPNotFound(
             detail=f'External service {external.get("service")} not expected'
         )
+    bucket = external['bucket']
+    key = external['key']
+    validate_bucket_location(request, properties, bucket)
+    s3_client = get_s3_client(
+        localstack_endpoint_url=os.environ.get(
+            'LOCALSTACK_ENDPOINT_URL'
+        )
+    )
+    location = s3_client.generate_presigned_url(
+        ClientMethod='get_object',
+        Params={
+            'Bucket': bucket,
+            'Key': key,
+            'ResponseContentDisposition': 'attachment; filename=' + filename
+        },
+        ExpiresIn=36*60*60,
+    )
     if asbool(request.params.get('soft')):
         expires = int(parse_qs(urlparse(location).query)['Expires'][0])
         return {
