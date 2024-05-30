@@ -1,6 +1,6 @@
 {
-    "hash": "1497bcae939f6a0a7f4246f86a80e541",
-    "index_name": "prediction_set_1497bcae",
+    "hash": "42bb8f4d90085c9c8ebd2abafd65558e",
+    "index_name": "prediction_set_42bb8f4d",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -792,12 +792,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "anvil_destination_url": {
-                                "type": "keyword"
-                            },
-                            "anvil_source_url": {
-                                "type": "keyword"
-                            },
                             "assembly": {
                                 "type": "keyword"
                             },
@@ -1139,12 +1133,6 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "anvil_destination_url": {
-                                "type": "keyword"
-                            },
-                            "anvil_source_url": {
-                                "type": "keyword"
-                            },
                             "assembly": {
                                 "type": "keyword"
                             },
@@ -1299,12 +1287,6 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
-                                "type": "keyword"
-                            },
-                            "anvil_destination_url": {
-                                "type": "keyword"
-                            },
-                            "anvil_source_url": {
                                 "type": "keyword"
                             },
                             "assembly": {

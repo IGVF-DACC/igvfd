@@ -1,6 +1,6 @@
 {
-    "hash": "8aab30ea0ee0156fa4df80e7be4ca50a",
-    "index_name": "signal_file_8aab30ea",
+    "hash": "bcc482b317eff7960cd0da2b1dad9688",
+    "index_name": "signal_file_bcc482b3",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -155,9 +155,6 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
-                        "type": "keyword"
-                    },
-                    "anvil_destination_url": {
                         "type": "keyword"
                     },
                     "assembly": {

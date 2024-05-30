@@ -1,6 +1,6 @@
 {
-    "hash": "e0d2f2275435681cddc82674dd7cfbed",
-    "index_name": "configuration_file_e0d2f227",
+    "hash": "66be204d13cc7d729f6bb588f9872bd9",
+    "index_name": "configuration_file_66be204d",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -155,9 +155,6 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
-                        "type": "keyword"
-                    },
-                    "anvil_destination_url": {
                         "type": "keyword"
                     },
                     "award": {

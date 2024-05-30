@@ -1,6 +1,6 @@
 {
-    "hash": "658a95d8c1e1dfd513c9d3427c2487c7",
-    "index_name": "reference_file_658a95d8",
+    "hash": "826875971b0d767a858905719ef65257",
+    "index_name": "reference_file_82687597",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -155,12 +155,6 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
-                        "type": "keyword"
-                    },
-                    "anvil_destination_url": {
-                        "type": "keyword"
-                    },
-                    "anvil_source_url": {
                         "type": "keyword"
                     },
                     "assembly": {

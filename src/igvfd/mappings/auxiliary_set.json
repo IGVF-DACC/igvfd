@@ -1,6 +1,6 @@
 {
-    "hash": "d6bc36852f7485b56eac1a5eea65598d",
-    "index_name": "auxiliary_set_d6bc3685",
+    "hash": "c1f828296deba9b5639de567303411bd",
+    "index_name": "auxiliary_set_c1f82829",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -790,12 +790,6 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
-                                "type": "keyword"
-                            },
-                            "anvil_destination_url": {
-                                "type": "keyword"
-                            },
-                            "anvil_source_url": {
                                 "type": "keyword"
                             },
                             "assembly": {
