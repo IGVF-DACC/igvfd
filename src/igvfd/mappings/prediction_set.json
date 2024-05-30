@@ -1,6 +1,6 @@
 {
-    "hash": "ddb42c97cfbc4361c1c7dabc55a62908",
-    "index_name": "prediction_set_ddb42c97",
+    "hash": "d052dd6a906ea545b17ef752f72cdc24",
+    "index_name": "prediction_set_d052dd6a",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -473,9 +473,6 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
-                                "type": "keyword"
-                            },
-                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 17
+
+* Remove `readout`.
+
 ### Schema version 16
 
 * Restrict `samples` to 1 item.

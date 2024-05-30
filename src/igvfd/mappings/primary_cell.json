@@ -1,6 +1,6 @@
 {
-    "hash": "22dd28449d685fbe7cdb1954565cd873",
-    "index_name": "primary_cell_22dd2844",
+    "hash": "70cce1ac4aa9830a611a535759b8e364",
+    "index_name": "primary_cell_70cce1ac",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -653,9 +653,6 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
-                                "type": "keyword"
-                            },
-                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {

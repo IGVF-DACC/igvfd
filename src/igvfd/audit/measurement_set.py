@@ -95,58 +95,6 @@ def audit_unspecified_protocol(value, system):
 
 
 @audit_checker('MeasurementSet', frame='object')
-def audit_inconsistent_readout(value, system):
-    '''
-    [
-        {
-            "audit_description": "CRISPR-based and MPRA measurement sets are expected to specify a readout.",
-            "audit_category": "missing readout",
-            "audit_level": "NOT_COMPLIANT"
-        },
-        {
-            "audit_description": "Only CRISPR-based and MPRA measurement sets are expected to specify a readout.",
-            "audit_category": "unexpected readout",
-            "audit_level": "ERROR"
-        },
-        {
-            "audit_description": "If a readout is specified it is expected to be different than the assay term.",
-            "audit_category": "inconsistent readout",
-            "audit_level": "ERROR"
-        }
-    ]
-    '''
-    description_readout_expected = get_audit_description(audit_inconsistent_readout, index=0)
-    description_readout_not_expected = get_audit_description(audit_inconsistent_readout, index=1)
-    description_identical_readout = get_audit_description(audit_inconsistent_readout, index=2)
-    assay_term = value.get('assay_term')
-    assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    assay = assay.get('term_name')
-    assays_with_readout = ['CRISPR screen',
-                           'massively parallel reporter assay',
-                           'cas mediated mutagenesis']
-    if 'readout' in value:
-        if assay not in assays_with_readout:
-            detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'a {assay} `assay_term`, but specifies a `readout`.'
-            )
-            yield AuditFailure('unexpected readout', f'{detail} {description_readout_not_expected}', level='ERROR')
-        if assay_term == value.get('readout'):
-            detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} specifies '
-                f'the same `readout` and `assay_term`.'
-            )
-            yield AuditFailure('inconsistent readout', f'{detail} {description_identical_readout}', level='ERROR')
-    else:
-        if assay in assays_with_readout:
-            detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'a {assay} `assay_term` and does not specify a `readout`.'
-            )
-            yield AuditFailure('missing readout', f'{detail} {description_readout_expected}', level='NOT_COMPLIANT')
-
-
-@audit_checker('MeasurementSet', frame='object')
 def audit_CRISPR_screen_lacking_modifications(value, system):
     '''
     [

@@ -25,9 +25,6 @@ def measurement_set():
             'assay_term.term_name': {
                 'title': 'Assay Term'
             },
-            'readout.term_name': {
-                'title': 'Readout'
-            },
             'preferred_assay_title': {
                 'title': 'Preferred Assay Title'
             },
@@ -86,7 +83,6 @@ def measurement_set():
                 'title': 'Assay',
                 'facet_fields': [
                     'assay_term.term_name',
-                    'readout.term_name',
                     'preferred_assay_title',
                     'samples.modifications.modality',
                     'file_set_type',
@@ -152,9 +148,6 @@ def measurement_set():
             },
             'preferred_assay_title': {
                 'title': 'Preferred Assay Title'
-            },
-            'readout': {
-                'title': 'Readout'
             },
             'library_construction_platform': {
                 'title': 'Library Construction Platform'

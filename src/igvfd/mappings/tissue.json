@@ -1,6 +1,6 @@
 {
-    "hash": "42772a2648e138e9b327fadb2de22d39",
-    "index_name": "tissue_42772a26",
+    "hash": "bd0d7fd89a478f756110a908fc632313",
+    "index_name": "tissue_bd0d7fd8",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -656,9 +656,6 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
-                                "type": "keyword"
-                            },
-                            "readout": {
                                 "type": "keyword"
                             },
                             "related_multiome_datasets": {
