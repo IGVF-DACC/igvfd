@@ -237,7 +237,7 @@ def bucket_access_policies(
     mock = mocker.Mock()
     mock.download_igvf_files_policy = download_igvf_files_policy
     mock.upload_igvf_files_policy = upload_igvf_files_policy
-    mock.download_igvf_restrictedfiles_policy = download_igvf_restricted_files_policy
+    mock.download_igvf_restricted_files_policy = download_igvf_restricted_files_policy
     mock.upload_igvf_restricted_files_policy = upload_igvf_restricted_files_policy
     return mock
 
