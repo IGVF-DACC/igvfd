@@ -540,6 +540,40 @@
             },
             "Type": "AWS::CloudWatch::Alarm"
         },
+        "RestrictedDownloadManagedPolicyEEB564DD": {
+            "Properties": {
+                "Description": "",
+                "Path": "/",
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "s3:GetObject",
+                            "Effect": "Allow",
+                            "Resource": "arn:aws:s3:::some-test-restricted-bucket/"
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::ManagedPolicy"
+        },
+        "RestrictedUploadManagedPolicy4722D553": {
+            "Properties": {
+                "Description": "",
+                "Path": "/",
+                "PolicyDocument": {
+                    "Statement": [
+                        {
+                            "Action": "s3:PutObject",
+                            "Effect": "Allow",
+                            "Resource": "arn:aws:s3:::some-test-restricted_bucket/"
+                        }
+                    ],
+                    "Version": "2012-10-17"
+                }
+            },
+            "Type": "AWS::IAM::ManagedPolicy"
+        },
         "TestApplicationLoadBalancedFargateService8543A9A0": {
             "DependsOn": [
                 "TestApplicationLoadBalancedFargateServiceLBPublicListenerECSGroup6D891061",
