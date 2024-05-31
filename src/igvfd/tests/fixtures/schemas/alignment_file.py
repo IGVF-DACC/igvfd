@@ -130,6 +130,8 @@ def alignment_file_v9(alignment_file):
         'schema_version': '9',
         'controlled_access': True,
         'upload_status': 'deposited',
+        'status': 'released',
+        'release_timestamp': '2024-05-31T12:34:56Z',
         'anvil_source_url': 'http://abc.123',
     })
     return item
