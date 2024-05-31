@@ -347,4 +347,23 @@ def test_sequence_file_content_type_file_format(testapp, sequence_file):
     assert res.status_code == 200
 
 
-# WRITE A TEST FOR no anvil_url and controlled access -> not releasable
+def test_controlled_sequence_file_release(testapp, controlled_sequence_file_object):
+    res = testapp.patch_json(
+        controlled_sequence_file_object['@id'],
+        {
+            'status': 'released',
+            'release_timestamp': '2024-05-31T12:34:56Z'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        controlled_sequence_file_object['@id'],
+        {
+            'status': 'released',
+            'release_timestamp': '2024-05-31T12:34:56Z',
+            'anvil_source_url': 'http://abc.123'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 200
