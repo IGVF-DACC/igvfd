@@ -107,15 +107,6 @@
         },
         "assembly": {
             "description": "Genome assembly applicable for the annotation data."
-        },
-        "upload_status": {
-            "enum": [
-                "pending",
-                "deposited",
-                "file not found",
-                "invalidated",
-                "validated"
-            ]
         }
     },
     "fuzzy_searchable_fields": [

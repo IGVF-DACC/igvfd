@@ -278,5 +278,11 @@ def sequence_file_12_13(value, system):
 @upgrade_step('tabular_file', '9', '10')
 def file_13_14(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1682
+    notes = value.get('notes', '')
     if 'anvil_source_url' in value:
+        notes += f'This object\'s property anvil_source_url was {value['anvil_source_url']}.'
         del value['anvil_source_url']
+    if value['upload_status'] == 'deposited':
+        value['upload_status'] = 'pending'
+        notes += f'This object\'s upload_status was deposited, and changed to pending.'
+    value['notes'] = notes.strip()

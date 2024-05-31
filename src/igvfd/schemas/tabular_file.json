@@ -143,15 +143,6 @@
         },
         "dbxrefs": {
             "comment": "This file type currently does not support any external resource submission."
-        },
-        "upload_status": {
-            "enum": [
-                "pending",
-                "deposited",
-                "file not found",
-                "invalidated",
-                "validated"
-            ]
         }
     },
     "fuzzy_searchable_fields": [

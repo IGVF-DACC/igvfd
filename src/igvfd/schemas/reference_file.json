@@ -291,15 +291,6 @@
                 "appscript": "gencode.v44.annotation",
                 "igvf_utils": "gencode.v44.annotation"
             }
-        },
-        "upload_status": {
-            "enum": [
-                "pending",
-                "deposited",
-                "file not found",
-                "invalidated",
-                "validated"
-            ]
         }
     },
     "fuzzy_searchable_fields": [

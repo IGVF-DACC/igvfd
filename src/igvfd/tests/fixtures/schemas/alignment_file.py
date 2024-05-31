@@ -129,6 +129,7 @@ def alignment_file_v9(alignment_file):
     item.update({
         'schema_version': '9',
         'controlled_access': True,
+        'upload_status': 'deposited',
         'anvil_source_url': 'http://abc.123',
     })
     return item
