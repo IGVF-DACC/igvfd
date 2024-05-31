@@ -282,13 +282,13 @@ def file_13_14(value, system):
     if 'controlled_access' not in value:
         value['controlled_access'] = False
         notes += f'This object\'s property controlled_access was set to be False, because it was previously missing.'
-    elif value['controlled_access'] is True and value['status'] in ['released', 'archived', 'revoked']:
-        notes += f'This object\'s property status was {value['status']}, and has been changed to in progress.'
-        notes += f'This object\'s property release_timestamp was {value['release_timestamp']}, and has been removed.'
+    elif (value['controlled_access'] is True and value['status'] in ['released', 'archived', 'revoked']):
+        notes += f'This object\'s property status was {value["status"]}, and has been changed to in progress.'
+        notes += f'This object\'s property release_timestamp was {value["release_timestamp"]}, and has been removed.'
         value['status'] = 'in progress'
         del value['release_timestamp']
     if 'anvil_source_url' in value:
-        notes += f'This object\'s property anvil_source_url was {value['anvil_source_url']}.'
+        notes += f'This object\'s property anvil_source_url was {value["anvil_source_url"]}.'
         del value['anvil_source_url']
     if value['upload_status'] == 'deposited':
         value['upload_status'] = 'pending'

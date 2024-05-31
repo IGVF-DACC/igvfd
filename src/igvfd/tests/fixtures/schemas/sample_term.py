@@ -4,7 +4,7 @@ import pytest
 @pytest.fixture
 def sample_term_K562(testapp):
     item = {
-        'term_id': 'EFO:0002067',
+        'term_id': 'EFO:0002167',
         'term_name': 'K562',
         'dbxrefs': ['Cellosaurus:CVCL_0004']
     }
