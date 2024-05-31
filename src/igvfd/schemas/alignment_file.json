@@ -12,7 +12,8 @@
         "content_type",
         "reference_files",
         "redacted",
-        "filtered"
+        "filtered",
+        "controlled_access"
     ],
     "identifyingProperties": [
         "uuid",

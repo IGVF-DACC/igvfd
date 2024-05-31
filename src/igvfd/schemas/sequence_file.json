@@ -11,7 +11,8 @@
         "file_set",
         "content_type",
         "sequencing_platform",
-        "sequencing_run"
+        "sequencing_run",
+        "controlled_access"
     ],
     "identifyingProperties": [
         "uuid",

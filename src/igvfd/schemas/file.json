@@ -30,6 +30,36 @@
         }
     ],
     "dependentSchemas": {
+        "controlled_access": {
+            "comment": "Validation Error Detail can only be specified on files that did not pass validation.",
+            "if": {
+                "properties": {
+                    "controlled_access": {
+                        "const": true
+                    }
+                },
+                "not": {
+                    "properties": {
+                        "anvil_url": {
+                            "const": "deposited"
+                        }
+                    }
+                }
+            },
+            "then": {
+                "not": {
+                    "properties": {
+                        "status": {
+                            "enum": [
+                                "archived",
+                                "released",
+                                "revoked"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "validation_error_detail": {
             "comment": "Validation Error Detail can only be specified on files that did not pass validation.",
             "required": [
@@ -44,44 +74,19 @@
             }
         },
         "upload_status": {
-            "comment": "Validated files must have file_size, and only files that are controlled_access=true can be in upload_status of deposited.",
-            "allOf": [
-                {
-                    "comment": "Validated files must have file_size.",
-                    "if": {
-                        "properties": {
-                            "upload_status": {
-                                "const": "validated"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "file_size"
-                        ]
-                    }
-                },
-                {
-                    "comment": "Only controlled_access=true files can be in upload_status=deposited",
-                    "if": {
-                        "properties": {
-                            "upload_status": {
-                                "const": "deposited"
-                            }
-                        }
-                    },
-                    "then": {
-                        "required": [
-                            "controlled_access"
-                        ],
-                        "properties": {
-                            "controlled_access": {
-                                "const": true
-                            }
-                        }
+            "comment": "Validated files must have file_size.",
+            "if": {
+                "properties": {
+                    "upload_status": {
+                        "const": "validated"
                     }
                 }
-            ]
+            },
+            "then": {
+                "required": [
+                    "file_size"
+                ]
+            }
         },
         "status": {
             "comment": "Released, revoked, and archived files must not have upload_status pending or file not found. They are also required to have release_timestamp.",

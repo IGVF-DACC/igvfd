@@ -198,11 +198,11 @@
             "title": "Controlled Access",
             "description": "Boolean value, indicating the file being controlled access, if true.",
             "type": "boolean",
-            "default": false,
             "submissionExample": {
                 "appscript": false,
                 "igvf_utils": false
-            }
+            },
+            "requestMethod": "POST"
         }
     },
     "attribution": {
