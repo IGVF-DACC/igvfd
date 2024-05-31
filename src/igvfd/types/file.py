@@ -59,6 +59,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'hdf5': '.h5',
     'idat': '.idat',
     'jpg': '.jpg',
+    'json': '.json',
     'mtx': '.mtx',
     'obo': '.obo.gz',
     'owl': '.owl.gz',
@@ -569,6 +570,30 @@ class GenomeBrowserAnnotationFile(File):
 class ImageFile(File):
     item_type = 'image_file'
     schema = load_schema('igvfd:schemas/image_file.json')
+    embedded_with_frame = File.embedded_with_frame
+    set_status_up = File.set_status_up + []
+    set_status_down = File.set_status_down + []
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
+
+
+@collection(
+    name='model-files',
+    unique_key='accession',
+    properties={
+        'title': 'Model Files',
+        'description': 'Listing of model files',
+    }
+)
+class ModelFile(File):
+    item_type = 'model_file'
+    schema = load_schema('igvfd:schemas/model_file.json')
     embedded_with_frame = File.embedded_with_frame
     set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []

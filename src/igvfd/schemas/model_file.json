@@ -1,0 +1,139 @@
+{
+    "title": "Model File",
+    "$id": "/profiles/model_file.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "A file containing a trained model.",
+    "required": [
+        "award",
+        "lab",
+        "md5sum",
+        "file_format",
+        "file_set",
+        "content_type"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases",
+        "md5sum"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/controlled_access"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "file.json#/dependentSchemas"
+        ],
+        "content_type": {
+            "comment": "The file format should match the content type of the file. Graph structures should be in json format. Edge weights should be in hdf5 format.",
+            "oneOf": [
+                {
+                    "properties": {
+                        "content_type": {
+                            "const": "graph structure"
+                        },
+                        "file_format": {
+                            "const": "json"
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "content_type": {
+                            "const": "edge weights"
+                        },
+                        "file_format": {
+                            "const": "hdf5"
+                        }
+                    }
+                },
+                {
+                    "not": {
+                        "properties": {
+                            "content_type": {
+                                "enum": [
+                                    "edge weights",
+                                    "graph structure"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "type": "object",
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "content_type": {
+            "comment": "Content Type describes the content of the file.",
+            "enum": [
+                "edge weights",
+                "graph structure",
+                "position weight matrix"
+            ],
+            "submissionExample": {
+                "appscript": "edge weights",
+                "igvf_utils": "edge weights"
+            }
+        },
+        "file_format": {
+            "enum": [
+                "hdf5",
+                "json",
+                "tar",
+                "tsv"
+            ],
+            "submissionExample": {
+                "appscript": "tar",
+                "igvf_utils": "tar"
+            }
+        },
+        "upload_status": {
+            "enum": [
+                "pending",
+                "deposited",
+                "file not found",
+                "invalidated",
+                "validated"
+            ]
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "content_type",
+        "description",
+        "submitted_by.title",
+        "submitted_file_name",
+        "summary"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs",
+        "file_format"
+    ],
+    "changelog": "/profiles/changelogs/model_file.md"
+}
