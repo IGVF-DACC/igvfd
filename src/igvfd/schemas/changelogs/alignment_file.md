@@ -4,6 +4,7 @@
 
 * Remove from `upload_status` enum list `deposited`.
 * Remove `anvil_source_url`.
+* Require `controlled_access`.
 
 ### Minor changes since schema version 9
 
