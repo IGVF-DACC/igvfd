@@ -31,7 +31,7 @@
     ],
     "dependentSchemas": {
         "controlled_access": {
-            "comment": "Validation Error Detail can only be specified on files that did not pass validation.",
+            "comment": "Controlled access files can become public (released/revoked/archived) only after upload to AnVIL (results in defined anvil_url).",
             "if": {
                 "properties": {
                     "controlled_access": {
@@ -39,11 +39,9 @@
                     }
                 },
                 "not": {
-                    "properties": {
-                        "anvil_url": {
-                            "const": "deposited"
-                        }
-                    }
+                    "properties": [
+                        "anvil_url"
+                    ]
                 }
             },
             "then": {

@@ -345,3 +345,6 @@ def test_sequence_file_content_type_file_format(testapp, sequence_file):
         }
     )
     assert res.status_code == 200
+
+
+# WRITE A TEST FOR no anvil_url and controlled access -> not releasable
