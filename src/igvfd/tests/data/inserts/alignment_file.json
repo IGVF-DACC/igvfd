@@ -21,7 +21,8 @@
             "IGVFFI0001GNRF"
         ],
         "redacted": false,
-        "filtered": false
+        "filtered": false,
+        "controlled_access": false
     },
     {
         "uuid": "ea8c86b7-1271-ea86-cc75-bc7d7eb802c8",
@@ -46,7 +47,8 @@
             "IGVFFI0001GNRF"
         ],
         "redacted": true,
-        "filtered": true
+        "filtered": true,
+        "controlled_access": false
     },
     {
         "uuid": "76cd7e91-8dbc-4f7b-9fe9-a31511cbe4d3",

@@ -16,7 +16,8 @@ def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_file
             reference_file['@id']
         ],
         'redacted': False,
-        'filtered': False
+        'filtered': False,
+        'controlled_access': False
     }
     return testapp.post_json('/alignment_file', item, status=201).json['@graph'][0]
 
