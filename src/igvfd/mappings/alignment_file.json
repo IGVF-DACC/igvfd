@@ -1,6 +1,6 @@
 {
-    "hash": "ed1a2576f276ecc53f11d9be52fe1a1d",
-    "index_name": "alignment_file_ed1a2576",
+    "hash": "3cacf6c40e14d4fef913b7cd2791c94b",
+    "index_name": "alignment_file_3cacf6c4",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -155,6 +155,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "anvil_url": {
                         "type": "keyword"
                     },
                     "assembly": {

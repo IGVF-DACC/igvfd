@@ -1,6 +1,6 @@
 {
-    "hash": "b1e7af1b3f7bb697433d3f1cb3c1b4a9",
-    "index_name": "model_set_b1e7af1b",
+    "hash": "88c63f04b9bdcb2a9f3774ae50c63ae2",
+    "index_name": "model_set_88c63f04",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -788,6 +788,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "anvil_url": {
                                 "type": "keyword"
                             },
                             "assembly": {

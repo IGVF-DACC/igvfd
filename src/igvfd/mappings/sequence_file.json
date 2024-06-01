@@ -1,6 +1,6 @@
 {
-    "hash": "d048df73de51d38b50a4c366d8b8602a",
-    "index_name": "sequence_file_d048df73",
+    "hash": "1cc34c44acd56146eda73c5a3c752c2d",
+    "index_name": "sequence_file_1cc34c44",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -155,6 +155,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "anvil_url": {
                         "type": "keyword"
                     },
                     "award": {
