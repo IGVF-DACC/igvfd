@@ -32,21 +32,17 @@
     "dependentSchemas": {
         "controlled_access": {
             "comment": "Controlled access files can become public (released/revoked/archived) only after upload to AnVIL (results in defined anvil_url).",
-            "if": {
-                "properties": {
-                    "controlled_access": {
-                        "const": true
-                    }
-                },
-                "not": {
-                    "properties": [
-                        "anvil_url"
-                    ]
-                }
-            },
-            "then": {
-                "not": {
+            "anyOf": [
+                {
+                    "not": {
+                        "required": [
+                            "anvil_url"
+                        ]
+                    },
                     "properties": {
+                        "controlled_access": {
+                            "const": true
+                        },
                         "status": {
                             "enum": [
                                 "archived",
@@ -55,8 +51,29 @@
                             ]
                         }
                     }
+                },
+                {
+                    "properties": {
+                        "controlled_access": {
+                            "const": false
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "controlled_access": {
+                            "const": true
+                        },
+                        "status": {
+                            "enum": [
+                                "in progress",
+                                "deleted",
+                                "replaced"
+                            ]
+                        }
+                    }
                 }
-            }
+            ]
         },
         "validation_error_detail": {
             "comment": "Validation Error Detail can only be specified on files that did not pass validation.",
