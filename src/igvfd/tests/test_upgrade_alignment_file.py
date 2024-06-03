@@ -46,7 +46,7 @@ def test_alignment_file_upgrade_8_9(upgrader, alignment_file_v8):
 
 def test_alignment_file_upgrade_9_10(upgrader, alignment_file_v9):
     assert 'anvil_source_url' in alignment_file_v9
-    assert 'release_timestamp' in value
+    assert 'release_timestamp' in alignment_file_v9
     assert alignment_file_v9['controlled_access'] is True
     assert alignment_file_v9['upload_status'] is 'deposited'
     assert alignment_file_v9['status'] is 'released'

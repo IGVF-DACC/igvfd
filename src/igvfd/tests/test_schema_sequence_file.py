@@ -362,7 +362,7 @@ def test_controlled_sequence_file_release(testapp, controlled_sequence_file_obje
         {
             'status': 'released',
             'release_timestamp': '2024-05-31T12:34:56Z',
-            'anvil_source_url': 'http://abc.123'
+            'anvil_url': 'http://abc.123'
         },
         expect_errors=True
     )
