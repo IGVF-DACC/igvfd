@@ -116,7 +116,6 @@
         "upload_status": {
             "enum": [
                 "pending",
-                "deposited",
                 "file not found",
                 "invalidated",
                 "validated"
