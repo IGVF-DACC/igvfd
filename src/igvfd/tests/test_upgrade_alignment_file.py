@@ -48,12 +48,12 @@ def test_alignment_file_upgrade_9_10(upgrader, alignment_file_v9):
     assert 'anvil_source_url' in alignment_file_v9
     assert 'release_timestamp' in alignment_file_v9
     assert alignment_file_v9['controlled_access'] is True
-    assert alignment_file_v9['upload_status'] is 'deposited'
-    assert alignment_file_v9['status'] is 'released'
+    assert alignment_file_v9['upload_status'] == 'deposited'
+    assert alignment_file_v9['status'] == 'released'
     value = upgrader.upgrade('alignment_file', alignment_file_v9, current_version='9', target_version='10')
     assert value['schema_version'] == '10'
     assert 'anvil_source_url' not in value
     assert 'release_timestamp' not in value
-    assert alignment_file_v9['upload_status'] is 'pending'
+    assert alignment_file_v9['upload_status'] == 'pending'
     assert value['controlled_access'] is True
-    assert value['status'] is 'in progress'
+    assert value['status'] == 'in progress'
