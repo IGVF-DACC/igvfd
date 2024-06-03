@@ -30,3 +30,14 @@ def test_software_version_upgrade_3_4(upgrader, software_version_v3):
         current_version='3', target_version='4')
     assert value['schema_version'] == '4'
     assert 'description' not in value
+
+
+def test_software_version_upgrade_5_6(upgrader, software_version_v5):
+    value = upgrader.upgrade(
+        'software_version', software_version_v5,
+        current_version='5', target_version='6')
+    assert value['schema_version'] == '6'
+    assert value['software'] == '/software/graphreg/'
+    assert value['version'] == 'v1.0.0'
+    assert value['notes'].endswith(
+        'This software version lacked a link to a software and has been upgraded to link to /software/graphreg/ as a placeholder. This software version lacked a version and has been upgraded to v1.0.0 as a placeholder.')

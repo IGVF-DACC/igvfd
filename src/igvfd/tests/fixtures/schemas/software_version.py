@@ -51,3 +51,8 @@ def software_version_v3(software_version_v2):
         'description': '',
     })
     return item
+
+
+def software_version_v5(testapp, software, lab, award):
+    item = {}
+    return item

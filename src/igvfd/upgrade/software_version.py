@@ -42,3 +42,20 @@ def software_version_4_5(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('software_version', '5', '6')
+def software_version_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1686
+    software_note = ''
+    version_note = ''
+    if 'software' not in value:
+        value['software'] = '/software/graphreg/'
+        software_note = 'This software version lacked a link to a software and has been upgraded to link to /software/graphreg/ as a placeholder.'
+    if 'version' not in value:
+        value['version'] = 'v1.0.0'
+        version_note = 'This software version lacked a version and has been upgraded to v1.0.0 as a placeholder.'
+    merged_note = ' '.join([x for x in [software_note, version_note] if x != ''])
+    notes = value.get('notes', '')
+    notes += merged_note
+    value['notes'] = notes.strip()
