@@ -53,6 +53,7 @@ def software_version_v3(software_version_v2):
     return item
 
 
-def software_version_v5(testapp, software, lab, award):
+@pytest.fixture
+def software_version_v5(testapp):
     item = {}
     return item
