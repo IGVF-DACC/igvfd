@@ -29,7 +29,8 @@ def test_sequence_file_min_max_mean_read_length(testapp, sequence_file_fastq_no_
     # Validated fastqs must have read length and read count. Validated files must have file size.
     sequence_file_fastq_no_read_length.update(
         {
-            'upload_status': 'validated'
+            'upload_status': 'validated',
+            'controlled_access': False
         }
     )
     res = testapp.post_json(
