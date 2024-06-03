@@ -353,6 +353,11 @@ def test_controlled_sequence_file_release(testapp, controlled_sequence_file_obje
         controlled_sequence_file_object['@id'],
         {
             'status': 'released',
+            'minimum_read_length': 99,
+            'maximum_read_length': 101,
+            'mean_read_length': 100,
+            'read_count': 23040138,
+            'file_size': 5495803,
             'upload_status': 'validated',
             'release_timestamp': '2024-05-31T12:34:56Z'
         },
@@ -363,6 +368,11 @@ def test_controlled_sequence_file_release(testapp, controlled_sequence_file_obje
         controlled_sequence_file_object['@id'],
         {
             'status': 'released',
+            'minimum_read_length': 99,
+            'maximum_read_length': 101,
+            'mean_read_length': 100,
+            'read_count': 23040138,
+            'file_size': 5495803,
             'upload_status': 'validated',
             'release_timestamp': '2024-05-31T12:34:56Z',
             'anvil_url': 'http://abc.123'
