@@ -34,11 +34,9 @@
             "comment": "Controlled access files can become public (released/revoked/archived) only after upload to AnVIL (results in defined anvil_url).",
             "anyOf": [
                 {
-                    "not": {
-                        "required": [
-                            "anvil_url"
-                        ]
-                    },
+                    "required": [
+                        "anvil_url"
+                    ],
                     "properties": {
                         "controlled_access": {
                             "const": true

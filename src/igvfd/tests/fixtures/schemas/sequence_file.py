@@ -255,6 +255,11 @@ def controlled_sequence_file(lab, award, analysis_set_with_sample, platform_term
         'file_set': analysis_set_with_sample['@id'],
         'content_type': 'reads',
         'sequencing_run': 1,
+        'read_count': 2308,
+        'file_size': 54958,
+        'minimum_read_length': 23,
+        'maximum_read_length': 524,
+        'mean_read_length': 123,
         'sequencing_platform': platform_term_HiSeq['@id'],
         'controlled_access': True
     }
