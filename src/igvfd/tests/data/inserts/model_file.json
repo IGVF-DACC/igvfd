@@ -1,0 +1,56 @@
+[
+    {
+        "uuid": "7ce63b4a-b0b3-b627-a251-09eb6596a3e2",
+        "accession": "IGVFFI0990EDWE",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:model_file_edge_weights_01"
+        ],
+        "md5sum": "f620b1c5d1bb3aadf840d78df2567b15",
+        "file_format": "hdf5",
+        "content_type": "edge weights",
+        "submitted_file_name": "/Users/igvf/igvf_files/edge_weights.h5",
+        "file_size": 302391,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-05-20T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set"
+    },
+    {
+        "uuid": "7d3c3b4a-ed26-20df-a251-2596024904e8",
+        "accession": "IGVFFI8800GRST",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:model_file_graph_structure_01"
+        ],
+        "md5sum": "5d1b44b1fd8f256d5d3cedd9ca91d78b",
+        "file_format": "json",
+        "content_type": "graph structure",
+        "submitted_file_name": "/Users/igvf/igvf_files/graph_structure.json",
+        "file_size": 889320,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-05-24T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set"
+    },
+    {
+        "uuid": "3b47ce6a-79c4-b627-ebcc-6a309eb659e2",
+        "accession": "IGVFFI0000PWMX",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:model_file_position_weight_matrix"
+        ],
+        "md5sum": "d84e92eb7b151c2bf620bf840d2431ad",
+        "file_format": "tar",
+        "content_type": "position weight matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/position_weight_matrix.tar.gz",
+        "file_size": 8330,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-05-14T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set"
+    }
+]
