@@ -151,3 +151,46 @@ def test_types_controlled_access_upload_and_download_bucket_validation(testapp, 
     assert 'upload_credentials' in res.json['@graph'][0]
     testapp.post_json(controlled_access_alignment_file['@id'] + '@@upload', {}, status=200)
     testapp.get(controlled_access_alignment_file['@id'] + '@@download', status=307)
+
+
+def test_types_file_no_download_controlled_access_with_anvil_url(testapp, controlled_access_alignment_file, alignment_file):
+    res = testapp.get(alignment_file['@id'])
+    assert res.json['controlled_access'] is False
+    assert 's3_uri' in res.json
+    assert 'href' in res.json
+    assert 'anvil_url' not in res.json
+    res = testapp.get(controlled_access_alignment_file['@id'])
+    assert res.json['controlled_access'] is True
+    assert res.json['status'] == 'in progress'
+    assert 's3_uri' in res.json
+    assert 'href' in res.json
+    assert 'anvil_url' not in res.json
+    testapp.get(controlled_access_alignment_file['@id'] + '@@upload', status=200)
+    testapp.post_json(controlled_access_alignment_file['@id'] + '@@upload', {}, status=200)
+    testapp.get(controlled_access_alignment_file['@id'] + '@@download', status=307)
+    testapp.patch_json(
+        controlled_access_alignment_file['@id'],
+        {
+            'status': 'released',
+            'release_timestamp':  '2024-03-06T12:34:56Z',
+            'upload_status': 'validated',
+        },
+        status=422
+    )
+    testapp.patch_json(
+        controlled_access_alignment_file['@id'],
+        {
+            'status': 'released',
+            'release_timestamp':  '2024-03-06T12:34:56Z',
+            'upload_status': 'validated',
+            'anvil_url': 'https://abc.123',
+        },
+        status=200
+    )
+    res = testapp.get(controlled_access_alignment_file['@id'])
+    assert res.json['controlled_access'] is True
+    assert res.json['status'] == 'released'
+    assert 's3_uri' not in res.json
+    assert 'href' not in res.json
+    assert 'anvil_url' in res.json
+    testapp.get(controlled_access_alignment_file['@id'] + '@@download', status=403)

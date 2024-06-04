@@ -87,6 +87,14 @@ def show_upload_credentials(request=None, context=None, upload_status=None):
     return request.has_permission('edit', context)
 
 
+def show_href(anvil_url=None):
+    return anvil_url is None
+
+
+def show_s3uri(anvil_url=None):
+    return anvil_url is None
+
+
 @abstract_collection(
     name='files',
     unique_key='accession',
@@ -131,6 +139,7 @@ class File(Item):
         return paths_filtered_by_status(request, integrated_in)
 
     @calculated_property(
+        condition=show_href,
         schema={
             'title': 'Download URL',
             'description': 'The download path to obtain file.',
@@ -148,6 +157,7 @@ class File(Item):
         )
 
     @calculated_property(
+        condition=show_s3uri,
         schema={
             'title': 'S3 URI',
             'description': 'The S3 URI of public file object.',
@@ -715,6 +725,10 @@ def post_upload(context, request):
 )
 def download(context, request):
     properties = context.upgrade_properties()
+    if properties.get('anvil_url') is not None:
+        raise HTTPForbidden(
+            'Downloading Anvil file not allowed.'
+        )
     file_extension = FILE_FORMAT_TO_FILE_EXTENSION[properties['file_format']]
     accession = properties['accession']
     filename = f'{accession}{file_extension}'
