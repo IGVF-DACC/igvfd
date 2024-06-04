@@ -23,5 +23,4 @@ def test_user_upgrade_3_4(upgrader, user_v3):
 
 def test_user_upgrade_4_5(upgrader, user_v4):
     value = upgrader.upgrade('user', user_v4, current_version='4', target_version='5')
-    assert 'lab' in value and value.get('lab') == '/labs/j-michael-cherry/'
     assert value['schema_version'] == '5'

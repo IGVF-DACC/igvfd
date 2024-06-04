@@ -52,39 +52,36 @@ def admin(testapp, lab):
 
 
 @pytest.fixture
-def wrangler(testapp, lab):
+def wrangler(testapp):
     item = {
         'uuid': '4c23ec32-c7c8-4ac0-affb-04befcc881d4',
         'first_name': 'Wrangler',
         'last_name': 'Admin',
         'email': 'wrangler@example.org',
-        'groups': ['admin'],
-        'lab': lab['@id']
+        'groups': ['admin']
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
 
 
 @pytest.fixture
-def verified_member(testapp, lab):
+def verified_member(testapp):
     item = {
         'first_name': 'IGVF',
         'last_name': 'VerifiedMember',
         'email': 'Verified_member@example.org',
-        'groups': ['verified'],
-        'lab': lab['@id']
+        'groups': ['verified']
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
 
 
 @pytest.fixture
-def unverified_member(testapp, lab):
+def unverified_member(testapp):
     item = {
         'first_name': 'IGVF',
         'last_name': 'NonVerifiedMember',
-        'email': 'Non_verified_member@example.org',
-        'lab': lab['@id']
+        'email': 'Non_verified_member@example.org'
     }
     # User @@object view has keys omitted.
     res = testapp.post_json('/user', item)
@@ -105,26 +102,24 @@ def submitter(testapp, lab, award):
 
 
 @pytest.fixture
-def pi(testapp, lab):
+def pi(testapp):
     item = {
         'first_name': 'Principal',
         'last_name': 'Investigator',
         'email': 'pi@example.org',
-        'groups': ['verified'],
-        'lab': lab['@id']
+        'groups': ['verified']
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
 
 
 @pytest.fixture
-def viewing_group_member(testapp, award, lab):
+def viewing_group_member(testapp, award):
     item = {
         'first_name': 'Viewing',
         'last_name': 'Group',
         'email': 'viewing_group_member@example.org',
-        'viewing_groups': [award['viewing_group']],
-        'lab': lab['@id']
+        'viewing_groups': [award['viewing_group']]
     }
     # User @@object view has keys omitted.
     res = testapp.post_json('/user', item)
