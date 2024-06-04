@@ -7,8 +7,7 @@
     "required": [
         "email",
         "first_name",
-        "last_name",
-        "lab"
+        "last_name"
     ],
     "identifyingProperties": [
         "uuid",

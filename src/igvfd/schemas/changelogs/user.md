@@ -3,7 +3,6 @@
 ### Schema version 5
 
 * Add regex for `email`.
-* Require `lab`.
 
 ### Schema version 4
 

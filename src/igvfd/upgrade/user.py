@@ -34,8 +34,4 @@ def user_3_4(value, system):
 @upgrade_step('user', '4', '5')
 def user_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1671
-    if 'lab' not in value:
-        notes = value.get('notes', '')
-        notes = + " This user's lab has been defaulted to /labs/j-michael-cherry/."
-        value['notes'] = notes
-        value['lab'] = '/labs/j-michael-cherry/'
+    return
