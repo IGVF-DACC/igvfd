@@ -5,7 +5,8 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description
+    get_audit_description,
+    space_in_words
 )
 
 
@@ -20,10 +21,11 @@ def audit_ntr_term_id(value, system):
         }
     ]
     '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
     description = get_audit_description(audit_ntr_term_id)
     if 'term_id' in value:
         ontologyterm_id = value['@id']
         term_id = value['term_id']
         if term_id.startswith('NTR'):
-            detail = f'Ontology term for {audit_link(path_to_text(ontologyterm_id), ontologyterm_id)} has been newly requested.'
+            detail = f'{object_type} for {audit_link(path_to_text(ontologyterm_id), ontologyterm_id)} has been newly requested.'
             yield AuditFailure('NTR term ID', f'{detail} {description}', level='INTERNAL_ACTION')
