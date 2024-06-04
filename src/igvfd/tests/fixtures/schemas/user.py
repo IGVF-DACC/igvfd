@@ -9,7 +9,6 @@ def disabled_user(testapp, lab):
         'email': 'no_login_submitter@example.org',
         'submits_for': [lab['@id']],
         'status': 'disabled',
-        'lab': lab['@id']
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
@@ -64,7 +63,7 @@ def wrangler(testapp):
 
 
 @pytest.fixture
-def verified_member(testapp):
+def verified_member(testapp, award):
     item = {
         'first_name': 'IGVF',
         'last_name': 'VerifiedMember',
@@ -76,7 +75,7 @@ def verified_member(testapp):
 
 
 @pytest.fixture
-def unverified_member(testapp):
+def unverified_member(testapp, award):
     item = {
         'first_name': 'IGVF',
         'last_name': 'NonVerifiedMember',
