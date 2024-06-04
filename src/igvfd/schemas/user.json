@@ -33,7 +33,7 @@
             "description": "The email associated with the user's account.",
             "format": "email",
             "uniqueKey": true,
-            "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+            "pattern": "^[a-zA-Z0-9\\._%+-]+@[a-zA-Z0-9\\.-]+\\.[a-zA-Z]{2,}$"
         },
         "first_name": {
             "title": "First Name",
