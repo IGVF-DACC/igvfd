@@ -39,13 +39,12 @@ def user_v1(user_0):
 
 
 @pytest.fixture
-def admin(testapp, lab):
+def admin(testapp):
     item = {
         'first_name': 'Test',
         'last_name': 'Admin',
         'email': 'admin@example.org',
         'groups': ['admin'],
-        'lab': lab['@id'],
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
@@ -119,7 +118,7 @@ def viewing_group_member(testapp, award):
         'first_name': 'Viewing',
         'last_name': 'Group',
         'email': 'viewing_group_member@example.org',
-        'viewing_groups': [award['viewing_group']]
+        'viewing_groups': [award['viewing_group']],
     }
     # User @@object view has keys omitted.
     res = testapp.post_json('/user', item)
