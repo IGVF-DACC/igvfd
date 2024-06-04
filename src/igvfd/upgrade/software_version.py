@@ -49,13 +49,21 @@ def software_version_5_6(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1686
     software_note = ''
     version_note = ''
+    lab_note = ''
+    award_note = ''
     if 'software' not in value:
         value['software'] = '/software/graphreg/'
         software_note = 'This software version lacked a link to a software and has been upgraded to link to /software/graphreg/ as a placeholder.'
     if 'version' not in value:
         value['version'] = 'v1.0.0'
         version_note = 'This software version lacked a version and has been upgraded to v1.0.0 as a placeholder.'
-    merged_note = ' '.join([x for x in [software_note, version_note] if x != ''])
+    if 'lab' not in value:
+        value['lab'] = '/labs/j-michael-cherry/'
+        lab_note = 'This software version lacked a lab and has been upgraded to /labs/j-michael-cherry/ as a placeholder.'
+    if 'award' not in value:
+        value['award'] = '/awards/HG012012/'
+        award_note = 'This software version lacked an award and has been upgraded to /awards/HG012012/ as a placeholder.'
+    merged_note = ' '.join([x for x in [software_note, version_note, lab_note, award_notes] if x != ''])
     notes = value.get('notes', '')
     notes += merged_note
     value['notes'] = notes.strip()

@@ -40,4 +40,12 @@ def test_software_version_upgrade_5_6(upgrader, software_version_v5):
     assert value['software'] == '/software/graphreg/'
     assert value['version'] == 'v1.0.0'
     assert value['notes'].endswith(
-        'This software version lacked a link to a software and has been upgraded to link to /software/graphreg/ as a placeholder. This software version lacked a version and has been upgraded to v1.0.0 as a placeholder.')
+        'This software version lacked a link to a software '
+        'and has been upgraded to link to /software/graphreg/ '
+        'as a placeholder. This software version lacked a version '
+        'and has been upgraded to v1.0.0 as a placeholder. This '
+        'software version lacked a lab and has been upgraded to '
+        '/labs/j-michael-cherry/ as a placeholder. This software '
+        'version lacked an award and has been upgraded to '
+        '/awards/HG012012/ as a placeholder.'
+    )

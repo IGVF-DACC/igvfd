@@ -25,6 +25,8 @@
         }
     ],
     "required": [
+        "award",
+        "lab",
         "software",
         "version"
     ],
