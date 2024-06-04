@@ -63,7 +63,7 @@ def software_version_5_6(value, system):
     if 'award' not in value:
         value['award'] = '/awards/HG012012/'
         award_note = 'This software version lacked an award and has been upgraded to /awards/HG012012/ as a placeholder.'
-    merged_note = ' '.join([x for x in [software_note, version_note, lab_note, award_notes] if x != ''])
+    merged_note = ' '.join([x for x in [software_note, version_note, lab_note, award_note] if x != ''])
     notes = value.get('notes', '')
     notes += merged_note
     value['notes'] = notes.strip()
