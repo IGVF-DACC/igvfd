@@ -45,7 +45,7 @@ def admin(testapp, lab):
         'last_name': 'Admin',
         'email': 'admin@example.org',
         'groups': ['admin'],
-        'lab': lab['@id']
+        'lab': lab['@id'],
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
@@ -58,7 +58,7 @@ def wrangler(testapp):
         'first_name': 'Wrangler',
         'last_name': 'Admin',
         'email': 'wrangler@example.org',
-        'groups': ['admin']
+        'groups': ['admin'],
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
@@ -70,7 +70,7 @@ def verified_member(testapp):
         'first_name': 'IGVF',
         'last_name': 'VerifiedMember',
         'email': 'Verified_member@example.org',
-        'groups': ['verified']
+        'groups': ['verified'],
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
@@ -81,7 +81,7 @@ def unverified_member(testapp):
     item = {
         'first_name': 'IGVF',
         'last_name': 'NonVerifiedMember',
-        'email': 'Non_verified_member@example.org'
+        'email': 'Non_verified_member@example.org',
     }
     # User @@object view has keys omitted.
     res = testapp.post_json('/user', item)
@@ -107,7 +107,7 @@ def pi(testapp):
         'first_name': 'Principal',
         'last_name': 'Investigator',
         'email': 'pi@example.org',
-        'groups': ['verified']
+        'groups': ['verified'],
     }
     res = testapp.post_json('/user', item)
     return testapp.get(res.location).json
