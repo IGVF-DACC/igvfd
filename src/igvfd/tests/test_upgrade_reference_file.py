@@ -65,3 +65,10 @@ def test_reference_file_upgrade_11_12(upgrader, reference_file_v11):
     assert 'derived_from' not in value
     assert 'file_format_specifications' not in value
     assert value['schema_version'] == '12'
+
+
+def test_reference_file_upgrade_13_14(upgrader, reference_file_v13):
+    value = upgrader.upgrade('reference_file', reference_file_v13, current_version='13', target_version='14')
+    assert 'anvil_url' not in value
+    assert 'notes' not in value
+    assert value['schema_version'] == '14'

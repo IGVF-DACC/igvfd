@@ -294,4 +294,5 @@ def file_13_14(value, system):
     if value['upload_status'] == 'deposited':
         value['upload_status'] = 'pending'
         notes += f'This object\'s upload_status was deposited, and changed to pending.'
-    value['notes'] = notes.strip()
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

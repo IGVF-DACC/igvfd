@@ -132,3 +132,15 @@ def reference_file_v11(reference_file_v6):
         'file_format_specifications': []
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v13(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '13',
+        'status': 'in progress',
+        'controlled_access': False,
+        'upload_status': 'validated'
+    })
+    return item
