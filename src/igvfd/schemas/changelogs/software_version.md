@@ -1,5 +1,12 @@
 ## Changelog for *`software_version.json`*
 
+### Schema version 6
+
+* Require `award`.
+* Require `lab`.
+* Require `software`.
+* Require `version`.
+
 ### Schema version 5
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.
