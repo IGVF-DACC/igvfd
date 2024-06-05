@@ -296,7 +296,6 @@ def file_13_14(value, system):
         notes += f'This object\'s upload_status was deposited, and changed to pending.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
-    value['notes'] = notes.strip()
 
 
 @upgrade_step('signal_file', '8', '9')
