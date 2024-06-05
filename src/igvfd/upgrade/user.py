@@ -35,8 +35,9 @@ def user_3_4(value, system):
 def user_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1671
     if ' ' in value.get('email'):
+        old_email = value.get('email')
         new_email = value['email'].replace(' ', '')
         notes = value.get('notes')
-        notes = notes + f'This user previously specified {value.get('email')} as its email, but was upgraded to {new_email}.'
+        notes = notes + f'This user previously specified {old_email} as its email, but was upgraded to {new_email}.'
         value['email'] = new_email
     return
