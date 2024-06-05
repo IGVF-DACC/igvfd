@@ -11,46 +11,16 @@ from .formatter import (
 
 
 @audit_checker('File', frame='object')
-def audit_file_controlled_access_file_in_correct_anvil_workspace(value, system):
-    '''
-    [
-        {
-            "audit_description": "All controlled access files have to be moved from lab submission AnVIL workspace to DACC AnVIL workspace.",
-            "audit_category": "incorrect anvil workspace",
-            "audit_level": "INTERNAL_ACTION"
-        }
-    ]
-    '''
-    object_type = space_in_words(value['@type'][0]).capitalize()
-    if value.get('controlled_access', False) is False:
-        return
-    if value.get('upload_status') != 'pending':
-        return
-    description = get_audit_description(audit_file_controlled_access_file_in_correct_anvil_workspace)
-    detail = (
-        f'Move controlled access {object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-        f'from submission AnVIL workspace to protected AnVIL workspace. '
-        f'Source={value["anvil_source_url"]} '
-        f'Destination={value["anvil_destination_url"]}'
-    )
-    yield AuditFailure(
-        'incorrect anvil workspace',
-        f'{detail} {description}',
-        level='INTERNAL_ACTION'
-    )
-
-
-@audit_checker('File', frame='object')
 def audit_upload_status(value, system):
     '''
     [
         {
-            "audit_description": "Files are expected to be validated or deposited.",
+            "audit_description": "Files are expected to be validated.",
             "audit_category": "unvalidated upload status",
             "audit_level": "ERROR"
         },
         {
-            "audit_description": "External files are expected to be validated or deposited.",
+            "audit_description": "External files are expected to be validated.",
             "audit_category": "unvalidated upload status",
             "audit_level": "WARNING"
         }
@@ -58,7 +28,7 @@ def audit_upload_status(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     upload_status = value.get('upload_status')
-    if upload_status not in ['validated', 'deposited']:
+    if upload_status not in ['validated']:
         if value.get('external'):
             audit_level = 'WARNING'
             description = get_audit_description(audit_upload_status, index=1)

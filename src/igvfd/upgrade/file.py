@@ -270,3 +270,28 @@ def sequence_file_12_13(value, system):
         if value['sequencing_kit'] == 'NovaSeq 6000 S4 Reagent Kit V1.5':
             value['sequencing_kit'] = 'NovaSeq 6000 S4 Reagent Kit v1.5'
     return
+
+
+@upgrade_step('alignment_file', '9', '10')
+@upgrade_step('reference_file', '13', '14')
+@upgrade_step('sequence_file', '13', '14')
+@upgrade_step('tabular_file', '9', '10')
+def file_13_14(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1682
+    notes = value.get('notes', '')
+    if 'controlled_access' not in value:
+        value['controlled_access'] = False
+        notes += f'This object\'s property controlled_access was set to be False, because it was previously missing.'
+    elif (value['controlled_access'] is True and value['status'] in ['released', 'archived', 'revoked']):
+        notes += f'This object\'s property status was {value["status"]}, and has been changed to in progress.'
+        value['status'] = 'in progress'
+        if 'release_timestamp' in value:
+            notes += f'This object\'s property release_timestamp was {value["release_timestamp"]}, and has been removed.'
+            del value['release_timestamp']
+    if 'anvil_source_url' in value:
+        notes += f'This object\'s property anvil_source_url was {value["anvil_source_url"]}.'
+        del value['anvil_source_url']
+    if value['upload_status'] == 'deposited':
+        value['upload_status'] = 'pending'
+        notes += f'This object\'s upload_status was deposited, and changed to pending.'
+    value['notes'] = notes.strip()

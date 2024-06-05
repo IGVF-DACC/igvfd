@@ -1,6 +1,6 @@
 {
-    "hash": "6da3e7c348348b79a04ea483fde1349d",
-    "index_name": "tabular_file_6da3e7c3",
+    "hash": "7df9f45897e8edd5739dcf96210a7abf",
+    "index_name": "tabular_file_7df9f458",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -157,10 +157,7 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
-                    "anvil_destination_url": {
-                        "type": "keyword"
-                    },
-                    "anvil_source_url": {
+                    "anvil_url": {
                         "type": "keyword"
                     },
                     "assembly": {

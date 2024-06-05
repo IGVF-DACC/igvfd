@@ -16,7 +16,29 @@ def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_file
             reference_file['@id']
         ],
         'redacted': False,
-        'filtered': False
+        'filtered': False,
+        'controlled_access': False
+    }
+    return testapp.post_json('/alignment_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def controlled_access_alignment_file(testapp, lab, award, analysis_set_with_sample, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'ec8d8a6af6105a86bc51c389ff19ea1b',
+        'file_format': 'bam',
+        'file_set': analysis_set_with_sample['@id'],
+        'file_size': 9491803,
+        'assembly': 'GRCh38',
+        'content_type': 'alignments',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'redacted': False,
+        'filtered': False,
+        'controlled_access': True,
     }
     return testapp.post_json('/alignment_file', item, status=201).json['@graph'][0]
 
@@ -98,5 +120,19 @@ def alignment_file_v8(alignment_file):
     item = alignment_file.copy()
     item.update({
         'schema_version': '8'
+    })
+    return item
+
+
+@pytest.fixture
+def alignment_file_v9(alignment_file):
+    item = alignment_file.copy()
+    item.update({
+        'schema_version': '9',
+        'controlled_access': True,
+        'upload_status': 'deposited',
+        'status': 'released',
+        'release_timestamp': '2024-05-31T12:34:56Z',
+        'anvil_source_url': 'http://abc.123',
     })
     return item

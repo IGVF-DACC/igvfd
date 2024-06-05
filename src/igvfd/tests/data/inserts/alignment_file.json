@@ -21,7 +21,8 @@
             "IGVFFI0001GNRF"
         ],
         "redacted": false,
-        "filtered": false
+        "filtered": false,
+        "controlled_access": false
     },
     {
         "uuid": "ea8c86b7-1271-ea86-cc75-bc7d7eb802c8",
@@ -46,7 +47,8 @@
             "IGVFFI0001GNRF"
         ],
         "redacted": true,
-        "filtered": true
+        "filtered": true,
+        "controlled_access": false
     },
     {
         "uuid": "76cd7e91-8dbc-4f7b-9fe9-a31511cbe4d3",
@@ -68,7 +70,6 @@
         ],
         "filtered": false,
         "redacted": false,
-        "controlled_access": true,
-        "anvil_source_url": "https://lze1a071f63dcb29ba120b05.blob.core.windows.net/sc-0f7ac85e-9aef-482c-9fb1-73c14877c2f8/some-lab-folder/alignment_file_1234.bam"
+        "controlled_access": true
     }
 ]

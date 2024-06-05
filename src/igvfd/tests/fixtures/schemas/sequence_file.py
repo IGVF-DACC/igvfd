@@ -17,7 +17,8 @@ def sequence_file(
         'file_size': 5495803,
         'content_type': 'reads',
         'sequencing_run': 1,
-        'sequencing_platform': platform_term_HiSeq['@id']
+        'sequencing_platform': platform_term_HiSeq['@id'],
+        'controlled_access': False
     }
     return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
 
@@ -39,7 +40,8 @@ def sequence_file_s3_uri(
         'content_type': 'reads',
         'sequencing_run': 1,
         's3_uri': 's3://foo/bar/baz.fastq.gz',
-        'sequencing_platform': platform_term_HiSeq['@id']
+        'sequencing_platform': platform_term_HiSeq['@id'],
+        'controlled_access': False
     }
     return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
 
@@ -76,7 +78,8 @@ def sequence_file_sequencing_run_2(
         'file_size': 5495803,
         'content_type': 'reads',
         'sequencing_run': 2,
-        'sequencing_platform': platform_term_HiSeq['@id']
+        'sequencing_platform': platform_term_HiSeq['@id'],
+        'controlled_access': False
     }
     return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
 
@@ -94,7 +97,8 @@ def sequence_file_pod5(
         'file_size': 5495803,
         'content_type': 'Nanopore reads',
         'sequencing_run': 10,
-        'sequencing_platform': platform_term_HiSeq['@id']
+        'sequencing_platform': platform_term_HiSeq['@id'],
+        'controlled_access': False
     }
     return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
 
@@ -239,3 +243,24 @@ def sequence_file_v12(sequence_file):
         'schema_version': '12'
     })
     return item
+
+
+@pytest.fixture
+def controlled_sequence_file(lab, award, analysis_set_with_sample, platform_term_HiSeq):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'cb818dc8d303ea1b7959c698e819c0f1',
+        'file_format': 'fastq',
+        'file_set': analysis_set_with_sample['@id'],
+        'content_type': 'reads',
+        'sequencing_run': 1,
+        'sequencing_platform': platform_term_HiSeq['@id'],
+        'controlled_access': True
+    }
+    return item
+
+
+@pytest.fixture
+def controlled_sequence_file_object(testapp, controlled_sequence_file):
+    return testapp.post_json('/sequence_file', controlled_sequence_file, status=201).json['@graph'][0]

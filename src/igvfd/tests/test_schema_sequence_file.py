@@ -29,7 +29,8 @@ def test_sequence_file_min_max_mean_read_length(testapp, sequence_file_fastq_no_
     # Validated fastqs must have read length and read count. Validated files must have file size.
     sequence_file_fastq_no_read_length.update(
         {
-            'upload_status': 'validated'
+            'upload_status': 'validated',
+            'controlled_access': False
         }
     )
     res = testapp.post_json(
@@ -343,5 +344,39 @@ def test_sequence_file_content_type_file_format(testapp, sequence_file):
             'file_format': 'pod5',
             'content_type': 'Nanopore reads'
         }
+    )
+    assert res.status_code == 200
+
+
+def test_controlled_sequence_file_release(testapp, controlled_sequence_file_object):
+    res = testapp.patch_json(
+        controlled_sequence_file_object['@id'],
+        {
+            'status': 'released',
+            'minimum_read_length': 99,
+            'maximum_read_length': 101,
+            'mean_read_length': 100,
+            'read_count': 23040138,
+            'file_size': 5495803,
+            'upload_status': 'validated',
+            'release_timestamp': '2024-05-31T12:34:56Z'
+        },
+        expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        controlled_sequence_file_object['@id'],
+        {
+            'status': 'released',
+            'minimum_read_length': 99,
+            'maximum_read_length': 101,
+            'mean_read_length': 100,
+            'read_count': 23040138,
+            'file_size': 5495803,
+            'upload_status': 'validated',
+            'release_timestamp': '2024-05-31T12:34:56Z',
+            'anvil_url': 'http://abc.123'
+        },
+        expect_errors=True
     )
     assert res.status_code == 200

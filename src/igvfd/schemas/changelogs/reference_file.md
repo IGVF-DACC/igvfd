@@ -1,5 +1,12 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 14
+
+* Reduce `upload_status` enum list to exclude `deposited`.
+* Remove `anvil_source_url`.
+* Add `anvil_url`.
+* Require `controlled_access`.
+
 ### Minor changes since schema version 13
 
 * Extend `content_type` enum list to include `regulatory_regions_regulatory_regions`.

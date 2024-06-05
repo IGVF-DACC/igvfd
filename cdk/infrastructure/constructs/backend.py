@@ -126,6 +126,9 @@ class Backend(Construct):
         self._allow_task_to_download_from_files_buckets()
         self._allow_task_to_upload_to_files_buckets()
         self._allow_task_to_read_upload_files_user_access_keys_secret()
+        self._allow_task_to_download_from_restricted_files_buckets()
+        self._allow_task_to_upload_to_restricted_files_buckets()
+        self._allow_task_to_read_upload_restricted_files_user_access_keys_secret()
         self._allow_task_to_read_feature_flags()
         self._configure_health_check()
         self._add_tags_to_fargate_service()
@@ -257,6 +260,7 @@ class Backend(Construct):
                 'TRANSACTION_DEAD_LETTER_QUEUE_URL': self.props.transaction_queue.dead_letter_queue.queue_url,
                 'INVALIDATION_DEAD_LETTER_QUEUE_URL': self.props.invalidation_queue.dead_letter_queue.queue_url,
                 'UPLOAD_USER_ACCESS_KEYS_SECRET_ARN': self.props.existing_resources.upload_igvf_files_user_access_keys.secret.secret_arn,
+                'RESTRICTED_UPLOAD_USER_ACCESS_KEYS_SECRET_ARN': self.props.existing_resources.upload_igvf_restricted_files_user_access_keys.secret.secret_arn,
                 'APPCONFIG_APPLICATION': self.props.feature_flag_service.application.name,
                 'APPCONFIG_ENVIRONMENT': self.props.feature_flag_service.environment.name,
                 'APPCONFIG_PROFILE': self.props.feature_flag_service.configuration_profile.name,
@@ -326,6 +330,21 @@ class Backend(Construct):
 
     def _allow_task_to_read_upload_files_user_access_keys_secret(self) -> None:
         self.props.existing_resources.upload_igvf_files_user_access_keys.secret.grant_read(
+            self.fargate_service.task_definition.task_role
+        )
+
+    def _allow_task_to_download_from_restricted_files_buckets(self) -> None:
+        self.fargate_service.task_definition.task_role.add_managed_policy(
+            self.props.existing_resources.bucket_access_policies.download_igvf_restricted_files_policy
+        )
+
+    def _allow_task_to_upload_to_restricted_files_buckets(self) -> None:
+        self.fargate_service.task_definition.task_role.add_managed_policy(
+            self.props.existing_resources.bucket_access_policies.upload_igvf_restricted_files_policy
+        )
+
+    def _allow_task_to_read_upload_restricted_files_user_access_keys_secret(self) -> None:
+        self.props.existing_resources.upload_igvf_restricted_files_user_access_keys.secret.grant_read(
             self.fargate_service.task_definition.task_role
         )
 

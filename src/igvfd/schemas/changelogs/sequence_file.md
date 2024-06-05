@@ -1,5 +1,12 @@
 ## Changelog for *`sequence_file.json`*
 
+### Schema version 14
+
+* Reduce `upload_status` enum list to exclude `deposited`.
+* Remove `anvil_source_url`.
+* Add `anvil_url`.
+* Require `controlled_access`.
+
 ### Schema version 13
 
 * Adjust `sequencing_kit` enum list to replace `NovaSeq 6000 S4 Reagent Kit V1.5` with `NovaSeq 6000 S4 Reagent Kit v1.5`.

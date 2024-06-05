@@ -1,5 +1,12 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 10
+
+* Reduce `upload_status` enum list to exclude `deposited`.
+* Remove `anvil_source_url`.
+* Add `anvil_url`.
+* Require `controlled_access`.
+
 ### Minor changes since schema version 9
 
 * Extend `collections` enum list to include `Vista`.

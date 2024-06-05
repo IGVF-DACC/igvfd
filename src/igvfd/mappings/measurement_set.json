@@ -1,6 +1,6 @@
 {
-    "hash": "d8a77d1b47f61eb16fb6277102a25d68",
-    "index_name": "measurement_set_d8a77d1b",
+    "hash": "17b818eddd620d9d1abac81b7659d1e6",
+    "index_name": "measurement_set_17b818ed",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1292,10 +1292,7 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
-                            "anvil_destination_url": {
-                                "type": "keyword"
-                            },
-                            "anvil_source_url": {
+                            "anvil_url": {
                                 "type": "keyword"
                             },
                             "assembly": {

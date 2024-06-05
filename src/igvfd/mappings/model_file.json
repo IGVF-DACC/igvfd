@@ -1,6 +1,6 @@
 {
-    "hash": "37525cffa6b137dae6d6780586bfb8af",
-    "index_name": "model_file_37525cff",
+    "hash": "9223a6acabdb8cc615ea6a9338c13a1f",
+    "index_name": "model_file_9223a6ac",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -157,10 +157,7 @@
                     "alternate_accessions": {
                         "type": "keyword"
                     },
-                    "anvil_destination_url": {
-                        "type": "keyword"
-                    },
-                    "anvil_source_url": {
+                    "anvil_url": {
                         "type": "keyword"
                     },
                     "award": {
