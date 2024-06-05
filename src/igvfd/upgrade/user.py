@@ -38,6 +38,7 @@ def user_4_5(value, system):
         old_email = value.get('email')
         new_email = value['email'].replace(' ', '')
         notes = value.get('notes')
-        notes = notes + f'This user previously specified {old_email} as its email, but was upgraded to {new_email}.'
+        notes = f'{notes} This user previously specified {old_email} as its email, but was upgraded to {new_email}.'
         value['email'] = new_email
+        value['notes'] = notes
     return
