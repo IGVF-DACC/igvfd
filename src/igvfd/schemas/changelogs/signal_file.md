@@ -2,7 +2,7 @@
 
 ### Schema version 9
 
-* Rename `content_type` `fold over change control` to `fold change over control`.
+* Adjust `content_type` enum list to replace `fold over change control` with `fold change over control`.
 
 ### Minor changes since schema version 8
 

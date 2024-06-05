@@ -2,7 +2,7 @@
 
 ### Schema version 11
 
-* Rename `content_type` `fold over change control` to `fold change over control`.
+* Adjust `content_type` enum list to replace `fold over change control` with `fold change over control`.
 
 ### Schema version 10
 
