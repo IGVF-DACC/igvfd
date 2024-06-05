@@ -296,3 +296,13 @@ def file_13_14(value, system):
         notes += f'This object\'s upload_status was deposited, and changed to pending.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+    value['notes'] = notes.strip()
+
+
+@upgrade_step('signal_file', '8', '9')
+@upgrade_step('tabular_file', '10', '11')
+def tabular_file_10_11_signal_file_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1694
+    if value.get('content_type') == 'fold over change control':
+        value['content_type'] = 'fold change over control'
+    return
