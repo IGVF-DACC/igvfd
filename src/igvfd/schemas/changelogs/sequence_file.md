@@ -2,7 +2,7 @@
 
 ### Schema version 14
 
-* Remove from `upload_status` enum list `deposited`.
+* Reduce `upload_status` enum list to exclude `deposited`.
 * Remove `anvil_source_url`.
 * Add `anvil_url`.
 * Require `controlled_access`.
