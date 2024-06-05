@@ -148,6 +148,7 @@ def user_v3(user_v1):
 def user_v4(user_v1):
     item = user_v1.copy()
     item.update({
-        'schema_version': '4'
+        'schema_version': '4',
+        'email': 'email_name@email_domain.com '
     })
     return item
