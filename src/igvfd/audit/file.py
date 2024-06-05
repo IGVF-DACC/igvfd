@@ -15,12 +15,12 @@ def audit_upload_status(value, system):
     '''
     [
         {
-            "audit_description": "Files are expected to be validated or deposited.",
+            "audit_description": "Files are expected to be validated.",
             "audit_category": "unvalidated upload status",
             "audit_level": "ERROR"
         },
         {
-            "audit_description": "External files are expected to be validated or deposited.",
+            "audit_description": "External files are expected to be validated.",
             "audit_category": "unvalidated upload status",
             "audit_level": "WARNING"
         }
@@ -28,7 +28,7 @@ def audit_upload_status(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     upload_status = value.get('upload_status')
-    if upload_status not in ['validated', 'deposited']:
+    if upload_status not in ['validated']:
         if value.get('external'):
             audit_level = 'WARNING'
             description = get_audit_description(audit_upload_status, index=1)
