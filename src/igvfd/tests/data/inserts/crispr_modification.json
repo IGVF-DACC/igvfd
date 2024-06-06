@@ -1,0 +1,120 @@
+[
+    {
+        "uuid": "98cbd059-18a7-2857-bc2b-b729489fa458",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:crispr_modification_1"
+        ],
+        "cas": "dCas9",
+        "fused_domain": "KRAB",
+        "modality": "interference",
+        "status": "in progress",
+        "product_id": "addgene:000567",
+        "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "325ad059-4bc8-2857-bc2b-94f837b8cb02",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:crispr_modification_2"
+        ],
+        "cas": "dCas9",
+        "fused_domain": "ANTI-FLAG",
+        "modality": "localizing",
+        "tagged_protein": "0c9a9a6f-02de-4072-a5a3-66286c6770f6",
+        "status": "in progress",
+        "product_id": "addgene:111555",
+        "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "37b92ec6-c05e-4360-ac2a-8a924490e83e",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:crispr_modification_3"
+        ],
+        "cas": "dCas9",
+        "fused_domain": "VPH",
+        "modality": "activation",
+        "status": "in progress",
+        "product_id": "addgene:158091",
+        "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "ec67c310-c05e-4360-3f51-1936846b0e8e",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:crispr_modification_4"
+        ],
+        "cas": "SpG",
+        "fused_domain": "eA3A-T44D-S45A",
+        "modality": "base editing",
+        "status": "in progress",
+        "product_id": "addgene:158081",
+        "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "550d82f0-11ee-4360-3f51-02f8d37b0057",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:crispr_modification_5"
+        ],
+        "cas": "SpRY",
+        "fused_domain": "BE4max",
+        "modality": "base editing",
+        "status": "in progress",
+        "product_id": "addgene:158021",
+        "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "24ff82f0-11ee-4360-1540-5148230bad75",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:crispr_modification_6"
+        ],
+        "cas": "SpRY",
+        "fused_domain": "eA3A",
+        "modality": "prime editing",
+        "status": "in progress",
+        "product_id": "addgene:148021",
+        "cas_species": "Streptococcus pyogenes (Sp)"
+    },
+    {
+        "uuid": "bb449e65-ddee-4fed-b95e-cf78c3b56291",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:crispr_modification_7"
+        ],
+        "cas": "SpRY",
+        "fused_domain": "ZIM3",
+        "modality": "prime editing",
+        "status": "archived",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "product_id": "addgene:148021",
+        "cas_species": "Streptococcus pyogenes (Sp)",
+        "activating_agent_term_id": "CHEBI:50845",
+        "activating_agent_term_name": "doxycycline",
+        "activated": true
+    },
+    {
+        "uuid": "72915e67-1a5a-419d-80ec-98a4099c794d",
+        "lab": "jesse-engreitz",
+        "award": "1UM1HG011972-01",
+        "aliases": [
+            "igvf:crispr_prime_editing_system_2"
+        ],
+        "cas": "nCas9",
+        "fused_domain": "M-MLV RT (PE2)",
+        "modality": "prime editing",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "product_id": "addgene:132775",
+        "cas_species": "Streptococcus pyogenes (Sp)"
+    }
+]

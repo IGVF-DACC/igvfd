@@ -268,7 +268,10 @@
                 "description": "Link to a modification applied to this biosample.",
                 "type": "string",
                 "comment": "See modification.json for available identifiers.",
-                "linkTo": "Modification"
+                "linkTo": [
+                    "Modification",
+                    "CRISPRModification"
+                ]
             },
             "submissionExample": {
                 "appscript": "[\"john-doe:modification01\", \"/modifications/ad8f26b5-4180-4301-97a4-38459ddf3dab/\"]",
