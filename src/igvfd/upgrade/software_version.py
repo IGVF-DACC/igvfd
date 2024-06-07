@@ -66,4 +66,5 @@ def software_version_5_6(value, system):
     merged_note = ' '.join([x for x in [software_note, version_note, lab_note, award_note] if x != ''])
     notes = value.get('notes', '')
     notes += merged_note
-    value['notes'] = notes.strip()
+    if notes:
+        value['notes'] = notes.strip()
