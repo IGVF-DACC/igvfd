@@ -39,6 +39,7 @@ def user_4_5(value, system):
     pattern = r'^[^\s@]+@[^\s@]+\.[^\s@]+$'
     if not(re.fullmatch(pattern, email)):
         new_email = 'replace_this_email@email.com'
+        value['email'] = new_email
         notes = value.get('notes', '')
         notes = f'{notes} This user previously specified {email} as its email, but was upgraded to {new_email} as it violated the regular expression introduced.'
     return
