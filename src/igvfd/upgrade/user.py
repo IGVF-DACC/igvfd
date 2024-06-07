@@ -1,4 +1,5 @@
 from snovault import upgrade_step
+import re
 
 
 @upgrade_step('user', '1', '2')
@@ -34,11 +35,10 @@ def user_3_4(value, system):
 @upgrade_step('user', '4', '5')
 def user_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1671
-    if ' ' in value.get('email'):
-        old_email = value.get('email')
-        new_email = value['email'].replace(' ', '')
-        notes = value.get('notes')
-        notes = f'{notes} This user previously specified {old_email} as its email, but was upgraded to {new_email}.'
-        value['email'] = new_email
-        value['notes'] = notes
+    email = value.get('email')
+    pattern = r'^[^\s@]+@[^\s@]+\.[^\s@]+$'
+    if not(re.fullmatch(pattern, email)):
+        new_email = 'replace_this_email@email.com'
+        notes = value.get('notes', '')
+        notes = f'{notes} This user previously specified {email} as its email, but was upgraded to {new_email} as it violated the regular expression introduced.'
     return

@@ -23,5 +23,5 @@ def test_user_upgrade_3_4(upgrader, user_v3):
 
 def test_user_upgrade_4_5(upgrader, user_v4):
     value = upgrader.upgrade('user', user_v4, current_version='4', target_version='5')
-    assert value['email'] == 'email_name@email_domain.com'
+    assert value['email'] == 'replace_this_email@email.com'
     assert value['schema_version'] == '5'
