@@ -51,3 +51,9 @@ def software_version_v3(software_version_v2):
         'description': '',
     })
     return item
+
+
+@pytest.fixture
+def software_version_v5(testapp):
+    item = {}
+    return item

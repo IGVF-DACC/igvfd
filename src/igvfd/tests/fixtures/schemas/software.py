@@ -16,6 +16,19 @@ def software(testapp, lab, award):
 
 
 @pytest.fixture
+def software_graphreg(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'title': 'Graphreg',
+        'name': 'graphreg',
+        'description': 'GraphReg (Chromatin interaction aware gene regulatory modeling with graph attention networks) is a graph neural network based gene regulation model.',
+        'source_url': 'https://genome.cshlp.org/content/32/5/930.full'
+    }
+    return testapp.post_json('/software', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def software_v1(software):
     item = software.copy()
     item.update({
