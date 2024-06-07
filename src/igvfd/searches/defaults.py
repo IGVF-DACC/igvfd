@@ -48,7 +48,7 @@ TOP_HITS_ITEM_TYPES = [
     'OpenReadingFrame',
     'Image',
     'Lab',
-    'CRISPRModification',
+    'CrisprModification',
     'Modification',
     'AssayTerm',
     'PhenotypeTerm',

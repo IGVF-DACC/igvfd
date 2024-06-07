@@ -270,7 +270,7 @@
                 "comment": "See modification.json for available identifiers.",
                 "linkTo": [
                     "Modification",
-                    "CRISPRModification"
+                    "CrisprModification"
                 ]
             },
             "submissionExample": {

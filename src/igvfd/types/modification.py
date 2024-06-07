@@ -83,7 +83,7 @@ class Modification(Item):
         'description': 'Listing of CRISPR modifications',
     }
 )
-class CRISPRModification(Item):
+class CrisprModification(Item):
     item_type = 'crispr_modification'
     schema = load_schema('igvfd:schemas/crispr_modification.json')
     embedded_with_frame = [

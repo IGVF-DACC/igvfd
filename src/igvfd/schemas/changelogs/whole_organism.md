@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 21
 
-* Allow `modifications` to link to `CRISPR Modifications`.
+* Allow `modifications` to link to `Crispr Modifications`.
 * Add `protocols`.
 * Allow `modifications` to contain a maximum of 2 items.
 * Add calculated property `upper_bound_age_in_hours`.
