@@ -14,7 +14,7 @@
         "cas_species": "Streptococcus pyogenes (Sp)"
     },
     {
-        "uuid": "325ad059-4bc8-2857-bc2b-94f837b8cb02",
+        "uuid": "325a036a-4bc8-2857-c2bb-837b8cb0294f",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
@@ -23,7 +23,7 @@
         "cas": "dCas9",
         "fused_domain": "ANTI-FLAG",
         "modality": "localizing",
-        "tagged_protein": "0c9a9a6f-02de-4072-a5a3-66286c6770f6",
+        "tagged_protein": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
         "status": "in progress",
         "product_id": "addgene:111555",
         "cas_species": "Streptococcus pyogenes (Sp)"
@@ -103,7 +103,7 @@
         "activated": true
     },
     {
-        "uuid": "72915e67-1a5a-419d-80ec-98a4099c794d",
+        "uuid": "72915e67-1a5a-419d-80ec-989c79a4094d",
         "lab": "jesse-engreitz",
         "award": "1UM1HG011972-01",
         "aliases": [

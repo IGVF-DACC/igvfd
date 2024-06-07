@@ -2,7 +2,7 @@ import pytest
 
 
 def test_modification_summary(testapp, crispr_modification, gene_myc_hs):
-    res = testapp.get(modification['@id'])
+    res = testapp.get(crispr_modification['@id'])
     assert res.json.get('summary') == 'CRISPRi SpdCas9'
 
     testapp.patch_json(
