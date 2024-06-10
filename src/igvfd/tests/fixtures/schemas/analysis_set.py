@@ -84,6 +84,16 @@ def analysis_set_v4(analysis_set_v3):
 
 
 @pytest.fixture
+def analysis_set_v6(analysis_set_v4):
+    item = analysis_set_v4.copy()
+    item.update({
+        'schema_version': '6',
+        'file_set_type': 'primary analysis'
+    })
+    return item
+
+
+@pytest.fixture
 def principal_analysis_set(
     testapp,
     award,
