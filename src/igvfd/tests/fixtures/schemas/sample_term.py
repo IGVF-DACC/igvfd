@@ -102,3 +102,13 @@ def sample_term_v2(sample_term_v1):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def sample_term_v4(sample_term_v1):
+    item = sample_term_v1.copy()
+    item.update({
+        'schema_version': '4',
+        'dbxrefs': []
+    })
+    return item

@@ -52,6 +52,7 @@
             "description": "Sample identifiers from external resources, such as Cellosaurus.",
             "permission": "admin_only",
             "type": "array",
+            "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "External Identifier",
