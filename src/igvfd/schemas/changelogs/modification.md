@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Restrict submission of `Modifications` to admin only.
 * Add `activating_agent_term_id`.
 * Add `activating_agent_term_name`.
 * Add `activated`.

@@ -79,6 +79,7 @@
                 "SpG",
                 "SpRY"
             ],
+            "permission": "admin_only",
             "submissionExample": {
                 "appscript": "Cas9",
                 "igvf_utils": "Cas9"
@@ -128,6 +129,7 @@
                 "localizing",
                 "prime editing"
             ],
+            "permission": "admin_only",
             "submissionExample": {
                 "appscript": "activation",
                 "igvf_utils": "activation"
@@ -163,6 +165,7 @@
                 "Campylobacter jejuni (Cj)",
                 "Neisseria meningitidis (Nm)"
             ],
+            "permission": "admin_only",
             "submissionExample": {
                 "appscript": "Streptococcus pyogenes (Sp)",
                 "igvf_utils": "Streptococcus pyogenes (Sp)"
