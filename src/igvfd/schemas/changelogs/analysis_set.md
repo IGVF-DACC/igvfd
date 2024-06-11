@@ -2,7 +2,7 @@
 
 ### Schema version 7
 
-* Rename `file_set_type` `primary analysis` to `principal analysis`.
+* Adjust `file_set_type` enum list to replace `primary analysis` with `principal analysis`.
 
 ### Minor changes since schema version 6
 
