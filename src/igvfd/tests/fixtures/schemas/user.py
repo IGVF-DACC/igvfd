@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def disabled_user(testapp, lab, award):
+def disabled_user(testapp, lab):
     item = {
         'first_name': 'IGVF',
         'last_name': 'Submitter',
@@ -140,5 +140,15 @@ def user_v3(user_v1):
     item.update({
         'schema_version': '2',
         'viewing_groups': []
+    })
+    return item
+
+
+@pytest.fixture
+def user_v4(user_v1):
+    item = user_v1.copy()
+    item.update({
+        'schema_version': '4',
+        'email': 'email_name@email_domain.com '
     })
     return item

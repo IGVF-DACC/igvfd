@@ -25,14 +25,15 @@
     ],
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "email": {
             "title": "Email",
             "type": "string",
             "description": "The email associated with the user's account.",
             "format": "email",
-            "uniqueKey": true
+            "uniqueKey": true,
+            "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
         },
         "first_name": {
             "title": "First Name",
