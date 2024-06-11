@@ -33,7 +33,7 @@ def test_audit_input_file_set_for(
 ):
     res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
     assert all(
-        error['category']=! 'missing analysis'
+        error['category'] != 'missing analysis'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
