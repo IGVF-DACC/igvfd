@@ -79,3 +79,13 @@ def tabular_file_v7(tabular_file):
         'schema_version': '7'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v10(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '10',
+        'content_type': 'fold over change control'
+    })
+    return item

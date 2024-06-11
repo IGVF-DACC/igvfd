@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 11
+
+* Adjust `content_type` enum list to replace `fold over change control` with `fold change over control`.
+
 ### Schema version 10
 
 * Reduce `upload_status` enum list to exclude `deposited`.

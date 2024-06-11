@@ -1,5 +1,9 @@
 ## Changelog for *`signal_file.json`*
 
+### Schema version 9
+
+* Adjust `content_type` enum list to replace `fold over change control` with `fold change over control`.
+
 ### Minor changes since schema version 8
 
 * Extend `collections` enum list to include `Vista`.

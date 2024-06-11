@@ -37,3 +37,9 @@ def test_tabular_file_upgrade_7_8(upgrader, tabular_file_v7):
     assert 'derived_from' not in value
     assert 'file_format_specifications' not in value
     assert value['schema_version'] == '8'
+
+
+def test_tabular_file_upgrade_10_11(upgrader, tabular_file_v10):
+    value = upgrader.upgrade('tabular_file', tabular_file_v10, current_version='10', target_version='11')
+    assert value['content_type'] == 'fold change over control'
+    assert value['schema_version'] == '11'
