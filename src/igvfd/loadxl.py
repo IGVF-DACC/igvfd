@@ -29,6 +29,7 @@ ORDER = [
     'rodent_donor',
     'treatment',
     'modification',
+    'crispr_modification',
     'biomarker',
     'tissue',
     'in_vitro_system',

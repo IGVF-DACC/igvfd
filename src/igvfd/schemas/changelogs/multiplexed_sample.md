@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Allow calculated property `modifications` to link to `Crispr Modifications`.
 * Add `protocols`.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.
 

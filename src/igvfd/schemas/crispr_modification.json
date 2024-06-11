@@ -1,8 +1,8 @@
 {
-    "title": "Modification",
-    "$id": "/profiles/modification.json",
+    "title": "CRISPR Modification",
+    "$id": "/profiles/crispr_modification.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A genetic modification altering sample genomic material. For example, CRISPRi dCas9-KRAB modification.",
+    "description": "A CRISPR modification altering sample genomic material. For example, CRISPRi dCas9-KRAB modification.",
     "type": "object",
     "required": [
         "award",
@@ -64,7 +64,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "5"
+            "default": "1"
         },
         "cas": {
             "title": "Cas",
@@ -79,7 +79,6 @@
                 "SpG",
                 "SpRY"
             ],
-            "permission": "admin_only",
             "submissionExample": {
                 "appscript": "Cas9",
                 "igvf_utils": "Cas9"
@@ -129,7 +128,6 @@
                 "localizing",
                 "prime editing"
             ],
-            "permission": "admin_only",
             "submissionExample": {
                 "appscript": "activation",
                 "igvf_utils": "activation"
@@ -165,7 +163,6 @@
                 "Campylobacter jejuni (Cj)",
                 "Neisseria meningitidis (Nm)"
             ],
-            "permission": "admin_only",
             "submissionExample": {
                 "appscript": "Streptococcus pyogenes (Sp)",
                 "igvf_utils": "Streptococcus pyogenes (Sp)"
@@ -211,5 +208,5 @@
     "exact_searchable_fields": [
         "@type"
     ],
-    "changelog": "/profiles/changelogs/modification.md"
+    "changelog": "/profiles/changelogs/crispr_modification.md"
 }
