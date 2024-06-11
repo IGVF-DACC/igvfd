@@ -387,7 +387,7 @@ def audit_input_file_set_for(value, system):
     '''
     [
         {
-            "audit_description": "Raw data sets are expected to be associated with at least one analysis set.",
+            "audit_description": "Raw data sets with files are expected to be associated with at least one analysis set.",
             "audit_category": "missing analysis",
             "audit_level": "WARNING"
         }
@@ -395,9 +395,9 @@ def audit_input_file_set_for(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     description = get_audit_description(audit_input_file_set_for)
-    if not value.get('input_file_set_for'):
+    if not value.get('input_file_set_for') and value.get('files'):
         detail = (
-            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set, '
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set with files, '
             f'but is not listed in any `input_file_sets` for any analysis sets.'
         )
         yield AuditFailure('missing analysis', f'{detail} {description}', level='WARNING')
