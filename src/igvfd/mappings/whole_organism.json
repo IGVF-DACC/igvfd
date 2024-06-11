@@ -1,6 +1,6 @@
 {
-    "hash": "4d9359201126224136836888ad8d8e57",
-    "index_name": "whole_organism_4d935920",
+    "hash": "0eb9210daa3608e3aba08608a4a7b8e9",
+    "index_name": "whole_organism_0eb9210d",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -878,96 +878,7 @@
                         "type": "float"
                     },
                     "modifications": {
-                        "properties": {
-                            "@id": {
-                                "type": "keyword"
-                            },
-                            "@type": {
-                                "type": "keyword"
-                            },
-                            "activated": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "boolean"
-                            },
-                            "activating_agent_term_id": {
-                                "type": "keyword"
-                            },
-                            "activating_agent_term_name": {
-                                "type": "keyword"
-                            },
-                            "aliases": {
-                                "type": "keyword"
-                            },
-                            "award": {
-                                "type": "keyword"
-                            },
-                            "cas": {
-                                "type": "keyword"
-                            },
-                            "cas_species": {
-                                "type": "keyword"
-                            },
-                            "creation_timestamp": {
-                                "type": "keyword"
-                            },
-                            "description": {
-                                "type": "text"
-                            },
-                            "documents": {
-                                "type": "keyword"
-                            },
-                            "fused_domain": {
-                                "type": "keyword"
-                            },
-                            "lab": {
-                                "type": "keyword"
-                            },
-                            "lot_id": {
-                                "type": "keyword"
-                            },
-                            "modality": {
-                                "type": "keyword"
-                            },
-                            "notes": {
-                                "type": "text"
-                            },
-                            "product_id": {
-                                "type": "keyword"
-                            },
-                            "release_timestamp": {
-                                "type": "keyword"
-                            },
-                            "schema_version": {
-                                "type": "keyword"
-                            },
-                            "sources": {
-                                "type": "keyword"
-                            },
-                            "status": {
-                                "type": "keyword"
-                            },
-                            "submitted_by": {
-                                "type": "keyword"
-                            },
-                            "submitter_comment": {
-                                "type": "keyword"
-                            },
-                            "summary": {
-                                "type": "keyword"
-                            },
-                            "tagged_protein": {
-                                "type": "keyword"
-                            },
-                            "uuid": {
-                                "type": "keyword"
-                            }
-                        },
-                        "type": "object"
+                        "type": "keyword"
                     },
                     "moi": {
                         "fields": {
