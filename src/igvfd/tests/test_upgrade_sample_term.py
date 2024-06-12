@@ -11,3 +11,9 @@ def test_sample_term_upgrade_2_3(upgrader, sample_term_v2):
     value = upgrader.upgrade('sample_term', sample_term_v2, current_version='2', target_version='3')
     assert 'description' not in value
     assert value['schema_version'] == '3'
+
+
+def test_sample_term_upgrade_4_5(upgrader, sample_term_v4):
+    value = upgrader.upgrade('sample_term', sample_term_v4, current_version='4', target_version='5')
+    assert 'dbxrefs' not in value
+    assert value['schema_version'] == '5'

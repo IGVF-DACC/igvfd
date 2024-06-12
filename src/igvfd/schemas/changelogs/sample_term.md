@@ -1,5 +1,9 @@
 ## Changelog for *`sample_term.json`*
 
+### Schema version 5
+
+* Restrict `dbxrefs` to be a non-empty array with at least one item.
+
 ### Schema version 4
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.

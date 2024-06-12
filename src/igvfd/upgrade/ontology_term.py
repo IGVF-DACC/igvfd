@@ -79,3 +79,11 @@ def platform_term_3_4(value, system):
         if 'NovaSeq 6000 S4 Reagent Kit V1.5' in value['sequencing_kits']:
             value['sequencing_kits'].remove('NovaSeq 6000 S4 Reagent Kit V1.5')
             value['sequencing_kits'].append('NovaSeq 6000 S4 Reagent Kit v1.5')
+
+
+@upgrade_step('sample_term', '4', '5')
+def sample_term_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1073
+    if 'dbxrefs' in value:
+        if len(value['dbxrefs']) == 0:
+            del value['dbxrefs']
