@@ -46,3 +46,25 @@ def audit_upload_status(value, system):
             f'{detail} {description}',
             level=audit_level
         )
+
+
+def audit_file_format_specifications(value, system):
+    '''
+    [
+        {
+            "audit_description": "File format specifications are excepted to be documents have type file format specification.",
+            "audit_category": "inconsistent document type",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    for doc in value.get('file_format_specifications', []):
+        doc_type = doc['document_type']
+        if doc_type != 'file format specification':
+            detail = ('File {} has document {} of type {}'.format(
+                audit_link(path_to_text(value['@id']), value['@id']),
+                audit_link(path_to_text(doc['@id']), doc['@id']),
+                doc_type
+            )
+            )
+            yield AuditFailure('inconsistent document type', detail, level='ERROR')
