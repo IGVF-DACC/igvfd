@@ -38,8 +38,8 @@ def audit_upload_status(value, system):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has `upload_status` {upload_status}.'
         )
-        if upload_status == 'invalidated':
-            validation_error_detail = value.get('validation_error_detail')
+        validation_error_detail = value.get('validation_error_detail')
+        if upload_status == 'invalidated' and validation_error_detail:
             detail = f'{detail} Validation error detail: {validation_error_detail}'
         yield AuditFailure(
             'upload status not validated',
