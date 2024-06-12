@@ -268,18 +268,9 @@
                 "description": "Link to a modification applied to this biosample.",
                 "type": "string",
                 "comment": "See modification.json for available identifiers.",
-                "oneOf": [
-                    {
-                        "linkTo": [
-                            "Modification"
-                        ],
-                        "permission": "admin_only"
-                    },
-                    {
-                        "linkTo": [
-                            "CrisprModification"
-                        ]
-                    }
+                "linkTo": [
+                    "CrisprModification",
+                    "Modification"
                 ]
             },
             "submissionExample": {
