@@ -16,12 +16,12 @@ def audit_upload_status(value, system):
     [
         {
             "audit_description": "Files are expected to be validated.",
-            "audit_category": "unvalidated upload status",
+            "audit_category": "upload status not validated",
             "audit_level": "ERROR"
         },
         {
             "audit_description": "External files are expected to be validated.",
-            "audit_category": "unvalidated upload status",
+            "audit_category": "upload status not validated",
             "audit_level": "WARNING"
         }
     ]
@@ -38,8 +38,11 @@ def audit_upload_status(value, system):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has `upload_status` {upload_status}.'
         )
+        if upload_status == 'invalidated':
+            validation_error_detail = value.get('validation_error_detail')
+            detail = f'{detail} Validation error detail: {validation_error_detail}'
         yield AuditFailure(
-            'unvalidated upload status',
+            'upload status not validated',
             f'{detail} {description}',
             level=audit_level
         )

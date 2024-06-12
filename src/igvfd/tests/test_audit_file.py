@@ -11,7 +11,7 @@ def test_audit_upload_status(testapp, reference_file):
     )
     res = testapp.get(reference_file['@id'] + '@@audit')
     assert any(
-        audit['category'] == 'unvalidated upload status'
+        audit['category'] == 'upload status not validated'
         for audit in res.json['audit'].get('ERROR', {})
     )
     testapp.patch_json(
@@ -24,11 +24,11 @@ def test_audit_upload_status(testapp, reference_file):
     )
     res = testapp.get(reference_file['@id'] + '@@audit')
     assert any(
-        audit['category'] == 'unvalidated upload status'
+        audit['category'] == 'upload status not validated'
         for audit in res.json['audit'].get('WARNING', {})
     )
     assert all(
-        audit['category'] != 'unvalidated upload status'
+        audit['category'] != 'upload status not validated'
         for audit in res.json['audit'].get('ERROR', {})
     )
     testapp.patch_json(
@@ -42,10 +42,10 @@ def test_audit_upload_status(testapp, reference_file):
     )
     res = testapp.get(reference_file['@id'] + '@@audit')
     assert all(
-        audit['category'] != 'unvalidated upload status'
+        audit['category'] != 'upload status not validated'
         for audit in res.json['audit'].get('WARNING', {})
     )
     assert all(
-        audit['category'] != 'unvalidated upload status'
+        audit['category'] != 'upload status not validated'
         for audit in res.json['audit'].get('ERROR', {})
     )
