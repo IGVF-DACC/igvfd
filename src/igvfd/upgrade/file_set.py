@@ -330,3 +330,13 @@ def measurement_set_16_17(value, system):
         notes = value.get('notes', '')
         notes = f'{notes} The readout {readout} was removed from this measurement set.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_set', '6', '7')
+def analysis_set_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1701
+    if value.get('file_set_type', '') == 'primary analysis':
+        value['file_set_type'] = 'principal analysis'
+        notes = value.get('notes', '')
+        notes += f'This object\'s file_set_type was primary analysis and has been updated to be principal analysis.'
+        value['notes'] = notes.strip()

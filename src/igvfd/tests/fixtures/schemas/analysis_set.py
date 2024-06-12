@@ -84,7 +84,17 @@ def analysis_set_v4(analysis_set_v3):
 
 
 @pytest.fixture
-def primary_analysis_set(
+def analysis_set_v6(analysis_set_v4):
+    item = analysis_set_v4.copy()
+    item.update({
+        'schema_version': '6',
+        'file_set_type': 'primary analysis'
+    })
+    return item
+
+
+@pytest.fixture
+def principal_analysis_set(
     testapp,
     award,
     lab,
@@ -94,6 +104,6 @@ def primary_analysis_set(
         'award': award['@id'],
         'lab': lab['@id'],
         'input_file_sets': [measurement_set['@id']],
-        'file_set_type': 'primary analysis'
+        'file_set_type': 'principal analysis'
     }
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]

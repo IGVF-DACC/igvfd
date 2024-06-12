@@ -45,11 +45,11 @@
             "file_set.json#/dependentSchemas"
         ],
         "file_set_type": {
-            "comment": "Primary analysis sets require input_file_sets.",
+            "comment": "Principal analysis sets require input_file_sets.",
             "if": {
                 "properties": {
                     "file_set_type": {
-                        "const": "primary analysis"
+                        "const": "principal analysis"
                     }
                 }
             },
@@ -62,7 +62,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "6"
+            "default": "7"
         },
         "input_file_sets": {
             "title": "Input File Sets",
@@ -82,15 +82,15 @@
             }
         },
         "file_set_type": {
-            "description": "The level of this analysis set. An intermediate analysis cannot be interpreted on its own and is part of a primary analysis. A primary analysis is the core analysis for an experimental design, the results of which can be interpretable on their own.",
-            "comment": "File set type describes the content of the analysis set. Intermediate analyses are processed data which are not the final results of an experiment. Primary analyses are processed data which are the final results of an experiment.",
+            "description": "The level of this analysis set. An intermediate analysis cannot be interpreted on its own and is part of a principal analysis. A principal analysis is the core analysis for an experimental design, the results of which can be interpretable on their own.",
+            "comment": "File set type describes the content of the analysis set. Intermediate analyses are processed data which are not the final results of an experiment. Principal analyses are processed data which are the final results of an experiment.",
             "enum": [
                 "intermediate analysis",
-                "primary analysis"
+                "principal analysis"
             ],
             "submissionExample": {
-                "appscript": "primary analysis",
-                "igvf_utils": "primary analysis"
+                "appscript": "principal analysis",
+                "igvf_utils": "principal analysis"
             }
         }
     },

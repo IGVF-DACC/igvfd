@@ -48,7 +48,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     assert set(res.json.get('assay_titles')) == {'ATAC-seq', 'lentiMPRA'}
 
 
-def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_mpra, measurement_set_multiome, primary_analysis_set):
+def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_mpra, measurement_set_multiome, principal_analysis_set):
     # With no input_file_sets present, summary is based on analysis file_set_type only
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'intermediate analysis of data'
@@ -83,7 +83,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         {
             'input_file_sets': [measurement_set_mpra['@id'],
                                 measurement_set_multiome['@id'],
-                                primary_analysis_set['@id']]
+                                principal_analysis_set['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id']).json

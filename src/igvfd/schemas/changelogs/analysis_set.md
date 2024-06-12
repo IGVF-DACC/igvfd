@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_set.json`*
 
+### Schema version 7
+
+* Adjust `file_set_type` enum list to replace `primary analysis` with `principal analysis`.
+
 ### Minor changes since schema version 6
 
 * Extend `collections` enum list to include `Vista`.
