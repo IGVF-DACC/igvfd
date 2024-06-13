@@ -59,14 +59,14 @@ def audit_file_format_specifications(value, system):
         }
     ]
     '''
+    description = get_audit_description(audit_upload_status)
+    object_type = space_in_words(value['@type'][0]).capitalize()
     for document in value.get('file_format_specifications', []):
         document_object = system.get('request').embed(document)
         doc_type = document_object['document_type']
         if doc_type != 'file format specification':
-            detail = ('File {} has document {} of type {}'.format(
-                audit_link(path_to_text(value['@id']), value['@id']),
-                audit_link(path_to_text(document), document),
-                doc_type
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has `file_format_specification` {audit_link(path_to_text(document), document)} '
+                f'with `document_type` {doc_type}.'
             )
-            )
-            yield AuditFailure('inconsistent document type', detail, level='ERROR')
+            yield AuditFailure('inconsistent document type', f'{detail} {description}', level='ERROR')
