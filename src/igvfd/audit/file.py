@@ -48,6 +48,7 @@ def audit_upload_status(value, system):
         )
 
 
+@audit_checker('File', frame='object')
 def audit_file_format_specifications(value, system):
     '''
     [
@@ -58,12 +59,13 @@ def audit_file_format_specifications(value, system):
         }
     ]
     '''
-    for doc in value.get('file_format_specifications', []):
-        doc_type = doc['document_type']
+    for document in value.get('file_format_specifications', []):
+        document_object = system.get('request').embed(document)
+        doc_type = document_object['document_type']
         if doc_type != 'file format specification':
             detail = ('File {} has document {} of type {}'.format(
                 audit_link(path_to_text(value['@id']), value['@id']),
-                audit_link(path_to_text(doc['@id']), doc['@id']),
+                audit_link(path_to_text(document), document),
                 doc_type
             )
             )

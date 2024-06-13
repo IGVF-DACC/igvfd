@@ -69,3 +69,8 @@ def test_audit_file_format_specifications(testapp, matrix_file, experimental_pro
             'document_type': 'file format specification'
         }
     )
+    res = testapp.get(matrix_file['@id'] + '@@audit')
+    assert all(
+        audit['category'] != 'inconsistent document type'
+        for audit in res.json['audit'].get('ERROR', {})
+    )
