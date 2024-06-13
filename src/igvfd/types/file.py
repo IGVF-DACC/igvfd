@@ -66,7 +66,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'owl': '.owl.gz',
     'pairs': '.pairs.gz',
     'pod5': '.pod5',
-    'png': 'png',
+    'png': '.png',
     'PWM': '.pwm',
     'sam': '.sam.gz',
     'sra': '.sra',
