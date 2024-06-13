@@ -89,7 +89,6 @@ class MetadataReport:
         ('field', 'files.file_format'),
         ('field', 'files.file_format_type'),
         ('field', 'files.status'),
-        ('field', 'files.assembly'),
         ('limit', 'all'),
     ]
     CONTENT_TYPE = 'text/tsv'
@@ -227,7 +226,6 @@ class MetadataReport:
         conditions = [
             not file_matches_file_params(file_, self.positive_file_param_set),
             not file_satisfies_inequality_constraints(file_, self.positive_file_inequalities),
-            self.raw_only and file_.get('assembly'),
         ]
         return any(conditions)
 

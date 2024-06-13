@@ -11,18 +11,14 @@ METADATA_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
         ('File accession', ['files.accession']),
         ('File format', ['files.file_format']),
         ('File content', ['files.content_type']),
-        ('File set', ['files.file_set']),
         ('Accession', ['accession']),
         ('Assay', ['assay_term.term_name']),
         ('Donor(s)', ['donors.accession']),
         ('Sample(s)', ['samples.accession']),
         ('Creation timestampe', ['creation_timestamp']),
         ('Size', ['files.file_size']),
-        ('Lab', ['files.lab.title']),
-        ('md5sum', ['files.md5sum']),
+        ('Lab', ['lab.title']),
         ('File download URL', ['files.href']),
-        ('File Status', ['files.status']),
-        ('s3_uri', ['files.s3_uri']),
     ]
 )
 
