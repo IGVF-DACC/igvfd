@@ -250,6 +250,8 @@ def main(global_config, **local_config):
 
     config.include('.ontology')
     config.include('.report')
+    config.include('.metadata.metadata')
+    config.include('.metadata.batch_download')
     config.include('.verify_email')
 
     if 'elasticsearch.server' in config.registry.settings:
