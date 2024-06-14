@@ -5,7 +5,6 @@ from igvfd.metadata.metadata import MetadataReport
 from igvfd.metadata.constants import METADATA_ALLOWED_TYPES
 from igvfd.metadata.decorators import allowed_types
 from pyramid.view import view_config
-from snosearch.parsers import QueryString
 
 
 def includeme(config):
@@ -19,12 +18,8 @@ class BatchDownloadMixin:
         ('limit', 'all'),
         ('field', 'files.@id'),
         ('field', 'files.href'),
-        ('field', 'files.restricted'),
-        ('field', 'files.no_file_available'),
         ('field', 'files.file_format'),
         ('field', 'files.file_format_type'),
-        ('field', 'files.status'),
-        ('field', 'files.assembly'),
     ]
     CONTENT_TYPE = 'text/plain'
     CONTENT_DISPOSITION = 'attachment; filename="files.txt"'

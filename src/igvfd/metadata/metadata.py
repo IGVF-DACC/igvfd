@@ -11,7 +11,6 @@ from igvfd.metadata.search import BatchedSearchGenerator
 from igvfd.metadata.serializers import make_experiment_cell
 from igvfd.metadata.serializers import make_file_cell
 from igvfd.metadata.serializers import map_strings_to_booleans_and_ints
-from igvfd.search_views import search_generator
 from pyramid.httpexceptions import HTTPBadRequest
 from pyramid.response import Response
 from pyramid.view import view_config
