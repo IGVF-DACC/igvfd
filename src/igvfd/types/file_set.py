@@ -45,7 +45,7 @@ class FileSet(Item):
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases', 'content_type',
              'file_format', 'file_size', 'href', 's3_uri', 'submitted_file_name',
-                               'creation_timestamp']),
+                               'creation_timestamp', 'sequencing_platform']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
         Path('donors', include=['@id', 'accession', 'aliases', 'sex', 'status', 'taxa']),
         Path('samples.sample_terms', include=[
@@ -386,7 +386,6 @@ class MeasurementSet(FileSet):
         Path('samples.disease_terms', include=['@id', 'term_name']),
         Path('samples.modifications', include=['@id', 'modality']),
         Path('samples.construct_library_sets', include=['@id', 'accession', 'summary']),
-        Path('files', include=['sequencing_platform']),
         Path('files.sequencing_platform', include=['@id', 'term_name']),
     ]
 
