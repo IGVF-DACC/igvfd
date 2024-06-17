@@ -1,6 +1,6 @@
 {
-    "hash": "54e4f8d0790e044dc62f76b168d3113d",
-    "index_name": "analysis_set_54e4f8d0",
+    "hash": "15b9ed91142f213675c7a1e6c537ea3f",
+    "index_name": "analysis_set_15b9ed91",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1656,9 +1656,6 @@
                                 "type": "keyword"
                             },
                             "multiplexed_samples": {
-                                "type": "keyword"
-                            },
-                            "nih_institutional_certification": {
                                 "type": "keyword"
                             },
                             "notes": {

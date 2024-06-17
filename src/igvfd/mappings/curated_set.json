@@ -1,6 +1,6 @@
 {
-    "hash": "2171694982fd4e1b19fd57a4557daf35",
-    "index_name": "curated_set_21716949",
+    "hash": "8de52793f8f4183a1185665f526f780d",
+    "index_name": "curated_set_8de52793",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1341,9 +1341,6 @@
                                 "type": "keyword"
                             },
                             "multiplexed_samples": {
-                                "type": "keyword"
-                            },
-                            "nih_institutional_certification": {
                                 "type": "keyword"
                             },
                             "notes": {

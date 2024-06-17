@@ -2,7 +2,7 @@
 
 ### Schema version 21
 
-* Remove `institutional_certificate`.
+* Remove `nih_institutional_certification`.
 
 ### Minor changes since schema version 20
 

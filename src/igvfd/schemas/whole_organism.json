@@ -103,7 +103,7 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
-        "nih_institutional_certification"
+        "institutional_certificates.certificate_identifier"
     ],
     "changelog": "/profiles/changelogs/whole_organism.md"
 }

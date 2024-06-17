@@ -1,6 +1,6 @@
 {
-    "hash": "96c60e1506bba7b9eb5e61ca15e21f96",
-    "index_name": "tissue_96c60e15",
+    "hash": "4996ef2942ccecbc808c2e1c86e907df",
+    "index_name": "tissue_4996ef29",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -798,7 +798,79 @@
                         "type": "object"
                     },
                     "institutional_certificates": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "award": {
+                                "type": "keyword"
+                            },
+                            "certificate_identifier": {
+                                "copy_to": "_exact",
+                                "type": "keyword"
+                            },
+                            "controlled_access": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "data_use_limitation": {
+                                "type": "keyword"
+                            },
+                            "data_use_limitation_modifiers": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
+                            "samples": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "urls": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "lab": {
                         "properties": {
@@ -1163,10 +1235,6 @@
                         },
                         "type": "object"
                     },
-                    "nih_institutional_certification": {
-                        "copy_to": "_exact",
-                        "type": "keyword"
-                    },
                     "notes": {
                         "type": "text"
                     },
@@ -1451,9 +1519,6 @@
                                 "type": "keyword"
                             },
                             "multiplexed_samples": {
-                                "type": "keyword"
-                            },
-                            "nih_institutional_certification": {
                                 "type": "keyword"
                             },
                             "notes": {

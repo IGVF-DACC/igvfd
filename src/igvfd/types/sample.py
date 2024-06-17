@@ -198,7 +198,8 @@ class Biosample(Sample):
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
-        Path('modifications', include=['@id', 'modality', 'summary', 'status'])
+        Path('modifications', include=['@id', 'modality', 'summary', 'status']),
+        Path('institutional_certificates', include=['@id', 'certificate_identifier', 'urls'])
     ]
 
     audit_inherit = Sample.audit_inherit + [

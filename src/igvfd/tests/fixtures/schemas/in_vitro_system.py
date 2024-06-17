@@ -269,3 +269,13 @@ def in_vitro_system_v18(lab, award, source, human_donor, sample_term_adrenal_gla
         'classification': 'embryoid'
     }
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v20(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '20',
+        'nih_institutional_certification': 'NIC00017'
+    })
+    return item

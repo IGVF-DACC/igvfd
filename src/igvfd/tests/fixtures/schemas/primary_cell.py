@@ -291,3 +291,13 @@ def primary_cell_v17(primary_cell):
         'status': 'released'
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v18(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '18',
+        'nih_institutional_certification': 'NIC00017'
+    })
+    return item

@@ -362,9 +362,6 @@
                             "multiplexed_samples": {
                                 "type": "keyword"
                             },
-                            "nih_institutional_certification": {
-                                "type": "keyword"
-                            },
                             "notes": {
                                 "type": "text"
                             },

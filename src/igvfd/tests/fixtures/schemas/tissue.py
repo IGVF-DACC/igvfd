@@ -273,3 +273,13 @@ def tissue_v16(tissue_v15):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def tissue_v18(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '18',
+        'nih_institutional_certification': 'NIC00017'
+    })
+    return item
