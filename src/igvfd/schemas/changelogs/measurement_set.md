@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 17
+
+* Add `external_image_url`.
+
 ### Schema version 17
 
 * Remove `readout`.

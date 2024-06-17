@@ -316,5 +316,25 @@
         "assay_term": "/assay-terms/OBI_0002675/",
         "preferred_assay_title": "MPRA",
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:imaging_assay"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "3fca9c80-b67d-94d0-9a34-a927506ea59b",
+        "samples": [
+            "igvf:alias10"
+        ],
+        "collections": [
+            "Vista"
+        ],
+        "assay_term": "/assay-terms/OBI_0000185/",
+        "preferred_assay_title": "Cell painting",
+        "file_set_type": "experimental data",
+        "external_image_url": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/"
     }
 ]
