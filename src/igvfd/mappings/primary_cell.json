@@ -1,6 +1,6 @@
 {
-    "hash": "0443db53ab21dc8b73c9d3f086bb693f",
-    "index_name": "primary_cell_0443db53",
+    "hash": "1cc1b4d05ccb015cebb240ce6defb1f1",
+    "index_name": "primary_cell_1cc1b4d0",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -504,6 +504,9 @@
                                 "type": "keyword"
                             },
                             "exon": {
+                                "type": "keyword"
+                            },
+                            "external_image_url": {
                                 "type": "keyword"
                             },
                             "file_set_type": {
