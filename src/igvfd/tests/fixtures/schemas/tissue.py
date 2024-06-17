@@ -192,7 +192,7 @@ def biosample_sorted_child(
         'sorted_from_detail': 'FACS bin 0-10% expression of FEN',
         'award': award['@id'],
         'lab': lab['@id'],
-        'nih_institutional_certification': 'NIC000ABCD'
+        'ccf_id': '78d06f07-f1cb-4d21-b578-b01c7388804f'
     }
     return testapp.post_json('/tissue', item, status=201).json['@graph'][0]
 
