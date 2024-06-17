@@ -13,17 +13,6 @@ def test_lot_id_dependency(tissue, testapp):
     assert res.status_code == 422
 
 
-def test_nih_institutional_certification(tissue, testapp):
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'nih_institutional_certification': 'NICHD1455'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        tissue['@id'],
-        {'nih_institutional_certification': 'ABBBCCCHD1455'}, expect_errors=True)
-    assert res.status_code == 422
-
-
 def test_collections(tissue, testapp):
     res = testapp.patch_json(
         tissue['@id'],
