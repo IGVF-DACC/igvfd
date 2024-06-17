@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Schema version 19
+
+* Remove `institutional_certificate`.
+
 ### Minor changes since schema version 18
 
 * Allow `modifications` to link to `Crispr Modifications`.

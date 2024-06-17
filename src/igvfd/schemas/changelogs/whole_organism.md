@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 22
+
+* Remove `institutional_certificate`.
+
 ### Minor changes since schema version 21
 
 * Allow `modifications` to link to `Crispr Modifications`.

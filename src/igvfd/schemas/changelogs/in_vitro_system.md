@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 21
+
+* Remove `institutional_certificate`.
+
 ### Minor changes since schema version 20
 
 * Allow `modifications` to link to `Crispr Modifications`.
