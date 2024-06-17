@@ -17,7 +17,6 @@
         "sources": [
             "/labs/j-michael-cherry/"
         ],
-        "nih_institutional_certification": "NICHD1442",
         "pmi": 2,
         "pmi_units": "week",
         "ccf_id": "6b7f36a6-2dfe-4ae0-9d68-03df15ab6402",
@@ -107,7 +106,6 @@
         "sample_terms": [
             "/sample-terms/eea050cd-9e8c-4420-967f-3581b20536ab/"
         ],
-        "nih_institutional_certification": "NICHD1442",
         "pmi": 2,
         "pmi_units": "week",
         "ccf_id": "41fd31e5-ac11-4e0e-a8ad-995d9fc0d8c1",
@@ -140,7 +138,6 @@
         "sources": [
             "/labs/j-michael-cherry/"
         ],
-        "nih_institutional_certification": "NICHD1442",
         "preservation_method": "cryopreservation",
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
@@ -168,7 +165,6 @@
         "sources": [
             "/labs/j-michael-cherry/"
         ],
-        "nih_institutional_certification": "NICHD1442",
         "preservation_method": "cryopreservation",
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
@@ -198,7 +194,6 @@
         "sources": [
             "/labs/j-michael-cherry/"
         ],
-        "nih_institutional_certification": "NICHD1442",
         "preservation_method": "cryopreservation",
         "donors": [
             "05c0a52c-f861-4057-b3eb-751624bdff37"
