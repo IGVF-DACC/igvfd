@@ -34,3 +34,14 @@ class Award(Item):
 
     set_status_up = []
     set_status_down = []
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the award.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, title):
+        return title

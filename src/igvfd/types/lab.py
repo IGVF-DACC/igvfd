@@ -33,6 +33,7 @@ class Lab(Item):
     set_status_down = []
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Title',
             'type': 'string',
@@ -43,3 +44,14 @@ class Lab(Item):
         pi_object = request.embed(pi, '@@object')
         pi_name = pi_object.get('title')
         return f'{pi_name}, {institute_label}'
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the lab.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, title):
+        return title

@@ -1,6 +1,7 @@
 from snovault import (
     collection,
-    load_schema
+    load_schema,
+    calculated_property
 )
 from .base import (
     Item
@@ -26,3 +27,14 @@ class Source(Item):
 
     set_status_up = []
     set_status_down = []
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the source.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, title):
+        return title
