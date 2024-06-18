@@ -70,10 +70,20 @@ def modification_prime_editing(testapp, lab, award):
 
 
 @pytest.fixture
-def modification_v5(modification_activation):
+def modification_v5_krab(modification_activation):
     item = modification_activation.copy()
     item.update({
         'schema_version': '5',
         'fused_domain': 'KRAB',
+    })
+    return item
+
+
+@pytest.fixture
+def modification_v5_vpr(modification_activation):
+    item = modification_activation.copy()
+    item.update({
+        'schema_version': '5',
+        'fused_domain': 'VPR',
     })
     return item
