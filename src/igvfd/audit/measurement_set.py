@@ -225,7 +225,7 @@ def audit_CRISPR_screen_lacking_auxiliary_set(value, system):
     if value['assay_term']['term_name'] in ['CRISPR screen', 'cas mediated mutagenesis']:
         auxiliary_sets = [system.get('request').embed(auxiliary_set['@id'], '@@object?skip_calculated=true')
                           for auxiliary_set in value.get('auxiliary_sets', '')]
-        if not(auxiliary_sets) or not([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'gRNA sequencing']):
+        if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'gRNA sequencing']):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
                 f'a CRISPR-based assay but has no gRNA sequencing `auxiliary_sets`.'

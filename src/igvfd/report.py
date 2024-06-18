@@ -114,7 +114,7 @@ def report_download(context, request):
 
     def format_header():
         newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, '/report/', request.query_string)
-        return(bytes(newheader, 'utf-8'))
+        return (bytes(newheader, 'utf-8'))
 
     # Work around Excel bug; can't open single column TSV with 'ID' header
     if len(columns) == 1 and '@id' in columns:
@@ -209,7 +209,7 @@ def multitype_report_download(context, request):
 
     def format_header():
         newheader = '%s\t%s%s?%s\r\n' % (downloadtime, request.host_url, '/multireport/', request.query_string)
-        return(bytes(newheader, 'utf-8'))
+        return (bytes(newheader, 'utf-8'))
 
     # Work around Excel bug; can't open single column TSV with 'ID' header
     if len(columns) == 1 and '@id' in columns:

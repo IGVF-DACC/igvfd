@@ -110,7 +110,7 @@ def audit_construct_library_set_guide_design(value, system):
         if integrated_content_files:
             files = [system.get('request').embed(file, '@@object?skip_calculated=true')
                      for file in integrated_content_files]
-            if not([file for file in files if file['content_type'] == 'guide RNA sequences']):
+            if not ([file for file in files if file['content_type'] == 'guide RNA sequences']):
                 detail = (f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} has no '
                           f'linked files in `integrated_content_files` with `content_type` "guide RNA sequences".')
                 yield AuditFailure('missing guide RNA sequences', f'{detail} {description}', level='NOT_COMPLIANT')

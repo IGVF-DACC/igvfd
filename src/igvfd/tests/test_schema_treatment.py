@@ -9,7 +9,7 @@ def test_treatment_duration_dependency(treatment_protein, testapp):
     res = testapp.patch_json(
         treatment_protein['@id'],
         {'duration_units': 'minute'}, expect_errors=True)
-    assert(res.status_code == 422)
+    assert (res.status_code == 422)
     res = testapp.patch_json(
         treatment_protein['@id'],
         {'duration': 15, 'duration_units': 'minute'})

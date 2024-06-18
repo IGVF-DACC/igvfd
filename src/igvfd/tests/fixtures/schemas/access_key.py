@@ -30,7 +30,7 @@ def no_login_access_key(testapp, no_login_submitter):
 
 @pytest.fixture
 def access_key(submitter):
-    return{
+    return {
         'user': submitter['uuid']
     }
 

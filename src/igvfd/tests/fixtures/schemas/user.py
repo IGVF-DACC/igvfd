@@ -16,7 +16,7 @@ def disabled_user(testapp, lab):
 
 @pytest.fixture
 def user_0():
-    return{
+    return {
         'first_name': 'Benjamin',
         'last_name': 'Hitz',
         'email': 'hitz@stanford.edu',

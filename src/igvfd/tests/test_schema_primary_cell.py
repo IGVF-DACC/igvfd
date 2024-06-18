@@ -28,15 +28,15 @@ def test_pooled_from(primary_cell, tissue, pooled_from_primary_cell, pooled_from
     res = testapp.patch_json(
         primary_cell['@id'],
         {'pooled_from': [pooled_from_primary_cell['@id']]}, expect_errors=True)
-    assert(res.status_code == 422)
+    assert (res.status_code == 422)
     res = testapp.patch_json(
         primary_cell['@id'],
         {'pooled_from': [pooled_from_primary_cell['@id'], tissue['@id']]}, expect_errors=True)
-    assert(res.status_code == 422)
+    assert (res.status_code == 422)
     res = testapp.patch_json(
         primary_cell['@id'],
         {'pooled_from': [pooled_from_primary_cell['@id'], pooled_from_primary_cell_2['@id']]})
-    assert(res.status_code == 200)
+    assert (res.status_code == 200)
 
 
 def test_collections(primary_cell, testapp):

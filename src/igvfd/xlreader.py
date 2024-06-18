@@ -75,7 +75,7 @@ class DictReader:
                 pass
             else:
                 self.line_num += 1
-        #self.line_num = self.reader.line_num
+        # self.line_num = self.reader.line_num
         return self._fieldnames
 
     @fieldnames.setter
