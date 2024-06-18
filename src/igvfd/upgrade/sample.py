@@ -443,7 +443,7 @@ def sample_18_19(value, system):
     if 'nih_institutional_certification' in value:
         old_nic = value.get('nih_institutional_certification')
         notes = f'This biosample previously specified {old_nic} as its NIC, but this property has been moved to the institutional certification object. Please submit there instead to specify certification.'
-        old_notes = value.get('nih_institutional_certification', '')
+        old_notes = value.get('notes', '')
         if old_notes:
             notes = f'{old_notes} {notes}'
         value['notes'] = notes
