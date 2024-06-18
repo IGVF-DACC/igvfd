@@ -284,12 +284,6 @@ class MetadataReport:
                     self._output_sorted_row(experiment_data, file_data)
                 )
 
-    def _validate_request(self):
-        type_params = self.param_list.get('type', [])
-        if len(type_params) != 1:
-            raise HTTPBadRequest(explanation='URL requires one "type" parameter.')
-        return True
-
     def _initialize_report(self):
         self._build_header()
         self._split_column_and_fields_by_experiment_and_file()
@@ -303,7 +297,6 @@ class MetadataReport:
         self._maybe_add_json_elements_to_param_list()
 
     def generate(self):
-        self._validate_request()
         self._initialize_report()
         self._build_params()
         return Response(

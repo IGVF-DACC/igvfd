@@ -2,7 +2,14 @@ from collections import OrderedDict
 
 
 METADATA_ALLOWED_TYPES = [
+    'FileSet',
     'MeasurementSet',
+    'AnalysisSet',
+    'AuxiliarySet',
+    'ConstructLibrarySet',
+    'CuratedSet',
+    'ModelSet',
+    'PredictionSet',
 ]
 
 
