@@ -2,7 +2,7 @@ from snovault import upgrade_step
 
 
 @upgrade_step('crispr_modification', '1', '2')
-def crispr_modification_5_6(value, system):
+def crispr_modification_1_2(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1423
     old_to_new = {
         'KRAB': 'ZIM3-KRAB',
