@@ -73,7 +73,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "18"
+            "default": "19"
         },
         "pmi": {
             "title": "Post-mortem Interval",
@@ -167,7 +167,7 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
-        "nih_institutional_certification"
+        "institutional_certificates.certificate_identifier"
     ],
     "changelog": "/profiles/changelogs/tissue.md"
 }

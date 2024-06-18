@@ -271,3 +271,13 @@ def whole_organism_v19(whole_organism_v18):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v21(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '21',
+        'nih_institutional_certification': 'NIC00017'
+    })
+    return item

@@ -13,17 +13,6 @@ def test_lot_id_dependency(primary_cell, testapp):
     assert res.status_code == 422
 
 
-def test_nih_institutional_certification(primary_cell, testapp):
-    res = testapp.patch_json(
-        primary_cell['@id'],
-        {'nih_institutional_certification': 'NICHD1455'})
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        primary_cell['@id'],
-        {'nih_institutional_certification': 'ABBBCCCHD1455'}, expect_errors=True)
-    assert res.status_code == 422
-
-
 def test_pooled_from(primary_cell, tissue, pooled_from_primary_cell, pooled_from_primary_cell_2, testapp):
     res = testapp.patch_json(
         primary_cell['@id'],

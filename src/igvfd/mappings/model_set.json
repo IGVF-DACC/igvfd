@@ -1,6 +1,6 @@
 {
-    "hash": "67a26b14b0dcbeaff58371e3bc5c31fe",
-    "index_name": "model_set_67a26b14",
+    "hash": "ddbec2a8d770fe62fd93efe268c1c0f0",
+    "index_name": "model_set_ddbec2a8",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1664,9 +1664,6 @@
                                 "type": "keyword"
                             },
                             "multiplexed_samples": {
-                                "type": "keyword"
-                            },
-                            "nih_institutional_certification": {
                                 "type": "keyword"
                             },
                             "notes": {

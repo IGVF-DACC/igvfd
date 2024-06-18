@@ -21,7 +21,7 @@ def test_audit_sample_sorted_from_parent_child_check(
     )
     testapp.patch_json(
         tissue_unsorted_parent['@id'],
-        {'nih_institutional_certification': 'NIC000ABCD'}
+        {'ccf_id': '78d06f07-f1cb-4d21-b578-b01c7388804f'}
     )
     res = testapp.get(biosample_sorted_child['@id'] + '@@audit')
     assert 'inconsistent parent sample' not in (

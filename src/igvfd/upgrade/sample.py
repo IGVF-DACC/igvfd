@@ -432,3 +432,19 @@ def sample_17_18(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('primary_cell', '18', '19')
+@upgrade_step('in_vitro_system', '20', '21')
+@upgrade_step('tissue', '18', '19')
+@upgrade_step('whole_organism', '21', '22')
+def sample_18_19(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1684
+    if 'nih_institutional_certification' in value:
+        old_nic = value.get('nih_institutional_certification')
+        notes = f'This biosample previously specified {old_nic} as its NIC, but this property has been moved to the institutional certification object. Please submit there instead to specify certification.'
+        old_notes = value.get('notes', '')
+        if old_notes:
+            notes = f'{old_notes} {notes}'
+        value['notes'] = notes
+        del value['nih_institutional_certification']

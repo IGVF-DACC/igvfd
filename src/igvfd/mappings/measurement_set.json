@@ -1,6 +1,6 @@
 {
-    "hash": "cf15e1b8d7dcd59baa2cb03a120f834f",
-    "index_name": "measurement_set_cf15e1b8",
+    "hash": "f5acccdb114d1c0810892b537fddf446",
+    "index_name": "measurement_set_f5acccdb",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2585,9 +2585,6 @@
                                 "type": "keyword"
                             },
                             "multiplexed_samples": {
-                                "type": "keyword"
-                            },
-                            "nih_institutional_certification": {
                                 "type": "keyword"
                             },
                             "notes": {

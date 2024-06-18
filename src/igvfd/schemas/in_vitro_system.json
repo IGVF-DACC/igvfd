@@ -437,7 +437,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "20"
+            "default": "21"
         },
         "classifications": {
             "title": "Classifications",
@@ -602,7 +602,7 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
-        "nih_institutional_certification"
+        "institutional_certificates.certificate_identifier"
     ],
     "changelog": "/profiles/changelogs/in_vitro_system.md"
 }

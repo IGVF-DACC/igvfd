@@ -1,6 +1,6 @@
 {
-    "hash": "27c2adaa5fa311c3c0341f1630cdddb8",
-    "index_name": "technical_sample_27c2adaa",
+    "hash": "cdd4a7696659567c69ee1e3d83d8e535",
+    "index_name": "technical_sample_cdd4a769",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1213,9 +1213,6 @@
                                 "type": "keyword"
                             },
                             "multiplexed_samples": {
-                                "type": "keyword"
-                            },
-                            "nih_institutional_certification": {
                                 "type": "keyword"
                             },
                             "notes": {

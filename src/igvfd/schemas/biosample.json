@@ -145,17 +145,6 @@
                 "igvf_utils": "/phenotype-terms/MONDO_0008564/, /phenotype-terms/MONDO_0005148/"
             }
         },
-        "nih_institutional_certification": {
-            "title": "NIH Institutional Certification",
-            "description": "Institutional certification given by the NIH for human biosamples.",
-            "comment": "Required for IGVF human biosamples.",
-            "type": "string",
-            "pattern": "^NIC[A-Z0-9]+$",
-            "submissionExample": {
-                "appscript": "NIC00017",
-                "igvf_utils": "NIC00017"
-            }
-        },
         "pooled_from": {
             "title": "Biosamples Pooled From",
             "description": "The biosamples this biosample is pooled from.",

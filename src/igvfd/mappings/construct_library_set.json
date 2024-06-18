@@ -1,6 +1,6 @@
 {
-    "hash": "5aa49e7ea10bffdd78d724e1584d1f7e",
-    "index_name": "construct_library_set_5aa49e7e",
+    "hash": "974997df276b867396c4b31318d2aed8",
+    "index_name": "construct_library_set_974997df",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -360,9 +360,6 @@
                                 "type": "keyword"
                             },
                             "multiplexed_samples": {
-                                "type": "keyword"
-                            },
-                            "nih_institutional_certification": {
                                 "type": "keyword"
                             },
                             "notes": {

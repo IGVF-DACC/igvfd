@@ -76,7 +76,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "21"
+            "default": "22"
         },
         "sample_terms": {
             "comment": "Do not submit, value is assigned by the object.",
@@ -103,7 +103,7 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
-        "nih_institutional_certification"
+        "institutional_certificates.certificate_identifier"
     ],
     "changelog": "/profiles/changelogs/whole_organism.md"
 }

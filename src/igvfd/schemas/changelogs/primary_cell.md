@@ -1,5 +1,9 @@
 ## Changelog for *`primary_cell.json`*
 
+### Schema version 19
+
+* Remove `nih_institutional_certification`.
+
 ### Minor changes since schema version 18
 
 * Allow `modifications` to link to `Crispr Modifications`.

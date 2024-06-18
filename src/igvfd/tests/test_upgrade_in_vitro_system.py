@@ -152,3 +152,9 @@ def test_in_vitro_system_upgrade_18_19(upgrader, in_vitro_system_v18):
     assert 'classification' not in value
     assert 'classifications' in value
     assert value['classifications'] == ['embryoid']
+
+
+def test_in_vitro_system_upgrade_20_21(upgrader, in_vitro_system_v20):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v20, current_version='20', target_version='21')
+    assert value['schema_version'] == '21'
+    assert 'nih_institutional_certification' not in value
