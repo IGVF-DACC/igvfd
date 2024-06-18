@@ -26,7 +26,8 @@ def test_modification_upgrade_3_4(upgrader, modification_v3):
 
 
 def test_modification_upgrade_5_6(upgrader, modification_v5):
+    print(modification_v5)
     value = upgrader.upgrade('modification', modification_v5, current_version='5', target_version='6')
     assert value['schema_version'] == '6'
-    assert value['fused_domain'] == 'ZIM3-KRAB'
-    assert value['notes'].endswith('renamed to be ZIM3-KRAB')
+    assert 'fused_domain' not in value
+    assert value['notes'].endswith('removed.')
