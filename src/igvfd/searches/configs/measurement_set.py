@@ -34,6 +34,9 @@ def measurement_set():
             'library_construction_platform.term_name': {
                 'title': 'Library Platform'
             },
+            'files.sequencing_platform.term_name': {
+                'title': 'Sequencing Platform'
+            },
             'sequencing_library_types': {
                 'title': 'Library Material'
             },
@@ -93,6 +96,7 @@ def measurement_set():
                 'facet_fields': [
                     'library_construction_platform.term_name',
                     'sequencing_library_types',
+                    'files.sequencing_platform.term_name'
                 ],
             },
             {
