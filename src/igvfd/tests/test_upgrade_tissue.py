@@ -136,7 +136,7 @@ def test_tissue_upgrade_16_17(upgrader, tissue_v16):
     assert 'description' not in value
 
 
-def test_tissue_upgrade_16_17(upgrader, tissue_v18):
+def test_tissue_upgrade_18_19(upgrader, tissue_v18):
     value = upgrader.upgrade('tissue', tissue_v18, current_version='18', target_version='19')
     assert value['schema_version'] == '19'
     assert 'nih_institutional_certification' not in value

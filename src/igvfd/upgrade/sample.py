@@ -446,4 +446,5 @@ def sample_18_19(value, system):
         old_notes = value.get('nih_institutional_certification', '')
         if old_notes:
             notes = f'{old_notes}. {notes}'
+        value['notes'] = notes
         del value['nih_institutional_certification']
