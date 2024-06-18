@@ -7,7 +7,7 @@
             "igvf:modification_1"
         ],
         "cas": "dCas9",
-        "fused_domain": "KRAB",
+        "fused_domain": "ZIM3-KRAB",
         "modality": "interference",
         "status": "in progress",
         "product_id": "addgene:000567",
@@ -92,7 +92,7 @@
             "igvf:modification_7"
         ],
         "cas": "SpRY",
-        "fused_domain": "ZIM3",
+        "fused_domain": "ZIM3-KRAB",
         "modality": "prime editing",
         "status": "archived",
         "release_timestamp": "2024-03-06T12:34:56Z",
