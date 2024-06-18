@@ -34,7 +34,7 @@ def audit_no_files(value, system):
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     description = get_audit_description(audit_no_files)
-    if not(value.get('files', '')):
+    if not (value.get('files', '')):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `files`.'
@@ -152,7 +152,7 @@ def audit_inconsistent_seqspec(value, system):
 
         for key, file_dict in sequence_to_seqspec.items():
             first_seqspec = next(iter(file_dict.values()), None)
-            if not(all(seqspec == first_seqspec for seqspec in file_dict.values())):
+            if not (all(seqspec == first_seqspec for seqspec in file_dict.values())):
                 non_matching_files = [file for file, _ in file_dict.items()]
                 detail = (
                     f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence files: '

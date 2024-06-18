@@ -13,7 +13,7 @@ def other_lab(testapp, verified_member):
 
 @pytest.fixture
 def fake_lab(unverified_member):
-    return{
+    return {
         'name': 'Fake Lab',
         'institute_label': 'Fake Institute',
         'pi': unverified_member['@id'],

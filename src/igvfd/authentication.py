@@ -96,7 +96,7 @@ def basic_auth_check(username, password, request):
     if not valid:
         return None
 
-    #valid, new_hash = crypt_context.verify_and_update(password, hash)
+    # valid, new_hash = crypt_context.verify_and_update(password, hash)
     # if new_hash:
     #    replace_user_hash(user, new_hash)
 
