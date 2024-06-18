@@ -59,7 +59,7 @@ def audit_file_format_specifications(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_upload_status)
+    description = get_audit_description(audit_file_format_specifications)
     object_type = space_in_words(value['@type'][0]).capitalize()
     for document in value.get('file_format_specifications', []):
         document_object = system.get('request').embed(document)
