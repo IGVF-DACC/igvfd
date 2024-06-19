@@ -1,6 +1,6 @@
 {
-    "hash": "15b9ed91142f213675c7a1e6c537ea3f",
-    "index_name": "analysis_set_15b9ed91",
+    "hash": "71110b6a453c05cfd2a7c774f376ce66",
+    "index_name": "analysis_set_71110b6a",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -892,6 +892,9 @@
                             "flowcell_id": {
                                 "type": "keyword"
                             },
+                            "gene_list_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -915,6 +918,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "loci_list_for": {
+                                "type": "keyword"
                             },
                             "maximum_read_length": {
                                 "fields": {

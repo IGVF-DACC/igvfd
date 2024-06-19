@@ -1,6 +1,6 @@
 {
-    "hash": "8de52793f8f4183a1185665f526f780d",
-    "index_name": "curated_set_8de52793",
+    "hash": "19b240584318e4683030106580fb9c94",
+    "index_name": "curated_set_19b24058",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -893,6 +893,9 @@
                             "flowcell_id": {
                                 "type": "keyword"
                             },
+                            "gene_list_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -916,6 +919,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "loci_list_for": {
+                                "type": "keyword"
                             },
                             "maximum_read_length": {
                                 "fields": {
