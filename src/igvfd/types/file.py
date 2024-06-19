@@ -357,6 +357,20 @@ class SequenceFile(File):
     def seqspecs(self, request, seqspecs):
         return paths_filtered_by_status(request, seqspecs)
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the sequence file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_type, sequencing_run, illumina_read_type=None):
+        prefix = content_type
+        if illumina_read_type:
+            prefix = f'{illumina_read_type} {content_type}'
+        return f'{prefix} from sequencing run {sequencing_run}'
+
 
 @collection(
     name='reference-files',
@@ -384,6 +398,20 @@ class ReferenceFile(File):
                 keys.setdefault('alias', []).append(value)
         return keys
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the reference file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_type, assembly=None, transcriptome_annotation=None):
+        return ' '.join(
+            [x for x in [assembly, transcriptome_annotation, content_type]
+             if x is not None]
+        )
+
 
 @collection(
     name='alignment-files',
@@ -409,6 +437,7 @@ class AlignmentFile(File):
         return keys
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Content Summary',
             'type': 'string',
@@ -432,6 +461,20 @@ class AlignmentFile(File):
         ]
         non_empty_phrases = [x for x in phrases if x != '']
         return ' '.join(non_empty_phrases)
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the alignment file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_summary, assembly=None, transcriptome_annotation=None):
+        return ' '.join(
+            [x for x in [assembly, transcriptome_annotation, content_summary]
+             if x is not None]
+        )
 
 
 @collection(
@@ -458,6 +501,7 @@ class MatrixFile(File):
         return keys
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Content Summary',
             'type': 'string',
@@ -467,6 +511,17 @@ class MatrixFile(File):
     )
     def content_summary(self, request, dimension1, dimension2, content_type):
         return f'{dimension1} by {dimension2} {content_type}'
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the matrix file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_summary, assembly=None, transcriptome_annotation=None):
+        return content_summary
 
 
 @collection(
@@ -493,6 +548,7 @@ class SignalFile(File):
         return keys
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Content Summary',
             'type': 'string',
@@ -522,6 +578,20 @@ class SignalFile(File):
         non_empty_phrases = [x for x in phrases if x != '']
         return ' '.join(non_empty_phrases)
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the signal file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_summary, assembly=None, transcriptome_annotation=None):
+        return ' '.join(
+            [x for x in [assembly, transcriptome_annotation, content_summary]
+             if x is not None]
+        )
+
 
 @collection(
     name='configuration-files',
@@ -545,6 +615,21 @@ class ConfigurationFile(File):
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
         return keys
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the configuration file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_type, seqspec_of=None):
+        seqspec_of_formatted = ''
+        if seqspec_of:
+            file_accessions = [x.split('/')[-2] for x in seqspec_of]
+            seqspec_of_formatted = f" of {', '.join([file_accessions])}"
+        return f'{content_type}{seqspec_of_formatted}'
 
 
 @collection(
@@ -570,6 +655,20 @@ class TabularFile(File):
                 keys.setdefault('alias', []).append(value)
         return keys
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the tabular file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_type, assembly=None, transcriptome_annotation=None):
+        return ' '.join(
+            [x for x in [assembly, transcriptome_annotation, content_type]
+             if x is not None]
+        )
+
 
 @collection(
     name='genome-browser-annotation-files',
@@ -593,6 +692,20 @@ class GenomeBrowserAnnotationFile(File):
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
         return keys
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the genome browser annotation file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_type, assembly=None, transcriptome_annotation=None):
+        return ' '.join(
+            [x for x in [assembly, transcriptome_annotation, content_type]
+             if x is not None]
+        )
 
 
 @collection(
@@ -618,6 +731,17 @@ class ImageFile(File):
                 keys.setdefault('alias', []).append(value)
         return keys
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the image file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_type):
+        return content_type
+
 
 @collection(
     name='model-files',
@@ -641,6 +765,17 @@ class ModelFile(File):
                 value = 'md5:{md5sum}'.format(**properties)
                 keys.setdefault('alias', []).append(value)
         return keys
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the model file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_type):
+        return content_type
 
 
 @view_config(
