@@ -218,6 +218,11 @@ def audit_CRISPR_screen_lacking_auxiliary_set(value, system):
             "audit_description": "Measurement sets from CRISPR-based assays are expected to link to a gRNA sequencing auxiliary set.",
             "audit_category": "missing auxiliary set",
             "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Variant FlowFISH measurement sets are expected to link to a variant sequencing auxiliary set.",
+            "audit_category": "missing auxiliary set",
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
@@ -225,7 +230,14 @@ def audit_CRISPR_screen_lacking_auxiliary_set(value, system):
     if value['assay_term']['term_name'] in ['CRISPR screen', 'cas mediated mutagenesis']:
         auxiliary_sets = [system.get('request').embed(auxiliary_set['@id'], '@@object?skip_calculated=true')
                           for auxiliary_set in value.get('auxiliary_sets', '')]
-        if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'gRNA sequencing']):
+        if value.get('preferred_assay_title', '') == 'Variant FlowFISH':
+            if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'variant sequencing']):
+                detail = (
+                    f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                    f'a Variant FlowFISH assay but has no variant sequencing `auxiliary_sets`.'
+                )
+                yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
+        elif not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'gRNA sequencing']):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
                 f'a CRISPR-based assay but has no gRNA sequencing `auxiliary_sets`.'

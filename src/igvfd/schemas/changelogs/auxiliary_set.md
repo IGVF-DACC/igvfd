@@ -8,6 +8,7 @@
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.4`.
 * Add calculated property `input_file_set_for`.
 * Extend `file_set_type` enum list to include `cell sorting`.
+* Extend `file_set_type` enum list to include `variant sequencing`.
 
 ### Schema version 7
 
