@@ -226,7 +226,8 @@ def audit_CRISPR_screen_lacking_auxiliary_set(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_CRISPR_screen_lacking_auxiliary_set)
+    description_CRISPR = get_audit_description(audit_CRISPR_screen_lacking_auxiliary_set, index=0)
+    description_Variant_FlowFISH = get_audit_description(audit_CRISPR_screen_lacking_auxiliary_set, index=1)
     if value['assay_term']['term_name'] in ['CRISPR screen', 'cas mediated mutagenesis']:
         auxiliary_sets = [system.get('request').embed(auxiliary_set['@id'], '@@object?skip_calculated=true')
                           for auxiliary_set in value.get('auxiliary_sets', '')]
@@ -236,13 +237,13 @@ def audit_CRISPR_screen_lacking_auxiliary_set(value, system):
                     f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
                     f'a Variant FlowFISH assay but has no variant sequencing `auxiliary_sets`.'
                 )
-                yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
+                yield AuditFailure('missing auxiliary set', f'{detail} {description_Variant_FlowFISH}', level='NOT_COMPLIANT')
         elif not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'gRNA sequencing']):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
                 f'a CRISPR-based assay but has no gRNA sequencing `auxiliary_sets`.'
             )
-            yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
+            yield AuditFailure('missing auxiliary set', f'{detail} {description_CRISPR}', level='NOT_COMPLIANT')
 
 
 @audit_checker('MeasurementSet', frame='object')
