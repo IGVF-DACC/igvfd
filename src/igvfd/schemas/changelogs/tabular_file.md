@@ -2,8 +2,9 @@
 
 ### Minor changes since schema version 11
 
-* Extend `file_format_type` enum list to include `differential gene expression quantifications`.
-* Extend `file_format_type` enum list to include `differential transcript expression quantifications`.
+* Extend `content_type` enum list to include `differential gene expression quantifications`.
+* Extend `content_type` enum list to include `differential transcript expression quantifications`.
+* Extend `content_type` enum list to include `MPRA sequence designs`.
 
 ### Schema version 11
 
