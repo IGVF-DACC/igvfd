@@ -7,6 +7,7 @@
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.4`.
 * Add calculated property `input_file_set_for`.
+* Add `input_file_sets`.
 
 ### Schema version 7
 

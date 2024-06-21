@@ -59,6 +59,9 @@
         },
         {
             "$ref": "mixins.json#/loci"
+        },
+        {
+            "$ref": "mixins.json#/input_file_sets"
         }
     ],
     "dependentSchemas": {
@@ -252,6 +255,12 @@
         "large_scale_gene_list": {
             "description": "The large scale list of (>100 genes) this this prediction set targets.",
             "comment": "If 100 or fewer genes were targeted, submit small_scale_gene_list instead."
+        },
+        "input_file_sets": {
+            "description": "The file set(s) required for this prediction set.",
+            "items": {
+                "description": "A file set required for this prediction set."
+            }
         }
     },
     "fuzzy_searchable_fields": [
