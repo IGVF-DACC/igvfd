@@ -22,7 +22,7 @@ METADATA_COLUMN_TO_FIELDS_MAPPING = OrderedDict(
         ('Assay', ['assay_term.term_name']),
         ('Donor(s)', ['donors.accession']),
         ('Sample(s)', ['samples.accession']),
-        ('Creation timestampe', ['creation_timestamp']),
+        ('Creation timestamp', ['creation_timestamp']),
         ('Size', ['files.file_size']),
         ('Lab', ['lab.title']),
         ('File download URL', ['files.href']),
