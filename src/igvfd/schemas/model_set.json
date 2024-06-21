@@ -130,10 +130,7 @@
             }
         },
         "input_file_sets": {
-            "description": "The file set(s) that served as inputs for the derivation of this model set.",
-            "items": {
-                "description": "A file set that serves as input for the derivation of this model set."
-            }
+            "description": "The file set(s) that served as inputs for the derivation of this model set."
         },
         "model_zoo_location": {
             "title": "Model Zoo Location",

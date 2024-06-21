@@ -68,10 +68,7 @@
             "default": "7"
         },
         "input_file_sets": {
-            "description": "The file set(s) required for this analysis.",
-            "items": {
-                "description": "A file set required for this analysis."
-            }
+            "description": "The file set(s) required for this analysis."
         },
         "file_set_type": {
             "description": "The level of this analysis set. An intermediate analysis cannot be interpreted on its own and is part of a principal analysis. A principal analysis is the core analysis for an experimental design, the results of which can be interpretable on their own.",
