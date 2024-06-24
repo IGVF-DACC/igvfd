@@ -18,6 +18,7 @@
         "file_set": "igvf:basic_measurement_set",
         "seqspec_of": [
             "IGVFFI0001KASA"
-        ]
+        ],
+        "analysis_step_version": "/analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/"
     }
 ]

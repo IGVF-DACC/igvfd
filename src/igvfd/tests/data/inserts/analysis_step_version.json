@@ -1,0 +1,15 @@
+[
+    {
+        "uuid": "dc73c5ff-32f2-41f2-95a7-b7f57b234f0d",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:analysis_step_version_01"
+        ],
+        "submitter_comment": "hello. test submitter_commment.",
+        "analysis_step": "igvf-dacc:analysis_step_01",
+        "software_versions": [
+            "2170cada-3182-442b-b5ed-4a6329042db5"
+        ]
+    }
+]

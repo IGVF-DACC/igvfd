@@ -798,6 +798,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "analysis_step_version": {
+                                "type": "keyword"
+                            },
                             "anvil_url": {
                                 "type": "keyword"
                             },
