@@ -121,5 +121,25 @@
         "assembly": "GRCh38",
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "81585158-73e8-4eb4-ba41-21ab323b5de5",
+        "accession": "IGVFFI0007CELL",
+        "lab": "jesse-engreitz",
+        "award": "1UM1HG011972-01",
+        "aliases": [
+            "igvf:tabular_file_sample_sort_parameters"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "md5sum": "f63161620f0229b0a36028d56bae7209",
+        "file_format": "tsv",
+        "content_type": "sample sort parameters",
+        "submitted_file_name": "/Users/igvf/igvf_files/sample_sort_parameters.tsv.gz",
+        "file_size": 412315412,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "igvf:auxiliary_set_cell_sorting",
+        "controlled_access": false
     }
 ]
