@@ -328,7 +328,7 @@
             ]
         },
         "scope": {
-            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is interactors then orf_list is required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified.",
+            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is interactors then orf_list is required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified, if scope is alleles then small_scale_gene_list or large_scale_gene_list is required, if scope is targeton then both targeton and small_scale_gene_list are required.",
             "oneOf": [
                 {
                     "required": [
@@ -477,7 +477,7 @@
             ]
         },
         "small_scale_gene_list": {
-            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, genes, or interactors and is mutually exclusive with specification of large_scale_gene_list.",
+            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, genes, interactors alleles or targeton and is mutually exclusive with specification of large_scale_gene_list.",
             "allOf": [
                 {
                     "properties": {
@@ -515,7 +515,7 @@
             ]
         },
         "large_scale_gene_list": {
-            "comment": "Specification of large_scale_gene_list requires that scope is genes and is mutually exclusive with specification of small_scale_gene_list.",
+            "comment": "Specification of large_scale_gene_list requires that scope is genes or alleles and is mutually exclusive with specification of small_scale_gene_list.",
             "allOf": [
                 {
                     "properties": {
