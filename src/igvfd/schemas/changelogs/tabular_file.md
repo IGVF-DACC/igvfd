@@ -1,5 +1,11 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 11
+
+* Extend `content_type` enum list to include `differential gene expression quantifications`.
+* Extend `content_type` enum list to include `differential transcript expression quantifications`.
+* Extend `content_type` enum list to include `MPRA sequence designs`.
+
 ### Schema version 11
 
 * Adjust `content_type` enum list to replace `fold over change control` with `fold change over control`.
