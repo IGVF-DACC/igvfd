@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Add `analysis_step_version`.
 * Add calculated property `input_file_for`.
 * Extend `content_type` enum list to include `sample sort parameters`.
 * Extend `content_type` enum list to include `differential gene expression quantifications`.

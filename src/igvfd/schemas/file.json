@@ -230,6 +230,16 @@
         "accession": {
             "accessionType": "FI"
         },
+        "analysis_step_version": {
+            "title": "Analysis step version",
+            "description": "The analysis step version of the file.",
+            "type": "string",
+            "linkTo": "AnalysisStepVersion",
+            "submissionExample": {
+                "appscript": "john-doe:analysis_step_version_01 or /analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/",
+                "igvf_utils": "john-doe:analysis_step_version_01 or /analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/"
+            }
+        },
         "content_md5sum": {
             "title": "Content MD5sum",
             "description": "The MD5sum of the uncompressed file.",

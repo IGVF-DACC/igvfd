@@ -1,0 +1,79 @@
+{
+    "title": "Analysis Step Version",
+    "description": "A step version in a computational analysis workflow.",
+    "$id": "/profiles/analysis_step_version.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "required": [
+        "lab",
+        "award",
+        "analysis_step",
+        "software_versions"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases",
+        "name"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "shared_dependencies.json#/standard_status"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "analysis_step": {
+            "title": "Analysis Step",
+            "description": "The analysis step in which this version belongs to.",
+            "type": "string",
+            "linkTo": "AnalysisStep",
+            "submissionExample": {
+                "appscript": "john-doe:analysis_step_01 or /analysis-steps/TSTWF62585875-chip-seq-alignment-example-step/",
+                "igvf_utils": "john-doe:analysis_step_01 or /analysis-steps/TSTWF62585875-chip-seq-alignment-example-step/"
+            }
+        },
+        "software_versions": {
+            "title": "Software Versions",
+            "description": "The software versions used in this analysis step versions.",
+            "uniqueItems": true,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+                "title": "Software Versions",
+                "description": "The software versions used in this analysis step versions.",
+                "comment": "See software_versions.json for available identifiers.",
+                "type": "string",
+                "linkTo": "SoftwareVersion"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:software_version_01\", \"/software-versions/bluestarr-v0.1.0/\"]",
+                "igvf_utils": "john-doe:software_version_01, /software-versions/bluestarr-v0.1.0/"
+            }
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "description",
+        "submitted_by.title"
+    ],
+    "exact_searchable_fields": [
+        "@type"
+    ],
+    "changelog": "/profiles/changelogs/analysis_step_version.md"
+}
