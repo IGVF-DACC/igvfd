@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 8
 
+* Extend `scope` enum list to include `alleles`.
+* Extend `scope` enum list to include `targeton`.
+* Extend `file_set_type` enum list to include `editing templates`.
+* Add `targeton`.
 * Extend `collections` enum list to include `Vista`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.2`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`.
