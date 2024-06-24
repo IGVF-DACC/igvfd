@@ -111,6 +111,7 @@
                 "barcode to sample mapping",
                 "differential gene expression quantifications",
                 "differential transcript expression quantifications",
+                "editing templates",
                 "element quantifications",
                 "elements reference",
                 "fold change over control",
@@ -121,6 +122,7 @@
                 "protein to protein interaction score",
                 "sample sort parameters",
                 "sequence barcodes",
+                "variants",
                 "variant effects",
                 "variant to element mapping"
             ],
