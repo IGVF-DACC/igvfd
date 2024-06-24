@@ -1,6 +1,6 @@
 {
-    "hash": "ad5a87363cb80f748d6d431dfeab4345",
-    "index_name": "tabular_file_ad5a8736",
+    "hash": "9b184f161da2ea9859d4c806e00b406a",
+    "index_name": "tabular_file_9b184f16",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -292,6 +292,9 @@
                         "store": true,
                         "type": "long"
                     },
+                    "gene_list_for": {
+                        "type": "keyword"
+                    },
                     "href": {
                         "type": "keyword"
                     },
@@ -356,6 +359,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "loci_list_for": {
+                        "type": "keyword"
                     },
                     "md5sum": {
                         "type": "keyword"

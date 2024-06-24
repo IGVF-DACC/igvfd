@@ -1,6 +1,6 @@
 {
-    "hash": "974997df276b867396c4b31318d2aed8",
-    "index_name": "construct_library_set_974997df",
+    "hash": "149a41e5539c106607e30390f3dea54f",
+    "index_name": "construct_library_set_149a41e5",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1232,6 +1232,9 @@
                             "flowcell_id": {
                                 "type": "keyword"
                             },
+                            "gene_list_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -1255,6 +1258,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "loci_list_for": {
+                                "type": "keyword"
                             },
                             "maximum_read_length": {
                                 "fields": {
@@ -1560,6 +1566,9 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "gene_list_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -1567,6 +1576,9 @@
                                 "type": "keyword"
                             },
                             "lab": {
+                                "type": "keyword"
+                            },
+                            "loci_list_for": {
                                 "type": "keyword"
                             },
                             "md5sum": {
@@ -1719,6 +1731,9 @@
                                 "store": true,
                                 "type": "long"
                             },
+                            "gene_list_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -1726,6 +1741,9 @@
                                 "type": "keyword"
                             },
                             "lab": {
+                                "type": "keyword"
+                            },
+                            "loci_list_for": {
                                 "type": "keyword"
                             },
                             "md5sum": {

@@ -1,6 +1,6 @@
 {
-    "hash": "788688ea3ee260c41ff667c579f66b84",
-    "index_name": "sequence_file_788688ea",
+    "hash": "dbec518693c8a29b987c205a1b4ebc0c",
+    "index_name": "sequence_file_dbec5186",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -289,6 +289,9 @@
                     "flowcell_id": {
                         "type": "keyword"
                     },
+                    "gene_list_for": {
+                        "type": "keyword"
+                    },
                     "href": {
                         "type": "keyword"
                     },
@@ -368,6 +371,9 @@
                         },
                         "store": true,
                         "type": "long"
+                    },
+                    "loci_list_for": {
+                        "type": "keyword"
                     },
                     "maximum_read_length": {
                         "fields": {

@@ -1,6 +1,6 @@
 {
-    "hash": "ddbec2a8d770fe62fd93efe268c1c0f0",
-    "index_name": "model_set_ddbec2a8",
+    "hash": "437233381698487ab4d1e3dfcdbd0b12",
+    "index_name": "model_set_43723338",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -887,6 +887,9 @@
                             "flowcell_id": {
                                 "type": "keyword"
                             },
+                            "gene_list_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -910,6 +913,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "loci_list_for": {
+                                "type": "keyword"
                             },
                             "maximum_read_length": {
                                 "fields": {

@@ -1,6 +1,6 @@
 {
-    "hash": "f5acccdb114d1c0810892b537fddf446",
-    "index_name": "measurement_set_f5acccdb",
+    "hash": "28f0969ce43acf13a6f466c7387b81ac",
+    "index_name": "measurement_set_28f0969c",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1389,6 +1389,9 @@
                             "flowcell_id": {
                                 "type": "keyword"
                             },
+                            "gene_list_for": {
+                                "type": "keyword"
+                            },
                             "href": {
                                 "type": "keyword"
                             },
@@ -1412,6 +1415,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "loci_list_for": {
+                                "type": "keyword"
                             },
                             "maximum_read_length": {
                                 "fields": {

@@ -1,6 +1,6 @@
 {
-    "hash": "7d3877ec7363ab56b8f094bb77cdcbff",
-    "index_name": "model_file_7d3877ec",
+    "hash": "d43c41216db39733d390aa369fc04e2a",
+    "index_name": "model_file_d43c4121",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -286,6 +286,9 @@
                         "store": true,
                         "type": "long"
                     },
+                    "gene_list_for": {
+                        "type": "keyword"
+                    },
                     "href": {
                         "type": "keyword"
                     },
@@ -350,6 +353,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "loci_list_for": {
+                        "type": "keyword"
                     },
                     "md5sum": {
                         "type": "keyword"

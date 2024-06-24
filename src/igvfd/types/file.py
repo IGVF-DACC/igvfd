@@ -114,7 +114,9 @@ class File(Item):
         Path('submitted_by', include=['@id', 'title']),
     ]
     rev = {
-        'integrated_in': ('ConstructLibrarySet', 'integrated_content_files')
+        'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
+        'gene_list_for': ('FileSet', 'large_scale_gene_list'),
+        'loci_list_for': ('FileSet', 'large_scale_loci_list')
     }
 
     set_status_up = [
@@ -137,6 +139,38 @@ class File(Item):
     })
     def integrated_in(self, request, integrated_in):
         return paths_filtered_by_status(request, integrated_in)
+
+    @calculated_property(schema={
+        'title': 'Gene List For',
+        'description': 'File Set(s) that this file is a gene list for.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Gene List For',
+            'type': ['string', 'object'],
+            'linkFrom': 'FileSet.large_scale_gene_list',
+        },
+        'notSubmittable': True
+    })
+    def gene_list_for(self, request, gene_list_for):
+        return paths_filtered_by_status(request, gene_list_for)
+
+    @calculated_property(schema={
+        'title': 'Loci List For',
+        'description': 'File Set(s) that this file is a loci list for.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Loci List For',
+            'type': ['string', 'object'],
+            'linkFrom': 'FileSet.large_scale_loci_list',
+        },
+        'notSubmittable': True
+    })
+    def loci_list_for(self, request, loci_list_for):
+        return paths_filtered_by_status(request, loci_list_for)
 
     @calculated_property(
         condition=show_href,

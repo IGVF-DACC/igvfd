@@ -1,6 +1,6 @@
 {
-    "hash": "ac94513f70989c3593abfbf764bc14e1",
-    "index_name": "signal_file_ac94513f",
+    "hash": "e8c722b2e1f03f2c6f7d13c44668aad3",
+    "index_name": "signal_file_e8c722b2",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -289,6 +289,9 @@
                         "store": true,
                         "type": "boolean"
                     },
+                    "gene_list_for": {
+                        "type": "keyword"
+                    },
                     "href": {
                         "type": "keyword"
                     },
@@ -353,6 +356,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "loci_list_for": {
+                        "type": "keyword"
                     },
                     "md5sum": {
                         "type": "keyword"

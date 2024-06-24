@@ -37,6 +37,27 @@ def test_control_link(testapp, measurement_set, curated_set_genome):
     assert set([file_set_id['@id'] for file_set_id in res.json.get('control_for')]) == {measurement_set['@id']}
 
 
+def test_gene_and_loci_list_for(testapp, base_prediction_set, construct_library_set_genome_wide, tabular_file):
+    testapp.patch_json(
+        base_prediction_set['@id'],
+        {
+            'large_scale_gene_list': tabular_file['@id'],
+            'scope': 'genes'
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert set(res.json.get('gene_list_for')) == {base_prediction_set['@id']}
+    testapp.patch_json(
+        construct_library_set_genome_wide['@id'],
+        {
+            'large_scale_loci_list': tabular_file['@id'],
+            'scope': 'loci'
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert set(res.json.get('loci_list_for')) == {construct_library_set_genome_wide['@id']}
+
+
 def test_submitted_files_timestamp(testapp,  reference_file, sequence_file, measurement_set, base_auxiliary_set):
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('submitted_files_timestamp', None) is None
