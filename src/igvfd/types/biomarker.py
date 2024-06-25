@@ -8,6 +8,11 @@ from .base import (
     Item,
 )
 
+from igvfd.types.base import (
+    Item,
+    paths_filtered_by_status
+)
+
 
 @collection(
     name='biomarkers',
