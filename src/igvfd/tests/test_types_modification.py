@@ -55,7 +55,7 @@ def test_modification_summary(testapp, modification, gene_myc_hs):
     assert res.json.get('summary') == 'CRISPR localizing SpRY-ANTI-FLAG fused to MYC'
 
 
-def test_samples_modified(testapp, in_vitro_system_v20, modification_prime_editing):
+def test_biosamples_modified(testapp, in_vitro_system_v20, modification_prime_editing):
     testapp.patch_json(
         in_vitro_system_v20['@id'],
         {
@@ -63,4 +63,4 @@ def test_samples_modified(testapp, in_vitro_system_v20, modification_prime_editi
         }
     )
     res = testapp.get(modification_prime_editing['@id'])
-    assert res.json.get('samples_modified', []) == [in_vitro_system_v20['@id']]
+    assert res.json.get('biosamples_modified', []) == [in_vitro_system_v20['@id']]

@@ -10,7 +10,7 @@ def test_treatment_summary(treatment_chemical, treatment_protein, depletion_trea
     assert res.json['summary'] == 'Depletion of penicillin for 3 minutes'
 
 
-def test_samples_treated(testapp, primary_cell_v18, treatment_v6):
+def test_biosamples_treated(testapp, primary_cell_v18, treatment_v6):
     testapp.patch_json(
         primary_cell_v18['@id'],
         {
@@ -18,4 +18,4 @@ def test_samples_treated(testapp, primary_cell_v18, treatment_v6):
         }
     )
     res = testapp.get(treatment_v6['@id'])
-    assert res.json.get('samples_treated', []) == [primary_cell_v18['@id']]
+    assert res.json.get('biosamples_treated', []) == [primary_cell_v18['@id']]
