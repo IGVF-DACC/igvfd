@@ -61,5 +61,6 @@ class AnalysisStepVersion(Item):
         root = find_root(self)
         analysis_step_uuid = properties['analysis_step']
         analysis_step = root.get_by_uuid(analysis_step_uuid)
+        workflow = root.get_by_uuid(analysis_step.upgrade_properties()['workflow'])
         format_creation_timestamp = properties['creation_timestamp'][:10]
-        return u'{}-{}'.format(analysis_step.upgrade_properties()['step_label'], format_creation_timestamp)
+        return u'{}-{}-{}'.format(workflow.upgrade_properties()['accession'], analysis_step.upgrade_properties()['step_label'], format_creation_timestamp)
