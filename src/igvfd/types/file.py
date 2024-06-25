@@ -115,6 +115,7 @@ class File(Item):
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
+        'input_to': ('Files', 'derived_from'),
         'gene_list_for': ('FileSet', 'large_scale_gene_list'),
         'loci_list_for': ('FileSet', 'large_scale_loci_list')
     }
