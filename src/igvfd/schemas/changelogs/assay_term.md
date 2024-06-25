@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 6
 
+* Update calculation of `summary`.
 * Extend `preferred_assay_titles` enum list to include `scNT-seq2`.
 
 ### Schema version 6

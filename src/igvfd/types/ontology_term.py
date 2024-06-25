@@ -107,6 +107,17 @@ class OntologyTerm(Item):
             properties = self.upgrade_properties()
         return properties['term_id'].split(':')[0]
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the ontology term.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, term_name):
+        return term_name
+
 
 @collection(
     name='sample-terms',

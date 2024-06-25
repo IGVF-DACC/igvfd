@@ -1,5 +1,9 @@
 ## Changelog for *`sample_term.json`*
 
+### Minor changes since schema version 5
+
+* Update calculation of `summary`.
+
 ### Schema version 5
 
 * Restrict `dbxrefs` to be a non-empty array with at least one item.

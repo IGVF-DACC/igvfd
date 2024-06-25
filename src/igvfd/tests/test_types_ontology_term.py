@@ -47,3 +47,20 @@ def test_ontology(
 ):
     res = testapp.get(sample_term_K562['@id'])
     assert res.json.get('ontology', '') == 'EFO'
+
+
+def test_term_summary(
+    assay_term_starr,
+    phenotype_term_alzheimers,
+    sample_term_K562,
+    platform_term_HiSeq,
+    testapp
+):
+    res = testapp.get(assay_term_starr['@id'])
+    assert res.json.get('summary', '') == 'STARR-seq'
+    res = testapp.get(phenotype_term_alzheimers['@id'])
+    assert res.json.get('summary', '') == 'Alzheimer\'s disease'
+    res = testapp.get(sample_term_K562['@id'])
+    assert res.json.get('summary', '') == 'K562'
+    res = testapp.get(platform_term_HiSeq['@id'])
+    assert res.json.get('summary', '') == 'Illumina HiSeq 2000'
