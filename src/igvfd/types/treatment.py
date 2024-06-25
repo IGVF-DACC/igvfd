@@ -25,6 +25,9 @@ class Treatment(Item):
         Path('sources', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]
+    rev = {
+        'samples_treated': ('Samples', 'treatments')
+    }
 
     set_status_up = []
     set_status_down = []
@@ -48,3 +51,19 @@ class Treatment(Item):
         else:
             text = f'Depletion of {treatment_term_name}'
         return text
+
+    @calculated_property(schema={
+        'title': 'Samples Treated',
+        'description': 'The samples which has been treated using this treatment.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Input to',
+            'type': ['string', 'object'],
+            'linkFrom': 'Samples.treatments',
+        },
+        'notSubmittable': True
+    })
+    def input_to(self, request, input_to):
+        return paths_filtered_by_status(request, input_to)
