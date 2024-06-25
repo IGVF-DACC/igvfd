@@ -81,7 +81,7 @@
             }
         },
         "file_set_type": {
-            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, or large_scale_gene_list and that scope be genes, tile, exon, alleles or interactors and should not specify any guide properties. Editing templates require that scope be targeton and should not specify any guide properties.",
+            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, or large_scale_gene_list and that scope be genes, tile, exon, alleles, or interactors and should not specify any guide properties. Editing templates require that scope be targeton and should not specify any guide properties.",
             "allOf": [
                 {
                     "if": {
@@ -477,7 +477,7 @@
             ]
         },
         "small_scale_gene_list": {
-            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, genes, interactors alleles or targeton and is mutually exclusive with specification of large_scale_gene_list.",
+            "comment": "Specification of small_scale_gene_list requires that scope is tile, exon, genes, interactors, alleles or targeton and is mutually exclusive with specification of large_scale_gene_list.",
             "allOf": [
                 {
                     "properties": {
