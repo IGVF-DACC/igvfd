@@ -115,7 +115,7 @@ class File(Item):
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
-        'input_to': ('Files', 'derived_from'),
+        'input_to': ('File', 'derived_from'),
         'gene_list_for': ('FileSet', 'large_scale_gene_list'),
         'loci_list_for': ('FileSet', 'large_scale_loci_list')
     }
@@ -182,7 +182,7 @@ class File(Item):
         'items': {
             'title': 'Input to',
             'type': ['string', 'object'],
-            'linkFrom': 'Files.derived_from',
+            'linkFrom': 'File.derived_from',
         },
         'notSubmittable': True
     })
