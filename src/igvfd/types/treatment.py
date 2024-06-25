@@ -65,5 +65,5 @@ class Treatment(Item):
         },
         'notSubmittable': True
     })
-    def input_to(self, request, input_to):
-        return paths_filtered_by_status(request, input_to)
+    def input_to(self, request, samples_treated):
+        return paths_filtered_by_status(request, samples_treated)
