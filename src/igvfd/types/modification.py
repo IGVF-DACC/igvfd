@@ -87,7 +87,7 @@ class Modification(Item):
         'items': {
             'title': 'Samples modified',
             'type': ['string', 'object'],
-            'linkFrom': 'Samples.modifications',
+            'linkFrom': 'Sample.modifications',
         },
         'notSubmittable': True
     })

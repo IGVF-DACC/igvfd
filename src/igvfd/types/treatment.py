@@ -61,7 +61,7 @@ class Treatment(Item):
         'items': {
             'title': 'Samples Treated',
             'type': ['string', 'object'],
-            'linkFrom': 'Samples.treatments',
+            'linkFrom': 'Sample.treatments',
         },
         'notSubmittable': True
     })

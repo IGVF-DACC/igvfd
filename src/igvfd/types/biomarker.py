@@ -58,7 +58,7 @@ class Biomarker(Item):
         'items': {
             'title': 'Biomarker for',
             'type': ['string', 'object'],
-            'linkFrom': 'Samples.biomarkers',
+            'linkFrom': 'Sample.biomarkers',
         },
         'notSubmittable': True
     })
