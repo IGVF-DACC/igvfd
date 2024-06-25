@@ -1,6 +1,6 @@
 {
-    "hash": "ffcaa1461366c323acebd70274035ae3",
-    "index_name": "treatment_ffcaa146",
+    "hash": "62356ad6af68e1d62770ae5f4f700457",
+    "index_name": "treatment_62356ad6",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -263,6 +263,9 @@
                         "type": "float"
                     },
                     "duration_units": {
+                        "type": "keyword"
+                    },
+                    "input_to": {
                         "type": "keyword"
                     },
                     "lab": {

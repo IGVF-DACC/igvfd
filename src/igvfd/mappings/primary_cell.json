@@ -1,6 +1,6 @@
 {
-    "hash": "0443db53ab21dc8b73c9d3f086bb693f",
-    "index_name": "primary_cell_0443db53",
+    "hash": "d4c27903267d106c084875754978a35c",
+    "index_name": "primary_cell_d4c27903",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -996,6 +996,9 @@
                             "fused_domain": {
                                 "type": "keyword"
                             },
+                            "input_to": {
+                                "type": "keyword"
+                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -1918,6 +1921,9 @@
                                 "type": "float"
                             },
                             "duration_units": {
+                                "type": "keyword"
+                            },
+                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {

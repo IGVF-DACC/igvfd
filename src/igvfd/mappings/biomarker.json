@@ -1,6 +1,6 @@
 {
-    "hash": "f7d4b67f42ebc667f338e108de490e54",
-    "index_name": "biomarker_f7d4b67f",
+    "hash": "342b795839f92c8b6a27d2614295546c",
+    "index_name": "biomarker_342b7958",
     "item_type": "biomarker",
     "mapping": {
         "dynamic_templates": [
@@ -233,6 +233,9 @@
                     },
                     "gene": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "input_to": {
                         "type": "keyword"
                     },
                     "lab": {

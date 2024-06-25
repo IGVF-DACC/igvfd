@@ -904,6 +904,9 @@
                             "index": {
                                 "type": "keyword"
                             },
+                            "input_to": {
+                                "type": "keyword"
+                            },
                             "integrated_in": {
                                 "type": "keyword"
                             },

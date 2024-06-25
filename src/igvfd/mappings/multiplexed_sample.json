@@ -1,6 +1,6 @@
 {
-    "hash": "cd1f629ff660c5c15878fab05896f91b",
-    "index_name": "multiplexed_sample_cd1f629f",
+    "hash": "7fa7458cd856cc12e746cbf530de6537",
+    "index_name": "multiplexed_sample_7fa7458c",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1123,6 +1123,9 @@
                                 "type": "keyword"
                             },
                             "fused_domain": {
+                                "type": "keyword"
+                            },
+                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {
@@ -2614,6 +2617,9 @@
                                 "type": "float"
                             },
                             "duration_units": {
+                                "type": "keyword"
+                            },
+                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {

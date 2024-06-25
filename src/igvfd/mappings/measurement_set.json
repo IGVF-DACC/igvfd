@@ -1401,6 +1401,9 @@
                             "index": {
                                 "type": "keyword"
                             },
+                            "input_to": {
+                                "type": "keyword"
+                            },
                             "integrated_in": {
                                 "type": "keyword"
                             },
@@ -2020,6 +2023,9 @@
                                     "duration_units": {
                                         "type": "keyword"
                                     },
+                                    "input_to": {
+                                        "type": "keyword"
+                                    },
                                     "lab": {
                                         "type": "keyword"
                                     },
@@ -2532,6 +2538,9 @@
                                     "fused_domain": {
                                         "type": "keyword"
                                     },
+                                    "input_to": {
+                                        "type": "keyword"
+                                    },
                                     "lab": {
                                         "type": "keyword"
                                     },
@@ -2951,6 +2960,9 @@
                                         "type": "float"
                                     },
                                     "duration_units": {
+                                        "type": "keyword"
+                                    },
+                                    "input_to": {
                                         "type": "keyword"
                                     },
                                     "lab": {
