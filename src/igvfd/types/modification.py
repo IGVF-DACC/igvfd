@@ -24,6 +24,9 @@ class Modification(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]
+    rev = {
+        'samples_modified': ('Sample', 'modifications')
+    }
 
     set_status_up = [
         'documents'
@@ -74,6 +77,22 @@ class Modification(Item):
             summary = f'{summary} fused to {tagged_protein_symbol}'
 
         return summary
+
+    @calculated_property(schema={
+        'title': 'Samples modified',
+        'description': 'The samples which have been modified with this modification.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Samples modified',
+            'type': ['string', 'object'],
+            'linkFrom': 'Samples.modifications',
+        },
+        'notSubmittable': True
+    })
+    def input_to(self, request, samples_modified):
+        return paths_filtered_by_status(request, samples_modified)
 
 
 @collection(
