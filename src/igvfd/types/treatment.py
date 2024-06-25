@@ -26,7 +26,7 @@ class Treatment(Item):
         Path('submitted_by', include=['@id', 'title']),
     ]
     rev = {
-        'samples_treated': ('Samples', 'treatments')
+        'samples_treated': ('Sample', 'treatments')
     }
 
     set_status_up = []
