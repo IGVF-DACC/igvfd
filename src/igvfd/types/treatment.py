@@ -54,7 +54,7 @@ class Treatment(Item):
 
     @calculated_property(schema={
         'title': 'Samples Treated',
-        'description': 'The samples which has been treated using this treatment.',
+        'description': 'The samples which have been treated using this treatment.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
