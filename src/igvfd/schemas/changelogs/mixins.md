@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Add `input_file_sets`. (06/26/2024)
 * Add `anvil_url` to `controlled_access`. (05/31/2024)
 * Extend `collections` enum list to include `Vista`. (04/17/2024)
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.2`. (04/17/2024)
