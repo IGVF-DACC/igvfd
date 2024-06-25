@@ -204,4 +204,4 @@ def test_input_to(testapp, sequence_file_v12, tabular_file_v10):
         }
     )
     res = testapp.get(tabular_file_v10['@id'])
-    assert res.json.get('input_to', []) == [tabular_file_v10['@id']]
+    assert res.json.get('input_to', []) == [sequence_file_v12['@id']]
