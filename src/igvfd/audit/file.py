@@ -40,7 +40,7 @@ def audit_upload_status(value, system):
         )
         validation_error_detail = value.get('validation_error_detail')
         if upload_status == 'invalidated' and validation_error_detail:
-            detail = f'{detail} Validation error detail: {validation_error_detail}'
+            detail = f'{detail} Validation error detail: {validation_error_detail}.'
         yield AuditFailure(
             'upload status not validated',
             f'{detail} {description}',
