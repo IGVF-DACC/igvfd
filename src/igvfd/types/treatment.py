@@ -59,7 +59,7 @@ class Treatment(Item):
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-            'title': 'Input to',
+            'title': 'Samples Treated',
             'type': ['string', 'object'],
             'linkFrom': 'Samples.treatments',
         },

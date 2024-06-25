@@ -24,6 +24,9 @@ class Biomarker(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]
+    rev = {
+        'biomarker_for': ('Sample', 'biomarkers')
+    }
 
     set_status_up = []
     set_status_down = []
@@ -45,3 +48,19 @@ class Biomarker(Item):
         value = self.name_quantification(name=properties['name'], quantification=properties['quantification'])
         keys.setdefault('biomarker:name_quantification', []).append(value)
         return keys
+
+    @calculated_property(schema={
+        'title': 'Biomarker for',
+        'description': 'The samples which have been confirmed to have this biomarker.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Biomarker for',
+            'type': ['string', 'object'],
+            'linkFrom': 'Samples.biomarkers',
+        },
+        'notSubmittable': True
+    })
+    def input_to(self, request, biomarker_for):
+        return paths_filtered_by_status(request, biomarker_for)
