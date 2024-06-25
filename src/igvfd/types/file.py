@@ -174,13 +174,45 @@ class File(Item):
         return paths_filtered_by_status(request, loci_list_for)
 
     @calculated_property(schema={
-        'title': 'Input to',
+        'title': 'Gene List For',
+        'description': 'File Set(s) that this file is a gene list for.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Gene List For',
+            'type': ['string', 'object'],
+            'linkFrom': 'FileSet.large_scale_gene_list',
+        },
+        'notSubmittable': True
+    })
+    def gene_list_for(self, request, gene_list_for):
+        return paths_filtered_by_status(request, gene_list_for)
+
+    @calculated_property(schema={
+        'title': 'Loci List For',
+        'description': 'File Set(s) that this file is a loci list for.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Loci List For',
+            'type': ['string', 'object'],
+            'linkFrom': 'FileSet.large_scale_loci_list',
+        },
+        'notSubmittable': True
+    })
+    def loci_list_for(self, request, loci_list_for):
+        return paths_filtered_by_status(request, loci_list_for)
+
+    @calculated_property(schema={
+        'title': 'Input To',
         'description': 'The files which have been derived using this file as an input.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-            'title': 'Input to',
+            'title': 'Input To',
             'type': ['string', 'object'],
             'linkFrom': 'File.derived_from',
         },

@@ -30,7 +30,7 @@ class Biomarker(Item):
         Path('submitted_by', include=['@id', 'title']),
     ]
     rev = {
-        'biomarker_for': ('Sample', 'biomarkers')
+        'biomarker_for': ('Biosample', 'biomarkers')
     }
 
     set_status_up = []
@@ -55,17 +55,17 @@ class Biomarker(Item):
         return keys
 
     @calculated_property(schema={
-        'title': 'Biomarker for',
+        'title': 'Biomarker For',
         'description': 'The samples which have been confirmed to have this biomarker.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-            'title': 'Biomarker for',
+            'title': 'Biomarker For',
             'type': ['string', 'object'],
-            'linkFrom': 'Sample.biomarkers',
+            'linkFrom': 'Biosample.biomarkers',
         },
         'notSubmittable': True
     })
-    def input_to(self, request, biomarker_for):
+    def biomarker_for(self, request, biomarker_for):
         return paths_filtered_by_status(request, biomarker_for)

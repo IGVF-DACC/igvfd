@@ -31,7 +31,7 @@ class Treatment(Item):
         Path('submitted_by', include=['@id', 'title']),
     ]
     rev = {
-        'samples_treated': ('Sample', 'treatments')
+        'biosamples_treated': ('Biosample', 'treatments')
     }
 
     set_status_up = []
@@ -58,17 +58,17 @@ class Treatment(Item):
         return text
 
     @calculated_property(schema={
-        'title': 'Samples Treated',
+        'title': 'Biosamples Treated',
         'description': 'The samples which have been treated using this treatment.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-            'title': 'Samples Treated',
+            'title': 'Biosamples Treated',
             'type': ['string', 'object'],
-            'linkFrom': 'Sample.treatments',
+            'linkFrom': 'Biosample.treatments',
         },
         'notSubmittable': True
     })
-    def input_to(self, request, samples_treated):
-        return paths_filtered_by_status(request, samples_treated)
+    def biosamples_treated(self, request, biosamples_treated):
+        return paths_filtered_by_status(request, biosamples_treated)

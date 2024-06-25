@@ -30,7 +30,7 @@ class Modification(Item):
         Path('submitted_by', include=['@id', 'title']),
     ]
     rev = {
-        'samples_modified': ('Sample', 'modifications')
+        'biosamples_modified': ('Biosample', 'modifications')
     }
 
     set_status_up = [
@@ -84,20 +84,20 @@ class Modification(Item):
         return summary
 
     @calculated_property(schema={
-        'title': 'Samples modified',
+        'title': 'Samples Modified',
         'description': 'The samples which have been modified with this modification.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-            'title': 'Samples modified',
+            'title': 'Biosamples Modified',
             'type': ['string', 'object'],
-            'linkFrom': 'Sample.modifications',
+            'linkFrom': 'Biosample.modifications',
         },
         'notSubmittable': True
     })
-    def input_to(self, request, samples_modified):
-        return paths_filtered_by_status(request, samples_modified)
+    def biosamples_modified(self, request, biosamples_modified):
+        return paths_filtered_by_status(request, biosamples_modified)
 
 
 @collection(
