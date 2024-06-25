@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Add calculated property `input_to`.
 * Extend `content_type` enum list to include `differential gene expression quantifications`.
 * Extend `content_type` enum list to include `differential transcript expression quantifications`.
 * Extend `content_type` enum list to include `MPRA sequence designs`.

@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 14
+
+* Add calculated property `input_to`.
+
 ### Schema version 14
 
 * Reduce `upload_status` enum list to exclude `deposited`.

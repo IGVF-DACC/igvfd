@@ -172,6 +172,22 @@ class File(Item):
     def loci_list_for(self, request, loci_list_for):
         return paths_filtered_by_status(request, loci_list_for)
 
+    @calculated_property(schema={
+        'title': 'Input to',
+        'description': 'The file which has been created using this file as an input.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Input to',
+            'type': ['string', 'object'],
+            'linkFrom': 'Files.derived_from',
+        },
+        'notSubmittable': True
+    })
+    def input_to(self, request, input_to):
+        return paths_filtered_by_status(request, input_to)
+
     @calculated_property(
         condition=show_href,
         schema={
