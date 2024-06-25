@@ -951,7 +951,7 @@
             }
         },
         "targeton": {
-            "title": "Exon",
+            "title": "Targeton",
             "description": "An identifier in plain text for the specific targeton in an editing templates library. The associated gene must be listed in the small_scale_gene_list property.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
