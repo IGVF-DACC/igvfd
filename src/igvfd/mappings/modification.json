@@ -1,6 +1,6 @@
 {
-    "hash": "bc0b51033b5ef48c5eb793c0174e1039",
-    "index_name": "modification_bc0b5103",
+    "hash": "91b61b920c91dcc37f31cc9409364f95",
+    "index_name": "modification_91b61b92",
     "item_type": "modification",
     "mapping": {
         "dynamic_templates": [
@@ -237,6 +237,9 @@
                         },
                         "type": "object"
                     },
+                    "biosamples_modified": {
+                        "type": "keyword"
+                    },
                     "cas": {
                         "type": "keyword"
                     },
@@ -253,9 +256,6 @@
                         "type": "keyword"
                     },
                     "fused_domain": {
-                        "type": "keyword"
-                    },
-                    "input_to": {
                         "type": "keyword"
                     },
                     "lab": {

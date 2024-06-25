@@ -1,6 +1,6 @@
 {
-    "hash": "7fa7458cd856cc12e746cbf530de6537",
-    "index_name": "multiplexed_sample_7fa7458c",
+    "hash": "7b9e65332719b74d845103a4dd66f62f",
+    "index_name": "multiplexed_sample_7b9e6533",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1107,6 +1107,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "biosamples_modified": {
+                                "type": "keyword"
+                            },
                             "cas": {
                                 "type": "keyword"
                             },
@@ -1123,9 +1126,6 @@
                                 "type": "keyword"
                             },
                             "fused_domain": {
-                                "type": "keyword"
-                            },
-                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {
@@ -2589,6 +2589,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "biosamples_treated": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
@@ -2617,9 +2620,6 @@
                                 "type": "float"
                             },
                             "duration_units": {
-                                "type": "keyword"
-                            },
-                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {

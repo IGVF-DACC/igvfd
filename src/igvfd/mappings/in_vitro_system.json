@@ -1,6 +1,6 @@
 {
-    "hash": "be2f5bd117b3364a9b6d703b8e8af48b",
-    "index_name": "in_vitro_system_be2f5bd1",
+    "hash": "1d523e9006a3e556fcdd9581a3fd01ae",
+    "index_name": "in_vitro_system_1d523e90",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -266,6 +266,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "biosamples_treated": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
@@ -294,9 +297,6 @@
                                 "type": "float"
                             },
                             "duration_units": {
-                                "type": "keyword"
-                            },
-                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {
@@ -1134,6 +1134,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "biosamples_modified": {
+                                "type": "keyword"
+                            },
                             "cas": {
                                 "type": "keyword"
                             },
@@ -1150,9 +1153,6 @@
                                 "type": "keyword"
                             },
                             "fused_domain": {
-                                "type": "keyword"
-                            },
-                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {
@@ -2372,6 +2372,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "biosamples_treated": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
@@ -2400,9 +2403,6 @@
                                 "type": "float"
                             },
                             "duration_units": {
-                                "type": "keyword"
-                            },
-                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {

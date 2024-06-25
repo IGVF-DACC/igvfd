@@ -1,6 +1,6 @@
 {
-    "hash": "a68b5a0df86c2253e908192b96cb00dd",
-    "index_name": "whole_organism_a68b5a0d",
+    "hash": "b9b16af79f70140cb691add9bb16a868",
+    "index_name": "whole_organism_b9b16af7",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -978,6 +978,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "biosamples_modified": {
+                                "type": "keyword"
+                            },
                             "cas": {
                                 "type": "keyword"
                             },
@@ -994,9 +997,6 @@
                                 "type": "keyword"
                             },
                             "fused_domain": {
-                                "type": "keyword"
-                            },
-                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {
@@ -1884,6 +1884,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "biosamples_treated": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
@@ -1912,9 +1915,6 @@
                                 "type": "float"
                             },
                             "duration_units": {
-                                "type": "keyword"
-                            },
-                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {

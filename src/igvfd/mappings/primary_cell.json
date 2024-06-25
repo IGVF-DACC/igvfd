@@ -1,6 +1,6 @@
 {
-    "hash": "d4c27903267d106c084875754978a35c",
-    "index_name": "primary_cell_d4c27903",
+    "hash": "efbb3481fb64af2f9b249c0a615656a0",
+    "index_name": "primary_cell_efbb3481",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -978,6 +978,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "biosamples_modified": {
+                                "type": "keyword"
+                            },
                             "cas": {
                                 "type": "keyword"
                             },
@@ -994,9 +997,6 @@
                                 "type": "keyword"
                             },
                             "fused_domain": {
-                                "type": "keyword"
-                            },
-                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {
@@ -1893,6 +1893,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "biosamples_treated": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
@@ -1921,9 +1924,6 @@
                                 "type": "float"
                             },
                             "duration_units": {
-                                "type": "keyword"
-                            },
-                            "input_to": {
                                 "type": "keyword"
                             },
                             "lab": {

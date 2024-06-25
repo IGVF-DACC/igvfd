@@ -1,6 +1,6 @@
 {
-    "hash": "62356ad6af68e1d62770ae5f4f700457",
-    "index_name": "treatment_62356ad6",
+    "hash": "73b7dcc14087972632f69872b76abf24",
+    "index_name": "treatment_73b7dcc1",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -234,6 +234,9 @@
                         },
                         "type": "object"
                     },
+                    "biosamples_treated": {
+                        "type": "keyword"
+                    },
                     "creation_timestamp": {
                         "type": "keyword"
                     },
@@ -263,9 +266,6 @@
                         "type": "float"
                     },
                     "duration_units": {
-                        "type": "keyword"
-                    },
-                    "input_to": {
                         "type": "keyword"
                     },
                     "lab": {
