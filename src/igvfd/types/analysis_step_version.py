@@ -16,7 +16,7 @@ from pyramid.traversal import (
 
 @collection(
     name='analysis-step-versions',
-    unique_key='name',
+    unique_key='analysis_step_version:name',
     properties={
         'title': 'Analysis Step Versions',
         'description': 'Listing of analysis step versions',
@@ -60,7 +60,7 @@ class AnalysisStepVersion(Item):
     def _name(self, properties):
         root = find_root(self)
         analysis_step_uuid = properties['analysis_step']
-        print(properties)
+        print(analysis_step.upgrade_properties())
         analysis_step = root.get_by_uuid(analysis_step_uuid)
         format_creation_timestamp = properties['creation_timestamp'][:10]
         return u'{}-{}'.format(analysis_step.upgrade_properties()['name'], format_creation_timestamp)
