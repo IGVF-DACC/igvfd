@@ -8,6 +8,11 @@ from .base import (
     Item
 )
 
+from igvfd.types.base import (
+    Item,
+    paths_filtered_by_status
+)
+
 
 @collection(
     name='treatments',
@@ -25,6 +30,9 @@ class Treatment(Item):
         Path('sources', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]
+    rev = {
+        'biosamples_treated': ('Biosample', 'treatments')
+    }
 
     set_status_up = []
     set_status_down = []
@@ -48,3 +56,19 @@ class Treatment(Item):
         else:
             text = f'Depletion of {treatment_term_name}'
         return text
+
+    @calculated_property(schema={
+        'title': 'Biosamples Treated',
+        'description': 'The samples which have been treated using this treatment.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Biosamples Treated',
+            'type': ['string', 'object'],
+            'linkFrom': 'Biosample.treatments',
+        },
+        'notSubmittable': True
+    })
+    def biosamples_treated(self, request, biosamples_treated):
+        return paths_filtered_by_status(request, biosamples_treated)
