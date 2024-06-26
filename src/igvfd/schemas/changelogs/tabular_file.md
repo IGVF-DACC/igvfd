@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Update calculation of `summary`.
 * Extend `content_type` enum list to include `editing templates`.
 * Extend `content_type` enum list to include `variants`.
 * Add `analysis_step_version`.

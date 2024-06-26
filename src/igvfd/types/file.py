@@ -628,7 +628,7 @@ class ConfigurationFile(File):
         seqspec_of_formatted = ''
         if seqspec_of:
             file_accessions = [x.split('/')[-2] for x in seqspec_of]
-            seqspec_of_formatted = f" of {', '.join([file_accessions])}"
+            seqspec_of_formatted = f" of {', '.join(file_accessions)}"
         return f'{content_type}{seqspec_of_formatted}'
 
 
