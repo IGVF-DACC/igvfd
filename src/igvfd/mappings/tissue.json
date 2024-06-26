@@ -1,6 +1,6 @@
 {
-    "hash": "e25419cfcf0766bb51070454a4b5e930",
-    "index_name": "tissue_e25419cf",
+    "hash": "d42b40a2d70929b1f85526be3c8613e9",
+    "index_name": "tissue_d42b40a2",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -984,6 +984,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "biosamples_modified": {
+                                "type": "keyword"
+                            },
                             "cas": {
                                 "type": "keyword"
                             },
@@ -1900,6 +1903,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "biosamples_treated": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

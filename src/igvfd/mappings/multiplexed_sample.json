@@ -1,6 +1,6 @@
 {
-    "hash": "f0e627c117b6c1c07a2ec646a2510e66",
-    "index_name": "multiplexed_sample_f0e627c1",
+    "hash": "9b5e47ec2b22ceee2a32159f4f2b8d5b",
+    "index_name": "multiplexed_sample_9b5e47ec",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1108,6 +1108,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "biosamples_modified": {
                                 "type": "keyword"
                             },
                             "cas": {
@@ -2587,6 +2590,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "biosamples_treated": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

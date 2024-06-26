@@ -904,6 +904,9 @@
                             "index": {
                                 "type": "keyword"
                             },
+                            "input_to": {
+                                "type": "keyword"
+                            },
                             "integrated_in": {
                                 "type": "keyword"
                             },
@@ -1229,6 +1232,9 @@
                             "href": {
                                 "type": "keyword"
                             },
+                            "input_to": {
+                                "type": "keyword"
+                            },
                             "integrated_in": {
                                 "type": "keyword"
                             },
@@ -1392,6 +1398,9 @@
                                 "type": "keyword"
                             },
                             "href": {
+                                "type": "keyword"
+                            },
+                            "input_to": {
                                 "type": "keyword"
                             },
                             "integrated_in": {

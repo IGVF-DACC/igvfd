@@ -1,6 +1,6 @@
 {
-    "hash": "611fc14dabfde439c95b0802e1f3b303",
-    "index_name": "in_vitro_system_611fc14d",
+    "hash": "246b5fdad33a4b04ccc46b546a474bad",
+    "index_name": "in_vitro_system_246b5fda",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -264,6 +264,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "biosamples_treated": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -1132,6 +1135,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "biosamples_modified": {
                                 "type": "keyword"
                             },
                             "cas": {
@@ -2367,6 +2373,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "biosamples_treated": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

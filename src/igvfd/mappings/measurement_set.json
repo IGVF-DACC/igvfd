@@ -1,6 +1,6 @@
 {
-    "hash": "1d7075dde0b2548693fdcb27712371ba",
-    "index_name": "measurement_set_1d7075dd",
+    "hash": "ff32e170a80f6e35db29b20f059f466d",
+    "index_name": "measurement_set_ff32e170",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1410,6 +1410,9 @@
                             "index": {
                                 "type": "keyword"
                             },
+                            "input_to": {
+                                "type": "keyword"
+                            },
                             "integrated_in": {
                                 "type": "keyword"
                             },
@@ -2002,6 +2005,9 @@
                                     "award": {
                                         "type": "keyword"
                                     },
+                                    "biosamples_treated": {
+                                        "type": "keyword"
+                                    },
                                     "creation_timestamp": {
                                         "type": "keyword"
                                     },
@@ -2526,6 +2532,9 @@
                                     "award": {
                                         "type": "keyword"
                                     },
+                                    "biosamples_modified": {
+                                        "type": "keyword"
+                                    },
                                     "cas": {
                                         "type": "keyword"
                                     },
@@ -2933,6 +2942,9 @@
                                         "type": "keyword"
                                     },
                                     "award": {
+                                        "type": "keyword"
+                                    },
+                                    "biosamples_treated": {
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {

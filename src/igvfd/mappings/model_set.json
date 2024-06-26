@@ -1,6 +1,6 @@
 {
-    "hash": "210d717a9ee49aa60eaf63e56ffb7828",
-    "index_name": "model_set_210d717a",
+    "hash": "e29e9e2912090b137895d82d30112c80",
+    "index_name": "model_set_e29e9e29",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -900,6 +900,9 @@
                                 "type": "keyword"
                             },
                             "index": {
+                                "type": "keyword"
+                            },
+                            "input_to": {
                                 "type": "keyword"
                             },
                             "integrated_in": {

@@ -1,6 +1,6 @@
 {
-    "hash": "d2c8898d19eaf9df6ee3a16073a79465",
-    "index_name": "configuration_file_d2c8898d",
+    "hash": "e4b628e73f978be61ec6fa0ef15c7ad0",
+    "index_name": "configuration_file_e4b628e7",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -278,6 +278,9 @@
                         "type": "keyword"
                     },
                     "href": {
+                        "type": "keyword"
+                    },
+                    "input_to": {
                         "type": "keyword"
                     },
                     "integrated_in": {
