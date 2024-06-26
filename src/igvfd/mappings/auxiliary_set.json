@@ -1,6 +1,6 @@
 {
-    "hash": "24b2f5eaa7deb70be719a26638718499",
-    "index_name": "auxiliary_set_24b2f5ea",
+    "hash": "bfa4c4528bb8376339c44e9b7506a241",
+    "index_name": "auxiliary_set_bfa4c452",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -904,7 +904,7 @@
                             "index": {
                                 "type": "keyword"
                             },
-                            "input_to": {
+                            "input_file_for": {
                                 "type": "keyword"
                             },
                             "integrated_in": {

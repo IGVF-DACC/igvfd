@@ -1,6 +1,6 @@
 {
-    "hash": "92ca1ae8337829fbd3b4243ea59a0b39",
-    "index_name": "sequence_file_92ca1ae8",
+    "hash": "2987271a281602697eabd7176892e94b",
+    "index_name": "sequence_file_2987271a",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -301,7 +301,7 @@
                     "index": {
                         "type": "keyword"
                     },
-                    "input_to": {
+                    "input_file_for": {
                         "type": "keyword"
                     },
                     "integrated_in": {

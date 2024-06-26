@@ -1,6 +1,6 @@
 {
-    "hash": "ff32e170a80f6e35db29b20f059f466d",
-    "index_name": "measurement_set_ff32e170",
+    "hash": "a763344e5d03a88e303081be4702ad76",
+    "index_name": "measurement_set_a763344e",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1410,7 +1410,7 @@
                             "index": {
                                 "type": "keyword"
                             },
-                            "input_to": {
+                            "input_file_for": {
                                 "type": "keyword"
                             },
                             "integrated_in": {

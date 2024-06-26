@@ -1,6 +1,6 @@
 {
-    "hash": "fb143db7844e66e7af4f56af8a338518",
-    "index_name": "image_file_fb143db7",
+    "hash": "3a5e144cbec02dc3abf815cc4af37e13",
+    "index_name": "image_file_3a5e144c",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -280,7 +280,7 @@
                     "href": {
                         "type": "keyword"
                     },
-                    "input_to": {
+                    "input_file_for": {
                         "type": "keyword"
                     },
                     "integrated_in": {

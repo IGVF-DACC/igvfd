@@ -1,6 +1,6 @@
 {
-    "hash": "e0aecb29a591f533580a62bf9cbf120e",
-    "index_name": "curated_set_e0aecb29",
+    "hash": "1ee0b5c3a595f050e2f068b5d8028e36",
+    "index_name": "curated_set_1ee0b5c3",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -908,7 +908,7 @@
                             "index": {
                                 "type": "keyword"
                             },
-                            "input_to": {
+                            "input_file_for": {
                                 "type": "keyword"
                             },
                             "integrated_in": {

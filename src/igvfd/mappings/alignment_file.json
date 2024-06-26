@@ -1,6 +1,6 @@
 {
-    "hash": "7d40d7427bfc2084d65bda6726724a24",
-    "index_name": "alignment_file_7d40d742",
+    "hash": "9557d7e9aa11f4fa05819653aae83e5c",
+    "index_name": "alignment_file_9557d7e9",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -307,7 +307,7 @@
                     "href": {
                         "type": "keyword"
                     },
-                    "input_to": {
+                    "input_file_for": {
                         "type": "keyword"
                     },
                     "integrated_in": {
