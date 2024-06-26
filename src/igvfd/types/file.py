@@ -154,8 +154,8 @@ class File(Item):
         },
         'notSubmittable': True
     })
-    def input_to(self, request, input_to):
-        return paths_filtered_by_status(request, input_to)
+    def input_file_for(self, request, input_file_for):
+        return paths_filtered_by_status(request, input_file_for)
 
     @calculated_property(schema={
         'title': 'Gene List For',
