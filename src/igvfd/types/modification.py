@@ -151,8 +151,8 @@ class CrisprModification(Item):
         return summary
 
     @calculated_property(schema={
-        'title': 'Samples Modified',
-        'description': 'The samples which have been modified with this modification.',
+        'title': 'Biosamples Modified',
+        'description': 'The biosamples which have been modified with this modification.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
