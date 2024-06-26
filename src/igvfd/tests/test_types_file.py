@@ -194,3 +194,14 @@ def test_types_file_no_download_controlled_access_with_anvil_url(testapp, contro
     assert 'href' not in res.json
     assert 'anvil_url' in res.json
     testapp.get(controlled_access_alignment_file['@id'] + '@@download', status=403)
+
+
+def test_input_file_for(testapp, sequence_file_v12, tabular_file_v10):
+    testapp.patch_json(
+        tabular_file_v10['@id'],
+        {
+            'derived_from': [sequence_file_v12['@id']]
+        }
+    )
+    res = testapp.get(sequence_file_v12['@id'])
+    assert res.json.get('input_file_for', []) == [tabular_file_v10['@id']]
