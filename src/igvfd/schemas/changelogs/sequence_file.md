@@ -1,5 +1,9 @@
 ## Changelog for *`sequence_file.json`*
 
+### Minor changes since schema version 14
+
+* Update calculation of `summary`.
+
 ### Schema version 14
 
 * Reduce `upload_status` enum list to exclude `deposited`.
