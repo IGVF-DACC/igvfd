@@ -83,6 +83,22 @@ class Modification(Item):
 
         return summary
 
+    @calculated_property(schema={
+        'title': 'Biosamples Modified',
+        'description': 'The biosamples which have been modified with this modification.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Biosamples Modified',
+            'type': ['string', 'object'],
+            'linkFrom': 'Biosample.modifications',
+        },
+        'notSubmittable': True
+    })
+    def biosamples_modified(self, request, biosamples_modified):
+        return paths_filtered_by_status(request, biosamples_modified)
+
 
 @collection(
     name='crispr-modifications',
@@ -99,6 +115,9 @@ class CrisprModification(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]
+    rev = {
+        'biosamples_modified': ('Biosample', 'modifications')
+    }
 
     set_status_up = [
         'documents'
