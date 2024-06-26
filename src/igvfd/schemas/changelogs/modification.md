@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 6
 
-* Add calculated property `samples_modified`.
+* Add calculated property `biosamples_modified`.
 
 ### Schema version 6
 
