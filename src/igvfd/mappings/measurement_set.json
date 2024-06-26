@@ -1,6 +1,6 @@
 {
-    "hash": "28f0969ce43acf13a6f466c7387b81ac",
-    "index_name": "measurement_set_28f0969c",
+    "hash": "28ab95fa4fb2642e55ea1d115285cc1a",
+    "index_name": "measurement_set_28ab95fa",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -566,6 +566,9 @@
                             "exon": {
                                 "type": "keyword"
                             },
+                            "external_image_url": {
+                                "type": "keyword"
+                            },
                             "file_set_type": {
                                 "type": "keyword"
                             },
@@ -881,6 +884,9 @@
                                 "type": "keyword"
                             },
                             "exon": {
+                                "type": "keyword"
+                            },
+                            "external_image_url": {
                                 "type": "keyword"
                             },
                             "file_set_type": {
@@ -1269,6 +1275,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "external_image_url": {
+                        "type": "keyword"
                     },
                     "file_set_type": {
                         "type": "keyword"
@@ -1841,6 +1850,9 @@
                                 "type": "keyword"
                             },
                             "donors": {
+                                "type": "keyword"
+                            },
+                            "external_image_url": {
                                 "type": "keyword"
                             },
                             "file_set_type": {

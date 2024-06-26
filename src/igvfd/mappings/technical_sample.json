@@ -1,6 +1,6 @@
 {
-    "hash": "cdd4a7696659567c69ee1e3d83d8e535",
-    "index_name": "technical_sample_cdd4a769",
+    "hash": "0159aa647166616353e4568dc1156565",
+    "index_name": "technical_sample_0159aa64",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -412,6 +412,9 @@
                                 "type": "keyword"
                             },
                             "exon": {
+                                "type": "keyword"
+                            },
+                            "external_image_url": {
                                 "type": "keyword"
                             },
                             "file_set_type": {
