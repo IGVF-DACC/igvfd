@@ -1,5 +1,9 @@
 ## Changelog for *`signal_file.json`*
 
+### Minor changes since schema version 9
+
+* Add calculated property `input_file_for`.
+
 ### Schema version 9
 
 * Adjust `content_type` enum list to replace `fold over change control` with `fold change over control`.
