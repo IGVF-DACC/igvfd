@@ -67,3 +67,23 @@ def crispr_modification_prime_editing(testapp, lab, award):
         'cas_species': 'Streptococcus pyogenes (Sp)'
     }
     return testapp.post_json('/crispr_modification', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def crispr_modification_v1_zim3(crispr_modification):
+    item = crispr_modification.copy()
+    item.update({
+        'schema_version': '1',
+        'fused_domain': 'ZIM3',
+    })
+    return item
+
+
+@pytest.fixture
+def crispr_modification_v1_krab(crispr_modification):
+    item = crispr_modification.copy()
+    item.update({
+        'schema_version': '1',
+        'fused_domain': 'KRAB',
+    })
+    return item

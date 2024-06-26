@@ -23,3 +23,14 @@ def test_modification_upgrade_3_4(upgrader, modification_v3):
     value = upgrader.upgrade('modification', modification_v3, current_version='3', target_version='4')
     assert value['schema_version'] == '4'
     assert 'description' not in value
+
+
+def test_modification_upgrade_5_6(upgrader, modification_v5_krab, modification_v5_vpr):
+    value = upgrader.upgrade('modification', modification_v5_krab, current_version='5', target_version='6')
+    assert value['schema_version'] == '6'
+    assert 'fused_domain' not in value
+    assert value['notes'].endswith('removed.')
+    value = upgrader.upgrade('modification', modification_v5_vpr, current_version='5', target_version='6')
+    assert value['schema_version'] == '6'
+    assert value['fused_domain'] == 'VP64-p65-Rta (VPR)'
+    assert value['notes'].endswith('renamed to be VP64-p65-Rta (VPR).')

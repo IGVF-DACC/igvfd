@@ -64,7 +64,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "1"
+            "default": "2"
         },
         "cas": {
             "title": "Cas",
@@ -97,7 +97,6 @@
                 "eA3A-T31A",
                 "eA3A-T44D-S45A",
                 "ANTI-FLAG",
-                "KRAB",
                 "M-MLV RT (PE2)",
                 "p300",
                 "TdCBE",
@@ -105,10 +104,10 @@
                 "TdDE",
                 "VPH",
                 "VP64",
-                "VPR",
+                "VP64-p65-Rta (VPR)",
                 "2xVP64",
                 "3xVP64",
-                "ZIM3"
+                "ZIM3-KRAB"
             ],
             "submissionExample": {
                 "appscript": "KRAB",
