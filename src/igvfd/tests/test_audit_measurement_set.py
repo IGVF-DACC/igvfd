@@ -667,6 +667,44 @@ def test_audit_missing_gRNA_auxiliary_set(
     )
 
 
+def test_audit_missing_variant_sequencing_auxiliary_set(
+    testapp,
+    measurement_set,
+    assay_term_crispr,
+    base_auxiliary_set,
+    assay_term_cas_mediated_mutagenesis
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_crispr['@id'],
+            'preferred_assay_title': 'Variant FlowFISH'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'file_set_type': 'variant sequencing'
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+
 def test_audit_unexpected_virtual_sample(
     testapp,
     measurement_set,

@@ -61,5 +61,33 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "19cd5377-1d93-4bb8-99ce-80962b65db0d"
+    },
+    {
+        "aliases": [
+            "igvf:auxiliary_set_cell_sorting"
+        ],
+        "file_set_type": "cell sorting",
+        "samples": [
+            "igvf-dacc:in_vitro_system_demultiplexed_01"
+        ],
+        "award": "1UM1HG011972-01",
+        "lab": "jesse-engreitz",
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "uuid": "27c6fe83-b5d2-4a48-8812-b5108c1ea34c"
+    },
+    {
+        "aliases": [
+            "igvf:auxiliary_set_variant_sequencing"
+        ],
+        "file_set_type": "variant sequencing",
+        "samples": [
+            "igvf:alias3"
+        ],
+        "award": "1UM1HG011972-01",
+        "lab": "jesse-engreitz",
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "uuid": "aa6aa2b9-c3b2-429a-a198-bb02abf995d7"
     }
 ]

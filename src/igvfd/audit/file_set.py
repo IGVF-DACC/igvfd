@@ -341,7 +341,7 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
     description = get_audit_description(audit_auxiliary_set_construct_library_set_files)
     non_sequence_files = [file for file in value.get('files') if not (
         file.startswith('/sequence-files/') or file.startswith('/configuration-files/'))]
-    if non_sequence_files:
+    if non_sequence_files and value.get('file_set_type', '') != 'cell sorting':
         non_sequence_files = ', '.join(
             [audit_link(path_to_text(file), file) for file in non_sequence_files])
         detail = (f'{object_type} {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
