@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Add `workflow_version`.
 * Extend `collections` enum list to include `Vista`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.2`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`.

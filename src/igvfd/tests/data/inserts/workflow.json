@@ -14,6 +14,7 @@
         "workflow_repositories": [
             "https://hub.docker.com/r/perturbseq_pipeline"
         ],
-        "standards_page": "27f9abd9-0081-4ade-8c82-95ec12b3a7dd"
+        "standards_page": "27f9abd9-0081-4ade-8c82-95ec12b3a7dd",
+        "workflow_version": 1
     }
 ]
