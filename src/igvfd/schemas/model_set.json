@@ -59,6 +59,9 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/input_file_sets"
         }
     ],
     "dependentSchemas": {
@@ -127,21 +130,7 @@
             }
         },
         "input_file_sets": {
-            "title": "Input File Sets",
-            "description": "The file set(s) that served as inputs for the derivation of this model set.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Input File Set",
-                "description": "A file set that serves as input for the derivation of this model set.",
-                "type": "string",
-                "linkTo": "FileSet"
-            },
-            "submissionExample": {
-                "appscript": "[\"john-doe:measurement_set01\", \"TSTDS98084730\"]",
-                "igvf_utils": "john-doe:measurement_set01, TSTDS98084730"
-            }
+            "description": "The file set(s) that served as inputs for the derivation of this model set."
         },
         "model_zoo_location": {
             "title": "Model Zoo Location",

@@ -37,6 +37,9 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/input_file_sets"
         }
     ],
     "dependentSchemas": {
@@ -65,21 +68,7 @@
             "default": "7"
         },
         "input_file_sets": {
-            "title": "Input File Sets",
-            "description": "The file set(s) required for this analysis.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Input File Set",
-                "description": "A file set required for this analysis.",
-                "type": "string",
-                "linkTo": "FileSet"
-            },
-            "submissionExample": {
-                "appscript": "[\"john-doe:file_set01\", \"IGVFDS4321DCBA\"]",
-                "igvf_utils": "john-doe:file_set01, IGVFDS4321DCBA"
-            }
+            "description": "The file set(s) required for this analysis."
         },
         "file_set_type": {
             "description": "The level of this analysis set. An intermediate analysis cannot be interpreted on its own and is part of a principal analysis. A principal analysis is the core analysis for an experimental design, the results of which can be interpretable on their own.",

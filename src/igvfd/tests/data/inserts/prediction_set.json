@@ -23,7 +23,10 @@
                 "end": 25432
             }
         ],
-        "scope": "loci"
+        "scope": "loci",
+        "input_file_sets": [
+            "/model-sets/IGVFDS4321MODL/"
+        ]
     },
     {
         "aliases": [
