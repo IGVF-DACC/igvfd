@@ -612,8 +612,7 @@ def test_audit_missing_gRNA_auxiliary_set(
     testapp,
     measurement_set,
     assay_term_crispr,
-    base_auxiliary_set,
-    assay_term_cas_mediated_mutagenesis
+    base_auxiliary_set
 ):
     testapp.patch_json(
         measurement_set['@id'],
@@ -644,17 +643,6 @@ def test_audit_missing_gRNA_auxiliary_set(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'assay_term': assay_term_cas_mediated_mutagenesis['@id']
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing auxiliary set'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    testapp.patch_json(
         base_auxiliary_set['@id'],
         {
             'file_set_type': 'gRNA sequencing'
@@ -670,14 +658,14 @@ def test_audit_missing_gRNA_auxiliary_set(
 def test_audit_missing_variant_sequencing_auxiliary_set(
     testapp,
     measurement_set,
-    assay_term_crispr,
     base_auxiliary_set,
+    auxiliary_set_cell_sorting,
     assay_term_cas_mediated_mutagenesis
 ):
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_crispr['@id'],
+            'assay_term': assay_term_cas_mediated_mutagenesis['@id'],
             'preferred_assay_title': 'Variant FlowFISH'
         }
     )
@@ -700,6 +688,17 @@ def test_audit_missing_variant_sequencing_auxiliary_set(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id'], auxiliary_set_cell_sorting['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
         error['category'] != 'missing auxiliary set'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
