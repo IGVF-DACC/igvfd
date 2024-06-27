@@ -1,5 +1,9 @@
 ## Changelog for *`treatment.json`*
 
+### Minor changes since schema version 7
+
+* Add calculated property `biosamples_treated`.
+
 ### Schema version 7
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.

@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Minor changes since schema version 10
+
+* Add calculated property `input_file_for`.
+
 ### Schema version 10
 
 * Reduce `upload_status` enum list to exclude `deposited`.

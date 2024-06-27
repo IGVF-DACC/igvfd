@@ -8,6 +8,11 @@ from .base import (
     Item,
 )
 
+from igvfd.types.base import (
+    Item,
+    paths_filtered_by_status
+)
+
 
 @collection(
     name='biomarkers',
@@ -24,6 +29,9 @@ class Biomarker(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]
+    rev = {
+        'biomarker_for': ('Biosample', 'biomarkers')
+    }
 
     set_status_up = []
     set_status_down = []
@@ -45,3 +53,19 @@ class Biomarker(Item):
         value = self.name_quantification(name=properties['name'], quantification=properties['quantification'])
         keys.setdefault('biomarker:name_quantification', []).append(value)
         return keys
+
+    @calculated_property(schema={
+        'title': 'Biomarker For',
+        'description': 'The samples which have been confirmed to have this biomarker.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Biomarker For',
+            'type': ['string', 'object'],
+            'linkFrom': 'Biosample.biomarkers',
+        },
+        'notSubmittable': True
+    })
+    def biomarker_for(self, request, biomarker_for):
+        return paths_filtered_by_status(request, biomarker_for)

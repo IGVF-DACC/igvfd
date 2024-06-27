@@ -1,5 +1,9 @@
 ## Changelog for *`crispr_modification.json`*
 
+### Minor changes since schema version 2
+
+* Add calculated property `biosamples_modified`.
+
 ### Schema version 2
 
 * Adjust `fused_domain` enum list to remove `KRAB`.

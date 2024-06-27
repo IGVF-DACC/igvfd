@@ -1,5 +1,9 @@
 ## Changelog for *`modification.json`*
 
+### Minor changes since schema version 6
+
+* Add calculated property `biosamples_modified`.
+
 ### Schema version 6
 
 * Adjust `fused_domain` enum list to remove `KRAB`.

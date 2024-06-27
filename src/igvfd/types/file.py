@@ -116,7 +116,8 @@ class File(Item):
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
         'gene_list_for': ('FileSet', 'large_scale_gene_list'),
-        'loci_list_for': ('FileSet', 'large_scale_loci_list')
+        'loci_list_for': ('FileSet', 'large_scale_loci_list'),
+        'input_file_for': ('File', 'derived_from')
     }
 
     set_status_up = [
@@ -139,6 +140,22 @@ class File(Item):
     })
     def integrated_in(self, request, integrated_in):
         return paths_filtered_by_status(request, integrated_in)
+
+    @calculated_property(schema={
+        'title': 'Input File For',
+        'description': 'The files which are derived from this file.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Input File For',
+            'type': ['string', 'object'],
+            'linkFrom': 'File.derived_from',
+        },
+        'notSubmittable': True
+    })
+    def input_file_for(self, request, input_file_for):
+        return paths_filtered_by_status(request, input_file_for)
 
     @calculated_property(schema={
         'title': 'Gene List For',

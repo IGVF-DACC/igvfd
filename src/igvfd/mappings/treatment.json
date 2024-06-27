@@ -1,6 +1,6 @@
 {
-    "hash": "ffcaa1461366c323acebd70274035ae3",
-    "index_name": "treatment_ffcaa146",
+    "hash": "73b7dcc14087972632f69872b76abf24",
+    "index_name": "treatment_73b7dcc1",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -233,6 +233,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "biosamples_treated": {
+                        "type": "keyword"
                     },
                     "creation_timestamp": {
                         "type": "keyword"
