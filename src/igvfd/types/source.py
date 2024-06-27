@@ -36,8 +36,8 @@ class Source(Item):
             'notSubmittable': True,
         }
     )
-    def summary(self, title, uuid):
+    def summary(self, title):
         if title:
             return title
         else:
-            return uuid
+            return self.uuid
