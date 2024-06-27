@@ -12,6 +12,16 @@ def base_auxiliary_set(testapp, lab, award):
 
 
 @pytest.fixture
+def auxiliary_set_cell_sorting(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'cell sorting'
+    }
+    return testapp.post_json('/auxiliary_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def auxiliary_set_v1(base_auxiliary_set):
     item = base_auxiliary_set.copy()
     item.update({
