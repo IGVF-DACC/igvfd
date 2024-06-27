@@ -108,9 +108,10 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     description = get_audit_description(audit_CRISPR_screen_lacking_modifications)
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    crispr_assays = ['cas mediated mutagenesis',
-                     'CRISPR screen'
-                     ]
+    crispr_assays = ['proliferation CRISPR screen',
+                     'CRISPR perturbation screen followed by flow cytometry and FISH',
+                     'CRISPR perturbation screen followed by single-cell RNA sequencing',
+                     'cas mediated mutagenesis']
     if assay.get('term_name') in crispr_assays:
         samples = value.get('samples', [])
         bad_samples = []

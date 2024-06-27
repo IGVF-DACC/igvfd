@@ -141,8 +141,7 @@ def test_audit_missing_modification(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_crispr['@id'],
-            'preferred_assay_title': '10x multiome'
+            'assay_term': assay_term_crispr['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -759,5 +758,28 @@ def test_audit_missing_auxiliary_set(
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+
+def test_audit_CRSIPR_screen_missing_files(
+    testapp,
+    measurement_set_no_files,
+    assay_term_crispr
+):
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing files'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
+        {
+            'assay_term': assay_term_crispr['@id']
+        }
+    )
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing files'
         for error in res.json['audit'].get('WARNING', [])
     )
