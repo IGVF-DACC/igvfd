@@ -1,6 +1,6 @@
 {
-    "hash": "1c2afb8b6a6edb76e46cba040ea7d392",
-    "index_name": "analysis_step_1c2afb8b",
+    "hash": "a3a2b51808c8575adce3a9592767bc57",
+    "index_name": "analysis_step_a3a2b518",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -550,6 +550,15 @@
                             },
                             "workflow_repositories": {
                                 "type": "keyword"
+                            },
+                            "workflow_version": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
                             }
                         },
                         "type": "object"
