@@ -2,6 +2,7 @@
 
 ### Schema version 14
 
+* Add calculated property `input_file_for`.
 * Reduce `upload_status` enum list to exclude `deposited`.
 * Remove `anvil_source_url`.
 * Add `anvil_url`.

@@ -143,7 +143,7 @@ class File(Item):
 
     @calculated_property(schema={
         'title': 'Input File For',
-        'description': 'The files which have been used for deriving this file as an input.',
+        'description': 'The files which are derived from this file.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,

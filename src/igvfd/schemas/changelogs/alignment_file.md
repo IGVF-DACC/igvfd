@@ -1,6 +1,6 @@
 ## Changelog for *`alignment_file.json`*
 
-### Minor changes since schema version 9
+### Minor changes since schema version 10
 
 * Add calculated property `input_file_for`.
 
