@@ -1,8 +1,11 @@
 ## Changelog for *`reference_file.json`*
 
-### Schema version 14
+### Minor changes since schema version 14
 
 * Add calculated property `input_file_for`.
+
+### Schema version 14
+
 * Reduce `upload_status` enum list to exclude `deposited`.
 * Remove `anvil_source_url`.
 * Add `anvil_url`.
