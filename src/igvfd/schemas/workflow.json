@@ -99,7 +99,7 @@
             }
         },
         "workflow_version": {
-            "title": "Workflow version",
+            "title": "Workflow Version",
             "description": "The version of this workflow.",
             "comment": "Please increment as whole numbers starting from 1.",
             "type": "integer",
