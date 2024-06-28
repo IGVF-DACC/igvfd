@@ -81,7 +81,7 @@
             }
         },
         "file_set_type": {
-            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, or large_scale_gene_list and that scope be genes, tile, exon, alleles, or interactors and should not specify any guide properties. Editing templates require that scope be targeton and should not specify any guide properties.",
+            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, or large_scale_gene_list and that scope be genes, tile, exon, alleles, or interactors and should not specify any guide properties. Editing template library require that scope be targeton and should not specify any guide properties.",
             "allOf": [
                 {
                     "if": {
@@ -282,7 +282,7 @@
                     "if": {
                         "properties": {
                             "file_set_type": {
-                                "const": "editing templates"
+                                "const": "editing template library"
                             }
                         }
                     },
@@ -694,12 +694,12 @@
         "file_set_type": {
             "$merge": "file_set.json#/properties/file_set_type",
             "description": "The type or category of this construct library set.",
-            "comment": "File set type describes the content of the construct library set. Guide libraries are guides used for CRISPR screens. Reporter libraries are reporters used for MPRA. Expression vector libraries are used when the content of the vector (a specific allele, gene, exon, or tile of a protein) will be expressed in the target cells. Editing templates are used for SGE.",
+            "comment": "File set type describes the content of the construct library set. Guide libraries are guides used for CRISPR screens. Reporter libraries are reporters used for MPRA. Expression vector libraries are used when the content of the vector (a specific allele, gene, exon, or tile of a protein) will be expressed in the target cells. Editing template library are used for SGE.",
             "enum": [
                 "guide library",
                 "reporter library",
                 "expression vector library",
-                "editing templates"
+                "editing template library"
             ],
             "submissionExample": {
                 "appscript": "guide library",
@@ -952,7 +952,7 @@
         },
         "targeton": {
             "title": "Targeton",
-            "description": "An identifier in plain text for the specific targeton in an editing templates library. The associated gene must be listed in the small_scale_gene_list property.",
+            "description": "An identifier in plain text for the specific targeton in an editing template library. The associated gene must be listed in the small_scale_gene_list property.",
             "type": "string",
             "pattern": "^(\\S+(\\s|\\S)*\\S+|\\S)$",
             "submissionExample": {
