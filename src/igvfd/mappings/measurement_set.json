@@ -1,6 +1,6 @@
 {
-    "hash": "a763344e5d03a88e303081be4702ad76",
-    "index_name": "measurement_set_a763344e",
+    "hash": "3ad64545148a5d415f09250fbe9c7dcd",
+    "index_name": "measurement_set_3ad64545",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -739,6 +739,9 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "targeton": {
+                                "type": "keyword"
+                            },
                             "taxa": {
                                 "type": "keyword"
                             },
@@ -1057,6 +1060,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -2314,6 +2320,9 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "targeton": {
                                         "type": "keyword"
                                     },
                                     "tile": {
