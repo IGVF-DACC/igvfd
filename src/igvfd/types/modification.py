@@ -73,8 +73,11 @@ class Modification(Item):
         if cas_species:
             short = cas_species.split('(')[1].split(')')[0]
             species = f'{short}'
+            # if the species isn't a part of the cas label then join it and label by hyphen
+            if not (species in any([cas_label for cas_label in cas_label_mapping])):
+                species = f'{species}-'
 
-        summary = f'{crispr_label_mapping[modality]} {species}-{cas_label}{formatted_domain}'
+        summary = f'{crispr_label_mapping[modality]} {species}{cas_label}{formatted_domain}'
         if tagged_protein:
             tagged_protein_object = request.embed(tagged_protein, '@@object?skip_calculated=true')
             tagged_protein_symbol = tagged_protein_object.get('symbol')
@@ -159,8 +162,11 @@ class CrisprModification(Item):
         if cas_species:
             short = cas_species.split('(')[1].split(')')[0]
             species = f'{short}'
+            # if the species isn't a part of the cas label then join it and label by hyphen
+            if not (species in any([cas_label for cas_label in cas_label_mapping])):
+                species = f'{species}-'
 
-        summary = f'{crispr_label_mapping[modality]} {species}-{cas_label}{formatted_domain}'
+        summary = f'{crispr_label_mapping[modality]} {species}{cas_label}{formatted_domain}'
         if tagged_protein:
             tagged_protein_object = request.embed(tagged_protein, '@@object?skip_calculated=true')
             tagged_protein_symbol = tagged_protein_object.get('symbol')
