@@ -1,6 +1,6 @@
 {
-    "hash": "b8ec59d95402952500d70dc8777d615b",
-    "index_name": "analysis_set_b8ec59d9",
+    "hash": "1a027a204723115c41a99874d5f0abea",
+    "index_name": "analysis_set_1a027a20",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -557,6 +557,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -1330,6 +1333,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {
