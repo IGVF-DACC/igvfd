@@ -73,8 +73,8 @@ class Modification(Item):
         if cas_species:
             short = cas_species.split('(')[1].split(')')[0]
             species = f'{short}'
-            # if the species isn't a part of the cas label then join it and label by hyphen
-            if not (species in any([cas_label for cas_label in cas_label_mapping])):
+            # if the species isn't a part of the cas label then join the species and label by hyphen
+            if not (species in cas):
                 species = f'{species}-'
 
         summary = f'{crispr_label_mapping[modality]} {species}{cas_label}{formatted_domain}'
@@ -162,8 +162,8 @@ class CrisprModification(Item):
         if cas_species:
             short = cas_species.split('(')[1].split(')')[0]
             species = f'{short}'
-            # if the species isn't a part of the cas label then join it and label by hyphen
-            if not (species in any([cas_label for cas_label in cas_label_mapping])):
+            # if the species isn't a part of the cas label then join the species and label by hyphen
+            if not (species in cas):
                 species = f'{species}-'
 
         summary = f'{crispr_label_mapping[modality]} {species}{cas_label}{formatted_domain}'
