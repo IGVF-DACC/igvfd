@@ -1,6 +1,6 @@
 {
-    "hash": "be80de8af2f6120685049a5f995174a0",
-    "index_name": "tissue_be80de8a",
+    "hash": "edbe82e576a488059570971449f6e4c5",
+    "index_name": "tissue_edbe82e5",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -738,7 +738,11 @@
                             "summary": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "targeton": {
+=======
+                            "targeted_genes": {
+>>>>>>> 49066664 (Add targeted_genes property)
                                 "type": "keyword"
                             },
                             "taxa": {

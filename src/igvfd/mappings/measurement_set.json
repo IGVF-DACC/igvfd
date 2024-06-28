@@ -1,6 +1,6 @@
 {
-    "hash": "f690cd4dc464f50038f961d4c9a3d83e",
-    "index_name": "measurement_set_f690cd4d",
+    "hash": "44a2ec57097e538a66e62c2464c1fca9",
+    "index_name": "measurement_set_44a2ec57",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -739,7 +739,11 @@
                             "summary": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "targeton": {
+=======
+                            "targeted_genes": {
+>>>>>>> 49066664 (Add targeted_genes property)
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -1062,7 +1066,11 @@
                             "summary": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "targeton": {
+=======
+                            "targeted_genes": {
+>>>>>>> 49066664 (Add targeted_genes property)
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -1934,6 +1942,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "uuid": {
@@ -3195,6 +3206,9 @@
                     },
                     "summary": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "targeted_genes": {
                         "type": "keyword"
                     },
                     "uuid": {

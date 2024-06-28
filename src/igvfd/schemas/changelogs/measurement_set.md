@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 17
 
+* Add `targeted_genes`.
 * Add `external_image_url`.
 
 ### Schema version 17

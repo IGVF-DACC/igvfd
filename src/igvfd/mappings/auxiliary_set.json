@@ -1,6 +1,6 @@
 {
-    "hash": "5f07e4772fe1592a5ff737e031d8467c",
-    "index_name": "auxiliary_set_5f07e477",
+    "hash": "b8bcd53a48addfdbae70381214acc74c",
+    "index_name": "auxiliary_set_b8bcd53a",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -555,7 +555,11 @@
                             "summary": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "targeton": {
+=======
+                            "targeted_genes": {
+>>>>>>> 49066664 (Add targeted_genes property)
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -1262,6 +1266,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "uuid": {

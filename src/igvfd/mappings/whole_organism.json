@@ -1,6 +1,6 @@
 {
-    "hash": "07339fd7a984bd768058031ebbf653f7",
-    "index_name": "whole_organism_07339fd7",
+    "hash": "a58773d2aca2b8bde7112e5301d874c6",
+    "index_name": "whole_organism_a58773d2",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -735,7 +735,11 @@
                             "summary": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "targeton": {
+=======
+                            "targeted_genes": {
+>>>>>>> 49066664 (Add targeted_genes property)
                                 "type": "keyword"
                             },
                             "taxa": {

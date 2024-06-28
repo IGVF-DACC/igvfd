@@ -1,6 +1,6 @@
 {
-    "hash": "5de9fce60af6d5669fd94d145c7fe017",
-    "index_name": "technical_sample_5de9fce6",
+    "hash": "6bfff3a386b211ed44318ada161e3aa6",
+    "index_name": "technical_sample_6bfff3a3",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -643,7 +643,11 @@
                             "summary": {
                                 "type": "keyword"
                             },
+<<<<<<< HEAD
                             "targeton": {
+=======
+                            "targeted_genes": {
+>>>>>>> 49066664 (Add targeted_genes property)
                                 "type": "keyword"
                             },
                             "taxa": {
