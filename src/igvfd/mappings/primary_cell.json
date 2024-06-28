@@ -1,6 +1,6 @@
 {
-    "hash": "934e44fbd12ce16cbfbaeb93e194de64",
-    "index_name": "primary_cell_934e44fb",
+    "hash": "f0d6e53b74a658f9c5878a114ac75483",
+    "index_name": "primary_cell_f0d6e53b",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -733,6 +733,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "taxa": {

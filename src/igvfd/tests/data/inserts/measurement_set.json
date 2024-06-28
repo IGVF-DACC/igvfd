@@ -27,6 +27,9 @@
         "auxiliary_sets": [
             "IGVFDS0001AUXI"
         ],
+        "targeted_genes": [
+            "25290279-a299-4574-910e-5831edb7d72a"
+        ],
         "accession": "IGVFDS0000MSET",
         "file_set_type": "experimental data"
     },

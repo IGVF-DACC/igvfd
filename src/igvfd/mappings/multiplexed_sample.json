@@ -1,6 +1,6 @@
 {
-    "hash": "9b5e47ec2b22ceee2a32159f4f2b8d5b",
-    "index_name": "multiplexed_sample_9b5e47ec",
+    "hash": "e3420263a6aef4ef8e39aeb6f92bf2c5",
+    "index_name": "multiplexed_sample_e3420263",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -955,6 +955,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "taxa": {

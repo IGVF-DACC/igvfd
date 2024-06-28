@@ -1,6 +1,6 @@
 {
-    "hash": "6c80982a2af9dcb8841dcf8aeb2af2a8",
-    "index_name": "prediction_set_6c80982a",
+    "hash": "a3108a76331c261b1e047987bb15949b",
+    "index_name": "prediction_set_a3108a76",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -553,6 +553,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "taxa": {
