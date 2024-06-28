@@ -74,7 +74,7 @@ class Modification(Item):
             short = cas_species.split('(')[1].split(')')[0]
             species = f'{short}'
 
-        summary = f'{crispr_label_mapping[modality]} {species}{cas_label}{formatted_domain}'
+        summary = f'{crispr_label_mapping[modality]} {species}-{cas_label}{formatted_domain}'
         if tagged_protein:
             tagged_protein_object = request.embed(tagged_protein, '@@object?skip_calculated=true')
             tagged_protein_symbol = tagged_protein_object.get('symbol')
