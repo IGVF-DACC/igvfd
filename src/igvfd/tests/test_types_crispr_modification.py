@@ -39,7 +39,7 @@ def test_modification_summary(testapp, crispr_modification, gene_myc_hs):
         }
     )
     res = testapp.get(crispr_modification['@id'])
-    assert res.json.get('summary') == 'CRISPR localizing Sp-G-ANTI-FLAG fused to MYC'
+    assert res.json.get('summary') == 'CRISPR localizing SpG-ANTI-FLAG fused to MYC'
 
     testapp.patch_json(
         crispr_modification['@id'],
@@ -52,4 +52,4 @@ def test_modification_summary(testapp, crispr_modification, gene_myc_hs):
         }
     )
     res = testapp.get(crispr_modification['@id'])
-    assert res.json.get('summary') == 'CRISPR localizing Sp-RY-ANTI-FLAG fused to MYC'
+    assert res.json.get('summary') == 'CRISPR localizing SpRY-ANTI-FLAG fused to MYC'
