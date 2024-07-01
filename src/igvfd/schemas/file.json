@@ -231,7 +231,7 @@
             "accessionType": "FI"
         },
         "analysis_step_version": {
-            "title": "Analysis step version",
+            "title": "Analysis Step Version",
             "description": "The analysis step version of the file.",
             "type": "string",
             "linkTo": "AnalysisStepVersion",

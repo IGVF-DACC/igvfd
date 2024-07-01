@@ -41,7 +41,7 @@
         },
         "analysis_step": {
             "title": "Analysis Step",
-            "description": "The analysis step in which this version belongs to.",
+            "description": "The analysis step which this version belongs to.",
             "type": "string",
             "linkTo": "AnalysisStep",
             "submissionExample": {
