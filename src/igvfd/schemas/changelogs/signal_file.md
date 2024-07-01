@@ -2,8 +2,8 @@
 
 ### Minor changes since schema version 9
 
-* Add calculated property `input_file_for`.
 * Add `analysis_step_version`.
+* Add calculated property `input_file_for`.
 
 ### Schema version 9
 
