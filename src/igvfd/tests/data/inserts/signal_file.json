@@ -49,5 +49,27 @@
         "strand_specificity": "unstranded",
         "normalized": false,
         "filtered": false
+    },
+    {
+        "uuid": "f74efcbd-881d-434a-8921-9257b0e34688",
+        "accession": "IGVFFI5344BASE",
+        "lab": "jay-shendure",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "igvf:signal_base_fileq"
+        ],
+        "status": "in progress",
+        "md5sum": "912ec803b2ce49e4a541068d495ab570",
+        "file_format": "bigWig",
+        "assembly": "GRCm39",
+        "content_type": "signal",
+        "submitted_file_name": "/Users/igvf/igvf_files/base_signal.bigWig",
+        "file_size": 432533,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_input",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded"
     }
 ]
