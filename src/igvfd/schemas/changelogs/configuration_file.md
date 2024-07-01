@@ -2,12 +2,12 @@
 
 ### Minor changes since schema version 7
 
+* Add `analysis_step_version`.
 * Add calculated property `input_file_for`.
 * Extend `collections` enum list to include `Vista`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.2`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.4`.
-* Add `analysis_step_version`.
 
 ### Schema version 7
 

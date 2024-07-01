@@ -380,14 +380,3 @@ def test_controlled_sequence_file_release(testapp, controlled_sequence_file_obje
         expect_errors=True
     )
     assert res.status_code == 200
-
-
-def test_analysis_step_version(testapp, sequence_file, analysis_step_version):
-    res = testapp.patch_json(
-        sequence_file['@id'],
-        {'analysis_step_version': analysis_step_version['@id']}, expect_errors=True)
-    assert res.status_code == 200
-    res = testapp.patch_json(
-        sequence_file['@id'],
-        {'analysis_step_version': 'test analysis_step_version'}, expect_errors=True)
-    assert res.status_code == 422

@@ -16,7 +16,7 @@ from pyramid.traversal import (
 
 @collection(
     name='analysis-step-versions',
-    unique_key='analysis_step_version:name',
+    unique_key='analysis_step_version:uuid',
     properties={
         'title': 'Analysis Step Versions',
         'description': 'Listing of analysis step versions',
@@ -35,32 +35,3 @@ class AnalysisStepVersion(Item):
 
     set_status_up = ['software_versions']
     set_status_down = []
-
-    def unique_keys(self, properties):
-        keys = super(AnalysisStepVersion, self).unique_keys(properties)
-        keys.setdefault('analysis_step_version:name', []).append(self._name(properties))
-        return keys
-
-    @calculated_property(schema={
-        'title': 'Name',
-        'type': 'string',
-        'description': 'Full name of the analysis step.',
-        'comment': 'Do not submit. Value is automatically assigned by the server.',
-        'notSubmittable': True,
-        'uniqueKey': True
-    })
-    def name(self):
-        return self.__name__
-
-    @property
-    def __name__(self):
-        properties = self.upgrade_properties()
-        return self._name(properties)
-
-    def _name(self, properties):
-        root = find_root(self)
-        analysis_step_uuid = properties['analysis_step']
-        analysis_step = root.get_by_uuid(analysis_step_uuid)
-        workflow = root.get_by_uuid(analysis_step.upgrade_properties()['workflow'])
-        format_creation_timestamp = properties['creation_timestamp'][:10]
-        return u'{}-{}-{}'.format(workflow.upgrade_properties()['accession'], analysis_step.upgrade_properties()['step_label'], format_creation_timestamp)
