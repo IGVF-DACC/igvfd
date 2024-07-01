@@ -97,6 +97,17 @@
                 "appscript": "/help/chip-seq-standards",
                 "igvf_utils": "/help/chip-seq-standards"
             }
+        },
+        "workflow_version": {
+            "title": "Workflow Version",
+            "description": "The version of this workflow.",
+            "comment": "Please increment as whole numbers starting from 1.",
+            "type": "integer",
+            "minimum": 1,
+            "submissionExample": {
+                "appscript": 1,
+                "igvf_utils": 1
+            }
         }
     },
     "fuzzy_searchable_fields": [
