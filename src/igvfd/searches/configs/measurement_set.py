@@ -40,6 +40,9 @@ def measurement_set():
             'sequencing_library_types': {
                 'title': 'Library Material'
             },
+            'targeted_genes': {
+                'title': 'Targeted Genes'
+            },
             'collections': {
                 'title': 'Collections',
             },
@@ -89,6 +92,7 @@ def measurement_set():
                     'preferred_assay_title',
                     'samples.modifications.modality',
                     'file_set_type',
+                    'targeted_genes'
                 ],
             },
             {
@@ -158,6 +162,9 @@ def measurement_set():
             },
             'sequencing_library_types': {
                 'title': 'Sequencing Library Types'
+            },
+            'targeted_genes': {
+                'title': 'Targeted Genes'
             },
             'protocols': {
                 'title': 'Protocols'
