@@ -20,3 +20,8 @@ def test_rodent_donor_duplicate_strain_sex(testapp, lab, award):
     }
     response2 = testapp.post_json('/rodent_donor', item2, status=409)
     assert response2.status_code == 409
+
+
+def test_human_donor_summary(testapp, rodent_donor):
+    res = testapp.get(rodent_donor['@id'])
+    assert res.json.get('summary') == 'strain1 male'
