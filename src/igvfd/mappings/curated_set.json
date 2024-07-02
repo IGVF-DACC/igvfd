@@ -1,6 +1,6 @@
 {
-    "hash": "1ee0b5c3a595f050e2f068b5d8028e36",
-    "index_name": "curated_set_1ee0b5c3",
+    "hash": "e1412fed3603ad2ec6dc534337aa35b6",
+    "index_name": "curated_set_e1412fed",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -557,6 +557,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "taxa": {

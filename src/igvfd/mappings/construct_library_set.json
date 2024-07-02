@@ -1,6 +1,6 @@
 {
-    "hash": "75edf8d6c3f5b8272421af3d1677113b",
-    "index_name": "construct_library_set_75edf8d6",
+    "hash": "2047cc1b41fdfd5b17d28cb4ec34f3f0",
+    "index_name": "construct_library_set_2047cc1b",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1039,6 +1039,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "taxa": {

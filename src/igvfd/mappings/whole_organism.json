@@ -1,6 +1,6 @@
 {
-    "hash": "338ee7938404f3d25ea6ec4a5a0a7044",
-    "index_name": "whole_organism_338ee793",
+    "hash": "a58773d2aca2b8bde7112e5301d874c6",
+    "index_name": "whole_organism_a58773d2",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -733,6 +733,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "taxa": {

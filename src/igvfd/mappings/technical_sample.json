@@ -1,6 +1,6 @@
 {
-    "hash": "0159aa647166616353e4568dc1156565",
-    "index_name": "technical_sample_0159aa64",
+    "hash": "6bfff3a386b211ed44318ada161e3aa6",
+    "index_name": "technical_sample_6bfff3a3",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -641,6 +641,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "taxa": {

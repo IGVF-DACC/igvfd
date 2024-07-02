@@ -234,6 +234,24 @@
                 "appscript": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/",
                 "igvf_utils": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/"
             }
+        },
+        "targeted_genes": {
+            "title": "Targeted Genes",
+            "description": "A list of genes targeted in this assay. For example, TF ChIP-seq attempts to identify binding sites of a protein encoded by a specific gene. In CRISPR FlowFISH, the modified samples are sorted based on expression of a specific gene. This property differs from small_scale_gene_list in Construct Library Set, which describes genes targeted by the content integrated in the constructs (such as guide RNAs.)",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "uniqueItems": true,
+            "items": {
+                "title": "Gene",
+                "comment": "See gene.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "Gene"
+            },
+            "submissionExample": {
+                "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
+                "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
+            }
         }
     },
     "fuzzy_searchable_fields": [

@@ -1,6 +1,6 @@
 {
-    "hash": "68d3b0075ce764ab14198de45e4170a2",
-    "index_name": "model_set_68d3b007",
+    "hash": "e85746534df071cee6a6b4e0f8ef26e1",
+    "index_name": "model_set_e8574653",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -553,6 +553,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -1325,6 +1328,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "taxa": {
