@@ -500,7 +500,7 @@ class SignalFile(File):
             'notSubmittable': True
         }
     )
-    def content_summary(self, request, content_type, strand_specificity, filtered, normalized):
+    def content_summary(self, content_type, strand_specificity, filtered=None, normalized=None):
         filtered_phrase = ''
         if filtered:
             filtered_phrase = 'filtered'
