@@ -205,3 +205,95 @@ def test_input_file_for(testapp, sequence_file_v12, tabular_file_v10):
     )
     res = testapp.get(sequence_file_v12['@id'])
     assert res.json.get('input_file_for', []) == [tabular_file_v10['@id']]
+
+
+def test_file_summaries(
+    testapp,
+    alignment_file,
+    configuration_file_seqspec,
+    genome_browser_annotation_file,
+    image_file,
+    matrix_file,
+    model_file,
+    reference_file,
+    sequence_file,
+    signal_file,
+    tabular_file
+):
+    testapp.patch_json(
+        alignment_file['@id'],
+        {
+            'transcriptome_annotation': 'GENCODE 43',
+            'redacted': True
+        }
+    )
+    res = testapp.get(alignment_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 unfiltered redacted alignments'
+
+    testapp.patch_json(
+        genome_browser_annotation_file['@id'],
+        {
+            'assembly': 'GRCh38',
+            'transcriptome_annotation': 'GENCODE 43'
+        }
+    )
+    res = testapp.get(genome_browser_annotation_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 peaks'
+
+    res = testapp.get(image_file['@id'])
+    assert res.json.get('summary', '') == 'detected tissue'
+
+    res = testapp.get(matrix_file['@id'])
+    assert res.json.get('summary', '') == 'cell by gene sparse gene count matrix'
+
+    res = testapp.get(model_file['@id'])
+    assert res.json.get('summary', '') == 'graph structure'
+
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'assembly': 'GRCh38',
+            'transcriptome_annotation': 'GENCODE 43'
+        }
+    )
+    res = testapp.get(reference_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 transcriptome reference'
+
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'illumina_read_type': 'R2'
+        }
+    )
+    res_sequence_file = testapp.get(sequence_file['@id'])
+    assert res_sequence_file.json.get('summary', '') == 'R2 reads from sequencing run 1'
+
+    testapp.patch_json(
+        configuration_file_seqspec['@id'],
+        {
+            'seqspec_of': [sequence_file['@id']]
+        }
+    )
+    res = testapp.get(configuration_file_seqspec['@id'])
+    assert res.json.get('summary', '') == f'seqspec of {res_sequence_file.json.get("accession")}'
+
+    testapp.patch_json(
+        signal_file['@id'],
+        {
+            'normalized': True,
+            'filtered': True,
+            'transcriptome_annotation': 'GENCODE 43'
+        }
+    )
+    res = testapp.get(signal_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 filtered normalized plus strand signal of all reads'
+
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'assembly': 'GRCh38',
+            'transcriptome_annotation': 'GENCODE 43'
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 peaks'
