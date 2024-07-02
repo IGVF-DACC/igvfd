@@ -1,6 +1,6 @@
 {
-    "hash": "246b5fdad33a4b04ccc46b546a474bad",
-    "index_name": "in_vitro_system_246b5fda",
+    "hash": "debd5315caefe9b08c3b0a00943117b6",
+    "index_name": "in_vitro_system_debd5315",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -886,6 +886,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {

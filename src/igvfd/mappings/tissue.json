@@ -1,6 +1,6 @@
 {
-    "hash": "d42b40a2d70929b1f85526be3c8613e9",
-    "index_name": "tissue_d42b40a2",
+    "hash": "be80de8af2f6120685049a5f995174a0",
+    "index_name": "tissue_be80de8a",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -736,6 +736,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {

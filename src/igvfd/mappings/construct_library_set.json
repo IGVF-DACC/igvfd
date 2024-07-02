@@ -1,6 +1,6 @@
 {
-    "hash": "75edf8d6c3f5b8272421af3d1677113b",
-    "index_name": "construct_library_set_75edf8d6",
+    "hash": "cd0f2bdbbf4f0ab5b7bad8c1e9667a69",
+    "index_name": "construct_library_set_cd0f2bdb",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1039,6 +1039,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -2169,6 +2172,9 @@
                         "type": "keyword"
                     },
                     "summary": {
+                        "type": "keyword"
+                    },
+                    "targeton": {
                         "type": "keyword"
                     },
                     "tile": {
