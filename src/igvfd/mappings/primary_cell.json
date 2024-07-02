@@ -1,6 +1,6 @@
 {
-    "hash": "f0d6e53b74a658f9c5878a114ac75483",
-    "index_name": "primary_cell_f0d6e53b",
+    "hash": "e4760cf800de586a23f847b563514ab4",
+    "index_name": "primary_cell_e4760cf8",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -735,11 +735,10 @@
                             "summary": {
                                 "type": "keyword"
                             },
-<<<<<<< HEAD
-                            "targeton": {
-=======
                             "targeted_genes": {
->>>>>>> 49066664 (Add targeted_genes property)
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {

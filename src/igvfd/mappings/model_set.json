@@ -1,6 +1,6 @@
 {
-    "hash": "e85746534df071cee6a6b4e0f8ef26e1",
-    "index_name": "model_set_e8574653",
+    "hash": "8482e0789b75892af7c2bcf9d533fb7b",
+    "index_name": "model_set_8482e078",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -555,11 +555,10 @@
                             "summary": {
                                 "type": "keyword"
                             },
-<<<<<<< HEAD
-                            "targeton": {
-=======
                             "targeted_genes": {
->>>>>>> 49066664 (Add targeted_genes property)
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -1337,11 +1336,10 @@
                             "summary": {
                                 "type": "keyword"
                             },
-<<<<<<< HEAD
-                            "targeton": {
-=======
                             "targeted_genes": {
->>>>>>> 49066664 (Add targeted_genes property)
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {

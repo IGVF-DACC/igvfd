@@ -1,6 +1,6 @@
 {
-    "hash": "2047cc1b41fdfd5b17d28cb4ec34f3f0",
-    "index_name": "construct_library_set_2047cc1b",
+    "hash": "545540f9a964c39d9c2c1c4ce5ae0cad",
+    "index_name": "construct_library_set_545540f9",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1041,11 +1041,10 @@
                             "summary": {
                                 "type": "keyword"
                             },
-<<<<<<< HEAD
-                            "targeton": {
-=======
                             "targeted_genes": {
->>>>>>> 49066664 (Add targeted_genes property)
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {

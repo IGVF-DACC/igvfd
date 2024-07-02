@@ -1,6 +1,6 @@
 {
-    "hash": "e1412fed3603ad2ec6dc534337aa35b6",
-    "index_name": "curated_set_e1412fed",
+    "hash": "4e25e81e2686c8ab07d90e6b6db10f99",
+    "index_name": "curated_set_4e25e81e",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -559,11 +559,10 @@
                             "summary": {
                                 "type": "keyword"
                             },
-<<<<<<< HEAD
-                            "targeton": {
-=======
                             "targeted_genes": {
->>>>>>> 49066664 (Add targeted_genes property)
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {

@@ -1,6 +1,6 @@
 {
-    "hash": "a3108a76331c261b1e047987bb15949b",
-    "index_name": "prediction_set_a3108a76",
+    "hash": "c16379008677387bfc16fb48d2ec0e5d",
+    "index_name": "prediction_set_c1637900",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -555,11 +555,10 @@
                             "summary": {
                                 "type": "keyword"
                             },
-<<<<<<< HEAD
-                            "targeton": {
-=======
                             "targeted_genes": {
->>>>>>> 49066664 (Add targeted_genes property)
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {

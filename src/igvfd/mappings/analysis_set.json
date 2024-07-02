@@ -1,6 +1,6 @@
 {
-    "hash": "82834c0fdf17eaf318e5f749eda6ddc7",
-    "index_name": "analysis_set_82834c0f",
+    "hash": "308d7d207093ba8fbc86f2fe159b0430",
+    "index_name": "analysis_set_308d7d20",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -559,11 +559,10 @@
                             "summary": {
                                 "type": "keyword"
                             },
-<<<<<<< HEAD
-                            "targeton": {
-=======
                             "targeted_genes": {
->>>>>>> 49066664 (Add targeted_genes property)
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {
@@ -1342,11 +1341,10 @@
                             "summary": {
                                 "type": "keyword"
                             },
-<<<<<<< HEAD
-                            "targeton": {
-=======
                             "targeted_genes": {
->>>>>>> 49066664 (Add targeted_genes property)
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {
