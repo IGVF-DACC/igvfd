@@ -12,3 +12,8 @@ def test_title(testapp, pi):
         status=201
     ).json['@graph'][0]
     assert lab['title'] == 'Principal Investigator, Stanford'
+
+
+def test_lab_summary(testapp, other_lab):
+    res = testapp.get(other_lab['@id'])
+    assert res.json.get('summary', '') == 'IGVF VerifiedMember, Other Institute'
