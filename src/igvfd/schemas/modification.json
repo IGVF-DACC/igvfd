@@ -56,16 +56,6 @@
         }
     },
     "properties": {
-        "product_id": {
-            "title": "Product ID",
-            "description": "The product or catalog identifier provided following deposition to addgene.org.",
-            "type": "string",
-            "pattern": "^addgene:\\d{5,6}$",
-            "submissionExample": {
-                "appscript": "addgene:12345",
-                "igvf_utils": "addgene:12345"
-            }
-        },
         "activated": {
             "title": "Activated",
             "description": "A boolean indicating whether the modification has been activated by a chemical agent.",
