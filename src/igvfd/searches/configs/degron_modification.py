@@ -2,16 +2,13 @@ from snovault.elasticsearch.searches.configs import search_config
 
 
 @search_config(
-    name='Modification'
+    name='DegronModification'
 )
-def modification():
+def degron_modification():
     return {
         'facets': {
-            'cas': {
-                'title': 'Cas'
-            },
-            'modality': {
-                'title': 'Modality'
+            'degron_system': {
+                'title': 'Degron System'
             },
             'lab.title': {
                 'title': 'Lab'
@@ -21,9 +18,6 @@ def modification():
             },
             'status': {
                 'title': 'Status'
-            },
-            'cas_species': {
-                'title': 'Cas Species'
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
@@ -40,11 +34,9 @@ def modification():
         },
         'facet_groups': [
             {
-                'title': 'Modification',
+                'title': 'Degron Modification',
                 'facet_fields': [
-                    'cas',
-                    'cas_species',
-                    'modality',
+                    'degron_system'
                 ]
             },
             {
@@ -72,26 +64,17 @@ def modification():
             'summary': {
                 'title': 'Summary'
             },
-            'cas': {
-                'title': 'Cas'
+            'degron_system': {
+                'title': 'Degron System'
             },
-            'modality': {
-                'title': 'Modality'
-            },
-            'fused_domain': {
-                'title': 'Fused Domain'
-            },
-            'tagged_protein': {
-                'title': 'Tagged Protein'
+            'tagged_proteins': {
+                'title': 'Tagged Proteins'
             },
             'product_id': {
                 'title': 'Product ID'
             },
             'lab': {
                 'title': 'Lab'
-            },
-            'cas_species': {
-                'title': 'Cas Species'
             }
         }
     }
