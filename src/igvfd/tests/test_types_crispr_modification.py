@@ -3,7 +3,7 @@ import pytest
 
 def test_modification_summary(testapp, crispr_modification, gene_myc_hs):
     res = testapp.get(crispr_modification['@id'])
-    assert res.json.get('summary') == 'CRISPRi SpdCas9'
+    assert res.json.get('summary') == 'CRISPRi Sp-dCas9'
 
     testapp.patch_json(
         crispr_modification['@id'],
@@ -13,7 +13,7 @@ def test_modification_summary(testapp, crispr_modification, gene_myc_hs):
         }
     )
     res = testapp.get(crispr_modification['@id'])
-    assert res.json.get('summary') == 'CRISPRa SpdCas9-VP64'
+    assert res.json.get('summary') == 'CRISPRa Sp-dCas9-VP64'
 
     testapp.patch_json(
         crispr_modification['@id'],
@@ -26,7 +26,7 @@ def test_modification_summary(testapp, crispr_modification, gene_myc_hs):
         }
     )
     res = testapp.get(crispr_modification['@id'])
-    assert res.json.get('summary') == 'CRISPR localizing SpCas13-ANTI-FLAG fused to MYC'
+    assert res.json.get('summary') == 'CRISPR localizing Sp-Cas13-ANTI-FLAG fused to MYC'
 
     testapp.patch_json(
         crispr_modification['@id'],
