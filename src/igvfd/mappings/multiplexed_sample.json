@@ -1,6 +1,6 @@
 {
-    "hash": "9b5e47ec2b22ceee2a32159f4f2b8d5b",
-    "index_name": "multiplexed_sample_9b5e47ec",
+    "hash": "7cd722c26146ce4fc2af7ca1b6cfe286",
+    "index_name": "multiplexed_sample_7cd722c2",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -425,6 +425,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "tile": {
@@ -955,6 +958,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeton": {
                                 "type": "keyword"
                             },
                             "taxa": {
