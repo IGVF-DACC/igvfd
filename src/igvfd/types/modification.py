@@ -71,7 +71,7 @@ class CrisprModification(Modification):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
     ]
-    rev = File.rev | {}
+    rev = Modification.rev | {}
 
     set_status_up = Modification.set_status_up + []
     set_status_down = Modification.set_status_down + []
@@ -123,3 +123,38 @@ class CrisprModification(Modification):
             summary = f'{summary} fused to {tagged_protein_symbol}'
 
         return summary
+
+
+@collection(
+    name='degron-modifications',
+    properties={
+        'title': 'Degron Modifications',
+        'description': 'Listing of Degron modifications',
+    }
+)
+class DegronModification(Modification):
+    item_type = 'degron_modification'
+    schema = load_schema('igvfd:schemas/degron_modification.json')
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
+    ]
+    rev = Modification.rev | {}
+
+    set_status_up = Modification.set_status_up + []
+    set_status_down = Modification.set_status_down + []
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, degron_system=None, tagged_proteins=None):
+        gene_symbols = []
+        for protein in tagged_proteins:
+            gene_object = request.embed(gene)
+            gene_symbols.append(gene_object['symbol'])
+        return f'{degron_system} system targeting {", ".join(gene_symbols)}'
