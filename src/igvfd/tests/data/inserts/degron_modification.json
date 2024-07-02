@@ -1,25 +1,29 @@
 [
     {
-        "uuid": "b4a370ee-18a7-2857-bc2b-b5f4157d0458",
+        "uuid": "b4a370ee-18a7-2857-bc2b-b157d05f4458",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
             "igvf:degron_modification_1"
         ],
-        "degron_system": "",
+        "degron_system": "AID",
+        "tagged_proteins": [
+            "265a645b-7ed3-496f-85f0-4a524dbe8b2d"
+        ],
         "status": "in progress",
-        "product_id": "addgene:987261",
-        "cas_species": "Streptococcus pyogenes (Sp)"
+        "product_id": "addgene:987261"
     },
     {
-        "uuid": "43d6ef34-4bc8-2857-c790-c647bec7294f",
+        "uuid": "43d6ef34-4bc8-2857-c790-7bec7294c64f",
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "aliases": [
             "igvf:degron_modification_2"
         ],
-        "degron_system": "",
-        "tagged_protein": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
+        "degron_system": "ssAID",
+        "tagged_proteins": [
+            "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
+        ],
         "status": "in progress",
         "product_id": "addgene:858090"
     }

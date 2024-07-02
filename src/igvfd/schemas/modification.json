@@ -2,15 +2,11 @@
     "title": "Modification",
     "$id": "/profiles/modification.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A genetic modification altering sample genomic material. For example, CRISPRi dCas9-KRAB modification.",
+    "description": "Abstract schema for modifications.",
     "type": "object",
     "required": [
         "award",
         "lab"
-    ],
-    "identifyingProperties": [
-        "uuid",
-        "aliases"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -60,9 +56,6 @@
         }
     },
     "properties": {
-        "schema_version": {
-            "default": "6"
-        },
         "product_id": {
             "title": "Product ID",
             "description": "The product or catalog identifier provided following deposition to addgene.org.",
@@ -104,13 +97,5 @@
                 "igvf_utils": "auxin"
             }
         }
-    },
-    "fuzzy_searchable_fields": [
-        "submitted_by.title",
-        "summary"
-    ],
-    "exact_searchable_fields": [
-        "@type"
-    ],
-    "changelog": "/profiles/changelogs/modification.md"
+    }
 }

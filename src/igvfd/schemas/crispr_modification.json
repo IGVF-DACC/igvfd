@@ -18,6 +18,9 @@
     "additionalProperties": false,
     "mixinProperties": [
         {
+            "$ref": "modification.json#/properties"
+        },
+        {
             "$ref": "mixins.json#/basic_item"
         },
         {
@@ -28,9 +31,6 @@
         },
         {
             "$ref": "mixins.json#/documents"
-        },
-        {
-            "$ref": "mixins.json#/product_info"
         },
         {
             "$ref": "mixins.json#/release_timestamp"

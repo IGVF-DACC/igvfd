@@ -230,14 +230,14 @@ def primary_cell_v12(primary_cell):
 
 
 @pytest.fixture
-def primary_cell_v13(lab, award, source, human_donor, sample_term_adrenal_gland, modification):
+def primary_cell_v13(lab, award, source, human_donor, sample_term_adrenal_gland, crispr_modification):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id'],
-        'modification': modification['@id']
+        'modification': crispr_modification['@id']
     }
     return item
 

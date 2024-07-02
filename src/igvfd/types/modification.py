@@ -125,7 +125,7 @@ class CrisprModification(Modification):
     name='degron-modifications',
     properties={
         'title': 'Degron Modifications',
-        'description': 'Listing of Degron modifications',
+        'description': 'Listing of degron modifications',
     }
 )
 class DegronModification(Modification):
@@ -147,6 +147,6 @@ class DegronModification(Modification):
     def summary(self, request, degron_system=None, tagged_proteins=None):
         gene_symbols = []
         for protein in tagged_proteins:
-            gene_object = request.embed(gene)
+            gene_object = request.embed(protein)
             gene_symbols.append(gene_object['symbol'])
         return f'{degron_system} system targeting {", ".join(gene_symbols)}'
