@@ -140,6 +140,7 @@
         "upload_status": "validated",
         "assembly": "GRCh38",
         "file_set": "igvf:auxiliary_set_cell_sorting",
-        "controlled_access": false
+        "controlled_access": false,
+        "analysis_step_version": "/analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/"
     }
 ]

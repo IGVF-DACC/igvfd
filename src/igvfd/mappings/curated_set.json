@@ -1,6 +1,6 @@
 {
-    "hash": "1ee0b5c3a595f050e2f068b5d8028e36",
-    "index_name": "curated_set_1ee0b5c3",
+    "hash": "ed73b415b7783695e44843efd9484a65",
+    "index_name": "curated_set_ed73b415",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -797,6 +797,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_version": {
                                 "type": "keyword"
                             },
                             "anvil_url": {

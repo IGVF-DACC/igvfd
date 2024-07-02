@@ -1,6 +1,6 @@
 {
-    "hash": "6c80982a2af9dcb8841dcf8aeb2af2a8",
-    "index_name": "prediction_set_6c80982a",
+    "hash": "a997a53ba6fa2c19ff003d98945c4923",
+    "index_name": "prediction_set_a997a53b",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -795,6 +795,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "analysis_step_version": {
+                                "type": "keyword"
+                            },
                             "anvil_url": {
                                 "type": "keyword"
                             },
@@ -1151,6 +1154,9 @@
                             "alternate_accessions": {
                                 "type": "keyword"
                             },
+                            "analysis_step_version": {
+                                "type": "keyword"
+                            },
                             "anvil_url": {
                                 "type": "keyword"
                             },
@@ -1317,6 +1323,9 @@
                                 "type": "keyword"
                             },
                             "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_version": {
                                 "type": "keyword"
                             },
                             "anvil_url": {
