@@ -887,6 +887,7 @@ def test_metadata_metadata_report_get_default_params(dummy_request):
     assert mr._get_default_params() == [
         ('field', 'audit'),
         ('field', 'files.@id'),
+        ('field', 'files.href'),
         ('field', 'files.file_format'),
         ('field', 'files.file_format_type'),
         ('field', 'files.status'),
@@ -907,7 +908,7 @@ def test_metadata_metadata_report_build_query_string(dummy_request):
         'type=MeasurementSet&files.file_type=bigWig'
         '&files.file_type=bam&replicates.library.size_range=50-100'
         '&files.status%21=archived&files.biological_replicates=2'
-        '&field=audit&field=files.%40id&field=files.file_format'
+        '&field=audit&field=files.%40id&field=files.href&field=files.file_format'
         '&field=files.file_format_type&field=files.status&limit=all'
     )
 
@@ -979,7 +980,13 @@ def test_metadata_metadata_report_build_new_request(dummy_request):
     assert new_request.path_info == '/search/'
     assert new_request.registry
     assert str(new_request.query_string) == (
-        'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam&replicates.library.size_range=50-100&files.status%21=archived&files.biological_replicates=2&files.derived_from=%2Fexperiments%2FENCSR123ABC%2F&files.replicate.library=%2A&field=audit&field=files.%40id&field=files.file_format&field=files.file_format_type&field=files.status&limit=all&field=files.accession&field=files.content_type&field=accession&field=assay_term.term_name&field=donors.accession&field=samples.accession&field=creation_timestamp&field=files.file_size&field=lab.title&field=files.href&field=files.file_type&field=files.biological_replicates&field=files.derived_from&field=files.replicate.library&%40id=%2Fexperiments%2FENCSR123ABC%2F'
+        'type=MeasurementSet&files.file_type=bigWig&files.file_type=bam&replicates.library.size_range=50-100'
+        '&files.status%21=archived&files.biological_replicates=2&files.derived_from=%2Fexperiments%2FENCSR123ABC%2F'
+        '&files.replicate.library=%2A&field=audit&field=files.%40id&field=files.href&field=files.file_format'
+        '&field=files.file_format_type&field=files.status&limit=all&field=files.accession&field=files.content_type'
+        '&field=accession&field=assay_term.term_name&field=donors.accession&field=samples.accession&field=creation_timestamp'
+        '&field=files.file_size&field=lab.title&field=files.file_type&field=files.biological_replicates'
+        '&field=files.derived_from&field=files.replicate.library&%40id=%2Fexperiments%2FENCSR123ABC%2F'
     )
     assert new_request.effective_principals == ['system.Everyone']
 
