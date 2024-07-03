@@ -45,6 +45,8 @@ ORDER = [
     'image',
     'page',
     'workflow',
+    'analysis_step',
+    'analysis_step_version',
     'publication',
     'access_key',
     'auxiliary_set',
@@ -61,8 +63,7 @@ ORDER = [
     'model_file',
     'tabular_file',
     'genome_browser_annotation_file',
-    'image_file',
-    'analysis_step'
+    'image_file'
 ]
 
 IS_ATTACHMENT = [

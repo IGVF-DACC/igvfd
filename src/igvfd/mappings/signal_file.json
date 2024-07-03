@@ -1,6 +1,6 @@
 {
-    "hash": "ec4b56cd298619da4a6062e0e92d04de",
-    "index_name": "signal_file_ec4b56cd",
+    "hash": "303bc0ce0be465b9713e8ef05f08c4bd",
+    "index_name": "signal_file_303bc0ce",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -155,6 +155,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "analysis_step_version": {
                         "type": "keyword"
                     },
                     "assembly": {

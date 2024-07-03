@@ -4,6 +4,7 @@
 
 * Extend `content_type` enum list to include `editing templates`.
 * Extend `content_type` enum list to include `variants`.
+* Add `analysis_step_version`.
 * Add calculated property `input_file_for`.
 * Extend `content_type` enum list to include `sample sort parameters`.
 * Extend `content_type` enum list to include `differential gene expression quantifications`.
