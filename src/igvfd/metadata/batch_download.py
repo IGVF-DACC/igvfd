@@ -8,7 +8,7 @@ from pyramid.view import view_config
 
 
 def includeme(config):
-    config.add_route('batch_download', '/batch_download{slash:/?}')
+    config.add_route('batch-download', '/batch-download{slash:/?}')
     config.scan(__name__)
 
 
@@ -85,7 +85,7 @@ def batch_download_factory(context, request):
     return _get_batch_download(context, request)
 
 
-@view_config(route_name='batch_download', request_method=['GET', 'POST'])
+@view_config(route_name='batch-download', request_method=['GET', 'POST'])
 @allowed_types(METADATA_ALLOWED_TYPES)
 def batch_download(context, request):
     return batch_download_factory(context, request)

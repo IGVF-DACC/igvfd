@@ -85,6 +85,7 @@ class MetadataReport:
     DEFAULT_PARAMS = [
         ('field', 'audit'),
         ('field', 'files.@id'),
+        ('field', 'files.href'),
         ('field', 'files.file_format'),
         ('field', 'files.file_format_type'),
         ('field', 'files.status'),
@@ -225,6 +226,7 @@ class MetadataReport:
         conditions = [
             not file_matches_file_params(file_, self.positive_file_param_set),
             not file_satisfies_inequality_constraints(file_, self.positive_file_inequalities),
+            'href' not in file_,
         ]
         return any(conditions)
 
