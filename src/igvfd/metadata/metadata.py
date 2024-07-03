@@ -85,6 +85,7 @@ class MetadataReport:
     DEFAULT_PARAMS = [
         ('field', 'audit'),
         ('field', 'files.@id'),
+        ('field', 'files.href'),
         ('field', 'files.file_format'),
         ('field', 'files.file_format_type'),
         ('field', 'files.status'),
