@@ -70,7 +70,7 @@ class HumanDonor(Donor):
         sex_phrase = ''
         if ethnicities:
             ethnicities_phrase = ', '.join(ethnicities)
-        if sex:
+        if sex and sex != 'unspecified':
             sex_phrase = sex
 
         summary_phrase = ' '.join([x for x in [ethnicities_phrase, sex_phrase] if x != '']).strip()
