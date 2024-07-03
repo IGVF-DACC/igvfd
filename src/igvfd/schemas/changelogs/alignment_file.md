@@ -2,12 +2,12 @@
 
 ### Minor changes since schema version 10
 
+* Update calculation of `summary`.
 * Add calculated property `input_file_for`.
 * Add `analysis_step_version`.
 
 ### Schema version 10
 
-* Update calculation of `summary`.
 * Reduce `upload_status` enum list to exclude `deposited`.
 * Remove `anvil_source_url`.
 * Add `anvil_url`.
