@@ -1004,28 +1004,11 @@ def test_metadata_metadata_report_should_not_report_file(dummy_request):
     mr._initialize_report()
     mr._build_params()
     # File attribute match.
-    assert not mr._should_not_report_file(file_())
-    dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_format=bed'
-    )
-    mr = MetadataReport(dummy_request)
-    mr._initialize_report()
-    mr._build_params()
     modified_file = file_()
-    dummy_request.environ['QUERY_STRING'] = (
-        'type=Experiment&files.file_format=bed'
-    )
-    mr = MetadataReport(dummy_request)
-    mr._initialize_report()
-    mr._build_params()
-    modified_file = file_()
-    mr = MetadataReport(dummy_request)
-    mr._initialize_report()
-    mr._build_params()
-    mr = MetadataReport(dummy_request)
-    mr._initialize_report()
-    mr._build_params()
-    assert not mr._should_not_report_file(file_())
+    assert not mr._should_not_report_file(modified_file)
+    del modified_file['href']
+    # File missing href.
+    assert mr._should_not_report_file(modified_file)
     dummy_request.environ['QUERY_STRING'] = (
         'type=Experiment&files.file_format=bed&files.file_size=gt:50000'
         '&files.file_size=lte:99999999999&files.biological_replicates=gte:2'
