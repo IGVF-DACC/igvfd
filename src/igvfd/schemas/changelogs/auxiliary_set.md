@@ -3,7 +3,7 @@
 ### Schema version 8
 
 * Rename `file_set_type` enum `circularized barcode detection` to `circularized RNA barcode detection`.
-* Rename `file_set_type` enum `quantification DNA barcode sequencing` to `circularized RNA barcode detection`.
+* Rename `file_set_type` enum `quantification barcode sequencing` to `quantification DNA barcode sequencing`.
 
 ### Minor changes since schema version 7
 
