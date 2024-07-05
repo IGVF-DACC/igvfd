@@ -24,6 +24,7 @@ from igvfd.types.base import (
 )
 class Modification(Item):
     item_type = 'modification'
+    base_types = ['Modification'] + Item.base_types
     schema = load_schema('igvfd:schemas/modification.json')
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
