@@ -44,3 +44,16 @@ def test_auxiliary_set_upgrade_5_6(upgrader, auxiliary_set_v5):
         current_version='5', target_version='6')
     assert value['schema_version'] == '6'
     assert value['file_set_type'] == 'cell hashing'
+
+
+def test_auxiliary_set_upgrade_7_8(upgrader, auxiliary_set_v7_circularized_barcode, auxiliary_set_v7_barcode_seq):
+    value = upgrader.upgrade(
+        'auxiliary_set', auxiliary_set_v7_circularized_barcode,
+        current_version='7', target_version='8')
+    assert value['schema_version'] == '8'
+    assert value['file_set_type'] == 'circularized RNA barcode detection'
+    value = upgrader.upgrade(
+        'auxiliary_set', auxiliary_set_v7_barcode_seq,
+        current_version='7', target_version='8')
+    assert value['schema_version'] == '8'
+    assert value['file_set_type'] == 'quantification DNA barcode sequencing'

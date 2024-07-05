@@ -1,5 +1,10 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Schema version 8
+
+* Rename `file_set_type` enum `circularized barcode detection` to `circularized RNA barcode detection`.
+* Rename `file_set_type` enum `quantification DNA barcode sequencing` to `circularized RNA barcode detection`.
+
 ### Minor changes since schema version 7
 
 * Extend `file_set_type` enum list to include `cell sorting`.

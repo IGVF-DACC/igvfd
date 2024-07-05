@@ -50,7 +50,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "7"
+            "default": "8"
         },
         "file_set_type": {
             "description": "The category that best describes this auxiliary file set.",
@@ -58,10 +58,10 @@
             "enum": [
                 "cell hashing",
                 "cell sorting",
-                "circularized barcode detection",
+                "circularized RNA barcode detection",
                 "gRNA sequencing",
                 "oligo-conjugated lipids",
-                "quantification barcode sequencing",
+                "quantification DNA barcode sequencing",
                 "variant sequencing"
             ],
             "submissionExample": {

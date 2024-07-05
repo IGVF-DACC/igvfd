@@ -340,3 +340,12 @@ def analysis_set_6_7(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s file_set_type was primary analysis and has been updated to be principal analysis.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('auxiliary_set', '7', '8')
+def auxiliary_set_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1757
+    if value.get('file_set_type', '') == 'circularized barcode detection':
+        value['file_set_type'] = 'circularized RNA barcode detection'
+    if value.get('file_set_type', '') == 'quantification barcode sequencing':
+        value['file_set_type'] = 'quantification DNA barcode sequencing'
