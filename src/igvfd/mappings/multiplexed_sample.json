@@ -1,6 +1,6 @@
 {
-    "hash": "843dcec5faea9be9f21b860d122e6b8d",
-    "index_name": "multiplexed_sample_843dcec5",
+    "hash": "7cd722c26146ce4fc2af7ca1b6cfe286",
+    "index_name": "multiplexed_sample_7cd722c2",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1096,6 +1096,21 @@
                                 "type": "keyword"
                             },
                             "@type": {
+                                "type": "keyword"
+                            },
+                            "activated": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "activating_agent_term_id": {
+                                "type": "keyword"
+                            },
+                            "activating_agent_term_name": {
                                 "type": "keyword"
                             },
                             "aliases": {

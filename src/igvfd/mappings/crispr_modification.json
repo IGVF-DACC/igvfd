@@ -1,6 +1,6 @@
 {
-    "hash": "2ae80203314d88a6b0dbae41b2581f69",
-    "index_name": "crispr_modification_2ae80203",
+    "hash": "9f02c357f46680e85296602f79a1dbb6",
+    "index_name": "crispr_modification_9f02c357",
     "item_type": "crispr_modification",
     "mapping": {
         "dynamic_templates": [
@@ -146,6 +146,21 @@
                     },
                     "@type": {
                         "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "activated": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "activating_agent_term_id": {
+                        "type": "keyword"
+                    },
+                    "activating_agent_term_name": {
                         "type": "keyword"
                     },
                     "aliases": {

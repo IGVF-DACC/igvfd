@@ -1,6 +1,6 @@
 {
-    "hash": "c8380fe4993b08a45d527fa7da7d3775",
-    "index_name": "in_vitro_system_c8380fe4",
+    "hash": "debd5315caefe9b08c3b0a00943117b6",
+    "index_name": "in_vitro_system_debd5315",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1120,6 +1120,21 @@
                                 "type": "keyword"
                             },
                             "@type": {
+                                "type": "keyword"
+                            },
+                            "activated": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "activating_agent_term_id": {
+                                "type": "keyword"
+                            },
+                            "activating_agent_term_name": {
                                 "type": "keyword"
                             },
                             "aliases": {

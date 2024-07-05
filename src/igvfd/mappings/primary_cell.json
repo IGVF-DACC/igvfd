@@ -1,6 +1,6 @@
 {
-    "hash": "7d7713badf8c091cfca6d5c7f7303c3d",
-    "index_name": "primary_cell_7d7713ba",
+    "hash": "7af6897f7bbe06b7d09fb13950c1ca15",
+    "index_name": "primary_cell_7af6897f",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -964,6 +964,21 @@
                                 "type": "keyword"
                             },
                             "@type": {
+                                "type": "keyword"
+                            },
+                            "activated": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "activating_agent_term_id": {
+                                "type": "keyword"
+                            },
+                            "activating_agent_term_name": {
                                 "type": "keyword"
                             },
                             "aliases": {

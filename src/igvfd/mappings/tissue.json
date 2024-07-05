@@ -1,6 +1,6 @@
 {
-    "hash": "1ebfb7441bd7a5f2d8178e439ef6b274",
-    "index_name": "tissue_1ebfb744",
+    "hash": "be80de8af2f6120685049a5f995174a0",
+    "index_name": "tissue_be80de8a",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -967,6 +967,21 @@
                                 "type": "keyword"
                             },
                             "@type": {
+                                "type": "keyword"
+                            },
+                            "activated": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "activating_agent_term_id": {
+                                "type": "keyword"
+                            },
+                            "activating_agent_term_name": {
                                 "type": "keyword"
                             },
                             "aliases": {

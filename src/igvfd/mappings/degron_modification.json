@@ -1,6 +1,6 @@
 {
-    "hash": "c93ea48847ee01a01506705a51551067",
-    "index_name": "degron_modification_c93ea488",
+    "hash": "594124b91e101af99fc68f7247bc5ccf",
+    "index_name": "degron_modification_594124b9",
     "item_type": "degron_modification",
     "mapping": {
         "dynamic_templates": [
@@ -146,6 +146,21 @@
                     },
                     "@type": {
                         "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "activated": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "activating_agent_term_id": {
+                        "type": "keyword"
+                    },
+                    "activating_agent_term_name": {
                         "type": "keyword"
                     },
                     "aliases": {
