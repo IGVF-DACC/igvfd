@@ -318,7 +318,7 @@ def audit_missing_auxiliary_set_MPRA(value, system):
         {
             "audit_description": "MPRA measurement sets are expected to link to a quantification DNA barcode sequencing auxiliary set.",
             "audit_category": "missing auxiliary set",
-            "audit_level": "WARNING"
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
@@ -327,7 +327,7 @@ def audit_missing_auxiliary_set_MPRA(value, system):
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_term_name = assay_object.get('term_name')
     if assay_term_name == 'massively parallel reporter assay':
-        auxiliary_sets = [system.get('request').embed(auxiliary_set['@id'], '@@object?skip_calculated=true')
+        auxiliary_sets = [system.get('request').embed(auxiliary_set, '@@object?skip_calculated=true')
                           for auxiliary_set in value.get('auxiliary_sets', '')]
         if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'quantification DNA barcode sequencing']):
             detail = (

@@ -814,6 +814,7 @@ def test_audit_MPRA_missing_barcode_sequencing_auxiliary_set(
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
+    print(res.json)
     assert any(
         error['category'] == 'missing auxiliary set'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
