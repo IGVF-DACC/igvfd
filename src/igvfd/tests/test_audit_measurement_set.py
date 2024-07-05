@@ -627,7 +627,7 @@ def test_audit_missing_gRNA_auxiliary_set(
     testapp.patch_json(
         base_auxiliary_set['@id'],
         {
-            'file_set_type': 'quantification barcode sequencing'
+            'file_set_type': 'quantification DNA barcode sequencing'
         }
     )
     testapp.patch_json(
@@ -762,6 +762,7 @@ def test_audit_missing_auxiliary_set(
     )
 
 
+<<<<<<< HEAD
 def test_audit_CRSIPR_screen_missing_files(
     testapp,
     measurement_set_no_files,
@@ -782,4 +783,50 @@ def test_audit_CRSIPR_screen_missing_files(
     assert all(
         error['category'] != 'missing files'
         for error in res.json['audit'].get('WARNING', [])
+=======
+def test_audit_MPRA_missing_barcode_sequencing_auxiliary_set(
+    testapp,
+    measurement_set,
+    assay_term_mpra,
+    base_auxiliary_set
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_mpra['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'file_set_type': 'variant sequencing'
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'file_set_type': 'quantification DNA barcode sequencing'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+>>>>>>> 81a1ef28 (audit + test)
     )

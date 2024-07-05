@@ -309,3 +309,29 @@ def audit_missing_auxiliary_sets(value, system):
                     f'{audit_link(path_to_text(file_set),file_set)} but is not in its `auxiliary_sets`.'
                 )
                 yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='WARNING')
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_missing_auxiliary_set_MPRA(value, system):
+    '''
+    [
+        {
+            "audit_description": "MPRA measurement sets are expected to link to a quantification DNA barcode sequencing auxiliary set.",
+            "audit_category": "missing auxiliary set",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    description = get_audit_description(audit_missing_auxiliary_set_MPRA)
+    assay_term = value.get('assay_term')
+    assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    assay_term_name = assay_object.get('term_name')
+    if assay_term_name == 'massively parallel reporter assay':
+        auxiliary_sets = [system.get('request').embed(auxiliary_set['@id'], '@@object?skip_calculated=true')
+                          for auxiliary_set in value.get('auxiliary_sets', '')]
+        if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type') == 'quantification DNA barcode sequencing']):
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'an MPRA assay but has no quantification DNA barcode sequencing `auxiliary_sets`.'
+            )
+            yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
