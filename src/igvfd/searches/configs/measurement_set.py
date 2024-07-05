@@ -41,7 +41,7 @@ def measurement_set():
                 'title': 'Library Material'
             },
             'targeted_genes': {
-                'title': 'Targeted Genes'
+                'title': 'Assay Targeted Genes'
             },
             'collections': {
                 'title': 'Collections',
@@ -164,7 +164,7 @@ def measurement_set():
                 'title': 'Sequencing Library Types'
             },
             'targeted_genes': {
-                'title': 'Targeted Genes'
+                'title': 'Assay Targeted Genes'
             },
             'protocols': {
                 'title': 'Protocols'
