@@ -99,7 +99,8 @@
                 "neural network",
                 "random forest",
                 "decision tree",
-                "support vector machine"
+                "support vector machine",
+                "variant binding effect"
             ],
             "submissionExample": {
                 "appscript": "neural network",
