@@ -38,11 +38,12 @@ def audit_no_files(value, system):
     if assay_term:
         assay_term = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
         assay_term = assay_term.get('term_name', '')
+    preferred_assay_title = value.get('preferred_assay_title', '')
     # Measurement sets from these CRISPR assays do not expect any sequence data
     CRISPR_assays = ['proliferation CRISPR screen',
-                     'CRISPR perturbation screen followed by flow cytometry and FISH']
-    preferred_assay_title = value.get('preferred_assay_title', '')
-    if not (value.get('files', '')) and assay_term not in CRISPR_assays and preferred_assay_title not in ['Variant FlowFISH']:
+                     'CRISPR perturbation screen followed by flow cytometry and FISH',
+                     'Variant FlowFISH']
+    if not (value.get('files', '')) and assay_term not in CRISPR_assays and preferred_assay_title not in CRISPR_assays:
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `files`.'
