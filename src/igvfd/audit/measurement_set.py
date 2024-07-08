@@ -331,7 +331,7 @@ def audit_missing_auxiliary_set_MPRA(value, system):
                           for auxiliary_set in value.get('auxiliary_sets', [])]
         if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type', '') == 'quantification DNA barcode sequencing']):
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
-                f'an MPRA assay but has no quantification DNA barcode sequencing `auxiliary_sets`.'
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has no quantification DNA barcode sequencing `auxiliary_sets`.'
             )
             yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
