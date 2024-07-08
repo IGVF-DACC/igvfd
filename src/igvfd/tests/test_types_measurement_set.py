@@ -94,7 +94,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
     )
     res = testapp.get(measurement_set['@id'])
     assert res.json.get(
-        'summary') == 'CRISPR activation screen (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide'
+        'summary') == 'proliferation CRISPR screen (lentiMPRA) integrating a reporter library targeting accessible genome regions genome-wide'
 
 
 def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):
