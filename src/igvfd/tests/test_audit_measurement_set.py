@@ -762,7 +762,6 @@ def test_audit_missing_auxiliary_set(
     )
 
 
-<<<<<<< HEAD
 def test_audit_CRSIPR_screen_missing_files(
     testapp,
     measurement_set_no_files,
@@ -783,7 +782,9 @@ def test_audit_CRSIPR_screen_missing_files(
     assert all(
         error['category'] != 'missing files'
         for error in res.json['audit'].get('WARNING', [])
-=======
+    )
+
+
 def test_audit_MPRA_missing_barcode_sequencing_auxiliary_set(
     testapp,
     measurement_set,
@@ -828,5 +829,4 @@ def test_audit_MPRA_missing_barcode_sequencing_auxiliary_set(
     assert all(
         error['category'] != 'missing auxiliary set'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
->>>>>>> 81a1ef28 (audit + test)
     )
