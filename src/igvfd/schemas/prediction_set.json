@@ -227,7 +227,8 @@
                 "pathogenicity",
                 "functional effect",
                 "protein stability",
-                "activity level"
+                "activity level",
+                "binding effect"
             ],
             "submissionExample": {
                 "appscript": "pathogenicity",

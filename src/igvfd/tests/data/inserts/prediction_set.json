@@ -9,7 +9,7 @@
         "donors": [
             "igvf:alias_human_donor1"
         ],
-        "file_set_type": "functional effect",
+        "file_set_type": "binding effect",
         "award": "1U01HG011952-01",
         "lab": "alan-boyle",
         "status": "released",
