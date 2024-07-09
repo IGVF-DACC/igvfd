@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Update calculation of `summary`.
 * Add `analysis_step_version`.
 * Add calculated property `input_file_for`.
 * Extend `file_format_type` enum list to include `mpra_starr`.
