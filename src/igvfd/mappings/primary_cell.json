@@ -1,6 +1,6 @@
 {
-    "hash": "7af6897f7bbe06b7d09fb13950c1ca15",
-    "index_name": "primary_cell_7af6897f",
+    "hash": "17fe726e8032b7844be41b306fc9a245",
+    "index_name": "primary_cell_17fe726e",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -999,6 +999,9 @@
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
+                            "degron_system": {
+                                "type": "keyword"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -1045,6 +1048,9 @@
                                 "type": "keyword"
                             },
                             "tagged_protein": {
+                                "type": "keyword"
+                            },
+                            "tagged_proteins": {
                                 "type": "keyword"
                             },
                             "uuid": {

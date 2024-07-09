@@ -1,6 +1,6 @@
 {
-    "hash": "be80de8af2f6120685049a5f995174a0",
-    "index_name": "tissue_be80de8a",
+    "hash": "55d7e27dea3b8342ae99caa318f4f041",
+    "index_name": "tissue_55d7e27d",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1002,6 +1002,9 @@
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
+                            "degron_system": {
+                                "type": "keyword"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -1048,6 +1051,9 @@
                                 "type": "keyword"
                             },
                             "tagged_protein": {
+                                "type": "keyword"
+                            },
+                            "tagged_proteins": {
                                 "type": "keyword"
                             },
                             "uuid": {
