@@ -63,5 +63,23 @@
         "uuid": "d41ed7ad-21be-4fa3-9520-f7c001e2c395",
         "large_scale_gene_list": "igvf:xml_catalog_file",
         "scope": "genes"
+    },
+    {
+        "aliases": [
+            "igvf:prediction_set_4"
+        ],
+        "accession": "IGVFDS5686ICTZ",
+        "file_set_type": "binding effect",
+        "samples": [
+            "igvf:treated_tissue"
+        ],
+        "award": "1U01HG011952-01",
+        "lab": "alan-boyle",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "768ba970-6801-4b15-9dba-42d4cf59b711",
+        "input_file_sets": [
+            "/model-sets/IGVFDS4845MXHR/"
+        ]
     }
 ]
