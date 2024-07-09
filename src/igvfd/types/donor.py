@@ -1,5 +1,6 @@
 from snovault import (
     abstract_collection,
+    calculated_property,
     collection,
     load_schema,
 )
@@ -56,6 +57,28 @@ class HumanDonor(Donor):
     set_status_up = Donor.set_status_up + []
     set_status_down = Donor.set_status_down + []
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the human donor.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, ethnicities=None, sex=None):
+        ethnicities_phrase = ''
+        sex_phrase = ''
+        if ethnicities:
+            ethnicities_phrase = ', '.join(ethnicities)
+        if sex and sex != 'unspecified':
+            sex_phrase = sex
+
+        summary_phrase = ' '.join([x for x in [ethnicities_phrase, sex_phrase] if x != '']).strip()
+        if summary_phrase:
+            return summary_phrase
+        else:
+            return self.uuid
+
 
 @collection(
     name='rodent-donors',
@@ -84,3 +107,17 @@ class RodentDonor(Donor):
             value = u'{strain}/{sex}'.format(**properties)
             keys.setdefault('rodentdonor:strain_sex', []).append(value)
         return keys
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the rodent donor.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, strain, sex=None):
+        if sex and sex != 'unspecified':
+            return f'{strain} {sex}'
+        else:
+            return strain
