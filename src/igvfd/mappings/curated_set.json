@@ -1,6 +1,6 @@
 {
-    "hash": "69f7e22d275784ebbd7d1187d25c9b50",
-    "index_name": "curated_set_69f7e22d",
+    "hash": "8e8308f847d43e1e744d7696d82116c0",
+    "index_name": "curated_set_8e8308f8",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -557,6 +557,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "targeton": {

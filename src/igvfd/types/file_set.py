@@ -387,6 +387,7 @@ class MeasurementSet(FileSet):
         Path('samples.modifications', include=['@id', 'modality']),
         Path('samples.construct_library_sets', include=['@id', 'accession', 'summary']),
         Path('files.sequencing_platform', include=['@id', 'term_name']),
+        Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
     ]
 
     audit_inherit = FileSet.audit_inherit + [

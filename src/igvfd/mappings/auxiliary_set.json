@@ -1,6 +1,6 @@
 {
-    "hash": "5f07e4772fe1592a5ff737e031d8467c",
-    "index_name": "auxiliary_set_5f07e477",
+    "hash": "600dd22998e13b99cd9e76697def6155",
+    "index_name": "auxiliary_set_600dd229",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -553,6 +553,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "targeton": {
@@ -1262,6 +1265,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "uuid": {

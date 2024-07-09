@@ -1,6 +1,6 @@
 {
-    "hash": "debd5315caefe9b08c3b0a00943117b6",
-    "index_name": "in_vitro_system_debd5315",
+    "hash": "ea5dd23910f77189c4074bc35dd1ed1a",
+    "index_name": "in_vitro_system_ea5dd239",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -886,6 +886,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "targeton": {

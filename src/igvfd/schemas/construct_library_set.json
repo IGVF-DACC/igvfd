@@ -808,7 +808,7 @@
             }
         },
         "small_scale_gene_list": {
-            "description": "The specific, small scale list of (<=100) gene(s) this construct library was designed to target.",
+            "description": "The specific, small scale list of (<=100) gene(s) this construct library was designed to target. This property differs from targeted_genes in Measurement Set, which describes genes targeted for binding sites or used for sorting by expression.",
             "comment": "If more than 100 genes were targeted, submit large_scale_gene_list instead. For a guide library, guides should directly map to or target the gene(s) listed here. Genes are disallowed from submission in a reporter library."
         },
         "large_scale_gene_list": {

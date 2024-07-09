@@ -1,6 +1,6 @@
 {
-    "hash": "7cd722c26146ce4fc2af7ca1b6cfe286",
-    "index_name": "multiplexed_sample_7cd722c2",
+    "hash": "857979464695baec907529ca5b245a3d",
+    "index_name": "multiplexed_sample_85797946",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -958,6 +958,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "targeton": {

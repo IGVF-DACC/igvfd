@@ -1,6 +1,6 @@
 {
-    "hash": "b8d030a50d291cb2520f4844c4447f41",
-    "index_name": "construct_library_set_b8d030a5",
+    "hash": "4ea61fc67bf6bdd7b163290179a6b7ef",
+    "index_name": "construct_library_set_4ea61fc6",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1039,6 +1039,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "targeton": {

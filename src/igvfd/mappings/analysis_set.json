@@ -1,6 +1,6 @@
 {
-    "hash": "5d99cd77a5c41677c84ec9c8172922ed",
-    "index_name": "analysis_set_5d99cd77",
+    "hash": "f0713385e800009b7e84a757ad49b5ef",
+    "index_name": "analysis_set_f0713385",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -557,6 +557,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "targeton": {
@@ -1336,6 +1339,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "targeted_genes": {
                                 "type": "keyword"
                             },
                             "targeton": {
