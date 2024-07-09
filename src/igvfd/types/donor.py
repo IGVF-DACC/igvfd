@@ -117,7 +117,7 @@ class RodentDonor(Donor):
         }
     )
     def summary(self, strain, sex=None):
-        if sex:
+        if sex and sex != 'unspecified':
             return f'{strain} {sex}'
         else:
             return strain
