@@ -149,7 +149,7 @@ def audit_analysis_set_samples(value, system):
 
 
 @audit_checker('AnalysisSet', frame='object')
-def audit_analysis_set_samples(value, system):
+def audit_analysis_set_files_missing_analysis_step_version(value, system):
     '''
     [
         {
@@ -159,7 +159,7 @@ def audit_analysis_set_samples(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_analysis_set_samples, index=0)
+    description = get_audit_description(audit_analysis_set_files_missing_analysis_step_version, index=0)
     files = value.get('samples')
     files_with_missing_asv = []
     for file in file:
