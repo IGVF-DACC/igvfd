@@ -2,6 +2,8 @@
 
 ### Schema version 7
 
+* Restrict `publication_identifiers` to submission by admins only.
+* Add `publications`.
 * Adjust `file_set_type` enum list to replace `primary analysis` with `principal analysis`.
 
 ### Minor changes since schema version 6

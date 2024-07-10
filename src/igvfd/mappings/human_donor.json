@@ -451,6 +451,9 @@
                     "publication_identifiers": {
                         "type": "keyword"
                     },
+                    "publications": {
+                        "type": "keyword"
+                    },
                     "related_donors": {
                         "properties": {
                             "donor": {
@@ -505,6 +508,9 @@
                                         "type": "keyword"
                                     },
                                     "publication_identifiers": {
+                                        "type": "keyword"
+                                    },
+                                    "publications": {
                                         "type": "keyword"
                                     },
                                     "related_donors": {

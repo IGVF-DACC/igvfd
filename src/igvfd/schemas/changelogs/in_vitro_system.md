@@ -1,5 +1,10 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Minor changes since schema version 21
+
+* Restrict `publication_identifiers` to submission by admins only.
+* Add `publications`.
+
 ### Schema version 21
 
 * Remove `nih_institutional_certification`.

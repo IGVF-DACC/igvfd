@@ -462,6 +462,9 @@
                     "publication_identifiers": {
                         "type": "keyword"
                     },
+                    "publications": {
+                        "type": "keyword"
+                    },
                     "release_timestamp": {
                         "type": "keyword"
                     },

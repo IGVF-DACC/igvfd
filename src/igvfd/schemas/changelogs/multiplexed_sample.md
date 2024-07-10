@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 7
 
+* Restrict `publication_identifiers` to submission by admins only.
+* Add `publications`.
 * Allow calculated property `modifications` to link to `Crispr Modifications`.
 * Add `protocols`.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.

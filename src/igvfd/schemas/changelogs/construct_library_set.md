@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 8
 
+* Restrict `publication_identifiers` to submission by admins only.
+* Add `publications`.
 * Extend `scope` enum list to include `alleles`.
 * Extend `scope` enum list to include `targeton`.
 * Extend `file_set_type` enum list to include `editing template library`.

@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 8
 
+* Restrict `publication_identifiers` to submission by admins only.
+* Add `publications`.
 * Extend `file_set_type` enum list to include `editing templates`.
 * Extend `collections` enum list to include `Vista`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.2`.

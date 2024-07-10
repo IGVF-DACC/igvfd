@@ -7,6 +7,8 @@
 
 ### Minor changes since schema version 7
 
+* Restrict `publication_identifiers` to submission by admins only.
+* Add `publications`.
 * Extend `file_set_type` enum list to include `cell sorting`.
 * Extend `file_set_type` enum list to include `variant sequencing`.
 * Extend `collections` enum list to include `Vista`.

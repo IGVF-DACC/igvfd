@@ -482,6 +482,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "publications": {
+                                "type": "keyword"
+                            },
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
@@ -712,6 +715,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "publications": {
                                 "type": "keyword"
                             },
                             "related_donors": {
@@ -1151,6 +1157,9 @@
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
+                    "publications": {
+                        "type": "keyword"
+                    },
                     "release_timestamp": {
                         "type": "keyword"
                     },
@@ -1419,6 +1428,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "publications": {
                                 "type": "keyword"
                             },
                             "release_timestamp": {

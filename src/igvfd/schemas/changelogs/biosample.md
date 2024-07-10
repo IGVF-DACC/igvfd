@@ -1,5 +1,7 @@
 ## Changelog for *`biosample.json`*
 
+* Restrict `publication_identifiers` to submission by admins only. (07/17/2024)
+* Add `publications`. (07/17/2024)
 * Allow `modifications` to contain a maximum of 2 items. (05/20/2024)
 * Add `originated_from`. (04/24/2024)
 * Update `dbxrefs` regex to allow ENCODE sample accessions. (03/25/2024)

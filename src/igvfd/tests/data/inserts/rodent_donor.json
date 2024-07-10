@@ -67,6 +67,9 @@
             "GEO:SAMN31260610",
             "ENCODE:ENCDO236IKC"
         ],
-        "virtual": false
+        "virtual": false,
+        "publications": [
+            "/publications/doi:10.1101/2021.03.31.437978v2/"
+        ]
     }
 ]

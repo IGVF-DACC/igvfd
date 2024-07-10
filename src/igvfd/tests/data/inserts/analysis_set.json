@@ -41,6 +41,9 @@
         "file_set_type": "principal analysis",
         "collections": [
             "MPRAbase"
+        ],
+        "publications": [
+            "/publications/PMID:22955616/"
         ]
     }
 ]

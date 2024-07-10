@@ -27,6 +27,9 @@
             "$ref": "mixins.json#/publication_identifiers"
         },
         {
+            "$ref": "mixins.json#/publications"
+        },
+        {
             "$ref": "mixins.json#/release_timestamp"
         }
     ],
@@ -51,6 +54,9 @@
     "properties": {
         "accession": {
             "accessionType": "DS"
+        },
+        "publication_identifiers": {
+            "permission": "admin_only"
         },
         "dbxrefs": {
             "@type": "@id",
