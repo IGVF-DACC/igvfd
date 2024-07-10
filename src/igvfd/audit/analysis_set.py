@@ -160,7 +160,7 @@ def audit_analysis_set_files_missing_analysis_step_version(value, system):
     ]
     '''
     description = get_audit_description(audit_analysis_set_files_missing_analysis_step_version, index=0)
-    files = value.get('samples')
+    files = value.get('files')
     files_with_missing_asv = []
     for file in file:
         file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
