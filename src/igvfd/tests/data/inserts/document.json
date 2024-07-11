@@ -225,5 +225,18 @@
         "uuid": "7988b40d-f7fc-4dc2-a7d4-95936e61be5c",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z"
+    },
+    {
+        "aliases": [
+            "igvf:model_source_data_insert"
+        ],
+        "description": "Model source data example.",
+        "attachment": "SEMpl_model_data.txt",
+        "award": "1U01HG011952-01",
+        "document_type": "model source data",
+        "lab": "alan-boyle",
+        "uuid": "3508c752-4a9f-46e0-a5b6-099cd8a71428",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]
