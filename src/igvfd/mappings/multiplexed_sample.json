@@ -1,6 +1,6 @@
 {
-    "hash": "857979464695baec907529ca5b245a3d",
-    "index_name": "multiplexed_sample_85797946",
+    "hash": "60108d5967afc764f9c45d030ed59062",
+    "index_name": "multiplexed_sample_60108d59",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1131,6 +1131,9 @@
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
+                            "degron_system": {
+                                "type": "keyword"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -1177,6 +1180,9 @@
                                 "type": "keyword"
                             },
                             "tagged_protein": {
+                                "type": "keyword"
+                            },
+                            "tagged_proteins": {
                                 "type": "keyword"
                             },
                             "uuid": {
