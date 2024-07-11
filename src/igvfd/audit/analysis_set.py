@@ -155,14 +155,14 @@ def audit_analysis_set_files_missing_analysis_step_version(value, system):
         {
             "audit_description": "Analysis set files are expected to specify analysis step version.",
             "audit_category": "missing analysis step version",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "WARNING"
         }
     ]
     '''
     description = get_audit_description(audit_analysis_set_files_missing_analysis_step_version, index=0)
     files = value.get('files')
     files_with_missing_asv = []
-    for file in file:
+    for file in files:
         file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
         if not (file_object.get('analysis_step_version', '')):
             files_with_missing_asv.append(file)
@@ -172,4 +172,4 @@ def audit_analysis_set_files_missing_analysis_step_version(value, system):
             f'Analysis set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'links to file(s) {files_with_missing_asv} that are missing `analysis_step_version`.'
         )
-        yield AuditFailure('missing analysis step version', f'{detail} {description}', level='NOT_COMPLIANT')
+        yield AuditFailure('missing analysis step version', f'{detail} {description}', level='WARNING')

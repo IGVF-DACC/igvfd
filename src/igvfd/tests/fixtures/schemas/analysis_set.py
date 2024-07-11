@@ -34,17 +34,15 @@ def analysis_set_with_sample(
 
 
 @pytest.fixture
-def analysis_set_with_donor(
+def analysis_set_with_no_samples(
     testapp,
     award,
     lab,
-    human_donor,
     analysis_set_base
 ):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'donors': [human_donor['@id']],
         'input_file_sets': [analysis_set_base['@id']],
         'file_set_type': 'intermediate analysis'
     }

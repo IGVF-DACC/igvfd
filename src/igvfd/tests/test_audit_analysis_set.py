@@ -197,3 +197,34 @@ def test_audit_missing_samples(
         error['category'] != 'unexpected samples'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_missing_analysis_step_version(
+    testapp,
+    analysis_set_with_no_samples,
+    matrix_file,
+    analysis_step_version
+):
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'file_set': analysis_set_with_no_samples['@id']
+        }
+    )
+    res = testapp.get(analysis_set_with_no_samples['@id'] + '@@audit')
+    print(res.json)
+    assert any(
+        error['category'] == 'missing analysis step version'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'analysis_step_version': analysis_step_version['@id']
+        }
+    )
+    res = testapp.get(analysis_set_with_no_samples['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing analysis step version'
+        for error in res.json['audit'].get('WARNING', [])
+    )
