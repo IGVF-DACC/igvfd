@@ -49,6 +49,7 @@ TOP_HITS_ITEM_TYPES = [
     'Image',
     'Lab',
     'CrisprModification',
+    'DegronModification',
     'Modification',
     'AssayTerm',
     'PhenotypeTerm',
