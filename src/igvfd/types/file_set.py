@@ -454,8 +454,9 @@ class MeasurementSet(FileSet):
                 sample_object = request.embed(sample, '@@object')
                 if sample_object.get('modifications'):
                     for modification in sample_object.get('modifications'):
-                        modality = request.embed(modification)['modality']
-                        modality_set.add(modality)
+                        modality = request.embed(modification).get('modality', '')
+                        if modality:
+                            modality_set.add(modality)
                 if sample_object.get('construct_library_sets'):
                     for construct_library in sample_object.get('construct_library_sets'):
                         cls_summary = request.embed(construct_library)['summary']
