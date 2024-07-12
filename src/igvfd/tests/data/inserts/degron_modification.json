@@ -10,6 +10,7 @@
         "tagged_proteins": [
             "265a645b-7ed3-496f-85f0-4a524dbe8b2d"
         ],
+        "modality": "degradation",
         "status": "in progress",
         "product_id": "addgene:987261"
     },
@@ -24,6 +25,7 @@
         "tagged_proteins": [
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
         ],
+        "modality": "degradation",
         "status": "in progress",
         "product_id": "addgene:858090"
     }

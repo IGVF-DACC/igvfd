@@ -1,6 +1,6 @@
 {
-    "hash": "594124b91e101af99fc68f7247bc5ccf",
-    "index_name": "degron_modification_594124b9",
+    "hash": "7ae6191f9a05423ea147567a29972d95",
+    "index_name": "degron_modification_7ae6191f",
     "item_type": "degron_modification",
     "mapping": {
         "dynamic_templates": [
@@ -312,6 +312,9 @@
                         "type": "object"
                     },
                     "lot_id": {
+                        "type": "keyword"
+                    },
+                    "modality": {
                         "type": "keyword"
                     },
                     "notes": {

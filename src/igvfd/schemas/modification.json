@@ -86,6 +86,16 @@
                 "appscript": "auxin",
                 "igvf_utils": "auxin"
             }
+        },
+        "modality": {
+            "title": "Modality",
+            "description": "The purpose or intended effect of a modification.",
+            "type": "string",
+            "enum": [],
+            "submissionExample": {
+                "appscript": "activation",
+                "igvf_utils": "activation"
+            }
         }
     }
 }

@@ -8,7 +8,8 @@
         "award",
         "lab",
         "degron_system",
-        "tagged_proteins"
+        "tagged_proteins",
+        "modality"
     ],
     "identifyingProperties": [
         "uuid",
@@ -86,6 +87,19 @@
             "submissionExample": {
                 "appscript": "/genes/ENSG00000237415/ or igvf:gene01",
                 "igvf_utils": "/genes/ENSG00000237415/ or igvf:gene01"
+            }
+        },
+        "modality": {
+            "title": "Modality",
+            "description": "The purpose or intended effect of a modification.",
+            "type": "string",
+            "enum": [
+                "degradation"
+            ],
+            "default": "degradation",
+            "submissionExample": {
+                "appscript": "degradation",
+                "igvf_utils": "degradation"
             }
         }
     },
