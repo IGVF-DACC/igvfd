@@ -47,6 +47,20 @@ class Publication(Item):
         return keys
 
     @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the publication.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, title):
+        if title:
+            return title
+        else:
+            return self.uuid
+
+    @calculated_property(
         condition='date_published',
         schema={
             'title': 'Publication Year',
