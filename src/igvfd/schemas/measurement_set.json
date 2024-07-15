@@ -2,7 +2,7 @@
     "title": "Measurement Set",
     "$id": "/profiles/measurement_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "MeasurementSet was designed to capture files (FASTQs) that result from sequencing of a library prepared from the sample that is the main target of an assay. For example sequencing of accessible regions in the genome, or sequencing of the transcriptome of the sample. The assay could be bulk or single cell, but the sample specific sequencing result will go into the MeasurementSet. The files in the MeasurementSet have to do with the specific sample of the experiment.",
+    "description": "Measurement Set is a file-set that hosts raw data files (e.g. FASTQs) that result from sequencing of a library prepared from the nucleic acids of the sample that is the main target of an assay. For example sequencing of accessible regions in the genome, or sequencing of the transcriptome of the sample. The assay can either be bulk or single cell type. The sample specific raw sequencing results will be caputured in the Measurement Set. The files in the Measurement Sets are specific to the sample being investigated. Note: see auxiliary set for files that are not direct result of sequencing the sample under investigation.",
     "type": "object",
     "required": [
         "award",
