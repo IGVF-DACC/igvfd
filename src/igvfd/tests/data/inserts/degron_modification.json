@@ -12,6 +12,9 @@
         ],
         "modality": "degradation",
         "status": "in progress",
+        "sources": [
+            "b40f24ee-8803-4937-9223-1df3a6bf3cd9"
+        ],
         "product_id": "addgene:987261"
     },
     {
@@ -27,6 +30,10 @@
         ],
         "modality": "degradation",
         "status": "in progress",
-        "product_id": "addgene:858090"
+        "sources": [
+            "b40f24ee-8803-4937-9223-1df3a6bf3cd9"
+        ],
+        "product_id": "addgene:858090",
+        "lot_id": "100-A"
     }
 ]

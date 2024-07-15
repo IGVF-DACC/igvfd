@@ -42,7 +42,8 @@
     "dependentSchemas": {
         "$merge": [
             "modification.json#/dependentSchemas",
-            "shared_dependencies.json#/standard_status"
+            "shared_dependencies.json#/standard_status",
+            "shared_dependencies.json#/product_info"
         ]
     },
     "properties": {

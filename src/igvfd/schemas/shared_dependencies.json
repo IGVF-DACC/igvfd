@@ -90,5 +90,19 @@
                 }
             }
         }
+    },
+    "product_info": {
+        "lot_id": {
+            "comment": "A product ID is required if lot ID is specified.",
+            "required": [
+                "product_id"
+            ]
+        },
+        "product_id": {
+            "comment": "Sources are required if a product ID is specified",
+            "required": [
+                "sources"
+            ]
+        }
     }
 }
