@@ -386,7 +386,7 @@ class MeasurementSet(FileSet):
         Path('samples.disease_terms', include=['@id', 'term_name']),
         Path('samples.modifications', include=['@id', 'modality']),
         Path('samples.construct_library_sets.small_scale_gene_list', include=[
-             '@id', 'file_set_type', 'accession', 'summary', 'geneid', 'symbol', 'name']),
+             '@id', 'file_set_type', 'accession', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name']),
         Path('files.sequencing_platform', include=['@id', 'term_name']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
     ]
