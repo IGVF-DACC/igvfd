@@ -79,7 +79,8 @@
             "default": "19"
         },
         "publication_identifiers": {
-            "permission": "admin_only"
+            "permission": "admin_only",
+            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "pmi": {
             "title": "Post-mortem Interval",

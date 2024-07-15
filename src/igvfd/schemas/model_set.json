@@ -77,7 +77,8 @@
             "default": "3"
         },
         "publication_identifiers": {
-            "permission": "admin_only"
+            "permission": "admin_only",
+            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "model_name": {
             "title": "Model Name",

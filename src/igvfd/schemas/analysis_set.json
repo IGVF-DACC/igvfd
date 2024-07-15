@@ -71,7 +71,8 @@
             "default": "7"
         },
         "publication_identifiers": {
-            "permission": "admin_only"
+            "permission": "admin_only",
+            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "input_file_sets": {
             "description": "The file set(s) required for this analysis."

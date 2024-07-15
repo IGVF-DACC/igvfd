@@ -49,6 +49,10 @@
         "accession": {
             "accessionType": "WF"
         },
+        "publication_identifiers": {
+            "permission": "admin_only",
+            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
+        },
         "name": {
             "title": "Name",
             "description": "The preferred viewable name of the workflow.",

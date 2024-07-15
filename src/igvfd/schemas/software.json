@@ -44,6 +44,10 @@
         "schema_version": {
             "default": "5"
         },
+        "publication_identifiers": {
+            "permission": "admin_only",
+            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
+        },
         "name": {
             "title": "Name",
             "description": "Unique name of the software package; a lowercase version of the title.",

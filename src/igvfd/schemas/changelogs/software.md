@@ -1,5 +1,10 @@
 ## Changelog for *`software.json`*
 
+### Minor changes since schema version 3
+
+* Restrict `publication_identifiers` to submission by admins only.
+* Add `publications`.
+
 ### Schema version 5
 
 * Require `used_by` to contain at least one value.

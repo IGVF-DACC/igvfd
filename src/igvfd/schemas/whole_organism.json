@@ -82,7 +82,8 @@
             "default": "22"
         },
         "publication_identifiers": {
-            "permission": "admin_only"
+            "permission": "admin_only",
+            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "sample_terms": {
             "comment": "Do not submit, value is assigned by the object.",
