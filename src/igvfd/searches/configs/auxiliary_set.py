@@ -34,7 +34,7 @@ def auxiliary_set():
             'samples.disease_terms.term_name': {
                 'title': 'Disease Term',
             },
-            'auxiliary_sets.measurement_sets.preferred_assay_title': {
+            'measurement_sets.preferred_assay_title': {
                 'title': 'Auxiliary Data Of',
             },
             'collections': {
@@ -77,7 +77,7 @@ def auxiliary_set():
                 'title': 'File Set',
                 'facet_fields': [
                     'file_set_type',
-                    'auxiliary_sets.measurement_sets.preferred_assay_title',
+                    'measurement_sets.preferred_assay_title',
                 ],
             },
             {
