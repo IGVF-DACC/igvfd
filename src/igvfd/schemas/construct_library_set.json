@@ -2,7 +2,7 @@
     "title": "Construct Library Set",
     "$id": "/profiles/construct_library_set.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "ConstructLibrarySet was designed to capture files (FASTQs) that result from sequencing of a library prior to the delivery of this library into the cells. For example sequencing of guide RNAs after cloning them. The result would represent the guides we introduce into cells, but will not tell us what guides ended up being deliered and what guides ended up expressed. Not all ConstructLibrarySets will end up having FASTQs or any other files in them. If the lab chose not to sequence their library prior to delivery it will not have any FASTQ to submit. ConstructLibrarySet will not be associated with Sample because it is designed to capture the library prior to the delivery, so has no relation to the Sample that will get the plasmids in the experiment.",
+    "description": "ConstructLibrarySet was designed to capture files (FASTQs) that result from sequencing of a library prior to the delivery of this library into the cells. For example sequencing of guide RNAs after cloning them. The result would represent the guides we introduce into cells, but will not tell us what guides ended up being delivered and what guides ended up expressed. Not all ConstructLibrarySets will end up having FASTQs or any other files in them. If the lab chose not to sequence their library prior to delivery it will not have any FASTQ to submit. ConstructLibrarySet will not be associated with Sample because it is designed to capture the library prior to the delivery, so has no relation to the Sample that will get the plasmids in the experiment.",
     "type": "object",
     "required": [
         "award",
