@@ -25,6 +25,9 @@ def file_set():
             'file_set_type': {
                 'title': 'File Set Type',
             },
+            'files.content_type': {
+                'title': 'Available File Types',
+            },
             'type': {
                 'title': 'Object Type',
             },
@@ -56,6 +59,12 @@ def file_set():
                     'lab.title',
                     'award.component',
                     'type',
+                ],
+            },
+            {
+                'title': 'File Data',
+                'facet_fields': [
+                    'files.content_type'
                 ],
             },
             {

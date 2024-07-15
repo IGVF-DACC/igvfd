@@ -22,8 +22,26 @@ def auxiliary_set():
             'donors.taxa': {
                 'title': 'Taxa'
             },
+            'samples.classifications': {
+                'title': 'Classifications',
+            },
+            'samples.sample_terms.term_name': {
+                'title': 'Sample Term',
+            },
+            'samples.targeted_sample_term.term_name': {
+                'title': 'Targeted Sample Term',
+            },
+            'samples.disease_terms.term_name': {
+                'title': 'Disease Term',
+            },
+            'auxiliary_sets.measurement_sets.preferred_assay_title': {
+                'title': 'Auxiliary Data Of',
+            },
             'collections': {
                 'title': 'Collections',
+            },
+            'files.content_type': {
+                'title': 'Available File Types',
             },
             'file_set_type': {
                 'title': 'File Set Type',
@@ -46,10 +64,20 @@ def auxiliary_set():
         },
         'facet_groups': [
             {
+                'title': 'Sample',
+                'facet_fields': [
+                    'donors.taxa',
+                    'samples.classifications',
+                    'samples.sample_terms.term_name',
+                    'samples.targeted_sample_term.term_name',
+                    'samples.disease_terms.term_name',
+                ],
+            },
+            {
                 'title': 'File Set',
                 'facet_fields': [
                     'file_set_type',
-                    'donors.taxa',
+                    'auxiliary_sets.measurement_sets.preferred_assay_title',
                 ],
             },
             {
@@ -59,6 +87,12 @@ def auxiliary_set():
                     'lab.title',
                     'award.component',
                     'type',
+                ],
+            },
+            {
+                'title': 'File Data',
+                'facet_fields': [
+                    'files.content_type'
                 ],
             },
             {

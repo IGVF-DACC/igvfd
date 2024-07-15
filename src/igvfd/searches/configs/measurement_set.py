@@ -43,6 +43,18 @@ def measurement_set():
             'targeted_genes.symbol': {
                 'title': 'Assay Targeted Genes'
             },
+            'samples.construct_library_sets.small_scale_gene_list.symbol': {
+                'title': 'Construct Library Targeted Genes'
+            },
+            'samples.construct_library_sets.file_set_type': {
+                'title': 'Construct Library Data'
+            },
+            'auxiliary_sets.file_set_type': {
+                'title': 'Auxiliary Data'
+            },
+            'files.content_type': {
+                'title': 'Available File Types',
+            },
             'collections': {
                 'title': 'Collections',
             },
@@ -92,7 +104,10 @@ def measurement_set():
                     'preferred_assay_title',
                     'samples.modifications.modality',
                     'file_set_type',
-                    'targeted_genes.symbol'
+                    'auxiliary_sets.file_set_type',
+                    'samples.construct_library_sets.file_set_type',
+                    'targeted_genes.symbol',
+                    'samples.construct_library_sets.small_scale_gene_list',
                 ],
             },
             {
@@ -101,6 +116,12 @@ def measurement_set():
                     'library_construction_platform.term_name',
                     'sequencing_library_types',
                     'files.sequencing_platform.term_name'
+                ],
+            },
+            {
+                'title': 'File Data',
+                'facet_fields': [
+                    'files.content_type'
                 ],
             },
             {

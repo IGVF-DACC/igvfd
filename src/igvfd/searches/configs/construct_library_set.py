@@ -28,6 +28,9 @@ def construct_library_set():
             'status': {
                 'title': 'Status'
             },
+            'files.content_type': {
+                'title': 'Available File Types',
+            },
             'file_set_type': {
                 'title': 'File Set Type',
             },
@@ -63,6 +66,12 @@ def construct_library_set():
                     'lab.title',
                     'award.component',
                     'type',
+                ],
+            },
+            {
+                'title': 'File Data',
+                'facet_fields': [
+                    'files.content_type'
                 ],
             },
             {
