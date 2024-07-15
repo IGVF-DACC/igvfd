@@ -107,7 +107,7 @@ def measurement_set():
                     'auxiliary_sets.file_set_type',
                     'samples.construct_library_sets.file_set_type',
                     'targeted_genes.symbol',
-                    'samples.construct_library_sets.small_scale_gene_list',
+                    'samples.construct_library_sets.small_scale_gene_list.symbol',
                 ],
             },
             {
