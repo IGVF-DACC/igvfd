@@ -31,7 +31,10 @@ class Publication(Item):
     rev = {
         'samples': ('Sample', 'publications'),
         'donors': ('Donor', 'publications'),
-        'file_sets': ('FileSet', 'publications')
+        'file_sets': ('FileSet', 'publications'),
+        'workflows': ('Workflow', 'publications'),
+        'software': ('Software', 'publications'),
+        'software_versions': ('SoftwareVersion', 'publications'),
     }
 
     set_status_up = []
@@ -95,7 +98,7 @@ class Publication(Item):
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-            'title': 'FileSet',
+            'title': 'File Set',
             'type': ['string', 'object'],
             'linkFrom': 'FileSet.publications',
         },
@@ -103,3 +106,51 @@ class Publication(Item):
     })
     def file_sets(self, request, file_sets):
         return paths_filtered_by_status(request, file_sets)
+
+    @calculated_property(schema={
+        'title': 'Workflows',
+        'type': 'array',
+        'description': 'The workflows associated with this publication.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Workflow',
+            'type': ['string', 'object'],
+            'linkFrom': 'Workflow.publications',
+        },
+        'notSubmittable': True
+    })
+    def workflows(self, request, workflows):
+        return paths_filtered_by_status(request, workflows)
+
+    @calculated_property(schema={
+        'title': 'Software',
+        'type': 'array',
+        'description': 'The software associated with this publication.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Software',
+            'type': ['string', 'object'],
+            'linkFrom': 'Software.publications',
+        },
+        'notSubmittable': True
+    })
+    def software(self, request, software):
+        return paths_filtered_by_status(request, software)
+
+    @calculated_property(schema={
+        'title': 'Software Versions',
+        'type': 'array',
+        'description': 'The software versions associated with this publication.',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Software Version',
+            'type': ['string', 'object'],
+            'linkFrom': 'SoftwareVersion.publications',
+        },
+        'notSubmittable': True
+    })
+    def software_versions(self, request, software_versions):
+        return paths_filtered_by_status(request, software_versions)
