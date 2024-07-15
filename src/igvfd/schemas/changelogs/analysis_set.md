@@ -1,9 +1,12 @@
 ## Changelog for *`analysis_set.json`*
 
-### Schema version 7
+### Minor changes since schema version 7
 
 * Restrict `publication_identifiers` to submission by admins only.
 * Add `publications`.
+
+### Schema version 7
+
 * Adjust `file_set_type` enum list to replace `primary analysis` with `principal analysis`.
 
 ### Minor changes since schema version 6

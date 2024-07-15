@@ -1,6 +1,6 @@
 ## Changelog for *`software_version.json`*
 
-### Minor changes since schema version 3
+### Minor changes since schema version 5
 
 * Restrict `publication_identifiers` to submission by admins only.
 * Add `publications`.
