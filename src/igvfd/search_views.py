@@ -32,6 +32,7 @@ from snosearch.fields import TitleResponseField
 from snosearch.fields import TypeOnlyClearFiltersResponseField
 from snosearch.fields import TypeResponseField
 from snosearch.parsers import ParamsParser
+from snosearch.parsers import QueryString
 from snosearch.responses import FieldedResponse
 from snosearch.responses import FieldedGeneratorResponse
 
@@ -44,10 +45,12 @@ def includeme(config):
     config.add_route('multireport', '/multireport{slash:/?}')
     config.add_route('matrix', '/matrix{slash:/?}')
     config.add_route('summary', '/summary{slash:/?}')
+    config.add_route('dataset-summary', '/dataset-summary{slash:/?}')
     config.add_route('audit', '/audit{slash:/?}')
     config.add_route('top-hits-raw', '/top-hits-raw{slash:/?}')
     config.add_route('top-hits', '/top-hits{slash:/?}')
     config.add_route('search-config-registry', '/search-config-registry{slash:/?}')
+    config.add_route('search-quick', '/search-quick{slash:/?}')
     config.scan(__name__, categories=None)
 
 
@@ -277,6 +280,22 @@ def search_config_registry(context, request):
     return dict(sorted(registry.as_dict().items()))
 
 
+@view_config(route_name='search-quick', request_method='GET', permission='search')
+def search_quick(context, request):
+    fr = FieldedResponse(
+        _meta={
+            'params_parser': ParamsParser(request)
+        },
+        response_fields=[
+            BasicSearchResponseField(
+                default_item_types=DEFAULT_ITEM_TYPES,
+                reserved_keys=RESERVED_KEYS,
+            )
+        ]
+    )
+    return fr.render()
+
+
 def search_generator(request):
     '''
     For internal use (no view). Like search_quick but returns raw generator
@@ -294,3 +313,23 @@ def search_generator(request):
         ]
     )
     return fgr.render()
+
+
+@view_config(route_name='dataset-summary', request_method='GET', permission='search')
+def dataset_summary(context, request):
+    qs = QueryString(request)
+    qs.clear()
+    qs.extend(
+        [
+            ('type', 'MeasurementSet'),
+            ('field', 'status'),
+            ('field', 'submitted_files_timestamp'),
+            ('field', 'creation_timestamp'),
+            ('field', 'release_timestamp'),
+            ('field', 'assay_term.term_name'),
+            ('field', 'preferred_assay_title'),
+            ('field', 'lab.title'),
+            ('limit', 'all'),
+        ]
+    )
+    return request.embed(f'/search-quick/?{qs.get_query_string()}', as_user='EMBED')
