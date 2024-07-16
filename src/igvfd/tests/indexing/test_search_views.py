@@ -376,3 +376,17 @@ def test_search_views_multireport_view_values(workbook, testapp):
     assert r.json['notification'] == 'Success'
     assert r.json['filters'][0] == {'field': 'status', 'remove': '/multireport/', 'term': 'released'}
     assert r.json['clear_filters'] == '/multireport/'
+
+
+def test_search_views_search_quick(workbook, testapp):
+    r = testapp.get(
+        '/search-quick/?type=User&lab=/labs/j-michael-cherry/'
+    )
+    assert len(r.json['@graph']) >= 22
+
+
+def test_search_views_dataset_summary(workbook, testapp):
+    r = testapp.get(
+        '/dataset-summary'
+    )
+    assert len(r.json['@graph']) >= 10
