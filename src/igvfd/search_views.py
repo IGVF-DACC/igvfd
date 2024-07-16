@@ -322,6 +322,8 @@ def dataset_summary(context, request):
     qs.extend(
         [
             ('type', 'MeasurementSet'),
+            ('status!', 'deleted'),
+            ('status!', 'replaced'),
             ('field', 'status'),
             ('field', 'submitted_files_timestamp'),
             ('field', 'creation_timestamp'),
