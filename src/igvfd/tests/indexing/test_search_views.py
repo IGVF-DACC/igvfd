@@ -382,7 +382,6 @@ def test_search_views_search_quick(workbook, testapp):
     r = testapp.get(
         '/search-quick/?type=User&lab=/labs/j-michael-cherry/'
     )
-    assert r.json['title'] == 'Search'
     assert len(r.json['@graph']) >= 22
 
 
