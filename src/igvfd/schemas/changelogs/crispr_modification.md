@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 2
 
+* Extend `fused_domain` enum list to include `KOX1-KRAB`.
 * Add calculated property `biosamples_modified`.
 
 ### Schema version 2

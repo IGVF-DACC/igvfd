@@ -89,14 +89,17 @@
             "description": "The name of the molecule fused to a Cas protein.",
             "type": "string",
             "enum": [
+                "2xVP64",
+                "3xVP64",
                 "ABE8e",
                 "ABE8.20",
+                "ANTI-FLAG",
                 "BE4",
                 "BE4max",
                 "eA3A",
                 "eA3A-T31A",
                 "eA3A-T44D-S45A",
-                "ANTI-FLAG",
+                "KOX1-KRAB",
                 "M-MLV RT (PE2)",
                 "p300",
                 "TdCBE",
@@ -105,8 +108,6 @@
                 "VPH",
                 "VP64",
                 "VP64-p65-Rta (VPR)",
-                "2xVP64",
-                "3xVP64",
                 "ZIM3-KRAB"
             ],
             "submissionExample": {

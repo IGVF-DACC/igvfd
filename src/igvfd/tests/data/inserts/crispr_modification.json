@@ -103,14 +103,14 @@
         "activated": true
     },
     {
-        "uuid": "72915e67-1a5a-419d-80ec-989c79a4094d",
+        "uuid": "37194ba5-4abe-4e12-a588-db4ebf25bd7a",
         "lab": "jesse-engreitz",
         "award": "1UM1HG011972-01",
         "aliases": [
-            "igvf:crispr_prime_editing_system_2"
+            "igvf:crispr_fused_domain_KOX1_KRAB"
         ],
         "cas": "nCas9",
-        "fused_domain": "M-MLV RT (PE2)",
+        "fused_domain": "KOX1-KRAB",
         "modality": "prime editing",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
