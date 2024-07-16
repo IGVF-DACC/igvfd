@@ -1,6 +1,6 @@
 {
-    "hash": "0d822619486eda18ec13c9669547cee4",
-    "index_name": "analysis_step_version_0d822619",
+    "hash": "413aa8afd97cd2d832d061417cac7a2c",
+    "index_name": "analysis_step_version_413aa8af",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -407,6 +407,9 @@
                                 "type": "text"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "publications": {
                                 "type": "keyword"
                             },
                             "release_timestamp": {

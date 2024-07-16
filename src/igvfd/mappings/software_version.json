@@ -1,6 +1,6 @@
 {
-    "hash": "f5e4b0fcc1cf4f70aebaffdd902cc64b",
-    "index_name": "software_version_f5e4b0fc",
+    "hash": "7d0bbadb7e60977c95ddae26b41c9061",
+    "index_name": "software_version_7d0bbadb",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -302,6 +302,9 @@
                     "publication_identifiers": {
                         "type": "keyword"
                     },
+                    "publications": {
+                        "type": "keyword"
+                    },
                     "release_timestamp": {
                         "type": "keyword"
                     },
@@ -338,6 +341,9 @@
                                 "type": "text"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "publications": {
                                 "type": "keyword"
                             },
                             "release_timestamp": {
