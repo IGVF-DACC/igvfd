@@ -75,13 +75,13 @@ def technical_sample_v6(technical_sample):
 
 
 @pytest.fixture
-def technical_sample_v7(lab, award, source, sample_term_adrenal_gland, modification):
+def technical_sample_v7(lab, award, source, sample_term_adrenal_gland, crispr_modification):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'technical_sample_term': sample_term_adrenal_gland['@id'],
-        'modification': modification['@id']
+        'modification': crispr_modification['@id']
     }
     return item
 

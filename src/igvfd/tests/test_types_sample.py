@@ -35,7 +35,7 @@ def test_file_sets_link(testapp, tissue, measurement_set, analysis_set_base, cur
 
 
 def test_multiplexed_sample_props(
-        testapp, multiplexed_sample, tissue, modification, in_vitro_cell_line,
+        testapp, multiplexed_sample, tissue, crispr_modification, in_vitro_cell_line,
         phenotype_term_myocardial_infarction, biomarker_CD243_absent,
         biomarker_CD1e_low, biomarker_IgA_present, construct_library_set_genome_wide,
         base_expression_construct_library_set, construct_library_set_reporter):
@@ -43,7 +43,7 @@ def test_multiplexed_sample_props(
         tissue['@id'],
         {
             'disease_terms': [phenotype_term_myocardial_infarction['@id']],
-            'modifications': [modification['@id']],
+            'modifications': [crispr_modification['@id']],
             'biomarkers': [biomarker_CD243_absent['@id'], biomarker_CD1e_low['@id']],
             'construct_library_sets': [construct_library_set_genome_wide['@id'],
                                        base_expression_construct_library_set['@id']]
@@ -52,7 +52,7 @@ def test_multiplexed_sample_props(
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'modifications': [modification['@id']],
+            'modifications': [crispr_modification['@id']],
             'biomarkers': [biomarker_IgA_present['@id'], biomarker_CD1e_low['@id']],
             'construct_library_sets': [base_expression_construct_library_set['@id'], construct_library_set_reporter['@id']]
         }
@@ -70,7 +70,7 @@ def test_multiplexed_sample_props(
     assert diseases_set == multiplexed_diseases_set
 
     modifications_set = set()
-    modifications_set.add(modification['@id'])
+    modifications_set.add(crispr_modification['@id'])
     multiplexed_modifications_set = []
     for m in res.json.get('modifications'):
         multiplexed_modifications_set.append(m['@id'])

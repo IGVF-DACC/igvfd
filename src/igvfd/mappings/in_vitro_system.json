@@ -1,6 +1,6 @@
 {
-    "hash": "ea5dd23910f77189c4074bc35dd1ed1a",
-    "index_name": "in_vitro_system_ea5dd239",
+    "hash": "08393e05da26d2c4625f870df66b4732",
+    "index_name": "in_vitro_system_08393e05",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1155,6 +1155,9 @@
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
+                            "degron_system": {
+                                "type": "keyword"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -1201,6 +1204,9 @@
                                 "type": "keyword"
                             },
                             "tagged_protein": {
+                                "type": "keyword"
+                            },
+                            "tagged_proteins": {
                                 "type": "keyword"
                             },
                             "uuid": {

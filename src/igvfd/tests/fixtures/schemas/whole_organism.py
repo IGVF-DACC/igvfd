@@ -219,14 +219,14 @@ def whole_organism_v15(whole_organism):
 
 
 @pytest.fixture
-def whole_organism_v16(lab, award, source, human_donor, sample_term_adrenal_gland, modification):
+def whole_organism_v16(lab, award, source, human_donor, sample_term_adrenal_gland, crispr_modification):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id'],
-        'modification': modification['@id'],
+        'modification': crispr_modification['@id'],
         'schema_version': '16'
     }
     return item

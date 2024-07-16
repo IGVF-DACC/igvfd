@@ -58,8 +58,8 @@ def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, me
                ) == {measurement_set['@id'], measurement_set_multiome_2['@id']}
 
 
-def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, modification_activation,
-                 assay_term_crispr, primary_cell, modification, construct_library_set_reporter):
+def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, crispr_modification_activation,
+                 assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter):
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('summary') == 'STARR-seq'
     testapp.patch_json(
@@ -72,7 +72,7 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
     testapp.patch_json(
         in_vitro_cell_line['@id'],
         {
-            'modifications': [modification_activation['@id']]
+            'modifications': [crispr_modification_activation['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'])

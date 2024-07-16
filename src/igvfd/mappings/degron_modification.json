@@ -1,7 +1,7 @@
 {
-    "hash": "9f02c357f46680e85296602f79a1dbb6",
-    "index_name": "modification_9f02c357",
-    "item_type": "modification",
+    "hash": "7ae6191f9a05423ea147567a29972d95",
+    "index_name": "degron_modification_7ae6191f",
+    "item_type": "degron_modification",
     "mapping": {
         "dynamic_templates": [
             {
@@ -240,22 +240,16 @@
                     "biosamples_modified": {
                         "type": "keyword"
                     },
-                    "cas": {
-                        "type": "keyword"
-                    },
-                    "cas_species": {
-                        "type": "keyword"
-                    },
                     "creation_timestamp": {
+                        "type": "keyword"
+                    },
+                    "degron_system": {
                         "type": "keyword"
                     },
                     "description": {
                         "type": "text"
                     },
                     "documents": {
-                        "type": "keyword"
-                    },
-                    "fused_domain": {
                         "type": "keyword"
                     },
                     "lab": {
@@ -321,7 +315,6 @@
                         "type": "keyword"
                     },
                     "modality": {
-                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "notes": {
@@ -418,7 +411,7 @@
                         "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
-                    "tagged_protein": {
+                    "tagged_proteins": {
                         "type": "keyword"
                     },
                     "uuid": {

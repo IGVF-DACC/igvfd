@@ -2,18 +2,11 @@
     "title": "Modification",
     "$id": "/profiles/modification.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A genetic modification altering sample genomic material. For example, CRISPRi dCas9-KRAB modification.",
+    "description": "Abstract schema for modifications.",
     "type": "object",
     "required": [
         "award",
-        "lab",
-        "cas",
-        "cas_species",
-        "modality"
-    ],
-    "identifyingProperties": [
-        "uuid",
-        "aliases"
+        "lab"
     ],
     "additionalProperties": false,
     "mixinProperties": [
@@ -63,113 +56,6 @@
         }
     },
     "properties": {
-        "schema_version": {
-            "default": "6"
-        },
-        "cas": {
-            "title": "Cas",
-            "description": "The name of the CRISPR associated protein used in the modification.",
-            "type": "string",
-            "enum": [
-                "Cas9",
-                "Cas12a",
-                "Cas13",
-                "dCas9",
-                "nCas9",
-                "SpG",
-                "SpRY"
-            ],
-            "permission": "admin_only",
-            "submissionExample": {
-                "appscript": "Cas9",
-                "igvf_utils": "Cas9"
-            }
-        },
-        "fused_domain": {
-            "title": "Fused Domain",
-            "description": "The name of the molecule fused to a Cas protein.",
-            "type": "string",
-            "enum": [
-                "ABE8e",
-                "ABE8.20",
-                "BE4",
-                "BE4max",
-                "eA3A",
-                "eA3A-T31A",
-                "eA3A-T44D-S45A",
-                "ANTI-FLAG",
-                "M-MLV RT (PE2)",
-                "p300",
-                "TdCBE",
-                "TdCGBE",
-                "TdDE",
-                "VPH",
-                "VP64",
-                "VP64-p65-Rta (VPR)",
-                "2xVP64",
-                "3xVP64",
-                "ZIM3-KRAB"
-            ],
-            "submissionExample": {
-                "appscript": "KRAB",
-                "igvf_utils": "KRAB"
-            }
-        },
-        "modality": {
-            "title": "Modality",
-            "description": "The purpose or intended effect of a CRISPR modification.",
-            "type": "string",
-            "enum": [
-                "activation",
-                "base editing",
-                "cutting",
-                "interference",
-                "knockout",
-                "localizing",
-                "prime editing"
-            ],
-            "permission": "admin_only",
-            "submissionExample": {
-                "appscript": "activation",
-                "igvf_utils": "activation"
-            }
-        },
-        "tagged_protein": {
-            "title": "Tagged Protein",
-            "description": "The tagged protein in modifications in which the Cas nuclease is fused to an antibody.",
-            "type": "string",
-            "linkTo": "Gene",
-            "submissionExample": {
-                "appscript": "/genes/ENSG00000237415/ or igvf:gene01",
-                "igvf_utils": "/genes/ENSG00000237415/ or igvf:gene01"
-            }
-        },
-        "product_id": {
-            "title": "Product ID",
-            "description": "The product or catalog identifier provided following deposition to addgene.org.",
-            "type": "string",
-            "pattern": "^addgene:\\d{5,6}$",
-            "submissionExample": {
-                "appscript": "addgene:12345",
-                "igvf_utils": "addgene:12345"
-            }
-        },
-        "cas_species": {
-            "title": "Cas species",
-            "description": "The originating species of the Cas nuclease.",
-            "type": "string",
-            "enum": [
-                "Streptococcus pyogenes (Sp)",
-                "Staphylococcus aureus (Sa)",
-                "Campylobacter jejuni (Cj)",
-                "Neisseria meningitidis (Nm)"
-            ],
-            "permission": "admin_only",
-            "submissionExample": {
-                "appscript": "Streptococcus pyogenes (Sp)",
-                "igvf_utils": "Streptococcus pyogenes (Sp)"
-            }
-        },
         "activated": {
             "title": "Activated",
             "description": "A boolean indicating whether the modification has been activated by a chemical agent.",
@@ -200,15 +86,16 @@
                 "appscript": "auxin",
                 "igvf_utils": "auxin"
             }
+        },
+        "modality": {
+            "title": "Modality",
+            "description": "The purpose or intended effect of a modification.",
+            "type": "string",
+            "enum": [],
+            "submissionExample": {
+                "appscript": "activation",
+                "igvf_utils": "activation"
+            }
         }
-    },
-    "fuzzy_searchable_fields": [
-        "modality",
-        "submitted_by.title",
-        "summary"
-    ],
-    "exact_searchable_fields": [
-        "@type"
-    ],
-    "changelog": "/profiles/changelogs/modification.md"
+    }
 }

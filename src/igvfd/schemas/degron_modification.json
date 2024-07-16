@@ -1,0 +1,115 @@
+{
+    "title": "Degron Modification",
+    "$id": "/profiles/degron_modification.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "A degron modification that can induce degradation of a protein.",
+    "type": "object",
+    "required": [
+        "award",
+        "lab",
+        "degron_system",
+        "tagged_proteins",
+        "modality"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "aliases"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "modification.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/standard_status"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/product_info"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "modification.json#/dependentSchemas",
+            "shared_dependencies.json#/standard_status",
+            "shared_dependencies.json#/product_info"
+        ]
+    },
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "product_id": {
+            "title": "Product ID",
+            "description": "The product or catalog identifier provided following deposition to addgene.org.",
+            "type": "string",
+            "pattern": "^addgene:\\d{5,6}$",
+            "submissionExample": {
+                "appscript": "addgene:12345",
+                "igvf_utils": "addgene:12345"
+            }
+        },
+        "degron_system": {
+            "title": "Degron System",
+            "description": "The type of degron system implemented.",
+            "type": "string",
+            "enum": [
+                "AID",
+                "AlissAid",
+                "ssAID"
+            ],
+            "submissionExample": {
+                "appscript": "AID",
+                "igvf_utils": "AID"
+            }
+        },
+        "tagged_proteins": {
+            "title": "Tagged Proteins",
+            "description": "The tagged proteins which are targeted for degradation.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Gene",
+                "type": "string",
+                "linkTo": "Gene"
+            },
+            "submissionExample": {
+                "appscript": "/genes/ENSG00000237415/ or igvf:gene01",
+                "igvf_utils": "/genes/ENSG00000237415/ or igvf:gene01"
+            }
+        },
+        "modality": {
+            "title": "Modality",
+            "description": "The purpose or intended effect of a modification.",
+            "type": "string",
+            "enum": [
+                "degradation"
+            ],
+            "default": "degradation",
+            "submissionExample": {
+                "appscript": "degradation",
+                "igvf_utils": "degradation"
+            }
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "submitted_by.title",
+        "summary"
+    ],
+    "exact_searchable_fields": [
+        "@type"
+    ],
+    "changelog": "/profiles/changelogs/degron_modification.md"
+}

@@ -1,6 +1,6 @@
 {
-    "hash": "16948b7a7d08464971bb5578d1886f3d",
-    "index_name": "measurement_set_16948b7a",
+    "hash": "d8c34d2297756224053f19d339e5a525",
+    "index_name": "measurement_set_d8c34d22",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2565,6 +2565,9 @@
                                     "creation_timestamp": {
                                         "type": "keyword"
                                     },
+                                    "degron_system": {
+                                        "type": "keyword"
+                                    },
                                     "description": {
                                         "type": "text"
                                     },
@@ -2612,6 +2615,9 @@
                                         "type": "keyword"
                                     },
                                     "tagged_protein": {
+                                        "type": "keyword"
+                                    },
+                                    "tagged_proteins": {
                                         "type": "keyword"
                                     },
                                     "uuid": {

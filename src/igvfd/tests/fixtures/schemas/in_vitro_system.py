@@ -178,14 +178,14 @@ def in_vitro_system_v11(in_vitro_cell_line, treatment_chemical, sample_term_brow
 
 
 @pytest.fixture
-def in_vitro_system_v12(lab, award, source, human_donor, sample_term_adrenal_gland, modification):
+def in_vitro_system_v12(lab, award, source, human_donor, sample_term_adrenal_gland, crispr_modification):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'source': source['@id'],
         'donors': [human_donor['@id']],
         'biosample_term': sample_term_adrenal_gland['@id'],
-        'modification': modification['@id']
+        'modification': crispr_modification['@id']
     }
     return item
 

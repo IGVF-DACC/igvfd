@@ -259,7 +259,7 @@
                 "comment": "See modification.json for available identifiers.",
                 "linkTo": [
                     "CrisprModification",
-                    "Modification"
+                    "DegronModification"
                 ]
             },
             "submissionExample": {

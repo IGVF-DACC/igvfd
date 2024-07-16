@@ -18,6 +18,9 @@
     "additionalProperties": false,
     "mixinProperties": [
         {
+            "$ref": "modification.json#/properties"
+        },
+        {
             "$ref": "mixins.json#/basic_item"
         },
         {
@@ -38,33 +41,23 @@
     ],
     "dependentSchemas": {
         "$merge": [
+            "modification.json#/dependentSchemas",
             "shared_dependencies.json#/standard_status"
-        ],
-        "activating_agent_term_id": {
-            "comment": "Specification of activating_agent_term_id requires activating_agent_term_name and activated.",
-            "required": [
-                "activated",
-                "activating_agent_term_name"
-            ]
-        },
-        "activating_agent_term_name": {
-            "comment": "Specification of activating_agent_term_name requires activating_agent_term_id and activated.",
-            "required": [
-                "activated",
-                "activating_agent_term_id"
-            ]
-        },
-        "activated": {
-            "comment": "Specification of activated requires activating_agent_term_id and activating_agent_term_name.",
-            "required": [
-                "activating_agent_term_id",
-                "activating_agent_term_name"
-            ]
-        }
+        ]
     },
     "properties": {
         "schema_version": {
             "default": "2"
+        },
+        "product_id": {
+            "title": "Product ID",
+            "description": "The product or catalog identifier provided following deposition to addgene.org.",
+            "type": "string",
+            "pattern": "^addgene:\\d{5,6}$",
+            "submissionExample": {
+                "appscript": "addgene:12345",
+                "igvf_utils": "addgene:12345"
+            }
         },
         "cas": {
             "title": "Cas",
@@ -117,7 +110,7 @@
         },
         "modality": {
             "title": "Modality",
-            "description": "The purpose or intended effect of a CRISPR modification.",
+            "description": "The purpose or intended effect of a modification.",
             "type": "string",
             "enum": [
                 "activation",
@@ -143,16 +136,6 @@
                 "igvf_utils": "/genes/ENSG00000237415/ or igvf:gene01"
             }
         },
-        "product_id": {
-            "title": "Product ID",
-            "description": "The product or catalog identifier provided following deposition to addgene.org.",
-            "type": "string",
-            "pattern": "^addgene:\\d{5,6}$",
-            "submissionExample": {
-                "appscript": "addgene:12345",
-                "igvf_utils": "addgene:12345"
-            }
-        },
         "cas_species": {
             "title": "Cas species",
             "description": "The originating species of the Cas nuclease.",
@@ -166,37 +149,6 @@
             "submissionExample": {
                 "appscript": "Streptococcus pyogenes (Sp)",
                 "igvf_utils": "Streptococcus pyogenes (Sp)"
-            }
-        },
-        "activated": {
-            "title": "Activated",
-            "description": "A boolean indicating whether the modification has been activated by a chemical agent.",
-            "comment": "This property is affected by dependencies. See https://data.igvf.org/profiles/modification/schema/dependencies/.",
-            "type": "boolean",
-            "submissionExample": {
-                "appscript": "true",
-                "igvf_utils": "true"
-            }
-        },
-        "activating_agent_term_id": {
-            "title": "Activating Agent Term ID",
-            "description": "The CHEBI identifier for the activating agent of the modification.",
-            "comment": "This property is affected by dependencies. See https://data.igvf.org/profiles/modification/schema/dependencies/.",
-            "type": "string",
-            "pattern": "^CHEBI:[0-9]{1,7}$",
-            "submissionExample": {
-                "appscript": "CHEBI:22676",
-                "igvf_utils": "CHEBI:22676"
-            }
-        },
-        "activating_agent_term_name": {
-            "title": "Activating Agent Term Name",
-            "description": "The CHEBI name for the activating agent of the modification.",
-            "comment": "This property is affected by dependencies. See https://data.igvf.org/profiles/modification/schema/dependencies/.",
-            "type": "string",
-            "submissionExample": {
-                "appscript": "auxin",
-                "igvf_utils": "auxin"
             }
         }
     },
