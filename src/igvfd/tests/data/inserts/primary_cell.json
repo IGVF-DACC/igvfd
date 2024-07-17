@@ -170,6 +170,9 @@
         "virtual": false,
         "protocols": [
             "https://www.protocols.io/test-protocols-url-12345"
+        ],
+        "publications": [
+            "/publications/PMID:22955616/"
         ]
     }
 ]

@@ -62,6 +62,9 @@
             "$ref": "mixins.json#/publication_identifiers"
         },
         {
+            "$ref": "mixins.json#/publications"
+        },
+        {
             "$ref": "mixins.json#/taxa"
         },
         {
@@ -77,6 +80,10 @@
     "properties": {
         "schema_version": {
             "default": "22"
+        },
+        "publication_identifiers": {
+            "permission": "admin_only",
+            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "sample_terms": {
             "comment": "Do not submit, value is assigned by the object.",

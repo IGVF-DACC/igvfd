@@ -41,6 +41,9 @@
             "$ref": "mixins.json#/publication_identifiers"
         },
         {
+            "$ref": "mixins.json#/publications"
+        },
+        {
             "$ref": "mixins.json#/release_timestamp"
         }
     ],
@@ -71,6 +74,10 @@
         }
     },
     "properties": {
+        "publication_identifiers": {
+            "permission": "admin_only",
+            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
+        },
         "lower_bound_age": {
             "title": "Lower Bound Age",
             "description": "Lower bound of age of the organism at the time of collection of the sample.",

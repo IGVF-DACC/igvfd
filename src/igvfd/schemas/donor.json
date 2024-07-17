@@ -31,6 +31,9 @@
             "$ref": "mixins.json#/publication_identifiers"
         },
         {
+            "$ref": "mixins.json#/publications"
+        },
+        {
             "$ref": "mixins.json#/taxa"
         },
         {
@@ -40,6 +43,10 @@
     "properties": {
         "accession": {
             "accessionType": "DO"
+        },
+        "publication_identifiers": {
+            "permission": "admin_only",
+            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "dbxrefs": {
             "@type": "@id",

@@ -1,6 +1,6 @@
 {
-    "hash": "afb91ca2c14f1e07c35a1d2eb43bccc1",
-    "index_name": "human_donor_afb91ca2",
+    "hash": "dfe988a1dc153384769a78e674e1dc5c",
+    "index_name": "human_donor_dfe988a1",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -451,6 +451,9 @@
                     "publication_identifiers": {
                         "type": "keyword"
                     },
+                    "publications": {
+                        "type": "keyword"
+                    },
                     "related_donors": {
                         "properties": {
                             "donor": {
@@ -505,6 +508,9 @@
                                         "type": "keyword"
                                     },
                                     "publication_identifiers": {
+                                        "type": "keyword"
+                                    },
+                                    "publications": {
                                         "type": "keyword"
                                     },
                                     "related_donors": {

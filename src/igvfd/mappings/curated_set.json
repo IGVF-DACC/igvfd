@@ -1,6 +1,6 @@
 {
-    "hash": "8e8308f847d43e1e744d7696d82116c0",
-    "index_name": "curated_set_8e8308f8",
+    "hash": "fd585ebc5d7140dc3a0f6464e5ebf539",
+    "index_name": "curated_set_fd585ebc",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -482,6 +482,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "publications": {
+                                "type": "keyword"
+                            },
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
@@ -712,6 +715,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "publications": {
                                 "type": "keyword"
                             },
                             "related_donors": {
@@ -1151,6 +1157,9 @@
                         "copy_to": "_exact",
                         "type": "keyword"
                     },
+                    "publications": {
+                        "type": "keyword"
+                    },
                     "release_timestamp": {
                         "type": "keyword"
                     },
@@ -1419,6 +1428,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "publications": {
                                 "type": "keyword"
                             },
                             "release_timestamp": {

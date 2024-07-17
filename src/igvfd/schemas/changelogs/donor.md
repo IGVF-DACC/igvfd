@@ -1,5 +1,7 @@
 ## Changelog for *`donor.json`*
 
+* Restrict `publication_identifiers` to submission by admins only. (07/17/2024)
+* Add `publications`. (07/17/2024)
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status. (03/06/2024)
 * Add `release_timestamp`. (01/31/2024)
 * Allow ENCODE donors in `dbxrefs`. (11/28/2023)

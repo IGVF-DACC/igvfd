@@ -1,6 +1,6 @@
 {
-    "hash": "e2b6af4e9ecbb440e0dafe18f6da7690",
-    "index_name": "publication_e2b6af4e",
+    "hash": "1dd7db2265c78bbeadf708407818e939",
+    "index_name": "publication_1dd7db22",
     "item_type": "publication",
     "mapping": {
         "dynamic_templates": [
@@ -284,6 +284,12 @@
                     "description": {
                         "type": "text"
                     },
+                    "donors": {
+                        "type": "keyword"
+                    },
+                    "file_sets": {
+                        "type": "keyword"
+                    },
                     "issue": {
                         "type": "keyword"
                     },
@@ -375,7 +381,16 @@
                     "release_timestamp": {
                         "type": "keyword"
                     },
+                    "samples": {
+                        "type": "keyword"
+                    },
                     "schema_version": {
+                        "type": "keyword"
+                    },
+                    "software": {
+                        "type": "keyword"
+                    },
+                    "software_versions": {
                         "type": "keyword"
                     },
                     "status": {
@@ -463,6 +478,9 @@
                         "type": "keyword"
                     },
                     "volume": {
+                        "type": "keyword"
+                    },
+                    "workflows": {
                         "type": "keyword"
                     }
                 },

@@ -38,6 +38,9 @@
             "$ref": "mixins.json#/publication_identifiers"
         },
         {
+            "$ref": "mixins.json#/publications"
+        },
+        {
             "$ref": "mixins.json#/release_timestamp"
         }
     ],
@@ -50,6 +53,10 @@
     "properties": {
         "schema_version": {
             "default": "17"
+        },
+        "publication_identifiers": {
+            "permission": "admin_only",
+            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "samples": {
             "maxItems": 1

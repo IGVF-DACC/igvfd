@@ -1,6 +1,6 @@
 {
-    "hash": "08393e05da26d2c4625f870df66b4732",
-    "index_name": "in_vitro_system_08393e05",
+    "hash": "25a333c9dc2ea720dfcf8b1e9e21f73e",
+    "index_name": "in_vitro_system_25a333c9",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -811,6 +811,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "publications": {
+                                "type": "keyword"
+                            },
                             "related_multiome_datasets": {
                                 "type": "keyword"
                             },
@@ -1325,6 +1328,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "publications": {
+                                "type": "keyword"
+                            },
                             "release_timestamp": {
                                 "type": "keyword"
                             },
@@ -1606,6 +1612,9 @@
                             "publication_identifiers": {
                                 "type": "keyword"
                             },
+                            "publications": {
+                                "type": "keyword"
+                            },
                             "release_timestamp": {
                                 "type": "keyword"
                             },
@@ -1754,6 +1763,9 @@
                         "type": "keyword"
                     },
                     "publication_identifiers": {
+                        "type": "keyword"
+                    },
+                    "publications": {
                         "type": "keyword"
                     },
                     "release_timestamp": {
@@ -2049,6 +2061,9 @@
                                 "type": "keyword"
                             },
                             "publication_identifiers": {
+                                "type": "keyword"
+                            },
+                            "publications": {
                                 "type": "keyword"
                             },
                             "release_timestamp": {

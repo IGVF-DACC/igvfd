@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 12
 
+* Restrict `publication_identifiers` to submission by admins only.
+* Add `publications`.
 * Add `protocols`.
 * Update `dbxrefs` regex to allow ENCODE sample accessions.
 

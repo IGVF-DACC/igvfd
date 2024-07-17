@@ -1,6 +1,6 @@
 {
-    "hash": "a896baa6f895a96d431e650c36b3964b",
-    "index_name": "workflow_a896baa6",
+    "hash": "a98bb4d10dc10719c2e3766681481808",
+    "index_name": "workflow_a98bb4d1",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -310,6 +310,9 @@
                         "type": "text"
                     },
                     "publication_identifiers": {
+                        "type": "keyword"
+                    },
+                    "publications": {
                         "type": "keyword"
                     },
                     "release_timestamp": {

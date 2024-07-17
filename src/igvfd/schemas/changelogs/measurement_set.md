@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 17
 
+* Restrict `publication_identifiers` to submission by admins only.
+* Add `publications`.
 * Add `targeted_genes`.
 * Add `external_image_url`.
 

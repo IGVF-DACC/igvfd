@@ -67,6 +67,9 @@
             "GEO:SAMN31260610",
             "ENCODE:ENCDO236IKC"
         ],
-        "virtual": false
+        "virtual": false,
+        "publications": [
+            "/publications/PMCID:PMC3439153/"
+        ]
     }
 ]

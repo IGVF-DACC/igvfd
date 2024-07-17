@@ -398,6 +398,25 @@
             }
         }
     },
+    "publications": {
+        "publications": {
+            "title": "Publications",
+            "description": "The publications associated with this object.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Publication",
+                "description": "A publication associated with this object.",
+                "type": "string",
+                "linkTo": "Publication"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:publication\", \"/publications/PMID:37190069/\"]",
+                "igvf_utils": "john-doe:reference_file01, /publications/PMID:37190069/"
+            }
+        }
+    },
     "taxa": {
         "taxa": {
             "title": "Taxa",

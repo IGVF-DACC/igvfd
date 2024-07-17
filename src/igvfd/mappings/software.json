@@ -1,6 +1,6 @@
 {
-    "hash": "954a6af42fd4b0aab9830f0ff08c42e4",
-    "index_name": "software_954a6af4",
+    "hash": "28f9262972f2b4ceeb7a568800ea3502",
+    "index_name": "software_28f92629",
     "item_type": "software",
     "mapping": {
         "dynamic_templates": [
@@ -297,6 +297,9 @@
                     },
                     "publication_identifiers": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "publications": {
                         "type": "keyword"
                     },
                     "release_timestamp": {

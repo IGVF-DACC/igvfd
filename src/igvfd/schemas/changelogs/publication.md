@@ -1,5 +1,14 @@
 ## Changelog for *`publication.json`*
 
+### Minor changes since schema version 5
+
+* Add calculated property `samples`.
+* Add calculated property `file_sets`.
+* Add calculated property `donors`.
+* Add calculated property `workflows`.
+* Add calculated property `software`.
+* Add calculated property `software_versions`.
+
 ### Schema version 5
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.
