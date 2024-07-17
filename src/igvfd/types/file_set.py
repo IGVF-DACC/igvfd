@@ -646,8 +646,11 @@ class PredictionSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, file_set_type, scope):
-        return f'{file_set_type} prediction on scope of {scope}'
+    def summary(self, file_set_type, scope=None):
+        scope_phrase = ''
+        if scope:
+            scope_phrase = f' on scope of {scope}'
+        return f'{file_set_type} prediction{scope_phrase}'
 
 
 @collection(
