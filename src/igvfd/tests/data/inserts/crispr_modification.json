@@ -10,6 +10,9 @@
         "fused_domain": "ZIM3-KRAB",
         "modality": "interference",
         "status": "in progress",
+        "sources": [
+            "409d724e-067e-4744-8d5b-c8f806136d80"
+        ],
         "product_id": "addgene:000567",
         "cas_species": "Streptococcus pyogenes (Sp)"
     },
@@ -25,6 +28,9 @@
         "modality": "localizing",
         "tagged_protein": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
         "status": "in progress",
+        "sources": [
+            "409d724e-067e-4744-8d5b-c8f806136d80"
+        ],
         "product_id": "addgene:111555",
         "cas_species": "Streptococcus pyogenes (Sp)"
     },
@@ -39,6 +45,9 @@
         "fused_domain": "VPH",
         "modality": "activation",
         "status": "in progress",
+        "sources": [
+            "409d724e-067e-4744-8d5b-c8f806136d80"
+        ],
         "product_id": "addgene:158091",
         "cas_species": "Streptococcus pyogenes (Sp)"
     },
@@ -53,6 +62,9 @@
         "fused_domain": "eA3A-T44D-S45A",
         "modality": "base editing",
         "status": "in progress",
+        "sources": [
+            "409d724e-067e-4744-8d5b-c8f806136d80"
+        ],
         "product_id": "addgene:158081",
         "cas_species": "Streptococcus pyogenes (Sp)"
     },
@@ -67,6 +79,9 @@
         "fused_domain": "BE4max",
         "modality": "base editing",
         "status": "in progress",
+        "sources": [
+            "409d724e-067e-4744-8d5b-c8f806136d80"
+        ],
         "product_id": "addgene:158021",
         "cas_species": "Streptococcus pyogenes (Sp)"
     },
@@ -81,6 +96,9 @@
         "fused_domain": "eA3A",
         "modality": "prime editing",
         "status": "in progress",
+        "sources": [
+            "409d724e-067e-4744-8d5b-c8f806136d80"
+        ],
         "product_id": "addgene:148021",
         "cas_species": "Streptococcus pyogenes (Sp)"
     },
@@ -96,6 +114,9 @@
         "modality": "prime editing",
         "status": "archived",
         "release_timestamp": "2024-03-06T12:34:56Z",
+        "sources": [
+            "409d724e-067e-4744-8d5b-c8f806136d80"
+        ],
         "product_id": "addgene:148021",
         "cas_species": "Streptococcus pyogenes (Sp)",
         "activating_agent_term_id": "CHEBI:50845",
@@ -114,6 +135,9 @@
         "modality": "prime editing",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
+        "sources": [
+            "409d724e-067e-4744-8d5b-c8f806136d80"
+        ],
         "product_id": "addgene:132775",
         "cas_species": "Streptococcus pyogenes (Sp)"
     }

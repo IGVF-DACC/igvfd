@@ -13,6 +13,31 @@ def test_lot_id_dependency(primary_cell, testapp):
     assert res.status_code == 422
 
 
+def test_product_id_dependency(award, lab, source, rodent_donor, sample_term_pluripotent_stem_cell, testapp):
+    res = testapp.post_json(
+        '/primary_cell',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'product_id': '700',
+            'donors': [rodent_donor['@id']],
+            'sample_terms': [sample_term_pluripotent_stem_cell['@id']]
+        },
+        expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.post_json(
+        '/primary_cell',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'sources': [source['@id']],
+            'product_id': '700',
+            'donors': [rodent_donor['@id']],
+            'sample_terms': [sample_term_pluripotent_stem_cell['@id']]
+        })
+    assert res.status_code == 201
+
+
 def test_pooled_from(primary_cell, tissue, pooled_from_primary_cell, pooled_from_primary_cell_2, testapp):
     res = testapp.patch_json(
         primary_cell['@id'],

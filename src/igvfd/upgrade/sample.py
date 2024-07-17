@@ -448,3 +448,22 @@ def sample_18_19(value, system):
             notes = f'{old_notes} {notes}'
         value['notes'] = notes
         del value['nih_institutional_certification']
+
+
+@upgrade_step('primary_cell', '19', '20')
+@upgrade_step('in_vitro_system', '21', '22')
+@upgrade_step('tissue', '19', '20')
+@upgrade_step('technical_sample', '12', '13')
+@upgrade_step('whole_organism', '22', '23')
+def sample_19_20(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1803
+    if 'product_id' in value and 'sources' not in value:
+        notes = value.get('notes', '')
+        prod_id = value['product_id']
+        notes += f' Product_id {prod_id} was removed from this sample.'
+        del value['product_id']
+        if 'lot_id' in value:
+            lot_id = value.get('lot_id', '')
+            notes += f' Lot_id {lot_id} was removed from this sample.'
+            del value['lot_id']
+        value['notes'] = notes.strip()

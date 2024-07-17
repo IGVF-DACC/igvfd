@@ -13,6 +13,31 @@ def test_lot_id_dependency(whole_organism, testapp):
     assert res.status_code == 422
 
 
+def test_product_id_dependency(award, lab, source, rodent_donor, sample_term_whole_organism, testapp):
+    res = testapp.post_json(
+        '/whole_organism',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'product_id': '700',
+            'donors': [rodent_donor['@id']],
+            'sample_terms': [sample_term_whole_organism['@id']]
+        },
+        expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.post_json(
+        '/whole_organism',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'sources': [source['@id']],
+            'product_id': '700',
+            'donors': [rodent_donor['@id']],
+            'sample_terms': [sample_term_whole_organism['@id']]
+        })
+    assert res.status_code == 201
+
+
 def test_description(whole_organism, testapp):
     res = testapp.patch_json(
         whole_organism['@id'],

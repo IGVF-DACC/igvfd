@@ -279,3 +279,17 @@ def in_vitro_system_v20(in_vitro_cell_line):
         'nih_institutional_certification': 'NIC00017'
     })
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v21(testapp, other_lab, award, rodent_donor, sample_term_K562):
+    item = {
+        'accession': 'IGVFSM2222BBBB',
+        'classifications': ['cell line'],
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'product_id': '100A',
+        'donors': [rodent_donor['@id']],
+        'sample_terms': [sample_term_K562['@id']]
+    }
+    return item

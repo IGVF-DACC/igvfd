@@ -78,3 +78,10 @@ def test_technical_sample_upgrade_10_11(upgrader, technical_sample_v10):
     value = upgrader.upgrade('technical_sample', technical_sample_v10, current_version='10', target_version='11')
     assert value['schema_version'] == '11'
     assert 'description' not in value
+
+
+def test_technical_sample_upgrade_12_13(upgrader, technical_sample_v12):
+    value = upgrader.upgrade('technical_sample', technical_sample_v12, current_version='12', target_version='13')
+    assert value['schema_version'] == '13'
+    assert 'product_id' not in value
+    assert 'notes' in value and value['notes'].endswith('Product_id 100A was removed from this sample.')

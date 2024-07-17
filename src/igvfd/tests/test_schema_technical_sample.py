@@ -13,6 +13,31 @@ def test_technical_sample_lot_id_dependency(technical_sample, testapp):
     assert res.status_code == 422
 
 
+def test_product_id_dependency(award, lab, source, sample_term_technical_sample, testapp):
+    res = testapp.post_json(
+        '/technical_sample',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'product_id': '700',
+            'sample_material': 'synthetic',
+            'sample_terms': [sample_term_technical_sample['@id']]
+        },
+        expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.post_json(
+        '/technical_sample',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'sources': [source['@id']],
+            'product_id': '700',
+            'sample_material': 'synthetic',
+            'sample_terms': [sample_term_technical_sample['@id']]
+        })
+    assert res.status_code == 201
+
+
 def test_technical_sample_type_dependency(technical_sample, testapp):
     res = testapp.patch_json(
         technical_sample['@id'],

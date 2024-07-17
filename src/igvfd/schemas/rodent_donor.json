@@ -55,14 +55,9 @@
     ],
     "dependentSchemas": {
         "$merge": [
-            "shared_dependencies.json#/accession_status"
+            "shared_dependencies.json#/accession_status",
+            "shared_dependencies.json#/product_info"
         ],
-        "lot_id": {
-            "comment": "Specification of lot_id requires product_id.",
-            "required": [
-                "product_id"
-            ]
-        },
         "rodent_identifier": {
             "comment": "Specification of rodent_identifier requires that individual_rodent be true.",
             "required": [
@@ -99,7 +94,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "12"
+            "default": "13"
         },
         "publication_identifiers": {
             "permission": "admin_only",

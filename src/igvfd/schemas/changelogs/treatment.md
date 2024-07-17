@@ -1,5 +1,10 @@
 ## Changelog for *`treatment.json`*
 
+### Schema version 8
+
+* Require `sources` if `product_id` is specified.
+* Require `product_id` if `lot_id` is specified.
+
 ### Minor changes since schema version 7
 
 * Add calculated property `biosamples_treated`.

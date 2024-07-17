@@ -1,5 +1,9 @@
 ## Changelog for *`technical_sample.json`*
 
+### Schema version 13
+
+* Require `sources` if `product_id` is specified.
+
 ### Minor changes since schema version 12
 
 * Restrict `publication_identifiers` to submission by admins only.

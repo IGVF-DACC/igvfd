@@ -271,3 +271,25 @@ def test_environmental_treatment(testapp, award, lab):
             'depletion': False,
         }, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_product_id_dependency(treatment_protein, source, testapp):
+    res = testapp.patch_json(
+        treatment_protein['@id'],
+        {'product_id': '1234'}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        treatment_protein['@id'],
+        {'product_id': '1234', 'sources': [source['@id']]})
+    assert res.status_code == 200
+
+
+def test_lot_id_dependency(treatment_protein, source, testapp):
+    res = testapp.patch_json(
+        treatment_protein['@id'],
+        {'lot_id': '10A'}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        treatment_protein['@id'],
+        {'lot_id': '10A', 'product_id': '6567', 'sources': [source['@id']]})
+    assert res.status_code == 200

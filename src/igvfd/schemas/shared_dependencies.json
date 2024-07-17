@@ -93,13 +93,13 @@
     },
     "product_info": {
         "lot_id": {
-            "comment": "A product ID is required if lot ID is specified.",
+            "comment": "Specification of lot_id requires product_id.",
             "required": [
                 "product_id"
             ]
         },
         "product_id": {
-            "comment": "Sources are required if a product ID is specified",
+            "comment": "Specification of product_id requires sources.",
             "required": [
                 "sources"
             ]

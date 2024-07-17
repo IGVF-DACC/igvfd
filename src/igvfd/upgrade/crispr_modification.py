@@ -22,3 +22,19 @@ def crispr_modification_1_2(value, system):
         notes = value.get('notes', '')
         notes += f'Fused_domain enum {old_fused_domain} has been {sentence_end}.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('crispr_modification', '2', '3')
+def crispr_modification_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1803
+    notes = value.get('notes', '')
+    if 'lot_id' in value and 'product_id' not in value:
+        notes += f' Lot_id {value["lot_id"]} was removed from this modification.'
+        del value['lot_id']
+    if 'product_id' in value and 'sources' not in value:
+        notes += f' Product_id {value["product_id"]} was removed from this modification.'
+        del value['product_id']
+        if 'lot_id' in value:
+            notes += f' Lot_id {value["lot_id"]} was removed from this modification.'
+            del value['lot_id']
+    value['notes'] = notes.strip()

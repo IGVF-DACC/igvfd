@@ -301,3 +301,15 @@ def primary_cell_v18(primary_cell):
         'nih_institutional_certification': 'NIC00017'
     })
     return item
+
+
+@pytest.fixture
+def primary_cell_v19(testapp, other_lab, award, human_donor, sample_term_pluripotent_stem_cell):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'donors': [human_donor['@id']],
+        'sample_terms': [sample_term_pluripotent_stem_cell['@id']],
+        'product_id': '100A'
+    }
+    return item

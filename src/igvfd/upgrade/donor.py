@@ -171,3 +171,18 @@ def donor_12_13(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('rodent_donor', '12', '13')
+def rodent_donor_12_13(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1803
+    if 'product_id' in value and 'sources' not in value:
+        notes = value.get('notes', '')
+        prod_id = value['product_id']
+        notes += f' Product_id {prod_id} was removed from this donor.'
+        del value['product_id']
+        if 'lot_id' in value:
+            lot_id = value.get('lot_id', '')
+            notes += f' Lot_id {lot_id} was removed from this donor.'
+            del value['lot_id']
+        value['notes'] = notes.strip()

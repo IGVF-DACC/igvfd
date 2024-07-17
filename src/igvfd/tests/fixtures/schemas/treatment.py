@@ -132,3 +132,14 @@ def treatment_v6(treatment_v5):
         'status': 'archived'
     })
     return item
+
+
+@pytest.fixture
+def treatment_v7(treatment_chemical):
+    item = treatment_chemical.copy()
+    item.update({
+        'schema_version': '7',
+        'product_id': '100A',
+        'lot_id': '123'
+    })
+    return item
