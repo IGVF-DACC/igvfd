@@ -133,6 +133,7 @@ def technical_sample_v12(testapp, other_lab, award, sample_term_technical_sample
         'award': award['@id'],
         'lab': other_lab['@id'],
         'product_id': '100A',
+        'lot_id': '123',
         'sample_material': 'synthetic',
         'sample_terms': [sample_term_technical_sample['@id']]
     }
