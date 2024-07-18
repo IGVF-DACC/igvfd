@@ -30,9 +30,6 @@
             "$ref": "mixins.json#/url"
         },
         {
-            "$ref": "mixins.json#/publication_identifiers"
-        },
-        {
             "$ref": "mixins.json#/publications"
         },
         {
@@ -91,10 +88,6 @@
     "properties": {
         "accession": {
             "accessionType": "SM"
-        },
-        "publication_identifiers": {
-            "permission": "admin_only",
-            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "starting_amount": {
             "title": "Starting Amount",

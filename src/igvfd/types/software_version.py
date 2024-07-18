@@ -29,6 +29,7 @@ class SoftwareVersion(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('software', include=['@id', 'title']),
+        Path('publications', include=['@id', 'publication_identifiers']),
     ]
 
     set_status_up = [

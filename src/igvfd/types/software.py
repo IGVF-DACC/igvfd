@@ -26,6 +26,7 @@ class Software(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
+        Path('publications', include=['@id', 'publication_identifiers']),
     ]
     rev = {
         'versions': ('SoftwareVersion', 'software')

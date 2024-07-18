@@ -30,9 +30,6 @@
             "$ref": "mixins.json#/standard_status"
         },
         {
-            "$ref": "mixins.json#/publication_identifiers"
-        },
-        {
             "$ref": "mixins.json#/release_timestamp"
         }
     ],
@@ -130,6 +127,11 @@
             }
         },
         "publication_identifiers": {
+            "title": "Publication Identifiers",
+            "description": "The publication identifiers that provide more information about the object.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
             "items": {
                 "title": "Publication Identifier",
                 "description": "An identifier that references data found in the object.",

@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 18
+
+* Remove `publication_identifiers`.
+
 ### Minor changes since schema version 17
 
 * Extend `preferred_assay_title` enum list to include `Hi-C`.

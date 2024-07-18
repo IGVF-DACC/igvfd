@@ -1,5 +1,9 @@
 ## Changelog for *`workflow.json`*
 
+### Schema version 5
+
+* Remove `publication_identifiers`.
+
 ### Minor changes since schema version 4
 
 * Restrict `publication_identifiers` to submission by admins only.

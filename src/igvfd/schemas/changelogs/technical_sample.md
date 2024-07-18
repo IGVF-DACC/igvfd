@@ -3,6 +3,7 @@
 ### Schema version 13
 
 * Require `sources` if `product_id` is specified.
+* Remove `publication_identifiers`.
 
 ### Minor changes since schema version 12
 

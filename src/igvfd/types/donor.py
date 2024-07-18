@@ -28,7 +28,8 @@ class Donor(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('phenotypic_features.feature', include=['@id', 'feature', 'term_id',
-             'term_name', 'quantity', 'quantity_units', 'observation_date'])
+             'term_name', 'quantity', 'quantity_units', 'observation_date']),
+        Path('publications', include=['@id', 'publication_identifiers']),
     ]
 
     set_status_up = [

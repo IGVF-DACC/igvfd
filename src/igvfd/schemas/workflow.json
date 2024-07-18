@@ -31,9 +31,6 @@
             "$ref": "mixins.json#/documents"
         },
         {
-            "$ref": "mixins.json#/publication_identifiers"
-        },
-        {
             "$ref": "mixins.json#/publications"
         },
         {
@@ -47,14 +44,10 @@
     },
     "properties": {
         "schema_version": {
-            "default": "4"
+            "default": "5"
         },
         "accession": {
             "accessionType": "WF"
-        },
-        "publication_identifiers": {
-            "permission": "admin_only",
-            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "name": {
             "title": "Name",
@@ -122,7 +115,8 @@
         "submitted_by.title"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "publications.publication_identifiers"
     ],
     "changelog": "/profiles/changelogs/workflow.md"
 }

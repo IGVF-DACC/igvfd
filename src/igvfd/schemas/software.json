@@ -29,9 +29,6 @@
             "$ref": "mixins.json#/attribution"
         },
         {
-            "$ref": "mixins.json#/publication_identifiers"
-        },
-        {
             "$ref": "mixins.json#/publications"
         },
         {
@@ -45,11 +42,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "5"
-        },
-        "publication_identifiers": {
-            "permission": "admin_only",
-            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
+            "default": "6"
         },
         "name": {
             "title": "Name",
@@ -106,13 +99,13 @@
     "fuzzy_searchable_fields": [
         "description",
         "name",
-        "publication_identifiers",
         "submitted_by.title",
         "title",
         "used_by"
     ],
     "exact_searchable_fields": [
-        "@type"
+        "@type",
+        "publications.publication_identifiers"
     ],
     "changelog": "/profiles/changelogs/software.md"
 }

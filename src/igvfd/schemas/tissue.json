@@ -47,9 +47,6 @@
             "$ref": "mixins.json#/taxa"
         },
         {
-            "$ref": "mixins.json#/publication_identifiers"
-        },
-        {
             "$ref": "mixins.json#/publications"
         },
         {
@@ -77,10 +74,6 @@
     "properties": {
         "schema_version": {
             "default": "20"
-        },
-        "publication_identifiers": {
-            "permission": "admin_only",
-            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "pmi": {
             "title": "Post-mortem Interval",
@@ -174,7 +167,8 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
-        "institutional_certificates.certificate_identifier"
+        "institutional_certificates.certificate_identifier",
+        "publications.publication_identifiers"
     ],
     "changelog": "/profiles/changelogs/tissue.md"
 }

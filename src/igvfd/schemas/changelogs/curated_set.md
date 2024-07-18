@@ -1,5 +1,9 @@
 ## Changelog for *`curated_set.json`*
 
+### Schema version 9
+
+* Remove `publication_identifiers`.
+
 ### Minor changes since schema version 8
 
 * Restrict `publication_identifiers` to submission by admins only.

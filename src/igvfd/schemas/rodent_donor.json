@@ -41,9 +41,6 @@
             "$ref": "mixins.json#/url"
         },
         {
-            "$ref": "mixins.json#/publication_identifiers"
-        },
-        {
             "$ref": "mixins.json#/publications"
         },
         {
@@ -95,10 +92,6 @@
     "properties": {
         "schema_version": {
             "default": "13"
-        },
-        "publication_identifiers": {
-            "permission": "admin_only",
-            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "strain_background": {
             "title": "Strain Background",
@@ -195,7 +188,8 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
-        "rodent_identifier"
+        "rodent_identifier",
+        "publications.publication_identifiers"
     ],
     "changelog": "/profiles/changelogs/rodent_donor.md"
 }

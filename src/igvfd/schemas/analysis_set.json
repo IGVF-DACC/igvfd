@@ -33,9 +33,6 @@
             "$ref": "mixins.json#/documents"
         },
         {
-            "$ref": "mixins.json#/publication_identifiers"
-        },
-        {
             "$ref": "mixins.json#/publications"
         },
         {
@@ -68,11 +65,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "7"
-        },
-        "publication_identifiers": {
-            "permission": "admin_only",
-            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
+            "default": "8"
         },
         "input_file_sets": {
             "description": "The file set(s) required for this analysis."
@@ -112,6 +105,7 @@
         "files.aliases",
         "input_file_sets.accession",
         "input_file_sets.aliases",
+        "publications.publication_identifiers",
         "samples.accession",
         "samples.aliases",
         "donors.accession",
