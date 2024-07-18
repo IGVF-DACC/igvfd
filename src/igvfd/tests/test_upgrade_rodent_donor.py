@@ -62,12 +62,13 @@ def test_rodent_donor_upgrade_10_11(upgrader, rodent_donor_v10):
 
 def test_rodent_donor_upgrade_12_13(upgrader, rodent_donor_v12):
     value = upgrader.upgrade('rodent_donor', rodent_donor_v12, current_version='12', target_version='13')
-<<<<<<< HEAD
     assert 'product_id' not in value
     assert 'notes' in value and value['notes'].endswith(
         'Product_id 100A was removed from this donor. Lot_id 123 was removed from this donor.')
     assert value['schema_version'] == '13'
-=======
+
+
+def test_rodent_donor_upgrade_13_14(upgrader, rodent_donor_v13):
+    value = upgrader.upgrade('rodent_donor', rodent_donor_v13, current_version='13', target_version='14')
     assert 'publication_identifiers' not in value
-    assert value['schema_version'] == '11'
->>>>>>> 3758549b (upgrade + tests)
+    assert value['schema_version'] == '14'

@@ -83,10 +83,12 @@ def test_technical_sample_upgrade_10_11(upgrader, technical_sample_v10):
 def test_technical_sample_upgrade_12_13(upgrader, technical_sample_v12):
     value = upgrader.upgrade('technical_sample', technical_sample_v12, current_version='12', target_version='13')
     assert value['schema_version'] == '13'
-<<<<<<< HEAD
     assert 'product_id' not in value
     assert 'notes' in value and value['notes'].endswith(
         'Product_id 100A was removed from this sample. Lot_id 123 was removed from this sample.')
-=======
+
+
+def test_technical_sample_upgrade_13_14(upgrader, technical_sample_v13):
+    value = upgrader.upgrade('technical_sample', technical_sample_v13, current_version='13', target_version='14')
+    assert value['schema_version'] == '14'
     assert 'publication_identifiers' not in value
->>>>>>> 3758549b (upgrade + tests)

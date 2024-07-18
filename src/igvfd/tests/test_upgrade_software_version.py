@@ -36,5 +36,5 @@ def test_software_version_upgrade_5_6(upgrader, software_version_v5):
     value = upgrader.upgrade(
         'software_version', software_version_v5,
         current_version='5', target_version='6')
-    assert value['schema_version'] == '5'
+    assert value['schema_version'] == '6'
     assert 'publication_identifiers' not in value

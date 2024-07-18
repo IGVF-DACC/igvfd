@@ -150,10 +150,12 @@ def test_primary_cell_upgrade_18_19(upgrader, primary_cell_v18):
 def test_primary_cell_upgrade_19_20(upgrader, primary_cell_v19):
     value = upgrader.upgrade('primary_cell', primary_cell_v19, current_version='19', target_version='20')
     assert value['schema_version'] == '20'
-<<<<<<< HEAD
     assert 'product_id' not in value
     assert 'notes' in value and value['notes'].endswith(
         'Product_id 100A was removed from this sample. Lot_id 123 was removed from this sample.')
-=======
+
+
+def test_primary_cell_upgrade_20_21(upgrader, primary_cell_v20):
+    value = upgrader.upgrade('primary_cell', primary_cell_v20, current_version='20', target_version='21')
+    assert value['schema_version'] == '21'
     assert 'publication_identifiers' not in value
->>>>>>> 3758549b (upgrade + tests)

@@ -23,5 +23,5 @@ def test_workflow_upgrade_4_5(upgrader, workflow_v4):
     value = upgrader.upgrade(
         'workflow', workflow_v4,
         current_version='4', target_version='5')
-    assert value['schema_version'] == '4'
+    assert value['schema_version'] == '5'
     assert 'publication_identifiers' not in value

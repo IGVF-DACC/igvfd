@@ -128,7 +128,7 @@
         },
         "publication_identifiers": {
             "title": "Publication Identifiers",
-            "description": "The publication identifiers that provide more information about the object.",
+            "description": "The publication identifiers associated with this publication object.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
