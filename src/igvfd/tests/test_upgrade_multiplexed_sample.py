@@ -39,3 +39,9 @@ def test_multiplexed_sample_upgrade_5_6(upgrader, multiplexed_sample_v5):
     value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v5, current_version='5', target_version='6')
     assert value['schema_version'] == '6'
     assert 'description' not in value
+
+
+def test_multiplexed_sample_upgrade_7_8(upgrader, multiplexed_sample_v7):
+    value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v7, current_version='7', target_version='8')
+    assert value['schema_version'] == '8'
+    assert 'publication_identifiers' not in value

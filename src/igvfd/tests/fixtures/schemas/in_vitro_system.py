@@ -282,6 +282,7 @@ def in_vitro_system_v20(in_vitro_cell_line):
 
 
 @pytest.fixture
+<<<<<<< HEAD
 def in_vitro_system_v21(testapp, other_lab, award, rodent_donor, sample_term_K562):
     item = {
         'accession': 'IGVFSM2222BBBB',
@@ -293,4 +294,12 @@ def in_vitro_system_v21(testapp, other_lab, award, rodent_donor, sample_term_K56
         'donors': [rodent_donor['@id']],
         'sample_terms': [sample_term_K562['@id']]
     }
+=======
+def in_vitro_system_v22(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '22',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+>>>>>>> 3758549b (upgrade + tests)
     return item

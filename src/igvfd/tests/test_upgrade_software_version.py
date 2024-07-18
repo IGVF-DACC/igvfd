@@ -30,3 +30,11 @@ def test_software_version_upgrade_3_4(upgrader, software_version_v3):
         current_version='3', target_version='4')
     assert value['schema_version'] == '4'
     assert 'description' not in value
+
+
+def test_software_version_upgrade_5_6(upgrader, software_version_v5):
+    value = upgrader.upgrade(
+        'software_version', software_version_v5,
+        current_version='5', target_version='6')
+    assert value['schema_version'] == '5'
+    assert 'publication_identifiers' not in value

@@ -92,3 +92,13 @@ def auxiliary_set_v7_barcode_seq(base_auxiliary_set):
         'file_set_type': 'quantification barcode sequencing'
     })
     return item
+
+
+@pytest.fixture
+def auxiliary_set_v8(base_auxiliary_set):
+    item = base_auxiliary_set.copy()
+    item.update({
+        'schema_version': '8',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

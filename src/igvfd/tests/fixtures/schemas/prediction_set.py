@@ -92,3 +92,13 @@ def prediction_set_v5(base_prediction_set):
         }]
     })
     return item
+
+
+@pytest.fixture
+def prediction_set_v7(base_prediction_set):
+    item = base_prediction_set.copy()
+    item.update({
+        'schema_version': '7',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

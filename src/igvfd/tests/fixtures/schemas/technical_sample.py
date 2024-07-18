@@ -128,6 +128,7 @@ def technical_sample_v10(technical_sample_v9):
 
 
 @pytest.fixture
+<<<<<<< HEAD
 def technical_sample_v12(testapp, other_lab, award, sample_term_technical_sample):
     item = {
         'award': award['@id'],
@@ -137,4 +138,12 @@ def technical_sample_v12(testapp, other_lab, award, sample_term_technical_sample
         'sample_material': 'synthetic',
         'sample_terms': [sample_term_technical_sample['@id']]
     }
+=======
+def technical_sample_v12(technical_sample):
+    item = technical_sample.copy()
+    item.update({
+        'schema_version': '12',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+>>>>>>> 3758549b (upgrade + tests)
     return item

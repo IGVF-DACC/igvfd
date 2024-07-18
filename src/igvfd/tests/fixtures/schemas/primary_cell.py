@@ -304,6 +304,7 @@ def primary_cell_v18(primary_cell):
 
 
 @pytest.fixture
+<<<<<<< HEAD
 def primary_cell_v19(testapp, other_lab, award, human_donor, sample_term_pluripotent_stem_cell):
     item = {
         'award': award['@id'],
@@ -313,4 +314,12 @@ def primary_cell_v19(testapp, other_lab, award, human_donor, sample_term_pluripo
         'product_id': '100A',
         'lot_id': '123'
     }
+=======
+def primary_cell_v19(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '19',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+>>>>>>> 3758549b (upgrade + tests)
     return item

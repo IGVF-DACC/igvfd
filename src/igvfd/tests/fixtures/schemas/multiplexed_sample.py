@@ -100,3 +100,13 @@ def multiplexed_sample_v5(multiplexed_sample_v4):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def multiplexed_sample_v7(multiplexed_sample):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '7',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

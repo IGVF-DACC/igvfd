@@ -84,3 +84,9 @@ def test_human_donor_upgrade_11_12(upgrader, human_donor_v11):
     value = upgrader.upgrade('human_donor', human_donor_v11, current_version='11', target_version='12')
     assert 'description' not in value
     assert value['schema_version'] == '12'
+
+
+def test_human_donor_upgrade_13_14(upgrader, human_donor_v13):
+    value = upgrader.upgrade('human_donor', human_donor_v13, current_version='13', target_version='14')
+    assert 'publication_identifiers' not in value
+    assert value['schema_version'] == '14'
