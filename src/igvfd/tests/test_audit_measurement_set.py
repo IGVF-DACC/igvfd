@@ -839,3 +839,44 @@ def test_audit_MPRA_missing_barcode_sequencing_auxiliary_set(
         error['category'] != 'missing auxiliary set'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_targeted_genes(
+    testapp,
+    measurement_set,
+    assay_term_chip,
+    gene_myc_hs
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_chip['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'targeted_genes': [gene_myc_hs['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing targeted genes'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        assay_term_chip['@id'],
+        {
+            'term_name': 'RNA-seq'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected targeted genes'
+        for error in res.json['audit'].get('WARNING', [])
+    )

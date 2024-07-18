@@ -366,7 +366,8 @@ def audit_targeted_genes(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_missing_auxiliary_set_MPRA)
+    description_missing = get_audit_description(audit_targeted_genes, index=0)
+    description_unexpected = get_audit_description(audit_targeted_genes, index=1)
     assay_term = value.get('assay_term')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_term_name = assay_object.get('term_name', '')
@@ -382,10 +383,10 @@ def audit_targeted_genes(value, system):
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'has no `targeted_genes`.'
         )
-        yield AuditFailure('missing targeted genes', f'{detail} {description}', level='NOT_COMPLIANT')
+        yield AuditFailure('missing targeted genes', f'{detail} {description_missing}', level='NOT_COMPLIANT')
     if targeted_genes and (assay_term_name not in assays_expecting_targeted_genes and preferred_assay_title not in assays_expecting_targeted_genes):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'has `targeted_genes`.'
         )
-        yield AuditFailure('unexpected targeted genes', f'{detail} {description}', level='WARNING')
+        yield AuditFailure('unexpected targeted genes', f'{detail} {description_unexpected}', level='WARNING')

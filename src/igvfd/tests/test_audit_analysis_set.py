@@ -212,7 +212,6 @@ def test_audit_missing_analysis_step_version(
         }
     )
     res = testapp.get(analysis_set_with_no_samples['@id'] + '@@audit')
-    print(res.json)
     assert any(
         error['category'] == 'missing analysis step version'
         for error in res.json['audit'].get('WARNING', [])
