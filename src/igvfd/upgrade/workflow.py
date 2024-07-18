@@ -27,7 +27,7 @@ def workflow_3_4(value, system):
         value['notes'] = notes.strip()
 
 
-@upgrade_step('software', '4', '5')
+@upgrade_step('workflow', '4', '5')
 def workflow_4_5(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1789
     if 'publication_identifiers' in value:
