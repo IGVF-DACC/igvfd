@@ -289,6 +289,7 @@ def whole_organism_v22(testapp, lab, award, rodent_donor, sample_term_whole_orga
         'award': award['@id'],
         'lab': lab['@id'],
         'product_id': '100A',
+        'lot_id': '123',
         'donors': [rodent_donor['@id']],
         'sample_terms': [sample_term_whole_organism['@id']],
         'schema_version': '22'

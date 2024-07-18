@@ -46,9 +46,15 @@ def test_treatment_upgrade_6_7(upgrader, treatment_v6):
     assert value['notes'] == 'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
 
 
-def test_treatment_upgrade_7_8(upgrader, treatment_v7):
-    value = upgrader.upgrade('treatment', treatment_v7, current_version='7', target_version='8')
+def test_treatment_upgrade_7_8(upgrader, treatment_v7a, treatment_v7b):
+    value = upgrader.upgrade('treatment', treatment_v7a, current_version='7', target_version='8')
     assert value['schema_version'] == '8'
     assert 'product_id' not in value
+    assert 'lot_id' not in value
     assert 'notes' in value and value['notes'].endswith(
         'Product_id 100A was removed from this treatment. Lot_id 123 was removed from this treatment.')
+    value = upgrader.upgrade('treatment', treatment_v7b, current_version='7', target_version='8')
+    assert value['schema_version'] == '8'
+    assert 'lot_id' not in value
+    assert 'notes' in value and value['notes'].endswith(
+        'Lot_id 123 was removed from this treatment.')

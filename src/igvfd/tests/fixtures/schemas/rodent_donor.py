@@ -169,6 +169,7 @@ def rodent_donor_v12(rodent_donor, source):
     item = rodent_donor.copy()
     item.update({
         'schema_version': '12',
-        'product_id': '100A'
+        'product_id': '100A',
+        'lot_id': '123'
     })
     return item

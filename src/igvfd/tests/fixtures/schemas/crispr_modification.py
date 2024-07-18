@@ -90,11 +90,21 @@ def crispr_modification_v1_krab(crispr_modification):
 
 
 @pytest.fixture
-def crispr_modification_v2(crispr_modification):
+def crispr_modification_v2a(crispr_modification):
     item = crispr_modification.copy()
     item.update({
         'schema_version': '1',
         'product_id': '100A',
+        'lot_id': '123'
+    })
+    return item
+
+
+@pytest.fixture
+def crispr_modification_v2b(crispr_modification):
+    item = crispr_modification.copy()
+    item.update({
+        'schema_version': '1',
         'lot_id': '123'
     })
     return item

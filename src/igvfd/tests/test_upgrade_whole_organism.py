@@ -174,4 +174,5 @@ def test_whole_organism_upgrade_22_23(upgrader, whole_organism_v22):
     value = upgrader.upgrade('whole_organism', whole_organism_v22, current_version='22', target_version='23')
     assert value['schema_version'] == '23'
     assert 'product_id' not in value
-    assert 'notes' in value and value['notes'].endswith('Product_id 100A was removed from this sample.')
+    assert 'notes' in value and value['notes'].endswith(
+        'Product_id 100A was removed from this sample. Lot_id 123 was removed from this sample.')

@@ -289,6 +289,7 @@ def in_vitro_system_v21(testapp, other_lab, award, rodent_donor, sample_term_K56
         'award': award['@id'],
         'lab': other_lab['@id'],
         'product_id': '100A',
+        'lot_id': '123',
         'donors': [rodent_donor['@id']],
         'sample_terms': [sample_term_K562['@id']]
     }

@@ -146,4 +146,5 @@ def test_tissue_upgrade_19_20(upgrader, tissue_v19):
     value = upgrader.upgrade('tissue', tissue_v19, current_version='19', target_version='20')
     assert value['schema_version'] == '20'
     assert 'product_id' not in value
-    assert 'notes' in value and value['notes'].endswith('Product_id 100A was removed from this sample.')
+    assert 'notes' in value and value['notes'].endswith(
+        'Product_id 100A was removed from this sample. Lot_id 123 was removed from this sample.')

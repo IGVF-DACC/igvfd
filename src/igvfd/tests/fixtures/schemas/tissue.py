@@ -293,6 +293,7 @@ def tissue_v19(testapp, lab, award, rodent_donor, sample_term_adrenal_gland):
         'lab': lab['@id'],
         'donors': [rodent_donor['@id']],
         'sample_terms': [sample_term_adrenal_gland['@id']],
-        'product_id': '100A'
+        'product_id': '100A',
+        'lot_id': '123'
     }
     return item

@@ -310,6 +310,7 @@ def primary_cell_v19(testapp, other_lab, award, human_donor, sample_term_pluripo
         'lab': other_lab['@id'],
         'donors': [human_donor['@id']],
         'sample_terms': [sample_term_pluripotent_stem_cell['@id']],
-        'product_id': '100A'
+        'product_id': '100A',
+        'lot_id': '123'
     }
     return item

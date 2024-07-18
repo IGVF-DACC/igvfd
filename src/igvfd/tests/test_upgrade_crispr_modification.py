@@ -14,10 +14,15 @@ def test_crispr_modification_upgrade_1_2(upgrader, crispr_modification_v1_krab, 
     assert value['notes'].endswith('renamed to be ZIM3-KRAB.')
 
 
-def test_crispr_modification_upgrade_2_3(upgrader, crispr_modification_v2):
-    value = upgrader.upgrade('crispr_modification', crispr_modification_v2, current_version='2', target_version='3')
+def test_crispr_modification_upgrade_2_3(upgrader, crispr_modification_v2a, crispr_modification_v2b):
+    value = upgrader.upgrade('crispr_modification', crispr_modification_v2a, current_version='2', target_version='3')
     assert value['schema_version'] == '3'
     assert 'product_id' not in value
     assert 'lot_id' not in value
     assert 'notes' in value and value['notes'].endswith(
         'Product_id 100A was removed from this modification. Lot_id 123 was removed from this modification.')
+    value = upgrader.upgrade('crispr_modification', crispr_modification_v2b, current_version='2', target_version='3')
+    assert value['schema_version'] == '3'
+    assert 'lot_id' not in value
+    assert 'notes' in value and value['notes'].endswith(
+        'Lot_id 123 was removed from this modification.')
