@@ -137,10 +137,10 @@ def audit_preferred_assay_title(value, system):
             "audit_description": "Measurement sets are expected to specify a preferred assay title.",
             "audit_category": "missing preferred assay title",
             "audit_level": "NOT_COMPLIANT"
-        }
+        },
         {
             "audit_description": "Measurement sets are expected to specify an appropriate preferred assay title for its respective assay term.",
-            "audit_category": "inconsistent assay title",
+            "audit_category": "inconsistent preferred assay title",
             "audit_level": "WARNING"
         }
     ]
@@ -157,7 +157,7 @@ def audit_preferred_assay_title(value, system):
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
                 f'`assay_term` {assay_term_name}, but `preferred_assay_title` {preferred_assay_title}.'
             )
-            yield AuditFailure('inconsistent assay title', f'{detail} {description_inconsistent}', level='WARNING')
+            yield AuditFailure('inconsistent preferred assay title', f'{detail} {description_inconsistent}', level='WARNING')
     else:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '

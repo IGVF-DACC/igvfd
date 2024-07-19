@@ -216,7 +216,7 @@ def test_audit_preferred_assay_title(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     assert any(
-        error['category'] == 'inconsistent assay title'
+        error['category'] == 'inconsistent preferred assay title'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -227,7 +227,7 @@ def test_audit_preferred_assay_title(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent assay title'
+        error['category'] != 'inconsistent preferred assay title'
         for error in res.json['audit'].get('WARNING', [])
     )
 
