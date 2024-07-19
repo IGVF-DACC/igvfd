@@ -1,6 +1,6 @@
 {
-    "hash": "ab6be61c0f5b6d9d11a51a24ebaf3c8b",
-    "index_name": "measurement_set_ab6be61c",
+    "hash": "e754149736bd7b4286f729fae55f78b9",
+    "index_name": "measurement_set_e7541497",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -515,6 +515,9 @@
                             "assemblies": {
                                 "type": "keyword"
                             },
+                            "assessed_genes": {
+                                "type": "keyword"
+                            },
                             "associated_phenotypes": {
                                 "type": "keyword"
                             },
@@ -842,6 +845,9 @@
                                 "type": "keyword"
                             },
                             "assemblies": {
+                                "type": "keyword"
+                            },
+                            "assessed_genes": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {

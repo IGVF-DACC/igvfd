@@ -1,6 +1,6 @@
 {
-    "hash": "3e60f8699b95d35cb6bb917ac46228dd",
-    "index_name": "tissue_3e60f869",
+    "hash": "09484ac9ca77ffb34882a8c9f1a2c2d0",
+    "index_name": "tissue_09484ac9",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -453,6 +453,9 @@
                                 "type": "keyword"
                             },
                             "assemblies": {
+                                "type": "keyword"
+                            },
+                            "assessed_genes": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {
