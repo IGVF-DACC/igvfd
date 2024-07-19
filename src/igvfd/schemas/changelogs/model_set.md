@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 3
 
+* Add `assessed_genes`.
 * Restrict `publication_identifiers` to submission by admins only.
 * Add `publications`.
 * Extend `file_set_type` enum list to include `variant binding effect`.
