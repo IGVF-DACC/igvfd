@@ -373,18 +373,18 @@ def audit_targeted_genes(value, system):
     assay_term_name = assay_object.get('term_name', '')
     targeted_genes = value.get('targeted_genes', '')
     preferred_assay_title = value.get('preferred_assay_title', '')
-    assays_expecting_targeted_genes = ['CRISPR perturbation screen followed by flow cytometry and FISH',
-                                       'Variant FlowFISH',
-                                       'ChIP-seq assay',
-                                       'transcription factor binding site identification by ChIP-Seq assay',
-                                       ]
-    if not (targeted_genes) and (assay_term_name in assays_expecting_targeted_genes or preferred_assay_title in assays_expecting_targeted_genes):
+    assay_terms_expecting_targeted_genes = ['CRISPR perturbation screen followed by flow cytometry and FISH',
+                                            'ChIP-seq assay',
+                                            'transcription factor binding site identification by ChIP-Seq assay',
+                                            ]
+    preferred_assays_expecting_targeted_genes = ['Variant FlowFISH']
+    if not (targeted_genes) and (assay_term_name in assay_terms_expecting_targeted_genes or preferred_assay_title in preferred_assays_expecting_targeted_genes):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'has no `targeted_genes`.'
         )
         yield AuditFailure('missing targeted genes', f'{detail} {description_missing}', level='NOT_COMPLIANT')
-    if targeted_genes and (assay_term_name not in assays_expecting_targeted_genes and preferred_assay_title not in assays_expecting_targeted_genes):
+    if targeted_genes and (assay_term_name not in assay_terms_expecting_targeted_genes and preferred_assay_title not in preferred_assays_expecting_targeted_genes):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'has `targeted_genes`.'
