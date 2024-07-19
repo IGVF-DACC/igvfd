@@ -339,5 +339,24 @@
         "preferred_assay_title": "Cell painting",
         "file_set_type": "experimental data",
         "external_image_url": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/"
+    },
+    {
+        "aliases": [
+            "igvf:Hi-C"
+        ],
+        "award": "1U01HG012051-01",
+        "lab": "danwei-huangfu",
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:35:55Z",
+        "uuid": "477b4e32-7674-4ff4-a574-4639007707e4",
+        "samples": [
+            "IGVFSM0000MPXD"
+        ],
+        "collections": [
+            "Vista"
+        ],
+        "assay_term": "/assay-terms/OBI_0002440/",
+        "preferred_assay_title": "Hi-C",
+        "file_set_type": "experimental data"
     }
 ]
