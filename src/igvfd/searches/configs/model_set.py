@@ -114,6 +114,9 @@ def model_set():
             },
             'summary': {
                 'title': 'Summary'
+            },
+            'assessed_genes': {
+                'title': 'Assessed Genes'
             }
         }
     }
