@@ -97,8 +97,8 @@
                 "linkTo": "PhenotypicFeature"
             },
             "submissionExample": {
-                "appscript": "[\"/phenotype-terms/MONDO_0008564/\", \"/phenotype-terms/MONDO_0005148/\"]",
-                "igvf_utils": "/phenotype-terms/MONDO_0008564/, /phenotype-terms/MONDO_0005148/"
+                "appscript": "[\"/phenotypic-features/e921ef7e-41cd-43d1-bc17-efae8a6eff49/\", \"igvf:rheumatoid_arthritis\"]",
+                "igvf_utils": "/phenotypic-features/e921ef7e-41cd-43d1-bc17-efae8a6eff49/, igvf:rheumatoid_arthritis"
             }
         },
         "virtual": {
