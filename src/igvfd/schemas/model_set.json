@@ -168,7 +168,7 @@
         },
         "assessed_genes": {
             "title": "Assessed Genes",
-            "description": "A list of genes assessed in this model file.",
+            "description": "A list of genes assessed in this model set.",
             "type": "array",
             "minItems": 1,
             "maxItems": 100,
