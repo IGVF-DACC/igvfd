@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 17
 
+* Extend `preferred_assay_title` enum list to include `Hi-C`.
 * Restrict `publication_identifiers` to submission by admins only.
 * Add `publications`.
 * Add `targeted_genes`.
