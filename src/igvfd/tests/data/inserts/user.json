@@ -1784,5 +1784,21 @@
         ],
         "status": "current",
         "uuid": "4a63f82a-2e25-4790-bfcc-d183f8ca8869"
+    },
+    {
+        "email": "zwshen@stanford.edu",
+        "first_name": "Zhewei",
+        "last_name": "Shen",
+        "lab": "/labs/j-michael-cherry/",
+        "job_title": "Data Wrangler",
+        "groups": [
+            "admin",
+            "verified"
+        ],
+        "submits_for": [
+            "/labs/j-michael-cherry/"
+        ],
+        "status": "current",
+        "uuid": "82c1a7c4-3cb1-4f30-9498-8430881a1c0a"
     }
 ]
