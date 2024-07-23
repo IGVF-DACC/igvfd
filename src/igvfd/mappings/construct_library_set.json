@@ -1,6 +1,6 @@
 {
-    "hash": "4b0472164ac6bcebc3cab3fb5599eb7b",
-    "index_name": "construct_library_set_4b047216",
+    "hash": "a82628210ea3d400370ee7aac5a86908",
+    "index_name": "construct_library_set_a8262821",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -815,6 +815,9 @@
                                 "type": "keyword"
                             },
                             "assemblies": {
+                                "type": "keyword"
+                            },
+                            "assessed_genes": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {

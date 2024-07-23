@@ -1,6 +1,6 @@
 {
-    "hash": "fd585ebc5d7140dc3a0f6464e5ebf539",
-    "index_name": "curated_set_fd585ebc",
+    "hash": "665736316c0be477cb8038fe1d9d393a",
+    "index_name": "curated_set_66573631",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -330,6 +330,9 @@
                                 "type": "keyword"
                             },
                             "assemblies": {
+                                "type": "keyword"
+                            },
+                            "assessed_genes": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {

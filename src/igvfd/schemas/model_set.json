@@ -165,6 +165,24 @@
         },
         "donors": {
             "comment": "Do not submit. Model sets should not specify any donors."
+        },
+        "assessed_genes": {
+            "title": "Assessed Genes",
+            "description": "A list of genes assessed in this model set.",
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 100,
+            "uniqueItems": true,
+            "items": {
+                "title": "Gene",
+                "comment": "See gene.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "Gene"
+            },
+            "submissionExample": {
+                "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
+                "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
+            }
         }
     },
     "fuzzy_searchable_fields": [

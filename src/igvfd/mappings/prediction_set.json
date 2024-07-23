@@ -1,6 +1,6 @@
 {
-    "hash": "d4cd33f97cf36acfe98347036d1daa05",
-    "index_name": "prediction_set_d4cd33f9",
+    "hash": "e2a492f16f2ced767900f9356aaeaecf",
+    "index_name": "prediction_set_e2a492f1",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -326,6 +326,9 @@
                                 "type": "keyword"
                             },
                             "assemblies": {
+                                "type": "keyword"
+                            },
+                            "assessed_genes": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {

@@ -29,6 +29,9 @@
         "prediction_objects": [
             "all variants"
         ],
+        "assessed_genes": [
+            "a13fb026-d42f-481c-9420-5fe3f17ede30"
+        ],
         "uuid": "2fe7d091-6a28-4909-8abc-7efca5d92ad7",
         "software_version": "/software-versions/bowtie2-v2.4.4/"
     }

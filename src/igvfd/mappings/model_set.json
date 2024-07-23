@@ -1,6 +1,6 @@
 {
-    "hash": "df10a1e89c1df8c6bed15ad8fb07ded8",
-    "index_name": "model_set_df10a1e8",
+    "hash": "207bac3efceca6fefaad3eb3e6bbb2d1",
+    "index_name": "model_set_207bac3e",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -155,6 +155,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "assessed_genes": {
                         "type": "keyword"
                     },
                     "award": {
@@ -326,6 +329,9 @@
                                 "type": "keyword"
                             },
                             "assemblies": {
+                                "type": "keyword"
+                            },
+                            "assessed_genes": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {
@@ -1113,6 +1119,9 @@
                                 "type": "keyword"
                             },
                             "assemblies": {
+                                "type": "keyword"
+                            },
+                            "assessed_genes": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {

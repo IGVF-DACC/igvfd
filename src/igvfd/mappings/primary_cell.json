@@ -1,6 +1,6 @@
 {
-    "hash": "79ab0463566151ccc7b3c2ab19a8dc4c",
-    "index_name": "primary_cell_79ab0463",
+    "hash": "ec875a7a10df4a41dab0aed1bc132aee",
+    "index_name": "primary_cell_ec875a7a",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -450,6 +450,9 @@
                                 "type": "keyword"
                             },
                             "assemblies": {
+                                "type": "keyword"
+                            },
+                            "assessed_genes": {
                                 "type": "keyword"
                             },
                             "associated_phenotypes": {
