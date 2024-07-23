@@ -60,8 +60,6 @@ def test_auxiliary_set_upgrade_7_8(upgrader, auxiliary_set_v7_circularized_barco
 
 
 def test_auxiliary_set_upgrade_8_9(upgrader, auxiliary_set_v8):
-    value = upgrader.upgrade(
-        'auxiliary_set', auxiliary_set_v8,
-        current_version='8', target_version='9')
+    value = upgrader.upgrade('auxiliary_set', auxiliary_set_v8, current_version='8', target_version='9')
     assert value['schema_version'] == '9'
     assert 'publication_identifiers' not in value

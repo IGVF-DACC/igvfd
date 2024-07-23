@@ -46,8 +46,6 @@ def test_curated_set_upgrade_5_6(upgrader, curated_set_v5):
 
 
 def test_curated_set_upgrade_7_8(upgrader, curated_set_v7):
-    value = upgrader.upgrade(
-        'curated_set', curated_set_v7,
-        current_version='7', target_version='8')
+    value = upgrader.upgrade('curated_set', curated_set_v7, current_version='7', target_version='8')
     assert value['schema_version'] == '8'
     assert 'publication_identifiers' not in value
