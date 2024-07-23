@@ -1,5 +1,6 @@
 from snovault.attachment import ItemWithAttachment
 from snovault import (
+    calculated_property,
     collection,
     load_schema,
 )
@@ -30,3 +31,17 @@ class Document(ItemWithAttachment, Item):
 
     set_status_up = []
     set_status_down = []
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the document.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, description):
+        if description:
+            return description
+        else:
+            return self.uuid

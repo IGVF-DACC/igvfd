@@ -638,6 +638,20 @@ class PredictionSet(FileSet):
     set_status_up = FileSet.set_status_up + []
     set_status_down = FileSet.set_status_down + []
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the prediction set.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, file_set_type, scope=None):
+        scope_phrase = ''
+        if scope:
+            scope_phrase = f' on scope of {scope}'
+        return f'{file_set_type} prediction{scope_phrase}'
+
 
 @collection(
     name='construct-library-sets',
