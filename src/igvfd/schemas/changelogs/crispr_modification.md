@@ -1,5 +1,10 @@
 ## Changelog for *`crispr_modification.json`*
 
+### Schema version 3
+
+* Require `sources` if `product_id` is specified.
+* Require `product_id` if `lot_id` is specified.
+
 ### Minor changes since schema version 2
 
 * Extend `fused_domain` enum list to include `KOX1-KRAB`.

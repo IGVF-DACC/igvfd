@@ -65,3 +65,19 @@ def treatment_6_7(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('treatment', '7', '8')
+def treatment_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1803
+    notes = value.get('notes', '')
+    if 'lot_id' in value and 'product_id' not in value:
+        notes += f' Lot_id {value["lot_id"]} was removed from this treatment.'
+        del value['lot_id']
+    if 'product_id' in value and 'sources' not in value:
+        notes += f' Product_id {value["product_id"]} was removed from this treatment.'
+        del value['product_id']
+        if 'lot_id' in value:
+            notes += f' Lot_id {value["lot_id"]} was removed from this treatment.'
+            del value['lot_id']
+    value['notes'] = notes.strip()

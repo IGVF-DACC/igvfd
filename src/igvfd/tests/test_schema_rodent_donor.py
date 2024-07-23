@@ -6,10 +6,10 @@ def test_accession(rodent_donor, testapp):
     assert res.json['accession'][:6] == 'IGVFDO'
 
 
-def test_lot_id_dependency_success(rodent_donor, testapp):
+def test_lot_id_dependency_success(rodent_donor, source, testapp):
     res = testapp.patch_json(
         rodent_donor['@id'],
-        {'lot_id': 'R00002', 'product_id': 'UberMouse5000'})
+        {'lot_id': 'R00002', 'product_id': 'UberMouse5000', 'sources': [source['@id']]})
     assert res.status_code == 200
 
 
@@ -18,6 +18,17 @@ def test_lot_id_dependency_fail(rodent_donor, testapp):
         rodent_donor['@id'],
         {'lot_id': 'R00002'}, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_product_id_dependency(rodent_donor, source, testapp):
+    res = testapp.patch_json(
+        rodent_donor['@id'],
+        {'product_id': '1234'}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        rodent_donor['@id'],
+        {'product_id': '1234', 'sources': [source['@id']]})
+    assert res.status_code == 200
 
 
 def test_strain(rodent_donor, testapp):

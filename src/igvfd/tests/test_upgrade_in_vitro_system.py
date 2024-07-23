@@ -158,3 +158,11 @@ def test_in_vitro_system_upgrade_20_21(upgrader, in_vitro_system_v20):
     value = upgrader.upgrade('in_vitro_system', in_vitro_system_v20, current_version='20', target_version='21')
     assert value['schema_version'] == '21'
     assert 'nih_institutional_certification' not in value
+
+
+def test_in_vitro_system_upgrade_21_22(upgrader, in_vitro_system_v21):
+    value = upgrader.upgrade('in_vitro_system', in_vitro_system_v21, current_version='21', target_version='22')
+    assert value['schema_version'] == '22'
+    assert 'product_id' not in value
+    assert 'notes' in value and value['notes'].endswith(
+        'Product_id 100A was removed from this sample. Lot_id 123 was removed from this sample.')

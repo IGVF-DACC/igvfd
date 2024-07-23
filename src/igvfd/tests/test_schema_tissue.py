@@ -13,6 +13,31 @@ def test_lot_id_dependency(tissue, testapp):
     assert res.status_code == 422
 
 
+def test_product_id_dependency(award, source, lab, rodent_donor, sample_term_brown_adipose_tissue, testapp):
+    res = testapp.post_json(
+        '/tissue',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'product_id': '700',
+            'donors': [rodent_donor['@id']],
+            'sample_terms': [sample_term_brown_adipose_tissue['@id']]
+        },
+        expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.post_json(
+        '/tissue',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'sources': [source['@id']],
+            'product_id': '700',
+            'donors': [rodent_donor['@id']],
+            'sample_terms': [sample_term_brown_adipose_tissue['@id']]
+        })
+    assert res.status_code == 201
+
+
 def test_collections(tissue, testapp):
     res = testapp.patch_json(
         tissue['@id'],

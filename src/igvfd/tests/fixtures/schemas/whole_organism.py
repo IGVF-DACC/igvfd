@@ -281,3 +281,17 @@ def whole_organism_v21(whole_organism):
         'nih_institutional_certification': 'NIC00017'
     })
     return item
+
+
+@pytest.fixture
+def whole_organism_v22(testapp, lab, award, rodent_donor, sample_term_whole_organism):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'product_id': '100A',
+        'lot_id': '123',
+        'donors': [rodent_donor['@id']],
+        'sample_terms': [sample_term_whole_organism['@id']],
+        'schema_version': '22'
+    }
+    return item

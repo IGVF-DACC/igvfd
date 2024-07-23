@@ -13,6 +13,9 @@
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
         ],
         "notes": "This is a note.",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
         "product_id": "GR000001",
         "lot_id": "R00001",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
@@ -26,9 +29,6 @@
             "9c5e2e32-1017-2c05-59ce-574c5a4bc548"
         ],
         "date_obtained": "2022-04-09",
-        "sources": [
-            "/labs/j-michael-cherry/"
-        ],
         "collections": [
             "ENCODE"
         ],
@@ -52,6 +52,9 @@
             "bcb5f3c8-d5e9-40d2-805f-4274f940c36d"
         ],
         "notes": "This is a note.",
+        "sources": [
+            "/labs/j-michael-cherry/"
+        ],
         "product_id": "GR000002",
         "lot_id": "R00001",
         "url": "https://www.genome.gov/Funded-Programs-Projects/Impact-of-Genomic-Variation-on-Function-Consortium",
@@ -65,9 +68,6 @@
             "9c5e2e32-1017-2c05-59ce-574c5a4bc548"
         ],
         "date_obtained": "2022-04-09",
-        "sources": [
-            "/labs/j-michael-cherry/"
-        ],
         "collections": [
             "ENCODE"
         ],

@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 23
+
+* Require `sources` if `product_id` is specified.
+
 ### Minor changes since schema version 22
 
 * Restrict `publication_identifiers` to submission by admins only.

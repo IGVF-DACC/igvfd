@@ -40,12 +40,9 @@
         }
     ],
     "dependentSchemas": {
-        "lot_id": {
-            "comment": "Specification of lot_id requires product_id.",
-            "required": [
-                "product_id"
-            ]
-        },
+        "$merge": [
+            "shared_dependencies.json#/product_info"
+        ],
         "sorted_from": {
             "comment": "Specification of sorted_from requires sorted_from_detail.",
             "required": [

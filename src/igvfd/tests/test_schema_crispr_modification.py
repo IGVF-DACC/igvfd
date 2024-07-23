@@ -29,3 +29,14 @@ def test_cas_species_requirement(testapp, lab, award):
     }
     res = testapp.post_json('/crispr_modification', item, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_product_id_dependency(crispr_modification, source, testapp):
+    res = testapp.patch_json(
+        crispr_modification['@id'],
+        {'product_id': 'addgene:888333'}, expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        crispr_modification['@id'],
+        {'product_id': 'addgene:888333', 'sources': [source['@id']]})
+    assert res.status_code == 200

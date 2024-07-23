@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 22
+
+* Require `sources` if `product_id` is specified.
+
 ### Minor changes since schema version 21
 
 * Restrict `publication_identifiers` to submission by admins only.

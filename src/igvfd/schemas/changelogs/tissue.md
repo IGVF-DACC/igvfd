@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Schema version 20
+
+* Require `sources` if `product_id` is specified.
+
 ### Minor changes since schema version 19
 
 * Restrict `publication_identifiers` to submission by admins only.

@@ -171,3 +171,30 @@ def test_protocols(testapp, in_vitro_cell_line):
         in_vitro_cell_line['@id'],
         {'protocols': 'https://www.protocols.io/test-protocols-url-12345'}, expect_errors=True)
     assert res.status_code == 422
+
+
+def test_product_id_dependency(award, source, lab, rodent_donor, sample_term_K562, testapp):
+    res = testapp.post_json(
+        '/in_vitro_system',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'product_id': '700',
+            'donors': [rodent_donor['@id']],
+            'classifications': ['cell line'],
+            'sample_terms': [sample_term_K562['@id']]
+        },
+        expect_errors=True)
+    assert res.status_code == 422
+    res = testapp.post_json(
+        '/in_vitro_system',
+        {
+            'award': award['@id'],
+            'lab': lab['@id'],
+            'sources': [source['@id']],
+            'product_id': '700',
+            'donors': [rodent_donor['@id']],
+            'classifications': ['cell line'],
+            'sample_terms': [sample_term_K562['@id']]
+        })
+    assert res.status_code == 201
