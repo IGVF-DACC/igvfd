@@ -1,5 +1,9 @@
 ## Changelog for *`phenotypic_feature.json`*
 
+### Minor changes since schema version 3
+
+* Update calculation of `summary`.
+
 ### Schema version 3
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.

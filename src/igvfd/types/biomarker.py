@@ -77,5 +77,8 @@ class Biomarker(Item):
             'notSubmittable': True,
         }
     )
-    def summary(self, classification, name, quantification):
-        return f'{classification} {name} {quantification}'
+    def summary(self, name, quantification, classification=None):
+        classification_phrase = ''
+        if classification:
+            classification_phrase = f'{classification} '
+        return f'{classification_phrase}{name} {quantification}'

@@ -1,5 +1,9 @@
 ## Changelog for *`gene.json`*
 
+### Minor changes since schema version 8
+
+* Update calculation of `summary`.
+
 ### Schema version 8
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.
