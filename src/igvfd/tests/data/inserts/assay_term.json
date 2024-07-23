@@ -107,5 +107,15 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "a92815b4-aea9-4676-84dc-f385b00cf8fc"
+    },
+    {
+        "term_id": "OBI:0002440",
+        "term_name": "Hi-C assay",
+        "status": "released",
+        "preferred_assay_titles": [
+            "Hi-C"
+        ],
+        "release_timestamp": "2024-05-06T12:34:56Z",
+        "uuid": "3ad29068-18c8-4b45-9b72-d04de7e7019a"
     }
 ]

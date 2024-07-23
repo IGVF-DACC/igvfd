@@ -198,6 +198,11 @@ def test_audit_preferred_assay_title(
     measurement_set,
     assay_term_starr
 ):
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing preferred assay title'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -206,8 +211,12 @@ def test_audit_preferred_assay_title(
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing preferred assay title'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
     assert any(
-        error['category'] == 'inconsistent assays'
+        error['category'] == 'inconsistent preferred assay title'
         for error in res.json['audit'].get('WARNING', [])
     )
     testapp.patch_json(
@@ -218,7 +227,7 @@ def test_audit_preferred_assay_title(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'inconsistent assays'
+        error['category'] != 'inconsistent preferred assay title'
         for error in res.json['audit'].get('WARNING', [])
     )
 

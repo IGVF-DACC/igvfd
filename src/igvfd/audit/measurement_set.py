@@ -134,23 +134,36 @@ def audit_preferred_assay_title(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets with a preferred assay title are expected to specify an appropriate assay term.",
-            "audit_category": "inconsistent assays",
+            "audit_description": "Measurement sets are expected to specify a preferred assay title.",
+            "audit_category": "missing preferred assay title",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Measurement sets are expected to specify an appropriate preferred assay title for its respective assay term.",
+            "audit_category": "inconsistent preferred assay title",
             "audit_level": "WARNING"
         }
     ]
     '''
-    description = get_audit_description(audit_preferred_assay_title)
+    description_missing = get_audit_description(audit_preferred_assay_title, index=0)
+    description_inconsistent = get_audit_description(audit_preferred_assay_title, index=1)
     assay_term = value.get('assay_term')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_term_name = assay_object.get('term_name')
     preferred_assay_title = value.get('preferred_assay_title', '')
-    if preferred_assay_title and preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
+    if preferred_assay_title:
+        if preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
+                f'`assay_term` {assay_term_name}, but `preferred_assay_title` {preferred_assay_title}.'
+            )
+            yield AuditFailure('inconsistent preferred assay title', f'{detail} {description_inconsistent}', level='WARNING')
+    else:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
-            f'`assay_term` {assay_term_name}, but `preferred_assay_title` {preferred_assay_title}.'
+            f'no `preferred_assay_title`.'
         )
-        yield AuditFailure('inconsistent assays', f'{detail} {description}', level='WARNING')
+        yield AuditFailure('missing preferred assay title', f'{detail} {description_missing}', level='NOT_COMPLIANT')
 
 
 @audit_checker('MeasurementSet', frame='object')
