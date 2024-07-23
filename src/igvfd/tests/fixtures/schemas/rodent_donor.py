@@ -165,19 +165,21 @@ def rodent_donor_v10(rodent_donor_v9, source):
 
 
 @pytest.fixture
-<<<<<<< HEAD
 def rodent_donor_v12(rodent_donor, source):
     item = rodent_donor.copy()
     item.update({
         'schema_version': '12',
         'product_id': '100A',
         'lot_id': '123'
-=======
-def rodent_donor_v12(rodent_donor):
+    })
+    return item
+
+
+@pytest.fixture
+def rodent_donor_v13(rodent_donor):
     item = rodent_donor.copy()
     item.update({
-        'schema_version': '12',
+        'schema_version': '13',
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
->>>>>>> 3758549b (upgrade + tests)
     })
     return item

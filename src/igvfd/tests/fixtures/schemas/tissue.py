@@ -286,7 +286,6 @@ def tissue_v18(tissue):
 
 
 @pytest.fixture
-<<<<<<< HEAD
 def tissue_v19(testapp, lab, award, rodent_donor, sample_term_adrenal_gland):
     item = {
         'accession': 'IGVFSM1111AAAA',
@@ -297,12 +296,14 @@ def tissue_v19(testapp, lab, award, rodent_donor, sample_term_adrenal_gland):
         'product_id': '100A',
         'lot_id': '123'
     }
-=======
-def tissue_v19(tissue):
+    return item
+
+
+@pytest.fixture
+def tissue_v20(tissue):
     item = tissue.copy()
     item.update({
-        'schema_version': '19',
+        'schema_version': '20',
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
->>>>>>> 3758549b (upgrade + tests)
     return item

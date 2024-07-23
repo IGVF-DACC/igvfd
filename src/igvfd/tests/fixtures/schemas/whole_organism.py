@@ -284,7 +284,6 @@ def whole_organism_v21(whole_organism):
 
 
 @pytest.fixture
-<<<<<<< HEAD
 def whole_organism_v22(testapp, lab, award, rodent_donor, sample_term_whole_organism):
     item = {
         'award': award['@id'],
@@ -295,12 +294,14 @@ def whole_organism_v22(testapp, lab, award, rodent_donor, sample_term_whole_orga
         'sample_terms': [sample_term_whole_organism['@id']],
         'schema_version': '22'
     }
-=======
-def whole_organism_v22(whole_organism):
+    return item
+
+
+@pytest.fixture
+def whole_organism_v23(whole_organism):
     item = whole_organism.copy()
     item.update({
-        'schema_version': '22',
+        'schema_version': '23',
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
->>>>>>> 3758549b (upgrade + tests)
     return item
