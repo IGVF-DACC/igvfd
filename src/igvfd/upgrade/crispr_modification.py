@@ -37,4 +37,5 @@ def crispr_modification_2_3(value, system):
         if 'lot_id' in value:
             notes += f' Lot_id {value["lot_id"]} was removed from this modification.'
             del value['lot_id']
-    value['notes'] = notes.strip()
+    if notes:
+        value['notes'] = notes.strip()
