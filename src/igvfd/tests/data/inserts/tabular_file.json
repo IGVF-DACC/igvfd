@@ -142,5 +142,25 @@
         "file_set": "igvf:auxiliary_set_cell_sorting",
         "controlled_access": false,
         "analysis_step_version": "/analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/"
+    },
+    {
+        "uuid": "8dd6af13-77ad-4fc6-b60a-0122955ca059",
+        "accession": "IGVFFI0001PEGR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:pegRNA"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "md5sum": "0ba64a0dea00947916dfb6a66866e1ca",
+        "file_format": "tsv",
+        "content_type": "prime editing guide RNA sequences",
+        "submitted_file_name": "/Users/igvf/igvf_files/prime_editing_guide_rna_sequences.tsv.gz",
+        "file_size": 4132,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "IGVFDS3333DDDD",
+        "controlled_access": false
     }
 ]
