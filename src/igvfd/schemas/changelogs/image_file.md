@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Allow submission of `fiducial alignment` to non-admin users.
 * Update calculation of `summary`.
 * Add `analysis_step_version`.
 * Add calculated property `input_file_for`.

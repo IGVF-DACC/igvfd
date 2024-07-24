@@ -52,7 +52,8 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
-                "seqspec"
+                "seqspec",
+                "scale factors"
             ],
             "submissionExample": {
                 "appscript": "seqspec",
@@ -61,7 +62,8 @@
         },
         "file_format": {
             "enum": [
-                "yaml"
+                "yaml",
+                "json"
             ],
             "submissionExample": {
                 "appscript": "yaml",

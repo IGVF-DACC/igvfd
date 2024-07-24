@@ -93,6 +93,8 @@
             "comment": "Content Type describes the content of the file.",
             "enum": [
                 "contact matrix",
+                "filtered feature barcode matrix",
+                "raw feature barcode matrix",
                 "sparse gene count matrix",
                 "sparse peak count matrix",
                 "sparse transcript count matrix",
