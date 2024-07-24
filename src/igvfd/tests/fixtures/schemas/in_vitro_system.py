@@ -293,6 +293,7 @@ def in_vitro_system_v21(testapp, other_lab, award, rodent_donor, sample_term_K56
         'donors': [rodent_donor['@id']],
         'sample_terms': [sample_term_K562['@id']]
     }
+    return item
 
 
 @pytest.fixture
