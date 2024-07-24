@@ -14,7 +14,7 @@ def assay_term_starr(testapp):
 def assay_term_chip(testapp):
     item = {
         'term_id': 'OBI:0000716',
-        'term_name': 'ChIP-seq'
+        'term_name': 'ChIP-seq assay'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
 

@@ -348,3 +348,45 @@ def audit_missing_auxiliary_set_MPRA(value, system):
                 f'has no quantification DNA barcode sequencing `auxiliary_sets`.'
             )
             yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
+
+
+@audit_checker('MeasurementSet', frame='object')
+def audit_targeted_genes(value, system):
+    '''
+    [
+        {
+            "audit_description": "ChIP-seq and FISH-based assays are expected to specify targeted gene(s).",
+            "audit_category": "missing targeted genes",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Only ChIP-seq and FISH-based assays are expected to specify targeted gene(s).",
+            "audit_category": "unexpected targeted genes",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    description_missing = get_audit_description(audit_targeted_genes, index=0)
+    description_unexpected = get_audit_description(audit_targeted_genes, index=1)
+    assay_term = value.get('assay_term')
+    assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    assay_term_name = assay_object.get('term_name', '')
+    targeted_genes = value.get('targeted_genes', '')
+    preferred_assay_title = value.get('preferred_assay_title', '')
+    assay_terms_expecting_targeted_genes = ['CRISPR perturbation screen followed by flow cytometry and FISH',
+                                            'ChIP-seq assay',
+                                            'transcription factor binding site identification by ChIP-Seq assay',
+                                            ]
+    preferred_assays_expecting_targeted_genes = ['Variant FlowFISH']
+    if not (targeted_genes) and (assay_term_name in assay_terms_expecting_targeted_genes or preferred_assay_title in preferred_assays_expecting_targeted_genes):
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'has no `targeted_genes`.'
+        )
+        yield AuditFailure('missing targeted genes', f'{detail} {description_missing}', level='NOT_COMPLIANT')
+    if targeted_genes and (assay_term_name not in assay_terms_expecting_targeted_genes and preferred_assay_title not in preferred_assays_expecting_targeted_genes):
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'has `targeted_genes`.'
+        )
+        yield AuditFailure('unexpected targeted genes', f'{detail} {description_unexpected}', level='WARNING')
