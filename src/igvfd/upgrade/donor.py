@@ -187,6 +187,7 @@ def rodent_donor_12_13(value, system):
             del value['lot_id']
         value['notes'] = notes.strip()
 
+
 @upgrade_step('human_donor', '13', '14')
 @upgrade_step('rodent_donor', '13', '14')
 def donor_13_14(value, system):
