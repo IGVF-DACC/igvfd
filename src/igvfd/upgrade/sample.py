@@ -470,7 +470,7 @@ def sample_19_20(value, system):
 
 
 @upgrade_step('technical_sample', '13', '14')
-@upgrade_step('multiplexed_sample', '8', '9')
+@upgrade_step('multiplexed_sample', '7', '8')
 @upgrade_step('primary_cell', '20', '21')
 @upgrade_step('in_vitro_system', '22', '23')
 @upgrade_step('tissue', '20', '21')
