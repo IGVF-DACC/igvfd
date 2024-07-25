@@ -98,6 +98,22 @@ def construct_library_set_tile(testapp, lab, award, gene_myc_hs):
 
 
 @pytest.fixture
+def construct_library_set_editing_template_library(testapp, lab, award, gene_myc_hs):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'editing template library',
+        'scope': 'targeton',
+        'small_scale_gene_list': [gene_myc_hs['@id']],
+        'targeton': 'targeton1',
+        'selection_criteria': [
+            'histone modifications'
+        ]
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def construct_library_set_v1(testapp, lab, award, gene_myc_hs):
     item = {
         'award': award['@id'],

@@ -444,7 +444,7 @@ def audit_missing_construct_library_set(value, system):
         'protein-protein interaction detection assay': ('expression vector library', description_PPI),
         'imaging assay': ('expression vector library', description_Imaging)
     }
-    # preferred assay title expectations override any overlapping assay term expectations
+    # preferred assay title expectations override any overlapping assay term expectation
     expected_library_by_preferred_assay_title = {
         'SGE': ('editing template library', description_SGE),
         'VAMP-seq': ('expression vector library', description_VAMP)

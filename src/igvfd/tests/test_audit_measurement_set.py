@@ -880,3 +880,57 @@ def test_audit_targeted_genes(
         error['category'] == 'unexpected targeted genes'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_missing_construct_library_set(
+    testapp,
+    measurement_set,
+    tissue,
+    assay_term_crispr,
+    construct_library_set_genome_wide,
+    construct_library_set_editing_template_library
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_crispr['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing construct library set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'construct_library_sets': [construct_library_set_genome_wide['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing construct library set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_title': 'SGE'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing construct library set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'construct_library_sets': [construct_library_set_genome_wide['@id'], construct_library_set_editing_template_library['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing construct library set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
