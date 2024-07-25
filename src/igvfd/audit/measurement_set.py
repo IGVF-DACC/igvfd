@@ -450,11 +450,9 @@ def audit_missing_construct_library_set(value, system):
         'VAMP-seq': ('expression vector library', description_VAMP)
     }
 
-    assay_term = value.get('assay_term')
-    assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    assay_term_name = assay_object.get('term_name')
+    assay_term_name = value.get('assay_term').get('term_name')
     preferred_assay_title = value.get('preferred_assay_title')
-    construct_library_sets = value.get('samples').get('construct_library_sets')
+    construct_library_sets = value.get('samples')[0].get('construct_library_sets')
 
     if assay_term_name in expected_library_by_assay_term or preferred_assay_title not in expected_library_by_preferred_assay_title:
 
