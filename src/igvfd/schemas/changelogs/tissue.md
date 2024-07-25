@@ -1,9 +1,12 @@
 ## Changelog for *`tissue.json`*
 
+### Schema version 21
+
+* Remove `publication_identifiers`.
+
 ### Schema version 20
 
 * Require `sources` if `product_id` is specified.
-* Remove `publication_identifiers`.
 
 ### Minor changes since schema version 19
 
