@@ -38,11 +38,12 @@ class PhenotypicFeature(Item):
             'notSubmittable': True,
         }
     )
-    def summary(self, feature, quantity=None, quantity_units=None, observation_date=None):
+    def summary(self, request, feature, quantity=None, quantity_units=None, observation_date=None):
+        feature_object = request.embed(feature)
         quantity_phrase = ''
         if quantity:
             quantity_phrase = f'{quantity} {quantity_units} '
         date_phrase = ''
         if observation_date:
             date_phrase = f' observed on {observation_date}'
-        return f'{quantity_phrase}{feature}{date_phrase}'
+        return f'{quantity_phrase}{feature_object["term_name"]}{date_phrase}'
