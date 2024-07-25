@@ -454,7 +454,7 @@ def audit_missing_construct_library_set(value, system):
     preferred_assay_title = value.get('preferred_assay_title')
     construct_library_sets = value.get('samples')[0].get('construct_library_sets')
 
-    if assay_term_name in expected_library_by_assay_term or preferred_assay_title not in expected_library_by_preferred_assay_title:
+    if assay_term_name in expected_library_by_assay_term or preferred_assay_title in expected_library_by_preferred_assay_title and not (value.get('control_for')):
 
         if preferred_assay_title in expected_library_by_preferred_assay_title:
             expected_library_dict_to_check = expected_library_by_preferred_assay_title
