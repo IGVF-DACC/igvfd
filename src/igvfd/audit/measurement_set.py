@@ -373,20 +373,103 @@ def audit_targeted_genes(value, system):
     assay_term_name = assay_object.get('term_name', '')
     targeted_genes = value.get('targeted_genes', '')
     preferred_assay_title = value.get('preferred_assay_title', '')
-    assay_terms_expecting_targeted_genes = ['CRISPR perturbation screen followed by flow cytometry and FISH',
-                                            'ChIP-seq assay',
-                                            'transcription factor binding site identification by ChIP-Seq assay',
-                                            ]
-    preferred_assays_expecting_targeted_genes = ['Variant FlowFISH']
-    if not (targeted_genes) and (assay_term_name in assay_terms_expecting_targeted_genes or preferred_assay_title in preferred_assays_expecting_targeted_genes):
+    expecting_targeted_genes_by_assay_term = ['CRISPR perturbation screen followed by flow cytometry and FISH',
+                                              'ChIP-seq assay',
+                                              'transcription factor binding site identification by ChIP-Seq assay',
+                                              ]
+    expecting_targeted_genes_by_preferred_assay_title = ['Variant FlowFISH']
+    if not (targeted_genes) and (assay_term_name in expecting_targeted_genes_by_assay_term or preferred_assay_title in expecting_targeted_genes_by_preferred_assay_title):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'has no `targeted_genes`.'
         )
         yield AuditFailure('missing targeted genes', f'{detail} {description_missing}', level='NOT_COMPLIANT')
-    if targeted_genes and (assay_term_name not in assay_terms_expecting_targeted_genes and preferred_assay_title not in preferred_assays_expecting_targeted_genes):
+    if targeted_genes and (assay_term_name not in expecting_targeted_genes_by_assay_term and preferred_assay_title not in expecting_targeted_genes_by_preferred_assay_title):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
             f'has `targeted_genes`.'
         )
         yield AuditFailure('unexpected targeted genes', f'{detail} {description_unexpected}', level='WARNING')
+
+
+@audit_checker('MeasurementSet', frame='embedded')
+def audit_missing_construct_library_set(value, system):
+    '''
+    [
+        {
+            "audit_description": "MPRA measurement sets are expected to link to a reporter library.",
+            "audit_category": "missing construct library set",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "CRISPR-based assay measurement sets, with the exception of SGE, are expected to link to a guide library.",
+            "audit_category": "missing construct library set",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "SGE measurement sets are expected to link to an editing template library.",
+            "audit_category": "missing construct library set",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Protein-protein interaction detection assay measurement sets are expected to link to an expression vector library.",
+            "audit_category": "missing construct library set",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "VAMP-seq measurement sets are expected to link to an expression vector library.",
+            "audit_category": "missing construct library set",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Imaging assay measurement sets are expected to link to an expression vector library.",
+            "audit_category": "missing construct library set",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    description_MPRA = get_audit_description(audit_missing_construct_library_set, index=0)
+    description_CRISPR = get_audit_description(audit_missing_construct_library_set, index=1)
+    description_SGE = get_audit_description(audit_missing_construct_library_set, index=2)
+    description_PPI = get_audit_description(audit_missing_construct_library_set, index=3)
+    description_VAMP = get_audit_description(audit_missing_construct_library_set, index=4)
+    description_Imaging = get_audit_description(audit_missing_construct_library_set, index=5)
+
+    expected_library_by_assay_term = {
+        'massively parallel reporter assay': ('reporter library', description_MPRA),
+        'cas mediated mutagenesis': ('guide library', description_CRISPR),
+        'proliferation CRISPR screen': ('guide library', description_CRISPR),
+        'CRISPR perturbation screen followed by flow cytometry and FISH': ('guide library', description_CRISPR),
+        'CRISPR perturbation screen followed by single-cell RNA sequencing': ('guide library', description_CRISPR),
+        'protein-protein interaction detection assay': ('expression vector library', description_PPI),
+        'imaging assay': ('expression vector library', description_Imaging)
+    }
+    # preferred assay title expectations override any overlapping assay term expectations
+    expected_library_by_preferred_assay_title = {
+        'SGE': ('editing template library', description_SGE),
+        'VAMP-seq': ('expression vector library', description_VAMP)
+    }
+
+    assay_term = value.get('assay_term')
+    assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+    assay_term_name = assay_object.get('term_name')
+    preferred_assay_title = value.get('preferred_assay_title')
+    construct_library_sets = value.get('samples').get('construct_library_sets')
+
+    if assay_term_name in expected_library_by_assay_term or preferred_assay_title not in expected_library_by_preferred_assay_title:
+
+        if preferred_assay_title in expected_library_by_preferred_assay_title:
+            expected_library_dict_to_check = expected_library_by_preferred_assay_title
+            assay_to_check = preferred_assay_title
+        else:
+            expected_library_dict_to_check = expected_library_by_assay_term
+            assay_to_check = assay_term_name
+
+        expected_library = expected_library_dict_to_check[assay_to_check][0]
+        description = expected_library_dict_to_check[assay_to_check][1]
+        if not (construct_library_sets) or not ([construct_library_set for construct_library_set in construct_library_sets if construct_library_set.get('file_set_type', '') == expected_library]):
+            detail = (
+                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'has no {expected_library} `construct_library_sets`.'
+            )
+            yield AuditFailure('missing construct library set', f'{detail} {description}', level='NOT_COMPLIANT')
