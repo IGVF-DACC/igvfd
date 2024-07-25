@@ -926,7 +926,7 @@ def test_audit_missing_construct_library_set(
     testapp.patch_json(
         tissue['@id'],
         {
-            'construct_library_sets': [construct_library_set_genome_wide['@id'], construct_library_set_editing_template_library['@id']]
+            'construct_library_sets': [construct_library_set_editing_template_library['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
