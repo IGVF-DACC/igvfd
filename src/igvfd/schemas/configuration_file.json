@@ -42,7 +42,26 @@
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
-        ]
+        ],
+        "content_type": {
+            "comment": "Only configuration files with content_type seqspec are allowed to submit seqspec_of.",
+            "if": {
+                "not": {
+                    "properties": {
+                        "content_type": {
+                            "const": "seqspec"
+                        }
+                    }
+                }
+            },
+            "then": {
+                "not": {
+                    "required": [
+                        "seqspec_of"
+                    ]
+                }
+            }
+        }
     },
     "type": "object",
     "properties": {

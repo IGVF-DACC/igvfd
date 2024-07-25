@@ -117,5 +117,15 @@
         ],
         "release_timestamp": "2024-05-06T12:34:56Z",
         "uuid": "3ad29068-18c8-4b45-9b72-d04de7e7019a"
+    },
+    {
+        "term_id": "NTR:000761",
+        "term_name": "Spatial Transcriptomics",
+        "status": "released",
+        "preferred_assay_titles": [
+            "Spatial Transcriptomics"
+        ],
+        "release_timestamp": "2024-07-06T12:34:56Z",
+        "uuid": "6c74b89f-71ac-4733-ac6c-8eb42810136d"
     }
 ]

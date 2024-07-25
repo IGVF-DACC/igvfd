@@ -20,5 +20,23 @@
             "IGVFFI0001KASA"
         ],
         "analysis_step_version": "/analysis-step-versions/dc73c5ff-32f2-41f2-95a7-b7f57b234f0d/"
+    },
+    {
+        "uuid": "ba2dc350-b75a-453c-9932-b60d8556d6c5",
+        "accession": "IGVFFI9999CONF",
+        "lab": "christina-leslie",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:seqspec_yaml"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-07-06T12:34:56Z",
+        "md5sum": "da6b8ba9740823889c429c972e98e59c",
+        "file_format": "json",
+        "content_type": "scale factors",
+        "submitted_file_name": "/Users/igvf/igvf_files/scale_factors.json",
+        "file_size": 43,
+        "upload_status": "validated",
+        "file_set": "igvf:spatial_transcriptomics"
     }
 ]

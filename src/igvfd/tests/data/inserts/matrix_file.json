@@ -42,5 +42,27 @@
         ],
         "dimension1": "cell",
         "dimension2": "fragment"
+    },
+    {
+        "uuid": "90a0caf1-acef-48cb-840c-6a2d1a76d5e0",
+        "lab": "christina-leslie",
+        "award": "1U01HG012103-01",
+        "aliases": [
+            "igvf:raw_feature_barcode_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-07-06T12:34:56Z",
+        "md5sum": "e2cd3246b8a725eba73deaf9755785cd",
+        "file_format": "h5ad",
+        "content_type": "sparse peak count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/raw_feature_barcode_matrix.h5ad",
+        "file_size": 40010,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "dimension1": "cell",
+        "dimension2": "gene"
     }
 ]
