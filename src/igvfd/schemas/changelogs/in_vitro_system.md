@@ -1,9 +1,12 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Schema version 23
+
+* Remove `publication_identifiers`.
+
 ### Schema version 22
 
 * Require `sources` if `product_id` is specified.
-* Remove `publication_identifiers`.
 
 ### Minor changes since schema version 21
 

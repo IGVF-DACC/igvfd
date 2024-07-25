@@ -1,6 +1,6 @@
 ## Changelog for *`biosample.json`*
 
-* Add `publication_identifiers`. (07/24/2024)
+* Add `publication_identifiers`. (07/31/2024)
 * Restrict `publication_identifiers` to submission by admins only. (07/17/2024)
 * Add `publications`. (07/17/2024)
 * Allow `modifications` to contain a maximum of 2 items. (05/20/2024)
