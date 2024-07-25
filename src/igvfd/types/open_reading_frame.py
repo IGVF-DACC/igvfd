@@ -32,7 +32,7 @@ class OpenReadingFrame(Item):
             'notSubmittable': True,
         }
     )
-    def summary(self, orf_id, gene, protein_id=None):
+    def summary(self, request, orf_id, gene, protein_id=None):
         protein_phrase = ''
         if protein_id:
             protein_phrase = f' - {protein_id}'
