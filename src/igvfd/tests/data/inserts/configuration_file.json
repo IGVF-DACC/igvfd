@@ -27,7 +27,7 @@
         "lab": "christina-leslie",
         "award": "1U01HG012103-01",
         "aliases": [
-            "igvf:seqspec_yaml"
+            "igvf:scale_factors"
         ],
         "status": "released",
         "release_timestamp": "2024-07-06T12:34:56Z",
