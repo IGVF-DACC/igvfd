@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 4
 
+* Extend `sequencing_kits` enum list to include `NovaSeq X Series 1.5B Reagent Kit`.
+* Extend `sequencing_kits` enum list to include `NovaSeq X Series 25B Reagent Kit`.
 * Update calculation of `summary`.
 
 ### Schema version 4
