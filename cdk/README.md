@@ -60,7 +60,7 @@ This sets the access key and region used when you specify `--profile igvf-dev` o
 
 #### SSO setup
 
-Configure your AWS credentials for the `igvf-dev` account (e.g. in `igvf-dev` profile). This is the account where your demo will be deployed.
+Configure your AWS credentials for the `igvf-dev` account. This is the account where your demo will be deployed.
 Log in at [SSO login portal](https://cherrylab.awsapps.com/start/#), choose `Access Keys` under `igvf-dev` account. This will open a pop-up that shows you `SSO start URL` and `SSO Region` that you will need in the next step.
 Open a terminal window and run aws sso configuration command:
 
@@ -73,7 +73,7 @@ Choose `igvf-dev` account, enter the `SSO start URL` and `SSO region`, choose `P
 This sets the access key and region used when you specify `--profile igvf-dev-sso` on the command line.
 
 
-Ask to be invited to the `aws-igvf-devt` Slack channel, where you can monitor the status transitions of your deployment pipeline.
+Ask to be invited to the `aws-igvf-dev` Slack channel, where you can monitor the status transitions of your deployment pipeline.
 
 ### Command
 
