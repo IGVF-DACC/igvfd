@@ -76,7 +76,7 @@ def test_search_views_search_view_values(workbook, testapp):
 
 def test_search_views_search_view_values_no_results(workbook, testapp):
     r = testapp.get(
-        '/search/?status=current&type=User',
+        '/search/?status=released&type=User',
         status=404
     )
     assert r.json['notification'] == 'No results found'
@@ -84,7 +84,7 @@ def test_search_views_search_view_values_no_results(workbook, testapp):
 
 def test_search_views_search_view_values_malformed_query_string(workbook, testapp):
     r = testapp.get(
-        '/search/?status=current&type=User&status=&format=json',
+        '/search/?type=User&status=&format=json',
         status=404
     )
     assert r.json['notification'] == 'No results found'
