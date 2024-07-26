@@ -58,6 +58,8 @@ region = us-west-2
 
 This sets the access key and region used when you specify `--profile igvf-dev` on the command line.
 
+Ask to be invited to the `aws-igvf-dev` Slack channel, where you can monitor the status transitions of your deployment pipeline.
+
 #### SSO setup
 
 Configure your AWS credentials for the `igvf-dev` account. This is the account where your demo will be deployed.
@@ -71,7 +73,6 @@ $ aws sso configure
 Choose `igvf-dev` account, enter the `SSO start URL` and `SSO region`, choose `PowerUserAccess` role. The `CLI Profile name` will default to `PowerUserAccess-xyz`, you might want to enter something more easy to remember, such as `igvf-dev-sso`.
 
 This sets the access key and region used when you specify `--profile igvf-dev-sso` on the command line.
-
 
 Ask to be invited to the `aws-igvf-dev` Slack channel, where you can monitor the status transitions of your deployment pipeline.
 
