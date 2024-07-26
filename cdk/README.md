@@ -39,6 +39,8 @@ Demo applications are not deployed directly. Instead you deploy an `AWS CodePipe
 
 ### Configure
 
+#### Traditional IAM user setup
+
 Configure your AWS credentials for the `igvf-dev` account (e.g. in `igvf-dev` profile). This is the account where your demo will be deployed.
 
 ```
@@ -53,6 +55,10 @@ aws_access_key_id = ABC321
 [profile igvf-dev]
 region = us-west-2
 ```
+
+#### SSO setup
+
+Configure your AWS credentials for the `igvf-dev` account (e.g. in `igvf-dev` profile). This is the account where your demo will be deployed.
 
 This sets the access key and region used when you specify `--profile igvf-dev` on the command line.
 
