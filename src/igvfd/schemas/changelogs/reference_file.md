@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Extend `content_type` enum list to include `coding_variants`, `documentation (readme)`, `variants_coding_variants`, `variants_diseases`, `variants_diseases_genes`, `variants_phenotypes` and `variants_phenotypes_studies`.
 * Update calculation of `summary`.
 * Add `analysis_step_version`.
 * Add calculated property `input_file_for`.
