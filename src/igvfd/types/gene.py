@@ -55,3 +55,13 @@ class Gene(SharedItem):
                 return u'{}.{}'.format(geneid, version_number)
         else:
             return geneid
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, symbol, geneid, taxa):
+        return f'{symbol} - {geneid} ({taxa})'

@@ -30,3 +30,20 @@ class PhenotypicFeature(Item):
         'feature'
     ]
     set_status_down = []
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, feature, quantity=None, quantity_units=None, observation_date=None):
+        feature_object = request.embed(feature)
+        quantity_phrase = ''
+        if quantity:
+            quantity_phrase = f'{quantity} {quantity_units} '
+        date_phrase = ''
+        if observation_date:
+            date_phrase = f' observed on {observation_date}'
+        return f'{quantity_phrase}{feature_object["term_name"]}{date_phrase}'

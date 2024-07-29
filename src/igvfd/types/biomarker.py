@@ -69,3 +69,16 @@ class Biomarker(Item):
     })
     def biomarker_for(self, request, biomarker_for):
         return paths_filtered_by_status(request, biomarker_for)
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, name, quantification, classification=None):
+        classification_phrase = ''
+        if classification:
+            classification_phrase = f'{classification} '
+        return f'{classification_phrase}{name} {quantification}'

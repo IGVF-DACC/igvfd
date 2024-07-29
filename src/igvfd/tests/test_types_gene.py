@@ -21,3 +21,8 @@ def test_gene_geneid_with_version(gene_zscan10_mm, gene_CRLF2_par_y, testapp):
 
     res = testapp.get(gene_CRLF2_par_y['@id'])
     assert res.json['geneid_with_version'] == 'ENSG00000205755.3_PAR_Y'
+
+
+def test_gene_summary(testapp, gene_myc_hs):
+    res = testapp.get(gene_myc_hs['@id'])
+    assert res.json.get('summary', '') == 'MYC - ENSG00000136997 (Homo sapiens)'

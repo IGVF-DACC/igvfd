@@ -17,3 +17,8 @@ def test_biomarker_for(testapp, in_vitro_system_v20, biomarker_v2):
     )
     res = testapp.get(biomarker_v2['@id'])
     assert res.json.get('biomarker_for', []) == [in_vitro_system_v20['@id']]
+
+
+def test_biomarker_summary(testapp, biomarker_CD243_absent):
+    res = testapp.get(biomarker_CD243_absent['@id'])
+    assert res.json.get('summary', '') == 'cell surface protein CD243 negative'

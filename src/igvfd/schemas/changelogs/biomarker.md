@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Update calculation of `summary`.
 * Add calculated property `biomarker_for`.
 
 ### Schema version 4

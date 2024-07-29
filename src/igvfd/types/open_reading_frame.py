@@ -1,6 +1,7 @@
 from snovault import (
     collection,
     load_schema,
+    calculated_property
 )
 from .base import (
     Item
@@ -23,3 +24,20 @@ class OpenReadingFrame(Item):
     embedded_with_frame = [
         Path('gene', include=['@id', 'symbol', 'geneid']),
     ]
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, orf_id, gene, protein_id=None):
+        protein_phrase = ''
+        if protein_id:
+            protein_phrase = f' - {protein_id}'
+        gene_symbols = []
+        for gene_item in gene:
+            gene_object = request.embed(gene_item)
+            gene_symbols.append(gene_object['symbol'])
+        return f'{orf_id} of {", ".join(gene_symbols)}{protein_phrase}'
