@@ -12,6 +12,7 @@
 * Extend `content_type` enum list to include `differential gene expression quantifications`.
 * Extend `content_type` enum list to include `differential transcript expression quantifications`.
 * Extend `content_type` enum list to include `MPRA sequence designs`.
+* Extend `content_type` enum list to include `SNP effect matrix`.
 
 ### Schema version 11
 

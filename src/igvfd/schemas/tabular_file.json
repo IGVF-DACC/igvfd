@@ -123,6 +123,7 @@
                 "protein to protein interaction score",
                 "sample sort parameters",
                 "sequence barcodes",
+                "SNP effect matrix",
                 "variants",
                 "variant effects",
                 "variant to element mapping"
