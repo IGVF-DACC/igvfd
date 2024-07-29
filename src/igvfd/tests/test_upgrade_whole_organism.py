@@ -181,3 +181,4 @@ def test_whole_organism_upgrade_22_23(upgrader, whole_organism_v22):
 def test_whole_organism_upgrade_23_24(upgrader, whole_organism_v23):
     value = upgrader.upgrade('whole_organism', whole_organism_v23, current_version='23', target_version='24')
     assert 'publication_identifiers' not in value
+    assert value['schema_version'] == '24'
