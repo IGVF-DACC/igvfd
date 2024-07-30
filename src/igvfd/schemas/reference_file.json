@@ -192,7 +192,7 @@
                         "transcripts_proteins",
                         "variants",
                         "variants_coding_variants",
-                        "variant_diseases",
+                        "variants_diseases",
                         "variants_diseases_genes",
                         "variants_drugs",
                         "variants_drugs_genes",
