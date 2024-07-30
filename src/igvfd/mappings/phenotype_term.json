@@ -1,6 +1,6 @@
 {
-    "hash": "13b5d783790772447f7bcf26561c137b",
-    "index_name": "phenotype_term_13b5d783",
+    "hash": "ade2165a927d64a32b4fff580496be50",
+    "index_name": "phenotype_term_ade2165a",
     "item_type": "phenotype_term",
     "mapping": {
         "dynamic_templates": [
@@ -291,72 +291,69 @@
             },
             "object": {
                 "properties": {
-                    "properties": {
-                        "@id": {
-                            "type": "keyword"
-                        },
-                        "@type": {
-                            "type": "keyword"
-                        },
-                        "aliases": {
-                            "type": "keyword"
-                        },
-                        "ancestors": {
-                            "type": "keyword"
-                        },
-                        "creation_timestamp": {
-                            "type": "keyword"
-                        },
-                        "deprecated_ntr_terms": {
-                            "type": "keyword"
-                        },
-                        "description": {
-                            "type": "text"
-                        },
-                        "is_a": {
-                            "type": "keyword"
-                        },
-                        "name": {
-                            "type": "keyword"
-                        },
-                        "notes": {
-                            "type": "text"
-                        },
-                        "ontology": {
-                            "type": "keyword"
-                        },
-                        "release_timestamp": {
-                            "type": "keyword"
-                        },
-                        "schema_version": {
-                            "type": "keyword"
-                        },
-                        "status": {
-                            "type": "keyword"
-                        },
-                        "submitted_by": {
-                            "type": "keyword"
-                        },
-                        "submitter_comment": {
-                            "type": "keyword"
-                        },
-                        "summary": {
-                            "type": "keyword"
-                        },
-                        "synonyms": {
-                            "type": "keyword"
-                        },
-                        "term_id": {
-                            "type": "keyword"
-                        },
-                        "term_name": {
-                            "type": "keyword"
-                        },
-                        "uuid": {
-                            "type": "keyword"
-                        }
+                    "@id": {
+                        "type": "keyword"
                     },
-                    "type": "object"
+                    "@type": {
+                        "type": "keyword"
+                    },
+                    "aliases": {
+                        "type": "keyword"
+                    },
+                    "ancestors": {
+                        "type": "keyword"
+                    },
+                    "creation_timestamp": {
+                        "type": "keyword"
+                    },
+                    "deprecated_ntr_terms": {
+                        "type": "keyword"
+                    },
+                    "description": {
+                        "type": "text"
+                    },
+                    "is_a": {
+                        "type": "keyword"
+                    },
+                    "name": {
+                        "type": "keyword"
+                    },
+                    "notes": {
+                        "type": "text"
+                    },
+                    "ontology": {
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
+                    },
+                    "schema_version": {
+                        "type": "keyword"
+                    },
+                    "status": {
+                        "type": "keyword"
+                    },
+                    "submitted_by": {
+                        "type": "keyword"
+                    },
+                    "submitter_comment": {
+                        "type": "keyword"
+                    },
+                    "summary": {
+                        "type": "keyword"
+                    },
+                    "synonyms": {
+                        "type": "keyword"
+                    },
+                    "term_id": {
+                        "type": "keyword"
+                    },
+                    "term_name": {
+                        "type": "keyword"
+                    },
+                    "uuid": {
+                        "type": "keyword"
+                    }
                 },
                 "type": "object"
             },

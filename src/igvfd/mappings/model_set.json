@@ -1,6 +1,6 @@
 {
-    "hash": "b9aff10c910fe1d0416e62ac2ca04989",
-    "index_name": "model_set_b9aff10c",
+    "hash": "24189d51d42f0cba093821e4cca68f78",
+    "index_name": "model_set_24189d51",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2172,123 +2172,120 @@
             },
             "object": {
                 "properties": {
-                    "properties": {
-                        "@id": {
-                            "type": "keyword"
-                        },
-                        "@type": {
-                            "type": "keyword"
-                        },
-                        "accession": {
-                            "type": "keyword"
-                        },
-                        "aliases": {
-                            "type": "keyword"
-                        },
-                        "alternate_accessions": {
-                            "type": "keyword"
-                        },
-                        "assessed_genes": {
-                            "type": "keyword"
-                        },
-                        "award": {
-                            "type": "keyword"
-                        },
-                        "collections": {
-                            "type": "keyword"
-                        },
-                        "control_for": {
-                            "type": "keyword"
-                        },
-                        "creation_timestamp": {
-                            "type": "keyword"
-                        },
-                        "dbxrefs": {
-                            "type": "keyword"
-                        },
-                        "description": {
-                            "type": "text"
-                        },
-                        "documents": {
-                            "type": "keyword"
-                        },
-                        "donors": {
-                            "type": "keyword"
-                        },
-                        "file_set_type": {
-                            "type": "keyword"
-                        },
-                        "files": {
-                            "type": "keyword"
-                        },
-                        "input_file_set_for": {
-                            "type": "keyword"
-                        },
-                        "input_file_sets": {
-                            "type": "keyword"
-                        },
-                        "lab": {
-                            "type": "keyword"
-                        },
-                        "model_name": {
-                            "type": "keyword"
-                        },
-                        "model_version": {
-                            "type": "keyword"
-                        },
-                        "model_zoo_location": {
-                            "type": "keyword"
-                        },
-                        "notes": {
-                            "type": "text"
-                        },
-                        "prediction_objects": {
-                            "type": "keyword"
-                        },
-                        "publication_identifiers": {
-                            "type": "keyword"
-                        },
-                        "publications": {
-                            "type": "keyword"
-                        },
-                        "release_timestamp": {
-                            "type": "keyword"
-                        },
-                        "revoke_detail": {
-                            "type": "keyword"
-                        },
-                        "samples": {
-                            "type": "keyword"
-                        },
-                        "schema_version": {
-                            "type": "keyword"
-                        },
-                        "software_version": {
-                            "type": "keyword"
-                        },
-                        "status": {
-                            "type": "keyword"
-                        },
-                        "submitted_by": {
-                            "type": "keyword"
-                        },
-                        "submitted_files_timestamp": {
-                            "type": "keyword"
-                        },
-                        "submitter_comment": {
-                            "type": "keyword"
-                        },
-                        "summary": {
-                            "type": "keyword"
-                        },
-                        "url": {
-                            "type": "keyword"
-                        },
-                        "uuid": {
-                            "type": "keyword"
-                        }
+                    "@id": {
+                        "type": "keyword"
                     },
-                    "type": "object"
+                    "@type": {
+                        "type": "keyword"
+                    },
+                    "accession": {
+                        "type": "keyword"
+                    },
+                    "aliases": {
+                        "type": "keyword"
+                    },
+                    "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "assessed_genes": {
+                        "type": "keyword"
+                    },
+                    "award": {
+                        "type": "keyword"
+                    },
+                    "collections": {
+                        "type": "keyword"
+                    },
+                    "control_for": {
+                        "type": "keyword"
+                    },
+                    "creation_timestamp": {
+                        "type": "keyword"
+                    },
+                    "dbxrefs": {
+                        "type": "keyword"
+                    },
+                    "description": {
+                        "type": "text"
+                    },
+                    "documents": {
+                        "type": "keyword"
+                    },
+                    "donors": {
+                        "type": "keyword"
+                    },
+                    "file_set_type": {
+                        "type": "keyword"
+                    },
+                    "files": {
+                        "type": "keyword"
+                    },
+                    "input_file_set_for": {
+                        "type": "keyword"
+                    },
+                    "input_file_sets": {
+                        "type": "keyword"
+                    },
+                    "lab": {
+                        "type": "keyword"
+                    },
+                    "model_name": {
+                        "type": "keyword"
+                    },
+                    "model_version": {
+                        "type": "keyword"
+                    },
+                    "model_zoo_location": {
+                        "type": "keyword"
+                    },
+                    "notes": {
+                        "type": "text"
+                    },
+                    "prediction_objects": {
+                        "type": "keyword"
+                    },
+                    "publication_identifiers": {
+                        "type": "keyword"
+                    },
+                    "publications": {
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
+                    },
+                    "revoke_detail": {
+                        "type": "keyword"
+                    },
+                    "samples": {
+                        "type": "keyword"
+                    },
+                    "schema_version": {
+                        "type": "keyword"
+                    },
+                    "software_version": {
+                        "type": "keyword"
+                    },
+                    "status": {
+                        "type": "keyword"
+                    },
+                    "submitted_by": {
+                        "type": "keyword"
+                    },
+                    "submitted_files_timestamp": {
+                        "type": "keyword"
+                    },
+                    "submitter_comment": {
+                        "type": "keyword"
+                    },
+                    "summary": {
+                        "type": "keyword"
+                    },
+                    "url": {
+                        "type": "keyword"
+                    },
+                    "uuid": {
+                        "type": "keyword"
+                    }
                 },
                 "type": "object"
             },

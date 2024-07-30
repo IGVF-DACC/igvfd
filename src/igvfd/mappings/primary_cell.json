@@ -1,6 +1,6 @@
 {
-    "hash": "c3a0d7532674b84e797b84655a50cdcb",
-    "index_name": "primary_cell_c3a0d753",
+    "hash": "001909b23cabe46ba8f45889dd0bc4a5",
+    "index_name": "primary_cell_001909b2",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -2091,270 +2091,267 @@
             },
             "object": {
                 "properties": {
-                    "properties": {
-                        "@id": {
-                            "type": "keyword"
-                        },
-                        "@type": {
-                            "type": "keyword"
-                        },
-                        "accession": {
-                            "type": "keyword"
-                        },
-                        "age": {
-                            "type": "keyword"
-                        },
-                        "age_units": {
-                            "type": "keyword"
-                        },
-                        "aliases": {
-                            "type": "keyword"
-                        },
-                        "alternate_accessions": {
-                            "type": "keyword"
-                        },
-                        "award": {
-                            "type": "keyword"
-                        },
-                        "biomarkers": {
-                            "type": "keyword"
-                        },
-                        "cellular_sub_pool": {
-                            "type": "keyword"
-                        },
-                        "classifications": {
-                            "type": "keyword"
-                        },
-                        "collections": {
-                            "type": "keyword"
-                        },
-                        "construct_library_sets": {
-                            "type": "keyword"
-                        },
-                        "creation_timestamp": {
-                            "type": "keyword"
-                        },
-                        "date_obtained": {
-                            "type": "keyword"
-                        },
-                        "dbxrefs": {
-                            "type": "keyword"
-                        },
-                        "description": {
-                            "type": "text"
-                        },
-                        "disease_terms": {
-                            "type": "keyword"
-                        },
-                        "documents": {
-                            "type": "keyword"
-                        },
-                        "donors": {
-                            "type": "keyword"
-                        },
-                        "embryonic": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "boolean"
-                        },
-                        "file_sets": {
-                            "type": "keyword"
-                        },
-                        "institutional_certificates": {
-                            "type": "keyword"
-                        },
-                        "lab": {
-                            "type": "keyword"
-                        },
-                        "lot_id": {
-                            "type": "keyword"
-                        },
-                        "lower_bound_age": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "float"
-                        },
-                        "lower_bound_age_in_hours": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "float"
-                        },
-                        "modifications": {
-                            "type": "keyword"
-                        },
-                        "moi": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "float"
-                        },
-                        "multiplexed_in": {
-                            "type": "keyword"
-                        },
-                        "notes": {
-                            "type": "text"
-                        },
-                        "nucleic_acid_delivery": {
-                            "type": "keyword"
-                        },
-                        "origin_of": {
-                            "type": "keyword"
-                        },
-                        "originated_from": {
-                            "type": "keyword"
-                        },
-                        "part_of": {
-                            "type": "keyword"
-                        },
-                        "parts": {
-                            "type": "keyword"
-                        },
-                        "passage_number": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "long"
-                        },
-                        "pooled_from": {
-                            "type": "keyword"
-                        },
-                        "pooled_in": {
-                            "type": "keyword"
-                        },
-                        "product_id": {
-                            "type": "keyword"
-                        },
-                        "protocols": {
-                            "type": "keyword"
-                        },
-                        "publication_identifiers": {
-                            "type": "keyword"
-                        },
-                        "publications": {
-                            "type": "keyword"
-                        },
-                        "release_timestamp": {
-                            "type": "keyword"
-                        },
-                        "revoke_detail": {
-                            "type": "keyword"
-                        },
-                        "sample_terms": {
-                            "type": "keyword"
-                        },
-                        "schema_version": {
-                            "type": "keyword"
-                        },
-                        "sex": {
-                            "type": "keyword"
-                        },
-                        "sorted_fractions": {
-                            "type": "keyword"
-                        },
-                        "sorted_from": {
-                            "type": "keyword"
-                        },
-                        "sorted_from_detail": {
-                            "type": "keyword"
-                        },
-                        "sources": {
-                            "type": "keyword"
-                        },
-                        "starting_amount": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "float"
-                        },
-                        "starting_amount_units": {
-                            "type": "keyword"
-                        },
-                        "status": {
-                            "type": "keyword"
-                        },
-                        "submitted_by": {
-                            "type": "keyword"
-                        },
-                        "submitter_comment": {
-                            "type": "keyword"
-                        },
-                        "summary": {
-                            "type": "keyword"
-                        },
-                        "taxa": {
-                            "type": "keyword"
-                        },
-                        "time_post_library_delivery": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "float"
-                        },
-                        "time_post_library_delivery_units": {
-                            "type": "keyword"
-                        },
-                        "treatments": {
-                            "type": "keyword"
-                        },
-                        "upper_bound_age": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "float"
-                        },
-                        "upper_bound_age_in_hours": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "float"
-                        },
-                        "url": {
-                            "type": "keyword"
-                        },
-                        "uuid": {
-                            "type": "keyword"
-                        },
-                        "virtual": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "boolean"
-                        }
+                    "@id": {
+                        "type": "keyword"
                     },
-                    "type": "object"
+                    "@type": {
+                        "type": "keyword"
+                    },
+                    "accession": {
+                        "type": "keyword"
+                    },
+                    "age": {
+                        "type": "keyword"
+                    },
+                    "age_units": {
+                        "type": "keyword"
+                    },
+                    "aliases": {
+                        "type": "keyword"
+                    },
+                    "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "award": {
+                        "type": "keyword"
+                    },
+                    "biomarkers": {
+                        "type": "keyword"
+                    },
+                    "cellular_sub_pool": {
+                        "type": "keyword"
+                    },
+                    "classifications": {
+                        "type": "keyword"
+                    },
+                    "collections": {
+                        "type": "keyword"
+                    },
+                    "construct_library_sets": {
+                        "type": "keyword"
+                    },
+                    "creation_timestamp": {
+                        "type": "keyword"
+                    },
+                    "date_obtained": {
+                        "type": "keyword"
+                    },
+                    "dbxrefs": {
+                        "type": "keyword"
+                    },
+                    "description": {
+                        "type": "text"
+                    },
+                    "disease_terms": {
+                        "type": "keyword"
+                    },
+                    "documents": {
+                        "type": "keyword"
+                    },
+                    "donors": {
+                        "type": "keyword"
+                    },
+                    "embryonic": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "file_sets": {
+                        "type": "keyword"
+                    },
+                    "institutional_certificates": {
+                        "type": "keyword"
+                    },
+                    "lab": {
+                        "type": "keyword"
+                    },
+                    "lot_id": {
+                        "type": "keyword"
+                    },
+                    "lower_bound_age": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "lower_bound_age_in_hours": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "modifications": {
+                        "type": "keyword"
+                    },
+                    "moi": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "multiplexed_in": {
+                        "type": "keyword"
+                    },
+                    "notes": {
+                        "type": "text"
+                    },
+                    "nucleic_acid_delivery": {
+                        "type": "keyword"
+                    },
+                    "origin_of": {
+                        "type": "keyword"
+                    },
+                    "originated_from": {
+                        "type": "keyword"
+                    },
+                    "part_of": {
+                        "type": "keyword"
+                    },
+                    "parts": {
+                        "type": "keyword"
+                    },
+                    "passage_number": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "long"
+                    },
+                    "pooled_from": {
+                        "type": "keyword"
+                    },
+                    "pooled_in": {
+                        "type": "keyword"
+                    },
+                    "product_id": {
+                        "type": "keyword"
+                    },
+                    "protocols": {
+                        "type": "keyword"
+                    },
+                    "publication_identifiers": {
+                        "type": "keyword"
+                    },
+                    "publications": {
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
+                    },
+                    "revoke_detail": {
+                        "type": "keyword"
+                    },
+                    "sample_terms": {
+                        "type": "keyword"
+                    },
+                    "schema_version": {
+                        "type": "keyword"
+                    },
+                    "sex": {
+                        "type": "keyword"
+                    },
+                    "sorted_fractions": {
+                        "type": "keyword"
+                    },
+                    "sorted_from": {
+                        "type": "keyword"
+                    },
+                    "sorted_from_detail": {
+                        "type": "keyword"
+                    },
+                    "sources": {
+                        "type": "keyword"
+                    },
+                    "starting_amount": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "starting_amount_units": {
+                        "type": "keyword"
+                    },
+                    "status": {
+                        "type": "keyword"
+                    },
+                    "submitted_by": {
+                        "type": "keyword"
+                    },
+                    "submitter_comment": {
+                        "type": "keyword"
+                    },
+                    "summary": {
+                        "type": "keyword"
+                    },
+                    "taxa": {
+                        "type": "keyword"
+                    },
+                    "time_post_library_delivery": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "time_post_library_delivery_units": {
+                        "type": "keyword"
+                    },
+                    "treatments": {
+                        "type": "keyword"
+                    },
+                    "upper_bound_age": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "upper_bound_age_in_hours": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "float"
+                    },
+                    "url": {
+                        "type": "keyword"
+                    },
+                    "uuid": {
+                        "type": "keyword"
+                    },
+                    "virtual": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    }
                 },
                 "type": "object"
             },

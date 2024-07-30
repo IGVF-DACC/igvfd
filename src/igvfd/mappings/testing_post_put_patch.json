@@ -1,6 +1,6 @@
 {
-    "hash": "86dc1c0588f38755af1a56d709277e1b",
-    "index_name": "testing_post_put_patch_86dc1c05",
+    "hash": "7d4f76afa4f0b221f3786fdb5abee8e3",
+    "index_name": "testing_post_put_patch_7d4f76af",
     "item_type": "testing_post_put_patch",
     "mapping": {
         "dynamic_templates": [
@@ -187,36 +187,33 @@
             },
             "object": {
                 "properties": {
-                    "properties": {
-                        "@id": {
-                            "type": "keyword"
-                        },
-                        "@type": {
-                            "type": "keyword"
-                        },
-                        "protected": {
-                            "type": "keyword"
-                        },
-                        "protected_link": {
-                            "type": "keyword"
-                        },
-                        "required": {
-                            "type": "keyword"
-                        },
-                        "schema_version": {
-                            "type": "keyword"
-                        },
-                        "simple1": {
-                            "type": "keyword"
-                        },
-                        "simple2": {
-                            "type": "keyword"
-                        },
-                        "uuid": {
-                            "type": "keyword"
-                        }
+                    "@id": {
+                        "type": "keyword"
                     },
-                    "type": "object"
+                    "@type": {
+                        "type": "keyword"
+                    },
+                    "protected": {
+                        "type": "keyword"
+                    },
+                    "protected_link": {
+                        "type": "keyword"
+                    },
+                    "required": {
+                        "type": "keyword"
+                    },
+                    "schema_version": {
+                        "type": "keyword"
+                    },
+                    "simple1": {
+                        "type": "keyword"
+                    },
+                    "simple2": {
+                        "type": "keyword"
+                    },
+                    "uuid": {
+                        "type": "keyword"
+                    }
                 },
                 "type": "object"
             },

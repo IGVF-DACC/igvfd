@@ -1,6 +1,6 @@
 {
-    "hash": "73a8f872254099eb8d4c2dcfbdc86f1e",
-    "index_name": "institutional_certificate_73a8f872",
+    "hash": "21f714e7f925912eef3e98d53b8e8ed3",
+    "index_name": "institutional_certificate_21f714e7",
     "item_type": "institutional_certificate",
     "mapping": {
         "dynamic_templates": [
@@ -419,78 +419,75 @@
             },
             "object": {
                 "properties": {
-                    "properties": {
-                        "@id": {
-                            "type": "keyword"
-                        },
-                        "@type": {
-                            "type": "keyword"
-                        },
-                        "aliases": {
-                            "type": "keyword"
-                        },
-                        "award": {
-                            "type": "keyword"
-                        },
-                        "certificate_identifier": {
-                            "type": "keyword"
-                        },
-                        "controlled_access": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "boolean"
-                        },
-                        "creation_timestamp": {
-                            "type": "keyword"
-                        },
-                        "data_use_limitation": {
-                            "type": "keyword"
-                        },
-                        "data_use_limitation_modifiers": {
-                            "type": "keyword"
-                        },
-                        "description": {
-                            "type": "text"
-                        },
-                        "lab": {
-                            "type": "keyword"
-                        },
-                        "notes": {
-                            "type": "text"
-                        },
-                        "release_timestamp": {
-                            "type": "keyword"
-                        },
-                        "samples": {
-                            "type": "keyword"
-                        },
-                        "schema_version": {
-                            "type": "keyword"
-                        },
-                        "status": {
-                            "type": "keyword"
-                        },
-                        "submitted_by": {
-                            "type": "keyword"
-                        },
-                        "submitter_comment": {
-                            "type": "keyword"
-                        },
-                        "summary": {
-                            "type": "keyword"
-                        },
-                        "urls": {
-                            "type": "keyword"
-                        },
-                        "uuid": {
-                            "type": "keyword"
-                        }
+                    "@id": {
+                        "type": "keyword"
                     },
-                    "type": "object"
+                    "@type": {
+                        "type": "keyword"
+                    },
+                    "aliases": {
+                        "type": "keyword"
+                    },
+                    "award": {
+                        "type": "keyword"
+                    },
+                    "certificate_identifier": {
+                        "type": "keyword"
+                    },
+                    "controlled_access": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
+                    "creation_timestamp": {
+                        "type": "keyword"
+                    },
+                    "data_use_limitation": {
+                        "type": "keyword"
+                    },
+                    "data_use_limitation_modifiers": {
+                        "type": "keyword"
+                    },
+                    "description": {
+                        "type": "text"
+                    },
+                    "lab": {
+                        "type": "keyword"
+                    },
+                    "notes": {
+                        "type": "text"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
+                    },
+                    "samples": {
+                        "type": "keyword"
+                    },
+                    "schema_version": {
+                        "type": "keyword"
+                    },
+                    "status": {
+                        "type": "keyword"
+                    },
+                    "submitted_by": {
+                        "type": "keyword"
+                    },
+                    "submitter_comment": {
+                        "type": "keyword"
+                    },
+                    "summary": {
+                        "type": "keyword"
+                    },
+                    "urls": {
+                        "type": "keyword"
+                    },
+                    "uuid": {
+                        "type": "keyword"
+                    }
                 },
                 "type": "object"
             },

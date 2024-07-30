@@ -1,6 +1,6 @@
 {
-    "hash": "f2cb12e3d243963fce7cf1cf92b2f006",
-    "index_name": "test_igvf_item_f2cb12e3",
+    "hash": "1885e1587fede695bb815149617d4c18",
+    "index_name": "test_igvf_item_1885e158",
     "item_type": "test_igvf_item",
     "mapping": {
         "dynamic_templates": [
@@ -178,27 +178,24 @@
             },
             "object": {
                 "properties": {
-                    "properties": {
-                        "@id": {
-                            "type": "keyword"
-                        },
-                        "@type": {
-                            "type": "keyword"
-                        },
-                        "accession": {
-                            "type": "keyword"
-                        },
-                        "description": {
-                            "type": "text"
-                        },
-                        "status": {
-                            "type": "keyword"
-                        },
-                        "summary": {
-                            "type": "keyword"
-                        }
+                    "@id": {
+                        "type": "keyword"
                     },
-                    "type": "object"
+                    "@type": {
+                        "type": "keyword"
+                    },
+                    "accession": {
+                        "type": "keyword"
+                    },
+                    "description": {
+                        "type": "text"
+                    },
+                    "status": {
+                        "type": "keyword"
+                    },
+                    "summary": {
+                        "type": "keyword"
+                    }
                 },
                 "type": "object"
             },

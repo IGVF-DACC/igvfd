@@ -1,6 +1,6 @@
 {
-    "hash": "551741291968a457e9cf47de686a1f9d",
-    "index_name": "testing_download_55174129",
+    "hash": "338ef1a2551b38a3c17bb75fb0a34875",
+    "index_name": "testing_download_338ef1a2",
     "item_type": "testing_download",
     "mapping": {
         "dynamic_templates": [
@@ -182,31 +182,28 @@
             },
             "object": {
                 "properties": {
-                    "properties": {
-                        "@id": {
-                            "type": "keyword"
-                        },
-                        "@type": {
-                            "type": "keyword"
-                        },
-                        "attachment": {
-                            "properties": {
-                                "type": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "type": "object"
-                        },
-                        "attachment2": {
-                            "properties": {
-                                "type": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "type": "object"
-                        }
+                    "@id": {
+                        "type": "keyword"
                     },
-                    "type": "object"
+                    "@type": {
+                        "type": "keyword"
+                    },
+                    "attachment": {
+                        "properties": {
+                            "type": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "attachment2": {
+                        "properties": {
+                            "type": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    }
                 },
                 "type": "object"
             },

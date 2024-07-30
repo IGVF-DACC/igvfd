@@ -1,6 +1,6 @@
 {
-    "hash": "47befb23b03553ad121ec8d5c9f7766f",
-    "index_name": "matrix_file_47befb23",
+    "hash": "17da748be94da421766259460b132b15",
+    "index_name": "matrix_file_17da748b",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -495,148 +495,145 @@
             },
             "object": {
                 "properties": {
-                    "properties": {
-                        "@id": {
-                            "type": "keyword"
-                        },
-                        "@type": {
-                            "type": "keyword"
-                        },
-                        "accession": {
-                            "type": "keyword"
-                        },
-                        "aliases": {
-                            "type": "keyword"
-                        },
-                        "alternate_accessions": {
-                            "type": "keyword"
-                        },
-                        "analysis_step_version": {
-                            "type": "keyword"
-                        },
-                        "award": {
-                            "type": "keyword"
-                        },
-                        "collections": {
-                            "type": "keyword"
-                        },
-                        "content_md5sum": {
-                            "type": "keyword"
-                        },
-                        "content_summary": {
-                            "type": "keyword"
-                        },
-                        "content_type": {
-                            "type": "keyword"
-                        },
-                        "creation_timestamp": {
-                            "type": "keyword"
-                        },
-                        "dbxrefs": {
-                            "type": "keyword"
-                        },
-                        "derived_from": {
-                            "type": "keyword"
-                        },
-                        "description": {
-                            "type": "text"
-                        },
-                        "dimension1": {
-                            "type": "keyword"
-                        },
-                        "dimension2": {
-                            "type": "keyword"
-                        },
-                        "documents": {
-                            "type": "keyword"
-                        },
-                        "file_format": {
-                            "type": "keyword"
-                        },
-                        "file_format_specifications": {
-                            "type": "keyword"
-                        },
-                        "file_set": {
-                            "type": "keyword"
-                        },
-                        "file_size": {
-                            "fields": {
-                                "raw": {
-                                    "type": "keyword"
-                                }
-                            },
-                            "store": true,
-                            "type": "long"
-                        },
-                        "gene_list_for": {
-                            "type": "keyword"
-                        },
-                        "href": {
-                            "type": "keyword"
-                        },
-                        "input_file_for": {
-                            "type": "keyword"
-                        },
-                        "integrated_in": {
-                            "type": "keyword"
-                        },
-                        "lab": {
-                            "type": "keyword"
-                        },
-                        "loci_list_for": {
-                            "type": "keyword"
-                        },
-                        "md5sum": {
-                            "type": "keyword"
-                        },
-                        "notes": {
-                            "type": "text"
-                        },
-                        "reference_files": {
-                            "type": "keyword"
-                        },
-                        "release_timestamp": {
-                            "type": "keyword"
-                        },
-                        "revoke_detail": {
-                            "type": "keyword"
-                        },
-                        "s3_uri": {
-                            "type": "keyword"
-                        },
-                        "schema_version": {
-                            "type": "keyword"
-                        },
-                        "status": {
-                            "type": "keyword"
-                        },
-                        "submitted_by": {
-                            "type": "keyword"
-                        },
-                        "submitted_file_name": {
-                            "type": "keyword"
-                        },
-                        "submitter_comment": {
-                            "type": "keyword"
-                        },
-                        "summary": {
-                            "type": "keyword"
-                        },
-                        "upload_credentials": {
-                            "properties": {},
-                            "type": "object"
-                        },
-                        "upload_status": {
-                            "type": "keyword"
-                        },
-                        "uuid": {
-                            "type": "keyword"
-                        },
-                        "validation_error_detail": {
-                            "type": "keyword"
-                        }
+                    "@id": {
+                        "type": "keyword"
                     },
-                    "type": "object"
+                    "@type": {
+                        "type": "keyword"
+                    },
+                    "accession": {
+                        "type": "keyword"
+                    },
+                    "aliases": {
+                        "type": "keyword"
+                    },
+                    "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "analysis_step_version": {
+                        "type": "keyword"
+                    },
+                    "award": {
+                        "type": "keyword"
+                    },
+                    "collections": {
+                        "type": "keyword"
+                    },
+                    "content_md5sum": {
+                        "type": "keyword"
+                    },
+                    "content_summary": {
+                        "type": "keyword"
+                    },
+                    "content_type": {
+                        "type": "keyword"
+                    },
+                    "creation_timestamp": {
+                        "type": "keyword"
+                    },
+                    "dbxrefs": {
+                        "type": "keyword"
+                    },
+                    "derived_from": {
+                        "type": "keyword"
+                    },
+                    "description": {
+                        "type": "text"
+                    },
+                    "dimension1": {
+                        "type": "keyword"
+                    },
+                    "dimension2": {
+                        "type": "keyword"
+                    },
+                    "documents": {
+                        "type": "keyword"
+                    },
+                    "file_format": {
+                        "type": "keyword"
+                    },
+                    "file_format_specifications": {
+                        "type": "keyword"
+                    },
+                    "file_set": {
+                        "type": "keyword"
+                    },
+                    "file_size": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "long"
+                    },
+                    "gene_list_for": {
+                        "type": "keyword"
+                    },
+                    "href": {
+                        "type": "keyword"
+                    },
+                    "input_file_for": {
+                        "type": "keyword"
+                    },
+                    "integrated_in": {
+                        "type": "keyword"
+                    },
+                    "lab": {
+                        "type": "keyword"
+                    },
+                    "loci_list_for": {
+                        "type": "keyword"
+                    },
+                    "md5sum": {
+                        "type": "keyword"
+                    },
+                    "notes": {
+                        "type": "text"
+                    },
+                    "reference_files": {
+                        "type": "keyword"
+                    },
+                    "release_timestamp": {
+                        "type": "keyword"
+                    },
+                    "revoke_detail": {
+                        "type": "keyword"
+                    },
+                    "s3_uri": {
+                        "type": "keyword"
+                    },
+                    "schema_version": {
+                        "type": "keyword"
+                    },
+                    "status": {
+                        "type": "keyword"
+                    },
+                    "submitted_by": {
+                        "type": "keyword"
+                    },
+                    "submitted_file_name": {
+                        "type": "keyword"
+                    },
+                    "submitter_comment": {
+                        "type": "keyword"
+                    },
+                    "summary": {
+                        "type": "keyword"
+                    },
+                    "upload_credentials": {
+                        "properties": {},
+                        "type": "object"
+                    },
+                    "upload_status": {
+                        "type": "keyword"
+                    },
+                    "uuid": {
+                        "type": "keyword"
+                    },
+                    "validation_error_detail": {
+                        "type": "keyword"
+                    }
                 },
                 "type": "object"
             },

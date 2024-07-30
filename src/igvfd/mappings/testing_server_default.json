@@ -1,6 +1,6 @@
 {
-    "hash": "4976820dd6f38aac4fd72253204c2511",
-    "index_name": "testing_server_default_4976820d",
+    "hash": "1a54772d4536dd8fe7ab56dad0bba552",
+    "index_name": "testing_server_default_1a54772d",
     "item_type": "testing_server_default",
     "mapping": {
         "dynamic_templates": [
@@ -178,27 +178,24 @@
             },
             "object": {
                 "properties": {
-                    "properties": {
-                        "@id": {
-                            "type": "keyword"
-                        },
-                        "@type": {
-                            "type": "keyword"
-                        },
-                        "accession": {
-                            "type": "keyword"
-                        },
-                        "now": {
-                            "type": "keyword"
-                        },
-                        "user": {
-                            "type": "keyword"
-                        },
-                        "uuid": {
-                            "type": "keyword"
-                        }
+                    "@id": {
+                        "type": "keyword"
                     },
-                    "type": "object"
+                    "@type": {
+                        "type": "keyword"
+                    },
+                    "accession": {
+                        "type": "keyword"
+                    },
+                    "now": {
+                        "type": "keyword"
+                    },
+                    "user": {
+                        "type": "keyword"
+                    },
+                    "uuid": {
+                        "type": "keyword"
+                    }
                 },
                 "type": "object"
             },

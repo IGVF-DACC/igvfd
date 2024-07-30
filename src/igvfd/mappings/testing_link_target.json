@@ -1,6 +1,6 @@
 {
-    "hash": "dd03583a94f8d7ac8ce7ba96c9556248",
-    "index_name": "testing_link_target_dd03583a",
+    "hash": "0b4712805687f25a018ca377d37931ff",
+    "index_name": "testing_link_target_0b471280",
     "item_type": "testing_link_target",
     "mapping": {
         "dynamic_templates": [
@@ -198,27 +198,24 @@
             },
             "object": {
                 "properties": {
-                    "properties": {
-                        "@id": {
-                            "type": "keyword"
-                        },
-                        "@type": {
-                            "type": "keyword"
-                        },
-                        "name": {
-                            "type": "keyword"
-                        },
-                        "reverse": {
-                            "type": "keyword"
-                        },
-                        "status": {
-                            "type": "keyword"
-                        },
-                        "uuid": {
-                            "type": "keyword"
-                        }
+                    "@id": {
+                        "type": "keyword"
                     },
-                    "type": "object"
+                    "@type": {
+                        "type": "keyword"
+                    },
+                    "name": {
+                        "type": "keyword"
+                    },
+                    "reverse": {
+                        "type": "keyword"
+                    },
+                    "status": {
+                        "type": "keyword"
+                    },
+                    "uuid": {
+                        "type": "keyword"
+                    }
                 },
                 "type": "object"
             },
