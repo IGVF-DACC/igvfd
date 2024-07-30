@@ -1,6 +1,6 @@
 {
-    "hash": "a98bb4d10dc10719c2e3766681481808",
-    "index_name": "workflow_a98bb4d1",
+    "hash": "3aea3e50e105c1c6c70fadd49d34d36c",
+    "index_name": "workflow_3aea3e50",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -518,7 +518,101 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "accession": {
+                            "type": "keyword"
+                        },
+                        "aliases": {
+                            "type": "keyword"
+                        },
+                        "alternate_accessions": {
+                            "type": "keyword"
+                        },
+                        "analysis_steps": {
+                            "type": "keyword"
+                        },
+                        "award": {
+                            "type": "keyword"
+                        },
+                        "collections": {
+                            "type": "keyword"
+                        },
+                        "creation_timestamp": {
+                            "type": "keyword"
+                        },
+                        "description": {
+                            "type": "text"
+                        },
+                        "documents": {
+                            "type": "keyword"
+                        },
+                        "lab": {
+                            "type": "keyword"
+                        },
+                        "name": {
+                            "type": "keyword"
+                        },
+                        "notes": {
+                            "type": "text"
+                        },
+                        "publication_identifiers": {
+                            "type": "keyword"
+                        },
+                        "publications": {
+                            "type": "keyword"
+                        },
+                        "release_timestamp": {
+                            "type": "keyword"
+                        },
+                        "revoke_detail": {
+                            "type": "keyword"
+                        },
+                        "schema_version": {
+                            "type": "keyword"
+                        },
+                        "source_url": {
+                            "type": "keyword"
+                        },
+                        "standards_page": {
+                            "type": "keyword"
+                        },
+                        "status": {
+                            "type": "keyword"
+                        },
+                        "submitted_by": {
+                            "type": "keyword"
+                        },
+                        "submitter_comment": {
+                            "type": "keyword"
+                        },
+                        "summary": {
+                            "type": "keyword"
+                        },
+                        "uuid": {
+                            "type": "keyword"
+                        },
+                        "workflow_repositories": {
+                            "type": "keyword"
+                        },
+                        "workflow_version": {
+                            "fields": {
+                                "raw": {
+                                    "type": "keyword"
+                                }
+                            },
+                            "store": true,
+                            "type": "long"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

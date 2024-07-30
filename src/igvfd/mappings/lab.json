@@ -1,6 +1,6 @@
 {
-    "hash": "d2521034b7bc9f7f55efbeff99ac433c",
-    "index_name": "lab_d2521034",
+    "hash": "67a76e8a4b27f7108c8c86ca49fe55c4",
+    "index_name": "lab_67a76e8a",
     "item_type": "lab",
     "mapping": {
         "dynamic_templates": [
@@ -348,7 +348,65 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "aliases": {
+                            "type": "keyword"
+                        },
+                        "awards": {
+                            "type": "keyword"
+                        },
+                        "creation_timestamp": {
+                            "type": "keyword"
+                        },
+                        "description": {
+                            "type": "text"
+                        },
+                        "institute_label": {
+                            "type": "keyword"
+                        },
+                        "name": {
+                            "type": "keyword"
+                        },
+                        "notes": {
+                            "type": "text"
+                        },
+                        "pi": {
+                            "type": "keyword"
+                        },
+                        "schema_version": {
+                            "type": "keyword"
+                        },
+                        "status": {
+                            "type": "keyword"
+                        },
+                        "submitted_by": {
+                            "type": "keyword"
+                        },
+                        "submitter_comment": {
+                            "type": "keyword"
+                        },
+                        "summary": {
+                            "type": "keyword"
+                        },
+                        "title": {
+                            "type": "keyword"
+                        },
+                        "url": {
+                            "type": "keyword"
+                        },
+                        "uuid": {
+                            "type": "keyword"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

@@ -1,6 +1,6 @@
 {
-    "hash": "6f93a9b24490d42929775e9232f64570",
-    "index_name": "testing_download_6f93a9b2",
+    "hash": "551741291968a457e9cf47de686a1f9d",
+    "index_name": "testing_download_55174129",
     "item_type": "testing_download",
     "mapping": {
         "dynamic_templates": [
@@ -181,7 +181,33 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "attachment": {
+                            "properties": {
+                                "type": {
+                                    "type": "keyword"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "attachment2": {
+                            "properties": {
+                                "type": {
+                                    "type": "keyword"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

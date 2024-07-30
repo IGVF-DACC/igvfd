@@ -1,6 +1,6 @@
 {
-    "hash": "4fb300872a0b8f7e53d46333ed1e49cf",
-    "index_name": "image_4fb30087",
+    "hash": "a96fa9ba343bf705d0be975bc4a456df",
+    "index_name": "image_a96fa9ba",
     "item_type": "image",
     "mapping": {
         "dynamic_templates": [
@@ -318,7 +318,103 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "aliases": {
+                            "type": "keyword"
+                        },
+                        "attachment": {
+                            "properties": {
+                                "download": {
+                                    "type": "keyword"
+                                },
+                                "height": {
+                                    "fields": {
+                                        "raw": {
+                                            "type": "keyword"
+                                        }
+                                    },
+                                    "store": true,
+                                    "type": "long"
+                                },
+                                "href": {
+                                    "type": "keyword"
+                                },
+                                "md5sum": {
+                                    "type": "keyword"
+                                },
+                                "size": {
+                                    "fields": {
+                                        "raw": {
+                                            "type": "keyword"
+                                        }
+                                    },
+                                    "store": true,
+                                    "type": "long"
+                                },
+                                "type": {
+                                    "type": "keyword"
+                                },
+                                "width": {
+                                    "fields": {
+                                        "raw": {
+                                            "type": "keyword"
+                                        }
+                                    },
+                                    "store": true,
+                                    "type": "long"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "caption": {
+                            "type": "keyword"
+                        },
+                        "creation_timestamp": {
+                            "type": "keyword"
+                        },
+                        "description": {
+                            "type": "text"
+                        },
+                        "download_url": {
+                            "type": "keyword"
+                        },
+                        "notes": {
+                            "type": "text"
+                        },
+                        "release_timestamp": {
+                            "type": "keyword"
+                        },
+                        "schema_version": {
+                            "type": "keyword"
+                        },
+                        "status": {
+                            "type": "keyword"
+                        },
+                        "submitted_by": {
+                            "type": "keyword"
+                        },
+                        "submitter_comment": {
+                            "type": "keyword"
+                        },
+                        "summary": {
+                            "type": "keyword"
+                        },
+                        "thumb_nail": {
+                            "type": "keyword"
+                        },
+                        "uuid": {
+                            "type": "keyword"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

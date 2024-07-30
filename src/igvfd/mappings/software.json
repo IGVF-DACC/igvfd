@@ -1,6 +1,6 @@
 {
-    "hash": "28f9262972f2b4ceeb7a568800ea3502",
-    "index_name": "software_28f92629",
+    "hash": "2c604420a60123b2bf7ba200ba3aae3e",
+    "index_name": "software_2c604420",
     "item_type": "software",
     "mapping": {
         "dynamic_templates": [
@@ -420,7 +420,77 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "aliases": {
+                            "type": "keyword"
+                        },
+                        "award": {
+                            "type": "keyword"
+                        },
+                        "creation_timestamp": {
+                            "type": "keyword"
+                        },
+                        "description": {
+                            "type": "text"
+                        },
+                        "lab": {
+                            "type": "keyword"
+                        },
+                        "name": {
+                            "type": "keyword"
+                        },
+                        "notes": {
+                            "type": "text"
+                        },
+                        "publication_identifiers": {
+                            "type": "keyword"
+                        },
+                        "publications": {
+                            "type": "keyword"
+                        },
+                        "release_timestamp": {
+                            "type": "keyword"
+                        },
+                        "schema_version": {
+                            "type": "keyword"
+                        },
+                        "source_url": {
+                            "type": "keyword"
+                        },
+                        "status": {
+                            "type": "keyword"
+                        },
+                        "submitted_by": {
+                            "type": "keyword"
+                        },
+                        "submitter_comment": {
+                            "type": "keyword"
+                        },
+                        "summary": {
+                            "type": "keyword"
+                        },
+                        "title": {
+                            "type": "keyword"
+                        },
+                        "used_by": {
+                            "type": "keyword"
+                        },
+                        "uuid": {
+                            "type": "keyword"
+                        },
+                        "versions": {
+                            "type": "keyword"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

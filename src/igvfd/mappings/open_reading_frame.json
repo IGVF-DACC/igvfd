@@ -1,6 +1,6 @@
 {
-    "hash": "e45beb63cf861a3e911bef18fa01c8fd",
-    "index_name": "open_reading_frame_e45beb63",
+    "hash": "8d4c6642a8873a1a923e008bd07c6b1c",
+    "index_name": "open_reading_frame_8d4c6642",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -345,7 +345,95 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "aliases": {
+                            "type": "keyword"
+                        },
+                        "award": {
+                            "type": "keyword"
+                        },
+                        "creation_timestamp": {
+                            "type": "keyword"
+                        },
+                        "dbxrefs": {
+                            "type": "keyword"
+                        },
+                        "description": {
+                            "type": "text"
+                        },
+                        "gene": {
+                            "type": "keyword"
+                        },
+                        "lab": {
+                            "type": "keyword"
+                        },
+                        "notes": {
+                            "type": "text"
+                        },
+                        "orf_id": {
+                            "type": "keyword"
+                        },
+                        "pct_coverage_orf": {
+                            "fields": {
+                                "raw": {
+                                    "type": "keyword"
+                                }
+                            },
+                            "store": true,
+                            "type": "float"
+                        },
+                        "pct_coverage_protein": {
+                            "fields": {
+                                "raw": {
+                                    "type": "keyword"
+                                }
+                            },
+                            "store": true,
+                            "type": "float"
+                        },
+                        "pct_identical_protein": {
+                            "fields": {
+                                "raw": {
+                                    "type": "keyword"
+                                }
+                            },
+                            "store": true,
+                            "type": "float"
+                        },
+                        "protein_id": {
+                            "type": "keyword"
+                        },
+                        "release_timestamp": {
+                            "type": "keyword"
+                        },
+                        "schema_version": {
+                            "type": "keyword"
+                        },
+                        "status": {
+                            "type": "keyword"
+                        },
+                        "submitted_by": {
+                            "type": "keyword"
+                        },
+                        "submitter_comment": {
+                            "type": "keyword"
+                        },
+                        "summary": {
+                            "type": "keyword"
+                        },
+                        "uuid": {
+                            "type": "keyword"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

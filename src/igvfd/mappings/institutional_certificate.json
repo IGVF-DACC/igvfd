@@ -1,6 +1,6 @@
 {
-    "hash": "00f6518ef2e0b6052a27d94b63a572e5",
-    "index_name": "institutional_certificate_00f6518e",
+    "hash": "73a8f872254099eb8d4c2dcfbdc86f1e",
+    "index_name": "institutional_certificate_73a8f872",
     "item_type": "institutional_certificate",
     "mapping": {
         "dynamic_templates": [
@@ -418,7 +418,80 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "aliases": {
+                            "type": "keyword"
+                        },
+                        "award": {
+                            "type": "keyword"
+                        },
+                        "certificate_identifier": {
+                            "type": "keyword"
+                        },
+                        "controlled_access": {
+                            "fields": {
+                                "raw": {
+                                    "type": "keyword"
+                                }
+                            },
+                            "store": true,
+                            "type": "boolean"
+                        },
+                        "creation_timestamp": {
+                            "type": "keyword"
+                        },
+                        "data_use_limitation": {
+                            "type": "keyword"
+                        },
+                        "data_use_limitation_modifiers": {
+                            "type": "keyword"
+                        },
+                        "description": {
+                            "type": "text"
+                        },
+                        "lab": {
+                            "type": "keyword"
+                        },
+                        "notes": {
+                            "type": "text"
+                        },
+                        "release_timestamp": {
+                            "type": "keyword"
+                        },
+                        "samples": {
+                            "type": "keyword"
+                        },
+                        "schema_version": {
+                            "type": "keyword"
+                        },
+                        "status": {
+                            "type": "keyword"
+                        },
+                        "submitted_by": {
+                            "type": "keyword"
+                        },
+                        "submitter_comment": {
+                            "type": "keyword"
+                        },
+                        "summary": {
+                            "type": "keyword"
+                        },
+                        "urls": {
+                            "type": "keyword"
+                        },
+                        "uuid": {
+                            "type": "keyword"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

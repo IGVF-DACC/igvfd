@@ -1,6 +1,6 @@
 {
-    "hash": "9f02c357f46680e85296602f79a1dbb6",
-    "index_name": "crispr_modification_9f02c357",
+    "hash": "959dc25357884bbf8c6324e17a762f4b",
+    "index_name": "crispr_modification_959dc253",
     "item_type": "crispr_modification",
     "mapping": {
         "dynamic_templates": [
@@ -441,7 +441,101 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "activated": {
+                            "fields": {
+                                "raw": {
+                                    "type": "keyword"
+                                }
+                            },
+                            "store": true,
+                            "type": "boolean"
+                        },
+                        "activating_agent_term_id": {
+                            "type": "keyword"
+                        },
+                        "activating_agent_term_name": {
+                            "type": "keyword"
+                        },
+                        "aliases": {
+                            "type": "keyword"
+                        },
+                        "award": {
+                            "type": "keyword"
+                        },
+                        "biosamples_modified": {
+                            "type": "keyword"
+                        },
+                        "cas": {
+                            "type": "keyword"
+                        },
+                        "cas_species": {
+                            "type": "keyword"
+                        },
+                        "creation_timestamp": {
+                            "type": "keyword"
+                        },
+                        "description": {
+                            "type": "text"
+                        },
+                        "documents": {
+                            "type": "keyword"
+                        },
+                        "fused_domain": {
+                            "type": "keyword"
+                        },
+                        "lab": {
+                            "type": "keyword"
+                        },
+                        "lot_id": {
+                            "type": "keyword"
+                        },
+                        "modality": {
+                            "type": "keyword"
+                        },
+                        "notes": {
+                            "type": "text"
+                        },
+                        "product_id": {
+                            "type": "keyword"
+                        },
+                        "release_timestamp": {
+                            "type": "keyword"
+                        },
+                        "schema_version": {
+                            "type": "keyword"
+                        },
+                        "sources": {
+                            "type": "keyword"
+                        },
+                        "status": {
+                            "type": "keyword"
+                        },
+                        "submitted_by": {
+                            "type": "keyword"
+                        },
+                        "submitter_comment": {
+                            "type": "keyword"
+                        },
+                        "summary": {
+                            "type": "keyword"
+                        },
+                        "tagged_protein": {
+                            "type": "keyword"
+                        },
+                        "uuid": {
+                            "type": "keyword"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

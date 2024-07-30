@@ -1,6 +1,6 @@
 {
-    "hash": "665736316c0be477cb8038fe1d9d393a",
-    "index_name": "curated_set_66573631",
+    "hash": "acb1353623c1caad57c3fb7e9253d590",
+    "index_name": "curated_set_acb13536",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1838,7 +1838,113 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "accession": {
+                            "type": "keyword"
+                        },
+                        "aliases": {
+                            "type": "keyword"
+                        },
+                        "alternate_accessions": {
+                            "type": "keyword"
+                        },
+                        "assemblies": {
+                            "type": "keyword"
+                        },
+                        "award": {
+                            "type": "keyword"
+                        },
+                        "collections": {
+                            "type": "keyword"
+                        },
+                        "control_for": {
+                            "type": "keyword"
+                        },
+                        "creation_timestamp": {
+                            "type": "keyword"
+                        },
+                        "dbxrefs": {
+                            "type": "keyword"
+                        },
+                        "description": {
+                            "type": "text"
+                        },
+                        "documents": {
+                            "type": "keyword"
+                        },
+                        "donors": {
+                            "type": "keyword"
+                        },
+                        "file_set_type": {
+                            "type": "keyword"
+                        },
+                        "files": {
+                            "type": "keyword"
+                        },
+                        "input_file_set_for": {
+                            "type": "keyword"
+                        },
+                        "lab": {
+                            "type": "keyword"
+                        },
+                        "notes": {
+                            "type": "text"
+                        },
+                        "publication_identifiers": {
+                            "type": "keyword"
+                        },
+                        "publications": {
+                            "type": "keyword"
+                        },
+                        "release_timestamp": {
+                            "type": "keyword"
+                        },
+                        "revoke_detail": {
+                            "type": "keyword"
+                        },
+                        "samples": {
+                            "type": "keyword"
+                        },
+                        "schema_version": {
+                            "type": "keyword"
+                        },
+                        "status": {
+                            "type": "keyword"
+                        },
+                        "submitted_by": {
+                            "type": "keyword"
+                        },
+                        "submitted_files_timestamp": {
+                            "type": "keyword"
+                        },
+                        "submitter_comment": {
+                            "type": "keyword"
+                        },
+                        "summary": {
+                            "type": "keyword"
+                        },
+                        "taxa": {
+                            "type": "keyword"
+                        },
+                        "transcriptome_annotations": {
+                            "type": "keyword"
+                        },
+                        "url": {
+                            "type": "keyword"
+                        },
+                        "uuid": {
+                            "type": "keyword"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

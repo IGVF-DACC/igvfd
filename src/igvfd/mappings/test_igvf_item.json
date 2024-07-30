@@ -1,6 +1,6 @@
 {
-    "hash": "513b73ec6752ca2d84241c2b1013fd1d",
-    "index_name": "test_igvf_item_513b73ec",
+    "hash": "f2cb12e3d243963fce7cf1cf92b2f006",
+    "index_name": "test_igvf_item_f2cb12e3",
     "item_type": "test_igvf_item",
     "mapping": {
         "dynamic_templates": [
@@ -177,7 +177,29 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "accession": {
+                            "type": "keyword"
+                        },
+                        "description": {
+                            "type": "text"
+                        },
+                        "status": {
+                            "type": "keyword"
+                        },
+                        "summary": {
+                            "type": "keyword"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

@@ -1,6 +1,6 @@
 {
-    "hash": "0ad185da3c6077776270834dfcb729e3",
-    "index_name": "analysis_set_0ad185da",
+    "hash": "d3b812b709313d8b938d17559c815e15",
+    "index_name": "analysis_set_d3b812b7",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -2157,7 +2157,107 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "accession": {
+                            "type": "keyword"
+                        },
+                        "aliases": {
+                            "type": "keyword"
+                        },
+                        "alternate_accessions": {
+                            "type": "keyword"
+                        },
+                        "assay_titles": {
+                            "type": "keyword"
+                        },
+                        "award": {
+                            "type": "keyword"
+                        },
+                        "collections": {
+                            "type": "keyword"
+                        },
+                        "control_for": {
+                            "type": "keyword"
+                        },
+                        "creation_timestamp": {
+                            "type": "keyword"
+                        },
+                        "dbxrefs": {
+                            "type": "keyword"
+                        },
+                        "description": {
+                            "type": "text"
+                        },
+                        "documents": {
+                            "type": "keyword"
+                        },
+                        "donors": {
+                            "type": "keyword"
+                        },
+                        "file_set_type": {
+                            "type": "keyword"
+                        },
+                        "files": {
+                            "type": "keyword"
+                        },
+                        "input_file_set_for": {
+                            "type": "keyword"
+                        },
+                        "input_file_sets": {
+                            "type": "keyword"
+                        },
+                        "lab": {
+                            "type": "keyword"
+                        },
+                        "notes": {
+                            "type": "text"
+                        },
+                        "publication_identifiers": {
+                            "type": "keyword"
+                        },
+                        "publications": {
+                            "type": "keyword"
+                        },
+                        "release_timestamp": {
+                            "type": "keyword"
+                        },
+                        "revoke_detail": {
+                            "type": "keyword"
+                        },
+                        "samples": {
+                            "type": "keyword"
+                        },
+                        "schema_version": {
+                            "type": "keyword"
+                        },
+                        "status": {
+                            "type": "keyword"
+                        },
+                        "submitted_by": {
+                            "type": "keyword"
+                        },
+                        "submitted_files_timestamp": {
+                            "type": "keyword"
+                        },
+                        "submitter_comment": {
+                            "type": "keyword"
+                        },
+                        "summary": {
+                            "type": "keyword"
+                        },
+                        "uuid": {
+                            "type": "keyword"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

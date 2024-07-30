@@ -1,6 +1,6 @@
 {
-    "hash": "7cee25eeb99ab9b68bdeb1074d521398",
-    "index_name": "testing_link_target_7cee25ee",
+    "hash": "dd03583a94f8d7ac8ce7ba96c9556248",
+    "index_name": "testing_link_target_dd03583a",
     "item_type": "testing_link_target",
     "mapping": {
         "dynamic_templates": [
@@ -197,7 +197,29 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "name": {
+                            "type": "keyword"
+                        },
+                        "reverse": {
+                            "type": "keyword"
+                        },
+                        "status": {
+                            "type": "keyword"
+                        },
+                        "uuid": {
+                            "type": "keyword"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {

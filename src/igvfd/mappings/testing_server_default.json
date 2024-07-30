@@ -1,6 +1,6 @@
 {
-    "hash": "f2deb993ab75cb627c7df4a107d81088",
-    "index_name": "testing_server_default_f2deb993",
+    "hash": "4976820dd6f38aac4fd72253204c2511",
+    "index_name": "testing_server_default_4976820d",
     "item_type": "testing_server_default",
     "mapping": {
         "dynamic_templates": [
@@ -177,7 +177,29 @@
                 "type": "keyword"
             },
             "object": {
-                "enabled": false,
+                "properties": {
+                    "properties": {
+                        "@id": {
+                            "type": "keyword"
+                        },
+                        "@type": {
+                            "type": "keyword"
+                        },
+                        "accession": {
+                            "type": "keyword"
+                        },
+                        "now": {
+                            "type": "keyword"
+                        },
+                        "user": {
+                            "type": "keyword"
+                        },
+                        "uuid": {
+                            "type": "keyword"
+                        }
+                    },
+                    "type": "object"
+                },
                 "type": "object"
             },
             "paths": {
