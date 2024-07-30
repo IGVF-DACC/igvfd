@@ -4,6 +4,7 @@ OPTIONAL_PARAMS = [
     'field',
     'format',
     'frame',
+    'searchframe',
     'from',
     'limit',
     'mode',
