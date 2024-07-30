@@ -1,5 +1,9 @@
 ## Changelog for *`software.json`*
 
+### Schema version 6
+
+* Remove `publication_identifiers`.
+
 ### Minor changes since schema version 5
 
 * Restrict `publication_identifiers` to submission by admins only.

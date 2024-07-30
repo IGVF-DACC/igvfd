@@ -33,3 +33,9 @@ def test_analysis_set_upgrade_6_7(upgrader, analysis_set_v6):
     assert value['file_set_type'] == 'principal analysis'
     assert value['schema_version'] == '7'
     assert value['notes'].endswith('file_set_type was primary analysis and has been updated to be principal analysis.')
+
+
+def test_analysis_set_upgrade_7_8(upgrader, analysis_set_v7):
+    value = upgrader.upgrade('analysis_set', analysis_set_v7, current_version='7', target_version='8')
+    assert value['schema_version'] == '8'
+    assert 'publication_identifiers' not in value

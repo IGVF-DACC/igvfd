@@ -33,3 +33,9 @@ def test_prediction_set_set_upgrade_5_6(upgrader, prediction_set_v5):
     for loci in value['small_scale_loci_list']:
         assert loci['assembly'] == 'GRCh38'
     assert value['schema_version'] == '6'
+
+
+def test_prediction_set_set_upgrade_7_8(upgrader, prediction_set_v7):
+    value = upgrader.upgrade('prediction_set', prediction_set_v7, current_version='7', target_version='8')
+    assert value['schema_version'] == '8'
+    assert 'publication_identifiers' not in value

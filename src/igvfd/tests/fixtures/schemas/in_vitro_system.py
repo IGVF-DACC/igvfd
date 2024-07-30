@@ -294,3 +294,13 @@ def in_vitro_system_v21(testapp, other_lab, award, rodent_donor, sample_term_K56
         'sample_terms': [sample_term_K562['@id']]
     }
     return item
+
+
+@pytest.fixture
+def in_vitro_system_v22(in_vitro_cell_line):
+    item = in_vitro_cell_line.copy()
+    item.update({
+        'schema_version': '22',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

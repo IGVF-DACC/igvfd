@@ -50,6 +50,22 @@ def analysis_set_with_no_samples(
 
 
 @pytest.fixture
+def principal_analysis_set(
+    testapp,
+    award,
+    lab,
+    measurement_set
+):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'input_file_sets': [measurement_set['@id']],
+        'file_set_type': 'principal analysis'
+    }
+    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def analysis_set_v1(analysis_set_base, curated_set_genome, human_donor, in_vitro_cell_line):
     item = analysis_set_base.copy()
     item.update({
@@ -92,16 +108,10 @@ def analysis_set_v6(analysis_set_v4):
 
 
 @pytest.fixture
-def principal_analysis_set(
-    testapp,
-    award,
-    lab,
-    measurement_set
-):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'input_file_sets': [measurement_set['@id']],
-        'file_set_type': 'principal analysis'
-    }
-    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
+def analysis_set_v7(analysis_set_base):
+    item = analysis_set_base.copy()
+    item.update({
+        'schema_version': '7',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

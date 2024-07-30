@@ -467,3 +467,15 @@ def sample_19_20(value, system):
             notes += f' Lot_id {lot_id} was removed from this sample.'
             del value['lot_id']
         value['notes'] = notes.strip()
+
+
+@upgrade_step('technical_sample', '13', '14')
+@upgrade_step('multiplexed_sample', '7', '8')
+@upgrade_step('primary_cell', '20', '21')
+@upgrade_step('in_vitro_system', '22', '23')
+@upgrade_step('tissue', '20', '21')
+@upgrade_step('whole_organism', '23', '24')
+def sample_20_21(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1789
+    if 'publication_identifiers' in value:
+        del value['publication_identifiers']

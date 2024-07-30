@@ -31,3 +31,13 @@ def workflow_v2(workflow_v1):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def workflow_v4(base_workflow):
+    item = base_workflow.copy()
+    item.update({
+        'schema_version': '4',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

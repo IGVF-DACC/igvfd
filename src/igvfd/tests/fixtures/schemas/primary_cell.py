@@ -314,3 +314,13 @@ def primary_cell_v19(testapp, other_lab, award, human_donor, sample_term_pluripo
         'lot_id': '123'
     }
     return item
+
+
+@pytest.fixture
+def primary_cell_v20(primary_cell):
+    item = primary_cell.copy()
+    item.update({
+        'schema_version': '20',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

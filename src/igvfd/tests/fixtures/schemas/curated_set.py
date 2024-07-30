@@ -71,3 +71,13 @@ def curated_set_v5(curated_set_v4):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def curated_set_v7(curated_set_genome):
+    item = curated_set_genome.copy()
+    item.update({
+        'schema_version': '7',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

@@ -1,5 +1,9 @@
 ## Changelog for *`primary_cell.json`*
 
+### Schema version 21
+
+* Remove `publication_identifiers`.
+
 ### Schema version 20
 
 * Require `sources` if `product_id` is specified.

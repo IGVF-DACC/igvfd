@@ -81,7 +81,8 @@ class Sample(Item):
         Path('file_sets', include=['@id', 'accession', 'summary', 'aliases', 'lab', 'status', 'assay_term']),
         Path('file_sets.lab', include=['title']),
         Path('file_sets.assay_term', include=['term_name']),
-        Path('multiplexed_in', include=['@id', 'accession'])
+        Path('multiplexed_in', include=['@id', 'accession']),
+        Path('publications', include=['@id', 'publication_identifiers']),
     ]
 
     audit_inherit = [

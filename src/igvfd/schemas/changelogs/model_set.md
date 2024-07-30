@@ -1,5 +1,9 @@
 ## Changelog for *`model_set.json`*
 
+### Schema version 4
+
+* Remove `publication_identifiers`.
+
 ### Minor changes since schema version 3
 
 * Add `assessed_genes`.

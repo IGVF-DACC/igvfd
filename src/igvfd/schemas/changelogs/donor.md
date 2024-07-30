@@ -1,5 +1,6 @@
 ## Changelog for *`donor.json`*
 
+* Remove `publication_identifiers`. (07/31/2024)
 * Restrict `publication_identifiers` to submission by admins only. (07/17/2024)
 * Add `publications`. (07/17/2024)
 * Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status. (03/06/2024)

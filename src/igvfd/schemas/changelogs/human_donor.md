@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Schema version 14
+
+* Remove `publication_identifiers`.
+
 ### Minor changes since schema version 13
 
 * Restrict `publication_identifiers` to submission by admins only.

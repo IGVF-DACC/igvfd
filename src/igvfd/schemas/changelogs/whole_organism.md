@@ -1,5 +1,9 @@
 ## Changelog for *`whole_organism.json`*
 
+### Schema version 24
+
+* Remove `publication_identifiers`.
+
 ### Schema version 23
 
 * Require `sources` if `product_id` is specified.

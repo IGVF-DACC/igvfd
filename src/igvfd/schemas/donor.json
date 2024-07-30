@@ -28,9 +28,6 @@
             "$ref": "mixins.json#/url"
         },
         {
-            "$ref": "mixins.json#/publication_identifiers"
-        },
-        {
             "$ref": "mixins.json#/publications"
         },
         {
@@ -43,10 +40,6 @@
     "properties": {
         "accession": {
             "accessionType": "DO"
-        },
-        "publication_identifiers": {
-            "permission": "admin_only",
-            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
         },
         "dbxrefs": {
             "@type": "@id",

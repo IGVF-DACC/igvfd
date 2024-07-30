@@ -41,9 +41,6 @@
             "$ref": "mixins.json#/url"
         },
         {
-            "$ref": "mixins.json#/publication_identifiers"
-        },
-        {
             "$ref": "mixins.json#/publications"
         },
         {
@@ -58,11 +55,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "13"
-        },
-        "publication_identifiers": {
-            "permission": "admin_only",
-            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
+            "default": "14"
         },
         "sample_material": {
             "title": "Sample Material",
@@ -120,7 +113,8 @@
     ],
     "exact_searchable_fields": [
         "@type",
-        "dbxrefs"
+        "dbxrefs",
+        "publications.publication_identifiers"
     ],
     "changelog": "/profiles/changelogs/technical_sample.md"
 }

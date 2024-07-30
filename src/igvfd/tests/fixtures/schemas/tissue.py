@@ -297,3 +297,13 @@ def tissue_v19(testapp, lab, award, rodent_donor, sample_term_adrenal_gland):
         'lot_id': '123'
     }
     return item
+
+
+@pytest.fixture
+def tissue_v20(tissue):
+    item = tissue.copy()
+    item.update({
+        'schema_version': '20',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

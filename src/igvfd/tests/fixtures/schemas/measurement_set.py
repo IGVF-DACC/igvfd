@@ -213,3 +213,13 @@ def measurement_set_v16(measurement_set, assay_term_rna):
         'readout': assay_term_rna['@id']
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v17(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '17',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

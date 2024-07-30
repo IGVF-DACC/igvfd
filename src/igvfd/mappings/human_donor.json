@@ -1,6 +1,6 @@
 {
-    "hash": "dfe988a1dc153384769a78e674e1dc5c",
-    "index_name": "human_donor_dfe988a1",
+    "hash": "be93e0331b608a8b8f9fb0dea11ea99e",
+    "index_name": "human_donor_be93e033",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -448,11 +448,160 @@
                         },
                         "type": "object"
                     },
-                    "publication_identifiers": {
-                        "type": "keyword"
-                    },
                     "publications": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "abstract": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "attachment": {
+                                "properties": {
+                                    "download": {
+                                        "type": "keyword"
+                                    },
+                                    "height": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "href": {
+                                        "type": "keyword"
+                                    },
+                                    "md5sum": {
+                                        "type": "keyword"
+                                    },
+                                    "size": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    },
+                                    "type": {
+                                        "type": "keyword"
+                                    },
+                                    "width": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "long"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "authors": {
+                                "type": "keyword"
+                            },
+                            "award": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "date_published": {
+                                "type": "keyword"
+                            },
+                            "date_revised": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "donors": {
+                                "type": "keyword"
+                            },
+                            "file_sets": {
+                                "type": "keyword"
+                            },
+                            "issue": {
+                                "type": "keyword"
+                            },
+                            "journal": {
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "page": {
+                                "type": "keyword"
+                            },
+                            "publication_identifiers": {
+                                "copy_to": "_exact",
+                                "type": "keyword"
+                            },
+                            "publication_year": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            },
+                            "published_by": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
+                            "samples": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "software": {
+                                "type": "keyword"
+                            },
+                            "software_versions": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "title": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "volume": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "related_donors": {
                         "properties": {
@@ -505,9 +654,6 @@
                                         "type": "text"
                                     },
                                     "phenotypic_features": {
-                                        "type": "keyword"
-                                    },
-                                    "publication_identifiers": {
                                         "type": "keyword"
                                     },
                                     "publications": {

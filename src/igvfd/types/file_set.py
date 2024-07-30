@@ -68,6 +68,7 @@ class FileSet(Item):
         ]),
         Path('samples.disease_terms', include=['@id', 'term_name']),
         Path('samples.targeted_sample_term', include=['@id', 'term_name']),
+        Path('publications', include=['@id', 'publication_identifiers']),
     ]
 
     audit_inherit = [
@@ -678,6 +679,7 @@ class ConstructLibrarySet(FileSet):
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
         Path('orf_list', include=['@id', 'orf_id', 'gene', 'aliases']),
+        Path('publications', include=['@id', 'publication_identifiers']),
     ]
     audit_inherit = [
         'award',

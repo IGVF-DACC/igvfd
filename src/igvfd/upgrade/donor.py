@@ -186,3 +186,11 @@ def rodent_donor_12_13(value, system):
             notes += f' Lot_id {lot_id} was removed from this donor.'
             del value['lot_id']
         value['notes'] = notes.strip()
+
+
+@upgrade_step('human_donor', '13', '14')
+@upgrade_step('rodent_donor', '13', '14')
+def donor_13_14(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1789
+    if 'publication_identifiers' in value:
+        del value['publication_identifiers']

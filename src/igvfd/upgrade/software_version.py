@@ -42,3 +42,10 @@ def software_version_4_5(value, system):
         notes = value.get('notes', '')
         notes += f'This object\'s release_timestamp has been set to 2024-03-06T12:34:56Z'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('software_version', '5', '6')
+def software_version_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1789
+    if 'publication_identifiers' in value:
+        del value['publication_identifiers']

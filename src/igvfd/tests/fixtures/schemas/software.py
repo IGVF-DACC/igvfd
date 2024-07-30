@@ -43,3 +43,13 @@ def software_v4(software_v1):
         'used_by': []
     })
     return item
+
+
+@pytest.fixture
+def software_v5(software):
+    item = software.copy()
+    item.update({
+        'schema_version': '5',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

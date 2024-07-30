@@ -163,3 +163,13 @@ def construct_library_set_v7(construct_library_set_genome_wide):
         'schema_version': '7'
     })
     return item
+
+
+@pytest.fixture
+def construct_library_set_v8(construct_library_set_genome_wide):
+    item = construct_library_set_genome_wide.copy()
+    item.update({
+        'schema_version': '8',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

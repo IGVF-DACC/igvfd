@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Schema version 9
+
+* Remove `publication_identifiers`.
+
 ### Schema version 8
 
 * Rename `file_set_type` enum `circularized barcode detection` to `circularized RNA barcode detection`.

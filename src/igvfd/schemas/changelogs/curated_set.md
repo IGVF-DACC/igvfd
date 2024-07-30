@@ -1,6 +1,10 @@
 ## Changelog for *`curated_set.json`*
 
-### Minor changes since schema version 8
+### Schema version 8
+
+* Remove `publication_identifiers`.
+
+### Minor changes since schema version 7
 
 * Restrict `publication_identifiers` to submission by admins only.
 * Add `publications`.
@@ -10,10 +14,6 @@
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.3`.
 * Extend `collections` enum list to include `IGVF_catalog_beta_v0.4`.
 * Add calculated property `input_file_set_for`.
-
-### Schema version 8
-
-* Require `release_timestamp` for any objects with `released`, `archived`, or `revoked` status.
 
 ### Schema version 7
 

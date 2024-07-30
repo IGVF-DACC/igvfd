@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Remove `publication_identifiers`. (07/31/2024)
 * Add `publications`. (07/17/2024)
 * Add `input_file_sets`. (06/26/2024)
 * Add `anvil_url` to `controlled_access`. (05/31/2024)

@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_set.json`*
 
+### Schema version 8
+
+* Remove `publication_identifiers`.
+
 ### Minor changes since schema version 7
 
 * Restrict `publication_identifiers` to submission by admins only.

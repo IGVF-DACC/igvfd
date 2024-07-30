@@ -1,5 +1,9 @@
 ## Changelog for *`rodent_donor.json`*
 
+### Schema version 14
+
+* Remove `publication_identifiers`.
+
 ### Schema version 13
 
 * Require `sources` if `product_id` is specified.

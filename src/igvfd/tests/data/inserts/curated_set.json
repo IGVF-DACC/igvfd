@@ -11,9 +11,6 @@
         "documents": [
             "/documents/igvf:Antibody_characterization_standards_IGVF/"
         ],
-        "publication_identifiers": [
-            "doi:10.1101/gr.275819.121"
-        ],
         "url": "https://www.ncbi.nlm.nih.gov/data-hub/genome/GCF_000001405.40/",
         "notes": "This is a curated set insert.",
         "aliases": [
@@ -36,9 +33,6 @@
         "documents": [
             "/documents/igvf:characterization_immunoblot_insert/"
         ],
-        "publication_identifiers": [
-            "doi:10.1016/j.cels.2018.06.007"
-        ],
         "url": "https://pubmed.ncbi.nlm.nih.gov/30031775/",
         "aliases": [
             "tim-reddy:transcriptome-assembly"
@@ -57,9 +51,6 @@
         "documents": [
             "/documents/igvf:characterization_FACS_insert/"
         ],
-        "publication_identifiers": [
-            "doi:10.1016/j.molcel.2021.05.020"
-        ],
         "url": "https://pubmed.ncbi.nlm.nih.gov/34087178/",
         "aliases": [
             "igvf-dacc:variant-set"
@@ -68,6 +59,9 @@
         "collections": [
             "ENCODE",
             "MaveDB"
+        ],
+        "publications": [
+            "PMID:22955616"
         ]
     },
     {

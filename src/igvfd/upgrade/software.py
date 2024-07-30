@@ -33,3 +33,10 @@ def software_4_5(value, system):
     if 'used_by' in value:
         if len(value['used_by']) < 1:
             del value['used_by']
+
+
+@upgrade_step('software', '5', '6')
+def software_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1789
+    if 'publication_identifiers' in value:
+        del value['publication_identifiers']

@@ -35,9 +35,6 @@
             "$ref": "mixins.json#/documents"
         },
         {
-            "$ref": "mixins.json#/publication_identifiers"
-        },
-        {
             "$ref": "mixins.json#/publications"
         },
         {
@@ -689,11 +686,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "8"
-        },
-        "publication_identifiers": {
-            "permission": "admin_only",
-            "comment": "This property has been deprecated and will be removed. Submit `publications` instead."
+            "default": "9"
         },
         "accession": {
             "accessionType": "DS"
@@ -982,7 +975,7 @@
     "exact_searchable_fields": [
         "control_for.accession",
         "control_for.aliases",
-        "publication_identifiers",
+        "publications.publication_identifiers",
         "lot_id",
         "product_id",
         "files.accession",

@@ -295,3 +295,13 @@ def whole_organism_v22(testapp, lab, award, rodent_donor, sample_term_whole_orga
         'schema_version': '22'
     }
     return item
+
+
+@pytest.fixture
+def whole_organism_v23(whole_organism):
+    item = whole_organism.copy()
+    item.update({
+        'schema_version': '23',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item

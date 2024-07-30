@@ -349,3 +349,16 @@ def auxiliary_set_7_8(value, system):
         value['file_set_type'] = 'circularized RNA barcode detection'
     if value.get('file_set_type', '') == 'quantification barcode sequencing':
         value['file_set_type'] = 'quantification DNA barcode sequencing'
+
+
+@upgrade_step('measurement_set', '17', '18')
+@upgrade_step('auxiliary_set', '8', '9')
+@upgrade_step('analysis_set', '7', '8')
+@upgrade_step('construct_library_set', '8', '9')
+@upgrade_step('curated_set', '7', '8')
+@upgrade_step('model_set', '3', '4')
+@upgrade_step('prediction_set', '7', '8')
+def file_set_17_18(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1789
+    if 'publication_identifiers' in value:
+        del value['publication_identifiers']

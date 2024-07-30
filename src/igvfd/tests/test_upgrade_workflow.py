@@ -17,3 +17,11 @@ def test_workflow_upgrade_2_3(upgrader, workflow_v2):
         current_version='2', target_version='3')
     assert value['schema_version'] == '3'
     assert 'description' not in value
+
+
+def test_workflow_upgrade_4_5(upgrader, workflow_v4):
+    value = upgrader.upgrade(
+        'workflow', workflow_v4,
+        current_version='4', target_version='5')
+    assert value['schema_version'] == '5'
+    assert 'publication_identifiers' not in value

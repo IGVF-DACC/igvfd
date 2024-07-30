@@ -379,25 +379,6 @@
             }
         }
     },
-    "publication_identifiers": {
-        "publication_identifiers": {
-            "title": "Publication Identifiers",
-            "description": "The publication identifiers that provide more information about the object.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Publication Identifier",
-                "description": "A publication identifier that provides more information about the object.",
-                "type": "string",
-                "pattern": "^(PMID:[0-9]+|doi:10\\.[0-9]{4}[\\d\\s\\S:\\.\\/]+|PMCID:PMC[0-9]+|[0-9]{4}\\.[0-9]{4})$"
-            },
-            "submissionExample": {
-                "appscript": "[\"10.1016/j.cell.2023.02.018\", \"PMID:37001506\", \"PMCID:PMC8495978\"]",
-                "igvf_utils": "10.1016/j.cell.2023.02.018, PMID:37001506, PMCID:PMC8495978"
-            }
-        }
-    },
     "publications": {
         "publications": {
             "title": "Publications",

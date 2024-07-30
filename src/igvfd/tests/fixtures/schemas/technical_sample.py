@@ -138,3 +138,13 @@ def technical_sample_v12(testapp, other_lab, award, sample_term_technical_sample
         'sample_terms': [sample_term_technical_sample['@id']]
     }
     return item
+
+
+@pytest.fixture
+def technical_sample_v13(technical_sample):
+    item = technical_sample.copy()
+    item.update({
+        'schema_version': '13',
+        'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item
