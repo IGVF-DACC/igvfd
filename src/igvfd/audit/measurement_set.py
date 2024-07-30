@@ -397,32 +397,32 @@ def audit_missing_construct_library_set(value, system):
     '''
     [
         {
-            "audit_description": "MPRA measurement sets are expected to link to a reporter library.",
+            "audit_description": "MPRA measurement sets are expected to link to a construct library set of the type reporter library in its samples.",
             "audit_category": "missing construct library set",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "CRISPR-based assay measurement sets, with the exception of SGE, are expected to link to a guide library.",
+            "audit_description": "CRISPR-based assay measurement sets, with the exception of SGE, are expected to link to a construct library set of the type guide library in its samples.",
             "audit_category": "missing construct library set",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "SGE measurement sets are expected to link to an editing template library.",
+            "audit_description": "SGE measurement sets are expected to link to a construct library set of the type editing template library in its samples.",
             "audit_category": "missing construct library set",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Protein-protein interaction detection assay measurement sets are expected to link to an expression vector library.",
+            "audit_description": "Protein-protein interaction detection assay measurement sets are expected to link to a construct library set of the type expression vector library in its samples.",
             "audit_category": "missing construct library set",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "VAMP-seq measurement sets are expected to link to an expression vector library.",
+            "audit_description": "VAMP-seq measurement sets are expected to link to a construct library set of the type expression vector library in its samples.",
             "audit_category": "missing construct library set",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Imaging assay measurement sets are expected to link to an expression vector library.",
+            "audit_description": "Imaging assay measurement sets are expected to link to a construct library set of the type expression vector library in its samples.",
             "audit_category": "missing construct library set",
             "audit_level": "NOT_COMPLIANT"
         }
@@ -468,6 +468,6 @@ def audit_missing_construct_library_set(value, system):
         if not (construct_library_sets) or not ([construct_library_set for construct_library_set in construct_library_sets if construct_library_set.get('file_set_type', '') == expected_library]):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
-                f'has no {expected_library} `construct_library_sets`.'
+                f'has no `construct_library_sets` of type {expected_library} linked in its `samples`.'
             )
             yield AuditFailure('missing construct library set', f'{detail} {description}', level='NOT_COMPLIANT')
