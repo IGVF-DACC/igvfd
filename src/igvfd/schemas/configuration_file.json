@@ -45,22 +45,44 @@
         ],
         "content_type": {
             "comment": "Only configuration files with content_type seqspec are allowed to submit seqspec_of.",
-            "if": {
-                "not": {
-                    "properties": {
-                        "content_type": {
-                            "const": "seqspec"
+            "allOf": [
+                {
+                    "if": {
+                        "not": {
+                            "properties": {
+                                "content_type": {
+                                    "const": "seqspec"
+                                }
+                            }
+                        }
+                    },
+                    "then": {
+                        "not": {
+                            "required": [
+                                "seqspec_of"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "content_type": {
+                                "const": "seqspec"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "file_format": {
+                                "enum": [
+                                    "yaml"
+                                ]
+                            }
                         }
                     }
                 }
-            },
-            "then": {
-                "not": {
-                    "required": [
-                        "seqspec_of"
-                    ]
-                }
-            }
+            ]
         }
     },
     "type": "object",
