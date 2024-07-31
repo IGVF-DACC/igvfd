@@ -199,5 +199,152 @@
             "IGVF_catalog_beta_v0.4"
         ],
         "controlled_access": false
+    },
+    {
+        "uuid": "bdb64886-5f1e-46b4-a803-60c519d1ada1",
+        "aliases": [
+            "igvf:coding_variants"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "9e9dd49496d15da65e7e7ab93286d21c",
+        "file_format": "tsv",
+        "content_type": "coding_variants",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "collections": [
+            "IGVF_catalog_beta_v0.3",
+            "IGVF_catalog_beta_v0.4"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "4d67a22b-17f9-44ac-8446-6a674b313beb",
+        "aliases": [
+            "igvf:documentation_readme"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "9f87318cce734a66eaab7ab2be6fe167",
+        "file_format": "tsv",
+        "content_type": "documentation (readme)",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "collections": [
+            "IGVF_catalog_beta_v0.3",
+            "IGVF_catalog_beta_v0.4"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "afc8137d-720d-46d2-9ebe-d5d629d180ac",
+        "aliases": [
+            "igvf:variants_coding_variants"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "97a0a1cbb217c999c6eeff1901e894da",
+        "file_format": "tsv",
+        "content_type": "variants_coding_variants",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "collections": [
+            "IGVF_catalog_beta_v0.3",
+            "IGVF_catalog_beta_v0.4"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "2467beb0-5df2-47fb-a209-76480f8e505b",
+        "aliases": [
+            "igvf:variants_diseases"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "a220b3052fe701ac13c92977369e085c",
+        "file_format": "tsv",
+        "content_type": "variants_diseases",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "collections": [
+            "IGVF_catalog_beta_v0.3",
+            "IGVF_catalog_beta_v0.4"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "7b420160-965b-4063-8129-9a01596948c8",
+        "aliases": [
+            "igvf:variants_diseases_genes"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "924382b09d7dbf71a4de9f89af72cafa",
+        "file_format": "tsv",
+        "content_type": "variants_diseases_genes",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "collections": [
+            "IGVF_catalog_beta_v0.3",
+            "IGVF_catalog_beta_v0.4"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "b8e52fb6-bf09-4acf-a7cd-ab472fd8e764",
+        "aliases": [
+            "igvf:variants_phenotypes"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "23e49bb912099bd7ff1f58b501f98cb8",
+        "file_format": "tsv",
+        "content_type": "variants_phenotypes",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "collections": [
+            "IGVF_catalog_beta_v0.3",
+            "IGVF_catalog_beta_v0.4"
+        ],
+        "controlled_access": false
+    },
+    {
+        "uuid": "5abd2939-610e-42a8-b164-b8e69db72d84",
+        "aliases": [
+            "igvf:variants_phenotypes_studies"
+        ],
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "a7394eb7fbd1bab372092e07f86bc9a3",
+        "file_format": "tsv",
+        "content_type": "variants_phenotypes_studies",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "GRCh38",
+        "collections": [
+            "IGVF_catalog_beta_v0.3",
+            "IGVF_catalog_beta_v0.4"
+        ],
+        "controlled_access": false
     }
 ]

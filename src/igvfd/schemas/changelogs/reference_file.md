@@ -2,6 +2,13 @@
 
 ### Minor changes since schema version 14
 
+* Extend `content_type` enum list to include `coding_variants`.
+* Extend `content_type` enum list to include `documentation (readme)`.
+* Extend `content_type` enum list to include `variants_coding_variants`.
+* Extend `content_type` enum list to include `variants_diseases`.
+* Extend `content_type` enum list to include `variants_diseases_genes`.
+* Extend `content_type` enum list to include `variants_phenotypes`.
+* Extend `content_type` enum list to include `variants_phenotypes_studies`.
 * Update calculation of `summary`.
 * Add `analysis_step_version`.
 * Add calculated property `input_file_for`.
