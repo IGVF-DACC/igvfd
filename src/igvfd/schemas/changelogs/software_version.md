@@ -1,5 +1,9 @@
 ## Changelog for *`software_version.json`*
 
+### Minor changes since schema version 6
+
+* Update calculation of `summary`.
+
 ### Schema version 6
 
 * Remove `publication_identifiers`.
