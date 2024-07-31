@@ -54,7 +54,7 @@
         "release_timestamp": "2024-07-06T12:34:56Z",
         "md5sum": "e2cd3246b8a725eba73deaf9755785cd",
         "file_format": "h5ad",
-        "content_type": "sparse peak count matrix",
+        "content_type": "raw feature barcode matrix",
         "submitted_file_name": "/Users/igvf/igvf_files/raw_feature_barcode_matrix.h5ad",
         "file_size": 40010,
         "upload_status": "validated",
