@@ -1,6 +1,6 @@
 {
-    "hash": "3b8e8a829dd1aa0efcb85b38a73dfbe9",
-    "index_name": "model_set_3b8e8a82",
+    "hash": "753123eae9848f8e72f8465e54ba35a1",
+    "index_name": "model_set_753123ea",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -812,6 +812,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "base_modifications": {
                                 "type": "keyword"
                             },
                             "collections": {
