@@ -56,13 +56,14 @@
             "description": "The category that best describes this auxiliary file set.",
             "comment": "File set type describes the content of the construct library set. Cell hashing is the antibody barcoding of cell batches. Cell sorting is data collected during fluorescence activated cell sorting. Circularized RNA barcode detection is reporter detection (such as for MPRA) through sequencing circularized barcoded RNA molecules. gRNA sequencing is sequencing data of guide RNAs. Oligo-conjugated lipids are lipid- and cholesterol-modified oligonucleotides. Quantification DNA barcode sequencing is sequencing data of barcodes, such as for MPRA. Variant sequencing is sequencing data of genomic DNA sequences with variants introduced.",
             "enum": [
-                "cell hashing",
+                "cell hashing barcode sequencing",
                 "cell sorting",
                 "circularized RNA barcode detection",
                 "gRNA sequencing",
-                "oligo-conjugated lipids",
+                "lipid-conjugated olgio sequencing",
                 "quantification DNA barcode sequencing",
-                "variant sequencing"
+                "variant sequencing",
+                "ORF barcode sequencing"
             ],
             "submissionExample": {
                 "appscript": "cell hashing",
