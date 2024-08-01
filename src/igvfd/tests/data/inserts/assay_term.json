@@ -120,10 +120,10 @@
     },
     {
         "term_id": "NTR:000761",
-        "term_name": "Spatial Transcriptomics",
+        "term_name": "spatial transcriptomics",
         "status": "released",
         "preferred_assay_titles": [
-            "Spatial Transcriptomics"
+            "Spatial transcriptomics"
         ],
         "release_timestamp": "2024-07-06T12:34:56Z",
         "uuid": "6c74b89f-71ac-4733-ac6c-8eb42810136d"
