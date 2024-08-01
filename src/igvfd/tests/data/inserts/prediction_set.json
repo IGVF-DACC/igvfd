@@ -73,6 +73,9 @@
         "samples": [
             "igvf:treated_tissue"
         ],
+        "assessed_genes": [
+            "a13fb026-d42f-481c-9420-5fe3f17ede30"
+        ],
         "award": "1U01HG011952-01",
         "lab": "alan-boyle",
         "status": "released",
