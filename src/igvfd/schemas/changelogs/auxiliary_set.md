@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Schema version 10
+
+* Remove `library_construction_platform`.
+
 ### Schema version 9
 
 * Remove `publication_identifiers`.

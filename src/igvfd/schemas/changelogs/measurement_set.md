@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 19
+
+* Remove `library_construction_platform`.
+
 ### Minor changes since schema version 18
 
 * Extend `preferred_assay_title` enum list to include `Spatial transcriptomics`.
