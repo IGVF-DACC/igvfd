@@ -21,8 +21,8 @@
             "igvf:auxiliary_set_2"
         ],
         "accession": "IGVFDS0002AUXI",
-        "submitter_comment": "cell hashing comment",
-        "file_set_type": "cell hashing",
+        "submitter_comment": "cell hashing barcode sequencing comment",
+        "file_set_type": "cell hashing barcode sequencing",
         "samples": [
             "igvf:treated_tissue"
         ],
@@ -89,5 +89,33 @@
         "status": "released",
         "release_timestamp": "2024-06-06T12:34:56Z",
         "uuid": "aa6aa2b9-c3b2-429a-a198-bb02abf995d7"
+    },
+    {
+        "aliases": [
+            "igvf:auxiliary_set_orf_barcode_sequencing"
+        ],
+        "file_set_type": "ORF barcode sequencing",
+        "samples": [
+            "igvf:alias4"
+        ],
+        "award": "1UM1HG011972-01",
+        "lab": "jesse-engreitz",
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "uuid": "50db0bf6-be09-4277-ae87-0f0ebf6e53fa"
+    },
+    {
+        "aliases": [
+            "igvf:auxiliary_set_lipid_conjugated_oligio_sequencing"
+        ],
+        "file_set_type": "lipid-conjugated olgio sequencing",
+        "samples": [
+            "igvf:alias5"
+        ],
+        "award": "1UM1HG011972-01",
+        "lab": "jesse-engreitz",
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "uuid": "19229ed7-fced-4cc2-8d43-44c3259d0f9f"
     }
 ]
