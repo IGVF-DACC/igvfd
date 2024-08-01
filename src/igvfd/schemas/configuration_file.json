@@ -44,7 +44,7 @@
             "file.json#/dependentSchemas"
         ],
         "content_type": {
-            "comment": "Only configuration files with content_type seqspec are allowed to submit seqspec_of. configuration files with content_type seqspec are limited to file_format yaml.",
+            "comment": "Only configuration files with content_type seqspec are allowed to submit seqspec_of. Configuration files with content_type seqspec are limited to file_format yaml.",
             "allOf": [
                 {
                     "if": {
