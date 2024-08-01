@@ -372,7 +372,7 @@
             "IGVFSM0003KASP"
         ],
         "assay_term": "/assay-terms/NTR_000761/",
-        "preferred_assay_title": "Spatial Transcriptomics",
+        "preferred_assay_title": "Spatial transcriptomics",
         "file_set_type": "experimental data"
     }
 ]
