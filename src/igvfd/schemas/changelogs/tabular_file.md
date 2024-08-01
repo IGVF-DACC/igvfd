@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `content_type` enum list to include `SNP effect matrix`.
 * Extend `content_type` enum list to include `prime editing guide RNA sequences`.
 * Update calculation of `summary`.
 * Extend `content_type` enum list to include `editing templates`.
@@ -12,7 +13,6 @@
 * Extend `content_type` enum list to include `differential gene expression quantifications`.
 * Extend `content_type` enum list to include `differential transcript expression quantifications`.
 * Extend `content_type` enum list to include `MPRA sequence designs`.
-* Extend `content_type` enum list to include `SNP effect matrix`.
 
 ### Schema version 11
 
