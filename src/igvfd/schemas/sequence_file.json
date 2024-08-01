@@ -107,6 +107,14 @@
                     }
                 }
             ]
+        },
+        "base_modifications": {
+            "comment": "Only Nanopore reads can specify base modifications.",
+            "properties": {
+                "content_type": {
+                    "const": "Nanopore reads"
+                }
+            }
         }
     },
     "type": "object",
