@@ -2,6 +2,58 @@
 
 ### Minor changes since schema version 14
 
+* Restrict submission of `biological_context` to admin users.
+* Restrict submission of `coding_variants` to admin users.
+* Restrict submission of `complexes` to admin users.
+* Restrict submission of `complexes_complexes` to admin users.
+* Restrict submission of `complexes_proteins` to admin users.
+* Restrict submission of `complexes_terms` to admin users.
+* Restrict submission of `diseases_genes` to admin users.
+* Restrict submission of `documentation (readme)` to admin users.
+* Restrict submission of `drugs` to admin users.
+* Restrict submission of `elements_genes` to admin users.
+* Restrict submission of `genes` to admin users.
+* Restrict submission of `genes_genes` to admin users.
+* Restrict submission of `genes_pathways` to admin users.
+* Restrict submission of `genes_terms` to admin users.
+* Restrict submission of `genes_transcripts` to admin users.
+* Restrict submission of `go_terms_proteins` to admin users.
+* Restrict submission of `motifs` to admin users.
+* Restrict submission of `motifs_proteins` to admin users.
+* Restrict submission of `ontology_terms` to admin users.
+* Restrict submission of `ontology_terms_ontology_terms` to admin users.
+* Restrict submission of `pathways` to admin users.
+* Restrict submission of `pathways_pathways` to admin users.
+* Restrict submission of `proteins` to admin users.
+* Restrict submission of `proteins_proteins` to admin users.
+* Restrict submission of `regulatory_regions` to admin users.
+* Restrict submission of `regulatory_regions_genes` to admin users.
+* Restrict submission of `regulatory_regions_genes_biosamples` to admin users.
+* Restrict submission of `regulatory_regions_genes_biosamples_donors` to admin users.
+* Restrict submission of `regulatory_regions_genes_biosamples_treatments_chebi` to admin users.
+* Restrict submission of `regulatory_regions_genes_biosamples_treatments_proteins` to admin users.
+* Restrict submission of `regulatory_regions_regulatory_regions` to admin users.
+* Restrict submission of `studies` to admin users.
+* Restrict submission of `studies_variants` to admin users.
+* Restrict submission of `studies_variants_phenotypes` to admin users.
+* Restrict submission of `transcriptome reference` to admin users.
+* Restrict submission of `transcripts` to admin users.
+* Restrict submission of `transcripts_proteins` to admin users.
+* Restrict submission of `variants` to admin users.
+* Restrict submission of `variants_coding_variants` to admin users.
+* Restrict submission of `variants_diseases` to admin users.
+* Restrict submission of `variants_diseases_genes` to admin users.
+* Restrict submission of `variants_drugs` to admin users.
+* Restrict submission of `variants_drugs_genes` to admin users.
+* Restrict submission of `variants_genes` to admin users.
+* Restrict submission of `variants_genes_terms` to admin users.
+* Restrict submission of `variants_phenotypes` to admin users.
+* Restrict submission of `variants_phenotypes_studies` to admin users.
+* Restrict submission of `variants_proteins` to admin users.
+* Restrict submission of `variants_proteins_terms` to admin users.
+* Restrict submission of `variants_proteins_biosamples` to admin users.
+* Restrict submission of `variants_proteins_phenotypes` to admin users.
+* Restrict submission of `variants_regulatory_regions` to admin users.
 * Extend `content_type` enum list to include `coding_variants`.
 * Extend `content_type` enum list to include `documentation (readme)`.
 * Extend `content_type` enum list to include `variants_coding_variants`.
