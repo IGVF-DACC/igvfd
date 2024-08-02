@@ -370,7 +370,7 @@ def measurement_set_18_19_auxiliary_set_9_10(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1776
     notes = value.get('notes', '')
     if 'library_construction_platform' in value:
-        library_construction_platform = value['library_construction_platform']
-        notes += f' This file_set previously had {library_construction_platform} submitted as library_construction_platform, but the property library_construction_platform has been now removed.'
+        library_construction_platform_term_name = value['library_construction_platform'].get('term_name', '')
+        notes += f' This file_set previously had {library_construction_platform_term_name} submitted as library_construction_platform, but the property library_construction_platform has been now removed.'
         value['notes'] = notes.strip()
         del value['library_construction_platform']
