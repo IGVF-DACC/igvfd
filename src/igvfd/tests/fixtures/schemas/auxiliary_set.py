@@ -102,3 +102,13 @@ def auxiliary_set_v8(base_auxiliary_set):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def auxiliary_set_v9(base_auxiliary_set, platform_term_v3):
+    item = base_auxiliary_set.copy()
+    item.update({
+        'schema_version': '9',
+        'library_construction_platform': platform_term_v3['@id']
+    })
+    return item
