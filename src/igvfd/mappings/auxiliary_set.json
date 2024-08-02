@@ -1,6 +1,6 @@
 {
-    "hash": "99aa11f736836421c50bac0de0c24e42",
-    "index_name": "auxiliary_set_99aa11f7",
+    "hash": "9780a4616a298875c09f05a403b691d8",
+    "index_name": "auxiliary_set_9780a461",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -413,9 +413,6 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
-                                "type": "keyword"
-                            },
-                            "library_construction_platform": {
                                 "type": "keyword"
                             },
                             "lot_id": {
@@ -1143,9 +1140,6 @@
                         },
                         "type": "object"
                     },
-                    "library_construction_platform": {
-                        "type": "keyword"
-                    },
                     "measurement_sets": {
                         "properties": {
                             "@id": {
@@ -1211,9 +1205,6 @@
                                 "type": "keyword"
                             },
                             "lab": {
-                                "type": "keyword"
-                            },
-                            "library_construction_platform": {
                                 "type": "keyword"
                             },
                             "multiome_size": {
