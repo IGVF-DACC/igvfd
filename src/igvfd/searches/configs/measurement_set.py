@@ -31,9 +31,6 @@ def measurement_set():
             'samples.modifications.modality': {
                 'title': 'CRISPR Modality'
             },
-            'library_construction_platform.term_name': {
-                'title': 'Library Platform'
-            },
             'files.sequencing_platform.term_name': {
                 'title': 'Sequencing Platform'
             },
