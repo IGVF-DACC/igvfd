@@ -241,7 +241,7 @@ def test_audit_missing_institutional_certification(
     human_donor,
     assay_term_chip,
     institutional_certificate,
-    controlled_sequence_file,
+    controlled_sequence_file_object,
     analysis_set_base
 ):
     # No audit when there are no associated human donors.
@@ -273,7 +273,7 @@ def test_audit_missing_institutional_certification(
 
     # Characterization assays with controlled_access files are audited
     testapp.patch_json(
-        controlled_sequence_file['@id'],
+        controlled_sequence_file_object['@id'],
         {
             'file_set': measurement_set['@id'],
             'controlled_access': True
@@ -285,7 +285,7 @@ def test_audit_missing_institutional_certification(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
-        controlled_sequence_file['@id'],
+        controlled_sequence_file_object['@id'],
         {
             'file_set': analysis_set_base['@id']
         }
