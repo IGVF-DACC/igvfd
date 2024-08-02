@@ -148,6 +148,15 @@
             "oneOf": [
                 {
                     "enum": [
+                        "genome reference",
+                        "elements reference",
+                        "exclusion list",
+                        "inclusion list",
+                        "spike-ins"
+                    ]
+                },
+                {
+                    "enum": [
                         "biological_context",
                         "coding_variants",
                         "complexes",
@@ -158,16 +167,13 @@
                         "documentation (readme)",
                         "drugs",
                         "elements_genes",
-                        "elements reference",
-                        "exclusion list",
                         "genes",
                         "genes_genes",
                         "genes_pathways",
                         "genes_terms",
                         "genes_transcripts",
-                        "genome reference",
                         "go_terms_proteins",
-                        "inclusion list",
+                        "guide RNA sequences",
                         "motifs",
                         "motifs_proteins",
                         "ontology_terms",
@@ -183,7 +189,7 @@
                         "regulatory_regions_genes_biosamples_treatments_chebi",
                         "regulatory_regions_genes_biosamples_treatments_proteins",
                         "regulatory_regions_regulatory_regions",
-                        "spike-ins",
+                        "sequence barcodes",
                         "studies",
                         "studies_variants",
                         "studies_variants_phenotypes",
@@ -205,13 +211,7 @@
                         "variants_proteins_biosamples",
                         "variants_proteins_phenotypes",
                         "variants_regulatory_regions",
-                        "variants_variants"
-                    ]
-                },
-                {
-                    "enum": [
-                        "guide RNA sequences",
-                        "sequence barcodes",
+                        "variants_variants",
                         "vector sequences"
                     ],
                     "permission": "admin_only"
