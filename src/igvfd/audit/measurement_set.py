@@ -476,3 +476,84 @@ def audit_missing_construct_library_set(value, system):
             )
             yield AuditFailure('missing construct library set', f'{detail} {description}', level='NOT_COMPLIANT')
 
+
+@audit_checker('MeasurementSet', frame='embedded')
+def audit_missing_auxiliary_set(value, system):
+    '''
+    [
+        {
+            "audit_description": "MPRA measurement sets are expected to link to a quantification DNA barcode sequencing auxiliary set.",
+            "audit_category": "missing auxiliary set",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "scQer MPRA measurement sets are expected to link to a circularized RNA barcode detection auxiliary set.",
+            "audit_category": "missing auxiliary set",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "CRISPR-based assay measurement sets, with the exception of mutagenesis assays, are expected to link to a gRNA sequencing auxiliary set.",
+            "audit_category": "missing auxiliary set",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "CRISPR-based measurement sets that utilize flow cytometry are expected to link to a cell sorting auxiliary set.",
+            "audit_category": "missing auxiliary set",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Variant FlowFISH measurement sets are expected to link to a variant sequencing auxiliary set.",
+            "audit_category": "missing auxiliary set",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "10X Multiome MULTI-seq assay measurement sets are expected to link to a oligo-conjugated lipids auxiliary set.",
+            "audit_category": "missing auxiliary set",
+            "audit_level": "NOT_COMPLIANT"
+        }
+    ]
+    '''
+    description_MPRA = get_audit_description(audit_missing_auxiliary_set, index=0)
+    description_scQer = get_audit_description(audit_missing_auxiliary_set, index=1)
+    description_CRISPR_gRNA = get_audit_description(audit_missing_auxiliary_set, index=2)
+    description_CRISPR_flow = get_audit_description(audit_missing_auxiliary_set, index=3)
+    description_Variant_FlowFISH = get_audit_description(audit_missing_auxiliary_set, index=4)
+    description_10X_MULTI_seq = get_audit_description(audit_missing_auxiliary_set, index=5)
+
+    expected_auxiliary_set_by_assay_term = {
+        'massively parallel reporter assay': [('quantification DNA barcode sequencing', description_MPRA)],
+        'proliferation CRISPR screen': [('gRNA sequencing', description_CRISPR_gRNA)],
+        'CRISPR perturbation screen followed by flow cytometry and FISH': [('gRNA sequencing', description_CRISPR_gRNA), ('cell sorting', description_CRISPR_flow)],
+        'CRISPR perturbation screen followed by single-cell RNA sequencing': [('gRNA sequencing', description_CRISPR_gRNA)]
+    }
+    # preferred assay title expectations override any overlapping assay term expectation
+    expected_auxiliary_set_by_preferred_assay_title = {
+        'MPRA (scQer)': [('quantification DNA barcode sequencing', description_MPRA), ('circularized RNA barcode detection', description_scQer)]
+        'Variant FlowFISH': [('variant sequencing', description_Variant_FlowFISH), ('cell sorting', description_CRISPR_flow)],
+        '10x multiome with MULTI-seq ': [('oligo-conjugated lipids', description_10X_MULTI_seq)]
+    }
+
+    assay_term_name = value.get('assay_term').get('term_name')
+    preferred_assay_title = value.get('preferred_assay_title')
+    auxiliary_sets = value.get('auxiliary_sets')
+
+    if (assay_term_name in expected_auxiliary_set_by_assay_term or preferred_assay_title in expected_auxiliary_set_by_preferred_assay_title):
+
+        if preferred_assay_title in expected_auxiliary_set_by_preferred_assay_title:
+            expected_auxiliary_dict_to_check = expected_auxiliary_set_by_preferred_assay_title
+            assay_to_check = preferred_assay_title
+        else:
+            expected_auxiliary_dict_to_check = expected_auxiliary_set_by_assay_term
+            assay_to_check = assay_term_name
+
+        expected_auxiliary_sets = expected_auxiliary_dict_to_check[assay_to_check]
+        for expected_auxiliary_set in expected_auxiliary_sets:
+            expected_auxiliary_set_type = expected_auxiliary_set[assay_to_check][0]
+            description = expected_auxiliary_set[assay_to_check][1]
+
+            if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type', '') == expected_auxiliary_set_type]):
+                detail = (
+                    f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                    f'has no {expected_auxiliary_set_type} `auxiliary_sets`.'
+                )
+                yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
