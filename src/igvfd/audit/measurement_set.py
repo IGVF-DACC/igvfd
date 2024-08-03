@@ -239,7 +239,7 @@ def audit_missing_auxiliary_set_link(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_missing_auxiliary_sets)
+    description = get_audit_description(audit_missing_auxiliary_set_link)
     samples = value.get('samples', [])
     auxiliary_sets = value.get('auxiliary_sets', [])
     for sample in samples:
@@ -448,8 +448,8 @@ def audit_missing_auxiliary_set(value, system):
 
         expected_auxiliary_sets = expected_auxiliary_dict_to_check[assay_to_check]
         for expected_auxiliary_set in expected_auxiliary_sets:
-            expected_auxiliary_set_type = expected_auxiliary_set[assay_to_check][0]
-            description = expected_auxiliary_set[assay_to_check][1]
+            expected_auxiliary_set_type = expected_auxiliary_set[0]
+            description = expected_auxiliary_set[1]
 
             if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type', '') == expected_auxiliary_set_type]):
                 detail = (
