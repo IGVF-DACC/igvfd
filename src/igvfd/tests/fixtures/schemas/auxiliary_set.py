@@ -22,6 +22,16 @@ def auxiliary_set_cell_sorting(testapp, lab, award):
 
 
 @pytest.fixture
+def auxiliary_set_circularized_RNA(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'circularized RNA barcode detection'
+    }
+    return testapp.post_json('/auxiliary_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def auxiliary_set_v1(base_auxiliary_set):
     item = base_auxiliary_set.copy()
     item.update({

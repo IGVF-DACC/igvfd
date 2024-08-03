@@ -724,7 +724,8 @@ def test_audit_missing_auxiliary_set_MPRA(
     testapp,
     measurement_set,
     assay_term_mpra,
-    base_auxiliary_set
+    base_auxiliary_set,
+    auxiliary_set_circularized_RNA
 ):
     testapp.patch_json(
         measurement_set['@id'],
@@ -758,6 +759,28 @@ def test_audit_missing_auxiliary_set_MPRA(
         base_auxiliary_set['@id'],
         {
             'file_set_type': 'quantification DNA barcode sequencing'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_title': 'MPRA (scQer)'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id'], auxiliary_set_circularized_RNA_barcode_detection['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
