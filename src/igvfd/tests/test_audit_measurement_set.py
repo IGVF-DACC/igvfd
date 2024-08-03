@@ -780,7 +780,7 @@ def test_audit_missing_auxiliary_set_MPRA(
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'auxiliary_sets': [base_auxiliary_set['@id'], auxiliary_set_circularized_RNA_barcode_detection['@id']]
+            'auxiliary_sets': [base_auxiliary_set['@id'], auxiliary_set_circularized_RNA['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
