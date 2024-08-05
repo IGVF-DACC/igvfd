@@ -667,7 +667,7 @@ def test_audit_unexpected_virtual_sample(
     )
 
 
-def test_audit_CRSIPR_screen_missing_files(
+def test_audit_CRISPR_screen_missing_files(
     testapp,
     measurement_set_no_files,
     assay_term_crispr

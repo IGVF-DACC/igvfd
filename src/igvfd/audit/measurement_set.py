@@ -407,7 +407,7 @@ def audit_missing_auxiliary_set(value, system):
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "10X Multiome MULTI-seq assay measurement sets are expected to link to a oligo-conjugated lipids auxiliary set.",
+            "audit_description": "10X Multiome MULTI-seq assay measurement sets are expected to link to an oligo-conjugated lipids auxiliary set.",
             "audit_category": "missing auxiliary set",
             "audit_level": "NOT_COMPLIANT"
         }
