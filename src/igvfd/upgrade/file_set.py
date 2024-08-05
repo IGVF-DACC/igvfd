@@ -374,3 +374,21 @@ def measurement_set_18_19_auxiliary_set_9_10(value, system):
         notes += f' This file_set previously had {library_construction_platform} submitted as library_construction_platform, but the property library_construction_platform has been now removed.'
         value['notes'] = notes.strip()
         del value['library_construction_platform']
+
+
+@upgrade_step('auxiliary_set', '10', '11')
+def auxiliary_set_10_11(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1797
+    old_to_new = {
+        'cell hashing': 'cell hashing barcode sequencing',
+        'oligo-conjugated lipids': 'lipid-conjugated olgio sequencing'
+    }
+    if 'file_set_type' in value:
+        old_file_set_type = value['file_set_type']
+        if old_file_set_type in old_to_new:
+            value['file_set_type'] = old_to_new[old_file_set_type]
+            if 'notes' in value:
+                value['notes'] = f"{value['notes']}. File_set_type enum {old_file_set_type} has been renamed to be {old_to_new[old_file_set_type]}."
+            else:
+                value['notes'] = f'File_set_type enum {old_file_set_type} has been renamed to be {old_to_new[old_file_set_type]}.'
+    return

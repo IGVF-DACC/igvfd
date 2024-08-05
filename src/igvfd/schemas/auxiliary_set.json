@@ -62,8 +62,7 @@
                 "gRNA sequencing",
                 "lipid-conjugated olgio sequencing",
                 "quantification DNA barcode sequencing",
-                "variant sequencing",
-                "ORF barcode sequencing"
+                "variant sequencing"
             ],
             "submissionExample": {
                 "appscript": "cell hashing",
