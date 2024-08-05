@@ -50,7 +50,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "9"
+            "default": "10"
         },
         "file_set_type": {
             "description": "The category that best describes this auxiliary file set.",
@@ -67,17 +67,6 @@
             "submissionExample": {
                 "appscript": "cell hashing",
                 "igvf_utils": "cell hashing"
-            }
-        },
-        "library_construction_platform": {
-            "title": "Library Construction Platform",
-            "description": "The platform used to construct the library sequenced in this auxiliary set.",
-            "comment": "See platform_term.json for available identifiers.",
-            "type": "string",
-            "linkTo": "PlatformTerm",
-            "submissionExample": {
-                "appscript": "/platform-terms/EFO_0004203/ or john-doe:platform01",
-                "igvf_utils": "/platform-terms/EFO_0004203/ or john-doe:platform01"
             }
         }
     },

@@ -11,3 +11,8 @@ def test_non_unique_software(testapp, software_version):
         '/software_version', software_version, expect_errors=True
     )
     assert res.status_code == 422
+
+
+def test_software_version_summary(software_version, testapp):
+    res = testapp.get(software_version['@id'])
+    assert res.json['summary'] == 'Bowtie2 v2.4.4'

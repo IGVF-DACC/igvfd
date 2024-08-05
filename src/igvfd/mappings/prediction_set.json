@@ -1,6 +1,6 @@
 {
-    "hash": "4698ce69c69bc9a71ed63e19cd0257d3",
-    "index_name": "prediction_set_4698ce69",
+    "hash": "e9cc3315e0178828c5dec64ee2955db5",
+    "index_name": "prediction_set_e9cc3315",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -413,9 +413,6 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
-                                "type": "keyword"
-                            },
-                            "library_construction_platform": {
                                 "type": "keyword"
                             },
                             "lot_id": {

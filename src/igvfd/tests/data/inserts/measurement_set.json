@@ -23,7 +23,6 @@
         "dbxrefs": [
             "GEO:GSE187549"
         ],
-        "library_construction_platform": "9ed48993-8f87-f432-42ac-c34a0f5caa20",
         "auxiliary_sets": [
             "IGVFDS0001AUXI"
         ],
@@ -357,6 +356,22 @@
         ],
         "assay_term": "/assay-terms/OBI_0002440/",
         "preferred_assay_title": "Hi-C",
+        "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:spatial_transcriptomics"
+        ],
+        "award": "1U01HG012103-01",
+        "lab": "christina-leslie",
+        "status": "released",
+        "release_timestamp": "2024-07-06T12:35:55Z",
+        "uuid": "bfc47009-632e-4a26-9abb-f8dccc3803d7",
+        "samples": [
+            "IGVFSM0003KASP"
+        ],
+        "assay_term": "/assay-terms/NTR_000761/",
+        "preferred_assay_title": "Spatial transcriptomics",
         "file_set_type": "experimental data"
     }
 ]

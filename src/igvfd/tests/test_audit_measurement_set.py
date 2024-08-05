@@ -232,7 +232,7 @@ def test_audit_preferred_assay_title(
     )
 
 
-def test_audit_inconsistent_institutional_certification(
+def test_audit_missing_institutional_certification(
     testapp,
     measurement_set,
     assay_term_mpra,
@@ -240,12 +240,14 @@ def test_audit_inconsistent_institutional_certification(
     tissue,
     human_donor,
     assay_term_chip,
-    institutional_certificate
+    institutional_certificate,
+    controlled_sequence_file_object,
+    analysis_set_base
 ):
     # No audit when there are no associated human donors.
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing nih certification'
+        error['category'] != 'missing NIH certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -265,8 +267,28 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing nih certification'
+        error['category'] != 'missing NIH certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+    # Characterization assays with controlled_access files are audited
+    testapp.patch_json(
+        controlled_sequence_file_object['@id'],
+        {
+            'file_set': measurement_set['@id'],
+            'controlled_access': True
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing NIH certification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        controlled_sequence_file_object['@id'],
+        {
+            'file_set': analysis_set_base['@id']
+        }
     )
 
     # Non-characterization assays are audited
@@ -278,7 +300,7 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing nih certification'
+        error['category'] == 'missing NIH certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -291,7 +313,7 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert all(
-        error['category'] != 'missing nih certification'
+        error['category'] != 'missing NIH certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
@@ -304,7 +326,7 @@ def test_audit_inconsistent_institutional_certification(
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
     assert any(
-        error['category'] == 'missing nih certification'
+        error['category'] == 'missing NIH certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 

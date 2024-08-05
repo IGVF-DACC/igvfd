@@ -1,6 +1,6 @@
 {
-    "hash": "65470267c9bf50c243da95fd1dc17f35",
-    "index_name": "analysis_set_65470267",
+    "hash": "7dc1cf2cc8b1296b87b40486954f333f",
+    "index_name": "analysis_set_7dc1cf2c",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -417,9 +417,6 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
-                                "type": "keyword"
-                            },
-                            "library_construction_platform": {
                                 "type": "keyword"
                             },
                             "lot_id": {
@@ -1202,9 +1199,6 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
-                                "type": "keyword"
-                            },
-                            "library_construction_platform": {
                                 "type": "keyword"
                             },
                             "lot_id": {

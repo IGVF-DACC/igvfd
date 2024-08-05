@@ -171,8 +171,8 @@ def audit_missing_institutional_certification(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets for mapping assays involving samples with a human origin are expected to link to the relevant institutional certificates issued to a matching lab and award.",
-            "audit_category": "missing nih certification",
+            "audit_description": "Measurement sets for mapping assays or controlled access characterization assays involving samples with a human origin are expected to link to the relevant institutional certificates issued to a matching lab and award.",
+            "audit_category": "missing NIH certification",
             "audit_level": "NOT_COMPLIANT"
         }
     ]
@@ -181,16 +181,19 @@ def audit_missing_institutional_certification(value, system):
     # Only audit Measurement Sets with at least one human sample.
     donors = value.get('donors', [])
     taxa = set()
-    for d in donors:
-        donor_obj = system.get('request').embed(d, '@@object?skip_calculated=true')
+    for donor in donors:
+        donor_obj = system.get('request').embed(donor, '@@object?skip_calculated=true')
         taxa.add(donor_obj.get('taxa', ''))
     if 'Homo sapiens' not in taxa:
         return
 
-    # Characterization assays do not need to be audited.
+    # Characterization assays do not need to be audited if they do not have controlled access data.
     characterization_assays = [
         'OBI:0003133',  # cas mediated mutagenesis
         'NTR:0000520',  # CRISPR screen
+        'NTR:0000657',  # proliferation CRISPR screen
+        'NTR:0000722',  # CRISPR perturbation screen followed by flow cytometry and FISH
+        'NTR:0000776',  # CRISPR perturbation screen followed by single-cell RNA sequencing
         'OBI:0000916',  # flow cytometry assay
         'OBI:0000185',  # imaging assay
         'OBI:0002675',  # massively parallel reporter assay',
@@ -200,15 +203,16 @@ def audit_missing_institutional_certification(value, system):
     assay_term = value.get('assay_term', '')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_term_id = assay_object.get('term_id', '')
-    if assay_term_id in characterization_assays:
+    files = [system.get('request').embed(file, '@@object?skip_calculated=true') for file in value.get('files', '')]
+    if assay_term_id in characterization_assays and not (any([file.get('controlled_access') for file in files])):
         return
 
     lab = value.get('lab', '')
     award = value.get('award', '')
     samples = value.get('samples', [])
 
-    for s in samples:
-        sample_object = system.get('request').embed(s, '@@object')
+    for sample in samples:
+        sample_object = system.get('request').embed(sample, '@@object')
         nic_labs = []
         nic_awards = []
         for nic in sample_object.get('institutional_certificates', []):
@@ -218,10 +222,10 @@ def audit_missing_institutional_certification(value, system):
         if lab not in nic_labs or award not in nic_awards:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
-                f'a sample {audit_link(path_to_text(s),s)} that lacks any `institutional_certificates` '
+                f'a sample {audit_link(path_to_text(sample),sample)} that lacks any `institutional_certificates` '
                 f'issued to the lab that submitted this file set.'
             )
-            yield AuditFailure('missing nih certification', f'{detail} {description}', level='NOT_COMPLIANT')
+            yield AuditFailure('missing NIH certification', f'{detail} {description}', level='NOT_COMPLIANT')
 
 
 @audit_checker('MeasurementSet', frame='embedded')

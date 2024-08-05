@@ -2,6 +2,58 @@
 
 ### Minor changes since schema version 14
 
+* Adjust `content_type` enum list to restrict usage of `biological_context` to admin users.
+* Adjust `content_type` enum list to restrict usage of `coding_variants` to admin users.
+* Adjust `content_type` enum list to restrict usage of `complexes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `complexes_complexes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `complexes_proteins` to admin users.
+* Adjust `content_type` enum list to restrict usage of `complexes_terms` to admin users.
+* Adjust `content_type` enum list to restrict usage of `diseases_genes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `documentation (readme)` to admin users.
+* Adjust `content_type` enum list to restrict usage of `drugs` to admin users.
+* Adjust `content_type` enum list to restrict usage of `elements_genes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `genes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `genes_genes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `genes_pathways` to admin users.
+* Adjust `content_type` enum list to restrict usage of `genes_terms` to admin users.
+* Adjust `content_type` enum list to restrict usage of `genes_transcripts` to admin users.
+* Adjust `content_type` enum list to restrict usage of `go_terms_proteins` to admin users.
+* Adjust `content_type` enum list to restrict usage of `motifs` to admin users.
+* Adjust `content_type` enum list to restrict usage of `motifs_proteins` to admin users.
+* Adjust `content_type` enum list to restrict usage of `ontology_terms` to admin users.
+* Adjust `content_type` enum list to restrict usage of `ontology_terms_ontology_terms` to admin users.
+* Adjust `content_type` enum list to restrict usage of `pathways` to admin users.
+* Adjust `content_type` enum list to restrict usage of `pathways_pathways` to admin users.
+* Adjust `content_type` enum list to restrict usage of `proteins` to admin users.
+* Adjust `content_type` enum list to restrict usage of `proteins_proteins` to admin users.
+* Adjust `content_type` enum list to restrict usage of `regulatory_regions` to admin users.
+* Adjust `content_type` enum list to restrict usage of `regulatory_regions_genes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `regulatory_regions_genes_biosamples` to admin users.
+* Adjust `content_type` enum list to restrict usage of `regulatory_regions_genes_biosamples_donors` to admin users.
+* Adjust `content_type` enum list to restrict usage of `regulatory_regions_genes_biosamples_treatments_chebi` to admin users.
+* Adjust `content_type` enum list to restrict usage of `regulatory_regions_genes_biosamples_treatments_proteins` to admin users.
+* Adjust `content_type` enum list to restrict usage of `regulatory_regions_regulatory_regions` to admin users.
+* Adjust `content_type` enum list to restrict usage of `studies` to admin users.
+* Adjust `content_type` enum list to restrict usage of `studies_variants` to admin users.
+* Adjust `content_type` enum list to restrict usage of `studies_variants_phenotypes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `transcriptome reference` to admin users.
+* Adjust `content_type` enum list to restrict usage of `transcripts` to admin users.
+* Adjust `content_type` enum list to restrict usage of `transcripts_proteins` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_coding_variants` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_diseases` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_diseases_genes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_drugs` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_drugs_genes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_genes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_genes_terms` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_phenotypes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_phenotypes_studies` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_proteins` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_proteins_terms` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_proteins_biosamples` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_proteins_phenotypes` to admin users.
+* Adjust `content_type` enum list to restrict usage of `variants_regulatory_regions` to admin users.
 * Extend `content_type` enum list to include `coding_variants`.
 * Extend `content_type` enum list to include `documentation (readme)`.
 * Extend `content_type` enum list to include `variants_coding_variants`.
@@ -57,7 +109,7 @@
 * Add `release_timestamp`.
 * Add `MPRAbase` to `collections`.
 * Add `proteins_proteins`, `regulatory_regions_genes`, `regulatory_regions_genes_biosamples`, `regulatory_regions_genes_biosamples_donors`, `regulatory_regions_genes_biosamples_treatments_chebi`, `regulatory_regions_genes_biosamples_treatments_proteins`, and `variants_genes_terms` to `content_type`.
-* Restrict submission of `guide RNA sequences`, `sequence barcodes`, `vector sequences` to admin users.
+* Adjust `content_type` enum list to restrict usage of `guide RNA sequences`, `sequence barcodes`, `vector sequences` to admin users.
 
 ### Schema version 10
 

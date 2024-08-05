@@ -378,7 +378,6 @@ class MeasurementSet(FileSet):
     schema = load_schema('igvfd:schemas/measurement_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('assay_term', include=['@id', 'term_name']),
-        Path('library_construction_platform', include=['@id', 'term_name']),
         Path('control_file_sets', include=['@id', 'accession', 'aliases']),
         Path('related_multiome_datasets', include=['@id', 'accession']),
         Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type']),
@@ -394,13 +393,11 @@ class MeasurementSet(FileSet):
 
     audit_inherit = FileSet.audit_inherit + [
         'auxiliary_sets',
-        'library_construction_platform',
-        'assay_term',
+        'assay_term'
     ]
 
     set_status_up = FileSet.set_status_up + [
-        'assay_term',
-        'library_construction_platform',
+        'assay_term'
     ]
     set_status_down = FileSet.set_status_down + []
 
@@ -561,7 +558,7 @@ class AuxiliarySet(FileSet):
     audit_inherit = FileSet.audit_inherit
     rev = FileSet.rev | {'measurement_sets': ('MeasurementSet', 'auxiliary_sets')}
     set_status_up = FileSet.set_status_up + [
-        'library_construction_platform'
+
     ]
     set_status_down = FileSet.set_status_down + []
 

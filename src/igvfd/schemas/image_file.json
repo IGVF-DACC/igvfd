@@ -56,14 +56,9 @@
                     "enum": [
                         "detected tissue",
                         "low resolution tissue",
-                        "high resolution tissue"
-                    ]
-                },
-                {
-                    "enum": [
+                        "high resolution tissue",
                         "fiducial alignment"
-                    ],
-                    "permission": "admin_only"
+                    ]
                 }
             ],
             "submissionExample": {

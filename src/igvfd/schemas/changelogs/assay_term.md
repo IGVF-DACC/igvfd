@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 6
 
+* Extend `preferred_assay_titles` enum list to include `Spatial transcriptomics`.
 * Update calculation of `summary`.
 * Extend `preferred_assay_titles` enum list to include `scNT-seq2`.
 

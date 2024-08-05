@@ -50,3 +50,13 @@ class Software(Item):
     })
     def versions(self, request, versions):
         return paths_filtered_by_status(request, versions)
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, title):
+        return title
