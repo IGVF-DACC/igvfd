@@ -3,7 +3,6 @@
 ### Schema version 11
 * Rename `file_set_type` enum `cell hashing` to `cell hashing barcode sequencing`.
 * Rename `file_set_type` enum `olgio conjugated lipid` to `lipid-conjugated olgio sequencing`.
-* Add `ORF barcode sequencing` to `file_set_type`.
 
 ### Schema version 10
 

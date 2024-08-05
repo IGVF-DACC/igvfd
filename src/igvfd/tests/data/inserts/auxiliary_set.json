@@ -92,20 +92,6 @@
     },
     {
         "aliases": [
-            "igvf:auxiliary_set_orf_barcode_sequencing"
-        ],
-        "file_set_type": "ORF barcode sequencing",
-        "samples": [
-            "igvf:alias4"
-        ],
-        "award": "1UM1HG011972-01",
-        "lab": "jesse-engreitz",
-        "status": "released",
-        "release_timestamp": "2024-06-06T12:34:56Z",
-        "uuid": "50db0bf6-be09-4277-ae87-0f0ebf6e53fa"
-    },
-    {
-        "aliases": [
             "igvf:auxiliary_set_lipid_conjugated_oligio_sequencing"
         ],
         "file_set_type": "lipid-conjugated olgio sequencing",
