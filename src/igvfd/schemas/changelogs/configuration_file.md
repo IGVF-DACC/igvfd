@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 7
 
+* Extend `content_type` enum list to include `scale factors`.
+* Extend `file_format` enum list to include `json`.
 * Update calculation of `summary`.
 * Add `analysis_step_version`.
 * Add calculated property `input_file_for`.

@@ -28,6 +28,19 @@ def configuration_file_seqspec_2(testapp, lab, award, measurement_set):
 
 
 @pytest.fixture
+def configuration_file_json(testapp, lab, award, measurement_set):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '0702dd4765dbc6ae2465a6cc8c3dc8c3',
+        'file_format': 'json',
+        'file_set': measurement_set['@id'],
+        'content_type': 'scale factors'
+    }
+    return testapp.post_json('/configuration_file', item).json['@graph'][0]
+
+
+@pytest.fixture
 def configuration_file_v1(configuration_file_seqspec):
     item = configuration_file_seqspec.copy()
     item.update({

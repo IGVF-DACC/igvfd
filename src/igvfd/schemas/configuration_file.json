@@ -42,7 +42,48 @@
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
-        ]
+        ],
+        "content_type": {
+            "comment": "Only configuration files with content_type seqspec are allowed to submit seqspec_of. Configuration files with content_type seqspec are limited to file_format yaml.",
+            "allOf": [
+                {
+                    "if": {
+                        "not": {
+                            "properties": {
+                                "content_type": {
+                                    "const": "seqspec"
+                                }
+                            }
+                        }
+                    },
+                    "then": {
+                        "not": {
+                            "required": [
+                                "seqspec_of"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "content_type": {
+                                "const": "seqspec"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "file_format": {
+                                "enum": [
+                                    "yaml"
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
     },
     "type": "object",
     "properties": {
@@ -52,7 +93,8 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
-                "seqspec"
+                "seqspec",
+                "scale factors"
             ],
             "submissionExample": {
                 "appscript": "seqspec",
@@ -61,7 +103,8 @@
         },
         "file_format": {
             "enum": [
-                "yaml"
+                "yaml",
+                "json"
             ],
             "submissionExample": {
                 "appscript": "yaml",

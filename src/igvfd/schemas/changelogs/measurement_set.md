@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 18
+
+* Extend `preferred_assay_title` enum list to include `Spatial transcriptomics`.
+
 ### Schema version 18
 
 * Remove `publication_identifiers`.
