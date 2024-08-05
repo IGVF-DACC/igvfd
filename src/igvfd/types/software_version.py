@@ -83,3 +83,14 @@ class SoftwareVersion(Item):
         if software_uuid:
             request._linked_uuids.add(str(software_uuid))
         return None
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, software, version):
+        software_object = request.embed(software)
+        return f'{software_object["title"]} {version}'
