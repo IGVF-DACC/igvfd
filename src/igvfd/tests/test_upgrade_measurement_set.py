@@ -115,3 +115,9 @@ def test_measurement_set_upgrade_17_18(upgrader, measurement_set_v17):
     value = upgrader.upgrade('measurement_set', measurement_set_v17, current_version='17', target_version='18')
     assert value['schema_version'] == '18'
     assert 'publication_identifiers' not in value
+
+
+def test_measurement_set_upgrade_18_19(upgrader, measurement_set_v18):
+    value = upgrader.upgrade('measurement_set', measurement_set_v18, current_version='18', target_version='19')
+    assert value['schema_version'] == '19'
+    assert 'library_construction_platform' not in value

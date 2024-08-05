@@ -1,6 +1,6 @@
 {
-    "hash": "9bf4e203e0e2e40470fa79e3e5aa4e9b",
-    "index_name": "in_vitro_system_9bf4e203",
+    "hash": "48d4d138a2cee398c47abf484638e54d",
+    "index_name": "in_vitro_system_48d4d138",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -746,9 +746,6 @@
                                 "type": "keyword"
                             },
                             "large_scale_loci_list": {
-                                "type": "keyword"
-                            },
-                            "library_construction_platform": {
                                 "type": "keyword"
                             },
                             "lot_id": {

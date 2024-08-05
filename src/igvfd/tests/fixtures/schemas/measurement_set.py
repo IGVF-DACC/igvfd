@@ -223,3 +223,13 @@ def measurement_set_v17(measurement_set):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v18(measurement_set_v17, platform_term_v3):
+    item = measurement_set_v17.copy()
+    item.update({
+        'schema_version': '18',
+        'library_construction_platform': platform_term_v3['@id']
+    })
+    return item
