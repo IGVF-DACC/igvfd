@@ -430,7 +430,7 @@ def audit_missing_auxiliary_set(value, system):
     expected_auxiliary_set_by_preferred_assay_title = {
         'MPRA (scQer)': [('quantification DNA barcode sequencing', description_MPRA), ('circularized RNA barcode detection', description_scQer)],
         'Variant FlowFISH': [('variant sequencing', description_Variant_FlowFISH), ('cell sorting', description_CRISPR_flow)],
-        '10x multiome with MULTI-seq ': [('oligo-conjugated lipids', description_10X_MULTI_seq)]
+        '10x multiome with MULTI-seq': [('oligo-conjugated lipids', description_10X_MULTI_seq)]
     }
 
     assay_term_name = value.get('assay_term').get('term_name')
