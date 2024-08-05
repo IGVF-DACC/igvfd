@@ -124,6 +124,7 @@
                 "tissue positions",
                 "sample sort parameters",
                 "sequence barcodes",
+                "SNP effect matrix",
                 "variants",
                 "variant effects",
                 "variant to element mapping"

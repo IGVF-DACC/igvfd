@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `content_type` enum list to include `SNP effect matrix`.
 * Extend `content_type` enum list to include `tissue positions`.
 * Extend `content_type` enum list to include `prime editing guide RNA sequences`.
 * Update calculation of `summary`.
