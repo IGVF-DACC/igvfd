@@ -638,16 +638,99 @@ def test_audit_inconsistent_sequencing_kit(
     )
 
 
-def test_audit_missing_gRNA_auxiliary_set(
+def test_audit_unexpected_virtual_sample(
     testapp,
     measurement_set,
-    assay_term_crispr,
-    base_auxiliary_set
+    tissue
 ):
     testapp.patch_json(
         measurement_set['@id'],
         {
+            'samples': [tissue['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        tissue['@id'],
+        {
+            'virtual': True
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+
+
+def test_audit_CRISPR_screen_missing_files(
+    testapp,
+    measurement_set_no_files,
+    assay_term_crispr
+):
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing files'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
+        {
             'assay_term': assay_term_crispr['@id']
+        }
+    )
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing files'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+
+def test_audit_missing_auxiliary_set_link(
+    testapp,
+    measurement_set,
+    base_auxiliary_set,
+    tissue
+):
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+
+def test_audit_missing_auxiliary_set_MPRA(
+    testapp,
+    measurement_set,
+    assay_term_mpra,
+    base_auxiliary_set,
+    auxiliary_set_circularized_RNA
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_mpra['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -658,7 +741,7 @@ def test_audit_missing_gRNA_auxiliary_set(
     testapp.patch_json(
         base_auxiliary_set['@id'],
         {
-            'file_set_type': 'quantification DNA barcode sequencing'
+            'file_set_type': 'variant sequencing'
         }
     )
     testapp.patch_json(
@@ -675,7 +758,29 @@ def test_audit_missing_gRNA_auxiliary_set(
     testapp.patch_json(
         base_auxiliary_set['@id'],
         {
-            'file_set_type': 'gRNA sequencing'
+            'file_set_type': 'quantification DNA barcode sequencing'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_title': 'MPRA (scQer)'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id'], auxiliary_set_circularized_RNA['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -685,7 +790,7 @@ def test_audit_missing_gRNA_auxiliary_set(
     )
 
 
-def test_audit_missing_variant_sequencing_auxiliary_set(
+def test_audit_missing_auxiliary_set_Variant_FlowFISH(
     testapp,
     measurement_set,
     base_auxiliary_set,
@@ -734,115 +839,16 @@ def test_audit_missing_variant_sequencing_auxiliary_set(
     )
 
 
-def test_audit_unexpected_virtual_sample(
+def test_audit_missing_auxiliary_set_CRISPR_gRNA_sequencing(
     testapp,
     measurement_set,
-    tissue
-):
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'samples': [tissue['@id']]
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'unexpected sample'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-    testapp.patch_json(
-        tissue['@id'],
-        {
-            'virtual': True
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'unexpected sample'
-        for error in res.json['audit'].get('ERROR', [])
-    )
-
-
-def test_audit_missing_auxiliary_set(
-    testapp,
-    measurement_set,
-    base_auxiliary_set,
-    tissue
-):
-    testapp.patch_json(
-        base_auxiliary_set['@id'],
-        {
-            'samples': [tissue['@id']]
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing auxiliary set'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'auxiliary_sets': [base_auxiliary_set['@id']]
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing auxiliary set'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-
-
-def test_audit_CRSIPR_screen_missing_files(
-    testapp,
-    measurement_set_no_files,
-    assay_term_crispr
-):
-    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing files'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-    testapp.patch_json(
-        measurement_set_no_files['@id'],
-        {
-            'assay_term': assay_term_crispr['@id']
-        }
-    )
-    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing files'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-
-
-def test_audit_MPRA_missing_barcode_sequencing_auxiliary_set(
-    testapp,
-    measurement_set,
-    assay_term_mpra,
+    assay_term_crispr,
     base_auxiliary_set
 ):
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'assay_term': assay_term_mpra['@id']
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing auxiliary set'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    testapp.patch_json(
-        base_auxiliary_set['@id'],
-        {
-            'file_set_type': 'variant sequencing'
-        }
-    )
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'auxiliary_sets': [base_auxiliary_set['@id']]
+            'assay_term': assay_term_crispr['@id']
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
@@ -854,6 +860,59 @@ def test_audit_MPRA_missing_barcode_sequencing_auxiliary_set(
         base_auxiliary_set['@id'],
         {
             'file_set_type': 'quantification DNA barcode sequencing'
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'file_set_type': 'gRNA sequencing'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+
+def test_audit_missing_auxiliary_set_10x_MULTI_seq(
+    testapp,
+    measurement_set,
+    assay_term_crispr,
+    base_auxiliary_set
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_title': '10x multiome with MULTI-seq'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing auxiliary set'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        base_auxiliary_set['@id'],
+        {
+            'file_set_type': 'oligo-conjugated lipids'
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
