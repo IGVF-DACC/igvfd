@@ -13,6 +13,18 @@ def alignment_file():
             'content_type': {
                 'title': 'Content Type'
             },
+            'assembly': {
+                'title': 'Assembly'
+            },
+            'transcriptome_annotation': {
+                'title': 'Transcriptome Annotation'
+            },
+            'filtered': {
+                'title': 'Filtered'
+            },
+            'redacted': {
+                'title': 'Redacted'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -47,6 +59,15 @@ def alignment_file():
                 'facet_fields': [
                     'file_format',
                     'content_type',
+                    'redacted',
+                    'filtered',
+                ],
+            },
+            {
+                'title': 'Assembly',
+                'facet_fields': [
+                    'assembly',
+                    'transcriptome_annotation',
                 ],
             },
             {
