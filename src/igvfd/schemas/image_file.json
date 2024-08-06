@@ -51,15 +51,11 @@
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
-            "oneOf": [
-                {
-                    "enum": [
-                        "detected tissue",
-                        "low resolution tissue",
-                        "high resolution tissue",
-                        "fiducial alignment"
-                    ]
-                }
+            "enum": [
+                "detected tissue",
+                "low resolution tissue",
+                "high resolution tissue",
+                "fiducial alignment"
             ],
             "submissionExample": {
                 "appscript": "detected tissue",
