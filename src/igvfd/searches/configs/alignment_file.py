@@ -59,8 +59,8 @@ def alignment_file():
                 'facet_fields': [
                     'file_format',
                     'content_type',
-                    'redacted',
                     'filtered',
+                    'redacted',
                 ],
             },
             {
