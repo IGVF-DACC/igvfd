@@ -13,8 +13,14 @@ def reference_file():
             'content_type': {
                 'title': 'Content Type'
             },
+            'file_format_type': {
+                'title': 'File Format Type'
+            },
             'assembly': {
                 'title': 'Assembly'
+            },
+            'transcriptome_annotation': {
+                'title': 'Transcriptome Annotation'
             },
             'collections': {
                 'title': 'Collections'
@@ -52,13 +58,15 @@ def reference_file():
                 'title': 'Format',
                 'facet_fields': [
                     'file_format',
+                    'file_format_type',
                     'content_type',
                 ],
             },
             {
-                'title': 'Analysis',
+                'title': 'Assembly',
                 'facet_fields': [
                     'assembly',
+                    'transcriptome_annotation',
                 ],
             },
             {
