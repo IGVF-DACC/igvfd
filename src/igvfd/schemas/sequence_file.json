@@ -107,6 +107,14 @@
                     }
                 }
             ]
+        },
+        "base_modifications": {
+            "comment": "Only Nanopore reads can specify base modifications.",
+            "properties": {
+                "content_type": {
+                    "const": "Nanopore reads"
+                }
+            }
         }
     },
     "type": "object",
@@ -295,6 +303,28 @@
             "submissionExample": {
                 "appscript": "ACTGGTCC",
                 "igvf_utils": "ACTGGTCC"
+            }
+        },
+        "base_modifications": {
+            "title": "Base Modifications",
+            "description": "The chemical modifications to bases in a DNA sequence that are detected in this file.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Base Modification",
+                "description": "The chemical modification to bases in a DNA sequence that is detected in this file.",
+                "type": "string",
+                "enum": [
+                    "4mC",
+                    "5hmC",
+                    "5mC",
+                    "6mA"
+                ]
+            },
+            "submissionExample": {
+                "appscript": "[\"5mC\"]",
+                "igvf_utils": "5mC"
             }
         }
     },

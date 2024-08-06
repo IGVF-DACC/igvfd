@@ -380,3 +380,18 @@ def test_controlled_sequence_file_release(testapp, controlled_sequence_file_obje
         expect_errors=True
     )
     assert res.status_code == 200
+
+
+def test_sequence_file_base_modifications(testapp, sequence_file):
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {'base_modifications': ['5mC']},
+        expect_errors=True
+    )
+    assert res.status_code == 422
+
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {'base_modifications': ['5mC'], 'content_type': 'Nanopore reads', 'file_format': 'pod5'}
+    )
+    assert res.status_code == 200

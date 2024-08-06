@@ -105,6 +105,10 @@
         "content_md5sum": "61aa8a43b413bc73bc59c13d6e1271d6",
         "file_format": "pod5",
         "content_type": "Nanopore reads",
+        "base_modifications": [
+            "5mC",
+            "5hmC"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/nanopore_raw.pod5",
         "file_size": 38200183,
         "upload_status": "validated",

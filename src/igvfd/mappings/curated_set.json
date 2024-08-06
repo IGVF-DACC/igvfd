@@ -1,6 +1,6 @@
 {
-    "hash": "57cdef27099d3c17c3006149d32280d9",
-    "index_name": "curated_set_57cdef27",
+    "hash": "54d40b7de344eff6e77f0bb05f3d983e",
+    "index_name": "curated_set_54d40b7d",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -815,6 +815,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "base_modifications": {
                                 "type": "keyword"
                             },
                             "collections": {
