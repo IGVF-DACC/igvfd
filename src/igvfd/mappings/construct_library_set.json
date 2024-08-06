@@ -1538,6 +1538,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "base_modifications": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
