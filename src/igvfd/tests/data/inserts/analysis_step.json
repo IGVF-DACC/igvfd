@@ -15,11 +15,145 @@
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [
-            "reads"
+            "reads",
+            "PacBio subreads",
+            "Nanopore reads"
         ],
         "output_content_types": [
             "alignments",
+            "transcriptome annotations",
+            "spike-ins",
+            "inclusion list",
+            "exclusion list",
+            "elements reference",
+            "genome reference"
+        ],
+        "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
+    },
+    {
+        "uuid": "5f762820-7a03-4fdf-8cd6-94c6f055d3d0",
+        "lab": "jay-shendure",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "jay-shendure:analysis_step_02"
+        ],
+        "status": "released",
+        "title": "Signal to Matrix Analysis Step",
+        "step_label": "signal-to-matrix-analysis-step",
+        "analysis_step_types": [
+            "quantification"
+        ],
+        "release_timestamp": "2024-08-06T12:34:56Z",
+        "input_content_types": [
+            "peaks",
+            "fold change over control",
+            "control signal",
+            "read-depth signal",
+            "raw signal",
+            "signal p-value",
+            "signal of unique reads",
+            "signal of all reads",
+            "signal"
+        ],
+        "output_content_types": [
+            "contact matrix",
+            "filtered feature barcode matrix",
+            "raw feature barcode matrix",
+            "sparse gene count matrix",
+            "sparse peak count matrix",
+            "sparse transcript count matrix",
             "transcriptome annotations"
+        ],
+        "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
+    },
+    {
+        "uuid": "0e78ac16-703d-486f-809b-8899dffe70aa",
+        "lab": "danwei-huangfu",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "danwei-huangfu:analysis_step_02"
+        ],
+        "status": "released",
+        "title": "Imaging Annotation Analysis Step",
+        "step_label": "imaging-annotation-analysis-step",
+        "analysis_step_types": [
+            "filtering",
+            "spatial feature detection"
+        ],
+        "release_timestamp": "2024-07-06T12:34:56Z",
+        "input_content_types": [
+            "seqspec",
+            "scale factors",
+            "edge weights",
+            "graph structure",
+            "position weight matrix",
+            "barcode to element mapping",
+            "barcode to sample mapping",
+            "differential gene expression quantifications",
+            "differential transcript expression quantifications"
+        ],
+        "output_content_types": [
+            "detected tissue",
+            "low resolution tissue",
+            "high resolution tissue",
+            "fiducial alignment"
+        ],
+        "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
+    },
+    {
+        "uuid": "6d45c843-ae20-47dd-a929-d996e3e7d61c",
+        "lab": "jesse-engreitz",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "jesse-engreitz:analysis_step_03"
+        ],
+        "status": "released",
+        "title": "Sequence Design Analysis Step",
+        "step_label": "sequence-design-analysis-step",
+        "analysis_step_types": [
+            "merging",
+            "quantification"
+        ],
+        "release_timestamp": "2024-07-01T11:44:56Z",
+        "input_content_types": [
+            "editing templates",
+            "element quantifications",
+            "elements reference",
+            "fold change over control",
+            "guide quantifications",
+            "tissue positions",
+            "sample sort parameters",
+            "sequence barcodes",
+            "SNP effect matrix"
+        ],
+        "output_content_types": [
+            "guide RNA sequences",
+            "MPRA sequence designs",
+            "prime editing guide RNA sequences",
+            "protein to protein interaction score"
+        ],
+        "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
+    },
+    {
+        "uuid": "533ec67f-432d-49eb-b45c-0509fb76be83",
+        "lab": "christina-leslie",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "christina-leslie:analysis_step_04"
+        ],
+        "status": "released",
+        "title": "Variant Annotation Step",
+        "step_label": "variant-annotation--step",
+        "analysis_step_types": [
+            "variant annotation"
+        ],
+        "release_timestamp": "2024-07-10T11:44:56Z",
+        "input_content_types": [
+            "variants",
+            "variant to element mapping"
+        ],
+        "output_content_types": [
+            "variant effects"
         ],
         "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
     }
