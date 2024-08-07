@@ -22,7 +22,7 @@ def construct_library_set():
             'selection_criteria': {
                 'title': 'Selection Criteria'
             },
-            'targeted_genes.symbol': {
+            'small_scale_gene_list.symbol': {
                 'title': 'Targeted Genes'
             },
             'orf_list.gene.symbol': {
@@ -93,7 +93,7 @@ def construct_library_set():
                     'associated_phenotypes.term_name',
                     'tiling_modality',
                     'guide_type',
-                    'targeted_genes',
+                    'small_scale_gene_list.symbol',
                     'orf_list.gene',
                 ],
             },
