@@ -250,19 +250,19 @@
             }
         },
         "small_scale_gene_list": {
-            "description": "The specific, small scale list of (<=100) gene(s) whose functionality are investigated in this prediction set. This property describes the input variables of the prediction set. For example, the expression levels of a list of genes are predicted. It differs from assessed_genes (see more information under assessed_genes).",
+            "description": "The specific, small scale list of (<=100) gene(s) whose functionality are investigated in this prediction set. This property describes the input variables of the prediction set. For example, this list consists of the genes whose expression level is predicted in this prediction set. It differs from assessed_genes (see more information under assessed_genes).",
             "comment": "If more than 100 genes were predicted, submit large_scale_gene_list instead."
         },
         "large_scale_gene_list": {
-            "description": "The large scale list of (>100 genes) whose functionality are investigated in this prediction set. This property describes the input variables of the prediction set. For example, the expression levels of a list of genes are predicted. It differs from assessed_genes (see more information under assessed_genes).",
+            "description": "The large scale list of (>100 genes) whose functionality are investigated in this prediction set. This property describes the input variables of the prediction set. For example, this list consists of the genes whose expression level is predicted in this prediction set. It differs from assessed_genes (see more information under assessed_genes).",
             "comment": "If 100 or fewer genes were predicted, submit small_scale_gene_list instead."
         },
         "small_scale_loci_list": {
-            "description": "A small scale (<=100) list of specific chromosomal region(s) whose functionality are investigated in this prediction set. This property describes the input variables of the prediction set. For example, the lethality of a list of genetic variants are predicted.",
+            "description": "A small scale (<=100) list of specific chromosomal region(s) whose functionality are investigated in this prediction set. This property describes the input variables of the prediction set. For example, this list consists of the genetic variants whose functionality is predicted in this prediction set.",
             "comment": "If more than 100 chromosomal regions were predicted, submit large_scale_loci_list instead."
         },
         "large_scale_loci_list": {
-            "description": "A large scale list (>100) of specific chromosomal regions whose functionality are investigated in this prediction set. This property describes the input variables of the prediction set. For example, the lethality of a list of genetic variants are predicted.",
+            "description": "A large scale list (>100) of specific chromosomal regions whose functionality are investigated in this prediction set. This property describes the input variables of the prediction set. For example, this list consists of the genetic variants whose functionality is predicted in this prediction set.",
             "comment": "If 100 or fewer chromosomal regions were predicted, submit small_scale_loci_list instead."
         },
         "input_file_sets": {
