@@ -1,6 +1,7 @@
 ## Changelog for *`auxiliary_set.json`*
 
 ### Schema version 11
+
 * Rename `file_set_type` enum `cell hashing` to `cell hashing barcode sequencing`.
 * Rename `file_set_type` enum `oligo-conjugated lipids` to `lipid-conjugated oligo sequencing`.
 
