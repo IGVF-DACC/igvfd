@@ -60,3 +60,15 @@ class Image(ItemWithAttachment, Item):
     )
     def download_url(self, request, attachment):
         return self.jsonld_id(request) + attachment['href']
+
+    @calculated_property(
+        condition='caption',
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, caption):
+        if caption:
+            return caption
