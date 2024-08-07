@@ -53,6 +53,17 @@ class Page(SharedItem):
         return keys
 
     @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, title):
+        if title:
+            return title
+
+    @calculated_property(
         condition=lambda context, request: request.resource_path(context.__parent__) == '/pages/',
         schema={
             'title': 'Canonical URI',

@@ -1,5 +1,9 @@
 ## Changelog for *`image.json`*
 
+### Minor changes since schema version 4
+
+* Add calculated `summary`.
+
 ### Schema version 4
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.

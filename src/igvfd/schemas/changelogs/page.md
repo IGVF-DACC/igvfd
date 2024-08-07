@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Add calculated `summary`.
 * Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Add `release_timestamp`.
 * Add `archived` to `status`.
