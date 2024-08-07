@@ -94,7 +94,7 @@ def construct_library_set():
                     'tiling_modality',
                     'guide_type',
                     'small_scale_gene_list.symbol',
-                    'orf_list.gene',
+                    'orf_list.gene.symbol',
                 ],
             },
             {
