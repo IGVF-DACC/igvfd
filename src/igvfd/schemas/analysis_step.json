@@ -54,8 +54,17 @@
                 "type": "string",
                 "enum": [
                     "alignment",
+                    "barcode mapping generation",
                     "file format conversion",
-                    "signal generation"
+                    "filtering",
+                    "interaction calling",
+                    "merging",
+                    "peak calling",
+                    "quantification",
+                    "signal generation",
+                    "signal normalization",
+                    "spatial feature detection",
+                    "variant annotation"
                 ]
             },
             "submissionExample": {
