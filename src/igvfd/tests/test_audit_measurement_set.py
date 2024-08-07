@@ -906,7 +906,7 @@ def test_audit_missing_auxiliary_set_10x_MULTI_seq(
     testapp.patch_json(
         base_auxiliary_set['@id'],
         {
-            'file_set_type': 'oligo-conjugated lipids'
+            'file_set_type': 'lipid-conjugated oligo sequencing'
         }
     )
     testapp.patch_json(
