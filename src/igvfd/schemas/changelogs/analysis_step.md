@@ -1,5 +1,26 @@
 ## Changelog for *`analysis_step.json`*
 
+### Minor changes since schema version 5
+
+* Extend `analysis_step_types` enum list to include `barcode mapping generation`.
+* Extend `analysis_step_types` enum list to include `filtering`.
+* Extend `analysis_step_types` enum list to include `interaction calling`.
+* Extend `analysis_step_types` enum list to include `merging`.
+* Extend `analysis_step_types` enum list to include `peak calling`.
+* Extend `analysis_step_types` enum list to include `quantification`.
+* Extend `analysis_step_types` enum list to include `signal generation`.
+* Extend `analysis_step_types` enum list to include `signal normalization`.
+* Extend `analysis_step_types` enum list to include `spatial feature detection`.
+* Extend `analysis_step_types` enum list to include `variant annotation`.
+* Extend `input_content_types` enum list to include `content_type` enum list from GenomeBrowserAnnotationFile.
+* Extend `input_content_types` enum list to include `content_type` enum list from ImageFile.
+* Extend `input_content_types` enum list to include `content_type` enum list from ModelFile.
+* Extend `input_content_types` enum list to include `content_type` enum list from TabularFile.
+* Extend `output_content_types` enum list to include `content_type` enum list from GenomeBrowserAnnotationFile.
+* Extend `output_content_types` enum list to include `content_type` enum list from ImageFile.
+* Extend `output_content_types` enum list to include `content_type` enum list from ModelFile.
+* Extend `output_content_types` enum list to include `content_type` enum list from TabularFile.
+
 ### Schema version 5
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.
