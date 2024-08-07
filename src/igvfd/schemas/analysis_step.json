@@ -156,7 +156,16 @@
                     "$merge": "configuration_file.json#/properties/content_type"
                 },
                 {
+                    "$merge": "genome_browser_annotation_file.json#/properties/content_type"
+                },
+                {
+                    "$merge": "image_file.json#/properties/content_type"
+                },
+                {
                     "$merge": "matrix_file.json#/properties/content_type"
+                },
+                {
+                    "$merge": "model_file.json#/properties/content_type"
                 },
                 {
                     "$merge": "reference_file.json#/properties/content_type"
@@ -166,6 +175,9 @@
                 },
                 {
                     "$merge": "signal_file.json#/properties/content_type"
+                },
+                {
+                    "$merge": "tabular_file.json#/properties/content_type"
                 }
             ]
         }
