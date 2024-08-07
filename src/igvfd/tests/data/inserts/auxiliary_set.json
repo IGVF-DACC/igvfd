@@ -92,7 +92,7 @@
     },
     {
         "aliases": [
-            "igvf:auxiliary_set_lipid_conjugated_oligio_sequencing"
+            "igvf:auxiliary_set_lipid_conjugated_oligo_sequencing"
         ],
         "file_set_type": "lipid-conjugated oligo sequencing",
         "samples": [
