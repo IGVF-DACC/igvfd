@@ -8,7 +8,6 @@
 * Extend `analysis_step_types` enum list to include `merging`.
 * Extend `analysis_step_types` enum list to include `peak calling`.
 * Extend `analysis_step_types` enum list to include `quantification`.
-* Extend `analysis_step_types` enum list to include `signal generation`.
 * Extend `analysis_step_types` enum list to include `signal normalization`.
 * Extend `analysis_step_types` enum list to include `spatial feature detection`.
 * Extend `analysis_step_types` enum list to include `variant annotation`.
