@@ -381,7 +381,7 @@ def auxiliary_set_10_11(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1797
     old_to_new = {
         'cell hashing': 'cell hashing barcode sequencing',
-        'oligo-conjugated lipids': 'lipid-conjugated olgio sequencing'
+        'oligo-conjugated lipids': 'lipid-conjugated oligo sequencing'
     }
     if 'file_set_type' in value:
         old_file_set_type = value['file_set_type']
