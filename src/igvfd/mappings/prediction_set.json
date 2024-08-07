@@ -1,6 +1,6 @@
 {
-    "hash": "0661ab346fbf4c6e4f6cf32bf3345257",
-    "index_name": "prediction_set_0661ab34",
+    "hash": "e04cba245e7010dc9df95b7d2a796937",
+    "index_name": "prediction_set_e04cba24",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -155,6 +155,9 @@
                         "type": "keyword"
                     },
                     "alternate_accessions": {
+                        "type": "keyword"
+                    },
+                    "assessed_genes": {
                         "type": "keyword"
                     },
                     "award": {
