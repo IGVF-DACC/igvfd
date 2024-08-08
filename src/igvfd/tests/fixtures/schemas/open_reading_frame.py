@@ -5,7 +5,7 @@ import pytest
 def orf_foxp(testapp, gene_myc_hs, award, other_lab):
     item = {
         'orf_id': 'CCSBORF1234',
-        'gene': [
+        'genes': [
             gene_myc_hs['@id']
         ],
         'protein_id': 'ENSP00000001146.2',
@@ -25,7 +25,7 @@ def orf_foxp(testapp, gene_myc_hs, award, other_lab):
 def orf_zscan10(testapp, gene_zscan10_mm, award, other_lab):
     item = {
         'orf_id': 'CCSBORF4767',
-        'gene': [
+        'genes': [
             gene_zscan10_mm['@id']
         ],
         'protein_id': 'ENSP00000317668',
@@ -44,9 +44,22 @@ def orf_zscan10(testapp, gene_zscan10_mm, award, other_lab):
 @pytest.fixture
 def open_reading_frame_v1(orf_zscan10):
     item = orf_zscan10.copy()
+    item['gene'] = item.pop('genes', None)
     item.pop('award', None)
     item.pop('lab', None)
     item.update({
         'schema_version': '1',
+    })
+    return item
+
+
+@pytest.fixture
+def open_reading_frame_v2(orf_zscan10):
+    """This is to generate an example at Schema v2"""
+    item = orf_zscan10.copy()
+    item['gene'] = item.pop('genes', None)
+    item['notes'] = 'Test note.'
+    item.update({
+        'schema_version': '2',
     })
     return item
