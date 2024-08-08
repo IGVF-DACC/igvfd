@@ -26,14 +26,14 @@ def audit_related_multiome_datasets(value, system):
     multiome_size = value.get('multiome_size')
     if related_multiome_datasets == [] and multiome_size:
         detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has a `multiome_size` of {multiome_size}, but no `related_multiome_datasets`.'
         )
         yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
     elif related_multiome_datasets and multiome_size:
         if len(related_multiome_datasets) != multiome_size - 1:
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a `multiome_size` of {multiome_size}, but {len(related_multiome_datasets)} '
                 f'`related_multiome_datasets` when {multiome_size - 1} are expected.'
             )
@@ -88,7 +88,7 @@ def audit_unspecified_protocol(value, system):
     description = get_audit_description(audit_unspecified_protocol)
     if 'protocols' not in value:
         detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `protocols`.'
         )
         yield AuditFailure('missing protocol', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -123,7 +123,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
             samples_to_link = [audit_link(path_to_text(bad_sample), bad_sample) for bad_sample in bad_samples]
             sample_detail = samples_to_link = ', '.join(samples_to_link)
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} is '
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} is '
                 f'a CRISPR screen assay but has no specified `modifications` on its `samples`: {sample_detail}.'
             )
             yield AuditFailure('missing modification', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -154,13 +154,13 @@ def audit_preferred_assay_title(value, system):
     if preferred_assay_title:
         if preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
                 f'`assay_term` {assay_term_name}, but `preferred_assay_title` {preferred_assay_title}.'
             )
             yield AuditFailure('inconsistent preferred assay title', f'{detail} {description_inconsistent}', level='WARNING')
     else:
         detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
             f'no `preferred_assay_title`.'
         )
         yield AuditFailure('missing preferred assay title', f'{detail} {description_missing}', level='NOT_COMPLIANT')
@@ -221,8 +221,8 @@ def audit_missing_institutional_certification(value, system):
             nic_awards.append(nic_object.get('award', ''))
         if lab not in nic_labs or award not in nic_awards:
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
-                f'a sample {audit_link(path_to_text(sample),sample)} that lacks any `institutional_certificates` '
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
+                f'a sample {audit_link(path_to_text(sample), sample)} that lacks any `institutional_certificates` '
                 f'issued to the lab that submitted this file set.'
             )
             yield AuditFailure('missing NIH certification', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -247,9 +247,9 @@ def audit_missing_auxiliary_set_link(value, system):
         for file_set in sample_object.get('file_sets', []):
             if file_set.startswith('/auxiliary-sets/') and file_set not in auxiliary_sets:
                 detail = (
-                    f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} links '
-                    f'to sample {audit_link(path_to_text(sample),sample)} which links to auxiliary set '
-                    f'{audit_link(path_to_text(file_set),file_set)} but is not in its `auxiliary_sets`.'
+                    f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} links '
+                    f'to sample {audit_link(path_to_text(sample), sample)} which links to auxiliary set '
+                    f'{audit_link(path_to_text(file_set), file_set)} but is not in its `auxiliary_sets`.'
                 )
                 yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='WARNING')
 
@@ -284,13 +284,13 @@ def audit_targeted_genes(value, system):
     expecting_targeted_genes_by_preferred_assay_title = ['Variant FlowFISH']
     if not (targeted_genes) and (assay_term_name in expecting_targeted_genes_by_assay_term or preferred_assay_title in expecting_targeted_genes_by_preferred_assay_title):
         detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `targeted_genes`.'
         )
         yield AuditFailure('missing targeted genes', f'{detail} {description_missing}', level='NOT_COMPLIANT')
     if targeted_genes and (assay_term_name not in expecting_targeted_genes_by_assay_term and preferred_assay_title not in expecting_targeted_genes_by_preferred_assay_title):
         detail = (
-            f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has `targeted_genes`.'
         )
         yield AuditFailure('unexpected targeted genes', f'{detail} {description_unexpected}', level='WARNING')
@@ -371,7 +371,7 @@ def audit_missing_construct_library_set(value, system):
         description = expected_library_dict_to_check[assay_to_check][1]
         if not (construct_library_sets) or not ([construct_library_set for construct_library_set in construct_library_sets if construct_library_set.get('file_set_type', '') == expected_library]):
             detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has no `construct_library_sets` of type {expected_library} linked in its `samples`.'
             )
             yield AuditFailure('missing construct library set', f'{detail} {description}', level='NOT_COMPLIANT')
@@ -453,7 +453,7 @@ def audit_missing_auxiliary_set(value, system):
 
             if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type', '') == expected_auxiliary_set_type]):
                 detail = (
-                    f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                    f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                     f'has no {expected_auxiliary_set_type} `auxiliary_sets`.'
                 )
                 yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
