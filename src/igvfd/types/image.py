@@ -69,6 +69,6 @@ class Image(ItemWithAttachment, Item):
             'notSubmittable': True,
         }
     )
-    def summary(self, caption):
+    def summary(self, caption=None):
         if caption:
             return caption

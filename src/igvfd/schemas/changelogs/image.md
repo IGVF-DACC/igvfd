@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 4
 
-* Add calculated `summary`.
+* Update calculation of `summary`.
 
 ### Schema version 4
 
