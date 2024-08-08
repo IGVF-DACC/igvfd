@@ -59,7 +59,7 @@ class Page(SharedItem):
             'notSubmittable': True,
         }
     )
-    def summary(self, title=None):
+    def summary(self, title):
         if title:
             return title
 
