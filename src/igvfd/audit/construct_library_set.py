@@ -29,7 +29,7 @@ def audit_construct_library_set_associated_phenotypes(value, system):
             return
         else:
             detail = (
-                f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has phenotype-associated variants listed in its `selection_criteria`, '
                 f'but no phenotype term specified in `associated_phenotypes`.'
             )
@@ -51,7 +51,7 @@ def audit_construct_library_set_plasmid_map(value, system):
     description = get_audit_description(audit_construct_library_set_plasmid_map)
     map_counter = 0
     detail = (
-        f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+        f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} '
         f'does not have a plasmid map attached in `documents`.'
     )
     documents = value.get('documents', [])
@@ -85,7 +85,7 @@ def audit_construct_library_set_scope(value, system):
     if value.get('scope') in ['exon', 'tile']:
         if len(value.get('small_scale_gene_list', [])) > 1:
             detail = (
-                f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'specifies it has a `scope` of {value["scope"]}, but multiple genes are listed in '
                 f'`small_scale_gene_list`.'
             )
@@ -111,11 +111,11 @@ def audit_construct_library_set_guide_design(value, system):
             files = [system.get('request').embed(file, '@@object?skip_calculated=true')
                      for file in integrated_content_files]
             if not ([file for file in files if file['content_type'] == 'guide RNA sequences']):
-                detail = (f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} has no '
+                detail = (f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} has no '
                           f'linked files in `integrated_content_files` with `content_type` "guide RNA sequences".')
                 yield AuditFailure('missing guide RNA sequences', f'{detail} {description}', level='NOT_COMPLIANT')
         else:
-            detail = (f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} has no '
+            detail = (f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} has no '
                       f'`integrated_content_files`.')
             yield AuditFailure('missing guide RNA sequences', f'{detail} {description}', level='NOT_COMPLIANT')
 
@@ -145,7 +145,7 @@ def audit_construct_library_set_orf_gene(value, system):
 
         if orf_genes != library_genes:
             detail = (
-                f'Construct library set {audit_link(path_to_text(value["@id"]),value["@id"])} '
+                f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a `small_scale_gene_list` which does not match the genes of its associated `orf_list`.'
             )
             yield AuditFailure('inconsistent genes', f'{detail} {description}', level='ERROR')

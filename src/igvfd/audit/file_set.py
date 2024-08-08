@@ -353,7 +353,7 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
     if non_sequence_files and value.get('file_set_type', '') != 'cell sorting':
         non_sequence_files = ', '.join(
             [audit_link(path_to_text(file), file) for file in non_sequence_files])
-        detail = (f'{object_type} {audit_link(path_to_text(value["@id"]),value["@id"])} links to '
+        detail = (f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} links to '
                   f'`files` that are not sequence or configuration files: {non_sequence_files}.')
         yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')
 
