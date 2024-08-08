@@ -1,6 +1,6 @@
 {
-    "hash": "a834c3a980c399e1c46ae2e0bb5d3744",
-    "index_name": "construct_library_set_a834c3a9",
+    "hash": "f78fa1bd5fda5b34e4d4b72aeac64530",
+    "index_name": "construct_library_set_f78fa1bd",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1882,7 +1882,7 @@
                             "description": {
                                 "type": "text"
                             },
-                            "gene": {
+                            "genes": {
                                 "type": "keyword"
                             },
                             "lab": {

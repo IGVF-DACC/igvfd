@@ -139,8 +139,8 @@ def audit_construct_library_set_orf_gene(value, system):
         orf_ids = value.get('orf_list')
         for o in orf_ids:
             orf_object = system.get('request').embed(o + '@@object?skip_calculated=true')
-            if 'gene' in orf_object:
-                for d in orf_object['gene']:
+            if 'genes' in orf_object:
+                for d in orf_object['genes']:
                     orf_genes.add(d)
 
         if orf_genes != library_genes:
