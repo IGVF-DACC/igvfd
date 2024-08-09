@@ -386,7 +386,8 @@ The following table provides common types of schema changes and provides a speci
 |Add an enum|Extend \[property name\] enum list to include \[enum\].|
 |Remove an enum|Reduce \[property name\] enum list to exclude \[enum\].|
 |Replace an enum|Adjust \[property name\] enum list to replace \[old enum\] with \[new enum\].|
-|Restrict an enum to admins|Adjust \[property name\] enum list to restrict usage of \[deprecated term\].|
+|Restrict an enum to admins|Adjust \[property name\] enum list to restrict usage of \[deprecated term\] to admin users.|
+|Relax an enum to any user|Adjust \[property name\] enum list to allow usage of \[deprecated term\] by all users.|
 |Change a regex|Update \[property name\] regex to \[description of regex\].|
 |Add or change a dependency or requirement|Require \[description of requirement\].|
 |Add a calculated property|Add calculated property \[property name\].|
