@@ -6,7 +6,7 @@
         "dbxrefs": [
             "hORFeome:8945"
         ],
-        "gene": [
+        "genes": [
             "/genes/ENSG00000163930/"
         ],
         "lab": "j-michael-cherry",
@@ -22,7 +22,7 @@
         "dbxrefs": [
             "hORFeome:8975"
         ],
-        "gene": [
+        "genes": [
             "/genes/ENSG00000154832/"
         ],
         "lab": "j-michael-cherry",

@@ -21,7 +21,7 @@ def open_reading_frame():
             'orf_id': {
                 'title': 'ORF ID'
             },
-            'gene': {
+            'genes': {
                 'title': 'ENSEMBL GeneID'
             },
             'protein_id': {
