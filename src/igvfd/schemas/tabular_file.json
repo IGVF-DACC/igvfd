@@ -126,6 +126,7 @@
                 "sequence barcodes",
                 "SNP effect matrix",
                 "variants",
+                "variant binding effects",
                 "variant effects",
                 "variant to element mapping"
             ],
