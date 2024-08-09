@@ -62,7 +62,6 @@ class Image(ItemWithAttachment, Item):
         return self.jsonld_id(request) + attachment['href']
 
     @calculated_property(
-        condition='caption',
         schema={
             'title': 'Summary',
             'type': 'string',
@@ -72,3 +71,5 @@ class Image(ItemWithAttachment, Item):
     def summary(self, caption=None):
         if caption:
             return caption
+        else:
+            return self.uuid

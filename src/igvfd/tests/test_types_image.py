@@ -3,5 +3,10 @@ import pytest
 
 def test_summary(testapp, image):
     res = testapp.get(image['@id'])
-    caption = res.json.get('caption')
-    assert caption == res.json.get('summary')
+    uuid = res.json.get('uuid')
+    assert uuid == res.json.get('summary')
+    testapp.patch_json(
+        image['@id'],
+        {'caption': 'A red dot.'}
+    )
+    assert res.json.get('summary') == 'A red dot.'
