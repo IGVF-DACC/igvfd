@@ -69,3 +69,11 @@ def test_auxiliary_set_upgrade_9_10(upgrader, auxiliary_set_v9):
     value = upgrader.upgrade('auxiliary_set', auxiliary_set_v9, current_version='9', target_version='10')
     assert value['schema_version'] == '10'
     assert 'library_construction_platform' not in value
+
+
+def test_measurement_set_upgrade_10_11(upgrader, auxiliary_set_v10):
+    value = upgrader.upgrade('auxiliary_set', auxiliary_set_v10, current_version='10', target_version='11')
+    assert 'file_set_type' in value
+    assert value['file_set_type'] == 'cell hashing barcode sequencing'
+    assert value['schema_version'] == '11'
+    assert value['notes'] == 'File_set_type enum cell hashing has been renamed to be cell hashing barcode sequencing.'

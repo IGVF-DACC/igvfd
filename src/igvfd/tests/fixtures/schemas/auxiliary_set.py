@@ -122,3 +122,13 @@ def auxiliary_set_v9(base_auxiliary_set, platform_term_v3):
         'library_construction_platform': platform_term_v3['@id']
     })
     return item
+
+
+@pytest.fixture
+def auxiliary_set_v10(base_auxiliary_set):
+    item = base_auxiliary_set.copy()
+    item.update({
+        'schema_version': '10',
+        'file_set_type': 'cell hashing'
+    })
+    return item
