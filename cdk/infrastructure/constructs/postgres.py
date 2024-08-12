@@ -39,6 +39,7 @@ class PostgresProps:
     allocated_storage: int
     max_allocated_storage: int
     instance_type: InstanceType
+    engine_version: PostgresEngineVersion
     snapshot_arn: Optional[str] = None
     snapshot_source_db_identifier: Optional[str] = None
 
@@ -65,7 +66,7 @@ class PostgresBase(Construct):
 
     def _define_engine(self) -> None:
         self.engine = DatabaseInstanceEngine.postgres(
-            version=PostgresEngineVersion.VER_14_3
+            version=self.props.engine_version,
         )
 
     def _define_database_name(self) -> None:
