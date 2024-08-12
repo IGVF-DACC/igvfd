@@ -1,6 +1,6 @@
 {
-    "hash": "b37fd562bbaf6bd63c9a99468c079840",
-    "index_name": "construct_library_set_b37fd562",
+    "hash": "edd030c9f8a90f8a1fbe83f4097272ff",
+    "index_name": "construct_library_set_edd030c9",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1085,6 +1085,9 @@
                                 "type": "keyword"
                             },
                             "exon": {
+                                "type": "keyword"
+                            },
+                            "external_image_data_url": {
                                 "type": "keyword"
                             },
                             "external_image_url": {

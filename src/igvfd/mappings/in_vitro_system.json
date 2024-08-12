@@ -1,6 +1,6 @@
 {
-    "hash": "48d4d138a2cee398c47abf484638e54d",
-    "index_name": "in_vitro_system_48d4d138",
+    "hash": "b067c6a632fcefcbabba77e8ea6afb3d",
+    "index_name": "in_vitro_system_b067c6a6",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -660,6 +660,9 @@
                                 "type": "keyword"
                             },
                             "exon": {
+                                "type": "keyword"
+                            },
+                            "external_image_data_url": {
                                 "type": "keyword"
                             },
                             "external_image_url": {

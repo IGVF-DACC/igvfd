@@ -1,6 +1,6 @@
 {
-    "hash": "2ae1314f257b30de54a25ed02f512133",
-    "index_name": "primary_cell_2ae1314f",
+    "hash": "fbcc74cb58eaf0285d990c06f62d0e09",
+    "index_name": "primary_cell_fbcc74cb",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -507,6 +507,9 @@
                                 "type": "keyword"
                             },
                             "exon": {
+                                "type": "keyword"
+                            },
+                            "external_image_data_url": {
                                 "type": "keyword"
                             },
                             "external_image_url": {
