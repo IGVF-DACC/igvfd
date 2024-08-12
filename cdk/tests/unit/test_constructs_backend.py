@@ -6,6 +6,7 @@ from aws_cdk.assertions import Template
 def test_constructs_backend_initialize_backend_construct(
         stack,
         instance_type,
+        postgres_engine_version,
         existing_resources,
         vpc,
         config,
@@ -34,7 +35,8 @@ def test_constructs_backend_initialize_backend_construct(
                         existing_resources=existing_resources,
                         allocated_storage=10,
                         max_allocated_storage=20,
-                        instance_type=instance_type
+                        instance_type=instance_type,
+                        engine_version=postgres_engine_version,
                     )
                 }
             ),
@@ -901,6 +903,7 @@ def test_constructs_backend_initialize_backend_construct(
 def test_constructs_backend_backend_construct_define_domain_name(
         stack,
         instance_type,
+        postgres_engine_version,
         existing_resources,
         vpc,
         config,
@@ -930,7 +933,8 @@ def test_constructs_backend_backend_construct_define_domain_name(
                         existing_resources=existing_resources,
                         allocated_storage=10,
                         max_allocated_storage=20,
-                        instance_type=instance_type
+                        instance_type=instance_type,
+                        engine_version=postgres_engine_version,
                     )
                 }
             ),
