@@ -1,6 +1,6 @@
 {
-    "hash": "b81475f82f004efe3e0e5f84d6c1e504",
-    "index_name": "analysis_set_b81475f8",
+    "hash": "dd7ca5d9294e8e7f11462ccf562152ac",
+    "index_name": "analysis_set_dd7ca5d9",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -781,6 +781,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "external_image_url": {
+                        "type": "keyword"
                     },
                     "file_set_type": {
                         "type": "keyword"
