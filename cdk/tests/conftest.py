@@ -60,6 +60,12 @@ def engine_version():
 
 
 @pytest.fixture
+def postgres_engine_version():
+    from aws_cdk.aws_rds import PostgresEngineVersion
+    return PostgresEngineVersion.VER_14_3
+
+
+@pytest.fixture
 def secret(stack):
     from aws_cdk.aws_secretsmanager import Secret
     return Secret(
@@ -307,7 +313,7 @@ def branch():
 
 
 @pytest.fixture
-def config(instance_type, capacity_config, engine_version):
+def config(instance_type, capacity_config, engine_version, postgres_engine_version):
     from infrastructure.config import Config
     return Config(
         name='demo',
@@ -321,6 +327,7 @@ def config(instance_type, capacity_config, engine_version):
                         'allocated_storage': 10,
                         'max_allocated_storage': 20,
                         'instance_type': instance_type,
+                        'engine_version': postgres_engine_version,
                     },
                 },
             ],

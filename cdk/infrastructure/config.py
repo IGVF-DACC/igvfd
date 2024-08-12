@@ -7,6 +7,8 @@ from aws_cdk.aws_ec2 import InstanceSize
 from aws_cdk.aws_opensearchservice import CapacityConfig
 from aws_cdk.aws_opensearchservice import EngineVersion
 
+from aws_cdk.aws_rds import PostgresEngineVersion
+
 from dataclasses import dataclass
 from dataclasses import field
 
@@ -67,6 +69,7 @@ config: Dict[str, Any] = {
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
+                            'engine_version': PostgresEngineVersion.VER_14_12,
                         },
                     }
                 ],
@@ -134,6 +137,7 @@ config: Dict[str, Any] = {
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
+                            'engine_version': PostgresEngineVersion.VER_14_3,
                         },
                     },
                 ],
@@ -198,6 +202,7 @@ config: Dict[str, Any] = {
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
+                            'engine_version': PostgresEngineVersion.VER_14_3,
                         },
                     },
                 ],
@@ -263,6 +268,7 @@ config: Dict[str, Any] = {
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
+                            'engine_version': PostgresEngineVersion.VER_14_3,
                         },
                     },
                 ],
@@ -327,6 +333,7 @@ config: Dict[str, Any] = {
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
+                            'engine_version': PostgresEngineVersion.VER_14_3,
                         },
                     },
                 ],
@@ -387,7 +394,7 @@ class Common:
     organization_name: str = 'igvf-dacc'
     project_name: str = 'igvfd'
     default_region: str = 'us-west-2'
-    aws_cdk_version: str = '2.114.1'
+    aws_cdk_version: str = '2.151.0'
 
 
 @dataclass

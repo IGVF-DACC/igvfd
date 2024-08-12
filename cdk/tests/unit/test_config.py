@@ -85,6 +85,7 @@ def test_config_build_config_from_name():
         'snapshot_source_db_identifier' in postgres_instance_props
         or 'snapshot_arn' in postgres_instance_props
     )
+    assert 'engine_version' in postgres_instance_props
     opensearch_instance_props = config.opensearch['clusters'][0]['props']
     assert 'capacity' in opensearch_instance_props
     assert 'volume_size' in opensearch_instance_props
@@ -115,6 +116,7 @@ def test_config_build_config_from_name():
         'snapshot_source_db_identifier' not in postgres_instance_props
         and 'snapshot_arn' in postgres_instance_props
     )
+    assert 'engine_version' in postgres_instance_props
     opensearch_instance_props = config.opensearch['clusters'][0]['props']
     assert 'capacity' in opensearch_instance_props
     assert 'volume_size' in opensearch_instance_props

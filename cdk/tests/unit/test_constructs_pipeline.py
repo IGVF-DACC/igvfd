@@ -345,7 +345,7 @@ def test_constructs_pipeline_initialize_continuous_deployment_pipeline_construct
                                 'ProjectName': {
                                     'Ref': 'TestContinuousDeploymentPipelineBuildSynthStepCdkBuildProjectB05B9ED1'
                                 },
-                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"6472c586ff6fd07a9e36fbee4df8d2294827f9aad21c3b794ba8603513e7021d\"}]"
+                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"ea29d298e64552f5e1f16be5a3027f744255e368f004bae521a835c936a2d0e6\"}]"
                             },
                             'InputArtifacts': [
                                 {
@@ -1083,7 +1083,7 @@ def test_constructs_pipeline_initialize_production_deployment_pipeline_construct
                                 'ProjectName': {
                                     'Ref': 'TestProductionDeploymentPipelineBuildSynthStepCdkBuildProjectF1FF1A53'
                                 },
-                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"dcb0156d567324e44aef414d6326b5c016e52f3caebd8209360c9a133486b7c2\"}]"
+                                'EnvironmentVariables': "[{\"name\":\"_PROJECT_CONFIG_HASH\",\"type\":\"PLAINTEXT\",\"value\":\"0ea16dc935b3116d4086e97861af706e29a5aadafbeed8c7085db1436aac8b57\"}]"
                             },
                             'InputArtifacts': [
                                 {
