@@ -42,7 +42,7 @@
         "collections": [
             "MPRAbase"
         ],
-        "external_image_url": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/",
+        "external_image_data_url": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/",
         "publications": [
             "/publications/244ec9fc-ddda-4f38-b72d-3430929111e4/"
         ]

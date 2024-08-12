@@ -82,9 +82,9 @@
                 "igvf_utils": "principal analysis"
             }
         },
-        "external_image_url": {
-            "title": "External Image URL",
-            "description": "Links to the external site where images produced by this measurement are stored.",
+        "external_image_data_url": {
+            "title": "External Image Data URL",
+            "description": "Links to the external site where images and related data produced by this analysis are stored.",
             "type": "string",
             "format": "uri",
             "pattern": "^https://cellpainting-gallery\\.s3\\.amazonaws\\.com(\\S+)$",
