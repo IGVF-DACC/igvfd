@@ -100,6 +100,15 @@
                 "sparse transcript count matrix",
                 "transcriptome annotations"
             ],
+            "enum_descriptions": {
+                "contact matrix": "A matrix used in genomic assays, particularly in chromosome conformation capture techniques like Hi-C, to represent the frequency of physical interactions between different regions of the genome.",
+                "sparse gene count matrix": "A matrix where rows represent genes and columns represent samples or cells, containing counts of sequencing reads that map to each gene.",
+                "sparse peak count matrix": "A matrix used in assays like ATAC-seq or ChIP-seq, where rows represent genomic regions (peaks) and columns represent samples or cells.",
+                "sparse transcript count matrix": "A matrix where rows represent transcripts and columns represent samples or cells, containing counts of sequencing reads that map to each transcript.",
+                "transcriptome annotations": "Provide detailed information about the transcripts detected in a genomic assay, including their genomic coordinates, gene names, and other relevant annotations.",
+                "raw feature barcode matrix": "A matrix output from Space Ranger, where rows represent features and columns represent barcoded spots or cells. It contains raw counts of sequencing reads before any filtering or normalization.",
+                "filtered feature barcode matrix": "A matrix output from Space Ranger, where rows represent features and columns represent barcoded spots or cells. It contains counts of sequencing reads after filtering out low-quality or low-abundance features."
+            },
             "submissionExample": {
                 "appscript": "contact matrix",
                 "igvf_utils": "contact matrix"

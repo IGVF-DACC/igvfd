@@ -72,6 +72,16 @@
                 "control signal",
                 "fold change over control"
             ],
+            "enum_descriptions": {
+                "signal": "A signal coverage track representing the density or intensity of sequencing reads across the genome.",
+                "signal of all reads": "A signal coverage track that includes the combined coverage from all reads, both unique and multimapping, across the genome.",
+                "signal of unique reads": "A signal coverage track that represents the coverage specifically from unique reads, excluding multimapping reads.",
+                "signal p-value": "Nucleotide resolution signal coverage track, expressed as a p-value to reject the null hypothesis that the signal at that location is present in the control.",
+                "raw signal": "The initial signal coverage track representing the unprocessed read counts across the genome before any normalization or statistical adjustments.",
+                "read-depth signal": "A signal coverage track that has been normalized by read depth, providing coverage values adjusted to account for variations in sequencing depth across samples or regions.",
+                "control signal": "A signal coverage track used as a control, representing read coverage from a baseline or reference sample for comparison purposes.",
+                "fold change over control": "A nucleotide-resolution signal coverage track showing the fold change in signal intensity compared to a control at each position."
+            },
             "submissionExample": {
                 "appscript": "signal",
                 "igvf_utils": "signal"

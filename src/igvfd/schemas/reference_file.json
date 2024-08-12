@@ -217,6 +217,13 @@
                     "permission": "admin_only"
                 }
             ],
+            "enum_descriptions": {
+                "genome reference": "A composite nucleic acid sequence assembled from the sequence of several different individual organisms representing the species.",
+                "elements reference": "References for the elements studied, including details like genomic coordinates or identifiers.",
+                "exclusion list": "An exclusion list file contains a set of genomic regions or specific sequences that should be ignored or excluded during data analysis.",
+                "inclusion list": "An inclusion list file contains a set of specific genomic regions or sequences that should be included or focused on during data analysis.",
+                "spike-ins": "Nucleic acid fragments of known sequence and quantity used for calibration in high-throughput sequencing."
+            },
             "submissionExample": {
                 "appscript": "variants",
                 "igvf_utils": "variants"
