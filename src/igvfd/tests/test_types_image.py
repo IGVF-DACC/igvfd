@@ -9,4 +9,5 @@ def test_summary(testapp, image):
         image['@id'],
         {'caption': 'A red dot.'}
     )
+    res = testapp.get(image['@id'])
     assert res.json.get('summary') == 'A red dot.'
