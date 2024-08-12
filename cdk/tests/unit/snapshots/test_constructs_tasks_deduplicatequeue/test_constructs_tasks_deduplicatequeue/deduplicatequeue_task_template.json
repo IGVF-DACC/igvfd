@@ -243,6 +243,30 @@
                             }
                         },
                         {
+                            "Action": "ecs:TagResource",
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::Join": [
+                                    "",
+                                    [
+                                        "arn:",
+                                        {
+                                            "Ref": "AWS::Partition"
+                                        },
+                                        ":ecs:",
+                                        {
+                                            "Ref": "AWS::Region"
+                                        },
+                                        ":*:task/",
+                                        {
+                                            "Ref": "EcsDefaultClusterMnL3mNNYNTestVpc4872C696"
+                                        },
+                                        "/*"
+                                    ]
+                                ]
+                            }
+                        },
+                        {
                             "Action": "iam:PassRole",
                             "Effect": "Allow",
                             "Resource": {
