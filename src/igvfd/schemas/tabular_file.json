@@ -150,8 +150,8 @@
                 "SNP effect matrix": "Predicts the impact of single-nucleotide polymorphisms on transcription factor binding within genomic regulatory regions, aiding in the identification of potential disease-causing mutations in noncoding DNA.",
                 "tissue positions": "The spatial coordinates or positions of tissue samples or sections in experiments.",
                 "variants": "A table listing genetic variants.",
-                "variant binding effects": "The genomic variant effects on transcription factor binding affinity.",
-                "variant effects": "The genomic variant effects on gene expression.",
+                "variant binding effects": "The genetic variant effects on transcription factor binding affinity.",
+                "variant effects": "The genetic variant effects on gene expression.",
                 "variant to element mapping": "Mapping of genetic variants to genomic elements."
             },
             "submissionExample": {
