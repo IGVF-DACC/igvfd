@@ -13,3 +13,15 @@ def open_reading_frame_1_2(value, system):
         else:
             value['notes'] = 'This object does not have award and lab specified previously, it was upgraded to have Cherry lab/award.'
     return
+
+
+@upgrade_step('open_reading_frame', '2', '3')
+def open_reading_frame_2_3(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1792
+    if gene := value.pop('gene', None):
+        value['genes'] = gene
+        new_note = 'This object used gene as a property, which is now upgraded to genes.'
+        if notes := value.get('notes', ''):
+            new_note = f'{notes} {new_note}'
+        value['notes'] = new_note
+    return

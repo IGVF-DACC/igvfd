@@ -22,7 +22,7 @@ class OpenReadingFrame(Item):
     schema = load_schema('igvfd:schemas/open_reading_frame.json')
     name_key = 'orf_id'
     embedded_with_frame = [
-        Path('gene', include=['@id', 'symbol', 'geneid']),
+        Path('genes', include=['@id', 'symbol', 'geneid']),
     ]
 
     @calculated_property(
@@ -32,12 +32,12 @@ class OpenReadingFrame(Item):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, orf_id, gene, protein_id=None):
+    def summary(self, request, orf_id, genes, protein_id=None):
         protein_phrase = ''
         if protein_id:
             protein_phrase = f' - {protein_id}'
         gene_symbols = []
-        for gene_item in gene:
+        for gene_item in genes:
             gene_object = request.embed(gene_item)
             gene_symbols.append(gene_object['symbol'])
         return f'{orf_id} of {", ".join(gene_symbols)}{protein_phrase}'
