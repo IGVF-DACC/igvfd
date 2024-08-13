@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 8
 
-* Add external_image_data_url
+* Add `external_image_data_url`.
 
 ### Schema version 8
 
