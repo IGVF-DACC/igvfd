@@ -147,7 +147,7 @@
                 "protein to protein interaction score": "Scores or metrics for interactions between proteins.",
                 "sample sort parameters": "The parameters/quantifications used for sorting biological samples, such as those in flow cytometry.",
                 "sequence barcodes": "The barcodes associated with different sequences, used for sample identification and multiplexing.",
-                "SNP effect matrix": "",
+                "SNP effect matrix": "Predicts the impact of single-nucleotide polymorphisms on transcription factor binding within genomic regulatory regions, aiding in the identification of potential disease-causing mutations in noncoding DNA.",
                 "tissue positions": "The spatial coordinates or positions of tissue samples or sections in experiments.",
                 "variants": "A table listing genetic variants.",
                 "variant binding effects": "The genomic variant effects on transcription factor binding affinity.",

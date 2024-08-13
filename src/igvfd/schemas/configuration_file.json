@@ -98,7 +98,7 @@
             ],
             "enum_descriptions": {
                 "seqspec": "A machine-readable specification for libraries produced by genomics assays that facilitates standardization of preprocessing and enables tracking and comparison of genomics assays.",
-                "scale factors": "Scale factors are normalization coefficients applied to raw data to adjust for technical variability and ensure comparability across different samples or regions."
+                "scale factors": "Normalization coefficients applied to raw data to adjust for technical variability and ensure comparability across different samples or regions."
             },
             "submissionExample": {
                 "appscript": "seqspec",
