@@ -679,7 +679,7 @@ class ConstructLibrarySet(FileSet):
         Path('applied_to_samples.targeted_sample_term', include=['@id', 'term_name']),
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
-        Path('orf_list', include=['@id', 'orf_id', 'gene', 'aliases']),
+        Path('orf_list', include=['@id', 'orf_id', 'genes', 'aliases']),
         Path('orf_list.genes', include=['@id', 'symbol']),
         Path('publications', include=['@id', 'publication_identifiers']),
     ]
