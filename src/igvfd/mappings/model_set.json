@@ -1,6 +1,6 @@
 {
-    "hash": "c587d86610abf5d4c492fdc4cb85b292",
-    "index_name": "model_set_c587d866",
+    "hash": "3d26c1609d5cd6247e78582e3de21c70",
+    "index_name": "model_set_3d26c160",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -386,6 +386,9 @@
                                 "type": "keyword"
                             },
                             "exon": {
+                                "type": "keyword"
+                            },
+                            "external_image_data_url": {
                                 "type": "keyword"
                             },
                             "external_image_url": {
@@ -1170,6 +1173,9 @@
                                 "type": "keyword"
                             },
                             "exon": {
+                                "type": "keyword"
+                            },
+                            "external_image_data_url": {
                                 "type": "keyword"
                             },
                             "external_image_url": {

@@ -1,6 +1,6 @@
 {
-    "hash": "dede88655d9bc7bb04752ee27bba9a35",
-    "index_name": "auxiliary_set_dede8865",
+    "hash": "101a6cd7ded943d70fe32312fd197f72",
+    "index_name": "auxiliary_set_101a6cd7",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -383,6 +383,9 @@
                                 "type": "keyword"
                             },
                             "exon": {
+                                "type": "keyword"
+                            },
+                            "external_image_data_url": {
                                 "type": "keyword"
                             },
                             "external_image_url": {

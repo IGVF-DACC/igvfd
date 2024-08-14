@@ -1,6 +1,6 @@
 {
-    "hash": "e04cba245e7010dc9df95b7d2a796937",
-    "index_name": "prediction_set_e04cba24",
+    "hash": "15c26fe8aba9cfadd54d4ee2be08e316",
+    "index_name": "prediction_set_15c26fe8",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -386,6 +386,9 @@
                                 "type": "keyword"
                             },
                             "exon": {
+                                "type": "keyword"
+                            },
+                            "external_image_data_url": {
                                 "type": "keyword"
                             },
                             "external_image_url": {

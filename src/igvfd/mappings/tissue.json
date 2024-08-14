@@ -1,6 +1,6 @@
 {
-    "hash": "e5052921f630f51cbe6d2bb7a78a90da",
-    "index_name": "tissue_e5052921",
+    "hash": "d02f7d84a60e6f0a11afe4ff98ec5cd3",
+    "index_name": "tissue_d02f7d84",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -510,6 +510,9 @@
                                 "type": "keyword"
                             },
                             "exon": {
+                                "type": "keyword"
+                            },
+                            "external_image_data_url": {
                                 "type": "keyword"
                             },
                             "external_image_url": {
