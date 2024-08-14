@@ -1,6 +1,6 @@
 {
-    "hash": "f78fa1bd5fda5b34e4d4b72aeac64530",
-    "index_name": "construct_library_set_f78fa1bd",
+    "hash": "b37fd562bbaf6bd63c9a99468c079840",
+    "index_name": "construct_library_set_b37fd562",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -2389,7 +2389,7 @@
                             "description": {
                                 "type": "text"
                             },
-                            "gene": {
+                            "genes": {
                                 "properties": {
                                     "@id": {
                                         "type": "keyword"

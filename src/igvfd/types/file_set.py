@@ -680,7 +680,7 @@ class ConstructLibrarySet(FileSet):
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
         Path('orf_list', include=['@id', 'orf_id', 'gene', 'aliases']),
-        Path('orf_list.gene', include=['@id', 'symbol']),
+        Path('orf_list.genes', include=['@id', 'symbol']),
         Path('publications', include=['@id', 'publication_identifiers']),
     ]
     audit_inherit = [
