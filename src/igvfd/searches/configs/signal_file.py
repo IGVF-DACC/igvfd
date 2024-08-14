@@ -16,6 +16,18 @@ def signal_file():
             'strand_specificity': {
                 'title': 'Strand Specificity'
             },
+            'assembly': {
+                'title': 'Assembly'
+            },
+            'transcriptome_annotation': {
+                'title': 'Transcriptome Annotation'
+            },
+            'filtered': {
+                'title': 'Filtered'
+            },
+            'normalized': {
+                'title': 'Normalized'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -54,6 +66,15 @@ def signal_file():
                     'file_format',
                     'content_type',
                     'strand_specificity',
+                    'filtered',
+                    'normalized'
+                ],
+            },
+            {
+                'title': 'Assembly',
+                'facet_fields': [
+                    'assembly',
+                    'transcriptome_annotation',
                 ],
             },
             {

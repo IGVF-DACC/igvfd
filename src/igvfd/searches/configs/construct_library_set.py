@@ -22,6 +22,36 @@ def construct_library_set():
             'selection_criteria': {
                 'title': 'Selection Criteria'
             },
+            'small_scale_gene_list.symbol': {
+                'title': 'Targeted Genes'
+            },
+            'orf_list.gene.symbol': {
+                'title': 'Open Reading Frame Gene'
+            },
+            'associated_phenotypes.term_name': {
+                'title': 'Associated Phenotypes'
+            },
+            'tiling_modality': {
+                'title': 'CRISPR Tiling Modality'
+            },
+            'guide_type': {
+                'title': 'CRISPR Guide Type'
+            },
+            'applied_to_samples.donors.taxa': {
+                'title': 'Taxa',
+            },
+            'applied_to_samples.classifications': {
+                'title': 'Classifications',
+            },
+            'applied_to_samples.sample_terms.term_name': {
+                'title': 'Sample Term',
+            },
+            'applied_to_samples.targeted_sample_term.term_name': {
+                'title': 'Targeted Sample Term',
+            },
+            'applied_to_samples.disease_terms.term_name': {
+                'title': 'Disease Term',
+            },
             'collections': {
                 'title': 'Collections',
             },
@@ -30,6 +60,9 @@ def construct_library_set():
             },
             'files.content_type': {
                 'title': 'Available File Types',
+            },
+            'integrated_content_files.content_type': {
+                'title': 'Integrated Content',
             },
             'file_set_type': {
                 'title': 'File Set Type',
@@ -57,6 +90,21 @@ def construct_library_set():
                     'file_set_type',
                     'selection_criteria',
                     'scope',
+                    'associated_phenotypes.term_name',
+                    'tiling_modality',
+                    'guide_type',
+                    'small_scale_gene_list.symbol',
+                    'orf_list.gene.symbol',
+                ],
+            },
+            {
+                'title': 'Sample',
+                'facet_fields': [
+                    'applied_to_samples.donors.taxa',
+                    'applied_to_samples.classifications',
+                    'applied_to_samples.sample_terms.term_name',
+                    'applied_to_samples.targeted_sample_term.term_name',
+                    'applied_to_samples.disease_terms.term_name',
                 ],
             },
             {
@@ -71,7 +119,8 @@ def construct_library_set():
             {
                 'title': 'File Data',
                 'facet_fields': [
-                    'files.content_type'
+                    'files.content_type',
+                    'integrated_content_files.content_type',
                 ],
             },
             {

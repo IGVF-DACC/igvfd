@@ -19,6 +19,15 @@ def file():
             'file_format': {
                 'title': 'File Format'
             },
+            'file_format_type': {
+                'title': 'File Format Type'
+            },
+            'assembly': {
+                'title': 'Assembly'
+            },
+            'transcriptome_annotation': {
+                'title': 'Transcriptome Annotation'
+            },
             'lab.title': {
                 'title': 'Lab'
             },
@@ -49,7 +58,15 @@ def file():
                 'title': 'Format',
                 'facet_fields': [
                     'file_format',
+                    'file_format_type',
                     'content_type',
+                ],
+            },
+            {
+                'title': 'Assembly',
+                'facet_fields': [
+                    'assembly',
+                    'transcriptome_annotation',
                 ],
             },
             {
