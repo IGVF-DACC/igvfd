@@ -446,7 +446,6 @@ class MeasurementSet(FileSet):
         cls_phrase = ''
         modality_phrase = ''
         assay_phrase = ''
-        preferred_title_phrase = ''
 
         if samples:
             for sample in samples:
@@ -461,14 +460,14 @@ class MeasurementSet(FileSet):
                         cls_summary = request.embed(construct_library)['summary']
                         cls_set.add(cls_summary)
         if preferred_assay_title:
-            preferred_title_phrase = f' ({preferred_assay_title})'
+            assay = preferred_assay_title
         if len(modality_set) > 1:
             modality_phrase = f'mixed'
             assay_phrase = f' {assay}'
         if len(modality_set) == 1:
             modality_set = ''.join(modality_set)
-            if assay == 'CRISPR screen':
-                assay_phrase = f'CRISPR {modality_set} screen'
+            if 'CRISPR' in assay:
+                assay = assay.replace('CRISPR', f'CRISPR {modality_set}')
             else:
                 modality_phrase = ''
                 assay_phrase = f'{assay}'
@@ -492,7 +491,6 @@ class MeasurementSet(FileSet):
         sentence_parts = [
             modality_phrase,
             assay_phrase,
-            preferred_title_phrase,
             cls_phrase,
         ]
         for phrase in sentence_parts:
