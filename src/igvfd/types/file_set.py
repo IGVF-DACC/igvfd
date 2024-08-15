@@ -460,7 +460,10 @@ class MeasurementSet(FileSet):
                         cls_summary = request.embed(construct_library)['summary']
                         cls_set.add(cls_summary)
         if preferred_assay_title:
-            assay = preferred_assay_title
+            if 'multiome' in preferred_assay_title:
+                assay = f'{assay} ({preferred_assay_title})'
+            elif:
+                assay = preferred_assay_title
         if len(modality_set) > 1:
             modality_phrase = f'mixed'
             assay_phrase = f' {assay}'
