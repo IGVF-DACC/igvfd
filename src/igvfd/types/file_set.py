@@ -462,7 +462,7 @@ class MeasurementSet(FileSet):
         if preferred_assay_title:
             if 'multiome' in preferred_assay_title:
                 assay = f'{assay} ({preferred_assay_title})'
-            elif:
+            else:
                 assay = preferred_assay_title
         if len(modality_set) > 1:
             modality_phrase = f'mixed'
