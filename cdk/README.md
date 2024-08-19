@@ -63,7 +63,7 @@ Ask to be invited to the `aws-igvf-dev` Slack channel, where you can monitor the
 #### SSO setup
 
 Configure your AWS credentials for the `igvf-dev` account. This is the account where your demo will be deployed.
-Log in at [SSO login portal](https://cherrylab.awsapps.com/start/#), choose `Access Keys` under `igvf-dev` account. This will open a pop-up that shows you `SSO start URL` and `SSO Region` that you will need in the next step.
+Log in at [SSO login portal](https://igvf-dacc.awsapps.com/start/#), choose `Access Keys` under `igvf-dev` account. This will open a pop-up that shows you `SSO start URL` and `SSO Region` that you will need in the next step.
 Open a terminal window and run aws sso configuration command:
 
 ```bash
