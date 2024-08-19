@@ -131,19 +131,19 @@
                 "variant to element mapping"
             ],
             "enum_descriptions": {
-                "barcode to element mapping": "Mapping of barcodes to genomic elements.",
-                "barcode to sample mapping": "Mapping of barcodes with to biological sample.",
+                "barcode to element mapping": "A file describing the mapping of barcodes to genomic elements.",
+                "barcode to sample mapping": "A file describing the mapping of barcodes with to biological sample.",
                 "differential gene expression quantifications": "The quantified changes in gene expression levels between different conditions or groups.",
                 "differential transcript expression quantifications": "The quantified changes in expression levels of transcripts between conditions or groups.",
                 "editing templates": "The homology-directed DNA repair (HDR) templates containing SNVs in the library of saturation genome editing assays.",
                 "element quantifications": "The quantified levels of specific genomic elements. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/element_quant.json.",
-                "elements reference": "References for the elements studied, including details like genomic coordinates or identifiers.",
+                "elements reference": "References for the genomic elements studied, including details like genomic coordinates or identifiers.",
                 "fold change over control": "The ratio of expression levels or other measurements in an experimental condition relative to a control.",
                 "guide quantifications": "Information and sequencing read counts for each gRNA in a pooled CRISPR screen experiment.",
-                "guide RNA sequences": "The sequences of guide RNAs designed for genome editing. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/guide_rna_sequences.json.",
+                "guide RNA sequences": "The sequences of guide RNAs designed for genome editing using CRISPR. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/guide_rna_sequences.json.",
                 "MPRA sequence designs": "Sequences designed for an MPRA experiment. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/mpra_sequence_designs.json.",
                 "peaks": "Detected genomic regions of relative enrichment in coverage data, such as peaks in ChIP-seq or ATAC-seq indicating protein binding sites or chromatin accessibility.",
-                "prime editing guide RNA sequences": "The sequences of guide RNAs used in prime editing experiments. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/prime_editing_guide_rna_sequences.json.",
+                "prime editing guide RNA sequences": "The sequences of guide RNAs designed for prime editing CRISPR experiments. Formatting should follow https://github.com/IGVF-DACC/checkfiles/blob/dev/src/schemas/table_schemas/prime_editing_guide_rna_sequences.json.",
                 "protein to protein interaction score": "Scores or metrics for interactions between proteins.",
                 "sample sort parameters": "The parameters/quantifications used for sorting biological samples, such as those in flow cytometry.",
                 "sequence barcodes": "The barcodes associated with different sequences, used for sample identification and multiplexing.",
@@ -152,7 +152,7 @@
                 "variants": "A table listing genetic variants.",
                 "variant binding effects": "The genetic variant effects on transcription factor binding affinity.",
                 "variant effects": "The genetic variant effects on gene expression.",
-                "variant to element mapping": "Mapping of genetic variants to genomic elements."
+                "variant to element mapping": "A file describing the mapping of genetic variants to genomic elements."
             },
             "submissionExample": {
                 "appscript": "guide RNA sequences",
