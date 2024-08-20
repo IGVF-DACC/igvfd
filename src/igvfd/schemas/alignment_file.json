@@ -71,6 +71,10 @@
                 "alignments",
                 "transcriptome alignments"
             ],
+            "enum_descriptions": {
+                "alignments": "The mapping locations of input reads with respect to a genome.",
+                "transcriptome alignments": "The mapping locations of input reads with respect to a transcriptome."
+            },
             "submissionExample": {
                 "appscript": "alignments",
                 "igvf_utils": "alignments"

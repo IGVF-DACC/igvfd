@@ -96,6 +96,11 @@
                 "graph structure",
                 "position weight matrix"
             ],
+            "enum_descriptions": {
+                "edge weights": "A representation of the weights assigned to the edges in a graph or network model.",
+                "graph structure": "A description of the overall layout and connections within a graph or network.",
+                "position weight matrix": "A matrix comprising the probability of each nucleotide occurring at each position in a sequence motif."
+            },
             "submissionExample": {
                 "appscript": "edge weights",
                 "igvf_utils": "edge weights"

@@ -102,6 +102,9 @@
             "enum": [
                 "peaks"
             ],
+            "enum_descriptions": {
+                "peaks": "Detected genomic regions of relative enrichment in coverage data, such as peaks in ChIP-seq or ATAC-seq indicating protein binding sites or chromatin accessibility."
+            },
             "submissionExample": {
                 "appscript": "peaks",
                 "igvf_utils": "peaks"
