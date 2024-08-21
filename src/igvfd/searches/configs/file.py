@@ -28,6 +28,9 @@ def file():
             'transcriptome_annotation': {
                 'title': 'Transcriptome Annotation'
             },
+            'cell_type_annotation.term_name': {
+                'title': 'Cell Type Annotation'
+            },
             'lab.title': {
                 'title': 'Lab'
             },
@@ -60,6 +63,7 @@ def file():
                     'file_format',
                     'file_format_type',
                     'content_type',
+                    'cell_type_annotation.term_name',
                 ],
             },
             {

@@ -48,6 +48,9 @@
         },
         {
             "$ref": "mixins.json#/transcriptome_annotation"
+        },
+        {
+            "$ref": "mixins.json#/cell_type_annotation"
         }
     ],
     "dependentSchemas": {
@@ -138,16 +141,6 @@
                 "igvf_utils": "chr12:123456789"
             }
         },
-        "cell_type_annotation": {
-            "title": "Cell Type Annotation",
-            "description": "The inferred cell type the signal belongs to based on expression profiling.",
-            "type": "string",
-            "linkTo": "SampleTerm",
-            "submissionExample": {
-                "appscript": "/sample-terms/UBERON_0002369/",
-                "igvf_utils": "/sample-terms/UBERON_0002369/"
-            }
-        },
         "dbxrefs": {
             "comment": "This file type currently does not support any external resource submission."
         },
@@ -157,6 +150,7 @@
     },
     "fuzzy_searchable_fields": [
         "content_type",
+        "cell_type_annotation.term_name",
         "description",
         "submitted_by.title",
         "submitted_file_name",

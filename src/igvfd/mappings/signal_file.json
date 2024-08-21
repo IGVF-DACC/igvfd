@@ -1,6 +1,6 @@
 {
-    "hash": "929c0398f21152f7d67107a8aee991b6",
-    "index_name": "signal_file_929c0398",
+    "hash": "91537a482d43b3f59956039b72938a01",
+    "index_name": "signal_file_91537a48",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -309,6 +309,7 @@
                                 "type": "keyword"
                             },
                             "term_name": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "uuid": {
