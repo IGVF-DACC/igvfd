@@ -140,7 +140,7 @@
         },
         "cell_type_annotation": {
             "title": "Cell Type Annotation",
-            "description": "The inferred cell type the signal belongs to based on expression patterns.",
+            "description": "The inferred cell type the signal belongs to based on expression profiling.",
             "type": "string",
             "linkTo": "SampleTerm",
             "submissionExample": {
