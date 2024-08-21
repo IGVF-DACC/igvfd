@@ -1,6 +1,6 @@
 {
-    "hash": "15c26fe8aba9cfadd54d4ee2be08e316",
-    "index_name": "prediction_set_15c26fe8",
+    "hash": "a27a01871fa8514800d182bc794474b6",
+    "index_name": "prediction_set_a27a0187",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -820,6 +820,9 @@
                                 "type": "keyword"
                             },
                             "base_modifications": {
+                                "type": "keyword"
+                            },
+                            "cell_type_annotation": {
                                 "type": "keyword"
                             },
                             "collections": {

@@ -28,6 +28,9 @@ def signal_file():
             'normalized': {
                 'title': 'Normalized'
             },
+            'cell_type_annotation.term_name': {
+                'title': 'Cell Type Annotation'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -67,7 +70,8 @@ def signal_file():
                     'content_type',
                     'strand_specificity',
                     'filtered',
-                    'normalized'
+                    'normalized',
+                    'cell_type_annotation.term_name'
                 ],
             },
             {
