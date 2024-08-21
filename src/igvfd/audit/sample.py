@@ -49,9 +49,9 @@ def audit_sample_sorted_from_parent_child_check(value, system):
                      'sorted_from', 'sorted_from_detail', 'revoke_detail', 'notes', 'submitter_comment',
                      'documents', 'url', 'dbxrefs', 'pooled_from', 'part_of', 'originated_from', 'release_timestamp']
         all_keys = parent.keys() | value.keys()
-        keys_to_check = [k for k in all_keys if k not in skip_keys]
+        keys_to_check = [key for key in all_keys if key not in skip_keys]
         for key in keys_to_check:
-            if value.get(key, None) != parent.get(key, None):
+            if key in value and (key not in parent or value[key] != parent[key]):
                 error_keys.append(key)
         prop_errors = ', '.join([f'`{key}`' for key in error_keys])
         detail = (
