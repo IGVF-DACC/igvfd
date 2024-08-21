@@ -397,7 +397,8 @@ class MeasurementSet(FileSet):
     ]
 
     set_status_up = FileSet.set_status_up + [
-        'assay_term'
+        'assay_term',
+        'auxiliary_sets'
     ]
     set_status_down = FileSet.set_status_down + []
 
