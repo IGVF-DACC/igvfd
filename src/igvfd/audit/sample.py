@@ -51,7 +51,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
         all_keys = parent.keys() | value.keys()
         keys_to_check = [key for key in all_keys if key not in skip_keys]
         for key in keys_to_check:
-            if key in value and (key not in parent or value[key] != parent[key]):
+            if key in parent and (key not in value or value[key] != parent[key]):
                 error_keys.append(key)
         prop_errors = ', '.join([f'`{key}`' for key in error_keys])
         detail = (
