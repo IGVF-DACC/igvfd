@@ -627,7 +627,7 @@
     "cell_type_annotation": {
         "cell_type_annotation": {
             "title": "Cell Type Annotation",
-            "description": "The inferred cell type this file is associated with based on expression profiling.",
+            "description": "The inferred cell type this file is associated with based on single-cell expression profiling.",
             "type": "string",
             "linkTo": "SampleTerm",
             "submissionExample": {
