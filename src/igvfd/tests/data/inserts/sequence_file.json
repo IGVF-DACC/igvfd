@@ -169,7 +169,7 @@
             "SRA:SRR0000023"
         ],
         "file_set": "igvf:basic_analysis_set",
-        "sequencing_run": 12,
+        "sequencing_run": 8,
         "illumina_read_type": "R1",
         "sequencing_platform": "/platform-terms/f893546b-70dc-7f34-497c-4caf0eb0fa6c/",
         "sequencing_kit": "Singular G4 F2 Reagent Kit",
