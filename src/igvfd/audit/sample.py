@@ -30,8 +30,8 @@ def audit_sample_sorted_from_parent_child_check(value, system):
     description_metadata_inconsistency = get_audit_description(audit_sample_sorted_from_parent_child_check, index=0)
     description_duplicated_parent = get_audit_description(audit_sample_sorted_from_parent_child_check, index=1)
     if 'sorted_from' in value or 'part_of' in value:
-        error_keys = []
-        prop_errors = ''
+        inconsistent_properties = []
+        missing_properties = []
         value_id = system.get('path')
         if 'sorted_from' in value:
             parent_id = value.get('sorted_from')
@@ -51,15 +51,26 @@ def audit_sample_sorted_from_parent_child_check(value, system):
         all_keys = parent.keys() | value.keys()
         keys_to_check = [key for key in all_keys if key not in skip_keys]
         for key in keys_to_check:
-            if key in parent and (key not in value or value[key] != parent[key]):
-                error_keys.append(key)
-        prop_errors = ', '.join([f'`{key}`' for key in error_keys])
-        detail = (
-            f'{object_type} {audit_link(path_to_text(value_id), value_id)} '
-            f'has metadata properties ({prop_errors}) inconsistent with '
-            f'its associated parent sample {audit_link(path_to_text(parent_id), parent_id)}.'
-        )
-        if prop_errors != '':
+            if key in parent:
+                if key not in value:
+                    missing_properties.append(key)
+                elif value[key] != parent[key]:
+                    inconsistent_properties.append(key)
+        inconsistent_properties = ', '.join([f'`{key}`' for key in inconsistent_properties])
+        missing_properties = ', '.join([f'`{key}`' for key in missing_properties])
+        if inconsistent_properties:
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value_id), value_id)} '
+                f'has metadata properties ({inconsistent_properties}) inconsistent with '
+                f'its associated parent sample {audit_link(path_to_text(parent_id), parent_id)}.'
+            )
+            yield AuditFailure('inconsistent parent sample', f'{detail} {description_metadata_inconsistency}', level='ERROR')
+        if missing_properties:
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value_id), value_id)} '
+                f'has is missing metadata properties ({inconsistent_properties}) which are '
+                f'associated with the parent sample {audit_link(path_to_text(parent_id), parent_id)}.'
+            )
             yield AuditFailure('inconsistent parent sample', f'{detail} {description_metadata_inconsistency}', level='ERROR')
 
 
