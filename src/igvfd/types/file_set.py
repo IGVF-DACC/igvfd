@@ -791,7 +791,7 @@ class ConstructLibrarySet(FileSet):
                 term_name = (pheno_object.get('term_name'))
                 pheno_terms.append(term_name)
             if len(pheno_terms) in [1, 2]:
-                phenos = ', '.join(pheno_terms)
+                phenos = ' and '.join(pheno_terms)
                 pheno_phrase = f' associated with {phenos}'
             else:
                 pheno_phrase = f' associated with {len(pheno_terms)} phenotypes'
