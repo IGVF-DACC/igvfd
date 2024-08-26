@@ -22,6 +22,9 @@ def genome_browser_annotation_file():
             'transcriptome_annotation': {
                 'title': 'Transcriptome Annotation'
             },
+            'cell_type_annotation.term_name': {
+                'title': 'Cell Type Annotation'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -60,6 +63,7 @@ def genome_browser_annotation_file():
                     'file_format',
                     'file_format_type',
                     'content_type',
+                    'cell_type_annotation.term_name',
                 ],
             },
             {

@@ -48,6 +48,9 @@
         },
         {
             "$ref": "mixins.json#/transcriptome_annotation"
+        },
+        {
+            "$ref": "mixins.json#/cell_type_annotation"
         }
     ],
     "dependentSchemas": {
@@ -147,6 +150,7 @@
     },
     "fuzzy_searchable_fields": [
         "content_type",
+        "cell_type_annotation.term_name",
         "description",
         "submitted_by.title",
         "submitted_file_name",

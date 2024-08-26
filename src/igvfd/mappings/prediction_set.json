@@ -1,6 +1,6 @@
 {
-    "hash": "15c26fe8aba9cfadd54d4ee2be08e316",
-    "index_name": "prediction_set_15c26fe8",
+    "hash": "b5b6c79dd85d83e851e4f794ecb0da5c",
+    "index_name": "prediction_set_b5b6c79d",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -822,6 +822,9 @@
                             "base_modifications": {
                                 "type": "keyword"
                             },
+                            "cell_type_annotation": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1181,6 +1184,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "cell_type_annotation": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1350,6 +1356,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "cell_type_annotation": {
                                 "type": "keyword"
                             },
                             "collections": {

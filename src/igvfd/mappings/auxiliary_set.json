@@ -1,6 +1,6 @@
 {
-    "hash": "101a6cd7ded943d70fe32312fd197f72",
-    "index_name": "auxiliary_set_101a6cd7",
+    "hash": "c89724921ef241732754a751ffc536c3",
+    "index_name": "auxiliary_set_c8972492",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -817,6 +817,9 @@
                                 "type": "keyword"
                             },
                             "base_modifications": {
+                                "type": "keyword"
+                            },
+                            "cell_type_annotation": {
                                 "type": "keyword"
                             },
                             "collections": {

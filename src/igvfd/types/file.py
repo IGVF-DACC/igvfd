@@ -535,7 +535,9 @@ class MatrixFile(File):
 class SignalFile(File):
     item_type = 'signal_file'
     schema = load_schema('igvfd:schemas/signal_file.json')
-    embedded_with_frame = File.embedded_with_frame
+    embedded_with_frame = File.embedded_with_frame + [
+        Path('cell_type_annotation', include=['@id', 'term_name'])
+    ]
     set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []
 
@@ -643,7 +645,9 @@ class ConfigurationFile(File):
 class TabularFile(File):
     item_type = 'tabular_file'
     schema = load_schema('igvfd:schemas/tabular_file.json')
-    embedded_with_frame = File.embedded_with_frame
+    embedded_with_frame = File.embedded_with_frame + [
+        Path('cell_type_annotation', include=['@id', 'term_name'])
+    ]
     set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []
 
@@ -681,7 +685,9 @@ class TabularFile(File):
 class GenomeBrowserAnnotationFile(File):
     item_type = 'genome_browser_annotation_file'
     schema = load_schema('igvfd:schemas/genome_browser_annotation_file.json')
-    embedded_with_frame = File.embedded_with_frame
+    embedded_with_frame = File.embedded_with_frame + [
+        Path('cell_type_annotation', include=['@id', 'term_name'])
+    ]
     set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []
 

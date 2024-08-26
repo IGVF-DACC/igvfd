@@ -623,5 +623,17 @@
                 "igvf_utils": "john-doe:measurement_set01, IGVFDS1222ABCD"
             }
         }
+    },
+    "cell_type_annotation": {
+        "cell_type_annotation": {
+            "title": "Cell Type Annotation",
+            "description": "The inferred cell type this file is associated with based on single-cell expression profiling.",
+            "type": "string",
+            "linkTo": "SampleTerm",
+            "submissionExample": {
+                "appscript": "/sample-terms/UBERON_0002369/",
+                "igvf_utils": "/sample-terms/UBERON_0002369/"
+            }
+        }
     }
 }
