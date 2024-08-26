@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description
+    get_audit_message
 )
 
 
@@ -20,10 +20,10 @@ def audit_treatment_term_id_check(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_treatment_term_id_check)
+    audit_message = get_audit_message(audit_treatment_term_id_check)
     if 'treatment_term_id' in value:
         term_id = value['treatment_term_id']
         if term_id.startswith('NTR'):
             treatment_id = value['@id']
             detail = f'Treatment term for {audit_link(path_to_text(treatment_id), treatment_id)} has been newly requested.'
-            yield AuditFailure('NTR term ID', f'{detail} {description}', level='INTERNAL_ACTION')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description,
+    get_audit_message,
 )
 
 
@@ -20,7 +20,7 @@ def audit_targeted_sample_term_check(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_targeted_sample_term_check)
+    audit_message = get_audit_message(audit_targeted_sample_term_check)
     if 'targeted_sample_term' in value:
         value_id = system.get('path')
         sample_terms = value['sample_terms']
@@ -31,7 +31,7 @@ def audit_targeted_sample_term_check(value, system):
                     f'In vitro system {audit_link(path_to_text(value_id), value_id)} '
                     f'has specified its `targeted_sample_term` to be the same as in `sample_terms`.'
                 )
-                yield AuditFailure('inconsistent targeted sample term', f'{detail} {description}', level='WARNING')
+                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('InVitroSystem', frame='embedded')
@@ -45,7 +45,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_cell_fate_change_treatments_purpose)
+    audit_message = get_audit_message(audit_cell_fate_change_treatments_purpose)
     if 'cell_fate_change_treatments' in value:
         for treatment in value.get('cell_fate_change_treatments'):
             if treatment['purpose'] in ['perturbation', 'agonist', 'antagonist', 'control']:
@@ -54,7 +54,7 @@ def audit_cell_fate_change_treatments_purpose(value, system):
                     f'has a treatment {audit_link(path_to_text(treatment["@id"]), treatment["@id"])} in `cell_fate_change_treatments` '
                     f'that has `purpose` {treatment["purpose"]}.'
                 )
-                yield AuditFailure('inconsistent treatment purpose', f'{detail} {description}', level='WARNING')
+                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('InVitroSystem', frame='embedded')
@@ -68,7 +68,7 @@ def audit_cell_fate_change_protocol_document_type(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_cell_fate_change_protocol_document_type)
+    audit_message = get_audit_message(audit_cell_fate_change_protocol_document_type)
     if 'cell_fate_change_protocol' in value:
         doc_object = system.get('request').embed(value['cell_fate_change_protocol'] + '@@object?skip_calculated=true')
         if doc_object['document_type'] != 'cell fate change protocol':
@@ -77,4 +77,4 @@ def audit_cell_fate_change_protocol_document_type(value, system):
                 f'has a protocol {audit_link(path_to_text(value["cell_fate_change_protocol"]), value["cell_fate_change_protocol"])} in `cell_fate_change_protocols` '
                 f'that does not have `document_type` cell fate change protocol.'
             )
-            yield AuditFailure('inconsistent document type', f'{detail} {description}', level='ERROR')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

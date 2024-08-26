@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description
+    get_audit_message
 )
 
 
@@ -30,9 +30,9 @@ def audit_related_multiome_datasets(value, system):
         }
     ]
     '''
-    description_no_multiome_size = get_audit_description(audit_related_multiome_datasets, index=0)
-    description_unexpected_multiome_size = get_audit_description(audit_related_multiome_datasets, index=1)
-    description_inconsistent_multiome = get_audit_description(audit_related_multiome_datasets, index=2)
+    audit_message_no_multiome_size = get_audit_message(audit_related_multiome_datasets, index=0)
+    audit_message_unexpected_multiome_size = get_audit_message(audit_related_multiome_datasets, index=1)
+    audit_message_inconsistent_multiome = get_audit_message(audit_related_multiome_datasets, index=2)
     detail = ''
     related_multiome_datasets = value.get('related_multiome_datasets', [])
     multiome_size = value.get('multiome_size')
@@ -43,20 +43,20 @@ def audit_related_multiome_datasets(value, system):
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has no `multiome_size`.'
             )
-            yield AuditFailure('missing multiome size', f'{detail} {description_no_multiome_size}', level='NOT_COMPLIANT')
+            yield AuditFailure(audit_message_no_multiome_size.get('audit_category', ''), f'{detail} {audit_message_no_multiome_size.get("audit_description", "")}', level=audit_message_no_multiome_size.get('audit_level', ''))
     else:
         if multiome_size:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has `multiome_size`.'
             )
-            yield AuditFailure('unexpected multiome size', f'{detail} {description_unexpected_multiome_size}', level='ERROR')
+            yield AuditFailure(audit_message_unexpected_multiome_size.get('audit_category', ''), f'{detail} {audit_message_unexpected_multiome_size.get("audit_description", "")}', level=audit_message_unexpected_multiome_size.get('audit_level', ''))
     if related_multiome_datasets == [] and multiome_size:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has a `multiome_size` of {multiome_size}, but no `related_multiome_datasets`.'
         )
-        yield AuditFailure('inconsistent multiome datasets', f'{detail} {description_inconsistent_multiome}', level='ERROR')
+        yield AuditFailure(audit_message_inconsistent_multiome.get('audit_category', ''), f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}', level=audit_message_inconsistent_multiome.get('audit_level', ''))
     elif related_multiome_datasets and multiome_size:
         if len(related_multiome_datasets) != multiome_size - 1:
             detail = (
@@ -64,7 +64,7 @@ def audit_related_multiome_datasets(value, system):
                 f'has a `multiome_size` of {multiome_size}, but {len(related_multiome_datasets)} '
                 f'`related_multiome_datasets` when {multiome_size - 1} are expected.'
             )
-            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description_inconsistent_multiome}', level='ERROR')
+            yield AuditFailure(audit_message_inconsistent_multiome.get('audit_category', ''), f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}', level=audit_message_inconsistent_multiome.get('audit_level', ''))
         samples = value.get('samples')
         samples_to_link = [audit_link(path_to_text(sample), sample) for sample in samples]
         datasets_with_different_samples = []
@@ -91,14 +91,14 @@ def audit_related_multiome_datasets(value, system):
                 f'has associated `samples`: {samples_to_link} which are not the same associated `samples` '
                 f'of `related_multiome_datasets`: {datasets_with_different_samples}'
             )
-            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description_inconsistent_multiome}', level='ERROR')
+            yield AuditFailure(audit_message_inconsistent_multiome.get('audit_category', ''), f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}', level=audit_message_inconsistent_multiome.get('audit_level', ''))
         if datasets_with_different_multiome_sizes:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a specified `multiome_size` of {multiome_size}, which does not match the '
                 f'`multiome_size` of `related_multiome_datasets`: {datasets_with_different_multiome_sizes}'
             )
-            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description_inconsistent_multiome}', level='ERROR')
+            yield AuditFailure(audit_message_inconsistent_multiome.get('audit_category', ''), f'{detail} {audit_message_inconsistent_multiome.get("audit_description", "")}', level=audit_message_inconsistent_multiome.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -112,13 +112,13 @@ def audit_unspecified_protocol(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_unspecified_protocol)
+    audit_message = get_audit_message(audit_unspecified_protocol)
     if 'protocols' not in value:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `protocols`.'
         )
-        yield AuditFailure('missing protocol', f'{detail} {description}', level='NOT_COMPLIANT')
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -132,7 +132,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_CRISPR_screen_lacking_modifications)
+    audit_message = get_audit_message(audit_CRISPR_screen_lacking_modifications)
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     crispr_assays = ['in vitro CRISPR screen assay',
@@ -153,7 +153,7 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} is '
                 f'a CRISPR screen assay but has no specified `modifications` on its `samples`: {sample_detail}.'
             )
-            yield AuditFailure('missing modification', f'{detail} {description}', level='NOT_COMPLIANT')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -172,8 +172,8 @@ def audit_preferred_assay_title(value, system):
         }
     ]
     '''
-    description_missing = get_audit_description(audit_preferred_assay_title, index=0)
-    description_inconsistent = get_audit_description(audit_preferred_assay_title, index=1)
+    audit_message_missing = get_audit_message(audit_preferred_assay_title, index=0)
+    audit_message_inconsistent = get_audit_message(audit_preferred_assay_title, index=1)
     assay_term = value.get('assay_term')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_term_name = assay_object.get('term_name')
@@ -184,13 +184,13 @@ def audit_preferred_assay_title(value, system):
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
                 f'`assay_term` {assay_term_name}, but `preferred_assay_title` {preferred_assay_title}.'
             )
-            yield AuditFailure('inconsistent preferred assay title', f'{detail} {description_inconsistent}', level='WARNING')
+            yield AuditFailure(audit_message_inconsistent.get('audit_category', ''), f'{detail} {audit_message_inconsistent.get("audit_description", "")}', level=audit_message_inconsistent.get('audit_level', ''))
     else:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
             f'no `preferred_assay_title`.'
         )
-        yield AuditFailure('missing preferred assay title', f'{detail} {description_missing}', level='NOT_COMPLIANT')
+        yield AuditFailure(audit_message_missing.get('audit_category', ''), f'{detail} {audit_message_missing.get("audit_description", "")}', level=audit_message_missing.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -204,7 +204,7 @@ def audit_missing_institutional_certification(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_missing_institutional_certification)
+    audit_message = get_audit_message(audit_missing_institutional_certification)
     # Only audit Measurement Sets with at least one human sample.
     donors = value.get('donors', [])
     taxa = set()
@@ -251,7 +251,7 @@ def audit_missing_institutional_certification(value, system):
                 f'a sample {audit_link(path_to_text(sample), sample)} that lacks any `institutional_certificates` '
                 f'issued to the lab that submitted this file set.'
             )
-            yield AuditFailure('missing NIH certification', f'{detail} {description}', level='NOT_COMPLIANT')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -265,7 +265,7 @@ def audit_missing_auxiliary_set_link(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_missing_auxiliary_set_link)
+    audit_message = get_audit_message(audit_missing_auxiliary_set_link)
     samples = value.get('samples', [])
     auxiliary_sets = value.get('auxiliary_sets', [])
     for sample in samples:
@@ -277,7 +277,7 @@ def audit_missing_auxiliary_set_link(value, system):
                     f'to sample {audit_link(path_to_text(sample), sample)} which links to auxiliary set '
                     f'{audit_link(path_to_text(file_set), file_set)} but is not in its `auxiliary_sets`.'
                 )
-                yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='WARNING')
+                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -296,8 +296,8 @@ def audit_targeted_genes(value, system):
         }
     ]
     '''
-    description_missing = get_audit_description(audit_targeted_genes, index=0)
-    description_unexpected = get_audit_description(audit_targeted_genes, index=1)
+    audit_message_missing = get_audit_message(audit_targeted_genes, index=0)
+    audit_message_unexpected = get_audit_message(audit_targeted_genes, index=1)
     assay_term = value.get('assay_term')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_term_name = assay_object.get('term_name', '')
@@ -313,13 +313,13 @@ def audit_targeted_genes(value, system):
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `targeted_genes`.'
         )
-        yield AuditFailure('missing targeted genes', f'{detail} {description_missing}', level='NOT_COMPLIANT')
+        yield AuditFailure(audit_message_missing.get('audit_category', ''), f'{detail} {audit_message_missing.get("audit_description", "")}', level=audit_message_missing.get('audit_level', ''))
     if targeted_genes and (assay_term_name not in expecting_targeted_genes_by_assay_term and preferred_assay_title not in expecting_targeted_genes_by_preferred_assay_title):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has `targeted_genes`.'
         )
-        yield AuditFailure('unexpected targeted genes', f'{detail} {description_unexpected}', level='WARNING')
+        yield AuditFailure(audit_message_unexpected.get('audit_category', ''), f'{detail} {audit_message_unexpected.get("audit_description", "")}', level=audit_message_unexpected.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='embedded')
@@ -358,26 +358,26 @@ def audit_missing_construct_library_set(value, system):
         }
     ]
     '''
-    description_MPRA = get_audit_description(audit_missing_construct_library_set, index=0)
-    description_CRISPR = get_audit_description(audit_missing_construct_library_set, index=1)
-    description_SGE = get_audit_description(audit_missing_construct_library_set, index=2)
-    description_PPI = get_audit_description(audit_missing_construct_library_set, index=3)
-    description_VAMP = get_audit_description(audit_missing_construct_library_set, index=4)
-    description_Imaging = get_audit_description(audit_missing_construct_library_set, index=5)
+    audit_message_MPRA = get_audit_message(audit_missing_construct_library_set, index=0)
+    audit_message_CRISPR = get_audit_message(audit_missing_construct_library_set, index=1)
+    audit_message_SGE = get_audit_message(audit_missing_construct_library_set, index=2)
+    audit_message_PPI = get_audit_message(audit_missing_construct_library_set, index=3)
+    audit_message_VAMP = get_audit_message(audit_missing_construct_library_set, index=4)
+    audit_message_Imaging = get_audit_message(audit_missing_construct_library_set, index=5)
 
     expected_library_by_assay_term = {
-        'massively parallel reporter assay': ('reporter library', description_MPRA),
-        'cas mediated mutagenesis': ('guide library', description_CRISPR),
-        'in vitro CRISPR screen assay': ('guide library', description_CRISPR),
-        'in vitro CRISPR screen using flow cytometry': ('guide library', description_CRISPR),
-        'in vitro CRISPR screen using single-cell RNA-seq': ('guide library', description_CRISPR),
-        'protein-protein interaction detection assay': ('expression vector library', description_PPI),
-        'imaging assay': ('expression vector library', description_Imaging)
+        'massively parallel reporter assay': ('reporter library', audit_message_MPRA),
+        'cas mediated mutagenesis': ('guide library', audit_message_CRISPR),
+        'in vitro CRISPR screen assay': ('guide library', audit_message_CRISPR),
+        'in vitro CRISPR screen using flow cytometry': ('guide library', audit_message_CRISPR),
+        'in vitro CRISPR screen using single-cell RNA-seq': ('guide library', audit_message_CRISPR),
+        'protein-protein interaction detection assay': ('expression vector library', audit_message_PPI),
+        'imaging assay': ('expression vector library', audit_message_Imaging)
     }
     # preferred assay title expectations override any overlapping assay term expectation
     expected_library_by_preferred_assay_title = {
-        'SGE': ('editing template library', description_SGE),
-        'VAMP-seq': ('expression vector library', description_VAMP)
+        'SGE': ('editing template library', audit_message_SGE),
+        'VAMP-seq': ('expression vector library', audit_message_VAMP)
     }
 
     assay_term_name = value.get('assay_term').get('term_name')
@@ -394,13 +394,13 @@ def audit_missing_construct_library_set(value, system):
             assay_to_check = assay_term_name
 
         expected_library = expected_library_dict_to_check[assay_to_check][0]
-        description = expected_library_dict_to_check[assay_to_check][1]
+        audit_message = expected_library_dict_to_check[assay_to_check][1]
         if not (construct_library_sets) or not ([construct_library_set for construct_library_set in construct_library_sets if construct_library_set.get('file_set_type', '') == expected_library]):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has no `construct_library_sets` of type {expected_library} linked in its `samples`.'
             )
-            yield AuditFailure('missing construct library set', f'{detail} {description}', level='NOT_COMPLIANT')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='embedded')
@@ -439,24 +439,24 @@ def audit_missing_auxiliary_set(value, system):
         }
     ]
     '''
-    description_MPRA = get_audit_description(audit_missing_auxiliary_set, index=0)
-    description_scQer = get_audit_description(audit_missing_auxiliary_set, index=1)
-    description_CRISPR_gRNA = get_audit_description(audit_missing_auxiliary_set, index=2)
-    description_CRISPR_flow = get_audit_description(audit_missing_auxiliary_set, index=3)
-    description_Variant_FlowFISH = get_audit_description(audit_missing_auxiliary_set, index=4)
-    description_10X_MULTI_seq = get_audit_description(audit_missing_auxiliary_set, index=5)
+    audit_message_MPRA = get_audit_message(audit_missing_auxiliary_set, index=0)
+    audit_message_scQer = get_audit_message(audit_missing_auxiliary_set, index=1)
+    audit_message_CRISPR_gRNA = get_audit_message(audit_missing_auxiliary_set, index=2)
+    audit_message_CRISPR_flow = get_audit_message(audit_missing_auxiliary_set, index=3)
+    audit_message_Variant_FlowFISH = get_audit_message(audit_missing_auxiliary_set, index=4)
+    audit_message_10X_MULTI_seq = get_audit_message(audit_missing_auxiliary_set, index=5)
 
     expected_auxiliary_set_by_assay_term = {
-        'massively parallel reporter assay': [('quantification DNA barcode sequencing', description_MPRA)],
-        'in vitro CRISPR screen assay': [('gRNA sequencing', description_CRISPR_gRNA)],
-        'in vitro CRISPR screen using flow cytometry': [('gRNA sequencing', description_CRISPR_gRNA), ('cell sorting', description_CRISPR_flow)],
-        'in vitro CRISPR screen using single-cell RNA-seq': [('gRNA sequencing', description_CRISPR_gRNA)]
+        'massively parallel reporter assay': [('quantification DNA barcode sequencing', audit_message_MPRA)],
+        'in vitro CRISPR screen assay': [('gRNA sequencing', audit_message_CRISPR_gRNA)],
+        'in vitro CRISPR screen using flow cytometry': [('gRNA sequencing', audit_message_CRISPR_gRNA), ('cell sorting', audit_message_CRISPR_flow)],
+        'in vitro CRISPR screen using single-cell RNA-seq': [('gRNA sequencing', audit_message_CRISPR_gRNA)]
     }
     # preferred assay title expectations override any overlapping assay term expectation
     expected_auxiliary_set_by_preferred_assay_title = {
-        'MPRA (scQer)': [('quantification DNA barcode sequencing', description_MPRA), ('circularized RNA barcode detection', description_scQer)],
-        'Variant FlowFISH': [('variant sequencing', description_Variant_FlowFISH), ('cell sorting', description_CRISPR_flow)],
-        '10x multiome with MULTI-seq': [('lipid-conjugated oligo sequencing', description_10X_MULTI_seq)]
+        'MPRA (scQer)': [('quantification DNA barcode sequencing', audit_message_MPRA), ('circularized RNA barcode detection', audit_message_scQer)],
+        'Variant FlowFISH': [('variant sequencing', audit_message_Variant_FlowFISH), ('cell sorting', audit_message_CRISPR_flow)],
+        '10x multiome with MULTI-seq': [('lipid-conjugated oligo sequencing', audit_message_10X_MULTI_seq)]
     }
 
     assay_term_name = value.get('assay_term').get('term_name')
@@ -475,11 +475,11 @@ def audit_missing_auxiliary_set(value, system):
         expected_auxiliary_sets = expected_auxiliary_dict_to_check[assay_to_check]
         for expected_auxiliary_set in expected_auxiliary_sets:
             expected_auxiliary_set_type = expected_auxiliary_set[0]
-            description = expected_auxiliary_set[1]
+            audit_message = expected_auxiliary_set[1]
 
             if not (auxiliary_sets) or not ([auxiliary_set for auxiliary_set in auxiliary_sets if auxiliary_set.get('file_set_type', '') == expected_auxiliary_set_type]):
                 detail = (
                     f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                     f'has no {expected_auxiliary_set_type} `auxiliary_sets`.'
                 )
-                yield AuditFailure('missing auxiliary set', f'{detail} {description}', level='NOT_COMPLIANT')
+                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

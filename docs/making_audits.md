@@ -61,13 +61,20 @@ The description, category, and level should be listed in the docstring of the au
 
     Example of a ```measurement_set``` which has a preferred assay title that does not correspond to its assay term:
 
+        from .formatter import get_audit_message
+
+        audit_message = get_audit_message(<an_audit_function_name>, index=<int>)
+
         if preferred_assay_title and preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]),value["@id"])} has '
                 f'assay term "{assay_term_name}", but preferred assay title "{preferred_assay_title}", '
                 f'which is not an expected preferred assay title for this assay term.'
             )
-            yield AuditFailure('inconsistent assays', detail, level='WARNING')
+            yield AuditFailure(audit_message.get('audit_category', ''),
+                               f'{detail} {audit_message.get("audit_description", "")},
+                               level=audit_message.get('audit_level', '')
+            )
 
     Use ```audit_link``` to format links so that the front end can find and present them. The first parameter is the text to display for the link, while the second is the link path. You must import ```audit_link``` from the .formatter library.
 

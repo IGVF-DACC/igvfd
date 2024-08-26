@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description,
+    get_audit_message,
     space_in_words
 )
 
@@ -38,7 +38,8 @@ def audit_no_files(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_no_files)
+    audit_message_missing_files = get_audit_message(audit_no_files, index=0)
+    audit_message_unexpected_files = get_audit_message(audit_no_files, index=1)
     assay_term = value.get('assay_term', '')
     if assay_term:
         assay_term = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
@@ -52,14 +53,14 @@ def audit_no_files(value, system):
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has no `files`.'
             )
-            yield AuditFailure('missing files', f'{detail} {description}', level='WARNING')
+            yield AuditFailure(audit_message_missing_files.get('audit_category', ''), f'{detail} {audit_message_missing_files.get("audit_description", "")}', level=audit_message_missing_files.get('audit_level', ''))
     else:
         if value.get('files', ''):
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has `files`.'
             )
-            yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')
+            yield AuditFailure(audit_message_unexpected_files.get('audit_category', ''), f'{detail} {audit_message_unexpected_files.get("audit_description", "")}', level=audit_message_unexpected_files.get('audit_level', ''))
 
 
 @audit_checker('FileSet', frame='object')
@@ -74,7 +75,7 @@ def audit_missing_seqspec(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_missing_seqspec)
+    audit_message = get_audit_message(audit_missing_seqspec)
     if 'files' in value:
         no_seqspec = []
         for file in value['files']:
@@ -89,7 +90,7 @@ def audit_missing_seqspec(value, system):
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has sequence file(s): '
                 f'{no_seqspec} which do not have any `seqspecs`.'
             )
-            yield AuditFailure('missing sequence specification', f'{detail} {description}', level='NOT_COMPLIANT')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('FileSet', frame='object')
@@ -104,7 +105,7 @@ def audit_files_associated_with_incorrect_fileset(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_files_associated_with_incorrect_fileset)
+    audit_message = get_audit_message(audit_files_associated_with_incorrect_fileset)
     if 'files' in value:
         for file in value['files']:
             if file.startswith('/sequence-files/'):
@@ -119,7 +120,7 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                                 f'{audit_link(path_to_text(file), file)} which links to seqspec '
                                 f'{audit_link(path_to_text(configuration_file), configuration_file)} which does not link to this file set.'
                             )
-                            yield AuditFailure('missing related files', f'{detail} {description}', level='ERROR')
+                            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
             # Audit the file set with a seqspec configuration file without the associated sequence files also in the file set.
             if file.startswith('/configuration-files/'):
@@ -135,7 +136,7 @@ def audit_files_associated_with_incorrect_fileset(value, system):
                             f'{audit_link(path_to_text(file), file)} which links to sequence file(s): {missing_sequence_files} which '
                             f'do not link to this file set.'
                         )
-                        yield AuditFailure('missing related files', f'{detail} {description}', level='ERROR')
+                        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('FileSet', frame='object')
@@ -150,7 +151,7 @@ def audit_inconsistent_seqspec(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_inconsistent_seqspec)
+    audit_message = get_audit_message(audit_inconsistent_seqspec)
     if 'files' in value:
         sequence_to_seqspec = {}
         for file in value['files']:
@@ -179,7 +180,7 @@ def audit_inconsistent_seqspec(value, system):
                     f'{", ".join([audit_link(path_to_text(non_matching_files), non_matching_files) for non_matching_files in non_matching_files])} '
                     f'which belong to the same sequencing set, but do not have the same `seqspecs`.'
                 )
-                yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')
+                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
         seqspec_to_sequence = {}
         for key, file_dict in sequence_to_seqspec.items():
@@ -203,7 +204,7 @@ def audit_inconsistent_seqspec(value, system):
                     f'which share the same `seqspecs` {", ".join(seqspec_paths)} '
                     f'but belong to different sequencing sets.'
                 )
-                yield AuditFailure('inconsistent sequence specifications', f'{detail} {description}', level='ERROR')
+                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
@@ -224,8 +225,8 @@ def audit_loci_valid_chrom_sizes(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description_inconsistent_assembly = get_audit_description(audit_loci_valid_chrom_sizes, index=0)
-    description_inconsistent_loci = get_audit_description(audit_loci_valid_chrom_sizes, index=1)
+    audit_message_inconsistent_assembly = get_audit_message(audit_loci_valid_chrom_sizes, index=0)
+    audit_message_inconsistent_loci = get_audit_message(audit_loci_valid_chrom_sizes, index=1)
     GRCh38_chrom_sizes = load_chrom_sizes_file('src/igvfd/audit/_static/GRCh38.chrom.sizes')
     GRCm39_chrom_sizes = load_chrom_sizes_file('src/igvfd/audit/_static/GRCm39.chrom.sizes')
     chrom_sizes = {'GRCh38': GRCh38_chrom_sizes, 'GRCm39': GRCm39_chrom_sizes}
@@ -238,7 +239,7 @@ def audit_loci_valid_chrom_sizes(value, system):
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has loci '
                 f'from multiple assemblies: {assemblies} listed in its `small_scale_loci_list`.'
             )
-            yield AuditFailure('inconsistent loci', f'{detail} {description_inconsistent_assembly}', level='ERROR')
+            yield AuditFailure(audit_message_inconsistent_assembly.get('audit_category', ''), f'{detail} {audit_message_inconsistent_assembly.get("audit_description", "")}', level=audit_message_inconsistent_assembly.get('audit_level', ''))
         for loci in value['small_scale_loci_list']:
             assembly = chrom_sizes[loci['assembly']]
             if loci['chromosome'] not in assembly:
@@ -251,7 +252,7 @@ def audit_loci_valid_chrom_sizes(value, system):
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has unexpected '
                 f'chromosome(s): {invalid_chroms} listed in its `small_scale_loci_list`.'
             )
-            yield AuditFailure('inconsistent loci', f'{detail} {description_inconsistent_loci}', level='ERROR')
+            yield AuditFailure(audit_message_inconsistent_loci.get('audit_category', ''), f'{detail} {audit_message_inconsistent_loci.get("audit_description", "")}', level=audit_message_inconsistent_loci.get('audit_level', ''))
         if invalid_loci:
             invalid_loci = ', '.join(str(invalid_locus) for invalid_locus in invalid_loci)
             detail = (
@@ -259,7 +260,7 @@ def audit_loci_valid_chrom_sizes(value, system):
                 f'listed in `small_scale_loci_list`: {invalid_loci} which exceed '
                 f'the valid chromosome size for its respective chromosome.'
             )
-            yield AuditFailure('inconsistent loci', f'{detail} {description_inconsistent_loci}', level='ERROR')
+            yield AuditFailure(audit_message_inconsistent_loci.get('audit_category', ''), f'{detail} {audit_message_inconsistent_loci.get("audit_description", "")}', level=audit_message_inconsistent_loci.get('audit_level', ''))
 
 
 @audit_checker('FileSet', frame='object')
@@ -279,8 +280,8 @@ def audit_inconsistent_sequencing_kit(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description_inconsistent_kit = get_audit_description(audit_inconsistent_sequencing_kit, index=0)
-    description_missing_kit = get_audit_description(audit_inconsistent_sequencing_kit, index=1)
+    audit_message_inconsistent_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=0)
+    audit_message_missing_kit = get_audit_message(audit_inconsistent_sequencing_kit, index=1)
     if 'files' in value:
         file_info = {}
         for file in value['files']:
@@ -309,7 +310,7 @@ def audit_inconsistent_sequencing_kit(value, system):
                         f'{audit_link(path_to_text(file_info[file]["platform"]), file_info[file]["platform"])} '
                         f'that is inconsistent with its `sequencing_kit` {file_info[file]["kit"]}.'
                     )
-                    yield AuditFailure('inconsistent sequencing kit', f'{detail} {description_inconsistent_kit}', level='ERROR')
+                    yield AuditFailure(audit_message_inconsistent_kit.get('audit_category', ''), f'{detail} {audit_message_inconsistent_kit.get("audit_description", "")}', level=audit_message_inconsistent_kit.get('audit_level', ''))
 
     if missing_kit:
         detail = (
@@ -317,7 +318,7 @@ def audit_inconsistent_sequencing_kit(value, system):
             f'file(s) {", ".join([audit_link(path_to_text(f), f) for f in missing_kit])} '
             f'which lack specification of a `sequencing_kit`.'
         )
-        yield AuditFailure('missing sequencing kit', f'{detail} {description_missing_kit}', level='WARNING')
+        yield AuditFailure(audit_message_missing_kit.get('audit_category', ''), f'{detail} {audit_message_missing_kit.get("audit_description", "")}', level=audit_message_missing_kit.get('audit_level', ''))
 
     run_to_kit = {}
     for file in file_info:
@@ -342,7 +343,7 @@ def audit_inconsistent_sequencing_kit(value, system):
                 f'which are part of the same sequencing run, but do not specify the same `sequencing_kit`: '
                 f'{", ".join(filtered_kits)}{unspecified_kit_phrase}.'
             )
-            yield AuditFailure('inconsistent sequencing kit', f'{detail} {description_inconsistent_kit}', level='ERROR')
+            yield AuditFailure(audit_message_inconsistent_kit.get('audit_category', ''), f'{detail} {audit_message_inconsistent_kit.get("audit_category", "")}', level=audit_message_inconsistent_kit.get('audit_level', ''))
 
 
 @audit_checker('AuxiliarySet', frame='object')
@@ -358,7 +359,7 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_auxiliary_set_construct_library_set_files)
+    audit_message = get_audit_message(audit_auxiliary_set_construct_library_set_files)
     non_sequence_files = [file for file in value.get('files') if not (
         file.startswith('/sequence-files/') or file.startswith('/configuration-files/'))]
     if non_sequence_files and value.get('file_set_type', '') != 'cell sorting':
@@ -366,7 +367,7 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
             [audit_link(path_to_text(file), file) for file in non_sequence_files])
         detail = (f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} links to '
                   f'`files` that are not sequence or configuration files: {non_sequence_files}.')
-        yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -384,7 +385,7 @@ def audit_unexpected_virtual_samples(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_unexpected_virtual_samples)
+    audit_message = get_audit_message(audit_unexpected_virtual_samples)
     samples = []
     if 'samples' in value:
         samples = value.get('samples')
@@ -397,7 +398,7 @@ def audit_unexpected_virtual_samples(value, system):
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} links to virtual sample '
                 f'{audit_link(path_to_text(sample), sample)} in `samples`.'
             )
-            yield AuditFailure('unexpected sample', f'{detail} {description}', level='ERROR')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')
@@ -414,10 +415,10 @@ def audit_input_file_set_for(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_input_file_set_for)
+    audit_message = get_audit_message(audit_input_file_set_for)
     if not value.get('input_file_set_for') and value.get('files'):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set with files, '
             f'but is not listed in any `input_file_sets` for any analysis sets.'
         )
-        yield AuditFailure('missing analysis', f'{detail} {description}', level='WARNING')
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description,
+    get_audit_message,
     space_in_words
 )
 
@@ -31,10 +31,10 @@ def audit_upload_status(value, system):
     if upload_status not in ['validated']:
         if value.get('external'):
             audit_level = 'WARNING'
-            description = get_audit_description(audit_upload_status, index=1)
+            audit_message = get_audit_message(audit_upload_status, index=1)
         else:
             audit_level = 'ERROR'
-            description = get_audit_description(audit_upload_status, index=0)
+            audit_message = get_audit_message(audit_upload_status, index=0)
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has `upload_status` {upload_status}.'
         )
@@ -43,7 +43,7 @@ def audit_upload_status(value, system):
             detail = f'{detail} Validation error detail: {validation_error_detail}.'
         yield AuditFailure(
             'upload status not validated',
-            f'{detail} {description}',
+            f'{detail} {audit_message.get("audit_description", "")}',
             level=audit_level
         )
 
@@ -59,7 +59,7 @@ def audit_file_format_specifications(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_file_format_specifications)
+    audit_message = get_audit_message(audit_file_format_specifications)
     object_type = space_in_words(value['@type'][0]).capitalize()
     for document in value.get('file_format_specifications', []):
         document_object = system.get('request').embed(document)
@@ -69,4 +69,4 @@ def audit_file_format_specifications(value, system):
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has `file_format_specification` {audit_link(path_to_text(document), document)} '
                 f'with `document_type` {doc_type}.'
             )
-            yield AuditFailure('inconsistent document type', f'{detail} {description}', level='ERROR')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

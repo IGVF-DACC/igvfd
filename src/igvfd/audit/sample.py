@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description,
+    get_audit_message,
     space_in_words
 )
 
@@ -27,8 +27,8 @@ def audit_sample_sorted_from_parent_child_check(value, system):
     ]
     '''
     object_type = space_in_words(system.get('types')[0]).capitalize()
-    description_metadata_inconsistency = get_audit_description(audit_sample_sorted_from_parent_child_check, index=0)
-    description_duplicated_parent = get_audit_description(audit_sample_sorted_from_parent_child_check, index=1)
+    audit_message_metadata_inconsistency = get_audit_message(audit_sample_sorted_from_parent_child_check, index=0)
+    audit_message_duplicated_parent = get_audit_message(audit_sample_sorted_from_parent_child_check, index=1)
     if 'sorted_from' in value or 'part_of' in value:
         inconsistent_properties = []
         missing_properties = []
@@ -42,8 +42,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
                 f'{object_type} {audit_link(path_to_text(value_id), value_id)} '
                 f'specifies both `sorted_from` and `part_of`.'
             )
-            yield AuditFailure('inconsistent parent sample', f'{detail} {description_duplicated_parent}', level='ERROR')
-
+            yield AuditFailure(audit_message_duplicated_parent.get('audit_category', ''), f'{detail} {audit_message_duplicated_parent.get("audit_description", "")}', level=audit_message_duplicated_parent.get('audit_level', ''))
         parent = system.get('request').embed(parent_id + '@@object?skip_calculated=true')
         skip_keys = ['accession', 'aliases', 'alternate_accessions', 'audit', 'cellular_sub_pool', 'creation_timestamp', 'date_obtained', 'dbxrefs', 'description', 'documents', 'notes', 'originated_from', 'part_of',
                      'pooled_from', 'release_timestamp', 'revoke_detail', 'schema_version', 'sorted_from', 'sorted_from_detail', 'starting_amount', 'starting_amount_units', 'submitter_comment', 'submitted_by', 'treatments', 'url']
@@ -64,14 +63,14 @@ def audit_sample_sorted_from_parent_child_check(value, system):
                 f'has metadata properties ({inconsistent_properties}) inconsistent with '
                 f'its associated parent sample {audit_link(path_to_text(parent_id), parent_id)}.'
             )
-            yield AuditFailure('inconsistent parent sample', f'{detail} {description_metadata_inconsistency}', level='ERROR')
+            yield AuditFailure(audit_message_metadata_inconsistency.get('audit_category', ''), f'{detail} {audit_message_metadata_inconsistency.get("audit_description", "")}', level=audit_message_metadata_inconsistency.get('audit_level', ''))
         if missing_properties:
             detail = (
                 f'{object_type} {audit_link(path_to_text(value_id), value_id)} '
                 f'is missing metadata properties ({missing_properties}) which are '
                 f'associated with the parent sample {audit_link(path_to_text(parent_id), parent_id)}.'
             )
-            yield AuditFailure('inconsistent parent sample', f'{detail} {description_metadata_inconsistency}', level='ERROR')
+            yield AuditFailure(audit_message_metadata_inconsistency.get('audit_category', ''), f'{detail} {audit_message_metadata_inconsistency.get("audit_description", "")}', level=audit_message_metadata_inconsistency.get('audit_level', ''))
 
 
 @audit_checker('Sample', frame='object')
@@ -86,7 +85,7 @@ def audit_sample_virtual_donor_check(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_sample_virtual_donor_check)
+    audit_message = get_audit_message(audit_sample_virtual_donor_check)
     if ('donors' in value) and (value.get('virtual', False) == False):
         sample_id = value['@id']
         donor_ids = value.get('donors', [])
@@ -102,7 +101,7 @@ def audit_sample_virtual_donor_check(value, system):
         if len(donors_error) > 0:
             detail = (f'{object_type} {audit_link(path_to_text(sample_id), sample_id)} is linked to virtual `donors`: '
                       f'{donors_to_link}.')
-            yield AuditFailure('inconsistent donor', f'{detail} {description}', level='ERROR')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('Sample', frame='object')
@@ -144,7 +143,7 @@ def get_virtual_sample_failures(
     linked_sample_id,
     object_type
 ):
-    description = get_audit_description(audit_non_virtual_sample_linked_to_virtual_sample)
+    audit_message = get_audit_message(audit_non_virtual_sample_linked_to_virtual_sample)
     linked_data = system.get('request').embed(linked_sample_id + '@@object?skip_calculated=true')
     if linked_data.get('virtual', False) != sample_is_virtual:
         if sample_is_virtual:
@@ -158,7 +157,7 @@ def get_virtual_sample_failures(
             f'{audit_detail_body} and has a linked sample '
             f'{audit_link(path_to_text(linked_sample_id), linked_sample_id)} {audit_detail_end}.'
         )
-        return AuditFailure('inconsistent parent sample', f'{detail} {description}', level='ERROR')
+        return AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
     else:
         return None
 
@@ -175,7 +174,7 @@ def audit_construct_library_sets_types(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_construct_library_sets_types)
+    audit_message = get_audit_message(audit_construct_library_sets_types)
     if 'construct_library_sets' in value and len(value['construct_library_sets']) > 1:
         library_types = set()
         for CLS in value['construct_library_sets']:
@@ -191,7 +190,7 @@ def audit_construct_library_sets_types(value, system):
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has `construct_library_sets` of multiple types {library_types}.'
             )
-            yield AuditFailure('inconsistent construct library sets', f'{detail} {description}', level='WARNING')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('Sample', frame='object')
@@ -206,7 +205,7 @@ def audit_parent_sample_with_singular_child(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_parent_sample_with_singular_child)
+    audit_message = get_audit_message(audit_parent_sample_with_singular_child)
     for child_sample_type in ['parts', 'origin_of', 'sorted_fractions']:
         if child_sample_type in value and len(value.get(child_sample_type, [])) == 1:
             child_sample = value.get(child_sample_type)[0]
@@ -215,4 +214,4 @@ def audit_parent_sample_with_singular_child(value, system):
                 f'has only 1 child sample {audit_link(path_to_text(child_sample), child_sample)} '
                 f'in `{child_sample_type}`.'
             )
-            yield AuditFailure('missing sample', f'{detail} {description}', level='INTERNAL_ACTION')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
