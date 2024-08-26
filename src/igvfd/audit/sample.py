@@ -52,6 +52,8 @@ def audit_sample_sorted_from_parent_child_check(value, system):
         for key in keys_to_check:
             if key not in value:
                 missing_properties.append(key)
+            elif key not in parent:
+                inconsistent_properties.append(key)
             elif value[key] != parent[key]:
                 inconsistent_properties.append(key)
         inconsistent_properties = ', '.join([f'`{key}`' for key in inconsistent_properties])
