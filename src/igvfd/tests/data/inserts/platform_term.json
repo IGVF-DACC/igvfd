@@ -40,5 +40,15 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "556bf993-70dc-7f34-497c-e6c0fa6a4af0"
+    },
+    {
+        "term_id": "NTR:0000778",
+        "term_name": "Singular G4",
+        "status": "released",
+        "sequencing_kits": [
+            "Singular G4 F2 Reagent Kit"
+        ],
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "uuid": "f893546b-70dc-7f34-497c-4caf0eb0fa6c"
     }
 ]

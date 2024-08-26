@@ -140,5 +140,39 @@
         "sequencing_kit": "ONT Ligation Sequencing Kit V14",
         "sequencing_platform": "556bf993-70dc-7f34-497c-e6c0fa6a4af0",
         "controlled_access": false
+    },
+    {
+        "uuid": "b5d6f073-9830-4fd6-a75f-96befb7b7b52",
+        "accession": "IGVFFI0009SNGL",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:fastq_reads_file_paired_end_1_singular_platform"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "77763a9c93f7eb0eaf4b142c75383314",
+        "content_md5sum": "51333bc73bc59c619be5c8a6af11d686",
+        "file_format": "fastq",
+        "content_type": "reads",
+        "minimum_read_length": 99,
+        "maximum_read_length": 101,
+        "mean_read_length": 100,
+        "read_count": 51884567,
+        "derived_from": [
+            "e2792165-fa4f-481c-9506-ce27e6d27a0d"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/reads_R1_singular.fastq",
+        "file_size": 83019312,
+        "upload_status": "validated",
+        "dbxrefs": [
+            "SRA:SRR0000023"
+        ],
+        "file_set": "igvf:basic_analysis_set",
+        "sequencing_run": 8,
+        "illumina_read_type": "R1",
+        "sequencing_platform": "/platform-terms/f893546b-70dc-7f34-497c-4caf0eb0fa6c/",
+        "sequencing_kit": "Singular G4 F2 Reagent Kit",
+        "controlled_access": false
     }
 ]
