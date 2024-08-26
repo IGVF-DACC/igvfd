@@ -68,7 +68,7 @@ def audit_sample_sorted_from_parent_child_check(value, system):
         if missing_properties:
             detail = (
                 f'{object_type} {audit_link(path_to_text(value_id), value_id)} '
-                f'has is missing metadata properties ({missing_properties}) which are '
+                f'is missing metadata properties ({missing_properties}) which are '
                 f'associated with the parent sample {audit_link(path_to_text(parent_id), parent_id)}.'
             )
             yield AuditFailure('inconsistent parent sample', f'{detail} {description_metadata_inconsistency}', level='ERROR')
