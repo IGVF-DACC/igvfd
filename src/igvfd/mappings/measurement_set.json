@@ -1,6 +1,6 @@
 {
-    "hash": "0de58e93693f85c66328ae9da94de70a",
-    "index_name": "measurement_set_0de58e93",
+    "hash": "6edc1fc15fcbc9294b8342ffbef8fd64",
+    "index_name": "measurement_set_6edc1fc1",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -264,6 +264,9 @@
                                 "type": "keyword"
                             },
                             "control_for": {
+                                "type": "keyword"
+                            },
+                            "control_type": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -546,6 +549,9 @@
                                 "type": "keyword"
                             },
                             "control_for": {
+                                "type": "keyword"
+                            },
+                            "control_type": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
@@ -877,6 +883,9 @@
                             "control_for": {
                                 "type": "keyword"
                             },
+                            "control_type": {
+                                "type": "keyword"
+                            },
                             "creation_timestamp": {
                                 "type": "keyword"
                             },
@@ -1135,6 +1144,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "control_type": {
+                        "type": "keyword"
                     },
                     "creation_timestamp": {
                         "type": "keyword"
@@ -1940,6 +1952,9 @@
                                 "type": "keyword"
                             },
                             "control_for": {
+                                "type": "keyword"
+                            },
+                            "control_type": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
