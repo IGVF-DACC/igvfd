@@ -1,6 +1,34 @@
 import pytest
 
 
+def test_audit_missing_multiome_size(
+    testapp,
+    measurement_set
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_title': '10x multiome'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing multiome size'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'multiome_size': 2
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing multiome size'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
+
 def test_audit_related_multiome_datasets(
     testapp,
     primary_cell,
