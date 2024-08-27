@@ -74,7 +74,7 @@
         },
         "control_type": {
             "title": "Control Type",
-            "description": "This property describes the type of control this file-set represents.",
+            "description": "The type of control this file set represents.",
             "comment": "This property is overwritten by the subclasses to define specific enum values.",
             "type": "string",
             "enum": [],
