@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 9
 
-Add `control_type`.
+* Add `control_type`.
 
 ### Schema version 9
 
