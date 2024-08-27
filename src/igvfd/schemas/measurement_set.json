@@ -169,6 +169,7 @@
             "type": "string",
             "enum": [
                 "low FACS signal",
+                "pre-selection",
                 "unsorted FACS input",
                 "untransfected"
             ],
