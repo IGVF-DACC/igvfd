@@ -14,22 +14,35 @@ def audit_related_multiome_datasets(value, system):
     '''
     [
         {
+            "audit_description": "Measurement sets from multiome assays are expected to specify a multiome size.",
+            "audit_category": "missing multiome size",
+            "audit_level": "NOT_COMPLIANT"
+        },
+        {
             "audit_description": "Measurement sets with a multiome size are expected to have the corresponding amount of measurement sets (excluding itself) listed in related multiome datasets. Each of these datasets are expected to have the same multiome size and samples.",
             "audit_category": "inconsistent multiome datasets",
             "audit_level": "ERROR"
         }
     ]
     '''
-    description = get_audit_description(audit_related_multiome_datasets)
+    description_no_multiome_size = get_audit_description(audit_related_multiome_datasets, index=0)
+    description_inconsistent_multiome = get_audit_description(audit_related_multiome_datasets, index=1)
     detail = ''
     related_multiome_datasets = value.get('related_multiome_datasets', [])
     multiome_size = value.get('multiome_size')
+    preferred_assay_title = value.get('preferred_assay_title', '')
+    if 'multiome' in preferred_assay_title and not (multiome_size):
+        detail = (
+            f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has no `multiome_size`.'
+        )
+        yield AuditFailure('missing multiome size', f'{detail} {description_no_multiome_size}', level='NOT_COMPLIANT')
     if related_multiome_datasets == [] and multiome_size:
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has a `multiome_size` of {multiome_size}, but no `related_multiome_datasets`.'
         )
-        yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
+        yield AuditFailure('inconsistent multiome datasets', f'{detail} {description_inconsistent_multiome}', level='ERROR')
     elif related_multiome_datasets and multiome_size:
         if len(related_multiome_datasets) != multiome_size - 1:
             detail = (
@@ -37,7 +50,7 @@ def audit_related_multiome_datasets(value, system):
                 f'has a `multiome_size` of {multiome_size}, but {len(related_multiome_datasets)} '
                 f'`related_multiome_datasets` when {multiome_size - 1} are expected.'
             )
-            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
+            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description_inconsistent_multiome}', level='ERROR')
         samples = value.get('samples')
         samples_to_link = [audit_link(path_to_text(sample), sample) for sample in samples]
         datasets_with_different_samples = []
@@ -64,14 +77,14 @@ def audit_related_multiome_datasets(value, system):
                 f'has associated `samples`: {samples_to_link} which are not the same associated `samples` '
                 f'of `related_multiome_datasets`: {datasets_with_different_samples}'
             )
-            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
+            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description_inconsistent_multiome}', level='ERROR')
         if datasets_with_different_multiome_sizes:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a specified `multiome_size` of {multiome_size}, which does not match the '
                 f'`multiome_size` of `related_multiome_datasets`: {datasets_with_different_multiome_sizes}'
             )
-            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description}', level='ERROR')
+            yield AuditFailure('inconsistent multiome datasets', f'{detail} {description_inconsistent_multiome}', level='ERROR')
 
 
 @audit_checker('MeasurementSet', frame='object')
