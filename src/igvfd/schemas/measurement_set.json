@@ -165,7 +165,7 @@
         },
         "control_type": {
             "title": "Control Type",
-            "description": "This property describes the type of control this file-set represents.",
+            "description": "The type of control this file set represents.",
             "type": "string",
             "enum": [
                 "low FACS signal",
