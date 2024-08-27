@@ -2,8 +2,8 @@
 
 ### Minor changes since schema version 8
 
-* Add `assessed_genes`.
 * Add `control_type`.
+* Add `assessed_genes`.
 
 ### Schema version 8
 

@@ -2,8 +2,8 @@
 
 ### Minor changes since schema version 8
 
-* Add `external_image_data_url`.
 * Add `control_type`.
+* Add `external_image_data_url`.
 
 ### Schema version 8
 
