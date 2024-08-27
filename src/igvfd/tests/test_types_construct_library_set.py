@@ -64,7 +64,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     )
     res = testapp.get(construct_library_set_reporter['@id'])
     assert res.json.get(
-        'summary') == 'Reporter library targeting accessible genome regions, phenotype-associated variants in 3 genomic loci associated with Alzheimer\'s disease, Myocardial infarction'
+        'summary') == 'Reporter library targeting accessible genome regions, phenotype-associated variants in 3 genomic loci associated with Alzheimer\'s disease and Myocardial infarction'
     # An exon-scope object should only have 1 gene specified; the first gene symbol is used in the summary
     # The selection_criteria of 'genes' is redundant for an expression vector library, but actual selection_criteria property should not be altered
     testapp.patch_json(

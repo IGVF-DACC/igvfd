@@ -471,7 +471,7 @@ class MeasurementSet(FileSet):
         if len(modality_set) == 1:
             modality_set = ''.join(modality_set)
             if 'CRISPR' in assay:
-                assay = assay.replace('CRISPR', f'CRISPR {modality_set}')
+                assay_phrase = assay.replace('CRISPR', f'CRISPR {modality_set}')
             else:
                 modality_phrase = ''
                 assay_phrase = f'{assay}'
@@ -791,7 +791,7 @@ class ConstructLibrarySet(FileSet):
                 term_name = (pheno_object.get('term_name'))
                 pheno_terms.append(term_name)
             if len(pheno_terms) in [1, 2]:
-                phenos = ', '.join(pheno_terms)
+                phenos = ' and '.join(pheno_terms)
                 pheno_phrase = f' associated with {phenos}'
             else:
                 pheno_phrase = f' associated with {len(pheno_terms)} phenotypes'

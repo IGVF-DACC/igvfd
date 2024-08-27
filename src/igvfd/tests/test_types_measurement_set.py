@@ -58,8 +58,8 @@ def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, me
                ) == {measurement_set['@id'], measurement_set_multiome_2['@id']}
 
 
-def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, crispr_modification_activation,
-                 assay_term_crispr, primary_cell, crispr_modification, construct_library_set_reporter):
+def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modification_activation,
+                 assay_term_crispr, construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction, construct_library_set_genome_wide):
     res = testapp.get(measurement_set['@id'])
     assert res.json.get('summary') == 'STARR-seq'
     testapp.patch_json(
@@ -67,12 +67,6 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
         {
             'samples': [in_vitro_cell_line['@id']],
             'preferred_assay_title': 'lentiMPRA'
-        }
-    )
-    testapp.patch_json(
-        in_vitro_cell_line['@id'],
-        {
-            'modifications': [crispr_modification_activation['@id']]
         }
     )
     res = testapp.get(measurement_set['@id'])
@@ -95,6 +89,36 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, assay_term_chip, 
     res = testapp.get(measurement_set['@id'])
     assert res.json.get(
         'summary') == 'STARR-seq (10x multiome with MULTI-seq) integrating a reporter library targeting accessible genome regions genome-wide'
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'modifications': [crispr_modification_activation['@id']]
+        }
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_title': 'CRISPR FlowFISH'
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get(
+        'summary') == 'CRISPR activation FlowFISH integrating a reporter library targeting accessible genome regions genome-wide'
+    testapp.patch_json(
+        in_vitro_cell_line['@id'],
+        {
+            'construct_library_sets': [construct_library_set_genome_wide['@id']]
+        }
+    )
+    testapp.patch_json(
+        construct_library_set_genome_wide['@id'],
+        {
+            'associated_phenotypes': [phenotype_term_alzheimers['@id'], phenotype_term_myocardial_infarction['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get(
+        'summary') == 'CRISPR activation FlowFISH integrating a guide (sgRNA) library targeting TF binding sites genome-wide associated with Alzheimer\'s disease and Myocardial infarction'
 
 
 def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):
