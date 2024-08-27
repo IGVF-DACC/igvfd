@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Minor changes since schema version 11
+
+Add `control_type`.
+
 ### Schema version 11
 
 * Rename `file_set_type` enum `cell hashing` to `cell hashing barcode sequencing`.

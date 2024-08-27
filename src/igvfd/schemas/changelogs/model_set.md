@@ -1,5 +1,9 @@
 ## Changelog for *`model_set.json`*
 
+### Minor changes since schema version 4
+
+Add `control_type`.
+
 ### Schema version 4
 
 * Remove `publication_identifiers`.

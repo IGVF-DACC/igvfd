@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Minor changes since schema version 9
+
+Add `control_type`.
+
 ### Schema version 9
 
 * Remove `publication_identifiers`.
