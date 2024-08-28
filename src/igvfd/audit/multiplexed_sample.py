@@ -14,7 +14,7 @@ def audit_multiplexed_sample_no_barcode_map(value, system):
     '''
     [
         {
-            "audit_description": "Multiplexed samples that are demultiplexed with barcodes are expected to specify a barcode sample map.",
+            "audit_description": "Multiplexed samples that use barcodes for demultiplexing are expected to specify a barcode sample map.",
             "audit_category": "missing barcode sample map",
             "audit_level": "WARNING"
         }
