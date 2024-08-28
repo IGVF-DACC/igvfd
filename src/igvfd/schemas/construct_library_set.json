@@ -706,6 +706,17 @@
                 "igvf_utils": "guide library"
             }
         },
+        "control_type": {
+            "$merge": "file_set.json#/properties/control_type",
+            "title": "Control Type",
+            "description": "The type of control this file set represents.",
+            "type": "string",
+            "enum": [],
+            "submissionExample": {
+                "appscript": "low FACS signal",
+                "igvf_utils": "low FACS signal"
+            }
+        },
         "scope": {
             "title": "Library Construct Scope",
             "description": "The scope or scale that this construct library is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the genes or loci property. If exon is specified, an exon identifier and the associated gene will need to be listed in exon and genes properties. If tile is specified, a tile identifier, start and stop coordinates, and the associated gene will need to be listed in tile and small_scale_gene_list or large_scale_gene_list properties.",
