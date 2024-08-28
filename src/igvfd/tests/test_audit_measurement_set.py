@@ -5,11 +5,6 @@ def test_audit_missing_multiome_size(
     testapp,
     measurement_set
 ):
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'unexpected multiome size'
-        for error in res.json['audit'].get('ERROR', [])
-    )
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -31,6 +26,17 @@ def test_audit_missing_multiome_size(
     assert all(
         error['category'] != 'missing multiome size'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'preferred_assay_title': 'Perturb-seq'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected multiome size'
+        for error in res.json['audit'].get('ERROR', [])
     )
 
 
