@@ -1499,6 +1499,9 @@
                     "notes": {
                         "type": "text"
                     },
+                    "protocols": {
+                        "type": "keyword"
+                    },
                     "publications": {
                         "properties": {
                             "@id": {

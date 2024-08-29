@@ -21,6 +21,15 @@ def get_donors_from_samples(request, samples):
     return list(set(donor_objects))
 
 
+def get_fileset_objs_from_input_file_sets(request, input_file_sets):
+    '''Get file set objects from an array of input file sets'''
+    file_set_objs = []
+    if input_file_sets is not None:
+        for fileset in input_file_sets:
+            file_set_objs.append(request.embed(fileset, '@@object'))
+    return file_set_objs
+
+
 @abstract_collection(
     name='file-sets',
     unique_key='accession',
@@ -270,6 +279,33 @@ class AnalysisSet(FileSet):
     )
     def donors(self, request, samples=None):
         return get_donors_from_samples(request, samples)
+
+    @calculated_property(
+        condition='protocols',
+        schema={
+            'title': 'Protocols',
+            'description': 'Links to the protocol(s) for conducting the assay on Protocols.io.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Protocol',
+                'type': 'string',
+                'pattern': '^https://www\\.protocols\\.io/(\\S+)$'
+            },
+            'notSubmittable': True
+        }
+    )
+    def protocols(self, request, input_file_sets=None):
+        '''Calculate an array of unique protocols for all measurement sets associated with an analysis set.'''
+        protocols = set()
+        file_set_objs = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
+        for file_set_obj in file_set_objs:
+            if 'MeasurementSet' in file_set_obj.get('@type'):
+                protocol = file_set_obj.get('protocols')
+                if protocol:
+                    protocols.update(protocol)
+        return list(protocols)
 
 
 @collection(

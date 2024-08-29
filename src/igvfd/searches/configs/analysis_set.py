@@ -131,5 +131,8 @@ def analysis_set():
             'file_set_type': {
                 'title': 'File Set Type'
             },
+            'protocols': {
+                'title': 'Protocols'
+            }
         },
     }
