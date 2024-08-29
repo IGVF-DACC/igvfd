@@ -1,6 +1,6 @@
 {
-    "hash": "1f47fbabd448e1c4427134fe750c1074",
-    "index_name": "whole_organism_1f47fbab",
+    "hash": "83295bb715688824a46a09c5244ba215",
+    "index_name": "whole_organism_83295bb7",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -489,6 +489,9 @@
                                 "type": "keyword"
                             },
                             "control_for": {
+                                "type": "keyword"
+                            },
+                            "control_type": {
                                 "type": "keyword"
                             },
                             "creation_timestamp": {

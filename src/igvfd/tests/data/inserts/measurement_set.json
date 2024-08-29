@@ -354,6 +354,7 @@
         "collections": [
             "Vista"
         ],
+        "control_type": "untransfected",
         "assay_term": "/assay-terms/OBI_0002440/",
         "preferred_assay_title": "Hi-C",
         "file_set_type": "experimental data"
@@ -361,6 +362,9 @@
     {
         "aliases": [
             "igvf:spatial_transcriptomics"
+        ],
+        "control_file_sets": [
+            "igvf:Hi-C"
         ],
         "award": "1U01HG012103-01",
         "lab": "christina-leslie",

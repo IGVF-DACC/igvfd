@@ -163,6 +163,21 @@
                 "igvf_utils": "john-doe:measurement_set01, TSTDS98084730"
             }
         },
+        "control_type": {
+            "title": "Control Type",
+            "description": "The type of control this file set represents.",
+            "type": "string",
+            "enum": [
+                "low FACS signal",
+                "pre-selection",
+                "unsorted FACS input",
+                "untransfected"
+            ],
+            "submissionExample": {
+                "appscript": "low FACS signal",
+                "igvf_utils": "low FACS signal"
+            }
+        },
         "sequencing_library_types": {
             "title": "Sequencing Library Types",
             "description": "Description of the libraries sequenced in this measurement set.",

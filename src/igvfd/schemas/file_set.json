@@ -72,6 +72,17 @@
                 "igvf_utils": "GEO:GSE5169185, GEO:GSE5169186, GEO:GSE5169187"
             }
         },
+        "control_type": {
+            "title": "Control Type",
+            "description": "The type of control this file set represents.",
+            "comment": "This property is overwritten by the subclasses to define specific enum values.",
+            "type": "string",
+            "enum": [],
+            "submissionExample": {
+                "appscript": "low FACS signal",
+                "igvf_utils": "low FACS signal"
+            }
+        },
         "samples": {
             "title": "Samples",
             "description": "The sample(s) associated with this file set.",
