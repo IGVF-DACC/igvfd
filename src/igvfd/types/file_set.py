@@ -584,6 +584,16 @@ class ModelSet(FileSet):
     ]
     set_status_down = FileSet.set_status_down + []
 
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, request, file_set_type, model_name, model_version, prediction_objects):
+        return f'{model_name} {model_version} {file_set_type} targeting {prediction_objects}'
+
 
 @collection(
     name='auxiliary-sets',
