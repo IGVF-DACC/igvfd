@@ -592,7 +592,7 @@ class ModelSet(FileSet):
         }
     )
     def summary(self, request, file_set_type, model_name, model_version, prediction_objects):
-        return f'{model_name} {model_version} {file_set_type} targeting {prediction_objects}'
+        return f'{model_name} {model_version} {file_set_type} targeting {",".join(prediction_objects)}'
 
 
 @collection(
