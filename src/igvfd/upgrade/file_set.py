@@ -392,3 +392,10 @@ def auxiliary_set_10_11(value, system):
             else:
                 value['notes'] = f'File_set_type enum {old_file_set_type} has been renamed to be {old_to_new[old_file_set_type]}.'
     return
+
+
+@upgrade_step('measurement_set', '19', '20')
+def measurement_set_19_20(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1855
+    if value.get('preferred_assay_title') == 'CRISPR FlowFISH':
+        value['preferred_assay_title'] = 'CRISPR FlowFISH screen'

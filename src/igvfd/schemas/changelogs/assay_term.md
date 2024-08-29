@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 7
+
+* Adjust `preferred_assay_titles` enum list to replace `CRISPR FlowFISH` with `CRISPR FlowFISH screen`.
+
 ### Minor changes since schema version 6
 
 * Extend `preferred_assay_titles` enum list to include `Spatial transcriptomics`.
