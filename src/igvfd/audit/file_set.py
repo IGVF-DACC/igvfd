@@ -40,8 +40,8 @@ def audit_no_files(value, system):
         assay_term = assay_term.get('term_name', '')
     preferred_assay_title = value.get('preferred_assay_title', '')
     # Measurement sets from these CRISPR assays do not expect any sequence data
-    CRISPR_assays = ['proliferation CRISPR screen',
-                     'CRISPR perturbation screen followed by flow cytometry and FISH',
+    CRISPR_assays = ['in vitro CRISPR screen assay',
+                     'in vitro CRISPR screen using flow cytometry',
                      'Variant FlowFISH']
     if not (value.get('files', '')) and assay_term not in CRISPR_assays and preferred_assay_title not in CRISPR_assays:
         detail = (

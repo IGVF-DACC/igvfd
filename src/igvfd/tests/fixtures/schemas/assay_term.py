@@ -78,7 +78,7 @@ def assay_term_mpra(testapp):
 def assay_term_crispr(testapp):
     item = {
         'term_id': 'NTR:0000657',
-        'term_name': 'proliferation CRISPR screen'
+        'term_name': 'in vitro CRISPR screen assay'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
 

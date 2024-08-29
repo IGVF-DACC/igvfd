@@ -1,5 +1,21 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 20
+
+* Extend `preferred_assay_title` enum list to include `Proliferation CRISPR screen`.
+* Extend `preferred_assay_title` enum list to include `Growth CRISPR screen`.
+* Extend `preferred_assay_title` enum list to include `Migration CRISPR screen`.
+* Extend `preferred_assay_title` enum list to include `CRISPR FACS screen`.
+* Extend `preferred_assay_title` enum list to include `CRISPR mCherry screen`.
+* Extend `preferred_assay_title` enum list to include `HCR-FlowFISH screen`.
+* Extend `preferred_assay_title` enum list to include `Perturb-seq`.
+* Extend `preferred_assay_title` enum list to include `TF Perturb-seq`.
+* Extend `preferred_assay_title` enum list to include `TAP-seq`.
+* Extend `preferred_assay_title` enum list to include `CERES-seq`.
+* Extend `preferred_assay_title` enum list to include `ABE`.
+* Extend `preferred_assay_title` enum list to include `CBE`.
+* Adjust `preferred_assay_title` enum list to replace `CRISPR FlowFISH` with `CRISPR FlowFISH screen`.
+
 ### Minor changes since schema version 19
 
 * Add `control_type`.
