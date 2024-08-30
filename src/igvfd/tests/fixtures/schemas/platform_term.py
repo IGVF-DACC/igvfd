@@ -41,13 +41,3 @@ def platform_term_v3(platform_term_HiSeq):
         'sequencing_kits': ['NovaSeq 6000 S4 Reagent Kit V1.5']
     })
     return item
-
-
-@pytest.fixture
-def platform_term_v4(platform_term_HiSeq):
-    item = platform_term_HiSeq.copy()
-    item.update({
-        'schema_version': '4',
-        'preferred_assay_titles': ['Variant FlowFISH', 'CRISPR FlowFISH']
-    })
-    return item

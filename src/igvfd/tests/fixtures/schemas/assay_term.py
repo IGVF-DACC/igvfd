@@ -120,3 +120,13 @@ def assay_term_v5(assay_term_crispr):
         'preferred_assay_titles': []
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v6(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '6',
+        'preferred_assay_titles': ['Variant FlowFISH', 'CRISPR FlowFISH']
+    })
+    return item
