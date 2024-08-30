@@ -9,8 +9,6 @@
 * Extend `preferred_assay_titles` enum list to include `CRISPR FACS screen`.
 * Extend `preferred_assay_titles` enum list to include `CRISPR mCherry screen`.
 * Extend `preferred_assay_titles` enum list to include `HCR-FlowFISH screen`.
-* Extend `preferred_assay_titles` enum list to include `ABE`.
-* Extend `preferred_assay_titles` enum list to include `CBE`.
 
 ### Minor changes since schema version 6
 
