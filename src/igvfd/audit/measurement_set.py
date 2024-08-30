@@ -217,9 +217,9 @@ def audit_missing_institutional_certification(value, system):
     # Characterization assays do not need to be audited if they do not have controlled access data.
     characterization_assays = [
         'OBI:0003133',  # cas mediated mutagenesis
-        'NTR:0000657',  # in vitro CRISPR screen assay
-        'NTR:0000722',  # in vitro CRISPR screen using flow cytometry
-        'NTR:0000776',  # in vitro CRISPR screen using single-cell RNA-seq
+        'OBI:0003659',  # in vitro CRISPR screen assay
+        'OBI:0003661',  # in vitro CRISPR screen using flow cytometry
+        'OBI:0003660',  # in vitro CRISPR screen using single-cell RNA-seq
         'OBI:0000916',  # flow cytometry assay
         'OBI:0000185',  # imaging assay
         'OBI:0002675',  # massively parallel reporter assay',
