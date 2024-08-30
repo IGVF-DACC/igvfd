@@ -91,7 +91,7 @@ def sample_term_4_5(value, system):
 
 @upgrade_step('assay_term', '6', '7')
 def assay_term_6_7(value, system):
-    # https://igvf.atlassian.net/browse/IGVF-1073
+    # https://igvf.atlassian.net/browse/IGVF-1855
     preferred_assay_titles = value.get('preferred_assay_titles', [])
     if 'CRISPR FlowFISH' in preferred_assay_titles:
         index = preferred_assay_titles.index('CRISPR FlowFISH')

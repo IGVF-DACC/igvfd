@@ -285,12 +285,12 @@ def audit_targeted_genes(value, system):
     '''
     [
         {
-            "audit_description": "ChIP-seq and FISH-based assays are expected to specify targeted gene(s).",
+            "audit_description": "ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
             "audit_category": "missing targeted genes",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Only ChIP-seq and FISH-based assays are expected to specify targeted gene(s).",
+            "audit_description": "Only ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
             "audit_category": "unexpected targeted genes",
             "audit_level": "WARNING"
         }
