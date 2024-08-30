@@ -233,3 +233,13 @@ def measurement_set_v18(measurement_set_v17, platform_term_v3):
         'library_construction_platform': platform_term_v3['@id']
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v19(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '19',
+        'preferred_assay_title': 'CRISPR FlowFISH'
+    })
+    return item

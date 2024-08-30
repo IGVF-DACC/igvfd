@@ -121,3 +121,9 @@ def test_measurement_set_upgrade_18_19(upgrader, measurement_set_v18):
     value = upgrader.upgrade('measurement_set', measurement_set_v18, current_version='18', target_version='19')
     assert value['schema_version'] == '19'
     assert 'library_construction_platform' not in value
+
+
+def test_measurement_set_upgrade_19_20(upgrader, measurement_set_v19):
+    value = upgrader.upgrade('measurement_set', measurement_set_v19, current_version='19', target_version='20')
+    assert value['schema_version'] == '20'
+    assert value.get('preferred_assay_title') == 'CRISPR FlowFISH screen'
