@@ -48,6 +48,7 @@
         "sequencing_kits": [
             "Singular G4 F2 Reagent Kit"
         ],
+        "company": "Singular Genomics",
         "release_timestamp": "2024-06-06T12:34:56Z",
         "uuid": "f893546b-70dc-7f34-497c-4caf0eb0fa6c"
     }
