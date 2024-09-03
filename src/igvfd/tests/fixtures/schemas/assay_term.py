@@ -78,7 +78,7 @@ def assay_term_mpra(testapp):
 def assay_term_crispr(testapp):
     item = {
         'term_id': 'NTR:0000657',
-        'term_name': 'proliferation CRISPR screen'
+        'term_name': 'in vitro CRISPR screen assay'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]
 
@@ -118,5 +118,15 @@ def assay_term_v5(assay_term_crispr):
     item.update({
         'schema_version': '5',
         'preferred_assay_titles': []
+    })
+    return item
+
+
+@pytest.fixture
+def assay_term_v6(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '6',
+        'preferred_assay_titles': ['Variant FlowFISH', 'CRISPR FlowFISH']
     })
     return item

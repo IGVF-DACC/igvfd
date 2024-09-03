@@ -1,5 +1,15 @@
 ## Changelog for *`assay_term.json`*
 
+### Schema version 7
+
+* Adjust `preferred_assay_titles` enum list to replace `CRISPR FlowFISH` with `CRISPR FlowFISH screen`.
+* Extend `preferred_assay_titles` enum list to include `Proliferation CRISPR screen`.
+* Extend `preferred_assay_titles` enum list to include `Growth CRISPR screen`.
+* Extend `preferred_assay_titles` enum list to include `Migration CRISPR screen`.
+* Extend `preferred_assay_titles` enum list to include `CRISPR FACS screen`.
+* Extend `preferred_assay_titles` enum list to include `CRISPR mCherry screen`.
+* Extend `preferred_assay_titles` enum list to include `HCR-FlowFISH screen`.
+
 ### Minor changes since schema version 6
 
 * Extend `preferred_assay_titles` enum list to include `Spatial transcriptomics`.

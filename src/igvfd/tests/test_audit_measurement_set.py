@@ -709,7 +709,8 @@ def test_audit_unexpected_virtual_sample(
 def test_audit_CRISPR_screen_missing_files(
     testapp,
     measurement_set_no_files,
-    assay_term_crispr
+    assay_term_crispr,
+    signal_file
 ):
     res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
     assert any(
@@ -725,6 +726,17 @@ def test_audit_CRISPR_screen_missing_files(
     res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing files'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        signal_file['@id'],
+        {
+            'file_set': measurement_set_no_files['@id']
+        }
+    )
+    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected files'
         for error in res.json['audit'].get('WARNING', [])
     )
 

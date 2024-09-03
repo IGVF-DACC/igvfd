@@ -135,9 +135,9 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     description = get_audit_description(audit_CRISPR_screen_lacking_modifications)
     assay_term = value.get('assay_term')
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-    crispr_assays = ['proliferation CRISPR screen',
-                     'CRISPR perturbation screen followed by flow cytometry and FISH',
-                     'CRISPR perturbation screen followed by single-cell RNA sequencing',
+    crispr_assays = ['in vitro CRISPR screen assay',
+                     'in vitro CRISPR screen using flow cytometry',
+                     'in vitro CRISPR screen using single-cell RNA-seq',
                      'cas mediated mutagenesis']
     if assay.get('term_name') in crispr_assays:
         samples = value.get('samples', [])
@@ -217,10 +217,9 @@ def audit_missing_institutional_certification(value, system):
     # Characterization assays do not need to be audited if they do not have controlled access data.
     characterization_assays = [
         'OBI:0003133',  # cas mediated mutagenesis
-        'NTR:0000520',  # CRISPR screen
-        'NTR:0000657',  # proliferation CRISPR screen
-        'NTR:0000722',  # CRISPR perturbation screen followed by flow cytometry and FISH
-        'NTR:0000776',  # CRISPR perturbation screen followed by single-cell RNA sequencing
+        'OBI:0003659',  # in vitro CRISPR screen assay
+        'OBI:0003661',  # in vitro CRISPR screen using flow cytometry
+        'OBI:0003660',  # in vitro CRISPR screen using single-cell RNA-seq
         'OBI:0000916',  # flow cytometry assay
         'OBI:0000185',  # imaging assay
         'OBI:0002675',  # massively parallel reporter assay',
@@ -286,12 +285,12 @@ def audit_targeted_genes(value, system):
     '''
     [
         {
-            "audit_description": "ChIP-seq and FISH-based assays are expected to specify targeted gene(s).",
+            "audit_description": "ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
             "audit_category": "missing targeted genes",
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Only ChIP-seq and FISH-based assays are expected to specify targeted gene(s).",
+            "audit_description": "Only ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
             "audit_category": "unexpected targeted genes",
             "audit_level": "WARNING"
         }
@@ -304,7 +303,7 @@ def audit_targeted_genes(value, system):
     assay_term_name = assay_object.get('term_name', '')
     targeted_genes = value.get('targeted_genes', '')
     preferred_assay_title = value.get('preferred_assay_title', '')
-    expecting_targeted_genes_by_assay_term = ['CRISPR perturbation screen followed by flow cytometry and FISH',
+    expecting_targeted_genes_by_assay_term = ['in vitro CRISPR screen using flow cytometry',
                                               'ChIP-seq assay',
                                               'transcription factor binding site identification by ChIP-Seq assay',
                                               ]
@@ -369,9 +368,9 @@ def audit_missing_construct_library_set(value, system):
     expected_library_by_assay_term = {
         'massively parallel reporter assay': ('reporter library', description_MPRA),
         'cas mediated mutagenesis': ('guide library', description_CRISPR),
-        'proliferation CRISPR screen': ('guide library', description_CRISPR),
-        'CRISPR perturbation screen followed by flow cytometry and FISH': ('guide library', description_CRISPR),
-        'CRISPR perturbation screen followed by single-cell RNA sequencing': ('guide library', description_CRISPR),
+        'in vitro CRISPR screen assay': ('guide library', description_CRISPR),
+        'in vitro CRISPR screen using flow cytometry': ('guide library', description_CRISPR),
+        'in vitro CRISPR screen using single-cell RNA-seq': ('guide library', description_CRISPR),
         'protein-protein interaction detection assay': ('expression vector library', description_PPI),
         'imaging assay': ('expression vector library', description_Imaging)
     }
@@ -449,9 +448,9 @@ def audit_missing_auxiliary_set(value, system):
 
     expected_auxiliary_set_by_assay_term = {
         'massively parallel reporter assay': [('quantification DNA barcode sequencing', description_MPRA)],
-        'proliferation CRISPR screen': [('gRNA sequencing', description_CRISPR_gRNA)],
-        'CRISPR perturbation screen followed by flow cytometry and FISH': [('gRNA sequencing', description_CRISPR_gRNA), ('cell sorting', description_CRISPR_flow)],
-        'CRISPR perturbation screen followed by single-cell RNA sequencing': [('gRNA sequencing', description_CRISPR_gRNA)]
+        'in vitro CRISPR screen assay': [('gRNA sequencing', description_CRISPR_gRNA)],
+        'in vitro CRISPR screen using flow cytometry': [('gRNA sequencing', description_CRISPR_gRNA), ('cell sorting', description_CRISPR_flow)],
+        'in vitro CRISPR screen using single-cell RNA-seq': [('gRNA sequencing', description_CRISPR_gRNA)]
     }
     # preferred assay title expectations override any overlapping assay term expectation
     expected_auxiliary_set_by_preferred_assay_title = {

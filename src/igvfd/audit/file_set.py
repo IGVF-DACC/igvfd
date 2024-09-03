@@ -29,6 +29,11 @@ def audit_no_files(value, system):
             "audit_description": "File sets are expected to have files.",
             "audit_category": "missing files",
             "audit_level": "WARNING"
+        },
+        {
+            "audit_description": "CRISPR screen measurement sets without a scRNA-seq readout are not expected to have files.",
+            "audit_category": "unexpected files",
+            "audit_level": "WARNING"
         }
     ]
     '''
@@ -38,17 +43,23 @@ def audit_no_files(value, system):
     if assay_term:
         assay_term = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
         assay_term = assay_term.get('term_name', '')
-    preferred_assay_title = value.get('preferred_assay_title', '')
     # Measurement sets from these CRISPR assays do not expect any sequence data
-    CRISPR_assays = ['proliferation CRISPR screen',
-                     'CRISPR perturbation screen followed by flow cytometry and FISH',
-                     'Variant FlowFISH']
-    if not (value.get('files', '')) and assay_term not in CRISPR_assays and preferred_assay_title not in CRISPR_assays:
-        detail = (
-            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has no `files`.'
-        )
-        yield AuditFailure('missing files', f'{detail} {description}', level='WARNING')
+    CRISPR_assays = ['in vitro CRISPR screen assay',
+                     'in vitro CRISPR screen using flow cytometry']
+    if assay_term not in CRISPR_assays:
+        if not (value.get('files', '')):
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has no `files`.'
+            )
+            yield AuditFailure('missing files', f'{detail} {description}', level='WARNING')
+    else:
+        if value.get('files', ''):
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has `files`.'
+            )
+            yield AuditFailure('unexpected files', f'{detail} {description}', level='WARNING')
 
 
 @audit_checker('FileSet', frame='object')
