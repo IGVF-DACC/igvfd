@@ -56,7 +56,8 @@
                 "Oxford Nanopore Technologies",
                 "Pacific Biosciences",
                 "Parse Biosciences",
-                "Roche"
+                "Roche",
+                "Singular Genomics (G4)"
             ],
             "description": "The company that developed and sells the instrument.",
             "submissionExample": {
