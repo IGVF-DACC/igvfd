@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 3
 
+* Add `quality`.
 * Update calculation of `summary`.
 
 ### Schema version 3

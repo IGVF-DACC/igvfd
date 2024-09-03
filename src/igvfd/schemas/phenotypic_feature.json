@@ -90,6 +90,34 @@
                 "igvf_utils": "gram"
             }
         },
+        "quality": {
+            "title": "Quality",
+            "description": "A quality assessment associated with the phenotypic feature, such as a categorical description.",
+            "type": "string",
+            "enum": [
+                "none",
+                "sparse",
+                "moderate",
+                "frequent",
+                "unknown",
+                "I",
+                "II",
+                "III",
+                "IV",
+                "V",
+                "VI",
+                "2/2",
+                "2/3",
+                "2/4",
+                "3/3",
+                "3/4",
+                "4/4"
+            ],
+            "submissionExample": {
+                "appscript": "severe",
+                "igvf_utils": "severe"
+            }
+        },
         "observation_date": {
             "title": "Observation Date",
             "description": "The date the feature was observed or measured.",
