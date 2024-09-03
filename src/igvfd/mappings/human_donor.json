@@ -1,6 +1,6 @@
 {
-    "hash": "be93e0331b608a8b8f9fb0dea11ea99e",
-    "index_name": "human_donor_be93e033",
+    "hash": "42ffb07cfc35cbe40e9086b54e65ba57",
+    "index_name": "human_donor_42ffb07c",
     "item_type": "human_donor",
     "mapping": {
         "dynamic_templates": [
@@ -410,6 +410,9 @@
                                 "type": "text"
                             },
                             "observation_date": {
+                                "type": "keyword"
+                            },
+                            "quality": {
                                 "type": "keyword"
                             },
                             "quantity": {

@@ -1,6 +1,6 @@
 {
-    "hash": "333f30bb8f6ffb569631da311e93abfe",
-    "index_name": "phenotypic_feature_333f30bb",
+    "hash": "c8ea980f7c1df2657b55e70dd65256cd",
+    "index_name": "phenotypic_feature_c8ea980f",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -360,6 +360,9 @@
                         "type": "text"
                     },
                     "observation_date": {
+                        "type": "keyword"
+                    },
+                    "quality": {
                         "type": "keyword"
                     },
                     "quantity": {
