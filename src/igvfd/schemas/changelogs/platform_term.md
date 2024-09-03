@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 4
 
-* Extend `company` enum list to include `Singular Genomics (G4)`.
+* Extend `company` enum list to include `Singular Genomics`.
 * Extend `sequencing_kits` enum list to include `Singular G4 F2 Reagent Kit`.
 * Extend `sequencing_kits` enum list to include `NovaSeq X Series 1.5B Reagent Kit`.
 * Extend `sequencing_kits` enum list to include `NovaSeq X Series 25B Reagent Kit`.
