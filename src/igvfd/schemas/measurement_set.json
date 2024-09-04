@@ -9,7 +9,8 @@
         "lab",
         "assay_term",
         "samples",
-        "file_set_type"
+        "file_set_type",
+        "preferred_assay_title"
     ],
     "identifyingProperties": [
         "uuid",
