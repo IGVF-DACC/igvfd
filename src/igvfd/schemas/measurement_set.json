@@ -119,6 +119,7 @@
                 "CRISPR FACS screen",
                 "CRISPR mCherry screen",
                 "HCR-FlowFISH screen",
+                "scCRISPR screen",
                 "Perturb-seq",
                 "CERES-seq",
                 "TAP-seq",

@@ -3,6 +3,7 @@
 ### Schema version 21
 
 * Require `preferred_assay_title`.
+* Extend `preferred_assay_title` enum list to include `scCRISPR screen`.
 
 ### Schema version 20
 
