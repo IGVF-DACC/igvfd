@@ -1,15 +1,17 @@
 import json
 
+import igvfd.audit.analysis_set
 import igvfd.audit.biosample
 import igvfd.audit.construct_library_set
+import igvfd.audit.curated_set
+import igvfd.audit.file_set
+import igvfd.audit.file
 import igvfd.audit.formatter
 import igvfd.audit.human_donor
 import igvfd.audit.in_vitro_system
 import igvfd.audit.matrix_file
-import igvfd.audit.file_set
-import igvfd.audit.analysis_set
 import igvfd.audit.measurement_set
-import igvfd.audit.curated_set
+import igvfd.audit.multiplexed_sample
 import igvfd.audit.ontology_term
 import igvfd.audit.sample
 import igvfd.audit.tissue
@@ -23,16 +25,18 @@ NON_AUDIT_FUNCTION_NAMES = [
 ]
 
 AUDIT_MODULES_TO_PROCESS = [
+    igvfd.audit.analysis_set,
     igvfd.audit.biosample,
     igvfd.audit.construct_library_set,
+    igvfd.audit.curated_set,
+    igvfd.audit.file_set,
+    igvfd.audit.file,
     igvfd.audit.formatter,
     igvfd.audit.human_donor,
     igvfd.audit.in_vitro_system,
     igvfd.audit.matrix_file,
-    igvfd.audit.file_set,
-    igvfd.audit.analysis_set,
     igvfd.audit.measurement_set,
-    igvfd.audit.curated_set,
+    igvfd.audit.multiplexed_sample,
     igvfd.audit.ontology_term,
     igvfd.audit.sample,
     igvfd.audit.tissue,
