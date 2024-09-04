@@ -8,7 +8,8 @@ def measurement_set(testapp, lab, award, assay_term_starr, tissue):
         'lab': lab['@id'],
         'assay_term': assay_term_starr['@id'],
         'samples': [tissue['@id']],
-        'file_set_type': 'experimental data'
+        'file_set_type': 'experimental data',
+        'preferred_assay_title': 'SUPERSTARR'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -21,7 +22,8 @@ def measurement_set_multiome(testapp, lab, award, assay_term_atac, tissue):
         'assay_term': assay_term_atac['@id'],
         'multiome_size': 2,
         'samples': [tissue['@id']],
-        'file_set_type': 'experimental data'
+        'file_set_type': 'experimental data',
+        'preferred_assay_title': '10x multiome'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -34,7 +36,8 @@ def measurement_set_multiome_2(testapp, lab, award, assay_term_rna, in_vitro_cel
         'assay_term': assay_term_rna['@id'],
         'multiome_size': 2,
         'samples': [in_vitro_cell_line['@id']],
-        'file_set_type': 'experimental data'
+        'file_set_type': 'experimental data',
+        'preferred_assay_title': '10x multiome'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -46,7 +49,21 @@ def measurement_set_no_files(testapp, lab, award, assay_term_ntr, in_vitro_diffe
         'lab': lab['@id'],
         'assay_term': assay_term_ntr['@id'],
         'samples': [in_vitro_differentiated_cell['@id']],
-        'file_set_type': 'experimental data'
+        'file_set_type': 'experimental data',
+        'preferred_assay_title': 'CRISPR FlowFISH screen'
+    }
+    return testapp.post_json('/measurement_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def measurement_set_mpra(testapp, lab, award, assay_term_mpra, primary_cell):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_mpra['@id'],
+        'samples': [primary_cell['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_title': 'MPRA'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
@@ -80,18 +97,6 @@ def measurement_set_v4(measurement_set):
         'seqspec': 'https://github.com/IGVF/seqspec/blob/main/assays/SHARE-seq/spec.yaml'
     })
     return item
-
-
-@pytest.fixture
-def measurement_set_mpra(testapp, lab, award, assay_term_mpra, primary_cell):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'assay_term': assay_term_mpra['@id'],
-        'samples': [primary_cell['@id']],
-        'file_set_type': 'experimental data'
-    }
-    return testapp.post_json('/measurement_set', item).json['@graph'][0]
 
 
 @pytest.fixture
@@ -242,4 +247,17 @@ def measurement_set_v19(measurement_set):
         'schema_version': '19',
         'preferred_assay_title': 'CRISPR FlowFISH'
     })
+    return item
+
+
+@pytest.fixture
+def measurement_set_v20(lab, award, assay_term_starr, tissue):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_starr['@id'],
+        'samples': [tissue['@id']],
+        'file_set_type': 'experimental data',
+        'schema_version': '20'
+    }
     return item

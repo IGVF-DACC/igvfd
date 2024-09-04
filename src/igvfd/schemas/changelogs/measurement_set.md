@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 21
+
+* Require `preferred_assay_title`.
+
 ### Schema version 20
 
 * Adjust `preferred_assay_title` enum list to replace `CRISPR FlowFISH` with `CRISPR FlowFISH screen`.

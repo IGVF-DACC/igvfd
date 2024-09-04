@@ -49,7 +49,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "20"
+            "default": "21"
         },
         "samples": {
             "maxItems": 1
