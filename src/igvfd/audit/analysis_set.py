@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description
+    get_audit_message
 )
 
 
@@ -30,9 +30,9 @@ def audit_input_file_sets_derived_from(value, system):
         }
     ]
     '''
-    description_missing_input_file_set = get_audit_description(audit_input_file_sets_derived_from, index=0)
-    description_missing_derived_from = get_audit_description(audit_input_file_sets_derived_from, index=1)
-    description_unexpected_input_file_set = get_audit_description(audit_input_file_sets_derived_from, index=2)
+    audit_message_missing_input_file_set = get_audit_message(audit_input_file_sets_derived_from, index=0)
+    audit_message_missing_derived_from = get_audit_message(audit_input_file_sets_derived_from, index=1)
+    audit_message_unexpected_input_file_set = get_audit_message(audit_input_file_sets_derived_from, index=2)
     detail = ''
     input_file_sets = value.get('input_file_sets', [])
     files = value.get('files', '')
@@ -70,14 +70,14 @@ def audit_input_file_sets_derived_from(value, system):
             f'file(s) {derived_from_files_to_link} from file set(s) {missing_derived_from_file_sets} '
             f'which are not in `input_file_sets`.'
         )
-        yield AuditFailure('missing input file set', f'{detail} {description_missing_input_file_set}', level='ERROR')
+        yield AuditFailure(audit_message_missing_input_file_set.get('audit_category', ''), f'{detail} {audit_message_missing_input_file_set.get("audit_description", "")}', level=audit_message_missing_input_file_set.get('audit_level', ''))
     if missing_derived_from:
         missing_derived_from = ', '.join([audit_link(path_to_text(file), file) for file in missing_derived_from])
         detail = (
             f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'links to file(s) {missing_derived_from} that have no `derived_from`.'
         )
-        yield AuditFailure('missing derived from', f'{detail} {description_missing_derived_from}', level='WARNING')
+        yield AuditFailure(audit_message_missing_derived_from.get('audit_category', ''), f'{detail} {audit_message_missing_derived_from.get("audit_description", "")}', level=audit_message_missing_derived_from.get('audit_level', ''))
     unexpected_file_sets = list(set(input_file_sets) - set(all_derived_from_file_sets))
     if unexpected_file_sets:
         unexpected_file_sets = ', '.join(
@@ -87,7 +87,7 @@ def audit_input_file_sets_derived_from(value, system):
             f'links to file set(s): {unexpected_file_sets} in `input_file_sets` that are not represented in the '
             f'`derived_from` of the file sets of the files in this analysis.'
         )
-        yield AuditFailure('unexpected input file set', f'{detail} {description_unexpected_input_file_set}', level='ERROR')
+        yield AuditFailure(audit_message_unexpected_input_file_set.get('audit_category', ''), f'{detail} {audit_message_unexpected_input_file_set.get("audit_description", "")}', level=audit_message_unexpected_input_file_set.get('audit_level', ''))
 
 
 @audit_checker('AnalysisSet', frame='object')
@@ -106,8 +106,8 @@ def audit_analysis_set_samples(value, system):
         }
     ]
     '''
-    missing_description = get_audit_description(audit_analysis_set_samples, index=0)
-    unexpected_description = get_audit_description(audit_analysis_set_samples, index=1)
+    audit_message_missing_samples = get_audit_message(audit_analysis_set_samples, index=0)
+    audit_message_unexpected_samples = get_audit_message(audit_analysis_set_samples, index=1)
     detail = ''
     input_file_sets = value.get('input_file_sets')
     samples = value.get('samples')
@@ -130,7 +130,7 @@ def audit_analysis_set_samples(value, system):
                         f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                         f'does not specify samples {missing_samples} associated with its `input_file_sets`. '
                     )
-                    yield AuditFailure('missing samples', f'{detail} {missing_description}', level='WARNING')
+                    yield AuditFailure(audit_message_missing_samples.get('audit_category', ''), f'{detail} {audit_message_missing_samples.get("audit_description", "")}', level=audit_message_missing_samples.get('audit_level', ''))
                 unexpected_samples = list(set(samples) - set(input_file_sets_samples))
                 if unexpected_samples:
                     unexpected_samples = ', '.join(
@@ -139,13 +139,13 @@ def audit_analysis_set_samples(value, system):
                         f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                         f'specifies samples {unexpected_samples} not associated with its `input_file_sets`.'
                     )
-                    yield AuditFailure('unexpected samples', f'{detail} {unexpected_description}', level='WARNING')
+                    yield AuditFailure(audit_message_unexpected_samples.get('audit_category', ''), f'{detail} {audit_message_unexpected_samples.get("audit_description", "")}', level=audit_message_unexpected_samples.get('audit_level', ''))
         else:
             detail = (
                 f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has `input_file_sets`, but no `samples`.'
             )
-            yield AuditFailure('missing samples', f'{detail} {missing_description}', level='WARNING')
+            yield AuditFailure(audit_message_missing_samples.get('audit_category', ''), f'{detail} {audit_message_missing_samples.get("audit_description", "")}', level=audit_message_missing_samples.get('audit_level', ''))
 
 
 @audit_checker('AnalysisSet', frame='object')
@@ -159,7 +159,8 @@ def audit_analysis_set_files_missing_analysis_step_version(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_analysis_set_files_missing_analysis_step_version, index=0)
+    audit_message_missing_step_version = get_audit_message(
+        audit_analysis_set_files_missing_analysis_step_version, index=0)
     files = value.get('files')
     files_with_missing_asv = []
     for file in files:
@@ -172,4 +173,4 @@ def audit_analysis_set_files_missing_analysis_step_version(value, system):
             f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'links to file(s) {files_with_missing_asv} that are missing `analysis_step_version`.'
         )
-        yield AuditFailure('missing analysis step version', f'{detail} {description}', level='WARNING')
+        yield AuditFailure(audit_message_missing_step_version.get('audit_category', ''), f'{detail} {audit_message_missing_step_version.get("audit_description", "")}', level=audit_message_missing_step_version.get('audit_level', ''))

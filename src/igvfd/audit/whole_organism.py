@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description
+    get_audit_message
 )
 
 
@@ -20,14 +20,14 @@ def audit_whole_organism_human_taxa(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_whole_organism_human_taxa)
+    audit_message = get_audit_message(audit_whole_organism_human_taxa)
     if 'taxa' in value:
         if value['taxa'] == 'Homo sapiens':
             detail = (
                 f'Whole organism {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'specifies that it is of `taxa` Homo sapiens.'
             )
-            yield AuditFailure('unexpected donor', f'{detail} {description}', level='ERROR')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
     elif 'donors' in value:
         donor_ids = value.get('donors')
         taxa_set = set()
@@ -39,4 +39,4 @@ def audit_whole_organism_human_taxa(value, system):
                 f'Whole organism {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'specifies that it has `donors` of `taxa` Homo sapiens.'
             )
-            yield AuditFailure('unexpected donor', f'{detail} {description}', level='ERROR')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

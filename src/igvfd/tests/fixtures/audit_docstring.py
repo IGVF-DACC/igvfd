@@ -10,7 +10,7 @@ def function_with_docstring():
             "audit_description": "audit description 2",
             "audit_category": "audit category 2",
             "audit_level": "WARNING"
-        },
+        }
     ]
     '''
     pass
@@ -43,4 +43,9 @@ def function_with_docstring_out_of_order():
 
 
 def function_without_docstring():
+    pass
+
+
+def function_with_non_json_docstring():
+    '''This is a bad non-JSON docstring.'''
     pass

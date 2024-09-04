@@ -29,13 +29,13 @@ def test_get_docstring_dict_from_function_name_docstring_improper_keys():
         ]}
 
 
-def test_get_docstring_dict_from_function_name_docstring_is_defined():
+def test_get_docstring_dict_from_function_name_docstring_is_out_of_order():
     assert (get_docstring_dict_from_function_name('igvfd.tests.fixtures.audit_docstring.function_with_docstring_out_of_order')) == {
         'igvfd.tests.fixtures.audit_docstring.function_with_docstring_out_of_order': [
             {
-                'audit_description': 'audit description',
+                'audit_level': 'WARNING',
                 'audit_category': 'audit category',
-                'audit_level': 'WARNING'
+                'audit_description': 'audit description'
             }
         ]}
 
@@ -43,3 +43,8 @@ def test_get_docstring_dict_from_function_name_docstring_is_defined():
 def test_get_docstring_dict_from_function_name_docstring_not_defined():
     assert get_docstring_dict_from_function_name('igvfd.tests.fixtures.audit_docstring.function_without_docstring') == {
         'igvfd.tests.fixtures.audit_docstring.function_without_docstring': {}}
+
+
+def test_get_docstring_dict_from_function_name_docstring_is_not_json():
+    with pytest.raises(ValueError):
+        get_docstring_dict_from_function_name('igvfd.tests.fixtures.audit_docstring.function_with_non_json_docstring')

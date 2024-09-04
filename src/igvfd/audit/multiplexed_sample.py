@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description
+    get_audit_message
 )
 
 
@@ -20,10 +20,10 @@ def audit_multiplexed_sample_no_barcode_map(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_multiplexed_sample_no_barcode_map, index=0)
+    audit_message = get_audit_message(audit_multiplexed_sample_no_barcode_map, index=0)
     if not (value.get('barcode_sample_map')):
         detail = (
             f'Multiplexed sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has no `barcode_sample_map`.'
         )
-        yield AuditFailure('missing barcode sample map', f'{detail} {description}', level='WARNING')
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

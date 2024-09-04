@@ -20,13 +20,13 @@ def space_in_words(objects_string):
     return add_space
 
 
-def get_audit_description(audit_function, index=0):
-    """Retrieves an audit description from the docstring of an audit function.
-    By default retrieves the first description."""
+def get_audit_message(audit_function, index=0):
+    """Retrieves a full audit message, description/category/level, from the docstring of an audit function as a dict.
+    By default retrieves the first full message.
+    """
     docstring = audit_function.__doc__
     if docstring:
         try:
-            json_docstring = json.loads(docstring)[index]
-            return json_docstring.get('audit_description', '')
+            return json.loads(docstring)[index]
         except:
-            return ValueError(f'Docstring: {docstring} in function: {audit_function} is not valid JSON format.')
+            return ValueError(f'Docstring: {docstring!r} in function: {audit_function.__name__!r} is not valid JSON format.')

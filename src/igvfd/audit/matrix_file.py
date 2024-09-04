@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description
+    get_audit_message
 )
 
 
@@ -20,10 +20,10 @@ def audit_matrix_file_dimensions(value, system):
         }
     ]
     '''
-    description = get_audit_description(audit_matrix_file_dimensions)
+    audit_message = get_audit_message(audit_matrix_file_dimensions)
     if value['dimension1'] == value['dimension2'] and value['file_format'] != 'hic':
         detail = (
             f'Matrix file {audit_link(path_to_text(value["@id"]), value["@id"])} '
             f'has {value["dimension1"]} for both `dimension1` and `dimension2`.'
         )
-        yield AuditFailure('inconsistent dimensions', f'{detail} {description}', level='WARNING')
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

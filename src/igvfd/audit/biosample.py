@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description,
+    get_audit_message,
     space_in_words
 )
 
@@ -22,7 +22,7 @@ def audit_biosample_taxa_check(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_biosample_taxa_check)
+    audit_message = get_audit_message(audit_biosample_taxa_check)
     if 'donors' in value:
         sample_id = value['@id']
         donor_ids = value.get('donors')
@@ -43,7 +43,7 @@ def audit_biosample_taxa_check(value, system):
                 taxa_donors.append(f'{k} ({", ".join(v)})')
             taxa_detail = ', '.join(taxa_donors)
             detail = f'{object_type} {audit_link(path_to_text(sample_id), sample_id)} has `donors` with `taxa` {taxa_detail}. '
-            yield AuditFailure('inconsistent donor taxa', f'{detail} {description}', level='ERROR')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('Tissue', frame='object')
@@ -60,14 +60,14 @@ def audit_biosample_age(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_biosample_age)
+    audit_message = get_audit_message(audit_biosample_age)
     if 'lower_bound_age' not in value and 'upper_bound_age' not in value and 'age_units' not in value:
         value_id = system.get('path')
         detail = (
             f'{object_type} {audit_link(path_to_text(value_id), value_id)} '
             f'is missing `upper_bound_age`, `lower_bound_age`, and `age_units`.'
         )
-        yield AuditFailure('missing age', f'{detail} {description}', level='WARNING')
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('Biosample', frame='object')
@@ -82,7 +82,7 @@ def audit_biomarker_name(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    description = get_audit_description(audit_biomarker_name)
+    audit_message = get_audit_message(audit_biomarker_name)
     if 'biomarkers' in value:
         sample_id = value['@id']
         biomarker_ids = value.get('biomarkers')
@@ -102,4 +102,4 @@ def audit_biomarker_name(value, system):
                     f'{object_type} {audit_link(path_to_text(sample_id), sample_id)} has conflicting biomarkers '
                     f'{biomarkers_to_link} with the same `name`: {name}.'
                 )
-                yield AuditFailure('inconsistent biomarkers', f'{detail} {description}', level='ERROR')
+                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

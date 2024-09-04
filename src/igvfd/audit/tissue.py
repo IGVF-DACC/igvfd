@@ -5,7 +5,7 @@ from snovault.auditor import (
 from .formatter import (
     audit_link,
     path_to_text,
-    get_audit_description
+    get_audit_message
 )
 
 
@@ -25,19 +25,19 @@ def audit_tissue_ccf_id(value, system):
         }
     ]
     '''
-    description_human_tissue = get_audit_description(audit_tissue_ccf_id, index=0)
-    description_non_human_tissue = get_audit_description(audit_tissue_ccf_id, index=1)
+    audit_message_human_tissue = get_audit_message(audit_tissue_ccf_id, index=0)
+    audit_message_non_human_tissue = get_audit_message(audit_tissue_ccf_id, index=1)
     if ('ccf_id' not in value) and (any(donor.startswith('/human-donors/') for donor in value.get('donors'))):
         value_id = system.get('path')
         detail = (
             f'Tissue {audit_link(path_to_text(value_id), value_id)} '
             f'is missing a `ccf_id`.'
         )
-        yield AuditFailure('missing CCF ID', f'{detail} {description_human_tissue}', level='NOT_COMPLIANT')
+        yield AuditFailure(audit_message_human_tissue.get('audit_category', ''), f'{detail} {audit_message_human_tissue.get("audit_description", "")}', level=audit_message_human_tissue.get('audit_level', ''))
     if ('ccf_id' in value) and (value.get('taxa', '') != 'Homo sapiens'):
         value_id = system.get('path')
         detail = (
             f'Tissue {audit_link(path_to_text(value_id), value_id)} '
             f'has a `ccf_id` but is associated with a non-human donor.'
         )
-        yield AuditFailure('unexpected CCF ID', f'{detail} {description_non_human_tissue}', level='ERROR')
+        yield AuditFailure(audit_message_non_human_tissue.get('audit_category', ''), f'{detail} {audit_message_non_human_tissue.get("audit_description", "")}', level=audit_message_non_human_tissue.get('audit_level', ''))
