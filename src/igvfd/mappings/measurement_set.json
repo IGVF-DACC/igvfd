@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
-    "hash": "b8d072ed19f743a168349ba9048cf4b6",
-    "index_name": "measurement_set_b8d072ed",
-=======
-    "hash": "f5f4fce9651a53595e0453e9d277c3e4",
-    "index_name": "measurement_set_f5f4fce9",
->>>>>>> 1aedaf12 (removed audit)
+    "hash": "cb038f2a35bcae9efaf59f8a06481e9d",
+    "index_name": "measurement_set_cb038f2a",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
