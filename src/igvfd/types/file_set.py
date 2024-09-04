@@ -281,7 +281,6 @@ class AnalysisSet(FileSet):
         return get_donors_from_samples(request, samples)
 
     @calculated_property(
-        condition='protocols',
         schema={
             'title': 'Protocols',
             'description': 'Links to the protocol(s) for conducting the assay on Protocols.io.',
