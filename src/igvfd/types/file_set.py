@@ -301,7 +301,7 @@ class AnalysisSet(FileSet):
         file_set_objs = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
         for file_set_obj in file_set_objs:
             if 'MeasurementSet' in file_set_obj.get('@type'):
-                protocol = file_set_obj.get('protocols')
+                protocol = file_set_obj.get('protocols', [])
                 if protocol:
                     protocols.update(protocol)
         return list(protocols)
