@@ -130,6 +130,7 @@
                 "sequence barcodes",
                 "SNP effect matrix",
                 "tissue positions",
+                "transcript quantifications",
                 "variants",
                 "variant binding effects",
                 "variant effects",

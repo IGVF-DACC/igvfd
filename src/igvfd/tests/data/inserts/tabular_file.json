@@ -220,5 +220,25 @@
         "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
+    },
+    {
+        "uuid": "38e5cfe0-8027-47b6-bef8-403706f0ef4d",
+        "accession": "IGVFFI0001PEGT",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:transcript_quantifications"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "md5sum": "aacc78ce3edf8b550517df324f820a25",
+        "file_format": "tsv",
+        "content_type": "transcript quantifications",
+        "submitted_file_name": "/Users/igvf/igvf_files/transcript_quantifications.tsv.gz",
+        "file_size": 3132,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "IGVFDS3333DDDD",
+        "controlled_access": false
     }
 ]

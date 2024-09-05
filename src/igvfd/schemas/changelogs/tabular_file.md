@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `content_type` enum list to include `transcript quantifications`.
 * Extend `content_type` enum list to include `barcode to hashtag mapping`.
 * Extend `content_type` enum list to include `barcode to variant mapping`.
 * Add `cell_type_annotation`.
