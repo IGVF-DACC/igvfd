@@ -249,9 +249,6 @@ class AnalysisSet(FileSet):
                 if file_set_object.get('preferred_assay_title') and \
                         'MeasurementSet' in file_set_object.get('@type'):
                     assay_title.add(file_set_object.get('preferred_assay_title'))
-                elif 'MeasurementSet' in file_set_object.get('@type'):
-                    assay = request.embed(file_set_object['assay_term'], '@@object')
-                    assay_title.add(assay.get('term_name'))
             return list(assay_title)
 
     @calculated_property(
