@@ -458,6 +458,8 @@ class MeasurementSet(FileSet):
 
         if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
             assay = f'{assay} ({preferred_assay_title})'
+        else:
+            assay = preferred_assay_title
 
         if len(modality_set) > 1:
             modality_phrase = f'mixed'
