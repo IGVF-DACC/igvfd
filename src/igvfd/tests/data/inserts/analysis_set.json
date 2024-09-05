@@ -46,5 +46,22 @@
         "publications": [
             "/publications/244ec9fc-ddda-4f38-b72d-3430929111e4/"
         ]
+    },
+    {
+        "aliases": [
+            "leif-ludwig:analysis_set"
+        ],
+        "award": "HG012009",
+        "lab": "j-michael-cherry",
+        "status": "released",
+        "uuid": "f1149b20-2066-49d8-bbd0-7f77f642cae3",
+        "samples": [
+            "igvf-dacc:in_vitro_system_cell_line"
+        ],
+        "input_file_sets": [
+            "raluca-gordan:prediction_set_raluca_gordan"
+        ],
+        "release_timestamp": "2024-08-06T12:34:56Z",
+        "file_set_type": "principal analysis"
     }
 ]
