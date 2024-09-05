@@ -97,7 +97,7 @@ EXTERNAL_BUCKET_STATEMENTS = [
     },
 ]
 
-_FEDERATION_TOKEN_DURATION_SECONDS = 36 * 60 * 60
+_FEDERATION_TOKEN_DURATION_SECONDS = 18 * 60 * 60
 
 
 def _compile_statements_from_list(buckets_list):
