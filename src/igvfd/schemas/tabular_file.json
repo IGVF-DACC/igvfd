@@ -111,7 +111,9 @@
             "comment": "Content Type describes the content of the file.",
             "enum": [
                 "barcode to element mapping",
+                "barcode to hashtag mapping",
                 "barcode to sample mapping",
+                "barcode to variant mapping",
                 "differential gene expression quantifications",
                 "differential transcript expression quantifications",
                 "editing templates",

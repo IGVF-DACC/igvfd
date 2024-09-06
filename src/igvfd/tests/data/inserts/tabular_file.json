@@ -182,5 +182,43 @@
         "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
+    },
+    {
+        "uuid": "0062d84b-7f9d-417f-a20a-cb1ed8d7a79f",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:barcode_to_hashtag_mapping"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "md5sum": "f032166e0b3186b5d88ca44932849f17",
+        "file_format": "tsv",
+        "content_type": "barcode to hashtag mapping",
+        "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_hashtag_mapping.tsv.gz",
+        "file_size": 5132,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "IGVFDS3333DDDD",
+        "controlled_access": false
+    },
+    {
+        "uuid": "0d7534bf-ab7b-4016-a877-d8a69165e931",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:barcode_to_variant_mapping"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "md5sum": "146db820ec1dbef445aeaeb1075a5894",
+        "file_format": "tsv",
+        "content_type": "barcode to variant mapping",
+        "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_variant_mapping.tsv.gz",
+        "file_size": 4132,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "IGVFDS3333DDDD",
+        "controlled_access": false
     }
 ]

@@ -2,7 +2,8 @@
 
 ### Minor changes since schema version 11
 
-* Add calculated property `barcode_map_for`.
+* Extend `content_type` enum list to include `barcode to hashtag mapping`.
+* Extend `content_type` enum list to include `barcode to variant mapping`.
 * Add `cell_type_annotation`.
 * Extend `content_type` enum list to include `variant binding effects`.
 * Extend `content_type` enum list to include `SNP effect matrix`.
