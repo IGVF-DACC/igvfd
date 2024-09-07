@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* AAdd calculated property `barcode_sample_map_for`.
 * Add `cell_type_annotation`.
 * Extend `content_type` enum list to include `variant binding effects`.
 * Extend `content_type` enum list to include `SNP effect matrix`.
