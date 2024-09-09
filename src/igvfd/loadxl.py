@@ -554,7 +554,7 @@ PHASE1_PIPELINES = {
                     'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'multiplexed_sample': [
-        remove_keys('barcode_sample_map'),
+        remove_keys('barcode_map'),
     ],
     'reference_file': [
         remove_keys('derived_from', 'file_format_specifications'),
