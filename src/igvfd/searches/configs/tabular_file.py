@@ -25,6 +25,33 @@ def tabular_file():
             'cell_type_annotation.term_name': {
                 'title': 'Cell Type Annotation'
             },
+            'file_set.file_set_type': {
+                'title': 'File Set Type'
+            },
+            'file_set.preferred_assay_title': {
+                'title': 'Assay'
+            },
+            'file_set.samples.taxa': {
+                'title': 'Taxa'
+            },
+            'file_set.samples.term_name': {
+                'title': 'Sample Term'
+            },
+            'file_set.samples.classifications': {
+                'title': 'Sample Classification'
+            },
+            'file_set.samples.disease_terms.term_name': {
+                'title': 'Sample Phenotype'
+            },
+            'integrated_in.file_set_type': {
+                'title': 'Library Type'
+            },
+            'integrated_in.associated_phenotypes.term_name': {
+                'title': 'Associated Phenotypes'
+            },
+            'integrated_in.small_scale_gene_list.name': {
+                'title': 'Construct Targeted Genes'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -64,6 +91,31 @@ def tabular_file():
                     'file_format_type',
                     'content_type',
                     'cell_type_annotation.term_name',
+                ],
+            },
+            {
+                'title': 'File Set',
+                'facet_fields': [
+                    'file_set.file_set_type',
+                    'file_set.preferred_assay_title',
+                ],
+            },
+            {
+                'title': 'Sample',
+                'facet_fields': [
+                    'file_set.samples.taxa',
+                    'file_set.samples.term_name',
+                    'file_set.samples.classifications',
+                    'file_set.samples.disease_terms.term_name',
+                    'cell_type_annotation.term_name',
+                ],
+            },
+            {
+                'title': 'Construct Design Data',
+                'facet_fields': [
+                    'integrated_in.file_set_type',
+                    'integrated_in.associated_phenotypes.term_name',
+                    'integrated_in.small_scale_gene_list.name',
                 ],
             },
             {

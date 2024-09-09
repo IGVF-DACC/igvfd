@@ -19,6 +19,9 @@ def model_file():
             'lab.title': {
                 'title': 'Lab'
             },
+            'file_set.file_set_type': {
+                'title': 'File Set Type'
+            },
             'award.component': {
                 'title': 'Award',
             },
@@ -50,6 +53,12 @@ def model_file():
                 'facet_fields': [
                     'file_format',
                     'content_type',
+                ],
+            },
+            {
+                'title': 'File Set',
+                'facet_fields': [
+                    'file_set_type',
                 ],
             },
             {
