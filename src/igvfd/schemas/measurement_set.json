@@ -9,7 +9,8 @@
         "lab",
         "assay_term",
         "samples",
-        "file_set_type"
+        "file_set_type",
+        "preferred_assay_title"
     ],
     "identifyingProperties": [
         "uuid",
@@ -49,7 +50,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "20"
+            "default": "21"
         },
         "samples": {
             "maxItems": 1
@@ -118,6 +119,7 @@
                 "CRISPR FACS screen",
                 "CRISPR mCherry screen",
                 "HCR-FlowFISH screen",
+                "scCRISPR screen",
                 "Perturb-seq",
                 "CERES-seq",
                 "TAP-seq",

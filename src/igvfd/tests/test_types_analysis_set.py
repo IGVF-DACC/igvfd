@@ -28,7 +28,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
         }
     )
     res = testapp.get(analysis_set_base['@id'])
-    assert set(res.json.get('assay_titles')) == {'massively parallel reporter assay'}
+    assert set(res.json.get('assay_titles')) == {'MPRA'}
     testapp.patch_json(
         measurement_set_mpra['@id'],
         {
@@ -45,7 +45,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
         }
     )
     res = testapp.get(analysis_set_base['@id'])
-    assert set(res.json.get('assay_titles')) == {'ATAC-seq', 'lentiMPRA'}
+    assert set(res.json.get('assay_titles')) == {'10x multiome', 'lentiMPRA'}
 
 
 def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_mpra, measurement_set_multiome, principal_analysis_set):
@@ -70,7 +70,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'intermediate analysis of ATAC-seq, massively parallel reporter assay data'
+    assert res.get('summary', '') == 'intermediate analysis of 10x multiome, MPRA data'
     # Preferred_assay_title of MeasurementSet is used instead of assay_term in summary whenever present
     testapp.patch_json(
         measurement_set_mpra['@id'],
@@ -87,4 +87,4 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'intermediate analysis of ATAC-seq, STARR-seq, lentiMPRA data'
+    assert res.get('summary', '') == 'intermediate analysis of 10x multiome, SUPERSTARR, lentiMPRA data'

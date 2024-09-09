@@ -127,3 +127,9 @@ def test_measurement_set_upgrade_19_20(upgrader, measurement_set_v19):
     value = upgrader.upgrade('measurement_set', measurement_set_v19, current_version='19', target_version='20')
     assert value['schema_version'] == '20'
     assert value.get('preferred_assay_title') == 'CRISPR FlowFISH screen'
+
+
+def test_measurement_set_upgrade_20_21(upgrader, measurement_set_v20):
+    value = upgrader.upgrade('measurement_set', measurement_set_v20, current_version='20', target_version='21')
+    assert value['schema_version'] == '21'
+    assert value.get('preferred_assay_title') == 'SUPERSTARR'

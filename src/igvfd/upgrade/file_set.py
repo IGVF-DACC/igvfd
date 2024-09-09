@@ -399,3 +399,16 @@ def measurement_set_19_20(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1855
     if value.get('preferred_assay_title') == 'CRISPR FlowFISH':
         value['preferred_assay_title'] = 'CRISPR FlowFISH screen'
+
+
+@upgrade_step('measurement_set', '20', '21')
+def measurement_set_20_21(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1840
+    if not (value.get('preferred_assay_title', '')):
+        value['preferred_assay_title'] = 'SUPERSTARR'
+        notes = value.get('notes', '')
+        added_phrase = 'This measurement set previously did not specify a preferred_assay_title, but the property is now required so it has been defaulted to SUPERSTARR. Please update with an appropriate preferred_assay_title.'
+        if notes:
+            value['notes'] = f'{notes} {added_phrase}'
+        else:
+            value['notes'] = added_phrase

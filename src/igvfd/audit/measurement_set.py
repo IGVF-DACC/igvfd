@@ -161,36 +161,23 @@ def audit_preferred_assay_title(value, system):
     '''
     [
         {
-            "audit_description": "Measurement sets are expected to specify a preferred assay title.",
-            "audit_category": "missing preferred assay title",
-            "audit_level": "NOT_COMPLIANT"
-        },
-        {
             "audit_description": "Measurement sets are expected to specify an appropriate preferred assay title for its respective assay term.",
             "audit_category": "inconsistent preferred assay title",
             "audit_level": "WARNING"
         }
     ]
     '''
-    audit_message_missing = get_audit_message(audit_preferred_assay_title, index=0)
-    audit_message_inconsistent = get_audit_message(audit_preferred_assay_title, index=1)
+    audit_message_inconsistent = get_audit_message(audit_preferred_assay_title, index=0)
     assay_term = value.get('assay_term')
     assay_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     assay_term_name = assay_object.get('term_name')
     preferred_assay_title = value.get('preferred_assay_title', '')
-    if preferred_assay_title:
-        if preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
-            detail = (
-                f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
-                f'`assay_term` {assay_term_name}, but `preferred_assay_title` {preferred_assay_title}.'
-            )
-            yield AuditFailure(audit_message_inconsistent.get('audit_category', ''), f'{detail} {audit_message_inconsistent.get("audit_description", "")}', level=audit_message_inconsistent.get('audit_level', ''))
-    else:
+    if preferred_assay_title not in assay_object.get('preferred_assay_titles', []):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
-            f'no `preferred_assay_title`.'
+            f'`assay_term` {assay_term_name}, but `preferred_assay_title` {preferred_assay_title}.'
         )
-        yield AuditFailure(audit_message_missing.get('audit_category', ''), f'{detail} {audit_message_missing.get("audit_description", "")}', level=audit_message_missing.get('audit_level', ''))
+        yield AuditFailure(audit_message_inconsistent.get('audit_category', ''), f'{detail} {audit_message_inconsistent.get("audit_description", "")}', level=audit_message_inconsistent.get('audit_level', ''))
 
 
 @audit_checker('MeasurementSet', frame='object')

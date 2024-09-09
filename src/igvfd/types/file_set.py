@@ -208,11 +208,7 @@ class AnalysisSet(FileSet):
                     inspected_filesets.add(input_fileset)
                     fileset_object = request.embed(input_fileset, '@@object?skip_calculated=true')
                     if input_fileset.startswith('/measurement-sets/'):
-                        if 'preferred_assay_title' in fileset_object:
-                            assay_terms.add(fileset_object['preferred_assay_title'])
-                        else:
-                            assay_terms.add(request.embed(fileset_object['assay_term'],
-                                            '@@object?skip_calculated=true')['term_name'])
+                        assay_terms.add(fileset_object.get('preferred_assay_title', ''))
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                     elif (input_fileset.startswith('/analysis-sets/') and
@@ -253,9 +249,6 @@ class AnalysisSet(FileSet):
                 if file_set_object.get('preferred_assay_title') and \
                         'MeasurementSet' in file_set_object.get('@type'):
                     assay_title.add(file_set_object.get('preferred_assay_title'))
-                elif 'MeasurementSet' in file_set_object.get('@type'):
-                    assay = request.embed(file_set_object['assay_term'], '@@object')
-                    assay_title.add(assay.get('term_name'))
             return list(assay_title)
 
     @calculated_property(
@@ -448,23 +441,23 @@ class MeasurementSet(FileSet):
         modality_phrase = ''
         assay_phrase = ''
 
-        if samples:
-            for sample in samples:
-                sample_object = request.embed(sample, '@@object')
-                if sample_object.get('modifications'):
-                    for modification in sample_object.get('modifications'):
-                        modality = request.embed(modification).get('modality', '')
-                        if modality:
-                            modality_set.add(modality)
-                if sample_object.get('construct_library_sets'):
-                    for construct_library in sample_object.get('construct_library_sets'):
-                        cls_summary = request.embed(construct_library)['summary']
-                        cls_set.add(cls_summary)
-        if preferred_assay_title:
-            if 'multiome' in preferred_assay_title:
-                assay = f'{assay} ({preferred_assay_title})'
-            else:
-                assay = preferred_assay_title
+        for sample in samples:
+            sample_object = request.embed(sample, '@@object')
+            if sample_object.get('modifications'):
+                for modification in sample_object.get('modifications'):
+                    modality = request.embed(modification).get('modality', '')
+                    if modality:
+                        modality_set.add(modality)
+            if sample_object.get('construct_library_sets'):
+                for construct_library in sample_object.get('construct_library_sets'):
+                    cls_summary = request.embed(construct_library)['summary']
+                    cls_set.add(cls_summary)
+
+        if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
+            assay = f'{assay} ({preferred_assay_title})'
+        else:
+            assay = preferred_assay_title
+
         if len(modality_set) > 1:
             modality_phrase = f'mixed'
             assay_phrase = f' {assay}'
@@ -477,6 +470,7 @@ class MeasurementSet(FileSet):
                 assay_phrase = f'{assay}'
         if len(modality_set) == 0:
             assay_phrase = f'{assay}'
+
         if len(cls_set) > 0:
             cls_phrases = []
             for summary in cls_set:
@@ -491,6 +485,7 @@ class MeasurementSet(FileSet):
             elif len(cls_phrases) > 2:
                 cls_phrase = ', '.join(cls_phrases[:-1]) + ', and ' + cls_phrases[-1]
             cls_phrase = f' integrating {cls_phrase}'
+
         sentence = ''
         sentence_parts = [
             modality_phrase,
