@@ -1,5 +1,9 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Schema version 9
+
+* Rename `barcode_sample_map` to `barcode_map`.
+
 ### Schema version 8
 
 * Remove `publication_identifiers`.

@@ -649,7 +649,7 @@ class TabularFile(File):
         Path('cell_type_annotation', include=['@id', 'term_name'])
     ]
     rev = File.rev | {
-        'barcode_sample_map_for': ('MultiplexedSample', 'barcode_sample_map')
+        'barcode_map_for': ('MultiplexedSample', 'barcode_map')
     }
 
     set_status_up = File.set_status_up + []
@@ -678,20 +678,20 @@ class TabularFile(File):
         )
 
     @calculated_property(schema={
-        'title': 'Barcode Sample Map For',
+        'title': 'Barcode Map For',
         'description': 'Link(s) to the Multiplexed samples using this file as barcode map.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-            'title': 'Barcode Sample Map For',
+            'title': 'Barcode Map For',
             'type': ['string', 'object'],
-            'linkFrom': 'MultiplexedSample.barcode_sample_map',
+            'linkFrom': 'MultiplexedSample.barcode_map',
         },
         'notSubmittable': True
     })
-    def barcode_sample_map_for(self, request, barcode_sample_map_for):
-        return paths_filtered_by_status(request, barcode_sample_map_for)
+    def barcode_map_for(self, request, barcode_map_for):
+        return paths_filtered_by_status(request, barcode_map_for)
 
 
 @collection(
