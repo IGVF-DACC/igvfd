@@ -275,7 +275,8 @@
             "/labs/j-michael-cherry/"
         ],
         "viewing_groups": [
-            "community"
+            "community",
+            "IGVF"
         ],
         "uuid": "43f2f757-5cbf-490a-9787-a1ee85a4cdcd"
     },
@@ -294,7 +295,8 @@
             "/labs/j-michael-cherry/"
         ],
         "viewing_groups": [
-            "community"
+            "community",
+            "IGVF"
         ],
         "uuid": "6bae687f-b77a-46b9-af0e-a02c135cf42e"
     },
@@ -313,7 +315,8 @@
             "/labs/j-michael-cherry/"
         ],
         "viewing_groups": [
-            "community"
+            "community",
+            "IGVF"
         ],
         "uuid": "1812f82d-4eb9-48a6-9394-2b91810e88a3"
     },
