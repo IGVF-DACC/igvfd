@@ -1,6 +1,6 @@
 {
-    "hash": "678e151842abc7952164c33d6c2976ce",
-    "index_name": "auxiliary_set_678e1518",
+    "hash": "8cbedf0f1ebce327f11fe2823400a5cd",
+    "index_name": "auxiliary_set_8cbedf0f",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -822,7 +822,7 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_sample_map_for": {
+                            "barcode_map_for": {
                                 "type": "keyword"
                             },
                             "base_modifications": {
@@ -1483,7 +1483,7 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_sample_map": {
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "biomarkers": {

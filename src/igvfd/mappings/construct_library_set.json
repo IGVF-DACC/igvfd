@@ -1,6 +1,6 @@
 {
-    "hash": "ad4846cbde29dd1cd843a8823a4de912",
-    "index_name": "construct_library_set_ad4846cb",
+    "hash": "e89491b3e9c07582f780847ef45615b8",
+    "index_name": "construct_library_set_e89491b3",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -183,7 +183,7 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_sample_map": {
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "biomarkers": {
@@ -1381,7 +1381,7 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_sample_map_for": {
+                            "barcode_map_for": {
                                 "type": "keyword"
                             },
                             "base_modifications": {
@@ -1689,7 +1689,7 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_sample_map_for": {
+                            "barcode_map_for": {
                                 "type": "keyword"
                             },
                             "base_modifications": {
@@ -2049,7 +2049,7 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_sample_map_for": {
+                            "barcode_map_for": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
@@ -2226,7 +2226,7 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_sample_map_for": {
+                            "barcode_map_for": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
