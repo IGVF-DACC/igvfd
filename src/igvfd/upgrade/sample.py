@@ -482,7 +482,7 @@ def sample_20_21(value, system):
 
 
 @upgrade_step('multiplexed_sample', '8', '9')
-def sample_20_21(value, system):
+def multiplexed_sample_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1886
     if 'barcode_sample_map' in value:
         value['barcode_map'] = value['barcode_sample_map']
