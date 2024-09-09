@@ -1,6 +1,6 @@
 {
-    "hash": "a14001e48965c882425b894431f03165",
-    "index_name": "analysis_set_a14001e4",
+    "hash": "6723dfd3c4c47830d91c01c5bf58d611",
+    "index_name": "analysis_set_6723dfd3",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -826,6 +826,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_sample_map_for": {
                                 "type": "keyword"
                             },
                             "base_modifications": {

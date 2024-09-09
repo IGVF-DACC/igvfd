@@ -1,6 +1,6 @@
 {
-    "hash": "3350468a97f95d6dfcb94097229df6e8",
-    "index_name": "measurement_set_3350468a",
+    "hash": "c33353fec94747e4052c0c9a1775f08e",
+    "index_name": "measurement_set_c33353fe",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1338,6 +1338,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_sample_map_for": {
                                 "type": "keyword"
                             },
                             "base_modifications": {

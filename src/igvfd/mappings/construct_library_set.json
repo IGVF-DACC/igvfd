@@ -1,6 +1,6 @@
 {
-    "hash": "228b3f0aa6f02b350fd134d210f54525",
-    "index_name": "construct_library_set_228b3f0a",
+    "hash": "ad4846cbde29dd1cd843a8823a4de912",
+    "index_name": "construct_library_set_ad4846cb",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1381,6 +1381,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "barcode_sample_map_for": {
+                                "type": "keyword"
+                            },
                             "base_modifications": {
                                 "type": "keyword"
                             },
@@ -1684,6 +1687,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_sample_map_for": {
                                 "type": "keyword"
                             },
                             "base_modifications": {
@@ -2043,6 +2049,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "barcode_sample_map_for": {
+                                "type": "keyword"
+                            },
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
@@ -2215,6 +2224,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_sample_map_for": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {

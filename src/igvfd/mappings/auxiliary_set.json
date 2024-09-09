@@ -1,6 +1,6 @@
 {
-    "hash": "19da932a3c9422754d2fe95ec9a893ca",
-    "index_name": "auxiliary_set_19da932a",
+    "hash": "678e151842abc7952164c33d6c2976ce",
+    "index_name": "auxiliary_set_678e1518",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -820,6 +820,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_sample_map_for": {
                                 "type": "keyword"
                             },
                             "base_modifications": {
