@@ -1,6 +1,6 @@
 {
-    "hash": "b482ee94ce893464769961cc17023234",
-    "index_name": "prediction_set_b482ee94",
+    "hash": "34839e4255f0b15ed858da8c3a7e5878",
+    "index_name": "prediction_set_34839e42",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -494,6 +494,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {

@@ -1,6 +1,6 @@
 {
-    "hash": "87531196e80b47344620d14fccca0fb4",
-    "index_name": "auxiliary_set_87531196",
+    "hash": "dcafd695c93ff8ea8a2baf98b50ece7a",
+    "index_name": "auxiliary_set_dcafd695",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -491,6 +491,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {
