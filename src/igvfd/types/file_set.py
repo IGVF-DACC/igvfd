@@ -316,6 +316,87 @@ class AnalysisSet(FileSet):
                 if protocol:
                     protocols.update(protocol)
         return list(protocols)
+    
+    @calculated_property(
+        condition='samples',
+        schema={
+            'title': 'Sample Summary',
+            'description': 'A summary of the samples associated with input file sets of this analysis set.',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def sample_summary(self, request, samples, input_file_sets=[]):
+        sample_terms = set()
+        sample_classifications = set()
+        targeted_sample_terms = set()
+        treatments = set()
+        construct_library_set_types = set()
+        sorted = set()
+        targeted_genes_for_sorting = set()
+        for sample in samples:
+            sample_object = request.embed(sample, '@@object')
+
+            for term in sample_object['sample_terms']:
+                sample_term_object = request.embed(term, '@@object?skip_calculated=true')
+                sample_terms.add(sample_term_object['term_name'])
+            for classification in sample_object['classifications']:
+                sample_classifications.add(classification)
+
+            if 'construct_library_sets' in sample_object:
+                for construct_library_set in sample_object['construct_library_sets']:
+                    cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
+                    construct_library_set_types.add(cls_object['file_set_type'])
+
+            if 'sorted_from' in sample_object:
+                sorted.add(True)
+                for file_set in sample_object['file_sets']:
+                    if file_set.startswith('/measurement-sets/'):
+                        fileset_object = request.embed(file_set, '@@object?skip_calculated=true')
+                        if 'targeted_genes' in fileset_object:
+                            for gene in fileset_object['targeted_genes']:
+                                gene_object = request.embed(gene, '@@object?skip_calculated=true')
+                                targeted_genes_for_sorting.add(gene_object['symbol'])
+
+            if 'treatments' in sample_object:
+                treatments.add('treated')
+
+            if 'targeted_sample_term' in sample_object:
+                targeted_sample_term_object = request.embed(
+                    sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
+                targeted_sample_terms.add(targeted_sample_term_object['term_name'])
+
+        sample_terms_phrase = ', '.join(sample_terms)
+        sample_classifications_phrase = ', '.join(sample_classifications)
+        targeted_sample_terms_phrase = ''
+        if targeted_sample_terms:
+            targeted_sample_terms_phrase = f'induced to {", ".join(targeted_sample_terms)}'
+        treatments_phrase = ''
+        if treatments:
+            treatments_phrase = ''.join(treatments)
+        construct_library_set_type_phrase = ''
+        if construct_library_set_types:
+            construct_library_set_type_phrase = f'modified with a {", ".join(construct_library_set_types)}'
+        sorted_phrase = ''
+        if sorted:
+            if targeted_genes_for_sorting:
+                sorted_phrase = f'sorted on expression of {", ".join(targeted_genes_for_sorting)}'
+            else:
+                sorted_phrase = f'sorted into bins'
+
+        term_and_classification = [
+            sample_terms_phrase,
+            sample_classifications_phrase
+        ]
+        additional_phrases = [
+            targeted_sample_terms_phrase,
+            treatments_phrase,
+            construct_library_set_type_phrase,
+            sorted_phrase
+        ]
+        summary = f"{' '.join(term_and_classification)}, {', '.join([x for x in additional_phrases if x != ''])}"
+
+        return summary
 
 
 @collection(
