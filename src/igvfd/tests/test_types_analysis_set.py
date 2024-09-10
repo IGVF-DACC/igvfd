@@ -88,7 +88,6 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'intermediate analysis of 10x multiome, SUPERSTARR, lentiMPRA data'
-    assert res.get('summary', '') == 'intermediate analysis of ATAC-seq, STARR-seq, lentiMPRA data'
 
 
 def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):

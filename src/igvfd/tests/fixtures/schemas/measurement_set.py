@@ -271,6 +271,7 @@ def measurement_set_with_protocols(testapp, lab, award, assay_term_starr, tissue
         'assay_term': assay_term_starr['@id'],
         'samples': [tissue['@id']],
         'file_set_type': 'experimental data',
-        'protocols': ['https://www.protocols.io/test-protocols-url-12345']
+        'protocols': ['https://www.protocols.io/test-protocols-url-12345'],
+        'preferred_assay_title': 'SUPERSTARR'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
