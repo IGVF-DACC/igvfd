@@ -88,3 +88,14 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
     )
     res = testapp.get(analysis_set_base['@id']).json
     assert res.get('summary', '') == 'intermediate analysis of 10x multiome, SUPERSTARR, lentiMPRA data'
+
+
+def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set_with_protocols['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert res.json.get('protocols') == ['https://www.protocols.io/test-protocols-url-12345']

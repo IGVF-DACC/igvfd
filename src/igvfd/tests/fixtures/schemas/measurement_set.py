@@ -261,3 +261,17 @@ def measurement_set_v20(lab, award, assay_term_starr, tissue):
         'schema_version': '20'
     }
     return item
+
+
+@pytest.fixture
+def measurement_set_with_protocols(testapp, lab, award, assay_term_starr, tissue):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_starr['@id'],
+        'samples': [tissue['@id']],
+        'file_set_type': 'experimental data',
+        'protocols': ['https://www.protocols.io/test-protocols-url-12345'],
+        'preferred_assay_title': 'SUPERSTARR'
+    }
+    return testapp.post_json('/measurement_set', item).json['@graph'][0]

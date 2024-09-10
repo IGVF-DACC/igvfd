@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Add calculated property `protocols`.
 * Add `control_type`.
 * Add `external_image_data_url`.
 
