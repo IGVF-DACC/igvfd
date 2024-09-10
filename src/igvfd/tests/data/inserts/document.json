@@ -238,5 +238,18 @@
         "uuid": "3508c752-4a9f-46e0-a5b6-099cd8a71428",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z"
+    },
+    {
+        "aliases": [
+            "igvf:quality_control_report_insert"
+        ],
+        "description": "Quality control reporr example.",
+        "attachment": "Treg-CRISPRi-GITR-methods.pdf",
+        "award": "1U01HG011952-01",
+        "document_type": "quality control report",
+        "lab": "alan-boyle",
+        "uuid": "2621585d-ca1e-4aa4-81c1-e0ae2b20d9c4",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]

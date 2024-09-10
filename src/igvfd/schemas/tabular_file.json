@@ -111,7 +111,9 @@
             "comment": "Content Type describes the content of the file.",
             "enum": [
                 "barcode to element mapping",
+                "barcode to hashtag mapping",
                 "barcode to sample mapping",
+                "barcode to variant mapping",
                 "differential gene expression quantifications",
                 "differential transcript expression quantifications",
                 "editing templates",
@@ -135,7 +137,9 @@
             ],
             "enum_descriptions": {
                 "barcode to element mapping": "A file describing the mapping of barcodes to genomic elements.",
-                "barcode to sample mapping": "A file describing the mapping of barcodes with to biological sample.",
+                "barcode to hashtag mapping": "A file describing the mapping of barcodes to hashtags.",
+                "barcode to sample mapping": "A file describing the mapping of barcodes to biological sample.",
+                "barcode to variant mapping": "A file describing the mapping of barcodes to variants.",
                 "differential gene expression quantifications": "The quantified changes in gene expression levels between different conditions or groups.",
                 "differential transcript expression quantifications": "The quantified changes in expression levels of transcripts between conditions or groups.",
                 "editing templates": "The homology-directed DNA repair (HDR) templates containing SNVs in the library of saturation genome editing assays.",

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Extend `document_type` enum list to include `quality control report`.
 * Extend `document_type` enum list to include `model source data`.
 * Extend `document_type` enum list to include `plate map`.
 

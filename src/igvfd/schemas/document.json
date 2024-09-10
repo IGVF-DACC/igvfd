@@ -85,6 +85,7 @@
                 "plate map",
                 "plasmid map",
                 "plasmid sequence",
+                "quality control report",
                 "standards"
             ],
             "submissionExample": {
