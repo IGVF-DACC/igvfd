@@ -79,7 +79,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "8"
+            "default": "9"
         },
         "multiplexed_samples": {
             "title": "Multiplexed Samples",
@@ -109,9 +109,9 @@
                 "igvf_utils": "subPool_l1234"
             }
         },
-        "barcode_sample_map": {
-            "title": "Link to barcode sample map tabular file",
-            "description": "The link to the barcode to sample mapping tabular file.",
+        "barcode_map": {
+            "title": "Link to barcode map tabular file",
+            "description": "The link to the barcode mapping tabular file.",
             "type": "string",
             "linkTo": "TabularFile",
             "submissionExample": {

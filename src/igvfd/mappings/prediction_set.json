@@ -1,6 +1,6 @@
 {
-    "hash": "547906948c3a9df0c8ba61a7e8697ad0",
-    "index_name": "prediction_set_54790694",
+    "hash": "937fdae09cc96da9710881688618ceeb",
+    "index_name": "prediction_set_937fdae0",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -825,6 +825,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "barcode_map_for": {
+                                "type": "keyword"
+                            },
                             "base_modifications": {
                                 "type": "keyword"
                             },
@@ -1190,6 +1193,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "barcode_map_for": {
+                                "type": "keyword"
+                            },
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
@@ -1362,6 +1368,9 @@
                                 "type": "keyword"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map_for": {
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
@@ -1701,7 +1710,7 @@
                             "award": {
                                 "type": "keyword"
                             },
-                            "barcode_sample_map": {
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "biomarkers": {

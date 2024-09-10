@@ -297,3 +297,14 @@ def test_file_summaries(
     )
     res = testapp.get(tabular_file['@id'])
     assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 peaks'
+
+
+def test_barcode_map_for(testapp, multiplexed_sample_v7, tabular_file_v10):
+    testapp.patch_json(
+        multiplexed_sample_v7['@id'],
+        {
+            'barcode_map': tabular_file_v10['@id']
+        }
+    )
+    res = testapp.get(tabular_file_v10['@id'])
+    assert res.json.get('barcode_map_for', '') == [multiplexed_sample_v7['@id']]

@@ -648,6 +648,10 @@ class TabularFile(File):
     embedded_with_frame = File.embedded_with_frame + [
         Path('cell_type_annotation', include=['@id', 'term_name'])
     ]
+    rev = File.rev | {
+        'barcode_map_for': ('MultiplexedSample', 'barcode_map')
+    }
+
     set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []
 
@@ -672,6 +676,22 @@ class TabularFile(File):
             [x for x in [assembly, transcriptome_annotation, content_type]
              if x is not None]
         )
+
+    @calculated_property(schema={
+        'title': 'Barcode Map For',
+        'description': 'Link(s) to the Multiplexed samples using this file as barcode map.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Barcode Map For',
+            'type': ['string', 'object'],
+            'linkFrom': 'MultiplexedSample.barcode_map',
+        },
+        'notSubmittable': True
+    })
+    def barcode_map_for(self, request, barcode_map_for):
+        return paths_filtered_by_status(request, barcode_map_for)
 
 
 @collection(

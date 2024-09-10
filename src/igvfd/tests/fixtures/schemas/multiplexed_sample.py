@@ -110,3 +110,13 @@ def multiplexed_sample_v7(multiplexed_sample):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def multiplexed_sample_v8(multiplexed_sample, tabular_file_v10):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '8',
+        'barcode_sample_map': tabular_file_v10['@id']
+    })
+    return item
