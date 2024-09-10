@@ -13,9 +13,9 @@ def test_audit_missing_file_format_specifications(
     )
     testapp.patch_json(
         tabular_file['@id'],
-        {'file_format_specifications': experimental_protocol_document['@id']}
+        {'file_format_specifications': [experimental_protocol_document['@id']]}
     )
-    res = testapp.get(multiplexed_sample['@id'] + '@@audit')
+    res = testapp.get(tabular_file['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing file format specifications'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
