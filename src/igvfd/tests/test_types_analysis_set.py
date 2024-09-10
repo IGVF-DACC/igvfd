@@ -109,7 +109,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'intermediate analysis of ATAC-seq, STARR-seq, lentiMPRA data'
+    assert res.get('summary', '') == 'intermediate analysis of 10x multiome, SUPERSTARR, lentiMPRA data'
 
 
 def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
@@ -149,5 +149,4 @@ def test_analysis_set_sample_summary(testapp, analysis_set_with_sample, measurem
         }
     )
     res = testapp.get(analysis_set_with_sample['@id']).json
-    print(res)
     assert res.get('sample_summary', '') == 'K562 differentiated cell specimen, induced to endothelial cell of vascular tree, treated, modified with a guide library, sorted on expression of MYC'
