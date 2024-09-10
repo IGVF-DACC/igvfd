@@ -394,7 +394,11 @@ class AnalysisSet(FileSet):
             construct_library_set_type_phrase,
             sorted_phrase
         ]
-        summary = f"{' '.join(term_and_classification)}, {', '.join([x for x in additional_phrases if x != ''])}"
+        additional_phrases_joined = ', '.join([x for x in additional_phrases if x != ''])
+        additional_phrase_suffix = ''
+        if additional_phrases_joined:
+            additional_phrase_suffix = f', {additional_phrases_joined}'
+        summary = f"{' '.join(term_and_classification)}{additional_phrase_suffix}"
 
         return summary
 
