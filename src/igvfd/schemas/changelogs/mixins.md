@@ -1,5 +1,17 @@
 ## Changelog for *`mixins.json`*
 
+* Update `aliases` regex to add `raluca-gordan` as a namespace. (09/11/2024)
+* Update `aliases` regex to add `bill-majoros` as a namespace. (09/11/2024)
+* Update `aliases` regex to add `david-page` as a namespace. (09/11/2024)
+* Update `aliases` regex to add `maya-kasowski` as a namespace. (09/11/2024)
+* Update `aliases` regex to add `jimmie-ye` as a namespace. (09/11/2024)
+* Update `aliases` regex to add `leif-ludwig` as a namespace. (09/11/2024)
+* Update `aliases` regex to add `ryan-corces` as a namespace. (09/11/2024)
+* Update `aliases` regex to add `jun-wu` as a namespace. (09/11/2024)
+* Update `aliases` regex to add `tom-norman` as a namespace. (09/11/2024)
+* Update `aliases` regex to add `bruce-posner` as a namespace. (09/11/2024)
+* Update `aliases` regex to add `nhgri` as a namespace. (09/11/2024)
+* Update `aliases` regex to add `community` as a namespace. (09/11/2024)
 * Remove `publication_identifiers`. (07/31/2024)
 * Add `publications`. (07/17/2024)
 * Add `input_file_sets`. (06/26/2024)

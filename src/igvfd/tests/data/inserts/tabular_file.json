@@ -162,5 +162,25 @@
         "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
+    },
+    {
+        "uuid": "ac082ef5-b982-4815-893e-9e72aad04791",
+        "accession": "IGVFFI6421TOMN",
+        "lab": "christina-leslie",
+        "award": "HG012012",
+        "aliases": [
+            "tom-norman:pegRNA"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-09-04T12:34:56Z",
+        "md5sum": "9eb19333897169ebf36e45b669c38c2e",
+        "file_format": "tsv",
+        "content_type": "SNP effect matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/SNP_effect_matrix.tsv.gz",
+        "file_size": 4143132,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "IGVFDS3333DDDD",
+        "controlled_access": false
     }
 ]
