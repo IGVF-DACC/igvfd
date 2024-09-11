@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
     "hash": "559334ab36634a2143300577e1b5df8c",
     "index_name": "model_set_559334ab",
-=======
-    "hash": "cbf311d54a2c7c5d83145880fb25c5c9",
-    "index_name": "model_set_cbf311d5",
->>>>>>> d47abca0 (calculated assay titles)
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [

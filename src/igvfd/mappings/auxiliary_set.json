@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
     "hash": "8cbedf0f1ebce327f11fe2823400a5cd",
     "index_name": "auxiliary_set_8cbedf0f",
-=======
-    "hash": "d9f888af377bfd9d533ff333faf29605",
-    "index_name": "auxiliary_set_d9f888af",
->>>>>>> d47abca0 (calculated assay titles)
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [

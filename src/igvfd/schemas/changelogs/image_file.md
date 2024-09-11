@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Add calculated property `assay_titles`.
 * Allow submission of `fiducial alignment` to non-admin users.
 * Update calculation of `summary`.
 * Add `analysis_step_version`.

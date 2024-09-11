@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
     "hash": "0586de59ac648556ccfc12b11a04cf98",
     "index_name": "analysis_set_0586de59",
-=======
-    "hash": "b262ac42e47ecd41096b25bbd7bfe7e0",
-    "index_name": "analysis_set_b262ac42",
->>>>>>> d47abca0 (calculated assay titles)
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [

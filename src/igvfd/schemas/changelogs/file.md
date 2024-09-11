@@ -1,5 +1,6 @@
 ## Changelog for *`file.json`*
 
+* Add calculated property `assay_titles`. (09/18/2024)
 * Add `analysis_step_version`. (07/03/2024)
 * Add calculated property `input_file_for`. (06/25/2024)
 * Require `derived_from` to contain at least one value. (03/26/2024)

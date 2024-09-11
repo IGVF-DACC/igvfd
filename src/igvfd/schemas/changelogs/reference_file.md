@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Add calculated property `assay_titles`.
 * Adjust `content_type` enum list to restrict usage of `biological_context` to admin users.
 * Adjust `content_type` enum list to restrict usage of `coding_variants` to admin users.
 * Adjust `content_type` enum list to restrict usage of `complexes` to admin users.

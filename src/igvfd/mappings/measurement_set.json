@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
     "hash": "7028007de2eb206f08e816ed2b8889a3",
     "index_name": "measurement_set_7028007d",
-=======
-    "hash": "1f879e9a39d5744aa08cf6650c47a7ca",
-    "index_name": "measurement_set_1f879e9a",
->>>>>>> d47abca0 (calculated assay titles)
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [

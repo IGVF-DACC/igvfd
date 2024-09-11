@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Add calculated property `assay_titles`.
 * Extend `sequencing_kit` enum list to include `Singular G4 F2 Reagent Kit`.
 * Add `base_modifications`.
 * Extend `sequencing_kit` enum list to include `NovaSeq X Series 1.5B Reagent Kit`.
