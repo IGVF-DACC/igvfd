@@ -22,6 +22,21 @@ def model_file():
             'file_set.file_set_type': {
                 'title': 'File Set Type'
             },
+            'assay_titles': {
+                'title': 'Assay'
+            },
+            'file_set.samples.taxa': {
+                'title': 'Taxa'
+            },
+            'file_set.samples.term_name': {
+                'title': 'Sample Term'
+            },
+            'file_set.samples.classifications': {
+                'title': 'Sample Classification'
+            },
+            'file_set.samples.disease_terms.term_name': {
+                'title': 'Sample Phenotype'
+            },
             'award.component': {
                 'title': 'Award',
             },
@@ -58,7 +73,17 @@ def model_file():
             {
                 'title': 'File Set',
                 'facet_fields': [
-                    'file_set_type',
+                    'file_set.file_set_type',
+                    'assay_titles',
+                ],
+            },
+            {
+                'title': 'Sample',
+                'facet_fields': [
+                    'file_set.samples.taxa',
+                    'file_set.samples.term_name',
+                    'file_set.samples.classifications',
+                    'file_set.samples.disease_terms.term_name',
                 ],
             },
             {
