@@ -2,6 +2,12 @@
 
 ### Minor changes since schema version 5
 
+* Extend `input_content_types` enum list to include `transcript quantifications`.
+* Extend `input_content_types` enum list to include `barcode to hashtag mapping`.
+* Extend `input_content_types` enum list to include `barcode to variant mapping`.
+* Extend `output_content_types` enum list to include `transcript quantifications`.
+* Extend `output_content_types` enum list to include `barcode to hashtag mapping`.
+* Extend `output_content_types` enum list to include `barcode to variant mapping`.
 * Extend `analysis_step_types` enum list to include `barcode mapping generation`.
 * Extend `analysis_step_types` enum list to include `filtering`.
 * Extend `analysis_step_types` enum list to include `interaction calling`.
