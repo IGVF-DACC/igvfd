@@ -1,6 +1,6 @@
 {
-    "hash": "9eef577e61ecc096fdd01db2bbcc0da9",
-    "index_name": "matrix_file_9eef577e",
+    "hash": "6a571a7d7b12ed4fd29f709b98a0b4d3",
+    "index_name": "matrix_file_6a571a7d",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -499,7 +499,7 @@
                                     "award": {
                                         "type": "keyword"
                                     },
-                                    "barcode_sample_map": {
+                                    "barcode_map": {
                                         "type": "keyword"
                                     },
                                     "biomarkers": {

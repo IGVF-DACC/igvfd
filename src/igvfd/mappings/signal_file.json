@@ -1,6 +1,6 @@
 {
-    "hash": "264de30b9e1b1f37cd789d151748e42c",
-    "index_name": "signal_file_264de30b",
+    "hash": "0db46bb176bcd63364db8c76202c8a56",
+    "index_name": "signal_file_0db46bb1",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -580,7 +580,7 @@
                                     "award": {
                                         "type": "keyword"
                                     },
-                                    "barcode_sample_map": {
+                                    "barcode_map": {
                                         "type": "keyword"
                                     },
                                     "biomarkers": {

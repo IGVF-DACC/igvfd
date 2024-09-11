@@ -1,6 +1,6 @@
 {
-    "hash": "895a4e273dc903cb4981f20807b334ac",
-    "index_name": "alignment_file_895a4e27",
+    "hash": "1148781adc3dc24d1160816399965b32",
+    "index_name": "alignment_file_1148781a",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -508,7 +508,7 @@
                                     "award": {
                                         "type": "keyword"
                                     },
-                                    "barcode_sample_map": {
+                                    "barcode_map": {
                                         "type": "keyword"
                                     },
                                     "biomarkers": {

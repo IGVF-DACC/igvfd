@@ -1,6 +1,6 @@
 {
-    "hash": "c69fc90ae2a6e275ba4f726f9ab82239",
-    "index_name": "sequence_file_c69fc90a",
+    "hash": "4ad1a1dcee48f445d68409407e5e8dac",
+    "index_name": "sequence_file_4ad1a1dc",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -505,7 +505,7 @@
                                     "award": {
                                         "type": "keyword"
                                     },
-                                    "barcode_sample_map": {
+                                    "barcode_map": {
                                         "type": "keyword"
                                     },
                                     "biomarkers": {

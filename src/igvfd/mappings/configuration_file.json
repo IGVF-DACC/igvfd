@@ -1,6 +1,6 @@
 {
-    "hash": "a43bd76499314f0d93867cf9f66166b2",
-    "index_name": "configuration_file_a43bd764",
+    "hash": "3979fe508552f8b3d1a0a87db2d4f0a0",
+    "index_name": "configuration_file_3979fe50",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -490,7 +490,7 @@
                                     "award": {
                                         "type": "keyword"
                                     },
-                                    "barcode_sample_map": {
+                                    "barcode_map": {
                                         "type": "keyword"
                                     },
                                     "biomarkers": {
