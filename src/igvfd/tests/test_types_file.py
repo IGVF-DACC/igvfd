@@ -299,7 +299,6 @@ def test_file_summaries(
     assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 peaks'
 
 
-<<<<<<< HEAD
 def test_barcode_map_for(testapp, multiplexed_sample_v7, tabular_file_v10):
     testapp.patch_json(
         multiplexed_sample_v7['@id'],
@@ -309,7 +308,8 @@ def test_barcode_map_for(testapp, multiplexed_sample_v7, tabular_file_v10):
     )
     res = testapp.get(tabular_file_v10['@id'])
     assert res.json.get('barcode_map_for', '') == [multiplexed_sample_v7['@id']]
-=======
+
+
 def test_file_assay_titles(
     testapp,
     alignment_file,
@@ -355,4 +355,3 @@ def test_file_assay_titles(
     )
     res = testapp.get(alignment_file['@id'])
     assert set(res.json.get('assay_titles', [])) == {'10x multiome with MULTI-seq'}
->>>>>>> d47abca0 (calculated assay titles)
