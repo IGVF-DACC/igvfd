@@ -128,7 +128,7 @@ def test_integrated_in(testapp, construct_library_set_genome_wide, base_expressi
         }
     )
     res = testapp.get(tabular_file['@id'])
-    assert set(res.json.get('integrated_in')) == {
+    assert set([file_set.get('@id') for file_set in res.json.get('integrated_in')]) == {
         base_expression_construct_library_set['@id'], construct_library_set_genome_wide['@id']}
 
 

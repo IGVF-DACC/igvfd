@@ -213,13 +213,19 @@ class File(Item):
         assay_titles = set()
         file_set_object = request.embed(file_set, '@@object')
         if 'MeasurementSet' in file_set_object.get('@type'):
-            assay_titles.add(file_set_object.get('preferred_assay_title'))
+            preferred_assay_title = file_set_object.get('preferred_assay_title', '')
+            if preferred_assay_title:
+                assay_titles.add(preferred_assay_title)
         elif 'AnalysisSet' in file_set_object.get('@type'):
-            assay_titles.add(file_set_object.get('assay_titles'))
+            analysis_assay_titles = set(file_set_object.get('assay_titles', []))
+            if analysis_assay_titles:
+                assay_titles = assay_titles | analysis_assay_titles
         elif 'AuxiliarySet' in file_set_object.get('@type'):
             for measurement_set in file_set_object.get('measurement_sets'):
                 measurement_set_object = request.embed(measurement_set, '@@object')
-                assay_titles.add(measurement_set_object.get('preferred_assay_title'))
+                measurement_set_object_pat = measurement_set_object.get('preferred_assay_title')
+                if measurement_set_object_pat:
+                    assay_titles.add(measurement_set_object_pat)
         return list(assay_titles)
 
     @calculated_property(
