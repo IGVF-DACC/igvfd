@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 11
 
+* Extend `content_type` enum list to include `genes`.
+* Extend `content_type` enum list to include `loci`.
 * Add calculated property `assay_titles`.
 * Add calculated property `barcode_map_for`.
 * Extend `content_type` enum list to include `transcript quantifications`.
