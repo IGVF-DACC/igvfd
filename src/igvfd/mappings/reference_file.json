@@ -1,6 +1,6 @@
 {
-    "hash": "1c1fc2db8d46c09a4729be052f96ad3c",
-    "index_name": "reference_file_1c1fc2db",
+    "hash": "b21bd4b87a5268b4b94977aa05eacf08",
+    "index_name": "reference_file_b21bd4b8",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -161,6 +161,10 @@
                         "type": "keyword"
                     },
                     "anvil_url": {
+                        "type": "keyword"
+                    },
+                    "assay_titles": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "assembly": {

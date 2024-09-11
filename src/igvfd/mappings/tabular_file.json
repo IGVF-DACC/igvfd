@@ -163,6 +163,10 @@
                     "anvil_url": {
                         "type": "keyword"
                     },
+                    "assay_titles": {
+                        "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
                     "assembly": {
                         "type": "keyword"
                     },

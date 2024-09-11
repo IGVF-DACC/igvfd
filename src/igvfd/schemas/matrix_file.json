@@ -168,6 +168,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "assay_titles",
         "content_type",
         "description",
         "submitted_by.title",

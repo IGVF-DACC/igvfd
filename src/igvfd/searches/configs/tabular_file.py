@@ -28,7 +28,7 @@ def tabular_file():
             'file_set.file_set_type': {
                 'title': 'File Set Type'
             },
-            'file_set.preferred_assay_title': {
+            'assay_titles': {
                 'title': 'Assay'
             },
             'file_set.samples.taxa': {
@@ -97,7 +97,7 @@ def tabular_file():
                 'title': 'File Set',
                 'facet_fields': [
                     'file_set.file_set_type',
-                    'file_set.preferred_assay_title',
+                    'assay_titles',
                 ],
             },
             {

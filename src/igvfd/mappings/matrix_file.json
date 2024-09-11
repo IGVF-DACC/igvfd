@@ -1,6 +1,6 @@
 {
-    "hash": "175cda3ef40827174d1bfbe2ce36cb29",
-    "index_name": "matrix_file_175cda3e",
+    "hash": "c52de93ca88bd4d1ad8d5505aaa61a31",
+    "index_name": "matrix_file_c52de93c",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -158,6 +158,10 @@
                         "type": "keyword"
                     },
                     "analysis_step_version": {
+                        "type": "keyword"
+                    },
+                    "assay_titles": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "award": {

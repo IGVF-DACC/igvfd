@@ -1,6 +1,6 @@
 {
-    "hash": "367dd176bf8bcd6a7c397479acaa977c",
-    "index_name": "sequence_file_367dd176",
+    "hash": "6aa6b3e64c93311eab46afc6b67abe10",
+    "index_name": "sequence_file_6aa6b3e6",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -161,6 +161,10 @@
                         "type": "keyword"
                     },
                     "anvil_url": {
+                        "type": "keyword"
+                    },
+                    "assay_titles": {
+                        "copy_to": "_fuzzy",
                         "type": "keyword"
                     },
                     "award": {

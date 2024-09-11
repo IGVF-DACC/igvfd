@@ -195,6 +195,34 @@ class File(Item):
         return paths_filtered_by_status(request, loci_list_for)
 
     @calculated_property(
+        schema={
+            'title': 'Assay Titles',
+            'description': 'Title(s) of assay from the file set this file belongs to.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Assay Title',
+                'description': 'Title of assay from the file set this file belongs to.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def assay_titles(self, request, file_set):
+        assay_titles = set()
+        file_set_object = request.embed(file_set, '@@object')
+        if 'MeasurementSet' in file_set_object.get('@type'):
+            assay_titles.add(file_set_object.get('preferred_assay_title'))
+        elif 'AnalysisSet' in file_set_object.get('@type'):
+            assay_titles.add(file_set_object.get('assay_titles'))
+        elif 'AuxiliarySet' in file_set_object.get('@type'):
+            for measurement_set in file_set_object.get('measurement_sets'):
+                measurement_set_object = request.embed(measurement_set, '@@object')
+                assay_titles.add(measurement_set_object.get('preferred_assay_title'))
+        return list(assay_titles)
+
+    @calculated_property(
         condition=show_href,
         schema={
             'title': 'Download URL',

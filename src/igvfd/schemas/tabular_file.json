@@ -190,6 +190,7 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "assay_titles",
         "content_type",
         "cell_type_annotation.term_name",
         "description",
