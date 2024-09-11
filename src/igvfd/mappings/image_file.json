@@ -1,6 +1,6 @@
 {
-    "hash": "2db4b5a9b57c9d3f1c0811a057c7d50c",
-    "index_name": "image_file_2db4b5a9",
+    "hash": "0c8cb9aa16fcb2afb0189d62c08a88ab",
+    "index_name": "image_file_0c8cb9aa",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -278,6 +278,7 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
@@ -777,6 +778,7 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "targeted_sample_term": {
@@ -911,6 +913,7 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "targeted_genes": {

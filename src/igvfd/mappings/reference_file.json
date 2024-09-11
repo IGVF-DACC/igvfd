@@ -1,6 +1,6 @@
 {
-    "hash": "45b9b91cc217c27e6a2f458ca2c67258",
-    "index_name": "reference_file_45b9b91c",
+    "hash": "5d853821370cf0738180391b7ff1883a",
+    "index_name": "reference_file_5d853821",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -309,6 +309,7 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
@@ -808,6 +809,7 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "targeted_sample_term": {
@@ -942,6 +944,7 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "targeted_genes": {

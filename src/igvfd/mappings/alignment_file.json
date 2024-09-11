@@ -1,6 +1,6 @@
 {
-    "hash": "43f05762c49f116eec5e8274fd9cfc51",
-    "index_name": "alignment_file_43f05762",
+    "hash": "895a4e273dc903cb4981f20807b334ac",
+    "index_name": "alignment_file_895a4e27",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -296,6 +296,7 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
@@ -795,6 +796,7 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "targeted_sample_term": {
@@ -929,6 +931,7 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "targeted_genes": {

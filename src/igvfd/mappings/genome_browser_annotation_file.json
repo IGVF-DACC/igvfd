@@ -1,6 +1,6 @@
 {
-    "hash": "917d906b4b54004eda1e8098963f5004",
-    "index_name": "genome_browser_annotation_file_917d906b",
+    "hash": "0ed29022371521aeb222d527f2af53c6",
+    "index_name": "genome_browser_annotation_file_0ed29022",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -368,6 +368,7 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
@@ -867,6 +868,7 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "targeted_sample_term": {
@@ -1001,6 +1003,7 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "targeted_genes": {

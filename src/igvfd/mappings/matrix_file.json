@@ -1,6 +1,6 @@
 {
-    "hash": "c1215efdb369602da76c8e52abef5b75",
-    "index_name": "matrix_file_c1215efd",
+    "hash": "9eef577e61ecc096fdd01db2bbcc0da9",
+    "index_name": "matrix_file_9eef577e",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -287,6 +287,7 @@
                                 "type": "keyword"
                             },
                             "accession": {
+                                "copy_to": "_exact",
                                 "type": "keyword"
                             },
                             "aliases": {
@@ -786,6 +787,7 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "targeted_sample_term": {
@@ -920,6 +922,7 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "copy_to": "_fuzzy",
                                 "type": "keyword"
                             },
                             "targeted_genes": {
