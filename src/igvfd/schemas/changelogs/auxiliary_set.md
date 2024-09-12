@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `file_set_type` enum list to include `MORF barcode sequencing`.
 * Add `control_type`.
 
 ### Schema version 11
