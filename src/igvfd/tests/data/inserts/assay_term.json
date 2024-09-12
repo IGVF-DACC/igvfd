@@ -127,5 +127,15 @@
         ],
         "release_timestamp": "2024-07-06T12:34:56Z",
         "uuid": "6c74b89f-71ac-4733-ac6c-8eb42810136d"
+    },
+    {
+        "term_id": "OBI:0002041",
+        "term_name": "self-transcribing active regulatory region sequencing assay",
+        "status": "released",
+        "preferred_assay_titles": [
+            "STARR-seq"
+        ],
+        "release_timestamp": "2024-07-06T12:34:56Z",
+        "uuid": "492e6baf-9ed9-4c0b-b1ae-afc1452c04b8"
     }
 ]

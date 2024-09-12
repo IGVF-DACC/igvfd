@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Minor changes since schema version 21
+
+* Extend `preferred_assay_title` enum list to include `STARR-seq`.
+
 ### Schema version 21
 
 * Require `preferred_assay_title`.
