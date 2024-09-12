@@ -16,7 +16,7 @@ def audit_targeted_sample_term_check(value, system):
         {
             "audit_description": "In vitro systems are expected to have a targeted sample term that is distinct from the starting sample term.",
             "audit_category": "inconsistent targeted sample term",
-            "audit_level": "WARNING"
+            "audit_level": "ERROR"
         }
     ]
     '''
