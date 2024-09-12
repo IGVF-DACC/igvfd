@@ -1,6 +1,6 @@
 {
-    "hash": "7d3b4c5cc9ffcc680deb62efca9f4210",
-    "index_name": "tabular_file_7d3b4c5c",
+    "hash": "51f5ff269946b29f3e7919ac4737b5ac",
+    "index_name": "tabular_file_51f5ff26",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -841,7 +841,87 @@
                                         "type": "keyword"
                                     },
                                     "sample_terms": {
-                                        "type": "keyword"
+                                        "properties": {
+                                            "@id": {
+                                                "type": "keyword"
+                                            },
+                                            "@type": {
+                                                "type": "keyword"
+                                            },
+                                            "aliases": {
+                                                "type": "keyword"
+                                            },
+                                            "ancestors": {
+                                                "type": "keyword"
+                                            },
+                                            "cell_slims": {
+                                                "type": "keyword"
+                                            },
+                                            "creation_timestamp": {
+                                                "type": "keyword"
+                                            },
+                                            "dbxrefs": {
+                                                "type": "keyword"
+                                            },
+                                            "deprecated_ntr_terms": {
+                                                "type": "keyword"
+                                            },
+                                            "description": {
+                                                "type": "text"
+                                            },
+                                            "developmental_slims": {
+                                                "type": "keyword"
+                                            },
+                                            "is_a": {
+                                                "type": "keyword"
+                                            },
+                                            "name": {
+                                                "type": "keyword"
+                                            },
+                                            "notes": {
+                                                "type": "text"
+                                            },
+                                            "ontology": {
+                                                "type": "keyword"
+                                            },
+                                            "organ_slims": {
+                                                "type": "keyword"
+                                            },
+                                            "release_timestamp": {
+                                                "type": "keyword"
+                                            },
+                                            "schema_version": {
+                                                "type": "keyword"
+                                            },
+                                            "status": {
+                                                "type": "keyword"
+                                            },
+                                            "submitted_by": {
+                                                "type": "keyword"
+                                            },
+                                            "submitter_comment": {
+                                                "type": "keyword"
+                                            },
+                                            "summary": {
+                                                "type": "keyword"
+                                            },
+                                            "synonyms": {
+                                                "type": "keyword"
+                                            },
+                                            "system_slims": {
+                                                "type": "keyword"
+                                            },
+                                            "term_id": {
+                                                "type": "keyword"
+                                            },
+                                            "term_name": {
+                                                "type": "keyword"
+                                            },
+                                            "uuid": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "type": "object"
                                     },
                                     "schema_version": {
                                         "type": "keyword"

@@ -96,6 +96,9 @@
         "small_scale_gene_list": [
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
         ],
+        "integrated_content_files": [
+            "1ba1060f-9488-4d8e-ebcc-3d46f46fef54"
+        ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z"
     },
@@ -120,6 +123,9 @@
         "orf_list": [
             "/open-reading-frames/CCSBORF1234/",
             "/open-reading-frames/CCSBORF4567/"
+        ],
+        "integrated_content_files": [
+            "72bdab4a-9488-b627-ebcc-3d1c59e3b954"
         ]
     },
     {

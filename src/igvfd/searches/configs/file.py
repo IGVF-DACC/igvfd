@@ -40,7 +40,7 @@ def file():
             'file_set.samples.taxa': {
                 'title': 'Taxa'
             },
-            'file_set.samples.term_name': {
+            'file_set.samples.sample_terms.term_name': {
                 'title': 'Sample Term'
             },
             'file_set.samples.classifications': {
@@ -103,7 +103,7 @@ def file():
                 'title': 'Sample',
                 'facet_fields': [
                     'file_set.samples.taxa',
-                    'file_set.samples.term_name',
+                    'file_set.samples.sample_terms.term_name',
                     'file_set.samples.classifications',
                     'file_set.samples.disease_terms.term_name',
                     'cell_type_annotation.term_name',

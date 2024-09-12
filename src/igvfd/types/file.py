@@ -114,6 +114,8 @@ class File(Item):
         Path('submitted_by', include=['@id', 'title']),
         Path('file_set.samples.disease_terms', include=[
              '@id', 'accession', 'summary', 'samples', 'disease_terms', 'sample_terms', 'term_name', 'classifications', 'file_set_type', 'taxa']),
+        Path('file_set.samples.sample_terms', include=[
+             '@id', 'term_name']),
         Path('integrated_in.associated_phenotypes', include=[
              '@id', 'summary', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list']),
         Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol']),
