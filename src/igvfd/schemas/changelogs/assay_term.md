@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 7
 
-* Extend `preferred_assay_title` enum list to include `STARR-seq`.
+* Extend `preferred_assay_titles` enum list to include `STARR-seq`.
 * Extend `preferred_assay_titles` enum list to include `scCRISPR screen`.
 
 ### Schema version 7
