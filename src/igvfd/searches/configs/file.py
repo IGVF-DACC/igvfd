@@ -55,7 +55,7 @@ def file():
             'integrated_in.associated_phenotypes.term_name': {
                 'title': 'Associated Phenotypes'
             },
-            'integrated_in.small_scale_gene_list.name': {
+            'integrated_in.small_scale_gene_list.symbol': {
                 'title': 'Construct Targeted Genes'
             },
             'lab.title': {
@@ -114,7 +114,7 @@ def file():
                 'facet_fields': [
                     'integrated_in.file_set_type',
                     'integrated_in.associated_phenotypes.term_name',
-                    'integrated_in.small_scale_gene_list.name',
+                    'integrated_in.small_scale_gene_list.symbol',
                 ],
             },
             {

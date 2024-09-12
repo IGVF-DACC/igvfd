@@ -113,10 +113,10 @@ class File(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('file_set.samples.disease_terms', include=[
-             '@id', 'accession', 'summary', 'samples', 'disease_terms', 'term_name', 'classifications', 'file_set_type', 'taxa']),
+             '@id', 'accession', 'summary', 'samples', 'disease_terms', 'sample_terms', 'term_name', 'classifications', 'file_set_type', 'taxa']),
         Path('integrated_in.associated_phenotypes', include=[
-             '@id', 'summary', 'file_set_type', 'associated_phenotypes', 'term_name']),
-        Path('integrated_in.small_scale_gene_list', include=['@id', 'small_scale_gene_list', 'name']),
+             '@id', 'summary', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list']),
+        Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol']),
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),

@@ -2,11 +2,8 @@
 
 ### Minor changes since schema version 11
 
-<<<<<<< HEAD
-* Add calculated property `barcode_map_for`.
-=======
 * Add calculated property `assay_titles`.
->>>>>>> 8465da6b (adjusted search columns)
+* Add calculated property `barcode_map_for`.
 * Extend `content_type` enum list to include `transcript quantifications`.
 * Extend `content_type` enum list to include `barcode to hashtag mapping`.
 * Extend `content_type` enum list to include `barcode to variant mapping`.
