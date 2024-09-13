@@ -282,6 +282,36 @@ class AnalysisSet(FileSet):
             return list(assay_titles)
 
     @calculated_property(
+        schema={
+            'title': 'Samples',
+            'description': 'Samples associated with this analysis set.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Sample',
+                'description': 'Sample associated with this analysis set.',
+                'type': 'string',
+                'linkTo': 'Sample'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def samples(self, request, input_file_sets=None, demultiplexed_sample=None):
+        if input_file_sets is not None:
+            samples = set()
+            for fileset in input_file_sets:
+                input_file_set_object = request.embed(fileset, '@@object')
+                input_file_set_samples = set(input_file_set_object.get('samples', []))
+                if input_file_set_samples:
+                    samples = samples | input_file_set_samples
+            if demultiplexed_sample:
+                # if the analysis set specifies a demultiplexed sample and all input data is multiplexed return just the demultiplexed_sample
+                if not ([sample for sample in samples if not (sample.startswith('/multiplexed_samples/'))]):
+                    return list(demultiplexed_sample)
+            return list(samples)
+
+    @calculated_property(
         condition='samples',
         schema={
             'title': 'Donors',

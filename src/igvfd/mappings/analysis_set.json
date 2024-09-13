@@ -383,6 +383,9 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
+                            "demultiplexed_sample": {
+                                "type": "keyword"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -665,6 +668,9 @@
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "demultiplexed_sample": {
                         "type": "keyword"
                     },
                     "description": {
@@ -1298,6 +1304,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {
