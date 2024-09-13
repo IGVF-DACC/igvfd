@@ -273,6 +273,7 @@ class AnalysisSet(FileSet):
             return list(assay_titles)
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Samples',
             'description': 'Samples associated with this analysis set.',
