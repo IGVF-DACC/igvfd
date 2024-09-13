@@ -1,6 +1,6 @@
 {
-    "hash": "64bf9102965f6e67472d99da29cf2837",
-    "index_name": "curated_set_64bf9102",
+    "hash": "8f3f4f9244d7a7435fe503b0ad8dc722",
+    "index_name": "curated_set_8f3f4f92",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -378,6 +378,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {

@@ -1,6 +1,6 @@
 {
-    "hash": "559334ab36634a2143300577e1b5df8c",
-    "index_name": "model_set_559334ab",
+    "hash": "8119fdae0c467e5082c29ea13ddd5e5a",
+    "index_name": "model_set_8119fdae",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -377,6 +377,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {
@@ -1176,6 +1179,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {

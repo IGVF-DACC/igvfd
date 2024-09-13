@@ -1,6 +1,6 @@
 {
-    "hash": "1a20bda948808aa8dc8cd0e2676300ee",
-    "index_name": "multiplexed_sample_1a20bda9",
+    "hash": "d2b2afc56cfd8ff65c412d6f740c43e9",
+    "index_name": "multiplexed_sample_d2b2afc5",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -726,6 +726,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {

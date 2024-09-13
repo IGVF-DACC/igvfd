@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 8
 
+* Convert `samples` to be calculated from `input_file_sets` and `demultiplexed_sample`.
+* Add `demultiplexed_sample`.
 * Add calculated property `protocols`.
 * Add `control_type`.
 * Add `external_image_data_url`.
