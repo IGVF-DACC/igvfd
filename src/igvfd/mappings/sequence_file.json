@@ -1,6 +1,6 @@
 {
-    "hash": "2e95633d33c62d368115736671852327",
-    "index_name": "sequence_file_2e95633d",
+    "hash": "9156d13b382295217931f3a1d92eed3a",
+    "index_name": "sequence_file_9156d13b",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -509,6 +509,9 @@
                                         "type": "keyword"
                                     },
                                     "biomarkers": {
+                                        "type": "keyword"
+                                    },
+                                    "biosample_qualifier": {
                                         "type": "keyword"
                                     },
                                     "ccf_id": {

@@ -1,6 +1,6 @@
 {
-    "hash": "25dcd3f17261f2677ad6857e2e76e068",
-    "index_name": "measurement_set_25dcd3f1",
+    "hash": "ad8018d07b3684e9167245739ef6d84e",
+    "index_name": "measurement_set_ad8018d0",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2094,6 +2094,9 @@
                                 "type": "keyword"
                             },
                             "biomarkers": {
+                                "type": "keyword"
+                            },
+                            "biosample_qualifier": {
                                 "type": "keyword"
                             },
                             "ccf_id": {

@@ -1,6 +1,6 @@
 {
-    "hash": "5c6ccf8aec39187e7a74b5d45ee7ae39",
-    "index_name": "alignment_file_5c6ccf8a",
+    "hash": "8f1d93c62679fb939bc343f77f4c022b",
+    "index_name": "alignment_file_8f1d93c6",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -512,6 +512,9 @@
                                         "type": "keyword"
                                     },
                                     "biomarkers": {
+                                        "type": "keyword"
+                                    },
+                                    "biosample_qualifier": {
                                         "type": "keyword"
                                     },
                                     "ccf_id": {
