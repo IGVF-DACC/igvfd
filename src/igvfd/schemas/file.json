@@ -305,7 +305,7 @@
         },
         "file_format_specifications": {
             "title": "File Format Specifications Documents",
-            "description": "Document that further explains the file format.",
+            "description": "Documents that describe the file format and fields of this file.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,

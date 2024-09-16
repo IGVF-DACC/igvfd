@@ -14,6 +14,7 @@ import igvfd.audit.measurement_set
 import igvfd.audit.multiplexed_sample
 import igvfd.audit.ontology_term
 import igvfd.audit.sample
+import igvfd.audit.tabular_file
 import igvfd.audit.tissue
 import igvfd.audit.treatment
 import igvfd.audit.whole_organism
@@ -39,6 +40,7 @@ AUDIT_MODULES_TO_PROCESS = [
     igvfd.audit.multiplexed_sample,
     igvfd.audit.ontology_term,
     igvfd.audit.sample,
+    igvfd.audit.tabular_file,
     igvfd.audit.tissue,
     igvfd.audit.treatment,
     igvfd.audit.whole_organism,
