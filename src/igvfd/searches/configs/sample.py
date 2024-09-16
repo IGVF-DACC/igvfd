@@ -88,7 +88,7 @@ def sample():
             {
                 'title': 'Treatments',
                 'facet_fields': [
-                    'treatments.Purpose',
+                    'treatments.purpose',
                     'treatments.treatment_type',
                     'treatments.term_name',
                 ]
