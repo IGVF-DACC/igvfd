@@ -103,6 +103,19 @@
                 "appscript": "TSTSM02881434 or john-doe:tissue02",
                 "igvf_utils": "TSTSM02881434 or john-doe:tissue02"
             }
+        },
+        "biosample_qualifier": {
+            "title": "Biosample qualifier",
+            "description": "Desription of cell state",
+            "type": "string",
+            "enum": [
+                "exhausted",
+                "stimulated"
+            ],
+            "submissionExample": {
+                "appscript": "exhausted",
+                "igvf_utils": "exhausted"
+            }
         }
     },
     "fuzzy_searchable_fields": [
