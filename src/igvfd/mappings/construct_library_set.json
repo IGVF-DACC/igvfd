@@ -1,6 +1,6 @@
 {
-    "hash": "ef05fa6cbb618ed27738a03c5bcc63b3",
-    "index_name": "construct_library_set_ef05fa6c",
+    "hash": "c056f8c340bb833ef7d2fce4aac8ddaa",
+    "index_name": "construct_library_set_c056f8c3",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -187,6 +187,9 @@
                                 "type": "keyword"
                             },
                             "biomarkers": {
+                                "type": "keyword"
+                            },
+                            "biosample_qualifier": {
                                 "type": "keyword"
                             },
                             "ccf_id": {
