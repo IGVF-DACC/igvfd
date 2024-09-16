@@ -28,7 +28,7 @@ def sample():
             'file_sets.assay_term.term_name': {
                 'title': 'Assay'
             },
-            'sample_terms': {
+            'sample_terms.term_name': {
                 'title': 'Sample Terms'
             },
             'type': {
@@ -49,7 +49,7 @@ def sample():
             'treatments.term_name': {
                 'title': 'Treatment term name'
             },
-            'treatments.type': {
+            'treatments.treamtent_type': {
                 'title': 'Treatment type'
             },
             'treatments.purpose': {
