@@ -326,20 +326,42 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def sample_summary(self, request, samples, input_file_sets=[]):
+    def sample_summary(self, request, samples=None):
+        if not samples:
+            return
+
         sample_terms = set()
         sample_classifications = set()
-        targeted_sample_terms = set()
         treatments = set()
         construct_library_set_types = set()
         sorted = set()
         targeted_genes_for_sorting = set()
+
+        treatment_purpose_to_adjective = {
+            'activation': 'activated',
+            'agonist': 'agonized',
+            'antagonist': 'antagonized',
+            'control': 'treated with a control',
+            'differentiation': 'differentiated',
+            'de-differentiation': 'de-differentiated',
+            'perturbation': 'perturbed',
+            'selection': 'selected',
+            'stimulation': 'stimulated'
+        }
+
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
 
             for term in sample_object['sample_terms']:
                 sample_term_object = request.embed(term, '@@object?skip_calculated=true')
-                sample_terms.add(sample_term_object['term_name'])
+
+                if 'targeted_sample_term' in sample_object:
+                    targeted_sample_term_object = request.embed(
+                        sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
+                    sample_terms.add(
+                        f"{sample_term_object['term_name']} induced to {targeted_sample_term_object['term_name']}")
+                else:
+                    sample_terms.add(sample_term_object['term_name'])
             for classification in sample_object['classifications']:
                 sample_classifications.add(classification)
 
@@ -359,21 +381,15 @@ class AnalysisSet(FileSet):
                                 targeted_genes_for_sorting.add(gene_object['symbol'])
 
             if 'treatments' in sample_object:
-                treatments.add('treated')
-
-            if 'targeted_sample_term' in sample_object:
-                targeted_sample_term_object = request.embed(
-                    sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
-                targeted_sample_terms.add(targeted_sample_term_object['term_name'])
+                for treatment in sample_object['treatments']:
+                    treatment_object = request.embed(treatment, '@@object?skip_calculated=true')
+                    treatments.add(treatment_purpose_to_adjective[treatment_object['purpose']])
 
         sample_terms_phrase = ', '.join(sample_terms)
         sample_classifications_phrase = ', '.join(sample_classifications)
-        targeted_sample_terms_phrase = ''
-        if targeted_sample_terms:
-            targeted_sample_terms_phrase = f'induced to {", ".join(targeted_sample_terms)}'
         treatments_phrase = ''
         if treatments:
-            treatments_phrase = ''.join(treatments)
+            treatments_phrase = f"{', '.join(treatments)} with treatment(s)"
         construct_library_set_type_phrase = ''
         if construct_library_set_types:
             construct_library_set_type_phrase = f'modified with a {", ".join(construct_library_set_types)}'

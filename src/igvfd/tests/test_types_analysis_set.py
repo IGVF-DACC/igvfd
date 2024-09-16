@@ -149,4 +149,4 @@ def test_analysis_set_sample_summary(testapp, analysis_set_with_sample, measurem
         }
     )
     res = testapp.get(analysis_set_with_sample['@id']).json
-    assert res.get('sample_summary', '') == 'K562 differentiated cell specimen, induced to endothelial cell of vascular tree, treated, modified with a guide library, sorted on expression of MYC'
+    assert res.get('sample_summary', '') == 'K562 differentiated cell specimen, induced to endothelial cell of vascular tree, differentiated with treatment(s), modified with a guide library, sorted on expression of MYC'
