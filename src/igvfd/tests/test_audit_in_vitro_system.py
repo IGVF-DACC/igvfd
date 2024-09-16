@@ -19,7 +19,7 @@ def test_audit_targeted_sample_term(
     res = testapp.get(in_vitro_cell_line['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent targeted sample term'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('ERROR', [])
     )
 
 
