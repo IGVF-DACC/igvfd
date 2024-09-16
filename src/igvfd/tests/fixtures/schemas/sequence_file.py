@@ -3,13 +3,13 @@ import pytest
 
 @pytest.fixture
 def sequence_file(
-        testapp, lab, award, analysis_set_with_sample, platform_term_HiSeq):
+        testapp, lab, award, principal_analysis_set, platform_term_HiSeq):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '525c8a6af303ea86bc59c629ff198277',
         'file_format': 'fastq',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'minimum_read_length': 99,
         'maximum_read_length': 101,
         'mean_read_length': 100,
@@ -25,13 +25,13 @@ def sequence_file(
 
 @pytest.fixture
 def sequence_file_s3_uri(
-        testapp, lab, award, analysis_set_with_sample, platform_term_HiSeq):
+        testapp, lab, award, principal_analysis_set, platform_term_HiSeq):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '515c8a6af303ea86bc59c629ff198277',
         'file_format': 'fastq',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'minimum_read_length': 99,
         'maximum_read_length': 101,
         'mean_read_length': 100,
@@ -48,13 +48,13 @@ def sequence_file_s3_uri(
 
 @pytest.fixture
 def sequence_file_fastq_no_read_length(
-        testapp, lab, award, analysis_set_with_sample, platform_term_HiSeq):
+        testapp, lab, award, principal_analysis_set, platform_term_HiSeq):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': 'cb888dc8d303ea1b7959c698e819c0f1',
         'file_format': 'fastq',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'content_type': 'reads',
         'sequencing_run': 1,
         'sequencing_platform': platform_term_HiSeq['@id']
@@ -64,13 +64,13 @@ def sequence_file_fastq_no_read_length(
 
 @pytest.fixture
 def sequence_file_sequencing_run_2(
-        testapp, lab, award, analysis_set_with_sample, platform_term_HiSeq):
+        testapp, lab, award, principal_analysis_set, platform_term_HiSeq):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': 'aece2d0a32bcaa86b23d5a33ff198917',
         'file_format': 'fastq',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'minimum_read_length': 99,
         'maximum_read_length': 101,
         'mean_read_length': 100,
@@ -86,13 +86,13 @@ def sequence_file_sequencing_run_2(
 
 @pytest.fixture
 def sequence_file_pod5(
-        testapp, lab, award, analysis_set_with_sample, platform_term_HiSeq):
+        testapp, lab, award, principal_analysis_set, platform_term_HiSeq):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': 'c9ba6af303e4b6bc59c629b6409040a7',
         'file_format': 'pod5',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'read_count': 23040138,
         'file_size': 5495803,
         'content_type': 'Nanopore reads',
@@ -101,6 +101,27 @@ def sequence_file_pod5(
         'controlled_access': False
     }
     return testapp.post_json('/sequence_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def controlled_sequence_file(lab, award, principal_analysis_set, platform_term_HiSeq):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'cb818dc8d303ea1b7959c698e819c0f1',
+        'file_format': 'fastq',
+        'file_set': principal_analysis_set['@id'],
+        'content_type': 'reads',
+        'sequencing_run': 1,
+        'sequencing_platform': platform_term_HiSeq['@id'],
+        'controlled_access': True
+    }
+    return item
+
+
+@pytest.fixture
+def controlled_sequence_file_object(testapp, controlled_sequence_file):
+    return testapp.post_json('/sequence_file', controlled_sequence_file, status=201).json['@graph'][0]
 
 
 @pytest.fixture
@@ -115,13 +136,13 @@ def sequence_file_v1(sequence_file):
 
 @pytest.fixture
 def sequence_file_v2(
-        testapp, lab, award, analysis_set_with_sample):
+        testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': 'cb888dc8d303ea1b7959c698e819c0f1',
         'file_format': 'fastq',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'content_type': 'reads',
         'sequencing_run': 1
     }
@@ -243,24 +264,3 @@ def sequence_file_v12(sequence_file):
         'schema_version': '12'
     })
     return item
-
-
-@pytest.fixture
-def controlled_sequence_file(lab, award, analysis_set_with_sample, platform_term_HiSeq):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'md5sum': 'cb818dc8d303ea1b7959c698e819c0f1',
-        'file_format': 'fastq',
-        'file_set': analysis_set_with_sample['@id'],
-        'content_type': 'reads',
-        'sequencing_run': 1,
-        'sequencing_platform': platform_term_HiSeq['@id'],
-        'controlled_access': True
-    }
-    return item
-
-
-@pytest.fixture
-def controlled_sequence_file_object(testapp, controlled_sequence_file):
-    return testapp.post_json('/sequence_file', controlled_sequence_file, status=201).json['@graph'][0]

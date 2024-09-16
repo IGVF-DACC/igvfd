@@ -2,13 +2,13 @@ import pytest
 
 
 @pytest.fixture
-def signal_file(testapp, lab, award, analysis_set_with_sample, reference_file):
+def signal_file(testapp, lab, award, principal_analysis_set, reference_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '350e99db0738e1987d3d6b53c22c3937',
         'file_format': 'bigWig',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'file_size': 4328491803,
         'assembly': 'GRCh38',
         'content_type': 'signal of all reads',
@@ -54,13 +54,13 @@ def signal_file_v3(signal_file_v1):
 
 
 @pytest.fixture
-def signal_file_v4(testapp, lab, award, analysis_set_with_sample, reference_file):
+def signal_file_v4(testapp, lab, award, principal_analysis_set, reference_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': 'b9d3d6e1c3b0793dc09853c229675937',
         'file_format': 'bigWig',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'file_size': 4328491803,
         'content_type': 'signal of all reads',
         'reference_files': [
