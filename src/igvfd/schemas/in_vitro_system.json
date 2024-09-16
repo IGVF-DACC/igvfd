@@ -593,14 +593,20 @@
         },
         "biosample_qualifier": {
             "title": "Biosample qualifier",
-            "description": "Desription of cell state",
-            "type": "string",
-            "enum": [
-                "exhausted",
-                "stimulated"
-            ],
+            "description": "An array of various cell states",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Biosample qualifier",
+                "description": "An array of various cell states",
+                "type": "string",
+                "enum": [
+                    "exhausted"
+                ]
+            },
             "submissionExample": {
-                "appscript": "exhausted",
+                "appscript": "[\"exhausted\"]",
                 "igvf_utils": "exhausted"
             }
         }
