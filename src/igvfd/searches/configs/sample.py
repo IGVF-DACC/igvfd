@@ -28,6 +28,9 @@ def sample():
             'file_sets.assay_term.term_name': {
                 'title': 'Assay'
             },
+            'sample_terms': {
+                'title': 'Sample Terms'
+            },
             'type': {
                 'title': 'Object Type'
             },
@@ -43,12 +46,22 @@ def sample():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'treatments.term_name': {
+                'title': 'Treatment term name'
+            },
+            'treatments.type': {
+                'title': 'Treatment type'
+            },
+            'treatments.purpose': {
+                'title': 'Treatment purpose'
+            },
         },
         'facet_groups': [
             {
                 'title': 'Sample',
                 'facet_fields': [
                     'classifications',
+                    'sample_terms',
                     'virtual',
                     'file_sets.assay_term.term_name',
                 ]
@@ -70,6 +83,14 @@ def sample():
                     'audit.NOT_COMPLIANT.category',
                     'audit.WARNING.category',
                     'audit.INTERNAL_ACTION.category',
+                ]
+            },
+            {
+                'title': 'Treatments',
+                'facet_fields': [
+                    'treatments.Purpose',
+                    'treatments.treatment_type',
+                    'treatments.term_name',
                 ]
             },
         ],
