@@ -1,6 +1,6 @@
 {
-    "hash": "e89491b3e9c07582f780847ef45615b8",
-    "index_name": "construct_library_set_e89491b3",
+    "hash": "ef05fa6cbb618ed27738a03c5bcc63b3",
+    "index_name": "construct_library_set_ef05fa6c",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1375,6 +1375,9 @@
                             "anvil_url": {
                                 "type": "keyword"
                             },
+                            "assay_titles": {
+                                "type": "keyword"
+                            },
                             "assembly": {
                                 "type": "keyword"
                             },
@@ -1681,6 +1684,9 @@
                                 "type": "keyword"
                             },
                             "anvil_url": {
+                                "type": "keyword"
+                            },
+                            "assay_titles": {
                                 "type": "keyword"
                             },
                             "assembly": {
@@ -2043,6 +2049,9 @@
                             "anvil_url": {
                                 "type": "keyword"
                             },
+                            "assay_titles": {
+                                "type": "keyword"
+                            },
                             "assembly": {
                                 "type": "keyword"
                             },
@@ -2218,6 +2227,9 @@
                                 "type": "keyword"
                             },
                             "anvil_url": {
+                                "type": "keyword"
+                            },
+                            "assay_titles": {
                                 "type": "keyword"
                             },
                             "assembly": {

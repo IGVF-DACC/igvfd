@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Add calculated property `assay_titles`.
 * Add `cell_type_annotation`.
 * Update calculation of `summary`.
 * Add `analysis_step_version`.

@@ -112,6 +112,13 @@ class File(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
+        Path('file_set.samples.disease_terms', include=[
+             '@id', 'accession', 'summary', 'samples', 'disease_terms', 'sample_terms', 'term_name', 'classifications', 'file_set_type', 'taxa']),
+        Path('file_set.samples.sample_terms', include=[
+             '@id', 'term_name']),
+        Path('integrated_in.associated_phenotypes', include=[
+             '@id', 'summary', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list']),
+        Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol']),
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
@@ -188,6 +195,40 @@ class File(Item):
     })
     def loci_list_for(self, request, loci_list_for):
         return paths_filtered_by_status(request, loci_list_for)
+
+    @calculated_property(
+        schema={
+            'title': 'Assay Titles',
+            'description': 'Title(s) of assay from the file set this file belongs to.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Assay Title',
+                'description': 'Title of assay from the file set this file belongs to.',
+                'type': 'string'
+            },
+            'notSubmittable': True,
+        }
+    )
+    def assay_titles(self, request, file_set):
+        assay_titles = set()
+        file_set_object = request.embed(file_set, '@@object')
+        if 'MeasurementSet' in file_set_object.get('@type'):
+            preferred_assay_title = file_set_object.get('preferred_assay_title', '')
+            if preferred_assay_title:
+                assay_titles.add(preferred_assay_title)
+        elif 'AnalysisSet' in file_set_object.get('@type'):
+            analysis_assay_titles = set(file_set_object.get('assay_titles', []))
+            if analysis_assay_titles:
+                assay_titles = assay_titles | analysis_assay_titles
+        elif 'AuxiliarySet' in file_set_object.get('@type'):
+            for measurement_set in file_set_object.get('measurement_sets'):
+                measurement_set_object = request.embed(measurement_set, '@@object')
+                measurement_set_object_pat = measurement_set_object.get('preferred_assay_title')
+                if measurement_set_object_pat:
+                    assay_titles.add(measurement_set_object_pat)
+        return list(assay_titles)
 
     @calculated_property(
         condition=show_href,

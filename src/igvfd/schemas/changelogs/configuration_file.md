@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Add calculated property `assay_titles`.
 * Extend `content_type` enum list to include `scale factors`.
 * Extend `file_format` enum list to include `json`.
 * Update calculation of `summary`.

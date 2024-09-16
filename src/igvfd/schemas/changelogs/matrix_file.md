@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 6
 
+* Add calculated property `assay_titles`.
 * Extend `content_type` enum list to include `raw feature barcode matrix`.
 * Extend `content_type` enum list to include `filtered feature barcode matrix`.
 * Update calculation of `summary`.

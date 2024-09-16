@@ -251,14 +251,25 @@ class AnalysisSet(FileSet):
         }
     )
     def assay_titles(self, request, input_file_sets=None):
-        assay_title = set()
+        assay_titles = set()
         if input_file_sets is not None:
             for fileset in input_file_sets:
                 file_set_object = request.embed(fileset, '@@object')
-                if file_set_object.get('preferred_assay_title') and \
-                        'MeasurementSet' in file_set_object.get('@type'):
-                    assay_title.add(file_set_object.get('preferred_assay_title'))
-            return list(assay_title)
+                if 'MeasurementSet' in file_set_object.get('@type'):
+                    preferred_assay_title = file_set_object.get('preferred_assay_title')
+                    if preferred_assay_title:
+                        assay_titles.add(preferred_assay_title)
+                elif 'AnalysisSet' in file_set_object.get('@type'):
+                    input_analysis_assay_titles = set(file_set_object.get('assay_titles', []))
+                    if input_analysis_assay_titles:
+                        assay_titles = assay_titles | input_analysis_assay_titles
+                elif 'AuxiliarySet' in file_set_object.get('@type'):
+                    for measurement_set in file_set_object.get('measurement_sets'):
+                        measurement_set_object = request.embed(measurement_set, '@@object')
+                        preferred_assay_title = measurement_set_object.get('preferred_assay_title')
+                        if preferred_assay_title:
+                            assay_titles.add(preferred_assay_title)
+            return list(assay_titles)
 
     @calculated_property(
         condition='samples',

@@ -31,6 +31,24 @@ def signal_file():
             'cell_type_annotation.term_name': {
                 'title': 'Cell Type Annotation'
             },
+            'file_set.file_set_type': {
+                'title': 'File Set Type'
+            },
+            'file_set.preferred_assay_title': {
+                'title': 'Assay'
+            },
+            'file_set.samples.taxa': {
+                'title': 'Taxa'
+            },
+            'file_set.samples.sample_terms.term_name': {
+                'title': 'Sample Term'
+            },
+            'file_set.samples.classifications': {
+                'title': 'Sample Classification'
+            },
+            'file_set.samples.disease_terms.term_name': {
+                'title': 'Sample Phenotype'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -72,6 +90,23 @@ def signal_file():
                     'filtered',
                     'normalized',
                     'cell_type_annotation.term_name'
+                ],
+            },
+            {
+                'title': 'File Set',
+                'facet_fields': [
+                    'file_set.file_set_type',
+                    'file_set.preferred_assay_title',
+                ],
+            },
+            {
+                'title': 'Sample',
+                'facet_fields': [
+                    'file_set.samples.taxa',
+                    'file_set.samples.sample_terms.term_name',
+                    'file_set.samples.classifications',
+                    'file_set.samples.disease_terms.term_name',
+                    'cell_type_annotation.term_name',
                 ],
             },
             {

@@ -335,8 +335,11 @@
         }
     },
     "fuzzy_searchable_fields": [
+        "assay_titles",
         "content_type",
         "description",
+        "file_set.samples.summary",
+        "file_set.summary",
         "submitted_by.title",
         "submitted_file_name",
         "summary"
@@ -344,7 +347,8 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
-        "file_format"
+        "file_format",
+        "file_set.accession"
     ],
     "changelog": "/profiles/changelogs/sequence_file.md"
 }

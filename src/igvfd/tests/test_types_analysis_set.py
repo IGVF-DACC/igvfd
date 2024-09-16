@@ -20,7 +20,7 @@ def test_calculated_donors(testapp, analysis_set_base, primary_cell, human_donor
     assert set([donor['@id'] for donor in res.json.get('donors')]) == {rodent_donor['@id']}
 
 
-def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurement_set_multiome):
+def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurement_set_multiome, analysis_set_with_sample, measurement_set_no_files, base_auxiliary_set):
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -46,6 +46,28 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     )
     res = testapp.get(analysis_set_base['@id'])
     assert set(res.json.get('assay_titles')) == {'10x multiome', 'lentiMPRA'}
+    testapp.patch_json(
+        analysis_set_with_sample['@id'],
+        {
+            'input_file_sets': [analysis_set_base['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_with_sample['@id'])
+    assert set(res.json.get('assay_titles')) == {'10x multiome', 'lentiMPRA'}
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_with_sample['@id'],
+        {
+            'input_file_sets': [base_auxiliary_set['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_with_sample['@id'])
+    assert set(res.json.get('assay_titles')) == {'CRISPR FlowFISH screen'}
 
 
 def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_mpra, measurement_set_multiome, principal_analysis_set):
