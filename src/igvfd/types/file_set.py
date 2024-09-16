@@ -316,7 +316,7 @@ class AnalysisSet(FileSet):
                 if protocol:
                     protocols.update(protocol)
         return list(protocols)
-    
+
     @calculated_property(
         condition='samples',
         schema={
