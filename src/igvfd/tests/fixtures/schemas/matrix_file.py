@@ -2,13 +2,13 @@ import pytest
 
 
 @pytest.fixture
-def matrix_file(testapp, lab, award, analysis_set_with_sample, reference_file):
+def matrix_file(testapp, lab, award, principal_analysis_set, reference_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '01b08bb5485ac730df19af55ba4bb01c',
         'file_format': 'hdf5',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'file_size': 8491803,
         'content_type': 'sparse gene count matrix',
         'reference_files': [

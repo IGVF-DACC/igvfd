@@ -2,13 +2,13 @@ import pytest
 
 
 @pytest.fixture
-def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_file):
+def alignment_file(testapp, lab, award, principal_analysis_set, reference_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': 'dc8d8a6af6105a86bc51c389ff19ea1b',
         'file_format': 'bam',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'file_size': 8491803,
         'assembly': 'GRCh38',
         'content_type': 'alignments',
@@ -23,13 +23,13 @@ def alignment_file(testapp, lab, award, analysis_set_with_sample, reference_file
 
 
 @pytest.fixture
-def controlled_access_alignment_file(testapp, lab, award, analysis_set_with_sample, reference_file):
+def controlled_access_alignment_file(testapp, lab, award, principal_analysis_set, reference_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': 'ec8d8a6af6105a86bc51c389ff19ea1b',
         'file_format': 'bam',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'file_size': 9491803,
         'assembly': 'GRCh38',
         'content_type': 'alignments',
@@ -75,13 +75,13 @@ def alignment_file_v3(alignment_file_v1):
 
 
 @pytest.fixture
-def alignment_file_v4(testapp, lab, award, analysis_set_with_sample, reference_file):
+def alignment_file_v4(testapp, lab, award, principal_analysis_set, reference_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '9ea1d1ca6cd01ad85a8f6c86bc528d1b',
         'file_format': 'bam',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'file_size': 8491803,
         'content_type': 'alignments',
         'reference_files': [
