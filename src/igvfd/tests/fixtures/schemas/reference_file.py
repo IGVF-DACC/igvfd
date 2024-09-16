@@ -2,13 +2,13 @@ import pytest
 
 
 @pytest.fixture
-def reference_file(testapp, lab, award, analysis_set_with_sample):
+def reference_file(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '7f1987dea86105dd9d2582c0a91c3156',
         'file_format': 'gtf',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'content_type': 'transcriptome reference',
         'controlled_access': False
     }
@@ -16,13 +16,13 @@ def reference_file(testapp, lab, award, analysis_set_with_sample):
 
 
 @pytest.fixture
-def reference_file_two(testapp, lab, award, analysis_set_with_sample):
+def reference_file_two(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '7f1987dea86105dd9d2582c0a91c1111',
         'file_format': 'gtf',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'content_type': 'transcriptome reference',
         'controlled_access': False
     }
@@ -50,14 +50,14 @@ def ref_file_v3(reference_file):
 
 
 @pytest.fixture
-def reference_file_v4(testapp, lab, award, analysis_set_with_sample):
+def reference_file_v4(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '7d258f1987e2da2491ddb051a91c3156',
         'file_format': 'bed',
         'assembly': 'GRCh38',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'content_type': 'regulatory_regions'
     }
     return item
@@ -74,14 +74,14 @@ def reference_file_v5(reference_file):
 
 
 @pytest.fixture
-def reference_file_v6(testapp, lab, award, analysis_set_with_sample):
+def reference_file_v6(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': 'fa751ddb77da240287e29051b863888b',
         'file_format': 'bed',
         'assembly': 'GRCh38',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'content_type': 'regulatory_regions',
         'schema_version': '6'
     }
@@ -110,13 +110,13 @@ def reference_file_v8(reference_file_v6):
 
 
 @pytest.fixture
-def reference_file_v9(testapp, lab, award, analysis_set_with_sample):
+def reference_file_v9(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '02c177dab4905127dfb77f9ef8a0648b',
         'file_format': 'bed',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'content_type': 'regulatory_regions',
         'schema_version': '9'
     }

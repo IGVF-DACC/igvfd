@@ -121,7 +121,6 @@ def audit_analysis_set_files_missing_analysis_step_version(value, system):
 
 
 @audit_checker('AnalysisSet', frame='object')
-<<<<<<< HEAD
 def audit_analysis_set_multiple_workflows(value, system):
     '''
     [
@@ -160,8 +159,8 @@ def audit_analysis_set_multiple_workflows(value, system):
                            f'{details} {audit_message_multiple_workflows.get("audit_description", "")}',
                            audit_message_multiple_workflows.get('audit_level', '')
                            )
-=======
-def audit_analysis_set_demultiplexed_from(value, system):
+
+def audit_analysis_set_demultiplexed_sample(value, system):
     '''
     [
         {
@@ -183,4 +182,3 @@ def audit_analysis_set_demultiplexed_from(value, system):
             f'samples: {non_multiplexed_samples}.'
         )
         yield AuditFailure(audit_message_demultiplexed_from.get('audit_category', ''), f'{detail} {audit_message_demultiplexed_from.get("audit_description", "")}', level=audit_message_demultiplexed_from.get('audit_level', ''))
->>>>>>> ea15e192 (calculated property created)

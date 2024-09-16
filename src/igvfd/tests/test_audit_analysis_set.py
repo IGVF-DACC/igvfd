@@ -119,17 +119,17 @@ def test_audit_unexpected_input_file_set(
 
 def test_audit_missing_analysis_step_version(
     testapp,
-    analysis_set_with_no_samples,
+    intermediate_analysis_set,
     matrix_file,
     analysis_step_version
 ):
     testapp.patch_json(
         matrix_file['@id'],
         {
-            'file_set': analysis_set_with_no_samples['@id']
+            'file_set': intermediate_analysis_set['@id']
         }
     )
-    res = testapp.get(analysis_set_with_no_samples['@id'] + '@@audit')
+    res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing analysis step version'
         for error in res.json['audit'].get('WARNING', [])
@@ -140,7 +140,7 @@ def test_audit_missing_analysis_step_version(
             'analysis_step_version': analysis_step_version['@id']
         }
     )
-    res = testapp.get(analysis_set_with_no_samples['@id'] + '@@audit')
+    res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing analysis step version'
         for error in res.json['audit'].get('WARNING', [])

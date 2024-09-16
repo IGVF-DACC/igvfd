@@ -282,6 +282,7 @@ class AnalysisSet(FileSet):
             return list(assay_titles)
 
     @calculated_property(
+        condition='input_file_sets',
         define=True,
         schema={
             'title': 'Samples',

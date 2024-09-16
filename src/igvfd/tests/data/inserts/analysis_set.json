@@ -12,9 +12,6 @@
         ],
         "status": "released",
         "uuid": "609869e7-cbd9-4d06-9569-d3fdb4604ccd",
-        "samples": [
-            "igvf:treated_tissue"
-        ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "intermediate analysis"
     },
@@ -31,9 +28,6 @@
         ],
         "status": "released",
         "uuid": "dd171b83-cbd9-4d06-4aa1-b77ab49569cd",
-        "samples": [
-            "igvf-dacc:in_vitro_system_cell_line"
-        ],
         "input_file_sets": [
             "igvf:basic_analysis_set"
         ],
