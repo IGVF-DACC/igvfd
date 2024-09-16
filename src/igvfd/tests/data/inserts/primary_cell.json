@@ -67,7 +67,7 @@
         "lower_bound_age": 30,
         "upper_bound_age": 35,
         "age_units": "year",
-        "biosample_qualifier": [
+        "biosample_qualifiers": [
             "exhausted"
         ],
         "sample_terms": [

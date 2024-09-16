@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 23
 
-* Add `biosample_qualifier`.
+* Add `biosample_qualifiers`.
 
 ### Schema version 23
 

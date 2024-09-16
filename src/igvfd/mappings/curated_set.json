@@ -1,6 +1,6 @@
 {
-    "hash": "a14de616f581f14fa84c4745cbfcde38",
-    "index_name": "curated_set_a14de616",
+    "hash": "54e2a1c14fdd250e6e82d5cbafc90cf6",
+    "index_name": "curated_set_54e2a1c1",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1363,7 +1363,7 @@
                             "biomarkers": {
                                 "type": "keyword"
                             },
-                            "biosample_qualifier": {
+                            "biosample_qualifiers": {
                                 "type": "keyword"
                             },
                             "ccf_id": {

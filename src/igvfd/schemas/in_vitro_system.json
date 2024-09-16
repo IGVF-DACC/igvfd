@@ -591,14 +591,14 @@
                 "igvf_utils": "DMEM with serum"
             }
         },
-        "biosample_qualifier": {
-            "title": "Biosample Qualifier",
+        "biosample_qualifiers": {
+            "title": "Biosample Qualifiers",
             "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
-                "title": "Biosample Qualifier",
+                "title": "Biosample Qualifiers",
                 "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells.",
                 "type": "string",
                 "enum": [

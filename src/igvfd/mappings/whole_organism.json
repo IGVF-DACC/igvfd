@@ -1,6 +1,6 @@
 {
-    "hash": "331ce21fa08c337e5a7fb721e718e384",
-    "index_name": "whole_organism_331ce21f",
+    "hash": "4807c50d67f877a87454b9fabc789c3a",
+    "index_name": "whole_organism_4807c50d",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -1571,7 +1571,7 @@
                             "biomarkers": {
                                 "type": "keyword"
                             },
-                            "biosample_qualifier": {
+                            "biosample_qualifiers": {
                                 "type": "keyword"
                             },
                             "ccf_id": {

@@ -1,6 +1,6 @@
 {
-    "hash": "06a988afd1c4891fa20bd50639247a4c",
-    "index_name": "model_set_06a988af",
+    "hash": "342b4b0df3a5d5b41e620cdb3e1e7a1d",
+    "index_name": "model_set_342b4b0d",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1704,7 +1704,7 @@
                             "biomarkers": {
                                 "type": "keyword"
                             },
-                            "biosample_qualifier": {
+                            "biosample_qualifiers": {
                                 "type": "keyword"
                             },
                             "ccf_id": {

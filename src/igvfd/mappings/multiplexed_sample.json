@@ -1,6 +1,6 @@
 {
-    "hash": "c7c6daf86368b94e627f9f959ef3b5a6",
-    "index_name": "multiplexed_sample_c7c6daf8",
+    "hash": "fb8479a35acfd8440c65f8dea5192f00",
+    "index_name": "multiplexed_sample_fb8479a3",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1423,7 +1423,7 @@
                             "biomarkers": {
                                 "type": "keyword"
                             },
-                            "biosample_qualifier": {
+                            "biosample_qualifiers": {
                                 "type": "keyword"
                             },
                             "ccf_id": {
@@ -2289,7 +2289,7 @@
                             "biomarkers": {
                                 "type": "keyword"
                             },
-                            "biosample_qualifier": {
+                            "biosample_qualifiers": {
                                 "type": "keyword"
                             },
                             "ccf_id": {
