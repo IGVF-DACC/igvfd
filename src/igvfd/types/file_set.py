@@ -405,7 +405,6 @@ class AnalysisSet(FileSet):
             sample_classifications_phrase
         ]
         additional_phrases = [
-            targeted_sample_terms_phrase,
             treatments_phrase,
             construct_library_set_type_phrase,
             sorted_phrase
