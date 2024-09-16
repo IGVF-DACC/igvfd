@@ -46,14 +46,14 @@ def sample():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
-            'treatments.term_name': {
-                'title': 'Treatment term name'
+            'treatments.treatment_term_name': {
+                'title': 'Treatment Term Name'
             },
             'treatments.treamtent_type': {
-                'title': 'Treatment type'
+                'title': 'Treatment Type'
             },
             'treatments.purpose': {
-                'title': 'Treatment purpose'
+                'title': 'Treatment Purpose'
             },
         },
         'facet_groups': [
@@ -90,7 +90,7 @@ def sample():
                 'facet_fields': [
                     'treatments.purpose',
                     'treatments.treatment_type',
-                    'treatments.term_name',
+                    'treatments.treatment_term_name',
                 ]
             },
         ],
