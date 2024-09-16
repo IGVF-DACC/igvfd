@@ -590,6 +590,19 @@
                 "appscript": "DMEM with serum",
                 "igvf_utils": "DMEM with serum"
             }
+        },
+        "biosample_qualifier": {
+            "title": "Biosample qualifier",
+            "description": "Desription of cell state",
+            "type": "string",
+            "enum": [
+                "exhausted",
+                "stimulated"
+            ],
+            "submissionExample": {
+                "appscript": "exhausted",
+                "igvf_utils": "exhausted"
+            }
         }
     },
     "fuzzy_searchable_fields": [
