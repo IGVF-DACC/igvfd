@@ -1,6 +1,6 @@
 {
-    "hash": "646a1056726f0acc2983f4fc2afacb45",
-    "index_name": "matrix_file_646a1056",
+    "hash": "a808a1202b62502022dcd10876421cab",
+    "index_name": "matrix_file_a808a120",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -465,6 +465,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {

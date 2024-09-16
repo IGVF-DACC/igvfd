@@ -1,6 +1,6 @@
 {
-    "hash": "8b4676c601af010f224a404fd55aa750",
-    "index_name": "sequence_file_8b4676c6",
+    "hash": "45e6c6ed5f8830dfa48c0cdad5c986f4",
+    "index_name": "sequence_file_45e6c6ed",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -477,6 +477,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {
