@@ -152,7 +152,8 @@
                         "elements reference",
                         "exclusion list",
                         "inclusion list",
-                        "spike-ins"
+                        "spike-ins",
+                        "transcriptome reference"
                     ]
                 },
                 {
@@ -193,7 +194,6 @@
                         "studies",
                         "studies_variants",
                         "studies_variants_phenotypes",
-                        "transcriptome reference",
                         "transcripts",
                         "transcripts_proteins",
                         "variants",
