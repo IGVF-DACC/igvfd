@@ -121,7 +121,7 @@ def audit_analysis_set_files_missing_analysis_step_version(value, system):
 
 
 @audit_checker('AnalysisSet', frame='object')
-def audit_analysis_set_demultiplexed_from(value, system):
+def audit_analysis_set_demultiplexed_sample(value, system):
     '''
     [
         {
