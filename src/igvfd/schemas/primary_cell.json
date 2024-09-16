@@ -106,13 +106,13 @@
         },
         "biosample_qualifier": {
             "title": "Biosample Qualifier",
-            "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells",
+            "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
             "items": {
                 "title": "Biosample Qualifier",
-                "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells",
+                "description": "An array of various cell states. This property provides additional information about a cell at a finer-grained level compared to what ontologies currently capture. For example, exhausted T-cells.",
                 "type": "string",
                 "enum": [
                     "exhausted"
