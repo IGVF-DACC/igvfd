@@ -152,7 +152,8 @@
                         "elements reference",
                         "exclusion list",
                         "inclusion list",
-                        "spike-ins"
+                        "spike-ins",
+                        "transcriptome reference"
                     ]
                 },
                 {
@@ -193,7 +194,6 @@
                         "studies",
                         "studies_variants",
                         "studies_variants_phenotypes",
-                        "transcriptome reference",
                         "transcripts",
                         "transcripts_proteins",
                         "variants",
@@ -222,7 +222,8 @@
                 "elements reference": "References for the genomic elements studied, including details like genomic coordinates or identifiers.",
                 "exclusion list": "An exclusion list file contains a set of genomic regions or specific sequences that should be ignored or excluded during data analysis.",
                 "inclusion list": "An inclusion list file contains a set of specific genomic regions or sequences that should be included or focused on during data analysis.",
-                "spike-ins": "Nucleic acid fragments of known sequence and quantity used for calibration in high-throughput sequencing."
+                "spike-ins": "Nucleic acid fragments of known sequence and quantity used for calibration in high-throughput sequencing.",
+                "transcriptome_reference": "A reference file consisting of all known transcripts or coding regions of the genome."
             },
             "submissionExample": {
                 "appscript": "variants",

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Adjust `content_type` enum list to allow usage of `transcriptome reference` for all users.
 * Add calculated property `assay_titles`.
 * Adjust `content_type` enum list to restrict usage of `biological_context` to admin users.
 * Adjust `content_type` enum list to restrict usage of `coding_variants` to admin users.
