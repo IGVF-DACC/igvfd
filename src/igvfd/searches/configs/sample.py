@@ -49,11 +49,14 @@ def sample():
             'treatments.purpose': {
                 'title': 'Treatment Purpose'
             },
-            'treatments.treamtent_type': {
+            'treatments.treatment_type': {
                 'title': 'Treatment Type'
             },
             'treatments.treatment_term_name': {
                 'title': 'Treatment Term Name'
+            },
+            'modifications.type': {
+                'title': 'Type'
             },
             'modifications.cas': {
                 'title': 'Cas'
@@ -64,7 +67,7 @@ def sample():
             'modifications.modality': {
                 'title': 'Modality'
             },
-            'modifications.tagged_proteins.title': {
+            'modifications.tagged_proteins.symbol': {
                 'title': 'Tagged proteins'
             },
         },
@@ -112,7 +115,7 @@ def sample():
                     'modifications.cas',
                     'modifications.modality',
                     'modifications.fused_domain',
-                    'modifications.tagged_proteins.title',
+                    'modifications.tagged_proteins.symbol',
                 ]
             },
         ],
