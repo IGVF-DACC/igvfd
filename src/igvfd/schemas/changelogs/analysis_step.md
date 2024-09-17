@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 5
 
+* Extend `input_content_types` enum list to include `genes`.
+* Extend `input_content_types` enum list to include `loci`.
+* Extend `output_content_types` enum list to include `genes`.
+* Extend `output_content_types` enum list to include `loci`.
 * Extend `input_content_types` enum list to include `transcript quantifications`.
 * Extend `input_content_types` enum list to include `barcode to hashtag mapping`.
 * Extend `input_content_types` enum list to include `barcode to variant mapping`.
