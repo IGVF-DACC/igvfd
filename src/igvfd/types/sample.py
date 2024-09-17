@@ -206,8 +206,8 @@ class Biosample(Sample):
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status', 'treatment_term_name']),
-        Path('modifications', include=['@id', 'modality', 'summary',
-             'status', 'fused_domain', '@type', 'tagged_proteins', 'cas']),
+        Path('modifications.tagged_proteins', include=['@id', 'modality', 'summary',
+             'status', 'fused_domain', '@type', 'symbol', 'cas']),
         Path('institutional_certificates', include=['@id', 'certificate_identifier'])
     ]
 
