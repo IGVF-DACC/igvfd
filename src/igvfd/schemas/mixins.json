@@ -445,6 +445,7 @@
                 "GENCODE 43",
                 "GENCODE 44",
                 "GENCODE 45",
+                "GENCODE Cast - M32",
                 "GENCODE M30",
                 "GENCODE M31",
                 "GENCODE M32",
@@ -463,6 +464,7 @@
             "description": "Genome assembly.",
             "type": "string",
             "enum": [
+                "Cast - GRCm39",
                 "GRCh38",
                 "GRCm39"
             ],
