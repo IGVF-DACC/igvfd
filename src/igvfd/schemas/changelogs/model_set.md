@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Update calculation of `summary`.
 * Add `control_type`.
 
 ### Schema version 4
