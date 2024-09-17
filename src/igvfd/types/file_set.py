@@ -332,7 +332,7 @@ class AnalysisSet(FileSet):
 
         sample_terms = set()
         sample_classifications = set()
-        treatments = set()
+        treatment_purposes = set()
         construct_library_set_types = set()
         sorted = set()
         targeted_genes_for_sorting = set()
@@ -383,13 +383,13 @@ class AnalysisSet(FileSet):
             if 'treatments' in sample_object:
                 for treatment in sample_object['treatments']:
                     treatment_object = request.embed(treatment, '@@object?skip_calculated=true')
-                    treatments.add(treatment_purpose_to_adjective[treatment_object['purpose']])
+                    treatment_purposes.add(treatment_purpose_to_adjective.get(treatment_object['purpose'], ''))
 
         sample_terms_phrase = ', '.join(sample_terms)
         sample_classifications_phrase = ', '.join(sample_classifications)
         treatments_phrase = ''
-        if treatments:
-            treatments_phrase = f"{', '.join(treatments)} with treatment(s)"
+        if treatment_purposes:
+            treatments_phrase = f"{', '.join(treatment_purposes)} with treatment(s)"
         construct_library_set_type_phrase = ''
         if construct_library_set_types:
             construct_library_set_type_phrase = f'modified with a {", ".join(construct_library_set_types)}'
