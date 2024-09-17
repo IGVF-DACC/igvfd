@@ -64,7 +64,7 @@ def sample():
             'modifications.modality': {
                 'title': 'Modality'
             },
-            'modifications.tagged_proteins': {
+            'modifications.tagged_proteins.title': {
                 'title': 'Tagged proteins'
             },
         },
@@ -112,7 +112,7 @@ def sample():
                     'modifications.cas',
                     'modifications.modality',
                     'modifications.fused_domain',
-                    'modifications.tagged_proteins',
+                    'modifications.tagged_proteins.title',
                 ]
             },
         ],
