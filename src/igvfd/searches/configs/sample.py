@@ -55,6 +55,18 @@ def sample():
             'treatments.treatment_term_name': {
                 'title': 'Treatment Term Name'
             },
+            'modifications.cas': {
+                'title': 'Cas'
+            },
+            'modifications.fused_domain': {
+                'title': 'Fused domain'
+            },
+            'modifications.modality': {
+                'title': 'Modality'
+            },
+            'modifications.tagged_proteins': {
+                'title': 'Tagged proteins'
+            },
         },
         'facet_groups': [
             {
@@ -91,6 +103,16 @@ def sample():
                     'treatments.purpose',
                     'treatments.treatment_type',
                     'treatments.treatment_term_name',
+                ]
+            },
+            {
+                'title': 'Modifications',
+                'facet_fields': [
+                    'modifications.@type',
+                    'modifications.cas',
+                    'modifications.modality',
+                    'modifications.fused_domain',
+                    'modifications.tagged_proteins',
                 ]
             },
         ],
