@@ -1,6 +1,6 @@
 {
-    "hash": "0bd2b765e12d896d29829ec0437b810e",
-    "index_name": "technical_sample_0bd2b765",
+    "hash": "14c02eb88a088a0d2ac90bb971156938",
+    "index_name": "technical_sample_14c02eb8",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1272,6 +1272,9 @@
                                 "type": "keyword"
                             },
                             "biomarkers": {
+                                "type": "keyword"
+                            },
+                            "biosample_qualifiers": {
                                 "type": "keyword"
                             },
                             "ccf_id": {

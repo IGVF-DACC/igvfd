@@ -1,6 +1,6 @@
 {
-    "hash": "9bd98166cd709110494a20c3bd8f0dca",
-    "index_name": "primary_cell_9bd98166",
+    "hash": "9b5dcff867d4a65d9695bb210aed6a88",
+    "index_name": "primary_cell_9b5dcff8",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -235,6 +235,9 @@
                         "type": "object"
                     },
                     "biomarkers": {
+                        "type": "keyword"
+                    },
+                    "biosample_qualifiers": {
                         "type": "keyword"
                     },
                     "cellular_sub_pool": {
@@ -1578,6 +1581,9 @@
                                 "type": "keyword"
                             },
                             "biomarkers": {
+                                "type": "keyword"
+                            },
+                            "biosample_qualifiers": {
                                 "type": "keyword"
                             },
                             "ccf_id": {

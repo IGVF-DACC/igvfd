@@ -1,5 +1,9 @@
 ## Changelog for *`primary_cell.json`*
 
+### Minor changes since schema version 21
+
+* Add `biosample_qualifiers`.
+
 ### Schema version 21
 
 * Remove `publication_identifiers`.

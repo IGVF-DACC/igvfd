@@ -1,6 +1,6 @@
 {
-    "hash": "8398238b203752d8a9dbedf9753c3fd9",
-    "index_name": "genome_browser_annotation_file_8398238b",
+    "hash": "8ffe4c66e0f14defaa890693b1513d92",
+    "index_name": "genome_browser_annotation_file_8ffe4c66",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -584,6 +584,9 @@
                                         "type": "keyword"
                                     },
                                     "biomarkers": {
+                                        "type": "keyword"
+                                    },
+                                    "biosample_qualifiers": {
                                         "type": "keyword"
                                     },
                                     "ccf_id": {

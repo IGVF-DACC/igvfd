@@ -1,5 +1,9 @@
 ## Changelog for *`in_vitro_system.json`*
 
+### Minor changes since schema version 23
+
+* Add `biosample_qualifiers`.
+
 ### Schema version 23
 
 * Remove `publication_identifiers`.

@@ -1,6 +1,6 @@
 {
-    "hash": "48ecd046c1ba7e245e4edf86ecc32fed",
-    "index_name": "tissue_48ecd046",
+    "hash": "c4a1d4073142e8a46c339a043f0daeb0",
+    "index_name": "tissue_c4a1d407",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -1587,6 +1587,9 @@
                                 "type": "keyword"
                             },
                             "biomarkers": {
+                                "type": "keyword"
+                            },
+                            "biosample_qualifiers": {
                                 "type": "keyword"
                             },
                             "ccf_id": {
