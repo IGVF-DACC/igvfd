@@ -69,6 +69,25 @@
         "controlled_access": false
     },
     {
+        "uuid": "2137a1a8-e847-4710-b9ee-690db743db2c",
+        "accession": "IGVFFI0039TRAN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "md5sum": "57dac3f9e9d58e22a8c991ed3b1a22a2",
+        "file_format": "gtf",
+        "content_type": "transcriptome reference",
+        "file_format_specifications": [
+            "igvf:file_format_specification_insert"
+        ],
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "Cast - GRCm39",
+        "transcriptome_annotation": "GENCODE Cast - M32",
+        "dbxrefs": [
+            "GENCODE:Release 40"
+        ],
+        "controlled_access": false
+    },
+    {
         "uuid": "e29019cc-c39e-0e6e-b9ee-fbf3376ea128",
         "accession": "IGVFFI0001VARI",
         "aliases": [

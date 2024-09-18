@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 14
 
+* Extend `assembly` enum list to include `Cast - GRCm39`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE Cast - M32`.
 * Adjust `content_type` enum list to allow usage of `transcriptome reference` for all users.
 * Add calculated property `assay_titles`.
 * Adjust `content_type` enum list to restrict usage of `biological_context` to admin users.
