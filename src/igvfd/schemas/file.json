@@ -201,6 +201,27 @@
                     "if": {
                         "properties": {
                             "assembly": {
+                                "const": "Cast - GRCm39"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "properties": {
+                            "transcriptome_annotation": {
+                                "enum": [
+                                    "GENCODE Cast - M32"
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
                                 "const": "GRCh38"
                             }
                         },
