@@ -258,6 +258,7 @@
             "enum": [
                 "GRCh38",
                 "hg19",
+                "Cast - GRCm39",
                 "GRCm39",
                 "mm10"
             ]
