@@ -327,12 +327,9 @@ class AnalysisSet(FileSet):
         }
     )
     def sample_summary(self, request, samples=None):
-        if not samples:
-            return
-
-        sample_terms = set()
-        sample_classifications = set()
+        sample_classification_term_target = {}
         treatment_purposes = set()
+        differentiation_times = set()
         construct_library_set_types = set()
         sorted = set()
         targeted_genes_for_sorting = set()
@@ -352,24 +349,33 @@ class AnalysisSet(FileSet):
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
 
+            classification = ' and '.join(sample_object['classifications'])
+            if classification not in sample_classification_term_target:
+                sample_classification_term_target[classification] = set()
+
             for term in sample_object['sample_terms']:
                 sample_term_object = request.embed(term, '@@object?skip_calculated=true')
 
                 if 'targeted_sample_term' in sample_object:
                     targeted_sample_term_object = request.embed(
                         sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
-                    sample_terms.add(
-                        f"{sample_term_object['term_name']} induced to {targeted_sample_term_object['term_name']}")
+                    sample_classification_term_target[classification].add(
+                        f"{sample_term_object['term_name']} "
+                        f"induced to {targeted_sample_term_object['term_name']}"
+                    )
                 else:
-                    sample_terms.add(sample_term_object['term_name'])
-            for classification in sample_object['classifications']:
-                sample_classifications.add(classification)
+                    sample_classification_term_target[classification].add(
+                        f"{sample_term_object['term_name']}"
+                    )
 
+            if 'time_post_change' in sample_object:
+                time = sample_object['time_post_change']
+                time_unit = sample_object['time_post_change_units']
+                differentiation_times.add(f'{time} {time_unit}')
             if 'construct_library_sets' in sample_object:
                 for construct_library_set in sample_object['construct_library_sets']:
                     cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
                     construct_library_set_types.add(cls_object['file_set_type'])
-
             if 'sorted_from' in sample_object:
                 sorted.add(True)
                 for file_set in sample_object['file_sets']:
@@ -379,14 +385,25 @@ class AnalysisSet(FileSet):
                             for gene in fileset_object['targeted_genes']:
                                 gene_object = request.embed(gene, '@@object?skip_calculated=true')
                                 targeted_genes_for_sorting.add(gene_object['symbol'])
-
             if 'treatments' in sample_object:
                 for treatment in sample_object['treatments']:
                     treatment_object = request.embed(treatment, '@@object?skip_calculated=true')
                     treatment_purposes.add(treatment_purpose_to_adjective.get(treatment_object['purpose'], ''))
 
-        sample_terms_phrase = ', '.join(sample_terms)
-        sample_classifications_phrase = ', '.join(sample_classifications)
+        all_sample_terms = []
+        for classification in sorted(sample_classification_term_target.keys()):
+            terms_by_classification = f"{', '.join(sample_classification_term_target['classification'])}"
+            if 'induced to' in terms_by_classification:
+                terms_by_classification = terms_by_classification.replace(
+                    'induced to', f'{classification} induced to'
+                )
+            else:
+                terms_by_classification = f'{terms_by_classification} {classification}'
+            all_sample_terms.append(terms_by_classification)
+
+        differentiation_time_phrase = ''
+        if differentiation_times:
+            differentiation_time_phrase = f'at {len(differentiation_times)} time point(s) post change'
         treatments_phrase = ''
         if treatment_purposes:
             treatments_phrase = f"{', '.join(treatment_purposes)} with treatment(s)"
@@ -400,11 +417,8 @@ class AnalysisSet(FileSet):
             else:
                 sorted_phrase = f'sorted into bins'
 
-        term_and_classification = [
-            sample_terms_phrase,
-            sample_classifications_phrase
-        ]
         additional_phrases = [
+            differentiation_time_phrase,
             treatments_phrase,
             construct_library_set_type_phrase,
             sorted_phrase
@@ -413,7 +427,7 @@ class AnalysisSet(FileSet):
         additional_phrase_suffix = ''
         if additional_phrases_joined:
             additional_phrase_suffix = f', {additional_phrases_joined}'
-        summary = f"{' '.join(term_and_classification)}{additional_phrase_suffix}"
+        summary = f"{', '.join(all_sample_terms)}{additional_phrase_suffix}"
 
         return summary
 
