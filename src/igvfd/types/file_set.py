@@ -327,11 +327,11 @@ class AnalysisSet(FileSet):
         }
     )
     def sample_summary(self, request, samples=None):
-        sample_classification_term_target = {}
+        sample_classification_term_target = dict()
         treatment_purposes = set()
         differentiation_times = set()
         construct_library_set_types = set()
-        sorted = set()
+        sorted_from = set()
         targeted_genes_for_sorting = set()
 
         treatment_purpose_to_adjective = {
@@ -377,7 +377,7 @@ class AnalysisSet(FileSet):
                     cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
                     construct_library_set_types.add(cls_object['file_set_type'])
             if 'sorted_from' in sample_object:
-                sorted.add(True)
+                sorted_from.add(True)
                 for file_set in sample_object['file_sets']:
                     if file_set.startswith('/measurement-sets/'):
                         fileset_object = request.embed(file_set, '@@object?skip_calculated=true')
@@ -392,7 +392,7 @@ class AnalysisSet(FileSet):
 
         all_sample_terms = []
         for classification in sorted(sample_classification_term_target.keys()):
-            terms_by_classification = f"{', '.join(sample_classification_term_target['classification'])}"
+            terms_by_classification = f"{', '.join(sample_classification_term_target[classification])}"
             if 'induced to' in terms_by_classification:
                 terms_by_classification = terms_by_classification.replace(
                     'induced to', f'{classification} induced to'
@@ -411,7 +411,7 @@ class AnalysisSet(FileSet):
         if construct_library_set_types:
             construct_library_set_type_phrase = f'modified with a {", ".join(construct_library_set_types)}'
         sorted_phrase = ''
-        if sorted:
+        if sorted_from:
             if targeted_genes_for_sorting:
                 sorted_phrase = f'sorted on expression of {", ".join(targeted_genes_for_sorting)}'
             else:
