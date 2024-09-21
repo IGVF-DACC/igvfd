@@ -24,6 +24,9 @@
         "award": "/awards/HG012012/",
         "lab": "/labs/j-michael-cherry/",
         "model_name": "SEMpl",
+        "aliases": [
+            "igvf:model_set_SEMpl"
+        ],
         "model_version": "v1.0.1",
         "file_set_type": "variant binding effect",
         "prediction_objects": [

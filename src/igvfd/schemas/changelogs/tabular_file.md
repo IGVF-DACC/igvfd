@@ -1,5 +1,10 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 12
+
+* Extend `content_type` enum list to include `gene quantifications`.
+* Remove `SNP effect matrix` from `content_type`.
+
 ### Minor changes since schema version 11
 
 * Extend `assembly` enum list to include `Cast - GRCm39`.
