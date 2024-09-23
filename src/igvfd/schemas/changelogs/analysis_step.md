@@ -2,6 +2,12 @@
 
 ### Minor changes since schema version 5
 
+* Extend `input_content_types` enum list to include `external source data`.
+* Extend `input_content_types` enum list to include `fragments`.
+* Extend `input_content_types` enum list to include `gene quantifications`.
+* Extend `output_content_types` enum list to include `external source data`.
+* Extend `output_content_types` enum list to include `fragments`.
+* Extend `output_content_types` enum list to include `gene quantifications`.
 * Extend `input_content_types` enum list to include `genes`.
 * Extend `input_content_types` enum list to include `loci`.
 * Extend `output_content_types` enum list to include `genes`.
