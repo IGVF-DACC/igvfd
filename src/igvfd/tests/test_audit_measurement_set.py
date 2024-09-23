@@ -354,7 +354,6 @@ def test_audit_missing_institutional_certification(
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
-    print(res)
     assert any(
         error['category'] == 'missing NIH certification'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])

@@ -224,8 +224,6 @@ def audit_missing_institutional_certification(value, system):
     award = value.get('award', '')
     samples = value.get('samples', [])
 
-    non_multiplexed_samples_to_check = []
-    multiplexed_samples_to_check = []
     sample_objects_to_check = []
     for sample in samples:
         sample_object = system.get('request').embed(sample, '@@object')
@@ -234,12 +232,9 @@ def audit_missing_institutional_certification(value, system):
             multiplexed_phrase = f' that is multiplexed in {audit_link(path_to_text(multiplexed_sample_id), multiplexed_sample_id)}'
             for mux_sample in sample_object['multiplexed_samples']:
                 mux_sample_object = system.get('request').embed(mux_sample, '@@object')
-                # multiplexed_samples_to_check.append(mux_sample_object)
                 sample_objects_to_check.append((mux_sample_object, multiplexed_phrase))
         else:
             sample_objects_to_check.append((sample_object, ''))
-            # sample_objects_to_check = non_multiplexed_samples_to_check
-            # multiplexed_phrase = ''
 
     for sample_tuple in sample_objects_to_check:
         sample = sample_tuple[0]
