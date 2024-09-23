@@ -974,6 +974,24 @@ class MultiplexedSample(Sample):
 
     @calculated_property(
         schema={
+            'title': 'Institutional Certificates',
+            'type': 'array',
+            'description': 'The institutional certificates of the samples included in this multiplexed sample.',
+            'minItems': 1,
+            'uniqueItems': True,
+            'notSubmittable': True,
+            'items': {
+                'title': 'Institutional Certificate',
+                'type': 'string',
+                'linkTo': 'InstitutionalCertificate'
+            }
+        }
+    )
+    def institutional_certificates(self, request, multiplexed_samples):
+        return collect_multiplexed_samples_prop(request, multiplexed_samples, 'institutional_certificates')
+
+    @calculated_property(
+        schema={
             'title': 'Classifications',
             'description': 'The general category of this type of sample.',
             'minItems': 1,

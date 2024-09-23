@@ -278,6 +278,7 @@ def test_audit_missing_institutional_certification(
     assay_term_mpra,
     other_lab,
     tissue,
+    multiplexed_sample,
     human_donor,
     assay_term_chip,
     institutional_certificate,
@@ -344,7 +345,32 @@ def test_audit_missing_institutional_certification(
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
+    # If the Measurement Set studies a Multiplexed Sample,
+    # its input samples are checked for their NIC.
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [multiplexed_sample['@id']]
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    print(res)
+    assert any(
+        error['category'] == 'missing NIH certification'
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+    assert any(
+        f'multiplexed in [{multiplexed_sample["accession"]}]' in error['detail']
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
+    )
+
     # No flag if the NIC's lab and award match the Measurement Set.
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [tissue['@id']]
+        }
+    )
     testapp.patch_json(
         institutional_certificate['@id'],
         {
