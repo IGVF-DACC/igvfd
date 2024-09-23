@@ -52,5 +52,22 @@
         "status": "released",
         "release_timestamp": "2024-05-14T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set"
+    },
+    {
+        "uuid": "be9d7b62-e5b8-4132-bf24-a1d45f4902ab",
+        "accession": "IGVFFI0000SNPM",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:snp_effect_matrix_test"
+        ],
+        "md5sum": "42fe6524b03b187744d4131ad0afce57",
+        "file_format": "tsv",
+        "content_type": "SNP effect matrix",
+        "file_size": 9330,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-05-14T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set"
     }
 ]
