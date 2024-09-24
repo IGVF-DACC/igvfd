@@ -290,7 +290,7 @@ def audit_inconsistent_sequencing_kit(value, system):
 
                 sequencing_run = str(sequence_file_object.get('sequencing_run'))
                 sequencing_kit = sequence_file_object.get('sequencing_kit', '')
-                sequencing_platform = sequence_file_object.get('sequencing_platform', '')
+                sequencing_platform = sequence_file_object.get('sequencing_platform', '').get('@id')
 
                 file_info[file] = {'kit': sequencing_kit, 'run': sequencing_run, 'platform': sequencing_platform}
     if not file_info:
