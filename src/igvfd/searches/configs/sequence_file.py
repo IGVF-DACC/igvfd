@@ -34,6 +34,12 @@ def sequence_file():
             'file_set.samples.disease_terms.term_name': {
                 'title': 'Sample Phenotype'
             },
+            'sequencing_kit': {
+                'title': 'Sequencing Kit'
+            },
+            'sequencing_platform.term_name': {
+                'title': 'Sequencing Platform'
+            },
             'collections': {
                 'title': 'Collections'
             },
@@ -97,6 +103,13 @@ def sequence_file():
                     'lab.title',
                     'award.component',
                     'type',
+                ],
+            },
+            {
+                'title': 'Sequencing',
+                'facet_fields': [
+                    'sequencing_platform.term_name',
+                    'sequencing_kit',
                 ],
             },
             {

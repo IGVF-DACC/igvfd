@@ -349,7 +349,9 @@ class File(Item):
 class SequenceFile(File):
     item_type = 'sequence_file'
     schema = load_schema('igvfd:schemas/sequence_file.json')
-    embedded_with_frame = File.embedded_with_frame
+    embedded_with_frame = File.embedded_with_frame + [
+        Path('sequencing_platform', include=['@id', 'term_name']),
+    ]
     rev = File.rev | {
         'seqspecs': ('ConfigurationFile', 'seqspec_of')
     }
