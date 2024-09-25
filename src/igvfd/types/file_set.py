@@ -349,13 +349,14 @@ class AnalysisSet(FileSet):
         for sample in samples:
             sample_object = request.embed(sample, '@@object')
 
+            # Group sample and targeted sample terms according to classification.
+            # Other metadata such as treatment info are lumped together.
             classification = ' and '.join(sample_object['classifications'])
             if classification not in sample_classification_term_target:
                 sample_classification_term_target[classification] = set()
 
             for term in sample_object['sample_terms']:
                 sample_term_object = request.embed(term, '@@object?skip_calculated=true')
-
                 if 'targeted_sample_term' in sample_object:
                     targeted_sample_term_object = request.embed(
                         sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
@@ -393,6 +394,7 @@ class AnalysisSet(FileSet):
         all_sample_terms = []
         for classification in sorted(sample_classification_term_target.keys()):
             terms_by_classification = f"{', '.join(sample_classification_term_target[classification])}"
+            # Insert the classification before the targeted_sample_term if it exists.
             if 'induced to' in terms_by_classification:
                 terms_by_classification = terms_by_classification.replace(
                     'induced to', f'{classification} induced to'
