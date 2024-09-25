@@ -1,5 +1,14 @@
 ## Changelog for *`matrix_file.json`*
 
+### Schema version 7
+
+* Extend `dimension_y` enum list to include `gene expression`.
+* Extend `dimension_y` enum list to include `CRISPR guide capture`.
+* Extend `dimension_y` enum list to include `antibody capture`.
+* Change type of `dimension_y` to be an array.
+* Rename `dimension2` to `dimension_y`.
+* Rename `dimension1` to `dimension_x`.
+
 ### Minor changes since schema version 6
 
 * Add calculated property `assay_titles`.
