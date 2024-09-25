@@ -14,8 +14,8 @@ def matrix_file(testapp, lab, award, analysis_set_with_sample, reference_file):
         'reference_files': [
             reference_file['@id']
         ],
-        'dimension1': 'cell',
-        'dimension2': 'gene'
+        'dimension_x': 'cell',
+        'dimension_y': ['gene']
     }
     return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
 
@@ -33,8 +33,8 @@ def matrix_file_hic(testapp, lab, award, measurement_set, reference_file):
         'reference_files': [
             reference_file['@id']
         ],
-        'dimension1': 'genomic position',
-        'dimension2': 'genomic position'
+        'dimension_x': 'genomic position',
+        'dimension_y': ['genomic position']
     }
     return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
 
