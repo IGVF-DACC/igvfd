@@ -322,7 +322,7 @@ def matrix_file_6_7(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1950
     if 'dimension1' in value:
         value['dimension_x'] = value['dimension1']
-        del value['dimesion1']
+        del value['dimension1']
     if 'dimension2' in value:
         value['dimension_y'] = [value['dimension2']]
         del value['dimension2']

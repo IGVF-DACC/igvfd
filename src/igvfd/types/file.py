@@ -552,8 +552,13 @@ class MatrixFile(File):
             'notSubmittable': True
         }
     )
-    def content_summary(self, request, dimension1, dimension2, content_type):
-        return f'{dimension1} by {dimension2} {content_type}'
+    def content_summary(self, request, dimension_x: str, dimension_y: list, content_type: str) -> str:
+        if len(dimension_y) > 1:
+            dimension_y_str = f'[{", ".join(dimension_y)}]'
+        else:
+            dimension_y_str = dimension_y[0] if dimension_y else ''
+
+        return f'{dimension_x} by {dimension_y_str} {content_type}'
 
     @calculated_property(
         schema={
