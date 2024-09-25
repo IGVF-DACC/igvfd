@@ -79,3 +79,14 @@ def matrix_file_v5(matrix_file_v1):
         'file_format_specifications': []
     })
     return item
+
+
+@pytest.fixture
+def matrix_file_v6(matrix_file_v1):
+    item = matrix_file_v1.copy()
+    item.update({
+        'schema_version': '6',
+        'dimension1': 'cell',
+        'dimension2': 'gene'
+    })
+    return item
