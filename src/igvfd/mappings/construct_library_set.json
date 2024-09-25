@@ -1,6 +1,6 @@
 {
-    "hash": "b52e0ce02d17c14d672069e4c9d21bdb",
-    "index_name": "construct_library_set_b52e0ce0",
+    "hash": "6a0c5cb5cae595ed5962b7a19c0a2215",
+    "index_name": "construct_library_set_6a0c5cb5",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1430,10 +1430,10 @@
                             "description": {
                                 "type": "text"
                             },
-                            "dimension1": {
+                            "dimension_x": {
                                 "type": "keyword"
                             },
-                            "dimension2": {
+                            "dimension_y": {
                                 "type": "keyword"
                             },
                             "documents": {
@@ -1740,10 +1740,10 @@
                             "description": {
                                 "type": "text"
                             },
-                            "dimension1": {
+                            "dimension_x": {
                                 "type": "keyword"
                             },
-                            "dimension2": {
+                            "dimension_y": {
                                 "type": "keyword"
                             },
                             "documents": {

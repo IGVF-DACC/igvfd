@@ -1,6 +1,6 @@
 {
-    "hash": "d1479c28a90025a411105a32735bfe4e",
-    "index_name": "prediction_set_d1479c28",
+    "hash": "4a5b627a81cc40cb3338d75035549b88",
+    "index_name": "prediction_set_4a5b627a",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -871,10 +871,10 @@
                             "description": {
                                 "type": "text"
                             },
-                            "dimension1": {
+                            "dimension_x": {
                                 "type": "keyword"
                             },
-                            "dimension2": {
+                            "dimension_y": {
                                 "type": "keyword"
                             },
                             "documents": {
