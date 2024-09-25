@@ -14,7 +14,7 @@ def test_audit_identical_dimensions(
     testapp.patch_json(
         matrix_file['@id'],
         {
-            'dimension1': 'gene'
+            'dimension_x': 'gene'
         }
     )
     res = testapp.get(matrix_file['@id'] + '@@audit')
