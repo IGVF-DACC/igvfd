@@ -74,9 +74,11 @@
                                 ]
                             },
                             "dimension_y": {
-                                "enum": [
-                                    "genomic position"
-                                ]
+                                "items": {
+                                    "enum": [
+                                        "genomic position"
+                                    ]
+                                }
                             }
                         }
                     }
