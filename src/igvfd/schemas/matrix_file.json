@@ -68,12 +68,12 @@
                     },
                     "then": {
                         "properties": {
-                            "dimension1": {
+                            "dimension_x": {
                                 "enum": [
                                     "genomic position"
                                 ]
                             },
-                            "dimension2": {
+                            "dimension_y": {
                                 "enum": [
                                     "genomic position"
                                 ]
