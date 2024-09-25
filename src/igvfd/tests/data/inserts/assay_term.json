@@ -127,5 +127,15 @@
         ],
         "release_timestamp": "2024-07-06T12:34:56Z",
         "uuid": "6c74b89f-71ac-4733-ac6c-8eb42810136d"
+    },
+    {
+        "term_id": "OBI:0000916",
+        "term_name": "flow cytometry assay",
+        "preferred_assay_titles": [
+            "VAMP-seq"
+        ],
+        "release_timestamp": "2024-07-06T12:34:56Z",
+        "status": "released",
+        "uuid": "61241e42-a702-46ee-9a2b-15e5adf53ab7"
     }
 ]

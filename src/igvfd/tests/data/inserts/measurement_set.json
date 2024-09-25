@@ -395,5 +395,21 @@
         "assay_term": "/assay-terms/OBI_0002041/",
         "preferred_assay_title": "STARR-seq",
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:vamp-seq-example"
+        ],
+        "award": "1UM1HG011969-01",
+        "lab": "lea-starita",
+        "status": "released",
+        "release_timestamp": "2024-07-06T12:35:55Z",
+        "uuid": "eda106ea-f04f-459c-9b21-7216fae11552",
+        "samples": [
+            "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_1"
+        ],
+        "assay_term": "/assay-terms/OBI_0000916/",
+        "preferred_assay_title": "VAMP-seq (MultiSTEP)",
+        "file_set_type": "experimental data"
     }
 ]
