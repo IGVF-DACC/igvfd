@@ -309,7 +309,9 @@ def tabular_file_10_11_signal_file_8_9(value, system):
 
 @upgrade_step('tabular_file', '11', '12')
 def tabular_file_10_11(value, system):
-    # https://igvf.atlassian.net/browse/IGVF-1694
+    # https://igvf.atlassian.net/browse/IGVF-1948
+    notes = value.get('notes', '')
     if value.get('content_type') == 'SNP effect matrix':
         value['content_type'] = 'variant effects'
+        notes += f'This object\'s content_type was SNP effect matrix, and changed to variants effects via upgrade.'
     return
