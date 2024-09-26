@@ -118,7 +118,7 @@
         },
         "dimension_x": {
             "title": "Dimension X",
-            "description": "The principle dimension of the matrix.",
+            "description": "The principal dimension of the matrix.",
             "type": "string",
             "enum": [
                 "cell",
@@ -141,7 +141,7 @@
             "uniqueItems": true,
             "minItems": 1,
             "items": {
-                "title": "Type",
+                "title": "Dimension Y",
                 "type": "string",
                 "enum": [
                     "antibody capture",
