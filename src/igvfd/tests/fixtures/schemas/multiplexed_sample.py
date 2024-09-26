@@ -120,3 +120,12 @@ def multiplexed_sample_v8(multiplexed_sample, tabular_file_v10):
         'barcode_sample_map': tabular_file_v10['@id']
     })
     return item
+
+
+@pytest.fixture
+def multiplexed_sample_v8(multiplexed_sample):
+    item = multiplexed_sample.copy()
+    item.update({
+        'schema_version': '9'
+    })
+    return item

@@ -1,5 +1,9 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Schema version 10
+
+* Add required property `multiplexing_type`.
+
 ### Schema version 9
 
 * Rename `barcode_sample_map` to `barcode_map`.

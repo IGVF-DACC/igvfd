@@ -487,3 +487,12 @@ def multiplexed_sample_8_9(value, system):
     if 'barcode_sample_map' in value:
         value['barcode_map'] = value['barcode_sample_map']
         del value['barcode_sample_map']
+
+
+@upgrade_step('multiplexed_sample', '9', '10')
+def multiplexed_sample_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1928
+    value['multiplexing_type'] = ['barcode based']
+    notes = value.get('notes', '')
+    notes += f'This object\'s multiplexing_type has been set to barcode based by an upgrade.'
+    value['notes'] = notes.strip()
