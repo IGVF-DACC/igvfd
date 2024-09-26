@@ -140,7 +140,7 @@ def file():
                 ],
             },
             {
-                'title': 'Sequencing',
+                'title': 'Sequencing Method',
                 'facet_fields': [
                     'sequencing_platform.term_name',
                     'sequencing_kit',
