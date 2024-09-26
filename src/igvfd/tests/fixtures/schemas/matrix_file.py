@@ -95,7 +95,7 @@ def matrix_file_v6(testapp, lab, award, measurement_set, reference_file):
             reference_file['@id']
         ],
         'schema_version': '6',
-        'dimension1': 'genomic position',
-        'dimension2': ['genomic position']
+        'dimension1': 'cell',
+        'dimension2': ['gene']
     }
     return item
