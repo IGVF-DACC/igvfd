@@ -308,7 +308,7 @@ def tabular_file_10_11_signal_file_8_9(value, system):
 
 
 @upgrade_step('tabular_file', '11', '12')
-def tabular_file_10_11(value, system):
+def tabular_file_11_12(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1948
     notes = value.get('notes', '')
     if value.get('content_type') == 'SNP effect matrix':

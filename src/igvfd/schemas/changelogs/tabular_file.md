@@ -5,7 +5,7 @@
 * Extend `content_type` enum list to include `external source data`.
 * Extend `content_type` enum list to include `fragments`.
 * Extend `content_type` enum list to include `gene quantifications`.
-* Remove `SNP effect matrix` from `content_type`.
+* Adjust `content_type` enum list to remove `SNP effect matrix`.
 
 ### Minor changes since schema version 11
 
