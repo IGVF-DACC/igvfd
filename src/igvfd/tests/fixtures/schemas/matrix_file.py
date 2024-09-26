@@ -98,4 +98,4 @@ def matrix_file_v6(testapp, lab, award, measurement_set, reference_file):
         'dimension1': 'genomic position',
         'dimension2': ['genomic position']
     }
-    return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
+    return item
