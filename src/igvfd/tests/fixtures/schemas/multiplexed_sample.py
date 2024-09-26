@@ -123,7 +123,7 @@ def multiplexed_sample_v8(multiplexed_sample, tabular_file_v10):
 
 
 @pytest.fixture
-def multiplexed_sample_v8(multiplexed_sample):
+def multiplexed_sample_v9(multiplexed_sample):
     item = multiplexed_sample.copy()
     item.update({
         'schema_version': '9'
