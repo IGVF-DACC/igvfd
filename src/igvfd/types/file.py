@@ -556,7 +556,7 @@ class MatrixFile(File):
         if len(dimension_y) > 1:
             dimension_y_str = f'[{", ".join(dimension_y)}]'
         else:
-            dimension_y_str = dimension_y[0] if dimension_y else ''
+            dimension_y_str = dimension_y[0]
 
         return f'{dimension_x} by {dimension_y_str} {content_type}'
 
