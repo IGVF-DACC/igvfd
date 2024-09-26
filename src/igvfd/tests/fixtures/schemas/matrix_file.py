@@ -82,11 +82,20 @@ def matrix_file_v5(matrix_file_v1):
 
 
 @pytest.fixture
-def matrix_file_v6(matrix_file_v1):
-    item = matrix_file_v1.copy()
-    item.update({
+def matrix_file_v6(testapp, lab, award, measurement_set, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'c9be16849c41ecc5c7ed8af9502358c7',
+        'file_format': 'h5ad',
+        'file_set': measurement_set['@id'],
+        'file_size': 512355134,
+        'content_type': 'contact matrix',
+        'reference_files': [
+            reference_file['@id']
+        ],
         'schema_version': '6',
-        'dimension1': 'cell',
-        'dimension2': 'gene'
-    })
-    return item
+        'dimension1': 'genomic position',
+        'dimension2': ['genomic position']
+    }
+    return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
