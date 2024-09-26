@@ -102,7 +102,7 @@
             ],
             "enum_descriptions": {
                 "contact matrix": "A matrix used in genomic assays, particularly in chromosome conformation capture techniques like Hi-C, to represent the frequency of physical interactions between different regions of the genome.",
-                "filtered feature barcode matrix": "A matrix output from Space Ranger, where rows represent features and columns represent barcoded spots or cells. It contains counts of sequencing reads after filtering out low-quality or low-abundance features.",
+                "filtered feature barcode matrix": "A matrix output from Cell Ranger, where rows represent features and columns represent barcoded spots or cells. It contains counts of sequencing reads after filtering out low-quality or low-abundance features.",
                 "raw feature barcode matrix": "A matrix output from Cell Ranger, where rows represent features and columns represent barcoded spots or cells. It contains raw counts of sequencing reads before any filtering or normalization.",
                 "sparse gene count matrix": "A matrix where rows represent genes and columns represent samples or cells, containing counts of sequencing reads that map to each gene.",
                 "sparse peak count matrix": "A matrix used in assays like ATAC-seq or ChIP-seq, where rows represent genomic regions (peaks) and columns represent samples or cells.",
