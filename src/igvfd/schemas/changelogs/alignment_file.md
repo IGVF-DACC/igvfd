@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 10
 
+* Extend `assembly` enum list to include `Cast - GRCm39`.
+* Extend `transcriptome_annotation` enum list to include `GENCODE Cast - M32`.
 * Add calculated property `assay_titles`.
 * Update calculation of `summary`.
 * Add calculated property `input_file_for`.
