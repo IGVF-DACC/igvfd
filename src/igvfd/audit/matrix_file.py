@@ -21,9 +21,9 @@ def audit_matrix_file_dimensions(value, system):
     ]
     '''
     audit_message = get_audit_message(audit_matrix_file_dimensions)
-    if value['file_format'] != 'hic' and value['dimension_x'] in value['dimension_y']:
+    if value['file_format'] != 'hic' and value['principal_dimension'] in value['secondary_dimensions']:
         detail = (
             f'Matrix file {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has {value["dimension_x"]} for both `dimension_x` and `dimension_y`.'
+            f'has {value["principal_dimension"]} for both `principal_dimension` and `secondary_dimensions`.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
