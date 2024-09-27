@@ -54,13 +54,14 @@
         },
         "file_set_type": {
             "description": "The category that best describes this auxiliary file set.",
-            "comment": "File set type describes the content of the construct library set. Cell hashing barcode sequencing is the antibody barcoding of cell batches. Cell sorting is data collected during fluorescence activated cell sorting. Circularized RNA barcode detection is reporter detection (such as for MPRA) through sequencing circularized barcoded RNA molecules. gRNA sequencing is sequencing data of guide RNAs. Lipid-conjugated oligo sequencing is lipid- and cholesterol-modified oligonucleotides. Quantification DNA barcode sequencing is sequencing data of barcodes, such as for MPRA. Variant sequencing is sequencing data of genomic DNA sequences with variants introduced.",
+            "comment": "File set type describes the content of the construct library set. Cell hashing barcode sequencing is the antibody barcoding of cell batches. Cell sorting is data collected during fluorescence activated cell sorting. Circularized RNA barcode detection is reporter detection (such as for MPRA) through sequencing circularized barcoded RNA molecules. gRNA sequencing is sequencing data of guide RNAs. Lipid-conjugated oligo sequencing is lipid- and cholesterol-modified oligonucleotides. MORF barcode sequencing is the sequencing of the Multiplexed Overexpression of Regulatory Factors library, a collection of human transcription factor open reading frames, to produce a mapping of barcodes to an overexpressed transcription factor. Quantification DNA barcode sequencing is sequencing data of barcodes, such as for MPRA. Variant sequencing is sequencing data of genomic DNA sequences with variants introduced.",
             "enum": [
                 "cell hashing barcode sequencing",
                 "cell sorting",
                 "circularized RNA barcode detection",
                 "gRNA sequencing",
                 "lipid-conjugated oligo sequencing",
+                "MORF barcode sequencing",
                 "quantification DNA barcode sequencing",
                 "variant sequencing"
             ],
