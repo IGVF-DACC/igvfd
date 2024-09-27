@@ -54,3 +54,12 @@ def phenotype_term_v2(phenotype_term_v1):
         'description': ''
     })
     return item
+
+
+@pytest.fixture
+def phenotype_term_from_go(testapp):
+    item = {
+        'term_id': 'GO:0018214',
+        'term_name': 'Protein Carboxylation'
+    }
+    return testapp.post_json('/phenotype_term', item, status=201).json['@graph'][0]
