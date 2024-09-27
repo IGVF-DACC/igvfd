@@ -11,8 +11,8 @@
         "file_set",
         "content_type",
         "reference_files",
-        "dimension_x",
-        "dimension_y"
+        "principal_dimension",
+        "secondary_dimensions"
     ],
     "identifyingProperties": [
         "uuid",
@@ -68,12 +68,12 @@
                     },
                     "then": {
                         "properties": {
-                            "dimension_x": {
+                            "principal_dimension": {
                                 "enum": [
                                     "genomic position"
                                 ]
                             },
-                            "dimension_y": {
+                            "secondary_dimensions": {
                                 "items": {
                                     "enum": [
                                         "genomic position"
@@ -116,8 +116,8 @@
                 "igvf_utils": "contact matrix"
             }
         },
-        "dimension_x": {
-            "title": "Dimension X",
+        "principal_dimension": {
+            "title": "Principal Dimension",
             "description": "The principal dimension of the matrix.",
             "type": "string",
             "enum": [
@@ -134,14 +134,14 @@
                 "igvf_utils": "cell"
             }
         },
-        "dimension_y": {
-            "title": "Dimension Y",
+        "secondary_dimensions": {
+            "title": "Secondary Dimensions",
             "description": "The secondary, tertiary....n levels of dimensions of the matrix.",
             "type": "array",
             "uniqueItems": true,
             "minItems": 1,
             "items": {
-                "title": "Dimension Y",
+                "title": "Secondary Dimensions",
                 "type": "string",
                 "enum": [
                     "antibody capture",

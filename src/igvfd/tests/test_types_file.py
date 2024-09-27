@@ -105,8 +105,8 @@ def test_types_matrix_file_content_summary(testapp, matrix_file):
     testapp.patch_json(
         matrix_file['@id'],
         {
-            'dimension_x': 'variant',
-            'dimension_y': ['treatment', 'antibody capture'],
+            'principal_dimension': 'variant',
+            'secondary_dimensions': ['treatment', 'antibody capture'],
             'content_type': 'transcriptome annotations'
         }
     )

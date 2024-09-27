@@ -28,8 +28,8 @@ def test_matrix_file_upgrade_5_6(upgrader, matrix_file_v5):
 
 def test_matrix_file_upgrade_6_7(upgrader, matrix_file_v6):
     value = upgrader.upgrade('matrix_file', matrix_file_v6, current_version='6', target_version='7')
-    assert 'dimension1' not in value
-    assert 'dimension2' not in value
+    assert 'principal_dimension' not in value
+    assert 'secondary_dimensions' not in value
     assert value['schema_version'] == '7'
-    assert value['dimension_x'] == 'cell'
-    assert value['dimension_y'] == ['gene']
+    assert value['principal_dimension'] == 'cell'
+    assert value['secondary_dimensions'] == ['gene']

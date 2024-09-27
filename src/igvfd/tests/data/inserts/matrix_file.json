@@ -18,8 +18,8 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "dimension_x": "cell",
-        "dimension_y": [
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
             "gene"
         ]
     },
@@ -42,8 +42,8 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "dimension_x": "cell",
-        "dimension_y": [
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
             "fragment"
         ]
     },
@@ -66,8 +66,8 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
-        "dimension_x": "cell",
-        "dimension_y": [
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
             "gene",
             "antibody capture"
         ]

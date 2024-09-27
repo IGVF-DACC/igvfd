@@ -552,13 +552,13 @@ class MatrixFile(File):
             'notSubmittable': True
         }
     )
-    def content_summary(self, request, dimension_x: str, dimension_y: list, content_type: str) -> str:
-        if len(dimension_y) > 1:
-            dimension_y_str = f'[{", ".join(dimension_y)}]'
+    def content_summary(self, request, principal_dimension, secondary_dimensions, content_type):
+        if len(secondary_dimensions) > 1:
+            secondary_dimensions_str = f'[{", ".join(secondary_dimensions)}]'
         else:
-            dimension_y_str = dimension_y[0]
+            secondary_dimensions_str = secondary_dimensions[0]
 
-        return f'{dimension_x} by {dimension_y_str} {content_type}'
+        return f'{principal_dimension} by {secondary_dimensions} {content_type}'
 
     @calculated_property(
         schema={

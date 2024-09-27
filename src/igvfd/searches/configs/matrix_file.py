@@ -13,10 +13,10 @@ def matrix_file():
             'file_format': {
                 'title': 'File Format'
             },
-            'dimension_x': {
+            'principal_dimension': {
                 'title': 'Principal Dimension'
             },
-            'dimension_y': {
+            'secondary_dimensions': {
                 'title': 'Secondary Dimensions'
             },
             'file_set.file_set_type': {
@@ -74,8 +74,8 @@ def matrix_file():
                 'facet_fields': [
                     'file_format',
                     'content_type',
-                    'dimension_x',
-                    'dimension_y',
+                    'principal_dimension',
+                    'secondary_dimensions',
                 ],
             },
             {

@@ -2,12 +2,12 @@
 
 ### Schema version 7
 
-* Extend `dimension_y` enum list to include `gene expression`.
-* Extend `dimension_y` enum list to include `CRISPR guide capture`.
-* Extend `dimension_y` enum list to include `antibody capture`.
-* Change type of `dimension_y` to be an array.
-* Rename `dimension2` to `dimension_y`.
-* Rename `dimension1` to `dimension_x`.
+* Extend `secondary_dimensions` enum list to include `gene expression`.
+* Extend `secondary_dimensions` enum list to include `CRISPR guide capture`.
+* Extend `secondary_dimensions` enum list to include `antibody capture`.
+* Change type of `secondary_dimensions` to be an array.
+* Rename `dimension2` to `secondary_dimensions`.
+* Rename `dimension1` to `principal_dimension`.
 
 ### Minor changes since schema version 6
 
