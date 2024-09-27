@@ -1,6 +1,6 @@
 {
-    "hash": "7f1b21c88b7300fe8c98a2765c102916",
-    "index_name": "curated_set_7f1b21c8",
+    "hash": "224f22f071c7704f9562fbc8f5fbd26e",
+    "index_name": "curated_set_224f22f0",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -872,12 +872,6 @@
                             "description": {
                                 "type": "text"
                             },
-                            "dimension_x": {
-                                "type": "keyword"
-                            },
-                            "dimension_y": {
-                                "type": "keyword"
-                            },
                             "documents": {
                                 "type": "keyword"
                             },
@@ -1001,6 +995,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "principal_dimension": {
+                                "type": "keyword"
+                            },
                             "read_count": {
                                 "fields": {
                                     "raw": {
@@ -1032,6 +1029,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "secondary_dimensions": {
                                 "type": "keyword"
                             },
                             "seqspec_of": {

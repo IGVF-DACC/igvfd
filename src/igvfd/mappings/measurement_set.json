@@ -1,6 +1,6 @@
 {
-    "hash": "74629139e858b35e050815a1ce1930c7",
-    "index_name": "measurement_set_74629139",
+    "hash": "1eec7ed4085594c68ae8043fa756d390",
+    "index_name": "measurement_set_1eec7ed4",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1386,12 +1386,6 @@
                             "description": {
                                 "type": "text"
                             },
-                            "dimension_x": {
-                                "type": "keyword"
-                            },
-                            "dimension_y": {
-                                "type": "keyword"
-                            },
                             "documents": {
                                 "type": "keyword"
                             },
@@ -1515,6 +1509,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "principal_dimension": {
+                                "type": "keyword"
+                            },
                             "read_count": {
                                 "fields": {
                                     "raw": {
@@ -1546,6 +1543,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "secondary_dimensions": {
                                 "type": "keyword"
                             },
                             "seqspec_of": {
