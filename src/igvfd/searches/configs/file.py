@@ -61,6 +61,12 @@ def file():
             'lab.title': {
                 'title': 'Lab'
             },
+            'sequencing_kit': {
+                'title': 'Sequencing Kit'
+            },
+            'sequencing_platform.term_name': {
+                'title': 'Sequencing Platform'
+            },
             'status': {
                 'title': 'Status'
             },
@@ -131,6 +137,13 @@ def file():
                     'lab.title',
                     'award.component',
                     'type',
+                ],
+            },
+            {
+                'title': 'Sequencing Details',
+                'facet_fields': [
+                    'sequencing_platform.term_name',
+                    'sequencing_kit',
                 ],
             },
             {
