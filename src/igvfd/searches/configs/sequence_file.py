@@ -106,7 +106,7 @@ def sequence_file():
                 ],
             },
             {
-                'title': 'Sequencing Method',
+                'title': 'Sequencing Details',
                 'facet_fields': [
                     'sequencing_platform.term_name',
                     'sequencing_kit',
