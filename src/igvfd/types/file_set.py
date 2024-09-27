@@ -432,6 +432,33 @@ class AnalysisSet(FileSet):
         summary = f"{', '.join(all_sample_terms)}{additional_phrase_suffix}"
 
         return summary
+    
+    @calculated_property(
+        schema={
+            'title': 'Functional Assay Mechanisms',
+            'description': 'The biological mechanism(s) the functional assay measures.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Functional Assay Mechanism',
+                'type': 'string',
+                'linkTo': 'PhenotypeTerm'
+            },
+            'notSubmittable': True
+        }
+    )
+    def functional_assay_mechanisms(self, request, input_file_sets=None):
+        '''Calculate an array of unique biological mechanism(s) measured by the funcional assays associated with an analysis set.'''
+        mechanism_objects = []
+        if input_file_sets is not None:
+            for fileset in input_file_sets:
+                file_set_object = request.embed(fileset, '@@object')
+                if 'MeasurementSet' in file_set_object.get('@type'):
+                    mechanism = file_set_object.get('functional_assay_mechanism')
+                    if mechanism:
+                        mechanism_objects.append(request.embed(mechanism, '@@object'))
+        return list(set(mechanism_objects))
 
 
 @collection(
@@ -544,6 +571,7 @@ class MeasurementSet(FileSet):
              '@id', 'file_set_type', 'accession', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name']),
         Path('files.sequencing_platform', include=['@id', 'term_name']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
+        Path('functional_assay_mechanism', include=['@id', 'term_id', 'term_name'])
     ]
 
     audit_inherit = FileSet.audit_inherit + [

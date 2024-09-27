@@ -270,6 +270,16 @@
                 "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
                 "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
             }
+        },
+        "functional_assay_mechanism": {
+            "title": "Functional Assay Mechanism",
+            "description": "The biological mechanism this functional assay measures. For example, VAMP-seq (MultiSTEP) measures variant effects on protein carboxylation and secretion.",
+            "type": "string",
+            "linkTo": "PhenotypeTerm",
+            "submissionExample": {
+                "appscript": "/phenotype-terms/GO_0018214/",
+                "igvf_utils": "/phenotype-terms/GO_0018214/"
+            }
         }
     },
     "fuzzy_searchable_fields": [
@@ -279,6 +289,7 @@
         "description",
         "files.content_type",
         "files.submitted_file_name",
+        "functional_assay_mechanism.term_name",
         "lab.title",
         "preferred_assay_title",
         "samples.modifications.modality",

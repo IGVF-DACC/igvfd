@@ -1,6 +1,6 @@
 {
     "title": "Phenotype Term",
-    "description": "An ontology term from Experimental Factor Ontology (EFO), Human Disease Ontology (DOID), Human Phenotype Ontology (HP), Mondo Disease Ontology (MONDO), National Cancer Institute Thesaurus (NCIT), or Ontology of Biological Attributes (OBA) for phenotypes, diseases, and traits.",
+    "description": "An ontology term from Experimental Factor Ontology (EFO), Human Disease Ontology (DOID), Human Phenotype Ontology (HP), Mondo Disease Ontology (MONDO), National Cancer Institute Thesaurus (NCIT), Ontology of Biological Attributes (OBA), or Gene Ontology (GO) for phenotypes, diseases, traits and biological processes.",
     "$id": "/profiles/phenotype_term.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
@@ -44,7 +44,7 @@
             "description": "An ontology term identifier describing a phenotype.",
             "permission": "admin_only",
             "type": "string",
-            "pattern": "^(DOID|EFO|HP|MONDO|OBA|NTR):[0-9]{2,8}|OBA:VT[0-9]{2,8}|NCIT:C[0-9]{2,8}$"
+            "pattern": "^(DOID|EFO|HP|MONDO|OBA|NTR|GO):[0-9]{2,8}|OBA:VT[0-9]{2,8}|NCIT:C[0-9]{2,8}$"
         }
     },
     "fuzzy_searchable_fields": [
