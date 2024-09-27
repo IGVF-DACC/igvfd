@@ -305,3 +305,13 @@ def tabular_file_10_11_signal_file_8_9(value, system):
     if value.get('content_type') == 'fold over change control':
         value['content_type'] = 'fold change over control'
     return
+
+
+@upgrade_step('tabular_file', '11', '12')
+def tabular_file_11_12(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1948
+    notes = value.get('notes', '')
+    if value.get('content_type') == 'SNP effect matrix':
+        value['content_type'] = 'variant effects'
+        notes += f'This object\'s content_type was SNP effect matrix, and changed to variants effects via upgrade.'
+    return

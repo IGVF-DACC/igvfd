@@ -43,3 +43,9 @@ def test_tabular_file_upgrade_10_11(upgrader, tabular_file_v10):
     value = upgrader.upgrade('tabular_file', tabular_file_v10, current_version='10', target_version='11')
     assert value['content_type'] == 'fold change over control'
     assert value['schema_version'] == '11'
+
+
+def test_tabular_file_upgrade_11_12(upgrader, tabular_file_v11):
+    value = upgrader.upgrade('tabular_file', tabular_file_v11, current_version='11', target_version='12')
+    assert value['content_type'] == 'variant effects'
+    assert value['schema_version'] == '12'

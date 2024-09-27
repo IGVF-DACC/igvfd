@@ -1,5 +1,12 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 12
+
+* Extend `content_type` enum list to include `external source data`.
+* Extend `content_type` enum list to include `fragments`.
+* Extend `content_type` enum list to include `gene quantifications`.
+* Adjust `content_type` enum list to remove `SNP effect matrix`.
+
 ### Minor changes since schema version 11
 
 * Extend `assembly` enum list to include `Cast - GRCm39`.

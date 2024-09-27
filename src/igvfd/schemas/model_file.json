@@ -94,12 +94,14 @@
             "enum": [
                 "edge weights",
                 "graph structure",
-                "position weight matrix"
+                "position weight matrix",
+                "SNP effect matrix"
             ],
             "enum_descriptions": {
                 "edge weights": "A representation of the weights assigned to the edges in a graph or network model.",
                 "graph structure": "A description of the overall layout and connections within a graph or network.",
-                "position weight matrix": "A matrix comprising the probability of each nucleotide occurring at each position in a sequence motif."
+                "position weight matrix": "A matrix comprising the probability of each nucleotide occurring at each position in a sequence motif.",
+                "SNP effect matrix": "A matrix for estimation of consequence of each single nucleotide mutation in a transcription factor binding site motif."
             },
             "submissionExample": {
                 "appscript": "edge weights",

@@ -89,3 +89,13 @@ def tabular_file_v10(tabular_file):
         'content_type': 'fold over change control'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v11(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '11',
+        'content_type': 'SNP effect matrix'
+    })
+    return item

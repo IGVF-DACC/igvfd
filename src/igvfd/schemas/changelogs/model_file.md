@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 1
 
+* Extend `content_type` enum list to include `SNP effect matrix`.
 * Add calculated property `assay_titles`.
 * Update calculation of `summary`.
 * Add `analysis_step_version`.
