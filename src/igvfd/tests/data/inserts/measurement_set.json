@@ -411,7 +411,9 @@
         "assay_term": "/assay-terms/OBI_0000916/",
         "preferred_assay_title": "VAMP-seq (MultiSTEP)",
         "file_set_type": "experimental data",
-        "functional_assay_mechanism": "/phenotype-terms/GO_0018214/"
+        "functional_assay_mechanisms": [
+            "/phenotype-terms/GO_0018214/"
+        ]
     },
     {
         "aliases": [

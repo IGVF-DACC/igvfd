@@ -190,7 +190,8 @@ class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type'])
+        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type']),
+        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
@@ -441,7 +442,7 @@ class AnalysisSet(FileSet):
             'minItems': 1,
             'uniqueItems': True,
             'items': {
-                'title': 'Functional Assay Mechanism',
+                'title': 'Phenotype Term',
                 'type': 'string',
                 'linkTo': 'PhenotypeTerm'
             },
@@ -450,15 +451,12 @@ class AnalysisSet(FileSet):
     )
     def functional_assay_mechanisms(self, request, input_file_sets=None):
         '''Calculate an array of unique biological mechanism(s) measured by the funcional assays associated with an analysis set.'''
-        mechanism_objects = []
-        if input_file_sets is not None:
-            for fileset in input_file_sets:
-                file_set_object = request.embed(fileset, '@@object')
-                if 'MeasurementSet' in file_set_object.get('@type'):
-                    mechanism = file_set_object.get('functional_assay_mechanism')
-                    if mechanism:
-                        mechanism_objects.append(request.embed(mechanism, '@@object'))
-        return list(set(mechanism_objects))
+        mechanism_objs = []
+        file_set_objs = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
+        for file_set_object in file_set_objs:
+            if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
+                mechanism_objs.extend(file_set_object.get('functional_assay_mechanism', ''))
+        return list(set(mechanism_objs))
 
 
 @collection(

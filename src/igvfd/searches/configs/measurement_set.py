@@ -61,8 +61,8 @@ def measurement_set():
             'award.component': {
                 'title': 'Award'
             },
-            'functional_assay_mechanism.term_name': {
-                'title': 'Functional Assay Mechanism'
+            'functional_assay_mechanisms.term_name': {
+                'title': 'Functional Assay Mechanisms'
             },
             'status': {
                 'title': 'Status'
@@ -108,7 +108,7 @@ def measurement_set():
                     'samples.construct_library_sets.file_set_type',
                     'targeted_genes.symbol',
                     'samples.construct_library_sets.small_scale_gene_list.symbol',
-                    'functional_assay_mechanism.term_name'
+                    'functional_assay_mechanisms.term_name'
                 ],
             },
             {
@@ -196,8 +196,8 @@ def measurement_set():
             'file_set_type': {
                 'title': 'File Set Type'
             },
-            'functional_assay_mechanism.term_name': {
-                'title': 'Functional Assay Mechanism'
+            'functional_assay_mechanisms.term_name': {
+                'title': 'Functional Assay Mechanisms'
             }
         }
     }
