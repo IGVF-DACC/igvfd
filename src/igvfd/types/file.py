@@ -558,7 +558,7 @@ class MatrixFile(File):
         else:
             secondary_dimensions_str = secondary_dimensions[0]
 
-        return f'{principal_dimension} by {secondary_dimensions} {content_type}'
+        return f'{principal_dimension} by {secondary_dimensions_str} {content_type}'
 
     @calculated_property(
         schema={
