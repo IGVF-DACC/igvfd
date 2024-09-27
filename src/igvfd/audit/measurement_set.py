@@ -364,7 +364,8 @@ def audit_missing_construct_library_set(value, system):
     # preferred assay title expectations override any overlapping assay term expectation
     expected_library_by_preferred_assay_title = {
         'SGE': ('editing template library', audit_message_SGE),
-        'VAMP-seq': ('expression vector library', audit_message_VAMP)
+        'VAMP-seq': ('expression vector library', audit_message_VAMP),
+        'VAMP-seq (MultiSTEP)': ('expression vector library', audit_message_VAMP)
     }
 
     assay_term_name = value.get('assay_term').get('term_name')
