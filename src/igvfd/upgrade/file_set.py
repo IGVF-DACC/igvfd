@@ -417,11 +417,8 @@ def measurement_set_20_21(value, system):
 @upgrade_step('measurement_set', '20', '21')
 def measurement_set_20_21(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1957
+    notes = value.get('notes', '')
     if value.get('preferred_assay_title') == 'Variant painting':
         value['preferred_assay_title'] = 'Variant painting via fluorescence'
-        notes = value.get('notes', '')
-        added_phrase = 'This measurement set previously used Variant painting as a preferred_assay_title, but this enum is now removed. So it has been defaulted to Variant painting via fluorescence.'
-        if notes:
-            value['notes'] = f'{notes} {added_phrase}'
-        else:
-            value['notes'] = added_phrase
+        notes += f' This measurement set previously used Variant painting as a preferred_assay_title, but this enum is now removed. So it has been defaulted to Variant painting via fluorescence.'
+        value['notes'] = notes.strip()
