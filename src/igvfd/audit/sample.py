@@ -215,28 +215,3 @@ def audit_parent_sample_with_singular_child(value, system):
                 f'in `{child_sample_type}`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
-
-
-@audit_checker('MultiplexedSample', frame='object')
-def audit_multiplexed_sample_barcode(value, system):
-    '''
-    [
-        {
-            "audit_description": "Multiplexed samples of the type 'barcode based' must have a 'barcode_map' property specified.",
-            "audit_category": "missing property",
-            "audit_level": "WARNING"
-        }
-    ]
-    '''
-    audit_message = get_audit_message(audit_multiplexed_sample_barcode)
-    if 'barcode based' in value['multiplexing_type']:
-        if 'barcode_map' not in value:
-            detail = (
-                f'Multiplexed sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'is of the type "barcode based" but is missing the "barcode_map" property.'
-            )
-            yield AuditFailure(
-                audit_message.get('audit_category', ''),
-                f'{detail} {audit_message.get("audit_description", "")}',
-                level=audit_message.get('audit_level', '')
-            )
