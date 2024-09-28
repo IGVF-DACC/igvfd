@@ -455,7 +455,7 @@ class AnalysisSet(FileSet):
         file_set_objs = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
         for file_set_object in file_set_objs:
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
-                mechanism_objs.extend(file_set_object.get('functional_assay_mechanism', ''))
+                mechanism_objs.extend(file_set_object.get('functional_assay_mechanisms', []))
         return list(set(mechanism_objs))
 
 
@@ -569,7 +569,7 @@ class MeasurementSet(FileSet):
              '@id', 'file_set_type', 'accession', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name']),
         Path('files.sequencing_platform', include=['@id', 'term_name']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
-        Path('functional_assay_mechanism', include=['@id', 'term_id', 'term_name'])
+        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name'])
     ]
 
     audit_inherit = FileSet.audit_inherit + [

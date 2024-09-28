@@ -3,6 +3,7 @@
 ### Minor changes since schema version 8
 
 * Add calculated property `sample_summary`.
+* Add calculated property `functional assay mechanisms`.
 * Add calculated property `protocols`.
 * Add `control_type`.
 * Add `external_image_data_url`.
