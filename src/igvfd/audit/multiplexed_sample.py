@@ -22,7 +22,7 @@ def audit_multiplexed_sample_no_barcode_map(value, system):
     '''
     audit_message = get_audit_message(audit_multiplexed_sample_no_barcode_map, index=0)
 
-    if 'barcode based' in value['multiplexing_type']:
+    if 'barcode based' in value['multiplexing_method']:
         if not (value.get('barcode_map')):
             detail = (
                 f'Multiplexed sample {audit_link(path_to_text(value["@id"]), value["@id"])} '

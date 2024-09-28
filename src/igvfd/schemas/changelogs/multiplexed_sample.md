@@ -2,7 +2,7 @@
 
 ### Schema version 10
 
-* Add required property `multiplexing_type`.
+* Add required property `multiplexing_method`.
 
 ### Schema version 9
 

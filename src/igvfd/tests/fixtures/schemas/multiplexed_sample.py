@@ -10,7 +10,7 @@ def multiplexed_sample(
         'multiplexed_samples': [
             tissue['@id'], in_vitro_cell_line['@id']
         ],
-        'multiplexing_type': ['barcode based']
+        'multiplexing_method': ['barcode based']
     }
     return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
 
@@ -24,7 +24,7 @@ def multiplexed_sample_x2(
         'multiplexed_samples': [
             multiplexed_sample['@id'], primary_cell['@id']
         ],
-        'multiplexing_type': ['barcode based']
+        'multiplexing_method': ['barcode based']
     }
     return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
 
@@ -38,7 +38,7 @@ def multiplexed_sample_x3(
         'multiplexed_samples': [
             multiplexed_sample_x2['@id'], in_vitro_cell_line['@id']
         ],
-        'multiplexing_type': ['barcode based']
+        'multiplexing_method': ['barcode based']
     }
     return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
 
@@ -126,10 +126,13 @@ def multiplexed_sample_v8(multiplexed_sample, tabular_file_v10):
 
 
 @pytest.fixture
-def multiplexed_sample_v9(multiplexed_sample):
-    item = multiplexed_sample.copy()
-    item.pop('multiplexing_type', None)
-    item.update({
-        'schema_version': '9'
-    })
+def multiplexed_sample_v9(
+        testapp, other_lab, award, tissue, in_vitro_cell_line):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'multiplexed_samples': [
+            tissue['@id'], in_vitro_cell_line['@id']
+        ]
+    }
     return item
