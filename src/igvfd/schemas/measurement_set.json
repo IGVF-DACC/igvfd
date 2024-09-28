@@ -295,7 +295,7 @@
         "description",
         "files.content_type",
         "files.submitted_file_name",
-        "functional_assay_mechanism.term_name",
+        "functional_assay_mechanisms.term_name",
         "lab.title",
         "preferred_assay_title",
         "samples.modifications.modality",
