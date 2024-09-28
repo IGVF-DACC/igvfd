@@ -414,8 +414,8 @@ def measurement_set_20_21(value, system):
             value['notes'] = added_phrase
 
 
-@upgrade_step('measurement_set', '20', '21')
-def measurement_set_20_21(value, system):
+@upgrade_step('measurement_set', '21', '22')
+def measurement_set_21_22(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1957
     notes = value.get('notes', '')
     if value.get('preferred_assay_title') == 'Variant painting':
