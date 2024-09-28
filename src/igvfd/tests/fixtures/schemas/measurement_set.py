@@ -278,10 +278,10 @@ def measurement_set_with_protocols(testapp, lab, award, assay_term_starr, tissue
 
 
 @pytest.fixture
-def measurement_set_v20(measurement_set):
+def measurement_set_v21(measurement_set):
     item = measurement_set.copy()
     item.update({
-        'schema_version': '20',
+        'schema_version': '21',
         'preferred_assay_title': 'Variant painting'
     })
     return item
