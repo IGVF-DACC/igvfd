@@ -275,3 +275,13 @@ def measurement_set_with_protocols(testapp, lab, award, assay_term_starr, tissue
         'preferred_assay_title': 'SUPERSTARR'
     }
     return testapp.post_json('/measurement_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def measurement_set_v20(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '20',
+        'preferred_assay_title': 'Variant painting'
+    })
+    return item
