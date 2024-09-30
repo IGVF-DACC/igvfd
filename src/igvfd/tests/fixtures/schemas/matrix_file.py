@@ -14,8 +14,8 @@ def matrix_file(testapp, lab, award, analysis_set_with_sample, reference_file):
         'reference_files': [
             reference_file['@id']
         ],
-        'dimension1': 'cell',
-        'dimension2': 'gene'
+        'principal_dimension': 'cell',
+        'secondary_dimensions': ['gene']
     }
     return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
 
@@ -33,8 +33,8 @@ def matrix_file_hic(testapp, lab, award, measurement_set, reference_file):
         'reference_files': [
             reference_file['@id']
         ],
-        'dimension1': 'genomic position',
-        'dimension2': 'genomic position'
+        'principal_dimension': 'genomic position',
+        'secondary_dimensions': ['genomic position']
     }
     return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
 
@@ -78,4 +78,24 @@ def matrix_file_v5(matrix_file_v1):
         'derived_from': [],
         'file_format_specifications': []
     })
+    return item
+
+
+@pytest.fixture
+def matrix_file_v6(testapp, lab, award, measurement_set, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'c9be16849c41ecc5c7ed8af9502358c7',
+        'file_format': 'h5ad',
+        'file_set': measurement_set['@id'],
+        'file_size': 512355134,
+        'content_type': 'contact matrix',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'schema_version': '6',
+        'dimension1': 'cell',
+        'dimension2': 'gene'
+    }
     return item

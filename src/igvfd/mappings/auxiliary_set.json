@@ -1,6 +1,6 @@
 {
-    "hash": "70f952d61eef5c282e822a16364ca619",
-    "index_name": "auxiliary_set_70f952d6",
+    "hash": "87531196e80b47344620d14fccca0fb4",
+    "index_name": "auxiliary_set_87531196",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -868,12 +868,6 @@
                             "description": {
                                 "type": "text"
                             },
-                            "dimension1": {
-                                "type": "keyword"
-                            },
-                            "dimension2": {
-                                "type": "keyword"
-                            },
                             "documents": {
                                 "type": "keyword"
                             },
@@ -997,6 +991,9 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "principal_dimension": {
+                                "type": "keyword"
+                            },
                             "read_count": {
                                 "fields": {
                                     "raw": {
@@ -1028,6 +1025,9 @@
                                 "type": "keyword"
                             },
                             "schema_version": {
+                                "type": "keyword"
+                            },
+                            "secondary_dimensions": {
                                 "type": "keyword"
                             },
                             "seqspec_of": {

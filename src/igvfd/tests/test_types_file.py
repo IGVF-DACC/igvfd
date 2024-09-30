@@ -105,13 +105,13 @@ def test_types_matrix_file_content_summary(testapp, matrix_file):
     testapp.patch_json(
         matrix_file['@id'],
         {
-            'dimension1': 'variant',
-            'dimension2': 'treatment',
+            'principal_dimension': 'variant',
+            'secondary_dimensions': ['treatment', 'antibody capture'],
             'content_type': 'transcriptome annotations'
         }
     )
     res = testapp.get(matrix_file['@id'])
-    assert res.json.get('content_summary') == 'variant by treatment transcriptome annotations'
+    assert res.json.get('content_summary') == 'variant by [treatment, antibody capture] transcriptome annotations'
 
 
 def test_integrated_in(testapp, construct_library_set_genome_wide, base_expression_construct_library_set, tabular_file):

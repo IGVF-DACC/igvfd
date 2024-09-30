@@ -1,6 +1,6 @@
 {
-    "hash": "1a947e1952a1c77e851f98a8aa25a7f3",
-    "index_name": "matrix_file_1a947e19",
+    "hash": "646a1056726f0acc2983f4fc2afacb45",
+    "index_name": "matrix_file_646a1056",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -261,12 +261,6 @@
                     "description": {
                         "copy_to": "_fuzzy",
                         "type": "text"
-                    },
-                    "dimension1": {
-                        "type": "keyword"
-                    },
-                    "dimension2": {
-                        "type": "keyword"
                     },
                     "documents": {
                         "type": "keyword"
@@ -1570,6 +1564,9 @@
                     "notes": {
                         "type": "text"
                     },
+                    "principal_dimension": {
+                        "type": "keyword"
+                    },
                     "reference_files": {
                         "type": "keyword"
                     },
@@ -1583,6 +1580,9 @@
                         "type": "keyword"
                     },
                     "schema_version": {
+                        "type": "keyword"
+                    },
+                    "secondary_dimensions": {
                         "type": "keyword"
                     },
                     "status": {

@@ -11,8 +11,8 @@
         "file_set",
         "content_type",
         "reference_files",
-        "dimension1",
-        "dimension2"
+        "principal_dimension",
+        "secondary_dimensions"
     ],
     "identifyingProperties": [
         "uuid",
@@ -68,15 +68,17 @@
                     },
                     "then": {
                         "properties": {
-                            "dimension1": {
+                            "principal_dimension": {
                                 "enum": [
                                     "genomic position"
                                 ]
                             },
-                            "dimension2": {
-                                "enum": [
-                                    "genomic position"
-                                ]
+                            "secondary_dimensions": {
+                                "items": {
+                                    "enum": [
+                                        "genomic position"
+                                    ]
+                                }
                             }
                         }
                     }
@@ -87,7 +89,7 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "6"
+            "default": "7"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
@@ -114,9 +116,9 @@
                 "igvf_utils": "contact matrix"
             }
         },
-        "dimension1": {
-            "title": "Dimension 1",
-            "description": "First dimension of the matrix.",
+        "principal_dimension": {
+            "title": "Principal Dimension",
+            "description": "The principal dimension of the matrix.",
             "type": "string",
             "enum": [
                 "cell",
@@ -132,22 +134,31 @@
                 "igvf_utils": "cell"
             }
         },
-        "dimension2": {
-            "title": "Dimension 2",
-            "description": "Second dimension of the matrix.",
-            "type": "string",
-            "enum": [
-                "cell",
-                "fragment",
-                "gene",
-                "time",
-                "treatment",
-                "variant",
-                "genomic position"
-            ],
+        "secondary_dimensions": {
+            "title": "Secondary Dimensions",
+            "description": "The secondary, tertiary....n levels of dimensions of the matrix.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "Secondary Dimensions",
+                "type": "string",
+                "enum": [
+                    "antibody capture",
+                    "cell",
+                    "CRISPR guide capture",
+                    "fragment",
+                    "gene",
+                    "gene expression",
+                    "genomic position",
+                    "time",
+                    "treatment",
+                    "variant"
+                ]
+            },
             "submissionExample": {
-                "appscript": "gene",
-                "igvf_utils": "gene"
+                "appscript": "[\"gene expression\", \"CRISPR guide capture\"]",
+                "igvf_utils": "gene expression, CRISPR guide capture"
             }
         },
         "file_format": {

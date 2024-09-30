@@ -315,3 +315,14 @@ def tabular_file_11_12(value, system):
         value['content_type'] = 'variant effects'
         notes += f'This object\'s content_type was SNP effect matrix, and changed to variants effects via upgrade.'
     return
+
+
+@upgrade_step('matrix_file', '6', '7')
+def matrix_file_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1950
+    if 'dimension1' in value:
+        value['principal_dimension'] = value['dimension1']
+        del value['dimension1']
+    if 'dimension2' in value:
+        value['secondary_dimensions'] = [value['dimension2']]
+        del value['dimension2']
