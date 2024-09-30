@@ -97,3 +97,13 @@ def assay_term_6_7(value, system):
         index = preferred_assay_titles.index('CRISPR FlowFISH')
         preferred_assay_titles[index] = 'CRISPR FlowFISH screen'
         value['preferred_assay_titles'] = preferred_assay_titles
+
+
+@upgrade_step('assay_term', '7', '8')
+def assay_term_7_8(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1855
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    if 'Variant painting' in preferred_assay_titles:
+        index = preferred_assay_titles.index('Variant painting')
+        preferred_assay_titles[index] = 'Variant painting via fluorescence'
+        value['preferred_assay_titles'] = preferred_assay_titles

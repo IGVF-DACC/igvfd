@@ -1,4 +1,9 @@
 ## Changelog for *`assay_term.json`*
+### Schema version 8
+
+* Extend `preferred_assay_titles` enum list to include `Variant painting via immunostaining`.
+* Extend `preferred_assay_titles` enum list to include `Variant painting via fluorescence`.
+* Adjust `preferred_assay_title` enum list to remove `Variant painting`.
 
 ### Minor changes since schema version 7
 
