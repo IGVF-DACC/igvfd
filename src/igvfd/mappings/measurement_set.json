@@ -260,6 +260,9 @@
                             "award": {
                                 "type": "keyword"
                             },
+                            "barcode_map": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -540,6 +543,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -881,6 +887,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "collections": {

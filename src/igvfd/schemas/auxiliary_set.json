@@ -69,6 +69,16 @@
                 "appscript": "cell hashing",
                 "igvf_utils": "cell hashing"
             }
+        },
+        "barcode_map": {
+            "title": "Link to barcode map tabular file",
+            "description": "The link to the barcode mapping tabular file.",
+            "type": "string",
+            "linkTo": "TabularFile",
+            "submissionExample": {
+                "appscript": "john-doe:tabular_file01 or IGVFFI4067OVRI",
+                "igvf_utils": "john-doe:tabular_file01 or IGVFFI4067OVRI"
+            }
         }
     },
     "fuzzy_searchable_fields": [

@@ -527,6 +527,9 @@ PHASE1_PIPELINES = {
     'user': [
         remove_keys('lab', 'submits_for'),
     ],
+    'auxiliary_set': [
+        remove_keys('barcode_map'),
+    ],
     'construct_library_set': [
         remove_keys('integrated_content_files', 'large_scale_gene_list', 'large_scale_loci_list'),
     ],
@@ -591,6 +594,9 @@ PHASE2_PIPELINES = {
     'user': [
         skip_rows_missing_all_keys('lab', 'submits_for'),
     ],
+    'auxiliary_set': [
+        skip_rows_missing_all_keys('barcode_map'),
+    ],
     'construct_library_set': [
         skip_rows_missing_all_keys('integrated_content_files', 'large_scale_gene_list', 'large_scale_loci_list'),
     ],
@@ -618,7 +624,7 @@ PHASE2_PIPELINES = {
                                    'time_post_library_delivery', 'time_post_library_delivery_units'),
     ],
     'multiplexed_sample': [
-        skip_rows_missing_all_keys('barcode_sample_map'),
+        skip_rows_missing_all_keys('barcode_map'),
     ],
     'reference_file': [
         skip_rows_missing_all_keys('derived_from', 'file_format_specifications'),

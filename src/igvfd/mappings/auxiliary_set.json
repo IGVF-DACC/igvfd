@@ -293,6 +293,9 @@
                         },
                         "type": "object"
                     },
+                    "barcode_map": {
+                        "type": "keyword"
+                    },
                     "collections": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
@@ -356,6 +359,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "collections": {
