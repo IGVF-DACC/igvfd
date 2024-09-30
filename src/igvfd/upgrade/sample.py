@@ -492,7 +492,7 @@ def multiplexed_sample_8_9(value, system):
 @upgrade_step('multiplexed_sample', '9', '10')
 def multiplexed_sample_9_10(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1928
-    value['multiplexing_method'] = ['barcode based']
+    value['multiplexing_methods'] = ['barcode based']
     notes = value.get('notes', '')
-    notes += f'This object\'s multiplexing_method has been set to barcode based by an upgrade. Please make sure it is correct before removing the notes.'
+    notes += f'This object\'s multiplexing_methods has been set to barcode based by an upgrade. Please make sure it is correct before removing the notes.'
     value['notes'] = notes.strip()

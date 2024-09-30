@@ -8,7 +8,7 @@
             "igvf:multiplex_alias"
         ],
         "barcode_map": "igvf:tabular_file_04_barcode_to_sample_mapping",
-        "multiplexing_method": [
+        "multiplexing_methods": [
             "genetic",
             "barcode based"
         ],

@@ -10,7 +10,7 @@ def multiplexed_sample(
         'multiplexed_samples': [
             tissue['@id'], in_vitro_cell_line['@id']
         ],
-        'multiplexing_method': ['barcode based']
+        'multiplexing_methods': ['barcode based']
     }
     return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
 
@@ -24,7 +24,7 @@ def multiplexed_sample_x2(
         'multiplexed_samples': [
             multiplexed_sample['@id'], primary_cell['@id']
         ],
-        'multiplexing_method': ['barcode based']
+        'multiplexing_methods': ['barcode based']
     }
     return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
 
@@ -38,7 +38,7 @@ def multiplexed_sample_x3(
         'multiplexed_samples': [
             multiplexed_sample_x2['@id'], in_vitro_cell_line['@id']
         ],
-        'multiplexing_method': ['barcode based']
+        'multiplexing_methods': ['barcode based']
     }
     return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
 
