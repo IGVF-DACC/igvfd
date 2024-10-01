@@ -156,7 +156,7 @@ def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set
     testapp.patch_json(
         measurement_set['@id'],
         {
-            'functional_assay_mechanisms': [phenotype_term_from_go['@id'], phenotype_term_myocardial_infarction]
+            'functional_assay_mechanisms': [phenotype_term_from_go['@id'], phenotype_term_myocardial_infarction['@id']]
         }
 
     )
