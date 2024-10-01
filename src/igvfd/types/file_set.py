@@ -437,7 +437,7 @@ class AnalysisSet(FileSet):
     @calculated_property(
         schema={
             'title': 'Functional Assay Mechanisms',
-            'description': 'The biological mechanism(s) the functional assay measures.',
+            'description': 'The biological processes measured by the functional assays.',
             'type': 'array',
             'minItems': 1,
             'uniqueItems': True,
