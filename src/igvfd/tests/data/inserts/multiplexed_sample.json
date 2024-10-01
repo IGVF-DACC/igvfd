@@ -8,6 +8,10 @@
             "igvf:multiplex_alias"
         ],
         "barcode_map": "igvf:tabular_file_04_barcode_to_sample_mapping",
+        "multiplexing_methods": [
+            "genetic",
+            "barcode based"
+        ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "collections": [

@@ -1,6 +1,6 @@
 {
-    "hash": "2f861e5856ce78995d74e96ec3157240",
-    "index_name": "multiplexed_sample_2f861e58",
+    "hash": "c0340f23c6de07a6910b372558c531c7",
+    "index_name": "multiplexed_sample_c0340f23",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1298,6 +1298,9 @@
                             "multiplexed_samples": {
                                 "type": "keyword"
                             },
+                            "multiplexing_methods": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -1738,6 +1741,9 @@
                             "multiplexed_samples": {
                                 "type": "keyword"
                             },
+                            "multiplexing_methods": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -1997,6 +2003,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "multiplexing_methods": {
+                        "type": "keyword"
                     },
                     "notes": {
                         "type": "text"
@@ -2401,6 +2410,9 @@
                                 "type": "keyword"
                             },
                             "multiplexed_samples": {
+                                "type": "keyword"
+                            },
+                            "multiplexing_methods": {
                                 "type": "keyword"
                             },
                             "notes": {

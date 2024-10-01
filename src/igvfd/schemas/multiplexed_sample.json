@@ -7,7 +7,8 @@
     "required": [
         "award",
         "lab",
-        "multiplexed_samples"
+        "multiplexed_samples",
+        "multiplexing_methods"
     ],
     "not": {
         "comment": "Multiplexed samples should not specify construct_library_sets, moi, nucleic_acid_delivery, or time_post_library_delivery/time_post_library_delivery_units.",
@@ -79,7 +80,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "9"
+            "default": "10"
         },
         "multiplexed_samples": {
             "title": "Multiplexed Samples",
@@ -96,6 +97,22 @@
             "submissionExample": {
                 "appscript": "[\"TSTSM02881437\", \"john-doe:tissue01\", \"john-doe:primary_cell02\"]",
                 "igvf_utils": "TSTSM02881437, john-doe:tissue01, john-doe:primary_cell02"
+            }
+        },
+        "multiplexing_methods": {
+            "title": "Multiplexing Methods",
+            "description": "The methods used for multiplexing and demultiplexing.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Multiplexing Method",
+                "description": "The method used for multiplexing and demultiplexing.",
+                "type": "string",
+                "enum": [
+                    "genetic",
+                    "barcode based"
+                ]
             }
         },
         "cellular_sub_pool": {

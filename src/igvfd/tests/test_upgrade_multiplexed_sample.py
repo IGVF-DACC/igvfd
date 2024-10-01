@@ -52,3 +52,9 @@ def test_multiplexed_sample_upgrade_8_9(upgrader, multiplexed_sample_v8, tabular
     assert value['schema_version'] == '9'
     assert 'barcode_sample_map' not in value
     assert 'barcode_map' in value and value['barcode_map'] == tabular_file_v10['@id']
+
+
+def test_multiplexed_sample_upgrade_9_10(upgrader, multiplexed_sample_v9):
+    value = upgrader.upgrade('multiplexed_sample', multiplexed_sample_v9, current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert value['multiplexing_methods'] == ['barcode based']

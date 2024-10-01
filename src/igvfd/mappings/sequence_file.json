@@ -1,6 +1,6 @@
 {
-    "hash": "e2da436665175e600de8e5491693736f",
-    "index_name": "sequence_file_e2da4366",
+    "hash": "f37c3e308ac67ed73bed2001354bdd19",
+    "index_name": "sequence_file_f37c3e30",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -688,6 +688,9 @@
                                         "type": "keyword"
                                     },
                                     "multiplexed_samples": {
+                                        "type": "keyword"
+                                    },
+                                    "multiplexing_methods": {
                                         "type": "keyword"
                                     },
                                     "notes": {

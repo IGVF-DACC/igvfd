@@ -21,9 +21,11 @@ def audit_multiplexed_sample_no_barcode_map(value, system):
     ]
     '''
     audit_message = get_audit_message(audit_multiplexed_sample_no_barcode_map, index=0)
-    if not (value.get('barcode_map')):
-        detail = (
-            f'Multiplexed sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
-            f'has no `barcode_map`.'
-        )
-        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+    if 'barcode based' in value['multiplexing_methods']:
+        if not (value.get('barcode_map')):
+            detail = (
+                f'Multiplexed sample {audit_link(path_to_text(value["@id"]), value["@id"])} '
+                f'has no `barcode_map`.'
+            )
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

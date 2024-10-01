@@ -1,6 +1,6 @@
 {
-    "hash": "293138fb5aa39862842827d82eb6e061",
-    "index_name": "configuration_file_293138fb",
+    "hash": "a6f42af02be9ecce832d19d7e42fc2d5",
+    "index_name": "configuration_file_a6f42af0",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -673,6 +673,9 @@
                                         "type": "keyword"
                                     },
                                     "multiplexed_samples": {
+                                        "type": "keyword"
+                                    },
+                                    "multiplexing_methods": {
                                         "type": "keyword"
                                     },
                                     "notes": {
