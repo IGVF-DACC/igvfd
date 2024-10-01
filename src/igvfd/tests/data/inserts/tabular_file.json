@@ -240,5 +240,24 @@
         "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
+    },
+    {
+        "uuid": "94a5dd91-ad21-445c-9352-dfb76632f825",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:variant_localization_impacts"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-06-09T12:34:56Z",
+        "md5sum": "03f93107a2d62000c5895a9305a05b0d",
+        "file_format": "tsv",
+        "content_type": "variant localization impacts",
+        "submitted_file_name": "/Users/igvf/igvf_files/variant_localization_impacts.tsv.gz",
+        "file_size": 3132,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "IGVFDS3333DDDD",
+        "controlled_access": false
     }
 ]
