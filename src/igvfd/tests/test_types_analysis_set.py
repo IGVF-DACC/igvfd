@@ -151,6 +151,7 @@ def test_analysis_set_sample_summary(testapp, analysis_set_with_sample, measurem
     res = testapp.get(analysis_set_with_sample['@id']).json
     assert res.get('sample_summary', '') == 'K562 differentiated cell specimen induced to endothelial cell of vascular tree, at 1 time point(s) post change, differentiated with treatment(s), modified with a guide library, sorted on expression of MYC'
 
+
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go):
     testapp.patch_json(
         analysis_set_base['@id'],

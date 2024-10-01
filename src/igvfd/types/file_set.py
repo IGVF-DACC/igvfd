@@ -433,7 +433,7 @@ class AnalysisSet(FileSet):
         summary = f"{', '.join(all_sample_terms)}{additional_phrase_suffix}"
 
         return summary
-    
+
     @calculated_property(
         schema={
             'title': 'Functional Assay Mechanisms',
