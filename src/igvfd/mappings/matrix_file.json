@@ -1,6 +1,6 @@
 {
-    "hash": "62d65dfd6c0faf0f4b148a094a8c8a5f",
-    "index_name": "matrix_file_62d65dfd",
+    "hash": "5564ee9cd92012ba96822a0232df2e59",
+    "index_name": "matrix_file_5564ee9c",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -372,6 +372,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "functional_assay_mechanisms": {
                                 "type": "keyword"
                             },
                             "guide_type": {
