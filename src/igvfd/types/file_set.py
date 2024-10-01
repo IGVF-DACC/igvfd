@@ -317,6 +317,122 @@ class AnalysisSet(FileSet):
                     protocols.update(protocol)
         return list(protocols)
 
+    @calculated_property(
+        condition='samples',
+        schema={
+            'title': 'Sample Summary',
+            'description': 'A summary of the samples associated with input file sets of this analysis set.',
+            'type': 'string',
+            'notSubmittable': True,
+        }
+    )
+    def sample_summary(self, request, samples=None):
+        sample_classification_term_target = dict()
+        treatment_purposes = set()
+        differentiation_times = set()
+        construct_library_set_types = set()
+        sorted_from = set()
+        targeted_genes_for_sorting = set()
+
+        treatment_purpose_to_adjective = {
+            'activation': 'activated',
+            'agonist': 'agonized',
+            'antagonist': 'antagonized',
+            'control': 'treated with a control',
+            'differentiation': 'differentiated',
+            'de-differentiation': 'de-differentiated',
+            'perturbation': 'perturbed',
+            'selection': 'selected',
+            'stimulation': 'stimulated'
+        }
+
+        for sample in samples:
+            sample_object = request.embed(sample, '@@object')
+
+            # Group sample and targeted sample terms according to classification.
+            # Other metadata such as treatment info are lumped together.
+            classification = ' and '.join(sample_object['classifications'])
+            if classification not in sample_classification_term_target:
+                sample_classification_term_target[classification] = set()
+
+            for term in sample_object['sample_terms']:
+                sample_term_object = request.embed(term, '@@object?skip_calculated=true')
+                if 'targeted_sample_term' in sample_object:
+                    targeted_sample_term_object = request.embed(
+                        sample_object['targeted_sample_term'], '@@object?skip_calculated=true')
+                    sample_classification_term_target[classification].add(
+                        f"{sample_term_object['term_name']} "
+                        f"induced to {targeted_sample_term_object['term_name']}"
+                    )
+                else:
+                    sample_classification_term_target[classification].add(
+                        f"{sample_term_object['term_name']}"
+                    )
+
+            if 'time_post_change' in sample_object:
+                time = sample_object['time_post_change']
+                time_unit = sample_object['time_post_change_units']
+                differentiation_times.add(f'{time} {time_unit}')
+            if 'construct_library_sets' in sample_object:
+                for construct_library_set in sample_object['construct_library_sets']:
+                    cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
+                    construct_library_set_types.add(cls_object['file_set_type'])
+            if 'sorted_from' in sample_object:
+                sorted_from.add(True)
+                for file_set in sample_object['file_sets']:
+                    if file_set.startswith('/measurement-sets/'):
+                        fileset_object = request.embed(file_set, '@@object?skip_calculated=true')
+                        if 'targeted_genes' in fileset_object:
+                            for gene in fileset_object['targeted_genes']:
+                                gene_object = request.embed(gene, '@@object?skip_calculated=true')
+                                targeted_genes_for_sorting.add(gene_object['symbol'])
+            if 'treatments' in sample_object:
+                for treatment in sample_object['treatments']:
+                    treatment_object = request.embed(treatment, '@@object?skip_calculated=true')
+                    treatment_purposes.add(treatment_purpose_to_adjective.get(treatment_object['purpose'], ''))
+
+        all_sample_terms = []
+        for classification in sorted(sample_classification_term_target.keys()):
+            terms_by_classification = f"{', '.join(sample_classification_term_target[classification])}"
+            # Insert the classification before the targeted_sample_term if it exists.
+            if 'induced to' in terms_by_classification:
+                terms_by_classification = terms_by_classification.replace(
+                    'induced to', f'{classification} induced to'
+                )
+            else:
+                terms_by_classification = f'{terms_by_classification} {classification}'
+            all_sample_terms.append(terms_by_classification)
+
+        differentiation_time_phrase = ''
+        if differentiation_times:
+            differentiation_time_phrase = f'at {len(differentiation_times)} time point(s) post change'
+        treatments_phrase = ''
+        if treatment_purposes:
+            treatments_phrase = f"{', '.join(treatment_purposes)} with treatment(s)"
+        construct_library_set_type_phrase = ''
+        if construct_library_set_types:
+            construct_library_set_type_phrase = f'modified with a {", ".join(construct_library_set_types)}'
+        sorted_phrase = ''
+        if sorted_from:
+            if targeted_genes_for_sorting:
+                sorted_phrase = f'sorted on expression of {", ".join(targeted_genes_for_sorting)}'
+            else:
+                sorted_phrase = f'sorted into bins'
+
+        additional_phrases = [
+            differentiation_time_phrase,
+            treatments_phrase,
+            construct_library_set_type_phrase,
+            sorted_phrase
+        ]
+        additional_phrases_joined = ', '.join([x for x in additional_phrases if x != ''])
+        additional_phrase_suffix = ''
+        if additional_phrases_joined:
+            additional_phrase_suffix = f', {additional_phrases_joined}'
+        summary = f"{', '.join(all_sample_terms)}{additional_phrase_suffix}"
+
+        return summary
+
 
 @collection(
     name='curated-sets',

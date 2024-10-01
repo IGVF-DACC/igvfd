@@ -1,6 +1,6 @@
 {
-    "hash": "0d7c6a88321f0f94432c2911e4c407fc",
-    "index_name": "reference_file_0d7c6a88",
+    "hash": "d86958bccd9e799963237360240d6488",
+    "index_name": "reference_file_d86958bc",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -493,6 +493,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {

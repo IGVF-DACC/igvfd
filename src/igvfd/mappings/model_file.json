@@ -1,6 +1,6 @@
 {
-    "hash": "ead027a64e3080d1e5c53644c742ca88",
-    "index_name": "model_file_ead027a6",
+    "hash": "acd5fa1ec73452463b6b36ecb5ca2fcd",
+    "index_name": "model_file_acd5fa1e",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -474,6 +474,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {

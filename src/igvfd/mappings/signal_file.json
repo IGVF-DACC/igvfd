@@ -1,6 +1,6 @@
 {
-    "hash": "da7b236cb8c6a34aa6796c754e4beac0",
-    "index_name": "signal_file_da7b236c",
+    "hash": "9bb52d3579680524b5d4c4ee711bed16",
+    "index_name": "signal_file_9bb52d35",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -552,6 +552,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {

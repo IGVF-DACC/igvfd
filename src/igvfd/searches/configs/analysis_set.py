@@ -122,6 +122,9 @@ def analysis_set():
             'input_file_sets': {
                 'title': 'Input File Sets'
             },
+            'sample_summary': {
+                'title': 'Sample Summary'
+            },
             'summary': {
                 'title': 'Summary'
             },

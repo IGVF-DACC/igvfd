@@ -1,6 +1,6 @@
 {
-    "hash": "14c02eb88a088a0d2ac90bb971156938",
-    "index_name": "technical_sample_14c02eb8",
+    "hash": "0210caa5b9bc3f0d76e8dfc9a07937ff",
+    "index_name": "technical_sample_0210caa5",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -579,6 +579,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {

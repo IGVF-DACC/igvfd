@@ -1,6 +1,6 @@
 {
-    "hash": "4807c50d67f877a87454b9fabc789c3a",
-    "index_name": "whole_organism_4807c50d",
+    "hash": "36df703a15da6bc5fba49788b46d58d8",
+    "index_name": "whole_organism_36df703a",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -671,6 +671,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {

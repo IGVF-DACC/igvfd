@@ -1,6 +1,6 @@
 {
-    "hash": "bfda4230ff561ff2735ea834607474f8",
-    "index_name": "alignment_file_bfda4230",
+    "hash": "559c557c33c1fb3d2ec4988eb71128aa",
+    "index_name": "alignment_file_559c557c",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -480,6 +480,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {

@@ -1,6 +1,6 @@
 {
-    "hash": "c4a1d4073142e8a46c339a043f0daeb0",
-    "index_name": "tissue_c4a1d407",
+    "hash": "4db22c7875090a9abfd40f72d3041bd2",
+    "index_name": "tissue_4db22c78",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -674,6 +674,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {

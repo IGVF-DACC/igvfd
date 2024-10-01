@@ -1,6 +1,6 @@
 {
-    "hash": "d37914c800d305a8ae7a323fb8bc4b99",
-    "index_name": "construct_library_set_d37914c8",
+    "hash": "e09d7545bf15c81a05b30d286fdce284",
+    "index_name": "construct_library_set_e09d7545",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1196,6 +1196,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {

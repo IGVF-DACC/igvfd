@@ -1,6 +1,6 @@
 {
-    "hash": "eeb35b6973cf97e9573f678a584db320",
-    "index_name": "model_set_eeb35b69",
+    "hash": "e1feaf8ade1d52982d00f025aa1f99f1",
+    "index_name": "model_set_e1feaf8a",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -494,6 +494,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {
@@ -1296,6 +1299,9 @@
                                 "type": "keyword"
                             },
                             "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "sample_summary": {
                                 "type": "keyword"
                             },
                             "samples": {
