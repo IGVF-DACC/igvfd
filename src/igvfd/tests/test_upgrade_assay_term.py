@@ -42,3 +42,9 @@ def test_assay_term_upgrade_6_7(upgrader, assay_term_v6):
     value = upgrader.upgrade('assay_term', assay_term_v6, current_version='6', target_version='7')
     assert value['schema_version'] == '7'
     assert set(value.get('preferred_assay_titles')) == {'CRISPR FlowFISH screen', 'Variant FlowFISH'}
+
+
+def test_assay_term_upgrade_7_8(upgrader, assay_term_v7):
+    value = upgrader.upgrade('assay_term', assay_term_v7, current_version='7', target_version='8')
+    assert value['schema_version'] == '8'
+    assert set(value.get('preferred_assay_titles')) == {'Variant painting via fluorescence'}

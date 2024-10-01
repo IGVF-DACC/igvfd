@@ -1,5 +1,10 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 22
+* Extend `preferred_assay_title` enum list to include `Variant painting via immunostaining`.
+* Extend `preferred_assay_title` enum list to include `Variant painting via fluorescence`.
+* Adjust `preferred_assay_title` enum list to remove `Variant painting`.
+
 ### Minor changes since schema version 21
 
 * Extend `preferred_assay_title` enum list to include `VAMP-seq (MultiSTEP)`.

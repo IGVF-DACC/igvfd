@@ -411,5 +411,21 @@
         "assay_term": "/assay-terms/OBI_0000916/",
         "preferred_assay_title": "VAMP-seq (MultiSTEP)",
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:variant-painting-immunostaining"
+        ],
+        "award": "1UM1HG011969-01",
+        "lab": "lea-starita",
+        "status": "released",
+        "release_timestamp": "2024-07-06T12:35:55Z",
+        "uuid": "eb04955c-6405-41c8-92a8-b94e93846e45",
+        "samples": [
+            "igvf-dacc:in_vitro_system_cell_line_sorted_fraction_1"
+        ],
+        "assay_term": "/assay-terms/OBI_0000916/",
+        "preferred_assay_title": "Variant painting via fluorescence",
+        "file_set_type": "experimental data"
     }
 ]

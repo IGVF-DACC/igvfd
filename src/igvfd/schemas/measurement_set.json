@@ -50,7 +50,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "21"
+            "default": "22"
         },
         "samples": {
             "maxItems": 1
@@ -110,7 +110,8 @@
                 "STARR-seq",
                 "SUPERSTARR",
                 "Cell painting",
-                "Variant painting",
+                "Variant painting via fluorescence",
+                "Variant painting via immunostaining",
                 "smFISH",
                 "MERFISH",
                 "Proliferation CRISPR screen",

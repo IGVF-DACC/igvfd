@@ -133,3 +133,9 @@ def test_measurement_set_upgrade_20_21(upgrader, measurement_set_v20):
     value = upgrader.upgrade('measurement_set', measurement_set_v20, current_version='20', target_version='21')
     assert value['schema_version'] == '21'
     assert value.get('preferred_assay_title') == 'SUPERSTARR'
+
+
+def test_measurement_set_upgrade_21_22(upgrader, measurement_set_v21):
+    value = upgrader.upgrade('measurement_set', measurement_set_v21, current_version='21', target_version='22')
+    assert value['schema_version'] == '22'
+    assert value.get('preferred_assay_title') == 'Variant painting via fluorescence'
