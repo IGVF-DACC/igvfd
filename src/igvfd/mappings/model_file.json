@@ -1,6 +1,6 @@
 {
-    "hash": "acd5fa1ec73452463b6b36ecb5ca2fcd",
-    "index_name": "model_file_acd5fa1e",
+    "hash": "ed13e1a376ee4a76bf802b7ac35ec60b",
+    "index_name": "model_file_ed13e1a3",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -685,6 +685,9 @@
                                         "type": "keyword"
                                     },
                                     "multiplexed_samples": {
+                                        "type": "keyword"
+                                    },
+                                    "multiplexing_methods": {
                                         "type": "keyword"
                                     },
                                     "notes": {

@@ -1,6 +1,6 @@
 {
-    "hash": "f2aaac249289e99c702e2776796e5256",
-    "index_name": "auxiliary_set_f2aaac24",
+    "hash": "1770da68db518893d63a9a8abbace8df",
+    "index_name": "auxiliary_set_1770da68",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1669,6 +1669,9 @@
                                 "type": "keyword"
                             },
                             "multiplexed_samples": {
+                                "type": "keyword"
+                            },
+                            "multiplexing_methods": {
                                 "type": "keyword"
                             },
                             "notes": {

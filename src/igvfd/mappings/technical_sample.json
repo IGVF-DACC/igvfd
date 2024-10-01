@@ -1,6 +1,6 @@
 {
-    "hash": "0210caa5b9bc3f0d76e8dfc9a07937ff",
-    "index_name": "technical_sample_0210caa5",
+    "hash": "d08fdf3bc1f9320014b6d9cc095ef1d7",
+    "index_name": "technical_sample_d08fdf3b",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -880,6 +880,9 @@
                             "multiplexed_samples": {
                                 "type": "keyword"
                             },
+                            "multiplexing_methods": {
+                                "type": "keyword"
+                            },
                             "notes": {
                                 "type": "text"
                             },
@@ -1386,6 +1389,9 @@
                                 "type": "keyword"
                             },
                             "multiplexed_samples": {
+                                "type": "keyword"
+                            },
+                            "multiplexing_methods": {
                                 "type": "keyword"
                             },
                             "notes": {

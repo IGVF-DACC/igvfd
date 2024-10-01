@@ -1,6 +1,6 @@
 {
-    "hash": "559c557c33c1fb3d2ec4988eb71128aa",
-    "index_name": "alignment_file_559c557c",
+    "hash": "adeadf4f6481e96a50c508e1855d48b8",
+    "index_name": "alignment_file_adeadf4f",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -691,6 +691,9 @@
                                         "type": "keyword"
                                     },
                                     "multiplexed_samples": {
+                                        "type": "keyword"
+                                    },
+                                    "multiplexing_methods": {
                                         "type": "keyword"
                                     },
                                     "notes": {

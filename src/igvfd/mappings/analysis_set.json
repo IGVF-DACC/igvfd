@@ -1,6 +1,6 @@
 {
-    "hash": "27fb35daf1e64b99b124434492ed44d1",
-    "index_name": "analysis_set_27fb35da",
+    "hash": "d1947a93f513f0c5f0332e7a3fe223bd",
+    "index_name": "analysis_set_d1947a93",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1883,6 +1883,9 @@
                                 "type": "keyword"
                             },
                             "multiplexed_samples": {
+                                "type": "keyword"
+                            },
+                            "multiplexing_methods": {
                                 "type": "keyword"
                             },
                             "notes": {
