@@ -273,7 +273,7 @@
         },
         "functional_assay_mechanisms": {
             "title": "Functional Assay Mechanisms",
-            "description": "The biological processes measured by this functional assay. For example, a VAMP-seq (MultiSTEP) assay measures the effects of variants on protein carboxylation and secretion processes.",
+            "description": "The biological process(es) measured by this functional assay. For example, a VAMP-seq (MultiSTEP) assay measures the effects of variants on protein carboxylation and secretion processes.",
             "type": "array",
             "minItems": 1,
             "uniqueItems": true,
