@@ -107,7 +107,7 @@
             "uniqueItems": true,
             "items": {
                 "title": "Multiplexing Method",
-                "description": "The methods used for multiplexing and demultiplexing.",
+                "description": "The method used for multiplexing and demultiplexing.",
                 "type": "string",
                 "enum": [
                     "genetic",
