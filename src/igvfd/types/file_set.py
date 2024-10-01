@@ -451,8 +451,8 @@ class AnalysisSet(FileSet):
     )
     def functional_assay_mechanisms(self, request, input_file_sets=None):
         mechanism_objects = []
-        file_set_objs = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
-        for file_set_object in file_set_objs:
+        file_set_objects = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
+        for file_set_object in file_set_objects:
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
         return list(set(mechanism_objects))
