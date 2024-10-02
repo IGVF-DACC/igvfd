@@ -152,3 +152,15 @@ def user_v4(user_v1):
         'email': 'email_name@email_domain.com '
     })
     return item
+
+
+@pytest.fixture
+def user_v5(user_v1):
+    item = user_v1.copy()
+    item.update(
+        {
+            'schema_version': '5',
+            'email': 'SOME_CAPITAL_EMAIL@cs.EDU.gov',
+        }
+    )
+    return item

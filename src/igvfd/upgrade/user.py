@@ -43,3 +43,9 @@ def user_4_5(value, system):
         notes = value.get('notes', '')
         notes = f'{notes} This user previously specified {email} as its email, but was upgraded to {new_email} as it violated the regular expression introduced.'
     return
+
+
+@upgrade_step('user', '5', '6')
+def user_5_6(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1942
+    value['email'] = value['email'].lower()
