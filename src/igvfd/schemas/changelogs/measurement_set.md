@@ -8,6 +8,7 @@
 ### Minor changes since schema version 21
 
 * Extend `preferred_assay_title` enum list to include `VAMP-seq (MultiSTEP)`.
+* Add `functional_assay_mechanisms`.
 * Extend `preferred_assay_title` enum list to include `STARR-seq`.
 
 ### Schema version 21

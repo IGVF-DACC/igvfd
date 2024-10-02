@@ -1,6 +1,6 @@
 {
-    "hash": "2949872bdec0cb0ac393c5fe98b097cf",
-    "index_name": "construct_library_set_2949872b",
+    "hash": "dbd8163c2d30c8628f069933c6519499",
+    "index_name": "construct_library_set_dbd8163c",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1106,6 +1106,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "functional_assay_mechanisms": {
                                 "type": "keyword"
                             },
                             "guide_type": {

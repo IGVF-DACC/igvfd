@@ -1,6 +1,6 @@
 {
-    "hash": "0ec31a13c0b6a7bf91d2738d64c95d58",
-    "index_name": "in_vitro_system_0ec31a13",
+    "hash": "aaffc8824bc9e4e94d815020baec798f",
+    "index_name": "in_vitro_system_aaffc882",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -678,6 +678,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "functional_assay_mechanisms": {
                                 "type": "keyword"
                             },
                             "guide_type": {

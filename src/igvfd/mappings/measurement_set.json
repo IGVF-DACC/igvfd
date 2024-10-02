@@ -1,6 +1,6 @@
 {
-    "hash": "ca49d5054b25394cd5dd8fba62fa018d",
-    "index_name": "measurement_set_ca49d505",
+    "hash": "8613081d9e6d407cb33738887cda6a81",
+    "index_name": "measurement_set_8613081d",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -584,6 +584,9 @@
                             "files": {
                                 "type": "keyword"
                             },
+                            "functional_assay_mechanisms": {
+                                "type": "keyword"
+                            },
                             "guide_type": {
                                 "type": "keyword"
                             },
@@ -917,6 +920,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "functional_assay_mechanisms": {
                                 "type": "keyword"
                             },
                             "guide_type": {
@@ -1693,6 +1699,75 @@
                         },
                         "type": "object"
                     },
+                    "functional_assay_mechanisms": {
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "ancestors": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "deprecated_ntr_terms": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "is_a": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "ontology": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "synonyms": {
+                                "type": "keyword"
+                            },
+                            "term_id": {
+                                "type": "keyword"
+                            },
+                            "term_name": {
+                                "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
+                    },
                     "input_file_set_for": {
                         "type": "keyword"
                     },
@@ -1991,6 +2066,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "functional_assay_mechanisms": {
                                 "type": "keyword"
                             },
                             "input_file_set_for": {

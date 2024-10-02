@@ -1,6 +1,6 @@
 {
-    "hash": "0f0adc4a392efd066cde007dc7f7d73a",
-    "index_name": "model_set_0f0adc4a",
+    "hash": "1d0747781e3ea35cfb63ced48219933a",
+    "index_name": "model_set_1d074778",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -401,6 +401,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "functional_assay_mechanisms": {
                                 "type": "keyword"
                             },
                             "guide_type": {
@@ -1206,6 +1209,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "functional_assay_mechanisms": {
                                 "type": "keyword"
                             },
                             "guide_type": {

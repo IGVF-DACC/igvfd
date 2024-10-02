@@ -1,6 +1,6 @@
 {
-    "hash": "d08fdf3bc1f9320014b6d9cc095ef1d7",
-    "index_name": "technical_sample_d08fdf3b",
+    "hash": "45358a80f995b0859dd73c2f0d32f564",
+    "index_name": "technical_sample_45358a80",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -430,6 +430,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "functional_assay_mechanisms": {
                                 "type": "keyword"
                             },
                             "guide_type": {

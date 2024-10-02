@@ -190,7 +190,8 @@ class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type'])
+        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type']),
+        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
@@ -433,6 +434,29 @@ class AnalysisSet(FileSet):
 
         return summary
 
+    @calculated_property(
+        schema={
+            'title': 'Functional Assay Mechanisms',
+            'description': 'The biological processes measured by the functional assays.',
+            'type': 'array',
+            'minItems': 1,
+            'uniqueItems': True,
+            'items': {
+                'title': 'Phenotype Term',
+                'type': 'string',
+                'linkTo': 'PhenotypeTerm'
+            },
+            'notSubmittable': True
+        }
+    )
+    def functional_assay_mechanisms(self, request, input_file_sets=None):
+        mechanism_objects = []
+        file_set_objects = get_fileset_objs_from_input_file_sets(request=request, input_file_sets=input_file_sets)
+        for file_set_object in file_set_objects:
+            if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
+                mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
+        return list(set(mechanism_objects))
+
 
 @collection(
     name='curated-sets',
@@ -544,6 +568,7 @@ class MeasurementSet(FileSet):
              '@id', 'file_set_type', 'accession', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name']),
         Path('files.sequencing_platform', include=['@id', 'term_name']),
         Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
+        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name'])
     ]
 
     audit_inherit = FileSet.audit_inherit + [

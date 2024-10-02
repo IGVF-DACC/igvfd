@@ -1,6 +1,6 @@
 {
-    "hash": "5ba166e086897f8a0436dcf1e49dcfe6",
-    "index_name": "primary_cell_5ba166e0",
+    "hash": "40ce4d9265c1ed7d4435777a127ca676",
+    "index_name": "primary_cell_40ce4d92",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -525,6 +525,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "functional_assay_mechanisms": {
                                 "type": "keyword"
                             },
                             "guide_type": {

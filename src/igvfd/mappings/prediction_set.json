@@ -1,6 +1,6 @@
 {
-    "hash": "89b695299e5f41bc2622d307490cedef",
-    "index_name": "prediction_set_89b69529",
+    "hash": "bbc8367589921a231fca148a45206f71",
+    "index_name": "prediction_set_bbc83675",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -401,6 +401,9 @@
                                 "type": "keyword"
                             },
                             "files": {
+                                "type": "keyword"
+                            },
+                            "functional_assay_mechanisms": {
                                 "type": "keyword"
                             },
                             "guide_type": {

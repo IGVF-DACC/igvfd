@@ -83,5 +83,12 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "f0aa38a6-fdf2-11ec-7aee-fc96ac1250ce"
+    },
+    {
+        "term_id": "GO:0018214",
+        "term_name": "Protein Carboxylation",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "uuid": "fab1373c-c627-4473-86ba-092ee0e72122"
     }
 ]

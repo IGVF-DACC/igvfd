@@ -136,6 +136,9 @@ def analysis_set():
             },
             'protocols': {
                 'title': 'Protocols'
+            },
+            'functional_assay_mechanisms.term_name': {
+                'title': 'Functional Assay Mechanisms'
             }
         },
     }

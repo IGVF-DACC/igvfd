@@ -102,6 +102,7 @@
         "lab.title",
         "files.content_type",
         "files.submitted_file_name",
+        "functional_assay_mechanisms.term_name",
         "samples.summary",
         "samples.sample_terms.term_name",
         "samples.targeted_sample_term.term_name",
