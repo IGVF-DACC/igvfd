@@ -106,7 +106,8 @@
     },
     "fuzzy_searchable_fields": [
         "name",
-        "title"
+        "title",
+        "layout.blocks.body"
     ],
     "exact_searchable_fields": [
         "@type"
