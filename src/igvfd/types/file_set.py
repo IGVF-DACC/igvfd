@@ -653,7 +653,7 @@ class MeasurementSet(FileSet):
             if 'CRISPR' in assay:
                 assay_phrase = assay.replace('CRISPR', f'CRISPR {modality_set}')
             else:
-                modality_phrase = f'{modality_set}'
+                modality_phrase = f'{modality_set} '
                 assay_phrase = f'{assay}'
         if len(modality_set) == 0:
             assay_phrase = f'{assay}'
