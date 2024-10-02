@@ -259,5 +259,24 @@
         "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
+    },
+    {
+        "uuid": "f47ac10b-58cc-4372-a567-0e02b2c3d479",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:peak_quantifications"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-06-09T12:34:56Z",
+        "md5sum": "17d63c7c831bbcf0637516cc15e694c4",
+        "file_format": "tsv",
+        "content_type": "peak quantifications",
+        "submitted_file_name": "/Users/igvf/igvf_files/peak_quantifications.tsv.gz",
+        "file_size": 3139,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "IGVFDS3333DDDD",
+        "controlled_access": false
     }
 ]
