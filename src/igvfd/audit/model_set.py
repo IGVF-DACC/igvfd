@@ -28,7 +28,7 @@ def audit_external_input_data_content_type(value, system):
         if external_input_data_object['content_type'] != 'external source data':
             detail = (
                 f'The `content_type` of `external_input_data` file '
-                f'{audit_link(path_to_text(external_input_data_object["@id"]), external_input_data_object["@id"])} '
+                f'{audit_link(path_to_text(external_input_data), external_input_data)} '
                 f'is {external_input_data_object["content_type"]}.'
             )
             yield AuditFailure(

@@ -39,7 +39,6 @@
         "software_version": "/software-versions/bowtie2-v2.4.4/",
         "publications": [
             "PMID:22955616"
-        ],
-        "external_input_data": "igvf:tabular_file_01_bed"
+        ]
     }
 ]

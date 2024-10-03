@@ -3,16 +3,16 @@ import pytest
 
 def test_audit_external_input_data_content_type(
     testapp,
-    model_set,
+    model_set_no_input,
     tabular_file
 ):
     testapp.patch_json(
-        model_set['@id'],
+        model_set_no_input['@id'],
         {
             'external_input_data': tabular_file['@id']
         }
     )
-    res = testapp.get(model_set['@id'] + '@@audit')
+    res = testapp.get(model_set_no_input['@id'] + '@@audit')
     assert any(
         error['category'] == 'inconsistent external input data'
         for error in res.json['audit'].get('WARNING', [])
@@ -23,8 +23,8 @@ def test_audit_external_input_data_content_type(
             'content_type': 'external source data'
         }
     )
-    res = testapp.get(model_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'inconsistent external input data'
+    res = testapp.get(model_set_no_input['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent external input data'
         for error in res.json['audit'].get('ERROR', [])
     )
