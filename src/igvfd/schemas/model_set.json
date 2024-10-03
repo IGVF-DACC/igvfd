@@ -176,6 +176,16 @@
                 "appscript": "[\"ENSMUSG00000044487\", \"john-doe:gene01\"]",
                 "igvf_utils": "ENSMUSG00000044487, john-doe:gene01"
             }
+        },
+        "external_input_data": {
+            "title": "External Input Data",
+            "description": "A tabular file with links to external data utilized for this model.",
+            "type": "string",
+            "linkTo": "TabularFile",
+            "submissionExample": {
+                "appscript": "IGVFFI1000QQQQ or igvf:external_input_data_file",
+                "igvf_utils": "IGVFFI1000QQQQ or igvf:external_input_data_file"
+            }
         }
     },
     "fuzzy_searchable_fields": [

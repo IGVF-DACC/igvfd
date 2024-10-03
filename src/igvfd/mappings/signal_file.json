@@ -1,6 +1,6 @@
 {
-    "hash": "18ca07eba62f9ec6189761225fc0b5f6",
-    "index_name": "signal_file_18ca07eb",
+    "hash": "8c3741c40ee30650d8f8cac6a57a748a",
+    "index_name": "signal_file_8c3741c4",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -453,6 +453,9 @@
                                 "type": "keyword"
                             },
                             "external_image_url": {
+                                "type": "keyword"
+                            },
+                            "external_input_data": {
                                 "type": "keyword"
                             },
                             "file_set_type": {
