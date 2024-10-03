@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 7
 
+* Extend `file_format` enum list to include `tsv`.
+* Extend `content_type` enum list to include `model parameters`.
 * Add calculated property `assay_titles`.
 * Extend `content_type` enum list to include `scale factors`.
 * Extend `file_format` enum list to include `json`.
