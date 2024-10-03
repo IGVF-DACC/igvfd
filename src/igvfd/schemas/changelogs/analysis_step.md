@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Extend `analysis_step_types` enum list to include `counts normalization`.
 * Extend `input_content_types` enum list to include `variant localization impacts`.
 * Extend `output_content_types` enum list to include `variant localization impacts`.
 * Extend `input_content_types` enum list to include `external source data`.
