@@ -1,5 +1,9 @@
 ## Changelog for *`multiplexed_sample.json`*
 
+### Minor changes since schema version 10
+
+* Extend `collections` enum list to include `VarChAMP`.
+
 ### Schema version 10
 
 * Add required property `multiplexing_methods`.

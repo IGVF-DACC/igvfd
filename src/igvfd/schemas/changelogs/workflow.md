@@ -1,5 +1,9 @@
 ## Changelog for *`workflow.json`*
 
+### Minor changes since schema version 5
+
+* Extend `collections` enum list to include `VarChAMP`.
+
 ### Schema version 5
 
 * Remove `publication_identifiers`.
