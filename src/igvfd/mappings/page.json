@@ -1,6 +1,6 @@
 {
-    "hash": "cefa624f6aac872028d56039a51d3157",
-    "index_name": "page_cefa624f",
+    "hash": "6b7a7c538d6c774ec5c4b1d1380ed8e1",
+    "index_name": "page_6b7a7c53",
     "item_type": "page",
     "mapping": {
         "dynamic_templates": [
@@ -177,6 +177,7 @@
                                         "type": "keyword"
                                     },
                                     "body": {
+                                        "copy_to": "_fuzzy",
                                         "type": "keyword"
                                     },
                                     "direction": {
