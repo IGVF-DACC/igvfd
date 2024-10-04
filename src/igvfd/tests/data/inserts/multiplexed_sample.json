@@ -15,7 +15,8 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "collections": [
-            "ENCODE"
+            "ENCODE",
+            "VarChAMP"
         ],
         "multiplexed_samples": [
             "igvf-dacc:in_vitro_system_cell_line",
