@@ -55,9 +55,6 @@ def sample():
             'treatments.treatment_term_name': {
                 'title': 'Treatment Term Name'
             },
-            'modifications.type': {
-                'title': 'Type'
-            },
             'modifications.cas': {
                 'title': 'Cas'
             },
@@ -111,7 +108,6 @@ def sample():
             {
                 'title': 'Modifications',
                 'facet_fields': [
-                    'modifications.@type',
                     'modifications.cas',
                     'modifications.modality',
                     'modifications.fused_domain',
