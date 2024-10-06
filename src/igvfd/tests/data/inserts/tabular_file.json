@@ -278,5 +278,43 @@
         "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
+    },
+    {
+        "uuid": "47dfe2d3-0fb3-437f-84a1-aec2d7648300",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:coding_variant_effects"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-10-06T20:28:45Z",
+        "md5sum": "75abbe74a52deea46a29e417e8dbf173",
+        "file_format": "tsv",
+        "content_type": "coding variant effects",
+        "submitted_file_name": "/Users/igvf/igvf_files/coding_variant_effects.tsv.gz",
+        "file_size": 300,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "IGVFDS3333DDDD",
+        "controlled_access": false
+    },
+    {
+        "uuid": "3d4e0cba-1df9-4c98-9139-42fbe6e1c3d8",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:barcode_to_TF_overexpression_mapping"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-10-06T20:29:45Z",
+        "md5sum": "d3235b17f4978baa8d9907f5f516671c",
+        "file_format": "tsv",
+        "content_type": "barcode to TF overexpression mapping",
+        "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_TF_overexpression_mapping.tsv.gz",
+        "file_size": 300,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "IGVFDS3333DDDD",
+        "controlled_access": false
     }
 ]
