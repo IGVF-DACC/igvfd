@@ -64,8 +64,8 @@ def sample():
             'modifications.modality': {
                 'title': 'Modality'
             },
-            'modifications.tagged_proteins.symbol': {
-                'title': 'Tagged proteins'
+            'modifications.tagged_protein.symbol': {
+                'title': 'Tagged protein'
             },
         },
         'facet_groups': [
@@ -111,7 +111,7 @@ def sample():
                     'modifications.cas',
                     'modifications.modality',
                     'modifications.fused_domain',
-                    'modifications.tagged_proteins.symbol',
+                    'modifications.tagged_protein.symbol',
                 ]
             },
         ],
