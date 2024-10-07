@@ -67,7 +67,7 @@ def verified_member(testapp, award):
     item = {
         'first_name': 'IGVF',
         'last_name': 'VerifiedMember',
-        'email': 'Verified_member@example.org',
+        'email': 'verified_member@example.org',
         'groups': ['verified'],
     }
     res = testapp.post_json('/user', item)
@@ -79,7 +79,7 @@ def unverified_member(testapp, award):
     item = {
         'first_name': 'IGVF',
         'last_name': 'NonVerifiedMember',
-        'email': 'Non_verified_member@example.org',
+        'email': 'non_verified_member@example.org',
     }
     # User @@object view has keys omitted.
     res = testapp.post_json('/user', item)
@@ -91,7 +91,7 @@ def submitter(testapp, lab, award):
     item = {
         'first_name': 'IGVF',
         'last_name': 'Submitter',
-        'email': 'IGVF_submitter@example.org',
+        'email': 'igvf_submitter@example.org',
         'submits_for': [lab['@id']],
         'viewing_groups': [award['viewing_group']],
     }
@@ -151,4 +151,16 @@ def user_v4(user_v1):
         'schema_version': '4',
         'email': 'email_name@email_domain.com '
     })
+    return item
+
+
+@pytest.fixture
+def user_v5(user_v1):
+    item = user_v1.copy()
+    item.update(
+        {
+            'schema_version': '5',
+            'email': 'SOME_CAPITAL_EMAIL@cs.EDU.gov',
+        }
+    )
     return item

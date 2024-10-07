@@ -25,3 +25,9 @@ def test_user_upgrade_4_5(upgrader, user_v4):
     value = upgrader.upgrade('user', user_v4, current_version='4', target_version='5')
     assert value['email'] == 'replace_this_email@email.com'
     assert value['schema_version'] == '5'
+
+
+def test_user_upgrade_5_6(upgrader, user_v5):
+    value = upgrader.upgrade('user', user_v5, current_version='5', target_version='6')
+    assert value['email'] == 'some_capital_email@cs.edu.gov'
+    assert value['schema_version'] == '6'

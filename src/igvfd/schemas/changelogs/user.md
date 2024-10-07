@@ -1,5 +1,9 @@
 ## Changelog for *`user.json`*
 
+### Schema version 6
+
+* Update `email` regex to disallow capital letters.
+
 ### Schema version 5
 
 * Add regex for `email`.

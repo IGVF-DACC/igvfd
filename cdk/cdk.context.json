@@ -222,7 +222,8 @@
         "Name": "data.igvf.org."
     },
     "acknowledged-issue-numbers": [
-        25356
+        25356,
+        31106
     ],
     "vpc-provider:account=109189702753:filter.vpc-id=vpc-04c01400456f63ed9:region=us-west-2:returnAsymmetricSubnets=true": {
         "vpcId": "vpc-04c01400456f63ed9",
