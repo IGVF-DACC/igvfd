@@ -29,8 +29,7 @@ class Modification(Item):
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
-        Path('submitted_by', include=['@id', 'title']),
-        Path('tagged_protein', include=['@id', 'geneid', 'symbol', 'title', 'name'])
+        Path('submitted_by', include=['@id', 'title'])
     ]
     rev = {
         'biosamples_modified': ('Biosample', 'modifications')
@@ -68,7 +67,9 @@ class Modification(Item):
 class CrisprModification(Modification):
     item_type = 'crispr_modification'
     schema = load_schema('igvfd:schemas/crispr_modification.json')
-    embedded_with_frame = Modification.embedded_with_frame + []
+    embedded_with_frame = Modification.embedded_with_frame + [
+        Path('tagged_protein', include=['@id', 'geneid', 'symbol', 'title', 'name'])
+    ]
     rev = Modification.rev | {}
 
     set_status_up = Modification.set_status_up + []
@@ -136,7 +137,9 @@ class CrisprModification(Modification):
 class DegronModification(Modification):
     item_type = 'degron_modification'
     schema = load_schema('igvfd:schemas/degron_modification.json')
-    embedded_with_frame = Modification.embedded_with_frame + []
+    embedded_with_frame = Modification.embedded_with_frame + [
+        Path('tagged_proteins', include=['@id', 'geneid', 'symbol', 'title', 'name'])
+    ]
     rev = Modification.rev | {}
 
     set_status_up = Modification.set_status_up + []

@@ -65,7 +65,10 @@ def sample():
                 'title': 'Modality'
             },
             'modifications.tagged_protein.symbol': {
-                'title': 'Tagged protein'
+                'title': 'CRISPR Tagged protein'
+            },
+            'modifications.tagged_proteins.symbol': {
+                'title': 'Degron Tagged proteins'
             },
         },
         'facet_groups': [
@@ -112,6 +115,7 @@ def sample():
                     'modifications.modality',
                     'modifications.fused_domain',
                     'modifications.tagged_protein.symbol',
+                    'modifications.tagged_proteins.symbol',
                 ]
             },
         ],
