@@ -2,7 +2,7 @@
     "title": "Configuration File",
     "$id": "/profiles/configuration_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A file containing configuration settings or information defining the structure of other data files' content.",
+    "description": "A file containing configuration settings or information defining the structure of other data files' content or input parameters of prediction models.",
     "required": [
         "award",
         "lab",
@@ -94,11 +94,13 @@
             "comment": "Content Type describes the content of the file.",
             "enum": [
                 "seqspec",
-                "scale factors"
+                "scale factors",
+                "model parameters"
             ],
             "enum_descriptions": {
                 "seqspec": "A machine-readable specification for libraries produced by genomics assays that facilitates standardization of preprocessing and enables tracking and comparison of genomics assays.",
-                "scale factors": "Normalization coefficients applied to raw data to adjust for technical variability and ensure comparability across different samples or regions."
+                "scale factors": "Normalization coefficients applied to raw data to adjust for technical variability and ensure comparability across different samples or regions.",
+                "model parameters": "Parameters needed for running computational models to make predictions, or hyperparameters utilized during the training of computational models."
             },
             "submissionExample": {
                 "appscript": "seqspec",
@@ -108,7 +110,8 @@
         "file_format": {
             "enum": [
                 "yaml",
-                "json"
+                "json",
+                "tsv"
             ],
             "submissionExample": {
                 "appscript": "yaml",

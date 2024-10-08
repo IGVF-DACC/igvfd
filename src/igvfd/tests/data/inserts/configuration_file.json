@@ -38,5 +38,23 @@
         "file_size": 43,
         "upload_status": "validated",
         "file_set": "igvf:spatial_transcriptomics"
+    },
+    {
+        "uuid": "e65b7a7d-73bc-4f08-82c0-46cdac4a8fe6",
+        "accession": "IGVFFI1234PARA",
+        "lab": "christina-leslie",
+        "award": "1U01HG012103-01",
+        "aliases": [
+            "igvf:model_parameters"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-10-07T12:34:56Z",
+        "md5sum": "5d4421e48c196f2e20a624c18bc5bd81",
+        "file_format": "tsv",
+        "content_type": "model parameters",
+        "submitted_file_name": "/Users/igvf/igvf_files/model_parameters.tsv",
+        "file_size": 200,
+        "upload_status": "validated",
+        "file_set": "igvf:model_set_SEMpl"
     }
 ]
