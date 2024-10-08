@@ -65,7 +65,8 @@
             "/phenotypic-features/762bc1e2-8fb3-11ed-a1eb-0242ac120002/"
         ],
         "collections": [
-            "ENCODE"
+            "ENCODE",
+            "VarChAMP"
         ],
         "individual_rodent": false,
         "dbxrefs": [

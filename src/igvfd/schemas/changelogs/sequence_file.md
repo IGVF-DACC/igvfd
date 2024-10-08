@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Extend `collections` enum list to include `VarChAMP`.
 * Add calculated property `assay_titles`.
 * Extend `sequencing_kit` enum list to include `Singular G4 F2 Reagent Kit`.
 * Add `base_modifications`.

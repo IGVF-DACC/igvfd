@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 12
 
+* Extend `collections` enum list to include `VarChAMP`.
 * Extend `content_type` enum list to include `variant localization impacts`.
 
 ### Schema version 12

@@ -1,5 +1,9 @@
 ## Changelog for *`matrix_file.json`*
 
+### Minor changes since schema version 7
+
+* Extend `collections` enum list to include `VarChAMP`.
+
 ### Schema version 7
 
 * Extend `secondary_dimensions` enum list to include `gene expression`.

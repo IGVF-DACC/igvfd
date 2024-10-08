@@ -354,7 +354,8 @@
             "IGVFSM0000MPXD"
         ],
         "collections": [
-            "Vista"
+            "Vista",
+            "VarChAMP"
         ],
         "control_type": "untransfected",
         "assay_term": "/assay-terms/OBI_0002440/",

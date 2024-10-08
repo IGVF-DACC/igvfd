@@ -1,5 +1,9 @@
 ## Changelog for *`human_donor.json`*
 
+### Minor changes since schema version 14
+
+* Extend `collections` enum list to include `VarChAMP`.
+
 ### Schema version 14
 
 * Remove `publication_identifiers`.

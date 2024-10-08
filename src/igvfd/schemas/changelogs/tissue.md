@@ -1,5 +1,9 @@
 ## Changelog for *`tissue.json`*
 
+### Minor changes since schema version 21
+
+* Extend `collections` enum list to include `VarChAMP`.
+
 ### Schema version 21
 
 * Remove `publication_identifiers`.
