@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 5
 
+* Extend `input_content_types` enum list to include `model parameters`.
+* Extend `output_content_types` enum list to include `model parameters`.
 * Extend `input_content_types` enum list to include `variant localization impacts`.
 * Extend `output_content_types` enum list to include `variant localization impacts`.
 * Extend `input_content_types` enum list to include `external source data`.
