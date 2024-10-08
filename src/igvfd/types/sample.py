@@ -867,7 +867,7 @@ class MultiplexedSample(Sample):
         if len(taxas) == 1:
             return list(taxas).pop()
         else:
-            return 'mixed taxa'
+            return 'mixed species'
 
     @calculated_property(
         schema={

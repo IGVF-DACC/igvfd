@@ -136,3 +136,16 @@ def multiplexed_sample_v9(
         ]
     }
     return item
+
+
+@pytest.fixture
+def multiplexed_sample_mixed_species(
+        testapp, other_lab, award, human_tissue, in_vitro_cell_line):
+    item = {
+        'award': award['@id'],
+        'lab': other_lab['@id'],
+        'multiplexed_samples': [
+            human_tissue['@id'], in_vitro_cell_line['@id']
+        ]
+    }
+    return item
