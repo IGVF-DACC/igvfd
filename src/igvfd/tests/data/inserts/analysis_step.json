@@ -41,7 +41,8 @@
         "title": "Signal to Matrix Analysis Step",
         "step_label": "signal-to-matrix-analysis-step",
         "analysis_step_types": [
-            "quantification"
+            "quantification",
+            "counts normalization"
         ],
         "release_timestamp": "2024-08-06T12:34:56Z",
         "input_content_types": [

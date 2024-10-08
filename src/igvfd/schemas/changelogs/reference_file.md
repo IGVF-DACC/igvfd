@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Extend `collections` enum list to include `VarChAMP`.
 * Extend `assembly` enum list to include `Cast - GRCm39`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE Cast - M32`.
 * Adjust `content_type` enum list to allow usage of `transcriptome reference` for all users.

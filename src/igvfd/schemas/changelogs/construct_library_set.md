@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `collections` enum list to include `VarChAMP`.
 * Add `control_type`.
 
 ### Schema version 9

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Extend `collections` enum list to include `VarChAMP`.
 * Update calculation of `summary`.
 * Add `control_type`.
 

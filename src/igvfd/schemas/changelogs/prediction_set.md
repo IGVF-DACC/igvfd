@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Extend `collections` enum list to include `VarChAMP`.
 * Add `control_type`.
 * Add `assessed_genes`.
 

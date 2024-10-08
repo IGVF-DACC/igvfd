@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 21
 
+* Extend `collections` enum list to include `VarChAMP`.
 * Add `biosample_qualifiers`.
 
 ### Schema version 21

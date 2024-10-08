@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Extend `collections` enum list to include `VarChAMP`.
 * Extend `file_set_type` enum list to include `MORF barcode sequencing`.
 * Add `control_type`.
 

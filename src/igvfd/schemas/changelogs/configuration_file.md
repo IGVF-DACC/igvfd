@@ -4,6 +4,7 @@
 
 * Extend `file_format` enum list to include `tsv`.
 * Extend `content_type` enum list to include `model parameters`.
+* Extend `collections` enum list to include `VarChAMP`.
 * Add calculated property `assay_titles`.
 * Extend `content_type` enum list to include `scale factors`.
 * Extend `file_format` enum list to include `json`.
