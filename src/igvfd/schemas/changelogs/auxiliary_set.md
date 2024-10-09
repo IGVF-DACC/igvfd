@@ -2,11 +2,8 @@
 
 ### Minor changes since schema version 11
 
-<<<<<<< HEAD
 * Extend `collections` enum list to include `VarChAMP`.
-=======
 * Add `barcode_map`.
->>>>>>> 15d9b418 (IGVF-1939-add-barcode-map-aux-sets)
 * Extend `file_set_type` enum list to include `MORF barcode sequencing`.
 * Add `control_type`.
 
