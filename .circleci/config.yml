@@ -27,7 +27,7 @@ jobs:
     working_directory: ~/igvfd
     steps:
       - checkout
-      - run: pip install pre-commit==4.0.1
+      - run: pip install pre-commit
       - run: pre-commit run --all-files
 
   cdk-mypy:
