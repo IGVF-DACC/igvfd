@@ -1,6 +1,6 @@
 {
-    "hash": "2b5f9d58d8f29fac27d876bdea5fbffa",
-    "index_name": "image_file_2b5f9d58",
+    "hash": "976c8986b2958a4785bcb6fb3de644b8",
+    "index_name": "image_file_976c8986",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -363,6 +363,9 @@
                                 "type": "keyword"
                             },
                             "external_image_url": {
+                                "type": "keyword"
+                            },
+                            "external_input_data": {
                                 "type": "keyword"
                             },
                             "file_set_type": {

@@ -1,6 +1,6 @@
 {
-    "hash": "bf4d0343ae15d3247f8f9ce131f8bb30",
-    "index_name": "curated_set_bf4d0343",
+    "hash": "0447878931d47fa492786d4377d259a2",
+    "index_name": "curated_set_04478789",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -396,6 +396,9 @@
                                 "type": "keyword"
                             },
                             "external_image_url": {
+                                "type": "keyword"
+                            },
+                            "external_input_data": {
                                 "type": "keyword"
                             },
                             "file_set_type": {

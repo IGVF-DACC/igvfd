@@ -1,6 +1,6 @@
 {
-    "hash": "bbc8367589921a231fca148a45206f71",
-    "index_name": "prediction_set_bbc83675",
+    "hash": "53303a40cc25396ebe9b46a88d2d395b",
+    "index_name": "prediction_set_53303a40",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -395,6 +395,9 @@
                                 "type": "keyword"
                             },
                             "external_image_url": {
+                                "type": "keyword"
+                            },
+                            "external_input_data": {
                                 "type": "keyword"
                             },
                             "file_set_type": {

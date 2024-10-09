@@ -1,6 +1,6 @@
 {
-    "hash": "2f4d86696f06145df0c396988dd0b2dc",
-    "index_name": "reference_file_2f4d8669",
+    "hash": "ce2919f5115c9acdf6614902c09b2980",
+    "index_name": "reference_file_ce2919f5",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -394,6 +394,9 @@
                                 "type": "keyword"
                             },
                             "external_image_url": {
+                                "type": "keyword"
+                            },
+                            "external_input_data": {
                                 "type": "keyword"
                             },
                             "file_set_type": {
