@@ -28,7 +28,7 @@ jobs:
     steps:
       - checkout
       - run: pip install pre-commit==2.17.0
-      - run: pre-commit run --all-files
+      - run: SSH_AUTH_SOCK=$SSH_AUTH_SOCK pre-commit run --all-files
 
   cdk-mypy:
     docker:
