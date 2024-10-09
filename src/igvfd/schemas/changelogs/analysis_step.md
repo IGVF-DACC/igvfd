@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Extend `analysis_step_types` enum list to include `basecalling`.
 * Extend `input_content_types` enum list to include `model parameters`.
 * Extend `output_content_types` enum list to include `model parameters`.
 * Extend `analysis_step_types` enum list to include `counts normalization`.
