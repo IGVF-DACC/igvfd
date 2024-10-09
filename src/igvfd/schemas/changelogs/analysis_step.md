@@ -2,6 +2,14 @@
 
 ### Minor changes since schema version 5
 
+* Extend `output_content_types` enum list to include `reporter elements`.
+* Extend `input_content_types` enum list to include `reporter elements`.
+* Extend `output_content_types` enum list to include `reporter variants`.
+* Extend `input_content_types` enum list to include `reporter variants`.
+* Extend `output_content_types` enum list to include `reporter genomic element effects`.
+* Extend `input_content_types` enum list to include `reporter genomic element effects `.
+* Extend `output_content_types` enum list to include `reporter genomic variant effects`.
+* Extend `input_content_types` enum list to include `reporter genomic variant effects`.
 * Extend `input_content_types` enum list to include `differential element quantifications`.
 * Extend `output_content_types` enum list to include `differential element quantifications`.
 * Extend `input_content_types` enum list to include `model parameters`.
@@ -9,8 +17,8 @@
 * Extend `analysis_step_types` enum list to include `counts normalization`.
 * Extend `input_content_types` enum list to include `barcode to TF overexpression mapping`.
 * Extend `output_content_types` enum list to include `barcode to TF overexpression mapping`.
-* Extend `input_content_types` enum list to include `coding variant effects `.
-* Extend `output_content_types` enum list to include `coding variant effects `.
+* Extend `input_content_types` enum list to include `coding variant effects`.
+* Extend `output_content_types` enum list to include `coding variant effects`.
 * Extend `input_content_types` enum list to include `peak quantifications`.
 * Extend `output_content_types` enum list to include `peak quantifications`.
 * Extend `input_content_types` enum list to include `variant localization impacts`.
