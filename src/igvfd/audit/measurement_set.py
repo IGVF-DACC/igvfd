@@ -224,19 +224,33 @@ def audit_missing_institutional_certification(value, system):
     award = value.get('award', '')
     samples = value.get('samples', [])
 
+    sample_objects_to_check = []
     for sample in samples:
         sample_object = system.get('request').embed(sample, '@@object')
+        if 'MultiplexedSample' in sample_object['@type']:
+            multiplexed_sample_id = sample_object['@id']
+            multiplexed_phrase = f' that is multiplexed in {audit_link(path_to_text(multiplexed_sample_id), multiplexed_sample_id)}'
+            for mux_sample in sample_object['multiplexed_samples']:
+                mux_sample_object = system.get('request').embed(mux_sample, '@@object')
+                sample_objects_to_check.append((mux_sample_object, multiplexed_phrase))
+        else:
+            sample_objects_to_check.append((sample_object, ''))
+
+    for sample_tuple in sample_objects_to_check:
+        sample = sample_tuple[0]
+        multiplexed_phrase = sample_tuple[1]
         nic_labs = []
         nic_awards = []
-        for nic in sample_object.get('institutional_certificates', []):
+        for nic in sample.get('institutional_certificates', []):
             nic_object = system.get('request').embed(nic, '@@object?skip_calculated=true')
             nic_labs.append(nic_object.get('lab', ''))
             nic_awards.append(nic_object.get('award', ''))
         if lab not in nic_labs or award not in nic_awards:
             detail = (
                 f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} has '
-                f'a sample {audit_link(path_to_text(sample), sample)} that lacks any `institutional_certificates` '
-                f'issued to the lab that submitted this file set.'
+                f'a sample {audit_link(path_to_text(sample["@id"]), sample["@id"])}{multiplexed_phrase} '
+                f'that lacks any `institutional_certificates` issued to the lab '
+                f'that submitted this file set.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
