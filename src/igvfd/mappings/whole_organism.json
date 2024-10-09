@@ -1,6 +1,6 @@
 {
-    "hash": "3073ae9238c5a93c3db0833e6d69515e",
-    "index_name": "whole_organism_3073ae92",
+    "hash": "b4530d8e144ed34d204c0788b1bdcb6a",
+    "index_name": "whole_organism_b4530d8e",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -480,6 +480,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "collections": {

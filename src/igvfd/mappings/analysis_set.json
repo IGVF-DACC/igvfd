@@ -1,6 +1,6 @@
 {
-    "hash": "2af31951d11c1b4c7cdef3c0d3e11047",
-    "index_name": "analysis_set_2af31951",
+    "hash": "40ab399e25fe6f280b98602ff0e9b5f3",
+    "index_name": "analysis_set_40ab399e",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -360,6 +360,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "collections": {
@@ -1244,6 +1247,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "collections": {

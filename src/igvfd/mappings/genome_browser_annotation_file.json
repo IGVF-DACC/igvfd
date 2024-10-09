@@ -1,6 +1,6 @@
 {
-    "hash": "d4545dc067280bd9765f94b5135e544e",
-    "index_name": "genome_browser_annotation_file_d4545dc0",
+    "hash": "1aad55bca8ec7051fda59efffe6899e7",
+    "index_name": "genome_browser_annotation_file_1aad55bc",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -417,6 +417,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "collections": {

@@ -1,6 +1,6 @@
 {
-    "hash": "53303a40cc25396ebe9b46a88d2d395b",
-    "index_name": "prediction_set_53303a40",
+    "hash": "5d187ef09df1b4eeb297d6c182f09bfb",
+    "index_name": "prediction_set_5d187ef0",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -359,6 +359,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "collections": {

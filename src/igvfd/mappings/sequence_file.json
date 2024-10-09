@@ -1,6 +1,6 @@
 {
-    "hash": "73375f2634dfe3a37c509df3bef11169",
-    "index_name": "sequence_file_73375f26",
+    "hash": "24e99ae5682d8834483d4e1e3c574c88",
+    "index_name": "sequence_file_24e99ae5",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -342,6 +342,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "collections": {

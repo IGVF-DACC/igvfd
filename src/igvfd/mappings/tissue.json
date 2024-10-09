@@ -1,6 +1,6 @@
 {
-    "hash": "ceb5a888cd19e6157af3abd9f8dc1be6",
-    "index_name": "tissue_ceb5a888",
+    "hash": "73c976b0e82a68f7a531c3ca853f8a03",
+    "index_name": "tissue_73c976b0",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -483,6 +483,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "collections": {

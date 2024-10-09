@@ -103,5 +103,20 @@
         "status": "released",
         "release_timestamp": "2024-06-06T12:34:56Z",
         "uuid": "19229ed7-fced-4cc2-8d43-44c3259d0f9f"
+    },
+    {
+        "aliases": [
+            "igvf:auxiliary_set_test_barcode_map"
+        ],
+        "file_set_type": "lipid-conjugated oligo sequencing",
+        "samples": [
+            "igvf:alias3"
+        ],
+        "barcode_map": "/tabular-files/IGVFFI0000SBRD/",
+        "award": "1UM1HG011972-01",
+        "lab": "jesse-engreitz",
+        "status": "released",
+        "release_timestamp": "2024-06-06T12:34:56Z",
+        "uuid": "21a472c9-6543-478f-92b9-a50ecd155b7f"
     }
 ]

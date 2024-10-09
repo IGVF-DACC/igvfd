@@ -1,6 +1,6 @@
 {
-    "hash": "532b69c46e8b7daf38f96d7e1338ad6d",
-    "index_name": "technical_sample_532b69c4",
+    "hash": "48a8dbc7183f7676e481946949a73bf7",
+    "index_name": "technical_sample_48a8dbc7",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -388,6 +388,9 @@
                                 "type": "float"
                             },
                             "award": {
+                                "type": "keyword"
+                            },
+                            "barcode_map": {
                                 "type": "keyword"
                             },
                             "collections": {
