@@ -14,7 +14,7 @@ def test_batch_download_report_download(workbook, testapp):
     assert lines[1].split(b'\t') == [
         b'ID', b'UUID', b'Title', b'Name', b'Project', b'Component', b'Contact P.I.', b'Status'
     ]
-    assert len(lines) == 27
+    assert len(lines) == 28
 
     res = testapp.get('/report.tsv?type=Award&field=contact_pi&field=title')
     assert res.headers['content-type'] == 'text/tsv; charset=UTF-8'
