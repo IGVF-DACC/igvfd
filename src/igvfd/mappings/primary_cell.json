@@ -1,6 +1,6 @@
 {
-    "hash": "0f9580cfaf8bf264483b7ed99dbaa9e6",
-    "index_name": "primary_cell_0f9580cf",
+    "hash": "39e275c3535beb4ce7714bba57cd9721",
+    "index_name": "primary_cell_39e275c3",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -1239,6 +1239,9 @@
                                 "type": "keyword"
                             },
                             "summary": {
+                                "type": "keyword"
+                            },
+                            "taxa": {
                                 "type": "keyword"
                             },
                             "time_post_library_delivery": {
