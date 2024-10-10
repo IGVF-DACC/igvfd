@@ -3,6 +3,9 @@
 ### Minor changes since schema version 22
 
 * Extend `collections` enum list to include `VarChAMP`.
+* Extend `preferred_assay_title` enum list to include `ONT dRNA`.
+* Extend `preferred_assay_title` enum list to include `ONT Fiber-seq`.
+* Extend `preferred_assay_title` enum list to include `ONT direct WGS`.
 
 ### Schema version 22
 
