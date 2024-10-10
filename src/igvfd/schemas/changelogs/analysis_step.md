@@ -4,6 +4,8 @@
 
 * Extend `output_content_types` enum list to include `reporter elements`.
 * Extend `input_content_types` enum list to include `reporter elements`.
+* Extend `output_content_types` enum list to include `reporter experiment`.
+* Extend `input_content_types` enum list to include `reporter experiment`.
 * Extend `output_content_types` enum list to include `reporter variants`.
 * Extend `input_content_types` enum list to include `reporter variants`.
 * Extend `output_content_types` enum list to include `reporter genomic element effects`.
