@@ -1,7 +1,8 @@
 ## Changelog for *`analysis_step.json`*
 
 ### Minor changes since schema version 5
-
+* Extend `input_content_types` enum list to include `differential element quantifications`.
+* Extend `output_content_types` enum list to include `differential element quantifications`.
 * Extend `input_content_types` enum list to include `model parameters`.
 * Extend `output_content_types` enum list to include `model parameters`.
 * Extend `analysis_step_types` enum list to include `counts normalization`.
