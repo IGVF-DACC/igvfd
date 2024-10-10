@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Extend `project` enum list to include `IGVF affiliate`.
 * Update calculation of `summary`.
 * Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 
