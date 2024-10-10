@@ -856,14 +856,16 @@ class MultiplexedSample(Sample):
             'notSubmittable': True
         }
     )
-    def taxa(self, request, donors):
+    def taxa(self, request, multiplexed_samples):
         taxas = set()
-        if donors:
-            for d in donors:
-                donor_object = request.embed(d, '@@object?skip_calculated=false')
-                if donor_object.get('taxa'):
-                    taxas.add(donor_object.get('taxa'))
-
+        if multiplexed_samples:
+            for sample in multiplexed_samples:
+                donors = sample.get('donors', [])
+                if donors:
+                    for d in donors:
+                        donor_object = request.embed(d, '@@object?skip_calculated=true')
+                    if donor_object.get('taxa'):
+                        taxas.add(donor_object.get('taxa'))
         if len(taxas) == 1:
             return list(taxas).pop()
         else:
