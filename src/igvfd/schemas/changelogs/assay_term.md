@@ -1,9 +1,17 @@
 ## Changelog for *`assay_term.json`*
+
+### Minor changes since schema version 8
+
+* Extend `preferred_assay_titles` enum list to include `HiCAR`.
+* Extend `preferred_assay_titles` enum list to include `ONT dRNA`.
+* Extend `preferred_assay_titles` enum list to include `ONT Fiber-seq`.
+* Extend `preferred_assay_titles` enum list to include `ONT direct WGS`.
+
 ### Schema version 8
 
 * Extend `preferred_assay_titles` enum list to include `Variant painting via immunostaining`.
 * Extend `preferred_assay_titles` enum list to include `Variant painting via fluorescence`.
-* Adjust `preferred_assay_title` enum list to remove `Variant painting`.
+* Adjust `preferred_assay_titles` enum list to remove `Variant painting`.
 
 ### Minor changes since schema version 7
 
