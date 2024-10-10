@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Schema version 10
+
+* Fully restrict linkTo for `integrated_content_files` to ReferenceFile and TabularFile.
+
 ### Minor changes since schema version 9
 
 * Extend `collections` enum list to include `VarChAMP`.

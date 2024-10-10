@@ -422,3 +422,21 @@ def measurement_set_21_22(value, system):
         value['preferred_assay_title'] = 'Variant painting via fluorescence'
         notes += f' This measurement set previously used Variant painting as a preferred_assay_title, but this enum is now removed. So it has been defaulted to Variant painting via fluorescence.'
         value['notes'] = notes.strip()
+
+
+@upgrade_step('construct_library_set', '9', '10')
+def construct_library_set_9_10(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1917
+    notes = value.get('notes', '')
+    filtered_integrated_content_files = []
+    removed_integrated_content_files = []
+    if 'integrated_content_files' in value:
+        for integrated_content_file in value['integrated_content_files']:
+            if not integrated_content_file.startswith(('/tabular-files/', '/reference-files/')):
+                removed_integrated_content_files.append(integrated_content_file)
+            else:
+                filtered_integrated_content_files.append(integrated_content_file)
+        value['integrated_content_files'] = filtered_integrated_content_files
+        if removed_integrated_content_files:
+            notes += f" Integrated content files {', '.join(removed_integrated_content_files)} were removed via upgrade."
+            value['notes'] = notes.strip()
