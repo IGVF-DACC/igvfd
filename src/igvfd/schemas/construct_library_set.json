@@ -757,8 +757,7 @@
                 "linkTo": [
                     "TabularFile",
                     "ReferenceFile"
-                ],
-                "comment": "See file.json for a list of available identifiers."
+                ]
             },
             "submissionExample": {
                 "appscript": "[\"john-done:file01\", \"IGVFFI6665ABCD\"]",
