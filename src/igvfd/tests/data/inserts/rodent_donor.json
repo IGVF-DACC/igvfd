@@ -78,5 +78,30 @@
         "publications": [
             "/publications/PMCID:PMC3439153/"
         ]
+    },
+    {
+        "uuid": "2bfe0e7f-88d3-4057-b3eb-7516f3153830",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:alias_rodent_donor_3_F1_cross"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-07-06T12:34:56Z",
+        "sources": [
+            "eadabaf1-d5b6-4b48-8847-e86461f12101"
+        ],
+        "product_id": "GR000003",
+        "lot_id": "R00003",
+        "strain_background": "B6NODF1/J",
+        "strain": "B6 and NOD F1 cross",
+        "genotype": "some genotype",
+        "sex": "female",
+        "taxa": "Mus musculus",
+        "individual_rodent": false,
+        "dbxrefs": [
+            "IMSR_JAX:000334"
+        ],
+        "virtual": false
     }
 ]
