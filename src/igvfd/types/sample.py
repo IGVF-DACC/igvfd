@@ -860,12 +860,13 @@ class MultiplexedSample(Sample):
         taxas = set()
         if multiplexed_samples:
             for sample in multiplexed_samples:
-                donors = sample.get('donors', [])
-                if donors:
-                    for d in donors:
-                        donor_object = request.embed(d, '@@object?skip_calculated=true')
+                sample_object = request.embed(sample, '@@object?skip_calculated=true')
+                donors = sample_object.get('donors', [])
+                for donor in donors:
+                    donor_object = request.embed(donor, '@@object?skip_calculated=true')
                     if donor_object.get('taxa'):
                         taxas.add(donor_object.get('taxa'))
+
         if len(taxas) == 1:
             return list(taxas).pop()
         else:
