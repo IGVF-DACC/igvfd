@@ -49,3 +49,9 @@ def test_tabular_file_upgrade_11_12(upgrader, tabular_file_v11):
     value = upgrader.upgrade('tabular_file', tabular_file_v11, current_version='11', target_version='12')
     assert value['content_type'] == 'variant effects'
     assert value['schema_version'] == '12'
+
+
+def test_tabular_file_upgrade_12_13(upgrader, tabular_file_v12):
+    value = upgrader.upgrade('tabular_file', tabular_file_v12, current_version='12', target_version='13')
+    assert value['file_format'] == 'tsv'
+    assert value['schema_version'] == '13'

@@ -99,3 +99,13 @@ def tabular_file_v11(tabular_file):
         'content_type': 'SNP effect matrix'
     })
     return item
+
+
+@pytest.fixture
+def tabular_file_v12(tabular_file):
+    item = tabular_file.copy()
+    item.update({
+        'schema_version': '12',
+        'file_format': 'txt'
+    })
+    return item
