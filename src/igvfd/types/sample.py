@@ -860,7 +860,7 @@ class MultiplexedSample(Sample):
         taxas = set()
         if donors:
             for d in donors:
-                donor_object = request.embed(d, '@@object?skip_calculated=true')
+                donor_object = request.embed(d, '@@object?skip_calculated=false')
                 if donor_object.get('taxa'):
                     taxas.add(donor_object.get('taxa'))
 
