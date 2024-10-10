@@ -334,5 +334,6 @@ def tabular_file_12_13(value, system):
     notes = value.get('notes', '')
     if value.get('file_format') == 'txt':
         value['file_format'] = 'tsv'
-        notes += f'This object\'s content_type was txt, and changed to tsv via upgrade.'
-    return
+        notes += f'This object\'s file_format was txt, and changed to tsv via upgrade.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
