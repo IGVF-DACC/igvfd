@@ -52,9 +52,9 @@
             "igvf:tabular_file_03_sequence_barcodes"
         ],
         "md5sum": "f391b7b201210d0dc307eb3bf84605ac",
-        "file_format": "txt",
+        "file_format": "tsv",
         "content_type": "sequence barcodes",
-        "submitted_file_name": "/Users/igvf/igvf_files/sequence_barcodes.txt.gz",
+        "submitted_file_name": "/Users/igvf/igvf_files/sequence_barcodes.tsv.gz",
         "file_size": 8330,
         "upload_status": "validated",
         "status": "released",
@@ -72,9 +72,9 @@
             "maria-chahrour:file_091231_test"
         ],
         "md5sum": "e1b62fa365be8375310b0393fe27a68d",
-        "file_format": "txt",
+        "file_format": "tsv",
         "content_type": "barcode to sample mapping",
-        "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_sample_mapping.txt.gz",
+        "submitted_file_name": "/Users/igvf/igvf_files/barcode_to_sample_mapping.tsv.gz",
         "file_size": 8340,
         "upload_status": "validated",
         "status": "released",
