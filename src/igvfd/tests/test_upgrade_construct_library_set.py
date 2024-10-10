@@ -41,3 +41,11 @@ def test_construct_library_set_upgrade_8_9(upgrader, construct_library_set_v8):
     value = upgrader.upgrade('construct_library_set', construct_library_set_v8, current_version='8', target_version='9')
     assert value['schema_version'] == '9'
     assert 'publication_identifiers' not in value
+
+
+def test_construct_library_set_upgrade_9_10(upgrader, construct_library_set_v9, sequence_file, tabular_file, reference_file):
+    value = upgrader.upgrade('construct_library_set', construct_library_set_v9,
+                             current_version='9', target_version='10')
+    assert value['schema_version'] == '10'
+    assert sequence_file['@id'] not in value['integrated_content_files']
+    assert tabular_file['@id'] in value['integrated_content_files'] and reference_file['@id'] in value['integrated_content_files']
