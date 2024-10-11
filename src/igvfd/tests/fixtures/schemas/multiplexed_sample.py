@@ -146,6 +146,7 @@ def multiplexed_sample_mixed_species(
         'lab': other_lab['@id'],
         'multiplexed_samples': [
             in_vitro_differentiated_cell['@id'], in_vitro_cell_line['@id']
-        ]
+        ],
+        'multiplexing_methods': ['barcode based']
     }
     return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
