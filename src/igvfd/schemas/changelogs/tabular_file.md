@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Schema version 13
+
+* Adjust `file_format` enum list to remove `txt`.
+
 ### Minor changes since schema version 12
 
 * Extend `collections` enum list to include `VarChAMP`.
