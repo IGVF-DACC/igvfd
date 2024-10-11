@@ -851,7 +851,8 @@ class MultiplexedSample(Sample):
             'description': 'The species of the organism.',
             'enum': [
                     'Homo sapiens',
-                    'Mus musculus'
+                    'Mus musculus',
+                    'Mixed species'
             ],
             'notSubmittable': True
         }
@@ -870,7 +871,7 @@ class MultiplexedSample(Sample):
         if len(taxas) == 1:
             return list(taxas).pop()
         else:
-            return 'mixed species'
+            return 'Mixed species'
 
     @calculated_property(
         schema={
