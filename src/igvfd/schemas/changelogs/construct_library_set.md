@@ -2,7 +2,7 @@
 
 ### Schema version 10
 
-* Fully restrict linkTo for `integrated_content_files` to ReferenceFile and TabularFile.
+* Restrict linkTo for `integrated_content_files` to ReferenceFile and TabularFile.
 
 ### Minor changes since schema version 9
 
