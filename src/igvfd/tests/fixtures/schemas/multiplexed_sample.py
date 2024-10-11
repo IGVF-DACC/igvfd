@@ -148,4 +148,4 @@ def multiplexed_sample_mixed_species(
             in_vitro_differentiated_cell['@id'], in_vitro_cell_line['@id']
         ]
     }
-    return item
+    return testapp.post_json('/multiplexed_sample', item, status=201).json['@graph'][0]
