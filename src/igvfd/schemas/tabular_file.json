@@ -197,13 +197,22 @@
             }
         },
         "file_format": {
-            "enum": [
-                "bed",
-                "csv",
-                "gtf",
-                "tsv",
-                "txt",
-                "vcf"
+            "oneOf": [
+                {
+                    "enum": [
+                        "bed",
+                        "csv",
+                        "gtf",
+                        "tsv",
+                        "vcf"
+                    ]
+                },
+                {
+                    "enum": [
+                        "txt"
+                    ],
+                    "permission": "admin_only"
+                }
             ],
             "submissionExample": {
                 "appscript": "tsv",
