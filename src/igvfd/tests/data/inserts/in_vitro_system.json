@@ -11,7 +11,7 @@
             "igvf-dacc:in_vitro_system_cell_line"
         ],
         "donors": [
-            "igvf:alias_rodent_donor_1"
+            "igvf:alias_human_donor1"
         ],
         "passage_number": 2,
         "status": "released",
