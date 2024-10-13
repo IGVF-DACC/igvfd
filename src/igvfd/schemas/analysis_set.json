@@ -100,7 +100,7 @@
             "title": "Demultiplexed Sample",
             "description": "The sample associated with this analysis set inferred through demultiplexing.",
             "type": "string",
-            "LinkTo": "Sample",
+            "linkTo": "Sample",
             "submissionExample": {
                 "appscript": "IGVFSM02881437 or john-doe:tissue01",
                 "igvf_utils": "IGVFSM02881437 or john-doe:tissue01"
