@@ -138,8 +138,12 @@
                 "VAMP-seq",
                 "VAMP-seq (MultiSTEP)",
                 "Hi-C",
+                "HiCAR",
                 "Spatial transcriptomics",
-                "HT-recruit"
+                "HT-recruit",
+                "ONT dRNA",
+                "ONT Fiber-seq",
+                "ONT direct WGS"
             ],
             "submissionExample": {
                 "appscript": "10x multiome",

@@ -431,5 +431,53 @@
         "assay_term": "/assay-terms/OBI_0000916/",
         "preferred_assay_title": "Variant painting via fluorescence",
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:ONT_direct_WGS"
+        ],
+        "award": "1UM1HG012077-01",
+        "lab": "/labs/ali-mortazavi/",
+        "status": "released",
+        "release_timestamp": "2024-10-09T12:34:56Z",
+        "uuid": "ab2a9e3e-fffb-42d9-8325-f4d8a478f9b0",
+        "samples": [
+            "/multiplexed-samples/IGVFSM0000MPXD/"
+        ],
+        "assay_term": "45f6baf1-fc25-4915-a43a-c3b083ba9f9c/",
+        "preferred_assay_title": "ONT direct WGS",
+        "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:ONT_Fiber_seq"
+        ],
+        "award": "1UM1HG012077-01",
+        "lab": "/labs/ali-mortazavi/",
+        "status": "released",
+        "release_timestamp": "2024-10-09T12:34:56Z",
+        "uuid": "ad0f9fd3-5d82-4c4f-9b55-779cf03f4783",
+        "samples": [
+            "/multiplexed-samples/IGVFSM0000MPXD/"
+        ],
+        "assay_term": "45f6baf1-fc25-4915-a43a-c3b083ba9f9c",
+        "preferred_assay_title": "ONT Fiber-seq",
+        "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:ONT_dRNA"
+        ],
+        "award": "1UM1HG012077-01",
+        "lab": "/labs/ali-mortazavi/",
+        "status": "released",
+        "release_timestamp": "2024-10-09T12:34:56Z",
+        "uuid": "5fae38f7-8079-4a75-bf56-9d50c12d8b09",
+        "samples": [
+            "/multiplexed-samples/IGVFSM0000MPXD/"
+        ],
+        "assay_term": "45f6baf1-fc25-4915-a43a-c3b083ba9f9c",
+        "preferred_assay_title": "ONT dRNA",
+        "file_set_type": "experimental data"
     }
 ]
