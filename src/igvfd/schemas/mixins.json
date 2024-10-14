@@ -650,5 +650,11 @@
                 "igvf_utils": "https://github.com/arq5x/bedtools/archive/v2.16.2.tar.gz"
             }
         }
+    },
+    "external_host": {
+        "externally_hosted": {
+            "title": "Externally Hosted",
+            "description": "Indicates whether the file "
+        }
     }
 }
