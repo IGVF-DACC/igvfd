@@ -2,6 +2,13 @@
 
 ### Minor changes since schema version 14
 
+* Extend `strain_background` enum list to include `B6129S1F1/J`.
+* Extend `strain_background` enum list to include `B6AF1/J`.
+* Extend `strain_background` enum list to include `B6CASTF1/J`.
+* Extend `strain_background` enum list to include `B6NODF1/J`.
+* Extend `strain_background` enum list to include `B6NZOF1/J`.
+* Extend `strain_background` enum list to include `B6PWKF1/J`.
+* Extend `strain_background` enum list to include `B6WSBF1/J`.
 * Extend `collections` enum list to include `VarChAMP`.
 
 ### Schema version 14
