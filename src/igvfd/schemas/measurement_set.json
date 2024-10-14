@@ -242,7 +242,7 @@
                 "experimental data"
             ],
             "enum_descriptions": {
-                "experimental data": "Experimental data refers to any data obtained in a genomics assay"
+                "experimental data": "Experimental data refers to any data obtained in a genomics assay."
             },
             "submissionExample": {
                 "appscript": "experimental data",
