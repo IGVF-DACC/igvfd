@@ -432,11 +432,15 @@ def construct_library_set_9_10(value, system):
     removed_integrated_content_files = []
     if 'integrated_content_files' in value:
         for integrated_content_file in value['integrated_content_files']:
-            if not integrated_content_file.startswith(('/tabular-files/', '/reference-files/')):
-                removed_integrated_content_files.append(integrated_content_file)
+            if not integrated_content_file.startswith('/tabular-files/'):
+                if not integrated_content_file.startswith('/reference-files/'):
+                    removed_integrated_content_files.append(integrated_content_file)
             else:
                 filtered_integrated_content_files.append(integrated_content_file)
-        value['integrated_content_files'] = filtered_integrated_content_files
+        if filtered_integrated_content_files:
+            value['integrated_content_files'] = filtered_integrated_content_files
+        else:
+            del value['integrated_content_files']
         if removed_integrated_content_files:
             notes += f" Integrated content files {', '.join(removed_integrated_content_files)} were removed via upgrade."
             value['notes'] = notes.strip()
