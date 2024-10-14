@@ -70,7 +70,7 @@
                 "cell sorting": "Data collected during fluorescence activated cell sorting for batch standardization.",
                 "circularized RNA barcode detection": "Reporter detection (such as for MPRA) through sequencing of circularized barcoded RNA molecules.",
                 "gRNA sequencing": "Sequencing data of guide RNAs for CRISPR assays.",
-                "lipid-conjugated oligo sequencing": "Sequencing data of the lipid- and cholesterol-modified oligonucleotides.",
+                "lipid-conjugated oligo sequencing": "Sequencing data of the lipid- and cholesterol-modified oligonucleotides for demultiplexing & singlet detection.",
                 "MORF barcode sequencing": "Sequencing data of the Multiplexed Overexpression of Regulatory Factors library, a collection of human transcription factor open reading frames, to produce a mapping of barcodes to an overexpressed transcription factor.",
                 "quantification DNA barcode sequencing": "Sequencing data of DNA barcodes for reporter assays.",
                 "variant sequencing": "Sequencing data of genomic DNA sequences with variants introduced."
