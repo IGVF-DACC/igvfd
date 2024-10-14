@@ -638,5 +638,11 @@
                 "igvf_utils": "/sample-terms/UBERON_0002369/"
             }
         }
+    },
+    "external_host": {
+        "externally_hosted": {
+            "title": "Externally Hosted",
+            "description": "Indicates whether the file "
+        }
     }
 }
