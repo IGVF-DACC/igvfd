@@ -316,5 +316,24 @@
         "assembly": "GRCh38",
         "file_set": "IGVFDS3333DDDD",
         "controlled_access": false
+    },
+    {
+        "uuid": "1eb8777d-a690-4dad-9973-22e6b8dc1ea5",
+        "lab": "martin-kircher",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "martin-kircher:reporter_genomic_variant_effects"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-10-09T20:29:45Z",
+        "md5sum": "b5916ea8c00f9a2f67d895a499422bc6",
+        "file_format": "tsv",
+        "content_type": "reporter genomic variant effects",
+        "submitted_file_name": "/Users/igvf/igvf_files/reporter_genomic_variant_effects.tsv.gz",
+        "file_size": 4000,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "leif-ludwig:analysis_set",
+        "controlled_access": false
     }
 ]
