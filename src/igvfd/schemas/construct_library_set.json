@@ -702,10 +702,10 @@
                 "editing template library"
             ],
             "enum_descriptions": {
-                "guide library": "Guide libraries are guides used for CRISPR screens.",
-                "reporter library": "Reporter libraries are reporters used for MPRA.",
-                "expression vector library": "Expression vector libraries are used when the content of the vector (a specific allele, gene, exon, or tile of a protein) will be expressed in the target cells.",
-                "editing template library": "Libraries of homology-directed DNA repair (HDR) templates containing SNVs are used in Saturation Genome Editing (SGE) assays."
+                "guide library": "The library of guide RNAs used in CRISPR experiments.",
+                "reporter library": "The library of elements used in a massively parallel reporter assay (MPRA).",
+                "expression vector library": "Used when the content of the vector (a specific allele, gene, exon, or tile of a protein) will be expressed in the target cells.",
+                "editing template library": "Library of homology-directed DNA repair (HDR) templates containing SNVs are used in Saturation Genome Editing (SGE) assays."
             },
             "submissionExample": {
                 "appscript": "guide library",
