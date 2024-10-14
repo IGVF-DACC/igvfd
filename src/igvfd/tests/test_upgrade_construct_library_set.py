@@ -49,4 +49,3 @@ def test_construct_library_set_upgrade_9_10(upgrader, construct_library_set_v9, 
     assert value['schema_version'] == '10'
     assert sequence_file['@id'] not in value['integrated_content_files']
     assert tabular_file['@id'] in value['integrated_content_files'] and reference_file['@id'] in value['integrated_content_files']
-    # print out something to check what's the format of value['integrated_content_files']
