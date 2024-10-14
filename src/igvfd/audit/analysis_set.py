@@ -165,6 +165,8 @@ def audit_analysis_set_files_missing_analysis_step_version(value, system):
     files_with_missing_asv = []
     for file in files:
         file_object = system.get('request').embed(file + '@@object?skip_calculated=true')
+        if file_object.get('derived_manually') is True:
+            continue
         if not (file_object.get('analysis_step_version', '')):
             files_with_missing_asv.append(file)
     if files_with_missing_asv:

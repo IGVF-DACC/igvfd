@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Add property `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.
 
 ### Schema version 7

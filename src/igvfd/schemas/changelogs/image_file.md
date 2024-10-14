@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Add property `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Add calculated property `assay_titles`.
 * Allow submission of `fiducial alignment` to non-admin users.

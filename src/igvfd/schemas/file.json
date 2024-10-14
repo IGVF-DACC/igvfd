@@ -313,6 +313,15 @@
                 "igvf_utils": "IGVFFI1234ABCD, john-doe:file01"
             }
         },
+        "derived_manually": {
+            "title": "Derived Manually",
+            "description": "A boolean indicating whether the file has been dervided manually without automated computational methods.",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": "true",
+                "igvf_utils": "true"
+            }
+        },
         "file_format": {
             "title": "File Format",
             "description": "The file format or extension of the file.",

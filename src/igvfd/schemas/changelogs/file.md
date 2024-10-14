@@ -1,5 +1,6 @@
 ## Changelog for *`file.json`*
 
+* Add property `derived_manually`. (10/14/2024)
 * Add calculated property `assay_titles`. (09/18/2024)
 * Add `analysis_step_version`. (07/03/2024)
 * Add calculated property `input_file_for`. (06/25/2024)
