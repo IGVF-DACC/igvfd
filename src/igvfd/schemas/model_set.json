@@ -96,12 +96,19 @@
             "description": "The category that best describes this predictive model set.",
             "comment": "File set type describes the framework of the model in this model set.",
             "enum": [
+                "decision tree",
                 "neural network",
                 "random forest",
-                "decision tree",
                 "support vector machine",
                 "variant binding effect"
             ],
+            "enum_descriptions": {
+                "decision tree": "A model that makes decisions based on a series of questions about feature values, resulting in a tree-like structure.",
+                "neural network": "A model consisting of interconnected layers of nodes used for complex pattern recognition.",
+                "random forest": "An ensemble of decision trees that improves accuracy by averaging predictions from multiple trees.",
+                "support vector machine": "A model that finds the best boundary to separate different classes in high-dimensional space.",
+                "variant binding effect": "A model predicting variant effect on TF binding."
+            },
             "submissionExample": {
                 "appscript": "neural network",
                 "igvf_utils": "neural network"

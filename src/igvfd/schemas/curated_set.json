@@ -57,7 +57,7 @@
         },
         "file_set_type": {
             "description": "The category that best describes this curated file set.",
-            "comment": "File set type describes the content of the curated set. Elements are lists of elements in the genome. External data for catalog are reference files from other sources utilized in the IGVF catalog. Genome file sets are genome references. Guide RNAs are guides used in CRISPR screen assays. Transcriptome file sets are transcriptome references. Variants are lists of variants.",
+            "comment": "File set type describes the content of the curated set.",
             "enum": [
                 "barcodes",
                 "editing templates",
@@ -69,6 +69,17 @@
                 "transcriptome",
                 "variants"
             ],
+            "enum_descriptions": {
+                "barcodes": "Barcodes are lists of barcodes.",
+                "editing templates": "Editing templates are used in Saturation Genome Editing (SGE) assays.",
+                "elements": "Elements are lists of elements in the genome.",
+                "external data for catalog": "External data for catalog are reference files from other sources utilized in the IGVF catalog.",
+                "genome": "Genome file sets are genome references.",
+                "genes": "Genes are lists of genes.",
+                "guide RNAs": "Guide RNAs are guides used in CRISPR screen assays.",
+                "transcriptome": "Transcriptome file sets are transcriptome references.",
+                "variants": "Variants are lists of variants."
+            },
             "submissionExample": {
                 "appscript": "guide RNAs",
                 "igvf_utils": "guide RNAs"

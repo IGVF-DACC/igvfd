@@ -236,11 +236,14 @@
         },
         "file_set_type": {
             "description": "The category that best describes this measurement set.",
-            "comment": "File set type describes the content of the measurement set. Experimental data refers to any data obtained in a genomics assay.",
+            "comment": "File set type describes the content of the measurement set.",
             "default": "experimental data",
             "enum": [
                 "experimental data"
             ],
+            "enum_descriptions": {
+                "experimental data": "Experimental data refers to any data obtained in a genomics assay"
+            },
             "submissionExample": {
                 "appscript": "experimental data",
                 "igvf_utils": "experimental data"

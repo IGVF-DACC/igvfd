@@ -694,13 +694,19 @@
         "file_set_type": {
             "$merge": "file_set.json#/properties/file_set_type",
             "description": "The type or category of this construct library set.",
-            "comment": "File set type describes the content of the construct library set. Guide libraries are guides used for CRISPR screens. Reporter libraries are reporters used for MPRA. Expression vector libraries are used when the content of the vector (a specific allele, gene, exon, or tile of a protein) will be expressed in the target cells. Editing template libraries are used for SGE.",
+            "comment": "File set type describes the content of the construct library set.",
             "enum": [
                 "guide library",
                 "reporter library",
                 "expression vector library",
                 "editing template library"
             ],
+            "enum_descriptions": {
+                "guide library": "Guide libraries are guides used for CRISPR screens.",
+                "reporter library": "Reporter libraries are reporters used for MPRA.",
+                "expression vector library": "Expression vector libraries are used when the content of the vector (a specific allele, gene, exon, or tile of a protein) will be expressed in the target cells.",
+                "editing template library": "Libraries of homology-directed DNA repair (HDR) templates containing SNVs are used in Saturation Genome Editing (SGE) assays."
+            },
             "submissionExample": {
                 "appscript": "guide library",
                 "igvf_utils": "guide library"
