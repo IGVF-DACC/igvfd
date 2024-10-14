@@ -717,7 +717,8 @@ class ModelSet(FileSet):
     item_type = 'model_set'
     schema = load_schema('igvfd:schemas/model_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('input_file_sets', include=['@id', 'accession', 'aliases'])
+        Path('input_file_sets', include=['@id', 'accession', 'aliases']),
+        Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + [
@@ -825,6 +826,7 @@ class PredictionSet(FileSet):
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
+        Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
