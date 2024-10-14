@@ -66,6 +66,7 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
+        "derived_manually": true,
         "principal_dimension": "cell",
         "secondary_dimensions": [
             "gene",
