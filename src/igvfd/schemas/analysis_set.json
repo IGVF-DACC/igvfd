@@ -77,7 +77,7 @@
                 "principal analysis"
             ],
             "enum_descriptions": {
-                "intermediate analysis": "An intermediate analysis is Processed data that is not the final result of an experiment and cannot be interpreted on its own, forming part of a principal analysis.",
+                "intermediate analysis": "An intermediate analysis is processed data that is not the final result of an experiment and cannot be interpreted on its own, forming part of a principal analysis.",
                 "principal analysis": "The final, processed data of an experiment, serving as the core analysis, with results that are interpretable on their own."
             },
             "submissionExample": {
