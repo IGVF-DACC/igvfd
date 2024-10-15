@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Add calculated property `analysis_step_versions`.
 * Extend `output_content_types` enum list to include `reporter elements`.
 * Extend `input_content_types` enum list to include `reporter elements`.
 * Extend `output_content_types` enum list to include `reporter experiment`.
