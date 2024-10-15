@@ -654,7 +654,32 @@
     "external_host": {
         "externally_hosted": {
             "title": "Externally Hosted",
-            "description": "Indicates whether the file "
+            "description": "Indicates whether the file is externally hosted and not stored on portal.",
+            "type": "boolean",
+            "default": false,
+            "submissionExample": {
+                "appscript": "True",
+                "igvf_utils": "True"
+            }
+        },
+        "external_host_url": {
+            "title": "External Host Url",
+            "description": "A link to the resouce where the file is externally hosted.",
+            "type": "string",
+            "format": "uri",
+            "submissionExample": {
+                "appscript": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/",
+                "igvf_utils": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/"
+            }
+        },
+        "external_host_id": {
+            "title": "External Host Identifier",
+            "description": "A unique identifier for the file which is hosted externally.",
+            "type": "string",
+            "submissionExample": {
+                "appscript": "gencode.v44.annotation",
+                "igvf_utils": "gencode.v44.annotation"
+            }
         }
     }
 }
