@@ -93,10 +93,7 @@
             }
         },
         "source_url": {
-            "title": "Source URL",
             "description": "An external resource to track the version of the software download.",
-            "type": "string",
-            "format": "uri",
             "submissionExample": {
                 "appscript": "https://github.com/arq5x/bedtools/archive/v2.16.2.tar.gz",
                 "igvf_utils": "https://github.com/arq5x/bedtools/archive/v2.16.2.tar.gz"

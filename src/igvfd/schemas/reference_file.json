@@ -50,6 +50,9 @@
         },
         {
             "$ref": "mixins.json#/controlled_access"
+        },
+        {
+            "$ref": "mixins.json#/source_url"
         }
     ],
     "dependentSchemas": {
@@ -264,10 +267,7 @@
             ]
         },
         "source_url": {
-            "title": "Source Url",
             "description": "Link to external resource, such as NCBI or GENCODE, where the reference data was obtained.",
-            "type": "string",
-            "format": "uri",
             "submissionExample": {
                 "appscript": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/",
                 "igvf_utils": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/"

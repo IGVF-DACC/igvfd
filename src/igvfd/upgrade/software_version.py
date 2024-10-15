@@ -49,3 +49,11 @@ def software_version_5_6(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1789
     if 'publication_identifiers' in value:
         del value['publication_identifiers']
+
+
+@upgrade_step('software_version', '6', '7')
+def software_version_6_7(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1949
+    if 'downloaded_url' in value:
+        value['sourcel_url'] = value['downloaded_url']
+        del value['downloaded_url']
