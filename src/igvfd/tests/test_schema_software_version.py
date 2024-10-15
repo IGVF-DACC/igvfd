@@ -28,6 +28,6 @@ def test_post_software_version(testapp, software, lab, award):
             'award': award['@id'],
             'lab': lab['@id'],
             'software': software['@id'],
-            'downloaded_url': 'https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.4/'
+            'source_url': 'https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.4/'
         })
     assert res.status_code == 201
