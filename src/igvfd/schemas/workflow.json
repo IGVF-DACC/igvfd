@@ -112,7 +112,10 @@
     },
     "fuzzy_searchable_fields": [
         "name",
-        "submitted_by.title"
+        "submitted_by.title",
+        "analysis_step_types",
+        "input_content_types",
+        "output_content_types"
     ],
     "exact_searchable_fields": [
         "@type",

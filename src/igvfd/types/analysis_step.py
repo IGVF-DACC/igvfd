@@ -33,6 +33,10 @@ class AnalysisStep(Item):
         Path('submitted_by', include=['@id', 'title']),
     ]
 
+    rev = {
+        'analysis_step_versions': ('AnalysisStepVersion', 'analysis_step')
+    }
+
     set_status_up = []
     set_status_down = []
 
@@ -62,3 +66,19 @@ class AnalysisStep(Item):
         workflow_uuid = properties['workflow']
         workflow = root.get_by_uuid(workflow_uuid)
         return u'{}-{}'.format(workflow.upgrade_properties()['accession'], properties['step_label'])
+
+    @calculated_property(schema={
+        'title': 'Analysis Step Versions',
+        'description': 'The analysis step versions associated with this analysis step.',
+        'type': 'array',
+        'minItems': 1,
+        'uniqueItems': True,
+        'items': {
+            'title': 'Analysis Step Version',
+            'type': ['string', 'object'],
+            'linkFrom': 'AnalysisStepVersion.analysis_step',
+        },
+        'notSubmittable': True
+    })
+    def analysis_step_versions(self, request, analysis_step_versions):
+        return paths_filtered_by_status(request, analysis_step_versions)
