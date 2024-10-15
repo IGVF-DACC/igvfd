@@ -275,7 +275,7 @@ def audit_inconsistent_sequencing_kit(value, system):
         {
             "audit_description": "Sequence files should specify a sequencing kit.",
             "audit_category": "missing sequencing kit",
-            "audit_level": "WARNING"
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
