@@ -71,12 +71,15 @@
             "description": "The file set(s) required for this analysis."
         },
         "file_set_type": {
-            "description": "The level of this analysis set. An intermediate analysis cannot be interpreted on its own and is part of a principal analysis. A principal analysis is the core analysis for an experimental design, the results of which can be interpretable on their own.",
-            "comment": "File set type describes the content of the analysis set. Intermediate analyses are processed data which are not the final results of an experiment. Principal analyses are processed data which are the final results of an experiment.",
+            "description": "The level of this analysis set.",
             "enum": [
                 "intermediate analysis",
                 "principal analysis"
             ],
+            "enum_descriptions": {
+                "intermediate analysis": "Processed data that is not the final result of an experiment and typically used as input to a principal analysis.",
+                "principal analysis": "The final, processed data of an experiment, serving as the core analysis."
+            },
             "submissionExample": {
                 "appscript": "principal analysis",
                 "igvf_utils": "principal analysis"
