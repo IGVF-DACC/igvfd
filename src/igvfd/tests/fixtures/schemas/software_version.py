@@ -8,7 +8,19 @@ def software_version(testapp, software, lab, award):
         'lab': lab['@id'],
         'software': software['@id'],
         'version': 'v2.4.4',
-        'downloaded_url': 'https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.4/'
+        'source_url': 'https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.4/'
+    }
+    return testapp.post_json('/software_version', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def software_version_with_download_id(testapp, software, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'software': software['@id'],
+        'version': 'v5.0.5.5',
+        'download_id': 'd31294875092e76ebb061eadc7998585'
     }
     return testapp.post_json('/software_version', item, status=201).json['@graph'][0]
 
@@ -59,5 +71,15 @@ def software_version_v5(software_version):
     item.update({
         'schema_version': '5',
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
+    })
+    return item
+
+
+@pytest.fixture
+def software_version_v6(software_version_with_download_id):
+    item = software_version_with_download_id.copy()
+    item.update({
+        'schema_version': '6',
+        'downloaded_url': 'https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.4/'
     })
     return item

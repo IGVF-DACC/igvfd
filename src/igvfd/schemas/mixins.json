@@ -642,7 +642,7 @@
     "source_url": {
         "source_url": {
             "title": "Source URL",
-            "description": "A link to an external resource of the object.",
+            "description": "A link to an external resource hosting data associated with the object.",
             "type": "string",
             "format": "uri",
             "submissionExample": {
