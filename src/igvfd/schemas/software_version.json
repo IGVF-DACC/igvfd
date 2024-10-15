@@ -45,6 +45,9 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/source_url"
         }
     ],
     "dependentSchemas": {
@@ -89,9 +92,9 @@
                 "igvf_utils": "5e19e19 or 0038f918e316f4ee5a5d7bd65e895234"
             }
         },
-        "downloaded_url": {
-            "title": "Download URL",
-            "description": "An external resource to track the version of the software downloaded.",
+        "source_url": {
+            "title": "Source URL",
+            "description": "An external resource to track the version of the software download.",
             "type": "string",
             "format": "uri",
             "submissionExample": {
