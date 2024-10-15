@@ -397,9 +397,6 @@
                             "download_id": {
                                 "type": "keyword"
                             },
-                            "downloaded_url": {
-                                "type": "keyword"
-                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -419,6 +416,9 @@
                                 "type": "keyword"
                             },
                             "software": {
+                                "type": "keyword"
+                            },
+                            "source_url": {
                                 "type": "keyword"
                             },
                             "status": {
