@@ -7,6 +7,15 @@ from snovault.elasticsearch.searches.configs import search_config
 def workflow():
     return {
         'facets': {
+            'analysis_steps.analysis_step_versions.software_versions.software.name': {
+                'title': 'Software',
+            },
+            'analysis_steps.analysis_step_types': {
+                'title': 'Analysis Step Types',
+            },
+            'analysis_steps.output_content_types': {
+                'title': 'Output Types',
+            },
             'collections': {
                 'title': 'Collections',
             },
@@ -33,6 +42,14 @@ def workflow():
             },
         },
         'facet_groups': [
+            {
+                'title': 'Workflow',
+                'facet_fields': [
+                    'analysis_steps.analysis_step_versions.software_versions.software.name',
+                    'analysis_steps.analysis_step_types',
+                    'analysis_steps.output_content_types',
+                ],
+            },
             {
                 'title': 'Provenance',
                 'facet_fields': [

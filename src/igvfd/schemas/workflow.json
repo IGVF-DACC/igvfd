@@ -114,12 +114,12 @@
         "name",
         "submitted_by.title",
         "analysis_steps.analysis_step_types",
-        "analysis_steps.input_content_types",
         "analysis_steps.output_content_types"
     ],
     "exact_searchable_fields": [
         "@type",
-        "publications.publication_identifiers"
+        "publications.publication_identifiers",
+        "analysis_steps.analysis_step_versions.software_versions.software.name"
     ],
     "changelog": "/profiles/changelogs/workflow.md"
 }
