@@ -432,7 +432,7 @@ def construct_library_set_9_10(value, system):
     removed_integrated_content_files = []
     if 'integrated_content_files' in value:
         for integrated_content_file in value['integrated_content_files']:
-            if not (integrated_content_file['@id'].startswith('/tabular-files/') or integrated_content_file['@id'].startswith('/reference-files/')):
+            if not (integrated_content_file.startswith('/tabular-files/') or integrated_content_file.startswith('/reference-files/')):
                 removed_integrated_content_files.append(integrated_content_file)
             else:
                 filtered_integrated_content_files.append(integrated_content_file)
