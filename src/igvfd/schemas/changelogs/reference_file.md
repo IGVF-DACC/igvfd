@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Add `derived_manually`.
 * Add property `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Extend `assembly` enum list to include `Cast - GRCm39`.

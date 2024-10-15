@@ -8,6 +8,7 @@
 * Extend `content_type` enum list to include `reporter genomic element effects`.
 * Extend `content_type` enum list to include `reporter genomic variant effects`.
 * Extend `content_type` enum list to include `differential element quantifications`.
+* Add `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Extend `content_type` enum list to include `barcode to TF overexpression mapping`.
 * Extend `content_type` enum list to include `coding variant effects`.
