@@ -1,6 +1,6 @@
 {
-    "hash": "e602a24f769bc4697c032f22df7c988f",
-    "index_name": "workflow_e602a24f",
+    "hash": "7f2658038768a8007ec54f5a1b214de7",
+    "index_name": "workflow_7f265803",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -158,7 +158,84 @@
                         "type": "keyword"
                     },
                     "analysis_steps": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_types": {
+                                "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "analysis_step_versions": {
+                                "type": "keyword"
+                            },
+                            "award": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "input_content_types": {
+                                "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "output_content_types": {
+                                "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "parents": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "step_label": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "title": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflow": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "award": {
                         "properties": {

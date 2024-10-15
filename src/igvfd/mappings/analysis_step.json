@@ -1,6 +1,6 @@
 {
-    "hash": "d81b0aae5dff61df558fa03ff3a68b3b",
-    "index_name": "analysis_step_d81b0aae",
+    "hash": "c648455d034af885868bb8289b6d88b2",
+    "index_name": "analysis_step_c648455d",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -152,6 +152,9 @@
                         "type": "keyword"
                     },
                     "analysis_step_types": {
+                        "type": "keyword"
+                    },
+                    "analysis_step_versions": {
                         "type": "keyword"
                     },
                     "award": {
@@ -315,6 +318,9 @@
                                 "type": "keyword"
                             },
                             "analysis_step_types": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_versions": {
                                 "type": "keyword"
                             },
                             "award": {
