@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 14
 
-* Add property `derived_manually`.
+* Add `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Add calculated property `assay_titles`.
 * Extend `sequencing_kit` enum list to include `Singular G4 F2 Reagent Kit`.
