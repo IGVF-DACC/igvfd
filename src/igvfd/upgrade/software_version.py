@@ -55,5 +55,5 @@ def software_version_5_6(value, system):
 def software_version_6_7(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1949
     if 'downloaded_url' in value:
-        value['sourcel_url'] = value['downloaded_url']
+        value['source_url'] = value['downloaded_url']
         del value['downloaded_url']
