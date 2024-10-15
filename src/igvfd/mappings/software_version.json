@@ -1,6 +1,6 @@
 {
-    "hash": "fcd1e2b1726f166185cc5976c0106715",
-    "index_name": "software_version_fcd1e2b1",
+    "hash": "91aa406e03db36e9f45df3d324fc573d",
+    "index_name": "software_version_91aa406e",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -229,9 +229,6 @@
                         "type": "text"
                     },
                     "download_id": {
-                        "type": "keyword"
-                    },
-                    "downloaded_url": {
                         "type": "keyword"
                     },
                     "lab": {
@@ -527,6 +524,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "source_url": {
+                        "type": "keyword"
                     },
                     "status": {
                         "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "56ae3869e40a3570c0c13ecb18158e52",
-    "index_name": "analysis_step_version_56ae3869",
+    "hash": "3315ae4b62f420e32f2fcc8b1fc854fa",
+    "index_name": "analysis_step_version_3315ae4b",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -394,9 +394,6 @@
                             "download_id": {
                                 "type": "keyword"
                             },
-                            "downloaded_url": {
-                                "type": "keyword"
-                            },
                             "lab": {
                                 "type": "keyword"
                             },
@@ -416,6 +413,9 @@
                                 "type": "keyword"
                             },
                             "software": {
+                                "type": "keyword"
+                            },
+                            "source_url": {
                                 "type": "keyword"
                             },
                             "status": {
