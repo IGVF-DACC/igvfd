@@ -1,6 +1,6 @@
 {
-    "hash": "ea7c278ccf6ecd5885738d9a4f2e62a8",
-    "index_name": "curated_set_ea7c278c",
+    "hash": "7592b92aba5a81c6995e67636b179e30",
+    "index_name": "curated_set_7592b92a",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -880,6 +880,15 @@
                             },
                             "derived_from": {
                                 "type": "keyword"
+                            },
+                            "derived_manually": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"

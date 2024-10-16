@@ -1,6 +1,6 @@
 {
-    "hash": "b79d77dc67ffa13ce492c3ee07b798b7",
-    "index_name": "signal_file_b79d77dc",
+    "hash": "ceebd0d5bd5e907ddef5035d5b5ac500",
+    "index_name": "signal_file_ceebd0d5",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -344,6 +344,15 @@
                     },
                     "derived_from": {
                         "type": "keyword"
+                    },
+                    "derived_manually": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "description": {
                         "copy_to": "_fuzzy",

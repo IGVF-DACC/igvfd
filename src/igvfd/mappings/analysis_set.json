@@ -1,6 +1,6 @@
 {
-    "hash": "b9a5608962176049c28ebff02990118f",
-    "index_name": "analysis_set_b9a56089",
+    "hash": "918f5b0d171d0c21271d29c997784004",
+    "index_name": "analysis_set_918f5b0d",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -882,6 +882,15 @@
                             },
                             "derived_from": {
                                 "type": "keyword"
+                            },
+                            "derived_manually": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"

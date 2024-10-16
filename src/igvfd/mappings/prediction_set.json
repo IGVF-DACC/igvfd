@@ -1,6 +1,6 @@
 {
-    "hash": "9c15167add2d3d59b0c01dec01c5ba58",
-    "index_name": "prediction_set_9c15167a",
+    "hash": "5ea893b6c06bc910cf89d19603ed4390",
+    "index_name": "prediction_set_5ea893b6",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -980,6 +980,15 @@
                             "derived_from": {
                                 "type": "keyword"
                             },
+                            "derived_manually": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -1344,6 +1353,15 @@
                             "derived_from": {
                                 "type": "keyword"
                             },
+                            "derived_manually": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -1523,6 +1541,15 @@
                             },
                             "derived_from": {
                                 "type": "keyword"
+                            },
+                            "derived_manually": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"

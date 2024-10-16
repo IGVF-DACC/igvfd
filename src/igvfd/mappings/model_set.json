@@ -1,6 +1,6 @@
 {
-    "hash": "358e8033d9713955316b1f385ffe9f27",
-    "index_name": "model_set_358e8033",
+    "hash": "d2bd6cef9eb5ee400131271a292dc5d9",
+    "index_name": "model_set_d2bd6cef",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -980,6 +980,15 @@
                             },
                             "derived_from": {
                                 "type": "keyword"
+                            },
+                            "derived_manually": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"
