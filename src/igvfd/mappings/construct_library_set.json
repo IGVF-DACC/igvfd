@@ -1,6 +1,6 @@
 {
-    "hash": "15c66423c35d8879213042faf7825bc1",
-    "index_name": "construct_library_set_15c66423",
+    "hash": "8eb7a3d87c48ac56ccbbd2dcb39ee859",
+    "index_name": "construct_library_set_8eb7a3d8",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1725,9 +1725,6 @@
                             "barcode_map_for": {
                                 "type": "keyword"
                             },
-                            "base_modifications": {
-                                "type": "keyword"
-                            },
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
@@ -1735,9 +1732,6 @@
                                 "type": "keyword"
                             },
                             "content_md5sum": {
-                                "type": "keyword"
-                            },
-                            "content_summary": {
                                 "type": "keyword"
                             },
                             "content_type": {
@@ -1809,28 +1803,10 @@
                                 "store": true,
                                 "type": "long"
                             },
-                            "filtered": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "boolean"
-                            },
-                            "flowcell_id": {
-                                "type": "keyword"
-                            },
                             "gene_list_for": {
                                 "type": "keyword"
                             },
                             "href": {
-                                "type": "keyword"
-                            },
-                            "illumina_read_type": {
-                                "type": "keyword"
-                            },
-                            "index": {
                                 "type": "keyword"
                             },
                             "input_file_for": {
@@ -1842,83 +1818,14 @@
                             "lab": {
                                 "type": "keyword"
                             },
-                            "lane": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
-                            },
                             "loci_list_for": {
                                 "type": "keyword"
-                            },
-                            "maximum_read_length": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
                             },
                             "md5sum": {
                                 "type": "keyword"
                             },
-                            "mean_read_length": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "float"
-                            },
-                            "minimum_read_length": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
-                            },
-                            "normalized": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "boolean"
-                            },
                             "notes": {
                                 "type": "text"
-                            },
-                            "principal_dimension": {
-                                "type": "keyword"
-                            },
-                            "read_count": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
-                            },
-                            "redacted": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "boolean"
-                            },
-                            "reference_files": {
-                                "type": "keyword"
                             },
                             "release_timestamp": {
                                 "type": "keyword"
@@ -1932,43 +1839,13 @@
                             "schema_version": {
                                 "type": "keyword"
                             },
-                            "secondary_dimensions": {
-                                "type": "keyword"
-                            },
-                            "seqspec_of": {
-                                "type": "keyword"
-                            },
-                            "seqspecs": {
-                                "type": "keyword"
-                            },
-                            "sequencing_kit": {
-                                "type": "keyword"
-                            },
-                            "sequencing_platform": {
-                                "type": "keyword"
-                            },
-                            "sequencing_run": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "store": true,
-                                "type": "long"
-                            },
                             "source_url": {
                                 "type": "keyword"
                             },
                             "sources": {
                                 "type": "keyword"
                             },
-                            "start_view_position": {
-                                "type": "keyword"
-                            },
                             "status": {
-                                "type": "keyword"
-                            },
-                            "strand_specificity": {
                                 "type": "keyword"
                             },
                             "submitted_by": {
