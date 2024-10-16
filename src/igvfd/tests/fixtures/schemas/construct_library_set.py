@@ -196,6 +196,6 @@ def construct_library_set_v9(construct_library_set_genome_wide, tabular_file, re
     item = construct_library_set_genome_wide.copy()
     item.update({
         'schema_version': '9',
-        'integrated_content_files': [tabular_file['@id'], reference_file['@id'], sequence_file['@id']]
+        'integrated_content_files': [tabular_file['uuid'], reference_file['uuid'], sequence_file['uuid']]
     })
     return item
