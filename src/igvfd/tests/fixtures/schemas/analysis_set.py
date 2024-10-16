@@ -20,7 +20,7 @@ def principal_analysis_set(
     testapp,
     award,
     lab,
-    analysis_set_base
+    measurement_set
 ):
     item = {
         'award': award['@id'],
