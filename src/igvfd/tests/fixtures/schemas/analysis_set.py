@@ -25,7 +25,7 @@ def principal_analysis_set(
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'input_file_sets': [analysis_set_base['@id']],
+        'input_file_sets': [measurement_set['@id']],
         'file_set_type': 'principal analysis'
     }
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
