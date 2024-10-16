@@ -33,6 +33,9 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/source_url"
         }
     ],
     "dependentSchemas": {
@@ -66,10 +69,7 @@
             }
         },
         "source_url": {
-            "title": "Source URL",
             "description": "An external resource to the codebase.",
-            "type": "string",
-            "format": "uri",
             "submissionExample": {
                 "appscript": "https://github.com/arq5x/bedtools",
                 "igvf_utils": "https://github.com/arq5x/bedtools"

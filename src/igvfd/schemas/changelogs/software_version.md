@@ -1,5 +1,9 @@
 ## Changelog for *`software_version.json`*
 
+### Schema version 7
+
+* Rename `downloaded_url` to `source_url`.
+
 ### Minor changes since schema version 6
 
 * Update calculation of `summary`.

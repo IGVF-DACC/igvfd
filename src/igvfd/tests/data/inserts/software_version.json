@@ -4,7 +4,7 @@
             "igvf:bowtie2 v2.4.4"
         ],
         "software": "6a733684-c159-49ab-9624-ac19c0f1c95d",
-        "downloaded_url": "https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.4/",
+        "source_url": "https://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.4.4/",
         "download_id": "d31294875092e76ebb061eadc7998582",
         "version": "v2.4.4",
         "award": "HG012012",
@@ -12,5 +12,18 @@
         "uuid": "2170cada-3182-442b-b5ed-4a6329042db5",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z"
+    },
+    {
+        "aliases": [
+            "igvf:bowtie2 v1.1.3.0"
+        ],
+        "software": "6a733684-c159-49ab-9624-ac19c0f1c95d",
+        "source_url": "https://sourceforge.net/projects/bowtie-bio/files/bowtie2/1.1.3.0/",
+        "version": "v1.1.3.0",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "ba4e72c3-525f-427d-8fad-06347b49986e",
+        "status": "released",
+        "release_timestamp": "2024-10-06T12:55:56Z"
     }
 ]

@@ -20,7 +20,7 @@
                 "award",
                 "software",
                 "version",
-                "downloaded_url"
+                "source_url"
             ]
         }
     ],
@@ -45,6 +45,9 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/source_url"
         }
     ],
     "dependentSchemas": {
@@ -54,7 +57,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "6"
+            "default": "7"
         },
         "software": {
             "title": "Software",
@@ -72,7 +75,7 @@
             "description": "The version of a particular software.",
             "comment": "A string to identify a specific version of the software.",
             "type": "string",
-            "pattern": "^v(?!0\\.0\\.0$)[0-9]+\\.[0-9]+\\.[0-9]+$",
+            "pattern": "^v(?!0\\.0\\.0$)([0-9]+\\.[0-9]+\\.[0-9]+(\\.[0-9]+)?|0\\.0\\.0\\.[1-9][0-9]*)$",
             "submissionExample": {
                 "appscript": "v2.16.2",
                 "igvf_utils": "v2.16.2"
@@ -89,11 +92,8 @@
                 "igvf_utils": "5e19e19 or 0038f918e316f4ee5a5d7bd65e895234"
             }
         },
-        "downloaded_url": {
-            "title": "Download URL",
-            "description": "An external resource to track the version of the software downloaded.",
-            "type": "string",
-            "format": "uri",
+        "source_url": {
+            "description": "An external resource to track the version of the software download.",
             "submissionExample": {
                 "appscript": "https://github.com/arq5x/bedtools/archive/v2.16.2.tar.gz",
                 "igvf_utils": "https://github.com/arq5x/bedtools/archive/v2.16.2.tar.gz"
