@@ -1,6 +1,6 @@
 {
-    "hash": "6481fad28d5c256d768e107d83a24787",
-    "index_name": "model_file_6481fad2",
+    "hash": "3ab41e42a1f87c18d12eff7209c50736",
+    "index_name": "model_file_3ab41e42",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -266,6 +266,15 @@
                     },
                     "derived_from": {
                         "type": "keyword"
+                    },
+                    "derived_manually": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "description": {
                         "copy_to": "_fuzzy",

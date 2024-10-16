@@ -1,6 +1,6 @@
 {
-    "hash": "482af519263ee83be9944489c8afcba0",
-    "index_name": "measurement_set_482af519",
+    "hash": "362ed35152c0f7a6aa5cea3e3e3011bf",
+    "index_name": "measurement_set_362ed351",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1409,6 +1409,15 @@
                             },
                             "derived_from": {
                                 "type": "keyword"
+                            },
+                            "derived_manually": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"

@@ -65,6 +65,7 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
+        "derived_manually": true,
         "collections": [
             "Vista",
             "VarChAMP"

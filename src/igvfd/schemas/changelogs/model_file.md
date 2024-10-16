@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 1
 
+* Add `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Extend `content_type` enum list to include `SNP effect matrix`.
 * Add calculated property `assay_titles`.

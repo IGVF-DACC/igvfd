@@ -1,6 +1,6 @@
 {
-    "hash": "bf2facc124fbdf8ddb011a57e5f6cd4f",
-    "index_name": "image_file_bf2facc1",
+    "hash": "3d08c429e7268ab153cd556039d9daf0",
+    "index_name": "image_file_3d08c429",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -254,6 +254,15 @@
                     },
                     "derived_from": {
                         "type": "keyword"
+                    },
+                    "derived_manually": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "description": {
                         "copy_to": "_fuzzy",

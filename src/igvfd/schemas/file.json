@@ -73,6 +73,22 @@
                 }
             ]
         },
+        "derived_manually": {
+            "comment": "Specification of derived_manually is mutually exclusive with specification of analysis_step_version.",
+            "not": {
+                "required": [
+                    "analysis_step_version"
+                ]
+            }
+        },
+        "analysis_step_version": {
+            "comment": "Specification of analysis_step_version is mutually exclusive with specification of derived_manually.",
+            "not": {
+                "required": [
+                    "derived_manually"
+                ]
+            }
+        },
         "validation_error_detail": {
             "comment": "Validation Error Detail can only be specified on files that did not pass validation.",
             "required": [
@@ -311,6 +327,15 @@
             "submissionExample": {
                 "appscript": "[\"IGVFFI1234ABCD\", \"john-doe:file01\"]",
                 "igvf_utils": "IGVFFI1234ABCD, john-doe:file01"
+            }
+        },
+        "derived_manually": {
+            "title": "Derived Manually",
+            "description": "A boolean indicating whether the file has been dervided manually without automated computational methods.",
+            "type": "boolean",
+            "submissionExample": {
+                "appscript": "true",
+                "igvf_utils": "true"
             }
         },
         "file_format": {

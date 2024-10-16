@@ -1,6 +1,6 @@
 {
-    "hash": "8846f7c84d22a207c1cd26c5fd8b38a5",
-    "index_name": "construct_library_set_8846f7c8",
+    "hash": "15c66423c35d8879213042faf7825bc1",
+    "index_name": "construct_library_set_15c66423",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1442,6 +1442,15 @@
                             "derived_from": {
                                 "type": "keyword"
                             },
+                            "derived_manually": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -1751,6 +1760,15 @@
                             },
                             "derived_from": {
                                 "type": "keyword"
+                            },
+                            "derived_manually": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"
@@ -2109,6 +2127,15 @@
                             "derived_from": {
                                 "type": "keyword"
                             },
+                            "derived_manually": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -2288,6 +2315,15 @@
                             },
                             "derived_from": {
                                 "type": "keyword"
+                            },
+                            "derived_manually": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "description": {
                                 "type": "text"
