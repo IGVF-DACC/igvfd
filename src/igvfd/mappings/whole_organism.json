@@ -1,6 +1,6 @@
 {
-    "hash": "b4530d8e144ed34d204c0788b1bdcb6a",
-    "index_name": "whole_organism_b4530d8e",
+    "hash": "b897d978fd20c5b32056e82774a2a298",
+    "index_name": "whole_organism_b897d978",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -501,6 +501,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {

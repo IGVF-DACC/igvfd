@@ -1,6 +1,6 @@
 {
-    "hash": "6df90b7958e88cbb8f89517a4d6fcbac",
-    "index_name": "matrix_file_6df90b79",
+    "hash": "dcd76f1cfe3b9200350982ba3bd6102c",
+    "index_name": "matrix_file_dcd76f1c",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -360,6 +360,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {

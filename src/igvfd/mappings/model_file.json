@@ -1,6 +1,6 @@
 {
-    "hash": "3ab41e42a1f87c18d12eff7209c50736",
-    "index_name": "model_file_3ab41e42",
+    "hash": "ba1bdcee5f86ca261fb4bb73e1bac37a",
+    "index_name": "model_file_ba1bdcee",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -369,6 +369,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {

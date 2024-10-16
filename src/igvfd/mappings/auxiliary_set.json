@@ -1,6 +1,6 @@
 {
-    "hash": "18825d3355be9d9c223afc058ea690bb",
-    "index_name": "auxiliary_set_18825d33",
+    "hash": "6f55b46cb1219b011e8fdfba529e85d7",
+    "index_name": "auxiliary_set_6f55b46c",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -380,6 +380,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {
