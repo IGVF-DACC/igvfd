@@ -40,11 +40,15 @@
         },
         {
             "$ref": "mixins.json#/controlled_access"
+        },
+        {
+            "$ref": "mixins.json#/external_host"
         }
     ],
     "dependentSchemas": {
         "$merge": [
-            "file.json#/dependentSchemas"
+            "file.json#/dependentSchemas",
+            "shared_dependencies.json#/external_host"
         ],
         "content_type": {
             "comment": "The file format should match the content type of the file. Graph structures should be in json format. Edge weights should be in hdf5 format.",

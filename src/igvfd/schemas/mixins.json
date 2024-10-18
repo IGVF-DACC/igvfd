@@ -671,15 +671,6 @@
                 "appscript": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/",
                 "igvf_utils": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/"
             }
-        },
-        "external_host_id": {
-            "title": "External Host Identifier",
-            "description": "A unique identifier for the file which is hosted externally.",
-            "type": "string",
-            "submissionExample": {
-                "appscript": "gencode.v44.annotation",
-                "igvf_utils": "gencode.v44.annotation"
-            }
         }
     }
 }
