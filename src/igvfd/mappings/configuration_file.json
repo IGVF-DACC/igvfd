@@ -1,6 +1,6 @@
 {
-    "hash": "7109baaf882f79e1e6616d5ed5cc2a4b",
-    "index_name": "configuration_file_7109baaf",
+    "hash": "ed3a683a98ef3675780cd870653a787c",
+    "index_name": "configuration_file_ed3a683a",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -379,6 +379,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

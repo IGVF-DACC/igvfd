@@ -1,6 +1,6 @@
 {
-    "hash": "ddca6ac85649e062727afc186484af34",
-    "index_name": "model_set_ddca6ac8",
+    "hash": "8001ba5e221c99cd11309c04df6b0323",
+    "index_name": "model_set_8001ba5e",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -503,6 +503,15 @@
                             "external_input_data": {
                                 "type": "keyword"
                             },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "file_set_type": {
                                 "type": "keyword"
                             },
@@ -902,6 +911,15 @@
                     },
                     "external_input_data": {
                         "type": "keyword"
+                    },
+                    "externally_hosted": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "file_set_type": {
                         "copy_to": "_fuzzy",
@@ -1340,6 +1358,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

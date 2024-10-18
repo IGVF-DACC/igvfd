@@ -1,6 +1,6 @@
 {
-    "hash": "b527e46a0f71bd16fde22aa67d4a22c3",
-    "index_name": "prediction_set_b527e46a",
+    "hash": "2e457c6e86da0ca6012b323569dc5e50",
+    "index_name": "prediction_set_2e457c6e",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -502,6 +502,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "521a8268a5c1c4c651d8348b9ee3079d",
-    "index_name": "measurement_set_521a8268",
+    "hash": "6acfd4da644911be2cc4242ab7731590",
+    "index_name": "measurement_set_6acfd4da",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -587,6 +587,15 @@
                             "external_input_data": {
                                 "type": "keyword"
                             },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "file_set_type": {
                                 "type": "keyword"
                             },
@@ -930,6 +939,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"
@@ -1332,6 +1350,15 @@
                     },
                     "external_image_url": {
                         "type": "keyword"
+                    },
+                    "externally_hosted": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "file_set_type": {
                         "type": "keyword"
@@ -2097,6 +2124,15 @@
                             },
                             "external_image_url": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"
