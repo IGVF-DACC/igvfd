@@ -74,3 +74,28 @@ def test_audit_file_format_specifications(testapp, matrix_file, experimental_pro
         audit['category'] != 'inconsistent document type'
         for audit in res.json['audit'].get('ERROR', {})
     )
+
+
+def audit_external_identifiers(testapp, model_file):
+    testapp.patch_json(
+        model_file['@id'],
+        {
+            'externally_hosted': True,
+            'external_host_url': 'http://test_url'
+        }
+    )
+    res = testapp.get(model_file['@id'] + '@@audit')
+    assert any(
+        audit['category'] == 'missing identifiers from external resources'
+        for audit in res.json['audit'].get('WARNING', {})
+    )
+    testapp.patch_json(
+        model_file['@id'],
+        {
+            'dbxrefs': ['test_external_identifier']
+        }
+    )
+    assert all(
+        audit['category'] != 'missing identifiers from external resources'
+        for audit in res.json['audit'].get('WARNING', {})
+    )

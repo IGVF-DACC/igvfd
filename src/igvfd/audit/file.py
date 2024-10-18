@@ -70,3 +70,26 @@ def audit_file_format_specifications(value, system):
                 f'with `document_type` {doc_type}.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('ModelFile', frame='object')
+@audit_checker('SequenceFile', frame='object')
+def audit_external_identifiers(value, system):
+    '''
+    [
+        {
+            "audit_description": "Externally hosted files are expected to have identifiers from external resources.",
+            "audit_category": "missing identifiers from external resources",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    audit_message = get_audit_message(audit_external_identifiers)
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    if value.get('externally_hosted'):
+        if 'dbxrefs' not in value:
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is externally hosted, '
+                f'but does not have identifier from external resource listed in `dbxrefs`.'
+            )
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
