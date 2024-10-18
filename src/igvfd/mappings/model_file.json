@@ -1,6 +1,6 @@
 {
-    "hash": "3ab41e42a1f87c18d12eff7209c50736",
-    "index_name": "model_file_3ab41e42",
+    "hash": "83b698c1c57abfc0cded59e022439320",
+    "index_name": "model_file_83b698c1",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -282,6 +282,18 @@
                     },
                     "documents": {
                         "type": "keyword"
+                    },
+                    "external_host_url": {
+                        "type": "keyword"
+                    },
+                    "externally_hosted": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "file_format": {
                         "copy_to": "_exact",

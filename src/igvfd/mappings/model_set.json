@@ -1,6 +1,6 @@
 {
-    "hash": "d2bd6cef9eb5ee400131271a292dc5d9",
-    "index_name": "model_set_d2bd6cef",
+    "hash": "ddca6ac85649e062727afc186484af34",
+    "index_name": "model_set_ddca6ac8",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1005,8 +1005,20 @@
                                 "store": true,
                                 "type": "boolean"
                             },
+                            "external_host_url": {
+                                "type": "keyword"
+                            },
                             "external_id": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_format": {
                                 "type": "keyword"
