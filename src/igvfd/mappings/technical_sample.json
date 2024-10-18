@@ -1,6 +1,6 @@
 {
-    "hash": "48a8dbc7183f7676e481946949a73bf7",
-    "index_name": "technical_sample_48a8dbc7",
+    "hash": "cbb8b97002aa53b7d88e1987a7ece3e0",
+    "index_name": "technical_sample_cbb8b970",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -431,6 +431,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

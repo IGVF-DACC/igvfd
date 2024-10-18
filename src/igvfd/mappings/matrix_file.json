@@ -1,6 +1,6 @@
 {
-    "hash": "6df90b7958e88cbb8f89517a4d6fcbac",
-    "index_name": "matrix_file_6df90b79",
+    "hash": "e5b08adbab8c4d093831832fa237e63f",
+    "index_name": "matrix_file_e5b08adb",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -382,6 +382,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

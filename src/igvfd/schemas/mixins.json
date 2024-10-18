@@ -638,5 +638,27 @@
                 "igvf_utils": "/sample-terms/UBERON_0002369/"
             }
         }
+    },
+    "external_host": {
+        "externally_hosted": {
+            "title": "Externally Hosted",
+            "description": "Indicates whether the file is externally hosted and not stored on portal.",
+            "type": "boolean",
+            "default": false,
+            "submissionExample": {
+                "appscript": "True",
+                "igvf_utils": "True"
+            }
+        },
+        "external_host_url": {
+            "title": "External Host Url",
+            "description": "A link to the resouce where the file is externally hosted.",
+            "type": "string",
+            "format": "uri",
+            "submissionExample": {
+                "appscript": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/",
+                "igvf_utils": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/"
+            }
+        }
     }
 }

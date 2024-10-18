@@ -1,6 +1,6 @@
 {
-    "hash": "94e31b0e9296eaf1f314207ee9472440",
-    "index_name": "alignment_file_94e31b0e",
+    "hash": "015f1204fbe9ff3fbeeeedeff1a9e2ef",
+    "index_name": "alignment_file_015f1204",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -397,6 +397,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

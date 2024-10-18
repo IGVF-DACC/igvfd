@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 22
 
+* Add calculated property `externally_hosted`.
 * Extend `preferred_assay_title` enum list to include `HiCAR`.
 * Extend `preferred_assay_title` enum list to include `ONT dRNA`.
 * Extend `preferred_assay_title` enum list to include `ONT Fiber-seq`.
