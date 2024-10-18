@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 14
 
+* Add `external_host_url`.
+* Add `externally_hosted`.
 * Add `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Add calculated property `assay_titles`.
