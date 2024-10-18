@@ -704,6 +704,22 @@ class MeasurementSet(FileSet):
     def donors(self, request, samples=None):
         return get_donors_from_samples(request, samples)
 
+    @calculated_property(
+        schema={
+            'title': 'Externally Hosted',
+            'type': 'boolean',
+            'notSubmittable': True,
+        }
+    )
+    def externally_hosted(self, request, files=None):
+        externall_hosted_value = False
+        if files:
+            for current_file_path in files:
+                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+                if file_object.get('externally_hosted'):
+                    externall_hosted_value = True
+        return externall_hosted_value
+
 
 @collection(
     name='model-sets',
@@ -735,6 +751,22 @@ class ModelSet(FileSet):
     )
     def summary(self, request, file_set_type, model_name, model_version, prediction_objects):
         return f'{model_name} {model_version} {file_set_type} predicting {", ".join(prediction_objects)}'
+
+    @calculated_property(
+        schema={
+            'title': 'Externally Hosted',
+            'type': 'boolean',
+            'notSubmittable': True,
+        }
+    )
+    def externally_hosted(self, request, files=None):
+        externall_hosted_value = False
+        if files:
+            for current_file_path in files:
+                file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
+                if file_object.get('externally_hosted'):
+                    externall_hosted_value = True
+        return externall_hosted_value
 
 
 @collection(
