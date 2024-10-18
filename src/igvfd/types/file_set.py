@@ -712,13 +712,13 @@ class MeasurementSet(FileSet):
         }
     )
     def externally_hosted(self, request, files=None):
-        externall_hosted_value = False
+        externally_hosted_value = False
         if files:
             for current_file_path in files:
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('externally_hosted'):
-                    externall_hosted_value = True
-        return externall_hosted_value
+                    externally_hosted_value = True
+        return externally_hosted_value
 
 
 @collection(
@@ -760,13 +760,13 @@ class ModelSet(FileSet):
         }
     )
     def externally_hosted(self, request, files=None):
-        externall_hosted_value = False
+        externally_hosted_value = False
         if files:
             for current_file_path in files:
                 file_object = request.embed(current_file_path, '@@object?skip_calculated=true')
                 if file_object.get('externally_hosted'):
-                    externall_hosted_value = True
-        return externall_hosted_value
+                    externally_hosted_value = True
+        return externally_hosted_value
 
 
 @collection(
