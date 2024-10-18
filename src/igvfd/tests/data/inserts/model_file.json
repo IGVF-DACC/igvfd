@@ -69,5 +69,21 @@
         "status": "released",
         "release_timestamp": "2024-05-14T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set"
+    },
+    {
+        "uuid": "f1b1bfd8-5e25-4523-81de-1565fb06699c",
+        "accession": "IGVFDS8484BARC",
+        "file_format": "tar",
+        "md5sum": "74b87337454200d4d33f80c4663dc5e5",
+        "content_type": "graph structure",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "release_timestamp": "2024-05-14T12:34:56Z",
+        "status": "released",
+        "upload_status": "validated",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "file_size": 75000000,
+        "externally_hosted": true,
+        "external_host_url": "https://dl.fbaipublicfiles.com/fair-esm/models/esm2_t48_15B_UR50D.pt"
     }
 ]
