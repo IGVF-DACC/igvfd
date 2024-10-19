@@ -26,6 +26,39 @@ def test_calculated_donors(testapp, measurement_set, analysis_set_base, primary_
     assert set([donor['@id'] for donor in res.json.get('donors')]) == {rodent_donor['@id']}
 
 
+def test_calculated_samples(testapp, measurement_set, analysis_set_base, primary_cell, human_donor, in_vitro_cell_line, multiplexed_sample):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [primary_cell['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert set([sample['@id'] for sample in res.json.get('samples')]) == {primary_cell['@id']}
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'demultiplexed_sample': in_vitro_cell_line['@id']
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert set([sample['@id'] for sample in res.json.get('samples')]) == {primary_cell['@id']}
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [multiplexed_sample['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert set([sample['@id'] for sample in res.json.get('samples')]) == {in_vitro_cell_line['@id']}
+
+
 def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, measurement_set_no_files, base_auxiliary_set):
     testapp.patch_json(
         analysis_set_base['@id'],
