@@ -111,7 +111,6 @@ def test_multitype_report_download_href(workbook, testapp):
     res = testapp.get('/multireport.tsv?type=AnalysisSet&field=%40id&field=files.href&donors.taxa=Homo+sapiens')
     lines = res.text.splitlines()
     server_url = res.headers['X-Request-URL'].split('/multireport.tsv?')[0]
-    print(lines)
     id = lines[2].split('\t')[0]
     full_href = server_url + '/reference-files/IGVFFI0001SQBR/@@download/IGVFFI0001SQBR.txt.gz'
     assert full_href in lines[2].split('\t')[1]
