@@ -178,3 +178,70 @@ def test_audit_multiple_workflows(
         error['category'] == 'unexpected workflows'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_analysis_set_multiplexed_samples(
+    testapp,
+    analysis_set_base,
+    measurement_set,
+    measurement_set_no_files,
+    in_vitro_differentiated_cell,
+    tissue,
+    multiplexed_sample
+):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [multiplexed_sample['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing demultiplexed sample'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'demultiplexed_sample': tissue['@id']
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing demultiplexed sample'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [in_vitro_differentiated_cell['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected demultiplexed sample'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
+        {
+            'samples': [multiplexed_sample['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id'], measurement_set_no_files['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected samples'
+        for error in res.json['audit'].get('ERROR', [])
+    )
