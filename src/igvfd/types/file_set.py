@@ -307,11 +307,12 @@ class AnalysisSet(FileSet):
                 input_file_set_samples = set(input_file_set_object.get('samples', []))
                 if input_file_set_samples:
                     samples = samples | input_file_set_samples
+            samples = list(samples)
             if demultiplexed_sample:
                 # if the analysis set specifies a demultiplexed sample and all input data is multiplexed return just the demultiplexed_sample
-                if not ([sample for sample in samples if not (sample.startswith('/multiplexed_samples/'))]):
-                    return list(demultiplexed_sample)
-            return list(samples)
+                if not ([sample for sample in samples if not (sample.startswith('/multiplexed-samples/'))]):
+                    return [demultiplexed_sample]
+            return samples
 
     @calculated_property(
         condition='samples',
