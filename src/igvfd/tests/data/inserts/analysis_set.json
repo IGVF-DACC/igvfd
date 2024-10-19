@@ -11,7 +11,7 @@
             "igvf:Antibody_characterization_standards_IGVF"
         ],
         "input_file_sets": [
-            "igvf:basic_measurement_set"
+            "igvf:mN2H"
         ],
         "status": "released",
         "uuid": "609869e7-cbd9-4d06-9569-d3fdb4604ccd",
@@ -32,7 +32,7 @@
         "status": "released",
         "uuid": "dd171b83-cbd9-4d06-4aa1-b77ab49569cd",
         "input_file_sets": [
-            "igvf:basic_analysis_set"
+            "igvf:basic_measurement_set"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "principal analysis",
