@@ -449,6 +449,14 @@ class Biosample(Sample):
             age = concat_numeric_and_units(age, age_units)
             summary_terms += f' ({age})'
 
+        # modification summaries are appended to the end of the summary
+        if (modifications and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+            modification_objects = [request.embed(modification) for modification in modification]
+            modification_summaries = sorted([modification.get('summary') for modification in modification_objects])
+            if modification_summaries:
+                summary_terms += f' modified with {", ".join(modification_summaries)},'
+
         # sorted from detail is appended to the end of the summary
         if (sorted_from_detail and
                 biosample_type in ['primary_cell', 'in_vitro_system']):
@@ -494,7 +502,7 @@ class Biosample(Sample):
         # construct library set overview is appended to the end of the summary
         if (construct_library_sets and
                 biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
-            verb = 'modified with'
+            verb = 'transfected with'
             library_types = set()
             for CLS in construct_library_sets:
                 CLS_object = request.embed(CLS, '@@object?skip_calculated=true')
@@ -504,8 +512,6 @@ class Biosample(Sample):
                     verb = 'transduced (lentivirus) with'
                 elif nucleic_acid_delivery == 'adenoviral transduction':
                     verb = 'transduced (adenovirus) with'
-                else:
-                    verb = 'transfected with'
             if len(library_types) == 1:
                 library_types = ', '.join(library_types)
                 if moi:
