@@ -112,7 +112,6 @@ def test_multitype_report_download_href(workbook, testapp):
     lines = res.text.splitlines()
     server_url = res.headers['X-Request-URL'].split('/multireport.tsv?')[0]
     id = lines[2].split('\t')[0]
-    print(lines)
     full_href = server_url + '/reference-files/IGVFFI0001SQBR/@@download/IGVFFI0001SQBR.txt.gz'
     assert full_href in lines[2].split('\t')[1]
     full_href = server_url + '/reference-files/IGVFFI0001SQBZ/@@download/IGVFFI0001SQBZ.gtf.gz'
