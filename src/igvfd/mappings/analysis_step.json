@@ -1,6 +1,6 @@
 {
-    "hash": "d81b0aae5dff61df558fa03ff3a68b3b",
-    "index_name": "analysis_step_d81b0aae",
+    "hash": "a1573643782e1b19be6539dc4bac88d5",
+    "index_name": "analysis_step_a1573643",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -544,6 +544,15 @@
                             },
                             "summary": {
                                 "type": "keyword"
+                            },
+                            "uniform_pipeline": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "uuid": {
                                 "type": "keyword"
