@@ -43,11 +43,15 @@
         },
         {
             "$ref": "mixins.json#/controlled_access"
+        },
+        {
+            "$ref": "mixins.json#/external_host"
         }
     ],
     "dependentSchemas": {
         "$merge": [
-            "file.json#/dependentSchemas"
+            "file.json#/dependentSchemas",
+            "shared_dependencies.json#/external_host"
         ],
         "file_format": {
             "comment": "Once validated, fastq files must have read count and the minimum, maximum, and mean read lengths.",
