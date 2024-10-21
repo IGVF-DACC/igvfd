@@ -15,6 +15,7 @@
         "content_type": "alignments",
         "submitted_file_name": "/Users/igvf/igvf_files/alignments.bam",
         "file_size": 45200010,
+        "read_count": 518845675,
         "upload_status": "validated",
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [

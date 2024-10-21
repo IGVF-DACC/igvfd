@@ -1,6 +1,6 @@
 {
-    "hash": "94e31b0e9296eaf1f314207ee9472440",
-    "index_name": "alignment_file_94e31b0e",
+    "hash": "8955be05911f15eb63e4247fb2a0e7c2",
+    "index_name": "alignment_file_8955be05",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -1611,6 +1611,15 @@
                     },
                     "notes": {
                         "type": "text"
+                    },
+                    "read_count": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "long"
                     },
                     "redacted": {
                         "fields": {
