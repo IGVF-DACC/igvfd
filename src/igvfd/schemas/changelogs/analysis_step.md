@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 5
 
-* Extend `analysis_step_types` enum list to include `basecalling`.
+* Extend `analysis_step_types` enum list to include `base calling`.
 * Add calculated property `analysis_step_versions`.
 * Extend `output_content_types` enum list to include `reporter elements`.
 * Extend `input_content_types` enum list to include `reporter elements`.

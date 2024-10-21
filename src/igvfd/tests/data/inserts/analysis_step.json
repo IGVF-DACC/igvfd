@@ -12,7 +12,7 @@
         "step_label": "example-analysis-step",
         "analysis_step_types": [
             "alignment",
-            "basecalling"
+            "base calling"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "input_content_types": [
