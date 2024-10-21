@@ -90,6 +90,6 @@ def audit_external_identifiers(value, system):
         if 'dbxrefs' not in value:
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is externally hosted, '
-                f'but does not have identifier from external resource listed in `dbxrefs`.'
+                f'but does not have identifier(s) from an external resource listed in `dbxrefs`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
