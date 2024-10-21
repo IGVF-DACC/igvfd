@@ -1,6 +1,6 @@
 {
-    "hash": "e602a24f769bc4697c032f22df7c988f",
-    "index_name": "workflow_e602a24f",
+    "hash": "e23c80a7f36c42490ff66d70069bb841",
+    "index_name": "workflow_e23c80a7",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -158,7 +158,267 @@
                         "type": "keyword"
                     },
                     "analysis_steps": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_types": {
+                                "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "analysis_step_versions": {
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "analysis_step": {
+                                        "type": "keyword"
+                                    },
+                                    "award": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "keyword"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "lab": {
+                                        "type": "keyword"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "release_timestamp": {
+                                        "type": "keyword"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "software_versions": {
+                                        "properties": {
+                                            "@id": {
+                                                "type": "keyword"
+                                            },
+                                            "@type": {
+                                                "type": "keyword"
+                                            },
+                                            "aliases": {
+                                                "type": "keyword"
+                                            },
+                                            "award": {
+                                                "type": "keyword"
+                                            },
+                                            "creation_timestamp": {
+                                                "type": "keyword"
+                                            },
+                                            "description": {
+                                                "type": "text"
+                                            },
+                                            "download_id": {
+                                                "type": "keyword"
+                                            },
+                                            "downloaded_url": {
+                                                "type": "keyword"
+                                            },
+                                            "lab": {
+                                                "type": "keyword"
+                                            },
+                                            "name": {
+                                                "type": "keyword"
+                                            },
+                                            "notes": {
+                                                "type": "text"
+                                            },
+                                            "publications": {
+                                                "type": "keyword"
+                                            },
+                                            "release_timestamp": {
+                                                "type": "keyword"
+                                            },
+                                            "schema_version": {
+                                                "type": "keyword"
+                                            },
+                                            "software": {
+                                                "properties": {
+                                                    "@id": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "@type": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "aliases": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "award": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "creation_timestamp": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "description": {
+                                                        "type": "text"
+                                                    },
+                                                    "lab": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "name": {
+                                                        "copy_to": "_exact",
+                                                        "type": "keyword"
+                                                    },
+                                                    "notes": {
+                                                        "type": "text"
+                                                    },
+                                                    "publications": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "release_timestamp": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "schema_version": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "source_url": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "status": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "submitted_by": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "submitter_comment": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "summary": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "title": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "used_by": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "uuid": {
+                                                        "type": "keyword"
+                                                    },
+                                                    "versions": {
+                                                        "type": "keyword"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            },
+                                            "status": {
+                                                "type": "keyword"
+                                            },
+                                            "submitted_by": {
+                                                "type": "keyword"
+                                            },
+                                            "submitter_comment": {
+                                                "type": "keyword"
+                                            },
+                                            "summary": {
+                                                "type": "keyword"
+                                            },
+                                            "uuid": {
+                                                "type": "keyword"
+                                            },
+                                            "version": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
+                            },
+                            "award": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "input_content_types": {
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "output_content_types": {
+                                "copy_to": "_fuzzy",
+                                "type": "keyword"
+                            },
+                            "parents": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "step_label": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "title": {
+                                "type": "keyword"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflow": {
+                                "type": "keyword"
+                            }
+                        },
+                        "type": "object"
                     },
                     "award": {
                         "properties": {

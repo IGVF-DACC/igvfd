@@ -1,6 +1,6 @@
 {
-    "hash": "56ae3869e40a3570c0c13ecb18158e52",
-    "index_name": "analysis_step_version_56ae3869",
+    "hash": "87ae5d5ebf0213ce8a84d31350fd9409",
+    "index_name": "analysis_step_version_87ae5d5e",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -163,6 +163,9 @@
                                 "type": "keyword"
                             },
                             "analysis_step_types": {
+                                "type": "keyword"
+                            },
+                            "analysis_step_versions": {
                                 "type": "keyword"
                             },
                             "award": {
