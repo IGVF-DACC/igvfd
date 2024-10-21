@@ -78,8 +78,8 @@ def audit_external_identifiers(value, system):
     '''
     [
         {
-            "audit_description": "Externally hosted files are expected to have identifiers from external resources.",
-            "audit_category": "missing identifiers from external resources",
+            "audit_description": "Externally hosted files are expected to have identifiers from external resources in dbxrefs.",
+            "audit_category": "missing dbxrefs",
             "audit_level": "WARNING"
         }
     ]

@@ -107,7 +107,7 @@
     },
     "external_host": {
         "externally_hosted": {
-            "comment": "Only externally hosted files should have an external host url. External host url is required if the file is externally hosted.",
+            "comment": "Only externally hosted files should have an external host URL. External host URL is required if the file is externally hosted.",
             "oneOf": [
                 {
                     "properties": {

@@ -663,8 +663,8 @@
             }
         },
         "external_host_url": {
-            "title": "External Host Url",
-            "description": "A link to the resouce where the file is externally hosted.",
+            "title": "External Host URL",
+            "description": "A link to the resource where the file is externally hosted.",
             "type": "string",
             "format": "uri",
             "submissionExample": {
