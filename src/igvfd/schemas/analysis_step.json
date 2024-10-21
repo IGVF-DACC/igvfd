@@ -55,7 +55,7 @@
                 "enum": [
                     "alignment",
                     "barcode mapping generation",
-                    "basecalling",
+                    "base calling",
                     "counts normalization",
                     "file format conversion",
                     "filtering",
