@@ -189,3 +189,13 @@ def construct_library_set_v8(construct_library_set_genome_wide):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def construct_library_set_v9(construct_library_set_genome_wide, tabular_file, reference_file, sequence_file):
+    item = construct_library_set_genome_wide.copy()
+    item.update({
+        'schema_version': '9',
+        'integrated_content_files': [tabular_file['uuid'], reference_file['uuid'], sequence_file['uuid']]
+    })
+    return item
