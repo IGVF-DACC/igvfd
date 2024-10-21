@@ -36,3 +36,11 @@ def test_software_version_upgrade_5_6(upgrader, software_version_v5):
     value = upgrader.upgrade('software_version', software_version_v5, current_version='5', target_version='6')
     assert value['schema_version'] == '6'
     assert 'publication_identifiers' not in value
+
+
+def test_software_version_upgrade_6_7(upgrader, software_version_v6):
+    downloaded_url = software_version_v6.get('downloaded_url')
+    value = upgrader.upgrade('software_version', software_version_v6, current_version='6', target_version='7')
+    assert value['schema_version'] == '7'
+    assert 'downloaded_url' not in value
+    assert value.get('source_url') == downloaded_url
