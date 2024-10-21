@@ -91,7 +91,7 @@
         },
         "read_count": {
             "$merge": "sequence_file.json#/properties/read_count",
-            "description": "Number of reads in a bam file. Including both mapped and unmapped read counts."
+            "description": "Number of reads in a bam file. Including both mapped, unmapped, and multi-mapped read counts."
         },
         "redacted": {
             "title": "Redacted",
