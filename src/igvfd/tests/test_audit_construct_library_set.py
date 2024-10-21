@@ -71,7 +71,7 @@ def test_audit_construct_library_set_exon_with_multiple_genes(
 def test_audit_construct_library_set_with_non_sequence_files(
     testapp,
     construct_library_set_genome_wide,
-    analysis_set_with_sample,
+    principal_analysis_set,
     matrix_file
 ):
     testapp.patch_json(
@@ -85,7 +85,7 @@ def test_audit_construct_library_set_with_non_sequence_files(
     )
     testapp.patch_json(
         matrix_file['@id'],
-        {'file_set': analysis_set_with_sample['@id']}
+        {'file_set': principal_analysis_set['@id']}
     )
     res = testapp.get(construct_library_set_genome_wide['@id'] + '@@audit')
     assert all(

@@ -1,6 +1,6 @@
 {
-    "hash": "7109baaf882f79e1e6616d5ed5cc2a4b",
-    "index_name": "configuration_file_7109baaf",
+    "hash": "ca72338abcf12ff329b854874d8300dd",
+    "index_name": "configuration_file_ca72338a",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -357,6 +357,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {

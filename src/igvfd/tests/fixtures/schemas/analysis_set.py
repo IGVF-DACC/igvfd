@@ -16,40 +16,6 @@ def analysis_set_base(
 
 
 @pytest.fixture
-def analysis_set_with_sample(
-    testapp,
-    award,
-    lab,
-    in_vitro_cell_line,
-    analysis_set_base
-):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'samples': [in_vitro_cell_line['@id']],
-        'input_file_sets': [analysis_set_base['@id']],
-        'file_set_type': 'intermediate analysis'
-    }
-    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
-
-
-@pytest.fixture
-def analysis_set_with_no_samples(
-    testapp,
-    award,
-    lab,
-    analysis_set_base
-):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'input_file_sets': [analysis_set_base['@id']],
-        'file_set_type': 'intermediate analysis'
-    }
-    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
-
-
-@pytest.fixture
 def principal_analysis_set(
     testapp,
     award,
@@ -61,6 +27,22 @@ def principal_analysis_set(
         'lab': lab['@id'],
         'input_file_sets': [measurement_set['@id']],
         'file_set_type': 'principal analysis'
+    }
+    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def intermediate_analysis_set(
+    testapp,
+    award,
+    lab,
+    analysis_set_base
+):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'input_file_sets': [analysis_set_base['@id']],
+        'file_set_type': 'intermediate analysis'
     }
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
 
