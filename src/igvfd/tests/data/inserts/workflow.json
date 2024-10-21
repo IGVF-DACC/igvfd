@@ -16,6 +16,7 @@
         ],
         "standards_page": "27f9abd9-0081-4ade-8c82-95ec12b3a7dd",
         "workflow_version": 1,
+        "uniform_pipeline": true,
         "collections": [
             "VarChAMP"
         ]
