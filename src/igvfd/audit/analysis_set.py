@@ -187,7 +187,7 @@ def audit_analysis_set_multiplexed_samples(value, system):
     audit_message_missing_demultiplexed_from = get_audit_message(audit_analysis_set_multiplexed_samples, index=0)
     audit_message_unexpected_demultiplexed_from = get_audit_message(audit_analysis_set_multiplexed_samples, index=1)
     audit_message_unexpected_samples = get_audit_message(audit_analysis_set_multiplexed_samples, index=2)
-    samples = value.get('samples')
+    samples = value.get('samples', [])
     multiplexed_samples = [sample for sample in samples if sample.startswith('/multiplexed-samples/')]
     multiplexed_samples = ', '.join([audit_link(path_to_text(sample), sample)
                                      for sample in multiplexed_samples])
