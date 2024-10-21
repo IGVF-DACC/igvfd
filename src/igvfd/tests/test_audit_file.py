@@ -86,7 +86,7 @@ def audit_external_identifiers(testapp, model_file):
     )
     res = testapp.get(model_file['@id'] + '@@audit')
     assert any(
-        audit['category'] == 'missing identifiers from external resources'
+        audit['category'] == 'missing dbxrefs'
         for audit in res.json['audit'].get('WARNING', {})
     )
     testapp.patch_json(
@@ -96,6 +96,6 @@ def audit_external_identifiers(testapp, model_file):
         }
     )
     assert all(
-        audit['category'] != 'missing identifiers from external resources'
+        audit['category'] != 'missing dbxrefs'
         for audit in res.json['audit'].get('WARNING', {})
     )
