@@ -551,6 +551,15 @@
                             "summary": {
                                 "type": "keyword"
                             },
+                            "uniform_pipeline": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "uuid": {
                                 "type": "keyword"
                             },
