@@ -863,6 +863,7 @@ class MultiplexedSample(Sample):
         if multiplexed_samples:
             for sample in multiplexed_samples:
                 sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=taxa')
+                taxas.add(sample_object.get('taxa'))
                 donors = sample_object.get('donors', [])
                 for donor in donors:
                     donor_object = request.embed(donor, '@@object?skip_calculated=true')
