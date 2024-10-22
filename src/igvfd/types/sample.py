@@ -864,12 +864,6 @@ class MultiplexedSample(Sample):
             for sample in multiplexed_samples:
                 sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=taxa')
                 taxas.add(sample_object.get('taxa'))
-                donors = sample_object.get('donors', [])
-                for donor in donors:
-                    donor_object = request.embed(donor, '@@object?skip_calculated=true')
-                    if donor_object.get('taxa'):
-                        taxas.add(donor_object.get('taxa'))
-
         if len(taxas) == 1:
             return list(taxas).pop()
         elif len(taxas) > 1:
