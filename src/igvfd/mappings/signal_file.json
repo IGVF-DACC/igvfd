@@ -1,6 +1,6 @@
 {
-    "hash": "ceebd0d5bd5e907ddef5035d5b5ac500",
-    "index_name": "signal_file_ceebd0d5",
+    "hash": "dd4f0fb7a42a2cc38b38d328a90e3e9d",
+    "index_name": "signal_file_dd4f0fb7",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -469,6 +469,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

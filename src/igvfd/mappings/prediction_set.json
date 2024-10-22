@@ -1,6 +1,6 @@
 {
-    "hash": "5ea893b6c06bc910cf89d19603ed4390",
-    "index_name": "prediction_set_5ea893b6",
+    "hash": "2e457c6e86da0ca6012b323569dc5e50",
+    "index_name": "prediction_set_2e457c6e",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -503,6 +503,15 @@
                             "external_input_data": {
                                 "type": "keyword"
                             },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "file_set_type": {
                                 "type": "keyword"
                             },
@@ -1004,8 +1013,20 @@
                                 "store": true,
                                 "type": "boolean"
                             },
+                            "external_host_url": {
+                                "type": "keyword"
+                            },
                             "external_id": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_format": {
                                 "type": "keyword"
