@@ -205,12 +205,6 @@
                         "tsv",
                         "vcf"
                     ]
-                },
-                {
-                    "enum": [
-                        "txt"
-                    ],
-                    "permission": "admin_only"
                 }
             ],
             "submissionExample": {
