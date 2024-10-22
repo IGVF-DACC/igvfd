@@ -40,6 +40,46 @@ def matrix_file_hic(testapp, lab, award, measurement_set, reference_file):
 
 
 @pytest.fixture
+def matrix_file_with_base_workflow(testapp, lab, award, analysis_set_with_workflow, reference_file, analysis_step_version):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '2a304515e3f9a882b413b9965f4f4461',
+        'file_format': 'hdf5',
+        'file_set': analysis_set_with_workflow['@id'],
+        'file_size': 7491803,
+        'content_type': 'sparse gene count matrix',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'principal_dimension': 'cell',
+        'secondary_dimensions': ['gene'],
+        'analysis_step_version': analysis_step_version['@id']
+    }
+    return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def matrix_file_with_base_workflow_2(testapp, lab, award, analysis_set_base, reference_file, analysis_step_version_2):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'a9ac1c24865c7183a0403bc8bc6c7599',
+        'file_format': 'hdf5',
+        'file_set': analysis_set_base['@id'],
+        'file_size': 8491803,
+        'content_type': 'sparse gene count matrix',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'principal_dimension': 'cell',
+        'secondary_dimensions': ['gene'],
+        'analysis_step_version': analysis_step_version_2['@id']
+    }
+    return testapp.post_json('/matrix_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def matrix_file_v1(matrix_file):
     item = matrix_file.copy()
     item.update({

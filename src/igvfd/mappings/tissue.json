@@ -1,6 +1,6 @@
 {
-    "hash": "d42ab48c73a5cceeb57ca5e2d00ee104",
-    "index_name": "tissue_d42ab48c",
+    "hash": "ace62537ca0092f3c45dd6b2db91d367",
+    "index_name": "tissue_ace62537",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -828,6 +828,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

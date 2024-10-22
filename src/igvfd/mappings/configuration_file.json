@@ -1,6 +1,6 @@
 {
-    "hash": "ed3a683a98ef3675780cd870653a787c",
-    "index_name": "configuration_file_ed3a683a",
+    "hash": "4d027f9518e7fa5afdf04210361d5754",
+    "index_name": "configuration_file_4d027f95",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -1095,6 +1095,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

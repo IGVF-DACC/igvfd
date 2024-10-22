@@ -57,5 +57,50 @@
         "uuid": "f1149b20-2066-49d8-bbd0-7f77f642cae3",
         "release_timestamp": "2024-08-06T12:34:56Z",
         "file_set_type": "intermediate analysis"
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_with_workflow"
+        ],
+        "submitter_comment": "Comment for an analysis set.",
+        "description": "An analysis set with an input file set.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "documents": [
+            "igvf:Antibody_characterization_standards_IGVF"
+        ],
+        "status": "released",
+        "uuid": "35f89ca2-4261-43ad-b315-ca65376451d1",
+        "samples": [
+            "igvf:treated_primary_cells"
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "intermediate analysis",
+        "collections": [
+            "MPRAbase"
+        ],
+        "external_image_data_url": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/",
+        "publications": [
+            "/publications/244ec9fc-ddda-4f38-b72d-3430929111e4/"
+        ]
+    },
+    {
+        "aliases": [
+            "igvf:analysis_set_with_workflow_2"
+        ],
+        "submitter_comment": "Comment for an analysis set.",
+        "description": "An analysis set with an input file set.",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "documents": [
+            "igvf:Antibody_characterization_standards_IGVF"
+        ],
+        "status": "released",
+        "uuid": "b3d01798-24c5-4e02-b517-90f62a41092b",
+        "samples": [
+            "igvf:pooled_primary_cell"
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set_type": "intermediate analysis"
     }
 ]

@@ -1,6 +1,6 @@
 {
-    "hash": "6335c342994c2f890bbe8b4fbf3ea658",
-    "index_name": "multiplexed_sample_6335c342",
+    "hash": "b4d52c0437b0f5811ec766eec75ef98c",
+    "index_name": "multiplexed_sample_b4d52c04",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1053,6 +1053,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

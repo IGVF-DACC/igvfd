@@ -1,6 +1,6 @@
 {
-    "hash": "e5b08adbab8c4d093831832fa237e63f",
-    "index_name": "matrix_file_e5b08adb",
+    "hash": "e3fa670d27712e04489a5d71b2b8fbfc",
+    "index_name": "matrix_file_e3fa670d",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1098,6 +1098,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

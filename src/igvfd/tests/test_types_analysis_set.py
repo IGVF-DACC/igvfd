@@ -169,3 +169,15 @@ def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set
     res = testapp.get(analysis_set_base['@id'])
     assert set([mechanism['@id'] for mechanism in res.json.get('functional_assay_mechanisms')]
                ) == {phenotype_term_from_go['@id'], phenotype_term_myocardial_infarction['@id']}
+
+
+def test_workflows(testapp, analysis_set_with_workflow, matrix_file_with_base_workflow):
+    '''Test to make sure that workflow is computed correctly.'''
+    testapp.patch_json(
+        matrix_file_with_base_workflow['@id'],
+        {
+            'file_set': analysis_set_with_workflow['@id']
+        }
+    )
+    res = testapp.get(analysis_set_with_workflow['@id']).json.get('workflows')
+    assert res == ['/workflows/IGVFWF0000WRKF/']

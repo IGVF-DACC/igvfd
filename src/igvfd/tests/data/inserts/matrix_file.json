@@ -96,5 +96,55 @@
         "secondary_dimensions": [
             "genomic position"
         ]
+    },
+    {
+        "uuid": "8278b2bd-6dd8-475d-a0cd-07fbd5765e41",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_2"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "ccb974295c95af8099412b14d0829452",
+        "file_format": "h5ad",
+        "content_type": "sparse peak count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/matrix_file_2.h5ad",
+        "file_size": 55200010,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_workflow",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "fragment"
+        ],
+        "analysis_step_version": "igvf-dacc:analysis_step_version_01"
+    },
+    {
+        "uuid": "f98cdce1-d4a0-4dfa-8ae1-5ba676200c8a",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_3"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "4e39aa604ba3e077e5168475dd61af0c",
+        "file_format": "h5ad",
+        "content_type": "sparse peak count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/matrix_file_2.h5ad",
+        "file_size": 5200010,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_workflow_2",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "fragment"
+        ],
+        "analysis_step_version": "igvf-dacc:analysis_step_version_02"
     }
 ]

@@ -20,5 +20,26 @@
         "collections": [
             "VarChAMP"
         ]
+    },
+    {
+        "uuid": "96fa0630-a88e-4946-bebd-23f417d0da7a",
+        "accession": "IGVFWF0001WORK",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:split_seq_workflow"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "name": "SPLiT-seq Pipeline",
+        "source_url": "https://github.com/splitseq_pipeline",
+        "workflow_repositories": [
+            "https://hub.docker.com/r/splitseq_pipeline"
+        ],
+        "standards_page": "235a1359-74bd-4b95-b0bb-70bf46f7856c",
+        "workflow_version": 1,
+        "collections": [
+            "VarChAMP"
+        ]
     }
 ]

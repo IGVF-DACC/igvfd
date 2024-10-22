@@ -1,6 +1,6 @@
 {
-    "hash": "11d83c7daef0669a555821b25bbeeb64",
-    "index_name": "in_vitro_system_11d83c7d",
+    "hash": "f3410575d6a1ac73bba895b92db6570d",
+    "index_name": "in_vitro_system_f3410575",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -981,6 +981,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

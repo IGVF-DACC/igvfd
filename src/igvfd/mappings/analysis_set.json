@@ -1,6 +1,6 @@
 {
-    "hash": "3d1bad02f3081c0764644c2cdf57d80d",
-    "index_name": "analysis_set_3d1bad02",
+    "hash": "9c14af174aa12052f4bce5f0e414d110",
+    "index_name": "analysis_set_9c14af17",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -649,6 +649,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },
@@ -1567,6 +1570,9 @@
                             },
                             "uuid": {
                                 "type": "keyword"
+                            },
+                            "workflows": {
+                                "type": "keyword"
                             }
                         },
                         "type": "object"
@@ -2443,6 +2449,9 @@
                         "type": "keyword"
                     },
                     "uuid": {
+                        "type": "keyword"
+                    },
+                    "workflows": {
                         "type": "keyword"
                     }
                 },

@@ -11,5 +11,18 @@
         "software_versions": [
             "2170cada-3182-442b-b5ed-4a6329042db5"
         ]
+    },
+    {
+        "uuid": "b270a867-037e-474e-9bb8-4d42cac0dc96",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:analysis_step_version_02"
+        ],
+        "submitter_comment": "hello. test submitter_commment.",
+        "analysis_step": "igvf-dacc:analysis_step_02",
+        "software_versions": [
+            "ba4e72c3-525f-427d-8fad-06347b49986e"
+        ]
     }
 ]

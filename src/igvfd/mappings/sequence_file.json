@@ -1,6 +1,6 @@
 {
-    "hash": "8e38cf89662e9e5fa22d1eb6acac8393",
-    "index_name": "sequence_file_8e38cf89",
+    "hash": "c70d10d61a905c2376af035d1e65092d",
+    "index_name": "sequence_file_c70d10d6",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1122,6 +1122,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

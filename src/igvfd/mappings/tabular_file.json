@@ -1,6 +1,6 @@
 {
-    "hash": "e0fcf1f808cb602d3935b5a8d64f72e7",
-    "index_name": "tabular_file_e0fcf1f8",
+    "hash": "8a6f47d9fc25644a6bcc92f3703356f4",
+    "index_name": "tabular_file_8a6f47d9",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1200,6 +1200,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },
