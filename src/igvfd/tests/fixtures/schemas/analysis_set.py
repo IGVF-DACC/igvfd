@@ -77,6 +77,19 @@ def analysis_set_with_workflow(
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
 
 
+def analysis_set_no_input(
+    testapp,
+    award,
+    lab
+):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'intermediate analysis'
+    }
+    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
+
+
 @pytest.fixture
 def analysis_set_v1(analysis_set_base, curated_set_genome, human_donor, in_vitro_cell_line):
     item = analysis_set_base.copy()
