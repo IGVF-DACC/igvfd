@@ -115,8 +115,8 @@
             "type": "boolean",
             "default": false,
             "submissionExample": {
-                "appscript": "True",
-                "igvf_utils": "True"
+                "appscript": true,
+                "igvf_utils": true
             }
         }
     },
