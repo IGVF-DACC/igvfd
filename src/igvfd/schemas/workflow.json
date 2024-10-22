@@ -108,6 +108,16 @@
                 "appscript": 1,
                 "igvf_utils": 1
             }
+        },
+        "uniform_pipeline": {
+            "title": "Uniform Pipeline",
+            "description": "Indicates whether the pipeline is developed by the IGVF consortium.",
+            "type": "boolean",
+            "default": false,
+            "submissionExample": {
+                "appscript": true,
+                "igvf_utils": true
+            }
         }
     },
     "fuzzy_searchable_fields": [

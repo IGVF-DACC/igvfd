@@ -1,6 +1,6 @@
 {
-    "hash": "c4215a781310535ef17f2bb71dedaf4d",
-    "index_name": "workflow_c4215a78",
+    "hash": "81ad7e931e2373d4af40c45bb208beef",
+    "index_name": "workflow_81ad7e93",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -894,6 +894,15 @@
                     },
                     "summary": {
                         "type": "keyword"
+                    },
+                    "uniform_pipeline": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
                     },
                     "uuid": {
                         "type": "keyword"
