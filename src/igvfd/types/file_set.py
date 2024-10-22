@@ -457,6 +457,35 @@ class AnalysisSet(FileSet):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
         return list(set(mechanism_objects))
 
+    @calculated_property(
+        schema={
+            'title': 'Workflows',
+            'description': 'A workflow for computational analysis of genomic data. A workflow is made up of analysis steps.',
+            'type': 'array',
+            'notSubmittable': True
+            'uniqueItem': True,
+            'minItems': 1,
+            'maxItems': 1,
+            'items': {
+                'title': 'Workflow',
+                'type': 'string',
+                'linkTo': 'Workflows'
+            }
+        }
+    )
+    def anaset_workflow(self, request, files=None):
+        analysis_set_workflows_set = set()
+        if files:
+            for file in files:
+                file_obj = request.embed(file, '@@object')
+                analysis_step_version = file_obj.get('analysis_step_version', '')
+                if analysis_step_version:
+                    analysis_step = analysis_step_version.get('analysis_step', '')
+                    if analysis_step:
+                        analysis_step_obj = request.embed(analysis_step, '@@object')
+                        analysis_set_workflows_set.add(set(analysis_step_obj.get('workflow', '')))
+        return [workflow for workflow in list(analysis_set_workflows_set) if workflow != '']
+
 
 @collection(
     name='curated-sets',
