@@ -60,7 +60,7 @@ def test_audit_input_file_set_for(
     )
 
 
-def audit_inconsistent_location_files(testapp, sequence_file_pod5, sequence_file, measurement_set):
+def test_audit_inconsistent_location_files(testapp, sequence_file_pod5, sequence_file, measurement_set):
     testapp.patch_json(
         sequence_file['@id'],
         {
@@ -76,6 +76,7 @@ def audit_inconsistent_location_files(testapp, sequence_file_pod5, sequence_file
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
+
     assert any(
         error['category'] == 'inconsistent hosting locations'
         for error in res.json['audit'].get('ERROR', [])
@@ -87,6 +88,8 @@ def audit_inconsistent_location_files(testapp, sequence_file_pod5, sequence_file
             'external_host_url': 'http://test_url'
         }
     )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+
     assert all(
         error['category'] != 'inconsistent hosting locations'
         for error in res.json['audit'].get('ERROR', [])

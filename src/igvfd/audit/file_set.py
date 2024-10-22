@@ -438,7 +438,7 @@ def audit_inconsistent_location_files(value, system):
     '''
 
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_input_file_set_for)
+    audit_message = get_audit_message(audit_inconsistent_location_files)
     externally_hosted_files = []
     local_files = []
     if 'files' in value:
