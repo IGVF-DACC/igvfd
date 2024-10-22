@@ -202,7 +202,7 @@ config: Dict[str, Any] = {
                                 InstanceClass.BURSTABLE3,
                                 InstanceSize.MEDIUM,
                             ),
-                            'engine_version': PostgresEngineVersion.VER_14_3,
+                            'engine_version': PostgresEngineVersion.VER_14_12,
                         },
                     },
                 ],
