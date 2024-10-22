@@ -326,3 +326,14 @@ def matrix_file_6_7(value, system):
     if 'dimension2' in value:
         value['secondary_dimensions'] = [value['dimension2']]
         del value['dimension2']
+
+
+@upgrade_step('tabular_file', '12', '13')
+def tabular_file_12_13(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2011
+    notes = value.get('notes', '')
+    if value.get('file_format') == 'txt':
+        value['file_format'] = 'tsv'
+        notes += f'This object\'s file_format was txt, and changed to tsv via upgrade.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
