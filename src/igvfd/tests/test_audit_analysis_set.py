@@ -227,3 +227,10 @@ def test_audit_missing_analysis_step_version(
         error['category'] != 'missing analysis step version'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def test_audit_multiple_workflows(
+    testapp,
+    analysis_set_with_multiple_workflows,
+
+)

@@ -41,3 +41,15 @@ def workflow_v4(base_workflow):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def base_workflow_2(testapp, award, lab):
+    item = {
+        'accession': 'IGVFWF0001WORK',
+        'name': 'Base Workflow 2',
+        'source_url': 'https://github.com/IGVF-DACC/igvfd',
+        'award': award['@id'],
+        'lab': lab['@id']
+    }
+    return testapp.post_json('/workflow', item).json['@graph'][0]

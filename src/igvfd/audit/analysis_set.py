@@ -176,3 +176,21 @@ def audit_analysis_set_files_missing_analysis_step_version(value, system):
             f'links to file(s) {files_with_missing_asv} that are missing `analysis_step_version`.'
         )
         yield AuditFailure(audit_message_missing_step_version.get('audit_category', ''), f'{detail} {audit_message_missing_step_version.get("audit_description", "")}', level=audit_message_missing_step_version.get('audit_level', ''))
+
+
+@audit_checker('AnalysisSet', frame='object')
+def audit_analysis_set_with_multiple_workflows(value, system):
+    '''
+    [
+        {
+            "audit_description": "Analysis set contains more than one workflows.",
+            "audit_category": "unexpected workflows",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    audit_message_multiple_workflows = get_audit_message(
+        audit_analysis_set_with_multiple_workflows, index=0)
+    workflows = value.get('workflows')
+    if len(workflows) > 1:
+        yield AuditFailure(audit_message_multiple_workflows.get('audit_category', ''), audit_message_multiple_workflows.get('audit_description', ''), audit_message_multiple_workflows.get('audit_level', ''))

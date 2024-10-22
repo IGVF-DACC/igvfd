@@ -97,5 +97,30 @@
             "fragment"
         ],
         "analysis_step_version": "igvf-dacc:analysis_step_version_01"
+    },
+    {
+        "uuid": "bfbcfb06-1f1f-46a8-a5b6-09fe220d2607",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:matrix_file_3"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "d9f3ab4b2599c8f3e0c84bc64338d712",
+        "file_format": "h5ad",
+        "content_type": "sparse peak count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/matrix_file_3.h5ad",
+        "file_size": 65200010,
+        "upload_status": "validated",
+        "file_set": "igvf:analysis_set_with_workflow",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "cell",
+        "secondary_dimensions": [
+            "fragment"
+        ],
+        "analysis_step_version": "igvf-dacc:analysis_step_version_01"
     }
 ]

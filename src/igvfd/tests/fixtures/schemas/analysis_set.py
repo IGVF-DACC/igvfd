@@ -122,16 +122,14 @@ def analysis_set_with_workflows(
     testapp,
     award,
     lab,
-    primary_cell,
-    workflows,
-    analysis_set_base
+    analysis_set_base,
+    base_workflow
 ):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'samples': [primary_cell['@id']],
         'input_file_sets': [analysis_set_base['@id']],
         'file_set_type': 'intermediate analysis',
-        'workflows': [workflows['@id']]
+        'workflows': [base_workflow['@id']]
     }
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
