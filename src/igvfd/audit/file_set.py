@@ -430,7 +430,7 @@ def audit_inconsistent_location_files(value, system):
     '''
     [
         {
-            "audit_description": "Files in measurement sets and model sets are expected to be hosted in the same location.",
+            "audit_description": "All files within this file set are expected to be hosted in the same location.",
             "audit_category": "inconsistent hosting locations",
             "audit_level": "ERROR"
         }
