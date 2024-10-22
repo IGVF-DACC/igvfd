@@ -853,7 +853,8 @@ class MultiplexedSample(Sample):
                     'Homo sapiens',
                     'Mus musculus',
                     'Mixed species',
-                    'Null'
+                    'Null',
+                    'Saccharomyces cerevisiae'
             ],
             'notSubmittable': True
         }
