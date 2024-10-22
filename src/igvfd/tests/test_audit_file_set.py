@@ -58,3 +58,36 @@ def test_audit_input_file_set_for(
         error['category'] != 'missing analysis'
         for error in res.json['audit'].get('WARNING', [])
     )
+
+
+def audit_inconsistent_location_files(testapp, sequence_file_pod5, sequence_file, measurement_set):
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'externally_hosted': True,
+            'external_host_url': 'http://test_url',
+            'file_set': measurement_set['@id']
+        }
+    )
+    testapp.patch_json(
+        sequence_file_pod5['@id'],
+        {
+            'file_set': measurement_set['@id']
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent hosting locations'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        sequence_file_pod5['@id'],
+        {
+            'externally_hosted': True,
+            'external_host_url': 'http://test_url'
+        }
+    )
+    assert all(
+        error['category'] != 'inconsistent hosting locations'
+        for error in res.json['audit'].get('ERROR', [])
+    )
