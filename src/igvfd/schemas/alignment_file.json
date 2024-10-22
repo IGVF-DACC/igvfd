@@ -89,6 +89,10 @@
                 "igvf_utils": "bam"
             }
         },
+        "read_count": {
+            "$merge": "sequence_file.json#/properties/read_count",
+            "description": "Number of reads in a bam file. Including both mapped, unmapped, and multi-mapped read counts."
+        },
         "redacted": {
             "title": "Redacted",
             "description": "Indicates whether the alignments data have been sanitized (redacted) to prevent leakage of private and potentially identifying genomic information.",

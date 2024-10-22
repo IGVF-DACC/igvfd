@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Add `read_count`.
 * Add `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Extend `assembly` enum list to include `Cast - GRCm39`.
