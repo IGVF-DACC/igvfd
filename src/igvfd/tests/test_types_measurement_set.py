@@ -20,12 +20,6 @@ def test_related_multiome_datasets(testapp, primary_cell, in_vitro_cell_line, me
     assert set([file_set_id['@id']
                for file_set_id in res.json.get('related_multiome_datasets')]) == {measurement_set['@id']}
     testapp.patch_json(
-        analysis_set_base['@id'],
-        {
-            'samples': [primary_cell['@id']]
-        }
-    )
-    testapp.patch_json(
         curated_set_genome['@id'],
         {
             'samples': [primary_cell['@id']]

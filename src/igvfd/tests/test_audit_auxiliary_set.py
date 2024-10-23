@@ -4,7 +4,7 @@ import pytest
 def test_audit_auxiliary_set_with_non_sequence_files(
     testapp,
     base_auxiliary_set,
-    analysis_set_with_sample,
+    principal_analysis_set,
     reference_file
 ):
     testapp.patch_json(
@@ -18,7 +18,7 @@ def test_audit_auxiliary_set_with_non_sequence_files(
     )
     testapp.patch_json(
         reference_file['@id'],
-        {'file_set': analysis_set_with_sample['@id']}
+        {'file_set': principal_analysis_set['@id']}
     )
     res = testapp.get(base_auxiliary_set['@id'] + '@@audit')
     assert all(

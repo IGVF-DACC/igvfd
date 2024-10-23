@@ -65,7 +65,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "8"
+            "default": "9"
         },
         "input_file_sets": {
             "description": "The file set(s) required for this analysis."
@@ -94,6 +94,16 @@
             "submissionExample": {
                 "appscript": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/",
                 "igvf_utils": "https://cellpainting-gallery.s3.amazonaws.com/index.html#cpg0011-lipocyteprofiler/broad/images/Batch5/images/BR00101116/"
+            }
+        },
+        "demultiplexed_sample": {
+            "title": "Demultiplexed Sample",
+            "description": "The sample associated with this analysis set inferred through demultiplexing.",
+            "type": "string",
+            "linkTo": "Sample",
+            "submissionExample": {
+                "appscript": "IGVFSM02881437 or john-doe:tissue01",
+                "igvf_utils": "IGVFSM02881437 or john-doe:tissue01"
             }
         }
     },
