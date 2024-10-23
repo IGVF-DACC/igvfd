@@ -140,3 +140,13 @@ def analysis_set_v7(analysis_set_base):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def analysis_set_v8(analysis_set_base, tissue):
+    item = analysis_set_base.copy()
+    item.update({
+        'schema_version': '8',
+        'samples': [tissue['@id']]
+    })
+    return item
