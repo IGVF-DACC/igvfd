@@ -78,11 +78,16 @@ class Sample(Item):
         Path('sources', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('sorted_from', include=['@id', 'accession']),
-        Path('file_sets', include=['@id', 'accession', 'summary', 'aliases', 'lab', 'status', 'assay_term']),
+        Path('file_sets', include=['@id', 'accession', 'summary', 'aliases',
+             'lab', 'status', 'preferred_assay_title', 'file_set_type']),
         Path('file_sets.lab', include=['title']),
-        Path('file_sets.assay_term', include=['term_name']),
         Path('multiplexed_in', include=['@id', 'accession']),
         Path('publications', include=['@id', 'publication_identifiers']),
+        Path('sample_terms', include=['@id', 'term_name']),
+        Path('disease_terms', include=['@id', 'term_name']),
+        Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status', 'treatment_term_name']),
+        Path('modifications.tagged_protein', include=['@id', 'modality', 'summary',
+             'status', 'fused_domain', '@type', 'symbol', 'cas']),
     ]
 
     audit_inherit = [
@@ -203,11 +208,6 @@ class Biosample(Sample):
     rev = Sample.rev | {'parts': ('Biosample', 'part_of'),
                         'pooled_in': ('Biosample', 'pooled_from')}
     embedded_with_frame = Sample.embedded_with_frame + [
-        Path('sample_terms', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
-        Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status', 'treatment_term_name']),
-        Path('modifications.tagged_protein', include=['@id', 'modality', 'summary',
-             'status', 'fused_domain', '@type', 'symbol', 'cas']),
         Path('institutional_certificates', include=['@id', 'certificate_identifier'])
     ]
 
@@ -610,7 +610,7 @@ class InVitroSystem(Biosample):
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
     rev = Biosample.rev | {'demultiplexed_to': ('InVitroSystem', 'demultiplexed_from')}
     embedded_with_frame = Biosample.embedded_with_frame + [
-        Path('cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
+        Path('targeted_sample_term', include=['@id', 'term_name']),
         Path('originated_from', include=['@id', 'accession']),
     ]
     audit_inherit = Biosample.audit_inherit
@@ -681,7 +681,16 @@ class Tissue(Biosample):
 class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
-    embedded_with_frame = Sample.embedded_with_frame + [
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+        Path('sources', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
+        Path('sorted_from', include=['@id', 'accession']),
+        Path('file_sets', include=['@id', 'accession', 'summary', 'aliases',
+             'lab', 'status', 'preferred_assay_title', 'file_set_type']),
+        Path('file_sets.lab', include=['title']),
+        Path('publications', include=['@id', 'publication_identifiers']),
         Path('sample_terms', include=['@id', 'term_name']),
     ]
     audit_inherit = Sample.audit_inherit
