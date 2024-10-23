@@ -1,6 +1,6 @@
 {
-    "hash": "3d08c429e7268ab153cd556039d9daf0",
-    "index_name": "image_file_3d08c429",
+    "hash": "8bf7bc3a0b320120c358605a8a50f329",
+    "index_name": "image_file_8bf7bc3a",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -379,6 +379,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

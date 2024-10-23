@@ -1,6 +1,6 @@
 {
-    "hash": "d2bd6cef9eb5ee400131271a292dc5d9",
-    "index_name": "model_set_d2bd6cef",
+    "hash": "76e34de4c3fcf9f0cc7a6b72f482cab6",
+    "index_name": "model_set_76e34de4",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -503,6 +503,15 @@
                             "external_input_data": {
                                 "type": "keyword"
                             },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
                             "file_set_type": {
                                 "type": "keyword"
                             },
@@ -903,6 +912,15 @@
                     "external_input_data": {
                         "type": "keyword"
                     },
+                    "externally_hosted": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "file_set_type": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
@@ -1005,8 +1023,20 @@
                                 "store": true,
                                 "type": "boolean"
                             },
+                            "external_host_url": {
+                                "type": "keyword"
+                            },
                             "external_id": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_format": {
                                 "type": "keyword"
@@ -1328,6 +1358,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

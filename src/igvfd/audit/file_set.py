@@ -422,3 +422,42 @@ def audit_input_file_set_for(value, system):
             f'but is not listed in any `input_file_sets` for any analysis sets.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('MeasurementSet', frame='object')
+@audit_checker('ModelSet', frame='object')
+def audit_inconsistent_location_files(value, system):
+    '''
+    [
+        {
+            "audit_description": "All files within this file set are expected to be hosted in the same location.",
+            "audit_category": "inconsistent hosting locations",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message = get_audit_message(audit_inconsistent_location_files)
+    externally_hosted_files = []
+    local_files = []
+    if 'files' in value:
+        for file in value['files']:
+            file_object = system.get('request').embed(file)
+
+            if 'externally_hosted' in file_object:
+                if file_object['externally_hosted']:
+                    externally_hosted_files.append(file)
+                else:
+                    local_files.append(file)
+
+    if externally_hosted_files and local_files:
+        external_file_links = ','.join([audit_link(path_to_text(file), file) for file in externally_hosted_files])
+        local_file_links = ','.join([audit_link(path_to_text(file), file) for file in local_files])
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has both externally hosted file(s): '
+            f'{external_file_links}'
+            f' and file(s) hosted on portal: '
+            f'{local_file_links}.'
+        )
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

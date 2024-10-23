@@ -650,5 +650,27 @@
                 "igvf_utils": "https://github.com/arq5x/bedtools/archive/v2.16.2.tar.gz"
             }
         }
+    },
+    "external_host": {
+        "externally_hosted": {
+            "title": "Externally Hosted",
+            "description": "Indicates whether the file is externally hosted and not stored on portal.",
+            "type": "boolean",
+            "default": false,
+            "submissionExample": {
+                "appscript": "True",
+                "igvf_utils": "True"
+            }
+        },
+        "external_host_url": {
+            "title": "External Host URL",
+            "description": "A link to the resource where the file is externally hosted.",
+            "type": "string",
+            "format": "uri",
+            "submissionExample": {
+                "appscript": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/",
+                "igvf_utils": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/"
+            }
+        }
     }
 }

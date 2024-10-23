@@ -104,5 +104,34 @@
                 "sources"
             ]
         }
+    },
+    "external_host": {
+        "externally_hosted": {
+            "comment": "Only externally hosted files should have an external host URL. External host URL is required if the file is externally hosted.",
+            "oneOf": [
+                {
+                    "properties": {
+                        "externally_hosted": {
+                            "const": true
+                        }
+                    },
+                    "required": [
+                        "external_host_url"
+                    ]
+                },
+                {
+                    "properties": {
+                        "externally_hosted": {
+                            "const": false
+                        }
+                    },
+                    "not": {
+                        "required": [
+                            "external_host_url"
+                        ]
+                    }
+                }
+            ]
+        }
     }
 }

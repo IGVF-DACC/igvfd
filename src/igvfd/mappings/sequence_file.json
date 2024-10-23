@@ -1,6 +1,6 @@
 {
-    "hash": "5a5754d06fa50fe167cd4564ca539b1d",
-    "index_name": "sequence_file_5a5754d0",
+    "hash": "8e38cf89662e9e5fa22d1eb6acac8393",
+    "index_name": "sequence_file_8e38cf89",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -286,6 +286,18 @@
                     "documents": {
                         "type": "keyword"
                     },
+                    "external_host_url": {
+                        "type": "keyword"
+                    },
+                    "externally_hosted": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "file_format": {
                         "copy_to": "_exact",
                         "type": "keyword"
@@ -394,6 +406,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

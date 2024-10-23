@@ -1,6 +1,6 @@
 {
-    "hash": "7592b92aba5a81c6995e67636b179e30",
-    "index_name": "curated_set_7592b92a",
+    "hash": "9411118264405a1742a5d0a796ef894a",
+    "index_name": "curated_set_94111182",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -403,6 +403,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"
@@ -905,8 +914,20 @@
                                 "store": true,
                                 "type": "boolean"
                             },
+                            "external_host_url": {
+                                "type": "keyword"
+                            },
                             "external_id": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_format": {
                                 "type": "keyword"

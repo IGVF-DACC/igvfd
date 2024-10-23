@@ -1,6 +1,6 @@
 {
-    "hash": "18825d3355be9d9c223afc058ea690bb",
-    "index_name": "auxiliary_set_18825d33",
+    "hash": "86547d15ebb45fb3ddb23922692b8122",
+    "index_name": "auxiliary_set_86547d15",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -402,6 +402,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"
@@ -904,8 +913,20 @@
                                 "store": true,
                                 "type": "boolean"
                             },
+                            "external_host_url": {
+                                "type": "keyword"
+                            },
                             "external_id": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_format": {
                                 "type": "keyword"
@@ -1242,6 +1263,15 @@
                             },
                             "external_image_url": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

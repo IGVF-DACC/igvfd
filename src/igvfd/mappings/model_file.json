@@ -1,6 +1,6 @@
 {
-    "hash": "3ab41e42a1f87c18d12eff7209c50736",
-    "index_name": "model_file_3ab41e42",
+    "hash": "38d8a010a75ffef8615ae7e9fd616b68",
+    "index_name": "model_file_38d8a010",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -283,6 +283,18 @@
                     "documents": {
                         "type": "keyword"
                     },
+                    "external_host_url": {
+                        "type": "keyword"
+                    },
+                    "externally_hosted": {
+                        "fields": {
+                            "raw": {
+                                "type": "keyword"
+                            }
+                        },
+                        "store": true,
+                        "type": "boolean"
+                    },
                     "file_format": {
                         "copy_to": "_exact",
                         "type": "keyword"
@@ -391,6 +403,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"

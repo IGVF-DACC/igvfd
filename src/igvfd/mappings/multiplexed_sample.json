@@ -1,6 +1,6 @@
 {
-    "hash": "f4519ac000edac2854f17716f770d584",
-    "index_name": "multiplexed_sample_f4519ac0",
+    "hash": "ee81195d64180c7ab35794874d58bbd8",
+    "index_name": "multiplexed_sample_ee81195d",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -751,6 +751,15 @@
                             },
                             "external_input_data": {
                                 "type": "keyword"
+                            },
+                            "externally_hosted": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
                             },
                             "file_set_type": {
                                 "type": "keyword"
