@@ -853,7 +853,6 @@ class MultiplexedSample(Sample):
                     'Homo sapiens',
                     'Mus musculus',
                     'Mixed species',
-                    'Null',
                     'Saccharomyces cerevisiae'
             ],
             'notSubmittable': True
@@ -864,13 +863,11 @@ class MultiplexedSample(Sample):
         if multiplexed_samples:
             for sample in multiplexed_samples:
                 sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=taxa')
-                taxas.add(sample_object.get('taxa'))
+                taxas.add(sample_object.get('taxa'), '')
         if len(taxas) == 1:
             return list(taxas).pop()
         elif len(taxas) > 1:
             return 'Mixed species'
-        else:
-            return 'Null'
 
     @calculated_property(
         schema={
