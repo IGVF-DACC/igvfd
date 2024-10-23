@@ -85,9 +85,10 @@ class Sample(Item):
         Path('publications', include=['@id', 'publication_identifiers']),
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
-        Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status', 'treatment_term_name']),
-        Path('modifications.tagged_protein', include=['@id', 'modality', 'summary',
-             'status', 'fused_domain', '@type', 'symbol', 'cas']),
+        Path('treatments', include=['@id', 'purpose', 'treatment_type', 'status', 'treatment_term_name']),
+        Path('modifications.tagged_protein', include=[
+             '@id', 'tagged_protein', 'modality', 'fused_domain', '@type', 'symbol', 'cas']),
+        Path('modifications.tagged_proteins', include=['@id', 'tagged_proteins', 'sybmol']),
     ]
 
     audit_inherit = [
