@@ -868,6 +868,8 @@ class MultiplexedSample(Sample):
             return list(taxas).pop()
         elif len(taxas) > 1:
             return 'Mixed species'
+        else:
+            return None
 
     @calculated_property(
         schema={
