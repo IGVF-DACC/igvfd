@@ -133,3 +133,21 @@ def analysis_set_with_workflows(
         'workflows': [base_workflow['@id']]
     }
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def analysis_set_with_workflows_2(
+    testapp,
+    award,
+    lab,
+    analysis_set_base,
+    base_workflow_2
+):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'input_file_sets': [analysis_set_base['@id']],
+        'file_set_type': 'intermediate analysis',
+        'workflows': [base_workflow_2['@id']]
+    }
+    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]

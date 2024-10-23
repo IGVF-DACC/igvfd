@@ -231,6 +231,18 @@ def test_audit_missing_analysis_step_version(
 
 def test_audit_multiple_workflows(
     testapp,
-    analysis_set_with_multiple_workflows,
-
-)
+    analysis_set_with_workflows,
+    base_workflow,
+    matrix_file_with_base_workflow_2
+):
+    testapp.patch_json(
+        matrix_file_with_base_workflow_2['@id'],
+        {
+            'file_set': analysis_set_with_workflows['@id']
+        }
+    )
+    res = testapp.get(analysis_set_with_workflows['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing input file set'
+        for error in res.json['audit'].get('WARNING', [])
+    )

@@ -191,6 +191,6 @@ def audit_analysis_set_with_multiple_workflows(value, system):
     '''
     audit_message_multiple_workflows = get_audit_message(
         audit_analysis_set_with_multiple_workflows, index=0)
-    workflows = value.get('workflows')
+    workflows = value.get('workflows', [])
     if len(workflows) > 1:
         yield AuditFailure(audit_message_multiple_workflows.get('audit_category', ''), audit_message_multiple_workflows.get('audit_description', ''), audit_message_multiple_workflows.get('audit_level', ''))
