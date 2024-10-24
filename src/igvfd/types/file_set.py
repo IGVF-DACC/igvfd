@@ -488,12 +488,10 @@ class AnalysisSet(FileSet):
         for file_obj in file_objs:
             if file_obj.get('analysis_step_version'):
                 # Get analysis step version and request the object
-                analysis_step_version = file_obj.get('analysis_step_version')
-                analysis_step_version_obj = request.embed(analysis_step_version, '@@object')
+                analysis_step_version_obj = request.embed(file_obj.get('analysis_step_version'), '@@object')
                 # Get analysis step and request the object
                 if analysis_step_version_obj.get('analysis_step'):
-                    analysis_step = analysis_step_version_obj.get('analysis_step')
-                    analysis_step_obj = request.embed(analysis_step, '@@object')
+                    analysis_step_obj = request.embed(analysis_step_version_obj.get('analysis_step'), '@@object')
                     # Get workflow and add to the set
                     if analysis_step_obj.get('workflow'):
                         analysis_set_workflows_set.add(analysis_step_obj.get('workflow'))
