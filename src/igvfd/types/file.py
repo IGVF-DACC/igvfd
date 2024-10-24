@@ -45,6 +45,8 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'bigBed': '.bigBed',
     'bigInteract': '.bigInteract',
     'bigWig': '.bigWig',
+    'cool': '.cool',
+    'mcool': '.mcool',
     'csv': '.csv.gz',
     'database': '.db',
     'dat': '.dat.gz',
