@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Add calculated property `workflows`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Add calculated property `sample_summary`.
 * Add calculated property `functional_assay_mechanisms`.

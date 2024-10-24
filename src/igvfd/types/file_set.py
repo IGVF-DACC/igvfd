@@ -30,6 +30,15 @@ def get_fileset_objs_from_input_file_sets(request, input_file_sets):
     return file_set_objs
 
 
+def get_file_objs_from_files(request, files):
+    '''Get file objects from an array of files'''
+    file_objs = []
+    if files is not None:
+        for file in files:
+            file_objs.append(request.embed(file, '@@object'))
+    return file_objs
+
+
 @abstract_collection(
     name='file-sets',
     unique_key='accession',
@@ -456,6 +465,37 @@ class AnalysisSet(FileSet):
             if 'MeasurementSet' in file_set_object.get('@type') or 'AnalysisSet' in file_set_object.get('@type'):
                 mechanism_objects.extend(file_set_object.get('functional_assay_mechanisms', []))
         return list(set(mechanism_objects))
+
+    @calculated_property(
+        schema={
+            'title': 'Workflows',
+            'description': 'A workflow for computational analysis of genomic data. A workflow is made up of analysis steps.',
+            'type': 'array',
+            'notSubmittable': True,
+            'uniqueItem': True,
+            'minItems': 1,
+            'items': {
+                'title': 'Workflow',
+                'type': 'string',
+                'linkTo': 'Workflow'
+            }
+        }
+    )
+    def workflows(self, request, files=None):
+        analysis_set_workflows_set = set()
+        # Get a list of file objects
+        file_objs = get_file_objs_from_files(request=request, files=files)
+        for file_obj in file_objs:
+            if file_obj.get('analysis_step_version'):
+                # Get analysis step version and request the object
+                analysis_step_version_obj = request.embed(file_obj.get('analysis_step_version'), '@@object')
+                # Get analysis step and request the object
+                if analysis_step_version_obj.get('analysis_step'):
+                    analysis_step_obj = request.embed(analysis_step_version_obj.get('analysis_step'), '@@object')
+                    # Get workflow and add to the set
+                    if analysis_step_obj.get('workflow'):
+                        analysis_set_workflows_set.add(analysis_step_obj.get('workflow'))
+        return list(analysis_set_workflows_set)
 
 
 @collection(

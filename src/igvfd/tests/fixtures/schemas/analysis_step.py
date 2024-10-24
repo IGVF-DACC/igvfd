@@ -40,3 +40,18 @@ def analysis_step_v2(testapp, base_workflow):
         'workflow': base_workflow['@id']
     }
     return item
+
+
+@pytest.fixture
+def analysis_step_2(testapp, base_workflow_2, other_lab, award):
+    item = {
+        'lab': other_lab['@id'],
+        'award': award['@id'],
+        'step_label': 'base-two-analysis-step',
+        'title': 'Base Two Analysis Step',
+        'input_content_types': ['reads'],
+        'output_content_types': ['alignments'],
+        'analysis_step_types': ['alignment'],
+        'workflow': base_workflow_2['@id']
+    }
+    return testapp.post_json('/analysis_step', item).json['@graph'][0]
