@@ -114,6 +114,7 @@
                 "barcode to sample mapping",
                 "barcode to variant mapping",
                 "barcode to TF overexpression mapping",
+                "bin paired count",
                 "coding variant effects",
                 "differential element quantifications",
                 "differential gene expression quantifications",
@@ -155,6 +156,7 @@
                 "barcode to sample mapping": "A file describing the mapping of barcodes to biological sample.",
                 "barcode to variant mapping": "A file describing the mapping of barcodes to variants.",
                 "barcode to TF overexpression mapping": "A file describing the mapping of barcodes to TF overexpression.",
+                "bin paired count": "x",
                 "coding variant effects": "A file predicting effects of amino acid changes at each position of a given protein.",
                 "differential element quantifications": "A file that details the change in effect sizes for a specific non-coding element between two experimental conditions.",
                 "differential gene expression quantifications": "The quantified changes in gene expression levels between different conditions or groups.",
@@ -196,16 +198,12 @@
             }
         },
         "file_format": {
-            "oneOf": [
-                {
-                    "enum": [
-                        "bed",
-                        "csv",
-                        "gtf",
-                        "tsv",
-                        "vcf"
-                    ]
-                }
+            "enum": [
+                "bed",
+                "csv",
+                "gtf",
+                "tsv",
+                "vcf"
             ],
             "submissionExample": {
                 "appscript": "tsv",
