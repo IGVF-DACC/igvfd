@@ -89,6 +89,8 @@ class Sample(Item):
         Path('modifications.tagged_protein', include=[
              '@id', 'tagged_protein', 'modality', 'fused_domain', '@type', 'symbol', 'cas']),
         Path('modifications.tagged_proteins', include=['@id', 'tagged_proteins', 'sybmol']),
+        Path('institutional_certificates', include=['@id', 'certificate_identifier']),
+        Path('construct_library_sets', include=['@id', 'accession', 'file_set_type'])
     ]
 
     audit_inherit = [
@@ -208,9 +210,7 @@ class Biosample(Sample):
     schema = load_schema('igvfd:schemas/biosample.json')
     rev = Sample.rev | {'parts': ('Biosample', 'part_of'),
                         'pooled_in': ('Biosample', 'pooled_from')}
-    embedded_with_frame = Sample.embedded_with_frame + [
-        Path('institutional_certificates', include=['@id', 'certificate_identifier'])
-    ]
+    embedded_with_frame = Sample.embedded_with_frame
 
     audit_inherit = Sample.audit_inherit + [
         'disease_terms',
@@ -806,16 +806,11 @@ class MultiplexedSample(Sample):
     item_type = 'multiplexed_sample'
     schema = load_schema('igvfd:schemas/multiplexed_sample.json')
     embedded_with_frame = Sample.embedded_with_frame + [
-        Path('sample_terms', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
         Path('multiplexed_samples', include=['@id', 'accession', '@type',
              'summary', 'sample_terms', 'construct_library_sets', 'disease_terms', 'donors', 'status']),
         Path('multiplexed_samples.sample_terms', include=['@id', 'term_name']),
         Path('multiplexed_samples.disease_terms', include=['@id', 'term_name']),
         Path('multiplexed_samples.donors', include=['@id', 'accession']),
-        Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
-        Path('modifications', include=['@id', 'modality', 'summary', 'status']),
-        Path('construct_library_sets', include=['@id', 'accession'])
     ]
     audit_inherit = Biosample.audit_inherit
     set_status_up = Biosample.set_status_up + [
