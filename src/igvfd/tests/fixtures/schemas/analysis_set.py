@@ -115,39 +115,3 @@ def analysis_set_v7(analysis_set_base):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
-
-
-@pytest.fixture
-def analysis_set_with_workflows(
-    testapp,
-    award,
-    lab,
-    analysis_set_base,
-    base_workflow
-):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'input_file_sets': [analysis_set_base['@id']],
-        'file_set_type': 'intermediate analysis',
-        'workflows': [base_workflow['@id']]
-    }
-    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
-
-
-@pytest.fixture
-def analysis_set_with_workflows_2(
-    testapp,
-    award,
-    lab,
-    analysis_set_base,
-    base_workflow_2
-):
-    item = {
-        'award': award['@id'],
-        'lab': lab['@id'],
-        'input_file_sets': [analysis_set_base['@id']],
-        'file_set_type': 'intermediate analysis',
-        'workflows': [base_workflow_2['@id']]
-    }
-    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
