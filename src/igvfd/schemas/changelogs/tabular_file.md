@@ -1,5 +1,9 @@
 ## Changelog for *`tabular_file.json`*
 
+### Minor changes since schema version 13
+
+* Extend `content_type` enum list to include `bin paired count`.
+
 ### Schema version 13
 
 * Adjust `file_format` enum list to remove `txt`.
