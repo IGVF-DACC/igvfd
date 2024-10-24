@@ -57,27 +57,5 @@
         "uuid": "f1149b20-2066-49d8-bbd0-7f77f642cae3",
         "release_timestamp": "2024-08-06T12:34:56Z",
         "file_set_type": "intermediate analysis"
-    },
-    {
-        "aliases": [
-            "igvf:analysis_set_with_workflow"
-        ],
-        "submitter_comment": "Comment for an analysis set.",
-        "description": "An analysis set with work flow info.",
-        "award": "HG012012",
-        "lab": "j-michael-cherry",
-        "documents": [
-            "igvf:Antibody_characterization_standards_IGVF"
-        ],
-        "status": "released",
-        "uuid": "ff3e81bd-b427-492d-808b-e153b067b664",
-        "samples": [
-            "igvf:treated_primary_cells"
-        ],
-        "release_timestamp": "2024-03-06T12:34:56Z",
-        "file_set_type": "intermediate analysis",
-        "workflows": [
-            "/workflows/IGVFWF0000WORK/"
-        ]
     }
 ]
