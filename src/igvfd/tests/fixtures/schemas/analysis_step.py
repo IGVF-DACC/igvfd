@@ -47,8 +47,8 @@ def analysis_step_2(testapp, base_workflow_2, other_lab, award):
     item = {
         'lab': other_lab['@id'],
         'award': award['@id'],
-        'step_label': 'base-analysis-step-2',
-        'title': 'Base Analysis Step 2',
+        'step_label': 'base-two-analysis-step',
+        'title': 'Base Two Analysis Step',
         'input_content_types': ['reads'],
         'output_content_types': ['alignments'],
         'analysis_step_types': ['alignment'],

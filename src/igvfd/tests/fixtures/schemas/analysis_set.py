@@ -115,3 +115,17 @@ def analysis_set_v7(analysis_set_base):
         'publication_identifiers': ['doi:10.1016/j.molcel.2021.05.020']
     })
     return item
+
+
+@pytest.fixture
+def analysis_set_with_work_flow(
+    testapp,
+    award,
+    lab
+):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'intermediate analysis'
+    }
+    return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]

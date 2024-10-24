@@ -102,13 +102,13 @@ def matrix_file_v6(testapp, lab, award, measurement_set, reference_file):
 
 
 @pytest.fixture
-def matrix_file_with_base_workflow(testapp, lab, award, analysis_set_with_workflows, reference_file, analysis_step_version):
+def matrix_file_with_base_workflow(testapp, lab, award, analysis_set_with_work_flow, reference_file, analysis_step_version):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '2a304515e3f9a882b413b9965f4f4461',
         'file_format': 'hdf5',
-        'file_set': analysis_set_with_workflows['@id'],
+        'file_set': analysis_set_with_work_flow['@id'],
         'file_size': 7491803,
         'content_type': 'sparse gene count matrix',
         'reference_files': [
@@ -122,13 +122,13 @@ def matrix_file_with_base_workflow(testapp, lab, award, analysis_set_with_workfl
 
 
 @pytest.fixture
-def matrix_file_with_base_workflow_2(testapp, lab, award, analysis_set_with_workflows_2, reference_file, analysis_step_version_2):
+def matrix_file_with_base_workflow_2(testapp, lab, award, analysis_set_base, reference_file, analysis_step_version_2):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': 'a9ac1c24865c7183a0403bc8bc6c7599',
         'file_format': 'hdf5',
-        'file_set': analysis_set_with_workflows_2['@id'],
+        'file_set': analysis_set_base['@id'],
         'file_size': 8491803,
         'content_type': 'sparse gene count matrix',
         'reference_files': [
