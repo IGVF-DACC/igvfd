@@ -92,7 +92,7 @@ def test_audit_external_identifiers(testapp, model_file):
     testapp.patch_json(
         model_file['@id'],
         {
-            'dbxrefs': ['test_external_identifier']
+            'dbxrefs': ['testIdentifier']
         }
     )
     res = testapp.get(model_file['@id'] + '@@audit')
@@ -117,7 +117,7 @@ def test_audit_external_reference_files(testapp, reference_file):
     testapp.patch_json(
         reference_file['@id'],
         {
-            'dbxrefs': ['ENCFF743WOO']
+            'dbxrefs': ['ENCODE:ENCFF743WOO']
         }
     )
     res = testapp.get(reference_file['@id'] + '@@audit')

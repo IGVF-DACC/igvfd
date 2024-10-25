@@ -148,7 +148,7 @@
         ],
         "external": true,
         "dbxrefs": [
-            "ENCFF000AAA"
+            "ENCODE:ENCFF000AAA"
         ],
         "controlled_access": false
     },
