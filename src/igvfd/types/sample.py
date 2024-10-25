@@ -844,6 +844,35 @@ class MultiplexedSample(Sample):
         return collect_multiplexed_samples_prop(request, multiplexed_samples, 'sample_terms')
 
     @calculated_property(
+        define=True,
+        schema={
+            'title': 'Taxa',
+            'type': 'string',
+            'description': 'The species of the organism.',
+            'enum': [
+                    'Homo sapiens',
+                    'Mus musculus',
+                    'Mixed species',
+                    'Saccharomyces cerevisiae'
+            ],
+            'notSubmittable': True
+        }
+    )
+    def taxa(self, request, multiplexed_samples):
+        taxas = set()
+        if multiplexed_samples:
+            for sample in multiplexed_samples:
+                sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=taxa')
+                taxas.add(sample_object.get('taxa'))
+
+        if len(taxas) == 1:
+            return list(taxas).pop()
+        elif len(taxas) > 1:
+            return 'Mixed species'
+        else:
+            return None
+
+    @calculated_property(
         schema={
             'title': 'Disease Terms',
             'type': 'array',

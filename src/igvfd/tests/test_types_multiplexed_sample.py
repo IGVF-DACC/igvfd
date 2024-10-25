@@ -20,3 +20,10 @@ def test_summary(testapp, multiplexed_sample, tissue, in_vitro_cell_line, human_
     res = testapp.get(multiplexed_sample_x3['@id'])
     assert res.json.get(
         'summary') == 'multiplexed sample: K562 cell line, male, Mus musculus strain1; pluripotent stem cell, Homo sapiens; ... and 2 more samples'
+
+
+def test_taxa(testapp, multiplexed_sample_mixed_species, multiplexed_sample):
+    res = testapp.get(multiplexed_sample_mixed_species['@id'])
+    assert res.json.get('taxa') == 'Mixed species'
+    res = testapp.get(multiplexed_sample['@id'])
+    assert res.json.get('taxa') == 'Mus musculus'

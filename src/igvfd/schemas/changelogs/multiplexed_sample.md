@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Add calculated property `taxa`.
 * Extend `collections` enum list to include `VarChAMP`.
 
 ### Schema version 10
