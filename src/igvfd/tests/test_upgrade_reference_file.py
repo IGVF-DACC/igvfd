@@ -72,3 +72,9 @@ def test_reference_file_upgrade_13_14(upgrader, reference_file_v13):
     assert 'anvil_url' not in value
     assert 'notes' not in value
     assert value['schema_version'] == '14'
+
+
+def test_reference_file_upgrade_14_15(upgrader, reference_file_v14):
+    value = upgrader.upgrade('reference_file', reference_file_v14, current_version='14', target_version='15')
+    assert 'external_id' not in value
+    assert value['schema_version'] == '15'

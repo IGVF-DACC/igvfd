@@ -76,7 +76,7 @@ def test_audit_file_format_specifications(testapp, matrix_file, experimental_pro
     )
 
 
-def audit_external_identifiers(testapp, model_file):
+def test_audit_external_identifiers(testapp, model_file):
     testapp.patch_json(
         model_file['@id'],
         {
@@ -95,6 +95,32 @@ def audit_external_identifiers(testapp, model_file):
             'dbxrefs': ['test_external_identifier']
         }
     )
+    res = testapp.get(model_file['@id'] + '@@audit')
+    assert all(
+        audit['category'] != 'missing dbxrefs'
+        for audit in res.json['audit'].get('WARNING', {})
+    )
+
+
+def test_audit_external_reference_files(testapp, reference_file):
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'external': True
+        }
+    )
+    res = testapp.get(reference_file['@id'] + '@@audit')
+    assert any(
+        audit['category'] == 'missing dbxrefs'
+        for audit in res.json['audit'].get('WARNING', {})
+    )
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'dbxrefs': ['ENCFF743WOO']
+        }
+    )
+    res = testapp.get(reference_file['@id'] + '@@audit')
     assert all(
         audit['category'] != 'missing dbxrefs'
         for audit in res.json['audit'].get('WARNING', {})

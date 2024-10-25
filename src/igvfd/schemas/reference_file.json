@@ -122,29 +122,12 @@
                     ]
                 }
             ]
-        },
-        "external_id": {
-            "comment": "Only external files should have an external ID.",
-            "if": {
-                "properties": {
-                    "external": {
-                        "const": false
-                    }
-                }
-            },
-            "then": {
-                "not": {
-                    "required": [
-                        "external_id"
-                    ]
-                }
-            }
         }
     },
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "14"
+            "default": "15"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
@@ -281,7 +264,7 @@
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
                 "type": "string",
                 "minItems": 1,
-                "pattern": "^(GENCODE|GRC|ENSEMBL):.+$"
+                "pattern": "^(GENCODE|GRC|ENSEMBL|ENCFF|ENCSR):.+$"
             },
             "submissionExample": {
                 "appscript": "[\"GENCODE:Release 44\", \"GRC:GCA_000001405.29_GRCh38.p14\", \"ENSEMBL:ENSG00000101126\"]",
@@ -300,15 +283,6 @@
                 "appscript": "True",
                 "igvf_utils": "True"
             }
-        },
-        "external_id": {
-            "title": "External Identifier",
-            "description": "A unique identifier for the file at its original source.",
-            "type": "string",
-            "submissionExample": {
-                "appscript": "gencode.v44.annotation",
-                "igvf_utils": "gencode.v44.annotation"
-            }
         }
     },
     "fuzzy_searchable_fields": [
@@ -324,7 +298,6 @@
     "exact_searchable_fields": [
         "@type",
         "dbxrefs",
-        "external_id",
         "file_format",
         "file_set.accession"
     ],
