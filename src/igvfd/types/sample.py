@@ -863,9 +863,7 @@ class MultiplexedSample(Sample):
         if multiplexed_samples:
             for sample in multiplexed_samples:
                 sample_object = request.embed(sample, '@@object_with_select_calculated_properties?field=taxa')
-                taxa_value = sample_object.get('taxa')
-                if taxa_value:
-                    taxas.add(taxa_value)
+                taxas.add(sample_object.get('taxa'))
 
         if len(taxas) == 1:
             return list(taxas).pop()
