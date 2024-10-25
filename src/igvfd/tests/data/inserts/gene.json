@@ -283,5 +283,14 @@
         "status": "archived",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "symbol": "Gm13255"
+    },
+    {
+        "dbxrefs": [
+            "UniProtKB:P42212"
+        ],
+        "uuid": "9ebff106-dcb0-4787-9f6e-bfa067f8821a",
+        "taxa": "Aequorea victoria",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z"
     }
 ]
