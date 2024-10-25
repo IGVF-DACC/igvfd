@@ -365,5 +365,19 @@
             "IGVF_catalog_beta_v0.4"
         ],
         "controlled_access": false
+    },
+    {
+        "uuid": "b2fe68c1-253b-4c94-b573-979e7e352e0f",
+        "aliases": [
+            "charles-gersbach:gRNA_sequences"
+        ],
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "md5sum": "a4d5fe6a53858d55e32d9b92863adcab",
+        "file_format": "fasta",
+        "content_type": "guide RNA sequences",
+        "file_set": "igvf:analysis_set_with_input",
+        "assembly": "custom",
+        "controlled_access": false
     }
 ]

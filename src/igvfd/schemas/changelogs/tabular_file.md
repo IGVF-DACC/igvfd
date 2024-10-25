@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Extend `assembly` enum list to include `custom`.
 * Extend `content_type` enum list to include `bin paired count`.
 
 ### Schema version 13
