@@ -101,7 +101,7 @@ def test_types_signal_file_content_summary(testapp, signal_file):
 
 def test_types_matrix_file_content_summary(testapp, matrix_file):
     res = testapp.get(matrix_file['@id'])
-    assert res.json.get('content_summary') == 'cell by gene sparse gene count matrix'
+    assert res.json.get('content_summary') == 'cell by gene in sparse gene count matrix'
     testapp.patch_json(
         matrix_file['@id'],
         {
@@ -111,7 +111,7 @@ def test_types_matrix_file_content_summary(testapp, matrix_file):
         }
     )
     res = testapp.get(matrix_file['@id'])
-    assert res.json.get('content_summary') == 'variant by [treatment, antibody capture] transcriptome annotations'
+    assert res.json.get('content_summary') == 'variant by treatment by antibody capture in transcriptome annotations'
 
 
 def test_integrated_in(testapp, construct_library_set_genome_wide, base_expression_construct_library_set, tabular_file):
@@ -244,7 +244,7 @@ def test_file_summaries(
     assert res.json.get('summary', '') == 'detected tissue'
 
     res = testapp.get(matrix_file['@id'])
-    assert res.json.get('summary', '') == 'cell by gene sparse gene count matrix'
+    assert res.json.get('summary', '') == 'cell by gene in sparse gene count matrix'
 
     res = testapp.get(model_file['@id'])
     assert res.json.get('summary', '') == 'graph structure'
