@@ -86,7 +86,7 @@ def test_multiplexed_sample_props(
     biomarkers_set.add(biomarker_CD243_absent['@id'])
     biomarkers_set.add(biomarker_CD1e_low['@id'])
     biomarkers_set.add(biomarker_IgA_present['@id'])
-    multiplexed_biomarkers_set = set([entry for entry in res.json.get('biomarkers', [])])
+    multiplexed_biomarkers_set = set([entry['@id'] for entry in res.json.get('biomarkers', [])])
     assert biomarkers_set == multiplexed_biomarkers_set
 
     cls_set = set()
