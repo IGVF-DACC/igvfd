@@ -7,11 +7,20 @@ from snovault.elasticsearch.searches.configs import search_config
 def technical_sample():
     return {
         'facets': {
-            'sample_terms.term_name': {
-                'title': 'Sample Terms',
+            'taxa': {
+                'title': 'Taxa',
             },
             'classifications': {
-                'title': 'Classifications',
+                'title': 'Classification',
+            },
+            'sample_material': {
+                'title': 'Sample Material',
+            },
+            'sample_terms.term_name': {
+                'title': 'Sample Term'
+            },
+            'virtual': {
+                'title': 'Virtual'
             },
             'collections': {
                 'title': 'Collections',
@@ -22,17 +31,8 @@ def technical_sample():
             'award.component': {
                 'title': 'Award',
             },
-            'sources.title': {
-                'title': 'Sources',
-            },
             'status': {
                 'title': 'Status'
-            },
-            'virtual': {
-                'title': 'Virtual'
-            },
-            'file_sets.assay_term.term_name': {
-                'title': 'Assay'
             },
             'type': {
                 'title': 'Object Type'
@@ -54,10 +54,27 @@ def technical_sample():
             {
                 'title': 'Sample',
                 'facet_fields': [
-                    'sample_terms.term_name',
-                    'virtual',
+                    'taxa',
                     'classifications',
-                    'file_sets.assay_term.term_name',
+                    'sample_terms.term_name',
+                    'sample_material',
+                    'virtual',
+                ]
+            },
+            {
+                'title': 'File Set',
+                'facet_fields': [
+                    'file_sets.@type',
+                    'file_sets.preferred_assay_title',
+                    'file_sets.file_set_type',
+                ]
+            },
+            {
+                'title': 'Construct',
+                'facet_fields': [
+                    'construct_library_sets.file_set_type',
+                    'construct_library_sets.associated_phenotypes.term_name',
+                    'nucleic_acid_delivery',
                 ]
             },
             {
@@ -66,7 +83,6 @@ def technical_sample():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'sources.title',
                     'type',
                 ]
             },
@@ -79,44 +95,6 @@ def technical_sample():
                     'audit.WARNING.category',
                     'audit.INTERNAL_ACTION.category',
                 ]
-            },
-        ],
-        'columns': {
-            'uuid': {
-                'title': 'UUID'
-            },
-            'accession': {
-                'title': 'Accession'
-            },
-            'sample_terms': {
-                'title': 'Sample Terms'
-            },
-            'alternate_accessions': {
-                'title': 'Alternate Accessions'
-            },
-            'classifications': {
-                'title': 'Classifications',
-            },
-            'date_obtained': {
-                'title': 'Date Obtained'
-            },
-            'award': {
-                'title': 'Award'
-            },
-            'lab': {
-                'title': 'Lab'
-            },
-            'status': {
-                'title': 'Status'
-            },
-            'description': {
-                'title': 'Description'
-            },
-            'summary': {
-                'title': 'Summary'
-            },
-            'virtual': {
-                'title': 'Virtual'
             }
-        }
+        ],
     }

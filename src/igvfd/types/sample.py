@@ -695,6 +695,7 @@ class TechnicalSample(Sample):
         Path('file_sets.lab', include=['title']),
         Path('publications', include=['@id', 'publication_identifiers']),
         Path('sample_terms', include=['@id', 'term_name']),
+        Path('construct_library_sets.associated_phenotypes', include=['@id', 'accession', 'file_set_type', 'term_name'])
     ]
     audit_inherit = Sample.audit_inherit
     set_status_up = Biosample.set_status_up + []

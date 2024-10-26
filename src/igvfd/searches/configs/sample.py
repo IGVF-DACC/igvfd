@@ -10,6 +10,9 @@ def sample():
             'taxa': {
                 'title': 'Taxa',
             },
+            'sex': {
+                'title': 'Sex',
+            },
             'classifications': {
                 'title': 'Classification',
             },
@@ -30,6 +33,9 @@ def sample():
             },
             'multiplexing_method': {
                 'title': 'Multiplexing Method',
+            },
+            'preservation_method': {
+                'title': 'Preservation Method',
             },
             'embryonic': {
                 'title': 'Embryonic',
@@ -118,6 +124,7 @@ def sample():
                 'title': 'Sample',
                 'facet_fields': [
                     'taxa',
+                    'sex',
                     'classifications',
                     'sample_terms.term_name',
                     'disease_terms.term_name',
@@ -125,6 +132,7 @@ def sample():
                     'targeted_sample_term.term_name',
                     'growth_medium',
                     'multiplexing_method',
+                    'preservation_method',
                     'embryonic',
                     'virtual',
                 ]

@@ -7,23 +7,77 @@ from snovault.elasticsearch.searches.configs import search_config
 def primary_cell():
     return {
         'facets': {
-            'sample_terms.term_name': {
-                'title': 'Sample Terms',
-            },
-            'disease_terms.term_name': {
-                'title': 'Disease Terms',
-            },
-            'treatments.treatment_term_name': {
-                'title': 'Treatments',
-            },
             'taxa': {
                 'title': 'Taxa',
             },
             'sex': {
-                'title': 'Sex'
+                'title': 'Sex',
             },
             'classifications': {
-                'title': 'Classifications',
+                'title': 'Classification',
+            },
+            'sample_terms.term_name': {
+                'title': 'Sample Term'
+            },
+            'disease_terms.term_name': {
+                'title': 'Disease Term'
+            },
+            'biosample_qualifiers': {
+                'title': 'Biosample Qualifier',
+            },
+            'embryonic': {
+                'title': 'Embryonic',
+            },
+            'virtual': {
+                'title': 'Virtual'
+            },
+            'biomarkers.name': {
+                'title': 'Biomarker'
+            },
+            'biomarkers.classification': {
+                'title': 'Classifcation'
+            },
+            'biomarkers.quantification': {
+                'title': 'Quantification'
+            },
+            'biomarkers.gene.symbol': {
+                'title': 'Gene'
+            },
+            'treatments.depletion': {
+                'title': 'Depletion'
+            },
+            'treatments.purpose': {
+                'title': 'Treatment Purpose'
+            },
+            'treatments.treatment_type': {
+                'title': 'Treatment Type'
+            },
+            'treatments.treatment_term_name': {
+                'title': 'Treatment Term Name'
+            },
+            'treatments.depletion': {
+                'title': 'Depletion'
+            },
+            'modifications.@type': {
+                'title': 'Modification Type'
+            },
+            'modifications.cas': {
+                'title': 'Cas'
+            },
+            'modifications.fused_domain': {
+                'title': 'Fused domain'
+            },
+            'modifications.modality': {
+                'title': 'Modality'
+            },
+            'modifications.tagged_protein.symbol': {
+                'title': 'CRISPR Tagged Protein'
+            },
+            'modifications.degron_system': {
+                'title': 'Degron System'
+            },
+            'modifications.tagged_proteins.symbol': {
+                'title': 'Degron Tagged Protein'
             },
             'collections': {
                 'title': 'Collections',
@@ -34,20 +88,8 @@ def primary_cell():
             'award.component': {
                 'title': 'Award',
             },
-            'sources.title': {
-                'title': 'Sources',
-            },
             'status': {
                 'title': 'Status'
-            },
-            'virtual': {
-                'title': 'Virtual'
-            },
-            'file_sets.assay_term.term_name': {
-                'title': 'Assay'
-            },
-            'biomarkers.classification': {
-                'title': 'Biomarkers Classification'
             },
             'type': {
                 'title': 'Object Type'
@@ -69,15 +111,60 @@ def primary_cell():
             {
                 'title': 'Sample',
                 'facet_fields': [
+                    'taxa',
+                    'classifications',
                     'sample_terms.term_name',
                     'disease_terms.term_name',
-                    'treatments.treatment_term_name',
-                    'taxa',
-                    'sex',
-                    'classifications',
-                    'biomarkers.classification',
+                    'biosample_qualifiers',
+                    'embryonic',
                     'virtual',
-                    'file_sets.assay_term.term_name',
+                ]
+            },
+            {
+                'title': 'File Set',
+                'facet_fields': [
+                    'file_sets.@type',
+                    'file_sets.preferred_assay_title',
+                    'file_sets.file_set_type',
+                ]
+            },
+            {
+                'title': 'Construct',
+                'facet_fields': [
+                    'construct_library_sets.file_set_type',
+                    'construct_library_sets.associated_phenotypes.term_name',
+                    'nucleic_acid_delivery',
+                ]
+            },
+            {
+                'title': 'Treatment',
+                'facet_fields': [
+                    'treatments.treatment_type',
+                    'treatments.treatment_term_name',
+                    'treatments.purpose',
+                    'treatments.depletion',
+                ]
+            },
+            {
+                'title': 'Biomarker',
+                'facet_fields': [
+                    'biomarkers.name',
+                    'biomarkers.classification',
+                    'biomarkers.quantification',
+                    'biomarkers.gene.symbol',
+                ]
+            },
+            {
+                'title': 'Modification',
+                'facet_fields': [
+                    'modifications.@type',
+                    'modifications.modality',
+                    'modifications.cas',
+                    'modifications.cas_species',
+                    'modifications.fused_domain',
+                    'modifications.tagged_protein.symbol',
+                    'modifications.degron_system',
+                    'modifications.tagged_proteins.symbol',
                 ]
             },
             {
@@ -86,7 +173,6 @@ def primary_cell():
                     'collections',
                     'lab.title',
                     'award.component',
-                    'sources.title',
                     'type',
                 ]
             },
@@ -99,50 +185,6 @@ def primary_cell():
                     'audit.WARNING.category',
                     'audit.INTERNAL_ACTION.category',
                 ]
-            },
-        ],
-        'columns': {
-            'uuid': {
-                'title': 'UUID'
-            },
-            'accession': {
-                'title': 'Accession'
-            },
-            'sample_terms': {
-                'title': 'Sample Terms'
-            },
-            'alternate_accessions': {
-                'title': 'Alternate Accessions'
-            },
-            'classifications': {
-                'title': 'Classifications'
-            },
-            'donors': {
-                'title': 'Donors'
-            },
-            'date_obtained': {
-                'title': 'Date Obtained'
-            },
-            'taxa': {
-                'title': 'Taxa'
-            },
-            'award': {
-                'title': 'Award'
-            },
-            'lab': {
-                'title': 'Lab'
-            },
-            'status': {
-                'title': 'Status'
-            },
-            'summary': {
-                'title': 'Summary'
-            },
-            'virtual': {
-                'title': 'Virtual'
-            },
-            'description': {
-                'title': 'Description'
             }
-        }
+        ],
     }
