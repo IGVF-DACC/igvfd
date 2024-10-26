@@ -154,3 +154,4 @@ def reference_file_v14(reference_file_v6):
         'external': True,
         'external_id': 'ENCFF743WOO'
     })
+    return item

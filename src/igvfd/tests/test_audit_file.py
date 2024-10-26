@@ -92,7 +92,7 @@ def test_audit_external_identifiers(testapp, model_file):
     testapp.patch_json(
         model_file['@id'],
         {
-            'dbxrefs': ['testIdentifier']
+            'dbxrefs': ['Kipoi:test']
         }
     )
     res = testapp.get(model_file['@id'] + '@@audit')
