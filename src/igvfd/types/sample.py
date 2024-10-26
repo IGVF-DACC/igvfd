@@ -85,12 +85,14 @@ class Sample(Item):
         Path('publications', include=['@id', 'publication_identifiers']),
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
-        Path('treatments', include=['@id', 'purpose', 'treatment_type', 'status', 'treatment_term_name']),
+        Path('treatments', include=['@id', 'purpose', 'treatment_type',
+             'status', 'treatment_term_name', 'depletion', '']),
+        Path('biomarkers.gene', include=['@id', 'name', 'classification', 'quantification', 'gene', 'symbol']),
         Path('modifications.tagged_protein', include=[
-             '@id', 'tagged_protein', 'modality', 'fused_domain', '@type', 'symbol', 'cas']),
-        Path('modifications.tagged_proteins', include=['@id', 'tagged_proteins', 'sybmol']),
+             '@id', 'tagged_protein', 'modality', 'fused_domain', '@type', 'symbol', 'cas', 'cas_species']),
+        Path('modifications.tagged_proteins', include=['@id', 'degron_system', 'tagged_proteins', 'sybmol']),
         Path('institutional_certificates', include=['@id', 'certificate_identifier']),
-        Path('construct_library_sets', include=['@id', 'accession', 'file_set_type'])
+        Path('construct_library_sets.associated_phenotypes', include=['@id', 'accession', 'file_set_type', 'term_name'])
     ]
 
     audit_inherit = [
