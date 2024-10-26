@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 5
 
+* Extend `output_content_types` enum list to include `bin paired count`.
+* Extend `input_content_types` enum list to include `bin paired count`.
 * Extend `analysis_step_types` enum list to include `base calling`.
 * Add calculated property `analysis_step_versions`.
 * Extend `output_content_types` enum list to include `reporter elements`.
