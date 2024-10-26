@@ -14,7 +14,7 @@ def in_vitro_system():
                 'title': 'Sex',
             },
             'classifications': {
-                'title': 'Classification',
+                'title': 'Classifications',
             },
             'sample_terms.term_name': {
                 'title': 'Sample Term'

@@ -14,7 +14,7 @@ def primary_cell():
                 'title': 'Sex',
             },
             'classifications': {
-                'title': 'Classification',
+                'title': 'Classifications',
             },
             'sample_terms.term_name': {
                 'title': 'Sample Term'
