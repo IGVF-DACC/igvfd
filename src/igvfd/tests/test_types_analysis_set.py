@@ -109,11 +109,17 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     assert set(res.json.get('assay_titles')) == {'CRISPR FlowFISH screen'}
 
 
-def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_mpra, measurement_set_multiome, principal_analysis_set):
+def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, tabular_file, gene_myc_hs):
     # With no input_file_sets present, summary is based on analysis file_set_type only
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'intermediate analysis of data'
+    assert res.get('summary', '') == 'intermediate analysis'
     # When no MeasurementSets (even nested in AnalysisSets) are present, data for other FileSet types are included in the summary
+    testapp.patch_json(
+        measurement_set_no_files['@id'],
+        {
+            'auxiliary_sets': [base_auxiliary_set['@id']]
+        }
+    )
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -121,7 +127,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'intermediate analysis of gRNA sequencing data'
+    assert res.get('summary', '') == 'CRISPR FlowFISH screen gRNA sequencing'
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -131,7 +137,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'intermediate analysis of 10x multiome, MPRA data'
+    assert res.get('summary', '') == '10x multiome, CRISPR FlowFISH screen, MPRA'
     # Preferred_assay_title of MeasurementSet is used instead of assay_term in summary whenever present
     testapp.patch_json(
         measurement_set_mpra['@id'],
@@ -148,7 +154,23 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'intermediate analysis of 10x multiome, SUPERSTARR, lentiMPRA data'
+    assert res.get('summary', '') == '10x multiome, SUPERSTARR, lentiMPRA'
+    # Display any targeted_genes from an input Measurement Set.
+    testapp.patch_json(
+        measurement_set_mpra['@id'],
+        {
+            'targeted_genes': [gene_myc_hs['@id']]
+        }
+    )
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': analysis_set_base['@id']
+        }
+    )
+    res = testapp.get(analysis_set_base['@id']).json
+    print(res.get('summary', ''))
+    assert res.get('summary', '') == '10x multiome, SUPERSTARR, lentiMPRA targeting MYC: peaks'
 
 
 def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
