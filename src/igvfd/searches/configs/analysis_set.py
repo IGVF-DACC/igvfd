@@ -16,8 +16,17 @@ def analysis_set():
             'assay_titles': {
                 'title': 'Assay Title'
             },
+            'samples.classifications': {
+                'title': 'Classification'
+            },
+            'samples.disease_terms.term_name': {
+                'title': 'Disease',
+            },
             'samples.sample_terms.term_name': {
-                'title': 'Sample Term'
+                'title': 'Sample'
+            },
+            'samples.targeted_sample_terms.term_name': {
+                'title': 'Targeted Sample'
             },
             'lab.title': {
                 'title': 'Lab'
@@ -29,10 +38,22 @@ def analysis_set():
                 'title': 'Status'
             },
             'file_set_type': {
-                'title': 'File Set Type',
+                'title': 'Analysis Set Type',
+            },
+            'files.assembly': {
+                'title': 'Assembly',
             },
             'files.content_type': {
-                'title': 'Available File Types',
+                'title': 'File Content Type',
+            },
+            'files.file_format': {
+                'title': 'File Format',
+            },
+            'files.transcriptome_annotation': {
+                'title': 'Transcriptome Annotation',
+            },
+            'workflows.uniform_pipeline': {
+                'title': 'Uniformly Processed'
             },
             'type': {
                 'title': 'Object Type',
@@ -55,29 +76,36 @@ def analysis_set():
                 'title': 'Sample',
                 'facet_fields': [
                     'donors.taxa',
-                    'samples.sample_terms.term_name'
+                    'samples.classifications',
+                    'samples.sample_terms.term_name',
+                    'samples.targeted_sample_term.term_name',
+                    'samples.disease_terms.term_name'
                 ],
             },
             {
-                'title': 'File Set',
+                'title': 'Analysis Set Details',
                 'facet_fields': [
                     'file_set_type',
-                    'assay_titles'
+                    'assay_titles',
+                    'workflows.uniform_pipeline',
+                    'files.assembly',
+                    'files.transcriptome_annotation'
                 ],
             },
             {
                 'title': 'Provenance',
                 'facet_fields': [
-                    'collections',
                     'lab.title',
                     'award.component',
+                    'collections',
                     'type',
                 ],
             },
             {
-                'title': 'File Data',
+                'title': 'Files',
                 'facet_fields': [
-                    'files.content_type'
+                    'files.content_type',
+                    'files.file_format'
                 ],
             },
             {
