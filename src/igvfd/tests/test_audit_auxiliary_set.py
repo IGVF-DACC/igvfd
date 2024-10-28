@@ -54,3 +54,26 @@ def test_audit_unexpected_virtual_sample(
         error['category'] == 'unexpected sample'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_missing_measurement_sets(
+    testapp,
+    auxiliary_set_cell_sorting,
+    measurement_set
+):
+    res = testapp.get(auxiliary_set_cell_sorting['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing measurement set'
+        for error in res.json['audit'].get('ERROR', [])
+    )
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'auxiliary_sets': [auxiliary_set_cell_sorting['@id']]
+        }
+    )
+    res = testapp.get(auxiliary_set_cell_sorting['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing measurement set'
+        for error in res.json['audit'].get('ERROR', [])
+    )
