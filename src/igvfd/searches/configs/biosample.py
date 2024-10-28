@@ -110,7 +110,7 @@ def biosample():
                 'title': 'Degron Tagged Protein'
             },
             'collections': {
-                'title': 'Collections',
+                'title': 'Collection',
             },
             'lab.title': {
                 'title': 'Lab',

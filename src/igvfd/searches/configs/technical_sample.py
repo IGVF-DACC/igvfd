@@ -41,7 +41,7 @@ def technical_sample():
                 'title': 'Delivery'
             },
             'collections': {
-                'title': 'Collections',
+                'title': 'Collection',
             },
             'lab.title': {
                 'title': 'Lab',
