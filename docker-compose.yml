@@ -8,7 +8,7 @@ services:
       - AWS_DEFAULT_REGION=us-west-2
       - AWS_ACCESS_KEY_ID=testing
       - AWS_SECRET_ACCESS_KEY=testing
-      - SERVICES=sqs,sts
+      - SERVICES=sqs,sts,s3
       - LS_LOG=warn
     ports:
       - "4566:4566"
