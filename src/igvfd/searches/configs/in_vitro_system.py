@@ -88,6 +88,9 @@ def in_vitro_system():
             'modifications.cas': {
                 'title': 'Cas'
             },
+            'modifications.cas_species': {
+                'title': 'Cas Species'
+            },
             'modifications.fused_domain': {
                 'title': 'Fused domain'
             },

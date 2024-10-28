@@ -94,6 +94,9 @@ def sample():
             'modifications.cas': {
                 'title': 'Cas'
             },
+            'modifications.cas_species': {
+                'title': 'Cas Species'
+            },
             'modifications.fused_domain': {
                 'title': 'Fused domain'
             },
