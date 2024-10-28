@@ -72,5 +72,29 @@
             "gene",
             "antibody capture"
         ]
+    },
+    {
+        "uuid": "3a7c6036-be08-45b2-aa5f-d7c3250e0177",
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "igvf:hicar_contact_matrix"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-10-06T01:54:56Z",
+        "md5sum": "e0542fe64a3367b374fb32766b57ad20",
+        "file_format": "cool",
+        "content_type": "contact matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/hicar_contact_matrix.cool",
+        "file_size": 135044,
+        "upload_status": "validated",
+        "file_set": "leif-ludwig:analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "principal_dimension": "genomic position",
+        "secondary_dimensions": [
+            "genomic position"
+        ]
     }
 ]

@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 7
 
+* Extend `file_format` enum list to include `cool`.
+* Extend `file_format` enum list to include `mcool`.
 * Add `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.
 

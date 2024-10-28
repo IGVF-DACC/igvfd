@@ -167,7 +167,9 @@
                 "hdf5",
                 "mtx",
                 "tar",
-                "hic"
+                "hic",
+                "cool",
+                "mcool"
             ],
             "submissionExample": {
                 "appscript": "h5ad",

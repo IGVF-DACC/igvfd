@@ -335,5 +335,24 @@
         "assembly": "GRCh38",
         "file_set": "leif-ludwig:analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "28979093-7022-4f46-b61d-585119ae485c",
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "charles-gersbach:bin_paired_count"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-10-25T20:29:45Z",
+        "md5sum": "c1ebb4933e06ce5617483f665e26627c",
+        "file_format": "tsv",
+        "content_type": "bin paired count",
+        "submitted_file_name": "/Users/igvf/igvf_files/bin_paired_count.tsv.gz",
+        "file_size": 9999999,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "leif-ludwig:analysis_set",
+        "controlled_access": false
     }
 ]
