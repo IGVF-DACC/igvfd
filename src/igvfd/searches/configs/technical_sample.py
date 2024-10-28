@@ -22,6 +22,24 @@ def technical_sample():
             'virtual': {
                 'title': 'Virtual'
             },
+            'file_sets.@type': {
+                'title': 'File Set Class'
+            },
+            'file_sets.file_set_type': {
+                'title': 'File Set Type'
+            },
+            'file_sets.preferred_assay_title': {
+                'title': 'Assay Title'
+            },
+            'construct_library_sets.file_set_type': {
+                'title': 'Library Type'
+            },
+            'construct_library_sets.associated_phenotypes.term_name': {
+                'title': 'Associated Phenotype'
+            },
+            'construct_library_sets.nucleic_acid_delivery': {
+                'title': 'Delivery'
+            },
             'collections': {
                 'title': 'Collections',
             },
