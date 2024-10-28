@@ -1020,6 +1020,7 @@ def download(context, request):
         },
         ExpiresIn=36*60*60,
     )
+    location = location.replace('localstack', 'localhost')
     if asbool(request.params.get('soft')):
         expires = int(parse_qs(urlparse(location).query)['Expires'][0])
         return {
