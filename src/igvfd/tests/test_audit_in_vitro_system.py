@@ -51,6 +51,7 @@ def test_audit_cell_fate_change_treatments(
         }
     )
     res = testapp.get(in_vitro_differentiated_cell['@id'] + '@@audit')
+    print(res.json)
     assert any(
         error['category'] == 'inconsistent treatment purpose'
         for error in res.json['audit'].get('WARNING', [])

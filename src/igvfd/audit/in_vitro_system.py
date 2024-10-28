@@ -47,13 +47,15 @@ def audit_cell_fate_change_treatments_purpose(value, system):
     '''
     audit_message = get_audit_message(audit_cell_fate_change_treatments_purpose)
     if 'cell_fate_change_treatments' in value:
-        for treatment in value.get('cell_fate_change_treatments'):
+        cell_fate_change_treatments = value.get('cell_fate_change_treatments', [])
+        for treatment in cell_fate_change_treatments:
             treatment_object = system.get('request').embed(treatment + '@@object?skip_calculated=true')
-            if treatment_object.get('purpose') in ['perturbation', 'agonist', 'antagonist', 'control']:
+            treatment_purpose = treatment_object.get('purpose')
+            if treatment_purpose in ['perturbation', 'agonist', 'antagonist', 'control']:
                 detail = (
                     f'In vitro system {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                    f'has a treatment {audit_link(path_to_text(treatment["@id"]), treatment["@id"])} in `cell_fate_change_treatments` '
-                    f'that has `purpose` {treatment["purpose"]}.'
+                    f'has a treatment {audit_link(path_to_text(treatment), treatment)} in `cell_fate_change_treatments` '
+                    f'that has `purpose` {treatment_purpose}.'
                 )
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
