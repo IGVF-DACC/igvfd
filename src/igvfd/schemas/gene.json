@@ -187,13 +187,6 @@
             },
             "permission": "admin_only"
         },
-        "taxa": {
-            "enum": [
-                "Homo sapiens",
-                "Mus musculus",
-                "Aequorea victoria"
-            ]
-        },
         "version_number": {
             "title": "ENSEMBL GeneID Version Number",
             "description": "Current ENSEMBL GeneID version number of the gene.",

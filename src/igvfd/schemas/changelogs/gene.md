@@ -2,7 +2,6 @@
 
 ### Minor changes since schema version 8
 
-* Extend `taxa` enum list to include `Aequorea victoria`.
 * Extend `locations.assembly` enum list to include `custom`.
 * Update calculation of `summary`.
 
