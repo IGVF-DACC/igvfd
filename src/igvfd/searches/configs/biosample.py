@@ -65,7 +65,7 @@ def biosample():
                 'title': 'Biomarker'
             },
             'biomarkers.classification': {
-                'title': 'Classifcation'
+                'title': 'Classification'
             },
             'biomarkers.quantification': {
                 'title': 'Quantification'
@@ -85,9 +85,6 @@ def biosample():
             'treatments.treatment_term_name': {
                 'title': 'Treatment Term Name'
             },
-            'treatments.depletion': {
-                'title': 'Depletion'
-            },
             'modifications.@type': {
                 'title': 'Modification Type'
             },
@@ -98,7 +95,7 @@ def biosample():
                 'title': 'Cas Species'
             },
             'modifications.fused_domain': {
-                'title': 'Fused domain'
+                'title': 'Fused Domain'
             },
             'modifications.modality': {
                 'title': 'Modality'
@@ -166,7 +163,7 @@ def biosample():
                 ]
             },
             {
-                'title': 'Construct',
+                'title': 'Construct Library',
                 'facet_fields': [
                     'construct_library_sets.file_set_type',
                     'construct_library_sets.associated_phenotypes.term_name',

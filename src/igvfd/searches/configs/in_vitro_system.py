@@ -59,7 +59,7 @@ def in_vitro_system():
                 'title': 'Biomarker'
             },
             'biomarkers.classification': {
-                'title': 'Classifcation'
+                'title': 'Classification'
             },
             'biomarkers.quantification': {
                 'title': 'Quantification'
@@ -79,9 +79,6 @@ def in_vitro_system():
             'treatments.treatment_term_name': {
                 'title': 'Treatment Term Name'
             },
-            'treatments.depletion': {
-                'title': 'Depletion'
-            },
             'modifications.@type': {
                 'title': 'Modification Type'
             },
@@ -92,7 +89,7 @@ def in_vitro_system():
                 'title': 'Cas Species'
             },
             'modifications.fused_domain': {
-                'title': 'Fused domain'
+                'title': 'Fused Domain'
             },
             'modifications.modality': {
                 'title': 'Modality'
@@ -158,7 +155,7 @@ def in_vitro_system():
                 ]
             },
             {
-                'title': 'Construct',
+                'title': 'Construct Library',
                 'facet_fields': [
                     'construct_library_sets.file_set_type',
                     'construct_library_sets.associated_phenotypes.term_name',
@@ -216,4 +213,54 @@ def in_vitro_system():
                 ]
             }
         ],
+        'columns': {
+            'uuid': {
+                'title': 'UUID'
+            },
+            'accession': {
+                'title': 'Accession'
+            },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
+            'classifications': {
+                'title': 'Classifications'
+            },
+            'sample_terms': {
+                'title': 'Sample Terms'
+            },
+            'donors': {
+                'title': 'Donors'
+            },
+            'originated_from': {
+                'title': 'Originated From'
+            },
+            'taxa': {
+                'title': 'Taxa'
+            },
+            'award': {
+                'title': 'Award'
+            },
+            'lab': {
+                'title': 'Lab'
+            },
+            'status': {
+                'title': 'Status'
+            },
+            'submitted_by': {
+                'title': 'Submitted By'
+            },
+            'summary': {
+                'title': 'Summary'
+            },
+            'virtual': {
+                'title': 'Virtual'
+            },
+            'description': {
+                'title': 'Description'
+            },
+            'growth_medium': {
+                'title': 'Growth Medium'
+            },
+        }
     }

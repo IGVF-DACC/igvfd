@@ -88,7 +88,7 @@ def technical_sample():
                 ]
             },
             {
-                'title': 'Construct',
+                'title': 'Construct Library',
                 'facet_fields': [
                     'construct_library_sets.file_set_type',
                     'construct_library_sets.associated_phenotypes.term_name',
@@ -115,4 +115,42 @@ def technical_sample():
                 ]
             }
         ],
+        'columns': {
+            'uuid': {
+                'title': 'UUID'
+            },
+            'accession': {
+                'title': 'Accession'
+            },
+            'sample_terms': {
+                'title': 'Sample Terms'
+            },
+            'alternate_accessions': {
+                'title': 'Alternate Accessions'
+            },
+            'classifications': {
+                'title': 'Classifications',
+            },
+            'date_obtained': {
+                'title': 'Date Obtained'
+            },
+            'award': {
+                'title': 'Award'
+            },
+            'lab': {
+                'title': 'Lab'
+            },
+            'status': {
+                'title': 'Status'
+            },
+            'description': {
+                'title': 'Description'
+            },
+            'summary': {
+                'title': 'Summary'
+            },
+            'virtual': {
+                'title': 'Virtual'
+            }
+        }
     }
