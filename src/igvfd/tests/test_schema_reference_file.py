@@ -1,7 +1,7 @@
 import pytest
 
 
-def test_transcriptome_annotation_dependency(testapp, reference_file):
+def test_transcriptome_annotation_dependency(testapp, reference_file, reference_file_two):
     res = testapp.patch_json(
         reference_file['@id'],
         {
@@ -33,6 +33,21 @@ def test_transcriptome_annotation_dependency(testapp, reference_file):
         }, expect_errors=True
     )
     assert res.status_code == 422
+    res = testapp.patch_json(
+        reference_file_two['@id'],
+        {
+            'assembly': 'custom',
+            'transcriptome_annotation': 'GENCODE 40'
+        }, expect_errors=True
+    )
+    assert res.status_code == 422
+    res = testapp.patch_json(
+        reference_file_two['@id'],
+        {
+            'assembly': 'custom'
+        }
+    )
+    assert res.status_code == 200
 
 
 def test_schema_reference_file_validation_error_detail_only_allowed_when_upload_status_is_invalidated(testapp, reference_file):
