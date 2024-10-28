@@ -86,11 +86,11 @@ class Sample(Item):
         Path('sample_terms', include=['@id', 'term_name']),
         Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'purpose', 'treatment_type',
-             'status', 'treatment_term_name', 'depletion', '']),
+             'status', 'treatment_term_name', 'depletion']),
         Path('biomarkers.gene', include=['@id', 'name', 'classification', 'quantification', 'gene', 'symbol']),
         Path('modifications.tagged_protein', include=[
-             '@id', 'tagged_protein', 'modality', 'fused_domain', '@type', 'symbol', 'cas', 'cas_species']),
-        Path('modifications.tagged_proteins', include=['@id', 'degron_system', 'tagged_proteins', 'sybmol']),
+             '@id', 'tagged_protein', 'tagged_proteins', 'modality', 'fused_domain', '@type', 'symbol', 'cas', 'cas_species', 'degron_system']),
+        Path('modifications.tagged_proteins', include=['@id', 'symbol']),
         Path('institutional_certificates', include=['@id', 'certificate_identifier']),
         Path('construct_library_sets.associated_phenotypes', include=['@id', 'accession', 'file_set_type', 'term_name'])
     ]
@@ -613,6 +613,7 @@ class InVitroSystem(Biosample):
     schema = load_schema('igvfd:schemas/in_vitro_system.json')
     rev = Biosample.rev | {'demultiplexed_to': ('InVitroSystem', 'demultiplexed_from')}
     embedded_with_frame = Biosample.embedded_with_frame + [
+        Path('cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
         Path('targeted_sample_term', include=['@id', 'term_name']),
         Path('originated_from', include=['@id', 'accession']),
     ]

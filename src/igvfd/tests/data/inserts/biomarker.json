@@ -102,7 +102,10 @@
         "lab": "j-michael-cherry",
         "award": "HG012012",
         "status": "released",
-        "release_timestamp": "2024-03-06T12:34:56Z"
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "aliases": [
+            "igvf:marker_gene"
+        ]
     },
     {
         "name": "BAP1",
