@@ -89,10 +89,12 @@ class Sample(Item):
              'status', 'treatment_term_name', 'depletion']),
         Path('biomarkers.gene', include=['@id', 'name', 'classification', 'quantification', 'gene', 'symbol']),
         Path('modifications.tagged_protein', include=[
-             '@id', 'tagged_protein', 'tagged_proteins', 'modality', 'fused_domain', '@type', 'symbol', 'cas', 'cas_species', 'degron_system']),
-        Path('modifications.tagged_proteins', include=['@id', 'symbol']),
+             '@id', 'tagged_protein', 'modality', 'fused_domain', '@type', 'symbol', 'cas', 'cas_species']),
+        Path('modifications.tagged_proteins', include=[
+             '@id', 'tagged_proteins', 'modality', '@type', 'symbol', 'degron_system']),
         Path('institutional_certificates', include=['@id', 'certificate_identifier']),
-        Path('construct_library_sets.associated_phenotypes', include=['@id', 'accession', 'file_set_type', 'term_name'])
+        Path('construct_library_sets.associated_phenotypes', include=[
+             '@id', 'accession', 'file_set_type', 'term_name', 'associated_phenotypes'])
     ]
 
     audit_inherit = [

@@ -50,7 +50,7 @@
         ],
         "modifications": [
             "98cbd059-18a7-2857-bc2b-b729489fa458",
-            "37b92ec6-c05e-4360-ac2a-8a924490e83e"
+            "b4a370ee-18a7-2857-bc2b-b157d05f4458"
         ],
         "virtual": false,
         "protocols": [
@@ -92,8 +92,7 @@
         "moi": 1,
         "nucleic_acid_delivery": "transfection",
         "modifications": [
-            "b4a370ee-18a7-2857-bc2b-b157d05f4458",
-            "325a036a-4bc8-2857-c2bb-837b8cb0294f"
+            "b4a370ee-18a7-2857-bc2b-b157d05f4458"
         ]
     },
     {
