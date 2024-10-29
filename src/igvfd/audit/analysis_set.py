@@ -176,3 +176,44 @@ def audit_analysis_set_files_missing_analysis_step_version(value, system):
             f'links to file(s) {files_with_missing_asv} that are missing `analysis_step_version`.'
         )
         yield AuditFailure(audit_message_missing_step_version.get('audit_category', ''), f'{detail} {audit_message_missing_step_version.get("audit_description", "")}', level=audit_message_missing_step_version.get('audit_level', ''))
+
+
+@audit_checker('AnalysisSet', frame='object')
+def audit_analysis_set_multiple_workflows(value, system):
+    '''
+    [
+        {
+            "audit_description": "Analysis set contains more than one workflows.",
+            "audit_category": "unexpected workflows",
+            "audit_level": "WARNING"
+        }
+    ]
+    '''
+    audit_message_multiple_workflows = get_audit_message(audit_analysis_set_multiple_workflows, index=0)
+    workflows = value.get('workflows', [])
+    if len(workflows) > 1:
+        file_workflow_report = []
+        files = value.get('files')
+        for file in files:
+            file_object = system.get('request').embed(file + '@@object?skip_caluculated=true')
+            file_analysis_step_version = file_object.get('analysis_step_version', '')
+            if file_analysis_step_version:
+                file_analysis_step_version_obj = system.get('request').embed(
+                    file_analysis_step_version + '@@object?skip_caluculated=true')
+                file_analysis_step = file_analysis_step_version_obj.get('analysis_step', '')
+                if file_analysis_step:
+                    file_analysis_step_obj = system.get('request').embed(
+                        file_analysis_step + '@@object?skip_caluculated=true')
+                    file_workflow = file_analysis_step_obj.get('workflow', '')
+                if file_workflow:
+                    excess_workflows_report = ' has '.join(
+                        [audit_link(path_to_text(file), file), audit_link(path_to_text(file_workflow), file_workflow)])
+                    file_workflow_report.append(excess_workflows_report)
+        details = (
+            f'Analysis set {audit_link(path_to_text(value["@id"]), value["@id"])} has multiple '
+            f'`workflows` with `{", ".join(file_workflow_report)}`.'
+        )
+        yield AuditFailure(audit_message_multiple_workflows.get('audit_category', ''),
+                           f'{details} {audit_message_multiple_workflows.get("audit_description", "")}',
+                           audit_message_multiple_workflows.get('audit_level', '')
+                           )

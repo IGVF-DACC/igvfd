@@ -1,6 +1,6 @@
 {
-    "hash": "d6ad95f031fbb74b3c7e47114a33394a",
-    "index_name": "reference_file_d6ad95f0",
+    "hash": "6311c29f4e447fa52d62c780aaa75f65",
+    "index_name": "reference_file_6311c29f",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -1126,6 +1126,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

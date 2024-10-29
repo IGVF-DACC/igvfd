@@ -1,6 +1,6 @@
 {
-    "hash": "dd4f0fb7a42a2cc38b38d328a90e3e9d",
-    "index_name": "signal_file_dd4f0fb7",
+    "hash": "0c818b326558ef4e32b5569af07be839",
+    "index_name": "signal_file_0c818b32",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1185,6 +1185,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

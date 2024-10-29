@@ -1,6 +1,6 @@
 {
-    "hash": "b64c45d51410d53317f519520a6c4650",
-    "index_name": "genome_browser_annotation_file_b64c45d5",
+    "hash": "60625803cddae100d3bfbc8ab5349e46",
+    "index_name": "genome_browser_annotation_file_60625803",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -1185,6 +1185,9 @@
                                 "type": "keyword"
                             },
                             "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflows": {
                                 "type": "keyword"
                             }
                         },

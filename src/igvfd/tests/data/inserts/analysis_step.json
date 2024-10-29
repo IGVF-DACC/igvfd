@@ -158,5 +158,36 @@
             "variant effects"
         ],
         "workflow": "b750168a-0804-4f7e-acaf-c19fc8abc6d2"
+    },
+    {
+        "uuid": "4fc3d274-9e4a-4ca5-8607-9876c0f092bd",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:analysis_step_02"
+        ],
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "title": "Example Analysis Step",
+        "step_label": "example-analysis-step",
+        "analysis_step_types": [
+            "alignment"
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "input_content_types": [
+            "reads",
+            "PacBio subreads",
+            "Nanopore reads"
+        ],
+        "output_content_types": [
+            "alignments",
+            "transcriptome annotations",
+            "spike-ins",
+            "inclusion list",
+            "exclusion list",
+            "elements reference",
+            "genome reference"
+        ],
+        "workflow": "96fa0630-a88e-4946-bebd-23f417d0da7a"
     }
 ]
