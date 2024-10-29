@@ -15,7 +15,7 @@ def audit_missing_measurement_sets(value, system):
     [
         {
             "audit_description": "Auxiliary sets are expected to be associated with a measurement set(s).",
-            "audit_category": "missing auxiliary set",
+            "audit_category": "missing measurement set",
             "audit_level": "ERROR"
         }
     ]

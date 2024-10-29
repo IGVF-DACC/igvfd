@@ -62,6 +62,7 @@ def test_audit_missing_measurement_sets(
     measurement_set
 ):
     res = testapp.get(auxiliary_set_cell_sorting['@id'] + '@@audit')
+    print(res.json)
     assert any(
         error['category'] == 'missing measurement set'
         for error in res.json['audit'].get('ERROR', [])
