@@ -201,7 +201,7 @@ class AnalysisSet(FileSet):
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type']),
         Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name']),
-        Path('workflows', include=['uniform_pipeline'])
+        Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
