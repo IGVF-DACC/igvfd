@@ -1,6 +1,6 @@
 {
-    "hash": "dae496874590f0e2bc374b47334237aa",
-    "index_name": "auxiliary_set_dae49687",
+    "hash": "f202edae8f03cf7fbb6c247c66daa1c7",
+    "index_name": "auxiliary_set_f202edae",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -917,9 +917,6 @@
                                 "type": "boolean"
                             },
                             "external_host_url": {
-                                "type": "keyword"
-                            },
-                            "external_id": {
                                 "type": "keyword"
                             },
                             "externally_hosted": {

@@ -131,6 +131,20 @@
                 "invalidated",
                 "validated"
             ]
+        },
+        "dbxrefs": {
+            "comment": "Supported external resources include: Kipoi.",
+            "items": {
+                "title": "External identifier",
+                "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
+                "type": "string",
+                "minItems": 1,
+                "pattern": "^(Kipoi):.+$"
+            },
+            "submissionExample": {
+                "appscript": "[\"Kipoi:Basset\"]",
+                "igvf_utils": "Kipoi:Basset"
+            }
         }
     },
     "fuzzy_searchable_fields": [

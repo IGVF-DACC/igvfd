@@ -1,6 +1,6 @@
 {
-    "hash": "c448a061f2069a5304eee74b01233da8",
-    "index_name": "measurement_set_c448a061",
+    "hash": "f6448da2040eb9155c2c867c483d58e4",
+    "index_name": "measurement_set_f6448da2",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1468,9 +1468,6 @@
                                 "type": "boolean"
                             },
                             "external_host_url": {
-                                "type": "keyword"
-                            },
-                            "external_id": {
                                 "type": "keyword"
                             },
                             "externally_hosted": {

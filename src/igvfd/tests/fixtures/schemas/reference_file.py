@@ -144,3 +144,14 @@ def reference_file_v13(reference_file_v6):
         'upload_status': 'validated'
     })
     return item
+
+
+@pytest.fixture
+def reference_file_v14(reference_file_v6):
+    item = reference_file_v6.copy()
+    item.update({
+        'schema_version': '14',
+        'external': True,
+        'external_id': 'ENCFF743WOO'
+    })
+    return item

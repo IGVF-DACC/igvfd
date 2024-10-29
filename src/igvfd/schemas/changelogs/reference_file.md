@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Schema version 15
+
+* Remove `external_id`.
+
 ### Minor changes since schema version 14
 
 * Extend `assembly` enum list to include `custom`.

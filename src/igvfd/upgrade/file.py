@@ -337,3 +337,15 @@ def tabular_file_12_13(value, system):
         notes += f'This object\'s file_format was txt, and changed to tsv via upgrade.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('reference_file', '14', '15')
+def reference_file_14_15(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2040
+    notes = value.get('notes', '')
+    if 'external_id' in value:
+        external_id = value['external_id']
+        notes += f' This file previously had {external_id} submitted as external_id, but the property external_id has been now removed.'
+        del value['external_id']
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

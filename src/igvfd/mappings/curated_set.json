@@ -1,6 +1,6 @@
 {
-    "hash": "9c74a7713cc28fce262ae7bc2baf29df",
-    "index_name": "curated_set_9c74a771",
+    "hash": "0900bde26a838c2a228bd900793393a2",
+    "index_name": "curated_set_0900bde2",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -918,9 +918,6 @@
                                 "type": "boolean"
                             },
                             "external_host_url": {
-                                "type": "keyword"
-                            },
-                            "external_id": {
                                 "type": "keyword"
                             },
                             "externally_hosted": {
