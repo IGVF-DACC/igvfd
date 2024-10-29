@@ -1,6 +1,6 @@
 {
-    "hash": "6311c29f4e447fa52d62c780aaa75f65",
-    "index_name": "reference_file_6311c29f",
+    "hash": "16df74072299bc43b2d459390c133cc8",
+    "index_name": "reference_file_16df7407",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -294,10 +294,6 @@
                         },
                         "store": true,
                         "type": "boolean"
-                    },
-                    "external_id": {
-                        "copy_to": "_exact",
-                        "type": "keyword"
                     },
                     "file_format": {
                         "copy_to": "_exact",

@@ -1,6 +1,6 @@
 {
-    "hash": "9c14af174aa12052f4bce5f0e414d110",
-    "index_name": "analysis_set_9c14af17",
+    "hash": "bde4d67d42dee88348e41a670fef9144",
+    "index_name": "analysis_set_bde4d67d",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -920,9 +920,6 @@
                                 "type": "boolean"
                             },
                             "external_host_url": {
-                                "type": "keyword"
-                            },
-                            "external_id": {
                                 "type": "keyword"
                             },
                             "externally_hosted": {

@@ -1,6 +1,6 @@
 {
-    "hash": "5b00dde34a9ee460c41152d10c93db94",
-    "index_name": "model_set_5b00dde3",
+    "hash": "9b69900a6ab51af4f264112c30573606",
+    "index_name": "model_set_9b69900a",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1027,9 +1027,6 @@
                                 "type": "boolean"
                             },
                             "external_host_url": {
-                                "type": "keyword"
-                            },
-                            "external_id": {
                                 "type": "keyword"
                             },
                             "externally_hosted": {

@@ -1,6 +1,6 @@
 {
-    "hash": "4047a39386fa9aca48878dbb543ef7ef",
-    "index_name": "construct_library_set_4047a393",
+    "hash": "13b4ca6236df11fff7a8e1f2dc766613",
+    "index_name": "construct_library_set_13b4ca62",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1481,9 +1481,6 @@
                             "external_host_url": {
                                 "type": "keyword"
                             },
-                            "external_id": {
-                                "type": "keyword"
-                            },
                             "externally_hosted": {
                                 "fields": {
                                     "raw": {
@@ -1803,9 +1800,6 @@
                                 "store": true,
                                 "type": "boolean"
                             },
-                            "external_id": {
-                                "type": "keyword"
-                            },
                             "file_format": {
                                 "type": "keyword"
                             },
@@ -2052,9 +2046,6 @@
                                 "store": true,
                                 "type": "boolean"
                             },
-                            "external_id": {
-                                "type": "keyword"
-                            },
                             "file_format": {
                                 "type": "keyword"
                             },
@@ -2240,9 +2231,6 @@
                                 },
                                 "store": true,
                                 "type": "boolean"
-                            },
-                            "external_id": {
-                                "type": "keyword"
                             },
                             "file_format": {
                                 "type": "keyword"
