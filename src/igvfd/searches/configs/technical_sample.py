@@ -11,7 +11,7 @@ def technical_sample():
                 'title': 'Taxa',
             },
             'classifications': {
-                'title': 'Classifications',
+                'title': 'Classifications,
             },
             'sample_material': {
                 'title': 'Sample Material',
