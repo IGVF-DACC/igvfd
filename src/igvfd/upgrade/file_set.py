@@ -451,6 +451,4 @@ def construct_library_set_9_10(value, system):
 def analysis_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1929
     if value.get('samples'):
-        input_file_sets = value.get('input_file_sets', [])
-        if not (input_file_sets):
-            del value['samples']
+        del value['samples']
