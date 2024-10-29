@@ -342,9 +342,10 @@ def tabular_file_12_13(value, system):
 @upgrade_step('reference_file', '14', '15')
 def reference_file_14_15(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2040
+    notes = value.get('notes', '')
     if 'external_id' in value:
         external_id = value['external_id']
-        notes = value.get('notes', '')
         notes += f' This file previously had {external_id} submitted as external_id, but the property external_id has been now removed.'
-        value['notes'] = notes.strip()
         del value['external_id']
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
