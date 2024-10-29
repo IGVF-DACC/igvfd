@@ -121,7 +121,6 @@ def audit_analysis_set_files_missing_analysis_step_version(value, system):
 
 
 @audit_checker('AnalysisSet', frame='object')
-<<<<<<< HEAD
 def audit_analysis_set_multiple_workflows(value, system):
     '''
     [
@@ -161,10 +160,9 @@ def audit_analysis_set_multiple_workflows(value, system):
                            audit_message_multiple_workflows.get('audit_level', '')
                            )
 
-def audit_analysis_set_demultiplexed_sample(value, system):
-=======
+
+@audit_checker('AnalysisSet', frame='object')
 def audit_analysis_set_multiplexed_samples(value, system):
->>>>>>> 662edbdb (audits + tests)
     '''
     [
         {
