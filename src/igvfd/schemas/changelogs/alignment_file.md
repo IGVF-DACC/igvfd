@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Extend `assembly` enum list to include `custom`.
 * Add `read_count`.
 * Add `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.

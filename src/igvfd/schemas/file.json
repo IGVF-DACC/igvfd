@@ -186,7 +186,7 @@
             }
         },
         "transcriptome_annotation": {
-            "comment": "The assembly shoud be consistent with annotation versions of respective species.",
+            "comment": "The assembly shoud be consistent with annotation versions of respective species. Annotation version should not be submitted for custom assemblies.",
             "allOf": [
                 {
                     "if": {
@@ -257,6 +257,25 @@
                                     "GENCODE 45"
                                 ]
                             }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "assembly": {
+                                "const": "custom"
+                            }
+                        },
+                        "required": [
+                            "assembly"
+                        ]
+                    },
+                    "then": {
+                        "not": {
+                            "required": [
+                                "transcriptome_annotation"
+                            ]
                         }
                     }
                 }

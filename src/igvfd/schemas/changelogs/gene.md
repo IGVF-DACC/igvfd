@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Extend `locations.assembly` enum list to include `custom`.
 * Update calculation of `summary`.
 
 ### Schema version 8

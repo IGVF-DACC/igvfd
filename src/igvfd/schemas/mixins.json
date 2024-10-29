@@ -467,7 +467,8 @@
             "enum": [
                 "Cast - GRCm39",
                 "GRCh38",
-                "GRCm39"
+                "GRCm39",
+                "custom"
             ],
             "submissionExample": {
                 "appscript": "GRCh38",
