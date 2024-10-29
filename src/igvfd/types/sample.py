@@ -79,7 +79,7 @@ class Sample(Item):
         Path('submitted_by', include=['@id', 'title']),
         Path('sorted_from', include=['@id', 'accession']),
         Path('file_sets', include=['@id', 'accession', 'summary', 'aliases',
-             'lab', 'status', 'preferred_assay_title', 'file_set_type', '@type']),
+             'lab', 'status', 'preferred_assay_title', 'file_set_type', 'type']),
         Path('file_sets.lab', include=['title']),
         Path('multiplexed_in', include=['@id', 'accession']),
         Path('publications', include=['@id', 'publication_identifiers']),
@@ -89,7 +89,7 @@ class Sample(Item):
              'status', 'treatment_term_name', 'depletion']),
         Path('biomarkers.gene', include=['@id', 'name', 'classification', 'quantification', 'gene', 'symbol']),
         Path('modifications.tagged_protein', include=[
-             '@id', 'tagged_protein', 'tagged_proteins', 'modality', 'fused_domain', '@type', 'symbol', 'cas', 'cas_species', 'degron_system']),
+             '@id', 'tagged_protein', 'tagged_proteins', 'modality', 'fused_domain', 'type', 'symbol', 'cas', 'cas_species', 'degron_system']),
         Path('modifications.tagged_proteins', include=[
              '@id', 'symbol']),
         Path('institutional_certificates', include=['@id', 'certificate_identifier']),

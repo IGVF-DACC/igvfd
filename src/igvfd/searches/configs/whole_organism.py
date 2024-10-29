@@ -28,7 +28,7 @@ def whole_organism():
             'virtual': {
                 'title': 'Virtual'
             },
-            'file_sets.@type': {
+            'file_sets.type': {
                 'title': 'File Set Class'
             },
             'file_sets.file_set_type': {
@@ -70,7 +70,7 @@ def whole_organism():
             'treatments.treatment_term_name': {
                 'title': 'Treatment Term Name'
             },
-            'modifications.@type': {
+            'modifications.type': {
                 'title': 'Modification Type'
             },
             'modifications.cas': {
@@ -137,7 +137,7 @@ def whole_organism():
             {
                 'title': 'File Set',
                 'facet_fields': [
-                    'file_sets.@type',
+                    'file_sets.type',
                     'file_sets.preferred_assay_title',
                     'file_sets.file_set_type',
                 ]
@@ -171,7 +171,7 @@ def whole_organism():
             {
                 'title': 'Modification',
                 'facet_fields': [
-                    'modifications.@type',
+                    'modifications.type',
                     'modifications.modality',
                     'modifications.cas',
                     'modifications.cas_species',
