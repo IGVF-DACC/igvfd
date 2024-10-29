@@ -14,7 +14,7 @@ def multiplexed_sample():
                 'title': 'Sex',
             },
             'classifications': {
-                'title': 'Classifications',
+                'title': 'Classification',
             },
             'sample_terms.term_name': {
                 'title': 'Sample Term'
