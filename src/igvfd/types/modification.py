@@ -145,9 +145,12 @@ class DegronModification(Modification):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, degron_system=None, tagged_proteins=None):
+    def summary(self, request, activated, degron_system=None, tagged_proteins=None):
         gene_symbols = []
         for protein in tagged_proteins:
             gene_object = request.embed(protein)
             gene_symbols.append(gene_object['symbol'])
-        return f'{degron_system} system targeting {", ".join(gene_symbols)}'
+        summary = f'{degron_system} system targeting {", ".join(gene_symbols)}'
+        if not (activated):
+            summary = f'inactivate {degron_system} system targeting {", ".join(gene_symbols)}'
+        return summary

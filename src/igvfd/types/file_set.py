@@ -479,6 +479,7 @@ class AnalysisSet(FileSet):
         treatment_purposes = set()
         differentiation_times = set()
         construct_library_set_types = set()
+        modification_types = set()
         sorted_from = set()
         targeted_genes_for_sorting = set()
 
@@ -521,6 +522,15 @@ class AnalysisSet(FileSet):
                 time = sample_object['time_post_change']
                 time_unit = sample_object['time_post_change_units']
                 differentiation_times.add(f'{time} {time_unit}')
+            if 'modifications' in sample_object:
+                for modification in sample_object['modifications']:
+                    modification_object = request.embed(modification, '@@object?skip_calculated=true')
+                    modification_type = modification_object['@type'][0]
+                    if modification_type == 'CrisprModification':
+                        modification_type = 'CRISPR'
+                    elif modification_type == 'DegronModification':
+                        modification_type = 'Degron'
+                    modification_types.add(modification_type)
             if 'construct_library_sets' in sample_object:
                 for construct_library_set in sample_object['construct_library_sets']:
                     cls_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
@@ -557,9 +567,12 @@ class AnalysisSet(FileSet):
         treatments_phrase = ''
         if treatment_purposes:
             treatments_phrase = f"{', '.join(treatment_purposes)} with treatment(s)"
+        modification_type_phrase = ''
+        if modification_types:
+            modification_type_phrase = f'modified with a {", ".join(modification_types)} modification'
         construct_library_set_type_phrase = ''
         if construct_library_set_types:
-            construct_library_set_type_phrase = f'modified with a {", ".join(construct_library_set_types)}'
+            construct_library_set_type_phrase = f'transfected with a {", ".join(construct_library_set_types)}'
         sorted_phrase = ''
         if sorted_from:
             if targeted_genes_for_sorting:
@@ -570,6 +583,7 @@ class AnalysisSet(FileSet):
         additional_phrases = [
             differentiation_time_phrase,
             treatments_phrase,
+            modification_type_phrase,
             construct_library_set_type_phrase,
             sorted_phrase
         ]
