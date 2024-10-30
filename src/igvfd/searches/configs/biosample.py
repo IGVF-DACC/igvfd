@@ -43,9 +43,6 @@ def biosample():
             'virtual': {
                 'title': 'Virtual'
             },
-            'file_sets.type': {
-                'title': 'File Set Class'
-            },
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
@@ -84,9 +81,6 @@ def biosample():
             },
             'treatments.treatment_term_name': {
                 'title': 'Treatment Term Name'
-            },
-            'modifications.type': {
-                'title': 'Modification Type'
             },
             'modifications.cas': {
                 'title': 'Cas'
@@ -157,7 +151,6 @@ def biosample():
             {
                 'title': 'File Set',
                 'facet_fields': [
-                    'file_sets.type',
                     'file_sets.preferred_assay_title',
                     'file_sets.file_set_type',
                 ]
@@ -191,7 +184,6 @@ def biosample():
             {
                 'title': 'Modification',
                 'facet_fields': [
-                    'modifications.type',
                     'modifications.modality',
                     'modifications.cas',
                     'modifications.cas_species',

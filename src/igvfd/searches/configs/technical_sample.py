@@ -22,9 +22,6 @@ def technical_sample():
             'virtual': {
                 'title': 'Virtual'
             },
-            'file_sets.@type': {
-                'title': 'File Set Class'
-            },
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
@@ -82,7 +79,6 @@ def technical_sample():
             {
                 'title': 'File Set',
                 'facet_fields': [
-                    'file_sets.@type',
                     'file_sets.preferred_assay_title',
                     'file_sets.file_set_type',
                 ]

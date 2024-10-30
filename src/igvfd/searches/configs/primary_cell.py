@@ -31,9 +31,6 @@ def primary_cell():
             'virtual': {
                 'title': 'Virtual'
             },
-            'file_sets.type': {
-                'title': 'File Set Class'
-            },
             'file_sets.file_set_type': {
                 'title': 'File Set Type'
             },
@@ -72,9 +69,6 @@ def primary_cell():
             },
             'treatments.treatment_term_name': {
                 'title': 'Treatment Term Name'
-            },
-            'modifications.type': {
-                'title': 'Modification Type'
             },
             'modifications.cas': {
                 'title': 'Cas'
@@ -141,7 +135,6 @@ def primary_cell():
             {
                 'title': 'File Set',
                 'facet_fields': [
-                    'file_sets.type',
                     'file_sets.preferred_assay_title',
                     'file_sets.file_set_type',
                 ]
@@ -175,7 +168,6 @@ def primary_cell():
             {
                 'title': 'Modification',
                 'facet_fields': [
-                    'modifications.type',
                     'modifications.modality',
                     'modifications.cas',
                     'modifications.cas_species',
