@@ -77,6 +77,7 @@ def analysis_set_with_workflow(
     return testapp.post_json('/analysis_set', item, status=201).json['@graph'][0]
 
 
+@pytest.fixture
 def analysis_set_no_input(
     testapp,
     award,
