@@ -47,13 +47,13 @@ def whole_organism():
                 'title': 'Biomarker'
             },
             'biomarkers.classification': {
-                'title': 'Classification'
+                'title': 'Biomarker Classification'
             },
             'biomarkers.quantification': {
-                'title': 'Quantification'
+                'title': 'Biomarker Quantification'
             },
             'biomarkers.gene.symbol': {
-                'title': 'Gene'
+                'title': 'Biomarker Gene'
             },
             'treatments.depletion': {
                 'title': 'Depletion'
