@@ -89,7 +89,7 @@ class Sample(Item):
              'status', 'treatment_term_name', 'depletion']),
         Path('biomarkers.gene', include=['@id', 'name', 'classification', 'quantification', 'gene', 'symbol']),
         Path('modifications.tagged_protein', include=[
-             '@id', 'status', 'tagged_protein', 'tagged_proteins', 'modality', 'fused_domain', 'symbol', 'cas', 'cas_species', 'degron_system']),
+             '@id', 'summary', 'status', 'tagged_protein', 'tagged_proteins', 'modality', 'fused_domain', 'symbol', 'cas', 'cas_species', 'degron_system']),
         Path('modifications.tagged_proteins', include=[
              '@id', 'symbol']),
         Path('institutional_certificates', include=['@id', 'certificate_identifier']),
