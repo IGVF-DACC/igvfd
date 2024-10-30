@@ -708,7 +708,7 @@ class TechnicalSample(Sample):
             summary_terms = f'virtual {summary_terms}'
 
         if construct_library_sets:
-            verb = 'modified with'
+            verb = 'transfected with'
             library_types = set()
             for CLS in construct_library_sets:
                 CLS_object = request.embed(CLS, '@@object?skip_calculated=true')
@@ -718,8 +718,6 @@ class TechnicalSample(Sample):
                     verb = 'transduced (lentivirus) with'
                 elif nucleic_acid_delivery == 'adenoviral transduction':
                     verb = 'transduced (adenovirus) with'
-                else:
-                    verb = 'transfected with'
             if len(library_types) == 1:
                 library_types = ', '.join(library_types)
                 summary_terms = f'{summary_terms} {verb} a {library_types}'

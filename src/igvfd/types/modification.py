@@ -145,7 +145,7 @@ class DegronModification(Modification):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, activated, degron_system=None, tagged_proteins=None):
+    def summary(self, request, activated=True, degron_system=None, tagged_proteins=None):
         gene_symbols = []
         for protein in tagged_proteins:
             gene_object = request.embed(protein)
