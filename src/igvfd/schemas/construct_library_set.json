@@ -689,10 +689,12 @@
             "title": "Control Type",
             "description": "The type of control this file set represents.",
             "type": "string",
-            "enum": [],
+            "enum": [
+                "GFP"
+            ],
             "submissionExample": {
-                "appscript": "low FACS signal",
-                "igvf_utils": "low FACS signal"
+                "appscript": "GFP",
+                "igvf_utils": "GFP"
             }
         },
         "scope": {
