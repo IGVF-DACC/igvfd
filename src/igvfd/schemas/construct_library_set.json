@@ -710,13 +710,13 @@
                 "targeton"
             ],
             "enum_descriptions": {
-                "tile": "",
+                "tile": "The construct library was designed to target a tile of a protein region.",
                 "exon": "The construct library was designed to target an exon of a gene.",
                 "genes": "The construct library was designed to target specific genes.",
-                "loci": "The construct library was designed to target genomic loci.",
+                "loci": "The construct library was designed to target specific genomic loci.",
                 "genome-wide": "The construct library was designed to generally target the whole genome.",
-                "interactors": "",
-                "alleles": "",
+                "interactors": "The construct library was designed to target ",
+                "alleles": "The construct library was designed to target specific alleles of a gene.",
                 "targeton": "The construct library was designed to target a part of exons of a gene."
             },
             "submissionExample": {
