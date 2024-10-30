@@ -449,14 +449,6 @@ class Biosample(Sample):
             age = concat_numeric_and_units(age, age_units)
             summary_terms += f' ({age})'
 
-        # modification summaries are appended to the end of the summary
-        if (modifications and
-                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
-            modification_objects = [request.embed(modification) for modification in modifications]
-            modification_summaries = sorted([modification.get('summary') for modification in modification_objects])
-            if modification_summaries:
-                summary_terms += f' modified with {", ".join(modification_summaries)},'
-
         # sorted from detail is appended to the end of the summary
         if (sorted_from_detail and
                 biosample_type in ['primary_cell', 'in_vitro_system']):
@@ -498,6 +490,14 @@ class Biosample(Sample):
                 summary_terms += f' depleted of {", ".join(depleted_treatment_summaries)},'
             if perturbation_treatment_summaries:
                 summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)},'
+
+        # modification summaries are appended to the end of the summary
+        if (modifications and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+            modification_objects = [request.embed(modification) for modification in modifications]
+            modification_summaries = sorted([modification.get('summary') for modification in modification_objects])
+            if modification_summaries:
+                summary_terms += f' modified with {", ".join(modification_summaries)},'
 
         # construct library set overview is appended to the end of the summary
         if (construct_library_sets and
