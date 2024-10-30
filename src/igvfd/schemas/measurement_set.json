@@ -209,7 +209,15 @@
                     "rRNA depleted",
                     "polyA depleted",
                     "polyA enriched"
-                ]
+                ],
+                "enum_descriptions": {
+                    "direct RNA": "Sequencing library made from total RNA, capturing both coding and non-coding RNA.",
+                    "exome capture": "Sequencing library focusing on the coding regions of the genome by capturing and sequencing exonic regions.",
+                    "mRNA enriched": "Sequencing library prepared from RNA samples enriched for mRNA.",
+                    "rRNA depleted": "Sequencing library made from RNA samples with ribosomal RNA (rRNA) removed.",
+                    "polyA depleted": "Sequencing library prepared from RNA samples with poly(A) tails removed.",
+                    "polyA enriched": "Sequencing library made from RNA samples with poly(A) tails selectively enriched."
+                }
             },
             "submissionExample": {
                 "appscript": "[\"direct RNA\", \"exome capture\"]",
