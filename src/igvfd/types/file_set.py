@@ -524,11 +524,9 @@ class AnalysisSet(FileSet):
                 differentiation_times.add(f'{time} {time_unit}')
             if 'modifications' in sample_object:
                 for modification in sample_object['modifications']:
-                    modification_object = request.embed(modification, '@@object?skip_calculated=true')
-                    modification_type = modification_object['@type'][0]
-                    if modification_type == 'CrisprModification':
+                    if modification.startswith('/crispr-modifications/'):
                         modification_type = 'CRISPR'
-                    elif modification_type == 'DegronModification':
+                    elif modification.startswith('/degron-modifications/'):
                         modification_type = 'Degron'
                     modification_types.add(modification_type)
             if 'construct_library_sets' in sample_object:
@@ -569,7 +567,8 @@ class AnalysisSet(FileSet):
             treatments_phrase = f"{', '.join(treatment_purposes)} with treatment(s)"
         modification_type_phrase = ''
         if modification_types:
-            modification_type_phrase = f'modified with a {", ".join(modification_types)} modification'
+            # since there will only be at most 2 modification types, the list can be joined with "and"
+            modification_type_phrase = f'modified with {" and ".join(modification_types)} modifications'
         construct_library_set_type_phrase = ''
         if construct_library_set_types:
             construct_library_set_type_phrase = f'transfected with a {", ".join(construct_library_set_types)}'

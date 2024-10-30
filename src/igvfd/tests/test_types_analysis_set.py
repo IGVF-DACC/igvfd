@@ -208,7 +208,7 @@ def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
     assert res.json.get('protocols') == ['https://www.protocols.io/test-protocols-url-12345']
 
 
-def test_analysis_set_sample_summary(testapp, principal_analysis_set, measurement_set_mpra, construct_library_set_genome_wide, sample_term_endothelial_cell, gene_myc_hs, treatment_chemical, in_vitro_differentiated_cell, in_vitro_cell_line):
+def test_analysis_set_sample_summary(testapp, principal_analysis_set, measurement_set_mpra, construct_library_set_genome_wide, sample_term_endothelial_cell, gene_myc_hs, treatment_chemical, in_vitro_differentiated_cell, in_vitro_cell_line, crispr_modification, degron_modification):
     testapp.patch_json(
         principal_analysis_set['@id'],
         {
@@ -222,8 +222,8 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
             'treatments': [treatment_chemical['@id']],
             'targeted_sample_term': sample_term_endothelial_cell['@id'],
             'sorted_from': in_vitro_cell_line['@id'],
-            'sorted_from_detail': 'Example detail'
-
+            'sorted_from_detail': 'Example detail',
+            'modifications': [crispr_modification['@id']]
         }
     )
     testapp.patch_json(
@@ -234,7 +234,15 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    assert res.get('sample_summary', '') == 'K562 differentiated cell specimen induced to endothelial cell of vascular tree, at 1 time point(s) post change, differentiated with treatment(s), transfected with a guide library, sorted on expression of MYC'
+    assert res.get('sample_summary', '') == 'K562 differentiated cell specimen induced to endothelial cell of vascular tree, at 1 time point(s) post change, differentiated with treatment(s), modified with CRISPR modifications, transfected with a guide library, sorted on expression of MYC'
+    testapp.patch_json(
+        in_vitro_differentiated_cell['@id'],
+        {
+            'modifications': [crispr_modification['@id'], degron_modification['@id']]
+        }
+    )
+    res = testapp.get(principal_analysis_set['@id']).json
+    assert res.get('sample_summary', '') == 'K562 differentiated cell specimen induced to endothelial cell of vascular tree, at 1 time point(s) post change, differentiated with treatment(s), modified with Degron and CRISPR modifications, transfected with a guide library, sorted on expression of MYC'
 
 
 def test_functional_assay_mechanisms(testapp, analysis_set_base, measurement_set, measurement_set_with_functional_assay_mechanisms, phenotype_term_from_go, phenotype_term_myocardial_infarction):

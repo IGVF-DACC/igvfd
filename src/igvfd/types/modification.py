@@ -152,5 +152,5 @@ class DegronModification(Modification):
             gene_symbols.append(gene_object['symbol'])
         summary = f'{degron_system} system targeting {", ".join(gene_symbols)}'
         if not (activated):
-            summary = f'inactivate {degron_system} system targeting {", ".join(gene_symbols)}'
+            summary = f'inactive {degron_system} system targeting {", ".join(gene_symbols)}'
         return summary
