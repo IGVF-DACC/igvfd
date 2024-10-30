@@ -14,7 +14,7 @@
         "release_timestamp": "2024-03-06T12:34:56Z",
         "uuid": "67380d9f-06da-f9fe-9569-d31ce0607eae",
         "samples": [
-            "igvf:treated_tissue"
+            "IGVFSM0000DDDD"
         ],
         "assay_term": "igvf:starr-seq",
         "preferred_assay_title": "SUPERSTARR",

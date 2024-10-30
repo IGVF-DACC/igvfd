@@ -1,17 +1,23 @@
 import pytest
 
 
-def test_calculated_donors(testapp, analysis_set_base, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):
+def test_calculated_donors(testapp, measurement_set, analysis_set_base, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [primary_cell['@id']]
+        }
+    )
     testapp.patch_json(
         analysis_set_base['@id'],
         {
-            'samples': [primary_cell['@id']]
+            'input_file_sets': [measurement_set['@id']]
         }
     )
     res = testapp.get(analysis_set_base['@id'])
     assert set([donor['@id'] for donor in res.json.get('donors')]) == {human_donor['@id']}
     testapp.patch_json(
-        analysis_set_base['@id'],
+        measurement_set['@id'],
         {
             'samples': [in_vitro_cell_line['@id']]
         }
@@ -20,7 +26,40 @@ def test_calculated_donors(testapp, analysis_set_base, primary_cell, human_donor
     assert set([donor['@id'] for donor in res.json.get('donors')]) == {rodent_donor['@id']}
 
 
-def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurement_set_multiome, analysis_set_with_sample, measurement_set_no_files, base_auxiliary_set):
+def test_calculated_samples(testapp, measurement_set, analysis_set_base, primary_cell, human_donor, in_vitro_cell_line, multiplexed_sample):
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [primary_cell['@id']]
+        }
+    )
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'input_file_sets': [measurement_set['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert set([sample['@id'] for sample in res.json.get('samples')]) == {primary_cell['@id']}
+    testapp.patch_json(
+        analysis_set_base['@id'],
+        {
+            'demultiplexed_sample': in_vitro_cell_line['@id']
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert set([sample['@id'] for sample in res.json.get('samples')]) == {primary_cell['@id']}
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'samples': [multiplexed_sample['@id']]
+        }
+    )
+    res = testapp.get(analysis_set_base['@id'])
+    assert set([sample['@id'] for sample in res.json.get('samples')]) == {in_vitro_cell_line['@id']}
+
+
+def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, measurement_set_no_files, base_auxiliary_set):
     testapp.patch_json(
         analysis_set_base['@id'],
         {
@@ -47,12 +86,12 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
     res = testapp.get(analysis_set_base['@id'])
     assert set(res.json.get('assay_titles')) == {'10x multiome', 'lentiMPRA'}
     testapp.patch_json(
-        analysis_set_with_sample['@id'],
+        principal_analysis_set['@id'],
         {
             'input_file_sets': [analysis_set_base['@id']]
         }
     )
-    res = testapp.get(analysis_set_with_sample['@id'])
+    res = testapp.get(principal_analysis_set['@id'])
     assert set(res.json.get('assay_titles')) == {'10x multiome', 'lentiMPRA'}
     testapp.patch_json(
         measurement_set_no_files['@id'],
@@ -61,12 +100,12 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
         }
     )
     testapp.patch_json(
-        analysis_set_with_sample['@id'],
+        principal_analysis_set['@id'],
         {
             'input_file_sets': [base_auxiliary_set['@id']]
         }
     )
-    res = testapp.get(analysis_set_with_sample['@id'])
+    res = testapp.get(principal_analysis_set['@id'])
     assert set(res.json.get('assay_titles')) == {'CRISPR FlowFISH screen'}
 
 
@@ -123,11 +162,11 @@ def test_protocols(testapp, analysis_set_base, measurement_set_with_protocols):
     assert res.json.get('protocols') == ['https://www.protocols.io/test-protocols-url-12345']
 
 
-def test_analysis_set_sample_summary(testapp, analysis_set_with_sample, measurement_set_mpra, construct_library_set_genome_wide, sample_term_endothelial_cell, gene_myc_hs, treatment_chemical, in_vitro_differentiated_cell, in_vitro_cell_line):
+def test_analysis_set_sample_summary(testapp, principal_analysis_set, measurement_set_mpra, construct_library_set_genome_wide, sample_term_endothelial_cell, gene_myc_hs, treatment_chemical, in_vitro_differentiated_cell, in_vitro_cell_line):
     testapp.patch_json(
-        analysis_set_with_sample['@id'],
+        principal_analysis_set['@id'],
         {
-            'samples': [in_vitro_differentiated_cell['@id']]
+            'input_file_sets': [measurement_set_mpra['@id']]
         }
     )
     testapp.patch_json(
@@ -148,7 +187,7 @@ def test_analysis_set_sample_summary(testapp, analysis_set_with_sample, measurem
             'samples': [in_vitro_differentiated_cell['@id']]
         }
     )
-    res = testapp.get(analysis_set_with_sample['@id']).json
+    res = testapp.get(principal_analysis_set['@id']).json
     assert res.get('sample_summary', '') == 'K562 differentiated cell specimen induced to endothelial cell of vascular tree, at 1 time point(s) post change, differentiated with treatment(s), modified with a guide library, sorted on expression of MYC'
 
 

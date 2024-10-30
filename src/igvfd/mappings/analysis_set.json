@@ -1,6 +1,6 @@
 {
-    "hash": "bde4d67d42dee88348e41a670fef9144",
-    "index_name": "analysis_set_bde4d67d",
+    "hash": "27cbf871adaa3b88badf57b1e3227f9f",
+    "index_name": "analysis_set_27cbf871",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -383,6 +383,9 @@
                             "dbxrefs": {
                                 "type": "keyword"
                             },
+                            "demultiplexed_sample": {
+                                "type": "keyword"
+                            },
                             "description": {
                                 "type": "text"
                             },
@@ -665,6 +668,9 @@
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
+                        "type": "keyword"
+                    },
+                    "demultiplexed_sample": {
                         "type": "keyword"
                     },
                     "description": {
@@ -1298,6 +1304,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {

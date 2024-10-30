@@ -10,11 +10,11 @@
         "documents": [
             "igvf:Antibody_characterization_standards_IGVF"
         ],
+        "input_file_sets": [
+            "igvf:mN2H"
+        ],
         "status": "released",
         "uuid": "609869e7-cbd9-4d06-9569-d3fdb4604ccd",
-        "samples": [
-            "igvf:treated_tissue"
-        ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "intermediate analysis"
     },
@@ -31,11 +31,8 @@
         ],
         "status": "released",
         "uuid": "dd171b83-cbd9-4d06-4aa1-b77ab49569cd",
-        "samples": [
-            "igvf-dacc:in_vitro_system_cell_line"
-        ],
         "input_file_sets": [
-            "igvf:basic_analysis_set"
+            "igvf:basic_measurement_set"
         ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "principal analysis",
@@ -71,9 +68,6 @@
         ],
         "status": "released",
         "uuid": "35f89ca2-4261-43ad-b315-ca65376451d1",
-        "samples": [
-            "igvf:treated_primary_cells"
-        ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "intermediate analysis",
         "collections": [
@@ -97,9 +91,6 @@
         ],
         "status": "released",
         "uuid": "b3d01798-24c5-4e02-b517-90f62a41092b",
-        "samples": [
-            "igvf:pooled_primary_cell"
-        ],
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set_type": "intermediate analysis"
     }

@@ -445,3 +445,10 @@ def construct_library_set_9_10(value, system):
         if removed_integrated_content_files:
             notes += f" Integrated content files {', '.join(removed_integrated_content_files)} were removed via upgrade."
             value['notes'] = notes.strip()
+
+
+@upgrade_step('analysis_set', '8', '9')
+def analysis_set_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1929
+    if value.get('samples'):
+        del value['samples']

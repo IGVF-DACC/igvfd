@@ -2,13 +2,13 @@ import pytest
 
 
 @pytest.fixture
-def tabular_file(testapp, lab, award, analysis_set_with_sample):
+def tabular_file(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '01b08bb5485ac730df19af55ba4bb09c',
         'file_format': 'tsv',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'content_type': 'peaks',
         'controlled_access': False
     }
@@ -47,13 +47,13 @@ def tabular_file_v3(tabular_file_v1):
 
 
 @pytest.fixture
-def tabular_file_v4(testapp, lab, award, analysis_set_with_sample):
+def tabular_file_v4(testapp, lab, award, principal_analysis_set):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '069b0ebb6c5730dfe1d485acaf53b09c',
         'file_format': 'bed',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'content_type': 'peaks',
         'schema_version': '4'
     }

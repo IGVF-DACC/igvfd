@@ -1,6 +1,6 @@
 {
-    "hash": "2921fa36aa625ff6bff984be958a46c7",
-    "index_name": "prediction_set_2921fa36",
+    "hash": "9d9f113b612f2f478b9a13e4a48c61ca",
+    "index_name": "prediction_set_9d9f113b",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -480,6 +480,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {

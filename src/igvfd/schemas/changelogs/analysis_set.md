@@ -1,5 +1,10 @@
 ## Changelog for *`analysis_set.json`*
 
+### Schema version 9
+
+* Convert `samples` to be calculated from `input_file_sets` and `demultiplexed_sample`.
+* Add `demultiplexed_sample`.
+
 ### Minor changes since schema version 8
 
 * Add calculated property `workflows`.

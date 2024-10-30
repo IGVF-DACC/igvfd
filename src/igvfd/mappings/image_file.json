@@ -1,6 +1,6 @@
 {
-    "hash": "49a305f2c9152f155b0c6b221f6d79b0",
-    "index_name": "image_file_49a305f2",
+    "hash": "8951240a7f39acbe794a38c40fa05ef1",
+    "index_name": "image_file_8951240a",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -357,6 +357,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {

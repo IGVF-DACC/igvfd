@@ -51,13 +51,13 @@ def test_types_file_s3_uri_is_present(sequence_file):
     assert 's3_uri' in sequence_file
 
 
-def test_types_file_s3_uri_non_submittable(testapp, analysis_set_with_sample, award, lab):
+def test_types_file_s3_uri_non_submittable(testapp, principal_analysis_set, award, lab):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '515c8a6af303ea86bc59c629ff198277',
         'file_format': 'fastq',
-        'file_set': analysis_set_with_sample['@id'],
+        'file_set': principal_analysis_set['@id'],
         'minimum_read_length': 99,
         'maximum_read_length': 101,
         'mean_read_length': 100,

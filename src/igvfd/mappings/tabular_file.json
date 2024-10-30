@@ -1,6 +1,6 @@
 {
-    "hash": "8a6f47d9fc25644a6bcc92f3703356f4",
-    "index_name": "tabular_file_8a6f47d9",
+    "hash": "490d1d6aeddd745e6e2b96f4b96eeb81",
+    "index_name": "tabular_file_490d1d6a",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -462,6 +462,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {

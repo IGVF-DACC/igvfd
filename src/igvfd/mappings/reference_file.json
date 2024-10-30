@@ -1,6 +1,6 @@
 {
-    "hash": "16df74072299bc43b2d459390c133cc8",
-    "index_name": "reference_file_16df7407",
+    "hash": "931d33025fac73059ceb9d408feb92d4",
+    "index_name": "reference_file_931d3302",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -384,6 +384,9 @@
                                 "type": "keyword"
                             },
                             "dbxrefs": {
+                                "type": "keyword"
+                            },
+                            "demultiplexed_sample": {
                                 "type": "keyword"
                             },
                             "description": {
