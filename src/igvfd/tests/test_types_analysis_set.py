@@ -218,5 +218,6 @@ def test_workflows(testapp, analysis_set_with_workflow, matrix_file_with_base_wo
             'file_set': analysis_set_with_workflow['@id']
         }
     )
-    res = testapp.get(analysis_set_with_workflow['@id']).json.get('workflows')
-    assert res == ['/workflows/IGVFWF0000WRKF/']
+    res = testapp.get(analysis_set_with_workflow['@id'])
+    assert set([workflow['@id'] for workflow in res.json.get('workflows')]
+               ) == {'/workflows/IGVFWF0000WRKF/'}

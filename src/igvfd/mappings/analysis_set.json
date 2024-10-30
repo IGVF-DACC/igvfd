@@ -1,6 +1,6 @@
 {
-    "hash": "27cbf871adaa3b88badf57b1e3227f9f",
-    "index_name": "analysis_set_27cbf871",
+    "hash": "545bf2c43ebbcbd29d15d9ada379f719",
+    "index_name": "analysis_set_545bf2c4",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -2458,7 +2458,105 @@
                         "type": "keyword"
                     },
                     "workflows": {
-                        "type": "keyword"
+                        "properties": {
+                            "@id": {
+                                "type": "keyword"
+                            },
+                            "@type": {
+                                "type": "keyword"
+                            },
+                            "accession": {
+                                "type": "keyword"
+                            },
+                            "aliases": {
+                                "type": "keyword"
+                            },
+                            "alternate_accessions": {
+                                "type": "keyword"
+                            },
+                            "analysis_steps": {
+                                "type": "keyword"
+                            },
+                            "award": {
+                                "type": "keyword"
+                            },
+                            "collections": {
+                                "type": "keyword"
+                            },
+                            "creation_timestamp": {
+                                "type": "keyword"
+                            },
+                            "description": {
+                                "type": "text"
+                            },
+                            "documents": {
+                                "type": "keyword"
+                            },
+                            "lab": {
+                                "type": "keyword"
+                            },
+                            "name": {
+                                "type": "keyword"
+                            },
+                            "notes": {
+                                "type": "text"
+                            },
+                            "publications": {
+                                "type": "keyword"
+                            },
+                            "release_timestamp": {
+                                "type": "keyword"
+                            },
+                            "revoke_detail": {
+                                "type": "keyword"
+                            },
+                            "schema_version": {
+                                "type": "keyword"
+                            },
+                            "source_url": {
+                                "type": "keyword"
+                            },
+                            "standards_page": {
+                                "type": "keyword"
+                            },
+                            "status": {
+                                "type": "keyword"
+                            },
+                            "submitted_by": {
+                                "type": "keyword"
+                            },
+                            "submitter_comment": {
+                                "type": "keyword"
+                            },
+                            "summary": {
+                                "type": "keyword"
+                            },
+                            "uniform_pipeline": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "boolean"
+                            },
+                            "uuid": {
+                                "type": "keyword"
+                            },
+                            "workflow_repositories": {
+                                "type": "keyword"
+                            },
+                            "workflow_version": {
+                                "fields": {
+                                    "raw": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "store": true,
+                                "type": "long"
+                            }
+                        },
+                        "type": "object"
                     }
                 },
                 "type": "object"

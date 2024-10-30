@@ -61,8 +61,8 @@ class FileSet(Item):
         Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('files', include=['@id', 'accession', 'aliases', 'content_type',
-             'file_format', 'file_size', 'href', 's3_uri', 'submitted_file_name',
+        Path('files', include=['@id', 'accession', 'aliases', 'assembly', 'content_type',
+             'file_format', 'file_size', 'href', 's3_uri', 'submitted_file_name', 'transcriptome_annotation',
                                'creation_timestamp', 'sequencing_platform', 'upload_status']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
         Path('donors', include=['@id', 'accession', 'aliases', 'sex', 'status', 'taxa']),
@@ -200,7 +200,8 @@ class AnalysisSet(FileSet):
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
         Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type']),
-        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name'])
+        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name']),
+        Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
