@@ -1,5 +1,9 @@
 ## Changelog for *`model_set.json`*
 
+### Schema version 5
+
+* Remove `model_zoo_location`.
+
 ### Minor changes since schema version 4
 
 * Add calculated property `externally_hosted`.

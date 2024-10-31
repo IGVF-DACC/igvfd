@@ -1,6 +1,6 @@
 {
-    "hash": "21fccba64f1856fe27247a1e21c2bf5c",
-    "index_name": "primary_cell_21fccba6",
+    "hash": "1edd244416bd593dcfa3623260e2331a",
+    "index_name": "primary_cell_1edd2444",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -653,9 +653,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

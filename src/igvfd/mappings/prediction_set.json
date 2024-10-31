@@ -1,6 +1,6 @@
 {
-    "hash": "9d9f113b612f2f478b9a13e4a48c61ca",
-    "index_name": "prediction_set_9d9f113b",
+    "hash": "902cb520ed1037bff5e68d545a271540",
+    "index_name": "prediction_set_902cb520",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -573,9 +573,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

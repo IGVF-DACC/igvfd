@@ -1,6 +1,6 @@
 {
-    "hash": "490d1d6aeddd745e6e2b96f4b96eeb81",
-    "index_name": "tabular_file_490d1d6a",
+    "hash": "20dcb01efdc1bdcf4331cfe54b4fb16c",
+    "index_name": "tabular_file_20dcb01e",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -555,9 +555,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

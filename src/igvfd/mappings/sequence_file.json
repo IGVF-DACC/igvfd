@@ -1,6 +1,6 @@
 {
-    "hash": "661ca7b86a6598dffbedaddc6b9d826c",
-    "index_name": "sequence_file_661ca7b8",
+    "hash": "5a1bc87d846a27cb569c35c75b1b9555",
+    "index_name": "sequence_file_5a1bc87d",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -477,9 +477,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

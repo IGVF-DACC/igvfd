@@ -1,6 +1,6 @@
 {
-    "hash": "228ec2d73d554ccb3e12749372d6c017",
-    "index_name": "alignment_file_228ec2d7",
+    "hash": "835e98223779c8d666b0e1a175309b34",
+    "index_name": "alignment_file_835e9822",
     "item_type": "alignment_file",
     "mapping": {
         "dynamic_templates": [
@@ -468,9 +468,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

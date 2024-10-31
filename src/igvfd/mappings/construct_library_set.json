@@ -1,6 +1,6 @@
 {
-    "hash": "3f15ab195da15c82d97939bf254b12af",
-    "index_name": "construct_library_set_3f15ab19",
+    "hash": "0b854508b406525490ce02fe19dbf465",
+    "index_name": "construct_library_set_0b854508",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1178,9 +1178,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

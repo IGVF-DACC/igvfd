@@ -1,6 +1,6 @@
 {
-    "hash": "51e325e6b4c7677c798a008f37242f5c",
-    "index_name": "tissue_51e325e6",
+    "hash": "59428f89e1388d00d2b08175c7828b5c",
+    "index_name": "tissue_59428f89",
     "item_type": "tissue",
     "mapping": {
         "dynamic_templates": [
@@ -653,9 +653,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

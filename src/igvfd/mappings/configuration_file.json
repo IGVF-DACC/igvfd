@@ -1,6 +1,6 @@
 {
-    "hash": "4e10b0bd7d046fe7f1950988b7cf0573",
-    "index_name": "configuration_file_4e10b0bd",
+    "hash": "4736471c6f8cafe2bbcb5fe4cbe04dba",
+    "index_name": "configuration_file_4736471c",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -450,9 +450,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {
