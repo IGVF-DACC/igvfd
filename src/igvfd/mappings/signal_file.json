@@ -1,6 +1,6 @@
 {
-    "hash": "b556e122b05d4c2e09470f585946bfc9",
-    "index_name": "signal_file_b556e122",
+    "hash": "22ddcd74948901be8559532cbaa8b93c",
+    "index_name": "signal_file_22ddcd74",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -494,10 +494,10 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_file_sets": {
                                 "type": "keyword"
                             },
-                            "input_file_sets": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {
@@ -1362,7 +1362,7 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {

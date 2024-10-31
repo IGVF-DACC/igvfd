@@ -1,6 +1,6 @@
 {
-    "hash": "4e10b0bd7d046fe7f1950988b7cf0573",
-    "index_name": "configuration_file_4e10b0bd",
+    "hash": "dcbb52d4425481a675707d0f23bd9af7",
+    "index_name": "configuration_file_dcbb52d4",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -404,10 +404,10 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_file_sets": {
                                 "type": "keyword"
                             },
-                            "input_file_sets": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {
@@ -1263,7 +1263,7 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {

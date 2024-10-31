@@ -1,6 +1,6 @@
 {
-    "hash": "3b23cbc98217a57ff859ca1bec0daa06",
-    "index_name": "matrix_file_3b23cbc9",
+    "hash": "3a300ea5bab788261d6e48b9309413dc",
+    "index_name": "matrix_file_3a300ea5",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -407,10 +407,10 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_file_sets": {
                                 "type": "keyword"
                             },
-                            "input_file_sets": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {
@@ -1266,7 +1266,7 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {

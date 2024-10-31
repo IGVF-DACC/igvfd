@@ -1,6 +1,6 @@
 {
-    "hash": "7cca0a056928405145e12126a8975640",
-    "index_name": "auxiliary_set_7cca0a05",
+    "hash": "11809a6d11846a94af10867ed9f4974d",
+    "index_name": "auxiliary_set_11809a6d",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -427,10 +427,10 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_file_sets": {
                                 "type": "keyword"
                             },
-                            "input_file_sets": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {
@@ -1146,7 +1146,7 @@
                         },
                         "type": "object"
                     },
-                    "input_file_set_for": {
+                    "input_for": {
                         "type": "keyword"
                     },
                     "lab": {
@@ -1285,7 +1285,7 @@
                             "functional_assay_mechanisms": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "lab": {

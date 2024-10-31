@@ -1,6 +1,6 @@
 {
-    "hash": "4bdc4913bb639b7b4a741446fce1c2dd",
-    "index_name": "curated_set_4bdc4913",
+    "hash": "dd0984cc939d3ccf84b3b6bcbaa27e0c",
+    "index_name": "curated_set_dd0984cc",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -428,10 +428,10 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_file_sets": {
                                 "type": "keyword"
                             },
-                            "input_file_sets": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {
@@ -1147,7 +1147,7 @@
                         },
                         "type": "object"
                     },
-                    "input_file_set_for": {
+                    "input_for": {
                         "type": "keyword"
                     },
                     "lab": {
