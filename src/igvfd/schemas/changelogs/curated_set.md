@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Rename calculated property `input_file_set_for` to `input_for`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Add `control_type`.
 

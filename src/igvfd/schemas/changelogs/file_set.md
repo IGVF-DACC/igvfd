@@ -1,5 +1,6 @@
 ## Changelog for *`file_set.json`*
 
+* Rename calculated property `input_file_set_for` to `input_for`. (11/06/24)
 * Add `control_type`. (08/27/2024)
 * Remove `publication_identifiers`. (07/31/2024)
 * Restrict `publication_identifiers` to submission by admins only. (07/17/2024)

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Rename calculated property `input_file_set_for` to `input_for`.
 * Add calculated property `externally_hosted`.
 * Add `external_input_data`.
 * Extend `collections` enum list to include `VarChAMP`.

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 22
 
+* Rename calculated property `input_file_set_for` to `input_for`.
 * Add calculated property `externally_hosted`.
 * Extend `preferred_assay_title` enum list to include `HiCAR`.
 * Extend `preferred_assay_title` enum list to include `ONT dRNA`.

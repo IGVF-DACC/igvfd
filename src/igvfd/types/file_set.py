@@ -55,7 +55,7 @@ class FileSet(Item):
     rev = {
         'files': ('File', 'file_set'),
         'control_for': ('FileSet', 'control_file_sets'),
-        'input_file_set_for': ('FileSet', 'input_file_sets')
+        'input_for': ('FileSet', 'input_file_sets')
     }
     embedded_with_frame = [
         Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
@@ -171,20 +171,20 @@ class FileSet(Item):
             return res[0]
 
     @calculated_property(schema={
-        'title': 'Input File Set For',
+        'title': 'Input For',
         'description': 'The file sets that use this file set as an input.',
         'type': 'array',
         'minItems': 1,
         'uniqueItems': True,
         'items': {
-            'title': 'Input File Set For',
+            'title': 'Input For',
             'type': ['string', 'object'],
             'linkFrom': 'FileSet.input_file_sets',
         },
         'notSubmittable': True
     })
-    def input_file_set_for(self, request, input_file_set_for):
-        return paths_filtered_by_status(request, input_file_set_for)
+    def input_for(self, request, input_for):
+        return paths_filtered_by_status(request, input_for)
 
 
 @collection(

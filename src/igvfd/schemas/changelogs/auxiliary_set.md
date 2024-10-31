@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 11
 
+* Rename calculated property `input_file_set_for` to `input_for`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Add `barcode_map`.
 * Extend `file_set_type` enum list to include `MORF barcode sequencing`.
