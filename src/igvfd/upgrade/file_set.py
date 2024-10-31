@@ -452,3 +452,15 @@ def analysis_set_8_9(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1929
     if value.get('samples'):
         del value['samples']
+
+
+@upgrade_step('model_set', '4', '5')
+def model_set_4_5(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1989
+    notes = value.get('notes', '')
+    if 'model_zoo_location' in value:
+        model_zoo_location = value['model_zoo_location']
+        value['url'] = model_zoo_location
+        notes += f' This model set has {model_zoo_location} in model_zoo_location, but the property model_zoo_location were removed via upgrade and should be submitted in url.'
+        del value['model_zoo_location']
+    return
