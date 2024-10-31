@@ -1,6 +1,6 @@
 {
-    "hash": "802ec8255afda2f7bf97d365f682c9bb",
-    "index_name": "model_file_802ec825",
+    "hash": "201d9ec8079a24027ea3eba58c8f791f",
+    "index_name": "model_file_201d9ec8",
     "item_type": "model_file",
     "mapping": {
         "dynamic_templates": [
@@ -474,9 +474,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

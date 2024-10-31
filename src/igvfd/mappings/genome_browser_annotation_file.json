@@ -1,6 +1,6 @@
 {
-    "hash": "6baeb6086cee53fc1be2841a4cf7e08e",
-    "index_name": "genome_browser_annotation_file_6baeb608",
+    "hash": "0357997d8cfff6d455a8f23bdfe99576",
+    "index_name": "genome_browser_annotation_file_0357997d",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -540,9 +540,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

@@ -1,6 +1,6 @@
 {
-    "hash": "3b23cbc98217a57ff859ca1bec0daa06",
-    "index_name": "matrix_file_3b23cbc9",
+    "hash": "a36fceb9d866b4517e2e62a81cb099ba",
+    "index_name": "matrix_file_a36fceb9",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -453,9 +453,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

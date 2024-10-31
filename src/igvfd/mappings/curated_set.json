@@ -1,6 +1,6 @@
 {
-    "hash": "4bdc4913bb639b7b4a741446fce1c2dd",
-    "index_name": "curated_set_4bdc4913",
+    "hash": "2cc58e9478b47294888ac70963804b2f",
+    "index_name": "curated_set_2cc58e94",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -474,9 +474,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

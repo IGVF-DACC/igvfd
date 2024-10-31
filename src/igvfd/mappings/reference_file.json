@@ -1,6 +1,6 @@
 {
-    "hash": "931d33025fac73059ceb9d408feb92d4",
-    "index_name": "reference_file_931d3302",
+    "hash": "8a6f062f1c4445b75a249dd3ad37ec13",
+    "index_name": "reference_file_8a6f062f",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -477,9 +477,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

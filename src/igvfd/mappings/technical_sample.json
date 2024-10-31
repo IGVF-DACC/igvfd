@@ -1,6 +1,6 @@
 {
-    "hash": "98e5d443d6f6973e1381d22c270514d0",
-    "index_name": "technical_sample_98e5d443",
+    "hash": "31e282a832fd5bc2caaf1f0a974c31c7",
+    "index_name": "technical_sample_31e282a8",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -558,9 +558,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

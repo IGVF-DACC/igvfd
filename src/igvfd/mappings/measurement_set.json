@@ -1,6 +1,6 @@
 {
-    "hash": "2af7a6cafb1cb31da5042767c0d7ea8e",
-    "index_name": "measurement_set_2af7a6ca",
+    "hash": "70069a5a6256e3fac01cfce34b7da466",
+    "index_name": "measurement_set_70069a5a",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -659,9 +659,6 @@
                             "model_version": {
                                 "type": "keyword"
                             },
-                            "model_zoo_location": {
-                                "type": "keyword"
-                            },
                             "multiome_size": {
                                 "fields": {
                                     "raw": {
@@ -1016,9 +1013,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {

@@ -1,6 +1,6 @@
 {
-    "hash": "ca2ecb6cfe535ee11f6e275a6b99b517",
-    "index_name": "multiplexed_sample_ca2ecb6c",
+    "hash": "a116630bb9d17b7cf2fb108f40d18f42",
+    "index_name": "multiplexed_sample_a116630b",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -878,9 +878,6 @@
                                 "type": "keyword"
                             },
                             "model_version": {
-                                "type": "keyword"
-                            },
-                            "model_zoo_location": {
                                 "type": "keyword"
                             },
                             "multiome_size": {
