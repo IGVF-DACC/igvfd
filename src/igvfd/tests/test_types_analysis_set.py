@@ -169,7 +169,6 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    print(res.get('summary', ''))
     assert res.get('summary', '') == '10x multiome, SUPERSTARR, lentiMPRA targeting MYC: peaks'
 
 
