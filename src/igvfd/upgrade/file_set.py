@@ -462,5 +462,5 @@ def model_set_4_5(value, system):
         model_zoo_location = value['model_zoo_location']
         value['url'] = model_zoo_location
         notes += f' This model set has {model_zoo_location} in model_zoo_location, but the property model_zoo_location were removed via upgrade and should be submitted in url.'
+        value['notes'] = notes.strip()
         del value['model_zoo_location']
-    return
