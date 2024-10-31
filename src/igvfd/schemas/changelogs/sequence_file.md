@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 14
 
+* Extend `base_modifications` enum list to include `inosine`.
+* Extend `base_modifications` enum list to include `pseudouridine`.
 * Add `external_host_url`.
 * Add `externally_hosted`.
 * Add `derived_manually`.
