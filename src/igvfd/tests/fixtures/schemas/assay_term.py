@@ -77,7 +77,7 @@ def assay_term_mpra(testapp):
 @pytest.fixture
 def assay_term_crispr(testapp):
     item = {
-        'term_id': 'NTR:0000657',
+        'term_id': 'OBI:0003659',
         'term_name': 'in vitro CRISPR screen assay'
     }
     return testapp.post_json('/assay_term', item, status=201).json['@graph'][0]

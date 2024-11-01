@@ -220,6 +220,11 @@ class AnalysisSet(FileSet):
         file_content_types = set()
         targeted_genes = set()
         fileset_subclasses = set()
+        assay_terms = set()
+        crispr_screen_terms = [
+            '/assay-terms/OBI_0003659/',
+            '/assay-terms/OBI_0003661/'
+        ]
         if input_file_sets:
             # The file_set_types are included based on the subclass
             # of only the directly associated input_file_sets, not
@@ -240,6 +245,7 @@ class AnalysisSet(FileSet):
                         '@@object_with_select_calculated_properties?'
                         'field=@type&field=file_set_type&field=measurement_sets'
                         '&field=input_file_sets&field=targeted_genes.symbol'
+                        '&field=assay_term'
                     )
                     # Trace back from Analysis Sets to identify their
                     # input file sets.
@@ -254,11 +260,15 @@ class AnalysisSet(FileSet):
                             for gene in fileset_object['targeted_genes']:
                                 gene_object = request.embed(gene, '@@object?skip_calculated=true')
                                 targeted_genes.add(gene_object['symbol'])
+                        assay_terms.add(fileset_object['assay_term'])
                     # Retrieve Measurement Sets associated with Auxiliary Sets.
                     elif input_fileset.startswith('/auxiliary-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
                         if 'measurement_sets' in fileset_object:
                             for candidate_fileset in fileset_object.get('measurement_sets'):
+                                measurement_set_object = request.embed(
+                                    candidate_fileset, '@@object?skip_calculated=true')
+                                assay_terms.add(measurement_set_object['assay_term'])
                                 if candidate_fileset not in inspected_filesets:
                                     filesets_to_inspect.add(candidate_fileset)
                     elif not input_fileset.startswith('/analysis-sets/'):
@@ -286,7 +296,11 @@ class AnalysisSet(FileSet):
         elif fileset_types and len(fileset_subclasses) == 1 and 'AnalysisSet' in fileset_subclasses:
             file_set_type_phrase = 'analysis'
         elif fileset_types and len(fileset_subclasses) >= 1 and 'MeasurementSet' not in fileset_subclasses:
-            file_set_type_phrase = ', '.join(fileset_types)
+            if all(x in crispr_screen_terms for x in assay_terms):
+                file_set_type_phrase = ''
+            else:
+                file_set_type_phrase = ', '.join(fileset_types)
+        # Only display up to 5 unique content types.
         files_phrase = ''
         if file_content_types:
             sorted_files_list = sorted(file_content_types)
