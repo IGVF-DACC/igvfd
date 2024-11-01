@@ -567,6 +567,7 @@ class AnalysisSet(FileSet):
             treatments_phrase = f"{', '.join(treatment_purposes)} with treatment(s)"
         modification_type_phrase = ''
         if modification_types:
+            modification_types = sorted(modification_types)
             # since there will only be at most 2 modification types, the list can be joined with "and"
             modification_type_phrase = f'modified with {" and ".join(modification_types)} modifications'
         construct_library_set_type_phrase = ''
