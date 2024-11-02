@@ -504,9 +504,9 @@ class Biosample(Sample):
                 biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
             verb = 'transfected with'
             library_types = set()
-            for CLS in construct_library_sets:
-                CLS_object = request.embed(CLS, '@@object?skip_calculated=true')
-                library_types.add(CLS_object['file_set_type'])
+            for construct_library_set in construct_library_sets:
+                construct_library_set_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
+                library_types.add(construct_library_set_object['file_set_type'])
             if nucleic_acid_delivery:
                 if nucleic_acid_delivery == 'lentiviral transduction':
                     verb = 'transduced (lentivirus) with'

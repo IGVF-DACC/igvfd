@@ -242,7 +242,6 @@ def test_analysis_set_sample_summary(testapp, principal_analysis_set, measuremen
         }
     )
     res = testapp.get(principal_analysis_set['@id']).json
-    print(res.get('sample_summary', ''))
     assert res.get('sample_summary', '') == 'K562 differentiated cell specimen induced to endothelial cell of vascular tree, at 1 time point(s) post change, differentiated with treatment(s), modified with CRISPR and Degron modifications, transfected with a guide library, sorted on expression of MYC'
 
 
