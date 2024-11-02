@@ -147,6 +147,7 @@
                 "variants",
                 "variant binding effects",
                 "variant effects",
+                "variant functional predictions",
                 "variant localization impacts",
                 "variant to element mapping"
             ],
@@ -158,6 +159,7 @@
                 "barcode to TF overexpression mapping": "A file describing the mapping of barcodes to TF overexpression.",
                 "bin paired count": "Occurrences of contact between chromatin pairs within designated binned intervals.",
                 "coding variant effects": "A file predicting effects of amino acid changes at each position of a given protein.",
+                "differential chromatin contact quantifications": "Details differences in chromatin interactions between experimental conditions.",
                 "differential element quantifications": "A file that details the change in effect sizes for a specific non-coding element between two experimental conditions.",
                 "differential gene expression quantifications": "The quantified changes in gene expression levels between different conditions or groups.",
                 "differential transcript expression quantifications": "The quantified changes in expression levels of transcripts between conditions or groups.",
@@ -189,6 +191,7 @@
                 "variants": "A table listing genetic variants.",
                 "variant binding effects": "The genetic variant effects on transcription factor binding affinity.",
                 "variant effects": "The genetic variant effects on gene expression.",
+                "variant functional predictions": "Predictions of the functional effects of genetic variants.",
                 "variant localization impacts": "Output of a variant painting experiement describing the measured impact of variants.",
                 "variant to element mapping": "A file describing the mapping of genetic variants to genomic elements."
             },
