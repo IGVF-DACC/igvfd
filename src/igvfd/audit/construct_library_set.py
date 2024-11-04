@@ -108,8 +108,8 @@ def audit_integrated_content_files(value, system):
         }
     ]
     '''
-    audit_message_guide = get_audit_message(audit_integrated_content_files)
-    audit_message_reporter = get_audit_message(audit_integrated_content_files)
+    audit_message_guide = get_audit_message(audit_integrated_content_files, index=0)
+    audit_message_reporter = get_audit_message(audit_integrated_content_files, index=1)
     library_expectation = {
         'guide library': ('guide RNA sequences', audit_message_guide),
         'reporter library': ('MPRA sequence designs', audit_message_reporter),
