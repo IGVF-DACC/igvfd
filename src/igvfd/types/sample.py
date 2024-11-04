@@ -100,7 +100,6 @@ class Sample(Item):
         'lab',
         'sources',
         'sample_terms',
-        'treatments',
         'construct_library_sets',
     ]
 
