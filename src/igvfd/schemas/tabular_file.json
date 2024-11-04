@@ -116,6 +116,7 @@
                 "barcode to TF overexpression mapping",
                 "bin paired count",
                 "coding variant effects",
+                "differential chromatin contact quantifications",
                 "differential element quantifications",
                 "differential gene expression quantifications",
                 "differential transcript expression quantifications",
