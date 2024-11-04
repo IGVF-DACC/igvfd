@@ -221,6 +221,7 @@ class AnalysisSet(FileSet):
         targeted_genes = set()
         fileset_subclasses = set()
         assay_terms = set()
+        unspecified_assay = ''
         crispr_screen_terms = [
             '/assay-terms/OBI_0003659/',
             '/assay-terms/OBI_0003661/'
@@ -273,14 +274,23 @@ class AnalysisSet(FileSet):
                                     filesets_to_inspect.add(candidate_fileset)
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
+        else:
+            # If there are no inputs, state that the assay is unspecified.
+            unspecified_assay = 'Unspecified assay analysis'
+
+        # Collect content_types of files.
         if files:
             for file in files:
                 file_object = request.embed(file, '@@object?skip_calculated=true')
                 file_content_types.add(file_object['content_type'])
 
+        # Assay titles if there are input file sets, otherwise unspecified.
         assay_title_phrase = ''
         if assay_titles:
             assay_title_phrase = ', '.join(sorted(assay_titles))
+        elif unspecified_assay:
+            assay_title_phrase = unspecified_assay
+        # Targeted genes.
         targeted_genes_phrase = ''
         if targeted_genes:
             targeted_genes_phrase = f'targeting {", ".join(targeted_genes)}'
@@ -319,6 +329,7 @@ class AnalysisSet(FileSet):
         if merged_phrase:
             return merged_phrase
         else:
+            # Failsafe return value, this should not appear.
             return file_set_type
 
     @calculated_property(
