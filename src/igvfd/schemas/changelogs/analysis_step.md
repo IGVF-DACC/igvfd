@@ -2,6 +2,10 @@
 
 ### Minor changes since schema version 5
 
+* Extend `output_content_types` enum list to include `differential chromatin contact quantifications`.
+* Extend `input_content_types` enum list to include `differential chromatin contact quantifications`.
+* Extend `output_content_types` enum list to include `variant functional predictions`.
+* Extend `input_content_types` enum list to include `variant functional predictions`.
 * Extend `output_content_types` enum list to include `bin paired count`.
 * Extend `input_content_types` enum list to include `bin paired count`.
 * Extend `analysis_step_types` enum list to include `base calling`.

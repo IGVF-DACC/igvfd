@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 13
 
+* Extend `content_type` enum list to include `differential chromatin contact quantifications`.
+* Extend `content_type` enum list to include `variant functional predictions`.
 * Extend `assembly` enum list to include `custom`.
 * Extend `content_type` enum list to include `bin paired count`.
 

@@ -354,5 +354,43 @@
         "assembly": "GRCh38",
         "file_set": "leif-ludwig:analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "c4ac1af1-e3e3-4719-86b6-bf7aaaf61337",
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "charles-gersbach:differential_chromatin_contact_quantifications"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-11-01T20:29:45Z",
+        "md5sum": "c19d4aa4c6d8f1c90831f37c4fca8b91",
+        "file_format": "tsv",
+        "content_type": "differential chromatin contact quantifications",
+        "submitted_file_name": "/Users/igvf/igvf_files/differential_chromatin_contact_quantifications.tsv.gz",
+        "file_size": 1453609183,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "leif-ludwig:analysis_set",
+        "controlled_access": false
+    },
+    {
+        "uuid": "06bd6423-6d6a-44ba-a42e-161a05e81a21",
+        "lab": "charles-gersbach",
+        "award": "1UM1HG012053-01",
+        "aliases": [
+            "charles-gersbach:variant_functional_predictions"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-11-01T21:29:45Z",
+        "md5sum": "10db69749d3be0459a3031a539cc8470",
+        "file_format": "tsv",
+        "content_type": "variant functional predictions",
+        "submitted_file_name": "/Users/igvf/igvf_files/variant_functional_predictions.tsv.gz",
+        "file_size": 1453609183,
+        "upload_status": "validated",
+        "assembly": "custom",
+        "file_set": "leif-ludwig:analysis_set",
+        "controlled_access": false
     }
 ]
