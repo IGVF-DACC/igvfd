@@ -186,7 +186,8 @@
                 "low FACS signal",
                 "pre-selection",
                 "unsorted FACS input",
-                "untransfected"
+                "untransfected",
+                "control transduction"
             ],
             "enum_descriptions": {
                 "low FACS signal": "The samples have minimal fluorescence in Flow Cytometry (FACS), used as a baseline or negative control.",

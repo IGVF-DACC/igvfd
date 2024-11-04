@@ -690,11 +690,11 @@
             "description": "The type of control this file set represents.",
             "type": "string",
             "enum": [
-                "GFP"
+                "control transduction"
             ],
             "submissionExample": {
-                "appscript": "GFP",
-                "igvf_utils": "GFP"
+                "appscript": "control transduction",
+                "igvf_utils": "control transduction"
             }
         },
         "scope": {
