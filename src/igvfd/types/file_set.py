@@ -99,6 +99,7 @@ class FileSet(Item):
         'samples.disease_terms',
         'samples.treatments',
         'samples.modifications',
+        'samples.construct_library_sets',
         'donors',
     ]
 
