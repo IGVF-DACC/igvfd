@@ -223,6 +223,7 @@
     },
     {
         "uuid": "bdb64886-5f1e-46b4-a803-60c519d1ada1",
+        "accession": "IGVFFI0836NNBT",
         "aliases": [
             "igvf:coding_variants"
         ],
@@ -244,6 +245,7 @@
     },
     {
         "uuid": "4d67a22b-17f9-44ac-8446-6a674b313beb",
+        "accession": "IGVFFI5471EAMF",
         "aliases": [
             "igvf:documentation_readme"
         ],
@@ -265,6 +267,7 @@
     },
     {
         "uuid": "afc8137d-720d-46d2-9ebe-d5d629d180ac",
+        "accession": "IGVFFI1276BJRG",
         "aliases": [
             "igvf:variants_coding_variants"
         ],
@@ -286,6 +289,7 @@
     },
     {
         "uuid": "2467beb0-5df2-47fb-a209-76480f8e505b",
+        "accession": "IGVFFI0868FSXA",
         "aliases": [
             "igvf:variants_diseases"
         ],
@@ -307,6 +311,7 @@
     },
     {
         "uuid": "7b420160-965b-4063-8129-9a01596948c8",
+        "accession": "IGVFFI6668JREP",
         "aliases": [
             "igvf:variants_diseases_genes"
         ],
@@ -328,6 +333,7 @@
     },
     {
         "uuid": "b8e52fb6-bf09-4acf-a7cd-ab472fd8e764",
+        "accession": "IGVFFI4150KMRP",
         "aliases": [
             "igvf:variants_phenotypes"
         ],
@@ -349,6 +355,7 @@
     },
     {
         "uuid": "5abd2939-610e-42a8-b164-b8e69db72d84",
+        "accession": "IGVFFI6426JKYC",
         "aliases": [
             "igvf:variants_phenotypes_studies"
         ],
