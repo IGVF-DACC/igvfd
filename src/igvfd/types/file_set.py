@@ -214,39 +214,143 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, input_file_sets=[]):
-        sentence = f'{file_set_type}'
+    def summary(self, request, file_set_type, input_file_sets=[], files=[], assay_titles=[], samples=[]):
         inspected_filesets = set()
-        assay_terms = set()
         fileset_types = set()
+        file_content_types = set()
+        targeted_genes = set()
+        fileset_subclasses = set()
+        assay_terms = set()
+        crispr_modalities = set()
+        unspecified_assay = ''
+        crispr_screen_terms = [
+            '/assay-terms/OBI_0003659/',
+            '/assay-terms/OBI_0003661/'
+        ]
         if input_file_sets:
+            # The file_set_types are included based on the subclass
+            # of only the directly associated input_file_sets, not
+            # on the subclass of all file sets that are checked.
+            for directly_linked_input in input_file_sets:
+                fileset_object = request.embed(
+                    directly_linked_input,
+                    '@@object_with_select_calculated_properties?field=@type'
+                )
+                fileset_subclasses.add(fileset_object['@type'][0])
             filesets_to_inspect = set(input_file_sets.copy())
-
             while filesets_to_inspect:
                 input_fileset = filesets_to_inspect.pop()
                 if input_fileset not in inspected_filesets:
                     inspected_filesets.add(input_fileset)
-                    fileset_object = request.embed(input_fileset, '@@object?skip_calculated=true')
-                    if input_fileset.startswith('/measurement-sets/'):
-                        assay_terms.add(fileset_object.get('preferred_assay_title', ''))
-                    elif not input_fileset.startswith('/analysis-sets/'):
-                        fileset_types.add(fileset_object['file_set_type'])
-                    elif (input_fileset.startswith('/analysis-sets/') and
-                          fileset_object.get('input_file_sets', False)):
+                    fileset_object = request.embed(
+                        input_fileset,
+                        '@@object_with_select_calculated_properties?'
+                        'field=@type&field=file_set_type&field=measurement_sets'
+                        '&field=input_file_sets&field=targeted_genes.symbol'
+                        '&field=assay_term'
+                    )
+                    # Trace back from Analysis Sets to identify their
+                    # input file sets.
+                    if (input_fileset.startswith('/analysis-sets/') and
+                            fileset_object.get('input_file_sets', False)):
                         for candidate_fileset in fileset_object.get('input_file_sets'):
                             if candidate_fileset not in inspected_filesets:
                                 filesets_to_inspect.add(candidate_fileset)
-        if assay_terms:
-            terms = ', '.join(sorted(assay_terms))
-            sentence += f' of {terms} data'
-        elif fileset_types:
-            terms = ', '.join(sorted(fileset_types))
-            sentence += f' of {terms} data'
+                    # Retrieve targeted_genes from Measurement Sets.
+                    elif input_fileset.startswith('/measurement-sets/'):
+                        if 'targeted_genes' in fileset_object:
+                            for gene in fileset_object['targeted_genes']:
+                                gene_object = request.embed(gene, '@@object?skip_calculated=true')
+                                targeted_genes.add(gene_object['symbol'])
+                        assay_terms.add(fileset_object['assay_term'])
+                    # Retrieve Measurement Sets associated with Auxiliary Sets.
+                    elif input_fileset.startswith('/auxiliary-sets/'):
+                        fileset_types.add(fileset_object['file_set_type'])
+                        if 'measurement_sets' in fileset_object:
+                            for candidate_fileset in fileset_object.get('measurement_sets'):
+                                measurement_set_object = request.embed(
+                                    candidate_fileset, '@@object?skip_calculated=true')
+                                assay_terms.add(measurement_set_object['assay_term'])
+                                if candidate_fileset not in inspected_filesets:
+                                    filesets_to_inspect.add(candidate_fileset)
+                    elif not input_fileset.startswith('/analysis-sets/'):
+                        fileset_types.add(fileset_object['file_set_type'])
         else:
-            sentence += f' of data'
-        return sentence
+            # If there are no inputs, state that the assay is unspecified.
+            unspecified_assay = 'Unspecified assay analysis'
+
+        # Collect content_types of files.
+        if files:
+            for file in files:
+                file_object = request.embed(file, '@@object?skip_calculated=true')
+                file_content_types.add(file_object['content_type'])
+
+        # Collect CRISPR modalities from associated samples.
+        if samples:
+            for sample in samples:
+                sample_object = request.embed(sample, '@@object?skip_calculated=true')
+                if 'modifications' in sample_object:
+                    for modification in sample_object['modifications']:
+                        modification_object = request.embed(modification, '@@object?skip_calculated=true')
+                        crispr_modalities.add(modification_object['modality'])
+
+        # Assay titles if there are input file sets, otherwise unspecified.
+        assay_title_phrase = ''
+        if assay_titles:
+            assay_title_phrase = ', '.join(sorted(assay_titles))
+        elif unspecified_assay:
+            assay_title_phrase = unspecified_assay
+        # Add modalities to the assay titles.
+        if crispr_modalities:
+            modality_set = ', '.join(sorted(crispr_modalities))
+            if 'CRISPR' in assay_title_phrase:
+                assay_title_phrase = assay_title_phrase.replace('CRISPR', f'CRISPR {modality_set}')
+            else:
+                assay_title_phrase = f'{modality_set} {assay_title_phrase}'
+        # Targeted genes.
+        targeted_genes_phrase = ''
+        if targeted_genes:
+            targeted_genes_phrase = f'targeting {", ".join(targeted_genes)}'
+        # If the input file sets includes a Measurement Set,
+        # the file_set_types are not shown. If the input file
+        # set is only Analysis Sets, then the summary says
+        # 'analysis'. If the input_file_sets does not include
+        # Measurement or Analysis Sets, then the file_set_types
+        # are shown.
+        file_set_type_phrase = ''
+        if fileset_types and len(fileset_subclasses) >= 1 and 'MeasurementSet' in fileset_subclasses:
+            file_set_type_phrase = ''
+        elif fileset_types and len(fileset_subclasses) == 1 and 'AnalysisSet' in fileset_subclasses:
+            file_set_type_phrase = 'analysis'
+        elif fileset_types and len(fileset_subclasses) >= 1 and 'MeasurementSet' not in fileset_subclasses:
+            if all(x in crispr_screen_terms for x in assay_terms):
+                file_set_type_phrase = ''
+            else:
+                file_set_type_phrase = ', '.join(fileset_types)
+        # Only display up to 5 unique content types.
+        files_phrase = ''
+        if file_content_types:
+            sorted_files_list = sorted(file_content_types)
+            if len(file_content_types) > 5:
+                files_phrase = f': {", ".join(sorted_files_list[0:5])} and {len(file_content_types)-5} more'
+            else:
+                files_phrase = f': {", ".join(sorted_files_list)}'
+
+        all_phrases = [
+            assay_title_phrase,
+            targeted_genes_phrase,
+            file_set_type_phrase,
+            files_phrase
+        ]
+        merged_phrase = ' '.join([x for x in all_phrases if x != '']).replace(' : ', ': ')
+        if merged_phrase:
+            return merged_phrase
+        else:
+            # Failsafe return value.
+            return file_set_type
 
     @calculated_property(
+        define=True,
         schema={
             'title': 'Assay Titles',
             'description': 'Title(s) of assays that produced data analyzed in the analysis set.',
