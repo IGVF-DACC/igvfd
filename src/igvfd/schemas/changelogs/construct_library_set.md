@@ -1,5 +1,9 @@
 ## Changelog for *`construct_library_set.json`*
 
+### Minor changes since schema version 10
+
+* Rename calculated property `input_file_set_for` to `input_for`.
+
 ### Schema version 10
 
 * Restrict linkTo for `integrated_content_files` to ReferenceFile and TabularFile.

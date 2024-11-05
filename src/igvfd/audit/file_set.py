@@ -404,7 +404,7 @@ def audit_unexpected_virtual_samples(value, system):
 @audit_checker('MeasurementSet', frame='object')
 @audit_checker('AuxiliarySet', frame='object')
 @audit_checker('ConstructLibrarySet', frame='object')
-def audit_input_file_set_for(value, system):
+def audit_input_for(value, system):
     '''
     [
         {
@@ -415,8 +415,8 @@ def audit_input_file_set_for(value, system):
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
-    audit_message = get_audit_message(audit_input_file_set_for)
-    if not value.get('input_file_set_for') and value.get('files'):
+    audit_message = get_audit_message(audit_input_for)
+    if not value.get('input_for') and value.get('files'):
         detail = (
             f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} is a raw data set with files, '
             f'but is not listed in any `input_file_sets` for any analysis sets.'

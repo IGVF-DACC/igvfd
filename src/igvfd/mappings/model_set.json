@@ -1,6 +1,6 @@
 {
-    "hash": "b09925d9092fdc3c0388bf4aa4094c73",
-    "index_name": "model_set_b09925d9",
+    "hash": "e6a8f410870e69a94a4b52d78f1186ee",
+    "index_name": "model_set_e6a8f410",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -527,10 +527,10 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_file_sets": {
                                 "type": "keyword"
                             },
-                            "input_file_sets": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {
@@ -1256,9 +1256,6 @@
                         },
                         "type": "object"
                     },
-                    "input_file_set_for": {
-                        "type": "keyword"
-                    },
                     "input_file_sets": {
                         "properties": {
                             "@id": {
@@ -1386,10 +1383,10 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_file_sets": {
                                 "type": "keyword"
                             },
-                            "input_file_sets": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {
@@ -1617,6 +1614,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "input_for": {
+                        "type": "keyword"
                     },
                     "lab": {
                         "properties": {

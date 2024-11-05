@@ -1,6 +1,6 @@
 {
-    "hash": "21fccba64f1856fe27247a1e21c2bf5c",
-    "index_name": "primary_cell_21fccba6",
+    "hash": "0b9c07019809df1b6cd20df1771b26d1",
+    "index_name": "primary_cell_0b9c0701",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -551,10 +551,10 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_file_sets": {
                                 "type": "keyword"
                             },
-                            "input_file_sets": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {

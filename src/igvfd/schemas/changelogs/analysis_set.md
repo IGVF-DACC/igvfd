@@ -1,5 +1,9 @@
 ## Changelog for *`analysis_set.json`*
 
+### Minor changes since schema version 9
+
+* Rename calculated property `input_file_set_for` to `input_for`.
+
 ### Schema version 9
 
 * Convert `samples` to be calculated from `input_file_sets` and `demultiplexed_sample`.

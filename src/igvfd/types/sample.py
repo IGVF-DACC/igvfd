@@ -117,10 +117,10 @@ class Sample(Item):
         # This is required to get the analysis set reverse links since analysis set calculates samples
         for file_set in file_sets:
             file_set_object = request.embed(
-                file_set, '@@object_with_select_calculated_properties?field=input_file_set_for')
-            for input_file_set_for in file_set_object.get('input_file_set_for', []):
-                if input_file_set_for.startswith('/analysis-sets/') and input_file_set_for not in file_sets:
-                    file_sets.append(input_file_set_for)
+                file_set, '@@object_with_select_calculated_properties?field=input_for')
+            for input_for in file_set_object.get('input_for', []):
+                if input_for.startswith('/analysis-sets/') and input_for not in file_sets:
+                    file_sets.append(input_for)
         return paths_filtered_by_status(request, file_sets)
 
     @calculated_property(schema={

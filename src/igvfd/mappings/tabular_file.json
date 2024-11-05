@@ -1,6 +1,6 @@
 {
-    "hash": "490d1d6aeddd745e6e2b96f4b96eeb81",
-    "index_name": "tabular_file_490d1d6a",
+    "hash": "09d74ece3e359af2ce15534adb01cf20",
+    "index_name": "tabular_file_09d74ece",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -509,10 +509,10 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_file_sets": {
                                 "type": "keyword"
                             },
-                            "input_file_sets": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {
@@ -1368,7 +1368,7 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {

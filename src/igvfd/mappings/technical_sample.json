@@ -1,6 +1,6 @@
 {
-    "hash": "98e5d443d6f6973e1381d22c270514d0",
-    "index_name": "technical_sample_98e5d443",
+    "hash": "ee85a67fdf17e5bfe971e4f6ee898fa3",
+    "index_name": "technical_sample_ee85a67f",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -456,10 +456,10 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_file_sets": {
                                 "type": "keyword"
                             },
-                            "input_file_sets": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {

@@ -1,6 +1,6 @@
 {
-    "hash": "9d9f113b612f2f478b9a13e4a48c61ca",
-    "index_name": "prediction_set_9d9f113b",
+    "hash": "badd34628fda6dd2355501e4a3da9bcb",
+    "index_name": "prediction_set_badd3462",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -527,10 +527,10 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_file_sets": {
                                 "type": "keyword"
                             },
-                            "input_file_sets": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {
@@ -1246,10 +1246,10 @@
                         },
                         "type": "object"
                     },
-                    "input_file_set_for": {
+                    "input_file_sets": {
                         "type": "keyword"
                     },
-                    "input_file_sets": {
+                    "input_for": {
                         "type": "keyword"
                     },
                     "lab": {
@@ -1977,7 +1977,7 @@
                                     "guide_type": {
                                         "type": "keyword"
                                     },
-                                    "input_file_set_for": {
+                                    "input_for": {
                                         "type": "keyword"
                                     },
                                     "integrated_content_files": {
