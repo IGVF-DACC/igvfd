@@ -1,2 +1,2 @@
 botocore==1.31.80
-snovault-index@git+https://github.com/IGVF-DACC/snovault-index.git@696c873fa0bfe41d91ae8332eec3027d0b412c4e
+snovault-index@git+https://github.com/IGVF-DACC/snovault-index.git@SNO2-28-enable-bulk-invalidation
