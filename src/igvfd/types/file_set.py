@@ -214,13 +214,14 @@ class AnalysisSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, file_set_type, input_file_sets=[], files=[], assay_titles=[]):
+    def summary(self, request, file_set_type, input_file_sets=[], files=[], assay_titles=[], samples=[]):
         inspected_filesets = set()
         fileset_types = set()
         file_content_types = set()
         targeted_genes = set()
         fileset_subclasses = set()
         assay_terms = set()
+        crispr_modalities = set()
         unspecified_assay = ''
         crispr_screen_terms = [
             '/assay-terms/OBI_0003659/',
@@ -284,12 +285,28 @@ class AnalysisSet(FileSet):
                 file_object = request.embed(file, '@@object?skip_calculated=true')
                 file_content_types.add(file_object['content_type'])
 
+        # Collect CRISPR modalities from associated samples.
+        if samples:
+            for sample in samples:
+                sample_object = request.embed(sample, '@@object?skip_calculated=true')
+                if 'modifications' in sample_object:
+                    for modification in sample_object['modifications']:
+                        modification_object = request.embed(modification, '@@object?skip_calculated=true')
+                        crispr_modalities.add(modification_object['modality'])
+
         # Assay titles if there are input file sets, otherwise unspecified.
         assay_title_phrase = ''
         if assay_titles:
             assay_title_phrase = ', '.join(sorted(assay_titles))
         elif unspecified_assay:
             assay_title_phrase = unspecified_assay
+        # Add modalities to the assay titles.
+        if crispr_modalities:
+            modality_set = ', '.join(sorted(crispr_modalities))
+            if 'CRISPR' in assay_title_phrase:
+                assay_title_phrase = assay_title_phrase.replace('CRISPR', f'CRISPR {modality_set}')
+            else:
+                assay_title_phrase = f'{modality_set} {assay_title_phrase}'
         # Targeted genes.
         targeted_genes_phrase = ''
         if targeted_genes:
@@ -329,7 +346,7 @@ class AnalysisSet(FileSet):
         if merged_phrase:
             return merged_phrase
         else:
-            # Failsafe return value, this should not appear.
+            # Failsafe return value.
             return file_set_type
 
     @calculated_property(
