@@ -215,7 +215,7 @@ def test_constructs_indexer_initialize_indexer(
             'ContainerDefinitions': [
                 {
                     'Command': [
-                        'run-invalidation-service'
+                        'run-bulk-invalidation-service'
                     ],
                     'Environment': [
                         {
