@@ -53,3 +53,14 @@ def test_modification_summary(testapp, crispr_modification, gene_myc_hs):
     )
     res = testapp.get(crispr_modification['@id'])
     assert res.json.get('summary') == 'CRISPR localizing SpRY-ANTI-FLAG fused to MYC'
+
+    testapp.patch_json(
+        crispr_modification['@id'],
+        {
+            'activated': False,
+            'activating_agent_term_id': 'CHEBI:22676',
+            'activating_agent_term_name': 'auxin'
+        }
+    )
+    res = testapp.get(crispr_modification['@id'])
+    assert res.json.get('summary') == 'inactive CRISPR localizing SpRY-ANTI-FLAG fused to MYC'

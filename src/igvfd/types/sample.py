@@ -348,7 +348,7 @@ class Biosample(Sample):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, sample_terms, donors, sex, age, age_units=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None):
+    def summary(self, request, sample_terms, donors, sex, age, age_units=None, modifications=None, embryonic=None, virtual=None, classifications=None, time_post_change=None, time_post_change_units=None, targeted_sample_term=None, cellular_sub_pool=None, taxa=None, sorted_from_detail=None, disease_terms=None, biomarkers=None, treatments=None, construct_library_sets=None, moi=None, nucleic_acid_delivery=None, growth_medium=None):
         term_object = request.embed(sample_terms[0], '@@object?skip_calculated=true')
         term_name = term_object.get('term_name')
         biosample_type = self.item_type
@@ -491,21 +491,27 @@ class Biosample(Sample):
             if perturbation_treatment_summaries:
                 summary_terms += f' treated with {", ".join(perturbation_treatment_summaries)},'
 
+        # modification summaries are appended to the end of the summary
+        if (modifications and
+                biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
+            modification_objects = [request.embed(modification) for modification in modifications]
+            modification_summaries = sorted([modification.get('summary') for modification in modification_objects])
+            if modification_summaries:
+                summary_terms += f' modified with {", ".join(modification_summaries)},'
+
         # construct library set overview is appended to the end of the summary
         if (construct_library_sets and
                 biosample_type in ['primary_cell', 'in_vitro_system', 'tissue', 'whole_organism']):
-            verb = 'modified with'
+            verb = 'transfected with'
             library_types = set()
-            for CLS in construct_library_sets:
-                CLS_object = request.embed(CLS, '@@object?skip_calculated=true')
-                library_types.add(CLS_object['file_set_type'])
+            for construct_library_set in construct_library_sets:
+                construct_library_set_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
+                library_types.add(construct_library_set_object['file_set_type'])
             if nucleic_acid_delivery:
                 if nucleic_acid_delivery == 'lentiviral transduction':
                     verb = 'transduced (lentivirus) with'
                 elif nucleic_acid_delivery == 'adenoviral transduction':
                     verb = 'transduced (adenovirus) with'
-                else:
-                    verb = 'transfected with'
             if len(library_types) == 1:
                 library_types = ', '.join(library_types)
                 if moi:
@@ -702,18 +708,16 @@ class TechnicalSample(Sample):
             summary_terms = f'virtual {summary_terms}'
 
         if construct_library_sets:
-            verb = 'modified with'
+            verb = 'transfected with'
             library_types = set()
-            for CLS in construct_library_sets:
-                CLS_object = request.embed(CLS, '@@object?skip_calculated=true')
-                library_types.add(CLS_object['file_set_type'])
+            for construct_library_set in construct_library_sets:
+                construct_library_set_object = request.embed(construct_library_set, '@@object?skip_calculated=true')
+                library_types.add(construct_library_set_object['file_set_type'])
             if nucleic_acid_delivery:
                 if nucleic_acid_delivery == 'lentiviral transduction':
                     verb = 'transduced (lentivirus) with'
                 elif nucleic_acid_delivery == 'adenoviral transduction':
                     verb = 'transduced (adenovirus) with'
-                else:
-                    verb = 'transfected with'
             if len(library_types) == 1:
                 library_types = ', '.join(library_types)
                 summary_terms = f'{summary_terms} {verb} a {library_types}'

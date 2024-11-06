@@ -19,7 +19,7 @@ def test_technical_sample_summary(testapp, technical_sample, construct_library_s
         }
     )
     res = testapp.get(technical_sample['@id'])
-    assert res.json.get('summary') == 'virtual synthetic technical sample modified with a reporter library'
+    assert res.json.get('summary') == 'virtual synthetic technical sample transfected with a reporter library'
     testapp.patch_json(
         technical_sample['@id'],
         {
@@ -28,7 +28,7 @@ def test_technical_sample_summary(testapp, technical_sample, construct_library_s
         }
     )
     res = testapp.get(technical_sample['@id'])
-    assert res.json.get('summary') == 'virtual synthetic technical sample modified with multiple libraries'
+    assert res.json.get('summary') == 'virtual synthetic technical sample transfected with multiple libraries'
     testapp.patch_json(
         technical_sample['@id'],
         {

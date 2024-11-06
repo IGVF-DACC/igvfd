@@ -80,7 +80,7 @@ class CrisprModification(Modification):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, cas, cas_species, modality, fused_domain=None, tagged_protein=None):
+    def summary(self, request, cas, cas_species, modality, fused_domain=None, tagged_protein=None, activated=True,):
         crispr_label_mapping = {
             'activation': 'CRISPRa',
             'base editing': 'CRISPR base editing',
@@ -119,6 +119,9 @@ class CrisprModification(Modification):
 
             summary = f'{summary} fused to {tagged_protein_symbol}'
 
+        if not (activated):
+            summary = f'inactive {summary}'
+
         return summary
 
 
@@ -145,9 +148,12 @@ class DegronModification(Modification):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, degron_system=None, tagged_proteins=None):
+    def summary(self, request, activated=True, degron_system=None, tagged_proteins=None):
         gene_symbols = []
         for protein in tagged_proteins:
             gene_object = request.embed(protein)
             gene_symbols.append(gene_object['symbol'])
-        return f'{degron_system} system targeting {", ".join(gene_symbols)}'
+        summary = f'{degron_system} system targeting {", ".join(gene_symbols)}'
+        if not (activated):
+            summary = f'inactive {summary}'
+        return summary
