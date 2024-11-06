@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 32`.
 * Extend `assembly` enum list to include `custom`.
 * Add `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.

@@ -1,5 +1,9 @@
 ## Changelog for *`reference_file.json`*
 
+### Minor changes since schema version 15
+
+* Extend `transcriptome_annotation` enum list to include `GENCODE 32`.
+
 ### Schema version 15
 
 * Remove `external_id`.
