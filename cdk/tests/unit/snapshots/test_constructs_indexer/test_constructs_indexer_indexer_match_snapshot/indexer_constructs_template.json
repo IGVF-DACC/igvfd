@@ -1649,7 +1649,7 @@
                 "ContainerDefinitions": [
                     {
                         "Command": [
-                            "run-invalidation-service"
+                            "run-bulk-invalidation-service"
                         ],
                         "Environment": [
                             {
