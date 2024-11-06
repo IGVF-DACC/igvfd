@@ -267,6 +267,7 @@
         "aliases": [
             "igvf:peak_quantifications"
         ],
+        "transcriptome_annotation": "GENCODE 32",
         "status": "released",
         "release_timestamp": "2024-06-09T12:34:56Z",
         "md5sum": "17d63c7c831bbcf0637516cc15e694c4",

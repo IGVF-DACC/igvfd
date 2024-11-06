@@ -20,6 +20,7 @@
         "reference_files": [
             "IGVFFI0001GNRF"
         ],
+        "transcriptome_annotation": "GENCODE 32",
         "strand_specificity": "plus",
         "normalized": false,
         "filtered": true,
