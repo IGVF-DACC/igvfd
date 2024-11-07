@@ -460,7 +460,7 @@ class ReferenceFile(File):
     )
     def summary(self, content_type, file_set, assembly=None, transcriptome_annotation=None):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
-        predicted = ''
+        predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
         formatted_assembly = assembly
@@ -531,7 +531,7 @@ class AlignmentFile(File):
     )
     def summary(self, content_summary, file_set, assembly=None, transcriptome_annotation=None):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
-        predicted = ''
+        predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
         formatted_assembly = assembly
@@ -587,17 +587,13 @@ class MatrixFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_summary, file_set, assembly=None, transcriptome_annotation=None):
+    def summary(self, content_summary, file_set):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
-        predicted = ''
+        predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
-        formatted_assembly = assembly
-        if assembly and assembly == 'custom':
-            formatted_assembly = f'{assembly} assembly'
         return ' '.join(
-            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_summary]
-             if x is not None]
+            [x for x in [predicted, content_summary] if x is not None]
         )
 
 
@@ -667,7 +663,7 @@ class SignalFile(File):
     )
     def summary(self, content_summary, file_set, assembly=None, transcriptome_annotation=None):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
-        predicted = ''
+        predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
         formatted_assembly = assembly
@@ -757,7 +753,7 @@ class TabularFile(File):
     )
     def summary(self, content_type, file_set, assembly=None, transcriptome_annotation=None):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
-        predicted = ''
+        predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
         formatted_assembly = assembly
@@ -820,7 +816,7 @@ class GenomeBrowserAnnotationFile(File):
     )
     def summary(self, content_type, file_set, assembly=None, transcriptome_annotation=None):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
-        predicted = ''
+        predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
         formatted_assembly = assembly
