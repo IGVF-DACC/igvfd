@@ -218,7 +218,8 @@ def test_file_summaries(
     reference_file,
     sequence_file,
     signal_file,
-    tabular_file
+    tabular_file,
+    base_prediction_set
 ):
     testapp.patch_json(
         alignment_file['@id'],
@@ -249,6 +250,14 @@ def test_file_summaries(
     res = testapp.get(model_file['@id'])
     assert res.json.get('summary', '') == 'graph structure'
 
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'assembly': 'custom'
+        }
+    )
+    res = testapp.get(reference_file['@id'])
+    assert res.json.get('summary', '') == 'custom assembly transcriptome reference'
     testapp.patch_json(
         reference_file['@id'],
         {
@@ -297,6 +306,14 @@ def test_file_summaries(
     )
     res = testapp.get(tabular_file['@id'])
     assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 peaks'
+    testapp.patch_json(
+        tabular_file['@id'],
+        {
+            'file_set': base_prediction_set['@id']
+        }
+    )
+    res = testapp.get(tabular_file['@id'])
+    assert res.json.get('summary', '') == 'GRCh38 GENCODE 43 predictive peaks'
 
 
 def test_barcode_map_for(testapp, multiplexed_sample_v7, tabular_file_v10):
