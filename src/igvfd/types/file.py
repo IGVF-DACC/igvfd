@@ -458,9 +458,16 @@ class ReferenceFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_type, assembly=None, transcriptome_annotation=None):
+    def summary(self, content_type, file_set, assembly=None, transcriptome_annotation=None):
+        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        predicted = ''
+        if 'PredictionSet' in file_set_object['@type']:
+            predicted = 'predictive'
+        formatted_assembly = assembly
+        if assembly and assembly == 'custom':
+            formatted_assembly = f'{assembly} assembly'
         return ' '.join(
-            [x for x in [assembly, transcriptome_annotation, content_type]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_type]
              if x is not None]
         )
 
@@ -522,9 +529,16 @@ class AlignmentFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_summary, assembly=None, transcriptome_annotation=None):
+    def summary(self, content_summary, file_set, assembly=None, transcriptome_annotation=None):
+        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        predicted = ''
+        if 'PredictionSet' in file_set_object['@type']:
+            predicted = 'predictive'
+        formatted_assembly = assembly
+        if assembly and assembly == 'custom':
+            formatted_assembly = f'{assembly} assembly'
         return ' '.join(
-            [x for x in [assembly, transcriptome_annotation, content_summary]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_summary]
              if x is not None]
         )
 
@@ -573,8 +587,18 @@ class MatrixFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_summary, assembly=None, transcriptome_annotation=None):
-        return content_summary
+    def summary(self, content_summary, file_set, assembly=None, transcriptome_annotation=None):
+        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        predicted = ''
+        if 'PredictionSet' in file_set_object['@type']:
+            predicted = 'predictive'
+        formatted_assembly = assembly
+        if assembly and assembly == 'custom':
+            formatted_assembly = f'{assembly} assembly'
+        return ' '.join(
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_summary]
+             if x is not None]
+        )
 
 
 @collection(
@@ -641,9 +665,16 @@ class SignalFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_summary, assembly=None, transcriptome_annotation=None):
+    def summary(self, content_summary, file_set, assembly=None, transcriptome_annotation=None):
+        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        predicted = ''
+        if 'PredictionSet' in file_set_object['@type']:
+            predicted = 'predictive'
+        formatted_assembly = assembly
+        if assembly and assembly == 'custom':
+            formatted_assembly = f'{assembly} assembly'
         return ' '.join(
-            [x for x in [assembly, transcriptome_annotation, content_summary]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_summary]
              if x is not None]
         )
 
@@ -724,9 +755,16 @@ class TabularFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_type, assembly=None, transcriptome_annotation=None):
+    def summary(self, content_type, file_set, assembly=None, transcriptome_annotation=None):
+        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        predicted = ''
+        if 'PredictionSet' in file_set_object['@type']:
+            predicted = 'predictive'
+        formatted_assembly = assembly
+        if assembly and assembly == 'custom':
+            formatted_assembly = f'{assembly} assembly'
         return ' '.join(
-            [x for x in [assembly, transcriptome_annotation, content_type]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_type]
              if x is not None]
         )
 
@@ -780,9 +818,16 @@ class GenomeBrowserAnnotationFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_type, assembly=None, transcriptome_annotation=None):
+    def summary(self, content_type, file_set, assembly=None, transcriptome_annotation=None):
+        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        predicted = ''
+        if 'PredictionSet' in file_set_object['@type']:
+            predicted = 'predictive'
+        formatted_assembly = assembly
+        if assembly and assembly == 'custom':
+            formatted_assembly = f'{assembly} assembly'
         return ' '.join(
-            [x for x in [assembly, transcriptome_annotation, content_type]
+            [x for x in [formatted_assembly, transcriptome_annotation, predicted, content_type]
              if x is not None]
         )
 
