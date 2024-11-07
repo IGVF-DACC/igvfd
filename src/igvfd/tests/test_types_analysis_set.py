@@ -131,7 +131,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'gRNA sequencing: peaks'
+    assert res.get('summary', '') == 'Unspecified assay analysis gRNA sequencing: peaks'
     # When no MeasurementSets (even nested in AnalysisSets) are present,
     # data for other FileSet types are included in the summary only if the
     # Measurement Set is not a CRISPR screen.
