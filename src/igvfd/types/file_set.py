@@ -275,9 +275,6 @@ class AnalysisSet(FileSet):
                                     filesets_to_inspect.add(candidate_fileset)
                     elif not input_fileset.startswith('/analysis-sets/'):
                         fileset_types.add(fileset_object['file_set_type'])
-        else:
-            # If there are no inputs, state that the assay is unspecified.
-            unspecified_assay = 'Unspecified assay analysis'
 
         # Collect content_types of files.
         if files:
@@ -298,8 +295,8 @@ class AnalysisSet(FileSet):
         assay_title_phrase = ''
         if assay_titles:
             assay_title_phrase = ', '.join(sorted(assay_titles))
-        elif unspecified_assay:
-            assay_title_phrase = unspecified_assay
+        else:
+            assay_title_phrase = 'Unspecified assay analysis'
         # Add modalities to the assay titles.
         if crispr_modalities:
             modality_set = ', '.join(sorted(crispr_modalities))
