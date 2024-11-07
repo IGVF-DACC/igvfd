@@ -323,7 +323,7 @@ class AnalysisSet(FileSet):
         elif fileset_types and len(fileset_subclasses) == 1 and 'AnalysisSet' in fileset_subclasses:
             file_set_type_phrase = 'analysis'
         elif fileset_types and len(fileset_subclasses) >= 1 and 'MeasurementSet' not in fileset_subclasses:
-            if all(x in crispr_screen_terms for x in assay_terms):
+            if assay_terms and all(x in crispr_screen_terms for x in assay_terms):
                 file_set_type_phrase = ''
             else:
                 file_set_type_phrase = ', '.join(fileset_types)
