@@ -17,7 +17,7 @@ def technical_sample():
                 'title': 'Sample Material',
             },
             'sample_terms.term_name': {
-                'title': 'Sample Term'
+                'title': 'Sample'
             },
             'virtual': {
                 'title': 'Virtual'
@@ -34,8 +34,8 @@ def technical_sample():
             'construct_library_sets.associated_phenotypes.term_name': {
                 'title': 'Associated Phenotype'
             },
-            'construct_library_sets.nucleic_acid_delivery': {
-                'title': 'Delivery'
+            'nucleic_acid_delivery': {
+                'title': 'Nucleic Acid Delivery Method'
             },
             'collections': {
                 'title': 'Collection',

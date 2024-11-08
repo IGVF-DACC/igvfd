@@ -17,16 +17,16 @@ def in_vitro_system():
                 'title': 'Classification',
             },
             'sample_terms.term_name': {
-                'title': 'Sample Term'
+                'title': 'Sample'
             },
             'disease_terms.term_name': {
-                'title': 'Disease Term'
+                'title': 'Disease'
             },
             'biosample_qualifiers': {
                 'title': 'Biosample Qualifier',
             },
             'targeted_sample_term.term_name': {
-                'title': 'Targeted Sample Term',
+                'title': 'Cellular Transformation Target',
             },
             'growth_medium': {
                 'title': 'Growth Medium',
@@ -49,8 +49,8 @@ def in_vitro_system():
             'construct_library_sets.associated_phenotypes.term_name': {
                 'title': 'Associated Phenotype'
             },
-            'construct_library_sets.nucleic_acid_delivery': {
-                'title': 'Delivery'
+            'nucleic_acid_delivery': {
+                'title': 'Nucleic Acid Delivery Method'
             },
             'biomarkers.name': {
                 'title': 'Biomarker'
@@ -74,7 +74,7 @@ def in_vitro_system():
                 'title': 'Treatment Type'
             },
             'treatments.treatment_term_name': {
-                'title': 'Treatment Term Name'
+                'title': 'Treatment Name'
             },
             'modifications.cas': {
                 'title': 'Cas'
@@ -88,14 +88,11 @@ def in_vitro_system():
             'modifications.modality': {
                 'title': 'Modality'
             },
-            'modifications.tagged_protein.symbol': {
-                'title': 'CRISPR Tagged Protein'
-            },
             'modifications.degron_system': {
                 'title': 'Degron System'
             },
             'modifications.tagged_proteins.symbol': {
-                'title': 'Degron Tagged Protein'
+                'title': 'Tagged Protein'
             },
             'collections': {
                 'title': 'Collection',
@@ -180,7 +177,6 @@ def in_vitro_system():
                     'modifications.cas',
                     'modifications.cas_species',
                     'modifications.fused_domain',
-                    'modifications.tagged_protein.symbol',
                     'modifications.degron_system',
                     'modifications.tagged_proteins.symbol',
                 ]

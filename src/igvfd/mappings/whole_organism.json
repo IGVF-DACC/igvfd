@@ -1,6 +1,6 @@
 {
-    "hash": "f9caaf96182e65ad2208f396680df40f",
-    "index_name": "whole_organism_f9caaf96",
+    "hash": "13832bbd80469bd72c2adf8aa03f149e",
+    "index_name": "whole_organism_13832bbd",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -553,7 +553,7 @@
                             "guide_type": {
                                 "type": "keyword"
                             },
-                            "input_file_set_for": {
+                            "input_for": {
                                 "type": "keyword"
                             },
                             "integrated_content_files": {
@@ -1475,109 +1475,6 @@
                             },
                             "summary": {
                                 "type": "keyword"
-                            },
-                            "tagged_protein": {
-                                "properties": {
-                                    "@id": {
-                                        "type": "keyword"
-                                    },
-                                    "@type": {
-                                        "type": "keyword"
-                                    },
-                                    "aliases": {
-                                        "type": "keyword"
-                                    },
-                                    "creation_timestamp": {
-                                        "type": "keyword"
-                                    },
-                                    "dbxrefs": {
-                                        "type": "keyword"
-                                    },
-                                    "description": {
-                                        "type": "text"
-                                    },
-                                    "geneid": {
-                                        "type": "keyword"
-                                    },
-                                    "geneid_with_version": {
-                                        "type": "keyword"
-                                    },
-                                    "locations": {
-                                        "properties": {
-                                            "assembly": {
-                                                "type": "keyword"
-                                            },
-                                            "chromosome": {
-                                                "type": "keyword"
-                                            },
-                                            "end": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
-                                                "store": true,
-                                                "type": "long"
-                                            },
-                                            "start": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
-                                                "store": true,
-                                                "type": "long"
-                                            }
-                                        },
-                                        "type": "object"
-                                    },
-                                    "name": {
-                                        "type": "keyword"
-                                    },
-                                    "notes": {
-                                        "type": "text"
-                                    },
-                                    "release_timestamp": {
-                                        "type": "keyword"
-                                    },
-                                    "schema_version": {
-                                        "type": "keyword"
-                                    },
-                                    "status": {
-                                        "type": "keyword"
-                                    },
-                                    "submitted_by": {
-                                        "type": "keyword"
-                                    },
-                                    "submitter_comment": {
-                                        "type": "keyword"
-                                    },
-                                    "summary": {
-                                        "type": "keyword"
-                                    },
-                                    "symbol": {
-                                        "type": "keyword"
-                                    },
-                                    "synonyms": {
-                                        "type": "keyword"
-                                    },
-                                    "taxa": {
-                                        "type": "keyword"
-                                    },
-                                    "title": {
-                                        "type": "keyword"
-                                    },
-                                    "transcriptome_annotation": {
-                                        "type": "keyword"
-                                    },
-                                    "uuid": {
-                                        "type": "keyword"
-                                    },
-                                    "version_number": {
-                                        "type": "keyword"
-                                    }
-                                },
-                                "type": "object"
                             },
                             "tagged_proteins": {
                                 "properties": {

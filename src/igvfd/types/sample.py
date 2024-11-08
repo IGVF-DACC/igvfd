@@ -87,11 +87,9 @@ class Sample(Item):
         Path('disease_terms', include=['@id', 'term_name']),
         Path('treatments', include=['@id', 'purpose', 'treatment_type',
              'status', 'treatment_term_name', 'depletion']),
-        Path('biomarkers.gene', include=['@id', 'name', 'classification', 'quantification', 'gene', 'symbol']),
-        Path('modifications.tagged_protein', include=[
-             '@id', 'summary', 'status', 'tagged_protein', 'tagged_proteins', 'modality', 'fused_domain', 'symbol', 'cas', 'cas_species', 'degron_system']),
+        Path('biomarkers.gene', include=['@id', 'name_quantification', 'classification', 'gene', 'symbol']),
         Path('modifications.tagged_proteins', include=[
-             '@id', 'symbol']),
+             '@id', 'summary', 'status', 'tagged_proteins', 'modality', 'fused_domain', 'symbol', 'cas', 'cas_species', 'degron_system']),
         Path('institutional_certificates', include=['@id', 'certificate_identifier']),
         Path('construct_library_sets.associated_phenotypes', include=[
              '@id', 'accession', 'file_set_type', 'term_name', 'associated_phenotypes'])

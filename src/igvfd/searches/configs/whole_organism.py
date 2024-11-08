@@ -17,10 +17,10 @@ def whole_organism():
                 'title': 'Classification',
             },
             'sample_terms.term_name': {
-                'title': 'Sample Term'
+                'title': 'Sample'
             },
             'disease_terms.term_name': {
-                'title': 'Disease Term'
+                'title': 'Disease'
             },
             'embryonic': {
                 'title': 'Embryonic',
@@ -40,8 +40,8 @@ def whole_organism():
             'construct_library_sets.associated_phenotypes.term_name': {
                 'title': 'Associated Phenotype'
             },
-            'construct_library_sets.nucleic_acid_delivery': {
-                'title': 'Delivery'
+            'nucleic_acid_delivery': {
+                'title': 'Nucleic Acid Delivery Method'
             },
             'biomarkers.name': {
                 'title': 'Biomarker'
@@ -65,7 +65,7 @@ def whole_organism():
                 'title': 'Treatment Type'
             },
             'treatments.treatment_term_name': {
-                'title': 'Treatment Term Name'
+                'title': 'Treatment Name'
             },
             'modifications.cas': {
                 'title': 'Cas'
@@ -79,14 +79,11 @@ def whole_organism():
             'modifications.modality': {
                 'title': 'Modality'
             },
-            'modifications.tagged_protein.symbol': {
-                'title': 'CRISPR Tagged Protein'
-            },
             'modifications.degron_system': {
                 'title': 'Degron System'
             },
             'modifications.tagged_proteins.symbol': {
-                'title': 'Degron Tagged Protein'
+                'title': 'Tagged Protein'
             },
             'collections': {
                 'title': 'Collection',
@@ -168,7 +165,6 @@ def whole_organism():
                     'modifications.cas',
                     'modifications.cas_species',
                     'modifications.fused_domain',
-                    'modifications.tagged_protein.symbol',
                     'modifications.degron_system',
                     'modifications.tagged_proteins.symbol',
                 ]

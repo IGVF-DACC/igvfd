@@ -1,5 +1,9 @@
 ## Changelog for *`crispr_modification.json`*
 
+### Schema version 4
+
+* Rename `tagged_protein` to `tagged_proteins`.
+
 ### Schema version 3
 
 * Require `sources` if `product_id` is specified.

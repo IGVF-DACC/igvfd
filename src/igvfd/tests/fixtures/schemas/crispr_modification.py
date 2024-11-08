@@ -15,7 +15,7 @@ def crispr_modification(testapp, lab, award):
 
 @pytest.fixture
 def crispr_modification_missing_cas_sp(crispr_modification):
-    item = modification.copy()
+    item = crispr_modification.copy()
     item.pop('cas_species', None)
     item.update({
         'schema_version': '1',
@@ -26,7 +26,7 @@ def crispr_modification_missing_cas_sp(crispr_modification):
 
 @pytest.fixture
 def crispr_modification_v2(crispr_modification, source):
-    item = modification.copy()
+    item = crispr_modification.copy()
     item.update({
         'schema_version': '2',
         'source': source['@id']
@@ -48,7 +48,7 @@ def crispr_modification_activation(testapp, lab, award):
 
 @pytest.fixture
 def crispr_modification_v3(crispr_modification_activation):
-    item = modification_activation.copy()
+    item = crispr_modification_activation.copy()
     item.update({
         'schema_version': '3',
         'description': ''
@@ -106,5 +106,15 @@ def crispr_modification_v2b(crispr_modification):
     item.update({
         'schema_version': '1',
         'lot_id': '123'
+    })
+    return item
+
+
+@pytest.fixture
+def crispr_modification_v3(crispr_modification):
+    item = crispr_modification.copy()
+    item.update({
+        'schema_version': '3',
+        'tagged_protein': gene_myc_hs['@id']
     })
     return item
