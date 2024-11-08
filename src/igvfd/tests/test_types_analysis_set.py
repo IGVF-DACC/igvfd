@@ -112,7 +112,7 @@ def test_assay_titles(testapp, analysis_set_base, measurement_set_mpra, measurem
 def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, measurement_set_no_files, measurement_set_mpra, measurement_set_multiome, principal_analysis_set, tabular_file, gene_myc_hs, assay_term_atac, assay_term_crispr, primary_cell, crispr_modification):
     # With no input_file_sets and no files present, summary is based on analysis file_set_type only.
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'Unspecified assay analysis'
+    assert res.get('summary', '') == 'Unspecified assay'
     # When there are files, but no input_file_sets, summary says Unspecified.
     testapp.patch_json(
         tabular_file['@id'],
@@ -121,7 +121,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'Unspecified assay analysis: peaks'
+    assert res.get('summary', '') == 'Unspecified assay: peaks'
     # Case where the only input is an Auxiliary Set, which is not
     # linked to any Measurement Set.
     testapp.patch_json(
@@ -131,7 +131,7 @@ def test_analysis_set_summary(testapp, analysis_set_base, base_auxiliary_set, me
         }
     )
     res = testapp.get(analysis_set_base['@id']).json
-    assert res.get('summary', '') == 'Unspecified assay analysis gRNA sequencing: peaks'
+    assert res.get('summary', '') == 'Unspecified assay gRNA sequencing: peaks'
     # When no MeasurementSets (even nested in AnalysisSets) are present,
     # data for other FileSet types are included in the summary only if the
     # Measurement Set is not a CRISPR screen.

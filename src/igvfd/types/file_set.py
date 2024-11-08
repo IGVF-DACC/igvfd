@@ -296,7 +296,7 @@ class AnalysisSet(FileSet):
         if assay_titles:
             assay_title_phrase = ', '.join(sorted(assay_titles))
         else:
-            assay_title_phrase = 'Unspecified assay analysis'
+            assay_title_phrase = 'Unspecified assay'
         # Add modalities to the assay titles.
         if crispr_modalities:
             modality_set = ', '.join(sorted(crispr_modalities))
@@ -317,8 +317,6 @@ class AnalysisSet(FileSet):
         file_set_type_phrase = ''
         if fileset_types and len(fileset_subclasses) >= 1 and 'MeasurementSet' in fileset_subclasses:
             file_set_type_phrase = ''
-        elif fileset_types and len(fileset_subclasses) == 1 and 'AnalysisSet' in fileset_subclasses:
-            file_set_type_phrase = 'analysis'
         elif fileset_types and len(fileset_subclasses) >= 1 and 'MeasurementSet' not in fileset_subclasses:
             if assay_terms and all(x in crispr_screen_terms for x in assay_terms):
                 file_set_type_phrase = ''
