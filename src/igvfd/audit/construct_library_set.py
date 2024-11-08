@@ -102,7 +102,7 @@ def audit_integrated_content_files(value, system):
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Reporter libraries are expected to link to an integrated content file of MPRA sequence desings.",
+            "audit_description": "Reporter libraries are expected to link to an integrated content file of MPRA sequence designs.",
             "audit_category": "missing MPRA sequence designs",
             "audit_level": "NOT_COMPLIANT"
         }
