@@ -308,20 +308,13 @@ class AnalysisSet(FileSet):
         targeted_genes_phrase = ''
         if targeted_genes:
             targeted_genes_phrase = f'targeting {", ".join(targeted_genes)}'
-        # If the input file sets includes a Measurement Set,
-        # the file_set_types are not shown. If the input file
-        # set is only Analysis Sets, then the summary says
-        # 'analysis'. If the input_file_sets does not include
-        # Measurement or Analysis Sets, then the file_set_types
-        # are shown.
+        # The file set types are only shown if the inputs are all Auxiliary Sets
+        # and the Measurement Sets related to the Auxiliary Sets are not CRISPR screens.
         file_set_type_phrase = ''
-        if fileset_types and len(fileset_subclasses) >= 1 and 'MeasurementSet' in fileset_subclasses:
-            file_set_type_phrase = ''
-        elif fileset_types and len(fileset_subclasses) >= 1 and 'MeasurementSet' not in fileset_subclasses:
-            if assay_terms and all(x in crispr_screen_terms for x in assay_terms):
-                file_set_type_phrase = ''
-            else:
+        if fileset_types and len(fileset_subclasses) == 1 and 'AuxiliarySet' in fileset_subclasses:
+            if not (assay_terms and all(x in crispr_screen_terms for x in assay_terms)):
                 file_set_type_phrase = ', '.join(fileset_types)
+
         # Only display up to 5 unique content types.
         files_phrase = ''
         if file_content_types:
