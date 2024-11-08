@@ -80,7 +80,7 @@ class CrisprModification(Modification):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, cas, cas_species, modality, fused_domain=None, tagged_protein=None, activated=True,):
+    def summary(self, request, cas, cas_species, modality, fused_domain=None, tagged_proteins=None, activated=True,):
         crispr_label_mapping = {
             'activation': 'CRISPRa',
             'base editing': 'CRISPR base editing',
@@ -113,11 +113,13 @@ class CrisprModification(Modification):
                 species = f'{species}-'
 
         summary = f'{crispr_label_mapping[modality]} {species}{cas_label}{formatted_domain}'
-        if tagged_protein:
-            tagged_protein_object = request.embed(tagged_protein, '@@object?skip_calculated=true')
-            tagged_protein_symbol = tagged_protein_object.get('symbol')
+        if tagged_proteins:
+            gene_symbols = []
+            for protein in tagged_proteins:
+                gene_object = request.embed(protein, '@@object?skip_calculated=true')
+                gene_symbols.append(gene_object['symbol'])
 
-            summary = f'{summary} fused to {tagged_protein_symbol}'
+            summary = f'{summary} fused to {", ".join(gene_symbols)}'
 
         if not (activated):
             summary = f'inactive {summary}'

@@ -26,7 +26,9 @@
         "cas": "dCas9",
         "fused_domain": "ANTI-FLAG",
         "modality": "localizing",
-        "tagged_protein": "0c9a9a6f-02de-4072-a5a3-6628f13070f6",
+        "tagged_proteins": [
+            "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
+        ],
         "status": "in progress",
         "sources": [
             "409d724e-067e-4744-8d5b-c8f806136d80"
@@ -48,7 +50,9 @@
         "sources": [
             "409d724e-067e-4744-8d5b-c8f806136d80"
         ],
-        "tagged_protein": "4be74ff9-58d7-f2a5-910e-56d72a5db7e9",
+        "tagged_proteins": [
+            "4be74ff9-58d7-f2a5-910e-56d72a5db7e9"
+        ],
         "product_id": "addgene:158091",
         "cas_species": "Streptococcus pyogenes (Sp)"
     },
