@@ -58,7 +58,39 @@
     "dependentSchemas": {
         "$merge": [
             "file.json#/dependentSchemas"
-        ]
+        ],
+        "file_format": {
+            "comment": "bai files require their corresponding bam files specified in derived_from",
+            "if": {
+                "properties": {
+                    "file_format": {
+                        "const": "bai"
+                    }
+                }
+            },
+            "then": {
+                "required": [
+                    "derived_from"
+                ]
+            }
+        },
+        "derived_from": {
+            "comment": "bai files only expect their corresponding bam files specified in derived_from",
+            "if": {
+                "properties": {
+                    "file_format": {
+                        "const": "bai"
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "derived_from": {
+                        "maxItems": 1
+                    }
+                }
+            }
+        }
     },
     "type": "object",
     "properties": {
@@ -82,6 +114,7 @@
         },
         "file_format": {
             "enum": [
+                "bai",
                 "bam"
             ],
             "submissionExample": {
