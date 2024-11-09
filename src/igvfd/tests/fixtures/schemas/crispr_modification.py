@@ -111,7 +111,7 @@ def crispr_modification_v2b(crispr_modification):
 
 
 @pytest.fixture
-def crispr_modification_v3(crispr_modification):
+def crispr_modification_v3(crispr_modification, gene_myc_hs):
     item = crispr_modification.copy()
     item.update({
         'schema_version': '3',
