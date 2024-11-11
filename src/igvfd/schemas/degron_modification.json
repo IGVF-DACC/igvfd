@@ -75,20 +75,7 @@
             }
         },
         "tagged_proteins": {
-            "title": "Tagged Proteins",
-            "description": "The tagged proteins which are targeted for degradation.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Gene",
-                "type": "string",
-                "linkTo": "Gene"
-            },
-            "submissionExample": {
-                "appscript": "/genes/ENSG00000237415/ or igvf:gene01",
-                "igvf_utils": "/genes/ENSG00000237415/ or igvf:gene01"
-            }
+            "description": "The tagged proteins which are targeted for degradation."
         },
         "modality": {
             "title": "Modality",

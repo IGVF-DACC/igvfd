@@ -96,6 +96,22 @@
                 "appscript": "activation",
                 "igvf_utils": "activation"
             }
+        },
+        "tagged_proteins": {
+            "title": "Tagged Proteins",
+            "description": "The tagged proteins associated with this modification.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Gene",
+                "type": "string",
+                "linkTo": "Gene"
+            },
+            "submissionExample": {
+                "appscript": "/genes/ENSG00000237415/ or igvf:gene01",
+                "igvf_utils": "/genes/ENSG00000237415/ or igvf:gene01"
+            }
         }
     }
 }

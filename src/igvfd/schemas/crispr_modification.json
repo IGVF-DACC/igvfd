@@ -128,20 +128,8 @@
             }
         },
         "tagged_proteins": {
-            "title": "Tagged Proteins",
             "description": "The tagged proteins in which the Cas nuclease is fused to an antibody.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Gene",
-                "type": "string",
-                "linkTo": "Gene"
-            },
-            "submissionExample": {
-                "appscript": "/genes/ENSG00000237415/ or igvf:gene01",
-                "igvf_utils": "/genes/ENSG00000237415/ or igvf:gene01"
-            }
+            "maxItems": 1
         },
         "cas_species": {
             "title": "Cas species",
