@@ -459,7 +459,7 @@ class ReferenceFile(File):
         }
     )
     def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None):
-        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
@@ -530,7 +530,7 @@ class AlignmentFile(File):
         }
     )
     def summary(self, request, content_summary, file_set, assembly=None, transcriptome_annotation=None):
-        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
@@ -588,7 +588,7 @@ class MatrixFile(File):
         }
     )
     def summary(self, request, content_summary, file_set):
-        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
@@ -662,7 +662,7 @@ class SignalFile(File):
         }
     )
     def summary(self, request, content_summary, file_set, assembly=None, transcriptome_annotation=None):
-        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
@@ -752,7 +752,7 @@ class TabularFile(File):
         }
     )
     def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None):
-        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
@@ -815,7 +815,7 @@ class GenomeBrowserAnnotationFile(File):
         }
     )
     def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None):
-        file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
+        file_set_object = request.embed(file_set, '@@object_with_select_calculated_properties?field=@type')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
             predicted = 'predictive'
