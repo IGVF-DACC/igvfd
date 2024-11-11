@@ -329,7 +329,9 @@
                     "4mC",
                     "5hmC",
                     "5mC",
-                    "6mA"
+                    "6mA",
+                    "inosine",
+                    "pseudouridine"
                 ]
             },
             "submissionExample": {

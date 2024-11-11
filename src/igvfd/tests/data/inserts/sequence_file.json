@@ -107,7 +107,8 @@
         "content_type": "Nanopore reads",
         "base_modifications": [
             "5mC",
-            "5hmC"
+            "5hmC",
+            "inosine"
         ],
         "submitted_file_name": "/Users/igvf/igvf_files/nanopore_raw.pod5",
         "file_size": 38200183,
@@ -132,6 +133,9 @@
         "content_md5sum": "fce2b00b7c260827c76467aada46e759",
         "file_format": "pod5",
         "content_type": "Nanopore reads",
+        "base_modifications": [
+            "pseudouridine"
+        ],
         "submitted_file_name": "/Users/igvf/igvf_files/nanopore_raw",
         "file_size": 38200183,
         "upload_status": "validated",
