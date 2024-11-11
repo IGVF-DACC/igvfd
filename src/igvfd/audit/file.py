@@ -133,18 +133,29 @@ def audit_bai_alignment_files(value, system):
     check_properties_list = ['content_type', 'assembly', 'filtered', 'redacted', 'transcriptome_annotation']
     inconsistent_properties_list = []
     if value.get('file_format') == 'bai':
-        derived_from_file = value.get('derived_from')[0]
-        derived_from_file_obj = system.get('request').embed(derived_from_file, '@@object?skip_calculated=true')
-        if derived_from_file_obj.get('file_format') != 'bam':
+        if 'derived_from' not in value:
             detail = (
-                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has incorrect file in `derived_from`.')
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has no bam file in `derived_from`.')
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
         else:
-            for property in check_properties_list:
-                if value.get(property) != derived_from_file_obj.get(property):
-                    inconsistent_properties_list.append(property)
-            if inconsistent_properties_list:
-                inconsistent_properties_str = ', '.join(inconsistent_properties_list)
-                detail = (f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has the following inconsistent properties with its bam file in `derived_from`: '
-                          f'{inconsistent_properties_str}.')
+            derived_from_file = value.get('derived_from')
+            if len(derived_from_file) > 1:
+                detail = (
+                    f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has multiple files in `derived_from`.')
                 yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+            else:
+                derived_from_file_obj = system.get('request').embed(
+                    derived_from_file[0], '@@object?skip_calculated=true')
+                if derived_from_file_obj.get('file_format') != 'bam':
+                    detail = (
+                        f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has incorrect file in `derived_from`.')
+                    yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+                else:
+                    for property in check_properties_list:
+                        if value.get(property) != derived_from_file_obj.get(property):
+                            inconsistent_properties_list.append(property)
+                    if inconsistent_properties_list:
+                        inconsistent_properties_str = ', '.join(inconsistent_properties_list)
+                        detail = (f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has the following inconsistent properties with its bam file in `derived_from`: '
+                                  f'{inconsistent_properties_str}.')
+                        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))

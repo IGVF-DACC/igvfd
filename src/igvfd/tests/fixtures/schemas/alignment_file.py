@@ -60,9 +60,6 @@ def alignment_bai_file(testapp, lab, award, principal_analysis_set, reference_fi
         'redacted': False,
         'filtered': False,
         'controlled_access': False,
-        'derived_from': [
-            alignment_file['@id']
-        ]
     }
     return testapp.post_json('/alignment_file', item, status=201).json['@graph'][0]
 

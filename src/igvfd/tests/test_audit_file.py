@@ -127,7 +127,18 @@ def test_audit_external_reference_files(testapp, reference_file):
     )
 
 
-def test_audit_bai_alignment_files(testapp, reference_file, alignment_bai_file):
+def test_audit_bai_alignment_files(testapp, reference_file, alignment_file, alignment_bai_file):
+    res = testapp.get(alignment_bai_file['@id'] + '@@audit')
+    assert any(
+        audit['category'] == 'incorrect bam file'
+        for audit in res.json['audit'].get('ERROR', {})
+    )
+    testapp.patch_json(
+        alignment_bai_file['@id'],
+        {
+            'derived_from': [alignment_file['@id']]
+        }
+    )
     res = testapp.get(alignment_bai_file['@id'] + '@@audit')
     assert all(
         audit['category'] != 'incorrect bam file'
