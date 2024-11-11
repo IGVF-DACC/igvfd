@@ -458,7 +458,7 @@ class ReferenceFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_type, file_set, assembly=None, transcriptome_annotation=None):
+    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -529,7 +529,7 @@ class AlignmentFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_summary, file_set, assembly=None, transcriptome_annotation=None):
+    def summary(self, request, content_summary, file_set, assembly=None, transcriptome_annotation=None):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -575,7 +575,7 @@ class MatrixFile(File):
             'notSubmittable': True
         }
     )
-    def content_summary(self, request, principal_dimension, secondary_dimensions, content_type):
+    def content_summary(self, principal_dimension, secondary_dimensions, content_type):
         secondary_dimensions_str = f'{" by ".join(secondary_dimensions)}'
         return f'{principal_dimension} by {secondary_dimensions_str} in {content_type}'
 
@@ -587,7 +587,7 @@ class MatrixFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_summary, file_set):
+    def summary(self, request, content_summary, file_set):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -661,7 +661,7 @@ class SignalFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_summary, file_set, assembly=None, transcriptome_annotation=None):
+    def summary(self, request, content_summary, file_set, assembly=None, transcriptome_annotation=None):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -751,7 +751,7 @@ class TabularFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_type, file_set, assembly=None, transcriptome_annotation=None):
+    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
@@ -814,7 +814,7 @@ class GenomeBrowserAnnotationFile(File):
             'notSubmittable': True,
         }
     )
-    def summary(self, content_type, file_set, assembly=None, transcriptome_annotation=None):
+    def summary(self, request, content_type, file_set, assembly=None, transcriptome_annotation=None):
         file_set_object = request.embed(file_set, '@@object?skip_calculated=true')
         predicted = None
         if 'PredictionSet' in file_set_object['@type']:
