@@ -176,7 +176,7 @@ class Indexer(Construct):
                 'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
                 'RESOURCES_INDEX': self.props.resources_index,
             },
-            command=['run-invalidation-service'],
+            command=['run-bulk-invalidation-service'],
             log_driver=LogDriver.aws_logs(
                 stream_prefix='invalidation-service',
                 mode=AwsLogDriverMode.NON_BLOCKING,

@@ -94,7 +94,7 @@ services:
     volumes:
        - "./docker/wait-for-local-services-entrypoint.sh:/snovault-index/wait-for-local-services-entrypoint.sh"
     entrypoint: ./wait-for-local-services-entrypoint.sh
-    command: run-invalidation-service
+    command: run-bulk-invalidation-service
     depends_on:
       - postgres
       - opensearch
