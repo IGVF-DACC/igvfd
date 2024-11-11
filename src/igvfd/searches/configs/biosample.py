@@ -58,14 +58,11 @@ def biosample():
             'nucleic_acid_delivery': {
                 'title': 'Nucleic Acid Delivery Method'
             },
-            'biomarkers.name': {
+            'biomarkers.name_quantification': {
                 'title': 'Biomarker'
             },
             'biomarkers.classification': {
                 'title': 'Biomarker Classification'
-            },
-            'biomarkers.quantification': {
-                'title': 'Biomarker Quantification'
             },
             'biomarkers.gene.symbol': {
                 'title': 'Biomarker Gene'
@@ -172,9 +169,8 @@ def biosample():
             {
                 'title': 'Biomarker',
                 'facet_fields': [
-                    'biomarkers.name',
+                    'biomarkers.name_quantification',
                     'biomarkers.classification',
-                    'biomarkers.quantification',
                     'biomarkers.gene.symbol',
                 ]
             },
