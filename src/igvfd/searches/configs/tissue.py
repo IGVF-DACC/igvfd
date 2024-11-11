@@ -188,7 +188,8 @@ def tissue():
                     'audit.INTERNAL_ACTION.category',
                 ]
             }
-        ], 'columns': {
+        ],
+        'columns': {
             'uuid': {
                 'title': 'UUID'
             },
