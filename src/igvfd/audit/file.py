@@ -122,7 +122,7 @@ def audit_bai_alignment_files(value, system):
     '''
     [
         {
-            "audit_description": "Alignment files in bai format are expected to have their corresponding bam files in derived_from.",
+            "audit_description": "Alignment files in bai format are expected to have their corresponding bam files in `derived_from`.",
             "audit_category": "incorrect bam file",
             "audit_level": "ERROR"
         }
@@ -138,7 +138,7 @@ def audit_bai_alignment_files(value, system):
         if derived_from_file_obj.get('file_format') != 'bam':
             detail = (
                 f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has incorrect file in `derived_from`.')
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
         else:
             for property in check_properties_list:
                 if value.get(property) != derived_from_file_obj.get(property):
@@ -147,4 +147,4 @@ def audit_bai_alignment_files(value, system):
                 inconsistent_properties_str = ', '.join(inconsistent_properties_list)
                 detail = (f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has the following inconsistent properties with its bam file in `derived_from`: '
                           f'{inconsistent_properties_str}.')
-                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
