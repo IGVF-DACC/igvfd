@@ -27,3 +27,14 @@ def test_audit_identical_dimensions(
         error['category'] != 'inconsistent dimensions'
         for error in res.json['audit'].get('WARNING', [])
     )
+    testapp.patch_json(
+        matrix_file['@id'],
+        {
+            'file_format': 'cool'
+        }
+    )
+    res = testapp.get(matrix_file['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent dimensions'
+        for error in res.json['audit'].get('WARNING', [])
+    )
