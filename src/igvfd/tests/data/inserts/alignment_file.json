@@ -80,9 +80,6 @@
         "accession": "IGVFFI0003ALGN",
         "lab": "j-michael-cherry",
         "award": "HG012012",
-        "aliases": [
-            "igvf:alignments_bai_file"
-        ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "md5sum": "33fc24df347c7a615743c70b4ba6fa9a",
@@ -92,13 +89,13 @@
         "submitted_file_name": "/Users/igvf/igvf_files/alignments.bai",
         "file_size": 1500,
         "read_count": 518845675,
+        "derived_from": [
+            "f5c8a277-e11d-ea86-cc75-bc735eb802c8"
+        ],
         "upload_status": "validated",
         "file_set": "igvf:basic_analysis_set",
         "reference_files": [
             "IGVFFI0001GNRF"
-        ],
-        "derived_from": [
-            "f5c8a277-e11d-ea86-cc75-bc735eb802c8"
         ],
         "redacted": false,
         "filtered": false,
