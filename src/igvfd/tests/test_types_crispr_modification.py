@@ -22,7 +22,7 @@ def test_modification_summary(testapp, crispr_modification, gene_myc_hs):
             'cas_species': 'Streptococcus pyogenes (Sp)',
             'modality': 'localizing',
             'fused_domain': 'ANTI-FLAG',
-            'tagged_protein': gene_myc_hs['@id']
+            'tagged_proteins': [gene_myc_hs['@id']]
         }
     )
     res = testapp.get(crispr_modification['@id'])
@@ -35,7 +35,7 @@ def test_modification_summary(testapp, crispr_modification, gene_myc_hs):
             'cas_species': 'Streptococcus pyogenes (Sp)',
             'modality': 'localizing',
             'fused_domain': 'ANTI-FLAG',
-            'tagged_protein': gene_myc_hs['@id']
+            'tagged_proteins': [gene_myc_hs['@id']]
         }
     )
     res = testapp.get(crispr_modification['@id'])
@@ -48,7 +48,7 @@ def test_modification_summary(testapp, crispr_modification, gene_myc_hs):
             'cas_species': 'Streptococcus pyogenes (Sp)',
             'modality': 'localizing',
             'fused_domain': 'ANTI-FLAG',
-            'tagged_protein': gene_myc_hs['@id']
+            'tagged_proteins': [gene_myc_hs['@id']]
         }
     )
     res = testapp.get(crispr_modification['@id'])
