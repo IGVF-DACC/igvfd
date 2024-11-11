@@ -33,7 +33,7 @@ def audit_construct_library_set_associated_phenotypes(value, system):
                 f'has phenotype-associated variants listed in its `selection_criteria`, '
                 f'but no phenotype term specified in `associated_phenotypes`.'
             )
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
@@ -55,7 +55,7 @@ def audit_construct_library_set_plasmid_map(value, system):
     )
     documents = value.get('documents', [])
     if documents == []:
-        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
     else:
         for document in documents:
             document_obj = system.get('request').embed(document, '@@object?skip_calculated=true')
@@ -65,7 +65,7 @@ def audit_construct_library_set_plasmid_map(value, system):
             else:
                 continue
         if map_counter == 0:
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
@@ -160,4 +160,4 @@ def audit_construct_library_set_orf_gene(value, system):
                 f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a `small_scale_gene_list` which does not match the genes of its associated `orf_list`.'
             )
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
