@@ -29,8 +29,8 @@ def test_crispr_modification_upgrade_2_3(upgrader, crispr_modification_v2a, cris
 
 
 def test_crispr_modification_upgrade_3_4(upgrader, crispr_modification_v3):
-    targeted_proteins = crispr_modification_v3.get('targeted_protein')
+    targeted_proteins = crispr_modification_v3.get('tagged_protein')
     value = upgrader.upgrade('crispr_modification', crispr_modification_v3, current_version='3', target_version='4')
     assert value['schema_version'] == '4'
-    assert 'targeted_protein' not in value
-    assert value.get('targeted_proteins') == [targeted_proteins]
+    assert 'tagged_protein' not in value
+    assert value.get('tagged_proteins') == [targeted_proteins]
