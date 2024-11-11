@@ -715,7 +715,7 @@
                 "genes": "The construct library was designed to target specific genes.",
                 "loci": "The construct library was designed to target specific genomic loci.",
                 "genome-wide": "The construct library was designed to generally target the whole genome.",
-                "interactors": "The construct library was designed to target ",
+                "interactors": "The construct library was designed to target proteins that interact with a reference or variant proteins.",
                 "alleles": "The construct library was designed to target specific alleles of a gene.",
                 "targeton": "The construct library was designed to target a part of exons of a gene."
             },
