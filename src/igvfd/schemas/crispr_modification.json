@@ -123,11 +123,11 @@
                 "prime editing"
             ],
             "enum_descriptions": {
-                "activation": "The CRISPR system is used to upregulate the expression of a target gene.",
-                "base editing": "The CRISPR system induces double-strand breaks at specific genomic locations to directly edit base sequences.",
+                "activation": "The CRISPR system is used to upregulate the expression of a target gene via recruiting activating chromatin modifications.",
+                "base editing": "The CRISPR system induces double-strand breaks at specific genomic locations to directly edit base sequences changing one base pair to another.",
                 "cutting": "Involves using a catalytically inactive Cas protein to bind to specific DNA sequences and block transcription.",
-                "interference": "CRISPR technique aimed at completely disabling a gene's function.",
-                "knockout": "Uses the CRISPR system to localize specific proteins or functional domains to particular genomic sites.",
+                "interference": "CRISPR technique aimed at completely disabling a gene's function via recruiting silencing chromatin modifications.",
+                "knockout": "The CRISPR system is used to disrupt or delete a specific gene, rendering it non-functional.",
                 "localizing": "A form of CRSIPR gene editing that allows for precise insertions, deletions, and base conversions without creating double-strand breaks.",
                 "prime editing": "A form of CRSIPR gene editing that enables the direct conversion of one DNA base pair into another without inducing double-strand breaks."
             },
