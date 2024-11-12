@@ -78,11 +78,21 @@ class Sample(Item):
         Path('sources', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('sorted_from', include=['@id', 'accession']),
-        Path('file_sets', include=['@id', 'accession', 'summary', 'aliases', 'lab', 'status', 'assay_term']),
+        Path('file_sets', include=['@id', 'accession', 'summary', 'aliases',
+             'lab', 'status', 'preferred_assay_title', 'file_set_type']),
         Path('file_sets.lab', include=['title']),
-        Path('file_sets.assay_term', include=['term_name']),
         Path('multiplexed_in', include=['@id', 'accession']),
         Path('publications', include=['@id', 'publication_identifiers']),
+        Path('sample_terms', include=['@id', 'term_name']),
+        Path('disease_terms', include=['@id', 'term_name']),
+        Path('treatments', include=['@id', 'purpose', 'treatment_type',
+             'status', 'treatment_term_name', 'depletion']),
+        Path('biomarkers.gene', include=['@id', 'name_quantification', 'classification', 'gene', 'symbol']),
+        Path('modifications.tagged_proteins', include=[
+             '@id', 'summary', 'status', 'tagged_proteins', 'modality', 'fused_domain', 'symbol', 'cas', 'cas_species', 'degron_system']),
+        Path('institutional_certificates', include=['@id', 'certificate_identifier']),
+        Path('construct_library_sets.associated_phenotypes', include=[
+             '@id', 'accession', 'file_set_type', 'term_name', 'associated_phenotypes'])
     ]
 
     audit_inherit = [
@@ -202,13 +212,7 @@ class Biosample(Sample):
     schema = load_schema('igvfd:schemas/biosample.json')
     rev = Sample.rev | {'parts': ('Biosample', 'part_of'),
                         'pooled_in': ('Biosample', 'pooled_from')}
-    embedded_with_frame = Sample.embedded_with_frame + [
-        Path('sample_terms', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
-        Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
-        Path('modifications', include=['@id', 'modality', 'summary', 'status']),
-        Path('institutional_certificates', include=['@id', 'certificate_identifier'])
-    ]
+    embedded_with_frame = Sample.embedded_with_frame
 
     audit_inherit = Sample.audit_inherit + [
         'disease_terms',
@@ -610,6 +614,7 @@ class InVitroSystem(Biosample):
     rev = Biosample.rev | {'demultiplexed_to': ('InVitroSystem', 'demultiplexed_from')}
     embedded_with_frame = Biosample.embedded_with_frame + [
         Path('cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
+        Path('targeted_sample_term', include=['@id', 'term_name']),
         Path('originated_from', include=['@id', 'accession']),
     ]
     audit_inherit = Biosample.audit_inherit
@@ -680,8 +685,18 @@ class Tissue(Biosample):
 class TechnicalSample(Sample):
     item_type = 'technical_sample'
     schema = load_schema('igvfd:schemas/technical_sample.json')
-    embedded_with_frame = Sample.embedded_with_frame + [
+    embedded_with_frame = [
+        Path('award', include=['@id', 'component']),
+        Path('lab', include=['@id', 'title']),
+        Path('sources', include=['@id', 'title']),
+        Path('submitted_by', include=['@id', 'title']),
+        Path('sorted_from', include=['@id', 'accession']),
+        Path('file_sets', include=['@id', 'accession', 'summary', 'aliases',
+             'lab', 'status', 'preferred_assay_title', 'file_set_type']),
+        Path('file_sets.lab', include=['title']),
+        Path('publications', include=['@id', 'publication_identifiers']),
         Path('sample_terms', include=['@id', 'term_name']),
+        Path('construct_library_sets.associated_phenotypes', include=['@id', 'accession', 'file_set_type', 'term_name'])
     ]
     audit_inherit = Sample.audit_inherit
     set_status_up = Biosample.set_status_up + []
@@ -795,16 +810,11 @@ class MultiplexedSample(Sample):
     item_type = 'multiplexed_sample'
     schema = load_schema('igvfd:schemas/multiplexed_sample.json')
     embedded_with_frame = Sample.embedded_with_frame + [
-        Path('sample_terms', include=['@id', 'term_name']),
-        Path('disease_terms', include=['@id', 'term_name']),
         Path('multiplexed_samples', include=['@id', 'accession', '@type',
              'summary', 'sample_terms', 'construct_library_sets', 'disease_terms', 'donors', 'status']),
         Path('multiplexed_samples.sample_terms', include=['@id', 'term_name']),
         Path('multiplexed_samples.disease_terms', include=['@id', 'term_name']),
         Path('multiplexed_samples.donors', include=['@id', 'accession']),
-        Path('treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
-        Path('modifications', include=['@id', 'modality', 'summary', 'status']),
-        Path('construct_library_sets', include=['@id', 'accession'])
     ]
     audit_inherit = Biosample.audit_inherit
     set_status_up = Biosample.set_status_up + [

@@ -1,6 +1,6 @@
 {
-    "hash": "0a841d00544bc779e8ac2dd2a4a114ee",
-    "index_name": "measurement_set_0a841d00",
+    "hash": "3a23a5944b297e9e7a65c16df6b77a93",
+    "index_name": "measurement_set_3a23a594",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -2988,9 +2988,6 @@
                                         "type": "keyword"
                                     },
                                     "summary": {
-                                        "type": "keyword"
-                                    },
-                                    "tagged_protein": {
                                         "type": "keyword"
                                     },
                                     "tagged_proteins": {

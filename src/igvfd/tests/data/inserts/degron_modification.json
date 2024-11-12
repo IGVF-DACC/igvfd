@@ -11,10 +11,11 @@
             "265a645b-7ed3-496f-85f0-4a524dbe8b2d"
         ],
         "modality": "degradation",
-        "status": "in progress",
+        "status": "released",
         "sources": [
             "b40f24ee-8803-4937-9223-1df3a6bf3cd9"
         ],
+        "release_timestamp": "2024-10-06T12:34:56Z",
         "product_id": "addgene:987261"
     },
     {
@@ -29,10 +30,11 @@
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
         ],
         "modality": "degradation",
-        "status": "in progress",
+        "status": "released",
         "sources": [
             "b40f24ee-8803-4937-9223-1df3a6bf3cd9"
         ],
+        "release_timestamp": "2024-10-06T12:34:56Z",
         "product_id": "addgene:858090",
         "lot_id": "100-A"
     }

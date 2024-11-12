@@ -50,7 +50,7 @@
         ],
         "modifications": [
             "98cbd059-18a7-2857-bc2b-b729489fa458",
-            "37b92ec6-c05e-4360-ac2a-8a924490e83e"
+            "b4a370ee-18a7-2857-bc2b-b157d05f4458"
         ],
         "virtual": false,
         "protocols": [
@@ -144,7 +144,10 @@
         "cellular_sub_pool": "8A",
         "sorted_from": "/in_vitro_system/3de8faf0-7a25-11ed-a1eb-0242ac120002/",
         "sorted_from_detail": "test insert description",
-        "virtual": false
+        "virtual": false,
+        "construct_library_sets": [
+            "igvf:basic_construct_library_set_1"
+        ]
     },
     {
         "uuid": "390c2a4e-b700-11ed-afa1-0242ac120002",
@@ -237,6 +240,9 @@
         ],
         "demultiplexed_from": "IGVFSM0001AAAZ",
         "growth_medium": "DMEM with serum",
-        "virtual": false
+        "virtual": false,
+        "biomarkers": [
+            "igvf:marker_gene"
+        ]
     }
 ]

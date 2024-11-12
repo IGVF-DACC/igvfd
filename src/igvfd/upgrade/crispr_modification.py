@@ -39,3 +39,11 @@ def crispr_modification_2_3(value, system):
             del value['lot_id']
     if notes:
         value['notes'] = notes.strip()
+
+
+@upgrade_step('crispr_modification', '3', '4')
+def crispr_modification_3_4(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-1908
+    if 'tagged_protein' in value:
+        value['tagged_proteins'] = [value['tagged_protein']]
+        del value['tagged_protein']

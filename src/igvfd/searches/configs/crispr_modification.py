@@ -81,8 +81,8 @@ def crispr_modification():
             'fused_domain': {
                 'title': 'Fused Domain'
             },
-            'tagged_protein': {
-                'title': 'Tagged Protein'
+            'tagged_proteins': {
+                'title': 'Tagged Proteins'
             },
             'product_id': {
                 'title': 'Product ID'
