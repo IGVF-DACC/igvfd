@@ -373,12 +373,11 @@ def audit_auxiliary_set_construct_library_set_files(value, system):
 @audit_checker('MeasurementSet', frame='object')
 @audit_checker('AuxiliarySet', frame='object')
 @audit_checker('ConstructLibrarySet', frame='object')
-@audit_checker('CuratedSet', frame='object')
 def audit_unexpected_virtual_samples(value, system):
     '''
     [
         {
-            "audit_description": "Only prediction sets and analysis sets are expected to link to virtual samples.",
+            "audit_description": "Only curated sets, prediction sets and analysis sets are expected to link to virtual samples.",
             "audit_category": "unexpected sample",
             "audit_level": "ERROR"
         }
