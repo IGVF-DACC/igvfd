@@ -122,7 +122,7 @@ def audit_bai_alignment_files(value, system):
     '''
     [
         {
-            "audit_description": "Alignment files in bai format are expected to have their corresponding bam files in `derived_from`.",
+            "audit_description": "Alignment files in bai format are expected to have their corresponding bam file in `derived_from`.",
             "audit_category": "incorrect bam file",
             "audit_level": "ERROR"
         }
