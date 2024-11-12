@@ -20,17 +20,17 @@ def make_test_app(app):
 
 
 def wait_for_indexing_poll(testapp):
-    double_check_number = 5
+    double_check_number = 3
     while True:
         print('Waiting for indexing', double_check_number)
         is_indexing = bool(testapp.get('/indexer-info').json['is_indexing'])
         if is_indexing:
-            double_check_number = 5
+            double_check_number = 3
         else:
             double_check_number -= 1
         if double_check_number <= 0:
             break
-        time.sleep(11)
+        time.sleep(10)
 
 
 def wait_for_opensearch(app):

@@ -97,21 +97,26 @@ def test_multitype_report_download_href(workbook, testapp):
     res = testapp.get('/multireport.tsv?type=Image&field=%40id&field=attachment.href')
     lines = res.text.splitlines()
     server_url = res.headers['X-Request-URL'].split('/multireport.tsv?')[0]
-    id = lines[2].split('\t')[0]
-    full_href = server_url + id + '@@download/attachment/h3k4me3_millipore_07-473_lot_DAM1651667_WB.png'
-    assert lines[2].split('\t')[1] == full_href
+    for line in lines:
+        if '@@download/attachment/h3k4me3_millipore_07-473_lot_DAM1651667_WB.png' in line:
+            at_id = line.split('\t')[0]
+            full_href = server_url + at_id + '@@download/attachment/h3k4me3_millipore_07-473_lot_DAM1651667_WB.png'
+            break
+    assert line.split('\t')[1] == full_href
 
     res = testapp.get('/multireport.tsv?type=Image&field=%40id&field=attachment')
     lines = res.text.splitlines()
     server_url = res.headers['X-Request-URL'].split('/multireport.tsv?')[0]
-    id = lines[2].split('\t')[0]
-    full_href = server_url + id + '@@download/attachment/h3k4me3_millipore_07-473_lot_DAM1651667_WB.png'
-    assert full_href in lines[2].split('\t')[1]
+    for line in lines:
+        if '@@download/attachment/h3k4me3_millipore_07-473_lot_DAM1651667_WB.png' in line:
+            at_id = line.split('\t')[0]
+            full_href = server_url + at_id + '@@download/attachment/h3k4me3_millipore_07-473_lot_DAM1651667_WB.png'
+            break
+    assert full_href in line.split('\t')[1]
 
     res = testapp.get('/multireport.tsv?type=AnalysisSet&field=%40id&field=files.href&donors.taxa=Homo+sapiens')
     lines = res.text.splitlines()
     server_url = res.headers['X-Request-URL'].split('/multireport.tsv?')[0]
-    id = lines[2].split('\t')[0]
     full_href = server_url + '/reference-files/IGVFFI0001SQBR/@@download/IGVFFI0001SQBR.txt.gz'
     assert full_href in lines[2].split('\t')[1]
     full_href = server_url + '/reference-files/IGVFFI0001SQBZ/@@download/IGVFFI0001SQBZ.gtf.gz'
