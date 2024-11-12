@@ -1,6 +1,6 @@
 {
-    "hash": "fa2bdc87ac7f7f9517ebae4e37822447",
-    "index_name": "analysis_step_fa2bdc87",
+    "hash": "6080959b83db976f41f77d9f1543ebe8",
+    "index_name": "analysis_step_6080959b",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -615,6 +615,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

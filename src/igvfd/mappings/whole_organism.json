@@ -1,6 +1,6 @@
 {
-    "hash": "13832bbd80469bd72c2adf8aa03f149e",
-    "index_name": "whole_organism_13832bbd",
+    "hash": "4b8d821f2bd6478ac2e838a594fd81e2",
+    "index_name": "whole_organism_4b8d821f",
     "item_type": "whole_organism",
     "mapping": {
         "dynamic_templates": [
@@ -2776,6 +2776,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

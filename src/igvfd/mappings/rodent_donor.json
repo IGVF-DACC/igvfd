@@ -1,6 +1,6 @@
 {
-    "hash": "bf4ea0594942f0d63463e421222786bc",
-    "index_name": "rodent_donor_bf4ea059",
+    "hash": "33746140c07268a40b4da457593c468f",
+    "index_name": "rodent_donor_33746140",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -837,6 +837,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

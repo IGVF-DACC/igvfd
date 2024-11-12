@@ -1,6 +1,6 @@
 {
-    "hash": "ff6c0110a73380cb3804d96cd8655189",
-    "index_name": "auxiliary_set_ff6c0110",
+    "hash": "141f041a31da6772854b8eebeb8ffeeb",
+    "index_name": "auxiliary_set_141f041a",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -2202,6 +2202,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

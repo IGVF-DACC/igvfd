@@ -1,6 +1,6 @@
 {
-    "hash": "aaa9795775aed695f5bfc0573f3e4531",
-    "index_name": "award_aaa97957",
+    "hash": "60d919465efbad339455fdb0418419fc",
+    "index_name": "award_60d91946",
     "item_type": "award",
     "mapping": {
         "dynamic_templates": [
@@ -314,6 +314,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

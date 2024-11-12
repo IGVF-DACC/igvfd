@@ -1,6 +1,6 @@
 {
-    "hash": "98cc8336e48806bca67fd661f30dd636",
-    "index_name": "access_key_98cc8336",
+    "hash": "2a7eaa21e0d6d5cb33f6f86c7fbf798c",
+    "index_name": "access_key_2a7eaa21",
     "item_type": "access_key",
     "mapping": {
         "dynamic_templates": [
@@ -289,6 +289,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

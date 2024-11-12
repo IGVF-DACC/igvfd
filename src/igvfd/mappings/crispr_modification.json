@@ -1,6 +1,6 @@
 {
-    "hash": "3dad3991accfd0a30ff85dacc9f118e4",
-    "index_name": "crispr_modification_3dad3991",
+    "hash": "b205826034134dc0be6d765ddbf8d6de",
+    "index_name": "crispr_modification_b2058260",
     "item_type": "crispr_modification",
     "mapping": {
         "dynamic_templates": [
@@ -461,6 +461,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

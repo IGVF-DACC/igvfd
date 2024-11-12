@@ -1,6 +1,6 @@
 {
-    "hash": "c98d236db7a1b337cc682c0e37cc9eb1",
-    "index_name": "testing_key_c98d236d",
+    "hash": "97233311eb3a2f134535dc05e0abef85",
+    "index_name": "testing_key_97233311",
     "item_type": "testing_key",
     "mapping": {
         "dynamic_templates": [
@@ -191,6 +191,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

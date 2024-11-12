@@ -1,6 +1,6 @@
 {
-    "hash": "b8a3872fe50e49f54571b421dade990c",
-    "index_name": "construct_library_set_b8a3872f",
+    "hash": "a30ec7473f606b9edf94827908a71355",
+    "index_name": "construct_library_set_a30ec747",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -3028,6 +3028,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

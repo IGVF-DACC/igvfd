@@ -1,6 +1,6 @@
 {
-    "hash": "4e5430e702d0832f566549e9463c0e9b",
-    "index_name": "assay_term_4e5430e7",
+    "hash": "b181207e2cf1ac6b45c0c3d17ec8fe95",
+    "index_name": "assay_term_b181207e",
     "item_type": "assay_term",
     "mapping": {
         "dynamic_templates": [
@@ -322,6 +322,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

@@ -1,6 +1,6 @@
 {
-    "hash": "d2521034b7bc9f7f55efbeff99ac433c",
-    "index_name": "lab_d2521034",
+    "hash": "af620df718394082a64fc7a1ed55b12a",
+    "index_name": "lab_af620df7",
     "item_type": "lab",
     "mapping": {
         "dynamic_templates": [
@@ -368,6 +368,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

@@ -1,6 +1,6 @@
 {
-    "hash": "7cee25eeb99ab9b68bdeb1074d521398",
-    "index_name": "testing_link_target_7cee25ee",
+    "hash": "8fe1b23093d7cdbef72113914e736ecd",
+    "index_name": "testing_link_target_8fe1b230",
     "item_type": "testing_link_target",
     "mapping": {
         "dynamic_templates": [
@@ -217,6 +217,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

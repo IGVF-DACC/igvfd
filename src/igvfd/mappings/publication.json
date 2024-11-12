@@ -1,6 +1,6 @@
 {
-    "hash": "21a72c7cb7f15a85f5fa6c24eaa5f8f1",
-    "index_name": "publication_21a72c7c",
+    "hash": "0496be293540353138df4c1ad0bc8a63",
+    "index_name": "publication_0496be29",
     "item_type": "publication",
     "mapping": {
         "dynamic_templates": [
@@ -520,6 +520,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

@@ -1,6 +1,6 @@
 {
-    "hash": "4dc55eb02a3fb132a05e3cf2eff8d40f",
-    "index_name": "document_4dc55eb0",
+    "hash": "07a02ee63ecf18235ecc893a3e4eb447",
+    "index_name": "document_07a02ee6",
     "item_type": "document",
     "mapping": {
         "dynamic_templates": [
@@ -471,6 +471,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

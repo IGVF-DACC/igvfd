@@ -1,6 +1,6 @@
 {
-    "hash": "509524fcc30674c8434e9fc770566263",
-    "index_name": "phenotype_term_509524fc",
+    "hash": "96c3ad62bbdeb17f35570b6f561b4193",
+    "index_name": "phenotype_term_96c3ad62",
     "item_type": "phenotype_term",
     "mapping": {
         "dynamic_templates": [
@@ -310,6 +310,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

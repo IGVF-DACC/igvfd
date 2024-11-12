@@ -1,6 +1,6 @@
 {
-    "hash": "ac22c8103cbb18cc7aec4323e35f72b6",
-    "index_name": "gene_ac22c810",
+    "hash": "5964f4fe3a64cac1ab9721490f9340d3",
+    "index_name": "gene_5964f4fe",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -347,6 +347,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

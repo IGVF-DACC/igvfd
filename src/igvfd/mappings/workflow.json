@@ -1,6 +1,6 @@
 {
-    "hash": "81ad7e931e2373d4af40c45bb208beef",
-    "index_name": "workflow_81ad7e93",
+    "hash": "7a80f57335029b15e7d0e3e738ee298c",
+    "index_name": "workflow_7a80f573",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -956,6 +956,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

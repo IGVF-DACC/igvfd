@@ -1,6 +1,6 @@
 {
-    "hash": "513b73ec6752ca2d84241c2b1013fd1d",
-    "index_name": "test_igvf_item_513b73ec",
+    "hash": "3ed449be6c3aecc92ca90485dbd6f761",
+    "index_name": "test_igvf_item_3ed449be",
     "item_type": "test_igvf_item",
     "mapping": {
         "dynamic_templates": [
@@ -197,6 +197,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }
