@@ -35,9 +35,6 @@
         "schema_version": {
             "default": "4"
         },
-        "status": {
-            "default": "released"
-        },
         "caption": {
             "title": "Caption",
             "type": "string",
