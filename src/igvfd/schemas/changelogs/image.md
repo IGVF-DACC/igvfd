@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Change default value of `status` to `in progress`.
 * Update calculation of `summary`.
 
 ### Schema version 4
