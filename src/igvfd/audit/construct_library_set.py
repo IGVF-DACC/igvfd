@@ -33,7 +33,7 @@ def audit_construct_library_set_associated_phenotypes(value, system):
                 f'has phenotype-associated variants listed in its `selection_criteria`, '
                 f'but no phenotype term specified in `associated_phenotypes`.'
             )
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
@@ -55,7 +55,7 @@ def audit_construct_library_set_plasmid_map(value, system):
     )
     documents = value.get('documents', [])
     if documents == []:
-        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
     else:
         for document in documents:
             document_obj = system.get('request').embed(document, '@@object?skip_calculated=true')
@@ -65,7 +65,7 @@ def audit_construct_library_set_plasmid_map(value, system):
             else:
                 continue
         if map_counter == 0:
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
@@ -93,30 +93,43 @@ def audit_construct_library_set_scope(value, system):
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
-def audit_construct_library_set_guide_design(value, system):
+def audit_integrated_content_files(value, system):
     '''
     [
         {
             "audit_description": "Guide libraries are expected to link to an integrated content file of guide RNA sequences.",
             "audit_category": "missing guide RNA sequences",
             "audit_level": "NOT_COMPLIANT"
+        },
+        {
+            "audit_description": "Reporter libraries are expected to link to an integrated content file of MPRA sequence designs.",
+            "audit_category": "missing MPRA sequence designs",
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''
-    audit_message = get_audit_message(audit_construct_library_set_guide_design)
-    if value.get('file_set_type', '') == 'guide library':
-        integrated_content_files = value.get('integrated_content_files', '')
+    audit_message_guide = get_audit_message(audit_integrated_content_files, index=0)
+    audit_message_reporter = get_audit_message(audit_integrated_content_files, index=1)
+    library_expectation = {
+        'guide library': ('guide RNA sequences', audit_message_guide),
+        'reporter library': ('MPRA sequence designs', audit_message_reporter),
+    }
+    integrated_content_files = value.get('integrated_content_files', '')
+    library_type = value.get('file_set_type', '')
+    if library_type in library_expectation:
+        file_expectation = library_expectation[library_type][0]
+        audit_message = library_expectation[library_type][1]
         if integrated_content_files:
             files = [system.get('request').embed(file, '@@object?skip_calculated=true')
                      for file in integrated_content_files]
-            if not ([file for file in files if file['content_type'] == 'guide RNA sequences']):
+            if not ([file for file in files if file['content_type'] == file_expectation]):
                 detail = (f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} has no '
-                          f'linked files in `integrated_content_files` with `content_type` "guide RNA sequences".')
-                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+                          f'linked files in `integrated_content_files` with `content_type` {file_expectation}.')
+                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
         else:
             detail = (f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} has no '
                       f'`integrated_content_files`.')
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
 @audit_checker('ConstructLibrarySet', frame='object')
@@ -147,4 +160,4 @@ def audit_construct_library_set_orf_gene(value, system):
                 f'Construct library set {audit_link(path_to_text(value["@id"]), value["@id"])} '
                 f'has a `small_scale_gene_list` which does not match the genes of its associated `orf_list`.'
             )
-            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")})', level=audit_message.get('audit_level', ''))
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
