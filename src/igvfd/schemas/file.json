@@ -249,6 +249,7 @@
                         "properties": {
                             "transcriptome_annotation": {
                                 "enum": [
+                                    "GENCODE 32",
                                     "GENCODE 40",
                                     "GENCODE 41",
                                     "GENCODE 42",

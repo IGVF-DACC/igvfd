@@ -75,7 +75,7 @@
         ],
         "geneid": "ENSG00000154832",
         "version_number": "2",
-        "transcriptome_annotation": "GENCODE 42",
+        "transcriptome_annotation": "GENCODE 32",
         "name": "CXXC finger protein 1",
         "taxa": "Homo sapiens",
         "status": "released",

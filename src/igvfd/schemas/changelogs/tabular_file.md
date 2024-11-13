@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Extend `transcriptome_annotation` enum list to include `GENCODE 32`.
 * Extend `content_type` enum list to include `differential chromatin contact quantifications`.
 * Extend `content_type` enum list to include `variant functional predictions`.
 * Extend `assembly` enum list to include `custom`.

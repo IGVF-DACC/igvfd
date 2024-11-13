@@ -62,7 +62,7 @@
         ],
         "file_set": "igvf:analysis_set_with_input",
         "assembly": "GRCh38",
-        "transcriptome_annotation": "GENCODE 40",
+        "transcriptome_annotation": "GENCODE 32",
         "dbxrefs": [
             "GENCODE:Release 40"
         ],
