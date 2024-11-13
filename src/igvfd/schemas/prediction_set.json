@@ -244,13 +244,18 @@
         },
         "scope": {
             "title": "Prediction Scope",
-            "description": "The scope or scale that this prediction set is designed to target. If the scope is across gene(s) or loci, these will need to be specified in the genes or loci property.",
+            "description": "The scope or scale that this prediction set is designed to target.",
             "type": "string",
             "enum": [
                 "genes",
                 "loci",
                 "genome-wide"
             ],
+            "enum_descriptions": {
+                "genes": "The prediction set is predicting upon specific genes.",
+                "loci": "The prediction set is predicting upon specific loci.",
+                "genome-wide": "The prediction set is predicting upon the whole genome."
+            },
             "submissionExample": {
                 "appscript": "genes",
                 "igvf_utils": "genes"

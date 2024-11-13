@@ -300,6 +300,7 @@
         "purpose": {
             "title": "Purpose",
             "type": "string",
+            "description": "The intended purpose for treating the samples.",
             "enum": [
                 "activation",
                 "agonist",
@@ -311,7 +312,17 @@
                 "selection",
                 "stimulation"
             ],
-            "description": "The intended purpose for treating the samples; Activation: treatment is known to activate a pathway in the biosample; Agonist: a substance which is known to initiate a physiological response when combined with a receptor; Antagonist: a substance that is known to interfere with or inhibits the physiological action of another; Control: treatment applied to a sample for control purposes; Differentiation: treatment that is applied to convert a less specialized cell to a more specialized cell; De-differentiation: treatment used to reprogram differentiated cells back to less determined cell states; Perturbation: treatment applied to the sample in order to study the effect of its application; Selection: treatment used to affect biosample in a way that can be used to distinguish cells and select for in the downstream steps; Stimulation: treatment applied to stimulate a cellular pathway.",
+            "enum_descriptions": {
+                "activation": "The treatment is known to activate a pathway or modification in the biosample.",
+                "agonist": "A substance which is known to initiate a physiological response when combined with a receptor.",
+                "antagonist": "A substance that is known to interfere with or inhibits the physiological action of another.",
+                "control": "A treatment applied to a sample for control purposes.",
+                "differentiation": "A treatment that is applied to convert a less specialized cell to a more specialized cell.",
+                "de-differentiation": "A treatment used to reprogram differentiated cells back to less determined cell states.",
+                "perturbation": "A treatment applied to the sample in order to study the effect of its application.",
+                "selection": "A treatment used to affect biosample in a way that can be used to distinguish cells and select for in the downstream steps.",
+                "stimulation": "A treatment applied to stimulate a cellular pathway."
+            },
             "submissionExample": {
                 "appscript": "activation",
                 "igvf_utils": "activation"
@@ -366,12 +377,17 @@
         "treatment_type": {
             "title": "Treatment Type",
             "type": "string",
+            "description": "The classification of treatment agent that specifies its exact molecular nature. ",
             "enum": [
                 "chemical",
                 "protein",
                 "environmental"
             ],
-            "description": "The classification of treatment agent that specifies its exact molecular nature. Chemical type refers to (natural or synthetic) organic/inorganic compounds and also includes drugs, while protein type is restricted to active protein biomolecules that are naturally or artifically synthesized via cellular translation mechanism of converting DNA into a protein. Environmental type referes to other external conditions that directly influence biological processes or reactions within a given environment. Example of chemical type: lactate, ethanol,hydrocortisone, LPS etc. Example of protein type: Interferons, interlukin, antibodies, etc. Example of chemical type: stiffness.",
+            "enum_descriptions": {
+                "chemical": "Refers to (natural or synthetic) organic/inorganic compounds and also includes drugs. Example of chemical type: lactate, ethanol,hydrocortisone, LPS etc.",
+                "protein": "Restricted to active protein biomolecules that are naturally or artifically synthesized via cellular translation mechanism of converting DNA into a protein. Example of protein type: Interferons, interlukin, antibodies, etc.",
+                "environmental": "Environmental type referes to other external conditions that directly influence biological processes or reactions within a given environment. Example of chemical type: stiffness."
+            },
             "submissionExample": {
                 "appscript": "chemical",
                 "igvf_utils": "chemical"

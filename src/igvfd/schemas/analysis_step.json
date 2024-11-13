@@ -67,7 +67,23 @@
                     "signal normalization",
                     "spatial feature detection",
                     "variant annotation"
-                ]
+                ],
+                "enum_descriptions": {
+                    "alignment": "The aligning of reads to a reference genome or transcriptome.",
+                    "barcode mapping generation": "The process of assigning barcode sequences to specific reads for identification and separation of samples.",
+                    "base calling": "The conversion of raw sequencing signals into nucleotide sequences, determining the identity of each base in the reads.",
+                    "counts normalization": "Adjusting raw read counts to account for biases in sequencing depth or composition.",
+                    "file format conversion": "The conversion of data files from one file format to another.",
+                    "filtering": "The removal of low-quality reads or sequences based on specified criteria.",
+                    "interaction calling": "Identifying and characterizing interactions between genomic elements.",
+                    "merging": "Combining multiple datasets or files into a single dataset.",
+                    "peak calling": "The identification of regions in the genome where there is a significant enrichment of reads.",
+                    "quantification": "The measurement of gene expression or other features based on read counts.",
+                    "signal generation": "The process of generating a continuous signal representation of aligned sequencing data.",
+                    "signal normalization": "Adjusting the generated signal to remove systematic biases.",
+                    "spatial feature detection": "The identification of spatially resolved features in genomic data, often used in spatial transcriptomics.",
+                    "variant annotation": "The process of providing additional information about genomic variants."
+                }
             },
             "submissionExample": {
                 "appscript": "[\"alignment\", \"file format conversion\"]",
