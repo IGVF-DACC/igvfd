@@ -74,5 +74,31 @@
         "filtered": false,
         "redacted": false,
         "controlled_access": true
+    },
+    {
+        "uuid": "cebf0a43-1c9c-4937-91a0-45b903f3b7cc",
+        "accession": "IGVFFI0003ALGN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "33fc24df347c7a615743c70b4ba6fa9a",
+        "file_format": "bai",
+        "assembly": "GRCh38",
+        "content_type": "alignments",
+        "submitted_file_name": "/Users/igvf/igvf_files/alignments.bai",
+        "file_size": 1500,
+        "read_count": 518845675,
+        "derived_from": [
+            "f5c8a277-e11d-ea86-cc75-bc735eb802c8"
+        ],
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "redacted": false,
+        "filtered": false,
+        "controlled_access": false
     }
 ]

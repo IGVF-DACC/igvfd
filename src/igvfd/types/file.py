@@ -39,6 +39,7 @@ from igvfd.upload_credentials import UploadCredentials
 
 
 FILE_FORMAT_TO_FILE_EXTENSION = {
+    'bai': '.bai',
     'bam': '.bam',
     'bed': '.bed.gz',
     'bedpe': '.bedpe.gz',

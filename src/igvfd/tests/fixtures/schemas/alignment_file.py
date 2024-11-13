@@ -44,6 +44,27 @@ def controlled_access_alignment_file(testapp, lab, award, principal_analysis_set
 
 
 @pytest.fixture
+def alignment_bai_file(testapp, lab, award, principal_analysis_set, reference_file, alignment_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '33fc24df347c7a615743c70b4ba6fa9a',
+        'file_format': 'bai',
+        'file_set': principal_analysis_set['@id'],
+        'file_size': 1003,
+        'assembly': 'GRCh38',
+        'content_type': 'alignments',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'redacted': False,
+        'filtered': False,
+        'controlled_access': False,
+    }
+    return testapp.post_json('/alignment_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def alignment_file_v1(alignment_file):
     item = alignment_file.copy()
     item.update({

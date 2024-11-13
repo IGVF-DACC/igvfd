@@ -106,7 +106,7 @@ def audit_external_reference_files(value, system):
         }
     ]
     '''
-    audit_message = get_audit_message(audit_external_identifiers)
+    audit_message = get_audit_message(audit_external_reference_files)
     object_type = space_in_words(value['@type'][0]).capitalize()
     if value.get('external'):
         if 'dbxrefs' not in value:
@@ -115,3 +115,47 @@ def audit_external_reference_files(value, system):
                 f'but does not have identifier(s) from an external resource listed in `dbxrefs`.'
             )
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('AlignmentFile', frame='object')
+def audit_bai_alignment_files(value, system):
+    '''
+    [
+        {
+            "audit_description": "Alignment files in bai format are expected to have their corresponding bam file in `derived_from`.",
+            "audit_category": "incorrect bam file",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    audit_message = get_audit_message(audit_bai_alignment_files)
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    check_properties_list = ['content_type', 'assembly', 'filtered', 'redacted', 'transcriptome_annotation']
+    inconsistent_properties_list = []
+    if value.get('file_format') == 'bai':
+        if 'derived_from' not in value:
+            detail = (
+                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has no bam file in `derived_from`.')
+            yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+        else:
+            derived_from_file = value.get('derived_from')
+            if len(derived_from_file) > 1:
+                detail = (
+                    f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has multiple files in `derived_from`.')
+                yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+            else:
+                derived_from_file_obj = system.get('request').embed(
+                    derived_from_file[0], '@@object?skip_calculated=true')
+                if derived_from_file_obj.get('file_format') != 'bam':
+                    detail = (
+                        f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has incorrect file in `derived_from`.')
+                    yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+                else:
+                    for property in check_properties_list:
+                        if value.get(property) != derived_from_file_obj.get(property):
+                            inconsistent_properties_list.append(property)
+                    if inconsistent_properties_list:
+                        inconsistent_properties_str = ', '.join(inconsistent_properties_list)
+                        detail = (f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} has the following inconsistent properties with its bam file in `derived_from`: '
+                                  f'{inconsistent_properties_str}.')
+                        yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
