@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 4
 
-* Remove default `status`.
+* Change default value of `status` to `in progress`.
 * Add `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Add calculated property `assay_titles`.
