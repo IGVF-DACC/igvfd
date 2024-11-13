@@ -246,6 +246,45 @@
                                         }
                                     ]
                                 }
+                            },
+                            {
+                                "required": [
+                                    "control_type"
+                                ],
+                                "properties": {
+                                    "scope": {
+                                        "const": "control"
+                                    }
+                                },
+                                "not": {
+                                    "anyOf": [
+                                        {
+                                            "required": [
+                                                "guide_type"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "tiling_modality"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "average_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "lower_bound_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "upper_bound_guide_coverage"
+                                            ]
+                                        }
+                                    ]
+                                }
                             }
                         ]
                     }
@@ -300,7 +339,7 @@
             ]
         },
         "scope": {
-            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is interactors then orf_list is required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified, if scope is alleles then small_scale_gene_list or large_scale_gene_list is required, if scope is targeton then both targeton and small_scale_gene_list are required.",
+            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is interactors then orf_list is required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified, if scope is alleles then small_scale_gene_list or large_scale_gene_list is required, if scope is targeton then both targeton and small_scale_gene_list are required, if scope is control then control_type is required.",
             "oneOf": [
                 {
                     "required": [
@@ -422,6 +461,18 @@
                         "scope": {
                             "enum": [
                                 "targeton"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "control"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "control_type"
                             ]
                         }
                     }
@@ -692,6 +743,9 @@
             "enum": [
                 "control transduction"
             ],
+            "enum_descriptions": {
+                "control transduction": "This construct is tranduced in the sample to serve as a control."
+            },
             "submissionExample": {
                 "appscript": "control transduction",
                 "igvf_utils": "control transduction"
@@ -709,7 +763,8 @@
                 "genome-wide",
                 "interactors",
                 "alleles",
-                "targeton"
+                "targeton",
+                "control"
             ],
             "enum_descriptions": {
                 "tile": "The construct library was designed to tile over a region of the genome or protein.",
@@ -719,7 +774,8 @@
                 "genome-wide": "The construct library was designed to generally target the whole genome.",
                 "interactors": "The construct library was designed to target proteins that interact with a reference or variant proteins.",
                 "alleles": "The construct library was designed to target specific alleles of a gene.",
-                "targeton": "The construct library was designed to target a part of exons of a gene."
+                "targeton": "The construct library was designed to target a part of exons of a gene.",
+                "control": "The construct library was designed not target any specific part of the genome or proteome, but to serves as a control for other construct libraries."
             },
             "submissionExample": {
                 "appscript": "genes",
