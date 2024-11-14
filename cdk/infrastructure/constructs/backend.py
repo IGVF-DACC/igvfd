@@ -204,6 +204,7 @@ class Backend(Construct):
             ),
             memory_limit_mib=self.props.memory_limit_mib,
             public_load_balancer=True,
+            idle_timeout=cdk.Duration.seconds(310),
             assign_public_ip=True,
             certificate=self.props.existing_resources.domain.certificate,
             domain_zone=self.props.existing_resources.domain.zone,
