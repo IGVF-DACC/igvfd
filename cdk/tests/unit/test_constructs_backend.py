@@ -349,6 +349,10 @@ def test_constructs_backend_initialize_backend_construct(
                 {
                     'Key': 'deletion_protection.enabled',
                     'Value': 'false'
+                },
+                {
+                    'Key': 'idle_timeout.timeout_seconds',
+                    'Value': '310'
                 }
             ],
             'Scheme': 'internet-facing',
