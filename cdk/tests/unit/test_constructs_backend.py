@@ -352,7 +352,7 @@ def test_constructs_backend_initialize_backend_construct(
                 },
                 {
                     'Key': 'idle_timeout.timeout_seconds',
-                    'Value': '310'
+                    'Value': '100'
                 }
             ],
             'Scheme': 'internet-facing',
