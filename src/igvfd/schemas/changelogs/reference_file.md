@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Update calculation of `summary`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 32`.
 
 ### Schema version 15
