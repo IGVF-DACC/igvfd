@@ -467,12 +467,12 @@
                 },
                 {
                     "required": [
-                        "control"
+                        "control_type"
                     ],
                     "properties": {
                         "scope": {
                             "enum": [
-                                "control_type"
+                                "control"
                             ]
                         }
                     }
