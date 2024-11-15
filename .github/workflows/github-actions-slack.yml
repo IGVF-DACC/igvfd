@@ -7,6 +7,10 @@ jobs:
       - name: Create the slack message
         run: |
           echo "Example message" > slack_message.txt
+      - name: Read the message into a variable
+        run: |
+          SLACK_MESSAGE=$(cat slack_message.txt)
+          echo "message=$SLACK_MESSAGE" >> $GITHUB_ENV
       - name: Post a message to Slack
         uses: slackapi/slack-github-action@v2.0.0
         with:
@@ -14,4 +18,4 @@ jobs:
           token: ${{secrets.SUBMITTER_HELPDESK_SLACK_BOT_TOKEN}}
           payload: |
             channel: ${{secrets.TEST_CHANNEL_ID}}
-            payload-file-path: slack_message.txt
+            text: ${{env.message}}
