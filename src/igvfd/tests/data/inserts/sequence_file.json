@@ -179,5 +179,41 @@
         "controlled_access": false,
         "externally_hosted": true,
         "external_host_url": "https://www.ncbi.nlm.nih.gov/Traces/index.html?view=run_browser&acc=SRR0000023"
+    },
+    {
+        "uuid": "864e3cc3-a534-477a-b92d-d55192dc5ab1",
+        "accession": "IGVFFI1234FSTQ",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:fastq_reads_file_as_read_1"
+        ],
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "md5sum": "b3ecd8776c5fd5099e6515e085e05ae2",
+        "file_format": "fastq",
+        "content_type": "reads",
+        "minimum_read_length": 99,
+        "maximum_read_length": 101,
+        "mean_read_length": 100,
+        "read_count": 51884567,
+        "derived_from": [
+            "e2792165-fa4f-481c-9506-ce27e6d27a0d"
+        ],
+        "submitted_file_name": "/Users/igvf/igvf_files/reads_read1.fastq",
+        "file_size": 33940124,
+        "upload_status": "validated",
+        "dbxrefs": [
+            "SRA:SRR0000015"
+        ],
+        "file_set": "igvf:basic_analysis_set",
+        "sequencing_run": 13,
+        "illumina_read_type": "R1",
+        "sequencing_platform": "/platform-terms/747dc8bf-9e8c-3dbc-967f-ce9f995cfd28/",
+        "sequencing_kit": "HiSeq 3000/4000 SBS Kit",
+        "controlled_access": false,
+        "read_names": [
+            "Read 1"
+        ]
     }
 ]

@@ -338,6 +338,27 @@
                 "appscript": "[\"5mC\"]",
                 "igvf_utils": "5mC"
             }
+        },
+        "read_names": {
+            "title": "Read Names",
+            "description": "The read names of a sequence file based on how it will be used by uniform pipelines.",
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+                "title": "Read Name",
+                "description": "The read name of a sequence file based on how it will be used by uniform pipelines.",
+                "type": "string",
+                "enum": [
+                    "Read 1",
+                    "Read 2",
+                    "Barcode index"
+                ]
+            },
+            "submissionExample": {
+                "appscript": "[\"Read 1\"]",
+                "igvf_utils": "Read 1"
+            }
         }
     },
     "fuzzy_searchable_fields": [

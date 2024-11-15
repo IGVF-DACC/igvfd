@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Add `read_names`.
 * Extend `base_modifications` enum list to include `inosine`.
 * Extend `base_modifications` enum list to include `pseudouridine`.
 * Add `external_host_url`.

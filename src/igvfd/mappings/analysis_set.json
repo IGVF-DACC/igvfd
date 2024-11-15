@@ -1,6 +1,6 @@
 {
-    "hash": "a4751bfa1a5633c3313e7bb509984806",
-    "index_name": "analysis_set_a4751bfa",
+    "hash": "61a724bd1b5ad4cd719c8b243e82c5c1",
+    "index_name": "analysis_set_61a724bd",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -1056,6 +1056,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "read_names": {
+                                "type": "keyword"
                             },
                             "redacted": {
                                 "fields": {
