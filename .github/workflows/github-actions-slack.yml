@@ -4,13 +4,21 @@ jobs:
   slack:
     runs-on: ubuntu-latest
     steps:
-      - name: Create the slack message
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get the most recent release tag
         run: |
-          echo "Example message" > slack_message.txt
-      - name: Read the message into a variable
+          echo "latest_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+
+      - name: Generate git diff
         run: |
-          SLACK_MESSAGE=$(cat slack_message.txt)
-          echo "message=$SLACK_MESSAGE" >> $GITHUB_ENV
+          git diff ${{env.latest_tag}} HEAD > diff.txt
+      - name: Prepare the Slack message
+        run: |
+          DIFF_CONTENT=$(cat diff.txt)
+          echo "slack_message=Changes from ${{ env.latest_tag }} to HEAD:\n\`\`\`$DIFF_CONTENT\`\`\`" >> $GITHUB_ENV
+
       - name: Post a message to Slack
         uses: slackapi/slack-github-action@v2.0.0
         with:
