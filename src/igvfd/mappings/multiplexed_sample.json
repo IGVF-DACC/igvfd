@@ -1,6 +1,6 @@
 {
-    "hash": "a1b8b15e2dc8e8336a07840916858f54",
-    "index_name": "multiplexed_sample_a1b8b15e",
+    "hash": "9d4f65d5d0477334251cc91907550cc7",
+    "index_name": "multiplexed_sample_9d4f65d5",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -3312,6 +3312,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

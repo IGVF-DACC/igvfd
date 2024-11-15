@@ -1,6 +1,6 @@
 {
-    "hash": "c5111f15265f29d4b9f2c2e20715a7c0",
-    "index_name": "measurement_set_c5111f15",
+    "hash": "74ef5224d4b3d582f8d4d8332d7d1d18",
+    "index_name": "measurement_set_74ef5224",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -3731,6 +3731,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

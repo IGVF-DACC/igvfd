@@ -1,6 +1,6 @@
 {
-    "hash": "22ddcd74948901be8559532cbaa8b93c",
-    "index_name": "signal_file_22ddcd74",
+    "hash": "38a114f18baa701bee5c895173a8e810",
+    "index_name": "signal_file_38a114f1",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -1865,6 +1865,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

@@ -1,6 +1,6 @@
 {
-    "hash": "fa40265ca5711d7f30d9481a1d7610ed",
-    "index_name": "curated_set_fa40265c",
+    "hash": "b53ee9069c2dafb017d2671efc3a58d3",
+    "index_name": "curated_set_b53ee906",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -2066,6 +2066,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

@@ -1,6 +1,6 @@
 {
-    "hash": "38ba33f684df5e949d54cc02b1c26cf7",
-    "index_name": "open_reading_frame_38ba33f6",
+    "hash": "8df742d609a93dbc00cae59b0edc8480",
+    "index_name": "open_reading_frame_8df742d6",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -365,6 +365,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

@@ -1,6 +1,6 @@
 {
-    "hash": "6f93a9b24490d42929775e9232f64570",
-    "index_name": "testing_download_6f93a9b2",
+    "hash": "ecdf82a3e0242c12ab5bc6b07bff5a66",
+    "index_name": "testing_download_ecdf82a3",
     "item_type": "testing_download",
     "mapping": {
         "dynamic_templates": [
@@ -201,6 +201,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

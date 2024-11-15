@@ -1,6 +1,6 @@
 {
-    "hash": "5662f34840e874479c423ce8ba19eee0",
-    "index_name": "sequence_file_5662f348",
+    "hash": "371c8ab71448a3183b16bc23c5fb3fed",
+    "index_name": "sequence_file_371c8ab7",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1915,6 +1915,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

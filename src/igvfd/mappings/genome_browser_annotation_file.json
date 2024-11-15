@@ -1,6 +1,6 @@
 {
-    "hash": "51db7f94a3600cc4fd982f639c6314d9",
-    "index_name": "genome_browser_annotation_file_51db7f94",
+    "hash": "403b5859f5cf8748cddbf73aad86edc8",
+    "index_name": "genome_browser_annotation_file_403b5859",
     "item_type": "genome_browser_annotation_file",
     "mapping": {
         "dynamic_templates": [
@@ -1838,6 +1838,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

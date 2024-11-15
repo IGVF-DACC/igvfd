@@ -1,6 +1,6 @@
 {
-    "hash": "09d74ece3e359af2ce15534adb01cf20",
-    "index_name": "tabular_file_09d74ece",
+    "hash": "c8a254a158a9335dc011243094550674",
+    "index_name": "tabular_file_c8a254a1",
     "item_type": "tabular_file",
     "mapping": {
         "dynamic_templates": [
@@ -1853,6 +1853,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

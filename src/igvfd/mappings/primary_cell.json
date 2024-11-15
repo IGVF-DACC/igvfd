@@ -1,6 +1,6 @@
 {
-    "hash": "d91c43920d6b7447a2944dd73a91b8b3",
-    "index_name": "primary_cell_d91c4392",
+    "hash": "f2e50cf49906a985f352bac2320bed90",
+    "index_name": "primary_cell_f2e50cf4",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -2788,6 +2788,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

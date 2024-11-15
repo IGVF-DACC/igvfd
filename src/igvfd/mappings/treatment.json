@@ -1,6 +1,6 @@
 {
-    "hash": "e709fe4c6fcfa6fcee7cd37528004dfc",
-    "index_name": "treatment_e709fe4c",
+    "hash": "20fef45a08fbb162b823c68d603355a5",
+    "index_name": "treatment_20fef45a",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -572,6 +572,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

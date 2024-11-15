@@ -1,6 +1,6 @@
 {
-    "hash": "e6a8f410870e69a94a4b52d78f1186ee",
-    "index_name": "model_set_e6a8f410",
+    "hash": "f350081e23037ca7aafbb1c2106c34fb",
+    "index_name": "model_set_f350081e",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -2538,6 +2538,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

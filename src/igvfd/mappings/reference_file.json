@@ -1,6 +1,6 @@
 {
-    "hash": "58a4e6487b354fc35b1493f7fea5c8f8",
-    "index_name": "reference_file_58a4e648",
+    "hash": "1bc4ac5ce3d3e0b7d36a0710f7b46fee",
+    "index_name": "reference_file_1bc4ac5c",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -1781,6 +1781,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

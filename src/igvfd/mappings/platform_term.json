@@ -1,6 +1,6 @@
 {
-    "hash": "bce563324c77de7b5fbee8da054188c8",
-    "index_name": "platform_term_bce56332",
+    "hash": "620ba70d694aeedaaefba44fca64dd58",
+    "index_name": "platform_term_620ba70d",
     "item_type": "platform_term",
     "mapping": {
         "dynamic_templates": [
@@ -316,6 +316,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

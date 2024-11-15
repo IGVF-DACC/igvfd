@@ -1,6 +1,6 @@
 {
-    "hash": "3a300ea5bab788261d6e48b9309413dc",
-    "index_name": "matrix_file_3a300ea5",
+    "hash": "533e372af57a6fdb711434df8e3588d7",
+    "index_name": "matrix_file_533e372a",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1757,6 +1757,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }

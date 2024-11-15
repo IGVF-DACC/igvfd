@@ -1,6 +1,6 @@
 {
-    "hash": "91aa406e03db36e9f45df3d324fc573d",
-    "index_name": "software_version_91aa406e",
+    "hash": "adc4e741e619e4b45ce75ce32da42487",
+    "index_name": "software_version_adc4e741",
     "item_type": "software_version",
     "mapping": {
         "dynamic_templates": [
@@ -649,6 +649,9 @@
             "uuid": {
                 "copy_to": "_exact",
                 "type": "keyword"
+            },
+            "xmin": {
+                "type": "integer"
             }
         }
     }
