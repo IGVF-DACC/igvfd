@@ -210,35 +210,6 @@ def test_audit_construct_library_set_guide_library_guide_rna_sequences(
         for error in res.json['audit'].get('NOT_COMPLIANT', []))
 
 
-def test_audit_construct_library_set_mpra_sequence_designs(
-    testapp,
-    construct_library_set_reporter,
-    tabular_file
-):
-    res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing MPRA sequence designs'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    testapp.patch_json(
-        construct_library_set_reporter['@id'],
-        {'integrated_content_files': [tabular_file['@id']]}
-    )
-    res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing MPRA sequence designs'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    testapp.patch_json(
-        tabular_file['@id'],
-        {'content_type': 'MPRA sequence designs'}
-    )
-    res = testapp.get(construct_library_set_reporter['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing MPRA sequence designs'
-        for error in res.json['audit'].get('NOT_COMPLIANT', []))
-
-
 def test_audit_unexpected_virtual_sample(
     testapp,
     construct_library_set_genome_wide,

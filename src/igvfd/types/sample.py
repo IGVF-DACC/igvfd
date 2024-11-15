@@ -100,7 +100,7 @@ class Sample(Item):
         'lab',
         'sources',
         'sample_terms',
-        'construct_library_sets',
+        'treatments'
     ]
 
     set_status_up = [
@@ -772,7 +772,11 @@ class WholeOrganism(Biosample):
     item_type = 'whole_organism'
     schema = load_schema('igvfd:schemas/whole_organism.json')
     embedded_with_frame = Biosample.embedded_with_frame
-    audit_inherit = Biosample.audit_inherit
+    audit_inherit = Biosample.audit_inherit + [
+        'disease_terms',
+        'treatments',
+        'modifications',
+    ]
     set_status_up = Biosample.set_status_up + []
     set_status_down = Biosample.set_status_down + []
 
