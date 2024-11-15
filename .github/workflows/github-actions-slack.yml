@@ -4,6 +4,9 @@ jobs:
   slack:
     runs-on: ubuntu-latest
     steps:
+      - name: Create the slack message
+        run: |
+          echo "Example message" > slack_message.txt
       - name: Post a message to Slack
         uses: slackapi/slack-github-action@v2.0.0
         with:
@@ -11,4 +14,4 @@ jobs:
           token: ${{secrets.SUBMITTER_HELPDESK_SLACK_BOT_TOKEN}}
           payload: |
             channel: ${{secrets.TEST_CHANNEL_ID}}
-            text: "Hello, world!"
+            payload-file-path: slack_message.txt
