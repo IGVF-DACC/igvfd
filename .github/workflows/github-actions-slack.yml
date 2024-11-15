@@ -4,13 +4,10 @@ jobs:
   slack:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v3
       - name: Get the most recent release tag
         run: |
           echo "latest_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
-
       - name: Generate git diff
         run: |
           git diff ${{env.latest_tag}} HEAD > diff.txt
@@ -18,7 +15,6 @@ jobs:
         run: |
           DIFF_CONTENT=$(cat diff.txt)
           echo "slack_message=Changes from ${{ env.latest_tag }} to HEAD:\n\`\`\`$DIFF_CONTENT\`\`\`" >> $GITHUB_ENV
-
       - name: Post a message to Slack
         uses: slackapi/slack-github-action@v2.0.0
         with:
@@ -26,4 +22,4 @@ jobs:
           token: ${{secrets.SUBMITTER_HELPDESK_SLACK_BOT_TOKEN}}
           payload: |
             channel: ${{secrets.TEST_CHANNEL_ID}}
-            text: ${{env.message}}
+            text: ${{env.slack_message}}
