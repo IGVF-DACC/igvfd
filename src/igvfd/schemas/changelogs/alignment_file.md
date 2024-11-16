@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 11
+
+* Reduce `file_format` enum list to exclude `bai`.
+
 ### Minor changes since schema version 10
 
 * Update calculation of `summary`.

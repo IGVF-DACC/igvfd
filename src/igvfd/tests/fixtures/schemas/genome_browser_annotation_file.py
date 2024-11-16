@@ -81,3 +81,13 @@ def genome_browser_annotation_file_v7(genome_browser_annotation_file):
         'schema_version': '7'
     })
     return item
+
+
+@pytest.fixture
+def genome_browser_annotation_file_v8(genome_browser_annotation_file):
+    item = genome_browser_annotation_file.copy()
+    item.update({
+        'file_format': 'tabix',
+        'schema_version': '8'
+    })
+    return item

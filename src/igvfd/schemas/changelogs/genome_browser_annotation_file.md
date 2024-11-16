@@ -1,5 +1,9 @@
 ## Changelog for *`genome_browser_annotation_file.json`*
 
+### Schema version 9
+
+* Reduce `file_format` enum list to exclude `tabix`.
+
 ### Minor changes since schema version 8
 
 * Update calculation of `summary`.

@@ -1,8 +1,8 @@
 {
-    "title": "Genome Browser Annotation File",
-    "$id": "/profiles/genome_browser_annotation_file.json",
+    "title": "Index File",
+    "$id": "/profiles/index_file.json",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "description": "A binary file containing genome annotations which are indexed and can be visualized on a genome browser.",
+    "description": "A binary file which is indexed.",
     "required": [
         "award",
         "lab",
@@ -57,22 +57,44 @@
             "file.json#/dependentSchemas"
         ],
         "file_format": {
-            "comment": "BigBed files must specify their file format type.",
             "allOf": [
                 {
                     "$merge": "file.json#/dependentSchemas/file_format"
                 },
                 {
-                    "required": [
-                        "file_format_type"
-                    ],
-                    "properties": {
-                        "file_format": {
-                            "enum": [
-                                "bigBed"
-                            ]
+                    "oneOf": [
+                        {
+                            "if": {
+                                "properties": {
+                                    "file_format": {
+                                        "const": "bai"
+                                    }
+                                }
+                            },
+                            "then": {
+                                "derived_from": {
+                                    "linkTo": "AlignmentFile"
+                                }
+                            }
+                        },
+                        {
+                            "if": {
+                                "properties": {
+                                    "file_format": {
+                                        "const": "tbi"
+                                    }
+                                }
+                            },
+                            "then": {
+                                "derived_from": {
+                                    "linkTo": [
+                                        "ReferenceFile",
+                                        "TabularFile"
+                                    ]
+                                }
+                            }
                         }
-                    }
+                    ]
                 }
             ]
         }
@@ -80,35 +102,33 @@
     "type": "object",
     "properties": {
         "schema_version": {
-            "default": "9"
+            "default": "1"
         },
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
-                "peaks"
+                "index"
             ],
-            "enum_descriptions": {
-                "peaks": "Detected genomic regions of relative enrichment in coverage data, such as peaks in ChIP-seq or ATAC-seq indicating protein binding sites or chromatin accessibility."
-            },
             "submissionExample": {
-                "appscript": "peaks",
-                "igvf_utils": "peaks"
+                "appscript": "index",
+                "igvf_utils": "index"
             }
         },
         "file_format": {
             "enum": [
-                "bigBed"
+                "bai",
+                "tbi"
             ],
             "submissionExample": {
-                "appscript": "bigBed",
-                "igvf_utils": "bigBed"
+                "appscript": "bai",
+                "igvf_utils": "bai"
             }
-        },
-        "assembly": {
-            "description": "Genome assembly applicable for the annotation data."
         },
         "dbxrefs": {
             "comment": "This file type currently does not support any external resource submission."
+        },
+        "derived_from": {
+            "maxItems": 1
         }
     },
     "fuzzy_searchable_fields": [
@@ -128,5 +148,5 @@
         "file_format",
         "file_set.accession"
     ],
-    "changelog": "/profiles/changelogs/genome_browser_annotation_file.md"
+    "changelog": "/profiles/changelogs/index_file.md"
 }

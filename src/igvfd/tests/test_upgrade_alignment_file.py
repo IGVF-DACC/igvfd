@@ -57,3 +57,10 @@ def test_alignment_file_upgrade_9_10(upgrader, alignment_file_v9):
     assert alignment_file_v9['upload_status'] == 'pending'
     assert value['controlled_access'] is True
     assert value['status'] == 'in progress'
+
+
+def test_alignment_file_upgrade_10_11(upgrader, alignment_file_v10):
+    value = upgrader.upgrade('alignment_file', alignment_file_v10, current_version='10', target_version='11')
+    assert alignment_file_v10['file_format'] == 'bam'
+    assert alignment_file_v10['notes'].endswith('but has been upgraded to .bam')
+    assert alignment_file_v10['version'] == '11'

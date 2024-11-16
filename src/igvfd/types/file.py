@@ -73,9 +73,9 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'PWM': '.pwm',
     'sam': '.sam.gz',
     'sra': '.sra',
-    'tabix': '.tabix',
     'tagAlign': '.tagAlign.gz',
     'tar': '.tar.gz',
+    'tbi': '.tbi',
     'tsv': '.tsv.gz',
     'txt': '.txt.gz',
     'vcf': '.vcf.gz',
@@ -896,6 +896,43 @@ class ModelFile(File):
     )
     def summary(self, content_type):
         return content_type
+
+
+@collection(
+    name='index-files',
+    unique_key='accession',
+    properties={
+        'title': 'Index Files',
+        'description': 'Listing of index files',
+    }
+)
+class IndexFile(File):
+    item_type = 'index_file'
+    schema = load_schema('igvfd:schemas/index_file.json')
+    embedded_with_frame = File.embedded_with_frame
+    set_status_up = File.set_status_up + []
+    set_status_down = File.set_status_down + []
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the index file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_type, derived_from):
+        file_accessions = [x.split('/')[-2] for x in derived_from]
+        derived_from_formatted = f" of {', '.join(file_accessions)}"
+        return f'{content_type}{derived_from_formatted}'
 
 
 @view_config(
