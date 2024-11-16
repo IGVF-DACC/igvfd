@@ -14,11 +14,12 @@ jobs:
           echo "latest_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       - name: Generate git diff
         run: |
-          git diff ${{env.latest_tag}} HEAD > diff.txt
+          git diff ${{env.latest_tag}} HEAD src/igvfd/schemas/changelogs/* > diff.txt
       - name: Prepare the Slack message
         run: |
-          DIFF_CONTENT=$(cat diff.txt | sed 's/$/\\n/' | tr -d '\n')
-          echo "slack_message=Changes from ${{ env.latest_tag }} to HEAD:\n\`\`\`$DIFF_CONTENT\`\`\`" >> $GITHUB_ENV
+          DIFF_CONTENT=$(head -n 100 diff.txt | sed 's/"/\\"/g')
+          echo "slack_blocks=[{\"type\": \"section\", \"text\": {\"type\": \"mrkdwn\", \"text\": \"Changes from ${{ env.latest_tag }} to HEAD:\n\`\`\`$DIFF_CONTENT\`\`\`\"}}]" >> $GITHUB_ENV
+
       - name: Post a message to Slack
         uses: slackapi/slack-github-action@v2.0.0
         with:
@@ -26,4 +27,4 @@ jobs:
           token: ${{secrets.SUBMITTER_HELPDESK_SLACK_BOT_TOKEN}}
           payload: |
             channel: ${{secrets.TEST_CHANNEL_ID}}
-            text: ${{env.slack_message}}
+            blocks: ${{env.slack_blocks}}
