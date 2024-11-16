@@ -5,6 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Get the most recent release tag
         run: |
           echo "latest_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
