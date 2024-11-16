@@ -17,7 +17,7 @@ jobs:
           git diff ${{env.latest_tag}} HEAD > diff.txt
       - name: Prepare the Slack message
         run: |
-          DIFF_CONTENT=$(cat diff.txt)
+          DIFF_CONTENT=$(cat diff.txt | sed 's/$/\\n/' | tr -d '\n')
           echo "slack_message=Changes from ${{ env.latest_tag }} to HEAD:\n\`\`\`$DIFF_CONTENT\`\`\`" >> $GITHUB_ENV
       - name: Post a message to Slack
         uses: slackapi/slack-github-action@v2.0.0
