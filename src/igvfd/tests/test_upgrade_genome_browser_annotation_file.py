@@ -49,5 +49,5 @@ def test_genome_browser_annotation_file_upgrade_8_9(upgrader, genome_browser_ann
     value = upgrader.upgrade('genome_browser_annotation_file', genome_browser_annotation_file_v8,
                              current_version='8', target_version='9')
     assert genome_browser_annotation_file_v8['file_format'] == 'bigBed'
-    assert genome_browser_annotation_file_v8['notes'].endswith('but has been upgraded to .bigBed')
-    assert genome_browser_annotation_file_v8['version'] == '9'
+    assert genome_browser_annotation_file_v8['notes'].endswith('but has been upgraded to .bigBed.')
+    assert genome_browser_annotation_file_v8['schema_version'] == '9'

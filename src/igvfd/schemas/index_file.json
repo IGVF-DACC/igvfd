@@ -48,7 +48,7 @@
             "file.json#/dependentSchemas"
         ],
         "file_format": {
-            "oneOf": [
+            "allOf": [
                 {
                     "if": {
                         "properties": {
@@ -58,8 +58,15 @@
                         }
                     },
                     "then": {
-                        "derived_from": {
-                            "linkTo": "AlignmentFile"
+                        "properties": {
+                            "derived_from": {
+                                "items": {
+                                    "title": "File Derived From",
+                                    "comment": "See file.json for a list of available identifiers.",
+                                    "type": "string",
+                                    "linkTo": "AlignmentFile"
+                                }
+                            }
                         }
                     }
                 },
@@ -72,11 +79,18 @@
                         }
                     },
                     "then": {
-                        "derived_from": {
-                            "linkTo": [
-                                "ReferenceFile",
-                                "TabularFile"
-                            ]
+                        "properties": {
+                            "derived_from": {
+                                "items": {
+                                    "title": "File Derived From",
+                                    "comment": "See file.json for a list of available identifiers.",
+                                    "type": "string",
+                                    "linkTo": [
+                                        "ReferenceFile",
+                                        "TabularFile"
+                                    ]
+                                }
+                            }
                         }
                     }
                 }

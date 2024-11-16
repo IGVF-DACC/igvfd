@@ -942,7 +942,7 @@ class IndexFile(File):
             'notSubmittable': True,
         }
     )
-    def assembly(self, derived_from):
+    def assembly(self, request, derived_from):
         parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
         if 'assembly' in parent_file_object:
             return f'{parent_file_object["assembly"]}'
@@ -955,7 +955,7 @@ class IndexFile(File):
             'notSubmittable': True,
         }
     )
-    def transcriptome_annotation(self, derived_from):
+    def transcriptome_annotation(self, request, derived_from):
         parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
         if 'transcriptome_annotation' in parent_file_object:
             return f'{parent_file_object["transcriptome_annotation"]}'
@@ -968,10 +968,10 @@ class IndexFile(File):
             'notSubmittable': True,
         }
     )
-    def filtered(self, derived_from):
+    def filtered(self, request, derived_from):
         parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
         if 'filtered' in parent_file_object:
-            return f'{parent_file_object["filtered"]}'
+            return parent_file_object['filtered']
 
     @calculated_property(
         schema={
@@ -981,10 +981,10 @@ class IndexFile(File):
             'notSubmittable': True,
         }
     )
-    def redacted(self, derived_from):
+    def redacted(self, request, derived_from):
         parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
         if 'redacted' in parent_file_object:
-            return f'{parent_file_object["redacted"]}'
+            return parent_file_object['redacted']
 
 
 @view_config(

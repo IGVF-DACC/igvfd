@@ -23,11 +23,12 @@ def test_index_file_derived_from(testapp, index_file_tbi, index_file_bai, alignm
         index_file_bai['@id'],
         {
             'derived_from': [tabular_file['@id']]
-        }
+        },
+        expect_errors=True
     )
     assert res.status_code == 422
     res = testapp.patch_json(
-        index_file_tbi['@id'],
+        index_file_bai['@id'],
         {
             'derived_from': [alignment_file['@id']]
         }

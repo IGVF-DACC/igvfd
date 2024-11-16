@@ -22,7 +22,7 @@
         ]
     },
     {
-        "uuid": "09bef540-11ef-4d8e-ebcc-06743b0d7d71",
+        "uuid": "09bef540-11ef-4d8e-ebdc-06743b0d7d71",
         "accession": "IGVFFI0002BAIN",
         "lab": "j-michael-cherry",
         "award": "HG012012",
@@ -31,7 +31,7 @@
         ],
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
-        "md5sum": "030f39bf163a91735d136aba7ebccd4",
+        "md5sum": "03d4d5f64b5539ac34b4b6761645ac3a",
         "file_format": "bai",
         "content_type": "index",
         "file_format_specifications": [
@@ -39,8 +39,7 @@
         ],
         "submitted_file_name": "/Users/igvf/igvf_files/index_file.bai",
         "file_size": 599310,
-        "upload_status": "invalidated",
-        "validation_error_detail": "Explanation of why this file did not pass validation.",
+        "upload_status": "validated",
         "file_set": "igvf:analysis_set_with_input",
         "controlled_access": false,
         "derived_from": [

@@ -21,7 +21,7 @@ def index_file_bai(testapp, lab, award, principal_analysis_set, alignment_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
-        'md5sum': '07f195481361a5c3a5ac0cf5501b09c',
+        'md5sum': '78f780a07d5ad6c76f1592cd192e6516',
         'file_format': 'bai',
         'file_set': principal_analysis_set['@id'],
         'content_type': 'index',
