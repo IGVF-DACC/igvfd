@@ -9,6 +9,8 @@ jobs:
           fetch-depth: 0
       - name: Get the most recent release tag
         run: |
+          echo "fetching tags"
+          git describe --tags --abbrev=0
           echo "latest_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
       - name: Generate git diff
         run: |
