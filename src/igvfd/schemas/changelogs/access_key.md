@@ -4,6 +4,7 @@
 
 * Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Add `description`.
+* Fake change to test the Slack bot.
 
 ### Schema version 2
 
