@@ -128,15 +128,9 @@ def test_audit_external_reference_files(testapp, reference_file):
 
 
 def test_audit_index_files(testapp, reference_file, index_file_tbi):
-    testapp.patch_json(
-        index_file_tbi['@id'],
-        {
-            'assembly': 'custom'
-        }
-    )
     res = testapp.get(index_file_tbi['@id'] + '@@audit')
-    assert any(
-        audit['category'] == 'incorrect indexed file'
+    assert all(
+        audit['category'] != 'incorrect indexed file'
         for audit in res.json['audit'].get('ERROR', {})
     )
     testapp.patch_json(
@@ -146,7 +140,7 @@ def test_audit_index_files(testapp, reference_file, index_file_tbi):
         }
     )
     res = testapp.get(index_file_tbi['@id'] + '@@audit')
-    assert all(
-        audit['category'] != 'incorrect indexed file'
+    assert any(
+        audit['category'] == 'incorrect indexed file'
         for audit in res.json['audit'].get('ERROR', {})
     )

@@ -15,7 +15,6 @@
         "submitted_file_name": "/Users/igvf/igvf_files/index_file.tbi",
         "file_size": 83201,
         "upload_status": "validated",
-        "assembly": "GRCh38",
         "file_set": "igvf:basic_analysis_set",
         "controlled_access": false,
         "derived_from": [
@@ -41,7 +40,6 @@
         "submitted_file_name": "/Users/igvf/igvf_files/index_file.bai",
         "file_size": 599310,
         "upload_status": "invalidated",
-        "assembly": "GRCh38",
         "validation_error_detail": "Explanation of why this file did not pass validation.",
         "file_set": "igvf:analysis_set_with_input",
         "controlled_access": false,

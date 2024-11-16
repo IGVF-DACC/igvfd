@@ -37,19 +37,10 @@
             "$ref": "mixins.json#/documents"
         },
         {
-            "$ref": "mixins.json#/transcriptome_annotation"
-        },
-        {
-            "$ref": "mixins.json#/file_format_type"
+            "$ref": "mixins.json#/controlled_access"
         },
         {
             "$ref": "mixins.json#/release_timestamp"
-        },
-        {
-            "$ref": "mixins.json#/assembly"
-        },
-        {
-            "$ref": "mixins.json#/cell_type_annotation"
         }
     ],
     "dependentSchemas": {
@@ -57,44 +48,37 @@
             "file.json#/dependentSchemas"
         ],
         "file_format": {
-            "allOf": [
+            "oneOf": [
                 {
-                    "$merge": "file.json#/dependentSchemas/file_format"
-                },
-                {
-                    "oneOf": [
-                        {
-                            "if": {
-                                "properties": {
-                                    "file_format": {
-                                        "const": "bai"
-                                    }
-                                }
-                            },
-                            "then": {
-                                "derived_from": {
-                                    "linkTo": "AlignmentFile"
-                                }
-                            }
-                        },
-                        {
-                            "if": {
-                                "properties": {
-                                    "file_format": {
-                                        "const": "tbi"
-                                    }
-                                }
-                            },
-                            "then": {
-                                "derived_from": {
-                                    "linkTo": [
-                                        "ReferenceFile",
-                                        "TabularFile"
-                                    ]
-                                }
+                    "if": {
+                        "properties": {
+                            "file_format": {
+                                "const": "bai"
                             }
                         }
-                    ]
+                    },
+                    "then": {
+                        "derived_from": {
+                            "linkTo": "AlignmentFile"
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "file_format": {
+                                "const": "tbi"
+                            }
+                        }
+                    },
+                    "then": {
+                        "derived_from": {
+                            "linkTo": [
+                                "ReferenceFile",
+                                "TabularFile"
+                            ]
+                        }
+                    }
                 }
             ]
         }
@@ -133,7 +117,6 @@
     },
     "fuzzy_searchable_fields": [
         "assay_titles",
-        "cell_type_annotation.term_name",
         "content_type",
         "description",
         "file_set.samples.summary",

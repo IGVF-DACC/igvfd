@@ -934,6 +934,58 @@ class IndexFile(File):
         derived_from_formatted = f" of {', '.join(file_accessions)}"
         return f'{content_type}{derived_from_formatted}'
 
+    @calculated_property(
+        schema={
+            'title': 'Genome Assembly',
+            'type': 'string',
+            'description': 'The assembly associated with the index file.',
+            'notSubmittable': True,
+        }
+    )
+    def assembly(self, derived_from):
+        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        if 'assembly' in parent_file_object:
+            return f'{parent_file_object["assembly"]}'
+
+    @calculated_property(
+        schema={
+            'title': 'Transcriptome Annotation',
+            'type': 'string',
+            'description': 'The annotation and version of the reference resource.',
+            'notSubmittable': True,
+        }
+    )
+    def transcriptome_annotation(self, derived_from):
+        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        if 'transcriptome_annotation' in parent_file_object:
+            return f'{parent_file_object["transcriptome_annotation"]}'
+
+    @calculated_property(
+        schema={
+            'title': 'Filtered',
+            'type': 'boolean',
+            'description': 'Indicates whether reads that did not pass a filtering step, such as PCR duplicates, have been removed from the file.',
+            'notSubmittable': True,
+        }
+    )
+    def filtered(self, derived_from):
+        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        if 'filtered' in parent_file_object:
+            return f'{parent_file_object["filtered"]}'
+
+    @calculated_property(
+        schema={
+            'title': 'Redacted',
+            'type': 'boolean',
+            'description': 'Indicates whether the alignments data have been sanitized (redacted) to prevent leakage of private and potentially identifying genomic information.',
+            'notSubmittable': True,
+        }
+    )
+    def redacted(self, derived_from):
+        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        if 'redacted' in parent_file_object:
+            return f'{parent_file_object["redacted"]}'
+
 
 @view_config(
     name='upload',

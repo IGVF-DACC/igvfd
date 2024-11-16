@@ -36,6 +36,7 @@ TOP_HITS_ITEM_TYPES = [
     'TabularFile',
     'GenomeBrowserAnnotationFile',
     'ImageFile',
+    'IndexFile',
     'InstitutionalCertificate',
     'AnalysisSet',
     'ConstructLibrarySet',
