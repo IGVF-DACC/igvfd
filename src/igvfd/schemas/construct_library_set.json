@@ -53,7 +53,7 @@
             "shared_dependencies.json#/accession_status"
         ],
         "file_set_type": {
-            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, or large_scale_gene_list and that scope be genes, tile, exon, alleles, or interactors and should not specify any guide properties. Editing template libraries require that scope be targeton and should not specify any guide properties.",
+            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require small_scale_gene_list or large_scale_gene_list and that scope be genes, tile, exon, alleles, interactors, or control and should not specify any guide properties. Control expression vector libraries do not require small_scale_gene_list or large_scale_gene_list. Editing template libraries require that scope be targeton and should not specify any guide properties.",
             "allOf": [
                 {
                     "if": {
@@ -253,7 +253,9 @@
                                 ],
                                 "properties": {
                                     "scope": {
-                                        "const": "control"
+                                        "enum": [
+                                            "control"
+                                        ]
                                     }
                                 },
                                 "not": {
@@ -705,6 +707,16 @@
             "required": [
                 "lower_bound_guide_coverage"
             ]
+        },
+        "control_type": {
+            "comment": "Specification of control_type requires that scope is control.",
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "control"
+                    ]
+                }
+            }
         }
     },
     "properties": {
@@ -775,7 +787,7 @@
                 "interactors": "The construct library was designed to target proteins that interact with a reference or variant proteins.",
                 "alleles": "The construct library was designed to target specific alleles of a gene.",
                 "targeton": "The construct library was designed to target a part of exons of a gene.",
-                "control": "The construct library was designed not target any specific part of the genome or proteome, but to serves as a control for other construct libraries."
+                "control": "The construct library was designed not to target any specific part of the genome or proteome, but to serves as a control for other construct libraries."
             },
             "submissionExample": {
                 "appscript": "genes",

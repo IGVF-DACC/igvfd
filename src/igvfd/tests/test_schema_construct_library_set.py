@@ -128,3 +128,17 @@ def test_dependencies_construct_library_set(award, lab, testapp, gene_myc_hs,
             'large_scale_gene_list': tabular_file['@id']
         })
     assert res.status_code == 201
+
+
+def test_dependencies_construct_library_set(award, lab, testapp):
+    res = testapp.post_json(
+        '/construct_library_set',
+        {
+            'lab': lab['@id'],
+            'award': award['@id'],
+            'file_set_type': 'expression vector library',
+            'scope': 'control',
+            'control_type': 'control transduction',
+            'selection_criteria': ['TF binding sites']
+        })
+    assert res.status_code == 201
