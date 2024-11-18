@@ -119,7 +119,7 @@ class File(Item):
              '@id', 'accession', 'summary', 'samples', 'disease_terms', 'sample_terms', 'term_name', 'classifications', 'file_set_type', 'taxa']),
         Path('file_set.samples.sample_terms', include=[
              '@id', 'term_name']),
-        Path('file_set.samples.targeted_sample_terms', include=[
+        Path('file_set.samples.targeted_sample_term', include=[
              '@id', 'term_name']),
         Path('file_set.samples.modifications', include=[
              '@id', 'modality', 'summary']),

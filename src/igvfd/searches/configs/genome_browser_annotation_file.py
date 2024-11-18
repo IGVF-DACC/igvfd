@@ -108,7 +108,7 @@ def genome_browser_annotation_file():
                     'file_set.samples.taxa',
                     'file_set.samples.classifications',
                     'file_set.samples.sample_terms.term_name',
-                    'file_set.samples.targeted_sample_term.term_name'
+                    'file_set.samples.targeted_sample_term.term_name',
                     'file_set.samples.disease_terms.term_name',
                     'file_set.samples.modifications.modality',
                     'file_set.samples.treatments.treatment_term_name',
