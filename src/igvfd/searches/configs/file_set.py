@@ -7,11 +7,44 @@ from snovault.elasticsearch.searches.configs import search_config
 def file_set():
     return {
         'facets': {
-            'collections': {
-                'title': 'Collections',
+            'file_set_type': {
+                'title': 'File Set Type',
+            },
+            'assenbly': {
+                'title': 'Assembly',
+            },
+            'transcriptome_annotation': {
+                'title': 'Transcriptome Annotation',
             },
             'donors.taxa': {
                 'title': 'Taxa',
+            },
+            'samples.classifications': {
+                'title': 'Classification',
+            },
+            'samples.sample_terms.term_name': {
+                'title': 'Sample',
+            },
+            'samples.targeted_sample_term.term_name': {
+                'title': 'Cellular Transformation Target',
+            },
+            'samples.disease_terms.term_name': {
+                'title': 'Disease',
+            },
+            'samples.modifications.modality': {
+                'title': 'Modification',
+            },
+            'samples.treatments.treatment_term_name': {
+                'title': 'Treatment',
+            },
+            'files.content_type': {
+                'title': 'File Type',
+            },
+            'files.file_format': {
+                'title': 'File Format',
+            },
+            'collections': {
+                'title': 'Collections',
             },
             'lab.title': {
                 'title': 'Lab'
@@ -21,15 +54,6 @@ def file_set():
             },
             'status': {
                 'title': 'Status'
-            },
-            'file_set_type': {
-                'title': 'File Set Type',
-            },
-            'files.content_type': {
-                'title': 'Available File Types',
-            },
-            'type': {
-                'title': 'Object Type',
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
@@ -42,6 +66,9 @@ def file_set():
             },
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
+            },
+            'type': {
+                'title': 'Object Type',
             },
         },
         'facet_groups': [
