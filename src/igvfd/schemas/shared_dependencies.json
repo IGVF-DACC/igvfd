@@ -22,7 +22,8 @@
                         "status": {
                             "enum": [
                                 "deleted",
-                                "in progress"
+                                "in progress",
+                                "preview"
                             ]
                         }
                     }
@@ -67,6 +68,7 @@
                         "status": {
                             "enum": [
                                 "in progress",
+                                "preview",
                                 "deleted",
                                 "replaced"
                             ]

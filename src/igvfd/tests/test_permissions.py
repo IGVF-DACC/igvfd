@@ -77,6 +77,28 @@ def test_submitter_patch_lab_disallowed(submitter, other_lab, submitter_testapp)
     submitter_testapp.patch_json(res.json['@id'], lab, status=422)
 
 
+def test_submitter_patch_in_progress_and_preview_but_not_released(submitter, submitter_testapp, testapp, anontestapp, publication):
+    res = submitter_testapp.get(publication['@id'])
+    assert 'description' not in res.json
+    submitter_testapp.patch_json(publication['@id'], {'description': 'some in progress edit'}, status=200)
+    res = submitter_testapp.get(publication['@id'])
+    assert res.json['description'] == 'some in progress edit'
+    # In progress item not public.
+    anontestapp.get(publication['@id'], status=403)
+    testapp.patch_json(f"{publication['@id']}@@set_status?update=true", {'status': 'preview'}, status=200)
+    # Preview item public.
+    res = anontestapp.get(publication['@id'], status=200)
+    assert res.json['status'] == 'preview'
+    # Submitter can edit preview status item.
+    submitter_testapp.patch_json(publication['@id'], {'description': 'some preview status edit'}, status=200)
+    res = anontestapp.get(publication['@id'], status=200)
+    assert res.json['description'] == 'some preview status edit'
+    testapp.patch_json(f"{publication['@id']}@@set_status?update=true", {'status': 'released'}, status=200)
+    anontestapp.get(publication['@id'], status=200)
+    # Submitter can't edit released item.
+    submitter_testapp.patch_json(publication['@id'], {'description': 'some released status edit'}, status=403)
+
+
 def test_wrangler_patch_lab_allowed(submitter, other_lab, wrangler_testapp):
     res = wrangler_testapp.get(submitter['@id'])
     lab = {'lab': other_lab['@id']}
