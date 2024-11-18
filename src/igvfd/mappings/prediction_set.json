@@ -1,6 +1,6 @@
 {
-    "hash": "4acc8593e7cf329a9bd6a8e5d16c4d2c",
-    "index_name": "prediction_set_4acc8593",
+    "hash": "9d812b1f19ab023e6bfb07d2bdd6ddd0",
+    "index_name": "prediction_set_9d812b1f",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -2281,7 +2281,102 @@
                                 "type": "float"
                             },
                             "modifications": {
-                                "type": "keyword"
+                                "properties": {
+                                    "@id": {
+                                        "type": "keyword"
+                                    },
+                                    "@type": {
+                                        "type": "keyword"
+                                    },
+                                    "activated": {
+                                        "fields": {
+                                            "raw": {
+                                                "type": "keyword"
+                                            }
+                                        },
+                                        "store": true,
+                                        "type": "boolean"
+                                    },
+                                    "activating_agent_term_id": {
+                                        "type": "keyword"
+                                    },
+                                    "activating_agent_term_name": {
+                                        "type": "keyword"
+                                    },
+                                    "aliases": {
+                                        "type": "keyword"
+                                    },
+                                    "award": {
+                                        "type": "keyword"
+                                    },
+                                    "biosamples_modified": {
+                                        "type": "keyword"
+                                    },
+                                    "cas": {
+                                        "type": "keyword"
+                                    },
+                                    "cas_species": {
+                                        "type": "keyword"
+                                    },
+                                    "creation_timestamp": {
+                                        "type": "keyword"
+                                    },
+                                    "degron_system": {
+                                        "type": "keyword"
+                                    },
+                                    "description": {
+                                        "type": "text"
+                                    },
+                                    "documents": {
+                                        "type": "keyword"
+                                    },
+                                    "fused_domain": {
+                                        "type": "keyword"
+                                    },
+                                    "lab": {
+                                        "type": "keyword"
+                                    },
+                                    "lot_id": {
+                                        "type": "keyword"
+                                    },
+                                    "modality": {
+                                        "type": "keyword"
+                                    },
+                                    "notes": {
+                                        "type": "text"
+                                    },
+                                    "product_id": {
+                                        "type": "keyword"
+                                    },
+                                    "release_timestamp": {
+                                        "type": "keyword"
+                                    },
+                                    "schema_version": {
+                                        "type": "keyword"
+                                    },
+                                    "sources": {
+                                        "type": "keyword"
+                                    },
+                                    "status": {
+                                        "type": "keyword"
+                                    },
+                                    "submitted_by": {
+                                        "type": "keyword"
+                                    },
+                                    "submitter_comment": {
+                                        "type": "keyword"
+                                    },
+                                    "summary": {
+                                        "type": "keyword"
+                                    },
+                                    "tagged_proteins": {
+                                        "type": "keyword"
+                                    },
+                                    "uuid": {
+                                        "type": "keyword"
+                                    }
+                                },
+                                "type": "object"
                             },
                             "moi": {
                                 "fields": {
