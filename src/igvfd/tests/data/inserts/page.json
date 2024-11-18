@@ -108,7 +108,7 @@
     {
         "parent": "/test-section",
         "name": "subpage-preview-status",
-        "title": "Subpage preview status publicly visable",
+        "title": "Subpage preview status publicly visible",
         "lab": "j-michael-cherry",
         "submitted_by": "massa.porta@varius.mauris",
         "status": "preview",
@@ -118,7 +118,7 @@
                 {
                     "@id": "#block1",
                     "@type": "markdown",
-                    "body": "# Subpage preview status (publicly visable)",
+                    "body": "# Subpage preview status (publicly visible)",
                     "direction": "ltr"
                 }
             ]
