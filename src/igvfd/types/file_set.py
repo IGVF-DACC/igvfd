@@ -88,7 +88,7 @@ class FileSet(Item):
         Path('samples.disease_terms', include=['@id', 'term_name']),
         Path('samples.targeted_sample_term', include=['@id', 'term_name']),
         Path('samples.modifications', include=['@id', 'modality']),
-        Path('samples.modifications', include=['@id', 'treatment_term_name']),
+        Path('samples.treatments', include=['@id', 'treatment_term_name']),
         Path('publications', include=['@id', 'publication_identifiers']),
     ]
 

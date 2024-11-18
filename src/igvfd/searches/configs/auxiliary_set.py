@@ -40,6 +40,9 @@ def auxiliary_set():
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment',
             },
+            'sequencing_library_types': {
+                'title': 'Library Type',
+            },
             'files.content_type': {
                 'title': 'File Types',
             },

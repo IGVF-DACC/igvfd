@@ -37,16 +37,16 @@ def prediction_set():
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment'
             },
-            'file_set_type': {
-                'title': 'File Type'
-            },
             'files.content_type': {
+                'title': 'Content Type',
+            },
+            'files.file_format': {
                 'title': 'File Format',
             },
             'files.assembly': {
                 'title': 'Assembly',
             },
-            'files.assembly': {
+            'files.transcriptome_annotation': {
                 'title': 'Transcriptome Annotation',
             },
             'status': {
@@ -82,6 +82,7 @@ def prediction_set():
                 'title': 'Prediction Set Details',
                 'facet_fields': [
                     'file_set_type',
+                    'scope',
                     'assessed_genes'
                 ],
             },
