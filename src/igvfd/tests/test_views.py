@@ -234,6 +234,10 @@ def test_page_nested_in_progress(workbook, anontestapp):
     return anontestapp.get('/test-section/subpage-in-progress/', status=403)
 
 
+def test_page_nested_preview_status(workbook, anontestapp):
+    return anontestapp.get('/test-section/subpage-preview-status/', status=200)
+
+
 def test_page_homepage(workbook, anontestapp, testapp):
     res = anontestapp.get('/', status=200)
     assert 'portal_title' in res.json

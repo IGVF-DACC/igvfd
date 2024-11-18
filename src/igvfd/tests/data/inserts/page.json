@@ -106,6 +106,25 @@
         }
     },
     {
+        "parent": "/test-section",
+        "name": "subpage-preview-status",
+        "title": "Subpage preview status publically visable",
+        "lab": "j-michael-cherry",
+        "submitted_by": "massa.porta@varius.mauris",
+        "status": "preview",
+        "uuid": "74c06614-f72e-4e36-bd05-a2e282715c3d",
+        "layout": {
+            "blocks": [
+                {
+                    "@id": "#block1",
+                    "@type": "markdown",
+                    "body": "# Subpage preview status (publically visable)",
+                    "direction": "ltr"
+                }
+            ]
+        }
+    },
+    {
         "name": "help",
         "title": "IGVF Help Documentation",
         "lab": "j-michael-cherry",

@@ -326,6 +326,7 @@ class TestingIGVFItem(IGVFItem):
                 'enum': [
                     'in progress',
                     'released',
+                    'preview',
                     'deleted',
                     'replaced',
                     'revoked'
