@@ -7,20 +7,17 @@ from snovault.elasticsearch.searches.configs import search_config
 def construct_library_set():
     return {
         'facets': {
-            'award.component': {
-                'title': 'Award'
-            },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'file_set_type': {
                 'title': 'File Set Type'
+            },
+            'selection_criteria': {
+                'title': 'Selection Criteria'
             },
             'scope': {
                 'title': 'Scope'
             },
-            'selection_criteria': {
-                'title': 'Selection Criteria'
+            'associated_phenotypes.term_name': {
+                'title': 'Associated Phenotypes'
             },
             'small_scale_gene_list.symbol': {
                 'title': 'Targeted Genes'
@@ -29,10 +26,7 @@ def construct_library_set():
                 'title': 'Open Reading Frame Gene'
             },
             'control_type': {
-                'title': 'Control Type'
-            },
-            'associated_phenotypes.term_name': {
-                'title': 'Associated Phenotypes'
+                'title': 'Control'
             },
             'tiling_modality': {
                 'title': 'CRISPR Tiling Modality'
@@ -40,38 +34,47 @@ def construct_library_set():
             'guide_type': {
                 'title': 'CRISPR Guide Type'
             },
+            'integrated_content_files.content_type': {
+                'title': 'Integrated Content',
+            },
             'applied_to_samples.donors.taxa': {
                 'title': 'Taxa',
             },
             'applied_to_samples.classifications': {
-                'title': 'Classifications',
+                'title': 'Classification',
             },
             'applied_to_samples.sample_terms.term_name': {
-                'title': 'Sample Term',
+                'title': 'Sample',
             },
             'applied_to_samples.targeted_sample_term.term_name': {
-                'title': 'Targeted Sample Term',
+                'title': 'Cellular Transformation Target',
             },
             'applied_to_samples.disease_terms.term_name': {
-                'title': 'Disease Term',
+                'title': 'Disease',
+            },
+            'applied_to_samples.modifications.modality': {
+                'title': 'Modification',
+            },
+            'applied_to_samples.treatments.treatment_term_name': {
+                'title': 'Treatment'
+            },
+            'files.content_type': {
+                'title': 'File Types',
+            },
+            'files.file_format': {
+                'title': 'File Format',
+            },
+            'lab.title': {
+                'title': 'Lab'
+            },
+            'award.component': {
+                'title': 'Award'
             },
             'collections': {
                 'title': 'Collections',
             },
             'status': {
                 'title': 'Status'
-            },
-            'files.content_type': {
-                'title': 'Available File Types',
-            },
-            'integrated_content_files.content_type': {
-                'title': 'Integrated Content',
-            },
-            'file_set_type': {
-                'title': 'File Set Type',
-            },
-            'type': {
-                'title': 'Object Type',
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
@@ -85,20 +88,24 @@ def construct_library_set():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
-                'title': 'File Set',
+                'title': 'Library Set Details',
                 'facet_fields': [
                     'file_set_type',
                     'selection_criteria',
                     'scope',
                     'associated_phenotypes.term_name',
-                    'tiling_modality',
-                    'guide_type',
                     'small_scale_gene_list.symbol',
                     'orf_list.gene.symbol',
-                    'control_type'
+                    'control_type',
+                    'tiling_modality',
+                    'guide_type',
+                    'integrated_content_files.content_type',
                 ],
             },
             {
@@ -109,6 +116,15 @@ def construct_library_set():
                     'applied_to_samples.sample_terms.term_name',
                     'applied_to_samples.targeted_sample_term.term_name',
                     'applied_to_samples.disease_terms.term_name',
+                    'applied_to_samples.modifications.modality',
+                    'applied_to_samples.treatments.treatment_term_name',
+                ],
+            },
+            {
+                'title': 'Files',
+                'facet_fields': [
+                    'files.content_type',
+                    'files.file_format',
                 ],
             },
             {
@@ -118,13 +134,6 @@ def construct_library_set():
                     'lab.title',
                     'award.component',
                     'type',
-                ],
-            },
-            {
-                'title': 'File Data',
-                'facet_fields': [
-                    'files.content_type',
-                    'integrated_content_files.content_type',
                 ],
             },
             {

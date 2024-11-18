@@ -7,47 +7,56 @@ from snovault.elasticsearch.searches.configs import search_config
 def auxiliary_set():
     return {
         'facets': {
-            'status': {
-                'title': 'Status'
-            },
-            'award.component': {
-                'title': 'Award'
-            },
-            'lab.title': {
-                'title': 'Lab'
-            },
             'file_set_type': {
                 'title': 'File Set Type'
+            },
+            'measurement_sets.preferred_assay_title': {
+                'title': 'Assay',
+            },
+            'files.assembly': {
+                'title': 'Assembly',
+            },
+            'files.transcriptome_annotation': {
+                'title': 'Transcriptome Annotation',
             },
             'donors.taxa': {
                 'title': 'Taxa'
             },
             'samples.classifications': {
-                'title': 'Classifications',
+                'title': 'Classification',
             },
             'samples.sample_terms.term_name': {
-                'title': 'Sample Term',
+                'title': 'Sample',
             },
             'samples.targeted_sample_term.term_name': {
-                'title': 'Targeted Sample Term',
+                'title': 'Cellular Transformation Target',
             },
             'samples.disease_terms.term_name': {
-                'title': 'Disease Term',
+                'title': 'Disease',
             },
-            'measurement_sets.preferred_assay_title': {
-                'title': 'Auxiliary Data Of',
+            'samples.modifications.modality': {
+                'title': 'Modification',
+            },
+            'samples.treatments.treatment_term_name': {
+                'title': 'Treatment',
+            },
+            'files.content_type': {
+                'title': 'File Types',
+            },
+            'files.file_format': {
+                'title': 'File Format',
+            },
+            'lab.title': {
+                'title': 'Lab'
+            },
+            'award.component': {
+                'title': 'Award'
             },
             'collections': {
                 'title': 'Collections',
             },
-            'files.content_type': {
-                'title': 'Available File Types',
-            },
-            'file_set_type': {
-                'title': 'File Set Type',
-            },
-            'type': {
-                'title': 'Object Type',
+            'status': {
+                'title': 'Status'
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
@@ -61,8 +70,20 @@ def auxiliary_set():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
+            {
+                'title': 'Auxiliary Set Details',
+                'facet_fields': [
+                    'file_set_type',
+                    'measurement_sets.preferred_assay_title',
+                    'files.assembly',
+                    'files.transcriptome_annotation'
+                ],
+            },
             {
                 'title': 'Sample',
                 'facet_fields': [
@@ -71,13 +92,9 @@ def auxiliary_set():
                     'samples.sample_terms.term_name',
                     'samples.targeted_sample_term.term_name',
                     'samples.disease_terms.term_name',
-                ],
-            },
-            {
-                'title': 'File Set',
-                'facet_fields': [
-                    'file_set_type',
-                    'measurement_sets.preferred_assay_title',
+                    'samples.modifications.modality',
+                    'samples.treatments.treatment_term_name',
+                    'sequencing_library_types',
                 ],
             },
             {
@@ -92,7 +109,8 @@ def auxiliary_set():
             {
                 'title': 'File Data',
                 'facet_fields': [
-                    'files.content_type'
+                    'files.content_type',
+                    'files.file_format'
                 ],
             },
             {
