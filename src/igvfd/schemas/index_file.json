@@ -48,6 +48,7 @@
             "file.json#/dependentSchemas"
         ],
         "file_format": {
+            "comment": "Bai files must be derived from an alignment file. Tbi files must be derived from a tabular file or a reference file.",
             "allOf": [
                 {
                     "if": {
@@ -110,6 +111,9 @@
             "submissionExample": {
                 "appscript": "index",
                 "igvf_utils": "index"
+            },
+            "enum_descriptions": {
+                "index": "A file that accompanies another file and provides indexed random access to that file."
             }
         },
         "file_format": {

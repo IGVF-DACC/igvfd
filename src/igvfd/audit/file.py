@@ -123,7 +123,7 @@ def audit_index_files_derived_from(value, system):
     [
         {
             "audit_description": "Index files in tbi format are expected to have a corresponding tsv or vcf file in `derived_from`.",
-            "audit_category": "incorrect indexed file",
+            "audit_category": "unexpected indexed file",
             "audit_level": "ERROR"
         }
     ]
