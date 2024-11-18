@@ -108,8 +108,7 @@ def test_set_status_endpoint_status_specified(testapp, content):
     )
 
 
-def test_item_set_status_preview_status_transitions(testapp, content, root, dummy_request, registry, request):
-    dummy_request.registry = registry
+def test_item_set_status_preview_status_transitions(testapp, content, root, dummy_request):
     res = testapp.get('/test-igvf-items/')
     igvf_item_id = res.json['@graph'][0]['@id']
     testapp.patch_json(igvf_item_id + '@@set_status?update=true', {'status': 'preview'}, status=200)
