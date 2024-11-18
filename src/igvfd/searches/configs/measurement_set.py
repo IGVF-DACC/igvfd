@@ -105,7 +105,6 @@ def measurement_set():
                     'targeted_genes.symbol',
                     'samples.construct_library_sets.small_scale_gene_list.symbol',
                     'files.sequencing_platform.term_name',
-                    'externally_hosted',
                 ],
             },
             {

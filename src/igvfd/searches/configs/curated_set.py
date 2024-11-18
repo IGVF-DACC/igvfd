@@ -76,22 +76,20 @@ def curated_set():
                 'title': 'Curated Set Details',
                 'facet_fields': [
                     'file_set_type',
-                    'taxa',
                     'assemblies',
                     'transcriptome_annotations',
+                    'taxa'
                 ],
             },
             {
                 'title': 'Sample',
                 'facet_fields': [
-                    'donors.taxa',
                     'samples.classifications',
                     'samples.sample_terms.term_name',
                     'samples.targeted_sample_term.term_name',
                     'samples.disease_terms.term_name',
                     'samples.modifications.modality',
-                    'samples.treatments.treatment_term_name',
-                    'sequencing_library_types',
+                    'samples.treatments.treatment_term_name'
                 ],
             },
             {

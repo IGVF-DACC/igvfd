@@ -10,14 +10,14 @@ def file_set():
             'file_set_type': {
                 'title': 'File Set Type',
             },
-            'assenbly': {
+            'assembly': {
                 'title': 'Assembly',
             },
             'transcriptome_annotation': {
                 'title': 'Transcriptome Annotation',
             },
             'donors.taxa': {
-                'title': 'Taxa',
+                'title': 'Taxa'
             },
             'samples.classifications': {
                 'title': 'Classification',
@@ -36,6 +36,9 @@ def file_set():
             },
             'samples.treatments.treatment_term_name': {
                 'title': 'Treatment',
+            },
+            'sequencing_library_types': {
+                'title': 'Library Type',
             },
             'files.content_type': {
                 'title': 'File Type',

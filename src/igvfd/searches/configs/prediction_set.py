@@ -25,7 +25,7 @@ def prediction_set():
             'samples.sample_terms.term_name': {
                 'title': 'Sample',
             },
-            'samples.targeted_sample_terms.term_name': {
+            'samples.targeted_sample_term.term_name': {
                 'title': 'Cellular Transformation Target',
             },
             'samples.disease_terms.term_name': {
