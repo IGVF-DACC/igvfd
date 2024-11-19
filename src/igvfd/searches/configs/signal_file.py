@@ -13,14 +13,14 @@ def signal_file():
             'file_format': {
                 'title': 'File Format'
             },
-            'strand_specificity': {
-                'title': 'Strand Specificity'
-            },
             'assembly': {
                 'title': 'Assembly'
             },
             'transcriptome_annotation': {
                 'title': 'Transcriptome Annotation'
+            },
+            'strand_specificity': {
+                'title': 'Strand Specificity'
             },
             'filtered': {
                 'title': 'Filtered'
@@ -29,7 +29,7 @@ def signal_file():
                 'title': 'Normalized'
             },
             'cell_type_annotation.term_name': {
-                'title': 'Cell Type Annotation'
+                'title': 'Annotated Cell Type'
             },
             'file_set.file_set_type': {
                 'title': 'File Set Type'
@@ -41,13 +41,22 @@ def signal_file():
                 'title': 'Taxa'
             },
             'file_set.samples.sample_terms.term_name': {
-                'title': 'Sample Term'
+                'title': 'Sample'
             },
             'file_set.samples.classifications': {
-                'title': 'Sample Classification'
+                'title': 'Classification'
+            },
+            'file_set.samples.targeted_sample_term.term_name': {
+                'title': 'Cellular Transformation Target'
             },
             'file_set.samples.disease_terms.term_name': {
-                'title': 'Sample Phenotype'
+                'title': 'Disease'
+            },
+            'file_set.samples.modifications.modality': {
+                'title': 'Modification'
+            },
+            'file_set.samples.treatments.treatment_term_name': {
+                'title': 'Treatment'
             },
             'collections': {
                 'title': 'Collections'
@@ -64,9 +73,6 @@ def signal_file():
             'status': {
                 'title': 'Status'
             },
-            'type': {
-                'title': 'Object Type'
-            },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
             },
@@ -79,16 +85,21 @@ def signal_file():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'type': {
+                'title': 'Object Type'
+            },
         },
         'facet_groups': [
             {
-                'title': 'Format',
+                'title': 'File Details',
                 'facet_fields': [
-                    'file_format',
                     'content_type',
+                    'file_format',
                     'strand_specificity',
                     'filtered',
                     'normalized',
+                    'assembly',
+                    'transcriptome_annotation',
                     'cell_type_annotation.term_name'
                 ],
             },
@@ -105,15 +116,10 @@ def signal_file():
                     'file_set.samples.taxa',
                     'file_set.samples.sample_terms.term_name',
                     'file_set.samples.classifications',
+                    'file_set.samples.targeted_sample_term.term_name',
                     'file_set.samples.disease_terms.term_name',
-                    'cell_type_annotation.term_name',
-                ],
-            },
-            {
-                'title': 'Assembly',
-                'facet_fields': [
-                    'assembly',
-                    'transcriptome_annotation',
+                    'file_set.samples.modifications.modality',
+                    'file_set.samples.treatments.treatment_term_name',
                 ],
             },
             {

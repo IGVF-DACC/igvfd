@@ -7,14 +7,20 @@ from snovault.elasticsearch.searches.configs import search_config
 def sequence_file():
     return {
         'facets': {
-            'file_format': {
-                'title': 'File Format'
-            },
             'content_type': {
                 'title': 'Content Type'
             },
+            'file_format': {
+                'title': 'File Format'
+            },
             'illumina_read_type': {
                 'title': 'Illumina Read Type'
+            },
+            'sequencing_kit': {
+                'title': 'Sequencing Kit'
+            },
+            'sequencing_platform.term_name': {
+                'title': 'Sequencing Platform'
             },
             'file_set.file_set_type': {
                 'title': 'File Set Type'
@@ -26,19 +32,22 @@ def sequence_file():
                 'title': 'Taxa'
             },
             'file_set.samples.sample_terms.term_name': {
-                'title': 'Sample Term'
+                'title': 'Sample'
             },
             'file_set.samples.classifications': {
-                'title': 'Sample Classification'
+                'title': 'Classification'
+            },
+            'file_set.samples.targeted_sample_term.term_name': {
+                'title': 'Cellular Transformation Target'
             },
             'file_set.samples.disease_terms.term_name': {
-                'title': 'Sample Phenotype'
+                'title': 'Disease'
             },
-            'sequencing_kit': {
-                'title': 'Sequencing Kit'
+            'file_set.samples.modifications.modality': {
+                'title': 'Modification'
             },
-            'sequencing_platform.term_name': {
-                'title': 'Sequencing Platform'
+            'file_set.samples.treatments.treatment_term_name': {
+                'title': 'Treatment'
             },
             'collections': {
                 'title': 'Collections'
@@ -55,9 +64,6 @@ def sequence_file():
             'status': {
                 'title': 'Status'
             },
-            'type': {
-                'title': 'Object Type'
-            },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
             },
@@ -70,14 +76,22 @@ def sequence_file():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'externally_hosted': {
+                'title': 'Externally Hosted'
+            },
+            'type': {
+                'title': 'Object Type'
+            },
         },
         'facet_groups': [
             {
-                'title': 'Format',
+                'title': 'File Details',
                 'facet_fields': [
-                    'file_format',
                     'content_type',
+                    'file_format',
                     'illumina_read_type',
+                    'sequencing_platform.term_name',
+                    'sequencing_kit',
                 ],
             },
             {
@@ -93,7 +107,10 @@ def sequence_file():
                     'file_set.samples.taxa',
                     'file_set.samples.sample_terms.term_name',
                     'file_set.samples.classifications',
+                    'file_set.samples.targeted_sample_term.term_name',
                     'file_set.samples.disease_terms.term_name',
+                    'file_set.samples.modifications.modality',
+                    'file_set.samples.treatments.treatment_term_name',
                 ],
             },
             {
@@ -106,13 +123,6 @@ def sequence_file():
                 ],
             },
             {
-                'title': 'Sequencing Details',
-                'facet_fields': [
-                    'sequencing_platform.term_name',
-                    'sequencing_kit',
-                ],
-            },
-            {
                 'title': 'Quality',
                 'facet_fields': [
                     'upload_status',
@@ -121,6 +131,7 @@ def sequence_file():
                     'audit.NOT_COMPLIANT.category',
                     'audit.WARNING.category',
                     'audit.INTERNAL_ACTION.category',
+                    'externally_hosted',
                 ],
             },
         ],

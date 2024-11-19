@@ -13,9 +13,6 @@ def image_file():
             'file_format': {
                 'title': 'File Format'
             },
-            'collections': {
-                'title': 'Collections'
-            },
             'file_set.file_set_type': {
                 'title': 'File Set Type'
             },
@@ -25,14 +22,26 @@ def image_file():
             'file_set.samples.taxa': {
                 'title': 'Taxa'
             },
-            'file_set.samples.sample_terms.term_name': {
-                'title': 'Sample Term'
-            },
             'file_set.samples.classifications': {
-                'title': 'Sample Classification'
+                'title': 'Classification'
+            },
+            'file_set.samples.sample_terms.term_name': {
+                'title': 'Sample'
+            },
+            'file_set.samples.targeted_sample_term.term_name': {
+                'title': 'Cellular Transformation Target'
             },
             'file_set.samples.disease_terms.term_name': {
-                'title': 'Sample Phenotype'
+                'title': 'Disease'
+            },
+            'file_set.samples.modifications.modality': {
+                'title': 'Modification'
+            },
+            'file_set.samples.treatments.treatment_term_name': {
+                'title': 'Treatment'
+            },
+            'collections': {
+                'title': 'Collections'
             },
             'lab.title': {
                 'title': 'Lab'
@@ -46,9 +55,6 @@ def image_file():
             'status': {
                 'title': 'Status'
             },
-            'type': {
-                'title': 'Object Type'
-            },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
             },
@@ -61,13 +67,16 @@ def image_file():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'type': {
+                'title': 'Object Type'
+            },
         },
         'facet_groups': [
             {
-                'title': 'Format',
+                'title': 'File Details',
                 'facet_fields': [
-                    'file_format',
                     'content_type',
+                    'file_format',
                 ],
             },
             {
@@ -81,9 +90,12 @@ def image_file():
                 'title': 'Sample',
                 'facet_fields': [
                     'file_set.samples.taxa',
-                    'file_set.samples.sample_terms.term_name',
                     'file_set.samples.classifications',
+                    'file_set.samples.sample_terms.term_name',
+                    'file_set.samples.targeted_sample_term.term_name',
                     'file_set.samples.disease_terms.term_name',
+                    'file_set.samples.modifications.modality',
+                    'file_set.samples.treatments.treatment_term_name'
                 ],
             },
             {
