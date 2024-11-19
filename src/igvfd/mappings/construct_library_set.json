@@ -1,6 +1,6 @@
 {
-    "hash": "7b78cff776cef899e5093d492827d812",
-    "index_name": "construct_library_set_7b78cff7",
+    "hash": "1b0418274f607a8d02200d1b1c53b6ce",
+    "index_name": "construct_library_set_1b041827",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1003,6 +1003,9 @@
                     },
                     "collections": {
                         "copy_to": "_fuzzy",
+                        "type": "keyword"
+                    },
+                    "control_file_sets": {
                         "type": "keyword"
                     },
                     "control_for": {

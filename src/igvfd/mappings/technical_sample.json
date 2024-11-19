@@ -1,6 +1,6 @@
 {
-    "hash": "bbc004f663469f1b0c527182964848cf",
-    "index_name": "technical_sample_bbc004f6",
+    "hash": "59de1878f57234ad496479d2a1e19b8f",
+    "index_name": "technical_sample_59de1878",
     "item_type": "technical_sample",
     "mapping": {
         "dynamic_templates": [
@@ -344,6 +344,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "control_file_sets": {
                                 "type": "keyword"
                             },
                             "control_for": {

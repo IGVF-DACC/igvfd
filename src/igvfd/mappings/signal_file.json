@@ -1650,6 +1650,9 @@
                             "collections": {
                                 "type": "keyword"
                             },
+                            "control_file_sets": {
+                                "type": "keyword"
+                            },
                             "control_for": {
                                 "type": "keyword"
                             },
