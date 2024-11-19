@@ -70,6 +70,9 @@ def file_set():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'externally_hosted': {
+                'title': 'Externally Hosted'
+            },
             'type': {
                 'title': 'Object Type',
             },
@@ -120,6 +123,7 @@ def file_set():
                     'audit.NOT_COMPLIANT.category',
                     'audit.WARNING.category',
                     'audit.INTERNAL_ACTION.category',
+                    'externally_hosted',
                 ],
             },
         ]

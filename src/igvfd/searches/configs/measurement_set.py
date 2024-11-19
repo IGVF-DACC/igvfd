@@ -89,7 +89,7 @@ def measurement_set():
                 'title': 'Audit Category: Internal Action'
             },
             'externally_hosted': {
-                'title': 'Exteernally Hosted'
+                'title': 'Externally Hosted'
             },
             'type': {
                 'title': 'Object Type',
