@@ -1,4 +1,6 @@
 on: [push]
+#  release:
+#    types: [published]
 
 jobs:
   slack:
@@ -7,24 +9,26 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: Get the most recent release tag
+      - name: Get the two most recent tags
         run: |
-          echo "fetching tags"
-          git describe --tags --abbrev=0
-          echo "latest_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+          TAGS=$(git tag --sort=-creatordate | head -n 2)
+          if [ "$(echo "$TAGS" | wc -l)" -lt 2 ]; then
+            echo "Insufficient tags to calculate diff."
+            exit 1
+          fi
+          TAG_OLD=$(echo "$TAGS" | tail -n 1)
+          TAG_NEW=$(echo "$TAGS" | head -n 1)
+          echo "tag_old=$TAG_OLD" >> $GITHUB_ENV
+          echo "tag_new=$TAG_NEW" >> $GITHUB_ENV
       - name: Generate git diff
         run: |
-          git diff ${{env.latest_tag}} HEAD src/igvfd/schemas/changelogs/* > diff.txt
+          git diff --unified=0 ${{env.tag_old}} ${{env.tag_new}} src/igvfd/schemas/changelogs/* | grep -v ^--- | grep -E "^[\+|#| #|-]"> diff.txt
       - name: Prepare the Slack message
         run: |
-          DIFF_CONTENT=$(head -n 100 diff.txt | sed 's/"/\\"/g')
-          echo "slack_blocks=[{\"type\": \"section\", \"text\": {\"type\": \"mrkdwn\", \"text\": \"Changes from ${{ env.latest_tag }} to HEAD:\n\`\`\`$DIFF_CONTENT\`\`\`\"}}]" >> $GITHUB_ENV
-
+          python scripts/slack/generate_payload.py --diff-file diff.txt --output-file slack_payload.json --tag-old ${{env.tag_old}} --tag-new ${{env.tag_new}} --channel-id ${{secrets.TEST_CHANNEL_ID}}
       - name: Post a message to Slack
         uses: slackapi/slack-github-action@v2.0.0
         with:
           method: chat.postMessage
           token: ${{secrets.SUBMITTER_HELPDESK_SLACK_BOT_TOKEN}}
-          payload: |
-            channel: ${{secrets.TEST_CHANNEL_ID}}
-            blocks: ${{env.slack_blocks}}
+          payload-file-path: slack_payload.json
