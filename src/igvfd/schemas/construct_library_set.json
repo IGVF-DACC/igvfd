@@ -45,6 +45,9 @@
         },
         {
             "$ref": "mixins.json#/loci"
+        },
+        {
+            "$ref": "mixins.json#/control_file_sets"
         }
     ],
     "dependentSchemas": {
