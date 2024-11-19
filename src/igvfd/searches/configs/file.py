@@ -31,12 +31,6 @@ def file():
             'assay_titles': {
                 'title': 'Assay'
             },
-            'integrated_in.associated_phenotypes.term_name': {
-                'title': 'Associated Phenotypes'
-            },
-            'integrated_in.small_scale_gene_list.symbol': {
-                'title': 'Investigated Gene'
-            },
             'cell_type_annotation.term_name': {
                 'title': 'Annotated Cell Type'
             },
@@ -97,6 +91,9 @@ def file():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'externally_hosted': {
+                'title': 'Externally Hosted'
+            }
         },
         'facet_groups': [
             {
@@ -115,9 +112,8 @@ def file():
                 'facet_fields': [
                     'file_set.file_set_type',
                     'assay_titles',
-                    'integrated_in.associated_phenotypes.term_name',
-                    'integrated_in.small_scale_gene_list.symbol',
                     'cell_type_annotation.term_name',
+                    'integrated_in.file_set_type',
                 ],
             },
             {
@@ -130,7 +126,6 @@ def file():
                     'file_set.samples.disease_terms.term_name',
                     'file_set.samples.modifications.modality',
                     'file_set.samples.treatments.treatment_term_name',
-                    'integrated_in.file_set_type',
                     'sequencing_kit',
                 ],
             },
@@ -152,6 +147,7 @@ def file():
                     'audit.NOT_COMPLIANT.category',
                     'audit.WARNING.category',
                     'audit.INTERNAL_ACTION.category',
+                    'externally_hosted',
                 ],
             },
         ]
