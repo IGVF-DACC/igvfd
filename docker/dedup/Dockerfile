@@ -8,7 +8,7 @@ RUN git clone -b ${VERSION} --depth 1 https://github.com/IGVF-DACC/go-sqs-dedupl
 
 RUN CGO_ENABLED=0 go build -ldflags="-X 'main.Version=${VERSION}'" -o dedup cmd/dedup.go
 
-FROM public.ecr.aws/ubuntu/ubuntu:23.10_stable
+FROM public.ecr.aws/ubuntu/ubuntu:24.04_stable
 
 RUN apt-get update \
     && apt-get install -y ca-certificates \
