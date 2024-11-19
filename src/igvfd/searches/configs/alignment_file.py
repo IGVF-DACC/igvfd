@@ -131,7 +131,7 @@ def alignment_file():
                     'audit.ERROR.category',
                     'audit.NOT_COMPLIANT.category',
                     'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category'
+                    'audit.INTERNAL_ACTION.category',
                 ],
             },
         ],

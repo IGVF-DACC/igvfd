@@ -76,6 +76,9 @@ def sequence_file():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'externally_hosted': {
+                'title': 'Externally Hosted'
+            },
             'type': {
                 'title': 'Object Type'
             },
@@ -128,6 +131,7 @@ def sequence_file():
                     'audit.NOT_COMPLIANT.category',
                     'audit.WARNING.category',
                     'audit.INTERNAL_ACTION.category',
+                    'externally_hosted',
                 ],
             },
         ],

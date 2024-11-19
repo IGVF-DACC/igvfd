@@ -55,12 +55,6 @@ def tabular_file():
             'integrated_in.file_set_type': {
                 'title': 'Library Type'
             },
-            'integrated_in.associated_phenotypes.term_name': {
-                'title': 'Associated Phenotypes'
-            },
-            'integrated_in.small_scale_gene_list.symbol': {
-                'title': 'Construct Targeted Genes'
-            },
             'collections': {
                 'title': 'Collections'
             },
@@ -88,6 +82,9 @@ def tabular_file():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'externally_hosted': {
+                'title': 'Externally Hosted'
+            },
             'type': {
                 'title': 'Object Type'
             },
@@ -107,6 +104,7 @@ def tabular_file():
                 'facet_fields': [
                     'file_set.file_set_type',
                     'assay_titles',
+                    'integrated_in.file_set_type',
                 ],
             },
             {
@@ -119,14 +117,6 @@ def tabular_file():
                     'file_set.samples.disease_terms.term_name',
                     'file_set.samples.modifications.modality',
                     'file_set.samples.treatments.treatment_term_name',
-                ],
-            },
-            {
-                'title': 'Construct Design Data',
-                'facet_fields': [
-                    'integrated_in.file_set_type',
-                    'integrated_in.associated_phenotypes.term_name',
-                    'integrated_in.small_scale_gene_list.symbol',
                 ],
             },
             {
@@ -147,6 +137,7 @@ def tabular_file():
                     'audit.NOT_COMPLIANT.category',
                     'audit.WARNING.category',
                     'audit.INTERNAL_ACTION.category',
+                    'externally_hosted',
                 ],
             },
         ],
