@@ -19,7 +19,6 @@
 * Update calculation of `summary`.
 * Add calculated property `input_file_for`.
 * Add `analysis_step_version`.
-* Another fake change to test the Slack bot.
 
 ### Schema version 10
 
