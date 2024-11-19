@@ -88,6 +88,9 @@ def measurement_set():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'externally_hosted': {
+                'title': 'Exteernally Hosted'
+            },
             'type': {
                 'title': 'Object Type',
             },
@@ -143,7 +146,8 @@ def measurement_set():
                     'audit.ERROR.category',
                     'audit.NOT_COMPLIANT.category',
                     'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category'
+                    'audit.INTERNAL_ACTION.category',
+                    'externally_hosted',
                 ],
             },
         ],

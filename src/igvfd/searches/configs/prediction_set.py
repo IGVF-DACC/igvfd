@@ -13,6 +13,12 @@ def prediction_set():
             'scope': {
                 'title': 'Scope',
             },
+            'files.assembly': {
+                'title': 'Assembly',
+            },
+            'files.transcriptome_annotation': {
+                'title': 'Transcriptome Annotation',
+            },
             'assessed_genes': {
                 'title': 'Assessed Genes',
             },
@@ -42,12 +48,6 @@ def prediction_set():
             },
             'files.file_format': {
                 'title': 'File Format',
-            },
-            'files.assembly': {
-                'title': 'Assembly',
-            },
-            'files.transcriptome_annotation': {
-                'title': 'Transcriptome Annotation',
             },
             'status': {
                 'title': 'Status'
@@ -83,7 +83,9 @@ def prediction_set():
                 'facet_fields': [
                     'file_set_type',
                     'scope',
-                    'assessed_genes'
+                    'assessed_genes',
+                    'files.assembly',
+                    'files.transcriptome_annotation',
                 ],
             },
             {
@@ -103,8 +105,6 @@ def prediction_set():
                 'facet_fields': [
                     'files.content_type',
                     'files.file_format',
-                    'files.assembly',
-                    'files.transcriptome_annotation',
                 ],
             },
             {
