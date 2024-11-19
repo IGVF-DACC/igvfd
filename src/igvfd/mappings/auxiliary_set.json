@@ -1,6 +1,6 @@
 {
-    "hash": "c7315a43ee1459adf84e768f37c4770f",
-    "index_name": "auxiliary_set_c7315a43",
+    "hash": "148b8a78bf03ececed474d9bc51a5491",
+    "index_name": "auxiliary_set_148b8a78",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -1050,6 +1050,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "read_names": {
+                                "type": "keyword"
                             },
                             "redacted": {
                                 "fields": {

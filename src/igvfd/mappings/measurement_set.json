@@ -1,6 +1,6 @@
 {
-    "hash": "74ef5224d4b3d582f8d4d8332d7d1d18",
-    "index_name": "measurement_set_74ef5224",
+    "hash": "f844e1e75f42550cb1683b0953c19cf3",
+    "index_name": "measurement_set_f844e1e7",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1604,6 +1604,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "read_names": {
+                                "type": "keyword"
                             },
                             "redacted": {
                                 "fields": {

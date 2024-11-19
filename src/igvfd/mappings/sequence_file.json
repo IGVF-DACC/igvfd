@@ -1,6 +1,6 @@
 {
-    "hash": "371c8ab71448a3183b16bc23c5fb3fed",
-    "index_name": "sequence_file_371c8ab7",
+    "hash": "7a3bac28ff631ca963fdd5ca09b4af5a",
+    "index_name": "sequence_file_7a3bac28",
     "item_type": "sequence_file",
     "mapping": {
         "dynamic_templates": [
@@ -1680,6 +1680,9 @@
                         },
                         "store": true,
                         "type": "long"
+                    },
+                    "read_names": {
+                        "type": "keyword"
                     },
                     "release_timestamp": {
                         "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "4acc8593e7cf329a9bd6a8e5d16c4d2c",
-    "index_name": "prediction_set_4acc8593",
+    "hash": "827f5d6979d8c285f85a8b5ba40fbdec",
+    "index_name": "prediction_set_827f5d69",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -1150,6 +1150,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "read_names": {
+                                "type": "keyword"
                             },
                             "redacted": {
                                 "fields": {

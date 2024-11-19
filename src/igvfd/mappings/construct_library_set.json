@@ -1,6 +1,6 @@
 {
-    "hash": "22db17c64bc73116d396ea9068422f29",
-    "index_name": "construct_library_set_22db17c6",
+    "hash": "7b78cff776cef899e5093d492827d812",
+    "index_name": "construct_library_set_7b78cff7",
     "item_type": "construct_library_set",
     "mapping": {
         "dynamic_templates": [
@@ -1612,6 +1612,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "read_names": {
+                                "type": "keyword"
                             },
                             "redacted": {
                                 "fields": {

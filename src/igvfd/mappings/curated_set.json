@@ -1,6 +1,6 @@
 {
-    "hash": "b53ee9069c2dafb017d2671efc3a58d3",
-    "index_name": "curated_set_b53ee906",
+    "hash": "49bc06fef118e152db858bb9e0e63e94",
+    "index_name": "curated_set_49bc06fe",
     "item_type": "curated_set",
     "mapping": {
         "dynamic_templates": [
@@ -1051,6 +1051,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "read_names": {
+                                "type": "keyword"
                             },
                             "redacted": {
                                 "fields": {

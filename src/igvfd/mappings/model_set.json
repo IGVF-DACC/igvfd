@@ -1,6 +1,6 @@
 {
-    "hash": "f350081e23037ca7aafbb1c2106c34fb",
-    "index_name": "model_set_f350081e",
+    "hash": "662e3a9cda4851fc248930d561e68dce",
+    "index_name": "model_set_662e3a9c",
     "item_type": "model_set",
     "mapping": {
         "dynamic_templates": [
@@ -1160,6 +1160,9 @@
                                 },
                                 "store": true,
                                 "type": "long"
+                            },
+                            "read_names": {
+                                "type": "keyword"
                             },
                             "redacted": {
                                 "fields": {
