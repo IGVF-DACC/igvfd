@@ -25,7 +25,7 @@ jobs:
           git diff --unified=0 ${{env.tag_old}} ${{env.tag_new}} src/igvfd/schemas/changelogs/* | grep -v ^--- | grep -E "^[\+|#| #|-]"> diff.txt
       - name: Prepare the Slack message
         run: |
-          python scripts/slack/generate_payload.py --diff-file diff.txt --output-file slack_payload.json --tag-old ${{env.tag_old}} --tag-new ${{env.tag_new}} --channel-id ${{secrets.TEST_CHANNEL_ID}}
+          python scripts/slack/generate_payload.py --diff-file diff.txt --output-file slack_payload.json --tag-old ${{env.tag_old}} --tag-new ${{env.tag_new}} --channel-id ${{secrets.SUBMITTER_HELPDESK_CHANNEL_ID}}
       - name: Post a message to Slack
         uses: slackapi/slack-github-action@v2.0.0
         with:
