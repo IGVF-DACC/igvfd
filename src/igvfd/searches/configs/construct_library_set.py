@@ -26,7 +26,7 @@ def construct_library_set():
                 'title': 'Open Reading Frame Gene'
             },
             'control_type': {
-                'title': 'Control'
+                'title': 'Control Type'
             },
             'tiling_modality': {
                 'title': 'CRISPR Tiling Modality'
