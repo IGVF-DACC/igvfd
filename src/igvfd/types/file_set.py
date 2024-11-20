@@ -83,9 +83,12 @@ class FileSet(Item):
             'targeted_sample_term',
             'taxa',
             'term_name',
+            'treatments'
         ]),
         Path('samples.disease_terms', include=['@id', 'term_name']),
         Path('samples.targeted_sample_term', include=['@id', 'term_name']),
+        Path('samples.modifications', include=['@id', 'modality']),
+        Path('samples.treatments', include=['@id', 'treatment_term_name']),
         Path('publications', include=['@id', 'publication_identifiers']),
     ]
 
@@ -1083,11 +1086,13 @@ class ConstructLibrarySet(FileSet):
         Path('associated_phenotypes', include=['@id', 'term_id', 'term_name']),
         Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
         Path('applied_to_samples', include=['@id', '@type', 'accession',
-             'aliases', 'classifications', 'disease_terms', 'donors', 'sample_terms', 'targeted_sample_term', 'status', 'summary']),
+             'aliases', 'classifications', 'disease_terms', 'donors', 'sample_terms', 'targeted_sample_term', 'status', 'summary', 'modifications', 'treatments']),
         Path('applied_to_samples.donors', include=['@id', 'taxa']),
         Path('applied_to_samples.disease_terms', include=['@id', 'term_name']),
         Path('applied_to_samples.sample_terms', include=['@id', 'term_name']),
         Path('applied_to_samples.targeted_sample_term', include=['@id', 'term_name']),
+        Path('applied_to_samples.modifications', include=['@id', 'modality', 'summary']),
+        Path('applied_to_samples.treatments', include=['@id', 'treatment_term_name', 'summary']),
         Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
         Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
         Path('orf_list', include=['@id', 'orf_id', 'genes', 'aliases']),

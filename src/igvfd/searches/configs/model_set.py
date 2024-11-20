@@ -7,6 +7,21 @@ from snovault.elasticsearch.searches.configs import search_config
 def model_set():
     return {
         'facets': {
+            'file_set_type': {
+                'title': 'File Set Type'
+            },
+            'prediction_objects': {
+                'title': 'Prediction Subject'
+            },
+            'assessed_genes': {
+                'title': 'Assessed Gene'
+            },
+            'files.content_type': {
+                'title': 'File Types',
+            },
+            'files.file_format': {
+                'title': 'File Format',
+            },
             'collections': {
                 'title': 'Collections',
             },
@@ -18,21 +33,6 @@ def model_set():
             },
             'status': {
                 'title': 'Status'
-            },
-            'files.content_type': {
-                'title': 'Available File Types',
-            },
-            'file_set_type': {
-                'title': 'File Set Type'
-            },
-            'prediction_objects': {
-                'title': 'Prediction Objects'
-            },
-            'file_set_type': {
-                'title': 'File Set Type',
-            },
-            'type': {
-                'title': 'Object Type',
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
@@ -46,13 +46,27 @@ def model_set():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'externally_hosted': {
+                'title': 'Externally Hosted'
+            },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
-                'title': 'File Set',
+                'title': 'Model Set Details',
                 'facet_fields': [
                     'file_set_type',
                     'prediction_objects',
+                    'assessed_genes',
+                ],
+            },
+            {
+                'title': 'Files',
+                'facet_fields': [
+                    'files.content_type',
+                    'files.file_format',
                 ],
             },
             {
@@ -65,12 +79,6 @@ def model_set():
                 ],
             },
             {
-                'title': 'File Data',
-                'facet_fields': [
-                    'files.content_type'
-                ],
-            },
-            {
                 'title': 'Quality',
                 'facet_fields': [
                     'status',
@@ -78,6 +86,7 @@ def model_set():
                     'audit.NOT_COMPLIANT.category',
                     'audit.WARNING.category',
                     'audit.INTERNAL_ACTION.category',
+                    'externally_hosted',
                 ],
             },
         ],

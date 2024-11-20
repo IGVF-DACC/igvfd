@@ -7,50 +7,62 @@ from snovault.elasticsearch.searches.configs import search_config
 def measurement_set():
     return {
         'facets': {
-            'donors.taxa': {
-                'title': 'Taxa',
-            },
-            'samples.classifications': {
-                'title': 'Classifications',
-            },
-            'samples.sample_terms.term_name': {
-                'title': 'Sample Term',
-            },
-            'samples.targeted_sample_term.term_name': {
-                'title': 'Targeted Sample Term',
-            },
-            'samples.disease_terms.term_name': {
-                'title': 'Disease Term',
-            },
             'assay_term.term_name': {
-                'title': 'Assay Term'
+                'title': 'Assay'
             },
             'preferred_assay_title': {
                 'title': 'Preferred Assay Title'
             },
-            'samples.modifications.modality': {
-                'title': 'CRISPR Modality'
+            'control_type': {
+                'title': 'Control Type'
             },
-            'files.sequencing_platform.term_name': {
-                'title': 'Sequencing Platform'
-            },
-            'sequencing_library_types': {
-                'title': 'Library Material'
-            },
-            'targeted_genes.symbol': {
-                'title': 'Assay Targeted Genes'
-            },
-            'samples.construct_library_sets.small_scale_gene_list.symbol': {
-                'title': 'Construct Library Targeted Genes'
-            },
-            'samples.construct_library_sets.file_set_type': {
-                'title': 'Construct Library Data'
+            'functional_assay_mechanisms.term_name': {
+                'title': 'Measured Mechanisms'
             },
             'auxiliary_sets.file_set_type': {
                 'title': 'Auxiliary Data'
             },
+            'samples.construct_library_sets.file_set_type': {
+                'title': 'Construct Library Data'
+            },
+            'samples.construct_library_sets.small_scale_gene_list.symbol': {
+                'title': 'Investigated Gene'
+            },
+            'targeted_genes.symbol': {
+                'title': 'Readout Genes'
+            },
+            'files.sequencing_platform.term_name': {
+                'title': 'Sequencing Platform'
+            },
+            'donors.taxa': {
+                'title': 'Taxa',
+            },
+            'samples.classifications': {
+                'title': 'Classification',
+            },
+            'samples.sample_terms.term_name': {
+                'title': 'Sample',
+            },
+            'samples.targeted_sample_term.term_name': {
+                'title': 'Cellular Transformation Target',
+            },
+            'samples.disease_terms.term_name': {
+                'title': 'Disease',
+            },
+            'samples.modifications.modality': {
+                'title': 'Modification'
+            },
+            'samples.treatments.treatment_term_name': {
+                'title': 'Treatment'
+            },
+            'sequencing_library_types': {
+                'title': 'Library Material'
+            },
             'files.content_type': {
-                'title': 'Available File Types',
+                'title': 'File Types',
+            },
+            'files.file_format': {
+                'title': 'File Format',
             },
             'collections': {
                 'title': 'Collections',
@@ -61,17 +73,8 @@ def measurement_set():
             'award.component': {
                 'title': 'Award'
             },
-            'functional_assay_mechanisms.term_name': {
-                'title': 'Functional Assay Mechanisms'
-            },
             'status': {
                 'title': 'Status'
-            },
-            'file_set_type': {
-                'title': 'File Set Type',
-            },
-            'type': {
-                'title': 'Object Type',
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
@@ -85,8 +88,28 @@ def measurement_set():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'externally_hosted': {
+                'title': 'Externally Hosted'
+            },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
+            {
+                'title': 'Measurement Set Details',
+                'facet_fields': [
+                    'assay_term.term_name',
+                    'preferred_assay_title',
+                    'control_type',
+                    'functional_assay_mechanisms.term_name',
+                    'auxiliary_sets.file_set_type',
+                    'samples.construct_library_sets.file_set_type',
+                    'targeted_genes.symbol',
+                    'samples.construct_library_sets.small_scale_gene_list.symbol',
+                    'files.sequencing_platform.term_name',
+                ],
+            },
             {
                 'title': 'Sample',
                 'facet_fields': [
@@ -95,33 +118,16 @@ def measurement_set():
                     'samples.sample_terms.term_name',
                     'samples.targeted_sample_term.term_name',
                     'samples.disease_terms.term_name',
-                ],
-            },
-            {
-                'title': 'Assay',
-                'facet_fields': [
-                    'assay_term.term_name',
-                    'preferred_assay_title',
                     'samples.modifications.modality',
-                    'file_set_type',
-                    'auxiliary_sets.file_set_type',
-                    'samples.construct_library_sets.file_set_type',
-                    'targeted_genes.symbol',
-                    'samples.construct_library_sets.small_scale_gene_list.symbol',
-                    'functional_assay_mechanisms.term_name'
-                ],
-            },
-            {
-                'title': 'Library',
-                'facet_fields': [
+                    'samples.treatments.treatment_term_name',
                     'sequencing_library_types',
-                    'files.sequencing_platform.term_name'
                 ],
             },
             {
-                'title': 'File Data',
+                'title': 'Files',
                 'facet_fields': [
-                    'files.content_type'
+                    'files.content_type',
+                    'files.file_format'
                 ],
             },
             {
@@ -140,7 +146,8 @@ def measurement_set():
                     'audit.ERROR.category',
                     'audit.NOT_COMPLIANT.category',
                     'audit.WARNING.category',
-                    'audit.INTERNAL_ACTION.category'
+                    'audit.INTERNAL_ACTION.category',
+                    'externally_hosted',
                 ],
             },
         ],

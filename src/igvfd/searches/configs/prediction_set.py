@@ -7,6 +7,48 @@ from snovault.elasticsearch.searches.configs import search_config
 def prediction_set():
     return {
         'facets': {
+            'file_set_type': {
+                'title': 'File Set Type',
+            },
+            'scope': {
+                'title': 'Scope',
+            },
+            'files.assembly': {
+                'title': 'Assembly',
+            },
+            'files.transcriptome_annotation': {
+                'title': 'Transcriptome Annotation',
+            },
+            'assessed_genes': {
+                'title': 'Assessed Genes',
+            },
+            'donors.taxa': {
+                'title': 'Taxa',
+            },
+            'samples.classifications': {
+                'title': 'Classification',
+            },
+            'samples.sample_terms.term_name': {
+                'title': 'Sample',
+            },
+            'samples.targeted_sample_term.term_name': {
+                'title': 'Cellular Transformation Target',
+            },
+            'samples.disease_terms.term_name': {
+                'title': 'Disease',
+            },
+            'samples.modifications.modality': {
+                'title': 'Modification'
+            },
+            'samples.treatments.treatment_term_name': {
+                'title': 'Treatment'
+            },
+            'files.content_type': {
+                'title': 'Content Type',
+            },
+            'files.file_format': {
+                'title': 'File Format',
+            },
             'status': {
                 'title': 'Status'
             },
@@ -16,23 +58,8 @@ def prediction_set():
             'lab.title': {
                 'title': 'Lab'
             },
-            'file_set_type': {
-                'title': 'File Set Type'
-            },
-            'files.content_type': {
-                'title': 'Available File Types',
-            },
             'collections': {
                 'title': 'Collections',
-            },
-            'donors.taxa': {
-                'title': 'Taxa',
-            },
-            'file_set_type': {
-                'title': 'File Set Type',
-            },
-            'type': {
-                'title': 'Object Type',
             },
             'audit.ERROR.category': {
                 'title': 'Audit Category: Error'
@@ -46,13 +73,38 @@ def prediction_set():
             'audit.INTERNAL_ACTION.category': {
                 'title': 'Audit Category: Internal Action'
             },
+            'type': {
+                'title': 'Object Type',
+            },
         },
         'facet_groups': [
             {
-                'title': 'File Set',
+                'title': 'Prediction Set Details',
                 'facet_fields': [
                     'file_set_type',
+                    'scope',
+                    'assessed_genes',
+                    'files.assembly',
+                    'files.transcriptome_annotation',
+                ],
+            },
+            {
+                'title': 'Sample',
+                'facet_fields': [
                     'donors.taxa',
+                    'samples.classifications',
+                    'samples.sample_terms.term_name',
+                    'samples.targeted_sample_term.term_name',
+                    'samples.disease_terms.term_name',
+                    'samples.modifications.modality',
+                    'samples.treatments.treatment_term_name',
+                ],
+            },
+            {
+                'title': 'Files',
+                'facet_fields': [
+                    'files.content_type',
+                    'files.file_format',
                 ],
             },
             {
@@ -62,12 +114,6 @@ def prediction_set():
                     'lab.title',
                     'award.component',
                     'type',
-                ],
-            },
-            {
-                'title': 'File Data',
-                'facet_fields': [
-                    'files.content_type'
                 ],
             },
             {
