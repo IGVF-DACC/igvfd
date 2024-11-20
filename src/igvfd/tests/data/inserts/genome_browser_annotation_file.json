@@ -22,31 +22,5 @@
         "derived_from": [
             "IGVFFI0001PKBD"
         ]
-    },
-    {
-        "uuid": "20571fef-b9ee-4d8e-0e6e-46f43d6fa247",
-        "accession": "IGVFFI0001TABX",
-        "lab": "j-michael-cherry",
-        "award": "HG012012",
-        "aliases": [
-            "igvf:genome_browser_annotation_file_tabix"
-        ],
-        "status": "released",
-        "release_timestamp": "2024-03-06T12:34:56Z",
-        "md5sum": "991c30f3e4d38edac91b578ea177791c",
-        "file_format": "tabix",
-        "content_type": "peaks",
-        "file_format_specifications": [
-            "igvf:file_format_specification_insert"
-        ],
-        "submitted_file_name": "/Users/igvf/igvf_files/peaks_02.tabix",
-        "file_size": 102340,
-        "assembly": "GRCh38",
-        "upload_status": "invalidated",
-        "validation_error_detail": "Explanation of why this file did not pass validation.",
-        "file_set": "igvf:analysis_set_with_input",
-        "derived_from": [
-            "IGVFFI0000CSVV"
-        ]
     }
 ]

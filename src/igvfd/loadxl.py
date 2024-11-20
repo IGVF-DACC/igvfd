@@ -62,6 +62,7 @@ ORDER = [
     'matrix_file',
     'model_file',
     'tabular_file',
+    'index_file',
     'genome_browser_annotation_file',
     'image_file'
 ]

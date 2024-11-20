@@ -1,7 +1,7 @@
 {
-    "hash": "12428c46f270cbe2fdf3b7b7867a2c68",
-    "index_name": "alignment_file_12428c46",
-    "item_type": "alignment_file",
+    "hash": "bd0544008c9c4cbc6e9589cc8cf39ec9",
+    "index_name": "index_file_bd054400",
+    "item_type": "index_file",
     "mapping": {
         "dynamic_templates": [
             {
@@ -245,9 +245,6 @@
                         "type": "keyword"
                     },
                     "content_md5sum": {
-                        "type": "keyword"
-                    },
-                    "content_summary": {
                         "type": "keyword"
                     },
                     "content_type": {
@@ -1945,15 +1942,6 @@
                     "notes": {
                         "type": "text"
                     },
-                    "read_count": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
-                        "store": true,
-                        "type": "long"
-                    },
                     "redacted": {
                         "fields": {
                             "raw": {
@@ -1962,9 +1950,6 @@
                         },
                         "store": true,
                         "type": "boolean"
-                    },
-                    "reference_files": {
-                        "type": "keyword"
                     },
                     "release_timestamp": {
                         "type": "keyword"

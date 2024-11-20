@@ -73,9 +73,9 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'PWM': '.pwm',
     'sam': '.sam.gz',
     'sra': '.sra',
-    'tabix': '.tabix',
     'tagAlign': '.tagAlign.gz',
     'tar': '.tar.gz',
+    'tbi': '.tbi',
     'tsv': '.tsv.gz',
     'txt': '.txt.gz',
     'vcf': '.vcf.gz',
@@ -896,6 +896,95 @@ class ModelFile(File):
     )
     def summary(self, content_type):
         return content_type
+
+
+@collection(
+    name='index-files',
+    unique_key='accession',
+    properties={
+        'title': 'Index Files',
+        'description': 'Listing of index files',
+    }
+)
+class IndexFile(File):
+    item_type = 'index_file'
+    schema = load_schema('igvfd:schemas/index_file.json')
+    embedded_with_frame = File.embedded_with_frame
+    set_status_up = File.set_status_up + []
+    set_status_down = File.set_status_down + []
+
+    def unique_keys(self, properties):
+        keys = super(File, self).unique_keys(properties)
+        if properties.get('status') not in ['deleted', 'replaced', 'revoked']:
+            if 'md5sum' in properties:
+                value = 'md5:{md5sum}'.format(**properties)
+                keys.setdefault('alias', []).append(value)
+        return keys
+
+    @calculated_property(
+        schema={
+            'title': 'Summary',
+            'type': 'string',
+            'description': 'A summary of the index file.',
+            'notSubmittable': True,
+        }
+    )
+    def summary(self, content_type, derived_from):
+        file_accessions = [x.split('/')[-2] for x in derived_from]
+        derived_from_formatted = f" of {', '.join(file_accessions)}"
+        return f'{content_type}{derived_from_formatted}'
+
+    @calculated_property(
+        schema={
+            'title': 'Genome Assembly',
+            'type': 'string',
+            'description': 'The assembly associated with the index file.',
+            'notSubmittable': True,
+        }
+    )
+    def assembly(self, request, derived_from):
+        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        if 'assembly' in parent_file_object:
+            return f'{parent_file_object["assembly"]}'
+
+    @calculated_property(
+        schema={
+            'title': 'Transcriptome Annotation',
+            'type': 'string',
+            'description': 'The annotation and version of the reference resource.',
+            'notSubmittable': True,
+        }
+    )
+    def transcriptome_annotation(self, request, derived_from):
+        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        if 'transcriptome_annotation' in parent_file_object:
+            return f'{parent_file_object["transcriptome_annotation"]}'
+
+    @calculated_property(
+        schema={
+            'title': 'Filtered',
+            'type': 'boolean',
+            'description': 'Indicates whether reads that did not pass a filtering step, such as PCR duplicates, have been removed from the file.',
+            'notSubmittable': True,
+        }
+    )
+    def filtered(self, request, derived_from):
+        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        if 'filtered' in parent_file_object:
+            return parent_file_object['filtered']
+
+    @calculated_property(
+        schema={
+            'title': 'Redacted',
+            'type': 'boolean',
+            'description': 'Indicates whether the alignments data have been sanitized (redacted) to prevent leakage of private and potentially identifying genomic information.',
+            'notSubmittable': True,
+        }
+    )
+    def redacted(self, request, derived_from):
+        parent_file_object = request.embed(derived_from[0], '@@object?skip_calculated=true')
+        if 'redacted' in parent_file_object:
+            return parent_file_object['redacted']
 
 
 @view_config(

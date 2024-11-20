@@ -7,7 +7,8 @@ def genome_browser_annotation_file(testapp, lab, award, principal_analysis_set, 
         'award': award['@id'],
         'lab': lab['@id'],
         'md5sum': '01b08bb5485ac730df19af55ba4bb08c',
-        'file_format': 'tabix',
+        'file_format': 'bigBed',
+        'file_format_type': 'bed6',
         'assembly': 'GRCh38',
         'file_set': principal_analysis_set['@id'],
         'content_type': 'peaks',
@@ -79,5 +80,15 @@ def genome_browser_annotation_file_v7(genome_browser_annotation_file):
         'derived_from': [],
         'file_format_specifications': [],
         'schema_version': '7'
+    })
+    return item
+
+
+@pytest.fixture
+def genome_browser_annotation_file_v8(genome_browser_annotation_file):
+    item = genome_browser_annotation_file.copy()
+    item.update({
+        'file_format': 'tabix',
+        'schema_version': '8'
     })
     return item

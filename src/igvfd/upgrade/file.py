@@ -349,3 +349,25 @@ def reference_file_14_15(value, system):
         del value['external_id']
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('alignment_file', '10', '11')
+def alignment_file_10_11(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2113
+    notes = value.get('notes', '')
+    if value['file_format'] == 'bai':
+        value['file_format'] = 'bam'
+        notes += f' This file\'s file_format was .bai, but has been upgraded to .bam.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()
+
+
+@upgrade_step('genome_browser_annotation_file', '8', '9')
+def genome_browser_annotation_file_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2113
+    notes = value.get('notes', '')
+    if value['file_format'] == 'tabix':
+        value['file_format'] = 'bigBed'
+        notes += f' This file\'s file_format was .tabix, but has been upgraded to .bigBed.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

@@ -1,0 +1,153 @@
+{
+    "title": "Index File",
+    "$id": "/profiles/index_file.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "A binary file which is indexed.",
+    "required": [
+        "award",
+        "lab",
+        "md5sum",
+        "file_format",
+        "file_set",
+        "content_type",
+        "derived_from"
+    ],
+    "identifyingProperties": [
+        "uuid",
+        "accession",
+        "alternate_accessions",
+        "aliases",
+        "md5sum"
+    ],
+    "additionalProperties": false,
+    "mixinProperties": [
+        {
+            "$ref": "file.json#/properties"
+        },
+        {
+            "$ref": "mixins.json#/basic_item"
+        },
+        {
+            "$ref": "mixins.json#/accession"
+        },
+        {
+            "$ref": "mixins.json#/attribution"
+        },
+        {
+            "$ref": "mixins.json#/documents"
+        },
+        {
+            "$ref": "mixins.json#/controlled_access"
+        },
+        {
+            "$ref": "mixins.json#/release_timestamp"
+        }
+    ],
+    "dependentSchemas": {
+        "$merge": [
+            "file.json#/dependentSchemas"
+        ],
+        "file_format": {
+            "comment": "Bai files must be derived from an alignment file. Tbi files must be derived from a tabular file or a reference file.",
+            "allOf": [
+                {
+                    "if": {
+                        "properties": {
+                            "file_format": {
+                                "const": "bai"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "derived_from": {
+                                "items": {
+                                    "title": "File Derived From",
+                                    "comment": "See file.json for a list of available identifiers.",
+                                    "type": "string",
+                                    "linkTo": "AlignmentFile"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "file_format": {
+                                "const": "tbi"
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "derived_from": {
+                                "items": {
+                                    "title": "File Derived From",
+                                    "comment": "See file.json for a list of available identifiers.",
+                                    "type": "string",
+                                    "linkTo": [
+                                        "ReferenceFile",
+                                        "TabularFile"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "type": "object",
+    "properties": {
+        "schema_version": {
+            "default": "1"
+        },
+        "content_type": {
+            "comment": "Content Type describes the content of the file.",
+            "enum": [
+                "index"
+            ],
+            "submissionExample": {
+                "appscript": "index",
+                "igvf_utils": "index"
+            },
+            "enum_descriptions": {
+                "index": "A file that accompanies another file and provides indexed random access to that file."
+            }
+        },
+        "file_format": {
+            "enum": [
+                "bai",
+                "tbi"
+            ],
+            "submissionExample": {
+                "appscript": "bai",
+                "igvf_utils": "bai"
+            }
+        },
+        "dbxrefs": {
+            "comment": "This file type currently does not support any external resource submission."
+        },
+        "derived_from": {
+            "maxItems": 1
+        }
+    },
+    "fuzzy_searchable_fields": [
+        "assay_titles",
+        "content_type",
+        "description",
+        "file_set.samples.summary",
+        "file_set.summary",
+        "submitted_by.title",
+        "submitted_file_name",
+        "summary"
+    ],
+    "exact_searchable_fields": [
+        "@type",
+        "dbxrefs",
+        "file_format",
+        "file_set.accession"
+    ],
+    "changelog": "/profiles/changelogs/index_file.md"
+}
