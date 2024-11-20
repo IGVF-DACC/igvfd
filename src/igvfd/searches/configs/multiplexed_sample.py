@@ -22,7 +22,7 @@ def multiplexed_sample():
             'disease_terms.term_name': {
                 'title': 'Disease'
             },
-            'multiplexing_method': {
+            'multiplexing_methods': {
                 'title': 'Multiplexing Method',
             },
             'embryonic': {
@@ -121,7 +121,7 @@ def multiplexed_sample():
                     'classifications',
                     'sample_terms.term_name',
                     'disease_terms.term_name',
-                    'multiplexing_method',
+                    'multiplexing_methods',
                     'embryonic',
                     'virtual',
                 ]

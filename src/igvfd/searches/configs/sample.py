@@ -31,7 +31,7 @@ def sample():
             'growth_medium': {
                 'title': 'Growth Medium',
             },
-            'multiplexing_method': {
+            'multiplexing_methods': {
                 'title': 'Multiplexing Method',
             },
             'preservation_method': {
@@ -137,7 +137,7 @@ def sample():
                     'biosample_qualifiers',
                     'targeted_sample_term.term_name',
                     'growth_medium',
-                    'multiplexing_method',
+                    'multiplexing_methods',
                     'preservation_method',
                     'embryonic',
                     'virtual',
