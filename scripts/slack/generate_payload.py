@@ -1,6 +1,11 @@
 import json
 import argparse
+import datetime
 import re
+
+
+def get_current_time_string():
+    return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 
 def generate_slack_payload(diff_file, output_file, tag_old, tag_new, channel_id):
@@ -16,9 +21,10 @@ def generate_slack_payload(diff_file, output_file, tag_old, tag_new, channel_id)
             diff_content = diff_content[:max_chars] + '\n... Diff truncated due to size limits ...'
 
         # Create the payload
+        current_time = get_current_time_string()
         payload = {
             'channel': channel_id,
-            'text': f'Changes from {tag_old} to {tag_new}:\n```{diff_content}```'
+            'text': f'Changes from {tag_old} to {tag_new}, released on {current_time}:\n```{diff_content}```'
         }
         with open(output_file, 'w') as json_file:
             json.dump(payload, json_file, indent=2)
