@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Update calculation of `summary`.
 * Extend `file_format` enum list to include `cool`.
 * Extend `file_format` enum list to include `mcool`.
 * Add `derived_manually`.

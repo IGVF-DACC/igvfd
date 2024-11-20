@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Update calculation of `summary`.
 * Extend `file_format` enum list to include `bai`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 32`.
 * Extend `assembly` enum list to include `custom`.
