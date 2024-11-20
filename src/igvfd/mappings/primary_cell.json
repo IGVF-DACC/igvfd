@@ -1,6 +1,6 @@
 {
-    "hash": "f2e50cf49906a985f352bac2320bed90",
-    "index_name": "primary_cell_f2e50cf4",
+    "hash": "10613ad5171c79d39849cab255705ebd",
+    "index_name": "primary_cell_10613ad5",
     "item_type": "primary_cell",
     "mapping": {
         "dynamic_templates": [
@@ -527,6 +527,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "control_file_sets": {
                                 "type": "keyword"
                             },
                             "control_for": {

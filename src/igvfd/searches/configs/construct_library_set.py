@@ -28,6 +28,9 @@ def construct_library_set():
             'orf_list.gene.symbol': {
                 'title': 'Open Reading Frame Gene'
             },
+            'control_type': {
+                'title': 'Control Type'
+            },
             'associated_phenotypes.term_name': {
                 'title': 'Associated Phenotypes'
             },
@@ -95,6 +98,7 @@ def construct_library_set():
                     'guide_type',
                     'small_scale_gene_list.symbol',
                     'orf_list.gene.symbol',
+                    'control_type'
                 ],
             },
             {

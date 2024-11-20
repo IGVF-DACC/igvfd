@@ -45,6 +45,9 @@
         },
         {
             "$ref": "mixins.json#/loci"
+        },
+        {
+            "$ref": "mixins.json#/control_file_sets"
         }
     ],
     "dependentSchemas": {
@@ -53,7 +56,7 @@
             "shared_dependencies.json#/accession_status"
         ],
         "file_set_type": {
-            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require genes, small_scale_gene_list, or large_scale_gene_list and that scope be genes, tile, exon, alleles, or interactors and should not specify any guide properties. Editing template libraries require that scope be targeton and should not specify any guide properties.",
+            "comment": "Guide libraries require guide_type and should not specify any insert properties, reporter libraries require that scope be genome-wide or loci and should not specify any guide properties, expression vector libraries require small_scale_gene_list or large_scale_gene_list and that scope be genes, tile, exon, alleles, interactors, or control and should not specify any guide properties. Control expression vector libraries do not require small_scale_gene_list or large_scale_gene_list. Editing template libraries require that scope be targeton and should not specify any guide properties.",
             "allOf": [
                 {
                     "if": {
@@ -246,6 +249,47 @@
                                         }
                                     ]
                                 }
+                            },
+                            {
+                                "required": [
+                                    "control_type"
+                                ],
+                                "properties": {
+                                    "scope": {
+                                        "enum": [
+                                            "control"
+                                        ]
+                                    }
+                                },
+                                "not": {
+                                    "anyOf": [
+                                        {
+                                            "required": [
+                                                "guide_type"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "tiling_modality"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "average_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "lower_bound_guide_coverage"
+                                            ]
+                                        },
+                                        {
+                                            "required": [
+                                                "upper_bound_guide_coverage"
+                                            ]
+                                        }
+                                    ]
+                                }
                             }
                         ]
                     }
@@ -300,7 +344,7 @@
             ]
         },
         "scope": {
-            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is interactors then orf_list is required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified, if scope is alleles then small_scale_gene_list or large_scale_gene_list is required, if scope is targeton then both targeton and small_scale_gene_list are required.",
+            "comment": "If scope is genes then small_scale_gene_list or large_scale_gene_list is required, if scope is tile then both tile and small_scale_gene_list are required, if scope is loci then small_scale_loci_list or large_scale_loci_list are required, if scope is exon then both exon and small_scale_gene_list are required, if scope is interactors then orf_list is required, if scope is genome-wide then tile, exon, small_scale_gene_list, large_scale_gene_list, small_scale_loci_list, and large_scale_loci_list shouldn't be specified, if scope is alleles then small_scale_gene_list or large_scale_gene_list is required, if scope is targeton then both targeton and small_scale_gene_list are required, if scope is control then control_type is required.",
             "oneOf": [
                 {
                     "required": [
@@ -422,6 +466,18 @@
                         "scope": {
                             "enum": [
                                 "targeton"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "required": [
+                        "control_type"
+                    ],
+                    "properties": {
+                        "scope": {
+                            "enum": [
+                                "control"
                             ]
                         }
                     }
@@ -654,6 +710,16 @@
             "required": [
                 "lower_bound_guide_coverage"
             ]
+        },
+        "control_type": {
+            "comment": "Specification of control_type requires that scope is control.",
+            "properties": {
+                "scope": {
+                    "enum": [
+                        "control"
+                    ]
+                }
+            }
         }
     },
     "properties": {
@@ -689,10 +755,15 @@
             "title": "Control Type",
             "description": "The type of control this file set represents.",
             "type": "string",
-            "enum": [],
+            "enum": [
+                "control transduction"
+            ],
+            "enum_descriptions": {
+                "control transduction": "This construct is tranduced in the sample to serve as a control."
+            },
             "submissionExample": {
-                "appscript": "low FACS signal",
-                "igvf_utils": "low FACS signal"
+                "appscript": "control transduction",
+                "igvf_utils": "control transduction"
             }
         },
         "scope": {
@@ -707,7 +778,8 @@
                 "genome-wide",
                 "interactors",
                 "alleles",
-                "targeton"
+                "targeton",
+                "control"
             ],
             "enum_descriptions": {
                 "tile": "The construct library was designed to tile over a region of the genome or protein.",
@@ -717,7 +789,8 @@
                 "genome-wide": "The construct library was designed to generally target the whole genome.",
                 "interactors": "The construct library was designed to target proteins that interact with a reference or variant proteins.",
                 "alleles": "The construct library was designed to target specific alleles of a gene.",
-                "targeton": "The construct library was designed to target a part of exons of a gene."
+                "targeton": "The construct library was designed to target a part of exons of a gene.",
+                "control": "The construct library was designed not to target any specific part of the genome or proteome, but to serves as a control for other construct libraries."
             },
             "submissionExample": {
                 "appscript": "genes",

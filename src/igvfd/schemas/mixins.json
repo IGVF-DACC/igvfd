@@ -674,5 +674,25 @@
                 "igvf_utils": "https://www.ncbi.nlm.nih.gov/dbvar/variants/nsv7098220/"
             }
         }
+    },
+    "control_file_sets": {
+        "control_file_sets": {
+            "title": "Controls",
+            "description": "File sets that can serve as scientific controls for this file set.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Control",
+                "description": "File sets that can serve as scientific controls for this file set.",
+                "comment": "See fileset.json for a list of available identifiers.",
+                "type": "string",
+                "linkTo": "FileSet"
+            },
+            "submissionExample": {
+                "appscript": "[\"john-doe:measurement_set01\", \"TSTDS98084730\"]",
+                "igvf_utils": "john-doe:measurement_set01, TSTDS98084730"
+            }
+        }
     }
 }

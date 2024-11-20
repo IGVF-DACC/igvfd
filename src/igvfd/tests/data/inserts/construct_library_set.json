@@ -133,6 +133,21 @@
     },
     {
         "aliases": [
+            "igvf:control_construct_library_set"
+        ],
+        "accession": "IGVFDS9999CONT",
+        "scope": "control",
+        "control_type": "control transduction",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "cef437f6-198b-488d-88cd-03d0d42c9338",
+        "file_set_type": "expression vector library",
+        "selection_criteria": [
+            "genes"
+        ]
+    },
+    {
+        "aliases": [
             "igvf:basic_construct_library_set_5"
         ],
         "accession": "IGVFDS3727DSEW",
@@ -149,6 +164,9 @@
         "small_scale_gene_list": [
             "0c9a9a6f-02de-4072-a5a3-6628f13070f6"
         ],
-        "targeton": "targeton1"
+        "targeton": "targeton1",
+        "control_file_sets": [
+            "IGVFDS9999CONT"
+        ]
     }
 ]

@@ -1,6 +1,6 @@
 {
-    "hash": "ea883a2510466d4bc2332d4094dae51a",
-    "index_name": "reference_file_ea883a25",
+    "hash": "486ac240527a3eea8b0ade03524fe0ab",
+    "index_name": "reference_file_486ac240",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -1576,6 +1576,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "control_file_sets": {
                                 "type": "keyword"
                             },
                             "control_for": {

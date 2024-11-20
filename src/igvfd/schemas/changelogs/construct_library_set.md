@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 10
 
+* Add `control_file_sets`.
+* Extend `scope` enum list to include `control`.
+* Extend `control_type` enum list to include `control transduction`.
 * Rename calculated property `input_file_set_for` to `input_for`.
 
 ### Schema version 10

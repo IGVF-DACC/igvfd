@@ -40,6 +40,9 @@
         },
         {
             "$ref": "mixins.json#/release_timestamp"
+        },
+        {
+            "$ref": "mixins.json#/control_file_sets"
         }
     ],
     "dependentSchemas": {
@@ -160,39 +163,23 @@
                 "igvf_utils": 2
             }
         },
-        "control_file_sets": {
-            "title": "Controls",
-            "description": "File sets that can serve as scientific controls for this measurement_set.",
-            "type": "array",
-            "minItems": 1,
-            "uniqueItems": true,
-            "items": {
-                "title": "Control",
-                "description": "File sets that can serve as scientific controls for this measurement_set.",
-                "comment": "See fileset.json for a list of available identifiers.",
-                "type": "string",
-                "linkTo": "FileSet"
-            },
-            "submissionExample": {
-                "appscript": "[\"john-doe:measurement_set01\", \"TSTDS98084730\"]",
-                "igvf_utils": "john-doe:measurement_set01, TSTDS98084730"
-            }
-        },
         "control_type": {
             "title": "Control Type",
             "description": "The type of control this file set represents.",
             "type": "string",
             "enum": [
+                "control transduction",
                 "low FACS signal",
                 "pre-selection",
                 "unsorted FACS input",
                 "untransfected"
             ],
             "enum_descriptions": {
+                "control transduction": "The samples have been transduced with a construct that serves as a control.",
                 "low FACS signal": "The samples have minimal fluorescence in Flow Cytometry (FACS), used as a baseline or negative control.",
                 "pre-selection": "The samples were collected before any selection or sorting process, representing the starting population.",
                 "unsorted FACS input": "The samples analyzed by Flow Cytometry (FACS) without any sorting, representing the full, unsorted population.",
-                "untransfected": "The samples have not undergone transfection, used as a baseline or negative control.."
+                "untransfected": "The samples have not undergone transfection, used as a baseline or negative control."
             },
             "submissionExample": {
                 "appscript": "low FACS signal",

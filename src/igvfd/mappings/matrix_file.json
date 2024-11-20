@@ -1,6 +1,6 @@
 {
-    "hash": "2e4f6881e875e028c51e3a173227df7b",
-    "index_name": "matrix_file_2e4f6881",
+    "hash": "c58381057a0707c4dca32d5a3395be8b",
+    "index_name": "matrix_file_c5838105",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -1552,6 +1552,9 @@
                                 "type": "keyword"
                             },
                             "collections": {
+                                "type": "keyword"
+                            },
+                            "control_file_sets": {
                                 "type": "keyword"
                             },
                             "control_for": {
