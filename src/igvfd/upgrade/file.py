@@ -373,7 +373,7 @@ def genome_browser_annotation_file_8_9(value, system):
         value['notes'] = notes.strip()
 
 
-@upgrade_step('genome_browser_annotation_file', '11', '12')
+@upgrade_step('alignment_file', '11', '12')
 def alignment_file_11_12(value, system):
     # https://igvf.atlassian.net/browse/IGVF-2175
     notes = value.get('notes', '')
