@@ -66,9 +66,9 @@ def test_alignment_file_upgrade_10_11(upgrader, alignment_file_v10):
     assert alignment_file_v10['schema_version'] == '11'
 
 
-def test_alignment_file_upgrade_10_11(upgrader, alignment_file_v11):
+def test_alignment_file_upgrade_11_12(upgrader, alignment_file_v11):
     value = upgrader.upgrade('alignment_file', alignment_file_v11, current_version='11', target_version='12')
     assert 'assembly' in value
     assert alignment_file_v11['assembly'] == 'custom'
-    assert alignment_file_v12['notes'].endswith('has been assigneed to be custom via an upgrade.')
-    assert alignment_file_v10['schema_version'] == '12'
+    assert alignment_file_v11['notes'].endswith('has been assigneed to be custom via an upgrade.')
+    assert alignment_file_v11['schema_version'] == '12'
