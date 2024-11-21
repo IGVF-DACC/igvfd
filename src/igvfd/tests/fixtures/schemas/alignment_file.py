@@ -149,7 +149,7 @@ def alignment_file_v10(alignment_file):
 
 
 @pytest.fixture
-def alignment_file(testapp, lab, award, principal_analysis_set, reference_file):
+def alignment_file_v11(testapp, lab, award, principal_analysis_set, reference_file):
     item = {
         'award': award['@id'],
         'lab': lab['@id'],
