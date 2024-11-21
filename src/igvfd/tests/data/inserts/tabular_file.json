@@ -393,5 +393,24 @@
         "assembly": "custom",
         "file_set": "leif-ludwig:analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "4dcd1918-a355-49d8-bb09-f84cf28b0fd3",
+        "lab": "jay-shendure",
+        "accession": "IGVFFI9999PEAK",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "igvf:peak_by_cell_count_matrix"
+        ],
+        "md5sum": "dbee6a8757086e42150aa1311e9168d3",
+        "file_format": "tsv",
+        "content_type": "peak by cell count matrix",
+        "submitted_file_name": "/Users/igvf/igvf_files/peak_by_cell_count_matrix.tsv.gz",
+        "file_size": 5444343,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-11-06T12:34:56Z",
+        "file_set": "igvf:analysis_set_with_input",
+        "controlled_access": false
     }
 ]
