@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 15
 
+* Extend `upload_status` enum list to include `validation exempted`.
 * Extend `status` enum list to include `preview`.
 * Update calculation of `summary`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 32`.

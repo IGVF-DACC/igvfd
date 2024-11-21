@@ -389,7 +389,7 @@
         "content_type": "variant functional predictions",
         "submitted_file_name": "/Users/igvf/igvf_files/variant_functional_predictions.tsv.gz",
         "file_size": 1453609183,
-        "upload_status": "validated",
+        "upload_status": "validation exempted",
         "assembly": "custom",
         "file_set": "leif-ludwig:analysis_set",
         "controlled_access": false

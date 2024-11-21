@@ -124,14 +124,6 @@
                 "igvf_utils": "tar"
             }
         },
-        "upload_status": {
-            "enum": [
-                "pending",
-                "file not found",
-                "invalidated",
-                "validated"
-            ]
-        },
         "dbxrefs": {
             "comment": "Supported external resources include: Kipoi.",
             "items": {

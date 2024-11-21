@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Extend `upload_status` enum list to include `validation exempted`.
 * Extend `status` enum list to include `preview`.
 * Add `control_file_sets`.
 * Extend `scope` enum list to include `control`.
