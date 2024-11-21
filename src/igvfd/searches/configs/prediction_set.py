@@ -44,7 +44,7 @@ def prediction_set():
                 'title': 'Treatment'
             },
             'files.content_type': {
-                'title': 'Content Type',
+                'title': 'File Type',
             },
             'files.file_format': {
                 'title': 'File Format',
