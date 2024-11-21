@@ -120,11 +120,11 @@ class File(Item):
         Path('file_set.samples.sample_terms', include=[
              '@id', 'term_name']),
         Path('file_set.samples.targeted_sample_term', include=[
-             '@id', 'term_name', 'targeted_sample_term']),
+             '@id', 'term_name']),
         Path('file_set.samples.modifications', include=[
-             '@id', 'modality', 'summary', 'modifications']),
+             '@id', 'modality', 'summary']),
         Path('file_set.samples.treatments', include=[
-             '@id', 'purpose', 'summary', 'treatment_term_name', 'treatments']),
+             '@id', 'purpose', 'summary', 'treatment_term_name']),
         Path('integrated_in.associated_phenotypes', include=[
              '@id', 'summary', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list']),
         Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol']),
