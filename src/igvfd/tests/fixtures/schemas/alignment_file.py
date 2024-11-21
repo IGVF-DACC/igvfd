@@ -147,6 +147,7 @@ def alignment_file_v10(alignment_file):
     })
     return item
 
+
 @pytest.fixture
 def alignment_file(testapp, lab, award, principal_analysis_set, reference_file):
     item = {
