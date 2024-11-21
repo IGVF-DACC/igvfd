@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Schema version 12
+
+* Require `assembly`.
+
 ### Minor changes since schema version 11
 
 * Extend `upload_status` enum list to include `validation exempted`.
