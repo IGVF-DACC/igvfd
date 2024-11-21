@@ -109,6 +109,7 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
+                "barcode onlist",
                 "barcode to element mapping",
                 "barcode to hashtag mapping",
                 "barcode to sample mapping",
