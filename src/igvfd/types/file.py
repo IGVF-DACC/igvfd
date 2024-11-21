@@ -116,7 +116,7 @@ class File(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('file_set.samples.disease_terms', include=[
-             '@id', 'accession', 'summary', 'samples', 'disease_terms', 'sample_terms', 'term_name', 'classifications', 'file_set_type', 'taxa']),
+             '@id', 'accession', 'summary', 'samples', 'disease_terms', 'sample_terms', 'term_name', 'classifications', 'file_set_type', 'taxa', 'targeted_sample_term', 'modifications', 'treatments']),
         Path('file_set.samples.sample_terms', include=[
              '@id', 'term_name']),
         Path('file_set.samples.targeted_sample_term', include=[

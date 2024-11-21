@@ -110,7 +110,7 @@ def auxiliary_set():
                 ],
             },
             {
-                'title': 'File Data',
+                'title': 'Files',
                 'facet_fields': [
                     'files.content_type',
                     'files.file_format'
