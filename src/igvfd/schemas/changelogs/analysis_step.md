@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Extend `status` enum list to include `preview`.
 * Extend `output_content_types` enum list to include `barcode onlist`.
 * Extend `input_content_types` enum list to include `barcode onlist`.
 * Extend `output_content_types` enum list to include `differential chromatin contact quantifications`.

@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Minor changes since schema version 11
+
+* Extend `status` enum list to include `preview`.
+
 ### Schema version 11
 
 * Reduce `file_format` enum list to exclude `bai`.
