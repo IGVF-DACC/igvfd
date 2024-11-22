@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Extend `status` enum list to include `preview`.
 * Update calculation of `summary`.
 * Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Add `release_timestamp`.

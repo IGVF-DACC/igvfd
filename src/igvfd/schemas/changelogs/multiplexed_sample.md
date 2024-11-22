@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Extend `status` enum list to include `preview`.
 * Add calculated property `taxa`.
 * Extend `collections` enum list to include `VarChAMP`.
 

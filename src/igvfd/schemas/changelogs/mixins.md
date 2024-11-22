@@ -1,5 +1,6 @@
 ## Changelog for *`mixins.json`*
 
+* Extend `status` enum list to include `preview`. (11/22/2024)
 * Update `aliases` regex to add `raluca-gordan` as a namespace. (09/11/2024)
 * Update `aliases` regex to add `bill-majoros` as a namespace. (09/11/2024)
 * Update `aliases` regex to add `david-page` as a namespace. (09/11/2024)

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `status` enum list to include `preview`.
 * Update calculation of `summary`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 32`.
 * Extend `assembly` enum list to include `custom`.

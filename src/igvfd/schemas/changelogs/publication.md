@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 5
 
+* Extend `status` enum list to include `preview`.
 * Add calculated property `samples`.
 * Add calculated property `file_sets`.
 * Add calculated property `donors`.

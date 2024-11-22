@@ -1,5 +1,9 @@
 ## Changelog for *`treatment.json`*
 
+## Minor changes since schema version 8
+
+* Extend `status` enum list to include `preview`.
+
 ### Schema version 8
 
 * Require `sources` if `product_id` is specified.

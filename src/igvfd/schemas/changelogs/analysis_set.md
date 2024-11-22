@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `status` enum list to include `preview`.
 * Rename calculated property `input_file_set_for` to `input_for`.
 
 ### Schema version 9

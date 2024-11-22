@@ -1,5 +1,9 @@
 ## Changelog for *`open_reading_frame.json`*
 
+### Minor changes since schema version 1
+
+* Extend `status` enum list to include `preview`.
+
 ### Schema verion 3
 
 * Rename `gene` to `genes`.

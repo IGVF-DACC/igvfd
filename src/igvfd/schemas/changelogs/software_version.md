@@ -1,5 +1,9 @@
 ## Changelog for *`software_version.json`*
 
+### Minor changes since schema version 7
+
+* Extend `status` enum list to include `preview`.
+
 ### Schema version 7
 
 * Rename `downloaded_url` to `source_url`.

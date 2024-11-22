@@ -2,6 +2,7 @@
 
 ### Schema version 4
 
+* Extend `status` enum list to include `preview`.
 * Rename `tagged_protein` to `tagged_proteins`.
 
 ### Schema version 3

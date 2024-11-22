@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 6
 
+* Extend `status` enum list to include `preview`.
 * Add calculated property `biosamples_modified`.
 
 ### Schema version 6

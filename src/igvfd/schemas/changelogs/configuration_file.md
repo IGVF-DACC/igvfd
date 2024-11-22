@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Extend `status` enum list to include `preview`.
 * Add `derived_manually`.
 * Extend `file_format` enum list to include `tsv`.
 * Extend `content_type` enum list to include `model parameters`.

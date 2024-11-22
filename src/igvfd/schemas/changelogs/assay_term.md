@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Extend `status` enum list to include `preview`.
 * Extend `preferred_assay_titles` enum list to include `HiCAR`.
 * Extend `preferred_assay_titles` enum list to include `ONT dRNA`.
 * Extend `preferred_assay_titles` enum list to include `ONT Fiber-seq`.

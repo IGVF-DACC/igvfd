@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 1
 
+* Extend `status` enum list to include `preview`.
 * Add `external_host_url`.
 * Add `externally_hosted`.
 * Add `derived_manually`.

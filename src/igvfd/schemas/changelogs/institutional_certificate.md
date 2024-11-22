@@ -1,5 +1,9 @@
 ## Changelog for *`institutional_certificate.json`*
 
+### Minor changes since schema version 2
+
+* Extend `status` enum list to include `preview`.
+
 ### Schema version 2
 
 * Require `release_timestamp` for any objects with `released` or `archived` status.
