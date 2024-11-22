@@ -109,6 +109,7 @@
         "content_type": {
             "comment": "Content Type describes the content of the file.",
             "enum": [
+                "barcode onlist",
                 "barcode to element mapping",
                 "barcode to hashtag mapping",
                 "barcode to sample mapping",
@@ -153,6 +154,7 @@
                 "variant to element mapping"
             ],
             "enum_descriptions": {
+                "barcode onlist": "A list of all known barcode sequences that have been included in the assay kit and are available during library preparation.",
                 "barcode to element mapping": "A file describing the mapping of barcodes to genomic elements.",
                 "barcode to hashtag mapping": "A file describing the mapping of barcodes to hashtags.",
                 "barcode to sample mapping": "A file describing the mapping of barcodes to biological sample.",

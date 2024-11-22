@@ -53,7 +53,7 @@
         ],
         "md5sum": "f391b7b201210d0dc307eb3bf84605ac",
         "file_format": "tsv",
-        "content_type": "sequence barcodes",
+        "content_type": "barcode onlist",
         "submitted_file_name": "/Users/igvf/igvf_files/sequence_barcodes.tsv.gz",
         "file_size": 8330,
         "upload_status": "validated",
