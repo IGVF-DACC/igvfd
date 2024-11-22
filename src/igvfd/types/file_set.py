@@ -61,7 +61,7 @@ class FileSet(Item):
         Path('award.contact_pi', include=['@id', 'contact_pi', 'component', 'title']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('files', include=['@id', 'accession', 'aliases', 'assembly', 'content_type',
+        Path('files', include=['@id', 'accession', 'aliases', 'assembly', 'content_type', 'controlled_access',
              'file_format', 'file_size', 'href', 's3_uri', 'submitted_file_name', 'transcriptome_annotation',
                                'creation_timestamp', 'sequencing_platform', 'upload_status']),
         Path('control_for', include=['@id', 'accession', 'aliases']),
