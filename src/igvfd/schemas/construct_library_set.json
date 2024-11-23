@@ -756,10 +756,12 @@
             "description": "The type of control this file set represents.",
             "type": "string",
             "enum": [
-                "control transduction"
+                "control transduction",
+                "non-targeting guides"
             ],
             "enum_descriptions": {
-                "control transduction": "This construct is tranduced in the sample to serve as a control."
+                "control transduction": "This construct is tranduced in the sample to serve as a control.",
+                "non-targeting guides": "This guide library is comprised of guides that do not target any site in the genome."
             },
             "submissionExample": {
                 "appscript": "control transduction",
@@ -811,6 +813,7 @@
                 "enum": [
                     "accessible genome regions",
                     "candidate cis-regulatory elements",
+                    "control",
                     "chromatin states",
                     "phenotype-associated variants",
                     "DNase hypersensitive sites",
