@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Extend `sequencing_kit` enum list to include `AVITI 2x150 Sequencing Kit Cloudbreak High Output`.
 * Extend `status` enum list to include `preview`.
 * Add `read_names`.
 * Extend `base_modifications` enum list to include `inosine`.
