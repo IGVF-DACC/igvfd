@@ -299,3 +299,13 @@ def measurement_set_v21(measurement_set):
         'preferred_assay_title': 'Variant painting'
     })
     return item
+
+
+@pytest.fixture
+def measurement_set_v22(measurement_set):
+    item = measurement_set.copy()
+    item.update({
+        'schema_version': '21',
+        'preferred_assay_title': 'Variant FlowFISH'
+    })
+    return item

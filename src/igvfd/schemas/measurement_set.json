@@ -53,7 +53,7 @@
     },
     "properties": {
         "schema_version": {
-            "default": "22"
+            "default": "23"
         },
         "samples": {
             "maxItems": 1
@@ -128,7 +128,7 @@
                 "Perturb-seq",
                 "CERES-seq",
                 "TAP-seq",
-                "Variant FlowFISH",
+                "Variant EFFECTS",
                 "SGE",
                 "MIAA",
                 "snmC-Seq2",
