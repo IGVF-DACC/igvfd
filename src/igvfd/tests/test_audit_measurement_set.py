@@ -867,7 +867,7 @@ def test_audit_missing_auxiliary_set_MPRA(
     )
 
 
-def test_audit_missing_auxiliary_set_Variant_FlowFISH(
+def test_audit_missing_auxiliary_set_Variant_EFFECTS(
     testapp,
     measurement_set,
     base_auxiliary_set,
@@ -878,7 +878,7 @@ def test_audit_missing_auxiliary_set_Variant_FlowFISH(
         measurement_set['@id'],
         {
             'assay_term': assay_term_cas_mediated_mutagenesis['@id'],
-            'preferred_assay_title': 'Variant FlowFISH'
+            'preferred_assay_title': 'Variant EFFECTS'
         }
     )
     res = testapp.get(measurement_set['@id'] + '@@audit')
