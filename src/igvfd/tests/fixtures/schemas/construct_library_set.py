@@ -114,6 +114,21 @@ def construct_library_set_editing_template_library(testapp, lab, award, gene_myc
 
 
 @pytest.fixture
+def construct_library_set_non_targeting_guides(testapp, lab, award):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'file_set_type': 'guide library',
+        'scope': 'control',
+        'selection_criteria': [
+            'control'
+        ],
+        'control_type': 'non-targeting guides'
+    }
+    return testapp.post_json('/construct_library_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def construct_library_set_v1(testapp, lab, award, gene_myc_hs):
     item = {
         'award': award['@id'],
