@@ -1,6 +1,6 @@
 {
-    "hash": "b181207e2cf1ac6b45c0c3d17ec8fe95",
-    "index_name": "assay_term_b181207e",
+    "hash": "b3f2470a4ac00c4049541c1e079b02cb",
+    "index_name": "assay_term_b3f2470a",
     "item_type": "assay_term",
     "mapping": {
         "dynamic_templates": [
@@ -161,7 +161,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "deprecated_ntr_terms": {
                         "type": "keyword"
@@ -188,7 +188,7 @@
                         "type": "keyword"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -208,7 +208,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

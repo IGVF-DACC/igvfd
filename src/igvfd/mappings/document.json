@@ -1,6 +1,6 @@
 {
-    "hash": "07a02ee63ecf18235ecc893a3e4eb447",
-    "index_name": "document_07a02ee6",
+    "hash": "3ff87161eb9d35cdcecf5a55a8aa1497",
+    "index_name": "document_3ff87161",
     "item_type": "document",
     "mapping": {
         "dynamic_templates": [
@@ -157,11 +157,6 @@
                                 "type": "keyword"
                             },
                             "height": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
@@ -172,11 +167,6 @@
                                 "type": "keyword"
                             },
                             "size": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
@@ -184,11 +174,6 @@
                                 "type": "keyword"
                             },
                             "width": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             }
@@ -213,7 +198,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -271,7 +256,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "description": {
                         "copy_to": "_fuzzy",
@@ -296,7 +281,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -345,7 +330,7 @@
                         "type": "text"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -365,7 +350,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

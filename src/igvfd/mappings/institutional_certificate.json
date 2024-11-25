@@ -1,6 +1,6 @@
 {
-    "hash": "798382de09c4d89e5d4736d1ea12876c",
-    "index_name": "institutional_certificate_798382de",
+    "hash": "fb2b064871bbc34854efd36df1d56cbf",
+    "index_name": "institutional_certificate_fb2b0648",
     "item_type": "institutional_certificate",
     "mapping": {
         "dynamic_templates": [
@@ -169,7 +169,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -227,16 +227,11 @@
                         "type": "keyword"
                     },
                     "controlled_access": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "boolean"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "data_use_limitation": {
                         "type": "keyword"
@@ -262,7 +257,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -310,7 +305,7 @@
                         "type": "text"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "samples": {
                         "type": "keyword"
@@ -333,7 +328,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

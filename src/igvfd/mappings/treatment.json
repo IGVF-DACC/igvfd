@@ -1,6 +1,6 @@
 {
-    "hash": "20fef45a08fbb162b823c68d603355a5",
-    "index_name": "treatment_20fef45a",
+    "hash": "b3c574c2e3f9ebe03b41d37648e632ef",
+    "index_name": "treatment_b3c574c2",
     "item_type": "treatment",
     "mapping": {
         "dynamic_templates": [
@@ -152,11 +152,6 @@
                         "type": "keyword"
                     },
                     "amount": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "float"
                     },
@@ -181,7 +176,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -238,14 +233,9 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "depletion": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "boolean"
                     },
@@ -257,11 +247,6 @@
                         "type": "keyword"
                     },
                     "duration": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "float"
                     },
@@ -283,7 +268,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -335,20 +320,10 @@
                         "type": "text"
                     },
                     "pH": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "float"
                     },
                     "post_treatment_time": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "float"
                     },
@@ -363,7 +338,7 @@
                         "type": "keyword"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -383,7 +358,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -401,7 +376,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -445,7 +420,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -510,11 +485,6 @@
                         "type": "keyword"
                     },
                     "temperature": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "float"
                     },

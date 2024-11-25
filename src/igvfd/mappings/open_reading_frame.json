@@ -1,6 +1,6 @@
 {
-    "hash": "8df742d609a93dbc00cae59b0edc8480",
-    "index_name": "open_reading_frame_8df742d6",
+    "hash": "3049f1a9feae6882c619b2a3fe46bb3e",
+    "index_name": "open_reading_frame_3049f1a9",
     "item_type": "open_reading_frame",
     "mapping": {
         "dynamic_templates": [
@@ -155,7 +155,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
@@ -176,7 +176,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
@@ -199,20 +199,10 @@
                                         "type": "keyword"
                                     },
                                     "end": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     },
                                     "start": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     }
@@ -226,7 +216,7 @@
                                 "type": "text"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -278,29 +268,14 @@
                         "type": "keyword"
                     },
                     "pct_coverage_orf": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "float"
                     },
                     "pct_coverage_protein": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "float"
                     },
                     "pct_identical_protein": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "float"
                     },
@@ -308,7 +283,7 @@
                         "type": "keyword"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
