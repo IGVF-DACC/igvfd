@@ -732,41 +732,6 @@ def test_audit_unexpected_virtual_sample(
     )
 
 
-def test_audit_CRISPR_screen_missing_files(
-    testapp,
-    measurement_set_no_files,
-    assay_term_crispr,
-    signal_file
-):
-    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing files'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-    testapp.patch_json(
-        measurement_set_no_files['@id'],
-        {
-            'assay_term': assay_term_crispr['@id']
-        }
-    )
-    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing files'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-    testapp.patch_json(
-        signal_file['@id'],
-        {
-            'file_set': measurement_set_no_files['@id']
-        }
-    )
-    res = testapp.get(measurement_set_no_files['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'unexpected files'
-        for error in res.json['audit'].get('WARNING', [])
-    )
-
-
 def test_audit_missing_auxiliary_set_link(
     testapp,
     measurement_set,
@@ -867,61 +832,18 @@ def test_audit_missing_auxiliary_set_MPRA(
     )
 
 
-def test_audit_missing_auxiliary_set_Variant_EFFECTS(
-    testapp,
-    measurement_set,
-    base_auxiliary_set,
-    auxiliary_set_cell_sorting,
-    assay_term_cas_mediated_mutagenesis
-):
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'assay_term': assay_term_cas_mediated_mutagenesis['@id'],
-            'preferred_assay_title': 'Variant-EFFECTS'
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing auxiliary set'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    testapp.patch_json(
-        base_auxiliary_set['@id'],
-        {
-            'file_set_type': 'variant sequencing'
-        }
-    )
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'auxiliary_sets': [base_auxiliary_set['@id']]
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert any(
-        error['category'] == 'missing auxiliary set'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'auxiliary_sets': [base_auxiliary_set['@id'], auxiliary_set_cell_sorting['@id']]
-        }
-    )
-    res = testapp.get(measurement_set['@id'] + '@@audit')
-    assert all(
-        error['category'] != 'missing auxiliary set'
-        for error in res.json['audit'].get('NOT_COMPLIANT', [])
-    )
-
-
 def test_audit_missing_auxiliary_set_CRISPR_gRNA_sequencing(
     testapp,
     measurement_set,
     assay_term_crispr,
     base_auxiliary_set
 ):
+    testapp.patch_json(
+        assay_term_crispr['@id'],
+        {
+            'term_name': 'in vitro CRISPR screen using single-cell RNA-seq'
+        }
+    )
     testapp.patch_json(
         measurement_set['@id'],
         {
@@ -966,7 +888,6 @@ def test_audit_missing_auxiliary_set_CRISPR_gRNA_sequencing(
 def test_audit_missing_auxiliary_set_10x_MULTI_seq(
     testapp,
     measurement_set,
-    assay_term_crispr,
     base_auxiliary_set
 ):
     testapp.patch_json(

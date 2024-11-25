@@ -55,15 +55,24 @@
         "file_set_type": {
             "description": "The category that best describes this auxiliary file set.",
             "comment": "File set type describes the content of the construct library set.",
-            "enum": [
-                "cell hashing barcode sequencing",
-                "cell sorting",
-                "circularized RNA barcode detection",
-                "gRNA sequencing",
-                "lipid-conjugated oligo sequencing",
-                "MORF barcode sequencing",
-                "quantification DNA barcode sequencing",
-                "variant sequencing"
+            "oneOf": [
+                {
+                    "enum": [
+                        "cell hashing barcode sequencing",
+                        "cell sorting",
+                        "circularized RNA barcode detection",
+                        "gRNA sequencing",
+                        "lipid-conjugated oligo sequencing",
+                        "MORF barcode sequencing",
+                        "quantification DNA barcode sequencing"
+                    ]
+                },
+                {
+                    "enum": [
+                        "variant sequencing"
+                    ],
+                    "permission": "admin_only"
+                }
             ],
             "enum_descriptions": {
                 "cell hashing barcode sequencing": "Sequencing data of the antibody barcoding of cell batches for demultiplexing & singlet detection.",
