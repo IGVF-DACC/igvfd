@@ -1,5 +1,9 @@
 ## Changelog for *`measurement_set.json`*
 
+### Schema version 23
+
+* Adjust `preferred_assay_title` enum list to replace `Variant FlowFISH` with `Variant-EFFECTS`.
+
 ### Minor changes since schema version 22
 
 * Extend `control_type` enum list to include `control transduction`.
