@@ -20,3 +20,16 @@ def dataset_summary():
             }
         }
     }
+
+
+@search_config(
+    name='StatusFacet'
+)
+def status_facet():
+    return {
+        'facets': {
+            'status': {
+                'title': 'Status',
+            }
+        }
+    }

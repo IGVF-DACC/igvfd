@@ -1,6 +1,6 @@
 {
-    "hash": "ab81bf1e643815ab007f4f0fb933df1e",
-    "index_name": "degron_modification_ab81bf1e",
+    "hash": "4df104823b68824a946b68aff29206cd",
+    "index_name": "degron_modification_4df10482",
     "item_type": "degron_modification",
     "mapping": {
         "dynamic_templates": [
@@ -149,11 +149,6 @@
                         "type": "keyword"
                     },
                     "activated": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "boolean"
                     },
@@ -184,7 +179,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -241,7 +236,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "degron_system": {
                         "type": "keyword"
@@ -267,7 +262,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -324,7 +319,7 @@
                         "type": "keyword"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -347,7 +342,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

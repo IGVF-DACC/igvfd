@@ -346,11 +346,12 @@ def dataset_summary_agg(context, request):
     type_filters = qs.get_type_filters()
     if not type_filters:
         raise HTTPBadRequest('Must specify type')
-    qs.drop('limit')
     qs.extend(
         [
-            ('limit', '0'),
             ('config', 'DatasetSummary'),
+            ('config', 'StatusFacet'),
         ]
     )
-    return request.embed(f'/search/?{qs.get_query_string()}', as_user='EMBED')
+    return {
+        'matrix': request.embed(f'/matrix/?{qs.get_query_string()}', as_user='EMBED')['matrix']
+    }

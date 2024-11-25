@@ -1,6 +1,6 @@
 {
-    "hash": "b825d664641eea2129154a0440066963",
-    "index_name": "biomarker_b825d664",
+    "hash": "436ab5daad877c44ce0136da2b5e6991",
+    "index_name": "biomarker_436ab5da",
     "item_type": "biomarker",
     "mapping": {
         "dynamic_templates": [
@@ -169,7 +169,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -229,7 +229,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "description": {
                         "type": "text"
@@ -253,7 +253,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -311,7 +311,7 @@
                         "type": "keyword"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -331,7 +331,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

@@ -1,6 +1,6 @@
 {
-    "hash": "7a80f57335029b15e7d0e3e738ee298c",
-    "index_name": "workflow_7a80f573",
+    "hash": "685ab3cbaa7dd854e82267cb6d65162f",
+    "index_name": "workflow_685ab3cb",
     "item_type": "workflow",
     "mapping": {
         "dynamic_templates": [
@@ -190,7 +190,7 @@
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
-                                        "type": "keyword"
+                                        "type": "date"
                                     },
                                     "description": {
                                         "type": "text"
@@ -202,7 +202,7 @@
                                         "type": "text"
                                     },
                                     "release_timestamp": {
-                                        "type": "keyword"
+                                        "type": "date"
                                     },
                                     "schema_version": {
                                         "type": "keyword"
@@ -222,7 +222,7 @@
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "description": {
                                                 "type": "text"
@@ -243,7 +243,7 @@
                                                 "type": "keyword"
                                             },
                                             "release_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "schema_version": {
                                                 "type": "keyword"
@@ -263,7 +263,7 @@
                                                         "type": "keyword"
                                                     },
                                                     "creation_timestamp": {
-                                                        "type": "keyword"
+                                                        "type": "date"
                                                     },
                                                     "description": {
                                                         "type": "text"
@@ -282,7 +282,7 @@
                                                         "type": "keyword"
                                                     },
                                                     "release_timestamp": {
-                                                        "type": "keyword"
+                                                        "type": "date"
                                                     },
                                                     "schema_version": {
                                                         "type": "keyword"
@@ -363,7 +363,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -388,7 +388,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -438,7 +438,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -495,7 +495,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "description": {
                         "type": "text"
@@ -518,7 +518,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -589,11 +589,6 @@
                                         "type": "keyword"
                                     },
                                     "height": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     },
@@ -604,11 +599,6 @@
                                         "type": "keyword"
                                     },
                                     "size": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     },
@@ -616,11 +606,6 @@
                                         "type": "keyword"
                                     },
                                     "width": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     }
@@ -634,7 +619,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "date_published": {
                                 "type": "keyword"
@@ -671,11 +656,6 @@
                                 "type": "keyword"
                             },
                             "publication_year": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
@@ -683,7 +663,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "samples": {
                                 "type": "keyword"
@@ -725,7 +705,7 @@
                         "type": "object"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "revoke_detail": {
                         "type": "keyword"
@@ -754,7 +734,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -791,7 +771,7 @@
                                 "type": "text"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -832,7 +812,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -896,11 +876,6 @@
                         "type": "keyword"
                     },
                     "uniform_pipeline": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "boolean"
                     },
@@ -911,11 +886,6 @@
                         "type": "keyword"
                     },
                     "workflow_version": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "long"
                     }

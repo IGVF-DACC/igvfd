@@ -1,6 +1,6 @@
 {
-    "hash": "267df32497780689ed378acebe4279a4",
-    "index_name": "phenotypic_feature_267df324",
+    "hash": "e2876d176360b9f5ade77287b8b22b4c",
+    "index_name": "phenotypic_feature_e2876d17",
     "item_type": "phenotypic_feature",
     "mapping": {
         "dynamic_templates": [
@@ -169,7 +169,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -223,7 +223,7 @@
                         "type": "object"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "description": {
                         "type": "text"
@@ -243,7 +243,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "deprecated_ntr_terms": {
                                 "type": "keyword"
@@ -264,7 +264,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -312,7 +312,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -366,11 +366,6 @@
                         "type": "keyword"
                     },
                     "quantity": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "float"
                     },
@@ -378,7 +373,7 @@
                         "type": "keyword"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -398,7 +393,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

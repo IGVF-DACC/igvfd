@@ -1,6 +1,6 @@
 {
-    "hash": "2a7eaa21e0d6d5cb33f6f86c7fbf798c",
-    "index_name": "access_key_2a7eaa21",
+    "hash": "4155a0dc1d62dbd57bb20ce58b5f8feb",
+    "index_name": "access_key_4155a0dc",
     "item_type": "access_key",
     "mapping": {
         "dynamic_templates": [
@@ -155,7 +155,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "description": {
                         "type": "text"
@@ -184,7 +184,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

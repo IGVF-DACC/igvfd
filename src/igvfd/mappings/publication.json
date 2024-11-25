@@ -1,6 +1,6 @@
 {
-    "hash": "0496be293540353138df4c1ad0bc8a63",
-    "index_name": "publication_0496be29",
+    "hash": "8bcc57586c92c20490de33cf70ce7dff",
+    "index_name": "publication_8bcc5758",
     "item_type": "publication",
     "mapping": {
         "dynamic_templates": [
@@ -160,11 +160,6 @@
                                 "type": "keyword"
                             },
                             "height": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
@@ -175,11 +170,6 @@
                                 "type": "keyword"
                             },
                             "size": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
@@ -187,11 +177,6 @@
                                 "type": "keyword"
                             },
                             "width": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             }
@@ -219,7 +204,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -273,7 +258,7 @@
                         "type": "object"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "date_published": {
                         "type": "keyword"
@@ -311,7 +296,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -367,11 +352,6 @@
                         "type": "keyword"
                     },
                     "publication_year": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "long"
                     },
@@ -379,7 +359,7 @@
                         "type": "keyword"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "samples": {
                         "type": "keyword"
@@ -408,7 +388,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

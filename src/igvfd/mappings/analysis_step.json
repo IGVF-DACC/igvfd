@@ -1,6 +1,6 @@
 {
-    "hash": "6080959b83db976f41f77d9f1543ebe8",
-    "index_name": "analysis_step_6080959b",
+    "hash": "ea0d1ac8d8b34b9fc6d0ebf4091daa2a",
+    "index_name": "analysis_step_ea0d1ac8",
     "item_type": "analysis_step",
     "mapping": {
         "dynamic_templates": [
@@ -175,7 +175,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -229,7 +229,7 @@
                         "type": "object"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "description": {
                         "copy_to": "_fuzzy",
@@ -253,7 +253,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -327,7 +327,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -351,7 +351,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -384,7 +384,7 @@
                         "type": "object"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -407,7 +407,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -504,7 +504,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -525,7 +525,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "revoke_detail": {
                                 "type": "keyword"
@@ -552,11 +552,6 @@
                                 "type": "keyword"
                             },
                             "uniform_pipeline": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "boolean"
                             },
@@ -567,11 +562,6 @@
                                 "type": "keyword"
                             },
                             "workflow_version": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             }

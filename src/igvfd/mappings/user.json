@@ -1,6 +1,6 @@
 {
-    "hash": "d801d555970b08712a2b47df648f55c9",
-    "index_name": "user_d801d555",
+    "hash": "953bf251823ab77fa1ee0d6f1985e09a",
+    "index_name": "user_953bf251",
     "item_type": "user",
     "mapping": {
         "dynamic_templates": [
@@ -152,7 +152,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "description": {
                         "type": "text"
@@ -199,7 +199,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
