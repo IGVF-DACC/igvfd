@@ -38,6 +38,8 @@ from snosearch.responses import FieldedGeneratorResponse
 
 from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 
+from pyramid.httpexceptions import HTTPBadRequest
+
 
 def includeme(config):
     config.add_route('search', '/search{slash:/?}')
@@ -46,6 +48,7 @@ def includeme(config):
     config.add_route('matrix', '/matrix{slash:/?}')
     config.add_route('summary', '/summary{slash:/?}')
     config.add_route('dataset-summary', '/dataset-summary{slash:/?}')
+    config.add_route('dataset-summary-agg', '/dataset-summary-agg{slash:/?}')
     config.add_route('audit', '/audit{slash:/?}')
     config.add_route('top-hits-raw', '/top-hits-raw{slash:/?}')
     config.add_route('top-hits', '/top-hits{slash:/?}')
@@ -335,3 +338,19 @@ def dataset_summary(context, request):
         ]
     )
     return request.embed(f'/search-quick/?{qs.get_query_string()}', as_user='EMBED')
+
+
+@view_config(route_name='dataset-summary-agg', request_method='GET', permission='search')
+def dataset_summary_agg(context, request):
+    qs = QueryString(request)
+    type_filters = qs.get_type_filters()
+    if not type_filters:
+        raise HTTPBadRequest('Must specify type')
+    qs.drop('limit')
+    qs.extend(
+        [
+            ('limit', '0'),
+            ('config', 'DatasetSummary'),
+        ]
+    )
+    return request.embed(f'/search/?{qs.get_query_string()}', as_user='EMBED')
