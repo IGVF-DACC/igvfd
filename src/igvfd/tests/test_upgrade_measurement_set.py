@@ -144,4 +144,4 @@ def test_measurement_set_upgrade_21_22(upgrader, measurement_set_v21):
 def test_measurement_set_upgrade_22_23(upgrader, measurement_set_v22):
     value = upgrader.upgrade('measurement_set', measurement_set_v22, current_version='22', target_version='23')
     assert value['schema_version'] == '23'
-    assert value.get('preferred_assay_title') == 'Variant EFFECTS'
+    assert value.get('preferred_assay_title') == 'Variant-EFFECTS'

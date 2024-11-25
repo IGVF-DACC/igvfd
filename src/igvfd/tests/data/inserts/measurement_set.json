@@ -221,7 +221,7 @@
     },
     {
         "aliases": [
-            "igvf:variant EFFECTS"
+            "igvf:variant-EFFECTS"
         ],
         "award": "1UM1HG011972-01",
         "lab": "/labs/jesse-engreitz/",
@@ -232,7 +232,7 @@
             "igvf-dacc:in_vitro_system_cell_line"
         ],
         "assay_term": "/assay-terms/OBI_0003133/",
-        "preferred_assay_title": "Variant EFFECTS",
+        "preferred_assay_title": "Variant-EFFECTS",
         "file_set_type": "experimental data"
     },
     {

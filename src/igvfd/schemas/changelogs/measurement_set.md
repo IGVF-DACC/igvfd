@@ -2,7 +2,7 @@
 
 ### Schema version 23
 
-* Adjust `preferred_assay_title` enum list to replace `Variant FlowFISH` with `Variant EFFECTS`.
+* Adjust `preferred_assay_title` enum list to replace `Variant FlowFISH` with `Variant-EFFECTS`.
 
 ### Minor changes since schema version 22
 

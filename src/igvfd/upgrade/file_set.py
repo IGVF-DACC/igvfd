@@ -459,6 +459,6 @@ def measurement_set_22_23(value, system):
     # https://igvf.atlassian.net/browse/IGVF-1957
     notes = value.get('notes', '')
     if value.get('preferred_assay_title') == 'Variant FlowFISH':
-        value['preferred_assay_title'] = 'Variant EFFECTS'
-        notes += f' This measurement set previously used Variant FlowFISH as a preferred_assay_title, but this enum is now removed. So it has been defaulted to Variant EFFECTS.'
+        value['preferred_assay_title'] = 'Variant-EFFECTS'
+        notes += f' This measurement set previously used Variant FlowFISH as a preferred_assay_title, but this enum is now removed. So it has been defaulted to Variant-EFFECTS.'
         value['notes'] = notes.strip()
