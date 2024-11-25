@@ -80,6 +80,7 @@
             "9050f480-1d11-4d2a-b6f2-5979c2af4fd6"
         ],
         "description": "11 days mouse embryo",
-        "embryonic": true
+        "embryonic": true,
+        "virtual": false
     }
 ]
