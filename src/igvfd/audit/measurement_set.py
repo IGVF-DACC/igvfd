@@ -445,7 +445,7 @@ def audit_missing_auxiliary_set(value, system):
     audit_message_scQer = get_audit_message(audit_missing_auxiliary_set, index=1)
     audit_message_CRISPR_gRNA = get_audit_message(audit_missing_auxiliary_set, index=2)
     audit_message_CRISPR_flow = get_audit_message(audit_missing_auxiliary_set, index=3)
-    audit_message_Variant_FlowFISH = get_audit_message(audit_missing_auxiliary_set, index=4)
+    audit_message_Variant_EFFECTS = get_audit_message(audit_missing_auxiliary_set, index=4)
     audit_message_10X_MULTI_seq = get_audit_message(audit_missing_auxiliary_set, index=5)
 
     expected_auxiliary_set_by_assay_term = {
