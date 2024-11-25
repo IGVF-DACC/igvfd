@@ -308,7 +308,7 @@ def audit_targeted_genes(value, system):
                                               'ChIP-seq assay',
                                               'transcription factor binding site identification by ChIP-Seq assay',
                                               ]
-    expecting_targeted_genes_by_preferred_assay_title = ['Variant FlowFISH']
+    expecting_targeted_genes_by_preferred_assay_title = ['Variant EFFECTS']
     if not (targeted_genes) and (assay_term_name in expecting_targeted_genes_by_assay_term or preferred_assay_title in expecting_targeted_genes_by_preferred_assay_title):
         detail = (
             f'Measurement set {audit_link(path_to_text(value["@id"]), value["@id"])} '
@@ -430,7 +430,7 @@ def audit_missing_auxiliary_set(value, system):
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Variant FlowFISH measurement sets are expected to link to a variant sequencing auxiliary set.",
+            "audit_description": "Variant EFFECTS measurement sets are expected to link to a variant sequencing auxiliary set.",
             "audit_category": "missing auxiliary set",
             "audit_level": "NOT_COMPLIANT"
         },
@@ -457,7 +457,7 @@ def audit_missing_auxiliary_set(value, system):
     # preferred assay title expectations override any overlapping assay term expectation
     expected_auxiliary_set_by_preferred_assay_title = {
         'MPRA (scQer)': [('quantification DNA barcode sequencing', audit_message_MPRA), ('circularized RNA barcode detection', audit_message_scQer)],
-        'Variant FlowFISH': [('variant sequencing', audit_message_Variant_FlowFISH), ('cell sorting', audit_message_CRISPR_flow)],
+        'Variant EFFECTS': [('variant sequencing', audit_message_Variant_EFFECTS), ('cell sorting', audit_message_CRISPR_flow)],
         '10x multiome with MULTI-seq': [('lipid-conjugated oligo sequencing', audit_message_10X_MULTI_seq)]
     }
 
