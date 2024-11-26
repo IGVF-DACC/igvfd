@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Extend `sequencing_kits` enum list to include `AVITI 2x150 Sequencing Kit Cloudbreak High Output`.
 * Extend `status` enum list to include `preview`.
 * Extend `company` enum list to include `Singular Genomics`.
 * Extend `sequencing_kits` enum list to include `Singular G4 F2 Reagent Kit`.
