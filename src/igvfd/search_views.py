@@ -372,9 +372,6 @@ def datasets_released(context, request):
         **{
             'embedded.status': 'released'
         }
-    ).filter(
-        'exists',
-        field='embedded.release_timestamp'
     )[:0]
     search.aggs.bucket(
         'datasets_released',
