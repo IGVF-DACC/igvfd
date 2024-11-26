@@ -24,6 +24,7 @@ from snosearch.fields import FacetGroupsResponseField
 from snosearch.fields import FiltersResponseField
 from snosearch.fields import IDResponseField
 from snosearch.fields import NotificationResponseField
+from snovault.elasticsearch.interfaces import ELASTIC_SEARCH
 from snovault.elasticsearch.searches.fields import NonSortableResponseField
 from snosearch.fields import RawTopHitsResponseField
 from snosearch.fields import SearchBaseResponseField
@@ -40,6 +41,8 @@ from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 
 from pyramid.httpexceptions import HTTPBadRequest
 
+from opensearch_dsl import Search
+
 
 def includeme(config):
     config.add_route('search', '/search{slash:/?}')
@@ -49,6 +52,7 @@ def includeme(config):
     config.add_route('summary', '/summary{slash:/?}')
     config.add_route('dataset-summary', '/dataset-summary{slash:/?}')
     config.add_route('dataset-summary-agg', '/dataset-summary-agg{slash:/?}')
+    config.add_route('datasets-released', '/datasets-released{slash:/?}')
     config.add_route('audit', '/audit{slash:/?}')
     config.add_route('top-hits-raw', '/top-hits-raw{slash:/?}')
     config.add_route('top-hits', '/top-hits{slash:/?}')
@@ -354,4 +358,39 @@ def dataset_summary_agg(context, request):
     )
     return {
         'matrix': request.embed(f'/matrix/?{qs.get_query_string()}', as_user='EMBED')['matrix']
+    }
+
+
+@view_config(route_name='datasets-released', request_method='GET', permission='search')
+def datasets_released(context, request):
+    client = request.registry[ELASTIC_SEARCH]
+    search = Search(
+        using=client,
+        index='measurement_set'
+    ).filter(
+        'term',
+        **{
+            'embedded.status': 'released'
+        }
+    ).filter(
+        'exists',
+        field='embedded.release_timestamp'
+    )[:0]
+    search.aggs.bucket(
+        'datasets_released',
+        'date_histogram',
+        field='embedded.release_timestamp',
+        calendar_interval='month',
+        format='MMM yyyy'
+    ).pipeline(
+        'cumulative_sum',
+        'cumulative_sum',
+        buckets_path='_count'
+    )
+    results = search.execute()
+    return {
+        'datasets_released': [
+            {x['key_as_string']: x['cumulative_sum']['value']}
+            for x in results.to_dict()['aggregations']['datasets_released']['buckets']
+        ]
     }
