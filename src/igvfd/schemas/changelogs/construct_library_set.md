@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 10
 
+* Extend `status` enum list to include `preview`.
 * Add `control_file_sets`.
 * Extend `scope` enum list to include `control`.
 * Extend `control_type` enum list to include `control transduction`.

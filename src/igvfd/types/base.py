@@ -84,7 +84,8 @@ ALLOW_SUBMITTER_ADD = [
 # Transitioning to the same status (released -> released) allows for the child objects to be crawled
 # without actually making a patch if the new and current statuses are the same.
 STATUS_TRANSITION_TABLE = {
-    'released': ['released', 'in progress'],
+    'released': ['released', 'in progress', 'preview'],
+    'preview': ['preview', 'in progress'],
     'in progress': ['in progress'],
     'deleted': ['deleted', 'in progress', 'current'],
     'revoked': ['revoked', 'released', 'archived'],
@@ -98,6 +99,7 @@ STATUS_TRANSITION_TABLE = {
 STATUS_HIERARCHY = {
     'released': 100,
     'current': 100,
+    'preview': 95,
     'in progress': 90,
     'archived': 70,
     'revoked': 50,
@@ -151,6 +153,7 @@ class Item(snovault.Item):
     STATUS_ACL = {
         # standard_status
         'released': ALLOW_CURRENT,
+        'preview': ALLOW_CURRENT_AND_SUBMITTER_EDIT,
         'deleted': DELETED,
         'replaced': DELETED,
 

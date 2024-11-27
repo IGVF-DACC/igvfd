@@ -149,6 +149,7 @@
             "comment": "Do not submit.  This is set by admins along the process of metadata submission.",
             "enum": [
                 "in progress",
+                "preview",
                 "released",
                 "deleted",
                 "replaced",
@@ -176,6 +177,7 @@
                 "archived",
                 "deleted",
                 "in progress",
+                "preview",
                 "released"
             ]
         }

@@ -6,6 +6,7 @@
 
 ### Minor changes since schema version 22
 
+* Extend `status` enum list to include `preview`.
 * Extend `control_type` enum list to include `control transduction`.
 * Rename calculated property `input_file_set_for` to `input_for`.
 * Add calculated property `externally_hosted`.

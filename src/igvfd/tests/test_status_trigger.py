@@ -106,3 +106,17 @@ def test_set_status_endpoint_status_specified(testapp, content):
         {'status': 'released'},
         status=200
     )
+
+
+def test_item_set_status_preview_status_transitions(testapp, content, root, dummy_request):
+    res = testapp.get('/test-igvf-items/')
+    igvf_item_id = res.json['@graph'][0]['@id']
+    testapp.patch_json(igvf_item_id + '@@set_status?update=true', {'status': 'preview'}, status=200)
+    res = testapp.get(igvf_item_id)
+    assert res.json['status'] == 'preview'
+    testapp.patch_json(igvf_item_id + '@@set_status?update=true', {'status': 'in progress'}, status=422)
+    res = testapp.get(igvf_item_id)
+    assert res.json['status'] == 'preview'
+    testapp.patch_json(igvf_item_id + '@@set_status?update=true', {'status': 'released'}, status=200)
+    res = testapp.get(igvf_item_id)
+    assert res.json['status'] == 'released'

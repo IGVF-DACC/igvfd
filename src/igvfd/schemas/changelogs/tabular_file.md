@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Extend `status` enum list to include `preview`.
 * Extend `content_type` enum list to include `barcode onlist`.
 * Update calculation of `summary`.
 * Extend `transcriptome_annotation` enum list to include `GENCODE 32`.

@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 3
 
+* Extend `status` enum list to include `preview`.
 * Update `aliases` regex to add `buenrostro-bernstein` as a namespace.
 * Restrict `lab` and `award` to submittable by admins only. No further submission of models are accepted, please submit prediction sets instead.
 * Deprecate `prediction` schema.

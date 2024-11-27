@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Extend `status` enum list to include `preview`.
 * Add `read_names`.
 * Extend `base_modifications` enum list to include `inosine`.
 * Extend `base_modifications` enum list to include `pseudouridine`.

@@ -1,5 +1,6 @@
 ## Changelog for *`file.json`*
 
+* Extend `status` enum list to include `preview`. (11/22/2024)
 * Add `derived_manually`. (10/14/2024)
 * Add calculated property `assay_titles`. (09/18/2024)
 * Add `analysis_step_version`. (07/03/2024)

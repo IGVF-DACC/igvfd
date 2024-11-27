@@ -1,5 +1,6 @@
 ## Changelog for *`donor.json`*
 
+* Extend `status` enum list to include `preview`. (11/22/2024)
 * Remove `publication_identifiers`. (07/31/2024)
 * Restrict `publication_identifiers` to submission by admins only. (07/17/2024)
 * Add `publications`. (07/17/2024)

@@ -1,5 +1,6 @@
 ## Changelog for *`file_set.json`*
 
+* Extend `status` enum list to include `preview`. (11/22/2024)
 * Rename calculated property `input_file_set_for` to `input_for`. (11/06/24)
 * Add `control_type`. (08/27/2024)
 * Remove `publication_identifiers`. (07/31/2024)

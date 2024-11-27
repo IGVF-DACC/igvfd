@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 24
 
+* Extend `status` enum list to include `preview`.
 * Extend `collections` enum list to include `VarChAMP`.
 
 ### Schema version 24

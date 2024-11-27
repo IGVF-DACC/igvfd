@@ -1,5 +1,9 @@
 ## Changelog for *`genome_browser_annotation_file.json`*
 
+### Minor changes since schema version 9
+
+* Extend `status` enum list to include `preview`.
+
 ### Schema version 9
 
 * Reduce `file_format` enum list to exclude `tabix`.
