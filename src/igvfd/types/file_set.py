@@ -806,10 +806,11 @@ class MeasurementSet(FileSet):
             'notSubmittable': True,
         }
     )
-    def summary(self, request, assay_term, preferred_assay_title=None, samples=None):
+    def summary(self, request, assay_term, preferred_assay_title=None, samples=None, control_type=None):
         assay = request.embed(assay_term)['term_name']
         modality_set = set()
         cls_set = set()
+        cls_type_set = set()
         cls_phrase = ''
         modality_phrase = ''
         assay_phrase = ''
@@ -825,11 +826,27 @@ class MeasurementSet(FileSet):
                 for construct_library in sample_object.get('construct_library_sets'):
                     cls_summary = request.embed(construct_library)['summary']
                     cls_set.add(cls_summary)
+                    cls_type = request.embed(construct_library)['file_set_type']
+                    cls_type_set.add(cls_type)
 
         if preferred_assay_title in ['10x multiome', '10x multiome with MULTI-seq', 'SHARE-seq']:
             assay = f'{assay} ({preferred_assay_title})'
         else:
             assay = preferred_assay_title
+
+        # Special case for Y2H assays.
+        if request.embed(assay_term)['term_id'] == 'OBI:0000288':
+            if control_type and control_type == 'pre-selection':
+                assay = f'pre-selection {assay}'
+            else:
+                assay = f'post-selection {assay}'
+        else:
+            if control_type:
+                assay = f'{control_type} {assay}'
+
+        if 'guide library' in cls_type_set:
+            if 'CRISPR' not in assay:
+                assay = f'CRISPR {assay}'
 
         if len(modality_set) > 1:
             modality_phrase = f'mixed'
