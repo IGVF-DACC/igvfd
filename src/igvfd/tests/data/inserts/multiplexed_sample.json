@@ -24,6 +24,7 @@
         ],
         "protocols": [
             "https://www.protocols.io/test-protocols-url-12345"
-        ]
+        ],
+        "virtual": false
     }
 ]

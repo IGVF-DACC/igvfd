@@ -34,7 +34,8 @@
         "upload_status": "validated",
         "status": "released",
         "release_timestamp": "2024-05-24T12:34:56Z",
-        "file_set": "j-michael-cherry:barcodes_curated_set"
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "externally_hosted": false
     },
     {
         "uuid": "3b47ce6a-79c4-b627-ebcc-6a309eb659e2",
@@ -52,7 +53,8 @@
         "upload_status": "validated",
         "status": "released",
         "release_timestamp": "2024-05-14T12:34:56Z",
-        "file_set": "j-michael-cherry:barcodes_curated_set"
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "externally_hosted": false
     },
     {
         "uuid": "be9d7b62-e5b8-4132-bf24-a1d45f4902ab",
@@ -69,6 +71,7 @@
         "upload_status": "validated",
         "status": "released",
         "release_timestamp": "2024-05-14T12:34:56Z",
-        "file_set": "j-michael-cherry:barcodes_curated_set"
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "externally_hosted": false
     }
 ]
