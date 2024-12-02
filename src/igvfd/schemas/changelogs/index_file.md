@@ -4,4 +4,3 @@
 
 * Extend `upload_status` enum list to include `validation exempted`.
 * Extend `status` enum list to include `preview`.
-
