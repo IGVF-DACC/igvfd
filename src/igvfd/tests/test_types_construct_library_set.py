@@ -131,7 +131,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
         construct_library_set_genome_wide['@id'],
         {
             'scope': 'control',
-            'control_type': 'non-targeting guides'
+            'control_type': 'non-targeting'
         }
     )
     res = testapp.get(construct_library_set_genome_wide['@id'])
