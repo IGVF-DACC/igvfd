@@ -24,7 +24,7 @@ def generate_slack_payload(diff_file, output_file, tag_old, tag_new, channel_id)
         current_time = get_current_time_string()
         payload = {
             'channel': channel_id,
-            'text': f'Changes from {tag_old} to {tag_new}, released on {current_time}:\n```{diff_content}```'
+            'text': f'Changes from {tag_old} to {tag_new}, released on {current_time} (UTC):\n```{diff_content}```'
         }
         with open(output_file, 'w') as json_file:
             json.dump(payload, json_file, indent=2)
