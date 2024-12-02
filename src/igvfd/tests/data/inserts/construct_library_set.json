@@ -203,7 +203,7 @@
             "genes"
         ],
         "control_file_sets": [
-            "igvf:guide_library"
+            "igvf:non_targeting_guide_library"
         ],
         "average_guide_coverage": 223.23,
         "tiling_modality": "peak tiling"
