@@ -1146,7 +1146,7 @@ class ConstructLibrarySet(FileSet):
         criteria = criteria + selection_criteria
 
         if scope == 'control':
-            return f'control {file_set_type} for {control_type}'
+            return f'{control_type} {file_set_type}'
         if scope == 'loci':
             if small_scale_loci_list and len(small_scale_loci_list) > 1:
                 target_phrase = f' {len(small_scale_loci_list)} genomic loci'

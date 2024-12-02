@@ -135,10 +135,9 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
         }
     )
     res = testapp.get(construct_library_set_genome_wide['@id'])
-    assert res.json.get('summary') == 'control guide library for non-targeting guides'
+    assert res.json.get('summary') == 'non-targeting guide library'
     res = testapp.get(construct_library_set_control_transduction['@id'])
-    print(res.json.get('summary'))
-    assert res.json.get('summary') == 'control expression vector library for control transduction'
+    assert res.json.get('summary') == 'control transduction expression vector library'
 
 
 def test_integrated_content_files_dependency(testapp, app, submitter, lab, award, tabular_file, signal_file):

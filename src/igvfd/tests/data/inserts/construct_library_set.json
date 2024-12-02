@@ -175,7 +175,7 @@
         ],
         "accession": "IGVFDS1234NONT",
         "scope": "control",
-        "control_type": "non-targeting guides",
+        "control_type": "non-targeting",
         "award": "HG012012",
         "lab": "j-michael-cherry",
         "uuid": "5865a5c2-1b42-4059-a250-0bf044805c0c",
