@@ -1145,6 +1145,8 @@ class ConstructLibrarySet(FileSet):
         criteria = []
         criteria = criteria + selection_criteria
 
+        if scope == 'control':
+            return f'control {file_set_type} for {control_type}'
         if scope == 'loci':
             if small_scale_loci_list and len(small_scale_loci_list) > 1:
                 target_phrase = f' {len(small_scale_loci_list)} genomic loci'
@@ -1189,8 +1191,6 @@ class ConstructLibrarySet(FileSet):
                 target_phrase = f' tile {tile_id} of {gene_name} (AA {start}-{end})'
         if scope == 'genome-wide':
             target_phrase = ' genome-wide'
-        if scope == 'control':
-            target_phrase = f' {control_type}'
 
         if file_set_type == 'expression vector library':
             library_type = 'Expression vector library'
@@ -1220,15 +1220,11 @@ class ConstructLibrarySet(FileSet):
             if selections:
                 selections = f' ({selections})'
             preposition = ' of'
-            if scope == 'control':
-                preposition = ' for'
             return f'{library_type}{preposition}{target_phrase}{selections}{pheno_phrase}'
         else:
             selections = ', '.join(criteria)
             if scope == 'genome-wide':
                 preposition = ''
-            elif scope == 'control':
-                preposition = ' of'
             else:
                 preposition = ' in'
             return f'{library_type} targeting {selections}{preposition}{target_phrase}{pheno_phrase}'

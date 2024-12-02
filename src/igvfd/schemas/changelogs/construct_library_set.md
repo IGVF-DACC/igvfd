@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 10
 
-* Extend `selection_criteria` enum list to include `control`.
+* Extend `selection_criteria` enum list to include `controls`.
 * Extend `control_type` enum list to include `non-targeting guides`.
 * Extend `status` enum list to include `preview`.
 * Add `control_file_sets`.

@@ -813,7 +813,7 @@
                 "enum": [
                     "accessible genome regions",
                     "candidate cis-regulatory elements",
-                    "control",
+                    "controls",
                     "chromatin states",
                     "phenotype-associated variants",
                     "DNase hypersensitive sites",

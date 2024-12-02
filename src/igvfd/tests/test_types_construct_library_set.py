@@ -15,7 +15,7 @@ def test_samples_link(testapp, tissue, base_expression_construct_library_set):
 
 def test_summary(testapp, construct_library_set_genome_wide, base_expression_construct_library_set,
                  construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction,
-                 gene_zscan10_mm, gene_myc_hs, construct_library_set_y2h, construct_library_set_orf, orf_foxp, orf_zscan10):
+                 gene_zscan10_mm, gene_myc_hs, construct_library_set_y2h, construct_library_set_orf, orf_foxp, orf_zscan10, construct_library_set_control_transduction):
     res = testapp.get(construct_library_set_genome_wide['@id'])
     assert res.json.get('summary') == 'Guide (sgRNA) library targeting TF binding sites genome-wide'
     testapp.patch_json(
@@ -126,6 +126,19 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     res = testapp.get(construct_library_set_orf['@id'])
     assert res.json.get(
         'summary') == 'Expression vector library of 2 open reading frames (protein interactors)'
+    # control library summaries
+    testapp.patch_json(
+        construct_library_set_genome_wide['@id'],
+        {
+            'scope': 'control',
+            'control_type': 'non-targeting guides'
+        }
+    )
+    res = testapp.get(construct_library_set_genome_wide['@id'])
+    assert res.json.get('summary') == 'control guide library for non-targeting guides'
+    res = testapp.get(construct_library_set_control_transduction['@id'])
+    print(res.json.get('summary'))
+    assert res.json.get('summary') == 'control expression vector library for control transduction'
 
 
 def test_integrated_content_files_dependency(testapp, app, submitter, lab, award, tabular_file, signal_file):

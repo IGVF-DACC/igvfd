@@ -182,7 +182,7 @@
         "file_set_type": "guide library",
         "guide_type": "sgRNA",
         "selection_criteria": [
-            "control"
+            "controls"
         ]
     },
     {
