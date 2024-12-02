@@ -144,11 +144,11 @@ def index_file():
             'file_set': {
                 'title': 'File Set'
             },
-            'content_summary': {
-                'title': 'Content Summary'
-            },
             'upload_status': {
                 'title': 'Upload Status'
+            },
+            'summary': {
+                'title': 'Summary'
             }
         }
     }
