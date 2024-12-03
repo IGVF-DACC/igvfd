@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Extend `secondary_dimensions` enum list to include `peak`.
 * Extend `upload_status` enum list to include `validation exempted`.
 * Extend `status` enum list to include `preview`.
 * Update calculation of `summary`.
