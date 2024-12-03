@@ -71,6 +71,8 @@ def test_schema_reference_file_validation_error_detail_only_allowed_when_upload_
         },
         status=200
     )
+    # Validation exempted files can also have an error detail.
+    testapp.patch_json(reference_file['@id'], {'upload_status': 'validation exempted'}, status=200)
 
 
 def test_schema_reference_file_must_remove_validation_error_detail_before_upload_status_changed_to_pending(testapp, reference_file):

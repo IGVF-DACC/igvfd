@@ -49,6 +49,24 @@ def test_audit_upload_status(testapp, reference_file):
         audit['category'] != 'upload status not validated'
         for audit in res.json['audit'].get('ERROR', {})
     )
+    # No audit for validation exempted either.
+    testapp.patch_json(
+        reference_file['@id'],
+        {
+            'upload_status': 'validation exempted'
+
+        },
+        status=200,
+    )
+    res = testapp.get(reference_file['@id'] + '@@audit')
+    assert all(
+        audit['category'] != 'upload status not validated'
+        for audit in res.json['audit'].get('WARNING', {})
+    )
+    assert all(
+        audit['category'] != 'upload status not validated'
+        for audit in res.json['audit'].get('ERROR', {})
+    )
 
 
 def test_audit_file_format_specifications(testapp, matrix_file, experimental_protocol_document):

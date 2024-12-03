@@ -24,6 +24,16 @@ def test_sequence_file_validation_error_detail(testapp, sequence_file):
     )
     assert res.status_code == 200
 
+    res = testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'validation_error_detail': 'This is a comment.',
+            'upload_status': 'validation exempted'
+
+        }
+    )
+    assert res.status_code == 200
+
 
 def test_sequence_file_min_max_mean_read_length(testapp, sequence_file_fastq_no_read_length):
     # Validated fastqs must have read length and read count. Validated files must have file size.

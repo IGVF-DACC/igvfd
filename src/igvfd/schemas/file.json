@@ -97,7 +97,8 @@
             "properties": {
                 "upload_status": {
                     "enum": [
-                        "invalidated"
+                        "invalidated",
+                        "validation exempted"
                     ]
                 }
             }
@@ -433,7 +434,8 @@
                 "pending",
                 "file not found",
                 "invalidated",
-                "validated"
+                "validated",
+                "validation exempted"
             ]
         },
         "validation_error_detail": {

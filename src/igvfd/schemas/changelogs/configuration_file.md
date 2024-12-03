@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Extend `upload_status` enum list to include `validation exempted`.
 * Extend `status` enum list to include `preview`.
 * Add `derived_manually`.
 * Extend `file_format` enum list to include `tsv`.
