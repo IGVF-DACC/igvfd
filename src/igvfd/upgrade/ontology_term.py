@@ -107,3 +107,13 @@ def assay_term_7_8(value, system):
         index = preferred_assay_titles.index('Variant painting')
         preferred_assay_titles[index] = 'Variant painting via fluorescence'
         value['preferred_assay_titles'] = preferred_assay_titles
+
+
+@upgrade_step('assay_term', '8', '9')
+def assay_term_8_9(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2216
+    preferred_assay_titles = value.get('preferred_assay_titles', [])
+    if 'Variant FlowFISH' in preferred_assay_titles:
+        index = preferred_assay_titles.index('Variant FlowFISH')
+        preferred_assay_titles[index] = 'Variant-EFFECTS'
+        value['preferred_assay_titles'] = preferred_assay_titles

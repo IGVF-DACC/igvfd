@@ -140,3 +140,13 @@ def assay_term_v7(assay_term_crispr):
         'preferred_assay_titles': ['Variant painting']
     })
     return item
+
+
+@pytest.fixture
+def assay_term_v8(assay_term_crispr):
+    item = assay_term_crispr.copy()
+    item.update({
+        'schema_version': '8',
+        'preferred_assay_titles': ['Variant FlowFISH']
+    })
+    return item
