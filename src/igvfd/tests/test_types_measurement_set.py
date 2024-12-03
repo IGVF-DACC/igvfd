@@ -115,6 +115,16 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
     testapp.patch_json(
         measurement_set['@id'],
         {
+            'assay_term': assay_term_y2h['@id'],
+            'preferred_assay_title': 'yN2H'
+        }
+    )
+    res = testapp.get(measurement_set['@id'])
+    assert res.json.get(
+        'summary') == 'post-selection CRISPR activation yN2H integrating a guide (sgRNA) library targeting TF binding sites genome-wide associated with Alzheimer\'s disease and Myocardial infarction'
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
             'preferred_assay_title': 'scCRISPR screen',
             'control_type': 'control transduction'
         }
@@ -122,17 +132,6 @@ def test_summary(testapp, measurement_set, in_vitro_cell_line, crispr_modificati
     res = testapp.get(measurement_set['@id'])
     assert res.json.get(
         'summary') == 'control transduction scCRISPR activation screen integrating a guide (sgRNA) library targeting TF binding sites genome-wide associated with Alzheimer\'s disease and Myocardial infarction'
-    testapp.patch_json(
-        measurement_set['@id'],
-        {
-            'assay_term': assay_term_y2h['@id'],
-            'preferred_assay_title': 'yN2H',
-            'control_type': 'pre-selection'
-        }
-    )
-    res = testapp.get(measurement_set['@id'])
-    assert res.json.get(
-        'summary') == 'pre-selection CRISPR activation yN2H integrating a guide (sgRNA) library targeting TF binding sites genome-wide associated with Alzheimer\'s disease and Myocardial infarction'
 
 
 def test_calculated_donors(testapp, measurement_set, primary_cell, human_donor, in_vitro_cell_line, rodent_donor):

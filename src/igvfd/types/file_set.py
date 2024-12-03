@@ -835,15 +835,11 @@ class MeasurementSet(FileSet):
         else:
             assay = preferred_assay_title
 
-        # Special case for Y2H assays.
-        if request.embed(assay_term)['term_id'] == 'OBI:0000288':
-            if control_type and control_type == 'pre-selection':
-                control_phrase = control_type
-            else:
-                control_phrase = 'post-selection'
-        else:
-            if control_type:
-                control_phrase = control_type
+        if control_type:
+            control_phrase = f'{control_type} '
+        # Special case for Y2H assays if control_type is not specified.
+        if request.embed(assay_term)['term_id'] == 'OBI:0000288' and control_type is None:
+            control_phrase = 'post-selection '
 
         if 'guide library' in cls_type_set:
             if 'CRISPR' not in assay:
