@@ -811,6 +811,7 @@ class MeasurementSet(FileSet):
         modality_set = set()
         cls_set = set()
         cls_type_set = set()
+        control_phrase = ''
         cls_phrase = ''
         modality_phrase = ''
         assay_phrase = ''
@@ -837,12 +838,12 @@ class MeasurementSet(FileSet):
         # Special case for Y2H assays.
         if request.embed(assay_term)['term_id'] == 'OBI:0000288':
             if control_type and control_type == 'pre-selection':
-                assay = f'pre-selection {assay}'
+                control_phrase = control_type
             else:
-                assay = f'post-selection {assay}'
+                control_phrase = 'post-selection'
         else:
             if control_type:
-                assay = f'{control_type} {assay}'
+                control_phrase = control_type
 
         if 'guide library' in cls_type_set:
             if 'CRISPR' not in assay:
@@ -878,6 +879,7 @@ class MeasurementSet(FileSet):
 
         sentence = ''
         sentence_parts = [
+            control_phrase,
             modality_phrase,
             assay_phrase,
             cls_phrase,
