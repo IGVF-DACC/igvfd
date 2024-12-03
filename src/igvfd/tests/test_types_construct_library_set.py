@@ -17,7 +17,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
                  construct_library_set_reporter, phenotype_term_alzheimers, phenotype_term_myocardial_infarction,
                  gene_zscan10_mm, gene_myc_hs, construct_library_set_y2h, construct_library_set_orf, orf_foxp, orf_zscan10, construct_library_set_control_transduction):
     res = testapp.get(construct_library_set_genome_wide['@id'])
-    assert res.json.get('summary') == 'Guide (sgRNA) library targeting TF binding sites genome-wide'
+    assert res.json.get('summary') == 'guide (sgRNA) library targeting TF binding sites genome-wide'
     testapp.patch_json(
         construct_library_set_reporter['@id'],
         {
@@ -35,7 +35,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     )
     res = testapp.get(construct_library_set_reporter['@id'])
     assert res.json.get(
-        'summary') == 'Reporter library targeting accessible genome regions, phenotype-associated variants in a genomic locus associated with Alzheimer\'s disease'
+        'summary') == 'reporter library targeting accessible genome regions, phenotype-associated variants in a genomic locus associated with Alzheimer\'s disease'
     testapp.patch_json(
         construct_library_set_reporter['@id'],
         {
@@ -64,7 +64,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     )
     res = testapp.get(construct_library_set_reporter['@id'])
     assert res.json.get(
-        'summary') == 'Reporter library targeting accessible genome regions, phenotype-associated variants in 3 genomic loci associated with Alzheimer\'s disease and Myocardial infarction'
+        'summary') == 'reporter library targeting accessible genome regions, phenotype-associated variants in 3 genomic loci associated with Alzheimer\'s disease and Myocardial infarction'
     # An exon-scope object should only have 1 gene specified; the first gene symbol is used in the summary
     # The selection_criteria of 'genes' is redundant for an expression vector library, but actual selection_criteria property should not be altered
     testapp.patch_json(
@@ -75,7 +75,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
         }
     )
     res = testapp.get(base_expression_construct_library_set['@id'])
-    assert res.json.get('summary') == 'Expression vector library of exon E3 of MYC'
+    assert res.json.get('summary') == 'expression vector library of exon E3 of MYC'
     testapp.patch_json(
         base_expression_construct_library_set['@id'],
         {
@@ -85,9 +85,9 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     )
     res = testapp.get(base_expression_construct_library_set['@id'])
     assert res.json.get('selection_criteria') == ['genes']
-    assert res.json.get('summary') == 'Expression vector library of exon E3 of multiple genes'
+    assert res.json.get('summary') == 'expression vector library of exon E3 of multiple genes'
     res = testapp.get(construct_library_set_y2h['@id'])
-    assert res.json.get('summary') == 'Expression vector library of 2 genes (protein interactors)'
+    assert res.json.get('summary') == 'expression vector library of 2 genes (protein interactors)'
     testapp.patch_json(
         construct_library_set_y2h['@id'],
         {
@@ -98,7 +98,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     )
     res = testapp.get(construct_library_set_y2h['@id'])
     assert res.json.get(
-        'summary') == 'Expression vector library of MYC (protein interactors, phenotype-associated variants) associated with Myocardial infarction'
+        'summary') == 'expression vector library of MYC (protein interactors, phenotype-associated variants) associated with Myocardial infarction'
     testapp.patch_json(
         construct_library_set_y2h['@id'],
         {
@@ -112,10 +112,10 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     )
     res = testapp.get(construct_library_set_y2h['@id'])
     assert res.json.get(
-        'summary') == 'Expression vector library of tile tile1 of MYC (AA 1-96) (protein interactors, phenotype-associated variants) associated with Myocardial infarction'
+        'summary') == 'expression vector library of tile tile1 of MYC (AA 1-96) (protein interactors, phenotype-associated variants) associated with Myocardial infarction'
     res = testapp.get(construct_library_set_orf['@id'])
     assert res.json.get(
-        'summary') == 'Expression vector library of open reading frame CCSBORF1234 of MYC (protein interactors)'
+        'summary') == 'expression vector library of open reading frame CCSBORF1234 of MYC (protein interactors)'
     testapp.patch_json(
         construct_library_set_orf['@id'],
         {
@@ -125,7 +125,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
     )
     res = testapp.get(construct_library_set_orf['@id'])
     assert res.json.get(
-        'summary') == 'Expression vector library of 2 open reading frames (protein interactors)'
+        'summary') == 'expression vector library of 2 open reading frames (protein interactors)'
     # control library summaries
     testapp.patch_json(
         construct_library_set_genome_wide['@id'],
@@ -135,7 +135,7 @@ def test_summary(testapp, construct_library_set_genome_wide, base_expression_con
         }
     )
     res = testapp.get(construct_library_set_genome_wide['@id'])
-    assert res.json.get('summary') == 'non-targeting guide library'
+    assert res.json.get('summary') == 'non-targeting guide (sgRNA) library'
     res = testapp.get(construct_library_set_control_transduction['@id'])
     assert res.json.get('summary') == 'control transduction expression vector library'
 

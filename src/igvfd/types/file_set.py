@@ -1137,7 +1137,7 @@ class ConstructLibrarySet(FileSet):
     )
     def summary(self, request, file_set_type, scope, selection_criteria, small_scale_gene_list=None, large_scale_gene_list=None, guide_type=None,
                 small_scale_loci_list=None, large_scale_loci_list=None, exon=None, tile=None, orf_list=None, associated_phenotypes=None, control_type=None):
-        library_type = ''
+        library_type = file_set_type
         target_phrase = ''
         pheno_terms = []
         pheno_phrase = ''
@@ -1145,8 +1145,14 @@ class ConstructLibrarySet(FileSet):
         criteria = []
         criteria = criteria + selection_criteria
 
+        if library_type == 'guide library':
+            if guide_type == 'sgRNA':
+                library_type = 'guide (sgRNA) library'
+            if guide_type == 'pgRNA':
+                library_type = 'guide (pgRNA) library'
+
         if scope == 'control':
-            return f'{control_type} {file_set_type}'
+            return f'{control_type} {library_type}'
         if scope == 'loci':
             if small_scale_loci_list and len(small_scale_loci_list) > 1:
                 target_phrase = f' {len(small_scale_loci_list)} genomic loci'
@@ -1191,16 +1197,6 @@ class ConstructLibrarySet(FileSet):
                 target_phrase = f' tile {tile_id} of {gene_name} (AA {start}-{end})'
         if scope == 'genome-wide':
             target_phrase = ' genome-wide'
-
-        if file_set_type == 'expression vector library':
-            library_type = 'Expression vector library'
-        if file_set_type == 'guide library':
-            if guide_type == 'sgRNA':
-                library_type = 'Guide (sgRNA) library'
-            if guide_type == 'pgRNA':
-                library_type = 'Guide (pgRNA) library'
-        if file_set_type == 'reporter library':
-            library_type = 'Reporter library'
 
         if associated_phenotypes:
             for pheno in associated_phenotypes:
