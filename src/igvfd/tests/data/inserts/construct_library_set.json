@@ -168,5 +168,44 @@
         "control_file_sets": [
             "IGVFDS9999CONT"
         ]
+    },
+    {
+        "aliases": [
+            "igvf:non_targeting_guide_library"
+        ],
+        "accession": "IGVFDS1234NONT",
+        "scope": "control",
+        "control_type": "non-targeting",
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "5865a5c2-1b42-4059-a250-0bf044805c0c",
+        "file_set_type": "guide library",
+        "guide_type": "sgRNA",
+        "selection_criteria": [
+            "controls"
+        ]
+    },
+    {
+        "aliases": [
+            "igvf:guide_library"
+        ],
+        "accession": "IGVFDS1234GUID",
+        "scope": "genes",
+        "small_scale_gene_list": [
+            "ENSG00000163930"
+        ],
+        "award": "HG012012",
+        "lab": "j-michael-cherry",
+        "uuid": "01fb772a-2016-420b-8545-9dd65bcd2cc3",
+        "file_set_type": "guide library",
+        "guide_type": "sgRNA",
+        "selection_criteria": [
+            "genes"
+        ],
+        "control_file_sets": [
+            "igvf:non_targeting_guide_library"
+        ],
+        "average_guide_coverage": 223.23,
+        "tiling_modality": "peak tiling"
     }
 ]
