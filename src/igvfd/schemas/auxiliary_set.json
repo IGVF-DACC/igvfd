@@ -54,7 +54,6 @@
         },
         "file_set_type": {
             "description": "The category that best describes this auxiliary file set.",
-            "comment": "File set type describes the content of the construct library set.",
             "oneOf": [
                 {
                     "enum": [
