@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 11
 
-* Adjust `file_set_type` enum list to restrict usage of `variant sequencing` to admin users.
+* Adjust `file_set_type` enum list to remove `variant sequencing`.
 * Extend `status` enum list to include `preview`.
 * Rename calculated property `input_file_set_for` to `input_for`.
 * Extend `collections` enum list to include `VarChAMP`.

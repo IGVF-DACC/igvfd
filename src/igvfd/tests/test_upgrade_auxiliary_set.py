@@ -71,9 +71,15 @@ def test_auxiliary_set_upgrade_9_10(upgrader, auxiliary_set_v9):
     assert 'library_construction_platform' not in value
 
 
-def test_measurement_set_upgrade_10_11(upgrader, auxiliary_set_v10):
+def test_auxiliary_set_upgrade_10_11(upgrader, auxiliary_set_v10):
     value = upgrader.upgrade('auxiliary_set', auxiliary_set_v10, current_version='10', target_version='11')
     assert 'file_set_type' in value
     assert value['file_set_type'] == 'cell hashing barcode sequencing'
     assert value['schema_version'] == '11'
     assert value['notes'] == 'File_set_type enum cell hashing has been renamed to be cell hashing barcode sequencing.'
+
+
+def test_auxiliary_set_upgrade_11_12(upgrader, auxiliary_set_v11):
+    value = upgrader.upgrade('auxiliary_set', auxiliary_set_v11, current_version='11', target_version='12')
+    assert value['file_set_type'] == 'gRNA sequencing'
+    assert value['schema_version'] == '12'

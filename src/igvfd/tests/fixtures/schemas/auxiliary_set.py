@@ -132,3 +132,13 @@ def auxiliary_set_v10(base_auxiliary_set):
         'file_set_type': 'cell hashing'
     })
     return item
+
+
+@pytest.fixture
+def auxiliary_set_v11(base_auxiliary_set):
+    item = base_auxiliary_set.copy()
+    item.update({
+        'schema_version': '11',
+        'file_set_type': 'variant sequencing'
+    })
+    return item
