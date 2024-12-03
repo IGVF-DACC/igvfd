@@ -28,8 +28,8 @@ class SoftwareVersion(Item):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('software', include=['@id', 'title']),
-        Path('publications', include=['@id', 'publication_identifiers']),
+        Path('software', include=['@id', 'title', 'status']),
+        Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
 
     set_status_up = [

@@ -28,8 +28,8 @@ class AnalysisStep(Item):
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
-        Path('parents', include=['@id', 'title']),
-        Path('workflow', include=['@id', 'accession']),
+        Path('parents', include=['@id', 'title', 'status']),
+        Path('workflow', include=['@id', 'accession', 'status']),
         Path('submitted_by', include=['@id', 'title']),
     ]
 

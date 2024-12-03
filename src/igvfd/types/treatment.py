@@ -27,7 +27,7 @@ class Treatment(Item):
     embedded_with_frame = [
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
-        Path('sources', include=['@id', 'title']),
+        Path('sources', include=['@id', 'title', 'status']),
         Path('submitted_by', include=['@id', 'title']),
     ]
     rev = {

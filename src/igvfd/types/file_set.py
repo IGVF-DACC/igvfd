@@ -62,9 +62,9 @@ class FileSet(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('files', include=['@id', 'accession', 'aliases', 'assembly', 'content_type', 'controlled_access',
-             'file_format', 'file_size', 'href', 's3_uri', 'submitted_file_name', 'transcriptome_annotation',
+             'file_format', 'file_size', 'href', 's3_uri', 'submitted_file_name', 'status', 'transcriptome_annotation',
                                'creation_timestamp', 'sequencing_platform', 'upload_status']),
-        Path('control_for', include=['@id', 'accession', 'aliases']),
+        Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
         Path('donors', include=['@id', 'accession', 'aliases', 'sex', 'status', 'taxa']),
         Path('samples.sample_terms', include=[
             '@id',
@@ -85,11 +85,11 @@ class FileSet(Item):
             'term_name',
             'treatments'
         ]),
-        Path('samples.disease_terms', include=['@id', 'term_name']),
-        Path('samples.targeted_sample_term', include=['@id', 'term_name']),
-        Path('samples.modifications', include=['@id', 'modality']),
-        Path('samples.treatments', include=['@id', 'treatment_term_name']),
-        Path('publications', include=['@id', 'publication_identifiers']),
+        Path('samples.disease_terms', include=['@id', 'term_name', 'status']),
+        Path('samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
+        Path('samples.modifications', include=['@id', 'modality', 'status']),
+        Path('samples.treatments', include=['@id', 'treatment_term_name', 'status']),
+        Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
 
     audit_inherit = [
@@ -202,9 +202,9 @@ class AnalysisSet(FileSet):
     item_type = 'analysis_set'
     schema = load_schema('igvfd:schemas/analysis_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type']),
-        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name']),
-        Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline'])
+        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
+        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status']),
+        Path('workflows', include=['@id', 'accession', 'name', 'uniform_pipeline', 'status'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
@@ -742,19 +742,19 @@ class MeasurementSet(FileSet):
     item_type = 'measurement_set'
     schema = load_schema('igvfd:schemas/measurement_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('assay_term', include=['@id', 'term_name']),
-        Path('control_file_sets', include=['@id', 'accession', 'aliases']),
-        Path('related_multiome_datasets', include=['@id', 'accession']),
-        Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type']),
-        Path('samples.treatments', include=['@id', 'purpose', 'treatment_type', 'summary']),
-        Path('samples.cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary']),
-        Path('samples.disease_terms', include=['@id', 'term_name']),
-        Path('samples.modifications', include=['@id', 'modality']),
+        Path('assay_term', include=['@id', 'term_name', 'status']),
+        Path('control_file_sets', include=['@id', 'accession', 'aliases', 'status']),
+        Path('related_multiome_datasets', include=['@id', 'accession', 'status']),
+        Path('auxiliary_sets', include=['@id', 'accession', 'aliases', 'file_set_type', 'status']),
+        Path('samples.treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
+        Path('samples.cell_fate_change_treatments', include=['@id', 'purpose', 'treatment_type', 'summary', 'status']),
+        Path('samples.disease_terms', include=['@id', 'term_name', 'status']),
+        Path('samples.modifications', include=['@id', 'modality', 'status']),
         Path('samples.construct_library_sets.small_scale_gene_list', include=[
-             '@id', 'file_set_type', 'accession', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name']),
-        Path('files.sequencing_platform', include=['@id', 'term_name']),
-        Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
-        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name'])
+             '@id', 'file_set_type', 'accession', 'small_scale_gene_list', 'summary', 'geneid', 'symbol', 'name', 'status']),
+        Path('files.sequencing_platform', include=['@id', 'term_name', 'status']),
+        Path('targeted_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
+        Path('functional_assay_mechanisms', include=['@id', 'term_id', 'term_name', 'status'])
     ]
 
     audit_inherit = FileSet.audit_inherit + [
@@ -919,8 +919,8 @@ class ModelSet(FileSet):
     item_type = 'model_set'
     schema = load_schema('igvfd:schemas/model_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('input_file_sets', include=['@id', 'accession', 'aliases']),
-        Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms'])
+        Path('input_file_sets', include=['@id', 'accession', 'aliases', 'status']),
+        Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status'])
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + [
@@ -966,7 +966,7 @@ class AuxiliarySet(FileSet):
     item_type = 'auxiliary_set'
     schema = load_schema('igvfd:schemas/auxiliary_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('measurement_sets', include=['@id', 'accession', 'aliases', 'preferred_assay_title']),
+        Path('measurement_sets', include=['@id', 'accession', 'aliases', 'preferred_assay_title', 'status']),
     ]
     audit_inherit = FileSet.audit_inherit
     rev = FileSet.rev | {'measurement_sets': ('MeasurementSet', 'auxiliary_sets')}
@@ -1040,11 +1040,11 @@ class PredictionSet(FileSet):
     item_type = 'prediction_set'
     schema = load_schema('igvfd:schemas/prediction_set.json')
     embedded_with_frame = FileSet.embedded_with_frame + [
-        Path('samples.construct_library_sets', include=['@id', 'accession', 'summary']),
-        Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
-        Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
-        Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
-        Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
+        Path('samples.construct_library_sets', include=['@id', 'accession', 'summary', 'status']),
+        Path('large_scale_gene_list', include=['@id', 'accession', 'aliases', 'status']),
+        Path('large_scale_loci_list', include=['@id', 'accession', 'aliases', 'status']),
+        Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
+        Path('assessed_genes', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
     ]
     audit_inherit = FileSet.audit_inherit
     set_status_up = FileSet.set_status_up + []
@@ -1079,25 +1079,26 @@ class ConstructLibrarySet(FileSet):
         Path('award', include=['@id', 'component']),
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
-        Path('files', include=['@id', 'accession', 'aliases', 'content_type', 'file_format', 'upload_status']),
+        Path('files', include=['@id', 'accession', 'aliases',
+             'content_type', 'file_format', 'upload_status', 'status']),
         Path('integrated_content_files', include=['@id', 'accession',
-             'aliases', 'content_type', 'file_format', 'upload_status']),
-        Path('control_for', include=['@id', 'accession', 'aliases']),
-        Path('associated_phenotypes', include=['@id', 'term_id', 'term_name']),
-        Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms']),
+             'aliases', 'content_type', 'file_format', 'upload_status', 'status']),
+        Path('control_for', include=['@id', 'accession', 'aliases', 'status']),
+        Path('associated_phenotypes', include=['@id', 'term_id', 'term_name', 'status']),
+        Path('small_scale_gene_list', include=['@id', 'geneid', 'symbol', 'name', 'synonyms', 'status']),
         Path('applied_to_samples', include=['@id', '@type', 'accession',
              'aliases', 'classifications', 'disease_terms', 'donors', 'sample_terms', 'targeted_sample_term', 'status', 'summary', 'modifications', 'treatments']),
-        Path('applied_to_samples.donors', include=['@id', 'taxa']),
-        Path('applied_to_samples.disease_terms', include=['@id', 'term_name']),
-        Path('applied_to_samples.sample_terms', include=['@id', 'term_name']),
-        Path('applied_to_samples.targeted_sample_term', include=['@id', 'term_name']),
-        Path('applied_to_samples.modifications', include=['@id', 'modality', 'summary']),
-        Path('applied_to_samples.treatments', include=['@id', 'treatment_term_name', 'summary']),
-        Path('large_scale_gene_list', include=['@id', 'accession', 'aliases']),
-        Path('large_scale_loci_list', include=['@id', 'accession', 'aliases']),
-        Path('orf_list', include=['@id', 'orf_id', 'genes', 'aliases']),
-        Path('orf_list.genes', include=['@id', 'symbol']),
-        Path('publications', include=['@id', 'publication_identifiers']),
+        Path('applied_to_samples.donors', include=['@id', 'taxa', 'status']),
+        Path('applied_to_samples.disease_terms', include=['@id', 'term_name', 'status']),
+        Path('applied_to_samples.sample_terms', include=['@id', 'term_name', 'status']),
+        Path('applied_to_samples.targeted_sample_term', include=['@id', 'term_name', 'status']),
+        Path('applied_to_samples.modifications', include=['@id', 'modality', 'summary', 'status']),
+        Path('applied_to_samples.treatments', include=['@id', 'treatment_term_name', 'summary', 'status']),
+        Path('large_scale_gene_list', include=['@id', 'accession', 'aliases', 'status']),
+        Path('large_scale_loci_list', include=['@id', 'accession', 'aliases', 'status']),
+        Path('orf_list', include=['@id', 'orf_id', 'genes', 'aliases', 'status']),
+        Path('orf_list.genes', include=['@id', 'symbol', 'status']),
+        Path('publications', include=['@id', 'publication_identifiers', 'status']),
     ]
     audit_inherit = [
         'award',

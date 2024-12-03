@@ -116,18 +116,18 @@ class File(Item):
         Path('lab', include=['@id', 'title']),
         Path('submitted_by', include=['@id', 'title']),
         Path('file_set.samples.disease_terms', include=[
-             '@id', 'accession', 'summary', 'samples', 'disease_terms', 'sample_terms', 'term_name', 'classifications', 'file_set_type', 'taxa', 'targeted_sample_term', 'modifications', 'treatments']),
+             '@id', 'accession', 'status', 'summary', 'samples', 'disease_terms', 'sample_terms', 'term_name', 'classifications', 'file_set_type', 'taxa', 'targeted_sample_term', 'modifications', 'treatments']),
         Path('file_set.samples.sample_terms', include=[
-             '@id', 'term_name']),
+             '@id', 'term_name', 'status']),
         Path('file_set.samples.targeted_sample_term', include=[
-             '@id', 'term_name']),
+             '@id', 'term_name', 'status']),
         Path('file_set.samples.modifications', include=[
-             '@id', 'modality', 'summary']),
+             '@id', 'modality', 'summary', 'status']),
         Path('file_set.samples.treatments', include=[
-             '@id', 'purpose', 'summary', 'treatment_term_name']),
+             '@id', 'purpose', 'summary', 'treatment_term_name', 'status']),
         Path('integrated_in.associated_phenotypes', include=[
-             '@id', 'summary', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list']),
-        Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol']),
+             '@id', 'summary', 'status', 'file_set_type', 'associated_phenotypes', 'term_name', 'small_scale_gene_list']),
+        Path('integrated_in.small_scale_gene_list', include=['@id', 'symbol', 'status']),
     ]
     rev = {
         'integrated_in': ('ConstructLibrarySet', 'integrated_content_files'),
@@ -359,7 +359,7 @@ class SequenceFile(File):
     item_type = 'sequence_file'
     schema = load_schema('igvfd:schemas/sequence_file.json')
     embedded_with_frame = File.embedded_with_frame + [
-        Path('sequencing_platform', include=['@id', 'term_name']),
+        Path('sequencing_platform', include=['@id', 'term_name', 'status']),
     ]
     rev = File.rev | {
         'seqspecs': ('ConfigurationFile', 'seqspec_of')
@@ -609,7 +609,7 @@ class SignalFile(File):
     item_type = 'signal_file'
     schema = load_schema('igvfd:schemas/signal_file.json')
     embedded_with_frame = File.embedded_with_frame + [
-        Path('cell_type_annotation', include=['@id', 'term_name'])
+        Path('cell_type_annotation', include=['@id', 'term_name', 'status'])
     ]
     set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []
@@ -726,7 +726,7 @@ class TabularFile(File):
     item_type = 'tabular_file'
     schema = load_schema('igvfd:schemas/tabular_file.json')
     embedded_with_frame = File.embedded_with_frame + [
-        Path('cell_type_annotation', include=['@id', 'term_name'])
+        Path('cell_type_annotation', include=['@id', 'term_name', 'status'])
     ]
     rev = File.rev | {
         'barcode_map_for': ('MultiplexedSample', 'barcode_map')
@@ -793,7 +793,7 @@ class GenomeBrowserAnnotationFile(File):
     item_type = 'genome_browser_annotation_file'
     schema = load_schema('igvfd:schemas/genome_browser_annotation_file.json')
     embedded_with_frame = File.embedded_with_frame + [
-        Path('cell_type_annotation', include=['@id', 'term_name'])
+        Path('cell_type_annotation', include=['@id', 'term_name', 'status'])
     ]
     set_status_up = File.set_status_up + []
     set_status_down = File.set_status_down + []
