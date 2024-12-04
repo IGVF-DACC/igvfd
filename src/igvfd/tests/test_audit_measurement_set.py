@@ -783,7 +783,7 @@ def test_audit_missing_auxiliary_set_MPRA(
     testapp.patch_json(
         base_auxiliary_set['@id'],
         {
-            'file_set_type': 'variant sequencing'
+            'file_set_type': 'gRNA sequencing'
         }
     )
     testapp.patch_json(

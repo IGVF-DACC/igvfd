@@ -440,7 +440,7 @@ def audit_missing_auxiliary_set(value, system):
     audit_message_scQer = get_audit_message(audit_missing_auxiliary_set, index=1)
     audit_message_scCRISPR_gRNA = get_audit_message(audit_missing_auxiliary_set, index=2)
     audit_message_CRISPR_flow = get_audit_message(audit_missing_auxiliary_set, index=3)
-    audit_message_10X_MULTI_seq = get_audit_message(audit_missing_auxiliary_set, index=5)
+    audit_message_10X_MULTI_seq = get_audit_message(audit_missing_auxiliary_set, index=4)
 
     expected_auxiliary_set_by_assay_term = {
         'massively parallel reporter assay': [('quantification DNA barcode sequencing', audit_message_MPRA)],
