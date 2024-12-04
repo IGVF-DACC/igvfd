@@ -144,6 +144,9 @@
         "ethnicities": [
             "Puerto Rican"
         ],
+        "dbxrefs": [
+            "ISGR:NA12978"
+        ],
         "sex": "female",
         "taxa": "Homo sapiens",
         "virtual": false
