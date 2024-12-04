@@ -1,8 +1,11 @@
 ## Changelog for *`auxiliary_set.json`*
 
-### Minor changes since schema version 11
+### Schema version 12
 
 * Adjust `file_set_type` enum list to remove `variant sequencing`.
+
+### Minor changes since schema version 11
+
 * Extend `status` enum list to include `preview`.
 * Rename calculated property `input_file_set_for` to `input_for`.
 * Extend `collections` enum list to include `VarChAMP`.
