@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 9
 
-* Extend `preferred_assay_title` enum list to include `varACCESS`.
+* Extend `preferred_assay_titles` enum list to include `varACCESS`.
 
 ### Schema version 9
 
