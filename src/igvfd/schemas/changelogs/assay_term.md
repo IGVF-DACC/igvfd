@@ -1,5 +1,9 @@
 ## Changelog for *`assay_term.json`*
 
+### Minor changes since schema version 9
+
+* Extend `preferred_assay_title` enum list to include `varACCESS`.
+
 ### Schema version 9
 
 * Adjust `preferred_assay_titles` enum list to replace `Variant FlowFISH` with `Variant-EFFECTS`.

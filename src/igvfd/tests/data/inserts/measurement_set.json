@@ -283,7 +283,7 @@
             "igvf:alias10"
         ],
         "assay_term": "/assay-terms/OBI_0002764/",
-        "preferred_assay_title": "scATAC-seq",
+        "preferred_assay_title": "varACCESS",
         "file_set_type": "experimental data"
     },
     {

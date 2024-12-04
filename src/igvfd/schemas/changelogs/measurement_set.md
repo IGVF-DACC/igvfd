@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 23
 
+* Extend `preferred_assay_title` enum list to include `varACCESS`.
 * Update calculation of `summary`.
 
 ### Schema version 23
