@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Enable submission of The International Genome Sample Resource (ISGR) database references to `dbxrefs`.
 * Extend `status` enum list to include `preview`.
 * Extend `collections` enum list to include `VarChAMP`.
 

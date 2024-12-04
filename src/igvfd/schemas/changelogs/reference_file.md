@@ -10,6 +10,7 @@
 ### Schema version 15
 
 * Remove `external_id`.
+* Enable submission of ENCODE database references to `dbxrefs`.
 
 ### Minor changes since schema version 14
 
