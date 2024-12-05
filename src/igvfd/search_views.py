@@ -13,6 +13,7 @@ from snosearch.fields import AuditMatrixWithFacetsResponseField
 from snosearch.fields import AllResponseField
 from snosearch.fields import BasicSearchResponseField
 from snosearch.fields import BasicMatrixWithFacetsResponseField
+from snosearch.fields import MissingMatrixWithFacetsResponseField
 from snosearch.fields import BasicSearchWithFacetsResponseField
 from snosearch.fields import BasicReportWithFacetsResponseField
 from snosearch.fields import MultipleTypesReportWithFacetsResponseField
@@ -49,6 +50,7 @@ def includeme(config):
     config.add_route('report', '/report{slash:/?}')
     config.add_route('multireport', '/multireport{slash:/?}')
     config.add_route('matrix', '/matrix{slash:/?}')
+    config.add_route('missing-matrix', '/missing-matrix{slash:/?}')
     config.add_route('summary', '/summary{slash:/?}')
     config.add_route('dataset-summary', '/dataset-summary{slash:/?}')
     config.add_route('dataset-summary-agg', '/dataset-summary-agg{slash:/?}')
@@ -322,6 +324,36 @@ def search_generator(request):
     return fgr.render()
 
 
+@view_config(route_name='missing-matrix', request_method='GET', permission='search')
+def missing_matrix(context, request):
+    fr = FieldedResponse(
+        _meta={
+            'params_parser': ParamsParser(request)
+        },
+        response_fields=[
+            TitleResponseField(
+                title='Missing matrix'
+            ),
+            TypeResponseField(
+                at_type=['MissingMatrix']
+            ),
+            IDResponseField(),
+            SearchBaseResponseField(),
+            ContextResponseField(),
+            MissingMatrixWithFacetsResponseField(
+                default_item_types=DEFAULT_ITEM_TYPES,
+                reserved_keys=RESERVED_KEYS,
+            ),
+            FacetGroupsResponseField(),
+            NotificationResponseField(),
+            FiltersResponseField(),
+            TypeOnlyClearFiltersResponseField(),
+            DebugQueryResponseField()
+        ]
+    )
+    return fr.render()
+
+
 @view_config(route_name='dataset-summary', request_method='GET', permission='search')
 def dataset_summary(context, request):
     qs = QueryString(request)
@@ -347,17 +379,13 @@ def dataset_summary(context, request):
 @view_config(route_name='dataset-summary-agg', request_method='GET', permission='search')
 def dataset_summary_agg(context, request):
     qs = QueryString(request)
-    type_filters = qs.get_type_filters()
-    if not type_filters:
-        raise HTTPBadRequest('Must specify type')
     qs.extend(
         [
-            ('config', 'DatasetSummary'),
             ('config', 'StatusFacet'),
         ]
     )
     return {
-        'matrix': request.embed(f'/matrix/?{qs.get_query_string()}', as_user='EMBED')['matrix']
+        'matrix': request.embed(f'/missing-matrix/?{qs.get_query_string()}', as_user='EMBED')['matrix']
     }
 
 
