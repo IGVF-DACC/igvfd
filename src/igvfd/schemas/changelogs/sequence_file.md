@@ -1,7 +1,7 @@
 ## Changelog for *`sequence_file.json`*
 
 ### Minor changes since schema version 14
-
+* Extend `sequencing_kit` enum list to include `AVITI 2x75 Sequencing Kit Cloudbreak High Output`.
 * Extend `upload_status` enum list to include `validation exempted`.
 * Extend `sequencing_kit` enum list to include `AVITI 2x150 Sequencing Kit Cloudbreak High Output`.
 * Extend `status` enum list to include `preview`.
