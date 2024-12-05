@@ -10,7 +10,7 @@
 ### Schema version 15
 
 * Remove `external_id`.
-* Update `dbxrefs` regex to add `ENCODE:` as a namespace.
+* Update `dbxrefs` regex to add `ENCODE` as a namespace.
 
 ### Minor changes since schema version 14
 
