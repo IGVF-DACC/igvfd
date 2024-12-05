@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Update `dbxrefs` regex to add `IGSR` as a namespace.
 * Extend `status` enum list to include `preview`.
 * Extend `collections` enum list to include `VarChAMP`.
 

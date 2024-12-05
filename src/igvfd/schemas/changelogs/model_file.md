@@ -4,6 +4,7 @@
 
 * Extend `upload_status` enum list to include `validation exempted`.
 * Extend `status` enum list to include `preview`.
+* Update `dbxrefs` regex to add `Kipoi` as a namespace.
 * Add `external_host_url`.
 * Add `externally_hosted`.
 * Add `derived_manually`.
