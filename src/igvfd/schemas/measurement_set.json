@@ -97,6 +97,7 @@
                 "scNT-seq2",
                 "Parse SPLiT-seq",
                 "ATAC-seq",
+                "varACCESS",
                 "scATAC-seq",
                 "snATAC-seq",
                 "DOGMA-seq",
