@@ -2,7 +2,7 @@
 
 ### Minor changes since schema version 14
 
-* Enable submission of The International Genome Sample Resource (ISGR) database references to `dbxrefs`.
+* Update `dbxrefs` regex to add `IGSR:` as a namespace.
 * Extend `status` enum list to include `preview`.
 * Extend `collections` enum list to include `VarChAMP`.
 
