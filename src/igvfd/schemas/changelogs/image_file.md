@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 4
 
+* Extend `upload_status` enum list to include `validation exempted`.
 * Add `derived_manually`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Add calculated property `assay_titles`.
