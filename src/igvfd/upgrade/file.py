@@ -371,3 +371,14 @@ def genome_browser_annotation_file_8_9(value, system):
         notes += f' This file\'s file_format was .tabix, but has been upgraded to .bigBed.'
     if notes.strip() != '':
         value['notes'] = notes.strip()
+
+
+@upgrade_step('alignment_file', '11', '12')
+def alignment_file_11_12(value, system):
+    # https://igvf.atlassian.net/browse/IGVF-2175
+    notes = value.get('notes', '')
+    if 'assembly' not in value:
+        value['assembly'] = 'custom'
+        notes += f' This file lacked a newly required property assembly, and the assembly has been assigneed to be custom via an upgrade.'
+    if notes.strip() != '':
+        value['notes'] = notes.strip()

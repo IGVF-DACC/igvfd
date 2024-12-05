@@ -146,3 +146,23 @@ def alignment_file_v10(alignment_file):
         'file_format': 'bai'
     })
     return item
+
+
+@pytest.fixture
+def alignment_file_v11(testapp, lab, award, principal_analysis_set, reference_file):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '5a159214b169da90d96590d47fff379e',
+        'file_format': 'bam',
+        'file_set': principal_analysis_set['@id'],
+        'file_size': 8491803,
+        'content_type': 'alignments',
+        'reference_files': [
+            reference_file['@id']
+        ],
+        'redacted': False,
+        'filtered': False,
+        'controlled_access': False
+    }
+    return item
