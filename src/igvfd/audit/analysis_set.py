@@ -58,9 +58,9 @@ def audit_input_file_sets_derived_from(value, system):
             else:
                 missing_derived_from.append(file)
     if missing_derived_from_file_sets:
-        files_to_link = ', '.join([audit_link(path_to_text(file), file) for file in files_to_link])
+        files_to_link = ', '.join([audit_link(path_to_text(file), file) for file in set(files_to_link)])
         derived_from_files_to_link = ', '.join([audit_link(path_to_text(file), file)
-                                               for file in derived_from_files_to_link])
+                                               for file in set(derived_from_files_to_link)])
         missing_derived_from_file_sets = list(set(missing_derived_from_file_sets))
         missing_derived_from_file_sets = ', '.join(
             [audit_link(path_to_text(file_set), file_set) for file_set in missing_derived_from_file_sets])
