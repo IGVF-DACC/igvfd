@@ -50,11 +50,10 @@
     },
     "properties": {
         "schema_version": {
-            "default": "11"
+            "default": "12"
         },
         "file_set_type": {
             "description": "The category that best describes this auxiliary file set.",
-            "comment": "File set type describes the content of the construct library set.",
             "enum": [
                 "cell hashing barcode sequencing",
                 "cell sorting",
@@ -62,8 +61,7 @@
                 "gRNA sequencing",
                 "lipid-conjugated oligo sequencing",
                 "MORF barcode sequencing",
-                "quantification DNA barcode sequencing",
-                "variant sequencing"
+                "quantification DNA barcode sequencing"
             ],
             "enum_descriptions": {
                 "cell hashing barcode sequencing": "Sequencing data of the antibody barcoding of cell batches for demultiplexing & singlet detection.",
@@ -72,8 +70,7 @@
                 "gRNA sequencing": "Sequencing data of guide RNAs for CRISPR assays.",
                 "lipid-conjugated oligo sequencing": "Sequencing data of the lipid- and cholesterol-modified oligonucleotides for demultiplexing & singlet detection.",
                 "MORF barcode sequencing": "Sequencing data of the Multiplexed Overexpression of Regulatory Factors library, a collection of human transcription factor open reading frames, to produce a mapping of barcodes to an overexpressed transcription factor.",
-                "quantification DNA barcode sequencing": "Sequencing data of DNA barcodes for reporter assays.",
-                "variant sequencing": "Sequencing data of genomic DNA sequences with variants introduced."
+                "quantification DNA barcode sequencing": "Sequencing data of DNA barcodes for reporter assays."
             },
             "submissionExample": {
                 "appscript": "cell hashing",

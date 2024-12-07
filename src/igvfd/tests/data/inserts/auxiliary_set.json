@@ -78,20 +78,6 @@
     },
     {
         "aliases": [
-            "igvf:auxiliary_set_variant_sequencing"
-        ],
-        "file_set_type": "variant sequencing",
-        "samples": [
-            "igvf:alias3"
-        ],
-        "award": "1UM1HG011972-01",
-        "lab": "jesse-engreitz",
-        "status": "released",
-        "release_timestamp": "2024-06-06T12:34:56Z",
-        "uuid": "aa6aa2b9-c3b2-429a-a198-bb02abf995d7"
-    },
-    {
-        "aliases": [
             "igvf:auxiliary_set_lipid_conjugated_oligo_sequencing"
         ],
         "file_set_type": "lipid-conjugated oligo sequencing",
