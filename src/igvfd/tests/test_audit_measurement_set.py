@@ -868,7 +868,6 @@ def test_audit_missing_cell_sorting_auxiliary_set(
     )
 
 
->>>>>>> b17a3d34 (audits adjusted)
 def test_audit_missing_auxiliary_set_CRISPR_gRNA_sequencing(
     testapp,
     measurement_set,
