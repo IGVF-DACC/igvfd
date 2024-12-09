@@ -394,7 +394,15 @@ def datasets_released(context, request):
     client = request.registry[ELASTIC_SEARCH]
     search = Search(
         using=client,
-        index='measurement_set'
+        index=[
+            'analysis_set',
+            'auxiliary_set',
+            'construct_library_set',
+            'curated_set',
+            'measurement_set',
+            'model_set',
+            'prediction_set',
+        ]
     ).filter(
         'term',
         **{

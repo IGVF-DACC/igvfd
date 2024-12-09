@@ -390,3 +390,48 @@ def test_search_views_dataset_summary(workbook, testapp):
         '/dataset-summary'
     )
     assert len(r.json['@graph']) >= 10
+
+
+def test_search_views_dataset_summary_agg(workbook, testapp):
+    testapp.get(
+        '/dataset-summary-agg',
+        status=400,
+    )
+    r = testapp.get(
+        '/dataset-summary-agg?type=MeasurementSet&config=PreferredAssayTitleSummary',
+        status=200,
+    )
+    assert 'matrix' in r.json
+    assert r.json['matrix']['y']['doc_count'] > 10
+    assert r.json['matrix']['y']['lab.title']['buckets'][0]['preferred_assay_title']['buckets'] is not None
+    r = testapp.get(
+        '/dataset-summary-agg?type=AnalysisSet&config=AssayTitlesSummary',
+        status=200,
+    )
+    assert r.json['matrix']['y']['lab.title']['buckets'][0]['assay_titles']['buckets'][0]['status']['buckets'] is not None
+    r = testapp.get(
+        '/dataset-summary-agg?type=PredictionSet&config=FileSetTypeSummary',
+        status=200,
+    )
+    assert r.json['matrix']['y']['lab.title']['buckets'][0]['file_set_type']['buckets'][0]['status']['buckets'] is not None
+
+
+def test_search_views_datasets_released(workbook, testapp):
+    r = testapp.get(
+        '/datasets-released'
+    )
+    assert 'datasets_released' in r.json
+    assert len(r.json['datasets_released']) >= 7
+    assert any(
+        'Mar 2024' in item
+        for item in r.json['datasets_released']
+    )
+    assert list(r.json['datasets_released'][0].values())[0] > 20
+
+
+def test_search_views_missing_matrix(workbook, testapp):
+    r = testapp.get(
+        '/missing-matrix?type=MeasurementSet&config=PreferredAssayTitleSummary'
+    )
+    assert r.json['total'] > 10
+    assert 'matrix' in r.json
