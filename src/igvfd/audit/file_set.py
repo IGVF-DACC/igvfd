@@ -29,38 +29,17 @@ def audit_no_files(value, system):
             "audit_description": "File sets are expected to have files.",
             "audit_category": "missing files",
             "audit_level": "WARNING"
-        },
-        {
-            "audit_description": "CRISPR screen measurement sets without a scRNA-seq readout are not expected to have files.",
-            "audit_category": "unexpected files",
-            "audit_level": "WARNING"
         }
     ]
     '''
     object_type = space_in_words(value['@type'][0]).capitalize()
     audit_message_missing_files = get_audit_message(audit_no_files, index=0)
-    audit_message_unexpected_files = get_audit_message(audit_no_files, index=1)
-    assay_term = value.get('assay_term', '')
-    if assay_term:
-        assay_term = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
-        assay_term = assay_term.get('term_name', '')
-    # Measurement sets from these CRISPR assays do not expect any sequence data
-    CRISPR_assays = ['in vitro CRISPR screen assay',
-                     'in vitro CRISPR screen using flow cytometry']
-    if assay_term not in CRISPR_assays:
-        if not (value.get('files', '')):
-            detail = (
-                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has no `files`.'
-            )
-            yield AuditFailure(audit_message_missing_files.get('audit_category', ''), f'{detail} {audit_message_missing_files.get("audit_description", "")}', level=audit_message_missing_files.get('audit_level', ''))
-    else:
-        if value.get('files', ''):
-            detail = (
-                f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
-                f'has `files`.'
-            )
-            yield AuditFailure(audit_message_unexpected_files.get('audit_category', ''), f'{detail} {audit_message_unexpected_files.get("audit_description", "")}', level=audit_message_unexpected_files.get('audit_level', ''))
+    if not (value.get('files', '')):
+        detail = (
+            f'{object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} '
+            f'has no `files`.'
+        )
+        yield AuditFailure(audit_message_missing_files.get('audit_category', ''), f'{detail} {audit_message_missing_files.get("audit_description", "")}', level=audit_message_missing_files.get('audit_level', ''))
 
 
 @audit_checker('FileSet', frame='object')

@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Schema version 12
+
+* Adjust `file_set_type` enum list to remove `variant sequencing`.
+
 ### Minor changes since schema version 11
 
 * Extend `status` enum list to include `preview`.

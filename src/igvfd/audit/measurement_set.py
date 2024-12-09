@@ -137,8 +137,8 @@ def audit_CRISPR_screen_lacking_modifications(value, system):
     assay = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
     crispr_assays = ['in vitro CRISPR screen assay',
                      'in vitro CRISPR screen using flow cytometry',
-                     'in vitro CRISPR screen using single-cell RNA-seq',
-                     'cas mediated mutagenesis']
+                     'in vitro CRISPR screen using single-cell RNA-seq'
+                     ]
     if assay.get('term_name') in crispr_assays:
         samples = value.get('samples', [])
         bad_samples = []
@@ -420,17 +420,12 @@ def audit_missing_auxiliary_set(value, system):
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "CRISPR-based measurement sets, with the exception of mutagenesis assays, are expected to link to a gRNA sequencing auxiliary set.",
+            "audit_description": "Single-cell CRISPR screens, such as Perturb-seq, are expected to link to a gRNA sequencing auxiliary set.",
             "audit_category": "missing auxiliary set",
             "audit_level": "NOT_COMPLIANT"
         },
         {
             "audit_description": "CRISPR-based measurement sets that utilize flow cytometry are expected to link to a cell sorting auxiliary set.",
-            "audit_category": "missing auxiliary set",
-            "audit_level": "NOT_COMPLIANT"
-        },
-        {
-            "audit_description": "Variant-EFFECTS measurement sets are expected to link to a variant sequencing auxiliary set.",
             "audit_category": "missing auxiliary set",
             "audit_level": "NOT_COMPLIANT"
         },
@@ -443,21 +438,18 @@ def audit_missing_auxiliary_set(value, system):
     '''
     audit_message_MPRA = get_audit_message(audit_missing_auxiliary_set, index=0)
     audit_message_scQer = get_audit_message(audit_missing_auxiliary_set, index=1)
-    audit_message_CRISPR_gRNA = get_audit_message(audit_missing_auxiliary_set, index=2)
+    audit_message_scCRISPR_gRNA = get_audit_message(audit_missing_auxiliary_set, index=2)
     audit_message_CRISPR_flow = get_audit_message(audit_missing_auxiliary_set, index=3)
-    audit_message_Variant_EFFECTS = get_audit_message(audit_missing_auxiliary_set, index=4)
-    audit_message_10X_MULTI_seq = get_audit_message(audit_missing_auxiliary_set, index=5)
+    audit_message_10X_MULTI_seq = get_audit_message(audit_missing_auxiliary_set, index=4)
 
     expected_auxiliary_set_by_assay_term = {
         'massively parallel reporter assay': [('quantification DNA barcode sequencing', audit_message_MPRA)],
-        'in vitro CRISPR screen assay': [('gRNA sequencing', audit_message_CRISPR_gRNA)],
-        'in vitro CRISPR screen using flow cytometry': [('gRNA sequencing', audit_message_CRISPR_gRNA), ('cell sorting', audit_message_CRISPR_flow)],
-        'in vitro CRISPR screen using single-cell RNA-seq': [('gRNA sequencing', audit_message_CRISPR_gRNA)]
+        'in vitro CRISPR screen using flow cytometry': [('cell sorting', audit_message_CRISPR_flow)],
+        'in vitro CRISPR screen using single-cell RNA-seq': [('gRNA sequencing', audit_message_scCRISPR_gRNA)]
     }
     # preferred assay title expectations override any overlapping assay term expectation
     expected_auxiliary_set_by_preferred_assay_title = {
         'MPRA (scQer)': [('quantification DNA barcode sequencing', audit_message_MPRA), ('circularized RNA barcode detection', audit_message_scQer)],
-        'Variant-EFFECTS': [('variant sequencing', audit_message_Variant_EFFECTS), ('cell sorting', audit_message_CRISPR_flow)],
         '10x multiome with MULTI-seq': [('lipid-conjugated oligo sequencing', audit_message_10X_MULTI_seq)]
     }
 
