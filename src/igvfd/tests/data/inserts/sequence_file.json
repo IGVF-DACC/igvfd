@@ -215,7 +215,7 @@
         "sequencing_run": 13,
         "illumina_read_type": "R1",
         "sequencing_platform": "/platform-terms/747dc8bf-9e8c-3dbc-967f-ce9f995cfd28/",
-        "sequencing_kit": "HiSeq 3000/4000 SBS Kit",
+        "sequencing_kit": "AVITI 2x75 Sequencing Kit Cloudbreak High Output",
         "controlled_access": false,
         "externally_hosted": false,
         "read_names": [
