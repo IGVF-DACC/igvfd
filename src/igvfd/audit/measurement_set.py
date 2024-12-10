@@ -288,7 +288,7 @@ def audit_targeted_genes(value, system):
         {
             "audit_description": "ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
             "audit_category": "missing targeted genes",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "WARNING"
         },
         {
             "audit_description": "Only ChIP-seq and CRISPR flow cytometry assays are expected to specify targeted gene(s).",
@@ -427,7 +427,7 @@ def audit_missing_auxiliary_set(value, system):
         {
             "audit_description": "CRISPR-based measurement sets that utilize flow cytometry are expected to link to a cell sorting auxiliary set.",
             "audit_category": "missing auxiliary set",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "WARNING"
         },
         {
             "audit_description": "10X Multiome MULTI-seq measurement sets are expected to link to a lipid-conjugated oligo sequencing auxiliary set.",

@@ -49,7 +49,7 @@ def audit_missing_seqspec(value, system):
         {
             "audit_description": "Sequence files in a file set are expected to link to a sequence specification file.",
             "audit_category": "missing sequence specification",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "INTERNAL_ACTION"
         }
     ]
     '''
@@ -254,7 +254,7 @@ def audit_inconsistent_sequencing_kit(value, system):
         {
             "audit_description": "Sequence files should specify a sequencing kit.",
             "audit_category": "missing sequencing kit",
-            "audit_level": "NOT_COMPLIANT"
+            "audit_level": "INTERNAL_ACTION"
         }
     ]
     '''
@@ -379,16 +379,16 @@ def audit_unexpected_virtual_samples(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+@audit_checker('ConstructLibrarySet', frame='object')
 @audit_checker('MeasurementSet', frame='object')
 @audit_checker('AuxiliarySet', frame='object')
-@audit_checker('ConstructLibrarySet', frame='object')
 def audit_input_for(value, system):
     '''
     [
         {
             "audit_description": "Raw data sets with files are expected to be associated with at least one analysis set.",
             "audit_category": "missing analysis",
-            "audit_level": "WARNING"
+            "audit_level": "NOT_COMPLIANT"
         }
     ]
     '''

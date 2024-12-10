@@ -59,7 +59,7 @@ def test_audit_missing_derived_from(
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing derived from'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         matrix_file['@id'],
@@ -70,7 +70,7 @@ def test_audit_missing_derived_from(
     res = testapp.get(analysis_set_base['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing derived from'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 
@@ -132,7 +132,7 @@ def test_audit_missing_analysis_step_version(
     res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
     assert any(
         error['category'] == 'missing analysis step version'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
     testapp.patch_json(
         matrix_file['@id'],
@@ -143,7 +143,7 @@ def test_audit_missing_analysis_step_version(
     res = testapp.get(intermediate_analysis_set['@id'] + '@@audit')
     assert all(
         error['category'] != 'missing analysis step version'
-        for error in res.json['audit'].get('WARNING', [])
+        for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
 
 
@@ -155,7 +155,7 @@ def test_audit_multiple_workflows(
 ):
     # Test when an analysis set only has one workflow
     res = testapp.get(analysis_set_with_workflow['@id'] + '@@audit')
-    assert any(
+    assert all(
         error['category'] != 'unexpected workflows'
         for error in res.json['audit'].get('WARNING', [])
     )
