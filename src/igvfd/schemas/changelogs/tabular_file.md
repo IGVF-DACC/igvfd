@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Extend `content_type` enum list to include `unfiltered global differential expression`, `unfiltered local differential expression` and `cell hashing barcodes`.
 * Extend `upload_status` enum list to include `validation exempted`.
 * Extend `status` enum list to include `preview`.
 * Extend `content_type` enum list to include `barcode onlist`.

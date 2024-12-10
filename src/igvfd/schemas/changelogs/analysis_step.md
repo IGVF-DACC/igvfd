@@ -2,7 +2,9 @@
 
 ### Minor changes since schema version 5
 
-* Extend `analysis_step_types` enum list to include `barcode counting`, `umi quantification`, `cell to feature barcode mapping`, `demultiplexing`, `differential expression analysis`.
+* Extend `output_content_types` enum list to include `unfiltered global differential expression`, `unfiltered local differential expression` and `cell hashing barcodes`.
+* Extend `input_content_types` enum list to include `unfiltered global differential expression`, `unfiltered local differential expression` and `cell hashing barcodes`.
+* Extend `analysis_step_types` enum list to include `barcode counting`, `UMI quantification`, `cell to feature barcode mapping`, `demultiplexing`, `differential expression analysis`.
 * Extend `status` enum list to include `preview`.
 * Extend `output_content_types` enum list to include `barcode onlist`.
 * Extend `input_content_types` enum list to include `barcode onlist`.
