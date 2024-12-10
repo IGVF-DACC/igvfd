@@ -1,6 +1,6 @@
 {
-    "hash": "5964f4fe3a64cac1ab9721490f9340d3",
-    "index_name": "gene_5964f4fe",
+    "hash": "bf48792d4e3369fc227e59083bcaebb4",
+    "index_name": "gene_bf48792d",
     "item_type": "gene",
     "mapping": {
         "dynamic_templates": [
@@ -152,7 +152,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
@@ -177,20 +177,10 @@
                                 "type": "keyword"
                             },
                             "end": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
                             "start": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             }
@@ -205,7 +195,7 @@
                         "type": "text"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -225,7 +215,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

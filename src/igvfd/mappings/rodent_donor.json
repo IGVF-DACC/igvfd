@@ -1,6 +1,6 @@
 {
-    "hash": "33746140c07268a40b4da457593c468f",
-    "index_name": "rodent_donor_33746140",
+    "hash": "0ac87b33ef392b249da4c24d023a6e90",
+    "index_name": "rodent_donor_0ac87b33",
     "item_type": "rodent_donor",
     "mapping": {
         "dynamic_templates": [
@@ -175,7 +175,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -232,7 +232,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
@@ -249,11 +249,6 @@
                         "type": "keyword"
                     },
                     "individual_rodent": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "boolean"
                     },
@@ -272,7 +267,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -337,7 +332,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -357,7 +352,7 @@
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
-                                        "type": "keyword"
+                                        "type": "date"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
@@ -378,7 +373,7 @@
                                         "type": "keyword"
                                     },
                                     "release_timestamp": {
-                                        "type": "keyword"
+                                        "type": "date"
                                     },
                                     "schema_version": {
                                         "type": "keyword"
@@ -424,11 +419,6 @@
                                 "type": "keyword"
                             },
                             "quantity": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "float"
                             },
@@ -436,7 +426,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -482,11 +472,6 @@
                                         "type": "keyword"
                                     },
                                     "height": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     },
@@ -497,11 +482,6 @@
                                         "type": "keyword"
                                     },
                                     "size": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     },
@@ -509,11 +489,6 @@
                                         "type": "keyword"
                                     },
                                     "width": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     }
@@ -527,7 +502,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "date_published": {
                                 "type": "keyword"
@@ -564,11 +539,6 @@
                                 "type": "keyword"
                             },
                             "publication_year": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
@@ -576,7 +546,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "samples": {
                                 "type": "keyword"
@@ -618,7 +588,7 @@
                         "type": "object"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "revoke_detail": {
                         "type": "keyword"
@@ -648,7 +618,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -666,7 +636,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -718,7 +688,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -792,11 +762,6 @@
                         "type": "keyword"
                     },
                     "virtual": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "boolean"
                     }

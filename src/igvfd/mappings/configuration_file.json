@@ -1,6 +1,6 @@
 {
-    "hash": "2448251009ab49914097518cf91944c1",
-    "index_name": "configuration_file_24482510",
+    "hash": "a3ebfe413a1aac51276255946148ab6f",
+    "index_name": "configuration_file_a3ebfe41",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -182,7 +182,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -246,7 +246,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "dbxrefs": {
                         "copy_to": "_exact",
@@ -256,11 +256,6 @@
                         "type": "keyword"
                     },
                     "derived_manually": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "boolean"
                     },
@@ -318,20 +313,10 @@
                                 "type": "keyword"
                             },
                             "average_guide_coverage": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "float"
                             },
                             "average_insert_size": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "float"
                             },
@@ -354,7 +339,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "dbxrefs": {
                                 "type": "keyword"
@@ -384,11 +369,6 @@
                                 "type": "keyword"
                             },
                             "externally_hosted": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "boolean"
                             },
@@ -426,20 +406,10 @@
                                 "type": "keyword"
                             },
                             "lower_bound_guide_coverage": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
                             "lower_bound_insert_size": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
@@ -456,11 +426,6 @@
                                 "type": "keyword"
                             },
                             "multiome_size": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
@@ -489,7 +454,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "revoke_detail": {
                                 "type": "keyword"
@@ -554,7 +519,7 @@
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
-                                        "type": "keyword"
+                                        "type": "date"
                                     },
                                     "date_obtained": {
                                         "type": "keyword"
@@ -586,7 +551,7 @@
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "deprecated_ntr_terms": {
                                                 "type": "keyword"
@@ -607,7 +572,7 @@
                                                 "type": "keyword"
                                             },
                                             "release_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "schema_version": {
                                                 "type": "keyword"
@@ -646,11 +611,6 @@
                                         "type": "keyword"
                                     },
                                     "embryonic": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "boolean"
                                     },
@@ -670,20 +630,10 @@
                                         "type": "keyword"
                                     },
                                     "lower_bound_age": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "float"
                                     },
                                     "lower_bound_age_in_hours": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "float"
                                     },
@@ -696,11 +646,6 @@
                                                 "type": "keyword"
                                             },
                                             "activated": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
                                                 "store": true,
                                                 "type": "boolean"
                                             },
@@ -726,7 +671,7 @@
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "degron_system": {
                                                 "type": "keyword"
@@ -756,7 +701,7 @@
                                                 "type": "keyword"
                                             },
                                             "release_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "schema_version": {
                                                 "type": "keyword"
@@ -786,11 +731,6 @@
                                         "type": "object"
                                     },
                                     "moi": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "float"
                                     },
@@ -822,20 +762,10 @@
                                         "type": "keyword"
                                     },
                                     "passage_number": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     },
                                     "pmi": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     },
@@ -861,7 +791,7 @@
                                         "type": "keyword"
                                     },
                                     "release_timestamp": {
-                                        "type": "keyword"
+                                        "type": "date"
                                     },
                                     "revoke_detail": {
                                         "type": "keyword"
@@ -887,7 +817,7 @@
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "dbxrefs": {
                                                 "type": "keyword"
@@ -917,7 +847,7 @@
                                                 "type": "keyword"
                                             },
                                             "release_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "schema_version": {
                                                 "type": "keyword"
@@ -971,11 +901,6 @@
                                         "type": "keyword"
                                     },
                                     "starting_amount": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "float"
                                     },
@@ -1013,7 +938,7 @@
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "dbxrefs": {
                                                 "type": "keyword"
@@ -1043,7 +968,7 @@
                                                 "type": "keyword"
                                             },
                                             "release_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "schema_version": {
                                                 "type": "keyword"
@@ -1082,11 +1007,6 @@
                                         "type": "keyword"
                                     },
                                     "time_post_change": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "float"
                                     },
@@ -1094,11 +1014,6 @@
                                         "type": "keyword"
                                     },
                                     "time_post_library_delivery": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "float"
                                     },
@@ -1117,11 +1032,6 @@
                                                 "type": "keyword"
                                             },
                                             "amount": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
                                                 "store": true,
                                                 "type": "float"
                                             },
@@ -1135,14 +1045,9 @@
                                                 "type": "keyword"
                                             },
                                             "creation_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "depletion": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
                                                 "store": true,
                                                 "type": "boolean"
                                             },
@@ -1153,11 +1058,6 @@
                                                 "type": "keyword"
                                             },
                                             "duration": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
                                                 "store": true,
                                                 "type": "float"
                                             },
@@ -1174,20 +1074,10 @@
                                                 "type": "text"
                                             },
                                             "pH": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
                                                 "store": true,
                                                 "type": "float"
                                             },
                                             "post_treatment_time": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
                                                 "store": true,
                                                 "type": "float"
                                             },
@@ -1201,7 +1091,7 @@
                                                 "type": "keyword"
                                             },
                                             "release_timestamp": {
-                                                "type": "keyword"
+                                                "type": "date"
                                             },
                                             "schema_version": {
                                                 "type": "keyword"
@@ -1222,11 +1112,6 @@
                                                 "type": "keyword"
                                             },
                                             "temperature": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
                                                 "store": true,
                                                 "type": "float"
                                             },
@@ -1249,20 +1134,10 @@
                                         "type": "object"
                                     },
                                     "upper_bound_age": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "float"
                                     },
                                     "upper_bound_age_in_hours": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "float"
                                     },
@@ -1273,11 +1148,6 @@
                                         "type": "keyword"
                                     },
                                     "virtual": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "boolean"
                                     }
@@ -1308,20 +1178,10 @@
                                         "type": "keyword"
                                     },
                                     "end": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     },
                                     "start": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     }
@@ -1341,7 +1201,7 @@
                                 "type": "keyword"
                             },
                             "submitted_files_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "submitter_comment": {
                                 "type": "keyword"
@@ -1362,11 +1222,6 @@
                             "tile": {
                                 "properties": {
                                     "tile_end": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     },
@@ -1374,11 +1229,6 @@
                                         "type": "keyword"
                                     },
                                     "tile_start": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     }
@@ -1392,20 +1242,10 @@
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
                             "upper_bound_insert_size": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
@@ -1422,11 +1262,6 @@
                         "type": "object"
                     },
                     "file_size": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "long"
                     },
@@ -1474,7 +1309,7 @@
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
-                                        "type": "keyword"
+                                        "type": "date"
                                     },
                                     "deprecated_ntr_terms": {
                                         "type": "keyword"
@@ -1495,7 +1330,7 @@
                                         "type": "keyword"
                                     },
                                     "release_timestamp": {
-                                        "type": "keyword"
+                                        "type": "date"
                                     },
                                     "schema_version": {
                                         "type": "keyword"
@@ -1528,20 +1363,10 @@
                                 "type": "object"
                             },
                             "average_guide_coverage": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "float"
                             },
                             "average_insert_size": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "float"
                             },
@@ -1561,7 +1386,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -1600,20 +1425,10 @@
                                 "type": "keyword"
                             },
                             "lower_bound_guide_coverage": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
                             "lower_bound_insert_size": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
@@ -1630,7 +1445,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "revoke_detail": {
                                 "type": "keyword"
@@ -1656,7 +1471,7 @@
                                         "type": "keyword"
                                     },
                                     "creation_timestamp": {
-                                        "type": "keyword"
+                                        "type": "date"
                                     },
                                     "dbxrefs": {
                                         "type": "keyword"
@@ -1679,20 +1494,10 @@
                                                 "type": "keyword"
                                             },
                                             "end": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
                                                 "store": true,
                                                 "type": "long"
                                             },
                                             "start": {
-                                                "fields": {
-                                                    "raw": {
-                                                        "type": "keyword"
-                                                    }
-                                                },
                                                 "store": true,
                                                 "type": "long"
                                             }
@@ -1706,7 +1511,7 @@
                                         "type": "text"
                                     },
                                     "release_timestamp": {
-                                        "type": "keyword"
+                                        "type": "date"
                                     },
                                     "schema_version": {
                                         "type": "keyword"
@@ -1756,20 +1561,10 @@
                                         "type": "keyword"
                                     },
                                     "end": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     },
                                     "start": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     }
@@ -1786,7 +1581,7 @@
                                 "type": "keyword"
                             },
                             "submitted_files_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "submitter_comment": {
                                 "type": "keyword"
@@ -1800,11 +1595,6 @@
                             "tile": {
                                 "properties": {
                                     "tile_end": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     },
@@ -1812,11 +1602,6 @@
                                         "type": "keyword"
                                     },
                                     "tile_start": {
-                                        "fields": {
-                                            "raw": {
-                                                "type": "keyword"
-                                            }
-                                        },
                                         "store": true,
                                         "type": "long"
                                     }
@@ -1827,20 +1612,10 @@
                                 "type": "keyword"
                             },
                             "upper_bound_guide_coverage": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
                             "upper_bound_insert_size": {
-                                "fields": {
-                                    "raw": {
-                                        "type": "keyword"
-                                    }
-                                },
                                 "store": true,
                                 "type": "long"
                             },
@@ -1865,7 +1640,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -1919,7 +1694,7 @@
                         "type": "text"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "revoke_detail": {
                         "type": "keyword"
@@ -1948,7 +1723,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

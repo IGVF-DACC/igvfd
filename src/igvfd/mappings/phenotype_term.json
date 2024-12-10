@@ -1,6 +1,6 @@
 {
-    "hash": "96c3ad62bbdeb17f35570b6f561b4193",
-    "index_name": "phenotype_term_96c3ad62",
+    "hash": "15be7644360e46e912ad8a19cba1471b",
+    "index_name": "phenotype_term_15be7644",
     "item_type": "phenotype_term",
     "mapping": {
         "dynamic_templates": [
@@ -155,7 +155,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "deprecated_ntr_terms": {
                         "type": "keyword"
@@ -176,7 +176,7 @@
                         "type": "keyword"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -196,7 +196,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

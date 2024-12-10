@@ -1,6 +1,6 @@
 {
-    "hash": "8a50deffe72e57bcd3ca1ba750c59db2",
-    "index_name": "testing_server_default_8a50deff",
+    "hash": "524b8757c364412e26893e9e00696174",
+    "index_name": "testing_server_default_524b8757",
     "item_type": "testing_server_default",
     "mapping": {
         "dynamic_templates": [
@@ -152,7 +152,7 @@
                         "type": "keyword"
                     },
                     "now": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "user": {
                         "type": "keyword"

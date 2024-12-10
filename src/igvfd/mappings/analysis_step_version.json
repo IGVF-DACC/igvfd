@@ -1,6 +1,6 @@
 {
-    "hash": "08d9563dbf790b48b90dc4f93f9a33b8",
-    "index_name": "analysis_step_version_08d9563d",
+    "hash": "7b3a50164c3cb12a4399040a8af6b2f0",
+    "index_name": "analysis_step_version_7b3a5016",
     "item_type": "analysis_step_version",
     "mapping": {
         "dynamic_templates": [
@@ -172,7 +172,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -196,7 +196,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -246,7 +246,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -300,7 +300,7 @@
                         "type": "object"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "description": {
                         "copy_to": "_fuzzy",
@@ -321,7 +321,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -369,7 +369,7 @@
                         "type": "text"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -389,7 +389,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -410,7 +410,7 @@
                                 "type": "keyword"
                             },
                             "release_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "schema_version": {
                                 "type": "keyword"
@@ -457,7 +457,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

@@ -13,6 +13,7 @@ from snosearch.fields import AuditMatrixWithFacetsResponseField
 from snosearch.fields import AllResponseField
 from snosearch.fields import BasicSearchResponseField
 from snosearch.fields import BasicMatrixWithFacetsResponseField
+from snosearch.fields import MissingMatrixWithFacetsResponseField
 from snosearch.fields import BasicSearchWithFacetsResponseField
 from snosearch.fields import BasicReportWithFacetsResponseField
 from snosearch.fields import MultipleTypesReportWithFacetsResponseField
@@ -24,6 +25,7 @@ from snosearch.fields import FacetGroupsResponseField
 from snosearch.fields import FiltersResponseField
 from snosearch.fields import IDResponseField
 from snosearch.fields import NotificationResponseField
+from snovault.elasticsearch.interfaces import ELASTIC_SEARCH
 from snovault.elasticsearch.searches.fields import NonSortableResponseField
 from snosearch.fields import RawTopHitsResponseField
 from snosearch.fields import SearchBaseResponseField
@@ -38,14 +40,21 @@ from snosearch.responses import FieldedGeneratorResponse
 
 from snovault.elasticsearch.searches.interfaces import SEARCH_CONFIG
 
+from pyramid.httpexceptions import HTTPBadRequest
+
+from opensearch_dsl import Search
+
 
 def includeme(config):
     config.add_route('search', '/search{slash:/?}')
     config.add_route('report', '/report{slash:/?}')
     config.add_route('multireport', '/multireport{slash:/?}')
     config.add_route('matrix', '/matrix{slash:/?}')
+    config.add_route('missing-matrix', '/missing-matrix{slash:/?}')
     config.add_route('summary', '/summary{slash:/?}')
     config.add_route('dataset-summary', '/dataset-summary{slash:/?}')
+    config.add_route('dataset-summary-agg', '/dataset-summary-agg{slash:/?}')
+    config.add_route('datasets-released', '/datasets-released{slash:/?}')
     config.add_route('audit', '/audit{slash:/?}')
     config.add_route('top-hits-raw', '/top-hits-raw{slash:/?}')
     config.add_route('top-hits', '/top-hits{slash:/?}')
@@ -315,6 +324,36 @@ def search_generator(request):
     return fgr.render()
 
 
+@view_config(route_name='missing-matrix', request_method='GET', permission='search')
+def missing_matrix(context, request):
+    fr = FieldedResponse(
+        _meta={
+            'params_parser': ParamsParser(request)
+        },
+        response_fields=[
+            TitleResponseField(
+                title='Missing matrix'
+            ),
+            TypeResponseField(
+                at_type=['MissingMatrix']
+            ),
+            IDResponseField(),
+            SearchBaseResponseField(),
+            ContextResponseField(),
+            MissingMatrixWithFacetsResponseField(
+                default_item_types=DEFAULT_ITEM_TYPES,
+                reserved_keys=RESERVED_KEYS,
+            ),
+            FacetGroupsResponseField(),
+            NotificationResponseField(),
+            FiltersResponseField(),
+            TypeOnlyClearFiltersResponseField(),
+            DebugQueryResponseField()
+        ]
+    )
+    return fr.render()
+
+
 @view_config(route_name='dataset-summary', request_method='GET', permission='search')
 def dataset_summary(context, request):
     qs = QueryString(request)
@@ -335,3 +374,56 @@ def dataset_summary(context, request):
         ]
     )
     return request.embed(f'/search-quick/?{qs.get_query_string()}', as_user='EMBED')
+
+
+@view_config(route_name='dataset-summary-agg', request_method='GET', permission='search')
+def dataset_summary_agg(context, request):
+    qs = QueryString(request)
+    qs.extend(
+        [
+            ('config', 'StatusFacet'),
+        ]
+    )
+    return {
+        'matrix': request.embed(f'/missing-matrix/?{qs.get_query_string()}', as_user='EMBED')['matrix']
+    }
+
+
+@view_config(route_name='datasets-released', request_method='GET', permission='search')
+def datasets_released(context, request):
+    client = request.registry[ELASTIC_SEARCH]
+    search = Search(
+        using=client,
+        index=[
+            'analysis_set',
+            'auxiliary_set',
+            'construct_library_set',
+            'curated_set',
+            'measurement_set',
+            'model_set',
+            'prediction_set',
+        ]
+    ).filter(
+        'term',
+        **{
+            'embedded.status': 'released'
+        }
+    )[:0]
+    search.aggs.bucket(
+        'datasets_released',
+        'date_histogram',
+        field='embedded.release_timestamp',
+        calendar_interval='month',
+        format='MMM yyyy'
+    ).pipeline(
+        'cumulative_sum',
+        'cumulative_sum',
+        buckets_path='_count'
+    )
+    results = search.execute()
+    return {
+        'datasets_released': [
+            {x['key_as_string']: x['cumulative_sum']['value']}
+            for x in results.to_dict()['aggregations']['datasets_released']['buckets']
+        ]
+    }

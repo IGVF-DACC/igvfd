@@ -1,6 +1,6 @@
 {
-    "hash": "60d919465efbad339455fdb0418419fc",
-    "index_name": "award_60d91946",
+    "hash": "d88af3394eee086cc970e9cbe07ec6ad",
+    "index_name": "award_d88af339",
     "item_type": "award",
     "mapping": {
         "dynamic_templates": [
@@ -159,7 +159,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "description": {
                         "type": "text"
@@ -202,7 +202,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

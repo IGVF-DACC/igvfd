@@ -1,6 +1,6 @@
 {
-    "hash": "b205826034134dc0be6d765ddbf8d6de",
-    "index_name": "crispr_modification_b2058260",
+    "hash": "088a75c014e872e5f620ea8daea9f468",
+    "index_name": "crispr_modification_088a75c0",
     "item_type": "crispr_modification",
     "mapping": {
         "dynamic_templates": [
@@ -149,11 +149,6 @@
                         "type": "keyword"
                     },
                     "activated": {
-                        "fields": {
-                            "raw": {
-                                "type": "keyword"
-                            }
-                        },
                         "store": true,
                         "type": "boolean"
                     },
@@ -184,7 +179,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -247,7 +242,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "description": {
                         "type": "text"
@@ -273,7 +268,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
@@ -331,7 +326,7 @@
                         "type": "keyword"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -354,7 +349,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"

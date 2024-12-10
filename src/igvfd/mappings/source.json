@@ -1,6 +1,6 @@
 {
-    "hash": "208f7400d75325471ba8906c7f44d26f",
-    "index_name": "source_208f7400",
+    "hash": "845a009fda2e52f5dd0f15d89ba57a17",
+    "index_name": "source_845a009f",
     "item_type": "source",
     "mapping": {
         "dynamic_templates": [
@@ -152,7 +152,7 @@
                         "type": "keyword"
                     },
                     "creation_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "description": {
                         "copy_to": "_fuzzy",
@@ -165,7 +165,7 @@
                         "type": "text"
                     },
                     "release_timestamp": {
-                        "type": "keyword"
+                        "type": "date"
                     },
                     "schema_version": {
                         "type": "keyword"
@@ -185,7 +185,7 @@
                                 "type": "keyword"
                             },
                             "creation_timestamp": {
-                                "type": "keyword"
+                                "type": "date"
                             },
                             "description": {
                                 "type": "text"
