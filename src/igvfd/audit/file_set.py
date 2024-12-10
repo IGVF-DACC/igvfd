@@ -379,6 +379,7 @@ def audit_unexpected_virtual_samples(value, system):
             yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
 
 
+@audit_checker('ConstructLibrarySet', frame='object')
 @audit_checker('MeasurementSet', frame='object')
 @audit_checker('AuxiliarySet', frame='object')
 def audit_input_for(value, system):
