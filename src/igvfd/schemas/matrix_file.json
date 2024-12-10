@@ -122,11 +122,8 @@
             "type": "string",
             "enum": [
                 "cell",
-                "cell barcode",
-                "filtered single, sgRNA positive cell",
                 "fragment",
                 "gene",
-                "singlet cell",
                 "time",
                 "treatment",
                 "variant",
@@ -155,7 +152,6 @@
                     "gene expression",
                     "genomic position",
                     "peak",
-                    "sgRNA",
                     "time",
                     "treatment",
                     "UMI count",
@@ -169,7 +165,6 @@
         },
         "file_format": {
             "enum": [
-                "h5",
                 "h5ad",
                 "hdf5",
                 "mtx",
