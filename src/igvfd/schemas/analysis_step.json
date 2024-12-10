@@ -54,9 +54,13 @@
                 "type": "string",
                 "enum": [
                     "alignment",
+                    "barcode counting",
                     "barcode mapping generation",
                     "base calling",
+                    "cell to feature barcode mapping",
                     "counts normalization",
+                    "demultiplexing",
+                    "differential expression analysis",
                     "file format conversion",
                     "filtering",
                     "interaction calling",
@@ -66,6 +70,7 @@
                     "signal generation",
                     "signal normalization",
                     "spatial feature detection",
+                    "UMI quantification",
                     "variant annotation"
                 ],
                 "enum_descriptions": {
