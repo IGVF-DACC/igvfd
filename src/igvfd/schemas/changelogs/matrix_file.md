@@ -3,7 +3,7 @@
 ### Minor changes since schema version 7
 
 * Extend `principal_dimension` enum list to include `cell barcode`, `singlet cell` and `filtered singlet, sgRNA positive cell`.
-* Extend `secondary_dimensions` enum list to `sgRNA` and `umi count`.
+* Extend `secondary_dimensions` enum list to `sgRNA` and `UMI count`.
 * Extend `file_format` enum list to include `pkl` and `h5`.
 * Extend `secondary_dimensions` enum list to include `peak`.
 * Extend `upload_status` enum list to include `validation exempted`.

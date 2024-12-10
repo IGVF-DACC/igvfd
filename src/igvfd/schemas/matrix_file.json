@@ -158,7 +158,7 @@
                     "sgRNA",
                     "time",
                     "treatment",
-                    "umi count",
+                    "UMI count",
                     "variant"
                 ]
             },
