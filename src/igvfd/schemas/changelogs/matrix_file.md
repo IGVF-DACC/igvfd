@@ -2,6 +2,8 @@
 
 ### Minor changes since schema version 7
 
+* Extend `secondary_dimensions` enum list to include `UMI count`.
+* Extend `file_format` enum list to include `pkl`.
 * Extend `secondary_dimensions` enum list to include `peak`.
 * Extend `upload_status` enum list to include `validation exempted`.
 * Extend `status` enum list to include `preview`.

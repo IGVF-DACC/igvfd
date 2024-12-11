@@ -154,6 +154,7 @@
                     "peak",
                     "time",
                     "treatment",
+                    "UMI count",
                     "variant"
                 ]
             },
@@ -167,6 +168,7 @@
                 "h5ad",
                 "hdf5",
                 "mtx",
+                "pkl",
                 "tar",
                 "hic",
                 "cool",
