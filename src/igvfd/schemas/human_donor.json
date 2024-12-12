@@ -171,17 +171,17 @@
             }
         },
         "dbxrefs": {
-            "comment": "Supported external resources include: GEO, ENCODE, ISGR.",
+            "comment": "Supported external resources include: GEO, ENCODE, IGSR.",
             "items": {
                 "title": "External identifier",
                 "description": "Identifier from an external resource that may have 1-to-1 or 1-to-many relationships with IGVF file objects.",
                 "type": "string",
                 "minItems": 1,
-                "pattern": "(^GEO:SAMN\\d+$)|(^ENCODE:ENCDO\\d{3}[A-Z]{3}$)|^(ISGR):.+$"
+                "pattern": "(^GEO:SAMN\\d+$)|(^ENCODE:ENCDO\\d{3}[A-Z]{3}$)|^(IGSR):.+$"
             },
             "submissionExample": {
-                "appscript": "[\"ISGR:NA12978\"]",
-                "igvf_utils": "ISGR:NA12978"
+                "appscript": "[\"IGSR:NA12978\"]",
+                "igvf_utils": "IGSR:NA12978"
             }
         }
     },
