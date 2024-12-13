@@ -130,6 +130,7 @@ services:
     environment:
       - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
       - QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
+      - STORAGE_QUEUE_URL=http://localhost:4566/000000000000/deduplication-queue
       - NUM_WORKERS=20
       - AWS_ACCESS_KEY_ID=testing
       - AWS_SECRET_ACCESS_KEY=testing

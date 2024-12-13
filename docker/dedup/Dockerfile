@@ -1,6 +1,6 @@
 FROM public.ecr.aws/docker/library/golang:1.21.5-bookworm AS builder
 
-ARG VERSION=v1.1.0
+ARG VERSION=add-memory-queue
 
 WORKDIR /build
 

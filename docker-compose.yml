@@ -51,7 +51,7 @@ services:
     image: igvfd-pyramid
     environment:
       - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
-      - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
+      - TRANSACTION_QUEUE_URL=http://localhost:4566/000000000000/transaction-queue
       - INVALIDATION_QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
       - TRANSACTION_DEAD_LETTER_QUEUE_URL=http://localhost:4566/000000000000/transaction-dead-letter-queue
       - INVALIDATION_DEAD_LETTER_QUEUE_URL=http://localhost:4566/000000000000/invalidation-dead-letter-queue
@@ -73,7 +73,7 @@ services:
     image: igvfd-pyramid
     environment:
       - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
-      - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
+      - TRANSACTION_QUEUE_URL=http://localhost:4566/000000000000/transaction-queue
       - INVALIDATION_QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
       - TRANSACTION_DEAD_LETTER_QUEUE_URL=http://localhost:4566/000000000000/transaction-dead-letter-queue
       - INVALIDATION_DEAD_LETTER_QUEUE_URL=http://localhost:4566/000000000000/invalidation-dead-letter-queue
@@ -96,7 +96,7 @@ services:
     image: igvfd-pyramid
     environment:
       - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
-      - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
+      - TRANSACTION_QUEUE_URL=http://localhost:4566/000000000000/transaction-queue
       - INVALIDATION_QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
       - TRANSACTION_DEAD_LETTER_QUEUE_URL=http://localhost:4566/000000000000/transaction-dead-letter-queue
       - INVALIDATION_DEAD_LETTER_QUEUE_URL=http://localhost:4566/000000000000/invalidation-dead-letter-queue
@@ -131,7 +131,7 @@ services:
     environment:
       - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
       - OPENSEARCH_URL=http://opensearch:9200
-      - TRANSACTION_QUEUE_URL=http://localstack:4566/000000000000/transaction-queue
+      - TRANSACTION_QUEUE_URL=http://localhost:4566/000000000000/transaction-queue
       - INVALIDATION_QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
       - RESOURCES_INDEX=snovault-resources
     volumes:
@@ -167,6 +167,7 @@ services:
     environment:
       - LOCALSTACK_ENDPOINT_URL=http://localstack:4566
       - QUEUE_URL=http://localhost:4566/000000000000/invalidation-queue
+      - STORAGE_QUEUE_URL=http://localhost:4566/000000000000/deduplication-queue
       - NUM_WORKERS=20
       - AWS_ACCESS_KEY_ID=testing
       - AWS_SECRET_ACCESS_KEY=testing
