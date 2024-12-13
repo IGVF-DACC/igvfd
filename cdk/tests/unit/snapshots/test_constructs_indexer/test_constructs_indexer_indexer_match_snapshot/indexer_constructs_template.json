@@ -424,7 +424,7 @@
                         ],
                         "Essential": true,
                         "Image": {
-                            "Fn::Sub": "${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:a827b71c585b071ab4fecd5a1bc9b8fcd8f90d6dc80e3d026fc84c02b7a2b2d3"
+                            "Fn::Sub": "${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:e6348225a905b7d2b872c07966db426c75ae896218570b91c8615bedb22555cf"
                         },
                         "LogConfiguration": {
                             "LogDriver": "awslogs",
