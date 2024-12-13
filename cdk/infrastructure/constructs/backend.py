@@ -39,6 +39,7 @@ from infrastructure.constructs.postgres import PostgresConstruct
 
 from infrastructure.constructs.queue import InvalidationQueue
 from infrastructure.constructs.queue import TransactionQueue
+from infrastructure.constructs.queue import DeduplicationQueue
 
 from infrastructure.constructs.flag import FeatureFlagService
 
@@ -72,6 +73,7 @@ class BackendProps:
     opensearch_multiplexer: Multiplexer
     transaction_queue: TransactionQueue
     invalidation_queue: InvalidationQueue
+    deduplication_queue: DeduplicationQueue
     feature_flag_service: FeatureFlagService
     ini_name: str
     cpu: int
@@ -121,8 +123,10 @@ class Backend(Construct):
         self._allow_task_to_put_events_on_bus()
         self._allow_task_to_send_messages_to_transaction_queue()
         self._allow_task_to_send_messages_to_invalidation_queue()
+        self._allow_task_to_send_messages_to_deduplication_queue()
         self._allow_task_to_send_messages_to_transaction_dead_letter_queue()
         self._allow_task_to_send_messages_to_invalidation_dead_letter_queue()
+        self._allow_task_to_send_messages_to_deduplication_dead_letter_queue()
         self._allow_task_to_download_from_files_buckets()
         self._allow_task_to_upload_to_files_buckets()
         self._allow_task_to_read_upload_files_user_access_keys_secret()
@@ -258,8 +262,10 @@ class Backend(Construct):
                 'OPENSEARCH_FOR_WRITING_URL': self.opensearch_for_writing.url,
                 'TRANSACTION_QUEUE_URL': self.props.transaction_queue.queue.queue_url,
                 'INVALIDATION_QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
+                'DEDUPLICATION_QUEUE_URL': self.props.deduplication_queue.queue.queue_url,
                 'TRANSACTION_DEAD_LETTER_QUEUE_URL': self.props.transaction_queue.dead_letter_queue.queue_url,
                 'INVALIDATION_DEAD_LETTER_QUEUE_URL': self.props.invalidation_queue.dead_letter_queue.queue_url,
+                'DEDUPLICATION_DEAD_LETTER_QUEUE_URL': self.props.deduplication_queue.dead_letter_queue.queue_url,
                 'UPLOAD_USER_ACCESS_KEYS_SECRET_ARN': self.props.existing_resources.upload_igvf_files_user_access_keys.secret.secret_arn,
                 'RESTRICTED_UPLOAD_USER_ACCESS_KEYS_SECRET_ARN': self.props.existing_resources.upload_igvf_restricted_files_user_access_keys.secret.secret_arn,
                 'APPCONFIG_APPLICATION': self.props.feature_flag_service.application.name,
@@ -309,6 +315,11 @@ class Backend(Construct):
             self.fargate_service.task_definition.task_role
         )
 
+    def _allow_task_to_send_messages_to_deduplication_queue(self) -> None:
+        self.props.deduplication_queue.queue.grant_send_messages(
+            self.fargate_service.task_definition.task_role
+        )
+
     def _allow_task_to_send_messages_to_transaction_dead_letter_queue(self) -> None:
         self.props.transaction_queue.dead_letter_queue.grant_send_messages(
             self.fargate_service.task_definition.task_role
@@ -316,6 +327,11 @@ class Backend(Construct):
 
     def _allow_task_to_send_messages_to_invalidation_dead_letter_queue(self) -> None:
         self.props.invalidation_queue.dead_letter_queue.grant_send_messages(
+            self.fargate_service.task_definition.task_role
+        )
+
+    def _allow_task_to_send_messages_to_deduplication_dead_letter_queue(self) -> None:
+        self.props.deduplication_queue.dead_letter_queue.grant_send_messages(
             self.fargate_service.task_definition.task_role
         )
 
