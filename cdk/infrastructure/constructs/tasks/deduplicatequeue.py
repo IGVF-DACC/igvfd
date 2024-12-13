@@ -27,6 +27,7 @@ from infrastructure.events.naming import get_event_source_from_config
 from infrastructure.constructs.existing.types import ExistingResources
 
 from infrastructure.constructs.queue import InvalidationQueue
+from infrastructure.constructs.queue import DeduplicationQueue
 
 from typing import Any
 
@@ -39,6 +40,7 @@ class DeduplicateInvalidationQueueProps:
     existing_resources: ExistingResources
     cluster: ICluster
     invalidation_queue: InvalidationQueue
+    deduplication_queue: DeduplicationQueue
     number_of_workers: int
     minutes_to_wait_between_runs: int
     cpu: int
@@ -69,6 +71,7 @@ class DeduplicateInvalidationQueue(Construct):
         self._define_log_driver_for_application_container()
         self._define_scheduled_fargate_task()
         self._allow_task_to_consume_messages_from_invalidation_queue()
+        self._allow_task_to_consume_messages_from_deduplication_queue()
         self._define_manual_event_rule()
 
     def _define_event_source(self) -> None:
@@ -99,6 +102,7 @@ class DeduplicateInvalidationQueue(Construct):
                 image=self.application_image,
                 environment={
                     'QUEUE_URL': self.props.invalidation_queue.queue.queue_url,
+                    'STORAGE_QUEUE_URL': self.props.deduplication_queue.queue.queue_url,
                     'NUM_WORKERS': f'{self.props.number_of_workers}',
                 },
                 log_driver=self.application_log_driver,
@@ -118,6 +122,11 @@ class DeduplicateInvalidationQueue(Construct):
 
     def _allow_task_to_consume_messages_from_invalidation_queue(self) -> None:
         self.props.invalidation_queue.queue.grant_consume_messages(
+            self.scheduled_fargate_task.task_definition.task_role
+        )
+
+    def _allow_task_to_consume_messages_from_deduplication_queue(self) -> None:
+        self.props.deduplication_queue.queue.grant_consume_messages(
             self.scheduled_fargate_task.task_definition.task_role
         )
 
