@@ -100,6 +100,7 @@ class BackendStack(cdk.Stack):
                 cluster=self.backend.fargate_service.cluster,
                 transaction_queue=self.transaction_queue,
                 invalidation_queue=self.invalidation_queue,
+                deduplication_queue=self.deduplication_queue,
                 opensearch_multiplexer=opensearch_multiplexer,
                 use_opensearch_named=self.backend.props.write_to_opensearch_named,
                 backend_url=f'https://{self.backend.domain_name}',
