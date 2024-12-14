@@ -15,6 +15,7 @@ from infrastructure.constructs.indexer import Indexer
 from infrastructure.constructs.queue import QueueProps
 from infrastructure.constructs.queue import TransactionQueue
 from infrastructure.constructs.queue import InvalidationQueue
+from infrastructure.constructs.queue import DeduplicationQueue
 
 from infrastructure.constructs.flag import FeatureFlagServiceProps
 from infrastructure.constructs.flag import FeatureFlagService
@@ -60,6 +61,13 @@ class BackendStack(cdk.Stack):
                 existing_resources=self.existing_resources,
             ),
         )
+        self.deduplication_queue = DeduplicationQueue(
+            self,
+            'DeduplicationQueue',
+            props=QueueProps(
+                existing_resources=self.existing_resources,
+            ),
+        )
         self.feature_flag_service = FeatureFlagService(
             self,
             'FeatureFlags',
@@ -79,6 +87,7 @@ class BackendStack(cdk.Stack):
                 opensearch_multiplexer=opensearch_multiplexer,
                 transaction_queue=self.transaction_queue,
                 invalidation_queue=self.invalidation_queue,
+                deduplication_queue=self.deduplication_queue,
                 feature_flag_service=self.feature_flag_service,
             )
         )

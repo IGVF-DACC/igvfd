@@ -27,6 +27,7 @@ from infrastructure.constructs.opensearch import Opensearch
 
 from infrastructure.constructs.queue import TransactionQueue
 from infrastructure.constructs.queue import InvalidationQueue
+from infrastructure.constructs.queue import DeduplicationQueue
 
 from infrastructure.constructs.tasks.deduplicatequeue import DeduplicateInvalidationQueue
 from infrastructure.constructs.tasks.deduplicatequeue import DeduplicateInvalidationQueueProps
@@ -98,6 +99,7 @@ class IndexerProps:
     cluster: ICluster
     transaction_queue: TransactionQueue
     invalidation_queue: InvalidationQueue
+    deduplication_queue: DeduplicationQueue
     opensearch_multiplexer: Multiplexer
     use_opensearch_named: str
     backend_url: str
@@ -293,6 +295,7 @@ class Indexer(Construct):
                 existing_resources=self.props.existing_resources,
                 cluster=self.props.cluster,
                 invalidation_queue=self.props.invalidation_queue,
+                deduplication_queue=self.props.deduplication_queue,
                 number_of_workers=100,
                 minutes_to_wait_between_runs=60,
                 cpu=1024,

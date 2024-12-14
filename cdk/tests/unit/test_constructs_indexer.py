@@ -10,6 +10,7 @@ def test_constructs_indexer_initialize_indexer(
         application_load_balanced_fargate_service,
         transaction_queue,
         invalidation_queue,
+        deduplication_queue,
         opensearch_multiplexer,
 ):
     from infrastructure.constructs.indexer import InvalidationServiceProps
@@ -25,6 +26,7 @@ def test_constructs_indexer_initialize_indexer(
             cluster=application_load_balanced_fargate_service.cluster,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
+            deduplication_queue=deduplication_queue,
             opensearch_multiplexer=opensearch_multiplexer,
             use_opensearch_named='Opensearch',
             backend_url='some-url.test',
@@ -41,7 +43,7 @@ def test_constructs_indexer_initialize_indexer(
     assert isinstance(indexer, Indexer)
     template.resource_count_is(
         'AWS::SQS::Queue',
-        4,
+        6,
     )
     template.has_resource_properties(
         'AWS::SQS::Queue',
@@ -65,6 +67,21 @@ def test_constructs_indexer_initialize_indexer(
                 'deadLetterTargetArn': {
                     'Fn::GetAtt': [
                         'InvalidationQueueDeadLetterQueueFE5C594E',
+                        'Arn'
+                    ]
+                },
+                'maxReceiveCount': 10
+            },
+            'VisibilityTimeout': 120
+        }
+    )
+    template.has_resource_properties(
+        'AWS::SQS::Queue',
+        {
+            'RedrivePolicy': {
+                'deadLetterTargetArn': {
+                    'Fn::GetAtt': [
+                        'DeduplicationQueueDeadLetterQueueC5D62AD6',
                         'Arn'
                     ]
                 },
@@ -427,7 +444,7 @@ def test_constructs_indexer_initialize_indexer(
     )
     template.resource_count_is(
         'AWS::CloudWatch::Alarm',
-        18
+        20
     )
     cpu_scaling_resources = template.find_resources(
         'AWS::ApplicationAutoScaling::ScalingPolicy',
@@ -473,6 +490,7 @@ def test_constructs_indexer_indexer_match_snapshot(
     application_load_balanced_fargate_service,
     transaction_queue,
     invalidation_queue,
+    deduplication_queue,
     opensearch_multiplexer,
     snapshot,
 ):
@@ -490,6 +508,7 @@ def test_constructs_indexer_indexer_match_snapshot(
             cluster=application_load_balanced_fargate_service.cluster,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
+            deduplication_queue=deduplication_queue,
             opensearch_multiplexer=opensearch_multiplexer,
             use_opensearch_named='Opensearch',
             backend_url='some-url.test',
