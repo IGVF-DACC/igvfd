@@ -956,6 +956,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
         opensearch_multiplexer,
         transaction_queue,
         invalidation_queue,
+        deduplication_queue,
         feature_flag_service,
 ):
     from infrastructure.config import Config
@@ -996,6 +997,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
             opensearch_multiplexer=opensearch_multiplexer,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
+            deduplication_queue=deduplication_queue,
             feature_flag_service=feature_flag_service,
             cpu=2048,
             memory_limit_mib=4096,
@@ -1031,6 +1033,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
             opensearch_multiplexer=opensearch_multiplexer,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
+            deduplication_queue=deduplication_queue,
             feature_flag_service=feature_flag_service,
             cpu=2048,
             memory_limit_mib=4096,

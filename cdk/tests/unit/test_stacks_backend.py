@@ -154,7 +154,7 @@ def test_stacks_backend_initialize_backend_stack(config):
     )
     template.resource_count_is(
         'AWS::SQS::Queue',
-        4
+        6
     )
     template.resource_count_is(
         'AWS::ECS::Service',
