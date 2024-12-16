@@ -70,8 +70,8 @@ class DeduplicateInvalidationQueue(Construct):
         self._define_docker_asset()
         self._define_log_driver_for_application_container()
         self._define_scheduled_fargate_task()
-        self._allow_task_to_consume_messages_from_invalidation_queue()
-        self._allow_task_to_consume_messages_from_deduplication_queue()
+        self._allow_task_to_read_write_from_invalidation_queue()
+        self._allow_task_to_read_write_from_deduplication_queue()
         self._define_manual_event_rule()
 
     def _define_event_source(self) -> None:
@@ -120,13 +120,19 @@ class DeduplicateInvalidationQueue(Construct):
             ),
         )
 
-    def _allow_task_to_consume_messages_from_invalidation_queue(self) -> None:
+    def _allow_task_to_read_write_from_invalidation_queue(self) -> None:
         self.props.invalidation_queue.queue.grant_consume_messages(
             self.scheduled_fargate_task.task_definition.task_role
         )
+        self.props.invalidation_queue.queue.grant_send_messages(
+            self.scheduled_fargate_task.task_definition.task_role
+        )
 
-    def _allow_task_to_consume_messages_from_deduplication_queue(self) -> None:
+    def _allow_task_to_read_write_from_deduplication_queue(self) -> None:
         self.props.deduplication_queue.queue.grant_consume_messages(
+            self.scheduled_fargate_task.task_definition.task_role
+        )
+        self.props.deduplication_queue.queue.grant_send_messages(
             self.scheduled_fargate_task.task_definition.task_role
         )
 

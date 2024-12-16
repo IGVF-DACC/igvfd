@@ -540,11 +540,39 @@
                         },
                         {
                             "Action": [
+                                "sqs:SendMessage",
+                                "sqs:GetQueueAttributes",
+                                "sqs:GetQueueUrl"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "InvalidationQueue8614463D",
+                                    "Arn"
+                                ]
+                            }
+                        },
+                        {
+                            "Action": [
                                 "sqs:ReceiveMessage",
                                 "sqs:ChangeMessageVisibility",
                                 "sqs:GetQueueUrl",
                                 "sqs:DeleteMessage",
                                 "sqs:GetQueueAttributes"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "DeduplicationQueue199CF29F",
+                                    "Arn"
+                                ]
+                            }
+                        },
+                        {
+                            "Action": [
+                                "sqs:SendMessage",
+                                "sqs:GetQueueAttributes",
+                                "sqs:GetQueueUrl"
                             ],
                             "Effect": "Allow",
                             "Resource": {
