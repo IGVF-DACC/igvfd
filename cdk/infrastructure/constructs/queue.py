@@ -120,3 +120,33 @@ class InvalidationQueue(QueueBase):
                 oldest_message_in_seconds_threshold=86400,
             ),
         )
+
+
+class DeduplicationQueue(QueueBase):
+
+    def __init__(
+            self,
+            scope: Construct,
+            construct_id: str,
+            *,
+            props: QueueProps,
+            **kwargs: Any
+    ) -> None:
+        super().__init__(
+            scope,
+            construct_id,
+            props=props,
+            **kwargs,
+        )
+
+    def _add_alarms(self) -> None:
+        QueueAlarms(
+            self,
+            'DeduplicationQueueAlarms',
+            props=QueueAlarmsProps(
+                existing_resources=self.props.existing_resources,
+                queue=self.queue,
+                dead_letter_queue=self.dead_letter_queue,
+                oldest_message_in_seconds_threshold=86400,
+            ),
+        )

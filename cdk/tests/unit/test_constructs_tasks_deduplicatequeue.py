@@ -11,6 +11,7 @@ def test_constructs_tasks_deduplicatequeue(
     existing_resources,
     application_load_balanced_fargate_service,
     invalidation_queue,
+    deduplication_queue,
     snapshot,
 ):
     from infrastructure.constructs.tasks.deduplicatequeue import DeduplicateInvalidationQueue
@@ -23,6 +24,7 @@ def test_constructs_tasks_deduplicatequeue(
             existing_resources=existing_resources,
             cluster=application_load_balanced_fargate_service.cluster,
             invalidation_queue=invalidation_queue,
+            deduplication_queue=deduplication_queue,
             number_of_workers=50,
             minutes_to_wait_between_runs=25,
             cpu=512,

@@ -33,6 +33,97 @@
         }
     },
     "Resources": {
+        "DeduplicationQueue199CF29F": {
+            "DeletionPolicy": "Delete",
+            "Properties": {
+                "RedrivePolicy": {
+                    "deadLetterTargetArn": {
+                        "Fn::GetAtt": [
+                            "DeduplicationQueueDeadLetterQueueC5D62AD6",
+                            "Arn"
+                        ]
+                    },
+                    "maxReceiveCount": 10
+                },
+                "VisibilityTimeout": 120
+            },
+            "Type": "AWS::SQS::Queue",
+            "UpdateReplacePolicy": "Delete"
+        },
+        "DeduplicationQueueDeadLetterQueueC5D62AD6": {
+            "DeletionPolicy": "Delete",
+            "Properties": {
+                "MessageRetentionPeriod": 1209600
+            },
+            "Type": "AWS::SQS::Queue",
+            "UpdateReplacePolicy": "Delete"
+        },
+        "DeduplicationQueueDeduplicationQueueAlarmsDeadLetterQueueHasMessagesAlarmDEF79C23": {
+            "Properties": {
+                "AlarmActions": [
+                    {
+                        "Ref": "TestTopic339EC197"
+                    }
+                ],
+                "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+                "Dimensions": [
+                    {
+                        "Name": "QueueName",
+                        "Value": {
+                            "Fn::GetAtt": [
+                                "DeduplicationQueueDeadLetterQueueC5D62AD6",
+                                "QueueName"
+                            ]
+                        }
+                    }
+                ],
+                "EvaluationPeriods": 1,
+                "MetricName": "ApproximateNumberOfMessagesVisible",
+                "Namespace": "AWS/SQS",
+                "OKActions": [
+                    {
+                        "Ref": "TestTopic339EC197"
+                    }
+                ],
+                "Period": 300,
+                "Statistic": "Maximum",
+                "Threshold": 1
+            },
+            "Type": "AWS::CloudWatch::Alarm"
+        },
+        "DeduplicationQueueDeduplicationQueueAlarmsQueueHasOldMessagesAlarm2251106E": {
+            "Properties": {
+                "AlarmActions": [
+                    {
+                        "Ref": "TestTopic339EC197"
+                    }
+                ],
+                "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+                "Dimensions": [
+                    {
+                        "Name": "QueueName",
+                        "Value": {
+                            "Fn::GetAtt": [
+                                "DeduplicationQueue199CF29F",
+                                "QueueName"
+                            ]
+                        }
+                    }
+                ],
+                "EvaluationPeriods": 1,
+                "MetricName": "ApproximateAgeOfOldestMessage",
+                "Namespace": "AWS/SQS",
+                "OKActions": [
+                    {
+                        "Ref": "TestTopic339EC197"
+                    }
+                ],
+                "Period": 300,
+                "Statistic": "Maximum",
+                "Threshold": 86400
+            },
+            "Type": "AWS::CloudWatch::Alarm"
+        },
         "DeduplicatorRunDeduplicateInvalidationQueueB8C28A49": {
             "Properties": {
                 "EventPattern": {
@@ -158,13 +249,19 @@
                                 }
                             },
                             {
+                                "Name": "STORAGE_QUEUE_URL",
+                                "Value": {
+                                    "Ref": "DeduplicationQueue199CF29F"
+                                }
+                            },
+                            {
                                 "Name": "NUM_WORKERS",
                                 "Value": "50"
                             }
                         ],
                         "Essential": true,
                         "Image": {
-                            "Fn::Sub": "${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:a827b71c585b071ab4fecd5a1bc9b8fcd8f90d6dc80e3d026fc84c02b7a2b2d3"
+                            "Fn::Sub": "${AWS::AccountId}.dkr.ecr.${AWS::Region}.${AWS::URLSuffix}/cdk-hnb659fds-container-assets-${AWS::AccountId}-${AWS::Region}:b64424101f6719672add2ffa1e7e04bdb394d7015003ad99b4ebf5cc89e8ce07"
                         },
                         "LogConfiguration": {
                             "LogDriver": "awslogs",
@@ -437,6 +534,50 @@
                             "Resource": {
                                 "Fn::GetAtt": [
                                     "InvalidationQueue8614463D",
+                                    "Arn"
+                                ]
+                            }
+                        },
+                        {
+                            "Action": [
+                                "sqs:SendMessage",
+                                "sqs:GetQueueAttributes",
+                                "sqs:GetQueueUrl"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "InvalidationQueue8614463D",
+                                    "Arn"
+                                ]
+                            }
+                        },
+                        {
+                            "Action": [
+                                "sqs:ReceiveMessage",
+                                "sqs:ChangeMessageVisibility",
+                                "sqs:GetQueueUrl",
+                                "sqs:DeleteMessage",
+                                "sqs:GetQueueAttributes"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "DeduplicationQueue199CF29F",
+                                    "Arn"
+                                ]
+                            }
+                        },
+                        {
+                            "Action": [
+                                "sqs:SendMessage",
+                                "sqs:GetQueueAttributes",
+                                "sqs:GetQueueUrl"
+                            ],
+                            "Effect": "Allow",
+                            "Resource": {
+                                "Fn::GetAtt": [
+                                    "DeduplicationQueue199CF29F",
                                     "Arn"
                                 ]
                             }

@@ -84,3 +84,25 @@ def test_constructs_queue_initialize_invalidation_queue(stack, existing_resource
         'AWS::CloudWatch::Alarm',
         2
     )
+
+
+def test_constructs_queue_initialize_deduplication_queue(stack, existing_resources):
+    from infrastructure.constructs.queue import QueueProps
+    from infrastructure.constructs.queue import DeduplicationQueue
+    deduplication_queue = DeduplicationQueue(
+        stack,
+        'DeduplicationQueue',
+        props=QueueProps(
+            existing_resources=existing_resources,
+        ),
+    )
+    assert isinstance(deduplication_queue, DeduplicationQueue)
+    template = Template.from_stack(stack)
+    template.resource_count_is(
+        'AWS::SQS::Queue',
+        2
+    )
+    template.resource_count_is(
+        'AWS::CloudWatch::Alarm',
+        2
+    )

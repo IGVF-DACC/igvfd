@@ -453,6 +453,19 @@ def invalidation_queue(stack, existing_resources):
 
 
 @pytest.fixture
+def deduplication_queue(stack, existing_resources):
+    from infrastructure.constructs.queue import QueueProps
+    from infrastructure.constructs.queue import DeduplicationQueue
+    return DeduplicationQueue(
+        stack,
+        'DeduplicationQueue',
+        props=QueueProps(
+            existing_resources=existing_resources,
+        ),
+    )
+
+
+@pytest.fixture
 def feature_flag_service(stack, config):
     from infrastructure.constructs.flag import FeatureFlagServiceProps
     from infrastructure.constructs.flag import FeatureFlagService

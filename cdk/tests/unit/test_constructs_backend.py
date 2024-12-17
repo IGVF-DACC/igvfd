@@ -13,6 +13,7 @@ def test_constructs_backend_initialize_backend_construct(
         opensearch_multiplexer,
         transaction_queue,
         invalidation_queue,
+        deduplication_queue,
         feature_flag_service,
 ):
     from infrastructure.constructs.backend import Backend
@@ -53,6 +54,7 @@ def test_constructs_backend_initialize_backend_construct(
             opensearch_multiplexer=opensearch_multiplexer,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
+            deduplication_queue=deduplication_queue,
             feature_flag_service=feature_flag_service,
             cpu=2048,
             memory_limit_mib=4096,
@@ -240,6 +242,12 @@ def test_constructs_backend_initialize_backend_construct(
                             }
                         },
                         {
+                            'Name': 'DEDUPLICATION_QUEUE_URL',
+                            'Value': {
+                                'Ref': 'DeduplicationQueue199CF29F'
+                            }
+                        },
+                        {
                             'Name': 'TRANSACTION_DEAD_LETTER_QUEUE_URL',
                             'Value': {
                                 'Ref': 'TransactionQueueDeadLetterQueueDA53F160'
@@ -249,6 +257,12 @@ def test_constructs_backend_initialize_backend_construct(
                             'Name': 'INVALIDATION_DEAD_LETTER_QUEUE_URL',
                             'Value': {
                                 'Ref': 'InvalidationQueueDeadLetterQueueFE5C594E'
+                            }
+                        },
+                        {
+                            'Name': 'DEDUPLICATION_DEAD_LETTER_QUEUE_URL',
+                            'Value': {
+                                'Ref': 'DeduplicationQueueDeadLetterQueueC5D62AD6'
                             }
                         },
                         {
@@ -628,6 +642,20 @@ def test_constructs_backend_initialize_backend_construct(
                         'Effect': 'Allow',
                         'Resource': {
                             'Fn::GetAtt': [
+                                'DeduplicationQueue199CF29F',
+                                'Arn'
+                            ]
+                        }
+                    },
+                    {
+                        'Action': [
+                            'sqs:SendMessage',
+                            'sqs:GetQueueAttributes',
+                            'sqs:GetQueueUrl'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
                                 'TransactionQueueDeadLetterQueueDA53F160',
                                 'Arn'
                             ]
@@ -643,6 +671,20 @@ def test_constructs_backend_initialize_backend_construct(
                         'Resource': {
                             'Fn::GetAtt': [
                                 'InvalidationQueueDeadLetterQueueFE5C594E',
+                                'Arn'
+                            ]
+                        }
+                    },
+                    {
+                        'Action': [
+                            'sqs:SendMessage',
+                            'sqs:GetQueueAttributes',
+                            'sqs:GetQueueUrl'
+                        ],
+                        'Effect': 'Allow',
+                        'Resource': {
+                            'Fn::GetAtt': [
+                                'DeduplicationQueueDeadLetterQueueC5D62AD6',
                                 'Arn'
                             ]
                         }
@@ -914,6 +956,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
         opensearch_multiplexer,
         transaction_queue,
         invalidation_queue,
+        deduplication_queue,
         feature_flag_service,
 ):
     from infrastructure.config import Config
@@ -954,6 +997,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
             opensearch_multiplexer=opensearch_multiplexer,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
+            deduplication_queue=deduplication_queue,
             feature_flag_service=feature_flag_service,
             cpu=2048,
             memory_limit_mib=4096,
@@ -989,6 +1033,7 @@ def test_constructs_backend_backend_construct_define_domain_name(
             opensearch_multiplexer=opensearch_multiplexer,
             transaction_queue=transaction_queue,
             invalidation_queue=invalidation_queue,
+            deduplication_queue=deduplication_queue,
             feature_flag_service=feature_flag_service,
             cpu=2048,
             memory_limit_mib=4096,

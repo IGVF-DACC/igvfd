@@ -12,7 +12,12 @@ INVALIDATION_DLQ_ARN=$(awslocal sqs get-queue-attributes --queue-url $INVALIDATI
 
 echo $INVALIDATION_DLQ_URL
 
-echo 'Creating SQS'
+DEDUPLICATION_DLQ_URL=$(awslocal sqs create-queue --queue-name 'deduplication-dead-letter-queue' --query 'QueueUrl' --output text)
+DEDUPLICATION_DLQ_ARN=$(awslocal sqs get-queue-attributes --queue-url $DEDUPLICATION_DLQ_URL --attribute-names QueueArn --query 'Attributes.QueueArn' --output text)
 
+echo $DEDUPLICATION_DLQ_URL
+
+echo 'Creating SQS'
 awslocal sqs create-queue --queue-name transaction-queue --attributes '{"RedrivePolicy": "{\"deadLetterTargetArn\":\"'$TRANSACTION_DLQ_ARN'\",\"maxReceiveCount\":\"3\"}", "VisibilityTimeout": "60"}'
 awslocal sqs create-queue --queue-name invalidation-queue --attributes '{"RedrivePolicy": "{\"deadLetterTargetArn\":\"'$INVALIDATION_DLQ_ARN'\",\"maxReceiveCount\":\"3\"}", "VisibilityTimeout": "120"}'
+awslocal sqs create-queue --queue-name deduplication-queue --attributes '{"RedrivePolicy": "{\"deadLetterTargetArn\":\"'$DEDUPLICATION_DLQ_ARN'\",\"maxReceiveCount\":\"3\"}", "VisibilityTimeout": "600"}'
