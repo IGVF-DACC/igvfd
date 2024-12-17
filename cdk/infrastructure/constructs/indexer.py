@@ -296,7 +296,7 @@ class Indexer(Construct):
                 cluster=self.props.cluster,
                 invalidation_queue=self.props.invalidation_queue,
                 deduplication_queue=self.props.deduplication_queue,
-                number_of_workers=160,
+                number_of_workers=120,
                 minutes_to_wait_between_runs=60,
                 cpu=1024,
                 memory_limit_mib=2048,
