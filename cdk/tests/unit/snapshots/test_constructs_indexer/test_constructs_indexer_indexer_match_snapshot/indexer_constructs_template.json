@@ -516,7 +516,7 @@
                             },
                             {
                                 "Name": "NUM_WORKERS",
-                                "Value": "100"
+                                "Value": "160"
                             }
                         ],
                         "Essential": true,
