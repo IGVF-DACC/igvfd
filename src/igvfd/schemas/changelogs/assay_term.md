@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Extend `preferred_assay_titles` enum list to include `electroporated MPRA`.
 * Extend `preferred_assay_titles` enum list to include `varACCESS`.
 
 ### Schema version 9
