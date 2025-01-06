@@ -1,6 +1,6 @@
 {
-    "hash": "8c906179a7d797fa8dd5cd1ec859a8e1",
-    "index_name": "multiplexed_sample_8c906179",
+    "hash": "89ef91693c2990c91c2588f32cd0cb78",
+    "index_name": "multiplexed_sample_89ef9169",
     "item_type": "multiplexed_sample",
     "mapping": {
         "dynamic_templates": [
@@ -1091,6 +1091,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

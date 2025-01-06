@@ -1112,3 +1112,103 @@ def test_audit_missing_read_names(
         error['category'] != 'inconsistent read names'
         for error in res.json['audit'].get('ERROR', [])
     )
+
+
+def test_audit_onlist(testapp, measurement_set_one_onlist, measurement_set, assay_term_scrna, assay_term_mpra):
+    # Check if the correct measurement set with onlist info is audit-free
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing barcode onlist'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Patch a correct single cell measurement set to be a non-single cell to see if no onlist needed audit shows
+    testapp.patch_json(
+        measurement_set_one_onlist['@id'],
+        {
+            'assay_term': assay_term_mpra['@id']
+        }
+    )
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected barcode onlist'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Check if a non-scRNAseq MeaSet without onlist files and method will trigger warnings.
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing barcode onlist'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Patch the basic MeaSet to be scRNAseq without an onlist method or files to trigger audit
+    testapp.patch_json(
+        measurement_set['@id'],
+        {
+            'assay_term': assay_term_scrna['@id'],
+            'preferred_assay_title': 'SHARE-seq'
+        }
+    )
+    res = testapp.get(measurement_set['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing barcode onlist'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+
+def test_audit_inconsistent_barcode_onlist(testapp, measurement_set_one_onlist, measurement_set_two_onlists, tabular_file_onlist_1, tabular_file_onlist_2):
+    # Check if the measurement set fixture with one file and no combination method is audit-free
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent barcode onlist'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Check if the measurement set fixture with two file and combination method is audit-free
+    res = testapp.get(measurement_set_two_onlists['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'inconsistent barcode onlist'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Add another onlist file to a MeaSet that is no-combination for onlist method.
+    testapp.patch_json(
+        measurement_set_one_onlist['@id'],
+        {
+            'onlist_files': [tabular_file_onlist_1['@id'], tabular_file_onlist_2['@id']]
+        }
+    )
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent barcode onlist'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Remove an onlist file to a MeaSet with a combination onlist method.
+    testapp.patch_json(
+        measurement_set_two_onlists['@id'],
+        {
+            'onlist_files': [tabular_file_onlist_1['@id']]
+        }
+    )
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent barcode onlist'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+
+
+def test_audit_unexpected_onlist_files(testapp, measurement_set_one_onlist, tabular_file_onlist_1):
+    # Check if the measurement set fixture with one file and no combination method is audit-free
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'unexpected onlist files'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    # Check if other content type will trigger warning
+    testapp.patch_json(
+        tabular_file_onlist_1['@id'],
+        {
+            'content_type': 'barcode to element mapping'
+        }
+    )
+    res = testapp.get(measurement_set_one_onlist['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'unexpected onlist files'
+        for error in res.json['audit'].get('WARNING', [])
+    )

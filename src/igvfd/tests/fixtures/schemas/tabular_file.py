@@ -16,6 +16,34 @@ def tabular_file(testapp, lab, award, principal_analysis_set):
 
 
 @pytest.fixture
+def tabular_file_onlist_1(testapp, lab, award, curated_set_barcode):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': 'b262f3f0ee029725169a63e0dcfb9b3b',
+        'file_format': 'tsv',
+        'file_set': curated_set_barcode['@id'],
+        'content_type': 'barcode onlist',
+        'controlled_access': False
+    }
+    return testapp.post_json('/tabular_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
+def tabular_file_onlist_2(testapp, lab, award, curated_set_barcode):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'md5sum': '4de470e4b4a86b9a57aa3cc8820f4d33',
+        'file_format': 'tsv',
+        'file_set': curated_set_barcode['@id'],
+        'content_type': 'barcode onlist',
+        'controlled_access': False
+    }
+    return testapp.post_json('/tabular_file', item, status=201).json['@graph'][0]
+
+
+@pytest.fixture
 def tabular_file_v1(tabular_file):
     item = tabular_file.copy()
     item.update({

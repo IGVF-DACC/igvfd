@@ -49,7 +49,19 @@
         "$merge": [
             "file_set.json#/dependentSchemas",
             "shared_dependencies.json#/accession_status"
-        ]
+        ],
+        "onlist_files": {
+            "comment": "Specification of barcode onlist files requires a barcode onlist method.",
+            "required": [
+                "onlist_method"
+            ]
+        },
+        "onlist_method": {
+            "comment": "Specification of an onlist method requires barcode onlist files.",
+            "required": [
+                "onlist_files"
+            ]
+        }
     },
     "properties": {
         "schema_version": {
@@ -295,6 +307,41 @@
             "submissionExample": {
                 "appscript": "[\"/phenotype-terms/GO_0018214/\"]",
                 "igvf_utils": "/phenotype-terms/GO_0018214/"
+            }
+        },
+        "onlist_method": {
+            "title": "Onlist Method",
+            "description": "The method by which the onlist files will be combined by the seqspec onlist tool to generate the final barcode inclusion list for the single cell uniform pipeline.",
+            "type": "string",
+            "enum": [
+                "no combination",
+                "product",
+                "multi"
+            ],
+            "enum_descriptions": {
+                "no combination": "The seqspec yaml files only have one barcode region and no onlist combination needed.",
+                "product": "The seqspec onlist tool will generate a Cartesian product of barcodes included in all barcode regions' onlist files.",
+                "multi": "The seqspec onlist tool will generate a Multi product of barcodes included in all barcode regions' onlist files."
+            },
+            "submissionExample": {
+                "appscript": "product",
+                "igvf_utils": "product"
+            }
+        },
+        "onlist_files": {
+            "title": "Onlist Files",
+            "description": "The barcode region onlist files listed in associated seqspec yaml files.",
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+                "title": "Onlist File",
+                "type": "string",
+                "linkTo": "TabularFile"
+            },
+            "submissionExample": {
+                "appscript": "[\"/tabular-files/IGVFFI7587TJLC/\"]",
+                "igvf_utils": "/tabular-files/IGVFFI7587TJLC/"
             }
         }
     },

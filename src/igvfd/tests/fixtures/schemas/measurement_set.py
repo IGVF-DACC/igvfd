@@ -69,6 +69,36 @@ def measurement_set_mpra(testapp, lab, award, assay_term_mpra, primary_cell):
 
 
 @pytest.fixture
+def measurement_set_one_onlist(testapp, lab, award, assay_term_scrna, tissue, tabular_file_onlist_1):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_scrna['@id'],
+        'samples': [tissue['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_title': 'scRNA-seq',
+        'onlist_files': [tabular_file_onlist_1['@id']],
+        'onlist_method': 'no combination'
+    }
+    return testapp.post_json('/measurement_set', item).json['@graph'][0]
+
+
+@pytest.fixture
+def measurement_set_two_onlists(testapp, lab, award, assay_term_scrna, tissue, tabular_file_onlist_1, tabular_file_onlist_2):
+    item = {
+        'award': award['@id'],
+        'lab': lab['@id'],
+        'assay_term': assay_term_scrna['@id'],
+        'samples': [tissue['@id']],
+        'file_set_type': 'experimental data',
+        'preferred_assay_title': 'scRNA-seq',
+        'onlist_files': [tabular_file_onlist_1['@id'], tabular_file_onlist_2['@id']],
+        'onlist_method': 'product'
+    }
+    return testapp.post_json('/measurement_set', item).json['@graph'][0]
+
+
+@pytest.fixture
 def measurement_set_v1(measurement_set, in_vitro_cell_line, human_donor):
     item = measurement_set.copy()
     item.update({

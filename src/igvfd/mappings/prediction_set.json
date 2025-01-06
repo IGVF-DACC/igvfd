@@ -1,6 +1,6 @@
 {
-    "hash": "9355c377eac3238473eaab3d0d4843d8",
-    "index_name": "prediction_set_9355c377",
+    "hash": "23c90e0a6b9b2d7e87afd8c2c97560ff",
+    "index_name": "prediction_set_23c90e0a",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -549,6 +549,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

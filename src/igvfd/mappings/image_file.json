@@ -1,6 +1,6 @@
 {
-    "hash": "8f9732311e0fb5f35a341b274efdcf4f",
-    "index_name": "image_file_8f973231",
+    "hash": "138980b1efbfce89d956069ca912ecd8",
+    "index_name": "image_file_138980b1",
     "item_type": "image_file",
     "mapping": {
         "dynamic_templates": [
@@ -434,6 +434,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

@@ -1,6 +1,6 @@
 {
-    "hash": "6d6bf00c0db7ba699a5ce7cd887e77ec",
-    "index_name": "configuration_file_6d6bf00c",
+    "hash": "f2048fc95dcc9fcb55508269dac9d91b",
+    "index_name": "configuration_file_f2048fc9",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -434,6 +434,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

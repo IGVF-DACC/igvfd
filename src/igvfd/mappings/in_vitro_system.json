@@ -1,6 +1,6 @@
 {
-    "hash": "1b661e6013ce2819f267a378bc51073c",
-    "index_name": "in_vitro_system_1b661e60",
+    "hash": "876ea76a1a569f6619585f092822f56d",
+    "index_name": "in_vitro_system_876ea76a",
     "item_type": "in_vitro_system",
     "mapping": {
         "dynamic_templates": [
@@ -1224,6 +1224,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

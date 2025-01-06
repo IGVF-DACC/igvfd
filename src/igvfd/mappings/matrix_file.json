@@ -1,6 +1,6 @@
 {
-    "hash": "b7ef9a1b268df6b6baceb0a64350c1ab",
-    "index_name": "matrix_file_b7ef9a1b",
+    "hash": "50902b79f1d76c8ea2c749cbbcdb20aa",
+    "index_name": "matrix_file_50902b79",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -437,6 +437,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"

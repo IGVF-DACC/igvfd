@@ -1,6 +1,6 @@
 {
-    "hash": "df6480cb7ae5e7a61ef40cf126a5b593",
-    "index_name": "auxiliary_set_df6480cb",
+    "hash": "21ed5b5f0487d8a6e6a22aa7a7c07586",
+    "index_name": "auxiliary_set_21ed5b5f",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -459,6 +459,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"
@@ -1158,6 +1164,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "preferred_assay_title": {
                                 "type": "keyword"

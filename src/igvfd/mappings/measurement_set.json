@@ -1,6 +1,6 @@
 {
-    "hash": "201b77751c04d5fd32969ab05b2578aa",
-    "index_name": "measurement_set_201b7775",
+    "hash": "30567c8cc4c32ee897fa298b6469657a",
+    "index_name": "measurement_set_30567c8c",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -644,6 +644,12 @@
                             "notes": {
                                 "type": "text"
                             },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
+                            },
                             "orf_list": {
                                 "type": "keyword"
                             },
@@ -942,6 +948,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "orf_list": {
                                 "type": "keyword"
@@ -1711,6 +1723,12 @@
                     "notes": {
                         "type": "text"
                     },
+                    "onlist_files": {
+                        "type": "keyword"
+                    },
+                    "onlist_method": {
+                        "type": "keyword"
+                    },
                     "preferred_assay_title": {
                         "copy_to": "_fuzzy",
                         "type": "keyword"
@@ -1935,6 +1953,12 @@
                             },
                             "notes": {
                                 "type": "text"
+                            },
+                            "onlist_files": {
+                                "type": "keyword"
+                            },
+                            "onlist_method": {
+                                "type": "keyword"
                             },
                             "preferred_assay_title": {
                                 "type": "keyword"

@@ -480,5 +480,26 @@
         "assay_term": "45f6baf1-fc25-4915-a43a-c3b083ba9f9c",
         "preferred_assay_title": "ONT dRNA",
         "file_set_type": "experimental data"
+    },
+    {
+        "aliases": [
+            "igvf:scRNA_measurement_set_with_onlist_1"
+        ],
+        "award": "1UM1HG012077-01",
+        "lab": "/labs/ali-mortazavi/",
+        "status": "released",
+        "release_timestamp": "2024-10-09T12:34:56Z",
+        "uuid": "5606b9d1-dece-4ed0-8612-9b42485892ce",
+        "samples": [
+            "/multiplexed-samples/IGVFSM0000MPXD/"
+        ],
+        "assay_term": "93b2cefa-9dfc-5e94-aa5e-faff044f46c1",
+        "preferred_assay_title": "scNT-seq2",
+        "file_set_type": "experimental data",
+        "onlist_method": "product",
+        "onlist_files": [
+            "igvf:barcode_onlist_1",
+            "igvf:barcode_onlist_2"
+        ]
     }
 ]
