@@ -51,6 +51,7 @@
             "type": "string",
             "enum": [
                 "10X Genomics",
+                "Element Biosciences",
                 "Illumina",
                 "Life Technologies",
                 "Oxford Nanopore Technologies",
