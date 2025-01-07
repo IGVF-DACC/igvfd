@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 21
 
+* Extend `biosample_qualifiers` enum list to include `calcified`.
 * Extend `status` enum list to include `preview`.
 * Extend `collections` enum list to include `VarChAMP`.
 * Add `biosample_qualifiers`.
