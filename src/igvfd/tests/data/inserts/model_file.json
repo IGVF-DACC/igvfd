@@ -73,5 +73,24 @@
         "release_timestamp": "2024-05-14T12:34:56Z",
         "file_set": "j-michael-cherry:barcodes_curated_set",
         "externally_hosted": false
+    },
+    {
+        "uuid": "12a83306-894e-417c-ab83-c7d79b44f12c",
+        "accession": "IGVFFI0001PTOR",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:model_file_in_pytorch_01"
+        ],
+        "md5sum": "8ca44b03278fd6968042d09a01f4eaf7",
+        "file_format": "pt",
+        "content_type": "SNP effect matrix",
+        "file_size": 7330,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-05-14T12:34:56Z",
+        "file_set": "j-michael-cherry:barcodes_curated_set",
+        "externally_hosted": false,
+        "submitted_file_name": "/Users/igvf/igvf_files/model_file_in_pytorch.pt"
     }
 ]

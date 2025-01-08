@@ -71,6 +71,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'pkl': 'pkl',
     'pod5': '.pod5',
     'png': '.png',
+    'pt': '.pt',
     'PWM': '.pwm',
     'sam': '.sam.gz',
     'sra': '.sra',

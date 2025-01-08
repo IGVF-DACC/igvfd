@@ -116,6 +116,7 @@
             "enum": [
                 "hdf5",
                 "json",
+                "pt",
                 "tar",
                 "tsv"
             ],
