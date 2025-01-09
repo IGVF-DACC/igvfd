@@ -1,6 +1,6 @@
 {
-    "hash": "1a28aaa582d875b7b70f28ab7df9f0d4",
-    "index_name": "analysis_set_1a28aaa5",
+    "hash": "c2164ecbd9042e7088eb86ee26f39278",
+    "index_name": "analysis_set_c2164ecb",
     "item_type": "analysis_set",
     "mapping": {
         "dynamic_templates": [
@@ -798,6 +798,9 @@
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
+                                "type": "keyword"
+                            },
+                            "checkfiles_version": {
                                 "type": "keyword"
                             },
                             "collections": {

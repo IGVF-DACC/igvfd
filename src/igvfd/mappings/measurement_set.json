@@ -1,6 +1,6 @@
 {
-    "hash": "91e91de17ce8da3a6817f3c6b6c8e75f",
-    "index_name": "measurement_set_91e91de1",
+    "hash": "9ce2a43a2fdd90f78153175d28d29293",
+    "index_name": "measurement_set_9ce2a43a",
     "item_type": "measurement_set",
     "mapping": {
         "dynamic_templates": [
@@ -1281,6 +1281,9 @@
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
+                                "type": "keyword"
+                            },
+                            "checkfiles_version": {
                                 "type": "keyword"
                             },
                             "collections": {

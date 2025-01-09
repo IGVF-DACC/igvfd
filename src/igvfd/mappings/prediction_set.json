@@ -1,6 +1,6 @@
 {
-    "hash": "f048c0268477555a7c02f7d851f4d600",
-    "index_name": "prediction_set_f048c026",
+    "hash": "e7a46592e0a458b40d0afa38e717e04a",
+    "index_name": "prediction_set_e7a46592",
     "item_type": "prediction_set",
     "mapping": {
         "dynamic_templates": [
@@ -884,6 +884,9 @@
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
+                            "checkfiles_version": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1203,6 +1206,9 @@
                             "cell_type_annotation": {
                                 "type": "keyword"
                             },
+                            "checkfiles_version": {
+                                "type": "keyword"
+                            },
                             "collections": {
                                 "type": "keyword"
                             },
@@ -1367,6 +1373,9 @@
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
+                                "type": "keyword"
+                            },
+                            "checkfiles_version": {
                                 "type": "keyword"
                             },
                             "collections": {

@@ -1,6 +1,6 @@
 {
-    "hash": "764330b3683b2c52b45fe352df8c417d",
-    "index_name": "reference_file_764330b3",
+    "hash": "8d744dff5e05900001e12844f7808a6f",
+    "index_name": "reference_file_8d744dff",
     "item_type": "reference_file",
     "mapping": {
         "dynamic_templates": [
@@ -240,6 +240,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "checkfiles_version": {
+                        "type": "keyword"
                     },
                     "collections": {
                         "type": "keyword"

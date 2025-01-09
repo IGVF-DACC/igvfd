@@ -1,6 +1,6 @@
 {
-    "hash": "a3ebfe413a1aac51276255946148ab6f",
-    "index_name": "configuration_file_a3ebfe41",
+    "hash": "6d6bf00c0db7ba699a5ce7cd887e77ec",
+    "index_name": "configuration_file_6d6bf00c",
     "item_type": "configuration_file",
     "mapping": {
         "dynamic_templates": [
@@ -234,6 +234,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "checkfiles_version": {
+                        "type": "keyword"
                     },
                     "collections": {
                         "type": "keyword"
