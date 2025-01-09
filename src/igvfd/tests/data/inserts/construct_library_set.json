@@ -207,5 +207,19 @@
         ],
         "average_guide_coverage": 223.23,
         "tiling_modality": "peak tiling"
+    },
+    {
+        "aliases": [
+            "igvf:starr_seq_library"
+        ],
+        "accession": "IGVFDS8888STAR",
+        "scope": "genome-wide",
+        "award": "HG012012",
+        "lab": "charles-gersbach",
+        "uuid": "29e97f7b-b701-460e-ba2d-ad5f4a1562cf",
+        "file_set_type": "reporter library",
+        "selection_criteria": [
+            "random selections"
+        ]
     }
 ]
