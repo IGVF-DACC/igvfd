@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 1
 
+* Add `checkfiles_version`.
 * Extend `file_format` enum list to include `pt`.
 * Extend `upload_status` enum list to include `validation exempted`.
 * Extend `status` enum list to include `preview`.

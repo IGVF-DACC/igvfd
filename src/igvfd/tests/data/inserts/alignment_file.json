@@ -23,7 +23,8 @@
         ],
         "redacted": false,
         "filtered": false,
-        "controlled_access": false
+        "controlled_access": false,
+        "checkfiles_version": "v2"
     },
     {
         "uuid": "ea8c86b7-1271-ea86-cc75-bc7d7eb802c8",

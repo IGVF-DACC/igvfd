@@ -443,6 +443,13 @@
             "description": "Explanation of why the file failed the automated content checks.",
             "type": "string",
             "permission": "admin_only"
+        },
+        "checkfiles_version": {
+            "title": "Checkfiles Version",
+            "description": "The Checkfiles GitHub version release the file was validated with.",
+            "comment": "Do not submit. This value is calculated by the checkfiles script upon submission.",
+            "type": "string",
+            "permission": "admin_only"
         }
     },
     "changelog": "/profiles/changelogs/file.md"
