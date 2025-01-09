@@ -395,6 +395,7 @@
         "controlled_access": false
     },
     {
+<<<<<<< HEAD
         "uuid": "79c388f3-8a1d-4510-aa23-933346e22a88",
         "accession": "IGVFFI0001SBRC",
         "lab": "j-michael-cherry",
@@ -411,6 +412,24 @@
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
         "file_set": "igvf:analysis_set_with_input",
+=======
+        "uuid": "8444c1a5-fc09-4fbc-b27a-8931975acf41",
+        "lab": "martin-kircher",
+        "award": "1UM1HG011966-01",
+        "aliases": [
+            "martin-kircher:reporter_experiment_barcode"
+        ],
+        "status": "released",
+        "release_timestamp": "2025-01-09T20:29:45Z",
+        "md5sum": "a36c4e3a52348ddb61cbc9262def21d2",
+        "file_format": "tsv",
+        "content_type": "reporter experiment barcode",
+        "submitted_file_name": "/Users/igvf/igvf_files/reporter_experiment_barcode.tsv.gz",
+        "file_size": 9999,
+        "upload_status": "validated",
+        "assembly": "GRCh38",
+        "file_set": "leif-ludwig:analysis_set",
+>>>>>>> 14a29dcd (extended enums)
         "controlled_access": false
     }
 ]
