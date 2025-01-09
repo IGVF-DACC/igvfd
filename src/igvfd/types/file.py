@@ -74,6 +74,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'png': '.png',
     'pt': '.pt',
     'PWM': '.pwm',
+    'Robj': '.Robj',
     'sam': '.sam.gz',
     'sra': '.sra',
     'tagAlign': '.tagAlign.gz',

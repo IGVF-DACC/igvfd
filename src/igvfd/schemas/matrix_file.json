@@ -175,6 +175,7 @@
                 "hdf5",
                 "mtx",
                 "pkl",
+                "Robj",
                 "tar",
                 "hic",
                 "cool",
