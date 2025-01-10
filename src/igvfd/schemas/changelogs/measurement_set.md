@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 23
 
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Extend `preferred_assay_title` enum list to include `electroporated MPRA`.
 * Extend `preferred_assay_title` enum list to include `varACCESS`.
 * Update calculation of `summary`.

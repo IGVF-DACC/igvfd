@@ -1,5 +1,9 @@
 ## Changelog for *`auxiliary_set.json`*
 
+### Minor changes since schema version 12
+
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
+
 ### Schema version 12
 
 * Adjust `file_set_type` enum list to remove `variant sequencing`.

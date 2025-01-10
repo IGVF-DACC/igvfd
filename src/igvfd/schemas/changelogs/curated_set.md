@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 8
 
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Extend `status` enum list to include `preview`.
 * Rename calculated property `input_file_set_for` to `input_for`.
 * Extend `collections` enum list to include `VarChAMP`.

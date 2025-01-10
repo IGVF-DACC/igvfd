@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Add `checkfiles_version`.
 * Extend `content_type` enum list to include `DNA footprint scores`.
 * Extend `content_type` enum list to include `cell hashing barcodes`.

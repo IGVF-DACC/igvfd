@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 12
 
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Add `checkfiles_version`.
 
 ### Schema version 12

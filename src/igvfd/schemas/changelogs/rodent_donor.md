@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 14
 
+* Extend `collections` enum list to include `IGVF_catalog_beta_v0.5`.
 * Extend `status` enum list to include `preview`.
 * Extend `strain_background` enum list to include `B6129S1F1/J`.
 * Extend `strain_background` enum list to include `B6AF1/J`.
