@@ -3,7 +3,9 @@
 ### Minor changes since schema version 13
 
 * Extend `content_type` enum list to include `DNA footprint scores`.
-* Extend `content_type` enum list to include `unfiltered global differential expression`, `unfiltered local differential expression` and `cell hashing barcodes`.
+* Extend `content_type` enum list to include `cell hashing barcodes`.
+* Extend `content_type` enum list to include `unfiltered local differential expression`.
+* Extend `content_type` enum list to include `unfiltered global differential expression`.
 * Extend `upload_status` enum list to include `validation exempted`.
 * Extend `status` enum list to include `preview`.
 * Extend `content_type` enum list to include `barcode onlist`.

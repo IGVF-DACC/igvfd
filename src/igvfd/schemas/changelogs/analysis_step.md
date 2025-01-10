@@ -2,9 +2,23 @@
 
 ### Minor changes since schema version 5
 
-* Extend `output_content_types` enum list to include `unfiltered global differential expression`, `unfiltered local differential expression` and `cell hashing barcodes`.
-* Extend `input_content_types` enum list to include `unfiltered global differential expression`, `unfiltered local differential expression` and `cell hashing barcodes`.
-* Extend `analysis_step_types` enum list to include `barcode counting`, `UMI quantification`, `cell to feature barcode mapping`, `demultiplexing`, and `differential expression analysis`.
+* Extend `output_content_types` enum list to include `DNA footprint scores`.
+* Extend `input_content_types` enum list to include `DNA footprint scores`.
+* Extend `output_content_types` enum list to include `sequence attributes`.
+* Extend `input_content_types` enum list to include `sequence attributes`.
+* Extend `output_content_types` enum list to include `TF binding scores`.
+* Extend `input_content_types` enum list to include `TF binding scores`.
+* Extend `output_content_types` enum list to include `cell hashing barcodes`.
+* Extend `input_content_types` enum list to include `cell hashing barcodes`.
+* Extend `output_content_types` enum list to include `unfiltered local differential expression`.
+* Extend `input_content_types` enum list to include `unfiltered local differential expression`.
+* Extend `output_content_types` enum list to include `unfiltered global differential expression`.
+* Extend `input_content_types` enum list to include `unfiltered global differential expression`.
+* Extend `analysis_step_types` enum list to include `differential expression analysis`.
+* Extend `analysis_step_types` enum list to include `demultiplexing`.
+* Extend `analysis_step_types` enum list to include `cell to feature barcode mapping`.
+* Extend `analysis_step_types` enum list to include `UMI quantification`.
+* Extend `analysis_step_types` enum list to include `barcode counting`.
 * Extend `status` enum list to include `preview`.
 * Extend `output_content_types` enum list to include `barcode onlist`.
 * Extend `input_content_types` enum list to include `barcode onlist`.
