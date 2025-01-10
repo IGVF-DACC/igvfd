@@ -13,21 +13,6 @@
         "prediction_objects",
         "software_version"
     ],
-    "not": {
-        "comment": "Model file sets should not specify any donors or samples.",
-        "anyOf": [
-            {
-                "required": [
-                    "samples"
-                ]
-            },
-            {
-                "required": [
-                    "donors"
-                ]
-            }
-        ]
-    },
     "identifyingProperties": [
         "uuid",
         "accession",
@@ -159,12 +144,6 @@
                 "appscript": "igvf:bedtoolsv109 or bedtools-v.1.0.9",
                 "igvf_utils": "igvf:bedtoolsv109 or bedtools-v.1.0.9"
             }
-        },
-        "samples": {
-            "comment": "Do not submit. Model sets should not specify any samples."
-        },
-        "donors": {
-            "comment": "Do not submit. Model sets should not specify any donors."
         },
         "assessed_genes": {
             "title": "Assessed Genes",
