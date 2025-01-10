@@ -2,6 +2,9 @@
 
 ### Minor changes since schema version 9
 
+* Extend `content_type` enum list to include `sequence attributes`.
+* Extend `content_type` enum list to include `TF binding scores`.
+* Extend `file_format` enum list to include `npz`.
 * Extend `upload_status` enum list to include `validation exempted`.
 * Extend `status` enum list to include `preview`.
 * Update calculation of `summary`.
