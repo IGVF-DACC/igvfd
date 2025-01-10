@@ -358,7 +358,15 @@
                     "Barcode forward",
                     "UMI",
                     "Barcode reverse"
-                ]
+                ],
+                "enum_descriptions": {
+                    "Read 1": "Read name associated with the single-cell uniform processing pipeline.",
+                    "Read 2": "Read name associated with the single-cell uniform processing pipeline.",
+                    "Barcode index": "Read name associated with the single-cell uniform processing pipeline.",
+                    "Barcode forward": "Read name associated with the MPRA uniform processing pipeline.",
+                    "UMI": "Read name associated with the MPRA uniform processing pipeline.",
+                    "Barcode reverse": "Read name associated with the MPRA uniform processing pipeline."
+                }
             },
             "submissionExample": {
                 "appscript": "[\"Read 1\"]",

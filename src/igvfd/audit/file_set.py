@@ -439,3 +439,65 @@ def audit_inconsistent_location_files(value, system):
             f'{local_file_links}.'
         )
         yield AuditFailure(audit_message.get('audit_category', ''), f'{detail} {audit_message.get("audit_description", "")}', level=audit_message.get('audit_level', ''))
+
+
+@audit_checker('MeasurementSet', frame='object')
+@audit_checker('AuxiliarySet', frame='object')
+def audit_MPRA_read_names(value, system):
+    '''
+    [
+        {
+            "audit_description": "MPRA measurement set and auxiliary set sequence files are expected to specify a read name.",
+            "audit_category": "missing read names",
+            "audit_level": "WARNING"
+        },
+        {
+            "audit_description": "MPRA measurement set and auxiliary set sequence files are only expected to specify read names: Barcode forward, UMI, or Barcode reverse.",
+            "audit_category": "unexpected read names",
+            "audit_level": "ERROR"
+        }
+    ]
+    '''
+    object_type = space_in_words(value['@type'][0]).capitalize()
+    audit_message_missing = get_audit_message(audit_MPRA_read_names, index=0)
+    audit_message_unexpected = get_audit_message(audit_MPRA_read_names, index=1)
+    missing_read_names = []
+    unexpected_read_names = []
+    assays = {}
+    if object_type == 'Measurement set':
+        assay_term = value.get('assay_term')
+        assay_term_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+        assays.add(assay_term_object.get('term_name'))
+    if object_type == 'Auxiliary set':
+        measurement_sets = value.get('measurement_sets', [])
+        for measurement_set in measurement_sets:
+            measurement_set_object = system.get('request').embed(measurement_set, '@@object?skip_calculated=true')
+            assay_term = measurement_set_object.get('assay_term')
+            assay_term_object = system.get('request').embed(assay_term, '@@object?skip_calculated=true')
+            assays.add(assay_term_object.get('term_name'))
+    assays = list(assays)
+    if any(assay for assay in assays if assay == 'massively parrallel reporter assay'):
+        if 'files' in value:
+            sequence_files = [file for file in value['files'] if file.startswith('/sequence-files/')]
+            for file in sequence_files:
+                file_object = system.get('request').embed(file)
+                read_names = file_object.get('read_names')
+                if read_names:
+                    if read_names not in ['Barcode forward', 'UMI', 'Barcode reverse']:
+                        unexpected_read_names.append(file)
+                else:
+                    missing_read_names.append(file)
+    if missing_read_names:
+        missing_read_names = ','.join([audit_link(path_to_text(file), file) for file in missing_read_names])
+        detail = (
+            f'MPRA {object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} links to sequence files: '
+            f'{missing_read_names} that do not specify `read_names`.'
+        )
+        yield AuditFailure(audit_message_missing.get('audit_category', ''), f'{detail} {audit_message_missing.get("audit_description", "")}', level=audit_message_missing.get('audit_level', ''))
+    if unexpected_read_names:
+        unexpected_read_names = ','.join([audit_link(path_to_text(file), file) for file in unexpected_read_names])
+        detail = (
+            f'MPRA {object_type} {audit_link(path_to_text(value["@id"]), value["@id"])} links to sequence files: '
+            f'{unexpected_read_names} with `read_names` not associated with the MPRA uniform processing pipeline.'
+        )
+        yield AuditFailure(audit_message_unexpected.get('audit_category', ''), f'{detail} {audit_message_unexpected.get("audit_description", "")}', level=audit_message_unexpected.get('audit_level', ''))
