@@ -393,5 +393,24 @@
         "assembly": "custom",
         "file_set": "leif-ludwig:analysis_set",
         "controlled_access": false
+    },
+    {
+        "uuid": "79c388f3-8a1d-4510-aa23-933346e22a88",
+        "accession": "IGVFFI0001SBRC",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:tabular_file_footprint"
+        ],
+        "md5sum": "f4c99133f75b02dc760c87b59cf808a5",
+        "file_format": "tsv",
+        "content_type": "DNA footprint scores",
+        "submitted_file_name": "/Users/igvf/igvf_files/DNA_footprint.tsv.gz",
+        "file_size": 16330,
+        "upload_status": "validated",
+        "status": "released",
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "file_set": "igvf:analysis_set_with_input",
+        "controlled_access": false
     }
 ]

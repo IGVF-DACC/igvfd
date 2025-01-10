@@ -65,6 +65,7 @@ FILE_FORMAT_TO_FILE_EXTENSION = {
     'jpg': '.jpg',
     'json': '.json',
     'mtx': '.mtx',
+    'npz': 'npz',
     'obo': '.obo.gz',
     'owl': '.owl.gz',
     'pairs': '.pairs.gz',

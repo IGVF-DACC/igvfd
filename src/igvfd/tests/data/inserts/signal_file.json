@@ -73,5 +73,49 @@
             "IGVFFI0001GNRF"
         ],
         "strand_specificity": "unstranded"
+    },
+    {
+        "uuid": "2c00c497-c880-411d-af35-958f78422131",
+        "accession": "IGVFFI0001SIGN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:signal_TF_binding_scores_file"
+        ],
+        "status": "in progress",
+        "md5sum": "caa22b99caf6017bb3ed6d2dd2c19834",
+        "file_format": "bigWig",
+        "assembly": "GRCh38",
+        "content_type": "TF binding scores",
+        "submitted_file_name": "/Users/igvf/igvf_files/TF_binding_scores.bigWig",
+        "file_size": 255235,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded"
+    },
+    {
+        "uuid": "484bf643-f889-4220-bb28-fff4cc5f210d",
+        "accession": "IGVFFI0002SIGN",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf:signal_seq_attributes"
+        ],
+        "status": "in progress",
+        "md5sum": "cfcfe3a2283916527a429722a02f166e",
+        "file_format": "npz",
+        "assembly": "GRCh38",
+        "content_type": "sequence attributes",
+        "submitted_file_name": "/Users/igvf/igvf_files/sequence_attributes.npz",
+        "file_size": 29875235,
+        "upload_status": "validated",
+        "file_set": "igvf:basic_analysis_set",
+        "reference_files": [
+            "IGVFFI0001GNRF"
+        ],
+        "strand_specificity": "unstranded"
     }
 ]
