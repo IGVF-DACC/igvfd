@@ -146,6 +146,8 @@ def audit_file_no_file_format_specifications(value, system):
     elif object_type == 'Matrix file':
         audit_message = get_audit_message(audit_file_no_file_format_specifications, index=1)
     elif object_type == 'Model file':
+        if value.get('file_format') != 'tsv':
+            return
         audit_message = get_audit_message(audit_file_no_file_format_specifications, index=2)
     if not (value.get('file_format_specifications')):
         detail = (
