@@ -395,7 +395,6 @@
         "controlled_access": false
     },
     {
-<<<<<<< HEAD
         "uuid": "79c388f3-8a1d-4510-aa23-933346e22a88",
         "accession": "IGVFFI0001SBRC",
         "lab": "j-michael-cherry",
@@ -411,8 +410,9 @@
         "upload_status": "validated",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
-        "file_set": "igvf:analysis_set_with_input",
-=======
+        "file_set": "igvf:analysis_set_with_input"
+    },
+    {
         "uuid": "8444c1a5-fc09-4fbc-b27a-8931975acf41",
         "lab": "martin-kircher",
         "award": "1UM1HG011966-01",
@@ -429,7 +429,6 @@
         "upload_status": "validated",
         "assembly": "GRCh38",
         "file_set": "leif-ludwig:analysis_set",
->>>>>>> 14a29dcd (extended enums)
         "controlled_access": false
     }
 ]
