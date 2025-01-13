@@ -410,7 +410,8 @@
         "upload_status": "validated",
         "status": "released",
         "release_timestamp": "2024-03-06T12:34:56Z",
-        "file_set": "igvf:analysis_set_with_input"
+        "file_set": "igvf:analysis_set_with_input",
+        "controlled_access": false
     },
     {
         "uuid": "8444c1a5-fc09-4fbc-b27a-8931975acf41",
