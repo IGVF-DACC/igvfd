@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 7
 
+* Add `checkfiles_version`.
 * Extend `secondary_dimensions` enum list to include `UMI count`.
 * Extend `file_format` enum list to include `pkl`.
 * Extend `secondary_dimensions` enum list to include `peak`.

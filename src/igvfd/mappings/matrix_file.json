@@ -1,6 +1,6 @@
 {
-    "hash": "74a007af5ca27571cc649665c3f82f0e",
-    "index_name": "matrix_file_74a007af",
+    "hash": "4bbad483041bbbea0e35dc0ea2278a12",
+    "index_name": "matrix_file_4bbad483",
     "item_type": "matrix_file",
     "mapping": {
         "dynamic_templates": [
@@ -234,6 +234,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "checkfiles_version": {
+                        "type": "keyword"
                     },
                     "collections": {
                         "type": "keyword"

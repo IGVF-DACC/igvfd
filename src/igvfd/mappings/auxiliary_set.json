@@ -1,6 +1,6 @@
 {
-    "hash": "b1292e68af2a57ef8490c40736820c24",
-    "index_name": "auxiliary_set_b1292e68",
+    "hash": "754ee97ed1db95016c1edf8e7bc7e693",
+    "index_name": "auxiliary_set_754ee97e",
     "item_type": "auxiliary_set",
     "mapping": {
         "dynamic_templates": [
@@ -792,6 +792,9 @@
                                 "type": "keyword"
                             },
                             "cell_type_annotation": {
+                                "type": "keyword"
+                            },
+                            "checkfiles_version": {
                                 "type": "keyword"
                             },
                             "collections": {

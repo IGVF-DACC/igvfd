@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 13
 
+* Add `checkfiles_version`.
 * Extend `content_type` enum list to include `DNA footprint scores`.
 * Extend `content_type` enum list to include `cell hashing barcodes`.
 * Extend `content_type` enum list to include `unfiltered local differential expression`.

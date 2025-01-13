@@ -2,6 +2,7 @@
 
 ### Minor changes since schema version 9
 
+* Add `checkfiles_version`.
 * Extend `content_type` enum list to include `sequence attributes`.
 * Extend `content_type` enum list to include `TF binding scores`.
 * Extend `file_format` enum list to include `npz`.

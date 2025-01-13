@@ -1,6 +1,6 @@
 {
-    "hash": "f03aa37543ee160cbc4f9907355e4798",
-    "index_name": "signal_file_f03aa375",
+    "hash": "be7cc8b094d1c396437da9442b3c9e3c",
+    "index_name": "signal_file_be7cc8b0",
     "item_type": "signal_file",
     "mapping": {
         "dynamic_templates": [
@@ -321,6 +321,9 @@
                             }
                         },
                         "type": "object"
+                    },
+                    "checkfiles_version": {
+                        "type": "keyword"
                     },
                     "collections": {
                         "type": "keyword"

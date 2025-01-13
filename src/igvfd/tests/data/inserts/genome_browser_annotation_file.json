@@ -21,6 +21,7 @@
         "file_set": "igvf:basic_analysis_set",
         "derived_from": [
             "IGVFFI0001PKBD"
-        ]
+        ],
+        "checkfiles_version": "v13"
     }
 ]

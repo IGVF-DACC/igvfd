@@ -1,5 +1,9 @@
 ## Changelog for *`alignment_file.json`*
 
+### Minor changes since schema version 12
+
+* Add `checkfiles_version`.
+
 ### Schema version 12
 
 * Require `assembly`.
