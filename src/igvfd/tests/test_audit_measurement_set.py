@@ -1049,3 +1049,43 @@ def test_audit_missing_construct_library_set(
         error['category'] != 'missing construct library set'
         for error in res.json['audit'].get('NOT_COMPLIANT', [])
     )
+
+
+def test_audit_missing_read_names(
+    testapp,
+    measurement_set_mpra,
+    sequence_file
+):
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'file_set': measurement_set_mpra['@id']
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'missing read names'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'read_names': ['Barcode forward']
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert all(
+        error['category'] != 'missing read names'
+        for error in res.json['audit'].get('WARNING', [])
+    )
+    testapp.patch_json(
+        sequence_file['@id'],
+        {
+            'read_names': ['Barcode forward', 'Read 1']
+        }
+    )
+    res = testapp.get(measurement_set_mpra['@id'] + '@@audit')
+    assert any(
+        error['category'] == 'inconsistent read names'
+        for error in res.json['audit'].get('ERROR', [])
+    )
