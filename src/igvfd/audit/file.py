@@ -134,7 +134,7 @@ def audit_file_no_file_format_specifications(value, system):
             "audit_level": "NOT_COMPLIANT"
         },
         {
-            "audit_description": "Model files are expected to link to a file format specifications document describing the content of the file.",
+            "audit_description": "Model files in tsv format are expected to link to a file format specifications document describing the content of the file.",
             "audit_category": "missing file format specifications",
             "audit_level": "NOT_COMPLIANT"
         }
