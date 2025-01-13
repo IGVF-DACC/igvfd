@@ -189,5 +189,34 @@
             "genome reference"
         ],
         "workflow": "96fa0630-a88e-4946-bebd-23f417d0da7a"
+    },
+    {
+        "uuid": "622280c8-cb7c-4d56-81ce-6ef1eda60a5a",
+        "lab": "j-michael-cherry",
+        "award": "HG012012",
+        "aliases": [
+            "igvf-dacc:analysis_step_03"
+        ],
+        "status": "released",
+        "submitter_comment": "The submitter had very little to say.",
+        "title": "Example Analysis Step 3",
+        "step_label": "example-analysis-step-three",
+        "analysis_step_types": [
+            "alignment",
+            "read trimming",
+            "fastq concatenation",
+            "fragment generation",
+            "UMI collapsing",
+            "matrix generation"
+        ],
+        "release_timestamp": "2024-03-06T12:34:56Z",
+        "input_content_types": [
+            "reads"
+        ],
+        "output_content_types": [
+            "fragments",
+            "sparse gene count matrix"
+        ],
+        "workflow": "96fa0630-a88e-4946-bebd-23f417d0da7a"
     }
 ]
