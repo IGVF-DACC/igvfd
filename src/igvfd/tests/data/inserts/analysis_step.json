@@ -199,8 +199,8 @@
         ],
         "status": "released",
         "submitter_comment": "The submitter had very little to say.",
-        "title": "Example Analysis Step 3",
-        "step_label": "example-analysis-step-three",
+        "title": "Example Analysis Three Step",
+        "step_label": "example-analysis-three-step",
         "analysis_step_types": [
             "alignment",
             "read trimming",
