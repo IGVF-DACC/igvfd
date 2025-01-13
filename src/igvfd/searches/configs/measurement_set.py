@@ -204,7 +204,7 @@ def measurement_set():
                 'title': 'File Set Type'
             },
             'functional_assay_mechanisms.term_name': {
-                'title': 'Functional Assay Mechanisms'
+                'title': 'Measured Mechanism'
             }
         }
     }

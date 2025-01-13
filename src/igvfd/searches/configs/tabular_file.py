@@ -31,6 +31,15 @@ def tabular_file():
             'assay_titles': {
                 'title': 'Assay'
             },
+            'integrated_in.file_set_type': {
+                'title': 'Library Type'
+            },
+            'integrated_in.associated_phenotypes.term_name': {
+                'title': 'Associated Phenotype'
+            },
+            'integrated_in.small_Scale_gene_list.symbol': {
+                'title': 'Construct Target Genes'
+            },
             'file_set.samples.taxa': {
                 'title': 'Taxa'
             },
@@ -105,6 +114,8 @@ def tabular_file():
                     'file_set.file_set_type',
                     'assay_titles',
                     'integrated_in.file_set_type',
+                    'integrated_in.associated_phenotypes.term_name',
+                    'integrated_in.small_Scale_gene_list.symbol',
                 ],
             },
             {
